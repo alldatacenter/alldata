@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="task-schedular:war">
+    <output-path>$PROJECT_DIR$/task-schedular/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>task-schedular</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="task-schedular.war">
+      <element id="artifact" artifact-name="task-schedular:war exploded" />
+    </root>
+  </artifact>
+</component>

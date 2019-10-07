@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="compute-mr:war exploded">
+    <output-path>$PROJECT_DIR$/compute-mr/target/compute-mr</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>compute-mr</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="compute-mr" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/compute-mr/target/compute-mr/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="compute-mr/web/Web" />
+    </root>
+  </artifact>
+</component>

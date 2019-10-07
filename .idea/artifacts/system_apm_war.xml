@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="system-apm:war">
+    <output-path>$PROJECT_DIR$/system-apm/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>system-apm</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="system-apm.war">
+      <element id="artifact" artifact-name="system-apm:war exploded" />
+    </root>
+  </artifact>
+</component>

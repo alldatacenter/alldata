@@ -1,0 +1,18 @@
+#启动django
+source /usr/local/python-3.6.2/envs/scrapytest/bin/activate
+cd /usr/local/scrapy/LcvSearch
+python3 manage.py runserver 0.0.0.0:8000
+
+#启动爬虫
+cd /usr/local/scrapy/l0x8df_new/
+netstat -tlnp | grep 6800
+#启动scrapyd服务器 6800
+/usr/local/python-3.6.2/envs/scrapytest/bin/scrapyd &
+#部署项目到服务器
+ /usr/local/python-3.6.2/envs/scrapytest/bin/scrapyd-deploy Myploy -p ArticleSpider
+#启动爬虫
+curl http://120.77.155.220:6800/schedule.json -d project=ArticleSpider -d spider=zhihu
+curl http://120.77.155.220:6800/schedule.json -d project=ArticleSpider -d spider=lagou
+curl http://120.77.155.220:6800/schedule.json -d project=ArticleSpider -d spider=jobbole
+
+ 

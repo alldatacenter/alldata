@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="system-recommender:war">
+    <output-path>$PROJECT_DIR$/system-recommender/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>system-recommender</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="system-recommender.war">
+      <element id="artifact" artifact-name="system-recommender:war exploded" />
+    </root>
+  </artifact>
+</component>

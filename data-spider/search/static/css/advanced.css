@@ -1,0 +1,50 @@
+@charset "utf-8";
+html{*overflow:auto;}
+#hd{padding:20px 10px;}
+.logo{float:left;margin-right:30px; height:33px;}
+/*input搜索区域*/
+.inputArea{float:left;position:relative;}
+.inputArea .searchInput{border:1px solid #bfbfbf;padding:0 15px;outline:none;height:35px;*line-height:38px;width:350px; background:url(../img/inputbg.png);font-size:14px;}
+.inputArea .searchButton{position:absolute;left:382px;top:0;*top:1px;*left:381px;width:106px;height:38px;background:url(../img/btn_min.png) no-repeat;border:none; cursor:pointer;}
+
+/*返回搜索*/
+.inputArea .back{position:absolute;font-size:14px;left:500px;top:12px;width:60px;text-decoration:underline;}
+
+/*分界区域*/
+.divsion{margin-bottom:24px;height:36px;background:#f9f9f9;border-bottom:1px solid #e0e0e0;}
+
+/*高级搜索区域*/
+.subfield{border-left:4px solid #9cc813;font-size:14px;font-weight:bold;padding:2px 0 2px 20px;}
+.subfieldContent{padding-left:140px;padding-bottom:40px;}
+.subfieldContent .advanceItem{padding-left:350px;margin-bottom:15px;padding-top:8px;padding-bottom:3px;}
+.subfieldContent .advanceItem.keyWords{background:#f4f4f4;padding-top:18px;padding-bottom:3px;}
+.subfieldContent .advanceItem dd{float:left;margin-left:-320px;}
+.subfieldContent .advanceItem dd label{float:left;margin-right:40px;width:75px;font-weight:bold;}
+.subfieldContent .advanceItem dd .impInfo{ font-weight:bold;}
+.subfieldContent .advanceItem dd .tips{float:left;}
+.subfieldContent .advanceItem dd p, .subfieldContent .advanceItem dt p{margin-bottom:10px;height:26px;}
+.subfieldContent .advanceItem dt p input[type=text]{position:relative;top:-5px;line-height:26px;}
+
+.subfieldContent .advanceItem dt{float:left;width:100%;}
+.subfieldContent .advanceItem.keyWords dt input[type=text]{width:290px;height:26px;border:1px solid #bfbfbf;outline:none;}
+/*自定义*/
+.subfieldContent .advanceItem.time{height:30px;}
+.subfieldContent .advanceItem .define{display:none;position:relative;*top:-3px;}
+.subfieldContent .advanceItem.time input[type=text]{width:80px;height:18px;line-height:18px;border:1px solid #bfbfbf;outline:none;}
+
+
+
+
+
+/*更多按钮*/
+.more {float:left;}
+.more:hover{text-decoration:none;}
+.more .moreIcon{display:inline-block;position:relative;top:-1px;*top:-3px;left:2px;*left:-1px;width:9px;height:5px;background:url(../img/more.png);}
+.more.show .moreIcon{background:url(../img/down.png);top:-2px;}
+
+/*立即搜索样式*/
+.subfieldContent .search{margin:45px 0 0 145px;width:130px;height:36px;background:url(../img/btnbg.png); font-weight:bold;border:none;border:1px solid #bfbfbf;line-height:36px;cursor:pointer;font-size:14px;}
+/*联想下拉区域*/
+.inputArea .dataList{display:none;position:absolute;left:0;top:42px;*top:43px;width:550px;padding:5px 0;background:#fff;border:1px solid #bfbfbf;border-top:none;}
+.inputArea .dataList li{padding:2px 15px;font-size:14px;}
+.inputArea .dataList li:hover{background:#f0f0f0;color:#0080cc;font-weight:bold;}

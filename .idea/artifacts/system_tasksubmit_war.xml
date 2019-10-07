@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="system-tasksubmit:war">
+    <output-path>$PROJECT_DIR$/system-tasksubmit/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>system-tasksubmit</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="system-tasksubmit.war">
+      <element id="artifact" artifact-name="system-tasksubmit:war exploded" />
+    </root>
+  </artifact>
+</component>

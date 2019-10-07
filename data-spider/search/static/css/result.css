@@ -1,0 +1,104 @@
+@charset "utf-8";
+html{*overflow:auto;}
+#hd{padding:20px 10px;}
+#bd{margin-bottom:40px;}
+.logo{float:left;margin-right:30px; height:33px;}
+/*input搜索区域*/
+.inputArea{float:left;position:relative;}
+.inputArea .searchInput{border:1px solid #bfbfbf;padding:0 15px;outline:none;height:35px;*line-height:35px;width:350px; background:url(../img/inputbg.png);font-size:14px;}
+.inputArea .searchButton{position:absolute;left:382px;top:0;*top:1px;*left:381px;width:106px;height:38px;background:url(../img/btn_min.png) no-repeat;border:none;cursor:pointer;}
+
+/*返回高级搜索*/
+.inputArea .advanced{position:absolute;font-size:14px;left:500px;top:12px;width:60px;text-decoration:underline;}
+
+/*分界区域，导航*/
+.nav{margin-bottom:24px;height:31px;background:#f9f9f9;border-bottom:1px solid #e0e0e0;padding:5px 0 0 210px;}
+.searchList{float:left;padding-left:5px;}
+.searchList .searchItem{float:left;margin-right:15px;font-size:14px;padding:0 3px 2px 3px;cursor:pointer;height:26px; line-height:26px;}
+.searchList .searchItem.current{color:#0080cc;border-bottom:3px solid #9cc813;font-weight:bold;}
+.nav .tips{color:#969696;font-size:12px;line-height:24px;*line-height:26px;}
+#container.sideBarHide .nav{padding-left:35px;}
+
+/*#main区域样式*/
+#main{padding:0 215px 0 182px;}
+#main.sideBarHide{padding-left:10px;}
+/*侧边栏搜索条件*/
+.sideBar{position:relative;float:left;margin-left:-182px;width:182px;}
+.sideBar .subfieldContext{margin-bottom:20px;padding-left:25px;}
+.sideBar .subfieldContext li{margin-bottom:5px;cursor:pointer;}
+.sideBar .subfieldContext input[type=text]{width:75px;}
+.sideBar .unit{color:#787878;}
+
+/*更多按钮*/
+.sideBar .more a:hover{text-decoration:none;}
+.sideBar .more .moreIcon{display:inline-block;position:relative;top:-1px;*top:-3px;left:2px;*left:-1px;width:9px;height:5px;background:url(../img/more.png);}
+.sideBar .more.show .moreIcon{background:url(../img/down.png);top:-2px;}
+
+.sideBar .reset{padding-left:25px;}
+/*siderBar区域显隐控制*/
+.sideBar .sideBarShowHide{position:absolute;right:0px;top:20px;height:177px;width:1px; background:url(../img/line.png) right;}
+.sideBar .sideBarShowHide a{position:absolute;top:70px;left:-11px;display:inline-block;width:12px;height:31px;background:url(../img/lr.png);}
+
+.sideBar .sideBarShowHide a:hover{background-position:0 -31px;}
+
+/*左侧收起样式*/
+#main.sideBarHide .sideBar{margin-left:-191px;*margin-left:-182px;}
+#main.sideBarHide .sideBar .sideBarShowHide{-moz-transform:rotate(180deg); -o-transform:rotate(180deg); -webkit-transform:rotate(180deg); transform:rotate(180deg);}
+#main.sideBarHide .sideBar .sideBarShowHide a{*background:url(../img/ll.png);}
+#main.sideBarHide .sideBar .sideBarShowHide a:hover{*background-position:0 -31px;}
+#main.sideBarHide .sideBar .sideBarShowHide{background:none;}
+
+.resultArea{float:left;width:100%;}
+.resultArea .resultTotal{position:relative;padding-left:30px;margin-bottom:20px;}
+.resultArea .resultTotal .info{color:#9a9a9a;}
+.resultArea .resultTotal .orderOpt{position:absolute;right:50px;}
+.resultArea .resultTotal .orderOpt a{margin-right:10px;color:#0080cc;}
+
+/*搜索结果列表区域*/
+.resultArea .resultList{padding-left:30px;}
+.resultArea .resultList .resultItem{margin-bottom:20px;}
+.resultArea .resultList .resultItem{margin-bottom:30px;}
+.resultArea .resultList .itemHead{margin-bottom:5px;color:#767676;} 
+.resultArea .resultList .itemHead .keyWord{color:#d90909;}
+.resultArea .resultList .itemBody .keyWord{color:#d90909;}
+.resultArea .resultList .itemHead a.title{font-size:16px;color:#0080cc;text-decoration:underline;}
+.resultArea .resultList .itemHead .value{color:#008000;}
+.resultArea .resultList .itemHead .divsion{margin:0 5px;}
+.resultArea .resultList .itemHead .fileType{margin-right:10px;}
+
+/*搜索内容主体*/
+.resultArea .resultList .itemBody{margin-bottom:5px;line-height:18px;width:90%;}
+.resultArea .resultList .itemFoot{color:#008000;}
+.resultArea .resultList .itemFoot .info{margin-right:10px;}
+
+.resultArea .pagination{margin-bottom:25px;padding-left:32px;}
+/*相关搜索*/
+.resultArea .dependSearch{margin-bottom:30px;padding-left:32px;font-size:14px;}
+.resultArea .dependSearch h6{float:left;margin-right:15px;font-weight:bold;}
+.resultArea .dependSearch p{margin-bottom:5px;}
+.resultArea .dependSearch a{display:inline-block;margin-right:15px;text-decoration:underline;width:90px; white-space:nowrap; overflow:hidden;text-overflow:ellipsis;}
+.resultArea .searchInResult{padding-left:35px;}
+.resultArea .searchInResult .inResult{position:absolute;right:-190px;top:8px;font-size:14px;text-decoration:underline;}
+.resultArea .searchInResult .searchButton{left:417px;}
+/*历史搜索区域*/
+.historyArea{float:right;margin-right:-212px;width:212px;}
+.historyArea h6{margin-bottom:10px;font-weight:bold;}
+.historyArea .historyList{margin-bottom:20px;}
+.historyArea .historyList li{margin-bottom:5px;}
+
+
+
+/*左侧分栏区域*/
+.subfield{margin-bottom:5px;font-size:14px;font-weight:bold;padding:2px 0 2px 24px;}
+.subfield:first-child{border-left:4px solid #9cc813;padding-left:20px;}
+
+
+
+/*立即搜索样式*/
+.subfieldContent .search{margin:45px 0 0 135px;width:130px;height:36px;background:url(../img/btnbg.png); font-weight:bold;border:none;border:1px solid #bfbfbf;line-height:36px;}
+/*联想下拉区域*/
+.inputArea .dataList{display:none;position:absolute;left:0;top:42px;*top:43px;width:550px;padding:5px 0;background:#fff;border:1px solid #bfbfbf;border-top:none;}
+.inputArea .dataList li{padding:2px 15px;font-size:14px;}
+.inputArea .dataList li:hover{background:#f0f0f0;color:#0080cc;font-weight:bold;}
+
+
