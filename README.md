@@ -1,5 +1,6 @@
-# 数据平台介绍
+# 数据平台介绍 
 数据平台主要包含多个子系统的开发，项目采用Dubbo微服务架构，使用Altas作为服务治理，包括spark，storm，flink，scala，python等技术栈
+# 数据平台展示地址：http://120.77.155.220:8081/BigDataPlatForm/index.html
 # 数据来源：
 	mall-web: 商城前台
 	mall-admin-web: 后台管理
