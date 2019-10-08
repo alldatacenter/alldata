@@ -14,7 +14,12 @@
         <module name="dubbo-service-interface" />
         <module name="log-collect-client" />
         <module name="log-collect-server" />
+        <module name="mall-admin" />
         <module name="mall-admin-web" />
+        <module name="mall-common" />
+        <module name="mall-mbg" />
+        <module name="mall-portal" />
+        <module name="mall-search" />
         <module name="mall-web" />
         <module name="mall-wechat-applet" />
         <module name="multi-dimension-analysis" />
@@ -42,8 +47,14 @@
       <module name="dubbo-service-interface" target="1.8" />
       <module name="log-collect-client" target="1.8" />
       <module name="log-collect-server" target="1.8" />
+      <module name="mall-admin" target="1.8" />
       <module name="mall-admin-web" target="1.8" />
       <module name="mall-backend" target="1.8" />
+      <module name="mall-common" target="1.8" />
+      <module name="mall-demo" target="1.8" />
+      <module name="mall-mbg" target="1.8" />
+      <module name="mall-portal" target="1.8" />
+      <module name="mall-search" target="1.8" />
       <module name="mall-web" target="1.8" />
       <module name="mall-wechat-applet" target="1.8" />
       <module name="multi-dimension-analysis" target="1.8" />
@@ -59,5 +70,13 @@
       <module name="task-ops" target="1.8" />
       <module name="task-schedular" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mall-admin" options="-parameters" />
+      <module name="mall-backend" options="-parameters" />
+      <module name="mall-portal" options="-parameters" />
+      <module name="mall-search" options="-parameters" />
+    </option>
   </component>
 </project>

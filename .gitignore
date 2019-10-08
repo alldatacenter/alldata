@@ -1,0 +1,49 @@
+.DS_Store
+/mall-admin-web/node_modules
+/mall-admin-web/dist
+/mall-admin-web/target/
+/mall-admin-web/npm-debug.log*
+/mall-admin-web/yarn-debug.log*
+/mall-admin-web/yarn-error.log*
+/*/target/
+/mall-admin-web/README.md
+
+/mall-backend/mall-admin/target/
+/mall-backend/mall-common/target/
+/mall-backend/mall-mbg/target/
+/mall-backend/mall-portal/target/
+/mall-backend/mall-search/target/
+/mall-backend/*.md
+
+# Editor directories and files
+*.idea
+*.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.md
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
