@@ -190,4 +190,128 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         i = i == null ? 0.00 : i;
         return i;
     }
+
+    @Override
+    public Integer getNumOfWaitForPay() {
+        Integer i = orderMapper.getNumOfWaitForPay();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getNumOfFinished() {
+        Integer i = orderMapper.getNumOfFinished();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getNumOfWaitForConfirmRecvice() {
+        Integer i = orderMapper.getNumOfWaitForConfirmRecvice();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getNumOfWaitForDeliverGoods() {
+        Integer i = orderMapper.getNumOfWaitForDeliverGoods();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getNumOfNewShortageRegistration() {
+        Integer i = orderMapper.getNumOfNewShortageRegistration();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getNumOfWaitForRefundApplication() {
+        Integer i = orderMapper.getNumOfWaitForRefundApplication();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getNumOfOutgoingOrders() {
+        Integer i = orderMapper.getNumOfOutgoingOrders();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getReturnOrdersToBeProcessed() {
+        Integer i = orderMapper.getReturnOrdersToBeProcessed();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getAdvertisingSpaceNealyExpire() {
+        Integer i = orderMapper.getAdvertisingSpaceNealyExpire();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getTodayTotalNumOfOrder() {
+        Integer i = orderMapper.getTodayTotalNumOfOrder();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getMonthTotalNumOfOrder() {
+        Integer i = orderMapper.getMonthTotalNumOfOrder();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getWeekTotalNumOfOrder() {
+        Integer i = orderMapper.getWeekTotalNumOfOrder();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getOffShelfGoods() {
+        return null;
+    }
+
+    @Override
+    public Integer getOnShelfGoods() {
+        return null;
+    }
+
+    @Override
+    public Integer getTightStockGoods() {
+        return null;
+    }
+
+    @Override
+    public Integer getAllGoods() {
+        return null;
+    }
+
+    @Override
+    public Integer getAddToday() {
+        return null;
+    }
+
+    @Override
+    public Integer getAddYestoday() {
+        return null;
+    }
+
+    @Override
+    public Integer getAddMonth() {
+        return null;
+    }
+
+    @Override
+    public Integer getAllMembers() {
+        return null;
+    }
 }

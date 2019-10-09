@@ -84,12 +84,74 @@ public class SmsHomeDataController {
     }
 
     private void setMembersData(HomePageData homePageData) {
+        Integer addToday = omsOrderService.getAddToday();
+        homePageData.setOffShelfGoods(addToday);
+        Integer addYestoday = omsOrderService.getAddYestoday();
+        homePageData.setOnShelfGoods(addYestoday);
+        Integer addMonth  = omsOrderService.getAddMonth();
+        homePageData.setTightStockGoods(addMonth);
+        Integer allMembers = omsOrderService.getAllMembers();
+        homePageData.setAllGoods(allMembers);
     }
 
     private void setGoodsData(HomePageData homePageData) {
+        Integer offShelfGoods = omsOrderService.getOffShelfGoods();
+        homePageData.setOffShelfGoods(offShelfGoods);
+        Integer onShelfGoods = omsOrderService.getOnShelfGoods();
+        homePageData.setOnShelfGoods(onShelfGoods);
+        Integer tightStockGoods  = omsOrderService.getTightStockGoods();
+        homePageData.setTightStockGoods(tightStockGoods);
+        Integer allGoods = omsOrderService.getAllGoods();
+        homePageData.setAllGoods(allGoods);
     }
 
     private void setOrderData(HomePageData homePageData) {
+        //待付款订单
+        Integer numOfWaitForPay = omsOrderService.getNumOfWaitForPay();
+        homePageData.setNumOfWaitForPay(numOfWaitForPay);
+
+        //已完成订单
+        Integer numOfFinished = omsOrderService.getNumOfFinished();
+        homePageData.setNumOfFinished(numOfFinished);
+
+        //待确认收货订单
+        Integer numOfWaitForConfirmRecvice = omsOrderService.getNumOfWaitForConfirmRecvice();
+        homePageData.setNumOfWaitForConfirmRecvice(numOfWaitForConfirmRecvice);
+
+        Integer numOfWaitForDeliverGoods = omsOrderService.getNumOfWaitForDeliverGoods();
+        homePageData.setNumOfWaitForDeliverGoods(numOfWaitForDeliverGoods);
+
+        //新缺货登记
+        Integer numOfNewShortageRegistration = omsOrderService.getNumOfNewShortageRegistration();
+        homePageData.setNumOfNewShortageRegistration(numOfNewShortageRegistration);
+
+        //待处理退款申请
+        Integer numOfWaitForRefundApplication = omsOrderService.getNumOfWaitForRefundApplication();
+        homePageData.setNumOfWaitForRefundApplication(numOfWaitForRefundApplication);
+
+        //已发货订单
+        Integer numOfOutgoingOrders = omsOrderService.getNumOfOutgoingOrders();
+        homePageData.setNumOfOutgoingOrders(numOfOutgoingOrders);
+
+        //待处理退货订单
+        Integer returnOrdersToBeProcessed = omsOrderService.getReturnOrdersToBeProcessed();
+        homePageData.setReturnOrdersToBeProcessed(returnOrdersToBeProcessed);
+
+        //广告位即将到期
+        Integer advertisingSpaceNealyExpire = omsOrderService.getAdvertisingSpaceNealyExpire();
+        homePageData.setAdvertisingSpaceNealyExpire(advertisingSpaceNealyExpire);
+
+        //今日订单总数
+        Integer todayTotalNumOfOrder = omsOrderService.getTodayTotalNumOfOrder();
+        homePageData.setTodayTotalNumOfOrder(todayTotalNumOfOrder);
+
+        //本月订单总数
+        Integer monthTotalNumOfOrder = omsOrderService.getMonthTotalNumOfOrder();
+        homePageData.setMonthTotalNumOfOrder(monthTotalNumOfOrder);
+
+        //本周订单总数
+        Integer weekTotalNumOfOrder = omsOrderService.getWeekTotalNumOfOrder();
+        homePageData.setWeekTotalNumOfOrder(weekTotalNumOfOrder);
     }
 
     private void setSalesData(HomePageData homePageData) {

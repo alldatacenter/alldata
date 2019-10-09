@@ -848,6 +848,45 @@
         where DATE_FORMAT( payment_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m')
     </select>
 
+    <select id="getNumOfWaitForPay" resultType="int">
+        SELECT count(1)  FROM oms_order where status = 0
+    </select>
+    <select id="getNumOfFinished" resultType="int">
+        SELECT count(1)  FROM oms_order where status = 3
+    </select>
+    <select id="getNumOfWaitForConfirmRecvice" resultType="int">
+        SELECT count(1)  FROM oms_order where confirm_status = 0
+    </select>
+    <select id="getNumOfWaitForDeliverGoods" resultType="int">
+        SELECT count(1)  FROM oms_order where confirm_status = 1
+    </select>
+
+    <select id="getNumOfNewShortageRegistration" resultType="int">
+        SELECT count(1)  FROM pms_product where stock &lt; low_stock
+    </select>
+    <select id="getNumOfWaitForRefundApplication" resultType="int">
+        SELECT count(1)  FROM oms_order_return_apply where status = 0
+    </select>
+    <select id="getNumOfOutgoingOrders" resultType="int">
+        SELECT count(1)  FROM oms_order where status = 2
+    </select>
+    <select id="getReturnOrdersToBeProcessed" resultType="int">
+        SELECT count(1)  FROM oms_order_return_apply where status = 0
+    </select>
+    <select id="getAdvertisingSpaceNealyExpire" resultType="int">
+        SELECT 10  FROM oms_order_return_apply
+    </select>
+    <select id="getTodayTotalNumOfOrder" resultType="int">
+        SELECT count(1)  FROM oms_order where to_days(payment_time) = to_days(now())
+    </select>
+    <select id="getMonthTotalNumOfOrder" resultType="int">
+        SELECT count(1)  FROM oms_order where DATE_FORMAT(payment_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )
+    </select>
+    <select id="getWeekTotalNumOfOrder" resultType="int">
+        SELECT count(1)  FROM oms_order where YEARWEEK(date_format(payment_time,'%Y-%m-%d')) = YEARWEEK(now());
+    </select>
+
+
     <!--add end-->
 
 </mapper>

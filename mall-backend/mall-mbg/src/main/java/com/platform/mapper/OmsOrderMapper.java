@@ -39,4 +39,28 @@ public interface OmsOrderMapper {
     Double getTotalSalesOfWeek();
 
     Double getTotalSalesOfMonth();
+
+    Integer getNumOfWaitForPay();
+
+    Integer getNumOfFinished();
+
+    Integer getNumOfWaitForConfirmRecvice();
+
+    Integer getNumOfWaitForDeliverGoods();
+
+    Integer getNumOfNewShortageRegistration();
+
+    Integer getNumOfWaitForRefundApplication();
+
+    Integer getNumOfOutgoingOrders();
+
+    Integer getReturnOrdersToBeProcessed();
+
+    Integer getAdvertisingSpaceNealyExpire();
+
+    Integer getTodayTotalNumOfOrder();
+
+    Integer getMonthTotalNumOfOrder();
+
+    Integer getWeekTotalNumOfOrder();
 }

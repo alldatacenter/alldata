@@ -73,4 +73,44 @@ public interface OmsOrderService {
     Double getTotalSalesOfWeek();
 
     Double getTotalSalesOfMonth();
+
+    Integer getNumOfWaitForPay();
+
+    Integer getNumOfFinished();
+
+    Integer getNumOfWaitForConfirmRecvice();
+
+    Integer getNumOfWaitForDeliverGoods();
+
+    Integer getNumOfNewShortageRegistration();
+
+    Integer getNumOfWaitForRefundApplication();
+
+    Integer getNumOfOutgoingOrders();
+
+    Integer getReturnOrdersToBeProcessed();
+
+    Integer getAdvertisingSpaceNealyExpire();
+
+    Integer getTodayTotalNumOfOrder();
+
+    Integer getMonthTotalNumOfOrder();
+
+    Integer getWeekTotalNumOfOrder();
+
+    Integer getOffShelfGoods();
+
+    Integer getOnShelfGoods();
+
+    Integer getTightStockGoods();
+
+    Integer getAllGoods();
+
+    Integer getAddToday();
+
+    Integer getAddYestoday();
+
+    Integer getAddMonth();
+
+    Integer getAllMembers();
 }
