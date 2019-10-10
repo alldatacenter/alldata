@@ -2,6 +2,7 @@ package com.platform.controller;
 
 import com.platform.common.api.CommonResult;
 import com.platform.model.HomePageData;
+import com.platform.model.OrderListData;
 import com.platform.service.OmsOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * 首页数据初始化 Controller
@@ -39,8 +41,14 @@ public class SmsHomeDataController {
         setMembersData(homePageData);
         //增长率
         setGrowthRate(homePageData);
-
+        //orderArray
+        setOrderArray(homePageData);
         return CommonResult.success(homePageData);
+    }
+
+    private void setOrderArray(HomePageData homePageData) {
+        OrderListData[] dataList = omsOrderService.getOrderListData();
+        homePageData.setOrderArray(dataList);
     }
 
     private void setGrowthRate(HomePageData homePageData) {
@@ -52,18 +60,80 @@ public class SmsHomeDataController {
     }
 
     private void setMonthOrderOfGrowthRate(HomePageData homePageData) {
+        boolean flag = false;
+        Integer monthTotalNumOfOrder = homePageData.getWeekTotalNumOfOrder();
+        Integer lastWeekTotalNumOfOrder = homePageData.getLastWeekTotalNumOfOrder();
+        Double monthOrdersOfGrowthRate;
+        if (monthTotalNumOfOrder >= lastWeekTotalNumOfOrder){
+            flag = true;
+        }
+        if (flag){
+            if (monthTotalNumOfOrder == 0.0){
+                return;
+            }
+            monthOrdersOfGrowthRate = (monthTotalNumOfOrder - lastWeekTotalNumOfOrder) / (monthTotalNumOfOrder * 1.0);
+        }else{
+            if (lastWeekTotalNumOfOrder == 0.0){
+                return;
+            }
+            monthOrdersOfGrowthRate = (lastWeekTotalNumOfOrder - monthTotalNumOfOrder) / (lastWeekTotalNumOfOrder * 1.0);
+        }
+        monthOrdersOfGrowthRate = monthOrdersOfGrowthRate * 100;
+        if (flag) {
+            homePageData.setWeekOrderOfGrowthRate("+" + new BigDecimal(monthOrdersOfGrowthRate).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "%");
+        }else {
+            homePageData.setWeekOrderOfGrowthRate("-" + new BigDecimal(monthOrdersOfGrowthRate).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "%");
+        }
     }
 
     private void setWeekOrderOfGrowthRate(HomePageData homePageData) {
+        boolean flag = false;
+        Integer weekTotalNumOfOrder = homePageData.getMonthTotalNumOfOrder();
+        Integer lastMonthTotalNumOfOrder = homePageData.getLastMonthTotalNumOfOrder();
+        Double weekOrdersOfGrowthRate;
+        if (weekTotalNumOfOrder >= lastMonthTotalNumOfOrder){
+            flag = true;
+        }
+        if (flag){
+            if (weekTotalNumOfOrder == 0.0){
+                return;
+            }
+            weekOrdersOfGrowthRate = (weekTotalNumOfOrder - lastMonthTotalNumOfOrder) / (weekTotalNumOfOrder * 1.0);
+        }else{
+            if (lastMonthTotalNumOfOrder == 0.0){
+                return;
+            }
+            weekOrdersOfGrowthRate = (lastMonthTotalNumOfOrder - weekTotalNumOfOrder) / (lastMonthTotalNumOfOrder * 1.0);
+        }
+        weekOrdersOfGrowthRate = weekOrdersOfGrowthRate * 100;
+        if (flag) {
+            homePageData.setMonthOrderOfGrowthRate("+" + new BigDecimal(weekOrdersOfGrowthRate).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "%");
+        }else {
+            homePageData.setMonthOrderOfGrowthRate("-" + new BigDecimal(weekOrdersOfGrowthRate).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "%");
+        }
     }
 
     private void setMonthSalesOfGrowthRate(HomePageData homePageData) {
-        double monthSalesOfGrowthRate =
-                homePageData.getTotalSalesOfMonth() > homePageData.getTotalSalesOfLastMonth()
-                        ? (homePageData.getTotalSalesOfMonth() - homePageData.getTotalSalesOfLastMonth()) / homePageData.getTotalSalesOfMonth()
-                        : (homePageData.getTotalSalesOfLastMonth()-homePageData.getTotalSalesOfMonth()) / homePageData.getTotalSalesOfLastMonth();
+        boolean flag = false;
+        Double totalSalesOfMonth = homePageData.getTotalSalesOfMonth();
+        Double totalSalesOfLastMonth = homePageData.getTotalSalesOfLastMonth();
+        Double monthSalesOfGrowthRate;
+        if (totalSalesOfMonth >= totalSalesOfLastMonth){
+            flag = true;
+        }
+        if (flag){
+            if (totalSalesOfMonth == 0.0){
+                return;
+            }
+            monthSalesOfGrowthRate = totalSalesOfMonth - totalSalesOfLastMonth / totalSalesOfMonth;
+        }else{
+            if (totalSalesOfLastMonth == 0.0){
+                return;
+            }
+            monthSalesOfGrowthRate = totalSalesOfLastMonth - totalSalesOfMonth / totalSalesOfLastMonth;
+        }
         monthSalesOfGrowthRate = monthSalesOfGrowthRate * 100;
-        if (homePageData.getTotalSalesOfMonth() > homePageData.getTotalSalesOfLastMonth()) {
+        if (flag) {
             homePageData.setMonthSalesOfGrowthRate("+" + new BigDecimal(monthSalesOfGrowthRate).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "%");
         }else {
             homePageData.setMonthSalesOfGrowthRate("-" + new BigDecimal(monthSalesOfGrowthRate).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "%");
@@ -71,12 +141,26 @@ public class SmsHomeDataController {
     }
 
     private void setWeekSalesOfGrowthRate(HomePageData homePageData) {
-        double weekSalesOfGrowthRate =
-                homePageData.getTotalSalesOfWeek() > homePageData.getTotalSalesOfLastWeek()
-                        ? (homePageData.getTotalSalesOfWeek() - homePageData.getTotalSalesOfLastWeek()) / homePageData.getTotalSalesOfWeek()
-                        : (homePageData.getTotalSalesOfLastWeek()-homePageData.getTotalSalesOfWeek()) / homePageData.getTotalSalesOfLastWeek();
+        boolean flag = false;
+        Double totalSalesOfWeek = homePageData.getTotalSalesOfWeek();
+        Double totalSalesOfLastWeek = homePageData.getTotalSalesOfLastWeek();
+        Double weekSalesOfGrowthRate;
+        if (totalSalesOfWeek >= totalSalesOfLastWeek){
+            flag = true;
+        }
+        if (flag){
+            if (totalSalesOfWeek == 0.0){
+                return;
+            }
+            weekSalesOfGrowthRate = totalSalesOfWeek - totalSalesOfLastWeek / totalSalesOfWeek;
+        }else{
+            if (totalSalesOfLastWeek == 0.0){
+                return;
+            }
+            weekSalesOfGrowthRate = totalSalesOfLastWeek - totalSalesOfWeek / totalSalesOfLastWeek;
+        }
         weekSalesOfGrowthRate = weekSalesOfGrowthRate * 100;
-        if (homePageData.getTotalSalesOfWeek() > homePageData.getTotalSalesOfLastWeek()) {
+        if (flag) {
             homePageData.setWeekSalesOfGrowthRate("+" + new BigDecimal(weekSalesOfGrowthRate).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "%");
         }else {
             homePageData.setWeekSalesOfGrowthRate("-" + new BigDecimal(weekSalesOfGrowthRate).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "%");
@@ -152,6 +236,14 @@ public class SmsHomeDataController {
         //本周订单总数
         Integer weekTotalNumOfOrder = omsOrderService.getWeekTotalNumOfOrder();
         homePageData.setWeekTotalNumOfOrder(weekTotalNumOfOrder);
+
+        //上月订单总数
+        Integer lastMonthTotalNumOfOrder = omsOrderService.getLastMonthTotalNumOfOrder();
+        homePageData.setMonthTotalNumOfOrder(lastMonthTotalNumOfOrder);
+
+        //上周订单总数
+        Integer lastWeekTotalNumOfOrder = omsOrderService.getLastWeekTotalNumOfOrder();
+        homePageData.setWeekTotalNumOfOrder(lastWeekTotalNumOfOrder);
     }
 
     private void setSalesData(HomePageData homePageData) {
@@ -170,5 +262,12 @@ public class SmsHomeDataController {
         //本月销售总额
         Double totalSalesOfMonth = omsOrderService.getTotalSalesOfMonth();
         homePageData.setTotalSalesOfMonth(totalSalesOfMonth);
+        //上周销售总额
+        Double totalSalesOfLastWeek = omsOrderService.getTotalSalesOfLastWeek();
+        homePageData.setTotalSalesOfWeek(totalSalesOfLastWeek);
+        //上月销售总额
+        Double totalSalesOfLastMonth = omsOrderService.getTotalSalesOfLastMonth();
+        homePageData.setTotalSalesOfMonth(totalSalesOfLastMonth);
+
     }
 }

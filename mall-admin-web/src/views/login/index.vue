@@ -45,13 +45,12 @@
     </el-card>
     <img :src="login_center_bg" class="login-center-layout">
     <el-dialog
-      title="作者二维码"
+      title="个人微信"
       :visible.sync="dialogVisible"
       :show-close="false"
       :center="true"
       width="30%">
       <div style="text-align: center">
-        <span>前后端商城项目<span class="color-main font-medium">一起探讨0与1的极客世界！</span></span>
         <img src="http://120.77.155.220:8080/images/wechat.jpg" width="150" height="150" style="margin-top: 10px">
       </div>
       <span slot="footer" class="dialog-footer">

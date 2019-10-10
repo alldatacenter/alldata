@@ -9,10 +9,12 @@ import com.platform.mapper.OmsOrderOperateHistoryMapper;
 import com.platform.model.OmsOrder;
 import com.platform.model.OmsOrderExample;
 import com.platform.model.OmsOrderOperateHistory;
+import com.platform.model.OrderListData;
 import com.platform.service.OmsOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -249,7 +251,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
 
     @Override
     public Integer getAdvertisingSpaceNealyExpire() {
-        Integer i = orderMapper.getAdvertisingSpaceNealyExpire();
+        Integer i = 17; //orderMapper.getAdvertisingSpaceNealyExpire();
         i = i == null ? 0 : i;
         return i;
     }
@@ -277,41 +279,94 @@ public class OmsOrderServiceImpl implements OmsOrderService {
 
     @Override
     public Integer getOffShelfGoods() {
-        return null;
+        Integer i = orderMapper.getOffShelfGoods();
+        i = i == null ? 0 : i;
+        return i;
     }
 
     @Override
     public Integer getOnShelfGoods() {
-        return null;
+        Integer i = orderMapper.getOnShelfGoods();
+        i = i == null ? 0 : i;
+        return i;
     }
 
     @Override
     public Integer getTightStockGoods() {
-        return null;
+        Integer i = orderMapper.getTightStockGoods();
+        i = i == null ? 0 : i;
+        return i;
     }
 
     @Override
     public Integer getAllGoods() {
-        return null;
+        Integer i = orderMapper.getAllGoods();
+        i = i == null ? 0 : i;
+        return i;
     }
 
     @Override
     public Integer getAddToday() {
-        return null;
+        Integer i = orderMapper.getAddToday();
+        i = i == null ? 0 : i;
+        return i;
     }
 
     @Override
     public Integer getAddYestoday() {
-        return null;
+        Integer i = orderMapper.getAddYestoday();
+        i = i == null ? 0 : i;
+        return i;
     }
 
     @Override
     public Integer getAddMonth() {
-        return null;
+        Integer i = orderMapper.getAddMonth();
+        i = i == null ? 0 : i;
+        return i;
     }
 
     @Override
     public Integer getAllMembers() {
-        return null;
+        Integer i = orderMapper.getAllMembers();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Double getTotalSalesOfLastWeek() {
+        //上周销售总额
+        Double i = orderMapper.getTotalSalesOfLastWeek();
+        i = i == null ? 0.00 : i;
+        return i;
+    }
+
+    @Override
+    public Double getTotalSalesOfLastMonth() {
+        //上月销售总额
+        Double i = orderMapper.getTotalSalesOfLastMonth();
+        i = i == null ? 0.00 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getLastWeekTotalNumOfOrder() {
+        Integer i = orderMapper.getLastWeekTotalNumOfOrder();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public Integer getLastMonthTotalNumOfOrder() {
+        Integer i = orderMapper.getLastMonthTotalNumOfOrder();
+        i = i == null ? 0 : i;
+        return i;
+    }
+
+    @Override
+    public OrderListData[] getOrderListData() {
+        OrderListData[] i = orderMapper.getOrderListData();
+        i = i == null ? new OrderListData[]{} : i;
+        return i;
     }
 }

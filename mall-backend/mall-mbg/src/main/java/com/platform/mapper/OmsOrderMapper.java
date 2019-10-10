@@ -5,6 +5,7 @@ import com.platform.model.OmsOrderExample;
 
 import java.util.List;
 
+import com.platform.model.OrderListData;
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsOrderMapper {
@@ -63,4 +64,30 @@ public interface OmsOrderMapper {
     Integer getMonthTotalNumOfOrder();
 
     Integer getWeekTotalNumOfOrder();
+
+    Integer getOffShelfGoods();
+
+    Integer getOnShelfGoods();
+
+    Integer getTightStockGoods();
+
+    Integer getAllGoods();
+
+    Integer getAddToday();
+
+    Integer getAddYestoday();
+
+    Integer getAddMonth();
+
+    Integer getAllMembers();
+
+    Double getTotalSalesOfLastWeek();
+
+    Double getTotalSalesOfLastMonth();
+
+    Integer getLastWeekTotalNumOfOrder();
+
+    Integer getLastMonthTotalNumOfOrder();
+
+    OrderListData[] getOrderListData();
 }

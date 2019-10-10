@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.platform.mapper.OmsOrderMapper">
+
     <resultMap id="BaseResultMap" type="com.platform.model.OmsOrder">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="member_id" jdbcType="BIGINT" property="memberId"/>
@@ -46,6 +47,11 @@
         <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime"/>
         <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime"/>
         <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    </resultMap>
+    <resultMap id="OrderListResultMap" type="com.platform.model.OrderListData">
+        <result column="dateStr" property="date"/>
+        <result column="orderCount" property="orderCount"/>
+        <result column="orderAmount" property="orderAmount"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -848,6 +854,13 @@
         where DATE_FORMAT( payment_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m')
     </select>
 
+    <select id="getTotalSalesOfLastMonth" resultType="Double">
+        SELECT sum(total_amount)  FROM oms_order
+        where PERIOD_DIFF(date_format(now(), '%Y%m') , date_format(payment_time, '%Y%m')) =1
+    </select>
+    <select id="getTotalSalesOfLastWeek" resultType="Double">
+        SELECT sum(total_amount)  FROM oms_order where YEARWEEK(date_format(payment_time,'%Y-%m-%d')) = YEARWEEK(now())-1;
+    </select>
     <select id="getNumOfWaitForPay" resultType="int">
         SELECT count(1)  FROM oms_order where status = 0
     </select>
@@ -862,7 +875,7 @@
     </select>
 
     <select id="getNumOfNewShortageRegistration" resultType="int">
-        SELECT count(1)  FROM pms_product where stock &lt; low_stock
+        SELECT count(1)  FROM pms_product where stock &lt;= low_stock
     </select>
     <select id="getNumOfWaitForRefundApplication" resultType="int">
         SELECT count(1)  FROM oms_order_return_apply where status = 0
@@ -885,8 +898,40 @@
     <select id="getWeekTotalNumOfOrder" resultType="int">
         SELECT count(1)  FROM oms_order where YEARWEEK(date_format(payment_time,'%Y-%m-%d')) = YEARWEEK(now());
     </select>
+    <select id="getLastMonthTotalNumOfOrder" resultType="int">
+        SELECT count(1)  FROM oms_order where PERIOD_DIFF(date_format(now(), '%Y%m') , date_format(payment_time, '%Y%m')) =1
+    </select>
+    <select id="getLastWeekTotalNumOfOrder" resultType="int">
+        SELECT count(1)  FROM oms_order where  YEARWEEK(date_format(payment_time,'%Y-%m-%d')) = YEARWEEK(now())-1;
+    </select>
 
-
+    <select id="getOffShelfGoods" resultType="int">
+        SELECT count(1)  FROM pms_product where publish_status = 0
+    </select>
+    <select id="getOnShelfGoods" resultType="int">
+        SELECT count(1)  FROM pms_product where publish_status = 1
+    </select>
+    <select id="getTightStockGoods" resultType="int">
+        SELECT count(1)  FROM pms_product where stock &lt;= low_stock;
+    </select>
+    <select id="getAllGoods" resultType="int">
+        SELECT count(1)  FROM pms_product where delete_status = 0;
+    </select>
+    <select id="getAddToday" resultType="int">
+        SELECT count(1)  FROM ums_member where to_days(create_time) = to_days(now())
+    </select>
+    <select id="getAddYestoday" resultType="int">
+        SELECT count(1)  FROM ums_member where to_days(create_time) = to_days(now()) - 1;
+    </select>
+    <select id="getAddMonth" resultType="int">
+        SELECT count(1)  FROM ums_member where DATE_FORMAT(create_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )
+    </select>
+    <select id="getAllMembers" resultType="int">
+        SELECT count(1)  FROM ums_member where status = 1
+    </select>
+    <select id="getOrderListData" resultMap="OrderListResultMap">
+        select DATE_FORMAT(create_time,'%Y-%m-%d') as dateStr, sum(pay_amount) as orderAmount, count(1) as orderCount  from oms_order group by dateStr order by dateStr
+    </select>
     <!--add end-->
 
 </mapper>

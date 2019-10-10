@@ -266,26 +266,29 @@
   import img_home_yesterday_amount from '@/assets/images/home_yesterday_amount.png';
   import {getHomePageData} from '@/api/homeBrand';
 
-  const DATA_FROM_BACKEND = {
-    columns: ['date', 'orderCount','orderAmount'],
-    rows: [
-      {date: '2019-10-01', orderCount: 10, orderAmount: 1093},
-      {date: '2019-10-02', orderCount: 20, orderAmount: 2230},
-      {date: '2019-10-03', orderCount: 33, orderAmount: 3623},
-      {date: '2019-10-04', orderCount: 50, orderAmount: 6423},
-      {date: '2019-10-05', orderCount: 80, orderAmount: 8492},
-      {date: '2019-10-06', orderCount: 60, orderAmount: 6293},
-      {date: '2019-10-07', orderCount: 20, orderAmount: 2293},
-      {date: '2019-10-08', orderCount: 60, orderAmount: 6293},
-      {date: '2019-10-09', orderCount: 50, orderAmount: 5293},
-      {date: '2019-10-10', orderCount: 30, orderAmount: 3293},
-      {date: '2019-10-11', orderCount: 20, orderAmount: 2293},
-      {date: '2019-10-12', orderCount: 80, orderAmount: 8293},
-      {date: '2019-10-13', orderCount: 100, orderAmount: 10293},
-      {date: '2019-10-14', orderCount: 10, orderAmount: 1293},
-      {date: '2019-10-15', orderCount: 40, orderAmount: 4293}
-    ]
-  };
+
+
+  // const DATA_FROM_BACKEND = {
+  //   columns: ['date', 'orderCount','orderAmount'],
+    // rows: [
+    //   {date: '2019-10-01', orderCount: 10, orderAmount: 1093},
+    //   {date: '2019-10-02', orderCount: 20, orderAmount: 2230},
+    //   {date: '2019-10-03', orderCount: 33, orderAmount: 3623},
+    //   {date: '2019-10-04', orderCount: 50, orderAmount: 6423},
+    //   {date: '2019-10-05', orderCount: 80, orderAmount: 8492},
+    //   {date: '2019-10-06', orderCount: 60, orderAmount: 6293},
+    //   {date: '2019-10-07', orderCount: 20, orderAmount: 2293},
+    //   {date: '2019-10-08', orderCount: 60, orderAmount: 6293},
+    //   {date: '2019-10-09', orderCount: 50, orderAmount: 5293},
+    //   {date: '2019-10-10', orderCount: 30, orderAmount: 3293},
+    //   {date: '2019-10-11', orderCount: 20, orderAmount: 2293},
+    //   {date: '2019-10-12', orderCount: 80, orderAmount: 8293},
+    //   {date: '2019-10-13', orderCount: 100, orderAmount: 10293},
+    //   {date: '2019-10-14', orderCount: 10, orderAmount: 1293},
+    //   {date: '2019-10-15', orderCount: 40, orderAmount: 4293}
+    // ]
+  //   rows: this.homePageData.orderArray;
+  // };
 
   export default {
     name: 'home',
@@ -342,6 +345,7 @@
         console.log(result)
         this.homePageData = result
       })
+
     },
     methods:{
       handleDateChange(){
@@ -349,9 +353,9 @@
       },
       initOrderCountDate(){
         let start = new Date();
-        start.setFullYear(2019);
-        start.setMonth(9);
-        start.setDate(1);
+        // start.setFullYear(2019);
+        // start.setMonth(9);
+        // start.setDate(1);
         const end = new Date();
         end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * 7);
         this.orderCountDate=[start,end];
@@ -362,8 +366,8 @@
             columns: ['date', 'orderCount','orderAmount'],
             rows: []
           };
-          for(let i=0;i<DATA_FROM_BACKEND.rows.length;i++){
-            let item=DATA_FROM_BACKEND.rows[i];
+          for(let i=0;i< this.homePageData.orderArray.length;i++){
+            let item=this.homePageData.orderArray[i];
             let currDate=str2Date(item.date);
             let start=this.orderCountDate[0];
             let end=this.orderCountDate[1];

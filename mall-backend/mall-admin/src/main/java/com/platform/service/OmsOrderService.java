@@ -2,6 +2,7 @@ package com.platform.service;
 
 import com.platform.dto.*;
 import com.platform.model.OmsOrder;
+import com.platform.model.OrderListData;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -113,4 +114,14 @@ public interface OmsOrderService {
     Integer getAddMonth();
 
     Integer getAllMembers();
+
+    Double getTotalSalesOfLastWeek();
+
+    Double getTotalSalesOfLastMonth();
+
+    Integer getLastWeekTotalNumOfOrder();
+
+    Integer getLastMonthTotalNumOfOrder();
+
+    OrderListData[] getOrderListData();
 }

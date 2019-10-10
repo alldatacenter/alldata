@@ -1,6 +1,7 @@
 package com.platform.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class HomePageData implements Serializable {
     /**
@@ -28,13 +29,15 @@ public class HomePageData implements Serializable {
      * 待确认收货订单 
      * 待发货订单 
      * 新缺货登记 
-     * 待处理退款申请 
+     * 待处理退款申请
      * 已发货订单 
      * 待处理退货订单 
      * 广告位即将到期
      * 今日订单总数
      * 本月订单总数
      * 本周订单总数
+     * 上月订单总数
+     * 上周订单总数
      */
     private int numOfWaitForPay;
     private int numOfFinished;
@@ -48,6 +51,8 @@ public class HomePageData implements Serializable {
     private int todayTotalNumOfOrder;
     private int monthTotalNumOfOrder;
     private int weekTotalNumOfOrder;
+    private int lastMonthTotalNumOfOrder;
+    private int lastWeekTotalNumOfOrder;
 
     /**
      * 同比上周订单增长率
@@ -86,6 +91,16 @@ public class HomePageData implements Serializable {
     private int addYestoday;
     private int addMonth;
     private int allMembers;
+    private OrderListData[] orderArray;
+
+
+    public OrderListData[] getOrderArray() {
+        return orderArray;
+    }
+
+    public void setOrderArray(OrderListData[] orderArray) {
+        this.orderArray = orderArray;
+    }
 
     public double getTotalSalesOfToday() {
         return totalSalesOfToday;
@@ -335,4 +350,19 @@ public class HomePageData implements Serializable {
         this.totalSalesOfLastMonth = totalSalesOfLastMonth;
     }
 
+
+    public int getLastMonthTotalNumOfOrder() {
+        return lastMonthTotalNumOfOrder;
+    }
+
+    public void setLastMonthTotalNumOfOrder(int lastMonthTotalNumOfOrder) {
+        this.lastMonthTotalNumOfOrder = lastMonthTotalNumOfOrder;
+    }
+
+    public void setLastWeekTotalNumOfOrder(int lastWeekTotalNumOfOrder) {
+        this.lastWeekTotalNumOfOrder = lastWeekTotalNumOfOrder;
+    }
+    public int getLastWeekTotalNumOfOrder() {
+        return lastWeekTotalNumOfOrder;
+    }
 }

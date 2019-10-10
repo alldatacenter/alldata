@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0e6e3ca-6f8e-48b9-94bc-47f7ada939bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/dubbo_service_Impl_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/dubbo_service_Impl_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/dubbo-service-Impl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/dubbo-service-Impl.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/dubbo-service-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/dubbo-service-interface.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-backend/mall-backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-backend/mall-backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/controller/SmsHomeDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/controller/SmsHomeDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/OmsOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/OmsOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/impl/OmsOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/impl/OmsOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/mapper/OmsOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/mapper/OmsOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/HomePageData.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/HomePageData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/resources/com/platform/mapper/OmsOrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/resources/com/platform/mapper/OmsOrderMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/mallbackend/target/" />
     <ignored path="$PROJECT_DIR$/mall-end/target/" />
@@ -72,172 +69,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/HomePageData.java">
+        <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/mapper/OmsOrderMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="166" column="21" lean-forward="true" selection-start-line="166" selection-start-column="21" selection-end-line="166" selection-end-column="21" />
-              <folding>
-                <element signature="e#1470#1471#0" expanded="true" />
-                <element signature="e#1510#1511#0" expanded="true" />
-                <element signature="e#1576#1577#0" expanded="true" />
-                <element signature="e#1634#1635#0" expanded="true" />
-                <element signature="e#1681#1682#0" expanded="true" />
-                <element signature="e#1724#1725#0" expanded="true" />
-                <element signature="e#1910#1911#0" expanded="true" />
-                <element signature="e#1956#1957#0" expanded="true" />
-                <element signature="e#2147#2148#0" expanded="true" />
-                <element signature="e#2186#2187#0" expanded="true" />
-                <element signature="e#2250#2251#0" expanded="true" />
-                <element signature="e#2306#2307#0" expanded="true" />
-                <element signature="e#2350#2351#0" expanded="true" />
-                <element signature="e#2390#2391#0" expanded="true" />
-                <element signature="e#2456#2457#0" expanded="true" />
-                <element signature="e#2514#2515#0" expanded="true" />
-                <element signature="e#2553#2554#0" expanded="true" />
-                <element signature="e#2591#2592#0" expanded="true" />
-                <element signature="e#2650#2651#0" expanded="true" />
-                <element signature="e#2704#2705#0" expanded="true" />
-                <element signature="e#2741#2742#0" expanded="true" />
-                <element signature="e#2777#2778#0" expanded="true" />
-                <element signature="e#2832#2833#0" expanded="true" />
-                <element signature="e#2882#2883#0" expanded="true" />
-                <element signature="e#2932#2933#0" expanded="true" />
-                <element signature="e#2981#2982#0" expanded="true" />
-                <element signature="e#3186#3187#0" expanded="true" />
-                <element signature="e#3233#3234#0" expanded="true" />
-                <element signature="e#3434#3435#0" expanded="true" />
-                <element signature="e#3485#3486#0" expanded="true" />
-                <element signature="e#3703#3704#0" expanded="true" />
-                <element signature="e#3755#3756#0" expanded="true" />
-                <element signature="e#3967#3968#0" expanded="true" />
-                <element signature="e#4009#4010#0" expanded="true" />
-                <element signature="e#4076#4077#0" expanded="true" />
-                <element signature="e#4138#4139#0" expanded="true" />
-                <element signature="e#4187#4188#0" expanded="true" />
-                <element signature="e#4235#4236#0" expanded="true" />
-                <element signature="e#4439#4440#0" expanded="true" />
-                <element signature="e#4489#4490#0" expanded="true" />
-                <element signature="e#4694#4695#0" expanded="true" />
-                <element signature="e#4737#4738#0" expanded="true" />
-                <element signature="e#4806#4807#0" expanded="true" />
-                <element signature="e#4870#4871#0" expanded="true" />
-                <element signature="e#4914#4915#0" expanded="true" />
-                <element signature="e#4957#4958#0" expanded="true" />
-                <element signature="e#5026#5027#0" expanded="true" />
-                <element signature="e#5090#5091#0" expanded="true" />
-                <element signature="e#5133#5134#0" expanded="true" />
-                <element signature="e#5175#5176#0" expanded="true" />
-                <element signature="e#5242#5243#0" expanded="true" />
-                <element signature="e#5304#5305#0" expanded="true" />
-                <element signature="e#5341#5342#0" expanded="true" />
-                <element signature="e#5377#5378#0" expanded="true" />
-                <element signature="e#5432#5433#0" expanded="true" />
-                <element signature="e#5482#5483#0" expanded="true" />
-                <element signature="e#5518#5519#0" expanded="true" />
-                <element signature="e#5553#5554#0" expanded="true" />
-                <element signature="e#5606#5607#0" expanded="true" />
-                <element signature="e#5654#5655#0" expanded="true" />
-                <element signature="e#5693#5694#0" expanded="true" />
-                <element signature="e#5731#5732#0" expanded="true" />
-                <element signature="e#5790#5791#0" expanded="true" />
-                <element signature="e#5844#5845#0" expanded="true" />
-                <element signature="e#5876#5877#0" expanded="true" />
-                <element signature="e#5907#5908#0" expanded="true" />
-                <element signature="e#5952#5953#0" expanded="true" />
-                <element signature="e#5992#5993#0" expanded="true" />
-                <element signature="e#6024#6025#0" expanded="true" />
-                <element signature="e#6055#6056#0" expanded="true" />
-                <element signature="e#6100#6101#0" expanded="true" />
-                <element signature="e#6140#6141#0" expanded="true" />
-                <element signature="e#6175#6176#0" expanded="true" />
-                <element signature="e#6209#6210#0" expanded="true" />
-                <element signature="e#6260#6261#0" expanded="true" />
-                <element signature="e#6306#6307#0" expanded="true" />
-                <element signature="e#6338#6339#0" expanded="true" />
-                <element signature="e#6369#6370#0" expanded="true" />
-                <element signature="e#6414#6415#0" expanded="true" />
-                <element signature="e#6454#6455#0" expanded="true" />
-                <element signature="e#6488#6489#0" expanded="true" />
-                <element signature="e#6521#6522#0" expanded="true" />
-                <element signature="e#6570#6571#0" expanded="true" />
-                <element signature="e#6614#6615#0" expanded="true" />
-                <element signature="e#6979#6980#0" expanded="true" />
-                <element signature="e#7023#7024#0" expanded="true" />
-                <element signature="e#7212#7213#0" expanded="true" />
-                <element signature="e#7257#7258#0" expanded="true" />
-                <element signature="e#7449#7450#0" expanded="true" />
-                <element signature="e#7493#7494#0" expanded="true" />
-                <element signature="e#7682#7683#0" expanded="true" />
-                <element signature="e#7727#7728#0" expanded="true" />
-                <element signature="e#8030#8031#0" expanded="true" />
-                <element signature="e#8073#8074#0" expanded="true" />
-                <element signature="e#8257#8258#0" expanded="true" />
-                <element signature="e#8301#8302#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-web/config/dev.env.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="37" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-web/config/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1006" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mall-backend/HELP.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-web/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-web/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-web/config/prod.env.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1965">
-              <caret line="266" column="21" selection-start-line="266" selection-start-column="13" selection-end-line="266" selection-end-column="21" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="156">
+              <caret line="91" column="19" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -245,50 +80,230 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/controller/SmsHomeDataController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="56" column="61" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
+            <state relative-caret-position="108">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#setMonthSalesOfGrowthRate#0;class#SmsHomeDataController#0" />
-                <element signature="method#setSalesData#0;class#SmsHomeDataController#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/math/BigDecimal.java">
+        <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/OmsOrderService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="2923" column="21" lean-forward="true" selection-start-line="2916" selection-start-column="7" selection-end-line="2923" selection-end-column="21" />
+            <state relative-caret-position="165">
+              <caret line="125" column="19" selection-start-line="125" selection-start-column="19" selection-end-line="125" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/HomePageData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="93" column="38" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2066#2067#0" expanded="true" />
+                <element signature="e#2099#2100#0" expanded="true" />
+                <element signature="e#2160#2161#0" expanded="true" />
+                <element signature="e#2204#2205#0" expanded="true" />
+                <element signature="e#2012#2013#0" expanded="true" />
+                <element signature="e#2052#2053#0" expanded="true" />
+                <element signature="e#2118#2119#0" expanded="true" />
+                <element signature="e#2176#2177#0" expanded="true" />
+                <element signature="e#2223#2224#0" expanded="true" />
+                <element signature="e#2266#2267#0" expanded="true" />
+                <element signature="e#2452#2453#0" expanded="true" />
+                <element signature="e#2498#2499#0" expanded="true" />
+                <element signature="e#2689#2690#0" expanded="true" />
+                <element signature="e#2728#2729#0" expanded="true" />
+                <element signature="e#2792#2793#0" expanded="true" />
+                <element signature="e#2848#2849#0" expanded="true" />
+                <element signature="e#2892#2893#0" expanded="true" />
+                <element signature="e#2932#2933#0" expanded="true" />
+                <element signature="e#2998#2999#0" expanded="true" />
+                <element signature="e#3056#3057#0" expanded="true" />
+                <element signature="e#3095#3096#0" expanded="true" />
+                <element signature="e#3133#3134#0" expanded="true" />
+                <element signature="e#3192#3193#0" expanded="true" />
+                <element signature="e#3246#3247#0" expanded="true" />
+                <element signature="e#3283#3284#0" expanded="true" />
+                <element signature="e#3319#3320#0" expanded="true" />
+                <element signature="e#3374#3375#0" expanded="true" />
+                <element signature="e#3424#3425#0" expanded="true" />
+                <element signature="e#3474#3475#0" expanded="true" />
+                <element signature="e#3523#3524#0" expanded="true" />
+                <element signature="e#3728#3729#0" expanded="true" />
+                <element signature="e#3775#3776#0" expanded="true" />
+                <element signature="e#3976#3977#0" expanded="true" />
+                <element signature="e#4027#4028#0" expanded="true" />
+                <element signature="e#4245#4246#0" expanded="true" />
+                <element signature="e#4297#4298#0" expanded="true" />
+                <element signature="e#4509#4510#0" expanded="true" />
+                <element signature="e#4551#4552#0" expanded="true" />
+                <element signature="e#4618#4619#0" expanded="true" />
+                <element signature="e#4680#4681#0" expanded="true" />
+                <element signature="e#4729#4730#0" expanded="true" />
+                <element signature="e#4777#4778#0" expanded="true" />
+                <element signature="e#4981#4982#0" expanded="true" />
+                <element signature="e#5031#5032#0" expanded="true" />
+                <element signature="e#5236#5237#0" expanded="true" />
+                <element signature="e#5279#5280#0" expanded="true" />
+                <element signature="e#5348#5349#0" expanded="true" />
+                <element signature="e#5412#5413#0" expanded="true" />
+                <element signature="e#5456#5457#0" expanded="true" />
+                <element signature="e#5499#5500#0" expanded="true" />
+                <element signature="e#5568#5569#0" expanded="true" />
+                <element signature="e#5632#5633#0" expanded="true" />
+                <element signature="e#5675#5676#0" expanded="true" />
+                <element signature="e#5717#5718#0" expanded="true" />
+                <element signature="e#5784#5785#0" expanded="true" />
+                <element signature="e#5846#5847#0" expanded="true" />
+                <element signature="e#5883#5884#0" expanded="true" />
+                <element signature="e#5919#5920#0" expanded="true" />
+                <element signature="e#5974#5975#0" expanded="true" />
+                <element signature="e#6024#6025#0" expanded="true" />
+                <element signature="e#6060#6061#0" expanded="true" />
+                <element signature="e#6095#6096#0" expanded="true" />
+                <element signature="e#6148#6149#0" expanded="true" />
+                <element signature="e#6196#6197#0" expanded="true" />
+                <element signature="e#6235#6236#0" expanded="true" />
+                <element signature="e#6273#6274#0" expanded="true" />
+                <element signature="e#6332#6333#0" expanded="true" />
+                <element signature="e#6386#6387#0" expanded="true" />
+                <element signature="e#6418#6419#0" expanded="true" />
+                <element signature="e#6449#6450#0" expanded="true" />
+                <element signature="e#6494#6495#0" expanded="true" />
+                <element signature="e#6534#6535#0" expanded="true" />
+                <element signature="e#6566#6567#0" expanded="true" />
+                <element signature="e#6597#6598#0" expanded="true" />
+                <element signature="e#6642#6643#0" expanded="true" />
+                <element signature="e#6682#6683#0" expanded="true" />
+                <element signature="e#6717#6718#0" expanded="true" />
+                <element signature="e#6751#6752#0" expanded="true" />
+                <element signature="e#6802#6803#0" expanded="true" />
+                <element signature="e#6848#6849#0" expanded="true" />
+                <element signature="e#6880#6881#0" expanded="true" />
+                <element signature="e#6911#6912#0" expanded="true" />
+                <element signature="e#6956#6957#0" expanded="true" />
+                <element signature="e#6996#6997#0" expanded="true" />
+                <element signature="e#7030#7031#0" expanded="true" />
+                <element signature="e#7063#7064#0" expanded="true" />
+                <element signature="e#7112#7113#0" expanded="true" />
+                <element signature="e#7156#7157#0" expanded="true" />
+                <element signature="e#7204#7205#0" expanded="true" />
+                <element signature="e#7248#7249#0" expanded="true" />
+                <element signature="e#7437#7438#0" expanded="true" />
+                <element signature="e#7482#7483#0" expanded="true" />
+                <element signature="e#7674#7675#0" expanded="true" />
+                <element signature="e#7718#7719#0" expanded="true" />
+                <element signature="e#7907#7908#0" expanded="true" />
+                <element signature="e#7952#7953#0" expanded="true" />
+                <element signature="e#8143#8144#0" expanded="true" />
+                <element signature="e#8186#8187#0" expanded="true" />
+                <element signature="e#8370#8371#0" expanded="true" />
+                <element signature="e#8414#8415#0" expanded="true" />
+                <element signature="e#8603#8604#0" expanded="true" />
+                <element signature="e#8650#8651#0" expanded="true" />
+                <element signature="e#8990#8991#0" expanded="true" />
+                <element signature="e#9036#9037#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/OrderListData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="23" />
+              <folding>
+                <element signature="e#319#320#0" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+                <element signature="e#386#387#0" expanded="true" />
+                <element signature="e#418#419#0" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+                <element signature="e#489#490#0" expanded="true" />
+                <element signature="e#542#543#0" expanded="true" />
+                <element signature="e#586#587#0" expanded="true" />
+                <element signature="e#625#626#0" expanded="true" />
+                <element signature="e#659#660#0" expanded="true" />
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#760#761#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/impl/OmsOrderServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="367" column="44" lean-forward="true" selection-start-line="367" selection-start-column="40" selection-end-line="367" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/resources/com/platform/mapper/OmsOrderMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="933" column="3" selection-start-line="932" selection-start-column="6" selection-end-line="933" selection-end-column="3" />
+              <folding>
+                <element signature="n#resultMap#0;n#mapper#0;n#!!top" />
+                <element signature="n#sql#0;n#mapper#0;n#!!top" />
+                <element signature="n#sql#1;n#mapper#0;n#!!top" />
+                <element signature="e#39490#39494#0" expanded="true" />
+                <element signature="e#40605#40609#0" expanded="true" />
+                <element signature="e#42097#42101#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="372" column="43" selection-start-line="372" selection-start-column="43" selection-end-line="372" selection-end-column="43" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#el-row#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#11150#11188#0" expanded="true" />
+                <element signature="n#style#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/login/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-996">
+              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#2345#2394#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FindBugs-IDEA-Workspace">
-    <toolWindowEditorPreview>false</toolWindowEditorPreview>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>: result</find>
-      <find>: result</find>
-      <find>result</find>
-      <find>todayTotalNumOfOrder</find>
-      <find>{{i</find>
-      <find>flag</find>
-      <find>let</find>
-      <find>export</find>
-      <find>img_home_order</find>
-      <find>j</find>
-      <find>{i</find>
-      <find>jquery</find>
-      <find>http://localhost:8090</find>
-      <find>http://localhost</find>
-      <find>BASE_API</find>
-      <find>baseURL</find>
-      <find>computed</find>
       <find>response.data</find>
       <find>oms</find>
       <find>el-table</find>
@@ -299,9 +314,26 @@
       <find>HomePageData</find>
       <find>HomePage</find>
       <find>week</find>
-      <find>Week</find>
       <find>8080</find>
       <find>增长率</find>
+      <find>int</find>
+      <find>int</find>
+      <find>OmsOrderServiceImp</find>
+      <find>oms_order_return_apply</find>
+      <find>();</find>
+      <find>FROM oms_order where YEARWEEK(date_format(submittime,'%Y-%m-%d'))</find>
+      <find>Week</find>
+      <find>submittime</find>
+      <find>resultMap</find>
+      <find>OrderListResultMap</find>
+      <find>getTotalSalesOf</find>
+      <find>10</find>
+      <find>DATA_FROM_BACKEND</find>
+      <find>极客</find>
+      <find>orderCountDate</find>
+      <find>Double</find>
+      <find>getTotalSalesOfLastMonth</find>
+      <find>List</find>
     </findStrings>
     <replaceStrings>
       <replace>mall-backend</replace>
@@ -328,9 +360,12 @@
       <replace>: 0,</replace>
       <replace>: result</replace>
       <replace>= result</replace>
-      <replace>month</replace>
-      <replace>Month</replace>
       <replace>;</replace>
+      <replace>Week</replace>
+      <replace>Integer</replace>
+      <replace>month</replace>
+      <replace>Integer</replace>
+      <replace>Month</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -370,16 +405,17 @@
         <option value="$PROJECT_DIR$/mall-backend/mall-admin/src/main/resources/dao/OmsOrderDao.xml" />
         <option value="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/dto/OmsOrderQueryParam.java" />
         <option value="$PROJECT_DIR$/mall-admin-web/src/views/oms/order/index.vue" />
-        <option value="$PROJECT_DIR$/mall-admin-web/src/views/login/index.vue" />
         <option value="$PROJECT_DIR$/mall-admin-web/package.json" />
         <option value="$PROJECT_DIR$/mall-admin-web/src/api/homeBrand.js" />
-        <option value="$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue" />
-        <option value="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/OmsOrderService.java" />
-        <option value="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/impl/OmsOrderServiceImpl.java" />
-        <option value="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/mapper/OmsOrderMapper.java" />
-        <option value="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/resources/com/platform/mapper/OmsOrderMapper.xml" />
+        <option value="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/OrderListData.java" />
         <option value="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/HomePageData.java" />
+        <option value="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/OmsOrderService.java" />
+        <option value="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/mapper/OmsOrderMapper.java" />
         <option value="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/controller/SmsHomeDataController.java" />
+        <option value="$PROJECT_DIR$/mall-admin-web/src/views/login/index.vue" />
+        <option value="$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue" />
+        <option value="$PROJECT_DIR$/mall-backend/mall-mbg/src/main/resources/com/platform/mapper/OmsOrderMapper.xml" />
+        <option value="$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/impl/OmsOrderServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -437,11 +473,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
               <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
@@ -450,6 +506,46 @@
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
               <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
               <item name="mall-admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
@@ -467,10 +563,63 @@
               <item name="mall-mbg" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-mbg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-mbg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-mbg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-mbg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-mbg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-mbg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -485,7 +634,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../../../../software/Android/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570539685025" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570696106929" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="jdk.selected.PYTHON_MODULE" value="Python 3.7 (ExportScene01)" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../hunan-tollsys/tollsys-hunan-province" />
@@ -665,17 +814,19 @@
       <workItem from="1570450489194" duration="1199000" />
       <workItem from="1570453539325" duration="1117000" />
       <workItem from="1570454742701" duration="43440000" />
+      <workItem from="1570627310377" duration="20510000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54294000" />
+    <option name="totallyTimeSpent" value="74804000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8621324" visible="true" weight="0.20375335" />
-      <window_info id="Structure" order="1" sideWeight="0.13786764" side_tool="true" visible="true" weight="0.20375335" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8231132" visible="true" weight="0.18230563" />
+      <window_info id="Structure" order="1" sideWeight="0.1768868" side_tool="true" visible="true" weight="0.18230563" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -684,15 +835,13 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Alibaba Cloud Explorer" order="8" weight="0.3297587" />
       <window_info id="Web" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="TypeScript" />
-      <window_info anchor="bottom" id="Problems" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.44475922" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Run Dashboard" order="6" sideWeight="0.49932975" visible="true" weight="0.22946176" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="6" sideWeight="0.49932975" visible="true" weight="0.39943343" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21529745" />
       <window_info anchor="bottom" id="TODO" order="8" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="9" />
@@ -713,6 +862,8 @@
       <window_info anchor="bottom" id="Spring" order="24" />
       <window_info anchor="bottom" id="JProfiler" order="25" />
       <window_info anchor="bottom" id="JRebel Executor" order="26" />
+      <window_info anchor="bottom" id="TypeScript" order="27" />
+      <window_info anchor="bottom" id="Problems" order="28" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -843,9 +994,30 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="homePageData.getTotalSalesOfWeek() " language="JAVA" />
+        <watch expression="homePageData.getTotalSalesOfLastWeek()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>homePageData.getTotalSalesOfLastWeek()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>homePageData.getTotalSalesOfWeek()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>payment_time</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>CommonPage.restPage(orderList)</expression-string>
         <language-id>JAVA</language-id>
@@ -854,13 +1026,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/resources/dao/OmsOrderDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="29" column="59" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/pms/brand/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -1026,7 +1191,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="181.5" y="21.5" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="182.0" y="22.0" />
           <SelectedNodes />
           <Categories />
           <SCOPE>All</SCOPE>
@@ -1072,16 +1237,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/login/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="66" column="24" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1155,194 +1310,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/OmsOrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="74" column="10" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/impl/OmsOrderServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="188" column="51" selection-start-line="188" selection-start-column="51" selection-end-line="188" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/mapper/OmsOrderMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/resources/com/platform/mapper/OmsOrderMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="847" column="85" selection-start-line="847" selection-start-column="85" selection-end-line="847" selection-end-column="85" />
-          <folding>
-            <element signature="n#resultMap#0;n#mapper#0;n#!!top" />
-            <element signature="n#sql#0;n#mapper#0;n#!!top" />
-            <element signature="n#sql#1;n#mapper#0;n#!!top" />
-            <element signature="e#39490#39494#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1965">
-          <caret line="266" column="21" selection-start-line="266" selection-start-column="13" selection-end-line="266" selection-end-column="21" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/math/BigDecimal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="2923" column="21" lean-forward="true" selection-start-line="2916" selection-start-column="7" selection-end-line="2923" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/controller/SmsHomeDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="56" column="61" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setMonthSalesOfGrowthRate#0;class#SmsHomeDataController#0" />
-            <element signature="method#setSalesData#0;class#SmsHomeDataController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/HomePageData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="166" column="21" lean-forward="true" selection-start-line="166" selection-start-column="21" selection-end-line="166" selection-end-column="21" />
-          <folding>
-            <element signature="e#1470#1471#0" expanded="true" />
-            <element signature="e#1510#1511#0" expanded="true" />
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1634#1635#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
-            <element signature="e#1724#1725#0" expanded="true" />
-            <element signature="e#1910#1911#0" expanded="true" />
-            <element signature="e#1956#1957#0" expanded="true" />
-            <element signature="e#2147#2148#0" expanded="true" />
-            <element signature="e#2186#2187#0" expanded="true" />
-            <element signature="e#2250#2251#0" expanded="true" />
-            <element signature="e#2306#2307#0" expanded="true" />
-            <element signature="e#2350#2351#0" expanded="true" />
-            <element signature="e#2390#2391#0" expanded="true" />
-            <element signature="e#2456#2457#0" expanded="true" />
-            <element signature="e#2514#2515#0" expanded="true" />
-            <element signature="e#2553#2554#0" expanded="true" />
-            <element signature="e#2591#2592#0" expanded="true" />
-            <element signature="e#2650#2651#0" expanded="true" />
-            <element signature="e#2704#2705#0" expanded="true" />
-            <element signature="e#2741#2742#0" expanded="true" />
-            <element signature="e#2777#2778#0" expanded="true" />
-            <element signature="e#2832#2833#0" expanded="true" />
-            <element signature="e#2882#2883#0" expanded="true" />
-            <element signature="e#2932#2933#0" expanded="true" />
-            <element signature="e#2981#2982#0" expanded="true" />
-            <element signature="e#3186#3187#0" expanded="true" />
-            <element signature="e#3233#3234#0" expanded="true" />
-            <element signature="e#3434#3435#0" expanded="true" />
-            <element signature="e#3485#3486#0" expanded="true" />
-            <element signature="e#3703#3704#0" expanded="true" />
-            <element signature="e#3755#3756#0" expanded="true" />
-            <element signature="e#3967#3968#0" expanded="true" />
-            <element signature="e#4009#4010#0" expanded="true" />
-            <element signature="e#4076#4077#0" expanded="true" />
-            <element signature="e#4138#4139#0" expanded="true" />
-            <element signature="e#4187#4188#0" expanded="true" />
-            <element signature="e#4235#4236#0" expanded="true" />
-            <element signature="e#4439#4440#0" expanded="true" />
-            <element signature="e#4489#4490#0" expanded="true" />
-            <element signature="e#4694#4695#0" expanded="true" />
-            <element signature="e#4737#4738#0" expanded="true" />
-            <element signature="e#4806#4807#0" expanded="true" />
-            <element signature="e#4870#4871#0" expanded="true" />
-            <element signature="e#4914#4915#0" expanded="true" />
-            <element signature="e#4957#4958#0" expanded="true" />
-            <element signature="e#5026#5027#0" expanded="true" />
-            <element signature="e#5090#5091#0" expanded="true" />
-            <element signature="e#5133#5134#0" expanded="true" />
-            <element signature="e#5175#5176#0" expanded="true" />
-            <element signature="e#5242#5243#0" expanded="true" />
-            <element signature="e#5304#5305#0" expanded="true" />
-            <element signature="e#5341#5342#0" expanded="true" />
-            <element signature="e#5377#5378#0" expanded="true" />
-            <element signature="e#5432#5433#0" expanded="true" />
-            <element signature="e#5482#5483#0" expanded="true" />
-            <element signature="e#5518#5519#0" expanded="true" />
-            <element signature="e#5553#5554#0" expanded="true" />
-            <element signature="e#5606#5607#0" expanded="true" />
-            <element signature="e#5654#5655#0" expanded="true" />
-            <element signature="e#5693#5694#0" expanded="true" />
-            <element signature="e#5731#5732#0" expanded="true" />
-            <element signature="e#5790#5791#0" expanded="true" />
-            <element signature="e#5844#5845#0" expanded="true" />
-            <element signature="e#5876#5877#0" expanded="true" />
-            <element signature="e#5907#5908#0" expanded="true" />
-            <element signature="e#5952#5953#0" expanded="true" />
-            <element signature="e#5992#5993#0" expanded="true" />
-            <element signature="e#6024#6025#0" expanded="true" />
-            <element signature="e#6055#6056#0" expanded="true" />
-            <element signature="e#6100#6101#0" expanded="true" />
-            <element signature="e#6140#6141#0" expanded="true" />
-            <element signature="e#6175#6176#0" expanded="true" />
-            <element signature="e#6209#6210#0" expanded="true" />
-            <element signature="e#6260#6261#0" expanded="true" />
-            <element signature="e#6306#6307#0" expanded="true" />
-            <element signature="e#6338#6339#0" expanded="true" />
-            <element signature="e#6369#6370#0" expanded="true" />
-            <element signature="e#6414#6415#0" expanded="true" />
-            <element signature="e#6454#6455#0" expanded="true" />
-            <element signature="e#6488#6489#0" expanded="true" />
-            <element signature="e#6521#6522#0" expanded="true" />
-            <element signature="e#6570#6571#0" expanded="true" />
-            <element signature="e#6614#6615#0" expanded="true" />
-            <element signature="e#6979#6980#0" expanded="true" />
-            <element signature="e#7023#7024#0" expanded="true" />
-            <element signature="e#7212#7213#0" expanded="true" />
-            <element signature="e#7257#7258#0" expanded="true" />
-            <element signature="e#7449#7450#0" expanded="true" />
-            <element signature="e#7493#7494#0" expanded="true" />
-            <element signature="e#7682#7683#0" expanded="true" />
-            <element signature="e#7727#7728#0" expanded="true" />
-            <element signature="e#8030#8031#0" expanded="true" />
-            <element signature="e#8073#8074#0" expanded="true" />
-            <element signature="e#8257#8258#0" expanded="true" />
-            <element signature="e#8301#8302#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/config/prod.env.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-admin-web/.gitignore" />
     <entry file="file://$PROJECT_DIR$/mall-admin-web/config/dev.env.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1350,16 +1318,240 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/config/index.js">
+    <entry file="file://$PROJECT_DIR$/mall-admin-web/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1006" />
+        <state relative-caret-position="300">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-admin-web/config/prod.env.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/math/BigDecimal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57100">
+          <caret line="2923" column="21" selection-start-line="2916" selection-start-column="7" selection-end-line="2923" selection-end-column="21" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-backend/HELP.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
+        <state split_layout="FIRST">
           <first_editor />
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-admin-web/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/OrderListData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#489#490#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#659#660#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/OmsOrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="125" column="19" selection-start-line="125" selection-start-column="19" selection-end-line="125" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/mapper/OmsOrderMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="91" column="19" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/controller/SmsHomeDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/java/com/platform/model/HomePageData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="93" column="38" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2066#2067#0" expanded="true" />
+            <element signature="e#2099#2100#0" expanded="true" />
+            <element signature="e#2160#2161#0" expanded="true" />
+            <element signature="e#2204#2205#0" expanded="true" />
+            <element signature="e#2012#2013#0" expanded="true" />
+            <element signature="e#2052#2053#0" expanded="true" />
+            <element signature="e#2118#2119#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2223#2224#0" expanded="true" />
+            <element signature="e#2266#2267#0" expanded="true" />
+            <element signature="e#2452#2453#0" expanded="true" />
+            <element signature="e#2498#2499#0" expanded="true" />
+            <element signature="e#2689#2690#0" expanded="true" />
+            <element signature="e#2728#2729#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
+            <element signature="e#2848#2849#0" expanded="true" />
+            <element signature="e#2892#2893#0" expanded="true" />
+            <element signature="e#2932#2933#0" expanded="true" />
+            <element signature="e#2998#2999#0" expanded="true" />
+            <element signature="e#3056#3057#0" expanded="true" />
+            <element signature="e#3095#3096#0" expanded="true" />
+            <element signature="e#3133#3134#0" expanded="true" />
+            <element signature="e#3192#3193#0" expanded="true" />
+            <element signature="e#3246#3247#0" expanded="true" />
+            <element signature="e#3283#3284#0" expanded="true" />
+            <element signature="e#3319#3320#0" expanded="true" />
+            <element signature="e#3374#3375#0" expanded="true" />
+            <element signature="e#3424#3425#0" expanded="true" />
+            <element signature="e#3474#3475#0" expanded="true" />
+            <element signature="e#3523#3524#0" expanded="true" />
+            <element signature="e#3728#3729#0" expanded="true" />
+            <element signature="e#3775#3776#0" expanded="true" />
+            <element signature="e#3976#3977#0" expanded="true" />
+            <element signature="e#4027#4028#0" expanded="true" />
+            <element signature="e#4245#4246#0" expanded="true" />
+            <element signature="e#4297#4298#0" expanded="true" />
+            <element signature="e#4509#4510#0" expanded="true" />
+            <element signature="e#4551#4552#0" expanded="true" />
+            <element signature="e#4618#4619#0" expanded="true" />
+            <element signature="e#4680#4681#0" expanded="true" />
+            <element signature="e#4729#4730#0" expanded="true" />
+            <element signature="e#4777#4778#0" expanded="true" />
+            <element signature="e#4981#4982#0" expanded="true" />
+            <element signature="e#5031#5032#0" expanded="true" />
+            <element signature="e#5236#5237#0" expanded="true" />
+            <element signature="e#5279#5280#0" expanded="true" />
+            <element signature="e#5348#5349#0" expanded="true" />
+            <element signature="e#5412#5413#0" expanded="true" />
+            <element signature="e#5456#5457#0" expanded="true" />
+            <element signature="e#5499#5500#0" expanded="true" />
+            <element signature="e#5568#5569#0" expanded="true" />
+            <element signature="e#5632#5633#0" expanded="true" />
+            <element signature="e#5675#5676#0" expanded="true" />
+            <element signature="e#5717#5718#0" expanded="true" />
+            <element signature="e#5784#5785#0" expanded="true" />
+            <element signature="e#5846#5847#0" expanded="true" />
+            <element signature="e#5883#5884#0" expanded="true" />
+            <element signature="e#5919#5920#0" expanded="true" />
+            <element signature="e#5974#5975#0" expanded="true" />
+            <element signature="e#6024#6025#0" expanded="true" />
+            <element signature="e#6060#6061#0" expanded="true" />
+            <element signature="e#6095#6096#0" expanded="true" />
+            <element signature="e#6148#6149#0" expanded="true" />
+            <element signature="e#6196#6197#0" expanded="true" />
+            <element signature="e#6235#6236#0" expanded="true" />
+            <element signature="e#6273#6274#0" expanded="true" />
+            <element signature="e#6332#6333#0" expanded="true" />
+            <element signature="e#6386#6387#0" expanded="true" />
+            <element signature="e#6418#6419#0" expanded="true" />
+            <element signature="e#6449#6450#0" expanded="true" />
+            <element signature="e#6494#6495#0" expanded="true" />
+            <element signature="e#6534#6535#0" expanded="true" />
+            <element signature="e#6566#6567#0" expanded="true" />
+            <element signature="e#6597#6598#0" expanded="true" />
+            <element signature="e#6642#6643#0" expanded="true" />
+            <element signature="e#6682#6683#0" expanded="true" />
+            <element signature="e#6717#6718#0" expanded="true" />
+            <element signature="e#6751#6752#0" expanded="true" />
+            <element signature="e#6802#6803#0" expanded="true" />
+            <element signature="e#6848#6849#0" expanded="true" />
+            <element signature="e#6880#6881#0" expanded="true" />
+            <element signature="e#6911#6912#0" expanded="true" />
+            <element signature="e#6956#6957#0" expanded="true" />
+            <element signature="e#6996#6997#0" expanded="true" />
+            <element signature="e#7030#7031#0" expanded="true" />
+            <element signature="e#7063#7064#0" expanded="true" />
+            <element signature="e#7112#7113#0" expanded="true" />
+            <element signature="e#7156#7157#0" expanded="true" />
+            <element signature="e#7204#7205#0" expanded="true" />
+            <element signature="e#7248#7249#0" expanded="true" />
+            <element signature="e#7437#7438#0" expanded="true" />
+            <element signature="e#7482#7483#0" expanded="true" />
+            <element signature="e#7674#7675#0" expanded="true" />
+            <element signature="e#7718#7719#0" expanded="true" />
+            <element signature="e#7907#7908#0" expanded="true" />
+            <element signature="e#7952#7953#0" expanded="true" />
+            <element signature="e#8143#8144#0" expanded="true" />
+            <element signature="e#8186#8187#0" expanded="true" />
+            <element signature="e#8370#8371#0" expanded="true" />
+            <element signature="e#8414#8415#0" expanded="true" />
+            <element signature="e#8603#8604#0" expanded="true" />
+            <element signature="e#8650#8651#0" expanded="true" />
+            <element signature="e#8990#8991#0" expanded="true" />
+            <element signature="e#9036#9037#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/login/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-996">
+          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#2345#2394#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="372" column="43" selection-start-line="372" selection-start-column="43" selection-end-line="372" selection-end-column="43" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-row#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#11150#11188#0" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-backend/mall-admin/src/main/java/com/platform/service/impl/OmsOrderServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="367" column="44" lean-forward="true" selection-start-line="367" selection-start-column="40" selection-end-line="367" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-backend/mall-mbg/src/main/resources/com/platform/mapper/OmsOrderMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="933" column="3" selection-start-line="932" selection-start-column="6" selection-end-line="933" selection-end-column="3" />
+          <folding>
+            <element signature="n#resultMap#0;n#mapper#0;n#!!top" />
+            <element signature="n#sql#0;n#mapper#0;n#!!top" />
+            <element signature="n#sql#1;n#mapper#0;n#!!top" />
+            <element signature="e#39490#39494#0" expanded="true" />
+            <element signature="e#40605#40609#0" expanded="true" />
+            <element signature="e#42097#42101#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
