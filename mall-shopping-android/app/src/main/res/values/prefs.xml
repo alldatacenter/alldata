@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2016 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<resources>
+
+    <string name="pref_default_value_empty_string" />
+
+    <string name="pref_key_api_v2_api_key">key_api_v2_api_key</string>
+    <string name="pref_key_api_v2_api_secret">key_api_v2_api_secret</string>
+    <string name="pref_key_frodo_api_key">key_frodo_api_key</string>
+    <string name="pref_key_frodo_api_secret">key_frodo_api_secret</string>
+
+    <string name="pref_key_active_account_name">key_active_account_name</string>
+
+    <string name="pref_key_recent_one_account_name">key_recent_one_account_name</string>
+
+    <string name="pref_key_recent_two_account_name">key_recent_two_account_name</string>
+
+    <string name="pref_key_show_long_url_for_link_entity">key_show_long_url_for_link_entity</string>
+    <bool name="pref_default_value_show_long_url_for_link_entity">true</bool>
+
+    <string name="pref_key_night_mode">key_night_mode</string>
+    <string-array name="pref_entry_values_night_mode">
+        <!--<item>0</item>-->
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <!--<string name="pref_default_value_night_mode">0</string>-->
+    <string name="pref_default_value_night_mode">1</string>
+
+    <string name="pref_key_auto_refresh_home">key_auto_refresh_home</string>
+    <bool name="pref_default_value_auto_refresh_home">true</bool>
+
+    <string name="pref_key_long_click_to_quick_rebroadcast">key_long_click_to_quick_rebroadcast</string>
+    <bool name="pref_default_value_long_click_to_quick_rebroadcast">true</bool>
+
+    <string name="pref_key_long_click_to_show_send_comment_activity">key_long_click_to_show_send_comment_activity</string>
+    <bool name="pref_default_value_long_click_to_show_send_comment_activity">true</bool>
+
+    <string name="pref_key_show_album_art_on_lock_screen">key_show_album_art_on_lock_screen</string>
+    <bool name="pref_default_value_show_album_art_on_lock_screen">true</bool>
+
+    <string name="pref_key_progressive_third_party_app">key_enable_progressive_third_party_app</string>
+    <bool name="pref_default_value_progressive_third_party_app">true</bool>
+
+    <string name="pref_key_open_url_with">key_open_url_with</string>
+    <string-array name="pref_entry_values_open_url_with">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="pref_default_value_open_url_with">0</string>
+
+    <string name="pref_key_open_with_native_in_webview">key_open_with_native_in_webview</string>
+    <bool name="pref_default_value_open_with_native_in_webview">true</bool>
+
+    <string name="pref_key_request_desktop_site_in_webview">key_request_desktop_site_in_webview</string>
+    <bool name="pref_default_value_request_desktop_site_in_webview">true</bool>
+
+    <string name="pref_key_create_new_task_for_webview">key_create_new_task_for_webview</string>
+    <bool name="pref_default_value_create_new_task_for_webview">false</bool>
+
+    <string name="pref_key_item_collection_share_to_broadcast">key_item_collection_share_to_broadcast</string>
+    <bool name="pref_default_value_item_collection_share_to_broadcast">true</bool>
+
+    <string name="pref_key_item_collection_share_to_weibo">key_item_collection_share_to_weibo</string>
+    <bool name="pref_default_value_item_collection_share_to_weibo">false</bool>
+</resources>

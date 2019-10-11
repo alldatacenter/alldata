@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2017 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/item_content_horizontal_margin"
+    android:layout_marginRight="@dimen/item_content_horizontal_margin"
+    android:background="?colorBackgroundFloating"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/screen_edge_horizontal_margin_with_4dp_padding"
+        android:paddingRight="@dimen/screen_edge_horizontal_margin_with_4dp_padding"
+        android:paddingTop="@dimen/content_vertical_space_with_6dp_padding"
+        android:paddingBottom="@dimen/content_vertical_space_with_6dp_padding"
+        android:divider="@drawable/transparent_divider_vertical_button_bar"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <me.zhanghai.android.douya.ui.ColoredBorderButton
+            android:id="@+id/todo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored" />
+
+        <me.zhanghai.android.douya.ui.ColoredBorderButton
+            android:id="@+id/doing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored" />
+
+        <me.zhanghai.android.douya.ui.ColoredBorderButton
+            android:id="@+id/done"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored" />
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/button_bar_space"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/content_vertical_space" />
+
+    <me.zhanghai.android.douya.ui.ForegroundRelativeLayout
+        android:id="@+id/item_collection_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/screen_edge_horizontal_margin"
+        android:paddingRight="@dimen/screen_edge_horizontal_margin"
+        android:paddingTop="@dimen/content_vertical_space"
+        android:paddingBottom="@dimen/content_vertical_space"
+        android:background="?colorPrimaryLight"
+        android:clipToPadding="false"
+        android:foreground="?selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/bookmark"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/bookmark_icon_white_24dp"
+            app:tint="?textColorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/bookmark"
+            android:layout_alignTop="@id/bookmark"
+            android:layout_marginLeft="@dimen/content_horizontal_space"
+            android:layout_marginTop="0.75dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="?textColorPrimaryDark" />
+
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="16dp"
+            android:maxHeight="16dp"
+            android:layout_toRightOf="@id/state"
+            android:layout_alignTop="@id/state"
+            android:layout_alignBottom="@id/state"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="-1dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginBottom="-2dp"
+            app:mrb_progressTint="?textColorPrimaryDark"
+            style="@style/Widget.MaterialRatingBar.RatingBar.Indicator.Small" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rating"
+            android:layout_alignBottom="@id/state"
+            android:layout_marginLeft="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="?textColorPrimaryDark" />
+
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="-16dp"
+            android:layout_marginTop="-6dp"
+            android:layout_marginBottom="-6dp"
+            android:padding="6dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/more_vertical_icon_white_24dp"
+            app:tint="?textColorPrimaryDark" />
+
+        <me.zhanghai.android.douya.ui.AutoGoneTextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/state"
+            android:layout_below="@id/state"
+            android:layout_marginRight="@dimen/content_horizontal_space"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="2dp"
+            android:lineSpacingMultiplier="1.3"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="?textColorPrimaryDark" />
+    </me.zhanghai.android.douya.ui.ForegroundRelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/screen_edge_horizontal_margin"
+        android:layout_marginRight="@dimen/screen_edge_horizontal_margin"
+        android:background="?dividerHorizontal" />
+</LinearLayout>

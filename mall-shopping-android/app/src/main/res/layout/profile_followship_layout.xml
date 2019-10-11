@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2016 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="?dividerHorizontal"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/single_line_list_item_height"
+        android:paddingLeft="@dimen/card_content_horizontal_margin"
+        android:paddingRight="@dimen/card_content_horizontal_margin"
+        android:background="?selectableItemBackground"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="@string/profile_followship_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="?android:textColorSecondary" />
+
+    <LinearLayout
+        android:id="@+id/following_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/list_padding_vertical"
+        android:paddingBottom="@dimen/list_padding_vertical"
+        android:orientation="vertical" />
+
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/single_line_list_item_height"
+        android:paddingLeft="@dimen/card_content_horizontal_margin"
+        android:paddingRight="@dimen/card_content_horizontal_margin"
+        android:gravity="center_vertical"
+        android:text="@string/profile_following_empty"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <me.zhanghai.android.douya.ui.TintDrawablesTextView
+        android:id="@+id/view_more"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/single_line_list_item_height"
+        android:paddingLeft="@dimen/card_content_horizontal_margin_with_4dp_padding"
+        android:paddingRight="@dimen/card_content_horizontal_margin"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:drawableLeft="@drawable/forward_icon_white_24dp"
+        android:drawablePadding="@dimen/card_content_horizontal_space_with_4dp_padding"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="?android:textColorSecondary"
+        app:drawableTint="?android:textColorSecondary" />
+
+    <TextView
+        android:id="@+id/follower"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/single_line_list_item_height"
+        android:paddingLeft="@dimen/card_content_horizontal_margin"
+        android:paddingRight="@dimen/card_content_horizontal_margin"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<me.zhanghai.android.douya.ui.DispatchInsetsDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context=".main.ui.MainActivity">
+
+    <me.zhanghai.android.douya.ui.InsetBackgroundFrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:insetBackground="?colorPrimaryDarkWithoutSystemWindowScrim" />
+
+    <fragment
+        android:id="@+id/navigation_fragment"
+        android:name="me.zhanghai.android.douya.navigation.ui.NavigationFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        tools:layout="@layout/navigation_fragment" />
+
+    <me.zhanghai.android.douya.ui.MaxDimensionDispatchInsetsFrameLayout
+        android:id="@+id/notification_list_drawer"
+        android:layout_width="wrap_content"
+        android:maxWidth="@dimen/drawer_max_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="?android:colorBackground" />
+</me.zhanghai.android.douya.ui.DispatchInsetsDrawerLayout>

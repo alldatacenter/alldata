@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2016 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".profile.ui.ProfileActivity">
+
+    <item
+        android:id="@+id/action_send_doumail"
+        android:icon="@drawable/mail_icon_white_24dp"
+        android:orderInCategory="100"
+        android:title="@string/profile_send_doumail"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_blacklist"
+        android:orderInCategory="100"
+        android:title="@string/profile_blacklist"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_report_abuse"
+        android:orderInCategory="100"
+        android:title="@string/report_abuse"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="100"
+        android:title="@string/share"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_view_on_web"
+        android:orderInCategory="100"
+        android:title="@string/view_on_web"
+        app:showAsAction="never" />
+</menu>

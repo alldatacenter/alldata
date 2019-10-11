@@ -1,0 +1,532 @@
+<resources>
+
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="close">关闭</string>
+    <string name="copy_to_clipboard">复制到剪贴板</string>
+    <string name="discard">舍弃</string>
+    <string name="keep_editing">继续编辑</string>
+    <string name="no">否</string>
+    <string name="reload">重新加载</string>
+    <string name="save">保存</string>
+    <string name="share">分享</string>
+    <string name="space">" "</string>
+    <string name="yes">是</string>
+
+    <string name="activity_not_found">未找到可处理此操作的应用</string>
+    <string name="copied_to_clipboard_format">已复制到剪贴板：\n%1$s</string>
+    <string name="confirm_close_discarding_content">确定要舍弃正在编辑的内容吗？</string>
+    <string name="counter_format">%1$d/%2$d</string>
+    <string name="load_empty">暂无内容</string>
+    <string name="load_error">加载失败</string>
+    <string name="more">更多</string>
+    <string name="not_yet_implemented">尚未实现，敬请期待</string>
+    <string name="open_settings">打开设置</string>
+    <string name="report_abuse">举报不良信息</string>
+    <string name="view_more">查看更多</string>
+    <string name="view_more_with_count_format">查看更多（%1$d）</string>
+    <string name="view_on_web">通过网页查看</string>
+
+    <string name="just_now">刚刚</string>
+    <string name="minute_format">%1$d分钟前</string>
+    <string name="hour_format">%1$d小时前</string>
+    <string name="today_hour_minute_pattern">今天 HH:mm</string>
+    <string name="yesterday_hour_minute_pattern">昨天 HH:mm</string>
+    <string name="month_day_hour_minute_pattern">M月d日 HH:mm</string>
+    <string name="date_hour_minute_pattern">y年M月d日 HH:mm</string>
+    <string name="today">今天</string>
+    <string name="yesterday">昨天</string>
+    <string name="month_day_pattern">M月d日</string>
+    <string name="date_pattern">y年M月d日</string>
+    <string name="year_month_pattern">y年M月</string>
+    <string name="year_month_format">%1$d年%2$d月</string>
+    <string name="year_pattern">y年</string>
+    <string name="year_format">%1$d年</string>
+    <string name="duration_hour_minute_second_format">%1$d:%2$02d:%3$02d</string>
+    <string name="duration_minute_second_format">%1$02d:%2$02d</string>
+
+    <string name="media_action_play">播放</string>
+    <string name="media_action_pause">暂停</string>
+    <string name="media_action_skip_to_previous">上一首</string>
+    <string name="media_action_skip_to_next">下一首</string>
+
+    <!-- Overrides strings in LicensesDialog. -->
+    <string name="notices_title">@string/settings_open_source_licenses_title</string>
+    <string name="notices_close">@string/close</string>
+
+    <string name="app_name">豆芽</string>
+
+    <string name="api_error_parse">解析错误</string>
+    <string name="api_error_auth_failure">认证失败</string>
+    <string name="api_error_timeout">请求超时</string>
+    <string name="api_error_no_connection">无网络连接</string>
+    <string name="api_error_network">网络错误</string>
+
+    <string name="api_error_invalid_error_response">服务器错误</string>
+    <string name="api_error_invalid_request_997">缺少签名</string>
+    <string name="api_error_unknown_v2_error">未知 V2 错误</string>
+    <string name="api_error_need_permission">需要权限</string>
+    <string name="api_error_uri_not_found">资源不存在</string>
+    <string name="api_error_missing_args">缺少参数</string>
+    <string name="api_error_image_too_large">图片过大</string>
+    <string name="api_error_has_ban_word">包含违禁词语</string>
+    <string name="api_error_input_too_short">输入过短</string>
+    <string name="api_error_target_not_found">对象不存在</string>
+    <string name="api_error_need_captcha">需要验证码</string>
+    <string name="api_error_image_unknown">未知图片格式</string>
+    <string name="api_error_image_wrong_format">图片格式错误</string>
+    <string name="api_error_image_wrong_ck">私有图片访问验证错误</string>
+    <string name="api_error_image_ck_expired">私有图片验证过期</string>
+    <string name="api_error_title_missing">缺少标题</string>
+    <string name="api_error_desc_missing">缺少描述</string>
+    <string name="api_error_unknown">未知错误</string>
+
+    <string name="api_error_token_invalid_request_scheme">请求协议无效</string>
+    <string name="api_error_token_invalid_request_method">请求方法无效</string>
+    <string name="api_error_token_access_token_is_missing">缺少 access_token</string>
+    <string name="api_error_token_invalid_access_token">access_token 无效</string>
+    <string name="api_error_token_invalid_apikey">API Key 无效</string>
+    <string name="api_error_token_apikey_is_blocked">API Key 已被屏蔽</string>
+    <string name="api_error_token_access_token_has_expired">access_token 已过期</string>
+    <string name="api_error_token_invalid_request_uri">请求地址无效</string>
+    <string name="api_error_token_invalid_credencial1">用户未授权此访问</string>
+    <string name="api_error_token_invalid_credencial2">API Key 未申请此权限</string>
+    <string name="api_error_token_not_trial_user">不是测试用户</string>
+    <string name="api_error_token_rate_limit_exceeded1">用户访问速度限制</string>
+    <string name="api_error_token_rate_limit_exceeded2">IP 访问速度限制</string>
+    <string name="api_error_token_required_parameter_is_missing">缺少参数</string>
+    <string name="api_error_token_unsupported_grant_type">不支持的 grant_type</string>
+    <string name="api_error_token_unsupported_response_type">不支持的 response_type</string>
+    <string name="api_error_token_client_secret_mismatch">client_secret 不匹配</string>
+    <string name="api_error_token_redirect_uri_mismatch">redirect_uri 不匹配</string>
+    <string name="api_error_token_invalid_authorization_code">authorization_code 无效</string>
+    <string name="api_error_token_invalid_refresh_token">refresh_token 无效</string>
+    <string name="api_error_token_username_password_mismatch">用户名与密码不匹配</string>
+    <string name="api_error_token_invalid_user">用户不存在或已删除</string>
+    <string name="api_error_token_user_has_blocked">用户已被屏蔽</string>
+    <string name="api_error_token_access_token_has_expired_since_password_changed">access_token 因用户修改密码过期</string>
+    <string name="api_error_token_access_token_has_not_expired">access_token 尚未过期</string>
+    <string name="api_error_token_invalid_request_scope">访问 scope 无效</string>
+    <string name="api_error_token_invalid_request_source">访问来源无效</string>
+    <string name="api_error_token_thirdparty_login_auth_failed">第三方授权错误</string>
+    <string name="api_error_token_user_locked">用户已被锁定</string>
+
+    <string name="api_error_followship_already_followed">你已经关注过这个用户了</string>
+    <string name="api_error_followship_not_followed_yet">你还没有关注这个用户</string>
+
+    <string name="api_error_broadcast_not_found">广播不存在</string>
+
+    <string name="api_error_rebroadcast_broadcast_deleted">被转播广播已被删除</string>
+
+    <string name="notification_channel_send_broadcast_name">发送广播</string>
+    <string name="notification_channel_send_broadcast_description">显示发送广播的状态</string>
+    <string name="notification_channel_play_music_name">播放音乐</string>
+    <string name="notification_channel_play_music_description">显示和控制播放音乐的状态</string>
+
+    <string name="auth_title_new">登录豆芽</string>
+    <string name="auth_title_add">添加账户</string>
+    <string name="auth_title_update">更新密码</string>
+    <string name="auth_title_confirm">确认密码</string>
+    <string name="auth_username">用户名</string>
+    <string name="auth_password">密码</string>
+    <string name="auth_sign_in">登录</string>
+    <string name="auth_sign_up">没有账户？现在注册</string>
+    <string name="auth_error_empty_username">请输入用户名</string>
+    <string name="auth_error_empty_password">请输入密码</string>
+    <string name="auth_error_invalid_response">服务器应答无效</string>
+    <string name="auth_error_unknown">未知错误</string>
+    <string name="auth_select_account">选择账户</string>
+
+    <string name="gallery_title">查看图片</string>
+    <string name="gallery_title_multiple_format">查看图片（%1$d/%2$d）</string>
+    <string name="gallery_network_error">网络错误</string>
+    <string name="gallery_load_error">加载错误</string>
+    <string name="gallery_save_permission_request_message">豆芽需要权限以保存图片，请您在之后弹出的系统对话框中点击“允许”。</string>
+    <string name="gallery_save_permission_permanently_denied_message">豆芽需要权限以保存图片，请您在系统设置界面中授予“存储空间”权限。</string>
+    <string name="gallery_save_permission_denied">保存图片失败，缺少权限</string>
+    <string name="gallery_save_successful">已保存图片至相册</string>
+    <string name="gallery_save_failed">保存图片失败</string>
+
+    <string name="webview_title">查看网页</string>
+    <string name="webview_go_forward">前进</string>
+    <string name="webview_open_with_native">使用应用界面</string>
+    <string name="webview_copy_url">复制链接</string>
+    <string name="webview_error_url_empty">链接为空</string>
+    <string name="webview_request_desktop_site">请求桌面版网站</string>
+    <string name="webview_open_in_browser">在浏览器中打开</string>
+    <string name="webview_download_permission_request_message">豆芽需要权限以下载文件，请您在之后弹出的系统对话框中点击“允许”。</string>
+    <string name="webview_download_permission_permanently_denied_message">豆芽需要权限以下载文件，请您在系统设置界面中授予“存储空间”权限。</string>
+    <string name="webview_download_permission_denied">下载文件失败，缺少权限</string>
+    <string name="webview_downloading">正在下载文件…</string>
+
+    <string name="navigation_home">首页</string>
+    <string name="navigation_book">读书</string>
+    <string name="navigation_movie">电影</string>
+    <string name="navigation_music">音乐</string>
+    <string name="navigation_calendar">电影日历</string>
+    <string name="navigation_settings">设置</string>
+    <string name="navigation_feedback">反馈</string>
+    <string name="navigation_add_account">添加账户</string>
+    <string name="navigation_remove_current_account">移除当前账户</string>
+    <string name="navigation_remove_current_account_confirm">确定要移除当前账户吗？</string>
+    <string name="navigation_manage_accounts">管理账户</string>
+
+    <string name="main_notification">提醒</string>
+    <string name="main_doumail">豆邮</string>
+    <string name="main_search">搜索</string>
+
+    <string name="home_broadcast">友邻广播</string>
+    <string name="home_discover">浏览发现</string>
+    <string name="home_topic">话题广场</string>
+    <string name="home_online">线上活动</string>
+
+    <string name="broadcast_list_title_default">广播列表</string>
+    <string name="broadcast_list_title_user_format">%s 的广播</string>
+    <string name="broadcast_list_title_topic_format">#%s#</string>
+
+    <string name="broadcast_send_title">发广播</string>
+    <string name="broadcast_send_intent_filter_title">分享到豆瓣广播</string>
+    <string name="broadcast_send_title_sending">正在发送广播…</string>
+    <string name="broadcast_send">发送</string>
+    <string name="broadcast_send_error_empty">说点什么吧…</string>
+    <string name="broadcast_send_error_text_too_long">这条广播太长了</string>
+    <string name="broadcast_sending">正在发送广播…</string>
+    <string name="broadcast_sending_notification_title">发送广播</string>
+    <string name="broadcast_sending_notification_text_uploading_images_format">正在上传图片（%1$d/%2$d）…</string>
+    <string name="broadcast_sending_notification_text_sending">正在发送广播…</string>
+    <string name="broadcast_send_successful">已发送广播</string>
+    <string name="broadcast_send_failed_format">发送广播失败，%1$s</string>
+    <string name="broadcast_send_failed_notification_title_format">发送广播失败，%1$s</string>
+    <string name="broadcast_send_failed_notification_text">点击以重试</string>
+    <string name="broadcast_send_add_image">添加照片</string>
+    <string name="broadcast_send_capture_image_permission_request_message">豆芽需要权限以读取拍摄的照片，请您在之后弹出的系统对话框中点击“允许”。</string>
+    <string name="broadcast_send_capture_image_permission_permanently_denied_message">豆芽需要权限以读取拍摄的照片，请您在系统设置界面中授予“存储空间”权限。</string>
+    <string name="broadcast_send_capture_image_permission_denied">无法通过拍摄照片添加图片，缺少权限</string>
+    <string name="broadcast_send_add_image_too_many">单条广播最多包含 9 张照片</string>
+    <string name="broadcast_send_remove_all_images">移除所有照片</string>
+    <string name="broadcast_send_remove_all_images_confirm">确定要移除所有照片吗？</string>
+    <string name="broadcast_send_add_link">推荐网页</string>
+    <string name="broadcast_send_edit_link">修改网页</string>
+    <string name="broadcast_send_remove_link">移除网页</string>
+    <string name="broadcast_send_remove_link_confirm">确定要移除网页吗？</string>
+    <string name="broadcast_send_link_default_title">推荐网页</string>
+    <string name="broadcast_send_edit_link_title">推荐网页</string>
+    <string name="broadcast_send_edit_link_url_caption">网页地址</string>
+    <string name="broadcast_send_edit_link_url_hint">https://</string>
+    <string name="broadcast_send_edit_link_url_error">请输入一个有效的网址</string>
+    <string name="broadcast_send_edit_link_title_caption">网页标题</string>
+    <string name="broadcast_send_edit_link_title_hint">留空以自动获取</string>
+    <string name="broadcast_send_add_mention">\@某人</string>
+    <string name="broadcast_send_add_topic">添加话题</string>
+    <string name="broadcast_title">查看广播</string>
+    <string name="broadcast_rebroadcasted_by_format">由 %1$s 转播 ↴</string>
+    <string name="broadcast_rebroadcasted_broadcast_text_rebroadcaster_format">%1$s：</string>
+    <string name="broadcast_rebroadcasted_broadcast_text_rebroadcast_deleted">（广播已被删除）</string>
+    <string name="broadcast_rebroadcasted_broadcast_text_more_rebroadcast">更多转播…</string>
+    <string name="broadcast_rebroadcasted_broadcast_deleted">（广播已被删除）</string>
+    <string name="broadcast_image_list_count_format">%1$d 张照片</string>
+    <string name="broadcast_like">赞</string>
+    <string name="broadcast_comment">回应</string>
+    <string name="broadcast_rebroadcast">转播</string>
+    <string name="broadcast_like_error_cannot_like_oneself">不能赞自己的广播</string>
+    <string name="broadcast_like_successful">已赞</string>
+    <string name="broadcast_like_failed_format">点赞失败，%1$s</string>
+    <string name="broadcast_unlike_successful">已取消赞</string>
+    <string name="broadcast_unlike_failed_format">取消赞失败，%1$s</string>
+    <string name="broadcast_rebroadcast_successful">已转播</string>
+    <string name="broadcast_rebroadcast_failed_format">转播失败，%1$s</string>
+    <string name="broadcast_unrebroadcast_confirm">确定要取消转播这条广播吗？</string>
+    <string name="broadcast_unrebroadcast_successful">已取消转播</string>
+    <string name="broadcast_unrebroadcast_failed_format">取消转播失败，%1$s</string>
+    <string name="broadcast_rebroadcast_title">转播广播</string>
+    <string name="broadcast_rebroadcast_title_rebroadcasting">正在转播…</string>
+    <string name="broadcast_rebroadcast_text_hint">说点什么吧…</string>
+    <string name="broadcast_view_activity">查看赞和转播</string>
+    <string name="broadcast_comment_action_title">回应选项</string>
+    <string name="broadcast_comment_action_reply_to">回应此人</string>
+    <string name="broadcast_comment_action_copy_text">复制回应</string>
+    <string name="broadcast_comment_action_delete">删除回应</string>
+    <string name="broadcast_comment_delete_confirm">确定要删除这条回应吗？</string>
+    <string name="broadcast_comment_delete_successful">已删除回应</string>
+    <string name="broadcast_comment_delete_failed_format">删除回应失败，%1$s</string>
+    <string name="broadcast_send_comment_title">回应广播</string>
+    <string name="broadcast_send_comment_title_sending">正在发送回应…</string>
+    <string name="broadcast_send_comment_hint">我的回应…</string>
+    <string name="broadcast_send_comment_hint_disabled">@string/broadcast_send_comment_disabled</string>
+    <string name="broadcast_send_comment_disabled">这条广播不支持回应</string>
+    <string name="broadcast_send_comment">加上去</string>
+    <string name="broadcast_send_comment_error_empty">说点什么吧…</string>
+    <string name="broadcast_send_comment_successful">已发送回应</string>
+    <string name="broadcast_send_comment_failed_format">发送回应失败，%1$s</string>
+    <string name="broadcast_copy_text">复制文本</string>
+    <string name="broadcast_copy_text_not_loaded">广播还没有加载好</string>
+    <string name="broadcast_delete">删除广播</string>
+    <string name="broadcast_delete_confirm">确定要删除这条广播吗？</string>
+    <string name="broadcast_delete_successful">已删除广播</string>
+    <string name="broadcast_delete_failed_format">删除广播失败，%1$s</string>
+    <string name="broadcast_likers_title_format">%1$d 人赞</string>
+    <string name="broadcast_likers_title_empty">暂无赞</string>
+    <string name="broadcast_rebroadcasts_title_format">%1$d 条转播</string>
+    <string name="broadcast_rebroadcasts_title_empty">暂无转播</string>
+    <string name="broadcast_rebroadcasts_simple_rebroadcast_text">转播</string>
+
+    <string name="user_follow_error_cannot_follow_oneself">不能关注自己</string>
+    <string name="user_following">正在关注</string>
+    <string name="user_follow_successful">已关注</string>
+    <string name="user_follow_failed_format">关注失败，%1$s</string>
+    <string name="user_unfollow_confirm">确定要取消关注吗？</string>
+    <string name="user_unfollowing">正在取消关注</string>
+    <string name="user_unfollow_successful">已取消关注</string>
+    <string name="user_unfollow_failed_format">取消关注失败，%1$s</string>
+
+    <string name="profile_join_time_format">%1$s 加入</string>
+    <string name="profile_join_time_location_format">%1$s 加入，常居 %2$s</string>
+    <string name="profile_edit">编辑个人资料</string>
+    <string name="profile_follow">关注此人</string>
+    <string name="profile_following">已关注</string>
+    <string name="profile_following_mutual">互相关注</string>
+    <string name="profile_send_doumail">发豆邮</string>
+    <string name="profile_blacklist">加入黑名单</string>
+    <string name="profile_introduction_title">简介</string>
+    <string name="profile_introduction_empty">没有写简介</string>
+    <string name="profile_broadcasts_title">广播</string>
+    <string name="profile_broadcasts_empty">最近没有发广播</string>
+    <string name="profile_followship_title">关注</string>
+    <string name="profile_following_empty">没有关注的人</string>
+    <string name="profile_follower_count_format">被 %1$d 人关注</string>
+    <string name="profile_follower_list_title">被关注列表</string>
+    <string name="profile_following_list_title">关注列表</string>
+    <string name="profile_diaries_title">日记</string>
+    <string name="profile_diaries_empty">没有写过日记</string>
+    <string name="profile_items_empty_format">没有标记%1$s的%2$s</string>
+    <string name="profile_items_non_primary_format">%1$s（%2$d）</string>
+    <string name="profile_reviews_title">评论</string>
+    <string name="profile_reviews_empty">没有写过评论</string>
+
+    <string name="item_app_name">应用</string>
+    <string name="item_app_action">用</string>
+    <string name="item_app_this_item">这个应用</string>
+    <string name="item_book_name">书</string>
+    <string name="item_book_action">读</string>
+    <string name="item_book_this_item">这本书</string>
+    <string name="item_game_name">游戏</string>
+    <string name="item_game_action">玩</string>
+    <string name="item_game_this_item">这个游戏</string>
+    <string name="item_event_name">活动</string>
+    <string name="item_event_action">去</string>
+    <string name="item_event_this_item">这个活动</string>
+    <string name="item_movie_name">电影</string>
+    <string name="item_movie_action">看</string>
+    <string name="item_movie_this_item">这部电影</string>
+    <string name="item_music_name">音乐</string>
+    <string name="item_music_action">听</string>
+    <string name="item_music_this_item">这张专辑</string>
+    <string name="item_tv_name">电视剧</string>
+    <string name="item_tv_action">看</string>
+    <string name="item_tv_this_item">这部电视剧</string>
+    <string name="item_todo_format">想%1$s</string>
+    <string name="item_doing_format">在%1$s</string>
+    <string name="item_done_format">%1$s过</string>
+    <string name="item_book_title">书</string>
+    <string name="item_movie_title">电影</string>
+    <string name="item_music_title">音乐</string>
+    <string name="item_game_title">游戏</string>
+    <string name="item_information_delimiter_space">"  "</string>
+    <string name="item_information_delimiter_slash">" / "</string>
+    <string name="item_information_book_translators_format">译者：%1$s</string>
+    <string name="item_collection_edit">修改</string>
+    <string name="item_collection_uncollect">删除</string>
+    <string name="item_top_250">豆瓣 250</string>
+    <string name="item_top_250_badge">TOP</string>
+    <string name="item_top_250_rank_format">%1$d</string>
+    <string name="item_similar_items">类似条目</string>
+    <string name="item_rating_unavailable">\?</string>
+    <string name="item_rating_unavailable_reason_fallback">暂无评分</string>
+    <string name="item_rating_format">%1$.1f</string>
+    <string name="item_rating_format_ten">%1$.0f</string>
+    <string name="item_rating_count_format">%1$,d</string>
+    <string name="item_introduction_empty">（暂无简介）</string>
+    <string name="item_introduction_title">条目简介</string>
+    <string name="item_author_title">作者</string>
+    <string name="item_table_of_contents_title">目录</string>
+    <string name="item_photo_list_view_more">全部图片</string>
+    <string name="item_celebrity_director">导演</string>
+    <string name="item_award_category_multiple_format">%1$s 等%2$d项</string>
+    <string name="item_track_list_title">曲目</string>
+    <string name="item_track_list_play_all">播放全部</string>
+    <string name="item_collection_list_title">短评</string>
+    <string name="item_collection_list_create">写短评</string>
+    <string name="item_collection_vote_count_format">%1$d</string>
+    <string name="item_collection_list_view_more">全部短评</string>
+    <string name="item_collection_vote_error_cannot_vote_oneself">不能给自己的短评投票</string>
+    <string name="item_collection_vote_error_cannot_vote_again">你已经投过票了</string>
+    <string name="item_collection_vote_successful">已投票</string>
+    <string name="item_collection_vote_failed_format">投票失败，%1$s</string>
+    <string name="item_game_guide_list_title">攻略</string>
+    <string name="item_game_guide_list_create">写攻略</string>
+    <string name="item_game_guide_list_view_more">全部攻略</string>
+    <string name="item_review_list_title">评论</string>
+    <string name="item_review_list_create">写评论</string>
+    <string name="item_review_list_view_more">全部评论</string>
+    <string name="item_review_usefulness_format">%1$d/%2$d 有用</string>
+    <string name="item_forum_topic_list_title">讨论区</string>
+    <string name="item_forum_topic_list_create">写话题</string>
+    <string name="item_forum_topic_like_count_format">%1$d喜欢</string>
+    <string name="item_forum_topic_comment_count_format">%1$d回应</string>
+    <string name="item_forum_topic_update">更新</string>
+    <string name="item_forum_topic_list_view_more">全部话题</string>
+    <string name="item_recommendation_list_title">类似条目</string>
+    <string name="item_related_doulist_list_title">相关豆列</string>
+    <string name="item_related_doulist_follower_count_format">%1$d 人收藏</string>
+    <string name="item_collection_title">标记条目</string>
+    <string name="item_collection_title_saving_format">正在标记%1$s…</string>
+    <string name="item_uncollect_confirm">确定要删除这个标记吗？</string>
+    <string name="item_uncollect_successful_format">已取消标记%1$s</string>
+    <string name="item_uncollect_failed_format">取消标记%1$s失败，%2$s</string>
+    <string name="item_collection_collect">保存</string>
+    <string name="item_collect_successful_format">已标记%1$s</string>
+    <string name="item_collect_failed_format">标记%1$s失败，%2$s</string>
+    <string name="item_state_i">我</string>
+    <string name="item_rating">评价</string>
+    <string-array name="item_rating_hints">
+        <item>很差</item>
+        <item>较差</item>
+        <item>还行</item>
+        <item>推荐</item>
+        <item>力荐</item>
+    </string-array>
+    <string name="item_rating_hint_unknown">未知</string>
+    <string name="item_tags">标签</string>
+    <string name="item_tags_hint">添加标签</string>
+    <string name="item_comment_hint">我的评论…</string>
+    <string name="item_share_to">分享到</string>
+    <string name="item_share_to_broadcast">我的广播</string>
+    <string name="item_share_to_weibo">微博</string>
+    <string name="item_introduction_celebrity_delimiter">、</string>
+    <string name="item_introduction_movie_cast_and_credits">演职人员</string>
+    <string name="item_introduction_movie_directors">导演</string>
+    <string name="item_introduction_movie_actors">演员</string>
+    <string name="item_introduction_movie_original_title">原名</string>
+    <string name="item_introduction_movie_genres">类型</string>
+    <string name="item_introduction_movie_countries">国家或地区</string>
+    <string name="item_introduction_movie_languages">语言</string>
+    <string name="item_introduction_movie_release_dates">上映日期</string>
+    <string name="item_introduction_movie_episode_count">集数</string>
+    <string name="item_introduction_movie_durations">片长</string>
+    <string name="item_introduction_movie_alternative_titles">别名</string>
+    <string name="item_introduction_music_artists">艺术家</string>
+    <string name="item_introduction_music_genres">流派</string>
+    <string name="item_introduction_music_types">类型</string>
+    <string name="item_introduction_music_media">介质</string>
+    <string name="item_introduction_music_release_dates">发行日期</string>
+    <string name="item_introduction_music_publishers">出版者</string>
+    <string name="item_introduction_music_disc_counts">碟片数</string>
+    <string name="item_introduction_book_authors">作者</string>
+    <string name="item_introduction_book_presses">出版社</string>
+    <string name="item_introduction_book_subtitles">副标题</string>
+    <string name="item_introduction_book_translators">译者</string>
+    <string name="item_introduction_book_release_dates">出版日期</string>
+    <string name="item_introduction_book_page_counts">页数</string>
+    <string name="item_introduction_book_prices">定价</string>
+    <string name="item_introduction_game_genres">类型</string>
+    <string name="item_introduction_game_platforms">平台</string>
+    <string name="item_introduction_game_alternative_titles">别名</string>
+    <string name="item_introduction_game_developers">开发商</string>
+    <string name="item_introduction_game_publishers">发行商</string>
+    <string name="item_introduction_game_release_date">发行日期</string>
+
+    <string name="calendar_title">电影日历</string>
+    <string name="calendar_chinese_calendar">农历</string>
+    <string name="calendar_date_pattern">M月d日</string>
+    <string-array name="calendar_day_of_week_names">
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+        <item>星期日</item>
+    </string-array>
+    <string name="calendar_day_of_month_format">%1$d</string>
+    <string name="calendar_title_format">《 %1$s 》</string>
+    <string name="calendar_rating_format">%1$.1f</string>
+    <string name="calendar_event_format">【 %1$s 】</string>
+
+    <string name="settings_title">设置</string>
+    <string name="settings_appearance_title">外观</string>
+    <string name="settings_show_long_url_for_link_entity_title">显示完整链接文本</string>
+    <string name="settings_show_long_url_for_link_entity_summary">替换经过 douc.cc 缩短的链接</string>
+    <string name="settings_night_mode_title">夜间模式</string>
+    <string name="settings_night_mode_summary">%1$s</string>
+    <string-array name="settings_night_mode_entries">
+        <!--<item>跟随系统</item>-->
+        <item>关闭</item>
+        <item>开启</item>
+        <item>自动</item>
+    </string-array>
+    <string name="settings_behavior_title">行为</string>
+    <string name="settings_auto_refresh_home_title">打开时自动刷新主页</string>
+    <string name="settings_long_click_to_quick_rebroadcast_title">长按快速转播</string>
+    <string name="settings_long_click_to_show_send_comment_activity_title">长按进入单独页面回应广播</string>
+    <string name="settings_show_album_art_on_lock_screen_title">在锁屏界面上显示专辑封面</string>
+    <string name="settings_progressive_third_party_app_title">渐进式第三方应用</string>
+    <string name="settings_progressive_third_party_app_summary">使用豆瓣官方应用打开尚未实现的页面</string>
+    <string name="settings_open_url_with_title">打开链接的方式</string>
+    <string name="settings_open_url_with_summary">%1$s</string>
+    <string-array name="settings_open_url_with_entries">
+        <item>内置浏览器</item>
+        <item>系统打开方式</item>
+        <item>Custom Tabs</item>
+    </string-array>
+    <string name="settings_open_with_native_in_webview_title">在内置浏览器中使用应用界面</string>
+    <string name="settings_open_with_native_in_webview_summary">应用界面美观易用但可能有未覆盖的功能</string>
+    <string name="settings_request_desktop_site_in_webview_title">在内置浏览器中请求桌面版网站</string>
+    <string name="settings_request_desktop_site_in_webview_summary">豆瓣移动端网站功能有限</string>
+    <string name="settings_create_new_task_for_webview_title">为内置浏览器使用多任务</string>
+    <string name="settings_create_new_task_for_webview_summary">可同时打开多个网页或在回到应用界面时保留网页</string>
+    <string name="settings_create_new_task_for_webview_summary_below_lollipop">此功能需要 Android 5.0 或以上版本</string>
+    <string name="settings_about_title">关于</string>
+    <string name="settings_open_source_licenses_title">开放源代码许可</string>
+    <string name="settings_open_source_licenses_html_style_light" translatable="false">
+        body {
+            font-family: sans-serif;
+            overflow-wrap: break-word;
+        }
+        pre {
+            background: #eeeeee;
+            padding: 1em;
+            white-space: pre-wrap;
+        }
+        a, a:link, a:visited, a:hover, a:focus, a:active {
+            color: #4caf50;
+        }
+    </string>
+    <string name="settings_open_source_licenses_html_style_dark" translatable="false">
+        body {
+            background: #424242;
+            color: white;
+            font-family: sans-serif;
+            overflow-wrap: break-word;
+        }
+        pre {
+            background: #303030;
+            padding: 1em;
+            white-space: pre-wrap;
+        }
+        a, a:link, a:visited, a:hover, a:focus, a:active {
+            color: #4caf50;
+        }
+    </string>
+    <string name="settings_privacy_policy_title">隐私权政策</string>
+    <string name="settings_about_douya_title">关于豆芽</string>
+
+    <string name="about_title">关于</string>
+    <string name="about_name">@string/app_name</string>
+    <string name="about_words">Douban, Yet Another</string>
+    <string name="about_version_format">版本 %1$s</string>
+    <string name="about_credit">梦断代码</string>
+    <string name="about_douban">\@douban-douya</string>
+
+    <string name="about_confirm_enable_scalpel_title">你发现了一把手术刀！</string>
+    <string name="about_confirm_enable_scalpel_message">使用说明：\n1. 单指移动视角\n2. 双指上下缩放大小\n3. 双指左右缩放层距\n\n开启手术刀后普通界面将暂时无法正常交互，但你仍然可以使用返回键回到上个界面。\n重新打开应用后手术刀将自动关闭。\n\n要使用手术刀吗？</string>
+</resources>

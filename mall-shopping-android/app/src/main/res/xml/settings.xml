@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_appearance_title">
+
+        <SwitchPreferenceCompat
+            android:key="@string/pref_key_show_long_url_for_link_entity"
+            android:title="@string/settings_show_long_url_for_link_entity_title"
+            android:defaultValue="@bool/pref_default_value_show_long_url_for_link_entity"
+            android:summary="@string/settings_show_long_url_for_link_entity_summary" />
+
+        <com.takisoft.fix.support.v7.preference.SimpleMenuPreference
+            android:key="@string/pref_key_night_mode"
+            android:title="@string/settings_night_mode_title"
+            android:defaultValue="@string/pref_default_value_night_mode"
+            android:entries="@array/settings_night_mode_entries"
+            android:entryValues="@array/pref_entry_values_night_mode"
+            android:summary="@string/settings_night_mode_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_behavior_title">
+
+        <SwitchPreferenceCompat
+            android:key="@string/pref_key_auto_refresh_home"
+            android:title="@string/settings_auto_refresh_home_title"
+            android:defaultValue="@bool/pref_default_value_auto_refresh_home" />
+
+        <SwitchPreferenceCompat
+            android:key="@string/pref_key_long_click_to_quick_rebroadcast"
+            android:title="@string/settings_long_click_to_quick_rebroadcast_title"
+            android:defaultValue="@bool/pref_default_value_long_click_to_quick_rebroadcast" />
+
+        <SwitchPreferenceCompat
+            android:key="@string/pref_key_long_click_to_show_send_comment_activity"
+            android:title="@string/settings_long_click_to_show_send_comment_activity_title"
+            android:defaultValue="@bool/pref_default_value_long_click_to_show_send_comment_activity" />
+
+        <SwitchPreferenceCompat
+            android:key="@string/pref_key_show_album_art_on_lock_screen"
+            android:title="@string/settings_show_album_art_on_lock_screen_title"
+            android:defaultValue="@bool/pref_default_value_show_album_art_on_lock_screen" />
+
+        <SwitchPreferenceCompat
+            android:key="@string/pref_key_progressive_third_party_app"
+            android:title="@string/settings_progressive_third_party_app_title"
+            android:defaultValue="@bool/pref_default_value_progressive_third_party_app"
+            android:summary="@string/settings_progressive_third_party_app_summary" />
+
+        <com.takisoft.fix.support.v7.preference.SimpleMenuPreference
+            android:key="@string/pref_key_open_url_with"
+            android:title="@string/settings_open_url_with_title"
+            android:defaultValue="@string/pref_default_value_open_url_with"
+            android:entries="@array/settings_open_url_with_entries"
+            android:entryValues="@array/pref_entry_values_open_url_with"
+            android:summary="@string/settings_open_url_with_summary" />
+
+        <SwitchPreferenceCompat
+            android:key="@string/pref_key_open_with_native_in_webview"
+            android:title="@string/settings_open_with_native_in_webview_title"
+            android:defaultValue="@bool/pref_default_value_open_with_native_in_webview"
+            android:summary="@string/settings_open_with_native_in_webview_summary" />
+
+        <SwitchPreferenceCompat
+            android:key="@string/pref_key_request_desktop_site_in_webview"
+            android:title="@string/settings_request_desktop_site_in_webview_title"
+            android:defaultValue="@bool/pref_default_value_request_desktop_site_in_webview"
+            android:summary="@string/settings_request_desktop_site_in_webview_summary" />
+
+        <me.zhanghai.android.douya.settings.ui.CreateNewTaskForWebViewSwitchPreference
+            android:key="@string/pref_key_create_new_task_for_webview"
+            android:title="@string/settings_create_new_task_for_webview_title"
+            android:defaultValue="@bool/pref_default_value_create_new_task_for_webview"
+            android:summary="@string/settings_create_new_task_for_webview_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_about_title">
+
+        <me.zhanghai.android.douya.ui.LicensesDialogPreference android:title="@string/settings_open_source_licenses_title" />
+
+        <Preference android:title="@string/settings_privacy_policy_title">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/zhanghai/Douya/blob/master/PRIVACY.md" />
+        </Preference>
+
+        <Preference android:title="@string/settings_about_douya_title">
+            <intent
+                android:targetPackage="me.zhanghai.android.douya"
+                android:targetClass="me.zhanghai.android.douya.settings.ui.AboutActivity" />
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>

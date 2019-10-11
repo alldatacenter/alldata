@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2017 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/item_content_horizontal_margin"
+    android:layout_marginRight="@dimen/item_content_horizontal_margin"
+    android:background="?colorBackgroundFloating"
+    android:foreground="?selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/rating_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/screen_edge_horizontal_margin"
+        android:paddingRight="@dimen/screen_edge_horizontal_margin"
+        android:paddingTop="@dimen/content_vertical_space"
+        android:paddingBottom="@dimen/content_vertical_space"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <me.zhanghai.android.douya.item.ui.RatingLayout
+            android:id="@+id/rating_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <me.zhanghai.android.douya.item.ui.RatingDistributionLayout
+            android:id="@+id/rating_distribution_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_go_forward"
+        android:title="@string/webview_go_forward"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_reload"
+        android:title="@string/reload"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_copy_url"
+        android:title="@string/webview_copy_url"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_share"
+        android:title="@string/share"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_open_with_native"
+        android:checkable="true"
+        android:title="@string/webview_open_with_native"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_request_desktop_site"
+        android:checkable="true"
+        android:title="@string/webview_request_desktop_site"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_open_in_browser"
+        android:title="@string/webview_open_in_browser"
+        app:showAsAction="never" />
+</menu>

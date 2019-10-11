@@ -7,7 +7,10 @@
   <groupId>com.dataplatform</groupId>
   <artifactId>mall-admin-web</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <modules>
+    <module>../mall-admin-service</module>
+  </modules>
+  <packaging>pom</packaging>
 
   <name>mall-admin-web Maven Webapp</name>
   <!-- FIXME change it to the project's website -->

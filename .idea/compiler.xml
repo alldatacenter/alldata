@@ -14,14 +14,8 @@
         <module name="dubbo-service-interface" />
         <module name="log-collect-client" />
         <module name="log-collect-server" />
-        <module name="mall-admin" />
-        <module name="mall-admin-web" />
-        <module name="mall-common" />
-        <module name="mall-mbg" />
-        <module name="mall-portal" />
-        <module name="mall-search" />
-        <module name="mall-web" />
-        <module name="mall-wechat-applet" />
+        <module name="mall-shopping-android" />
+        <module name="mall-shopping-service" />
         <module name="multi-dimension-analysis" />
         <module name="system-ad" />
         <module name="system-anti-cheating" />
@@ -34,6 +28,24 @@
         <module name="system-tasksubmit" />
         <module name="task-ops" />
         <module name="task-schedular" />
+      </profile>
+      <profile name="Annotation profile for mall-pc Maven Webapp" enabled="true">
+        <sourceOutputDir name="../mall-pc/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../mall-pc/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mall-shopping-pc" />
+      </profile>
+      <profile name="Annotation profile for mall-mobile Maven Webapp" enabled="true">
+        <sourceOutputDir name="../mall-mobile/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../mall-mobile/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mall-shopping-mobile" />
+      </profile>
+      <profile name="Annotation profile for mall-wechat-applet Maven Webapp" enabled="true">
+        <sourceOutputDir name="../mall-wechat-applet/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../mall-wechat-applet/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mall-shopping-wc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -48,15 +60,23 @@
       <module name="log-collect-client" target="1.8" />
       <module name="log-collect-server" target="1.8" />
       <module name="mall-admin" target="1.8" />
+      <module name="mall-admin-service" target="1.8" />
       <module name="mall-admin-web" target="1.8" />
-      <module name="mall-backend" target="1.8" />
+      <module name="mall-base" target="1.8" />
       <module name="mall-common" target="1.8" />
       <module name="mall-demo" target="1.8" />
       <module name="mall-mbg" target="1.8" />
       <module name="mall-portal" target="1.8" />
       <module name="mall-search" target="1.8" />
+      <module name="mall-shopping-android" target="1.8" />
+      <module name="mall-shopping-mobile" target="1.8" />
+      <module name="mall-shopping-pc" target="1.8" />
+      <module name="mall-shopping-service" target="1.8" />
+      <module name="mall-shopping-wc" target="1.8" />
       <module name="mall-web" target="1.8" />
-      <module name="mall-wechat-applet" target="1.8" />
+      <module name="mall-wx-core" target="1.8" />
+      <module name="mall-wx-db" target="1.8" />
+      <module name="mall-wx-server" target="1.8" />
       <module name="multi-dimension-analysis" target="1.8" />
       <module name="system-ad" target="1.8" />
       <module name="system-anti-cheating" target="1.8" />
@@ -74,9 +94,16 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="mall-admin" options="-parameters" />
-      <module name="mall-backend" options="-parameters" />
+      <module name="mall-admin-service" options="" />
+      <module name="mall-base" options="-parameters" />
+      <module name="mall-common" options="" />
+      <module name="mall-mbg" options="" />
       <module name="mall-portal" options="-parameters" />
       <module name="mall-search" options="-parameters" />
+      <module name="mall-shopping-service" options="-parameters" />
+      <module name="mall-wx-core" options="-parameters" />
+      <module name="mall-wx-db" options="-parameters" />
+      <module name="mall-wx-server" options="-parameters" />
     </option>
   </component>
 </project>

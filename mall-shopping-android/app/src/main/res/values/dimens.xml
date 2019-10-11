@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<resources>
+
+    <item name="match_parent" type="dimen" format="integer">-1</item>
+    <item name="wrap_content" type="dimen" format="integer">-2</item>
+
+    <item name="weight_1_when_phone" type="dimen" format="float">1</item>
+    <item name="weight_1_when_tablet" type="dimen" format="float">0</item>
+
+    <!--
+     ~ L: @android:layout/notification_template_material_big_media
+     ~        @android:dimen/notification_large_icon_width 64dp
+     ~    @android:layout/notification_template_material_big_media_narrow 128dp
+     ~ N: @android:dimen/media_notification_expanded_image_max_size 94dp
+     -->
+    <dimen name="media_display_icon_max_size">128dp</dimen>
+    <!-- @see MediaSession#mMaxBitmapSize -->
+    <dimen name="media_art_max_size">320dp</dimen>
+
+    <!-- @deprecated: Not reliable, for example on MIUI. -->
+    <dimen name="status_bar_height">25dp</dimen>
+    <dimen name="screen_edge_horizontal_margin">16dp</dimen>
+    <dimen name="screen_edge_horizontal_margin_with_4dp_padding">12dp</dimen>
+    <dimen name="screen_edge_horizontal_margin_with_8dp_padding">8dp</dimen>
+    <dimen name="screen_edge_horizontal_margin_with_12dp_padding">4dp</dimen>
+    <dimen name="screen_edge_horizontal_margin_with_16dp_padding">0dp</dimen>
+    <dimen name="screen_edge_horizontal_margin_negative">-16dp</dimen>
+    <dimen name="screen_edge_horizontal_margin_negative_half">-8dp</dimen>
+    <dimen name="content_horizontal_margin">72dp</dimen>
+    <dimen name="content_horizontal_margin_from_screen_edge">56dp</dimen>
+    <dimen name="content_horizontal_margin_from_screen_edge_with_24dp_padding">32dp</dimen>
+    <dimen name="content_horizontal_margin_from_screen_edge_with_40dp_padding">16dp</dimen>
+    <dimen name="content_horizontal_margin_from_screen_edge_with_44dp_padding">12dp</dimen>
+    <dimen name="screen_edge_vertical_margin">@dimen/screen_edge_horizontal_margin</dimen>
+    <dimen name="content_horizontal_space">16dp</dimen>
+    <dimen name="content_horizontal_space_with_4dp_padding">12dp</dimen>
+    <dimen name="content_horizontal_space_with_8dp_padding">8dp</dimen>
+    <dimen name="content_vertical_space">16dp</dimen>
+    <dimen name="content_vertical_space_with_4dp_padding">12dp</dimen>
+    <dimen name="content_vertical_space_with_6dp_padding">10dp</dimen>
+    <dimen name="content_vertical_space_half">8dp</dimen>
+    <dimen name="toolbar_navigation_button_left_margin">-2dp</dimen>
+    <dimen name="toolbar_title_left_margin">18dp</dimen>
+    <dimen name="toolbar_button_left_margin">@dimen/toolbar_button_right_margin</dimen>
+    <dimen name="toolbar_button_right_margin">2dp</dimen>
+    <dimen name="toolbar_overflow_button_right_margin">-6dp</dimen>
+    <dimen name="toolbar_edit_left_margin">12dp</dimen>
+    <dimen name="toolbar_edit_right_margin">18dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="toolbar_and_toolbar_height">112dp</dimen>
+    <dimen name="tab_height">48dp</dimen>
+    <dimen name="toolbar_and_tab_height">104dp</dimen>
+    <dimen name="appbar_elevation">4dp</dimen>
+    <dimen name="drawer_max_width">@dimen/design_navigation_max_width</dimen>
+    <dimen name="navigation_header_height">172dp</dimen>
+    <dimen name="navigation_header_avatar_size">64dp</dimen>
+    <dimen name="list_padding_vertical">8dp</dimen>
+    <dimen name="single_line_list_item_height">48dp</dimen>
+    <dimen name="single_line_list_item_with_avatar_height">56dp</dimen>
+    <dimen name="two_line_list_item_height">72dp</dimen>
+    <dimen name="three_line_list_item_height">88dp</dimen>
+    <!-- Using hard-coded 1dp as height for shared-element transition on Android 5.0 -->
+    <dimen name="horizontal_divider_height">1dp</dimen>
+    <dimen name="vertical_space_width">2dp</dimen>
+    <!-- 3x toolbar height per Material Design Spec. -->
+    <dimen name="scrim_height">168dp</dimen>
+    <dimen name="card_list_horizontal_padding">0dp</dimen>
+    <dimen name="card_activity_width">@dimen/match_parent</dimen>
+    <dimen name="card_activity_horizontal_margin">0dp</dimen>
+    <dimen name="card_view_width">@dimen/match_parent</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <!-- See RoundRectDrawableWithShadow.calculate{Horizontal,Vertical}Padding(). -->
+    <dimen name="card_shadow_horizontal_margin">-2dp</dimen>
+    <dimen name="card_shadow_vertical_margin">-3dp</dimen>
+    <dimen name="card_vertical_space">16dp</dimen>
+    <dimen name="card_vertical_space_half">8dp</dimen>
+    <dimen name="card_horizontal_margin">@dimen/card_shadow_horizontal_margin</dimen>
+    <dimen name="card_vertical_margin">5dp</dimen>
+    <dimen name="card_header_horizontal_margin">@dimen/screen_edge_horizontal_margin</dimen>
+    <dimen name="card_header_bottom_margin">-4dp</dimen>
+    <dimen name="card_corner_radius">0dp</dimen>
+    <dimen name="card_content_horizontal_margin">16dp</dimen>
+    <dimen name="card_content_horizontal_margin_with_4dp_padding">12dp</dimen>
+    <dimen name="card_content_horizontal_margin_with_8dp_padding">8dp</dimen>
+    <dimen name="card_content_horizontal_margin_with_12dp_padding">4dp</dimen>
+    <dimen name="card_content_horizontal_space">16dp</dimen>
+    <dimen name="card_content_horizontal_space_with_4dp_padding">12dp</dimen>
+    <dimen name="card_content_horizontal_space_with_12dp_padding">4dp</dimen>
+    <dimen name="card_content_horizontal_space_with_16dp_padding">0dp</dimen>
+    <dimen name="card_content_vertical_margin_large">24dp</dimen>
+    <dimen name="card_content_vertical_margin">16dp</dimen>
+    <dimen name="card_content_vertical_margin_with_4dp_padding">12dp</dimen>
+    <dimen name="card_content_vertical_margin_with_12dp_padding">4dp</dimen>
+    <dimen name="card_content_vertical_margin_small">8dp</dimen>
+    <dimen name="card_content_vertical_space">16dp</dimen>
+    <dimen name="card_content_vertical_space_with_4dp_padding">12dp</dimen>
+    <dimen name="card_content_vertical_space_half">8dp</dimen>
+    <dimen name="card_action_margin">8dp</dimen>
+    <dimen name="card_action_margin_with_4dp_padding">4dp</dimen>
+    <dimen name="card_action_margin_with_8dp_padding">0dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="touch_target_size">48dp</dimen>
+    <dimen name="toolbar_button_size">48dp</dimen>
+    <dimen name="avatar_size">40dp</dimen>
+    <dimen name="avatar_padding">4dp</dimen>
+    <dimen name="avatar_padding_negative">-4dp</dimen>
+    <dimen name="avatar_small_padding">12dp</dimen>
+    <dimen name="icon_button_padding">12dp</dimen>
+    <dimen name="button_bar_horizontal_divider_width">0dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dialog_padding_horizontal_with_4dp_padding">20dp</dimen>
+    <dimen name="dialog_content_padding_top">14dp</dimen>
+    <dimen name="dialog_content_padding_bottom">24dp</dimen>
+    <dimen name="dialog_content_padding_bottom_with_8dp_padding">16dp</dimen>
+
+    <dimen name="profile_large_avatar_size">128dp</dimen>
+    <dimen name="profile_large_avatar_bottom_from_toolbar_bottom">8dp</dimen>
+    <dimen name="profile_small_avatar_size">32dp</dimen>
+
+    <dimen name="item_content_padding_top_max">0dp</dimen>
+    <dimen name="item_backdrop_play_layout_height">@dimen/match_parent</dimen>
+    <dimen name="item_content_horizontal_margin">0dp</dimen>
+    <dimen name="item_card_list_horizontal_padding">4dp</dimen>
+    <dimen name="item_card_list_vertical_padding">4dp</dimen>
+    <dimen name="item_card_horizontal_margin">2dp</dimen>
+    <dimen name="item_card_vertical_margin">1dp</dimen>
+    <dimen name="item_cover_width_long">104dp</dimen>
+    <dimen name="item_cover_width_square">150dp</dimen>
+    <dimen name="item_cover_horizontal_margin">@dimen/screen_edge_horizontal_margin</dimen>
+    <dimen name="item_cover_vertical_margin">@dimen/screen_edge_horizontal_margin</dimen>
+    <dimen name="item_cover_vertical_margin_negative">@dimen/screen_edge_horizontal_margin_negative</dimen>
+    <dimen name="item_badge_list_space">20dp</dimen>
+    <dimen name="item_badge_size">60dp</dimen>
+    <dimen name="item_badge_padding">10dp</dimen>
+    <dimen name="item_celebrity_avatar_height">120dp</dimen>
+    <dimen name="item_photo_list_height">240dp</dimen>
+    <dimen name="item_rating_distribution_bar_min_width">1dp</dimen>
+    <dimen name="item_rating_distribution_bar_max_width">160dp</dimen>
+    <dimen name="item_recommendation_cover_height">144dp</dimen>
+
+    <dimen name="image_min_width">240dp</dimen>
+    <dimen name="image_max_height">640dp</dimen>
+</resources>

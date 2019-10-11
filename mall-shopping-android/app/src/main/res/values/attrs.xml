@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<resources>
+
+    <attr name="darkTheme" format="reference" />
+    <attr name="colorPrimaryDarkWithoutSystemWindowScrim" format="color" />
+    <attr name="colorPrimaryLight" format="color" />
+    <attr name="textColorPrimaryDark" format="color" />
+    <attr name="iconButtonTint" format="color" />
+
+    <declare-styleable name="CardIconButton">
+        <attr name="android:src" />
+        <attr name="android:text" />
+    </declare-styleable>
+
+    <declare-styleable name="ContentStateLayout">
+        <attr name="animationEnabled" format="boolean" />
+        <attr name="loadingView" format="reference" />
+        <attr name="contentView" format="reference" />
+        <attr name="emptyView" format="reference" />
+        <attr name="errorView" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="FriendlySwipeRefreshLayout">
+        <attr name="progressOffset" format="dimension" />
+        <attr name="progressDistanceOffset" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ImageLayout">
+        <attr name="fillOrientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="InsetBackgroundFrameLayout">
+        <attr name="insetBackground" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RatioHeightRecyclerView">
+        <attr name="ratio" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TintDrawablesTextView">
+        <attr name="drawableTint" format="color" />
+        <attr name="drawableTintMode" format="color" />
+    </declare-styleable>
+</resources>

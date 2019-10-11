@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- HACK: We don't use toolbar subtitle, so we want the title to be bigger. -->
+    <dimen name="abc_text_size_title_material_toolbar" tools:ignore="MissingDefaultResource">18dp</dimen>
+
+    <dimen name="toolbar_height">48dp</dimen>
+    <dimen name="toolbar_and_toolbar_height">96dp</dimen>
+    <dimen name="toolbar_and_tab_height">96dp</dimen>
+    <dimen name="scrim_height">144dp</dimen>
+
+    <dimen name="item_cover_horizontal_margin">0dp</dimen>
+    <dimen name="item_cover_vertical_margin">0dp</dimen>
+    <dimen name="item_cover_vertical_margin_negative">0dp</dimen>
+</resources>

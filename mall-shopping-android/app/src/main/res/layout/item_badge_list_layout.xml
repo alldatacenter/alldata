@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2017 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:parentTag="android.widget.HorizontalScrollView">
+
+    <LinearLayout
+        android:id="@+id/badge_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/top_250_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/item_badge_list_space"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="@dimen/item_badge_size"
+                android:layout_height="@dimen/item_badge_size">
+
+                <TextView
+                    android:id="@+id/top_250_rank"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/item_badge_circle_outline_white"
+                    android:gravity="center"
+                    android:textColor="?android:textColorSecondary"
+                    android:textSize="24dp"
+                    app:backgroundTint="?colorAccent"
+                    tools:ignore="MissingPrefix,SpUsage" />
+
+                <TextView
+                    android:id="@+id/top_250_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:paddingLeft="4.5dp"
+                    android:paddingRight="4.5dp"
+                    android:paddingTop="2.5dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/item_badge_circle_outline_white"
+                    android:includeFontPadding="false"
+                    android:text="@string/item_top_250_badge"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="9dp"
+                    android:theme="?darkTheme"
+                    app:backgroundTint="?colorAccent"
+                    tools:ignore="MissingPrefix,SpUsage" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/item_top_250"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rating_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/rating_badge"
+                android:layout_width="@dimen/item_badge_size"
+                android:layout_height="@dimen/item_badge_size"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:theme="?darkTheme">
+
+                <TextView
+                    android:id="@+id/rating_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginBottom="-2dp"
+                    android:includeFontPadding="false"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    tools:ignore="SpUsage" />
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-0.5dp"
+                    android:layout_marginRight="-0.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:layout_marginBottom="-1dp"
+                    android:minHeight="7.5dp"
+                    android:maxHeight="7.5dp"
+                    app:mrb_progressTint="?android:textColorPrimary"
+                    style="@style/Widget.MaterialRatingBar.RatingBar.Indicator.Small" />
+            </LinearLayout>
+
+            <include
+                layout="@layout/item_rating_count_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/followings_rating_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_badge_list_space"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/followings_rating_badge"
+                android:layout_width="@dimen/item_badge_size"
+                android:layout_height="@dimen/item_badge_size"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:theme="?darkTheme">
+
+                <TextView
+                    android:id="@+id/followings_rating_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginBottom="-2dp"
+                    android:includeFontPadding="false"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    tools:ignore="SpUsage" />
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/followings_rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-0.5dp"
+                    android:layout_marginRight="-0.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:layout_marginBottom="-1dp"
+                    android:minHeight="7.5dp"
+                    android:maxHeight="7.5dp"
+                    app:mrb_progressTint="?android:textColorPrimary"
+                    style="@style/Widget.MaterialRatingBar.RatingBar.Indicator.Small" />
+            </LinearLayout>
+
+            <include
+                layout="@layout/item_followings_rating_count_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/genre_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_badge_list_space"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/genre_badge"
+                android:layout_width="@dimen/item_badge_size"
+                android:layout_height="@dimen/item_badge_size"
+                android:padding="@dimen/item_badge_padding"
+                android:background="@drawable/item_badge_circle_filled_white"
+                app:backgroundTint="?colorAccent"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/genre_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/similar_items_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_badge_list_space"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/item_badge_size"
+                android:layout_height="@dimen/item_badge_size"
+                android:padding="@dimen/item_badge_padding"
+                android:background="@drawable/item_badge_circle_filled_white"
+                android:src="@drawable/similar_items_badge_white_40dp"
+                app:backgroundTint="?colorAccent"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/item_similar_items"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        </LinearLayout>
+    </LinearLayout>
+</merge>

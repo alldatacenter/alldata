@@ -13,7 +13,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="dubbo-service-Impl" />
         </element>
-        <element id="directory" name="lib" />
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.alibaba:dubbo:unknown" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/target/dubbo-service-Impl/META-INF/MANIFEST.MF" />

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2018 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height"
+        android:layout_marginBottom="@dimen/toolbar_height"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/screen_edge_horizontal_margin"
+                android:paddingRight="@dimen/screen_edge_horizontal_margin"
+                android:paddingTop="@dimen/screen_edge_vertical_margin"
+                android:paddingBottom="@dimen/screen_edge_vertical_margin"
+                android:background="@null"
+                android:gravity="top"
+                android:hint="@string/broadcast_rebroadcast_text_hint">
+                <requestFocus />
+            </EditText>
+
+            <me.zhanghai.android.douya.broadcast.ui.SendBroadcastAttachmentLayout
+                android:id="@+id/attachment_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- TODO: Add a compatible shadow. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:layout_gravity="bottom"
+        android:background="?colorBackgroundFloating"
+        android:elevation="@dimen/appbar_elevation"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/add_image"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:layout_marginLeft="@dimen/toolbar_button_left_margin"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_add_image"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/camera_icon_white_24dp"
+            app:tint="?colorControlNormal"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/add_more_image"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_add_image"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/add_photo_icon_white_24dp"
+            android:visibility="gone"
+            app:tint="?colorControlNormal"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/remove_all_images"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_remove_all_images"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/cancel_icon_white_24dp"
+            android:visibility="gone"
+            app:tint="?colorControlNormal"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/add_link"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_add_link"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/link_icon_white_24dp"
+            app:tint="?colorControlNormal"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/edit_link"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_edit_link"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/edit_icon_white_24dp"
+            android:visibility="gone"
+            app:tint="?colorControlNormal"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/remove_link"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_remove_link"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/cancel_icon_white_24dp"
+            android:visibility="gone"
+            app:tint="?colorControlNormal"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/add_mention"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_add_mention"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/mention_icon_white_24dp"
+            app:tint="?colorControlNormal"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/add_topic"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:layout_marginRight="@dimen/toolbar_button_right_margin"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_add_topic"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/topic_icon_white_24dp"
+            app:tint="?colorControlNormal"
+            tools:ignore="MissingPrefix" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <me.zhanghai.android.douya.ui.CounterTextView
+            android:id="@+id/counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/screen_edge_horizontal_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </LinearLayout>
+
+    <!-- Appbar layout must be on top of content so that transition can have correct z-order. -->
+    <me.zhanghai.android.douya.ui.AppBarWrapperLayout
+        android:id="@+id/appBarWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:paddingLeft="@dimen/toolbar_navigation_button_left_margin"
+            android:paddingRight="@dimen/toolbar_button_right_margin"
+            android:background="?colorPrimary"
+            android:elevation="@dimen/appbar_elevation"
+            android:theme="?actionBarTheme"
+            app:navigationIcon="@drawable/close_icon_white_24dp"
+            app:popupTheme="?actionBarPopupTheme"
+            app:titleMarginStart="@dimen/toolbar_title_left_margin" />
+    </me.zhanghai.android.douya.ui.AppBarWrapperLayout>
+</FrameLayout>

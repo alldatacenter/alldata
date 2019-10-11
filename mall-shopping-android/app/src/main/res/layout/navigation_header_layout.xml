@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:id="@+id/scrim"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/scrim_height"
+        android:layout_gravity="bottom" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false">
+
+            <me.zhanghai.android.douya.ui.SimpleCircleImageView
+                android:id="@+id/fade_out_recent_one_avatar"
+                android:layout_width="@dimen/touch_target_size"
+                android:layout_height="@dimen/touch_target_size"
+                android:layout_alignLeft="@+id/recent_one_avatar"
+                android:layout_alignTop="@id/recent_one_avatar"
+                android:padding="@dimen/avatar_padding" />
+
+            <me.zhanghai.android.douya.ui.SimpleCircleImageView
+                android:id="@+id/recent_one_avatar"
+                android:layout_width="@dimen/touch_target_size"
+                android:layout_height="@dimen/touch_target_size"
+                android:layout_toLeftOf="@+id/recent_two_avatar"
+                android:layout_alignWithParentIfMissing="true"
+                android:layout_marginRight="@dimen/screen_edge_horizontal_margin_with_8dp_padding"
+                android:layout_marginTop="@dimen/screen_edge_horizontal_margin_with_4dp_padding"
+                android:padding="@dimen/avatar_padding" />
+
+            <me.zhanghai.android.douya.ui.SimpleCircleImageView
+                android:id="@+id/fade_out_recent_two_avatar"
+                android:layout_width="@dimen/touch_target_size"
+                android:layout_height="@dimen/touch_target_size"
+                android:layout_alignLeft="@id/recent_two_avatar"
+                android:layout_alignTop="@id/recent_two_avatar"
+                android:padding="@dimen/avatar_padding"
+                android:visibility="invisible" />
+
+            <me.zhanghai.android.douya.ui.SimpleCircleImageView
+                android:id="@+id/recent_two_avatar"
+                android:layout_width="@dimen/touch_target_size"
+                android:layout_height="@dimen/touch_target_size"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/screen_edge_horizontal_margin_with_4dp_padding"
+                android:layout_marginTop="@dimen/screen_edge_horizontal_margin_with_4dp_padding"
+                android:padding="@dimen/avatar_padding" />
+
+            <me.zhanghai.android.douya.ui.SimpleCircleImageView
+                android:id="@+id/fade_out_avatar"
+                android:layout_width="@dimen/navigation_header_avatar_size"
+                android:layout_height="@dimen/navigation_header_avatar_size"
+                android:layout_alignLeft="@+id/avatar"
+                android:layout_alignTop="@id/avatar"
+                android:visibility="invisible" />
+
+            <me.zhanghai.android.douya.ui.SimpleCircleImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/navigation_header_avatar_size"
+                android:layout_height="@dimen/navigation_header_avatar_size"
+                android:layout_marginLeft="@dimen/screen_edge_horizontal_margin"
+                android:layout_marginTop="@dimen/screen_edge_horizontal_margin" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/single_line_list_item_height"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/list_padding_vertical"
+            android:paddingRight="@dimen/screen_edge_horizontal_margin"
+            android:background="?selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/screen_edge_horizontal_margin"
+                android:orientation="vertical">
+
+                <!--
+                  ~ Use android:width="match_parent" for the two TextViews so that their bounds can
+                  ~ remain stable when transition start. Otherwise glitches will happen.
+                  -->
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="?android:textColorSecondary" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/dropDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/drop_down_icon_white_24dp" />
+        </LinearLayout>
+    </FrameLayout>
+</merge>

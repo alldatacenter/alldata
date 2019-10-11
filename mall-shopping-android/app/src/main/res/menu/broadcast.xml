@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".broadcast.ui.BroadcastActivity">
+
+    <item
+        android:id="@+id/action_copy_text"
+        android:orderInCategory="100"
+        android:title="@string/broadcast_copy_text"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="100"
+        android:title="@string/broadcast_delete"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="100"
+        android:title="@string/share"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_view_on_web"
+        android:orderInCategory="100"
+        android:title="@string/view_on_web"
+        app:showAsAction="never" />
+</menu>

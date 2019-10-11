@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: wx
+  messages:
+    encoding: UTF-8
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root:  ERROR
+    org.springframework:  ERROR
+    org.mybatis:  ERROR
+    com.platform.mall.wx:  DEBUG
+    com.platform.mall:  ERROR

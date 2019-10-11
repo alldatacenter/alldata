@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2017 Zhang Hai <Dreaming.in.Code.ZH@Gmail.com>
+  ~ All Rights Reserved.
+  -->
+
+<paths>
+    <!-- See com.bumptech.glide.load.engine.cache.DiskCache.Factory.DEFAULT_DISK_CACHE_DIR . -->
+    <cache-path name="glide_cache" path="image_manager_disk_cache/" />
+    <!-- See android.os.Environment.DIRECTORY_PICTURES . -->
+    <!-- Should be kept in sync with FileUtils -->
+    <external-path name="pictures" path="Pictures/Douya/" />
+</paths>
