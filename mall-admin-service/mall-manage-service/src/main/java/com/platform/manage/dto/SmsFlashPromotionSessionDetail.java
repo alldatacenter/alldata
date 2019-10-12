@@ -1,6 +1,6 @@
 package com.platform.manage.dto;
 
-import com.platform.manage.model.SmsFlashPromotionSession;
+import com.platform.mbg.model.SmsFlashPromotionSession;
 import lombok.Getter;
 import lombok.Setter;
 

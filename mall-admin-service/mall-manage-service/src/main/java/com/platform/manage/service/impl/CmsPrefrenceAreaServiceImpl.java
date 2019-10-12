@@ -1,8 +1,8 @@
 package com.platform.manage.service.impl;
 
-import com.platform.manage.mapper.CmsPrefrenceAreaMapper;
-import com.platform.manage.model.CmsPrefrenceArea;
-import com.platform.manage.model.CmsPrefrenceAreaExample;
+import com.platform.mbg.mapper.CmsPrefrenceAreaMapper;
+import com.platform.mbg.model.CmsPrefrenceArea;
+import com.platform.mbg.model.CmsPrefrenceAreaExample;
 import com.platform.manage.service.CmsPrefrenceAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

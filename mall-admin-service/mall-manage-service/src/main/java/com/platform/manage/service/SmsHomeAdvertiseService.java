@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.SmsHomeAdvertise;
+import com.platform.mbg.model.SmsHomeAdvertise;
 
 import java.util.List;
 

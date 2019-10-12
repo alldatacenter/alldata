@@ -1,12 +1,12 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonPage;
-import com.platform.manage.common.CommonResult;
+import com.platform.common.CommonPage;
+import com.platform.common.CommonResult;
 import com.platform.manage.dto.UmsAdminLoginParam;
 import com.platform.manage.dto.UmsAdminParam;
-import com.platform.manage.model.UmsAdmin;
-import com.platform.manage.model.UmsPermission;
-import com.platform.manage.model.UmsRole;
+import com.platform.mbg.model.UmsAdmin;
+import com.platform.mbg.model.UmsPermission;
+import com.platform.mbg.model.UmsRole;
 import com.platform.manage.service.UmsAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

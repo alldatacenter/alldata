@@ -1,6 +1,6 @@
 package com.platform.manage.dto;
 
-import com.platform.manage.model.UmsPermission;
+import com.platform.mbg.model.UmsPermission;
 import lombok.Getter;
 import lombok.Setter;
 

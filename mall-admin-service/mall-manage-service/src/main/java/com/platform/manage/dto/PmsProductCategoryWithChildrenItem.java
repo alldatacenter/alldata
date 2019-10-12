@@ -1,6 +1,6 @@
 package com.platform.manage.dto;
 
-import com.platform.manage.model.PmsProductCategory;
+import com.platform.mbg.model.PmsProductCategory;
 
 import java.util.List;
 

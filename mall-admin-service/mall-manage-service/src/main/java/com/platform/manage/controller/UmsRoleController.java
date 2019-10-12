@@ -1,8 +1,8 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonResult;
-import com.platform.manage.model.UmsPermission;
-import com.platform.manage.model.UmsRole;
+import com.platform.common.CommonResult;
+import com.platform.mbg.model.UmsPermission;
+import com.platform.mbg.model.UmsRole;
 import com.platform.manage.service.UmsRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

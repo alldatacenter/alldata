@@ -1,7 +1,7 @@
 package com.platform.search.controller;
 
-import com.platform.manage.common.CommonPage;
-import com.platform.manage.common.CommonResult;
+import com.platform.common.CommonPage;
+import com.platform.common.CommonResult;
 import com.platform.search.domain.EsProduct;
 import com.platform.search.domain.EsProductRelatedInfo;
 import com.platform.search.service.EsProductService;

@@ -1,11 +1,11 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.dao.SmsFlashPromotionProductRelationDao;
+import com.platform.manage.mapper.SmsFlashPromotionProductRelationDao;
 import com.platform.manage.dto.SmsFlashPromotionProduct;
-import com.platform.manage.mapper.SmsFlashPromotionProductRelationMapper;
-import com.platform.manage.model.SmsFlashPromotionProductRelation;
-import com.platform.manage.model.SmsFlashPromotionProductRelationExample;
+import com.platform.mbg.mapper.SmsFlashPromotionProductRelationMapper;
+import com.platform.mbg.model.SmsFlashPromotionProductRelation;
+import com.platform.mbg.model.SmsFlashPromotionProductRelationExample;
 import com.platform.manage.service.SmsFlashPromotionProductRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.CmsSubject;
+import com.platform.mbg.model.CmsSubject;
 
 import java.util.List;
 

@@ -1,16 +1,16 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.dao.UmsAdminPermissionRelationDao;
-import com.platform.manage.dao.UmsAdminRoleRelationDao;
+import com.platform.manage.mapper.UmsAdminPermissionRelationDao;
+import com.platform.manage.mapper.UmsAdminRoleRelationDao;
 import com.platform.manage.dto.UmsAdminParam;
-import com.platform.manage.mapper.UmsAdminLoginLogMapper;
-import com.platform.manage.mapper.UmsAdminMapper;
-import com.platform.manage.mapper.UmsAdminPermissionRelationMapper;
-import com.platform.manage.mapper.UmsAdminRoleRelationMapper;
-import com.platform.manage.model.*;
+import com.platform.mbg.mapper.UmsAdminLoginLogMapper;
+import com.platform.mbg.mapper.UmsAdminMapper;
+import com.platform.mbg.mapper.UmsAdminPermissionRelationMapper;
+import com.platform.mbg.mapper.UmsAdminRoleRelationMapper;
 import com.platform.manage.service.UmsAdminService;
 import com.platform.manage.util.JwtTokenUtil;
+import com.platform.mbg.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

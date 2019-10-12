@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.mapper.SmsFlashPromotionMapper;
-import com.platform.manage.model.SmsFlashPromotion;
-import com.platform.manage.model.SmsFlashPromotionExample;
+import com.platform.mbg.mapper.SmsFlashPromotionMapper;
+import com.platform.mbg.model.SmsFlashPromotion;
+import com.platform.mbg.model.SmsFlashPromotionExample;
 import com.platform.manage.service.SmsFlashPromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.UmsMemberLevel;
+import com.platform.mbg.model.UmsMemberLevel;
 
 import java.util.List;
 

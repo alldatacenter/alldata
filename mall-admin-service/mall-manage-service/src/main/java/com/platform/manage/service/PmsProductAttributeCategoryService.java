@@ -1,7 +1,7 @@
 package com.platform.manage.service;
 
 import com.platform.manage.dto.PmsProductAttributeCategoryItem;
-import com.platform.manage.model.PmsProductAttributeCategory;
+import com.platform.mbg.model.PmsProductAttributeCategory;
 
 import java.util.List;
 

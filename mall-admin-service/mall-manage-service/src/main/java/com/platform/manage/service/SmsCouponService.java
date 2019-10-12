@@ -1,7 +1,7 @@
 package com.platform.manage.service;
 
 import com.platform.manage.dto.SmsCouponParam;
-import com.platform.manage.model.SmsCoupon;
+import com.platform.mbg.model.SmsCoupon;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

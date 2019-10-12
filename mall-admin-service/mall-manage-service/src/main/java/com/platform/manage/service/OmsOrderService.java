@@ -1,8 +1,8 @@
 package com.platform.manage.service;
 
 import com.platform.manage.dto.*;
-import com.platform.manage.model.OmsOrder;
-import com.platform.manage.model.OrderListData;
+import com.platform.mbg.model.OmsOrder;
+import com.platform.mbg.model.OrderListData;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

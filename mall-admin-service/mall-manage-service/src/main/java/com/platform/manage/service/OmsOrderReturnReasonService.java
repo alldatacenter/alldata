@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.OmsOrderReturnReason;
+import com.platform.mbg.model.OmsOrderReturnReason;
 
 import java.util.List;
 

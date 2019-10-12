@@ -1,8 +1,8 @@
 package com.platform.manage.dto;
 
-import com.platform.manage.model.SmsCoupon;
-import com.platform.manage.model.SmsCouponProductCategoryRelation;
-import com.platform.manage.model.SmsCouponProductRelation;
+import com.platform.mbg.model.SmsCoupon;
+import com.platform.mbg.model.SmsCouponProductCategoryRelation;
+import com.platform.mbg.model.SmsCouponProductRelation;
 
 import java.util.List;
 

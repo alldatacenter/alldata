@@ -1,7 +1,7 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonResult;
-import com.platform.manage.model.UmsMemberLevel;
+import com.platform.common.CommonResult;
+import com.platform.mbg.model.UmsMemberLevel;
 import com.platform.manage.service.UmsMemberLevelService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -1,10 +1,10 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonPage;
-import com.platform.manage.common.CommonResult;
+import com.platform.common.CommonPage;
+import com.platform.common.CommonResult;
 import com.platform.manage.dto.PmsProductCategoryParam;
 import com.platform.manage.dto.PmsProductCategoryWithChildrenItem;
-import com.platform.manage.model.PmsProductCategory;
+import com.platform.mbg.model.PmsProductCategory;
 import com.platform.manage.service.PmsProductCategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

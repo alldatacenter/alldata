@@ -1,8 +1,8 @@
 package com.platform.manage.service.impl;
 
-import com.platform.manage.mapper.OmsCompanyAddressMapper;
-import com.platform.manage.model.OmsCompanyAddress;
-import com.platform.manage.model.OmsCompanyAddressExample;
+import com.platform.mbg.mapper.OmsCompanyAddressMapper;
+import com.platform.mbg.model.OmsCompanyAddress;
+import com.platform.mbg.model.OmsCompanyAddressExample;
 import com.platform.manage.service.OmsCompanyAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

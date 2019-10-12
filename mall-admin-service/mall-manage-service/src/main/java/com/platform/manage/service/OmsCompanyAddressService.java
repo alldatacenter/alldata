@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.OmsCompanyAddress;
+import com.platform.mbg.model.OmsCompanyAddress;
 
 import java.util.List;
 

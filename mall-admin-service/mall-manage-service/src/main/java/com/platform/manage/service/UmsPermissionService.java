@@ -1,7 +1,7 @@
 package com.platform.manage.service;
 
 import com.platform.manage.dto.UmsPermissionNode;
-import com.platform.manage.model.UmsPermission;
+import com.platform.mbg.model.UmsPermission;
 
 import java.util.List;
 

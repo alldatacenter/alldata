@@ -1,6 +1,6 @@
 package com.platform.manage.dto;
 
-import com.platform.manage.model.*;
+import com.platform.mbg.model.*;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;

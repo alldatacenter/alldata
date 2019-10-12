@@ -1,7 +1,482 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0e6e3ca-6f8e-48b9-94bc-47f7ada939bb" name="Default Changelist" comment="" />
+    <list default="true" id="c0e6e3ca-6f8e-48b9-94bc-47f7ada939bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/CmsPrefrenceAreaProductRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/CmsSubjectProductRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/OmsOrderDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/OmsOrderOperateHistoryDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/OmsOrderReturnApplyDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsMemberPriceDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductAttributeCategoryDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductAttributeDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductAttributeValueDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductCategoryAttributeRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductCategoryDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductFullReductionDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductLadderDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsProductVertifyRecordDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/PmsSkuStockDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/SmsCouponDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/SmsCouponProductCategoryRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/SmsCouponProductRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/SmsFlashPromotionProductRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/UmsAdminPermissionRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/UmsAdminRoleRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/mapper/UmsRolePermissionRelationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/resources/mapper/EsProductDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/manage/common/CommonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/common/CommonPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/manage/common/CommonResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/common/CommonResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/manage/common/IErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/common/IErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/manage/common/ResultCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/common/ResultCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/bo/AdminUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/bo/AdminUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/component/BindingResultAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/component/BindingResultAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/component/RestAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/component/RestAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/component/RestfulAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/component/RestfulAccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/config/MyBatisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/config/MyBatisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/CmsPrefrenceAreaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/CmsPrefrenceAreaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/CmsSubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/CmsSubjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsCompanyAddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsCompanyAddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsOrderReturnApplyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsOrderReturnApplyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsOrderReturnReasonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsOrderReturnReasonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsOrderSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OmsOrderSettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OssController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/OssController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsBrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsBrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsProductAttributeCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsProductAttributeCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsProductAttributeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsProductAttributeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsProductCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsProductCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsSkuStockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/PmsSkuStockController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsCouponController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsCouponController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsCouponHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsCouponHistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsFlashPromotionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsFlashPromotionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsFlashPromotionProductRelationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsFlashPromotionProductRelationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsFlashPromotionSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsFlashPromotionSessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeAdvertiseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeAdvertiseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeBrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeBrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeNewProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeNewProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeRecommendProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeRecommendProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeRecommendSubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/SmsHomeRecommendSubjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/UmsAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/UmsAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/UmsMemberLevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/UmsMemberLevelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/UmsPermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/UmsPermissionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/UmsRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/controller/UmsRoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/CmsPrefrenceAreaProductRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/CmsPrefrenceAreaProductRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/CmsSubjectProductRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/CmsSubjectProductRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/OmsOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/OmsOrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/OmsOrderOperateHistoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/OmsOrderOperateHistoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/OmsOrderReturnApplyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/OmsOrderReturnApplyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsMemberPriceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsMemberPriceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductAttributeCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductAttributeCategoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductAttributeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductAttributeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductAttributeValueDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductAttributeValueDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductCategoryAttributeRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductCategoryAttributeRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductCategoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductFullReductionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductFullReductionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductLadderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductLadderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsProductVertifyRecordDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsProductVertifyRecordDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/PmsSkuStockDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/PmsSkuStockDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/SmsCouponDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/SmsCouponDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/SmsCouponProductCategoryRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/SmsCouponProductCategoryRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/SmsCouponProductRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/SmsCouponProductRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/SmsFlashPromotionProductRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/SmsFlashPromotionProductRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/UmsAdminPermissionRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/UmsAdminPermissionRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/UmsAdminRoleRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/UmsAdminRoleRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dao/UmsRolePermissionRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/mapper/UmsRolePermissionRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/OmsOrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/OmsOrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/OmsOrderReturnApplyResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/OmsOrderReturnApplyResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/PmsProductAttributeCategoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/PmsProductAttributeCategoryItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/PmsProductCategoryWithChildrenItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/PmsProductCategoryWithChildrenItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/PmsProductParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/PmsProductParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/SmsCouponParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/SmsCouponParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/SmsFlashPromotionProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/SmsFlashPromotionProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/SmsFlashPromotionSessionDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/SmsFlashPromotionSessionDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/UmsPermissionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/dto/UmsPermissionNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/CmsPrefrenceAreaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/CmsPrefrenceAreaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/CmsSubjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/CmsSubjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsCompanyAddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsCompanyAddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsOrderReturnApplyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsOrderReturnApplyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsOrderReturnReasonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsOrderReturnReasonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsOrderSettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/OmsOrderSettingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsBrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsBrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsProductAttributeCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsProductAttributeCategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsProductAttributeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsProductAttributeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsProductCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsProductCategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsSkuStockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/PmsSkuStockService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsCouponHistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsCouponHistoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsCouponService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsCouponService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsFlashPromotionProductRelationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsFlashPromotionProductRelationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsFlashPromotionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsFlashPromotionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsFlashPromotionSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsFlashPromotionSessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeAdvertiseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeAdvertiseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeBrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeBrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeNewProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeNewProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeRecommendProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeRecommendProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeRecommendSubjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/SmsHomeRecommendSubjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/UmsAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/UmsAdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/UmsMemberLevelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/UmsMemberLevelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/UmsPermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/UmsPermissionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/UmsRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/UmsRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/CmsPrefrenceAreaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/CmsPrefrenceAreaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/CmsSubjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/CmsSubjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsCompanyAddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsCompanyAddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsOrderReturnApplyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsOrderReturnApplyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsOrderReturnReasonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsOrderReturnReasonServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsOrderSettingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/OmsOrderSettingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsBrandServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsBrandServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsProductAttributeCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsProductAttributeCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsProductAttributeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsProductAttributeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsProductCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsProductCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsSkuStockServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/PmsSkuStockServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsCouponHistoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsCouponHistoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsCouponServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsCouponServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsFlashPromotionProductRelationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsFlashPromotionProductRelationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsFlashPromotionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsFlashPromotionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsFlashPromotionSessionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsFlashPromotionSessionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeAdvertiseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeAdvertiseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeBrandServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeBrandServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeNewProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeNewProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeRecommendProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeRecommendProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeRecommendSubjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/SmsHomeRecommendSubjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/UmsAdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/UmsAdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/UmsMemberLevelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/UmsMemberLevelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/UmsPermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/UmsPermissionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/UmsRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/java/com/platform/manage/service/impl/UmsRoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/CmsPrefrenceAreaProductRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/CmsSubjectProductRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/OmsOrderDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/OmsOrderOperateHistoryDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/OmsOrderReturnApplyDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsMemberPriceDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductAttributeCategoryDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductAttributeDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductAttributeValueDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductCategoryAttributeRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductCategoryDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductFullReductionDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductLadderDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsProductVertifyRecordDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/PmsSkuStockDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/SmsCouponDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/SmsCouponProductCategoryRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/SmsCouponProductRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/SmsFlashPromotionProductRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/UmsAdminPermissionRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/UmsAdminRoleRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-manage-service/src/main/resources/dao/UmsRolePermissionRelationDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/CommentGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/CommentGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsHelpCategoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsHelpMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsMemberReportMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsPrefrenceAreaMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsPrefrenceAreaProductRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsSubjectCategoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsSubjectCommentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsSubjectMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsSubjectProductRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsTopicCategoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsTopicCommentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/CmsTopicMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/OmsCartItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/OmsCompanyAddressMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/OmsOrderItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/OmsOrderMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/OmsOrderOperateHistoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/OmsOrderReturnApplyMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/OmsOrderReturnReasonMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/OmsOrderSettingMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsAlbumMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsAlbumPicMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsBrandMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsCommentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsCommentReplayMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsFeightTemplateMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsMemberPriceMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductAttributeCategoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductAttributeMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductAttributeValueMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductCategoryAttributeRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductCategoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductFullReductionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductLadderMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductOperateLogMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsProductVertifyRecordMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/PmsSkuStockMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsCouponHistoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsCouponMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsCouponProductCategoryRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsCouponProductRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsFlashPromotionLogMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsFlashPromotionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsFlashPromotionProductRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsFlashPromotionSessionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsHomeAdvertiseMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsHomeBrandMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsHomeNewProductMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsHomeRecommendProductMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/SmsHomeRecommendSubjectMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsAdminLoginLogMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsAdminMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsAdminPermissionRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsAdminRoleRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsGrowthChangeHistoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsIntegrationChangeHistoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsIntegrationConsumeSettingMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberLevelMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberLoginLogMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberMemberTagRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberProductCategoryRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberReceiveAddressMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberRuleSettingMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberStatisticsInfoMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberTagMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsMemberTaskMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsPermissionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsRoleMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/mapper/UmsRolePermissionRelationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsHelp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsHelpCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsHelpCategoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsHelpExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsMemberReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsMemberReportExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsPrefrenceArea.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsPrefrenceAreaExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsPrefrenceAreaProductRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsPrefrenceAreaProductRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubjectCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubjectCategoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubjectComment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubjectCommentExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubjectExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubjectProductRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubjectProductRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsTopic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsTopicCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsTopicCategoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsTopicComment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsTopicCommentExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsTopicExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/HomePageData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsCartItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsCartItemExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsCompanyAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsCompanyAddressExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderItemExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderOperateHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderOperateHistoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderReturnApply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderReturnApplyExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderReturnReason.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderReturnReasonExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderSetting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OmsOrderSettingExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/OrderListData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsAlbum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsAlbumExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsAlbumPic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsAlbumPicExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsBrand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsBrandExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsComment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsCommentExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsCommentReplay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsCommentReplayExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsFeightTemplate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsFeightTemplateExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsMemberPrice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsMemberPriceExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductAttribute.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductAttributeCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductAttributeCategoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductAttributeExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductAttributeValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductAttributeValueExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductCategoryAttributeRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductCategoryAttributeRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductCategoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductFullReduction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductFullReductionExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductLadder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductLadderExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductOperateLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductOperateLogExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductVertifyRecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsProductVertifyRecordExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsSkuStock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/PmsSkuStockExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsCoupon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsCouponExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsCouponHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsCouponHistoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsCouponProductCategoryRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsCouponProductCategoryRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsCouponProductRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsCouponProductRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsFlashPromotion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsFlashPromotionExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsFlashPromotionLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsFlashPromotionLogExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsFlashPromotionProductRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsFlashPromotionProductRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsFlashPromotionSession.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsFlashPromotionSessionExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeAdvertise.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeAdvertiseExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeBrand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeBrandExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeNewProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeNewProductExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeRecommendProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeRecommendProductExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeRecommendSubject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/SmsHomeRecommendSubjectExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsAdmin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsAdminExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsAdminLoginLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsAdminLoginLogExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsAdminPermissionRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsAdminPermissionRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsAdminRoleRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsAdminRoleRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsGrowthChangeHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsGrowthChangeHistoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsIntegrationChangeHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsIntegrationChangeHistoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsIntegrationConsumeSetting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsIntegrationConsumeSettingExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberLevel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberLevelExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberLoginLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberLoginLogExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberMemberTagRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberMemberTagRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberProductCategoryRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberProductCategoryRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberReceiveAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberReceiveAddressExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberRuleSetting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberRuleSettingExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberStatisticsInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberStatisticsInfoExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberTag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberTagExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsMemberTaskExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsPermission.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsPermissionExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsRoleExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsRolePermissionRelation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/UmsRolePermissionRelationExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsHelpCategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsHelpMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsMemberReportMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsPrefrenceAreaMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsPrefrenceAreaProductRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsSubjectCategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsSubjectCommentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsSubjectMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsSubjectProductRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsTopicCategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsTopicCommentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/CmsTopicMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/OmsCartItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/OmsCompanyAddressMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/OmsOrderItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/OmsOrderMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/OmsOrderOperateHistoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/OmsOrderReturnApplyMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/OmsOrderReturnReasonMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/OmsOrderSettingMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsAlbumMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsAlbumPicMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsBrandMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsCommentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsCommentReplayMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsFeightTemplateMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsMemberPriceMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductAttributeCategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductAttributeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductAttributeValueMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductCategoryAttributeRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductCategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductFullReductionMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductLadderMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductOperateLogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsProductVertifyRecordMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/PmsSkuStockMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsCouponHistoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsCouponMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsCouponProductCategoryRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsCouponProductRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsFlashPromotionLogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsFlashPromotionMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsFlashPromotionProductRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsFlashPromotionSessionMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsHomeAdvertiseMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsHomeBrandMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsHomeNewProductMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsHomeRecommendProductMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/SmsHomeRecommendSubjectMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsAdminLoginLogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsAdminMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsAdminPermissionRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsAdminRoleRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsGrowthChangeHistoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsIntegrationChangeHistoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsIntegrationConsumeSettingMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberLevelMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberLoginLogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberMemberTagRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberProductCategoryRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberReceiveAddressMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberRuleSettingMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberStatisticsInfoMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberTagMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsMemberTaskMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsPermissionMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsRoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/com.platform.mbg.mapper/UmsRolePermissionRelationMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-search-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-search-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/config/MyBatisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/config/MyBatisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/controller/EsProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/controller/EsProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/dao/EsProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/mapper/EsProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/service/impl/EsProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/service/impl/EsProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/resources/dao/EsProductDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/mallbackend/target/" />
     <ignored path="$PROJECT_DIR$/mall-end/target/" />
     <ignored path="$PROJECT_DIR$/mall-admin-web/target/" />
@@ -87,32 +562,13 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/controller/EsProductController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search-service/mall-search.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-800">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search-service/mall-search-service.iml">
+        <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1080" />
+            <state relative-caret-position="300">
+              <caret line="42" column="121" selection-start-line="42" selection-start-column="121" selection-end-line="42" selection-end-column="121" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -147,7 +603,6 @@
       <find>3.5.1&lt;</find>
       <find>3.4.6&lt;</find>
       <find>jsonwebtoken</find>
-      <find>mall-backend</find>
       <find>springfox-cor</find>
       <find>2.9.2</find>
       <find>2.7.0&lt;/</find>
@@ -157,6 +612,7 @@
       <find>class CmsSubject</find>
       <find>class PmsProduct</find>
       <find>mall-search</find>
+      <find>mall-backend</find>
     </findStrings>
     <replaceStrings>
       <replace>Created by wulinhao on 2019/9</replace>
@@ -200,7 +656,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mall-backend/mall-wx-server/src/main/java/com/platform/mall/wx/service/WxOrderService.java" />
         <option value="$PROJECT_DIR$/mall-backend/mall-wx-db/mybatis-generator/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/mall-backend/mall-admin/pom.xml" />
         <option value="$PROJECT_DIR$/mall-backend/mall-wx-db/src/main/java/com/platform/mall/domain/LitemallGoods.java" />
@@ -251,6 +706,7 @@
         <option value="$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform/model/CmsSubject.java" />
         <option value="$PROJECT_DIR$/mall-shopping-android/pom.xml" />
         <option value="$PROJECT_DIR$/mall-admin-service/mall-search-service/mall-search.iml" />
+        <option value="$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue" />
       </list>
     </option>
   </component>
@@ -296,9 +752,37 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,7 +797,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../../../../software/Android/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570845590822" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570851773733" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="jdk.selected.PYTHON_MODULE" value="Python 3.7 (ExportScene01)" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform" />
@@ -525,18 +1009,20 @@
       <workItem from="1570802998905" duration="1109000" />
       <workItem from="1570809915027" duration="674000" />
       <workItem from="1570810894810" duration="3621000" />
-      <workItem from="1570843354329" duration="866000" />
+      <workItem from="1570843354329" duration="1465000" />
+      <workItem from="1570846325046" duration="1248000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120240000" />
+    <option name="totallyTimeSpent" value="122087000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8317757" visible="true" weight="0.33042896" />
-      <window_info id="Structure" order="1" sideWeight="0.1682243" side_tool="true" visible="true" weight="0.33042896" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8299065" visible="true" weight="0.14678285" />
+      <window_info id="Structure" order="1" sideWeight="0.17009346" side_tool="true" visible="true" weight="0.14678285" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -742,13 +1228,12 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-portal04/pom.xml" />
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search05/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/manage/model/CmsHelp.java">
+    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsHelp.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-mobile-service/src/main/java/com/platform/mobile/dao/HomeDao.java" />
-    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/dao/EsProductDao.java">
+    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/mapper/EsProductDao.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-manage-service/mall-manage-service.iml">
@@ -757,7 +1242,7 @@
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform/base/MallPortalApplication.java" />
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-mobile-service/src/main/java/com/platform/mobile/service/HomeService.java" />
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-mobile-service/src/main/java/com/platform/mobile/controller/HomeController.java" />
-    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/manage/common/CommonPage.java">
+    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-common/src/main/java/com/platform/common/CommonPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
@@ -850,7 +1335,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search-service/src/main/java/com/platform/search/controller/EsProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="220">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -860,14 +1345,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search-service/mall-search.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-800">
+        <state relative-caret-position="220">
           <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-search-service/mall-search-service.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1080" />
+        <state relative-caret-position="300">
+          <caret line="42" column="121" selection-start-line="42" selection-start-column="121" selection-end-line="42" selection-end-column="121" />
+        </state>
       </provider>
     </entry>
   </component>
@@ -925,7 +1415,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>mall-manage-service</last-edited>
+          <last-edited>compute-mr</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

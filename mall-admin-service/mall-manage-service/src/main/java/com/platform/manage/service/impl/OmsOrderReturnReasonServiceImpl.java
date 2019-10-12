@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.mapper.OmsOrderReturnReasonMapper;
-import com.platform.manage.model.OmsOrderReturnReason;
-import com.platform.manage.model.OmsOrderReturnReasonExample;
+import com.platform.mbg.mapper.OmsOrderReturnReasonMapper;
+import com.platform.mbg.model.OmsOrderReturnReason;
+import com.platform.mbg.model.OmsOrderReturnReasonExample;
 import com.platform.manage.service.OmsOrderReturnReasonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

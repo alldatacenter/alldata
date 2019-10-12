@@ -1,8 +1,8 @@
 package com.platform.manage.dto;
 
-import com.platform.manage.model.OmsOrder;
-import com.platform.manage.model.OmsOrderItem;
-import com.platform.manage.model.OmsOrderOperateHistory;
+import com.platform.mbg.model.OmsOrder;
+import com.platform.mbg.model.OmsOrderItem;
+import com.platform.mbg.model.OmsOrderOperateHistory;
 import lombok.Getter;
 import lombok.Setter;
 

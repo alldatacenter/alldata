@@ -1,7 +1,7 @@
 package com.platform.manage.component;
 
 import cn.hutool.json.JSONUtil;
-import com.platform.manage.common.CommonResult;
+import com.platform.common.CommonResult;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;

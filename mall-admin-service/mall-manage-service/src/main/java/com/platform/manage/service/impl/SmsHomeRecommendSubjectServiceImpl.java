@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.mapper.SmsHomeRecommendSubjectMapper;
-import com.platform.manage.model.SmsHomeRecommendSubject;
-import com.platform.manage.model.SmsHomeRecommendSubjectExample;
+import com.platform.mbg.mapper.SmsHomeRecommendSubjectMapper;
+import com.platform.mbg.model.SmsHomeRecommendSubject;
+import com.platform.mbg.model.SmsHomeRecommendSubjectExample;
 import com.platform.manage.service.SmsHomeRecommendSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -2,7 +2,7 @@ package com.platform.manage.service;
 
 import com.platform.manage.dto.PmsProductCategoryParam;
 import com.platform.manage.dto.PmsProductCategoryWithChildrenItem;
-import com.platform.manage.model.PmsProductCategory;
+import com.platform.mbg.model.PmsProductCategory;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.platform.manage.bo;
 
-import com.platform.manage.model.UmsAdmin;
-import com.platform.manage.model.UmsPermission;
+import com.platform.mbg.model.UmsAdmin;
+import com.platform.mbg.model.UmsPermission;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

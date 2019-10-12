@@ -1,15 +1,15 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.dao.PmsProductCategoryAttributeRelationDao;
-import com.platform.manage.dao.PmsProductCategoryDao;
+import com.platform.manage.mapper.PmsProductCategoryAttributeRelationDao;
+import com.platform.manage.mapper.PmsProductCategoryDao;
 import com.platform.manage.dto.PmsProductCategoryParam;
 import com.platform.manage.dto.PmsProductCategoryWithChildrenItem;
-import com.platform.manage.mapper.PmsProductCategoryAttributeRelationMapper;
-import com.platform.manage.mapper.PmsProductCategoryMapper;
-import com.platform.manage.mapper.PmsProductMapper;
-import com.platform.manage.model.*;
+import com.platform.mbg.mapper.PmsProductCategoryAttributeRelationMapper;
+import com.platform.mbg.mapper.PmsProductCategoryMapper;
+import com.platform.mbg.mapper.PmsProductMapper;
 import com.platform.manage.service.PmsProductCategoryService;
+import com.platform.mbg.model.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

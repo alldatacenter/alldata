@@ -1,8 +1,8 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonResult;
-import com.platform.manage.model.HomePageData;
-import com.platform.manage.model.OrderListData;
+import com.platform.common.CommonResult;
+import com.platform.mbg.model.HomePageData;
+import com.platform.mbg.model.OrderListData;
 import com.platform.manage.service.OmsOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

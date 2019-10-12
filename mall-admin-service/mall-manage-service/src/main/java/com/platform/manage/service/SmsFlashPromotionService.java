@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.SmsFlashPromotion;
+import com.platform.mbg.model.SmsFlashPromotion;
 
 import java.util.List;
 

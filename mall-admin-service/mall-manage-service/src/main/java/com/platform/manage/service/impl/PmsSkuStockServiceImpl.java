@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
-import com.platform.manage.dao.PmsSkuStockDao;
-import com.platform.manage.mapper.PmsSkuStockMapper;
-import com.platform.manage.model.PmsSkuStock;
-import com.platform.manage.model.PmsSkuStockExample;
+import com.platform.manage.mapper.PmsSkuStockDao;
+import com.platform.mbg.mapper.PmsSkuStockMapper;
+import com.platform.mbg.model.PmsSkuStock;
+import com.platform.mbg.model.PmsSkuStockExample;
 import com.platform.manage.service.PmsSkuStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

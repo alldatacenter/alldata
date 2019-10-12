@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.SmsCouponHistory;
+import com.platform.mbg.model.SmsCouponHistory;
 
 import java.util.List;
 

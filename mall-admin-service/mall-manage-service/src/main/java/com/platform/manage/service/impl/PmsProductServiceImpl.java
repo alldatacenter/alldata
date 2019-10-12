@@ -1,13 +1,13 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.dao.*;
+import com.platform.manage.mapper.*;
 import com.platform.manage.dto.PmsProductParam;
 import com.platform.manage.dto.PmsProductQueryParam;
 import com.platform.manage.dto.PmsProductResult;
-import com.platform.manage.mapper.*;
-import com.platform.manage.model.*;
 import com.platform.manage.service.PmsProductService;
+import com.platform.mbg.mapper.*;
+import com.platform.mbg.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

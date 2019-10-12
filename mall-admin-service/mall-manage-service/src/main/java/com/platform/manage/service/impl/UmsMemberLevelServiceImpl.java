@@ -1,8 +1,8 @@
 package com.platform.manage.service.impl;
 
-import com.platform.manage.mapper.UmsMemberLevelMapper;
-import com.platform.manage.model.UmsMemberLevel;
-import com.platform.manage.model.UmsMemberLevelExample;
+import com.platform.mbg.mapper.UmsMemberLevelMapper;
+import com.platform.mbg.model.UmsMemberLevel;
+import com.platform.mbg.model.UmsMemberLevelExample;
 import com.platform.manage.service.UmsMemberLevelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

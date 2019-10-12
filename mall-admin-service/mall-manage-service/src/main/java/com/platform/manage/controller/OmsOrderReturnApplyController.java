@@ -1,11 +1,11 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonPage;
-import com.platform.manage.common.CommonResult;
+import com.platform.common.CommonPage;
+import com.platform.common.CommonResult;
 import com.platform.manage.dto.OmsOrderReturnApplyResult;
 import com.platform.manage.dto.OmsReturnApplyQueryParam;
 import com.platform.manage.dto.OmsUpdateStatusParam;
-import com.platform.manage.model.OmsOrderReturnApply;
+import com.platform.mbg.model.OmsOrderReturnApply;
 import com.platform.manage.service.OmsOrderReturnApplyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

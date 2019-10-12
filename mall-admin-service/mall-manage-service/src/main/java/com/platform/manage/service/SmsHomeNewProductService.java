@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.SmsHomeNewProduct;
+import com.platform.mbg.model.SmsHomeNewProduct;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

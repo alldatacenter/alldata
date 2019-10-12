@@ -1,7 +1,7 @@
 package com.platform.manage.dto;
 
-import com.platform.manage.model.OmsCompanyAddress;
-import com.platform.manage.model.OmsOrderReturnApply;
+import com.platform.mbg.model.OmsCompanyAddress;
+import com.platform.mbg.model.OmsOrderReturnApply;
 import lombok.Getter;
 import lombok.Setter;
 

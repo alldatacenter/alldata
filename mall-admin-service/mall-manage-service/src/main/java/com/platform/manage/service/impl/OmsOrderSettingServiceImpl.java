@@ -1,7 +1,7 @@
 package com.platform.manage.service.impl;
 
-import com.platform.manage.mapper.OmsOrderSettingMapper;
-import com.platform.manage.model.OmsOrderSetting;
+import com.platform.mbg.mapper.OmsOrderSettingMapper;
+import com.platform.mbg.model.OmsOrderSetting;
 import com.platform.manage.service.OmsOrderSettingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

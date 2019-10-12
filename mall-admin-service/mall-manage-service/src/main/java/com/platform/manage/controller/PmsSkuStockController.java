@@ -1,7 +1,7 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonResult;
-import com.platform.manage.model.PmsSkuStock;
+import com.platform.common.CommonResult;
+import com.platform.mbg.model.PmsSkuStock;
 import com.platform.manage.service.PmsSkuStockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

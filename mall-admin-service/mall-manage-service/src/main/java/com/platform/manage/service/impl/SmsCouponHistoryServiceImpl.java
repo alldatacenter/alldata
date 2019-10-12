@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.mapper.SmsCouponHistoryMapper;
-import com.platform.manage.model.SmsCouponHistory;
-import com.platform.manage.model.SmsCouponHistoryExample;
+import com.platform.mbg.mapper.SmsCouponHistoryMapper;
+import com.platform.mbg.model.SmsCouponHistory;
+import com.platform.mbg.model.SmsCouponHistoryExample;
 import com.platform.manage.service.SmsCouponHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

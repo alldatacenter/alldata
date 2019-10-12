@@ -2,12 +2,12 @@ package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.platform.manage.dto.PmsBrandParam;
-import com.platform.manage.mapper.PmsBrandMapper;
-import com.platform.manage.mapper.PmsProductMapper;
-import com.platform.manage.model.PmsBrand;
-import com.platform.manage.model.PmsBrandExample;
-import com.platform.manage.model.PmsProduct;
-import com.platform.manage.model.PmsProductExample;
+import com.platform.mbg.mapper.PmsBrandMapper;
+import com.platform.mbg.mapper.PmsProductMapper;
+import com.platform.mbg.model.PmsBrand;
+import com.platform.mbg.model.PmsBrandExample;
+import com.platform.mbg.model.PmsProduct;
+import com.platform.mbg.model.PmsProductExample;
 import com.platform.manage.service.PmsBrandService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

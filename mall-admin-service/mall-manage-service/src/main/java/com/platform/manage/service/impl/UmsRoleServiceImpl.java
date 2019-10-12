@@ -1,10 +1,10 @@
 package com.platform.manage.service.impl;
 
-import com.platform.manage.dao.UmsRolePermissionRelationDao;
-import com.platform.manage.mapper.UmsRoleMapper;
-import com.platform.manage.mapper.UmsRolePermissionRelationMapper;
-import com.platform.manage.model.*;
+import com.platform.manage.mapper.UmsRolePermissionRelationDao;
+import com.platform.mbg.mapper.UmsRoleMapper;
+import com.platform.mbg.mapper.UmsRolePermissionRelationMapper;
 import com.platform.manage.service.UmsRoleService;
+import com.platform.mbg.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

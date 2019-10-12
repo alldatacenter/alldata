@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.mapper.SmsHomeBrandMapper;
-import com.platform.manage.model.SmsHomeBrand;
-import com.platform.manage.model.SmsHomeBrandExample;
+import com.platform.mbg.mapper.SmsHomeBrandMapper;
+import com.platform.mbg.model.SmsHomeBrand;
+import com.platform.mbg.model.SmsHomeBrandExample;
 import com.platform.manage.service.SmsHomeBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

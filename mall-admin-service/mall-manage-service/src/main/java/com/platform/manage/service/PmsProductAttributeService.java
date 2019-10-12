@@ -2,7 +2,7 @@ package com.platform.manage.service;
 
 import com.platform.manage.dto.PmsProductAttributeParam;
 import com.platform.manage.dto.ProductAttrInfo;
-import com.platform.manage.model.PmsProductAttribute;
+import com.platform.mbg.model.PmsProductAttribute;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

@@ -1,13 +1,13 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.dao.OmsOrderReturnApplyDao;
+import com.platform.manage.mapper.OmsOrderReturnApplyDao;
 import com.platform.manage.dto.OmsOrderReturnApplyResult;
 import com.platform.manage.dto.OmsReturnApplyQueryParam;
 import com.platform.manage.dto.OmsUpdateStatusParam;
-import com.platform.manage.mapper.OmsOrderReturnApplyMapper;
-import com.platform.manage.model.OmsOrderReturnApply;
-import com.platform.manage.model.OmsOrderReturnApplyExample;
+import com.platform.mbg.mapper.OmsOrderReturnApplyMapper;
+import com.platform.mbg.model.OmsOrderReturnApply;
+import com.platform.mbg.model.OmsOrderReturnApplyExample;
 import com.platform.manage.service.OmsOrderReturnApplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

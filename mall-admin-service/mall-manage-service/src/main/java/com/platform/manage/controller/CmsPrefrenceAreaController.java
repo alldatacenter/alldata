@@ -1,7 +1,7 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonResult;
-import com.platform.manage.model.CmsPrefrenceArea;
+import com.platform.common.CommonResult;
+import com.platform.mbg.model.CmsPrefrenceArea;
 import com.platform.manage.service.CmsPrefrenceAreaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

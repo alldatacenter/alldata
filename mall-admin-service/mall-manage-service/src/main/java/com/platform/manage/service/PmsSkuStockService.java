@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.PmsSkuStock;
+import com.platform.mbg.model.PmsSkuStock;
 
 import java.util.List;
 

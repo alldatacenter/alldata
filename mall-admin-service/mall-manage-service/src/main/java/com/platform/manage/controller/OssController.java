@@ -1,7 +1,7 @@
 package com.platform.manage.controller;
 
 
-import com.platform.manage.common.CommonResult;
+import com.platform.common.CommonResult;
 import com.platform.manage.dto.OssCallbackResult;
 import com.platform.manage.dto.OssPolicyResult;
 import com.platform.manage.service.impl.OssServiceImpl;

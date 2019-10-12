@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.mapper.CmsSubjectMapper;
-import com.platform.manage.model.CmsSubject;
-import com.platform.manage.model.CmsSubjectExample;
+import com.platform.mbg.mapper.CmsSubjectMapper;
+import com.platform.mbg.model.CmsSubject;
+import com.platform.mbg.model.CmsSubjectExample;
 import com.platform.manage.service.CmsSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

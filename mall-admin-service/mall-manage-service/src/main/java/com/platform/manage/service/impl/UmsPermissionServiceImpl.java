@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.platform.manage.dto.UmsPermissionNode;
-import com.platform.manage.mapper.UmsPermissionMapper;
-import com.platform.manage.model.UmsPermission;
-import com.platform.manage.model.UmsPermissionExample;
+import com.platform.mbg.mapper.UmsPermissionMapper;
+import com.platform.mbg.model.UmsPermission;
+import com.platform.mbg.model.UmsPermissionExample;
 import com.platform.manage.service.UmsPermissionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

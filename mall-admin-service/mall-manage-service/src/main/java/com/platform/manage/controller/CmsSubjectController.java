@@ -1,8 +1,8 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonPage;
-import com.platform.manage.common.CommonResult;
-import com.platform.manage.model.CmsSubject;
+import com.platform.common.CommonPage;
+import com.platform.common.CommonResult;
+import com.platform.mbg.model.CmsSubject;
 import com.platform.manage.service.CmsSubjectService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

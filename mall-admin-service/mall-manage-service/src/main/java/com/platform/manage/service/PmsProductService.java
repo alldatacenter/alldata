@@ -3,7 +3,7 @@ package com.platform.manage.service;
 import com.platform.manage.dto.PmsProductParam;
 import com.platform.manage.dto.PmsProductQueryParam;
 import com.platform.manage.dto.PmsProductResult;
-import com.platform.manage.model.PmsProduct;
+import com.platform.mbg.model.PmsProduct;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

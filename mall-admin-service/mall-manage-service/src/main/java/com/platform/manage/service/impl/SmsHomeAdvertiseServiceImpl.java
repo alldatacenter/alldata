@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.mapper.SmsHomeAdvertiseMapper;
-import com.platform.manage.model.SmsHomeAdvertise;
-import com.platform.manage.model.SmsHomeAdvertiseExample;
+import com.platform.mbg.mapper.SmsHomeAdvertiseMapper;
+import com.platform.mbg.model.SmsHomeAdvertise;
+import com.platform.mbg.model.SmsHomeAdvertiseExample;
 import com.platform.manage.service.SmsHomeAdvertiseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.mapper.SmsHomeRecommendProductMapper;
-import com.platform.manage.model.SmsHomeRecommendProduct;
-import com.platform.manage.model.SmsHomeRecommendProductExample;
+import com.platform.mbg.mapper.SmsHomeRecommendProductMapper;
+import com.platform.mbg.model.SmsHomeRecommendProduct;
+import com.platform.mbg.model.SmsHomeRecommendProductExample;
 import com.platform.manage.service.SmsHomeRecommendProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

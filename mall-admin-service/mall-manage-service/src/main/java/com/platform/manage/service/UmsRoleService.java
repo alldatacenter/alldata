@@ -1,7 +1,7 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.UmsPermission;
-import com.platform.manage.model.UmsRole;
+import com.platform.mbg.model.UmsPermission;
+import com.platform.mbg.model.UmsRole;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

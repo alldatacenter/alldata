@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.CmsPrefrenceArea;
+import com.platform.mbg.model.CmsPrefrenceArea;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.OmsOrderSetting;
+import com.platform.mbg.model.OmsOrderSetting;
 
 /**
  * 订单设置Service

@@ -1,15 +1,15 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.dao.SmsCouponDao;
-import com.platform.manage.dao.SmsCouponProductCategoryRelationDao;
-import com.platform.manage.dao.SmsCouponProductRelationDao;
+import com.platform.manage.mapper.SmsCouponDao;
+import com.platform.manage.mapper.SmsCouponProductCategoryRelationDao;
+import com.platform.manage.mapper.SmsCouponProductRelationDao;
 import com.platform.manage.dto.SmsCouponParam;
-import com.platform.manage.mapper.SmsCouponMapper;
-import com.platform.manage.mapper.SmsCouponProductCategoryRelationMapper;
-import com.platform.manage.mapper.SmsCouponProductRelationMapper;
-import com.platform.manage.model.*;
+import com.platform.mbg.mapper.SmsCouponMapper;
+import com.platform.mbg.mapper.SmsCouponProductCategoryRelationMapper;
+import com.platform.mbg.mapper.SmsCouponProductRelationMapper;
 import com.platform.manage.service.SmsCouponService;
+import com.platform.mbg.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

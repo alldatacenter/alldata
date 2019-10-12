@@ -1,9 +1,9 @@
 package com.platform.manage.service.impl;
 
 import com.platform.manage.dto.SmsFlashPromotionSessionDetail;
-import com.platform.manage.mapper.SmsFlashPromotionSessionMapper;
-import com.platform.manage.model.SmsFlashPromotionSession;
-import com.platform.manage.model.SmsFlashPromotionSessionExample;
+import com.platform.mbg.mapper.SmsFlashPromotionSessionMapper;
+import com.platform.mbg.model.SmsFlashPromotionSession;
+import com.platform.mbg.model.SmsFlashPromotionSessionExample;
 import com.platform.manage.service.SmsFlashPromotionProductRelationService;
 import com.platform.manage.service.SmsFlashPromotionSessionService;
 import org.springframework.beans.BeanUtils;

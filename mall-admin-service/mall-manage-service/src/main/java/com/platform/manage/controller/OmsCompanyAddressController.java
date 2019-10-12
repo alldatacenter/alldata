@@ -1,7 +1,7 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonResult;
-import com.platform.manage.model.OmsCompanyAddress;
+import com.platform.common.CommonResult;
+import com.platform.mbg.model.OmsCompanyAddress;
 import com.platform.manage.service.OmsCompanyAddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

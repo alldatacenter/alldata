@@ -1,6 +1,6 @@
 package com.platform.manage.service;
 
-import com.platform.manage.model.SmsHomeRecommendSubject;
+import com.platform.mbg.model.SmsHomeRecommendSubject;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

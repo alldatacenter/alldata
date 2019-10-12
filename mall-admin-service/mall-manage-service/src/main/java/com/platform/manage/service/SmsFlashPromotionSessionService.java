@@ -1,7 +1,7 @@
 package com.platform.manage.service;
 
 import com.platform.manage.dto.SmsFlashPromotionSessionDetail;
-import com.platform.manage.model.SmsFlashPromotionSession;
+import com.platform.mbg.model.SmsFlashPromotionSession;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonResult;
+import com.platform.common.CommonResult;
 import com.platform.manage.dto.SmsFlashPromotionSessionDetail;
-import com.platform.manage.model.SmsFlashPromotionSession;
+import com.platform.mbg.model.SmsFlashPromotionSession;
 import com.platform.manage.service.SmsFlashPromotionSessionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

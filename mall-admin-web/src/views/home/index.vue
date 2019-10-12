@@ -2,52 +2,80 @@
   <div class="app-container">
     <div class="address-layout">
       <el-row :gutter="20">
-        <el-col :span="4">
+        <el-col :span="6">
           <div class="out-border">
-            <div class="layout-title">后台项目</div>
+            <div class="layout-title">商城移动端</div>
             <div class="color-main address-content">
-              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-backend">mall-backend</a>
+              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-mobile">mall-shopping-mobile</a>
             </div>
           </div>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="6">
           <div class="out-border">
-            <div class="layout-title">前端管理项目</div>
+            <div class="layout-title">商城PC端</div>
+            <div class="color-main address-content">
+              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-pc">mall-shopping-pc</a>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="out-border">
+            <div class="layout-title">商城App</div>
+            <div class="color-main address-content">
+              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-android">mall-shopping-android</a>
+            </div>
+          </div>
+        </el-col>
+
+        <el-col :span="6">
+          <div class="out-border">
+            <div class="layout-title">商城小程序</div>
+            <div class="color-main address-content">
+              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-wc">mall-shopping-wc</a>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="6">
+          <div class="out-border">
+            <div class="layout-title">商城前台服务</div>
+            <div class="color-main address-content">
+              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-service">mall-shopping-service</a>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="out-border">
+            <div class="layout-title">商城后台</div>
             <div class="color-main address-content">
               <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-admin-web">mall-admin-web</a>
             </div>
           </div>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="6">
           <div class="out-border">
-            <div class="layout-title">前端商城项目</div>
+            <div class="layout-title">商城后台服务</div>
             <div class="color-main address-content">
-              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-end">mall-end</a>
+              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-admin-service">mall-admin-service</a>
             </div>
           </div>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="6">
           <div class="out-border">
-            <div class="layout-title">商城App</div>
+            <div class="layout-title">数据平台</div>
             <div class="color-main address-content">
-              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-app">mall-app</a>
+              <a href="https://github.com/KangU4/BigDataPlatform">BigDataPlatform</a>
             </div>
           </div>
         </el-col>
-        <el-col :span="5">
-          <div class="out-border">
-            <div class="layout-title">商城小程序</div>
-            <div class="color-main address-content">
-              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-wechat-applet">mall-wechat-applet</a>
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="3">
-          <div style="text-align: center">
-          <img width="108px" height="108px" src="http://120.77.155.220:8080/images/wechat.jpg">
-          </div>
-          <div style="text-align: center"></div>
-        </el-col>
+
+        <!--<el-col :span="6">-->
+          <!--<div style="text-align: center">-->
+            <!--<img width="108px" height="108px" src="http://120.77.155.220:8080/images/wechat.jpg">-->
+          <!--</div>-->
+          <!--<div style="text-align: center"></div>-->
+        <!--</el-col>-->
       </el-row>
     </div>
     <div class="total-layout">

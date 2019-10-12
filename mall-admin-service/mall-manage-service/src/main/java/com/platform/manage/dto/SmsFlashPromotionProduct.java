@@ -1,7 +1,7 @@
 package com.platform.manage.dto;
 
-import com.platform.manage.model.PmsProduct;
-import com.platform.manage.model.SmsFlashPromotionProductRelation;
+import com.platform.mbg.model.PmsProduct;
+import com.platform.mbg.model.SmsFlashPromotionProductRelation;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -3,7 +3,7 @@ package com.platform.manage.service;
 import com.platform.manage.dto.OmsOrderReturnApplyResult;
 import com.platform.manage.dto.OmsReturnApplyQueryParam;
 import com.platform.manage.dto.OmsUpdateStatusParam;
-import com.platform.manage.model.OmsOrderReturnApply;
+import com.platform.mbg.model.OmsOrderReturnApply;
 
 import java.util.List;
 

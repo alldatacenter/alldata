@@ -1,7 +1,7 @@
 package com.platform.manage.service;
 
 import com.platform.manage.dto.SmsFlashPromotionProduct;
-import com.platform.manage.model.SmsFlashPromotionProductRelation;
+import com.platform.mbg.model.SmsFlashPromotionProductRelation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

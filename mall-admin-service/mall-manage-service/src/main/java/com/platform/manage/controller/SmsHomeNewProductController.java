@@ -1,8 +1,8 @@
 package com.platform.manage.controller;
 
-import com.platform.manage.common.CommonPage;
-import com.platform.manage.common.CommonResult;
-import com.platform.manage.model.SmsHomeNewProduct;
+import com.platform.common.CommonPage;
+import com.platform.common.CommonResult;
+import com.platform.mbg.model.SmsHomeNewProduct;
 import com.platform.manage.service.SmsHomeNewProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

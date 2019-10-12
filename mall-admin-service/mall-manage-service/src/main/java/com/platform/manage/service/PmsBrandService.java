@@ -1,7 +1,7 @@
 package com.platform.manage.service;
 
 import com.platform.manage.dto.PmsBrandParam;
-import com.platform.manage.model.PmsBrand;
+import com.platform.mbg.model.PmsBrand;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

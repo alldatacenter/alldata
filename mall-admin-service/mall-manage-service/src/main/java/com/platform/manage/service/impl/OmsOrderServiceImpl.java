@@ -1,15 +1,15 @@
 package com.platform.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.platform.manage.dao.OmsOrderDao;
-import com.platform.manage.dao.OmsOrderOperateHistoryDao;
+import com.platform.manage.mapper.OmsOrderDao;
+import com.platform.manage.mapper.OmsOrderOperateHistoryDao;
 import com.platform.manage.dto.*;
-import com.platform.manage.mapper.OmsOrderMapper;
-import com.platform.manage.mapper.OmsOrderOperateHistoryMapper;
-import com.platform.manage.model.OmsOrder;
-import com.platform.manage.model.OmsOrderExample;
-import com.platform.manage.model.OmsOrderOperateHistory;
-import com.platform.manage.model.OrderListData;
+import com.platform.mbg.mapper.OmsOrderMapper;
+import com.platform.mbg.mapper.OmsOrderOperateHistoryMapper;
+import com.platform.mbg.model.OmsOrder;
+import com.platform.mbg.model.OmsOrderExample;
+import com.platform.mbg.model.OmsOrderOperateHistory;
+import com.platform.mbg.model.OrderListData;
 import com.platform.manage.service.OmsOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

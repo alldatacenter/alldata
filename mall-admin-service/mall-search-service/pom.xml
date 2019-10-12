@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.platform</groupId>
-    <artifactId>mall-search</artifactId>
+    <artifactId>mall-search-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>mall-search</name>
+    <name>mall-search-service</name>
     <description>mall-search project for mall</description>
 
     <parent>
@@ -47,7 +47,7 @@
     </dependencies>
 
     <build>
-        <finalName>mall-search</finalName>
+        <finalName>mall-search-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
