@@ -3,12 +3,15 @@
 # 数据平台展示地址：
 http://120.77.155.220:8081/BigDataPlatForm/index.html
 # 数据来源：
-	mall-admin-web: 商城后台
-	mall-admin-service: 商城后台服务
-	mall-shopping-app: 商城app
-	mall-shopping-wc: 商城小程序
-	mall-shopping-mobile: 商城前台
-	mall-shopping-pc: 商城pc端
+	商城前台：
+		mall-shopping-app: 商城app
+		mall-shopping-wc: 商城小程序
+		mall-shopping-mobile: 商城前台
+		mall-shopping-pc: 商城pc端
+		mall-shopping-service: 商城前台服务
+	商城后台：
+		mall-admin-web: 商城后台
+		mall-admin-service: 商城后台服务
 # 数据收集：
 	log-collect-server: 
 		服务端日志收集系统
