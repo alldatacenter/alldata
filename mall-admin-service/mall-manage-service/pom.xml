@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.platform</groupId>
-    <artifactId>mall-admin</artifactId>
+    <artifactId>mall-manage-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>mall-admin</name>
-    <description>mall-admin project for mall</description>
+    <name>mall-manage-service</name>
+    <description>mall-manage-service project for mall</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -68,9 +68,14 @@
             <artifactId>spring-security-core</artifactId>
             <version>5.1.6.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>5.1.6.RELEASE</version>
+        </dependency>
     </dependencies>
     <build>
-        <finalName>mall-admin</finalName>
+        <finalName>mall-manage-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
