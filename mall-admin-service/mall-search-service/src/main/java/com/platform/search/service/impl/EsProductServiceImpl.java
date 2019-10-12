@@ -1,9 +1,9 @@
 package com.platform.search.service.impl;
 
+import com.platform.search.repository.EsProductRepository;
 import com.platform.search.dao.EsProductDao;
 import com.platform.search.domain.EsProduct;
 import com.platform.search.domain.EsProductRelatedInfo;
-import com.platform.search.repository.EsProductRepository;
 import com.platform.search.service.EsProductService;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;

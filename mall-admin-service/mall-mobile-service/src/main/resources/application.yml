@@ -14,8 +14,8 @@ http:
 redis:
   key:
     prefix:
-      authCode: "base:authCode:"
-      orderId: "base:orderId:"
+      authCode: "mobile:authCode:"
+      orderId: "mobile:orderId:"
     expire:
       authCode: 90 # 验证码超期时间
 

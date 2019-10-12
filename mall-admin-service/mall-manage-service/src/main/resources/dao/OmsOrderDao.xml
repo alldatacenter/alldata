@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.platform.dao.OmsOrderDao">
-    <resultMap id="orderDetailResultMap" type="com.platform.dto.OmsOrderDetail"
-               extends="com.platform.mapper.OmsOrderMapper.BaseResultMap">
-        <collection property="orderItemList" resultMap="com.platform.mapper.OmsOrderItemMapper.BaseResultMap"
+<mapper namespace="com.platform.manage.dao.OmsOrderDao">
+    <resultMap id="orderDetailResultMap" type="com.platform.manage.dto.OmsOrderDetail"
+               extends="com.platform.manage.mapper.OmsOrderMapper.BaseResultMap">
+        <collection property="orderItemList" resultMap="com.platform.manage.mapper.OmsOrderItemMapper.BaseResultMap"
                     columnPrefix="item_"/>
-        <collection property="historyList" resultMap="com.platform.mapper.OmsOrderOperateHistoryMapper.BaseResultMap"
+        <collection property="historyList" resultMap="com.platform.manage.mapper.OmsOrderOperateHistoryMapper.BaseResultMap"
                     columnPrefix="history_"/>
     </resultMap>
-    <select id="getList" resultMap="com.platform.mapper.OmsOrderMapper.BaseResultMap">
+    <select id="getList" resultMap="com.platform.manage.mapper.OmsOrderMapper.BaseResultMap">
         SELECT *
         FROM
         oms_order

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.platform.dao.SmsCouponDao">
-    <resultMap id="couponItemParam" type="com.platform.dto.SmsCouponParam"
-               extends="com.platform.mapper.SmsCouponMapper.BaseResultMap">
+<mapper namespace="com.platform.manage.dao.SmsCouponDao">
+    <resultMap id="couponItemParam" type="com.platform.manage.dto.SmsCouponParam"
+               extends="com.platform.manage.mapper.SmsCouponMapper.BaseResultMap">
         <collection property="productRelationList" columnPrefix="cpr_"
-                    resultMap="com.platform.mapper.SmsCouponProductRelationMapper.BaseResultMap">
+                    resultMap="com.platform.manage.mapper.SmsCouponProductRelationMapper.BaseResultMap">
         </collection>
         <collection property="productCategoryRelationList" columnPrefix="cpcr_"
-                    resultMap="com.platform.mapper.SmsCouponProductCategoryRelationMapper.BaseResultMap">
+                    resultMap="com.platform.manage.mapper.SmsCouponProductCategoryRelationMapper.BaseResultMap">
         </collection>
     </resultMap>
     <select id="getItem" resultMap="couponItemParam">

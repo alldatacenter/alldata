@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.platform.base.dao.SmsCouponHistoryDao">
-    <resultMap id="couponHistoryDetailMap" type="com.platform.base.domain.SmsCouponHistoryDetail"
-               extends="com.platform.mapper.SmsCouponHistoryMapper.BaseResultMap">
-        <association property="coupon" resultMap="com.platform.mapper.SmsCouponMapper.BaseResultMap"
+<mapper namespace="com.platform.mobile.dao.SmsCouponHistoryDao">
+    <resultMap id="couponHistoryDetailMap" type="com.platform.mobile.domain.SmsCouponHistoryDetail"
+               extends="com.platform.manage.mapper.SmsCouponHistoryMapper.BaseResultMap">
+        <association property="coupon" resultMap="com.platform.manage.mapper.SmsCouponMapper.BaseResultMap"
                      columnPrefix="c_">
         </association>
         <collection property="productRelationList" columnPrefix="cpr_"
-                    resultMap="com.platform.mapper.SmsCouponProductRelationMapper.BaseResultMap">
+                    resultMap="com.platform.manage.mapper.SmsCouponProductRelationMapper.BaseResultMap">
         </collection>
         <collection property="categoryRelationList" columnPrefix="cpcr_"
-                    resultMap="com.platform.mapper.SmsCouponProductCategoryRelationMapper.BaseResultMap">
+                    resultMap="com.platform.manage.mapper.SmsCouponProductCategoryRelationMapper.BaseResultMap">
         </collection>
     </resultMap>
     <select id="getDetailList" resultMap="couponHistoryDetailMap">
