@@ -1,6 +1,6 @@
 <template>
   <div class="w" style="padding-bottom: 100px;">
-    <y-shelf title="XPay收银台 收款方: Exrick">
+    <y-shelf title="商城PC收银台 收款方: KangU">
       <div slot="content">
         <div class="box-inner order-info">
           <p class="payment-detail">扫一扫付款（元）</p>
@@ -8,7 +8,7 @@
           <div class="img-box">
             <img id="qr" class="pic" v-bind:src="imgPath" alt="加载失败" width="168px" height="168px"/>
             <div class="explain">
-              <img class="fn-left" src="https://t.alipayobjects.com/images/T1bdtfXfdiXXXXXXXX.png" alt="扫一扫标识">
+              <img class="fn-left" src="http://pz8zk5xal.bkt.clouddn.com/20191012193903_alipay.png" alt="扫一扫标识">
               <div class="fn-right">打开手机支付宝<br>扫一扫继续付款</div>
               <div class="timeout" v-if="timeout">二维码已过期</div>
             </div>
@@ -48,7 +48,7 @@
       :visible.sync="dialogVisible"
       width="30%"
       @close="handleClose" style="text-align:center;width:50%;margin:0 auto">
-      <img src="http://oweupqzdv.bkt.clouddn.com/1512881761970_small.jpg" class="qr-red"/>
+      <img src="http://pz8zk5xal.bkt.clouddn.com/20191012193903_alipay.png" class="qr-red"/>
       <span>支付前领个红包吧(每日可领一次)</span>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false">领取了</el-button>

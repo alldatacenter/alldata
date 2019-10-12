@@ -5,7 +5,7 @@
         <div class="w-box">
           <div class="nav-logo">
             <h1 @click="changePage(-1)">
-              <router-link to="/" title="XMall商城官网">XMall商城</router-link>
+              <router-link to="/" title="商城PC端">商城PC端</router-link>
             </h1>
           </div>
           <div class="right-box">
@@ -23,11 +23,6 @@
               </el-autocomplete>
               <router-link to="/goods"><a @click="changePage(2)">全部商品</a></router-link>
               <router-link to="/thanks"><a @click="changePage(4)">捐赠</a></router-link>
-              <!-- <router-link to="/">Smartisan M1 / M1L</router-link>
-              <router-link to="/">Smartisan OS</router-link>
-              <router-link to="/">欢喜云</router-link>
-              <router-link to="/">应用下载</router-link>
-              <router-link to="/">官方论坛</router-link> -->
             </div>
             <div class="nav-aside" ref="aside" :class="{fixed:st}">
               <div class="user pr">
@@ -114,7 +109,7 @@
                       </div>
                     </div>
                     <div v-show="!totalNum" style="height: 313px;text-align: center" class="cart-con">
-                      <p>您的购物车竟然是空的!</p>
+                      <p>您的购物车暂无商品！</p>
                     </div>
                   </div>
                 </div>

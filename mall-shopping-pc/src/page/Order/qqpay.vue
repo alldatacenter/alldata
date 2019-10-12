@@ -1,6 +1,6 @@
 <template>
   <div class="w" style="padding-bottom: 100px;">
-    <y-shelf title="XPay收银台 收款方: Exrick">
+    <y-shelf title="商城PC收银台 收款方: KangU">
       <div slot="content">
         <div class="box-inner order-info">
           <img class="wechat" src="static/images/qqpay.png" alt="扫一扫标识">

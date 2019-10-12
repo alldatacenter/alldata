@@ -13,47 +13,35 @@
         <ul class="c0">
           <h3 class="c1">服务支持</h3>
           <ul>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/Exrick">官方开源</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/Exrick/xmall-front">项目前端</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/Exrick/xmall">项目后端</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-mobile">mall-shopping-mobile</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-pc">mall-shopping-pc</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-android">mall-shopping-android</a></li>
           </ul>
         </ul>
         <ul class="c0">
           <h3 class="c1">自助服务</h3>
           <ul>
-            <li class="c2"><a class="c3" target="_blank" href="http://blog.exrick.cn">个人博客</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="http://blog.exrick.cn/intro/">个人简介</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://www.bilibili.com/video/av15860053/">个人视频</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="http://120.77.155.220:8080">个人博客</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="http://120.77.155.220:8080/about/">个人简介</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/">GitHub</a></li>
           </ul>
         </ul>
         <ul class="c0">
-          <h3 class="c1">其他项目</h3>
+          <h3 class="c1">数据平台</h3>
           <ul>
-            <li class="c2"><a class="c3" target="_blank" href="http://xpay.exrick.cn">XPay支付系统</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="http://shouji.baidu.com/software/11783429.html">数据共享</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/Exrick">待开发...</a></li>
-          </ul>
-        </ul>
-        <ul class="c0">
-          <h3 class="c1">友情链接</h3>
-          <ul>
-            <li class="c2"><a class="c3" target="_blank" href="http://yucccc.com/">宇cccc</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="http://www.smartisan.com">Smartisan</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://cn.vuejs.org/">Vue</a></li>
-          </ul>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/BigDataPlatform">BigDataPlatform</a></li>
+         </ul>
         </ul>
         <ul class="c0">
           <h3 class="c1">关注我吧</h3>
           <ul>
-            <li class="c2"><a class="c3" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012139570&site=qq&menu=yes">腾讯 QQ</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="http://weibo.com/2255094222/profile">新浪微博</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="mailto:1012139570@qq.com">官方邮箱</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="http://120.77.155.220:8080/images/wechat.jpg">个人微信</a></li>
           </ul>
         </ul>
 
         <ul class="c4">
-          <li class="tel"><a class="c5" href="http://wpa.qq.com/msgrd?v=3&uin=1012139570&site=qq&menu=yes" target="_blank">1012139570</a></li>
-          <li class="time">周一至周日 10:00-23:00（限Starrer或捐赠人联系）</li>
+          <li class="tel"><a class="c5" href="http://120.77.155.220:8080/images/wechat.jpg" target="_blank">0668-8881123</a></li>
+          <li class="time">周一至周日 10:00-23:00</li>
           <li class="online">
             <y-button text="在线帮助" class="button" @btnClick="open3"></y-button>
           </li>
@@ -61,17 +49,17 @@
       </div>
 
       <div class="copyright">
-        <h4 class="content-c2">Copyright ©2017, exrick.cn Co., Ltd. All Rights Reserved.本网站设计内容大部分属锤子科技</h4>
+        <h4 class="content-c2"></h4>
         <ul class="privacy">
-          <li class="content-c1"><a class="content-c0" @click="open1">法律声明</a></li>
-          <li class="content-c1"><a class="content-c0" @click="open2">隐私条款</a></li>
-          <li class="content-c1"><a class="content-c0" target="_blank" href="https://github.com/Exrick">开发者中心</a></li>
+          <li class="content-c1"><a class="content-c0" @click="open1">网站描述</a></li>
+          <li class="content-c1"><a class="content-c0" @click="open2">编程世界</a></li>
+          <li class="content-c1"><a class="content-c0" target="_blank" href="https://github.com/KangU4/BigDataPlatform">社区源码</a></li>
         </ul>
       </div>
       <div class="cop">
         <a class="content-c3" href="http://www.miibeian.gov.cn/" target="_blank">
-          <span class="content-c3">蜀ICP备16030308号-1</span>
-          <span class="content-c3">蜀ICP证16030308号</span>
+          <span class="content-c3">粤ICP备20191012号-1</span>
+          <span class="content-c3">粤ICP证20191012号</span>
         </a>
       </div>
     </div>
@@ -87,33 +75,33 @@
     methods: {
       open1 () {
         this.$notify.info({
-          title: '法律声明',
-          message: '此仅为个人练习开源模仿项目，仅供学习参考，承担不起任何法律问题'
+          title: '网站描述',
+          message: '商城PC端'
         })
       },
       open2 () {
         this.$notify.info({
-          title: '隐私条款',
-          message: '本网站将不会严格遵守有关法律法规和本隐私政策所载明的内容收集、使用您的信息'
+          title: '编程世界',
+          message: 'KangU，一个独立开发者，折腾在 0 和 1 世界的极客工程师'
         })
       },
       open3 () {
         this.$notify({
-          title: '离线帮助',
-          message: '没人会帮助你，请自己靠自己',
+          title: '在线帮助',
+          message: '暂无',
           type: 'warning'
         })
       },
       open4 () {
         this.$notify.info({
           title: '支付方式',
-          message: '支持支付宝、微信等方式捐赠'
+          message: '支付宝、微信'
         })
       },
       open5 () {
         this.$notify({
           title: '送货政策',
-          message: '本网站所有商品购买后不会发货，将用作捐赠',
+          message: '暂无',
           type: 'warning'
         })
       }

@@ -36,9 +36,6 @@
                         <div class="name-table">
                           <a @click="goodsDetails(item.productId)" :title="item.productName" target="_blank"
                              v-text="item.productName"></a>
-                          <!-- <ul class="attribute">
-                            <li>白色</li>
-                          </ul> -->
                         </div>
                       </div>
                       <!--删除按钮-->
@@ -103,7 +100,7 @@
         <div v-else style="padding:50px">
           <div class="cart-e">
           </div>
-          <p style="text-align: center;padding: 20px;color: #8d8d8d">你的购物车空空如也</p>
+          <p style="text-align: center;padding: 20px;color: #8d8d8d">你的购物车暂无商品！</p>
           <div style="text-align: center">
             <router-link to="/goods">
               <y-button text="现在选购" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d"></y-button>

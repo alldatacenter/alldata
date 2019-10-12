@@ -5,7 +5,7 @@
         <div style="padding: 100px 0;text-align: center">
           <img src="/static/images/support.png">
           <br>
-          <span class="support">如有疑问请联系邮箱1012139570@qq.com</span>
+          <span class="support">如有疑问请联系邮箱13538390745@163.com</span>
         </div>
       </div>
     </y-shelf>

@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="dialog dialog-shadow" style="display: block; margin-top: -362px;">
         <div class="title">
-          <h4>使用 XMall 账号 登录官网</h4>
+          <h4>商城PC端登录</h4>
         </div>
         <div v-if="loginPage" class="content">
           <ul class="common-form">
@@ -15,11 +15,6 @@
             <li>
               <div class="input">
                 <input type="password" v-model="ruleForm.userPwd" @keyup.enter="login" placeholder="密码">
-              </div>
-            </li>
-            <li>
-              <div id="captcha">
-                <p id="wait">正在加载验证码...</p>
               </div>
             </li>
             <li style="text-align: right" class="pr">
@@ -43,24 +38,18 @@
             </y-button>
           </div>
           <div class="border"></div>
-          <div class="footer">
-            <div class="other">其它账号登录：</div>
-            <a><img @click="open('待开发','此功能开发中...')" style="height: 15px; margin-top: 22px;" src="/static/images/other-login.png"></a>
-          </div>
+          <div class="footer"></div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script src="../../../static/geetest/gt.js"></script>
 <script>
 import YFooter from '/common/footer'
 import YButton from '/components/YButton'
-import { userLogin, geetest } from '/api/index.js'
+import { userLogin } from '/api/index.js'
 import { addCart } from '/api/goods.js'
 import { setStore, getStore, removeStore } from '/utils/storage.js'
-require('../../../static/geetest/gt.js')
-var captcha
 export default {
   data () {
     return {
@@ -156,22 +145,12 @@ export default {
         this.message('账号或者密码不能为空!')
         return false
       }
-      var result = captcha.getValidate()
-      if (!result) {
-        this.message('请完成验证')
-        this.logintxt = '登录'
-        return false
-      }
       var params = {
         userName: this.ruleForm.userName,
         userPwd: this.ruleForm.userPwd,
-        challenge: result.geetest_challenge,
-        validate: result.geetest_validate,
-        seccode: result.geetest_seccode,
         statusKey: this.statusKey
       }
       userLogin(params).then(res => {
-        if (res.result.state === 1) {
           setStore('token', res.result.token)
           setStore('userId', res.result.id)
           // 登录后添加当前缓存中的购物车
@@ -191,38 +170,12 @@ export default {
               path: '/'
             })
           }
-        } else {
-          this.logintxt = '登录'
-          this.message(res.result.message)
-          captcha.reset()
-          return false
-        }
-      })
-    },
-    init_geetest () {
-      geetest().then(res => {
-        this.statusKey = res.statusKey
-        window.initGeetest({
-          gt: res.gt,
-          challenge: res.challenge,
-          new_captcha: res.new_captcha,
-          offline: !res.success,
-          product: 'popup',
-          width: '100%'
-        }, function (captchaObj) {
-          captcha = captchaObj
-          captchaObj.appendTo('#captcha')
-          captchaObj.onReady(function () {
-            document.getElementById('wait').style.display = 'none'
-          })
-        })
       })
     }
   },
   mounted () {
     this.getRemembered()
     this.login_addCart()
-    this.init_geetest()
     this.open('登录提示', '测试体验账号密码：test | test')
   },
   components: {

@@ -44,13 +44,14 @@ router.beforeEach(function (to, from, next) {
     }
   }
   userInfo(params).then(res => {
-    if (res.result.state !== 1) { // 没登录
-      if (whiteList.indexOf(to.path) !== -1) { // 白名单
-        next()
+      if (res.result.state !== 1) {
+        // 没登录
+        if (whiteList.indexOf(to.path) !== -1) { // 白名单
+          next()
+        } else {
+          next('/login')
+        }
       } else {
-        next('/login')
-      }
-    } else {
       store.commit('RECORD_USERINFO', {info: res.result})
       if (to.path === '/login') { //  跳转到
         next({path: '/'})

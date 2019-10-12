@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="dialog dialog-shadow" style="display: block; margin-top: -362px;">
         <div class="registered">
-          <h4>注册 XMall 账号</h4>
+          <h4>商城PC端注册</h4>
           <div class="content" style="margin-top: 20px;">
             <ul class="common-form">
               <li class="username border-1p">
@@ -27,16 +27,11 @@
                          placeholder="重复密码">
                 </div>
               </li>
-              <li>
-                <div id="captcha">
-                  <p id="wait">正在加载验证码...</p>
-                </div>
-              </li>
             </ul>
             <el-checkbox class="agree" v-model="agreement">
               我已阅读并同意遵守 
-              <a @click="open('法律声明','此仅为个人练习开源模仿项目，仅供学习参考，承担不起任何法律问题')">法律声明</a> 和 
-              <a @click="open('隐私条款','本网站将不会严格遵守有关法律法规和本隐私政策所载明的内容收集、使用您的信息')">隐私条款</a>
+              <a @click="open('商城PC端')">网站描述</a> 和
+              <a @click="open('编程世界','KangU，一个独立开发者，折腾在 0 和 1 世界的极客工程师')">编程世界</a>
             </el-checkbox>
             <div style="margin-bottom: 30px;">
               <y-button
@@ -51,7 +46,7 @@
             <ul class="common-form pr">
               <!-- <li class="pa" style="left: 0;top: 0;margin: 0;color: #d44d44">{{registered.errMsg}}</li> -->
               <li style="text-align: center;line-height: 48px;margin-bottom: 0;font-size: 12px;color: #999;">
-                <span>如果您已拥有 XMall 账号，则可在此</span>
+                <span>如果您已拥有商城PC端账号，则可在此</span>
                 <a href="javascript:;"
                    style="margin: 0 5px"
                    @click="toLogin">登陆</a>
@@ -63,13 +58,10 @@
     </div>
   </div>
 </template>
-<script src="../../../static/geetest/gt.js"></script>
 <script>
 import YFooter from '/common/footer'
 import YButton from '/components/YButton'
-import { register, geetest } from '/api/index.js'
-require('../../../static/geetest/gt.js')
-var captcha
+import { register } from '/api/index.js'
 export default {
   data () {
     return {
@@ -139,52 +131,22 @@ export default {
         this.registxt = '注册'
         return false
       }
-      var result = captcha.getValidate()
-      if (!result) {
-        this.message('请完成验证')
-        this.registxt = '注册'
-        return false
-      }
       register({
         userName,
         userPwd,
-        challenge: result.geetest_challenge,
-        validate: result.geetest_validate,
-        seccode: result.geetest_seccode,
         statusKey: this.statusKey }).then(res => {
           if (res.success === true) {
             this.messageSuccess()
             this.toLogin()
           } else {
             this.message(res.message)
-            captcha.reset()
             this.registxt = '注册'
             return false
           }
         })
-    },
-    init_geetest () {
-      geetest().then(res => {
-        this.statusKey = res.statusKey
-        window.initGeetest({
-          gt: res.gt,
-          challenge: res.challenge,
-          new_captcha: res.new_captcha,
-          offline: !res.success,
-          product: 'popup',
-          width: '100%'
-        }, function (captchaObj) {
-          captcha = captchaObj
-          captchaObj.appendTo('#captcha')
-          captchaObj.onReady(function () {
-            document.getElementById('wait').style.display = 'none'
-          })
-        })
-      })
     }
   },
   mounted () {
-    this.init_geetest()
   },
   components: {
     YFooter,
