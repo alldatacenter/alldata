@@ -22,7 +22,7 @@
           <div class="out-border">
             <div class="layout-title">商城App</div>
             <div class="color-main address-content">
-              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-android">mall-shopping-android</a>
+              <a href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-app">mall-shopping-app</a>
             </div>
           </div>
         </el-col>

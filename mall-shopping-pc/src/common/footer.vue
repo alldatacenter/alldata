@@ -15,7 +15,7 @@
           <ul>
             <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-mobile">mall-shopping-mobile</a></li>
             <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-pc">mall-shopping-pc</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-android">mall-shopping-android</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-app">mall-shopping-app</a></li>
           </ul>
         </ul>
         <ul class="c0">
@@ -126,7 +126,7 @@
   .container {
     width: 1220px;
   }
-  
+
   .siteinfo {
     height: 100px;
     padding: 50px 0 130px;
@@ -235,7 +235,7 @@
     padding: 1px 10px 0;
     border-left: 1px solid #ccc;
   }
-  
+
   .content-c2 {
     float: left;
     height: 15px;
