@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="top.omooo.blackfish">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:name">
+        <activity
+            android:name=".splash.WelcomeActivity"
+            android:theme="@style/StartAppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".splash.WelcomeSplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+
+        </activity>
+
+        <activity android:name=".LoginActivity" />
+
+        <activity android:name=".VerifyCodeActivity" />
+
+        <activity android:name=".MinePageActivity.AboutActivity" />
+
+        <activity android:name=".MinePageActivity.SuggestionActivity" />
+
+        <activity android:name=".MinePageActivity.ActivityMyBankCard">
+            <meta-data
+                android:name="pageName"
+                android:value="myBankCard" />
+        </activity>
+
+        <activity android:name=".MinePageActivity.MineSettingActivity" />
+
+        <activity android:name=".MinePageActivity.CertifyCardActivity" />
+
+        <activity android:name=".KeeperPageActivity.AddBillActivity" />
+
+        <activity android:name=".KeeperPageActivity.AddCreditBillActivity" />
+
+        <activity android:name=".MinePageActivity.SetPwdActivity" />
+
+        <activity android:name=".TestActivity" />
+
+        <activity android:name=".MinePageActivity.SetNewPwdActivity" />
+
+        <activity android:name=".KeeperPageActivity.CreateCreditBillActivity" />
+
+        <activity android:name=".utils.SelectCardActivity" />
+
+        <activity
+            android:name=".KeeperPageActivity.ShowDetailBillActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity android:name=".MallPagerActivity.SearchActivity" />
+
+        <activity android:name=".MallPagerActivity.ClassifyGoodsActivity">
+            <meta-data
+                android:name="pageName"
+                android:value="classifyGoods" />
+        </activity>
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity android:name=".aliPay.PayDemoActivity" />
+
+        <activity android:name=".BaseWebViewActivity" />
+
+        <activity android:name=".GoodsDetailActivity" />
+
+        <activity android:name=".MallPagerActivity.ShowImageActivity" />
+
+        <activity android:name=".MallPagerActivity.SubmitOrderActivity" />
+
+        <activity android:name=".MallPagerActivity.PayTypeActivity" />
+
+        <activity android:name=".MinePageActivity.ManagerAddressActivity" />
+
+        <activity android:name=".MinePageActivity.NewAddressActivity" />
+
+        <receiver android:name=".broadcast.NetChangedReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

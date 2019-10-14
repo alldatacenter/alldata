@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SuperEditText">
+        <attr name="iconLeft" format="reference"/>
+        <attr name="titleText" format="string"/>
+        <attr name="hintTextRight" format="string"/>
+        <attr name="typeMode" format="integer"/>
+        <attr name="hintTextColor" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="RecycleViewBanner">
+        <attr name="rvb_interval" format="integer"/>
+        <attr name="rvb_showIndicator" format="boolean"/>
+        <attr name="rvb_indicatorSelectedSrc" format="color|reference"/>
+        <attr name="rvb_indicatorUnselectedSrc" format="color|reference"/>
+        <attr name="rvb_indicatorSize" format="dimension|reference"/>
+        <attr name="rvb_indicatorSpace" format="dimension|reference"/>
+        <attr name="rvb_indicatorMargin" format="dimension|reference"/>
+        <attr name="rvb_indicatorGravity" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <attr name="rvb_autoPlaying" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="TagsLayout">
+        <attr name="tagVerticalSpace" format="dimension" />
+        <attr name="tagHorizontalSpace" format="dimension" />
+    </declare-styleable>
+</resources>

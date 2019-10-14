@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_key_board_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true"
+    android:background="@color/colorKeyBoardBg"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:src="@drawable/icon_key_board_security"
+        android:layout_toStartOf="@+id/view_key_board_title"
+        android:scaleType="fitXY"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="12.5dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"/>
+    <TextView
+        android:id="@+id/view_key_board_title"
+        android:text="小黑鱼安全键盘"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"/>
+    <top.omooo.blackfish.view.NumberKeyBoardView
+        android:id="@+id/view_key_board_number"
+        android:layout_below="@+id/view_key_board_title"
+        android:background="@color/colorWhite"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:keyBackground="@drawable/selector_key_board_number"
+        android:keyTextColor="@color/splash_main_title_color"
+        android:shadowColor="#00000000"
+        android:shadowRadius="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/view_key_board_finish"
+        android:text="完成"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

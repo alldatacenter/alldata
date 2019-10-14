@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_fragment_home_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:background="@color/item_border_color"
+            android:clipToPadding="true"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:requiresFadingEdge="none"
+            android:scrollbars="none" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_home"
+        android:background="@color/colorHomeHeaderBg"
+        app:layout_behavior="top.omooo.blackfish.utils.ToolbarAlphaBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:scaleType="fitXY"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/icon_home_header_fish_logo"
+                android:layout_width="70dp"
+                android:layout_height="23dp"/>
+            <TextView
+                android:text="小黑鱼"
+                android:textColor="@color/splash_main_title_color"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/iv_home_header_msg"
+                android:src="@drawable/icon_home_header_msg_white"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:scaleType="fitXY"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+</android.support.design.widget.CoordinatorLayout>

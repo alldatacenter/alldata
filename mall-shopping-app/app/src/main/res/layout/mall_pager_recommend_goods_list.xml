@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rl_mall_recommend_title_layout"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:src="@drawable/icon_recommend_title_left"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="70dp"
+            android:layout_centerVertical="true"
+            android:layout_width="80dp"
+            android:layout_height="8dp"/>
+        <TextView
+            android:text="为你推荐"
+            android:textSize="18sp"
+            android:textColor="@color/splash_main_title_color"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:src="@drawable/icon_recommend_title_right"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="70dp"
+            android:layout_centerVertical="true"
+            android:layout_width="80dp"
+            android:layout_height="8dp"/>
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_mall_recommend"
+        android:background="@color/colorWhite"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@+id/rl_mall_recommend_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <FrameLayout
+        android:layout_below="@+id/rv_mall_recommend"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="-------------  已经到底啦  -------------"
+            android:gravity="center_horizontal|bottom"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:divider="@drawable/shape_divider_layout"
+    android:showDividers="middle"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_bottom_text_1"
+        android:text="个人征信授权书"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:textColor="@color/splash_main_title_color"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"/>
+    <TextView
+        android:id="@+id/tv_bottom_text_2"
+        android:text="代扣授权书"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:textColor="@color/splash_main_title_color"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"/>
+    <TextView
+        android:id="@+id/tv_bottom_text_3"
+        android:text="取消"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:textColor="@color/splash_main_title_color"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"/>
+</LinearLayout>

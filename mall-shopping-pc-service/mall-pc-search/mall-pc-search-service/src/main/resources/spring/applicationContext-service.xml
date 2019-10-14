@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--配置包扫描器-->
+    <context:component-scan base-package="com.platform.pc.search"/>
+
+    <!-- 使用dubbo发布服务 -->
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="mall-pc-search" />
+    <!--dubbo与zookeeper直连-->
+    <!--<dubbo:registry protocol="zookeeper"-->
+    <!--address="127.0.0.1:2181" />-->
+    <!--dubbo与zookeeper分布式部署-->
+    <dubbo:registry protocol="zookeeper" address="zookeeper://192.168.172.129:2181?backup=192.168.172.130:2181,192.168.172.131:2181" />
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20882" />
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="com.platform.pc.search.service.SearchService" ref="searchServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.pc.search.service.SearchItemService" ref="searchItemServiceImpl" timeout="10000"/>
+</beans>

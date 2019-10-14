@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_header_layout"
+    android:background="@drawable/image_home_header_bg"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <TextView
+        android:id="@+id/tv_home_title"
+        android:text="小黑鱼"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/splash_main_title_color"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/iv_home_pager_message"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/icon_home_title_message"
+        android:layout_marginEnd="20dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"/>
+</RelativeLayout>

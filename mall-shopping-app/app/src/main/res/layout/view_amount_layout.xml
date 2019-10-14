@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/shape_image_corners"
+    android:divider="@drawable/divider"
+    android:showDividers="middle"
+    android:layout_width="150dp"
+    android:layout_height="35dp">
+    <ImageView
+        android:id="@+id/iv_reduce"
+        android:src="@drawable/icon_reduce_gray"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="7.5dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+    <EditText
+        android:id="@+id/et_nub"
+        android:text="1"
+        android:textColor="@color/splash_main_title_color"
+        android:background="@color/colorWhite"
+        android:maxLength="2"
+        android:paddingStart="20dp"
+        android:textSize="23sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"/>
+    <ImageView
+        android:id="@+id/iv_add"
+        android:src="@drawable/icon_add_yellow"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="7.5dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+</LinearLayout>

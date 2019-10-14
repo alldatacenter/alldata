@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_remind_item_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+    <TextView
+        android:id="@+id/tv_remind_item_time"
+        android:background="@drawable/shape_card_view"
+        android:paddingStart="20dp"
+        android:gravity="center_vertical"
+        android:layout_marginStart="30dp"
+        android:layout_centerVertical="true"
+        android:text="① 提前 1 天 12:00"
+        android:drawableRight="@drawable/icon_remind_item_msg"
+        android:paddingEnd="20dp"
+        android:textColor="@color/splash_main_title_color"
+        android:layout_width="260dp"
+        android:layout_height="35dp"/>
+    <ImageView
+        android:id="@+id/iv_remind_item_delete"
+        android:src="@drawable/icon_remind_item_delete"
+        android:scaleType="fitXY"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/tv_remind_item_time"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+</RelativeLayout>

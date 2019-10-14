@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/splash_layout"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_splash_banner1"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon_splash_1" />
+
+    <TextView
+        android:id="@+id/tv_splash_title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/iv_splash_banner1"
+        android:text="全新首页"
+        android:textColor="@color/splash_main_title_color"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_below="@+id/tv_splash_title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="画面更简洁，查找更轻松"
+        android:textColor="@color/splash_subtitle_color"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/splash_bottom_point_selected" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/splash_bottom_point_unselected" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/splash_bottom_point_unselected" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/splash_bottom_point_unselected" />
+    </LinearLayout>
+</RelativeLayout>

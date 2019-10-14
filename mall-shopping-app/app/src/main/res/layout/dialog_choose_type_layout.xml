@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorTransparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/tv_top_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="5dp"
+            android:text="¥59.00"
+            android:textColor="@color/colorHomeLeft1"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv_is_have"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_top_price"
+            android:layout_marginStart="130dp"
+            android:text="有货"
+            android:textColor="@color/splash_main_title_color"/>
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_is_have"
+            android:layout_marginStart="130dp"
+            android:text="已选：4特大4中1手泵"
+            android:textColor="@color/splash_main_title_color"/>
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_type"
+            android:layout_marginStart="130dp"
+            android:text="数量：1"
+            android:textColor="@color/splash_main_title_color"/>
+
+        <ImageView
+            android:id="@+id/iv_close_dialog"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/icon_login_header_delete"/>
+
+        <TextView
+            android:id="@+id/tv_divider1"
+            style="@style/DividerTextView"
+            android:layout_marginTop="100dp"/>
+
+        <TextView
+            android:id="@+id/tv_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_divider1"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="颜色"
+            android:textColor="@color/splash_main_title_color"
+            android:textSize="17sp"/>
+
+        <top.omooo.blackfish.view.TagsLayout
+            android:id="@+id/labels_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:layout_below="@+id/tv_color"
+            app:tagHorizontalSpace="10dp"
+            app:tagVerticalSpace="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_divider2"
+            style="@style/DividerTextView"
+            android:layout_below="@id/labels_view"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_divider2"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="数量"
+            android:textColor="@color/splash_main_title_color"
+            android:textSize="17sp"/>
+
+        <top.omooo.blackfish.view.AmountView
+            android:id="@+id/amount_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv_divider2"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_divider3"
+            style="@style/DividerTextView"
+            android:layout_below="@id/amount_view"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_price_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_divider3"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/splash_main_title_color"/>
+
+        <TextView
+            android:id="@+id/tv_diter_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/tv_divider3"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_btn_no_pressed"
+            android:paddingBottom="10dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:text="确定购买"
+            android:textColor="@color/splash_main_title_color"/>
+    </RelativeLayout>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/iv_goods"
+        android:background="@drawable/shape_image_corners"
+        android:layout_marginStart="15dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+</RelativeLayout>

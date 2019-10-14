@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:divider="@drawable/shape_divider_layout"
+    android:showDividers="middle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/tv_mine_setting_back"
+            android:src="@drawable/icon_to_left"
+            android:scaleType="fitXY"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <TextView
+            android:text="设置"
+            style="@style/HeaderTitleStyle"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_setting_login_pwd"
+        style="@style/MinePagerTextListStyle"
+        android:layout_marginTop="1dp"
+        android:text="登陆密码"/>
+
+    <TextView
+        android:id="@+id/tv_setting_pay_pwd"
+        style="@style/MinePagerTextListStyle"
+        android:text="支付密码"/>
+
+    <TextView
+        android:id="@+id/tv_setting_manger_address"
+        style="@style/MinePagerTextListStyle"
+        android:text="收货地址管理"/>
+
+    <TextView
+        android:layout_marginTop="100dp"
+        android:id="@+id/btn_setting_exit_login"
+        android:text="退出登录"
+        android:textSize="17sp"
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorExitLogin"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+</LinearLayout>

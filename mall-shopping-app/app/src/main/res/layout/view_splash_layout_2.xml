@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/splash_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_splash_banner2"
+        android:src="@drawable/icon_splash_2"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+    <TextView
+        android:text="分期购物"
+        android:textSize="30sp"
+        android:textColor="@color/splash_main_title_color"
+        android:id="@+id/tv_splash_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/iv_splash_banner2" />
+    <TextView
+        android:text="额度最高至2万元，月息低至1%"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/splash_subtitle_color"
+        android:layout_below="@+id/tv_splash_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:src="@drawable/splash_bottom_point_unselected"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <ImageView
+            android:src="@drawable/splash_bottom_point_selected"
+            android:layout_marginStart="10dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <ImageView
+            android:src="@drawable/splash_bottom_point_unselected"
+            android:layout_marginStart="10dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <ImageView
+            android:src="@drawable/splash_bottom_point_unselected"
+            android:layout_marginStart="10dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+    </LinearLayout>
+</RelativeLayout>

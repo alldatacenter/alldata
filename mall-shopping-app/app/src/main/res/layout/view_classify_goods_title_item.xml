@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_classify_layout"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:id="@+id/tv_classify_goods_title_item"
+        android:gravity="center"
+        android:text="测试测试"
+        android:textColor="@color/splash_main_title_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</FrameLayout>

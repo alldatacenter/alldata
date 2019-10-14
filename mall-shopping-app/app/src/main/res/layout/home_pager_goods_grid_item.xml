@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<com.facebook.drawee.view.SimpleDraweeView
+    android:src="@drawable/image_home_goods_grid_item"
+    android:id="@+id/iv_home_goods_grid_item"
+    android:scaleType="fitXY"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"/>
+</FrameLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_marginBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <top.omooo.blackfish.view.RecycleViewBanner
+        android:id="@+id/rvb_home_header"
+        app:rvb_autoPlaying="true"
+        app:rvb_indicatorSelectedSrc="@drawable/icon_home_banner_selected"
+        app:rvb_indicatorUnselectedSrc="@drawable/icon_home_banner_unselected"
+        app:rvb_indicatorSize="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:rvb_indicatorGravity="center">
+
+    </top.omooo.blackfish.view.RecycleViewBanner>
+</FrameLayout>

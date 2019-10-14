@@ -1,0 +1,150 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--透明状态栏-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <item name="android:statusBarColor">@color/colorStatue</item>
+    </style>
+
+    //解决冷启动方案
+    <style name="StartAppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowFullscreen">true</item>    //设置满屏,没有状态栏,不需要可去掉
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowBackground">@drawable/splash</item>  //设置欢迎页图片
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--验证码TextView样式-->
+    <style name="VerifyCodeTextView">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">41dp</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#222222</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="MinePagerTextListStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <!--<item name="android:background">@color/colorWhite</item>-->
+        <item name="android:background">@drawable/selector_text_view_pressed</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/splash_main_title_color</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawableRight">@drawable/icon_mine_pager_header_toright</item>
+    </style>
+
+    <style name="DividerTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.2dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@color/colorDivider</item>
+    </style>
+
+    <style name="GridTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+    </style>
+
+    <style name="TitleHeaderTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/splash_main_title_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableLeft">@drawable/icon_to_left</item>
+    </style>
+
+    <style name="HeaderTitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/splash_main_title_color</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="HeaderTitleBlackStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DetailActivityTheme" parent="AppTheme">
+        <item name="colorPrimaryDark">@color/colorWhite</item>
+    </style>
+
+    <style name="BottomDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/shape_bottom_dialog_bg</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!--悬浮于Activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--Dialog以外的区域模糊效果-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--无标题-->
+        <item name="android:windowNoTitle">true</item>
+        <!--半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--Dialog进入以及退出动画-->
+        <item name="android:windowAnimationStyle">@style/BottomDialogAnimation</item>
+    </style>
+    <style name="BottomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/view_bottom_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/view_bottom_dialog_out</item>
+    </style>
+
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/shape_dialog</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="DetailBillText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorCardDetailText</item>
+    </style>
+
+    <style name="LabelsViewStyle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/splash_main_title_color</item>
+        <item name="android:background">@drawable/shape_card_view</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="AddressTextStyle">
+        <item name="android:textColor">@color/splash_main_title_color</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>
