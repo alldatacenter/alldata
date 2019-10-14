@@ -1,7 +1,6 @@
-package top.omooo.tinypng_plugin
+package com.waynell.tinypng
 
-class TinyPngResult {
-
+public class TinyPngResult {
     private long beforeSize
     private long afterSize
     private boolean error

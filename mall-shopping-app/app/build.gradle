@@ -83,7 +83,8 @@ dependencies {
     implementation project(":auto_track")
 }
 
-apply plugin: 'top.omooo.tinypng_plugin'
+//apply plugin: 'top.omooo.tinypng_plugin'
+apply plugin: 'com.waynell.tinypng'
 
 tinyInfo {
     //资源目录
@@ -97,5 +98,5 @@ tinyInfo {
     whiteList = [
 
     ]
-    apiKey = "AInj38Kpiz4moUpTG5tiWIaXyNJYDpnY"
+    apiKey = "7d6lKPVwZVmS30zWnytXq3ydRLdhsK6s"
 }

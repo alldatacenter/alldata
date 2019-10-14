@@ -1,23 +1,26 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-
+    
     repositories {
 
         maven{
             //本地 Plugin 地址，注意只有一个 .
             url uri('./repo')
         }
-        google()
+//        google()
         jcenter()
         mavenCentral()
         //短信验证依赖包
         maven {
             url "http://mvn.mob.com/android"
         }
+        maven {
+            url 'http://maven.google.com'
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.3'
+        classpath 'com.android.tools.build:gradle:3.5.0'
 
         classpath "com.mob.sdk:MobSDK:+"
 
@@ -25,7 +28,9 @@ buildscript {
         // in the individual module build.gradle files
 
         //TinyPngPlugin
-        classpath 'top.omooo.tinypng_plugin:tinypng_plugin:1.0'
+//        classpath 'top.omooo.tinypng_plugin:tinypng_plugin:1.0'
+
+        classpath 'com.waynell.tinypng:TinyPngPlugin:1.0.5'
     }
 }
 
@@ -34,7 +39,10 @@ allprojects {
         maven{
             url uri('./repo')
         }
-        google()
+//        google()
+        maven {
+            url 'http://maven.google.com'
+        }
         jcenter()
         mavenCentral()
     }
