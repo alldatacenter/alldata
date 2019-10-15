@@ -30,49 +30,48 @@
 # 2、数据平台展示
 2.1 商城图片展示：
 
-​	商城App:
+商城App:
 
-​	![1571122567309](http://pz8zk5xal.bkt.clouddn.com/01.png)
+![1571122567309](http://pz8zk5xal.bkt.clouddn.com/01.png)
 
-​	![1571122543642](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122543642.png)
+![1571122543642](http://pz8zk5xal.bkt.clouddn.com/02.png)
 
-​	![1571122608000](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122608000.png)
+![1571122608000](http://pz8zk5xal.bkt.clouddn.com/03.png)
 
-​	![1571122626783](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122626783.png)
-
-​	![1571122643977](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122643977.png)
-
-
+![1571122626783](http://pz8zk5xal.bkt.clouddn.com/04.png)
 
 商城小程序：
 
-![1571124130480](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571124130480.png)
+![1571124130480](http://pz8zk5xal.bkt.clouddn.com/21.png)
 
-![1571124166039](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571124166039.png)
+![1571124166039](http://pz8zk5xal.bkt.clouddn.com/22.png)
 
-![1571124189674](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571124189674.png)
+![1571124189674](http://pz8zk5xal.bkt.clouddn.com/23.png)
 
-![1571124400916](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571124400916.png)
+![1571124400916](http://pz8zk5xal.bkt.clouddn.com/24.png)
 
-![1571124444669](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571124444669.png)
+![1571124444669](http://pz8zk5xal.bkt.clouddn.com/25.png)
 
 商城移动端：
 
-![1571124611795](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571124611795.png)
+![1571124611795](http://pz8zk5xal.bkt.clouddn.com/31.png)
 
-![1571124636465](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571124636465.png)
+![1571124636465](http://pz8zk5xal.bkt.clouddn.com/32.png)
+商城PC端：
 
 商城后台管理：
 
-![1571122855084](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122855084.png)
+![1571122855084](http://pz8zk5xal.bkt.clouddn.com/06.png)
 
-![1571122899353](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122899353.png)
+![1571122899353](http://pz8zk5xal.bkt.clouddn.com/07.png)
 
-![1571122933051](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122933051.png)
+![1571122933051](http://pz8zk5xal.bkt.clouddn.com/08.png)
 
-![1571122950489](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122950489.png)
+![1571122950489](http://pz8zk5xal.bkt.clouddn.com/09.png)
 
-![1571122972036](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122972036.png)
+![1571122972036](http://pz8zk5xal.bkt.clouddn.com/11.png)
+
+![1571122972036](http://pz8zk5xal.bkt.clouddn.com/12.png)
 
 2.2 其他模块页面展示...xxx
 
