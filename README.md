@@ -57,15 +57,25 @@
 ![1571124611795](http://pz8zk5xal.bkt.clouddn.com/31.png)
 
 ![1571124636465](http://pz8zk5xal.bkt.clouddn.com/32.png)
+
 商城PC端：
-http://pz8zk5xal.bkt.clouddn.com/51.png
-http://pz8zk5xal.bkt.clouddn.com/52.png
-http://pz8zk5xal.bkt.clouddn.com/53.png
-http://pz8zk5xal.bkt.clouddn.com/54.png
-http://pz8zk5xal.bkt.clouddn.com/55.png
-http://pz8zk5xal.bkt.clouddn.com/56.png
-http://pz8zk5xal.bkt.clouddn.com/57.png
-http://pz8zk5xal.bkt.clouddn.com/58.png
+
+![1571124631001](http://pz8zk5xal.bkt.clouddn.com/51.png)
+
+![1571124631002](http://pz8zk5xal.bkt.clouddn.com/52.png)
+
+![1571124631003](http://pz8zk5xal.bkt.clouddn.com/53.png)
+
+![1571124631004](http://pz8zk5xal.bkt.clouddn.com/54.png)
+
+![1571124631005](http://pz8zk5xal.bkt.clouddn.com/55.png)
+
+![1571124631006](http://pz8zk5xal.bkt.clouddn.com/56.png)
+
+![1571124631007](http://pz8zk5xal.bkt.clouddn.com/57.png)
+
+![1571124631008](http://pz8zk5xal.bkt.clouddn.com/58.png)
+
 商城后台管理：
 
 ![1571122855084](http://pz8zk5xal.bkt.clouddn.com/06.png)
