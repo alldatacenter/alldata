@@ -106,7 +106,7 @@ public class EmailUtil {
         }
 
         // 发送邮件
-        senderImpl.send(mailMessage);
+//        senderImpl.send(mailMessage);
 
         log.info("用户："+tbThanks.getUsername()+" 支付:"+tbThanks.getMoney()+"元 待审核的邮件发送成功");
     }

@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0e6e3ca-6f8e-48b9-94bc-47f7ada939bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mall-shopping-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/conf/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/conf/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/swagger/Swagger2Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/swagger/Swagger2Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/resources/spring/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/resources/spring/springmvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/conf/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/conf/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/conf/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/conf/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/conf/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/conf/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/mallbackend/target/" />
     <ignored path="$PROJECT_DIR$/mall-end/target/" />
@@ -112,16 +121,16 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/java/com/platform/mall/mobile/wx/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="37" />
+            <state relative-caret-position="80">
+              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/dao/LitemallAdminMapper.xml">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -178,7 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>XPay支付系统</find>
       <find>https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-pc</find>
       <find>wechat</find>
       <find>wechat.png</find>
@@ -208,6 +216,7 @@
       <find>android</find>
       <find>group</find>
       <find>classpath</find>
+      <find>org.linlinjava.litemall.db</find>
     </findStrings>
     <replaceStrings>
       <replace>2019/9</replace>
@@ -229,7 +238,6 @@
       <replace>month</replace>
       <replace>Month</replace>
       <replace>com.platform.mall</replace>
-      <replace>com.platform.mall.db</replace>
       <replace>package org.linlinjava.litemall</replace>
       <replace>package com.platform.mall.core</replace>
       <replace>import com.platform.mall.db</replace>
@@ -240,6 +248,7 @@
       <replace>商城PC端</replace>
       <replace>KangU</replace>
       <replace>mall-shopping-app</replace>
+      <replace>com.platform.mall.db</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-backend\mall-wx-db\src\main\java\com\platform\mall\db</dir>
@@ -334,11 +343,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="115" />
-    <option name="y" value="95" />
-    <option name="width" value="1770" />
-    <option name="height" value="970" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="140" />
+    <option name="y" value="65" />
+    <option name="width" value="1110" />
+    <option name="height" value="600" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -448,11 +457,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../../../../software/Android/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571124084616" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571128841263" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="jdk.selected.PYTHON_MODULE" value="Python 3.7 (ExportScene01)" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../helper/litemall" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mall-shopping-pc-service" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -463,19 +472,19 @@
     <property name="ts.external.directory.path" value="D:\wulinhao\software\IntelliJ IDEA 2018.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\wechat" />
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\qqpay" />
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\alipay" />
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-admin-service\mall-search" />
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-admin-service\mall-base" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-backend\mall-mbg\src\main\resources\com\platform\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.platform.model" />
       <recent name="com.platform.controller" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-backend\mall-mbg\src\main\resources\com\platform\mapper" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-service\src\main\resources\dao" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\wechat" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\qqpay" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\alipay" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-admin-service\mall-search" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -668,19 +677,19 @@
       <workItem from="1571019824134" duration="6949000" />
       <workItem from="1571059091290" duration="427000" />
       <workItem from="1571059593408" duration="2190000" />
-      <workItem from="1571120450138" duration="2152000" />
+      <workItem from="1571120450138" duration="3508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155264000" />
+    <option name="totallyTimeSpent" value="156620000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7956044" visible="true" weight="0.34048256" />
-      <window_info id="Structure" order="1" sideWeight="0.2043956" side_tool="true" visible="true" weight="0.34048256" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7939914" visible="true" weight="0.34048256" />
+      <window_info id="Structure" order="1" sideWeight="0.20600858" side_tool="true" visible="true" weight="0.34048256" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -697,7 +706,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Run Dashboard" order="6" sideWeight="0.49865952" visible="true" weight="0.3555241" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="6" sideWeight="0.49865952" visible="true" weight="0.33994335" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.26345608" />
       <window_info anchor="bottom" id="TODO" order="8" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="9" />
@@ -1098,15 +1107,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/java/com/platform/mall/mobile/wx/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/dao/LitemallAdminMapper.xml">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/java/com/platform/mall/mobile/wx/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
