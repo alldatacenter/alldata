@@ -32,7 +32,7 @@
 
 ​	商城App:
 
-​	![1571122567309](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122567309.png)
+​	![1571122567309](http://pz8zk5xal.bkt.clouddn.com/01.png)
 
 ​	![1571122543642](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571122543642.png)
 
