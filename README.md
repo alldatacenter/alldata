@@ -4,7 +4,7 @@
 http://120.77.155.220:8081/BigDataPlatForm/index.html
 # 数据来源：
 	商城前台：
-		mall-shopping-android: 商城app
+		mall-shopping-app: 商城app
 		mall-shopping-wc: 商城小程序
 		mall-shopping-mobile: 商城前台
 		mall-shopping-pc: 商城pc端
