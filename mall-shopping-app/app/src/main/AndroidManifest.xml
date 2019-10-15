@@ -1,123 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="top.omooo.blackfish">
+          package="com.platform.app"
+    >
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name=".application.MyApplication"
+        android:name=".MallShoppingApp"
         android:allowBackup="true"
-        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        tools:replace="android:name">
-        <activity
-            android:name=".splash.WelcomeActivity"
-            android:theme="@style/StartAppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        >
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <!--原生的配置   开始-->
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/fullscreen"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity
-            android:name=".splash.WelcomeSplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-
-        </activity>
-
-        <activity android:name=".LoginActivity" />
-
-        <activity android:name=".VerifyCodeActivity" />
-
-        <activity android:name=".MinePageActivity.AboutActivity" />
-
-        <activity android:name=".MinePageActivity.SuggestionActivity" />
-
-        <activity android:name=".MinePageActivity.ActivityMyBankCard">
-            <meta-data
-                android:name="pageName"
-                android:value="myBankCard" />
-        </activity>
-
-        <activity android:name=".MinePageActivity.MineSettingActivity" />
-
-        <activity android:name=".MinePageActivity.CertifyCardActivity" />
-
-        <activity android:name=".KeeperPageActivity.AddBillActivity" />
-
-        <activity android:name=".KeeperPageActivity.AddCreditBillActivity" />
-
-        <activity android:name=".MinePageActivity.SetPwdActivity" />
-
-        <activity android:name=".TestActivity" />
-
-        <activity android:name=".MinePageActivity.SetNewPwdActivity" />
-
-        <activity android:name=".KeeperPageActivity.CreateCreditBillActivity" />
-
-        <activity android:name=".utils.SelectCardActivity" />
 
         <activity
-            android:name=".KeeperPageActivity.ShowDetailBillActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <activity android:name=".MallPagerActivity.SearchActivity" />
-
-        <activity android:name=".MallPagerActivity.ClassifyGoodsActivity">
-            <meta-data
-                android:name="pageName"
-                android:value="classifyGoods" />
-        </activity>
+            android:name=".activity.GuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/fullscreen"
+            />
 
         <activity
-            android:name="com.alipay.sdk.app.H5PayActivity"
-            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:exported="false"
-            android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
         <activity
-            android:name="com.alipay.sdk.app.H5AuthActivity"
-            android:configChanges="orientation|keyboardHidden|navigation"
-            android:exported="false"
-            android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
-        <activity android:name=".aliPay.PayDemoActivity" />
+            android:name=".activity.GoodsDetailsActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.AddressListActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.AddressAddActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.CreateOrderActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.GoodsListActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.MyFavoriteActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.MyOrdersActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".BaseWebViewActivity" />
+        <activity
+            android:name=".activity.SearchResultActivity"
+            android:launchMode="singleTask"
+            />
+        <activity
+            android:name=".activity.RegActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.RegSecondActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
+        <!--原生的配置   结束-->
 
-        <activity android:name=".GoodsDetailActivity" />
+        <!--短信验证-->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            >
 
-        <activity android:name=".MallPagerActivity.ShowImageActivity" />
-
-        <activity android:name=".MallPagerActivity.SubmitOrderActivity" />
-
-        <activity android:name=".MallPagerActivity.PayTypeActivity" />
-
-        <activity android:name=".MinePageActivity.ManagerAddressActivity" />
-
-        <activity android:name=".MinePageActivity.NewAddressActivity" />
-
-        <receiver android:name=".broadcast.NetChangedReceiver">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <data android:scheme="tencent100371282"/>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
-        </receiver>
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <!--集成line客户端登录授权，需要添如下格式的过滤器-->
+            <intent-filter>
+                <data android:scheme="line.1477692153"/>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            />
+
+        <!--&lt;!&ndash;&lt;!&ndash; 短信验证   通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data &ndash;&gt;&ndash;&gt;-->
+        <meta-data
+            android:name="Mob-AppKey"
+            android:value="201f8a7a91c30"
+            />
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="c63ec5c1eeac1f873ec78c1365120431"
+            />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="zbqExff1uz8XyUVn5GbyylomCa0rOkmP"
+            />
+
+        <!-- key:开发者申请的Key-->
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"
+            >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2">
+                </action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

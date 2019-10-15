@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="value" format="integer|reference"/>
+    <attr name="minValue" format="integer|reference"/>
+    <attr name="maxValue" format="integer|reference"/>
+    <attr name="editBackground" format="reference"/>
+    <attr name="buttonAddBackgroud" format="reference"/>
+    <attr name="buttonSubBackgroud" format="reference"/>
+
+    
+    <declare-styleable name="NumberAddSubView">
+        
+        <attr name="value"/>
+        <attr name="minValue"/>
+        <attr name="maxValue"/>
+        <attr name="editBackground"/>
+        <attr name="buttonAddBackgroud"/>
+        <attr name="buttonSubBackgroud"/>
+
+    </declare-styleable>
+
+</resources>

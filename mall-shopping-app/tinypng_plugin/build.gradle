@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'groovy'
+//apply from: 'bintray.gradle'
+//apply from: 'binlocal.gradle'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.tinify:tinify:1.3.1'
+}

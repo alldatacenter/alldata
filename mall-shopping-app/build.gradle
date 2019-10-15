@@ -1,50 +1,32 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
     repositories {
-
-        maven{
-            //本地 Plugin 地址，注意只有一个 .
-            url uri('./repo')
-        }
-//        google()
-        jcenter()
+        google()
+        jcenter { url "http://jcenter.bintray.com/" }
         mavenCentral()
-        //短信验证依赖包
-        maven {
-            url "http://mvn.mob.com/android"
-        }
-        maven {
-            url 'http://maven.google.com'
-        }
+        maven { url "https://jitpack.io" }
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
 
-        classpath "com.mob.sdk:MobSDK:+"
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.0'
+        classpath 'com.novoda:bintray-release:0.8.0'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-
-        //TinyPngPlugin
-//        classpath 'top.omooo.tinypng_plugin:tinypng_plugin:1.0'
-
-        classpath 'com.waynell.tinypng:TinyPngPlugin:1.0.5'
     }
 }
 
 allprojects {
     repositories {
-        maven{
-            url uri('./repo')
-        }
-//        google()
-        maven {
-            url 'http://maven.google.com'
-        }
+        google()
         jcenter()
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com" }
+        maven { url "http://repo1.maven.org/maven2" }
     }
 }
 
