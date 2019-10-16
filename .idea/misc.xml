@@ -28,21 +28,15 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/compute-mr" />
     <file type="web" url="file://$PROJECT_DIR$/compute-realtime" />
-    <file type="web" url="file://$PROJECT_DIR$/data-face" />
     <file type="web" url="file://$PROJECT_DIR$/data-insight" />
-    <file type="web" url="file://$PROJECT_DIR$/dubbo-service" />
+    <file type="web" url="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl" />
     <file type="web" url="file://$PROJECT_DIR$/log-collect-client" />
     <file type="web" url="file://$PROJECT_DIR$/log-collect-server" />
-    <file type="web" url="file://$PROJECT_DIR$/mall-admin-service" />
-    <file type="web" url="file://$PROJECT_DIR$/mall-admin-web" />
-    <file type="web" url="file://$PROJECT_DIR$/mall-end" />
-    <file type="web" url="file://$PROJECT_DIR$/mall-shopping-android" />
-    <file type="web" url="file://$PROJECT_DIR$/mall-shopping-android-service" />
-    <file type="web" url="file://$PROJECT_DIR$/mall-shopping-app" />
+    <file type="web" url="file://$PROJECT_DIR$/mall-common" />
     <file type="web" url="file://$PROJECT_DIR$/mall-shopping-app-service" />
     <file type="web" url="file://$PROJECT_DIR$/mall-shopping-mobile" />
     <file type="web" url="file://$PROJECT_DIR$/mall-shopping-pc" />
-    <file type="web" url="file://$PROJECT_DIR$/mall-shopping-service" />
+    <file type="web" url="file://$PROJECT_DIR$/mall-shopping-pc-service" />
     <file type="web" url="file://$PROJECT_DIR$/mall-shopping-wc" />
     <file type="web" url="file://$PROJECT_DIR$/multi-dimension-analysis" />
     <file type="web" url="file://$PROJECT_DIR$/system-ad" />
@@ -57,127 +51,41 @@
     <file type="web" url="file://$PROJECT_DIR$/task-ops" />
     <file type="web" url="file://$PROJECT_DIR$/task-schedular" />
   </component>
-  <component name="JavaScriptSettings">
-    <option name="languageLevel" value="ES6" />
-  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/mallbackend/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-web/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-wechat-applet/pom.xml" />
-        <option value="$PROJECT_DIR$/log-collect-server/pom.xml" />
         <option value="$PROJECT_DIR$/log-collect-client/pom.xml" />
-        <option value="$PROJECT_DIR$/data-import-export/pom.xml" />
         <option value="$PROJECT_DIR$/compute-mr/pom.xml" />
-        <option value="$PROJECT_DIR$/compute-realtime/pom.xml" />
-        <option value="$PROJECT_DIR$/multi-dimension-analysis/pom.xml" />
-        <option value="$PROJECT_DIR$/task-schedular/pom.xml" />
-        <option value="$PROJECT_DIR$/task-ops/pom.xml" />
-        <option value="$PROJECT_DIR$/data-face/pom.xml" />
-        <option value="$PROJECT_DIR$/data-insight/pom.xml" />
-        <option value="$PROJECT_DIR$/system-recommender/pom.xml" />
-        <option value="$PROJECT_DIR$/system-ad/pom.xml" />
-        <option value="$PROJECT_DIR$/system-search/pom.xml" />
-        <option value="$PROJECT_DIR$/system-anti-cheating/pom.xml" />
-        <option value="$PROJECT_DIR$/system-report-analysis/pom.xml" />
-        <option value="$PROJECT_DIR$/system-elk/pom.xml" />
-        <option value="$PROJECT_DIR$/system-apm/pom.xml" />
-        <option value="$PROJECT_DIR$/system-deploy/pom.xml" />
-        <option value="$PROJECT_DIR$/system-tasksubmit/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-backend/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-pc/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-mobile/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-android/pom.xml" />
         <option value="$PROJECT_DIR$/mall-shopping-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/pom.xml" />
-        <option value="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-shopping-app/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/data-import-export/pom.xml" />
+        <option value="$PROJECT_DIR$/task-ops/pom.xml" />
+        <option value="$PROJECT_DIR$/system-deploy/pom.xml" />
         <option value="$PROJECT_DIR$/mall-shopping-app-service/pom.xml" />
+        <option value="$PROJECT_DIR$/system-ad/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-mobile/pom.xml" />
+        <option value="$PROJECT_DIR$/system-apm/pom.xml" />
+        <option value="$PROJECT_DIR$/system-anti-cheating/pom.xml" />
+        <option value="$PROJECT_DIR$/system-search/pom.xml" />
+        <option value="$PROJECT_DIR$/task-schedular/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-wc/pom.xml" />
+        <option value="$PROJECT_DIR$/system-tasksubmit/pom.xml" />
+        <option value="$PROJECT_DIR$/system-elk/pom.xml" />
+        <option value="$PROJECT_DIR$/system-report-analysis/pom.xml" />
+        <option value="$PROJECT_DIR$/system-recommender/pom.xml" />
+        <option value="$PROJECT_DIR$/multi-dimension-analysis/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-common/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-admin-web/pom.xml" />
+        <option value="$PROJECT_DIR$/compute-realtime/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc/pom.xml" />
+        <option value="$PROJECT_DIR$/data-insight/pom.xml" />
+        <option value="$PROJECT_DIR$/data-face/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-service/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/pom.xml" />
+        <option value="$PROJECT_DIR$/log-collect-server/pom.xml" />
       </list>
     </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-admin/pom.xml" />
-        <option value="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-common/pom.xml" />
-        <option value="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-mbg/pom.xml" />
-        <option value="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-portal/pom.xml" />
-        <option value="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-search/pom.xml" />
-        <option value="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-admin/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-base/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-common/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-manage-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-mbg/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-mobile-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-portal/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-search-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-search/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-shopping-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-web/mall-admin-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-backend/mall-demo/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-backend/mall-wx-core/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-backend/mall-wx-db/pom.xml" />
-      </set>
-    </option>
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State />
-          <State>
-            <id>Class structureJava</id>
-          </State>
-          <State>
-            <id>Code maturityJava</id>
-          </State>
-          <State>
-            <id>Google Web Toolkit</id>
-          </State>
-          <State>
-            <id>JUnitJava</id>
-          </State>
-          <State>
-            <id>Java</id>
-          </State>
-          <State>
-            <id>Java 5Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java 7Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java 8Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>JavadocJava</id>
-          </State>
-          <State>
-            <id>Numeric issuesJava</id>
-          </State>
-          <State>
-            <id>PerformanceJava</id>
-          </State>
-          <State>
-            <id>Spring</id>
-          </State>
-          <State>
-            <id>Spring AOPSpring</id>
-          </State>
-          <State>
-            <id>TestNGJava</id>
-          </State>
-          <State>
-            <id>Threading issuesJava</id>
-          </State>
-        </expanded-state>
-      </profile-state>
-    </entry>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

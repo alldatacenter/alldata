@@ -14,9 +14,17 @@
         <module name="dubbo-service-interface" />
         <module name="log-collect-client" />
         <module name="log-collect-server" />
-        <module name="mall-shopping-app" />
+        <module name="mall-common" />
+        <module name="mall-common (1)" />
+        <module name="mall-manage-service" />
+        <module name="mall-mbg" />
+        <module name="mall-search-service" />
         <module name="mall-shopping-app-service" />
+        <module name="mall-shopping-mobile" />
+        <module name="mall-shopping-pc" />
+        <module name="mall-shopping-pc-service" />
         <module name="mall-shopping-service" />
+        <module name="mall-shopping-wc" />
         <module name="multi-dimension-analysis" />
         <module name="system-ad" />
         <module name="system-anti-cheating" />
@@ -30,24 +38,6 @@
         <module name="task-ops" />
         <module name="task-schedular" />
       </profile>
-      <profile name="Annotation profile for mall-pc Maven Webapp" enabled="true">
-        <sourceOutputDir name="../mall-pc/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../mall-pc/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="mall-shopping-pc" />
-      </profile>
-      <profile name="Annotation profile for mall-mobile Maven Webapp" enabled="true">
-        <sourceOutputDir name="../mall-mobile/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../mall-mobile/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="mall-shopping-mobile" />
-      </profile>
-      <profile name="Annotation profile for mall-wechat-applet Maven Webapp" enabled="true">
-        <sourceOutputDir name="../mall-wechat-applet/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../mall-wechat-applet/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="mall-shopping-wc" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="compute-mr" target="1.8" />
@@ -60,40 +50,19 @@
       <module name="dubbo-service-interface" target="1.8" />
       <module name="log-collect-client" target="1.8" />
       <module name="log-collect-server" target="1.8" />
-      <module name="mall-admin" target="1.8" />
-      <module name="mall-admin (1)" target="1.8" />
-      <module name="mall-admin (2)" target="1.8" />
       <module name="mall-admin-service" target="1.8" />
-      <module name="mall-admin-service (1)" target="1.8" />
-      <module name="mall-admin-service (2)" target="1.8" />
       <module name="mall-admin-web" target="1.8" />
-      <module name="mall-base" target="1.8" />
       <module name="mall-common" target="1.8" />
       <module name="mall-common (1)" target="1.8" />
-      <module name="mall-common (2)" target="1.8" />
-      <module name="mall-demo" target="1.8" />
       <module name="mall-manage-service" target="1.8" />
       <module name="mall-mbg" target="1.8" />
-      <module name="mall-mbg (1)" target="1.8" />
-      <module name="mall-mbg (2)" target="1.8" />
-      <module name="mall-portal" target="1.8" />
-      <module name="mall-portal (1)" target="1.8" />
-      <module name="mall-portal (2)" target="1.8" />
-      <module name="mall-search" target="1.8" />
-      <module name="mall-search (1)" target="1.8" />
-      <module name="mall-search (2)" target="1.8" />
-      <module name="mall-shopping-android" target="1.8" />
-      <module name="mall-shopping-android-service" target="1.8" />
-      <module name="mall-shopping-app" target="1.8" />
+      <module name="mall-search-service" target="1.8" />
       <module name="mall-shopping-app-service" target="1.8" />
       <module name="mall-shopping-mobile" target="1.8" />
       <module name="mall-shopping-pc" target="1.8" />
+      <module name="mall-shopping-pc-service" target="1.8" />
       <module name="mall-shopping-service" target="1.8" />
       <module name="mall-shopping-wc" target="1.8" />
-      <module name="mall-web" target="1.8" />
-      <module name="mall-wx-core" target="1.8" />
-      <module name="mall-wx-db" target="1.8" />
-      <module name="mall-wx-server" target="1.8" />
       <module name="multi-dimension-analysis" target="1.8" />
       <module name="system-ad" target="1.8" />
       <module name="system-anti-cheating" target="1.8" />
@@ -110,24 +79,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="mall-admin" options="-parameters" />
-      <module name="mall-admin (1)" options="-parameters" />
-      <module name="mall-admin (2)" options="-parameters" />
-      <module name="mall-admin-service" options="" />
-      <module name="mall-base" options="-parameters" />
-      <module name="mall-common" options="" />
       <module name="mall-manage-service" options="-parameters" />
-      <module name="mall-mbg" options="" />
-      <module name="mall-portal" options="-parameters" />
-      <module name="mall-portal (1)" options="-parameters" />
-      <module name="mall-portal (2)" options="-parameters" />
-      <module name="mall-search" options="-parameters" />
-      <module name="mall-search (1)" options="-parameters" />
-      <module name="mall-search (2)" options="-parameters" />
+      <module name="mall-search-service" options="-parameters" />
       <module name="mall-shopping-service" options="-parameters" />
-      <module name="mall-wx-core" options="-parameters" />
-      <module name="mall-wx-db" options="-parameters" />
-      <module name="mall-wx-server" options="-parameters" />
     </option>
   </component>
 </project>

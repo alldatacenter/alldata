@@ -1,82 +1,410 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="mall-shopping-pc-service:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0e6e3ca-6f8e-48b9-94bc-47f7ada939bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/conf/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/conf/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/swagger/Swagger2Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/swagger/Swagger2Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/resources/spring/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/resources/spring/springmvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/conf/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/conf/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/conf/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/conf/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/conf/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/conf/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/spring/applicationContext-service.xml" afterDir="false" />
+    <list default="true" id="d0d5d44b-6c91-46d1-b6e4-316f62a22772" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/data_face_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/data_face_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/dubbo_service_Impl_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/dubbo_service_Impl_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/dubbo_service_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/dubbo_service_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mall_admin_web_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mall_admin_web_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mall_backend_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mall_backend_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mall_web_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mall_web_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mall_wechat_applet_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mall_wechat_applet_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compute-mr/compute-mr.iml" beforeDir="false" afterPath="$PROJECT_DIR$/compute-mr/compute-mr.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compute-realtime/compute-realtime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/compute-realtime/compute-realtime.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-import-export/data-import-export.iml" beforeDir="false" afterPath="$PROJECT_DIR$/data-import-export/data-import-export.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-import-export/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data-import-export/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-insight/data-insight.iml" beforeDir="false" afterPath="$PROJECT_DIR$/data-insight/data-insight.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/dubbo-service-Impl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/dubbo-service-Impl.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/dubbo-service-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/dubbo-service-interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/src/main/java/com/platform/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dubbo-service/dubbo-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/dubbo-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dubbo-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log-collect-client/log-collect-client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/log-collect-client/log-collect-client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log-collect-server/log-collect-server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/log-collect-server/log-collect-server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin-service/mall-mbg/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-service/mall-mbg/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/License" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/README-dubbo-config.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/annotation/RateLimiter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/annotation/SystemControllerLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/annotation/SystemServiceLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/constant/CommonConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/constant/CountConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/constant/DictConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/exception/XmallException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/exception/XmallUploadException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/jedis/JedisClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/jedis/JedisClientCluster.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/jedis/JedisClientPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/pojo/City.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/pojo/DataTablesResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/pojo/GeetInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/pojo/IpInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/pojo/IpWeatherResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/pojo/KindEditorResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/pojo/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/pojo/ZTreeNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/utils/HttpUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/utils/IDUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/utils/IPInfoUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/utils/ObjectUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/utils/QiniuUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/utils/ResultUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/utils/ThreadPoolUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-common/src/main/java/com/platform/pc/common/utils/TimeUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-interface/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-interface/src/main/java/com/platform/pc/content/service/ContentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-interface/src/main/java/com/platform/pc/content/service/PanelService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/java/com/platform/pc/content/service/impl/ContentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/java/com/platform/pc/content/service/impl/PanelServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/conf/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/conf/resource.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/mybatis/SqlMapConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/spring/applicationContext-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/spring/applicationContext-redis.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/resources/spring/applicationContext-trans.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/mall-pc-content-service/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-content/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/controller/AddressController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/controller/CartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/controller/GoodsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/controller/MemberController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/controller/ThanksController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/exception/RestCtrlExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/interceptor/InterceptorConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/interceptor/LimitRaterInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/limit/RedisRaterLimiter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/java/com/platform/pc/front/swagger/Swagger2Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/resources/conf/resource.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/resources/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/resources/spring/springmvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/css/print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/css/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/css/screen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/css/typography.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/fonts/DroidSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/fonts/DroidSans.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/collapse.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/expand.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/explorer_icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/favicon-32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/logo_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/pet_store_api.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/throbber.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/images/wordnik_api.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/el.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/es.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/fr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/geo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/it.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/ja.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/ko-kr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/pl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/pt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/ru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/tr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/translator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lang/zh-cn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/backbone-min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/es5-shim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/handlebars-4.0.5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/highlight.9.1.0.pack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/highlight.9.1.0.pack_extended.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/jquery-1.8.0.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/jquery.ba-bbq.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/jquery.slideto.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/jquery.wiggle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/js-yaml.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/jsoneditor.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/lodash.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/marked.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/object-assign-pollyfill.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/sanitize-html.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/lib/swagger-oauth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/o2c.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/swagger-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-front-web/src/main/webapp/swagger/swagger-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbAddressMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbAddressMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbBaseMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbBaseMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbDictMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbDictMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbExpressMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbExpressMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbItemCatMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbItemCatMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbItemDescMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbItemDescMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbLogMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbLogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbMemberMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbMemberMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbOrderItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbOrderItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbOrderMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbOrderMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbOrderShippingMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbOrderShippingMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbPanelContentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbPanelContentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbPanelMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbPanelMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbPermissionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbPermissionMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbRoleMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbRoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbRolePermMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbRolePermMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbShiroFilterMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbShiroFilterMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbThanksMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbThanksMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbUserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-dao/src/main/java/com/platform/pc/manager/mapper/TbUserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/CountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/DictService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/ExpressService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/ItemCatService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/ItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/SystemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/ThanksService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-interface/src/main/java/com/platform/pc/manager/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/ChartData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/DtoUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/EsCount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/EsInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/ItemDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/MemberDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/OrderChartData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/OrderDetail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/RoleDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/AllGoodsResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/Cart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/CartProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/CommonDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/MemberLoginRegist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/OrderInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/PageOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/ProductDet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/SearchItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/dto/front/SearchResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbAddressExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbBaseExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbDict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbDictExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbExpress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbExpressExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbItemCat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbItemCatExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbItemDesc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbItemDescExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbItemExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbLogExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbMemberExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbOrderExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbOrderItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbOrderItemExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbOrderShipping.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbOrderShippingExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbPanelContent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbPanelContentExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbPanelExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbPermission.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbPermissionExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbRoleExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbRolePerm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbRolePermExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbShiroFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbShiroFilterExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbThanks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbThanksExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-pojo/src/main/java/com/platform/pc/manager/pojo/TbUserExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/CountServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/DictServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/EmailUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/ExpressServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/ItemCatServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/ItemServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/MemberServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/SystemServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/ThanksServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/java/com/platform/pc/manager/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/conf/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/conf/resource.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/mybatis/SqlMapConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-activemq.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-redis.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/resources/spring/applicationContext-trans.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/mall-pc-manager-service/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-manager/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-parent/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-interface/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-interface/src/main/java/com/platform/pc/search/service/SearchItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-interface/src/main/java/com/platform/pc/search/service/SearchService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/java/com/platform/pc/search/mapper/ItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/java/com/platform/pc/search/mapper/ItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/java/com/platform/pc/search/message/ItemESMessageListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/java/com/platform/pc/search/message/MyMessageListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/java/com/platform/pc/search/service/impl/SearchItemServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/java/com/platform/pc/search/service/impl/SearchServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/conf/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/conf/resource.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/log4j2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/module.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/mybatis/SqlMapConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/spring/applicationContext-activemq.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/spring/applicationContext-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/mall-pc-search-service/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-search/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-interface/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-interface/src/main/java/com/platform/pc/sso/service/AddressService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-interface/src/main/java/com/platform/pc/sso/service/CartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-interface/src/main/java/com/platform/pc/sso/service/LoginService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-interface/src/main/java/com/platform/pc/sso/service/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-interface/src/main/java/com/platform/pc/sso/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-interface/src/main/java/com/platform/pc/sso/service/RegisterService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/java/com/platform/pc/sso/service/impl/AddressServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/java/com/platform/pc/sso/service/impl/CartServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/java/com/platform/pc/sso/service/impl/EmailUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/java/com/platform/pc/sso/service/impl/LoginServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/java/com/platform/pc/sso/service/impl/MemberServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/java/com/platform/pc/sso/service/impl/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/java/com/platform/pc/sso/service/impl/RegisterServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/conf/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/conf/resource.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/mybatis/SqlMapConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/spring/applicationContext-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/spring/applicationContext-redis.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/spring/applicationContext-service.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/resources/spring/applicationContext-trans.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/mall-pc-sso-service/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc-sso/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc/dubbo.xsd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc/mall.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc-service/mall-pc/redis-3.0.0.gem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc/src/page/Thanks/thanks.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc/src/page/Thanks/thanks.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-pc/src/utils/storage.js" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-pc/src/utils/storage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-shopping-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-shopping-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/multi-dimension-analysis/multi-dimension-analysis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/multi-dimension-analysis/multi-dimension-analysis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/mall-mbg/generator.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/mall-mbg/generatorConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-ad/system-ad.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-ad/system-ad.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-anti-cheating/system-anti-cheating.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-anti-cheating/system-anti-cheating.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-apm/system-apm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-apm/system-apm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-deploy/system-deploy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-deploy/system-deploy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-elk/system-elk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-elk/system-elk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-recommender/system-recommender.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-recommender/system-recommender.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-report-analysis/system-report-analysis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-report-analysis/system-report-analysis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-search/system-search.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-search/system-search.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system-tasksubmit/system-tasksubmit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/system-tasksubmit/system-tasksubmit.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-ops/task-ops.iml" beforeDir="false" afterPath="$PROJECT_DIR$/task-ops/task-ops.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-schedular/task-schedular.iml" beforeDir="false" afterPath="$PROJECT_DIR$/task-schedular/task-schedular.iml" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/mallbackend/target/" />
-    <ignored path="$PROJECT_DIR$/mall-end/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-web/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/target/" />
-    <ignored path="$PROJECT_DIR$/mall-wechat-applet/target/" />
-    <ignored path="$PROJECT_DIR$/log-collect-server/target/" />
-    <ignored path="$PROJECT_DIR$/log-collect-client/target/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/mall-admin-web/node_modules/" />
+    <ignored path="$PROJECT_DIR$/mall-shopping-mobile/node_modules/" />
+    <ignored path="$PROJECT_DIR$/mall-shopping-pc/node_modules/" />
+    <ignored path="$PROJECT_DIR$/mall-shopping-app/.gradle/" />
     <ignored path="$PROJECT_DIR$/data-import-export/target/" />
-    <ignored path="$PROJECT_DIR$/compute-mr/target/" />
-    <ignored path="$PROJECT_DIR$/compute-realtime/target/" />
-    <ignored path="$PROJECT_DIR$/multi-dimension-analysis/target/" />
-    <ignored path="$PROJECT_DIR$/task-schedular/target/" />
-    <ignored path="$PROJECT_DIR$/task-ops/target/" />
-    <ignored path="$PROJECT_DIR$/data-face/target/" />
-    <ignored path="$PROJECT_DIR$/data-insight/target/" />
-    <ignored path="$PROJECT_DIR$/system-recommender/target/" />
-    <ignored path="$PROJECT_DIR$/system-ad/target/" />
-    <ignored path="$PROJECT_DIR$/system-search/target/" />
-    <ignored path="$PROJECT_DIR$/system-anti-cheating/target/" />
-    <ignored path="$PROJECT_DIR$/system-report-analysis/target/" />
-    <ignored path="$PROJECT_DIR$/system-elk/target/" />
-    <ignored path="$PROJECT_DIR$/system-apm/target/" />
-    <ignored path="$PROJECT_DIR$/system-deploy/target/" />
-    <ignored path="$PROJECT_DIR$/system-tasksubmit/target/" />
-    <ignored path="$PROJECT_DIR$/dubbo-service/target/" />
     <ignored path="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/target/" />
-    <ignored path="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-portal/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-search/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-demo/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-mbg/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-common/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-admin/target/" />
     <ignored path="$PROJECT_DIR$/mall-pc/target/" />
     <ignored path="$PROJECT_DIR$/mall-mobile/target/" />
-    <ignored path="$PROJECT_DIR$/mall-android/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-wx-server/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-wx-core/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-wx-db/target/" />
     <ignored path="$PROJECT_DIR$/mall-shopping-service/target/" />
-    <ignored path="$PROJECT_DIR$/mall-backend/mall-shopping-service/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-search/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-portal/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/target/" />
+    <ignored path="$PROJECT_DIR$/dubbo-service/target/" />
+    <ignored path="$PROJECT_DIR$/log-collect-client/target/" />
+    <ignored path="$PROJECT_DIR$/mall-admin-web/target/" />
+    <ignored path="$PROJECT_DIR$/log-collect-server/target/" />
+    <ignored path="$PROJECT_DIR$/data-insight/target/" />
+    <ignored path="$PROJECT_DIR$/compute-realtime/target/" />
+    <ignored path="$PROJECT_DIR$/compute-mr/target/" />
+    <ignored path="$PROJECT_DIR$/data-face/target/" />
+    <ignored path="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/target/" />
+    <ignored path="$PROJECT_DIR$/system-apm/target/" />
+    <ignored path="$PROJECT_DIR$/system-report-analysis/target/" />
+    <ignored path="$PROJECT_DIR$/system-deploy/target/" />
+    <ignored path="$PROJECT_DIR$/system-elk/target/" />
+    <ignored path="$PROJECT_DIR$/system-recommender/target/" />
+    <ignored path="$PROJECT_DIR$/system-search/target/" />
+    <ignored path="$PROJECT_DIR$/system-anti-cheating/target/" />
+    <ignored path="$PROJECT_DIR$/task-ops/target/" />
+    <ignored path="$PROJECT_DIR$/multi-dimension-analysis/target/" />
+    <ignored path="$PROJECT_DIR$/system-tasksubmit/target/" />
+    <ignored path="$PROJECT_DIR$/mall-wechat-applet/target/" />
+    <ignored path="$PROJECT_DIR$/system-ad/target/" />
+    <ignored path="$PROJECT_DIR$/task-schedular/target/" />
+    <ignored path="$PROJECT_DIR$/mall-common/target/" />
+    <ignored path="$PROJECT_DIR$/mall-shopping-pc-service/target/" />
     <ignored path="$PROJECT_DIR$/mall-admin-service/mall-common/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-admin/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-mbg/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-shopping-service/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-base/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-web/mall-admin-service/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-search01/target/" />
-    <ignored path="$PROJECT_DIR$/mall-shopping-android/target/" />
-    <ignored path="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-portal/target/" />
-    <ignored path="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/target/" />
-    <ignored path="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-search/target/" />
-    <ignored path="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-admin/target/" />
-    <ignored path="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-common/target/" />
-    <ignored path="$PROJECT_DIR$/../../../../../../BigDataPlatform/mall-admin-service/mall-mbg/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-mobile-service/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-manage-service/target/" />
-    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-search-service/target/" />
-    <ignored path="$PROJECT_DIR$/mall-shopping-android-service/target/" />
-    <ignored path="$PROJECT_DIR$/mall-shopping-app/target/" />
     <ignored path="$PROJECT_DIR$/mall-shopping-app-service/target/" />
+    <ignored path="$PROJECT_DIR$/mall-shopping-wc/target/" />
+    <ignored path="$PROJECT_DIR$/mall-admin-service/target/" />
+    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-manage-service/target/" />
+    <ignored path="$PROJECT_DIR$/mall-shopping-mobile/target/" />
+    <ignored path="$PROJECT_DIR$/mall-shopping-pc/target/" />
+    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-mbg/target/" />
+    <ignored path="$PROJECT_DIR$/mall-admin-service/mall-search-service/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,174 +414,141 @@
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/dubbo-service-Impl.iml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data-face/data-face.iml">
+        <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/controller/MemberController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+            <state relative-caret-position="236">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-shopping-app-service/pom.xml">
+        <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/LoginServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/utils/storage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="800">
+              <caret line="57" column="7" lean-forward="true" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/api/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/App.vue">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/page/Home/home.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="214">
+              <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/page/Login/login.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+              <folding>
+                <element signature="e#1954#1990#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/page/Login/register.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/java/com/platform/mall/mobile/wx/Application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/dao/LitemallAdminMapper.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/dao/GoodsProductMapper.xml">
+        <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-common/src/main/resources/rebel-remote.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="40">
-              <caret line="2" column="39" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/back.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/application-wx.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall-admin-web/build/webpack.prod.conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1340">
-              <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
+              <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-pc</find>
-      <find>wechat</find>
-      <find>wechat.png</find>
-      <find>wechat.jp</find>
-      <find>scree</find>
-      <find>screenshot</find>
-      <find>极验验证码</find>
-      <find>网站描述</find>
-      <find>open1</find>
-      <find>商城pc</find>
-      <find>XPay</find>
-      <find>XMall商城</find>
-      <find>Exrick</find>
-      <find>极客</find>
-      <find>XBoot框架</find>
-      <find>后台管理系统</find>
-      <find>3.c5</find>
-      <find>app.e28</find>
-      <find>static/</find>
-      <find>res.result.state !== 1</find>
-      <find>if</find>
-      <find>space:</find>
-      <find>timeout:</find>
-      <find>axios.defaults.timeout = 10000</find>
-      <find>!== 1</find>
-      <find>mall-shopping-android</find>
-      <find>android</find>
-      <find>group</find>
-      <find>classpath</find>
-      <find>org.linlinjava.litemall.db</find>
+      <find>AddressService</find>
+      <find>result.state</find>
+      <find>result ===</find>
+      <find>if(</find>
+      <find>.state</find>
+      <find>result ===</find>
+      <find>result, null</find>
+      <find>file</find>
+      <find>info.</find>
+      <find>member/checkLogin</find>
+      <find>let params = {</find>
+      <find>userLogin(params).then(res =&gt; {</find>
+      <find>/member/login</find>
+      <find>FLUSHALL</find>
+      <find>userLogin</find>
+      <find>XMALL</find>
+      <find>MALL</find>
+      <find>com.platform.pc.microservice.mapper.TbPanelMapper</find>
+      <find>setStore</find>
+      <find>.</find>
+      <find>mall.pc.rateLimit.enable</find>
+      <find>.xml</find>
+      <find>mapper.xml</find>
+      <find>mysql</find>
+      <find>jdbc.driverClassName</find>
+      <find>com.mysql.jdbc.</find>
+      <find>druid&lt;/</find>
+      <find>mysq</find>
+      <find>mysql-connector-java</find>
+      <find>mall-common___281_29</find>
     </findStrings>
     <replaceStrings>
-      <replace>2019/9</replace>
-      <replace>2019-2020</replace>
-      <replace>2019-09</replace>
-      <replace>2019</replace>
-      <replace>&lt;el-col :span=&quot;5&quot;&gt;</replace>
-      <replace>SmsHomeDataController</replace>
-      <replace>= 0;</replace>
-      <replace>= 0.00;</replace>
-      <replace>: 0</replace>
-      <replace>: 0.00,</replace>
-      <replace>: 0,</replace>
-      <replace>: result</replace>
-      <replace>= result</replace>
-      <replace>;</replace>
-      <replace>Week</replace>
-      <replace>Integer</replace>
-      <replace>month</replace>
-      <replace>Month</replace>
-      <replace>com.platform.mall</replace>
-      <replace>package org.linlinjava.litemall</replace>
-      <replace>package com.platform.mall.core</replace>
-      <replace>import com.platform.mall.db</replace>
-      <replace>import com.platform.mall.core</replace>
-      <replace>mall-admin-service</replace>
-      <replace>base</replace>
-      <replace>商城PC</replace>
-      <replace>商城PC端</replace>
-      <replace>KangU</replace>
-      <replace>mall-shopping-app</replace>
-      <replace>com.platform.mall.db</replace>
+      <replace>mall-pc</replace>
+      <replace>dubbo.mall.</replace>
+      <replace>2.9.1</replace>
+      <replace>/</replace>
     </replaceStrings>
-    <dirStrings>
-      <dir>D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-backend\mall-wx-db\src\main\java\com\platform\mall\db</dir>
-      <dir>D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -261,62 +556,66 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mall-backend/mall-admin/src/test/com/platform/mall/PmsDaoTests.java" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-search/src/main/java/com/platform/search/config/Swagger2Config.java" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-admin/src/main/java/com/platform/App.java" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-common/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-portal04/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-search/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-admin/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform/base/controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-mbg/src/main/java/com/platform/model/CmsSubject.java" />
-        <option value="$PROJECT_DIR$/mall-admin-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-web/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-mbg/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-base/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform/common/api/CommonResult.java" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform/base/domain/SmsCouponHistoryDetail.java" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform/model/CmsSubject.java" />
-        <option value="$PROJECT_DIR$/mall-shopping-android/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-service/mall-search-service/mall-search.iml" />
-        <option value="$PROJECT_DIR$/mall-shopping-mobile/src/views/user/user-information-set/set-mobile/index.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-android/app/src/main/java/me/zhanghai/android/douya/network/api/ApiContract.java" />
-        <option value="$PROJECT_DIR$/mall-shopping-android/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/mall-shopping-android/app/src/main/java/me/zhanghai/android/douya/network/api/ApiError.java" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/.eslintrc.js" />
-        <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/api/index.js" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/common/footer.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/common/header.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/Cart/cart.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/Home/home.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/Login/login.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/Login/register.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/Order/alipay.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/index.html" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/Order/wechat.vue" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/controller/GoodsController.java" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/controller/ThanksController.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/manager/ThanksServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/content/ContentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/manager/ItemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/manager/EmailUtil.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/manager/OrderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-trans.xml" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/MemberServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/src/main/java/com/platform/pc/microservice/service/manager/MemberService.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/src/main/java/com/platform/pc/microservice/service/manager/OrderService.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/sso/OrderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/src/main/java/com/platform/pc/microservice/service/MemberService.java" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/controller/MemberController.java" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/src/main/java/com/platform/pc/microservice/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/filter/ValidateException.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/filter/CustomExceptionFilter.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/dubbo.properties" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/dubbo.properties" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/Thanks/thanks.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/User/children/aihuishou.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/User/children/support.vue" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/.gitignore" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/package.json" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/package-lock.json" />
-        <option value="$PROJECT_DIR$/mall-shopping-mobile/src/utils/request.js" />
-        <option value="$PROJECT_DIR$/mall-admin-web/src/utils/request.js" />
-        <option value="$PROJECT_DIR$/mall-shopping-pc/src/api/public.js" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-activemq.xml" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/conf/resource.properties" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/ItemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/ContentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/OrderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/entity/EmailUtil.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/META-INF/dubbo/com.alibaba.dubbo.rpc.Filter" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/conf/dubbo-mall.properties" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc/src/common/header.vue" />
+        <option value="$PROJECT_DIR$/mall-common/src/main/java/com/platform/mall/constant/CommonConstant.java" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/interceptor/LimitRaterInterceptor.java" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc/src/utils/storage.js" />
         <option value="$PROJECT_DIR$/mall-shopping-pc/src/main.js" />
-        <option value="$PROJECT_DIR$/mall-shopping-android-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-shopping-app/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue" />
-        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service.iml" />
-        <option value="$PROJECT_DIR$/mall-shopping-app-service/pom.xml" />
-        <option value="$PROJECT_DIR$/mall-shopping-service/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/mall-shopping-service/src/main/java/com/platform/mall/mobile/wx/Application.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-service.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/conf/springmvc.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/conf/dubbo.properties" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/conf/dubbo.properties" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/spring/springmvc.xml" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-dao.xml" />
+        <option value="$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/conf/db.properties" />
+        <option value="$PROJECT_DIR$/mall-admin-service/mall-mbg/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-service/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-common/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-pc/src/page/Login/login.vue" />
       </list>
     </option>
   </component>
-  <component name="JRebelWorkspace">
-    <option name="jrebelEnabledAutocompile" value="true" />
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -327,7 +626,6 @@
     </option>
     <option name="importingSettings">
       <MavenImportingSettings>
-        <option name="createModuleGroups" value="true" />
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
@@ -337,15 +635,20 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="mall-admin-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="mall-shopping-pc-service Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="mall-shopping-pc-service Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
         </path>
       </expand>
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="140" />
-    <option name="y" value="65" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="301" />
+    <option name="y" value="-9" />
     <option name="width" value="1110" />
     <option name="height" value="600" />
   </component>
@@ -357,142 +660,143 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-app-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service-interface" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service-interface" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service-interface" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service-interface" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mall" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-admin-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-service" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-service" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-admin-service" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-common" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mall" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mall" type="462c0819:PsiDirectoryNode" />
-              <item name="mobile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mall" type="462c0819:PsiDirectoryNode" />
-              <item name="mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="wx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-admin-service" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-common" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mall-shopping-service" type="462c0819:PsiDirectoryNode" />
+              <item name="mall-shopping-pc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-shopping-pc-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-shopping-pc-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-shopping-pc-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-shopping-pc-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BigDataPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mall-shopping-pc-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="android.sdk.path" value="$PROJECT_DIR$/../../../../../../software/Android/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571128841263" />
-    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="jdk.selected.PYTHON_MODULE" value="Python 3.7 (ExportScene01)" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/mall-admin-service/mall-base/src/main/java/com/platform" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mall-shopping-pc-service" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571228697357" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BigDataPlatform-2019-10-15/mall-shopping-pc-service" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.35945153" />
-    <property name="settings.editor.selected.configurable" value="settings.findbugs.project" />
-    <property name="ts.external.directory.path" value="D:\wulinhao\software\IntelliJ IDEA 2018.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-backend\mall-mbg\src\main\resources\com\platform\mapper" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc-service\src\main\resources\spring" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc-service\src\main\resources\conf" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc-service\src\main\resources" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\dubbo-service\dubbo-service-Impl\src\main\resources" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\dubbo-service\dubbo-service-Impl\src\main\resources\conf" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.platform.pc.microservice.service.impl" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.platform.model" />
-      <recent name="com.platform.controller" />
+      <recent name="com.platform.pc.microservice.filter" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-service\src\main\resources\dao" />
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\wechat" />
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\qqpay" />
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc\static\qr\alipay" />
-      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-admin-service\mall-search" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\mall-shopping-pc-service\src\main\resources" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\dubbo-service\dubbo-service-Impl\src\main\resources" />
+      <recent name="D:\wulinhao\work\HGITS\code\learn-code\fly-learn\BigDataPlatform\dubbo-service\dubbo-service-interface\src\main\java\com\platform\pc\microservice\service\content" />
     </key>
   </component>
   <component name="RunDashboard">
-    <option name="configurationTypes">
-      <set>
-        <option value="SpringBootApplicationConfigurationType" />
-      </set>
-    </option>
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -503,142 +807,289 @@
         </RuleState>
       </list>
     </option>
-    <option name="contentProportion" value="0.17827868" />
   </component>
-  <component name="RunManager" selected="Spring Boot.mall-shopping-service">
+  <component name="RunManager" selected="Tomcat Server.mall-pc-service">
     <configuration name="MallManageService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="mall-manage-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.platform.MallManageService" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MallMobieService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="mall-portal" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.platform.base.MallMobieService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.platform.manage.MallManageService" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="MallSearchService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="mall-search" />
+      <module name="mall-search-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.platform.search.MallSearchService" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mall-shopping-service" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="mall-shopping-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.platform.mall.mobile.wx.Application" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+    <configuration name="dubbo-service" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.29" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="dubbo-service-Impl:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_BigDataPlatform" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="51238" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="JProfiler">
+        <option name="jreHome" value="C:/Program Files/Java/jdk1.8.0_191" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="JRebel Debug">
+        <option name="DEBUG_PORT" value="51239" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JProfiler">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Executor">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="dubbo-service-Impl:war exploded" />
+        </option>
       </method>
     </configuration>
-    <configuration default="true" type="tests" factoryName="Nosetests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_regexPattern" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Twisted Trial">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="py.test">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
+    <configuration name="mall-pc-service" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.29" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:7777/swagger/index.html" />
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="mall-shopping-pc-service:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_BigDataPlatform_2" />
+        <option name="HTTP_PORT" value="7777" />
+        <option name="JNDI_PORT" value="1102" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="55267" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="JProfiler">
+        <option name="jreHome" value="C:/Program Files/Java/jdk1.8.0_191" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="JRebel Debug">
+        <option name="DEBUG_PORT" value="55268" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JProfiler">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Executor">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="mall-shopping-pc-service:war exploded" />
+        </option>
+      </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.mall-shopping-service" />
-      <item itemvalue="Spring Boot.MallMobieService" />
       <item itemvalue="Spring Boot.MallManageService" />
       <item itemvalue="Spring Boot.MallSearchService" />
+      <item itemvalue="Tomcat Server.mall-pc-service" />
+      <item itemvalue="Tomcat Server.dubbo-service" />
     </list>
   </component>
-  <component name="SbtLocalSettings">
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$/../../../../../es-learn/elastic4s-master" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../es-learn/elastic4s-master/samples/elastic4s-http-client-sbt" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../es-learn/scalastic-master" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../jododata/jododata-appAnalytics" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../jododata/resource-store" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../jododata/resource_synchronize/resource_synchronize" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../playframework-base" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../resource-backend" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../resource-store-master" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../resource_synchronize" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../scala-learn/test/benchmarks" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../scala_play_learn" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../spark_elasticsearch_learn" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../temp/material_synchronize" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../temp/resource_backend" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../temp/resource_synchronize" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../../毕设/backup/resource-backend" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../../毕设/backup/resource-store" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../../../../../毕设/backup/resource_synchronize" value="PREVIEW" />
-      </map>
-    </option>
-  </component>
-  <component name="SshConsoleOptionsProvider">
-    <option name="myEncoding" value="UTF-8" />
-  </component>
   <component name="SvnConfiguration">
-    <configuration>C:\Users\pc\AppData\Roaming\Subversion</configuration>
-    <supportedVersion>125</supportedVersion>
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c0e6e3ca-6f8e-48b9-94bc-47f7ada939bb" name="Default Changelist" comment="" />
+      <changelist id="d0d5d44b-6c91-46d1-b6e4-316f62a22772" name="Default Changelist" comment="" />
       <created>1570419841025</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -678,20 +1129,27 @@
       <workItem from="1571059091290" duration="427000" />
       <workItem from="1571059593408" duration="2190000" />
       <workItem from="1571120450138" duration="3508000" />
+      <workItem from="1571140479235" duration="3907000" />
+      <workItem from="1571145486790" duration="1213000" />
+      <workItem from="1571153755798" duration="490000" />
+      <workItem from="1571154289092" duration="1150000" />
+      <workItem from="1571155791999" duration="1269000" />
+      <workItem from="1571186712854" duration="1235000" />
+      <workItem from="1571187999415" duration="3752000" />
+      <workItem from="1571191883619" duration="33875000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156620000" />
+    <option name="totallyTimeSpent" value="37821000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7939914" visible="true" weight="0.34048256" />
-      <window_info id="Structure" order="1" sideWeight="0.20600858" side_tool="true" visible="true" weight="0.34048256" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.54489166" visible="true" weight="0.27345845" />
+      <window_info id="Structure" order="1" sideWeight="0.45194805" side_tool="true" weight="0.21849866" />
       <window_info id="Designer" order="2" />
-      <window_info id="JRebel" order="3" side_tool="true" />
+      <window_info id="JRebel" order="3" sideWeight="0.45510834" side_tool="true" weight="0.20375335" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
@@ -700,41 +1158,42 @@
       <window_info id="Web" order="9" side_tool="true" />
       <window_info id="Build Variants" order="10" side_tool="true" />
       <window_info id="Captures" order="11" />
+      <window_info anchor="bottom" id="Application Servers" weight="0.24504249" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.25354108" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49865952" visible="true" weight="0.1713881" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="6" sideWeight="0.49865952" visible="true" weight="0.33994335" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.26345608" />
-      <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="bottom" id="Run Dashboard" order="6" sideWeight="0.49865952" weight="0.37818697" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49865952" weight="0.22804533" />
+      <window_info anchor="bottom" id="TODO" order="8" weight="0.13172804" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="9" />
       <window_info anchor="bottom" id="ConsoleMavenPlugin" order="10" />
       <window_info anchor="bottom" id="Analysis" order="11" />
       <window_info anchor="bottom" id="SBT Console" order="12" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="CheckStyle" order="14" />
-      <window_info anchor="bottom" id="Event Log" order="15" sideWeight="0.50067025" side_tool="true" weight="0.31444758" />
+      <window_info anchor="bottom" id="Event Log" order="15" sideWeight="0.50268096" side_tool="true" weight="0.26487252" />
       <window_info anchor="bottom" id="Statistic" order="16" />
       <window_info anchor="bottom" id="Java Enterprise" order="17" />
       <window_info anchor="bottom" id="Database Changes" order="18" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="19" weight="0.1713881" />
       <window_info anchor="bottom" id="Alibaba Cloud View" order="20" />
       <window_info anchor="bottom" id="SBT Execute" order="21" side_tool="true" />
-      <window_info anchor="bottom" id="JRebel Console" order="22" sideWeight="0.5013405" side_tool="true" weight="0.35835695" />
-      <window_info anchor="bottom" id="Messages" order="23" sideWeight="0.49865952" weight="0.53966004" />
+      <window_info anchor="bottom" id="JRebel Console" order="22" sideWeight="0.5013405" side_tool="true" weight="0.25637394" />
+      <window_info anchor="bottom" id="Messages" order="23" sideWeight="0.49731904" weight="0.52549577" />
       <window_info anchor="bottom" id="Spring" order="24" />
       <window_info anchor="bottom" id="JProfiler" order="25" />
       <window_info anchor="bottom" id="JRebel Executor" order="26" />
       <window_info anchor="bottom" id="TypeScript" order="27" />
-      <window_info anchor="bottom" id="Problems" order="28" />
+      <window_info anchor="bottom" id="Problems" order="28" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" order="29" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="30" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.16353887" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.03217158" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="SciView" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -751,48 +1210,54 @@
       <window_info anchor="right" id="Device File Explorer" order="17" side_tool="true" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25201073" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.54489166" visible="true" weight="0.20375335" />
+      <window_info id="Structure" order="1" sideWeight="0.45194805" side_tool="true" weight="0.21849866" />
       <window_info id="Designer" order="2" />
-      <window_info id="JRebel" order="3" side_tool="true" />
+      <window_info id="JRebel" order="3" sideWeight="0.45510834" side_tool="true" weight="0.20375335" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Alibaba Cloud Explorer" order="8" weight="0.3297587" />
       <window_info id="Web" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Problems" order="0" />
+      <window_info id="Build Variants" order="10" side_tool="true" />
+      <window_info id="Captures" order="11" />
+      <window_info anchor="bottom" id="Application Servers" order="0" weight="0.24504249" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.25354108" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49865952" visible="true" weight="0.43342775" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Run Dashboard" order="7" sideWeight="0.49932975" visible="true" weight="0.3611898" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.39943343" />
-      <window_info anchor="bottom" id="TODO" order="9" />
+      <window_info anchor="bottom" id="Run Dashboard" order="7" sideWeight="0.49865952" weight="0.37818697" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49865952" weight="0.5750708" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.13172804" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="10" />
       <window_info anchor="bottom" id="ConsoleMavenPlugin" order="11" />
       <window_info anchor="bottom" id="Analysis" order="12" />
       <window_info anchor="bottom" id="SBT Console" order="13" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="CheckStyle" order="15" />
-      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.50067025" side_tool="true" weight="0.31444758" />
+      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.50268096" side_tool="true" weight="0.26487252" />
       <window_info anchor="bottom" id="Statistic" order="17" />
       <window_info anchor="bottom" id="Java Enterprise" order="18" />
-      <window_info anchor="bottom" id="Database Changes" order="19" />
+      <window_info anchor="bottom" id="Database Changes" order="19" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="20" weight="0.1713881" />
       <window_info anchor="bottom" id="Alibaba Cloud View" order="21" />
       <window_info anchor="bottom" id="SBT Execute" order="22" side_tool="true" />
-      <window_info anchor="bottom" id="JRebel Console" order="23" sideWeight="0.50067025" side_tool="true" weight="0.33144477" />
-      <window_info anchor="bottom" id="Messages" order="24" weight="0.34135976" />
+      <window_info anchor="bottom" id="JRebel Console" order="23" sideWeight="0.5013405" side_tool="true" weight="0.25637394" />
+      <window_info anchor="bottom" id="Messages" order="24" sideWeight="0.49731904" weight="0.5240793" />
       <window_info anchor="bottom" id="Spring" order="25" />
       <window_info anchor="bottom" id="JProfiler" order="26" />
       <window_info anchor="bottom" id="JRebel Executor" order="27" />
+      <window_info anchor="bottom" id="TypeScript" order="28" />
+      <window_info anchor="bottom" id="Problems" order="29" weight="0.3286119" />
+      <window_info anchor="bottom" id="Android Profiler" order="30" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Logcat" order="31" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.113270774" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.03217158" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="SciView" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -806,27 +1271,11 @@
       <window_info anchor="right" id="PlantUML" order="14" />
       <window_info anchor="right" id="Alibaba Function Compute" order="15" />
       <window_info anchor="right" id="Bean Validation" order="16" />
+      <window_info anchor="right" id="Device File Explorer" order="17" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/mall-admin-web" />
-      <path value="$PROJECT_DIR$/mall-app" />
-      <path value="$PROJECT_DIR$/mall-pc" />
-    </ignored-roots>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -873,247 +1322,374 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>homePageData.getTotalSalesOfLastWeek()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>homePageData.getTotalSalesOfWeek()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>payment_time</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>CommonPage.restPage(orderList)</expression-string>
+        <expression-string>tbPanelMapper.selectByExample(example)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/svg/arrow.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/svg/jia.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/svg/search.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/svg/shop.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/.babelrc">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/.editorconfig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/.eslintignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/.eslintrc.js">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/SpringfoxWebMvcConfiguration.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-294" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="2" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+        <state relative-caret-position="380">
+          <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/pom.xml">
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/controller/AddressController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        <state relative-caret-position="165">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/js/3.c565d4ee71bdb3ac0105.js" />
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/js/app.e28b119acf7c187f0fbf.js" />
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/package-lock.json">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/net/Socket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="8486" column="6" lean-forward="true" selection-start-line="8486" selection-start-column="6" selection-end-line="8486" selection-end-column="6" />
+        <state relative-caret-position="29">
+          <caret line="588" selection-start-line="588" selection-end-line="588" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/global-logo-red@2x.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/no-search.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/qr.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/qqpay.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/red.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/smartisan_4ada7fecea.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/support.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/smile.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/static/images/no-data.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/build/webpack.prod.conf.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/build/check-versions.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/build/dev-server.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/page/Login/login.vue">
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/store/mutations.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        <state relative-caret-position="171">
+          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/build/build.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/package.json">
+    <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/oms/apply/applyDetail.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        <state relative-caret-position="171">
+          <caret line="266" column="8" selection-start-line="266" selection-start-column="8" selection-end-line="266" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/build/webpack.base.conf.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-android-service/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/mall-shopping-android/PRIVACY.md" />
-    <entry file="file://$PROJECT_DIR$/mall-shopping-android/README.md" />
-    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/build/webpack.dev.conf.js">
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/webapp/swagger/swagger-ui.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-app/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/src/utils/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state relative-caret-position="20">
+          <caret line="2998" column="23" selection-start-line="2998" selection-start-column="23" selection-end-line="2998" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/api/public.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="8" />
+        <state relative-caret-position="80">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-mobile/src/utils/request.js">
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/common/header.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        <state relative-caret-position="140">
+          <caret line="333" column="8" selection-start-line="333" selection-start-column="8" selection-end-line="333" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/page/User/children/order.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="138" column="34" lean-forward="true" selection-start-line="138" selection-start-column="34" selection-end-line="138" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-common/src/main/java/com/platform/mall/constant/CommonConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/interceptor/LimitRaterInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="49" column="73" selection-start-line="49" selection-start-column="73" selection-end-line="49" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/PanelServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/mybatis/SqlMapConfig.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.12.RELEASE/spring-aop-4.3.12.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="39" column="177" selection-start-line="39" selection-start-column="177" selection-end-line="39" selection-end-column="177" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.3.12.RELEASE/spring-tx-4.3.12.RELEASE.jar!/org/springframework/transaction/interceptor/TransactionAspectSupport.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="44" column="248" selection-start-line="44" selection-start-column="248" selection-end-line="44" selection-end-column="248" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.12.RELEASE/spring-aop-4.3.12.RELEASE.jar!/org/springframework/aop/interceptor/ExposeInvocationInterceptor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="15" column="110" selection-start-line="15" selection-start-column="110" selection-end-line="15" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.12.RELEASE/spring-aop-4.3.12.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="21" column="145" selection-start-line="21" selection-start-column="145" selection-end-line="21" selection-end-column="145" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/dubbo/2.6.1/dubbo-2.6.1.jar!/com/alibaba/dubbo/rpc/proxy/AbstractProxyInvoker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="21" column="135" selection-start-line="21" selection-start-column="135" selection-end-line="21" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/dubbo/2.6.1/dubbo-2.6.1.jar!/com/alibaba/dubbo/config/invoker/DelegateProviderMetaDataInvoker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="18" column="135" selection-start-line="18" selection-start-column="135" selection-end-line="18" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/dubbo/2.6.1/dubbo-2.6.1.jar!/com/alibaba/dubbo/rpc/protocol/InvokerWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="18" column="135" selection-start-line="18" selection-start-column="135" selection-end-line="18" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/dubbo/2.6.1/dubbo-2.6.1.jar!/com/alibaba/dubbo/rpc/filter/ExceptionFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="14" column="177" selection-start-line="14" selection-start-column="177" selection-end-line="14" selection-end-column="177" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/mapper/TbPanelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/mapper/TbPanelMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1520">
+          <caret line="76" column="2" selection-start-line="76" selection-start-column="2" selection-end-line="76" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/conf/dubbo.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/spring/springmvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="48" lean-forward="true" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/conf/resource.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-activemq.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-719" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-redis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-service.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-trans.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/resources/conf/dubbo.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-mbg/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/conf/db.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/resources/spring/applicationContext-dao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+          <folding>
+            <element signature="e#761#774#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="89" column="26" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="147" column="38" selection-start-line="147" selection-start-column="18" selection-end-line="147" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-interface/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="145" column="38" selection-start-line="145" selection-start-column="18" selection-end-line="145" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/ContentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="196" column="77" lean-forward="true" selection-start-line="196" selection-start-column="77" selection-end-line="196" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc-service/src/main/java/com/platform/pc/front/controller/MemberController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/src/main/java/com/platform/pc/microservice/service/impl/LoginServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/utils/storage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+        <state relative-caret-position="800">
+          <caret line="57" column="7" lean-forward="true" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/page/Home/home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/page/Login/login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+          <folding>
+            <element signature="e#1954#1990#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-shopping-pc/src/page/Login/register.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-admin-service/mall-common/src/main/resources/rebel-remote.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/src/views/home/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2220">
-          <caret line="111" column="15" selection-start-line="111" selection-start-column="15" selection-end-line="111" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo-service/dubbo-service-Impl/dubbo-service-Impl.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-admin-web/build/webpack.prod.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1340">
-          <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data-face/data-face.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-app-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/back.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/application-wx.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/dao/GoodsProductMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="39" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/resources/dao/LitemallAdminMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-shopping-service/src/main/java/com/platform/mall/mobile/wx/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -1123,7 +1699,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>mall-admin:war exploded</last-edited>
+          <last-edited>compute-mr:war</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1136,7 +1712,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Web (log-collect-client)|Web</last-edited>
+          <last-edited>Spring (mall-shopping-pc-service)|Spring</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1172,23 +1748,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>data-face and modules</last-edited>
+          <last-edited>Web|mall-shopping-wc</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.35945153" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
@@ -1196,22 +1760,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: xpp3:xpp3_min:1.1.4c</last-edited>
+          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.35945153" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
