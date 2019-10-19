@@ -3,12 +3,11 @@ spring:
     active: dev #默认为开发环境
 
 server:
-  port: 8081
+  port: 8092
 
 mybatis:
   mapper-locations:
     - classpath*:mapper/*.xml
-    - classpath*:com/**/mapper/*.xml
 
 logging:
   level:

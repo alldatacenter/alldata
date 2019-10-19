@@ -2,7 +2,7 @@ package com.platform.app.bean;
 
 /**
  * Created by wulinhao
- * Time  2019/8/22
+ * Time  2019/9/22
  * Describe: eventbus 的数据模型
  */
 

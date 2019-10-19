@@ -4,7 +4,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 /**
  * Created by wulinhao
- * Time  2019/8/7
+ * Time  2019/9/7
  * Describe: 首页 商品数据
  */
 

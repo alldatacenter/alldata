@@ -15,11 +15,22 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>com.platform</groupId>
+      <artifactId>dubbo-service-interface</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>com.github.pagehelper</groupId>
+          <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </exclusion>
+      </exclusions>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -41,44 +52,39 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>5.1.10.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>5.1.10.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>5.1.10.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>5.1.10.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aspects</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>5.1.10.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jms</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>5.1.10.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context-support</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>5.1.10.RELEASE</version>
     </dependency>
-    <!-- JSP相关 -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.5</version>
-    </dependency>
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jsp-api</artifactId>
@@ -137,11 +143,6 @@
       <artifactId>mybatis-paginator</artifactId>
       <version>1.2.15</version>
     </dependency>
-    <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper</artifactId>
-      <version>4.1.6</version>
-    </dependency>
     <!-- MySql -->
     <dependency>
       <groupId>mysql</groupId>
@@ -163,6 +164,11 @@
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-all</artifactId>
       <version>5.11.2</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.jms</groupId>
+      <artifactId>javax.jms-api</artifactId>
+      <version>2.0.1</version>
     </dependency>
     <!--shiro-->
     <dependency>
@@ -239,16 +245,6 @@
       <version>20171018</version>
     </dependency>
     <dependency>
-      <groupId>com.platform</groupId>
-      <artifactId>mall-common</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.platform</groupId>
-      <artifactId>dubbo-service-interface</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
       <version>2.9.1</version>
@@ -274,7 +270,7 @@
     <dependency>
       <groupId>org.apache.zookeeper</groupId>
       <artifactId>zookeeper</artifactId>
-      <version>3.4.10</version>
+      <version>3.4.14</version>
     </dependency>
     <dependency>
       <groupId>org.apache.curator</groupId>
@@ -321,6 +317,14 @@
     <resources>
       <resource>
         <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
         <includes>
           <include>**/*.properties</include>
           <include>**/*.xml</include>

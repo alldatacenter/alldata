@@ -8,7 +8,7 @@ import android.util.Log;
 
 /**
  * Created by wulinhao
- * Time  2019/8/17
+ * Time  2019/9/17
  * Describe: recyclerView 在删除 添加数据同时进行时,有时会报奇怪的错.必须重写LinearLayoutManager
  * 解决方案来自: stackoverflow
  */

@@ -1,7 +1,7 @@
 package com.platform.mall.core.system;
 
 import com.platform.mall.core.util.SystemInfoPrinter;
-import com.platform.mall.db.service.LitemallSystemConfigService;
+import com.platform.mall.service.mobile.LitemallSystemConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;

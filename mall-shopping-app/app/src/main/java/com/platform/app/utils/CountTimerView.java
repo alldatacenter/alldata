@@ -8,7 +8,7 @@ import com.platform.app.R;
 
 /**
  * Created by wulinhao
- * Time  2019/8/12
+ * Time  2019/9/12
  * Describe: 定时器
  */
 public class CountTimerView extends CountDownTimer {

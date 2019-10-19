@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 
 /**
  * Created by wulinhao
- * Time  2019/8/4
+ * Time  2019/9/4
  * Describe:
  */
 
@@ -35,6 +35,6 @@ public class Utils {
      */
     public static Context getContext() {
         if (context != null) return context;
-        throw new NullPointerException("u should init first");
+        throw new NullPointerException("u should config first");
     }
 }

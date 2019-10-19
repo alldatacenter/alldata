@@ -22,14 +22,13 @@ spring:
       time-between-eviction-runs-millis:  60000
       filters:  stat,wall
 server:
-  port: 8080
+  port: 8094
 
 logging:
   level:
     root:  ERROR
     org.springframework:  ERROR
     org.mybatis:  ERROR
-    com.platform.mall.wx:  DEBUG
     com.platform.mall:  ERROR
 pagehelper:
   helperDialect:  mysql
@@ -39,4 +38,5 @@ pagehelper:
 
 mybatis:
   mapper-locations:
-    - classpath:dao/*.xml
+    - classpath:mapper/*.xml
+

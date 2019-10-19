@@ -13,7 +13,7 @@ import com.platform.app.MallShoppingApp;
 
 /**
  * Created by wulinhao
- * Time  2019/2/10
+ * Time  2019/9/10
  * Describe: Toast的工具类
  */
 

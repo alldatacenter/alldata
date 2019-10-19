@@ -48,7 +48,7 @@ import com.platform.app.R;
 
 /**
  * Created by wulinhao
- * Time  2019/8/6
+ * Time  2019/9/6
  * Describe: 自定义圆角图像
  */
 

@@ -20,7 +20,7 @@ import butterknife.BindView;
 
 /**
  * Created by wulinhao
- * Time  2019/8/12
+ * Time  2019/9/12
  * Describe: 注册activity
  */
 

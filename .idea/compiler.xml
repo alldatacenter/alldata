@@ -10,14 +10,12 @@
         <module name="compute-realtime" />
         <module name="data-import-export" />
         <module name="data-insight" />
+        <module name="dubbo-init" />
         <module name="dubbo-service-Impl" />
         <module name="dubbo-service-interface" />
         <module name="log-collect-client" />
         <module name="log-collect-server" />
-        <module name="mall-common" />
-        <module name="mall-common (1)" />
         <module name="mall-manage-service" />
-        <module name="mall-mbg" />
         <module name="mall-search-service" />
         <module name="mall-shopping-app-service" />
         <module name="mall-shopping-mobile" />
@@ -45,6 +43,7 @@
       <module name="data-face" target="1.8" />
       <module name="data-import-export" target="1.8" />
       <module name="data-insight" target="1.8" />
+      <module name="dubbo-init" target="1.8" />
       <module name="dubbo-service" target="1.8" />
       <module name="dubbo-service-Impl" target="1.8" />
       <module name="dubbo-service-interface" target="1.8" />
@@ -79,6 +78,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dubbo-init" options="-parameters" />
       <module name="mall-manage-service" options="-parameters" />
       <module name="mall-search-service" options="-parameters" />
       <module name="mall-shopping-service" options="-parameters" />

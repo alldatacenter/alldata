@@ -24,10 +24,15 @@
         <property name="dataSource" ref="dataSource" />
         <!-- 加载Mybatis全局配置文件 -->
         <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
-        <property name="mapperLocations" value="classpath:com/platform/pc/microservice/mapper/*Mapper.xml" />
+        <property name="mapperLocations">
+            <array>
+                <value>classpath:com/platform/mall/mapper/*.xml</value>
+                <value>classpath:com/platform/mall/mapper/*/*.xml</value>
+            </array>
+        </property>
         <property name="typeAliases" value="org.springframework.util.LinkedCaseInsensitiveMap" />
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.platform.pc.microservice.mapper" />
+        <property name="basePackage" value="com.platform.mall.mapper,com.platform.mall.mapper.admin" />
     </bean>
 </beans>

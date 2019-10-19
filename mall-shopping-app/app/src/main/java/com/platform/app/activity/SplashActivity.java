@@ -15,7 +15,7 @@ import butterknife.OnClick;
 
 /**
  * Created by:wulinhao
- * Time:  2019/8/22
+ * Time:  2019/9/22
  * Describe:欢迎界面
  * 无标题栏和全屏必须写在 setContentView前面
  */

@@ -25,7 +25,7 @@ import butterknife.OnClick;
 
 /**
  * Created by wulinhao
- * Time  2019/8/22
+ * Time  2019/9/22
  * Describe: 搜索界面
  *
  * 一开始使用的是greendao数据库.对于之前没有没有搜索的数据,添加是没有问题的

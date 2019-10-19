@@ -16,7 +16,7 @@ import com.platform.app.R;
 
 /**
  * Created by wulinhao
- * Time  2019/8/9
+ * Time  2019/9/9
  * Describe: 自定义editTxet
  * 没有内容时,右边的删除按钮不会出现
  * 有内容时,出现右边的删除按钮

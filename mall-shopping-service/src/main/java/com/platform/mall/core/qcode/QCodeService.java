@@ -1,13 +1,13 @@
 package com.platform.mall.core.qcode;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
+import com.platform.mall.entity.mobile.LitemallGroupon;
+import com.platform.mall.entity.mobile.LitemallStorage;
 import me.chanjar.weixin.common.error.WxErrorException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.platform.mall.core.storage.StorageService;
 import com.platform.mall.core.system.SystemConfig;
-import com.platform.mall.db.domain.LitemallGroupon;
-import com.platform.mall.db.domain.LitemallStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;

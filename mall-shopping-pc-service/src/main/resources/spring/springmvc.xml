@@ -7,7 +7,7 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-<context:component-scan base-package="com.platform.pc.front" />
+<context:component-scan base-package="com.platform.mall" />
 
     <context:property-placeholder location="classpath:conf/*.properties"/>
 
@@ -34,22 +34,23 @@
     <mvc:resources mapping="/swagger/**" location="/swagger/"/>
 
     <!-- 引用dubbo服务 -->
-    <!--提交.mall前缀避免与dubbo-service-Impl项目的别名一致导致找不到dubbo配置值-->
+    <!--提交.mall前缀避免与dubbo-helper-Impl项目的别名一致导致找不到dubbo配置值-->
     <dubbo:application name="${dubbo.mall.application.name}">
         <dubbo:parameter key="qos.enable" value="${mall.qos.enable}" />
         <dubbo:parameter key="qos.accept.foreign.ip" value="${mall.qos.accept.foreign.ip}" />
         <dubbo:parameter key="qos.port" value="${mall.qos.port}" />
     </dubbo:application>
-    <!--#其他值复用dubbo-service-Impl项目的值-->
-    <dubbo:registry address="${dubbo.mall.registry.address}" protocol="${dubbo.mall.register.name}"/>
+    <!--#其他值复用dubbo-helper-Impl项目的值-->
+    <dubbo:registry address="${dubbo.mall.registry.address}" protocol="${dubbo.mall.registry.name}"/>
 
-    <dubbo:reference interface="com.platform.pc.microservice.service.ContentService" id="contentService" check="true"/>
-    <dubbo:reference interface="com.platform.pc.microservice.service.SearchService" id="searchService" />
-    <dubbo:reference interface="com.platform.pc.microservice.service.RegisterService" id="registerService" />
-    <dubbo:reference interface="com.platform.pc.microservice.service.LoginService" id="loginService" />
-    <dubbo:reference interface="com.platform.pc.microservice.service.CartService" id="cartService" />
-    <dubbo:reference interface="com.platform.pc.microservice.service.OrderService" id="orderService" />
-    <dubbo:reference interface="com.platform.pc.microservice.service.AddressService" id="addressService" />
-    <dubbo:reference interface="com.platform.pc.microservice.service.MemberService" id="memberService" />
-    <dubbo:reference interface="com.platform.pc.microservice.service.ThanksService" id="thanksService" />
+    <dubbo:reference interface="com.platform.mall.service.ContentService" id="contentService" check="true"/>
+    <dubbo:reference interface="com.platform.mall.service.SearchService" id="searchService" />
+    <dubbo:reference interface="com.platform.mall.service.RegisterService" id="registerService" />
+    <dubbo:reference interface="com.platform.mall.service.LoginService" id="loginService" />
+    <dubbo:reference interface="com.platform.mall.service.CartService" id="cartService" />
+    <dubbo:reference interface="com.platform.mall.service.OrderService" id="orderService" />
+    <dubbo:reference interface="com.platform.mall.service.AddressService" id="addressService" />
+    <dubbo:reference interface="com.platform.mall.service.MemberService" id="memberService" />
+    <dubbo:reference interface="com.platform.mall.service.ThanksService" id="thanksService" />
+
 </beans>

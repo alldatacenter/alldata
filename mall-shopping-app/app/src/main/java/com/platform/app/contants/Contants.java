@@ -2,7 +2,7 @@ package com.platform.app.contants;
 
 /**
  * Created by wulinhao
- * Time  2019/8/11
+ * Time  2019/9/11
  * Describe:一般的常量
  */
 

@@ -1,5 +1,6 @@
 package com.platform.search.config;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -12,10 +13,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Swagger2API文档的配置
- * Created by wulinhao on 2019/4/26.
+ * Created by wulinhao on 2019/9/26.
  */
 @Configuration
 @EnableSwagger2
+@EnableAutoConfiguration
 public class Swagger2Config {
     @Bean
     public Docket createRestApi() {

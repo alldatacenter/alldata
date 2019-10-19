@@ -155,7 +155,7 @@ templates['main'] = template({"1":function(container,depth0,helpers,partials,dat
 
   return "<div class=\"info_tos\"><a target=\"_blank\" href=\""
     + ((stack1 = (helpers.escape || (depth0 && depth0.escape) || helpers.helperMissing).call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.termsOfServiceUrl : stack1),{"name":"escape","hash":{},"data":data})) != null ? stack1 : "")
-    + "\" data-sw-translate>Terms of service</a></div>";
+    + "\" data-sw-translate>Terms of helper</a></div>";
 },"6":function(container,depth0,helpers,partials,data) {
     var stack1;
 

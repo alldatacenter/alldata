@@ -18,7 +18,7 @@ import butterknife.OnClick;
 
 /**
  * Created by:wulinhao
- * Time:  2019/8/22
+ * Time:  2019/9/22
  * Describe: 引导页.
  * 第一次安装或者卸载后重装时,才出现这个界面
  */
@@ -39,7 +39,7 @@ public class GuideActivity extends BaseActivity {
     @Override
     protected int getContentResourseId() {
 
-        //必须写在这里,不能写在 init 中.先全屏,再加载试图
+        //必须写在这里,不能写在 config 中.先全屏,再加载试图
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);       // 无标题栏
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
 //                .LayoutParams.FLAG_FULLSCREEN);    //全屏

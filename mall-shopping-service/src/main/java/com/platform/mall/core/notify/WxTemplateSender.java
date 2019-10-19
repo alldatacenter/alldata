@@ -3,10 +3,10 @@ package com.platform.mall.core.notify;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaTemplateData;
 import cn.binarywang.wx.miniapp.bean.WxMaTemplateMessage;
+import com.platform.mall.entity.mobile.LitemallUserFormid;
+import com.platform.mall.service.mobile.LitemallUserFormIdService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import com.platform.mall.db.domain.LitemallUserFormid;
-import com.platform.mall.db.service.LitemallUserFormIdService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

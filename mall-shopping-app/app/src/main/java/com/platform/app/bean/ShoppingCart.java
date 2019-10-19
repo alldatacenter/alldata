@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by wulinhao
- * Time  2019/8/9
+ * Time  2019/9/9
  * Describe:  购物车商品信息.数据来源于商品数据.但多了数量、是否选中两个 属性
  */
 

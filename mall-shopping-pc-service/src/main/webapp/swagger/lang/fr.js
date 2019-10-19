@@ -34,7 +34,7 @@ window.SwaggerTranslator.learn({
     "apply":"appliquer",
     "Username":"Nom d'utilisateur",
     "Password":"Mot de passe",
-    "Terms of service":"Conditions de service",
+    "Terms of service":"Conditions de helper",
     "Created by":"Créé par",
     "See more at":"Voir plus sur",
     "Contact the developer":"Contacter le développeur",

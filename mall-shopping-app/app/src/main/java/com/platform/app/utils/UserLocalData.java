@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 
 /**
  * Created by wulinhao
- * Time  2019/8/11
+ * Time  2019/9/11
  * Describe: 用户的个人信息需要保存在本地
  */
 

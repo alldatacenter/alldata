@@ -25,7 +25,7 @@
 		<constructor-arg value="itemAddTopic" />
 	</bean>
 
-	<bean id="myMessageListener" class="com.platform.pc.microservice.entity.MyMessageListener"/>
+	<bean id="myMessageListener" class="com.platform.mall.entity.MyMessageListener"/>
 	<!-- 消息监听容器 -->
 	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory" />
@@ -33,7 +33,7 @@
 		<property name="messageListener" ref="myMessageListener" />
 	</bean>
 	<!-- 监听商品添加消息，同步索引库 -->
-	<bean id="itemAddMessageListener" class="com.platform.pc.microservice.entity.ItemESMessageListener"/>
+	<bean id="itemAddMessageListener" class="com.platform.mall.entity.ItemESMessageListener"/>
 	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory" />
 		<property name="destination" ref="topicDestination" />

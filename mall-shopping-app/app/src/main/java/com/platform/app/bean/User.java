@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * Created by wulinhao
- * Time  2019/8/8
+ * Time  2019/9/8
  * Describe:  用户信息
  */
 

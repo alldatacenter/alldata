@@ -1,8 +1,8 @@
 package com.platform.mall.core.storage;
 
 import com.platform.mall.core.util.CharUtil;
-import com.platform.mall.db.domain.LitemallStorage;
-import com.platform.mall.db.service.LitemallStorageService;
+import com.platform.mall.entity.mobile.LitemallStorage;
+import com.platform.mall.service.mobile.LitemallStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 

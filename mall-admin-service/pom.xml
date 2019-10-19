@@ -16,8 +16,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>mall-common</module>
-        <module>mall-mbg</module>
         <module>mall-manage-service</module>
         <module>mall-search-service</module>
     </modules>
@@ -47,12 +45,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>2.1.9.RELEASE</version>
             <scope>test</scope>
-        </dependency>
-        <!--MyBatis分页插件-->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.2.10</version>
         </dependency>
         <!--集成druid连接池-->
         <dependency>

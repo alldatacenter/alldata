@@ -1,7 +1,7 @@
 package com.platform.search.controller;
 
-import com.platform.common.CommonPage;
-import com.platform.common.CommonResult;
+import com.platform.mall.common.CommonPage;
+import com.platform.mall.common.CommonResult;
 import com.platform.search.domain.EsProduct;
 import com.platform.search.domain.EsProductRelatedInfo;
 import com.platform.search.service.EsProductService;
@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * 搜索商品管理Controller
- * Created by wulinhao on 2019/6/19.
+ * Created by wulinhao on 2019/9/19.
  */
 @Controller
 @Api(tags = "EsProductController", description = "搜索商品管理")

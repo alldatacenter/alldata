@@ -5,7 +5,7 @@ spring:
 mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
-    - classpath*:com/**/mapper/*.xml
+
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
@@ -34,3 +34,6 @@ logging:
     com.platform: debug
 #  file: demo_log.log #配置日志生成路径
 #  path: /var/logs #配置日志文件名称
+
+server:
+  port: 8093
