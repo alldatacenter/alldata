@@ -1,7 +1,7 @@
 # 1、数据平台介绍 
 ~~~markdown
 数据平台:
-	主要包含多个子系统的开发，项目采用Dubbo微服务架构，使用Altas作为服务治理，包括spark，storm，		flink，scala，python等技术栈。
+	主要包含多个子系统的开发，项目采用Dubbo微服务架构，使用Altas作为服务治理，包括spark，storm，flink，scala，python等技术栈。
 数据来源：
 	商城：使用SpringBoot，Java，Vue，React，Android开发多端商城，包括网站、App、微信小程序；
 	日志：使用Java开发服务端日志、客户端日志收集系统，使用DataX实现数据的导入导出系统；
@@ -24,8 +24,6 @@
 	使用skywalking，Phoenix实现监控平台；
 	使用scala、playframework，docker，k8s，shell实现快速打包平台；
 ~~~
-
-
 
 # 2、数据平台展示
 2.1 商城图片展示：
@@ -152,3 +150,33 @@ system-apm: skywalking监控平台
 system-deploy: k8s，scala，playframework，docker打包平台。
 system-tasksubmit: 任务提交平台
 ```
+# 10、启动配置教程
+ 
+ 10.1 启动前，打包dubbo-servie项目，进入dubbo-service目录，执行mvn clean package -DskipTests=TRUE打包，然后执行mvn install.
+ 
+ 10.2 启动dubbo-service项目，配置tomcat端口为8091
+ 
+ 10.3 启动商城项目的多个子系统
+      
+      后台：
+         
+	 1、前端：启动mall-admin-web项目，进入项目目录，执行npm install，然后执行npm run dev；
+	 
+	 2、后端：启动mall-admin-service/mall-admin-search项目，配置tomcat端口为8092，接着启动mall-manage-service项目，tomcat端口配置为8093；
+      前台：
+         
+	 3、小程序和移动端
+      	 
+	 3.1、前端：商城小程序，启动mall-shopping-wc项目，安装微信开发者工具，配置开发者key和secret，使用微信开发者工具导入即可，然后点击编译，可以手机预览使用。
+	 
+	 3.2、前端：商城移动端，启动mall-shopping-mobile，进入项目目录，执行mpm install和mpm run dev；
+	 
+	 3.3、后端：小程序和移动端用的是同一个后台服务，启动mall-shopping-service项目，进入项目目录，配置tomcat端口8094
+      	 
+	 4、商城PC端
+	 
+	 4.1、前端：启动mall-shopping-pc项目，进入项目目录，执行mpm install和mpm run dev；
+	 
+	 4.2、后端：启动mall-shopping-pc-service项目，配置tomcat端口为8095；
+ 
+ 10.4 其他xxx待配置开发。
