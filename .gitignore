@@ -17,11 +17,13 @@
 /mall-backend/mall-search/target/
 /mall-backend/README.md
 /*/README.md
-
+/.idea
 /*/src/main/resources/rebel*.xml
 /*/*/src/main/resources/rebel*.xml
 /*/*/*/src/main/resources/rebel*.xml
 /*/*/*/src/main/resources/rebel*.xml
+/compute-mr/.iml
+/compute-realtime/.iml
 
 /mall-shopping-app/*.bak
 /*/*.iml
@@ -42,6 +44,15 @@ target/
 .project
 .settings
 .springBeans
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
 
 ### IntelliJ IDEA ###
 .idea
