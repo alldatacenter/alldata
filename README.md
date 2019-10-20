@@ -105,6 +105,7 @@
 	mall-admin-web: 商城后台
 	mall-admin-service: 商城后台服务
 ```
+
 # 4、数据收集
 ```markdown
 log-collect-server: 
@@ -116,28 +117,33 @@ data-import-export:
 data-spider:
 	爬虫平台支持可配置的爬取公网数据的任务开发；
 ```
+
 # 5、数据存储
 ```markdown
 分布式文件系统：hdfs
 分布式数据库：hbase、mongodb、elasticsearch
 分布式内存存储系统：redis
 ```
+
 # 6、数据计算
 ```markdown
 compute-mr（离线计算）: Hive、MR
 compute-realtime（流计算）: storm、flink
 multi-dimension-analysis（多维度分析）: kylin, spark
 ```
+
 # 7、数据开发
 ```markdown
 task-schedular: 任务调度
 task-ops: 任务运维
 ```
+
 # 8、数据产品
 ```markdown
 data-face: 数据可视化
 data-insight: 用户画像分析
 ```
+
 # 9、数据应用
 ```markdown
 system-recommender: 推荐
@@ -150,34 +156,46 @@ system-apm: skywalking监控平台
 system-deploy: k8s，scala，playframework，docker打包平台。
 system-tasksubmit: 任务提交平台
 ```
+
 # 10、启动配置教程
 
  10.1 启动前，打包dubbo-servie项目，进入dubbo-service目录，执行mvn clean package -DskipTests=TRUE打包，然后执行mvn install.
 
  10.2 启动dubbo-service项目，配置tomcat端口为8091
+ 
 ![1571122561021](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/61.png)
  10.3 启动商城项目的多个子系统
 
 后台：
      
  10.3.1、前端：启动mall-admin-web项目，进入项目目录，执行npm install，然后执行npm run dev；
+ 
  10.3.2、后端：启动mall-admin-service/mall-admin-search项目，配置tomcat端口为8092，接着启动mall-manage-service项目，tomcat端口配置为8093；
+ 
  ![1571122621024](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/62.png)
+ 
  ![1571122621025](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/63.png)
-  前台：
+ 
+ 前台：
      
  10.3.3、小程序和移动端
   	 
  10.3.3.1、前端：商城小程序，启动mall-shopping-wc项目，安装微信开发者工具，配置开发者key和secret，使用微信开发者工具导入即可，然后点击编译，可以手机预览使用。
+ 
  ![1571122621026](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/66.png)
- 10.3.3.2、前端：商城移动端，启动mall-shopping-mobile，进入项目目录，执行mpm install和mpm run dev；
+ 
+ 10.3.3.2、前端：商城移动端，启动mall-shopping-mobile，进入项目目录，执行npm install和npm run dev；
 
-10.3.3.3、后端：小程序和移动端用的是同一个后台服务，启动mall-shopping-service项目，进入项目目录，配置tomcat端口8094
-  	 ![1571122621027](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/64.png)
+ 10.3.3.3、后端：小程序和移动端用的是同一个后台服务，启动mall-shopping-service项目，进入项目目录，配置tomcat端口8094
+ 
+ ![1571122621027](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/64.png)
+ 
  10.3.4、商城PC端
 
-10.3.4.1、前端：启动mall-shopping-pc项目，进入项目目录，执行mpm install和mpm run dev；
+ 10.3.4.1、前端：启动mall-shopping-pc项目，进入项目目录，执行npm install和npm run dev；
 
-10.3.4.2、后端：启动mall-shopping-pc-service项目，配置tomcat端口为8095；![1571122621028](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/65.png)
+ 10.3.4.2、后端：启动mall-shopping-pc-service项目，配置tomcat端口为8095；
+ 
+ ![1571122621028](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/65.png)
 
-10.3.5 其他xxx待配置开发。
+ 10.3.5 其他xxx待配置开发。
