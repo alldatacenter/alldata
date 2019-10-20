@@ -165,23 +165,23 @@ system-tasksubmit: 任务提交平台
          https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/61.png
 	 
 	 2、后端：启动mall-admin-service/mall-admin-search项目，配置tomcat端口为8092，接着启动mall-manage-service项目，tomcat端口配置为8093；
-	 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/62.png
-	  https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/63.png
+	 ![1571122621024](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/62.png)
+	 ![1571122621025](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/63.png)
       前台：
          
 	 3、小程序和移动端
       	 
 	 3.1、前端：商城小程序，启动mall-shopping-wc项目，安装微信开发者工具，配置开发者key和secret，使用微信开发者工具导入即可，然后点击编译，可以手机预览使用。
-	  https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/66.png
+	 ![1571122621026](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/66.png)
 	 3.2、前端：商城移动端，启动mall-shopping-mobile，进入项目目录，执行mpm install和mpm run dev；
 	 
 	 3.3、后端：小程序和移动端用的是同一个后台服务，启动mall-shopping-service项目，进入项目目录，配置tomcat端口8094
-      	  https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/64.png
+      	 ![1571122621027](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/64.png)
 	 4、商城PC端
 	 
 	 4.1、前端：启动mall-shopping-pc项目，进入项目目录，执行mpm install和mpm run dev；
 	 
 	 4.2、后端：启动mall-shopping-pc-service项目，配置tomcat端口为8095；
-	  https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/65.png
+	 ![1571122621028](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/65.png)
  
  10.4 其他xxx待配置开发。
