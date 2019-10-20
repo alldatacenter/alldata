@@ -162,7 +162,7 @@ system-tasksubmit: 任务提交平台
      
  10.3.1、前端：启动mall-admin-web项目，进入项目目录，执行npm install，然后执行npm run dev；
 
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/61.png
+![1571122561021](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/61.png)
 
  10.3.2、后端：启动mall-admin-service/mall-admin-search项目，配置tomcat端口为8092，接着启动mall-manage-service项目，tomcat端口配置为8093；
  ![1571122621024](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/62.png)
