@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mall-shopping-mobile:war exploded">
+    <output-path>$PROJECT_DIR$/mall-shopping-mobile/target/mall-mobile</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>mall-shopping-mobile</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="mall-shopping-mobile" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/mall-shopping-mobile/target/mall-mobile/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="mall-shopping-mobile/web/Web" />
+    </root>
+  </artifact>
+</component>

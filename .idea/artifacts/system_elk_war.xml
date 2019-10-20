@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="system-elk:war">
+    <output-path>$PROJECT_DIR$/system-elk/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>system-elk</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="system-elk.war">
+      <element id="artifact" artifact-name="system-elk:war exploded" />
+    </root>
+  </artifact>
+</component>

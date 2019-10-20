@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mall-shopping-mobile:war">
+    <output-path>$PROJECT_DIR$/mall-shopping-mobile/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>mall-shopping-mobile</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="mall-mobile.war">
+      <element id="artifact" artifact-name="mall-shopping-mobile:war exploded" />
+    </root>
+  </artifact>
+</component>

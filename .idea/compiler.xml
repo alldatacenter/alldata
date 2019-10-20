@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="compute-mr" />
+        <module name="compute-realtime" />
+        <module name="data-import-export" />
+        <module name="data-insight" />
+        <module name="dubbo-service-Impl" />
+        <module name="dubbo-service-interface" />
+        <module name="log-collect-client" />
+        <module name="log-collect-server" />
+        <module name="mall-manage-service" />
+        <module name="mall-search-service" />
+        <module name="mall-shopping-app-service" />
+        <module name="mall-shopping-mobile" />
+        <module name="mall-shopping-pc" />
+        <module name="mall-shopping-pc-service" />
+        <module name="mall-shopping-service" />
+        <module name="mall-shopping-wc" />
+        <module name="multi-dimension-analysis" />
+        <module name="system-ad" />
+        <module name="system-anti-cheating" />
+        <module name="system-apm" />
+        <module name="system-deploy" />
+        <module name="system-elk" />
+        <module name="system-recommender" />
+        <module name="system-report-analysis" />
+        <module name="system-search" />
+        <module name="system-tasksubmit" />
+        <module name="task-ops" />
+        <module name="task-schedular" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="compute-mr" target="1.8" />
+      <module name="compute-realtime" target="1.8" />
+      <module name="data-face" target="1.8" />
+      <module name="data-import-export" target="1.8" />
+      <module name="data-insight" target="1.8" />
+      <module name="dubbo-service" target="1.8" />
+      <module name="dubbo-service-Impl" target="1.8" />
+      <module name="dubbo-service-interface" target="1.8" />
+      <module name="log-collect-client" target="1.8" />
+      <module name="log-collect-server" target="1.8" />
+      <module name="mall-admin-service" target="1.8" />
+      <module name="mall-admin-web" target="1.8" />
+      <module name="mall-manage-service" target="1.8" />
+      <module name="mall-search-service" target="1.8" />
+      <module name="mall-shopping-app-service" target="1.8" />
+      <module name="mall-shopping-mobile" target="1.8" />
+      <module name="mall-shopping-pc" target="1.8" />
+      <module name="mall-shopping-pc-service" target="1.8" />
+      <module name="mall-shopping-service" target="1.8" />
+      <module name="mall-shopping-wc" target="1.8" />
+      <module name="multi-dimension-analysis" target="1.8" />
+      <module name="system-ad" target="1.8" />
+      <module name="system-anti-cheating" target="1.8" />
+      <module name="system-apm" target="1.8" />
+      <module name="system-deploy" target="1.8" />
+      <module name="system-elk" target="1.8" />
+      <module name="system-recommender" target="1.8" />
+      <module name="system-report-analysis" target="1.8" />
+      <module name="system-search" target="1.8" />
+      <module name="system-tasksubmit" target="1.8" />
+      <module name="task-ops" target="1.8" />
+      <module name="task-schedular" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mall-manage-service" options="-parameters" />
+      <module name="mall-search-service" options="-parameters" />
+      <module name="mall-shopping-service" options="-parameters" />
+    </option>
+  </component>
+</project>

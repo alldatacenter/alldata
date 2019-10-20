@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="system-anti-cheating:war">
+    <output-path>$PROJECT_DIR$/system-anti-cheating/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>system-anti-cheating</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="system-anti-cheating.war">
+      <element id="artifact" artifact-name="system-anti-cheating:war exploded" />
+    </root>
+  </artifact>
+</component>

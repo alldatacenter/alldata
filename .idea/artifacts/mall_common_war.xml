@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mall-common:war">
+    <output-path>$PROJECT_DIR$/mall-common/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>mall-common</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="mall-common.war">
+      <element id="artifact" artifact-name="mall-common:war exploded" />
+    </root>
+  </artifact>
+</component>

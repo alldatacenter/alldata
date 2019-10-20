@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="system-ad:war">
+    <output-path>$PROJECT_DIR$/system-ad/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>system-ad</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="system-ad.war">
+      <element id="artifact" artifact-name="system-ad:war exploded" />
+    </root>
+  </artifact>
+</component>

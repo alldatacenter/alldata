@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mall-shopping-wc:war exploded">
+    <output-path>$PROJECT_DIR$/mall-shopping-wc/target/mall-wechat-applet</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>mall-shopping-wc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="mall-shopping-wc" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/mall-shopping-wc/target/mall-wechat-applet/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="mall-shopping-wc/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="system-search:war">
+    <output-path>$PROJECT_DIR$/system-search/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>system-search</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="system-search.war">
+      <element id="artifact" artifact-name="system-search:war exploded" />
+    </root>
+  </artifact>
+</component>
