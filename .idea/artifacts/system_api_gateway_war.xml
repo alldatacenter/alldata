@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="system-api-gateway:war">
+    <output-path>$PROJECT_DIR$/system-api-gateway/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>system-api-gateway</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="system-api-gateway.war">
+      <element id="artifact" artifact-name="system-api-gateway:war exploded" />
+    </root>
+  </artifact>
+</component>

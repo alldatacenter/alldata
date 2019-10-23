@@ -1,7 +1,7 @@
 # 1、数据平台介绍 
 ~~~markdown
 数据平台:
-	主要包含多个子系统的开发，项目采用Dubbo微服务架构，使用Altas作为服务治理，包括spark，storm，flink，scala，python等技术栈。
+	主要包含多个子系统的开发，项目采用Dubbo微服务架构，使用skywalking作为服务治理，包括spark，storm，flink，scala，python等技术栈。
 数据来源：
 	商城：使用SpringBoot，Java，Vue，React，Android开发多端商城，包括网站、App、微信小程序；
 	日志：使用Java开发服务端日志、客户端日志收集系统，使用DataX实现数据的导入导出系统；
@@ -20,9 +20,14 @@
 	使用python，scrapy，django，elasticsearch实现搜索引擎；
 	使用scala，flink开发反作弊系统；
 	使用FineReport，scala，playframework开发报表分析系统；
+DevOps：
 	使用ELK技术栈搭建日志搜索平台；
 	使用skywalking，Phoenix实现监控平台；
 	使用scala、playframework，docker，k8s，shell实现快速打包平台；
+	使用自动化运维平台CoDo开发system-devops；
+    使用Kong开发统一网关入口系统system-api-gateway；
+    使用vue、scala、playframework、docker、k8s、Prometheus、grafana开发告警平台system-alarm-platform；
+    使用Apollo开发system-config配置中心；
 ~~~
 
 # 2、数据平台展示
