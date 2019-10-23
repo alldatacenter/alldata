@@ -45,4 +45,3 @@
 8、使用Apollo作为配置中心system-config
 
 ![1571823403132](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/apollo.png)
-
