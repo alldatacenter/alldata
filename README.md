@@ -25,9 +25,9 @@ DevOps：
 	使用skywalking，Phoenix实现监控平台；
 	使用scala、playframework，docker，k8s，shell实现快速打包平台；
 	使用自动化运维平台CoDo开发system-devops；
-    使用Kong开发统一网关入口系统system-api-gateway；
-    使用vue、scala、playframework、docker、k8s、Prometheus、grafana开发告警平台system-alarm-platform；
-    使用Apollo开发system-config配置中心；
+    	使用Kong开发统一网关入口系统system-api-gateway；
+    	使用vue、scala、playframework、docker、k8s、Prometheus、grafana开发告警平台system-alarm-platform；
+    	使用Apollo开发system-config配置中心；
 ~~~
 
 # 2、数据平台展示
