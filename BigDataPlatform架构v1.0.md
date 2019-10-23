@@ -40,7 +40,7 @@
 
 7、监控中心system-apm
 
-![1571825619336](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-apm.png)
+![1571825619216](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-apm.png)
 
 8、使用Apollo作为配置中心system-config
 
