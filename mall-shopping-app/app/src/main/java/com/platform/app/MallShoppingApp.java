@@ -26,7 +26,7 @@ import com.mob.MobSDK;
  */
 
 
-public class MallShoppingApp extends MobApplication {
+public class    MallShoppingApp extends MobApplication {
     private User user;
     public LocationService locationService;
     public  Vibrator mVibrator;

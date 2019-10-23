@@ -63,6 +63,8 @@ repositories {
 }
 
 dependencies {
+    //解决ClassNotFoundException: Didn't find class "net.sqlcipher.database.SQLiteOpenHelpe
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.7@aar'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation 'com.android.support:appcompat-v7:27.1.1'

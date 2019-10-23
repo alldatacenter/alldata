@@ -14,5 +14,4 @@ import java.util.List;
 public interface EsProductMapper {
     List<EsProduct> getAllEsProductList(@Param("id") Long id);
 
-    List<EsProduct> getAllEsProductLis(@Param("id") Long id);
 }
