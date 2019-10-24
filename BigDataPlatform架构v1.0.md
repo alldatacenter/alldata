@@ -1,47 +1,59 @@
-1、微服务
+1、数据平台架构
+
+![1571894045904](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84v1.0.png)
+
+2、电商
+
+![1571884041052](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571884041052.png)
+
+3、微服务
 
 ![1571821963022](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/microservice.png)
 
-2、容器化部署system-deploy
+4、容器化部署system-deploy
 
 ![1571821963020](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy.png)
 
 ![1571821963020](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy02.png)
 
-3、自动化运维平台system-devops
+5、自动化运维平台system-devops
 
 ![1571822007197](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-devops.png)
 
-4、使用Kong作为调用中心网关入口system-api-gateway
+6、使用Kong作为调用中心网关入口system-api-gateway
 
 ![1571822106832](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway01.png)
 
 ![1571822059944](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway02.png)
 
-5、日志中心system-elk
+7、日志中心system-elk
 
-5.1 日志查询
+7.1 日志查询
 
 ![1571825683766](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk.png)
 
-6、告警平台system-alarm-platform
+8、告警平台system-alarm-platform
 
-6.1 监控系统
+8.1 监控系统
 
 ![1571822696742](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/Prometheus.png)
 
-6.2 数据采集
+8.2 数据采集
 
 ![1571822734162](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/log-collect.png)
 
-6.3 数据展示
+8.3 数据展示
 
 ![1571825464213](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk%20%282%29.png)
 
-7、监控中心system-apm
+9、监控中心system-apm
 
 ![1571825619216](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-apm.png)
 
-8、使用Apollo作为配置中心system-config
+10、使用Apollo作为配置中心system-config
 
 ![1571823403132](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/apollo.png)
+
+11、数据平台开发规划
+
+![1571895535666](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92v1.0.png)
