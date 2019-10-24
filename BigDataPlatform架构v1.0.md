@@ -1,6 +1,8 @@
 1、数据平台架构
 
-![1571894045118](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84v1.0.png)
+![1571898118926](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0v1.0.png)
+
+![1571898118926](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/1571898118926.png)
 
 2、电商
 
