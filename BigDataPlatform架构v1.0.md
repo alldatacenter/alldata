@@ -6,7 +6,7 @@
 
 2、电商
 
-![1571884041052](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571884041052.png)
+![1571884041052](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E7%94%B5%E5%95%86.png)
 
 3、微服务
 
