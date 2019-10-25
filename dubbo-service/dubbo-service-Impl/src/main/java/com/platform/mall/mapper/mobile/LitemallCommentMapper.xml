@@ -52,15 +52,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler} and #{criterion.secondValue,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler} and #{criterion.secondValue,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                    #{listItem,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -104,15 +104,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler} and #{criterion.secondValue,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler} and #{criterion.secondValue,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                    #{listItem,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -316,7 +316,7 @@
         #{hasPicture,jdbcType=BIT},
       </if>
       <if test="picUrls != null">
-        #{picUrls,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
+        #{picUrls,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
       </if>
       <if test="star != null">
         #{star,jdbcType=SMALLINT},
@@ -368,7 +368,7 @@
         has_picture = #{record.hasPicture,jdbcType=BIT},
       </if>
       <if test="record.picUrls != null">
-        pic_urls = #{record.picUrls,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
+        pic_urls = #{record.picUrls,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
       </if>
       <if test="record.star != null">
         star = #{record.star,jdbcType=SMALLINT},
@@ -431,7 +431,7 @@
         has_picture = #{hasPicture,jdbcType=BIT},
       </if>
       <if test="picUrls != null">
-        pic_urls = #{picUrls,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
+        pic_urls = #{picUrls,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
       </if>
       <if test="star != null">
         star = #{star,jdbcType=SMALLINT},

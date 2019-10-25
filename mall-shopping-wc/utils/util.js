@@ -20,7 +20,7 @@ function formatNumber(n) {
 }
 
 /**
- * 封封微信的的request
+ * 微信的的request
  */
 function request(url, data = {}, method = "GET") {
   return new Promise(function(resolve, reject) {
@@ -30,7 +30,7 @@ function request(url, data = {}, method = "GET") {
       method: method,
       header: {
         'Content-Type': 'application/json',
-        'X-Litemall-Token': wx.getStorageSync('token')
+        'wx-token': wx.getStorageSync('token')
       },
       success: function(res) {
 

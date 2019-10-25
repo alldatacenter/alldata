@@ -10,7 +10,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
-    public static final String LOGIN_TOKEN_KEY = "X-Litemall-Token";
+    public static final String LOGIN_TOKEN_KEY = "wx-token";
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {

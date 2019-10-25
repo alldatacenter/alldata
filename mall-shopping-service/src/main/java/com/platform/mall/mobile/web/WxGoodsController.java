@@ -122,7 +122,7 @@ public class WxGoodsController {
 		Callable<Map> commentsCallable = () -> {
 			List<LitemallComment> comments = commentService.queryGoodsByGid(id, 0, 2);
 			List<Map<String, Object>> commentsVo = new ArrayList<>(comments.size());
-			long commentCount = PageInfo.of(comments).getTotal();
+			long commentCount = new PageInfo(comments).getTotal();
 			for (LitemallComment comment : comments) {
 				Map<String, Object> c = new HashMap<>();
 				c.put("id", comment.getId());
@@ -278,7 +278,7 @@ public class WxGoodsController {
 			categoryList = new ArrayList<>(0);
 		}
 
-		PageInfo<LitemallGoods> pagedList = PageInfo.of(goodsList);
+		PageInfo<LitemallGoods> pagedList = new PageInfo(goodsList);
 
 		Map<String, Object> entity = new HashMap<>();
 		entity.put("list", goodsList);

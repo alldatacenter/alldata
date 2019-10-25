@@ -12,12 +12,12 @@ Page({
   data: {
     load_statue: true,
     shopInfo: {
-      name: 'litemall',
-      address: 'https://github.com/linlinjava/litemall',
+      name: 'mall-shopping-wx',
+      address: 'https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-wc',
       latitude: 31.201900,
       longitude: 121.587839,
-      linkPhone: '021-xxxx-xxxx',
-      qqNumber: '738696120'
+      linkPhone: '020-8823282',
+      qqNumber: '2572694660'
     },
   },
 
@@ -25,7 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   showLocation: function (e) {

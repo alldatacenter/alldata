@@ -16,7 +16,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtHelper {
 	// 秘钥
-	static final String SECRET = "X-Litemall-Token";
+	static final String SECRET = "wx-token";
 	// 签名是有谁生成
 	static final String ISSUSER = "LITEMALL";
 	// 签名的主题

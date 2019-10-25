@@ -50,15 +50,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler} and #{criterion.secondValue,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler} and #{criterion.secondValue,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                    #{listItem,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -102,15 +102,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler} and #{criterion.secondValue,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler} and #{criterion.secondValue,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
+                    #{listItem,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -295,7 +295,7 @@
         #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="specifications != null">
-        #{specifications,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
+        #{specifications,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
@@ -341,7 +341,7 @@
         goods_id = #{record.goodsId,jdbcType=INTEGER},
       </if>
       <if test="record.specifications != null">
-        specifications = #{record.specifications,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
+        specifications = #{record.specifications,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
       </if>
       <if test="record.price != null">
         price = #{record.price,jdbcType=DECIMAL},
@@ -396,7 +396,7 @@
         goods_id = #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="specifications != null">
-        specifications = #{specifications,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
+        specifications = #{specifications,jdbcType=VARCHAR,typeHandler=com.platform.mall.utils.mobile.helper.JsonStringArrTypeHandler},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@ConfigurationProperties(prefix = "litemall.notify")
+@ConfigurationProperties(prefix = "mall-shopping-wx.notify")
 public class NotifyProperties {
     private Mail mail;
     private Sms sms;

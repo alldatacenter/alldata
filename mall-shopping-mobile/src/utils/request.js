@@ -3,15 +3,15 @@ import { Dialog, Toast } from 'vant';
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // api 的 base_url
-  timeout: 60000// request timeout
+  baseURL: 'http://120.77.155.220:8094/',
+  timeout: 60000
 })
 
 // request interceptor
 service.interceptors.request.use(
     config => {
-    if (!config.headers['X-Litemall-Token']) {
-      config.headers['X-Litemall-Token'] = `${window.localStorage.getItem(
+    if (!config.headers['wx-token']) {
+      config.headers['wx-token'] = `${window.localStorage.getItem(
         'Authorization'
       ) || ''}`;
     }

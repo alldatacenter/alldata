@@ -7,13 +7,8 @@
     </van-cell-group>
     <van-popup v-model="showKefu">
       <van-cell-group>
-        <van-cell title="项目名称" value="litemall" />
-        <van-cell title="项目地址" value="Github"  url="https://github.com/linlinjava/litemall"/>
-        <van-cell title="项目地址" value="Gitee"  url="https://gitee.com/linlinjava/litemall"/>
-        <van-cell title="联系电话" value="021-xxxx-xxxx" />
-        <van-cell title="联系QQ" value="738696120" />
-        <van-cell title="当前版本" value="V1.0" />
-        <van-cell title="开源协议" value="MIT" />
+        <van-cell title="项目名称" value="mall-shopping-mobile" />
+        <van-cell title="项目地址" value="Github"  url="https://github.com/KangU4/BigDataPlatform/tree/master/mall-shopping-mobile"/>
       </van-cell-group>
     </van-popup>
   </div>
@@ -31,8 +26,8 @@ export default {
 
   components: {
     [Popup.name]: Popup,
-    [Cell.name]: Cell, 
-    [CellGroup.name]: CellGroup    
+    [Cell.name]: Cell,
+    [CellGroup.name]: CellGroup
   }
 };
 </script>

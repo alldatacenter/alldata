@@ -1,5 +1,6 @@
 package com.platform.mall.service.impl.mobile;
 
+import com.platform.mall.entity.VO;
 import com.platform.mall.mapper.mobile.LitemallGoodsSpecificationMapper;
 import com.platform.mall.entity.mobile.LitemallGoodsSpecification;
 import com.platform.mall.entity.mobile.LitemallGoodsSpecificationExample;
@@ -82,25 +83,6 @@ public class LitemallGoodsSpecificationServiceImpl implements LitemallGoodsSpeci
         return specificationVoList;
     }
 
-    private class VO implements Serializable {
-        private String name;
-        private List<LitemallGoodsSpecification> valueList;
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public List<LitemallGoodsSpecification> getValueList() {
-            return valueList;
-        }
-
-        public void setValueList(List<LitemallGoodsSpecification> valueList) {
-            this.valueList = valueList;
-        }
-    }
 
 }

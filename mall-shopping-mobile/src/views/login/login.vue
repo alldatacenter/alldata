@@ -4,7 +4,7 @@
 		<div class="store_avatar">
 			<img src="../../assets/images/avatar_default.png" alt="头像" width="55" height="55">
 		</div>
-		<div class="store_name">litemall-vue</div>
+		<div class="store_name">mall-shopping-mobile</div>
 	</div>
 
     <md-field-group>
@@ -42,7 +42,7 @@
     </md-field-group>
 
 
-      <div class="text-desc text-center bottom_positon">技术支持: litemall</div>
+      <div class="text-desc text-center bottom_positon">技术支持: wulinhao</div>
 
 	</div>
 </template>

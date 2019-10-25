@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'X-Litemall-Admin-Token'
+const TokenKey = 'wx-admin-token'
 
 export function getToken() {
   return Cookies.get(TokenKey)

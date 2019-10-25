@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@ConfigurationProperties(prefix = "litemall.express")
+@ConfigurationProperties(prefix = "mall-shopping-wx.express")
 public class ExpressProperties {
     private boolean enable;
     private String appId;

@@ -1,0 +1,115 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "big-integer@^1.6.7",
+        "scope": null,
+        "escapedName": "big-integer",
+        "name": "big-integer",
+        "rawSpec": "^1.6.7",
+        "spec": ">=1.6.7 <2.0.0",
+        "type": "range"
+      },
+      "/Users/jbowser/cordova/cordova-android/node_modules/bplist-parser"
+    ]
+  ],
+  "_from": "big-integer@>=1.6.7 <2.0.0",
+  "_id": "big-integer@1.6.25",
+  "_inBundle": true,
+  "_inCache": true,
+  "_location": "/cordova-android/big-integer",
+  "_nodeVersion": "6.10.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/big-integer-1.6.25.tgz_1504748727289_0.9231066561769694"
+  },
+  "_npmUser": {
+    "name": "peterolson",
+    "email": "peter.e.c.olson+npm@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "big-integer@^1.6.7",
+    "scope": null,
+    "escapedName": "big-integer",
+    "name": "big-integer",
+    "rawSpec": "^1.6.7",
+    "spec": ">=1.6.7 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/cordova-android/bplist-parser"
+  ],
+  "_resolved": "https://registry.npmjs.org/big-integer/-/big-integer-1.6.25.tgz",
+  "_shasum": "1de45a9f57542ac20121c682f8d642220a34e823",
+  "_shrinkwrap": null,
+  "_spec": "big-integer@^1.6.7",
+  "_where": "/Users/jbowser/cordova/cordova-android/node_modules/bplist-parser",
+  "author": {
+    "name": "Peter Olson",
+    "email": "peter.e.c.olson+npm@gmail.com"
+  },
+  "bin": {},
+  "bugs": {
+    "url": "https://github.com/peterolson/BigInteger.js/issues"
+  },
+  "contributors": [],
+  "dependencies": {},
+  "description": "An arbitrary length integer library for Javascript",
+  "devDependencies": {
+    "@types/lodash": "^4.14.64",
+    "@types/node": "^7.0.22",
+    "coveralls": "^2.11.4",
+    "jasmine": "2.1.x",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-coverage": "^0.4.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "lodash": "^4.17.4",
+    "typescript": "^2.3.3",
+    "uglifyjs": "^2.4.10"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "1de45a9f57542ac20121c682f8d642220a34e823",
+    "tarball": "https://registry.npmjs.org/big-integer/-/big-integer-1.6.25.tgz"
+  },
+  "engines": {
+    "node": ">=0.6"
+  },
+  "gitHead": "a0c10d68aae8f5df56a67b3e3eb353b428abf170",
+  "homepage": "https://github.com/peterolson/BigInteger.js#readme",
+  "keywords": [
+    "math",
+    "big",
+    "bignum",
+    "bigint",
+    "biginteger",
+    "integer",
+    "arbitrary",
+    "precision",
+    "arithmetic"
+  ],
+  "license": "Unlicense",
+  "main": "./BigInteger",
+  "maintainers": [
+    {
+      "name": "peterolson",
+      "email": "peter.e.c.olson+npm@gmail.com"
+    }
+  ],
+  "name": "big-integer",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/peterolson/BigInteger.js.git"
+  },
+  "scripts": {
+    "minify": "uglifyjs BigInteger.js -o BigInteger.min.js",
+    "test": "tsc && node_modules/.bin/karma start my.conf.js && node spec/tsDefinitions.js"
+  },
+  "typings": "./BigInteger.d.ts",
+  "version": "1.6.25"
+}

@@ -1,6 +1,7 @@
 package com.platform.mall.mobile.service;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.platform.mall.config.vo.GrouponRuleVo;
 import com.platform.mall.entity.mobile.LitemallGoods;
 import com.platform.mall.entity.mobile.LitemallGrouponRules;
@@ -32,15 +33,15 @@ public class WxGrouponRuleService {
 
 
     public List<GrouponRuleVo> queryList(Integer page, Integer size, String sort, String order) {
-        Page<LitemallGrouponRules> grouponRulesList = (Page)grouponRulesService.queryList(page, size, sort, order);
-
+        List<LitemallGrouponRules> grouponRulesList = grouponRulesService.queryList(page, size, sort, order);
+        PageInfo pageInfo = new PageInfo(grouponRulesList);
         Page<GrouponRuleVo> grouponList = new Page<GrouponRuleVo>();
-        grouponList.setPages(grouponRulesList.getPages());
-        grouponList.setPageNum(grouponRulesList.getPageNum());
-        grouponList.setPageSize(grouponRulesList.getPageSize());
-        grouponList.setTotal(grouponRulesList.getTotal());
+        grouponList.setPages(pageInfo.getPages());
+        grouponList.setPageNum(pageInfo.getPageNum());
+        grouponList.setPageSize(pageInfo.getPageSize());
+        grouponList.setTotal(pageInfo.getTotal());
 
-        for (LitemallGrouponRules rule : grouponRulesList) {
+        for (LitemallGrouponRules rule : (List<LitemallGrouponRules>)pageInfo.getList()) {
             Integer goodsId = rule.getGoodsId();
             LitemallGoods goods = goodsService.findById(goodsId);
             if (goods == null)

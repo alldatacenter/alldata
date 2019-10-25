@@ -1,4 +1,4 @@
-litemall:
+mall-shopping-wx:
   # 开发者应该设置成自己的wx相关信息
   wx:
     app-id: wxeea9ec3042c65ec4
@@ -105,13 +105,13 @@ litemall:
       secretId: 111111
       secretKey: xxxxxx
       region: xxxxxx
-      bucketName: litemall
+      bucketName: mall-shopping-wx
     # 七牛云对象存储配置信息
     qiniu:
       endpoint: http://pd5cb6ulu.bkt.clouddn.com
       accessKey: 111111
       secretKey: xxxxxx
-      bucketName: litemall
+      bucketName: mall-shopping-wx
 
 requesthandlerselectors:
   basepackage: com.platform.mall.mobile.web
