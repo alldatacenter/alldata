@@ -1,4 +1,4 @@
-mall-shopping-app构建：
+# mall-shopping-app构建：
 
 mall-shopping-mobile(vue项目）打包android项目
 
@@ -20,16 +20,16 @@ mall-shopping-mobile(vue项目）打包android项目
 
 6、cd mall-shoppingn-app，创建build.json文件，输入内容如下：
 
-{
-  "android": {
-    "release": {
-    "keystore": "C:\\Program Files\\Java\\jdk1.8.0_191\\bin\\android.keystore",
-    "alias": "android.keystore",
-    "storePassword": "123456",
-    "password": "123456"
-    }
-  }
-}
+`{`
+  `"android": {`
+    `"release": {`
+    `"keystore": "C:\\Program Files\\Java\\jdk1.8.0_191\\bin\\android.keystore",`
+    `"alias": "android.keystore",`
+    `"storePassword": "123456",`
+    `"password": "123456"`
+    `}`
+  `}`
+`}`
 
 7、打包
 
@@ -39,6 +39,17 @@ cd mall-shopping-app\platforms\android\app\build\outputs\apk\release查看app-re
 
 8、本地运行android项目
 
-cd mall-shopping-app，启动app-debug.bak，执行cordova run android，启动app-release.bak，执行cordova run android --prod --release(可能遇到报错请看https://blog.csdn.net/SDF_crazy/article/details/85228452复制emulator目录下的文件到tools重新执行即可，全部覆盖即可)
+cd mall-shopping-app，启动app-debug.bak，执行cordova run android；
 
-![1571911110805](C:\Users\pc\AppData\Roaming\Typora\typora-user-images\1571911110805.png)
+启动app-release.bak，执行cordova run android --prod --release
+
+(https://blog.csdn.net/SDF_crazy/article/details/85228452）（复制emulator目录下的文件到tools重新执行即可，全部覆盖即可)
+
+![571911110805](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-03.png)
+
+![571911110805](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/shopping-app-04.png)
+
+![571911110805](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/shopping-app-05.png)
+
+![571911110805](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/shopping-app-07.png)
+
