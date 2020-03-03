@@ -7,4 +7,4 @@
   2.2 定时调度爬虫系统
 data-spider基本架构图
 
-![1571199621028]https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20200304/data-spider.png
+![1571199621028](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20200304/data-spider.png)
