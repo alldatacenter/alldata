@@ -6,7 +6,7 @@
   
 # 2. 爬虫系统
 
-  2.1 爬取数据后，走rabbitmq消息队列通信，据爬取后上传到sftp，然后跑mapreduce任务写入hive
+  2.1 爬取数据后，走rabbitmq消息队列通信，数据文件爬取后上传到sftp，然后跑mapreduce任务创建hive表，上传到hdfs
   
   2.2 定时调度爬虫系统
   
