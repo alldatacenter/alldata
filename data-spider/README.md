@@ -5,6 +5,7 @@
 # 2. 爬虫系统
   2.1 爬取数据后，走rabbitmq消息队列通信，据爬取后上传到sftp，然后跑mapreduce任务写入hive
   2.2 定时调度爬虫系统
-data-spider基本架构图
- ![1571122621028](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20200304/data-spider.png)
+  
+# 3. data-spider基本架构图
+ ![1571122621120](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20200304/data-spider.png)
 
