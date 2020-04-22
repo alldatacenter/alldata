@@ -44,19 +44,33 @@ DevOps：
 商城后台管理：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-07.png
 
 2.2 mr和spark页面展示
+
 mr:
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2791587557292_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2801587557292_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2811587557292_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2821587557292_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2831587557293_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2841587557293_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2851587557293_.pic.jpg
+
 spark:
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2871587557435_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2881587557459_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2891587557479_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2901587557498_.pic.jpg
+
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2911587557535_.pic.jpg
 
 
