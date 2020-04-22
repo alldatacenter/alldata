@@ -44,6 +44,7 @@ DevOps：
 商城后台管理：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-07.png
 
 2.2 compute-mr
+	
 	1、mr-website-analyse: 
 	    1.1 主要做的事情：
 		hadoop HA集群搭建部署；
