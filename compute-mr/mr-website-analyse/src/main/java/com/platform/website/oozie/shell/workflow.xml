@@ -1,0 +1,43 @@
+<workflow-app name='transformer-shell' xmlns="uri:oozie:workflow:0.3">
+  <start to="sh-view-depth"/>
+  
+  <action name="sh-view-depth">
+    <shell xmlns="uri:oozie:shell-action:0.1">
+      <job-tracker>${jobTracker}</job-tracker>
+      <name-node>${nameNode}</name-node>
+      <exec>${SHELL_VIEW_DEPTH}</exec>
+      <file>${SHELL_VIEW_DEPTH}#${SHELL_VIEW_DEPTH}</file>
+    </shell>
+    <ok to="sh-event"/>
+    <error to="fail"/>
+  </action>
+
+  <action name="sh-event">
+    <shell xmlns="uri:oozie:shell-action:0.1">
+      <job-tracker>${jobTracker}</job-tracker>
+      <name-node>${nameNode}</name-node>
+      <exec>${SHELL_EVENT}</exec>
+      <file>${SHELL_EVENT}#${SHELL_EVENT}</file>
+    </shell>
+    <ok to="sh-order"/>
+    <error to="fail"/>
+  </action>
+
+  <action name="sh-order">
+    <shell xmlns="uri:oozie:shell-action:0.1">
+      <job-tracker>${jobTracker}</job-tracker>
+      <name-node>${nameNode}</name-node>
+      <exec>${SHELL_ORDER}</exec>
+      <file>${SHELL_ORDER}#${SHELL_ORDER}</file>
+    </shell>
+    <ok to="end"/>
+    <error to="fail"/>
+  </action>
+
+  <kill name="fail">
+    <message>script failed, error message:${wf:errorMessage(wf:lastErrorNode())}</message>
+  </kill>
+
+  <end name="end"/>
+  
+</workflow-app>
