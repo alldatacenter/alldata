@@ -43,35 +43,81 @@ DevOps：
 
 商城后台管理：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-07.png
 
-2.2 compute-mr和compute-realtime页面展示
+2.2 compute-mr
+	1、mr-website-analyse: 
+	    1.1 主要做的事情：
+		hadoop HA集群搭建部署；
+		mapreduce基础掌握；
+		使用 oozie进行任务调度；
+		使用 hive保存数据到hdfs，以及从hdfs导出到 mysql；
+		使用hbase结合mapreduce处理业务，如用户行为分析；
+		使用flume,nginx模拟收集日志，从java sdk端和js 网站端收集数据等; 
+	    1.2 主要模块
+		用户基本信息分析
+		浏览器分析
+		地域分析
+		浏览深度分析
+		搜索引擎分析
+		事件分析
+		订单分析
 
-compute-mr:
+	2、mr-website-sdk
+	    2.1 java服务端sdk采集
+	    2.2 JS前端页面的数据模拟采集  
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2791587557292_.pic.jpg
+	3、mr-website-view
+	    3.1 数据可视化显示
+	    3.2 主要使用highcharts，html，css, js显示mr-website-analyse数据处理的统计数据，存在mysql
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2801587557292_.pic.jpg
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2791587557292_.pic.jpg
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2811587557292_.pic.jpg
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2801587557292_.pic.jpg
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2821587557292_.pic.jpg
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2811587557292_.pic.jpg
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2831587557293_.pic.jpg
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2821587557292_.pic.jpg
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2841587557293_.pic.jpg
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2831587557293_.pic.jpg
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2851587557293_.pic.jpg
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2841587557293_.pic.jpg
 
-compute-realtim:
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2851587557293_.pic.jpg
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2871587557435_.pic.jpg
+2.3 compute-realtime:
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2881587557459_.pic.jpg
+	1、compute-realtime-spark: 
+	    1.1 主要做的事情：
+		基于Javee平台展示的Spark实时数据分析平台
+		hadoop HA集群搭建部署；
+		基于zookeeper的kafka HA集群搭建部署；
+		HA: 本地搭建时共5个节点,2个namenode,3个datanode；
+		spark core, spark sql, spark streaming基础掌握；
+		kafka实时模拟生成数据并使用spark streaming实时处理来自kafka的数据；
+		实时处理分析结果保存到mysql, 由highcharts动态刷新；
+		highcharts实时展示统计分析结果，以及spark sql算子执行结果；
+	    1.2 主要模块
+		广告点击流量分析
+		广告点击趋势分析
+		各省份top3热门广告分析
+		各区域top3热门商品统计
+		页面单跳转化率
+		用户访问session分析
+		Top10热门品类分析
+		Top10用户session分析
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2891587557479_.pic.jpg
+	2、compute-realtime-view
+	    2.1 数据可视化显示，定时模拟kafka消息队列的数据
+	    2.2 主要使用highcharts，html，css, js显示compute-realtime-spark数据处理的统计数据，存在mysql
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2901587557498_.pic.jpg
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2871587557435_.pic.jpg
 
-https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2911587557535_.pic.jpg
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2881587557459_.pic.jpg
+
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2891587557479_.pic.jpg
+
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2901587557498_.pic.jpg
+
+	https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2911587557535_.pic.jpg
 
 
 # 3、数据来源
