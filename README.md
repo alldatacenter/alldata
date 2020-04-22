@@ -43,9 +43,9 @@ DevOps：
 
 商城后台管理：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-07.png
 
-2.2 mr和spark页面展示
+2.2 compute-mr和compute-realtime页面展示
 
-mr:
+compute-mr:
 
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2791587557292_.pic.jpg
 
@@ -61,7 +61,7 @@ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2841587557293_.
 
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/mr/2851587557293_.pic.jpg
 
-spark:
+compute-realtim:
 
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2871587557435_.pic.jpg
 
