@@ -33,17 +33,18 @@ DevOps：
 # 2、数据平台展示
 2.1 商城图片展示：
 
-商城App：（图片失效，暂时省略）
+商城App：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-03.png
 
-商城小程序：（图片失效，暂时省略）
+商城小程序：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-04.png
 
-商城移动端：（图片失效，暂时省略）
+商城移动端：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-05.png
 
-商城PC端：（图片失效，暂时省略）
+商城PC端： https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-06.png
 
-商城后台管理：（图片失效，暂时省略）
+商城后台管理：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-07.png
 
-2.2 其他模块页面展示...xxx
+2.2 其他模块页面展示
+
 
 # 3、数据来源
 
@@ -59,6 +60,11 @@ DevOps：
 商城后台：
 	mall-admin-web: 商城后台
 	mall-admin-service: 商城后台服务
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/microservice.png
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway01.png
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway02.png
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-apm.png
 ```
 
 # 4、数据收集
@@ -71,6 +77,13 @@ data-import-export:
 	基于DataX实现数据集成(导入导出)
 data-spider:
 	爬虫平台支持可配置的爬取公网数据的任务开发；
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/Prometheus.png
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/apollo.png
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/log-collect.png
+
+
 ```
 
 # 5、数据存储
@@ -91,6 +104,12 @@ multi-dimension-analysis（多维度分析）: kylin, spark
 ```markdown
 task-schedular: 任务调度
 task-ops: 任务运维
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy.png
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy02.png
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-devops.png
 ```
 
 # 8、数据产品
@@ -106,7 +125,10 @@ system-ad: 广告
 system-search: 搜索
 system-anti-cheating: 反作弊
 system-report-analysis: 报表分析
-system-elk: ELK日志系统，实现日志搜索平台
+system-elk: ELK日志系统，实现日志搜索平台 
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk.png
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk（2）.png
 system-apm: skywalking监控平台
 system-deploy: k8s，scala，playframework，docker打包平台。
 system-tasksubmit: 任务提交平台
@@ -153,4 +175,6 @@ system-tasksubmit: 任务提交平台
 
  ![1571122621028](https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/65.png)
 
- 10.3.5 其他xxx待配置开发。
+ 11 开发计划
+ 
+ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92v1.0.png
