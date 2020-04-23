@@ -1,0 +1,518 @@
+@charset "utf-8";
+/**
+ * main.scss
+ *
+ */
+
+
+/* compass Helper */
+
+/* @import "compass"; */
+
+/* mixin */
+
+@import "_mixin";
+
+/* reset 重置样式 */
+
+@import "_reset";
+
+/* base 基础样式，一般改这个，看不同项目的需要 */
+
+@import "_base";
+
+/* 设计稿宽度，默认750px，按实际设置，这样下面用到的px2rem方法所需的参数值都是设计稿上量度的px值 */
+
+// ------------------变量---------------------
+// 尺寸
+$fontSize: 14px;
+$topHeight: 50px;
+$leftWidth: 240px;
+
+// 颜色
+$themeBg: #fff;
+$headBoxShadow: 0 2px 8px #f0f1f2;
+$sidebarBg: #f8f9fb; // 侧边栏底色
+
+// 全屏显示
+:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+    #root {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        overflow: auto;
+    }
+    .g_head {
+        display: none;
+    }
+    
+}
+
+// ---------滚动条样式-----------
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 1px;
+}
+
+// .ant-table-header::-webkit-scrollbar {
+//     width: 0px;
+//     height: 0px;
+//     display: none;
+// }
+
+// 将样式放在body下，提高优先级（针对antd样式的重写）
+body {
+font-size: 14px !important;
+color: #666 !important;
+
+// ------------------布局---------------------
+#root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.g_layout_fill {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+.g_layout_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    // align-items: flex-start;
+}
+.g_layout_column {
+    display: flex;
+    flex-direction: column;
+}
+.flex_auto {
+    flex: 1 1 auto;
+}
+.flex_none {
+    flex: 0 0 auto;
+    // align-self: flex-start;
+}
+
+.ant-layout {
+    background: transparent;
+}
+
+.ant-layout-content {
+    overflow: auto;
+}
+
+.g_head {
+    // width: 100%;
+    // min-width: 1200px;
+    height: $topHeight;
+    padding: 0px;
+    position: relative;
+    background: $themeBg;
+    @include box_shadow($headBoxShadow);
+    .w_logo {
+        position: absolute;
+        top: 0;
+        left: $leftWidth/2 - ($leftWidth/2/2);
+        width: $leftWidth/2;
+        height: $topHeight;
+        background: url(../images/logo2.png) no-repeat center;
+        background-size: contain;
+    }
+}
+
+// 侧边栏菜单
+.g_siderMenu {
+    .logo {
+        width: 200px;
+        height: 50px;
+        background: url(../images/logo.jpg) no-repeat center;
+    }
+    .title {
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 20px;
+        color: rgba(255,255,255,.8);
+        background: rgba(255,255,255,.2);
+        margin: 6px;
+    }
+}
+
+.g_body {
+    // padding: 20px + $topHeight 30px 20px;
+    padding: 10px;
+    background: #f8f9fb;
+    overflow: auto;
+    // height: 100%;
+    // transition: margin linear .3s;
+}
+
+
+.pre_css { 
+    // border: 1px solid #ccc;
+    padding: 5px;
+    // margin-bottom: 20px;
+    .string { color: green; white-space: normal;}
+    .number { color: darkorange; }
+    .boolean { color: blue; }
+    .null { color: magenta; }
+    .key { color: red; }
+}
+
+.text_ellipsis{
+    @extend %text_ellipsis;
+}
+
+// ------------------登录模块---------------------
+.m_login {
+    background: #fff;
+    form {
+        margin: 10% auto 0;
+    }
+}
+
+
+// ------------------主体顶部导航---------------------
+.m_topNav, .m_topNav_Setting {
+    position: absolute;
+    top: 0;
+    background: transparent;
+    line-height: $topHeight;
+    border-bottom: 0;
+    .ant-menu {
+        border-bottom: 0;
+    }
+    .ant-menu-item {
+        padding: 0;
+        a {
+            padding: 0 20px;
+        }
+    }
+}
+.m_topNav {
+    left: $leftWidth;
+}
+.m_topNav_Setting {
+    right: 0;
+    padding-right: 10px;
+    .ant-menu-item a {
+        padding: 0 10px;
+    }
+}
+
+// 按钮组
+.w_button_group {
+    @extend %clear;
+    // margin-bottom: 20px;
+}
+
+
+// ------------------antd---------------------
+
+.ant-form-item-control {
+    line-height: 1.0;
+}
+
+.ant-form-item-label {
+    line-height: 32px;
+}
+
+.anticon {
+    cursor: pointer;
+    transition: all linear .3s;
+}
+
+.anticon-close-circle-o {
+    &:hover {
+        color: #d9534f;
+    }
+}
+
+// ------------------表格---------------------
+$tableBdc: #d9d9d9;
+.ant-table {
+    border-color: $tableBdc;
+    font-size: $fontSize;
+    .ant-table-thead > tr > th {
+        background: #f7f7f7 !important;
+        font-weight: bold;
+    }
+    .ant-table-tbody > tr > td {
+        position: relative;
+        div.grid {
+            width: 100%;
+            .bg {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                background: #56acf1;
+                z-index: 0;
+            }
+            p {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+        }
+    }
+}
+.ant-table.ant-table-bordered  {
+    .ant-table-title {
+        border-color: $tableBdc;
+    }
+    .ant-table-content {
+        border-right: 1px solid $tableBdc;
+    }
+    .ant-table-header > table,
+    .ant-table-body > table {
+        border-color: $tableBdc;
+        border-left: 0;
+    }
+    .ant-table-thead > tr > th,
+    .ant-table-tbody > tr > td {
+        border-color: $tableBdc;
+        &:last-child {
+            border-right: 0;
+        }
+    }
+    .ant-table-tbody > tr:last-child > td {
+        border-bottom: 0;
+    }
+}
+.ant-table-fixed-header .ant-table-scroll .ant-table-header {
+    margin: 0;
+    padding: 0;
+}
+.trEven {
+    background:rgba(236, 246, 253, .6);
+}
+
+.ant-table.ant-table-bordered .ant-table-thead > tr > th:last-child,
+.ant-table.ant-table-bordered .ant-table-tbody > tr > td:last-child {
+    border-right: 1px solid #d9d9d9;
+}
+
+.ant-table-small .ant-table-tbody > tr > td {
+    padding: 4px 8px !important;
+}
+
+.ant-table-pagination.ant-pagination {
+    margin: 14px 0;
+}
+
+table {
+    padding: 0 !important;
+}
+
+
+
+// ------------------antd button---------------------
+.ant-btn {
+    font-size: $fontSize;
+    font-weight: normal;
+    max-height: 30px;
+}
+
+// ------------------antd modal---------------------
+.ant-confirm-body {
+    .ant-confirm-title {
+        font-size: 16px;
+    }
+    .ant-confirm-content {
+        font-size: $fontSize;
+    }
+}
+
+// ------------------antd popover---------------------
+
+// .ant-popover-inner-content {
+//     padding: 4px 8px;
+//     box-shadow: 1px 1px 5px #ccc;
+//     ul {
+//         text-align: left;
+//         font-size: 14px;
+//         line-height: 28px;
+//         li {
+//             cursor: pointer;
+//             padding: 0px 6px;
+//             min-width: 120px;
+//             a {
+//                 color: #666;
+//                 display: block;
+//             }
+//             &:hover {
+//                 background-color: #d9d9d9;
+//             }
+//         }
+//     }
+// }
+
+// ------------------antd btn danger---------------------
+.ant-btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+
+// ------------------其他---------------------
+.ant-tooltip-inner {
+    max-width: 350px;
+    max-height: 300px;
+    overflow: auto;
+    font-size: 12px;
+}
+
+
+// -----------------------------------
+
+.m_group_container {
+    .m_group {
+        margin-bottom: 0px;
+        .group_title {
+            font-size:  14px;
+            line-height: 28px;
+            font-weight: bold;
+            color: #333;
+            padding: 5px 10px;
+            font-weight: bold;
+            background: #f7f7f7;
+            margin-bottom: 10px;
+        }
+        .group_content {
+            .ant-radio-group {
+                padding: 5px;
+            }
+        }
+    }
+    
+}
+
+.m_pagination {
+    margin-top: 12px;
+}
+
+.m_block_white {
+    box-shadow: 0 1px 4px rgba(150,150,150,0.3);
+    background: #fff;
+    border-radius: 4px;
+    padding: 15px;
+    // margin-bottom: 15px;
+}
+
+// 项目管理页面
+.m_page_Project {
+    .list_container {
+        .list_item {
+            // flex-wrap: wrap;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            box-shadow: 3px 3px 3px #e8e8e8;
+            transition: all linear .3s;
+            cursor: pointer;
+            overflow: hidden;
+            &:hover {
+                border-color: #56acf1;
+                box-shadow: 5px 5px 6px #61a9e483;
+            }
+            &.selected {
+                border-color: #56acf1;
+            }
+            .content {
+                padding: 8px;
+            }
+            .control {
+                z-index: 5;
+                padding: 6px 10px;
+                background: #fafafa;
+                border-top: 1px solid #ccc;
+            }
+        }
+    }
+    // 左侧项目栏
+    .page_left {
+        width: 255px;
+        margin-right: 10px;
+        overflow: auto;
+    }
+    // 右侧内容
+    .page_right {
+        overflow: auto;
+        .list_container {
+            flex-wrap: wrap;
+        }
+        .list_item {
+            margin: 0 10px 10px 0;
+            cursor: default;
+            &:hover {
+                border-color: #ccc;
+                box-shadow: 3px 3px 3px #e8e8e8;
+            }
+        } 
+        .block {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            .title {
+                background: #fafafa;
+                line-height: 40px;
+                font-size: 16px;
+                font-weight: bold;
+                padding-left: 10px; 
+            }
+            .content {
+                padding: 10px;
+            }
+        }
+    }
+}
+.select_cluster {
+    margin-bottom: 10px;
+    .text {
+        font-weight: bold;
+        line-height: 30px;
+    }
+}
+
+.table_block{
+    border-left: #ccc solid 1px;
+    margin-bottom: 20px;
+    min-width: 700px;
+    .table_row{
+                height: 40px;
+            }
+            .form_item_title{
+                background: #f0f1f2;
+                border-top:  #ccc solid 1px;
+            }
+            .form_item{
+                display: inline-block;
+                height:40px;
+                width:200px;
+                text-align: center;
+                line-height: 30px;
+                padding: 5px;
+                border-right: #ccc solid 1px;
+                border-bottom: #ccc solid 1px;
+            }
+}
+
+}
+

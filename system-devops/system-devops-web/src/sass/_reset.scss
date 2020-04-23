@@ -1,0 +1,63 @@
+@charset "utf-8";
+/**
+ * _reset.scss 重置样式
+ *
+ */
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, figure {
+	margin: 0;
+	padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section, summary {
+	display: block;
+}
+
+body, input, textarea, select, button {
+	outline: none;
+	-webkit-text-size-adjust: none;
+}
+
+input, textarea, select, button {
+	font-size: inherit; // form control's default font in webkit is "-webkit-small-control"
+	-webkit-tap-highlight-color: rgba(0,0,0,0); // remove widget tap highlighted in mobile safari 
+}
+
+input, textarea, fieldset, img {
+	border: none;
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+html, body {
+	height: 100%;
+	position: relative;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: inherit;
+}
+
+textarea {
+	overflow: auto;
+}
+
+img {
+	max-width: 100%;
+}
+
+:focus {
+	outline: none;
+}
+
+input[type=radio]::-ms-check, input[type=checkbox]::-ms-check {
+	display: none; // 去掉IE10&11的默认样式
+}
+
+select::-ms-expand {
+	display: none; // 去掉IE10&11的默认样式
+}
