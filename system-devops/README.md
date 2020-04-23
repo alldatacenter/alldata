@@ -8,7 +8,7 @@ system-devops：
     使用Kong开发统一网关入口系统system-api-gateway；
     使用vue、scala、playframework、docker、k8s、Prometheus、grafana开发监控告警平台system-alarm-platform；
     使用Apollo开发system-config配置中心；
-system-devops目前包含3个模块，system-devops-web, system-devops-backend
+system-devops目前包含2个模块，system-devops-web, system-devops-backend
 
 1、system-devops-web: 
     1.1 主要做的事情：
