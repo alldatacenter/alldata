@@ -1,0 +1,106 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+#以下是swagger的集成
+GET         /swagger.json                                           controllers.ApiHelpController.getResources
+GET         /assets/*file                                           controllers.Assets.at(path="/public", file)
+GET         /docs                                                   controllers.Application.redirectDocs()
+GET         /health                                                 controllers.Application.health()
+
+POST        /v1/externalGame/search                                 controllers.ExternalGameController.searchGame()
+GET         /v1/externalGame/get/:id                                controllers.ExternalGameController.getOne(id)
+POST        /v1/externalGame/tag/:id                                controllers.ExternalGameController.tag(id)
+GET         /v1/externalGame/:field/:input                          controllers.ExternalGameController.suggest(field:String, input:String)
+
+POST        /v1/3dModel/search                                      controllers.ExternalModelController.search3dModel()
+GET         /v1/3dModel/get/:id                                     controllers.ExternalModelController.get3dModel(id:String)
+POST        /v1/3dModel/tag/:id                                     controllers.ExternalModelController.tag(id:String)
+#POST        /v1/3dModel/getGlb                       controllers.ExternalModelController.getGlb()
+POST        /v1/3dModel/buildImg                                    controllers.ExternalModelController.buildImg()
+#GET         /v1/3dModel/buildhtml                    controllers.ExternalModelController.buildHtml()
+
+POST        /v1/originalModel/add                                   controllers.OriginalModelController.add()
+POST        /v1/originalModel/update/:id                            controllers.OriginalModelController.update(id:String)
+POST        /v1/originalModel/search                                controllers.OriginalModelController.search()
+POST        /v1/originalModel/delete/:id                            controllers.OriginalModelController.delete(id:String)
+
+
+POST        /v1/videoContentTask/updateStatus/:id                   controllers.VideoContentTaskController.updateVideoContentStatus(id: Int)
+POST        /v1/videoContentTask/addTag                              controllers.VideoContentTaskController.addTag()
+POST        /v1/videoContentTask/delete                             controllers.VideoContentTaskController.deleteVideoContentTaskExtend()
+POST        /v1/videoContentTask/deleteById/:id                     controllers.VideoContentTaskController.deleteVideoContentTask(id:Int)
+POST        /v1/videoContentTask/updateContentFields/:id            controllers.VideoContentTaskController.updateContentFields(id: Int)
+POST        /v1/videoContentTask/updateFinalAndEndTime/:id          controllers.VideoContentTaskController.updateFinalAndEndTime(id: Int)
+
+POST        /v1/videoFinalTask/create                               controllers.VideoFinalTaskController.addVideoFinalTaskCreate()
+POST        /v1/videoFinalTask/updateStatusAndResultPath/:id        controllers.VideoFinalTaskController.updateStatusAndResultPath(id: Int)
+POST        /v1/videoFinalTask/updateStatus/:id                     controllers.VideoFinalTaskController.updateVideoFinalStatus(id: Int)
+POST        /v1/videoFinalTask/updateUrlContent/:id                 controllers.VideoFinalTaskController.updateUrlContent(id: Int)
+POST        /v1/videoFinalTask/updateFinalFields/:id                controllers.VideoFinalTaskController.updateFinalFields(id: Int)
+GET         /v1/videoFinalTask/needRenderEnding/:id                 controllers.VideoFinalTaskController.needRenderEnding(id: Int)
+GET         /v1/videoFinalTask/needRenderContent/:id                controllers.VideoFinalTaskController.needRenderContent(id: Int)
+
+POST        /v1/videoEndingTask/updateEndingFields/:id              controllers.VideoEndingTaskController.updateEndingFields(id: Int)
+POST        /v1/videoEndingTask/create                              controllers.VideoEndingTaskController.addVideoEndingTaskExtend()
+POST        /v1/videoEndingTask/addTag                              controllers.VideoEndingTaskController.addTag()
+POST        /v1/videoEndingTask/delete                              controllers.VideoEndingTaskController.deleteVideoEndingByAepPath()
+POST        /v1/videoEndingTask/deleteById/:id                      controllers.VideoEndingTaskController.deleteVideoEndingTask(id:Int)
+POST        /v1/videoEndingTask/updateStatus/:id                    controllers.VideoEndingTaskController.updateVideoEndingStatus(id: Int)
+POST        /v1/videoEndingTask/updateVideoValue/:id                controllers.VideoEndingTaskController.updateVideoValue(id: Int)
+
+POST        /v1/favoriteItem/create                                 controllers.MaterialController.addMaterialCreate()
+POST        /v1/favoriteItem/delete                                 controllers.MaterialController.deleteFavoriteItem()
+POST        /v1/favorites/create                                    controllers.FavoritesController.addFavoritesCreate()
+POST        /v1/favorites/update/:id                                controllers.FavoritesController.updateFavoritesRead(id: Int)
+
+GET         /v1/dict/init                                           controllers.DictController.init()
+GET         /v1/dict/suggest/:dictName/:input                       controllers.DictController.suggest(dictName:String, input:String)
+
+#AUTO-BUILD-MAEK
+#autorouters-start-dict
+GET         /v1/dict/:id                                            controllers.DictController.getOne(id: Int)
+POST        /v1/dict/list                                           controllers.DictController.getList()
+POST        /v1/dict/create                                         controllers.DictController.addDict()
+POST        /v1/dict/update/:id                                     controllers.DictController.updateDict(id: Int)
+POST        /v1/dict/delete/:id                                     controllers.DictController.deleteDict(id: Int)
+#autorouters-end-dict
+#autorouters-start-originalGame
+GET         /v1/originalGame/:id                                    controllers.OriginalGameController.getOne(id: Int)
+POST        /v1/originalGame/list                                   controllers.OriginalGameController.getList()
+POST        /v1/originalGame/create                                 controllers.OriginalGameController.addOriginalGame()
+POST        /v1/originalGame/update/:id                             controllers.OriginalGameController.updateOriginalGame(id: Int)
+POST        /v1/originalGame/delete/:id                             controllers.OriginalGameController.deleteOriginalGame(id: Int)
+#autorouters-end-originalGame
+#autorouters-start-originalLevel1
+GET         /v1/originalLevel1/:id                                  controllers.OriginalLevel1Controller.getOne(id: Int)
+POST        /v1/originalLevel1/list                                 controllers.OriginalLevel1Controller.getList()
+POST        /v1/originalLevel1/create                               controllers.OriginalLevel1Controller.addOriginalLevel1()
+POST        /v1/originalLevel1/update/:id                           controllers.OriginalLevel1Controller.updateOriginalLevel1(id: Int)
+POST        /v1/originalLevel1/delete/:id                           controllers.OriginalLevel1Controller.deleteOriginalLevel1(id: Int)
+#autorouters-end-originalLevel1
+#autorouters-start-originalLevel2
+GET         /v1/originalLevel2/:id                                  controllers.OriginalLevel2Controller.getOne(id: Int)
+POST        /v1/originalLevel2/list                                 controllers.OriginalLevel2Controller.getList()
+POST        /v1/originalLevel2/create                               controllers.OriginalLevel2Controller.addOriginalLevel2()
+POST        /v1/originalLevel2/update/:id                           controllers.OriginalLevel2Controller.updateOriginalLevel2(id: Int)
+POST        /v1/originalLevel2/delete/:id                           controllers.OriginalLevel2Controller.deleteOriginalLevel2(id: Int)
+#autorouters-end-originalLevel2
+#autorouters-start-videoContentTask
+GET         /v1/videoContentTask/:id                                controllers.VideoContentTaskController.getOne(id: Int)
+POST        /v1/videoContentTask/list                               controllers.VideoContentTaskController.getList()
+POST        /v1/videoContentTask/create                             controllers.VideoContentTaskController.addVideoContentTask()
+#autorouters-end-videoContentTask
+#autorouters-start-videoEndingTask
+GET         /v1/videoEndingTask/:id                                 controllers.VideoEndingTaskController.getOne(id: Int)
+POST        /v1/videoEndingTask/list                                controllers.VideoEndingTaskController.getList()
+#autorouters-end-videoEndingTask
+#autorouters-start-videoFinalTask
+GET         /v1/videoFinalTask/:id                                  controllers.VideoFinalTaskController.getOne(id: Int)
+POST        /v1/videoFinalTask/list                                 controllers.VideoFinalTaskController.getList()
+#autorouters-end-videoFinalTask
+#autorouters-start-favorites
+POST        /v1/favorites/list                                      controllers.FavoritesController.getList()
+POST        /v1/favorites/delete/:id                                controllers.FavoritesController.deleteFavorites(id: Int)
+#autorouters-end-favorites
+
