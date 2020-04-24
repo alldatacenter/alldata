@@ -17,7 +17,7 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 /**
  * 计算总金额的udf类
  * 
- * @author gerry
+ * @author wulinhao
  *
  */
 public class OrderTotalAmountUDF extends UDF {

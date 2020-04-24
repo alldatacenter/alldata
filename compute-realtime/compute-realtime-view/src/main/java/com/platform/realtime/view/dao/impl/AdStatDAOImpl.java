@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * 广告实时统计DAO实现类
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class AdStatDAOImpl implements IAdStatDAO {

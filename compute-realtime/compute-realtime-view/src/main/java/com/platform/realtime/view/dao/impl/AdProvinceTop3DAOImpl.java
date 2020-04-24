@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 各省份top3热门广告DAO实现类
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class AdProvinceTop3DAOImpl implements IAdProvinceTop3DAO {

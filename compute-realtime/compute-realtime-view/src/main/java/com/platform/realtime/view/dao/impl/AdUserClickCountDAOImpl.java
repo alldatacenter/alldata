@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * 用户广告点击量DAO实现类
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class AdUserClickCountDAOImpl implements IAdUserClickCountDAO {

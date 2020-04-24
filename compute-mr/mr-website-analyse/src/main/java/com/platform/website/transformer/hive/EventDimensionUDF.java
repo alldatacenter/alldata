@@ -14,7 +14,7 @@ import org.apache.hadoop.io.Text;
 /**
  * 计算event相关数据的udf
  * 
- * @author gerry
+ * @author wulinhao
  *
  */
 public class EventDimensionUDF extends UDF {

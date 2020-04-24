@@ -11,7 +11,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * 平台维度类
  * 
- * @author gerry
+ * @author wulinhao
  *
  */
 public class PlatformDimension extends BaseDimension {

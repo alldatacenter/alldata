@@ -12,7 +12,7 @@ import java.util.Properties;
  * 		可能需要管理多个不同的properties，甚至是xml类型的配置文件
  * 3、我们这里的话，就是开发一个简单的配置管理组件，就可以了
  * 
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class ConfigurationManager {

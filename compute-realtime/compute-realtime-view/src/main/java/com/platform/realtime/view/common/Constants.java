@@ -3,7 +3,7 @@ package com.platform.realtime.view.common;
 /**
  * 常量接口
  *
- * @author Administrator
+ * @author wulinhao
  */
 public interface Constants {
 

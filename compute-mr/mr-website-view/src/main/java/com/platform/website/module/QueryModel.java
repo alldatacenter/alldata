@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 查询的model类
  *
- * @author gerry
+ * @author wulinhao
  */
 @Data
 public class QueryModel {

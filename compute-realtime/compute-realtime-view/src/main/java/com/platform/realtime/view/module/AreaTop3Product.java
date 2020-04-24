@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * 各区域top3热门商品
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class AreaTop3Product {

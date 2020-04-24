@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 广告黑名单DAO接口
- * @author Administrator
+ * @author wulinhao
  *
  */
 public interface IAdBlacklistDAO {

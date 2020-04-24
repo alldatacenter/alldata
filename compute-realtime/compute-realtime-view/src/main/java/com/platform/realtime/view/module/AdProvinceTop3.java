@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * 各省top3热门广告
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class AdProvinceTop3 {

@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * Session明细
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class SessionDetail {

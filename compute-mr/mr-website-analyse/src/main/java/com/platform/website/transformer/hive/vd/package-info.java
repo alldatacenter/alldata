@@ -1,7 +1,7 @@
 /**
  * 统计view depth的相关数据
  * 
- * @author gerry
+ * @author wulinhao
  *
  */
 package com.platform.website.transformer.hive.vd;

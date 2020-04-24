@@ -11,7 +11,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * 浏览器维度
  * 
- * @author gerry
+ * @author wulinhao
  *
  */
 public class BrowserDimension extends BaseDimension {

@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * top10品类
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class Top10Category {

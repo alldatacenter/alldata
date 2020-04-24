@@ -7,7 +7,7 @@
  * 
  * 注意：mr/lib文件下的transformer-0.0.1.jar请自行maven打包，执行命令为maven clean, maven install即可(之前需要修改代码)
  * 
- * @author gerry
+ * @author wulinhao
  *
  */
 package com.platform.website.oozie;

@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * 广告点击趋势
- * @author Administrator
+ * @author wulinhao
  *
  */
 public class AdClickTrend {

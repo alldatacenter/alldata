@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 用户广告点击量DAO接口
- * @author Administrator
+ * @author wulinhao
  *
  */
 public interface IAdUserClickCountDAO {
