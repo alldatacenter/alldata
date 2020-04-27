@@ -1,0 +1,53 @@
+package auto.${upperTable}
+
+import auto.${upperTable}.${upperTable}Tables._
+import controllers.BeforeInnerJsonFormat
+import play.api.libs.json._
+import controllers._
+
+trait ${upperTable}JsonFormat extends BeforeInnerJsonFormat {
+
+#foreach( $one in $tableInfo.getJsonColumns() )
+  implicit val ${upperTable}${one.getUpperName()}Format = Json.using[Json.WithDefaultValues].format[${upperTable}${one.getUpperName()}]
+
+  implicit def change${upperTable}${one.getUpperName()}ToOptionString(a: ${upperTable}${one.getUpperName()}): Option[String] = {
+    Some(Json.toJson(a).toString())
+  }
+
+  implicit def changeOptionStringTo${upperTable}${one.getUpperName()}TextJson(a: Option[String]): ${upperTable}${one.getUpperName()} = {
+    Json.parse(a.get).as[${upperTable}${one.getUpperName()}]
+  }
+
+#end
+  implicit def change${upperTable}DataTo${upperTable}Row(read: ${upperTable}Data): ${upperTable}Row = {
+    ${upperTable}Row(
+#foreach( $one in $tableInfo.getAllColumns() )
+      read.${one.getLowerName()}#if( $foreach.hasNext ),#end
+
+#end
+    )
+  }
+
+  implicit def change${upperTable}RowTo${upperTable}Data(read: ${upperTable}Row): ${upperTable}Data = {
+     ${upperTable}Data(
+      #foreach( $one in $tableInfo.getAllColumns() )
+        read.${one.getLowerName()}#if( $foreach.hasNext ),#end
+
+      #end
+    )
+  }
+
+  implicit def change${upperTable}RowSeqTo${upperTable}DataSeq(data: Seq[${upperTable}Row]): Seq[${upperTable}Data] = {
+    data.map(a => change${upperTable}RowTo${upperTable}Data(a))
+  }
+
+  implicit def change${upperTable}DataSeqTo${upperTable}RowSeq(data: Seq[${upperTable}Data]): Seq[${upperTable}Row] = {
+    data.map(a => change${upperTable}DataTo${upperTable}Row(a))
+  }
+
+
+  implicit val ${upperTable}DataFormat = Json.format[${upperTable}Data]
+  implicit val ${upperTable}ReadFormat = Json.using[Json.WithDefaultValues].format[${upperTable}Read]
+  implicit val ${upperTable}ListReadFormat = Json.format[${upperTable}ListRead]
+  implicit val Re${upperTable}Format = Json.format[Re${upperTable}]
+}

@@ -18,6 +18,9 @@ system-devops目前包含2个模块，system-devops-web, system-devops-backend
     1.2 主要模块xxx
 
 2、system-devops-backend
-    2.1 暂无
+    2.1 主要做devops的后台，目前代码功能暂时没有完全cover
 
+3、system-devops-autogen and system-devops-automain
+    3.1 自动生成scala，playframework项目crud业务代码
+    3.2 增量更新system-devops-autogen这个项目
 ~~~

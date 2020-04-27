@@ -1,0 +1,26 @@
+package controllers
+
+import javax.inject.{Inject, Singleton}
+
+import io.swagger.annotations._
+import models.${upperTable}Sqler
+import play.api.libs.ws._
+import play.api.mvc.ControllerComponents
+import play.api.{Configuration, Environment}
+import auto.${upperTable}._
+import io.swagger.annotations._
+import scala.concurrent.ExecutionContext
+
+#foreach( $one in $tableInfo.getJsonColumns() )
+case class ${upperTable}${one.getUpperName()}(a: Int = 1)
+#end
+
+@Api("${lowerTable}")
+@Singleton
+class ${upperTable}Controller @Inject()(${lowerTable}Spler: ${upperTable}Sqler,
+                                ws: WSClient, environment: Environment, apiAction: ApiAction,
+                                config: Configuration, cc: ControllerComponents)(implicit executionContext: ExecutionContext)
+  extends Inner${upperTable}Controller(${lowerTable}Spler, ws, environment, apiAction, config, cc)(executionContext) {
+
+
+}

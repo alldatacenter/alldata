@@ -1,0 +1,7 @@
+#autorouters-start-${lowerTable}
+GET         /v1/${lowerTable}#foreach( $one in $tableInfo.getPkColumns() )/:${one.getLowerName()}#end                   controllers.${upperTable}Controller.getOne(#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end)
+POST        /v1/${lowerTable}/list                  controllers.${upperTable}Controller.getList()
+POST        /v1/${lowerTable}/create#if( !${tableInfo.isAutoTable()} )#foreach( $one in $tableInfo.getPkColumns() )/:${one.getLowerName()}#end#end                controllers.${upperTable}Controller.add${upperTable}(#if( !${tableInfo.isAutoTable()} )#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end#end)
+POST        /v1/${lowerTable}/update#foreach( $one in $tableInfo.getPkColumns() )/:${one.getLowerName()}#end            controllers.${upperTable}Controller.update${upperTable}(#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end)
+POST        /v1/${lowerTable}/delete#foreach( $one in $tableInfo.getPkColumns() )/:${one.getLowerName()}#end            controllers.${upperTable}Controller.delete${upperTable}(#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end)
+#autorouters-end-${lowerTable}

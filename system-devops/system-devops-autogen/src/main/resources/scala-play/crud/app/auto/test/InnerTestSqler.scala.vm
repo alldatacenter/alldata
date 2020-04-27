@@ -1,0 +1,119 @@
+package auto.${upperTable}
+
+import java.sql.Timestamp
+
+import auto.${upperTable}._
+import auto.${upperTable}.${upperTable}Tables._
+import controllers._
+import org.slf4j.{Logger, LoggerFactory}
+import play.api.db.slick.HasDatabaseConfigProvider
+import slick.jdbc.JdbcProfile
+import slick.jdbc.MySQLProfile.api._
+
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
+
+trait Inner${upperTable}Sqler extends HasDatabaseConfigProvider[JdbcProfile] with ${upperTable}JsonFormat {
+
+  val logger: Logger = LoggerFactory.getLogger("application")
+
+  def findBy${tableInfo.getPkJoinNames()}Sync(#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end): Seq[${upperTable}Data] = {
+    val action = ${upperTable}#foreach( $one in $tableInfo.getPkColumns() )
+.filter(_.${one.getLowerName()} === ${one.getLowerName()})#end.result
+    val list = Await.result(db.run(action), 5 seconds)
+    list
+  }
+
+
+  def findList(read: ${upperTable}ListRead): Seq[${upperTable}Data] = {
+    val where = if (read.where.isDefined && read.where.get.nonEmpty) s"where ${read.where.get}" else ""
+    val order = if (read.order.isDefined && read.order.get.nonEmpty) s" order by ${read.order.get} " else "order by  #foreach( $one in $tableInfo.getPkColumns() )${one.getName()} #if( $foreach.hasNext ),#end#end desc"
+    val offset = read.offset
+    val limit = read.limit
+    val querySql = s""" select * from ${table} $where $order limit $limit offset $offset  """
+    logger.info(s"query sql: $querySql")
+    checkSqlSecure(querySql)
+    val action = sql"#$querySql".as[${upperTable}Row]
+    val list = Await.result(db.run(action), 5 seconds)
+    list
+  }
+
+  val forbidKeyword = Array(";", "insert", "delete", "update", "drop", "alter", "join")
+
+  def checkSqlSecure(sql: String) = {
+    val checkSql = sql.toLowerCase
+    forbidKeyword.map(word => {
+      if (checkSql.contains(word)) throw new Exception(s"not allow ${word} query")
+    })
+  }
+
+#if( ${tableInfo.isAutoTable()} )
+  def add${upperTable}(read: ${upperTable}Read): Future[Int] = {
+    val ts = new Timestamp(System.currentTimeMillis())
+    val row = ${upperTable}Row(
+      0, ts, ts,
+      #foreach( $one in $tableInfo.getNoPkColumns() )
+        read.${one.getLowerName()}#if( $foreach.hasNext ),#end
+
+      #end
+    )
+    val action = (${upperTable} returning ${upperTable}.map(_.${tableInfo.getFirstPkColumn().getLowerName()})).+=(row)
+    db.run(action)
+  }
+#else
+  def add${upperTable}(#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()},#end read: ${upperTable}Read): Future[Int] = {
+    val ts = new Timestamp(System.currentTimeMillis())
+    val row = ${upperTable}Row(
+      #foreach( $one in $tableInfo.getPkColumns() )${one.getLowerName()},#end ts, ts,
+      #foreach( $one in $tableInfo.getNoPkColumns() )
+        read.${one.getLowerName()}#if( $foreach.hasNext ),#end
+
+      #end
+    )
+    val action = ${upperTable}.+=(row)
+    db.run(action)
+  }
+#end
+
+
+  def update${upperTable}(
+  #foreach( $one in $tableInfo.getPkColumns() )
+    ${one.getScalaParams()},
+  #end
+                   read: ${upperTable}Read): Future[Int] = {
+    val ts = new Timestamp(System.currentTimeMillis())
+    val action = ${upperTable}
+    #foreach( $one in $tableInfo.getPkColumns() )
+      .filter(_.${one.getLowerName()} === ${one.getLowerName()})
+    #end
+      .map(read => (
+        read.updateTime,
+    #foreach( $one in $tableInfo.getNoPkColumns() )
+      read.${one.getLowerName()}#if( $foreach.hasNext ),#end
+
+    #end
+      ))
+      .update(
+        ts,
+        #foreach( $one in $tableInfo.getNoPkColumns() )
+          read.${one.getLowerName()}#if( $foreach.hasNext ),#end
+
+        #end
+      )
+    action.statements.foreach(println)
+    db.run(action)
+  }
+
+  def delete${upperTable}(
+  #foreach( $one in $tableInfo.getPkColumns() )
+    ${one.getScalaParams()}#if( $foreach.hasNext ),#end
+  #end
+                 ): Future[Int] = {
+    val action = ${upperTable}
+    #foreach( $one in $tableInfo.getPkColumns() )
+      .filter(_.${one.getLowerName()} === ${one.getLowerName()})
+    #end
+      .delete
+    db.run(action)
+  }
+}

@@ -1,0 +1,115 @@
+package auto.${upperTable}
+
+import controllers._
+import io.swagger.annotations.{ApiImplicitParam, ApiImplicitParams, ApiOperation}
+import models.${upperTable}Sqler
+import org.slf4j.{Logger, LoggerFactory}
+import play.api.libs.json.Json
+import play.api.libs.ws.WSClient
+import play.api.mvc.{AbstractController, ControllerComponents}
+import play.api.{Configuration, Environment}
+
+import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.duration.Duration
+
+
+case class ${upperTable}Read(
+#foreach( $one in $tableInfo.getNoPkColumns() )
+  ${one.getScalaDefine()}#if( $foreach.hasNext ),#end
+
+#end
+                    )
+
+case class ${upperTable}Data(
+#foreach( $one in $tableInfo.getAllColumns() )
+  ${one.getScalaDefine()}#if( $foreach.hasNext ),#end
+
+#end
+                    )
+
+case class Re${upperTable}(isSuccess: Boolean = true, data: List[${upperTable}Data] = List[${upperTable}Data]())
+
+case class ${upperTable}ListRead(where: Option[String], order: Option[String], offset: Int = 0, limit: Int = 100)
+
+
+/**
+  * Created by wulinhao on 2020/04/12.
+  */
+abstract class Inner${upperTable}Controller(${lowerTable}Spler: ${upperTable}Sqler,
+                                    ws: WSClient, environment: Environment, apiAction: ApiAction,
+                                    config: Configuration, cc: ControllerComponents)(implicit executionContext: ExecutionContext) extends AbstractController(cc) with ${upperTable}JsonFormat {
+  val duration = Duration("5000 sec")
+  val appLogger: Logger = LoggerFactory.getLogger("application")
+
+  @ApiImplicitParams(Array(
+    new ApiImplicitParam(
+      dataType = "auto.${upperTable}.${upperTable}Read", value = "body", required = true, paramType = "body"
+    )
+  ))
+  @ApiOperation(value = "add ${upperTable}", response = classOf[ReId])
+  def add${upperTable}(#if( !${tableInfo.isAutoTable()} )#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end#end) = apiAction(parse.json[${upperTable}Read]).async { request =>
+    val read = request.body
+    ${lowerTable}Spler.add${upperTable}(#if( !${tableInfo.isAutoTable()} )
+  #foreach( $one in $tableInfo.getPkColumns() )
+    ${one.getLowerName()},
+  #end
+  #end read).map(item => {
+      Ok(Json.toJson(ReId(data = item)))
+    })
+  }
+
+  @ApiImplicitParams(Array(
+    new ApiImplicitParam(
+      dataType = "auto.${upperTable}.${upperTable}Read", value = "body", required = true, paramType = "body"
+    )
+  ))
+  @ApiOperation(value = "update ${upperTable}", response = classOf[ReId])
+  def update${upperTable}(#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end) = apiAction(parse.json[${upperTable}Read]).async { request =>
+    val read = request.body
+    ${lowerTable}Spler.update${upperTable}(
+      #foreach( $one in $tableInfo.getPkColumns() )
+        ${one.getLowerName()},
+      #end
+      read).map(item => {
+      Ok(Json.toJson(ReId(data = item)))
+    })
+  }
+
+  @ApiOperation(value = "get one ${upperTable}", response = classOf[Re${upperTable}])
+  def getOne(#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end) = apiAction { request =>
+    val read = request.body
+    val list = ${lowerTable}Spler.findBy${tableInfo.getPkJoinNames()}Sync(
+      #foreach( $one in $tableInfo.getPkColumns() )
+        ${one.getLowerName()}#if( $foreach.hasNext ),#end
+      #end
+    )
+    Ok(Json.toJson(Re${upperTable}(data = list.toList)))
+  }
+
+
+  @ApiImplicitParams(Array(
+    new ApiImplicitParam(
+      dataType = "auto.${upperTable}.${upperTable}ListRead", value = "body", required = true, paramType = "body"
+    )
+  ))
+  @ApiOperation(value = "query ${upperTable} list", response = classOf[Re${upperTable}])
+  def getList() = apiAction(parse.json[${upperTable}ListRead]) {
+    request =>
+      val read = request.body
+      val list = ${lowerTable}Spler.findList(read)
+      Ok(Json.toJson(Re${upperTable}(data = list.toList)))
+  }
+
+  @ApiOperation(value = "delete ${upperTable}", response = classOf[ReId])
+  def delete${upperTable}(#foreach( $one in $tableInfo.getPkColumns() )${one.getScalaParams()}#if( $foreach.hasNext ),#end#end) = apiAction.async {
+    request =>
+      ${lowerTable}Spler.delete${upperTable}(
+        #foreach( $one in $tableInfo.getPkColumns() )
+          ${one.getLowerName()}#if( $foreach.hasNext ),#end
+        #end
+      ).map(item => {
+        Ok(Json.toJson(ReId(data = item)))
+      })
+  }
+
+}

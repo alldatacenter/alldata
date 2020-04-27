@@ -1,0 +1,52 @@
+package auto.${upperTable}
+
+
+object ${upperTable}Tables extends {
+  val profile = slick.jdbc.MySQLProfile
+
+  import profile.api._
+  import slick.model.ForeignKeyAction
+  import slick.jdbc.{GetResult => GR}
+
+  lazy val schema: profile.SchemaDescription = ${upperTable}.schema
+
+  @deprecated("Use .schema instead of .ddl", "3.0")
+  def ddl = schema
+
+
+  final case class ${upperTable}Row(
+  #foreach( $one in $tableInfo.getAllColumns() )
+    ${one.getScalaSqlDefine()}#if( $foreach.hasNext ),#end
+
+  #end
+                                   )
+
+  /** GetResult implicit for fetching ${upperTable}Row objects using plain SQL queries */
+  implicit def GetResult${upperTable}Row(implicit e0: GR[Int],e1: GR[Option[Int]], e2: GR[java.sql.Timestamp],e3: GR[Option[java.sql.Timestamp]], e4: GR[String], e5: GR[Option[String]]): GR[${upperTable}Row] = GR {
+    prs =>
+      import prs._
+      ${upperTable}Row.tupled((
+        #foreach( $one in $tableInfo.getAllColumns() )
+          ${one.getScalaGR()}#if( $foreach.hasNext ),#end
+
+        #end
+      ))
+  }
+
+  /** Table description of table ${upperTable}. Objects of this class serve as prototypes for rows in queries. */
+  class ${upperTable}(_tableTag: Tag) extends profile.api.Table[${upperTable}Row](_tableTag, "${table}") {
+    def * = (
+    #foreach( $one in $tableInfo.getAllColumns() )
+      ${one.getLowerName()}#if( $foreach.hasNext ),#end
+
+    #end
+    ) <> (${upperTable}Row.tupled, ${upperTable}Row.unapply)
+
+    #foreach( $one in $tableInfo.getAllColumns() )
+      ${one.getScalaFieldDefine()}
+
+    #end
+  }
+
+  lazy val ${upperTable} = new TableQuery(tag => new ${upperTable}(tag))
+}
