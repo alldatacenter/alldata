@@ -6,72 +6,88 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="compute-mr" />
-        <module name="compute-realtime" />
-        <module name="data-import-export" />
-        <module name="data-insight" />
-        <module name="dubbo-service-Impl" />
-        <module name="dubbo-service-interface" />
-        <module name="log-collect-client" />
-        <module name="log-collect-server" />
-        <module name="mall-manage-service" />
-        <module name="mall-search-service" />
-        <module name="mall-shopping-app" />
         <module name="mall-shopping-app-service" />
-        <module name="mall-shopping-pc" />
-        <module name="mall-shopping-pc-service" />
-        <module name="mall-shopping-service" />
-        <module name="mall-shopping-wc" />
-        <module name="multi-dimension-analysis" />
-        <module name="system-ad" />
-        <module name="system-alarm-platform" />
-        <module name="system-anti-cheating" />
-        <module name="system-api-gateway" />
-        <module name="system-apm" />
-        <module name="system-config" />
-        <module name="system-deploy" />
-        <module name="system-devops" />
-        <module name="system-elk" />
+        <module name="system-devops-autogen" />
+        <module name="mall-search-service" />
         <module name="system-recommender" />
-        <module name="system-report-analysis" />
-        <module name="system-search" />
-        <module name="system-tasksubmit" />
+        <module name="mall-manage-service" />
+        <module name="log-collect-server" />
+        <module name="mall-shopping-pc" />
+        <module name="mr-website-view" />
         <module name="systemconfig" />
-        <module name="task-ops" />
+        <module name="dubbo-service-interface" />
+        <module name="mall-shopping-app" />
+        <module name="system-api-gateway" />
+        <module name="system-alarm-platform" />
+        <module name="flink-uv-pv" />
+        <module name="log-collect-client" />
+        <module name="data-insight" />
+        <module name="mall-shopping-wc" />
+        <module name="mr-website-analyse" />
+        <module name="system-report-analysis" />
+        <module name="system-config" />
+        <module name="system-search" />
+        <module name="system-devops-automain" />
+        <module name="system-elk" />
+        <module name="mr-website-sdk" />
+        <module name="system-apm" />
+        <module name="system-tasksubmit" />
+        <module name="compute-realtime-view" />
+        <module name="data-import-export" />
+        <module name="mall-wechat-applet" />
+        <module name="system-deploy" />
+        <module name="mall-shopping-service" />
+        <module name="system-anti-cheating" />
         <module name="task-schedular" />
+        <module name="system-ad" />
+        <module name="dubbo-service-Impl" />
+        <module name="compute-realtime-spark" />
+        <module name="task-ops" />
+        <module name="mall-shopping-pc-service" />
+        <module name="multi-dimension-analysis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="compute-mr" target="1.8" />
       <module name="compute-realtime" target="1.8" />
+      <module name="compute-realtime-spark" target="1.8" />
+      <module name="compute-realtime-view" target="1.8" />
       <module name="data-face" target="1.8" />
       <module name="data-import-export" target="1.8" />
       <module name="data-insight" target="1.8" />
-      <module name="dubbo-service" target="1.8" />
+      <module name="dubbo-service" target="1.5" />
       <module name="dubbo-service-Impl" target="1.8" />
       <module name="dubbo-service-interface" target="1.8" />
+      <module name="flink-uv-pv" target="8" />
       <module name="log-collect-client" target="1.8" />
       <module name="log-collect-server" target="1.8" />
       <module name="mall-admin-service" target="1.8" />
       <module name="mall-admin-web" target="1.8" />
       <module name="mall-manage-service" target="1.8" />
+      <module name="mall-mobile" target="1.8" />
       <module name="mall-search-service" target="1.8" />
-      <module name="mall-shopping-app" target="1.8" />
+      <module name="mall-shopping-app" target="1.7" />
       <module name="mall-shopping-app-service" target="1.8" />
       <module name="mall-shopping-mobile" target="1.8" />
       <module name="mall-shopping-pc" target="1.8" />
       <module name="mall-shopping-pc-service" target="1.8" />
       <module name="mall-shopping-service" target="1.8" />
       <module name="mall-shopping-wc" target="1.8" />
+      <module name="mall-wechat-applet" target="1.8" />
+      <module name="mr-website-analyse" target="1.7" />
+      <module name="mr-website-sdk" target="1.7" />
+      <module name="mr-website-view" target="1.7" />
       <module name="multi-dimension-analysis" target="1.8" />
       <module name="system-ad" target="1.8" />
-      <module name="system-alarm-platform" target="1.8" />
+      <module name="system-alarm-platform" target="1.7" />
       <module name="system-anti-cheating" target="1.8" />
-      <module name="system-api-gateway" target="1.8" />
+      <module name="system-api-gateway" target="1.7" />
       <module name="system-apm" target="1.8" />
-      <module name="system-config" target="1.8" />
+      <module name="system-config" target="1.7" />
       <module name="system-deploy" target="1.8" />
-      <module name="system-devops" target="1.8" />
+      <module name="system-devops" target="1.7" />
+      <module name="system-devops-autogen" target="1.8" />
+      <module name="system-devops-automain" target="1.8" />
       <module name="system-elk" target="1.8" />
       <module name="system-recommender" target="1.8" />
       <module name="system-report-analysis" target="1.8" />
