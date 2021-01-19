@@ -1,0 +1,27 @@
+.card {
+    display: inline-block;
+    width: 18%;
+    height: 350px;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 25%;
+}
+
+.name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+
+.a-name{
+    text-decoration: none;
+    color: black;
+}
+
+.a-name:hover {
+    text-decoration: underline;
+    color: red;
+}

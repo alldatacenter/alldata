@@ -1,0 +1,134 @@
+
+.itemcard {
+    width: 150px;
+    display: inline-block;
+    margin-right: 10px;
+    height: 300px;
+}
+
+
+.artical {
+    width: 675px;
+}
+
+.wrapper{
+    width: 900px;
+    margin: 0 auto;
+    position: relative
+}
+
+.screening-hd {
+
+}
+.screening {
+    margin-bottom: 36px;
+}
+
+.screening-bd {
+    overflow: hidden;
+    position: relative;
+    height: 270px;
+    margin-bottom: 30px;
+}
+
+.itemimage {
+    width: 115px;
+    height: 160px;
+    margin-bottom: 2px;
+}
+
+.name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+
+.more {
+    font: 13px Arial, Helvetica, sans-serif;
+    margin-left: 12px;
+    text-decoration: none;
+    color: #3377AA;
+    cursor: pointer;
+}
+
+.a-name{
+    text-decoration: none;
+    color: black;
+}
+
+.a-name:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+.itemrate {
+    width: 30px;    
+}
+
+.el-rate {
+    display: inline-flex;    
+}
+h2 {
+    font: 16px Arial, Helvetica, sans-serif;
+    color: #111;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 18px;
+    line-height: 150%;
+}
+
+.products{
+    margin-right: 10px;    
+}
+
+table {
+    border-collapse: collapse;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.aside {
+  width: 300px;
+  position: absolute;
+  top: -13px;
+  right: -250px;
+  float: right;  
+}
+
+.billboard {
+    display: inline-block;
+
+}
+
+.billboard-hd {
+    font: 15px Arial, Helvetica, sans-serif;
+}
+
+table {
+    font-size: 10px;
+}
+
+td {
+    border-bottom: 1px solid #eaeaea;
+    padding: 7px 0;
+    font-size: 13px;
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.order {
+    width: 20px;
+    font-size: 9px;
+    text-align: center;    
+}
+
+
+.title{
+    width: 290px;
+}
+
+.itemname {
+    color: #3377AA;
+    font-size: 13px;    
+}

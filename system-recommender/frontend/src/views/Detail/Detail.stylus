@@ -1,0 +1,69 @@
+.info {
+    width: 80%;
+    display: inline-block;
+}
+
+.card {
+    display: inline-block;
+    width: 18%;
+    height: 350px;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 25%;
+}
+
+.name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+
+
+.a-name{
+    text-decoration: none;
+    color: black;
+}
+
+.a-name:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+.screening-bd {
+    overflow: hidden;
+    position: relative;
+    height: 270px;
+    margin-bottom: 30px;
+}
+
+.itemimage {
+    width: 115px;
+    height: 160px;
+    margin-bottom: 2px;
+}
+
+
+.itemcard {
+    width: 150px;
+    display: inline-block;
+    margin-right: 10px;
+    height: 300px;
+}
+
+.itemrate {
+    width: 30px;    
+}
+
+.screening-bd {
+    overflow: hidden;
+    position: relative;
+    height: 270px;
+    margin-bottom: 30px;
+}
+
+.itemdetail {
+    text-align: center;
+}

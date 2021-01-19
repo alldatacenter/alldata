@@ -1,0 +1,17 @@
+server:
+  port: 9900
+spring:
+  datasource:
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://node02:3306/recommend?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    show-sql: true
+    properties:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      format_sql: true
