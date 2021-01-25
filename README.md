@@ -315,5 +315,6 @@ system-tasksubmit: 任务提交平台
          https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92v1.0.png
  
 13 技术交流：
+     
      微信交流群：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/wechat_group/bdp_%E4%BA%A4%E6%B5%81%E7%BE%A4.jpg
      个人微信：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/wechat/%E5%BE%AE%E4%BF%A1.jpg
