@@ -1,7 +1,9 @@
-# 1、数据平台介绍 
+# 总项目 https://github.com/wlhbdp/bdp-ecology
+# 0、大数据生态解决方案数据平台 
+
 ~~~markdown
 数据平台:
-	BigDataPlatform：基于大数据、数据平台、微服务、机器学习、商城、自动化运维、DevOps、容器部署平台、数据平台采集、数据平台存储、数据平台计算、数据平台开发、数据平台应用搭建的大数据解决方案。
+	bdp-dataplatform：基于大数据、数据平台、微服务、机器学习、商城、自动化运维、DevOps、容器部署平台、数据平台采集、数据平台存储、数据平台计算、数据平台开发、数据平台应用搭建的大数据解决方案。
 数据来源：
 	商城：使用SpringBoot，Java，Vue，React，Android开发多端商城，包括网站、App、微信小程序；
 	日志：使用Java开发服务端日志、客户端日志收集系统，使用DataX实现数据的导入导出系统；
@@ -216,6 +218,7 @@ system-tasksubmit: 任务提交平台
  10.2 启动dubbo-service项目，配置tomcat端口为8091
 
  https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/61.png
+ 
  10.3 启动商城项目的多个子系统
 
 后台：访问http://localhost:8090
