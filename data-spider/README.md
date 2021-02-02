@@ -13,3 +13,27 @@
 # 3. data-spider基本架构图
  https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20200304/data-spider.png
 
+# 4. 启动脚本
+
+    django搜索服务
+    source /usr/local/python-3.6.2/envs/scrapytest/bin/activate
+    cd /usr/local/scrapy/search
+    python3 manage.py runserver 0.0.0.0:8000
+    
+    #启动scrapy后台服务
+    cd /usr/local/scrapy/spider
+    /usr/local/python-3.6.2/envs/scrapytest/bin/scrapyd &
+    
+    #查看scrapyd
+    netstat -tlnp | grep 6800
+    
+    #部署spider到scrapy
+    /usr/local/python-3.6.2/envs/scrapytest/bin/scrapyd-deploy Myploy -p ArticleSpider
+    
+    #启动爬虫
+    curl http://120.77.155.220:6800/schedule.json -d project=ArticleSpider -d spider=zhihu
+    curl http://120.77.155.220:6800/schedule.json -d project=ArticleSpider -d spider=lagou
+    curl http://120.77.155.220:6800/schedule.json -d project=ArticleSpider -d spider=jobbole
+
+
+
