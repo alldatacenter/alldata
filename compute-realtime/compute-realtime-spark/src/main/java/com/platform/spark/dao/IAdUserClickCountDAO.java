@@ -6,7 +6,7 @@ import com.platform.spark.domain.AdUserClickCount;
 
 /**
  * 用户广告点击量DAO接口
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public interface IAdUserClickCountDAO {

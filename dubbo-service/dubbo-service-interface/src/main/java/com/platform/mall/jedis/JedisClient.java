@@ -3,7 +3,7 @@ package com.platform.mall.jedis;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface JedisClient {
 

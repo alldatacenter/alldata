@@ -4,7 +4,7 @@ package com.platform.mall.service;
 import com.platform.mall.dto.front.Member;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface LoginService {
 

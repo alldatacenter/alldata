@@ -1,7 +1,7 @@
-package com.platform.task.function;
+package com.platform.schedule.function;
 
-import com.platform.task.entity.RecommendEntity;
-import com.platform.task.entity.RecommendReduceEntity;
+import com.platform.schedule.entity.RecommendEntity;
+import com.platform.schedule.entity.RecommendReduceEntity;
 import org.apache.flink.api.common.functions.ReduceFunction;
 
 import java.util.Collections;

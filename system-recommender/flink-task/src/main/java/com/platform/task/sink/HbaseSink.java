@@ -1,6 +1,6 @@
-package com.platform.task.sink;
+package com.platform.schedule.sink;
 
-import com.platform.task.util.Property;
+import com.platform.schedule.entity.Property;
 import org.apache.flink.api.common.io.OutputFormat;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;

@@ -4,7 +4,7 @@ import org.apache.spark.sql.api.java.UDF1;
 
 /**
  * 去除随机前缀
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class RemoveRandomPrefixUDF implements UDF1<String, String> {

@@ -4,7 +4,7 @@ import com.platform.spark.conf.ConfigurationManager;
 
 /**
  * 配置管理组件测试类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class ConfigurationManagerTest {

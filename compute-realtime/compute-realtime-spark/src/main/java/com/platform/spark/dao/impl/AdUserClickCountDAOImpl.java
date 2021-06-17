@@ -11,7 +11,7 @@ import com.platform.spark.model.AdUserClickCountQueryResult;
 
 /**
  * 用户广告点击量DAO实现类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class AdUserClickCountDAOImpl implements IAdUserClickCountDAO {

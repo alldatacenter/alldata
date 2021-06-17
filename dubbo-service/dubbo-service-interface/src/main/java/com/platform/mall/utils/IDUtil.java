@@ -3,7 +3,7 @@ package com.platform.mall.utils;
 import java.util.Random;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public class IDUtil {
 

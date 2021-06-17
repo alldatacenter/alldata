@@ -1,4 +1,4 @@
-package com.platform.task.function;
+package com.platform.schedule.function;
 
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.common.typeinfo.Types;

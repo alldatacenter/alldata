@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * 时间维度信息类
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class DateDimension extends BaseDimension {

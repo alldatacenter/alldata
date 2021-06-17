@@ -1,6 +1,6 @@
-package com.platform.task.datasource;
+package com.platform.schedule.datasource;
 
-import com.platform.task.util.Property;
+import com.platform.schedule.entity.Property;
 import org.apache.flink.addons.hbase.TableInputFormat;
 import org.apache.flink.api.java.tuple.Tuple4;
 import org.apache.flink.configuration.Configuration;

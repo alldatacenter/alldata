@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * 页面切片转化率
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class PageSplitConvertRate {

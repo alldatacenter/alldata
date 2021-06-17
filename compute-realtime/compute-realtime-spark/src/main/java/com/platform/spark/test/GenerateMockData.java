@@ -12,7 +12,7 @@ import com.platform.spark.util.StringUtils;
 
 /**
  * 模拟数据程序
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class GenerateMockData {

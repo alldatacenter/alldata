@@ -9,7 +9,7 @@ import java.sql.Statement;
 /**
  * JDBC增删改查示范类
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 @SuppressWarnings("unused")

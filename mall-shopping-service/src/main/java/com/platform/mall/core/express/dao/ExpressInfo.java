@@ -7,12 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-/**
- * Auto-generated: 2018-07-19 22:27:22
- *
- * @author bejson.com (i@bejson.com)
- * @website http://www.bejson.com/java2pojo/
- */
 public class ExpressInfo {
 
     @JsonProperty("LogisticCode")

@@ -1,12 +1,12 @@
-package com.platform.task.task.online;
+package com.platform.schedule.task.online;
 
-import com.platform.task.entity.RatingEntity;
-import com.platform.task.entity.TopEntity;
-import com.platform.task.function.RatingEntityMap;
-import com.platform.task.function.AggCount;
-import com.platform.task.function.HotProducts;
-import com.platform.task.util.Property;
-import com.platform.task.function.WindowResultFunction;
+import com.platform.schedule.entity.RatingEntity;
+import com.platform.schedule.entity.TopEntity;
+import com.platform.schedule.function.RatingEntityMap;
+import com.platform.schedule.function.AggCount;
+import com.platform.schedule.function.HotProducts;
+import com.platform.schedule.entity.Property;
+import com.platform.schedule.function.WindowResultFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;

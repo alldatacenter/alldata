@@ -12,7 +12,7 @@ import java.net.UnknownHostException;
 
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public class IPInfoUtil {
 

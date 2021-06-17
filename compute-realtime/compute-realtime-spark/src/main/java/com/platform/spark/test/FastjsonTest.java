@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * fastjson测试类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class FastjsonTest {

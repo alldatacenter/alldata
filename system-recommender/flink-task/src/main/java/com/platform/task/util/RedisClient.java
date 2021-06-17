@@ -1,4 +1,4 @@
-package com.platform.task.util;
+package com.platform.schedule.entity;
 
 import redis.clients.jedis.Jedis;
 

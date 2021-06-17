@@ -3,7 +3,7 @@ package com.platform.mall.entity;
 import java.io.Serializable;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public class IpInfo implements Serializable{
 

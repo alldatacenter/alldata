@@ -1,4 +1,4 @@
-package com.platform.task.util;
+package com.platform.schedule.entity;
 
 import java.io.IOException;
 import java.io.InputStream;

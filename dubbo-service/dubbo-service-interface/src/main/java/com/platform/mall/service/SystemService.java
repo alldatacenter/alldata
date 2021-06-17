@@ -9,7 +9,7 @@ import com.platform.mall.entity.TbShiroFilter;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface SystemService {
 

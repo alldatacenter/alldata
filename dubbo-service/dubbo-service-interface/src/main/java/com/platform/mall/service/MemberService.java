@@ -5,7 +5,7 @@ import com.platform.mall.entity.DataTablesResult;
 import com.platform.mall.entity.TbMember;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  * @date 2019/9/11
  */
 public interface MemberService {

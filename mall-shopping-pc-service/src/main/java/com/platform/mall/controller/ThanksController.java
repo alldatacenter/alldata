@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 @RestController
 @Api(description = "捐赠列表")

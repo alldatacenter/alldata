@@ -14,7 +14,7 @@ import org.apache.hadoop.io.Text;
 /**
  * 操作日期dimension 相关的udf
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class DateDimensionUDF extends UDF {

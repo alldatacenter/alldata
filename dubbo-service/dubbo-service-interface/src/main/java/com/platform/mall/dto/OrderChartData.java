@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public class OrderChartData implements Serializable {
 

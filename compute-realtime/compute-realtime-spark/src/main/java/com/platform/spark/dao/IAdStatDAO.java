@@ -6,7 +6,7 @@ import com.platform.spark.domain.AdStat;
 
 /**
  * 广告实时统计DAO接口
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public interface IAdStatDAO {

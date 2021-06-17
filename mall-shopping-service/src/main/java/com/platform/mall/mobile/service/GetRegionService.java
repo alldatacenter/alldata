@@ -7,10 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * @author zhy
- * @date 2019-01-17 23:07
- **/
 @Component
 public class GetRegionService {
 

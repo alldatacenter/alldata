@@ -7,7 +7,7 @@ import com.platform.mall.dto.front.CartProduct;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface CartService {
 

@@ -6,7 +6,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * top10品类DAO实现
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class Top10CategoryDAOImpl implements ITop10CategoryDAO {

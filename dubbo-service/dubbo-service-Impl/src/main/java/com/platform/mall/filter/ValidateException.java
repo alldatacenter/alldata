@@ -2,7 +2,7 @@ package com.platform.mall.filter;
 
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  * @ClassName：CustomExceptionFilter
  * @Description：自定义异常
  */

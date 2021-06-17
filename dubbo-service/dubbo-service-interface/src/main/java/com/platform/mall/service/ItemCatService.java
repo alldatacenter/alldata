@@ -6,7 +6,7 @@ import com.platform.mall.entity.TbItemCat;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  * @date 2019/9/2
  */
 public interface ItemCatService {

@@ -6,7 +6,7 @@ import com.platform.spark.domain.AdProvinceTop3;
 
 /**
  * 各省份top3热门广告DAO接口
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public interface IAdProvinceTop3DAO {

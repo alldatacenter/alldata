@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 任务
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class Task implements Serializable {

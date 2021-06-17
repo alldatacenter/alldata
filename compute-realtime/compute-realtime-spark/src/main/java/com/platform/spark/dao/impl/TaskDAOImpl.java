@@ -8,7 +8,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * 任务管理DAO实现类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class TaskDAOImpl implements ITaskDAO {

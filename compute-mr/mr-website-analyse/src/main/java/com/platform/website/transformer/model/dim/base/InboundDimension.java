@@ -9,12 +9,12 @@ import java.io.IOException;
  * 由于我们在代码中不需要进行插入操作(往数据库插入新的数据)，所有最终的mapper端和reducer端通信的时候，只需要传递id即可。
  * 
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class InboundDimension extends BaseDimension {

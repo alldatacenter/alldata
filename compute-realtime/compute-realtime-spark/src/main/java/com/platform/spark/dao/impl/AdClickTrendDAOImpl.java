@@ -11,7 +11,7 @@ import com.platform.spark.model.AdClickTrendQueryResult;
 
 /**
  * 广告点击趋势DAO实现类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class AdClickTrendDAOImpl implements IAdClickTrendDAO {

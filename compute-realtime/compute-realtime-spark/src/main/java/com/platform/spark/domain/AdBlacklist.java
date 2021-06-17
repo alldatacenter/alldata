@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * 广告黑名单
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class AdBlacklist {

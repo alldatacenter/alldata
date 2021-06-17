@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * top10活跃session
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class Top10Session {

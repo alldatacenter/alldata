@@ -6,7 +6,7 @@ import com.platform.spark.domain.AdClickTrend;
 
 /**
  * 广告点击趋势DAO接口
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public interface IAdClickTrendDAO {

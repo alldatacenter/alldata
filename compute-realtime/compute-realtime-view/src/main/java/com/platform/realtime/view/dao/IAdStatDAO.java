@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 广告实时统计DAO接口
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public interface IAdStatDAO {

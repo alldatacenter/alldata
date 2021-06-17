@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * top10品类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class Top10Category {

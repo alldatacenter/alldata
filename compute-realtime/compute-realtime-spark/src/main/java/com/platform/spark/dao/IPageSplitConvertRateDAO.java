@@ -4,7 +4,7 @@ import com.platform.spark.domain.PageSplitConvertRate;
 
 /**
  * 页面切片转换率DAO接口
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public interface IPageSplitConvertRateDAO {

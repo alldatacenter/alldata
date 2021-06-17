@@ -31,8 +31,6 @@ public class StringUtil {
 	}
 	/**
 	 * 判断是否是空字符串 null和"" 都返回 true
-	 * 
-	 * @author Robin Chang
 	 * @param s
 	 * @return
 	 */
@@ -52,7 +50,6 @@ public class StringUtil {
 	 * @param src
 	 *            输入字符串
 	 * @return 分隔后的list
-	 * @author Robin
 	 */
 	public static List<String> splitToList(String split, String src) {
 		// 默认,

@@ -1,7 +1,7 @@
 /**
  * hive相关类&文件
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 package com.platform.website.transformer.hive;

@@ -1,7 +1,7 @@
 /**
  * 统计order相关文件
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 package com.platform.website.transformer.hive.order;

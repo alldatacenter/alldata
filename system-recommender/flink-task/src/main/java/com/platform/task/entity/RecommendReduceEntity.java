@@ -1,4 +1,4 @@
-package com.platform.task.entity;
+package com.platform.schedule.entity;
 
 import java.util.ArrayList;
 

@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.platform</groupId>
-  <artifactId>bdp-dataplatform</artifactId>
+  <artifactId>bdp-platform</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>bdp-dataplatform Maven Webapp</name>
+  <name>bdp-platform Maven Webapp</name>
   <url>http://www.example.com</url>
 
   <properties>
@@ -28,7 +28,7 @@
   </dependencies>
 
   <build>
-    <finalName>bdp-dataplatform</finalName>
+    <finalName>bdp-platform</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

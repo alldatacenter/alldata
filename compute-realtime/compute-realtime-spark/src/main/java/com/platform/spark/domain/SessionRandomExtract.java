@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * 随机抽取的session
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class SessionRandomExtract {

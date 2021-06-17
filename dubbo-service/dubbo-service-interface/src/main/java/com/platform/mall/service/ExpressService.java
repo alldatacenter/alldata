@@ -7,7 +7,7 @@ import com.platform.mall.entity.TbExpress;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface ExpressService {
 

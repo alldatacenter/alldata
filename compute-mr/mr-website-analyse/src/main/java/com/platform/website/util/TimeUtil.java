@@ -13,7 +13,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * 时间控制工具类
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class TimeUtil {

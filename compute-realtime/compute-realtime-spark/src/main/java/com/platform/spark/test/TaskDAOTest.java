@@ -6,7 +6,7 @@ import com.platform.spark.domain.Task;
 
 /**
  * 任务管理DAO测试类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class TaskDAOTest {

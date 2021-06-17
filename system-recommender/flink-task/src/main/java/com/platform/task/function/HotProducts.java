@@ -1,7 +1,7 @@
-package com.platform.task.function;
+package com.platform.schedule.function;
 
-import com.platform.task.util.HbaseClient;
-import com.platform.task.entity.TopEntity;
+import com.platform.schedule.entity.HbaseClient;
+import com.platform.schedule.entity.TopEntity;
 import com.sun.jmx.snmp.Timestamp;
 import org.apache.flink.api.common.state.ListState;
 import org.apache.flink.api.common.state.ListStateDescriptor;

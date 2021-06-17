@@ -9,7 +9,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * 各区域top3热门商品DAO实现类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class AreaTop3ProductDAOImpl implements IAreaTop3ProductDAO {

@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 
 /**
  * 实现操作dimension类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class DimensionConverterImpl implements IDimensionConverter {

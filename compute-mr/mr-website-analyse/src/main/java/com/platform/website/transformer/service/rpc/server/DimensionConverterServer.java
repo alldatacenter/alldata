@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 /**
  * IDimensionConverter服务接口的启动类
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class DimensionConverterServer {

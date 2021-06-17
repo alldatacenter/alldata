@@ -5,7 +5,7 @@ import com.platform.mall.entity.TbAddress;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface AddressService {
 

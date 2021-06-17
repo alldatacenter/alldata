@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 @RestController
 @Api(description = "商品页面展示")

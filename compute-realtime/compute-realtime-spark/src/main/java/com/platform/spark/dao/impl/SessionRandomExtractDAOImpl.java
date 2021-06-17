@@ -6,7 +6,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * 随机抽取session的DAO实现
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class SessionRandomExtractDAOImpl implements ISessionRandomExtractDAO {

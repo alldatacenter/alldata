@@ -1,11 +1,11 @@
-package com.platform.task.task.offline;
+package com.platform.schedule.task.offline;
 
-import com.platform.task.datasource.HbaseTableSource;
-import com.platform.task.entity.RecommendEntity;
-import com.platform.task.entity.RecommendReduceEntity;
-import com.platform.task.function.CalculateSimilarityMapFunction;
-import com.platform.task.function.RecommendEntityMapFunction;
-import com.platform.task.function.ReduceRecommend;
+import com.platform.schedule.datasource.HbaseTableSource;
+import com.platform.schedule.entity.RecommendEntity;
+import com.platform.schedule.entity.RecommendReduceEntity;
+import com.platform.schedule.function.CalculateSimilarityMapFunction;
+import com.platform.schedule.function.RecommendEntityMapFunction;
+import com.platform.schedule.function.ReduceRecommend;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.typeinfo.Types;

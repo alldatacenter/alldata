@@ -7,7 +7,7 @@ import com.alibaba.dubbo.rpc.Result;
 import com.alibaba.dubbo.rpc.RpcException;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  * @ClassName：CustomExceptionFilter
  * @Description：dubbo自定义异常处理
  */

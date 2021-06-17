@@ -5,7 +5,7 @@ import org.apache.hadoop.io.WritableComparable;
 /**
  * 顶级的维度信息类
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public abstract class BaseDimension implements WritableComparable<BaseDimension>{

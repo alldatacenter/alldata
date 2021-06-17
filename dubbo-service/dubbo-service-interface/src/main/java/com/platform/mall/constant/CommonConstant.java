@@ -3,7 +3,7 @@ package com.platform.mall.constant;
 
 /**
  * 常量
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface CommonConstant {
 

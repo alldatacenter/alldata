@@ -4,7 +4,7 @@ package com.platform.mall.dto;
 import java.io.Serializable;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public class RoleDto implements Serializable{
 

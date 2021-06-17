@@ -7,7 +7,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * JDBC辅助组件测试类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 @SuppressWarnings("unused")

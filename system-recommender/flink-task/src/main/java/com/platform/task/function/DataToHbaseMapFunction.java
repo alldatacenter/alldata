@@ -1,7 +1,7 @@
-package com.platform.task.function;
+package com.platform.schedule.function;
 
-import com.platform.task.util.HbaseClient;
-import com.platform.task.entity.RatingEntity;
+import com.platform.schedule.entity.HbaseClient;
+import com.platform.schedule.entity.RatingEntity;
 import org.apache.flink.api.common.functions.MapFunction;
 
 public class DataToHbaseMapFunction implements MapFunction<RatingEntity, RatingEntity> {

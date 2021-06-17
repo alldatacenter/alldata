@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 意见反馈服务
- *
- * @author Yogeek
- * @date 2018/8/25 14:10
  */
 @RestController
 @RequestMapping("/wx/feedback")

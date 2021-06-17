@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * 用户广告点击量
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class AdUserClickCount {

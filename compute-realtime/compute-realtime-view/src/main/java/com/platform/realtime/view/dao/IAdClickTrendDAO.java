@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 广告点击趋势DAO接口
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public interface IAdClickTrendDAO {

@@ -6,7 +6,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * session聚合统计DAO实现类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class SessionAggrStatDAOImpl implements ISessionAggrStatDAO {

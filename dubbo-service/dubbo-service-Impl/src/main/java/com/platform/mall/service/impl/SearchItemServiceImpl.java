@@ -27,7 +27,7 @@ import java.util.List;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 @Service
 public class SearchItemServiceImpl implements SearchItemService {

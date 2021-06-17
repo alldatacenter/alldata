@@ -1,8 +1,8 @@
-package com.platform.task.task.dataloader;
+package com.platform.schedule.task.dataloader;
 
-import com.platform.task.entity.RatingEntity;
-import com.platform.task.function.DataToHbaseMapFunction;
-import com.platform.task.util.Property;
+import com.platform.schedule.entity.RatingEntity;
+import com.platform.schedule.function.DataToHbaseMapFunction;
+import com.platform.schedule.entity.Property;
 import org.apache.flink.api.java.io.CsvInputFormat;
 import org.apache.flink.api.java.io.PojoCsvInputFormat;
 import org.apache.flink.api.java.typeutils.PojoTypeInfo;

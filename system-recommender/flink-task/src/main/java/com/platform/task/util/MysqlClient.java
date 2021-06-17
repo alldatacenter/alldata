@@ -1,7 +1,7 @@
-package com.platform.task.util;
+package com.platform.schedule.entity;
 
-import com.platform.task.entity.ProductEntity;
-import com.platform.task.entity.RatingEntity;
+import com.platform.schedule.entity.ProductEntity;
+import com.platform.schedule.entity.RatingEntity;
 
 import java.sql.*;
 

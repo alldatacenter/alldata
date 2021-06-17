@@ -1,6 +1,6 @@
-package com.platform.task.datasource;
+package com.platform.schedule.datasource;
 
-import com.platform.task.util.Property;
+import com.platform.schedule.entity.Property;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.source.RichSourceFunction;

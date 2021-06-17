@@ -2,7 +2,7 @@ package com.platform.spark.model;
 
 /**
  * 广告点击趋势查询结果
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class AdClickTrendQueryResult {

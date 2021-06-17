@@ -19,7 +19,7 @@ import java.util.List;
  * 比如“张三”、“com.mysql.jdbc.Driver”
  * 所有这些东西，都需要通过常量来封装和使用
  *
- * @author wulinhao
+ * @author wlhbdp
  */
 public class JDBCHelper {
 
@@ -276,7 +276,7 @@ public class JDBCHelper {
     /**
      * 静态内部类：查询回调接口
      *
-     * @author wulinhao
+     * @author wlhbdp
      */
     public static interface QueryCallback {
 

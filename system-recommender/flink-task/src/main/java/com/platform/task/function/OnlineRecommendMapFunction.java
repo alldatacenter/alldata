@@ -1,8 +1,8 @@
-package com.platform.task.function;
+package com.platform.schedule.function;
 
-import com.platform.task.util.HbaseClient;
-import com.platform.task.util.RedisClient;
-import com.platform.task.entity.RecommendEntity;
+import com.platform.schedule.entity.HbaseClient;
+import com.platform.schedule.entity.RedisClient;
+import com.platform.schedule.entity.RecommendEntity;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.operators.Order;

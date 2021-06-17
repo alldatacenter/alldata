@@ -1,4 +1,4 @@
-package com.platform.task.util;
+package com.platform.schedule.entity;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.*;

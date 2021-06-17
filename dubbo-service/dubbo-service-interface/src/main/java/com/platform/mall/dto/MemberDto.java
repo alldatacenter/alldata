@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author wulinhao
+ * @author wlhbdp
  * @date 2019/9/25
  */
 public class MemberDto implements Serializable{

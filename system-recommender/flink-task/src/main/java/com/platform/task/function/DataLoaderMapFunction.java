@@ -1,7 +1,7 @@
-package com.platform.task.function;
+package com.platform.schedule.function;
 
-import com.platform.task.util.MysqlClient;
-import com.platform.task.entity.ProductEntity;
+import com.platform.schedule.entity.MysqlClient;
+import com.platform.schedule.entity.ProductEntity;
 import org.apache.flink.api.common.functions.MapFunction;
 
 public class DataLoaderMapFunction implements MapFunction<ProductEntity, ProductEntity> {

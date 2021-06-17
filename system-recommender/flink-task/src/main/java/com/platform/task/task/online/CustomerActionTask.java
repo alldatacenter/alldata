@@ -1,8 +1,8 @@
-package com.platform.task.task.online;
+package com.platform.schedule.task.online;
 
-import com.platform.task.util.HbaseClient;
-import com.platform.task.function.OnlineRecommendMapFunction;
-import com.platform.task.util.Property;
+import com.platform.schedule.entity.HbaseClient;
+import com.platform.schedule.function.OnlineRecommendMapFunction;
+import com.platform.schedule.entity.Property;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.datastream.DataStream;

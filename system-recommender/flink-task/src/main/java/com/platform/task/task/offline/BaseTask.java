@@ -1,6 +1,6 @@
-package com.platform.task.task.offline;
+package com.platform.schedule.task.offline;
 
-import com.platform.task.util.Property;
+import com.platform.schedule.entity.Property;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.typeinfo.BasicTypeInfo;
 import org.apache.flink.api.common.typeinfo.TypeInformation;

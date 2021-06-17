@@ -3,7 +3,7 @@ package com.platform.website.module;
 /**
  * 货币类型dimension类
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class CurrencyTypeDimension {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public class IpWeatherResult implements Serializable {
 

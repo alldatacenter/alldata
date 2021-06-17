@@ -28,7 +28,7 @@ import java.util.List;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 @Service
 public class SearchServiceImpl implements SearchService {

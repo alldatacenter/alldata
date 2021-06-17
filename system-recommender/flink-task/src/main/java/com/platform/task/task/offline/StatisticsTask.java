@@ -1,7 +1,7 @@
-package com.platform.task.task.offline;
+package com.platform.schedule.task.offline;
 
-import com.platform.task.sink.HbaseSink;
-import com.platform.task.datasource.HbaseTableSource;
+import com.platform.schedule.sink.HbaseSink;
+import com.platform.schedule.datasource.HbaseTableSource;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.DataSet;

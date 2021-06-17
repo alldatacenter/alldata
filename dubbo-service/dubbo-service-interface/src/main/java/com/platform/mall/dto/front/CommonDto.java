@@ -3,7 +3,7 @@ package com.platform.mall.dto.front;
 import java.io.Serializable;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public class CommonDto implements Serializable {
 

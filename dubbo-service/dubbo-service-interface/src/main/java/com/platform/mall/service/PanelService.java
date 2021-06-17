@@ -6,7 +6,7 @@ import com.platform.mall.entity.TbPanel;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface PanelService {
 

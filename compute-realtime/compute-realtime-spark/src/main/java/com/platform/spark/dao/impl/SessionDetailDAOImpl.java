@@ -9,7 +9,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * session明细DAO实现类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class SessionDetailDAOImpl implements ISessionDetailDAO {

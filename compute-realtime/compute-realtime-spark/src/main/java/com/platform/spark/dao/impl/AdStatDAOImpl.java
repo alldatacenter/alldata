@@ -11,7 +11,7 @@ import com.platform.spark.model.AdStatQueryResult;
 
 /**
  * 广告实时统计DAO实现类
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class AdStatDAOImpl implements IAdStatDAO {

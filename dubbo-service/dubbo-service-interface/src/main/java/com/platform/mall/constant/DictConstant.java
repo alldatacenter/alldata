@@ -1,7 +1,7 @@
 package com.platform.mall.constant;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface DictConstant {
 

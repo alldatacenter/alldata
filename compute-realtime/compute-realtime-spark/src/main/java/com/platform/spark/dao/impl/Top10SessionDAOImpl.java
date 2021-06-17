@@ -6,7 +6,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * top10活跃session的DAO实现
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class Top10SessionDAOImpl implements ITop10SessionDAO {

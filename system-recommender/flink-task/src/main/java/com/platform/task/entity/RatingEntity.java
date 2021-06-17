@@ -1,4 +1,4 @@
-package com.platform.task.entity;
+package com.platform.schedule.entity;
 
 public class RatingEntity {
     private Integer userId;

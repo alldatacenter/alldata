@@ -15,7 +15,7 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 /**
  * 获取order相关属性
  * 
- * @author wulinhao
+ * @author wlhbdp
  *
  */
 public class OrderInfoUDF extends UDF {
@@ -125,7 +125,7 @@ public class OrderInfoUDF extends UDF {
     /**
      * 内部类
      * 
-     * @author wulinhao
+     * @author wlhbdp
      *
      */
     @SuppressWarnings("unused")

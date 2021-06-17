@@ -4,7 +4,7 @@ package com.platform.mall.service;
 import com.platform.mall.dto.EsInfo;
 
 /**
- * @author wulinhao
+ * @author wlhbdp
  */
 public interface SearchItemService {
 
