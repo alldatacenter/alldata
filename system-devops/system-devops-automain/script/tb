@@ -1,4 +1,0 @@
-#!/bin/bash
-DIR=`cd $(dirname "$0")/..;pwd`
-cd $DIR 
-java -cp lib/* com.platform.devops.autogen.Main $@
