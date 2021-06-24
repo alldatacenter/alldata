@@ -11,7 +11,7 @@ public class CORSFilter implements Filter {
 
     // This is to be replaced with a list of domains allowed to access the server
     //You can include more than one origin here
-    private final List<String> allowedOrigins = Arrays.asList("http://localhost:3000", "http://localhost:5001");
+    private final List<String> allowedOrigins = Arrays.asList("http://localhost:3000", "http://localhost:5001", "http://localhost:8081");
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
