@@ -4,7 +4,7 @@ import com.platform.mall.entity.admin.OmsOrderSetting;
 
 /**
  * 订单设置Service
- * Created by wulinhao on 2019/9/16.
+ * Created by wlhbdp on 2019/9/16.
  */
 public interface OmsOrderSettingService {
     /**

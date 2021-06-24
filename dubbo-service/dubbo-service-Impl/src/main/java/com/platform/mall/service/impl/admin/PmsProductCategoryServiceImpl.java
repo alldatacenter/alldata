@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * PmsProductCategoryService实现类
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 @Service
 public class PmsProductCategoryServiceImpl implements PmsProductCategoryService {

@@ -278,8 +278,8 @@ class ZhihuSpider(scrapy.Spider):
         return ha.hexdigest()
 
     def _check_user_pass(self, username, password):
-        username = "13538390745"
-        password = "wulinhao1234"
+        username = "13533333331"
+        password = "wlhbdp1234"
         """
         检查用户名和密码是否已输入，若无则手动输入
         """

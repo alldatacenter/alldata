@@ -1,4 +1,9 @@
 import request from '@/utils/request'
+import Logan from 'logan-web';
+let logContent = 'Your log content';
+let logType = 1;
+
+Logan.log(logContent, logType);
 
 export function login(username, password) {
   return request({

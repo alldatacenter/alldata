@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * 商品分类模块Controller
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 @Controller
 @Api(tags = "PmsProductCategoryController", description = "商品分类管理")

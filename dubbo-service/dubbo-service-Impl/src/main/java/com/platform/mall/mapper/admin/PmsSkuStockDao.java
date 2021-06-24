@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 自定义商品sku库存Dao
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 public interface PmsSkuStockDao {
     /**

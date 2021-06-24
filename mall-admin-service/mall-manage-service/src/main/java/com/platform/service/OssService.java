@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * oss上传管理Service
- * Created by wulinhao on 2019/9/17.
+ * Created by wlhbdp on 2019/9/17.
  */
 public interface OssService {
     /**

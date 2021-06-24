@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 限时购商品关联管理Service
- * Created by wulinhao on 2019/9/16.
+ * Created by wlhbdp on 2019/9/16.
  */
 public interface SmsFlashPromotionProductRelationService {
     /**

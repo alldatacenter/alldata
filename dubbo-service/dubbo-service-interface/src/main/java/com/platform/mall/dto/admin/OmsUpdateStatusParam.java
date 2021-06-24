@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 /**
  * 确认收货提交参数
- * Created by wulinhao on 2019/9/18.
+ * Created by wlhbdp on 2019/9/18.
  */
 public class OmsUpdateStatusParam implements Serializable {
     @ApiModelProperty("服务单号")

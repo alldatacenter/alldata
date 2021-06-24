@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 优选专区Service
- * Created by wulinhao on 2019/9/1.
+ * Created by wlhbdp on 2019/9/1.
  */
 public interface CmsPrefrenceAreaService {
     List<CmsPrefrenceArea> listAll();

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 商品参数，商品自定义规格属性Dao
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 public interface PmsProductAttributeValueDao {
     int insertList(@Param("list") List<PmsProductAttributeValue> productAttributeValueList);

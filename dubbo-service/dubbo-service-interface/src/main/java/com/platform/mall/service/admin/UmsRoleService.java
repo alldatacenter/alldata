@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 后台角色管理Service
- * Created by wulinhao on 2019/9/30.
+ * Created by wlhbdp on 2019/9/30.
  */
 public interface UmsRoleService {
     /**

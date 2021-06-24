@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 限时购活动管理Service实现类
- * Created by wulinhao on 2019/9/16.
+ * Created by wlhbdp on 2019/9/16.
  */
 @Service
 public class SmsFlashPromotionServiceImpl implements SmsFlashPromotionService {

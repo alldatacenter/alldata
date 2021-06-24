@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * 订单发货参数
- * Created by wulinhao on 2019/9/12.
+ * Created by wlhbdp on 2019/9/12.
  */
 public class OmsOrderDeliveryParam  implements Serializable {
     @ApiModelProperty("订单id")

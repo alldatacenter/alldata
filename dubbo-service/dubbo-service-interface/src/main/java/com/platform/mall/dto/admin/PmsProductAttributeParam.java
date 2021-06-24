@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * 商品属性参数
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 public class PmsProductAttributeParam implements Serializable {
     @ApiModelProperty("属性分类ID")

@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * 商品专题Service实现类
- * Created by wulinhao on 2019/9/1.
+ * Created by wlhbdp on 2019/9/1.
  */
 @Service
 public class CmsSubjectServiceImpl implements CmsSubjectService {

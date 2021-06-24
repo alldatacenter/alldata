@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * 用户登录参数
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 public class UmsAdminLoginParam implements Serializable {
     @ApiModelProperty(value = "用户名", required = true)

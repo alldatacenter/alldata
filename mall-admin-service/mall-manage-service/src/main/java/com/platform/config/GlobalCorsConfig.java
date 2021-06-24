@@ -8,7 +8,7 @@ import org.springframework.web.filter.CorsFilter;
 
 /**
  * 全局跨域配置
- * Created by wulinhao on 2019/9/27.
+ * Created by wlhbdp on 2019/9/27.
  */
 @Configuration
 public class GlobalCorsConfig {

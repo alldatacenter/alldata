@@ -43,7 +43,7 @@ import java.util.Map;
 
 /**
  * 商品搜索管理Service实现类
- * Created by wulinhao on 2019/9/19.
+ * Created by wlhbdp on 2019/9/19.
  */
 
 @Service

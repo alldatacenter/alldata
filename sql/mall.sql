@@ -343,7 +343,7 @@ CREATE TABLE `litemall_address` (
 -- ----------------------------
 -- Records of litemall_address
 -- ----------------------------
-INSERT INTO `litemall_address` VALUES ('1', 'helo', '2', '北京市', '市辖区', '西城区', '111', '110102', null, '13538390745', '0', '2019-10-15 15:26:06', '2019-10-15 15:26:06', '0');
+INSERT INTO `litemall_address` VALUES ('1', 'helo', '2', '北京市', '市辖区', '西城区', '111', '110102', null, '13533333331', '0', '2019-10-15 15:26:06', '2019-10-15 15:26:06', '0');
 
 -- ----------------------------
 -- Table structure for litemall_admin
@@ -8573,8 +8573,8 @@ CREATE TABLE `tb_address` (
 -- ----------------------------
 -- Records of tb_address
 -- ----------------------------
-INSERT INTO `tb_address` VALUES ('3', '63', 'helo', '13538390745', '广州', '0');
-INSERT INTO `tb_address` VALUES ('5', '63', 'admin', '13538390745', '广州', '1');
+INSERT INTO `tb_address` VALUES ('3', '63', 'helo', '13533333331', '广州', '0');
+INSERT INTO `tb_address` VALUES ('5', '63', 'admin', '13533333331', '广州', '1');
 INSERT INTO `tb_address` VALUES ('6', '62', '1', '1', '1', '0');
 
 -- ----------------------------
@@ -10097,7 +10097,7 @@ CREATE TABLE `tb_order_shipping` (
 -- Records of tb_order_shipping
 -- ----------------------------
 INSERT INTO `tb_order_shipping` VALUES ('150787555927616', '4', '4', null, null, null, null, '4', null, '2017-10-13 14:19:19', '2017-10-13 14:19:19');
-INSERT INTO `tb_order_shipping` VALUES ('157112786775613', 'admin', '13538390745', null, null, null, null, '广州', null, '2019-10-15 16:24:28', '2019-10-15 16:24:28');
+INSERT INTO `tb_order_shipping` VALUES ('157112786775613', 'admin', '13533333331', null, null, null, null, '广州', null, '2019-10-15 16:24:28', '2019-10-15 16:24:28');
 
 -- ----------------------------
 -- Table structure for tb_panel
@@ -10479,7 +10479,7 @@ CREATE TABLE `tb_thanks` (
 -- Records of tb_thanks
 -- ----------------------------
 INSERT INTO `tb_thanks` VALUES ('6', 'helo', '13538923323@gmail.com', '1.00', '无', null, '1', 'Alipay', null, '2019-09-30 19:03:07');
-INSERT INTO `tb_thanks` VALUES ('7', 'helo', 'admin', '1.00', '', '13538390745@163.com', null, 'Alipay', '157112786775613', '2019-10-15 16:25:15');
+INSERT INTO `tb_thanks` VALUES ('7', 'helo', 'admin', '1.00', '', '13533333331@163.com', null, 'Alipay', '157112786775613', '2019-10-15 16:25:15');
 
 -- ----------------------------
 -- Table structure for tb_user
@@ -10532,7 +10532,7 @@ CREATE TABLE `ums_admin` (
 -- ----------------------------
 -- Records of ums_admin
 -- ----------------------------
-INSERT INTO `ums_admin` VALUES ('1', 'admin', '$2a$10$NZ5o7r2E.ayT2ZoxgjlI.eJ6OEYqjH7INR/F.mXDbjZJi9HF0YCVG', 'https://avatars3.githubusercontent.com/u/20246692?s=460&v=4', '13538390745@163.com', '系统管理员', '系统管理员', '2019-10-08 13:32:47', '2019-03-20 15:38:50', '1');
+INSERT INTO `ums_admin` VALUES ('1', 'admin', '$2a$10$NZ5o7r2E.ayT2ZoxgjlI.eJ6OEYqjH7INR/F.mXDbjZJi9HF0YCVG', 'https://avatars3.githubusercontent.com/u/20246692?s=460&v=4', '13533333331@163.com', '系统管理员', '系统管理员', '2019-10-08 13:32:47', '2019-03-20 15:38:50', '1');
 
 -- ----------------------------
 -- Table structure for ums_admin_login_log

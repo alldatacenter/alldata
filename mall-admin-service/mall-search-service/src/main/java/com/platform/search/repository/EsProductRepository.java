@@ -7,7 +7,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 
 /**
  * 商品ES操作类
- * Created by wulinhao on 2019/9/19.
+ * Created by wlhbdp on 2019/9/19.
  */
 public interface EsProductRepository extends ElasticsearchRepository<EsProduct, Long> {
     /**

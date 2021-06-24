@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * 商品专题Controller
- * Created by wulinhao on 2019/9/1.
+ * Created by wlhbdp on 2019/9/1.
  */
 @Controller
 @Api(tags = "CmsSubjectController", description = "商品专题管理")

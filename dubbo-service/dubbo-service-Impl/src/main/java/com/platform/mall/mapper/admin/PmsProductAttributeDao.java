@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 自定义商品属性Dao
- * Created by wulinhao on 2019/9/23.
+ * Created by wlhbdp on 2019/9/23.
  */
 public interface PmsProductAttributeDao {
     List<ProductAttrInfo> getProductAttrInfo(@Param("id") Long productCategoryId);

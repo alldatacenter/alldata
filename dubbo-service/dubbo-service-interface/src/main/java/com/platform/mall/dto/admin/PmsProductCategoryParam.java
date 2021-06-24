@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 添加更新产品分类的参数
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 public class PmsProductCategoryParam implements Serializable {
     @ApiModelProperty("父分类的编号")

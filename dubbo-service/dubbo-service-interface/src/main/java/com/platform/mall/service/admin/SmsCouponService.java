@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 优惠券管理Service
- * Created by wulinhao on 2019/9/28.
+ * Created by wlhbdp on 2019/9/28.
  */
 public interface SmsCouponService {
     /**

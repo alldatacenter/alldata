@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * 搜索中的商品属性信息
- * Created by wulinhao on 2019/9/27.
+ * Created by wlhbdp on 2019/9/27.
  */
 public class EsProductAttributeValue implements Serializable {
     private static final long serialVersionUID = 1L;

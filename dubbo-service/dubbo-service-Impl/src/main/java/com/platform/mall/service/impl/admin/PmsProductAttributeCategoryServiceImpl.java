@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * PmsProductAttributeCategoryService实现类
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 @Service
 public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttributeCategoryService {

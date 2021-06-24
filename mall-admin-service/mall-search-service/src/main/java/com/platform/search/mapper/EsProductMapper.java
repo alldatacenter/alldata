@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 搜索系统中的商品管理自定义Dao
- * Created by wulinhao on 2019/9/19.
+ * Created by wlhbdp on 2019/9/19.
  */
 @Mapper
 public interface EsProductMapper {

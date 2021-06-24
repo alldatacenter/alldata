@@ -2,7 +2,7 @@ package com.platform.mall.common;
 
 /**
  * 通用返回对象
- * Created by wulinhao on 2019/9/19.
+ * Created by wlhbdp on 2019/9/19.
  */
 public class CommonResult<T> {
     private long code;

@@ -12,7 +12,7 @@ import org.springframework.validation.FieldError;
 
 /**
  * HibernateValidator错误结果处理切面
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 @Aspect
 @Component

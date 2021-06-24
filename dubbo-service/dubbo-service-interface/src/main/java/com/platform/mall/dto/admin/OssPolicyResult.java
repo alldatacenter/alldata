@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * 获取OSS上传文件授权返回结果
- * Created by wulinhao on 2019/9/17.
+ * Created by wlhbdp on 2019/9/17.
  */
 public class OssPolicyResult  implements Serializable {
     @ApiModelProperty("访问身份验证中用到用户标识")

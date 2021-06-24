@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 
 /**
  * 用户验证状态是否在指定范围内的注解
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

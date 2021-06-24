@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * 限时购场次管理Service实现类
- * Created by wulinhao on 2019/9/16.
+ * Created by wlhbdp on 2019/9/16.
  */
 @Service
 public class SmsFlashPromotionSessionServiceImpl implements SmsFlashPromotionSessionService {

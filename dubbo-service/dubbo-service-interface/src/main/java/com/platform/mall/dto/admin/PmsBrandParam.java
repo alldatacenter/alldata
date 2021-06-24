@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * 品牌传递参数
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 public class PmsBrandParam implements Serializable {
     @ApiModelProperty(value = "品牌名称", required = true)

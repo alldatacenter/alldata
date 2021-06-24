@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * 首页广告管理Service实现类
- * Created by wulinhao on 2019/9/7.
+ * Created by wlhbdp on 2019/9/7.
  */
 @Service
 public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {

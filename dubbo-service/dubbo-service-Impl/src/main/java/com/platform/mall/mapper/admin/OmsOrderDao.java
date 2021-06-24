@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 订单自定义查询Dao
- * Created by wulinhao on 2019/9/12.
+ * Created by wlhbdp on 2019/9/12.
  */
 public interface OmsOrderDao {
     /**

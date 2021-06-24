@@ -42,7 +42,7 @@
     </md-field-group>
 
 
-      <div class="text-desc text-center bottom_positon">技术支持: wulinhao</div>
+      <div class="text-desc text-center bottom_positon">技术支持: wlhbdp</div>
 
 	</div>
 </template>

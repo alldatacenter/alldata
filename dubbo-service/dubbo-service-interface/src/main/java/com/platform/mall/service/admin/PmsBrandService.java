@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 商品品牌Service
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 public interface PmsBrandService {
     List<PmsBrand> listAllBrand();

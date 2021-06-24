@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * 会员等级管理Service实现类
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 @Service
 public class UmsMemberLevelServiceImpl implements UmsMemberLevelService {

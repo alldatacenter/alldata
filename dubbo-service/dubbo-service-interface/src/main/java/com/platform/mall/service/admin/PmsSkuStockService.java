@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * sku商品库存管理Service
- * Created by wulinhao on 2019/9/27.
+ * Created by wlhbdp on 2019/9/27.
  */
 public interface PmsSkuStockService {
     /**

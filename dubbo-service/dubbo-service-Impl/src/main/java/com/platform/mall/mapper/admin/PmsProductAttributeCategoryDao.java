@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 自定义商品属性分类Dao
- * Created by wulinhao on 2019/9/24.
+ * Created by wlhbdp on 2019/9/24.
  */
 public interface PmsProductAttributeCategoryDao {
     List<PmsProductAttributeCategoryItem> getListWithAttr();

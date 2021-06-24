@@ -20,7 +20,7 @@ import java.util.Map;
  * {"sub":"wang","created":1489079981393,"exp":1489684781}
  * signature的生成算法：
  * HMACSHA512(base64UrlEncode(header) + "." +base64UrlEncode(payload),secret)
- * Created by wulinhao on 2019/9/26.
+ * Created by wlhbdp on 2019/9/26.
  */
 @Component
 public class JwtTokenUtil {

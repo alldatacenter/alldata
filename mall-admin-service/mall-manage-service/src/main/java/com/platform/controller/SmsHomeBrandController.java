@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 首页品牌管理Controller
- * Created by wulinhao on 2019/9/6.
+ * Created by wlhbdp on 2019/9/6.
  */
 @Controller
 @Api(tags = "SmsHomeBrandController", description = "首页品牌管理")

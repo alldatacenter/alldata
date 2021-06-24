@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * oss上传文件的回调结果
- * Created by wulinhao on 2019/9/17.
+ * Created by wlhbdp on 2019/9/17.
  */
 public class OssCallbackResult  implements Serializable {
     @ApiModelProperty("文件名称")
