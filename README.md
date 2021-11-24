@@ -1,8 +1,6 @@
-# 总项目 https://github.com/wlhbdp/bdp-ecology
-# 0、大数据生态解决方案数据平台 
+# 大数据生态解决方案数据平台 https://github.com/wlhbdp/bdp-platform
 
-~~~markdown
-数据平台:
+1、数据平台:
 	bdp-platform：基于大数据、数据平台、微服务、机器学习、商城、自动化运维、DevOps、容器部署平台、数据平台采集、数据平台存储、数据平台计算、数据平台开发、数据平台应用搭建的大数据解决方案。
 数据来源：
 	商城：使用SpringBoot，Java，Vue，React，Android开发多端商城，包括网站、App、微信小程序；
@@ -30,9 +28,9 @@ DevOps：
     	使用Kong开发统一网关入口系统system-api-gateway；
     	使用vue、scala、playframework、docker、k8s、Prometheus、grafana开发监控告警平台system-alarm-platform；
     	使用Apollo开发system-config配置中心；
-~~~
 
-# 2、数据平台展示
+2、数据平台展示
+
 2.1 商城图片展示：
 
 商城App：https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/samples/mall-shopping-03.png
@@ -123,7 +121,7 @@ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/290158755749
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/2911587557535_.pic.jpg
 
 
-# 3、数据来源
+3、数据来源
 
 ```markdown
 商城前台：
@@ -144,7 +142,7 @@ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-apm.png
 ```
 
-# 4、数据收集
+4、数据收集
 ```markdown
 log-collect-server: 
 	服务端日志收集系统
@@ -163,21 +161,21 @@ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/log-collect
 
 ```
 
-# 5、数据存储
+5、数据存储
 ```markdown
 分布式文件系统：hdfs
 分布式数据库：hbase、mongodb、elasticsearch
 分布式内存存储系统：redis
 ```
 
-# 6、数据计算
+6、数据计算
 ```markdown
 compute-mr（离线计算）: Hive、MR
 compute-realtime（流计算）: storm、flink
 multi-dimension-analysis（多维度分析）: kylin, spark
 ```
 
-# 7、数据开发
+7、数据开发
 ```markdown
 task-schedular: 任务调度
 task-ops: 任务运维
@@ -189,13 +187,13 @@ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-depl
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-devops.png
 ```
 
-# 8、数据产品
+8、数据产品
 ```markdown
 data-face: 数据可视化
 data-insight: 用户画像分析
 ```
 
-# 9、数据应用
+9、数据应用
 ```markdown
 system-recommender: 推荐
 system-ad: 广告
@@ -211,7 +209,7 @@ system-deploy: k8s，scala，playframework，docker打包平台。
 job-schedule: 任务提交平台
 ```
 
-# 10、启动配置教程
+10、启动配置教程
 
  10.1 启动前，打包dubbo-servie项目，进入dubbo-service目录，执行mvn clean package -DskipTests=TRUE打包，然后执行mvn install.
 
@@ -259,39 +257,39 @@ job-schedule: 任务提交平台
 
  12 架构1.0
   
-     #1、数据平台架构
+     1、数据平台架构
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/1571898118926.png
   
-     #2、电商
+     2、电商
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E7%94%B5%E5%95%86.png
   
-     #3、微服务
+     3、微服务
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/microservice.png
      
-     #4、容器化部署system-deploy
+     4、容器化部署system-deploy
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy.png
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy02.png
      
-     #5、自动化运维平台system-devops
+     5、自动化运维平台system-devops
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-devops.png
      
-     #6、使用Kong作为调用中心网关入口system-api-gateway
+     6、使用Kong作为调用中心网关入口system-api-gateway
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway01.png
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway02.png
      
-     #7、日志中心system-elk
+     7、日志中心system-elk
      
      https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk.png
      
-     #8、告警平台system-alarm-platform
+     8、告警平台system-alarm-platform
      
          8.1 监控系统
      
@@ -305,14 +303,14 @@ job-schedule: 任务提交平台
      
          https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk%20%282%29.png
      
-     #9、监控中心system-apm
+     9、监控中心system-apm
      
          https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-apm.png
      
-     #10、使用Apollo作为配置中心system-config
+     10、使用Apollo作为配置中心system-config
      
          https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/apollo.png
      
-     #11、数据平台开发规划
+     11、数据平台开发规划
      
          https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92v1.0.png
