@@ -1,0 +1,1210 @@
+{
+  "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23?fields=Upgrade,upgrade_groups/UpgradeGroup,upgrade_groups/upgrade_items/*,upgrade_groups/upgrade_items/tasks/Tasks/id,upgrade_groups/upgrade_items/tasks/Tasks/command_detail,upgrade_groups/upgrade_items/tasks/Tasks/request_id,upgrade_groups/upgrade_items/tasks/Tasks/status&_=1421143980142",
+  "Upgrade" : {
+    "abort_reason" : null,
+    "aborted_task_count" : 0,
+    "cluster_name" : "1",
+    "completed_task_count" : 7,
+    "create_time" : 1421139694378,
+    "end_time" : -1,
+    "exclusive" : false,
+    "failed_task_count" : 0,
+    "inputs" : null,
+    "operation_level" : null,
+    "progress_percent" : 19.743589743589745,
+    "queued_task_count" : 0,
+    "request_context" : "Upgrading to 2.2.1.0-2207",
+    "request_id" : 23,
+    "request_schedule" : null,
+    "request_status" : "IN_PROGRESS",
+    "resource_filters" : [ ],
+    "start_time" : 1421139694525,
+    "task_count" : 39,
+    "timed_out_task_count" : 0,
+    "type" : "INTERNAL_REQUEST",
+    "request_schedule" : {
+      "href" : null,
+      "schedule_id" : null
+    }
+  },
+  "upgrade_groups" : [
+    {
+      "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1",
+      "UpgradeGroup" : {
+        "group_id" : 1,
+        "name" : "ZOOKEEPER",
+        "progress_percent" : 100.0,
+        "request_id" : 23,
+        "status" : "COMPLETED",
+        "title" : "Zookeeper"
+      },
+      "upgrade_items" : [
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1/upgrade_items/1",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting ZOOKEEPER_SERVER on ab2test-1.c.pramod-thangali.internal",
+            "end_time" : 1421139703156,
+            "group_id" : 1,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 100.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 1,
+            "start_time" : 1421139694530,
+            "status" : "COMPLETED",
+            "text" : "Restarting ZOOKEEPER_SERVER on ab2test-1.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1/upgrade_items/1/tasks/99",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART ZOOKEEPER/ZOOKEEPER_SERVER",
+                "id" : 99,
+                "request_id" : 23,
+                "stage_id" : 1,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1/upgrade_items/2",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting ZOOKEEPER_SERVER on ab2test-3.c.pramod-thangali.internal",
+            "end_time" : 1421139720823,
+            "group_id" : 1,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 100.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 2,
+            "start_time" : 1421139704676,
+            "status" : "COMPLETED",
+            "text" : "Restarting ZOOKEEPER_SERVER on ab2test-3.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1/upgrade_items/2/tasks/100",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART ZOOKEEPER/ZOOKEEPER_SERVER",
+                "id" : 100,
+                "request_id" : 23,
+                "stage_id" : 2,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1/upgrade_items/3",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting ZOOKEEPER_SERVER on ab2test-2.c.pramod-thangali.internal",
+            "end_time" : 1421139730880,
+            "group_id" : 1,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 100.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 3,
+            "start_time" : 1421139724964,
+            "status" : "COMPLETED",
+            "text" : "Restarting ZOOKEEPER_SERVER on ab2test-2.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1/upgrade_items/3/tasks/101",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART ZOOKEEPER/ZOOKEEPER_SERVER",
+                "id" : 101,
+                "request_id" : 23,
+                "stage_id" : 3,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1/upgrade_items/4",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Service Check ZOOKEEPER",
+            "end_time" : 1421139751182,
+            "group_id" : 1,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 100.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 4,
+            "start_time" : 1421139735139,
+            "status" : "COMPLETED",
+            "text" : "Service Check ZOOKEEPER"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/1/upgrade_items/4/tasks/102",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK ZOOKEEPER",
+                "id" : 102,
+                "request_id" : 23,
+                "stage_id" : 4,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2",
+      "UpgradeGroup" : {
+        "group_id" : 2,
+        "name" : "CORE_MASTER",
+        "progress_percent" : 30.833333333333336,
+        "request_id" : 23,
+        "status" : "COMPLETED",
+        "title" : "Core Masters"
+      },
+      "upgrade_items" : [
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/5",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting JOURNALNODE on ab2test-1.c.pramod-thangali.internal",
+            "end_time" : 1421139774445,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 100.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 5,
+            "start_time" : 1421139755421,
+            "status" : "COMPLETED",
+            "text" : "Restarting JOURNALNODE on ab2test-1.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/5/tasks/103",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/JOURNALNODE",
+                "id" : 103,
+                "request_id" : 23,
+                "stage_id" : 5,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/6",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting JOURNALNODE on ab2test-3.c.pramod-thangali.internal",
+            "end_time" : 1421139792374,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 100.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 6,
+            "start_time" : 1421139775692,
+            "status" : "COMPLETED",
+            "text" : "Restarting JOURNALNODE on ab2test-3.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/6/tasks/104",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/JOURNALNODE",
+                "id" : 104,
+                "request_id" : 23,
+                "stage_id" : 6,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/7",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting JOURNALNODE on ab2test-2.c.pramod-thangali.internal",
+            "end_time" : 1421139812096,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 100.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 7,
+            "start_time" : 1421139796075,
+            "status" : "COMPLETED",
+            "text" : "Restarting JOURNALNODE on ab2test-2.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/7/tasks/105",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/JOURNALNODE",
+                "id" : 105,
+                "request_id" : 23,
+                "stage_id" : 7,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/8",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"hooks_folder\":\"HDP/2.0.6/hooks\",\"service_package_folder\":\"common-services/HDFS/2.1.0.2.0/package\",\"tasks\":\"[{\\\"type\\\":\\\"EXECUTE\\\",\\\"hosts\\\":\\\"master\\\",\\\"script\\\":\\\"scripts/namenode.py\\\",\\\"function\\\":\\\"prepare_rolling_upgrade\\\"}]\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Preparing NAMENODE on ab2test-2.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 70.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 8,
+            "start_time" : 1421139897017,
+            "status" : "COMPLETED",
+            "text" : "Preparing NAMENODE on ab2test-2.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/8/tasks/106",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "Preparing NAMENODE on ab2test-2.c.pramod-thangali.internal",
+                "id" : 106,
+                "request_id" : 23,
+                "stage_id" : 8,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/9",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting NAMENODE on ab2test-2.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 9,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting NAMENODE on ab2test-2.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/9/tasks/107",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/NAMENODE",
+                "id" : 107,
+                "request_id" : 23,
+                "stage_id" : 9,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/10",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting NAMENODE on ab2test-1.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 10,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting NAMENODE on ab2test-1.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/10/tasks/108",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/NAMENODE",
+                "id" : 108,
+                "request_id" : 23,
+                "stage_id" : 10,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/11",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting HISTORYSERVER on ab2test-2.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 11,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting HISTORYSERVER on ab2test-2.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/11/tasks/109",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART MAPREDUCE2/HISTORYSERVER",
+                "id" : 109,
+                "request_id" : 23,
+                "stage_id" : 11,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/12",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting APP_TIMELINE_SERVER on ab2test-2.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 12,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting APP_TIMELINE_SERVER on ab2test-2.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/12/tasks/110",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART YARN/APP_TIMELINE_SERVER",
+                "id" : 110,
+                "request_id" : 23,
+                "stage_id" : 12,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/13",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting RESOURCEMANAGER on ab2test-2.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 13,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting RESOURCEMANAGER on ab2test-2.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/13/tasks/111",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART YARN/RESOURCEMANAGER",
+                "id" : 111,
+                "request_id" : 23,
+                "stage_id" : 13,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/14",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"hooks_folder\":\"HDP/2.0.6/hooks\",\"service_package_folder\":\"common-services/HBASE/0.96.0.2.0/package\",\"tasks\":\"[{\\\"type\\\":\\\"EXECUTE\\\",\\\"hosts\\\":\\\"master\\\",\\\"script\\\":\\\"scripts/hbase_upgrade.py\\\",\\\"function\\\":\\\"snapshot\\\"}]\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Preparing HBASE_MASTER on ab2test-1.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 14,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Preparing HBASE_MASTER on ab2test-1.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/14/tasks/112",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "Preparing HBASE_MASTER on ab2test-1.c.pramod-thangali.internal",
+                "id" : 112,
+                "request_id" : 23,
+                "stage_id" : 14,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/15",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting HBASE_MASTER on ab2test-1.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 15,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting HBASE_MASTER on ab2test-1.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/15/tasks/113",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HBASE/HBASE_MASTER",
+                "id" : 113,
+                "request_id" : 23,
+                "stage_id" : 15,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/16",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Service Check HBASE, MAPREDUCE2, HDFS, YARN",
+            "end_time" : 0,
+            "group_id" : 2,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 16,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Service Check HBASE, MAPREDUCE2, HDFS, YARN"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/16/tasks/114",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK HDFS",
+                "id" : 114,
+                "request_id" : 23,
+                "stage_id" : 16,
+                "status" : "COMPLETED"
+              }
+            },
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/16/tasks/115",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK MAPREDUCE2",
+                "id" : 115,
+                "request_id" : 23,
+                "stage_id" : 16,
+                "status" : "COMPLETED"
+              }
+            },
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/16/tasks/116",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK HBASE",
+                "id" : 116,
+                "request_id" : 23,
+                "stage_id" : 16,
+                "status" : "COMPLETED"
+              }
+            },
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/2/upgrade_items/16/tasks/117",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK YARN",
+                "id" : 117,
+                "request_id" : 23,
+                "stage_id" : 16,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3",
+      "UpgradeGroup" : {
+        "group_id" : 3,
+        "name" : "CORE_SLAVES",
+        "progress_percent" : 0.0,
+        "request_id" : 23,
+        "status" : "IN_PROGRESS",
+        "completed_task_count" : 2,
+        "total_task_count" : 3,
+        "title" : "Core Slaves"
+      },
+      "upgrade_items" : [
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/17",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting  DATANODE on ab2test-3.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 3,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 17,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting  DATANODE on ab2test-3.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/17/tasks/118",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/DATANODE",
+                "id" : 118,
+                "request_id" : 23,
+                "stage_id" : 17,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/18",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting  NODEMANAGER on ab2test-3.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 3,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 18,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting  NODEMANAGER on ab2test-3.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/18/tasks/119",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART YARN/NODEMANAGER",
+                "id" : 119,
+                "request_id" : 23,
+                "stage_id" : 18,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/19",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting  HBASE_REGIONSERVER on ab2test-1.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 3,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 19,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Restarting  HBASE_REGIONSERVER on ab2test-1.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/19/tasks/120",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HBASE/HBASE_REGIONSERVER",
+                "id" : 120,
+                "request_id" : 23,
+                "stage_id" : 19,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/20",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Service Check HBASE, HDFS, YARN",
+            "end_time" : 0,
+            "group_id" : 3,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 20,
+            "start_time" : -1,
+            "status" : "COMPLETED",
+            "text" : "Service Check HBASE, HDFS, YARN"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/20/tasks/121",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK HDFS",
+                "id" : 121,
+                "request_id" : 23,
+                "stage_id" : 20,
+                "status" : "COMPLETED"
+              }
+            },
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/20/tasks/122",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK HBASE",
+                "id" : 122,
+                "request_id" : 23,
+                "stage_id" : 20,
+                "status" : "COMPLETED"
+              }
+            },
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/20/tasks/123",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK YARN",
+                "id" : 123,
+                "request_id" : 23,
+                "stage_id" : 20,
+                "status" : "COMPLETED"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/21",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"clusterName\":\"1\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Verfication Required",
+            "end_time" : 0,
+            "group_id" : 3,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 21,
+            "start_time" : -1,
+            "status" : "IN_PROGRESS",
+            "text" : "Core Services have been upgraded. You are advised to perform tests against your cluster to ensure proper operation before proceeding with upgrade of remaining services."
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/3/upgrade_items/21/tasks/124",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "Core Services have been upgraded. You are advised to perform tests against your cluster to ensure proper operation before proceeding with upgrade of remaining services.",
+                "id" : 124,
+                "request_id" : 23,
+                "stage_id" : 21,
+                "status" : "IN_PROGRESS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4",
+      "UpgradeGroup" : {
+        "group_id" : 4,
+        "name" : "CLIENTS",
+        "progress_percent" : 0.0,
+        "request_id" : 23,
+        "status" : "PENDING",
+        "title" : "Client Components"
+      },
+      "upgrade_items" : [
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/22",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting HDFS_CLIENT on ab2test-1.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 4,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 22,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Restarting HDFS_CLIENT on ab2test-1.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/22/tasks/125",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/HDFS_CLIENT",
+                "id" : 125,
+                "request_id" : 23,
+                "stage_id" : 22,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/23",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting HDFS_CLIENT on ab2test-3.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 4,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 23,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Restarting HDFS_CLIENT on ab2test-3.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/23/tasks/126",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/HDFS_CLIENT",
+                "id" : 126,
+                "request_id" : 23,
+                "stage_id" : 23,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/24",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting HDFS_CLIENT on ab2test-2.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 4,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 24,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Restarting HDFS_CLIENT on ab2test-2.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/24/tasks/127",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HDFS/HDFS_CLIENT",
+                "id" : 127,
+                "request_id" : 23,
+                "stage_id" : 24,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/25",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting YARN_CLIENT on ab2test-3.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 4,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 25,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Restarting YARN_CLIENT on ab2test-3.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/25/tasks/128",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART YARN/YARN_CLIENT",
+                "id" : 128,
+                "request_id" : 23,
+                "stage_id" : 25,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/26",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting MAPREDUCE2_CLIENT on ab2test-3.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 4,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 26,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Restarting MAPREDUCE2_CLIENT on ab2test-3.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/26/tasks/129",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART MAPREDUCE2/MAPREDUCE2_CLIENT",
+                "id" : 129,
+                "request_id" : 23,
+                "stage_id" : 26,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/27",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"upgrade_type\":\"rolling_upgrade\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Restarting HBASE_CLIENT on ab2test-3.c.pramod-thangali.internal",
+            "end_time" : 0,
+            "group_id" : 4,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 27,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Restarting HBASE_CLIENT on ab2test-3.c.pramod-thangali.internal"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/27/tasks/130",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "RESTART HBASE/HBASE_CLIENT",
+                "id" : 130,
+                "request_id" : 23,
+                "stage_id" : 27,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/28",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Service Check HBASE, MAPREDUCE2, HDFS, YARN",
+            "end_time" : 0,
+            "group_id" : 4,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 28,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Service Check HBASE, MAPREDUCE2, HDFS, YARN"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/28/tasks/131",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK HDFS",
+                "id" : 131,
+                "request_id" : 23,
+                "stage_id" : 28,
+                "status" : "PENDING"
+              }
+            },
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/28/tasks/132",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK MAPREDUCE2",
+                "id" : 132,
+                "request_id" : 23,
+                "stage_id" : 28,
+                "status" : "PENDING"
+              }
+            },
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/28/tasks/133",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK HBASE",
+                "id" : 133,
+                "request_id" : 23,
+                "stage_id" : 28,
+                "status" : "PENDING"
+              }
+            },
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/4/upgrade_items/28/tasks/134",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "SERVICE_CHECK YARN",
+                "id" : 134,
+                "request_id" : 23,
+                "stage_id" : 28,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/5",
+      "UpgradeGroup" : {
+        "group_id" : 5,
+        "name" : "POST_CLUSTER",
+        "progress_percent" : 0.0,
+        "request_id" : 23,
+        "status" : "PENDING",
+        "title" : "Finalize Upgrade"
+      },
+      "upgrade_items" : [
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/5/upgrade_items/29",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"clusterName\":\"1\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Confirm Finalize",
+            "end_time" : 0,
+            "group_id" : 5,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 29,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Please confirm you are ready to finalize"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/5/upgrade_items/29/tasks/135",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "Please confirm you are ready to finalize",
+                "id" : 135,
+                "request_id" : 23,
+                "stage_id" : 29,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/5/upgrade_items/30",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"hooks_folder\":\"HDP/2.0.6/hooks\",\"service_package_folder\":\"common-services/HDFS/2.1.0.2.0/package\",\"tasks\":\"[{\\\"type\\\":\\\"EXECUTE\\\",\\\"hosts\\\":\\\"master\\\",\\\"script\\\":\\\"scripts/namenode.py\\\",\\\"function\\\":\\\"finalize_rolling_upgrade\\\"}]\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Execute HDFS Finalize",
+            "end_time" : 0,
+            "group_id" : 5,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 30,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Execute HDFS Finalize"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/5/upgrade_items/30/tasks/136",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "Execute HDFS Finalize",
+                "id" : 136,
+                "request_id" : 23,
+                "stage_id" : 30,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/5/upgrade_items/31",
+          "UpgradeItem" : {
+            "cluster_host_info" : "{\"nm_hosts\":[\"1\"],\"hs_host\":[\"2\"],\"hbase_master_hosts\":[\"0\"],\"all_hosts\":[\"ab2test-1.c.pramod-thangali.internal\",\"ab2test-3.c.pramod-thangali.internal\",\"ab2test-2.c.pramod-thangali.internal\"],\"namenode_host\":[\"2\",\"0\"],\"zkfc_hosts\":[\"2\",\"0\"],\"rm_host\":[\"2\"],\"slave_hosts\":[\"1\"],\"app_timeline_server_hosts\":[\"2\"],\"ambari_server_host\":[\"ab2test-1.c.pramod-thangali.internal\"],\"zookeeper_hosts\":[\"0-2\"],\"hbase_rs_hosts\":[\"0\"],\"all_ping_ports\":[\"8670:0-2\"],\"journalnode_hosts\":[\"0-2\"]}",
+            "cluster_name" : "1",
+            "command_params" : "{\"clusterName\":\"1\",\"version\":\"2.2.1.0-2207\"}",
+            "context" : "Save Cluster State",
+            "end_time" : 0,
+            "group_id" : 5,
+            "host_params" : "{\"ambari_db_rca_driver\":\"org.postgresql.Driver\",\"ambari_db_rca_password\":\"mapred\",\"ambari_db_rca_url\":\"jdbc:postgresql://ab2test-1.c.pramod-thangali.internal/ambarirca\",\"ambari_db_rca_username\":\"mapred\",\"db_driver_filename\":\"mysql-connector-java.jar\",\"db_name\":\"ambari\",\"java_home\":\"/usr/jdk64/jdk1.7.0_67\",\"jce_name\":\"UnlimitedJCEPolicyJDK7.zip\",\"jdk_location\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/\",\"jdk_name\":\"jdk-7u67-linux-x64.tar.gz\",\"mysql_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/mysql-connector-java.jar\",\"oracle_jdbc_url\":\"http://ab2test-1.c.pramod-thangali.internal:8080/resources/ojdbc6.jar\",\"stack_name\":\"HDP\",\"stack_version\":\"2.2\"}",
+            "log_info" : null,
+            "progress_percent" : 0.0,
+            "request_id" : 23,
+            "skippable" : false,
+            "stage_id" : 31,
+            "start_time" : -1,
+            "status" : "PENDING",
+            "text" : "Save Cluster State"
+          },
+          "tasks" : [
+            {
+              "href" : "http://162.216.149.50:8080/api/v1/clusters/1/upgrades/23/upgrade_groups/5/upgrade_items/31/tasks/137",
+              "Tasks" : {
+                "cluster_name" : "1",
+                "command_detail" : "Save Cluster State",
+                "id" : 137,
+                "request_id" : 23,
+                "stage_id" : 31,
+                "status" : "PENDING"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

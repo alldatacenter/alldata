@@ -1,0 +1,42 @@
+{
+  "name": "your-app",
+  "version": "0.0.1",
+  "main": "public/app.js",
+  "dependencies": {
+    "ember": "1.8.1",
+    "ember-data": "1.0.0-beta.12",
+    "handlebars": "~1.3.0",
+    "bootstrap": "3.1.x",
+    "codemirror": "5.19.0",
+    "moment": "~2.8.1",
+    "ember-i18n": "2.9.x",
+    "font-awesome": "4.2",
+    "file-saver": "*",
+    "bootstrap3-typeahead": "~3.0.3"
+  },
+  "overrides": {
+    "codemirror":{
+      "main" : [
+        "lib/codemirror.js",
+        "lib/codemirror.css",
+        "mode/pig/pig.js",
+        "addon/hint/show-hint.css",
+        "addon/hint/show-hint.js",
+        "addon/display/fullscreen.js",
+        "addon/display/fullscreen.css",
+        "addon/hint/anyword-hint.js"
+      ]
+    },
+    "bootstrap": {
+      "main": [
+        "./dist/js/bootstrap.js"
+      ]
+    },
+    "cldr": {
+      "main": "plurals.js"
+    },
+    "file-saver": {
+      "main": "FileSaver.js"
+    }
+  }
+}

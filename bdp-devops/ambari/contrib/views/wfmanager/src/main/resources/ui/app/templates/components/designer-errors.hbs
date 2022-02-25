@@ -1,0 +1,59 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="designer-errors">
+  {{#if (or (gt errors.length 0) (gt validationErrors.length 0))}}
+    <div id="alert"class="alert alert-danger alert-dismissible fade in workflow-error" role="alert">
+      {{#if (gt errors.length 0)}}
+        {{#each errors as |error index|}}
+          {{#if error.node}}
+            <div>{{error.node.name}} : {{error.message}}</div>
+          {{else}}
+            <div>
+              {{error.message}}
+              {{#if error.dismissable}}
+                <button type="button" class="dismissable-error-close" {{action "dismissError" index}}><span aria-hidden="true">&times;</span></button>
+              {{/if}}
+            </div>
+          {{/if}}
+        {{/each}}
+      {{/if}}
+      {{#if (gt validationErrors.length 0)}}
+        {{#each validationErrors as |error|}}
+        <div>{{error.node.name}} {{#if error.node}}:{{/if}} {{error.message}}</div>
+        {{/each}}
+      {{/if}}
+    </div>
+  {{/if}}
+
+  {{#if hasErrorMsg}}
+    <div id="loader">
+        <div id="alert"class="alert alert-danger alert-dismissible workflow-error" role="alert">
+            {{errorMsg}}
+            <div id="errorMsgDetails">
+              {{errorMsgDetails}}
+              {{#if isStackTraceAvailable}}
+                <a href="#" class="action-link" {{action "showStackTrace"}}>Details</a>
+              {{/if}}
+            </div>
+        </div>
+    </div>
+  {{/if}}
+</div>
+{{#if showingStackTrace}}
+  {{#stack-trace-dialog title="Stack Trace" stackTrace=stackTrace closeStackTrace="closeStackTrace"}}{{/stack-trace-dialog}}
+{{/if}}

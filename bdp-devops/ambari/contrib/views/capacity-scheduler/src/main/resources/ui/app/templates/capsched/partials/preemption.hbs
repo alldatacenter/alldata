@@ -1,0 +1,89 @@
+{{!
+* Licensed to the Apache Software  Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="preemption-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div id="collapseQueuePreemptionPanelBtn" href="#collapsibleQueuePreemptionPanel" data-toggle="collapse" {{bind-attr class=":panel-title :collapsible-panel-btn view.isPreemptionPanelCollapsed:collapsed"}}>
+        Preemption
+        {{#if isQueuePreemptionDirty}}
+          {{warning-info class="yellow-warning" tooltip="Need refresh queues / restart RM"}}
+        {{/if}}
+        <a class="pull-right"><i {{bind-attr class=":fa view.isPreemptionPanelCollapsed:fa-plus:fa-minus"}}></i></a>
+      </div>
+    </div>
+    <div id="collapsibleQueuePreemptionPanel" {{bind-attr class=":panel-collapse :collapse view.isPreemptionPanelCollapsed::in"}}>
+      <div class="panel-body">
+        {{#if isPreemptionEnabledByYarn}}
+          {{#if isPreemptionSupported}}
+            <div class="row">
+              <div class="col-sm-10 col-md-10">
+                <label>Can this queue be preempted by other queues: </label>
+                {{#if queueDisablePreemption}}
+                  <span class="text-danger">Disabled </span>
+                {{else}}
+                  <span class="text-success">Enabled </span>
+                {{/if}}
+                {{#if isPreemptionInherited}}
+                  {{#if isRoot}}
+                    <span>(Inherited from global settings)</span>
+                  {{else}}
+                    <span>(Inherited)</span>
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
+            {{#if isOperator}}
+            <div class="row">
+              <div class="col-sm-4 col-md-4">
+                <div class="checkbox">
+                  <label>
+                    {{input type="checkbox" name="preemptionOverride" checked=isPreemptionOverriden}}
+                    Override preempt-able settings
+                  </label>
+                </div>
+              </div>
+              {{#if isPreemptionOverriden}}
+                <div class="col-sm-4 col-md-4">
+                  <div class="btn-group btn-group-sm override-btns" data-toggle="buttons">
+                    {{radio-button label="Enable" classNames="btn-small" selectionBinding="doOverridePreemption" value="enable"}}
+                    {{radio-button label="Disable" classNames="btn-small" selectionBinding="doOverridePreemption" value="disable"}}
+                  </div>
+                  {{#if isQueuePreemptionDirty}}
+                    <div class="btn-group btn-group-xs override-btns">
+                      <a {{action 'rollbackPreemptionProps'}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                    </div>
+                  {{/if}}
+                </div>
+              {{/if}}
+            </div>
+            {{/if}}
+          {{else}}
+            <div class="text-warning">
+              <span>Preemption is not supported for your current stack version {{currentStack}}</span>
+            </div>
+          {{/if}}
+        {{else}}
+          <div class="text-warning">
+            <span>Preemption is disabled by resource manager </span>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

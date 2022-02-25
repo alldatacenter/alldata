@@ -1,0 +1,109 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="service-rolling-restart">
+
+  <h5 class="restart-header-info">{{t service.restart.choose.text}}</h5>
+  <div class="restart-options">
+    <div class="option-rolling-block col-sm-6 radio big-radio">
+      <i class="fa fa-tachometer"></i>
+      {{view view.rollingRestartRadioButton labelIdentifier="use-rolling-restart"}}
+      <p class="faintText">{{t service.rolling.restart.choose.info}}</p>
+    </div>
+
+    <div class="option-express-block col-sm-6 radio big-radio">
+      <i class="fa fa-bolt"></i>
+      {{view view.expressRestartRadioButton labelIdentifier="use-express-restart"}}
+      <p class="faintText">{{t service.express.restart.choose.info}}</p>
+    </div>
+  </div>
+  {{#if view.useRolling}}
+    <div class="restart-advanced-configs">
+      <a href="#" {{action "toggleAdvancedOptions" target="view"}}><i class="fa fa-caret-right"></i>
+        <span>{{t service.restart.show.advanced.info}}</span></a>
+    </div>
+    {{#if view.showAdvancedOptions}}
+      <div class="rolling-restart-advanced">
+        {{#if view.showBatchRackOptions}}
+          {{t service.restart.rolling.restart.hosts.by}}
+          <div class="rolling-restart-by">
+            <div class="radio big-radio">
+              {{view view.batchesOfHostsRadioButton labelIdentifier="use-batches-of-hosts"}}
+              <i class="fa fa-question-circle"></i>
+            </div>
+            <div class="radio big-radio">
+              {{view view.rackByRackRadioButton labelIdentifier="use-rack-by-rack"}}
+              <i class="fa fa-question-circle"></i>
+            </div>
+          </div>
+          {{#if view.batchesOfHosts}}
+            <div class="input-option row">
+              <div>{{t service.restart.rolling.advanced.noOfHosts}}</div>
+              {{view Ember.TextField type="number" class="input-sm col-xs-2" valueBinding="view.noOfHostsInBatch"}}<br>
+            </div>
+            <div class=" input-option row">
+              <div>{{t service.restart.rolling.advanced.batchIntervalHosts}}</div>
+              {{view Ember.TextField type="number" class="input-sm col-xs-2" valueBinding="view.batchIntervalHosts"}}
+            </div>
+          {{else}}
+            <div class="input-option row">
+              <div>{{t service.restart.rolling.advanced.percentRacks}}</div>
+              {{view Ember.TextField type="number" class="input-sm col-xs-2" valueBinding="view.percentRackStarted"}}<br>
+            </div>
+            <div class="input-option row">
+              <div>{{t service.restart.rolling.advanced.batchIntervalRacks}}</div>
+              {{view Ember.TextField type="number" class="input-sm col-xs-2" valueBinding="view.batchIntervalRacks"}}
+            </div>
+          {{/if}}
+          <hr class="separator">
+        {{/if}}
+        <div style="margin-top: 20px;">
+          {{view App.CheckboxView checkedBinding="view.isRetryChecked" labelTranslate="service.restart.rolling.advanced.automatic.retry"}}
+        </div>
+        {{#if view.isRetryChecked}}
+          <div class="input-option num-retries row">
+            <div>{{t service.restart.rolling.advanced.noOfRetries}}</div>
+            {{view Ember.TextField type="number" class="input-sm col-xs-2" valueBinding="view.noOfRetriesPerHost"}}<br>
+          </div>
+        {{/if}}
+        <div class="input-option row">
+          <div>{{t service.restart.rolling.advanced.max.failures.tolerated}}</div>
+          {{view Ember.TextField type="number" class="input-sm col-xs-2" valueBinding="view.maxFailuresTolerated"}}<br>
+        </div>
+        {{#if view.batchesOfHosts}}
+          <div class="input-option row">
+            <div>{{t service.restart.rolling.advanced.max.failures.batch}}</div>
+            {{view Ember.TextField type="number" class="input-sm col-xs-2" valueBinding="view.maxFailuresBatch"}}
+          </div>
+        {{else}}
+          <div class="input-option row">
+            <div>{{t service.restart.rolling.advanced.max.failures.rack}}</div>
+            {{view Ember.TextField type="number" class="input-sm col-xs-2" valueBinding="view.maxFailuresRack"}}
+          </div>
+        {{/if}}
+        <hr class="separator">
+        <div class="mtl">
+          {{view App.CheckboxView checkedBinding="view.suppressAlerts" labelTranslate="service.restart.rolling.advanced.suppress.alerts"}}
+        </div>
+        <div class="mtm">
+          {{view App.CheckboxView checkedBinding="view.pauseAfterFirst" labelTranslate="service.restart.rolling.advanced.pause.after.first"}}
+        </div>
+      </div>
+    {{/if}}
+  {{/if}}
+</div>

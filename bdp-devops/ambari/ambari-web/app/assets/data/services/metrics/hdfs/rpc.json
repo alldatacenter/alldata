@@ -1,0 +1,18 @@
+{
+  "href" : "http://ambari/clusters/SrimanthAmbari/hosts/hostname/host_components/NAMENODE?fields=metrics/rpc/client/RpcQueueTime_avg_time[1351117114,1351120714,60]",
+  "HostRoles" : {
+    "cluster_name" : "SrimanthAmbari",
+    "component_name" : "NAMENODE",
+    "host_name" : "hostname"
+  },
+  "host" : {
+    "href" : "http://ambari/clusters/SrimanthAmbari/hosts/hostname"
+  },
+  "metrics" : {
+    "rpc" : {
+      "client": {
+        "RpcQueueTime_avg_time" : "[[0.055987654321,1351117440],[0.013271604938,1351117800],[0.0046296296296,1351118160],[0.018518518519,1351118520],[0.01712962963,1351118880],[0.0,1351119240],[0.0,1351119600],[0.0,1351119960],[0.0,1351120320],[0.0095679012346,1351120680],[0.018672839506,1351121040]]"
+      }
+    }
+  }
+}

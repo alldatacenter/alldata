@@ -1,0 +1,71 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#each group in view.mastersComp}}
+  {{#if group.components.length}}
+    <div class="col-md-12">
+      <div class="col-md-2">
+        {{#if group.title}}
+          <div class="master-group-title" rel="MasterGroupTitleTooltip" {{bindAttr data-title="group.title"}}>
+            {{group.title}}
+          </div>
+        {{else}}
+          {{t dashboard.services.hdfs.summary.components}}
+        {{/if}}
+      </div>
+      <div class="col-md-10">
+        {{#each comp in group.components}}
+          <div {{bindAttr class="comp.isSubComponent:component-small :component :col-md-3 comp.componentName :row"}}>
+            <div {{bindAttr class=":summary-value comp.summaryValueClassName"}}>
+              <span rel='SummaryComponentHealthTooltip'
+                {{bindAttr class="comp.statusClass comp.statusIconClass"
+                  data-original-title="comp.passiveTooltip"}}></span>
+              <span class="main-info">{{comp.componentTextStatus}}</span>
+              {{#if comp.alertsCount}}
+                <span {{action "showServiceAlertsPopup" comp target="controller"}}>
+                {{view App.AlertBadgeView
+                       classNames="small-size"
+                       criticalCountBinding="comp.criticalCount"
+                       warningCountBinding="comp.warningCount"}}
+                </span>
+              {{/if}}
+            </div>
+            <div {{bindAttr class=":summary-label comp.summaryLabelClassName"}}>
+              <a href="#" {{action showDetails comp.host}} data-original-title="{{unbound comp.publicHostName}}"
+                 rel="UsageTooltip">
+                {{#if comp.displayNameAdvanced}}
+                  {{comp.displayNameAdvanced}}
+                {{else}}
+                  {{comp.displayName}}
+                {{/if}}
+              </a>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    {{#if group.componentWidgetsView}}
+      {{view group.componentWidgetsView slaveComponentsViewBinding="view.slaveComponentsView"}}
+    {{/if}}
+  {{/if}}
+{{/each}}
+{{#if view.parentView.parentView.service.hasMasterOrSlaveComponent}}
+  {{#if view.componentCommonWidgetsView}}
+    {{view view.componentCommonWidgetsView}}
+  {{/if}}
+{{/if}}

@@ -1,0 +1,227 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/GANGLIA",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "GANGLIA",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/GANGLIA",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "HIVE",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/HBASE",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "HBASE",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/HDFS",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "HDFS",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 9,
+          "OK" : 1,
+          "WARNING" : 2
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/MAPREDUCE2",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "MAPREDUCE2",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/OOZIE",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "OOZIE",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/SQOOP",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "SQOOP",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+		{
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/PIG",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "PIG",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/YARN",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "YARN",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/ZOOKEEPER",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "ZOOKEEPER",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/FALCON",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "cluster_name" : "cl",
+        "service_name" : "FALCON",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/STORM",
+      "ServiceInfo" : {
+        "maintenance_state" : "ON",
+        "cluster_name" : "cl",
+        "service_name" : "STORM",
+        "state": "STARTED"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/TEZ",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "state": "STARTED",
+        "service_name" : "TEZ"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/services/FLUME",
+      "ServiceInfo" : {
+        "maintenance_state" : "OFF",
+        "state": "STARTED",
+        "service_name" : "FLUME"
+      },
+      "alerts" : {
+        "summary" : {
+          "CRITICAL" : 0,
+          "OK" : 0,
+          "WARNING" : 0
+        }
+      }
+    }
+  ]
+}

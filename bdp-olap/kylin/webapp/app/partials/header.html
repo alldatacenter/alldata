@@ -1,0 +1,111 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div class="navbar-container" id="navbar-container">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="query" style="padding: 2px 10px 0px 0px"><img src="image/logo.png" height="40px"
+                                                                                    width="40px"/>
+          <small> Kylin</small>
+        </a>
+      </div>
+
+      <div class="navbar-collapse collapse" collapse="isCollapsed">
+        <ul class="nav navbar-nav">
+          <li class="project-cntnr" style="padding:7px 15px;background-color:#2e8965;"
+              ng-if="userService.isAuthorized()">
+            <select chosen ng-model="projectModel.selectedProject"
+                    ng-init="newAccess.permission=permissions.READ.value;"
+                    ng-options="project.name as project.name for project in projectModel.projects"
+                    style="width: 180px"
+                    data-placeholder="select a project"
+                    class="chosen-select">
+              <option ng-if="userService.hasRole('ROLE_ADMIN')" ng-selected="projectModel.selectedProject==null"
+                      value=""> -- Choose Project --
+              </option>
+            </select>
+          </li>
+          <li class="{{activeTab=='query'?'purple':'green'}}" ng-if="userService.isAuthorized()">
+            <a href="query">Insight</a>
+          </li>
+          <li class="{{activeTab=='models'?'purple':'green'}}" ng-if="userService.isAuthorized()">
+            <a href="models">Model</a>
+          </li>
+          <li class="{{activeTab=='jobs'?'purple':'green'}}" ng-if="userService.isAuthorized()">
+            <a href="jobs">Monitor</a>
+          </li>
+          <li class="{{activeTab=='admin'?'purple':'green'}}" ng-if="userService.hasRole('ROLE_ADMIN')">
+            <a href="admin">System</a>
+          </li>
+          <li class="{{activeTab=='dashboard'?'purple':'green'}}" ng-if="userService.isAuthorized() && isShowDashboard">
+            <a href="dashboard">Dashboard</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown light-blue" ng-if="config.documents.length > 0">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-book"></i> Help <i
+              class="ace-icon fa fa-caret-down"></i></a>
+            <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+              <li ng-repeat="document in config.documents" >
+                <a target="_blank" ng-if="document.link" href="{{document.link}}">{{document.displayName}}</a>
+                <a target="_blank" ng-if="!document.link" ng-click="showHelpInfo(document.name)">{{document.displayName}}</a>
+              </li>
+            </ul>
+          </li>
+          <li class="purple" ng-if="!userService.isAuthorized()"><a href="login">Login</a></li>
+          <li class="dropdown light-blue" ng-if="userService.isAuthorized()">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="user-info"><small>Welcome,</small> {{userService.getCurUser().userDetails.username}}</span>
+              <i class="ace-icon fa fa-caret-down"></i>
+            </a>
+            <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close"
+                role="menu">
+              <li><a href="user/profile"><i class="ace-icon fa fa-user"></i> Profile</a></li>
+              <li><a ng-click="logout()"><i class="ace-icon fa fa-power-off"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<script type="text/ng-template" id="aboutKylin.html">
+  <div class="modal-header">
+      <h4>About Apache Kylin</h4> <i ng-click="cancel()" class="fa fa-close"></i>
+  </div>
+  <div class="modal-body">
+    <img src="image/logo.png" style="margin: 0 auto;position:relative;display:block" height="80px" width="80px">
+    <p><a href="http://kylin.apache.org/" target="_blank">Apache Kylin™</a> is an open source Distributed Analytics Engine designed to provide SQL interface and multi-dimensional analysis (OLAP) on Hadoop/Spark supporting extremely large datasets, original contributed from eBay Inc.</p>
+    <p>You can <a href="mailto:user-subscribe@kylin.apache.org">Subscribe</a> user mailing list to discuss with community members, any advices or questions in using kylin you can send mail to <a href="mailto:user@kylin.apache.org">user@kylin.apache.org</a>.</p>
+    <div class="split-line"></div>
+    <div style="font-size:12px">
+      <div>
+        <span>Version: </span>
+        <span>{{versionInfo['kylin.version']}}</span>
+      </div>
+      <div >
+        <span>Commit: </span>
+        <span>{{versionInfo['kylin.version.commitId']}}</span>
+      </div>
+    </div>
+  </div>
+</script>

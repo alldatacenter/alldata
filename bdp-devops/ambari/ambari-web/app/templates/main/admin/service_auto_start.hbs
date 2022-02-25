@@ -1,0 +1,74 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="admin-auto-start">
+  <p class="description">{{t admin.serviceAutoStart.header.text}}</p>
+  {{#if controller.isLoaded}}
+    <div class="cluster-level-switcher">
+      <span class="h2">{{t admin.serviceAutoStart.general.switcher}}</span>
+      {{view App.CheckboxView
+             didInsertElementBinding="view.initSwitcher"
+             classNames="general-auto-start circle-toggle-switch"
+             disabledBinding="view.isDisabled"
+             checkedBinding="controller.isGeneralRecoveryEnabled"}}
+    </div>
+    <div class="form-horizontal">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{{t common.service}}</th>
+            <th>{{t common.components}}</th>
+            <th>
+              {{view App.CheckboxView
+                     disabledBinding="view.isDisabled"
+                     classNames="all-checkbox"
+                     labelTranslate="admin.serviceAutoStart.column.autoStart"
+                     checkedBinding="view.allComponentsChecked"}}
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each component in componentsConfigsGrouped}}
+          <tr>
+            <td {{bindAttr class="component.isFirst::skip-border"}}>
+              {{#if component.isFirst}}
+                {{component.serviceDisplayName}}
+              {{/if}}
+            </td>
+            <td>{{component.displayName}}</td>
+            <td>{{view App.CheckboxView
+                       disabledBinding="view.isDisabled"
+                       checkedBinding="component.recoveryEnabled"}}</td>
+            <td></td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{else}}
+    {{view App.SpinnerView}}
+  {{/if}}
+  <div {{bindAttr class="view.isDisablad:hidden :configs-save-panel"}}>
+    <div class="pull-right">
+      <button class="btn btn-default" {{action restoreCachedValues target="controller"}} {{bindAttr disabled="view.isSaveDisabled"}}>{{t common.cancel}}</button>
+      <button class="btn btn-success" {{action showSavePopup target="controller"}} {{bindAttr disabled="view.isSaveDisabled"}}>{{t common.save}}</button>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="Ambari.SCOM.Widgets.Charting.Chart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:p="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             xmlns:vt="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:axes="clr-namespace:Ambari.SCOM.Widgets.Charting.Axes"
+             xmlns:scaxes="clr-namespace:Microsoft.EnterpriseManagement.Presentation.Controls.Chart.Axes;assembly=Microsoft.EnterpriseManagement.Presentation.Controls"
+             xmlns:slc="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             xmlns:c="clr-namespace:Microsoft.EnterpriseManagement.Presentation.Controls.Charting;assembly=Microsoft.EnterpriseManagement.Presentation.Controls">
+<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+    <UserControl.Resources>
+        <!-- This is copy-pasted from original Chart control from Visualization library, 
+             so new axes will look like original -->
+        <system:Double x:Key="UnfocusedOpacity">0.2</system:Double>
+        <system:Double x:Key="ChartFontSize">8</system:Double>
+
+        <FontFamily x:Key="ChartFontFamily">Segoe UI, Lucida Sans Unicode, Verdana</FontFamily>
+
+        <SolidColorBrush x:Key="Dashboard_Chart_GridLine" Color="#FFD3D6DD" />
+        <SolidColorBrush x:Key="Dashboard_Chart_Tick_Stroke" Color="#FFD3D6DD" />
+        <SolidColorBrush x:Key="Dashboard_Chart_MajorTick_FG" Color="#FF707175" />
+
+        <Style TargetType="axes:ForegroundLinearAxis">
+            <Setter Property="GridLineStyle">
+                <Setter.Value>
+                    <Style TargetType="Line">
+                        <Setter Property="Stroke" Value="{StaticResource Dashboard_Chart_GridLine}" />
+                        <Setter Property="StrokeThickness" Value="1" />
+                        <!-- Semi-transparency is good for foreground axis -->
+                        <Setter Property="Opacity" Value="0.75" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="MajorTickMarkStyle">
+                <Setter.Value>
+                    <Style TargetType="Line">
+                        <Setter Property="Stroke" Value="{StaticResource Dashboard_Chart_Tick_Stroke}" />
+                        <Setter Property="X2" Value="0" />
+                        <Setter Property="Y2" Value="0" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="AxisLabelStyle">
+                <Setter.Value>
+                    <Style TargetType="slc:AxisLabel">
+                        <Setter Property="StringFormat" Value="{}{0:#,0.######}" />
+                        <Setter Property="FontSize" Value="{StaticResource ChartFontSize}" />
+                        <Setter Property="FontFamily" Value="{StaticResource ChartFontFamily}" />
+                        <Setter Property="Margin" Value="0,0,10,0" />
+                        <Setter Property="Foreground" Value="{StaticResource Dashboard_Chart_MajorTick_FG}" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="axes:ForegroundDateTimeAxis">
+            <Setter Property="Location" Value="Bottom" />
+            <Setter Property="GridLineStyle">
+                <Setter.Value>
+                    <Style TargetType="Line">
+                        <Setter Property="Stroke" Value="{StaticResource Dashboard_Chart_GridLine}" />
+                        <Setter Property="StrokeThickness" Value="1" />
+                        <!-- Semi-transparency is good for foreground axis -->
+                        <Setter Property="Opacity" Value="0.5" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="MajorTickMarkStyle">
+                <Setter.Value>
+                    <Style TargetType="Line">
+                        <Setter Property="Visibility" Value="Visible" />
+                        <Setter Property="Stroke" Value="{StaticResource Dashboard_Chart_Tick_Stroke}" />
+                        <Setter Property="X2" Value="8" />
+                        <Setter Property="Y2" Value="8" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="AxisLabelStyle">
+                <Setter.Value>
+                    <Style TargetType="slc:DateTimeAxisLabel">
+                        <Setter Property="FontSize" Value="{StaticResource ChartFontSize}" />
+                        <Setter Property="FontFamily" Value="{StaticResource ChartFontFamily}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="slc:DateTimeAxisLabel">
+                                    <scaxes:DateTimeCustomTextBlock Foreground="{StaticResource Dashboard_Chart_MajorTick_FG}" 
+                                               Tag="{TemplateBinding FormattedContent}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Remove points from Area charts -->
+        <Style TargetType="slc:SeriesDefinition">
+            <Setter Property="DataPointStyle">
+                <Setter.Value>
+                    <Style TargetType="slc:AreaDataPoint">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="slc:AreaDataPoint" />
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Remove opacity from Area chart -->
+        <Style TargetType="slc:AreaSeries">
+            <Setter Property="PathStyle">
+                <Setter.Value>
+                    <Style TargetType="Path">
+                        <Setter Property="Opacity" Value="1" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="c:Chart">
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="MainGrid">
+        <c:Chart x:Name="ChartControl" />
+    </Grid>
+</UserControl>
+

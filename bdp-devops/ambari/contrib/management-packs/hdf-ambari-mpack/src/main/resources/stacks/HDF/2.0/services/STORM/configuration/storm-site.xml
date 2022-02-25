@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+ censed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<configuration supports_final="true" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property>
+    <name>java.library.path</name>
+    <value>/usr/local/lib:/opt/local/lib:/usr/lib:/usr/hdf/current/storm-client/lib</value>
+    <description>This value is passed to spawned JVMs (e.g., Nimbus, Supervisor, and Workers)
+      for the java.library.path value. java.library.path tells the JVM where
+      to look for native libraries. It is necessary to set this config correctly since
+      Storm uses the ZeroMQ and JZMQ native libs. </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nimbus.childopts</name>
+    <value>-Xmx1024m _JAAS_PLACEHOLDER -javaagent:/usr/hdf/current/storm-nimbus/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8649,wireformat31x=true,mode=multicast,config=/usr/hdf/current/storm-nimbus/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Nimbus_JVM</value>
+    <description>This parameter is used by the storm-deploy project to configure the jvm options for the nimbus daemon.</description>
+    <value-attributes>
+      <overridable>false</overridable>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>worker.childopts</name>
+    <value>-Xmx768m _JAAS_PLACEHOLDER -javaagent:/usr/hdf/current/storm-client/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8650,wireformat31x=true,mode=multicast,config=/usr/hdf/current/storm-client/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Worker_%ID%_JVM</value>
+    <description>The jvm opts provided to workers launched by this supervisor. All \"%ID%\" substrings are replaced with an identifier for this worker.</description>
+    <value-attributes>
+      <type>multiLine</type>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>supervisor.childopts</name>
+    <value>-Xmx256m _JAAS_PLACEHOLDER -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port={{jmxremote_port}} -javaagent:/usr/hdf/current/storm-supervisor/contrib/storm-jmxetric/lib/jmxetric-1.0.4.jar=host=localhost,port=8650,wireformat31x=true,mode=multicast,config=/usr/hdf/current/storm-supervisor/contrib/storm-jmxetric/conf/jmxetric-conf.xml,process=Supervisor_JVM</value>
+    <description>This parameter is used by the storm-deploy project to configure the jvm options for the supervisor daemon.</description>
+    <value-attributes>
+      <overridable>false</overridable>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+</configuration>

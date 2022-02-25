@@ -1,0 +1,109 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div id="group-edit">
+  <div class="clearfix">
+    <ol class="breadcrumb pull-left">
+      <li><a href="#!/userManagement?tab=groups">{{'common.groups' | translate}}</a></li>
+      <li class="active">{{group.group_name}}</li>
+    </ol>
+  </div>
+  <hr>
+  <form class="form-horizontal" role="form" novalidate name="form" >
+    <div class="form-group">
+      <label class="col-sm-2 one-row-value">{{'common.type' | translate}}</label>
+      <div class="col-sm-10">
+        <label class="one-row-value">{{group.groupTypeName | translate}}</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2">{{group.groupTypeName | translate}} {{'groups.members' | translate}}</label>
+      <div class="col-sm-10">
+        <editable-list items-source="group.editingUsers" resource-type="User" editable="group.group_type == 'LOCAL'"></editable-list>
+      </div>
+    </div>
+    <div class="form-group" ng-show="cluster">
+      <label for="role" class="col-sm-2 roles-label">
+        {{'groups.role' | translate}}
+        <i class="fa fa-question-circle" aria-hidden="true" ng-click="showHelpPage()"></i>
+      </label>
+      <div class="col-sm-3">
+        <select class="form-control"
+                id="role"
+                name="role"
+                ng-change="updateRole()"
+                ng-options="item as item.permission_label for item in roleOptions track by item.permission_name"
+                ng-model="currentRole">
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2">{{'common.privileges' | translate}}</label>
+      <div class="col-sm-10">
+        <table class="table" ng-hide="hidePrivileges">
+          <thead>
+          <tr>
+            <th>{{'common.cluster' | translate}}</th>
+            <th>{{'common.clusterRole' | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="(name, privilege) in privileges.clusters">
+            <td>
+              <span class="glyphicon glyphicon-cloud"></span>
+              <a href="#!/clusters/{{name}}/manageAccess">{{name}}</a>
+            </td>
+            <td>
+              <span tooltip="{{item}}" ng-repeat="item in privilege">{{item | translate}}{{$last ? '' : ', '}}</span>
+            </td>
+          </tr>
+          <tr>
+            <td ng-show="noClusterPriv">{{'common.alerts.noPrivileges' | translate:{term: constants.cluster} }}</td>
+          </tr>
+          </tbody>
+          <thead class="view-permission-header">
+          <tr>
+            <th>{{'common.view' | translate}}</th>
+            <th>{{'common.viewPermissions' | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="(name, privilege) in privileges.views">
+            <td>
+              <span class="glyphicon glyphicon-th"></span>
+              <a href="#!/views/{{privilege.view_name}}/versions/{{privilege.version}}/instances/{{name}}/edit">{{name}}</a>
+            </td>
+            <td>
+              <span tooltip="{{item}}" ng-repeat="item in privilege.privileges">{{item | translate}}{{$last ? '' : ', '}}</span>
+            </td>
+            <td>
+              <i class="fa fa-trash-o" aria-hidden="true" ng-click="removeViewPrivilege(name, privilege);"></i>
+            </td>
+          </tr>
+          <tr>
+            <td ng-show="noViewPriv">{{'common.alerts.noPrivileges' | translate:{term: constants.view} }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="alert alert-info" ng-show="hidePrivileges">
+          {{'common.alerts.noPrivilegesDescription' | translate:{term: constants.group.toLowerCase()} }}
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

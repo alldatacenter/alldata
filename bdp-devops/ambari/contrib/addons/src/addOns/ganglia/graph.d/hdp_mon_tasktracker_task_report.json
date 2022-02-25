@@ -1,0 +1,14 @@
+{
+   "report_name" : "tasktracker_task_report",
+   "report_type" : "standard",
+   "title" : "Task Status",
+   "vertical_label" : "Number Of Tasks",
+   "series" : [
+      { "metric": "mapred.tasktracker.tasks_completed", "color": "00ff00", "label": "Completed", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "mapred.tasktracker.tasks_failed_timeout", "color": "ffff00", "label": "Failed Timeout", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "mapred.tasktracker.tasks_failed_ping", "color": "ff0000", "label": "Failed Ping", 
+        "line_width": "2", "type": "stack" }
+   ]
+}

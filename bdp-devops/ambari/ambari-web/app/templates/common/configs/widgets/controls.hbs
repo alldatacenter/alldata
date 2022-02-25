@@ -1,0 +1,97 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div {{bindAttr class="view.isPropertyUndefined::hide :left :widget-config-raw"}}>
+  <i>{{t common.property.undefined}}</i>
+</div>
+{{#if view.supportSwitchToTextBox}}
+  {{#unless view.isPropertyUndefined}}
+    <div {{bindAttr class="view.config.showAsTextBox::hide :widget-config-raw"}}>
+      {{view App.PlainConfigTextField
+        isVisibleBinding="view.config.showAsTextBox"
+        sectionBinding="view.section"
+        subSectionBinding="view.subSection"
+        configBinding="view.config"
+        serviceConfigBinding="view.config"
+        disabledBinding="view.canNotEdit"}}
+    </div>
+  {{/unless}}
+{{/if}}
+{{#if view.canEdit}}
+  {{#unless view.readOnly}}
+    {{#if view.inlineControls}}
+      <div class="widget-config-controls">
+        {{template "templates/common/configs/widgets/controls/undo"}}
+        {{template "templates/common/configs/widgets/controls/edit"}}
+        {{template "templates/common/configs/widgets/controls/remove_override"}}
+        {{template "templates/common/configs/widgets/controls/create_override"}}
+        {{template "templates/common/configs/widgets/controls/set_recommended"}}
+        {{template "templates/common/configs/widgets/controls/final"}}
+      </div>
+    {{else}}
+      <div {{bindAttr class=":widget-config-controls view.referToSelectedGroup::clear-min-height"}}>
+        <div {{bindAttr class=":widget-col :left view.config.isNotDefaultValue::hidden"}}>
+          {{template "templates/common/configs/widgets/controls/undo"}}
+        </div>
+        <div class="widget-col left">
+          {{template "templates/common/configs/widgets/controls/edit"}}
+          {{template "templates/common/configs/widgets/controls/set_recommended"}}
+        </div>
+        <div class="widget-col right">
+          {{template "templates/common/configs/widgets/controls/final"}}
+          {{template "templates/common/configs/widgets/controls/remove_override"}}
+          {{template "templates/common/configs/widgets/controls/create_override"}}
+        </div>
+      </div>
+    {{/if}}
+  {{/unless}}
+{{/if}}
+
+{{#if controller.selectedConfigGroup.isDefault}}
+  {{#if view.configGroup}}
+    {{view App.SwitchToGroupView controllerBinding="controller" groupBinding="view.configGroup"}}
+  {{/if}}
+{{/if}}
+
+{{#if view.isComparison}}
+  <div class="widget-config-controls version-labels">
+    {{#if controller.selectedConfigGroup.isDefault}}
+      <span class="label label-info">{{t dashboard.configHistory.table.version.prefix}}{{controller.selectedVersion}}</span>
+      {{#if controller.isCurrentSelected}}
+        <span class="label label-success glyphicon glyphicon-ok label-current" data-toggle="tooltip" {{translateAttr title="common.current"}}></span>
+      {{/if}}
+      {{#if view.config.supportsFinal}}
+        <i {{bindAttr class=":glyphicon :glyphicon-lock view.config.isFinal::hidden" }}></i>
+      {{/if}}
+    {{else}}
+      <span class="label label-info">{{t common.default}}
+        &nbsp;{{t services.service.config.configHistory.configGroup}}</span>
+    {{/if}}
+  </div>
+{{/if}}
+
+
+{{#if view.isOriginalSCP}}
+  {{#unless view.config.hasCompareDiffs}}
+    <div class="clearfix"></div>
+    {{view App.ConfigWidgetOverrideView
+    serviceConfigPropertyBinding="view.config"
+    isDefaultGroupSelectedBinding="controller.selectedConfigGroup.isDefault"
+    }}
+  {{/unless}}
+{{/if}}

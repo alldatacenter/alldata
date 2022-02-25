@@ -1,0 +1,41 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if isAnyQueueLabelsEnabled}}
+  <div class="label-capacitybar-wrapper">
+    <div class="row">
+      <div class="col-md-2 col-sm-2 total-label">
+        <label>Total Capacity</label>
+      </div>
+      <div class="col-sm-5 col-md-5">
+        <div class="progress total-capacity-progress">
+          <div role="progressbar" {{bind-attr class=":progress-bar warnInvalidLabelCapacity:progress-bar-danger:progress-bar-success" style="totalLabelCapacityBarWidth"}}>
+            {{childrenQueueLabelsTotalCapacity}}%
+          </div>
+        </div>
+      </div>
+    </div>
+    {{#if warnInvalidLabelCapacity}}
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-sm-offset-2 col-md-offset-2">
+          <small class="text-danger">Total capacity must be equal to 100%</small>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+{{/if}}

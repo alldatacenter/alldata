@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<configuration><property require-input="false">
+    <name>templeton.libjars</name>
+    <value>/usr/hdp/${hdp.version}/zookeeper/zookeeper.jar,/usr/hdp/${hdp.version}/hive/lib/hive-common.jar</value>
+    <description>Jars to add the the classpath.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hive.extra.files</name>
+    <value>/usr/hdp/${hdp.version}/tez/conf/tez-site.xml,/usr/hdp/${hdp.version}/tez,/usr/hdp/${hdp.version}/tez/lib</value>
+    <description>The resources in this list will be localized to the node running LaunchMapper and added to HADOOP_CLASSPTH
+      before launching 'hive' command.  If the path /foo/bar is a directory, the contents of the the entire dir will be localized
+      and ./foo/* will be added to HADOOP_CLASSPATH.  Note that since classpath path processing does not recurse into subdirectories,
+      the paths in this property may be overlapping.  In the example above, "./tez-site.xml:./tez-client/*:./lib/*" will be added to
+      HADOOP_CLASSPATH.
+      This can be used to specify config files, Tez artifacts, etc.  This will be sent -files option of hadoop jar command thus
+      each path is interpreted by Generic Option Parser.  It can be local or hdfs path.
+    </description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.jar</name>
+    <value>/usr/hdp/${hdp.version}/hive/share/webhcat/svr/lib/hive-webhcat-*.jar</value>
+    <description>The path to the Templeton jar file.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hadoop</name>
+    <value>/usr/hdp/${hdp.version}/hadoop/bin/hadoop</value>
+    <description>The path to the Hadoop executable.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.pig.archive</name>
+    <value>hdfs:///hdp/apps/${hdp.version}/pig/pig.tar.gz</value>
+    <description>The path to the Pig archive in HDFS.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.pig.path</name>
+    <value>pig.tar.gz/pig/bin/pig</value>
+    <description>The path to the Pig executable.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hcat</name>
+    <value>/usr/hdp/${hdp.version}/hive/bin/hcat</value>
+    <description>The path to the hcatalog executable.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hive.archive</name>
+    <value>hdfs:///hdp/apps/${hdp.version}/hive/hive.tar.gz</value>
+    <description>The path to the Hive archive.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hive.home</name>
+    <value>hive.tar.gz/hive</value>
+    <description>The path to the Hive home within the tar. Has no effect if templeton.hive.archive is not set.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hcat.home</name>
+    <value>hive.tar.gz/hive/hcatalog</value>
+    <description>The path to the HCat home within the tar. Has no effect if templeton.hive.archive is not set.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hive.path</name>
+    <value>hive.tar.gz/hive/bin/hive</value>
+    <description>The path to the Hive executable.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.sqoop.archive</name>
+    <value>hdfs:///hdp/apps/${hdp.version}/sqoop/sqoop.tar.gz</value>
+    <description>The path to the Sqoop archive in HDFS.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.sqoop.path</name>
+    <value>sqoop.tar.gz/sqoop/bin/sqoop</value>
+    <description>The path to the Sqoop executable.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.sqoop.home</name>
+    <value>sqoop.tar.gz/sqoop</value>
+    <description>The path to the Sqoop home within the tar. Has no effect if
+      templeton.sqoop.archive is not set.
+    </description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.streaming.jar</name>
+    <value>hdfs:///hdp/apps/${hdp.version}/mapreduce/hadoop-streaming.jar</value>
+    <description>The hdfs path to the Hadoop streaming jar file.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.port</name>
+    <value>50111</value>
+    <description>The HTTP port for the main server.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hadoop.conf.dir</name>
+    <value>/etc/hadoop/conf</value>
+    <description>The path to the Hadoop configuration.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.python</name>
+    <value>${env.PYTHON_CMD}</value>
+    <description>The path to the Python executable.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hive.properties</name>
+    <value>hive.metastore.local=false,hive.metastore.uris=thrift://localhost:9083,hive.metastore.sasl.enabled=false</value>
+    <description>Properties to set when running hive.</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.zookeeper.hosts</name>
+    <value>localhost:2181</value>
+    <description>ZooKeeper servers, as comma separated host:port pairs</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="false" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>multiLine</type>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.storage.class</name>
+    <value>org.apache.hive.hcatalog.templeton.tool.ZooKeeperStorage</value>
+    <description>The class to use as storage</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.override.enabled</name>
+    <value>false</value>
+    <description>Enable the override path in templeton.override.jars</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.exec.timeout</name>
+    <value>60000</value>
+    <description>Time out for templeton api</description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>templeton.hadoop.queue.name</name>
+    <value>default</value>
+    <description>
+      MapReduce queue name where WebHCat map-only jobs will be submitted to. Can be used to avoid a deadlock where all map slots in the cluster are taken over by Templeton launcher tasks.
+    </description>
+    <filename>webhcat-site.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="false" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on>
+        <property>
+            <name>yarn.scheduler.capacity.root.queues</name>
+            <type>capacity-scheduler</type>
+        </property>
+    </depends-on>
+    <property_depended_by/>
+</property></configuration>

@@ -1,0 +1,152 @@
+{
+  "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets?Widgets/author={{loginName}}&fields=*",
+  "items": [
+    {
+      "Widgets": {
+        "id": 1,
+        "scope": "USER",
+        "widget_name": "MINE_RS_READS_WRITES",
+        "display_name": "Mine widget 1",
+        "description": "This widget shows all the read requests and write requests on all regions for a RegionServer",
+        "widget_type": "GRAPH",
+        "author": "xi",
+        "metrics": [
+          {
+            "service_name": "HBASE"
+          },
+          {
+            "service_name": "HBASE"
+          }
+          ]
+      }
+    },
+    {
+      "Widgets": {
+        "id": 2,
+        "scope": "USER",
+        "widget_name": "MINE_ACTIVE_HANDLER",
+        "display_name": "Mine Active Handlers/Calls",
+        "widget_type": "GAUGE",
+        "author": "xi",
+        "metrics": [
+          {
+            "name": "ipc.IPC.numOpenConnections",
+            "widget_id": "metrics/hbase/ipc/IPC/numOpenConnections",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          },
+          {
+            "name": "ipc.IPC.numCallsInGeneralQueue",
+            "widget_id": "metrics/hbase/ipc/IPC/numOpenConnections",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          }
+        ]
+      }
+    },
+    {
+      "Widgets": {
+        "id": 3,
+        "scope": "USER",
+        "widget_name": "MINE_OPEN_CONNECTIONS",
+        "display_name": "Mine Open Connections",
+        "description": "This widget shows number of current open connections",
+        "widget_type": "GRAPH",
+        "author": "xi",
+        "metrics": [
+          {
+            "service_name": "HDFS"
+          }
+        ]
+      }
+    },
+    {
+      "Widgets": {
+        "id": 4,
+        "scope": "USER",
+        "widget_name": "MINE_FILES_LOCAL",
+        "display_name": "Mine Files Local",
+        "description": "This widget shows percentage of files local.",
+        "widget_type": "NUMBER",
+        "author": "xi",
+        "metrics": [
+          {
+            "name": "regionserver.Server.percentFilesLocal",
+            "widget_id": "metrics/hbase/regionserver/percentFilesLocal",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          }
+        ],
+        "values": [
+          {
+            "name": "Files Local",
+            "value": "${regionserver.Server.percentFilesLocal}"
+          }
+        ],
+        "properties": {
+          "display_unit": "%"
+        }
+      }
+    },
+    {
+      "Widgets": {
+        "id": 5,
+        "scope": "USER",
+        "widget_name": "MINE UPDATED_BLOCKED_TIME",
+        "display_name": "Mine Updated Blocked Time",
+        "description": "",
+        "widget_type": "GRAPH",
+        "author": "xi",
+        "metrics": [
+          {
+            "service_name": "YARN"
+          }
+        ]
+      }
+    },
+    {
+      "Widgets": {
+        "id": 6,
+        "scope": "USER",
+        "widget_name": "MINE WIDGET NAME",
+        "display_name": "MINE WIDGET 1",
+        "description": "this is to show .....this is a long description..very long ..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long",
+        "widget_type": "GAUGE",
+        "author": "xi",
+        "metrics": [
+          {
+            "service_name": "HBASE"
+          },
+          {
+            "service_name": "HDFS"
+          }
+        ]
+      }
+    },
+    {
+      "Widgets": {
+        "id": 7,
+        "scope": "USER",
+        "widget_name": "MINE WIDGET NAME2",
+        "display_name": "MINE  WIDGET 2",
+        "description": "this is to show .....",
+        "widget_type": "NUMBER",
+        "author": "xi",
+        "metrics": [
+          {
+            "service_name": "YARN"
+          },
+          {
+            "service_name": "HDFS"
+          },
+          {
+            "service_name": "HBASE"
+          }
+        ]
+      }
+    }
+  ]
+}

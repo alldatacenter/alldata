@@ -1,0 +1,159 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices?fields=StackServices",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2",
+      "StackServices" : {
+        "user_name" : "mapred",
+        "stack_version" : "2.0.1",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "comments" : "Apache Hadoop NextGen MapReduce (client libraries)",
+        "service_version" : "2.0.3.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "comments" : "System for workflow coordination and execution of Apache Hadoop jobs",
+        "service_version" : "3.3.1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/PIG",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "PIG",
+        "stack_name" : "HDP",
+        "comments" : "Scripting platform for analyzing large datasets",
+        "service_version" : "0.10.1.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/WEBHCAT",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "WEBHCAT",
+        "stack_name" : "HDP",
+        "comments" : "This is comment for WEBHCAT service",
+        "service_version" : "0.5.0"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "comments" : "This is comment for ZOOKEEPER service",
+        "service_version" : "3.4.5.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/GANGLIA",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "GANGLIA",
+        "stack_name" : "HDP",
+        "comments" : "Ganglia Metrics Collection system",
+        "service_version" : "3.2.0"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE",
+      "StackServices" : {
+        "user_name" : "mapred",
+        "stack_version" : "2.0.1",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "comments" : "Non-relational distributed database and centralized service for configuration management & synchronization",
+        "service_version" : "0.94.5.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "comments" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+        "service_version" : "0.10.0.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/YARN",
+      "StackServices" : {
+        "user_name" : "mapred",
+        "stack_version" : "2.0.1",
+        "service_name" : "YARN",
+        "stack_name" : "HDP",
+        "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+        "service_version" : "2.0.3.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/TEZ",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "TEZ",
+        "stack_name" : "HDP",
+        "comments" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN",
+        "service_version" : "0.1.0.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HDFS",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "HDFS",
+        "stack_name" : "HDP",
+        "comments" : "Apache Hadoop Distributed File System",
+        "service_version" : "2.0.3.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/FALCON",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "comments" : "Falcon server",
+        "service_version" : "2.0.3.22-1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/STORM",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "comments" : "Apache Hadoop Stream processing framework",
+        "service_version" : "0.9.0.1"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/FLUME",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "FLUME",
+        "stack_name" : "HDP",
+        "comments" : "Efficiently collects, aggregates, and moves large amounts of log data",
+        "service_version" : "1.4.0"
+      }
+    }
+  ]
+}

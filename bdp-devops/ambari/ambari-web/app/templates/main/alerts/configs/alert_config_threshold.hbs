@@ -1,0 +1,36 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="col-md-4">
+  <span {{bindAttr class="view.property.badgeCssClass :alert-label :label :alert-state-single-host"}}>{{view.property.badge}}</span>
+</div>
+{{#if view.property.showInputForValue}}
+  <div class="col-md-4">
+    <div {{bindAttr class="view.property.valueMetric:input-group"}}>
+      {{view Em.TextField valueBinding="view.property.displayValue" disabledBinding="view.property.isDisabled" class="form-control"}}
+      {{#if view.property.valueMetric}}
+        <span class="input-group-addon">{{view.property.valueMetric}}</span>
+      {{/if}}
+    </div>
+  </div>
+{{/if}}
+{{#if view.property.showInputForText}}
+  <div {{bindAttr class="view.property.showInputForValue:col-md-4:col-md-8"}}>
+    {{view Em.TextField valueBinding="view.property.text" disabledBinding="view.property.isDisabled" class="form-control"}}
+  </div>
+{{/if}}

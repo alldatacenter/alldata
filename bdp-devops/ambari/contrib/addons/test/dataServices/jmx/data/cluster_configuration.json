@@ -1,0 +1,93 @@
+{
+  "config_version": 1,
+  "stack_version": "1.0.2",
+  "overall": {
+    "cluster_name": "MyHDPCluster",
+    "dashboard_host": "dashboard_host",
+    "dashboard_port": 80, 
+    "ganglia" : {
+      "web_host": "gangliaweb_host",
+      "web_port": 80,
+      "web_root": "/var/www/ganglia2",
+      "grid_name": "HDP_GRID"
+    },
+    "nagios": {
+      "nagiosserver_host": "nagiosserver_host",
+      "nagiosserver_port": 80,
+      "web_root": "/nagios"
+    },
+    "jmx": {
+      "timeout": 1
+    },
+    "services": {
+	  "HDFS" : [
+        {
+          "installed": true,
+          "name": "HDFS",
+          "namenode_host": "namenode",
+          "namenode_port": 50070,
+          "snamenode_host": "snamenode",
+          "snamenode_port": 50071,
+          "total_datanodes": 10,
+          "ganglia_clusters": {
+            "slaves": "HDPSlaves",
+            "namenode": "HDPNameNode"      
+          }
+        }
+      ],
+      "MAPREDUCE" : [        
+        {
+          "installed": true,
+          "name": "MAPREDUCE",
+          "jobtracker_host": "jobtracker",
+          "jobtracker_port": 50030,
+          "total_tasktrackers": 20,
+          "jobhistory_host": "jobhistory_host",
+          "jobhistory_port": 52890,
+          "ganglia_clusters": {
+            "slaves": "HDPSlaves",
+            "jobtracker": "HDPJobTracker"
+          },
+          "scheduler_type": "org.foo.CapacityTaskScheduler"
+        }
+      ],
+      "HBASE" : [  
+        {
+          "installed": true,
+          "name": "HBASE",
+          "hbasemaster_host": "hbasemaster",
+          "hbasemaster_port": 60010,
+          "total_regionservers": 30,
+          "ganglia_clusters": {
+            "slaves": "HDPSlaves",
+            "hbasemaster": "HDPHBaseMaster"
+          }
+        }
+      ],
+      "ZOOKEEPER" : [
+        {
+          "installed": false,
+          "name": "ZOOKEEPER"
+        }
+      ],
+      "HIVE-METASTORE" : [
+        {
+          "installed": true,
+          "name": "HIVE-METASTORE"
+        }
+      ],
+      "TEMPLETON" : [
+        {
+          "installed": true,
+          "name": "TEMPLETON"
+        }
+      ],
+      "OOZIE" : [
+        {
+          "installed": true,
+          "name": "OOZIE"
+        }
+      ]
+    }
+  }
+}

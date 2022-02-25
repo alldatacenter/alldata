@@ -1,0 +1,131 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+{{#if controller.isInstallWizard}}
+  <div class="row one-row-tabs-container">
+    <div {{bindAttr class=":left-arrow view.isNavArrowsHidden:not-visible"}}>
+      <a href="#"{{bindAttr class="view.isLeftArrowDisabled:disabled"}} {{action "scrollTabsLeft" target="view"}}> <i class="icon-angle-left"></i>
+      </a>
+    </div>
+    <div class="tabs-container">
+      <ul class="nav nav-tabs mbm">
+        {{#each tab in controller.stepConfigs}}
+          <li rel='tooltip' {{bindAttr class="tab.isActive:active" data-original-title="tab.tooltipMsg"}}>
+            <a href="#" {{action selectService tab target="controller"}} {{bindAttr data-target="tab.headingClass"}}
+               data-toggle="tab">
+              {{formatRole tab.serviceName}}
+              {{#if tab.configsWithErrors}}
+                <span class="alert-badge">
+                  <span class="counter label alerts-crit-count">
+                    {{tab.configsWithErrors.length}}
+                  </span>
+                </span>
+              {{/if}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div {{bindAttr class=":right-arrow view.isNavArrowsHidden:not-visible"}}>
+      <a href="#" {{bindAttr class="view.isRightArrowDisabled:disabled"}} {{action "scrollTabsRight" target="view"}}>
+        <i class="icon-angle-right"></i>
+      </a>
+    </div>
+  </div>
+{{else}}
+  {{#if controller.isRecommendedLoaded}}
+    <ul class="nav nav-tabs" {{QAAttr "config-tabs"}}>
+      {{#each service in controller.stepConfigs}}
+        {{#if service.showConfig}}
+          {{#view App.ServiceConfigTab}}
+            <a href="#{{unbound service.serviceName}}" {{bindAttr class=":active service.selected:new"}}
+               data-toggle="tab" {{action selectService service target="controller"}}>
+              {{service.displayName}}
+              {{#if service.errorCount}}
+                <span class="alert-badge" {{QAAttr "error-badge"}}>
+                  <span class="counter label alerts-crit-count">
+                    {{service.errorCount}}
+                  </span>
+                </span>
+              {{/if}}
+            </a>
+          {{/view}}
+        {{/if}}
+      {{/each}}
+    </ul>
+  {{else}}
+    {{view App.SpinnerView}}
+  {{/if}}
+{{/if}}
+{{#if controller.isInstallWizard}}
+  {{#if issuesCounter}}
+    <div class="notifications-group align-right installer-all-configs-notifications">
+      <span class="alerts-label dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span id="issues-bell" {{bindAttr class=":glyphicon :glyphicon-bell controller.hasErrors:important:warning"}}></span>
+        <span id="issues-counter">
+          {{view App.AlertBadgeView
+                 criticalCountBinding="validationsCounter"
+                 suggestionCountBinding="suggestionsCounter"}}
+        </span>
+      </span>
+      <div id="notifications-dropdown" class="dropdown-menu row">
+        <div class="popover-content">
+          <div class="popup-arrow-up"></div>
+          {{view App.DependentConfigsListView recommendationsBinding="controller.recommendations"
+            requiredChangesBinding="controller.requiredChanges" isRecommendationsClickable=true
+            showRecommendationsPopovers=false}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+{{/if}}
+{{#if hasChangedDependencies}}
+  {{#unless controller.isInstallWizard}}
+    <div class="alert alert-warning service-config-alert">
+      <span>{{dependenciesMessage}}</span> <a
+        href="#" {{action "showChangedDependentConfigs" target="controller"}}>{{t common.showDetails}}</a>
+    </div>
+  {{/unless}}
+{{/if}}
+{{#if showSelectGroupsPopup}}
+  <div class="alert alert-warning service-config-alert">
+    <span>{{dependenciesGroupMessage}}</span> <a
+      href="#" {{action "changedDependentGroup" target="controller"}}>{{t common.showDetails}}</a>
+  </div>
+{{/if}}
+{{view App.ServiceConfigContainerView}}
+{{#if controller.isRecommendedLoaded}}
+  <p class="loading align-center"></p>
+  {{#unless controller.isInstallWizard}}
+    {{#unless controller.transitionInProgress}}
+      {{#if controller.hasStepConfigIssues}}
+        <div class="alert alert-warning" {{QAAttr "warning-alert"}}>
+          <span class="glyphicon glyphicon-warning-sign"></span> {{t installer.step7.attentionNeeded}}<br/>
+          {{issuesFilterText}} <a
+            href="#" {{action toggleIssuesFilter target="controller"}}>{{issuesFilterLinkText}}</a>
+        </div>
+      {{else}}
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-check"></span> {{t installer.step7.noIssues}}<br/>
+          {{#if controller.issuesFilterSelected}}
+            <a href="#" {{action toggleIssuesFilter target="controller"}}>{{issuesFilterLinkText}}</a>
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/unless}}
+  {{/unless}}
+{{/if}}

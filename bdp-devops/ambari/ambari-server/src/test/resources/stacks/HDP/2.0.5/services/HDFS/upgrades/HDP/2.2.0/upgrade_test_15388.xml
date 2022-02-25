@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="upgrade-pack.xsd">
+  <target>2.4.*</target>
+  <target-stack>HDP-2.4.0</target-stack>
+  <type>ROLLING</type>
+  <prerequisite-checks>
+    <check>org.apache.ambari.server.checks.FooCheck</check>
+  </prerequisite-checks>
+  <order>
+    <group xsi:type="cluster" name="PRE_CLUSTER" title="Pre {{direction.text.proper}}">
+      <add-after-group-entry>HDFS</add-after-group-entry>
+      <execute-stage service="FOO" component="BAR" title="Backup FOO">
+        <task xsi:type="manual">
+          <message>Back FOO up.</message>
+        </task>
+      </execute-stage>
+    </group>
+
+    <group name="SERVICE_CHECK1" title="All Service Checks" xsi:type="service-check">
+      <add-after-group-entry>ZOOKEEPER</add-after-group-entry>
+      <priority>
+        <service>HBASE</service>
+      </priority>
+    </group>
+
+    <group name="FOO" title="Foo">
+      <add-after-group>HIVE</add-after-group>
+      <add-after-group-entry>FOO</add-after-group-entry>
+      <skippable>true</skippable>
+      <allow-retry>false</allow-retry>
+      <service name="FOO2">
+        <component>BAR2</component>
+      </service>
+    </group>
+
+    <group name="FOO" title="Foo">
+      <add-after-group>HIVE</add-after-group>
+      <skippable>true</skippable>
+      <allow-retry>false</allow-retry>
+      <service name="FOO">
+        <component>BAR</component>
+      </service>
+    </group>
+
+    <group name="CORE_MASTER" title="Core Masters">
+      <add-after-group-entry>YARN</add-after-group-entry>
+      <service name="HBASE">
+        <component>HBASE_MASTER</component>
+      </service>
+    </group>
+
+    <group name="CORE_SLAVES" title="Core Slaves" xsi:type="colocated">
+      <add-after-group-entry>HDFS</add-after-group-entry>
+      <service name="HBASE">
+        <component>REGIONSERVER</component>
+      </service>
+      <batch>
+        <percent>1</percent>
+        <summary>Summary</summary>
+        <message>Message</message>
+      </batch>
+    </group>
+  </order>
+
+  <processing>
+    <service name="HBASE">
+      <component name="HBASE_MASTER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_4_0_0_hbase_remove_local_indexing"/>
+        </pre-upgrade>
+        <pre-downgrade /> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="HBASE_REGIONSERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+  </processing>
+</upgrade>

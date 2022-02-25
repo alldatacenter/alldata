@@ -1,0 +1,150 @@
+{
+  "resources" : [
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/recommendations/5",
+      "hosts" : [
+        "c6403.ambari.apache.org"
+      ],
+      "services": ["HDFS", "MAPREDUCE2", "YARN", "TEZ", "GANGLIA", "HIVE", "SQOOP", "OOZIE", "ZOOKEEPER", "FALCON", "STORM", "FLUME", "PIG"],
+      "Recommendation" : {
+        "id" : 5
+      },
+      "Versions" : {
+        "stack_name" : "HDP",
+        "stack_version" : "2.2"
+      },
+      "recommendations" : {
+        "blueprint" : {
+          "host_groups" : [
+            {
+              "name" : "host-group-1",
+              "components" : [
+                {
+                  "name" : "NODEMANAGER"
+                },
+                {
+                  "name" : "HIVE_CLIENT"
+                },
+                {
+                  "name" : "HDFS_CLIENT"
+                },
+                {
+                  "name" : "APP_TIMELINE_SERVER"
+                },
+                {
+                  "name" : "SLIDER"
+                },
+                {
+                  "name" : "RESOURCEMANAGER"
+                },
+                {
+                  "name" : "WEBHCAT_SERVER"
+                },
+                {
+                  "name" : "DATANODE"
+                },
+                {
+                  "name" : "FLUME_HANDLER"
+                },
+                {
+                  "name" : "SUPERVISOR"
+                },
+                {
+                  "name" : "NAMENODE"
+                },
+                {
+                  "name" : "HBASE_CLIENT"
+                },
+                {
+                  "name" : "OOZIE_CLIENT"
+                },
+                {
+                  "name" : "HBASE_REGIONSERVER"
+                },
+                {
+                  "name" : "KAFKA_BROKER"
+                },
+                {
+                  "name" : "HISTORYSERVER"
+                },
+                {
+                  "name" : "PIG"
+                },
+                {
+                  "name" : "KNOX_GATEWAY"
+                },
+                {
+                  "name" : "HCAT"
+                },
+                {
+                  "name" : "YARN_CLIENT"
+                },
+                {
+                  "name" : "SQOOP"
+                },
+                {
+                  "name" : "GANGLIA_SERVER"
+                },
+                {
+                  "name" : "HIVE_METASTORE"
+                },
+                {
+                  "name" : "DRPC_SERVER"
+                },
+                {
+                  "name" : "NIMBUS"
+                },
+                {
+                  "name" : "GANGLIA_MONITOR"
+                },
+                {
+                  "name" : "MYSQL_SERVER"
+                },
+                {
+                  "name" : "MAPREDUCE2_CLIENT"
+                },
+                {
+                  "name" : "OOZIE_SERVER"
+                },
+                {
+                  "name" : "HIVE_SERVER"
+                },
+                {
+                  "name" : "HBASE_MASTER"
+                },
+                {
+                  "name" : "STORM_UI_SERVER"
+                },
+                {
+                  "name" : "ZOOKEEPER_CLIENT"
+                },
+                {
+                  "name" : "ZOOKEEPER_SERVER"
+                },
+                {
+                  "name" : "TEZ_CLIENT"
+                },
+                {
+                  "name" : "SECONDARY_NAMENODE"
+                }
+              ]
+            }
+          ],
+          "configurations" : { }
+        },
+        "blueprint_cluster_binding" : {
+          "host_groups" : [
+            {
+              "name" : "host-group-1",
+              "hosts" : [
+                {
+                  "name" : "c6403.ambari.apache.org"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

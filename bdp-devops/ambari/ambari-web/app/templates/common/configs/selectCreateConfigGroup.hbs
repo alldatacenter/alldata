@@ -1,0 +1,68 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="config-group-select-create-dialog">
+  <div class="alert alert-info">
+    {{view.parentView.subTitle}}
+  </div>
+  <div class="text-warning">
+    {{view.parentView.warningMessage}}
+  </div>
+  <form>
+    <div>
+      {{view view.selectConfigGroupRadioButton}}
+    </div>
+    {{#if view.parentView.availableConfigGroups.length}}
+      <div class="select-create-config-group-div">
+        <div class="btn-group">
+          <button class="btn btn-default" {{bindAttr disabled="view.parentView.optionCreateConfigGroup"}}>{{view.parentView.selectedConfigGroup.name}}</button>
+          <button class="btn btn-default dropdown-toggle btn-icon" data-toggle="dropdown" {{bindAttr disabled="view.parentView.optionCreateConfigGroup"}}>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <!-- available config group menu links -->
+            {{#each configGroup in view.parentView.availableConfigGroups}}
+               <li>
+                 <a href="#" {{action "doSelectConfigGroup" configGroup target="view.parentView"}}>
+                   {{configGroup.name}}
+                 </a>
+               </li>
+            {{/each}}
+          </ul>
+        </div>
+        <div>{{t config.group.selection.dialog.option.select.msg}}</div>
+      </div>
+    {{else}}
+      <div class="select-create-config-group-div">
+        <div class="alert alert-block">{{view.parentView.noGroups}}</div>
+      </div>
+    {{/if}}
+    <div>
+      {{view view.createConfigGroupRadioButton}}
+    </div>
+    <div class="select-create-config-group-div">
+      <div class="row">
+        <div class="col-md-5">
+          {{view Ember.TextField valueBinding="view.parentView.newConfigGroupName"
+            disabledBinding="view.parentView.optionSelectConfigGroup" maxlength="255" class="form-control"}}
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div>{{view.parentView.createNewGroupDescription}}</div>
+    </div>
+  </form>
+</div>

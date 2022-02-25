@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<configuration>
+
+  
+  
+  <!-- Note: these two properties must be in same xml file for quicklinks to correctly work -->
+  <property>
+    <name>nifi.node.port</name>
+    <value>9090</value>
+    <display-name>Nifi HTTP port (non-SSL)</display-name>
+    <description>HTTP port NiFi node runs on when SSL is not enabled</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nifi.node.ssl.port</name>
+    <value>9091</value>
+    <display-name>Nifi HTTP port (SSL)</display-name>
+    <description>HTTP port NiFi node runs on when SSL is enabled</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  
+  <!-- End Note -->
+  
+  <property>
+    <name>nifi.node.protocol.port</name>
+    <value>9088</value>
+    <display-name>Nifi protocol port</display-name>
+    <description>HTTP port NiFi node protocol runs on</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+    
+  <property>
+    <name>nifi.initial_mem</name>
+    <value>512m</value>
+    <display-name>Initial memory allocation</display-name>
+    <description>Initial memory allocation for NiFi JVM (Xms)</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nifi.max_mem</name>
+    <value>512m</value>
+    <display-name>Max memory allocation</display-name>
+    <description>Max memory allocation for Nifi JVM (Xmx)</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+
+  <property>
+    <name>nifi.ambari_reporting_frequency</name>
+    <value>1 mins</value>
+    <display-name>Metrics reporting frequency</display-name>
+    <description>Frequency with which Nifi metrics will be reported to Ambari Metrics. Only used during initial install of service. The existence of nifi_znode is used to determine whether initial install or not. Post-install this can be reconfigured from Nifi UI under Controller Settings</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nifi.ambari_reporting_enabled</name>
+    <value>true</value>
+    <display-name>Enable metrics reporting to Ambari?</display-name>
+    <description>Whether to setup reporting of Nifi metrics to Ambari Metrics. Only used during initial install of service. The existence of nifi_znode is used to determine whether initial install or not. Post-install this can be reconfigured from Nifi UI under Controller Settings</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nifi.nifi_znode</name>
+    <value>/nifi</value>
+    <display-name>Zookeeper znode</display-name>
+    <description>Zookeeper znode for Nifi</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+
+  <property>
+    <name>nifi.internal.dir</name>
+    <value>/var/lib/nifi</value>
+    <display-name>Nifi internal dir</display-name>
+    <description>Internal directory for Nifi (used to store archive, templates, work dirs). This directory will be created (if not already existing)</description>
+    <value-attributes>
+      <type>directory</type>
+    </value-attributes>        
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nifi.config.dir</name>
+    <value>{nifi_install_dir}/conf</value>
+    <display-name>Nifi config dir</display-name>    
+    <description>The directory to store config files (nifi.properties, bootstrap.conf etc). This directory will be created (if not already existing)</description>
+    <on-ambari-upgrade add="true"/>
+  </property> 
+    
+  <property>
+    <name>nifi.flow.config.dir</name>
+    <value>{nifi_internal_dir}/conf</value>
+    <display-name>Nifi internal config dir</display-name>
+    <description>The directory to store the state, flow.xml.gz and authorizations.xml files. This directory will be created (if not already existing)</description>
+    <on-ambari-upgrade add="true"/>
+  </property> 
+
+  <property>
+    <name>nifi.state.dir</name>
+    <value>{nifi_internal_dir}/state/local</value>
+    <display-name>Nifi internal state dir</display-name>
+    <description>The directory to store the state. This directory will be created (if not already existing)</description>
+    <on-ambari-upgrade add="true"/>
+  </property> 
+  
+  <property>
+    <name>nifi.database.dir</name>
+    <value>/var/lib/nifi/database_repository</value>
+    <display-name>Nifi H2 database dir</display-name>
+    <description>The directory for the H2 database repository. The H2 database keeps track of user access and flow controller history. This directory will be created (if not already existing)</description>
+    <value-attributes>
+      <type>directory</type>
+    </value-attributes>    
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nifi.flowfile.repository.dir</name>
+    <value>/var/lib/nifi/flowfile_repository</value>
+    <display-name>Nifi flowfile repository dir</display-name>
+    <description>The directory for the flowfile repository. This directory will be created (if not already existing)</description>
+    <value-attributes>
+      <type>directory</type>
+    </value-attributes>    
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nifi.content.repository.dir.default</name>
+    <value>/var/lib/nifi/content_repository</value>
+    <display-name>Nifi content repository default dir</display-name>
+    <description>The default directory for the content repository. This directory will be created (if not already existing).  NOTE: Multiple content repositories can be specified by using the nifi.content.repository.directory. prefix with unique suffixes and separate paths as values. For example, to provide two additional locations to act as part of the content repository, a user could also specify additional properties with keys of: nifi.content.repository.directory.content1=/repos/content1</description>
+    <value-attributes>
+      <type>directory</type>
+    </value-attributes>    
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property>
+    <name>nifi.provenance.repository.dir.default</name>
+    <value>/var/lib/nifi/provenance_repository</value>
+    <display-name>Nifi provenance repository default dir</display-name>
+    <description>The default directory for the provenance repository. This directory will be created (if not already existing).  NOTE: Multiple provenance repositories can be specified by using the nifi.provenance.repository.directory. prefix with unique suffixes and separate paths as values. For example, to provide two additional locations to act as part of the provenance repository, a user could also specify additional properties with keys of: nifi.provenance.repository.directory.content1=/repos/provenance1</description>
+    <value-attributes>
+      <type>directory</type>
+    </value-attributes>    
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+  <property require-input="true">
+    <name>nifi.sensitive.props.key</name>
+    <value/>
+    <property-type>PASSWORD</property-type>
+    <display-name>Sensitive property values encryption password</display-name>
+    <description>
+      This is the password used to encrypt any sensitive property values that are configured in processors. 
+      It can be a string of any length, although the recommended minimum length is 10 characters. 
+      Be aware that once this password is set and one or more sensitive processor properties have been configured, this password should not be changed.
+    </description>
+    <value-attributes>
+      <overridable>false</overridable>
+      <type>password</type>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  
+</configuration>

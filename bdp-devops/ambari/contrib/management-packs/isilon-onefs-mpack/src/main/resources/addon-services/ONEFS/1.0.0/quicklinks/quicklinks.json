@@ -1,0 +1,42 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol": {
+      "type": "HTTPS_ONLY"
+    },
+    "links": [
+      {
+        "component_name" : "ONEFS_CLIENT",
+        "name": "onefs_web_ui",
+        "label": "OneFS Web UI",
+        "url": "%@://%@:%@",
+        "port": {
+          "http_default_port": "8080",
+          "https_default_port": "8080"
+        },
+
+        "host": {
+          "http_property": "fs.defaultFS",
+          "https_property": "fs.defaultFS",
+          "site": "core-site"
+        }
+      },
+      {
+        "component_name" : "ONEFS_CLIENT",
+        "name": "onefs_hdfs_web_ui",
+        "label": "OneFS HDFS Settings",
+        "url": "%@://%@:%@/OneFS#HDFS/Settings",
+        "port": {
+          "http_default_port": "8080",
+          "https_default_port": "8080"
+        },
+        "host": {
+          "http_property": "fs.defaultFS",
+          "https_property": "fs.defaultFS",
+          "site": "core-site"
+        }
+      }
+    ]
+  }
+}

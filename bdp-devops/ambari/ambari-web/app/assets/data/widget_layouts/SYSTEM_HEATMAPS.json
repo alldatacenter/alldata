@@ -1,0 +1,35 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/users/admin/activeWidgetLayouts?WidgetLayoutInfo/section_name=SYSTEM_HEATMAPS",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widget_layouts/15",
+      "WidgetLayoutInfo" : {
+        "cluster_name" : "c1",
+        "display_name" : "Heatmaps",
+        "id" : 15,
+        "layout_name" : "admin_system_heatmap",
+        "scope" : "USER",
+        "section_name" : "SYSTEM_HEATMAPS",
+        "user_name" : "admin",
+        "widgets" : [
+          {
+            "WidgetInfo" : {
+              "id" : 1,
+              "metrics" : "[{\"name\":\"disk_free\",\"metric_path\":\"metrics/disk/disk_free\",\"service_name\":\"STACK\"},{\"name\":\"disk_total\",\"metric_path\":\"metrics/disk/disk_total\",\"service_name\":\"STACK\"}]",
+              "author" : "ambari",
+              "description" : "",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"%\",\"max_limit\":\"100\"}",
+              "widget_name" : "HOST_DISK_USED",
+              "widget_type" : "HEATMAP",
+              "time_created" : 1429906621944,
+              "display_name" : "Host Disk Space Used %",
+              "values" : "[{\"name\":\"Host Disk Space Used %\",\"value\":\"${((disk_total-disk_free)/disk_total)*100}\"}]",
+              "cluster_name" : "c1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

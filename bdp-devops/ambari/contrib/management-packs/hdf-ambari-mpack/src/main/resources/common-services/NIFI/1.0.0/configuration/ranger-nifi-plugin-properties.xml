@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration supports_final="true">
+    <property>
+        <name>policy_user</name>
+        <value>nifi</value>
+        <display-name>Policy user for NIFI</display-name>
+        <description>This user must be system user and also present at Ranger admin portal</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>ranger-nifi-plugin-enabled</name>
+        <value>No</value>
+        <display-name>Enable Ranger for NIFI</display-name>
+        <description>Enable ranger nifi plugin ?</description>
+        <depends-on>
+            <property>
+                <type>ranger-env</type>
+                <name>ranger-nifi-plugin-enabled</name>
+            </property>
+        </depends-on>
+        <value-attributes>
+            <type>boolean</type>
+            <overridable>false</overridable>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>nifi.authentication</name>
+        <value>NONE</value>
+        <display-name>Authentication</display-name>
+        <description>Ranger Service Authentication Type</description>
+        <depends-on>
+            <property>
+                <type>ranger-env</type>
+                <name>ranger-nifi-plugin-enabled</name>
+            </property>
+            <property>
+                <type>nifi-ambari-ssl-config</type>
+                <name>nifi.node.ssl.isenabled</name>
+            </property>
+        </depends-on>
+        <value-attributes>
+            <overridable>false</overridable>
+            <type>value-list</type>
+            <entries>
+                <entry>
+                    <value>SSL</value>
+                    <label>ON</label>
+                </entry>
+                <entry>
+                    <value>NONE</value>
+                    <label>OFF</label>
+                </entry>
+            </entries>
+            <selection-cardinality>1</selection-cardinality>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>nifi.ssl.keystore</name>
+        <value></value>
+        <display-name>Keystore for Ranger Service Accessing NiFi</display-name>
+        <description>Used by the Ranger Service to access NiFi protected with SSL</description>
+        <value-attributes>
+            <empty-value-valid>true</empty-value-valid>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>nifi.ssl.keystoreType</name>
+        <value></value>
+        <display-name>Keystore Type</display-name>
+        <description>Keystore Type</description>
+        <value-attributes>
+            <empty-value-valid>true</empty-value-valid>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>nifi.ssl.keystorePassword</name>
+        <value></value>
+        <display-name>Keystore password</display-name>
+        <property-type>PASSWORD</property-type>
+        <description>Keystore password</description>
+        <value-attributes>
+            <type>password</type>
+            <empty-value-valid>true</empty-value-valid>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>nifi.ssl.truststore</name>
+        <value></value>
+        <display-name>Truststore for Ranger Service Accessing NiFi</display-name>
+        <description>Used by the Ranger Service to access/identify NiFi protected with SSL</description>
+        <value-attributes>
+            <empty-value-valid>true</empty-value-valid>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>nifi.ssl.truststoreType</name>
+        <value></value>
+        <display-name>Truststore Type</display-name>
+        <description>Truststore Type</description>
+        <value-attributes>
+            <empty-value-valid>true</empty-value-valid>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>nifi.ssl.truststorePassword</name>
+        <value></value>
+        <display-name>Truststore password</display-name>
+        <property-type>PASSWORD</property-type>
+        <description>Truststore password</description>
+        <value-attributes>
+            <type>password</type>
+            <empty-value-valid>true</empty-value-valid>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>owner.for.certificate</name>
+        <value/>
+        <display-name>Owner for Certificate</display-name>
+        <description>Full identity of certificate owner (created when keystore was generated)</description>
+        <value-attributes>
+            <empty-value-valid>true</empty-value-valid>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>REPOSITORY_CONFIG_USERNAME</name>
+        <value>{{ranger_admin_username}}</value>
+        <display-name>Ranger repository config user</display-name>
+        <description>Used for repository creation on ranger admin</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>REPOSITORY_CONFIG_PASSWORD</name>
+        <value>{{ranger_admin_password}}</value>
+        <display-name>Ranger repository config password</display-name>
+        <property-type>PASSWORD</property-type>
+        <description>Used for repository creation on ranger admin</description>
+        <value-attributes>
+            <type>password</type>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+</configuration>

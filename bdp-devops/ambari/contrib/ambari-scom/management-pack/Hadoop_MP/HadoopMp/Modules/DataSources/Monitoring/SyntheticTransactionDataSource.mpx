@@ -1,0 +1,124 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <DataSourceModuleType ID="Ambari.SCOM.Module.SyntheticTransactionDataSource" Accessibility="Internal" RunAs="Ambari.SCOM.Profile.Workflow">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Windows!Microsoft.Windows.PowerShellSchema</SchemaType>
+            <SchemaType>System!System.ExpressionEvaluatorSchema</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="IntervalSeconds" type="xsd:integer" />
+          <xsd:element name="SyncTime" type="xsd:string" minOccurs="0" />
+          <xsd:element name="TimeoutSeconds" type="xsd:int" />
+
+          <xsd:element name="WorkflowName" type="xsd:string" />
+        </Configuration>
+        <ModuleImplementation>
+          <Composite>
+            <MemberModules>
+              <DataSource ID="Scheduler" TypeID="System!System.SimpleScheduler">
+                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+                <SyncTime>$Config/SyncTime$</SyncTime>
+              </DataSource>
+              <ProbeAction ID="PS" TypeID="Ambari.SCOM.Module.ImpersonatedPowerShellPropertyBagProbe" >
+                <ScriptName>$Config/WorkflowName$.ps1</ScriptName>
+                <ScriptBody>
+                  Param ($MonitoringAmbariUri, $Username, $Password)
+
+                  $IncludeFileContent/Shared Scripts/Logging.ps1$
+                  $IncludeFileContent/Shared Scripts/JsonParser.ps1$
+                  $IncludeFileContent/Shared Scripts/RestApi.ps1$
+                  $IncludeFileContent/Shared Scripts/MonitoringHelpers.ps1$
+
+
+                  if (!$Username) { return }
+
+                  $ScriptApi = New-Object -ComObject "MOM.ScriptAPI"
+
+                  $propertyBag = $ScriptApi.CreatePropertyBag()
+
+
+                  try {
+                  $response = InvokeRestAPI (JoinUri "$MonitoringAmbariUri" "v1/clusters") $Username $Password
+                  $propertyBag.AddValue('result', 0)
+                  } catch [System.Net.WebException] {
+                  if ($_.Exception.Response.StatusCode -eq [System.Net.HttpStatusCode]::Forbidden)
+                  {
+                  $propertyBag.AddValue('result', 1902)
+                  }
+                  elseif ($_.Exception.Response.StatusCode -eq [System.Net.HttpStatusCode]::NotFound)
+                  {
+                  $propertyBag.AddValue('result', 1903)
+                  }
+                  elseif ($_.Exception.Status -eq [System.Net.WebExceptionStatus]::ConnConnectFailure)
+                  {
+                  $propertyBag.AddValue('result', 1903)
+                  }
+                  else
+                  {
+                  $propertyBag.AddValue('result', 1903)
+                  }
+                  } catch {
+                  $propertyBag.AddValue('result', 1903)
+                  }
+
+                  $propertyBag
+
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>MonitoringAmbariUri</Name>
+                    <Value>$Target/Property[Type="Ambari.SCOM.AmbariSeed"]/AmbariUri$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Username</Name>
+                    <Value>$RunAs[Name="Ambari.SCOM.Profile.Ambari"]/UserName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Password</Name>
+                    <Value>$RunAs[Name="Ambari.SCOM.Profile.Ambari"]/Password$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </ProbeAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PS">
+                <Node ID="Scheduler" />
+              </Node>
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.PropertyBagData</OutputType>
+      </DataSourceModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Module.SyntheticTransactionDataSource">
+          <Name>Synthetic Transaction Data Provider</Name>
+          <Description>This module executes Powershell scripts to check availability of Ambari REST API.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

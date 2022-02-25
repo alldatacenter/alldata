@@ -1,0 +1,64 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="wizard-content col-md-9">
+  <h4 class="step-title">{{t admin.ra_highAvailability.wizard.step3.header}}</h4>
+  <p class="step-description"> {{t admin.ra_highAvailability.wizard.step3.alert_message}}</p>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+        <div id="ha-step3-content" class="well pre-scrollable">
+          <div id="step8-info">
+            <table id="ha-step3-review-table">
+              <tr>
+                <td>
+                  <b>{{t admin.ra_highAvailability.wizard.step3.currentRA}}</b>:
+                </td>
+                <td>{{controller.content.raHosts.currentRA}}</td>
+                <td></td>
+              </tr>
+              {{#each host in controller.content.raHosts.additionalRA}}
+                <tr>
+                  <td>
+                    <b>{{t admin.ra_highAvailability.wizard.step3.additionalRA}}</b>:
+                  </td>
+                  <td>{{host}}</td>
+                  <td><span class="to-be-installed-green"><i class="glyphicon glyphicon-plus"></i>&nbsp;{{t admin.highAvailability.wizard.step3.toBeInstalled}}</span></td>
+                </tr>
+              {{/each}}
+            </table>
+          </div>
+        </div>
+        <div class="alert alert-info">
+          {{{t admin.rm_highAvailability.wizard.step3.configs_changes}}}
+        </div>
+        {{#if isLoaded}}
+          <div id="serviceConfig">
+            {{view App.ServiceConfigView}}
+          </div>
+        {{else}}
+          {{view App.SpinnerView}}
+        {{/if}}
+    </div>
+  </div>
+</div>
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    <a class="btn btn-default" {{action back}}>&larr; {{t common.back}}</a>
+    <a class="btn btn-success pull-right" {{action next}}>{{t common.next}} &rarr;</a>
+  </div>
+</div>

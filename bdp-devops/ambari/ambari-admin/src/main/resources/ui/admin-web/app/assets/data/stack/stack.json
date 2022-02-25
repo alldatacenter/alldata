@@ -1,0 +1,104 @@
+{
+  "items" : [
+    {
+      "OperatingSystems" : {
+        "os_type" : "redhat5",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2"
+      },
+      "repositories" : [
+        {
+          "Repositories" : {
+            "os_type" : "redhat5",
+            "repo_id" : "HDP-2.2",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        },
+        {
+          "Repositories" : {
+            "os_type" : "redhat5",
+            "repo_id" : "HDP-UTILS-1.1.0.20",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        }
+      ]
+    },
+    {
+      "OperatingSystems" : {
+        "os_type" : "redhat6",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2"
+      },
+      "repositories" : [
+        {
+          "Repositories" : {
+            "os_type" : "redhat6",
+            "repo_id" : "HDP-2.2",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        },
+        {
+          "Repositories" : {
+            "os_type" : "redhat6",
+            "repo_id" : "HDP-UTILS-1.1.0.20",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        }
+      ]
+    },
+    {
+      "OperatingSystems" : {
+        "os_type" : "suse11",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2"
+      },
+      "repositories" : [
+        {
+          "Repositories" : {
+            "os_type" : "suse11",
+            "repo_id" : "HDP-2.2",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        },
+        {
+          "Repositories" : {
+            "os_type" : "suse11",
+            "repo_id" : "HDP-UTILS-1.1.0.20",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        }
+      ]
+    },
+    {
+      "OperatingSystems" : {
+        "os_type" : "ubuntu12",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2"
+      },
+      "repositories" : [
+        {
+          "Repositories" : {
+            "os_type" : "ubuntu12",
+            "repo_id" : "HDP-2.2",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        },
+        {
+          "Repositories" : {
+            "os_type" : "ubuntu12",
+            "repo_id" : "HDP-UTILS-1.1.0.20",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        }
+      ]
+    }
+  ]
+}

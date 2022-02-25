@@ -1,0 +1,348 @@
+#!/usr/bin/env bash
+
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific
+
+# description: ambari-agent daemon
+# processname: ambari-agent
+
+# /etc/init.d/ambari-agent
+set -u # fail on unset variables
+VERSION="${ambariVersion}"
+HASH="${buildNumber}"
+_SCRIPT=$0
+
+case "${1:-}" in
+  --version)
+        echo -e ${VERSION}
+        exit 0
+        ;;
+  --hash)
+        echo -e ${HASH}
+        exit 0
+        ;;
+esac
+
+export HOME_DIR=""
+if [ "$#" = 3 ] && [ $2 = "--home" ] ; then
+  export HOME_DIR=$3
+  echo "Allow running multiple agents on this host; will use custom Home Dir: $HOME_DIR"
+fi
+
+export CONFIG_FILE="$HOME_DIR/etc/ambari-agent/conf/ambari-agent.ini"
+
+get_agent_property() {
+  property_name="$1"
+  value=$(awk -F "=" "/^${property_name}/ {print \$2}" ${CONFIG_FILE})
+  echo $value
+}
+
+valid_path() {
+  value=${1:?}
+  value=$(readlink -m ${value})
+  if [ "$value" == "/" ]; then
+    echo "path $1 not valid" 1>&2
+    exit 1
+  fi
+  echo ${value}
+}
+
+
+export PATH=/usr/sbin:/sbin:/usr/lib/ambari-server/*:$PATH
+export AMBARI_CONF_DIR=${HOME_DIR}/etc/ambari-server/conf:$PATH
+
+# Because Ambari rpm unpacks modules here on all systems
+export PYTHONPATH=/usr/lib/ambari-agent/lib:${PYTHONPATH:-}
+
+export AMBARI_PID_DIR=`get_agent_property piddir`
+export AMBARI_PID_DIR=`valid_path "${AMBARI_PID_DIR:?}"`
+export AMBARI_PID_DIR="${AMBARI_PID_DIR:?}"
+export AMBARI_AGENT_LOG_DIR=`get_agent_property logdir`
+export AMBARI_AGENT_LOG_DIR=`valid_path "${AMBARI_AGENT_LOG_DIR:?}"`
+export AMBARI_AGENT_LOG_DIR="${AMBARI_AGENT_LOG_DIR:?}"
+KEYSDIR=`get_agent_property keysdir`
+KEYSDIR=`valid_path "${KEYSDIR:?}"`
+KEYSDIR="${KEYSDIR:?}"
+
+AMBARI_AGENT=ambari-agent
+PYTHON_WRAP=/usr/bin/ambari-python-wrap
+PIDFILE=${AMBARI_PID_DIR}/${AMBARI_AGENT}.pid
+OUTFILE=${AMBARI_AGENT_LOG_DIR}/ambari-agent.out
+LOGFILE=${AMBARI_AGENT_LOG_DIR}/ambari-agent.log
+AGENT_SCRIPT=/usr/lib/ambari-agent/lib/ambari_agent/main.py
+AGENT_TMP_DIR=/var/lib/ambari-agent/tmp
+AGENT_WORKING_DIR=/var/lib/ambari-agent
+AMBARI_AGENT_PY_SCRIPT=/usr/lib/ambari-agent/lib/ambari_agent/AmbariAgent.py
+COMMON_DIR=/usr/lib/ambari-agent/lib/ambari_commons
+COMMON_DIR_AGENT=/usr/lib/ambari-agent/lib/ambari_commons
+OK=0
+NOTOK=1
+
+current_user=`id -u -n`
+current_group=`id -g -n`
+
+if [ "$EUID" -ne 0 ] ; then
+  echo "" | sudo -S -l > /dev/null 2>&1
+  if [ "$?" != "0" ] ; then
+    echo "You can't perform this operation as non-sudoer user. Please, re-login or configure sudo access for this user."
+    exit 0
+  fi
+fi
+
+# set reliable cwd for this and child processes.
+cd ${AGENT_WORKING_DIR}
+
+
+print_error(){
+  echo "ERROR: $1"
+}
+
+print_bold(){
+  tput bold
+  echo "$1"
+  tput sgr0
+}
+
+print_error_bold(){
+  tput bold
+  print_error "$1"
+  tput sgr0
+}
+
+change_files_permissions() {
+  if [ ! -z "${KEYSDIR}" ]; then
+    ambari-sudo.sh chown -R ${current_user} "${KEYSDIR}"
+  fi
+
+  ambari-sudo.sh mkdir -p "${AMBARI_PID_DIR:?}"
+  ambari-sudo.sh chown -R ${current_user} "${AMBARI_PID_DIR:?}/"
+  ambari-sudo.sh mkdir -p "${AMBARI_AGENT_LOG_DIR:?}"
+  ambari-sudo.sh chown -R ${current_user}:${current_group} "${AMBARI_AGENT_LOG_DIR:?}/"
+  ambari-sudo.sh chown -R ${current_user} "/var/lib/ambari-agent/data/"
+  ambari-sudo.sh chown -R ${current_user} "/var/lib/ambari-agent/cache/"
+  ambari-sudo.sh chown 	${current_user} "/usr/lib/ambari-agent/"
+  ambari-sudo.sh chown  ${current_user} "/var/lib/ambari-agent/cred"
+}
+
+
+if [ -z "${PYTHON:-}" ] ; then
+  export PYTHON=`readlink ${PYTHON_WRAP}`
+fi
+
+# Trying to read the passphrase from an environment
+if [ ! -z ${AMBARI_PASSPHRASE:-} ]; then
+  RESOLVED_AMBARI_PASSPHRASE=${AMBARI_PASSPHRASE}
+fi
+
+# Reading the environment file
+if [ -a /var/lib/ambari-agent/ambari-env.sh ]; then
+  /var/lib/ambari-agent/ambari-sudo.sh chown -R $current_user "/var/lib/ambari-agent/ambari-env.sh"
+  . /var/lib/ambari-agent/ambari-env.sh
+fi
+
+if [ ! -z ${AMBARI_AGENT_LOG_DIR} ]; then
+  LOGFILE=${AMBARI_AGENT_LOG_DIR}/ambari-agent.log
+fi
+
+if [ ! -z ${AMBARI_AGENT_OUT_DIR:-} ]; then
+  OUTFILE=$AMBARI_AGENT_OUT_DIR/ambari-agent.out
+fi
+
+if [ -z ${RESOLVED_AMBARI_PASSPHRASE:-} ] &&  [ ! -z ${AMBARI_PASSPHRASE:-} ]; then
+  RESOLVED_AMBARI_PASSPHRASE=${AMBARI_PASSPHRASE:-}
+  # If the passphrase is not defined yet, use the value from the env file
+elif [ -z ${RESOLVED_AMBARI_PASSPHRASE:-} ]; then
+  # Passphrase is not defined anywhere, set the default value
+  RESOLVED_AMBARI_PASSPHRASE="DEV"
+fi
+
+export AMBARI_PASSPHRASE=${RESOLVED_AMBARI_PASSPHRASE}
+
+
+get_python_version(){
+ python - <<EOF
+import sys
+ver = tuple(sys.version_info)
+print("{}{}".format(ver[0], ver[1]))
+EOF
+}
+
+check_python_version ()
+{
+  echo "Verifying Python version compatibility..."
+  local min_py_ver=27
+  local curr_py_ver=$(get_python_version)
+
+  if [ ${curr_py_ver} -lt ${min_py_ver} ]; then
+    print_error "Found Python version ${curr_py_ver:0:1}.${curr_py_ver:1:1}. Ambari Agent requires Python version > ${min_py_ver:0:1}.${min_py_ver:1:1}"
+    return ${NOTOK}
+  fi
+  echo "Using python " ${PYTHON}
+  return ${OK}
+}
+
+check_ambari_common_dir ()
+{
+  echo "Checking ambari-common dir..."
+  # recursively compare all files except 'pyc' and 'pyo' in agent common dir and actual common dir to ensure they are up to date
+  diff -r ${COMMON_DIR} ${COMMON_DIR_AGENT} -x '*.py?'
+  OUT=$?
+  if [ ${OUT} -ne 0 ];then
+    print_error "ambari_commons folder mismatch. ${COMMON_DIR} content should be the same as ${COMMON_DIR_AGENT}. Either ambari-agent is co-hosted with ambari-server and agent was upgraded without server or the link was broken."
+    return ${NOTOK}
+  fi
+  return ${OK}
+}
+
+retcode=0
+
+case "${1:-}" in
+  start)
+        check_python_version
+        if [ "$?" -eq "${NOTOK}" ]; then
+          exit -1
+        fi
+        echo "Checking for previously running Ambari Agent..."
+        if [ -f ${PIDFILE} ]; then
+          PID=`ambari-sudo.sh cat ${PIDFILE}`
+          if ! (ps -p ${PID} >/dev/null 2>/dev/null); then
+            echo "$PIDFILE found with no process. Removing $PID..."
+            ambari-sudo.sh rm -f ${PIDFILE}
+          else
+            print_error_bold "$AMBARI_AGENT already running"
+            echo "Check $PIDFILE for PID."
+            exit -1
+          fi
+        fi
+        change_files_permissions
+
+        check_ambari_common_dir
+        if [ "$?" -eq "$NOTOK" ]; then
+          exit -1
+        fi
+
+        echo "Starting ambari-agent"
+
+        if [ "${AMBARI_AGENT_RUN_IN_FOREGROUND:-}" == true ] ; then
+          ${PYTHON} ${AMBARI_AGENT_PY_SCRIPT} "$@" > ${OUTFILE} 2>&1
+          exit $?
+        fi
+
+        nohup ${PYTHON} ${AMBARI_AGENT_PY_SCRIPT} "$@" > ${OUTFILE} 2>&1 &
+
+        sleep 2
+        PID=$!
+        echo "Verifying $AMBARI_AGENT process status..."
+        if ! (ps -p ${PID} >/dev/null 2>/dev/null); then
+          if [ -s ${OUTFILE} ]; then
+            print_error "${AMBARI_AGENT} start failed. For more details, see ${OUTFILE}:"
+            echo "===================="
+            tail -n 10 ${OUTFILE}
+            echo "===================="
+          else
+            print_error "${AMBARI_AGENT} start failed"
+          fi
+          echo "Agent out at: ${OUTFILE}"
+          echo "Agent log at: ${LOGFILE}"
+          exit -1
+        fi
+
+        # print warnings from agent using perl-regex. \K is required to cut off "warning tag"
+        cat ${OUTFILE}|GREP_COLOR='01;33' grep --color=always -Po 'WARNING: \K(.*)'
+
+        print_bold "Ambari Agent successfully started"
+        echo "Agent PID at: ${PIDFILE}"
+        echo "Agent out at: ${OUTFILE}"
+        echo "Agent log at: ${LOGFILE}"
+        ;;
+  status)
+        if [ -f ${PIDFILE} ]; then
+          PID=`ambari-sudo.sh cat ${PIDFILE}`
+          echo "Found ${AMBARI_AGENT} PID: ${PID}"
+          if ! (ps -p $PID >/dev/null 2>/dev/null); then
+            echo "${AMBARI_AGENT} not running. Stale PID File at: ${PIDFILE}"
+            retcode=2
+          else
+            print_bold "$AMBARI_AGENT running."
+            echo "Agent PID at: ${PIDFILE}"
+            echo "Agent out at: ${OUTFILE}"
+            echo "Agent log at: ${LOGFILE}"
+          fi
+        else
+          print_bold "${AMBARI_AGENT} currently not running"
+          retcode=3
+        fi
+        ;;
+  stop)
+        check_python_version
+        if [ "$?" -eq "${NOTOK}" ]; then
+          exit -1
+        fi
+        if [ -f ${PIDFILE} ]; then
+          PID=`ambari-sudo.sh cat ${PIDFILE}`
+          echo "Found ${AMBARI_AGENT} PID: ${PID}"
+          if ! (ps -p ${PID} >/dev/null 2>/dev/null); then
+            print_error_bold "${AMBARI_AGENT} not running. Stale PID File at: ${PIDFILE}"
+          else
+            echo "Stopping ${AMBARI_AGENT}"
+            change_files_permissions
+            ${PYTHON} ${AGENT_SCRIPT} stop
+
+            status ambari-agent 2>/dev/null | grep start 1>/dev/null
+            if [ "$?" -eq 0 ] ; then
+              echo "Stopping ${AMBARI_AGENT} upstart job"
+              stop ambari-agent > /dev/null
+            fi
+          fi
+          echo "Removing PID file at ${PIDFILE}"
+          ambari-sudo.sh rm -f ${PIDFILE}
+          print_bold "${AMBARI_AGENT} successfully stopped"
+        else
+          print_bold "${AMBARI_AGENT} is not running. No PID found at ${PIDFILE}"
+        fi
+        ;;
+  restart)
+        echo -e "Restarting $AMBARI_AGENT"
+        ${_SCRIPT} stop
+        shift
+        ${_SCRIPT} start "$@"
+        retcode=$?
+        ;;
+  reset)
+          if [ "$#" -ne 2 ]; then
+            echo "You must supply the hostname of the Ambari Server with the restore option. (e.g. ambari-agent reset c6401.ambari.apache.org)"
+            exit 1
+          fi
+          if [ -f ${PIDFILE} ]; then
+            echo "${AMBARI_AGENT} is running. You must stop it before using reset."
+            exit 1
+          fi
+          echo -e "Resetting ${AMBARI_AGENT}"
+          change_files_permissions
+          ${PYTHON} ${AGENT_SCRIPT} reset $2
+          retcode=$?
+
+          if [ ${retcode} -eq 0 ]; then
+            print_bold "${AMBARI_AGENT} has been reset successfully. Changed Ambari Server hostname to $2 and certificates were cleared."
+          else
+            print_bold "${AMBARI_AGENT} could not be reset."
+          fi
+          ;;
+
+  *)
+        print_bold "Usage: ${_SCRIPT} {start|stop|restart|status|reset <server_hostname>}"
+        retcode=1
+esac
+
+exit ${retcode}

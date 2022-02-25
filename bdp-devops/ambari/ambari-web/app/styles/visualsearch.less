@@ -1,0 +1,149 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'common.less';
+
+@background-color: #ddd;
+@border-color: #ccc;
+
+#combo_search_box {
+  .VS-icon-search {
+    display: none;
+  }
+  .VS-placeholder,
+  .VS-search-inner {
+    margin-left: 5px;
+  }
+  .VS-search-box {
+    background: none;
+  }
+  .VS-search {
+    .VS-search-box {
+      border: 1px solid @border-color;
+      border-radius: 4px;
+      box-shadow: 0 0 1px #fff inset;
+      min-height: 34px;
+    }
+    .VS-icon-search, .VS-icon-cancel {
+      top: 10px;
+    }
+    .VS-placeholder {
+      color: @border-color;
+      top: 9px;
+    }
+    .search_input input {
+      height: 32px;
+      margin-top: 0px;
+    }
+    .search_facet {
+      border-radius: 4px;
+      margin: 5px -3px 3px 0;
+      height: 22px;
+      .category {
+        margin-left: 3px;
+        padding: 4px 0 0;
+      }
+      input {
+        font: inherit;
+        font-family: 'Roboto', sans-serif;
+        height: 20px;
+      }
+      .search_facet_remove {
+        left: 3px;
+        top: 4px;
+      }
+      &.not_selected {
+        border: 1px solid #d2d2d2;
+        background-image: -moz-linear-gradient(top, #fdfdfd, #e3e3e3); /* FF3.6 */
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#e3e3e3)); /* Saf4+, Chrome */
+        background-image: linear-gradient(top, #fdfdfd, #e3e3e3);
+      }
+      &.is_selected {
+        margin-left: 0;
+      }
+    }
+    .search_facet.not_selected {
+      height: 24px;
+      padding: 1px 0 0 14px;
+      background-image: none;
+      background-color: @background-color;
+      margin-top: 4px;
+      .search_facet_remove {
+        top: 5px;
+      }
+      .category,
+      .VS-interface {
+        text-transform: none;
+        color: #666;
+        font-size: 10px;
+        font-family: 'Roboto', sans-serif !important;
+      }
+    }
+  }
+}
+
+.VS-interface.ui-autocomplete.ui-menu{
+  li.ui-menu-item, li.ui-autocomplete-category {
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.VS-interface.ui-autocomplete {
+  max-width: 300px;
+  width: auto !important;
+  margin-top: 15px;
+  .ui-menu-item a {
+    .ellipsis-overflow-nowrap;
+    background: none;
+    border: none;
+    padding: 3px 10px 5px 5px;
+  }
+  .ui-menu-item .ui-state-hover {
+    color: initial;
+    background: @background-color;
+    border: none;
+  }
+}
+
+.VS-open-box {
+  position: relative;
+  margin-right: 5px;
+  button {
+    padding: 10px !important;
+  }
+  .popup-arrow-up {
+    background: inherit;
+    z-index: 1;
+    left: 6px;
+    position: absolute;
+    width: 24px;
+    height: 16px;
+    overflow: hidden;
+  }
+  .popup-arrow-up:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    transform: rotate(45deg);
+    top: 10px;
+    left: 2px;
+    border: 1px solid @border-color;
+  }
+}

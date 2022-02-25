@@ -1,0 +1,12 @@
+{
+  "_comment" : "Record format:",
+  "_comment" : "blockedRole-blockedCommand: [blockerRole1-blockerCommand1, blockerRole2-blockerCommand2, ...]",
+  "general_deps" : {
+    "_comment" : "dependencies for all cases",
+    "CUSTOM_MASTER-START": ["ZOOKEEPER_SERVER-START", "NAMENODE-START"]
+  },
+  "_comment" : "Dependencies that are used when GLUSTERFS is not present in cluster",
+  "optional_no_glusterfs": {
+    "NAMENODE-STOP": ["CUSTOM_MASTER-STOP"]
+  }
+}

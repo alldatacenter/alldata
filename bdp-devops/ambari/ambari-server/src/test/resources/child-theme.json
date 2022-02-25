@@ -1,0 +1,33 @@
+{
+  "name": "default",
+  "description": "Default theme for YARN service",
+  "configuration": {
+    "placement": {
+      "configuration-layout": "default",
+      "configs": [
+        {
+          "config": "yarn-site/yarn.node-labels.enabled",
+          "subsection-name": "subsection-yarn-platform-features-col1"
+        },
+        {
+          "config": "yarn-env/yarn_cgroups_enabled",
+          "subsection-name": "subsection-yarn-platform-features-col1"
+        }
+      ]
+    },
+    "widgets": [
+      {
+        "config": "yarn-site/yarn.node-labels.enabled",
+        "widget": {
+          "type": "checkbox"
+        }
+      },
+      {
+        "config": "yarn-env/yarn_cgroups_enabled",
+        "widget": {
+          "type": "checkbox"
+        }
+      }
+    ]
+  }
+}

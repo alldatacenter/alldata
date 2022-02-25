@@ -1,0 +1,16 @@
+{
+   "report_name" : "jvm_threads_report",
+   "report_type" : "standard",
+   "title" : "JVM Threads Status",
+   "vertical_label" : "Number Of Threads",
+   "series" : [
+      { "metric": "jvm.metrics.threadsBlocked", "color": "ff0000", "label": "Blocked", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "jvm.metrics.threadsWaiting", "color": "ff6600", "label": "Waiting",
+        "line_width": "2", "type": "stack" },
+      { "metric": "jvm.metrics.threadsTimedWaiting", "color": "ffff00", "label": "Timed Waiting",
+        "line_width": "2", "type": "stack" },
+      { "metric": "jvm.metrics.threadsRunnable", "color": "00ff00", "label": "Runnable", 
+        "line_width": "2", "type": "stack" }
+   ]
+}

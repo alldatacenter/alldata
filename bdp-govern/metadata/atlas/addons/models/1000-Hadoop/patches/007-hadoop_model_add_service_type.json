@@ -1,0 +1,490 @@
+{
+  "patches": [
+    {
+      "id":              "TYPEDEF_PATCH_1000_042",
+      "description":     "Set serviceType 'file_system' to file_action",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "file_action",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "file_system"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_043",
+      "description":     "Set serviceType 'file_system' to fs_permissions",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "fs_permissions",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "file_system"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_044",
+      "description":     "Set serviceType 'file_system' to fs_path",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "fs_path",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "file_system"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_045",
+      "description":     "Set serviceType 'file_system' to hdfs_path",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hdfs_path",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "serviceType":     "file_system"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_046",
+      "description":     "Set serviceType 'hive' to hive_principal_type",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_principal_type",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_047",
+      "description":     "Set serviceType 'hive' to hive_order",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_order",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_048",
+      "description":     "Set serviceType 'hive' to hive_serde",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_serde",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_049",
+      "description":     "Set serviceType 'hive' to hive_process",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_process",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_050",
+      "description":     "Set serviceType 'hive' to hive_table",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_table",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_051",
+      "description":     "Set serviceType 'hive' to hive_storagedesc",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_storagedesc",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_052",
+      "description":     "Set serviceType 'hive' to hive_db",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_db",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_053",
+      "description":     "Set serviceType 'hive' to hive_column",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_column",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_054",
+      "description":     "Set serviceType 'hive' to hive_column_lineage",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_column_lineage",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_055",
+      "description":     "Set serviceType 'hive' to hive_table_db",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_table_db",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_056",
+      "description":     "Set serviceType 'hive' to hive_table_columns",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_table_columns",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_057",
+      "description":     "Set serviceType 'hive' to hive_table_partitionkeys",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_table_partitionkeys",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_058",
+      "description":     "Set serviceType 'hive' to hive_table_storagedesc",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_table_storagedesc",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_059",
+      "description":     "Set serviceType 'hive' to hive_process_column_lineage",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hive_process_column_lineage",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hive"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_060",
+      "description":     "Set serviceType 'sqoop' to sqoop_process",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "sqoop_process",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "sqoop"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_061",
+      "description":     "Set serviceType 'sqoop' to sqoop_dbdatastore",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "sqoop_dbdatastore",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "sqoop"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_062",
+      "description":     "Set serviceType 'falcon' to falcon_feed_replication",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "falcon_feed_replication",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "falcon"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_063",
+      "description":     "Set serviceType 'falcon' to falcon_cluster",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "falcon_cluster",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "falcon"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_064",
+      "description":     "Set serviceType 'falcon' to falcon_feed",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "falcon_feed",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "falcon"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_065",
+      "description":     "Set serviceType 'falcon' to falcon_process",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "falcon_process",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "falcon"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_066",
+      "description":     "Set serviceType 'falcon' to falcon_feed_creation",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "falcon_feed_creation",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "falcon"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_067",
+      "description":     "Set serviceType 'falcon' to falcon_feed_cluster",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "falcon_feed_cluster",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "falcon"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_068",
+      "description":     "Set serviceType 'falcon' to falcon_cluster_process",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "falcon_cluster_process",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "falcon"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_069",
+      "description":     "Set serviceType 'falcon' to falcon_cluster_feed_creation",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "falcon_cluster_feed_creation",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "falcon"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_070",
+      "description":     "Set serviceType 'hbase' to hbase_namespace",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hbase_namespace",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hbase"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_071",
+      "description":     "Set serviceType 'hbase' to hbase_table",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hbase_table",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "serviceType":     "hbase"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_072",
+      "description":     "Set serviceType 'hbase' to hbase_column_family",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hbase_column_family",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "serviceType":     "hbase"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_073",
+      "description":     "Set serviceType 'hbase' to hbase_column",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hbase_column",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hbase"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_074",
+      "description":     "Set serviceType 'hbase' to hbase_table_namespace",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hbase_table_namespace",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hbase"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_075",
+      "description":     "Set serviceType 'hbase' to hbase_table_column_families",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hbase_table_column_families",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hbase"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_076",
+      "description":     "Set serviceType 'hbase' to hbase_column_family_columns",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "hbase_column_family_columns",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "hbase"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_077",
+      "description":     "Set serviceType 'avro' to avro_type",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_type",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_078",
+      "description":     "Set serviceType 'avro' to avro_field",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_field",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_079",
+      "description":     "Set serviceType 'avro' to avro_record",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_record",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_080",
+      "description":     "Set serviceType 'avro' to avro_schema",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_schema",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_081",
+      "description":     "Set serviceType 'avro' to avro_primitive",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_primitive",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_082",
+      "description":     "Set serviceType 'avro' to avro_fixed",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_fixed",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_083",
+      "description":     "Set serviceType 'avro' to avro_enum",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_enum",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_084",
+      "description":     "Set serviceType 'avro' to avro_collection",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_collection",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_085",
+      "description":     "Set serviceType 'avro' to avro_schema_associatedEntities",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_schema_associatedEntities",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_086",
+      "description":     "Set serviceType 'avro' to avro_record_fields",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_record_fields",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_087",
+      "description":     "Set serviceType 'avro' to avro_field_types",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "avro_field_types",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "avro"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_088",
+      "description":     "Set serviceType 'kafka' to kafka_topic",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "kafka_topic",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "serviceType":     "kafka"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_089",
+      "description":     "Set serviceType 'kafka' to jms_topic",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "jms_topic",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "kafka"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_090",
+      "description":     "Set serviceType 'kafka' to kafka_topic_avroSchema",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "kafka_topic_avroSchema",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "kafka"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_091",
+      "description":     "Set serviceType 'storm' to storm_topology",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "storm_topology",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "storm"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_092",
+      "description":     "Set serviceType 'storm' to storm_node",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "storm_node",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "storm"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_093",
+      "description":     "Set serviceType 'storm' to storm_spout",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "storm_spout",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "storm"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_094",
+      "description":     "Set serviceType 'storm' to storm_bolt",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "storm_bolt",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "storm"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_1000_095",
+      "description":     "Set serviceType 'storm' to storm_topology_nodes",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "storm_topology_nodes",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "storm"
+    }
+  ]
+}

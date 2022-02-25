@@ -1,0 +1,9 @@
+.swagger-section .swagger-collapse:before {
+  content: "-";
+}
+.swagger-section .swagger-expand:before {
+  content: "+";
+}
+.swagger-section .property-selector input[type="checkbox"] {
+  margin: 3px;
+}

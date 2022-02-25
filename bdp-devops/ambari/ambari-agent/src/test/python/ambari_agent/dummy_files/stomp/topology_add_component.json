@@ -1,0 +1,28 @@
+{
+  "eventType":"UPDATE",
+  "hash":"33db7b2f65011d475a08bff4810a9965",
+  "clusters":{
+    "0":{
+      "components":[
+        {
+          "componentName":"SECONDARY_NAMENODE",
+          "serviceName":"HDFS",
+          "version":"2.6.0.3-8",
+          "hostIds":[
+            0,
+            1
+          ],
+          "componentLevelParams": {
+            "unlimited_key_jce_required": "false",
+            "clientsToUpdateConfigs": "[\"*\"]"
+          },
+          "commandParams": {
+            "script": "scripts/namenode.py",
+            "script_type":"PYTHON",
+            "command_timeout":"1200"
+          }
+        }
+      ]
+    }
+  }
+}

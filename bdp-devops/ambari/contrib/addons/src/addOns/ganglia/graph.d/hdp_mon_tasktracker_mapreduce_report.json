@@ -1,0 +1,12 @@
+{
+   "report_name" : "tasktracker_mapreduce_report",
+   "report_type" : "standard",
+   "title" : "Running Maps and Reduces",
+   "vertical_label" : "Number of Maps/Reduces",
+   "series" : [
+      { "metric": "mapred.tasktracker.maps_running", "color": "ff0000", "label": "Running Maps", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "mapred.tasktracker.reduces_running", "color": "0000ff", "label": "Running Reduces", 
+        "line_width": "2", "type": "stack" }
+   ]
+}

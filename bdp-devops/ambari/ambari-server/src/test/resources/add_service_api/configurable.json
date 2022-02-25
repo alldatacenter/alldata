@@ -1,0 +1,16 @@
+{
+  "configurations" : [
+    {
+      "zoo.cfg" : {
+        "properties" : {
+          "dataDir" : "/zookeeper1"
+        },
+        "properties_attributes": {
+          "final": {
+            "someProp": "true"
+          }
+        }
+      }
+    }
+  ]
+}

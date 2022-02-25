@@ -1,0 +1,135 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+
+<div class="modal" id="projectsList" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close"  {{action "close"}}>&times;</button>
+        <h4 class="modal-title">My Workflows</h4>
+      </div>
+      <div class="modal-body">
+
+
+
+        <div class="searchWorkflows">
+          {{input type="checkbox" class="marginright5" name="isWorkflow" checked=isWorkflow}}Workflow&nbsp;&nbsp;
+          {{input type="checkbox" class="marginright5" name="isCoordinator" checked=isCoordinator}}Coordinator&nbsp;&nbsp;
+          {{input type="checkbox" class="marginright5" name="isBundle" checked=isBundle}}Bundle&nbsp;&nbsp;
+          {{input type="text" class="l-input" value=search placeholder="Type Workflow name or path"}}
+        </div>
+        {{#if modelSorted}}
+            <div id="draftsTable">
+                <table id="search-table" class="table search-table listing table-striped table-hover table-bordered"
+                       cellspacing="0" width="100%">
+                    <thead>
+                      <tr>
+                          <!--th>Draft Name</th-->
+                          <th></th>
+                          <th>Name</th>
+                          <th>Path</th>
+                          <th>Updated at</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {{#if modelSorted}}
+                        {{#each modelSorted as |job idx|}}
+                            <tr id={{job.id}}>
+                                <!--td title={{job.workflowDefinitionPath}}> <div class="width300">{{job.workflowDefinitionPath}}</div></td-->
+                                <td class="{{job.type}} cyScrollMsg">
+                                  {{#if (eq job.type "WORKFLOW")}}
+                                      <i class="fa fa-sitemap marginright5"></i>
+                                  {{else if  (eq job.type "COORDINATOR")}}
+                                      <i class="fa fa-history marginright5"></i>
+                                  {{else}}
+                                      <i class="fa fa-cubes marginright5"></i>
+                                  {{/if}}
+                                </td>
+                                <td title={{job.name}} class="pointer action-link">
+                                    <div class="width100" {{action "importActionToEditor" job.workflowDefinitionPath job.type}}>
+                                      {{job.name}}
+                                    </div>
+                                </td>
+                                <td title={{job.workflowDefinitionPath}}>
+                                    <div class="width300">
+                                        {{job.workflowDefinitionPath}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="width50">
+                                        {{format-unicode-date job.updatedAt}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="width50">
+                                        <span title="Delete Workflow" {{action "confirmDelete" job}}><i class="fa fa-trash-o"></i></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+            <div id="draftsNum">Displaying {{modelSorted.length}} workflows</div>
+        {{else}}
+            <div id="emptyDrafts">
+                <label class="control-label" for="{{type}}-path">There are no workflows currently</label>
+            </div>
+        {{/if}}
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" {{action "close"}}>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{#if showingDeleteConfirmation}}
+<div class="modal" id="projectsDeleteConfirmation" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete confirmation</h4>
+      </div>
+      <div class="modal-body">
+         {{#unless deleteMsg}}
+           <label>Do you want to remove this item from the history?</label>
+           <br/>
+           <div class="note-info">NOTE : This file will still be accessible under {{currentDraft.workflowDefinitionPath}}</div>
+         {{/unless}}
+         {{#if true}}
+           {{spin-spinner lines=7 length=3 width=3 radius=3 top=-10 left=150}}
+         {{/if}}
+         <div><label>{{deleteMsg}}</label></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        {{#unless deleteMsg}}
+          <button type="button" class="btn btn-primary" {{action "deleteWorkflow"}}>Delete</button>
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}

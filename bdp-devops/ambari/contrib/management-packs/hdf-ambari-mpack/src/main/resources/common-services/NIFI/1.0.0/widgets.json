@@ -1,0 +1,463 @@
+{
+  "layouts": [
+    {
+      "layout_name": "default_nifi_dashboard",
+      "display_name": "Standard NiFi Dashboard",
+      "section_name": "NIFI_SUMMARY",
+      "widgetLayoutInfo": [
+        {
+          "widget_name": "FlowFiles Received Last 5 mins",
+          "description": "The number of FlowFiles received in the last 5 minutes.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "FlowFilesReceivedLast5Minutes",
+              "metric_path": "metrics/nifi/FlowFilesReceivedLast5Minutes",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "FlowFiles Received",
+              "value": "${FlowFilesReceivedLast5Minutes}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+        {
+          "widget_name": "MBs Received Last 5 mins",
+          "description": "The number of MBs received in the last 5 minutes.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "BytesReceivedLast5Minutes",
+              "metric_path": "metrics/nifi/BytesReceivedLast5Minutes",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "MBs Received",
+              "value": "${BytesReceivedLast5Minutes/1024000}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+		 {
+          "widget_name": "FlowFiles Sent Last 5 mins",
+          "description": "The number of FlowFiles sent in the last 5 minutes.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "FlowFilesSentLast5Minutes",
+              "metric_path": "metrics/nifi/FlowFilesSentLast5Minutes",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "FlowFiles Sent",
+              "value": "${FlowFilesSentLast5Minutes}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+		 {
+          "widget_name": "MBs Sent Last 5 mins",
+          "description": "The number of MBs sent in the last 5 minutes.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "BytesSentLast5Minutes",
+              "metric_path": "metrics/nifi/BytesSentLast5Minutes",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "MBs Sent",
+              "value": "${BytesSentLast5Minutes/1024000}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+		 {
+          "widget_name": "FlowFiles Queued",
+          "description": "The number of FlowFiles queued.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "FlowFilesQueued",
+              "metric_path": "metrics/nifi/FlowFilesQueued",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "FlowFiles Queued",
+              "value": "${FlowFilesQueued}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+		 {
+          "widget_name": "MBs Queued",
+          "description": "The number of MBs queued.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "BytesQueued",
+              "metric_path": "metrics/nifi/BytesQueued",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "MBs Queued",
+              "value": "${BytesQueued/1024000}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+		 {
+          "widget_name": "MBs Read Last 5 mins",
+          "description": "The number of MBs read in the last 5 minutes.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "BytesReadLast5Minutes",
+              "metric_path": "metrics/nifi/BytesReadLast5Minutes",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "MBs Read",
+              "value": "${BytesReadLast5Minutes/1024000}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+		 {
+          "widget_name": "MBs Written Last 5 mins",
+          "description": "The number of MBs written in the last 5 minutes.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "BytesWrittenLast5Minutes",
+              "metric_path": "metrics/nifi/BytesWrittenLast5Minutes",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "MBs Written",
+              "value": "${BytesWrittenLast5Minutes/1024000}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+		 {
+          "widget_name": "Active Threads",
+          "description": "The number of active threads.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "ActiveThreads",
+              "metric_path": "metrics/nifi/ActiveThreads",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "Active Threads",
+              "value": "${ActiveThreads}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+		 {
+          "widget_name": "Total Task Duration Milliseconds",
+          "description": "The total task duration in Milliseconds.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "TotalTaskDurationNanoSeconds",
+              "metric_path": "metrics/nifi/TotalTaskDurationNanoSeconds",
+              "service_name": "NIFI",
+              "component_name": "NIFI_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "Total Task Duration Milliseconds",
+              "value": "${TotalTaskDurationNanoSeconds/1000}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+        {
+             "widget_name": "JVM Heap Used (MBs)",
+             "description": "Number of MBs being used on the JVM Heap.",
+             "widget_type": "NUMBER",
+             "is_visible": true,
+             "metrics": [
+               {
+                 "name": "jvm.heap_used",
+                 "metric_path": "metrics/jvm/heap_used",
+                 "service_name": "NIFI",
+                 "component_name": "NIFI_MASTER"
+               }
+             ],
+             "values": [
+               {
+                 "name": "JVM Heap Used",
+                 "value": "${jvm.heap_used/1024/1024}"
+               }
+             ],
+             "properties": {
+                "warning_threshold": "100000",
+                "error_threshold": "200000"
+             }
+        },
+        {
+             "widget_name": "JVM Heap Usage",
+             "description": "Precentage of JVM heap being used.",
+             "widget_type": "GAUGE",
+             "is_visible": true,
+             "metrics": [
+               {
+                 "name": "jvm.heap_usage",
+                 "metric_path": "metrics/jvm/heap_usage",
+                 "service_name": "NIFI",
+                 "component_name": "NIFI_MASTER"
+               }
+             ],
+             "values": [
+               {
+                 "name": "JVM Heap Usage",
+                 "value": "${jvm.heap_usage}"
+               }
+             ],
+             "properties": {
+               "warning_threshold": "0.8",
+               "error_threshold": "0.9"
+             }
+           },
+         {
+              "widget_name": "JVM File Descriptor Usage",
+              "description": "Precentage of file descriptors being used.",
+              "widget_type": "GAUGE",
+              "is_visible": true,
+              "metrics": [
+                {
+                  "name": "jvm.file_descriptor_usage",
+                  "metric_path": "metrics/jvm/file_descriptor_usage",
+                  "service_name": "NIFI",
+                  "component_name": "NIFI_MASTER"
+                }
+              ],
+              "values": [
+                {
+                  "name": "JVM File Descriptor Usage",
+                  "value": "${jvm.file_descriptor_usage}"
+                }
+              ],
+              "properties": {
+                "warning_threshold": "0.8",
+                "error_threshold": "0.9"
+              }
+            },
+           {
+                "widget_name": "Thread Count",
+                "description": "Number of threads in the JVM.",
+                "widget_type": "NUMBER",
+                "is_visible": true,
+                "metrics": [
+                  {
+                    "name": "jvm.thread_count",
+                    "metric_path": "metrics/jvm/thread_count",
+                    "service_name": "NIFI",
+                    "component_name": "NIFI_MASTER"
+                  }
+                ],
+                "values": [
+                  {
+                    "name": "Thread Count",
+                    "value": "${jvm.thread_count}"
+                  }
+                ],
+                "properties": {
+                }
+           },
+           {
+                "widget_name": "Daemon Thread Count",
+                "description": "Number of daemon threads in the JVM.",
+                "widget_type": "NUMBER",
+                "is_visible": true,
+                "metrics": [
+                  {
+                    "name": "jvm.daemon_thread_count",
+                    "metric_path": "metrics/jvm/daemon_thread_count",
+                    "service_name": "NIFI",
+                    "component_name": "NIFI_MASTER"
+                  }
+                ],
+                "values": [
+                  {
+                    "name": "Daemon Thread Count",
+                    "value": "${jvm.daemon_thread_count}"
+                  }
+                ],
+                "properties": {
+                }
+           },
+            {
+                 "widget_name": "Runnable Threads",
+                 "description": "Number of runnable threads in the JVM.",
+                 "widget_type": "GRAPH",
+                 "is_visible": false,
+                 "metrics": [
+                   {
+                     "name": "jvm.thread_states.runnable",
+                     "metric_path": "metrics/jvm/thread_states/runnable",
+                     "service_name": "NIFI",
+                     "component_name": "NIFI_MASTER"
+                   }
+                 ],
+                 "values": [
+                   {
+                     "name": "Runnable Threads",
+                     "value": "${jvm.thread_states.runnable}"
+                   }
+                 ],
+                 "properties": {
+                   "graph_type": "LINE",
+                   "time_range": "1"
+                 }
+            },
+            {
+                 "widget_name": "Blocked Threads",
+                 "description": "Number of blocked threads in the JVM.",
+                 "widget_type": "GRAPH",
+                 "is_visible": false,
+                 "metrics": [
+                   {
+                     "name": "jvm.thread_states.blocked",
+                     "metric_path": "metrics/jvm/thread_states/blocked",
+                     "service_name": "NIFI",
+                     "component_name": "NIFI_MASTER"
+                   }
+                 ],
+                 "values": [
+                   {
+                     "name": "Blocked Threads",
+                     "value": "${jvm.thread_states.blocked}"
+                   }
+                 ],
+                 "properties": {
+                   "graph_type": "LINE",
+                   "time_range": "1"
+                 }
+            },
+            {
+                 "widget_name": "Timed-Waiting Threads",
+                 "description": "Number of timed-waiting threads in the JVM.",
+                 "widget_type": "GRAPH",
+                 "is_visible": false,
+                 "metrics": [
+                   {
+                     "name": "jvm.thread_states.timed_waiting",
+                     "metric_path": "metrics/jvm/thread_states/timed_waiting",
+                     "service_name": "NIFI",
+                     "component_name": "NIFI_MASTER"
+                   }
+                 ],
+                 "values": [
+                   {
+                     "name": "Timed-Waiting Threads",
+                     "value": "${jvm.thread_states.timed_waiting}"
+                   }
+                 ],
+                 "properties": {
+                   "graph_type": "LINE",
+                   "time_range": "1"
+                 }
+            },
+            {
+                 "widget_name": "Terminated Threads",
+                 "description": "Number of terminated threads in the JVM.",
+                 "widget_type": "GRAPH",
+                 "is_visible": false,
+                 "metrics": [
+                   {
+                     "name": "jvm.thread_states.terminated",
+                     "metric_path": "metrics/jvm/thread_states/terminated",
+                     "service_name": "NIFI",
+                     "component_name": "NIFI_MASTER"
+                   }
+                 ],
+                 "values": [
+                   {
+                     "name": "Terminated Threads",
+                     "value": "${jvm.thread_states.terminated}"
+                   }
+                 ],
+                 "properties": {
+                   "graph_type": "LINE",
+                   "time_range": "1"
+                 }
+            }
+      ]
+    }
+  ]
+}

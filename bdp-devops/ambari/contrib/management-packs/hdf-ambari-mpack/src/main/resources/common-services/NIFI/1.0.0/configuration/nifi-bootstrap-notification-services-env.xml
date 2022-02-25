@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<configuration>
+
+  <property>
+    <name>content</name>
+    <display-name>Template for bootstrap-notification-services.xml</display-name>    
+    <description>This is the jinja template for bootstrap-notification-services.xml</description>
+    <value>
+&lt;!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--&gt;
+&lt;services&gt;
+    &lt;!-- This file is used to define how interested parties are notified when events in NiFi's lifecycle occur. --&gt;
+    &lt;!-- The format of this file is:
+        &lt;services&gt;
+            &lt;service&gt;
+                &lt;id&gt;service-identifier&lt;/id&gt;
+                &lt;class&gt;org.apache.nifi.notifications.DesiredNotificationService&lt;/class&gt;
+                &lt;property name="property name"&gt;property value&lt;/property&gt;
+                &lt;property name="another property"&gt;another property value&lt;/property&gt;
+            &lt;/service&gt;
+        &lt;/services&gt;
+
+        This file can contain 0 to many different service definitions.
+        The id can then be referenced from the bootstrap.conf file in order to configure the notification service
+        to be used when particular lifecycle events occur.
+    --&gt;
+
+&lt;!--
+     &lt;service&gt;
+        &lt;id&gt;email-notification&lt;/id&gt;
+        &lt;class&gt;org.apache.nifi.bootstrap.notification.email.EmailNotificationService&lt;/class&gt;
+        &lt;property name="SMTP Hostname"&gt;&lt;/property&gt;
+        &lt;property name="SMTP Port"&gt;&lt;/property&gt;
+        &lt;property name="SMTP Username"&gt;&lt;/property&gt;
+        &lt;property name="SMTP Password"&gt;&lt;/property&gt;
+        &lt;property name="SMTP TLS"&gt;&lt;/property&gt;
+        &lt;property name="From"&gt;&lt;/property&gt;
+        &lt;property name="To"&gt;&lt;/property&gt;
+     &lt;/service&gt;
+--&gt;
+&lt;/services&gt;
+
+    </value>
+    <value-attributes>
+      <type>content</type>
+    </value-attributes>  
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+</configuration>

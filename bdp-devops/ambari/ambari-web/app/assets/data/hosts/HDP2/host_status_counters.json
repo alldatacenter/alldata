@@ -1,0 +1,27 @@
+{
+  "Clusters" : {
+    "cluster_name" : "c",
+    "health_report" : {
+      "Host/stale_config" : 1,
+      "Host/maintenance_state" : 0,
+      "Host/host_state/HEALTHY" : 1,
+      "Host/host_state/UNHEALTHY" : 0,
+      "Host/host_state/HEARTBEAT_LOST" : 0,
+      "Host/host_state/INIT" : 0,
+      "Host/host_status/HEALTHY" : 1,
+      "Host/host_status/UNHEALTHY" : 0,
+      "Host/host_status/UNKNOWN" : 0,
+      "Host/host_status/ALERT" : 0
+    },
+    "total_hosts" : 1,
+    "version" : "HDP-2.1"
+  },
+  "alerts" : {
+    "summary" : {
+      "CRITICAL" : 0,
+      "OK" : 1,
+      "PASSIVE" : 0,
+      "WARNING" : 0
+    }
+  }
+}

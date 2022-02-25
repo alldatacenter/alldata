@@ -1,0 +1,75 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="panel panel-default">
+  <div class="panel-heading">General</div>
+  <div class="panel-body">
+    <div class="form-group">
+      <label for="distcp-command" class="control-label col-xs-2">Distcp Arguments</label>
+      <div class="col-xs-7">
+        {{textarea class="form-control query-text-area" value=distcpCommand name="distcp-command" placeholder="Example: -update hdfs://nn1:9820/source/first hdfs://nn1:9820/source/second hdfs://nn2:9820/target"}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="control-label col-xs-2">Java opts</label>
+      <div class="col-xs-7">
+        {{input type="text" class="form-control" value=actionModel.javaOpts name="java-opts" placeholder="Java opts"}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Transition</div>
+  <div class="panel-body handlerPanel">
+    {{#transition-config transition=transition killNodes=killNodes currentNode=currentNode register="register"}}{{/transition-config}}
+  </div>
+</div>
+{{#action-credential-config credentials=credentials actionCredentials=actionModel.credentials}}{{/action-credential-config}}
+<div class="panel panel-default">
+  <div class="panel-heading" id="accordion" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+    Advanced Properties
+    <i class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse">
+    <br/>
+    <div class=" panel panel-default">
+      <div class="panel-body handlerPanel">
+        <div class="form-group">
+          <label for="inputEmail" class="control-label col-xs-2">Resource Manager</label>
+          <div class="col-xs-7">
+            {{input type="text" class="form-control" name="job-tracker" value=actionModel.jobTracker placeholder="Resource Manager"}}
+          </div>
+          {{field-error error=errors.actionModel.jobTracker}}
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="control-label col-xs-2">Name node</label>
+          <div class="col-xs-7">
+            {{input type="text" class="form-control"  name="name-node" value=actionModel.nameNode validations="required,noWhitespace" placeholder="Name node"}}
+          </div>
+        </div>
+        {{#prepare-config prepare=actionModel.prepare openFileBrowser="openFileBrowser" register="register"}}{{/prepare-config}}
+      </div>
+    </div>
+    <div class=" panel panel-default">
+      <div class="panel-heading">Configuration</div>
+      <div class="panel-body handlerPanel">
+        {{#name-value-config configuration=actionModel.configuration register="register"}}{{/name-value-config}}
+      </div>
+    </div>
+  </div>
+</div>
+{{#sla-info slaInfo=actionModel.slaInfo register="register" slaEnabled=actionModel.slaEnabled register="register"}}{{/sla-info}}

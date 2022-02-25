@@ -1,0 +1,387 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@import 'common.less';
+
+.settings-compare-layout {
+  .accordion .panel-group .panel {
+    padding: 0;
+  }
+
+  .comparison-table-header {
+    margin: 0 0 10px 0;
+    line-height: 25px;
+  }
+
+  .property-name-column {
+    width: 25%
+  }
+
+  .property-value-column {
+    word-break: break-all;
+    overflow: auto;
+    max-height: 300px;
+  }
+
+  .accordion-without-tabs {
+    margin-top: 50px;
+  }
+
+  .comparison-row {
+    margin-left: -25px;
+    padding: 10px 0;
+    .compare-config-cell {
+      white-space: pre;
+    }
+  }
+
+  .undefined {
+    font-style: italic;
+    color: @gray-text;
+  }
+
+  .has-compare-diffs {
+    background-color: rgba(211, 237, 247, 0.39);
+  }
+}
+
+#serviceConfig {
+  &.non-wizard {
+    background: white;
+    padding: 15px;
+  }
+
+  .alert{
+    .glyphicon-refresh{
+      margin-left:10px;
+    }
+    .glyphicon-warning-sign {
+      color: @health-status-yellow;
+    }
+  }
+  .collapsable {
+    cursor: pointer;
+  }
+  .directories {
+    min-width: 280px;
+  }
+  .panel-heading {
+    cursor: pointer;
+  }
+  .panel-group {
+
+    .control-label {
+      text-align: left;
+      word-wrap: break-word;
+      font-weight: 500;
+      .glyphicon-lock {
+        color: #008000;
+      }
+    }
+    .service-config-section{
+      .overridden-property{
+        background-color: rgba(211, 237, 247, 0.39);
+        padding: 5px;
+        margin-left: -5px;
+      }
+      .checkbox {
+        &.list-inline {
+          vertical-align: baseline;
+          &>.ember-checkbox{
+            margin-left: -14px;
+          }
+        }
+      }
+    }
+    .entry-row.indent-1 {
+      margin-left: 2em;
+    }
+    .entry-row.indent-2 {
+      margin-left: 4em;
+    }
+    .entry-row {
+      margin: 0;
+      .action{
+        margin-left: 3px;
+        margin-right: 1px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      input[type="radio"] {
+        margin-right: 5px;
+        margin-left: -20px;
+      }
+      .control-group {
+        margin: 0;
+        .overrideField {
+          display: block;
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+        .overridden-hosts-view {
+          display: inline-block;
+        }
+        &>.ember-checkbox{
+          margin-bottom: 5px;
+        }
+      }
+      .overrideField {
+        .long-input {
+          width: 101%;
+        }
+        .config-controls {
+          padding-left: 0;
+          padding-right: 0;
+          margin-left: -5px;
+          .help-block {
+            margin: 0;
+            line-height: 32px;
+          }
+        }
+      }
+    }
+    form {
+      margin-bottom: 0;
+    }
+  }
+  .badge {
+    margin-left: 4px;
+  }
+
+  .master-host, .master-hosts, .slave-hosts {
+    padding-top: 5px;
+    line-height: 20px;
+  }
+
+  .common-config-category {
+    clear: both;
+    .icon-repeat {
+      color: #cbcbcb;
+      padding: 5px 10px;
+      text-decoration: none;
+    }
+  }
+  .enhanced-config-tab-content {
+    .action {
+      display: inline-block;
+    }
+  }
+  .common-config-category, .enhanced-config-tab-content  {
+    .panel-title {
+      line-height: 16px;
+    }
+    .action {
+      cursor: pointer;
+    }
+    .a-icon(@color) {
+      color: @color;
+      margin-right: 2px;
+    }
+    .glyphicon-plus-sign {
+      .a-icon(@health-status-green);
+    }
+    .glyphicon-minus-sign {
+      .a-icon(#FF4B4B);
+    }
+    .icon-undo {
+      .a-icon(rgb(243, 178, 11));
+    }
+    .btn-final{
+      background: transparent repeat scroll 0 0 #fff;
+    }
+    .btn-final .glyphicon-lock{
+      color: #a6a6a6;
+      cursor: inherit;
+    }
+    .btn-final.active .glyphicon-lock {
+      color: blue;
+    }
+    .btn-final.active { //copied from Bootstrap .btn.active
+      background-color: #e6e6e6;
+      background-color: #d9d9d9 \9;
+      background-image: none;
+      outline: 0;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+    .btn-final.active[disabled] {
+      cursor: not-allowed;
+    }
+    a.panel-toggle:hover {
+      text-decoration: none;
+      .category-name {
+        color: #337ab7;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .enhanced-config-tab-content
+  {
+    .action-button {
+      margin-left: 3px;
+    }
+  }
+
+  .capacity-scheduler {
+    .header {
+      margin-bottom: 10px;
+      .col-md-1 {
+        padding-top: 10px;
+        font-weight: bold;
+      }
+    }
+    form.form-horizontal {
+      margin-left: 20px;
+      .control-label-span {
+        word-wrap: break-word;
+      }
+    }
+    table tr, svg {
+      cursor: pointer;
+    }
+    .marker {
+      margin: 0 5px;
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+    }
+
+    .frame{
+      position:relative;
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .nav-tabs > li > a {
+    padding-left: 8px;
+    padding-right: 8px;
+    &.new {
+      font-weight: 700;
+    }
+  }
+  .with-unit{
+    float: left;
+    .input-group-addon{
+      overflow: hidden;
+      max-width:250px;
+    }
+  }
+  .dropdown-menu > li > a:hover {
+    text-shadow: none;
+  }
+  .db-connection {
+    .spinner {
+      width: @spinner-small-width;
+      height: @spinner-small-height;
+      background-size: cover;
+      i {
+        font-size: 1em;
+      }
+    }
+    .glyphicon-ok-sign, .glyphicon-warning-sign {
+      font-size: 27px;
+      line-height: 30px;
+    }
+    .glyphicon-warning-sign {
+      color: @health-status-red;
+    }
+    .btn-wrapper {
+      min-width: 200px;
+    }
+    .connection-result {
+      font-size: 15px;
+      line-height: @default-button-height;
+    }
+    a {
+      vertical-align: top;
+      color: #333;
+      &:hover {
+        text-decoration: none;
+        color: #333;
+      }
+    }
+  }
+  .help-block {
+    display: inline-block;
+  }
+  .long-input {
+    width: 75%;
+  }
+  .config-controls {
+    line-height: 34px;
+    vertical-align: top;
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  .clear-left{
+    clear:left;
+    padding-top: 5px;
+  }
+}
+
+#host-selection-dialog {
+  .modal-body {
+    .table {
+      th:first-child,
+      td:first-child {
+        width: 30px;
+      }
+      th + th,
+      td + td {
+        width: 50%;
+      }
+      td, th {
+        line-height: 24px;
+      }
+      .checkbox {
+        padding-top: 0;
+        height: 24px;
+        min-height: 24px;
+      }
+    }
+    .selected-hosts-link {
+      line-height: 34px;
+    }
+    #filter-dropdown-div,
+    #component-dropdown-div {
+      padding-right: 0;
+      .dropdown-menu {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+}
+
+.password-field-wrapper {
+  width: 75%;
+  display: inline-block;
+  float: left;
+  .row {
+    padding: 0;
+  }
+}
+
+.change-config-group-modal {
+  .modal-body {
+    overflow-y: visible;
+    .dropdown-select {
+      min-width: 120px;
+    }
+  }
+}

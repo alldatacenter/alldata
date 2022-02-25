@@ -1,0 +1,63 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<div class="modal-header" xmlns="http://www.w3.org/1999/html">
+    <h3 class="modal-title">{{'versions.repository.add' | translate}}</h3>
+</div>
+<form class="form-horizontal" name="addRepoForm" novalidate>
+    <div class="modal-body">
+        <div class="alert alert-warning hide-soft" ng-class="{'visible' : showAlert}" role="alert">
+            {{'versions.alerts.repositoryExists' | translate:{os: repo.selectedOS} }}
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label class="control-label">{{'versions.os' | translate}}</label>
+            </div>
+            <div class="col-sm-4">
+                <select class="form-control" ng-options="os for os in osTypes" ng-model="repo.selectedOS"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label class="control-label">{{'versions.repoID' | translate}}</label>
+            </div>
+            <div class="col-sm-9">
+                <input name="repoId" type="text" class="form-control" ng-model="repo.id" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label class="control-label">{{'versions.repoName' | translate}}</label>
+            </div>
+            <div class="col-sm-9">
+                <input name="repoName" type="text" class="form-control" ng-model="repo.name" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label class="control-label">{{'versions.baseURL' | translate}}</label>
+            </div>
+            <div class="col-sm-9">
+                <input name="repoUrl" type="text" class="form-control" ng-model="repo.baseUrl" ng-required="true">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="cancel()">{{'common.controls.cancel' | translate}}</button>
+        <button class="btn btn-primary" ng-disabled="addRepoForm.$invalid" ng-click="add(repo)" >{{'common.controls.add' | translate}}</button>
+    </div>
+</form>

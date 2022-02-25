@@ -1,0 +1,848 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<configuration supports_final="false">
+  <!--# Core Properties #-->
+  <property>
+    <name>nifi.version</name>
+    <value>1.0.0.{{stack_version_buildnum}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The version number of the current release.</description>
+  </property>
+
+  <property>
+    <name>nifi.flow.configuration.file</name>
+    <value>{{nifi_flow_config_dir}}/flow.xml.gz</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the flow configuration file (i.e., the file that contains what is currently displayed on the NiFi graph).</description>    
+  </property>
+  <property>
+    <name>nifi.flow.configuration.archive.dir</name>
+    <value>{{nifi_internal_dir}}/archive/</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the archive directory where backup copies of the flow.xml are saved.</description>        
+  </property>
+  <property>
+    <name>nifi.flowcontroller.graceful.shutdown.period</name>
+    <value>10 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Indicates the shutdown period. The default value is 10 sec.</description>
+  </property>
+  <property>
+    <name>nifi.flowcontroller.autoResumeState</name>
+    <value>true</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Indicates whether -upon restart- the components on the NiFi graph should return to their last state. The default value is true.</description>    
+    <value-attributes>
+      <type>boolean</type>
+    </value-attributes>
+  </property>
+  <property>
+    <name>nifi.flowservice.writedelay.interval</name>
+    <value>500 ms</value>
+    <on-ambari-upgrade add="true"/>
+    <description>When many changes are made to the flow.xml, this property specifies how long to wait before writing out the changes, so as to batch the changes into a single write. The default value is 500 ms.</description>
+  </property>
+  <property>
+    <name>nifi.administrative.yield.duration</name>
+    <value>30 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>If a component allows an unexpected exception to escape, it is considered a bug. As a result, the framework will pause (or administratively yield) the component for this amount of time. This is done so that the component does not use up massive amounts of system resources, since it is known to have problems in the existing state. The default value is 30 sec.</description>
+  </property>
+  <property>
+    <name>nifi.bored.yield.duration</name>
+    <value>10 millis</value>
+    <on-ambari-upgrade add="true"/>
+    <description>When a component has no work to do (i.e., is "bored"), this is the amount of time it will wait before checking to see if it has new data to work on. This way, it does not use up CPU resources by checking for new work too often. When setting this property, be aware that it could add extra latency for components that do not constantly have work to do, as once they go into this "bored" state, they will wait this amount of time before checking for more work. The default value is 10 millis.</description>
+  </property>
+
+  <property>
+    <name>nifi.authorizer.configuration.file</name>
+    <value>{{nifi_config_dir}}/authorizers.xml</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This is the location of the file that specifies how user access is authorized. </description>
+  </property>
+  <property>
+    <name>nifi.login.identity.provider.configuration.file</name>
+    <value>{{nifi_config_dir}}/login-identity-providers.xml</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This is the location of the file that specifies how username/password authentication is performed. This file is only consider if nifi.security.user.login.identity.provider configured with a provider identifier</description>
+  </property>
+  <property>
+    <name>nifi.templates.directory</name>
+    <value>{{nifi_internal_dir}}/templates</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This is the location of the directory where flow templates are saved.</description>
+  </property>
+  <property>
+    <name>nifi.ui.banner.text</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>This is banner text that may be configured to display at the top of the User Interface. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.ui.autorefresh.interval</name>
+    <value>30 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The interval at which the User Interface auto-refreshes. The default value is 30 sec.</description>
+  </property>
+  <property>
+    <name>nifi.nar.library.directory</name>
+    <value>{{nifi_install_dir}}/lib</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the nar library. The default probably should be left as is but additional library directories can be specified by using the nifi.nar.library.directory. prefix with unique suffixes and separate paths as values e.g. nifi.nar.library.directory.lib1=/nars/lib1</description>
+  </property>
+  <property>
+    <name>nifi.nar.working.directory</name>
+    <value>{{nifi_internal_dir}}/work/nar</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the nar working directory. The default value should probably should be left as is.</description>
+  </property>
+  <property>
+    <name>nifi.documentation.working.directory</name>
+    <value>{{nifi_internal_dir}}/work/docs/components</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The documentation working directory. The default value should probably should be left as is.</description>
+  </property>
+
+  <!-- State Management -->
+  <property>
+    <name>nifi.state.management.configuration.file</name>
+    <value>{{nifi_config_dir}}/state-management.xml</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The XML file that contains configuration for the local and cluster-wide State Providers.</description>
+  </property>
+  <property>
+    <name>nifi.state.management.provider.cluster</name>
+    <value>zk-provider</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The ID of the Cluster State Provider to use. This value must match the value of the id element of one of the cluster-provider elements in the state-management.xml file. This value is ignored if not clustered but is required for nodes in a cluster.</description>
+  </property>
+  <property>
+    <name>nifi.state.management.embedded.zookeeper.start</name>
+    <value>false</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Specifies whether or not this instance of NiFi should start an embedded ZooKeeper Server. This is used in conjunction with the ZooKeeperStateProvider.</description>
+    <value-attributes>
+      <type>boolean</type>
+    </value-attributes>    
+  </property>
+  <property>
+    <name>nifi.state.management.embedded.zookeeper.properties</name>
+    <value>{{nifi_config_dir}}/zookeeper.properties</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Specifies a properties file that contains the configuration for the embedded ZooKeeper Server (if started)</description>
+  </property>
+  <property>
+    <name>nifi.state.management.provider.local</name>
+    <value>local-provider</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The property that provides the identifier of the local State Provider configured</description>
+  </property>
+
+  <!-- H2 Settings-->
+  <property>
+    <name>nifi.database.directory</name>
+    <value>{{nifi_database_dir}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the H2 database directory. The H2 database keeps track of user access and flow controller history</description>
+  </property>
+  <property>
+    <name>nifi.h2.url.append</name>
+    <value>;LOCK_TIMEOUT=25000;WRITE_DELAY=0;AUTO_SERVER=FALSE</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This property specifies additional arguments to add to the connection string for the H2 database. The default value should be used and should not be changed</description>
+  </property>
+
+  <!-- Flowfile repository-->
+  <property>
+    <name>nifi.flowfile.repository.always.sync</name>
+    <value>false</value>
+    <on-ambari-upgrade add="true"/>
+    <description>If set to true, any change to the repository will be synchronized to the disk, meaning that NiFi will ask the operating system not to cache the information. This is very expensive and can significantly reduce NiFi performance. However, if it is false, there could be the potential for data loss if either there is a sudden power loss or the operating system crashes. The default value is false.</description>
+    <value-attributes>
+      <type>boolean</type>
+    </value-attributes>    
+  </property>
+  <property>
+    <name>nifi.flowfile.repository.partitions</name>
+    <value>256</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The number of partitions. The default value is 256.</description>
+  </property>
+  <property>
+    <name>nifi.flowfile.repository.checkpoint.interval</name>
+    <value>2 mins</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The FlowFile Repository checkpoint interval. The default value is 2 mins.</description>
+  </property>
+  <property>
+    <name>nifi.flowfile.repository.directory</name>
+    <value>{{nifi_flowfile_repo_dir}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the FlowFile Repository.</description>
+  </property>
+  <property>
+    <name>nifi.flowfile.repository.implementation</name>
+    <value>org.apache.nifi.controller.repository.WriteAheadFlowFileRepository</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The FlowFile Repository implementation. The default value is org.apache.nifi.controller.repository.WriteAheadFlowFileRepository and should not be changed.</description>
+  </property>
+
+  <property>
+    <name>nifi.swap.in.period</name>
+    <value>5 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The swap in period. The default value is 5 sec.</description>
+  </property>
+  <property>
+    <name>nifi.swap.in.threads</name>
+    <value>1</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The number of threads to use for swapping in. The default value is 1.</description>
+  </property>
+  <property>
+    <name>nifi.swap.out.period</name>
+    <value>5 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The swap out period. The default value is 5 sec.</description>
+  </property>
+  <property>
+    <name>nifi.swap.out.threads</name>
+    <value>4</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The number of threads to use for swapping out. The default value is 4.</description>
+  </property>
+  <property>
+    <name>nifi.swap.manager.implementation</name>
+    <value>org.apache.nifi.controller.FileSystemSwapManager</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The Swap Manager implementation. The default value is org.apache.nifi.controller.FileSystemSwapManager and should not be changed.</description>
+  </property>
+  <property>
+    <name>nifi.queue.swap.threshold</name>
+    <value>20000</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The queue threshold at which NiFi starts to swap FlowFile information to disk. The default value is 20000.</description>
+  </property>
+
+  <property>
+    <name>nifi.content.repository.archive.max.usage.percentage</name>
+    <value>50%</value>
+    <on-ambari-upgrade add="true"/>
+    <description>If archiving is enabled (see nifi.content.repository.archive.enabled), then this property also must have a value to indicate the maximum percentage of disk space that may be used before archive data is removed. If this value is already met even before archiving then arhival will not be of much use. It is 50% by default.</description>
+  </property>
+  <property>
+    <name>nifi.content.claim.max.flow.files</name>
+    <value>100</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The maximum number of FlowFiles to assign to one content claim. The default value is 100.</description>
+  </property>
+  <property>
+    <name>nifi.content.repository.always.sync</name>
+    <value>false</value>
+    <on-ambari-upgrade add="true"/>
+    <description>If set to true, any change to the repository will be synchronized to the disk, meaning that NiFi will ask the operating system not to cache the information. This is very expensive and can significantly reduce NiFi performance. However, if it is false, there could be the potential for data loss if either there is a sudden power loss or the operating system crashes. The default value is false.</description>
+    <value-attributes>
+      <type>boolean</type>
+    </value-attributes>    
+  </property>
+  <property>
+    <name>nifi.content.claim.max.appendable.size</name>
+    <value>10 MB</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The maximum size for a content claim. The default value is 10 MB.</description>
+  </property>
+  <property>
+    <name>nifi.content.repository.directory.default</name>
+    <value>{{nifi_content_repo_dir_default}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the Content Repository. NOTE: Multiple content repositories can be specified by using the nifi.content.repository.directory. prefix with unique suffixes and separate paths as values e.g. nifi.content.repository.directory.content1=/repos/content1</description>
+  </property>
+  <property>
+    <name>nifi.content.repository.implementation</name>
+    <value>org.apache.nifi.controller.repository.FileSystemRepository</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The Content Repository implementation. The default value is org.apache.nifi.controller.repository.FileSystemRepository and should not be changed.</description>
+  </property>
+  <property>
+    <name>nifi.content.viewer.url</name>
+    <value>/nifi-content-viewer/</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The URL for a web-based content viewer if one is available.</description>
+  </property>
+  <property>
+    <name>nifi.content.repository.archive.enabled</name>
+    <value>true</value>
+    <on-ambari-upgrade add="true"/>
+    <description>To enable archiving, set this to true and specify a value for the nifi.content.repository.archive.max.usage.percentage property above. By default, archiving is enabled.</description>
+    <value-attributes>
+      <type>boolean</type>
+    </value-attributes>
+  </property>
+  <property>
+    <name>nifi.content.repository.archive.max.retention.period</name>
+    <value>12 hours</value>
+    <on-ambari-upgrade add="true"/>
+    <description>	
+If archiving is enabled (see nifi.content.repository.archive.enabled below), then this property specifies the maximum amount of time to keep the archived data. It is 12 hours by default.</description>
+  </property>
+
+  <property>
+    <name>nifi.provenance.repository.rollover.size</name>
+    <value>100 MB</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The amount of information to roll over at a time. The default value is 100 MB.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.max.storage.size</name>
+    <value>1 GB</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The maximum amount of data provenance information to store at a time. The default is 1 GB.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.implementation</name>
+    <value>org.apache.nifi.provenance.PersistentProvenanceRepository</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The Provenance Repository implementation. The default value is org.apache.nifi.provenance.PersistentProvenanceRepository and should not be changed.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.indexed.attributes</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>This is a comma-separated list of FlowFile Attributes that should be indexed and made searchable. It is blank by default. But some good examples to consider are filename, uuid, and mime.type as well as any custom attritubes you might use which are valuable for your use case.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.indexed.fields</name>
+    <value>EventType, FlowFileUUID, Filename, ProcessorID, Relationship</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This is a comma-separated list of FlowFile Attributes that should be indexed and made searchable. It is blank by default. But some good examples to consider are filename, uuid, and mime.type as well as any custom attritubes you might use which are valuable for your use case.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.compress.on.rollover</name>
+    <value>true</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Indicates whether to compress the provenance information when rolling it over. The default value is true.</description>
+    <value-attributes>
+      <type>boolean</type>
+    </value-attributes>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.buffer.size</name>
+    <value>100000</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The Provenance Repository buffer size. The default value is 100000.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.index.shard.size</name>
+    <value>500 MB</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Large values for the shard size will result in more Java heap usage when searching the Provenance Repository but should provide better performance. The default value is 500 MB.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.max.attribute.length</name>
+    <value>65536</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Indicates the maximum length that a FlowFile attribute can be when retrieving a Provenance Event from the repository. If the length of any attribute exceeds this value, it will be truncated when the event is retrieved. The default is 65536.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.directory.default</name>
+    <value>{{nifi_provenance_repo_dir_default}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the Provenance Repository.NOTE: Multiple provenance repositories can be specified by using the nifi.provenance.repository.directory. prefix with unique suffixes and separate paths as values. For example, to provide two additional locations to act as part of the provenance repository, a user could also specify additional properties with keys of: nifi.provenance.repository.directory.provenance1=/repos/provenance1</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.always.sync</name>
+    <value>false</value>
+    <on-ambari-upgrade add="true"/>
+    <description>If set to true, any change to the repository will be synchronized to the disk, meaning that NiFi will ask the operating system not to cache the information. This is very expensive and can significantly reduce NiFi performance. However, if it is false, there could be the potential for data loss if either there is a sudden power loss or the operating system crashes. The default value is false.</description>
+    <value-attributes>
+      <type>boolean</type>
+    </value-attributes>    
+  </property>
+  <property>
+    <name>nifi.provenance.repository.journal.count</name>
+    <value>16</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The number of journal files that should be used to serialize Provenance Event data. Increasing this value will allow more tasks to simultaneously update the repository but will result in more expensive merging of the journal files later. This value should ideally be equal to the number of threads that are expected to update the repository simultaneously, but 16 tends to work well in must environments. The default value is 16.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.max.storage.time</name>
+    <value>24 hours</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The maximum amount of time to keep data provenance information. The default value is 24 hours.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.query.threads</name>
+    <value>2</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The number of threads to use for Provenance Repository queries. The default value is 2.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.rollover.time</name>
+    <value>30 secs</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The amount of time to wait before rolling over the latest data provenance information so that it is available in the User Interface. The default value is 30 secs.</description>
+  </property>
+  <property>
+    <name>nifi.provenance.repository.index.threads</name>
+    <value>1</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The number of threads to use for indexing Provenance events so that they are searchable. The default value is 1. For flows that operate on a very high number of FlowFiles, the indexing of Provenance events could become a bottleneck. If this is the case, a bulletin will appear, indicating that "The rate of the dataflow is exceeding the provenance recording rate. Slowing down flow to accommodate." If this happens, increasing the value of this property may increase the rate at which the Provenance Repository is able to process these records, resulting in better overall throughput.</description>
+  </property>
+
+
+  <property>
+    <name>nifi.remote.input.socket.port</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The remote input socket port for Site-to-Site communication. By default, it is blank, but it must have a value in order to use Remote Process Groups.</description>
+  </property>
+  <property>
+    <name>nifi.remote.input.http.transaction.ttl</name>
+    <value>30 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Specify how long a transaction can stay alive on server. If a Site-to-Site client didn’t proceed to next action for this period of time, the transaction is discarded from remote NiFi instance. For example, a client creates a transaction but doesn’t send or receive flow files, or send or received flow files but doesn’t confirm that transaction. By default, it is set to 30 seconds.</description>
+  </property>
+  <property>
+    <name>nifi.remote.input.secure</name>
+    <value>{{nifi_ssl_enabled}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This indicates whether communication between this instance of NiFi and remote NiFi instances should be secure. By default, it is set to true. In order for secure site-to-site to work, many Security Properties must also be configured.</description>
+  </property>
+  <property>
+    <name>nifi.remote.input.http.enabled</name>
+    <value>true</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Specify if HTTP Site-to-Site should be enabled on this host. By default, it is true. HTTP non-secure Site-to-Site is enabled by default. Whether a Site-to-Site client uses HTTP or HTTPS is determined by nifi.remote.input.secure. If it is set to true, then requests are sent as HTTPS to nifi.web.https.port, if it is false, HTTP requests are sent to nifi.web.http.port.</description>
+    <value-attributes>
+      <type>boolean</type>
+    </value-attributes>
+  </property>
+  <property>
+    <name>nifi.remote.input.host</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The host name that will be given out to clients to connect to this NiFi instance for Site-to-Site communication. By default, it is the value from InetAddress.getLocalHost().getHostName(). On UNIX-like operating systems, this is typically the output from the hostname command.</description>
+  </property>
+
+  <property>
+    <name>nifi.components.status.snapshot.frequency</name>
+    <value>1 min</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This value indicates how often to present a snapshot of the components' status history. The default value is 1 min.</description>
+  </property>
+  <property>
+    <name>nifi.components.status.repository.buffer.size</name>
+    <value>1440</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Specifies the buffer size for the Component Status Repository. The default value is 1440.</description>
+  </property>
+
+  <property>
+    <name>nifi.components.status.repository.implementation</name>
+    <value>org.apache.nifi.controller.status.history.VolatileComponentStatusRepository</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The Component Status Repository implementation. The default value is org.apache.nifi.controller.status.history.VolatileComponentStatusRepository and should not be changed.</description>
+  </property>
+
+
+  <!--# web properties #-->
+
+  <property>
+    <name>nifi.web.war.directory</name>
+    <value>{{nifi_install_dir}}/lib</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This is the location of the web war directory.</description>
+  </property>
+  <property>
+    <name>nifi.web.http.host</name>
+    <value>{{nifi_node_nonssl_host}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The HTTP host</description>
+  </property>
+  <property>
+    <name>nifi.web.http.port</name>
+    <value>{{nifi_node_port}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The HTTP port</description>
+  </property>
+  <property>
+    <name>nifi.web.https.host</name>
+    <value>{{nifi_node_ssl_host}}</value>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The HTTPS host</description>
+  </property>
+  <property>
+    <name>nifi.web.https.port</name>
+    <value>{{nifi_node_ssl_port}}</value>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The HTTPS port</description>
+  </property>
+  <property>
+    <name>nifi.web.jetty.working.directory</name>
+    <value>{{nifi_internal_dir}}/work/jetty</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the Jetty working directory.</description>
+  </property>
+  <property>
+    <name>nifi.web.jetty.threads</name>
+    <value>200</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The number of Jetty threads. The default value is 200.</description>
+  </property>
+
+
+  <!--# security properties #-->
+  <property>
+    <name>nifi.sensitive.props.key</name>
+    <value>{{nifi_sensitive_props_key}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This is the password used to encrypt any sensitive property values that are configured in processors. By default, it is blank, but the system administrator should provide a value for it. It can be a string of any length, although the recommended minimum length is 10 characters. Be aware that once this password is set and one or more sensitive processor properties have been configured, this password should not be changed.</description>
+  </property>
+  <property>
+    <name>nifi.sensitive.props.algorithm</name>
+    <value>PBEWITHMD5AND256BITAES-CBC-OPENSSL</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The algorithm used to encrypt sensitive properties. The default value is PBEWITHMD5AND256BITAES-CBC-OPENSSL.</description>
+  </property>
+  <property>
+    <name>nifi.sensitive.props.provider</name>
+    <value>BC</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The sensitive property provider. The default value is BC.</description>
+  </property>
+  <!-- SSL related configs -->  
+  <property>
+    <name>nifi.security.keystore</name>
+    <value>{{nifi_keystore}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The full path and name of the keystore. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.security.keystoreType</name>
+    <value>{{nifi_keystoreType}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The keystore type. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.security.keystorePasswd</name>
+    <value>{{nifi_keystorePasswd}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The keystore password. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.security.keyPasswd</name>
+    <value>{{nifi_keyPasswd}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The key password. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.security.truststore</name>
+    <value>{{nifi_truststore}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The full path and name of the truststore. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.security.truststoreType</name>
+    <value>{{nifi_truststoreType}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The truststore type. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.security.truststorePasswd</name>
+    <value>{{nifi_truststorePasswd}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The truststore password. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.security.needClientAuth</name>
+    <value>{{nifi_needClientAuth}}</value>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>This indicates whether client authentication in the cluster protocol. It is blank by default.</description>
+  </property>
+
+  <property>
+    <name>nifi.security.user.authorizer</name>
+    <value>{{nifi_authorizer}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>ID of one of the authorizers from authorizers.xml that will be the active authorizer used by NiFi. Can be set to file-authorizer or ranger-authorizer (or your own custom authorizer)</description>
+  </property>
+  <property>
+    <name>nifi.security.user.login.identity.provider</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>This indicates what type of login identity provider to use. The default value is blank, can be set to the identifier from a provider in the file specified in nifi.login.identity.provider.configuration.file. Setting this property will trigger NiFi to support username/password authentication.</description>
+  </property>
+  <property>
+    <name>nifi.security.ocsp.responder.url</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>This is the URL for the Online Certificate Status Protocol (OCSP) responder if one is being used. It is blank by default.</description>
+  </property>
+  <property>
+    <name>nifi.security.ocsp.responder.certificate</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>This is the location of the OCSP responder certificate if one is being used. It is blank by default.</description>
+  </property>
+
+  <!-- Identity Mapping Properties -->
+  
+  
+
+  <property>
+    <name>nifi.security.identity.mapping.pattern.dn</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>Sample DN pattern property to demonstrate normalizing DNs from certificates into a common identity string. Create your own patterns using nifi.security.identity.mapping.pattern.XXX convention. Sample DN pattern: ^CN=(.*?), OU=(.*?), O=(.*?), L=(.*?), ST=(.*?), C=(.*?)$</description>
+  </property>
+  
+  <property>
+    <name>nifi.security.identity.mapping.value.dn</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>Sample DN value property to demonstrate normalizing DNs from certificates into a common identity string. Set values for your own patterns using nifi.security.identity.mapping.pattern.XXX convention. Sample DN value: $1@$2</description>
+  </property>
+
+  <property>
+    <name>nifi.security.identity.mapping.pattern.kerb</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>Sample kerberos pattern property to demonstrate normalizing DNs from Kerberos principals into a common identity string. Create your own patterns using nifi.security.identity.mapping.pattern.XXX convention. Sample kerberos pattern: ^(.*?)/instance@(.*?)$</description>
+  </property>
+  
+  <property>
+    <name>nifi.security.identity.mapping.value.kerb</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>Sample kerberos value property to demonstrate normalizing DNs from Kerberos principals into a common identity string. Set values for your own patterns using nifi.security.identity.mapping.pattern.XXX convention. Sample kerberos value: $1@$2</description>
+  </property>
+
+
+
+
+  <!--# cluster common properties (all nodes must have same values) #-->
+
+  <property>
+    <name>nifi.cluster.protocol.heartbeat.interval</name>
+    <value>5 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The interval at which nodes should emit heartbeats to the cluster manager. The default value is 5 sec.</description>
+  </property>
+  <property>
+    <name>nifi.cluster.protocol.is.secure</name>
+    <value>{{nifi_ssl_enabled}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>This indicates whether cluster communications are secure. The default value is false.</description>
+  </property>
+
+  <!--# cluster node properties (only configure for cluster nodes) #-->
+
+  <property>
+    <name>nifi.cluster.is.node</name>
+    <value>{{nifi_is_node}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Whether the instance is a node in a cluster.</description>
+  </property>
+  <property>
+    <name>nifi.cluster.node.address</name>
+    <value>{{nifi_node_host}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The fully qualified address of the node. Will be auto-generated</description>
+  </property>
+  <property>
+    <name>nifi.cluster.node.protocol.port</name>
+    <value>{{nifi_node_protocol_port}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The node's protocol port</description>
+  </property>
+  <property>
+    <name>nifi.cluster.node.protocol.threads</name>
+    <value>10</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The number of threads used for the node protocol. The default value is 10.</description>
+  </property>
+  <property>
+    <name>nifi.cluster.node.event.history.size</name>
+    <value>25</value>
+    <on-ambari-upgrade add="true"/>
+    <description>When the state of a node in the cluster is changed, an event is generated and can be viewed in the Cluster page. This value indicates how many events to keep in memory for each node. The default value is 25.</description>
+  </property>
+  <property>
+    <name>nifi.cluster.node.connection.timeout</name>
+    <value>5 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>When connecting to another node in the cluster, specifies how long this node should wait before considering the connection a failure. The default value is 5 secs.</description>
+  </property>
+
+  <property>
+    <name>nifi.cluster.node.read.timeout</name>
+    <value>5 sec</value>
+    <on-ambari-upgrade add="true"/>
+    <description>When communicating with another node in the cluster, specifies how long this node should wait to receive information from the remote node before considering the communication with the node a failure. The default value is 5 secs.</description>
+  </property>
+  <property>
+    <name>nifi.cluster.firewall.file</name>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the node firewall file. This is a file that may be used to list all the nodes that are allowed to connect to the cluster. It provides an additional layer of security. This value is blank by default, meaning that no firewall file is to be used.</description>
+  </property>
+
+  <property>
+    <name>nifi.cluster.flow.election.max.wait.time</name>
+    <value>5 mins</value>
+    <on-ambari-upgrade add="true"/>
+    <description>Specifies the amount of time to wait before electing a Flow as the "correct" Flow.
+    If the number of Nodes that have voted is equal to the number specified by the nifi.cluster.flow.election.max.candidates
+    property, the cluster will not wait this long. The default is 5 minutes. Note that the time starts as soon as the first vote is cast.</description>
+  </property>
+  
+  <property>
+    <name>nifi.cluster.flow.election.max.candidates</name>
+    <value>{{nifi_num_nodes}}</value>
+    <on-ambari-upgrade add="true"/>        
+    <description>Specifies the number of Nodes required in the cluster to cause early election of Flows. 
+    This allows the Nodes in the cluster to avoid having to wait a long time before starting processing if we reach at least this number of nodes in the cluster</description>
+  </property>  
+
+  <!--# zookeeper properties, used for cluster management # -->
+  <property>
+    <name>nifi.zookeeper.connect.string</name>
+    <value>{{zookeeper_quorum}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The Connect String that is needed to connect to Apache ZooKeeper. This is a comma-separted list of hostname:port pairs. For example, localhost:2181,localhost:2182,localhost:2183. This should contain a list of all ZooKeeper instances in the ZooKeeper quorum.</description>
+  </property>
+  <property>
+    <name>nifi.zookeeper.connect.timeout</name>
+    <value>3 secs</value>
+    <on-ambari-upgrade add="true"/>
+    <description>How long to wait when connecting to ZooKeeper before considering the connection a failure. The default is 3 secs.</description>
+  </property>
+  <property>
+    <name>nifi.zookeeper.session.timeout</name>
+    <value>3 secs</value>
+    <on-ambari-upgrade add="true"/>
+    <description>How long to wait after losing a connection to ZooKeeper before the session is expired. The default is 3 secs.</description>
+  </property>
+  <property>
+    <name>nifi.zookeeper.root.node</name>
+    <value>{{nifi_znode}}</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The root ZNode that should be used in ZooKeeper. ZooKeeper provides a directory-like structure for storing data. Each directory in this structure is referred to as a ZNode. This denotes the root ZNode, or directory, that should be used for storing data. The default value is /root. This is important to set correctly, as which cluster the NiFi instance attempts to join is determined by which ZooKeeper instance it connects to and the ZooKeeper Root Node that is specified.</description>
+  </property>
+
+
+  <property>
+    <name>nifi.kerberos.krb5.file</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The location of the krb5 file, if used. It is blank by default. At this time, only a single krb5 file is allowed to be specified per NiFi instance, so this property is configured here to support SPNEGO and service principles rather than in individual Processors.  If necessary the krb5 file can support multiple realms.</description>
+  </property>
+
+  <property>
+    <name>nifi.kerberos.service.principal</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The name of the NiFi Kerberos service principal, if used. It is blank by default. Note that this property is used to authenticate NiFi users. Example: HTTP/nifi.example.com or HTTP/nifi.example.com@EXAMPLE.COM</description>
+  </property>
+
+  <property>
+    <name>nifi.kerberos.service.keytab.location</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The file path of the NiFi Kerberos keytab, if used. It is blank by default. Note that this property is used to authenticate NiFi users</description>
+  </property>
+
+  <property>
+    <name>nifi.kerberos.spnego.principal</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The name of the Spnego service principal, if used. It is blank by default. Note that this property is used to authenticate NiFi users. Example: HTTP/nifi.example.com or HTTP/nifi.example.com@EXAMPLE.COM</description>
+  </property>
+
+  <property>
+    <name>nifi.kerberos.spnego.keytab.location</name>
+    <value/>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+    <description>The file path of the NiFi Spnego Kerberos keytab, if used. It is blank by default. Note that this property is used to authenticate NiFi users</description>
+  </property>
+
+  <property>
+    <name>nifi.kerberos.spnego.authentication.expiration</name>
+    <value>12 hours</value>
+    <on-ambari-upgrade add="true"/>
+    <description>The expiration duration of a successful Kerberos user authentication, if used. It is 12 hours by default. Example: 12 hours</description>
+  </property>
+
+</configuration>

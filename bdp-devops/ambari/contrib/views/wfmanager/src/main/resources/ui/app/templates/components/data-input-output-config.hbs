@@ -1,0 +1,68 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="well">
+  <div class="form-group">
+    <label for="" class="control-label col-xs-2">Name<span class="requiredField">&nbsp;*</span></label>
+    <div class="col-xs-7">
+      {{input type="text" class="form-control" name="coord-name" value=data.name placeholder="Name"}}
+      {{field-error model=this field='data.name' showErrorMessage=showErrorMessage}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-2">Dataset<span class="requiredField">&nbsp;*</span></label>
+    <div class="col-xs-7">
+      <select onchange={{action (mut data.dataset) value="target.value"}} name="select-input" class="form-control" data-show-icon="true">
+        <option value="">Select Dataset</option>
+        {{#each datasets as |dataset index|}}
+        <option value={{dataset.name}} selected={{eq dataset.name data.dataset}}>{{dataset.name}}</option>
+        {{/each}}
+      </select>
+      {{field-error model=this field='data.dataset' showErrorMessage=showErrorMessage}}
+    </div>
+  </div>
+  {{#if (eq type 'input')}}
+  <div class="form-group">
+    <label class="control-label col-xs-2">Instance Type<span class="requiredField">&nbsp;*</span></label>
+    <div class="col-xs-3">
+      <input type="radio" class="marginright5" name="instanceType" checked={{if (eq data.isList true) 'checked'}} onChange={{action "onInstanceTypeChange" true}}>List of Instances
+    </div>
+    <div class="col-xs-3">
+      <input type="radio" class="marginright5" name="instanceType" checked={{if (eq data.isList false) 'checked'}} onChange={{action "onInstanceTypeChange" false}}>With Start and End
+    </div>
+  </div>
+  {{#if data.isList}}
+    {{#instance-list-config instances=data.instances title="Instance"}}{{/instance-list-config}}
+  {{else}}
+    {{#date-with-expr required=true inputName="start" label="Start" inputPlaceholder="Start Time" dateField=data.start register="registerChild" deregister="deregisterChild"}}{{/date-with-expr}}
+    {{#date-with-expr required=true inputName="end" label="End" inputPlaceholder="End Time" dateField=data.end register="registerChild" deregister="deregisterChild"}}{{/date-with-expr}}
+  {{/if}}
+  {{/if}}
+  {{#if (eq type 'output')}}
+  {{#date-with-expr required=true inputName="instance" label="Instance" inputPlaceholder="Instance" dateField=data.instance register="registerChild" deregister="deregisterChild"}}{{/date-with-expr}}
+  {{/if}}
+  <div class="form-group">
+    <div class="col-xs-7 pull-right">
+      <button id="data-add-btn" {{action 'cancel'}} type="button" class="btn btn-default">Cancel</button>
+      {{#if createMode}}
+      <button id="data-add-btn" {{action 'add'}} type="button" class="btn btn-primary">Save</button>
+      {{else}}
+      <button id="data-update-btn" {{action 'update'}} type="button" class="btn btn-primary"> Update </button>
+      {{/if}}
+    </div>
+  </div>
+</div>

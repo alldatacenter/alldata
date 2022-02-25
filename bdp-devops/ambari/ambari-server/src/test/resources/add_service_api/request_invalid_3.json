@@ -1,0 +1,42 @@
+{
+  "operation_type" : "ADD_SERVICE",
+  "config_recommendation_strategy" : "ALWAYS_APPLY",
+  "provision_action" : "INSTALL_ONLY",
+  "stack_name" : "HDP",
+  "stack_version" : "3.0",
+
+  "services": [
+    { "name" : "STORM" },
+    { "name" : "BEACON" }
+  ],
+
+  "components" : [
+    {
+      "component_name" : "NIMBUS",
+      "fqdn" : "c7401.ambari.apache.org"
+    },
+    {
+      "component_name" : "BEACON_SERVER",
+      "fqdn" : "c7402.ambari.apache.org"
+    }
+  ],
+
+  "configurations" : [
+    {
+      "storm-site" : {
+        "properties_attributes" : {
+          "final" : {
+            "fs.defaultFS" : "true"
+          }
+        },
+        "properties" : {
+          "ipc.client.connect.max.retries" : "50"
+        }
+      }
+    },
+    {
+      "foo-env" : "invalid"
+    }
+  ]
+
+}

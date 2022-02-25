@@ -1,0 +1,144 @@
+{
+  "HDFS": {  
+    "service": [
+    ],
+    "NAMENODE": [
+      {
+        "name": "namenode_cpu",
+        "label": "NameNode Host CPU Utilization",
+        "description": "A description of namenode_cpu",
+        "interval": 2,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "METRIC",
+          "uri": {
+            "http": "{{hdfs-site/dfs.namenode.http-address}}",
+            "https": "{{hdfs-site/dfs.namenode.https-address}}",
+            "https_property": "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value": "HTTPS_ONLY"
+          },
+          "reporting": {
+            "ok": {
+              "text": "{1} CPU, load {0:.1%}"
+            },
+            "warning": {
+              "text": "{1} CPU, load {0:.1%}",
+              "value": 200
+            },
+            "critical": {
+              "text": "{1} CPU, load {0:.1%}",
+              "value": 250
+            }
+          },
+          "jmx": {
+            "property_list": [
+              "java.lang:type=OperatingSystem/SystemCpuLoad",
+              "java.lang:type=OperatingSystem/AvailableProcessors"
+            ],
+            "value": "{0} * 100"
+          }
+        }
+      },
+      {
+        "name": "namenode_process",
+        "label": "NameNode process",
+        "description": "A description of namenode_process",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "PORT",
+          "uri": "{{hdfs-site/dfs.namenode.http-address}}",
+          "default_port": 50070,
+          "reporting": {
+            "ok": {
+              "text": "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical": {
+              "text": "TCP FAIL - {0:.4f} response on port {1}"
+            }
+          }        
+        }
+      },
+      {
+        "name": "hdfs_last_checkpoint",
+        "label": "Last Checkpoint Time",
+        "description": "A description of hdfs_last_checkpoint",
+        "interval": 1,
+        "scope": "SERVICE",
+        "enabled": false,
+        "source": {
+          "type": "SCRIPT",
+          "path": "scripts/alerts/last_checkpoint.py"
+        }
+      },
+      {
+        "name": "hdfs_ignore_host_test",
+        "label": "Ignore Host Test",
+        "description": "A description of hdfs_ignore_host_test",
+        "interval": 1,
+        "scope": "SERVICE",
+        "enabled": true,
+        "ignore_host": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "scripts/alerts/last_checkpoint.py"
+        }
+      }      
+    ],
+    "SECONDARY_NAMENODE": [
+      {
+        "name": "secondary_namenode_process",
+        "label": "Secondary NameNode process",
+        "description": "A description of secondary_namenode_process",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "PORT",        
+          "uri": "{{hdfs-site/dfs.namenode.secondary.http-address}}",
+          "default_port": 50070
+        }
+      }
+    ],  
+    "DATANODE": [
+      {
+        "name": "datanode_storage",
+        "label": "DataNode Storage",
+        "description": "A description of datanode_storage",
+        "interval": 2,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "METRIC",
+          "uri": {
+            "http": "{{hdfs-site/dfs.datanode.http.address}}",
+            "https": "{{hdfs-site/dfs.datanode.https.address}}",
+            "https_property": "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "default_port": "12345"
+          },
+          "reporting": {
+            "ok": {
+              "text": "Remaining Capacity:[{0}], Total Capacity:[{2:d}% Used, {1}]"
+            },
+            "warning": {
+              "text": "Remaining Capacity:[{0}], Total Capacity:[{2:d}% Used, {1}]",
+              "value": 80
+            },
+            "critical": {
+              "text": "Remaining Capacity:[{0}], Total Capacity:[{2:d}% Used, {1}]",
+              "value": 90
+            }
+          },
+          "jmx": {
+            "property_list": [
+              "Hadoop:service=DataNode,name=FSDatasetState-*/Remaining",
+              "Hadoop:service=DataNode,name=FSDatasetState-*/Capacity"
+            ],
+            "value": "({1} - {0})/{1} * 100"
+          }
+        }
+      }  
+    ]
+  }
+}

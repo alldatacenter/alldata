@@ -1,0 +1,730 @@
+{
+  "identities": [
+    {
+      "keytab": {
+        "configuration": "cluster-env/smokeuser_keytab",
+        "file": "${keytab_dir}/smokeuser.headless.keytab",
+        "group": {
+          "access": "r",
+          "name": "${cluster-env/user_group}"
+        },
+        "owner": {
+          "access": "r",
+          "name": "${cluster-env/smokeuser}"
+        }
+      },
+      "name": "smokeuser",
+      "principal": {
+        "configuration": "cluster-env/smokeuser_principal_name",
+        "local_username": "${cluster-env/smokeuser}",
+        "type": "user",
+        "value": "${cluster-env/smokeuser}${principal_suffix}@${realm}"
+      }
+    },
+    {
+      "keytab": {
+        "file": "${keytab_dir}/spnego.service.keytab",
+        "group": {
+          "access": "r",
+          "name": "${cluster-env/user_group}"
+        },
+        "owner": {
+          "access": "r",
+          "name": "root"
+        }
+      },
+      "name": "spnego",
+      "principal": {
+        "configuration": null,
+        "local_username": null,
+        "type": "service",
+        "value": "HTTP/_HOST@${realm}"
+      }
+    }
+  ],
+  "services": [
+    {
+      "components": [
+        {
+          "identities": [
+            {
+              "keytab": {
+                "file": "${keytab_dir}/ambari.server.keytab",
+                "group": {},
+                "owner": {
+                  "access": "r"
+                }
+              },
+              "name": "ambari-server",
+              "principal": {
+                "configuration": "cluster-env/ambari_principal_name",
+                "local_username": null,
+                "type": "user",
+                "value": "ambari-server${principal_suffix}@${realm}"
+              }
+            },
+            {
+              "name": "ambari-server_spnego",
+              "reference": "/spnego"
+            }
+          ],
+          "name": "AMBARI_SERVER"
+        }
+      ],
+      "name": "AMBARI"
+    },
+    {
+      "auth_to_local_properties": [
+        "core-site/hadoop.security.auth_to_local"
+      ],
+      "components": [
+        {
+          "configurations": [
+            {
+              "hdfs-site": {
+                "dfs.datanode.address": "0.0.0.0:1019",
+                "dfs.datanode.http.address": "0.0.0.0:1022"
+              }
+            }
+          ],
+          "identities": [
+            {
+              "keytab": {
+                "configuration": "hdfs-site/dfs.datanode.keytab.file",
+                "file": "${keytab_dir}/dn.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${hadoop-env/hdfs_user}"
+                }
+              },
+              "name": "datanode_dn",
+              "principal": {
+                "configuration": "hdfs-site/dfs.datanode.kerberos.principal",
+                "local_username": "${hadoop-env/hdfs_user}",
+                "type": "service",
+                "value": "dn/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "DATANODE"
+        },
+        {
+          "identities": [
+            {
+              "name": "/HDFS/NAMENODE/hdfs"
+            }
+          ],
+          "name": "HDFS_CLIENT"
+        },
+        {
+          "identities": [
+            {
+              "name": "/spnego",
+              "principal": {
+                "configuration": "hdfs-site/dfs.journalnode.kerberos.internal.spnego.principal",
+                "local_username": null,
+                "type": null,
+                "value": "HTTP/_HOST@${realm}"
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "hdfs-site/dfs.journalnode.keytab.file",
+                "file": "${keytab_dir}/jn.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${hadoop-env/hdfs_user}"
+                }
+              },
+              "name": "journalnode_jn",
+              "principal": {
+                "configuration": "hdfs-site/dfs.journalnode.kerberos.principal",
+                "local_username": "${hadoop-env/hdfs_user}",
+                "type": "service",
+                "value": "jn/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "JOURNALNODE"
+        },
+        {
+          "configurations": [
+            {
+              "hdfs-site": {
+                "dfs.block.access.token.enable": "true"
+              }
+            }
+          ],
+          "identities": [
+            {
+              "keytab": {
+                "configuration": "ranger-hdfs-audit/xasecure.audit.jaas.Client.option.keyTab",
+                "file": "${keytab_dir}/nn.service.keytab"
+              },
+              "name": "/HDFS/NAMENODE/namenode_nn",
+              "principal": {
+                "configuration": "ranger-hdfs-audit/xasecure.audit.jaas.Client.option.principal",
+                "local_username": null,
+                "type": null,
+                "value": "nn/_HOST@${realm}"
+              }
+            },
+            {
+              "name": "/spnego",
+              "principal": {
+                "configuration": "hdfs-site/dfs.namenode.kerberos.internal.spnego.principal",
+                "local_username": null,
+                "type": null,
+                "value": "HTTP/_HOST@${realm}"
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "hadoop-env/hdfs_user_keytab",
+                "file": "${keytab_dir}/hdfs.headless.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${hadoop-env/hdfs_user}"
+                }
+              },
+              "name": "hdfs",
+              "principal": {
+                "configuration": "hadoop-env/hdfs_principal_name",
+                "local_username": "${hadoop-env/hdfs_user}",
+                "type": "user",
+                "value": "${hadoop-env/hdfs_user}${principal_suffix}@${realm}"
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "hdfs-site/dfs.namenode.keytab.file",
+                "file": "${keytab_dir}/nn.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${hadoop-env/hdfs_user}"
+                }
+              },
+              "name": "namenode_nn",
+              "principal": {
+                "configuration": "hdfs-site/dfs.namenode.kerberos.principal",
+                "local_username": "${hadoop-env/hdfs_user}",
+                "type": "service",
+                "value": "nn/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "NAMENODE"
+        },
+        {
+          "identities": [
+            {
+              "keytab": {
+                "configuration": "hdfs-site/nfs.keytab.file",
+                "file": "${keytab_dir}/nfs.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${hadoop-env/hdfs_user}"
+                }
+              },
+              "name": "nfsgateway",
+              "principal": {
+                "configuration": "hdfs-site/nfs.kerberos.principal",
+                "local_username": "${hadoop-env/hdfs_user}",
+                "type": "service",
+                "value": "nfs/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "NFS_GATEWAY"
+        },
+        {
+          "identities": [
+            {
+              "name": "/spnego",
+              "principal": {
+                "configuration": "hdfs-site/dfs.secondary.namenode.kerberos.internal.spnego.principal",
+                "local_username": null,
+                "type": null,
+                "value": "HTTP/_HOST@${realm}"
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "hdfs-site/dfs.secondary.namenode.keytab.file",
+                "file": "${keytab_dir}/nn.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${hadoop-env/hdfs_user}"
+                }
+              },
+              "name": "secondary_namenode_nn",
+              "principal": {
+                "configuration": "hdfs-site/dfs.secondary.namenode.kerberos.principal",
+                "local_username": "${hadoop-env/hdfs_user}",
+                "type": "service",
+                "value": "nn/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "SECONDARY_NAMENODE"
+        }
+      ],
+      "configurations": [
+        {
+          "core-site": {
+            "ha.zookeeper.acl": "sasl:nn:rwcda",
+            "hadoop.proxyuser.HTTP.groups": "${hadoop-env/proxyuser_group}",
+            "hadoop.security.authentication": "kerberos",
+            "hadoop.security.authorization": "true"
+          }
+        },
+        {
+          "ranger-hdfs-audit": {
+            "xasecure.audit.destination.solr.force.use.inmemory.jaas.config": "true",
+            "xasecure.audit.jaas.Client.loginModuleControlFlag": "required",
+            "xasecure.audit.jaas.Client.loginModuleName": "com.sun.security.auth.module.Krb5LoginModule",
+            "xasecure.audit.jaas.Client.option.serviceName": "solr",
+            "xasecure.audit.jaas.Client.option.storeKey": "false",
+            "xasecure.audit.jaas.Client.option.useKeyTab": "true"
+          }
+        }
+      ],
+      "identities": [
+        {
+          "name": "/smokeuser"
+        },
+        {
+          "keytab": {
+            "configuration": "hdfs-site/dfs.web.authentication.kerberos.keytab",
+            "file": "${keytab_dir}/spnego.service.keytab"
+          },
+          "name": "/spnego",
+          "principal": {
+            "configuration": "hdfs-site/dfs.web.authentication.kerberos.principal",
+            "local_username": null,
+            "type": null,
+            "value": "HTTP/_HOST@${realm}"
+          }
+        }
+      ],
+      "name": "HDFS"
+    },
+    {
+      "components": [
+        {
+          "identities": [
+            {
+              "name": "/HDFS/NAMENODE/hdfs"
+            },
+            {
+              "keytab": {
+                "configuration": "yarn-site/yarn.timeline-service.http-authentication.kerberos.keytab",
+                "file": "${keytab_dir}/spnego.service.keytab"
+              },
+              "name": "/spnego",
+              "principal": {
+                "configuration": "yarn-site/yarn.timeline-service.http-authentication.kerberos.principal",
+                "local_username": null,
+                "type": null,
+                "value": "HTTP/_HOST@${realm}"
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "yarn-site/yarn.timeline-service.keytab",
+                "file": "${keytab_dir}/yarn.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${yarn-env/yarn_user}"
+                }
+              },
+              "name": "app_timeline_server_yarn",
+              "principal": {
+                "configuration": "yarn-site/yarn.timeline-service.principal",
+                "local_username": "${yarn-env/yarn_user}",
+                "type": "service",
+                "value": "yarn/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "APP_TIMELINE_SERVER"
+        },
+        {
+          "configurations": [
+            {
+              "yarn-site": {
+                "yarn.nodemanager.container-executor.class": "org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor"
+              }
+            }
+          ],
+          "identities": [
+            {
+              "keytab": {
+                "configuration": "hive-interactive-site/hive.llap.daemon.keytab.file",
+                "file": null
+              },
+              "name": "/HIVE/HIVE_SERVER/hive_server_hive",
+              "principal": {
+                "configuration": "hive-interactive-site/hive.llap.daemon.service.principal",
+                "local_username": null,
+                "type": null,
+                "value": null
+              },
+              "when": {
+                "contains": [
+                  "services",
+                  "HIVE"
+                ]
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "yarn-site/yarn.nodemanager.webapp.spnego-keytab-file",
+                "file": "${keytab_dir}/spnego.service.keytab"
+              },
+              "name": "/spnego",
+              "principal": {
+                "configuration": "yarn-site/yarn.nodemanager.webapp.spnego-principal",
+                "local_username": null,
+                "type": null,
+                "value": "HTTP/_HOST@${realm}"
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "hive-interactive-site/hive.llap.zk.sm.keytab.file",
+                "file": "${keytab_dir}/hive.llap.zk.sm.keytab",
+                "group": {
+                  "access": "r",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${yarn-env/yarn_user}"
+                }
+              },
+              "name": "llap_zk_hive",
+              "principal": {
+                "configuration": "hive-interactive-site/hive.llap.zk.sm.principal",
+                "local_username": null,
+                "type": "service",
+                "value": "hive/_HOST@${realm}"
+              },
+              "when": {
+                "contains": [
+                  "services",
+                  "HIVE"
+                ]
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "yarn-site/yarn.nodemanager.keytab",
+                "file": "${keytab_dir}/nm.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${yarn-env/yarn_user}"
+                }
+              },
+              "name": "nodemanager_nm",
+              "principal": {
+                "configuration": "yarn-site/yarn.nodemanager.principal",
+                "local_username": "${yarn-env/yarn_user}",
+                "type": "service",
+                "value": "nm/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "NODEMANAGER"
+        },
+        {
+          "identities": [
+            {
+              "keytab": {
+                "configuration": "ranger-yarn-audit/xasecure.audit.jaas.Client.option.keyTab",
+                "file": "${keytab_dir}/rm.service.keytab"
+              },
+              "name": "/YARN/RESOURCEMANAGER/resource_manager_rm",
+              "principal": {
+                "configuration": "ranger-yarn-audit/xasecure.audit.jaas.Client.option.principal",
+                "local_username": null,
+                "type": null,
+                "value": "rm/_HOST@${realm}"
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "yarn-site/yarn.resourcemanager.webapp.spnego-keytab-file",
+                "file": "${keytab_dir}/spnego.service.keytab"
+              },
+              "name": "/spnego",
+              "principal": {
+                "configuration": "yarn-site/yarn.resourcemanager.webapp.spnego-principal",
+                "local_username": null,
+                "type": null,
+                "value": "HTTP/_HOST@${realm}"
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "yarn-site/yarn.resourcemanager.keytab",
+                "file": "${keytab_dir}/rm.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${yarn-env/yarn_user}"
+                }
+              },
+              "name": "resource_manager_rm",
+              "principal": {
+                "configuration": "yarn-site/yarn.resourcemanager.principal",
+                "local_username": "${yarn-env/yarn_user}",
+                "type": "service",
+                "value": "rm/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "RESOURCEMANAGER"
+        }
+      ],
+      "configurations": [
+        {
+          "capacity-scheduler": {
+            "yarn.scheduler.capacity.root.acl_administer_jobs": "${yarn-env/yarn_user}",
+            "yarn.scheduler.capacity.root.acl_administer_queue": "${yarn-env/yarn_user}",
+            "yarn.scheduler.capacity.root.default.acl_administer_jobs": "${yarn-env/yarn_user}",
+            "yarn.scheduler.capacity.root.default.acl_administer_queue": "${yarn-env/yarn_user}",
+            "yarn.scheduler.capacity.root.default.acl_submit_applications": "${yarn-env/yarn_user}"
+          }
+        },
+        {
+          "core-site": {
+            "hadoop.proxyuser.${yarn-env/yarn_user}.groups": "*",
+            "hadoop.proxyuser.${yarn-env/yarn_user}.hosts": "${clusterHostInfo/rm_host}"
+          }
+        },
+        {
+          "ranger-yarn-audit": {
+            "xasecure.audit.destination.solr.force.use.inmemory.jaas.config": "true",
+            "xasecure.audit.jaas.Client.loginModuleControlFlag": "required",
+            "xasecure.audit.jaas.Client.loginModuleName": "com.sun.security.auth.module.Krb5LoginModule",
+            "xasecure.audit.jaas.Client.option.serviceName": "solr",
+            "xasecure.audit.jaas.Client.option.storeKey": "false",
+            "xasecure.audit.jaas.Client.option.useKeyTab": "true"
+          }
+        },
+        {
+          "yarn-site": {
+            "hadoop.registry.client.auth": "kerberos",
+            "hadoop.registry.jaas.context": "Client",
+            "hadoop.registry.secure": "true",
+            "hadoop.registry.system.accounts": "sasl:${principals/YARN/APP_TIMELINE_SERVER/app_timeline_server_yarn|principalPrimary()},sasl:${principals/MAPREDUCE2/HISTORYSERVER/history_server_jhs|principalPrimary()},sasl:${principals/HDFS/NAMENODE/hdfs|principalPrimary()},sasl:${principals/YARN/RESOURCEMANAGER/resource_manager_rm|principalPrimary()},sasl:${principals/HIVE/HIVE_SERVER/hive_server_hive|principalPrimary()}",
+            "yarn.acl.enable": "true",
+            "yarn.admin.acl": "${activity-conf/global.activity.analyzer.user},dr.who,${yarn-env/yarn_user}",
+            "yarn.resourcemanager.proxy-user-privileges.enabled": "true",
+            "yarn.resourcemanager.proxyuser.*.groups": "",
+            "yarn.resourcemanager.proxyuser.*.hosts": "",
+            "yarn.resourcemanager.proxyuser.*.users": "",
+            "yarn.resourcemanager.zk-acl": "sasl:${principals/YARN/RESOURCEMANAGER/resource_manager_rm|principalPrimary()}:rwcda",
+            "yarn.timeline-service.enabled": "true",
+            "yarn.timeline-service.http-authentication.cookie.domain": "",
+            "yarn.timeline-service.http-authentication.cookie.path": "",
+            "yarn.timeline-service.http-authentication.kerberos.name.rules": "",
+            "yarn.timeline-service.http-authentication.proxyuser.*.groups": "",
+            "yarn.timeline-service.http-authentication.proxyuser.*.hosts": "",
+            "yarn.timeline-service.http-authentication.proxyuser.*.users": "",
+            "yarn.timeline-service.http-authentication.signature.secret": "",
+            "yarn.timeline-service.http-authentication.signature.secret.file": "",
+            "yarn.timeline-service.http-authentication.signer.secret.provider": "",
+            "yarn.timeline-service.http-authentication.signer.secret.provider.object": "",
+            "yarn.timeline-service.http-authentication.token.validity": "",
+            "yarn.timeline-service.http-authentication.type": "kerberos"
+          }
+        }
+      ],
+      "identities": [
+        {
+          "name": "/smokeuser"
+        },
+        {
+          "name": "/spnego"
+        }
+      ],
+      "name": "YARN"
+    },
+    {
+      "components": [
+        {
+          "configurations": [
+            {
+              "core-site": {
+                "hadoop.proxyuser.${knox-env/knox_user}.groups": "${hadoop-env/proxyuser_group}",
+                "hadoop.proxyuser.${knox-env/knox_user}.hosts": "${clusterHostInfo/knox_gateway_hosts}"
+              }
+            },
+            {
+              "gateway-site": {
+                "gateway.hadoop.kerberos.secured": "true",
+                "java.security.krb5.conf": "/etc/krb5.conf"
+              }
+            },
+            {
+              "oozie-site": {
+                "oozie.service.ProxyUserService.proxyuser.${knox-env/knox_user}.groups": "${hadoop-env/proxyuser_group}",
+                "oozie.service.ProxyUserService.proxyuser.${knox-env/knox_user}.hosts": "${clusterHostInfo/knox_gateway_hosts}"
+              }
+            },
+            {
+              "ranger-knox-audit": {
+                "xasecure.audit.destination.solr.force.use.inmemory.jaas.config": "true",
+                "xasecure.audit.jaas.Client.loginModuleControlFlag": "required",
+                "xasecure.audit.jaas.Client.loginModuleName": "com.sun.security.auth.module.Krb5LoginModule",
+                "xasecure.audit.jaas.Client.option.serviceName": "solr",
+                "xasecure.audit.jaas.Client.option.storeKey": "false",
+                "xasecure.audit.jaas.Client.option.useKeyTab": "true"
+              }
+            },
+            {
+              "webhcat-site": {
+                "webhcat.proxyuser.${knox-env/knox_user}.groups": "${hadoop-env/proxyuser_group}",
+                "webhcat.proxyuser.${knox-env/knox_user}.hosts": "${clusterHostInfo/knox_gateway_hosts}"
+              }
+            }
+          ],
+          "identities": [
+            {
+              "keytab": {
+                "configuration": "ranger-knox-audit/xasecure.audit.jaas.Client.option.keyTab",
+                "file": null
+              },
+              "name": "/KNOX/KNOX_GATEWAY/knox_principal",
+              "principal": {
+                "configuration": "ranger-knox-audit/xasecure.audit.jaas.Client.option.principal",
+                "local_username": null,
+                "type": null,
+                "value": null
+              }
+            },
+            {
+              "keytab": {
+                "configuration": "knox-env/knox_keytab_path",
+                "file": "${keytab_dir}/knox.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${knox-env/knox_user}"
+                }
+              },
+              "name": "knox_principal",
+              "principal": {
+                "configuration": "knox-env/knox_principal_name",
+                "local_username": "${knox-env/knox_user}",
+                "type": "service",
+                "value": "${knox-env/knox_user}/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "KNOX_GATEWAY"
+        }
+      ],
+      "preconfigure": true,
+      "name": "KNOX"
+    },
+    {
+      "name": "BEACON",
+      "preconfigure": true,
+      "configurations": {
+      },
+      "identities": [
+        {
+          "name": "beacon_server",
+          "principal": {
+            "value": "beacon/_HOST@${realm}",
+            "type": "service",
+            "local_username": "beacon"
+          }
+        }
+      ]
+    },
+    {
+      "components": [
+        {
+          "identities": [
+            {
+              "keytab": {
+                "configuration": "zookeeper-env/zookeeper_keytab_path",
+                "file": "${keytab_dir}/zk.service.keytab",
+                "group": {
+                  "access": "",
+                  "name": "${cluster-env/user_group}"
+                },
+                "owner": {
+                  "access": "r",
+                  "name": "${zookeeper-env/zk_user}"
+                }
+              },
+              "name": "zookeeper_zk",
+              "principal": {
+                "configuration": "zookeeper-env/zookeeper_principal_name",
+                "local_username": null,
+                "type": "service",
+                "value": "zookeeper/_HOST@${realm}"
+              }
+            }
+          ],
+          "name": "ZOOKEEPER_SERVER"
+        }
+      ],
+      "identities": [
+        {
+          "name": "/smokeuser"
+        }
+      ],
+      "name": "ZOOKEEPER"
+    }
+  ],
+  "properties": {
+    "additional_realms": "",
+    "keytab_dir": "/etc/security/keytabs",
+    "principal_suffix": "-${cluster_name|toLower()}",
+    "realm": "EXAMPLE.COM"
+  }
+}

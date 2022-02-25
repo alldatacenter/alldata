@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<configuration>
+    <property>
+        <name>recovery_enabled</name>
+        <value>true</value>
+        <description>Auto start enabled or not for this cluster.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>recovery_type</name>
+        <value>AUTO_START</value>
+        <description>Auto start type.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>recovery_lifetime_max_count</name>
+        <value>1024</value>
+        <description>Auto start lifetime maximum count of recovery attempt allowed per host component. This is reset when agent is restarted.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>recovery_max_count</name>
+        <value>6</value>
+        <description>Auto start maximum count of recovery attempt allowed per host component in a window. This is reset when agent is restarted.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>recovery_window_in_minutes</name>
+        <value>60</value>
+        <description>Auto start recovery window size in minutes.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>recovery_retry_interval</name>
+        <value>5</value>
+        <description>Auto start recovery retry gap between tries per host component.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>security_enabled</name>
+        <value>false</value>
+        <description>Hadoop Security</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>kerberos_domain</name>
+        <value>EXAMPLE.COM</value>
+        <description>Kerberos realm.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>ignore_groupsusers_create</name>
+        <display-name>Skip group modifications during install</display-name>
+        <value>false</value>
+        <property-type>ADDITIONAL_USER_PROPERTY</property-type>
+        <description>Whether to ignore failures on users and group creation</description>
+        <value-attributes>
+            <overridable>false</overridable>
+            <type>boolean</type>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>smokeuser</name>
+        <display-name>Smoke User</display-name>
+        <value>ambari-qa</value>
+        <property-type>USER</property-type>
+        <description>User executing service checks</description>
+        <value-attributes>
+            <type>user</type>
+            <overridable>false</overridable>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>smokeuser_keytab</name>
+        <value>/etc/security/keytabs/smokeuser.headless.keytab</value>
+        <description>Path to smoke test user keytab file</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>user_group</name>
+        <display-name>Hadoop Group</display-name>
+        <value>hadoop</value>
+        <property-type>GROUP</property-type>
+        <description>Hadoop user group.</description>
+        <value-attributes>
+            <type>user</type>
+            <overridable>false</overridable>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>repo_suse_rhel_template</name>
+        <value>[{{repo_id}}]
+name={{repo_id}}
+{% if mirror_list %}mirrorlist={{mirror_list}}{% else %}baseurl={{base_url}}{% endif %}
+
+path=/
+enabled=1
+gpgcheck=0</value>
+        <description>Template of repositories for rhel and suse.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>repo_ubuntu_template</name>
+        <value>{{package_type}} {{base_url}} {{components}}</value>
+        <description>Template of repositories for ubuntu.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>override_uid</name>
+        <value>true</value>
+        <property-type>ADDITIONAL_USER_PROPERTY</property-type>
+        <display-name>Have Ambari manage UIDs</display-name>
+        <description>Have Ambari manage UIDs</description>
+        <value-attributes>
+            <overridable>false</overridable>
+            <type>boolean</type>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    
+    <property>
+        <name>fetch_nonlocal_groups</name>
+        <value>true</value>
+        <display-name>Ambari fetch nonlocal groups</display-name>
+        <description>Ambari requires fetching all the groups. This can be slow
+        on envs with enabled ldap. Setting this option to false will enable Ambari,
+        to skip user/group management connected with ldap groups.</description>
+        <value-attributes>
+            <overridable>false</overridable>
+            <type>boolean</type>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>managed_hdfs_resource_property_names</name>
+        <value></value>
+        <description>Comma separated list of property names with HDFS resource paths.
+        Resource from this list will be managed even if it is marked as not managed in the stack</description>
+        <value-attributes>
+            <overridable>false</overridable>
+            <empty-value-valid>true</empty-value-valid>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>stack_tools</name>
+        <value></value>
+        <description>Stack specific tools</description>
+        <property-type>VALUE_FROM_PROPERTY_FILE</property-type>
+        <value-attributes>
+            <property-file-name>stack_tools.json</property-file-name>
+            <property-file-type>json</property-file-type>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>stack_features</name>
+        <value></value>
+        <description>List of features supported by the stack</description>
+        <property-type>VALUE_FROM_PROPERTY_FILE</property-type>
+        <value-attributes>
+            <property-file-name>stack_features.json</property-file-name>
+            <property-file-type>json</property-file-type>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>stack_root</name>
+        <value>/usr/hdf</value>
+        <description>Stack root folder</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>alerts_repeat_tolerance</name>
+        <value>1</value>
+        <description>The number of consecutive alerts required to transition an alert from the SOFT to the HARD state.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+</configuration>

@@ -1,0 +1,51 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="btn-group dropdown">
+  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">{{t dashboard.widgets.wizard.step2.newMetric}}
+    &nbsp;<span class="caret"></span></button>
+  <ul class="dropdown-menu service-level-dropdown">
+    {{#if controller.content.isMetricsLoaded}}
+      <!--service level-->
+      {{#each service in view.componentMap}}
+        <li class="dropdown-submenu">
+          <a class="" tabindex="-1" href="javascript:void(null);">{{service.displayName}}</a>
+          <ul class="dropdown-menu">
+            {{#each comp in service.components}}
+              {{#if comp.isGroup}}
+                <li class="dropdown-submenu">
+                  <a href="javascript:void(null);">{{comp.displayName}}</a>
+                  <ul class="dropdown-menu">
+                    {{#each group in comp.components}}
+                      {{view App.WidgetWizardComponentDropdownView componentBinding="group.component" displayNameBinding="group.displayName"}}
+                    {{/each}}
+                  </ul>
+                </li>
+              {{else}}
+                {{view App.WidgetWizardComponentDropdownView componentBinding="comp" displayNameBinding="comp.displayName"}}
+              {{/if}}
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    {{else}}
+      {{view App.SpinnerView}}
+    {{/if}}
+  </ul>
+</div>
+

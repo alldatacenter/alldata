@@ -1,0 +1,144 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="col-md-4">
+  {{!-- BUTTONS --}}
+  <div class="row">
+      {{#if isWaitingPath}}
+        <div class="add-queue col-md-12">
+          {{path-input queues=content action="addQ" activeFlag=isWaitingPath}}
+        </div>
+      {{else}}
+        <div class="add-queue col-sm-6">
+          <button {{action 'askPath'}} {{bind-attr class=":btn :btn-default :btn-block isNotOperator:disabled hasNewQueue:disabled"}} ><i class="fa fa-plus"></i> Add Queue</button>
+        </div>
+        <div class="add-queue col-sm-6">
+          <div class="btn-group btn-group-justified btn-group-save">
+            <div class="btn-group">
+                {{save-button data-toggle="dropdown"
+                  canNotSaveBinding='canNotSave'
+                  restartBinding='needRestart'
+                  refreshBinding='needRefresh'
+                  needSaveBinding='needSave'
+                  }}
+                <ul class="dropdown-menu pull-right" role="menu">
+                  {{dropdown-buttons
+                    action='saveModal'
+                    layoutName='components/dropdownConfirmation'
+                    targetObject=view
+                    needRestart=needRestart
+                    isNotOperator=isNotOperator
+                  }}
+                  <li >
+                    <a href="#" {{action 'saveModal' 'refresh' target="view"}} {{bind-attr class=":btn needRefresh::disabled"}}><i class="fa fa-fw fa-refresh"></i> Save and Refresh Queues</a>
+                  </li>
+                  <li>
+                    <a href="#" {{action 'saveModal' target="view"}} {{bind-attr class=":btn needSave::disabled"}}><i class="fa fa-fw fa-save"></i> Save Only</a>
+                  </li>
+                  {{dropdown-buttons action='downloadConfig' layoutName='components/dropdownDownload'}}
+                </ul>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+  </div>
+  {{!-- ALERT --}}
+  {{#if alertMessage}}
+  <div class="alert alert-danger">
+    <button {{action 'clearAlert'}}type="button" class="close" aria-hidden="true">&times;</button>
+    <strong> {{alertMessage.status}} </strong> {{alertMessage.simpleMessage}}
+    <div>
+      <small>{{alertMessage.message}}</small>
+    </div>
+    <br>
+    {{#link-to 'trace' class="alert-link"}}Trace{{/link-to}}
+  </div>
+  {{/if}}
+  {{!-- QUEUE LIST --}}
+  <div class="list-group queue-list">
+    {{recurce-queues depth=0}}
+  </div>
+  {{!-- SHEDULER --}}
+  <div class="hidden-sm hidden-xs">
+    {{partial "schedulerPanel"}}
+  </div>
+
+  <div class="hidden-sm hidden-xs">
+    <div class="panel panel-default panel-versions">
+      <div class="panel-heading">
+        <div class="panel-title">
+          Versions
+        </div>
+      </div>
+      <div id="versions-table-wrap">
+        <table class="table table-condensed">
+          <tbody>
+          {{#each sortedTags}}
+            <tr>
+              <td>
+                <span class="label label-info">v{{id}}</span>
+                {{#if isCurrent}}
+                  <span class="label label-success">Current</span>
+                {{/if}}
+              </td>
+              <td>{{timeAgo changed}}</td>
+              <td>
+                <div class="btn-group btn-group-xs btn-block">
+                  <button type="button" class="btn btn-default btn-xs btn-block" {{action 'loadTagged' tag}} >load</button>
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- QUEUE --}}
+<div class="col-md-8 queue-area">
+  {{#unless isOperator}}
+    <div class="alert alert-warning"><strong>Warning!</strong> You do not have permission to edit the Capacity Scheduler configuration. Contact your Cluster administrator.</div>
+  {{/unless}}
+  {{outlet}}
+</div>
+
+{{!-- SHEDULER --}}
+<div class="col-md-12 hidden-lg hidden-md">
+  {{partial "schedulerPanel"}}
+</div>
+
+{{!-- NOTE MODAL --}}
+<div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="noteModalLabel">Notes</h4>
+      </div>
+      <div class="modal-body">
+        {{textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="What did you change?" value=configNote}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button {{action 'saveConfig' view.saveMode}} type="button" class="btn btn-success" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

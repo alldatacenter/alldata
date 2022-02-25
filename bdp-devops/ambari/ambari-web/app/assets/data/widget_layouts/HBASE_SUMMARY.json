@@ -1,0 +1,163 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/users/admin/activeWidgetLayouts?WidgetLayoutInfo/section_name=HBASE_SUMMARY",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widget_layouts/9",
+      "WidgetLayoutInfo" : {
+        "cluster_name" : "c1",
+        "display_name" : "Standard HBase Dashboard",
+        "id" : 9,
+        "layout_name" : "admin_hbase_dashboard",
+        "scope" : "USER",
+        "section_name" : "HBASE_SUMMARY",
+        "user_name" : "admin",
+        "widgets" : [
+          {
+            "WidgetInfo" : {
+              "id" : 20,
+              "metrics" : "[{\"name\":\"regionserver.Server.Get_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Get_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.ScanNext_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/ScanNext_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "Widget shows 95% Read Latency",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"ms\",\"graph_type\":\"LINE\",\"time_range\":\"4\"}",
+              "widget_name" : "Read Latency",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622306,
+              "display_name" : "Read Latency",
+              "values" : "[{\"name\":\"Cluster wide minimum of 95% Read Latency\",\"value\":\"${regionserver.Server.Get_95th_percentile + regionserver.Server.ScanNext_95th_percentile}\"},{\"name\":\"Weighted average of 95% Read Latency\",\"value\":\"${regionserver.Server.Get_95th_percentile + regionserver.Server.ScanNext_95th_percentile}\"},{\"name\":\"Cluster wide maximum of 95% Read Latency\",\"value\":\"${regionserver.Server.Get_95th_percentile + regionserver.Server.ScanNext_95th_percentile}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 21,
+              "metrics" : "[{\"name\":\"regionserver.Server.Mutate_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Mutate_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Increment_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Increment_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Append_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Append_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Delete_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Delete_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "This widget shows 95th percentile of the write latency.",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"ms\",\"graph_type\":\"LINE\",\"time_range\":\"2\"}",
+              "widget_name" : "Write Latency",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622306,
+              "display_name" : "Write Latency",
+              "values" : "[{\"name\":\"Cluster wide minimum of 95% write Latency\",\"value\":\"${regionserver.Server.Mutate_95th_percentile + regionserver.Server.Increment_95th_percentile + regionserver.Server.Append_95th_percentile + regionserver.Server.Delete_95th_percentile}\"},{\"name\":\"Weighted average of 95% write Latency\",\"value\":\"${regionserver.Server.Mutate_95th_percentile + regionserver.Server.Increment_95th_percentile + regionserver.Server.Append_95th_percentile + regionserver.Server.Delete_95th_percentile}\"},{\"name\":\"Cluster wide maximum of 95% write Latency\",\"value\":\"${regionserver.Server.Mutate_95th_percentile + regionserver.Server.Increment_95th_percentile + regionserver.Server.Append_95th_percentile + regionserver.Server.Delete_95th_percentile}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 22,
+              "metrics" : "[{\"name\":\"regionserver.RegionServer.numOpenConnections\",\"metric_path\":\"metrics/hbase/ipc/IPC/numOpenConnections\",\"category\":\"\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "This widget shows number of current open connections",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"Connections\",\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "Open Connections",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622306,
+              "display_name" : "Open Connections",
+              "values" : "[{\"name\":\"Open Connections\",\"value\":\"${regionserver.RegionServer.numOpenConnections}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 23,
+              "metrics" : "[{\"name\":\"regionserver.RegionServer.numActiveHandler\",\"metric_path\":\"metrics/hbase/ipc/IPC/numActiveHandler\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.RegionServer.numCallsInGeneralQueue\",\"metric_path\":\"metrics/hbase/ipc/IPC/numCallsInGeneralQueue\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : null,
+              "scope" : "CLUSTER",
+              "properties" : "{\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "Request Handlers",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622306,
+              "display_name" : "Request Handlers",
+              "values" : "[{\"name\":\"Active Handlers\",\"value\":\"${regionserver.RegionServer.numActiveHandler}\"},{\"name\":\"Calls in General Queue\",\"value\":\"${regionserver.RegionServer.numCallsInGeneralQueue}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 24,
+              "metrics" : "[{\"name\":\"regionserver.Server.percentFilesLocal\",\"metric_path\":\"metrics/hbase/regionserver/percentFilesLocal\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "This widget shows weighted average for local files.",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"%\",\"error_threshold\":\"25\",\"warning_threshold\":\"75\"}",
+              "widget_name" : "Files Local",
+              "widget_type" : "NUMBER",
+              "time_created" : 1429906622306,
+              "display_name" : "Files Local",
+              "values" : "[{\"name\":\"Files Local\",\"value\":\"${regionserver.Server.percentFilesLocal}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 26,
+              "metrics" : "[{\"name\":\"cpu_idle\",\"metric_path\":\"metrics/cpu/cpu_idle\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "RegionServer widget for CPU utilization",
+              "scope" : "CLUSTER",
+              "properties" : "{\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "Cluster CPU",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622306,
+              "display_name" : "Cluster CPU",
+              "values" : "[{\"name\":\"CPU Idle\",\"value\":\"${cpu_idle}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 25,
+              "metrics" : "[{\"name\":\"regionserver.Server.updatesBlockedTime\",\"metric_path\":\"metrics/hbase/regionserver/Server/updatesBlockedTime\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "Number of milliseconds updates have been blocked so the memstore can be flushed",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"ms\",\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "Blocked Updates",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622306,
+              "display_name" : "Blocked Updates",
+              "values" : "[{\"name\":\"Updates Blocked Time\",\"value\":\"${regionserver.Server.updatesBlockedTime}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 27,
+              "metrics" : "[{\"name\":\"pkts_in\",\"metric_path\":\"metrics/network/pkts_in\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"pkts_out\",\"metric_path\":\"metrics/network/pkts_out\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "RegionServer widget for network utilization",
+              "scope" : "CLUSTER",
+              "properties" : "{\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "Cluster Network",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622306,
+              "display_name" : "Cluster Network",
+              "values" : "[{\"name\":\"Packets In\",\"value\":\"${pkts_in}\"},{\"name\":\"Packets Out\",\"value\":\"${disk_free}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 28,
+              "metrics" : "[{\"name\":\"disk_free\",\"metric_path\":\"metrics/disk/disk_free\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "RegionServer widget for disk utilization",
+              "scope" : "CLUSTER",
+              "properties" : "{\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "Cluster Disk",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622306,
+              "display_name" : "Cluster Disk",
+              "values" : "[{\"name\":\"Disk Free\",\"value\":\"${disk_free}\"}]",
+              "cluster_name" : "c1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

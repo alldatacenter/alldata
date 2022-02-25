@@ -1,0 +1,1140 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="upgrade-pack.xsd">
+  <type>rolling</type>
+  
+  <prerequisite-checks>
+    <!-- List of additional pre-req checks to run in addition to the required pre-reqs -->
+    <check class="org.apache.ambari.server.checks.HiveMultipleMetastoreCheck" />
+    <check class="org.apache.ambari.server.checks.MapReduce2JobHistoryStatePreservingCheck" />
+    <check class="org.apache.ambari.server.checks.SecondaryNamenodeDeletedCheck" />
+    <check class="org.apache.ambari.server.checks.ServicesMapReduceDistributedCacheCheck" />
+    <check class="org.apache.ambari.server.checks.ServicesNamenodeHighAvailabilityCheck" />
+    <check class="org.apache.ambari.server.checks.ServicesTezDistributedCacheCheck" />
+    <check class="org.apache.ambari.server.checks.ServicesYarnWorkPreservingCheck" />
+    <check class="org.apache.ambari.server.checks.YarnRMHighAvailabilityCheck" />
+    <check class="org.apache.ambari.server.checks.YarnTimelineServerStatePreservingCheck" />
+    <check class="org.apache.ambari.server.checks.DruidHighAvailabilityCheck" />
+    <check class="org.apache.ambari.server.checks.LZOCheck" />
+    
+    <check class="org.apache.ambari.server.checks.HiveDynamicServiceDiscoveryCheck">
+      <property name="min-failure-stack-version">HDP-2.3.0.0</property>
+      <property name="my-property">my-value</property>
+    </check>
+    
+  </prerequisite-checks>
+  
+  <lifecycle type="install">
+    <order>
+      <group />
+    </order>
+  </lifecycle>  
+
+  <lifecycle type="quiet">
+    <order>
+      <group />
+    </order>
+  </lifecycle>
+  
+  <lifecycle type="prepare">
+    <order>
+      <group xsi:type="cluster" name="PRE_CLUSTER" title="Prepare Upgrade">
+        <direction>UPGRADE</direction>
+        <execute-stage service="HDFS" component="NAMENODE" title="Pre Upgrade HDFS">
+          <task xsi:type="execute" hosts="master">
+            <script>scripts/namenode.py</script>
+            <function>prepare_rolling_upgrade</function>
+          </task>
+        </execute-stage>
+  
+        <execute-stage service="TEZ" component="TEZ_CLIENT" title="Check Tez Tarball">
+          <task xsi:type="execute" hosts="any">
+            <script>scripts/pre_upgrade.py</script>
+            <function>prepare</function>
+          </task>
+        </execute-stage>
+      </group>
+    </order>
+  </lifecycle>
+  
+  <lifecycle type="snapshot">
+    <order>
+      <group xsi:type="cluster" name="PREPARE_BACKUPS" title="Prepare Backups">
+        <direction>UPGRADE</direction>
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+  
+        <execute-stage service="HBASE" component="HBASE_MASTER" title="Pre Upgrade HBase Backup">
+          <task xsi:type="execute" hosts="master">
+            <script>scripts/hbase_upgrade.py</script>
+            <function>take_snapshot</function>
+          </task>
+        </execute-stage>
+  
+        <execute-stage service="HIVE" component="HIVE_METASTORE" title="Pre Upgrade Hive Backup">
+          <task xsi:type="manual">
+            <message>Before continuing, please backup the Hive Metastore database referenced by the Hive Metastore service(s) located on the following host(s): {{hosts.all}}.</message>
+          </task>
+        </execute-stage>
+  
+        <execute-stage service="OOZIE" component="OOZIE_SERVER" title="Pre Upgrade Oozie Backup">
+          <task xsi:type="manual">
+            <message>Before continuing, please backup the Oozie Server database referenced by the Oozie server located on {{hosts.all}}.</message>
+          </task>
+        </execute-stage>
+  
+        <execute-stage service="RANGER" component="RANGER_ADMIN" title="Pre Upgrade Ranger Admin Backup">
+          <task xsi:type="manual">
+            <message>Before continuing, please backup the Ranger Admin database on the following host(s): {{hosts.all}}.</message>
+          </task>
+        </execute-stage>
+  
+        <execute-stage service="RANGER_KMS" component="RANGER_KMS_SERVER" title="Pre Upgrade Ranger KMS Backup">
+          <task xsi:type="manual">
+            <message>Before continuing, please backup Ranger KMS database on the following host(s): {{hosts.all}}.</message>
+          </task>
+        </execute-stage>
+        <execute-stage service="ZEPPELIN" component="ZEPPELIN_MASTER" title="Pre Upgrade Zeppelin notebooks Backup">
+          <task xsi:type="manual">
+            <message>Before continuing, please backup Zeppelin notebooks directory on the following host(s): {{hosts.all}}.</message>
+          </task>
+        </execute-stage>
+      </group>
+    </order>
+  </lifecycle>
+  
+  <lifecycle type="upgrade">
+    <order>
+      <group name="ZOOKEEPER" title="ZooKeeper">
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service name="ZOOKEEPER">
+          <component>ZOOKEEPER_SERVER</component>
+        </service>
+      </group>
+  
+      <group name="RANGER" title="Ranger">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service name="RANGER">
+          <component>RANGER_ADMIN</component>
+          <component>RANGER_USERSYNC</component>
+          <component>RANGER_TAGSYNC</component>
+        </service>
+      </group>
+  
+      <group name="RANGER_KMS" title="Ranger_KMS">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service name="RANGER_KMS">
+          <component>RANGER_KMS_SERVER</component>
+        </service>
+      </group>
+  
+      <group title="Kafka">
+        <skippable>true</skippable>
+        <service name="KAFKA">
+          <component>KAFKA_BROKER</component>
+        </service>
+      </group>
+  
+      <!--
+      After processing this group, the user-specified Kerberos descriptor will be updated to work with
+      the new stack-level Kerberos descriptor.
+      -->
+      <group xsi:type="cluster" name="UPDATE_KERBEROS_DESCRIPTORS" title="Update Kerberos Descriptors">
+        <condition xsi:type="security" type="kerberos"/>
+        <execute-stage title="Update the user-specified Kerberos descriptor">
+          <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.UpgradeUserKerberosDescriptor"/>
+        </execute-stage>
+      </group>
+  
+      <group name="CORE_MASTER" title="Core Masters">
+        <service-check>false</service-check>
+        <service name="HDFS">
+          <component>NAMENODE</component>
+          <component>JOURNALNODE</component>
+          <component>ZKFC</component>
+        </service>
+  
+        <service name="MAPREDUCE2">
+          <component>HISTORYSERVER</component>
+        </service>
+  
+        <service name="YARN">
+          <component>APP_TIMELINE_SERVER</component>
+          <component>RESOURCEMANAGER</component>
+        </service>
+  
+        <service name="HBASE">
+          <component>HBASE_MASTER</component>
+        </service>
+      </group>
+  
+      <group name="SERVICE_CHECK_1" title="All Service Checks" xsi:type="service-check">
+        <direction>UPGRADE</direction>
+        <skippable>true</skippable>
+        <priority>
+          <service>ZOOKEEPER</service>
+          <service>HDFS</service>
+          <service>YARN</service>
+          <service>MAPREDUCE2</service>
+          <service>HBASE</service>
+        </priority>
+        <exclude>
+          <service>AMBARI_METRICS</service>
+          <service>LOGSEARCH</service>
+        </exclude>
+      </group>
+  
+      <group name="CORE_SLAVES" title="Core Slaves" xsi:type="colocated">
+        <service-check>false</service-check>
+        <skippable>true</skippable>
+        <service name="HDFS">
+          <component>DATANODE</component>
+          <component>NFS_GATEWAY</component>
+        </service>
+  
+        <service name="HBASE">
+          <component>HBASE_REGIONSERVER</component>
+          <component>PHOENIX_QUERY_SERVER</component>
+        </service>
+  
+        <service name="YARN">
+          <component>NODEMANAGER</component>
+        </service>
+  
+        <batch>
+          <percent>20</percent>
+          <summary>Verification Required</summary>
+          <message>The initial batch of {{components}} hosts have been {{direction.past}}. You are advised to check the hosts and perform cluster/workload-specific tests against your cluster to ensure proper operation before proceeding with {{direction.text}} of the remaining services.</message>
+        </batch>
+      </group>
+  
+      <group name="SERVICE_CHECK_2" title="All Service Checks" xsi:type="service-check">
+        <direction>UPGRADE</direction>
+        <skippable>true</skippable>
+        <priority>
+          <service>ZOOKEEPER</service>
+          <service>HDFS</service>
+          <service>YARN</service>
+          <service>HBASE</service>
+        </priority>
+        <exclude>
+          <service>AMBARI_METRICS</service>
+          <service>LOGSEARCH</service>
+        </exclude>
+      </group>
+  
+      <!-- Slider must be upgraded before higher-level apps that need to run apps on Slider, such as Hive. -->
+      <group name="SLIDER" title="Slider">
+        <skippable>true</skippable>
+        <service name="SLIDER">
+          <component>SLIDER</component>
+        </service>
+      </group>
+  
+      <group name="HIVE" title="Hive">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service name="HIVE">
+          <component>HIVE_SERVER</component>
+          <component>HIVE_METASTORE</component>
+          <component>HIVE_SERVER_INTERACTIVE</component>
+          <component>WEBHCAT_SERVER</component>
+        </service>
+      </group>
+  
+      <group name="SPARK" title="Spark">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service-check>false</service-check>
+        <service name="SPARK">
+          <component>SPARK_JOBHISTORYSERVER</component>
+          <component>SPARK_THRIFTSERVER</component>
+          <component>LIVY_SERVER</component>
+        </service>
+      </group>
+  
+      <group name="SPARK2" title="Spark2">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service-check>false</service-check>
+        <service name="SPARK2">
+          <component>SPARK2_JOBHISTORYSERVER</component>
+          <component>SPARK2_THRIFTSERVER</component>
+          <component>LIVY2_SERVER</component>
+        </service>
+      </group>
+  
+      <group name="ZEPPELIN" title="Zeppelin">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service-check>false</service-check>
+        <service name="ZEPPELIN">
+          <component>ZEPPELIN_MASTER</component>
+        </service>
+      </group>
+  
+      <group name="SPARK_CLIENTS" title="Spark Clients">
+        <skippable>true</skippable>
+        <service name="SPARK">
+          <component>SPARK_CLIENT</component>
+        </service>
+      </group>
+  
+      <group name="SPARK2_CLIENTS" title="Spark2 Clients">
+        <skippable>true</skippable>
+        <service name="SPARK2">
+          <component>SPARK2_CLIENT</component>
+        </service>
+      </group>
+  
+      <group name="ATLAS" title="Atlas">
+        <service-check>false</service-check>
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service name="ATLAS">
+          <component>ATLAS_SERVER</component>
+        </service>
+      </group>
+  
+      <group name="ATLAS_CLIENTS" title="Atlas Clients">
+        <service-check>false</service-check>
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>true</supports-auto-skip-failure>
+        <service name="ATLAS">
+          <component>ATLAS_CLIENT</component>
+        </service>
+      </group>
+  
+      <group name="OOZIE" title="Oozie">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service-check>false</service-check>
+        <service name="OOZIE">
+          <component>OOZIE_SERVER</component>
+        </service>
+      </group>
+  
+      <group name="OOZIE_CLIENTS" title="Oozie Clients">
+        <skippable>true</skippable>
+        <service name="OOZIE">
+          <component>OOZIE_CLIENT</component>
+        </service>
+      </group>
+  
+      <group name="FALCON" title="Falcon">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service-check>false</service-check>
+        <service name="FALCON">
+          <component>FALCON_SERVER</component>
+        </service>
+      </group>
+  
+      <group name="FALCON_CLIENTS" title="Falcon Clients">
+        <skippable>true</skippable>
+        <service name="FALCON">
+          <component>FALCON_CLIENT</component>
+        </service>
+      </group>
+  
+      <group name="CLIENTS" title="Client Components">
+        <service-check>false</service-check>
+        <service name="ZOOKEEPER">
+          <component>ZOOKEEPER_CLIENT</component>
+        </service>
+        <service name="HDFS">
+          <component>HDFS_CLIENT</component>
+        </service>
+  
+        <service name="YARN">
+          <component>YARN_CLIENT</component>
+        </service>
+  
+        <service name="MAPREDUCE2">
+          <component>MAPREDUCE2_CLIENT</component>
+        </service>
+  
+        <service name="TEZ">
+          <component>TEZ_CLIENT</component>
+        </service>
+  
+        <service name="HBASE">
+          <component>HBASE_CLIENT</component>
+        </service>
+  
+        <service name="PIG">
+          <component>PIG</component>
+        </service>
+  
+        <service name="SQOOP">
+          <component>SQOOP</component>
+        </service>
+  
+        <service name="MAHOUT">
+          <component>MAHOUT</component>
+        </service>
+  
+        <service name="HIVE">
+          <component>HIVE_CLIENT</component>
+          <component>HCAT</component>
+        </service>
+      </group>
+  
+      <group name="DRUID" title="Druid">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+        <service-check>false</service-check>
+        <service name="DRUID">
+          <component>DRUID_HISTORICAL</component>
+          <component>DRUID_MIDDLEMANAGER</component>
+          <component>DRUID_BROKER</component>
+          <component>DRUID_ROUTER</component>
+          <component>DRUID_COORDINATOR</component>
+          <component>DRUID_OVERLORD</component>
+          <component>DRUID_SUPERSET</component>
+        </service>
+      </group>
+  
+      <group name="SERVICE_CHECK_3" title="All Service Checks" xsi:type="service-check">
+        <direction>UPGRADE</direction>
+        <skippable>true</skippable>
+        <priority>
+          <service>ZOOKEEPER</service>
+          <service>HDFS</service>
+          <service>YARN</service>
+          <service>HBASE</service>
+          <service>DRUID</service>
+        </priority>
+        <exclude>
+          <service>AMBARI_METRICS</service>
+          <service>LOGSEARCH</service>
+        </exclude>
+      </group>
+  
+      <group name="KNOX" title="Knox">
+        <skippable>true</skippable>
+        <service name="KNOX">
+          <component>KNOX_GATEWAY</component>
+        </service>
+      </group>
+  
+      <group name="STORM" title="Storm">
+        <skippable>true</skippable>
+        <service name="STORM">
+          <component>NIMBUS</component>
+          <component>SUPERVISOR</component>
+          <component>STORM_UI_SERVER</component>
+          <component>DRPC_SERVER</component>
+        </service>
+      </group>
+  
+      <group name="FLUME" title="Flume">
+        <skippable>true</skippable>
+        <service name="FLUME">
+          <component>FLUME_HANDLER</component>
+        </service>
+      </group>
+  
+      <group name="ACCUMULO" title="Accumulo">
+        <skippable>true</skippable>
+        <service name="ACCUMULO">
+          <component>ACCUMULO_MASTER</component>
+          <component>ACCUMULO_TSERVER</component>
+          <component>ACCUMULO_MONITOR</component>
+          <component>ACCUMULO_GC</component>
+          <component>ACCUMULO_TRACER</component>
+          <component>ACCUMULO_CLIENT</component>
+        </service>
+      </group>
+    </order>
+  </lifecycle>
+  
+  <lifecycle type="finalize">
+    <order>
+      <group xsi:type="cluster" name="ALL_HOST_OPS" title="Finalize Hosts">
+        <execute-stage title="Update remaining HDP stack to {{version}}">
+          <task xsi:type="execute">
+            <script>scripts/ru_set_all.py</script>
+            <function>actionexecute</function>
+          </task>
+        </execute-stage>
+      </group>
+  
+      <group xsi:type="cluster" name="FINALIZE_PRE_CHECK" title="Finalize {{direction.text.proper}} Pre-Check">
+        <direction>UPGRADE</direction>
+  
+        <execute-stage title="Check Component Versions">
+          <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.ComponentVersionCheckAction" />
+        </execute-stage>
+      </group>
+  
+      <group xsi:type="cluster" name="POST_CLUSTER" title="Finalize {{direction.text.proper}}">
+        <skippable>true</skippable>
+        <supports-auto-skip-failure>false</supports-auto-skip-failure>
+  
+        <execute-stage title="Confirm Finalize">
+          <direction>UPGRADE</direction>
+          <task xsi:type="manual">
+            <message>Please confirm you are ready to finalize.</message>
+          </task>
+        </execute-stage>
+  
+        <execute-stage service="HBASE" component="HBASE_MASTER" title="Delete HBase snapshots">
+          <direction>UPGRADE</direction>
+          <task xsi:type="manual">
+            <message>You can now remove any HBase snapshots which were created at the beginning of the upgrade. To see existing snapshots, use the following HBase shell command:</message>
+            <message>hbase> list_snapshots</message>
+            <message>Once you have found an existing snapshot which you would like to remove, you can use the following command:</message>
+            <message>hbase> delete_snapshot 'snapshotName'</message>
+          </task>
+        </execute-stage>
+  
+        <execute-stage service="HDFS" component="NAMENODE" title="Execute HDFS Finalize">
+          <task xsi:type="execute" hosts="master">
+            <script>scripts/namenode.py</script>
+            <function>finalize_rolling_upgrade</function>
+          </task>
+        </execute-stage>
+  
+        <execute-stage title="Save Cluster State">
+          <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.FinalizeUpgradeAction">
+          </task>
+        </execute-stage>
+      </group>
+    </order>
+  </lifecycle>
+  
+
+
+  <processing>
+    <service name="ZOOKEEPER">
+      <component name="ZOOKEEPER_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="ZOOKEEPER_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="RANGER">
+      <component name="RANGER_ADMIN">
+        <pre-upgrade>
+          <task xsi:type="execute" hosts="all">
+            <summary>Stop Ranger Admin</summary>
+            <script>scripts/ranger_admin.py</script>
+            <function>stop</function>
+          </task>
+
+          <task xsi:type="execute" hosts="all">
+            <script>scripts/ranger_admin.py</script>
+            <function>set_pre_start</function>
+          </task>
+
+          <task xsi:type="execute" hosts="any">
+            <summary>Upgrading Ranger database schema</summary>
+            <script>scripts/ranger_admin.py</script>
+            <function>setup_ranger_database</function>
+          </task>
+
+          <task xsi:type="configure_function" hosts="all" />
+
+          <task xsi:type="execute" hosts="any">
+            <summary>Applying Ranger java patches</summary>
+            <script>scripts/ranger_admin.py</script>
+            <function>setup_ranger_java_patches</function>
+          </task>
+        </pre-upgrade>
+
+        <pre-downgrade copy-upgrade="true" />
+
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+
+      </component>
+
+      <component name="RANGER_USERSYNC">
+        <pre-upgrade>
+          <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.RangerUsersyncConfigCalculation">
+            <summary>Enabling Nested Group Sync for Ranger</summary>
+          </task>
+        </pre-upgrade>
+
+        <pre-downgrade /> <!--  no-op to prevent config changes on downgrade -->
+
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="RANGER_TAGSYNC">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="RANGER_KMS">
+      <component name="RANGER_KMS_SERVER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_kms_plugin_cluster_name"/>
+          <task xsi:type="execute" hosts="any" sequential="true">
+            <summary>Upgrading Ranger KMS database schema</summary>
+            <script>scripts/kms_server.py</script>
+            <function>setup_ranger_kms_database</function>
+          </task>
+        </pre-upgrade>
+
+        <pre-downgrade>
+          <task xsi:type="execute" hosts="any" sequential="true">
+            <summary>Downgrading Ranger KMS database schema</summary>
+            <script>scripts/kms_server.py</script>
+            <function>setup_ranger_kms_database</function>
+          </task>
+        </pre-downgrade>
+
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="KAFKA">
+      <component name="KAFKA_BROKER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_kafka_plugin_cluster_name"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="HDFS">
+      <component name="NAMENODE">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_hdfs_plugin_cluster_name"/>
+          <task xsi:type="configure" id="hdfs_namenode_prevent_gc_heuristics"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" timeout-config="upgrade.parameter.nn-restart.timeout"/>
+        </upgrade>
+      </component>
+
+      <component name="DATANODE">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="NFS_GATEWAY">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="HDFS_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="JOURNALNODE">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="ZKFC">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="SLIDER">
+      <component name="SLIDER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="MAPREDUCE2">
+      <component name="HISTORYSERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="MAPREDUCE2_CLIENT">
+        <pre-upgrade>
+          <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.FixLzoCodecPath">
+            <summary>Verifying LZO codec path for mapreduce</summary>
+          </task>
+          
+          <task xsi:type="configure" id="hdp_2_6_mapreduce_tarball_ld_library" supports-patch="true"/>
+        </pre-upgrade>
+
+        <pre-downgrade copy-upgrade="true" />
+
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="YARN">
+      <component name="APP_TIMELINE_SERVER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_yarn_spark_versioned_classpaths" supports-patch="true"/>
+        </pre-upgrade>
+        <pre-downgrade/>
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="RESOURCEMANAGER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_yarn_plugin_cluster_name"/>
+          <task xsi:type="configure" id="hdp_2_6_yarn_preemption" />
+          <task xsi:type="configure" id="hdp_2_6_yarn_app_classpath_parameterization" supports-patch="true"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="NODEMANAGER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_0_0_yarn_nodemanager_llap_mem"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="YARN_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="HBASE">
+      <component name="HBASE_MASTER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_hbase_plugin_cluster_name"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="HBASE_REGIONSERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="HBASE_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="PHOENIX_QUERY_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="TEZ">
+      <component name="TEZ_CLIENT">
+        <pre-upgrade>
+          <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.FixLzoCodecPath">
+            <summary>Verifying LZO codec path for Tez</summary>
+          </task>
+          
+          <task xsi:type="configure" id="hdp_2_6_tez_tarball_ld_library" supports-patch="true"/>
+        </pre-upgrade>
+
+        <pre-downgrade copy-upgrade="true" />
+
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="PIG">
+      <component name="PIG">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="SQOOP">
+      <component name="SQOOP">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="MAHOUT">
+      <component name="MAHOUT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="HIVE">
+      <component name="HIVE_METASTORE">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="HIVE_SERVER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_hive_plugin_cluster_name"/>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_hive_plugin_urlauth_filesystem_schemes"/>
+          <task xsi:type="configure" id="hdp_2_6_maint_jaas_config_for_hive_hook"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="HIVE_SERVER_INTERACTIVE">
+        <pre-upgrade>
+          <task xsi:type="configure" id="llap_update_tez_shuffle_ssl_enable"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="WEBHCAT_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="HIVE_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="HCAT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="SPARK">
+      <component name="SPARK_JOBHISTORYSERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="SPARK_THRIFTSERVER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_0_0_spark_thriftserver"/>
+        </pre-upgrade>
+        <pre-downgrade />
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="LIVY_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="SPARK_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="SPARK2">
+      <component name="SPARK2_JOBHISTORYSERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="SPARK2_THRIFTSERVER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_0_0_spark2_thriftserver"/>
+        </pre-upgrade>
+        <pre-downgrade />
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="LIVY2_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="SPARK2_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="ZEPPELIN">
+      <component name="ZEPPELIN_MASTER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="OOZIE">
+      <component name="OOZIE_SERVER">
+        <pre-upgrade>
+          <task xsi:type="execute" hosts="all" sequential="true">
+            <summary>Shut down all Oozie servers</summary>
+            <script>scripts/oozie_server.py</script>
+            <function>stop</function>
+          </task>
+
+          <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.OozieConfigCalculation">
+            <summary>Adjusting Oozie properties</summary>
+          </task>
+
+          <!-- It is extremely important that both of these tasks run on the exact same host. Hence, pick the first alphabetically. -->
+          <task xsi:type="configure_function" hosts="first" />
+
+          <task xsi:type="execute" hosts="first" sequential="true">
+            <summary>Upgrading the Oozie database and creating a new sharelib</summary>
+            <script>scripts/oozie_server_upgrade.py</script>
+            <function>upgrade_oozie_database_and_sharelib</function>
+          </task>
+        </pre-upgrade>
+
+        <pre-downgrade>
+          <task xsi:type="execute" hosts="all" sequential="true">
+            <summary>Shut down all Oozie servers</summary>
+            <script>scripts/oozie_server.py</script>
+            <function>stop</function>
+          </task>
+
+          <task xsi:type="execute" hosts="any" sequential="true">
+            <summary>Create a new sharelib</summary>
+            <script>scripts/oozie_server_upgrade.py</script>
+            <function>create_sharelib</function>
+          </task>
+        </pre-downgrade>
+
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+
+      <component name="OOZIE_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="FALCON">
+      <component name="FALCON_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="FALCON_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="KNOX">
+      <component name="KNOX_GATEWAY">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_knox_plugin_cluster_name"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="STORM">
+      <component name="NIMBUS">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_storm_plugin_cluster_name"/>
+          <task xsi:type="configure" id="storm_remove_jmxetric" supports-patch="true"/>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="SUPERVISOR">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="STORM_UI_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="DRPC_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="FLUME">
+      <component name="FLUME_HANDLER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="ACCUMULO">
+      <component name="ACCUMULO_MASTER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="ACCUMULO_MONITOR">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="ACCUMULO_GC">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="ACCUMULO_TRACER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="ACCUMULO_TSERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      <component name="ACCUMULO_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="ATLAS">
+      <component name="ATLAS_SERVER">
+        <pre-upgrade>
+          <task xsi:type="configure" id="hdp_2_6_maint_ranger_atlas_plugin_cluster_name"/>
+          <task xsi:type="configure" id="atlas_env_gc_worker"/>
+          <task xsi:type="configure" id="hdp_2_6_atlas_kafka_auto_commit_enable_property_delete"/>
+          <task xsi:type="configure" id="atlas_log4j_update_logger_settings"/>
+          <task xsi:type="configure" id="atlas_hbase_conf_dir"/>
+          <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.AtlasProxyUserConfigCalculation" >
+            <summary>Applying Atlas proxy-user configurations.</summary>
+          </task>
+        </pre-upgrade>
+        <pre-downgrade/> <!--  no-op to prevent config changes on downgrade -->
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+      <component name="ATLAS_CLIENT">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+    </service>
+
+    <service name="DRUID">
+      <component name="DRUID_HISTORICAL">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+      <component name="DRUID_MIDDLEMANAGER">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+      <component name="DRUID_BROKER">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+      <component name="DRUID_ROUTER">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+      <component name="DRUID_COORDINATOR">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+      <component name="DRUID_OVERLORD">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+      <component name="DRUID_SUPERSET">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+    </service>
+
+  </processing>
+</upgrade>

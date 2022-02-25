@@ -1,0 +1,235 @@
+Jinja2 Changelog
+================
+
+Version 2.5.5
+-------------
+(re-release of 2.5.4 with built documentation removed for filesize.
+ Released on October 18th 2010)
+
+- built documentation is no longer part of release.
+
+Version 2.5.4
+-------------
+(bugfix release, released on October 17th 2010)
+
+- Fixed extensions not loading properly with overlays.
+- Work around a bug in cpython for the debugger that causes segfaults
+  on 64bit big-endian architectures.
+
+Version 2.5.3
+-------------
+(bugfix release, released on October 17th 2010)
+
+- fixed an operator precedence error introduced in 2.5.2.  Statements
+  like "-foo.bar" had their implicit parentheses applied around the
+  first part of the expression ("(-foo).bar") instead of the more
+  correct "-(foo.bar)".
+
+Version 2.5.2
+-------------
+(bugfix release, released on August 18th 2010)
+
+- improved setup.py script to better work with assumptions people
+  might still have from it (``--with-speedups``).
+- fixed a packaging error that excluded the new debug support.
+
+Version 2.5.1
+-------------
+(bugfix release, released on August 17th 2010)
+
+- StopIteration exceptions raised by functions called from templates
+  are now intercepted and converted to undefineds.  This solves a
+  lot of debugging grief.  (StopIteration is used internally to
+  abort template execution)
+- improved performance of macro calls slightly.
+- babel extraction can now properly extract newstyle gettext calls.
+- using the variable `num` in newstyle gettext for something else
+  than the pluralize count will no longer raise a :exc:`KeyError`.
+- removed builtin markup class and switched to markupsafe.  For backwards
+  compatibility the pure Python implementation still exists but is
+  pulled from markupsafe by the Jinja2 developers.  The debug support
+  went into a separate feature called "debugsupport" and is disabled
+  by default because it is only relevant for Python 2.4
+- fixed an issue with unary operators having the wrong precendence.
+
+Version 2.5
+-----------
+(codename Incoherence, relased on May 29th 2010)
+
+- improved the sort filter (should have worked like this for a
+  long time) by adding support for case insensitive searches.
+- fixed a bug for getattribute constant folding.
+- support for newstyle gettext translations which result in a
+  nicer in-template user interface and more consistent
+  catalogs. (:ref:`newstyle-gettext`)
+- it's now possible to register extensions after an environment
+  was created.
+
+Version 2.4.1
+-------------
+(bugfix release, released on April 20th 2010)
+
+- fixed an error reporting bug for undefineds.
+
+Version 2.4
+-----------
+(codename Correlation, released on April 13th 2010)
+
+- the environment template loading functions now transparently
+  pass through a template object if it was passed to it.  This
+  makes it possible to import or extend from a template object
+  that was passed to the template.
+- added a :class:`ModuleLoader` that can load templates from
+  precompiled sources.  The environment now features a method
+  to compile the templates from a configured loader into a zip
+  file or folder.
+- the _speedups C extension now supports Python 3.
+- added support for autoescaping toggling sections and support
+  for evaluation contexts (:ref:`eval-context`).
+- extensions have a priority now.
+
+Version 2.3.1
+-------------
+(bugfix release, released on February 19th 2010)
+
+- fixed an error reporting bug on all python versions
+- fixed an error reporting bug on Python 2.4
+
+Version 2.3
+-----------
+(3000 Pythons, released on February 10th 2010)
+
+- fixes issue with code generator that causes unbound variables
+  to be generated if set was used in if-blocks and other small
+  identifier problems.
+- include tags are now able to select between multiple templates
+  and take the first that exists, if a list of templates is
+  given.
+- fixed a problem with having call blocks in outer scopes that
+  have an argument that is also used as local variable in an
+  inner frame (#360).
+- greatly improved error message reporting (#339)
+- implicit tuple expressions can no longer be totally empty.
+  This change makes ``{% if %}...{% endif %}`` a syntax error
+  now. (#364)
+- added support for translator comments if extracted via babel.
+- added with-statement extension.
+- experimental Python 3 support.
+
+Version 2.2.1
+-------------
+(bugfix release, released on September 14th 2009)
+
+- fixes some smaller problems for Jinja2 on Jython.
+
+Version 2.2
+-----------
+(codename Kong, released on September 13th 2009)
+
+- Include statements can now be marked with ``ignore missing`` to skip
+  non existing templates.
+- Priority of `not` raised.  It's now possible to write `not foo in bar`
+  as an alias to `foo not in bar` like in python.  Previously the grammar
+  required parentheses (`not (foo in bar)`) which was odd.
+- Fixed a bug that caused syntax errors when defining macros or using the
+  `{% call %}` tag inside loops.
+- Fixed a bug in the parser that made ``{{ foo[1, 2] }}`` impossible.
+- Made it possible to refer to names from outer scopes in included templates
+  that were unused in the callers frame (#327)
+- Fixed a bug that caused internal errors if names where used as iteration
+  variable and regular variable *after* the loop if that variable was unused
+  *before* the loop.  (#331)
+- Added support for optional `scoped` modifier to blocks.
+- Added support for line-comments.
+- Added the `meta` module.
+- Renamed (undocumented) attribute "overlay" to "overlayed" on the
+  environment because it was clashing with a method of the same name.
+- speedup extension is now disabled by default.
+
+Version 2.1.1
+-------------
+(Bugfix release)
+
+- Fixed a translation error caused by looping over empty recursive loops.
+
+Version 2.1
+-----------
+(codename Yasuzō, released on November 23rd 2008)
+
+- fixed a bug with nested loops and the special loop variable.  Before the
+  change an inner loop overwrote the loop variable from the outer one after
+  iteration.
+
+- fixed a bug with the i18n extension that caused the explicit pluralization
+  block to look up the wrong variable.
+
+- fixed a limitation in the lexer that made ``{{ foo.0.0 }}`` impossible.
+
+- index based subscribing of variables with a constant value returns an
+  undefined object now instead of raising an index error.  This was a bug
+  caused by eager optimizing.
+
+- the i18n extension looks up `foo.ugettext` now followed by `foo.gettext`
+  if an translations object is installed.  This makes dealing with custom
+  translations classes easier.
+
+- fixed a confusing behavior with conditional extending.  loops were partially
+  executed under some conditions even though they were not part of a visible
+  area.
+
+- added `sort` filter that works like `dictsort` but for arbitrary sequences.
+
+- fixed a bug with empty statements in macros.
+
+- implemented a bytecode cache system.  (:ref:`bytecode-cache`)
+
+- the template context is now weakref-able
+
+- inclusions and imports "with context" forward all variables now, not only
+  the initial context.
+
+- added a cycle helper called `cycler`.
+
+- added a joining helper called `joiner`.
+
+- added a `compile_expression` method to the environment that allows compiling
+  of Jinja expressions into callable Python objects.
+
+- fixed an escaping bug in urlize
+
+Version 2.0
+-----------
+(codename jinjavitus, released on July 17th 2008)
+
+- the subscribing of objects (looking up attributes and items) changed from
+  slightly.  It's now possible to give attributes or items a higher priority
+  by either using dot-notation lookup or the bracket syntax.  This also
+  changed the AST slightly.  `Subscript` is gone and was replaced with
+  :class:`~ambari_jinja2.nodes.Getitem` and :class:`~ambari_jinja2.nodes.Getattr`.
+
+  For more information see :ref:`the implementation details <notes-on-subscriptions>`.
+
+- added support for preprocessing and token stream filtering for extensions.
+  This would allow extensions to allow simplified gettext calls in template
+  data and something similar.
+
+- added :meth:`ambari_jinja2.environment.TemplateStream.dump`.
+
+- added missing support for implicit string literal concatenation.
+  ``{{ "foo" "bar" }}`` is equivalent to ``{{ "foobar" }}``
+
+- `else` is optional for conditional expressions.  If not given it evaluates
+  to `false`.
+
+- improved error reporting for undefined values by providing a position.
+
+- `filesizeformat` filter uses decimal prefixes now per default and can be
+  set to binary mode with the second parameter.
+
+- fixed bug in finalizer
+
+Version 2.0rc1
+--------------
+(no codename, released on June 9th 2008)
+
+- first release of Jinja2

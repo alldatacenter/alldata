@@ -1,0 +1,332 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <MonitorTypes>
+      <UnitMonitorType ID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" Accessibility="Internal">
+        <MonitorTypeStates>
+          <MonitorTypeState ID="Healthy" NoDetection="false" />
+          <MonitorTypeState ID="Warning" NoDetection="false" />
+          <MonitorTypeState ID="Critical" NoDetection="false" />
+        </MonitorTypeStates>
+        <Configuration>
+          <xsd:element name="IntervalSeconds" type="xsd:integer" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SyncTime" type="xsd:string" />
+          <xsd:element name="TimeoutSeconds" type="xsd:integer" />
+
+          <xsd:element name="PropertyName" type="xsd:string" />
+
+          <xsd:element name="TheGreaterTheBetter" type="xsd:boolean" />
+          <xsd:element name="WarningThreshold" type="xsd:double" />
+          <xsd:element name="CriticalThreshold" type="xsd:double" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
+          <OverrideableParameter ID="SyncTime" Selector="$Config/SyncTime$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+
+          <OverrideableParameter ID="WarningThreshold" Selector="$Config/WarningThreshold$" ParameterType="double" />
+          <OverrideableParameter ID="CriticalThreshold" Selector="$Config/CriticalThreshold$" ParameterType="double" />
+        </OverrideableParameters>
+        <MonitorImplementation>
+          <MemberModules>
+            <DataSource ID="DS" TypeID="Ambari.SCOM.Module.HostComponentMetricsDataSource">
+              <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+              <SyncTime>$Config/SyncTime$</SyncTime>
+              <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+            </DataSource>
+
+            <ConditionDetection ID="HealthyCondition" TypeID="System!System.ExpressionFilter">
+              <Expression>
+                <Or>
+                  <Expression>
+                    <And>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <Value Type="Boolean">$Config/TheGreaterTheBetter$</Value>
+                          </ValueExpression>
+                          <Operator>Equal</Operator>
+                          <ValueExpression>
+                            <Value Type="Boolean">false</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>Less</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/WarningThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>Less</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/CriticalThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                    </And>
+                  </Expression>
+                  <Expression>
+                    <And>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <Value Type="Boolean">$Config/TheGreaterTheBetter$</Value>
+                          </ValueExpression>
+                          <Operator>Equal</Operator>
+                          <ValueExpression>
+                            <Value Type="Boolean">true</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>Greater</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/WarningThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>Greater</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/CriticalThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                    </And>
+                  </Expression>
+                </Or>
+              </Expression>
+            </ConditionDetection>
+
+            <ConditionDetection ID="WarningCondition" TypeID="System!System.ExpressionFilter">
+              <Expression>
+                <Or>
+                  <Expression>
+                    <And>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <Value Type="Boolean">$Config/TheGreaterTheBetter$</Value>
+                          </ValueExpression>
+                          <Operator>Equal</Operator>
+                          <ValueExpression>
+                            <Value Type="Boolean">false</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>GreaterEqual</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/WarningThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>Less</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/CriticalThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                    </And>
+                  </Expression>
+                  <Expression>
+                    <And>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <Value Type="Boolean">$Config/TheGreaterTheBetter$</Value>
+                          </ValueExpression>
+                          <Operator>Equal</Operator>
+                          <ValueExpression>
+                            <Value Type="Boolean">true</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>LessEqual</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/WarningThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>Greater</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/CriticalThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                    </And>
+                  </Expression>
+                </Or>
+              </Expression>
+            </ConditionDetection>
+
+            <ConditionDetection ID="CriticalCondition" TypeID="System!System.ExpressionFilter">
+              <Expression>
+                <Or>
+                  <Expression>
+                    <And>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <Value Type="Boolean">$Config/TheGreaterTheBetter$</Value>
+                          </ValueExpression>
+                          <Operator>Equal</Operator>
+                          <ValueExpression>
+                            <Value Type="Boolean">false</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>GreaterEqual</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/CriticalThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                    </And>
+                  </Expression>
+                  <Expression>
+                    <And>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <Value Type="Boolean">$Config/TheGreaterTheBetter$</Value>
+                          </ValueExpression>
+                          <Operator>Equal</Operator>
+                          <ValueExpression>
+                            <Value Type="Boolean">true</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpression>
+                            <XPathQuery Type="Double">Property[@Name='$Config/PropertyName$']</XPathQuery>
+                          </ValueExpression>
+                          <Operator>LessEqual</Operator>
+                          <ValueExpression>
+                            <Value Type="Double">$Config/CriticalThreshold$</Value>
+                          </ValueExpression>
+                        </SimpleExpression>
+                      </Expression>
+                    </And>
+                  </Expression>
+                </Or>
+              </Expression>
+            </ConditionDetection>
+          </MemberModules>
+          <RegularDetections>
+            <RegularDetection MonitorTypeStateID="Healthy">
+              <Node ID="HealthyCondition">
+                <Node ID="DS" />
+              </Node>
+            </RegularDetection>
+            <RegularDetection MonitorTypeStateID="Warning">
+              <Node ID="WarningCondition">
+                <Node ID="DS" />
+              </Node>
+            </RegularDetection>
+            <RegularDetection MonitorTypeStateID="Critical">
+              <Node ID="CriticalCondition">
+                <Node ID="DS" />
+              </Node>
+            </RegularDetection>
+          </RegularDetections>
+        </MonitorImplementation>
+      </UnitMonitorType>
+    </MonitorTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold">
+          <Name>Hadoop Host Component Three-State Threshold Unit Monitor Type</Name>
+          <Description>This three-state unit monitor type compares specified Host Component metric against defined threshold.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" SubElementID="Healthy">
+          <Name>Healthy</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" SubElementID="Warning">
+          <Name>Warning</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" SubElementID="Critical">
+          <Name>Critical</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" SubElementID="IntervalSeconds">
+          <Name>Interval (sec)</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" SubElementID="SyncTime">
+          <Name>Sync Time</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" SubElementID="TimeoutSeconds">
+          <Name>Timeout (sec)</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" SubElementID="WarningThreshold">
+          <Name>Warning Threshold</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold" SubElementID="CriticalThreshold">
+          <Name>Critical Threshold</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

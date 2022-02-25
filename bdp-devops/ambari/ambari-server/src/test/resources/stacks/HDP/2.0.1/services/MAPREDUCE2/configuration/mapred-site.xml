@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<!-- Put site-specific property overrides in this file. -->
+<configuration xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!-- i/o properties -->
+  <property>
+    <name>io.sort.mb</name>
+    <value>100</value>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>io.sort.record.percent</name>
+    <value>.2</value>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>io.sort.spill.percent</name>
+    <value>0.1</value>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>io.sort.factor</name>
+    <value>100</value>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- map/reduce properties -->
+  <property>
+    <name>mapred.system.dir</name>
+    <value/>
+    <description>No description</description>
+    <final>true</final>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <!-- cluster specific -->
+    <name>mapred.local.dir</name>
+    <value/>
+    <description>No description</description>
+    <final>true</final>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.reduce.parallel.copies</name>
+    <value>30</value>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.tasktracker.map.tasks.maximum</name>
+    <value/>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.map.tasks.speculative.execution</name>
+    <value>false</value>
+    <description>If true, then multiple instances of some map tasks
+               may be executed in parallel.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.reduce.tasks.speculative.execution</name>
+    <value>false</value>
+    <description>If true, then multiple instances of some reduce tasks
+               may be executed in parallel.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.reduce.slowstart.completed.maps</name>
+    <value>0.05</value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.inmem.merge.threshold</name>
+    <value>1000</value>
+    <description>The threshold, in terms of the number of files
+  for the in-memory merge process. When we accumulate threshold number of files
+  we initiate the in-memory merge and spill to disk. A value of 0 or less than
+  0 indicates we want to DON'T have any threshold and instead depend only on
+  the ramfs's memory consumption to trigger the merge.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.job.shuffle.merge.percent</name>
+    <value>0.66</value>
+    <description>The usage threshold at which an in-memory merge will be
+  initiated, expressed as a percentage of the total memory allocated to
+  storing in-memory map outputs, as defined by
+  mapred.job.shuffle.input.buffer.percent.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.job.shuffle.input.buffer.percent</name>
+    <value>0.7</value>
+    <description>The percentage of memory to be allocated from the maximum heap
+  size to storing map outputs during the shuffle.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.map.output.compression.codec</name>
+    <value/>
+    <description>If the map outputs are compressed, how should they be
+      compressed
+    </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.output.compression.type</name>
+    <value>BLOCK</value>
+    <description>If the job outputs are to compressed as SequenceFiles, how should
+               they be compressed? Should be one of NONE, RECORD or BLOCK.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.job.reduce.input.buffer.percent</name>
+    <value>0.0</value>
+    <description>The percentage of memory- relative to the maximum heap size- to
+  retain map outputs during the reduce. When the shuffle is concluded, any
+  remaining map outputs in memory must consume less than this threshold before
+  the reduce can begin.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.reduce.input.limit</name>
+    <value>10737418240</value>
+    <description>The limit on the input size of the reduce. (This value
+  is 10 Gb.)  If the estimated input size of the reduce is greater than
+  this value, job is failed. A value of -1 means that there is no limit
+  set. </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- copied from kryptonite configuration -->
+  <property>
+    <name>mapred.compress.map.output</name>
+    <value/>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.task.timeout</name>
+    <value>600000</value>
+    <description>The number of milliseconds before a task will be
+  terminated if it neither reads an input, writes an output, nor
+  updates its status string.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>jetty.connector</name>
+    <value>org.mortbay.jetty.nio.SelectChannelConnector</value>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.child.root.logger</name>
+    <value>INFO,TLA</value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.child.java.opts</name>
+    <value>-Xmx512m</value>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.cluster.reduce.memory.mb</name>
+    <value/>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.job.map.memory.mb</name>
+    <value>1024</value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.job.reduce.memory.mb</name>
+    <value>1024</value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.max.tracker.blacklists</name>
+    <value>16</value>
+    <description>
+    if node is reported blacklisted by 16 successful jobs within timeout-window, it will be graylisted
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.healthChecker.script.path</name>
+    <value/>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.healthChecker.script.timeout</name>
+    <value>60000</value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred.task.maxvmem</name>
+    <value/>
+    <final>true</final>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.fileoutputcommitter.marksuccessfuljobs</name>
+    <value>false</value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.tasktracker.keytab.file</name>
+    <value/>
+    <description>The filename of the keytab for the task tracker</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.jobtracker.split.metainfo.maxsize</name>
+    <value>50000000</value>
+    <final>true</final>
+    <description>If the size of the split metainfo file is larger than this, the JobTracker will fail the job during
+    initialize.
+   </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.jobhistory.keytab.file</name>
+    <!-- cluster variant -->
+    <value/>
+    <description>The keytab for the job history server principal.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.shuffle.port</name>
+    <value>8081</value>
+    <description>Default port that the ShuffleHandler will run on. ShuffleHandler is a service run at the NodeManager to facilitate transfers of intermediate Map outputs to requesting Reducers.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.jobhistory.intermediate-done-dir</name>
+    <display-name>Mapreduce JobHistory Intermediate Done directory</display-name>
+    <value>/mr-history/tmp</value>
+    <description>Directory where history files are written by MapReduce jobs.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.jobhistory.done-dir</name>
+    <display-name>Mapreduce JobHistory Done directory</display-name>
+    <value>/mr-history/done</value>
+    <description>Directory where history files are managed by the MR JobHistory Server.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.jobhistory.address</name>
+    <value>localhost:10020</value>
+    <description>Enter your JobHistoryServer hostname.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.jobhistory.webapp.address</name>
+    <value>localhost:19888</value>
+    <description>Enter your JobHistoryServer hostname.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+    <description>No description</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

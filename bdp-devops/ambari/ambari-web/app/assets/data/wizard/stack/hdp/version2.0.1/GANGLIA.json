@@ -1,0 +1,65 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/GANGLIA/configurations?fields=*",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/GANGLIA/configurations/ganglia_conf_dir",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "ganglia_conf_dir",
+        "property_value" : "/etc/ganglia/hdp",
+        "service_name" : "GANGLIA",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/GANGLIA/configurations/ganglia_runtime_dir",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "ganglia_runtime_dir",
+        "property_value" : "/var/run/ganglia/hdp",
+        "service_name" : "GANGLIA",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/GANGLIA/configurations/gmetad_user",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "gmetad_user",
+        "property_value" : "nobody",
+        "service_name" : "GANGLIA",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/GANGLIA/configurations/gmond_user",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "gmond_user",
+        "property_value" : "nobody",
+        "service_name" : "GANGLIA",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/GANGLIA/configurations/rrdcached_base_dir",
+      "StackConfigurations" : {
+        "property_description" : "Location of rrd files.",
+        "property_name" : "rrdcached_base_dir",
+        "property_value" : "/var/lib/ganglia/rrds",
+        "service_name" : "GANGLIA",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    }
+  ]
+}

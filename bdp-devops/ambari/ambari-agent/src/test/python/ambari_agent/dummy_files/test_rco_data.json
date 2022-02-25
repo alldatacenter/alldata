@@ -1,0 +1,19 @@
+{
+  "_comment": "a comment",
+    "general_deps" : {
+      "_comment": "a comment",
+      "SECONDARY_NAMENODE-START": ["DATANODE-START"],
+      "DATANODE-STOP": ["JOBTRACKER-STOP", "TASKTRACKER-STOP", "RESOURCEMANAGER-STOP",
+        "NODEMANAGER-STOP", "HISTORYSERVER-STOP", "HBASE_MASTER-STOP"],
+      "_comment": "a comment",
+      "SECONDARY_NAMENODE-UPGRADE": ["NAMENODE-UPGRADE"]
+    },
+    "optional_glusterfs": {
+        "HBASE_MASTER-START": ["PEERSTATUS-START"],
+        "JOBTRACKER-START": ["PEERSTATUS-START"]
+    },
+    "optional_no_glusterfs": {
+        "SECONDARY_NAMENODE-START": ["NAMENODE-START"],
+        "RESOURCEMANAGER-START": ["NAMENODE-START", "DATANODE-START"]
+    }
+}

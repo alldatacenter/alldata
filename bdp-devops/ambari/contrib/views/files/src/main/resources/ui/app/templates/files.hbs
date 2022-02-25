@@ -1,0 +1,114 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="row" >
+    <div class="col-md-12 col-xs-12 text-center context-text-row">
+      {{#if isSelected}}
+          <span class="context-text">
+            {{#if isSingleSelected}}
+                <strong>{{lastSelectedFile.name}}</strong> selected
+            {{else}}
+                <strong>{{selectedFilesCount}}</strong> Files, <strong>{{selectedFolderCount}}</strong> Folders selected
+            {{/if}}
+          </span>
+      {{else}}
+          <span class="context-text" style="    z-index: 1;
+      position: relative;">
+        {{#if metaInfo.truncated}}
+            Showing <strong>{{arrangedContent.length}}</strong> files or folders of <strong>{{metaInfo.originalSize}}</strong>
+        {{else}}
+            Total: <strong>{{arrangedContent.length}}</strong> files or folders
+        {{/if}}
+      </span>
+      {{/if}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-xs-6">
+      {{#if hasHomePath}}
+        {{#link-to 'files' (query-params path=homePath) class="btn btn-sm btn-default"}}{{fa-icon "home"}}{{/link-to}}
+      {{/if}}
+      {{#if hasTrashPath}}
+        {{#link-to 'files' (query-params path=trashPath) class="btn btn-sm btn-default"}}{{fa-icon "trash"}}{{/link-to}}
+      {{/if}}
+      {{#copy-button
+        clipboardText=selectedFilePathsText
+        success="success"
+        error="error"
+        class="btn btn-sm btn-default"
+        }}
+          <i class="fa fa-clipboard"></i>
+      {{/copy-button}}
+      <a href="#" {{action 'refreshCurrentRoute'}} class="btn btn-sm btn-default">{{fa-icon "refresh"}}</a>
+      {{files-breadcrumb path=path}}
+    </div>
+    <!-- Include directory name and rename button -->
+    <div class="col-md-6 col-xs-6">
+        <p class="pull-right">
+            <button class="btn btn-sm btn-primary" {{action "selectAll" allSelected}}>
+              {{#unless allSelected}}
+                {{fa-icon icon="plus" }} Select All
+              {{else}}
+                {{fa-icon icon="minus"}} Deselect All
+              {{/unless}}
+            </button>
+          {{new-directory path=path refreshAction="refreshCurrentRoute" currentPathIsTrash=currentPathIsTrash}}
+          {{upload-file path=path refreshAction="refreshCurrentRoute" currentPathIsTrash=currentPathIsTrash}}
+          {{#link-to 'messages' class="btn btn-sm btn-default message-count-button"}}{{fa-icon "comment-o"}}<span class="badge">{{currentMessagesCount}}</span>{{/link-to}}
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="well well-sm col-md-12 col-xs-12">
+        <div class="col-md-8 col-xs-8">
+          {{context-row-menu
+            openFolderAction="openFolder"
+            refreshCurrentRouteAction="refreshCurrentRoute"
+            currentPathIsTrash=currentPathIsTrash
+            hasTrashPath=hasTrashPath
+          }}
+        </div>
+        <div class="col-md-4 col-xs-4">
+            <div class="row">
+              {{file-search searchText=filter searchAction="searchAction"}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-xs-12" id="filesCollectionView">
+      {{#files-collection items=arrangedContent
+      columnsConfig=columns
+      sortEnabled=sortEnabled
+      parentPath=parentPath
+      sortAction="sortFiles"
+      resetSelection="deselectAll"
+      selectAllAction="selectAll"
+      containerId="filesCollectionView" as |file index|}}
+        {{file-row index=index
+        file=file
+        columnHeaders=columns
+        singleSelectAction="selectSingle"
+        multiSelectAction="selectMultiple"}}
+      {{/files-collection}}
+    </div>
+</div>
+
+{{outlet}}

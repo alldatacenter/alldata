@@ -1,0 +1,72 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="alert alert-info">
+  {{t admin.stackVersions.editRepositories.info}}
+</div>
+<div {{bindAttr class="view.parentView.serverValidationFailed::hidden :alert :alert-warning"}}>
+  {{t admin.stackVersions.editRepositories.validation.warning}}
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="col-md-2">{{t common.os}}</th>
+      <th class="col-md-2">{{t common.name}}</th>
+      <th class="col-md-8">{{t admin.cluster.repositories.baseUrl}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each os in view.content.operatingSystems}}
+      <tr {{bindAttr id="os.osType"}}>
+        <td class="col-md-2">{{os.osType}}</td>
+        <td class="col-md-10" colspan="2">
+          <table class="table table-condensed no-borders inner-table">
+            <tbody>
+              {{#each repository in os.repositories}}
+                <tr {{bindAttr class="repository.repoName"}}>
+                  <td class="col-md-2">{{repository.repoName}}</td>
+                  <td class="col-md-8">
+                    <div {{bindAttr class="repository.hasError:error :form-group"}}>{{view App.BaseUrlTextField repositoryBinding="repository" disabledBinding="view.content.useRedhatSatellite"}}</div>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div id="skip-validation">
+  {{#view view.skipCheckBox labelTranslate="installer.step1.advancedRepo.skipValidation.message"
+    checkedBinding="view.parentView.skipValidation"}}
+    <i class="glyphicon glyphicon-question-sign" rel="skip-validation-tooltip"
+       data-toggle="tooltip" {{translateAttr title="installer.step1.advancedRepo.skipValidation.tooltip"}}>
+     </i>
+  {{/view}}
+</div>
+<div id="use-redhat">
+  {{#view App.CheckboxView checkboxClassNames="align-checkbox"
+    labelTranslate="installer.step1.advancedRepo.useRedhatSatellite.message"
+    checkedBinding="view.content.useRedhatSatellite"}}
+    <i class="glyphicon glyphicon-question-sign" rel="use-redhat-tooltip"
+       data-toggle="tooltip" {{translateAttr title="installer.step1.advancedRepo.useRedhatSatellite.tooltip"}}>
+    </i>
+   {{/view}}
+</div>

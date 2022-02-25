@@ -1,0 +1,113 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.isHeartbeatLost}}
+  <div>
+    {{t installer.step9.host.heartbeat_lost_popup}}
+  </div>
+{{else}}
+  {{#if view.isNoTasksScheduled}}
+    {{t installer.step9.host.status.noTasks}}
+  {{else}}
+    <div {{bindAttr class="view.isLogWrapHidden::hidden :task-list-main-wrap :table-body-wrap"}}>
+      <div class="row">
+        <h2 class="table-title col-sm-2">{{t common.tasks}}</h2>
+        <div class="table-controls row col-sm-10 pull-right">
+          <div class="col-sm-12">
+            <div class="btn-group pull-right">
+              {{view Ember.Select
+                classNames="form-control"
+                contentBinding="view.categories"
+                optionValuePath="content.value"
+                optionLabelPath="content.label"
+                selectionBinding="view.category"
+              }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="host-log">
+        <table class="table table-hover">
+          <tbody>
+            {{#each taskInfo in view.tasks}}
+              <tr {{action toggleTaskLog taskInfo}} {{bindAttr class="taskInfo.isVisible::hidden :pointer"}}>
+                <td class="col-sm-3">
+                  <i {{bindAttr class="taskInfo.status taskInfo.icon"}} {{QAAttr "task-status-{taskInfo.status}"}}></i>
+                  <a href="#">
+                    {{taskInfo.commandDetail}}
+                  </a>
+                </td>
+                <td class="col-sm-9 text-right">
+                  <a class="action" href="#">
+                    <span class="icon icon-caret-right"></span>
+                  </a>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{#if view.isEmptyList}}
+          <div class="log-list-wrap">{{t installer.step9.hostLog.popup.noTasksToShow}}</div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div {{bindAttr class="view.isLogWrapHidden:hidden :task-detail-info"}}>
+      <div class="task-top-wrap">
+        <div class="row">
+          <h2 class="table-title col-sm-5">
+            <i {{bindAttr class="view.openedTask.status :task-detail-status-ico view.openedTask.icon"}}></i>
+            {{view.openedTask.commandDetail}}
+          </h2>
+          <div class="table-controls row col-sm-7 pull-right">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-link pull-right" {{translateAttr title="common.openNewWindow"}} {{action openTaskLogInDialog}}>
+                <i class="icon icon-external-link"></i>&nbsp;{{t common.open}}
+              </button>
+              <button type="button" class="btn btn-link pull-right" {{translateAttr title="common.fullLogPopup.clickToCopy"}} {{action "textTrigger" taskInfo target="view"}}>
+                <i class="glyphicon glyphicon-copy"></i>&nbsp;{{t common.copy}}
+              </button>
+              <button type="button" class="btn btn-link pull-right" {{action backToTaskList}}>
+                <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;{{t common.tasks}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{#if view.isTaskLoaded}}
+          <div class="task-detail-log-info">
+              <div class="content-area">
+                  <div class="task-detail-log-clipboard-wrap">
+                    {{#if view.showClipBoard}}
+                      {{view App.NotScrollableTextArea class="task-detail-log-clipboard" valueBinding="view.formattedLogsForOpenedTask"}}
+                    {{/if}}
+                  </div>
+                  <div class="task-detail-log-maintext">
+                      <h5>stderr: &nbsp; <span class="muted">{{view.openedTask.errorLog}} </span></h5>
+                      <pre class="stderr">{{view.openedTask.stderr}}</pre>
+                      <h5>stdout: &nbsp; <span class="muted"> {{view.openedTask.outputLog}} </span></h5>
+                      <pre class="stdout">{{view.openedTask.stdout}}</pre>
+                  </div>
+              </div>
+          </div>
+      {{else}}
+        {{view App.SpinnerView}}
+      {{/if}}
+    </div>
+  {{/if}}
+{{/if}}

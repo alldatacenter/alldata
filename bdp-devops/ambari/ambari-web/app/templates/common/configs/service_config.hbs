@@ -1,0 +1,232 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.supportsHostOverrides}}
+  {{#if selectedService.restartRequired}}
+    <div class="alert">
+      <div class="clearfix like_pointer collapsable" {{action toggleRestartMessageView target="view"}}>
+        {{#if view.isRestartMessageCollapsed}}
+          <i class="glyphicon glyphicon-caret-down pull-left"></i>
+        {{else}}
+          <i class="iglyphicon glyphicon-caret-right pull-left"></i>
+        {{/if}}
+        <i class="glyphicon glyphicon-refresh"></i>
+        <strong>{{t dashboard.services.configs.popup.restartService.header}}</strong> {{selectedService.restartRequiredMessage}}
+      </div>
+      <div class="service-body">
+        <ul>
+          {{#each host in selectedService.restartRequiredHostsAndComponents}}
+            <li>
+              <a href="#" {{action showDetails host.hostData}}>{{host.hostData.publicHostName}}</a>
+              <ul>
+                {{#each component in host.components}}
+                  <li>{{component.name}}</li>
+                {{/each}}
+              </ul>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  {{/if}}
+{{/if}}
+
+
+<div class="config-layout clearfix">
+  <div class="mbm">
+    {{#if view.isOnTheServicePage}}
+      {{#if allVersionsLoaded}}
+        {{view App.ConfigVersionsControlView}}
+      {{else}}
+        {{view App.SpinnerView}}
+      {{/if}}
+    {{/if}}
+  </div>
+  {{#if view.supportsHostOverrides}}
+    <div {{bindAttr class="controller.isCompareMode:pull-bottom :pull-top controller.isHostsConfigsPage:pull-bottom :config-manage-nav :pull-right"}}>
+      {{#if controller.isHostsConfigsPage}}
+        {{#isAuthorized "SERVICE.MANAGE_CONFIG_GROUPS"}}
+          &nbsp;<a href="#" {{action "switchHostGroup" target="controller"}}>{{t common.change}}</a>
+        {{/isAuthorized}}
+      {{/if}}
+      {{t common.configGroup}}&nbsp;
+      {{#if controller.configGroupsAreLoaded}}
+        <div class="btn-group config-groups-dropdown">
+          <button {{bindAttr disabled="controller.isHostsConfigsPage"}}
+            class="btn btn-default dropdown-toggle"
+            data-toggle="dropdown">
+            <span class="caret pull-caret-right"></span>
+            {{selectedConfigGroup.displayNameHosts}}
+          </button>
+          <ul class="dropdown-menu config-groups-dropdown-menu">
+            {{#isAuthorized "SERVICE.MANAGE_CONFIG_GROUPS"}}
+              <li>
+                <a href="#" class="link-left-pad" {{action "manageConfigurationGroup" target="controller"}}>{{t
+                  services.service.actions.manage_configuration_groups.short}}</a>
+              </li>
+              <li role="separator" class="divider"></li>
+            {{/isAuthorized}}
+            <!-- available config group menu links -->
+            {{#each configGroup in configGroups}}
+              <li>
+                <a href="#" {{action "selectConfigGroup" configGroup target="controller"}}>
+                  {{configGroup.displayNameHosts}}
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      {{else}}
+        {{view App.SpinnerView classNames="pull-left"}}
+      {{/if}}
+      {{view App.FilterComboCleanableView classNames="col-lg-4" filterBinding="view.filter"
+             columnsBinding="view.columns" popoverDescriptionBinding="view.propertyFilterPopover"}}
+
+    </div>
+  {{/if}}
+</div>
+
+{{#if versionLoaded}}
+  {{#unless hideDependenciesInfoBar}}
+    <div {{bindAttr class="hasChangedDependencies:show:hide"}}>
+      <div class="dependencies-info-bar-wrapper">
+        <div class="alert alert-warning">
+          <span>{{dependenciesMessage}}</span> <a
+            href="#" {{action "showChangedDependentConfigs" target="controller"}}>{{t common.showDetails}}</a>
+        </div>
+        {{#if showSelectGroupsPopup}}
+          <div class="alert alert-warning">
+            <span>{{dependenciesGroupMessage}}</span> <a href="#" {{action "changedDependentGroup" target="controller"}}>{{t common.showDetails}}</a>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  {{/unless}}
+  {{#if view.supportsConfigLayout}}
+    <ul class="nav nav-tabs mbm background-text">
+      {{#each tab in view.tabs}}
+        <li rel='tooltip' {{bindAttr class="tab.isActive:active tab.isHiddenByFilter:disabled" data-original-title="tab.tooltipMsg"}}>
+          <a href="#" {{action "setActiveTab" tab target="view"}} {{bindAttr data-target="tab.headingClass"}} data-toggle="tab">
+            {{tab.displayName}}
+            {{#if tab.isAdvanced}}
+              {{#if controller.errorsCount}}
+                <span class="alert-badge" {{QAAttr "error-badge"}}>
+                  <span class="counter label alerts-crit-count">
+                    {{controller.errorsCount}}
+                  </span>
+                </span>
+              {{/if}}
+            {{else}}
+              {{#if tab.errorsCount}}
+                <span class="alert-badge" {{QAAttr "error-badge"}}>
+                  <span class="counter label alerts-crit-count">
+                    {{tab.errorsCount}}
+                  </span>
+                </span>
+              {{/if}}
+            {{/if}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+    <div class="tab-content service-config-tab-content">
+      {{#each tab in view.tabs}}
+        <div {{bindAttr class=":tab-pane tab.isActive:active tab.id"}}>
+          {{#if tab.isAdvanced}}
+            {{#if tab.isRendered}}
+              {{#if isCompareMode}}
+                <div class="row bottom-border comparison-table-header">
+                  <div class="col-md-3 property-name-column">{{t common.propertyName}}</div>
+                  <div class="col-md-4 property-value-column">
+                    {{t common.version}}&nbsp;{{selectedVersionRecord.version}}
+                    {{#if selectedVersionRecord.isCurrent}}
+                      <span class="label label-success">{{t common.current}}</span>
+                    {{/if}}
+                  </div>
+                  <div class="col-md-4 col-md-offset-1 property-value-column">
+                    {{t common.version}}&nbsp;{{compareServiceVersion.version}}
+                    {{#if compareServiceVersion.isCurrent}}
+                      <span class="label label-success">{{t common.current}}</span>
+                    {{/if}}
+                  </div>
+                </div>
+              {{/if}}
+              {{view App.ConfigCategoryContainerView categoriesBinding="selectedService.configCategories" canEditBinding="view.canEdit" serviceBinding="selectedService" serviceConfigsBinding="selectedService.configs" supportsHostOverridesBinding="view.supportsHostOverrides"}}
+            {{else}}
+              {{view App.SpinnerView}}
+            {{/if}}
+          {{else}}
+              {{! Render Enhanced Config Section }}
+              {{#if isCompareMode}}
+                {{view App.ServiceConfigLayoutTabCompareView
+                       contentBinding="tab"
+                       primaryCompareVersionBinding="selectedVersionRecord"
+                       secondaryCompareVersionBinding="compareServiceVersion"}}
+              {{else}}
+                {{view App.ServiceConfigLayoutTabView contentBinding="tab" canEditBinding="view.canEdit" }}
+              {{/if}}
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="tab-content service-config-tab-content">
+      {{#if isCompareMode}}
+        <div class="row bottom-border comparison-table-header accordion-without-tabs">
+          <div class="col-md-3 property-name-column">{{t common.propertyName}}</div>
+          <div class="col-md-4 property-value-column">
+            {{t common.version}}&nbsp;{{selectedVersionRecord.version}}
+            {{#if selectedVersionRecord.isCurrent}}
+              <span class="label label-success">{{t common.current}}</span>
+            {{/if}}
+          </div>
+          <div class="col-md-4 col-md-offset-1 property-value-column">
+            {{t common.version}}&nbsp;{{compareServiceVersion.version}}
+            {{#if compareServiceVersion.isCurrent}}
+              <span class="label label-success">{{t common.current}}</span>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+      {{view App.ConfigCategoryContainerView categoriesBinding="selectedService.configCategories"
+             canEditBinding="view.canEdit" serviceBinding="selectedService"
+             serviceConfigsBinding="selectedService.configs" supportsHostOverridesBinding="view.supportsHostOverrides"}}
+    </div>
+  {{/if}}
+  {{#if view.isAllConfigsHidden}}
+    <div class="alert alert-info">
+      {{t services.service.config.nothing.to.display}}
+    </div>
+  {{/if}}
+{{else}}
+  {{view App.SpinnerView}}
+{{/if}}
+
+<div {{bindAttr class="view.showSavePanel::hidden :configs-save-panel"}}>
+  <div class="pull-right">
+    <button class="btn btn-default" {{action doCancel target="controller"}}
+      {{bindAttr disabled="view.isDiscardDisabled"}}>
+      {{t common.discard}}
+    </button> &nbsp;
+    <button class="btn btn-success" {{action save target="view"}}
+      {{bindAttr disabled="view.isSaveDisabled"}}>
+      {{t common.save}}
+    </button>
+  </div>
+  <div class="clearfix"></div>
+</div>

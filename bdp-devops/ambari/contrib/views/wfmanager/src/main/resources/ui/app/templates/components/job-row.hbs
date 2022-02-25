@@ -1,0 +1,92 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<!--td class="no-sort first-col">
+  <input id="{{job.id}}" name="{{job.appName}}"  data-status ="{{job.status}}" class="cbox" type="checkbox" value="" {{action 'rowSelected' job.status on="change"}}>
+  {{#if job.parentId}}
+     {{#link-to 'design.jobtab' (query-params id=targetParentId jobType="coords")}}
+       <i class="fa fa-history marginright5" title="Go to the corresponding co-ordinator"></i>
+     {{/link-to}}
+  {{else}}
+     <a class="padding15pcnt" href="javascript:void(0);"></a>
+  {{/if}}
+
+</td-->
+<td {{action 'showJobDetails' job.id}} class="pointer action-link"> {{job.appName}}
+</td>
+<td class="{{job.status}}"> {{job.status}} </td>
+<td> {{job.user}}</td>
+<!--td title="{{job.createdTime}}"> {{date-helper job.createdTime}} </td-->
+<td title="{{job.startTime}}"> {{date-helper job.startTime}}</td>
+<td title="{{job.endTime}}"> {{date-helper job.endTime}}</td>
+<td title="{{job.id}}" class="jobIdClass"> <div class="width50">{{job.id}}</div></td>
+<td class="actions-col no-sort" {{action 'hideActions' on="mouseLeave"}}>
+  <div id="actions-div" class="pull-left">
+    <button {{action 'showActions' on='mouseEnter'}} type="button" class="btn btn-default isOn">
+      <i class="fa fa-cog" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="pull-left" id="actions">
+    <div class="wf-buttons btn-group btn-group-sm" role="group" aria-label="buttons">
+      {{#if (or (eq job.status "STOPPED") (eq job.status "PREP"))}}
+      <button title="Start" {{action 'doAction' 'start' job.id}} type="button" class="btn btn-default isOn" data-status="{{job.status}}">
+        <i class="fa fa-play">  </i>
+      </button>
+      {{else if (or (eq job.status "SUSPENDED")(eq job.status "PREPSUSPENDED"))}}
+      <button title="Resume" {{action 'doAction' 'resume' job.id}} type="button" class="btn btn-default isOn" data-status="{{job.status}}">
+        <i class="fa fa-play">  </i>
+      </button>
+      {{else}}
+      <button title="Start" type="button" class="btn btn-default" data-status="{{job.status}}">
+        <i class="fa fa-play">  </i>
+      </button>
+      {{/if}}
+      {{#if (or (eq job.status "RUNNING")(and (eq job.status "PREP") (eq jobType "coord")))}}
+      <button title="Suspend" {{action 'doAction' 'suspend' job.id}} type="button" class="btn btn-default isOn" data-status="{{job.status}}">
+        <i class="fa fa-pause">  </i>
+      </button>
+      {{else}}
+      <button title="Suspend" type="button" class="btn btn-default" data-status="{{job.status}}">
+        <i class="fa fa-pause">  </i>
+      </button>
+      {{/if}}
+      {{#if (or (eq job.status "FAILED") (eq job.status "KILLED") (eq job.status "SUCCEEDED")(eq job.status "DONEWITHERROR"))}}
+      <button title="Rerun" {{action 'doAction' 'rerun' job.id}} type="button" class="btn btn-default isOn">
+        <i class="fa fa-repeat">  </i>
+      </button>
+      {{else}}
+      <button title="Rerun" type="button" class="btn btn-default">
+        <i class="fa fa-repeat">  </i>
+      </button>
+      {{/if}}
+    </div>
+    {{#if (not (or (eq job.status "SUCCEEDED")(eq job.status "FAILED")(eq job.status "KILLED")))}}
+    <button title="Kill" {{action 'doAction' 'kill' job.id}} type="button" class="isOn btn btn-default btn-sm btn-kill">
+      <i class="fa fa-close">  </i> Kill
+    </button>
+    {{else}}
+    <button title="Kill" type="button" class="btn btn-default btn-sm btn-kill">
+      <i class="fa fa-close">  </i> Kill
+    </button>
+    {{/if}}
+  </div>
+  {{#if showLoader}}
+    <div class='loading-container'>
+      {{spin-spinner lines=7 length=3 width=3 radius=3 top=10 left=150}}
+    </div>
+  {{/if}}
+</td>

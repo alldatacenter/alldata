@@ -1,0 +1,90 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="pre-upgrade-check">
+  {{#if view.isAllPassed}}
+    <i class="glyphicon glyphicon-ok"></i>&nbsp;<span>{{t admin.stackVersions.version.upgrade.upgradeOptions.preCheck.allPassed.msg}}</span>
+  {{/if}}
+  {{#if view.fails.length}}
+    {{#if view.failTitle}}
+      <h4><i class="glyphicon glyphicon-exclamation-sign"></i> {{view.failTitle}} ({{view.fails.length}})</h4>
+    {{/if}}
+    {{#if view.failAlert}}
+      <div class="description">
+        {{view.failAlert}}
+      </div>
+    {{/if}}
+    <div class="limited-height-2">
+      <ol class="checks-list">
+        {{#each item in view.fails}}
+          <li>
+            {{#if item.customView}}
+              {{view item.customView}}
+            {{else}}
+              {{item.reason}}<br/>{{t popup.clusterCheck.failedOn}}{{item.failed_on}}
+            {{/if}}
+          </li>
+        {{/each}}
+      </ol>
+    </div>
+  {{/if}}
+
+  <!-- Errors that can by bypassed. -->
+  {{#if view.bypass.length}}
+    {{#if view.failTitle}}
+      <h4>{{view.failTitle}}</h4>
+    {{/if}}
+    {{#if view.failAlert}}
+      <p>
+        {{view.failAlert}}
+      </p>
+    {{/if}}
+    <div class="limited-height-2">
+      {{#each item in view.bypass}}
+        <i class="glyphicon glyphicon-remove"></i>&nbsp;<span>{{item.check}}</span>
+        <pre>{{t popup.clusterCheck.reason}}{{item.reason}}<br/>{{t popup.clusterCheck.failedOn}}{{item.failed_on}}</pre>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if view.warnings.length}}
+    {{#if view.warningTitle}}
+      <h4>{{view.warningTitle}}</h4>
+    {{/if}}
+    {{#if view.warningAlert}}
+      <p>
+        {{view.warningAlert}}
+      </p>
+    {{/if}}
+    <div class="limited-height-2">
+      {{#each item in view.warnings}}
+        <i class="glyphicon glyphicon-warning-sign"></i>&nbsp;<span>{{item.check}}</span>
+        {{#if item.customView}}
+          {{view item.customView}}
+        {{else}}
+          <pre>{{t popup.clusterCheck.reason}}{{item.reason}}<br/>{{t popup.clusterCheck.failedOn}}{{item.failed_on}}</pre>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/if}}
+  {{#if view.hasConfigsMergeConflicts}}
+    {{view view.configsMergeTable}}
+  {{/if}}
+  {{#if view.hasConfigsRecommendations}}
+    {{view view.configsRecommendTable}}
+  {{/if}}
+</div>

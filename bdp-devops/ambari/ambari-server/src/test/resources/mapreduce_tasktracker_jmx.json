@@ -1,0 +1,842 @@
+{
+  "beans" : [ {
+    "name" : "java.lang:type=MemoryPool,name=PS Eden Space",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "PS Eden Space",
+    "Type" : "HEAP",
+    "Valid" : true,
+    "CollectionUsage" : {
+      "committed" : 3735552,
+      "init" : 30081024,
+      "max" : 357629952,
+      "used" : 0
+    },
+    "CollectionUsageThreshold" : 0,
+    "CollectionUsageThresholdCount" : 0,
+    "MemoryManagerNames" : [ "PS MarkSweep", "PS Scavenge" ],
+    "PeakUsage" : {
+      "committed" : 30081024,
+      "init" : 30081024,
+      "max" : 357695488,
+      "used" : 30081024
+    },
+    "Usage" : {
+      "committed" : 3735552,
+      "init" : 30081024,
+      "max" : 357629952,
+      "used" : 3459696
+    },
+    "CollectionUsageThresholdExceeded" : true,
+    "CollectionUsageThresholdSupported" : true,
+    "UsageThresholdSupported" : false
+  }, {
+    "name" : "java.lang:type=Memory",
+    "modelerType" : "sun.management.MemoryImpl",
+    "Verbose" : false,
+    "HeapMemoryUsage" : {
+      "committed" : 40173568,
+      "init" : 120225856,
+      "max" : 954466304,
+      "used" : 18330984
+    },
+    "NonHeapMemoryUsage" : {
+      "committed" : 46202880,
+      "init" : 24313856,
+      "max" : 136314880,
+      "used" : 24235104
+    },
+    "ObjectPendingFinalizationCount" : 0
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=MetricsSystem,sub=Control",
+    "modelerType" : "org.apache.hadoop.metrics2.impl.MetricsSystemImpl"
+  }, {
+    "name" : "java.lang:type=MemoryPool,name=PS Survivor Space",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "PS Survivor Space",
+    "Type" : "HEAP",
+    "Valid" : true,
+    "CollectionUsage" : {
+      "committed" : 131072,
+      "init" : 4980736,
+      "max" : 131072,
+      "used" : 98304
+    },
+    "CollectionUsageThreshold" : 0,
+    "CollectionUsageThresholdCount" : 0,
+    "MemoryManagerNames" : [ "PS MarkSweep", "PS Scavenge" ],
+    "PeakUsage" : {
+      "committed" : 4980736,
+      "init" : 4980736,
+      "max" : 4980736,
+      "used" : 2867816
+    },
+    "Usage" : {
+      "committed" : 131072,
+      "init" : 4980736,
+      "max" : 131072,
+      "used" : 98304
+    },
+    "CollectionUsageThresholdExceeded" : true,
+    "CollectionUsageThresholdSupported" : true,
+    "UsageThresholdSupported" : false
+  }, {
+    "name" : "java.lang:type=GarbageCollector,name=PS MarkSweep",
+    "modelerType" : "sun.management.GarbageCollectorImpl",
+    "LastGcInfo" : {
+      "GcThreadCount" : 2,
+      "duration" : 166,
+      "endTime" : 86208313,
+      "id" : 1,
+      "memoryUsageAfterGc" : [ {
+        "key" : "PS Survivor Space",
+        "value" : {
+          "committed" : 131072,
+          "init" : 4980736,
+          "max" : 131072,
+          "used" : 0
+        }
+      }, {
+        "key" : "PS Old Gen",
+        "value" : {
+          "committed" : 36306944,
+          "init" : 80216064,
+          "max" : 715849728,
+          "used" : 7479576
+        }
+      }, {
+        "key" : "PS Perm Gen",
+        "value" : {
+          "committed" : 43450368,
+          "init" : 21757952,
+          "max" : 85983232,
+          "used" : 21567872
+        }
+      }, {
+        "key" : "Code Cache",
+        "value" : {
+          "committed" : 2752512,
+          "init" : 2555904,
+          "max" : 50331648,
+          "used" : 2635904
+        }
+      }, {
+        "key" : "PS Eden Space",
+        "value" : {
+          "committed" : 3735552,
+          "init" : 30081024,
+          "max" : 357629952,
+          "used" : 0
+        }
+      } ],
+      "memoryUsageBeforeGc" : [ {
+        "key" : "PS Survivor Space",
+        "value" : {
+          "committed" : 131072,
+          "init" : 4980736,
+          "max" : 131072,
+          "used" : 98304
+        }
+      }, {
+        "key" : "PS Old Gen",
+        "value" : {
+          "committed" : 80216064,
+          "init" : 80216064,
+          "max" : 715849728,
+          "used" : 80204800
+        }
+      }, {
+        "key" : "PS Perm Gen",
+        "value" : {
+          "committed" : 21757952,
+          "init" : 21757952,
+          "max" : 85983232,
+          "used" : 21567872
+        }
+      }, {
+        "key" : "Code Cache",
+        "value" : {
+          "committed" : 2752512,
+          "init" : 2555904,
+          "max" : 50331648,
+          "used" : 2635904
+        }
+      }, {
+        "key" : "PS Eden Space",
+        "value" : {
+          "committed" : 3735552,
+          "init" : 30081024,
+          "max" : 357629952,
+          "used" : 0
+        }
+      } ],
+      "startTime" : 86208147
+    },
+    "CollectionCount" : 1,
+    "CollectionTime" : 165,
+    "Name" : "PS MarkSweep",
+    "Valid" : true,
+    "MemoryPoolNames" : [ "PS Eden Space", "PS Survivor Space", "PS Old Gen", "PS Perm Gen" ]
+  }, {
+    "name" : "java.lang:type=Compilation",
+    "modelerType" : "sun.management.CompilationImpl",
+    "Name" : "HotSpot 64-Bit Tiered Compilers",
+    "CompilationTimeMonitoringSupported" : true,
+    "TotalCompilationTime" : 12183
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=TaskTrackerInfo",
+    "modelerType" : "org.apache.hadoop.mapred.TaskTracker",
+    "Hostname" : "ip-10-85-111-149.ec2.internal",
+    "Version" : "1.1.2.21, r",
+    "ConfigVersion" : "default",
+    "JobTrackerUrl" : "ip-10-116-103-5.ec2.internal:50300",
+    "RpcPort" : 39494,
+    "HttpPort" : 50060,
+    "Healthy" : true,
+    "TasksInfoJson" : "{\"running\":0,\"failed\":0,\"commit_pending\":0}"
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=RpcDetailedActivityForPort39494",
+    "modelerType" : "RpcDetailedActivityForPort39494",
+    "tag.context" : "rpcdetailed",
+    "tag.port" : "39494",
+    "tag.hostName" : "ip-10-85-111-149.ec2.internal",
+    "getProtocolVersion_num_ops" : 4,
+    "getProtocolVersion_avg_time" : 0.0,
+    "getTask_num_ops" : 4,
+    "getTask_avg_time" : 1.0,
+    "statusUpdate_num_ops" : 8,
+    "statusUpdate_avg_time" : 1.0,
+    "done_num_ops" : 4,
+    "done_avg_time" : 0.0,
+    "getMapCompletionEvents_num_ops" : 6,
+    "getMapCompletionEvents_avg_time" : 1.0,
+    "ping_num_ops" : 1,
+    "ping_avg_time" : 0.0,
+    "commitPending_num_ops" : 1,
+    "commitPending_avg_time" : 1.0,
+    "canCommit_num_ops" : 2,
+    "canCommit_avg_time" : 0.0
+  }, {
+    "name" : "java.lang:type=OperatingSystem",
+    "modelerType" : "com.sun.management.UnixOperatingSystem",
+    "MaxFileDescriptorCount" : 32768,
+    "OpenFileDescriptorCount" : 87,
+    "CommittedVirtualMemorySize" : 1542619136,
+    "FreePhysicalMemorySize" : 5949931520,
+    "FreeSwapSpaceSize" : 0,
+    "ProcessCpuTime" : 443210000000,
+    "TotalPhysicalMemorySize" : 7694454784,
+    "TotalSwapSpaceSize" : 0,
+    "Name" : "Linux",
+    "Version" : "2.6.32-220.17.1.el6.centos.plus.x86_64",
+    "AvailableProcessors" : 2,
+    "Arch" : "amd64",
+    "SystemLoadAverage" : 0.0
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=ShuffleServerMetrics",
+    "modelerType" : "ShuffleServerMetrics",
+    "tag.context" : "mapred",
+    "tag.sessionId" : "",
+    "tag.hostName" : "ip-10-85-111-149.ec2.internal",
+    "shuffle_handler_busy_percent" : 0.0,
+    "shuffle_output_bytes" : 1841,
+    "shuffle_failed_outputs" : 0,
+    "shuffle_success_outputs" : 1,
+    "shuffle_exceptions_caught" : 0
+  }, {
+    "name" : "java.lang:type=MemoryManager,name=CodeCacheManager",
+    "modelerType" : "sun.management.MemoryManagerImpl",
+    "Name" : "CodeCacheManager",
+    "Valid" : true,
+    "MemoryPoolNames" : [ "Code Cache" ]
+  }, {
+    "name" : "java.lang:type=MemoryPool,name=Code Cache",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "Code Cache",
+    "Type" : "NON_HEAP",
+    "Valid" : true,
+    "CollectionUsage" : null,
+    "MemoryManagerNames" : [ "CodeCacheManager" ],
+    "PeakUsage" : {
+      "committed" : 2752512,
+      "init" : 2555904,
+      "max" : 50331648,
+      "used" : 2673472
+    },
+    "Usage" : {
+      "committed" : 2752512,
+      "init" : 2555904,
+      "max" : 50331648,
+      "used" : 2666880
+    },
+    "UsageThreshold" : 0,
+    "UsageThresholdCount" : 0,
+    "CollectionUsageThresholdSupported" : false,
+    "UsageThresholdExceeded" : true,
+    "UsageThresholdSupported" : true
+  }, {
+    "name" : "java.lang:type=Runtime",
+    "modelerType" : "sun.management.RuntimeImpl",
+    "Name" : "14318@ip-10-85-111-149.ec2.internal",
+    "ClassPath" : "/etc/hadoop/conf:/usr/jdk/jdk1.6.0_31/lib/tools.jar:/usr/lib/hadoop/libexec/..:/usr/lib/hadoop/libexec/../hadoop-core-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/ambari-log4j-1.0.jar:/usr/lib/hadoop/libexec/../lib/asm-3.2.jar:/usr/lib/hadoop/libexec/../lib/aspectjrt-1.6.11.jar:/usr/lib/hadoop/libexec/../lib/aspectjtools-1.6.11.jar:/usr/lib/hadoop/libexec/../lib/commons-beanutils-1.7.0.jar:/usr/lib/hadoop/libexec/../lib/commons-beanutils-core-1.8.0.jar:/usr/lib/hadoop/libexec/../lib/commons-cli-1.2.jar:/usr/lib/hadoop/libexec/../lib/commons-codec-1.4.jar:/usr/lib/hadoop/libexec/../lib/commons-collections-3.2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-configuration-1.6.jar:/usr/lib/hadoop/libexec/../lib/commons-daemon-1.0.1.jar:/usr/lib/hadoop/libexec/../lib/commons-digester-1.8.jar:/usr/lib/hadoop/libexec/../lib/commons-el-1.0.jar:/usr/lib/hadoop/libexec/../lib/commons-httpclient-3.0.1.jar:/usr/lib/hadoop/libexec/../lib/commons-io-2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-lang-2.4.jar:/usr/lib/hadoop/libexec/../lib/commons-logging-1.1.1.jar:/usr/lib/hadoop/libexec/../lib/commons-logging-api-1.0.4.jar:/usr/lib/hadoop/libexec/../lib/commons-math-2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-net-3.1.jar:/usr/lib/hadoop/libexec/../lib/core-3.1.1.jar:/usr/lib/hadoop/libexec/../lib/hadoop-capacity-scheduler-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-fairscheduler-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-lzo-0.5.0.jar:/usr/lib/hadoop/libexec/../lib/hadoop-thriftfs-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-tools.jar:/usr/lib/hadoop/libexec/../lib/hsqldb-1.8.0.10.jar:/usr/lib/hadoop/libexec/../lib/jackson-core-asl-1.8.8.jar:/usr/lib/hadoop/libexec/../lib/jackson-mapper-asl-1.8.8.jar:/usr/lib/hadoop/libexec/../lib/jasper-compiler-5.5.12.jar:/usr/lib/hadoop/libexec/../lib/jasper-runtime-5.5.12.jar:/usr/lib/hadoop/libexec/../lib/jdeb-0.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-core-1.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-json-1.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-server-1.8.jar:/usr/lib/hadoop/libexec/../lib/jets3t-0.6.1.jar:/usr/lib/hadoop/libexec/../lib/jetty-6.1.26.jar:/usr/lib/hadoop/libexec/../lib/jetty-util-6.1.26.jar:/usr/lib/hadoop/libexec/../lib/jsch-0.1.42.jar:/usr/lib/hadoop/libexec/../lib/junit-4.5.jar:/usr/lib/hadoop/libexec/../lib/kfs-0.2.2.jar:/usr/lib/hadoop/libexec/../lib/log4j-1.2.15.jar:/usr/lib/hadoop/libexec/../lib/mockito-all-1.8.5.jar:/usr/lib/hadoop/libexec/../lib/oro-2.0.8.jar:/usr/lib/hadoop/libexec/../lib/postgresql-9.1-901-1.jdbc4.jar:/usr/lib/hadoop/libexec/../lib/servlet-api-2.5-20081211.jar:/usr/lib/hadoop/libexec/../lib/slf4j-api-1.4.3.jar:/usr/lib/hadoop/libexec/../lib/slf4j-log4j12-1.4.3.jar:/usr/lib/hadoop/libexec/../lib/xmlenc-0.52.jar:/usr/lib/hadoop/libexec/../lib/jsp-2.1/jsp-2.1.jar:/usr/lib/hadoop/libexec/../lib/jsp-2.1/jsp-api-2.1.jar",
+    "StartTime" : 1358364468454,
+    "BootClassPath" : "/usr/jdk/jdk1.6.0_31/jre/lib/resources.jar:/usr/jdk/jdk1.6.0_31/jre/lib/rt.jar:/usr/jdk/jdk1.6.0_31/jre/lib/sunrsasign.jar:/usr/jdk/jdk1.6.0_31/jre/lib/jsse.jar:/usr/jdk/jdk1.6.0_31/jre/lib/jce.jar:/usr/jdk/jdk1.6.0_31/jre/lib/charsets.jar:/usr/jdk/jdk1.6.0_31/jre/lib/modules/jdk.boot.jar:/usr/jdk/jdk1.6.0_31/jre/classes",
+    "LibraryPath" : "/usr/lib/hadoop/libexec/../lib/native/Linux-amd64-64",
+    "VmName" : "Java HotSpot(TM) 64-Bit Server VM",
+    "VmVendor" : "Sun Microsystems Inc.",
+    "VmVersion" : "20.6-b01",
+    "BootClassPathSupported" : true,
+    "InputArguments" : [ "-Dproc_tasktracker", "-Xmx1024m", "-Djava.net.preferIPv4Stack=true", "-Djava.net.preferIPv4Stack=true", "-Djava.net.preferIPv4Stack=true", "-Xmx1024m", "-Dhadoop.security.logger=ERROR,console", "-Dmapred.audit.logger=ERROR,console", "-Dhadoop.log.dir=/var/log/hadoop/mapred", "-Dhadoop.log.file=hadoop-mapred-tasktracker-ip-10-85-111-149.log", "-Dhadoop.home.dir=/usr/lib/hadoop/libexec/..", "-Dhadoop.id.str=mapred", "-Dhadoop.root.logger=INFO,DRFA", "-Dhadoop.security.logger=INFO,NullAppender", "-Djava.library.path=/usr/lib/hadoop/libexec/../lib/native/Linux-amd64-64", "-Dhadoop.policy.file=hadoop-policy.xml" ],
+    "ManagementSpecVersion" : "1.2",
+    "SpecName" : "Java Virtual Machine Specification",
+    "SpecVendor" : "Sun Microsystems Inc.",
+    "SpecVersion" : "1.0",
+    "SystemProperties" : [ {
+      "key" : "java.ext.dirs",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre/lib/ext:/usr/java/packages/lib/ext"
+    }, {
+      "key" : "hadoop.home.dir",
+      "value" : "/usr/lib/hadoop/libexec/.."
+    }, {
+      "key" : "java.vm.specification.vendor",
+      "value" : "Sun Microsystems Inc."
+    }, {
+      "key" : "user.timezone",
+      "value" : "America/New_York"
+    }, {
+      "key" : "java.vm.vendor",
+      "value" : "Sun Microsystems Inc."
+    }, {
+      "key" : "hadoop.id.str",
+      "value" : "mapred"
+    }, {
+      "key" : "user.name",
+      "value" : "mapred"
+    }, {
+      "key" : "java.vm.specification.name",
+      "value" : "Java Virtual Machine Specification"
+    }, {
+      "key" : "user.dir",
+      "value" : "/usr/lib/hadoop"
+    }, {
+      "key" : "user.country",
+      "value" : "US"
+    }, {
+      "key" : "user.language",
+      "value" : "en"
+    }, {
+      "key" : "java.specification.version",
+      "value" : "1.6"
+    }, {
+      "key" : "hadoop.log.file",
+      "value" : "hadoop-mapred-tasktracker-ip-10-85-111-149.log"
+    }, {
+      "key" : "hadoop.policy.file",
+      "value" : "hadoop-policy.xml"
+    }, {
+      "key" : "sun.cpu.endian",
+      "value" : "little"
+    }, {
+      "key" : "java.home",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre"
+    }, {
+      "key" : "java.net.preferIPv4Stack",
+      "value" : "true"
+    }, {
+      "key" : "sun.jnu.encoding",
+      "value" : "ANSI_X3.4-1968"
+    }, {
+      "key" : "file.separator",
+      "value" : "/"
+    }, {
+      "key" : "java.vendor.url",
+      "value" : "http://java.sun.com/"
+    }, {
+      "key" : "java.awt.graphicsenv",
+      "value" : "sun.awt.X11GraphicsEnvironment"
+    }, {
+      "key" : "hadoop.log.dir",
+      "value" : "/var/log/hadoop/mapred"
+    }, {
+      "key" : "os.arch",
+      "value" : "amd64"
+    }, {
+      "key" : "proc_tasktracker",
+      "value" : ""
+    }, {
+      "key" : "java.io.tmpdir",
+      "value" : "/tmp"
+    }, {
+      "key" : "java.runtime.name",
+      "value" : "Java(TM) SE Runtime Environment"
+    }, {
+      "key" : "java.awt.printerjob",
+      "value" : "sun.print.PSPrinterJob"
+    }, {
+      "key" : "mapred.audit.logger",
+      "value" : "ERROR,console"
+    }, {
+      "key" : "file.encoding",
+      "value" : "ANSI_X3.4-1968"
+    }, {
+      "key" : "java.version",
+      "value" : "1.6.0_31"
+    }, {
+      "key" : "java.vendor.url.bug",
+      "value" : "http://java.sun.com/cgi-bin/bugreport.cgi"
+    }, {
+      "key" : "java.vm.specification.version",
+      "value" : "1.0"
+    }, {
+      "key" : "file.encoding.pkg",
+      "value" : "sun.io"
+    }, {
+      "key" : "sun.java.command",
+      "value" : "org.apache.hadoop.mapred.TaskTracker"
+    }, {
+      "key" : "sun.java.launcher",
+      "value" : "SUN_STANDARD"
+    }, {
+      "key" : "path.separator",
+      "value" : ":"
+    }, {
+      "key" : "java.runtime.version",
+      "value" : "1.6.0_31-b04"
+    }, {
+      "key" : "java.class.path",
+      "value" : "/etc/hadoop/conf:/usr/jdk/jdk1.6.0_31/lib/tools.jar:/usr/lib/hadoop/libexec/..:/usr/lib/hadoop/libexec/../hadoop-core-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/ambari-log4j-1.0.jar:/usr/lib/hadoop/libexec/../lib/asm-3.2.jar:/usr/lib/hadoop/libexec/../lib/aspectjrt-1.6.11.jar:/usr/lib/hadoop/libexec/../lib/aspectjtools-1.6.11.jar:/usr/lib/hadoop/libexec/../lib/commons-beanutils-1.7.0.jar:/usr/lib/hadoop/libexec/../lib/commons-beanutils-core-1.8.0.jar:/usr/lib/hadoop/libexec/../lib/commons-cli-1.2.jar:/usr/lib/hadoop/libexec/../lib/commons-codec-1.4.jar:/usr/lib/hadoop/libexec/../lib/commons-collections-3.2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-configuration-1.6.jar:/usr/lib/hadoop/libexec/../lib/commons-daemon-1.0.1.jar:/usr/lib/hadoop/libexec/../lib/commons-digester-1.8.jar:/usr/lib/hadoop/libexec/../lib/commons-el-1.0.jar:/usr/lib/hadoop/libexec/../lib/commons-httpclient-3.0.1.jar:/usr/lib/hadoop/libexec/../lib/commons-io-2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-lang-2.4.jar:/usr/lib/hadoop/libexec/../lib/commons-logging-1.1.1.jar:/usr/lib/hadoop/libexec/../lib/commons-logging-api-1.0.4.jar:/usr/lib/hadoop/libexec/../lib/commons-math-2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-net-3.1.jar:/usr/lib/hadoop/libexec/../lib/core-3.1.1.jar:/usr/lib/hadoop/libexec/../lib/hadoop-capacity-scheduler-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-fairscheduler-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-lzo-0.5.0.jar:/usr/lib/hadoop/libexec/../lib/hadoop-thriftfs-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-tools.jar:/usr/lib/hadoop/libexec/../lib/hsqldb-1.8.0.10.jar:/usr/lib/hadoop/libexec/../lib/jackson-core-asl-1.8.8.jar:/usr/lib/hadoop/libexec/../lib/jackson-mapper-asl-1.8.8.jar:/usr/lib/hadoop/libexec/../lib/jasper-compiler-5.5.12.jar:/usr/lib/hadoop/libexec/../lib/jasper-runtime-5.5.12.jar:/usr/lib/hadoop/libexec/../lib/jdeb-0.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-core-1.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-json-1.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-server-1.8.jar:/usr/lib/hadoop/libexec/../lib/jets3t-0.6.1.jar:/usr/lib/hadoop/libexec/../lib/jetty-6.1.26.jar:/usr/lib/hadoop/libexec/../lib/jetty-util-6.1.26.jar:/usr/lib/hadoop/libexec/../lib/jsch-0.1.42.jar:/usr/lib/hadoop/libexec/../lib/junit-4.5.jar:/usr/lib/hadoop/libexec/../lib/kfs-0.2.2.jar:/usr/lib/hadoop/libexec/../lib/log4j-1.2.15.jar:/usr/lib/hadoop/libexec/../lib/mockito-all-1.8.5.jar:/usr/lib/hadoop/libexec/../lib/oro-2.0.8.jar:/usr/lib/hadoop/libexec/../lib/postgresql-9.1-901-1.jdbc4.jar:/usr/lib/hadoop/libexec/../lib/servlet-api-2.5-20081211.jar:/usr/lib/hadoop/libexec/../lib/slf4j-api-1.4.3.jar:/usr/lib/hadoop/libexec/../lib/slf4j-log4j12-1.4.3.jar:/usr/lib/hadoop/libexec/../lib/xmlenc-0.52.jar:/usr/lib/hadoop/libexec/../lib/jsp-2.1/jsp-2.1.jar:/usr/lib/hadoop/libexec/../lib/jsp-2.1/jsp-api-2.1.jar"
+    }, {
+      "key" : "os.name",
+      "value" : "Linux"
+    }, {
+      "key" : "hadoop.security.logger",
+      "value" : "INFO,NullAppender"
+    }, {
+      "key" : "line.separator",
+      "value" : "\n"
+    }, {
+      "key" : "os.version",
+      "value" : "2.6.32-220.17.1.el6.centos.plus.x86_64"
+    }, {
+      "key" : "sun.arch.data.model",
+      "value" : "64"
+    }, {
+      "key" : "java.class.version",
+      "value" : "50.0"
+    }, {
+      "key" : "sun.io.unicode.encoding",
+      "value" : "UnicodeLittle"
+    }, {
+      "key" : "java.vendor",
+      "value" : "Sun Microsystems Inc."
+    }, {
+      "key" : "sun.boot.class.path",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre/lib/resources.jar:/usr/jdk/jdk1.6.0_31/jre/lib/rt.jar:/usr/jdk/jdk1.6.0_31/jre/lib/sunrsasign.jar:/usr/jdk/jdk1.6.0_31/jre/lib/jsse.jar:/usr/jdk/jdk1.6.0_31/jre/lib/jce.jar:/usr/jdk/jdk1.6.0_31/jre/lib/charsets.jar:/usr/jdk/jdk1.6.0_31/jre/lib/modules/jdk.boot.jar:/usr/jdk/jdk1.6.0_31/jre/classes"
+    }, {
+      "key" : "java.vm.info",
+      "value" : "mixed mode"
+    }, {
+      "key" : "java.specification.name",
+      "value" : "Java Platform API Specification"
+    }, {
+      "key" : "java.vm.name",
+      "value" : "Java HotSpot(TM) 64-Bit Server VM"
+    }, {
+      "key" : "java.vm.version",
+      "value" : "20.6-b01"
+    }, {
+      "key" : "sun.boot.library.path",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre/lib/amd64"
+    }, {
+      "key" : "hadoop.root.logger",
+      "value" : "INFO,DRFA"
+    }, {
+      "key" : "java.endorsed.dirs",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre/lib/endorsed"
+    }, {
+      "key" : "sun.os.patch.level",
+      "value" : "unknown"
+    }, {
+      "key" : "sun.cpu.isalist",
+      "value" : ""
+    }, {
+      "key" : "user.home",
+      "value" : "/usr/lib/hadoop"
+    }, {
+      "key" : "java.library.path",
+      "value" : "/usr/lib/hadoop/libexec/../lib/native/Linux-amd64-64"
+    }, {
+      "key" : "java.specification.vendor",
+      "value" : "Sun Microsystems Inc."
+    }, {
+      "key" : "sun.management.compiler",
+      "value" : "HotSpot 64-Bit Tiered Compilers"
+    } ],
+    "Uptime" : 93078193
+  }, {
+    "name" : "java.lang:type=ClassLoading",
+    "modelerType" : "sun.management.ClassLoadingImpl",
+    "LoadedClassCount" : 2760,
+    "UnloadedClassCount" : 1,
+    "TotalLoadedClassCount" : 2761,
+    "Verbose" : false
+  }, {
+    "name" : "java.lang:type=Threading",
+    "modelerType" : "sun.management.ThreadImpl",
+    "ThreadAllocatedMemoryEnabled" : true,
+    "ThreadAllocatedMemorySupported" : true,
+    "ThreadContentionMonitoringEnabled" : false,
+    "AllThreadIds" : [ 839, 82, 12, 15, 16, 42, 41, 40, 39, 38, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 18, 20, 19, 17, 11, 10, 4, 3, 2, 1 ],
+    "DaemonThreadCount" : 26,
+    "PeakThreadCount" : 39,
+    "CurrentThreadCpuTimeSupported" : true,
+    "ObjectMonitorUsageSupported" : true,
+    "SynchronizerUsageSupported" : true,
+    "ThreadContentionMonitoringSupported" : true,
+    "ThreadCpuTimeEnabled" : true,
+    "CurrentThreadCpuTime" : 0,
+    "CurrentThreadUserTime" : 0,
+    "ThreadCount" : 31,
+    "TotalStartedThreadCount" : 832,
+    "ThreadCpuTimeSupported" : true
+  }, {
+    "name" : "java.util.logging:type=Logging",
+    "modelerType" : "java.util.logging.Logging",
+    "LoggerNames" : [ "sun.awt.AppContext", "javax.management", "global", "javax.management.mbeanserver", "" ]
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=TaskTrackerMetrics",
+    "modelerType" : "TaskTrackerMetrics",
+    "tag.context" : "mapred",
+    "tag.sessionId" : "",
+    "tag.hostName" : "ip-10-85-111-149.ec2.internal",
+    "maps_running" : 1,
+    "reduces_running" : 1,
+    "mapTaskSlots" : 4,
+    "reduceTaskSlots" : 2,
+    "failedDirs" : 1,
+    "tasks_completed" : 4,
+    "tasks_failed_timeout" : 1,
+    "tasks_failed_ping" : 1
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=MetricsSystem,sub=Stats",
+    "modelerType" : "MetricsSystem,sub=Stats",
+    "tag.context" : "metricssystem",
+    "num_sources" : 6,
+    "num_sinks" : 1,
+    "sink.ganglia.latency_num_ops" : 9306,
+    "sink.ganglia.latency_avg_time" : 2.0,
+    "sink.ganglia.dropped" : 0,
+    "sink.ganglia.qsize" : 0,
+    "snapshot_num_ops" : 65148,
+    "snapshot_avg_time" : 0.0,
+    "snapshot_stdev_time" : 0.0,
+    "snapshot_imin_time" : 0.0,
+    "snapshot_imax_time" : 1.401298464324817E-45,
+    "snapshot_min_time" : 0.0,
+    "snapshot_max_time" : 3.0,
+    "publish_num_ops" : 9306,
+    "publish_avg_time" : 0.0,
+    "publish_stdev_time" : 0.0,
+    "publish_imin_time" : 0.0,
+    "publish_imax_time" : 1.401298464324817E-45,
+    "publish_min_time" : 0.0,
+    "publish_max_time" : 11.0,
+    "dropped_pub_all" : 0
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=RpcActivityForPort39494",
+    "modelerType" : "RpcActivityForPort39494",
+    "tag.context" : "rpc",
+    "tag.port" : "39494",
+    "tag.hostName" : "ip-10-85-111-149.ec2.internal",
+    "rpcAuthenticationSuccesses" : 0,
+    "rpcAuthenticationFailures" : 0,
+    "rpcAuthorizationSuccesses" : 4,
+    "rpcAuthorizationFailures" : 0,
+    "ReceivedBytes" : 14123,
+    "SentBytes" : 3612,
+    "RpcQueueTime_num_ops" : 30,
+    "RpcQueueTime_avg_time" : 0.14285714285714285,
+    "RpcProcessingTime_num_ops" : 30,
+    "RpcProcessingTime_avg_time" : 0.6428571428571428,
+    "NumOpenConnections" : 0,
+    "callQueueLen" : 0
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=jvm",
+    "modelerType" : "jvm",
+    "tag.context" : "jvm",
+    "tag.processName" : "TaskTracker",
+    "tag.sessionId" : "",
+    "tag.hostName" : "ip-10-85-111-149.ec2.internal",
+    "memNonHeapUsedM" : 23.112396,
+    "memNonHeapCommittedM" : 44.0625,
+    "memHeapUsedM" : 17.613655,
+    "memHeapCommittedM" : 38.3125,
+    "gcCount" : 10439,
+    "gcTimeMillis" : 13882,
+    "threadsNew" : 0,
+    "threadsRunnable" : 6,
+    "threadsBlocked" : 0,
+    "threadsWaiting" : 17,
+    "threadsTimedWaiting" : 8,
+    "threadsTerminated" : 0,
+    "logFatal" : 0,
+    "logError" : 0,
+    "logWarn" : 0,
+    "logInfo" : 3
+  }, {
+    "name" : "com.sun.management:type=HotSpotDiagnostic",
+    "modelerType" : "sun.management.HotSpotDiagnostic",
+    "DiagnosticOptions" : [ {
+      "name" : "HeapDumpBeforeFullGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "HeapDumpAfterFullGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "HeapDumpOnOutOfMemoryError",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "HeapDumpPath",
+      "origin" : "DEFAULT",
+      "value" : "",
+      "writeable" : true
+    }, {
+      "name" : "CMSAbortablePrecleanWaitMillis",
+      "origin" : "DEFAULT",
+      "value" : "100",
+      "writeable" : true
+    }, {
+      "name" : "CMSWaitDuration",
+      "origin" : "DEFAULT",
+      "value" : "2000",
+      "writeable" : true
+    }, {
+      "name" : "PrintGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintGCDetails",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintGCDateStamps",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintGCTimeStamps",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintClassHistogramBeforeFullGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintClassHistogramAfterFullGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintClassHistogram",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintConcurrentLocks",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    } ]
+  }, {
+    "name" : "java.lang:type=MemoryPool,name=PS Perm Gen",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "PS Perm Gen",
+    "Type" : "NON_HEAP",
+    "Valid" : true,
+    "CollectionUsage" : {
+      "committed" : 43450368,
+      "init" : 21757952,
+      "max" : 85983232,
+      "used" : 21567872
+    },
+    "CollectionUsageThreshold" : 0,
+    "CollectionUsageThresholdCount" : 0,
+    "MemoryManagerNames" : [ "PS MarkSweep" ],
+    "PeakUsage" : {
+      "committed" : 43450368,
+      "init" : 21757952,
+      "max" : 85983232,
+      "used" : 21568224
+    },
+    "Usage" : {
+      "committed" : 43450368,
+      "init" : 21757952,
+      "max" : 85983232,
+      "used" : 21568224
+    },
+    "UsageThreshold" : 0,
+    "UsageThresholdCount" : 0,
+    "CollectionUsageThresholdExceeded" : true,
+    "CollectionUsageThresholdSupported" : true,
+    "UsageThresholdExceeded" : true,
+    "UsageThresholdSupported" : true
+  }, {
+    "name" : "java.lang:type=GarbageCollector,name=PS Scavenge",
+    "modelerType" : "sun.management.GarbageCollectorImpl",
+    "LastGcInfo" : {
+      "GcThreadCount" : 2,
+      "duration" : 1,
+      "endTime" : 93078197,
+      "id" : 10440,
+      "memoryUsageAfterGc" : [ {
+        "key" : "PS Survivor Space",
+        "value" : {
+          "committed" : 131072,
+          "init" : 4980736,
+          "max" : 131072,
+          "used" : 122896
+        }
+      }, {
+        "key" : "PS Old Gen",
+        "value" : {
+          "committed" : 36306944,
+          "init" : 80216064,
+          "max" : 715849728,
+          "used" : 14823816
+        }
+      }, {
+        "key" : "PS Perm Gen",
+        "value" : {
+          "committed" : 43450368,
+          "init" : 21757952,
+          "max" : 85983232,
+          "used" : 21568224
+        }
+      }, {
+        "key" : "Code Cache",
+        "value" : {
+          "committed" : 2752512,
+          "init" : 2555904,
+          "max" : 50331648,
+          "used" : 2666880
+        }
+      }, {
+        "key" : "PS Eden Space",
+        "value" : {
+          "committed" : 3670016,
+          "init" : 30081024,
+          "max" : 357564416,
+          "used" : 0
+        }
+      } ],
+      "memoryUsageBeforeGc" : [ {
+        "key" : "PS Survivor Space",
+        "value" : {
+          "committed" : 131072,
+          "init" : 4980736,
+          "max" : 131072,
+          "used" : 98304
+        }
+      }, {
+        "key" : "PS Old Gen",
+        "value" : {
+          "committed" : 36306944,
+          "init" : 80216064,
+          "max" : 715849728,
+          "used" : 14758280
+        }
+      }, {
+        "key" : "PS Perm Gen",
+        "value" : {
+          "committed" : 43450368,
+          "init" : 21757952,
+          "max" : 85983232,
+          "used" : 21568224
+        }
+      }, {
+        "key" : "Code Cache",
+        "value" : {
+          "committed" : 2752512,
+          "init" : 2555904,
+          "max" : 50331648,
+          "used" : 2666880
+        }
+      }, {
+        "key" : "PS Eden Space",
+        "value" : {
+          "committed" : 3735552,
+          "init" : 30081024,
+          "max" : 357629952,
+          "used" : 3735552
+        }
+      } ],
+      "startTime" : 93078196
+    },
+    "CollectionCount" : 10440,
+    "CollectionTime" : 13718,
+    "Name" : "PS Scavenge",
+    "Valid" : true,
+    "MemoryPoolNames" : [ "PS Eden Space", "PS Survivor Space" ]
+  }, {
+    "name" : "java.lang:type=MemoryPool,name=PS Old Gen",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "PS Old Gen",
+    "Type" : "HEAP",
+    "Valid" : true,
+    "CollectionUsage" : {
+      "committed" : 36306944,
+      "init" : 80216064,
+      "max" : 715849728,
+      "used" : 7479576
+    },
+    "CollectionUsageThreshold" : 0,
+    "CollectionUsageThresholdCount" : 0,
+    "MemoryManagerNames" : [ "PS MarkSweep" ],
+    "PeakUsage" : {
+      "committed" : 80216064,
+      "init" : 80216064,
+      "max" : 715849728,
+      "used" : 80204800
+    },
+    "Usage" : {
+      "committed" : 36306944,
+      "init" : 80216064,
+      "max" : 715849728,
+      "used" : 14823816
+    },
+    "UsageThreshold" : 0,
+    "UsageThresholdCount" : 0,
+    "CollectionUsageThresholdExceeded" : true,
+    "CollectionUsageThresholdSupported" : true,
+    "UsageThresholdExceeded" : true,
+    "UsageThresholdSupported" : true
+  }, {
+    "name" : "Hadoop:service=TaskTracker,name=ugi",
+    "modelerType" : "ugi",
+    "tag.context" : "ugi",
+    "tag.hostName" : "ip-10-85-111-149.ec2.internal",
+    "loginSuccess_num_ops" : 0,
+    "loginSuccess_avg_time" : 0.0,
+    "loginFailure_num_ops" : 0,
+    "loginFailure_avg_time" : 0.0
+  }, {
+    "name" : "JMImplementation:type=MBeanServerDelegate",
+    "modelerType" : "javax.management.MBeanServerDelegate",
+    "MBeanServerId" : "ip-10-85-111-149.ec2.internal_1358364469165",
+    "SpecificationName" : "Java Management Extensions",
+    "SpecificationVersion" : "1.4",
+    "SpecificationVendor" : "Sun Microsystems",
+    "ImplementationName" : "JMX",
+    "ImplementationVersion" : "1.6.0_31-b04",
+    "ImplementationVendor" : "Sun Microsystems"
+  } ]
+}

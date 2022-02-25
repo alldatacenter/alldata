@@ -1,0 +1,59 @@
+{
+  "filters": [
+    {
+      "link_attribute": "sso",
+      "visible": true
+    }
+  ],
+  "services": [
+    {
+      "name": "HDFS",
+      "filters": [
+        {
+          "link_attribute": "authenticated",
+          "visible": true
+        }
+      ],
+      "components": [
+        {
+          "name": "NAMENODE",
+          "filters": [
+            {
+              "link_name": "namenode_ui",
+              "link_url" : "http://customlink.org/namenode",
+              "visible": false
+            },
+            {
+              "link_name": "namenode_jmx",
+              "visible": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAPREDUCE2",
+      "filters": [],
+      "components": [
+        {
+          "name": "HISTORYSERVER",
+          "filters": [
+            {
+              "visible": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "YARN",
+      "filters": [
+        {
+          "link_name": "resourcemanager_ui",
+          "link_url" : "http://customlink.org/resourcemanager",
+          "visible": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/users/admin/activeWidgetLayouts?WidgetLayoutInfo/section_name=YARN_SUMMARY",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widget_layouts/10",
+      "WidgetLayoutInfo" : {
+        "cluster_name" : "c1",
+        "display_name" : "Standard YARN Dashboard",
+        "id" : 10,
+        "layout_name" : "admin_yarn_dashboard",
+        "scope" : "USER",
+        "section_name" : "YARN_SUMMARY",
+        "user_name" : "admin",
+        "widgets" : [
+          {
+            "WidgetInfo" : {
+              "id" : 34,
+              "metrics" : "[{\"name\":\"yarn.NodeManagerMetrics.AllocatedGB\",\"metric_path\":\"metrics/yarn/AllocatedGB\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"},{\"name\":\"proc_total\",\"metric_path\":\"metrics/process/proc_total\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+              "author" : "ambari",
+              "description" : "",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"\",\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "NodeManager RAM Utilization",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622523,
+              "display_name" : "NodeManager RAM Utilization",
+              "values" : "[{\"name\":\"Total Allocatable RAM Utilized across NodeManager\",\"value\":\"${yarn.NodeManagerMetrics.AllocatedGB}\"},{\"name\":\"NodeManager total processes\",\"value\":\"${proc_total}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 35,
+              "metrics" : "[{\"name\":\"yarn.NodeManagerMetrics.AllocatedVCores\",\"metric_path\":\"metrics/yarn/AllocatedVCores\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"},{\"name\":\"cpu_idle\",\"metric_path\":\"metrics/cpu/cpu_idle\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+              "author" : "ambari",
+              "description" : "",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"\",\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "NodeManager CPU Utilization",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622523,
+              "display_name" : "NodeManager CPU Utilization",
+              "values" : "[{\"name\":\"Total Allocatable CPU Utilized across NodeManager\",\"value\":\"${yarn.NodeManagerMetrics.AllocatedVCores}\"},{\"name\":\"NodeManager CPU Idle\",\"value\":\"${cpu_idle}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 36,
+              "metrics" : "[{\"name\":\"read_bytes\",\"metric_path\":\"metrics/disk/read_bytes\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"},{\"name\":\"write_bytes\",\"metric_path\":\"metrics/disk/write_bytes\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"},{\"name\":\"bytes_in\",\"metric_path\":\"metrics/network/bytes_in\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"},{\"name\":\"bytes_out\",\"metric_path\":\"metrics/network/bytes_out\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+              "author" : "ambari",
+              "description" : "",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"\",\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "NodeManager Disk and Network Utilization",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622523,
+              "display_name" : "NodeManager Disk and Network Utilization",
+              "values" : "[{\"name\":\"DISK IO\",\"value\":\"${read_bytes + write_bytes}\"},{\"name\":\"Network IO\",\"value\":\"${bytes_in + bytes_out}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 37,
+              "metrics" : "[{\"name\":\"yarn.NodeManagerMetrics.ContainersFailed\",\"metric_path\":\"metrics/yarn/ContainersFailed\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+              "author" : "ambari",
+              "description" : "",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"\",\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "NodeManager Container Failures",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622523,
+              "display_name" : "NodeManager Container Failures",
+              "values" : "[{\"name\":\"NodeManager Container Failures\",\"value\":\"${yarn.NodeManagerMetrics.ContainersFailed}\"}]",
+              "cluster_name" : "c1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

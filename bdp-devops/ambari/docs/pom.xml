@@ -1,0 +1,1760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+    <name>Ambari</name>
+    <description>
+      Ambari is a web-based tool for performing installation, management, and monitoring of Apache Hadoop clusters. The stack of components that are currently supported by
+      Ambari includes Falcon, HBase, HCatalog, HDFS, Hive, MapReduce, Oozie, Pig, Scoop, Storm, Templeton, Tez, YARN and Zookeeper.
+    </description>
+    <url>https://ambari.apache.org</url>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.apache.ambari</groupId>
+    <version>2.7.6</version>
+    <artifactId>ambari</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <buildtype>test</buildtype>
+        <BUILD_NUMBER>${env.BUILD_NUMBER}</BUILD_NUMBER>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <package.prefix>/usr</package.prefix>
+        <package.conf.dir>/etc/ambari</package.conf.dir>
+        <package.log.dir>/var/log/ambari</package.log.dir>
+        <package.pid.dir>/var/run/ambari</package.pid.dir>
+        <package.release>1</package.release>
+        <package.type>tar.gz</package.type>
+        <ambari.version>2.7.6.0.0</ambari.version>
+        <final.name>${project.artifactId}-${ambari.version}</final.name>
+    </properties>
+
+    <licenses>
+      <license>
+        <name>Apache 2</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
+
+    <scm>
+      <connection>scm:git:https://github.com/apache/ambari.git</connection>
+      <developerConnection>scm:git:https://github.com/apache/ambari.git</developerConnection>
+      <tag>HEAD</tag>
+      <url>https://github.com/apache/ambari.git</url>
+    </scm>
+
+    <issueManagement>
+        <system>Jira</system>
+        <url>https://issues.apache.org/jira/browse/AMBARI</url>
+    </issueManagement>
+
+    <mailingLists>
+        <mailingList>
+            <name>User list</name>
+            <subscribe>mailto:user-subscribe@ambari.apache.org
+            </subscribe>
+            <unsubscribe>mailto:user-unsubscribe@ambari.apache.org
+            </unsubscribe>
+            <post>mailto:user@ambari.apache.org</post>
+            <archive>https://mail-archives.apache.org/mod_mbox/ambari-user/</archive>
+        </mailingList>
+        <mailingList>
+            <name>Development list</name>
+            <subscribe>mailto:dev-subscribe@ambari.apache.org
+            </subscribe>
+            <unsubscribe>mailto:dev-unsubscribe@ambari.apache.org
+            </unsubscribe>
+            <post>mailto:dev@ambari.apache.org</post>
+            <archive>https://mail-archives.apache.org/mod_mbox/ambari-dev/</archive>
+        </mailingList>
+        <mailingList>
+            <name>JIRA list</name>
+            <subscribe>mailto:issues-subscribe@ambari.apache.org
+            </subscribe>
+            <unsubscribe>mailto:issues-unsubscribe@ambari.apache.org
+            </unsubscribe>
+            <post>mailto:issues@ambari.apache.org</post>
+            <archive>https://mail-archives.apache.org/mod_mbox/ambari-issues/</archive>
+        </mailingList>
+        <mailingList>
+            <name>Review Board list</name>
+            <subscribe>mailto:reviews-subscribe@ambari.apache.org
+            </subscribe>
+            <unsubscribe>mailto:reviews-unsubscribe@ambari.apache.org
+            </unsubscribe>
+            <post>mailto:reviews@ambari.apache.org</post>
+            <archive>https://mail-archives.apache.org/mod_mbox/ambari-reviews/</archive>
+        </mailingList>
+        <mailingList>
+            <name>Commit list</name>
+            <subscribe>mailto:commits-subscribe@ambari.apache.org
+            </subscribe>
+            <unsubscribe>mailto:commits-unsubscribe@ambari.apache.org
+            </unsubscribe>
+            <post>mailto:commits@ambari.apache.org</post>
+            <archive>https://mail-archives.apache.org/mod_mbox/ambari-commits/</archive>
+        </mailingList>
+    </mailingLists>
+
+    <developers>
+        <developer>
+            <id>ababiichuk</id>
+            <name>Andrii Babiichuk</name>
+            <email>ababiichuk@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>abaranchuk</id>
+            <name>Artem Baranchuk</name>
+            <email>abaranchuk@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>adenissov</id>
+            <name>Alexander Denissov</name>
+            <email>adenissov@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Pivotal
+            </organization>
+        </developer>
+        <developer>
+            <id>adoroszlai</id>
+            <name>Attila Doroszlai</name>
+            <email>adoroszlai@apache.org</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>ajit</id>
+            <name>Ajit Kumar</name>
+            <email>ajit@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>alejandro</id>
+            <name>Alejandro Fernandez</name>
+            <email>alejandro@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>amruta</id>
+            <name>Amruta R Borkar</name>
+            <email>amruta@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>aonishuk</id>
+            <name>Andrew Onischuk</name>
+            <email>aonishuk@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Cloudera
+            </organization>
+        </developer>
+        <developer>
+            <id>anitajebaraj</id>
+            <name>Anita Jebaraj</name>
+            <email>anitajebaraj@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>atkach</id>
+            <name>Andrii Tkach</name>
+            <email>atkach@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>akovalenko</id>
+            <name>Aleksandr Kovalenko</name>
+            <email>akovalenko@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>alexantonenko</id>
+            <name>Alex Antonenko</name>
+            <email>alexantonenko@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>amagyar</id>
+            <name>Attila Magyar</name>
+            <email>amagyar@apache.org</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>avijayan</id>
+            <name>Aravindan Vijayan</name>
+            <email>avijayan@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>benyoka</id>
+            <name>Balazs Bence Sari</name>
+            <email>benyoka@apache.org</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>berndf</id>
+            <name>Bernd Fondermann</name>
+            <email>berndf@apache.org</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>bhuvnesh2703</id>
+            <name>Bhuvnesh Chaudhary</name>
+            <email>bhuvnesh2703@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Pivotal
+            </organization>
+        </developer>
+        <developer>
+            <id>billie</id>
+            <name>Billie Rinaldi</name>
+            <email>billie@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>bosco</id>
+            <name>Don Bosco Durai</name>
+            <email>bosco@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>croberts</id>
+            <name>Chad Roberts</name>
+            <email>croberts@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Red Hat
+            </organization>
+        </developer>
+        <developer>
+            <id>dbhowmick</id>
+            <name>Dipayan Bhowmick</name>
+            <email>dbhowmick@apache.org</email>
+            <timezone>+5.5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>dbuzhor</id>
+            <name>Buzhor Denys</name>
+            <email>dbuzhor@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>ddas</id>
+            <name>Devaraj Das</name>
+            <email>ddas@hortonworks.com</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>dgergely</id>
+            <name>Daniel Gergely</name>
+            <email>dgergely</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>dillidorai</id>
+            <name>Dilli Dorai</name>
+            <email>dillidorai@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                BlueTalon
+            </organization>
+        </developer>
+        <developer>
+            <id>dili</id>
+            <name>Di Li</name>
+            <email>dili@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>dmitriusan</id>
+            <name>Dmitry Lysnichenko</name>
+            <email>dmitriusan@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>dsen</id>
+            <name>Dmitry Sen</name>
+            <email>dsen@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>eboyd</id>
+            <name>Erin A. Boyd</name>
+            <email>eboyd@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                 Red Hat
+            </organization>
+        </developer>
+        <developer>
+            <id>echekanskiy</id>
+            <name>Eugene Chekanskiy</name>
+            <email>echekanskiy@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                 Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>eyang</id>
+            <name>Eric Yang</name>
+            <email>eyang@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>fbarca</id>
+            <name>Florian Barca</name>
+            <email>fbarca@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+
+            </organization>
+        </developer>
+        <developer>
+            <id>gautam</id>
+            <name>Gautam Borad</name>
+            <email>gautam@apache.org</email>
+            <timezone>+5.5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>gnagar</id>
+            <name>Gaurav Nagar</name>
+            <email>gnagar@apache.org</email>
+            <timezone>+5.5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>hapylestat</id>
+            <name>Dmytro Grinenko</name>
+            <email>hapylestat@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Cloudera
+            </organization>
+        </developer>
+        <developer>
+            <id>hitesh</id>
+            <name>Hitesh Shah</name>
+            <email>hitesh@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>ishanbha</id>
+            <name>Ishan Bhatt</name>
+            <email>ishanbha@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>jagane</id>
+            <name>Jagane Sundar</name>
+            <email>jagane@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                WANdisco
+            </organization>
+        </developer>
+        <developer>
+            <id>jaoki</id>
+            <name>Jun Aoki</name>
+            <email>jaoki@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Pivotal
+            </organization>
+        </developer>
+        <developer>
+            <id>jaimin</id>
+            <name>Jaimin Jetly</name>
+            <email>jaimin@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>jgolieb</id>
+            <name>Jason Golieb</name>
+            <email>jgolieb@apache.org</email>
+            <timezone>-5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>jitendra</id>
+            <name>Jitendra Pandey</name>
+            <email>jitendra@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>jluniya</id>
+            <name>Jayush Luniya</name>
+            <email>jluniya@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC Chair</role>
+            </roles>
+            <organization>
+                Cloudera
+            </organization>
+        </developer>
+        <developer>
+            <id>jmarron</id>
+            <name>Juanjo Marron</name>
+            <email>jmarron@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>jonathanhurley</id>
+            <name>Jonathan Hurley</name>
+            <email>jonathanhurley@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>jspeidel</id>
+            <name>John Speidel</name>
+            <email>jspeidel@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>krisztiankasa</id>
+            <name>Krisztian Kasa</name>
+            <email>krisztiankasa@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>kzhang</id>
+            <name>Kan Zhang</name>
+            <email>kzhang@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>lavjain</id>
+            <name>Lav Jain</name>
+            <email>lavjain@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Pivotal
+            </organization>
+        </developer>
+        <developer>
+            <id>lpuskas</id>
+            <name>Laszlo Puskas</name>
+            <email>lpuskas@apache.org</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>mahadev</id>
+            <name>Mahadev Konar</name>
+            <email>mahadev@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>mradhakrishnan</id>
+            <name>Madhuvanthi Radhakrishnan</name>
+            <email>mradhakrishnan@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>matyix</id>
+            <name>Janos Matyas</name>
+            <email>matyix@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>magyari_sandor</id>
+            <name>Sandor Magyari</name>
+            <email>magyari_sandor@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>mgergely</id>
+            <name>Miklos Gergely</name>
+            <email>mgergely@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>mithmatt</id>
+            <name>Mithun Mathew</name>
+            <email>mithmatt@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Uber
+            </organization>
+        </developer>
+        <developer>
+            <id>mpapirkovskyy</id>
+            <name>Myroslav Papyrkovskyy</name>
+            <email>mpapirkovskyy@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>mugdha</id>
+            <name>Mugdha Varadkar</name>
+            <email>mugdha@apache.org</email>
+            <timezone>+5.5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>ncole</id>
+            <name>Nate Cole</name>
+            <email>ncole@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>nishant</id>
+            <name>Nishant Bangarwa</name>
+            <email>nishant@apache.org</email>
+            <timezone>+5.5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>nitiraj</id>
+            <name>Nitiraj Rathore</name>
+            <email>nitiraj@apache.org</email>
+            <timezone>+5.5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>odiachenko</id>
+            <name>Oleksandr Diachenko</name>
+            <email>odiachenko@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Pivotal
+            </organization>
+        </developer>
+        <developer>
+            <id>oleewere</id>
+            <name>Oliver Szabo</name>
+            <email>oleewere@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>omalley</id>
+            <name>Owen O'Malley</name>
+            <email>omalley@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>onechiporenko</id>
+            <name>Oleg Nechiporenko</name>
+            <email>onechiporenko@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>pallavkul</id>
+            <name>Pallav Kulshreshtha</name>
+            <email>pallavkul@apache.org</email>
+            <timezone>+5.5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>ppriya</id>
+            <name>Padma Priya</name>
+            <email>ppriya@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>prabhjyotsingh</id>
+            <name>Prabhjyot Singh</name>
+            <email>prabhjyotsingh@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>prajwal</id>
+            <name>Prajwal Rao</name>
+            <email>prajwal@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                ITRenew Inc
+            </organization>
+        </developer>
+        <developer>
+            <id>qin</id>
+            <name>Qin Liu</name>
+            <email>qin@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>ramya</id>
+            <name>Ramya Sunil</name>
+            <email>ramya@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>reznor</id>
+            <name>Varun Kapoor</name>
+            <email>reznor@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                -
+            </organization>
+        </developer>
+        <developer>
+            <id>rkamath</id>
+            <name>Renjith Kamath</name>
+            <email>rkamath@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>rzang</id>
+            <name>Richard Zang</name>
+            <email>rzang@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>rlevas</id>
+            <name>Robert Levas</name>
+            <email>rlevas@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>rnettleton</id>
+            <name>Bob Nettleton</name>
+            <email>rnettleton@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>sangeetar</id>
+            <name>Sangeeta Ravindran</name>
+            <email>sangeetar@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>screeley</id>
+            <name>Scott Creeley</name>
+            <email>screeley@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Red Hat
+            </organization>
+        </developer>
+        <developer>
+            <id>smohanty</id>
+            <name>Sumit Mohanty</name>
+            <email>smohanty@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>smolnar</id>
+            <name>Sandor Molnar</name>
+            <email>smolnar@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>smnaha</id>
+            <name>Nahappan Somasundaram</name>
+            <email>smnaha@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>sposetti</id>
+            <name>Jeff Sposetti</name>
+            <email>sposetti@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>stoader</id>
+            <name>Sebastian Toader</name>
+            <email>stoader@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>swagle</id>
+            <name>Siddharth Wagle</name>
+            <email>swagle@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>sriharsha</id>
+            <name>Sriharsha Chintalapani</name>
+            <email>sriharsha@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>srimanth</id>
+            <name>Srimanth Gunturi</name>
+            <email>srimanth@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>subin</id>
+            <name>Subin Modeel</name>
+            <email>subin@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Red Hat
+            </organization>
+        </developer>
+        <developer>
+            <id>swapan</id>
+            <name>Swapan Shridhar</name>
+            <email>swapan@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>tbeerbower</id>
+            <name>Thomas Beerbower</name>
+            <email>tbeerbower@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>tthorpe</id>
+            <name>Tim Thorpe</name>
+            <email>tthorpe@apache.org</email>
+            <timezone>-5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+               IBM
+            </organization>
+        </developer>
+        <developer>
+            <id>tobiasistvan</id>
+            <name>Istvan Tobias</name>
+            <email>tobiasistvan@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>vbrodetskyi</id>
+            <name>Vitaly Brodetskyi</name>
+            <email>vbrodetskyi@apache.org</email>
+            <timezone>+2</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>vikram</id>
+            <name>Vikram Dixit</name>
+            <email>vikram@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>vivekratnavel</id>
+            <name>Vivek Ratnavel Subramanian</name>
+            <email>vivekratnavel@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>vgogate</id>
+            <name>Vitthal Suhas Gogate</name>
+            <email>vgogate@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Pivotal
+            </organization>
+        </developer>
+        <developer>
+            <id>vinodkv</id>
+            <name>Vinod Kumar Vavilapalli</name>
+            <email>vinodkv@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>vishalsuvagia</id>
+            <name>Vishal Suvagia</name>
+            <email>vishalsuvagia@apache.org</email>
+            <timezone></timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>vsairam</id>
+            <name>Venkata Sairam Lanka</name>
+            <email>vsairam@apache.org</email>
+            <timezone>+5.5</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>xiwang</id>
+            <name>Xi Wang</name>
+            <email>xiwang@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>yusaku</id>
+            <name>Yusaku Sako</name>
+            <email>yusaku@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Hortonworks
+            </organization>
+        </developer>
+        <developer>
+            <id>zhewang</id>
+            <name>Joe Wang</name>
+            <email>zhewang@apache.org</email>
+            <timezone>-8</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+            </organization>
+        </developer>
+        <developer>
+            <id>payert</id>
+            <name>Tamas Payer</name>
+            <email>payert@apache.org</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>
+                Cloudera
+            </organization>
+        </developer>
+        <developer>
+            <id>szabi</id>
+            <name>Szabolcs Beki</name>
+            <email>szabi@apache.org</email>
+            <timezone>+1</timezone>
+            <roles>
+                <role>PMC</role>
+            </roles>
+            <organization>
+                Cloudera
+            </organization>
+        </developer>
+      </developers>
+      <contributors>
+        <contributor>
+          <name>Dhanya Balasundaran</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Shreya Bhat</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Anusha Bilgi</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Jasmeen Kaur</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Kishor Ramakrishnan</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Pradarttana Panda</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Srikanth Janardhan</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Vivek Rathod</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Supreeth Sharma</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Vivek Sharma</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Sanket Shah</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Yesha Vora</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Newton Alex</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Saman Alvi</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Jos Backus</name>
+          <organization>eBay</organization>
+        </contributor>
+        <contributor>
+          <name>Sandeep Baldawa</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Daniel Ballard</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Zachary Blanco</name>
+          <organization>Rutgers University</organization>
+        </contributor>
+        <contributor>
+          <name>Nadav Caspi</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Chelsea Chang</name>
+          <organization>Microsoft</organization>
+        </contributor>
+        <contributor>
+          <name>Chun Chen</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Bradley Childs</name>
+          <organization>Red Hat</organization>
+        </contributor>
+        <contributor>
+          <name>Nick Dimiduk</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Ellen Evans</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Matthew Farrellee</name>
+          <organization>Red Hat</organization>
+        </contributor>
+        <contributor>
+          <name>Ahmed Fathalla</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Andrew Grande</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Ximo Guanter</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Arpit Gupta</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Sumit Gupta</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Jonathan Halterman</name>
+          <organization>HP</organization>
+        </contributor>
+        <contributor>
+          <name>Michael Harp</name>
+          <organization>Teradata</organization>
+        </contributor>
+        <contributor>
+          <name>Greg Hill</name>
+          <organization>Rackspace</organization>
+        </contributor>
+        <contributor>
+          <name>Krisztian Horvath</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Saurabh Jain</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Ritesh Jaltare</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Shawn Kern</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Giridharan Kesavan</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Olivier Lamy</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Brandon Li</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Chuan Liu</name>
+          <organization>Microsoft</organization>
+        </contributor>
+        <contributor>
+          <name>Adamos Loizou</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Jeff Markham</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Jonathan Maron</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Trevor McKay</name>
+          <organization>Red Hat</organization>
+        </contributor>
+        <contributor>
+          <name>David McWhorter</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Rodrigo Meneses</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Ivan Mitic</name>
+          <organization>Microsoft</organization>
+        </contributor>
+        <contributor>
+          <name>Mostafa Mokhtar</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Shantanu Mundkur</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Thejas Nair</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Selvamohan Neethiraj</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Richard Pelavin</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Anthony Penniston</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Velmurugan Periasamy</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Rishi Pidva</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>ViVek Raghuwanshi</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Steve Ratay</name>
+          <organization>Teradata</organization>
+        </contributor>
+        <contributor>
+          <name>Luciano Resende</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Ananya Sen</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Ashish Singh</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Sreenath Somarajapuram</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Mahesh Kumar Vasanthu Somashekar</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Suresh Srinivas</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Vijay Srinivasaraghavan</name>
+          <organization>EMC</organization>
+        </contributor>
+        <contributor>
+          <name>Vivek Ratnavel Subramanian</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Pramod Thangali</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Thulasi</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Sunitha Velpula</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Ram Venkatesh</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Ivan Wang</name>
+          <organization>Pivotal</organization>
+        </contributor>
+        <contributor>
+          <name>Adam Westerman</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Eron Wright</name>
+          <organization>EMC</organization>
+        </contributor>
+        <contributor>
+          <name>Pengcheng Xu</name>
+          <organization>Carnegie Mellon University</organization>
+        </contributor>
+        <contributor>
+          <name>Ted Yu</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Zhan Zhang</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Cabir Zounaidou</name>
+          <organization>Hortonworks</organization>
+        </contributor>
+        <contributor>
+          <name>Dharmesh Makwana</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Hayat Behlim</name>
+          <organization></organization>
+        </contributor>
+        <contributor>
+          <name>Szilard Antal</name>
+          <organization>Cloudera</organization>
+        </contributor>
+        <contributor>
+          <name>Peter Eberhardt</name>
+          <organization>Cloudera</organization>
+        </contributor>
+        <contributor>
+          <name>Mariann Varga-Vakula</name>
+          <organization>Cloudera</organization>
+        </contributor>
+        <contributor>
+          <name>Dmytro Vitiuk</name>
+          <organization>Cloudera</organization>
+        </contributor>
+        <contributor>
+          <name>Dmytro Pidhaiets</name>
+          <organization>Cloudera</organization>
+        </contributor>
+        <contributor>
+          <name>David Sutta</name>
+          <organization>Cloudera</organization>
+        </contributor>
+        <contributor>
+          <name>Szabolcs Borbely</name>
+          <organization>Cloudera</organization>
+        </contributor>
+        <contributor>
+          <name>Imre Sos</name>
+          <organization>Cloudera</organization>
+        </contributor>
+      </contributors>
+
+    <organization>
+        <name>Apache Software Foundation</name>
+        <url>https://www.apache.org/</url>
+    </organization>
+
+    <build>
+      <resources>
+        <resource>
+          <directory>src/main/resources</directory>
+          <filtering>true</filtering>
+        </resource>
+      </resources>
+      <pluginManagement>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.4.3</version>
+            <configuration>
+              <encoding>UTF-8</encoding>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <version>3.3</version>
+            <configuration>
+              <outputDirectory>./target</outputDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </pluginManagement>
+    </build>
+
+    <reporting>
+      <excludeDefaults>true</excludeDefaults>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.4</version>
+          <reportSets>
+            <reportSet>
+              <reports>
+                <report>project-team</report>
+                <report>mailing-list</report>
+                <report>issue-tracking</report>
+                <report>license</report>
+<!-- for now
+                <report>modules</report>
+                <report>dependencies</report>
+                <report>cim</report>
+                <report>scm</report>
+-->
+               </reports>
+             </reportSet>
+          </reportSets>
+        </plugin>
+      </plugins>
+    </reporting>
+
+  <distributionManagement>
+    <site>
+      <id>apache-website</id>
+      <name>Apache website</name>
+      <url>scpexe://people.apache.org/www/incubator.apache.org/ambari</url>
+    </site>
+  </distributionManagement>
+
+</project>

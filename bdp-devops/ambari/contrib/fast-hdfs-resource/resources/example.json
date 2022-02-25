@@ -1,0 +1,57 @@
+[
+{
+	"target":"/tmp/some999",
+	"type":"directory",
+	"action":"delete"
+},
+{
+	"target":"/tmp/some999/more/dirs/for/recursive/tests",
+	"type":"directory",
+	"action":"create"
+},
+{
+	"target":"/tmp/some999/more/dirs/for/recursive/tests/file_empty.txt",
+	"type":"file",
+	"action":"create"
+},
+{
+	"target":"/tmp/some999",
+	"type":"directory",
+	"action":"create",
+	"owner":"oozie"
+},
+{
+	"target":"/tmp/some999",
+	"type":"directory",
+	"action":"create",
+	"group":"hive"
+},
+{
+	"target":"/tmp/some999",
+	"type":"directory",
+	"action":"create",
+	"mode":"777"
+},
+{
+	"target":"/tmp/some999/more/dirs",
+	"type":"directory",
+	"action":"create",
+	"owner":"yarn",
+	"group":"mapred",
+	"recursiveChown":true,
+	"mode":"757",
+	"recursiveChmod":true
+},
+{
+	"source":"/tmp/my.txt",
+	"target":"/tmp/some999/my_file.txt",
+	"type":"file",
+	"action":"create"
+},
+{
+	"source":"/tmp/a",
+	"target":"/tmp/some999/a_dir",
+	"type":"directory",
+	"action":"create"
+}
+]

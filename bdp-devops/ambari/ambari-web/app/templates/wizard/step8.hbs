@@ -1,0 +1,109 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="deploy-review" class="wizard-content col-md-9">
+  <h4 class="step-title">{{t installer.step8.header}}</h4>
+  <p class="step-description">
+    {{t installer.step8.body}}
+    {{#if controller.isManualKerberos}}
+      <br/><br/>
+      {{t installer.step8.kerberors.warning}}
+    {{/if}}
+  </p>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div id="step8-content" class="well pre-scrollable" {{QAAttr "review-content"}}>
+        <div id="step8-info">
+          {{#each item in controller.clusterInfo}}
+            <p>
+              <b>{{item.display_name}}</b> : {{item.config_value}}
+            </p>
+          {{/each}}
+
+          <p><b>{{controller.clusterInfo.repoInfo.display_name}}</b>:</p>
+
+          {{#if controller.clusterInfo.useRedhatSatellite}}
+            <div>
+              <ul>
+                <li>
+                  <p>{{t installer.step1.advancedRepo.useRedhatSatellite.message}}</p>
+                </li>
+              </ul>
+            </div>
+          {{else}}
+            <div>
+              <ul>
+                {{#each item in controller.clusterInfo.repoInfo}}
+                  <li>
+                    <p><span class="text text-info">{{item.os_type}} ({{item.repo_id}}): <br/></span>{{item.base_url}}</p>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+
+          <div>
+            {{#if controller.services.length}}
+              <p><b>{{t menu.item.services}}:</b></p>
+              <ul>
+                {{#each controller.services}}
+                  <li {{QAAttr "service-block"}}>
+                    <em><b {{QAAttr "service-name"}} class="service-name">{{display_name}}</b></em>
+                    <ul>
+                      {{#each component in this.service_components}}
+                        <li>
+                          <span class="text text-info" {{QAAttr "component-name"}}>{{component.display_name }} : </span> <span {{QAAttr "host-name"}}>{{component.component_value}}</span>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </li>
+                {{/each}}
+              </ul>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    <button type="button" {{QAAttr "wizard-back"}} class="btn btn-default pull-left installer-back-btn" {{bindAttr disabled="App.router.btnClickInProgress"}} {{action back}}>
+      &larr; {{t common.back}}
+      {{#if App.router.backBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+      {{/if}}
+    </button>
+    {{template "templates/wizard/installer_cancel_button"}}
+    <button type="button" {{QAAttr "wizard-next"}} class="btn btn-success pull-right"
+       id="spinner" {{bindAttr disabled="controller.isSubmitDisabled"}} {{action submit target="controller"}}>
+      {{#if App.router.nextBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+      {{/if}}
+      {{t common.deploy}} &rarr;
+    </button>
+    <button type="button" class="btn btn-secondary pull-right" {{action printReview target="view"}}>{{t common.print}}</button>
+    <button type="button" {{bindAttr class=":btn :btn-primary :pull-right :mrm controller.showDownloadCsv::hide"}} {{action downloadCSV target="controller"}}>{{t admin.kerberos.wizard.step5.downloadCSV}}</button>
+    {{#unless App.router.clusterInstallCompleted}}
+      <button type="button" class="btn btn-secondary pull-right" {{action generateBlueprintConfirmation target="controller"}}><i class="glyphicon glyphicon-download-alt"></i>&nbsp;
+        {{t common.generate.blueprint}}
+      </button>
+    {{/unless}}
+  </div>
+</div>

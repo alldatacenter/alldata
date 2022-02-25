@@ -1,0 +1,336 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Widget.SingleRowSelectStateWidget" Accessibility="Internal">
+        <Property Name="SelectedEntities" Type="mpinstance://System.Library!System.Entity[]" BindingDirection="Both" />
+        <Property Name="AutoRefreshTickInterval" Type="xsd://int" BindingDirection="In" />
+        <Property Name="Columns" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn[]" BindingDirection="Both">
+          <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn[]">
+            <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+              <Binding PropertyId="PropertyName">
+                <SimpleValue Type="xsd://string" Value="HealthState" />
+              </Binding>
+              <Binding PropertyId="HeaderDisplayObject">
+                <SimpleValue Type="xsd://string" Value="$MPReference/Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.Library.Entity.HealthState/DisplayName$" />
+              </Binding>
+              <Binding PropertyId="SortableGroupable">
+                <SimpleValue Type="xsd://boolean" Value="True" />
+              </Binding>
+              <Binding PropertyId="CanResize">
+                <SimpleValue Type="xsd://boolean" Value="True" />
+              </Binding>
+              <Binding PropertyId="Width">
+                <SimpleValue Type="xsd://string" Value="Auto" />
+              </Binding>
+              <Binding PropertyId="XPath">
+                <SimpleValue Type="xsd://string" Value="$Object/Property[Name='HealthState']$" />
+              </Binding>
+              <Binding PropertyId="SourceType">
+                <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+              </Binding>
+            </ComplexValue>
+            <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+              <Binding PropertyId="PropertyName">
+                <SimpleValue Type="xsd://string" Value="DisplayName" />
+              </Binding>
+              <Binding PropertyId="HeaderDisplayObject">
+                <SimpleValue Type="xsd://string" Value="$MPReference/Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.Library.Entity.DisplayName/DisplayName$" />
+              </Binding>
+              <Binding PropertyId="SortableGroupable">
+                <SimpleValue Type="xsd://boolean" Value="True" />
+              </Binding>
+              <Binding PropertyId="CanResize">
+                <SimpleValue Type="xsd://boolean" Value="True" />
+              </Binding>
+              <Binding PropertyId="Width">
+                <SimpleValue Type="xsd://string" Value="Auto" />
+              </Binding>
+              <Binding PropertyId="XPath">
+                <SimpleValue Type="xsd://string" Value="$Object/PropertyCollection[Name='DisplayName']$" />
+              </Binding>
+              <Binding PropertyId="SourceType">
+                <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+              </Binding>
+            </ComplexValue>
+            <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+              <Binding PropertyId="PropertyName">
+                <SimpleValue Type="xsd://string" Value="Path" />
+              </Binding>
+              <Binding PropertyId="HeaderDisplayObject">
+                <SimpleValue Type="xsd://string" Value="$MPReference/Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.Library.Entity.Path/DisplayName$" />
+              </Binding>
+              <Binding PropertyId="SortableGroupable">
+                <SimpleValue Type="xsd://boolean" Value="True" />
+              </Binding>
+              <Binding PropertyId="CanResize">
+                <SimpleValue Type="xsd://boolean" Value="True" />
+              </Binding>
+              <Binding PropertyId="Width">
+                <SimpleValue Type="xsd://string" Value="Auto" />
+              </Binding>
+              <Binding PropertyId="XPath">
+                <SimpleValue Type="xsd://string" Value="$Object/Property[Name='Path']$" />
+              </Binding>
+              <Binding PropertyId="SourceType">
+                <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+              </Binding>
+            </ComplexValue>
+          </ComplexValueCollection>
+        </Property>
+        <Property Name="GroupedColumns" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataCollectionViewColumn[]" BindingDirection="Both" />
+        <Property Name="SortedColumns" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataCollectionViewColumn[]" BindingDirection="Both">
+          <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataCollectionViewColumn[]">
+            <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataCollectionViewColumn">
+              <Binding PropertyId="PropertyName">
+                <SimpleValue Type="xsd://string" Value="DisplayName" />
+              </Binding>
+              <Binding PropertyId="HeaderDisplayObject">
+                <SimpleValue Type="xsd://string" Value="$MPReference/Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.Library.Entity.DisplayName/DisplayName$" />
+              </Binding>
+              <Binding PropertyId="SortDirection">
+                <SimpleValue Type="xsd://string" Value="Ascending" />
+              </Binding>
+              <Binding PropertyId="XPath">
+                <SimpleValue Type="xsd://string" Value="$Object/PropertyCollection[Name='DisplayName']$" />
+              </Binding>
+              <Binding PropertyId="SourceType">
+                <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+              </Binding>
+            </ComplexValue>
+          </ComplexValueCollection>
+        </Property>
+        <!--<Property Name="Criteria" Type="xsd://string" BindingDirection="In" />-->
+        <Property Name="TargetIds" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataProvider/MPInstanceWithRecursionLevel[]" BindingDirection="In" />
+        <Property Name="BaseManagementPackTypes" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType[]" BindingDirection="In" />
+        <Property Name="RecursionTypeNames" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType[]" BindingDirection="In">
+          <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType[]">
+            <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType">
+              <Binding PropertyId="FullyQualifiedName">
+                <SimpleValue Type="xsd://string" Value="System.Library!System.Group" />
+              </Binding>
+            </ComplexValue>
+          </ComplexValueCollection>
+        </Property>
+      </ComponentType>
+    </ComponentTypes>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Widget.SingleRowSelectStateWidgetImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Widget.SingleRowSelectStateWidget"
+                               Platform="Wpf, Silverlight" Accessibility="Internal">
+        <Composite>
+          <Variable Id="AutoRefreshAction" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ActionTypes/AutoRefreshAction" />
+          <Variable Id="ConsolidatedRefreshAction" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ActionTypes/RefreshAction" />
+          <Variable Id="FilterCriteria" Type="BaseDataType" />
+          <Variable Id="ManagedEntities" Type="BaseDataType[]" />
+          <Variable Id="SelectedGridItem" Type="BaseDataType" />
+          <Variable Id="QueryCriteria" Type="xsd://string" />
+          <Variable Id="DataGridActions" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ActionTypes/Action" />
+          <Variable Id="SortColumnBaseCollection" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/SortColumnBase[]" />
+          <Variable Id="ProjectionColumns" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataSourceTypes/ValueDefinition[]" />
+          <Variable Id="SortProjectionColumns" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataSourceTypes/SortValueDefinition[]" />
+          <Variable Id="VisualizedDataCount" Type="xsd://int" />
+          <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.ComponentContainer">
+            <Binding PropertyId="Visual">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.DataGrid">
+                <Binding PropertyId="KeyPropertyName">
+                  <SimpleValue Type="xsd://string" Value="Id" />
+                </Binding>
+                <Binding PropertyId="Data">
+                  <Reference>$Variable/ManagedEntities$</Reference>
+                </Binding>
+                <Binding PropertyId="GroupedColumns">
+                  <Reference>$Property/GroupedColumns$</Reference>
+                </Binding>
+                <Binding PropertyId="SortedColumns">
+                  <Reference>$Property/SortedColumns$</Reference>
+                </Binding>
+                <Binding PropertyId="Columns">
+                  <Reference>$Property/Columns$</Reference>
+                </Binding>
+                <Binding PropertyId="CellComponentType">
+                  <SimpleValue Type="xsd://string" Value="Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataGridGenericCell" />
+                </Binding>
+                <Binding PropertyId="ColumnHeaderComponentType">
+                  <SimpleValue Type="xsd://string" Value="Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataGridColumnHeaderCell" />
+                </Binding>
+                <Binding PropertyId="SelectionMode">
+                  <SimpleValue Type="xsd://string" Value="SingleRowSelect" />
+                </Binding>
+                <Binding PropertyId="Action">
+                  <Reference>$Variable/DataGridActions$</Reference>
+                </Binding>
+                <Binding PropertyId="SelectedRow">
+                  <Reference>$Variable/SelectedGridItem$</Reference>
+                </Binding>
+                <Binding PropertyId="SelectedRows">
+                  <Reference>$Property/SelectedEntities$</Reference>
+                </Binding>
+                <Binding PropertyId="ColumnHeaderVisible">
+                  <SimpleValue Type="xsd://string" Value="True" />
+                </Binding>
+                <Binding PropertyId="CanReorderColumns">
+                  <SimpleValue Type="xsd://string" Value="True" />
+                </Binding>
+                <Binding PropertyId="ItemsCount">
+                  <Reference>$Variable/VisualizedDataCount$</Reference>
+                </Binding>
+                <Binding PropertyId="AutoSelect">
+                  <SimpleValue Type="xsd://boolean" Value="False" />
+                </Binding>
+              </Component>
+            </Binding>
+            <Binding PropertyId="Objects">
+              <Component TypeId="Ambari.SCOM.Presentation.Component.TriggeredComponentHost">
+                <Binding PropertyId="ComponentType">
+                  <SimpleValue Type="xsd://string" Value="Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ManagedEntityPropertyTask" />
+                </Binding>
+                <Binding PropertyId="ComponentTarget">
+                  <Reference>$Variable/SelectedGridItem$</Reference>
+                </Binding>
+                <Binding PropertyId="TriggerInstance">
+                  <Reference>$Variable/DataGridActions$</Reference>
+                </Binding>
+                <Binding PropertyId="TriggerTypes">
+                  <SimpleValue Type="xsd://string" Value="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ActionTypes/ItemPropertiesAction" />
+                </Binding>
+                <Binding PropertyId="TriggerTypes">
+                  <SimpleValue Type="xsd://string" Value="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ActionTypes/DoubleClickedAction" />
+                </Binding>
+              </Component>
+            </Binding>
+            <Binding PropertyId="Objects">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.OneWaySync">
+                <Binding PropertyId="From">
+                  <Reference>$Property/SelectedEntities$</Reference>
+                </Binding>
+                <Binding PropertyId="To">
+                  <Reference>$Service/SelectedItems$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+            <Binding PropertyId="Objects">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.OneWaySync">
+                <Binding PropertyId="From">
+                  <Reference>$Variable/VisualizedDataCount$</Reference>
+                </Binding>
+                <Binding PropertyId="To">
+                  <Reference>$Service/Subtitle$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+            <Binding PropertyId="Objects">
+              <Component TypeId="Ambari.SCOM.Presentation.Component.DataGridSortColumnsToSortColumnBaseCollection">
+                <Binding PropertyId="SortedColumns">
+                  <Reference>$Property/SortedColumns$</Reference>
+                </Binding>
+                <Binding PropertyId="GroupedColumns">
+                  <Reference>$Property/GroupedColumns$</Reference>
+                </Binding>
+                <Binding PropertyId="SortColumnBaseCollection">
+                  <Reference>$Variable/SortColumnBaseCollection$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+            <Binding PropertyId="Objects">
+              <Component TypeId="Ambari.SCOM.Presentation.Component.ColumnsToQueryConfigurationMapper">
+                <Binding PropertyId="PropertyList">
+                  <Reference>$Property/Columns$</Reference>
+                </Binding>
+                <Binding PropertyId="SortPropertyList">
+                  <Reference>$Variable/SortColumnBaseCollection$</Reference>
+                </Binding>
+                <Binding PropertyId="PropertyCollections">
+                  <Reference>$Variable/ProjectionColumns$</Reference>
+                </Binding>
+                <Binding PropertyId="SortPropertyCollections">
+                  <Reference>$Variable/SortProjectionColumns$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+            <Binding PropertyId="Objects">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.AutoRefreshTimer">
+                <Binding PropertyId="TickInterval">
+                  <Reference>$Property/AutoRefreshTickInterval$</Reference>
+                </Binding>
+                <Binding PropertyId="AutoRefreshAction">
+                  <Reference>$Variable/AutoRefreshAction$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+            <Binding PropertyId="Objects">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.Consolidator">
+                <Binding PropertyId="From1">
+                  <Reference>$Variable/AutoRefreshAction$</Reference>
+                </Binding>
+                <Binding PropertyId="From2">
+                  <Reference>$Service/RefreshAction$</Reference>
+                </Binding>
+                <Binding PropertyId="To">
+                  <Reference>$Variable/ConsolidatedRefreshAction$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+            <!--
+            <Binding PropertyId="Objects">
+              <Component TypeId="StateCriteriaXMLToQueryString">
+                <Binding PropertyId="ConfigurationXMLString">
+                  <Reference>$Property/Criteria$</Reference>
+                </Binding>
+                <Binding PropertyId="QueryString">
+                  <Reference>$Variable/QueryCriteria$</Reference>
+                </Binding>
+              </Component>
+            </Binding>-->
+            <Binding PropertyId="Objects">
+              <Component TypeId="Ambari.SCOM.Presentation.Component.GetManagedEntitiesDataSource">
+                <!--
+                <Binding PropertyId="CriteriaString">
+                  <Reference>$Variable/QueryCriteria$</Reference>
+                </Binding>-->
+                <Binding PropertyId="Output">
+                  <Reference>$Variable/ManagedEntities$</Reference>
+                </Binding>
+                <Binding PropertyId="TargetEntities">
+                  <Reference>$Property/TargetIds$</Reference>
+                </Binding>
+                <Binding PropertyId="BaseTypeNames">
+                  <Reference>$Property/BaseManagementPackTypes$</Reference>
+                </Binding>
+                <Binding PropertyId="RecursionTypeNames">
+                  <Reference>$Property/RecursionTypeNames$</Reference>
+                </Binding>
+                <Binding PropertyId="Properties">
+                  <Reference>$Variable/ProjectionColumns/ManagedEntity$</Reference>
+                </Binding>
+                <Binding PropertyId="SortProperties">
+                  <Reference>$Variable/SortProjectionColumns/ManagedEntity$</Reference>
+                </Binding>
+                <Binding PropertyId="Refresh">
+                  <Reference>$Variable/ConsolidatedRefreshAction$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+          </Component>
+        </Composite>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+</ManagementPackFragment>

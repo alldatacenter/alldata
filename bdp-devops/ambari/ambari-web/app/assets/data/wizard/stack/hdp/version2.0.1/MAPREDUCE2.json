@@ -1,0 +1,509 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations?fields=*",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapred.queue.default.acl-administer-jobs",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "mapred.queue.default.acl-administer-jobs",
+        "property_value" : "*",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-queue-acls.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapred.queue.default.acl-submit-job",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "mapred.queue.default.acl-submit-job",
+        "property_value" : "*",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-queue-acls.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapred_log_dir_prefix",
+      "StackConfigurations" : {
+        "property_description" : "Mapreduce Log Dir Prefix",
+        "property_name" : "mapred_log_dir_prefix",
+        "property_value" : "/var/log/hadoop-mapreduce",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapred_pid_dir_prefix",
+      "StackConfigurations" : {
+        "property_description" : "Mapreduce PID Dir Prefix",
+        "property_name" : "mapred_pid_dir_prefix",
+        "property_value" : "/var/run/hadoop-mapreduce",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapred_user",
+      "StackConfigurations" : {
+        "property_description" : "Mapreduce User",
+        "property_name" : "mapred_user",
+        "property_value" : "mapred",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.admin.map.child.java.opts",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "mapreduce.admin.map.child.java.opts",
+        "property_value" : "-Djava.net.preferIPv4Stack=true -Dhadoop.metrics.log.level=WARN",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.admin.reduce.child.java.opts",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "mapreduce.admin.reduce.child.java.opts",
+        "property_value" : "-Djava.net.preferIPv4Stack=true -Dhadoop.metrics.log.level=WARN",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.admin.user.env",
+      "StackConfigurations" : {
+        "property_description" : "\n      Additional execution environment entries for map and reduce task processes.\n      This is not an additive property. You must preserve the original value if\n      you want your map and reduce tasks to have access to native libraries (compression, etc)\n    ",
+        "property_name" : "mapreduce.admin.user.env",
+        "property_value" : "LD_LIBRARY_PATH=/usr/lib/hadoop/lib/native:/usr/lib/hadoop/lib/native/`$JAVA_HOME/bin/java -d32 -version &> /dev/null;if [ $? -eq 0 ]; then echo Linux-i386-32; else echo Linux-amd64-64;fi`",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.am.max-attempts",
+      "StackConfigurations" : {
+        "property_description" : "\n      The maximum number of application attempts. It is a\n      application-specific setting. It should not be larger than the global number\n      set by resourcemanager. Otherwise, it will be override. The default number is\n      set to 2, to allow at least one retry for AM.\n    ",
+        "property_name" : "mapreduce.am.max-attempts",
+        "property_value" : "2",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.application.classpath",
+      "StackConfigurations" : {
+        "property_description" : "\n      CLASSPATH for MR applications. A comma-separated list of CLASSPATH\n      entries.\n    ",
+        "property_name" : "mapreduce.application.classpath",
+        "property_value" : "$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.cluster.administrators",
+      "StackConfigurations" : {
+        "property_description" : "\n      Administrators for MapReduce applications.\n    ",
+        "property_name" : "mapreduce.cluster.administrators",
+        "property_value" : " hadoop",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.framework.name",
+      "StackConfigurations" : {
+        "property_description" : "\n      The runtime framework for executing MapReduce jobs. Can be one of local,\n      classic or yarn.\n    ",
+        "property_name" : "mapreduce.framework.name",
+        "property_value" : "yarn",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.job.reduce.slowstart.completedmaps",
+      "StackConfigurations" : {
+        "property_description" : "\n      Fraction of the number of maps in the job which should be complete before\n      reduces are scheduled for the job.\n    ",
+        "property_name" : "mapreduce.job.reduce.slowstart.completedmaps",
+        "property_value" : "0.05",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.jobhistory.address",
+      "StackConfigurations" : {
+        "property_description" : "Enter your JobHistoryServer hostname.",
+        "property_name" : "mapreduce.jobhistory.address",
+        "property_value" : "localhost:10020",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.jobhistory.done-dir",
+      "StackConfigurations" : {
+        "property_description" : "\n      Directory where history files are managed by the MR JobHistory Server.\n    ",
+        "property_name" : "mapreduce.jobhistory.done-dir",
+        "property_value" : "/mr-history/done",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.jobhistory.intermediate-done-dir",
+      "StackConfigurations" : {
+        "property_description" : "\n      Directory where history files are written by MapReduce jobs.\n    ",
+        "property_name" : "mapreduce.jobhistory.intermediate-done-dir",
+        "property_value" : "/mr-history/tmp",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.jobhistory.webapp.address",
+      "StackConfigurations" : {
+        "property_description" : "Enter your JobHistoryServer hostname.",
+        "property_name" : "mapreduce.jobhistory.webapp.address",
+        "property_value" : "localhost:19888",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.map.java.opts",
+      "StackConfigurations" : {
+        "property_description" : "\n      Larger heap-size for child jvms of maps.\n    ",
+        "property_name" : "mapreduce.map.java.opts",
+        "property_value" : "-Xmx756m",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.map.log.level",
+      "StackConfigurations" : {
+        "property_description" : "\n      The logging level for the map task. The allowed levels are:\n      OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE and ALL.\n    ",
+        "property_name" : "mapreduce.map.log.level",
+        "property_value" : "INFO",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.map.memory.mb",
+      "StackConfigurations" : {
+        "property_description" : "Virtual memory for single Map task",
+        "property_name" : "mapreduce.map.memory.mb",
+        "property_value" : "1024",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.map.output.compress",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "mapreduce.map.output.compress",
+        "property_value" : "false",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.map.sort.spill.percent",
+      "StackConfigurations" : {
+        "property_description" : "\n      The soft limit in the serialization buffer. Once reached, a thread will\n      begin to spill the contents to disk in the background. Note that\n      collection will not block if this threshold is exceeded while a spill\n      is already in progress, so spills may be larger than this threshold when\n      it is set to less than .5\n    ",
+        "property_name" : "mapreduce.map.sort.spill.percent",
+        "property_value" : "0.7",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.map.speculative",
+      "StackConfigurations" : {
+        "property_description" : "\n      If true, then multiple instances of some map tasks\n      may be executed in parallel.\n    ",
+        "property_name" : "mapreduce.map.speculative",
+        "property_value" : "false",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.output.fileoutputformat.compress",
+      "StackConfigurations" : {
+        "property_description" : "\n      Should the job outputs be compressed?\n    ",
+        "property_name" : "mapreduce.output.fileoutputformat.compress",
+        "property_value" : "false",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.output.fileoutputformat.compress.type",
+      "StackConfigurations" : {
+        "property_description" : "\n      If the job outputs are to compressed as SequenceFiles, how should\n      they be compressed? Should be one of NONE, RECORD or BLOCK.\n    ",
+        "property_name" : "mapreduce.output.fileoutputformat.compress.type",
+        "property_value" : "BLOCK",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.reduce.input.buffer.percent",
+      "StackConfigurations" : {
+        "property_description" : "\n      The percentage of memory- relative to the maximum heap size- to\n      retain map outputs during the reduce. When the shuffle is concluded, any\n      remaining map outputs in memory must consume less than this threshold before\n      the reduce can begin.\n    ",
+        "property_name" : "mapreduce.reduce.input.buffer.percent",
+        "property_value" : "0.0",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.reduce.java.opts",
+      "StackConfigurations" : {
+        "property_description" : "\n      Larger heap-size for child jvms of reduces.\n    ",
+        "property_name" : "mapreduce.reduce.java.opts",
+        "property_value" : "-Xmx756m",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.reduce.log.level",
+      "StackConfigurations" : {
+        "property_description" : "\n      The logging level for the reduce task. The allowed levels are:\n      OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE and ALL.\n    ",
+        "property_name" : "mapreduce.reduce.log.level",
+        "property_value" : "INFO",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.reduce.memory.mb",
+      "StackConfigurations" : {
+        "property_description" : "Virtual memory for single Reduce task",
+        "property_name" : "mapreduce.reduce.memory.mb",
+        "property_value" : "1024",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.reduce.shuffle.input.buffer.percent",
+      "StackConfigurations" : {
+        "property_description" : "\n      The percentage of memory to be allocated from the maximum heap\n      size to storing map outputs during the shuffle.\n    ",
+        "property_name" : "mapreduce.reduce.shuffle.input.buffer.percent",
+        "property_value" : "0.7",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.reduce.shuffle.merge.percent",
+      "StackConfigurations" : {
+        "property_description" : "\n      The usage threshold at which an in-memory merge will be\n      initiated, expressed as a percentage of the total memory allocated to\n      storing in-memory map outputs, as defined by\n      mapreduce.reduce.shuffle.input.buffer.percent.\n    ",
+        "property_name" : "mapreduce.reduce.shuffle.merge.percent",
+        "property_value" : "0.66",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.reduce.shuffle.parallelcopies",
+      "StackConfigurations" : {
+        "property_description" : "\n      The default number of parallel transfers run by reduce during\n      the copy(shuffle) phase.\n    ",
+        "property_name" : "mapreduce.reduce.shuffle.parallelcopies",
+        "property_value" : "30",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.reduce.speculative",
+      "StackConfigurations" : {
+        "property_description" : "\n      If true, then multiple instances of some reduce tasks may be\n      executed in parallel.\n    ",
+        "property_name" : "mapreduce.reduce.speculative",
+        "property_value" : "false",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.shuffle.port",
+      "StackConfigurations" : {
+        "property_description" : "\n      Default port that the ShuffleHandler will run on.\n      ShuffleHandler is a service run at the NodeManager to facilitate\n      transfers of intermediate Map outputs to requesting Reducers.\n    ",
+        "property_name" : "mapreduce.shuffle.port",
+        "property_value" : "13562",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.task.io.sort.factor",
+      "StackConfigurations" : {
+        "property_description" : "\n      The number of streams to merge at once while sorting files.\n      This determines the number of open file handles.\n    ",
+        "property_name" : "mapreduce.task.io.sort.factor",
+        "property_value" : "100",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.task.io.sort.mb",
+      "StackConfigurations" : {
+        "property_description" : "\n      The total amount of buffer memory to use while sorting files, in megabytes.\n      By default, gives each merge stream 1MB, which should minimize seeks.\n    ",
+        "property_name" : "mapreduce.task.io.sort.mb",
+        "property_value" : "200",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/mapreduce.task.timeout",
+      "StackConfigurations" : {
+        "property_description" : "\n      The number of milliseconds before a task will be\n      terminated if it neither reads an input, writes an output, nor\n      updates its status string.\n    ",
+        "property_name" : "mapreduce.task.timeout",
+        "property_value" : "300000",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/yarn.app.mapreduce.am.admin-command-opts",
+      "StackConfigurations" : {
+        "property_description" : "\n      Java opts for the MR App Master processes for admin purposes.\n      It will appears before the opts set by yarn.app.mapreduce.am.command-opts and\n      thus its options can be overridden user.\n\n      Usage of -Djava.library.path can cause programs to no longer function if\n      hadoop native libraries are used. These values should instead be set as part\n      of LD_LIBRARY_PATH in the map / reduce JVM env using the mapreduce.map.env and\n      mapreduce.reduce.env config settings.\n    ",
+        "property_name" : "yarn.app.mapreduce.am.admin-command-opts",
+        "property_value" : "-Djava.net.preferIPv4Stack=true -Dhadoop.metrics.log.level=WARN",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/yarn.app.mapreduce.am.command-opts",
+      "StackConfigurations" : {
+        "property_description" : "\n      Java opts for the MR App Master processes.\n      The following symbol, if present, will be interpolated: @taskid@ is replaced\n      by current TaskID. Any other occurrences of '@' will go unchanged.\n      For example, to enable verbose gc logging to a file named for the taskid in\n      /tmp and to set the heap maximum to be a gigabyte, pass a 'value' of:\n      -Xmx1024m -verbose:gc -Xloggc:/tmp/@taskid@.gc\n\n      Usage of -Djava.library.path can cause programs to no longer function if\n      hadoop native libraries are used. These values should instead be set as part\n      of LD_LIBRARY_PATH in the map / reduce JVM env using the mapreduce.map.env and\n      mapreduce.reduce.env config settings.\n    ",
+        "property_name" : "yarn.app.mapreduce.am.command-opts",
+        "property_value" : "-Xmx312m",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/yarn.app.mapreduce.am.log.level",
+      "StackConfigurations" : {
+        "property_description" : "MR App Master process log level.",
+        "property_name" : "yarn.app.mapreduce.am.log.level",
+        "property_value" : "INFO",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/yarn.app.mapreduce.am.resource.mb",
+      "StackConfigurations" : {
+        "property_description" : "The amount of memory the MR AppMaster needs.",
+        "property_name" : "yarn.app.mapreduce.am.resource.mb",
+        "property_value" : "512",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/MAPREDUCE2/configurations/yarn.app.mapreduce.am.staging-dir",
+      "StackConfigurations" : {
+        "property_description" : "\n      The staging dir used while submitting jobs.\n    ",
+        "property_name" : "yarn.app.mapreduce.am.staging-dir",
+        "property_value" : "/user",
+        "service_name" : "MAPREDUCE2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "mapred-site.xml"
+      }
+    }
+  ]
+}

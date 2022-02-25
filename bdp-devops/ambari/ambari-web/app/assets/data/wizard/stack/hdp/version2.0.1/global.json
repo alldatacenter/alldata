@@ -1,0 +1,2231 @@
+{
+  "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices?fields=configurations/StackConfigurations/filename",
+  "items" : [
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive.metastore.cache.pinobjtypes",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive.metastore.cache.pinobjtypes",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/javax.jdo.option.ConnectionDriverName",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "javax.jdo.option.ConnectionDriverName",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive.metastore.execute.setugi",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive.metastore.execute.setugi",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/fs.hdfs.impl.disable.cache",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "fs.hdfs.impl.disable.cache",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive.metastore.client.socket.timeout",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive.metastore.client.socket.timeout",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive_pid_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive_pid_dir",
+            "filename" : "global.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/mysql_connector_url",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mysql_connector_url",
+            "filename" : "global.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive_log_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive_log_dir",
+            "filename" : "global.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive.metastore.local",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive.metastore.local",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive_conf_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive_conf_dir",
+            "filename" : "global.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive.security.authorization.enabled",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive.security.authorization.enabled",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive.security.authorization.manager",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive.security.authorization.manager",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive.server2.enable.doAs",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive.server2.enable.doAs",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive.metastore.warehouse.dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive.metastore.warehouse.dir",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hive_aux_jars_path",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hive_aux_jars_path",
+            "filename" : "global.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HIVE/configurations/hadoop.clientside.fs.operations",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hadoop.clientside.fs.operations",
+            "filename" : "hive-site.xml",
+            "service_name" : "HIVE",
+            "stack_name" : "HDP"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HCATALOG",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "HCATALOG",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [ ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "MAPREDUCE",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.reduce.parallel.copies",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.reduce.parallel.copies",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.jobtracker.blacklist.fault-bucket-width",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.jobtracker.blacklist.fault-bucket-width",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.default-user-limit-factor",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.default-user-limit-factor",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.default-supports-priority",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.default-supports-priority",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.job.tracker.handler.count",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.job.tracker.handler.count",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.max.tracker.blacklists",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.max.tracker.blacklists",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.map.tasks.speculative.execution",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.map.tasks.speculative.execution",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.job.tracker.persist.jobstatus.active",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.job.tracker.persist.jobstatus.active",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.job.shuffle.input.buffer.percent",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.job.shuffle.input.buffer.percent",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/tasktracker.http.threads",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "tasktracker.http.threads",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapreduce.history.server.embedded",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapreduce.history.server.embedded",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.job.tracker.persist.jobstatus.hours",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.job.tracker.persist.jobstatus.hours",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.jobtracker.completeuserjobs.maximum",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.jobtracker.completeuserjobs.maximum",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred_system_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred_system_dir",
+            "filename" : "global.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/scheduler_name",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "scheduler_name",
+            "filename" : "global.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.queue.default.acl-submit-job",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.queue.default.acl-submit-job",
+            "filename" : "mapred-queue-acls.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.reduce.slowstart.completed.maps",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.reduce.slowstart.completed.maps",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.queue.default.capacity",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.queue.default.capacity",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.job.shuffle.merge.percent",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.job.shuffle.merge.percent",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.jobtracker.retirejob.interval",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.jobtracker.retirejob.interval",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.queue.default.maximum-initialized-active-tasks",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.queue.default.maximum-initialized-active-tasks",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/io.sort.factor",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "io.sort.factor",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapreduce.fileoutputcommitter.marksuccessfuljobs",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapreduce.fileoutputcommitter.marksuccessfuljobs",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.child.root.logger",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.child.root.logger",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.job.tracker.history.completed.location",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.job.tracker.history.completed.location",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.queue.default.minimum-user-limit-percent",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.queue.default.minimum-user-limit-percent",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/jetty.connector",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "jetty.connector",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.job.reduce.input.buffer.percent",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.job.reduce.input.buffer.percent",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/jtnode_opt_newsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "jtnode_opt_newsize",
+            "filename" : "global.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.default-maximum-active-tasks-per-user",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.default-maximum-active-tasks-per-user",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/hadoop.job.history.user.location",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hadoop.job.history.user.location",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.init-worker-threads",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.init-worker-threads",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred_local_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred_local_dir",
+            "filename" : "global.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.jobtracker.retirejob.check",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.jobtracker.retirejob.check",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapreduce.tasktracker.group",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapreduce.tasktracker.group",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/io.sort.record.percent",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "io.sort.record.percent",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.default-maximum-active-tasks-per-queue",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.default-maximum-active-tasks-per-queue",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.queue.default.acl-administer-jobs",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.queue.default.acl-administer-jobs",
+            "filename" : "mapred-queue-acls.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.queue.default.user-limit-factor",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.queue.default.user-limit-factor",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.reduce.tasks.speculative.execution",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.reduce.tasks.speculative.execution",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.queue.default.maximum-capacity",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.queue.default.maximum-capacity",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.jobtracker.restart.recover",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.jobtracker.restart.recover",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.output.compression.type",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.output.compression.type",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.system.dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.system.dir",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.queue.default.supports-priority",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.queue.default.supports-priority",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.job.reuse.jvm.num.tasks",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.job.reuse.jvm.num.tasks",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.tasktracker.tasks.sleeptime-before-sigkill",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.tasktracker.tasks.sleeptime-before-sigkill",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.healthChecker.interval",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.healthChecker.interval",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapreduce.cluster.administrators",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapreduce.cluster.administrators",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapreduce.jobtracker.staging.root.dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapreduce.jobtracker.staging.root.dir",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapreduce.jobtracker.split.metainfo.maxsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapreduce.jobtracker.split.metainfo.maxsize",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.queue.default.maximum-initialized-active-tasks-per-user",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.queue.default.maximum-initialized-active-tasks-per-user",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.init-poll-interval",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.init-poll-interval",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.queue.names",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.queue.names",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapreduce.reduce.input.limit",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapreduce.reduce.input.limit",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.maximum-system-jobs",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.maximum-system-jobs",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.queue.default.init-accept-jobs-factor",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.queue.default.init-accept-jobs-factor",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.default-minimum-user-limit-percent",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.default-minimum-user-limit-percent",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.task.timeout",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.task.timeout",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.capacity-scheduler.default-init-accept-jobs-factor",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.capacity-scheduler.default-init-accept-jobs-factor",
+            "filename" : "capacity-scheduler.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.healthChecker.script.timeout",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.healthChecker.script.timeout",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/jtnode_opt_maxnewsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "jtnode_opt_maxnewsize",
+            "filename" : "global.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.inmem.merge.threshold",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.inmem.merge.threshold",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE/configurations/mapred.jobtracker.blacklist.fault-timeout-window",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "mapred.jobtracker.blacklist.fault-timeout-window",
+            "filename" : "mapred-site.xml",
+            "service_name" : "MAPREDUCE",
+            "stack_name" : "HDP"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/ZOOKEEPER",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [ ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/SQOOP",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "SQOOP",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [ ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase.zookeeper.useMulti",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase.zookeeper.useMulti",
+            "filename" : "hbase-site.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hstore_compactionthreshold",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hstore_compactionthreshold",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hfile_blockcache_size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hfile_blockcache_size",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase_pid_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase_pid_dir",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase_regionserver_heapsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase_regionserver_heapsize",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase_regionserver_xmn_max",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase_regionserver_xmn_max",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase_regionserver_xmn_ratio",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase_regionserver_xmn_ratio",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/client_scannercaching",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "client_scannercaching",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/regionserver_handlers",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "regionserver_handlers",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase.regionserver.optionalcacheflushinterval",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase.regionserver.optionalcacheflushinterval",
+            "filename" : "hbase-site.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/security.admin.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.admin.protocol.acl",
+            "filename" : "hbase-policy.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hregion_blockmultiplier",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hregion_blockmultiplier",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase_master_heapsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase_master_heapsize",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase.master.lease.thread.wakefrequency",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase.master.lease.thread.wakefrequency",
+            "filename" : "hbase-site.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase_conf_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase_conf_dir",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase_log_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase_log_dir",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/security.masterregion.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.masterregion.protocol.acl",
+            "filename" : "hbase-policy.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase_tmp_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase_tmp_dir",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hregion_majorcompaction",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hregion_majorcompaction",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hfile_max_keyvalue_size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hfile_max_keyvalue_size",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/zookeeper_sessiontimeout",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "zookeeper_sessiontimeout",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase.cluster.distributed",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase.cluster.distributed",
+            "filename" : "hbase-site.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hbase.zookeeper.property.clientPort",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hbase.zookeeper.property.clientPort",
+            "filename" : "hbase-site.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/hstorefile_maxsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hstorefile_maxsize",
+            "filename" : "global.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HBASE/configurations/security.client.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.client.protocol.acl",
+            "filename" : "hbase-policy.xml",
+            "service_name" : "HBASE",
+            "stack_name" : "HDP"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.JPAService.jdbc.driver",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.JPAService.jdbc.driver",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.PurgeService.purge.interval",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.PurgeService.purge.interval",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.JPAService.jdbc.username",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.JPAService.jdbc.username",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.authentication.type",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.authentication.type",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.HadoopAccessorService.hadoop.configurations",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.HadoopAccessorService.hadoop.configurations",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.ActionService.executor.ext.classes",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.ActionService.executor.ext.classes",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.CallableQueueService.callable.concurrency",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.CallableQueueService.callable.concurrency",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.SchemaService.wf.ext.schemas",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.SchemaService.wf.ext.schemas",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.systemmode",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.systemmode",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.db.schema.name",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.db.schema.name",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.JPAService.jdbc.url",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.JPAService.jdbc.url",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.JPAService.jdbc.password",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.JPAService.jdbc.password",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.JPAService.create.db.schema",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.JPAService.create.db.schema",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.HadoopAccessorService.nameNode.whitelist",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.HadoopAccessorService.nameNode.whitelist",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.system.id",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.system.id",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.HadoopAccessorService.jobTracker.whitelist",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.HadoopAccessorService.jobTracker.whitelist",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.base.url",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.base.url",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/use.system.libpath.for.mapreduce.and.pig.jobs",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "use.system.libpath.for.mapreduce.and.pig.jobs",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.PurgeService.older.than",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.PurgeService.older.than",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.JPAService.pool.max.active.conn",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.JPAService.pool.max.active.conn",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.WorkflowAppService.system.libpath",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.WorkflowAppService.system.libpath",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.AuthorizationService.security.enabled",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.AuthorizationService.security.enabled",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.coord.normal.default.timeout",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.coord.normal.default.timeout",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.authentication.kerberos.name.rules",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.authentication.kerberos.name.rules",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.CallableQueueService.threads",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.CallableQueueService.threads",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/OOZIE/configurations/oozie.service.CallableQueueService.queue.size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "oozie.service.CallableQueueService.queue.size",
+            "filename" : "oozie-site.xml",
+            "service_name" : "OOZIE",
+            "stack_name" : "HDP"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/PIG",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "PIG",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [ ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "HDFS",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs_datanode_failed_volume_tolerated",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs_datanode_failed_volume_tolerated",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/fs.trash.interval",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "fs.trash.interval",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/io.serializations",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "io.serializations",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.secondary.https.port",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.secondary.https.port",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.datanode.ipc.address",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.datanode.ipc.address",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security.datanode.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.datanode.protocol.acl",
+            "filename" : "hadoop-policy.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/hadoop_heapsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hadoop_heapsize",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/ipc.client.idlethreshold",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "ipc.client.idlethreshold",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security.inter.tracker.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.inter.tracker.protocol.acl",
+            "filename" : "hadoop-policy.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/io.file.buffer.size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "io.file.buffer.size",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/fs.checkpoint.size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "fs.checkpoint.size",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.heartbeat.interval",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.heartbeat.interval",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.block.access.token.enable",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.block.access.token.enable",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.web.ugi",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.web.ugi",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/kerberos_domain",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "kerberos_domain",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.balance.bandwidthPerSec",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.balance.bandwidthPerSec",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs_name_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs_name_dir",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/datanode_du_reserved",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "datanode_du_reserved",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.datanode.du.pct",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.datanode.du.pct",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.safemode.threshold.pct",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.safemode.threshold.pct",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/namenode_opt_maxnewsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "namenode_opt_maxnewsize",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security.inter.datanode.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.inter.datanode.protocol.acl",
+            "filename" : "hadoop-policy.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/ipc.server.max.response.size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "ipc.server.max.response.size",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.datanode.socket.write.timeout",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.datanode.socket.write.timeout",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security.client.datanode.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.client.datanode.protocol.acl",
+            "filename" : "hadoop-policy.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/keytab_path",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "keytab_path",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.datanode.failed.volumes.tolerated",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.datanode.failed.volumes.tolerated",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.permissions",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.permissions",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.datanode.max.xcievers",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.datanode.max.xcievers",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/io.compression.codec.lzo.class",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "io.compression.codec.lzo.class",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.cluster.administrators",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.cluster.administrators",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/namenode_opt_newsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "namenode_opt_newsize",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/namenode_opt_permsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "namenode_opt_permsize",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/namenode_opt_maxpermsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "namenode_opt_maxpermsize",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.access.time.precision",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.access.time.precision",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/ipc.server.read.threadpool.size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "ipc.server.read.threadpool.size",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security_enabled",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security_enabled",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.umaskmode",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.umaskmode",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.namenode.handler.count",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.namenode.handler.count",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.replication.max",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.replication.max",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/webinterface.private.actions",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "webinterface.private.actions",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.permissions.supergroup",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.permissions.supergroup",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/hadoop_pid_dir_prefix",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hadoop_pid_dir_prefix",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/fs.checkpoint.edits.dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "fs.checkpoint.edits.dir",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.block.size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.block.size",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security.task.umbilical.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.task.umbilical.protocol.acl",
+            "filename" : "hadoop-policy.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security.job.submission.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.job.submission.protocol.acl",
+            "filename" : "hadoop-policy.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/ipc.client.connect.max.retries",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "ipc.client.connect.max.retries",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.https.port",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.https.port",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security.client.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.client.protocol.acl",
+            "filename" : "hadoop-policy.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.namenode.handler.count",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.namenode.handler.count",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/ipc.client.connection.maxidletime",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "ipc.client.connection.maxidletime",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs_webhdfs_enabled",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs_webhdfs_enabled",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/hdfs_log_dir_prefix",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "hdfs_log_dir_prefix",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/fs.checkpoint.period",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "fs.checkpoint.period",
+            "filename" : "core-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/fs_checkpoint_size",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "fs_checkpoint_size",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/security.namenode.protocol.acl",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "security.namenode.protocol.acl",
+            "filename" : "hadoop-policy.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs.blockreport.initialDelay",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs.blockreport.initialDelay",
+            "filename" : "hdfs-site.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/fs_checkpoint_period",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "fs_checkpoint_period",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/fs_checkpoint_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "fs_checkpoint_dir",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dtnode_heapsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dtnode_heapsize",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/dfs_data_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "dfs_data_dir",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/HDFS/configurations/namenode_heapsize",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "namenode_heapsize",
+            "filename" : "global.xml",
+            "service_name" : "HDFS",
+            "stack_name" : "HDP"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "WEBHCAT",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.port",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.port",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.pig.archive",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.pig.archive",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.hive.archive",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.hive.archive",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.streaming.jar",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.streaming.jar",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.jar",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.jar",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.hcat",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.hcat",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.hadoop",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.hadoop",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.hive.path",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.hive.path",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.hadoop.conf.dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.hadoop.conf.dir",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.storage.class",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.storage.class",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.override.enabled",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.override.enabled",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.pig.path",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.pig.path",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.libjars",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.libjars",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/WEBHCAT/configurations/templeton.exec.timeout",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "templeton.exec.timeout",
+            "filename" : "webhcat-site.xml",
+            "service_name" : "WEBHCAT",
+            "stack_name" : "HDP"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/GANGLIA",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "GANGLIA",
+        "stack_name" : "HDP"
+      },
+      "configurations" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/GANGLIA/configurations/ganglia_runtime_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "ganglia_runtime_dir",
+            "filename" : "global.xml",
+            "service_name" : "GANGLIA",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/GANGLIA/configurations/gmetad_user",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "gmetad_user",
+            "filename" : "global.xml",
+            "service_name" : "GANGLIA",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/GANGLIA/configurations/rrdcached_base_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "rrdcached_base_dir",
+            "filename" : "global.xml",
+            "service_name" : "GANGLIA",
+            "stack_name" : "HDP"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/GANGLIA/configurations/ganglia_conf_dir",
+          "StackConfigurations" : {
+            "stack_version" : "1.3.0",
+            "property_name" : "ganglia_conf_dir",
+            "filename" : "global.xml",
+            "service_name" : "GANGLIA",
+            "stack_name" : "HDP"
+          }
+        }
+      ]
+    }
+  ]
+}

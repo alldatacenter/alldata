@@ -1,0 +1,76 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+
+<div class="modal-backdrop in"></div>
+<div {{bindAttr class=":modal view.showFooter:with-footer:no-footer"}} id="modal" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true" {{QAAttr "modal"}}>
+  <div {{bindAttr class="view.modalDialogClassesStr :modal-dialog"}}>
+    <div class="modal-content">
+      {{! Modal header }}
+      <div class="modal-header" {{QAAttr "modal-header"}}>
+        {{#if view.showCloseButton}}
+          <a {{QAAttr "close-modal"}} class="close" {{action onClose target="view"}}>&times;</a>
+        {{/if}}
+        <h4 {{QAAttr "modal-title"}} id="modal-label">
+          {{#if view.headerClass}}
+            {{view view.headerClass}}
+          {{else}}
+            {{view.header}}
+          {{/if}}
+        </h4>
+      </div>
+
+      {{! Modal Body }}
+      <div {{bindAttr class=":modal-body view.isHideBodyScroll:hidden-scroll"}} {{QAAttr "modal-body"}}>
+        {{#if view.bodyClass}}
+          {{view view.bodyClass}}
+        {{else}}
+          {{#if view.encodeBody}}
+            {{view.body}}
+          {{else}}
+            {{{view.body}}}
+          {{/if}}
+        {{/if}}
+      </div>
+      {{! Modal footer }}
+      {{#if view.showFooter}}
+        {{#if view.footerClass}}
+          {{view view.footerClass}}
+        {{else}}
+          <div class="modal-footer">
+            {{#if view.third}}
+              <button {{QAAttr "modal-tertiary"}}
+                {{bindAttr disabled="view.disableThird" class=":btn view.thirdClass" id="view.thirdId"}}
+                {{action onThird target="view"}}>
+                  {{view.third}}
+              </button>{{/if}}{{#if view.secondary}}<button {{QAAttr "modal-secondary"}}
+                {{bindAttr disabled="view.disableSecondary" class=":btn view.secondaryClass" id="view.secondaryId"}}
+                {{action onSecondary target="view"}}>
+                  {{view.secondary}}
+              </button>{{/if}}{{#if view.primary}}<button {{QAAttr "modal-primary"}}
+                {{bindAttr disabled="view.disablePrimary" class=":btn view.primaryClass" id="view.primaryId"}}
+                {{action onPrimary target="view"}}>
+                  {{view.primary}}
+              </button>
+            {{/if}}
+          </div>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</div>

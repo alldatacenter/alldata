@@ -1,0 +1,132 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <MonitorTypes>
+      <UnitMonitorType ID="Ambari.SCOM.UnitMonitorType.HostComponentHealthState" Accessibility="Internal">
+        <MonitorTypeStates>
+          <MonitorTypeState ID="Healthy" NoDetection="false" />
+          <MonitorTypeState ID="Critical" NoDetection="false" />
+        </MonitorTypeStates>
+        <Configuration>
+          <xsd:element name="IntervalSeconds" type="xsd:integer" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SyncTime" type="xsd:string" />
+          <xsd:element name="TimeoutSeconds" type="xsd:integer" />
+          
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
+          <OverrideableParameter ID="SyncTime" Selector="$Config/SyncTime$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <MonitorImplementation>
+          <MemberModules>
+            <DataSource ID="DS" TypeID="Ambari.SCOM.Module.HostComponentHealthStateDataSource">
+              <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+              <SyncTime>$Config/SyncTime$</SyncTime>
+              <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              <MonitoringAmbariUri>$Target/Property[Type="Ambari.SCOM.AmbariManagedEntity"]/AmbariUri$</MonitoringAmbariUri>
+            </DataSource>
+
+            <ConditionDetection ID="HealthyCondition" TypeID="System!System.ExpressionFilter">
+              <Expression>
+                <Or>
+                  <Expression>
+                    <Not>
+                      <Expression>
+                        <Exists>
+                          <ValueExpression>
+                            <XPathQuery Type="String">Property[@Name='State']</XPathQuery>
+                          </ValueExpression>
+                        </Exists>
+                      </Expression>
+                    </Not>
+                  </Expression>
+                  <Expression>
+                    <SimpleExpression>
+                      <ValueExpression>
+                        <XPathQuery Type="String">Property[@Name='State']</XPathQuery>
+                      </ValueExpression>
+                      <Operator>Equal</Operator>
+                      <ValueExpression>
+                        <Value Type="String">started</Value>
+                      </ValueExpression>
+                    </SimpleExpression>
+                  </Expression>
+                </Or>
+              </Expression>
+            </ConditionDetection>
+
+            <ConditionDetection ID="CriticalCondition" TypeID="System!System.ExpressionFilter">
+              <Expression>
+                <SimpleExpression>
+                  <ValueExpression>
+                    <XPathQuery Type="String">Property[@Name='State']</XPathQuery>
+                  </ValueExpression>
+                  <Operator>NotEqual</Operator>
+                  <ValueExpression>
+                    <Value Type="String">started</Value>
+                  </ValueExpression>
+                </SimpleExpression>
+              </Expression>
+            </ConditionDetection>
+          </MemberModules>
+          <RegularDetections>
+            <RegularDetection MonitorTypeStateID="Healthy">
+              <Node ID="HealthyCondition">
+                <Node ID="DS" />
+              </Node>
+            </RegularDetection>
+            <RegularDetection MonitorTypeStateID="Critical">
+              <Node ID="CriticalCondition">
+                <Node ID="DS" />
+              </Node>
+            </RegularDetection>
+          </RegularDetections>
+        </MonitorImplementation>
+      </UnitMonitorType>
+    </MonitorTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentHealthState">
+          <Name>Hadoop Host Component Health State Unit Monitor Type</Name>
+          <Description>This two-state unit monitor type checks the health state of Host Component.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentHealthState" SubElementID="Healthy">
+          <Name>Healthy</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentHealthState" SubElementID="Critical">
+          <Name>Critical</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentHealthState" SubElementID="IntervalSeconds">
+          <Name>Interval (sec)</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentHealthState" SubElementID="SyncTime">
+          <Name>Sync Time</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitorType.HostComponentHealthState" SubElementID="TimeoutSeconds">
+          <Name>Timeout (sec)</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

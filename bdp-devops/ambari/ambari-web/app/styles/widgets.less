@@ -1,0 +1,505 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@import 'common.less';
+
+@undo-btn-margin: 10px;
+@controls-min-width: 55px;
+@combo-widget-width: 200px;
+@overriden-property-bg-color: rgba(211, 237, 247, 0.39);
+@overriden-property-widget-padding: 8px;
+@green: #6ebd45;
+@slider-light-grey: #e6e6e6;
+@slider-dark-grey: #aaaaaa;
+
+@slider-widget-border-color: #999;
+@slider-widget-width: 220px;
+@slider-widget-wrapper-width: 68%;
+@slider-widget-tooltip-background-color: @green;
+@slider-widget-selection-background-color: @slider-dark-grey;
+@slider-widget-body-height: 10px;
+@slider-widget-body-background-color: @slider-light-grey;
+@slider-widget-tick-height: 6px;
+@slider-widget-tick-width: 1px;
+@slider-widget-tick-background-color: @slider-dark-grey;
+@slider-widget-tick-label-color: @slider-dark-grey;
+@slider-widget-tooltip-background: @slider-widget-tooltip-background-color;
+@slider-widget-disabled-selection-background-color: lighten(@slider-widget-selection-background-color, 20%);
+
+@widget-config-override-action-color: #cbcbcb;
+@widget-config-override-action-active-color: #acacac;
+@widget-config-final-active-color: blue;
+
+@toggle-widget-handle-background-color: #f3f3f3;
+@toggle-widget-text-color: #fff;
+@toggle-widget-text-size: 12px;
+@toggle-widget-on-background-color: #aaa;
+@toggle-widget-off-background-color: @green;
+
+.widget-config {
+  margin-bottom: 11px;
+  clear: both;
+
+  .widget-config-label {
+    font-size: 90%;
+    width: 100%;
+    &.text-success {
+      color: @green;
+    }
+    .glyphicon-warning-sign {
+      &.warning {
+        color: @health-status-yellow
+      }
+    }
+  }
+  .action-button {
+    margin-right: @undo-btn-margin;
+  }
+  .widget-config-controls {
+    float: right;
+    display: inline-block;
+    margin-left: 10px;
+    min-height: 65px;
+    min-width: @controls-min-width;
+    z-index: 1;
+    position: relative;
+    &.version-labels {
+      min-width: 52px;
+      .label-current {
+        padding: 2px 3px 3px 5px;
+      }
+      .glyphicon-lock {
+        position: relative;
+        top: 2px;
+        left: 2px;
+        color: #ccc;
+      }
+    }
+    .widget-col {
+      width: 18px;
+      &.left {
+        float: left;
+      }
+      &.right {
+        float: right;
+      }
+    }
+    .widget-action {
+      text-decoration: none;
+      //display: block;
+    }
+    .widget-action-set-recommended,
+    .widget-action-final,
+    .widget-action-switch-view {
+      padding-left: 1px;
+      color: @widget-config-override-action-color;
+      &.active {
+        color: @widget-config-override-action-active-color;
+      }
+      &.text-danger {
+        color: #b94a48;
+      }
+    }
+    .widget-action-final.active {
+      color: @widget-config-final-active-color;
+    }
+  }
+  .clear-min-height {
+    min-height: 0;
+  }
+  .widget-config-raw {
+    width: calc(~"100% - 30px -"@controls-min-width);
+  }
+  &.slider-widget {
+    width: 100%;
+  //  margin-left: -20px;
+    margin-right: 0;
+  //  padding-left: 20px;
+  }
+  // background hack instead of increasing padding,
+  // because we have lack of space for widget container.
+  &.overridden-property {
+    background-color: @overriden-property-bg-color;
+    position: relative;
+    &:before {
+      height: 100%;
+      width: @overriden-property-widget-padding;
+      content: '';
+      position: absolute;
+      top: 0;
+      display: block;
+      background-color: @overriden-property-bg-color;
+    }
+    &:before {
+      left: -@overriden-property-widget-padding;
+    }
+  }
+  .input-group-btn {
+    width: auto;
+  }
+}
+
+.widget-config-comparison .widget-config&.slider-widget {
+  overflow-x: visible;
+}
+
+.slider-widget .widget-config-comparison .version-labels {
+  top: 20px;
+}
+
+.directory-textarea-wrapper {
+  float: left;
+  width: @slider-widget-wrapper-width;
+}
+
+.list-widget {
+  li, li:active {
+    a, a:hover, a:focus, a:active, a:visited {
+      background-color: #fff !important;
+      background-image: none !important;
+      color: #333 !important;
+    }
+  }
+}
+
+.slider-widget {
+
+  .widget-config-label {
+    display: inline-block;
+    padding-bottom: 13px;
+    margin-bottom: 15px;
+  }
+  .slider-track {
+    height: @slider-widget-body-height !important;
+    border-radius: 0;
+
+    .slider-track-high {
+      background-color: @slider-widget-body-background-color;
+      border-radius: 0;
+    }
+  }
+  .slider.slider-horizontal {
+    width: @slider-widget-width;
+    .tooltip {
+      margin-top: -24px;
+      opacity: 1;
+      font-size: 10px;
+      line-height: 14px;
+      min-width: 30px;
+      z-index: 1;
+      visibility: inherit;
+      &.tooltip-min,
+      &.tooltip-max {
+        display: none;
+      }
+      .tooltip-inner {
+        padding: 0 2px;
+        background-color: @slider-widget-tooltip-background-color;
+        text-align: center;
+      }
+      .tooltip-arrow {
+        bottom: 2px;
+        margin-left: -4px;
+        border-top-color: @slider-widget-tooltip-background-color;
+        border-width: 4px 4px 0;
+      }
+    }
+    .slider-tick {
+      width: 0;
+      margin-top: 10px;
+      margin-left: 0;
+      font-size: 8px;
+      &:before,
+      &.in-selection:before {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 8px;
+        background-color: @slider-widget-tick-background-color;
+      }
+      &.last {
+        margin-left: -1px;
+      }
+      &.slider-tick-default {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid @slider-dark-grey;
+        margin-left: -5px;
+        > span {
+          color: @slider-widget-tick-label-color;
+          font-size: 10px;
+        }
+        &::before {
+          display: none;
+        }
+      }
+    }
+    &.slider-disabled {
+      .tooltip-arrow {
+        border-top-color: lighten(@green, 20%);
+      }
+      .tooltip-inner {
+        background-color: lighten(@green, 20%);
+      }
+    }
+  }
+  .slider-handle {
+    margin-top: -4px !important;
+    height: 14px;
+    width: 3px;
+    margin-left: -1px !important;
+    background-color: @slider-widget-selection-background-color;
+    background-image: none;
+    border-radius: 0;
+  }
+  .slider-tick-label-container {
+    margin-top: 0;
+  }
+  .slider-tick-label {
+    color: @slider-widget-tick-label-color;
+    font-size: 10px;
+    .slider-tick-reset-label {
+      color: @slider-widget-tick-label-color;
+      margin-left: 6px;
+    }
+  }
+  .slider-selection {
+    background-image: none;
+    background-color: @slider-widget-selection-background-color;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .ui-slider-wrapper {
+    .ui-slider-wrapper-inner {
+      width: @slider-widget-wrapper-width;
+      width: calc(~"100% - 30px -"@controls-min-width);
+      max-width: @slider-widget-wrapper-width;
+      padding-left: 10px;
+      .slider.slider-horizontal {
+        width: 100%;
+      }
+    }
+    .ui-slider-label {
+      color: #aaa;
+      line-height: 35px;
+    }
+  }
+  .overrideField {
+    margin-top: 30px;
+    .ui-slider-wrapper-inner {
+      padding-top: 20px;
+    }
+  }
+}
+.slider-disabled {
+  .slider-track-high {
+    background-color: @slider-widget-disabled-selection-background-color;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  .slider-selection {
+    background-color: @slider-widget-disabled-selection-background-color;
+  }
+  .slider-track {
+    div.slider-handle {
+      background-image: none;
+      background-color: @slider-widget-disabled-selection-background-color;
+    }
+  }
+}
+
+.spinner-input-widget {
+
+  .spinner-input {
+    display: inline-block;
+    padding: 0 5px;
+    line-height: normal;
+    float: left;
+
+    .input-group {
+       margin: 0;
+    }
+
+    input {
+      width: 30px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .btn {
+      &:first-child {
+        padding-left: 4px;
+        padding-right: 2px;
+      }
+
+      &:last-child {
+        padding-left: 2px;
+        padding-right: 4px;
+      }
+    }
+
+    .spinner-input-label {
+      font-size: 11px;
+    }
+  }
+
+  .undo-button {
+    padding: 2px 10px;
+    float: left;
+  }
+}
+
+.toggle-widget {
+  .undo-button {
+    margin-left: @undo-btn-margin;
+  }
+}
+
+.bootstrap-switch {
+  white-space: nowrap;
+  &,
+  &.bootstrap-switch-focused {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .bootstrap-switch-label {
+    background-color: @toggle-widget-handle-background-color;
+    background-image: none;
+    text-shadow: none;
+    border-width: 0;
+    padding: 2px 8px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid @toggle-widget-handle-background-color;
+  }
+
+  .bootstrap-switch-handle-on,
+  .bootstrap-switch-handle-off {
+    color: @toggle-widget-text-color;
+    font-size: @toggle-widget-text-size;
+    background-image: none;
+    text-shadow: none;
+    border: none;
+    padding: 2px 0;
+
+    &:hover {
+      text-shadow: none;
+      color: @toggle-widget-text-color;
+    }
+
+    &.bootstrap-switch-default {
+      background-color: @toggle-widget-on-background-color;
+    }
+
+    &.bootstrap-switch-success {
+      background-color: @toggle-widget-off-background-color;
+    }
+
+    &.bootstrap-switch-default,
+    &.bootstrap-switch-success {
+      color: @toggle-widget-text-color;
+      background-image: none;
+      text-shadow: none;
+    }
+  }
+}
+
+.combo-widget {
+  .input-group {
+    .btn-group {
+      display: inline-block;
+      margin-left: -1px;
+
+      > input {
+        border-radius: 3px 0 0 3px;
+        width: @combo-widget-width;
+
+        &[disabled] {
+          background: #fff;
+          cursor: default;
+        }
+      }
+      .btn {
+        border-radius: 0 3px 3px 0;
+      }
+    }
+
+    ul.dropdown-menu {
+      z-index: 1100; // menu-items shouldn't be under popover
+    }
+
+  }
+
+  .disabled {
+    .dropdown {
+      input[type="text"] {
+        background-color: #eee;
+      }
+    }
+  }
+
+  .action-button {
+    margin-left: @undo-btn-margin;
+  }
+}
+
+.checkbox-widget {
+  .widget-config-label {
+    width: auto;
+    padding-left: 0;
+  }
+  .checkbox {
+    .ember-checkbox:not([disabled]) {
+      & + label:hover, &:checked + label {
+        &:before {
+          background-color: @green;
+          border-color: @green;
+        }
+      }
+    }
+  }
+}
+
+.text-field-widget {
+  .text-field-wrapper {
+    width: 70%;
+    float: left;
+  }
+}
+
+#serviceConfig {
+  .text-field-widget {
+    .with-unit input {
+      width: 75%;
+    }
+  }
+}
+
+.label-current.glyphicon-ok {
+  color: white;
+}
+
+.compare-mode {
+  background-color: rgba(211, 237, 247, 0.39);
+  padding: 10px 5px 0 10px;
+}
+
+

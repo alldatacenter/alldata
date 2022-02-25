@@ -1,0 +1,518 @@
+{
+  "stackName": "PHD",
+  "baseStackName": "HDP",
+  "performCommonReplacements": true,
+  "textReplacements": [
+    ["hdp-select", "distro-select"]
+   ],
+  "preservedText": ["ext-2.2", "HDP-oozie", "hdp.version", "HDP_VERSION", "192.168."],
+  "uiMapping": [
+    {
+      "stackVersionNumber": "3.0",
+      "sign": "<",
+      "baseStackFolder": "HDP2"
+    }
+  ],
+  "ambariProperties": {
+    "rolling.upgrade.min.stack" : "PHD-3.0"
+  },
+  "versions": [
+    {
+      "version": "2.0.6",
+      "baseVersion": "2.0.6",
+      "family": "redhat6,suse11",
+      "active": "false",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE"
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "GANGLIA"
+        }
+      ]
+    },
+    {
+      "version": "2.1",
+      "baseVersion": "2.1",
+      "active": "false",
+      "family": "redhat6,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE"
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        }
+      ]
+    },
+    {
+      "version": "3.0",
+      "baseVersion": "2.2",
+      "active": "true",
+      "family": "redhat6,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE",
+          "packages":[
+            {
+              "family": "redhat6,suse11",
+              "packages": [
+                "hbase_${stack_version}"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE",
+          "packages":[
+            {
+              "family": "redhat6,suse11",
+              "packages": [
+                "oozie_${stack_version}"
+              ]
+            },
+            {
+              "family": "any",
+              "packages": [
+                "zip",
+                "extjs"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "KNOX",
+          "packages":[
+            {
+              "family": "redhat6,suse11",
+              "packages": [
+                "knox_${stack_version}"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "SPARK"
+        },
+        {
+          "name": "RANGER",
+          "packages":[
+            {
+              "family": "redhat6,suse11",
+              "packages": [
+                "ranger_${stack_version}-admin",
+                "ranger_${stack_version}-usersync"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "3.3",
+      "baseVersion": "2.3",
+      "active": "true",
+      "family": "redhat6,amazon2015,redhat7,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE",
+          "packages":[
+            {
+              "family": "any",
+              "packages": [
+                {
+                  "name": "mysql-connector-java",
+                  "skipUpgrade": "true"
+                }
+              ]
+            },
+            {
+              "family": "redhat6,amazon2015,redhat7,suse11",
+              "packages": [
+                "hive_${stack_version}",
+                "hive_${stack_version}-hcatalog",
+                "hive_${stack_version}-webhcat"
+              ]
+            },
+            {
+              "family": "redhat6,suse11",
+              "packages": [
+                {
+                  "name": "mysql",
+                  "skipUpgrade": "true"
+                }
+              ]
+            },
+            {
+              "family": "redhat7",
+              "packages": [
+                {
+                  "name": "mysql-community-release",
+                  "skipUpgrade": "true"
+                },
+                {
+                  "name": "mysql-community-server",
+                  "skipUpgrade": "true"
+                }
+              ]
+            },
+            {
+              "family": "redhat6",
+              "packages": [
+                {
+                  "name": "mysql-server",
+                  "skipUpgrade": "true"
+                }
+              ]
+            },
+            {
+              "family": "suse11",
+              "packages": [
+                {
+                  "name": "mysql-client",
+                  "skipUpgrade": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE",
+          "packages":[
+            {
+              "family": "redhat6,amazon2015,redhat7,suse11",
+              "packages": [
+                "oozie_${stack_version}"
+              ]
+            },
+            {
+              "family": "any",
+              "packages": [
+                "zip",
+                {
+                  "name": "mysql-connector-java",
+                  "skipUpgrade": "true"
+                },
+                "extjs"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG",
+          "packages":[
+            {
+              "family": "redhat6,amazon2015,redhat7,suse11",
+              "packages": [
+                "pig_${stack_version}"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SPARK"
+        },
+        {
+          "name": "RANGER",
+          "packages":[
+            {
+              "family": "redhat6,redhat7,suse11",
+              "packages": [
+                "ranger_${stack_version}-admin",
+                "ranger_${stack_version}-usersync"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RANGER_KMS",
+          "packages":[
+            {
+              "family": "redhat6,redhat7,suse11",
+              "packages": [
+                "ranger_${stack_version}-kms"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "3.4",
+      "baseVersion": "2.4",
+      "active": "true",
+      "family": "redhat6,amazon2015,redhat7,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE"
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "SPARK"
+        },
+        {
+          "name": "RANGER"
+        },
+        {
+          "name": "RANGER_KMS"
+        }
+      ]
+    },
+    {
+      "version": "3.5",
+      "baseVersion": "2.5",
+      "active": "true",
+      "family": "redhat6,amazon2015,redhat7,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE"
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "SPARK"
+        },
+        {
+          "name": "RANGER"
+        },
+        {
+          "name": "RANGER_KMS"
+        }
+      ]
+    },
+    {
+      "version": "3.6",
+      "baseVersion": "2.6",
+      "active": "true",
+      "family": "redhat6,amazon2015,redhat7,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE"
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "SPARK"
+        },
+        {
+          "name": "RANGER"
+        },
+        {
+          "name": "RANGER_KMS"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <StringResources>
+      <StringResource ID="Ambari.SCOM.Presentation.Page.TimeRange.Title" />
+      <StringResource ID="Ambari.SCOM.Presentation.Page.TimeRange.TimeRangeSelectorTitle" />
+    </StringResources>
+
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Page.TimeRange"
+                     Base="Visualization!Microsoft.SystemCenter.Visualization.WizardRegularPage"
+                     Accessibility="Internal">
+        <Property Name="DateRange" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/DynamicDateTimeRange" />
+      </ComponentType>
+    </ComponentTypes>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Page.TimeRangeImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Page.TimeRange"
+                               Platform="Wpf, Silverlight" Accessibility="Internal">
+        <Composite>
+          <Base>
+            <Binding PropertyId="StepId">
+              <Reference>$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Page.TimeRange.Title/DisplayName$</Reference>
+            </Binding>
+            <Binding PropertyId="Title">
+              <Reference>$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Page.TimeRange.Title/DisplayName$</Reference>
+            </Binding>
+            <Binding PropertyId="IsValid">
+              <SimpleValue Type="xsd://boolean" Value="True"/>
+            </Binding>
+            <Binding PropertyId="FinishButtonText">
+              <Reference>$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Page.Common.FinishButton/DisplayName$</Reference>
+            </Binding>
+            <Binding PropertyId="Content">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGrid">
+                <Binding PropertyId="RowCollection">
+                  <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGridRow">
+                    <Binding PropertyId="Height">
+                      <SimpleValue Type="xsd://string" Value="auto" />
+                    </Binding>
+                  </Component>
+                </Binding>
+                <Binding PropertyId="ColumnCollection">
+                  <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGridColumn">
+                    <Binding PropertyId="Width">
+                      <SimpleValue Type="xsd://string" Value="*" />
+                    </Binding>
+                  </Component>
+                </Binding>
+                <Binding PropertyId="CellCollection">
+                  <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGridCell">
+                    <Binding PropertyId="RowId">
+                      <SimpleValue Type="xsd://string" Value="0" />
+                    </Binding>
+                    <Binding PropertyId="ColumnId">
+                      <SimpleValue Type="xsd://string" Value="0" />
+                    </Binding>
+                    <Binding PropertyId="Content">
+                      <Component TypeId="VisConfig!Microsoft.SystemCenter.Visualization.SimpleTimeRangeSelector">
+                        <Binding PropertyId="Title">
+                          <Reference>$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Page.TimeRange.TimeRangeSelectorTitle/DisplayName$</Reference>
+                        </Binding>
+                        <Binding PropertyId="TimeRange">
+                          <Reference>$Property/DateRange$</Reference>
+                        </Binding>
+                      </Component>
+                    </Binding>
+                  </Component>
+                </Binding>
+              </Component>
+            </Binding>
+          </Base>
+        </Composite>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Page.TimeRange.Title">
+          <Name>Time Range</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Page.TimeRange.TimeRangeSelectorTitle">
+          <Name>Time range:</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

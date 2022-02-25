@@ -1,0 +1,141 @@
+{
+  "layouts": [
+    {
+      "layout_name": "default_onefs_dashboard",
+      "display_name": "Standard ONEFS Dashboard",
+      "section_name": "ONEFS_SUMMARY",
+      "widgetLayoutInfo": [
+        {
+          "widget_name": "OneFS Host Free Disk Space",
+          "description": "Percentage of available space on OneFS host",
+          "widget_type": "GAUGE",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "disk_free",
+              "metric_path": "metrics/disk/disk_free",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            },
+            {
+              "name": "disk_total",
+              "metric_path": "metrics/disk/disk_total",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            }
+          ],
+          "values": [
+            {
+              "name": "OneFS Host Disk Free Space",
+              "value": "${disk_free/disk_total}"
+            }
+          ],
+          "properties": {
+            "warning_threshold": "0.25",
+            "error_threshold": "0.1"
+          }
+        },
+        {
+          "widget_name": "OneFS NameNode Memory",
+          "description": "The sum of the current memory allocated by the HDFS process and the sum of the memory limit that the HDFS process can allocate.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "jvm.JvmMetrics.MemHeapCommittedM",
+              "metric_path": "metrics/jvm/memHeapCommittedM",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            },
+            {
+              "name": "jvm.JvmMetrics.MemHeapUsedM",
+              "metric_path": "metrics/jvm/memHeapUsedM",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            }
+          ],
+          "values": [
+            {
+              "name": "Heap committed",
+              "value": "${jvm.JvmMetrics.MemHeapCommittedM}"
+            },
+            {
+              "name": "Heap used",
+              "value": "${jvm.JvmMetrics.MemHeapUsedM}"
+            }
+          ],
+          "properties": {
+            "display_unit": "MB",
+            "graph_type": "LINE",
+            "time_range": "1"
+          }
+        },
+        {
+          "widget_name": "OneFS Host Load",
+          "description": "Percentage of CPU and Memory resources being consumed on OneFS host.",
+          "widget_type": "GRAPH",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "cpu_system",
+              "metric_path": "metrics/cpu/cpu_system",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            },
+            {
+              "name": "cpu_user",
+              "metric_path": "metrics/cpu/cpu_user",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            },
+            {
+              "name": "cpu_nice",
+              "metric_path": "metrics/cpu/cpu_nice",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            },
+            {
+              "name": "cpu_idle",
+              "metric_path": "metrics/cpu/cpu_idle",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            },
+            {
+              "name": "cpu_wio",
+              "metric_path": "metrics/cpu/cpu_wio",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            },
+            {
+              "name": "mem_total",
+              "metric_path": "metrics/memory/mem_total",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            },
+            {
+              "name": "mem_free",
+              "metric_path": "metrics/memory/mem_free",
+              "service_name": "ONEFS",
+              "component_name": "ONEFS_CLIENT"
+            }
+          ],
+          "values": [
+            {
+              "name": "CPU utilization",
+              "value": "${((cpu_system + cpu_user + cpu_nice)/(cpu_system + cpu_user + cpu_nice + cpu_idle + cpu_wio)) * 100}"
+            },
+            {
+              "name": "Memory utilization",
+              "value": "${((mem_total - mem_free)/mem_total) * 100}"
+            }
+          ],
+          "properties": {
+            "graph_type": "LINE",
+            "time_range": "1",
+            "display_unit": "%"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+debug: Creating default schedules
+debug: Puppet::Type::User::ProviderDirectoryservice: file /usr/bin/dscl does not exist
+debug: Puppet::Type::User::ProviderUser_role_add: file roledel does not exist
+debug: Puppet::Type::User::ProviderPw: file pw does not exist
+debug: Failed to load library 'ldap' for feature 'ldap'
+debug: Puppet::Type::User::ProviderLdap: feature ldap is missing
+debug: /File[/var/lib/puppet/ssl/certs/ca.pem]: Autorequiring File[/var/lib/puppet/ssl/certs]
+debug: /File[/var/lib/puppet/ssl/public_keys]: Autorequiring File[/var/lib/puppet/ssl]
+debug: /File[/var/lib/puppet/ssl/crl.pem]: Autorequiring File[/var/lib/puppet/ssl]
+debug: /File[/var/lib/puppet/state/last_run_report.yaml]: Autorequiring File[/var/lib/puppet/state]
+debug: /File[/var/lib/puppet/ssl/certificate_requests]: Autorequiring File[/var/lib/puppet/ssl]
+debug: /File[/var/lib/puppet/state/last_run_summary.yaml]: Autorequiring File[/var/lib/puppet/state]
+debug: /File[/var/lib/puppet/client_data]: Autorequiring File[/var/lib/puppet]
+debug: /File[/var/lib/puppet/state]: Autorequiring File[/var/lib/puppet]
+debug: /File[/var/lib/puppet/ssl/private]: Autorequiring File[/var/lib/puppet/ssl]
+debug: /File[/var/lib/puppet/state/graphs]: Autorequiring File[/var/lib/puppet/state]
+debug: /File[/var/lib/puppet/ssl]: Autorequiring File[/var/lib/puppet]
+debug: /File[/var/lib/puppet/state/state.yaml]: Autorequiring File[/var/lib/puppet/state]
+debug: /File[/var/lib/puppet/client_yaml]: Autorequiring File[/var/lib/puppet]
+debug: /File[/var/lib/puppet/facts]: Autorequiring File[/var/lib/puppet]
+debug: /File[/var/lib/puppet/ssl/private_keys]: Autorequiring File[/var/lib/puppet/ssl]
+debug: /File[/var/lib/puppet/state/resources.txt]: Autorequiring File[/var/lib/puppet/state]
+debug: /File[/var/lib/puppet/clientbucket]: Autorequiring File[/var/lib/puppet]
+debug: /File[/var/lib/puppet/lib]: Autorequiring File[/var/lib/puppet]
+debug: /File[/var/lib/puppet/ssl/certs]: Autorequiring File[/var/lib/puppet/ssl]
+debug: Finishing transaction 70060456464420
+debug: Loaded state in 0.00 seconds
+debug: Loaded state in 0.00 seconds
+info: Applying configuration version '1352127399'
+debug: /Schedule[daily]: Skipping device resources because running on a host
+debug: /Schedule[monthly]: Skipping device resources because running on a host
+debug: /Schedule[hourly]: Skipping device resources because running on a host
+debug: /Schedule[never]: Skipping device resources because running on a host
+debug: Exec[command_good](provider=posix): Executing 'wget example.com'
+debug: Executing 'wget example.com'
+notice: /Stage[main]//Exec[command_good]/returns: executed successfully
+debug: /Stage[main]//Exec[command_good]: The container Class[Main] will propagate my refresh event
+debug: /Schedule[weekly]: Skipping device resources because running on a host
+debug: /Schedule[puppet]: Skipping device resources because running on a host
+debug: Class[Main]: The container Stage[main] will propagate my refresh event
+debug: Finishing transaction 70060457541680
+debug: Storing state
+debug: Stored state in 0.01 seconds
+notice: Finished catalog run in 0.59 seconds
+debug: Finishing transaction 70060456663980
+debug: Received report to process from ambari-dmi
+debug: Processing report from ambari-dmi with processor Puppet::Reports::Store

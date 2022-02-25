@@ -1,0 +1,292 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.isLoaded}}
+
+  <div id="alert-definition-details">
+
+  <div class="alert-definition-details-header row">
+    <div class="col-md-8">
+      {{! Alert Definition Name }}
+      <div class="definition-name row">
+        {{#if controller.editing.label.isEditing}}
+          <div {{bindAttr class="controller.editing.label.isError:error :col-md-8 :name-text-field"}}>
+            {{view Em.TextField valueBinding="controller.editing.label.value" maxlength="255" class="form-control"}}
+          </div>
+          <div class="edit-buttons align-right col-md-4">
+            <button {{action cancelEdit controller.editing.label target="controller"}}
+                class="btn btn-default cancel-button">{{t common.cancel}}</button>
+            <button {{bindAttr disabled="controller.editing.label.isError"}} {{action saveEdit controller.editing.label target="controller"}}
+                class="btn btn-primary save-button">{{t common.save}}
+            </button>
+          </div>
+        {{else}}
+          <div class="col-md-12">
+            <span>
+              {{controller.content.label}}
+            </span>
+            {{#isAuthorized "SERVICE.TOGGLE_ALERTS"}}
+              <a href="#" {{action edit controller.editing.label target="controller"}} class="edit-description-button">
+                <i class="glyphicon glyphicon-pencil"></i>
+              </a>
+            {{/isAuthorized}}
+          </div>
+        {{/if}}
+      </div>
+      {{! Alert Definition Name end }}
+      <div class="error-msg"> {{controller.errorMessage}} </div>
+      <div>
+        <a href="javascript:void(null)" {{action back}}><i class="glyphicon glyphicon-arrow-left"></i>&nbsp;{{t common.back}}</a>
+      </div>
+    </div>
+
+    <div class="status align-right col-md-4">
+      {{view App.AlertDefinitionSummary contentBinding="view.controller.content"}}
+    </div>
+  </div>
+
+  <div class="row">
+
+    {{! Left column }}
+    {{! Alert Definition Configs }}
+    <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row no-vertical-padding">
+          <div class="col-md-7">
+            <h4 class="panel-title">{{t common.configuration}}</h4>
+          </div>
+          <div class="col-md-5">
+            {{#isAuthorized "SERVICE.TOGGLE_ALERTS"}}
+              {{#unless App.router.mainAlertDefinitionConfigsController.canEdit}}
+                <a href="#" {{action editConfigs target="App.router.mainAlertDefinitionConfigsController"}} class="pull-right btn btn-link">
+                  {{t common.edit}}
+                </a>
+              {{/unless}}
+            {{/isAuthorized}}
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        {{view App.AlertDefinitionConfigsView contentBinding="view.controller.content" alertDefinitionTypeBinding="view.controller.content.type" canEdit=false}}
+        {{#if App.router.mainAlertDefinitionConfigsController.canEdit}}
+          <div class="edit-buttons align-right">
+            <button {{action cancelEditConfigs target="App.router.mainAlertDefinitionConfigsController"}}
+                class="btn btn-default">{{t common.cancel}}</button>
+            <button {{bindAttr disabled="App.router.mainAlertDefinitionConfigsController.hasErrors"}} {{action saveConfigs target="App.router.mainAlertDefinitionConfigsController"}}
+                class="btn btn-primary">{{t common.save}}
+            </button>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    </div>
+    {{! Alert Definition Configs end }}
+    {{! Left column end }}
+
+    {{! Right column }}
+    <div class="col-md-4 right-column">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">{{t alerts.definition.details.infoSection}}</h4>
+        </div>
+        <div class="properties-list background-text panel-body">
+          <div class="row">
+            <div class="col-md-5 property-name">{{t alerts.table.state}}:</div>
+            <div class="col-md-7">
+              {{#if controller.content.enabled}}
+                {{#isAuthorized "SERVICE.TOGGLE_ALERTS"}}
+                  <a href="#" {{action "toggleState" controller.content target="controller"}} {{bindAttr class="controller.content.enabled:alert-definition-enable:alert-definition-disable"}}>
+                  <span
+                    class="enable-disable-button" {{translateAttr data-original-title="alerts.table.state.enabled.tooltip"}}>
+                    {{view.enabledDisplay}}
+                  </span>
+                  </a>
+                {{else}}
+                  {{view.enabledDisplay}}
+                {{/isAuthorized}}
+              {{else}}
+                {{#isAuthorized "SERVICE.TOGGLE_ALERTS"}}
+                  <a href="#" {{action "toggleState" controller.content target="controller"}} {{bindAttr class="controller.content.enabled:alert-definition-enable:alert-definition-disable"}}>
+                  <span
+                    class="enable-disable-button" {{translateAttr data-original-title="alerts.table.state.disabled.tooltip"}}>
+                    {{view.disabledDisplay}}
+                  </span>
+                  </a>
+                {{else}}
+                  {{view.disabledDisplay}}
+                {{/isAuthorized}}
+              {{/if}}
+            </div>
+          </div>
+          {{#if controller.content.serviceDisplayName}}
+            <div class="row">
+              <div class="col-md-5 property-name">{{t common.service}}:</div>
+              <div class="col-md-7"><span>{{controller.content.serviceDisplayName}}</span></div>
+            </div>
+          {{/if}}
+          {{#if controller.content.componentNameFormatted}}
+            <div class="row">
+              <div class="col-md-5 property-name">{{t common.component}}:</div>
+              <div class="col-md-7">{{controller.content.componentNameFormatted}}</div>
+            </div>
+          {{/if}}
+          <div class="row">
+            <div class="col-md-5 property-name">{{t common.type}}:</div>
+            <div class="col-md-7">
+              <span {{bindAttr class=":type-icon  controller.content.typeIconClass"}}></span> {{controller.content.type}}
+            </div>
+          </div>
+          {{#if controller.groupsList.length}}
+            <div class="row">
+              <div class="col-md-5 property-name">{{t alerts.definition.details.groups}}:</div>
+              <div class="col-md-7">
+                <ul class="list-unstyled">
+                  {{#each groupName in controller.groupsList}}
+                    <li>{{groupName}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          {{/if}}
+          <div class="row">
+            <div class="col-md-5 property-name">{{t alerts.table.header.lastTrigger}}:</div>
+            <div class="col-md-7">{{controller.content.lastTriggeredFormatted}}</div>
+          </div>
+          {{#unless controller.content.isTypeAggregate}}
+            <div class="row">
+              <div class="col-md-5 property-name">{{t alerts.table.header.repeatTolerance}}:</div>
+              <div class="col-md-7">
+                {{#if controller.content.repeat_tolerance_enabled}}
+                  <span>
+                    {{controller.content.repeat_tolerance}}
+                  </span>
+                {{else}}
+                  <span>
+                  {{controller.globalAlertsRepeatTolerance}}
+                    {{t alerts.table.header.default}}
+                </span>
+                {{/if}}
+                {{#isAuthorized "SERVICE.TOGGLE_ALERTS"}}
+                  <a href="#" {{action editRepeatTolerance target="controller"}} class="edit-description-button">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </a>
+                {{/isAuthorized}}
+              </div>
+            </div>
+          {{/unless}}
+          {{#if controller.content.hasHelpUrl}}
+            <div class="row">
+              <div class="col-md-5 property-name">{{t alerts.table.header.helpUrl}}:</div>
+              <div class="col-md-7"><label for=""><a {{bindAttr href="controller.content.helpUrl"}} target="_blank" rel="noopener noreferrer">{{t common.link}}</a></label></div>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{! Right column end }}
+
+  {{! List of alerts }}
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="table-title">{{t alerts.definition.details.instances}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+    {{#if App.router.mainAlertInstancesController.isLoaded}}
+
+      <table class="table advanced-header-table table-hover alerts-table" id="alert-instances-table">
+        <thead>
+        {{#view view.sortView contentBinding="view.filteredContent"}}
+          {{view view.parentView.serviceSort class="first service-sorting"}}
+          {{view view.parentView.hostNameSort class="host-sorting"}}
+          {{view view.parentView.stateSort class="state-sorting"}}
+          <th>{{t alerts.definition.details.24-hour}}</th>
+          <th>{{t alerts.table.header.check.response}}</th>
+        {{/view}}
+        <tr class="filter-row">
+          <th class="first">{{view view.serviceFilterView}}</th>
+          <th>{{view view.hostNameFilterView}}</th>
+          <th>{{view view.stateFilterView }}</th>
+          <th>{{!}}</th>
+          <th>{{!}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#if view.pageContent}}
+          {{#each instance in view.pageContent}}
+            {{#view view.instanceTableRow}}
+              <td class="first">
+                {{#if instance.serviceDisplayName}}
+                  {{#if instance.service.isLoaded}}
+                    <a {{action goToService instance.service target="view"}}
+                      href="#">{{instance.serviceDisplayName}}</a>
+                  {{else}}
+                    {{instance.serviceDisplayName}}
+                  {{/if}}
+                {{/if}}
+              </td>
+              <td>
+                {{#if instance.hostName}}
+                  <a {{action goToHostAlerts instance.host target="view"}} href="#">
+                    {{instance.hostName}}
+                  </a>
+                {{/if}}
+              </td>
+              <td>
+                {{view App.AlertInstanceStateView instanceBinding="instance"}}
+              </td>
+              <td>{{view view.parentView.lastDayCount hostNameBinding="instance.hostName"}}</td>
+              <td>
+                <a href="#" class="alert-text" {{action openFullResponse instance target="view"}} {{bindAttr data-original-title="instance.text"}}>
+                  {{instance.text}}
+                </a>
+              </td>
+            {{/view}}
+          {{/each}}
+        {{else}}
+          <tr>
+            <td class="first" colspan="5">
+              {{t alerts.definition.details.noAlerts}}
+            </td>
+          </tr>
+        {{/if}}
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5">
+            {{view App.PaginationView}}
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+
+    {{else}}
+      {{view App.SpinnerView}}
+    {{/if}}
+      </div>
+    </div>
+
+  {{! List of alerts end }}
+
+  </div>
+{{else}}
+  {{view App.SpinnerView}}
+{{/if}}

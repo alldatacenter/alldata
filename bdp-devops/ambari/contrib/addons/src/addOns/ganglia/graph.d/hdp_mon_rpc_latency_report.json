@@ -1,0 +1,12 @@
+{
+   "report_name" : "rpc_latency_report",
+   "report_type" : "standard",
+   "title" : "Average RPC Latencies",
+   "vertical_label" : "Seconds",
+   "series" : [
+      { "metric": "rpc.rpc.RpcProcessingTime_avg_time", "color": "0000ff", "label": "Average Processing Time", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "rpc.rpc.RpcQueueTime_avg_time", "color": "ff0000", "label": "Average Queue Time", 
+        "line_width": "2", "type": "stack" }
+   ]
+}

@@ -1,0 +1,141 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.parentView.isLoaded}}
+  <form class="form-horizontal mbm" autocomplete="off">
+    <div class="override-controls">
+      <div class="alert alert-info">{{view.parentView.dialogMessage}}</div>
+      {{#if view.parentView.warningMessage}}
+        <div class="text-warning">
+          {{view.parentView.warningMessage}}
+        </div>
+      {{/if}}
+      <div class="row">
+        <div class="col-md-8">
+          <a href="#" {{action toggleShowSelectedDefs target="view" }}>{{view.defSelectMessage}}</a>
+          {{#if view.showOnlySelectedDefs}}
+            <i class='glyphicon glyphicon-ok-sign'></i>
+          {{/if}}
+        </div>
+        <div class="col-md-2" id="component-dropdown-div">
+          <!-- definition-components drop-down -->
+          <div class="btn-group pull-right">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                    href="#" {{bindAttr disabled="view.isDisabled"}}>
+              {{t common.component}}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu alert-definition-filter-list">
+              <!-- dropdown menu links -->
+              {{#each component in view.filterComponents}}
+                <li>
+                  <a href="#" {{action selectFilterComponent component target="view"}}>
+                    {{#if component.selected}}
+                      <i class='glyphicon glyphicon-ok-sign'></i>
+                    {{else}}
+                      <i class='glyphicon glyphicon-placeholder'></i>
+                    {{/if}}
+                    {{component.displayName}}
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2" id="filter-dropdown-div">
+          <!-- services drop-down -->
+          <div class="btn-group pull-right">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                    href="#" {{bindAttr disabled="view.isDisabled"}}>
+              {{t common.service}}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu alert-definition-filter-list">
+              <!-- dropdown menu links -->
+              {{#each service in view.filterServices}}
+                <li>
+                  <a href="#" {{action selectFilterService service target="view"}}>
+                    {{#if service.selected}}
+                      <i class='glyphicon glyphicon-ok-sign'></i>
+                    {{else}}
+                      <i class='glyphicon glyphicon-placeholder'></i>
+                    {{/if}}
+                    {{service.displayName}}
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th width="35%">{{t common.alertDefinition}}</th>
+          <th width="25%">{{t common.service}}</th>
+          <th width="30%">{{t common.component}}</th>
+          <th width="10%">
+            {{view App.CheckboxView checkedBinding="view.allDefsSelected" disabledBinding="view.isDisabled"}}
+          </th>
+        </tr>
+        </thead>
+      </table>
+      <div class="hosts-table-container">
+        <table class="table table-hover">
+          <tbody>
+            {{#if view.pageContent}}
+              {{#each entry in view.pageContent}}
+                <tr {{bindAttr class="entry.filtered::hidden entry.selected:active"}}>
+                  <td width="35%">
+                    {{entry.label}}
+                  </td>
+                  <td width="25%">
+                    {{entry.serviceNameDisplay}}
+                  </td>
+                  <td width="30%">
+                    {{entry.componentNameDisplay}}
+                  </td>
+                  <td width="10%">
+                    {{view App.CheckboxView checkedBinding="entry.selected"}}
+                  </td>
+                </tr>
+              {{/each}}
+            {{else}}
+              <tr>
+                <td width="30%"></td>
+                <td>{{t alerts.actions.manage_alert_groups_popup.addDefinition.noDefinitions}}</td>
+              </tr>
+            {{/if}}
+          </tbody>
+        </table>
+      </div>
+      {{#if view.isPaginate}}
+        <table class="table table-hover">
+          <tfoot>
+            <tr>
+              <td>
+                {{view App.PaginationView}}
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      {{/if}}
+    </div>
+  </form>
+
+{{/if}}

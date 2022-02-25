@@ -1,0 +1,69 @@
+
+{
+  "href" : "http://c6402.ambari.apache.org:8080/api/v1/services/AMBARI?fields=components/RootServiceComponents",
+  "RootService" : {
+    "service_name" : "AMBARI"
+  },
+  "components" : [
+    {
+      "href" : "http://c6402.ambari.apache.org:8080/api/v1/services/AMBARI/components/AMBARI_AGENT",
+      "RootServiceComponents" : {
+        "component_name" : "AMBARI_AGENT",
+        "component_version" : "NOT_APPLICABLE",
+        "service_name" : "AMBARI",
+        "properties" : { }
+      }
+    },
+    {
+      "href" : "http://c6402.ambari.apache.org:8080/api/v1/services/AMBARI/components/AMBARI_SERVER",
+      "RootServiceComponents" : {
+        "component_name" : "AMBARI_SERVER",
+        "component_version" : "1.7.0",
+        "server_clock" : 1415658874,
+        "service_name" : "AMBARI",
+        "properties" : {
+          "agent.task.timeout" : "600",
+          "agent.threadpool.size.max" : "25",
+          "ambari-server.user" : "root",
+          "bootstrap.dir" : "/var/run/ambari-server/bootstrap",
+          "bootstrap.script" : "/usr/lib/python2.6/site-packages/ambari_server/bootstrap.py",
+          "bootstrap.setup_agent.script" : "/usr/lib/python2.6/site-packages/ambari_server/setupAgent.py",
+          "client.threadpool.size.max" : "25",
+          "custom.action.definitions" : "/var/lib/ambari-server/resources/custom_action_definitions",
+          "java.home" : "/usr/jdk64/jdk1.7.0_67",
+          "jce.name" : "UnlimitedJCEPolicyJDK7.zip",
+          "jce_policy1.6.url" : "http://public-repo-1.hortonworks.com/ARTIFACTS/jce_policy-6.zip",
+          "jce_policy1.7.url" : "http://public-repo-1.hortonworks.com/ARTIFACTS/UnlimitedJCEPolicyJDK7.zip",
+          "jdk.name" : "jdk-7u67-linux-x64.tar.gz",
+          "jdk1.6.url" : "http://public-repo-1.hortonworks.com/ARTIFACTS/jdk-6u31-linux-x64.bin",
+          "jdk1.7.url" : "http://public-repo-1.hortonworks.com/ARTIFACTS/jdk-7u67-linux-x64.tar.gz",
+          "jdk_location" : "http://c6402.ambari.apache.org:8080/resources",
+          "metadata.path" : "/var/lib/ambari-server/resources/stacks",
+          "recommendations.dir" : "/var/run/ambari-server/stack-recommendations",
+          "resources.dir" : "/var/lib/ambari-server/resources",
+          "security.server.keys_dir" : "/var/lib/ambari-server/keys",
+          "server.connection.max.idle.millis" : "900000",
+          "server.execution.scheduler.isClustered" : "false",
+          "server.execution.scheduler.maxDbConnections" : "5",
+          "server.execution.scheduler.maxThreads" : "5",
+          "server.execution.scheduler.misfire.toleration.minutes" : "480",
+          "server.fqdn.service.url" : "http://169.254.169.254/latest/meta-data/public-hostname",
+          "server.http.session.inactive_timeout" : "1800",
+          "server.jdbc.database" : "postgres",
+          "server.jdbc.database_name" : "ambari",
+          "server.jdbc.postgres.schema" : "ambari",
+          "server.jdbc.user.name" : "ambari",
+          "server.jdbc.user.passwd" : "/etc/ambari-server/conf/password.dat",
+          "server.os_type" : "redhat6",
+          "server.persistence.type" : "local",
+          "server.stages.parallel" : "true",
+          "server.tmp.dir" : "/var/lib/ambari-server/tmp",
+          "server.version.file" : "/var/lib/ambari-server/resources/version",
+          "stackadvisor.script" : "/var/lib/ambari-server/resources/scripts/stack_advisor.py",
+          "ulimit.open.files" : "10000",
+          "webapp.dir" : "/usr/lib/ambari-server/web"
+        }
+      }
+    }
+  ]
+}

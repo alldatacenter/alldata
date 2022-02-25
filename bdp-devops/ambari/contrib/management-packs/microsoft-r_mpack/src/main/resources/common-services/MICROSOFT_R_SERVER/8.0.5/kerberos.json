@@ -1,0 +1,17 @@
+{
+  "services": [
+    {
+      "name": "MICROSOFT_R_SERVER",
+      "identities": [
+        {
+          "name": "microsoft_r_server_hdfs",
+          "reference": "/HDFS/NAMENODE/hdfs"
+        },
+        {
+          "name": "microsoft_r_server_smokeuser",
+          "reference": "/smokeuser"
+        }
+      ]
+    }
+  ]
+}

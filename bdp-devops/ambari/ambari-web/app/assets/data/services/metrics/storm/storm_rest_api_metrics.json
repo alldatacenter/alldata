@@ -1,0 +1,19 @@
+{
+  "href" : "http://ambari/clusters/c1/services/STORM/component/STORM_REST_API?fields=metrics",
+  "HostRoles" : {
+    "cluster_name" : "c1",
+    "component_name" : "STORM_REST_API",
+    "service_name" : "STORM"
+  },
+  "host" : {
+    "href" : "http://ambari/clusters/c1/hosts/hostname"
+  },
+  "metrics" : {
+    "topologies": 1,
+    "executors.total": 5,
+    "slots.total": 4,
+    "slots.used": 1,
+    "tasks.total": 2,
+    "slots.free": 3
+  }
+}

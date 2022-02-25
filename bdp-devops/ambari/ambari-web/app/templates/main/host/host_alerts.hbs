@@ -1,0 +1,89 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="host-alerts">
+  <div class="row">
+    <div class="col-md-12">
+    <h2 class="table-title">{{t hosts.host.alerts.label}}</h2>
+    </div>
+    <div class="col-md-12">
+  {{#if App.router.mainAlertInstancesController.isLoaded}}
+
+    <table class="table advanced-header-table table-hover alerts-table" id="host-alerts-table">
+      <thead>
+      {{#view view.sortView contentBinding="view.filteredContent"}}
+        {{view view.parentView.serviceSort class="first service-sorting"}}
+        {{view view.parentView.nameSort class="name-sorting"}}
+        {{view view.parentView.statusSort class="status-sorting"}}
+        {{view view.parentView.textSort class="text-sorting"}}
+      {{/view}}
+      <tr class="filter-row">
+        <th class="first">{{view view.serviceFilterView class="service-filter"}}</th>
+        <th>{{view view.nameFilterView class="name-filter"}}</th>
+        <th>{{view view.stateFilterView class="status-filter"}}</th>
+        <th>{{view view.textView class="text-filter"}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#if view.pageContent}}
+        {{#each instance in view.pageContent}}
+          <tr>
+            <td class="first">
+              {{#if instance.isAmbariServiceName}}
+                {{instance.serviceDisplayName}}
+              {{else}}
+                <a href="#" {{action routeToService instance.service}}>{{instance.serviceDisplayName}}</a>
+              {{/if}}
+            </td>
+            <td>
+              <a href="#" {{action routeToAlertDefinition instance.definitionId target="controller"}}>{{instance.label}}</a>
+            </td>
+            <td>
+              {{template "templates/main/alerts/alert_instance/status"}}
+            </td>
+            <td>
+              <span class="alert-text" {{bindAttr data-original-title="instance.escapeSpecialCharactersFromTooltip"}}>
+                {{instance.text}}
+              </span>
+            </td>
+          </tr>
+        {{/each}}
+      {{else}}
+        <tr>
+          <td class="first">
+            {{t alerts.table.noAlerts}}
+          </td>
+          <td colspan="3"></td>
+        </tr>
+      {{/if}}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            {{view App.PaginationView}}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+  {{else}}
+    {{view App.SpinnerView}}
+  {{/if}}
+  </div>
+</div>
+</div>

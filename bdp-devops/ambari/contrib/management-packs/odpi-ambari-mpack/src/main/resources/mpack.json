@@ -1,0 +1,19 @@
+{
+  "type" : "full-release",
+  "name" : "odpi-ambari-mpack",
+  "version": "${project.version}",
+  "hash": "${buildNumber}",
+  "branch": "${scmBranch}",
+  "description" : "ODPi Ambari Management Pack",
+  "prerequisites": {
+    "min-ambari-version" : "${minAmbariVersion}",
+    "max-ambari-version" : "${maxAmbariVersion}"
+  },
+  "artifacts": [
+    {
+      "name" : "odpi-stack-definitions",
+      "type" : "stack-definitions",
+      "source_dir": "stacks"
+    }
+  ]
+}

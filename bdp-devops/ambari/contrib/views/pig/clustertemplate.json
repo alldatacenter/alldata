@@ -1,0 +1,13 @@
+{
+  "blueprint" : "pig-view",
+  "host_groups" :[
+    {
+      "name" : "single_host",
+      "hosts" : [
+        {
+          "fqdn" : "c6403.ambari.apache.org"
+        }
+      ]
+    }
+  ]
+}

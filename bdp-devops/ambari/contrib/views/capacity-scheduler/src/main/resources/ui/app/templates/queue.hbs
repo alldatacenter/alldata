@@ -1,0 +1,590 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="well-queue">
+  <div class="row queue-heading-row">
+    <div class="col-md-12">
+      <h3>
+        {{#if content.isNew}}
+          <div class="input-group col-md-8">
+            {{focus-input value=content.name length="250" class="form-control" classBinding="content.isValid::input-error" action="createQ" revert="delQ" placeholder="Enter Queue Name"}}
+            <span class="input-group-btn">
+              <button {{action "delQ" content target="controllers.queues"}} {{bind-attr class=":btn :btn-danger"}} type="button">Cancel</button>
+              <button {{action "createQ" content target="controllers.queues"}} {{bind-attr class=":btn :btn-success content.isValid::disabled"}} type="button">Create</button>
+            </span>
+          </div>
+        {{else}}
+          {{#unless isRenaming}}
+              {{content.name}}
+              {{#unless isRoot}}
+                {{#unless isNotOperator}}
+                  <small>
+                    <a href="#" {{action 'renameQ' 'ask'}}>
+                      <i class="fa fa-edit"></i>
+                    </a>
+                  </small>
+                  <small {{bind-attr class="isDefaultQ:del-default-q"}}>
+                    {{confirm-delete action="delQ" param=content}}
+                  </small>
+                {{/unless}}
+              {{/unless}}
+            {{else}}
+            <div class="input-group col-md-8">
+              {{focus-input value=content.name length="250" class="form-control" action="renameQ" revert="renameQ" classBinding="content.isValid::input-error" placeholder="Enter Queue Name"}}
+              <span class="input-group-btn">
+                <button {{action 'renameQ' 'cancel'}} {{bind-attr class=":btn :btn-danger"}} type="button">Cancel</button>
+                <button {{action 'renameQ' 'rename'}} {{bind-attr class=":btn :btn-success content.isValid::disabled"}} type="button">Rename</button>
+              </span>
+            </div>
+          {{/unless}}
+        {{/if}}
+      </h3>
+      {{#each pathErrors}}
+        <p class="help-block red">{{this}}</p>
+      {{/each}}
+      <h4><small>{{content.path}}</small></h4>
+    </div>
+  </div>
+  <div class="row queue-capacity-row">
+    <div class="col-md-12">
+      {{total-capacity
+        currentQueue=content
+        allQueues=allQueues
+        allQueuesArranged=controllers.queues.arrangedContent
+        isOperator=isOperator
+        rollbackProp="rollbackProp"
+      }}
+    </div>
+  </div>
+  <div class="row queue-acl-row">
+    <div class="col-md-12 col-lg-6 queue-acl">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            Access Control and Status
+          </div>
+        </div>
+        {{#unless isRangerEnabledForYarn}}
+        <div class="panel-body">
+          <form class="form-horizontal form-acl" role="form">
+          <div class="form-group row">
+              {{tooltip-label
+                class="col-lg-4 col-xs-4 control-label"
+                label='State'
+                message= 'Whether this queue is running or disabled. <br/> Running: Can accept applications <br/> Stopped: Cannot accept applications'
+              }}
+              <div class="col-lg-6 col-md-6 col-sm-8 col-xs-7 control-value">
+                <div class="btn-group btn-group-xs" data-toggle="buttons" >
+                  <label  {{action 'setState' 'running'}} {{bind-attr class=":btn isRunning:btn-success:btn-default isRunning:active isNotOperator:disabled" }}>
+                    <input type="radio" name="options"> Running
+                  </label>
+                  <label  {{action 'setState' 'stopped'}} {{bind-attr class=":btn isRunning:btn-default:btn-danger isRunning::active isNotOperator:disabled" }}>
+                    <input type="radio" name="options"> Stopped
+                  </label>
+               </div>
+                {{#if queueDirtyFilelds.state}}
+                <div class="btn-group btn-group-xs" >
+                    <a {{action 'rollbackProp' 'state' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                </div>
+                {{/if}}
+              </div>
+          </div>
+
+          <div class="hz-divider"></div>
+
+          {{#if isOperator}}
+
+            <div class="form-group row">
+              {{tooltip-label
+                class="col-lg-4 col-xs-4 control-label"
+                label='Administer Queue'
+                message='The access control list of users and groups that have authorization to perform administrative functions on this queue.'
+              }}
+              <div class="col-lg-6 col-md-6 col-sm-8 col-xs-7 control-value">
+                <div class="btn-group btn-group-xs" data-toggle="buttons">
+                  {{radio-button label="Anyone" selectionBinding="acl_administer_queue" value="*"}}
+                  {{radio-button label="Custom" selectionBinding="acl_administer_queue" value="custom"}}
+                </div>
+                {{#if queueDirtyFilelds.acl_administer_queue}}
+                <div class="btn-group btn-group-xs" >
+                    <a {{action 'rollbackProp' 'acl_administer_queue' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                </div>
+                {{/if}}
+              </div>
+            </div>
+            {{#unless aaq_anyone}}
+              {{user-group-input ug=content.acl_administer_queue disabled=aaq_anyone}}
+            {{/unless}}
+
+            <div class="form-group row">
+              {{tooltip-label
+                tagName='small'
+                class="col-lg-4 col-xs-4 control-label"
+                label='Effective Administraters'
+                message='The effective permissions to perform administrative functions on this queue.'
+              }}
+              <div class="col-lg-6 col-md-6 col-sm-8 col-xs-7 control-value">
+                <label>{{escapeACL aaq_effective_permission}}</label>
+              </div>
+           </div>
+
+           <div class="hz-divider"></div>
+
+           <div class="form-group row">
+              {{tooltip-label
+                class="col-lg-4 col-xs-4 control-label"
+                label='Submit Applications'
+                message='The access control list of users and groups that have authorization to submit applications to this queue.'
+              }}
+              <div class="col-lg-6 col-md-6 col-sm-8 col-xs-7 control-value">
+                <div class="btn-group btn-group-xs" data-toggle="buttons">
+                  {{radio-button label="Anyone" selectionBinding="acl_submit_applications" value="*"}}
+                  {{radio-button label="Custom" selectionBinding="acl_submit_applications" value="custom"}}
+                </div>
+                {{#if queueDirtyFilelds.acl_submit_applications}}
+                <div class="btn-group btn-group-xs" >
+                    <a {{action 'rollbackProp' 'acl_submit_applications' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                </div>
+                {{/if}}
+              </div>
+            </div>
+            {{#unless asa_anyone}}
+              {{user-group-input ug=content.acl_submit_applications disabled=asa_anyone}}
+            {{/unless}}
+
+            <div class="form-group row">
+               {{tooltip-label
+                 tagName='small'
+                 class="col-lg-4 col-xs-4 control-label"
+                 label='Effective Users'
+                 message='The effective permissions to submit applications to this queue.'
+               }}
+               <div class="col-lg-6 col-md-6 col-sm-8 col-xs-7 control-value">
+                 <label>{{escapeACL asa_effective_permission}}</label>
+               </div>
+            </div>
+
+          {{else}}
+            <div class="form-group">
+              {{tooltip-label
+                class="col-lg-4 col-xs-4 control-label"
+                label='Administer Queue'
+                message='The access control list of users and groups that have authorization to perform administrative functions on this queue.'
+              }}
+              <div class="col-lg-8 col-xs-8 control-value">
+               <p class="form-control-static">
+                {{escapeACL content.acl_administer_queue}}
+               </p>
+              </div>
+            </div>
+
+            <div class="form-group row">
+               {{tooltip-label
+                 tagName='small'
+                 class="col-lg-4 col-xs-4 control-label"
+                 label='Effective Administraters'
+                 message='The effective permissions to perform administrative functions on this queue.'
+               }}
+               <div class="col-lg-8 col-xs-8 control-value">
+                 <p class="form-control-static">
+                   {{escapeACL aaq_effective_permission}}
+                 </p>
+               </div>
+            </div>
+
+            <div class="hz-divider"></div>
+
+            <div class="form-group">
+              {{tooltip-label
+                class="col-lg-4 col-xs-4 control-label"
+                label='Submit Applications'
+                message='The access control list of users and groups that have authorization to submit applications to this queue.'
+              }}
+              <div class="col-lg-8 col-xs-8 control-value">
+               <p class="form-control-static">
+                {{escapeACL content.acl_submit_applications}}
+               </p>
+              </div>
+            </div>
+
+            <div class="form-group row">
+               {{tooltip-label
+                 tagName='small'
+                 class="col-lg-4 col-xs-4 control-label"
+                 label='Effective Users'
+                 message='The effective permissions to submit applications to this queue.'
+               }}
+               <div class="col-lg-8 col-xs-8 control-valu">
+                 <p class="form-control-static">
+                   {{escapeACL asa_effective_permission}}
+                 </p>
+               </div>
+            </div>
+          {{/if}}
+          </form>
+        </div>
+        {{else}}
+          <div class="panel-body">
+              Permissions are managed by Ranger
+          </div>
+        {{/unless}}
+      </div>
+
+    </div>
+
+    <div class="col-md-12 col-lg-6 queue-resources">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            Resources
+          </div>
+        </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              {{tooltip-label
+                class="col-xs-6 control-label"
+                label='User Limit Factor'
+                message='The upper limit multiple of the queue’s configured minimum capacity that one user’s applications can utilize.'
+              }}
+              {{#if isOperator}}
+                <div class="col-xs-6 control-value">
+                  {{decimal-input value=content.user_limit_factor maxlength=10 class="input-sm input-int" defaultVal=1 placeholder=1}}
+                  {{#if queueDirtyFilelds.user_limit_factor}}
+                  <div class="btn-group btn-group-xs" >
+                    <a {{action 'rollbackProp' 'user_limit_factor' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                  </div>
+                  {{/if}}
+                </div>
+              {{else}}
+                <div class="col-xs-6">
+                  <p class="form-control-static">{{content.user_limit_factor}}</p>
+                </div>
+              {{/if}}
+            </div>
+            <div class="form-group">
+              {{tooltip-label
+                class="col-xs-6 control-label"
+                label='Minimum User Limit'
+                message='The minimum guaranteed percentage of queue capacity allocated for a user\'s applications.'
+              }}
+              {{#if isOperator}}
+                <div class="col-xs-6 control-value input-percent-wrap">
+                  <div>
+                    <div class="input-group input-percent">
+                      {{int-input value=content.minimum_user_limit_percent class="input-sm" maxVal=100 placeholder=100}}
+                      <span class="input-group-addon">%</span>
+                    </div>
+                  </div>
+                  {{#if queueDirtyFilelds.minimum_user_limit_percent}}
+                    <div class="btn-group btn-group-xs" >
+                        <a {{action 'rollbackProp' 'minimum_user_limit_percent' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                    </div>
+                  {{/if}}
+                </div>
+              {{else}}
+                <div class="col-xs-6">
+                  {{#if content.minimum_user_limit_percent}}
+                    <p class="form-control-static">{{content.minimum_user_limit_percent}} %</p>
+                  {{else}}
+                    <p class="form-control-static">100</p>
+                  {{/if}}
+                </div>
+              {{/if}}
+            </div>
+            <div class="form-group">
+              {{tooltip-label
+                class="col-xs-6 control-label"
+                label='Maximum Applications'
+                message='The maximum number of applications that can be running or pending in this specific queue at any point of time.'
+              }}
+              {{#if isOperator}}
+                <div class="col-xs-6 control-value">
+                  {{int-input placeholder="Inherited" maxlength=15 value=content.maximum_applications class="input-sm input-int"}}
+                  {{#if queueDirtyFilelds.maximum_applications}}
+                    <div class="btn-group btn-group-xs" >
+                      <a {{action 'rollbackProp' 'maximum_applications' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                    </div>
+                  {{/if}}
+                </div>
+              {{else}}
+                <div class="col-xs-6">
+                {{#if content.maximum_applications}}
+                  <p class="form-control-static">{{content.maximum_applications}}</p>
+                {{else}}
+                  <p class="form-control-static">Inherited</p>
+                {{/if}}
+              </div>
+              {{/if}}
+            </div>
+            <div class="form-group">
+                {{tooltip-label
+                  class="col-xs-6 control-label"
+                  label='Maximum AM Resource'
+                  message='The maximum percentage of total capacity of this specific queue that can be utilized by application masters at any point in time.'
+                }}
+                {{#if isOperator}}
+                <div class="col-xs-6 control-value input-percent-wrap">
+                  <div>
+                    <div class="input-group input-percent">
+                      {{int-input placeholder="Inherited" value=content.maximum_am_resource_percent class="input-sm" maxVal=100}}
+                      <span class="input-group-addon">%</span>
+                    </div>
+                  </div>
+                  {{#if queueDirtyFilelds.maximum_am_resource_percent}}
+                    <div class="btn-group btn-group-xs" >
+                      <a {{action 'rollbackProp' 'maximum_am_resource_percent' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                    </div>
+                  {{/if}}
+                </div>
+                {{else}}
+                <div class="col-xs-6">
+                  {{#if content.maximum_am_resource_percent}}
+                    <p class="form-control-static">{{content.maximum_am_resource_percent}} %</p>
+                  {{else}}
+                    <p class="form-control-static">Inherited</p>
+                  {{/if}}
+                </div>
+                {{/if}}
+            </div>
+            {{#if isPriorityUtilizationSupported}}
+              <div class="form-group">
+                 {{tooltip-label
+                  class="col-xs-6 control-label"
+                  label='Priority'
+                  message='The priority of queue, higher means more important. It should be a valid integer value, 0 is default value.'
+                }}
+                {{#if isOperator}}
+                  <div class="col-xs-6 control-value">
+                    {{int-input value=content.priority maxlength=10 class="input-sm input-int"}}
+                    {{#if queueDirtyFilelds.priority}}
+                    <div class="btn-group btn-group-xs" >
+                      <a {{action 'rollbackProp' 'priority' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                    </div>
+                    {{/if}}
+                  </div>
+                {{else}}
+                  <div class="col-xs-6">
+                    <p class="form-control-static">{{content.priority}}</p>
+                  </div>
+                {{/if}}
+              </div>
+            {{/if}}
+            {{#if content.isLeafQ}}
+              <div class="form-group">
+                {{tooltip-label
+                  class="col-xs-6 control-label"
+                  label='Ordering Policy'
+                  message='The ordering policy to use for applications scheduled to this queue. <br/> FIFO: Applications get available capacity based on order they are submitted <br/> Fair: Applications will get fair share of capacity, regardless of order submitted'}}
+                {{#if isOperator}}
+                  <div class="col-xs-6 control-value input-percent-wrap">
+                    <div>
+                      {{view Ember.Select
+                        class="form-control input-sm"
+                        contentBinding="orderingPolicyOptions"
+                        optionValuePath="content.value"
+                        optionLabelPath="content.label"
+                        value=currentLeafQueueOP
+                      }}
+                    </div>
+                    {{#if queueDirtyFilelds.ordering_policy}}
+                    <div class="btn-group btn-group-xs" >
+                      <a {{action 'rollbackProp' 'ordering_policy' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                    </div>
+                    {{/if}}
+                  </div>
+                {{else}}
+                  <div class="col-xs-6">
+                    <p class="form-control-static">{{content.ordering_policy}}</p>
+                  </div>
+                {{/if}}
+              </div>
+            {{/if}}
+            {{#if content.isLeafQ}}
+                <div class="form-group">
+                    {{tooltip-label
+                            class="col-xs-6 control-label"
+                            label='Maximum Application Lifetime '
+                            message='Maximum lifetime of an application which is submitted to a queue in seconds.Any value less than or equal to zero will be considered as disabled.<br/> If positive value is configured then any application submitted to this queue will be killed after exceeds the configured lifetime'}}
+                    {{#if isOperator}}
+                        <div class="col-xs-6 control-value input-percent-wrap">
+                            <div>
+                                <div class="input-group input-percent">
+                                    {{int-input value=content.maximum_application_lifetime class="input-sm input-int"
+                                                placeholder="-1"}}
+                                    <span class="input-group-addon">sec</span>
+                                </div>
+                            </div>
+                            {{#if queueDirtyFilelds.maximum_application_lifetime}}
+                                <div class="btn-group btn-group-xs">
+                                    <a {{action 'rollbackProp' 'maximum_application_lifetime' content}} href="#"
+                                                                                                        class="btn btn-default btn-warning"><i
+                                            class="fa fa-undo"></i></a>
+                                </div>
+                            {{/if}}
+                        </div>
+                    {{else}}
+                        <div class="col-xs-6">
+                            {{#if content.maximum_application_lifetime}}
+                                <p class="form-control-static">{{content.maximum_application_lifetime}} sec</p>
+                            {{else}}
+                                <p class="form-control-static">-1</p>
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
+              {{#if content.isLeafQ}}
+                  <div class="form-group">
+                      {{tooltip-label
+                              class="col-xs-6 control-label"
+                              label='Default Application Lifetime '
+                              message='Default lifetime of an application which is submitted to a queue in seconds. Any value less than or equal to zero will be considered as disabled.<br/>  If the user has not submitted application with lifetime value then this value will be taken.'}}
+                      {{#if isOperator}}
+                          <div class="col-xs-6 control-value input-percent-wrap">
+                              <div>
+                                  <div class="input-group input-percent">
+                                      {{int-input value=content.default_application_lifetime class="input-sm input-int"
+                                                  placeholder="-1"}}
+                                      <span class="input-group-addon">sec</span>
+                                  </div>
+                              </div>
+                              {{#if queueDirtyFilelds.default_application_lifetime}}
+                                  <div class="btn-group btn-group-xs">
+                                      <a {{action 'rollbackProp' 'default_application_lifetime' content}} href="#"
+                                                                                                          class="btn btn-default btn-warning"><i
+                                              class="fa fa-undo"></i></a>
+                                  </div>
+                              {{/if}}
+                          </div>
+                      {{else}}
+                          <div class="col-xs-6">
+                              {{#if content.default_application_lifetime}}
+                                  <p class="form-control-static">{{content.default_application_lifetime}} sec</p>
+                              {{else}}
+                                  <p class="form-control-static">-1</p>
+                              {{/if}}
+                          </div>
+                      {{/if}}
+                  </div>
+              {{/if}}
+            {{#if isFairOP}}
+              <div class="form-group">
+                {{tooltip-label
+                  class="col-xs-6 control-label"
+                  label='Enable Size Based Weight Ordering'
+                  message='If true, then Fair Ordering Policy will use resource needs of an application as way to prioritize capacity allocation - larger applications will get higher priority'
+                }}
+                  {{#if isOperator}}
+                  <div class="col-xs-6 control-value input-percent-wrap">
+                    <div>
+                      <div class="btn-group btn-group-sm pull-right">
+                        <a href="#" {{action 'toggleProperty' 'enable_size_based_weight' this}} class="btn btn-default labels-enabler">
+                          <i {{bind-attr class=":fa enable_size_based_weight:fa-check-square-o:fa-square-o"}}></i>
+                          {{#if enable_size_based_weight}}
+                            Enabled
+                          {{else}}
+                            Disabled
+                          {{/if}}
+                        </a>
+                      </div>
+                    </div>
+                    {{#if queueDirtyFilelds.enable_size_based_weight}}
+                      <div class="btn-group btn-group-xs" >
+                        <a {{action 'rollbackProp' 'enable_size_based_weight' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                      </div>
+                    {{/if}}
+                  </div>
+                  {{else}}
+                  <div class="col-xs-6">
+                    <p class="form-control-static">
+                    {{#if enable_size_based_weight}}
+                      Enabled
+                    {{else}}
+                      Disabled
+                    {{/if}}
+                    </p>
+                  </div>
+                  {{/if}}
+              </div>
+            {{/if}}
+              <div class="form-group">
+                  {{tooltip-label
+                          class="col-xs-6 control-label"
+                          label='Maximum Allocation Vcores'
+                          message='The per queue maximum limit of virtual cores to allocate to each container request at the Resource Manager.'
+                  }}
+                  {{#if isOperator}}
+                      <div class="col-xs-6 control-value">
+                          {{int-input value=content.maximum_allocation_vcores class="input-sm input-int" placeholder="Inherited"}}
+                          {{#if queueDirtyFilelds.maximum_allocation_vcores}}
+                              <div class="btn-group btn-group-xs" >
+                                  <a {{action 'rollbackProp' 'maximum_allocation_vcores' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                              </div>
+                          {{/if}}
+                      </div>
+                  {{else}}
+                      <div class="col-xs-6">
+                          {{#if content.maximum_allocation_vcores}}
+                              <p class="form-control-static">{{content.maximum_allocation_vcores}}</p>
+                          {{else}}
+                              <p class="form-control-static">Inherited</p>
+                          {{/if}}
+                      </div>
+                  {{/if}}
+              </div>
+              <div class="form-group">
+                  {{tooltip-label
+                          class="col-xs-6 control-label"
+                          label='Maximum Allocation Mb'
+                          message='The per queue maximum limit of memory to allocate to each container request at the Resource Manager.'
+                  }}
+                  {{#if isOperator}}
+                      <div class="col-xs-6 control-value input-percent-wrap">
+                          <div>
+                              <div class="input-group input-percent">
+                                  {{int-input value=content.maximum_allocation_mb class="input-sm input-int"
+                                              placeholder="Inherited"}}
+                                  <span class="input-group-addon">MB</span>
+                              </div>
+                          </div>
+                          {{#if queueDirtyFilelds.maximum_allocation_mb}}
+                              <div class="btn-group btn-group-xs">
+                                  <a {{action 'rollbackProp' 'maximum_allocation_mb' content}} href="#"
+                                                                                               class="btn btn-default btn-warning"><i
+                                          class="fa fa-undo"></i></a>
+                              </div>
+                          {{/if}}
+                      </div>
+                  {{else}}
+                      <div class="col-xs-6">
+                          {{#if content.maximum_allocation_mb}}
+                              <p class="form-control-static">{{content.maximum_allocation_mb}} MB</p>
+                          {{else}}
+                              <p class="form-control-static">Inherited</p>
+                          {{/if}}
+                      </div>
+                  {{/if}}
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

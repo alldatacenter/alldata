@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <target>2.2.*.*</target>
+  <target-stack>HDP-2.2.3</target-stack>
+  <type>NON_ROLLING</type>
+  <prerequisite-checks>
+    <check>org.apache.ambari.server.checks.HiveMultipleMetastoreCheck</check>
+    <check>org.apache.ambari.server.checks.MapReduce2JobHistoryStatePreservingCheck</check>
+    <check>org.apache.ambari.server.checks.SecondaryNamenodeDeletedCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesMapReduceDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesNamenodeHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesNamenodeTruncateCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesTezDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesYarnWorkPreservingCheck</check>
+    <check>org.apache.ambari.server.checks.YarnRMHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.YarnTimelineServerStatePreservingCheck</check>
+  </prerequisite-checks>
+  <order>
+    <group xsi:type="cluster" name="PRE_CLUSTER" title="Prepare Upgrade">
+      <skippable>true</skippable>
+      <direction>UPGRADE</direction>
+      <execute-stage service="YARN" component="RESOURCEMANAGER" title="Stop YARN Queues">
+        <task xsi:type="manual">
+          <message>Before continuing, please stop all YARN queues.</message>
+        </task>
+      </execute-stage>
+    </group>
+
+    <group xsi:type="stop" name="Stop High-Level Daemons" title="Stop Daemons for High-Level Services">
+      <direction>UPGRADE</direction>
+      <skippable>true</skippable>
+      <service-check>false</service-check>
+      <parallel-scheduler></parallel-scheduler>
+
+      <service name="YARN">
+        <component>NODEMANAGER</component>
+        <component>RESOURCEMANAGER</component>
+        <component>APP_TIMELINE_SERVER</component>
+      </service>
+
+      <service name="MAPREDUCE2">
+        <component>HISTORYSERVER</component>
+      </service>
+    </group>
+
+    <group xsi:type="cluster" name="Backups" title="Take Backups">
+      <direction>UPGRADE</direction>
+      <skippable>true</skippable>
+
+      <execute-stage service="HDFS" component="NAMENODE" title="Snapshot HDFS">
+        <task xsi:type="execute" hosts="master">
+          <script>scripts/namenode.py</script>
+          <function>prepare_non_rolling_upgrade</function>
+        </task>
+      </execute-stage>
+    </group>
+
+    <group xsi:type="stop" name="Stop Low-Level Daemons" title="Stop Daemons for Low-Level Services">
+      <direction>UPGRADE</direction>
+      <skippable>true</skippable>
+      <service-check>false</service-check>
+      <parallel-scheduler></parallel-scheduler>
+
+      <service name="HDFS">
+        <component>DATANODE</component>
+        <component>NAMENODE</component>
+        <component>SECONDARY_NAMENODE</component>
+        <component>ZKFC</component>
+        <component>JOURNALNODE</component>
+      </service>
+
+      <service name="ZOOKEEPER">
+        <component>ZOOKEEPER_SERVER</component>
+      </service>
+    </group>
+
+    <group xsi:type="cluster" name="Restore Backups" title="Restore Backups">
+      <direction>DOWNGRADE</direction>
+      <skippable>true</skippable>
+
+      <execute-stage service="HDFS" component="NAMENODE" title="Snapshot HDFS">
+        <task xsi:type="execute" hosts="master">
+          <script>scripts/namenode.py</script>
+          <function>restore_snapshot</function>
+        </task>
+      </execute-stage>
+    </group>
+
+    <!-- After processing this group, will change the effective Stack of the UpgradeContext object. -->
+    <group xsi:type="update-stack" name="UPDATE_DESIRED_REPOSITORY_ID" title="Update Desired Stack Id">
+      <execute-stage title="Update Desired Stack Id" service="" component="">
+        <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.UpdateDesiredRepositoryAction">
+        </task>
+      </execute-stage>
+    </group>
+
+    <group xsi:type="cluster" name="ALL_HOST_OPS" title="Set Version On All Hosts">
+      <skippable>true</skippable>
+      <execute-stage title="Update stack to {{version}}">
+        <task xsi:type="execute">
+          <script>scripts/ru_set_all.py</script>
+          <function>actionexecute</function>
+        </task>
+      </execute-stage>
+    </group>
+
+    <!-- Now, restart all of the services. -->
+
+    <group xsi:type="restart" name="ZOOKEEPER" title="Zookeeper">
+      <service name="ZOOKEEPER">
+        <service-check>false</service-check>
+        <component>ZOOKEEPER_SERVER</component>
+        <component>ZOOKEEPER_CLIENT</component>
+      </service>
+    </group>
+
+    <group xsi:type="restart" name="HDFS" title="HDFS">
+      <service-check>false</service-check>
+      <skippable>true</skippable>
+      <parallel-scheduler>
+        <max-degree-of-parallelism>2</max-degree-of-parallelism>
+      </parallel-scheduler>
+      <service name="HDFS">
+        <component>JOURNALNODE</component>
+        <component>ZKFC</component>
+        <component>NAMENODE</component>
+        <component>SECONDARY_NAMENODE</component>
+        <component>DATANODE</component>
+        <component>HDFS_CLIENT</component>
+      </service>
+    </group>
+
+    <group xsi:type="restart" name="MR and YARN" title="MR and YARN">
+      <service-check>false</service-check>
+      <skippable>true</skippable>
+      <parallel-scheduler></parallel-scheduler>
+      <service name="MAPREDUCE2">
+        <component>HISTORYSERVER</component>
+        <component>MAPREDUCE2_CLIENT</component>
+      </service>
+      <service name="YARN">
+        <component>APP_TIMELINE_SERVER</component>
+        <component>RESOURCEMANAGER</component>
+        <component>NODEMANAGER</component>
+        <component>YARN_CLIENT</component>
+      </service>
+    </group>
+
+    <group xsi:type="cluster" name="POST_CLUSTER" title="Finalize {{direction.text.proper}}">
+      <skippable>true</skippable>
+
+      <execute-stage title="Confirm Finalize">
+        <direction>UPGRADE</direction>
+        <task xsi:type="manual">
+          <message>Please confirm you are ready to finalize.</message>
+        </task>
+      </execute-stage>
+
+      <execute-stage service="HDFS" component="NAMENODE" title="Execute HDFS Finalize">
+        <task xsi:type="execute" hosts="master">
+          <script>scripts/namenode.py</script>
+          <function>finalize_non_rolling_upgrade</function>
+        </task>
+      </execute-stage>
+
+      <execute-stage title="Save Cluster State" service="" component="">
+        <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.FinalizeUpgradeAction">
+        </task>
+      </execute-stage>
+    </group>
+  </order>
+</upgrade>

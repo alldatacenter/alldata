@@ -1,0 +1,122 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.apache.ambari.contrib.views</groupId>
+  <artifactId>ambari-views-package</artifactId>
+  <name>Ambari Views Package</name>
+  <parent>
+    <groupId>org.apache.ambari.contrib.views</groupId>
+    <artifactId>ambari-contrib-views</artifactId>
+    <version>${revision}</version>
+  </parent>
+
+  <description>
+    This package is a meta package to create installable RPM and DEB file
+    which includes all the views jars.
+  </description>
+
+  <properties>
+    <deb.dependency.list>ambari-server (&gt;= ${ambari.version})</deb.dependency.list>
+    <views.directory>/var/lib/ambari-server/resources/views</views.directory>
+    <deb.architecture>amd64</deb.architecture>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>rpm-maven-plugin</artifactId>
+        <version>2.0.1</version>
+        <executions>
+          <execution>
+            <phase>none</phase>
+            <goals>
+              <goal>rpm</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <copyright>2012, Apache Software Foundation</copyright>
+          <group>Development</group>
+          <description>Maven Recipe: RPM Package.</description>
+          <provides>
+            <provide>ambari-views-package</provide>
+          </provides>
+          <prereqs>
+            <prereq>ambari-server &gt;= ${ambari.version}</prereq>
+          </prereqs>
+
+          <mappings>
+            <mapping>
+              <directory>${views.directory}</directory>
+              <filemode>777</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <sources>
+                <source>
+                  <location>${views.jars.dir.rel}</location>
+                </source>
+              </sources>
+            </mapping>
+          </mappings>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.vafer</groupId>
+        <artifactId>jdeb</artifactId>
+        <version>1.4</version>
+        <executions>
+          <execution>
+            <phase>none</phase>
+            <goals>
+              <goal>jdeb</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <verbose>true</verbose>
+          <skip>false</skip>
+          <controlDir>${basedir}/src/main/package/deb/control</controlDir>
+          <deb>${basedir}/target/${project.artifactId}_${package-version}-${package-release}.deb</deb>
+          <dataSet>
+            <data>
+              <src>${views.jars.dir.rel}</src>
+              <type>directory</type>
+              <mapper>
+                <prefix>${views.directory}</prefix>
+                <filemode>777</filemode>
+                <type>perm</type>
+                <user>root</user>
+                <group>root</group>
+              </mapper>
+            </data>
+          </dataSet>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <skipAssembly>true</skipAssembly>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>

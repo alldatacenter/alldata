@@ -1,0 +1,94 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div id="cluster-information">
+  <div ng-show="cluster.Clusters.provisioning_state !== 'INSTALLED'">
+    <div class="welcome-header">
+      <h1>{{'main.title' | translate}}</h1>
+      <span class="help-block">{{'main.noClusterDescription' | translate}}</span>
+    </div>
+    <div class="create-cluster-section">
+      <h2>{{'main.createCluster.title' | translate}}</h2>
+      <div>
+        <span class="help-block">
+          {{'main.createCluster.description' | translate}}
+        </span>
+      </div>
+      <div><img id="install-box" src="{{fromSiteRoot('/img/install-box.svg')}}"></div>
+      <div class="install-button">
+        <a href="{{fromSiteRoot('/#!/installer/step0')}}" class="btn btn-primary">
+          {{'main.createCluster.launchInstallWizard' | translate}}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="cluster.Clusters.provisioning_state === 'INSTALLED'">
+    <form class="row" name="editClusterNameForm" ng-submit="confirmClusterNameChange()">
+      <div class="form-group col-xs-4 cluster-name"
+           ng-class="{'has-error': editClusterNameForm.clusterName.$invalid}">
+        <label for="clusterName">{{'views.clusterName' | translate}}*</label>
+        <div class="cluster-input-block">
+          <input type="text"
+                 class="form-control"
+                 id="clusterName"
+                 name="clusterName"
+                 ng-change="toggleSaveButton()"
+                 ng-model="edit.clusterName"
+                 required
+                 autofocus
+                 ng-maxlength="100"
+                 tooltip="{{'common.renameClusterTip' | translate}}"
+                 tooltip-trigger="focus"
+                 tooltip-placement="bottom"
+                 ng-pattern="/^([a-zA-Z0-9_-\s]+)$/"
+                 ng-class="{edited: isClusterNameEdited}">
+          <span class="help-block validation-block"
+                ng-show='editClusterNameForm.clusterName.$invalid'>
+            {{'common.alerts.noSpecialCharsAndNoEmpty' | translate}}
+          </span>
+        </div>
+        <button
+          type="submit"
+          ng-disabled="editClusterNameForm.clusterName.$invalid"
+          ng-class="{'disabled': editClusterNameForm.clusterName.$invalid}"
+          class="btn btn-default pull-right"
+          ng-show="isClusterNameEdited">
+          {{'common.controls.save' | translate}}
+        </button>
+      </div>
+    </form>
+    <div>
+      <div class="row dev-blueprint">
+        <div class="col-sm-11"><span>{{'clusters.devBlueprint' | translate}}</span></div>
+        <div class="col-sm-1">
+          <div class="btn btn-default pull-right" ng-click="downloadBlueprint()">{{"common.download" | translate}}
+          </div>
+        </div>
+      </div>
+      <textarea type="text"
+                rows="20"
+                class="form-control"
+                name="blueprint_text"
+                ng-model="blueprint"
+                ng-disabled="true"
+                ng-readonly="true">
+      </textarea>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+  {
+    "requestId"  : 23 ,
+    "tasks" : [
+    {
+      "taskId": 1,
+      "stageId": 2,
+      "hostname": "x.y.z.com",
+      "role": "NAMENODE",
+      "command": "START",
+      "status": "PENDING"
+    },
+    {
+      "taskId": 2,
+      "stageId": 3,
+      "hostname": "a.b.c.com",
+      "role": "DATANODE",
+      "command": "START",
+      "status": "PENDING"
+    }
+    ]
+}

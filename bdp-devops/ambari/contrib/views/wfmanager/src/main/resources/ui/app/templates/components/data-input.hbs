@@ -1,0 +1,40 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="form-inline">
+  <label class="control-label">Data Input</label>
+  <select onchange={{action (mut dataInput.dataset) value="target.value"}} name="select-input" class="form-control" data-show-icon="true">
+    <option value="">Select Dataset</option>
+    {{#each datasets as |dataset index|}}
+    <option value={{dataset.name}} selected={{eq dataset.name dataInput.dataset}}>{{dataset.name}}</option>
+    {{/each}}
+  </select>
+  {{#if showAdvanced}}
+    {{input type=text class="form-control" value=dataInput.name placeholder="Data Input Name"}}
+    {{input type=text class="form-control" value=dataInput.min placeholder="Mininum Inputs"}}
+    {{input type=text class="form-control" value=dataInput.wait placeholder="Wait Time"}}
+    <button id="data-add-btn" {{action 'hideAdvanced'}} type="button" title="Configure Advanced Options" class="form-control btn btn-default">
+      <i class="fa fa-chevron-left"></i>&nbsp;Advanced
+    </button>
+  {{else}}
+    <button id="data-add-btn" {{action 'showAdvanced'}} type="button" title="Configure Advanced Options" class="form-control btn btn-default">
+      <i class="fa fa-chevron-right"></i>&nbsp;Advanced
+    </button>
+  {{/if}}
+  {{yield}}
+</div>
+{{field-error model=this field='dataInput.dataset' showErrorMessage=showErrorMessage}}

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>GANGLIA</name>
+      <comment>Ganglia Metrics Collection system</comment>
+      <version>3.2.0</version>
+
+      <components>
+        <component>
+          <name>GANGLIA_SERVER</name>
+          <category>MASTER</category>
+          <cardinality>1</cardinality>
+          <commandScript>
+            <script>scripts/ganglia_server.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+
+        <component>
+          <name>GANGLIA_MONITOR</name>
+          <category>SLAVE</category>
+          <cardinality>ALL</cardinality>
+          <auto-deploy>
+            <enabled>true</enabled>
+          </auto-deploy>
+          <commandScript>
+            <script>scripts/ganglia_monitor.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+      </components>
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>any</osFamily>
+          <packages>
+            <package>
+              <name>libganglia-3.5.0-99</name>
+            </package>
+            <package>
+              <name>ganglia-devel-3.5.0-99</name>
+            </package>
+            <package>
+              <name>ganglia-gmetad-3.5.0-99</name>
+            </package>
+            <package>
+              <name>ganglia-web-3.5.7-99.noarch</name>
+            </package>
+            <package>
+              <name>python-rrdtool.x86_64</name>
+            </package>
+            <package>
+              <name>ganglia-gmond-3.5.0-99</name>
+            </package>
+            <package>
+              <name>ganglia-gmond-modules-python-3.5.0-99</name>
+            </package>
+          </packages>
+        </osSpecific>
+        <osSpecific>
+          <osFamily>suse</osFamily>
+          <package>
+            <name>apache2</name>
+          </package>
+          <package>
+            <name>apache2-mod_php5</name>
+          </package>
+        </osSpecific>
+        <osSpecific>
+          <osFamily>centos6</osFamily>
+          <package>
+            <name>httpd</name>
+          </package>
+        </osSpecific>
+      </osSpecifics>
+    </service>
+  </services>
+</metainfo>

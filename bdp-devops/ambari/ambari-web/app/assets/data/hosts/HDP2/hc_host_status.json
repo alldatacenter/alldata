@@ -1,0 +1,326 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts?fields=Hosts/host_status,host_components/HostRoles/state",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com",
+      "Hosts" : {
+        "cluster_name" : "perf",
+        "host_name" : "dev01.hortonworks.com",
+        "host_status" : "HEALTHY",
+        "maintenance_state" : "OFF"
+      },
+      "host_components" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/DATANODE",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "DATANODE",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/GANGLIA_MONITOR",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "GANGLIA_MONITOR",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/GANGLIA_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "GANGLIA_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/HBASE_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "HBASE_CLIENT",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/HBASE_MASTER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "HBASE_MASTER",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/HBASE_REGIONSERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "HBASE_REGIONSERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/HDFS_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "HDFS_CLIENT",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/HISTORYSERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "HISTORYSERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/MAPREDUCE2_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "MAPREDUCE2_CLIENT",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/NAMENODE",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "NAMENODE",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/NODEMANAGER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "NODEMANAGER",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/OOZIE_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "OOZIE_CLIENT",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/OOZIE_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "OOZIE_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/PIG",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "PIG",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/RESOURCEMANAGER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "RESOURCEMANAGER",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/SECONDARY_NAMENODE",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "SECONDARY_NAMENODE",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/SQOOP",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "SQOOP",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/YARN_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "component_name" : "YARN_CLIENT",
+            "maintenance_state" : "OFF",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/APP_TIMELINE_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "APP_TIMELINE_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/TEZ_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "TEZ_CLIENT",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/ZOOKEEPER_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "ZOOKEEPER_CLIENT",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/ZOOKEEPER_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "ZOOKEEPER_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/NIMBUS",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "NIMBUS",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/LOGVIEWER_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "LOGVIEWER_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/STORM_UI_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "STORM_UI_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/DRPC_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "DRPC_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://dev01.hortonworks.com:8080/api/v1/clusters/c1/hosts/dev01.hortonworks.com/host_components/HIVE_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "c1",
+            "component_name" : "HIVE_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/SUPERVISOR",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "SUPERVISOR",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/FALCON_SERVER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "FALCON_SERVER",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/FALCON_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "ON",
+            "component_name" : "FALCON_CLIENT",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/perf/hosts/dev01.hortonworks.com/host_components/FLUME_HANDLER",
+          "HostRoles" : {
+            "cluster_name" : "perf",
+            "maintenance_state" : "OFF",
+            "component_name" : "FLUME_HANDLER",
+            "host_name" : "dev01.hortonworks.com",
+            "state" : "STARTED"
+          }
+        }
+      ]
+    }
+  ]
+}

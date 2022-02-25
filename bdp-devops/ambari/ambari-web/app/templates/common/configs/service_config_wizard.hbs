@@ -1,0 +1,144 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.supportsHostOverrides}}
+  {{#unless controller.isInstallWizard}}
+    <div class="alert alert-info config-manage-nav">
+      {{t common.group}}&nbsp;
+      <div class="btn-group config-groups-dropdown">
+        <button {{bindAttr disabled="controller.isHostsConfigsPage"}} class="btn btn-default dropdown-toggle first" data-toggle="dropdown">
+          <span class="caret pull-caret-right"></span>
+          {{selectedConfigGroup.displayNameHosts}}
+        </button>
+        <ul class="dropdown-menu config-groups-dropdown-menu">
+          <!-- available config group menu links -->
+          {{#each configGroup in configGroups}}
+            <li>
+              <a href="#" {{action "selectConfigGroup" configGroup target="controller"}}>
+                {{configGroup.displayNameHosts}}
+              </a>
+            </li>
+          {{/each}}
+          {{#isAuthorized "SERVICE.MANAGE_CONFIG_GROUPS"}}
+            <li class="divider"></li>
+            <li>
+              <a href="#" {{action "manageConfigurationGroup" target="controller"}}>
+                <i class="glyphicon glyphicon-cog"></i>&nbsp;{{t services.service.actions.manage_configuration_groups.short}}
+              </a>
+            </li>
+          {{/isAuthorized}}
+        </ul>
+      </div>
+      <div class="pull-right">
+        {{view App.FilterComboCleanableView filterBinding="view.filter" columnsBinding="view.columns" popoverDescriptionBinding="view.propertyFilterPopover"}}
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  {{else}}
+    <div {{bindAttr class=":config-actions view.actionsStacked:pull-right"}}>
+      <div class="pull-right">
+        {{view App.FilterComboCleanableView filterBinding="view.filter" columnsBinding="view.columns" popoverDescriptionBinding="view.propertyFilterPopover"}}
+      </div>
+      <div class="pull-right">
+        <span class="btn-group config-groups-dropdown">
+          <button {{bindAttr disabled="controller.isHostsConfigsPage"}} class="btn btn-default dropdown-toggle first" data-toggle="dropdown">{{selectedConfigGroup.displayNameHosts}}</button>
+          <button {{bindAttr disabled="controller.isHostsConfigsPage"}} class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu config-groups-dropdown-menu">
+            <!-- available config group menu links -->
+            {{#each configGroup in configGroups}}
+              <li>
+                <a href="#" {{action "selectConfigGroup" configGroup target="controller"}}>
+                  {{configGroup.displayNameHosts}}
+                </a>
+              </li>
+            {{/each}}
+            {{#if controller.isInstallWizard}}
+              {{#isAuthorized "SERVICE.MANAGE_CONFIG_GROUPS"}}
+                <li class="divider"></li>
+                <li>
+                  <a href="#" {{action "manageConfigurationGroup" target="controller"}}>
+                    <i class="glyphicon glyphicon-cog"></i>&nbsp;{{t services.service.actions.manage_configuration_groups.short}}
+                  </a>
+                </li>
+              {{/isAuthorized}}
+            {{/if}}
+          </ul>
+        </span>
+      </div>
+    </div>
+  {{/unless}}
+{{/if}}
+
+{{#if view.supportsConfigLayout}}
+  {{#unless view.hideTabHeaders}}
+    <ul {{bindAttr class=":nav :nav-tabs :mbm view.supportsHostOverrides:with-overrides controller.isInstallWizard:clear"}}>
+      {{#each tab in view.tabs}}
+        {{#unless tab.isHidden}}
+          <li rel='tooltip' {{bindAttr class="tab.isActive:active tab.isHiddenByFilter:disabled" data-original-title="tab.tooltipMsg"}}>
+            <a href="#" {{action "setActiveTab" tab target="view"}} {{bindAttr data-target="tab.headingClass"}}
+               data-toggle="tab">
+              {{tab.displayName}}
+              {{#if tab.isAdvanced}}
+                {{#if controller.errorsCount}}
+                  <span class="alert-badge" {{QAAttr "error-badge"}}>
+                    <span class="counter label alerts-crit-count">
+                      {{controller.errorsCount}}
+                    </span>
+                  </span>
+                {{/if}}
+              {{else}}
+                {{#if tab.errorsCount}}
+                  <span class="alert-badge" {{QAAttr "error-badge"}}>
+                    <span class="counter label alerts-crit-count">
+                      {{tab.errorsCount}}
+                    </span>
+                  </span>
+                {{/if}}
+              {{/if}}
+            </a>
+          </li>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  {{/unless}}
+  <div {{bindAttr class=":tab-content :service-config-tab-content"}}>
+    {{#each tab in view.tabs}}
+      <div {{bindAttr class=":tab-pane tab.isActive:active tab.id"}}>
+        {{#if tab.isAdvanced}}
+          {{#each catView in view.serviceConfigsByCategoryView.childViews}}
+            {{view catView}}
+          {{/each}}
+        {{else}}
+          {{! Render Enhanced Config Section }}
+          {{view App.ServiceConfigLayoutTabView contentBinding="tab" customTemplateBinding="view.themeTemplate"}}
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  {{#each catView in view.serviceConfigsByCategoryView.childViews}}
+    {{view catView}}
+  {{/each}}
+{{/if}}
+{{#if view.isAllConfigsHidden}}
+  <div class="alert alert-info col-sm-12">
+    {{t services.service.config.nothing.to.display}}
+  </div>
+{{/if}}

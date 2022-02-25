@@ -1,0 +1,16 @@
+{
+  "href" : "http://ambari/clusters/mycluster/services/HBASE/components/HBASE_REGIONSERVER?fields=metrics/hbase/regionserver/readRequestsCount[1351356190,1351359791,60],metrics/hbase/regionserver/writeRequestsCount[1351356190,1351359791,60]",
+  "metrics" : {
+    "hbase" : {
+      "regionserver" : {
+        "writeRequestsCount" : "[[4.0,1351356480],[4.0,1351356840],[4.0,1351357200],[4.0,1351357560],[4.0,1351357920],[4.0,1351358280],[4.0,1351358640],[4.0,1351359000],[4.0,1351359360],[4.0,1351359720],[0.0,1351360080]]",
+        "readRequestsCount" : "[[2004.1333333,1351356480],[2006.5055556,1351356840],[2008.85,1351357200],[2011.1888889,1351357560],[2013.5222222,1351357920],[2016.0333333,1351358280],[2018.5277778,1351358640],[2020.8722222,1351359000],[2023.2111111,1351359360],[2025.5333333,1351359720],[0.0,1351360080]]"
+      }
+    }
+  },
+  "ServiceComponentInfo" : {
+    "cluster_name" : "mycluster",
+    "component_name" : "HBASE_REGIONSERVER",
+    "service_name" : "HBASE"
+  }
+}

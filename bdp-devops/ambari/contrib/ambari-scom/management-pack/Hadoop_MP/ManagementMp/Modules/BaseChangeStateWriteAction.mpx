@@ -1,0 +1,98 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <WriteActionModuleType ID="Ambari.SCOM.Management.Module.BaseChangeStateWriteAction"
+                             RunAs="HDLibrary!Ambari.SCOM.Profile.Workflow"
+                             Accessibility="Internal">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Windows!Microsoft.Windows.PowerShellSchema</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="TimeoutSeconds" type="xsd:int" />
+
+          <xsd:element name="ScriptName" type="NonNullString" />
+          <xsd:element name="MainScriptBody" type="NonNullString" />
+          
+          <xsd:element name="AmbariUri" type="xsd:string" />
+          <xsd:element name="TargetState" type="xsd:string" />
+          <xsd:element name="StatusPollingIntervalSeconds" type="xsd:int" />
+          <xsd:element name="OperationFriendlyName" type="xsd:string" />
+        </Configuration>
+        <OverrideableParameters />
+        <ModuleImplementation>
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="Action" TypeID="Ambari.SCOM.Management.Module.BaseScriptedWriteAction">
+                <ScriptName>$Config/ScriptName$</ScriptName>
+                <ScriptBody>
+                  Param ($MonitoringAmbariUri, $TargetState, $StatusPollingInterval, $OperationFriendlyName, $Username, $Password)
+
+                  $Config/MainScriptBody$
+                </ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>MonitoringAmbariUri</Name>
+                    <Value>$Config/AmbariUri$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>TargetState</Name>
+                    <Value>$Config/TargetState$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>StatusPollingInterval</Name>
+                    <Value>$Config/StatusPollingIntervalSeconds$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>OperationFriendlyName</Name>
+                    <Value>$Config/OperationFriendlyName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Username</Name>
+                    <Value>$RunAs[Name="HDLibrary!Ambari.SCOM.Profile.Ambari"]/UserName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Password</Name>
+                    <Value>$RunAs[Name="HDLibrary!Ambari.SCOM.Profile.Ambari"]/Password$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="Action" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Management.Module.BaseChangeStateWriteAction">
+          <Name>Hadoop Generic Change State Write Action</Name>
+          <Description>This module requests state change and tracks the progress of the request.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

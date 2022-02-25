@@ -1,0 +1,74 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="spinner"></div>
+<div class="container-fluid">
+  {{#if allTestsCompleted }}
+    <h3>Service checks completed.</h3>
+  {{else}}
+    <h3>Service checks in progress.</h3>
+  {{/if}}
+
+  {{#if errors}}
+    <div class="progress active">
+      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{progressBarStyle}}></div>
+    </div>
+  {{else}}
+    <div class="progress progress-striped active">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{progressBarStyle}}></div>
+    </div>
+  {{/if}}
+
+  <table class="table">
+    <tbody>
+    <tr>
+      <td>
+        {{#if modelhdfsTestDone}}
+          {{#if modelhdfsTest}}
+            <i class="fa fa-check"></i>
+          {{else}}
+            <i class="fa fa-remove"></i>
+          {{/if}}
+        {{else}}
+          <i class="fa fa-arrow-right"></i>
+        {{/if}}
+      </td>
+      <td>HDFS test</td>
+    </tr>
+    </tbody>
+  </table>
+
+  {{#if errors}}
+    <h3>Issues detected</h3>
+    <p>{{{errors}}}</p>
+  {{/if}}
+  {{#if stackTrace}}
+    <a href="#" {{action "toggleStackTrace" post}}>
+      {{#if isExpanded}}
+        <i class="fa fa-minus"></i> Collapse Stack Trace
+      {{else}}
+        <<i class="fa fa-plus"></i> Expand Stack Trace
+      {{/if}}
+    </a>
+    {{#if isExpanded}}
+      <pre class="prettyprint">
+        {{stackTrace}}
+      </pre>
+    {{/if}}
+  {{/if}}
+</div>

@@ -1,0 +1,36 @@
+
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/users/admin/activeWidgetLayouts?WidgetLayoutInfo/section_name=HDFS_HEATMAPS",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widget_layouts/16",
+      "WidgetLayoutInfo" : {
+        "cluster_name" : "c1",
+        "display_name" : "HDFS Heatmaps",
+        "id" : 16,
+        "layout_name" : "admin_hdfs_heatmap",
+        "scope" : "USER",
+        "section_name" : "HDFS_HEATMAPS",
+        "user_name" : "admin",
+        "widgets" : [
+          {
+            "WidgetInfo" : {
+              "id" : 12,
+              "metrics" : "[{\"name\":\"dfs.datanode.BytesRead\",\"metric_path\":\"metrics/dfs/datanode/bytes_read\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"}]",
+              "author" : "ambari",
+              "description" : "",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"MB\",\"max_limit\":\"1024\"}",
+              "widget_name" : "HDFS Bytes Read",
+              "widget_type" : "HEATMAP",
+              "time_created" : 1429906622107,
+              "display_name" : "HDFS Bytes Read",
+              "values" : "[{\"name\":\"HDFS Bytes Read\",\"value\":\"${dfs.datanode.BytesRead}\"}]",
+              "cluster_name" : "c1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

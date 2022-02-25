@@ -1,0 +1,56 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="panel panel-default">
+  <div class="panel-heading">General</div>
+  <div class="panel-body">
+    <div class="form-group padding10">
+      <label class="control-label col-xs-2">App Path<span class="requiredField">&nbsp;*</span></label>
+      <div class="col-xs-7">
+        <div class="input-group">
+          {{input type="text" class="form-control" validations="required" name="appPath" value=actionModel.appPath placeholder="app path"}}
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button" {{action "openFileBrowser" "actionModel.appPath"}}>Browse</button>
+          </span>
+        </div>
+        {{field-error model=this field='actionModel.appPath' showErrorMessage=showErrorMessage}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-xs-2">Propagate configuration</label>
+      <div class="col-xs-10">
+        <div class="checkbox">
+          <label title="indicates that the workflow job configuration should be propagated to the child workflow">{{input type="checkbox" name="propagate-configuration" checked=actionModel.propagate-configuration}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=" panel panel-default">
+  <div class="panel-heading">Configuration</div>
+  <div class="panel-body handlerPanel">
+    {{#name-value-config configuration=actionModel.configuration register="register"}}{{/name-value-config}}
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Transition</div>
+  <div class="panel-body handlerPanel">
+    {{#transition-config transition=transition killNodes=killNodes currentNode=currentNode register="register"}}{{/transition-config}}
+  </div>
+</div>
+{{#action-credential-config credentials=credentials actionCredentials=actionModel.credentials}}{{/action-credential-config}}
+{{#sla-info slaInfo=actionModel.slaInfo register="register" slaEnabled=actionModel.slaEnabled register="register"}}{{/sla-info}}

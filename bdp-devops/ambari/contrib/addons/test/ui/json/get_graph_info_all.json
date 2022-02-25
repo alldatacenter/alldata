@@ -1,0 +1,24 @@
+{
+    "Global": [
+        {
+            "description": "Key load metrics, aggregated across the entire grid", 
+            "title": "Load Report", 
+            "url": "http://10.10.10.114:80/ganglia2/graph.php?me=HDP&g=load_report"
+        }, 
+        {
+            "description": "Key memory metrics, aggregated across the entire grid", 
+            "title": "Memory Report", 
+            "url": "http://10.10.10.114:80/ganglia2/graph.php?me=HDP&g=mem_report"
+        }, 
+        {
+            "description": "Key CPU metrics, aggregated across the entire grid", 
+            "title": "CPU Report", 
+            "url": "http://10.10.10.114:80/ganglia2/graph.php?me=HDP&g=cpu_report"
+        }, 
+        {
+            "description": "Key network I/O metrics, aggregated across the entire grid", 
+            "title": "Network I/O Report", 
+            "url": "http://10.10.10.114:80/ganglia2/graph.php?me=HDP&g=network_report"
+        }
+    ] 
+}

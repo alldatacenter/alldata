@@ -1,0 +1,106 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="admin-user-settings">
+  <div class="setting-wrapper">
+    <h4>{{t app.settings.categories.general}}</h4>
+    <hr />
+    <div class="checkbox">
+      {{view App.CheckboxView checkedBinding="view.isNotShowBgChecked" labelTranslate="app.settings.notshowBgOperationsPopup"}}
+    </div>
+  </div>
+  <div class="setting-wrapper">
+    <h4>{{t app.settings.categories.locale}}</h4>
+    <hr />
+    <label>
+      {{t app.settings.selectTimezone}}
+        {{view Em.Select
+          contentBinding="view.timezonesList"
+          optionLabelPath="content.label"
+          optionValuePath="content.value"
+          selectionBinding="view.parentView.selectedTimezone"
+          class="group-select select-group-box form-control"
+        }}
+    </label>
+  </div>
+  <div>
+    {{#unless view.hidePrivileges}}
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>{{t common.cluster}}</th>
+          <th>{{t app.settings.clusterRole}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each cluster in view.privileges.clusters}}
+          <tr>
+            <td>
+              <span class="glyphicon glyphicon-cloud"></span>
+              <span>{{cluster.name}}</span>
+            </td>
+            <td>
+              {{#each privilege in cluster.privileges}}
+                <span tooltip="{{privilege}}">{{privilege}}&nbsp;</span>
+              {{/each}}
+            </td>
+          </tr>
+        {{/each}}
+        {{#if noClusterPriv}}
+          <tr>
+              <td>{{t app.settings.no.cluster.privileges}}</td>
+          </tr>
+        {{/if}}
+        </tbody>
+        <thead class="view-permission-header">
+        <tr>
+          <th>{{t common.view}}</th>
+          <th>{{t app.settings.viewPermissions}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each v in view.privileges.views}}
+          <tr>
+            <td>
+              <span class="glyphicon glyphicon-th"></span>
+              <span>{{v.instance_name}}</span>
+            </td>
+            <td>
+              {{#each privilege in v.privileges}}
+                <span tooltip="{{privilege}}" >{{privilege}}&nbsp;</span>
+              {{/each}}
+            </td>
+          </tr>
+        {{/each}}
+        {{#if noViewPriv}}
+            <tr>
+                <td>{{t app.settings.no.view.privileges}}</td>
+            </tr>
+        {{/if}}
+        </tbody>
+      </table>
+    {{/unless}}
+    {{#if view.isAdmin}}
+      <div class="alert alert-info">{{t app.settings.admin.all.privileges}}</div>
+    {{else}}
+      {{#unless view.privileges}}
+        <div class="alert alert-info">{{t app.settings.no.privileges}}</div>
+      {{/unless}}
+    {{/if}}
+  </div>
+</div>

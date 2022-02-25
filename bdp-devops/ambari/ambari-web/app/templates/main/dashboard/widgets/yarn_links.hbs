@@ -1,0 +1,93 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="links">
+  <ul class="list-unstyled">
+    <li class="img-thumbnail row">
+      <div class="caption col-md-10"> {{view.title}}</div>
+      <div class="corner-icon col-md-1">
+        <button class="dropdown-toggle ellipsis-menu button-border" data-toggle="dropdown" href="#"></button>
+        <ul class="dropdown-menu">
+          <li><button type="button" href="#" class="button-border"
+            {{action deleteWidget target="view"}}>
+            <i class="icon-trash"></i>&nbsp;{{t common.delete}}</button>
+          </li>
+        </ul>
+      </div>
+      {{#if view.isDataLoaded}}
+        <div class="widget-content">
+          <table>
+            <!-- Resource Manager-->
+            <tr class="resourcemanager-link">
+              <td>
+                <a href="#" {{action showDetails view.model.resourceManager.host}}> {{t dashboard.services.yarn.resourceManager}}</a>
+              </td>
+            </tr>
+
+            <!-- Node Manages-->
+            <tr class="nodemanager-link">
+              <td>
+                <a href="#" {{action filterHosts view.component}}> {{view.model.nodeManagersTotal}} {{t dashboard.services.yarn.nodeManagers}}</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="link-button">
+          {{#if view.model.quickLinks.length}}
+            {{#view App.QuickLinksView contentBinding="view.model"}}
+              <div class="btn-group">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  {{t common.more}}
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  {{#if view.isLoaded}}
+                    {{#if view.quickLinksArray}}
+                      <!--there are multiple masters eg, HBase multiple masters or HDFS HA enabled-->
+                      {{#each group in view.quickLinksArray}}
+                        {{#each quickLinks in group.links}}
+                          <li class="dropdown-submenu">
+                            <a href="javascript:void(null)">{{quickLinks.publicHostNameLabel}} &nbsp;</a>
+                            <ul class="dropdown-menu">
+                              {{#each quickLinks}}
+                                <li><a {{bindAttr href="url"}} target="_blank" rel="noopener noreferrer">{{label}}</a></li>
+                              {{/each}}
+                            </ul>
+                          </li>
+                        {{/each}}
+                      {{/each}}
+                    {{else}}
+                      {{#each view.quickLinks}}
+                        <li><a {{bindAttr href="url"}} target="_blank" rel="noopener noreferrer">{{label}}</a></li>
+                      {{/each}}
+                    {{/if}}
+                  {{else}}
+                    {{view App.SpinnerView}}
+                  {{/if}}
+                </ul>
+              </div>
+            {{/view}}
+          {{/if}}
+        </div>
+      {{else}}
+        {{view App.SpinnerView}}
+      {{/if}}
+    </li>
+  </ul>
+</div>

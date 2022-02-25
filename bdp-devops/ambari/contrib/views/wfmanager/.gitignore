@@ -1,0 +1,20 @@
+# Numerous always-ignore extensions
+*.swp
+*.bak
+*.log
+*.patch
+
+# OS or Editor folders
+.DS_Store
+
+# Installation and build tools
+src/main/resources/ui/node/
+src/main/resources/ui/node_modules/
+src/main/resources/ui/bower_components/
+_generators/
+
+# Output directory
+src/main/resources/ui/dist/
+
+# Brunch folder for temporary files.
+src/main/resources/ui/tmp/

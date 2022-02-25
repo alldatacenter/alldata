@@ -1,0 +1,63 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div class="combo-search">
+  <div class="combo-search-inner" ng-click="observeSearchFilterInput($event)">
+    <div class="combo-search-applied-filter" ng-repeat="filter in appliedFilters" ng-click="forceFocus($event, filter)">
+      <i class="fa fa-times-circle" ng-click="removeFilter(filter)"></i>
+      <span>{{filter.label}}:</span>
+      <div class="combo-search-input-wrapper">
+        <input type="text"
+               autocomplete="off"
+               ng-attr-name="{{filter.id}}"
+               class="combo-search-input"
+               ng-model="filter.searchOptionInput"
+               ng-change="observeSearchOptionInput(filter)"
+               ng-blur="hideAutocomplete(filter)"/>
+        <div class="combo-search-dropdown" ng-show="filter.showAutoComplete">
+          <ul>
+            <li ng-repeat="item in filter.filteredOptions" class="filter">
+              <a ng-click="selectOption($event, item, filter)"
+                 ng-class="{active: item.active}"
+                 ng-mouseover="makeActive(item, filter.filteredOptions)">{{item.label}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="combo-search-input-wrapper">
+      <input type="text"
+             autocomplete="off"
+             placeholder="{{appliedFilters.length === 0 ? placeholder : ''}}"
+             class="combo-search-input main-input"
+             ng-model="searchFilterInput"
+             ng-change="observeSearchFilterInput()"/>
+      <div class="combo-search-dropdown" ng-show="showAutoComplete">
+        <ul>
+          <li ng-repeat="item in filterSuggestions"
+              ng-class="{category: item.isCategory, filter: !item.isCategory, hide: (item.isCategory && item.isDefault)}">
+            <a ng-click="selectFilter(item, $event)"
+               ng-class="{active: item.active}"
+               ng-mouseover="makeActive(item, filterSuggestions)">{{item.label}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <i class="combo-search-close fa fa-times-circle" ng-show="appliedFilters.length" ng-click="clearFilters()"></i>
+  </div>
+</div>

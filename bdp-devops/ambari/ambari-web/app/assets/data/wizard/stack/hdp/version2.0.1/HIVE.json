@@ -1,0 +1,413 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations?fields=*",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/ambari.hive.db.schema.name",
+      "StackConfigurations" : {
+        "property_description" : "Database name used as the Hive Metastore",
+        "property_name" : "ambari.hive.db.schema.name",
+        "property_value" : "hive",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/fs.file.impl.disable.cache",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "fs.file.impl.disable.cache",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/fs.hdfs.impl.disable.cache",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "fs.hdfs.impl.disable.cache",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.auto.convert.join",
+      "StackConfigurations" : {
+        "property_description" : "Whether Hive enable the optimization about converting common\n      join into mapjoin based on the input file size.",
+        "property_name" : "hive.auto.convert.join",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.auto.convert.join.noconditionaltask",
+      "StackConfigurations" : {
+        "property_description" : "Whether Hive enable the optimization about converting common join into mapjoin based on the input file\n      size. If this paramater is on, and the sum of size for n-1 of the tables/partitions for a n-way join is smaller than the\n      specified size, the join is directly converted to a mapjoin (there is no conditional task).\n    ",
+        "property_name" : "hive.auto.convert.join.noconditionaltask",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.auto.convert.join.noconditionaltask.size",
+      "StackConfigurations" : {
+        "property_description" : "If hive.auto.convert.join.noconditionaltask is off, this parameter does not take affect. However, if it\n      is on, and the sum of size for n-1 of the tables/partitions for a n-way join is smaller than this size, the join is directly\n      converted to a mapjoin(there is no conditional task). The default is 10MB.\n    ",
+        "property_name" : "hive.auto.convert.join.noconditionaltask.size",
+        "property_value" : "1000000000",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.auto.convert.sortmerge.join",
+      "StackConfigurations" : {
+        "property_description" : "Will the join be automatically converted to a sort-merge join, if the joined tables pass\n      the criteria for sort-merge join.\n    ",
+        "property_name" : "hive.auto.convert.sortmerge.join",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.auto.convert.sortmerge.join.noconditionaltask",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "hive.auto.convert.sortmerge.join.noconditionaltask",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.enforce.bucketing",
+      "StackConfigurations" : {
+        "property_description" : "Whether bucketing is enforced. If true, while inserting into the table, bucketing is enforced.",
+        "property_name" : "hive.enforce.bucketing",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.enforce.sorting",
+      "StackConfigurations" : {
+        "property_description" : "Whether sorting is enforced. If true, while inserting into the table, sorting is enforced.",
+        "property_name" : "hive.enforce.sorting",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.map.aggr",
+      "StackConfigurations" : {
+        "property_description" : "Whether to use map-side aggregation in Hive Group By queries.",
+        "property_name" : "hive.map.aggr",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.mapjoin.bucket.cache.size",
+      "StackConfigurations" : {
+        "property_description" : "\n      Size per reducer.The default is 1G, i.e if the input size is 10G, it\n      will use 10 reducers.\n    ",
+        "property_name" : "hive.mapjoin.bucket.cache.size",
+        "property_value" : "10000",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.mapred.reduce.tasks.speculative.execution",
+      "StackConfigurations" : {
+        "property_description" : "Whether speculative execution for reducers should be turned on.",
+        "property_name" : "hive.mapred.reduce.tasks.speculative.execution",
+        "property_value" : "false",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.metastore.cache.pinobjtypes",
+      "StackConfigurations" : {
+        "property_description" : "List of comma separated metastore object types that should be pinned in the cache",
+        "property_name" : "hive.metastore.cache.pinobjtypes",
+        "property_value" : "Table,Database,Type,FieldSchema,Order",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.metastore.client.socket.timeout",
+      "StackConfigurations" : {
+        "property_description" : "MetaStore Client socket timeout in seconds",
+        "property_name" : "hive.metastore.client.socket.timeout",
+        "property_value" : "60",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.metastore.execute.setugi",
+      "StackConfigurations" : {
+        "property_description" : "In unsecure mode, setting this property to true will cause the metastore to execute DFS operations using the client's reported user and group permissions. Note that this property must be set on both the client and     server sides. Further note that its best effort. If client sets its to true and server sets it to false, client setting will be ignored.",
+        "property_name" : "hive.metastore.execute.setugi",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.metastore.uris",
+      "StackConfigurations" : {
+        "property_description" : "URI for client to contact metastore server",
+        "property_name" : "hive.metastore.uris",
+        "property_value" : "thrift://localhost:9083",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.metastore.warehouse.dir",
+      "StackConfigurations" : {
+        "property_description" : "location of default database for the warehouse",
+        "property_name" : "hive.metastore.warehouse.dir",
+        "property_value" : "/apps/hive/warehouse",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.optimize.bucketmapjoin",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "hive.optimize.bucketmapjoin",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.optimize.bucketmapjoin.sortedmerge",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "hive.optimize.bucketmapjoin.sortedmerge",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.optimize.index.filter",
+      "StackConfigurations" : {
+        "property_description" : "\n    Whether to enable automatic use of indexes\n    ",
+        "property_name" : "hive.optimize.index.filter",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.optimize.mapjoin.mapreduce",
+      "StackConfigurations" : {
+        "property_description" : "If hive.auto.convert.join is off, this parameter does not take\n      affect. If it is on, and if there are map-join jobs followed by a map-reduce\n      job (for e.g a group by), each map-only job is merged with the following\n      map-reduce job.\n    ",
+        "property_name" : "hive.optimize.mapjoin.mapreduce",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.optimize.reducededuplication",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "hive.optimize.reducededuplication",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.optimize.reducededuplication.min.reducer",
+      "StackConfigurations" : {
+        "property_description" : "Reduce deduplication merges two RSs by moving key/parts/reducer-num of the child RS to parent RS.\n      That means if reducer-num of the child RS is fixed (order by or forced bucketing) and small, it can make very slow, single MR.\n      The optimization will be disabled if number of reducers is less than specified value.\n    ",
+        "property_name" : "hive.optimize.reducededuplication.min.reducer",
+        "property_value" : "1",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.security.authenticator.manager",
+      "StackConfigurations" : {
+        "property_description" : "Hive client authenticator manager class name. The user-defined authenticator class should implement interface org.apache.hadoop.hive.ql.security.HiveAuthenticationProvider.  ",
+        "property_name" : "hive.security.authenticator.manager",
+        "property_value" : "org.apache.hadoop.hive.ql.security.ProxyUserAuthenticator",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.security.authorization.enabled",
+      "StackConfigurations" : {
+        "property_description" : "enable or disable the hive client authorization",
+        "property_name" : "hive.security.authorization.enabled",
+        "property_value" : "false",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.security.authorization.manager",
+      "StackConfigurations" : {
+        "property_description" : "the hive client authorization manager class name.\n    The user defined authorization class should implement interface org.apache.hadoop.hive.ql.security.authorization.HiveAuthorizationProvider.  ",
+        "property_name" : "hive.security.authorization.manager",
+        "property_value" : "org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.security.metastore.authorization.manager",
+      "StackConfigurations" : {
+        "property_description" : "The authorization manager class name to be used in the metastore for authorization. The user-defined authorization class should implement interface org.apache.hadoop.hive.ql.security.authorization.HiveMetastoreAuthorizationProvider.  ",
+        "property_name" : "hive.security.metastore.authorization.manager",
+        "property_value" : "org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.server2.enable.doAs",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "hive.server2.enable.doAs",
+        "property_value" : "true",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/hive.vectorized.execution.enabled",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "hive.vectorized.execution.enabled",
+        "property_value" : "false",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/javax.jdo.option.ConnectionDriverName",
+      "StackConfigurations" : {
+        "property_description" : "Driver class name for a JDBC metastore",
+        "property_name" : "javax.jdo.option.ConnectionDriverName",
+        "property_value" : "com.mysql.jdbc.Driver",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/javax.jdo.option.ConnectionPassword",
+      "StackConfigurations" : {
+        "property_description" : "password to use against metastore database",
+        "property_name" : "javax.jdo.option.ConnectionPassword",
+        "property_value" : " ",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/javax.jdo.option.ConnectionURL",
+      "StackConfigurations" : {
+        "property_description" : "JDBC connect string for a JDBC metastore",
+        "property_name" : "javax.jdo.option.ConnectionURL",
+        "property_value" : "jdbc",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HIVE/configurations/javax.jdo.option.ConnectionUserName",
+      "StackConfigurations" : {
+        "property_description" : "username to use against metastore database",
+        "property_name" : "javax.jdo.option.ConnectionUserName",
+        "property_value" : "hive",
+        "service_name" : "HIVE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hive-site.xml"
+      }
+    }
+  ]
+}

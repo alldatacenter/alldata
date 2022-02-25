@@ -1,0 +1,10 @@
+{
+   "report_name" : "hbase_regionserver_fs_read_latency_report",
+   "report_type" : "standard",
+   "title" : "Region Server FS Read Latency",
+   "vertical_label" : "Milliseconds",
+   "series" : [
+      { "metric": "hbase.regionserver.fsReadLatency_avg_time", "color": "ff0000", "label": "Read Latency", 
+        "line_width": "2", "type": "line" }
+   ]
+}

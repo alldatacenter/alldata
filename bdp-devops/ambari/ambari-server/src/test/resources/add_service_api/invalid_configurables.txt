@@ -1,0 +1,193 @@
+'''
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+'''
+
+# Configs in normal JSON format
+
+# Bad structure
+{
+  "configurations" : [
+    {
+      "zoo.cfg" : {
+        "properties" : {
+          "dataDir" : "/zookeeper1"
+        }
+      },
+      "zookeeper-env" : {
+        "properties" : {
+          "zk_user" : "zookeeper"
+        }
+      }
+    }
+  ]
+}
+
+# Non-string property in properties_attributes
+{
+  "configurations" : [
+    {
+      "zoo.cfg" : {
+        "properties" : {
+          "dataDir" : "/zookeeper1"
+        },
+        "properties_attributes": {
+          "final": {
+            "someProp": "true",
+            "non-string-prop": 5
+          }
+        }
+      }
+    }
+  ]
+}
+
+# Non-string property in properties
+{
+  "configurations" : [
+    {
+      "zoo.cfg" : {
+        "properties" : {
+          "dataDir" : "/zookeeper1",
+          "non-string-prop": 5
+        },
+        "properties_attributes": {
+          "final": {
+            "someProp": "true"
+          }
+        }
+      }
+    }
+  ]
+}
+
+# Ivalid field: features
+{
+  "configurations" : [
+    {
+      "zoo.cfg" : {
+        "properties" : {
+          "dataDir" : "/zookeeper1"
+        },
+        "properties_attributes": {
+          "final": {
+            "someProp": "true"
+          }
+        },
+        "features": {}
+      }
+    }
+  ]
+}
+
+# Invalid properties (string instead of JSON object)
+{
+  "configurations" : [
+    {
+      "zoo.cfg" : {
+        "properties" : "should be a json object",
+        "properties_attributes": {
+          "final": {
+            "someProp": "true"
+          }
+        }
+      }
+    }
+  ]
+}
+
+# Invalid attributes 1 (string instead of JSON object)
+{
+  "configurations" : [
+    {
+      "zoo.cfg" : {
+        "properties" : {
+          "dataDir" : "/zookeeper1"
+        },
+        "properties_attributes": "should be a json object"
+      }
+    }
+  ]
+}
+
+# Invalid attributes 2 (string instead of JSON object)
+{
+  "configurations" : [
+    {
+      "zoo.cfg" : {
+        "properties" : {
+          "dataDir" : "/zookeeper1"
+        },
+        "properties_attributes": {
+          "final": "should be a json object"
+        }
+      }
+    }
+  ]
+}
+
+# Flattened JSON configs (gone through ResourceManager)
+
+# Invalid field (features): zoo.cfg/features/dataDir
+{
+  "configurations" : [
+    {
+      "zoo.cfg/properties/dataDir" : "/zookeeper1",
+      "zoo.cfg/properties_attributes/final/someProp": "true",
+      "zoo.cfg/features/dataDir" : "/zookeeper1"
+    }
+  ]
+}
+
+# Invalid field (path too long): zoo.cfg/properties/dataDir/value
+{
+  "configurations" : [
+    {
+      "zoo.cfg/properties/dataDir/value" : "/zookeeper1",
+      "zoo.cfg/properties_attributes/final/someProp": "true"
+    }
+  ]
+}
+
+# Invalid field (path too short): zoo.cfg/properties
+{
+  "configurations" : [
+    {
+      "zoo.cfg/properties" : "/zookeeper1",
+      "zoo.cfg/properties_attributes/final/someProp": "true"
+    }
+  ]
+}
+
+# Invalid field (path too long): zoo.cfg/properties_attributes/final/someProp/value
+{
+  "configurations" : [
+    {
+      "zoo.cfg/properties/dataDir" : "/zookeeper1",
+      "zoo.cfg/properties_attributes/final/someProp/value": "true"
+    }
+  ]
+}
+
+# Invalid field (path too short): zoo.cfg/properties_attributes/final
+{
+  "configurations" : [
+    {
+      "zoo.cfg/properties/dataDir" : "/zookeeper1",
+      "zoo.cfg/properties_attributes/final": "true"
+    }
+  ]
+}

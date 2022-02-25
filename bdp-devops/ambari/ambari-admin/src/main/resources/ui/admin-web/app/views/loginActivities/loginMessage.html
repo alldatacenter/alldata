@@ -1,0 +1,89 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<br/>
+<div class="login-message-pane" data-ng-init="getMOTD()" ng-controller="LoginMessageMainCtrl">
+  <form class="form-horizontal" novalidate name="form" autocomplete="off">
+    <div class="well">
+      <fieldset>
+        <div class="form-group">
+          <label class="col-sm-2 switch-inline-label">{{'common.loginActivities.status' | translate}}</label>
+          <div class="col-sm-10">
+            <toggle-switch ng-click="changeStatus();" model="status" class="switch-success" data-off-color="disabled"></toggle-switch>
+            <span ng-if="status" class="switch-option-label">{{'common.enabled' | translate}}</span>
+            <span ng-if="!status" class="switch-option-label">{{'common.disabled' | translate}}</span>
+          </div>
+          <input type="checkbox" name="status" class="hidden" ng-model="status">
+        </div>
+        <div class="form-group" ng-class="{'has-error' : (form.login_text.$error.pattern) && form.submitted}">
+          <label class="col-sm-2 control-label">{{'common.loginActivities.message' | translate}}</label>
+          <div class="col-sm-10">
+            <textarea type="text"
+                      rows="4"
+                      class="form-control"
+                      name="login_text"
+                      placeholder="{{'common.loginActivities.loginMessage.placeholder' | translate}}"
+                      ng-model="text"
+                      ng-change="inputChangeEvent()"
+                      ng-disabled="!status"
+                      autocomplete="off">
+            </textarea>
+            <div class="alert alert-danger top-margin" ng-show="form.login_text.$error.pattern && form.submitted">
+             {{'common.alerts.onlySimpleChars' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : (form.button_text.$error.pattern) && form.submitted}">
+          <label class="col-sm-2 control-label">{{'common.loginActivities.buttonText' | translate}}</label>
+          <div class="col-sm-4">
+            <input type="text"
+                   class="form-control"
+                   name="button_text"
+                   placeholder="{{'common.loginActivities.buttonText.placeholder' | translate}}"
+                   ng-model="buttonText"
+                   ng-change="inputChangeEvent()"
+                   ng-disabled="!status"
+                   maxlength="25"
+                   size="25"
+                   required
+                   autocomplete="off">
+
+            <div class="alert alert-danger top-margin" ng-show="form.button_text.$error.required && form.submitted">
+              {{'common.loginActivities.notEmpty' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-offset-2 col-sm-10">
+          <button
+            class="btn btn-primary groupcreate-btn pull-right left-margin"
+            ng-disabled="submitDisabled"
+            ng-click="saveLoginMsg()">
+            {{'common.controls.save' | translate}}
+          </button>
+          <a class="btn btn-default pull-right cancel" href ng-click="cancel()">{{'common.controls.cancel' | translate}}</a>
+        </div>
+      </fieldset>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+

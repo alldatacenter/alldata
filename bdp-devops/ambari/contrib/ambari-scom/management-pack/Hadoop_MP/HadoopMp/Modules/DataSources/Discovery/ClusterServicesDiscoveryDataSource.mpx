@@ -1,0 +1,102 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <DataSourceModuleType ID="Ambari.SCOM.Module.ClusterServicesDiscoveryDataSource" Accessibility="Public"
+                            RunAs="Ambari.SCOM.Profile.Workflow">
+        <Configuration>
+          <xsd:element name="IntervalSeconds" type="xsd:integer" />
+          <xsd:element name="SyncTime" type="xsd:string" />
+          <xsd:element name="TimeoutSeconds" type="xsd:integer" />
+          <xsd:element name="TemplateName" type="xsd:string" />
+          <xsd:element name="ClusterName" type="xsd:string" />
+          <xsd:element name="ClusterAmbariUri" type="xsd:string" />
+          <xsd:element name="WatcherNodesList" type="xsd:string" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
+          <OverrideableParameter ID="SyncTime" Selector="$Config/SyncTime$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <DataSource ID="DS" TypeID="Ambari.SCOM.Module.PowerShellDiscoveryDataSource">
+                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+                <SyncTime>$Config/SyncTime$</SyncTime>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+                <WorkflowName>ClusterServicesDiscovery</WorkflowName>
+                <Script>$IncludeFileContent/Modules/DataSources/Discovery/Scripts/ClusterServicesDiscovery.ps1$</Script>
+                <Parameters>
+                  <Parameter>
+                    <Name>TemplateName</Name>
+                    <Value>$Config/TemplateName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>ClusterName</Name>
+                    <Value>$Config/ClusterName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>ClusterAmbariUri</Name>
+                    <Value>$Config/ClusterAmbariUri$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WatcherNodesList</Name>
+                    <Value>$Config/WatcherNodesList$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Username</Name>
+                    <Value>$RunAs[Name="Ambari.SCOM.Profile.Ambari"]/UserName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Password</Name>
+                    <Value>$RunAs[Name="Ambari.SCOM.Profile.Ambari"]/Password$</Value>
+                  </Parameter>
+                </Parameters>
+              </DataSource>
+            </MemberModules>
+            <Composition>
+              <Node ID="DS" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.Discovery.Data</OutputType>
+      </DataSourceModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Module.ClusterServicesDiscoveryDataSource">
+          <Name>Hadoop Cluster Services Discovery Data Provider</Name>
+          <Description>This module discovers Hadoop Cluster Services of specific Hadoop Cluster.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Module.ClusterServicesDiscoveryDataSource" SubElementID="IntervalSeconds">
+          <Name>Interval (sec)</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Module.ClusterServicesDiscoveryDataSource" SubElementID="SyncTime">
+          <Name>Sync Time</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Module.ClusterServicesDiscoveryDataSource" SubElementID="TimeoutSeconds">
+          <Name>Timeout (sec)</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

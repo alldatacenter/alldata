@@ -1,0 +1,27 @@
+{
+  "type" : "full-release",
+  "name" : "onefs-ambari-mpack",
+  "version": "1.0.1.0",
+  "description" : "OneFS Ambari Management Pack",
+  "prerequisites": {
+    "min-ambari-version" : "3.0.0.0"
+  },
+  "artifacts": [
+    {
+      "name" : "ONEFS-addon-services",
+      "type" : "stack-addon-service-definitions",
+      "source_dir" : "addon-services",
+      "service_versions_map" : [
+          {
+             "service_name" : "ONEFS",
+             "service_version" : "1.0.0",
+             "applicable_stacks" : [
+                 { "stack_name" : "HDP", "stack_version" : "2.6" },
+                 { "stack_name" : "HDP", "stack_version" : "3.0" }
+              ]
+          }
+      ]
+    }
+  ]
+}
+

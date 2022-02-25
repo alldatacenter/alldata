@@ -1,0 +1,214 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="installOptions" class="wizard-content col-md-9">
+  <h4 class="step-title">{{t installer.step2.header}}</h4>
+  <p class="step-description">{{t installer.step2.body}}</p>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <div id="targetHosts" {{QAAttr "target-hosts"}}>
+        <div class="step-title" {{QAAttr "target-hosts-title"}}>{{t installer.step2.targetHosts}}</div>
+        <div {{bindAttr class="hostsError:has-error :form-group :target-hosts-input"}}>
+          <p class="wizard-plain-text" {{QAAttr "target-hosts-description"}}>{{t installer.step2.targetHosts.info}}. {{t installer.step2.orUse}}
+            <a href="javascript:void(null)"
+               rel="popover"
+              {{translateAttr title="installer.step2.hostPattern.tooltip.title" data-content="installer.step2.hostPattern.tooltip.content"}}
+              {{QAAttr "pattern-expressions-link"}}>
+              <span {{QAAttr "pattern-expressions-link-text"}}>{{t installer.step2.hostPattern.tooltip.title}}</span>
+            </a>
+          </p>
+
+          <div class="row">
+            <div class="col-md-8">
+              {{view Ember.TextArea id="host-names" class="form-control" valueBinding="content.installOptions.hostNames"
+              rows="5" placeholder="host names" data-qa="target-hosts-textarea"}}
+            </div>
+            {{#if hostsError}}
+              <div class="col-md-4">
+                <p class="help-block validation-block" {{QAAttr "host-names-validation"}}>{{hostsError}}</p>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+
+      <div {{QAAttr "host-registration-info"}}>
+        <div class="step-title" {{QAAttr "host-registration-info-title"}}>{{t installer.step2.sshKey}}</div>
+        <div class="row radio-button-options">
+          <div class="col-sm-5 row">
+            <div class="col-sm-1">
+              {{#view view.providingSSHKeyRadioButton labelIdentifier="ssh-key-radio-button"}}{{/view}}
+            </div>
+            <div class="col-sm-10 wizard-plain-text">
+              {{#if useSSH}}
+                {{t installer.step2.useSsh.provide}}
+                <a href="javascript:void(null)"
+                   rel="popover"
+                  {{translateAttr title="installer.step2.useSsh.tooltip.title" data-content="installer.step2.useSsh.tooltip.content"}}
+                  {{QAAttr "ssh-tooltip-link"}}>
+                  {{t installer.step2.useSsh.tooltip.title}}</a>
+                {{t installer.step2.useSsh.provide_id_rsa}}
+              {{else}}
+                {{t installer.step2.install.perform}}
+                <a href="javascript:void(null)"
+                   rel="popover"
+                  {{translateAttr title="installer.step2.automaticInstall.tooltip.title" data-content="installer.step2.automaticInstall.tooltip.content"}}
+                  {{QAAttr "ssh-tooltip-link"}}>
+                  {{t installer.step2.automaticInstall.tooltip.title}}</a>
+                {{t installer.step2.install.perform_on_hosts}}
+              {{/if}}
+            </div>
+          </div>
+          <div class="col-sm-5 row">
+            <div class="col-sm-1">
+              {{#view view.manualRegistrationRadioButton labelIdentifier="manual-registration-radio-button"}}{{/view}}
+            </div>
+            <div class="col-sm-10 wizard-plain-text">
+              {{t installer.step2.install.perform}}
+              {{#if useSSH}}
+                <a href="javascript:void(null)"
+                   rel="popover"
+                  {{translateAttr title="installer.step2.manualInstall.tooltip.title" data-content="installer.step2.manualInstall.tooltip.content"}}
+                  {{QAAttr "ssh-tooltip-link"}}>
+                  {{t installer.step2.manualInstall.tooltip.title}}</a>
+              {{else}}
+                <a href="javascript:void(null)"
+                   rel="popover"
+                  {{translateAttr title="installer.step2.manualInstall.tooltip.title" data-content="installer.step2.manualInstall.tooltip.content_no_ssh"}}
+                  {{QAAttr "ssh-tooltip-link"}}>
+                  {{t installer.step2.manualInstall.tooltip.title}}</a>
+              {{/if}}
+              {{t installer.step2.install.perform_on_hosts}}
+              {{#if useSSH}}
+                {{t installer.step2.install.without_ssh}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+
+        {{#if useSSH}}
+          <div class="ssh-key-input">
+            {{#if view.isFileApi}}
+              <div>
+                {{view App.SshKeyFileUploader disabledBinding="view.sshKeyState"}}
+              </div>
+            {{/if}}
+
+            {{! ssh key }}
+            <div {{bindAttr class="sshKeyError:has-error :form-group :row"}}>
+              <div class="col-md-8">
+                {{view Ember.TextArea class="form-control" rows="3" id="sshKey"
+                placeholder="ssh private key" disabledBinding="view.sshKeyState"
+                valueBinding="content.installOptions.sshKey" data-qa="ssh-key-textarea"}}
+              </div>
+              {{#if sshKeyError}}
+                <div class="col-md-4">
+                  <span class="help-block validation-block" {{QAAttr "ssh-key-validation"}}>{{sshKeyError}}</span>
+                </div>
+              {{/if}}
+            </div>
+            {{! ssh key end }}
+
+            {{! ssh user }}
+            <div {{bindAttr class="sshUserError:has-error :row"}}>
+              <div class="col-md-4">
+                <label rel="tooltip" {{translateAttr title="installer.step2.sshUser.toolTip"}} class="ssh-user wizard-plain-text">
+                  {{t installer.step2.sshUser}}
+                </label>
+              </div>
+              <div {{bindAttr class="sshUserError:has-error :form-group :col-md-4"}}>
+                {{view view.textFieldView valueBinding="content.installOptions.sshUser" isEnabledBinding="content.installOptions.useSsh" classNames="form-control pull-right" data-qa="ssh-user-input"}}
+              </div>
+              {{#if sshUserError}}
+                <div class="col-md-4">
+                  <span class="help-block validation-block help-inline">{{sshUserError}}</span>
+                </div>
+              {{/if}}
+            </div>
+            {{! ssh user end }}
+
+            {{! ssh port }}
+            <div {{bindAttr class="sshPortError:has-error :row"}}>
+              <div class="col-md-4">
+                <label rel="tooltip" {{translateAttr title="installer.step2.sshPort.toolTip"}} class="ssh-port wizard-plain-text">
+                  {{t installer.step2.sshPort}}
+                </label>
+              </div>
+              <div class="form-group col-md-4">
+                {{view view.textFieldView valueBinding="content.installOptions.sshPort" isEnabledBinding="content.installOptions.useSsh" classNames="form-control"}}
+              </div>
+              {{#if sshPortError}}
+                <div class="col-md-4">
+                  <span class="help-block validation-block help-inline">{{sshPortError}}</span>
+                </div>
+              {{/if}}
+            </div>
+            {{! ssh port end }}
+
+            {{! ambari agent user }}
+            {{#if App.supports.customizeAgentUserAccount}}
+              <div {{bindAttr class="agentUserError:has-error :row"}}>
+                <div class="col-md-4">
+                  <label rel="tooltip" {{translateAttr title="installer.step2.agentUser.toolTip"}} class="ssh-user wizard-plain-text">
+                    {{t installer.step2.agentUser}}
+                  </label>
+                </div>
+                <div {{bindAttr class="agentUserError:has-error :form-group :col-md-4"}}>
+                  {{view view.textFieldView valueBinding="content.installOptions.agentUser" isEnabledBinding="content.installOptions.useSsh" classNames="form-control"}}
+                </div>
+                {{#if agentUserError}}
+                  <div class="col-md-4">
+                    <span class="help-block validation-block help-inline">{{agentUserError}}</span>
+                  </div>
+                {{/if}}
+              </div>
+            {{/if}}
+            {{! ambari agent user end }}
+          </div>
+        {{/if}}
+      </div>
+      {{#if isAddHostWizard}}
+        <br>
+        {{view view.skipHostsCheckBox checkedBinding="content.installOptions.skipHostChecks"}}
+        {{t installer.step2.skipHostChecks.label}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    {{#unless view.parentView.controller.hideBackButton}}
+      <button class="btn btn-default pull-left installer-back-btn" {{action back}} {{bindAttr disabled="App.router.btnClickInProgress"}} {{QAAttr "wizard-back"}}>
+        &larr; {{t common.back}}
+        {{#if App.router.backBtnClickInProgress}}
+          {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+        {{/if}}
+      </button>
+    {{/unless}}
+    {{template "templates/wizard/installer_cancel_button"}}
+    <button class="btn btn-success pull-right" {{bindAttr disabled="isSubmitDisabled"}} {{action evaluateStep target="controller"}} {{QAAttr "wizard-next"}}>
+      {{#if App.router.nextBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+      {{/if}}
+      {{t installer.step2.registerAndConfirm}} &rarr;
+    </button>
+  </div>
+</div>

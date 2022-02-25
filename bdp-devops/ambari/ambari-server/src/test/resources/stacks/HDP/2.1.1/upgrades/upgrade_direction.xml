@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="upgrade-pack.xsd">
+  <target>2.2.*.*</target>
+  <target-stack>HDP-2.2.5</target-stack>
+  <type>ROLLING</type>
+  <prerequisite-checks>
+    <!-- List of additional pre-req checks to run in addition to the required pre-reqs -->
+    <check>org.apache.ambari.server.checks.HiveMultipleMetastoreCheck</check>
+    <check>org.apache.ambari.server.checks.MapReduce2JobHistoryStatePreservingCheck</check>
+    <check>org.apache.ambari.server.checks.SecondaryNamenodeDeletedCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesMapReduceDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesNamenodeHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesTezDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesYarnWorkPreservingCheck</check>
+    <check>org.apache.ambari.server.checks.YarnRMHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.YarnTimelineServerStatePreservingCheck</check>
+  </prerequisite-checks>
+
+  <order>
+    <group name="ZOOKEEPER" title="Zookeeper">
+      <service name="ZOOKEEPER">
+        <component>ZOOKEEPER_SERVER</component>
+        <component>ZOOKEEPER_CLIENT</component>
+      </service>
+    </group>
+    
+    <group name="SERVICE_CHECK_1" title="Service Checks" xsi:type="service-check">
+      <direction>UPGRADE</direction>
+      <priority>
+        <service>HDFS</service>
+        <service>YARN</service>
+      </priority>
+    </group>
+    
+    <group xsi:type="cluster" name="PRE_POST_CLUSTER" title="Run on All">
+      <execute-stage title="Host Finalize" service="HDFS" component="NAMENODE">
+        <task xsi:type="execute" hosts="master">
+          <script>scripts/ru_run_all.py</script>
+          <function>actionexecute</function>
+        </task>
+      </execute-stage>      
+    </group>
+    
+    <group xsi:type="cluster" name="POST_CLUSTER" title="Finalize Upgrade">
+      <execute-stage title="Direction Downgrade Only">
+        <direction>DOWNGRADE</direction>
+        <task xsi:type="manual">
+          <message>this is downgrade message</message>
+        </task>
+      </execute-stage>
+      
+      <execute-stage title="NameNode Finalize" service="HDFS" component="NAMENODE">
+        <task xsi:type="execute" hosts="master">
+          <script>scripts/namenode.py</script>
+          <function>actionexecute</function>
+        </task>
+      </execute-stage>      
+      
+      <execute-stage title="Save Cluster State">
+        <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.FinalizeUpgradeAction">
+        </task>
+      </execute-stage>
+    </group>
+  </order>
+  
+  <processing>
+    <service name="ZOOKEEPER">
+      <component name="ZOOKEEPER_SERVER">
+        <pre-upgrade>
+          <task xsi:type="manual">
+            <summary>SUMMARY OF PREPARE</summary>
+            <message>This is a manual task with a placeholder of {{foo/bar}}</message>
+          </task>
+        </pre-upgrade>
+        
+        <pre-downgrade copy-upgrade="true" />
+        
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+        <post-upgrade>
+          <task xsi:type="configure" id="foo" />
+        </post-upgrade>
+        
+        <post-downgrade copy-upgrade="true" />
+      </component>
+    </service>
+  </processing>
+  
+</upgrade>

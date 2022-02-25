@@ -1,0 +1,32 @@
+{
+  "UpgradeItem" : {
+    "cluster_name" : "c1",
+    "group_id" : 1,
+    "request_id" : 5,
+    "stage_id" : 1
+  },
+  "tasks" : [
+    {
+      "Tasks" : {
+        "attempt_cnt" : 1,
+        "cluster_name" : "c1",
+        "command" : "EXECUTE",
+        "command_detail" : "Before continuing, please backup the Hive Metastore database located on the following host(s): perf-400-25feb-b-5.c.pramod-thangali.internal.  During the upgrade process, you will be instructed when it is time to upgrade the Hive Metastore database. ...",
+        "custom_command_name" : "org.apache.ambari.server.serveraction.upgrades.ManualStageAction",
+        "end_time" : -1,
+        "error_log" : "/var/lib/ambari-agent/data/errors-15578.txt",
+        "exit_code" : 0,
+        "host_name" : "perf-400-25feb-c-193.c.pramod-thangali.internal",
+        "id" : 15578,
+        "output_log" : "/var/lib/ambari-agent/data/output-15578.txt",
+        "request_id" : 5,
+        "role" : "AMBARI_SERVER_ACTION",
+        "stage_id" : 1,
+        "start_time" : 1424961934089,
+        "status" : "COMPLETED",
+        "stderr" : "",
+        "stdout" : ""
+      }
+    }
+  ]
+}

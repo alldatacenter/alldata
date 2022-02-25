@@ -1,0 +1,7 @@
+{
+  "general_deps" : {
+    "_comment" : "dependencies for ambari infra",
+    "INFRA_SOLR-START" : ["ZOOKEEPER_SERVER-START"],
+    "AMBARI_INFRA_SERVICE_CHECK-SERVICE_CHECK": ["INFRA_SOLR-START"]
+  }
+}

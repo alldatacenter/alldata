@@ -1,0 +1,10 @@
+{
+   "report_name" : "disk_report",
+   "report_type" : "standard",
+   "title" : "Disk Report",
+   "vertical_label" : "GB",
+   "series" : [
+      { "metric": "disk_total", "color": "ffea00", "label": "Total Disk Space", "line_width": "2", "type": "line" },
+      { "metric": "disk_free", "color": "3333bb", "label": "Disk Space Available", "line_width": "2", "type": "stack" }
+   ]
+}

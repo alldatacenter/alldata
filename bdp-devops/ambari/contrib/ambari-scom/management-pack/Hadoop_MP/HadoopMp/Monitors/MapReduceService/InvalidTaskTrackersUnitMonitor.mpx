@@ -1,0 +1,102 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Monitors>
+      <UnitMonitor ID="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers"
+                   TypeID="Ambari.SCOM.UnitMonitorType.MapReduceInvalidTaskTrackers"
+                   Target="Ambari.SCOM.ClusterService.MapReduce"
+                   ParentMonitorID="Health!System.Health.PerformanceState"
+                   Remotable="true" Priority="Normal" Accessibility="Public" Enabled="true" ConfirmDelivery="true">
+        <Category>PerformanceHealth</Category>
+        <AlertSettings AlertMessage="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers.AlertMessage">
+          <AlertOnState>Warning</AlertOnState>
+          <AutoResolve>true</AutoResolve>
+          <AlertPriority>Normal</AlertPriority>
+          <AlertSeverity>MatchMonitorHealth</AlertSeverity>
+          <AlertParameters>
+            <AlertParameter1>$Target/Host/Property[Type="Ambari.SCOM.ClusterService.Private"]/ClusterName$</AlertParameter1>
+            <AlertParameter2>$Data/Context/Property[@Name='trackers_graylisted']$</AlertParameter2>
+            <AlertParameter3>$Data/Context/Property[@Name='trackers_blacklisted']$</AlertParameter3>
+          </AlertParameters>
+        </AlertSettings>
+        <OperationalStates>
+          <OperationalState ID="Healthy" MonitorTypeStateID="Healthy" HealthState="Success" />
+          <OperationalState ID="Warning" MonitorTypeStateID="Warning" HealthState="Warning" />
+          <OperationalState ID="Critical" MonitorTypeStateID="Critical" HealthState="Error" />
+        </OperationalStates>
+        <Configuration>
+          <IntervalSeconds>900</IntervalSeconds>
+          <TimeoutSeconds>300</TimeoutSeconds>
+          <WarningGraylistedCount>1</WarningGraylistedCount>
+          <CriticalBlacklistedCount>1</CriticalBlacklistedCount>
+        </Configuration>
+      </UnitMonitor>
+    </Monitors>
+  </Monitoring>
+
+  <Presentation>
+    <StringResources>
+      <StringResource ID="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers.AlertMessage"/>
+    </StringResources>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers">
+          <Name>Invalid TaskTrackers</Name>
+          <Description>Gives warning alert if there is at least one graylisted task-tracker. Gives critical alert if there is at least one blacklisted task-tracker.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers" SubElementID="Healthy">
+          <Name>None</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers" SubElementID="Warning">
+          <Name>Graylisted Exists</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers" SubElementID="Critical">
+          <Name>Blacklisted Exists</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers.AlertMessage">
+          <Name>There are TaskTracker nodes which are in the invalid state.</Name>
+          <Description>There are {1} graylisted and {2} blacklisted TaskTrackers in cluster "{0}".</Description>
+        </DisplayString>
+      </DisplayStrings>
+
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="Ambari.SCOM.UnitMonitor.MapReduceInvalidTaskTrackers" Visible="true">
+          <MamlContent>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Summary</title>
+              <para>Gives warning alert if there is at least one graylisted task-tracker. Gives critical alert if there is at least one blacklisted task-tracker.</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Causes</title>
+              <para>TBD</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Resolutions</title>
+              <para>TBD</para>
+            </section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

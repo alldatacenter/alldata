@@ -1,0 +1,30 @@
+{
+    "clusterName": "c1",
+    "configurationAttributes": {},
+    "roleParams": {
+        "threshold": "20",
+        "check_execute_list": "last_agent_env_check",
+        "jdk_location": "http://c6401.ambari.apache.org:8080/resources"
+    },
+    "hostname": "c6402.ambari.apache.org",
+    "passiveInfo": [],
+    "hostLevelParams": {},
+    "commandType": "EXECUTION_COMMAND",
+    "roleCommand": "ACTIONEXECUTE",
+    "serviceName": "null",
+    "role": "check_host",
+    "forceRefreshConfigTags": [],
+    "taskId": 4,
+    "public_hostname": "c6402.ambari.apache.org",
+    "configurations": {},
+    "commandParams": {
+        "jdk_location": "http://c6401.ambari.apache.org:8080/resources",
+        "script": "check_host.py",
+        "check_execute_list": "last_agent_env_check",
+        "threshold": "20",
+        "command_timeout": "60",
+        "script_type": "PYTHON"
+    },
+    "commandId": "4-1",
+    "clusterHostInfo": {}
+}

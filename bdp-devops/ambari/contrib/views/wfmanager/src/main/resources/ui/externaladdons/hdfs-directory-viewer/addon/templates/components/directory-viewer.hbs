@@ -1,0 +1,163 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="pull-left col-sm-6 top-header">
+{{#if isGoToFolder}}
+        <div class="container-fluid go-to-folder">
+            <div class="form-inline">
+                <div class="form-group">
+                    {{input class="form-control col-sm-4 folder-name" id="folderPath" placeholder="Enter folder path" name="folderPath" value=currentPath}}
+                </div>
+                <button type="button" class="btn btn-sm btn-default btn-primary btn-action" {{action "goToFolder"}}><i aria-hidden="true" class="fa fa-arrow-circle-right"></i></button>
+                <button type="button" class="btn btn-sm btn-default btn-danger btn-action" {{action "toggleGoToFolderMenu"}}>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+{{else if isCreateFolder}}
+        <div class="container-fluid add-folder">
+            <div class="form-inline">
+                <div class="form-group">
+                    {{input class="form-control col-sm-4 folder-name" id="folderName" placeholder="Enter folder name" name="folderName" value=currentPath}}
+                </div>
+                <button type="button" class="btn btn-sm btn-default btn-primary" {{action "createFolder"}}><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-sm btn-default btn-danger" {{action "toggleCreateFolderMenu"}}><i class="fa fa-times" aria-hidden="true"></i></button>
+                {{#if isFolderCreationSuccess}}
+                    <div class="file-creation-status">
+                        <strong class="file-creation-success">Folder have been created.</strong>
+                    </div>
+                {{/if}}
+                {{#if isFolderCreationFailure}}
+                    <div class="file-creation-status">
+                        <strong class="file-creation-failure">Folder creation failed.</strong>
+                        <div class="file-creation-failure">
+                            {{createFolderError.message}}
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if isFolderCreationprogress}}
+                    <div class="loading-data" class="file-creation-status">
+                        <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>Creating the folder...
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+
+{{else}}
+
+    {{#if breadCrumbs.dropDownMenu}}
+        <li class="inline">
+        <div class="dropdown">
+            <a class="dropdown-toggle" d="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	        <span class="fa-stack">
+	          <i class="fa fa-folder-o fa-stack-1x mod-icon" aria-hidden="true"></i>
+	          <i class="fa fa-caret-down fa-stack-1x" aria-hidden="true"></i>
+	        </span>
+            </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        {{#each breadCrumbs.dropDownMenu as |crumb index|}}
+                <li><a {{action "drillToPath" crumb.path crumb}}> <div title={{crumb.fullFileName}} class="elipsis-link pointer inline">{{crumb.name}}</div></a></li>
+        {{/each}}
+            </ul>
+        </div>
+        </li>&nbsp;/
+    {{/if}}
+    <div class="bs-example breadcrumbs-label">
+        <ul class="breadcrumb">
+            <li>
+                {{#each breadCrumbs.breadCrumbsMenu as |pathItem|}}
+                    {{#if pathItem.isRoot}}
+                        <a {{action "drillToPath" pathItem.path pathItem}}><i class="fa fa-folder-o home-icon" aria-hidden="true"></i></a>&nbsp;>
+                    {{else if pathItem.isCurrentFolder}}
+                        <span  title={{pathItem.fullFileName}}>{{pathItem.name}}</span>&nbsp;
+                    {{else}}
+                        <a {{action "drillToPath" pathItem.path pathItem}}><div class="pointer inline" title={{pathItem.fullFileName}}>{{pathItem.name}}</div></a>&nbsp;>
+                    {{/if}}
+                {{/each}}
+            </li>
+        </ul>
+    </div>
+
+    <div class="pull-right file-viewer-settings">
+        <li class="breadcrumbs-label no-padding">
+            <div class="dropdown">
+                <a class="dropdown-toggle" d="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		  <span class="btn btn-sm btn-default">
+		    <i class="fa fa-cog" aria-hidden="true"></i>
+		    <i class="fa fa-caret-down" aria-hidden="true"></i>
+		  </span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a>{{input type="checkbox" class="margin-right-5" name="dir" checked=isDirectory}}Directories</a></li>
+                    <li><a>{{input type="checkbox" class="margin-right-5" name="file" checked=isFile}}Files</a></li>
+                </ul>
+            </div>
+        </li>
+        <span {{ action "drillToPath" currentPath}} class="btn btn-sm btn-default">
+		    <i class="fa fa-refresh" aria-hidden="true"></i>
+		</span>
+        <button type="button" class="btn btn-sm btn-primary" {{action "toggleCreateFolderMenu"}}>
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>{{!--  New Folder --}}
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" {{action "toggleGoToFolderMenu"}}>
+            <i aria-hidden="true" class="fa fa-arrow-circle-o-right"></i> {{!-- Go To --}}
+        </button>
+    </div>
+{{/if}}
+</div>
+<div id="file-view-unix">
+    {{#if isDataLoading}}
+        <div class="loading-data file-system-status">
+            <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>Fetching data...
+        </div>
+    {{else if errorMsg}}
+        <div class="file-system-status">
+            <strong class="file-creation-failure">{{errorMsg}}</strong>
+            <div class="file-creation-failure">
+                {{folderAccessError.message}}
+            </div>
+        </div>
+    {{else}}
+        {{#if filteredFileSytemInfo}}
+            <div class="container-fluid">
+                {{#ember-collection items=filteredFileSytemInfo cell-layout=(fixed-grid-layout fileBrowserWidth 41) as |item index|}}
+                    <div class="row file-row {{item.selectedClass}}" {{action 'selectRow' index item}}>
+                        {{#if item.traverse}}
+                            <div class="col-sm-8">
+                                <a class="padding-left-10px pointer" {{action "drillToPath" item.path item}}>
+                                    <i class="fa fa-reply padding-right-10px" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        {{else if item.isDirectory }}
+                            <div class="col-sm-6 elipsisClass">
+                                <a title={{item.text}} class="padding-left-10px pointer" {{action "drillToPath" item.path item}}>
+                                <i class="fa fa-folder-o padding-right-10px" aria-hidden="true"></i>{{ item.text }}
+                                </a>
+                            </div>
+                        {{else}}
+                            <div class="col-sm-6 elipsisClass" title={{item.text}}>
+                                <i class="fa fa-file padding-left-10px padding-right-10px" aria-hidden="true"></i>{{ item.text }}
+                            </div>
+                        {{/if}}
+                    </div>
+                {{/ember-collection}}
+            </div>
+        {{else}}
+            No files or folders.
+        {{/if}}
+    {{/if}}
+</div>

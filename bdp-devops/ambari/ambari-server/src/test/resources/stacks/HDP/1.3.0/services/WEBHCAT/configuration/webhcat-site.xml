@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!-- The default settings for Templeton. -->
+<!-- Edit templeton-site.xml to change settings for your local -->
+<!-- install. -->
+<configuration>
+  <property>
+    <name>templeton.port</name>
+    <value>50111</value>
+    <description>The HTTP port for the main server.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.hadoop.conf.dir</name>
+    <display-name>Templeton Hadoop Conf directory</display-name>
+    <value>/etc/hadoop/conf</value>
+    <description>The path to the Hadoop configuration.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.jar</name>
+    <value>/usr/lib/hcatalog/share/webhcat/svr/webhcat.jar</value>
+    <description>The path to the Templeton jar file.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.libjars</name>
+    <value>/usr/lib/zookeeper/zookeeper.jar</value>
+    <description>Jars to add the the classpath.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.hadoop</name>
+    <value>/usr/bin/hadoop</value>
+    <description>The path to the Hadoop executable.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.pig.archive</name>
+    <value>hdfs:///apps/webhcat/pig.tar.gz</value>
+    <description>The path to the Pig archive.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.pig.path</name>
+    <value>pig.tar.gz/pig/bin/pig</value>
+    <description>The path to the Pig executable.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.hcat</name>
+    <value>/usr/bin/hcat</value>
+    <description>The path to the hcatalog executable.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.hive.archive</name>
+    <value>hdfs:///apps/webhcat/hive.tar.gz</value>
+    <description>The path to the Hive archive.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.hive.path</name>
+    <value>hive.tar.gz/hive/bin/hive</value>
+    <description>The path to the Hive executable.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.hive.properties</name>
+    <value/>
+    <description>Properties to set when running hive.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.zookeeper.hosts</name>
+    <value/>
+    <description>ZooKeeper servers, as comma separated host:port pairs</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.storage.class</name>
+    <value>org.apache.hcatalog.templeton.tool.ZooKeeperStorage</value>
+    <description>The class to use as storage</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.override.enabled</name>
+    <value>false</value>
+    <description>
+     Enable the override path in templeton.override.jars
+   </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.streaming.jar</name>
+    <value>hdfs:///apps/webhcat/hadoop-streaming.jar</value>
+    <description>The hdfs path to the Hadoop streaming jar file.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton.exec.timeout</name>
+    <value>60000</value>
+    <description>Time out for templeton api</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

@@ -1,0 +1,10 @@
+{
+   "report_name" : "hdfs_io_report",
+   "report_type" : "standard",
+   "title" : "HDFS I/O",
+   "vertical_label" : "Bytes/Sec",
+   "series" : [
+      { "metric": "dfs.datanode.bytes_written", "color": "ff0000", "label": "Bytes Written/Sec", "line_width": "2", "type": "line" },
+      { "metric": "dfs.datanode.bytes_read", "color": "0000ff", "label": "Bytes Read/Sec", "line_width": "2", "type": "line" }
+   ]
+}

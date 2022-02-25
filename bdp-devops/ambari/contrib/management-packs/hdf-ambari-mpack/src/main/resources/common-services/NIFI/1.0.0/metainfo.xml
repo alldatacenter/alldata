@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<metainfo>
+    <schemaVersion>2.0</schemaVersion>
+    <services>
+        <service>
+            <name>NIFI</name>
+            <displayName>NiFi</displayName>
+            <comment>Apache NiFi is an easy to use, powerful, and reliable system to process and distribute data.</comment>
+            <version>1.0.0</version>
+            <components>
+                <component>
+                  <name>NIFI_CA</name>
+                  <displayName>NiFi Certificate Authority</displayName>
+                  <category>SLAVE</category>
+                  <cardinality>0-1</cardinality>
+                  <timelineAppid>NIFI</timelineAppid>
+                  <logs>
+                    <log>
+                      <logId>nifi_ca</logId>
+                      <primary>true</primary>
+                    </log>
+                  </logs>
+                  <commandScript>
+                    <script>scripts/nifi_ca.py</script>
+                    <scriptType>PYTHON</scriptType>
+                    <timeout>10000</timeout>
+                  </commandScript>
+                  <customCommands>
+                    <customCommand>
+                      <name>INVALIDATE_CA_SERVER</name>
+                      <commandScript>
+                        <script>scripts/nifi_ca.py</script>
+                        <scriptType>PYTHON</scriptType>
+                        <timeout>600</timeout>
+                      </commandScript>
+                    </customCommand>
+                  </customCommands>
+                </component>                       
+                <component>
+                  <name>NIFI_MASTER</name>
+                  <displayName>NiFi</displayName>
+                  <category>MASTER</category>
+                  <cardinality>1+</cardinality>
+                  <timelineAppid>NIFI</timelineAppid>
+
+                  <dependencies>
+                    <dependency>
+                      <name>ZOOKEEPER/ZOOKEEPER_CLIENT</name>
+                      <scope>host</scope>
+                      <auto-deploy>
+                        <enabled>true</enabled>
+                      </auto-deploy>
+                    </dependency>
+                  </dependencies>
+                            
+                  <logs>
+                    <log>
+                      <logId>nifi_app</logId>
+                      <primary>true</primary>
+                    </log>
+                    <log>
+                      <logId>nifi_bootstrap</logId>
+                    </log>
+                    <log> 
+                      <logId>nifi_setup</logId>
+                    </log>
+                    <log> 
+                      <logId>nifi_user</logId>
+                    </log>
+                  </logs>
+                  <commandScript>
+                    <script>scripts/nifi.py</script>
+                    <scriptType>PYTHON</scriptType>
+                    <timeout>10000</timeout>
+                  </commandScript>
+                </component>                       
+            </components>
+            <osSpecifics>
+	          <osSpecific>
+                 <osFamily>redhat7,amazon2015,redhat6,suse11,suse12</osFamily>
+                 <packages>
+                   <package>
+                     <name>nifi_${stack_version}</name>
+                   </package>
+                 </packages>
+	          </osSpecific>
+	          <osSpecific>
+	            <osFamily>debian7,ubuntu12,ubuntu14,ubuntu16</osFamily>
+	             <packages>
+	              <package>
+	                 <name>nifi-${stack_version}</name>
+	               </package>
+                 </packages>
+              </osSpecific>
+            </osSpecifics>
+
+            <commandScript>
+              <script>scripts/service_check.py</script>
+              <scriptType>PYTHON</scriptType>
+              <timeout>300</timeout>
+            </commandScript>
+
+      	    <requiredServices>
+      	       <service>ZOOKEEPER</service>
+      	    </requiredServices>
+            
+      	    <configuration-dependencies>
+                <config-type>nifi-ambari-config</config-type>
+                <config-type>nifi-ambari-ssl-config</config-type>                
+                <config-type>nifi-authorizers-env</config-type>
+                <config-type>nifi-bootstrap-env</config-type>
+                <config-type>nifi-env</config-type>
+                <config-type>nifi-flow-env</config-type>
+                <config-type>nifi-node-logback-env</config-type>
+                <config-type>nifi-properties</config-type>
+                <config-type>nifi-state-management-env</config-type>
+                <config-type>ranger-nifi-audit</config-type>
+                <config-type>ranger-nifi-plugin-properties</config-type>
+                <config-type>ranger-nifi-policymgr-ssl</config-type>
+                <config-type>ranger-nifi-security</config-type>
+            </configuration-dependencies>
+            <quickLinksConfigurations>
+              <quickLinksConfiguration>
+                <fileName>quicklinks.json</fileName>
+                <default>true</default>
+              </quickLinksConfiguration>
+            </quickLinksConfigurations>            
+            <restartRequiredAfterChange>true</restartRequiredAfterChange>
+            <widgetsFileName>widgets.json</widgetsFileName>
+            <metricsFileName>metrics.json</metricsFileName>        
+        </service>
+    </services>
+</metainfo>

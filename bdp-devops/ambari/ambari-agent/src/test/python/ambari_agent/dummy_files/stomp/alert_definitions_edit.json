@@ -1,0 +1,44 @@
+{
+  "hash": "5b6d27552afd90c575dff3eeecdfb984",
+  "eventType": "UPDATE",
+  "clusters": {
+    "0": {
+      "hash": "8f7b4e960133bc691661cbcdaddddec8",
+      "alertDefinitions": [
+        {
+          "ignore_host": false,
+          "name": "hbase_regionserver_process_percent",
+          "enabled": true,
+          "interval": 2,
+          "clusterId": 2,
+          "uuid": "69ff4c8f-8e98-4cfd-b90f-6914e2f147ff",
+          "label": "Percent RegionServers Available",
+          "definitionId": 3,
+          "source": {
+            "alert_name": "hbase_regionserver_process",
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 10.0
+              },
+              "ok": {
+                "text": "affected: [{1}], total: [{0}]"
+              },
+              "critical": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 30.0
+              }
+            },
+            "type": "AGGREGATE"
+          },
+          "serviceName": "HBASE",
+          "scope": "SERVICE",
+          "description": "This service-level alert is triggered if the configured percentage of RegionServer processes cannot be determined to be up and listening on the network for the configured warning and critical thresholds. It aggregates the results of RegionServer process down checks."
+        }
+      ]
+    }
+
+  }
+}

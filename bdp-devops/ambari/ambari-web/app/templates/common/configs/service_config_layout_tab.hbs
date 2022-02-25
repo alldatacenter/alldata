@@ -1,0 +1,102 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.dataIsReady}}
+  {{#unless view.content.isHiddenByFilter}}
+  <div class="section-layout-container">
+    <div class="loading-overlay"></div>
+    <table class="config-section-table">
+      {{#each row in view.content.sectionRows}}
+        <tr>
+          {{#each section in row}}
+            <td {{bindAttr class="section.isHiddenByFilter:invisible :config-section" colspan="section.columnSpan" rowspan="section.rowSpan"}}>
+              <h4>{{section.displayName}}</h4>
+              <table class="config-subsection-table">
+                {{#each subRow in section.subsectionRows}}
+                  <tr>
+                    {{#each subsection in subRow}}
+                      <td {{bindAttr class="subsection.isSectionVisible::invisible subsection.showTopSplitter:top-horizontal-splitter:no-horizontal-splitter :config-subsection" colspan="subsection.columnSpan" rowspan="subsection.rowSpan"}}>
+                        <div {{bindAttr class="subsection.addLeftVerticalSplitter:vertical-splitter-l"}}>
+                          <div {{bindAttr class="subsection.border:with-border"}}>
+                            <h5 class="subsection-display-name">
+                              {{subsection.displayName}}
+                              {{#if subRow.hasTitleGap}}
+                                &nbsp;
+                              {{/if}}
+                            </h5>
+                            {{#each config in subsection.configs}}
+                              {{#if config.widget}}
+                                {{#if config.isVisible}}
+                                  {{#unless config.isHiddenByFilter}}
+                                    {{view config.widget configBinding="config" canEditBinding="view.canEdit" sectionBinding="section" subSectionBinding="subsection" tabBinding="view.content"}}
+                                    {{#if config.additionalView}}
+                                      {{view config.additionalView}}
+                                    {{/if}}
+                                  {{/unless}}
+                                {{/if}}
+                              {{/if}}
+                            {{/each}}
+                            {{#if subsection.showTabs}}
+                              <ul class="nav nav-tabs mbm">
+                                {{#each subSectionTab in subsection.subSectionTabs}}
+                                  <li rel='tooltip' {{bindAttr class="subSectionTab.isActive:active subSectionTab.isVisible::disabled" data-original-title="view.content.tooltipMsg"}}>
+                                    <a href="#" {{action setActiveSubTab subSectionTab target="view"}}{{bindAttr data-target="subSectionTab.id"}} data-toggle="tab">
+                                      {{subSectionTab.displayName}}
+                                      {{#if subSectionTab.errorsCount}}
+                                        <span class="alert-badge" {{QAAttr "error-badge"}}>
+                                          <span class="counter label alerts-crit-count">
+                                            {{subSectionTab.errorsCount}}
+                                          </span>
+                                        </span>
+                                      {{/if}}
+                                    </a>
+                                  </li>
+                                {{/each}}
+                              </ul>
+                              <div class="tab-content service-config-tab-content">
+                              {{#each subSectionTab in subsection.subSectionTabs}}
+                                {{#each config in subSectionTab.configs}}
+                                  <div {{bindAttr class=":tab-pane subSectionTab.isActive:active subSectionTab.id"}}>
+                                    {{#if config.isVisible}}
+                                      {{#unless config.isHiddenByFilter}}
+                                        {{view config.widget configBinding="config" canEditBinding="view.canEdit" sectionBinding="section" subSectionBinding="subsection" tabBinding="view.content"}}
+                                        {{#if config.additionalView}}
+                                          {{view config.additionalView}}
+                                        {{/if}}
+                                      {{/unless}}
+                                    {{/if}}
+                                  </div>
+                                {{/each}}
+                              {{/each}}
+                              </div>
+                            {{/if}}
+                          </div>
+                        </div>
+                      </td>
+                    {{/each}}
+                  </tr>
+                {{/each}}
+              </table>
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </table>
+  </div>
+  {{/unless}}
+{{/if}}

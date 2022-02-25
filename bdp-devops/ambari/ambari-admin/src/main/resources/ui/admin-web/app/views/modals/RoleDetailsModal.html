@@ -1,0 +1,55 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div class="modal-header text-center">
+  <button type="button" class="close" data-dismiss="modal" ng-click="ok()"><span aria-hidden="true">&times;</span><span class="sr-only">{{'common.controls.close' | translate}}</span></button>
+  <h4 class="modal-title">{{'common.rbac' | translate}}</h4>
+</div>
+<div class="modal-body role-details-modal">
+  <div class="table-head-wrapper">
+    <div class="table-head">
+      <div class="table-row-wrapper">
+        <div class="table-row">
+          <div class="table-cell"></div>
+          <div class="table-cell" ng-repeat="role in roles">{{role.permission_label}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="table-cell">{{roles[roles.length - 1].permission_label}}</div>
+  </div>
+  <div class="table-body">
+    <div ng-repeat="level in orderedLevels">
+      <div class="table-row-wrapper table-section-title">
+        <div class="table-row">
+          <div class="table-cell" colspan="{{roles.length + 1}}">{{'users.roles.permissionLevel' | translate:{level: getLevelName(level)} }}</div>
+        </div>
+      </div>
+      <div class="table-row-wrapper">
+        <div class="table-row" ng-repeat="auth_id in authHash[level].order">
+          <div class="table-cell">{{authHash[level][auth_id].name}}</div>
+          <div class="table-cell text-center" ng-repeat="role in roles">
+            <i class="glyphicon glyphicon-ok green-icon" ng-show="authHash[level][auth_id].roles[role.permission_name]"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer text-center">
+  <button class="btn btn-primary" ng-click="ok()">{{'common.controls.close' | translate}}</button>
+</div>

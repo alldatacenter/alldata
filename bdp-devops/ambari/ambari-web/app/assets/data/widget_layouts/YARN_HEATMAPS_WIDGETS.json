@@ -1,0 +1,84 @@
+
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets?WidgetInfo/widget_type=HEATMAP&WidgetInfo/scope=CLUSTER&WidgetInfo/metrics.matches(.*\\\"service_name\\\":\\\"YARN\\\".*)&fields=WidgetInfo/metrics",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/38",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager GC Time",
+        "id" : 38,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dNodeManager,name\\u003dJvmMetrics.GcTimeMillis\",\"metric_path\":\"metrics/jvm/gcTimeMillis\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "NodeManager GC Time",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/39",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager JVM Heap Memory Used",
+        "id" : 39,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dNodeManager,name\\u003dJvmMetrics.MemHeapUsedM\",\"metric_path\":\"metrics/jvm/memHeapUsedM\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "NodeManager JVM Heap Memory Used",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/40",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager Memory used %",
+        "id" : 40,
+        "metrics" : "[{\"name\":\"yarn.NodeManagerMetrics.AllocatedGB\",\"metric_path\":\"metrics/yarn/AllocatedGB\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"},{\"name\":\"yarn.NodeManagerMetrics.AvailableGB\",\"metric_path\":\"metrics/yarn/AvailableGB\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "NodeManager Memory used %",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/41",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "Allocated Containers",
+        "id" : 41,
+        "metrics" : "[{\"name\":\"yarn.NodeManagerMetrics.AllocatedContainers\",\"metric_path\":\"metrics/yarn/AllocatedContainers\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "Allocated Containers",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/42",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager RAM Utilized",
+        "id" : 42,
+        "metrics" : "[{\"name\":\"yarn.NodeManagerMetrics.AllocatedGB\",\"metric_path\":\"metrics/yarn/AllocatedGB\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "NodeManager RAM Utilized",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/43",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager CPU Utilized",
+        "id" : 43,
+        "metrics" : "[{\"name\":\"yarn.NodeManagerMetrics.AllocatedVCores\",\"metric_path\":\"metrics/yarn/AllocatedVCores\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "NodeManager CPU Utilized",
+        "widget_type" : "HEATMAP"
+      }
+    }
+  ]
+}

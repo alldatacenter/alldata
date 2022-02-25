@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{8ab1e36e-7ff4-4baf-9bd0-1491492dfda0}</ProjectGuid>
+    <RootNamespace>Ambari.SCOM.Presentation</RootNamespace>
+    <Name>Ambari SCOM Presentation</Name>
+    <ManagementPackName>Ambari.SCOM.Presentation</ManagementPackName>
+    <Version>2.0.0.0</Version>
+    <MpFrameworkVersion>v7.0</MpFrameworkVersion>
+    <MpFrameworkProfile>OM</MpFrameworkProfile>
+    <ProductVersion>2.0.0.0</ProductVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <GenerateSealed>True</GenerateSealed>
+    <Company>Hortonworks</Company>
+    <Copyright>Copyright (c) Hortonworks. All rights reserved.</Copyright>
+    <DelaySigning>False</DelaySigning>
+    <AssemblyOriginatorKeyFile>..\Items\key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DelaySigning>False</DelaySigning>
+    <Company>MyCompany</Company>
+    <Copyright>Copyright (c) MyCompany. All rights reserved.</Copyright>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\Items\key.snk</AssemblyOriginatorKeyFile>
+    <GenerateSealed>True</GenerateSealed>
+  </PropertyGroup>
+  <ItemGroup>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Library">
+      <Alias>SC</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Visualization.Configuration.Library">
+      <HintPath>C:\Program Files (x86)\System Center 2012 Visual Studio Authoring Extensions\References\OM2012\Microsoft.SystemCenter.Visualization.Configuration.Library.mp</HintPath>
+      <Alias>VisConfig</Alias>
+      <MinVersion>7.0.8560.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Visualization.Library">
+      <HintPath>..\Items\Packs\Microsoft.SystemCenter.Visualization.Library.mpb</HintPath>
+      <Alias>Visualization</Alias>
+      <MinVersion>7.0.8560.1027</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.Windows.Library">
+      <Alias>Windows</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Health.Library">
+      <Alias>Health</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Library">
+      <Alias>System</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HadoopMp\HadoopMp.mpproj">
+      <Name>HadoopMp</Name>
+      <Project>{63b476b6-efcd-468f-80d9-94e2cff1b5db}</Project>
+      <Private>True</Private>
+      <Alias>HDLibrary</Alias>
+    </ProjectReference>
+    <ProjectReference Include="..\WidgetsSilverlight\WidgetsSilverlight.csproj">
+      <Name>WidgetsSilverlight</Name>
+      <Project>{729e6db2-31f7-4eb1-9146-a2f2263585ee}</Project>
+      <Private>True</Private>
+      <PackageToBundle>True</PackageToBundle>
+    </ProjectReference>
+    <ProjectReference Include="..\WidgetsWpf\WidgetsWpf.csproj">
+      <Name>WidgetsWpf</Name>
+      <Project>{d4c615d1-9274-41d9-b14e-bc88ae7fcdce}</Project>
+      <Private>True</Private>
+      <PackageToBundle>True</PackageToBundle>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyResources.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Charting\Axes\ForegroundDateTimeAxis.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Charting\Axes\ForegroundLinearAxis.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Charting\ChartDataTypes.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Charting\SeriesStacker.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Charting\Series\StackableSeries.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\CollectionElementAccessor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\EntitiesToInstancesWithRecursionLevelConverter.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\GridLayouts\GridLayout05CellWideTopConfig.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\GridLayouts\GridLayout05CellWideTopSmallTopLeftConfig.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Standard\CollectionDiplexer.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Standard\ColumnsToQueryConfigurationMapper.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Standard\CommonDataSourceInterface.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Standard\DataGridSortColumnsToSortColumnBaseCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Standard\GetManagedEntitiesDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Standard\GetPerformanceDataForEntitiesDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Standard\TriggeredComponentHost.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\StringFormatter.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\StringSplitter.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\Chart.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\EllipsisLabel.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\GridCells\ComponentHostAddressCell.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\GridCells\TwoDecimalDigitsNumberCell.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\NumberLabel.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\StackedChartWithLegend.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\Standard\ChartWithLegend.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboards\HdfsSummaryDashboard.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboards\ClusterSummaryDashboard.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboards\HistoryServerSummaryDashboard.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboards\JobTrackerSummaryDashboard.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboards\MapReduceSummaryDashboard.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboards\NameNodeSummaryDashboard.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboards\NodeManagerSummaryDashboard.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dashboards\ResourceManagerSummaryDashboard.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EnableCollectionRules.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Folders.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManagementPack.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\CommonText.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\TimeRange.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\CommonStrings.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\HostsState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\ClusterServicesState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\ClustersState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\HostComponentsOfClusterServiceState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\BasePerformanceWidget.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\BaseStackedPerformanceWidget.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Cluster\SpaceUtilization.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Component\AverageRpcWaitTime.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Component\GcTime.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Component\MemoryHeapUtilization.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Component\ThreadsStatus.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Hdfs\BlocksSummary.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Hdfs\CapacityRemaining.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Hdfs\FilesSummary.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Cluster\LiveVsDeadNodes.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\Hdfs\HdfsIoSummary.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\MapReduce\JobsSummary.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\MapReduce\MapReduceSlotsUtilization.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\MapReduce\MapsVsReducers.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Performance\MapReduce\TaskTrackersSummary.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\Standard\SingleRowSelectStateWidget.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\State\HdfsServicesState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\State\HystoryServersState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\State\JobTrackersState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\State\MapReduceServicesState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\State\NameNodesState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\State\NodeManagerState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\State\ResourceManagerState.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\Charting\Axes" />
+    <Folder Include="Components\Charting\Series" />
+    <Folder Include="Components\GridLayouts" />
+    <Folder Include="Components\Charting" />
+    <Folder Include="Components\Standard" />
+    <Folder Include="Controls" />
+    <Folder Include="Controls\GridCells" />
+    <Folder Include="Controls\Standard" />
+    <Folder Include="Dashboards" />
+    <Folder Include="Components" />
+    <Folder Include="Pages" />
+    <Folder Include="Widgets" />
+    <Folder Include="Widgets\State" />
+    <Folder Include="Widgets\Performance" />
+    <Folder Include="Widgets\Performance\Hdfs" />
+    <Folder Include="Widgets\Performance\MapReduce" />
+    <Folder Include="Widgets\Performance\Cluster" />
+    <Folder Include="Widgets\Performance\Component" />
+    <Folder Include="Widgets\Standard" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
+</Project>

@@ -1,0 +1,360 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Templates>
+    <Template ID="Ambari.SCOM.Template.ClustersDiscovery">
+      <Configuration>
+        <xsd:element name="Name" type="xsd:string" />
+        <xsd:element name="Description" type="xsd:string" />
+        <xsd:element name="AmbariUri" type="xsd:string" />
+        <xsd:element name="RunAsAccount" type="xsd:string" />
+        <xsd:element name="WatcherNodesList" type="xsd:string" />
+        <xsd:element name="SeedComputerName" type="xsd:string" />
+        <xsd:element name="TemplateIdString" type="xsd:string" />
+      </Configuration>
+      <References>
+        <Reference ID="Self" />
+        <Reference ID="System" />
+        <Reference ID="Windows" />
+        <Reference ID="SC" />
+      </References>
+      <Implementation>
+        <TypeDefinitions>
+          <EntityTypes>
+            <ClassTypes>
+              <ClassType ID="Ambari.SCOM.AmbariSeed.$TemplateConfig/TemplateIdString$"
+                         Base="$Reference/Self$Ambari.SCOM.AmbariSeed"
+                         Accessibility="Internal" Abstract="false" Hosted="true" Singleton="false" />
+              <ClassType ID="Ambari.SCOM.ClusterSeed.$TemplateConfig/TemplateIdString$"
+                         Base="$Reference/Self$Ambari.SCOM.ClusterSeed"
+                         Accessibility="Internal" Abstract="false" Hosted="false" Singleton="false" />
+            </ClassTypes>
+          </EntityTypes>
+        </TypeDefinitions>
+        <Monitoring>
+          <Discoveries>
+            <Discovery ID="Ambari.SCOM.Discovery.AmbariSeed.$TemplateConfig/TemplateIdString$" Enabled="true" Target="$Reference/SC$Microsoft.SystemCenter.ManagementGroup">
+              <Category>Discovery</Category>
+              <DiscoveryTypes>
+                <DiscoveryClass TypeID="Ambari.SCOM.AmbariSeed.$TemplateConfig/TemplateIdString$">
+                  <Property TypeID="$Reference/System$System.Entity" PropertyID="DisplayName" />
+                  <Property TypeID="$Reference/Self$Ambari.SCOM.AmbariSeed" PropertyID="AmbariUri" />
+                </DiscoveryClass>
+              </DiscoveryTypes>
+              <DataSource ID="DS" TypeID="$Reference/Self$Ambari.SCOM.Module.AmbariSeedDiscoveryDataSource">
+                <IntervalSeconds>14400</IntervalSeconds>
+                <SyncTime />
+                <TemplateName>$TemplateConfig/Name$</TemplateName>
+                <SeedClassId>$MPElement[Name="Ambari.SCOM.AmbariSeed.$TemplateConfig/TemplateIdString$"]$</SeedClassId>
+                <ComputerName>$TemplateConfig/SeedComputerName$</ComputerName>
+                <AmbariUri>$TemplateConfig/AmbariUri$</AmbariUri>
+              </DataSource>
+            </Discovery>
+            
+            <Discovery ID="Ambari.SCOM.Discovery.Clusters.$TemplateConfig/TemplateIdString$"
+                       Target="Ambari.SCOM.AmbariSeed.$TemplateConfig/TemplateIdString$"
+                       Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+              <Category>Discovery</Category>
+              <DiscoveryTypes>
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.Cluster">
+                  <Property TypeID="$Reference/System$System.Entity" PropertyID="DisplayName" />
+                </DiscoveryClass>
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterProjection">
+                  <Property TypeID="$Reference/System$System.Entity" PropertyID="DisplayName" />
+                </DiscoveryClass>
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterSoftwareProjection" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterHardwareProjection" />
+                <DiscoveryRelationship TypeID="$Reference/SC$Microsoft.SystemCenter.HealthServiceShouldManageEntity" />
+                <DiscoveryRelationship TypeID="$Reference/Self$Ambari.SCOM.AmbariSeedContainsCluster" />
+                <DiscoveryRelationship TypeID="$Reference/Self$Ambari.SCOM.ClusterHostsClusterSoftwareProjection" />
+                <DiscoveryRelationship TypeID="$Reference/Self$Ambari.SCOM.ClusterHostsClusterHardwareProjection" />
+              </DiscoveryTypes>
+              <DataSource ID="DS" TypeID="$Reference/Self$Ambari.SCOM.Module.ClustersDiscoveryDataSource">
+                <IntervalSeconds>14400</IntervalSeconds>
+                <SyncTime />
+                <TimeoutSeconds>300</TimeoutSeconds>
+                <TemplateName>$Target/Property[Type="$Reference/Self$Ambari.SCOM.AmbariSeed"]/TemplateName$</TemplateName>
+                <SeedComputerName>$Target/Host/Property[Type="$Reference/Windows$Microsoft.Windows.Computer"]/PrincipalName$</SeedComputerName>
+                <ClusterSeedClassId>$MPElement[Name="Ambari.SCOM.ClusterSeed.$TemplateConfig/TemplateIdString$"]$</ClusterSeedClassId>
+                <AmbariUri>$Target/Property[Type="$Reference/Self$Ambari.SCOM.AmbariSeed"]/AmbariUri$</AmbariUri>
+                <ClustersQueryUriSegment>v1/clusters</ClustersQueryUriSegment>
+                <WatcherNodesList>$TemplateConfig/WatcherNodesList$</WatcherNodesList>
+              </DataSource>
+            </Discovery>
+
+            <Discovery ID="Ambari.SCOM.Discovery.Hosts.$TemplateConfig/TemplateIdString$"
+                       Target="Ambari.SCOM.ClusterSeed.$TemplateConfig/TemplateIdString$"
+                       Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+              <Category>Discovery</Category>
+              <DiscoveryTypes>
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.Host">
+                  <Property TypeID="$Reference/System$System.Entity" PropertyID="DisplayName" />
+                  <Property TypeID="$Reference/Self$Ambari.SCOM.Host" PropertyID="IpAddress" />
+                </DiscoveryClass>
+                <DiscoveryRelationship TypeID="$Reference/SC$Microsoft.SystemCenter.HealthServiceShouldManageEntity" />
+                <DiscoveryRelationship TypeID="$Reference/Self$Ambari.SCOM.ClusterHardwareProjectionContainsHost" />
+              </DiscoveryTypes>
+              <DataSource ID="DS" TypeID="$Reference/Self$Ambari.SCOM.Module.HostsDiscoveryDataSource">
+                <IntervalSeconds>14400</IntervalSeconds>
+                <SyncTime />
+                <TimeoutSeconds>300</TimeoutSeconds>
+                <TemplateName>$Target/Property[Type="$Reference/Self$Ambari.SCOM.ClusterSeed"]/TemplateName$</TemplateName>
+                <ClusterName>$Target/Property[Type="$Reference/Self$Ambari.SCOM.ClusterSeed"]/ClusterName$</ClusterName>
+                <ClusterAmbariUri>$Target/Property[Type="$Reference/Self$Ambari.SCOM.AmbariManagedEntity"]/AmbariUri$</ClusterAmbariUri>
+                <WatcherNodesList>$TemplateConfig/WatcherNodesList$</WatcherNodesList>
+              </DataSource>
+            </Discovery>
+
+            <Discovery ID="Ambari.SCOM.Discovery.ClusterServices.$TemplateConfig/TemplateIdString$"
+                       Target="Ambari.SCOM.ClusterSeed.$TemplateConfig/TemplateIdString$"
+                       Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+              <Category>Discovery</Category>
+              <DiscoveryTypes>
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterServiceBase">
+                  <Property TypeID="$Reference/System$System.Entity" PropertyID="DisplayName" />
+                </DiscoveryClass>
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.Hdfs" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.MapReduce" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.Hive" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.Templeton" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.Oozie" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.Pig" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.Sqoop" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.MapReduce2" />
+                <DiscoveryClass TypeID="$Reference/Self$Ambari.SCOM.ClusterService.Yarn" />
+                <DiscoveryRelationship TypeID="$Reference/SC$Microsoft.SystemCenter.HealthServiceShouldManageEntity" />
+                <DiscoveryRelationship TypeID="$Reference/Self$Ambari.SCOM.ClusterSoftwareProjectionContainsClusterService" />
+              </DiscoveryTypes>
+              <DataSource ID="DS" TypeID="$Reference/Self$Ambari.SCOM.Module.ClusterServicesDiscoveryDataSource">
+                <IntervalSeconds>14400</IntervalSeconds>
+                <SyncTime />
+                <TimeoutSeconds>300</TimeoutSeconds>
+                <TemplateName>$Target/Property[Type="$Reference/Self$Ambari.SCOM.ClusterSeed"]/TemplateName$</TemplateName>
+                <ClusterName>$Target/Property[Type="$Reference/Self$Ambari.SCOM.ClusterSeed"]/ClusterName$</ClusterName>
+                <ClusterAmbariUri>$Target/Property[Type="$Reference/Self$Ambari.SCOM.AmbariManagedEntity"]/AmbariUri$</ClusterAmbariUri>
+                <WatcherNodesList>$TemplateConfig/WatcherNodesList$</WatcherNodesList>
+              </DataSource>
+            </Discovery>
+          </Discoveries>
+          <Overrides>
+            <SecureReferenceOverride ID="Ambari.SCOM.Profile.Ambari.$TemplateConfig/TemplateIdString$.AmbariSeedOverride"
+                                     Context="Ambari.SCOM.AmbariSeed.$TemplateConfig/TemplateIdString$"
+                                     SecureReference="$Reference/Self$Ambari.SCOM.Profile.Ambari"
+                                     Enforced="false">
+              <Value>$TemplateConfig/RunAsAccount$</Value>
+            </SecureReferenceOverride>
+            <SecureReferenceOverride ID="Ambari.SCOM.Profile.Ambari.$TemplateConfig/TemplateIdString$.ClusterSeedOverride"
+                                     Context="Ambari.SCOM.ClusterSeed.$TemplateConfig/TemplateIdString$"
+                                     SecureReference="$Reference/Self$Ambari.SCOM.Profile.Ambari"
+                                     Enforced="false">
+              <Value>$TemplateConfig/RunAsAccount$</Value>
+            </SecureReferenceOverride>
+          </Overrides>
+        </Monitoring>
+        <LanguagePacks>
+          <LanguagePack ID="ENU" IsDefault="true">
+            <DisplayStrings>
+              <DisplayString ElementID="Ambari.SCOM.AmbariSeed.$TemplateConfig/TemplateIdString$">
+                <Name>Hadoop Ambari Service Seed ($TemplateConfig/Name$)</Name>
+                <Description>This class defines Hadoop Ambari Service Seed created by $TemplateConfig/Name$ template.</Description>
+              </DisplayString>
+              <DisplayString ElementID="Ambari.SCOM.ClusterSeed.$TemplateConfig/TemplateIdString$">
+                <Name>Hadoop Cluster Seed ($TemplateConfig/Name$)</Name>
+                <Description>This class defines Hadoop Cluster Seed created by $TemplateConfig/Name$ template.</Description>
+              </DisplayString>
+              <DisplayString ElementID="Ambari.SCOM.Discovery.AmbariSeed.$TemplateConfig/TemplateIdString$">
+                <Name>Hadoop Ambari Service Seed Discovery ($TemplateConfig/Name$)</Name>
+                <Description>This workflow discovers Hadoop Ambari Service Seed defined in the "$TemplateConfig/Name$" template.</Description>
+              </DisplayString>
+              <DisplayString ElementID="Ambari.SCOM.Discovery.Clusters.$TemplateConfig/TemplateIdString$">
+                <Name>Hadoop Clusters Discovery ($TemplateConfig/Name$)</Name>
+                <Description>This workflow discovers Hadoop Clusters managed by Ambari service defined in the "$TemplateConfig/Name$" template.</Description>
+              </DisplayString>
+              <DisplayString ElementID="Ambari.SCOM.Discovery.Hosts.$TemplateConfig/TemplateIdString$">
+                <Name>Hadoop Hosts Discovery ($TemplateConfig/Name$)</Name>
+                <Description>This workflow discovers Hadoop Hosts for specified Hadoop Cluster.</Description>
+              </DisplayString>
+              <DisplayString ElementID="Ambari.SCOM.Discovery.ClusterServices.$TemplateConfig/TemplateIdString$">
+                <Name>Hadoop Cluster Services Discovery ($TemplateConfig/Name$)</Name>
+                <Description>This workflow discovers Hadoop Cluster Services for specified Hadoop Cluster.</Description>
+              </DisplayString>
+            </DisplayStrings>
+          </LanguagePack>
+        </LanguagePacks>
+      </Implementation>
+    </Template>
+  </Templates>
+
+  <PresentationTypes>
+    <UIPages>
+      <UIPage ID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.InputParser" Accessibility="Internal">
+        <Implementation>
+          <Assembly>Ambari.SCOM.Assembly.ScomPages</Assembly>
+          <Type>Ambari.SCOM.ScomPages.DiscoveryTemplate.InputParser</Type>
+        </Implementation>
+      </UIPage>
+      <UIPage ID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.AmbariDetails" Accessibility="Public">
+        <Implementation>
+          <Assembly>Ambari.SCOM.Assembly.ScomPages</Assembly>
+          <Type>Ambari.SCOM.ScomPages.DiscoveryTemplate.AmbariDetailsPage</Type>
+        </Implementation>
+      </UIPage>
+      <UIPage ID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.WatcherNodes" Accessibility="Public">
+        <Implementation>
+          <Assembly>Ambari.SCOM.Assembly.ScomPages</Assembly>
+          <Type>Ambari.SCOM.ScomPages.DiscoveryTemplate.WatcherNodesPage</Type>
+        </Implementation>
+      </UIPage>
+      <UIPage ID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.Summary" Accessibility="Public">
+        <Implementation>
+          <Assembly>Ambari.SCOM.Assembly.ScomPages</Assembly>
+          <Type>Ambari.SCOM.ScomPages.DiscoveryTemplate.SummaryPage</Type>
+        </Implementation>
+      </UIPage>
+    </UIPages>
+    
+    <UIPageSets>
+      <UIPageSet ID="Ambari.SCOM.UIPageSet.ClustersDiscoveryTemplate"
+                 TypeDefinitionID="Ambari.SCOM.Template.ClustersDiscovery">
+        <UIPageReferences>
+          <UIPageReference ID="Ambari.SCOM.UIPageSet.ClustersDiscoveryTemplate.Reference1"
+                           PageID="System!System.NameAndDescriptionPage" Usage="CreationAndUpdate">
+            <InputTransform>
+              <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                <xsl:output method="xml" indent="yes" omit-xml-declaration="yes" />
+                <xsl:template match="/">
+                  <xsl:element name="Name">
+                    <xsl:value-of select="//Name" />
+                  </xsl:element>
+                  <xsl:element name="Description">
+                    <xsl:value-of select="//Description" />
+                  </xsl:element>
+                </xsl:template>
+              </xsl:stylesheet>
+            </InputTransform>
+          </UIPageReference>
+          <UIPageReference ID="Ambari.SCOM.UIPageSet.ClustersDiscoveryTemplate.Reference2"
+                           PageID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.AmbariDetails" Usage="CreationAndUpdate">
+            <InputTransform>
+              <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                <xsl:output method="xml" indent="yes" omit-xml-declaration="yes" />
+                <xsl:template match="/">
+                  <xsl:element name="AmbariUri">
+                    <xsl:value-of select="//AmbariUri" />
+                  </xsl:element>
+                  <xsl:element name="RunAsAccount">
+                    <xsl:value-of select="//RunAsAccount" />
+                  </xsl:element>
+                </xsl:template>
+              </xsl:stylesheet>
+            </InputTransform>
+          </UIPageReference>
+          <UIPageReference ID="Ambari.SCOM.UIPageSet.ClustersDiscoveryTemplate.Reference3"
+                           PageID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.WatcherNodes" Usage="CreationAndUpdate">
+            <InputTransform>
+              <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                <xsl:output method="xml" indent="yes" omit-xml-declaration="yes" />
+                <xsl:template match="/">
+                  <xsl:element name="WatcherNodesList">
+                    <xsl:value-of select="//WatcherNodesList" />
+                  </xsl:element>
+                  <xsl:element name="SeedComputerName">
+                    <xsl:value-of select="//SeedComputerName" />
+                  </xsl:element>
+                  <xsl:element name="TemplateIdString">
+                    <xsl:value-of select="//TemplateIdString" />
+                  </xsl:element>
+                </xsl:template>
+              </xsl:stylesheet>
+            </InputTransform>
+          </UIPageReference>
+          <UIPageReference ID="Ambari.SCOM.UIPageSet.ClustersDiscoveryTemplate.Referemce4"
+                           PageID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.Summary" Usage="CreationOnly" />
+        </UIPageReferences>
+        <OutputTransform>
+          <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+            <xsl:output method="xml" indent="yes" omit-xml-declaration="yes" />
+            <xsl:template match="/">
+              <xsl:element name="Configuration">
+                <xsl:element name="Name">
+                  <xsl:value-of select="/Name" />
+                </xsl:element>
+                <xsl:element name="Description">
+                  <xsl:value-of select="/Description" />
+                </xsl:element>
+                <xsl:element name="AmbariUri">
+                  <xsl:value-of select="/AmbariUri" />
+                </xsl:element>
+                <xsl:element name="RunAsAccount">
+                  <xsl:value-of select="/RunAsAccount" />
+                </xsl:element>
+                <xsl:element name="WatcherNodesList">
+                  <xsl:value-of select="/WatcherNodesList" />
+                </xsl:element>
+                <xsl:element name="SeedComputerName">
+                  <xsl:value-of select="/SeedComputerName" />
+                </xsl:element>
+                <xsl:element name="TemplateIdString">
+                  <xsl:value-of select="/TemplateIdString" />
+                </xsl:element>
+              </xsl:element>
+            </xsl:template>
+          </xsl:stylesheet>
+        </OutputTransform>
+      </UIPageSet>
+    </UIPageSets>
+  </PresentationTypes>
+
+  <Presentation>
+    <Folders>
+      <Folder ID="Ambari.SCOM.TemplateFolder.ClustersDiscovery" Accessibility="Public"
+              ParentFolder="OM!Microsoft.SystemCenter.OperationsManager.Authoring.TemplateParsers.Root" />
+    </Folders>
+
+    <FolderItems>
+      <FolderItem ID="Ambari.SCOM.Template.ClustersDiscovery"
+                  ElementID="Ambari.SCOM.Template.ClustersDiscovery"
+                  Folder="Ambari.SCOM.TemplateFolder.ClustersDiscovery" />
+
+      <FolderItem ID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.InputParser"
+                  ElementID="Ambari.SCOM.UIPage.ClustersDiscoveryTemplate.InputParser"
+                  Folder="Ambari.SCOM.TemplateFolder.ClustersDiscovery" />
+    </FolderItems>
+
+    <ImageReferences>
+      <ImageReference ElementID="Ambari.SCOM.Template.ClustersDiscovery" ImageID="Ambari.SCOM.Resources.Images.Cluster16Icon" />
+      <ImageReference ElementID="Ambari.SCOM.Template.ClustersDiscovery" ImageID="Ambari.SCOM.Resources.Images.ClusterDiagramIcon" />
+    </ImageReferences>
+
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Template.ClustersDiscovery">
+          <Name>Ambari SCOM</Name>
+          <Description>This template allows you to monitor Hadoop Clusters through Ambari service.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.TemplateFolder.ClustersDiscovery">
+          <Name>Ambari SCOM Template</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+
+</ManagementPackFragment>

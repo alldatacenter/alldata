@@ -1,0 +1,78 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+
+<div class="row">
+  <div {{bindAttr class="view.content.isExpandableGroup::not-active-link :col-md-8 :upgrade-group-text"}}>
+    {{statusIcon view.content.upgradeGroupStatus}}
+    <a href="#" {{action toggleExpanded view.content controller.upgradeData.upgradeGroups target="view"}}>{{view.content.title}}</a>
+  </div>
+  {{#if view.content.isRunning}}
+    <div class="col-md-4 pull-right">
+      {{view view.progressBarView
+        progressBinding="view.content.progress"
+        statusBinding="view.content.status"
+        totalTasksBinding="view.content.total_task_count"
+        completedTasksBinding="view.content.completed_task_count"
+      }}
+      <div class="percent pull-right">
+        <span>{{view.content.progress}}%</span>
+      </div>
+    </div>
+  {{/if}}
+</div>
+
+<div {{bindAttr class="view.content.isExpanded::hidden :task-list"}}>
+
+  {{! List of UpgradeItem}}
+  {{#each item in view.content.upgradeItems}}
+    {{#if item.isVisible}}
+      <div class="row">
+        <div {{bindAttr class="item.isActive::not-active-link :col-md-8 :upgrade-item-text"}}>
+          {{statusIcon item.upgradeItemStatus}}
+          <a href="#" {{action toggleExpanded item view.content.upgradeItems target="view"}}>{{item.context}}</a>
+        </div>
+        {{#if item.isRunning}}
+          <div class="col-md-4 pull-right">
+            {{view App.ProgressBarView
+              progressBinding="item.progress"
+              statusBinding="item.status"
+              }}
+            <div class="percent pull-right">
+                <span>{{item.progress}}%</span>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+
+      {{#if item.isExpanded}}
+        {{#if item.isTasksLoaded}}
+        {{! List of Tasks}}
+          <div class="task-list">
+            {{#each task in item.tasks}}
+              {{view App.upgradeTaskView contentBinding="task" tasksBinding="item.tasks" class="row"}}
+            {{/each}}
+          </div>
+        {{else}}
+          {{view App.SpinnerView}}
+        {{/if}}
+      {{/if}}
+
+    {{/if}}
+  {{/each}}
+</div>

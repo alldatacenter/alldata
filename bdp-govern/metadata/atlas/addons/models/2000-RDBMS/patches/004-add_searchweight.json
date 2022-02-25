@@ -1,0 +1,126 @@
+{
+  "patches": [
+    {
+      "id":              "TYPEDEF_PATCH_2000_127",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_instance",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "rdbms_type",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_128",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_instance",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "platform",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_129",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_instance",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
+      "attributeName":   "contact_info",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_130",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_instance",
+      "applyToVersion":  "1.5",
+      "updateToVersion": "1.6",
+      "attributeName":   "hostname",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_131",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_instance",
+      "applyToVersion":  "1.6",
+      "updateToVersion": "1.7",
+      "attributeName":   "comment",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_132",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_db",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "contact_info",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_133",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_table",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "name_path",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_134",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_table",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
+      "attributeName":   "comment",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_135",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_table",
+      "applyToVersion":  "1.5",
+      "updateToVersion": "1.6",
+      "attributeName":   "contact_info",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_136",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_column",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "comment",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_2000_137",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "rdbms_index",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "comment",
+      "params": {
+        "searchWeight": 9
+      }
+    }
+  ]
+}

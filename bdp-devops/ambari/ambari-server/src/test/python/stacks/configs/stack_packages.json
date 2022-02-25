@@ -1,0 +1,1338 @@
+{
+  "HDP": {
+    "stack-select": {
+      "ACCUMULO": {
+        "ACCUMULO_CLIENT": {
+          "STACK-SELECT-PACKAGE": "accumulo-client",
+          "INSTALL": [
+            "accumulo-client"
+          ],
+          "PATCH": [
+            "accumulo-client"
+          ],
+          "STANDARD": [
+            "accumulo-client"
+          ]
+        },
+        "ACCUMULO_GC": {
+          "STACK-SELECT-PACKAGE": "accumulo-gc",
+          "INSTALL": [
+            "accumulo-gc"
+          ],
+          "PATCH": [
+            "accumulo-gc"
+          ],
+          "STANDARD": [
+            "accumulo-gc",
+            "accumulo-client"
+          ]
+        },
+        "ACCUMULO_MASTER": {
+          "STACK-SELECT-PACKAGE": "accumulo-master",
+          "INSTALL": [
+            "accumulo-master"
+          ],
+          "PATCH": [
+            "accumulo-master"
+          ],
+          "STANDARD": [
+            "accumulo-master",
+            "accumulo-client"
+          ]
+        },
+        "ACCUMULO_MONITOR": {
+          "STACK-SELECT-PACKAGE": "accumulo-monitor",
+          "INSTALL": [
+            "accumulo-monitor"
+          ],
+          "PATCH": [
+            "accumulo-monitor"
+          ],
+          "STANDARD": [
+            "accumulo-monitor",
+            "accumulo-client"
+          ]
+        },
+        "ACCUMULO_TRACER": {
+          "STACK-SELECT-PACKAGE": "accumulo-tracer",
+          "INSTALL": [
+            "accumulo-tracer"
+          ],
+          "PATCH": [
+            "accumulo-tracer"
+          ],
+          "STANDARD": [
+            "accumulo-tracer",
+            "accumulo-client"
+          ]
+        },
+        "ACCUMULO_TSERVER": {
+          "STACK-SELECT-PACKAGE": "accumulo-tablet",
+          "INSTALL": [
+            "accumulo-tablet"
+          ],
+          "PATCH": [
+            "accumulo-tablet"
+          ],
+          "STANDARD": [
+            "accumulo-tablet",
+            "accumulo-client"
+          ]
+        }
+      },
+      "ATLAS": {
+        "ATLAS_CLIENT": {
+          "STACK-SELECT-PACKAGE": "atlas-client",
+          "INSTALL": [
+            "atlas-client"
+          ],
+          "PATCH": [
+            "atlas-client"
+          ],
+          "STANDARD": [
+            "atlas-client"
+          ]
+        },
+        "ATLAS_SERVER": {
+          "STACK-SELECT-PACKAGE": "atlas-server",
+          "INSTALL": [
+            "atlas-server"
+          ],
+          "PATCH": [
+            "atlas-server"
+          ],
+          "STANDARD": [
+            "atlas-server"
+          ]
+        }
+      },
+      "DRUID": {
+        "DRUID_COORDINATOR": {
+          "STACK-SELECT-PACKAGE": "druid-coordinator",
+          "INSTALL": [
+            "druid-coordinator"
+          ],
+          "PATCH": [
+            "druid-coordinator"
+          ],
+          "STANDARD": [
+            "druid-coordinator"
+          ]
+        },
+        "DRUID_OVERLORD": {
+          "STACK-SELECT-PACKAGE": "druid-overlord",
+          "INSTALL": [
+            "druid-overlord"
+          ],
+          "PATCH": [
+            "druid-overlord"
+          ],
+          "STANDARD": [
+            "druid-overlord"
+          ]
+        },
+        "DRUID_HISTORICAL": {
+          "STACK-SELECT-PACKAGE": "druid-historical",
+          "INSTALL": [
+            "druid-historical"
+          ],
+          "PATCH": [
+            "druid-historical"
+          ],
+          "STANDARD": [
+            "druid-historical"
+          ]
+        },
+        "DRUID_BROKER": {
+          "STACK-SELECT-PACKAGE": "druid-broker",
+          "INSTALL": [
+            "druid-broker"
+          ],
+          "PATCH": [
+            "druid-broker"
+          ],
+          "STANDARD": [
+            "druid-broker"
+          ]
+        },
+        "DRUID_MIDDLEMANAGER": {
+          "STACK-SELECT-PACKAGE": "druid-middlemanager",
+          "INSTALL": [
+            "druid-middlemanager"
+          ],
+          "PATCH": [
+            "druid-middlemanager"
+          ],
+          "STANDARD": [
+            "druid-middlemanager"
+          ]
+        },
+        "DRUID_ROUTER": {
+          "STACK-SELECT-PACKAGE": "druid-router",
+          "INSTALL": [
+            "druid-router"
+          ],
+          "PATCH": [
+            "druid-router"
+          ],
+          "STANDARD": [
+            "druid-router"
+          ]
+        },
+        "DRUID_SUPERSET": {
+          "STACK-SELECT-PACKAGE": "druid-superset",
+          "INSTALL": [
+            "druid-superset"
+          ],
+          "PATCH": [
+            "druid-superset"
+          ],
+          "STANDARD": [
+            "druid-superset"
+          ]
+        }
+      },
+      "FALCON": {
+        "FALCON_CLIENT": {
+          "STACK-SELECT-PACKAGE": "falcon-client",
+          "INSTALL": [
+            "falcon-client"
+          ],
+          "PATCH": [
+            "falcon-client"
+          ],
+          "STANDARD": [
+            "falcon-client"
+          ]
+        },
+        "FALCON_SERVER": {
+          "STACK-SELECT-PACKAGE": "falcon-server",
+          "INSTALL": [
+            "falcon-server"
+          ],
+          "PATCH": [
+            "falcon-server"
+          ],
+          "STANDARD": [
+            "falcon-server"
+          ]
+        }
+      },
+      "FLUME": {
+        "FLUME_HANDLER": {
+          "STACK-SELECT-PACKAGE": "flume-server",
+          "INSTALL": [
+            "flume-server"
+          ],
+          "PATCH": [
+            "flume-server"
+          ],
+          "STANDARD": [
+            "flume-server"
+          ]
+        }
+      },
+      "HBASE": {
+        "HBASE_CLIENT": {
+          "STACK-SELECT-PACKAGE": "hbase-client",
+          "INSTALL": [
+            "hbase-client"
+          ],
+          "PATCH": [
+            "hbase-client"
+          ],
+          "STANDARD": [
+            "hbase-client",
+            "phoenix-client",
+            "hadoop-client"
+          ]
+        },
+        "HBASE_MASTER": {
+          "STACK-SELECT-PACKAGE": "hbase-master",
+          "INSTALL": [
+            "hbase-master"
+          ],
+          "PATCH": [
+            "hbase-master"
+          ],
+          "STANDARD": [
+            "hbase-master"
+          ]
+        },
+        "HBASE_REGIONSERVER": {
+          "STACK-SELECT-PACKAGE": "hbase-regionserver",
+          "INSTALL": [
+            "hbase-regionserver"
+          ],
+          "PATCH": [
+            "hbase-regionserver"
+          ],
+          "STANDARD": [
+            "hbase-regionserver"
+          ]
+        },
+        "PHOENIX_QUERY_SERVER": {
+          "STACK-SELECT-PACKAGE": "phoenix-server",
+          "INSTALL": [
+            "phoenix-server"
+          ],
+          "PATCH": [
+            "phoenix-server"
+          ],
+          "STANDARD": [
+            "phoenix-server"
+          ]
+        }
+      },
+      "HDFS": {
+        "DATANODE": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-datanode",
+          "INSTALL": [
+            "hadoop-hdfs-datanode"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-datanode"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-datanode"
+          ]
+        },
+        "HDFS_CLIENT": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-client",
+          "LEGACY": "hadoop-client",
+          "INSTALL": [
+            "hadoop-hdfs-client"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        },
+        "NAMENODE": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-namenode",
+          "INSTALL": [
+            "hadoop-hdfs-namenode"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-namenode"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-namenode"
+          ]
+        },
+        "NFS_GATEWAY": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-nfs3",
+          "INSTALL": [
+            "hadoop-hdfs-nfs3"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-nfs3"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-nfs3"
+          ]
+        },
+        "JOURNALNODE": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-journalnode",
+          "INSTALL": [
+            "hadoop-hdfs-journalnode"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-journalnode"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-journalnode"
+          ]
+        },
+        "SECONDARY_NAMENODE": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-secondarynamenode",
+          "INSTALL": [
+            "hadoop-hdfs-secondarynamenode"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-secondarynamenode"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-secondarynamenode"
+          ]
+        },
+        "ZKFC": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-zkfc",
+          "LEGACY": "hadoop-client",
+          "INSTALL": [
+            "hadoop-hdfs-zkfc"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-zkfc"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-zkfc"
+          ]
+        }
+      },
+      "HIVE": {
+        "HCAT": {
+          "STACK-SELECT-PACKAGE": "hive-webhcat",
+          "INSTALL": [
+            "hive-webhcat"
+          ],
+          "PATCH": [
+            "hive-webhcat"
+          ],
+          "STANDARD": [
+            "hive-webhcat"
+          ]
+        },
+        "HIVE_METASTORE": {
+          "STACK-SELECT-PACKAGE": "hive-metastore",
+          "INSTALL": [
+            "hive-metastore"
+          ],
+          "PATCH": [
+            "hive-metastore"
+          ],
+          "STANDARD": [
+            "hive-metastore"
+          ]
+        },
+        "HIVE_SERVER": {
+          "STACK-SELECT-PACKAGE": "hive-server2",
+          "INSTALL": [
+            "hive-server2"
+          ],
+          "PATCH": [
+            "hive-server2"
+          ],
+          "STANDARD": [
+            "hive-server2"
+          ]
+        },
+        "HIVE_SERVER_INTERACTIVE": {
+          "STACK-SELECT-PACKAGE": "hive-server2-hive2",
+          "INSTALL": [
+            "hive-server2-hive2"
+          ],
+          "PATCH": [
+            "hive-server2-hive2"
+          ],
+          "STANDARD": [
+            "hive-server2-hive2"
+          ]
+        },
+        "HIVE_CLIENT": {
+          "STACK-SELECT-PACKAGE": "hive-client",
+          "LEGACY": "hadoop-client",
+          "INSTALL": [
+            "hive-client"
+          ],
+          "PATCH": [
+            "hive-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        },
+        "WEBHCAT_SERVER": {
+          "STACK-SELECT-PACKAGE": "hive-webhcat",
+          "INSTALL": [
+            "hive-webhcat"
+          ],
+          "PATCH": [
+            "hive-webhcat"
+          ],
+          "STANDARD": [
+            "hive-webhcat"
+          ]
+        }
+      },
+      "KAFKA": {
+        "KAFKA_BROKER": {
+          "STACK-SELECT-PACKAGE": "kafka-broker",
+          "INSTALL": [
+            "kafka-broker"
+          ],
+          "PATCH": [
+            "kafka-broker"
+          ],
+          "STANDARD": [
+            "kafka-broker"
+          ]
+        }
+      },
+      "KNOX": {
+        "KNOX_GATEWAY": {
+          "STACK-SELECT-PACKAGE": "knox-server",
+          "INSTALL": [
+            "knox-server"
+          ],
+          "PATCH": [
+            "knox-server"
+          ],
+          "STANDARD": [
+            "knox-server"
+          ]
+        }
+      },
+      "MAHOUT": {
+        "MAHOUT": {
+          "STACK-SELECT-PACKAGE": "mahout-client",
+          "INSTALL": [
+            "mahout-client"
+          ],
+          "PATCH": [
+            "mahout-client"
+          ],
+          "STANDARD": [
+            "mahout-client"
+          ]
+        }
+      },
+      "MAPREDUCE2": {
+        "HISTORYSERVER": {
+          "STACK-SELECT-PACKAGE": "hadoop-mapreduce-historyserver",
+          "INSTALL": [
+            "hadoop-mapreduce-historyserver"
+          ],
+          "PATCH": [
+            "hadoop-mapreduce-historyserver"
+          ],
+          "STANDARD": [
+            "hadoop-mapreduce-historyserver"
+          ]
+        },
+        "MAPREDUCE2_CLIENT": {
+          "STACK-SELECT-PACKAGE": "hadoop-mapreduce-client",
+          "LEGACY": "hadoop-client",
+          "INSTALL": [
+            "hadoop-mapreduce-client"
+          ],
+          "PATCH": [
+            "hadoop-mapreduce-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        }
+      },
+      "OOZIE": {
+        "OOZIE_CLIENT": {
+          "STACK-SELECT-PACKAGE": "oozie-client",
+          "INSTALL": [
+            "oozie-client"
+          ],
+          "PATCH": [
+            "oozie-client"
+          ],
+          "STANDARD": [
+            "oozie-client"
+          ]
+        },
+        "OOZIE_SERVER": {
+          "STACK-SELECT-PACKAGE": "oozie-server",
+          "INSTALL": [
+            "oozie-client",
+            "oozie-server"
+          ],
+          "PATCH": [
+            "oozie-server",
+            "oozie-client"
+          ],
+          "STANDARD": [
+            "oozie-client",
+            "oozie-server"
+          ]
+        }
+      },
+      "PIG": {
+        "PIG": {
+          "STACK-SELECT-PACKAGE": "pig-client",
+          "LEGACY": "hadoop-client",
+          "INSTALL": [
+            "pig-client"
+          ],
+          "PATCH": [
+            "pig-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        }
+      },
+      "R4ML": {
+        "R4ML": {
+          "STACK-SELECT-PACKAGE": "r4ml-client",
+          "INSTALL": [
+            "r4ml-client"
+          ],
+          "PATCH": [
+            "r4ml-client"
+          ],
+          "STANDARD": [
+            "r4ml-client"
+          ]
+        }
+      },
+      "RANGER": {
+        "RANGER_ADMIN": {
+          "STACK-SELECT-PACKAGE": "ranger-admin",
+          "INSTALL": [
+            "ranger-admin"
+          ],
+          "PATCH": [
+            "ranger-admin"
+          ],
+          "STANDARD": [
+            "ranger-admin"
+          ]
+        },
+        "RANGER_TAGSYNC": {
+          "STACK-SELECT-PACKAGE": "ranger-tagsync",
+          "INSTALL": [
+            "ranger-tagsync"
+          ],
+          "PATCH": [
+            "ranger-tagsync"
+          ],
+          "STANDARD": [
+            "ranger-tagsync"
+          ]
+        },
+        "RANGER_USERSYNC": {
+          "STACK-SELECT-PACKAGE": "ranger-usersync",
+          "INSTALL": [
+            "ranger-usersync"
+          ],
+          "PATCH": [
+            "ranger-usersync"
+          ],
+          "STANDARD": [
+            "ranger-usersync"
+          ]
+        }
+      },
+      "RANGER_KMS": {
+        "RANGER_KMS_SERVER": {
+          "STACK-SELECT-PACKAGE": "ranger-kms",
+          "INSTALL": [
+            "ranger-kms"
+          ],
+          "PATCH": [
+            "ranger-kms"
+          ],
+          "STANDARD": [
+            "ranger-kms"
+          ]
+        }
+      },
+      "SLIDER": {
+        "SLIDER": {
+          "STACK-SELECT-PACKAGE": "slider-client",
+          "INSTALL": [
+            "slider-client"
+          ],
+          "PATCH": [
+            "slider-client"
+          ],
+          "STANDARD": [
+            "slider-client",
+            "hadoop-client"
+          ]
+        }
+      },
+      "SPARK": {
+        "LIVY_CLIENT": {
+          "STACK-SELECT-PACKAGE": "livy-client",
+          "INSTALL": [
+            "livy-client"
+          ],
+          "PATCH": [
+            "livy-client"
+          ],
+          "STANDARD": [
+            "livy-client"
+          ]
+        },
+        "LIVY_SERVER": {
+          "STACK-SELECT-PACKAGE": "livy-server",
+          "INSTALL": [
+            "livy-server"
+          ],
+          "PATCH": [
+            "livy-server"
+          ],
+          "STANDARD": [
+            "livy-server"
+          ]
+        },
+        "SPARK_CLIENT": {
+          "STACK-SELECT-PACKAGE": "spark-client",
+          "INSTALL": [
+            "spark-client"
+          ],
+          "PATCH": [
+            "spark-client"
+          ],
+          "STANDARD": [
+            "spark-client"
+          ]
+        },
+        "SPARK_JOBHISTORYSERVER": {
+          "STACK-SELECT-PACKAGE": "spark-historyserver",
+          "INSTALL": [
+            "spark-historyserver"
+          ],
+          "PATCH": [
+            "spark-historyserver"
+          ],
+          "STANDARD": [
+            "spark-historyserver"
+          ]
+        },
+        "SPARK_THRIFTSERVER": {
+          "STACK-SELECT-PACKAGE": "spark-thriftserver",
+          "INSTALL": [
+            "spark-thriftserver"
+          ],
+          "PATCH": [
+            "spark-thriftserver"
+          ],
+          "STANDARD": [
+            "spark-thriftserver"
+          ]
+        }
+      },
+      "SPARK2": {
+        "LIVY2_CLIENT": {
+          "STACK-SELECT-PACKAGE": "livy2-client",
+          "INSTALL": [
+            "livy2-client"
+          ],
+          "PATCH": [
+            "livy2-client"
+          ],
+          "STANDARD": [
+            "livy2-client"
+          ]
+        },
+        "LIVY2_SERVER": {
+          "STACK-SELECT-PACKAGE": "livy2-server",
+          "INSTALL": [
+            "livy2-server"
+          ],
+          "PATCH": [
+            "livy2-server"
+          ],
+          "STANDARD": [
+            "livy2-server"
+          ]
+        },
+        "SPARK2_CLIENT": {
+          "STACK-SELECT-PACKAGE": "spark2-client",
+          "LEGACY": "spark2-client",
+          "INSTALL": [
+            "spark2-client",
+            "livy2-client"
+          ],
+          "PATCH": [
+            "spark2-client",
+            "livy2-client"
+          ],
+          "STANDARD": [
+            "spark2-client",
+            "livy2-client"
+          ]
+        },
+        "SPARK2_JOBHISTORYSERVER": {
+          "STACK-SELECT-PACKAGE": "spark2-historyserver",
+          "INSTALL": [
+            "spark2-historyserver"
+          ],
+          "PATCH": [
+            "spark2-historyserver"
+          ],
+          "STANDARD": [
+            "spark2-historyserver"
+          ]
+        },
+        "SPARK2_THRIFTSERVER": {
+          "STACK-SELECT-PACKAGE": "spark2-thriftserver",
+          "INSTALL": [
+            "spark2-thriftserver"
+          ],
+          "PATCH": [
+            "spark2-thriftserver"
+          ],
+          "STANDARD": [
+            "spark2-thriftserver"
+          ]
+        }
+      },
+      "SQOOP": {
+        "SQOOP": {
+          "STACK-SELECT-PACKAGE": "sqoop-client",
+          "INSTALL": [
+            "sqoop-client"
+          ],
+          "PATCH": [
+            "sqoop-client"
+          ],
+          "STANDARD": [
+            "sqoop-client"
+          ]
+        }
+      },
+      "STORM": {
+        "NIMBUS": {
+          "STACK-SELECT-PACKAGE": "storm-nimbus",
+          "INSTALL": [
+            "storm-client",
+            "storm-nimbus"
+          ],
+          "PATCH": [
+            "storm-client",
+            "storm-nimbus"
+          ],
+          "STANDARD": [
+            "storm-client",
+            "storm-nimbus"
+          ]
+        },
+        "SUPERVISOR": {
+          "STACK-SELECT-PACKAGE": "storm-supervisor",
+          "INSTALL": [
+            "storm-client",
+            "storm-supervisor"
+          ],
+          "PATCH": [
+            "storm-client",
+            "storm-supervisor"
+          ],
+          "STANDARD": [
+            "storm-client",
+            "storm-supervisor"
+          ]
+        },
+        "DRPC_SERVER": {
+          "STACK-SELECT-PACKAGE": "storm-client",
+          "INSTALL": [
+            "storm-client"
+          ],
+          "PATCH": [
+            "storm-client"
+          ],
+          "STANDARD": [
+            "storm-client"
+          ]
+        },
+        "STORM_UI_SERVER": {
+          "STACK-SELECT-PACKAGE": "storm-client",
+          "INSTALL": [
+            "storm-client"
+          ],
+          "PATCH": [
+            "storm-client"
+          ],
+          "STANDARD": [
+            "storm-client"
+          ]
+        }
+      },
+      "SYSTEMML": {
+        "SYSTEMML": {
+          "STACK-SELECT-PACKAGE": "systemml-client",
+          "INSTALL": [
+            "systemml-client"
+          ],
+          "PATCH": [
+            "systemml-client"
+          ],
+          "STANDARD": [
+            "systemml-client"
+          ]
+        }
+      },
+      "TEZ": {
+        "TEZ_CLIENT": {
+          "STACK-SELECT-PACKAGE": "tez-client",
+          "LEGACY": "hadoop-client",
+          "INSTALL": [
+            "tez-client"
+          ],
+          "PATCH": [
+            "tez-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        }
+      },
+      "SUPERSET": {
+        "SUPERSET": {
+          "STACK-SELECT-PACKAGE": "superset",
+          "INSTALL": [
+            "superset"
+          ],
+          "PATCH": [
+            "superset"
+          ],
+          "STANDARD": [
+            "superset"
+          ]
+        }
+      },
+      "TITAN": {
+        "TITAN_CLIENT": {
+          "STACK-SELECT-PACKAGE": "titan-client",
+          "INSTALL": [
+            "titan-client"
+          ],
+          "PATCH": [
+            "titan-client"
+          ],
+          "STANDARD": [
+            "titan-client"
+          ]
+        },
+        "TITAN_SERVER": {
+          "STACK-SELECT-PACKAGE": "titan-server",
+          "INSTALL": [
+            "titan-server"
+          ],
+          "PATCH": [
+            "titan-server"
+          ],
+          "STANDARD": [
+            "titan-server"
+          ]
+        }
+      },
+      "YARN": {
+        "APP_TIMELINE_SERVER": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-timelineserver",
+          "INSTALL": [
+            "hadoop-yarn-timelineserver"
+          ],
+          "PATCH": [
+            "hadoop-yarn-timelineserver"
+          ],
+          "STANDARD": [
+            "hadoop-yarn-timelineserver"
+          ]
+        },
+        "NODEMANAGER": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-nodemanager",
+          "INSTALL": [
+            "hadoop-yarn-nodemanager"
+          ],
+          "PATCH": [
+            "hadoop-yarn-nodemanager"
+          ],
+          "STANDARD": [
+            "hadoop-yarn-nodemanager"
+          ]
+        },
+        "RESOURCEMANAGER": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-resourcemanager",
+          "INSTALL": [
+            "hadoop-yarn-resourcemanager"
+          ],
+          "PATCH": [
+            "hadoop-yarn-resourcemanager"
+          ],
+          "STANDARD": [
+            "hadoop-yarn-resourcemanager"
+          ]
+        },
+        "YARN_CLIENT": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-client",
+          "LEGACY": "hadoop-client",
+          "INSTALL": [
+            "hadoop-yarn-client"
+          ],
+          "PATCH": [
+            "hadoop-yarn-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        }
+      },
+      "ZEPPELIN": {
+        "ZEPPELIN_MASTER": {
+          "STACK-SELECT-PACKAGE": "zeppelin-server",
+          "INSTALL": [
+            "zeppelin-server"
+          ],
+          "PATCH": [
+            "zeppelin-server"
+          ],
+          "STANDARD": [
+            "zeppelin-server"
+          ]
+        }
+      },
+      "ZOOKEEPER": {
+        "ZOOKEEPER_CLIENT": {
+          "STACK-SELECT-PACKAGE": "zookeeper-client",
+          "INSTALL": [
+            "zookeeper-client"
+          ],
+          "PATCH": [
+            "zookeeper-client"
+          ],
+          "STANDARD": [
+            "zookeeper-client"
+          ]
+        },
+        "ZOOKEEPER_SERVER": {
+          "STACK-SELECT-PACKAGE": "zookeeper-server",
+          "INSTALL": [
+            "zookeeper-server"
+          ],
+          "PATCH": [
+            "zookeeper-server"
+          ],
+          "STANDARD": [
+            "zookeeper-server"
+          ]
+        }
+      }
+    },
+    "conf-select": {
+      "accumulo": [
+        {
+          "conf_dir": "/etc/accumulo/conf",
+          "current_dir": "{0}/current/accumulo-client/conf",
+          "component": "accumulo-client"
+        }
+      ],
+      "atlas": [
+        {
+          "conf_dir": "/etc/atlas/conf",
+          "current_dir": "{0}/current/atlas-client/conf",
+          "component": "atlas-client"
+        }
+      ],
+      "druid": [
+        {
+          "conf_dir": "/etc/druid/conf",
+          "current_dir": "{0}/current/druid-overlord/conf",
+          "component": "druid-overlord"
+        }
+      ],
+      "falcon": [
+        {
+          "conf_dir": "/etc/falcon/conf",
+          "current_dir": "{0}/current/falcon-client/conf",
+          "component": "falcon-client"
+        }
+      ],
+      "flume": [
+        {
+          "conf_dir": "/etc/flume/conf",
+          "current_dir": "{0}/current/flume-server/conf",
+          "component": "flume-server"
+        }
+      ],
+      "hadoop": [
+        {
+          "conf_dir": "/etc/hadoop/conf",
+          "current_dir": "{0}/current/hadoop-client/conf",
+          "component": "hadoop-client"
+        }
+      ],
+      "hbase": [
+        {
+          "conf_dir": "/etc/hbase/conf",
+          "current_dir": "{0}/current/hbase-client/conf",
+          "component": "hbase-client"
+        }
+      ],
+      "hive": [
+        {
+          "conf_dir": "/etc/hive/conf",
+          "current_dir": "{0}/current/hive-client/conf",
+          "component": "hive-client"
+        }
+      ],
+      "hive2": [
+        {
+          "conf_dir": "/etc/hive2/conf",
+          "current_dir": "{0}/current/hive-server2-hive2/conf",
+          "component": "hive-server2-hive2"
+        }
+      ],
+      "hive-hcatalog": [
+        {
+          "conf_dir": "/etc/hive-webhcat/conf",
+          "prefix": "/etc/hive-webhcat",
+          "current_dir": "{0}/current/hive-webhcat/etc/webhcat",
+          "component": "hive-webhcat"
+        },
+        {
+          "conf_dir": "/etc/hive-hcatalog/conf",
+          "prefix": "/etc/hive-hcatalog",
+          "current_dir": "{0}/current/hive-webhcat/etc/hcatalog",
+          "component": "hive-webhcat"
+        }
+      ],
+      "kafka": [
+        {
+          "conf_dir": "/etc/kafka/conf",
+          "current_dir": "{0}/current/kafka-broker/conf",
+          "component": "kafka-broker"
+        }
+      ],
+      "knox": [
+        {
+          "conf_dir": "/etc/knox/conf",
+          "current_dir": "{0}/current/knox-server/conf",
+          "component": "knox-server"
+        }
+      ],
+      "livy": [
+        {
+          "conf_dir": "/etc/livy/conf",
+          "current_dir": "{0}/current/livy-client/conf",
+          "component": "livy-client"
+        }
+      ],
+      "livy2": [
+        {
+          "conf_dir": "/etc/livy2/conf",
+          "current_dir": "{0}/current/livy2-client/conf",
+          "component": "livy2-client"
+        }
+      ],
+      "mahout": [
+        {
+          "conf_dir": "/etc/mahout/conf",
+          "current_dir": "{0}/current/mahout-client/conf",
+          "component": "mahout-client"
+        }
+      ],
+      "nifi": [
+        {
+          "conf_dir": "/etc/nifi/conf",
+          "current_dir": "{0}/current/nifi/conf",
+          "component": "nifi"
+        }
+      ],
+      "oozie": [
+        {
+          "conf_dir": "/etc/oozie/conf",
+          "current_dir": "{0}/current/oozie-client/conf",
+          "component": "oozie-client"
+        }
+      ],
+      "phoenix": [
+        {
+          "conf_dir": "/etc/phoenix/conf",
+          "current_dir": "{0}/current/phoenix-client/conf",
+          "component": "phoenix-client"
+        }
+      ],
+      "pig": [
+        {
+          "conf_dir": "/etc/pig/conf",
+          "current_dir": "{0}/current/pig-client/conf",
+          "component": "pig-client"
+        }
+      ],
+      "ranger-admin": [
+        {
+          "conf_dir": "/etc/ranger/admin/conf",
+          "current_dir": "{0}/current/ranger-admin/conf",
+          "component": "ranger-admin"
+        }
+      ],
+      "ranger-kms": [
+        {
+          "conf_dir": "/etc/ranger/kms/conf",
+          "current_dir": "{0}/current/ranger-kms/conf",
+          "component": "ranger-kms"
+        }
+      ],
+      "ranger-tagsync": [
+        {
+          "conf_dir": "/etc/ranger/tagsync/conf",
+          "current_dir": "{0}/current/ranger-tagsync/conf",
+          "component": "ranger-tagsync"
+        }
+      ],
+      "ranger-usersync": [
+        {
+          "conf_dir": "/etc/ranger/usersync/conf",
+          "current_dir": "{0}/current/ranger-usersync/conf",
+          "component": "ranger-usersync"
+        }
+      ],
+      "slider": [
+        {
+          "conf_dir": "/etc/slider/conf",
+          "current_dir": "{0}/current/slider-client/conf",
+          "component": "slider-client"
+        }
+      ],
+      "spark": [
+        {
+          "conf_dir": "/etc/spark/conf",
+          "current_dir": "{0}/current/spark-client/conf",
+          "component": "spark-client"
+        }
+      ],
+      "spark2": [
+        {
+          "conf_dir": "/etc/spark2/conf",
+          "current_dir": "{0}/current/spark2-client/conf",
+          "component": "spark2-client"
+        }
+      ],
+      "sqoop": [
+        {
+          "conf_dir": "/etc/sqoop/conf",
+          "current_dir": "{0}/current/sqoop-client/conf",
+          "component": "sqoop-client"
+        }
+      ],
+      "storm": [
+        {
+          "conf_dir": "/etc/storm/conf",
+          "current_dir": "{0}/current/storm-client/conf",
+          "component": "storm-client"
+        }
+      ],
+      "storm-slider-client": [
+        {
+          "conf_dir": "/etc/storm-slider-client/conf",
+          "current_dir": "{0}/current/storm-slider-client/conf",
+          "component": "storm-slider-client"
+        }
+      ],
+      "superset": [
+        {
+          "conf_dir": "/etc/druid-superset/conf",
+          "current_dir": "{0}/current/druid-superset/conf",
+          "component": "druid-superset"
+        }
+      ],
+      "tez": [
+        {
+          "conf_dir": "/etc/tez/conf",
+          "current_dir": "{0}/current/tez-client/conf",
+          "component": "tez-client"
+        }
+      ],
+      "zeppelin": [
+        {
+          "conf_dir": "/etc/zeppelin/conf",
+          "current_dir": "{0}/current/zeppelin-server/conf",
+          "component": "zeppelin-server"
+        }
+      ],
+      "zookeeper": [
+        {
+          "conf_dir": "/etc/zookeeper/conf",
+          "current_dir": "{0}/current/zookeeper-client/conf",
+          "component": "zookeeper-client"
+        }
+      ]
+    },
+    "conf-select-patching": {
+      "ACCUMULO": {
+        "packages": ["accumulo"]
+      },
+      "ATLAS": {
+        "packages": ["atlas"]
+      },
+      "DRUID": {
+        "packages": ["druid", "superset"]
+      },
+      "FALCON": {
+        "packages": ["falcon"]
+      },
+      "FLUME": {
+        "packages": ["flume"]
+      },
+      "HBASE": {
+        "packages": ["hbase"]
+      },
+      "HDFS": {
+        "packages": []
+      },
+      "HIVE": {
+        "packages": ["hive", "hive-hcatalog", "hive2", "tez_hive2"]
+      },
+      "KAFKA": {
+        "packages": ["kafka"]
+      },
+      "KNOX": {
+        "packages": ["knox"]
+      },
+      "MAHOUT": {
+        "packages": ["mahout"]
+      },
+      "MAPREDUCE2": {
+        "packages": []
+      },
+      "OOZIE": {
+        "packages": ["oozie"]
+      },
+      "PIG": {
+        "packages": ["pig"]
+      },
+      "R4ML": {
+        "packages": []
+      },
+      "RANGER": {
+        "packages": ["ranger-admin", "ranger-usersync", "ranger-tagsync"]
+      },
+      "RANGER_KMS": {
+        "packages": ["ranger-kms"]
+      },
+      "SLIDER": {
+        "packages": ["slider"]
+      },
+      "SPARK": {
+        "packages": ["spark", "livy"]
+      },
+      "SPARK2": {
+        "packages": ["spark2", "livy2"]
+      },
+      "SQOOP": {
+        "packages": ["sqoop"]
+      },
+      "STORM": {
+        "packages": ["storm", "storm-slider-client"]
+      },
+      "SYSTEMML": {
+        "packages": []
+      },
+      "TEZ": {
+        "packages": ["tez"]
+      },
+      "TITAN": {
+        "packages": []
+      },
+      "YARN": {
+        "packages": []
+      },
+      "ZEPPELIN": {
+        "packages": ["zeppelin"]
+      },
+      "ZOOKEEPER": {
+        "packages": ["zookeeper"]
+      }
+    },
+    "upgrade-dependencies" : {
+      "ATLAS": ["STORM"],
+      "HIVE": ["TEZ", "MAPREDUCE2", "SQOOP"],
+      "TEZ": ["HIVE"],
+      "MAPREDUCE2": ["HIVE"],
+      "MAHOUT": ["MAPREDUCE2"],
+      "OOZIE": ["MAPREDUCE2"]
+    }    
+  }
+}

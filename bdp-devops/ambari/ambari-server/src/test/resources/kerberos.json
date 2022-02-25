@@ -1,0 +1,42 @@
+{
+  "properties": {
+    "realm": "${cluster-env/kerberos_domain}",
+    "keytab_dir": "/etc/security/keytabs",
+    "additional_realms": ""
+  },
+  "identities": [
+    {
+      "name": "spnego",
+      "principal": {
+        "value": "HTTP/_HOST@${realm}",
+        "type" : "service"
+      },
+      "keytab": {
+        "file": "${keytab_dir}/spnego.service.keytab",
+        "owner": {
+          "name": "root",
+          "access": "r"
+        },
+        "group": {
+          "name": "${cluster-env/user_group}",
+          "access": "r"
+        }
+      }
+    }
+  ],
+  "auth_to_local_properties" : [
+    "hadoop.security.auth_to_local"
+  ],
+  "configurations": [
+    {
+      "core-site": {
+        "hadoop.security.authentication": "kerberos",
+        "hadoop.rpc.protection": "authentication",
+        "hadoop.security.authorization": "true",
+        "hadoop.security.auth_to_local": "",
+        "hadoop.proxyuser.superuser.hosts": "",
+        "hadoop.proxyuser.superuser.groups": ""
+      }
+    }
+  ]
+}

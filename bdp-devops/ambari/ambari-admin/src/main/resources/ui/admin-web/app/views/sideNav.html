@@ -1,0 +1,99 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div id="side-nav" class="navigation-bar navigation-bar-fit-height">
+  <div class="navigation-bar-container">
+    <ul class="side-nav-header nav nav-pills nav-stacked">
+      <li class="navigation-header active">
+        <a href="{{fromSiteRoot('/#!/main/dashboard')}}" class="ambari-logo">
+          <img src="{{fromSiteRoot('/img/ambari-logo.png')}}" alt="{{'common.apacheAmbari' | translate}}" title="{{'common.apacheAmbari' | translate}}" data-qa="ambari-logo">
+        </a>
+        <div class="btn-group">
+          <a href="{{fromSiteRoot('/#!/main/dashboard')}}" class="ambari-header-link" title="{{'common.apacheAmbari' | translate}}" data-qa="ambari-title">
+            <span class="ambari-header">
+              {{'common.ambari' | translate}}
+            </span>
+          </a>
+        </div>
+      </li>
+    </ul>
+    <ul class="nav side-nav-menu nav-pills nav-stacked">
+      <li class="mainmenu-li active" ng-show="cluster.Clusters.provisioning_state === 'INSTALLED'">
+        <a title="{{'common.dashboard' | translate}}" rel="tooltip" data-placement="right" href="{{fromSiteRoot('/#!/main/dashboard')}}" class="gotodashboard">
+          <i class="navigation-icon fa fa-tachometer" aria-hidden="true"></i>
+          <span class="navigation-menu-item">{{'common.dashboard' | translate}}</span>
+        </a>
+      </li>
+      <li class="mainmenu-li dropdown has-sub-menu">
+        <a title="{{'common.clusterManagement' | translate}}" data-toggle="collapse-sub-menu" rel="tooltip" data-placement="right">
+          <span class="toggle-icon glyphicon glyphicon-menu-down pull-right"></span>
+          <i class="navigation-icon fa fa-cloud" aria-hidden="true"></i>
+          <span class="navigation-menu-item">{{'common.clusterManagement' | translate}}</span>
+        </a>
+        <ul class="sub-menu nav nav-pills nav-stacked">
+          <li class="submenu-li" ng-class="{active: isActive('clusters.clusterInformation')}">
+            <a href="#!/clusterInformation" class="clusterInformation">
+              {{'common.clusterInformation' | translate}}
+            </a>
+          </li>
+          <li class="submenu-li"  ng-class="{active: isActive('stackVersions.list')}" ng-show="cluster && totalRepos > 0">
+            <a href="#!/stackVersions">{{'common.versions' | translate}}</a>
+          </li>
+          <li class="submenu-li" ng-class="{active: isActive('remoteClusters.list')}">
+            <a href="#!/remoteClusters">{{'common.remoteClusters' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li class="mainmenu-li" ng-class="{active: isActive('userManagement.main')}">
+        <link-to route="userManagement.main" class="userslist-link" title="{{'common.users' | translate}}" rel="tooltip" data-placement="right">
+          <i class="navigation-icon fa fa-users" aria-hidden="true"></i>
+          <span class="navigation-menu-item">{{'common.users' | translate}}</span>
+        </link-to>
+      </li>
+      <li class="mainmenu-li" ng-class="{active: isActive('views.list')}">
+        <link-to route="views.list" class="viewslist-link" title="{{'common.views' | translate}}" rel="tooltip" data-placement="right">
+          <i class="navigation-icon fa fa-th" aria-hidden="true"></i>
+          <span class="navigation-menu-item">{{'common.views' | translate}}</span>
+        </link-to>
+      </li>
+      <li class="mainmenu-li dropdown has-sub-menu" ng-show="settings.isLoginActivitiesSupported || settings.isLDAPConfigurationSupported">
+        <a title="{{'common.settings' | translate}}" data-toggle="collapse-sub-menu" rel="tooltip" data-placement="right">
+          <span class="toggle-icon glyphicon glyphicon-menu-down pull-right"></span>
+          <i class="navigation-icon glyphicon glyphicon-cog" aria-hidden="true"></i>
+          <span class="navigation-menu-item">{{'common.settings' | translate}}</span>
+        </a>
+        <ul class="sub-menu nav nav-pills nav-stacked">
+          <li class="submenu-li"  ng-class="{active: isActive('authentication.main')}" ng-show="settings.isLDAPConfigurationSupported">
+            <link-to route="authentication.main">{{'common.authentication' | translate}}</link-to>
+          </li>
+          <li class="submenu-li" ng-class="{active: isActive('loginActivities.loginMessage')}" ng-show="settings.isLoginActivitiesSupported">
+            <link-to route="loginActivities.loginMessage">{{'common.loginActivities.loginActivities' | translate}}</link-to>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="side-nav-footer nav nav-pills nav-stacked">
+      <li class="navigation-footer">
+        <a href="#" data-toggle="collapse-side-nav">
+          <span class="navigation-icon fa fa-angle-double-left" aria-hidden="true"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+

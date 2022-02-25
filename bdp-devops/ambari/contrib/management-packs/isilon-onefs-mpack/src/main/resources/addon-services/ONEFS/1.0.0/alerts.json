@@ -1,0 +1,122 @@
+{
+  "ONEFS":{
+    "service": [
+      {
+        "name": "namenode_onefs_capacity_utilization",
+        "label": "OneFS Capacity Utilization",
+        "description": "This service-level alert is triggered if the OneFS capacity utilization exceeds the configured warning and critical thresholds. It checks the OneFS NameNode for the CapacityUsed and CapacityRemaining properties. The threshold values are in percent.",
+        "interval": 2,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SERVER",
+          "class": "org.apache.ambari.server.alerts.JmxServerSideAlert",
+          "uri": {
+            "http": "${hdfs-site/dfs.namenode.http-address}",
+            "https": "${hdfs-site/dfs.namenode.https-address}",
+            "https_property": "${hdfs-site/dfs.http.policy}",
+            "https_property_value": "HTTPS_ONLY",
+            "connection_timeout": 5.0
+          },
+          "reporting": {
+            "ok": {
+              "text": "Capacity Used:[{2,number,#.##}%, {0}], Capacity Remaining:[{1}]"
+            },
+            "warning": {
+              "text": "Capacity Used:[{2,number,#.##}%, {0}], Capacity Remaining:[{1}]",
+              "value": 75
+            },
+            "critical": {
+              "text": "Capacity Used:[{2,number,#.##}%, {0}], Capacity Remaining:[{1}]",
+              "value": 80
+            }
+          },
+          "jmx": {
+            "property_list": [
+              "Hadoop:service=NameNode,name=FSNamesystem/CapacityUsed",
+              "Hadoop:service=NameNode,name=FSNamesystem/CapacityRemaining"
+            ],
+            "value": "new Double({0})/({0} + {1}) * 100.0"
+          }
+        }
+      },
+      {
+        "name": "namenode_onefs_blocks_health",
+        "label": "OneFS NameNode Blocks Health",
+        "description": "This service-level alert is triggered if the number of corrupt or missing blocks exceeds the configured critical threshold. The threshold values are in blocks.",
+        "interval": 2,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SERVER",
+          "class": "org.apache.ambari.server.alerts.JmxServerSideAlert",
+          "uri": {
+            "http": "${hdfs-site/dfs.namenode.http-address}",
+            "https": "${hdfs-site/dfs.namenode.https-address}",
+            "https_property": "${hdfs-site/dfs.http.policy}",
+            "https_property_value": "HTTPS_ONLY",
+            "connection_timeout": 5.0
+          },
+          "reporting": {
+            "ok": {
+              "text": "Missing Blocks:[{0}]"
+            },
+            "warning": {
+              "text": "Missing Blocks:[{0}]",
+              "value": 1
+            },
+            "critical": {
+              "text": "Missing Blocks:[{0}]",
+              "value": 1
+            }
+          },
+          "jmx": {
+            "property_list": [
+              "Hadoop:service=NameNode,name=FSNamesystem/MissingBlocks"
+            ],
+            "value": "{0}"
+          }
+        }
+      },
+      {
+        "name": "onefs_heap_usage",
+        "label": "OneFS Heap Usage",
+        "description": "This host-level alert is triggered if heap usage goes past thresholds on the DataNode. The threshold values are in percent.",
+        "interval": 2,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SERVER",
+          "class": "org.apache.ambari.server.alerts.JmxServerSideAlert",
+          "uri": {
+            "http": "${hdfs-site/dfs.namenode.http-address}",
+            "https": "${hdfs-site/dfs.namenode.https-address}",
+            "https_property": "${hdfs-site/dfs.http.policy}",
+            "https_property_value": "HTTPS_ONLY",
+            "connection_timeout": 5.0
+          },
+          "reporting": {
+            "ok": {
+              "text": "Used Heap:[{2,number,#.##}%, {0} B], Max Heap: {1} B"
+            },
+            "warning": {
+              "text": "Used Heap:[{2,number,#.##}%, {0} B], Max Heap: {1} B",
+              "value": 80
+            },
+            "critical": {
+              "text": "Used Heap:[{2,number,#.##}%, {0} B], Max Heap: {1} B",
+              "value": 90
+            }
+          },
+          "jmx": {
+            "property_list": [
+              "java.lang:type=Memory/HeapMemoryUsage[used]",
+              "java.lang:type=Memory/HeapMemoryUsage[max]"
+            ],
+            "value": "100.0 - (new Double({1} - {0})/{1} * 100.0)"
+          }
+        }
+      }
+    ]
+  }
+}

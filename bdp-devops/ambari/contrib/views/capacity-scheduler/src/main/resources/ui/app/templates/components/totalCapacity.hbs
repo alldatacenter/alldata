@@ -1,0 +1,52 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="panel panel-default panel-capacity">
+  <div class="panel-heading">
+    <div class="panel-title">
+      Capacity
+      <div class="total">
+        <div class="level-total-label">Level Total</div>
+        {{capacity-bar capacityValue=totalCapacity maxCapacityValue=totalCapacity warn=currentQueue._overCapacity}}
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    {{#with currentQueue}}
+      {{partial  'components/queueContainer'}}
+    {{/with}}
+    <div class="peer-toggle">
+      <a href="#"  {{action 'toggleProperty' 'showPeerQueues'}}>
+        {{#if showPeerQueues}}
+          <small><i class="fa fa-chevron-up"></i> Hide Peer Level Queues </small>
+        {{else}}
+          <small><i class="fa fa-chevron-down"></i> Show Peer Level Queues </small>
+        {{/if}}
+      </a>
+    </div>
+    {{#if showPeerQueues}}
+      {{#each queue in leafQueues}}
+        {{#unless queue.isCurrent}}
+          {{#with queue}}
+            {{partial 'components/queueContainer'}}
+          {{/with}}
+        {{/unless}}
+      {{/each}}
+    {{/if}}
+  </div>
+</div>

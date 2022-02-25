@@ -1,0 +1,163 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.service.isRestartRequired}}
+  {{#isAuthorized "SERVICE.START_STOP"}}
+    <div id="summary-restart-bar">
+      <div class="alert alert-warning clearfix restart-required">
+        <i class="glyphicon glyphicon-refresh"></i> {{{view.needToRestartMessage}}} {{t services.service.config.restartService.needToRestart}}
+        <a href="#" {{action showComponentsShouldBeRestarted controller.content target="App.router.mainServiceInfoConfigsController"}}>{{view.componentsCount}} {{pluralize view.componentsCount singular="t:common.component" plural="t:common.components"}}</a> {{t on}}
+        <a href="#" {{action showHostsShouldBeRestarted controller.content target="App.router.mainServiceInfoConfigsController"}}>{{view.hostsCount}} {{pluralize view.hostsCount singular="t:common.host" plural="t:common.hosts"}}</a>
+        <span class="restart-components pull-right">&nbsp</span>
+
+        <div class="btn-group pull-right">
+          <button type="button" class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+            {{t hosts.host.details.needToRestart.button}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" {{action restartAllStaleConfigComponents target="view"}}>{{t restart.service.all.affected}}</a>
+            </li>
+            {{#if view.rollingRestartSlaveComponentName}}
+              <li>
+                <a href="#" {{action rollingRestartStaleConfigSlaveComponents view.rollingRestartSlaveComponentName target="view"}}>{{view.rollingRestartActionName}}</a>
+              </li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  {{/isAuthorized}}
+{{/if}}
+
+<div class="service-block">
+  <div class="summary-links-block">
+    <div class="panel panel-default summary-block">
+      <div class="panel-heading summary-box-header">
+        <div class="row">
+          <div class="col-md-8 col-lg-8">
+            <h4 class="panel-title">{{controller.content.label}} {{t services.service.info.menu.summary}}</h4>
+          </div>
+          <div class="col-md-4 col-lg-4 service-alerts">
+            {{#if view.hasAlertDefinitions}}
+              <span {{action "showServiceAlertsPopup" controller.content target="controller"}} class="pull-right">
+                <i class="glyphicon glyphicon-bell"></i>
+                {{view App.AlertBadgeView
+                       classNames="medium-size"
+                       criticalCountBinding="view.controller.content.criticalCount"
+                       warningCountBinding="view.controller.content.warningCount"
+                       shouldShowNoneCountBinding="view.shouldShowNoneCount"}}
+              </span>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        {{#if view.serviceSummaryView}}
+          {{view view.serviceSummaryView}}
+        {{else}}
+          {{view App.SpinnerView}}
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="panel panel-default quick-links-block">
+      {{#view App.QuickLinksView contentBinding="view.svc" masterGroupsBinding="view.mastersObj"}}
+        <div class="panel-heading">
+          <div class="row col-md-8 col-lg-12">
+            <h4 class="panel-title">{{t common.quickLinks}}</h4>
+          </div>
+        </div>
+        <div class="panel-body">
+          {{#if view.showQuickLinks}}
+            {{#if view.isLoaded}}
+              {{#if view.quickLinksArray}}
+                <!--there are multiple masters eg, HBase multiple masters or HDFS HA enabled-->
+                {{#each group in view.quickLinksArray}}
+                  <div {{QAAttr "{group.title}-quick-links"}}>
+                    {{#if group.title}}
+                      <h5 class="ellipsis-overflow-nowrap"
+                        {{bindAttr data-title="group.title" rel="view.tooltipAttribute"}}>
+                        {{group.title}}
+                      </h5>
+                    {{/if}}
+                    {{#each quickLinks in group.links}}
+                      <h6>{{quickLinks.publicHostNameLabel}}</h6>
+                      {{#each quickLinks}}
+                        <a {{bindAttr href="url"}} target="_blank" rel="noopener noreferrer">{{label}}</a>
+                      {{/each}}
+                    {{/each}}
+                  </div>
+                {{/each}}
+              {{else}}
+                {{#if view.quickLinks}}
+                  {{#each view.quickLinks}}
+                    <a {{bindAttr href="url"}} target="_blank" rel="noopener noreferrer">{{label}}</a>
+                  {{/each}}
+                {{else}}
+                  <div class="alert alert-danger">
+                    <small>{{t quick.links.error.quicklinks.unavailable.label}}</small>
+                  </div>
+                {{/if}}
+              {{/if}}
+            {{else}}
+              {{view App.SpinnerView}}
+            {{/if}}
+          {{else}}
+            {{#if view.showNoLinks}}
+              {{t common.noLink}}
+            {{else}}
+              {{view App.SpinnerView}}
+            {{/if}}
+          {{/if}}
+        </div>
+      {{/view}}
+      {{! TODO implement display of views related to the current service}}
+      <!--div class="panel-heading">
+         <div class="row col-md-8 col-lg-12">
+           <h4 class="panel-title">{{!t common.views}}</h4>
+         </div>
+      </div>
+      <div class="panel-body">
+       {{!#if view.views.length}}
+         {{!#each item in view.views}}
+           <a href="#" {{!action "setView" item target="App.router.mainViewsController"}}>{{!item.label}}</a>
+         {{!/each}}
+       {{!else}}
+         <span>{{!t menu.item.views.noViews}}</span>
+       {{!/if}}
+      </div-->
+    </div>
+  </div>
+</div>
+
+{{#if view.collapsedSections}}
+  <div class="row">
+    <div class="col-md-12 metrics-collapsed-graphs">
+      {{#each collapsedSection in view.collapsedSections}}
+        {{view collapsedSection}}
+      {{/each}}
+    </div>
+  </div>
+{{/if}}
+
+
+
+
+

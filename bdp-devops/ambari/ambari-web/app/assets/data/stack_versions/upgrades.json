@@ -1,0 +1,28 @@
+{
+  "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/upgrades?fields=Upgrade/request_status,Upgrade/versions,Upgrade/request_id,Upgrade/direction",
+  "items": [
+    {
+      "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/upgrades/19",
+      "Upgrade": {
+        "cluster_name": "c",
+        "direction": "UPGRADE",
+        "request_id": 19,
+        "request_status": "COMPLETED",
+        "versions": {
+          "STORM": {
+            "from_repository_id": 1,
+            "from_repository_version": "2.5.0.0-1237",
+            "target_repository_id": 5,
+            "target_repository_version": "2.5.4.0-121"
+          },
+          "ZOOKEEPER": {
+            "from_repository_id": 2,
+            "from_repository_version": "2.5.2.9-9999",
+            "target_repository_id": 5,
+            "target_repository_version": "2.5.4.0-121"
+          }
+        }
+      }
+    }
+  ]
+}

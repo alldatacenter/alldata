@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "serviceconfigversion": "1",
+      "createtime": "43800000000",
+      "author": "admin",
+      "group_id" : null,
+      "group_name" : null,
+      "service_config_version_note" : null,
+      "service_name" : "HDFS",
+      "configurations": [
+        {
+          "type": "hdfs-site",
+          "tag": "1",
+          "version": "1",
+          "Config": {
+            "cluster_name": "c1"
+          },
+          "properties": {
+            "dfs.namenode.checkpoint.dir" : "/hadoop/hdfs/namesecondary",
+            "dfs.namenode.name.dir" : "/hadoop/hdfs/namenode",
+            "dfs.replication" : "3",
+            "dfs.permissions.enabled" : "true"
+          }
+        }
+      ]
+    }
+  ]
+}

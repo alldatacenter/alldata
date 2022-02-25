@@ -1,0 +1,1436 @@
+{
+  "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts?fields=*",
+  "items" : [
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev1.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev1.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/SECONDARY_NAMENODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "SECONDARY_NAMENODE",
+            "host_name" : "dev1.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/JOBTRACKER",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "JOBTRACKER",
+            "host_name" : "dev1.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/DATANODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "DATANODE",
+            "host_name" : "dev1.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/HDFS_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "HDFS_CLIENT",
+            "host_name" : "dev1.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/TASKTRACKER",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "TASKTRACKER",
+            "host_name" : "dev1.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/NAMENODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "NAMENODE",
+            "host_name" : "dev1.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/MAPREDUCE_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "MAPREDUCE_CLIENT",
+            "host_name" : "dev1.hortonworks.com"
+          }
+        }
+      ]
+    }, 
+    {
+      
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev2.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev2.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/SECONDARY_NAMENODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "SECONDARY_NAMENODE",
+            "host_name" : "dev2.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/JOBTRACKER",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "JOBTRACKER",
+            "host_name" : "dev2.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/DATANODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "DATANODE",
+            "host_name" : "dev2.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/HDFS_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "HDFS_CLIENT",
+            "host_name" : "dev2.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/TASKTRACKER",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "TASKTRACKER",
+            "host_name" : "dev2.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/NAMENODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "NAMENODE",
+            "host_name" : "dev2.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/MAPREDUCE_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "MAPREDUCE_CLIENT",
+            "host_name" : "dev2.hortonworks.com"
+          }
+        }
+      ]
+    },
+    {
+      
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev3.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev3.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : [
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/SECONDARY_NAMENODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "SECONDARY_NAMENODE",
+            "host_name" : "dev3.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/JOBTRACKER",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "JOBTRACKER",
+            "host_name" : "dev3.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/DATANODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "DATANODE",
+            "host_name" : "dev3.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/HDFS_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "HDFS_CLIENT",
+            "host_name" : "dev3.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/TASKTRACKER",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "TASKTRACKER",
+            "host_name" : "dev3.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/NAMENODE",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "NAMENODE",
+            "host_name" : "dev3.hortonworks.com"
+          }
+        },
+        {
+          "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev.hortonworks.com/host_components/MAPREDUCE_CLIENT",
+          "HostRoles" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "MAPREDUCE_CLIENT",
+            "host_name" : "dev3.hortonworks.com"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev4.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev4.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev5.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev5.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev6.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev6.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev7.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev7.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev8.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev8.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev9.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev9.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev10.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev10.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev11.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev12.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev13.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev14.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev15.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev16.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev17.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev18.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev19.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev20.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev21.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev22.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev23.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev24.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev25.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev26.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev27.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev28.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev29.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev30.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev31.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev32.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev33.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev34.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev35.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev36.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev37.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev38.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev39.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev40.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev41.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev42.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev43.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev44.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev45.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev46.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev47.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev48.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev49.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev50.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev51.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev52.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev53.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev54.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev55.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev56.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev57.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev58.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev59.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev60.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev61.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev62.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev63.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev64.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev65.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev66.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev67.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev68.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev69.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev70.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev71.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev72.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev73.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/clusters/mycluster/hosts/dev11.hortonworks.com",
+      "Hosts" : {
+        "cpu_count" : 1,
+        "cluster_name" : "mycluster",
+        "last_registration_time" : 1352386560520,
+        "rack_info" : "/default-rack",
+        "total_mem" : 3082813,
+        "os_arch" : "x86_64",
+        "host_name" : "dev74.hortonworks.com",
+        "disk_info" : "[{\"available\":\"47295056\",\"mountpoint\":\"/\",\"used\":\"3786948\",\"percent\":\"8%\",\"size\":\"51606140\",\"type\":\"ext4\"},{\"available\":\"1542800\",\"mountpoint\":\"/dev/shm\",\"used\":\"248\",\"percent\":\"1%\",\"size\":\"1543048\",\"type\":\"tmpfs\"},{\"available\":\"432210\",\"mountpoint\":\"/boot\",\"used\":\"38034\",\"percent\":\"9%\",\"size\":\"495844\",\"type\":\"ext4\"},{\"available\":\"44459872\",\"mountpoint\":\"/home\",\"used\":\"184220\",\"percent\":\"1%\",\"size\":\"47033288\",\"type\":\"ext4\"},{\"available\":\"902105496\",\"mountpoint\":\"/media/sf_ambari\",\"used\":\"74551908\",\"percent\":\"8%\",\"size\":\"976657404\",\"type\":\"vboxsf\"}]",
+        "last_heartbeat_time" : 1352461939047,
+        "os_type" : "centos6",
+        "ip" : "10.0.2.15"
+      },
+      "host_components" : []
+    }
+  ]
+}

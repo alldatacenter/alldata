@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration supports_adding_forbidden="true">
+  <property>
+    <name>mapred_log_dir_prefix</name>
+    <value>/var/log/hadoop-mapreduce</value>
+    <display-name>Mapreduce Log Dir Prefix</display-name>
+    <description>Mapreduce Log Dir Prefix</description>
+    <value-attributes>
+      <type>directory</type>
+      <overridable>false</overridable>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred_pid_dir_prefix</name>
+    <value>/var/run/hadoop-mapreduce</value>
+    <display-name>Mapreduce PID Dir Prefix</display-name>
+    <description>Mapreduce PID Dir Prefix</description>
+    <value-attributes>
+      <type>directory</type>
+      <overridable>false</overridable>
+      <editable-only-at-install>true</editable-only-at-install>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred_user</name>
+    <display-name>Mapreduce User</display-name>
+    <value>mapred</value>
+    <property-type>USER</property-type>
+    <description>Mapreduce User</description>
+    <value-attributes>
+      <type>user</type>
+      <overridable>false</overridable>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>jobhistory_heapsize</name>
+    <display-name>History Server heap size</display-name>
+    <value>900</value>
+    <description>Value for JobHistoryServer heap_size variable in hadoop-env.sh</description>
+    <value-attributes>
+      <unit>MB</unit>
+      <type>int</type>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred_user_nofile_limit</name>
+    <value>32768</value>
+    <description>Max open files limit setting for MAPREDUCE user.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>mapred_user_nproc_limit</name>
+    <value>65536</value>
+    <description>Max number of processes limit setting for MAPREDUCE user.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- mapred-env.sh -->
+  <property>
+    <name>content</name>
+    <display-name>mapred-env template</display-name>
+    <description>This is the jinja template for mapred-env.sh file</description>
+    <value>
+# export JAVA_HOME=/home/y/libexec/jdk1.6.0/
+
+export HADOOP_JOB_HISTORYSERVER_HEAPSIZE={{jobhistory_heapsize}}
+
+export HADOOP_MAPRED_ROOT_LOGGER=INFO,RFA
+
+#export HADOOP_JOB_HISTORYSERVER_OPTS=
+#export HADOOP_MAPRED_LOG_DIR="" # Where log files are stored.  $HADOOP_MAPRED_HOME/logs by default.
+#export HADOOP_JHS_LOGGER=INFO,RFA # Hadoop JobSummary logger.
+#export HADOOP_MAPRED_PID_DIR= # The pid files are stored. /tmp by default.
+#export HADOOP_MAPRED_IDENT_STRING= #A string representing this instance of hadoop. $USER by default
+#export HADOOP_MAPRED_NICENESS= #The scheduling priority for daemons. Defaults to 0.
+    </value>
+    <value-attributes>
+      <type>content</type>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

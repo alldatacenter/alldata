@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<!-- ResourceManager -->
+
+  <property>
+    <name>test.password</name>
+    <value> </value>
+    <property-type>PASSWORD</property-type>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.resource-tracker.address</name>
+    <value>localhost:8025</value>
+    <deleted>true</deleted>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.scheduler.address</name>
+    <value>localhost:8030</value>
+    <description>The address of the scheduler interface.</description>
+    <deleted>true</deleted>
+  </property>
+  
+  <property>
+    <name>yarn.resourcemanager.address</name>
+    <value>localhost:100009</value>
+    <description>
+      The address of the applications manager interface in the
+      RM.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.admin.address</name>
+    <value></value>
+    <description>The address of the RM admin interface.</description>
+  </property>
+
+  <property>
+    <name>new-yarn-property</name>
+    <value>some-value</value>
+    <description>some description.</description>
+  </property>
+
+  <property>
+    <name>new-enhanced-yarn-property</name>
+    <value>1024</value>
+    <description>some enhanced description.</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>512</minimum>
+      <maximum>15360</maximum>
+      <unit>MB</unit>
+      <increment-step>256</increment-step>
+    </value-attributes>
+    <depends-on>
+      <property>
+        <type>yarn-site</type>
+        <name>new-yarn-property</name>
+      </property>
+      <property>
+        <type>global</type>
+        <name>yarn_heapsize</name>
+      </property>
+    </depends-on>
+  </property>
+
+  <property>
+    <name>new-enhanced-yarn-property2</name>
+    <value>1024</value>
+    <description>some enhanced description.</description>
+
+    <depends-on>
+      <property>
+        <type>yarn-site</type>
+        <name>new-enhanced-yarn-property</name>
+      </property>
+    </depends-on>
+  </property>
+
+  <property>
+    <name>property.with.extra.value.attributes</name>
+    <value>yarn</value>
+    <description> some description. </description>
+    <value-attributes>
+      <empty-value-valid>true</empty-value-valid>
+      <visible>true</visible>
+      <read-only>true</read-only>
+      <editable-only-at-install>false</editable-only-at-install>
+      <overridable>false</overridable>
+      <show-property-name>false</show-property-name>
+    </value-attributes>
+  </property>
+
+
+</configuration>

@@ -1,0 +1,74 @@
+{
+  "0": {
+    "alertDefinitions": [
+      {
+        "clusterId": 2,
+        "definitionId": 3,
+        "description": "This service-level alert is triggered if the configured percentage of RegionServer processes cannot be determined to be up and listening on the network for the configured warning and critical thresholds. It aggregates the results of RegionServer process down checks.",
+        "enabled": true,
+        "ignore_host": false,
+        "interval": 2,
+        "label": "Percent RegionServers Available",
+        "name": "hbase_regionserver_process_percent",
+        "scope": "SERVICE",
+        "serviceName": "HBASE",
+        "source": {
+          "alert_name": "hbase_regionserver_process",
+          "reporting": {
+            "critical": {
+              "text": "affected: [{1}], total: [{0}]",
+              "value": 30.0
+            },
+            "ok": {
+              "text": "affected: [{1}], total: [{0}]"
+            },
+            "type": "PERCENT",
+            "units": "%",
+            "warning": {
+              "text": "affected: [{1}], total: [{0}]",
+              "value": 10.0
+            }
+          },
+          "type": "AGGREGATE"
+        },
+        "uuid": "69ff4c8f-8e98-4cfd-b90f-6914e2f147ff"
+      },
+      {
+        "clusterId": 2,
+        "componentName": "HBASE_MASTER",
+        "definitionId": 1,
+        "description": "This alert is triggered if the HBase master processes cannot be confirmed to be up and listening on the network for the configured critical threshold, given in seconds.",
+        "enabled": true,
+        "ignore_host": false,
+        "interval": 1,
+        "label": "HBase Master Process",
+        "name": "hbase_master_process",
+        "scope": "ANY",
+        "serviceName": "HBASE",
+        "source": {
+          "default_port": 60000,
+          "reporting": {
+            "critical": {
+              "text": "Connection failed: {0} to {1}:{2}",
+              "value": 5.0
+            },
+            "ok": {
+              "text": "TCP OK - {0:.3f}s response on port {1}"
+            },
+            "warning": {
+              "text": "TCP OK - {0:.3f}s response on port {1}",
+              "value": 1.5
+            }
+          },
+          "type": "PORT",
+          "uri": "{{hbase-site/hbase.master.port}}"
+        },
+        "uuid": "ff73ead7-13b4-43ea-a747-d230f17bf230"
+      }
+    ],
+    "clusterName": "cl1",
+    "hash": "8f7b4e960133bc691661cbcdaddddec8",
+    "hostName": "ctr-e134-1499953498516-81665-01-000008.hwx.site",
+    "publicHostName": "ctr-e134-1499953498516-81665-01-000008.hwx.site"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "definitions": {
+    "identity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "reference": {
+          "type": "string",
+          "pattern": "^(\\.\\/)?[/a-zA-Z0-9_\\-]+$"
+        },
+        "principal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "pattern": "^user|service|USER|SERVICE$"
+            },
+            "configuration": {
+              "type": "string"
+            },
+            "local_username": {
+              "type": "string"
+            }
+          }
+        },
+        "keytab": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string"
+            },
+            "owner": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "access": {
+                  "type": "string",
+                  "pattern": "^r?|rw$"
+                }
+              }
+            },
+            "group": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "access": {
+                  "type": "string",
+                  "pattern": "^r?|rw$"
+                }
+              }
+            },
+            "configuration": {
+              "type": "string"
+            }
+          }
+        },
+        "when": {
+          "type": "object",
+          "properties": {
+            "contains": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "identities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/identity"
+      }
+    },
+    "configurations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/configuration"
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "type": "object",
+        "patternProperties": {
+          "^.+$": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "service": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "identities": {
+          "$ref": "#/definitions/identities"
+        },
+        "configurations": {
+          "$ref": "#/definitions/configurations"
+        },
+        "preconfigure": {
+          "type": "boolean"
+        },
+        "components": {
+          "$ref": "#/definitions/components"
+        },
+        "auth_to_local_properties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/service"
+      }
+    },
+    "component": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "identities": {
+          "$ref": "#/definitions/identities"
+        },
+        "configurations": {
+          "$ref": "#/definitions/configurations"
+        },
+        "auth_to_local_properties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/component"
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "properties": {
+      "type": "object",
+      "patternProperties": {
+        "^.+$": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "identities": {
+      "$ref": "#/definitions/identities"
+    },
+    "services": {
+      "$ref": "#/definitions/services"
+    }
+  },
+  "additionalProperties": false
+}

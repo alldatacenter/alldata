@@ -1,0 +1,49 @@
+{
+  "type" : "full-release",
+  "name" : "myservice-ambari-mpack",
+  "version": "1.0.0.0",
+  "description" : "MyService Management Pack",
+  "prerequisites": {
+    "min_ambari_version" : "2.4.0.0",
+    "min_stack_versions" : [
+      {
+        "stack_name" : "MYSTACK",
+        "stack_version" : "1.0"
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "name" : "MYSERVICE-service-definitions",
+      "type" : "service-definitions",
+      "source_dir" : "common-services"
+    },
+    {
+      "name" : "MYSERVICE-1.0.0",
+      "type" : "stack-addon-service-definitions",
+      "source_dir": "custom-services",
+      "service_versions_map": [
+        {
+          "service_name" : "MYSERVICE",
+          "service_version" : "1.0.0",
+          "applicable_stacks" : [
+            {
+              "stack_name" : "MYSTACK",
+              "stack_version" : "1.0"
+            }
+          ]
+        },
+        {
+          "service_name" : "MYSERVICE",
+          "service_version" : "2.0.0",
+          "applicable_stacks" : [
+            {
+              "stack_name" : "MYSTACK",
+              "stack_version" : "2.0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

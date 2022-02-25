@@ -1,0 +1,126 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="step6" class="wizard-content col-md-9">
+  <h4 class="step-title" {{QAAttr "step-title"}}>{{t installer.step6.header}}</h4>
+  <p class="step-description">{{{view.label}}}</p>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{#if anyErrors}}
+        <p>{{t installer.step6.validationSlavesAndClients.popup.body}}</p>
+        <div class="limited-height-2">
+          {{#if anyGeneralErrors}}
+            <div class="alert alert-danger">
+              <ul>
+                {{#if errorMessage}}
+                  <li>{{errorMessage}}</li>
+                {{/if}}
+                {{#each msg in controller.generalErrorMessages}}
+                  <li>{{msg}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+
+          {{#if anyGeneralWarnings}}
+            <div class="alert alert-warning">
+              <ul>
+                {{#each msg in controller.generalWarningMessages}}
+                  <li>{{msg}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+
+      <div class="col-sm-12">
+        <div class="pre-scrollable">
+          <table class="table table-hover" id="component_assign_table" {{QAAttr "slave-clients-table"}}>
+            <thead>
+            <tr>
+              <th class="host-column freeze">{{t common.host}}</th>
+              {{#each header in controller.headers}}
+                <th {{bindAttr class="header.name"}}>
+                  <a
+                    href="#" {{QAAttr "select-all"}} {{bindAttr class="header.allChecked:selected:deselected header.isDisabled:remove-link" id="header.allId"}}
+                    {{action "selectAllNodes" header target="controller"}}>{{t all}}</a> &nbsp;|&nbsp; <a
+                  {{QAAttr "deselect-all"}}
+                  href="#" {{bindAttr class="header.noChecked:selected:deselected header.isDisabled:remove-link" id="header.noneId"}}
+                  {{action "deselectAllNodes" header target="controller"}}>{{t none}}</a>
+                </th>
+              {{/each}}
+            </tr>
+            </thead>
+            <tbody>
+            {{#each host in view.pageContent}}
+              <tr {{QAAttr "host-row"}} {{bindAttr class="host.isLast:last-row"}}>
+                {{#view App.WizardStep6HostView hostBinding="host"}}
+                  <span class="trim_hostname">{{host.hostName}}</span>
+                  {{#if host.hasMaster}}
+                    <i {{QAAttr "has-masters"}} class="glyphicon glyphicon-asterisks">&#10037;</i>
+                  {{/if}}
+                {{/view}}
+                {{#each checkbox in host.checkboxes}}
+                  <td {{QAAttr "toggle-component"}} {{bindAttr class="checkbox.hasErrorMessage:error checkbox.hasWarnMessage:warning checkbox.component"}}>
+                    <div class="checkbox" {{bindAttr data-qa="checkbox.dataQaAttr"}}>
+                      <input {{bindAttr id="checkbox.uId" checked="checkbox.checked" disabled="checkbox.isDisabled"}} {{action "checkboxClick" checkbox target="view"}}
+                        type="checkbox"/>
+                      <label class="host-component-checkbox" {{bindAttr for="checkbox.uId"}}>{{checkbox.title}}</label>
+                    </div>
+                  </td>
+                {{/each}}
+              </tr>
+              {{#if host.anyMessage}}
+                <div class="host-messages">
+                  {{#each errorMsg in host.errorMessages}}
+                    <div class="alert alert-danger">{{errorMsg}}</div>
+                  {{/each}}
+                  {{#each warnMsg in host.warnMessages}}
+                    <div class="alert alert-warning">{{warnMsg}}</div>
+                  {{/each}}
+                </div>
+              {{/if}}
+            {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{view App.PaginationView classNames="static-pagination"}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    <button type="button" {{QAAttr "wizard-back"}} class="btn btn-default installer-back-btn pull-left" {{bindAttr disabled="App.router.btnClickInProgress"}} {{action back}}>
+      &larr; {{t common.back}}
+      {{#if App.router.backBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+      {{/if}}
+    </button>
+    {{template "templates/wizard/installer_cancel_button"}}
+    <button type="button" {{QAAttr "wizard-next"}} class="btn btn-success pull-right" {{bindAttr disabled="submitDisabled"}} {{action next}}>
+      {{#if App.router.nextBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+      {{/if}}
+      {{t common.next}} &rarr;
+    </button>
+  </div>
+</div>

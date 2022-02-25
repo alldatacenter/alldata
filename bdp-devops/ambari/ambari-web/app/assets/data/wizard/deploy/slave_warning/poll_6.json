@@ -1,0 +1,387 @@
+{
+  "href" : "http://ambari:8080/api/clusters/mycluster/requests/2?fields=tasks/*",
+  "Requests" : {
+    "id" : 2,
+    "cluster_name" : "mycluster"
+  },
+  "tasks" : [
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/37",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host4",
+        "id" : 37,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "TASKTRACKER",
+        "start_time" : -1,
+        "stage_id" : 2
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/25",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 25,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/42",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 42,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "EXECUTE",
+        "role" : "PIG_SERVICE_CHECK",
+        "start_time" : -1,
+        "stage_id" : 3
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/32",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 32,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "DATANODE",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/31",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host4",
+        "id" : 31,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/33",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 33,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/26",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host5",
+        "id" : 26,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/44",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 44,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "EXECUTE",
+        "role" : "OOZIE_SERVICE_CHECK",
+        "start_time" : -1,
+        "stage_id" : 4
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/36",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 36,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "TASKTRACKER",
+        "start_time" : -1,
+        "stage_id" : 2
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/34",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 34,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "JOBTRACKER",
+        "start_time" : -1,
+        "stage_id" : 2
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/35",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 35,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "SECONDARY_NAMENODE",
+        "start_time" : -1,
+        "stage_id" : 2
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/38",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 38,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "EXECUTE",
+        "role" : "HDFS_SERVICE_CHECK",
+        "start_time" : -1,
+        "stage_id" : 2
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/29",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host5",
+        "id" : 29,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "NAMENODE",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/24",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 24,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "DATANODE",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/40",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 40,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "OOZIE_SERVER",
+        "start_time" : -1,
+        "stage_id" : 3
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/39",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 39,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "TASKTRACKER",
+        "start_time" : -1,
+        "stage_id" : 2
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/23",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 23,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/27",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host5",
+        "id" : 27,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "GANGLIA_SERVER",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/30",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host4",
+        "id" : 30,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "START",
+        "role" : "DATANODE",
+        "start_time" : -1,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/43",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 43,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "EXECUTE",
+        "role" : "SQOOP_SERVICE_CHECK",
+        "start_time" : -1,
+        "stage_id" : 3
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/2/tasks/41",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "PENDING",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 41,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 0,
+        "request_id" : 2,
+        "command" : "EXECUTE",
+        "role" : "MAPREDUCE_SERVICE_CHECK",
+        "start_time" : -1,
+        "stage_id" : 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "HDP-2.2.0": {
+    "latest": {
+      "centos6": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.2.0.0-123",
+      "redhat6": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.2.2.0-123",
+      "oraclelinux6": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.2.0.0-123",
+      "suse11": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/suse11/2.x/BUILDS/2.2.0.0-123/hdp.repo"
+    },
+    "manifests": {
+      "2.2.1.0": {
+        "centos6": "./version-2.2.0.4-123.xml"
+      }
+    }
+  }
+}

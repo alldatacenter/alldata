@@ -1,0 +1,20 @@
+dn: uid=user_dup,dc=apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: CraigWalls
+sn: Walls
+uid: user_dup
+userPassword:password
+
+dn: uid=user_dup,dc=ambari,dc=apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: JohnSmith
+sn: Smith
+uid: user_dup
+userPassword:password
+

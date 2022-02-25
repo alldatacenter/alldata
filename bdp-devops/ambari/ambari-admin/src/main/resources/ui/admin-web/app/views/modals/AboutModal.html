@@ -1,0 +1,44 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" ng-click="ok()"><span aria-hidden="true">&times;</span><span class="sr-only">{{'common.controls.close' | translate}}</span></button>
+  <h3 class="modal-title">{{'common.about' | translate}}</h3>
+</div>
+<div class="modal-body">
+  <div class="about clearfix">
+    <div class="logo">
+      <img src={{fromSiteRoot('/img/logo.png')}} alt="{{'common.apacheAmbari' | translate}}" title="{{'common.apacheAmbari' | translate}}">
+    </div>
+    <div class="content">
+      <div class="project">{{'common.apacheAmbari' | translate}}</div>
+      <br>
+      <span id="i18n-33">{{'common.version' | translate}}</span>
+      <script id="metamorph-199-start" type="text/x-placeholder"></script>
+      <span ng-bind="ambariVersion"></span>
+      <script id="metamorph-199-end" type="text/x-placeholder"></script>
+      <br>
+      <br>
+      <a href="http://ambari.apache.org/" target="_blank"><span id="i18n-34">{{'common.getInvolved' | translate}}</span></a>
+      <br>
+      <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank"><span id="i18n-35">{{'common.license' | translate}}</span></a>
+  </div>
+  </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="ok()">{{'common.controls.ok' | translate}}</button>
+</div>

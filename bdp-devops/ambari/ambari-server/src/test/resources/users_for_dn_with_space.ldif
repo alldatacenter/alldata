@@ -1,0 +1,51 @@
+dn: ou=the groups,dc=ambari,dc=the apache,dc=org
+objectclass:top
+objectclass:organizationalUnit
+ou: the groups
+
+dn: ou=the people,dc=ambari,dc=the apache,dc=org
+objectclass:top
+objectclass:organizationalUnit
+ou: the people
+
+dn: uid=the allowedUser,ou=the people,dc=ambari,dc=the apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: CraigWalls
+sn: Walls
+uid: the allowedUser
+userPassword:password
+
+dn: uid=deniedUser,ou=the people,dc=ambari,dc=the apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: JohnSmith
+sn: Smith
+uid: deniedUser
+userPassword:password
+
+dn: cn=admin,ou=the groups,dc=ambari,dc=the apache,dc=org
+objectclass:top
+objectclass:groupOfNames
+cn: admin
+member: uid=the allowedUser,ou=the people,dc=ambari,dc=the apache,dc=org
+
+dn: uid=allowedAdmin,ou=the people,dc=ambari,dc=the apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: CraigWalls
+sn: Walls
+uid: allowedAdmin
+userPassword:password
+
+dn: cn=Ambari Administrators,ou=the groups,dc=ambari,dc=the apache,dc=org
+objectclass:top
+objectclass:groupOfNames
+cn: Ambari Administrators
+member: uid=allowedAdmin,ou=the people,dc=ambari,dc=the apache,dc=org

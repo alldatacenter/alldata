@@ -1,0 +1,90 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<view>
+  <name>CLUSTER</name>
+  <label>Cluster View</label>
+  <version>0.1.0</version>
+  <description>View to demonstrate cluster association and auto instance creation.</description>
+  <parameter>
+    <name>setting1</name>
+    <description>The first setting.</description>
+    <label>Setting #1</label>
+    <placeholder>placeholder text for the first setting</placeholder>
+    <default-value>default value 1</default-value>
+    <required>true</required>
+  </parameter>
+  <parameter>
+    <name>setting2</name>
+    <description>The second setting.</description>
+    <label>Setting #2</label>
+    <placeholder>placeholder text for the second setting</placeholder>
+    <default-value>default value 2</default-value>
+    <required>true</required>
+  </parameter>
+  <parameter>
+    <name>hdfs_user</name>
+    <description>The hdfs_user value from the hadoop-env configuration.  Requires cluster association.</description>
+    <label>HDFS User</label>
+    <default-value>not available</default-value>
+    <cluster-config>hadoop-env/hdfs_user</cluster-config>
+  </parameter>
+  <parameter>
+    <name>proxyuser_group</name>
+    <description>The proxyuser_group value from the hadoop-env configuration.  Requires cluster association.</description>
+    <label>ProxyUser Group</label>
+    <default-value>not available</default-value>
+    <cluster-config>hadoop-env/proxyuser_group</cluster-config>
+  </parameter>
+  <resource>
+    <name>configurations</name>
+    <service-class>org.apache.ambari.view.cluster.ClusterConfigurationService</service-class>
+  </resource>
+  <resource>
+    <name>settings</name>
+    <service-class>org.apache.ambari.view.cluster.SettingService</service-class>
+  </resource>
+  <auto-instance>
+    <name>AUTO_INSTANCE</name>
+    <label>Auto Create instance for the CLUSTER view</label>
+    <description>This view instance is auto created when the HDFS service is added to a cluster.</description>
+    <property>
+      <key>setting1</key>
+      <value>value1</value>
+    </property>
+    <property>
+      <key>setting2</key>
+      <value>value2</value>
+    </property>
+    <stack-id>HDP-2.*</stack-id>
+    <services>
+      <service>HDFS</service>
+    </services>
+  </auto-instance>
+  <instance>
+    <name>INSTANCE_1</name>
+    <label>Default instance for the CLUSTER view</label>
+    <description>This view instance is created when the CLUSTER view is deployed.  The instance must be associated with a cluster to have valid cluster configuration values.</description>
+    <property>
+      <key>setting1</key>
+      <value>value1</value>
+    </property>
+    <property>
+      <key>setting2</key>
+      <value>value2</value>
+    </property>
+  </instance>
+</view>

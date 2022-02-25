@@ -1,0 +1,184 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#havePermissions "SERVICE.MODIFY_CONFIGS, SERVICE.START_STOP, HOST.ADD_DELETE_COMPONENTS, HOST.TOGGLE_MAINTENANCE"}}
+  {{#if view.content.componentsWithStaleConfigsCount}}
+    <div class="alert alert-warning clearfix restart-required">
+      <i class="glyphicon glyphicon-refresh"></i> {{view.needToRestartMessage}}
+      <button {{bindAttr class=":btn :restart-components :pull-right :btn-warning" disabled="App.router.wizardWatcherController.isNonWizardUser"}} {{action restartAllStaleConfigComponents target="controller"}}>
+        {{t hosts.host.details.needToRestart.button}}
+      </button>
+    </div>
+  {{/if}}
+{{/havePermissions}}
+
+<div class="row host-block">
+  <div class="col-md-6">
+      {{!components}}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="panel-title">{{t common.components}}</h4>
+          </div>
+          <div class="col-md-6">
+            {{#havePermissions "HOST.ADD_DELETE_COMPONENTS"}}
+              <div class="dropdown pull-right">
+                <button id="add_component" data-toggle="dropdown" {{bindAttr class="view.addComponentDisabled:disabled :btn :btn-default :dropdown-toggle" disabled="App.router.wizardWatcherController.isNonWizardUser"}}>
+                  <span class="glyphicon glyphicon-plus"></span>&nbsp;{{t add}}
+                </button>
+                {{#unless App.router.wizardWatcherController.isNonWizardUser}}
+                  <ul class="dropdown-menu">
+                    {{#each component in view.addableComponents}}
+                      <li>
+                        <a href="javascript:void(null)" data-toggle="modal" {{action addComponentWithCheck component target="controller"}}>
+                          {{component.displayName}}
+                        </a>
+                      </li>
+                    {{/each}}
+                  </ul>
+                {{/unless}}
+              </div>
+            {{/havePermissions}}
+          </div>
+        </div>
+      </div>
+      <div class="host-components panel-body">
+        <table class="table">
+          <thead>
+            <th>{{t common.status}}</th>
+            <th>{{t common.name}}</th>
+            <th>{{t common.type}}</th>
+            <th class="align-center">{{t common.action}}</th>
+          </thead>
+          <tbody>
+          {{#if view.sortedComponents.length}}
+            {{#each component in view.sortedComponents}}
+              {{view component.viewClass contentBinding="component"}}
+            {{/each}}
+          {{/if}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="host-configuration">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">{{t hosts.host.summary.header}}</h4>
+        </div>
+        <div class="host-summary-content panel-body">
+          <div class="host-details-summary-list">
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-hostname-label">{{t hosts.host.summary.hostname}}:</div>
+              <div class="col-md-8 summary-hostname-value">&nbsp;{{view.content.hostName}}</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-ipaddress-label">{{t common.ipAddress}}:</div>
+              <div class="col-md-8 summary-ipaddress-value">&nbsp;{{view.content.ip}}</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-rack-label">{{t common.rack}}:</div>
+              <div class="col-md-8 summary-rack-value">&nbsp;{{formatWordBreak view.content.rack}}
+                {{#isAuthorized "HOST.TOGGLE_MAINTENANCE"}}
+                  <a href="#" class="set-rack-id" {{action setRackId view.content target="controller"}}><i
+                    class="glyphicon glyphicon-pencil"></i></a>
+                {{/isAuthorized}}
+              </div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-os-label">{{t common.os}}:</div>
+              <div class="col-md-8 summary-os-value">&nbsp;{{view.content.osType}}&nbsp;({{view.content.osArch}})</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-cores-label">{{t common.cores.cpu}}:</div>
+              <div class="col-md-8 summary-cores-value">&nbsp;{{view.content.coresFormatted}}</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-disk-label">{{t common.disk}}:</div>
+              <div class="col-md-8 summary-disk-value">&nbsp;{{view.content.diskInfoBar}}</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-memory-label">{{t common.memory}}:</div>
+              <div class="col-md-8 summary-memory-value">&nbsp;{{view.content.memoryFormatted}}</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-load-avg-label">{{t common.loadAvg}}:</div>
+              <div class="col-md-8 summary-load-avg-value">&nbsp;{{view.content.loadAvg}}</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-agent-heart-label">{{t hosts.host.summary.agentHeartbeat}}:</div>
+              <div class="col-md-8 summary-agent-heart-value">&nbsp;{{view.timeSinceHeartBeat}}</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label summary-cur-ver-label">{{t hosts.host.summary.currentVersion}}:</div>
+              <div class="col-md-8 summary-cur-ver-value">&nbsp;{{view.content.currentVersion}}</div>
+            </div>
+            <div class="row row-no-pad">
+              <div class="col-md-4 summary-label">{{t hosts.host.summary.agentHasJce}}:</div>
+              <div class="col-md-8 summary-agent-jce-value">&nbsp;{{view.content.hasJcePolicy}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+      {{!metrics}}
+      {{#if view.showHostMetricsBlock}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-md-6"><h4 class="panel-title">{{t hosts.host.summary.hostMetrics}}</h4></div>
+              <div class="col-md-6">{{view view.timeRangeListView}}</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            {{#if view.hasHostMetricsService}}
+              {{view App.MainHostMetricsView contentBinding="view.content"}}
+            {{/if}}
+            {{#if view.hasNameNode}}
+              <div class="namenode-metrics dashboard-widgets">
+                <h5>
+                  {{#if App.isHaEnabled}}
+                    <span class="text-uppercase">{{t dashboard.widgets.nameSpace}}</span>{{#if view.nameNodeComponent.haNameSpace}}: {{view.nameNodeComponent.haNameSpace}}{{/if}}
+                  {{/if}}
+                </h5>
+                <div class="thumbnails">
+                  {{#each widget in view.nameNodeWidgets}}
+                    {{view widget}}
+                  {{/each}}
+                </div>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+
+      {{!logs metrics}}
+      {{#if App.supports.logCountVizualization}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">{{t hosts.host.summary.hostLogMetrics}}</h4>
+          </div>
+          <div class="panel-body">
+              {{view App.MainHostLogMetrics contentBinding="view.content"}}
+          </div>
+        </div>
+      {{/if}}
+  </div>
+</div>

@@ -1,0 +1,50 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if modalGuard}}
+  <div class="modal fade" tabindex=-1 role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="fa fa-times pull-right" {{action 'close'}}></button>
+          <h4 class="modal-title">{{fa-icon icon="edit"}} Rename {{#if selected.isDirectory}}Folder{{else}}File{{/if}}</h4>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-group {{if hasError "has-error"}}">
+              <label>New name</label>
+              {{input class="form-control" placeholder="New name..." value=selectionName}}
+              {{#if hasError}}<span class="help-block">{{errorMessage}}</span>{{/if}}
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <span class="spinner-wrap">
+              {{#if isUpdating}}
+                {{fa-icon "refresh" spin=true}}
+              {{/if}}
+            </span>
+            <button type="button" class="btn btn-default {{if isUpdating "disabled"}}" {{action 'close'}}>{{fa-icon icon="close"}} Cancel</button>
+            <button type="submit" class="btn btn-primary {{if isUpdating "disabled"}}" {{action 'rename'}}>{{fa-icon icon="edit"}} Rename</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+{{/if}}

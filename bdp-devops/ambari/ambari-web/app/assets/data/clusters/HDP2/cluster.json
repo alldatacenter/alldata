@@ -1,0 +1,58 @@
+{
+  "href" : "http://dev01.hortonworks.com:8080/api/v1/clusters/c1?fields=Clusters",
+  "Clusters" : {
+    "cluster_id" : 2,
+    "cluster_name" : "c1",
+    "version" : "HDP-2.0.5",
+    "desired_configs" : {
+      "capacity-scheduler" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "core-site" : {
+        "user" : "admin",
+        "tag" : "version1375294713268"
+      },
+      "global" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "hbase-site" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "hdfs-site" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "hive-site" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "mapred-queue-acls" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "mapred-site" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "oozie-site" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "webhcat-site" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "yarn-site" : {
+        "user" : "admin",
+        "tag" : "version1"
+      },
+      "storm-site" : {
+        "user" : "admin",
+        "tag" : "version1"
+      }
+    }
+  }
+}

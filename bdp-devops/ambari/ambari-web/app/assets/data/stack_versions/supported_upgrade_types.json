@@ -1,0 +1,18 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3/compatible_repository_versions?CompatibleRepositoryVersions/repository_version=2.3.4.0-3074",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3/compatible_repository_versions/2",
+      "CompatibleRepositoryVersions" : {
+        "id" : 2,
+        "repository_version" : "2.3.4.0-3074",
+        "stack_name" : "HDP",
+        "stack_version" : "2.3",
+        "upgrade_types" : [
+          "ROLLING",
+          "NON_ROLLING"
+        ]
+      }
+    }
+  ]
+}

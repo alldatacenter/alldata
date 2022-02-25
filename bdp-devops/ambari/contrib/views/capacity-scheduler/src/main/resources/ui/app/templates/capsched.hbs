@@ -1,0 +1,72 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="navbar-header">
+    <span class="navbar-brand">Capacity Scheduler</span>
+  </div>
+</nav>
+<div class="capsched-container">
+  <div class="col-lg-8">
+    <ul class="nav nav-tabs">
+      {{#link-to "capsched.scheduler" tagName="li"}}
+        <a href="#">Scheduler</a>
+      {{/link-to}}
+      {{#link-to "capsched.queuesconf" tagName="li"}}
+        <a href="#">Queues</a>
+      {{/link-to}}
+      {{#link-to "capsched.advanced" tagName="li"}}
+        <a href="#">User Queue Mappings</a>
+      {{/link-to}}
+    </ul>
+    <div class="tab-content">
+      {{outlet}}
+    </div>
+  </div>
+</div>
+<div class="col-lg-4 capsched-versions-wrapper">
+  {{#if selectedQueue}}
+    {{sunburst-chart queues=queues selectedQueue=selectedQueue allNodeLabels=allNodeLabels}}
+  {{/if}}
+
+  {{partial "versionsPanel"}}
+</div>
+
+{{!-- ALERT --}}
+{{#if alertMessage}}
+  <div class="alert alert-danger modal alert-message-dialog" tabindex="-1" role="dialog" aria-hidden="false">
+    <button {{action 'clearAlert'}} type="button" class="close" aria-hidden="false">&times;</button>
+    <strong> {{alertMessage.status}} </strong> {{alertMessage.simpleMessage}}
+    <div>
+      <small>{{alertMessage.message}}</small>
+    </div>
+    <br>
+    {{#link-to 'capsched.trace' class="alert-link"}}Trace{{/link-to}}
+  </div>
+{{/if}}
+
+<div {{bind-attr class=":spinner-wrapper showSpinner::hide"}}>
+  <div class="save-spinner">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+    <div class="saving-text">
+      SAVING...
+    </div>
+  </div>
+</div>
+
+{{xmldiff-viewer diffConfig=diffXmlConfig viewConfig=viewXmlConfig}}

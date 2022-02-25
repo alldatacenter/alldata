@@ -1,0 +1,97 @@
+
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets?WidgetInfo/widget_type=HEATMAP&WidgetInfo/scope=CLUSTER&WidgetInfo/metrics.matches(.*\\\"service_name\\\":\\\"HDFS\\\".*)&fields=WidgetInfo/metrics",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/12",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HDFS Bytes Read",
+        "id" : 12,
+        "metrics" : "[{\"name\":\"dfs.datanode.BytesRead\",\"metric_path\":\"metrics/dfs/datanode/bytes_read\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "HDFS Bytes Read",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/13",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HDFS Bytes Written",
+        "id" : 13,
+        "metrics" : "[{\"name\":\"dfs.datanode.BytesWritten\",\"metric_path\":\"metrics/dfs/datanode/bytes_written\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "HDFS Bytes Written",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/14",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode Garbage Collection Time",
+        "id" : 14,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dDataNode,name\\u003dJvmMetrics.GcTimeMillis\",\"metric_path\":\"metrics/jvm/gcTimeMillis\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "DataNode Garbage Collection Time",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/15",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode JVM Heap Memory Used",
+        "id" : 15,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dDataNode,name\\u003dJvmMetrics.MemHeapUsedM\",\"metric_path\":\"metrics/jvm/memHeapUsedM\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "DataNode JVM Heap Memory Used",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/16",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode JVM Heap Memory Committed",
+        "id" : 16,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dDataNode,name\\u003dJvmMetrics.MemHeapCommittedM\",\"metric_path\":\"metrics/jvm/memHeapCommittedM\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "DataNode JVM Heap Memory Committed",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/17",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode Process Disk I/O Utilization",
+        "id" : 17,
+        "metrics" : "[{\"name\":\"dfs.datanode.BytesRead\",\"metric_path\":\"metrics/dfs/datanode/bytes_read\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"},{\"name\":\"dfs.datanode.BytesWritten\",\"metric_path\":\"metrics/dfs/datanode/bytes_written\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"},{\"name\":\"dfs.datanode.TotalReadTime\",\"metric_path\":\"metrics/dfs/datanode/total_read_time\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"},{\"name\":\"dfs.datanode.TotalWriteTime\",\"metric_path\":\"metrics/dfs/datanode/total_write_time\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "DataNode Process Disk I/O Utilization",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/18",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode Process Network I/O Utilization",
+        "id" : 18,
+        "metrics" : "[{\"name\":\"dfs.datanode.RemoteBytesRead\",\"metric_path\":\"metrics/dfs/datanode/remote_bytes_read\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"},{\"name\":\"dfs.datanode.ReadsFromRemoteClient\",\"metric_path\":\"metrics/dfs/datanode/reads_from_remote_client\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"},{\"name\":\"dfs.datanode.RemoteBytesWritten\",\"metric_path\":\"metrics/dfs/datanode/remote_bytes_written\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"},{\"name\":\"dfs.datanode.WritesFromRemoteClient\",\"metric_path\":\"metrics/dfs/datanode/writes_from_remote_client\",\"service_name\":\"HDFS\",\"component_name\":\"DATANODE\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "DataNode Process Network I/O Utilization",
+        "widget_type" : "HEATMAP"
+      }
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+-- Licensed to the Apache Software Foundation (ASF) under one
+-- or more contributor license agreements.  See the NOTICE file
+-- distributed with this work for additional information
+-- regarding copyright ownership.  The ASF licenses this file
+-- to you under the Apache License, Version 2.0 (the
+-- "License"); you may not use this file except in compliance
+-- with the License.  You may obtain a copy of the License at
+-- 
+--      http://www.apache.org/licenses/LICENSE-2.0
+-- 
+-- Unless required by applicable law or agreed to in writing, software
+-- distributed under the License is distributed on an "AS IS" BASIS,
+-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-- See the License for the specific language governing permissions and
+-- limitations under the License.
+
+
+APACHE-AMBARI-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE, Integer32, enterprises
+                                                        FROM SNMPv2-SMI
+    MODULE-COMPLIANCE, OBJECT-GROUP, NOTIFICATION-GROUP
+                                                        FROM SNMPv2-CONF
+    TEXTUAL-CONVENTION
+                                                        FROM SNMPv2-TC
+    ;
+
+apacheAmbari MODULE-IDENTITY
+    LAST-UPDATED "201508310000Z"
+    ORGANIZATION "ambari.apache.org"
+    CONTACT-INFO
+        "email: user@ambari.apache.org"
+    DESCRIPTION
+        "Apache Ambari MIB Module"
+    -- Revisions
+    REVISION "201508310000Z"
+    DESCRIPTION
+        "First Apache Ambari MIB"
+    ::= { apache 16 }
+
+apache OBJECT IDENTIFIER ::= { enterprises 18060 }
+apacheAmbariTraps OBJECT IDENTIFIER ::= { apacheAmbari 0 }
+apacheAmbariAlerts OBJECT IDENTIFIER ::= { apacheAmbari 1 }
+
+AlertStateType ::= TEXTUAL-CONVENTION
+  STATUS current
+  DESCRIPTION
+    "A string indicating the state of the Alert."
+  SYNTAX INTEGER {
+    ok(0),
+    unknown(1),
+    warning(2),
+    critical(3)
+  }
+
+apacheAmbariAlertTable OBJECT-TYPE 
+  SYNTAX      SEQUENCE OF AlertEntry
+  MAX-ACCESS  not-accessible
+  STATUS      current
+  DESCRIPTION
+    "Table of Apache Ambari Alerts"
+  ::= { apacheAmbariAlerts 1 }
+
+AlertEntry ::= SEQUENCE {
+  alertDefinitionId    Integer32,
+  alertDefinitionName  OCTET STRING,
+  alertDefinitionHash  OCTET STRING,
+  alertName            OCTET STRING,
+  alertText            OCTET STRING,
+  alertState           AlertStateType,
+  alertHost            OCTET STRING,
+  alertService         OCTET STRING,
+  alertComponent       OCTET STRING  
+  }
+  
+apacheAmbariAlertEntry  OBJECT-TYPE
+  SYNTAX      AlertEntry
+  MAX-ACCESS  not-accessible
+  STATUS      current
+  DESCRIPTION
+    "Each Alert Event"
+  INDEX { alertDefinitionId }
+  ::= { apacheAmbariAlertTable 1 }
+
+alertDefinitionId         OBJECT-TYPE
+    SYNTAX      Integer32 (-2147483648..2147483647)
+    MAX-ACCESS  not-accessible
+    STATUS      current
+    DESCRIPTION
+        "ID of the Alert"
+    ::= { apacheAmbariAlertEntry 1 }
+    
+alertDefinitionName         OBJECT-TYPE
+    SYNTAX      OCTET STRING
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "Alert Definition Name"
+    ::= { apacheAmbariAlertEntry 2 }    
+    
+alertDefinitionHash         OBJECT-TYPE
+    SYNTAX      OCTET STRING
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "Alert Definition Hash"
+    ::= { apacheAmbariAlertEntry 3 }    
+
+alertName         OBJECT-TYPE
+    SYNTAX      OCTET STRING
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "Name of the Alert"
+    ::= { apacheAmbariAlertEntry 4 }    
+
+alertText         OBJECT-TYPE
+    SYNTAX      OCTET STRING
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "Text output of the Alert"
+    ::= { apacheAmbariAlertEntry 5 }
+
+alertState         OBJECT-TYPE
+    SYNTAX      AlertStateType
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "Severity of the Alert"
+    ::= { apacheAmbariAlertEntry 6 }
+
+alertHost    OBJECT-TYPE
+    SYNTAX      OCTET STRING
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "Affected Host"
+    ::= { apacheAmbariAlertEntry 7 }
+    
+alertService    OBJECT-TYPE
+    SYNTAX      OCTET STRING
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "Affected Service"
+    ::= { apacheAmbariAlertEntry 8 }
+    
+alertComponent    OBJECT-TYPE
+    SYNTAX      OCTET STRING
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "Affected Component"
+    ::= { apacheAmbariAlertEntry 9 }    
+    
+apacheAmbariAlert  NOTIFICATION-TYPE
+  OBJECTS {
+    alertDefinitionName, alertDefinitionHash,
+    alertName, alertText, alertState, alertHost, alertService,
+    alertComponent
+  }
+  STATUS  current
+  DESCRIPTION
+    "The SNMP trap that is generated as a result of an alert."
+  ::= { apacheAmbariTraps 1 }    
+
+apacheAmbariConformance   OBJECT IDENTIFIER ::=
+    { apacheAmbariAlerts 3 }
+apacheAmbariCompliances OBJECT IDENTIFIER ::=
+    { apacheAmbariConformance 1 }
+apacheAmbariConformanceGroups      OBJECT IDENTIFIER ::=
+    { apacheAmbariConformance 2 }
+
+apacheAmbariMIBCompliance MODULE-COMPLIANCE
+    STATUS current
+    DESCRIPTION
+        "Compliance statement for entities which implement this MIB."
+    MODULE
+        MANDATORY-GROUPS {
+            apacheAmbariAlertGroup,
+            apacheAmbariAlertObjectGroup
+        }
+    ::= { apacheAmbariCompliances 2 }
+
+apacheAmbariAlertGroup NOTIFICATION-GROUP
+    NOTIFICATIONS {
+        apacheAmbariAlert
+    }
+    STATUS current
+    DESCRIPTION
+        "Notification objects."
+    ::= { apacheAmbariConformanceGroups 2 }
+
+apacheAmbariAlertObjectGroup OBJECT-GROUP
+    OBJECTS {
+      alertDefinitionName, alertDefinitionHash,
+      alertName, alertText, alertState, alertHost, alertService,
+      alertComponent
+    }
+    STATUS current
+    DESCRIPTION
+            "Event Objects"
+    ::= { apacheAmbariConformanceGroups 3 }
+END

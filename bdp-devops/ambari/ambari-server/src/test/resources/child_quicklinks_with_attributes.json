@@ -1,0 +1,64 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol":
+    {
+      "type":"http",
+      "checks":[
+        {
+          "property":"foo.http.policy",
+          "desired":"HTTP_ONLY",
+          "site":"foo-site"
+        }
+      ]
+    },
+
+    "links": [
+      {
+        "name": "foo_ui",
+        "label": "Foo UI",
+        "requires_user_name": "false",
+        "url": "%@://%@:%@",
+        "attributes": ["authenticated", "sso"],
+        "port":{
+          "http_property": "foo.ui.webapp.address",
+          "http_default_port": "19888",
+          "https_property": "foo.ui.webapp.https.address",
+          "https_default_port": "8090",
+          "regex": "\\w*:(\\d+)",
+          "site": "foo-site"
+        }
+      },
+      {
+        "name":"foo_jmx",
+        "label":"Foo JMX",
+        "requires_user_name":"false",
+        "url":"%@://%@:%@/jmx",
+        "port":{
+          "http_property": "foo.jmx.webapp.address",
+          "http_default_port": "19888",
+          "https_property": "foo.jmx.webapp.https.address",
+          "https_default_port": "8090",
+          "regex": "\\w*:(\\d+)",
+          "site": "foo-site"
+        }
+      },
+      {
+        "name": "foo_logs",
+        "label": "Foo logs",
+        "requires_user_name": "false",
+        "url": "%@://%@:%@/logs",
+        "attributes": [],
+        "port":{
+          "http_property": "foo.logs.webapp.address",
+          "http_default_port": "19888",
+          "https_property": "foo.webapp.https.address",
+          "https_default_port": "8090",
+          "regex": "\\w*:(\\d+)",
+          "site": "foo-site"
+        }
+      }
+    ]
+  }
+}

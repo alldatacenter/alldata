@@ -1,0 +1,49 @@
+### Licensed to the Apache Software Foundation (ASF) under one or more
+### contributor license agreements.  See the NOTICE file distributed with
+### this work for additional information regarding copyright ownership.
+### The ASF licenses this file to You under the Apache License, Version 2.0
+### (the "License"); you may not use this file except in compliance with
+### the License.  You may obtain a copy of the License at
+###
+###     http://www.apache.org/licenses/LICENSE-2.0
+###
+### Unless required by applicable law or agreed to in writing, software
+### distributed under the License is distributed on an "AS IS" BASIS,
+### WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+### See the License for the specific language governing permissions and
+### limitations under the License.
+
+#Log directory
+HDP_LOG_DIR=c:\hadoop\logs
+
+#Data directory
+HDP_DATA_DIR=c:\hadoop\data
+
+#hosts
+NAMENODE_HOST=tbeerb-ascom21
+SECONDARY_NAMENODE_HOST=tbeerb-ascom21
+RESOURCEMANAGER_HOST=tbeerb-ascom21
+HIVE_SERVER_HOST=tbeerb-ascom21
+OOZIE_SERVER_HOST=tbeerb-ascom21
+WEBHCAT_HOST=tbeerb-ascom21
+SLAVE_HOSTS=tbeerb-ascom21
+CLIENT_HOSTS=tbeerb-ascom21
+HBASE_MASTER=tbeerb-ascom21
+HBASE_REGIONSERVERS=tbeerb-ascom21
+ZOOKEEPER_HOSTS=tbeerb-ascom21
+FLUME_HOSTS=tbeerb-ascom21
+
+#Database host
+DB_FLAVOR=derby
+DB_HOSTNAME=tbeerb-ascom21
+DB_PORT=1527
+
+#Hive properties
+HIVE_DB_NAME=hive
+HIVE_DB_USERNAME=hive
+HIVE_DB_PASSWORD=hive
+
+#Oozie properties
+OOZIE_DB_NAME=oozie
+OOZIE_DB_USERNAME=oozie
+OOZIE_DB_PASSWORD=oozie

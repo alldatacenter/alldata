@@ -1,0 +1,194 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="panel panel-default panel-queue-mapping">
+  <div class="panel-heading">
+    <div id="collapseQueueMappingsBtn" href="#queueMappingsCollapsiblePanel" data-toggle="collapse" {{bind-attr class=":panel-title :collapsible-panel-btn isCollapsed:collapsed"}}>
+      Queue Mappings
+      {{#if isQueueMappingsDirty}}
+        {{warning-info class="yellow-warning" tooltip="Need refresh queues"}}
+      {{/if}}
+      <a class="pull-right"><i {{bind-attr class=":fa isCollapsed:fa-plus:fa-minus"}}></i></a>
+    </div>
+  </div>
+  <div id="queueMappingsCollapsiblePanel" {{bind-attr class=":panel-collapse :collapse isCollapsed::in"}}>
+    <div class="panel-body">
+      <div class="container-fluid">
+        <div class="row">
+          <label>User to Queue Mappings (Precedence is from top to botttom)</label>
+        </div>
+        {{#if isOperator}}
+        <div class="row">
+          <ul id="qMappingList" class="list-group">
+            {{#each qm in queueMappings}}
+              <li class="list-group-item">{{queueMappingParser qm}}<span class="pull-right remove-mapping-icon" {{action "removeQueueMapping" qm}}><i class="fa fa-times"></i></span></li>
+            {{else}}
+              <span>No queue mappings defined</span>
+            {{/each}}
+          </ul>
+        </div>
+
+        <div class="add-queue-mapping-container">
+          <div class="row">
+            <div class="btn-group btn-group-sm">
+              <button type="button" class="btn btn-default btn-primary" name="button" {{action "showMappingOptions"}}>Add Mapping</button>
+            </div>
+            {{#if isMappingsDirty}}
+              <div class="btn-group btn-group-xs">
+                <a {{action 'rollbackProp' 'queue_mappings' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+          {{#if isShowing}}
+            <div class="queue-mapping-options">
+              <div class="row">
+                <div class="radio">
+                  <label>
+                    {{view view.radioButton selectionBinding="selectedMapping" name="queueMappingType" value="u:%user:%user"}}
+                    {{tooltip-label
+                      label='Map user to queue with the same name of user'
+                      message='User %user -> queue %user <br/> Ex: User=john will be mapped to queue=john, and user=alice will be mapped to queue=alice'
+                    }}
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="radio">
+                  <label>
+                    {{view view.radioButton selectionBinding="selectedMapping" name="queueMappingType" value="u:%user:%primary_group"}}
+                    {{tooltip-label
+                      label='Map user to queue with the same name of user’s primary group'
+                      message='User %user -> queue %primary_group <br/> Ex: User=john will be mapped to queue=john\'s primary group, and user=alice will be mapped to queue=alice\'s primary group'
+                    }}
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="radio">
+                  <label>
+                    {{view view.radioButton selectionBinding="selectedMapping" name="queueMappingType" value="u:%name:%qname"}}
+                    {{tooltip-label
+                      label='Assign specific users to given queue'
+                      message='Specified users will be mapped to queue specified'
+                    }}
+                  </label>
+                </div>
+                {{#if isCustomUserMapping}}
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span>Users</span>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        {{input type="text" class="form-control" value=customUserMappings size="30" placeholder="Comma-separated list of users"}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span>Queue</span>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        {{view Ember.Select
+                          class="form-control"
+                          content=leafQueueNames
+                          value=selectedLeafQueueNameForUsers
+                          prompt="Select Queue"}}
+                      </div>
+                    </div>
+                  </div>
+                {{/if}}
+              </div>
+              <div class="row">
+                <div class="radio">
+                  <label>
+                    {{view view.radioButton selectionBinding="selectedMapping" name="queueMappingType" value="g:%name:%qname"}}
+                    {{tooltip-label
+                      label='Assign users from specific groups to given queue'
+                      message='Users from specified groups will be mapped to queue specified'
+                    }}
+                  </label>
+                </div>
+                {{#if isCustomGroupMapping}}
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span>Groups</span>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        {{input type="text" class="form-control" value=customGroupMappings size="30" placeholder="Comma-separated list of groups"}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span>Queue</span>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        {{view Ember.Select
+                          class="form-control"
+                          content=leafQueueNames
+                          value=selectedLeafQueueNameForGroups
+                          prompt="Select Queue"}}
+                      </div>
+                    </div>
+                  </div>
+                {{/if}}
+              </div>
+              <div class="row">
+                <div class="btn-group btn-group-xs pull-right">
+                  <button type="button" class="btn btn-default btn-primary" name="button" {{action "addQueueMapping"}}>&nbsp;&nbsp;Add&nbsp;&nbsp;</button>
+                  <button type="button" class="btn btn-default" name="button" {{action "hideMappingOptions"}}>Cancel</button>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="row">
+          <div class="checkbox">
+            <label>
+              {{input type="checkbox" name="queueMappingOverride" checked=mappingsOverrideEnable}}
+              {{tooltip-label
+                label='Allow application to override user-queue mapping'
+                message='When checked, applications submitted with queues specified will be used other than those defined in configured queue mapping'
+              }}
+            </label>
+            {{#if isOverrideEnableDirty}}
+              <span class="btn-group btn-group-xs">
+                <a {{action 'rollbackProp' 'queue_mappings_override_enable' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </span>
+            {{/if}}
+          </div>
+        </div>
+        {{else}}
+        <div class="row">
+          <ul id="qMappingList" class="list-group">
+            {{#each qm in queueMappings}}
+              <li class="list-group-item">{{queueMappingParser qm}}</li>
+            {{else}}
+              <span>No queue mappings defined</span>
+            {{/each}}
+          </ul>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

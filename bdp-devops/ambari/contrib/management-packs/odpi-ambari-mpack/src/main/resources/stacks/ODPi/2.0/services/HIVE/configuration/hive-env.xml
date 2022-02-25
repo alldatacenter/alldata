@@ -1,0 +1,558 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<configuration><property require-input="false">
+    <name>content</name>
+    <value>
+      export HADOOP_USER_CLASSPATH_FIRST=true  #this prevents old metrics libs from mapreduce lib from bringing in old jar deps overriding HIVE_LIB
+      if [ "$SERVICE" = "cli" ]; then
+      if [ -z "$DEBUG" ]; then
+      export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+UseNUMA -XX:+UseParallelGC -XX:-UseGCOverheadLimit"
+      else
+      export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12 -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
+      fi
+      fi
+
+      # The heap size of the jvm stared by hive shell script can be controlled via:
+
+      if [ "$SERVICE" = "metastore" ]; then
+      export HADOOP_HEAPSIZE={{hive_metastore_heapsize}} # Setting for HiveMetastore
+      else
+      export HADOOP_HEAPSIZE={{hive_heapsize}} # Setting for HiveServer2 and Client
+      fi
+
+      export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS  -Xmx${HADOOP_HEAPSIZE}m"
+
+      # Larger heap size may be required when running queries over large number of files or partitions.
+      # By default hive shell scripts use a heap size of 256 (MB).  Larger heap size would also be
+      # appropriate for hive server (hwi etc).
+
+
+      # Set HADOOP_HOME to point to a specific hadoop install directory
+      HADOOP_HOME=${HADOOP_HOME:-{{hadoop_home}}}
+
+      export HIVE_HOME=${HIVE_HOME:-{{hive_home_dir}}}
+
+      # Hive Configuration Directory can be controlled by:
+      export HIVE_CONF_DIR=${HIVE_CONF_DIR:-{{hive_config_dir}}}
+
+      # Folder containing extra libraries required for hive compilation/execution can be controlled by:
+      if [ "${HIVE_AUX_JARS_PATH}" != "" ]; then
+      if [ -f "${HIVE_AUX_JARS_PATH}" ]; then
+      export HIVE_AUX_JARS_PATH=${HIVE_AUX_JARS_PATH}
+      elif [ -d "/usr/hdp/current/hive-webhcat/share/hcatalog" ]; then
+      export HIVE_AUX_JARS_PATH=/usr/hdp/current/hive-webhcat/share/hcatalog/hive-hcatalog-core.jar
+      fi
+      elif [ -d "/usr/hdp/current/hive-webhcat/share/hcatalog" ]; then
+      export HIVE_AUX_JARS_PATH=/usr/hdp/current/hive-webhcat/share/hcatalog/hive-hcatalog-core.jar
+      fi
+
+      export METASTORE_PORT={{hive_metastore_port}}
+
+      {% if sqla_db_used or lib_dir_available %}
+      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:{{jdbc_libs_dir}}"
+      export JAVA_LIBRARY_PATH="$JAVA_LIBRARY_PATH:{{jdbc_libs_dir}}"
+      {% endif %}
+        </value>
+    <description>This is the jinja template for hive-env.sh file</description>
+    <display-name>hive-env template</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>content</type>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive.heapsize</name>
+    <value>512</value>
+    <description>Hive Java heap size</description>
+    <display-name>HiveServer2 Heap Size</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>int</type>
+        <maximum>2048</maximum>
+        <minimum>512</minimum>
+        <unit>MB</unit>
+        <overridable>false</overridable>
+        <increment-step>512</increment-step>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_exec_orc_storage_strategy</name>
+    <value>SPEED</value>
+    <description>
+      Define the encoding strategy to use while writing data. Changing this will only affect the light weight encoding for integers.
+      This flag will not change the compression level of higher level compression codec (like ZLIB). Possible options are SPEED and COMPRESSION.
+    </description>
+    <display-name>ORC Storage Strategy</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>value-list</type>
+        <entries>
+            <entry>
+                <value>SPEED</value>
+                <label>Speed</label>
+            </entry>
+            <entry>
+                <value>COMPRESSION</value>
+                <label>Compression</label>
+            </entry>
+        </entries>
+        <selection-cardinality>1</selection-cardinality>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by>
+        <dependedByProperties>
+            <name>hive.exec.orc.encoding.strategy</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.exec.orc.compression.strategy</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+    </property_depended_by>
+</property><property require-input="false">
+    <name>hive_txn_acid</name>
+    <value>off</value>
+    <display-name>ACID Transactions</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>value-list</type>
+        <entries>
+            <entry>
+                <value>on</value>
+                <label>On</label>
+            </entry>
+            <entry>
+                <value>off</value>
+                <label>Off</label>
+            </entry>
+        </entries>
+        <selection-cardinality>1</selection-cardinality>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by>
+        <dependedByProperties>
+            <name>hive.enforce.bucketing</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.exec.dynamic.partition.mode</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.support.concurrency</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.txn.manager</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.compactor.initiator.on</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.compactor.worker.threads</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+    </property_depended_by>
+</property><property require-input="false">
+    <name>hive_security_authorization</name>
+    <value>None</value>
+    <description>
+      Authorization mode, default NONE. Options are NONE, Ranger, SQLStdAuth.
+      SQL standard authorization provides grant/revoke functionality at database, table level. 
+      Ranger provides a centralized authorization interface for Hive and provides more granular
+      access control at column level through the Hive plugin.
+    </description>
+    <display-name>Choose Authorization</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>value-list</type>
+        <entries>
+            <entry>
+                <value>None</value>
+                <label>None</label>
+            </entry>
+            <entry>
+                <value>SQLStdAuth</value>
+                <label>SQLStdAuth</label>
+            </entry>
+            <entry>
+                <value>Ranger</value>
+                <label>Ranger</label>
+            </entry>
+        </entries>
+    </value-attributes>
+    <depends-on>
+        <property>
+            <name>ranger-hive-plugin-enabled</name>
+            <type>ranger-env</type>
+        </property>
+    </depends-on>
+    <property_depended_by>
+        <dependedByProperties>
+            <name>hive.server2.enable.doAs</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.security.authenticator.manager</name>
+            <type>hiveserver2-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.server2.enable.doAs</name>
+            <type>hive-interactive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.security.authorization.enabled</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.conf.restricted.list</name>
+            <type>hiveserver2-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.security.authenticator.manager</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.security.authorization.manager</name>
+            <type>hiveserver2-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.security.authorization.manager</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.security.authorization.enabled</name>
+            <type>hiveserver2-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.security.metastore.authorization.manager</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+    </property_depended_by>
+</property><property require-input="false">
+    <name>hive_timeline_logging_enabled</name>
+    <value>true</value>
+    <display-name>Use ATS Logging</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>value-list</type>
+        <entries>
+            <entry>
+                <value>true</value>
+                <label>True</label>
+            </entry>
+            <entry>
+                <value>false</value>
+                <label>False</label>
+            </entry>
+        </entries>
+        <selection-cardinality>1</selection-cardinality>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by>
+        <dependedByProperties>
+            <name>hive.exec.pre.hooks</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.exec.post.hooks</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>hive.exec.failure.hooks</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+    </property_depended_by>
+</property><property require-input="false">
+    <name>hive.client.heapsize</name>
+    <value>512</value>
+    <description>Hive Client Java heap size</description>
+    <display-name>Client Heap Size</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>int</type>
+        <maximum>2048</maximum>
+        <minimum>512</minimum>
+        <unit>MB</unit>
+        <overridable>false</overridable>
+        <increment-step>512</increment-step>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive.metastore.heapsize</name>
+    <value>1024</value>
+    <description>Hive Metastore Java heap size</description>
+    <display-name>Metastore Heap Size</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>int</type>
+        <maximum>2048</maximum>
+        <minimum>512</minimum>
+        <unit>MB</unit>
+        <increment-step>512</increment-step>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_database_type</name>
+    <value>mysql</value>
+    <description>Default HIVE DB type.</description>
+    <display-name>Hive Database Type</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <overridable>false</overridable>
+    </value-attributes>
+    <depends-on>
+        <property>
+            <name>hive_database</name>
+            <type>hive-env</type>
+        </property>
+    </depends-on>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_database</name>
+    <value>New MySQL Database</value>
+    <description>
+      Property that determines whether the HIVE DB is managed by Ambari.
+    </description>
+    <display-name>Hive Database</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <overridable>false</overridable>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by>
+        <dependedByProperties>
+            <name>hive_database_type</name>
+            <type>hive-env</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>javax.jdo.option.ConnectionURL</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>javax.jdo.option.ConnectionDriverName</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>datanucleus.rdbms.datastoreAdapterClassName</name>
+            <type>hive-site</type>
+        </dependedByProperties>
+    </property_depended_by>
+</property><property require-input="false">
+    <name>hive_ambari_database</name>
+    <value>MySQL</value>
+    <description>Database type.</description>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_database_name</name>
+    <value>hive</value>
+    <description>Database name.</description>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>database</type>
+        <visible>false</visible>
+        <overridable>false</overridable>
+        <editable-only-at-install>true</editable-only-at-install>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_log_dir</name>
+    <value>/var/log/hive</value>
+    <description>Directory for Hive Log files.</description>
+    <display-name>Hive Log Dir</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>directory</type>
+        <overridable>false</overridable>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_pid_dir</name>
+    <value>/var/run/hive</value>
+    <description>Hive PID Dir.</description>
+    <display-name>Hive PID Dir</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>directory</type>
+        <overridable>false</overridable>
+        <editable-only-at-install>true</editable-only-at-install>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_user</name>
+    <value>hive</value>
+    <description>Hive User.</description>
+    <display-name>Hive User</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type>USER</property-type>
+    <value-attributes>
+        <type>user</type>
+        <overridable>false</overridable>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by>
+        <dependedByProperties>
+            <name>ranger.plugins.hive.serviceuser</name>
+            <type>ranger-admin-site</type>
+        </dependedByProperties>
+        <dependedByProperties>
+            <name>ranger.kms.service.user.hive</name>
+            <type>ranger-admin-site</type>
+        </dependedByProperties>
+    </property_depended_by>
+</property><property require-input="false">
+    <name>hcat_log_dir</name>
+    <value>/var/log/webhcat</value>
+    <description>WebHCat Log Dir.</description>
+    <display-name>WebHCat Log Dir</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>directory</type>
+        <overridable>false</overridable>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hcat_pid_dir</name>
+    <value>/var/run/webhcat</value>
+    <description>WebHCat Pid Dir.</description>
+    <display-name>WebHCat Pid Dir</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes>
+        <type>directory</type>
+        <overridable>false</overridable>
+        <editable-only-at-install>true</editable-only-at-install>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hcat_user</name>
+    <value>hcat</value>
+    <description>HCat User.</description>
+    <display-name>HCat User</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type>USER</property-type>
+    <value-attributes>
+        <type>user</type>
+        <overridable>false</overridable>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>webhcat_user</name>
+    <value>hcat</value>
+    <description>WebHCat User.</description>
+    <display-name>WebHCat User</display-name>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type>USER</property-type>
+    <value-attributes>
+        <type>user</type>
+        <overridable>false</overridable>
+    </value-attributes>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_user_nofile_limit</name>
+    <value>32000</value>
+    <description>Max open files limit setting for HIVE user.</description>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property><property require-input="false">
+    <name>hive_user_nproc_limit</name>
+    <value>16000</value>
+    <description>Max number of processes limit setting for HIVE user.</description>
+    <filename>hive-env.xml</filename>
+    <deleted>false</deleted>
+    <on-ambari-upgrade add="true" delete="false" update="false"/>
+    <property-type></property-type>
+    <value-attributes/>
+    <depends-on/>
+    <property_depended_by/>
+</property></configuration>

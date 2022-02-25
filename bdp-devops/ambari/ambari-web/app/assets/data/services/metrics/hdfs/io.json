@@ -1,0 +1,16 @@
+{
+  "href" : "http://ambari/clusters/SrimanthAmbari/services/HDFS/components/DATANODE?fields=metrics/dfs/datanode/bytes_written[1351117114,1351120714,60],metrics/dfs/datanode/bytes_read[1351117114,1351120714,60]",
+  "metrics" : {
+    "dfs" : {
+      "datanode" : {
+        "bytes_written" : "[[0.0,1351117440],[0.0,1351117800],[0.0,1351118160],[0.0,1351118520],[0.0,1351118880],[0.0,1351119240],[0.0,1351119600],[0.0,1351119960],[0.0,1351120320],[0.0,1351120680],[0.0,1351121040]]",
+        "bytes_read" : "[[0.0,1351117440],[0.0,1351117800],[0.0,1351118160],[0.0,1351118520],[0.0,1351118880],[0.0,1351119240],[0.0,1351119600],[0.0,1351119960],[0.0,1351120320],[0.0,1351120680],[0.0,1351121040]]"
+      }
+    }
+  },
+  "ServiceComponentInfo" : {
+    "cluster_name" : "SrimanthAmbari",
+    "component_name" : "DATANODE",
+    "service_name" : "HDFS"
+  }
+}

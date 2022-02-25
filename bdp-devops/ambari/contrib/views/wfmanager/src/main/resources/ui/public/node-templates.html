@@ -1,0 +1,158 @@
+<!--
+~    Licensed to the Apache Software Foundation (ASF) under one or more
+~    contributor license agreements.  See the NOTICE file distributed with
+~    this work for additional information regarding copyright ownership.
+~    The ASF licenses this file to You under the Apache License, Version 2.0
+~    (the "License"); you may not use this file except in compliance with
+~    the License.  You may obtain a copy of the License at
+~
+~        http://www.apache.org/licenses/LICENSE-2.0
+~
+~    Unless required by applicable law or agreed to in writing, software
+~    distributed under the License is distributed on an "AS IS" BASIS,
+~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~    See the License for the specific language governing permissions and
+~    limitations under the License.
+-->
+<!-- INJECT TEMPLATES. We can't put those safely and cleanly elsewhere (e.g. .hbs file) -->
+
+<div id="templates_container" style="display:none">
+    <script type="text/x-handlebars-template" id="start_tmpl">
+    <div id="start" class="node start">
+        <i class="fa fa-play"></i>
+        <!--         <input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" id="start_name" data-toggle="tooltip" class="editable" value="Start" placeholder="Start">
+        -->
+    </div>
+    </script>
+    <script type="text/x-handlebars-template" id="end_tmpl">
+    <div id="end" class="node end">
+        <i class="fa fa-stop"></i>
+        <!-- <input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" id="start_name" data-toggle="tooltip" title="{{name}}" class="editable" value="End" placeholder="End"> -->
+    </div>
+    </script>
+    <script type="text/x-handlebars-template" id="dummy_tmpl">
+    <div id="{{id}}" data-type="" data-from="{{from}}" data-to="{{to}}" class="node branch">
+    <div class="dummyAction">{{label}}</div>
+
+            <!--input required disabled pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" id="{{id}}_name" data-toggle="tooltip" title="{{name}}" class="{{dynClass}}" value="{{label}}" placeholder="Action Name">
+
+
+        <div class="node_actions node_left" onclick="{{delCallbackAsStr}}"><i class="fa fa-trash-o"></i></div-->
+    </div>
+    </script>
+    <script id="action_tmpl" type="text/x-handlebars-template">
+    <div id="{{id}}" class="node action_node {{classNames}} infoBackGround ">
+        <div class="node_actions node_left" onclick="{{delCallbackAsStr}}">
+            <i class="fa fa-trash-o"></i>
+        </div>
+        <div class="action_node_data">
+            <i class="fa fa-{{icon}}"></i>
+            <input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" id="{{id}}_name" data-toggle="tooltip" title="{{name}}" class="editable" value="{{name}}" placeholder="Action Name">
+        </div>
+        <div class=" action_node_button">
+            <a data-toggle="modal" data-target="#sparkProperties">
+                <i class="fa fa-2x fa-cog node_properties" node_action="{{type}}" nodeId="{{id}}_name" onclick="{{modalCallbackHandler}}"></i>
+            </a>
+        </div>
+    </div>
+    </script>
+
+    <script id="notification" type="text/x-handlebars-template">
+    <div id="" class="notification">
+        <div class='alert alert-info'> <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> {{message}}</div>
+    </div>
+    </script>
+    <script id="fork_tmpl" type="text/x-handlebars-template">
+    <div id="fork_{{id}}" class="node fork control_flow_node"  data-node-type="fork">
+        <i class="fa fa-sitemap"></i>
+        <br/>
+            <div class="node_actions node_left" onclick="{{delCallbackAsStr}}">
+                <i class="fa fa-trash-o"></i>
+            </div>
+                    <input id="fork_{{id}}_name" required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" data-toggle="tooltip" title="{{name}}" class="editable" value="fork" placeholder="fork">
+        <div id="{{id}}_po" class="node_actions node_bottom" onclick="{{forkAddCallbackAsStr}}">
+            <i class="fa fa-plus"></i>
+        </div>
+    </div>
+    <div id="join_{{id}}" class="node join control_flow_node">
+        <i class="fa fa-sitemap fa-rotate-180"></i>
+        <br/>
+        <input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" id="join_{{id}}_name" data-toggle="tooltip" title="{{name}}" class="editable" value="join" placeholder="join">
+    </div>
+    </script>
+    <script id="kill_tmpl" type="text/x-handlebars-template">
+    <div id="kill_{{id}}" class="node killNode">
+        <i class="fa fa-stop redColor"></i>
+        <input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" data-toggle="tooltip" title="{{name}}" class="editable" value="{{name}}" placeholder="End">
+    </div>
+    </script>
+    <script id="condition_tmpl" type="text/x-handlebars-template">
+    <div id="{{id}}" class="node">
+        <input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" name="{{id}}_name" data-toggle="tooltip" title="{{name}}" class="editable" value="{{name}}" placeholder="End">
+    </div>
+    </script>
+    <script id="decision_tmpl" type="text/x-handlebars-template">
+
+    <div id="decision_{{id}}" class="node decision_node control_flow_node {{classNames}} " data-node-type="decision">
+        <br/>
+            <div class="node_actions node_left" onclick="{{delCallbackAsStr}}">
+                <i class="fa fa-trash-o"></i>
+            </div>        <!--input type="hidden" id="fork_{{id}}_name" required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" data-toggle="tooltip" title="{{name}}" class="editable" value="fork" placeholder="fork"-->
+        <div id="{{id}}_po" class="node_actions node_bottom decisionSplit" onclick="{{forkAddCallbackAsStr}}">
+            <i class="fa fa-plus"></i>
+        </div>
+        <div class=" action_node_button decisionNodeHandler">
+            <a data-toggle="modal" data-target="#sparkProperties">
+                <i class="fa fa-2x fa-cog node_properties" node_action="{{type}}" nodeId="decision_{{id}}" onclick="{{modalCallbackHandler}}"></i>
+            </a>
+        </div>
+    </div>
+    <div id="condJoin_{{id}}" class="node join control_flow_node condJoin">
+        <br/>
+        <!--input type="hidden" required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" id="join_{{id}}_name" data-toggle="tooltip" title="{{name}}" class="editable" value="join" placeholder="join"-->
+    </div>
+
+
+    <!--div id="{{id}}" class="node decision_node control_flow_node {{classNames}} ">
+        <div class="content">
+            <div class="node_actions node_left" onclick="{{delCallbackAsStr}}">
+                <i class="fa fa-trash-o"></i>
+            </div>
+            <div id="{{id}}_po" class="node_actions node_bottom action_node_button" >
+                <i class="fa fa-share-alt fa-rotate-90" node_action="{{type}}"  nodeId={{id}}_name onclick="{{caseAddCallbackAsStr}}"></i>
+            </div>
+            <input type="hidden" class="decisionBox" required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" id="{{id}}_name" data-toggle="tooltip" title="{{name}}" class="editable" placeholder="Action Name" >
+            <div class=" action_node_button decisionNodeHandler">
+                <a data-toggle="modal" data-target="#sparkProperties">
+                    <i class="fa fa-2x fa-cog node_properties" node_action="{{type}}" nodeId="{{id}}_name" onclick="{{modalCallbackHandler}}"></i>
+                </a>
+            </div>
+        </div>
+    </div-->
+    </script>
+    <script id="actions_list_tmpl" type="text/x-handlebars-template">
+    <h4>Control Flow Nodes</h4>
+    <ul class="actions_list_left control_flow">
+        <li onclick="{{onClick}}" data-name="fork" data-type="fork" class="dr_action _fork enabled"> <i class="fa fa-sitemap"></i> Fork </li>
+        <li onclick="{{onClick}}" class="dr_action switch enabled" data-name="Decision" data-type="decision"> <i class="fa fa-sliders"></i> Decision </li>
+    </ul>
+    <div class="clearfix"></div>
+    <h4>Action Nodes</h4>
+    <ul class="actions_list_left">
+        <li onclick="{{onClick}}" class="dr_action enabled" data-name="Hive" data-type="hive"> <i class="fa fa-cog"></i> Hive </li>
+        <li onclick="{{onClick}}" class="dr_action disabled hide" data-name="Hive" data-type="hive2"> <i class="fa fa-cog"></i> Hive2</li>
+        <li onclick="{{onClick}}" class="dr_action enabled" data-name="Sqoop" data-type="sqoop"> <i class="fa fa-database"></i> Sqoop </li>
+        <li onclick="{{onClick}}" class="dr_action enabled" data-name="Pig" data-type="pig"> <i class="fa fa-product-hunt"></i>&nbsp; Pig </li>
+        <li onclick="{{onClick}}" class="dr_action disabled hide" data-name="HDFS" data-type="hdfs"> <i class="fa fa-copy"></i> HDFS </li>
+        <li onclick="{{onClick}}" class="dr_action enabled" data-name="Java" data-type="java"> <i class="fa fa-code"></i> Java </li>
+        <li onclick="{{onClick}}" class="dr_action enabled" data-name="Shell" data-type="shell"> <i class="fa fa-terminal"></i> Shell </li>
+        <li class="dr_action disabled hide" data-name="distcp" data-type="distcp"> <i class="fa fa-clone"></i> distcp </li>
+        <li onclick="{{onClick}}" class="dr_action hide" data-name="MR" data-type="mr"> <i class="fa fa-asterisk"></i> MapRed </li>
+        <li class="dr_action disabled hide" data-name="SSH" data-type="ssh"> <i class="fa fa-terminal"></i> SSH </li>
+        <li  onclick="{{onClick}}" class="dr_action enabled" data-name="Spark" data-type="spark"> <i class="fa fa-star"></i> Spark </li>
+        <li class="dr_action disabled hide" data-name="Stream" data-type="stream"> <i class="fa fa-exchange"></i> Stream </li>
+        <li class="dr_action disabled hide" data-name="Email" data-type="email"> <i class="fa fa-envelope"></i> Email </li>
+    </ul>
+    <div class="clearfix"></div>
+    </script>
+</div>

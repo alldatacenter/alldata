@@ -1,0 +1,212 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Control.ChartWithLegend" Accessibility="Internal">
+        <Property Name="Axes" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/Axis[]" BindingDirection="In" />
+        <Property Name="Series" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/Series[]" BindingDirection="In" />
+        <Property Name="SelectedSeries" Type="BaseDataType" BindingDirection="Both" />
+        <Property Name="SelectedSeriesCollection" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/Series[]" BindingDirection="Both" />
+        <Property Name="LegendColumns" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn[]" BindingDirection="In" />
+        <Property Name="ShowLegend" Type="xsd://boolean" BindingDirection="In" />
+        <Property Name="Interval" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/DynamicDateTimeRange" BindingDirection="In" />
+      </ComponentType>
+    </ComponentTypes>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Control.ChartWithLegendImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Control.ChartWithLegend"
+                               Platform="Wpf, Silverlight" Accessibility="Internal">
+        <Composite>
+          <Variable Id="ActiveSeries" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/Series[]">
+            <Reference>$Property/SelectedSeries$</Reference>
+          </Variable>
+          <Variable Id="RequiredLegendColumns" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn[]">
+            <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn[]">
+              <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                <Binding PropertyId="PropertyName">
+                  <SimpleValue Type="xsd://string" Value="IsVisible" />
+                </Binding>
+                <Binding PropertyId="HeaderDisplayObject">
+                  <SimpleValue Type="xsd://string" Value="$MPReference/Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.Library.PerfChartConfigColumns.Show/DisplayName$" />
+                </Binding>
+                <Binding PropertyId="CellComponentType">
+                  <SimpleValue Type="xsd://string" Value="Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.EditableCheckBoxCell" />
+                </Binding>
+                <Binding PropertyId="SortableGroupable">
+                  <SimpleValue Type="xsd://boolean" Value="True" />
+                </Binding>
+                <Binding PropertyId="CanResize">
+                  <SimpleValue Type="xsd://boolean" Value="True" />
+                </Binding>
+                <Binding PropertyId="Width">
+                  <SimpleValue Type="xsd://string" Value="Auto" />
+                </Binding>
+              </ComplexValue>
+              <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                <Binding PropertyId="PropertyName">
+                  <SimpleValue Type="xsd://string" Value="Color" />
+                </Binding>
+                <Binding PropertyId="HeaderDisplayObject">
+                  <SimpleValue Type="xsd://string" Value="$MPReference/Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.Library.PerfChartConfigColumns.Color/DisplayName$" />
+                </Binding>
+                <Binding PropertyId="SortableGroupable">
+                  <SimpleValue Type="xsd://boolean" Value="False" />
+                </Binding>
+                <Binding PropertyId="CanResize">
+                  <SimpleValue Type="xsd://boolean" Value="False" />
+                </Binding>
+                <Binding PropertyId="Width">
+                  <SimpleValue Type="xsd://string" Value="Auto" />
+                </Binding>
+              </ComplexValue>
+            </ComplexValueCollection>
+          </Variable>
+          <Variable Id="LegendColumns" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn[]" />
+          
+          <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.ComponentContainer">
+            <Binding PropertyId="Visual">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGrid">
+                <Binding PropertyId="RowCollection">
+                  <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGridRow">
+                    <Binding PropertyId="Height">
+                      <SimpleValue Type="xsd://string" Value="*" />
+                    </Binding>
+                  </Component>
+                </Binding>
+                <Binding PropertyId="RowCollection">
+                  <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGridRow">
+                    <Binding PropertyId="Height">
+                      <SimpleValue Type="xsd://string" Value="Auto" />
+                    </Binding>
+                    <Binding PropertyId="MaximumHeight">
+                      <SimpleValue Type="xsd://string" Value="140" />
+                    </Binding>
+                  </Component>
+                </Binding>
+                <Binding PropertyId="ColumnCollection">
+                  <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGridColumn">
+                    <Binding PropertyId="Width">
+                      <SimpleValue Type="xsd://string" Value="*" />
+                    </Binding>
+                  </Component>
+                </Binding>
+                <Binding PropertyId="CellCollection">
+                  <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGridCell">
+                    <Binding PropertyId="RowId">
+                      <SimpleValue Type="xsd://string" Value="0" />
+                    </Binding>
+                    <Binding PropertyId="ColumnId">
+                      <SimpleValue Type="xsd://string" Value="0" />
+                    </Binding>
+                    <Binding PropertyId="Content">
+                      <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.Chart">
+                        <Binding PropertyId="InputData">
+                          <Reference>$Property/Series$</Reference>
+                        </Binding>
+                        <Binding PropertyId="Axes">
+                          <Reference>$Property/Axes$</Reference>
+                        </Binding>
+                        <Binding PropertyId="Interval">
+                          <Reference>$Property/Interval$</Reference>
+                        </Binding>
+                        <Binding PropertyId="SelectedSeries">
+                          <Reference>$Variable/ActiveSeries$</Reference>
+                        </Binding>
+                      </Component>
+                    </Binding>
+                  </Component>
+                </Binding>
+                <Binding PropertyId="CellCollection">
+                  <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.LayoutGridCell">
+                    <Binding PropertyId="IsVisible">
+                      <Reference>$Property/ShowLegend$</Reference>
+                    </Binding>
+                    <Binding PropertyId="RowId">
+                      <SimpleValue Type="xsd://string" Value="1" />
+                    </Binding>
+                    <Binding PropertyId="ColumnId">
+                      <SimpleValue Type="xsd://string" Value="0" />
+                    </Binding>
+                    <Binding PropertyId="Content">
+                      <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.DataGrid">
+                        <Binding PropertyId="SelectedRow">
+                          <Reference>$Variable/ActiveSeries$</Reference>
+                        </Binding>
+                        <Binding PropertyId="SelectedRows">
+                          <Reference>$Property/SelectedSeriesCollection$</Reference>
+                        </Binding>
+                        <Binding PropertyId="Data">
+                          <Reference>$Property/Series$</Reference>
+                        </Binding>
+                        <Binding PropertyId="SelectionMode">
+                          <SimpleValue Type="xsd://string" Value="SingleRowSelect" />
+                        </Binding>
+                        <Binding PropertyId="ColumnHeaderVisible">
+                          <SimpleValue Type="xsd://string" Value="True" />
+                        </Binding>
+                        <Binding PropertyId="CanReorderColumns">
+                          <SimpleValue Type="xsd://string" Value="False" />
+                        </Binding>
+                        <Binding PropertyId="CellComponentType">
+                          <SimpleValue Type="xsd://string" Value="Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataGridGenericCell" />
+                        </Binding>
+                        <Binding PropertyId="ColumnHeaderComponentType">
+                          <SimpleValue Type="xsd://string" Value="Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataGridColumnHeaderCell" />
+                        </Binding>
+                        <Binding PropertyId="Columns">
+                          <Reference>$Variable/LegendColumns$</Reference>
+                        </Binding>
+                      </Component>
+                    </Binding>
+                  </Component>
+                </Binding>
+              </Component>
+            </Binding>
+
+            <Binding PropertyId="Objects">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.OneWaySync">
+                <Binding PropertyId="From">
+                  <Reference>$Variable/ActiveSeries$</Reference>
+                </Binding>
+                <Binding PropertyId="To">
+                  <Reference>$Service/SelectedItems$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+            
+            <Binding PropertyId="Objects">
+              <Component TypeId="Ambari.SCOM.Presentation.Component.CollectionDiplexer">
+                <Binding PropertyId="Input1">
+                  <Reference>$Variable/RequiredLegendColumns$</Reference>
+                </Binding>
+                <Binding PropertyId="Input2">
+                  <Reference>$Property/LegendColumns$</Reference>
+                </Binding>
+                <Binding PropertyId="Output">
+                  <Reference>$Variable/LegendColumns$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+          </Component>
+        </Composite>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+</ManagementPackFragment>

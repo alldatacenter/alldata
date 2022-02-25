@@ -1,0 +1,133 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.serviceHasMetrics}}
+  <div class="service-metrics-block">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-7 col-lg-7">
+            <h4 class="panel-title">{{t services.service.metrics}}</h4>
+          </div>
+          <div class="col-md-5 col-lg-5">
+            {{#if showTimeRangeControl}}
+              {{view view.timeRangeListView}}
+            {{/if}}
+            {{#if isServiceWithEnhancedWidgets}}
+              {{#if isAmbariMetricsInstalled}}
+                <div class="btn-group pull-right actions">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    {{t common.actions}} &nbsp;<span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    {{#each option in view.widgetActions}}
+                      <li {{bindAttr class="option.layouts:dropdown-submenu"}}>
+                        {{#if option.isAction}}
+                          <a href="#" {{action doWidgetAction option.action target="view"}}>
+                            <i {{bindAttr class="option.class"}}></i>
+                            {{option.label}}
+                          </a>
+                          {{#if option.layouts}}
+                            <ul class="dropdown-menu">
+                              {{#each layout in option.layouts}}
+                                <li>
+                                  <a href="javascript:void(0);">
+                                    {{layout.layoutName}}
+                                  </a>
+                                </li>
+                              {{/each}}
+                            </ul>
+                          {{/if}}
+                        {{/if}}
+                      </li>
+                    {{/each}}
+                  </ul>
+                </div>
+              {{/if}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <div class="panel-body service-widgets-box">
+        {{#if isServiceWithEnhancedWidgets}}
+          <div id="widget_layout" class="thumbnails">
+            {{#each widget in controller.widgets}}
+              <div class="widget span2p4" {{bindAttr id="widget.id"}}>
+                {{view widget.viewClass contentBinding="widget" idBinding="widget.id"}}
+              </div>
+            {{/each}}
+            {{#if isAmbariMetricsInstalled}}
+              <div class="span2p4">
+                <button id="add-widget-action-box" {{action "goToWidgetsBrowser" controller.content
+                                                            target="controller"}}
+                        rel="add-widget-tooltip" {{translateAttr
+                  data-original-title="dashboard.widgets.addButton.tooltip"}}>
+                  <i class="glyphicon glyphicon-plus"></i></button>
+              </div>
+            {{/if}}
+          </div>
+        {{/if}}
+        <table class="graphs">
+          {{#each graphs in view.serviceMetricGraphs}}
+            <tr>
+              {{#each graph in graphs}}
+                <td>
+                  <div>
+                    {{view graph}}
+                  </div>
+                </td>
+              {{/each}}
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+      {{#if controller.isHDFSFederatedSummary}}
+        {{#if controller.selectedNSWidgetLayout}}
+          <div class="widgets-group-select-wrapper">
+            <h5 class="widgets-group-title">{{t dashboard.widgets.nameSpace}}</h5>
+            <div class="btn-group dropdown">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="selected-item">{{controller.selectedNSWidgetLayout.displayName}}</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                {{#each option in controller.activeNSWidgetLayouts}}
+                  <li>
+                    <a href="#" {{action switchNameServiceLayout option target="controller"}}>{{option.displayName}}</a>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+          <div class="panel-body service-widgets-box">
+            <div id="ns_widget_layout" class="thumbnails">
+              {{#each widget in controller.selectedNSWidgetLayout.widgets}}
+                <div class="widget span2p4" {{bindAttr id="widget.id"}}>
+                  {{view widget.viewClass nsLayoutBinding="controller.selectedNSWidgetLayout" contentBinding="widget" idBinding="widget.id"}}
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+{{/if}}
+
+
+

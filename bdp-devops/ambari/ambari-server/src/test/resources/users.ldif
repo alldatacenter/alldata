@@ -1,0 +1,52 @@
+dn: ou=groups,dc=ambari,dc=apache,dc=org
+objectclass:top
+objectclass:organizationalUnit
+ou: groups
+
+dn: ou=people,dc=ambari,dc=apache,dc=org
+objectclass:top
+objectclass:organizationalUnit
+ou: people
+
+dn: uid=allowedUser,ou=people,dc=ambari,dc=apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: CraigWalls
+sn: Walls
+uid: allowedUser
+userPassword:password
+mail:allowedUser@ambari.apache.org
+
+dn: uid=deniedUser,ou=people,dc=ambari,dc=apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: JohnSmith
+sn: Smith
+uid: deniedUser
+userPassword:password
+
+dn: cn=admin,ou=groups,dc=ambari,dc=apache,dc=org
+objectclass:top
+objectclass:groupOfNames
+cn: admin
+member: uid=allowedUser,ou=people,dc=ambari,dc=apache,dc=org
+
+dn: uid=allowedAdmin,ou=people,dc=ambari,dc=apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: CraigWalls
+sn: Walls
+uid: allowedAdmin
+userPassword:password
+
+dn: cn=Ambari Administrators,ou=groups,dc=ambari,dc=apache,dc=org
+objectclass:top
+objectclass:groupOfNames
+cn: Ambari Administrators
+member: uid=allowedAdmin,ou=people,dc=ambari,dc=apache,dc=org

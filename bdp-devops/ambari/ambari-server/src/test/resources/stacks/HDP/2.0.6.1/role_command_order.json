@@ -1,0 +1,17 @@
+{
+  "general_deps" : {
+    "_comment" : "circular dependencies, short link",
+    "HBASE_MASTER-START": ["ZOOKEEPER_SERVER-START"],
+    "ZOOKEEPER_SERVER-START": ["HBASE_MASTER-START"],
+
+    "_comment" : "circular dependencies, long link",
+    "ZOOKEEPER_SERVER-STOP" : ["HBASE_MASTER-STOP"],
+    "HBASE_MASTER-STOP": ["RESOURCEMANAGER-STOP"],
+    "RESOURCEMANAGER-STOP": ["ZOOKEEPER_SERVER-STOP"],
+
+    "_comment" : "circular dependencies, long link",
+    "ZOOKEEPER_SERVER-UPGRADE" : ["HBASE_MASTER-UPGRADE"],
+    "HBASE_MASTER-UPGRADE": ["HBASE_REGIONSERVER-UPGRADE"],
+    "HBASE_REGIONSERVER-UPGRADE": ["ZOOKEEPER_SERVER-UPGRADE"]
+  }
+}

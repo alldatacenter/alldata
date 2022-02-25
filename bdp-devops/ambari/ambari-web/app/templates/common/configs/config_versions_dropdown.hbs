@@ -1,0 +1,72 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+  {{t common.version}}:
+  <span><strong>{{view.displayedServiceVersion.version}}</strong><span class="caret"></span></span>
+</button>
+<div class="dropdown-menu bottom-shadow">
+  <li class="input-group search-input">
+    {{view Em.TextField valueBinding="view.filterValue" class="form-control" placeholderBinding="view.searchLabel"}}
+    <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+          </span>
+  </li>
+  <ul class="versions-list">
+    {{#each item in view.filteredServiceVersions}}
+      <li>
+        <div {{bindAttr class="item.isDisplayed:selected view.isCompareMode:full-width :version-info"}}
+          {{action mainClickAction item target="view"}}>
+          <div class="row">
+            <div class="col-md-4">
+              <span class="h2">{{t common.version}}&nbsp;{{item.version}}&nbsp;</span>
+              <span class="description grey-text">{{item.stackVersion}}</span>
+            </div>
+            <div class="col-md-8 description grey-text">
+                <span class="pull-right">
+                  <strong>{{item.authorFormatted}}</strong>
+                  &nbsp;{{t dashboard.configHistory.info-bar.authoredOn}}&nbsp;
+                  <strong>{{item.createdDate}}</strong>
+                </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 description notes-color">{{item.fullNotes}}</div>
+            <div class="col-md-2">
+              {{#if item.isCurrent}}
+                <strong class="pull-right current-color">{{t common.current}}</strong>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        {{#unless view.isCompareMode}}
+          <button data-toggle="tooltip" data-placement="right"
+            {{bindAttr class="item.isDisplayed:hide :compare-button :btn :btn-default"}}
+            {{action compare item target="view.parentView"}}
+            {{translateAttr title="dashboard.configHistory.info-bar.compare.tooltip"
+                            data-original-title="dashboard.configHistory.info-bar.compare.tooltip"}}>
+            <i class="icon-exchange" aria-hidden="true"></i>
+          </button>
+        {{/unless}}
+      </li>
+    {{/each}}
+  </ul>
+</div>

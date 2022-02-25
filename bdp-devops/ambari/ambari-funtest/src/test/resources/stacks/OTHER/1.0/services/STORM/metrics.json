@@ -1,0 +1,103 @@
+{
+  "STORM_REST_API": {
+    "Component": [
+      {
+        "type": "jmx",
+        "metrics": {
+          "default": {
+            "metrics/api/cluster/summary/tasks.total": {
+              "metric": "tasks.total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/slots.total": {
+              "metric": "slots.total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/slots.free": {
+              "metric": "slots.free",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/supervisors": {
+              "metric": "supervisors",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/executors.total": {
+              "metric": "executors.total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/slots.used": {
+              "metric": "slots.used",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/topologies": {
+              "metric": "topologies",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/nimbus.uptime": {
+              "metric": "nimbus.uptime",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      }
+    ],
+    "HostComponent": [
+      {
+        "type": "jmx",
+        "metrics": {
+          "default": {
+            "metrics/api/cluster/summary/tasks.total": {
+              "metric": "tasks.total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/slots.total": {
+              "metric": "slots.total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/slots.free": {
+              "metric": "slots.free",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/supervisors": {
+              "metric": "supervisors",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/executors.total": {
+              "metric": "executors.total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/slots.used": {
+              "metric": "slots.used",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/topologies": {
+              "metric": "topologies",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/api/cluster/summary/nimbus.uptime": {
+              "metric": "nimbus.uptime",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      }
+
+    ]
+  }
+}

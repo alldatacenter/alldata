@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<upgrade-config-changes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <services>
+    <service name="ZOOKEEPER">
+      <component name="ZOOKEEPER_SERVER">
+        <changes>
+          <definition xsi:type="configure" id="hdp_2_1_1_zk_post_upgrade">
+          </definition>
+
+          <definition xsi:type="configure" id="hdp_2_1_1_zookeeper_new_config_type">
+            <type>zookeeper-newconfig</type>
+            <set key="fooKey" value="fooValue"/>
+          </definition>
+        </changes>
+      </component>
+    </service>
+
+    <service name="HDFS">
+      <component name="NAMENODE">
+        <changes>
+          <definition xsi:type="configure" id="hdp_2_1_1_nn_pre_upgrade">
+            <type>hdfs-site</type>
+            <set key="myproperty" value="mynewvalue"/>
+          </definition>
+          <definition xsi:type="configure" id="hdp_2_1_1_nn_test">
+            <type>hdfs-site</type>
+            <key>myproperty</key>
+            <value>mynewvalue</value>
+          </definition>
+          <definition xsi:type="configure" id="hdp_2_1_1_hdfs_new_config_type">
+            <type>hdfs-newconfig</type>
+            <set key="fooKey" value="fooValue"/>
+          </definition>
+        </changes>
+      </component>
+    </service>
+
+    <service name="YARN">
+      <component name="NODEMANAGER">
+        <changes>
+          <definition xsi:type="configure" id="hdp_2_1_1_nm_pre_upgrade">
+            <type>core-site</type>
+            <transfer operation="copy" from-key="copy-key"
+                      to-key="copy-key-to"/>
+            <transfer operation="copy" from-type="my-site"
+                      from-key="my-copy-key"
+                      to-key="my-copy-key-to"/>
+            <transfer operation="move" from-key="move-key"
+                      to-key="move-key-to"/>
+            <transfer operation="delete" delete-key="delete-key"
+                      preserve-edits="true">
+              <keep-key>important-key</keep-key>
+            </transfer>
+          </definition>
+        </changes>
+      </component>
+    </service>
+
+    <service name="HIVE">
+      <component name="HIVE_SERVER">
+        <changes>
+          <definition xsi:type="configure" id="hdp_2_1_1_set_transport_mode">
+            <condition type="hive-site" key="hive.server2.transport.mode" value="binary">
+              <type>hive-site</type>
+              <key>hive.server2.thrift.port</key>
+              <value>10010</value>
+            </condition>
+            <condition type="hive-site" key="hive.server2.transport.mode" value="http">
+              <type>hive-site</type>
+              <key>hive.server2.http.port</key>
+              <value>10011</value>
+            </condition>
+          </definition>
+
+          <definition xsi:type="configure" id="hdp_2_1_1_test_properties">
+            <condition type="hive-site" key="hive.server2.transport.mode" value="binary">
+              <type>hive-site</type>
+              <key>hive.server2.thrift.port</key>
+              <value>10010</value>
+            </condition>
+            <condition type="hive-site" key="hive.server2.transport.mode" value="http">
+              <type>hive-site</type>
+              <key>hive.server2.http.port</key>
+              <value>10011</value>
+            </condition>
+          </definition>
+
+          <definition xsi:type="configure" id="hdp_2_1_1_hive_server_foo">
+            <type>hive-site</type>
+            <set key="fooKey" value="fooValue"/>
+            <set key="fooKey2" value="fooValue2"/>
+            <set key="fooKey3" value="fooValue3"/>
+            <transfer operation="copy" from-key="copy-key" to-key="copy-key-to" />
+            <transfer operation="move" from-key="move-key" to-key="move-key-to" />
+            <transfer operation="delete" delete-key="delete-key" />
+            <transfer operation="delete" delete-key="delete-http" if-key="hive.server2.transport.mode" if-type="hive-site" if-value="http" />
+            <transfer operation="delete" delete-key="delete-https-fail" if-key="hive.server2.transport.mode" if-type="hive-site" if-value="https" />
+            <transfer operation="delete" delete-key="delete-prop-fail" if-key="non.existent" if-type="hive-site" if-value="https" />
+            <transfer operation="delete" delete-key="delete-type-fail" if-key="non.existent" if-type="non.existent" if-value="" />
+            <transfer operation="delete" delete-key="delete-null-if-value" if-key="non.existent" if-type="non.existent" />
+            <transfer operation="delete" delete-key="delete-blank-if-key" if-key="" if-type="non.existent" />
+            <transfer operation="delete" delete-key="delete-blank-if-type" if-key="non.existent" if-type="" />
+            <transfer operation="delete" delete-key="delete-thrift" if-key="hive.server2.thrift.port" if-type="hive-site" if-value="10001" />
+
+            <transfer operation="delete" delete-key="delete-if-key-present" if-key="condition" if-type="hive-site" if-key-state="present"/>
+            <transfer operation="delete" delete-key="delete-if-key-absent" if-key="condition1" if-type="hive-site" if-key-state="absent"/>
+            <transfer operation="delete" delete-key="not-executed-transfer" if-key="non-existed-key" if-type="hive-site" if-key-state="present"/>
+
+          </definition>
+        </changes>
+      </component>
+    </service>
+  </services>
+
+</upgrade-config-changes>

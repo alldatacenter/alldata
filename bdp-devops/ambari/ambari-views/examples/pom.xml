@@ -1,0 +1,87 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.ambari</groupId>
+    <artifactId>ambari-project</artifactId>
+    <version>${revision}</version>
+    <relativePath>../../ambari-project</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.ambari</groupId>
+  <artifactId>ambari-view-examples</artifactId>
+  <packaging>pom</packaging>
+  <name>Ambari View Examples</name>
+  <modules>
+    <module>helloworld-view</module>
+    <module>hello-servlet-view</module>
+    <module>hello-spring-view</module>
+    <module>favorite-view</module>
+    <module>phone-list-view</module>
+    <module>phone-list-upgrade-view</module>
+    <module>calculator-view</module>
+    <module>cluster-view</module>
+    <module>restricted-view</module>
+    <module>simple-view</module>
+    <module>property-view</module>
+    <module>property-validator-view</module>
+  </modules>
+  <properties>
+    <ambari.dir>${project.parent.parent.basedir}</ambari.dir>
+  </properties>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.rat</groupId>
+          <artifactId>apache-rat-plugin</artifactId>
+          <version>0.8</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <!--GIT files-->
+            <exclude>.git/</exclude>
+            <exclude>**/.gitignore</exclude>
+            <exclude>**/.gitattributes</exclude>
+            <!--gitignore content-->
+            <exclude>.idea/</exclude>
+            <exclude>pass.txt</exclude>
+            <exclude>.DS_Store</exclude>
+            <exclude>.iml/</exclude>
+            <exclude>.classpath</exclude>
+            <exclude>.project</exclude>
+            <exclude>.settings</exclude>
+            <!--license files-->
+            <exclude>MSPL-LICENSE</exclude>
+            <!--VS generated files-->
+            <exclude>**/*.resources</exclude>
+            <exclude>**/*.rtf</exclude>
+            <exclude>**/*.snk</exclude>
+            <exclude>**/*.cs</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

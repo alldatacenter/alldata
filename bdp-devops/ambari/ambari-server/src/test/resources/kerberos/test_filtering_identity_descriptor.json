@@ -1,0 +1,74 @@
+{
+  "properties": {
+    "realm": "${kerberos-env/realm}",
+    "keytab_dir": "/etc/security/keytabs"
+  },
+  "services": [
+    {
+      "name": "SERVICE1",
+      "identities": [
+        {
+          "name": "service1_stack_reference",
+          "reference": "/stack_identity",
+          "principal": {
+            "configuration": "service1/property1_principal"
+          },
+          "keytab": {
+            "configuration": "service1/property1_keytab",
+            "file": "${keytab_dir}/service1_stack.keytab"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name": "SERVICE1_COMPONENT1",
+          "identities": [
+            {
+              "name": "component1_service1_stack_reference",
+              "reference": "/REF_SERVICE1/service1_stack_reference",
+              "principal": {
+                "configuration": "component1_service1/property1_principal"
+              },
+              "keytab": {
+                "configuration": "component1_service1/property1_keytab"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SERVICE2",
+      "identities": [
+        {
+          "name": "service2_stack_reference",
+          "reference": "/stack_identity",
+          "principal": {
+            "configuration": "service2/property1_principal"
+          },
+          "keytab": {
+            "configuration": "service2/property1_keytab",
+            "file": "${keytab_dir}/service2_stack.keytab"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name": "SERVICE2_COMPONENT1",
+          "identities": [
+            {
+              "name": "component1_service2_stack_reference",
+              "reference": "/REF_SERVICE2/REF_SERVICE2_COMPONENT1/service2_stack_reference",
+              "principal": {
+                "configuration": "component1_service2/property1_principal"
+              },
+              "keytab": {
+                "configuration": "component1_service2/property1_keytab"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

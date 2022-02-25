@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>HDFS</name>
+      <displayName>HDFS</displayName>
+      <comment>Apache Hadoop Distributed File System</comment>
+      <version>2.1.0.2.0.6.0</version>
+
+      <components>
+        <component>
+          <name>NAMENODE</name>
+          <displayName>NameNode</displayName>
+          <category>MASTER</category>
+          <commandScript>
+            <script>scripts/namenode.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+          <customCommands>
+            <customCommand>
+              <name>DECOMMISSION</name>
+              <commandScript>
+                <script>scripts/namenode_dec.py</script>
+                <scriptType>PYTHON</scriptType>
+                <timeout>600</timeout>
+              </commandScript>
+            </customCommand>
+            <customCommand>
+              <name>YET_ANOTHER_PARENT_COMMAND</name>
+              <commandScript>
+                <script>scripts/yet_another_parent_command.py</script>
+                <scriptType>PYTHON</scriptType>
+                <timeout>600</timeout>
+              </commandScript>
+            </customCommand>
+          </customCommands>
+        </component>
+
+        <component>
+          <name>DATANODE</name>
+          <displayName>DataNode</displayName>
+          <category>SLAVE</category>
+          <commandScript>
+            <script>scripts/datanode.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+
+        <component>
+          <name>SECONDARY_NAMENODE</name>
+          <displayName>SNameNode</displayName>
+          <category>MASTER</category>
+          <commandScript>
+            <script>scripts/snamenode.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+
+        <component>
+          <name>HDFS_CLIENT</name>
+          <displayName>HDFS Client</displayName>
+          <category>CLIENT</category>
+          <commandScript>
+            <script>scripts/hdfs_client.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+
+        <component>
+          <name>JOURNALNODE</name>
+          <displayName>JournalNode</displayName>
+          <category>MASTER</category>
+          <commandScript>
+            <script>scripts/journalnode.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+
+        <component>
+          <name>ZKFC</name>
+          <displayName>ZKFailoverController</displayName>
+          <category>SLAVE</category>
+          <commandScript>
+            <script>scripts/zkfc_slave.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+      </components>
+
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>any</osFamily>
+          <packages>
+            <package>
+              <name>parent-package-def</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
+
+      <commandScript>
+        <script>scripts/service_check_1.py</script>
+        <scriptType>PYTHON</scriptType>
+        <timeout>300</timeout>
+      </commandScript>
+
+      <customCommands>
+        <customCommand>
+          <name>RESTART</name>
+          <commandScript>
+            <script>scripts/restart_parent.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </customCommand>
+        <customCommand>
+          <name>YET_ANOTHER_PARENT_SRV_COMMAND</name>
+          <commandScript>
+            <script>scripts/yet_another_parent_srv_command.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </customCommand>
+      </customCommands>
+
+      <configuration-dependencies>
+        <config-type>core-site</config-type>
+        <config-type>global</config-type>
+        <config-type>hdfs-site</config-type>
+        <config-type>hadoop-policy</config-type>
+      </configuration-dependencies>
+      <restartRequiredAfterRackChange>true</restartRequiredAfterRackChange>
+    </service>
+  </services>
+</metainfo>

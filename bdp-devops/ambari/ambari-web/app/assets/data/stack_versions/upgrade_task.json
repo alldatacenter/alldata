@@ -1,0 +1,48 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/clusters/c1/upgrades/5/upgrade_groups?upgrade_items/tasks/Tasks/id=17&fields=upgrade_items/tasks/Tasks/*",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/c1/upgrades/5/upgrade_groups/1",
+      "UpgradeGroup" : {
+        "group_id" : 1,
+        "request_id" : 5
+      },
+      "upgrade_items" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/clusters/c1/upgrades/5/upgrade_groups/1/upgrade_items/1",
+          "UpgradeItem" : {
+            "cluster_name" : "c1",
+            "group_id" : 1,
+            "request_id" : 5,
+            "stage_id" : 1
+          },
+          "tasks" : [
+            {
+              "href" : "http://192.168.56.101:8080/api/v1/clusters/c1/upgrades/5/upgrade_groups/1/upgrade_items/1/tasks/17",
+              "Tasks" : {
+                "attempt_cnt" : 0,
+                "cluster_name" : "c1",
+                "command" : "SERVICE_CHECK",
+                "command_detail" : "SERVICE_CHECK ZOOKEEPER",
+                "end_time" : 1418386843143,
+                "error_log" : "/var/lib/ambari-agent/data/errors-17.txt",
+                "exit_code" : 999,
+                "host_name" : "dev01.hortonworks.com",
+                "id" : 124,
+                "output_log" : "/var/lib/ambari-agent/data/output-17.txt",
+                "request_id" : 5,
+                "role" : "SERVICE_CHECK",
+                "stage_id" : 2,
+                "start_time" : -1,
+                "status" : "IN_PROGRESS",
+                "stderr" : "ERROR",
+                "stdout" : "OUT LOG",
+                "structured_out" : null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

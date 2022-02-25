@@ -1,0 +1,71 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="wizard-content col-md-9">
+  <h4 class="step-title">{{t services.reassign.step3.header}}</h4>
+  <p class="step-description">
+    {{t services.reassign.step3.body}}
+  </p>
+  {{#if view.jdbcSetupMessage}}
+    <div class="alert alert-warning">
+      {{{view.jdbcSetupMessage}}}
+    </div>
+  {{/if}}
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div id="step8-content" class="well pre-scrollable">
+        <div id="step8-info">
+          <table id="reassign-review-table">
+            <tr>
+              <td><b>{{t services.reassign.step3.component}}</b></td>
+              <td colspan="2">{{controller.content.reassign.display_name}}</td>
+            </tr>
+            <tr>
+              <td><b>{{t services.reassign.step3.sourceHost}}</b></td>
+              <td>{{view.sourceHost}}</td>
+              <td><span class="to-be-disabled-red"><i class="glyphicon glyphicon-minus"></i>&nbsp;{{t admin.highAvailability.wizard.step3.toBeDeleted}}</span></td>
+            </tr>
+            <tr>
+              <td><b>{{t services.reassign.step3.targetHost}}</b></td>
+              <td>{{view.targetHost}}</td>
+              <td><span class="to-be-installed-green"><i class="glyphicon glyphicon-plus"></i>&nbsp;{{t admin.highAvailability.wizard.step3.toBeInstalled}}</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      {{#if wizardController.isComponentWithReconfiguration}}
+        {{#if isLoaded}}
+          {{#if stepConfigs.length}}
+            <div id="serviceConfig">
+              {{t services.reassign.step3.configs}}
+              {{view App.ServiceConfigView}}
+            </div>
+          {{/if}}
+        {{else}}
+          {{view App.SpinnerView}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+      <button class="btn pull-left" {{action back href="true"}}>&larr; {{t common.back}}</button>
+      <button class="btn btn-success pull-right"
+              id="spinner" {{bindAttr disabled="controller.isSubmitDisabled"}} {{action submit target="controller"}}>{{t common.deploy}} &rarr;</button>
+  </div>
+</div>

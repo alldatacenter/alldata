@@ -1,0 +1,161 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations?fields=*",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/falcon_local_dir",
+      "StackConfigurations" : {
+        "property_description" : "Falcon directory to store different data.",
+        "property_name" : "falcon_local_dir",
+        "property_value" : "/hadoop/falcon",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/falcon_port",
+      "StackConfigurations" : {
+        "property_description" : "Falcon server port.",
+        "property_name" : "falcon_port",
+        "property_value" : "15000",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/falcon_store_uri",
+      "StackConfigurations" : {
+        "property_description" : "Falcon store URI.",
+        "property_name" : "falcon_store_uri",
+        "property_value" : "file:///hadoop/falcon/store",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/falcon_user",
+      "StackConfigurations" : {
+        "property_description" : "Falcon user.",
+        "property_name" : "falcon_user",
+        "property_value" : "falcon",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ELService.ext.functions.coord-action-create",
+      "StackConfigurations" : {
+        "property_description" : "Falcon",
+        "property_name" : "oozie.service.ELService.ext.functions.coord-action-create",
+        "property_value" : "\n      now=org.apache.oozie.extensions.OozieELExtensions#ph2_now,\n      today=org.apache.oozie.extensions.OozieELExtensions#ph2_today,\n      yesterday=org.apache.oozie.extensions.OozieELExtensions#ph2_yesterday,\n      currentMonth=org.apache.oozie.extensions.OozieELExtensions#ph2_currentMonth,\n      lastMonth=org.apache.oozie.extensions.OozieELExtensions#ph2_lastMonth,\n      currentYear=org.apache.oozie.extensions.OozieELExtensions#ph2_currentYear,\n      lastYear=org.apache.oozie.extensions.OozieELExtensions#ph2_lastYear,\n      latest=org.apache.oozie.coord.CoordELFunctions#ph2_coord_latest_echo,\n      future=org.apache.oozie.coord.CoordELFunctions#ph2_coord_future_echo,\n      formatTime=org.apache.oozie.coord.CoordELFunctions#ph2_coord_formatTime,\n      user=org.apache.oozie.coord.CoordELFunctions#coord_user\n    ",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ELService.ext.functions.coord-action-create-inst",
+      "StackConfigurations" : {
+        "property_description" : "Falcon",
+        "property_name" : "oozie.service.ELService.ext.functions.coord-action-create-inst",
+        "property_value" : "\n      now=org.apache.oozie.extensions.OozieELExtensions#ph2_now_inst,\n      today=org.apache.oozie.extensions.OozieELExtensions#ph2_today_inst,\n      yesterday=org.apache.oozie.extensions.OozieELExtensions#ph2_yesterday_inst,\n      currentMonth=org.apache.oozie.extensions.OozieELExtensions#ph2_currentMonth_inst,\n      lastMonth=org.apache.oozie.extensions.OozieELExtensions#ph2_lastMonth_inst,\n      currentYear=org.apache.oozie.extensions.OozieELExtensions#ph2_currentYear_inst,\n      lastYear=org.apache.oozie.extensions.OozieELExtensions#ph2_lastYear_inst,\n      latest=org.apache.oozie.coord.CoordELFunctions#ph2_coord_latest_echo,\n      future=org.apache.oozie.coord.CoordELFunctions#ph2_coord_future_echo,\n      formatTime=org.apache.oozie.coord.CoordELFunctions#ph2_coord_formatTime,\n      user=org.apache.oozie.coord.CoordELFunctions#coord_user\n    ",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ELService.ext.functions.coord-action-start",
+      "StackConfigurations" : {
+        "property_description" : "Falcon",
+        "property_name" : "oozie.service.ELService.ext.functions.coord-action-start",
+        "property_value" : "\n      now=org.apache.oozie.extensions.OozieELExtensions#ph2_now,\n      today=org.apache.oozie.extensions.OozieELExtensions#ph2_today,\n      yesterday=org.apache.oozie.extensions.OozieELExtensions#ph2_yesterday,\n      currentMonth=org.apache.oozie.extensions.OozieELExtensions#ph2_currentMonth,\n      lastMonth=org.apache.oozie.extensions.OozieELExtensions#ph2_lastMonth,\n      currentYear=org.apache.oozie.extensions.OozieELExtensions#ph2_currentYear,\n      lastYear=org.apache.oozie.extensions.OozieELExtensions#ph2_lastYear,\n      latest=org.apache.oozie.coord.CoordELFunctions#ph3_coord_latest,\n      future=org.apache.oozie.coord.CoordELFunctions#ph3_coord_future,\n      dataIn=org.apache.oozie.extensions.OozieELExtensions#ph3_dataIn,\n      instanceTime=org.apache.oozie.coord.CoordELFunctions#ph3_coord_nominalTime,\n      dateOffset=org.apache.oozie.coord.CoordELFunctions#ph3_coord_dateOffset,\n      formatTime=org.apache.oozie.coord.CoordELFunctions#ph3_coord_formatTime,\n      user=org.apache.oozie.coord.CoordELFunctions#coord_user\n    ",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ELService.ext.functions.coord-job-submit-data",
+      "StackConfigurations" : {
+        "property_description" : "Falcon",
+        "property_name" : "oozie.service.ELService.ext.functions.coord-job-submit-data",
+        "property_value" : "\n      now=org.apache.oozie.extensions.OozieELExtensions#ph1_now_echo,\n      today=org.apache.oozie.extensions.OozieELExtensions#ph1_today_echo,\n      yesterday=org.apache.oozie.extensions.OozieELExtensions#ph1_yesterday_echo,\n      currentMonth=org.apache.oozie.extensions.OozieELExtensions#ph1_currentMonth_echo,\n      lastMonth=org.apache.oozie.extensions.OozieELExtensions#ph1_lastMonth_echo,\n      currentYear=org.apache.oozie.extensions.OozieELExtensions#ph1_currentYear_echo,\n      lastYear=org.apache.oozie.extensions.OozieELExtensions#ph1_lastYear_echo,\n      dataIn=org.apache.oozie.extensions.OozieELExtensions#ph1_dataIn_echo,\n      instanceTime=org.apache.oozie.coord.CoordELFunctions#ph1_coord_nominalTime_echo_wrap,\n      formatTime=org.apache.oozie.coord.CoordELFunctions#ph1_coord_formatTime_echo,\n      dateOffset=org.apache.oozie.coord.CoordELFunctions#ph1_coord_dateOffset_echo,\n      user=org.apache.oozie.coord.CoordELFunctions#coord_user\n    ",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ELService.ext.functions.coord-job-submit-instances",
+      "StackConfigurations" : {
+        "property_description" : "Falcon",
+        "property_name" : "oozie.service.ELService.ext.functions.coord-job-submit-instances",
+        "property_value" : "\n      now=org.apache.oozie.extensions.OozieELExtensions#ph1_now_echo,\n      today=org.apache.oozie.extensions.OozieELExtensions#ph1_today_echo,\n      yesterday=org.apache.oozie.extensions.OozieELExtensions#ph1_yesterday_echo,\n      currentMonth=org.apache.oozie.extensions.OozieELExtensions#ph1_currentMonth_echo,\n      lastMonth=org.apache.oozie.extensions.OozieELExtensions#ph1_lastMonth_echo,\n      currentYear=org.apache.oozie.extensions.OozieELExtensions#ph1_currentYear_echo,\n      lastYear=org.apache.oozie.extensions.OozieELExtensions#ph1_lastYear_echo,\n      formatTime=org.apache.oozie.coord.CoordELFunctions#ph1_coord_formatTime_echo,\n      latest=org.apache.oozie.coord.CoordELFunctions#ph2_coord_latest_echo,\n      future=org.apache.oozie.coord.CoordELFunctions#ph2_coord_future_echo\n    ",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ELService.ext.functions.coord-sla-create",
+      "StackConfigurations" : {
+        "property_description" : "Falcon",
+        "property_name" : "oozie.service.ELService.ext.functions.coord-sla-create",
+        "property_value" : "\n      instanceTime=org.apache.oozie.coord.CoordELFunctions#ph2_coord_nominalTime,\n      user=org.apache.oozie.coord.CoordELFunctions#coord_user\n    ",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ELService.ext.functions.coord-sla-submit",
+      "StackConfigurations" : {
+        "property_description" : "Falcon",
+        "property_name" : "oozie.service.ELService.ext.functions.coord-sla-submit",
+        "property_value" : "\n      instanceTime=org.apache.oozie.coord.CoordELFunctions#ph1_coord_nominalTime_echo_fixed,\n      user=org.apache.oozie.coord.CoordELFunctions#coord_user\n    ",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ProxyUserService.proxyuser.falcon.groups",
+      "StackConfigurations" : {
+        "property_description" : "Falcon proxyuser groups",
+        "property_name" : "oozie.service.ProxyUserService.proxyuser.falcon.groups",
+        "property_value" : "*",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.1.1/stackServices/FALCON/configurations/oozie.service.ProxyUserService.proxyuser.falcon.hosts",
+      "StackConfigurations" : {
+        "property_description" : "Falcon proxyuser hosts",
+        "property_name" : "oozie.service.ProxyUserService.proxyuser.falcon.hosts",
+        "property_value" : "*",
+        "service_name" : "FALCON",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.1",
+        "type" : "oozie-site.xml"
+      }
+    }
+  ]
+}

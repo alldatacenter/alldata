@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="upgrade-pack.xsd">
+  <target>2.2.*.*</target>
+  <target-stack>HDP-2.2.0</target-stack>
+  <type>ROLLING</type>
+  <prerequisite-checks>
+    <check>org.apache.ambari.server.checks.HiveMultipleMetastoreCheck</check>
+    <check>org.apache.ambari.server.checks.MapReduce2JobHistoryStatePreservingCheck</check>
+    <check>org.apache.ambari.server.checks.SecondaryNamenodeDeletedCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesMapReduceDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesNamenodeHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesNamenodeTruncateCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesTezDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesYarnWorkPreservingCheck</check>
+    <check>org.apache.ambari.server.checks.YarnRMHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.YarnTimelineServerStatePreservingCheck</check>
+
+    <configuration>
+      <property name="global-property-1">global-value-1</property>
+      <check-properties name="org.apache.ambari.server.checks.ServicesMapReduceDistributedCacheCheck">
+        <property name="dfs-protocols-regex">^([^:]*dfs|wasb|ecs):.*</property>
+      </check-properties>
+      <check-properties name="org.apache.ambari.server.checks.ServicesTezDistributedCacheCheck">
+        <property name="dfs-protocols-regex">^([^:]*dfs|wasb|ecs):.*</property>
+      </check-properties>
+    </configuration>
+  </prerequisite-checks>
+
+  <order>
+    <group xsi:type="cluster" name="PRE_CLUSTER" title="Pre Upgrade">
+      <execute-stage title="Confirm 1">
+        <task xsi:type="manual">
+          <message>Foo</message>
+        </task>
+      </execute-stage>
+      <execute-stage service="HDFS" component="NAMENODE" title="Finalize HDFS">
+        <task xsi:type="execute">
+          <script>foo</script>
+          <function>list</function>
+        </task>
+      </execute-stage>
+      <execute-stage title="Confirm 2">
+        <task xsi:type="manual">
+          <message>Foo</message>
+        </task>
+      </execute-stage>
+    </group>
+  
+    <group name="ZOOKEEPER" title="Zookeeper">
+      <service name="ZOOKEEPER">
+        <component>ZOOKEEPER_SERVER</component>
+        <component>ZOOKEEPER_CLIENT</component>
+      </service>
+    </group>
+    
+    <group name="CORE_MASTER" title="Core Masters">
+      <service name="HDFS">
+        <component>JOURNALNODE</component>
+        <component>NAMENODE</component>
+      </service>
+      <service name="YARN">
+        <component>RESOURCEMANAGER</component>
+      </service>
+      <service-check>false</service-check>
+    </group>
+    
+    <group name="SERVICE_CHECK_1" title="Post-Master Service Checks" xsi:type="service-check">
+      <priority>
+        <service>HDFS</service>
+        <service>HBASE</service>
+        <service>YARN</service>
+      </priority>
+    </group>
+    
+    <group name="CORE_SLAVES" title="Core Slaves" xsi:type="colocated">
+      <skippable>true</skippable>      <!-- set skippable for test -->
+      <allow-retry>false</allow-retry> <!-- set no retry for test -->
+      <service name="HDFS">
+        <component>DATANODE</component>
+      </service>
+      <service name="HBASE">
+        <component>REGIONSERVER</component>
+      </service>
+      <service name="YARN">
+        <component>NODEMANAGER</component>
+      </service>
+      
+      <batch>
+        <percent>20</percent>
+        <message>Please run additional tests</message>
+      </batch>
+    </group>
+    
+    <group name="SERVICE_CHECK_2" title="Post-Slave Service Checks" xsi:type="service-check">
+      <priority>
+        <service>ZOOKEEPER</service>
+        <service>HDFS</service>
+        <service>YARN</service>
+      </priority>
+    </group>
+    
+    <group name="OOZIE" title="Oozie">
+      <service name="OOZIE">
+        <component>OOZIE_SERVER</component>
+      </service>
+    </group>
+    
+    
+    <group xsi:type="cluster" name="POST_CLUSTER" title="Finalize Upgrade">
+      <execute-stage title="Confirm Finalize">
+        <task xsi:type="manual">
+          <message>Please confirm you are ready to finalize</message>
+        </task>
+      </execute-stage>
+      <execute-stage service="HDFS" component="NAMENODE" title="Execute HDFS Finalize">
+        <task xsi:type="execute">
+          <script>foo</script>
+          <function>list</function>
+        </task>
+      </execute-stage>
+      <execute-stage title="Save Cluster State">
+        <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.FinalizeUpgradeAction">
+        </task>
+      </execute-stage>
+    </group>
+        
+  </order>
+  
+
+  <processing>
+  
+    <service name="ZOOKEEPER">
+      <component name="ZOOKEEPER_SERVER">
+        <pre-upgrade>
+          <task xsi:type="manual">
+            <summary>SUMMARY OF PREPARE</summary>
+            <message>This is a manual task with a placeholder of {{foo/bar}}</message>
+          </task>
+        </pre-upgrade>
+        <pre-downgrade copy-upgrade="true" />
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+        <post-upgrade>
+          <task xsi:type="configure" id="hdp_2_1_1_zk_post_upgrade"/>
+        </post-upgrade>
+        <post-downgrade copy-upgrade="true" />
+      </component>
+    </service>
+    <service name="HDFS">
+      <component name="NAMENODE">
+        <pre-upgrade>
+          <task xsi:type="execute" hosts="master">
+            <script>foo</script>
+            <function>list</function>
+          </task>
+          <task xsi:type="configure" id="hdp_2_1_1_nn_pre_upgrade"/>
+          <task xsi:type="manual">
+            <message>Update your database</message>
+          </task>
+        </pre-upgrade>
+        <pre-downgrade copy-upgrade="true" />
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+        <post-upgrade>
+          <task xsi:type="execute">
+            <script>foo</script>
+            <function>list</function>
+          </task>
+        </post-upgrade>
+        <post-downgrade copy-upgrade="true" />
+      </component>
+      <component name="DATANODE">
+        <pre-downgrade />
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+        <post-downgrade>
+          <task xsi:type="manual">
+            <message>Manual Downgrade</message>
+          </task>
+        </post-downgrade>
+      </component>
+    </service>
+    <service name="YARN">
+      <component name="RESOURCEMANAGER">
+        <pre-upgrade>
+          <task xsi:type="execute">
+            <script>foo</script>
+            <function>list</function>
+          </task>
+        </pre-upgrade>
+        <pre-downgrade copy-upgrade="true" />
+        <upgrade />
+      </component>
+      <component name="NODEMANAGER">
+        <pre-upgrade>
+          <task xsi:type="execute">
+            <script>foo</script>
+            <function>list</function>
+          </task>
+        </pre-upgrade>
+        <pre-downgrade copy-upgrade="true" />
+        <upgrade />
+      </component>
+    </service>
+    <service name="OOZIE">
+      <component name="OOZIE_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+	</service>
+  </processing>
+</upgrade>

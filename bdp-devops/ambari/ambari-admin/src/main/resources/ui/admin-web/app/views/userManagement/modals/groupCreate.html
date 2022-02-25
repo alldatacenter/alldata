@@ -1,0 +1,87 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<form id="create-group-form" role="form" novalidate name="form.groupCreateForm">
+  <div class="modal-header">
+    <h1 class="modal-title col-sm-8">
+      {{'groups.createLocal' | translate}}
+    </h1>
+    <a class="close" aria-hidden="true" ng-click="cancel()">&times;</a>
+  </div>
+  <div class="modal-body">
+    <div class="form-group"
+         ng-class="{ 'has-error': (form.groupCreateForm.groupName.$error.required || form.groupCreateForm.groupName.$error.pattern) && form.groupCreateForm.submitted }">
+      <label for="groupName">
+        {{'groups.name' | translate}}<span>&nbsp;*</span>&nbsp;
+      </label>
+      <input type="text"
+             placeholder="{{'groups.name' | translate}}"
+             ng-pattern="/^([a-zA-Z0-9._\s]+)$/"
+             autofocus
+             ng-maxlength="80"
+             autocomplete="off"
+             class="form-control"
+             ng-model="formData.groupName"
+             name="groupName"
+             id="groupName"
+             ng-change="checkIfInstanceExist()"
+             required>
+      <span class="help-block validation-block"
+            ng-show='form.groupCreateForm.groupName.$error.required && form.groupCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+      <span class="help-block validation-block"
+            ng-show='form.groupCreateForm.groupName.$error.pattern && form.groupCreateForm.submitted'>
+        {{'common.alerts.noSpecialChars' | translate}}
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>{{'groups.addUsers' | translate}}</label>
+      <div>
+        <editable-list items-source="formData.members" resource-type="User" editable="true"></editable-list>
+      </div>
+    </div>
+
+    <div class="row" ng-show="cluster">
+      <div class="form-group col-sm-6"
+           ng-class="{ 'has-error': form.groupCreateForm.role.$error.required && form.groupCreateForm.submitted }">
+        <label for="role" class="nowrap roles-label">
+          {{'groups.role' | translate}}
+          <i class="fa fa-question-circle" aria-hidden="true" ng-click="showHelpPage()"></i>
+        </label>
+        <select
+          class="form-control"
+          id="role"
+          name="role"
+          ng-model="formData.role">
+          <option value="" class="hide">{{'common.select' | translate}}</option>
+          <option ng-repeat="role in roleOptions" value="{{role.permission_name}}">{{role.permission_label}}</option>
+        </select>
+        <span class="help-block validation-block" ng-show='form.groupCreateForm.role.$error.required && form.groupCreateForm.submitted'>
+          {{'common.alerts.fieldRequired' | translate}}
+        </span>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel()">{{'common.controls.cancel' | translate}}</button>
+    <button class="btn btn-primary" ng-click="save()" type="submit">{{'common.controls.save' | translate}}</button>
+  </div>
+</form>

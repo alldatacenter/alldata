@@ -1,0 +1,138 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+    
+<div ng-show="user" id="user-edit">
+  <div class="clearfix">
+    <ol class="breadcrumb pull-left">
+      <li><a href="#!/userManagement?tab=users">{{'common.users' | translate}}</a></li>
+      <li class="active">{{user.user_name}}</li>
+    </ol>
+  </div>
+  <hr>
+  <form class="form-horizontal" role="form" >
+    <div class="form-group">
+      <label class="col-sm-2 one-row-value">{{'common.type' | translate}}</label>
+      <div class="col-sm-10">
+        <label class="one-row-value">{{user.userTypeName}}</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 switch-inline-label">{{'users.status' | translate}}</label>
+      <div class="col-sm-10">
+        <toggle-switch on-change="toggleUserActive()" disabled-tooltip="{{'users.alerts.cannotChange' | translate:{term: constants.status} }}" ng-disabled="isCurrentUser" model="user.active" class="switch-success userstatus {{user ? '' : 'no-animation'}}" data-off-color="danger"></toggle-switch>
+        <span ng-if="user.active" class="switch-option-label">{{'users.active' | translate}}</span>
+        <span ng-if="!user.active" class="switch-option-label">{{'users.inactive' | translate}}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 switch-inline-label">{{'users.ambariAdmin' | translate}}</label>
+      <div class="col-sm-10">
+        <toggle-switch on-change="toggleUserAdmin()" disabled-tooltip="{{'users.alerts.cannotChange' | translate:{term: constants.admin} }}" ng-disabled="isCurrentUser" model="user.admin" class="switch-success userstatus {{user ? '' : 'no-animation'}}" data-off-color="danger"></toggle-switch>
+        <span ng-if="user.admin" class="switch-option-label">{{'common.yes' | translate}}</span>
+        <span ng-if="!user.admin" class="switch-option-label">{{'common.no' | translate}}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 ">{{'users.password' | translate}}</label>
+      <div class="col-sm-10">
+        <div ng-switch="user.user_type != 'LOCAL'">
+          <button class="btn deleteuser-btn disabled btn-default" ng-switch-when="true" tooltip="{{'users.alerts.cannotChange' | translate:{term: constants.password} }}">{{'users.changePassword' | translate}}</button>
+          <a href ng-click="openChangePwdDialog()" ng-switch-when="false" class="btn btn-default changepassword">{{'users.changePassword' | translate}}</a>
+        </div>
+          
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 one-row-value">{{getUserMembership(user.user_type)}}</label>
+      <div class="col-sm-10">
+        <editable-list items-source="editingGroupsList" resource-type="Group" editable="user.user_type == 'LOCAL'"></editable-list>
+      </div>
+    </div>
+
+    <div class="form-group" ng-show="cluster">
+      <label for="role" class="col-sm-2 roles-label">
+        {{'users.role' | translate}}
+        <i class="fa fa-question-circle" aria-hidden="true" ng-click="showHelpPage()"></i>
+      </label>
+      <div class="col-sm-3">
+        <select ng-hide="user.admin"
+                class="form-control"
+                id="role"
+                name="role"
+                ng-options="item as item.permission_label for item in roleOptions track by item.permission_name"
+                ng-change="updateRole()"
+                ng-model="currentRole">
+        </select>
+        <span ng-show="user.admin" class="roles-label">{{user.roles[0].permission_label}}</span>
+      </div>
+    </div>
+
+    <div class="form-group" >
+      <label class="col-sm-2 ">{{'common.privileges' | translate}}</label>
+      <div class="col-sm-10">
+        <table class="table" ng-hide="hidePrivileges || user.admin">
+          <thead>
+            <tr>
+              <th>{{'common.cluster' | translate}}</th>
+              <th>{{'common.clusterRole' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(name, privilege) in privilegesView.clusters">
+              <td>
+                <span class="glyphicon glyphicon-cloud"></span> 
+                <a href="#!/clusters/{{name}}/manageAccess">{{name}}</a>
+              </td>
+              <td>
+                <span tooltip="{{privilege.permission_label}}">{{privilege.permission_label}}</span>
+              </td>
+            </tr>
+            <tr>
+              <td ng-show="noClusterPriv">{{'common.alerts.noPrivileges' | translate:{term: constants.cluster} }}</td>
+            </tr>
+          </tbody>
+          <thead class="view-permission-header">
+            <tr>
+              <th>{{'common.view' | translate}}</th>
+              <th>{{'common.viewPermissions' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(name, privilege) in privilegesView.views">
+              <td>
+                <span class="glyphicon glyphicon-th"></span>
+                <a href="#!/views/{{privilege.view_name}}/versions/{{privilege.version}}/instances/{{name}}/edit">{{name}}</a>
+              </td>
+              <td>
+                <span tooltip="{{item}}" ng-repeat="item in privilege.privileges track by $index">{{item | translate}}{{$last ? '' : ', '}}</span>
+              </td>
+              <td>
+                <i class="fa fa-trash-o" aria-hidden="true" ng-click="removeViewPrivilege(name, privilege);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td ng-show="noViewPriv">{{'common.alerts.noPrivileges' | translate:{term: constants.view} }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert alert-info" ng-show="hidePrivileges && !user.admin">{{'common.alerts.noPrivilegesDescription' | translate:{term: constants.user} }}</div>
+        <div class="alert alert-info" ng-show="user.admin">{{'users.userIsAdmin' | translate}}</div>
+      </div>
+    </div>
+  </form>
+</div>

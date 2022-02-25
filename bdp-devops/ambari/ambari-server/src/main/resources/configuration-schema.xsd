@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="configuration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="property" type="property" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="supports_final" type="xs:boolean" use="optional"/>
+      <xs:attribute name="supports_deletable" type="xs:boolean" use="optional"/>
+      <xs:attribute name="supports_adding_forbidden" type="xs:boolean" use="optional"/>
+      <xs:attribute name="supports_do_not_extend" type="xs:boolean" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="property">
+    <xs:all>
+      <xs:element name="name" type="xs:string" minOccurs="1"/>
+      <xs:element name="value" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="display-name" type="xs:string" minOccurs="0"/>
+      <xs:element name="filename" type="xs:string" minOccurs="0"/>
+      <xs:element name="deleted" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="final" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="on-ambari-upgrade" type="propertyUpgradeBehavior" minOccurs="1"/>
+      <xs:element name="supported-refresh-commands" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="refresh-command" type="refreshCommands" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="on-stack-upgrade" type="propertyStackUpgradeBehavior" minOccurs="0"/>
+      <xs:element name="property-type" minOccurs="0">
+        <xs:simpleType>
+          <xs:list itemType="propertyType"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="value-attributes" type="valueAttributesInfo" minOccurs="0"/>
+      <xs:element name="depends-on" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="property" type="propertyDependencyInfo" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="property_depended_by" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="dependedByProperties" type="propertyDependencyInfo" nillable="true" minOccurs="0"
+                        maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="used-by" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="property" type="propertyDependencyInfo" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="require-input" type="xs:boolean" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="propertyUpgradeBehavior">
+    <xs:attribute name="add" type="xs:boolean" use="optional" default="true"/>
+    <xs:attribute name="delete" type="xs:boolean" use="optional"/>
+    <xs:attribute name="update" type="xs:boolean" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="propertyStackUpgradeBehavior">
+    <xs:attribute name="merge" type="xs:boolean" use="optional" default="true"/>
+  </xs:complexType>
+
+  <xs:complexType name="refreshCommands">
+    <xs:attribute name="componentName" type="xs:string" use="required"/>
+    <xs:attribute name="command" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="valueAttributesInfo">
+    <xs:all>
+      <xs:element name="type" type="xs:string" minOccurs="0"/>
+      <xs:element name="maximum" type="xs:string" minOccurs="0"/>
+      <xs:element name="minimum" type="xs:string" minOccurs="0"/>
+      <xs:element name="unit" type="xs:string" minOccurs="0"/>
+      <xs:element name="delete" type="xs:string" minOccurs="0"/>
+      <xs:element name="visible" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="overridable" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="empty-value-valid" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="ui-only-property" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="read-only" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="editable-only-at-install" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="show-property-name" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="increment-step" type="xs:string" minOccurs="0"/>
+      <xs:element name="keystore" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="entries" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="entry" type="valueEntryInfo" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="hidden" type="xs:string" minOccurs="0"/>
+      <xs:element name="entries_editable" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="selection-cardinality" type="xs:string" minOccurs="0"/>
+      <xs:element name="property-file-name" type="xs:string" minOccurs="0"/>
+      <xs:element name="property-file-type" type="xs:string" minOccurs="0"/>
+    <xs:element name="user-groups" minOccurs="0">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="property" type="userGroupInfo" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+
+  <xs:complexType name="valueEntryInfo">
+    <xs:all>
+      <xs:element name="value" type="xs:string" minOccurs="0"/>
+      <xs:element name="label" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="userGroupInfo">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="name" type="xs:string" minOccurs="0"/>
+        <xs:element name="type" type="xs:string" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propertyDependencyInfo">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="name" type="xs:string" minOccurs="0"/>
+        <xs:element name="type" type="xs:string" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="propertyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PASSWORD"/>
+      <xs:enumeration value="USER"/>
+      <xs:enumeration value="GROUP"/>
+      <xs:enumeration value="TEXT"/>
+      <xs:enumeration value="ADDITIONAL_USER_PROPERTY"/>
+      <xs:enumeration value="NOT_MANAGED_HDFS_PATH"/>
+      <xs:enumeration value="VALUE_FROM_PROPERTY_FILE"/>
+      <xs:enumeration value="KERBEROS_PRINCIPAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

@@ -1,0 +1,38 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alert_history?(AlertHistory/definition_name=datanode_storage)&(AlertHistory/timestamp%3E=1414972800)",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alert_history/23",
+      "AlertHistory" : {
+        "cluster_name" : "c",
+        "definition_name" : "datanode_storage",
+        "host_name" : "c6403.ambari.apache.org",
+        "id" : 23,
+        "service_name" : "HDFS",
+        "timestamp" : 1417190593254
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alert_history/35",
+      "AlertHistory" : {
+        "cluster_name" : "c",
+        "definition_name" : "datanode_storage",
+        "host_name" : "c6403.ambari.apache.org",
+        "id" : 35,
+        "service_name" : "HDFS",
+        "timestamp" : 1417190953163
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alert_history/79",
+      "AlertHistory" : {
+        "cluster_name" : "c",
+        "definition_name" : "datanode_storage",
+        "host_name" : "c6403.ambari.apache.org",
+        "id" : 79,
+        "service_name" : "HDFS",
+        "timestamp" : 1417434160990
+      }
+    }
+  ]
+}

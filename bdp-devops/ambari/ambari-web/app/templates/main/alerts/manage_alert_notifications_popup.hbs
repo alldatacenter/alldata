@@ -1,0 +1,145 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="alert alert-info margin-bottom-5">{{t alerts.actions.manageNotifications.info}}</div>
+{{#if controller.isLoaded}}
+  <div class="row manage-configuration-group-content" id="manage-alert-notification-content">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4 notification-list">
+          <span>&nbsp;</span>
+          {{view Em.Select
+            contentBinding="alertNotifications"
+            optionLabelPath="content.displayName"
+            multiple="multiple"
+            class="group-select form-control"
+            selectionBinding="view.selectedAlertNotification"
+          }}
+          <div class="btn-toolbar pull-right">
+            <button rel="button-info" class="btn btn-default add-notification-button"
+              {{translateAttr data-original-title="alerts.actions.manage_alert_notifications_popup.addButton"}}
+              {{action addAlertNotification target="controller"}}><i class="glyphicon glyphicon-plus"></i></button>
+            <button rel="button-info" class="btn btn-default remove-notification-button"
+              {{translateAttr data-original-title="alerts.actions.manage_alert_notifications_popup.removeButton"}}
+              {{bindAttr disabled="view.isRemoveButtonDisabled"}}
+              {{action deleteAlertNotification target="controller"}}><i class="glyphicon glyphicon-minus"></i></button>
+            <div class="btn-group notification-actions-button dropup">
+              <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-cog"></i>&nbsp;<span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                  <li {{bindAttr class="view.isEditButtonDisabled:disabled"}}>
+                    <a href="" rel="button-info-dropdown"
+                      {{translateAttr data-original-title="alerts.actions.manage_alert_notifications_popup.editButton"}}
+                      {{action editAlertNotification target="view"}}>{{t common.edit}}</a>
+                  </li>
+                  <li {{bindAttr class="view.isDuplicateButtonDisabled:disabled"}}>
+                    <a href="" rel="button-info-dropdown"
+                      {{translateAttr data-original-title="alerts.actions.manage_alert_notifications_popup.duplicateButton"}}
+                      {{action duplicateAlertNotification target="view"}}>{{t common.duplicate}}</a>
+                  </li>
+                {{#if selectedAlertNotification.enabled}}
+                  <li {{bindAttr class="view.isEnableOrDisableButtonDisabled:disabled"}}>
+                    <a href="" rel="button-info-dropdown"
+                      {{translateAttr data-original-title="alerts.actions.manage_alert_notifications_popup.disableButton"}}
+                      {{action enableOrDisableAlertNotification enableOrDisable.disable target="view"}}>{{t common.disable}}</a>
+                  </li>
+                {{else}}
+                  <li {{bindAttr class="view.isEnableOrDisableButtonDisabled:disabled"}}>
+                    <a href="" rel="button-info-dropdown"
+                      {{translateAttr data-original-title="alerts.actions.manage_alert_notifications_popup.enableButton"}}
+                      {{action enableOrDisableAlertNotification enableOrDisable.enable target="view"}}>{{t common.enable}}</a>
+                  </li>
+                {{/if}}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 notification-info">
+          <span>&nbsp;</span>
+
+          <div class="row">
+            <div class="col-md-12 pull-right">
+              {{#if alertNotifications.length}}
+                {{#if selectedAlertNotification}}
+                  <div class="row notification-name">
+                    <div class="col-md-3 input-label">{{t common.name}}</div>
+                    <div class="col-md-9 input-value">{{selectedAlertNotification.name}}</div>
+                  </div>
+                  <div class="row notification-groups">
+                    <div class="col-md-3 input-label">{{t common.groups}}</div>
+                    <div class="col-md-9 input-value">
+                      {{#if selectedAlertNotification.global}}
+                        {{t common.all}}
+                      {{else}}
+                        {{#if view.selectedAlertNotificationGroups}}
+                          {{view.selectedAlertNotificationGroups}}
+                        {{else}}
+                          {{t alerts.actions.manage_alert_notifications_popup.noGroup}}
+                        {{/if}}
+                      {{/if}}
+                    </div>
+                  </div>
+                  <div class="row notification-severity">
+                    <div class="col-md-3 input-label">{{t common.severity}}</div>
+                    <div class="col-md-9 input-value">{{view.severities}}</div>
+                  </div>
+                  <div class="row notification-method">
+                    <div class="col-md-3 input-label">{{t alerts.actions.manage_alert_notifications_popup.method}}</div>
+                    <div class="col-md-9 input-value">{{view.selectedAlertNotificationTypeText}}</div>
+                  </div>
+                  {{#if view.showEmailDetails}}
+                    <div class="row notification-email">
+                      <div class="col-md-3 input-label">{{t alerts.actions.manage_alert_notifications_popup.email}}</div>
+                      <div class="col-md-9 input-value">{{view.email}}</div>
+                    </div>
+                  {{/if}}
+                  {{#if view.showSNMPDetails}}
+                  {{/if}}
+                  <div class="row notification-description">
+                    <div class="col-md-3 input-label">{{t common.description}}</div>
+                    {{#if selectedAlertNotification.description}}
+                      <div class="col-md-9 input-value">{{selectedAlertNotification.description}}</div>
+                    {{else}}
+                      <div class="col-md-9 input-value">{{t alerts.actions.manage_alert_notifications_popup.noDescription}}</div>
+                    {{/if}}
+                  </div>
+                {{/if}}
+              {{else}}
+                <div class="alert alert-info">
+                  {{t alerts.actions.manage_alert_notifications_popup.noAlertNotification}}
+                </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12 row">
+          <div class="col-md-12 text-danger" id="manage-alert-notifications-error">
+            {{#if controller.errorMessage}}
+              {{controller.errorMessage}}
+            {{else}}
+              &nbsp;
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  {{view App.SpinnerView}}
+{{/if}}

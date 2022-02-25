@@ -1,0 +1,87 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if modalGuard}}
+  <div class="modal fade" tabindex=-1 role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="fa fa-times pull-right" {{action 'close'}}></button>
+          <h3 class="modal-title">Move to <span style="font-weight: normal; font-size: 14px;">{{selectionName}}</span>
+          </h3>
+          <div class="text-danger">
+            {{#if browseError}}
+              {{alert-message-display title="Error: "
+              value=browseErrorMessage
+              shorten=true
+              length=100}}
+            {{/if}}
+          </div>
+
+        </div>
+        <div class="modal-body">
+          {{#unless isUpdating}}
+            {{#unless hasError}}
+              {{directory-viewer pathSelectAction="pathSelected" errorAction="browseError"}}
+            {{else}}
+              <div class="text-danger">
+                {{alert-message-display title="Error: "
+                value=currentFailureMessage
+                shorten=true
+                length=100}}
+              </div>
+            {{/unless}}
+          {{else}}
+            <div class="text-center">
+              {{fa-icon "spinner" spin=true size="2"}}
+            </div>
+          {{/unless}}
+        </div>
+        <div class="modal-footer">
+          {{#unless hasError}}
+            <button type="button"
+                    class="btn btn-default {{if isUpdating "disabled"}}" {{action 'close'}}>{{fa-icon icon="close"}}
+              Cancel
+            </button>
+            <button type="submit"
+                    class="btn btn-primary {{if isUpdating "disabled"}}" {{action 'move'}}>{{fa-icon icon="share"}} Move
+            </button>
+
+          {{else}}
+            {{#unless shouldRetry}}
+              <button type="button" class="btn btn-default"
+                      disabled={{isUpdating}} {{action "close"}}>{{fa-icon "remove"}} Cancel
+              </button>
+            {{/unless}}
+            <button type="button" class="btn btn-danger"
+                    disabled={{isUpdating}} {{action "retryError"}}>{{fa-icon "refresh"}} Retry
+            </button>
+            {{#if shouldRetry}}
+              <button type="button" class="btn btn-danger"
+                      disabled={{isUpdating}} {{action "skipAndRetry"}}>{{fa-icon "step-forward"}} Skip
+              </button>
+              <button type="button" class="btn btn-danger"
+                      disabled={{isUpdating}} {{action "skipAll"}}>{{fa-icon "fast-forward"}} Skip All
+              </button>
+            {{/if}}
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

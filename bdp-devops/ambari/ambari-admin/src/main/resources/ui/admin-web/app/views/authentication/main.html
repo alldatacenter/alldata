@@ -1,0 +1,272 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div class="users-pane enable-ldap" ng-show="settings.isLDAPConfigurationSupported">
+
+  <div class="clearfix">
+    <ol class="breadcrumb pull-left">
+      <li class="active">{{'common.authentication' | translate}}</li>
+    </ol>
+  </div>
+  <hr>
+
+  <div class="form-horizontal">
+    <div class="form-group col-sm-12">{{'authentication.description' | translate}}</div>
+    <div class="form-group">
+      <label class="switch-inline-label col-sm-4">{{'authentication.ldap' | translate}}</label>
+      <span class="col-sm-8">
+        <toggle-switch model="isLDAPEnabled" ng-disabled="isRequestRunning" class="switch-success" data-off-color="danger" on-change="toggleAuthentication()"></toggle-switch>
+        <span ng-if="isLDAPEnabled" class="switch-option-label">{{'authentication.on' | translate}}</span>
+        <span ng-if="!isLDAPEnabled" class="switch-option-label">{{'authentication.off' | translate}}</span>
+      </span>
+    </div>
+  </div>
+
+  <div ng-show="isLDAPEnabled">
+
+    <div class="clearfix">
+      <ol class="breadcrumb pull-left">
+        <li class="active">{{'authentication.connectivity.title' | translate}}</li>
+      </ol>
+    </div>
+    <hr>
+
+    <form class="form-horizontal" ng-submit="testConnection()">
+      <div class="form-group">
+        <label for="host" class="control-label col-sm-4">{{'authentication.connectivity.host' | translate}}</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="host" ng-model="connectivity.host">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="port" class="control-label col-sm-4">{{'authentication.connectivity.port' | translate}}</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="port" ng-model="connectivity.port">
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" id="ssl" ng-model="connectivity.ssl" class="col-sm-8">
+        <label for="ssl" class="control-label col-sm-4">{{'authentication.connectivity.ssl' | translate}}</label>
+      </div>
+      <div class="form-group">
+        <label for="trust-store" class="control-label col-sm-4">{{'authentication.connectivity.trustStore.label' | translate}}</label>
+        <div class="col-sm-3">
+          <select class="form-control" id="trust-store" ng-model="connectivity.trustStore" ng-options="t(item) for item in connectivity.trustStoreOptions"></select>
+        </div>
+      </div>
+      <div ng-show="connectivity.trustStore === 'custom'">
+        <div class="form-group">
+          <label for="trust-store-path" class="control-label col-sm-4">{{'authentication.connectivity.trustStorePath' | translate}}</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="trust-store-path" ng-model="connectivity.trustStorePath">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trust-store-type" class="control-label col-sm-4">{{'authentication.connectivity.trustStoreType.label' | translate}}</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="trust-store-type" ng-model="connectivity.trustStoreType" ng-options="t(item) for item in connectivity.trustStoreTypeOptions"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trust-store-password" class="control-label col-sm-4">{{'authentication.connectivity.trustStorePassword' | translate}}</label>
+          <div class="col-sm-8">
+            <input type="password" class="form-control" id="trust-store-password" ng-model="connectivity.trustStorePassword">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dn" class="control-label col-sm-4">{{'authentication.connectivity.dn' | translate}}</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="dn" ng-model="connectivity.dn">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bind-password" class="control-label col-sm-4">{{'authentication.connectivity.bindPassword' | translate}}</label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control" id="bind-password" ng-model="connectivity.bindPassword">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+          <button type="submit" class="btn btn-primary" ng-disabled="isConnectivityFormInvalid || isRequestRunning">{{'authentication.connectivity.controls.testConnection' | translate}}</button>
+          <i class="test-ldap-icon fa ng-class: {'fa-spin fa-spinner': isConnectionTestRunning, 'fa-check-circle': hasConnectionTestPassed, 'fa-times-circle': isConnectionTestComplete && !hasConnectionTestPassed}" ng-show="isConnectionTestRunning || isConnectionTestComplete"></i>
+        </div>
+      </div>
+    </form>
+
+    <div ng-show="hasConnectionTestPassed">
+
+      <div class="clearfix">
+        <ol class="breadcrumb pull-left">
+          <li class="active">{{'authentication.attributes.title' | translate}}</li>
+        </ol>
+      </div>
+      <hr>
+
+      <form class="form-horizontal" ng-submit="detectAttributes()">
+        <div class="form-group col-sm-12">{{'authentication.attributes.detection.label' | translate}}</div>
+        <div class="form-group">
+          <input type="radio" id="manual-detection" name="detection" ng-model="attributes.detection" ng-disabled="isAttributeDetectionRunning" value="manual">
+          <label for="manual-detection" class="col-sm-12">
+            {{'authentication.attributes.detection.options.manual' | translate}}
+          </label>
+          <input type="radio" id="auto-detection" name="detection" ng-model="attributes.detection" ng-disabled="isAttributeDetectionRunning" value="auto">
+          <label for="auto-detection" class="col-sm-12">
+            {{'authentication.attributes.detection.options.auto' | translate}}
+          </label>
+        </div>
+
+        <div ng-show="attributes.detection === 'auto'">
+
+          <div class="form-group">
+            <label for="user-search" class="control-label col-sm-4">{{'authentication.attributes.userSearch' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="user-search" ng-model="attributes.userSearch">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="group-search" class="control-label col-sm-4">{{'authentication.attributes.groupSearch' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="group-search" ng-model="attributes.groupSearch">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <button class="btn btn-primary" ng-disabled="isAutoDetectFormInvalid || isRequestRunning">{{'authentication.attributes.controls.autoDetect' | translate}}</button>
+              <i class="test-ldap-icon fa ng-class: {'fa-spin fa-spinner': isAttributeDetectionRunning, 'fa-check-circle': isAttributeDetectionSuccessful, 'fa-times-circle': isAttributeDetectionComplete && !isAttributeDetectionSuccessful}" ng-show="isAttributeDetectionRunning || isAttributeDetectionComplete"></i>
+            </div>
+          </div>
+          <div class="form-group col-sm-12" ng-show="isAttributeDetectionComplete && isAttributeDetectionSuccessful">{{'authentication.attributes.detected' | translate}}</div>
+
+        </div>
+
+      </form>
+
+      <div ng-show="attributes.detection === 'manual' || isAttributeDetectionComplete && isAttributeDetectionSuccessful">
+
+        <form id="attributes" class="form-horizontal" ng-submit="save()">
+
+          <div class="form-group">
+            <label for="user-obj-class" class="control-label col-sm-4">{{'authentication.attributes.userObjClass' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="user-obj-class" ng-model="attributes.userObjClass">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="user-name-attr" class="control-label col-sm-4">{{'authentication.attributes.userNameAttr' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="user-name-attr" ng-model="attributes.userNameAttr">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="group-obj-class" class="control-label col-sm-4">{{'authentication.attributes.groupObjClass' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="group-obj-class" ng-model="attributes.groupObjClass">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="group-name-attr" class="control-label col-sm-4">{{'authentication.attributes.groupNameAttr' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="group-name-attr" ng-model="attributes.groupNameAttr">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="group-member-attr" class="control-label col-sm-4">{{'authentication.attributes.groupMemberAttr' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="group-member-attr" ng-model="attributes.groupMemberAttr">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="distinguished-name-attr" class="control-label col-sm-4">{{'authentication.attributes.distinguishedNameAttr' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="distinguished-name-attr" ng-model="attributes.distinguishedNameAttr">
+            </div>
+          </div>
+          <div ng-show="attributes.detection === 'manual'">
+            <div class="form-group">
+              <label for="user-search-manual" class="control-label col-sm-4">{{'authentication.attributes.userSearch' | translate}}</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="user-search-manual" ng-model="attributes.userSearchManual">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="group-search-manual" class="control-label col-sm-4">{{'authentication.attributes.groupSearch' | translate}}</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="group-search-manual" ng-model="attributes.groupSearchManual">
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-12">{{'authentication.attributes.test.description' | translate}}</div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <button type="submit" class="btn btn-primary" ng-click="showTestAttributesForm()" ng-disabled="isAttributesFormInvalid || isTestAttributesFormShown || isRequestRunning">{{'authentication.attributes.controls.testAttrs' | translate}}</button>
+            </div>
+          </div>
+        </form>
+
+        <form class="form-horizontal" ng-show="isTestAttributesFormShown" ng-submit="testAttributes()">
+          <div class="form-group">
+            <label for="username" class="control-label col-sm-4">{{'authentication.attributes.test.username' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="username" ng-model="attributes.username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label col-sm-4">{{'authentication.attributes.test.password' | translate}}</label>
+            <div class="col-sm-8">
+              <input type="password" class="form-control" id="password" ng-model="attributes.password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <button type="submit" class="btn btn-primary" ng-disabled="isTestAttributesFormInvalid || isRequestRunning">{{'authentication.controls.test' | translate}}</button>
+              <i class="test-ldap-icon fa ng-class: {'fa-spin fa-spinner': isTestAttributesRunning, 'fa-times-circle': isTestAttributesComplete && !isTestAttributesSuccessful}" ng-show="isTestAttributesRunning || isTestAttributesComplete"></i>
+            </div>
+          </div>
+        </form>
+
+        <div class="form-horizontal" ng-show="isTestAttributesSuccessful">
+          <div class="form-group">
+            <span class="control-label col-sm-4">
+              {{'authentication.attributes.alerts.successfulAuth' | translate}}
+            </span>
+            <div class="col-sm-1">
+              <i class="control-label test-ldap-icon fa fa-check-circle"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="groups" class="control-label col-sm-4">{{'authentication.attributes.groupsList' | translate}}</label>
+            <div class="col-sm-6">
+              <select multiple class="form-control" id="groups" form="attributes" ng-model="attributes.groups" ng-options="item for item in attributes.availableGroups"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center form-group">
+          <button type="submit" form="attributes" class="btn btn-primary" ng-disabled="isAttributesFormInvalid || isRequestRunning">{{'common.controls.save' | translate}}</button>
+          <i class="test-ldap-icon fa fa-spin fa-spinner" ng-show="isSaving"></i>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="notificationWidget" class="">
+    <!--a href="#" class="close " data-dismiss="alert" aria-label="close">&times;</a-->
+	<ul class="list-group">
+	  <li class="list-group-item"><b>The details are</b>
+	  <a href="#" class="pull-right" {{action "hideNotification"}}>X</a></li>
+	  {{#if hoveredAction.appPath}}<li class="list-group-item"><b>App Path :  </b><br/>{{hoveredAction.appPath}}</li>{{/if}}
+      {{#if hoveredAction.propagate-configuration}}<li class="list-group-item"><b>Propagate Configuration :  </b><br/>{{hoveredAction.propagate-configuration}}</li>{{/if}}
+	  {{#if hoveredAction.configuration.property}}<li class="list-group-item"><b>Configuration : </b>
+	    {{#name-value-info action=hoveredAction}}{{/name-value-info}}
+	  </li>{{/if}}
+	</ul>
+</div>

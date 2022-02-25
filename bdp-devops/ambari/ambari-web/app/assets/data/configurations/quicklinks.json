@@ -1,0 +1,98 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3/services/YARN/quicklinks?QuickLinkInfo/default=true&fields=*",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3/services/YARN/quicklinks/quicklinks.json",
+      "QuickLinkInfo" : {
+        "default" : true,
+        "file_name" : "quicklinks.json",
+        "service_name" : "YARN",
+        "stack_name" : "HDP",
+        "stack_version" : "2.3",
+        "quicklink_data" : {
+          "QuickLinksConfiguration" : {
+            "description" : "default quick links configuration",
+            "name" : "default",
+            "configuration" : {
+              "protocol" : {
+                "type" : "https",
+                "checks" : [
+                  {
+                    "property" : "yarn.http.policy",
+                    "desired" : "HTTPS_ONLY",
+                    "site" : "yarn-site"
+                  }
+                ]
+              },
+              "links" : [
+                {
+                  "name" : "resourcemanager_ui",
+                  "label" : "ResourceManager UI",
+                  "url" : "%@://%@:%@",
+                  "port" : {
+                    "regex" : "\\w*:(\\d+)",
+                    "site" : "yarn-site",
+                    "http_property" : "yarn.resourcemanager.webapp.address",
+                    "http_default_port" : "8088",
+                    "https_property" : "yarn.resourcemanager.webapp.https.address",
+                    "https_default_port" : "8090"
+                  },
+                  "removed" : false,
+                  "requires_user_name" : "false",
+                  "knox_url" : "%@://%@:%@/gatway/yarnui/yarn"
+                },
+                {
+                  "name" : "resourcemanager_logs",
+                  "label" : "ResourceManager logs",
+                  "url" : "%@://%@:%@/logs",
+                  "port" : {
+                    "regex" : "\\w*:(\\d+)",
+                    "site" : "yarn-site",
+                    "http_property" : "yarn.resourcemanager.webapp.address",
+                    "http_default_port" : "8088",
+                    "https_property" : "yarn.resourcemanager.webapp.https.address",
+                    "https_default_port" : "8090"
+                  },
+                  "removed" : false,
+                  "requires_user_name" : "false",
+                  "knox_url" : "%@://%@:%@/gatway/yarnui/yarn/logs"
+                },
+                {
+                  "name" : "resourcemanager_jmx",
+                  "label" : "ResourceManager JMX",
+                  "url" : "%@://%@:%@/jmx",
+                  "port" : {
+                    "regex" : "\\w*:(\\d+)",
+                    "site" : "yarn-site",
+                    "http_property" : "yarn.resourcemanager.webapp.address",
+                    "http_default_port" : "8088",
+                    "https_property" : "yarn.resourcemanager.webapp.https.address",
+                    "https_default_port" : "8090"
+                  },
+                  "removed" : false,
+                  "requires_user_name" : "false",
+                  "knox_url" : "%@://%@:%@/gatway/yarnui/yarn/jmx"
+                },
+                {
+                  "name" : "thread_stacks",
+                  "label" : "Thread Stacks",
+                  "url" : "%@://%@:%@/stacks",
+                  "port" : {
+                    "regex" : "\\w*:(\\d+)",
+                    "site" : "yarn-site",
+                    "http_property" : "yarn.resourcemanager.webapp.address",
+                    "http_default_port" : "8088",
+                    "https_property" : "yarn.resourcemanager.webapp.https.address",
+                    "https_default_port" : "8090"
+                  },
+                  "removed" : false,
+                  "knox_url" : "%@://%@:%@/gatway/yarnui/yarn/stacks"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

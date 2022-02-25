@@ -1,0 +1,194 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+  <script type="text/ng-template" id="addHiveTable.html">
+    <div class="modal-header">
+      <h4>Load Table Metadata</h4>
+    </div>
+    <div class="modal-body">
+      <span><strong>Project: </strong>{{ $parent.projectName!=null?$parent.projectName:'NULL'}}</span>
+      <label for="tables"> Table Names:(Separate with comma)</label>
+            <textarea ng-model="$parent.tableNames" class="form-control" id="tables"
+                      placeholder="table1,table2  By default,system will choose 'Default' as database,you can specify database like this 'database.table'"></textarea>
+      <label ng-if="sourceType === '0'"> <input type="checkbox" ng-model="isCalculate.val" > Calculate column cardinality</label>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="add()">Sync</button>
+      <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="addStreamingSource.html">
+
+    <div class="modal-header">
+      <div class="box-header">
+        <h3 class="box-title">Streaming Table And Cluster Info</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" ng-click="cancel()" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-body streaming-source" style="height: 660px;overflow-y:auto;">
+        <div ng-show="steps.curStep==1" ng-include="'partials/tables/loadStreamingTable.html'"></div>
+        <div ng-show="steps.curStep==2" ng-include="'partials/cubeDesigner/streamingConfig.html'"></div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <div class="col-xs-8">
+          <div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-prev" ng-click="previewStep();" ng-show="steps.curStep==2">
+            <i class="ace-icon fa fa-arrow-left"></i>
+            Prev
+          </button>
+          <button id="nextButton" class="btn btn-success btn-next"  ng-click="nextStep();" ng-show="steps.curStep==1">
+            Next
+            <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+          </button>
+          <button class="btn btn-primary" ng-click="syncStreamingSchema()" ng-show="steps.curStep==2">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+
+<script type="text/ng-template" id="addStreamingSourceV2.html">
+  <div ng-show="steps.curStep==1" ng-include="'partials/tables/loadStreamingSourceConfig.html'"></div>
+  <div ng-show="steps.curStep==2" ng-include="'partials/tables/loadStreamingTableConfig.html'"></div>
+</script>
+<script type="text/ng-template" id="editStreamingTableV2.html">
+  <div ng-include="'partials/tables/streamingv2_config_edit.html'"></div>
+</script>
+
+<script type="text/ng-template" id="editStreamingSource.html">
+
+  <div class="modal-header">
+    <div class="box-header">
+      <h3 class="box-title">Streaming Table And Cluster Info</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" ng-click="cancel()" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-body streaming-source" style="height: 660px;overflow-y:auto;">
+    <div ng-include="'partials/cubeDesigner/streamingConfig.html'"></div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-xs-8">
+        <div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <button class="btn btn-primary" ng-click="updateStreamingSchema()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</script>
+
+
+<script type="text/ng-template" id="reloadTable.html">
+  <div class="modal-header">
+    <h4>Reload Table Metadata</h4>
+  </div>
+  <div class="modal-body">
+    <span><strong>Project: {{ $parent.projectName!=null?$parent.projectName:'NULL'}}</strong></span><br/>
+    <label for="tables"> Are you sure to reload table {{selectTable}} ?</label><br/>
+    <label ng-if="sourceType === '0'"><input type="checkbox" ng-model="isCalculate.val" > Calculate column cardinality</label>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="confirmReload()">Sync</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="addCsvSource.html">
+
+  <div class="modal-header"><button class="close" type="button" data-dismiss="modal" ng-click="cancel()">×</button>
+    <h4>Load Table from Csv File</h4>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group required">
+      <div class="clearfix">
+        <form method="post" class="vertical-center" enctype="multipart/form-data">
+          <label class="col-xs-2 control-label" style="text-align: left;">Select a Csv File</label><input type="file" class="custom-file-input" file-model="file">
+        </form>
+        <input type="checkbox" ng-model="tableData.has_header">
+        Is first line of header
+        <select id="table_separator" chosen ng-model="tableData.separator" ng-options="separator as separator for separator in separator_list" data-placeholder="select a separator" style="width: 150px !important;" class="chosen-select"></select>
+      </div>
+      <div class="clearfix">
+        <label for="tableName" class="col-sm-1 control-label font-color-default">Table Name</label>
+        <input type="text" class="form-control" style="width:50%;" id="tableName" ng-model="tableData.name" name="tableName" placeholder="Input Table Name eg. database.table" required>
+        <small class="help-block" ng-show="table_data_from.tableName.$error.required && table_data_from.tableName.$dirty">
+          Table Name is empty.
+        </small>
+      </div>
+      <div class="col-xs-1" style="text-align:center;">
+        <button type="button" class="btn btn-primary" ng-click="loadTable()"><i
+          class="fa fa-angle-double-right fa-5" style="font-size:1em;"></i></button>
+      </div>
+
+      <table class="table table-hover table-bordered" ng-show="tableData.loaded">
+        <tr>
+          <th>Column</th>
+          <th>Column Type</th>
+          <th>Sample Data</th>
+        </tr>
+        <tr ng-repeat="column in columnList">
+          <td><input type="text" ng-model="column.name"></td>
+          <td>
+            <select chosen ng-model="column.type"
+                    ng-options="type as type for type in tableConfig.dataTypes"
+                    data-placeholder="select a column type"
+                    style="width: 120px !important;"
+                    class="chosen-select">
+            </select>
+          </td>
+          <td>
+            {{column.sample}}
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  </body>
+
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-8">
+        <button id="submitButton" class="btn btn-primary"  ng-click="saveTable()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+
+</script>

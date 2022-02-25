@@ -1,0 +1,48 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="row one-row-tabs-container">
+  <div {{bindAttr class=":left-arrow view.isNavArrowsHidden:not-visible"}}>
+    <a href="#"{{bindAttr class="view.isLeftArrowDisabled:disabled"}} {{action "scrollTabsLeft" target="view"}}> <i class="icon-angle-left"></i>
+    </a>
+  </div>
+  <div class="tabs-container">
+    <ul class="nav nav-tabs mbm">
+      {{#each tab in view.services}}
+        <li rel='tooltip' {{bindAttr class="tab.isActive:active" data-original-title="tab.tooltipMsg"}}>
+          <a href="#" {{action selectService tab target="view"}} {{bindAttr data-target="tab.headingClass"}}
+             data-toggle="tab">
+            {{formatRole tab.serviceName}}
+            {{#if tab.errorsCount}}
+              <span class="alert-badge" {{QAAttr "error-badge"}}>
+                <span class="counter label alerts-crit-count">
+                  {{tab.errorsCount}}
+                </span>
+              </span>
+            {{/if}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div {{bindAttr class=":right-arrow view.isNavArrowsHidden:not-visible"}}>
+    <a href="#" {{bindAttr class="view.isRightArrowDisabled:disabled"}} {{action "scrollTabsRight" target="view"}}>
+      <i class="icon-angle-right"></i>
+    </a>
+  </div>
+</div>
+{{view view.configsView}}

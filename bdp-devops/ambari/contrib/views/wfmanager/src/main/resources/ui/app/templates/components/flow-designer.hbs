@@ -1,0 +1,377 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="main">
+  <nav class="navbar navbar-default mb0 borderTopNone">
+  <div class="container-fluid container-custom">
+    <div class="navbar-header">
+      <div class="form-inline col-xs-4 paddingtop8">
+        <div class="form-group">
+          <label for="wf_title">Name</label>
+            {{input class="form-control job-title" type="text" name="wf_title" value=workflow.name title="Workflow Name" placeholder="Workflow Name"}}
+        </div>
+        {{#if workflowFilePath}}
+          <div class="form-group wf-path marginleft20" title={{workflowFilePath}}>
+              Path:{{ workflowFilePath}}
+          </div>
+        {{/if}}
+      </div>
+      <div class="navbar-brand pull-right paddingtop8 col-xs-18">
+          <div class="btn-group">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle borderRightRadiusNone" type="button" data-toggle="dropdown">Workflow
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="pointer" title="Import Workflow from Shared File System" {{action "showFileBrowser"}}>
+                      <i class="fa fa-download marginright5"></i>Import from Shared File System
+                  </a>
+                  <a class="pointer" title="Import workflow from Local File System">
+                    {{#file-picker fileLoaded="fileLoaded" preview=false}}
+                        <i class="fa fa-download marginright5"></i>Import from Local FS
+                    {{/file-picker}}
+                  </a>
+                </li>
+                <li>
+                  <a  class="pointer" data-toggle="modal" data-target="#ConfirmDialog" title="Reset Workflow" {{action "conirmCreatingNewWorkflow"}}>
+                    <i class="fa fa-refresh marginright5"></i> Reset Workflow
+                  </a>
+                </li>
+                <li>
+                  <a class="pointer" data-toggle="modal" title="Save workflow to local file system" {{action "downloadWorkflowXml"}}>
+                    <i class="fa fa-download marginright5"></i>Export
+                  </a>
+                </li>
+                <li>
+                  <a class="pointer" data-toggle="modal" title="Preview workflow" {{action "previewWorkflow"}}>
+                    <i class="fa fa-eye marginright5"></i>Preview xml
+                  </a>
+                </li>
+                <!--li>
+                  <a class="pointer" title="Create a coordinator with the workflow" {{action "scheduleWorkflow"}}>
+                    <i class="fa fa-eye marginright5"></i>Schedule
+                  </a>
+                </li-->
+              </ul>
+            </div>
+          </div>
+        <!--button  type="button" class="btn btn-default" title="Import workflow" {{action "showFileBrowser"}}>
+            <i class="fa fa-download marginright5"></i>Import
+        </button-->
+        <button  id="import-workflow-test" type="button" class="btn btn-default hide" title="Import workflow Test" {{action "importWorkflowTest"}}>
+            <i class="fa fa-download"></i>
+        </button>
+        <div class="btn-group">
+          <div class="btn-group">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle borderRightRadiusNone" type="button" data-toggle="dropdown"><i class="fa fa-ban marginright5"></i>Kill Nodes
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="pointer" data-toggle="modal" title="Create Kill Node" {{action "showCreateKillNode" true}}>
+                      Create Kill Node
+                  </a>
+                  <a class="pointer" data-toggle="modal" title="Manage Kill Nodes" {{action "showKillNodeManager" true}}>
+                      Manage Kill Nodes
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="btn-group">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle borderRadiusNone" type="button" data-toggle="dropdown"><i class="fa fa-cog marginright5"></i>Settings
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="javascript:void(0)" title="Global Configurations" {{action "showWorkflowGlobalProps"}}>
+                      Global Configurations
+                </a>
+                </li>
+                <li><a href="javascript:void(0)" title="Workflow Credentials Configuration" {{action "showCredentials" true}}>
+                      Workflow Credentials
+                </a></li>
+                <li><a href="javascript:void(0)" title="SLA for Workflow" {{action "showWorkflowSla" true}}>
+                      SLA for Workflow
+                    </a>
+                </li>
+                <li><a href="javascript:void(0)" title="Workflow Parameters Configuration" {{action "showingParameterSettings" true}}>
+                      Workflow Parameters
+                </a></li>
+                <li><a href="javascript:void(0)" title="Workflow and Action Versions" {{action "showVersionSettings" true}}>
+                      Workflow and Action Versions
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+          <button id="import-workflow-test" type="button" class="btn btn-default" title="Save Workflow in HDFS" {{action "saveWorkflow" "save"}}>
+              <i class="fa fa-floppy-o"></i> Save
+          </button>
+          <button type="button" class="btn btn-default" title="Validate workflow" {{action "dryRunWorkflow"}}>
+              <i class="fa fa-play marginright5"></i>Validate
+          </button>
+          <button type="button" class="btn btn-primary" title="Submit workflow" {{action "submitWorkflow"}}>
+              <i class="fa fa-upload marginright5"></i>Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </nav>
+  {{#if showNotificationPanel}}
+     {{component hoveredWidget hoveredAction=hoveredAction hideNotification="hideNotification"}}
+  {{/if}}
+  <div  id="content" class="panel panel-default designer-main-panel col-xs-20">
+    <div class="designer-panel designer-canvas">
+        {{designer-errors errors=errors validationErrors=validationErrors errorMsg=errorMsg data=data}}
+        {{#if isSparkUnSupportedPropsAvailable}}
+            <div class="alert alert-warning">
+                <a href="#" class="close" {{action "closeInfo" "isSparkUnSupportedPropsAvailable"}}> × </a>
+                Spark does not support YARN Client mode.Hence, YARN Client mode value will changed in xml while importing.
+            </div>
+        {{/if}}
+
+      {{#if undoAvailable}}
+        <div id="alert"class="alert alert-warning workflow-error" role="alert">
+          {{#if (eq undoType 'nodeDeleted')}}
+            <label>Node deleted <span class="undo" {{action 'undo'}}><u>Undo</u></span></label>
+          {{else if (eq undoType 'nodeAdded')}}
+            <label>Node added <span class="undo" {{action 'undo'}}><u>Undo</u></span></label>
+          {{else}}
+            <label>Transition deleted <span class="undo" {{action 'undo'}}><u>Undo</u></span></label>
+          {{/if}}
+        </div>
+      {{/if}}
+      {{#if showStatus}}
+        <div id="status-message" class="processing-message">
+          <span class="label label-info">Processing...</span>
+        </div>
+      {{/if}}
+      {{#if isWorkflowImporting}}
+      <div id="loader">
+          <div id="alert"class="alert alert-info alert-dismissible workflow-error" role="alert">
+           Importing workflow.Please wait...
+          </div>
+      </div>
+      {{/if}}
+      {{#if isAssetPublishing}}
+        <div id="loader">
+            <div id="alert"class="alert alert-info alert-dismissible workflow-error" role="alert">
+              Publishing asset. Please wait...
+            </div>
+        </div>
+      {{/if}}
+      {{#if isAssetImporting}}
+        <div id="loader">
+            <div id="alert"class="alert alert-info alert-dismissible workflow-error" role="alert">
+              Importing asset. Please wait...
+            </div>
+        </div>
+      {{/if}}
+      <div id="flow-designer">
+        {{#each flattenedNodes as |node|}}
+        <div class="node-wrapper">
+          {{#workflow-node node=node deleteNode="deleteNode" copyNode="copyNode" openEditor="openEditor"  showNotification="showNotification"  hideNotification="hideNotification" addBranch="addBranch" addDecisionBranch="addDecisionBranch" onNameChange="nameChanged"}}{{/workflow-node}}
+        </div>
+        {{/each}}
+        {{#if useCytoscape}}
+        <div id="cyRenderer">
+          <div id="{{cyId}}" class="cy-panel"></div>
+          {{#each dataNodes as |dataNode|}}
+            {{#if (or (eq dataNode.data.type 'action') (eq dataNode.data.type 'decision') (eq dataNode.data.type 'fork')  (eq dataNode.data.type 'join'))}}
+              <div id="{{dataNode.data.id}}" class="">
+                {{input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" name="actionName" data-toggle="tooltip" title=dataNode.name classBinding="dataNode.data.node.errors:error:editable" class="editableNode overlay_node_editor" value=dataNode.dataNodeName placeholder="Action Name"}}
+              </div>
+            {{/if}}
+          {{/each}}
+          <div class="overlay-node-label"></div>
+          <div class="overlay-transition-content">
+            <div class="decision-condition-label">
+              <div class="decision-condition-header">Condition</div>
+              <div class="decision-condition-body"></div>
+            </div>
+            <div class="overlay-transition-actions">
+              <span class="overlay-plus-icon">
+                <i class="fa fa-plus-square"></i>
+              </span>
+              <span class="overlay-trash-transition-icon">
+                <i class="fa fa-trash-o"></i>
+              </span>
+            </div>
+          </div>
+          <div class="overlay-node-actions">
+            <span class="overlay-settings-icon" title="Action settings">
+              <i class="fa fa-cog"></i>
+            </span>
+            <span class="overlay-opentab-icon" title="Open Parent Workflow">
+              <i class="fa fa-external-link"></i>
+            </span>
+            <span class="overlay-fork-icon">
+              <i class="fa fa-code-fork"></i>
+            </span>
+            <span class="overlay-trash-icon" title="Delete Node">
+              <i class="fa fa-trash-o"></i>
+            </span>
+            <span class="overlay-cut-icon" title="Cut Node">
+              <i class="fa fa-cut"></i>
+            </span>
+            <span class="overlay-copy-icon" title="Copy Node">
+              <i class="fa fa-copy"></i>
+            </span>
+            <span class="overlay-paste-icon" title="Replace Node from Clipboard">
+              <i class="fa fa-paste"></i>
+            </span>
+            <span class="overlay-local-fs-import-icon" title="Copy action settings from Local File System">
+              <div class="action-file-picker">
+                {{#file-picker fileLoaded="importActionSettings" preview=false}}
+                    <i class="fa fa-download"></i>
+                {{/file-picker}}
+              </div>
+            </span>
+            <span class="overlay-asset-import-icon" title="Import Asset from Local Ambari Database" {{action "showAssetList" true}}>
+                <i class="fa fa-download"></i>
+            </span>
+            <span class="overlay-hdfs-asset-import-icon" title="Import Asset from Shared File System" {{action "showActionSettingsFileBrowser"}}>
+              <i class="fa fa-cloud-download"></i>
+            </span>
+            <span class="overlay-asset-export-icon" title="Save Asset to Local Ambari Database" {{action "showAssetConfig" true}}>
+                <i class="fa fa-upload"></i>
+            </span>
+            <span class="overlay-hdfs-asset-export-icon" title="Save Asset to Shared File System" {{action "showExportActionNodeFileBrowser"}}>
+              <i class="fa fa-cloud-upload"></i>
+            </span>
+          </div>
+          {{decision-add-branch node=node killNodes=workflow.killNodes registerAddBranchAction="registerAddBranchAction" addDecisionBranch="addDecisionBranch" workflow=workflow flowRenderer=flowRenderer}}
+        </div>
+          {{#if cyOverflow.overflown}}
+            <div class="cyScrollMsg"><i class="fa fa-ellipsis-h cyScrollMsgContent" title="Use the pan tool or drag on canvas to see more" aria-hidden="true"></i></div>
+          {{/if}}
+        {{/if}}
+      </div>
+      <div id="workflow-actions" class="hidden">
+        {{workflow-actions element=popOverElement addNode="addAction" pasteNode="pasteNode" showImportActionNodeFileBrowser="showImportActionNodeFileBrowser" importActionNodeLocalFS="importActionNodeLocalFS" showAssetNodeList="showAssetNodeList" clipboard=clipboard}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{{#if showActionEditor}}
+  {{workflow-action-editor actionType=currentAction closeActionEditor="closeActionEditor" setNodeTransitions="setNodeTransitions" actionModel=currentNode.domain nodeType=currentNode.type currentNode=currentNode killNodes=workflow.killNodes credentials=workflow.credentials validateWorkflow="validateWorkflow"}}
+{{/if}}
+{{#if showingSaveWorkflow}}
+  {{save-wf type='wf' close="closeSaveWorkflow" jobFilePath=workflowFilePath openFileBrowser="openFileBrowser" closeFileBrowser="closeFileBrowser" jobConfigs=configForSave}}
+{{/if}}
+{{#if showingWorkflowConfigProps}}
+  {{job-config type='wf' closeJobConfigs="closeWorkflowSubmitConfigs" jobFilePath=workflowFilePath tabInfo=tabInfo openFileBrowser="openFileBrowser" closeFileBrowser="closeFileBrowser" jobConfigs=workflowSubmitConfigs isDryrun=dryrun jobConfigProperties=jobConfigProperties}}
+{{/if}}
+{{#if showGlobalConfig}}
+  {{#global-config closeGlobalConfig="closeWorkflowGlobalProps" saveGlobalConfig="saveGlobalConfig" actionModel=globalConfig}}{{/global-config}}
+{{/if}}
+{{#if showingFileBrowser}}
+  {{hdfs-browser closeFileBrowser="closeFileBrowser" selectFileCallback=selectFileCallback filePath=workflowFilePath hideUpload=true}}
+{{/if}}
+{{#if showingActionSettingsFileBrowser}}
+  {{hdfs-browser closeFileBrowser="closeActionSettingsFileBrowser" selectFileCallback=selectFileCallback filePath=actionSettingsFilePath}}
+{{/if}}
+{{#if showingImportActionNodeFileBrowser}}
+  {{hdfs-browser closeFileBrowser="closeImportActionNodeFileBrowser" selectFileCallback=selectFileCallback filePath=actionNodeFilePath}}
+{{/if}}
+{{#if showingExportActionNodeFileBrowser}}
+  {{hdfs-browser closeFileBrowser="closeExportActionNodeFileBrowser" selectFileCallback=selectFileCallback filePath=exportActionNodeFilePath}}
+{{/if}}
+{{#if showingAssetConfig}}
+  {{#asset-config showAssetConfig="showAssetConfig" saveAssetConfig="saveAssetConfig" assetModel=assetConfig}}{{/asset-config}}
+{{/if}}
+{{#if showingAssetList}}
+  {{#asset-list showAssetList="showAssetList" importAsset="importAsset" assetList=assetList assetListType=assetListType}}{{/asset-list}}
+{{/if}}
+{{#if showingAssetNodeList}}
+  {{#asset-list showAssetList="showAssetNodeList" importAsset="importAssetNode" assetList=assetList}}{{/asset-list}}
+{{/if}}
+{{#if showingPreview}}
+  {{#preview-dialog title="Workflow XML Preview" previewXml=previewXml closePreview="closePreview"}}{{/preview-dialog}}
+{{/if}}
+{{#if showingConfirmationNewWorkflow}}
+  {{#confirmation-dialog title="Confirm workflow reset"
+    confirmationMessage="File will be reset to last saved version in the HDFS. Do you want to proceed?"
+    okBtnText="Continue" cancelBtnText="Cancel" onOk="createNewWorkflow"}}{{/confirmation-dialog}}
+{{/if}}
+{{#if showCreateKillNode}}
+  <div id="kill-node-dialog" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Kill Node</h4>
+        </div>
+        <div class="modal-body">
+            {{#if createKillnodeError}}
+              <div class="row">
+                <div class="form-group">
+                  <label class="text-danger control-label col-xs-8">
+                    {{createKillnodeError}}
+                  </label>
+                </div>
+              </div>
+          {{/if}}
+          <div class="row">
+            <div class="form-group" id="killNodeName">
+              <label class="control-label col-xs-3"> Kill node name</label>
+              <div class="col-xs-7">
+                {{input class="form-control" type="text" name="kill-node-name" value=killNode.name}}
+              </div>
+            </div>
+          </div>
+          <div class="row padding10">
+            <div class="form-group">
+              <label class="control-label col-xs-3"> Kill message</label>
+              <div class="col-xs-7">
+                {{textarea class="form-control" rows="5" placeholder="kill node message" name="kill-node-message" value=killNode.message}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" {{action "createKillNode" transition.errorNode}}>Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" {{action "showCreateKillNode" false}}>Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}
+{{#if showWorkflowSla}}
+  {{#workflow-sla showWorkflowSla="showWorkflowSla" workflowSla=workflow.sla workflowSlaEnabled=workflow.slaEnabled}}{{/workflow-sla}}
+{{/if}}
+{{#if showVersionSettings}}
+  {{version-settings showVersionSettings="showVersionSettings" workflow=workflow}}
+{{/if}}
+{{#if showCredentials}}
+  {{#workflow-credentials showCredentials="showCredentials" workflowCredentials=workflow.credentials}}{{/workflow-credentials}}
+{{/if}}
+{{#if showParameterSettings}}
+  {{#workflow-parameters type='wf' closeWorkFlowParam="closeWorkFlowParam" saveWorkFlowParam="saveWorkFlowParam" parameters=parameters}}{{/workflow-parameters}}
+{{/if}}
+{{#if showingStreamImport}}
+  {{import-from-stream type='wf' importWorkflowStream="importWorkflowStream" hideStreamImport="hideStreamImport" showingStreamImport=showingStreamImport workflowStream=workflowStream}}
+{{/if}}
+{{#if showKillNodeManager}}
+  {{#killnode-manager killNodes=workflow.killNodes killNode=killNode createKillnodeError=createKillnodeError createKillNode="createKillNode" deleteNode="deleteNode" addKillNodeMode=addKillNodeMode editMode=editMode closeKillNodeManager="closeKillNodeManager"}}{{/killnode-manager}}
+{{/if}}

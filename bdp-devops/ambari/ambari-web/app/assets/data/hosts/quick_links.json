@@ -1,0 +1,72 @@
+{
+  "items" : [
+    {
+      "Hosts" : {
+        "host_name" : "dev01.hortonworks.com",
+        "public_host_name" : "dev01.hortonworks.com"
+      },
+      "host_components" : [
+        {
+          "HostRoles" : {
+            "component_name" : "DATANODE"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HDFS_CLIENT"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HISTORYSERVER"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "JOBTRACKER"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "MAPREDUCE_CLIENT"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "NAMENODE"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "PIG"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "SECONDARY_NAMENODE"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HBASE_MASTER"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "STORM_UI_SERVER"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "SQOOP"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "TASKTRACKER"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "Requests" : {
+    "aborted_task_count" : 0,
+    "cluster_name" : "tdk",
+    "completed_task_count" : 6,
+    "create_time" : 1414268133201,
+    "end_time" : 1414268250904,
+    "exclusive" : false,
+    "failed_task_count" : 0,
+    "id" : 13,
+    "inputs" : null,
+    "operation_level" : null,
+    "progress_percent" : 100.0,
+    "queued_task_count" : 0,
+    "request_context" : "Start Services",
+    "request_schedule" : null,
+    "request_status" : "COMPLETED",
+    "resource_filters" : [ ],
+    "start_time" : 1414268133505,
+    "task_count" : 6,
+    "timed_out_task_count" : 0,
+    "type" : "INTERNAL_REQUEST"
+  },
+  "tasks" : [
+    {
+      "Tasks" : {
+        "command" : "START",
+        "command_detail" : "DATANODE START",
+        "end_time" : 1414268148833,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 24,
+        "role" : "DATANODE",
+        "start_time" : 1414268133535,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "START",
+        "command_detail" : "ZOOKEEPER_SERVER START",
+        "end_time" : 1414268154823,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 25,
+        "role" : "ZOOKEEPER_SERVER",
+        "start_time" : 1414268133554,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "START",
+        "command_detail" : "NAMENODE START",
+        "end_time" : 1414268198173,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 26,
+        "role" : "NAMENODE",
+        "start_time" : 1414268163948,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "SERVICE_CHECK",
+        "command_detail" : "SERVICE_CHECK ZOOKEEPER",
+        "end_time" : 1414268204709,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 27,
+        "role" : "ZOOKEEPER_QUORUM_SERVICE_CHECK",
+        "start_time" : 1414268163949,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "START",
+        "command_detail" : "SECONDARY_NAMENODE START",
+        "end_time" : 1414268221030,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 28,
+        "role" : "SECONDARY_NAMENODE",
+        "start_time" : 1414268214082,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "SERVICE_CHECK",
+        "command_detail" : "SERVICE_CHECK HDFS",
+        "end_time" : 1414268250633,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 29,
+        "role" : "HDFS_SERVICE_CHECK",
+        "start_time" : 1414268224109,
+        "status" : "COMPLETED"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+   "report_name" : "hdfs_ops_report",
+   "report_type" : "standard",
+   "title" : "HDFS Operations",
+   "vertical_label" : "Operations/Sec",
+   "series" : [
+      { "metric": "dfs.namenode.CreateFileOps", "color": "00ff00", "label": "File Creation", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "dfs.namenode.DeleteFileOps", "color": "ff0000", "label": "File Deletion", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "dfs.namenode.FileInfoOps", "color": "0000ff", "label": "File Info", 
+        "line_width": "2", "type": "stack" }
+   ]
+}

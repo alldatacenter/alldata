@@ -1,0 +1,30 @@
+#!/bin/sh
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+
+#
+# Inputs:
+# $1 - Management station host name (example: snmp-manager).
+# $2 - Community string (example: public, default, etc.,).
+# $3 - Host name where the trap originated.
+# $4 - Description of the service.
+# $5 - Severity ( 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN).
+# $6 - Service specific description.
+#
+# For more details, refer to NAGIOS-ROOT-MIB.txt and NAGIOS-NOTIFY-MIB.txt
+#
+
+# Sending trap to the management station
+/usr/bin/snmptrap -v 2c -c $2 $1 '' NAGIOS-NOTIFY-MIB::nSvcEvent nSvcHostname s "$3" nSvcDesc s "$4" nSvcStateID i $5 nSvcOutput s "$6"

@@ -1,0 +1,4 @@
+
+local  all   postgres md5
+host  all   postgres 0.0.0.0/0  md5
+host  all   postgres ::/0 md5

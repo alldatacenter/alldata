@@ -1,0 +1,560 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'common.less';
+
+#hosts {
+
+  .alerts-crit-count, .alerts-warn-count {
+    float: right;
+  }
+
+  .bulk-menu {
+    a {
+      &.disabled {
+        color: gray;
+      }
+    }
+  }
+
+  .filters-label {
+    display: block;
+    float: left;
+    padding-right: 10px;
+  }
+
+  #hosts-table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .set-rack-id {
+      text-decoration: none;
+    }
+
+    .host-select-all {
+      margin-bottom: -1px ;
+    }
+    tbody > tr > td {
+      vertical-align: middle;
+    }
+    .alerts-crit-count,
+    .alerts-warn-count {
+      margin-top: 2px;
+    }
+  }
+
+  .health-status-HEALTHY,
+  .health-status-LIVE,
+  .health-status-DEAD-RED,
+  .health-status-DEAD-ORANGE,
+  .health-status-DEAD-YELLOW {
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 13px;
+    display: inline !important;
+    float: none !important;
+    margin-right: 1px;
+    margin-left: 1px;
+  }
+  .icon-exclamation-sign,
+  .glyphicon-refresh {
+    margin-right: 1px;
+    margin-left: 1px;
+  }
+
+  .passive-state {
+    color: #000;
+  }
+  .alerts-status {
+    padding: 1px 6px !important;
+    &:before {
+      content: "!";
+    }
+  }
+  .host-name-search {
+    position: relative;
+    top: 0;
+    left: 10px;
+  }
+  .host-name-pos {
+    position: relative;
+    top: 10px;
+  }
+  .progress {
+    margin-bottom: 0;
+  }
+  .filter-input-width{
+    width: ~"calc(100% - 20px)";
+
+    &.rack-input {
+      width: 85%;
+    }
+  }
+  .table {
+    input[type="checkbox"] + label {
+      top: 1px;
+    }
+    th {
+      padding-left: 6px;
+    }
+    .col1,
+    .col0,
+    td:first-child,
+    th:first-child,
+    td:last-child,
+    th:last-child,
+    td:first-child + td,
+    th:first-child + th {
+      padding-left: 4px!important;
+      padding-right: 1px!important;
+      padding-right: 10px\9!important;
+      width: 1.5%;
+      width: 13px\9!important;
+      input {
+        vertical-align: middle;
+      }
+    }
+    .col2,
+    td:first-child + td + td,
+    th:first-child + th + th {
+      width: 20%;
+      padding-right: 1px;
+    }
+    .col3, .col4,
+    td:first-child + td + td + td,
+    th:first-child + th + th + th,
+    td:first-child + td + td + td + td,
+    th:first-child + th + th + th + th {
+      padding-left: 1px!important;
+      padding-right: 1px!important;
+      width: 1.5%;
+      width: 13px\9!important;
+    }
+    .col5,
+    td:first-child + td + td + td + td + td,
+    th:first-child + th + th + th + th + th {
+      width: 10%!important;
+    }
+    .col6,
+    td:first-child + td + td + td + td + td + td,
+    th:first-child + th + th + th + th + th + th {
+      width: 13%!important;
+    }
+    .col7,
+    td:first-child + td + td + td + td + td + td + td,
+    th:first-child + th + th + th + th + th + th + th {
+      width: 5%!important;
+    }
+
+    .col8,
+    td:first-child + td + td + td + td + td + td + td + td,
+    th:first-child + th + th + th + th + th + th + th + th {
+      width: 6%!important;
+    }
+
+    .col9,
+    td:first-child + td + td + td + td + td + td + td + td + td,
+    th:first-child + th + th + th + th + th + th + th + th + th {
+      width: 9%!important;
+    }
+
+    .col10,
+    td:first-child + td + td + td + td + td + td + td + td + td + td,
+    th:first-child + th + th + th + th + th + th + th + th + th + th {
+      width: 9%!important;
+    }
+
+    .col11,
+    td:first-child + td + td + td + td + td + td + td + td + td + td + td,
+    th:first-child + th + th + th + th + th + th + th + th + th + th + th {
+      width: 11%!important;
+      a {
+        word-wrap: break-word;
+      }
+    }
+
+    td.name {
+      overflow: inherit;
+      overflow-wrap: break-word;
+      white-space: nowrap;
+    }
+    td.name .trim_hostname{
+      .ellipsis-overflow-nowrap;
+      display: block;
+      float: left;
+      width: 86%!important;
+    }
+    td.health label {
+      padding-top: 3px;
+    }
+    td.health .icon-medkit {
+      margin: 3px 0 0 0;
+    }
+    ul.filter-components {
+      padding: 5px 0;
+      background: #777;
+      color: #fff;
+      font-weight: normal;
+      font-size: 12px;
+      label {
+        font-size: 12px;
+      }
+      li.active-filter {
+        background-color: #777;
+      }
+      li {
+        display: block;
+        padding: 3px 0 3px 5px;
+        line-height: 20px;
+        label.checkbox {
+          padding-left: 3px;
+        }
+        input[type="checkbox"] {
+          margin: 4px 4px 2px 2px;
+        }
+      }
+      select {
+        width: 150px;
+      }
+      ul {
+        margin-left: 10px;
+      }
+      &>li {
+        &>ul {
+          height: 150px;
+          margin-left: 0;
+          overflow-y: scroll;
+        }
+      }
+    }
+
+    div.view-wrapper {
+      input[type="checkbox"], .btn-group {
+        margin-bottom: 9px;
+      }
+    }
+  }
+
+  .open-group > .dropdown-menu {
+    display: block;
+  }
+  .nav-pills li.disabled {
+    display: block;
+    margin: 2px 0;
+    padding: 8px 12px;
+    line-height: 14px;
+  }
+  .box-footer .footer-pagination {
+    float: right;
+    .nav {
+      margin-bottom: 0;
+    }
+    .dropdown {
+      margin-top: 3px;
+    }
+    .dropdown select {
+      width: 60px;
+    }
+  }
+  .collapsed-list {
+    padding-left: 10px;
+  }
+  .host-table-versions {
+    div.collapsed-list {
+      padding-left: 17px;
+    }
+  }
+}
+
+#host-warnings {
+  .notice {
+    padding-bottom: 20px;
+  }
+  .code-snippet {
+    margin: 10px 0;
+    white-space: normal;
+  }
+  .warnings-list {
+    .panel {
+      padding: 0;
+      .panel-heading {
+        i {
+          margin-right: 5px;
+          position: relative;
+          top: 0;
+          &.panel-toggle {
+            font-size: 16px;
+            color: #1491c1;
+          }
+        }
+        a, a:visited, a:focus {
+          color: black;
+          text-decoration: none;
+        }
+      }
+    }
+    table {
+      width: 100%;
+      td, th {
+        text-align: left;
+        padding-left: 15px;
+      }
+      thead tr:first-child th {
+        font-weight: normal;
+      }
+    }
+    margin-top: 10px;
+    .panel-heading {
+      i {
+        line-height: 19px;
+      }
+    }
+  }
+  .glyphicon-warning-sign {
+    color: @health-status-yellow;
+  }
+}
+
+.host-checks-update {
+  button {
+    margin-left: 5px;
+  }
+  .update-progress {
+    width: 230px;
+    .progress {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#host-details {
+
+
+  .status-info {
+    .host-title {
+      font-size: 18px;
+      font-weight: 700;
+      background-position: 0 center;
+      padding-left: 17px;
+    }
+    .host-maintenance-notice {
+      background-color: #E4E4E4;
+      border: 1px solid #D4D4D4;
+      color: #333;
+      padding: 8px 35px 8px 14px;
+      border-radius: 4px;
+    }
+  }
+
+  .caret {
+    border-top-color: #000;
+    border-bottom-color: #000;
+  }
+
+  .components-health.glyphicon-arrow-up {
+    color:@health-status-red;
+  }
+
+  .health-status-started, .health-status-starting, .health-status-LIVE,
+  .health-status-installed, .health-status-stopping, .health-status-DEAD-RED,
+  .health-status-unknown, .health-status-DEAD-YELLOW,
+  .health-status-DEAD-ORANGE {
+    background-repeat: no-repeat;
+    height: 13px;
+    width: 13px;
+    display: inline !important;
+    float: none !important;
+  }
+
+  .host-details-summary-list {
+    .summary-label {
+      text-align: right;
+      font-weight: 700;
+    }
+  }
+
+  .host-metrics {
+    .chart-container {
+      .chart-x-axis {
+        left: 30%;
+        width: 40%;
+      }
+    }
+  }
+
+  .namenode-metrics {
+    .span2p4 {
+      width: 46%;
+      .img-thumbnail {
+        width: 100%;
+      }
+    }
+  }
+
+  .host-components {
+    padding: 10px;
+    .status-icons {
+      width: 70px;
+    }
+    .component-name-block {
+      white-space: normal;
+      word-wrap: break-word;
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .dropdown-menu {
+      max-height: 450px;
+      overflow-y: scroll;
+      .disabled {
+        pointer-events: none;
+        color: #808080;
+        cursor: default;
+      }
+      .allow-tooltip {
+        pointer-events: auto;
+      }
+    }
+    .table > tbody > tr > td {
+      vertical-align: middle;
+    }
+  }
+
+  .status-icons span {
+    padding-right: 2px;
+  }
+
+  .action-icon {
+    padding: 2px 5px 0 5px;
+    top: 2px;
+    font-size: 16px;
+  }
+
+  .host-stack-version-status {
+    .label {
+      font-size: 14px;
+    }
+  }
+
+  .logs-tab-content {
+    padding: 0 10px;
+    background-color: #ffffff;
+    a.external-link {
+      font-size: @smaller-font-size;
+    }
+    .table {
+      table-layout: auto;
+      td:first-child,
+      th:first-child {
+        width: 20%;
+      }
+      td:first-child + td,
+      th:first-child + th {
+        width: 30%;
+      }
+      td:first-child + td + td,
+      th:first-child + th + th {
+        width: 50%;
+      }
+    }
+  }
+  .nav {
+    .alerts-crit-count,
+    .alerts-warn-count {
+      padding: .4em .5em;
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}
+
+.host-breadcrumb {
+  max-width: 50%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+#host-alerts {
+  padding: 0 10px;
+  background-color: #ffffff;
+}
+
+@media all and (max-width: 2560px) {
+  #hosts {
+    .table {
+      .col2,
+      td:first-child + td + td,
+      th:first-child + th + th {
+        width: 15% !important;
+
+        .filter-input-width {
+          width: 75%;
+        }
+      }
+
+      .col4,
+      td:first-child + td + td + td + td,
+      th:first-child + th + th + th + th {
+        width: 1.4%;
+      }
+
+      .col5,
+      td:first-child + td + td + td + td + td,
+      th:first-child + th + th + th + th + th {
+        width: 11.7% !important;
+      }
+
+      .col6,
+      td:first-child + td + td + td + td + td + td,
+      th:first-child + th + th + th + th + th + th {
+        width: 9% !important;
+      }
+
+      .col7,
+      td:first-child + td + td + td + td + td + td + td,
+      th:first-child + th + th + th + th + th + th + th {
+        width: 9% !important;
+      }
+
+      .col8,
+      td:first-child + td + td + td + td + td + td + td + td,
+      th:first-child + th + th + th + th + th + th + th + th {
+        width: 9% !important;
+      }
+      .col9,
+      td:first-child + td + td + td + td + td + td + td + td + td,
+      th:first-child + th + th + th + th + th + th + th + th + th {
+        width: 9% !important;
+      }
+      .col11,
+      .col12,
+      td:first-child + td + td + td + td + td + td + td + td + td + td + td,
+      th:first-child + th + th + th + th + th + th + th + th + th + th + th,
+      td:first-child + td + td + td + td + td + td + td + td + td + td + td + td,
+      th:first-child + th + th + th + th + th + th + th + th + th + th + th + th {
+        width: 11.2% !important;
+      }
+      td.name .trim_hostname {
+        width: 82% !important;
+      }
+    }
+  }
+}

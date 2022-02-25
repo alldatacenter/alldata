@@ -1,0 +1,42 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="screensaver chart-container" {{bindAttr class="view.isReady:hide"}} >
+  <div id="{{unbound view.id}}-title" class="chart-title">{{view.title}}</div>
+  {{view App.SpinnerView}}
+</div>
+<div id="{{unbound view.id}}-container" class="chart-container hide" {{bindAttr class="view.isReady:show"}} rel="ZoomInTooltip">
+  <div id="{{unbound view.id}}-yaxis" class="chart-y-axis" {{action showGraphInPopup target="view"}}></div>
+  <div id="{{unbound view.id}}-xaxis" class="chart-x-axis" {{action showGraphInPopup target="view"}}></div>
+  <div id="{{unbound view.id}}-legend" class="chart-legend"></div>
+  <div id="{{unbound view.id}}-chart" class="chart"  {{action showGraphInPopup target="view"}}></div>
+  <div id="{{unbound view.id}}-timeline" class="timeline" {{action showGraphInPopup target="view"}}></div>
+  {{#unless view.noTitleUnderGraph}}
+    <div id="{{unbound view.id}}-title" {{bindAttr class="view.isExportButtonHidden::has-data :chart-title"}}>
+      {{view.title}}
+    </div>
+    {{#if view.isReady}}
+      <a {{bindAttr class="view.isExportButtonHidden:hidden :corner-icon :col-md-1"}} href="#" {{action toggleFormatsList target="view"}}>
+        <i class="glyphicon glyphicon-save"></i>
+      </a>
+      <div class="export-graph-list-top"></div>
+      {{view view.exportMetricsMenuView}}
+    {{/if}}
+  {{/unless}}
+</div>
+

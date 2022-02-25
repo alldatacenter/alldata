@@ -1,0 +1,55 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="serviceConfig" class="non-wizard">
+  {{#if dataIsLoaded}}
+    {{#if controller.content.isRestartRequired}}
+      {{#isAuthorized "SERVICE.START_STOP"}}
+        <div>
+          <div class="alert alert-warning clearfix restart-required">
+            <i class="glyphicon glyphicon-refresh"></i> {{t services.service.config.restartService.needToRestart}}  <a
+                  href="#" {{action "showComponentsShouldBeRestarted" controller.content target="controller"}}>{{view.componentsCount}} {{pluralize view.componentsCount singular="t:common.component" plural="t:common.components"}}</a> {{t on}}
+            <a href="#" {{action "showHostsShouldBeRestarted" controller.content target="controller"}}>{{view.hostsCount}} {{pluralize view.hostsCount singular="t:common.host" plural="t:common.hosts"}}</a>
+            <span class="restart-components pull-right">&nbsp</span>
+
+            <div class="btn-group pull-right">
+              <button type="button" class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                {{t hosts.host.details.needToRestart.button}}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="restart-all-components">
+                  <a href="#" {{action restartAllStaleConfigComponents target="controller"}}>{{t restart.service.all.affected}}</a>
+                </li>
+                {{#if view.isRollingRestartSlaveComponentPresent}}
+                  <li class="restart-slave-components">
+                    <a href="#" {{action rollingRestartStaleConfigSlaveComponents view.rollingRestartSlaveComponentName target="controller"}}>{{view.rollingRestartActionName}}</a>
+                  </li>
+                {{/if}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {{/isAuthorized}}
+    {{/if}}
+    <div class="clearfix"></div>
+    {{view App.ServiceConfigView filterBinding="controller.filter" columnsBinding="controller.filterColumns" canEditBinding="controller.canEdit"}}
+  {{else}}
+    {{view App.SpinnerView}}
+  {{/if}}
+</div>

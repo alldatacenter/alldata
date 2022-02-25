@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<configuration>
+  <property>
+    <name>tickTime</name>
+    <value>2000</value>
+    <description>The length of a single tick in milliseconds, which is the basic time unit used by ZooKeeper</description>
+  </property>
+  <property>
+    <name>initLimit</name>
+    <value>10</value>
+    <description>Ticks to allow for sync at Init.</description>
+  </property>
+  <property>
+    <name>syncLimit</name>
+    <value>5</value>
+    <description>Ticks to allow for sync at Runtime.</description>
+  </property>
+  <property>
+    <name>clientPort</name>
+    <value>2181</value>
+    <description>Port for running ZK Server.</description>
+  </property>
+  <property>
+    <name>dataDir</name>
+    <value>/hadoop/zookeeper</value>
+    <description>Data directory for ZooKeeper.</description>
+  </property>
+  <property>
+    <name>autopurge.snapRetainCount</name>
+    <value>30</value>
+    <description>ZooKeeper purge feature retains the autopurge.snapRetainCount
+      most recent snapshots and the corresponding transaction
+      logs in the dataDir and dataLogDir respectively and deletes the rest. </description>
+  </property>
+  <property>
+    <name>autopurge.purgeInterval</name>
+    <value>24</value>
+    <description>The time interval in hours for which the purge task has to be triggered.
+      Set to a positive integer (1 and above) to enable the auto purging.</description>
+  </property>
+</configuration>

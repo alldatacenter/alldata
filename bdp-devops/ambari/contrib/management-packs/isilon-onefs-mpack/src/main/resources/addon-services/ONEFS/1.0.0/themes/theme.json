@@ -1,0 +1,60 @@
+{
+  "name": "default",
+  "description": "Default theme for OneFS service",
+  "configuration": {
+    "layouts": [
+      {
+        "name": "default",
+        "tabs": [
+          {
+            "name": "settings",
+            "display-name": "Settings",
+            "layout": {
+              "tab-columns": "1",
+              "tab-rows": "1",
+              "sections": [
+                {
+                  "name": "section-onefs",
+                  "display-name": "OneFS",
+                  "row-index": "0",
+                  "column-index": "0",
+                  "row-span": "1",
+                  "column-span": "1",
+                  "section-columns": "1",
+                  "section-rows": "1",
+                  "subsections": [
+                    {
+                      "name": "subsection-onefs-col1",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "placement": {
+      "configuration-layout": "default",
+      "configs": [
+        {
+          "config": "onefs/onefs_host",
+          "subsection-name": "subsection-onefs-col1"
+        }
+      ]
+    },
+    "widgets": [
+      {
+        "config": "onefs/onefs_host",
+        "widget": {
+          "type": "text-field"
+        }
+      }
+    ]
+  }
+}
+

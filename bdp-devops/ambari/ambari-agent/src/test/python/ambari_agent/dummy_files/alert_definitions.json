@@ -1,0 +1,37 @@
+{
+  "0": {
+    "clusterName": "c1",
+    "hash": "12341234134412341243124",
+    "hostName": "c6401.ambari.apache.org",
+    "alertDefinitions": [
+      {
+        "name": "namenode_process",
+        "service": "HDFS",
+        "component": "NAMENODE",
+        "interval": 6,
+        "enabled": true,
+        "label": "NameNode process",
+        "source": {
+          "reporting": {
+            "critical": {
+              "text": "Could not load process info: {0} on host {1}:{2}"
+            },
+            "ok": {
+              "text": "TCP OK - {0:.4f} response time on port {1}"
+            }
+          },
+          "type": "PORT",
+          "uri": "{{hdfs-site/dfs.namenode.http-address}}",
+          "default_port": 50070
+        },
+        "scope": "HOST",
+        "uuid": "3f82ae27-fa6a-465b-b77d-67963ac55d2f"
+      }
+    ],
+    "configurations": {
+      "hdfs-site": {
+        "dfs.namenode.http-address": "c6401.ambari.apache.org:50070"
+      }
+    }
+  }
+}

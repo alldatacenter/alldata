@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.1 http://maven.apache.org/xsd/assembly-1.1.1.xsd">
+  <!--This 'all' id is not appended to the produced bundle because we do this:
+    http://maven.apache.org/plugins/maven-assembly-plugin/faq.html#required-classifiers
+  -->
+  <id>windows-dist</id>
+  <formats>
+    <format>dir</format>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <directory>src/main/python/ambari_agent</directory>
+      <outputDirectory>/sbin/ambari_agent</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${project.basedir}/../ambari-common/src/main/python/resource_management</directory>
+      <outputDirectory>/sbin/resource_management</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${project.basedir}/../ambari-common/src/main/python/ambari_commons</directory>
+      <outputDirectory>/sbin/ambari_commons</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${project.basedir}/../ambari-common/src/main/python/ambari_jinja2/ambari_jinja2</directory>
+      <outputDirectory>/sbin/ambari_jinja2</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/../ambari-common/src/main/python/ambari_simplejson</directory>
+      <outputDirectory>/sbin/ambari_simplejson</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${project.basedir}/conf/windows</directory>
+      <outputDirectory>/</outputDirectory>
+      <excludes>
+        <exclude>service_wrapper.py</exclude>
+        <exclude>createservice.ps1</exclude>
+      </excludes>
+    </fileSet>
+    <fileSet>
+      <directory>${project.basedir}/conf/windows</directory>
+      <outputDirectory>/sbin</outputDirectory>
+      <includes>
+        <include>service_wrapper.py</include>
+        <include>createservice.ps1</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>${target.cache.dir}</directory>
+      <outputDirectory>/cache</outputDirectory>
+    </fileSet>
+    <!--empty directory-->
+    <fileSet>
+      <directory>./</directory>
+      <outputDirectory>/keys</outputDirectory>
+      <excludes>
+        <exclude>*/**</exclude>
+      </excludes>
+    </fileSet>
+  </fileSets>
+  <files>
+    <file>
+      <source>${project.basedir}/../version</source>
+      <outputDirectory>data</outputDirectory>
+      <filtered>true</filtered>
+    </file>
+  </files>
+</assembly>

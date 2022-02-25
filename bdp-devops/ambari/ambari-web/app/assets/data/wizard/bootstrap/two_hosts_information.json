@@ -1,0 +1,319 @@
+{
+  "href" : "http://ec2-54-226-45-9.compute-1.amazonaws.com:8080/api/v1/hosts?fields=Hosts/total_mem,Hosts/cpu_count,Hosts/disk_info,Hosts/last_agent_env,Hosts/host_name&_=1374246845396",
+  "items" : [
+    {
+      "href" : "http://ec2-54-226-45-9.compute-1.amazonaws.com:8080/api/v1/hosts/ip-10-144-81-35.ec2.internal",
+      "Hosts" : {
+        "cpu_count" : 2,
+        "disk_info" : [
+          {
+            "available" : "3227064",
+            "used" : "2617700",
+            "percent" : "45%",
+            "size" : "5904752",
+            "type" : "ext4",
+            "mountpoint" : "/"
+          },
+          {
+            "available" : "3823132",
+            "used" : "0",
+            "percent" : "0%",
+            "size" : "3823132",
+            "type" : "tmpfs",
+            "mountpoint" : "/dev/shm"
+          },
+          {
+            "available" : "411234588",
+            "used" : "203012",
+            "percent" : "1%",
+            "size" : "433455904",
+            "type" : "ext3",
+            "mountpoint" : "/grid/0"
+          },
+          {
+            "available" : "411234588",
+            "used" : "203012",
+            "percent" : "1%",
+            "size" : "433455904",
+            "type" : "ext3",
+            "mountpoint" : "/grid/1"
+          }
+        ],
+        "host_name" : "ip-10-144-81-35.ec2.internal",
+        "last_agent_env" : {
+          "stackFoldersAndFiles" : [
+            {
+              "name" : "/etc/hadoop",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/etc/hadoop/conf",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/etc/hbase",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/etc/hcatalog",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/etc/hive",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/etc/oozie",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/etc/sqoop",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/etc/ganglia",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/run/hadoop",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/run/zookeeper",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/run/hbase",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/run/templeton",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/run/oozie",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/log/hadoop",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/log/zookeeper",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/log/hbase",
+              "type" : "not_exist"
+            },
+            {
+              "name" : "/var/log/hive",
+              "type" : "not_exist"
+            }
+          ],
+          "rpms" : [
+            {
+              "name" : "ganglia",
+              "installed" : true
+            },
+            {
+              "name" : "hadoop",
+              "installed" : true
+            },
+            {
+              "name" : "hadoop-lzo",
+              "installed" : true
+            },
+            {
+              "name" : "hbase",
+              "installed" : true
+            },
+            {
+              "name" : "oozie",
+              "installed" : true
+            },
+            {
+              "name" : "sqoop",
+              "installed" : true
+            },
+            {
+              "name" : "pig",
+              "installed" : true
+            },
+            {
+              "name" : "zookeeper",
+              "installed" : true
+            },
+            {
+              "name" : "hive",
+              "installed" : true
+            },
+            {
+              "name" : "libconfuse",
+              "installed" : true
+            },
+            {
+              "name" : "ambari-log4j",
+              "installed" : true
+            }
+          ],
+          "alternatives" : [ ],
+          "existingUsers" : [ ],
+          "existingRepos" : [ ],
+          "installedPackages" : [ ],
+          "hostHealth" : {
+            "activeJavaProcs" : [ ],
+            "agentTimeStampAtReporting" : 1374246790510,
+            "serverTimeStampAtReporting" : 1374246790555,
+            "liveServices" : [
+              {
+                "name" : "ntpd",
+                "desc" : "ntpd is stopped\n",
+                "status" : "Healthy"
+              }
+            ],
+            "diskStatus" : [
+              {
+                "available" : "3225780",
+                "used" : "2618984",
+                "percent" : "45%",
+                "size" : "5904752",
+                "type" : "ext4",
+                "mountpoint" : "/"
+              }
+            ]
+          },
+          "reverseLookup": false,
+          "umask" : 18
+        },
+        "total_mem" : 7644119
+      }
+    },
+    {
+      "href" : "http://ec2-54-226-45-9.compute-1.amazonaws.com:8080/api/v1/hosts/ip-10-147-171-151.ec2.internal",
+      "Hosts" : {
+        "cpu_count" : 2,
+        "disk_info" : [
+          {
+            "available" : "3647552",
+            "used" : "2197212",
+            "percent" : "38%",
+            "size" : "5904752",
+            "type" : "ext4",
+            "mountpoint" : "/"
+          },
+          {
+            "available" : "3823132",
+            "used" : "0",
+            "percent" : "0%",
+            "size" : "3823132",
+            "type" : "tmpfs",
+            "mountpoint" : "/dev/shm"
+          },
+          {
+            "available" : "411234588",
+            "used" : "203012",
+            "percent" : "1%",
+            "size" : "433455904",
+            "type" : "ext3",
+            "mountpoint" : "/grid/0"
+          },
+          {
+            "available" : "411234588",
+            "used" : "203012",
+            "percent" : "1%",
+            "size" : "433455904",
+            "type" : "ext3",
+            "mountpoint" : "/grid/1"
+          }
+        ],
+        "host_name" : "ip-10-147-171-151.ec2.internal",
+        "last_agent_env" : {
+          "stackFoldersAndFiles" : [ ],
+          "rpms" : [
+            {
+              "name" : "ganglia",
+              "installed" : false
+            },
+            {
+              "name" : "hadoop",
+              "installed" : false
+            },
+            {
+              "name" : "hadoop-lzo",
+              "installed" : false
+            },
+            {
+              "name" : "hbase",
+              "installed" : false
+            },
+            {
+              "name" : "oozie",
+              "installed" : false
+            },
+            {
+              "name" : "sqoop",
+              "installed" : false
+            },
+            {
+              "name" : "pig",
+              "installed" : false
+            },
+            {
+              "name" : "zookeeper",
+              "installed" : false
+            },
+            {
+              "name" : "hive",
+              "installed" : false
+            },
+            {
+              "name" : "libconfuse",
+              "installed" : false
+            },
+            {
+              "name" : "ambari-log4j",
+              "installed" : false
+            }
+          ],
+          "alternatives" : [ ],
+          "existingUsers" : [ ],
+          "existingRepos" : [ ],
+          "installedPackages" : [ ],
+          "hostHealth" : {
+            "activeJavaProcs" : [
+              {
+                "user" : "root",
+                "pid" : 2283,
+                "command" : "/bin/sh -c /usr/jdk64/jdk1.6.0_31/bin/java -server -XX:NewRatio=2 -XX:+UseConcMarkSweepGC -Xms512m -Xmx2048m -cp /etc/ambari-server/conf:/usr/lib/ambari-server/*:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/usr/lib/ambari-server/* org.apache.ambari.server.controller.AmbariServer >/var/log/ambari-server/ambari-server.out 2>&1",
+                "hadoop" : true
+              }
+            ],
+            "agentTimeStampAtReporting" : 1374246809459,
+            "serverTimeStampAtReporting" : 1374246809848,
+            "liveServices" : [
+              {
+                "name" : "ntpd",
+                "desc" : "ntpd is stopped\n",
+                "status" : "Unhealthy"
+              }
+            ],
+            "diskStatus" : [
+              {
+                "available" : "3646556",
+                "used" : "2198208",
+                "percent" : "38%",
+                "size" : "5904752",
+                "type" : "ext4",
+                "mountpoint" : "/"
+              }
+            ]
+          },
+          "reverseLookup": false,
+          "umask" : 19
+        },
+        "total_mem" : 7644119
+      }
+    }
+  ]
+}

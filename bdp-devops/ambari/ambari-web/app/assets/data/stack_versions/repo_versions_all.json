@@ -1,0 +1,490 @@
+{
+  "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions?fields=*,operatingSystems/*,operatingSystems/repositories/*",
+  "items" : [
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/1",
+      "RepositoryVersions" : {
+        "display_name" : "HDP-2.2",
+        "id" : 1,
+        "repository_version" : "2.2",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : ""
+      },
+      "operating_systems" : [ ]
+    },
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/2",
+      "RepositoryVersions" : {
+        "display_name" : "HDP 2.2.0",
+        "id" : 2,
+        "repository_version" : "2.2.0.1-885",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : "upgrade-2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/2/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "redhat6",
+            "repository_version_id" : 2,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/2/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 2,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/2/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 2,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/3",
+      "RepositoryVersions" : {
+        "display_name" : "HDP 2.2.1",
+        "id" : 3,
+        "repository_version" : "2.2.1.1-885",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : "upgrade-2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/3/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "redhat6",
+            "repository_version_id" : 3,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/3/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 3,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/3/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 3,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/4",
+      "RepositoryVersions" : {
+        "display_name" : "HDP 2.2.2",
+        "id" : 4,
+        "repository_version" : "2.2.2.1-885",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : "upgrade-2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/4/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "redhat6",
+            "repository_version_id" : 4,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/4/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 4,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/4/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 4,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/5",
+      "RepositoryVersions" : {
+        "display_name" : "HDP 2.2.3",
+        "id" : 5,
+        "repository_version" : "2.2.3.1-885",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : "upgrade-2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/5/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "redhat6",
+            "repository_version_id" : 5,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/5/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 5,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/5/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 5,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/6",
+      "RepositoryVersions" : {
+        "display_name" : "HDP 2.2.4",
+        "id" : 6,
+        "repository_version" : "2.2.4.1-885",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : "upgrade-2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/6/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "redhat6",
+            "repository_version_id" : 6,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/6/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 6,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/6/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 6,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/7",
+      "RepositoryVersions" : {
+        "display_name" : "HDP 2.2.5",
+        "id" : 7,
+        "repository_version" : "2.2.5.1-885",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : "upgrade-2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/7/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "redhat6",
+            "repository_version_id" : 7,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/7/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 7,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/7/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 7,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/8",
+      "RepositoryVersions" : {
+        "display_name" : "HDP 2.2.6",
+        "id" : 8,
+        "repository_version" : "2.2.6.1-885",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : "upgrade-2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/8/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "redhat6",
+            "repository_version_id" : 8,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/8/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 8,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/8/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 8,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/9",
+      "RepositoryVersions" : {
+        "display_name" : "HDP 2.2.7",
+        "id" : 9,
+        "repository_version" : "2.2.7.1-885",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "upgrade_pack" : "upgrade-2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/9/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "redhat6",
+            "repository_version_id" : 9,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/9/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 9,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/9/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 9,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/9/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "os_type" : "suse11",
+            "repository_version_id" : 9,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/9/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "repository_version_id" : 9,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            },
+            {
+              "href" : "http://162.216.149.241:8080/api/v1/stacks/HDP/versions/2.2/repository_versions/9/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0",
+                "default_base_url" : "",
+                "latest_base_url" : "",
+                "mirrors_list" : "",
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "repository_version_id" : 9,
+                "stack_name" : "HDP",
+                "stack_version" : "2.2"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

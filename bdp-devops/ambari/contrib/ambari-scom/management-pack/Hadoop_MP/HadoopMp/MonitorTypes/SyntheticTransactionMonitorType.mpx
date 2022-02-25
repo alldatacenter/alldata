@@ -1,0 +1,102 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <MonitorTypes>
+      <UnitMonitorType ID="Ambari.SCOM.SyntheticTransactionMonitorType" Accessibility="Public">
+        <MonitorTypeStates>
+          <MonitorTypeState ID="Healthy" />
+          <MonitorTypeState ID="Error" />
+        </MonitorTypeStates>
+        <Configuration>
+          <xsd:element name="ErrorCode" type="xsd:int" />
+          <xsd:element name="TimeInterval" type="xsd:int" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="TimeInterval" Selector="$Config/TimeInterval$" ParameterType="int" />
+        </OverrideableParameters>
+        <MonitorImplementation>
+          <MemberModules>
+            <DataSource TypeID="Ambari.SCOM.Module.SyntheticTransactionDataSource" ID="DS">
+              <IntervalSeconds>$Config/TimeInterval$</IntervalSeconds>
+              <TimeoutSeconds>300</TimeoutSeconds>
+              <WorkflowName>SyntheticTransactionMonitorType</WorkflowName>
+            </DataSource>
+            <ConditionDetection TypeID="System!System.ExpressionFilter" ID="ErrorFC">
+              <Expression>
+                <SimpleExpression>
+                  <ValueExpression>
+                    <XPathQuery Type="UnsignedInteger">Property[@Name='result']</XPathQuery>
+                  </ValueExpression>
+                  <Operator>Equal</Operator>
+                  <ValueExpression>
+                    <Value Type="UnsignedInteger">$Config/ErrorCode$</Value>
+                  </ValueExpression>
+                </SimpleExpression>
+              </Expression>
+            </ConditionDetection>
+            <ConditionDetection TypeID="System!System.ExpressionFilter" ID="OkFC">
+              <Expression>
+                <SimpleExpression>
+                  <ValueExpression>
+                    <XPathQuery Type="UnsignedInteger">Property[@Name='result']</XPathQuery>
+                  </ValueExpression>
+                  <Operator>NotEqual</Operator>
+                  <ValueExpression>
+                    <Value Type="UnsignedInteger">$Config/ErrorCode$</Value>
+                  </ValueExpression>
+                </SimpleExpression>
+              </Expression>
+            </ConditionDetection>
+          </MemberModules>
+          <RegularDetections>
+            <RegularDetection MonitorTypeStateID="Healthy">
+              <Node ID="OkFC">
+                <Node ID="DS" />
+              </Node>
+            </RegularDetection>
+            <RegularDetection MonitorTypeStateID="Error">
+              <Node ID="ErrorFC">
+                <Node ID="DS" />
+              </Node>
+            </RegularDetection>
+          </RegularDetections>
+        </MonitorImplementation>
+      </UnitMonitorType>
+    </MonitorTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.SyntheticTransactionMonitorType">
+          <Name>Synthetic Transaction two state Monitor Type</Name>
+          <Description>This two-state unit monitor type repeatedly executes synthetic transaction.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.SyntheticTransactionMonitorType" SubElementID="Healthy">
+          <Name>Healthy</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.SyntheticTransactionMonitorType" SubElementID="Error">
+          <Name>Error</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.SyntheticTransactionMonitorType" SubElementID="TimeInterval">
+          <Name>Time Interval (sec)</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

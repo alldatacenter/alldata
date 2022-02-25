@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration supports_final="false" supports_adding_forbidden="true">
+  <property>
+    <name>content</name>
+    <display-name>yarn-log4j template</display-name>
+    <description>Custom log4j.properties</description>
+    <value>
+#Relative to Yarn Log Dir Prefix
+yarn.log.dir=.
+#
+# Job Summary Appender
+#
+# Use following logger to send summary to separate file defined by
+# hadoop.mapreduce.jobsummary.log.file rolled daily:
+# hadoop.mapreduce.jobsummary.logger=INFO,JSA
+#
+hadoop.mapreduce.jobsummary.logger=${hadoop.root.logger}
+hadoop.mapreduce.jobsummary.log.file=hadoop-mapreduce.jobsummary.log
+log4j.appender.JSA=org.apache.log4j.DailyRollingFileAppender
+# Set the ResourceManager summary log filename
+yarn.server.resourcemanager.appsummary.log.file=hadoop-mapreduce.jobsummary.log
+# Set the ResourceManager summary log level and appender
+yarn.server.resourcemanager.appsummary.logger=${hadoop.root.logger}
+#yarn.server.resourcemanager.appsummary.logger=INFO,RMSUMMARY
+
+# To enable AppSummaryLogging for the RM,
+# set yarn.server.resourcemanager.appsummary.logger to
+# LEVEL,RMSUMMARY in hadoop-env.sh
+
+# Appender for ResourceManager Application Summary Log
+# Requires the following properties to be set
+#    - hadoop.log.dir (Hadoop Log directory)
+#    - yarn.server.resourcemanager.appsummary.log.file (resource manager app summary log filename)
+#    - yarn.server.resourcemanager.appsummary.logger (resource manager app summary log level and appender)
+log4j.appender.RMSUMMARY=org.apache.log4j.RollingFileAppender
+log4j.appender.RMSUMMARY.File=${yarn.log.dir}/${yarn.server.resourcemanager.appsummary.log.file}
+log4j.appender.RMSUMMARY.MaxFileSize=256MB
+log4j.appender.RMSUMMARY.MaxBackupIndex=20
+log4j.appender.RMSUMMARY.layout=org.apache.log4j.PatternLayout
+log4j.appender.RMSUMMARY.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n
+log4j.appender.JSA.layout=org.apache.log4j.PatternLayout
+log4j.appender.JSA.layout.ConversionPattern=%d{yy/MM/dd HH:mm:ss} %p %c{2}: %m%n
+log4j.appender.JSA.DatePattern=.yyyy-MM-dd
+log4j.appender.JSA.layout=org.apache.log4j.PatternLayout
+log4j.logger.org.apache.hadoop.yarn.server.resourcemanager.RMAppManager$ApplicationSummary=${yarn.server.resourcemanager.appsummary.logger}
+log4j.additivity.org.apache.hadoop.yarn.server.resourcemanager.RMAppManager$ApplicationSummary=false
+
+# Audit logging for ResourceManager
+rm.audit.logger=${hadoop.root.logger}
+log4j.logger.org.apache.hadoop.yarn.server.resourcemanager.RMAuditLogger=${rm.audit.logger}
+log4j.additivity.org.apache.hadoop.yarn.server.resourcemanager.RMAuditLogger=false
+log4j.appender.RMAUDIT=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.RMAUDIT.File=${yarn.log.dir}/rm-audit.log
+log4j.appender.RMAUDIT.layout=org.apache.log4j.PatternLayout
+log4j.appender.RMAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n
+log4j.appender.RMAUDIT.DatePattern=.yyyy-MM-dd
+
+# Audit logging for NodeManager
+nm.audit.logger=${hadoop.root.logger}
+log4j.logger.org.apache.hadoop.yarn.server.nodemanager.NMAuditLogger=${nm.audit.logger}
+log4j.additivity.org.apache.hadoop.yarn.server.nodemanager.NMAuditLogger=false
+log4j.appender.NMAUDIT=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.NMAUDIT.File=${yarn.log.dir}/nm-audit.log
+log4j.appender.NMAUDIT.layout=org.apache.log4j.PatternLayout
+log4j.appender.NMAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n
+log4j.appender.NMAUDIT.DatePattern=.yyyy-MM-dd
+    </value>
+    <value-attributes>
+      <type>content</type>
+      <show-property-name>false</show-property-name>
+    </value-attributes>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

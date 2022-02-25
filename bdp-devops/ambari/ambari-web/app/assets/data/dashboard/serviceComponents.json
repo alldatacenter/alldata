@@ -1,0 +1,138 @@
+{
+  "href" : "http://ambari/api/clusters/vmc/services?ServiceInfo/service_name!=MISCELLANEOUS&ServiceInfo/service_name!=DASHBOARD&fields=components/ServiceComponentInfo",
+  "items" : [
+    {
+      "href" : "http://ambari/api/clusters/vmc/services/HDFS",
+      "ServiceInfo" : {
+        "cluster_name" : "vmc",
+        "service_name" : "HDFS"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari/api/clusters/vmc/services/HDFS/components/DATANODE",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "vmc",
+            "desired_configs" : "{}",
+            "state" : "STARTED",
+            "component_name" : "DATANODE",
+            "service_name" : "HDFS"
+          }
+        },
+        {
+          "href" : "http://ambari/api/clusters/vmc/services/HDFS/components/SECONDARY_NAMENODE",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "vmc",
+            "desired_configs" : "{}",
+            "state" : "STARTED",
+            "component_name" : "SECONDARY_NAMENODE",
+            "service_name" : "HDFS"
+          }
+        },
+        {
+          "href" : "http://ambari/api/clusters/vmc/services/HDFS/components/NAMENODE",
+          "ServiceComponentInfo" : {
+            "LiveNodes" : "{\"hostname\":{\"usedSpace\":200704,\"lastContact\":2}}",
+            "CapacityUsed" : 200704,
+            "component_name" : "NAMENODE",
+            "state" : "STARTED",
+            "HeapMemoryUsed" : 60622032,
+            "service_name" : "HDFS",
+            "UpgradeFinalized" : true,
+            "HeapMemoryMax" : 1006632960,
+            "cluster_name" : "vmc",
+            "DecomNodes" : "{}",
+            "Safemode" : "",
+            "desired_configs" : "{}",
+            "CapacityTotal" : 52844687359,
+            "StartTime" : 1352767879543,
+            "Version" : "1.1.0.1, r",
+            "DeadNodes" : "{}"
+          }
+        },
+        {
+          "href" : "http://ambari/api/clusters/vmc/services/HDFS/components/HDFS_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "vmc",
+            "desired_configs" : "{}",
+            "state" : "INSTALLED",
+            "component_name" : "HDFS_CLIENT",
+            "service_name" : "HDFS"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://ambari/api/clusters/vmc/services/GANGLIA",
+      "ServiceInfo" : {
+        "cluster_name" : "vmc",
+        "service_name" : "GANGLIA"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari/api/clusters/vmc/services/GANGLIA/components/GANGLIA_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "vmc",
+            "desired_configs" : "{}",
+            "state" : "STARTED",
+            "component_name" : "GANGLIA_SERVER",
+            "service_name" : "GANGLIA"
+          }
+        },
+        {
+          "href" : "http://ambari/api/clusters/vmc/services/GANGLIA/components/GANGLIA_MONITOR",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "vmc",
+            "desired_configs" : "{}",
+            "state" : "STARTED",
+            "component_name" : "GANGLIA_MONITOR",
+            "service_name" : "GANGLIA"
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://ambari/clusters/vmc/services/HBASE",
+      "ServiceInfo" : {
+        "cluster_name" : "vmc",
+        "service_name" : "HBASE"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari/clusters/vmc/services/HBASE/components/HBASE_MASTER",
+          "ServiceComponentInfo" : {
+            "MasterStartTime" : 1350859237269,
+            "cluster_name" : "vmc",
+            "RegionsInTransition" : "[]",
+            "MasterActiveTime" : 1350859237344,
+            "component_name" : "HBASE_MASTER",
+            "state" : "STARTED",
+            "HeapMemoryUsed" : 9864776,
+            "Revision" : "Unknown",
+            "service_name" : "HBASE",
+            "HeapMemoryMax" : 1807613952,
+            "Version" : "0.92.1.14",
+            "AverageLoad" : 1.0
+          }
+        },
+        {
+          "href" : "http://ambari/clusters/vmc/services/HBASE/components/HBASE_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "vmc",
+            "component_name" : "HBASE_CLIENT",
+            "state" : "INSTALLED",
+            "service_name" : "HBASE"
+          }
+        },
+        {
+          "href" : "http://ambari/clusters/vmc/services/HBASE/components/HBASE_REGIONSERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "vmc",
+            "component_name" : "HBASE_REGIONSERVER",
+            "state" : "STARTED",
+            "service_name" : "HBASE"
+          }
+        }
+      ]
+    }
+  ]
+}

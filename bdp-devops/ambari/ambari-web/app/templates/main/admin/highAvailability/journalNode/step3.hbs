@@ -1,0 +1,41 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="manage-journal-node-step3" class="wizard-content col-md-9">
+  <h4 class="step-title">{{t admin.manageJournalNode.wizard.step3.header}}</h4>
+  {{#if view.errorText}}
+    <p class="step-description">
+      {{view.errorText}}
+    </p>
+  {{/if}}
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{#if controller.isHDFSNameSpacesLoaded}}
+        {{{view.step3BodyText}}}
+      {{else}}
+        {{view App.SpinnerView}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    <a {{bindAttr class="controller.isDataLoadedAndNextEnabled::disabled :btn :btn-success :pull-right"}} {{action done target="controller"}}>{{t common.next}} &rarr;</a>
+    <span class="pull-right btn-extra-info">{{view.nnCheckPointText}}</span>
+  </div>
+</div>

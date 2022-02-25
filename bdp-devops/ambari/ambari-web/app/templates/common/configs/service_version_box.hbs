@@ -1,0 +1,62 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div {{bindAttr class=":flow-element :pull-left view.serviceVersion.first:first"}}>
+  <div class="arrow-box pull-left"></div>
+  <div class="version-box">
+    <div {{bindAttr class=":version-info :box :pull-right view.serviceVersion.isDisplayed:displayed view.serviceVersion.isDisabled:grayedOut"}} {{action doAction view.serviceVersion view.actionTypes.SWITCH target="view.parentView"}}>
+      <div class="top-label">
+        <span class="label label-info">{{view.serviceVersion.versionText}}</span>
+        <span class="author pull-right">{{view.serviceVersion.authorFormatted}}</span>
+      </div>
+      <div class="content">{{view.serviceVersion.timeSinceCreated}}</div>
+      <div class="stack-label">{{view.serviceVersion.stackVersion}}</div>
+      {{#if view.serviceVersion.isCurrent}}
+        <div class="current-label">
+          <span class="label label-success label-current glyphicon glyphicon-ok" data-toggle="tooltip" {{translateAttr title="common.current"}}>
+            <i {{bindAttr class=":glyphicon :glyphicon-refresh :restart-required-service view.serviceVersion.isRestartRequired::hidden"}}></i>
+          </span>
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="version-popover">
+      <div class="content">
+        <span class="label label-info">{{view.serviceVersion.versionText}}</span> <span class="pull-right"><strong>{{view.serviceVersion.configGroupName}}</strong></span>
+        <span class="stack">{{view.serviceVersion.stackVersion}}</span>
+        <div class="date"><strong data-toggle="tooltip" {{bindAttr data-original-title="view.serviceVersion.author"}}>{{view.serviceVersion.authorFormatted}}</strong>&nbsp;{{t dashboard.configHistory.info-bar.authoredOn}}&nbsp;<strong>{{view.serviceVersion.createdDate}}</strong></div>
+        <div class="notes">{{view.serviceVersion.fullNotes}}</div>
+      </div>
+      <div class="version-operations-buttons">
+        <button {{bindAttr disabled="view.disabledActionAttr.view" class=":btn :btn-default view.serviceVersion.isDisplayed:not-allowed-cursor" title="view.disabledActionMessages.view"}} {{action doAction view.serviceVersion view.actionTypes.SWITCH target="view.parentView"}}>
+          <i class="glyphicon glyphicon-search"></i>&nbsp;{{t common.view}}
+        </button>
+        {{#havePermissions "SERVICE.COMPARE_CONFIGS"}}
+          <button {{bindAttr disabled="view.disabledActionAttr.compare" class=":btn :btn-default view.serviceVersion.isDisplayed:not-allowed-cursor" title="view.disabledActionMessages.compare"}} {{action doAction view.serviceVersion view.actionTypes.COMPARE target="view.parentView"}}>
+            <i class="glyphicon glyphicon-copy"></i>&nbsp;{{t common.compare}}
+          </button>
+        {{/havePermissions}}
+        {{#havePermissions "SERVICE.MODIFY_CONFIGS"}}
+          <button {{bindAttr disabled="view.disabledActionAttr.revert" class=":btn :btn-default view.serviceVersion.isCurrent:not-allowed-cursor view.serviceVersion.isCompatible::hidden" title="view.disabledActionMessages.revert"}} {{action doAction view.serviceVersion view.actionTypes.REVERT target="view.parentView"}}>
+            {{t dashboard.configHistory.info-bar.revert.button}}
+          </button>
+        {{/havePermissions}}
+      </div>
+    </div>
+  </div>
+</div>

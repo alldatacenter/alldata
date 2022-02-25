@@ -1,0 +1,225 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<td class="status-icons">
+  <span class="health-icon-block">
+    {{#if view.isUpgradeFailed}}
+      {{#isAuthorized "HOST.ADD_DELETE_COMPONENTS"}}
+        <a href="#" rel='componentHealthTooltip'
+          {{bindAttr data-original-title="view.upgradeFailedMessage"}}
+          {{action "upgradeComponent" view.content target="controller"}}>
+          <i class="glyphicon glyphicon-arrow-up"></i>
+        </a>
+      {{/isAuthorized}}
+    {{else}}
+      <i rel='componentHealthTooltip'
+        {{bindAttr class="view.statusClass view.statusIconClass :components-health"
+                   data-original-title="view.componentTextStatus"}}></i>
+    {{/if}}
+  </span>
+  <span class="refresh-icon-block">
+    {{#if component.staleConfigs}}
+      <i class="text-warning glyphicon glyphicon-refresh"></i>
+    {{/if}}
+  </span>
+  <span class="medkit-icon-block">
+    {{#unless component.isActive}}
+      <i class="icon-medkit"></i>
+    {{/unless}}
+  </span>
+</td>
+
+<td class="component-name-block">
+  <span>
+    {{#if component.displayNameAdvanced}}
+      <span rel="componentNameTooltip" {{bindAttr data-original-title="component.displayNameAdvanced"}}>{{component.getDisplayNameAdvanced}}&nbsp;/</span>
+    {{else}}
+      <span rel="componentNameTooltip" {{bindAttr data-original-title="component.displayName"}}>{{component.getDisplayName}}&nbsp;/</span>
+    {{/if}}
+    <span class="hidden-lg"><br/></span>
+    <a href="#" {{action routeToService component.service}} {{bindAttr title="component.service.displayName"}}>
+      {{component.serviceDisplayName}}
+    </a>
+    {{#if component.haNameSpace}}
+      - <span></span>{{component.haNameSpace}}
+    {{/if}}
+  </span>
+</td>
+
+<td class="component-type-block">
+  <span>{{view.typeDisplay}}</span>
+</td>
+
+<td class="align-center">
+  {{#havePermissions "SERVICE.DECOMMISSION_RECOMMISSION"}}
+    <div class="dropdown">
+      <a {{bindAttr class=":dropdown-toggle view.isDisabled:disabled"}} data-toggle="dropdown" href="javascript:void(null)">
+        <i class="glyphicon glyphicon-option-horizontal action-icon"></i>
+      </a>
+      {{#unless isDisabled}}
+
+        {{!-- Actions of Clients --}}
+        {{#if view.content.isClient}}
+          <ul class="dropdown-menu">
+            <li>
+              <a href="javascript:void(null)" data-toggle="modal"
+                {{action "refreshComponentConfigs" view.content target="controller"}}>
+                {{t hosts.host.details.refreshConfigs}}
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(null)" {{bindAttr class="view.isInit::disabled" }}
+                 data-toggle="modal" {{action installClient target="view"}}>
+                {{t common.install}}
+              </a>
+            </li>
+            {{#if view.isInstallFailed}}
+              <li>
+                <a href="javascript:void(null)" {{action installClient target="view"}}>
+                  {{t common.reinstall}}
+                </a>
+              </li>
+            {{/if}}
+            {{#each command in view.clientCustomCommands}}
+              <li>
+                <a href="javascript:void(null)"
+                  {{action "executeCustomCommand" command target="controller" href=true}}>
+                  {{command.label}}
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+
+          {{!-- Actions of Masters and Slaves --}}
+          <ul class="dropdown-menu">
+            {{#if view.isComponentDecommissionAvailable}}
+              {{view view.decommissionView}}
+            {{/if}}
+            {{#if view.isComponentRecommissionAvailable}}
+              {{view view.decommissionView}}
+            {{/if}}
+            {{#if view.isRestartableComponent}}
+              <li {{bindAttr class="view.isRestartComponentDisabled:hidden"}}>
+                <a href="javascript:void(null)" data-toggle="modal" {{action "restartComponent" view.content
+                                                                             target="controller"}}>
+                  {{t common.restart}}
+                </a>
+              </li>
+            {{/if}}
+            {{#unless view.isInstalling}}
+              {{#isAuthorized "SERVICE.START_STOP"}}
+                {{#if view.isStart}}
+                  <li {{bindAttr class="view.isComponentDecommissioning:hidden view.noActionAvailable"}}>
+                    <a href="javascript:void(null)" data-toggle="modal" {{action "stopComponent" view.content
+                                                                                 target="controller"}}>
+                      {{t common.stop}}
+                    </a>
+                  </li>
+                {{/if}}
+                {{#unless view.isStart}}
+                  {{#unless view.isInit}}
+                    <li {{bindAttr
+                      class="view.isUpgradeFailed:hidden view.isInstallFailed:hidden view.isDecommissioning:hidden view.noActionAvailable"}}>
+                      <a href="javascript:void(null)" data-toggle="modal" {{action "startComponent" view.content
+                                                                                   target="controller"}}>
+                        {{t common.start}}
+                      </a>
+                    </li>
+                  {{/unless}}
+                {{/unless}}
+              {{/isAuthorized}}
+              {{#if view.isUpgradeFailed}}
+                <li {{bindAttr class="view.noActionAvailable"}}>
+                  <a href="javascript:void(null)" data-toggle="modal" {{action "upgradeComponent" view.content
+                                                                               target="controller"}}>
+                    {{t common.reUpgrade}}
+                  </a>
+                </li>
+              {{/if}}
+              {{#if view.isInstallFailed}}
+                <li {{bindAttr class="view.noActionAvailable"}}>
+                  <a href="javascript:void(null)" data-toggle="modal" {{action "installComponent" view.content
+                                                                               target="controller"}}>
+                    {{t common.reinstall}}
+                  </a>
+                </li>
+              {{/if}}
+              {{#if view.isReassignable}}
+                {{#isAuthorized "SERVICE.MOVE"}}
+                  <li {{bindAttr class="view.noActionAvailable view.isMoveComponentDisabled:disabled"}}>
+                    <a href="javascript:void(null)" data-toggle="modal" {{action "moveComponent" view.content
+                                                                                 target="controller"}}>
+                      {{t common.move}}
+                    </a>
+                  </li>
+                {{/isAuthorized}}
+              {{/if}}
+              {{#isAuthorized "HOST.TOGGLE_MAINTENANCE"}}
+                <li {{bindAttr class="view.noActionAvailable view.content.isImpliedState:disabled :allow-tooltip"}}
+                  {{bindAttr data-original-title="view.maintenanceTooltip"}} rel="passiveTooltip">
+                  <a href="javascript:void(null)"
+                     data-toggle="modal" {{action "toggleMaintenanceMode" view.content target="controller"}}>
+                    {{#if view.isActive}}
+                      {{t passiveState.turnOn}}
+                    {{else}}
+                      {{t passiveState.turnOff}}
+                    {{/if}}
+                  </a>
+                </li>
+              {{/isAuthorized}}
+            {{/unless}}
+            {{#if view.isInit}}
+              <li>
+                <a href="javascript:void(null)" data-toggle="modal" {{action "installComponent" view.content
+                                                                             target="controller"}}>
+                  {{t common.reinstall}}
+                </a>
+              </li>
+            {{/if}}
+            {{#if view.isDeletableComponent}}
+              {{#isAuthorized "HOST.ADD_DELETE_COMPONENTS"}}
+                <li {{bindAttr class="view.isDeleteComponentDisabled:disabled"}}>
+                  <a href="javascript:void(null)" data-toggle="modal" {{action "deleteComponent" view.content
+                                                                               target="controller"}}>
+                    {{t common.delete}}
+                  </a>
+                </li>
+              {{/isAuthorized}}
+            {{/if}}
+            {{#if view.isRefreshConfigsAllowed}}
+              <li>
+                <a href="javascript:void(null)" data-toggle="modal" {{action "refreshComponentConfigs" view.content
+                                                                             target="controller"}}>
+                  {{t hosts.host.details.refreshConfigs}}
+                </a>
+              </li>
+            {{/if}}
+
+            {{#each command in view.customCommands}}
+              <li {{bindAttr class="command.disabled:disabled"}}>
+                <a href="javascript:void(null)" {{action "executeCustomCommand" command target="controller"
+                                                         href=true}}>{{command.label}}</a>
+              </li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      {{/unless}}
+    </div>
+  {{/havePermissions}}
+</td>

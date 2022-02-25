@@ -1,0 +1,69 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="killnode-manager-dialog" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Kill Node Manager</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left paddingtop7">Kill Nodes</h4>
+            <button type="button" class="btn btn-default pull-right" {{action "addNode"}}>Add</button>
+          </div>
+          <div class="panel-body kill-nodes-list">
+            <ul class="list-group">
+              {{#each killNodes as |killNode index|}}
+                <li class="list-group-item col-xs-12">
+                  <div class="col-xs-12 plr0px">
+                    <label class="control-label col-xs-2">
+                      Name
+                    </label>
+                    <div class="col-xs-10">
+                      {{killNode.name}}
+                      <span class="pull-right">
+                        <i class="fa fa-trash-o" title="Delete" {{action "deleteNode" index}}></i>
+                      </span>
+                      <span class="pull-right paddingright10">
+                        <i class="fa fa-pencil" title="Edit" {{action "editNode" index}}></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 plr0px">
+                    <label class="control-label col-xs-2">
+                      Message
+                    </label>
+                    <div class="col-xs-10">
+                      {{killNode.killMessage}}
+                    </div>
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+
+        {{#if (or addKillNodeMode editMode)}}
+          {{killnode-config killNode=killNode createKillnodeError=createKillnodeError editMode=editMode updateNode="updateNode" createKillNode="createKillNode"}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

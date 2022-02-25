@@ -1,0 +1,35 @@
+{
+  "name": "CapacityScheduler",
+  "description": "Package description",
+  "version": "0.0.1",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.10 || 0.8 || 0.9"
+  },
+  "scripts": {
+    "start": "brunch watch --server"
+  },
+  "dependencies": {
+    "javascript-brunch": "^1.7.1",
+    "css-brunch": "^1.7.0",
+    "uglify-js-brunch": "^1.7.7",
+    "clean-css-brunch": "^1.7.1",
+    "bower": "^1.2.8",
+    "brunch": "^1.7.13",
+    "scaffolt": "^0.4.3",
+    "ember-precompile-brunch": "^0.1.0",
+    "less-brunch": "^1.7.2"
+  },
+  "devDependencies": {},
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

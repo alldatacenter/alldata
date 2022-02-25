@@ -1,0 +1,10 @@
+{
+   "report_name" : "hbase_hlog_report",
+   "report_type" : "standard",
+   "title" : "Avg Time in HLog file split",
+   "vertical_label" : "Milliseconds",
+   "series" : [
+      { "metric": "hbase.master.splitTime_avg_time", "color": "ff0000", "label": "Average Time", 
+        "line_width": "2", "type": "stack" }
+   ]
+}

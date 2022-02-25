@@ -1,0 +1,328 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts?fields=*",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/18",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "AMBARI_AGENT",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 18,
+        "instance" : null,
+        "label" : "Host Disk Usage",
+        "latest_timestamp" : 1415224354954,
+        "maintenance_state" : "OFF",
+        "name" : "ambari_agent_disk_usage",
+        "original_timestamp" : 1414695835400,
+        "scope" : "HOST",
+        "service_name" : "AMBARI",
+        "state" : "OK",
+        "text" : "Capacity Used: [1.26%, 6.6 GB], Capacity Total: [525.3 GB]"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/7",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : null,
+        "host_name" : null,
+        "id" : 7,
+        "instance" : null,
+        "label" : "Percent DataNodes Available",
+        "latest_timestamp" : 1415224362617,
+        "maintenance_state" : "OFF",
+        "name" : "datanode_process_percent",
+        "original_timestamp" : 1414695787466,
+        "scope" : "SERVICE",
+        "service_name" : "HDFS",
+        "state" : "CRITICAL",
+        "text" : "affected: [1], total: [1]"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/16",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : null,
+        "host_name" : null,
+        "id" : 16,
+        "instance" : null,
+        "label" : "Percent DataNodes With Available Space",
+        "latest_timestamp" : 1415224362623,
+        "maintenance_state" : "OFF",
+        "name" : "datanode_storage_percent",
+        "original_timestamp" : 1414695797661,
+        "scope" : "SERVICE",
+        "service_name" : "HDFS",
+        "state" : "UNKNOWN",
+        "text" : "There are alerts with status UNKNOWN."
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/5",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 5,
+        "instance" : null,
+        "label" : "NameNode Web UI",
+        "latest_timestamp" : 1415224354965,
+        "maintenance_state" : "OFF",
+        "name" : "namenode_webui",
+        "original_timestamp" : 1414695756761,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "CRITICAL",
+        "text" : "Connection failed to c6401.ambari.apache.org:50070"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/6",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "DATANODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 6,
+        "instance" : null,
+        "label" : "DateNode Process",
+        "latest_timestamp" : 1415224354964,
+        "maintenance_state" : "OFF",
+        "name" : "datanode_process",
+        "original_timestamp" : 1414695756761,
+        "scope" : "HOST",
+        "service_name" : "HDFS",
+        "state" : "CRITICAL",
+        "text" : "Connection failed: [Errno 111] Connection refused on host 0.0.0.0:50010"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/8",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "SECONDARY_NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 8,
+        "instance" : null,
+        "label" : "Secondary NameNode Process",
+        "latest_timestamp" : 1415224354958,
+        "maintenance_state" : "OFF",
+        "name" : "secondary_namenode_process",
+        "original_timestamp" : 1414695756751,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "CRITICAL",
+        "text" : "Connection failed: [Errno 111] Connection refused on host c6401.ambari.apache.org:50090"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/9",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 9,
+        "instance" : null,
+        "label" : "NameNode Process",
+        "latest_timestamp" : 1415224354966,
+        "maintenance_state" : "OFF",
+        "name" : "namenode_process",
+        "original_timestamp" : 1414695756764,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "CRITICAL",
+        "text" : "Connection failed: [Errno 111] Connection refused on host c6401.ambari.apache.org:50070"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/10",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "DATANODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 10,
+        "instance" : null,
+        "label" : "DataNode Web UI",
+        "latest_timestamp" : 1415224354959,
+        "maintenance_state" : "OFF",
+        "name" : "datanode_webui",
+        "original_timestamp" : 1414695756747,
+        "scope" : "HOST",
+        "service_name" : "HDFS",
+        "state" : "CRITICAL",
+        "text" : "Connection failed to 0.0.0.0:50075"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/11",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 11,
+        "instance" : null,
+        "label" : "NameNode Directory Status",
+        "latest_timestamp" : 1415224354970,
+        "maintenance_state" : "OFF",
+        "name" : "namenode_directory_status",
+        "original_timestamp" : 1414695756773,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "UNKNOWN",
+        "text" : "<urlopen error [Errno 111] Connection refused>"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/12",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 12,
+        "instance" : null,
+        "label" : "NameNode Blocks Health",
+        "latest_timestamp" : 1415224294971,
+        "maintenance_state" : "OFF",
+        "name" : "namenode_hdfs_blocks_health",
+        "original_timestamp" : 1414695696729,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "UNKNOWN",
+        "text" : "<urlopen error [Errno 111] Connection refused>"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/13",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 13,
+        "instance" : null,
+        "label" : "HDFS Capacity Utilization",
+        "latest_timestamp" : 1415224294976,
+        "maintenance_state" : "OFF",
+        "name" : "namenode_hdfs_capacity_utilization",
+        "original_timestamp" : 1414695696730,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "UNKNOWN",
+        "text" : "<urlopen error [Errno 111] Connection refused>"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/14",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "DATANODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 14,
+        "instance" : null,
+        "label" : "DataNode Storage",
+        "latest_timestamp" : 1415224294954,
+        "maintenance_state" : "OFF",
+        "name" : "datanode_storage",
+        "original_timestamp" : 1414695696721,
+        "scope" : "HOST",
+        "service_name" : "HDFS",
+        "state" : "UNKNOWN",
+        "text" : "<urlopen error [Errno 111] Connection refused>"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/15",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 15,
+        "instance" : null,
+        "label" : "NameNode RPC Latency",
+        "latest_timestamp" : 1415224294962,
+        "maintenance_state" : "OFF",
+        "name" : "namenode_rpc_latency",
+        "original_timestamp" : 1414695696724,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "UNKNOWN",
+        "text" : "<urlopen error [Errno 111] Connection refused>"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/17",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 17,
+        "instance" : null,
+        "label" : "NameNode Host CPU Utilization",
+        "latest_timestamp" : 1415224234971,
+        "maintenance_state" : "OFF",
+        "name" : "namenode_cpu",
+        "original_timestamp" : 1414696204578,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "UNKNOWN",
+        "text" : "<urlopen error [Errno 111] Connection refused>"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/19",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "NAMENODE",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 19,
+        "instance" : null,
+        "label" : "NameNode Last Checkpoint",
+        "latest_timestamp" : 1415224354957,
+        "maintenance_state" : "OFF",
+        "name" : "namenode_last_checkpoint",
+        "original_timestamp" : 1414695835395,
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "state" : "UNKNOWN",
+        "text" : "<urlopen error [Errno 111] Connection refused>"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/4",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : null,
+        "host_name" : null,
+        "id" : 4,
+        "instance" : null,
+        "label" : "Percent ZooKeeper Servers Available",
+        "latest_timestamp" : 1415224362631,
+        "maintenance_state" : "OFF",
+        "name" : "zookeeper_server_process_percent",
+        "original_timestamp" : 1414695797691,
+        "scope" : "SERVICE",
+        "service_name" : "ZOOKEEPER",
+        "state" : "CRITICAL",
+        "text" : "affected: [1], total: [1]"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c/alerts/3",
+      "Alert" : {
+        "cluster_name" : "c",
+        "component_name" : "ZOOKEEPER_SERVER",
+        "host_name" : "c6401.ambari.apache.org",
+        "id" : 3,
+        "instance" : null,
+        "label" : "ZooKeeper Server Process",
+        "latest_timestamp" : 1415224354950,
+        "maintenance_state" : "OFF",
+        "name" : "zookeeper_server_process",
+        "original_timestamp" : 1414695756734,
+        "scope" : "ANY",
+        "service_name" : "ZOOKEEPER",
+        "state" : "CRITICAL",
+        "text" : "Connection failed: [Errno 111] Connection refused on host c6401.ambari.apache.org:2181"
+      }
+    }
+  ]
+}

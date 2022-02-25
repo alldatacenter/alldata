@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.apache.ambari</groupId>
+        <artifactId>ambari-project</artifactId>
+        <version>${revision}</version>
+        <relativePath>../ambari-project</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ambari-web</artifactId>
+    <packaging>pom</packaging>
+    <name>Ambari Web</name>
+    <description>Ambari Web</description>
+    <properties>
+        <ambari.dir>${project.parent.parent.basedir}</ambari.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <nodemodules.dir>node_modules</nodemodules.dir> <!-- specify -Dnodemodules.dir option to reduce ambari-web build time by not re-downloading npm modules -->
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>parse-version</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>parse-version</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>regex-property</id>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>ambariVersion</name>
+                            <value>${project.version}</value>
+                            <regex>^([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)(\.|-).*</regex>
+                            <replacement>$1.$2.$3.$4</replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.0.1</version>
+                <executions>
+                    <execution>
+                        <!-- unbinds rpm creation from maven lifecycle -->
+                        <phase>none</phase>
+                        <goals>
+                            <goal>attached-rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <copyright>2012, Apache Software Foundation</copyright>
+                    <group>Development</group>
+                    <description>Maven Recipe: RPM Package.</description>
+                    <mappings/>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <nodeVersion>v4.5.0</nodeVersion>
+                    <yarnVersion>v0.23.2</yarnVersion>
+                    <workingDirectory>${basedir}</workingDirectory>
+                    <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
+                    <!-- setting npm_config_tmp environment variable is a workaround for
+                         https://github.com/Medium/phantomjs/issues/673 -->
+                    <environmentVariables>
+                        <npm_config_tmp>/tmp/npm_config_tmp</npm_config_tmp>
+                    </environmentVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and yarn</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>install-node-and-yarn</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>yarn install</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install --ignore-engines --pure-lockfile</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>clean-rmdir</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${executable.rmdir}</executable>
+                            <workingDirectory>${basedir}</workingDirectory>
+                            <commandlineArgs>${args.rm.clean} public ${nodemodules.dir}</commandlineArgs>
+                            <successCodes>
+                                <successCode>0</successCode>
+                                <successCode>1</successCode>
+                                <successCode>2</successCode>
+                            </successCodes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>clean-mkdir</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${executable.mkdir}</executable>
+                            <workingDirectory>${basedir}</workingDirectory>
+                            <commandlineArgs>${args.mkdir} public</commandlineArgs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>Brunch build</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <workingDirectory>${basedir}</workingDirectory>
+                            <executable>${basedir}/node/${node.executable}</executable>
+                            <arguments>
+                                <argument>node_modules/brunch/bin/brunch</argument>
+                                <argument>build</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>set-ambari-version</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <!-- sets Ambari version to make it accessible from code -->
+                            <executable>${executable.shell}</executable>
+                            <workingDirectory>${basedir}</workingDirectory>
+                            <commandlineArgs>${args.shell} ${basedir}${dirsep}set-ambari-version.${fileextension.shell} ${ambariVersion}</commandlineArgs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>set-default-stack-version</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <!-- sets default stack and version to use for install -->
+                            <executable>${executable.shell}</executable>
+                            <workingDirectory>${basedir}</workingDirectory>
+                            <commandlineArgs>${args.shell} ${basedir}${dirsep}set-default-stack-version.${fileextension.shell} ${defaultStackVersion}</commandlineArgs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>toggle-experimental</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <!-- enables experimental features if enableExperimental is set to true -->
+                            <executable>${executable.shell}</executable>
+                            <workingDirectory>${basedir}</workingDirectory>
+                            <commandlineArgs>${args.shell} ${basedir}${dirsep}toggle-experimental.${fileextension.shell} ${enableExperimental}</commandlineArgs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ambari-web unit tests</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skipTests}</skip>
+                            <executable>${executable.npm}</executable>
+                            <workingDirectory>${basedir}</workingDirectory>
+                            <commandlineArgs>${args.npm} test</commandlineArgs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>gzip ambari-web images</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <apply executable="${executable.gzip}">
+                                    <arg value="-f"/>
+                                    <arg value="-c"/>
+                                    <fileset dir="${basedir}/public/img/">
+                                        <patternset>
+                                            <include name="**/*.png"/>
+                                        </patternset>
+                                    </fileset>
+                                </apply>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.rat</groupId>
+                <artifactId>apache-rat-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>.idea/**</exclude>
+                        <exclude>package.json</exclude>
+                        <exclude>public/**</exclude>
+                        <exclude>public-static/**</exclude>
+                        <exclude>app/assets/**</exclude>
+                        <exclude>api-docs/**</exclude>
+                        <exclude>vendor/**</exclude>
+                        <exclude>node_modules/**</exclude>
+                        <exclude>node/**</exclude>
+                        <exclude>npm-debug.log</exclude>
+                        <exclude>yarn.lock</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.vafer</groupId>
+                <artifactId>jdeb</artifactId>
+                <version>1.0.1</version>
+                <executions>
+                    <execution>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>jdeb</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>true</skip>
+                    <submodules>false</submodules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>win</family>
+                </os>
+            </activation>
+            <properties>
+                <envClassifier>win</envClassifier>
+                <dirsep>\</dirsep>
+                <executable.brunch>cmd</executable.brunch>
+                <executable.gzip>${basedir}\gzip-content.cmd</executable.gzip>
+                <args.brunch>/C brunch</args.brunch>
+                <node.executable>node.exe</node.executable>
+                <executable.mkdir>cmd</executable.mkdir>
+                <args.mkdir>/C mkdir</args.mkdir>
+                <executable.npm>cmd</executable.npm>
+                <args.npm>/C npm</args.npm>
+                <executable.rmdir>cmd</executable.rmdir>
+                <args.rm.clean>/C rmdir /S /Q</args.rm.clean>
+                <executable.shell>cmd</executable.shell>
+                <fileextension.shell>cmd</fileextension.shell>
+                <args.shell>/C</args.shell>
+            </properties>
+        </profile>
+        <profile>
+            <id>linux</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <envClassifier>linux</envClassifier>
+                <dirsep>/</dirsep>
+                <executable.brunch>brunch</executable.brunch>
+                <executable.gzip>${basedir}/gzip-content.sh</executable.gzip>
+                <args.brunch></args.brunch>
+                <node.executable>node</node.executable>
+                <executable.mkdir>mkdir</executable.mkdir>
+                <args.mkdir></args.mkdir>
+                <executable.npm>npm</executable.npm>
+                <args.npm></args.npm>
+                <executable.rmdir>rm</executable.rmdir>
+                <args.rm.clean>-rf</args.rm.clean>
+                <executable.shell>sh</executable.shell>
+                <fileextension.shell>sh</fileextension.shell>
+                <args.shell></args.shell>
+            </properties>
+        </profile>
+        <profile>
+            <id>pluggable-stack-definition</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>copy-pluggable-stack-resources</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- Copy stack specific UI resources -->
+                                    <executable>${executable.shell}</executable>
+                                    <workingDirectory>${basedir}</workingDirectory>
+                                    <commandlineArgs>${args.shell} ${basedir}${dirsep}copy-pluggable-stack-resources.${fileextension.shell} ${stack.distribution}</commandlineArgs>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

@@ -1,0 +1,42 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if collapsingRequired}}
+  <li>
+    <div class="dropdown">
+      <a class="dropdown-toggle" d="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        {{#fa-stack}}
+          {{fa-icon "folder-o" stack=2}}
+          {{fa-icon "caret-down" stack=1}}
+        {{/fa-stack}}
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        {{#each collapsedCrumbs as |crumb|}}
+          <li>{{#link-to 'files' (query-params path=crumb.path) title=crumb.name }}{{fa-icon "folder-o"}} {{shorten-text crumb.name 20}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </li>
+{{/if}}
+{{#each expandedCrumbs as |crumb|}}
+  {{#if crumb.last}}
+    <li class="active"><span title={{crumb.name}}>{{shorten-text crumb.name 20}}</span></li>
+  {{else}}
+    <li>{{#link-to 'files' (query-params path=crumb.path) title=crumb.name }}{{shorten-text crumb.name 20}}{{/link-to}}</li>
+  {{/if}}
+{{/each}}

@@ -1,0 +1,140 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <SchemaTypes>
+      <SchemaType ID="Ambari.SCOM.Presentation.Schema.ChartDataTypes" Accessibility="Internal">
+        <!-- Copy-paste all base schema elements since they cannot be used from Visualization library -->
+        <xs:complexType name="SeriesConfiguration" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sc="http://schemas.microsoft.com/SystemCenter/Common/TypeExtensions">
+          <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="DataKey" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="Id" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="Color" type="xs:anyType" sc:type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/Color" minOccurs="0" maxOccurs="1" />
+            <xs:element name="IsVisible" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+            <xs:element name="TooltipComponentTypeName" type="xs:string" minOccurs="0" maxOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="StackableSeriesConfiguration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <xs:complexContent>
+            <xs:extension base="SeriesConfiguration">
+              <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:element name="StackedSeriesType" type="xs:string" />
+                <xs:element name="Order" type="xs:int" />
+                <xs:element name="StackSize" type="xs:int" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+
+        <xs:complexType name="Series" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sc="http://schemas.microsoft.com/SystemCenter/Common/TypeExtensions">
+          <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="Id" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="Color" type="xs:anyType" sc:type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/Color" minOccurs="0" maxOccurs="1" />
+            <xs:element name="IsVisible" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+            <xs:element name="TooltipComponentTypeName" type="xs:string" minOccurs="0" maxOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="Series2D" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sc="http://schemas.microsoft.com/SystemCenter/Common/TypeExtensions">
+          <xs:complexContent>
+            <xs:extension base="Series">
+              <xs:sequence minOccurs="1" maxOccurs="1">
+                <xs:element name="Data" type="xs:anyType" sc:type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/Point2D" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+
+        <!-- Series that can be stacked -->
+        <xs:complexType name="StackableSeries" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <xs:complexContent>
+            <xs:extension base="Series2D" />
+          </xs:complexContent>
+        </xs:complexType>
+
+        <!-- Series that contains stackable series -->
+        <xs:complexType name="StackedSeries" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sc="http://schemas.microsoft.com/SystemCenter/Common/TypeExtensions">
+          <xs:complexContent>
+            <xs:extension base="Series">
+              <xs:sequence minOccurs="1" maxOccurs="1">
+                <!-- Use Data property because Chart control is hardcoded to use this one as data points for DataToSeriesConverter -->
+                <xs:element name="Data" type="StackableSeries" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+
+        <xs:complexType name="StackedAreaSeries" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <xs:complexContent>
+            <xs:extension base="StackedSeries" />
+          </xs:complexContent>
+        </xs:complexType>
+
+        <!-- Axes -->
+        <xs:complexType name="Axis" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="Title" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="Orientation" type="xs:string" minOccurs="1" maxOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="LinearAxis" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <xs:complexContent>
+            <xs:extension base="Axis">
+              <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:element name="Minimum" type="xs:integer" minOccurs="1" maxOccurs="1" />
+                <xs:element name="Maximum" type="xs:integer" minOccurs="1" maxOccurs="1" />
+                <xs:element name="Interval" type="xs:integer" minOccurs="1" maxOccurs="1" />
+                <xs:element name="AutoCalculate" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+        <xsd:complexType name="ForegroundLinearAxis" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <xs:complexContent>
+            <xs:extension base="LinearAxis" />
+          </xs:complexContent>
+        </xsd:complexType>
+
+        <xs:complexType name="DateTimeAxis" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sc="http://schemas.microsoft.com/SystemCenter/Common/TypeExtensions">
+          <xs:complexContent>
+            <xs:extension base="Axis">
+              <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:element name="Minimum" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                <xs:element name="Maximum" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                <xs:element name="Interval" type="xs:integer" minOccurs="1" maxOccurs="1" />
+                <xs:element name="DateTimeIntervalType" type="xs:anyType" sc:type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/DateTimeIntervalType" minOccurs="1" maxOccurs="1" />
+                <xs:element name="AutoCalculate" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+        <xsd:complexType name="ForegroundDateTimeAxis" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sc="http://schemas.microsoft.com/SystemCenter/Common/TypeExtensions">
+          <xs:complexContent>
+            <xs:extension base="DateTimeAxis">
+              <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:element name="GridLinesHexColor" type="xs:string" minOccurs="0" maxOccurs="1" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xsd:complexType>
+      </SchemaType>
+    </SchemaTypes>
+  </TypeDefinitions>
+</ManagementPackFragment>

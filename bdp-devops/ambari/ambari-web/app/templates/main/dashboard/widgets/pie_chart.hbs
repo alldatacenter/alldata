@@ -1,0 +1,65 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="has-hidden-info">
+  <ul class="list-unstyled">
+    <li class="img-thumbnail row">
+
+      <div class="caption col-md-10">{{view.title}}</div>
+      {{#if view.showActions}}
+        <div class="corner-icon col-md-1">
+          <button class="dropdown-toggle ellipsis-menu button-border" data-toggle="dropdown" href="#"></button>
+          <ul class="dropdown-menu">
+            <li><button type="button" href="#" class="button-border"
+              {{action editWidget target="view"}}>
+              <i class="icon-pencil"></i>&nbsp;{{t common.edit}}</button>
+            </li>
+            <li><button type="button" href="#" class="button-border"
+              {{action deleteWidget target="view"}}>
+              <i class="icon-trash"></i>&nbsp;{{t common.delete}}</button>
+            </li>
+          </ul>
+        </div>
+      {{/if}}
+      {{#if view.isDataLoaded}}
+        <div {{bindAttr class=":hidden-info-general view.hiddenInfoClass" }}>
+          <table align="center">
+            {{#each line in view.hiddenInfo}}
+              <tr>
+                <td>{{line}}</td>
+              </tr>
+            {{/each}}
+          </table>
+        </div>
+
+        {{#if view.isPieExist}}
+          <div class="widget-content">
+            {{view view.content
+                modelBinding="view.model"
+                thresholdMinBinding="view.thresholdMin"
+                thresholdMaxBinding="view.thresholdMax"}}
+          </div>
+        {{else}}
+          <div class="widget-content-isNA">{{t services.service.summary.notAvailable}}</div>
+        {{/if}}
+      {{else}}
+        {{view App.SpinnerView}}
+      {{/if}}
+    </li>
+  </ul>
+</div>

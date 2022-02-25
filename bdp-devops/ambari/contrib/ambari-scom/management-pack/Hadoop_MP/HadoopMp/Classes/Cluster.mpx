@@ -1,0 +1,94 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="Ambari.SCOM.ClusterSeed" Accessibility="Public" Base="Ambari.SCOM.AmbariManagedEntity" Hosted="false" Abstract="false" Singleton="false">
+          <Property ID="TemplateName" Type="string" Key="true" />
+          <Property ID="ClusterName" Type="string" Key="true" />
+        </ClassType>
+
+        <ClassType ID="Ambari.SCOM.Cluster.Private" Accessibility="Public" Base="Ambari.SCOM.AmbariEntity" Hosted="false" Abstract="false" Singleton="false">
+          <Property ID="TemplateName" Type="string" Key="true" />
+          <Property ID="ClusterName" Type="string" Key="true" />
+        </ClassType>
+        
+        <ClassType ID="Ambari.SCOM.Cluster" Accessibility="Public" Base="Ambari.SCOM.AmbariEntity" Hosted="true" Abstract="false" Singleton="false" />
+      </ClassTypes>
+
+      <RelationshipTypes>
+        <RelationshipType ID="Ambari.SCOM.PrivateClusterHostsCluster"
+                          Base="System!System.Hosting" Accessibility="Public">
+          <Source ID="PrivateCluster" Type="Ambari.SCOM.Cluster.Private" />
+          <Target ID="Cluster" Type="Ambari.SCOM.Cluster" />
+        </RelationshipType>
+      </RelationshipTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="Ambari.SCOM.Cluster" ImageID="Ambari.SCOM.Resources.Images.Cluster16Icon" />
+      <ImageReference ElementID="Ambari.SCOM.Cluster" ImageID="Ambari.SCOM.Resources.Images.ClusterDiagramIcon" />
+    </ImageReferences>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.ClusterSeed">
+          <Name>Hadoop Cluster Seed</Name>
+          <Description>This class indicates discovered Hadoop Cluster.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.ClusterSeed" SubElementID="TemplateName">
+          <Name>Template Name</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.ClusterSeed" SubElementID="ClusterName">
+          <Name>Cluster Name</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.Cluster.Private">
+          <Name>Hadoop Cluster (Private Entity)</Name>
+          <Description>This class contains private properties of Hadoop Cluster.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Cluster.Private" SubElementID="TemplateName">
+          <Name>Template Name</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Cluster.Private" SubElementID="ClusterName">
+          <Name>Cluster Name</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.Cluster">
+          <Name>Hadoop Cluster</Name>
+          <Description>This class represents Hadoop Cluster.</Description>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.PrivateClusterHostsCluster">
+          <Name>Hadoop Cluster (Private Entity) Hosts Hadoop Cluster</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+
+  <!--
+  <Resources>
+    <Image ID="Ambari.SCOM.Cluster.16x16Image" Accessibility="Public" FileName="Cluster-16.png" />
+    <Image ID="Ambari.SCOM.Cluster.80x80Image" Accessibility="Public" FileName="Cluster-80.png" />
+  </Resources>
+  -->
+</ManagementPackFragment>

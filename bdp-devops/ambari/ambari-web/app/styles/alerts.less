@@ -1,0 +1,652 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@import 'common.less';
+
+.label.alert-state-OK {
+  background-color: @health-status-green;
+}
+
+.label.alert-state-WARNING {
+  background-color: @health-status-orange;
+}
+
+.label.alert-state-CRITICAL {
+  background-color: @health-status-red;
+}
+
+.label.alert-state-DISABLED {
+  color: #000;
+}
+
+.label.alert-state-UNKNOWN {
+  background-color: @health-status-yellow;
+}
+
+.label.alert-state-PENDING {
+  background-color: #999;
+}
+
+.nav-pills {
+  .status-icon {
+    font-size: 8px;
+    line-height: 1.7em;
+    margin-left: -15px;
+    margin-right: 3px;
+  }
+  .stopped {
+    color: @health-status-red;
+  }
+  .started {
+    color: @health-status-green;
+  }
+}
+
+.alert-state-single-host {
+  display: inline-block;
+  width: 115px;
+  text-align: center;
+  line-height: 20px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.groups-filter {
+  .ui-icon-circle-close {
+    display: none;
+  }
+}
+
+.alert-definition-enable {
+  color: @health-status-green;
+}
+
+.alert-definition-disable {
+  color: gray;
+}
+
+.alerts-table {
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .filter-input-width {
+    width: ~"calc(100% - 20px)";
+  }
+}
+
+.alert-definition-review {
+  height: 400px;
+  overflow: scroll;
+}
+
+#alert-definitions-table {
+  tbody {
+    a {
+      &.disabled {
+        color: #000;
+      }
+    }
+  }
+
+  > thead > tr > th,  > thead > tr > td,
+  > tbody > tr > th,  > tbody > tr > td,
+  > tfoot > tr > th,  > tfoot > tr > td {
+    vertical-align: middle;
+  }
+
+  a.ui-icon-circle-close {
+    visibility: hidden;
+  }
+
+  .filter-input-width {
+    width: ~"calc(100% - 20px)";
+  }
+
+  .col0,
+  td:first-child,
+  th:first-child {
+    width: 15%;
+
+  }
+
+  .col1,
+  td:first-child + td,
+  th:first-child + th {
+    width: 35%;
+  }
+
+  .col2,
+  td:first-child + td + td,
+  th:first-child + th + th {
+    width: 20%;
+  }
+  .col3,
+  td:first-child + td + td + td,
+  th:first-child + th + th + th {
+    width: 15%;
+  }
+
+  .col4,
+  td:first-child + td + td + td + td,
+  th:first-child + th + th + th + th {
+    width: 15%;
+  }
+
+  .col5,
+  td:first-child + td + td + td + td + td,
+  th:first-child + th + th + th + th + th {
+    width: 10%;
+  }
+
+  .type-icon {
+    margin-right: 5px;
+    width: 10px;
+    display: inline-block;
+  }
+}
+
+#alert-instances-table {
+  > thead > tr > th,  > thead > tr > td,
+  > tbody > tr > th,  > tbody > tr > td,
+  > tfoot > tr > th,  > tfoot > tr > td,
+  .timeago {
+    vertical-align: middle;
+  }
+
+  .col0,
+  td:first-child,
+  th:first-child {
+    width: 13%;
+  }
+
+  .col1,
+  td:first-child + td,
+  th:first-child + th {
+    width: 20%;
+  }
+
+  .col2,
+  td:first-child + td + td,
+  th:first-child + th + th {
+    width: 20%;
+  }
+
+  .col3,
+  td:first-child + td + td + td,
+  th:first-child + th + th + th {
+    width: 7%;
+  }
+
+  .col4,
+  td:first-child + td + td + td + td,
+  th:first-child + th + th + th + th {
+    width: 40%;
+  }
+
+  .alert-text {
+    .ellipsis-overflow-nowrap;
+    float: left;
+    width: 100%;
+  }
+
+  .filter-row {
+    input, select {
+      width: ~"calc(100% - 20px)";
+    }
+  }
+}
+
+#alert-definition-details {
+  .alert-definition-details-header {
+    margin-bottom: 30px;
+  }
+
+  .status {
+    .label {
+      font-size: 14px;
+      padding: 5px 8px;
+    }
+  }
+
+  .right-column {
+    button {
+      margin-top: 10px;
+      width: 100%;
+    }
+    .properties-list {
+      .property-name {
+        font-weight: bold;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+      }
+    }
+  }
+  .definition-name, .definition-name input {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .error-msg {
+      color: #b94a48;
+  }
+}
+
+.alert-configs {
+
+  textarea {
+    resize: vertical;
+  }
+
+  .alert-label {
+    line-height: 26px;
+    width: 100%;
+    font-size: 85%;
+  }
+
+  // ":last-child" used in the Bootstrap affects "script"-tag created by Handlebars and not ".input-group-addon"
+  // ":last-of-type" should be used instead
+  .input-group-addon:last-of-type {
+    border-left: 0 !important;
+    border-radius: 0 4px 4px 0;
+  }
+
+}
+
+#host-alerts-table {
+  tbody {
+    a {
+      &.disabled {
+        color: #000;
+      }
+    }
+  }
+
+  .col0,
+  td:first-child,
+  th:first-child {
+    width: 15%;
+  }
+
+  .col1,
+  td:first-child + td,
+  th:first-child + th {
+    width: 30%;
+    .filter-input-width {
+      width: 90%;
+    }
+  }
+
+  .col2,
+  td:first-child + td + td,
+  th:first-child + th + th {
+    width: 20%;
+  }
+  .col3,
+  td:first-child + td + td + td,
+  th:first-child + th + th + th {
+    width: 35%;
+  }
+
+  .alert-text {
+    .ellipsis-overflow-nowrap;
+    float: left;
+    width: 100%;
+  }
+}
+
+#manage-alert-notification-content {
+  .notification-info .global-info .global-checkbox {
+    margin: 0;
+  }
+  .input-label {
+    font-weight: bold;
+  }
+}
+
+#manage-alert-notifications-error {
+  margin-bottom: 20px
+}
+
+.notification-description {
+  .input-value {
+    white-space: pre;
+  }
+}
+
+#create-edit-alert-notification {
+  .form-horizontal {
+    .control-label {
+      font-weight: bold;
+    }
+    .error-msg {
+      color: #b94a48;
+    }
+  }
+  label {
+    width: 115px;
+    &.checkbox {
+      width: inherit;
+    }
+  }
+
+  .glyphicon-minus-sign {
+    color: #FF4B4B;
+  }
+
+  .add-custom-property {
+    margin-left: 140px;
+  }
+
+  a {
+    &.disabled {
+      cursor: default;
+      color: gray;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
+.service-block .summary-box-header {
+  .glyphicon {
+    color: #999999;
+    cursor: pointer;
+    font-size: 16px;
+    top: 3px;
+    left: 4px;
+  }
+}
+
+.alerts-block {
+  margin-right: 6px;
+}
+
+
+.alerts-crit-count, .alerts-warn-count, .alerts-none-count {
+  cursor: pointer;
+}
+
+.label.alerts-crit-count {
+  background: @health-status-red;
+}
+.label.alerts-warn-count {
+  background: @health-status-orange;
+}
+.label.alerts-none-count {
+  background: @top-nav-ops-count-bg-color;
+}
+
+#summary-alerts-popup {
+  .alert-list-wrap {
+    padding: 10px 5px 5px;
+    .status-icon {
+      padding-right: 5px;
+      min-width: 20px;
+    }
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+.service-alerts-popup {
+  .modal {
+    .modal-dialog{
+      width: 800px;
+      .modal-content {
+        height: 500px;
+        .modal-body {
+          padding-left: 0;
+          padding-right: 0;
+          height: 75%;
+          font-size: 14px;
+          .definition-latest-text, .timeago {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*****start styles for manage alerts popup*****/
+.manage-alert-group-popup {
+  .group-select {
+    width: 100%;
+    height: 250px;
+  }
+  .btn-toolbar {
+    margin-top: 0;
+  }
+  .manage-configuration-group-content {
+    margin-bottom: 0;
+  }
+  .notification-editable-list {
+    .title {
+      font-weight: bold;
+    }
+  }
+  a {
+    i {
+      cursor: inherit;
+    }
+  }
+}
+
+.forty-percent-width-modal {
+  .modal {
+    .definition-latest-text {
+      overflow-x: auto;
+      text-overflow: inherit;
+      white-space: normal;
+    }
+  }
+}
+
+.sixty-percent-width-modal {
+  .definition-latest-text {
+    overflow-x: auto;
+    text-overflow: inherit;
+    white-space: normal;
+  }
+}
+
+/*****end styles for manage alerts popup*****/
+
+/*****start styles for alerts popup*****/
+.alerts-popup {
+  .modal-body, .modal-footer, .modal-header {
+    min-width: 600px;
+  }
+}
+
+.service-alerts {
+  max-height: 246px;
+}
+
+.instance-text {
+  .ellipsis-overflow-nowrap;
+  font-size: 0.8em;
+  width: 95%;
+}
+
+.definition-latest-text {
+  .ellipsis-overflow-nowrap;
+  font-size: 0.8em;
+  width: 95%;
+}
+
+.service-params-popup {
+  .modal {
+    .modal-dialog {
+      width: 55%;
+      .modal-content {
+        height: 60%;
+        .modal-body {
+          padding-left: 0;
+          padding-right: 0;
+          height: 75%;
+          font-size: 14px;
+          .definition-latest-text, .timeago {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.alerts-popup-wrap {
+  #alert-info {
+    overflow: auto;
+    max-height: 340px;
+    .alert-list-wrap {
+      padding: 10px 5px;
+    }
+    .trim_hostname {
+      .ellipsis-overflow;
+      display: block;
+    }
+  }
+}
+/*****end styles for alert popup*****/
+.enable-disable-button::before {
+  font-family: FontAwesome;
+  content: "\f011";
+}
+
+.alert-definition-filter-list {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.alert-groups-dropdown {
+  overflow: auto;
+  max-height: 416px;
+}
+
+#alert-actions-button {
+  margin-right: 10px;
+}
+
+.alerts {
+  margin: 0;
+  overflow-y: auto;
+  li {
+    border-bottom: 1px solid #eee;
+    list-style: none;
+    padding: 5px;
+    background-position: 14px 9px;
+    background-repeat: no-repeat;
+    .date-time {
+      float: right;
+    }
+    p {
+      margin-bottom: 2px;
+    }
+    .container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .title {
+      font-weight: normal;
+      font-size: 13px;
+    }
+    .status-icon {
+      padding-top: 7px;
+    }
+    .date-time {
+      color: #999;
+      font-style: italic;
+      font-size: small;
+      text-align: right;
+    }
+    .message {
+      font-size: 12px;
+      color: #777;
+    }
+    .serviceLink {
+      padding-left: 7px;
+    }
+  }
+  .alert {
+    margin: 7px;
+  }
+}
+
+/***** Start styles for alert create wizard *****/
+#create-alert-wizard-step1 {
+  .alert-types-container {
+    padding: 10px 15px;
+    .alert-type {
+      height: 150px;
+      width: 32%;
+      margin: 0px 5px 10px 5px;
+      padding: 10px;
+      background: white;
+    }
+    .alert-type:hover {
+      cursor: pointer;
+    }
+    .icon {
+      .glyphicon {
+        font-size: 35px;
+        line-height: 3.5;
+      }
+    }
+    .icon.PORT {
+      color: #F6D955;
+    }
+    .icon.WEB {
+      color: #9ADCD4;
+    }
+    .icon.METRIC {
+      color: #F69F79;
+    }
+    .icon.SCRIPT {
+      color: #F2C2AA;
+    }
+    .icon.AGGREGATE {
+      color: #8AD4C7;
+    }
+    .icon.RAW {
+      color: #C9A6B2;
+    }
+    .label-description {
+      padding-top: 10px;
+      .label-text {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        .ellipsis-overflow-nowrap;
+      }
+      .description-text {
+        font-size: 12px;
+        .ellipsis-overflow;
+      }
+    }
+  }
+}
+
+/***** End styles for alert create wizard *****/
+

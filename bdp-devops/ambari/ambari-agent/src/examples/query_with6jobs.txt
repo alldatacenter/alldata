@@ -1,0 +1,35 @@
+SELECT 
+   i_item_id,
+   s_state, 
+   avg(ss_quantity) agg1,
+   avg(ss_list_price) agg2,
+   avg(ss_coupon_amt) agg3,
+   avg(ss_sales_price) agg4
+FROM
+   (SELECT i_item_id, s_state, ss_quantity, ss_list_price, ss_coupon_amt, ss_sales_price
+   FROM item
+   JOIN
+      (SELECT  s_state, ss_quantity, ss_list_price, ss_coupon_amt, ss_sales_price, ss_item_sk
+      FROM customer_demographics
+      JOIN
+         (SELECT  s_state, ss_quantity, ss_list_price, ss_coupon_amt, ss_sales_price, ss_item_sk, ss_cdemo_sk
+         FROM store
+         JOIN
+            (SELECT  ss_quantity, ss_list_price, ss_coupon_amt, ss_sales_price, ss_item_sk, ss_cdemo_sk, ss_store_sk
+             FROM date_dim
+             JOIN store_sales  ON (store_sales.ss_sold_date_sk = date_dim.d_date_sk) WHERE d_year = 2002) a
+         ON (a.ss_store_sk = store.s_store_sk)
+         WHERE s_state in ('TN', 'SD')) b
+      ON (b.ss_cdemo_sk = customer_demographics.cd_demo_sk)
+      WHERE
+         cd_gender = 'M' and
+         cd_marital_status = 'S' and
+         cd_education_status = 'College') c
+   ON (c.ss_item_sk = item.i_item_sk)) d
+GROUP BY
+   i_item_id,
+   s_state
+ORDER BY
+   i_item_id,
+   s_state
+LIMIT 100;

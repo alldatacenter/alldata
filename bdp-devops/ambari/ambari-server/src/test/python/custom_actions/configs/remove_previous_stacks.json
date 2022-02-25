@@ -1,0 +1,90 @@
+{
+  "configurationAttributes": {},
+  "roleCommand": "ACTIONEXECUTE",
+  "clusterName": "cc",
+  "hostname": "0b3.vm",
+  "passiveInfo": [],
+  "hostLevelParams": {
+    "agent_stack_retry_count": "5",
+    "agent_stack_retry_on_unavailability": "false",
+    "jdk_location": "http://0b3.vm:8080/resources",
+    "ambari_db_rca_password": "mapred",
+    "java_home": "/usr/jdk64/jdk1.7.0_67",
+    "java_version": "8",
+    "ambari_db_rca_url": "jdbc:postgresql://0b3.vm/ambarirca",
+    "jce_name": "UnlimitedJCEPolicyJDK7.zip",
+    "oracle_jdbc_url": "http://0b3.vm:8080/resources/ojdbc6.jar",
+    "stack_version": "2.1",
+    "stack_name": "HDP",
+    "db_name": "ambari",
+    "ambari_db_rca_driver": "org.postgresql.Driver",
+    "jdk_name": "jdk-7u67-linux-x64.tar.gz",
+    "ambari_db_rca_username": "mapred",
+    "db_driver_filename": "mysql-connector-java.jar",
+    "mysql_jdbc_url": "http://0b3.vm:8080/resources/mysql-connector-java.jar"
+  },
+  "commandType": "SYSTEM",
+  "serviceName": "null",
+  "role": "remove_previous_stacks",
+  "forceRefreshConfigTags": [],
+  "taskId": 61,
+  "public_hostname": "0b3.vm",
+  "configurations": {
+    "cluster-env": {
+      "repo_suse_rhel_template": "[{{repo_id}}]\nname={{repo_id}}\n{% if mirror_list %}mirrorlist={{mirror_list}}{% else %}baseurl={{base_url}}{% endif %}\n\npath=/\nenabled=1\ngpgcheck=0",
+      "repo_ubuntu_template": "{{package_type}} {{base_url}} {{components}}"
+    }
+  },
+  "commandParams": {
+    "command_timeout": "60",
+    "script_type": "PYTHON",
+    "repository_version": "2.2.0.1-885",
+    "script": "remove_previous_stacks.py",
+    "version": "2.2.0.1-885"
+  },
+  "commandId": "14-1",
+  "clusterHostInfo": {
+    "snamenode_host": [
+      "0b3.vm"
+    ],
+    "nm_hosts": [
+      "0b3.vm"
+    ],
+    "app_timeline_server_hosts": [
+      "0b3.vm"
+    ],
+    "all_ping_ports": [
+      "8670"
+    ],
+    "resourcemanager_hosts": [
+      "0b3.vm"
+    ],
+    "all_hosts": [
+      "0b3.vm"
+    ],
+    "slave_hosts": [
+      "0b3.vm"
+    ],
+    "namenode_host": [
+      "0b3.vm"
+    ],
+    "ambari_server_host": [
+      "0b3.vm"
+    ],
+    "zookeeper_server_hosts": [
+      "0b3.vm"
+    ],
+    "hs_host": [
+      "0b3.vm"
+    ]
+  },
+  "configurations": {
+    "cluster-env": {
+      "repo_suse_rhel_template": "[{{repo_id}}]\nname={{repo_id}}\n{% if mirror_list %}mirrorlist={{mirror_list}}{% else %}baseurl={{base_url}}{% endif %}\n\npath=/\nenabled=1\ngpgcheck=0",
+      "repo_ubuntu_template": "{{package_type}} {{base_url}} {{components}}"
+    },
+    "core-site": {
+      "io.compression.codecs": "com.hadoop.compression.lzo"
+    }
+  }
+}

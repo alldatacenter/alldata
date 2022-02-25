@@ -1,0 +1,394 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="ParameterType">
+    <xs:annotation>
+      <xs:documentation>Defines a configuration parameter that is used to when creating a view instance.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="xs:string" name="name" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The name of the configuration parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="description" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The description of the configuration parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="label" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The label for the configuration parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="placeholder" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The placeholder for the configuration parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="default-value" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The default value of the configuration parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="cluster-config" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The cluster configuration id.  The presence of this element indicates that the property value may be obtained through a cluster association.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:boolean" name="required" minOccurs="0" maxOccurs="1" default="false">
+        <xs:annotation>
+          <xs:documentation>If true, the configuration parameter is required in order to create a view instance.  The default is false (not required).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:boolean" name="masked" minOccurs="0" maxOccurs="1" default="false">
+        <xs:annotation>
+          <xs:documentation>Indicated this parameter value is to be "masked" in the Ambari Web UI (i.e. not shown in the clear). Omitting this element default to not-masked. Otherwise, if true, the parameter value will be "masked" in the Web UI.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ResourceType">
+    <xs:annotation>
+      <xs:documentation>Defines a resource that is exposed by the view.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="xs:string" name="name" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The name of the resource. This will be the resource endpoint name of the view instance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="plural-name" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The plural name of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="id-property" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The name of the resource-class attribute which uniquely identifies this resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="resource-class" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The JavaBean resource class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="provider-class" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The Ambari ResourceProvider implementation class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="service-class" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The JAX-RS annotated resource service class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="sub-resource-name" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The sub-resource name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PermissionType">
+    <xs:annotation>
+      <xs:documentation>Defines a custom permission for the view.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="xs:string" name="name" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The unique custom permission name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="description" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The description of the custom view permission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PersistenceEntityType">
+    <xs:annotation>
+      <xs:documentation>Defines a persistence entity used by the view.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="xs:string" name="class" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The class name of the persistence entity JavaBean.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="id-property" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The name of the entity class attribute which uniquely identifies this entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PersistenceType">
+    <xs:annotation>
+      <xs:documentation>Defines the persistence entities used by the view.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="PersistenceEntityType" name="entity" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Defines a persistence entity used by the view.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="InstancePropertyType">
+    <xs:annotation>
+      <xs:documentation>Defines a property value for a static instance of the view.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="xs:string" name="key" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The configuration parameter name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="value" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The configuration parameter value.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="InstanceType">
+    <xs:annotation>
+      <xs:documentation>Defines a static instance of the view.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="xs:string" name="name" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The unique name of the view instance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="label" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The display label of the view instance. If not set, the view definition label is used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="description" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The description of the view instance. If not set, the view definition description is used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="icon64" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Overrides the view icon64 for this specific view instance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="icon" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Overrides the view icon for this specific view instance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:boolean" name="visible" minOccurs="0" maxOccurs="1" default="true">
+        <xs:annotation>
+          <xs:documentation>If true, for the view instance to show up in the users view instance list.  The default value is true.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="InstancePropertyType" name="property" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Specifies configuration parameters values for the view instance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ServiceType">
+    <xs:annotation>
+      <xs:documentation>Defines a persistence entity used by the view.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="xs:string" name="service" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The name of a service required to auto create an instance of this view.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AutoInstanceType">
+    <xs:complexContent>
+      <xs:extension base="InstanceType">
+        <xs:sequence>
+          <xs:element name="stack-id" type="xs:string" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>The stack id required to auto create an instance of this view.  The wildcard character '*' is supported (e.g. 'HDP-2.*').</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element type="ServiceType" name="services" minOccurs="1"  maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>The services required to auto create an instance of this view.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PathType">
+    <xs:annotation>
+      <xs:documentation>Defines a single classpath.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="xs:string" name="path" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The path of a filename or URL pointing to a directory or jar file. A directory path should end with '/'.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="view">
+    <xs:annotation>
+      <xs:documentation>Defines a view.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="name" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The unique name of the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="label" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The display label of the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="version" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The version of the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="build" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The build number of the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="data-version" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The data version. Used for data migrations.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="min-ambari-version" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The minimum version of Ambari server required to run this view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="max-ambari-version" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The maximum version of Ambari server that can run this view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="description" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The description of the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="icon64" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The 64x64 icon to display for this view. If this property is not set, the 32x32 sized icon
+              will be used.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="icon" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The 32x32 icon to display for this view. Suggested size is 32x32 and will be displayed as
+              8x8 and 16x16 as necessary. If this property is not set, a default view framework icon is used.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:boolean" name="system" minOccurs="0" maxOccurs="1" default="false">
+          <xs:annotation>
+            <xs:documentation>Indicates whether or not this is a system view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="PathType" name="classpath" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Extra class path entries for this view. A directory path should end with '/'.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="view-class" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The View class to receive framework events.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="validator-class" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The Validator class to validate view instances and properties.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="masker-class" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The Masker class for masking view parameters.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="cluster-config-options" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Enable views to display cluster options in case of no cluster config properties.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="data-migrator-class" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>The data migration class.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="ParameterType" name="parameter" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Defines a configuration parameter that is used to when creating a view instance.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="ResourceType" name="resource" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Defines a resource that is exposed by the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="PermissionType" name="permission" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Defines a custom permission for the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="PersistenceType" name="persistence" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Defines the persistence entities used by the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="AutoInstanceType" name="auto-instance" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Defines an auto create instance of the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="InstanceType" name="instance" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Defines a static instance of the view.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

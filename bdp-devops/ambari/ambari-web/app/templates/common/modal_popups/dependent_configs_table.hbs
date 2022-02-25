@@ -1,0 +1,79 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+{{#unless view.hideMessage}}
+  <h4>{{view.title}}</h4>
+  <div class="alert alert-warning">{{{view.message}}}</div>
+{{/unless}}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      {{#if view.isEditable}}
+        <th class="check-box-col">{{view view.parentView.toggleAll}}<label {{bindAttr for="view.parentView.toggleAllId"}}></label></th>
+      {{/if}}
+      <th>{{t common.property}}</th>
+      <th>{{t common.service}}</th>
+      <th>{{t common.configGroup}}</th>
+      <th>{{t common.fileName}}</th>
+      <th>
+        <div class="config-dependencies-headings-wrapper">
+          <div class="config-dependencies-heading">
+            {{t popup.dependent.configs.table.originalValue}}
+          </div>
+          <div class="config-dependencies-heading">
+            {{#if view.isEditable}}
+              {{t popup.dependent.configs.table.recommendedValue}}
+            {{else}}
+              {{t popup.dependent.configs.table.newValue}}
+            {{/if}}
+          </div>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each recommendation in view.recommendations}}
+    <tr {{bindAttr class="recommendation.saveRecommended:active"}}>
+      {{#if view.isEditable}}
+        <td class="check-box-col">{{view App.CheckboxView checkedBinding="recommendation.saveRecommended"}}</td>
+      {{/if}}
+      <td class="config-dependency-name" {{bindAttr data-original-title="recommendation.propertyTitle" data-content="recommendation.propertyDescription"}}>
+        {{#if view.isClickable}}
+          <a href="#" {{action "showConfigProperty" recommendation target="controller"}}>{{recommendation.propertyName}}</a>
+        {{else}}
+          {{recommendation.propertyName}}
+        {{/if}}
+      </td>
+      <td class="config-dependency-service">{{recommendation.serviceDisplayName}}</td>
+      <td class="config-dependency-group">
+          <span {{bindAttr class="recommendation.allowChangeGroup::not-active-link"}} >
+            <a href="javascript:void(null);" class="black"
+              {{action showSelectGroupPopup recommendation.serviceName target="App.router.mainServiceInfoConfigsController"}}>
+              {{recommendation.configGroup}}
+            </a>
+          </span>
+      </td>
+      <td class="config-dependency-filename">{{recommendation.propertyFileName}}</td>
+      <td>
+        <div>
+          {{view App.ConfigDiffView configBinding="recommendation"}}
+        </div>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

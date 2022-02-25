@@ -1,0 +1,191 @@
+{
+  "items": [
+    {
+      "href": "/api/v1/hosts/c7401.ambari.apache.org",
+      "Hosts": {
+        "last_heartbeat_time": 1530037263012,
+        "recovery_summary": "DISABLED",
+        "host_health_report": "",
+        "disk_info": [
+          {
+            "available": "35524932",
+            "used": "3744716",
+            "percent": "10%",
+            "device": "/dev/mapper/VolGroup00-LogVol00",
+            "mountpoint": "/",
+            "type": "xfs",
+            "size": "39269648"
+          }
+        ],
+        "desired_configs": null,
+        "cpu_count": 1,
+        "recovery_report": {
+          "component_reports": [],
+          "summary": "DISABLED"
+        },
+        "host_state": "HEALTHY",
+        "os_arch": "x86_64",
+        "total_mem": 2916032,
+        "host_status": "HEALTHY",
+        "last_registration_time": 1530036912688,
+        "os_family": "redhat7",
+        "host_name": "c7401.ambari.apache.org",
+        "ip": "192.168.74.101",
+        "rack_info": "/default-rack",
+        "os_type": "centos7",
+        "last_agent_env": {
+          "transparentHugePage": "",
+          "hostHealth": {
+            "agentTimeStampAtReporting": 1530037212559,
+            "activeJavaProcs": [],
+            "serverTimeStampAtReporting": 0,
+            "liveServices": [
+              {
+                "status": "Healthy",
+                "name": "chronyd",
+                "desc": ""
+              }
+            ]
+          },
+          "umask": 18,
+          "reverseLookup": true,
+          "alternatives": [],
+          "hasUnlimitedJcePolicy": true,
+          "existingUsers": [],
+          "firewallName": "iptables",
+          "stackFoldersAndFiles": [],
+          "existingRepos": [],
+          "installedPackages": [],
+          "firewallRunning": false
+        },
+        "public_host_name": "c7401.ambari.apache.org",
+        "ph_cpu_count": 1
+      }
+    },
+    {
+      "href": "/api/v1/hosts/c7402.ambari.apache.org",
+      "Hosts": {
+        "last_heartbeat_time": 1530037262610,
+        "recovery_summary": "DISABLED",
+        "host_health_report": "",
+        "disk_info": [
+          {
+            "available": "36888764",
+            "used": "2380884",
+            "percent": "7%",
+            "device": "/dev/mapper/VolGroup00-LogVol00",
+            "mountpoint": "/",
+            "type": "xfs",
+            "size": "39269648"
+          }
+        ],
+        "desired_configs": null,
+        "cpu_count": 1,
+        "recovery_report": {
+          "component_reports": [],
+          "summary": "DISABLED"
+        },
+        "host_state": "HEALTHY",
+        "os_arch": "x86_64",
+        "total_mem": 2916032,
+        "host_status": "HEALTHY",
+        "last_registration_time": 1530036912210,
+        "os_family": "redhat7",
+        "host_name": "c7402.ambari.apache.org",
+        "ip": "192.168.74.102",
+        "rack_info": "/default-rack",
+        "os_type": "centos7",
+        "last_agent_env": {
+          "transparentHugePage": "",
+          "hostHealth": {
+            "agentTimeStampAtReporting": 1530037089877,
+            "activeJavaProcs": [],
+            "serverTimeStampAtReporting": 0,
+            "liveServices": [
+              {
+                "status": "Healthy",
+                "name": "chronyd",
+                "desc": ""
+              }
+            ]
+          },
+          "umask": 18,
+          "reverseLookup": true,
+          "alternatives": [],
+          "hasUnlimitedJcePolicy": false,
+          "existingUsers": [],
+          "firewallName": "iptables",
+          "stackFoldersAndFiles": [],
+          "existingRepos": [],
+          "installedPackages": [],
+          "firewallRunning": false
+        },
+        "public_host_name": "c7402.ambari.apache.org",
+        "ph_cpu_count": 1
+      }
+    },
+    {
+      "href": "/api/v1/hosts/c7403.ambari.apache.org",
+      "Hosts": {
+        "last_heartbeat_time": 1530037262939,
+        "recovery_summary": "DISABLED",
+        "host_health_report": "",
+        "disk_info": [
+          {
+            "available": "36889488",
+            "used": "2380160",
+            "percent": "7%",
+            "device": "/dev/mapper/VolGroup00-LogVol00",
+            "mountpoint": "/",
+            "type": "xfs",
+            "size": "39269648"
+          }
+        ],
+        "desired_configs": null,
+        "cpu_count": 1,
+        "recovery_report": {
+          "component_reports": [],
+          "summary": "DISABLED"
+        },
+        "host_state": "HEALTHY",
+        "os_arch": "x86_64",
+        "total_mem": 2916032,
+        "host_status": "HEALTHY",
+        "last_registration_time": 1530036912520,
+        "os_family": "redhat7",
+        "host_name": "c7403.ambari.apache.org",
+        "ip": "192.168.74.103",
+        "rack_info": "/default-rack",
+        "os_type": "centos7",
+        "last_agent_env": {
+          "transparentHugePage": "",
+          "hostHealth": {
+            "agentTimeStampAtReporting": 1530037210609,
+            "activeJavaProcs": [],
+            "serverTimeStampAtReporting": 0,
+            "liveServices": [
+              {
+                "status": "Healthy",
+                "name": "chronyd",
+                "desc": ""
+              }
+            ]
+          },
+          "umask": 18,
+          "reverseLookup": true,
+          "alternatives": [],
+          "hasUnlimitedJcePolicy": false,
+          "existingUsers": [],
+          "firewallName": "iptables",
+          "stackFoldersAndFiles": [],
+          "existingRepos": [],
+          "installedPackages": [],
+          "firewallRunning": false
+        },
+        "public_host_name": "c7403.ambari.apache.org",
+        "ph_cpu_count": 1
+      }
+    }
+  ],
+  "href": "/api/v1/hosts?fields=Hosts/*&Hosts/host_name.in(c7401.ambari.apache.org,c7402.ambari.apache.org,c7403.ambari.apache.org)"
+}

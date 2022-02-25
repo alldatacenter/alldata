@@ -1,0 +1,294 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.ambari</groupId>
+    <artifactId>ambari-project</artifactId>
+    <version>${revision}</version>
+    <relativePath>../ambari-project</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.ambari</groupId>
+  <artifactId>ambari-admin</artifactId>
+  <packaging>jar</packaging>
+  <name>Ambari Admin View</name>
+  <description>Admin control panel</description>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.8</version>
+        <executions>
+          <execution>
+            <id>parse-version</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>regex-property</id>
+            <goals>
+              <goal>regex-property</goal>
+            </goals>
+            <configuration>
+              <name>ambariVersion</name>
+              <value>${project.version}</value>
+              <regex>^([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)(\.|-).*</regex>
+              <replacement>$1.$2.$3.$4</replacement>
+              <failIfNoMatch>false</failIfNoMatch>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.3</version>
+        <configuration>
+          <nodeVersion>v4.5.0</nodeVersion>
+          <npmVersion>2.15.0</npmVersion>
+          <workingDirectory>src/main/resources/ui/admin-web/</workingDirectory>
+          <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
+        </configuration>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>npm install</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>install --unsafe-perm</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>exec-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <executions>
+          <execution>
+            <id>Bower install</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>${basedir}/src/main/resources/ui/admin-web</workingDirectory>
+              <executable>${basedir}/src/main/resources/ui/admin-web/node/${executable.node}</executable>
+              <arguments>
+                <argument>${basedir}/src/main/resources/ui/admin-web/node_modules/bower/bin/bower</argument>
+                <argument>install</argument>
+                <argument>--allow-root</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Gulp build</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>${basedir}/src/main/resources/ui/admin-web</workingDirectory>
+              <executable>${basedir}/src/main/resources/ui/admin-web/node/${executable.node}</executable>
+              <arguments>
+                <argument>${basedir}/src/main/resources/ui/admin-web/node_modules/gulp/bin/gulp</argument>
+                <argument>build</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>set-ambari-version</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <!-- sets Ambari version to make it accessible from code -->
+              <executable>${executable.shell}</executable>
+              <workingDirectory>${basedir}</workingDirectory>
+              <commandlineArgs>${args.shell} ${basedir}${dirsep}set-ambari-version.${fileextension.shell} ${ambariVersion}</commandlineArgs>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unit test</id>
+            <phase>test</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>${basedir}/src/main/resources/ui/admin-web</workingDirectory>
+              <executable>npm</executable>
+              <arguments>
+                <argument>run</argument>
+                <argument>test-single-run</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptors>
+            <descriptor>src/main/assemblies/empty.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.vafer</groupId>
+        <artifactId>jdeb</artifactId>
+        <version>1.0.1</version>
+        <executions>
+            <execution>
+                <phase>none</phase>
+                <goals>
+                    <goal>jdeb</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <skip>true</skip>
+            <submodules>false</submodules>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>src/main/resources/ui/admin-web/bower_components/**</exclude>
+            <exclude>src/main/resources/ui/admin-web/dist/**</exclude>
+            <exclude>src/main/resources/ui/admin-web/node/**</exclude>
+            <exclude>src/main/resources/ui/admin-web/app/assets/**</exclude>
+            <exclude>src/main/resources/ui/admin-web/node_modules/**</exclude>
+            <exclude>src/main/resources/ui/admin-web/app/bower_components/**</exclude>
+            <exclude>src/main/resources/ui/admin-web/test/bower_components/**</exclude>
+            <exclude>src/main/resources/ui/admin-web/mock.js</exclude>
+            <exclude>src/main/resources/ui/admin-web/bower.json</exclude>
+            <exclude>src/main/resources/ui/admin-web/test/bower.json</exclude>
+            <exclude>src/main/resources/ui/admin-web/test/.bowerrc</exclude>
+            <exclude>src/main/resources/ui/admin-web/.bowerrc</exclude>
+            <exclude>src/main/resources/ui/admin-web/package.json</exclude>
+            <exclude>src/main/resources/ui/admin-web/.jshintrc</exclude>
+            <exclude>src/main/resources/ui/admin-web/.idea/**</exclude>
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+        <includes>
+          <include>META-INF/**/*</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources/ui/admin-web/dist</directory>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+  </build>
+    <profiles>
+    <profile>
+      <id>windows</id>
+      <activation>
+        <os>
+          <family>win</family>
+        </os>
+      </activation>
+      <properties>
+        <envClassifier>win</envClassifier>
+        <executable.node>node.exe</executable.node>
+        <dirsep>\</dirsep>
+        <executable.shell>cmd</executable.shell>
+        <fileextension.shell>cmd</fileextension.shell>
+        <args.shell>/C</args.shell>
+      </properties>
+    </profile>
+    <profile>
+      <id>linux</id>
+      <activation>
+        <os>
+          <family>unix</family>
+        </os>
+      </activation>
+      <properties>
+        <envClassifier>linux</envClassifier>
+        <executable.node>node</executable.node>
+        <dirsep>/</dirsep>
+        <executable.shell>sh</executable.shell>
+        <fileextension.shell>sh</fileextension.shell>
+        <args.shell></args.shell>
+      </properties>
+    </profile>
+      <profile>
+        <id>pluggable-stack-definition</id>
+        <activation>
+          <activeByDefault>false</activeByDefault>
+        </activation>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>exec-maven-plugin</artifactId>
+              <version>1.2.1</version>
+              <executions>
+                <execution>
+                  <id>copy-pluggable-stack-resources</id>
+                  <phase>initialize</phase>
+                  <goals>
+                    <goal>exec</goal>
+                  </goals>
+                  <configuration>
+                    <!-- Copy stack specific UI resources -->
+                    <executable>${executable.shell}</executable>
+                    <workingDirectory>${basedir}</workingDirectory>
+                    <commandlineArgs>${args.shell} ${basedir}${dirsep}copy-pluggable-stack-resources.${fileextension.shell} ${stack.distribution}</commandlineArgs>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+  </profiles>
+</project>

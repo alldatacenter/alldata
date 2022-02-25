@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<alert-templates>
+  <alert-template type="EMAIL">
+    <subject>
+      <![CDATA[Alert Summary: OK[$summary.getOkCount()], Warning[$summary.getWarningCount()], Critical[$summary.getCriticalCount()], Unknown[$summary.getUnknownCount()]]]>
+    </subject>
+    <body>
+      <![CDATA[
+#set( $alertStates = ["OK", "WARNING", "CRITICAL", "UNKNOWN"] )
+#set( $services = $summary.getServices() )
+<html>
+  <style type="text/css">
+    html {
+      font-family:sans-serif;
+      -webkit-text-size-adjust:100%;
+      -ms-text-size-adjust:100%;
+    }
+    body {
+      margin:10px;
+    }
+    footer,header {
+      display:block;
+    }
+    table {
+      border-spacing:0;
+      border-collapse:collapse;
+    }
+    td,th {
+      padding:10px;
+    }
+    .panel {
+      margin-bottom:20px;
+      background-color:#fff;
+      border:1px solid transparent;
+      border-radius:4px;
+      -webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);
+      box-shadow:0 1px 1px rgba(0,0,0,.05);
+    }
+    .panel-body {
+      padding:15px;
+    }
+    .panel-heading {
+      padding:10px 15px;
+      border-bottom:1px solid transparent;
+      border-top-left-radius:3px;
+      border-top-right-radius:3px;
+    }
+    .panel-title {
+      margin-top:0;
+      margin-bottom:0;
+      font-size:16px;
+      color:inherit;
+    }
+    .panel-default {
+      border-color:#ddd;
+    }
+    .panel-default > .panel-heading {
+      color:#333;
+      background-color:#f5f5f5;
+      border-color:#ddd;
+    }
+    .panel-primary {
+      border-color: #337ab7;
+    }
+    .panel-primary > .panel-heading {
+      color: #fff;
+      background-color: #337ab7;
+      border-color: #337ab7;
+    }
+    .label {
+      display:inline;
+      padding:.3em 1em;
+      font-size:75%;
+      font-weight:bold;
+      line-height:1;
+      color:#fff;
+      text-align:center;
+      white-space:nowrap;
+      vertical-align:baseline;
+      border-radius:.25em;
+    }
+    .label-unknown {
+      background-color:#777;
+    }
+    .label-primary {
+      background-color:#337ab7;
+    }
+    .label-ok {
+      background-color:#5cb85c;
+    }
+    .label-warning {
+      background-color:#f0ad4e;
+    }
+    .label-critical {
+      background-color:#d9534f;
+    }
+    .label-small {
+      font-size:12px;
+    }
+    .ambari-footer{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;    
+    }
+  </style>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Services Reporting Alerts</h3>
+    </div>
+    <div class="panel-body">
+      <table>
+        #foreach( $alertState in $alertStates )
+          #if( $summary.getServicesByAlertState($alertState)  )
+            <tr>
+              <td>
+                <span class="label label-$alertState">$alertState</span>
+              </td>
+              <td>
+                $summary.getServicesByAlertState($alertState)
+              </td>
+            </tr>
+          #end
+        #end
+      </table> 
+    </div>
+  </div>
+
+  #foreach( $service in $services )
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">$service</h3>
+    </div>
+    <div class="panel-body">
+      <table>
+        #foreach( $alertState in $alertStates )
+            #foreach( $alert in $summary.getAlerts($service,$alertState) )
+              <tr>
+                <td>
+                  <span class="label label-$alertState">$alertState</span>
+                </td>
+                <td>
+                  $alert.getAlertDefinition().getLabel()
+                  <div class="label-small">
+                    $alert.getAlertText()
+                  </div>
+                  <div class="label-small">
+                    Cluster: $alert.getAlertDefinition().getCluster().getClusterName()
+                  </div>
+                  #if( $alert.getHostName() )
+                    #if( $ambari.hasUrl() )
+                      <div class="label-small">
+                      Host: <a href=$ambari.getUrl()/#/main/hosts/$alert.getHostName()/summary>$ambari.getUrl()/#/main/hosts/$alert.getHostName()/summary</a>
+                      </div>
+                    #else
+                      <div class="label-small">
+                        Host: $alert.getHostName()
+                      </div>
+                    #end
+                  #end
+                </td>
+              </tr>
+            #end
+        #end
+      </table>
+    </div>
+  </div>
+  #end
+  <div class="ambari-footer">
+    This notification was sent to $dispatch.getTargetName()
+    <br/>
+    Apache Ambari $ambari.getServerVersion()
+    #if( $ambari.hasUrl() )
+    <br/>
+    Ambari Server link: <a href=$ambari.getUrl()>$ambari.getUrl()</a>
+    #end
+  </div>
+</html>
+      ]]>
+    </body>
+  </alert-template>
+  <alert-template type="SNMP">
+    <subject>
+      <![CDATA[[$alert.getAlertState()] $alert.getAlertName()]]>
+    </subject>
+    <body>
+      <![CDATA[
+[Alert] $alert.getAlertName()
+[Service] $alert.getServiceName()
+#if( $alert.hasComponentName() )
+[Component] $alert.getComponentName()
+#end
+#if( $alert.hasHostName() )
+[Host] $alert.getHostName()
+#end
+
+$alert.getAlertText()]]>
+    </body>
+  </alert-template>  
+</alert-templates>

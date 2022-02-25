@@ -1,0 +1,223 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'bootstrap';
+
+// Component customizations
+@border-radius-base: 2px;
+@border-radius-large: 3px;
+@border-radius-small: 1.5px;
+
+// Breadcrumb customizations
+@breadcrumb-bg: @body-bg;
+@breadcrumb-separator: ">";
+.breadcrumb {
+  display: inline;
+  padding-left: 5px;
+  li {
+    position: relative;
+    top: 2px;
+  }
+}
+
+
+// Dropdown customizations
+@dropdown-link-hover-color: @link-hover-color;
+@dropdown-link-color: @link-color;
+
+body {
+  min-width: 1150px;
+  min-height: 800px;
+}
+
+.container-wrap {
+  margin-top: 5px;
+}
+
+
+.files-header {
+  padding-bottom: 10px;
+  border-bottom: 2px solid lighten(@gray-light, 25%);
+}
+
+.file-row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid darken(@gray-lighter, 5%);
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
+  &:hover {
+    background-color: @table-bg-hover;
+  }
+  div.row div {
+    white-space: nowrap;
+  }
+}
+.row-selected {
+  background-color: lighten(@component-active-bg, 40%) !important;
+}
+
+
+
+.context-text-row {
+  position: absolute;
+  .context-text {
+    position: relative;
+    display: inline-block;
+    padding: 5px 20px;
+    background: darken(@state-warning-bg, 25%);
+    border: 1px solid @state-warning-border;
+    border-radius: @border-radius-large;
+  }
+}
+
+.context-menu-row {
+  padding-top: 5px;
+  li > a {
+    text-decoration: none;
+  }
+  li.disabled > a {
+    color: @gray-light;
+    cursor: default;
+  }
+
+  .context-menu-entries {
+    margin-bottom: 0px;
+  }
+}
+
+.flash-messages-wrap {
+  position: absolute;
+  width: 40%;
+  min-width: 575px;
+  left: 50%;
+  margin-left: -20%;
+  z-index: 1000;
+}
+
+.flash-messages {
+  border-radius: @border-radius-large;
+  .alert-icon {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .alert-message-wrap {
+    display: table;
+    min-height: 56px;
+    .alert-message {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+}
+
+.message-count-button {
+  position: relative;
+  .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: @brand-danger;
+  }
+}
+
+
+
+.spinner-wrap {
+  margin-right: 15px;
+}
+
+.file-picker {
+  .file-picker__dropzone {
+    color: @gray-light;
+    cursor: pointer;
+    border: 2px dashed darken(@gray-lighter, 10%);
+    height: 150px;
+    .vert-align-middle {
+      margin-top: 32px;
+    }
+  }
+}
+.file-picker-progress {
+  margin-bottom: 5px;
+}
+
+.loading-spinner {
+  margin-top: 150px;
+}
+.loading-message {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 7px;
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
+  border-radius: @border-radius-large;
+  background-color: darken(@state-warning-bg, 25%);
+}
+
+.well-sm {
+  margin-bottom: 10px;
+}
+
+.messages-header {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid darken(@gray-lighter, 5%);
+}
+
+.messages-title {
+  font-size: 26px;
+}
+
+.directory-viewer {
+  height: 300px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  border:1px solid #e5e5e5;
+}
+
+div.text-danger pre{
+  color: #a94442;
+}
+
+.preview-content {
+  white-space:pre;
+  margin: 10px;
+  padding: 10px;
+  overflow-y: auto;
+  height: 350px;
+}
+
+.modal-dialog > .modal-content > .modal-header, .wrap-message {
+  word-break: break-all;
+}
+
+.sub-heading{
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.upload-notice {
+  margin-top: 5px;
+  margin-bottom: -10px;
+}

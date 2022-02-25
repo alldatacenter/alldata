@@ -1,0 +1,62 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<view>
+  <name>AUTO-CLUSTER</name>
+  <label>AutoCluster</label>
+  <version>0.1.0</version>
+  
+  <min-ambari-version>2.0.*</min-ambari-version>
+
+  <parameter>
+    <name>ambari.server.url</name>
+    <description>Enter Ambari Server Cluster URL</description>
+    <placeholder>http://ambari.server:8080/api/v1/clusters/c1</placeholder>
+    <default-value>test</default-value>
+    <cluster-config>fake</cluster-config>
+    <required>true</required>
+  </parameter>
+  <parameter>
+    <name>ambari.server.username</name>
+    <description>Enter Ambari Server username</description>
+    <default-value>test</default-value>
+    <cluster-config>fake</cluster-config>
+    <required>true</required>
+  </parameter>
+  <parameter>
+    <name>ambari.server.password</name>
+    <description>Enter Ambari Server password</description>
+    <default-value>test</default-value>
+    <cluster-config>fake</cluster-config>
+    <required>true</required>
+    <masked>true</masked>
+  </parameter>
+  
+  <resource>
+    <name>properties</name>
+    <service-class>org.apache.ambari.view.examples.AutoClusterService</service-class>
+  </resource>
+  
+  <auto-instance>
+    <name>AUTO_CLUSTER_INSTANCE</name>
+    <label>Auto Cluster Instance View</label>
+    <description>This view instance is auto created when the YARN service is added to a cluster.</description>
+    <stack-id>HDP-*</stack-id>
+    <services>
+      <service>YARN</service>
+    </services>
+  </auto-instance>
+</view>

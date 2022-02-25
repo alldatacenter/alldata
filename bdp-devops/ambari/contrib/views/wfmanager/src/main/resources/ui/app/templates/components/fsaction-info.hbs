@@ -1,0 +1,39 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+{{#each action.fsOps as |obj|}}
+	<ul class="list-unstyled">
+	  {{#if (eq obj.type "mkdir")}}
+	  <li>Type is {{obj.type}} and path is {{obj.settings.path}}</li>
+	  {{/if}}
+	  {{#if (eq obj.type "delete")}}
+	  <li>Type is {{obj.type}} and path is {{obj.settings.path}}</li>
+	  {{/if}}
+	  {{#if (eq obj.type "touchz")}}
+	  <li>Type is {{obj.type}} and path is {{obj.settings.path}}</li>
+	  {{/if}}	  
+	  {{#if (eq obj.type "move")}}
+	  <li>Type is {{obj.type}} and Source is {{obj.settings.source}} and Target is {{obj.settings.target}}</li>
+	  {{/if}}	
+	  {{#if (eq obj.type "chmod")}}
+	  <li>Type is {{obj.type}} and dirfiles is {{obj.settings.dirfiles}}, recursive is {{obj.settings.recursive}}, path is {{obj.settings.path}}, permissions are {{obj.settings.permissions}}</li>
+	  {{/if}}	
+	  {{#if (eq obj.type "chgrp")}}
+	  <li>Type is {{obj.type}} and dirfiles is {{obj.settings.dirfiles}}, recursive is {{obj.settings.recursive}}, path is {{obj.settings.path}}, group : {{obj.settings.group}}</li>
+	  {{/if}}		  	  
+	</ul>	
+{{/each}}

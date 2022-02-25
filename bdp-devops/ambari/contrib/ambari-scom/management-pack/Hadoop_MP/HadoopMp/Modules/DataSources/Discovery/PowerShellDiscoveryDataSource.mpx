@@ -1,0 +1,107 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <DataSourceModuleType ID="Ambari.SCOM.Module.PowerShellDiscoveryDataSource" Accessibility="Internal">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Windows!Microsoft.Windows.PowerShellSchema</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="IntervalSeconds" type="xsd:integer" />
+          <xsd:element name="SyncTime" type="xsd:string" />
+          <xsd:element name="TimeoutSeconds" type="xsd:integer" />
+          
+          <xsd:element name="WorkflowName" type="xsd:string" />
+          <xsd:element name="Script" type="xsd:string" />
+          <xsd:element name="Parameters" type="NamedParametersType" />
+        </Configuration>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
+                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+                <SyncTime>$Config/SyncTime$</SyncTime>
+                <ScriptName>$Config/WorkflowName$.ps1</ScriptName>
+                <ScriptBody>
+                  $Config/Script$
+                  $IncludeFileContent/Shared Scripts/Logging.ps1$
+                  $IncludeFileContent/Shared Scripts/JsonParser.ps1$
+                  $IncludeFileContent/Shared Scripts/RestApi.ps1$
+                  $IncludeFileContent/Shared Scripts/HealthServicesManagement.ps1$
+                  $IncludeFileContent/Shared Scripts/DiscoveryHelpers.ps1$
+
+                  $ScriptApi = New-Object -ComObject "MOM.ScriptAPI"
+
+                  try {
+                  if (!$Username) {
+                  CreateEmptyDiscoveryData
+                  return
+                  }
+                  Main
+                  } catch [System.Net.WebException] {
+                  if ($_.Exception.Response.StatusCode -eq [System.Net.HttpStatusCode]::Forbidden)
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1902
+                  }
+                  elseif ($_.Exception.Response.StatusCode -eq [System.Net.HttpStatusCode]::NotFound)
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1903
+                  }
+                  elseif ($_.Exception.Status -eq [System.Net.WebExceptionStatus]::ConnConnectFailure)
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1903
+                  }
+                  elseif ($_.Exception.Status -eq [System.Net.WebExceptionStatus]::Timeout)
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1904
+                  }
+                  else
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1901
+                  }
+                  CreateEmptyDiscoveryData
+                  } catch {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1901
+                  CreateEmptyDiscoveryData
+                  }
+                </ScriptBody>
+                <Parameters>$Config/Parameters$</Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </DataSource>
+            </MemberModules>
+            <Composition>
+              <Node ID="DS" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.Discovery.Data</OutputType>
+      </DataSourceModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Module.PowerShellDiscoveryDataSource">
+          <Name>Hadoop PowerShell Script Discovery Data Provider</Name>
+          <Description>This module executes PowerShell scripts to discover different Hadoop entities.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

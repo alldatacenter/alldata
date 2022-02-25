@@ -1,0 +1,42 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="decisionNodeError">
+  {{field-error model=this field='actionModel' showErrorMessage=showErrorMessage}}
+</div>
+<table id="decision-properties-table" class="table decision-properties-table listing table-hover table-bordered" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Condition</th>
+      <th>Node</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each actionModel as |flow index|}}
+      <tr class="{{if (eq flow.condition 'default') 'active'}}">
+        <td>{{input type="text" class="form-control" value=flow.condition placeholder="condition"}}</td>
+        <td>
+          <select id="target-node-select-{{index}}" {{action "onTargetNodeChange" index on="change"}} name="select-node" class="form-control">
+            {{#each targetNodes as |node index|}}
+              <option value={{node.id}} selected={{eq node.name flow.node.name}}>{{node.name}}</option>
+            {{/each}}
+          </select>
+        </td>
+      </tr>
+      {{/each}}
+  </tbody>
+</table>

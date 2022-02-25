@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<reposinfo>
+  <latest>./hdp.json</latest>
+  <os family="centos6">
+    <repo>
+      <baseurl>http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.2.0.0</baseurl>
+      <repoid>HDP-2.2.0</repoid>
+      <reponame>HDP</reponame>
+      <unique>true</unique>
+    </repo>
+  </os>
+  <os family="centos5">
+    <repo>
+      <baseurl>http://public-repo-1.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0</baseurl>
+      <repoid>HDP-2.2.0</repoid>
+      <reponame>HDP</reponame>
+      <unique>true</unique>
+    </repo>
+  </os>
+  <os family="redhat6">
+    <repo>
+      <baseurl>http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.2.0.0</baseurl>
+      <repoid>HDP-2.2.0</repoid>
+      <reponame>HDP</reponame>
+      <unique>true</unique>
+    </repo>
+  </os>
+  <os family="redhat5">
+    <repo>
+      <baseurl>http://public-repo-1.hortonworks.com/HDP/centos5/2.x/updates/2.2.0.0</baseurl>
+      <repoid>HDP-2.2.0</repoid>
+      <reponame>HDP</reponame>
+      <unique>true</unique>
+    </repo>
+  </os>
+  <os family="suse11">
+    <repo>
+      <baseurl>http://public-repo-1.hortonworks.com/HDP/suse11/2.x/updates/2.2.0.0</baseurl>
+      <repoid>HDP-2.2.0</repoid>
+      <reponame>HDP</reponame>
+      <unique>true</unique>
+    </repo>
+  </os>
+  <os family="any">
+    <repo>
+      <baseurl>http://public-repo.emc.com/ECS/2.2/updates/2.2.0.0</baseurl>
+      <repoid>ECS-2.2.0.0</repoid>
+      <reponame>ECS</reponame>
+      <unique>true</unique>
+    </repo>
+  </os>
+</reposinfo>

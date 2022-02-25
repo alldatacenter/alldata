@@ -1,0 +1,377 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations?fields=*",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.authentication.kerberos.name.rules",
+      "StackConfigurations" : {
+        "property_description" : "The mapping from kerberos principal names to local OS user names.",
+        "property_name" : "oozie.authentication.kerberos.name.rules",
+        "property_value" : "\n        RULE:[2:$1@$0]([jt]t@.*TODO-KERBEROS-DOMAIN)s/.*/TODO-MAPREDUSER/\n        RULE:[2:$1@$0]([nd]n@.*TODO-KERBEROS-DOMAIN)s/.*/TODO-HDFSUSER/\n        RULE:[2:$1@$0](hm@.*TODO-KERBEROS-DOMAIN)s/.*/TODO-HBASE-USER/\n        RULE:[2:$1@$0](rs@.*TODO-KERBEROS-DOMAIN)s/.*/TODO-HBASE-USER/\n        DEFAULT\n        ",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.authentication.type",
+      "StackConfigurations" : {
+        "property_description" : "\n      ",
+        "property_name" : "oozie.authentication.type",
+        "property_value" : "simple",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.base.url",
+      "StackConfigurations" : {
+        "property_description" : "Base Oozie URL.",
+        "property_name" : "oozie.base.url",
+        "property_value" : "http://localhost:11000/oozie",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.credentials.credentialclasses",
+      "StackConfigurations" : {
+        "property_description" : "\n        Credential Class to be used for HCat.\n      ",
+        "property_name" : "oozie.credentials.credentialclasses",
+        "property_value" : "hcat=org.apache.oozie.action.hadoop.HCatCredentials",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.db.schema.name",
+      "StackConfigurations" : {
+        "property_description" : "\n      Oozie DataBase Name\n     ",
+        "property_name" : "oozie.db.schema.name",
+        "property_value" : "oozie",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.ActionService.executor.ext.classes",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "oozie.service.ActionService.executor.ext.classes",
+        "property_value" : "\n            org.apache.oozie.action.email.EmailActionExecutor,\n            org.apache.oozie.action.hadoop.HiveActionExecutor,\n            org.apache.oozie.action.hadoop.ShellActionExecutor,\n            org.apache.oozie.action.hadoop.SqoopActionExecutor,\n            org.apache.oozie.action.hadoop.DistcpActionExecutor\n        ",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.AuthorizationService.security.enabled",
+      "StackConfigurations" : {
+        "property_description" : "\n     Specifies whether security (user name/admin role) is enabled or not.\n     If disabled any user can manage Oozie system and manage any job.\n     ",
+        "property_name" : "oozie.service.AuthorizationService.security.enabled",
+        "property_value" : "true",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.CallableQueueService.callable.concurrency",
+      "StackConfigurations" : {
+        "property_description" : "\n     Maximum concurrency for a given callable type.\n     Each command is a callable type (submit, start, run, signal, job, jobs, suspend,resume, etc).\n     Each action type is a callable type (Map-Reduce, Pig, SSH, FS, sub-workflow, etc).\n     All commands that use action executors (action-start, action-end, action-kill and action-check) use\n     the action type as the callable type.\n     ",
+        "property_name" : "oozie.service.CallableQueueService.callable.concurrency",
+        "property_value" : "3",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.CallableQueueService.queue.size",
+      "StackConfigurations" : {
+        "property_description" : "Max callable queue size",
+        "property_name" : "oozie.service.CallableQueueService.queue.size",
+        "property_value" : "1000",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.CallableQueueService.threads",
+      "StackConfigurations" : {
+        "property_description" : "Number of threads used for executing callables",
+        "property_name" : "oozie.service.CallableQueueService.threads",
+        "property_value" : "10",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.HadoopAccessorService.hadoop.configurations",
+      "StackConfigurations" : {
+        "property_description" : "\n          Comma separated AUTHORITY=HADOOP_CONF_DIR, where AUTHORITY is the HOST:PORT of\n          the Hadoop service (JobTracker, HDFS). The wildcard '*' configuration is\n          used when there is no exact match for an authority. The HADOOP_CONF_DIR contains\n          the relevant Hadoop *-site.xml files. If the path is relative is looked within\n          the Oozie configuration directory; though the path can be absolute (i.e. to point\n          to Hadoop client conf/ directories in the local filesystem.\n      ",
+        "property_name" : "oozie.service.HadoopAccessorService.hadoop.configurations",
+        "property_value" : "*=/etc/hadoop/conf",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.HadoopAccessorService.jobTracker.whitelist",
+      "StackConfigurations" : {
+        "property_description" : "\n      Whitelisted job tracker for Oozie service.\n      ",
+        "property_name" : "oozie.service.HadoopAccessorService.jobTracker.whitelist",
+        "property_value" : " ",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.HadoopAccessorService.nameNode.whitelist",
+      "StackConfigurations" : {
+        "property_description" : "\n      ",
+        "property_name" : "oozie.service.HadoopAccessorService.nameNode.whitelist",
+        "property_value" : " ",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.JPAService.create.db.schema",
+      "StackConfigurations" : {
+        "property_description" : "\n            Creates Oozie DB.\n\n            If set to true, it creates the DB schema if it does not exist. If the DB schema exists is a NOP.\n            If set to false, it does not create the DB schema. If the DB schema does not exist it fails start up.\n        ",
+        "property_name" : "oozie.service.JPAService.create.db.schema",
+        "property_value" : "false",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.JPAService.jdbc.driver",
+      "StackConfigurations" : {
+        "property_description" : "\n            JDBC driver class.\n        ",
+        "property_name" : "oozie.service.JPAService.jdbc.driver",
+        "property_value" : "org.apache.derby.jdbc.EmbeddedDriver",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.JPAService.jdbc.password",
+      "StackConfigurations" : {
+        "property_description" : "\n            DB user password.\n\n            IMPORTANT: if password is emtpy leave a 1 space string, the service trims the value,\n                       if empty Configuration assumes it is NULL.\n        ",
+        "property_name" : "oozie.service.JPAService.jdbc.password",
+        "property_value" : " ",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.JPAService.jdbc.url",
+      "StackConfigurations" : {
+        "property_description" : "\n            JDBC URL.\n        ",
+        "property_name" : "oozie.service.JPAService.jdbc.url",
+        "property_value" : "jdbc:derby:${oozie.data.dir}/${oozie.db.schema.name}-db;create=true",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.JPAService.jdbc.username",
+      "StackConfigurations" : {
+        "property_description" : "\n          Database user name to use to connect to the database\n        ",
+        "property_name" : "oozie.service.JPAService.jdbc.username",
+        "property_value" : "oozie",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.JPAService.pool.max.active.conn",
+      "StackConfigurations" : {
+        "property_description" : "\n             Max number of connections.\n        ",
+        "property_name" : "oozie.service.JPAService.pool.max.active.conn",
+        "property_value" : "10",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.PurgeService.older.than",
+      "StackConfigurations" : {
+        "property_description" : "\n     Jobs older than this value, in days, will be purged by the PurgeService.\n     ",
+        "property_name" : "oozie.service.PurgeService.older.than",
+        "property_value" : "30",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.PurgeService.purge.interval",
+      "StackConfigurations" : {
+        "property_description" : "\n     Interval at which the purge service will run, in seconds.\n     ",
+        "property_name" : "oozie.service.PurgeService.purge.interval",
+        "property_value" : "3600",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.SchemaService.wf.ext.schemas",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "oozie.service.SchemaService.wf.ext.schemas",
+        "property_value" : "shell-action-0.1.xsd,email-action-0.1.xsd,hive-action-0.2.xsd,sqoop-action-0.2.xsd,ssh-action-0.1.xsd,distcp-action-0.1.xsd,shell-action-0.2.xsd,oozie-sla-0.1.xsd,oozie-sla-0.2.xsd",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.URIHandlerService.uri.handlers",
+      "StackConfigurations" : {
+        "property_description" : "\n        Enlist the different uri handlers supported for data availability checks.\n      ",
+        "property_name" : "oozie.service.URIHandlerService.uri.handlers",
+        "property_value" : "org.apache.oozie.dependency.FSURIHandler,org.apache.oozie.dependency.HCatURIHandler",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.WorkflowAppService.system.libpath",
+      "StackConfigurations" : {
+        "property_description" : "\n      System library path to use for workflow applications.\n      This path is added to workflow application if their job properties sets\n      the property 'oozie.use.system.libpath' to true.\n      ",
+        "property_name" : "oozie.service.WorkflowAppService.system.libpath",
+        "property_value" : "/user/${user.name}/share/lib",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.coord.normal.default.timeout",
+      "StackConfigurations" : {
+        "property_description" : "Default timeout for a coordinator action input check (in minutes) for normal job.\n      -1 means infinite timeout",
+        "property_name" : "oozie.service.coord.normal.default.timeout",
+        "property_value" : "120",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.service.coord.push.check.requeue.interval",
+      "StackConfigurations" : {
+        "property_description" : "\n        Command re-queue interval for push dependencies (in millisecond).\n    ",
+        "property_name" : "oozie.service.coord.push.check.requeue.interval",
+        "property_value" : "30000",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.services",
+      "StackConfigurations" : {
+        "property_description" : "List of Oozie services",
+        "property_name" : "oozie.services",
+        "property_value" : "\n        org.apache.oozie.service.SchedulerService,\n        org.apache.oozie.service.InstrumentationService,\n        org.apache.oozie.service.CallableQueueService,\n        org.apache.oozie.service.UUIDService,\n        org.apache.oozie.service.ELService,\n        org.apache.oozie.service.AuthorizationService,\n        org.apache.oozie.service.UserGroupInformationService,\n        org.apache.oozie.service.HadoopAccessorService,\n        org.apache.oozie.service.URIHandlerService,\n        org.apache.oozie.service.MemoryLocksService,\n        org.apache.oozie.service.DagXLogInfoService,\n        org.apache.oozie.service.SchemaService,\n        org.apache.oozie.service.LiteWorkflowAppService,\n        org.apache.oozie.service.JPAService,\n        org.apache.oozie.service.StoreService,\n        org.apache.oozie.service.CoordinatorStoreService,\n        org.apache.oozie.service.SLAStoreService,\n        org.apache.oozie.service.DBLiteWorkflowStoreService,\n        org.apache.oozie.service.CallbackService,\n        org.apache.oozie.service.ActionService,\n        org.apache.oozie.service.ActionCheckerService,\n        org.apache.oozie.service.RecoveryService,\n        org.apache.oozie.service.PurgeService,\n        org.apache.oozie.service.CoordinatorEngineService,\n        org.apache.oozie.service.BundleEngineService,\n        org.apache.oozie.service.DagEngineService,\n        org.apache.oozie.service.CoordMaterializeTriggerService,\n        org.apache.oozie.service.StatusTransitService,\n        org.apache.oozie.service.PauseTransitService,\n        org.apache.oozie.service.GroupsService,\n        org.apache.oozie.service.ProxyUserService\n      ",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.services.ext",
+      "StackConfigurations" : {
+        "property_description" : "\n       To add/replace services defined in 'oozie.services' with custom implementations.\n       Class names must be separated by commas.\n    ",
+        "property_name" : "oozie.services.ext",
+        "property_value" : "org.apache.oozie.service.PartitionDependencyManagerService,org.apache.oozie.service.HCatAccessorService",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.system.id",
+      "StackConfigurations" : {
+        "property_description" : "\n    The Oozie system ID.\n    ",
+        "property_name" : "oozie.system.id",
+        "property_value" : "oozie-${user.name}",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/oozie.systemmode",
+      "StackConfigurations" : {
+        "property_description" : "\n     System mode for  Oozie at startup.\n     ",
+        "property_name" : "oozie.systemmode",
+        "property_value" : "NORMAL",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE/configurations/use.system.libpath.for.mapreduce.and.pig.jobs",
+      "StackConfigurations" : {
+        "property_description" : "\n      If set to true, submissions of MapReduce and Pig jobs will include\n      automatically the system library path, thus not requiring users to\n      specify where the Pig JAR files are. Instead, the ones from the system\n      library path are used.\n      ",
+        "property_name" : "use.system.libpath.for.mapreduce.and.pig.jobs",
+        "property_value" : "false",
+        "service_name" : "OOZIE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "oozie-site.xml"
+      }
+    }
+  ]
+}

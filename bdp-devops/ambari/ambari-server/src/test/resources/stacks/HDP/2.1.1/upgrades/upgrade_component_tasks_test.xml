@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="upgrade-pack.xsd">
+  <target>2.2.*.*</target>
+  <target-stack>HDP-2.2.0</target-stack>
+  <type>ROLLING</type>
+  <prerequisite-checks />
+  
+  <order>
+    <group name="ZOOKEEPER" title="Zookeeper">
+      <service name="ZOOKEEPER">
+        <component>ZOOKEEPER_SERVER</component>
+        <component>ZOOKEEPER_CLIENT</component>
+      </service>
+    </group>
+    
+    <group name="HDFS" title="HDFS">
+      <service name="HDFS">
+        <component>NAMENODE</component>
+        <component>DATANODE</component>
+        <component>HDFS_CLIENT</component>
+        <component>JOURNALNODE</component>
+      </service>
+    </group>
+  </order>
+  
+
+  <processing>
+    <service name="ZOOKEEPER">
+      <component name="ZOOKEEPER_SERVER">
+        <pre-upgrade>
+          <task xsi:type="manual">
+            <summary>SUMMARY OF PREPARE</summary>
+            <message>This is a manual task with a placeholder of {{foo/bar}}</message>
+          </task>
+        </pre-upgrade>
+        <pre-downgrade copy-upgrade="true" />
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      
+      <component name="ZOOKEEPER_CLIENT">
+        <upgrade />
+        
+        <post-upgrade>
+          <task xsi:type="configure" id="hdp_2_1_1_zookeeper_new_config_type" />
+        </post-upgrade>
+        <post-downgrade copy-upgrade="true" />
+      </component>
+      
+    </service>
+    
+    <service name="HDFS">
+      <component name="NAMENODE">
+        <pre-upgrade>
+          <task xsi:type="execute" hosts="master">
+            <script>foo</script>
+            <function>list</function>
+          </task>
+        </pre-upgrade>
+        <pre-downgrade />
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+      </component>
+      
+      <component name="DATANODE">
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+        <post-upgrade>
+          <task xsi:type="manual">
+            <message>Manual Downgrade</message>
+          </task>
+        </post-upgrade>
+        <post-downgrade />
+      </component>
+      
+      <component name="HDFS_CLIENT">
+        <pre-downgrade>
+          <task xsi:type="configure" id="some_id" />
+        </pre-downgrade>
+        <upgrade />
+        <post-downgrade>
+          <task xsi:type="configure" id="some_id" />
+        </post-downgrade>
+      </component>
+      
+      <component name="JOURNALNODE">
+        <pre-upgrade>
+          <task xsi:type="configure" id="some_id" />
+        </pre-upgrade>
+        
+        <pre-downgrade>
+          <task xsi:type="configure" id="some_id1" />
+          <task xsi:type="configure" id="some_id2" />
+        </pre-downgrade>
+        
+        <upgrade />
+        
+        <post-upgrade>
+          <task xsi:type="configure" id="some_id3" />
+        </post-upgrade>
+        
+        <post-downgrade>
+          <task xsi:type="configure" id="some_id4" />
+          <task xsi:type="configure" id="some_id5" />
+        </post-downgrade>
+        
+        
+        
+      </component>
+    </service>
+    
+
+  </processing>
+</upgrade>

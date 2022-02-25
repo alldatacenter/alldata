@@ -1,0 +1,258 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div class="clearfix">
+  <ol class="breadcrumb pull-left">
+    <li><a href="#!/stackVersions">{{'common.versions' | translate}}</a></li>
+    <li class="active" ng-if="editController">
+      {{displayName}}&nbsp;
+      <span class="sub-text">({{repoVersionFullName}})</span>
+      <span ng-if="isPatch" class="badge btn-warning">{{'versions.patch' | translate}}</span>
+      <span ng-if="isMaint" class="badge btn-warning">{{'versions.maint' | translate}}</span>
+    </li>
+    <li class="active" ng-if="createController">{{'versions.register.title' | translate}}</li>
+  </ol>
+
+  <div class="pull-right deregister-button" ng-switch="deleteEnabled"  ng-if="editController">
+    <button ng-switch-when="false" class="btn disabled btn-default" tooltip="{{'versions.alerts.cannotDeleteInstalled' | translate}}">{{'versions.deregister' | translate}}</button>
+    <button ng-switch-when="true" class="btn btn-danger" ng-click="delete()">{{'versions.deregister' | translate}}</button>
+  </div>
+</div>
+<hr>
+
+
+<form class="form-horizontal register-version-form" role="form" name="versionRegForm" novalidate>
+  <!-- left tabs begins --> 
+  <div class="col-sm-2" id="list-stack-id" ng-if="createController"> 
+    <ul class="nav nav-tabs tabs-left">  
+      <li ng-repeat="stack in stackIds" ng-click="onStackIdChange()" ng-class="{'active' : stack.isSelected}">
+        <a href="javascript:void(0);">{{stack.stackNameVersion}}</a>
+      </li> 
+    </ul> 
+  </div> 
+
+  <div ng-class="{'col-sm-10': createController}">
+    <div class="tab-content">
+      <div class="panel panel-default details-panel">
+        <div class="panel-body">
+          <div class="col-sm-3" id="current-stack-details" ng-if="editController"> 
+            <table class='table table-borderless alert alert-info'>
+              <tr>
+                <td>{{'common.stack' | translate}}</td>
+                <td><strong>{{activeStackVersion.stackNameVersion}}</strong></td>
+              </tr>
+              <tr>
+                <td>{{'common.name' | translate}}</td>
+                <td><strong>{{activeStackVersion.displayName}}</strong></td>
+              </tr>
+              <tr>
+                <td>{{'common.version' | translate}}</td>
+                <td><strong>{{activeStackVersion.actualVersion}}</strong></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="version-info" ng-if="createController">
+            <div class="btn-group" dropdown>
+              <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-info">
+                {{activeStackVersion.stackNameRepositoryVersion}}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li ng-repeat="version in allVersions" ng-click="setActiveVersion()" ng-if="version.visible">
+                  <a href="javascript:void(0);">
+                    {{version.stackNameRepositoryVersion}}
+                    <span ng-if="version.stackDefault">{{'versions.defaultVersion' | translate}}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" ng-click="addVersion()">
+                    {{'versions.addVersion' | translate}} ...
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="pull-right form-inline repo-version-inline" ng-if="activeStackVersion.isNonXMLdata">
+              <div>
+                <label class="control-label repo-version-label">
+                  {{'common.name' | translate}}:&nbsp;{{activeStackVersion.stackNameVersion}}&nbsp;.
+                </label>
+                <div class="form-group reset-horizontal-margin" ng-class="{'has-error' : versionRegForm.version.$error.pattern}">
+                  <input class="form-control" name="version" type="text" ng-model="activeStackVersion.editableDisplayName" ng-pattern="activeStackVersion.subVersionPattern"
+                         placeholder="{{'versions.placeholder' | translate:{pattern: activeStackVersion.pattern} }}" ng-change="updateCurrentVersionInput()" required/>
+                </div>
+                <div class="text-danger" ng-show="versionRegForm.version.$error.pattern">
+                  &nbsp{{'common.alerts.isInvalid' | translate:{term: activeStackVersion.displayName} }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="version-contents-section" ng-class="{'version-contents-section-register-version': createController}">
+            <table class="table table-striped table-condensed">
+              <tr ng-repeat="service in activeStackVersion.services">
+                <td class="col-sm-4">{{service.displayName}}</td>
+                <td class="col-sm-8">{{service.version}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="upload-definition-file-panel" ng-if="createController">
+    <div class="checkbox col-sm-12 big-radio clearfix hide-soft" ng-class="{'disabled' : networkLost || useRedhatSatellite,'visible':stackRepoUpdateLinkExists}">
+      <input id="use-public" type="radio" ng-model="selectedOption.index" value="1" ng-change="togglePublicLocalOptionSelect()" ng-disabled="networkLost || useRedhatSatellite">
+      <label for="use-public">{{'versions.usePublic' | translate}}</label>
+      <a id="public-disabled-link" href="javascript:void(0);" ng-if="networkLost" ng-click="showPublicRepoDisabledDialog()">{{'versions.networkIssues.networkLost'| translate}}</a>
+    </div>
+    <div class="checkbox col-sm-12 big-radio clearfix">
+      <input id="use-local" type="radio" ng-model="selectedOption.index" value="2" ng-change="togglePublicLocalOptionSelect()">
+      <label for="use-local">{{'versions.useLocal' | translate}}</label>
+    </div>
+  </div>
+
+  <div class="clearfix bottom-margin"></div>
+
+  <form ng-class="{'visible': !allInfoCategoriesBlank()}" class="form-horizontal register-version-form hide-soft"
+        role="form" name="repoRegForm" novalidate>
+    <div class="panel panel-default repos-panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          {{'versions.repos' | translate}}
+          <button ng-show="supports.addingNewRepository" class="btn btn-primary pull-right btn-xs pull-up"
+                  ng-click="addRepository()">
+            <span class="glyphicon glyphicon-plus"></span>
+            {{'versions.repository.add' | translate}}
+          </button>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="panel-inner">
+          <div class="alert alert-info" role="alert">{{'versions.alerts.baseURLs' | translate}}</div>
+          <div class="alert alert-warning hide-soft" ng-class="{'visible' : hasValidationErrors()}" role="alert">
+            {{'versions.alerts.validationFailed' | translate}}
+          </div>
+          <div class="clearfix repo-table-title row-fluid">
+            <div class="col-sm-2" id="os-label"><label>{{'versions.os' | translate}}</label></div>
+            <div class="col-sm-2" id="name-label-adjust"><label>{{'common.name' | translate}}</label></div>
+            <div class="col-sm-6" id="repo-base-url-label"><label>{{'versions.baseURL' | translate}} </label></div>
+            <div class="btn-group pull-right tooltip-wrapper"
+                 tooltip="{{(isAddOsButtonDisabled() && !useRedhatSatellite)? ('versions.alerts.allOsAdded' | translate) : ''}}"
+                 dropdown>
+              <button class="btn add-os-button dropdown-toggle" ng-disabled="isAddOsButtonDisabled()">
+                <i class="fa fa-plus" aria-hidden="true"></i> {{'common.controls.add' | translate}} &nbsp;<span
+                      class="caret"></span></button>
+              <ul class="dropdown-menu" ng-class="{'hidden': hasNotDeletedRepo()}">
+                <li ng-repeat="os in osList"><a ng-if="os.selected==false" ng-click="addOS($event)">{{os.OperatingSystems.os_type}}</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="alert alert-info hide-soft" ng-class="{'visible' : !osList || !osList.length}" role="alert">
+            {{'versions.contents.empty' | translate}}
+          </div>
+          <div class="" ng-repeat="os in osList">
+            <div ng-if="os.selected==true">
+              <div class="clearfix border-bottom {{os.OperatingSystems.os_type}}">
+                <!-- show selected os in list table-->
+                <div class="col-sm-2 os-type-label">
+                  <label>{{os.OperatingSystems.os_type}}</label>
+                </div>
+                <div class="col-sm-9">
+                  <div class="form-group repo-name-url {{repository.Repositories.repo_name}}"
+                       ng-class="{'has-error': repository.hasError }"
+                       ng-repeat="repository in os.repositories"
+                       ng-if="showRepo(repository)">
+                      <span class="repo-name-label control-label col-sm-3">
+                        <span ng-if="!repository.isEditing">{{repository.Repositories.repo_id}}</span>
+                        <i class="fa fa-pencil cursor-pointer"
+                           ng-click="repository.isEditing = true"
+                           ng-show="useRedhatSatellite && !repository.isEditing"></i>
+                        <input type="text" class="form-control"
+                               ng-show="useRedhatSatellite && repository.isEditing"
+                               ng-model="repository.Repositories.repo_id">
+                        <i class="fa fa-undo orange-icon cursor-pointer"
+                          ng-show="repository.isEditing && (repository.Repositories.repo_id !== repository.Repositories.initial_repo_id)"
+                          ng-click="repository.Repositories.repo_id = repository.Repositories.initial_repo_id"></i>
+                      </span>
+                      <div class="col-sm-7 repo-url">
+                        <input type="text" class="form-control"
+                               placeholder="{{(repository.Repositories.repo_name.indexOf('UTILS') < 0 )?('versions.repository.placeholder' | translate) : ''}}"
+                               ng-model="repository.Repositories.base_url"
+                               ng-change="onRepoUrlChange(repository)" ng-disabled="useRedhatSatellite">
+                      </div>
+                      <i class="fa fa-undo orange-icon cursor-pointer"
+                         ng-if="selectedOption.index == 1 && repository.Repositories.base_url != repository.Repositories.initial_base_url
+                         || selectedOption.index == 2 && repository.Repositories.base_url != ''
+                         || editController && repository.Repositories.base_url != repository.Repositories.initial_base_url"
+                         ng-click="undoChange(repository)"
+                         tooltip-html-unsafe="{{'common.undo' | translate}}"
+                         aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col-sm-1 remove-icon" ng-click="removeOS()" ng-class="{'disabled' : useRedhatSatellite}">
+                  <span>
+                    <i class="fa fa-minus display-inline" aria-hidden="true"></i>&nbsp;{{'common.controls.remove' | translate}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix advanced-radio-buttons">
+            <div class="col-sm-9">
+              <div class="checkbox">
+                <input type="checkbox" id="skip-validation" ng-model="skipValidation" ng-change="clearErrors()" ng-disabled="useRedhatSatellite">
+                <label for="skip-validation">
+                  <span ng-class="{'disabled' : useRedhatSatellite}">{{'versions.skipValidation' | translate}}</span>
+                  <i class="fa fa-question-circle"
+                     tooltip="{{'versions.alerts.skipValidationWarning' | translate}}"
+                     tooltip-placement="right"
+                     tooltip-trigger="mouseenter"
+                     aria-hidden="true"></i>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-9">
+              <div class="checkbox">
+                <input type="checkbox" id="use-redhat" ng-model="useRedhatSatellite" ng-change="useRedHatCheckbox()"
+                       ng-disabled="isPublicRepoSelected()">
+                <label for="use-redhat">
+                  <span ng-class="{'disabled' : isPublicRepoSelected()}"
+                        tooltip="{{(isPublicRepoSelected())? ('versions.useRedhatSatellite.disabledMsg' | translate) : ''}}">{{'versions.useRedhatSatellite.title' | translate}}</span>
+                  <i class="fa fa-question-circle"
+                     tooltip="{{'versions.alerts.useRedhatSatelliteWarning' | translate}}"
+                     tooltip-placement="right"
+                     tooltip-trigger="mouseenter"
+                     aria-hidden="true"></i>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <button class="btn btn-primary pull-right left-margin" ng-click="save()"
+              ng-disabled="isSaveButtonDisabled() || (createController && versionRegForm.version.$invalid)">{{'common.controls.save' | translate}}
+      </button>
+      <button class="btn btn-default pull-right" ng-click="cancel()">{{'common.controls.cancel' | translate}}</button>
+    </div>
+  </form>
+</form>

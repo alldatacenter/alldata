@@ -1,0 +1,90 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol":
+    {
+      "type":"http",
+      "checks":[
+        {
+          "property":"mapreduce.jobhistory.http.policy",
+          "desired":"HTTPS_ONLY",
+          "site":"mapred-site"
+        },
+        {
+          "property":"ssl.store.pach",
+          "desired":"EXIST",
+          "site":"mapred-site"
+        },
+        {
+          "property":"ssl.store.password",
+          "desired":"EXIST",
+          "site":"mapred-site"
+        }
+      ]
+    },
+
+    "links": [
+      {
+        "name": "jobhistory_ui",
+        "label": "JobHistory UI",
+        "requires_user_name": "false",
+        "url": "%@://%@:%@",
+        "port":{
+          "http_property": "mapreduce.jobhistory.webapp.address",
+          "http_default_port": "19888",
+          "https_property": "mapreduce.jobhistory.webapp.https.address",
+          "https_default_port": "8090",
+          "regex": "\\w*:(\\d+)",
+          "site": "mapred-site"
+        }
+      },
+      {
+        "name": "jobhistory_logs",
+        "label": "JobHistory logs",
+        "requires_user_name": "false",
+        "url": "%@://%@:%@/logs",
+        "port":{
+          "http_property": "mapreduce.jobhistory.webapp.address",
+          "http_default_port": "19888",
+          "https_property": "mapreduce.jobhistory.webapp.https.address",
+          "https_default_port": "8090",
+          "regex": "\\w*:(\\d+)",
+          "site": "mapred-site"
+        }
+      },
+      {
+        "name":"jobhistory_jmx",
+        "label":"JobHistory JMX",
+        "requires_user_name":"false",
+        "url":"%@://%@:%@/jmx",
+        "port":{
+          "http_property": "mapreduce.jobhistory.webapp.address",
+          "http_default_port": "19888",
+          "https_property": "mapreduce.jobhistory.webapp.https.address",
+          "https_default_port": "8090",
+          "regex": "\\w*:(\\d+)",
+          "site": "mapred-site"
+        }
+      },
+      {
+        "name":"thread_stacks",
+        "label":"Thread Stacks",
+        "requires_user_name": "false",
+        "url":"%@://%@:%@/stacks",
+        "port":{
+          "http_property": "mapreduce.jobhistory.webapp.address",
+          "http_default_port": "19888",
+          "https_property": "mapreduce.jobhistory.webapp.https.address",
+          "https_default_port": "8090",
+          "regex": "\\w*:(\\d+)",
+          "site": "mapred-site"
+        },
+        "host":{
+          "http_property": "fs.defaultFS",
+          "site": "core-site"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<ol class="breadcrumb">
+    <li class="active">{{'urls.createNewUrl' | translate}}</li>
+</ol>
+<hr>
+    <div class="row">
+        <div class="col-sm-10">
+
+            <form class="form-horizontal create-user-form" role="form" novalidate name="formHolder.form" autocomplete="off">
+                <div class="form-group" ng-class="{'has-error' : formHolder.form.url_name.$error.required  && formHolder.form.submitted}">
+                    <label for="urlname" class="col-sm-2 control-label">{{'common.name' | translate}}</label>
+                    <div class="col-sm-10">
+                        <input ng-minlength="2" ng-maxlength="25" type="text" id="urlname" class="form-control urlname-input" name="url_name" placeholder="{{'common.name' | translate}}" ng-model="url.urlName" required autocomplete="off">
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_name.$error.required  && formHolder.form.submitted">{{'common.alerts.fieldIsRequired' | translate}}</div>
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_name.$error.minlength   && formHolder.form.submitted">{{'common.alerts.minimumTwoChars' | translate}}</div>
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_name.$error.maxlength   && formHolder.form.submitted">{{'common.alerts.maxTwentyFiveChars' | translate}}</div>
+                    </div>
+                </div>
+
+
+                <div class="form-group" ng-class="{'has-error' : formHolder.form.url_view_name.$error.required  && formHolder.form.submitted}">
+                    <label for="urlselect" class="col-sm-2 control-label">{{'urls.view' | translate}}</label>
+                    <div class="col-sm-10">
+                        <select ng-change="doStepOne()" class="form-control" id="urlselect" name="url_view_name" ng-options="version for version in viewsVersions" ng-model="url.selectedView" required></select>
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_view_name.$error.required  && formHolder.form.submitted">{{'common.alerts.fieldIsRequired' | translate}}</div>
+                    </div>
+                </div>
+
+                <div ng-hide="stepOneNotCompleted" class="form-group" ng-class="{'has-error' : formHolder.form.url_view_instance_name.$error.required  && formHolder.form.submitted}">
+                    <label for="urlinstanceselect" class="col-sm-2 control-label">{{'urls.viewInstance' | translate}}</label>
+                    <div class="col-sm-10">
+                        <select ng-change="doStepTwo()" class="form-control" id="urlinstanceselect" name="url_view_instance_name" ng-options="instance.instance for instance in viewInstances | filter:filterByName(url.selectedView)" ng-model="url.selectedInstance" required></select>
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_view_instance_name.$error.required  && formHolder.form.submitted">{{'common.alerts.fieldIsRequired' | translate}}</div>
+                    </div>
+                </div>
+
+                <div ng-hide="stepTwoNotCompleted"  class="form-group" ng-class="{'has-error' : formHolder.form.url_view_suffix.$error.required  && formHolder.form.submitted}">
+                    <label for="urlsuffixin" class="col-sm-2 control-label">{{'views.shortUrl' | translate}}</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            <span id="basic-addon1" class="input-group-addon">/main/view/{{chomp(url.selectedView)}}/</span><input aria-describedby="basic-addon1" type="text" class="form-control" id="urlsuffixin" name="url_view_suffix" placeholder="{{'views.shortUrl' | translate}}" ng-model="url.suffix" ng-pattern="/^[a-z0-9-_]+$/" ng-minlength="2" ng-maxlength="25" required autocomplete="off">
+                        </div>
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_view_suffix.$error.required   && formHolder.form.submitted">{{'common.alerts.fieldIsRequired' | translate}}</div>
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_view_suffix.$error.minlength   && formHolder.form.submitted">{{'common.alerts.minimumTwoChars' | translate}}</div>
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_view_suffix.$error.maxlength   && formHolder.form.submitted">{{'common.alerts.maxTwentyFiveChars' | translate}}</div>
+                        <div class="alert alert-danger top-margin" ng-show="formHolder.form.url_view_suffix.$error.pattern   && formHolder.form.submitted">{{'common.alerts.onlyText' | translate}}</div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button ng-disabled="stepTwoNotCompleted" class="btn btn-primary pull-right left-margin saveuser" ng-click="saveUrl()">{{'common.controls.save' | translate}}</button>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+</div>

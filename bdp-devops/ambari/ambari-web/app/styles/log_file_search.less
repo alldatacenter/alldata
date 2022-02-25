@@ -1,0 +1,227 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+@import 'common.less';
+
+@toolbar-context-menu-width: 40px;
+@toolbar-padding: 10px;
+
+.log-file-search-popup {
+  .modal-body {
+    overflow: hidden;
+  }
+}
+
+.log-file-search-toolbar {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: #e6f1f6;
+
+  .toolbar-row {
+    margin-bottom: 5px;
+
+    input {
+      margin: 0;
+    }
+    &:last-child {
+      padding-bottom: @toolbar-padding;
+      margin-bottom: 0;
+    }
+  }
+
+  .filter-block {
+    width: calc(~"100%" - @toolbar-context-menu-width + 4px);
+    padding: @toolbar-padding;
+    box-sizing: border-box;
+    margin-bottom: -400px;
+    padding-bottom: 400px;
+
+    input {
+      height: 16px;
+    }
+
+    .date-filter {
+      margin-left: 10px;
+
+      input {
+        width: 100px;
+      }
+    }
+  }
+
+  .levels-filter-block {
+    .level-checkbox {
+      margin-right: 20px;
+    }
+  }
+
+  .include-exclude-filter-block {
+    .keywords-list {
+      display: inline-block;
+
+      .keyword-item {
+        font-size: 12px;
+        display: inline-block;
+        padding: 2px;
+        border-radius: 0;
+
+        .close {
+          color: black;
+          font-size: 16px;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+
+  .context-menu {
+    width: @toolbar-context-menu-width;
+    border-left: 2px solid #ddd;
+    margin-bottom: -400px;
+    padding-bottom: 400px;
+    text-align: center;
+
+    .icon-external-link,
+    .move-to-top,
+    .move-to-bottom {
+      display: block;
+      font-size: 28px;
+      color: grey;
+    }
+
+    .move-to-top {
+      line-height: 20px;
+    }
+    .move-to-bottom {
+      line-height: 18px;
+    }
+
+    .icon-external-link {
+      margin-top: 5px;
+      font-size: 20px;
+      padding-left: 4px;
+    }
+  }
+}
+
+.log-file-search-content {
+  &.container {
+    width: 100%;
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+  }
+
+  .log-data-item {
+    border-bottom: 1px solid #ddd;
+
+    &:nth-child(2n) {
+      background: #f2f2f2;
+    }
+
+    .log-data-date {
+      border-right: 2px solid #ddd;
+      width: 7%;
+      padding-left: 4px;
+    }
+    .log-data-message {
+      width: 91%;
+    }
+  }
+
+  #infinite-scroll-append {
+    text-align: center;
+    margin-top: 10px;
+
+    .icon-spinner {
+      font-size: 33px;
+    }
+  }
+}
+
+.log-tail-popup.full-height-modal {
+
+  .top-wrap {
+    border-bottom: none !important;
+
+    .modal-label {
+      font-size: 20px;
+      line-height: 20px;
+    }
+    .refresh,
+    .open-in-log-search {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 12px;
+
+      i {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+    .action-bar {
+
+      & > a {
+        margin: 0 5px;
+
+        i {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .bottom-wrap {
+    select {
+      width: 80px;
+    }
+  }
+
+  .log-tail-content {
+    width: 100%;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    white-space: normal;
+    box-sizing: border-box;
+
+    & > div {
+      margin: 0;
+      padding: 0;
+
+      &:hover {
+        background: #ccc;
+      }
+    }
+
+    #infinite-scroll-append,
+    .log-tail-spinner-container
+    {
+      text-align: center;
+
+      .icon-spinner {
+        font-size: 24px;
+      }
+    }
+  }
+}

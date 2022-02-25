@@ -1,0 +1,55 @@
+{{!
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+}}
+
+<td class="first">
+  {{#link-to 'script.edit' script.id}}
+    {{#if script.isNew}}
+      <div class="spinner-sm"></div>
+    {{/if}}
+    {{#unless script.isNew}}
+      {{script.title}}
+    {{/unless}}
+  {{/link-to}}
+</td>
+<td>
+  {{#if currentJob}}
+    <span class="date">{{showDate currentJob.dateStarted 'YYYY-MM-DD HH:mm'}}</span>
+  {{else}}
+    {{t 'scripts.not_run_message'}}
+  {{/if}}
+</td>
+<td>
+{{#if currentJob.jobInProgress}}
+  <h4>
+    <span class="label label-warning">{{currentJob.status}}</span>
+  </h4>
+{{/if}}
+{{#if currentJob.jobSuccess}}
+  <i class="fa fa-fw fa-lg fa-check green"></i> {{t 'common.success'}} <small> ({{currentJob.durationTime}})</small>
+{{/if}}
+{{#if currentJob.jobError}}
+  <i class="fa fa-fw fa-lg fa-exclamation red"></i> {{t 'common.error'}}
+{{/if}}
+</td>
+<td>
+  {{#unless isNew}}
+    {{#link-to 'script.history' script.id}}<i class="fa fa-clock-o"></i> {{t 'common.history'}}{{/link-to}}
+    <a href="#" {{action "copyScript" script}}><i class="fa fa-copy"></i> {{t 'common.copy'}}</a>
+    <a href="#" {{action "deletescript" script}}><i class="fa fa-trash-o"></i> {{t 'common.delete'}}</a>
+  {{/unless}}
+</td>

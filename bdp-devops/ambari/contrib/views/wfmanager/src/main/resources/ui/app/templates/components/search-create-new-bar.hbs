@@ -1,0 +1,47 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="text-left form-inline search-bar pb5">
+  <div class="form-group">
+    <div id="search-bar" class="input-group input-group-sm">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{displayType}} <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li {{action 'search' 'wf'}}><a href="#">Workflows</a></li>
+          <li {{action 'search' 'coords'}}><a href="#">Coordinators</a></li>
+          <li {{action 'search' 'bundles'}}><a href="#">Bundles</a></li>
+        </ul>
+      </div>
+      <input id="search-field" type="text" class="form-control" data-role="tagsinput" placeholder="Filter(Eg:name:workflowname)" aria-describedby="basic-addon1">
+      <div class="btn btn-default search-icon" {{action 'onSearchClicked'}}><i class="fa fa-search"></i></div>
+    </div>
+  </div>
+  <div class='form-group date-picker'>
+    <input type='text' class="form-control" value={{startDate}} id='startDate' title="Nominal Start Date" placeholder="Nominal Start Date" {{action 'onClear' 'start' on="change"}}/>
+  </div>
+  <div class='form-group date-picker'>
+    <input type='text' class="form-control" value={{endDate}} id='endDate' title="Nominal End Date" placeholder="Nominal End Date" {{action 'onClear' 'end' on="change"}}/>
+  </div>
+  <div class="form-group">
+    <span title="Clear Filters" {{action 'clearFilters'}} class="fa fa-close fa-1 pointer btn btn-default" aria-hidden="true"></span>
+  </div>
+  <div class="form-group">
+    <span class="fa fa-refresh fa-1 pointer btn btn-default" title="Refresh" {{action 'refresh'}} aria-hidden="true"></span>
+  </div>
+</div>
+

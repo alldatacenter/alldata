@@ -1,0 +1,112 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="job-details" class="panel panel-default">
+  <div class="panel-heading container-custom">
+    <div class="pull-right">
+      <button type="button" class="btn btn-default" title="Refresh" {{action 'doRefresh'}}>
+          <i class="fa fa-refresh"></i>
+      </button>
+
+      {{#link-to 'design.dashboardtab' class="backto-dashboard"}}
+      <button type="button" class="btn btn-default" title="Workflow Dashboard">
+          <i class="fa fa-th"></i>
+      </button>
+      {{/link-to}}
+    </div>
+    <div class="pull-left">
+      <div class="jobTitle">
+        <!-- {{displayType}} Job : {{name}}  -->
+        <ol class="breadcrumb">
+          {{#if fromBundleId}}
+            <li class="breadcrumb-item">
+              <a href="#" {{action 'back' 'bundles' fromBundleId}}>
+                {{#workflow-icon workflowType="bundles"}}{{/workflow-icon}}  <span title="{{fromBundleId}}">{{dashboardContext.currentBundleName}}</span> 
+              </a>
+            </li>
+          {{/if}}
+          {{#if fromCoordId}}
+            <li class="breadcrumb-item">
+              <a href="#" {{action 'back' 'coords' fromCoordId}}>
+                {{#workflow-icon workflowType="coords"}}{{/workflow-icon}}  <span title="{{fromCoordId}}">{{dashboardContext.currentCoordName}}</span>
+              </a>
+            </li>
+          {{/if}}
+          <li class="breadcrumb-item">
+            {{#workflow-icon workflowType=model.jobType}}{{/workflow-icon}}  <span title="{{id}}">{{name}}</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    {{#if model.error}}<span class="messageDiv label label-danger">{{model.error}}</span>{{/if}}
+    {{#if error}}<span class="messageDiv label label-danger">{{errorMessage}}</span>{{/if}}
+    {{#if (eq model.jobType "wf")}}
+      {{#workflow-job-details model=model jobDefinition=jobDefinition configurationProperties=configurationProperties getJobLog="getJobLog" getActionDetails="getActionDetails" id=id}}
+        <div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#jobInfo" class="action-link" aria-controls="job-info" role="tab" data-toggle="tab">Info</a></li>
+            <li {{action 'showFirstActionDetail'}} role="presentation"><a href="#jobAction" class="action-link" aria-controls="job-action" role="tab" data-toggle="tab">Action</a></li>
+            <li {{action 'getJobDag'}} role="presentation"><a href="#jobDag" class="action-link" aria-controls="jobDag" role="tab" data-toggle="tab">Flow Graph</a></li>
+            <li {{action 'getJobLog'}} role="presentation"><a href="#jobLog" class="action-link" aria-controls="jobLog" role="tab" data-toggle="tab">Log</a></li>
+            <li {{action 'getErrorLog'}} role="presentation"><a href="#jobErrorLog" class="action-link" aria-controls="jobErrorLog" role="tab" data-toggle="tab">Error Log</a></li>
+            <li {{action 'getAuditLog'}} role="presentation"><a href="#jobAuditLog" class="action-link" aria-controls="jobAuditLog" role="tab" data-toggle="tab">Audit Log</a></li>
+            <li role="presentation"><a href="#jobConfig" aria-controls="jobConfig" class="action-link" role="tab" data-toggle="tab">Configuration</a></li>
+            <li {{action 'getJobDefinition'}} role="presentation"><a href="#jobDefinition" class="action-link" aria-controls="jobDefinition" role="tab" data-toggle="tab">Definition</a></li>
+            <li role="presentation" class="pull-right">
+              <a class="pointer action-link" href="#" title="Edit Workflow" {{action "editWorkflow" model.appPath}}>
+                Edit Workflow
+              </a>
+            </li>
+          </ul>
+
+      </div>
+      {{/workflow-job-details}}
+    {{else if (eq model.jobType "coords")}}
+      {{#coord-job-details model=model jobDefinition=jobDefinition configurationProperties=configurationProperties getJobLog="getJobLog" id=id getCoordActionReruns="getCoordActionReruns" showWorkflow="showWorkflow"}}
+        <div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#jobInfo" class="action-link" aria-controls="job-info" role="tab" data-toggle="tab">Info</a></li>
+            <li {{action 'showFirstActionDetail'}} role="presentation"><a href="#jobAction" class="action-link" aria-controls="job-action" role="tab" data-toggle="tab">Workflow Jobs</a></li>
+            <li {{action 'getJobLog'}} role="presentation"><a href="#jobLog" class="action-link" aria-controls="jobLog" role="tab" data-toggle="tab">Log</a></li>
+            <li {{action 'getErrorLog'}} role="presentation"><a href="#jobErrorLog" class="action-link" aria-controls="jobErrorLog" role="tab" data-toggle="tab">Error Log</a></li>
+            <li {{action 'getAuditLog'}} role="presentation"><a href="#jobAuditLog" class="action-link" aria-controls="jobAuditLog" role="tab" data-toggle="tab">Audit Log</a></li>
+            <li {{action 'getCoordActionReruns'}} role="presentation"><a href="#coordActionReruns" class="action-link" aria-controls="coordActionReruns" role="tab" data-toggle="tab">Action Reruns</a></li>
+            <li role="presentation"><a href="#jobConfig" class="action-link" aria-controls="jobConfig" role="tab" data-toggle="tab">Configuration</a></li>
+            <li {{action 'getJobDefinition'}} role="presentation"><a href="#jobDefinition" class="action-link" aria-controls="jobDefinition" role="tab" data-toggle="tab">Definition</a></li>
+          </ul>
+        </div>
+      {{/coord-job-details}}
+    {{else}}
+      {{#bundle-job-details model=model jobDefinition=jobDefinition configurationProperties=configurationProperties getJobLog="getJobLog" id=id showCoord="showCoord"}}
+        <div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#jobInfo" class="action-link" aria-controls="job-info" role="tab" data-toggle="tab">Info</a></li>
+            <li role="presentation"><a href="#coordJobs" class="action-link" aria-controls="coord-jobs" role="tab" data-toggle="tab">Coord Jobs</a></li>
+            <li {{action 'getJobLog'}} role="presentation"><a href="#jobLog" class="action-link" aria-controls="jobLog" role="tab" data-toggle="tab">Log</a></li>
+            <li {{action 'getErrorLog'}} role="presentation"><a href="#jobErrorLog" class="action-link" aria-controls="jobErrorLog" role="tab" data-toggle="tab">Error Log</a></li>
+            <li {{action 'getAuditLog'}} role="presentation"><a href="#jobAuditLog" class="action-link" aria-controls="jobAuditLog" role="tab" data-toggle="tab">Audit Log</a></li>
+            <li role="presentation"><a href="#jobConfig" class="action-link" aria-controls="jobConfig" role="tab" data-toggle="tab">Configuration</a></li>
+            <li {{action 'getJobDefinition'}} role="presentation"><a href="#jobDefinition" class="action-link" aria-controls="jobDefinition" role="tab" data-toggle="tab">Definition</a></li>
+          </ul>
+        </div>
+      {{/bundle-job-details}}
+    {{/if}}
+  </div>
+</div>

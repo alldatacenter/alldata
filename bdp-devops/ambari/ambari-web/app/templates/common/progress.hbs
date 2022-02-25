@@ -1,0 +1,94 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+{{#if view.disableKerberos}}
+<div id="common-progress-page" class="wizard-content col-md-12">
+{{else}}
+<div id="common-progress-page" class="wizard-content col-md-9">
+{{/if}}
+  <h4 class="step-title">{{view.headerTitle}}</h4>
+
+  <div {{bindAttr class="view.noticeClass"}}>{{{view.notice}}}
+    {{#if controller.showRetry}}
+      <button class="btn btn-primary retry" {{action retry target="controller"}}>
+        <i class="glyphicon glyphicon-repeat glyphicon-white"></i>&nbsp;
+        {{t common.retry}}
+      </button>
+    {{/if}}
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{#if controller.isLoaded}}
+        {{#each task in controller.tasks}}
+          {{#view view.taskView contentBinding="task"}}
+            <div class="item row">
+              <div {{bindAttr class="view.linkClass view.parentView.labelWidth"}}>
+                <i {{bindAttr class="view.icon view.iconColor"}}></i>
+                <a {{action "showHostProgressPopup" task target="controller"}} >{{task.title}}</a>
+              </div>
+              <div {{bindAttr class="view.showProgressBar::hide :col-md-5" }}>
+                <div {{bindAttr class=":progress-wrapper controller.isRollback::col-md-8 controller.isRollback:col-md-3"}}>
+                  <div class="progress">
+                    <div class="progress-bar-striped active progress-bar-info progress-bar" {{bindAttr style="view.barWidth"}}></div>
+                  </div>
+                </div>
+                <div {{bindAttr class=":col-md-1 view.hidePercent:noDisplay"}}>{{task.progress}}&#37;</div>
+              </div>
+              <div>
+                {{#if task.showRetry}}
+                  <a {{action retryTask target="controller"}} class="btn btn-primary retry"
+                                                              rel="tooltip"
+                                                              data-trigger="click" {{bindAttr title="view.showDBTooltip:testDBRetryTooltip"}}>
+                    <i class="glyphicon glyphicon-repeat glyphicon-white"></i>&nbsp;
+                    {{t common.retry}}
+                  </a>
+                {{/if}}
+                {{#if task.showRollback}}
+                  <a {{action rollback target="controller"}} class="btn btn-primary retry">
+                    <i class="glyphicon glyphicon-repeat glyphicon-white"></i>
+                    {{t common.rollBack}}
+                  </a>
+                {{/if}}
+                {{#if task.showSkip}}
+                  <a {{action skipTask target="controller"}} class="btn btn-primary retry">
+                    <i class="glyphicon-step-forward glyphicon glyphicon-white"></i>
+                    {{t common.skip}}
+                  </a>
+                {{/if}}
+              </div>
+            </div>
+          {{/view}}
+        {{/each}}
+      {{else}}
+        {{view App.SpinnerView}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+{{#unless view.isSimpleModal}}
+  <div class="wizard-footer col-md-12">
+    <div class="btn-area">
+      {{#if view.showBackButton}}
+        {{view App.WizardBackButton action="back" target="controller" data-qa="wizard-back"}}
+      {{/if}}
+      {{#view App.WizardNextButton action="done" target="controller" data-qa="wizard-next"}}
+        {{{view.parentView.submitButtonText}}}
+      {{/view}}
+    </div>
+  </div>
+{{/unless}}

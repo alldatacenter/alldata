@@ -1,0 +1,497 @@
+{
+  "localComponents": [
+    "NAMENODE",
+    "ZOOKEEPER_SERVER"
+  ],
+  "clusterId": "2",
+  "agentLevelParams": {
+    "public_hostname": "host-1.openstacklocal",
+    "hostname": "host-1.openstacklocal",
+    "agentConfigParams": {
+      "agent": {
+        "parallel_execution": 0,
+        "use_system_proxy_settings": true
+      }
+    },
+    "agentCacheDir": "/var/lib/ambari-agent/cache"
+  },
+  "commandId": "4-1",
+  "serviceLevelParams": {
+    "configuration_credentials": {},
+    "credentialStoreEnabled": false,
+    "status_commands_timeout": 300,
+    "version": "3.1.0",
+    "service_package_folder": "stacks/HDP/3.0/services/HDFS/package"
+  },
+  "repositoryFile": {
+    "resolved": true,
+    "repoVersion": "3.0.1.0-187",
+    "repositories": [
+      {
+        "mirrorsList": null,
+        "tags": [],
+        "ambariManaged": true,
+        "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/3.x/BUILDS/3.0.1.0-187",
+        "repoName": "HDP",
+        "components": null,
+        "distribution": null,
+        "repoId": "HDP-3.0-repo-1",
+        "applicableServices": []
+      },
+      {
+        "mirrorsList": null,
+        "tags": [
+          "GPL"
+        ],
+        "ambariManaged": true,
+        "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-GPL/centos7/3.x/BUILDS/3.0.1.0-187",
+        "repoName": "HDP-GPL",
+        "components": null,
+        "distribution": null,
+        "repoId": "HDP-3.0-GPL-repo-1",
+        "applicableServices": []
+      },
+      {
+        "mirrorsList": null,
+        "tags": [],
+        "ambariManaged": true,
+        "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.22/repos/centos7",
+        "repoName": "HDP-UTILS",
+        "components": null,
+        "distribution": null,
+        "repoId": "HDP-UTILS-1.1.0.22-repo-1",
+        "applicableServices": []
+      }
+    ],
+    "feature": {
+      "preInstalled": false,
+      "scoped": true
+    },
+    "stackName": "HDP",
+    "repoVersionId": 1,
+    "repoFileName": "ambari-hdp-1"
+  },
+  "componentLevelParams": {
+    "unlimited_key_jce_required": "false",
+    "clientsToUpdateConfigs": "[\"*\"]"
+  },
+  "clusterLevelParams": {
+    "cluster_name": "c1",
+    "not_managed_hdfs_path_list": "[\"/tmp\"]",
+    "hooks_folder": "stack-hooks",
+    "stack_name": "HDP",
+    "user_list": "[\"zookeeper\",\"ambari-qa\",\"hdfs\"]",
+    "group_list": "[\"hdfs\",\"hadoop\",\"users\"]",
+    "user_groups": "{\"zookeeper\":[\"hadoop\"],\"ambari-qa\":[\"hadoop\",\"users\"],\"hdfs\":[\"hdfs\",\"hadoop\"]}",
+    "stack_version": "3.0",
+    "dfs_type": "HDFS",
+    "blueprint_provisioning_state": "NONE"
+  },
+  "serviceName": "HDFS",
+  "role": "NAMENODE",
+  "requestId": 4,
+  "clusterHostInfo": {
+    "zookeeper_client_hosts": [
+      "host-2.openstacklocal"
+    ],
+    "all_hosts": [
+      "host-2.openstacklocal",
+      "host-1.openstacklocal"
+    ],
+    "zookeeper_server_hosts": [
+      "host-2.openstacklocal",
+      "host-1.openstacklocal"
+    ],
+    "secondary_namenode_hosts": [
+      "host-2.openstacklocal"
+    ],
+    "hdfs_client_hosts": [
+      "host-2.openstacklocal"
+    ],
+    "all_racks": [
+      "/default-rack",
+      "/default-rack"
+    ],
+    "datanode_hosts": [
+      "host-2.openstacklocal"
+    ],
+    "all_ipv4_ips": [
+      "10.10.10.10",
+      "10.10.10.11"
+    ],
+    "namenode_hosts": [
+      "host-1.openstacklocal"
+    ]
+  },
+  "clusterName": "c1",
+  "commandType": "EXECUTION_COMMAND",
+  "taskId": 15,
+  "componentVersionMap": {
+    "HDFS": {
+      "SECONDARY_NAMENODE": "3.0.1.0-187",
+      "JOURNALNODE": "3.0.1.0-187",
+      "HDFS_CLIENT": "3.0.1.0-187",
+      "DATANODE": "3.0.1.0-187",
+      "NAMENODE": "3.0.1.0-187",
+      "NFS_GATEWAY": "3.0.1.0-187",
+      "ZKFC": "3.0.1.0-187"
+    },
+    "ZOOKEEPER": {
+      "ZOOKEEPER_SERVER": "3.0.1.0-187",
+      "ZOOKEEPER_CLIENT": "3.0.1.0-187"
+    }
+  },
+  "requiredConfigTimestamp": 1538508955998,
+  "ambariLevelParams": {
+    "jdk_location": "http://host-1.openstacklocal:8080/resources",
+    "agent_stack_retry_count": "5",
+    "java_home": "/usr/jdk64/jdk1.8.0_112",
+    "agent_stack_retry_on_unavailability": "false",
+    "ambari_db_rca_url": "jdbc:postgresql://host-1.openstacklocal/ambarirca",
+    "jce_name": "jce_policy-8.zip",
+    "java_version": "8",
+    "oracle_jdbc_url": "http://host-1.openstacklocal:8080/resources/ojdbc6.jar",
+    "ambari_server_host": "host-1.openstacklocal",
+    "ambari_db_rca_password": "mapred",
+    "gpl_license_accepted": "false",
+    "ambari_server_port": "8080",
+    "host_sys_prepped": "false",
+    "db_name": "ambari",
+    "ambari_db_rca_driver": "org.postgresql.Driver",
+    "ambari_server_use_ssl": "false",
+    "jdk_name": "jdk-8u112-linux-x64.tar.gz",
+    "ambari_db_rca_username": "mapred",
+    "db_driver_filename": "mysql-connector-java.jar",
+    "mysql_jdbc_url": "http://host-1.openstacklocal:8080/resources/mysql-connector-java.jar"
+  },
+  "roleCommand": "START",
+  "configurationAttributes": {
+    "ranger-hdfs-audit": {},
+    "ssl-client": {},
+    "ranger-hdfs-plugin-properties": {},
+    "ssl-server": {},
+    "ranger-hdfs-policymgr-ssl": {},
+    "core-site": {
+      "final": {
+        "fs.defaultFS": "true"
+      }
+    },
+    "viewfs-mount-table": {},
+    "zoo.cfg": {},
+    "ranger-hdfs-security": {},
+    "hdfs-site": {
+      "final": {
+        "dfs.datanode.failed.volumes.tolerated": "true",
+        "dfs.datanode.data.dir": "true",
+        "dfs.namenode.http-address": "true",
+        "dfs.namenode.name.dir": "true",
+        "dfs.webhdfs.enabled": "true"
+      }
+    },
+    "hadoop-metrics2.properties": {},
+    "hadoop-policy": {},
+    "hdfs-log4j": {},
+    "hadoop-env": {},
+    "zookeeper-env": {},
+    "zookeeper-log4j": {},
+    "cluster-env": {}
+  },
+  "hostLevelParams": {
+    "recoveryConfig": {
+      "components": []
+    },
+    "hostRepositories": {
+      "componentRepos": {
+        "ZOOKEEPER_SERVER": 1,
+        "NAMENODE": 1
+      },
+      "commandRepos": {
+        "1": {
+          "resolved": false,
+          "repoVersion": "3.0.1.0",
+          "repositories": [
+            {
+              "mirrorsList": null,
+              "tags": [],
+              "ambariManaged": true,
+              "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/3.x/BUILDS/3.0.1.0-187",
+              "repoName": "HDP",
+              "components": null,
+              "distribution": null,
+              "repoId": "HDP-3.0-repo-1",
+              "applicableServices": []
+            },
+            {
+              "mirrorsList": null,
+              "tags": [
+                "GPL"
+              ],
+              "ambariManaged": true,
+              "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-GPL/centos7/3.x/BUILDS/3.0.1.0-187",
+              "repoName": "HDP-GPL",
+              "components": null,
+              "distribution": null,
+              "repoId": "HDP-3.0-GPL-repo-1",
+              "applicableServices": []
+            },
+            {
+              "mirrorsList": null,
+              "tags": [],
+              "ambariManaged": true,
+              "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.22/repos/centos7",
+              "repoName": "HDP-UTILS",
+              "components": null,
+              "distribution": null,
+              "repoId": "HDP-UTILS-1.1.0.22-repo-1",
+              "applicableServices": []
+            }
+          ],
+          "feature": {
+            "preInstalled": false,
+            "scoped": true
+          },
+          "stackName": "HDP",
+          "repoVersionId": 1,
+          "repoFileName": "ambari-hdp-1"
+        }
+      }
+    }
+  },
+  "commandParams": {
+    "service_package_folder": "stacks/HDP/3.0/services/HDFS/package",
+    "hooks_folder": "stack-hooks",
+    "script": "scripts/namenode.py",
+    "version": "3.0.1.0-187",
+    "max_duration_for_retries": "0",
+    "command_retry_enabled": "false",
+    "command_timeout": "1800",
+    "refresh_topology": "True",
+    "script_type": "PYTHON"
+  },
+  "configurations": {
+    "ranger-hdfs-audit": {},
+    "ssl-client": {
+      "ssl.client.truststore.reload.interval": "10000",
+      "ssl.client.keystore.password": "",
+      "ssl.client.keystore.location": "",
+      "ssl.client.truststore.type": "jks",
+      "ssl.client.truststore.location": "",
+      "ssl.client.truststore.password": "",
+      "ssl.client.keystore.type": "jks"
+    },
+    "ranger-hdfs-plugin-properties": {},
+    "ssl-server": {
+      "ssl.server.truststore.type": "jks",
+      "ssl.server.keystore.keypassword": "bigdata",
+      "ssl.server.truststore.location": "/etc/security/serverKeys/all.jks",
+      "ssl.server.keystore.password": "bigdata",
+      "ssl.server.truststore.password": "bigdata",
+      "ssl.server.keystore.location": "/etc/security/serverKeys/keystore.jks",
+      "ssl.server.keystore.type": "jks",
+      "ssl.server.truststore.reload.interval": "10000"
+    },
+    "ranger-hdfs-policymgr-ssl": {},
+    "core-site": {
+      "net.topology.script.file.name": "/etc/hadoop/conf/topology_script.py",
+      "fs.s3a.fast.upload": "true",
+      "hadoop.security.instrumentation.requires.admin": "false",
+      "fs.s3a.fast.upload.buffer": "disk",
+      "fs.s3a.multipart.size": "67108864",
+      "fs.trash.interval": "360",
+      "fs.azure.user.agent.prefix": "User-Agent: APN/1.0 Hortonworks/1.0 HDP/{{version}}",
+      "ipc.server.tcpnodelay": "true",
+      "io.compression.codecs": "org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.SnappyCodec",
+      "hadoop.proxyuser.root.groups": "*",
+      "hadoop.http.cross-origin.allowed-headers": "X-Requested-With,Content-Type,Accept,Origin,WWW-Authenticate,Accept-Encoding,Transfer-Encoding",
+      "ipc.client.connect.max.retries": "50",
+      "ipc.client.idlethreshold": "8000",
+      "io.file.buffer.size": "131072",
+      "fs.s3a.user.agent.prefix": "User-Agent: APN/1.0 Hortonworks/1.0 HDP/{{version}}",
+      "io.serializations": "org.apache.hadoop.io.serializer.WritableSerialization",
+      "hadoop.security.authentication": "simple",
+      "hadoop.http.filter.initializers": "org.apache.hadoop.security.AuthenticationFilterInitializer,org.apache.hadoop.security.HttpCrossOriginFilterInitializer",
+      "hadoop.proxyuser.root.hosts": "host-1.openstacklocal",
+      "mapreduce.jobtracker.webinterface.trusted": "false",
+      "hadoop.http.cross-origin.allowed-methods": "GET,PUT,POST,OPTIONS,HEAD,DELETE",
+      "hadoop.http.cross-origin.max-age": "1800",
+      "hadoop.proxyuser.hdfs.hosts": "*",
+      "fs.defaultFS": "hdfs://host-1.openstacklocal:8020",
+      "ha.failover-controller.active-standby-elector.zk.op.retries": "120",
+      "hadoop.security.authorization": "false",
+      "hadoop.http.authentication.simple.anonymous.allowed": "true",
+      "hadoop.proxyuser.hdfs.groups": "*",
+      "hadoop.security.auth_to_local": "DEFAULT",
+      "hadoop.http.cross-origin.allowed-origins": "*",
+      "ipc.client.connection.maxidletime": "30000"
+    },
+    "viewfs-mount-table": {
+      "content": " "
+    },
+    "zoo.cfg": {
+      "clientPort": "2181",
+      "autopurge.purgeInterval": "24",
+      "syncLimit": "5",
+      "dataDir": "/hadoop/zookeeper",
+      "initLimit": "10",
+      "tickTime": "3000",
+      "autopurge.snapRetainCount": "30"
+    },
+    "ranger-hdfs-security": {},
+    "hdfs-site": {
+      "dfs.namenode.avoid.write.stale.datanode": "true",
+      "dfs.namenode.startup.delay.block.deletion.sec": "3600",
+      "dfs.namenode.checkpoint.txns": "1000000",
+      "dfs.heartbeat.interval": "3",
+      "dfs.content-summary.limit": "5000",
+      "dfs.datanode.address": "0.0.0.0:50010",
+      "dfs.cluster.administrators": " hdfs",
+      "dfs.replication": "3",
+      "dfs.namenode.audit.log.async": "true",
+      "dfs.datanode.balance.bandwidthPerSec": "6250000",
+      "dfs.namenode.safemode.threshold-pct": "1",
+      "dfs.namenode.checkpoint.edits.dir": "${dfs.namenode.checkpoint.dir}",
+      "dfs.namenode.rpc-address": "host-1.openstacklocal:8020",
+      "dfs.permissions.enabled": "true",
+      "dfs.client.read.shortcircuit": "true",
+      "dfs.journalnode.https-address": "0.0.0.0:8481",
+      "dfs.namenode.https-address": "host-1.openstacklocal:50470",
+      "nfs.file.dump.dir": "/tmp/.hdfs-nfs",
+      "dfs.blocksize": "134217728",
+      "dfs.journalnode.edits.dir": "/hadoop/hdfs/journalnode",
+      "dfs.namenode.fslock.fair": "false",
+      "dfs.datanode.max.transfer.threads": "4096",
+      "hadoop.caller.context.enabled": "true",
+      "dfs.webhdfs.enabled": "true",
+      "dfs.namenode.handler.count": "50",
+      "dfs.namenode.checkpoint.dir": "/hadoop/hdfs/namesecondary",
+      "fs.permissions.umask-mode": "022",
+      "dfs.datanode.http.address": "0.0.0.0:50075",
+      "dfs.datanode.ipc.address": "0.0.0.0:8010",
+      "dfs.namenode.name.dir": "/hadoop/hdfs/namenode,/grid/0/hadoop/hdfs/namenode",
+      "dfs.datanode.failed.volumes.tolerated": "0",
+      "dfs.namenode.acls.enabled": "true",
+      "dfs.datanode.data.dir": "/hadoop/hdfs/data,/grid/0/hadoop/hdfs/data",
+      "manage.include.files": "false",
+      "dfs.blockreport.initialDelay": "120",
+      "dfs.encrypt.data.transfer.cipher.suites": "AES/CTR/NoPadding",
+      "dfs.namenode.accesstime.precision": "0",
+      "dfs.datanode.https.address": "0.0.0.0:50475",
+      "dfs.namenode.write.stale.datanode.ratio": "1.0f",
+      "dfs.namenode.secondary.http-address": "host-2.openstacklocal:50090",
+      "nfs.exports.allowed.hosts": "* rw",
+      "dfs.namenode.stale.datanode.interval": "30000",
+      "dfs.datanode.du.reserved": "33011188224",
+      "dfs.client.read.shortcircuit.streams.cache.size": "4096",
+      "dfs.http.policy": "HTTP_ONLY",
+      "dfs.block.access.token.enable": "true",
+      "dfs.namenode.http-address": "host-1.openstacklocal:50070",
+      "dfs.client.retry.policy.enabled": "false",
+      "dfs.permissions.superusergroup": "hdfs",
+      "dfs.https.port": "50470",
+      "dfs.journalnode.http-address": "0.0.0.0:8480",
+      "dfs.domain.socket.path": "/var/lib/hadoop-hdfs/dn_socket",
+      "dfs.namenode.avoid.read.stale.datanode": "true",
+      "dfs.hosts.exclude": "/etc/hadoop/conf/dfs.exclude",
+      "dfs.datanode.data.dir.perm": "750",
+      "dfs.namenode.name.dir.restore": "true",
+      "dfs.replication.max": "50",
+      "dfs.namenode.checkpoint.period": "21600"
+    },
+    "hadoop-metrics2.properties": {
+      "content": "\n{% if has_ganglia_server %}\n*.period=60\n\n*.sink.ganglia.class=org.apache.hadoop.metrics2.sink.ganglia.GangliaSink31\n*.sink.ganglia.period=10\n\n# default for supportsparse is false\n*.sink.ganglia.supportsparse=true\n\n.sink.ganglia.slope=jvm.metrics.gcCount=zero,jvm.metrics.memHeapUsedM=both\n.sink.ganglia.dmax=jvm.metrics.threadsBlocked=70,jvm.metrics.memHeapUsedM=40\n\n# Hook up to the server\nnamenode.sink.ganglia.servers={{ganglia_server_host}}:8661\ndatanode.sink.ganglia.servers={{ganglia_server_host}}:8659\njobtracker.sink.ganglia.servers={{ganglia_server_host}}:8662\ntasktracker.sink.ganglia.servers={{ganglia_server_host}}:8658\nmaptask.sink.ganglia.servers={{ganglia_server_host}}:8660\nreducetask.sink.ganglia.servers={{ganglia_server_host}}:8660\nresourcemanager.sink.ganglia.servers={{ganglia_server_host}}:8664\nnodemanager.sink.ganglia.servers={{ganglia_server_host}}:8657\nhistoryserver.sink.ganglia.servers={{ganglia_server_host}}:8666\njournalnode.sink.ganglia.servers={{ganglia_server_host}}:8654\nnimbus.sink.ganglia.servers={{ganglia_server_host}}:8649\nsupervisor.sink.ganglia.servers={{ganglia_server_host}}:8650\n\nresourcemanager.sink.ganglia.tagsForPrefix.yarn=Queue\n\n{% endif %}\n\n{% if has_metric_collector %}\n\n*.period={{metrics_collection_period}}\n*.sink.timeline.plugin.urls=file:///usr/lib/ambari-metrics-hadoop-sink/ambari-metrics-hadoop-sink.jar\n*.sink.timeline.class=org.apache.hadoop.metrics2.sink.timeline.HadoopTimelineMetricsSink\n*.sink.timeline.period={{metrics_collection_period}}\n*.sink.timeline.sendInterval={{metrics_report_interval}}000\n*.sink.timeline.slave.host.name={{hostname}}\n*.sink.timeline.zookeeper.quorum={{zookeeper_quorum}}\n*.sink.timeline.protocol={{metric_collector_protocol}}\n*.sink.timeline.port={{metric_collector_port}}\n*.sink.timeline.instanceId = {{cluster_name}}\n*.sink.timeline.set.instanceId = {{set_instanceId}}\n*.sink.timeline.host_in_memory_aggregation = {{host_in_memory_aggregation}}\n*.sink.timeline.host_in_memory_aggregation_port = {{host_in_memory_aggregation_port}}\n{% if is_aggregation_https_enabled %}\n*.sink.timeline.host_in_memory_aggregation_protocol = {{host_in_memory_aggregation_protocol}}\n{% endif %}\n\n# HTTPS properties\n*.sink.timeline.truststore.path = {{metric_truststore_path}}\n*.sink.timeline.truststore.type = {{metric_truststore_type}}\n*.sink.timeline.truststore.password = {{metric_truststore_password}}\n\ndatanode.sink.timeline.collector.hosts={{ams_collector_hosts}}\nnamenode.sink.timeline.collector.hosts={{ams_collector_hosts}}\nresourcemanager.sink.timeline.collector.hosts={{ams_collector_hosts}}\nnodemanager.sink.timeline.collector.hosts={{ams_collector_hosts}}\njobhistoryserver.sink.timeline.collector.hosts={{ams_collector_hosts}}\njournalnode.sink.timeline.collector.hosts={{ams_collector_hosts}}\nmaptask.sink.timeline.collector.hosts={{ams_collector_hosts}}\nreducetask.sink.timeline.collector.hosts={{ams_collector_hosts}}\napplicationhistoryserver.sink.timeline.collector.hosts={{ams_collector_hosts}}\n\nresourcemanager.sink.timeline.tagsForPrefix.yarn=Queue\n\n{% if is_nn_client_port_configured %}\n# Namenode rpc ports customization\nnamenode.sink.timeline.metric.rpc.client.port={{nn_rpc_client_port}}\n{% endif %}\n{% if is_nn_dn_port_configured %}\nnamenode.sink.timeline.metric.rpc.datanode.port={{nn_rpc_dn_port}}\n{% endif %}\n{% if is_nn_healthcheck_port_configured %}\nnamenode.sink.timeline.metric.rpc.healthcheck.port={{nn_rpc_healthcheck_port}}\n{% endif %}\n\n{% endif %}"
+    },
+    "hadoop-policy": {
+      "security.job.client.protocol.acl": "*",
+      "security.job.task.protocol.acl": "*",
+      "security.datanode.protocol.acl": "*",
+      "security.namenode.protocol.acl": "*",
+      "security.client.datanode.protocol.acl": "*",
+      "security.inter.tracker.protocol.acl": "*",
+      "security.refresh.usertogroups.mappings.protocol.acl": "hadoop",
+      "security.client.protocol.acl": "*",
+      "security.refresh.policy.protocol.acl": "hadoop",
+      "security.admin.operations.protocol.acl": "hadoop",
+      "security.inter.datanode.protocol.acl": "*"
+    },
+    "hdfs-log4j": {
+      "content": "\n#\n# Licensed to the Apache Software Foundation (ASF) under one\n# or more contributor license agreements.  See the NOTICE file\n# distributed with this work for additional information\n# regarding copyright ownership.  The ASF licenses this file\n# to you under the Apache License, Version 2.0 (the\n# \"License\"); you may not use this file except in compliance\n# with the License.  You may obtain a copy of the License at\n#\n#  http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing,\n# software distributed under the License is distributed on an\n# \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n# KIND, either express or implied.  See the License for the\n# specific language governing permissions and limitations\n# under the License.\n#\n\n\n# Define some default values that can be overridden by system properties\n# To change daemon root logger use hadoop_root_logger in hadoop-env\nhadoop.root.logger=INFO,console\nhadoop.log.dir=.\nhadoop.log.file=hadoop.log\n\n\n# Define the root logger to the system property \"hadoop.root.logger\".\nlog4j.rootLogger=${hadoop.root.logger}, EventCounter\n\n# Logging Threshold\nlog4j.threshhold=ALL\n\n#\n# Daily Rolling File Appender\n#\n\nlog4j.appender.DRFA=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFA.File=${hadoop.log.dir}/${hadoop.log.file}\n\n# Rollver at midnight\nlog4j.appender.DRFA.DatePattern=.yyyy-MM-dd\n\n# 30-day backup\n#log4j.appender.DRFA.MaxBackupIndex=30\nlog4j.appender.DRFA.layout=org.apache.log4j.PatternLayout\n\n# Pattern format: Date LogLevel LoggerName LogMessage\nlog4j.appender.DRFA.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\n# Debugging Pattern format\n#log4j.appender.DRFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n\n\n\n#\n# console\n# Add \"console\" to rootlogger above if you want to use this\n#\n\nlog4j.appender.console=org.apache.log4j.ConsoleAppender\nlog4j.appender.console.target=System.err\nlog4j.appender.console.layout=org.apache.log4j.PatternLayout\nlog4j.appender.console.layout.ConversionPattern=%d{yy/MM/dd HH:mm:ss} %p %c{2}: %m%n\n\n#\n# TaskLog Appender\n#\n\n#Default values\nhadoop.tasklog.taskid=null\nhadoop.tasklog.iscleanup=false\nhadoop.tasklog.noKeepSplits=4\nhadoop.tasklog.totalLogFileSize=100\nhadoop.tasklog.purgeLogSplits=true\nhadoop.tasklog.logsRetainHours=12\n\nlog4j.appender.TLA=org.apache.hadoop.mapred.TaskLogAppender\nlog4j.appender.TLA.taskId=${hadoop.tasklog.taskid}\nlog4j.appender.TLA.isCleanup=${hadoop.tasklog.iscleanup}\nlog4j.appender.TLA.totalLogFileSize=${hadoop.tasklog.totalLogFileSize}\n\nlog4j.appender.TLA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.TLA.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\n\n#\n#Security audit appender\n#\nhadoop.security.logger=INFO,console\nhadoop.security.log.maxfilesize={{hadoop_security_log_max_backup_size}}MB\nhadoop.security.log.maxbackupindex={{hadoop_security_log_number_of_backup_files}}\nlog4j.category.SecurityLogger=${hadoop.security.logger}\nhadoop.security.log.file=SecurityAuth.audit\nlog4j.additivity.SecurityLogger=false\nlog4j.appender.DRFAS=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFAS.File=${hadoop.log.dir}/${hadoop.security.log.file}\nlog4j.appender.DRFAS.layout=org.apache.log4j.PatternLayout\nlog4j.appender.DRFAS.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\nlog4j.appender.DRFAS.DatePattern=.yyyy-MM-dd\n\nlog4j.appender.RFAS=org.apache.log4j.RollingFileAppender\nlog4j.appender.RFAS.File=${hadoop.log.dir}/${hadoop.security.log.file}\nlog4j.appender.RFAS.layout=org.apache.log4j.PatternLayout\nlog4j.appender.RFAS.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\nlog4j.appender.RFAS.MaxFileSize=${hadoop.security.log.maxfilesize}\nlog4j.appender.RFAS.MaxBackupIndex=${hadoop.security.log.maxbackupindex}\n\n#\n# hdfs audit logging\n#\nhdfs.audit.logger=INFO,console\nlog4j.logger.org.apache.hadoop.hdfs.server.namenode.FSNamesystem.audit=${hdfs.audit.logger}\nlog4j.additivity.org.apache.hadoop.hdfs.server.namenode.FSNamesystem.audit=false\nlog4j.appender.DRFAAUDIT=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFAAUDIT.File=${hadoop.log.dir}/hdfs-audit.log\nlog4j.appender.DRFAAUDIT.layout=org.apache.log4j.PatternLayout\nlog4j.appender.DRFAAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n\nlog4j.appender.DRFAAUDIT.DatePattern=.yyyy-MM-dd\n\n#\n# NameNode metrics logging.\n# The default is to retain two namenode-metrics.log files up to 64MB each.\n#\nnamenode.metrics.logger=INFO,NullAppender\nlog4j.logger.NameNodeMetricsLog=${namenode.metrics.logger}\nlog4j.additivity.NameNodeMetricsLog=false\nlog4j.appender.NNMETRICSRFA=org.apache.log4j.RollingFileAppender\nlog4j.appender.NNMETRICSRFA.File=${hadoop.log.dir}/namenode-metrics.log\nlog4j.appender.NNMETRICSRFA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.NNMETRICSRFA.layout.ConversionPattern=%d{ISO8601} %m%n\nlog4j.appender.NNMETRICSRFA.MaxBackupIndex=1\nlog4j.appender.NNMETRICSRFA.MaxFileSize=64MB\n\n#\n# mapred audit logging\n#\nmapred.audit.logger=INFO,console\nlog4j.logger.org.apache.hadoop.mapred.AuditLogger=${mapred.audit.logger}\nlog4j.additivity.org.apache.hadoop.mapred.AuditLogger=false\nlog4j.appender.MRAUDIT=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.MRAUDIT.File=${hadoop.log.dir}/mapred-audit.log\nlog4j.appender.MRAUDIT.layout=org.apache.log4j.PatternLayout\nlog4j.appender.MRAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n\nlog4j.appender.MRAUDIT.DatePattern=.yyyy-MM-dd\n\n#\n# Rolling File Appender\n#\n\nlog4j.appender.RFA=org.apache.log4j.RollingFileAppender\nlog4j.appender.RFA.File=${hadoop.log.dir}/${hadoop.log.file}\n\n# Logfile size and and 30-day backups\nlog4j.appender.RFA.MaxFileSize={{hadoop_log_max_backup_size}}MB\nlog4j.appender.RFA.MaxBackupIndex={{hadoop_log_number_of_backup_files}}\n\nlog4j.appender.RFA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} - %m%n\nlog4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n\n\n\n# Custom Logging levels\n\nhadoop.metrics.log.level=INFO\n#log4j.logger.org.apache.hadoop.mapred.JobTracker=DEBUG\n#log4j.logger.org.apache.hadoop.mapred.TaskTracker=DEBUG\n#log4j.logger.org.apache.hadoop.fs.FSNamesystem=DEBUG\nlog4j.logger.org.apache.hadoop.metrics2=${hadoop.metrics.log.level}\n\n# Jets3t library\nlog4j.logger.org.jets3t.service.impl.rest.httpclient.RestS3Service=ERROR\n\n#\n# Null Appender\n# Trap security logger on the hadoop client side\n#\nlog4j.appender.NullAppender=org.apache.log4j.varia.NullAppender\n\n#\n# Event Counter Appender\n# Sends counts of logging messages at different severity levels to Hadoop Metrics.\n#\nlog4j.appender.EventCounter=org.apache.hadoop.log.metrics.EventCounter\n\n# Removes \"deprecated\" messages\nlog4j.logger.org.apache.hadoop.conf.Configuration.deprecation=WARN\n\n#\n# HDFS block state change log from block manager\n#\n# Uncomment the following to suppress normal block state change\n# messages from BlockManager in NameNode.\n#log4j.logger.BlockStateChange=WARN\n\n# Adding logging for 3rd party library\nlog4j.logger.org.apache.commons.beanutils=WARN",
+      "hadoop_security_log_max_backup_size": "256",
+      "hadoop_log_max_backup_size": "256",
+      "hadoop_log_number_of_backup_files": "10",
+      "hadoop_security_log_number_of_backup_files": "20"
+    },
+    "hadoop-env": {
+      "hadoop_root_logger": "INFO,RFA",
+      "namenode_opt_maxnewsize": "128m",
+      "hdfs_user_nproc_limit": "65536",
+      "hdfs_log_dir_prefix": "/var/log/hadoop",
+      "keyserver_host": " ",
+      "hdfs_user": "hdfs",
+      "namenode_backup_dir": "/tmp/upgrades",
+      "keyserver_port": "",
+      "proxyuser_group": "users",
+      "hadoop_pid_dir_prefix": "/var/run/hadoop",
+      "content": "\n      # Set Hadoop-specific environment variables here.\n\n      # The only required environment variable is JAVA_HOME.  All others are\n      # optional.  When running a distributed configuration it is best to\n      # set JAVA_HOME in this file, so that it is correctly defined on\n      # remote nodes.\n\n      # The java implementation to use.  Required.\n      export JAVA_HOME={{java_home}}\n      export HADOOP_HOME_WARN_SUPPRESS=1\n\n      # Hadoop home directory\n      export HADOOP_HOME=${HADOOP_HOME:-{{hadoop_home}}}\n\n      # Hadoop Configuration Directory\n\n      {# this is different for HDP1 #}\n      # Path to jsvc required by secure HDP 2.0 datanode\n      export JSVC_HOME={{jsvc_path}}\n\n\n      # The maximum amount of heap to use, in MB. Default is 1000.\n      export HADOOP_HEAPSIZE=\"{{hadoop_heapsize}}\"\n\n      export HADOOP_NAMENODE_INIT_HEAPSIZE=\"-Xms{{namenode_heapsize}}\"\n\n      # Extra Java runtime options.  Empty by default.\n      export HADOOP_OPTS=\"-Djava.net.preferIPv4Stack=true ${HADOOP_OPTS}\"\n\n      USER=\"$(whoami)\"\n\n      # Command specific options appended to HADOOP_OPTS when specified\n      HADOOP_JOBTRACKER_OPTS=\"-server -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC -XX:ErrorFile={{hdfs_log_dir_prefix}}/$USER/hs_err_pid%p.log -XX:NewSize={{jtnode_opt_newsize}} -XX:MaxNewSize={{jtnode_opt_maxnewsize}} -Xloggc:{{hdfs_log_dir_prefix}}/$USER/gc.log-`date +'%Y%m%d%H%M'` -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xmx{{jtnode_heapsize}} -Dhadoop.security.logger=INFO,DRFAS -Dmapred.audit.logger=INFO,MRAUDIT -Dhadoop.mapreduce.jobsummary.logger=INFO,JSA ${HADOOP_JOBTRACKER_OPTS}\"\n\n      HADOOP_TASKTRACKER_OPTS=\"-server -Xmx{{ttnode_heapsize}} -Dhadoop.security.logger=ERROR,console -Dmapred.audit.logger=ERROR,console ${HADOOP_TASKTRACKER_OPTS}\"\n\n      {% if java_version < 8 %}\n      SHARED_HDFS_NAMENODE_OPTS=\"-server -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC -XX:ErrorFile={{hdfs_log_dir_prefix}}/$USER/hs_err_pid%p.log -XX:NewSize={{namenode_opt_newsize}} -XX:MaxNewSize={{namenode_opt_maxnewsize}} -XX:PermSize={{namenode_opt_permsize}} -XX:MaxPermSize={{namenode_opt_maxpermsize}} -Xloggc:{{hdfs_log_dir_prefix}}/$USER/gc.log-`date +'%Y%m%d%H%M'` -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseCMSInitiatingOccupancyOnly -Xms{{namenode_heapsize}} -Xmx{{namenode_heapsize}} -Dhadoop.security.logger=INFO,DRFAS -Dhdfs.audit.logger=INFO,DRFAAUDIT\"\n      export HDFS_NAMENODE_OPTS=\"${SHARED_HDFS_NAMENODE_OPTS} -XX:OnOutOfMemoryError=\\\"/usr/hdp/current/hadoop-hdfs-namenode/bin/kill-name-node\\\" -Dorg.mortbay.jetty.Request.maxFormContentSize=-1 ${HDFS_NAMENODE_OPTS}\"\n      export HDFS_DATANODE_OPTS=\"-server -XX:ParallelGCThreads=4 -XX:+UseConcMarkSweepGC -XX:OnOutOfMemoryError=\\\"/usr/hdp/current/hadoop-hdfs-datanode/bin/kill-data-node\\\" -XX:ErrorFile=/var/log/hadoop/$USER/hs_err_pid%p.log -XX:NewSize=200m -XX:MaxNewSize=200m -XX:PermSize=128m -XX:MaxPermSize=256m -Xloggc:/var/log/hadoop/$USER/gc.log-`date +'%Y%m%d%H%M'` -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xms{{dtnode_heapsize}} -Xmx{{dtnode_heapsize}} -Dhadoop.security.logger=INFO,DRFAS -Dhdfs.audit.logger=INFO,DRFAAUDIT ${HDFS_DATANODE_OPTS} -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseCMSInitiatingOccupancyOnly\"\n\n      export HDFS_SECONDARYNAMENODE_OPTS=\"${SHARED_HDFS_NAMENODE_OPTS} -XX:OnOutOfMemoryError=\\\"/usr/hdp/current/hadoop-hdfs-secondarynamenode/bin/kill-secondary-name-node\\\" ${HDFS_SECONDARYNAMENODE_OPTS}\"\n\n      # The following applies to multiple commands (fs, dfs, fsck, distcp etc)\n      export HADOOP_CLIENT_OPTS=\"-Xmx${HADOOP_HEAPSIZE}m -XX:MaxPermSize=512m $HADOOP_CLIENT_OPTS\"\n\n      {% else %}\n      SHARED_HDFS_NAMENODE_OPTS=\"-server -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC -XX:ErrorFile={{hdfs_log_dir_prefix}}/$USER/hs_err_pid%p.log -XX:NewSize={{namenode_opt_newsize}} -XX:MaxNewSize={{namenode_opt_maxnewsize}} -Xloggc:{{hdfs_log_dir_prefix}}/$USER/gc.log-`date +'%Y%m%d%H%M'` -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseCMSInitiatingOccupancyOnly -Xms{{namenode_heapsize}} -Xmx{{namenode_heapsize}} -Dhadoop.security.logger=INFO,DRFAS -Dhdfs.audit.logger=INFO,DRFAAUDIT\"\n      export HDFS_NAMENODE_OPTS=\"${SHARED_HDFS_NAMENODE_OPTS} -XX:OnOutOfMemoryError=\\\"/usr/hdp/current/hadoop-hdfs-namenode/bin/kill-name-node\\\" -Dorg.mortbay.jetty.Request.maxFormContentSize=-1 ${HDFS_NAMENODE_OPTS}\"\n      export HDFS_DATANODE_OPTS=\"-server -XX:ParallelGCThreads=4 -XX:+UseConcMarkSweepGC -XX:OnOutOfMemoryError=\\\"/usr/hdp/current/hadoop-hdfs-datanode/bin/kill-data-node\\\" -XX:ErrorFile=/var/log/hadoop/$USER/hs_err_pid%p.log -XX:NewSize=200m -XX:MaxNewSize=200m -Xloggc:/var/log/hadoop/$USER/gc.log-`date +'%Y%m%d%H%M'` -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xms{{dtnode_heapsize}} -Xmx{{dtnode_heapsize}} -Dhadoop.security.logger=INFO,DRFAS -Dhdfs.audit.logger=INFO,DRFAAUDIT ${HDFS_DATANODE_OPTS} -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseCMSInitiatingOccupancyOnly\"\n\n      export HDFS_SECONDARYNAMENODE_OPTS=\"${SHARED_HDFS_NAMENODE_OPTS} -XX:OnOutOfMemoryError=\\\"/usr/hdp/current/hadoop-hdfs-secondarynamenode/bin/kill-secondary-name-node\\\" ${HDFS_SECONDARYNAMENODE_OPTS}\"\n\n      # The following applies to multiple commands (fs, dfs, fsck, distcp etc)\n      export HADOOP_CLIENT_OPTS=\"-Xmx${HADOOP_HEAPSIZE}m $HADOOP_CLIENT_OPTS\"\n      {% endif %}\n\n      {% if security_enabled %}\n      export HDFS_NAMENODE_OPTS=\"$HDFS_NAMENODE_OPTS -Djava.security.auth.login.config={{hadoop_conf_dir}}/hdfs_nn_jaas.conf -Djavax.security.auth.useSubjectCredsOnly=false\"\n      export HDFS_SECONDARYNAMENODE_OPTS=\"$HDFS_SECONDARYNAMENODE_OPTS -Djava.security.auth.login.config={{hadoop_conf_dir}}/hdfs_nn_jaas.conf -Djavax.security.auth.useSubjectCredsOnly=false\"\n      export HDFS_DATANODE_OPTS=\"$HDFS_DATANODE_OPTS -Djava.security.auth.login.config={{hadoop_conf_dir}}/hdfs_dn_jaas.conf -Djavax.security.auth.useSubjectCredsOnly=false\"\n      export HADOOP_JOURNALNODE_OPTS=\"$HADOOP_JOURNALNODE_OPTS -Djava.security.auth.login.config={{hadoop_conf_dir}}/hdfs_jn_jaas.conf -Djavax.security.auth.useSubjectCredsOnly=false\"\n      {% endif %}\n\n      HDFS_NFS3_OPTS=\"-Xmx{{nfsgateway_heapsize}}m -Dhadoop.security.logger=ERROR,DRFAS ${HDFS_NFS3_OPTS}\"\n      HADOOP_BALANCER_OPTS=\"-server -Xmx{{hadoop_heapsize}}m ${HADOOP_BALANCER_OPTS}\"\n\n\n      # On secure datanodes, user to run the datanode as after dropping privileges\n      export HDFS_DATANODE_SECURE_USER=${HDFS_DATANODE_SECURE_USER:-{{hadoop_secure_dn_user}}}\n\n      # Extra ssh options.  Empty by default.\n      export HADOOP_SSH_OPTS=\"-o ConnectTimeout=5 -o SendEnv=HADOOP_CONF_DIR\"\n\n      # Where log files are stored.  $HADOOP_HOME/logs by default.\n      export HADOOP_LOG_DIR={{hdfs_log_dir_prefix}}/$USER\n\n      # Where log files are stored in the secure data environment.\n      export HADOOP_SECURE_LOG_DIR=${HADOOP_SECURE_LOG_DIR:-{{hdfs_log_dir_prefix}}/$HDFS_DATANODE_SECURE_USER}\n\n      # File naming remote slave hosts.  $HADOOP_HOME/conf/slaves by default.\n      # export HADOOP_WORKERS=${HADOOP_HOME}/conf/slaves\n\n      # host:path where hadoop code should be rsync'd from.  Unset by default.\n      # export HADOOP_MASTER=master:/home/$USER/src/hadoop\n\n      # Seconds to sleep between slave commands.  Unset by default.  This\n      # can be useful in large clusters, where, e.g., slave rsyncs can\n      # otherwise arrive faster than the master can service them.\n      # export HADOOP_WORKER_SLEEP=0.1\n\n      # The directory where pid files are stored. /tmp by default.\n      export HADOOP_PID_DIR={{hadoop_pid_dir_prefix}}/$USER\n      export HADOOP_SECURE_PID_DIR=${HADOOP_SECURE_PID_DIR:-{{hadoop_pid_dir_prefix}}/$HDFS_DATANODE_SECURE_USER}\n\n      YARN_RESOURCEMANAGER_OPTS=\"-Dyarn.server.resourcemanager.appsummary.logger=INFO,RMSUMMARY\"\n\n      # A string representing this instance of hadoop. $USER by default.\n      export HADOOP_IDENT_STRING=$USER\n\n      # The scheduling priority for daemon processes.  See 'man nice'.\n\n      # export HADOOP_NICENESS=10\n\n      # Add database libraries\n      JAVA_JDBC_LIBS=\"\"\n      if [ -d \"/usr/share/java\" ]; then\n      for jarFile in `ls /usr/share/java | grep -E \"(mysql|ojdbc|postgresql|sqljdbc)\" 2>/dev/null`\n      do\n      JAVA_JDBC_LIBS=${JAVA_JDBC_LIBS}:$jarFile\n      done\n      fi\n\n      # Add libraries to the hadoop classpath - some may not need a colon as they already include it\n      export HADOOP_CLASSPATH=${HADOOP_CLASSPATH}${JAVA_JDBC_LIBS}\n\n      # Setting path to hdfs command line\n      export HADOOP_LIBEXEC_DIR={{hadoop_libexec_dir}}\n\n      # Mostly required for hadoop 2.0\n      export JAVA_LIBRARY_PATH=${JAVA_LIBRARY_PATH}:{{hadoop_lib_home}}/native/Linux-{{architecture}}-64\n\n      {% if zk_principal_user is defined %}\n      HADOOP_OPTS=\"-Dzookeeper.sasl.client.username={{zk_principal_user}} $HADOOP_OPTS\"\n      {% endif %}\n\n      export HADOOP_OPTS=\"-Dhdp.version=$HDP_VERSION $HADOOP_OPTS\"\n\n\n      # Fix temporary bug, when ulimit from conf files is not picked up, without full relogin.\n      # Makes sense to fix only when runing DN as root\n      if [ \"$command\" == \"datanode\" ] && [ \"$EUID\" -eq 0 ] && [ -n \"$HDFS_DATANODE_SECURE_USER\" ]; then\n      {% if is_datanode_max_locked_memory_set %}\n      ulimit -l {{datanode_max_locked_memory}}\n      {% endif %}\n      ulimit -n {{hdfs_user_nofile_limit}}\n      fi\n      # Enable ACLs on zookeper znodes if required\n      {% if hadoop_zkfc_opts is defined %}\n      export HDFS_ZKFC_OPTS=\"{{hadoop_zkfc_opts}} $HDFS_ZKFC_OPTS\"\n      {% endif %}",
+      "hdfs_user_nofile_limit": "128000",
+      "namenode_opt_newsize": "128m",
+      "nfsgateway_heapsize": "1024",
+      "dtnode_heapsize": "1024m",
+      "namenode_heapsize": "1024m",
+      "hadoop_heapsize": "1024",
+      "namenode_opt_maxpermsize": "256m",
+      "namenode_opt_permsize": "128m",
+      "hdfs_tmp_dir": "/tmp"
+    },
+    "zookeeper-env": {
+      "content": "\nexport JAVA_HOME={{java64_home}}\nexport ZOOKEEPER_HOME={{zk_home}}\nexport ZOO_LOG_DIR={{zk_log_dir}}\nexport ZOOPIDFILE={{zk_pid_file}}\nexport SERVER_JVMFLAGS={{zk_server_heapsize}}\nexport JAVA=$JAVA_HOME/bin/java\nexport CLASSPATH=$CLASSPATH:/usr/share/zookeeper/*\n\n{% if security_enabled %}\nexport SERVER_JVMFLAGS=\"$SERVER_JVMFLAGS -Djava.security.auth.login.config={{zk_server_jaas_file}}\"\nexport CLIENT_JVMFLAGS=\"$CLIENT_JVMFLAGS -Djava.security.auth.login.config={{zk_client_jaas_file}} -Dzookeeper.sasl.client.username={{zk_principal_user}}\"\n{% endif %}",
+      "zk_log_dir": "/var/log/zookeeper",
+      "zk_server_heapsize": "1024m",
+      "zk_pid_dir": "/var/run/zookeeper",
+      "zk_user": "zookeeper"
+    },
+    "zookeeper-log4j": {
+      "content": "\n#\n#\n# Licensed to the Apache Software Foundation (ASF) under one\n# or more contributor license agreements.  See the NOTICE file\n# distributed with this work for additional information\n# regarding copyright ownership.  The ASF licenses this file\n# to you under the Apache License, Version 2.0 (the\n# \"License\"); you may not use this file except in compliance\n# with the License.  You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing,\n# software distributed under the License is distributed on an\n# \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n# KIND, either express or implied.  See the License for the\n# specific language governing permissions and limitations\n# under the License.\n#\n#\n#\n\n#\n# ZooKeeper Logging Configuration\n#\n\n# DEFAULT: console appender only\nlog4j.rootLogger=INFO, CONSOLE, ROLLINGFILE\n\n# Example with rolling log file\n#log4j.rootLogger=DEBUG, CONSOLE, ROLLINGFILE\n\n# Example with rolling log file and tracing\n#log4j.rootLogger=TRACE, CONSOLE, ROLLINGFILE, TRACEFILE\n\n#\n# Log INFO level and above messages to the console\n#\nlog4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender\nlog4j.appender.CONSOLE.Threshold=INFO\nlog4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout\nlog4j.appender.CONSOLE.layout.ConversionPattern=%d{ISO8601} - %-5p [%t:%C{1}@%L] - %m%n\n\n#\n# Add ROLLINGFILE to rootLogger to get log file output\n#    Log DEBUG level and above messages to a log file\nlog4j.appender.ROLLINGFILE=org.apache.log4j.RollingFileAppender\nlog4j.appender.ROLLINGFILE.Threshold=DEBUG\nlog4j.appender.ROLLINGFILE.File={{zk_log_dir}}/zookeeper.log\n\n# Max log file size of 10MB\nlog4j.appender.ROLLINGFILE.MaxFileSize={{zookeeper_log_max_backup_size}}MB\n# uncomment the next line to limit number of backup files\n#log4j.appender.ROLLINGFILE.MaxBackupIndex={{zookeeper_log_number_of_backup_files}}\n\nlog4j.appender.ROLLINGFILE.layout=org.apache.log4j.PatternLayout\nlog4j.appender.ROLLINGFILE.layout.ConversionPattern=%d{ISO8601} - %-5p [%t:%C{1}@%L] - %m%n\n\n\n#\n# Add TRACEFILE to rootLogger to get log file output\n#    Log DEBUG level and above messages to a log file\nlog4j.appender.TRACEFILE=org.apache.log4j.FileAppender\nlog4j.appender.TRACEFILE.Threshold=TRACE\nlog4j.appender.TRACEFILE.File=zookeeper_trace.log\n\nlog4j.appender.TRACEFILE.layout=org.apache.log4j.PatternLayout\n### Notice we are including log4j's NDC here (%x)\nlog4j.appender.TRACEFILE.layout.ConversionPattern=%d{ISO8601} - %-5p [%t:%C{1}@%L][%x] - %m%n",
+      "zookeeper_log_max_backup_size": "10",
+      "zookeeper_log_number_of_backup_files": "10"
+    },
+    "cluster-env": {
+      "security_enabled": "false",
+      "hide_yarn_memory_widget": "false",
+      "stack_name": "HDP",
+      "enable_external_ranger": "false",
+      "override_uid": "true",
+      "kerberos_domain": "EXAMPLE.COM",
+      "one_dir_per_partition": "false",
+      "recovery_max_count": "6",
+      "repo_ubuntu_template": "{{package_type}} {{base_url}} {{components}}",
+      "stack_packages": "{\n  \"HDP\": {\n    \"stack-select\": {\n      \"ACCUMULO\": {\n        \"ACCUMULO_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"accumulo-client\",\n          \"INSTALL\": [\n            \"accumulo-client\"\n          ],\n          \"PATCH\": [\n            \"accumulo-client\"\n          ],\n          \"STANDARD\": [\n            \"accumulo-client\"\n          ]\n        },\n        \"ACCUMULO_GC\": {\n          \"STACK-SELECT-PACKAGE\": \"accumulo-gc\",\n          \"INSTALL\": [\n            \"accumulo-gc\"\n          ],\n          \"PATCH\": [\n            \"accumulo-gc\"\n          ],\n          \"STANDARD\": [\n            \"accumulo-gc\",\n            \"accumulo-client\"\n          ]\n        },\n        \"ACCUMULO_MASTER\": {\n          \"STACK-SELECT-PACKAGE\": \"accumulo-master\",\n          \"INSTALL\": [\n            \"accumulo-master\"\n          ],\n          \"PATCH\": [\n            \"accumulo-master\"\n          ],\n          \"STANDARD\": [\n            \"accumulo-master\",\n            \"accumulo-client\"\n          ]\n        },\n        \"ACCUMULO_MONITOR\": {\n          \"STACK-SELECT-PACKAGE\": \"accumulo-monitor\",\n          \"INSTALL\": [\n            \"accumulo-monitor\"\n          ],\n          \"PATCH\": [\n            \"accumulo-monitor\"\n          ],\n          \"STANDARD\": [\n            \"accumulo-monitor\",\n            \"accumulo-client\"\n          ]\n        },\n        \"ACCUMULO_TRACER\": {\n          \"STACK-SELECT-PACKAGE\": \"accumulo-tracer\",\n          \"INSTALL\": [\n            \"accumulo-tracer\"\n          ],\n          \"PATCH\": [\n            \"accumulo-tracer\"\n          ],\n          \"STANDARD\": [\n            \"accumulo-tracer\",\n            \"accumulo-client\"\n          ]\n        },\n        \"ACCUMULO_TSERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"accumulo-tablet\",\n          \"INSTALL\": [\n            \"accumulo-tablet\"\n          ],\n          \"PATCH\": [\n            \"accumulo-tablet\"\n          ],\n          \"STANDARD\": [\n            \"accumulo-tablet\",\n            \"accumulo-client\"\n          ]\n        }\n      },\n      \"ATLAS\": {\n        \"ATLAS_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"atlas-client\",\n          \"INSTALL\": [\n            \"atlas-client\"\n          ],\n          \"PATCH\": [\n            \"atlas-client\"\n          ],\n          \"STANDARD\": [\n            \"atlas-client\"\n          ]\n        },\n        \"ATLAS_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"atlas-server\",\n          \"INSTALL\": [\n            \"atlas-server\"\n          ],\n          \"PATCH\": [\n            \"atlas-server\"\n          ],\n          \"STANDARD\": [\n            \"atlas-server\"\n          ]\n        }\n      },\n      \"DRUID\": {\n        \"DRUID_COORDINATOR\": {\n          \"STACK-SELECT-PACKAGE\": \"druid-coordinator\",\n          \"INSTALL\": [\n            \"druid-coordinator\"\n          ],\n          \"PATCH\": [\n            \"druid-coordinator\"\n          ],\n          \"STANDARD\": [\n            \"druid-coordinator\"\n          ]\n        },\n        \"DRUID_OVERLORD\": {\n          \"STACK-SELECT-PACKAGE\": \"druid-overlord\",\n          \"INSTALL\": [\n            \"druid-overlord\"\n          ],\n          \"PATCH\": [\n            \"druid-overlord\"\n          ],\n          \"STANDARD\": [\n            \"druid-overlord\"\n          ]\n        },\n        \"DRUID_HISTORICAL\": {\n          \"STACK-SELECT-PACKAGE\": \"druid-historical\",\n          \"INSTALL\": [\n            \"druid-historical\"\n          ],\n          \"PATCH\": [\n            \"druid-historical\"\n          ],\n          \"STANDARD\": [\n            \"druid-historical\"\n          ]\n        },\n        \"DRUID_BROKER\": {\n          \"STACK-SELECT-PACKAGE\": \"druid-broker\",\n          \"INSTALL\": [\n            \"druid-broker\"\n          ],\n          \"PATCH\": [\n            \"druid-broker\"\n          ],\n          \"STANDARD\": [\n            \"druid-broker\"\n          ]\n        },\n        \"DRUID_MIDDLEMANAGER\": {\n          \"STACK-SELECT-PACKAGE\": \"druid-middlemanager\",\n          \"INSTALL\": [\n            \"druid-middlemanager\"\n          ],\n          \"PATCH\": [\n            \"druid-middlemanager\"\n          ],\n          \"STANDARD\": [\n            \"druid-middlemanager\"\n          ]\n        },\n        \"DRUID_ROUTER\": {\n          \"STACK-SELECT-PACKAGE\": \"druid-router\",\n          \"INSTALL\": [\n            \"druid-router\"\n          ],\n          \"PATCH\": [\n            \"druid-router\"\n          ],\n          \"STANDARD\": [\n            \"druid-router\"\n          ]\n        }\n      },\n      \"HBASE\": {\n        \"HBASE_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"hbase-client\",\n          \"INSTALL\": [\n            \"hbase-client\"\n          ],\n          \"PATCH\": [\n            \"hbase-client\"\n          ],\n          \"STANDARD\": [\n            \"hbase-client\",\n            \"phoenix-client\",\n            \"hadoop-client\"\n          ]\n        },\n        \"HBASE_MASTER\": {\n          \"STACK-SELECT-PACKAGE\": \"hbase-master\",\n          \"INSTALL\": [\n            \"hbase-master\"\n          ],\n          \"PATCH\": [\n            \"hbase-master\"\n          ],\n          \"STANDARD\": [\n            \"hbase-master\"\n          ]\n        },\n        \"HBASE_REGIONSERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"hbase-regionserver\",\n          \"INSTALL\": [\n            \"hbase-regionserver\"\n          ],\n          \"PATCH\": [\n            \"hbase-regionserver\"\n          ],\n          \"STANDARD\": [\n            \"hbase-regionserver\"\n          ]\n        },\n        \"PHOENIX_QUERY_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"phoenix-server\",\n          \"INSTALL\": [\n            \"phoenix-server\"\n          ],\n          \"PATCH\": [\n            \"phoenix-server\"\n          ],\n          \"STANDARD\": [\n            \"phoenix-server\"\n          ]\n        }\n      },\n      \"HDFS\": {\n        \"DATANODE\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-hdfs-datanode\",\n          \"INSTALL\": [\n            \"hadoop-hdfs-datanode\"\n          ],\n          \"PATCH\": [\n            \"hadoop-hdfs-datanode\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-hdfs-datanode\"\n          ]\n        },\n        \"HDFS_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-hdfs-client\",\n          \"INSTALL\": [\n            \"hadoop-hdfs-client\"\n          ],\n          \"PATCH\": [\n            \"hadoop-hdfs-client\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-client\"\n          ]\n        },\n        \"NAMENODE\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-hdfs-namenode\",\n          \"INSTALL\": [\n            \"hadoop-hdfs-namenode\"\n          ],\n          \"PATCH\": [\n            \"hadoop-hdfs-namenode\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-hdfs-namenode\"\n          ]\n        },\n        \"NFS_GATEWAY\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-hdfs-nfs3\",\n          \"INSTALL\": [\n            \"hadoop-hdfs-nfs3\"\n          ],\n          \"PATCH\": [\n            \"hadoop-hdfs-nfs3\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-hdfs-nfs3\"\n          ]\n        },\n        \"JOURNALNODE\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-hdfs-journalnode\",\n          \"INSTALL\": [\n            \"hadoop-hdfs-journalnode\"\n          ],\n          \"PATCH\": [\n            \"hadoop-hdfs-journalnode\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-hdfs-journalnode\"\n          ]\n        },\n        \"SECONDARY_NAMENODE\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-hdfs-secondarynamenode\",\n          \"INSTALL\": [\n            \"hadoop-hdfs-secondarynamenode\"\n          ],\n          \"PATCH\": [\n            \"hadoop-hdfs-secondarynamenode\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-hdfs-secondarynamenode\"\n          ]\n        },\n        \"ZKFC\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-hdfs-zkfc\",\n          \"INSTALL\": [\n            \"hadoop-hdfs-zkfc\"\n          ],\n          \"PATCH\": [\n            \"hadoop-hdfs-zkfc\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-hdfs-zkfc\"\n          ]\n        }\n      },\n      \"HIVE\": {\n        \"HIVE_METASTORE\": {\n          \"STACK-SELECT-PACKAGE\": \"hive-metastore\",\n          \"INSTALL\": [\n            \"hive-metastore\"\n          ],\n          \"PATCH\": [\n            \"hive-metastore\"\n          ],\n          \"STANDARD\": [\n            \"hive-metastore\"\n          ]\n        },\n        \"HIVE_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"hive-server2\",\n          \"INSTALL\": [\n            \"hive-server2\"\n          ],\n          \"PATCH\": [\n            \"hive-server2\"\n          ],\n          \"STANDARD\": [\n            \"hive-server2\"\n          ]\n        },\n        \"HIVE_SERVER_INTERACTIVE\": {\n          \"STACK-SELECT-PACKAGE\": \"hive-server2-hive\",\n          \"INSTALL\": [\n            \"hive-server2-hive\"\n          ],\n          \"PATCH\": [\n            \"hive-server2-hive\"\n          ],\n          \"STANDARD\": [\n            \"hive-server2-hive\"\n          ]\n        },\n        \"HIVE_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"hive-client\",\n          \"INSTALL\": [\n            \"hive-client\"\n          ],\n          \"PATCH\": [\n            \"hive-client\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-client\"\n          ]\n        }\n      },\n      \"KAFKA\": {\n        \"KAFKA_BROKER\": {\n          \"STACK-SELECT-PACKAGE\": \"kafka-broker\",\n          \"INSTALL\": [\n            \"kafka-broker\"\n          ],\n          \"PATCH\": [\n            \"kafka-broker\"\n          ],\n          \"STANDARD\": [\n            \"kafka-broker\"\n          ]\n        }\n      },\n      \"KNOX\": {\n        \"KNOX_GATEWAY\": {\n          \"STACK-SELECT-PACKAGE\": \"knox-server\",\n          \"INSTALL\": [\n            \"knox-server\"\n          ],\n          \"PATCH\": [\n            \"knox-server\"\n          ],\n          \"STANDARD\": [\n            \"knox-server\"\n          ]\n        }\n      },\n      \"MAPREDUCE2\": {\n        \"HISTORYSERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-mapreduce-historyserver\",\n          \"INSTALL\": [\n            \"hadoop-mapreduce-historyserver\"\n          ],\n          \"PATCH\": [\n            \"hadoop-mapreduce-historyserver\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-mapreduce-historyserver\"\n          ]\n        },\n        \"MAPREDUCE2_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-mapreduce-client\",\n          \"INSTALL\": [\n            \"hadoop-mapreduce-client\"\n          ],\n          \"PATCH\": [\n            \"hadoop-mapreduce-client\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-client\"\n          ]\n        }\n      },\n      \"OOZIE\": {\n        \"OOZIE_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"oozie-client\",\n          \"INSTALL\": [\n            \"oozie-client\"\n          ],\n          \"PATCH\": [\n            \"oozie-client\"\n          ],\n          \"STANDARD\": [\n            \"oozie-client\"\n          ]\n        },\n        \"OOZIE_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"oozie-server\",\n          \"INSTALL\": [\n            \"oozie-client\",\n            \"oozie-server\"\n          ],\n          \"PATCH\": [\n            \"oozie-server\",\n            \"oozie-client\"\n          ],\n          \"STANDARD\": [\n            \"oozie-client\",\n            \"oozie-server\"\n          ]\n        }\n      },\n      \"PIG\": {\n        \"PIG\": {\n          \"STACK-SELECT-PACKAGE\": \"pig-client\",\n          \"INSTALL\": [\n            \"pig-client\"\n          ],\n          \"PATCH\": [\n            \"pig-client\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-client\"\n          ]\n        }\n      },\n      \"RANGER\": {\n        \"RANGER_ADMIN\": {\n          \"STACK-SELECT-PACKAGE\": \"ranger-admin\",\n          \"INSTALL\": [\n            \"ranger-admin\"\n          ],\n          \"PATCH\": [\n            \"ranger-admin\"\n          ],\n          \"STANDARD\": [\n            \"ranger-admin\"\n          ]\n        },\n        \"RANGER_TAGSYNC\": {\n          \"STACK-SELECT-PACKAGE\": \"ranger-tagsync\",\n          \"INSTALL\": [\n            \"ranger-tagsync\"\n          ],\n          \"PATCH\": [\n            \"ranger-tagsync\"\n          ],\n          \"STANDARD\": [\n            \"ranger-tagsync\"\n          ]\n        },\n        \"RANGER_USERSYNC\": {\n          \"STACK-SELECT-PACKAGE\": \"ranger-usersync\",\n          \"INSTALL\": [\n            \"ranger-usersync\"\n          ],\n          \"PATCH\": [\n            \"ranger-usersync\"\n          ],\n          \"STANDARD\": [\n            \"ranger-usersync\"\n          ]\n        }\n      },\n      \"RANGER_KMS\": {\n        \"RANGER_KMS_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"ranger-kms\",\n          \"INSTALL\": [\n            \"ranger-kms\"\n          ],\n          \"PATCH\": [\n            \"ranger-kms\"\n          ],\n          \"STANDARD\": [\n            \"ranger-kms\"\n          ]\n        }\n      },\n      \"SPARK2\": {\n        \"LIVY2_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"livy2-client\",\n          \"INSTALL\": [\n            \"livy2-client\"\n          ],\n          \"PATCH\": [\n            \"livy2-client\"\n          ],\n          \"STANDARD\": [\n            \"livy2-client\"\n          ]\n        },\n        \"LIVY2_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"livy2-server\",\n          \"INSTALL\": [\n            \"livy2-server\"\n          ],\n          \"PATCH\": [\n            \"livy2-server\"\n          ],\n          \"STANDARD\": [\n            \"livy2-server\"\n          ]\n        },\n        \"SPARK2_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"spark2-client\",\n          \"INSTALL\": [\n            \"spark2-client\"\n          ],\n          \"PATCH\": [\n            \"spark2-client\"\n          ],\n          \"STANDARD\": [\n            \"spark2-client\"\n          ]\n        },\n        \"SPARK2_JOBHISTORYSERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"spark2-historyserver\",\n          \"INSTALL\": [\n            \"spark2-historyserver\"\n          ],\n          \"PATCH\": [\n            \"spark2-historyserver\"\n          ],\n          \"STANDARD\": [\n            \"spark2-historyserver\"\n          ]\n        },\n        \"SPARK2_THRIFTSERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"spark2-thriftserver\",\n          \"INSTALL\": [\n            \"spark2-thriftserver\"\n          ],\n          \"PATCH\": [\n            \"spark2-thriftserver\"\n          ],\n          \"STANDARD\": [\n            \"spark2-thriftserver\"\n          ]\n        }\n      },\n      \"SQOOP\": {\n        \"SQOOP\": {\n          \"STACK-SELECT-PACKAGE\": \"sqoop-client\",\n          \"INSTALL\": [\n            \"sqoop-client\"\n          ],\n          \"PATCH\": [\n            \"sqoop-client\"\n          ],\n          \"STANDARD\": [\n            \"sqoop-client\"\n          ]\n        }\n      },\n      \"STORM\": {\n        \"NIMBUS\": {\n          \"STACK-SELECT-PACKAGE\": \"storm-nimbus\",\n          \"INSTALL\": [\n            \"storm-client\",\n            \"storm-nimbus\"\n          ],\n          \"PATCH\": [\n            \"storm-client\",\n            \"storm-nimbus\"\n          ],\n          \"STANDARD\": [\n            \"storm-client\",\n            \"storm-nimbus\"\n          ]\n        },\n        \"SUPERVISOR\": {\n          \"STACK-SELECT-PACKAGE\": \"storm-supervisor\",\n          \"INSTALL\": [\n            \"storm-client\",\n            \"storm-supervisor\"\n          ],\n          \"PATCH\": [\n            \"storm-client\",\n            \"storm-supervisor\"\n          ],\n          \"STANDARD\": [\n            \"storm-client\",\n            \"storm-supervisor\"\n          ]\n        },\n        \"DRPC_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"storm-client\",\n          \"INSTALL\": [\n            \"storm-client\"\n          ],\n          \"PATCH\": [\n            \"storm-client\"\n          ],\n          \"STANDARD\": [\n            \"storm-client\"\n          ]\n        },\n        \"STORM_UI_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"storm-client\",\n          \"INSTALL\": [\n            \"storm-client\"\n          ],\n          \"PATCH\": [\n            \"storm-client\"\n          ],\n          \"STANDARD\": [\n            \"storm-client\"\n          ]\n        }\n      },\n      \"SUPERSET\": {\n        \"SUPERSET\": {\n          \"STACK-SELECT-PACKAGE\": \"superset\",\n          \"INSTALL\": [\n            \"superset\"\n          ],\n          \"PATCH\": [\n            \"superset\"\n          ],\n          \"STANDARD\": [\n            \"superset\"\n          ]\n        }\n      },\n      \"TEZ\": {\n        \"TEZ_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"tez-client\",\n          \"INSTALL\": [\n            \"tez-client\"\n          ],\n          \"PATCH\": [\n            \"tez-client\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-client\"\n          ]\n        }\n      },\n      \"YARN\": {\n        \"APP_TIMELINE_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-yarn-timelineserver\",\n          \"INSTALL\": [\n            \"hadoop-yarn-timelineserver\"\n          ],\n          \"PATCH\": [\n            \"hadoop-yarn-timelineserver\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-yarn-timelineserver\"\n          ]\n        },\n        \"TIMELINE_READER\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-yarn-timelinereader\",\n          \"INSTALL\": [\n            \"hadoop-yarn-timelinereader\"\n          ],\n          \"PATCH\": [\n            \"hadoop-yarn-timelinereader\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-yarn-timelinereader\"\n          ]\n        },\n        \"NODEMANAGER\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-yarn-nodemanager\",\n          \"INSTALL\": [\n            \"hadoop-yarn-nodemanager\"\n          ],\n          \"PATCH\": [\n            \"hadoop-yarn-nodemanager\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-yarn-nodemanager\"\n          ]\n        },\n        \"RESOURCEMANAGER\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-yarn-resourcemanager\",\n          \"INSTALL\": [\n            \"hadoop-yarn-resourcemanager\"\n          ],\n          \"PATCH\": [\n            \"hadoop-yarn-resourcemanager\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-yarn-resourcemanager\"\n          ]\n        },\n        \"YARN_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-yarn-client\",\n          \"INSTALL\": [\n            \"hadoop-yarn-client\"\n          ],\n          \"PATCH\": [\n            \"hadoop-yarn-client\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-client\"\n          ]\n        },\n        \"YARN_REGISTRY_DNS\": {\n          \"STACK-SELECT-PACKAGE\": \"hadoop-yarn-registrydns\",\n          \"INSTALL\": [\n            \"hadoop-yarn-registrydns\"\n          ],\n          \"PATCH\": [\n            \"hadoop-yarn-registrydns\"\n          ],\n          \"STANDARD\": [\n            \"hadoop-yarn-registrydns\"\n          ]\n        }\n      },\n      \"ZEPPELIN\": {\n        \"ZEPPELIN_MASTER\": {\n          \"STACK-SELECT-PACKAGE\": \"zeppelin-server\",\n          \"INSTALL\": [\n            \"zeppelin-server\"\n          ],\n          \"PATCH\": [\n            \"zeppelin-server\"\n          ],\n          \"STANDARD\": [\n            \"zeppelin-server\"\n          ]\n        }\n      },\n      \"ZOOKEEPER\": {\n        \"ZOOKEEPER_CLIENT\": {\n          \"STACK-SELECT-PACKAGE\": \"zookeeper-client\",\n          \"INSTALL\": [\n            \"zookeeper-client\"\n          ],\n          \"PATCH\": [\n            \"zookeeper-client\"\n          ],\n          \"STANDARD\": [\n            \"zookeeper-client\"\n          ]\n        },\n        \"ZOOKEEPER_SERVER\": {\n          \"STACK-SELECT-PACKAGE\": \"zookeeper-server\",\n          \"INSTALL\": [\n            \"zookeeper-server\"\n          ],\n          \"PATCH\": [\n            \"zookeeper-server\"\n          ],\n          \"STANDARD\": [\n            \"zookeeper-server\"\n          ]\n        }\n      }\n    },\n    \"conf-select\": {\n      \"accumulo\": [\n        {\n          \"conf_dir\": \"/etc/accumulo/conf\",\n          \"current_dir\": \"{0}/current/accumulo-client/conf\"\n        }\n      ],\n      \"atlas\": [\n        {\n          \"conf_dir\": \"/etc/atlas/conf\",\n          \"current_dir\": \"{0}/current/atlas-client/conf\"\n        }\n      ],\n      \"druid\": [\n        {\n          \"conf_dir\": \"/etc/druid/conf\",\n          \"current_dir\": \"{0}/current/druid-overlord/conf\"\n        }\n      ],\n      \"hadoop\": [\n        {\n          \"conf_dir\": \"/etc/hadoop/conf\",\n          \"current_dir\": \"{0}/current/hadoop-client/conf\"\n        }\n      ],\n      \"hbase\": [\n        {\n          \"conf_dir\": \"/etc/hbase/conf\",\n          \"current_dir\": \"{0}/current/hbase-client/conf\"\n        }\n      ],\n      \"hive\": [\n        {\n          \"conf_dir\": \"/etc/hive/conf\",\n          \"current_dir\": \"{0}/current/hive-client/conf\"\n        }\n      ],\n      \"hive2\": [\n        {\n          \"conf_dir\": \"/etc/hive2/conf\",\n          \"current_dir\": \"{0}/current/hive-server2-hive/conf\"\n        }\n      ],\n      \"hive-hcatalog\": [\n        {\n          \"conf_dir\": \"/etc/hive-webhcat/conf\",\n          \"prefix\": \"/etc/hive-webhcat\",\n          \"current_dir\": \"{0}/current/hive-webhcat/etc/webhcat\"\n        },\n        {\n          \"conf_dir\": \"/etc/hive-hcatalog/conf\",\n          \"prefix\": \"/etc/hive-hcatalog\",\n          \"current_dir\": \"{0}/current/hive-webhcat/etc/hcatalog\"\n        }\n      ],\n      \"kafka\": [\n        {\n          \"conf_dir\": \"/etc/kafka/conf\",\n          \"current_dir\": \"{0}/current/kafka-broker/conf\"\n        }\n      ],\n      \"knox\": [\n        {\n          \"conf_dir\": \"/etc/knox/conf\",\n          \"current_dir\": \"{0}/current/knox-server/conf\"\n        }\n      ],\n      \"livy2\": [\n        {\n          \"conf_dir\": \"/etc/livy2/conf\",\n          \"current_dir\": \"{0}/current/livy2-client/conf\"\n        }\n      ],\n      \"nifi\": [\n        {\n          \"conf_dir\": \"/etc/nifi/conf\",\n          \"current_dir\": \"{0}/current/nifi/conf\"\n        }\n      ],\n      \"oozie\": [\n        {\n          \"conf_dir\": \"/etc/oozie/conf\",\n          \"current_dir\": \"{0}/current/oozie-client/conf\"\n        }\n      ],\n      \"phoenix\": [\n        {\n          \"conf_dir\": \"/etc/phoenix/conf\",\n          \"current_dir\": \"{0}/current/phoenix-client/conf\"\n        }\n      ],\n      \"pig\": [\n        {\n          \"conf_dir\": \"/etc/pig/conf\",\n          \"current_dir\": \"{0}/current/pig-client/conf\"\n        }\n      ],\n      \"ranger-admin\": [\n        {\n          \"conf_dir\": \"/etc/ranger/admin/conf\",\n          \"current_dir\": \"{0}/current/ranger-admin/conf\"\n        }\n      ],\n      \"ranger-kms\": [\n        {\n          \"conf_dir\": \"/etc/ranger/kms/conf\",\n          \"current_dir\": \"{0}/current/ranger-kms/conf\"\n        }\n      ],\n      \"ranger-tagsync\": [\n        {\n          \"conf_dir\": \"/etc/ranger/tagsync/conf\",\n          \"current_dir\": \"{0}/current/ranger-tagsync/conf\"\n        }\n      ],\n      \"ranger-usersync\": [\n        {\n          \"conf_dir\": \"/etc/ranger/usersync/conf\",\n          \"current_dir\": \"{0}/current/ranger-usersync/conf\"\n        }\n      ],\n      \"spark2\": [\n        {\n          \"conf_dir\": \"/etc/spark2/conf\",\n          \"current_dir\": \"{0}/current/spark2-client/conf\"\n        }\n      ],\n      \"sqoop\": [\n        {\n          \"conf_dir\": \"/etc/sqoop/conf\",\n          \"current_dir\": \"{0}/current/sqoop-client/conf\"\n        }\n      ],\n      \"storm\": [\n        {\n          \"conf_dir\": \"/etc/storm/conf\",\n          \"current_dir\": \"{0}/current/storm-client/conf\"\n        }\n      ],\n      \"superset\": [\n        {\n          \"conf_dir\": \"/etc/superset/conf\",\n          \"current_dir\": \"{0}/current/superset/conf\"\n        }\n      ],\n      \"tez\": [\n        {\n          \"conf_dir\": \"/etc/tez/conf\",\n          \"current_dir\": \"{0}/current/tez-client/conf\"\n        }\n      ],\n      \"zeppelin\": [\n        {\n          \"conf_dir\": \"/etc/zeppelin/conf\",\n          \"current_dir\": \"{0}/current/zeppelin-server/conf\"\n        }\n      ],\n      \"zookeeper\": [\n        {\n          \"conf_dir\": \"/etc/zookeeper/conf\",\n          \"current_dir\": \"{0}/current/zookeeper-client/conf\"\n        }\n      ]\n    },\n    \"conf-select-patching\": {\n      \"ACCUMULO\": {\n        \"packages\": [\"accumulo\"]\n      },\n      \"ATLAS\": {\n        \"packages\": [\"atlas\"]\n      },\n      \"DRUID\": {\n        \"packages\": [\"druid\"]\n      },\n      \"FLUME\": {\n        \"packages\": [\"flume\"]\n      },\n      \"HBASE\": {\n        \"packages\": [\"hbase\"]\n      },\n      \"HDFS\": {\n        \"packages\": []\n      },\n      \"HIVE\": {\n        \"packages\": [\"hive\", \"hive-hcatalog\", \"hive2\", \"tez_hive2\"]\n      },\n      \"KAFKA\": {\n        \"packages\": [\"kafka\"]\n      },\n      \"KNOX\": {\n        \"packages\": [\"knox\"]\n      },\n      \"MAPREDUCE2\": {\n        \"packages\": []\n      },\n      \"OOZIE\": {\n        \"packages\": [\"oozie\"]\n      },\n      \"PIG\": {\n        \"packages\": [\"pig\"]\n      },\n      \"R4ML\": {\n        \"packages\": []\n      },\n      \"RANGER\": {\n        \"packages\": [\"ranger-admin\", \"ranger-usersync\", \"ranger-tagsync\"]\n      },\n      \"RANGER_KMS\": {\n        \"packages\": [\"ranger-kms\"]\n      },\n      \"SPARK2\": {\n        \"packages\": [\"spark2\", \"livy2\"]\n      },\n      \"SQOOP\": {\n        \"packages\": [\"sqoop\"]\n      },\n      \"STORM\": {\n        \"packages\": [\"storm\", \"storm-slider-client\"]\n      },\n      \"SUPERSET\": {\n        \"packages\": [\"superset\"]\n      },\n      \"SYSTEMML\": {\n        \"packages\": []\n      },\n      \"TEZ\": {\n        \"packages\": [\"tez\"]\n      },\n      \"TITAN\": {\n        \"packages\": []\n      },\n      \"YARN\": {\n        \"packages\": []\n      },\n      \"ZEPPELIN\": {\n        \"packages\": [\"zeppelin\"]\n      },\n      \"ZOOKEEPER\": {\n        \"packages\": [\"zookeeper\"]\n      }\n    },\n    \"upgrade-dependencies\" : {\n      \"ATLAS\": [\"STORM\"],\n      \"HIVE\": [\"TEZ\", \"MAPREDUCE2\", \"SQOOP\"],\n      \"TEZ\": [\"HIVE\"],\n      \"MAPREDUCE2\": [\"HIVE\"],\n      \"OOZIE\": [\"MAPREDUCE2\"]\n    }\n  }\n}",
+      "ignore_groupsusers_create": "false",
+      "alerts_repeat_tolerance": "1",
+      "namenode_rolling_restart_timeout": "4200",
+      "fetch_nonlocal_groups": "true",
+      "manage_dirs_on_root": "true",
+      "recovery_lifetime_max_count": "1024",
+      "recovery_type": "AUTO_START",
+      "sysprep_skip_copy_oozie_share_lib_to_hdfs": "false",
+      "ignore_bad_mounts": "false",
+      "recovery_window_in_minutes": "60",
+      "sysprep_skip_copy_tarballs_hdfs": "false",
+      "user_group": "hadoop",
+      "namenode_rolling_restart_safemode_exit_timeout": "3600",
+      "stack_tools": "{\n  \"HDP\": {\n    \"stack_selector\": [\n      \"hdp-select\",\n      \"/usr/bin/hdp-select\",\n      \"hdp-select\"\n    ],\n    \"conf_selector\": [\n      \"conf-select\",\n      \"/usr/bin/conf-select\",\n      \"conf-select\"\n    ]\n  }\n}",
+      "recovery_retry_interval": "5",
+      "stack_features": "{\n  \"HDP\": {\n    \"stack_features\": [\n      {\n        \"name\": \"snappy\",\n        \"description\": \"Snappy compressor/decompressor support\",\n        \"min_version\": \"2.0.0.0\",\n        \"max_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"lzo\",\n        \"description\": \"LZO libraries support\",\n        \"min_version\": \"2.2.1.0\"\n      },\n      {\n        \"name\": \"express_upgrade\",\n        \"description\": \"Express upgrade support\",\n        \"min_version\": \"2.1.0.0\"\n      },\n      {\n        \"name\": \"rolling_upgrade\",\n        \"description\": \"Rolling upgrade support\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"kafka_acl_migration_support\",\n        \"description\": \"ACL migration support\",\n        \"min_version\": \"2.3.4.0\"\n      },\n      {\n        \"name\": \"secure_zookeeper\",\n        \"description\": \"Protect ZNodes with SASL acl in secure clusters\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"config_versioning\",\n        \"description\": \"Configurable versions support\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"datanode_non_root\",\n        \"description\": \"DataNode running as non-root support (AMBARI-7615)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"remove_ranger_hdfs_plugin_env\",\n        \"description\": \"HDFS removes Ranger env files (AMBARI-14299)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"ranger\",\n        \"description\": \"Ranger Service support\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"ranger_tagsync_component\",\n        \"description\": \"Ranger Tagsync component support (AMBARI-14383)\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"phoenix\",\n        \"description\": \"Phoenix Service support\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"nfs\",\n        \"description\": \"NFS support\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"tez_for_spark\",\n        \"description\": \"Tez dependency for Spark\",\n        \"min_version\": \"2.2.0.0\",\n        \"max_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"timeline_state_store\",\n        \"description\": \"Yarn application timeline-service supports state store property (AMBARI-11442)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"copy_tarball_to_hdfs\",\n        \"description\": \"Copy tarball to HDFS support (AMBARI-12113)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"spark_16plus\",\n        \"description\": \"Spark 1.6+\",\n        \"min_version\": \"2.4.0.0\"\n      },\n      {\n        \"name\": \"spark_thriftserver\",\n        \"description\": \"Spark Thrift Server\",\n        \"min_version\": \"2.3.2.0\"\n      },\n      {\n        \"name\": \"storm_ams\",\n        \"description\": \"Storm AMS integration (AMBARI-10710)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"kafka_listeners\",\n        \"description\": \"Kafka listeners (AMBARI-10984)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"kafka_kerberos\",\n        \"description\": \"Kafka Kerberos support (AMBARI-10984)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"pig_on_tez\",\n        \"description\": \"Pig on Tez support (AMBARI-7863)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"ranger_usersync_non_root\",\n        \"description\": \"Ranger Usersync as non-root user (AMBARI-10416)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"ranger_audit_db_support\",\n        \"description\": \"Ranger Audit to DB support\",\n        \"min_version\": \"2.2.0.0\",\n        \"max_version\": \"2.4.99.99\"\n      },\n      {\n        \"name\": \"accumulo_kerberos_user_auth\",\n        \"description\": \"Accumulo Kerberos User Auth (AMBARI-10163)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"knox_versioned_data_dir\",\n        \"description\": \"Use versioned data dir for Knox (AMBARI-13164)\",\n        \"min_version\": \"2.3.2.0\"\n      },\n      {\n        \"name\": \"knox_sso_topology\",\n        \"description\": \"Knox SSO Topology support (AMBARI-13975)\",\n        \"min_version\": \"2.3.8.0\"\n      },\n      {\n        \"name\": \"atlas_rolling_upgrade\",\n        \"description\": \"Rolling upgrade support for Atlas\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"oozie_admin_user\",\n        \"description\": \"Oozie install user as an Oozie admin user (AMBARI-7976)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"oozie_create_hive_tez_configs\",\n        \"description\": \"Oozie create configs for Ambari Hive and Tez deployments (AMBARI-8074)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"oozie_setup_shared_lib\",\n        \"description\": \"Oozie setup tools used to shared Oozie lib to HDFS (AMBARI-7240)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"oozie_host_kerberos\",\n        \"description\": \"Oozie in secured clusters uses _HOST in Kerberos principal (AMBARI-9775)\",\n        \"min_version\": \"2.0.0.0\"\n      },\n      {\n        \"name\": \"falcon_extensions\",\n        \"description\": \"Falcon Extension\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"hive_metastore_upgrade_schema\",\n        \"description\": \"Hive metastore upgrade schema support (AMBARI-11176)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"hive_server_interactive\",\n        \"description\": \"Hive server interactive support (AMBARI-15573)\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"hive_purge_table\",\n        \"description\": \"Hive purge table support (AMBARI-12260)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"hive_server2_kerberized_env\",\n        \"description\": \"Hive server2 working on kerberized environment (AMBARI-13749)\",\n        \"min_version\": \"2.2.3.0\",\n        \"max_version\": \"2.2.5.0\"\n      },\n      {\n        \"name\": \"hive_env_heapsize\",\n        \"description\": \"Hive heapsize property defined in hive-env (AMBARI-12801)\",\n        \"min_version\": \"2.2.0.0\"\n      },\n      {\n        \"name\": \"ranger_kms_hsm_support\",\n        \"description\": \"Ranger KMS HSM support (AMBARI-15752)\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_log4j_support\",\n        \"description\": \"Ranger supporting log-4j properties (AMBARI-15681)\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_kerberos_support\",\n        \"description\": \"Ranger Kerberos support\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"hive_metastore_site_support\",\n        \"description\": \"Hive Metastore site support\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_usersync_password_jceks\",\n        \"description\": \"Saving Ranger Usersync credentials in jceks\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_install_infra_client\",\n        \"description\": \"Ambari Infra Service support\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"falcon_atlas_support_2_3\",\n        \"description\": \"Falcon Atlas integration support for 2.3 stack\",\n        \"min_version\": \"2.3.99.0\",\n        \"max_version\": \"2.4.0.0\"\n      },\n      {\n        \"name\": \"falcon_atlas_support\",\n        \"description\": \"Falcon Atlas integration\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"hbase_home_directory\",\n        \"description\": \"Hbase home directory in HDFS needed for HBASE backup\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"spark_livy\",\n        \"description\": \"Livy as slave component of spark\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"spark_livy2\",\n        \"description\": \"Livy2 as slave component of Spark2\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"atlas_ranger_plugin_support\",\n        \"description\": \"Atlas Ranger plugin support\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"atlas_conf_dir_in_path\",\n        \"description\": \"Prepend the Atlas conf dir (/etc/atlas/conf) to the classpath of Storm and Falcon\",\n        \"min_version\": \"2.3.0.0\",\n        \"max_version\": \"2.4.99.99\"\n      },\n      {\n        \"name\": \"atlas_upgrade_support\",\n        \"description\": \"Atlas supports express and rolling upgrades\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"atlas_hook_support\",\n        \"description\": \"Atlas support for hooks in Hive, Storm, Falcon, and Sqoop\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_pid_support\",\n        \"description\": \"Ranger Service support pid generation AMBARI-16756\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_kms_pid_support\",\n        \"description\": \"Ranger KMS Service support pid generation\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_admin_password_change\",\n        \"description\": \"Allow ranger admin credentials to be specified during cluster creation (AMBARI-17000)\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_setup_db_on_start\",\n        \"description\": \"Allows setup of ranger db and java patches to be called multiple times on each START\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"storm_metrics_apache_classes\",\n        \"description\": \"Metrics sink for Storm that uses Apache class names\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"spark_java_opts_support\",\n        \"description\": \"Allow Spark to generate java-opts file\",\n        \"min_version\": \"2.2.0.0\",\n        \"max_version\": \"2.4.0.0\"\n      },\n      {\n        \"name\": \"atlas_hbase_setup\",\n        \"description\": \"Use script to create Atlas tables in Hbase and set permissions for Atlas user.\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"ranger_hive_plugin_jdbc_url\",\n        \"description\": \"Handle Ranger hive repo config jdbc url change for stack 2.5 (AMBARI-18386)\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"zkfc_version_advertised\",\n        \"description\": \"ZKFC advertise version\",\n        \"min_version\": \"2.5.0.0\"\n      },\n      {\n        \"name\": \"phoenix_core_hdfs_site_required\",\n        \"description\": \"HDFS and CORE site required for Phoenix\",\n        \"max_version\": \"2.5.9.9\"\n      },\n      {\n        \"name\": \"ranger_tagsync_ssl_xml_support\",\n        \"description\": \"Ranger Tagsync ssl xml support.\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"ranger_xml_configuration\",\n        \"description\": \"Ranger code base support xml configurations\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"kafka_ranger_plugin_support\",\n        \"description\": \"Ambari stack changes for Ranger Kafka Plugin (AMBARI-11299)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"yarn_ranger_plugin_support\",\n        \"description\": \"Implement Stack changes for Ranger Yarn Plugin integration (AMBARI-10866)\",\n        \"min_version\": \"2.3.0.0\"\n      },\n      {\n        \"name\": \"ranger_solr_config_support\",\n        \"description\": \"Showing Ranger solrconfig.xml on UI\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"hive_interactive_atlas_hook_required\",\n        \"description\": \"Registering Atlas Hook for Hive Interactive.\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"atlas_install_hook_package_support\",\n        \"description\": \"Stop installing packages from 2.6\",\n        \"max_version\": \"2.5.9.9\"\n      },\n      {\n        \"name\": \"atlas_hdfs_site_on_namenode_ha\",\n        \"description\": \"Need to create hdfs-site under atlas-conf dir when Namenode-HA is enabled.\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"core_site_for_ranger_plugins\",\n        \"description\": \"Adding core-site.xml in when Ranger plugin is enabled for Storm, Kafka, and Knox.\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"secure_ranger_ssl_password\",\n        \"description\": \"Securing Ranger Admin and Usersync SSL and Trustore related passwords in jceks\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"ranger_kms_ssl\",\n        \"description\": \"Ranger KMS SSL properties in ambari stack\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"atlas_hdfs_site_on_namenode_ha\",\n        \"description\": \"Need to create hdfs-site under atlas-conf dir when Namenode-HA is enabled.\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"atlas_core_site_support\",\n        \"description\": \"Need to create core-site under Atlas conf directory.\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"toolkit_config_update\",\n        \"description\": \"Support separate input and output for toolkit configuration\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"nifi_encrypt_config\",\n        \"description\": \"Encrypt sensitive properties written to nifi property file\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"tls_toolkit_san\",\n        \"description\": \"Support subject alternative name flag\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"admin_toolkit_support\",\n        \"description\": \"Supports the nifi admin toolkit\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"nifi_jaas_conf_create\",\n        \"description\": \"Create NIFI jaas configuration when kerberos is enabled\",\n        \"min_version\": \"2.6.0.0\"\n      },\n      {\n        \"name\": \"registry_remove_rootpath\",\n        \"description\": \"Registry remove root path setting\",\n        \"min_version\": \"2.6.3.0\"\n      },\n      {\n        \"name\": \"nifi_encrypted_authorizers_config\",\n        \"description\": \"Support encrypted authorizers.xml configuration for version 3.1 onwards\",\n        \"min_version\": \"2.6.5.0\"\n      },\n      {\n        \"name\": \"multiple_env_sh_files_support\",\n        \"description\": \"This feature is supported by RANGER and RANGER_KMS service to remove multiple env sh files during upgrade to stack 3.0\",\n        \"max_version\": \"2.6.99.99\"\n      },\n      {\n        \"name\": \"registry_allowed_resources_support\",\n        \"description\": \"Registry allowed resources\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"registry_rewriteuri_filter_support\",\n        \"description\": \"Registry RewriteUri servlet filter\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"registry_support_schema_migrate\",\n        \"description\": \"Support schema migrate in registry for version 3.1 onwards\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"sam_support_schema_migrate\",\n        \"description\": \"Support schema migrate in SAM for version 3.1 onwards\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"sam_storage_core_in_registry\",\n        \"description\": \"Storage core module moved to registry\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"sam_db_file_storage\",\n        \"description\": \"DB based file storage in SAM\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"kafka_extended_sasl_support\",\n        \"description\": \"Support SASL PLAIN and GSSAPI\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"registry_support_db_user_creation\",\n        \"description\": \"Supports registry's database and user creation on the fly\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"streamline_support_db_user_creation\",\n        \"description\": \"Supports Streamline's database and user creation on the fly\",\n        \"min_version\": \"3.0.0.0\"\n      },\n      {\n        \"name\": \"nifi_auto_client_registration\",\n        \"description\": \"Supports NiFi's client registration in runtime\",\n        \"min_version\": \"3.0.0.0\"\n      }\n    ]\n  }\n}",
+      "sysprep_skip_setup_jce": "false",
+      "recovery_enabled": "true",
+      "agent_mounts_ignore_list": "",
+      "stack_root": "{\"HDP\":\"/usr/hdp\"}",
+      "sysprep_skip_create_users_and_groups": "false",
+      "repo_suse_rhel_template": "[{{repo_id}}]\nname={{repo_id}}\n{% if mirror_list %}mirrorlist={{mirror_list}}{% else %}baseurl={{base_url}}{% endif %}\n\npath=/\nenabled=1\ngpgcheck=0",
+      "smokeuser_keytab": "/etc/security/keytabs/smokeuser.headless.keytab",
+      "managed_hdfs_resource_property_names": "",
+      "smokeuser": "ambari-qa",
+      "sysprep_skip_copy_fast_jar_hdfs": "false",
+      "sysprep_skip_lzo_package_operations": "false"
+    }
+  }
+}

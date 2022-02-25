@@ -1,0 +1,78 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div class="tree-border" ng-controller="SourceMetaCtrl">
+    <div class="row">
+        <div class="col-xs-7">
+            <h3 class="text-info">Tables</h3>
+        </div>
+
+        <!--button-->
+        <div class="col-xs-5" style="padding-left: 0px;margin-top: 20px;">
+            <div class="pull-right">
+              <a class="btn btn-xs btn-primary" tooltip="Load Table"  ng-if="userService.hasRole('ROLE_ADMIN')|| hasPermission('project',projectModel, permissions.ADMINISTRATION.mask)"  ng-click="openModal()"><i class="fa fa-download"></i></a>
+              <a class="btn btn-xs btn-info" tooltip="Load Table From Tree"  ng-if="userService.hasRole('ROLE_ADMIN')|| hasPermission('project',projectModel, permissions.ADMINISTRATION.mask)"  ng-click="openTreeModal()"><i class="fa fa-download"></i></a>
+<!--              <a class="btn btn-xs btn-primary" tooltip="Add Streaming Table"  ng-if="userService.hasRole('ROLE_ADMIN')|| hasPermission('project',projectModel, permissions.ADMINISTRATION.mask)"  ng-click="openStreamingSourceModal()"><i class="fa fa-area-chart"></i></a>-->
+<!--              <a class="btn btn-xs btn-info" tooltip-placement="left" tooltip="Add Streaming Table V2" ng-if="userService.hasRole('ROLE_ADMIN') || hasPermission('project',projectModel, permissions.ADMINISTRATION.mask)"  ng-click="openStreamingSourceModalV2()"><i class="fa fa-area-chart"></i></a>-->
+              <a class="btn btn-xs btn-primary" tooltip-placement="left" tooltip="Load CSV File as Table" ng-if="userService.hasRole('ROLE_ADMIN') || hasPermission('project',projectModel, permissions.ADMINISTRATION.mask)"  ng-click="loadCsvFile()"><i class="fa fa-file-text"></i></a>
+            </div>
+        </div>
+
+    </div>
+    <div class="space-4"></div>
+    <!--tree-->
+    <div style="width:100%; height:{{window}}px; overflow:auto; padding-right:35px;">
+        <abn-tree
+                tree-data         = "tableModel.selectedSrcDb"
+                tree-control      = "my_tree"
+                icon-leaf         = "fa fa-columns"
+                icon-expand       = "fa fa-database"
+                icon-collapse     = "fa fa-database"
+                expand-level      = "3">
+        </abn-tree>
+        <div no-result ng-if="tableModel.selectedSrcDb.length == 0"></div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="addHiveTableFromTree.html">
+  <div class="modal-header"><button class="close" type="button" data-dismiss="modal" ng-click="cancel()">×</button>
+    <h4>Load Table Metadata From Tree</h4>
+  </div>
+  <div class="modal-body">
+    <span><strong>Project: </strong>{{ $parent.projectName!=null?$parent.projectName:'NULL'}}</span>
+    <div class="form-group searchBox">
+      <input type="text" placeholder="Filter ..." class="nav-search-input" ng-model="predicate" />
+    </div>
+    <loading ng-if="!hiveLoaded" text="Loading Databases..."></loading>
+    <treecontrol class="tree-light check" tree-model="treedata" selected-nodes="selectedNodes" filter-expression="predicate" on-selection="showSelected(node)" on-node-toggle="showToggle(node)" options="treeOptions">
+      <div ng-if="node.label==''&&node.id==0"><img src="image/ajax-loader.gif">Loading Tables...</div>
+      <button class="btn btn-xs btn-primary" ng-if="node.label==''&&node.id==65535" ng-click="showMoreClicked($parentNode)">Show More</button>
+      <button class="btn btn-xs btn-primary" ng-if="node.label==''&&node.id==65535" ng-click="showAllClicked($parentNode)">Show All</button>
+      {{node.label}}
+    </treecontrol>
+    <label ng-if="sourceType === '0'"><input type="checkbox" ng-model="isCalculate.val" > Calculate column cardinality</label>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="add()">Sync</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+  </div>
+
+</script>
+
+<div ng-include="'partials/tables/table_load.html'"></div>

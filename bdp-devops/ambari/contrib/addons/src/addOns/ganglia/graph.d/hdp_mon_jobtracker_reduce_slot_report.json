@@ -1,0 +1,14 @@
+{
+   "report_name" : "jobtracker_reduce_slot_report",
+   "report_type" : "standard",
+   "title" : "Reduce Slot Utilization",
+   "vertical_label" : "Slots",
+   "series" : [
+      { "metric": "mapred.jobtracker.reduce_slots", "color": "0000ff", "label": "Total", 
+        "line_width": "2", "type": "line" },
+      { "metric": "mapred.jobtracker.occupied_reduce_slots", "color": "06f7ff", "label": "Occupied", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "mapred.jobtracker.reserved_reduce_slots", "color": "009999", "label": "Reserved",
+        "line_width": "2", "type": "stack" }
+   ]
+}

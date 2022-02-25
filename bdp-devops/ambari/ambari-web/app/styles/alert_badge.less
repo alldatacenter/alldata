@@ -1,0 +1,81 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+@import 'common.less';
+@default-size: 20px;
+@medium-size: 16px;
+@small-size: 15px;
+
+.alert-badge {
+  display: inline-block;
+  position: relative;
+  min-width: @default-size;
+  height: @default-size;
+  margin: 0 4px;
+  vertical-align: text-top;
+  .counter {
+    font-size: 13px;
+    border-radius: 4px;
+    padding: 0 2px;
+    display: block;
+    height: @default-size;
+    min-width: @default-size;
+    line-height: @default-size;
+  }
+  .position-top {
+    position: absolute;
+    z-index: 3;
+    top: 2px;
+    left: -2px;
+  }
+  .position-middle {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+  }
+  .position-bottom {
+    position: absolute;
+    z-index: 1;
+    top: -2px;
+    left: 2px;
+  }
+}
+
+.alert-badge.medium-size {
+  min-width: @medium-size;
+  height: @medium-size;
+  .counter {
+    font-size: 11px;
+    height: @medium-size;
+    min-width: @medium-size;
+    line-height: @medium-size;
+  }
+}
+
+.alert-badge.small-size {
+  min-width: @small-size;
+  height: @small-size;
+  .counter {
+    font-size: 9px;
+    height: @small-size;
+    min-width: @small-size;
+    line-height: @small-size;
+  }
+}

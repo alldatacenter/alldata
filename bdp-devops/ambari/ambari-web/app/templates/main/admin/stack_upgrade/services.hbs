@@ -1,0 +1,124 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+
+<div class="container-wrap-table">
+  <div class="row">
+    <h2 class="table-title col-sm-1">{{t common.stack}}</h2>
+  </div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>{{t common.service}}</th>
+      <th>{{t common.version}}</th>
+      <th>{{t common.status}}</th>
+      <th>{{t common.description}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each service in view.services}}
+      <tr>
+        <td class="service-display-name">{{service.displayName}}</td>
+        <td class="service-stack-version">{{service.serviceVersionDisplay}}</td>
+        <td class="stack-version-state">
+          {{#if service.isInstalled}}
+            <span class="label label-success">{{t common.installed}}</span>
+          {{else}}
+            <a {{bindAttr class=":path-link view.isAddServiceAvailable::not-active-link"}} {{action goToAddService service.serviceName target="view"}}>
+              {{t services.service.add}}</a>
+          {{/if}}
+        </td>
+        <td class="service-description">{{{service.comments}}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+
+  {{#unless App.stackVersionsAvailable}}
+
+    <div class="header">
+      <strong>{{t admin.cluster.repositories.repositories}}</strong>
+    </div>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="javascript:void(null);">{{view.allRepositoriesGroups.stackVersion}}</a>
+      </li>
+    </ul>
+
+    <div class="admin-cluster">
+      <div class="repositories-table">
+        <div class="thead">
+          <div class="th os-th">{{t common.os}}</div>
+          <div class="th name-th">{{t common.name}}</div>
+          <div class="th url-th">{{t installer.step1.advancedRepo.localRepo.column.baseUrl}}</div>
+        </div>
+        <div class="tbody">
+          {{#each repoGroup in view.allRepositoriesGroups}}
+            <div class="trow">
+              <div class="os-td">
+                <label>
+                  <span class="os">{{repoGroup.name}}</span>
+                </label>
+              </div>
+              <div style="width:89%">
+                {{#each repository in repoGroup.repositories}}
+                  <div class="sub-trow">
+                    <div class="name-td">{{repository.repoId}}</div>
+                    <!--edit mode for current url-->
+                    {{#if repository.onEdit}}
+                      <div {{bindAttr class=":url-td repository.empty-error:textfield-error repository.invalid-error:textfield-error"}}>
+                        {{view Ember.TextField valueBinding="repository.baseUrl" class="form-control"}}
+                      </div>
+                      <div class="clear-td">
+                        {{#if repository.clearAll}}
+                          <a {{action "clearGroupLocalRepository" repository target="view" }}>
+                            <i class="glyphicon glyphicon-remove-sign"></i>
+                          </a>
+                        {{/if}}
+                      </div>
+                      <div class="edit-buttons-td">
+                        <a class="btn btn-default" {{action doCancel repository target="view"}}>{{t common.cancel}}</a>
+                      </div>
+                      <div class="edit-buttons-td">
+                        {{#if repository.empty-error}}
+                          <a class="btn btn-primary" disabled="disabled">{{t common.save}}</a>
+                        {{else}}
+                          <a class="btn btn-primary" {{action saveRepoUrls repository target="view"}}>{{t common.save}}</a>
+                        {{/if}}
+                      </div>
+                      <!--non-edit mode for current url-->
+                    {{else}}
+                      <div class="url-text-td">
+                        {{repository.baseUrl}}
+                      </div>
+                      <div class="edit-td">
+                        <a {{action "onEditClick" repository target="view" }}>
+                          <i class="glyphicon glyphicon-edit"></i> {{t common.edit}}
+                        </a>
+                      </div>
+                    {{/if}}
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/unless}}
+</div>

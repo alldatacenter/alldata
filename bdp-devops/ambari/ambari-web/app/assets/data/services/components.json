@@ -1,0 +1,348 @@
+{
+  "items" : [
+    {
+      "ServiceInfo" : {
+        "service_name" : "ACCUMULO"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ACCUMULO_CLIENT"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ACCUMULO_GC"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ACCUMULO_MASTER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ACCUMULO_MONITOR"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ACCUMULO_TRACER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ACCUMULO_TSERVER"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "AMBARI_METRICS"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "METRICS_COLLECTOR"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "METRICS_MONITOR"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "FALCON"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "FALCON_CLIENT"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "FALCON_SERVER"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "FLUME"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "FLUME_HANDLER"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "HBASE"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HBASE_CLIENT"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HBASE_MASTER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HBASE_REGIONSERVER"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "HDFS"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "DATANODE"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HDFS_CLIENT"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "JOURNALNODE"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "NAMENODE"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "SECONDARY_NAMENODE"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ZKFC"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "HIVE"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HCAT"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HIVE_CLIENT"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HIVE_METASTORE"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HIVE_SERVER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "MYSQL_SERVER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "WEBHCAT_SERVER"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "KAFKA"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "KAFKA_BROKER"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "MAPREDUCE2"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "HISTORYSERVER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "MAPREDUCE2_CLIENT"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "OOZIE"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "OOZIE_CLIENT"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "OOZIE_SERVER"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "PIG"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "PIG"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "SLIDER"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "SLIDER"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "SQOOP"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "SQOOP"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "STORM"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "DRPC_SERVER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "NIMBUS"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "STORM_UI_SERVER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "SUPERVISOR"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "TEZ"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "TEZ_CLIENT"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "YARN"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "APP_TIMELINE_SERVER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "NODEMANAGER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "RESOURCEMANAGER"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "YARN_CLIENT"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceInfo" : {
+        "service_name" : "ZOOKEEPER"
+      },
+      "components" : [
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ZOOKEEPER_CLIENT"
+          }
+        },
+        {
+          "ServiceComponentInfo" : {
+            "component_name" : "ZOOKEEPER_SERVER"
+          }
+        }
+      ]
+    }
+  ]
+}

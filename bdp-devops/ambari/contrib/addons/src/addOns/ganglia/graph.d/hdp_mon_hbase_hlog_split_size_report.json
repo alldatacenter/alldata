@@ -1,0 +1,10 @@
+{
+   "report_name" : "hlog_split_size_report",
+   "report_type" : "standard",
+   "title" : "Avg HLog split file size",
+   "vertical_label" : "Bytes",
+   "series" : [
+      { "metric": "hbase.master.splitSize_avg_time", "color": "ff0000", "label": "Avg Split Size", 
+        "line_width": "2", "type": "stack" }
+   ]
+}

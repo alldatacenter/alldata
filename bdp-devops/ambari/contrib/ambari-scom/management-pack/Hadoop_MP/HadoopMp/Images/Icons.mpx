@@ -1,0 +1,166 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Categories>
+    <Category ID="Ambari.SCOM.Resources.Images.DataNode16IconCategory" Target="Ambari.SCOM.Resources.Images.DataNode16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.DataNodeDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.DataNodeDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HDFS16IconCategory" Target="Ambari.SCOM.Resources.Images.HDFS16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HDFSDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.HDFSDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HiveClient16IconCategory" Target="Ambari.SCOM.Resources.Images.HiveClient16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HiveClientDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.HiveClientDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HiveMetastore16IconCategory" Target="Ambari.SCOM.Resources.Images.HiveMetastore16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HiveMetastoreDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.HiveMetastoreDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HiveServer16IconCategory" Target="Ambari.SCOM.Resources.Images.HiveServer16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HiveServerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.HiveServerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HiveService16IconCategory" Target="Ambari.SCOM.Resources.Images.HiveService16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HiveServiceDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.HiveServiceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Cluster16IconCategory" Target="Ambari.SCOM.Resources.Images.Cluster16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ClusterDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ClusterDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Host16IconCategory" Target="Ambari.SCOM.Resources.Images.Host16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HostDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.HostDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Hosts16IconCategory" Target="Ambari.SCOM.Resources.Images.Hosts16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HostsDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.HostsDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.JobTracker16IconCategory" Target="Ambari.SCOM.Resources.Images.JobTracker16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.JobTrackerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.JobTrackerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.MapReduce16IconCategory" Target="Ambari.SCOM.Resources.Images.MapReduce16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.MapReduceDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.MapReduceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.NameNode16IconCategory" Target="Ambari.SCOM.Resources.Images.NameNode16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.NameNodeDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.NameNodeDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.OozieServer16IconCategory" Target="Ambari.SCOM.Resources.Images.OozieServer16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.OozieServerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.OozieServerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.OozieService16IconCategory" Target="Ambari.SCOM.Resources.Images.OozieService16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.OozieServiceDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.OozieServiceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Pig16IconCategory" Target="Ambari.SCOM.Resources.Images.Pig16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.PigDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.PigDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.PigService16IconCategory" Target="Ambari.SCOM.Resources.Images.PigService16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.PigServiceDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.PigServiceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Scoop16IconCategory" Target="Ambari.SCOM.Resources.Images.Scoop16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ScoopDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ScoopDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ScoopService16IconCategory" Target="Ambari.SCOM.Resources.Images.ScoopService16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ScoopServiceDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ScoopServiceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.SecNameNode16IconCategory" Target="Ambari.SCOM.Resources.Images.SecNameNode16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.SecNameNodeDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.SecNameNodeDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Services16IconCategory" Target="Ambari.SCOM.Resources.Images.Services16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ServicesDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ServicesDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.TaskTracker16IconCategory" Target="Ambari.SCOM.Resources.Images.TaskTracker16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.TaskTrackerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.TaskTrackerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.TempletonService16IconCategory" Target="Ambari.SCOM.Resources.Images.TempletonService16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.TempletonServiceDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.TempletonServiceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.TempletonServer16IconCategory" Target="Ambari.SCOM.Resources.Images.TempletonServer16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.TempletonServerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.TempletonServerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Mapreduce2Service16IconCategory" Target="Ambari.SCOM.Resources.Images.Mapreduce2Service16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Mapreduce2ServiceDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.Mapreduce2ServiceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Mapreduce2Client16IconCategory" Target="Ambari.SCOM.Resources.Images.Mapreduce2Client16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Mapreduce2ClientDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.Mapreduce2ClientDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.NodeManager16IconCategory" Target="Ambari.SCOM.Resources.Images.NodeManager16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.NodeManagerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.NodeManagerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ResourceManager16IconCategory" Target="Ambari.SCOM.Resources.Images.ResourceManager16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ResourceManagerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ResourceManagerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.Yarn16IconCategory" Target="Ambari.SCOM.Resources.Images.YarnService16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.YarnDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.YarnServiceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.YarnClient16IconCategory" Target="Ambari.SCOM.Resources.Images.YarnClient16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.YarnClientDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.YarnClientDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HistoryServer16IconCategory" Target="Ambari.SCOM.Resources.Images.HistoryServer16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.HistoryServerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.HistoryServerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.JournalNode16IconCategory" Target="Ambari.SCOM.Resources.Images.JournalNode16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.JournalNodeDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.JournalNodeDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ZooKeeperService16IconCategory" Target="Ambari.SCOM.Resources.Images.ZooKeeperService16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ZooKeeperServiceDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ZooKeeperServiceDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ZooKeeperServer16IconCategory" Target="Ambari.SCOM.Resources.Images.ZooKeeperServer16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ZooKeeperServerDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ZooKeeperServerDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ZooKeeperClient16IconCategory" Target="Ambari.SCOM.Resources.Images.ZooKeeperClient16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ZooKeeperClientDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ZooKeeperClientDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ZKFC16IconCategory" Target="Ambari.SCOM.Resources.Images.ZKFC16Icon" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.Resources.Images.ZKFCDiagramIconCategory" Target="Ambari.SCOM.Resources.Images.ZKFCDiagramIcon" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+
+  </Categories>
+
+  <Resources>
+    <Image ID="Ambari.SCOM.Resources.Images.DataNode16Icon" FileName="DataNode_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.DataNodeDiagramIcon" FileName="DataNode.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HDFS16Icon" FileName="hdfs_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HDFSDiagramIcon" FileName="hdfs.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HiveClient16Icon" FileName="HiveClient_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HiveClientDiagramIcon" FileName="HiveClient.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HiveMetastore16Icon" FileName="HiveMetastore_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HiveMetastoreDiagramIcon" FileName="HiveMetastore.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HiveServer16Icon" FileName="HiveServer_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HiveServerDiagramIcon" FileName="HiveServer.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HiveService16Icon" FileName="hiveservice_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HiveServiceDiagramIcon" FileName="hiveservice.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Cluster16Icon" FileName="Cluster_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ClusterDiagramIcon" FileName="Cluster.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Host16Icon" FileName="Host_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HostDiagramIcon" FileName="Host.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Hosts16Icon" FileName="hosts_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HostsDiagramIcon" FileName="hosts.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.JobTracker16Icon" FileName="JobTracker_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.JobTrackerDiagramIcon" FileName="JobTracker.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.MapReduce16Icon" FileName="mapreduce_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.MapReduceDiagramIcon" FileName="mapreduce.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.NameNode16Icon" FileName="NameNode_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.NameNodeDiagramIcon" FileName="NameNode.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.OozieServer16Icon" FileName="OozieServer_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.OozieServerDiagramIcon" FileName="OozieServer.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.OozieService16Icon" FileName="OozieService_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.OozieServiceDiagramIcon" FileName="OozieService.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Pig16Icon" FileName="Pig_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.PigDiagramIcon" FileName="Pig.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.PigService16Icon" FileName="PigService_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.PigServiceDiagramIcon" FileName="PigService.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Scoop16Icon" FileName="Scoop_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ScoopDiagramIcon" FileName="Scoop.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ScoopService16Icon" FileName="ScoopService_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ScoopServiceDiagramIcon" FileName="ScoopService.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.SecNameNode16Icon" FileName="SecNameNode_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.SecNameNodeDiagramIcon" FileName="SecNameNode.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Services16Icon" FileName="Services_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ServicesDiagramIcon" FileName="Services.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.TaskTracker16Icon" FileName="TaskTracker_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.TaskTrackerDiagramIcon" FileName="TaskTracker.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.TempletonService16Icon" FileName="TempletonService_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.TempletonServiceDiagramIcon" FileName="TempletonService.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.TempletonServer16Icon" FileName="TrmpletonServer_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.TempletonServerDiagramIcon" FileName="TrmpletonServer.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Mapreduce2Service16Icon" FileName="Mapreduce2_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Mapreduce2ServiceDiagramIcon" FileName="Mapreduce2.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Mapreduce2Client16Icon" FileName="Mapreduce2Client_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.Mapreduce2ClientDiagramIcon" FileName="Mapreduce2Client.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.NodeManager16Icon" FileName="NodeManager_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.NodeManagerDiagramIcon" FileName="NodeManager.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ResourceManager16Icon" FileName="ResourceManager_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ResourceManagerDiagramIcon" FileName="ResourceManager.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.YarnService16Icon" FileName="Yarn_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.YarnServiceDiagramIcon" FileName="Yarn.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.YarnClient16Icon" FileName="YarnClient_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.YarnClientDiagramIcon" FileName="YarnClient.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HistoryServer16Icon" FileName="HistoryServer_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.HistoryServerDiagramIcon" FileName="HistoryServer.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.JournalNode16Icon" FileName="JournalNode_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.JournalNodeDiagramIcon" FileName="JournalNode.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ZooKeeperService16Icon" FileName="ZooKeeperService_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ZooKeeperServiceDiagramIcon" FileName="ZooKeeperService.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ZooKeeperServer16Icon" FileName="ZooKeeperServer_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ZooKeeperServerDiagramIcon" FileName="ZooKeeperServer.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ZooKeeperClient16Icon" FileName="ZooKeeperClient_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ZooKeeperClientDiagramIcon" FileName="ZooKeeperClient.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ZKFC16Icon" FileName="ZooKeeperFailoverController_.png" Accessibility="Public" />
+    <Image ID="Ambari.SCOM.Resources.Images.ZKFCDiagramIcon" FileName="ZooKeeperFailoverController.png" Accessibility="Public" />
+
+  </Resources>
+  
+</ManagementPackFragment>

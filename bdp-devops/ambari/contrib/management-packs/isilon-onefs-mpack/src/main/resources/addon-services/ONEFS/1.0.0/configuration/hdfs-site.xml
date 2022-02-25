@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<!-- Put site-specific property overrides in this file. -->
+<configuration supports_final="true">
+  <property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+    <display-name>WebHDFS enabled</display-name>
+    <description>Whether to enable WebHDFS feature</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>dfs.namenode.http-address</name>
+    <value>localhost:8082</value>
+    <description>The name of the default file system.  Either the
+      literal string "local" or a host:port for HDFS.</description>
+    <final>true</final>
+    <on-ambari-upgrade add="true"/>
+    <depends-on>
+      <property>
+        <type>onefs</type>
+        <name>onefs_host</name>
+      </property>
+    </depends-on>
+  </property>
+  <property>
+    <name>dfs.namenode.https-address</name>
+    <value>localhost:8080</value>
+    <description>The https address where namenode binds</description>
+    <on-ambari-upgrade add="true"/>
+    <depends-on>
+      <property>
+        <type>onefs</type>
+        <name>onefs_host</name>
+      </property>
+    </depends-on>
+  </property>
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>0.0.0.0:8082</value>
+    <description>The datanode http server address and port.</description>
+    <on-ambari-upgrade add="false"/>
+  </property>
+  <property>
+    <name>dfs.datanode.https.address</name>
+    <value>0.0.0.0:8080</value>
+    <description>The datanode https server address and port.</description>
+    <on-ambari-upgrade add="false"/>
+  </property>
+  <property>
+    <name>dfs.client-write-packet-size</name>
+    <value>131072</value>
+    <description>Packet size for clients to write</description>
+    <on-ambari-upgrade add="false"/>
+  </property>
+  <property>
+    <name>dfs.checksum.type</name>
+    <value>NULL</value>
+    <description>The checksum method to be used by default. To maintain
+      compatibility, it is being set to CRC32. Once all migration steps
+      are complete, we can change it to CRC32C and take advantage of the
+      additional performance benefit.</description>
+    <on-ambari-upgrade add="false"/>
+  </property>
+</configuration>

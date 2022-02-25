@@ -1,0 +1,103 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if controller.isLoaded}}
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <p class="alert alert-info">{{t alerts.actions.manage_alert_groups_popup.notice}}</p>
+    </div>
+  </div>
+  <div class="row manage-configuration-group-content">
+    {{! groups list }}
+    <div class="col-md-4 col-lg-4">
+      <span>&nbsp;</span>
+      {{view Em.Select
+        contentBinding="alertGroups"
+        optionLabelPath="content.label"
+        selectionBinding="view.selectedAlertGroup"
+        multiple="multiple"
+        class="group-select select-group-box form-control"
+      }}
+      <div class="btn-toolbar pull-right">
+        <button rel="button-info" class="btn btn-default add-group-button" {{bindAttr data-original-title="view.addButtonTooltip"}}
+          {{action addAlertGroup target="controller"}}><i class="glyphicon glyphicon-plus"></i></button>
+        <button rel="button-info" class="btn btn-default remove-group-button" {{bindAttr data-original-title="view.removeButtonTooltip" disabled="controller.isRemoveButtonDisabled"}}
+          {{action confirmDelete target="controller"}}><i class="glyphicon glyphicon-minus"></i></button>
+        <div class="btn-group">
+          <button class="btn btn-default dropdown-toggle actions-group-button" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-cog"></i>&nbsp;<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li {{bindAttr class="controller.isRenameButtonDisabled:disabled"}}>
+              <a href="#" rel="button-info-dropdown" {{bindAttr data-original-title="view.renameButtonTooltip"}} {{action renameAlertGroup target="controller"}}>{{t alerts.actions.manage_alert_groups_popup.rename}}</a>
+            </li>
+            <li {{bindAttr class="controller.isDuplicateButtonDisabled:disabled"}}>
+              <a href="#" rel="button-info-dropdown" {{bindAttr data-original-title="view.duplicateButtonTooltip"}} {{action duplicateAlertGroup target="controller"}}>{{t alerts.actions.manage_alert_groups_popup.duplicate}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {{! groups list end }}
+
+    {{! definitions list }}
+    <div class="col-md-8 col-lg-8">
+      <span>&nbsp;</span>
+      {{view Em.Select
+        contentBinding="selectedAlertGroup.definitions"
+        optionLabelPath="content.label"
+        multiple="multiple"
+        class="group-select pull-right select-definiton-box form-control"
+        selectionBinding="selectedDefinitions"
+      }}
+      <div class="button-toolbar">
+        <div class="pull-right">
+          <a rel="button-info" {{bindAttr data-original-title="view.addDefinitionTooltip" class=":btn :btn-default selectedAlertGroup.isAddDefinitionsDisabled:disabled :add-definition"}} {{action addDefinitions target="controller"}} ><i
+            class="glyphicon glyphicon-plus"></i></a>
+          <a rel="button-info" {{bindAttr data-original-title="view.removeDefinitionTooltip" class=":btn :btn-default isDeleteDefinitionsDisabled:disabled :remove-definition"}} {{action deleteDefinitions target="controller"}} ><i
+            class="glyphicon glyphicon-minus"></i></a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="notification-editable-list">
+        <span class="icon-envelope-alt"></span>&nbsp;{{t alerts.actions.manage_alert_groups_popup.notifications}}
+        {{view App.EditableList
+          itemsBinding="selectedAlertGroup.notifications"
+          resourcesBinding="controller.alertNotifications"
+          nameBinding="selectedAlertGroup.displayName"
+          isCaseSensitive=false
+        }}
+      </div>
+    </div>
+    {{! definitions list end }}
+  </div>
+
+  {{! error message }}
+  <div class="row">
+    <div class="col-md-12 col-lg-12 text-danger" id="manage-config-group-error-div">
+      {{#if controller.errorMessage}}
+        {{controller.errorMessage}}
+      {{else}}
+        &nbsp;
+      {{/if}}
+    </div>
+  </div>
+{{! error message end }}
+{{else}}
+  {{view App.SpinnerView}}
+{{/if}}

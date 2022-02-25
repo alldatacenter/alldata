@@ -1,0 +1,23 @@
+{
+  "services": [
+    {
+      "name": "HDFS"
+    },
+    {
+      "name": "NEW_SERVICE",
+      "preconfigure" : true,
+      "configurations": {
+      },
+      "identities": [
+        {
+          "name": "new_service",
+          "principal": {
+            "value": "ns/_HOST@${realm}",
+            "type": "service",
+            "local_username": "new_service"
+          }
+        }
+      ]
+    }
+  ]
+}

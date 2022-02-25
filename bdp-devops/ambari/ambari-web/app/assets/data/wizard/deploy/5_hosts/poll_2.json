@@ -1,0 +1,387 @@
+{
+  "href" : "http://ambari:8080/api/clusters/mycluster/requests/1?fields=tasks/*",
+  "Requests" : {
+    "id" : 1,
+    "cluster_name" : "mycluster"
+  },
+  "tasks" : [
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/4",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 4,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "SECONDARY_NAMENODE",
+        "start_time" : 1352863664537,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/15",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 15,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "DATANODE",
+        "start_time" : 1352863666842,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/7",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 7,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "TASKTRACKER",
+        "start_time" : 1352863665177,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/14",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host4",
+        "id" : 14,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "TASKTRACKER",
+        "start_time" : 1352863666672,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/21",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 21,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "SQOOP",
+        "start_time" : 1352863667466,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/8",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host5",
+        "id" : 8,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1352863665481,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/16",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 16,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1352863666913,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/2",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 2,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "JOBTRACKER",
+        "start_time" : 1352863664213,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/20",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 20,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "PIG",
+        "start_time" : 1352863667299,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/11",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host5",
+        "id" : 11,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "NAMENODE",
+        "start_time" : 1352863665939,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 3,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "OOZIE_SERVER",
+        "start_time" : 1352863664455,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/12",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host4",
+        "id" : 12,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "DATANODE",
+        "start_time" : 1352863666165,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/9",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host5",
+        "id" : 9,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_SERVER",
+        "start_time" : 1352863665690,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/6",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 6,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1352863664901,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/17",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 17,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HDFS_CLIENT",
+        "start_time" : 1352863666987,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/18",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 18,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "MAPREDUCE_CLIENT",
+        "start_time" : 1352863667058,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/19",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 19,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "OOZIE_CLIENT",
+        "start_time" : 1352863667216,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/22",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host2",
+        "id" : 22,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "TASKTRACKER",
+        "start_time" : 1352863667578,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/5",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 5,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "DATANODE",
+        "start_time" : 1352863664723,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/1",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 1,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1352863663984,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/requests/1/tasks/13",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "QUEUED",
+        "stderr" : "",
+        "host_name" : "host4",
+        "id" : 13,
+        "cluster_name" : "mycluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1352863666401,
+        "stage_id" : 1
+      }
+    }
+  ]
+}

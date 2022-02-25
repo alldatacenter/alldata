@@ -1,0 +1,78 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="row">
+  <h2 class="table-title col-sm-1">{{t hosts.host.menu.stackVersions}}</h2>
+</div>
+<table class="table advanced-header-table table-hover">
+  <thead>
+  {{#view view.sortView classNames="label-row" contentBinding="view.filteredContent"}}
+    {{view view.parentView.stackSort classNames="first"}}
+    {{view view.parentView.repoVersionSort}}
+    {{view view.parentView.statusSort}}
+    <th></th>
+  {{/view}}
+  <tr class="filter-row">
+    <th class="first stack-name-filter">{{view view.stackFilterView}}</th>
+    <th class="repo-version-filter">{{view view.repoVersionFilterView}}</th>
+    <th class="status-filter">{{view view.statusFilterView}}</th>
+    <th> </th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#if view.pageContent}}
+    {{#each version in view.pageContent}}
+      <tr>
+        <td class="first stack-name">{{version.stack}}</td>
+        <td class="repo-version">{{version.displayName}}</td>
+        <td class="host-stack-version-status">
+          {{#if version.isCurrent}}
+            <span class="label label-success">{{t common.current}}</span>
+          {{else}}
+            {{#if version.isInstalling}}
+              <a href="#" {{action showInstallProgress version target="view"}}><i class="glyphicon glyphicon-cog in_progress"></i>&nbsp;{{version.displayStatus}}</a>
+            {{else}}
+              {{version.displayStatus}}
+              {{#if version.isOutOfSync}}
+                {{view view.outOfSyncInfo}}
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        </td>
+        <td class="install-repo-version align-center">
+          {{#havePermissions "AMBARI.MANAGE_STACK_VERSIONS"}}
+            <button class="btn btn-default" {{action installVersionConfirmation version target="controller"}} {{bindAttr disabled="version.installDisabled"}}><i class="glyphicon glyphicon-off"></i>&nbsp;{{t common.install}}</button>
+          {{/havePermissions}}
+        </td>
+      </tr>
+    {{/each}}
+  {{else}}
+    <tr>
+      <td colspan="4" class="first">
+        {{t hosts.host.stackVersions.table.noVersions}}
+      </td>
+    </tr>
+  {{/if}}
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="4">
+      {{view App.PaginationView}}
+    </td>
+  </tr>
+  </tfoot>
+</table>

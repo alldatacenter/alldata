@@ -1,0 +1,164 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.combo-search .combo-search-inner {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 1px #fff inset;
+  min-height: 34px;
+  line-height: 1em;
+  cursor: text;
+  padding-right: 30px;
+}
+
+.combo-search .combo-search-close {
+  font-size: 13px;
+  color: #999;
+  position: absolute;
+  right: 10px;
+  top: 30%;
+  cursor: pointer;
+}
+.combo-search .combo-search-close:hover {
+  color: #333;
+}
+.combo-search .combo-search-input {
+  background: transparent;
+  display: inline-block;
+  min-width: 4px;
+  width: 4px;
+  line-height: 10px;
+  height: 100%;
+  border: none;
+  outline: none;
+  margin-left: 1px;
+}
+
+.combo-search .combo-search-input-wrapper {
+  display: inline-block;
+  position: relative;
+  height: 32px;
+  margin-left: 5px;
+}
+
+.combo-search .combo-search-content {
+  display: inline-block;
+}
+
+.combo-search .combo-search-dropdown {
+  position: absolute;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  min-width: 80px;
+  max-width: 220px;
+  max-height: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 13px;
+  top: 30px;
+  left: 5px;
+  box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.5);
+}
+
+.combo-search .combo-search-dropdown ul {
+  max-height: 250px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.combo-search .filter a {
+  display: block;
+  width: auto;
+  text-decoration: none;
+  color: initial;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: none;
+  border: none;
+  padding: 3px 10px 5px 5px;
+}
+
+.combo-search .category a {
+  display: block;
+  width: auto;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 3px 10px 5px 5px;
+  text-transform: capitalize;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  cursor: default;
+  border-bottom: 1px solid #A2A2A2;
+  background-color: #B7B7B7;
+  text-shadow: 0 -1px 0 #999;
+}
+
+.combo-search .filter a.active {
+  background-color: #ddd;
+}
+
+.combo-search .combo-search-applied-filter {
+  position: relative;
+  display: inline-block;
+  padding: 0 3px 0 18px;
+  background-color: #dddddd;
+  border-radius: 4px;
+  margin: 4px 0 0 4px;
+  vertical-align: top;
+  border: 1px solid #d2d2d2;
+}
+
+.combo-search .combo-search-applied-filter i {
+  position: absolute;
+  left: 5px;
+  font-size: 12px;
+  top: 5px;
+  color: #999;
+  cursor: pointer;
+}
+
+.combo-search .combo-search-applied-filter i:hover {
+  color: #333;
+}
+
+.combo-search .combo-search-applied-filter span,
+.combo-search .combo-search-applied-filter input {
+  color: #666;
+  font-size: 11px;
+}
+
+.combo-search .combo-search-applied-filter span {
+  font-weight: bold;
+}
+
+.combo-search .combo-search-applied-filter .combo-search-input-wrapper {
+  height: 22px;
+  margin-left: 0;
+}

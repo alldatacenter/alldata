@@ -1,0 +1,2961 @@
+{
+  "NAMENODE": {
+    "Component": [
+      {
+        "type": "jmx",
+        "properties": {
+          "port": "60010"
+        },
+        "metrics": {
+          "default": {
+            "ServiceComponentInfo/BlocksTotal": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystemMetrics.BlocksTotal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/CapacityRemaining": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystemState.CapacityRemaining",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/CapacityTotal": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/CapacityUsed": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Used",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/CorruptBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystemMetrics.CorruptBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/DeadNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.DeadNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/DecomNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.DecomNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/HeapMemoryMax": {
+              "metric": "java.lang:type=Memory.HeapMemoryUsage[max]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/HeapMemoryUsed": {
+              "metric": "java.lang:type=Memory.HeapMemoryUsage[used]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/NonHeapMemoryMax": {
+              "metric": "java.lang:type=Memory.NonHeapMemoryUsage[max]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/NonHeapMemoryUsed": {
+              "metric": "java.lang:type=Memory.NonHeapMemoryUsage[used]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/LiveNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.LiveNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/MissingBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystemMetrics.MissingBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/NonDfsUsedSpace": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.NonDfsUsedSpace",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/PercentUsed": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.PercentUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/PercentRemaining": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.PercentRemaining",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/Safemode": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Safemode",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/StartTime": {
+              "metric": "java.lang:type=Runtime.StartTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/TotalFiles": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.TotalFiles",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/UnderReplicatedBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystemMetrics.UnderReplicatedBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/UpgradeFinalized": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.UpgradeFinalized",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "ServiceComponentInfo/Version": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Version",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/BlockCapacity": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.BlockCapacity",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/BlocksTotal": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.BlocksTotal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityTotal": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityTotal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityUsed": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityRemaining": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityRemaining",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityNonDFSUsed": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityNonDFSUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityRemainingGB": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityRemainingGB",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityTotalGB": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityTotalGB",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityUsedGB": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityUsedGB",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CorruptBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CorruptBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/ExcessBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.ExcessBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/FilesTotal": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.FilesTotal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/MissingBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.MissingBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/PendingDeletionBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.PendingDeletionBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/PendingReplicationBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.PendingReplicationBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/ScheduledReplicationBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.ScheduledReplicationBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/TotalLoad": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.TotalLoad",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/UnderReplicatedBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.UnderReplicatedBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/AddBlockOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.AddBlockOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/CreateFileOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.CreateFileOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/FileInfoOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.FileInfoOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/FilesCreated": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.FilesCreated",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/FilesInGetListingOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.FilesInGetListingOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/GetBlockLocations": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.GetBlockLocations",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/GetListingOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.GetListingOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Syncs_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.Syncs_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Syncs_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.Syncs_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Transactions_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.Transactions_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Transactions_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.Transactions_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/blockReport_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.blockReport_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/blockReport_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.blockReport_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Threads": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Threads",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/HostName": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.HostName",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Total": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Version": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Version",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/UpgradeFinalized": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.UpgradeFinalized",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Used": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Used",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Free": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Free",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Safemode": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Safemode",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/NonDfsUsedSpace": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.NonDfsUsedSpace",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/PercentUsed": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.PercentUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/PercentRemaining": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.PercentRemaining",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/TotalBlocks": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.TotalBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/TotalFiles": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.TotalFiles",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/LiveNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.LiveNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/DeadNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.DeadNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/DecomNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.DecomNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/NameDirStatuses": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.NameDirStatuses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/gcCount": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.GcCount",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/gcTimeMillis": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.GcTimeMillis",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logError": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.LogError",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logFatal": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.LogFatal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logInfo": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.LogInfo",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logWarn": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.LogWarn",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memHeapCommittedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemHeapCommittedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memHeapUsedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemHeapUsedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memNonHeapCommittedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemNonHeapCommittedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memNonHeapUsedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemNonHeapUsedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsBlocked": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsBlocked",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsNew": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsNew",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsRunnable": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsRunnable",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsTerminated": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsTerminated",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsTimedWaiting": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsTimedWaiting",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsWaiting": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsWaiting",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/NumOpenConnections": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.NumOpenConnections",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/ReceivedBytes": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.ReceivedBytes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTime_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.RpcProcessingTime_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTime_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.RpcProcessingTime_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTime_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.RpcQueueTime_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTime_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.RpcQueueTime_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/SentBytes": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.SentBytes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/callQueueLen": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.callQueueLen",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthenticationFailures": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.rpcAuthenticationFailures",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthenticationSuccesses": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.rpcAuthenticationSuccesses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthorizationFailures": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.rpcAuthorizationFailures",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthorizationSuccesses": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.rpcAuthorizationSuccesses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/addBlock_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.addBlock_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/addBlock_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.addBlock_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/blockReceived_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.blockReceived_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/blockReceived_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.blockReceived_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/blockReport_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.blockReport_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/blockReport_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.blockReport_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/complete_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.complete_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/complete_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.complete_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/create_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.create_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/create_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.create_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/fsync_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.fsync_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/fsync_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.fsync_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getBlockLocations_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getBlockLocations_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getBlockLocations_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getBlockLocations_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getEditLogSize_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getEditLogSize_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getEditLogSize_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getEditLogSize_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getFileInfo_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getFileInfo_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getFileInfo_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getFileInfo_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getListing_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getListing_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getListing_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getListing_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getProtocolVersion_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getProtocolVersion_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getProtocolVersion_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getProtocolVersion_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/renewLease_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.renewLease_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/renewLease_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.renewLease_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/rollEditLog_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.rollEditLog_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/rollEditLog_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.rollEditLog_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/rollFsImage_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.rollFsImage_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/rollFsImage_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.rollFsImage_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/sendHeartbeat_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.sendHeartbeat_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/sendHeartbeat_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.sendHeartbeat_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginFailure_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=ugi.loginFailure_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginFailure_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=ugi.loginFailure_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginSuccess_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=ugi.loginSuccess_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginSuccess_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=ugi.loginSuccess_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      }
+    ],
+    "HostComponent": [
+      {
+        "type": "jmx",
+        "properties": {
+        },
+        "metrics": {
+          "default": {
+            "metrics/dfs/FSNamesystem/BlockCapacity": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.BlockCapacity",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/BlocksTotal": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.BlocksTotal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityRemainingGB": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityRemainingGB",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityTotal": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityTotal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityUsed": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityRemaining": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityRemaining",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityNonDFSUsed": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityNonDFSUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityTotalGB": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityTotalGB",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityUsedGB": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityUsedGB",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CorruptBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CorruptBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/ExcessBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.ExcessBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/FilesTotal": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.FilesTotal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/MissingBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.MissingBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/PendingDeletionBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.PendingDeletionBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/PendingReplicationBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.PendingReplicationBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/ScheduledReplicationBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.ScheduledReplicationBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/TotalLoad": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.TotalLoad",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/UnderReplicatedBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.UnderReplicatedBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/AddBlockOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.AddBlockOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/CreateFileOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.CreateFileOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/FileInfoOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.FileInfoOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/FilesCreated": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.FilesCreated",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/FilesInGetListingOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.FilesInGetListingOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/GetBlockLocations": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.GetBlockLocations",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/GetListingOps": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.GetListingOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Syncs_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.Syncs_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Syncs_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.Syncs_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Transactions_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.Transactions_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Transactions_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.Transactions_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/blockReport_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.blockReport_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/blockReport_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=NameNode.blockReport_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Threads": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Threads",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/HostName": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.HostName",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Total": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Total",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Version": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Version",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/UpgradeFinalized": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.UpgradeFinalized",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Used": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Used",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Free": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Free",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/Safemode": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.Safemode",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/NonDfsUsedSpace": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.NonDfsUsedSpace",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/PercentUsed": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.PercentUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/PercentRemaining": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.PercentRemaining",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/TotalBlocks": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.TotalBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/TotalFiles": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.TotalFiles",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/LiveNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.LiveNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/DeadNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.DeadNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/DecomNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.DecomNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/NameDirStatuses": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.NameDirStatuses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/HeapMemoryMax": {
+              "metric": "java.lang:type=Memory.HeapMemoryUsage[max]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/HeapMemoryUsed": {
+              "metric": "java.lang:type=Memory.HeapMemoryUsage[used]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/NonHeapMemoryMax": {
+              "metric": "java.lang:type=Memory.NonHeapMemoryUsage[max]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/NonHeapMemoryUsed": {
+              "metric": "java.lang:type=Memory.NonHeapMemoryUsage[used]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/gcCount": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.GcCount",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/gcTimeMillis": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.GcTimeMillis",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logError": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.LogError",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logFatal": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.LogFatal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logInfo": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.LogInfo",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logWarn": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.LogWarn",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memHeapCommittedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemHeapCommittedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memHeapUsedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemHeapUsedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memNonHeapCommittedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemNonHeapCommittedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memNonHeapUsedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemNonHeapUsedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsBlocked": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsBlocked",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsNew": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsNew",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsRunnable": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsRunnable",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsTerminated": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsTerminated",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsTimedWaiting": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsTimedWaiting",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsWaiting": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.ThreadsWaiting",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/NumOpenConnections": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.NumOpenConnections",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/ReceivedBytes": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.ReceivedBytes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTime_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.RpcProcessingTime_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTime_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.RpcProcessingTime_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTime_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.RpcQueueTime_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTime_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.RpcQueueTime_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/SentBytes": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.SentBytes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/callQueueLen": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.callQueueLen",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthenticationFailures": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.rpcAuthenticationFailures",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthenticationSuccesses": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.rpcAuthenticationSuccesses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthorizationFailures": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.rpcAuthorizationFailures",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthorizationSuccesses": {
+              "metric": "Hadoop:service=NameNode,name=RpcActivity.rpcAuthorizationSuccesses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/addBlock_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.addBlock_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/addBlock_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.addBlock_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/blockReceived_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.blockReceived_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/blockReceived_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.blockReceived_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/blockReport_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.blockReport_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/blockReport_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.blockReport_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/complete_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.complete_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/complete_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.complete_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/create_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.create_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/create_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.create_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/fsync_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.fsync_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/fsync_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.fsync_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getBlockLocations_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getBlockLocations_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getBlockLocations_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getBlockLocations_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getEditLogSize_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getEditLogSize_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getEditLogSize_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getEditLogSize_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getFileInfo_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getFileInfo_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getFileInfo_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getFileInfo_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getListing_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getListing_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getListing_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getListing_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getProtocolVersion_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getProtocolVersion_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getProtocolVersion_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.getProtocolVersion_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/renewLease_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.renewLease_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/renewLease_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.renewLease_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/rollEditLog_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.rollEditLog_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/rollEditLog_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.rollEditLog_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/rollFsImage_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.rollFsImage_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/rollFsImage_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.rollFsImage_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/sendHeartbeat_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.sendHeartbeat_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/sendHeartbeat_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=RpcDetailedActivity.sendHeartbeat_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/runtime/StartTime": {
+              "metric": "java.lang:type=Runtime.StartTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginFailure_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=ugi.loginFailure_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginFailure_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=ugi.loginFailure_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginSuccess_avg_time": {
+              "metric": "Hadoop:service=NameNode,name=ugi.loginSuccess_avg_time",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginSuccess_num_ops": {
+              "metric": "Hadoop:service=NameNode,name=ugi.loginSuccess_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      },
+      {
+        "type": "ganglia",
+        "metrics": {
+          "default": {
+            "metrics/boottime": {
+              "metric": "boottime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_aidle": {
+              "metric": "cpu_aidle",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_idle": {
+              "metric": "cpu_idle",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_nice": {
+              "metric": "cpu_nice",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_num": {
+              "metric": "cpu_num",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_speed": {
+              "metric": "cpu_speed",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_system": {
+              "metric": "cpu_system",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_user": {
+              "metric": "cpu_user",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_wio": {
+              "metric": "cpu_wio",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/BlockCapacity": {
+              "metric": "dfs.FSNamesystem.BlockCapacity",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/CapacityTotal": {
+              "metric": "dfs.FSNamesystem.CapacityTotal",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/CapacityUsed": {
+              "metric": "dfs.FSNamesystem.CapacityUsed",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/CapacityRemaining": {
+              "metric": "dfs.FSNamesystem.CapacityRemaining",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/CapacityNonDFSUsed": {
+              "metric": "dfs.FSNamesystem.CapacityUsedNonDFS",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/BlocksTotal": {
+              "metric": "dfs.FSNamesystem.BlocksTotal",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/CapacityRemainingGB": {
+              "metric": "dfs.FSNamesystem.CapacityRemainingGB",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/CapacityTotalGB": {
+              "metric": "dfs.FSNamesystem.CapacityTotalGB",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/CapacityUsedGB": {
+              "metric": "dfs.FSNamesystem.CapacityUsedGB",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/CorruptBlocks": {
+              "metric": "dfs.FSNamesystem.CorruptBlocks",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/ExcessBlocks": {
+              "metric": "dfs.FSNamesystem.ExcessBlocks",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/FilesTotal": {
+              "metric": "dfs.FSNamesystem.FilesTotal",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/MissingBlocks": {
+              "metric": "dfs.FSNamesystem.MissingBlocks",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/PendingDeletionBlocks": {
+              "metric": "dfs.FSNamesystem.PendingDeletionBlocks",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/PendingReplicationBlocks": {
+              "metric": "dfs.FSNamesystem.PendingReplicationBlocks",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/ScheduledReplicationBlocks": {
+              "metric": "dfs.FSNamesystem.ScheduledReplicationBlocks",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/TotalLoad": {
+              "metric": "dfs.FSNamesystem.TotalLoad",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/FSNamesystem/UnderReplicatedBlocks": {
+              "metric": "dfs.FSNamesystem.UnderReplicatedBlocks",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/AddBlockOps": {
+              "metric": "dfs.namenode.AddBlockOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/CreateFileOps": {
+              "metric": "dfs.namenode.CreateFileOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/DeleteFileOps": {
+              "metric": "dfs.namenode.DeleteFileOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/FileInfoOps": {
+              "metric": "dfs.namenode.FileInfoOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/FilesAppended": {
+              "metric": "dfs.namenode.FilesAppended",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/FilesCreated": {
+              "metric": "dfs.namenode.FilesCreated",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/FilesDeleted": {
+              "metric": "dfs.namenode.FilesDeleted",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/FilesInGetListingOps": {
+              "metric": "dfs.namenode.FilesInGetListingOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/FilesRenamed": {
+              "metric": "dfs.namenode.FilesRenamed",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/GetBlockLocations": {
+              "metric": "dfs.namenode.GetBlockLocations",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/GetListingOps": {
+              "metric": "dfs.namenode.GetListingOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/SafemodeTime": {
+              "metric": "dfs.namenode.SafemodeTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/Syncs_avg_time": {
+              "metric": "dfs.namenode.SyncsAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/Syncs_num_ops": {
+              "metric": "dfs.namenode.SyncsNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/Transactions_avg_time": {
+              "metric": "dfs.namenode.TransactionsAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/Transactions_num_ops": {
+              "metric": "dfs.namenode.TransactionsNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/blockReport_avg_time": {
+              "metric": "dfs.namenode.BlockReportAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/blockReport_num_ops": {
+              "metric": "dfs.namenode.BlockReportNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/namenode/fsImageLoadTime": {
+              "metric": "dfs.namenode.FsImageLoadTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/disk/disk_free": {
+              "metric": "disk_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/disk/disk_total": {
+              "metric": "disk_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/disk/part_max_used": {
+              "metric": "part_max_used",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/gcCount": {
+              "metric": "jvm.JvmMetrics.GcCount",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/gcTimeMillis": {
+              "metric": "jvm.JvmMetrics.GcTimeMillis",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/logError": {
+              "metric": "jvm.JvmMetrics.LogError",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/logFatal": {
+              "metric": "jvm.JvmMetrics.LogFatal",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/logInfo": {
+              "metric": "jvm.JvmMetrics.LogInfo",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/logWarn": {
+              "metric": "jvm.JvmMetrics.LogWarn",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/memHeapCommittedM": {
+              "metric": "jvm.JvmMetrics.MemHeapCommittedM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/memHeapUsedM": {
+              "metric": "jvm.JvmMetrics.MemHeapUsedM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/memNonHeapCommittedM": {
+              "metric": "jvm.JvmMetrics.MemNonHeapCommittedM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/memNonHeapUsedM": {
+              "metric": "jvm.JvmMetrics.MemNonHeapUsedM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsBlocked": {
+              "metric": "jvm.JvmMetrics.ThreadsBlocked",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsNew": {
+              "metric": "jvm.JvmMetrics.ThreadsNew",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsRunnable": {
+              "metric": "jvm.JvmMetrics.ThreadsRunnable",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsTerminated": {
+              "metric": "jvm.JvmMetrics.ThreadsTerminated",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsTimedWaiting": {
+              "metric": "jvm.JvmMetrics.ThreadsTimedWaiting",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsWaiting": {
+              "metric": "jvm.JvmMetrics.ThreadsWaiting",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/load/load_fifteen": {
+              "metric": "load_fifteen",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/load/load_five": {
+              "metric": "load_five",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/load/load_one": {
+              "metric": "load_one",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_buffers": {
+              "metric": "mem_buffers",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_cached": {
+              "metric": "mem_cached",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_free": {
+              "metric": "mem_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_shared": {
+              "metric": "mem_shared",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_total": {
+              "metric": "mem_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/swap_free": {
+              "metric": "swap_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/swap_total": {
+              "metric": "swap_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/bytes_in": {
+              "metric": "bytes_in",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/bytes_out": {
+              "metric": "bytes_out",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/pkts_in": {
+              "metric": "pkts_in",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/pkts_out": {
+              "metric": "pkts_out",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/process/proc_run": {
+              "metric": "proc_run",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/process/proc_total": {
+              "metric": "proc_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/NumOpenConnections": {
+              "metric": "rpc.rpc.NumOpenConnections",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/ReceivedBytes": {
+              "metric": "rpc.rpc.ReceivedBytes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/RpcProcessingTime_avg_time": {
+              "metric": "rpc.rpc.RpcProcessingTimeAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/RpcProcessingTime_num_ops": {
+              "metric": "rpc.rpc.RpcProcessingTimeNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/RpcQueueTime_avg_time": {
+              "metric": "rpc.rpc.RpcQueueTimeAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/RpcQueueTime_num_ops": {
+              "metric": "rpc.rpc.RpcQueueTimeNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/SentBytes": {
+              "metric": "rpc.rpc.SentBytes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/callQueueLen": {
+              "metric": "rpc.rpc.CallQueueLength",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthenticationFailures": {
+              "metric": "rpc.rpc.RpcAuthenticationFailures",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthenticationSuccesses": {
+              "metric": "rpc.rpc.RpcAuthenticationSuccesses",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthorizationFailures": {
+              "metric": "rpc.rpc.RpcAuthorizationFailures",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthorizationSuccesses": {
+              "metric": "rpc.rpc.RpcAuthorizationSuccesses",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/addBlock_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.AddBlockAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/addBlock_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.AddBlockNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/blockReceived_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.BlockReceivedAndDeletedAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/blockReceived_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.BlockReceivedAndDeletedNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/blockReport_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.BlockReportAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/blockReport_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.BlockReportNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/complete_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.CompleteAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/complete_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.CompleteNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/create_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.CreateAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/create_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.CreateNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/delete_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.DeleteAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/delete_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.DeleteNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/fsync_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.FsyncAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/fsync_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.FsyncNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getBlockLocations_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.GetBlockLocationsAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getBlockLocations_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.GetBlockLocationsNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getEditLogSize_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.GetEditLogManifestAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getEditLogSize_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.GetEditLogManifestNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getFileInfo_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.GetFileInfoAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getFileInfo_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.GetFileInfoNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getListing_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.GetListingAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getListing_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.GetListingNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/mkdirs_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.MkdirsAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/mkdirs_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.MkdirsNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/register_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.RegisterDatanodeAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/register_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.RegisterDatanodeNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/rename_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.RenameAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/rename_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.RenameNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/renewLease_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.RenewLeaseAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/renewLease_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.RenewLeaseNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/rollEditLog_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.RollEditLogAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/rollEditLog_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.RollEditLogNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/sendHeartbeat_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.SendHeartbeatAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/sendHeartbeat_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.SendHeartbeatNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/setOwner_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.SetOwnerAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/setOwner_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.SetOwnerNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/setPermission_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.SetPermissionAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/setPermission_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.SetPermissionNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/setSafeMode_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.SetSafeModeAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/setSafeMode_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.SetSafeModeNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/versionRequest_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.VersionRequestAvgTime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/versionRequest_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.VersionRequestNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/ugi/loginFailure_avg_time": {
+              "metric": "ugi.UgiMetrics.LoginFailureAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/ugi/loginFailure_num_ops": {
+              "metric": "ugi.UgiMetrics.LoginFailureNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/ugi/loginSuccess_avg_time": {
+              "metric": "ugi.UgiMetrics.LoginSuccessAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/ugi/loginSuccess_num_ops": {
+              "metric": "ugi.UgiMetrics.LoginSuccessNumOps",
+              "pointInTime": false,
+              "temporal": true
+            }
+          }
+        }
+      }
+    ]
+  },
+  "DATANODE": {
+    "HostComponent": [
+      {
+        "type": "org.apache.ambari.server.controller.internal.StackDefinedPropertyProviderTest$CustomMetricProvider1",
+        "metrics": {
+          "default": {
+            "foo/type1/name": {
+              "metric": "Type1.Metric.Name",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      },
+      {
+        "type": "org.apache.ambari.server.controller.internal.StackDefinedPropertyProviderTest$CustomMetricProvider2",
+        "properties": {
+          "Type2.Metric.Name": "value2"
+        },
+        "metrics": {
+          "default": {
+            "foo/type2/name": {
+              "metric": "Type2.Metric.Name",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      },
+      {
+        "type": "org.apache.ambari.server.controller.internal.StackDefinedPropertyProviderTest$CustomMetricProvider3",
+        "properties": {
+          "Type3.Metric.Name": "value3"
+        },
+        "metrics": {
+          "default": {
+            "foo/type3/name": {
+              "metric": "Type3.Metric.Name",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      },
+      {
+        "type": "org.apache.ambari.server.controller.internal.ProviderNotExists",
+        "metrics": {
+          "default": {
+            "foo/type4/name": {
+              "metric": "Type4.Metric.Name",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      }
+    ]
+  },
+  "JOURNALNODE": {
+    "HostComponent": [
+      {
+        "type": "ganglia",
+        "metrics": {
+          "default": {
+            "metrics/dfs/journalNode/syncs300s75thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs300s75thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/lastWrittenTxId": {
+              "metric": "dfs.JournalNode.LastWrittenTxId",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs60s90thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs60s90thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/finalizeLogSegment_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.FinalizeLogSegmentNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/ugi/loginSuccess_avg_time": {
+              "metric": "ugi.UgiMetrics.LoginSuccessAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/startLogSegment_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.StartLogSegmentAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/load/load_one": {
+              "metric": "load_one",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/currentLagTxns": {
+              "metric": "dfs.JournalNode.CurrentLagTxns",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/memNonHeapUsedM": {
+              "metric": "jvm.JvmMetrics.MemNonHeapUsedM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/bytesWritten": {
+              "metric": "dfs.JournalNode.BytesWritten",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/process/proc_run": {
+              "metric": "proc_run",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/acceptRecovery_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.AcceptRecoveryNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/memory/swap_total": {
+              "metric": "swap_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/txnsWritten": {
+              "metric": "dfs.JournalNode.TxnsWritten",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/threadsBlocked": {
+              "metric": "jvm.JvmMetrics.ThreadsBlocked",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/RpcQueueTime_num_ops": {
+              "metric": "rpc.rpc.RpcQueueTimeNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/process/proc_total": {
+              "metric": "proc_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/disk/part_max_used": {
+              "metric": "part_max_used",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/newEpoch_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.NewEpochNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs3600s_num_ops": {
+              "metric": "dfs.JournalNode.Syncs3600sNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs3600s99thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs3600s99thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/ugi/loginSuccess_num_ops": {
+              "metric": "ugi.UgiMetrics.LoginSuccessNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs60s95thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs60s95thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_idle": {
+              "metric": "cpu_idle",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs60s99thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs60s99thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_aidle": {
+              "metric": "cpu_aidle",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_free": {
+              "metric": "mem_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs300s50thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs300s50thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/bytes_in": {
+              "metric": "bytes_in",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs300s_num_ops": {
+              "metric": "dfs.JournalNode.Syncs300sNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs3600s90thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs3600s90thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/pkts_out": {
+              "metric": "pkts_out",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/memNonHeapCommittedM": {
+              "metric": "jvm.JvmMetrics.MemNonHeapCommittedM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/memory/mem_cached": {
+              "metric": "mem_cached",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/disk/disk_total": {
+              "metric": "disk_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/lastPromisedEpoch": {
+              "metric": "dfs.JournalNode.LastPromisedEpoch",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/prepareRecovery_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.PrepareRecoveryAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/lastWriterEpoch": {
+              "metric": "dfs.JournalNode.LastWriterEpoch",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/ugi/loginFailure_num_ops": {
+              "metric": "ugi.UgiMetrics.LoginFailureNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getEditLogManifest_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.GetEditLogManifestNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_wio": {
+              "metric": "cpu_wio",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/acceptRecovery_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.AcceptRecoveryAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_speed": {
+              "metric": "cpu_speed",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/RpcProcessingTime_avg_time": {
+              "metric": "rpc.rpc.RpcProcessingTimeAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthenticationSuccesses": {
+              "metric": "rpc.rpc.RpcAuthenticationSuccesses",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthenticationFailures": {
+              "metric": "rpc.rpc.RpcAuthenticationFailures",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/network/pkts_in": {
+              "metric": "pkts_in",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_total": {
+              "metric": "mem_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/memHeapCommittedM": {
+              "metric": "jvm.JvmMetrics.MemHeapCommittedM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsRunnable": {
+              "metric": "jvm.JvmMetrics.ThreadsRunnable",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs60s75thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs60s75thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/threadsNew": {
+              "metric": "jvm.JvmMetrics.ThreadsNew",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthorizationFailures": {
+              "metric": "rpc.rpc.RpcAuthorizationFailures",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs300s95thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs300s95thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/RpcQueueTime_avg_time": {
+              "metric": "rpc.rpc.RpcQueueTimeAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs3600s95thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs3600s95thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getEditLogManifest_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.GetEditLogManifestAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/SentBytes": {
+              "metric": "rpc.rpc.SentBytes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/logWarn": {
+              "metric": "jvm.JvmMetrics.LogWarn",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsTimedWaiting": {
+              "metric": "jvm.JvmMetrics.ThreadsTimedWaiting",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/gcCount": {
+              "metric": "jvm.JvmMetrics.GcCount",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/ReceivedBytes": {
+              "metric": "rpc.rpc.ReceivedBytes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_nice": {
+              "metric": "cpu_nice",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/batchesWritten": {
+              "metric": "dfs.JournalNode.BatchesWritten",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/NumOpenConnections": {
+              "metric": "rpc.rpc.NumOpenConnections",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/batchesWrittenWhileLagging": {
+              "metric": "dfs.JournalNode.BatchesWrittenWhileLagging",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs300s99thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs300s99thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/memHeapUsedM": {
+              "metric": "jvm.JvmMetrics.MemHeapUsedM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/prepareRecovery_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.PrepareRecoveryNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsWaiting": {
+              "metric": "jvm.JvmMetrics.ThreadsWaiting",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/disk/disk_free": {
+              "metric": "disk_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/newEpoch_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.NewEpochAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/memory/mem_buffers": {
+              "metric": "mem_buffers",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs60s_num_ops": {
+              "metric": "dfs.JournalNode.Syncs60sNumOps",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/gcTimeMillis": {
+              "metric": "jvm.JvmMetrics.GcTimeMillis",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/threadsTerminated": {
+              "metric": "jvm.JvmMetrics.ThreadsTerminated",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/memMaxM": {
+              "metric": "jvm.JvmMetrics.MemMaxM",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/network/bytes_out": {
+              "metric": "bytes_out",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_user": {
+              "metric": "cpu_user",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/swap_free": {
+              "metric": "swap_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/load/load_five": {
+              "metric": "load_five",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_system": {
+              "metric": "cpu_system",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getJournalState_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.GetJournalStateAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/boottime": {
+              "metric": "boottime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs300s90thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs300s90thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/callQueueLen": {
+              "metric": "rpc.rpc.CallQueueLength",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/journal_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.JournalAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/finalizeLogSegment_avg_time": {
+              "metric": "rpcdetailed.rpcdetailed.FinalizeLogSegmentAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/load/load_fifteen": {
+              "metric": "load_fifteen",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/startLogSegment_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.StartLogSegmentNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs60s50thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs60s50thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/logInfo": {
+              "metric": "jvm.JvmMetrics.LogInfo",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/getJournalState_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.GetJournalStateNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/RpcProcessingTime_num_ops": {
+              "metric": "rpc.rpc.RpcProcessingTimeNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/memory/mem_shared": {
+              "metric": "mem_shared",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs3600s50thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs3600s50thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/logError": {
+              "metric": "jvm.JvmMetrics.LogError",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/ugi/loginFailure_avg_time": {
+              "metric": "ugi.UgiMetrics.LoginFailureAvgTime",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_num": {
+              "metric": "cpu_num",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpcdetailed/journal_num_ops": {
+              "metric": "rpcdetailed.rpcdetailed.JournalNumOps",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthorizationSuccesses": {
+              "metric": "rpc.rpc.RpcAuthorizationSuccesses",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/logFatal": {
+              "metric": "jvm.JvmMetrics.LogFatal",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/dfs/journalNode/syncs3600s75thPercentileLatencyMicros": {
+              "metric": "dfs.JournalNode.Syncs3600s75thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": true
+            }
+          }
+        }
+      },
+      {
+        "type": "jmx",
+        "metrics": {
+          "default": {
+            "metrics/jvm/memHeapCommittedM": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.MemHeapCommittedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/NonHeapMemoryUsed": {
+              "metric": "java.lang:type=Memory.NonHeapMemoryUsage[used]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsRunnable": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.ThreadsRunnable",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs300s95thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs300s95thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsNew": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.ThreadsNew",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/finalizeLogSegment_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.FinalizeLogSegmentNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthorizationFailures": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.RpcAuthorizationFailures",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginSuccess_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=UgiMetrics.LoginSuccessAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTime_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.RpcQueueTimeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/startLogSegment_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.StartLogSegmentAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/lastWriterEpoch": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).LastWriterEpoch",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getEditLogManifest_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.GetEditLogManifestAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/SentBytes": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.SentBytes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memNonHeapUsedM": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.MemNonHeapUsedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs60s_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs60sNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logWarn": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.LogWarn",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs3600s50thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs3600s50thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsTimedWaiting": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.ThreadsTimedWaiting",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/gcCount": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.GcCount",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs3600s95thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs3600s95thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/acceptRecovery_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.AcceptRecoveryNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/ReceivedBytes": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.ReceivedBytes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs3600s99thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs3600s99thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsBlocked": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.ThreadsBlocked",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/lastWrittenTxId": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).LastWrittenTxId",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTime_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.RpcQueueTimeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/HeapMemoryMax": {
+              "metric": "java.lang:type=Memory.HeapMemoryUsage[max]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/HeapMemoryUsed": {
+              "metric": "java.lang:type=Memory.HeapMemoryUsage[used]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/newEpoch_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.NewEpochNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs60s75thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs60s75thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/NumOpenConnections": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.NumOpenConnections",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memHeapUsedM": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.MemHeapUsedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/prepareRecovery_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.PrepareRecoveryNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/batchesWrittenWhileLagging": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).BatchesWrittenWhileLagging",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsWaiting": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.ThreadsWaiting",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/newEpoch_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.NewEpochAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginSuccess_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=UgiMetrics.LoginSuccessNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/gcTimeMillis": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.GcTimeMillis",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs300s75thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs300s75thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/threadsTerminated": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.ThreadsTerminated",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memMaxM": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.MemMaxM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs300s_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs300sNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs300s50thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs300s50thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getJournalState_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.GetJournalStateAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/lastPromisedEpoch": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).LastPromisedEpoch",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/startTime": {
+              "metric": "java.lang:type=Runtime.StartTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs60s95thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs60s95thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/journalsStatus": {
+              "metric": "Hadoop:service=JournalNode,name=JournalNodeInfo.JournalsStatus",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memNonHeapCommittedM": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.MemNonHeapCommittedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs60s50thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs60s50thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/callQueueLen": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.CallQueueLength",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/journal_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.JournalAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs3600s75thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs3600s75thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/finalizeLogSegment_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.FinalizeLogSegmentAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs3600s90thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs3600s90thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/batchesWritten": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).BatchesWritten",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/startLogSegment_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.StartLogSegmentNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs60s90thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs60s90thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs3600s_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs3600sNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/prepareRecovery_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.PrepareRecoveryAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logInfo": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.LogInfo",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getJournalState_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.GetJournalStateNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/currentLagTxns": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).CurrentLagTxns",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTime_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.RpcProcessingTimeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginFailure_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=UgiMetrics.LoginFailureNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/getEditLogManifest_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.GetEditLogManifestNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs300s99thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs300s99thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/NonHeapMemoryMax": {
+              "metric": "java.lang:type=Memory.NonHeapMemoryUsage[max]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs300s90thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs300s90thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/acceptRecovery_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.AcceptRecoveryAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logError": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.LogError",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/ugi/loginFailure_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=UgiMetrics.LoginFailureAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/syncs60s99thPercentileLatencyMicros": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).Syncs60s99thPercentileLatencyMicros",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpcdetailed/journal_num_ops": {
+              "metric": "Hadoop:service=JournalNode,name=RpcDetailedActivity.JournalNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthorizationSuccesses": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.RpcAuthorizationSuccesses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/txnsWritten": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).TxnsWritten",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/logFatal": {
+              "metric": "Hadoop:service=JournalNode,name=JvmMetrics.LogFatal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTime_avg_time": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.RpcProcessingTimeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthenticationSuccesses": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.RpcAuthenticationSuccesses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthenticationFailures": {
+              "metric": "Hadoop:service=JournalNode,name=RpcActivity.RpcAuthenticationFailures",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/journalnode/cluster/$1.replaceAll(\"^-\",\"\")/bytesWritten": {
+              "metric": "Hadoop:service=JournalNode,name=Journal(-.+).BytesWritten",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      }
+    ]
+  }
+
+}

@@ -1,0 +1,138 @@
+{
+  "services": [
+    {
+      "name": "HIVE",
+      "identities": [
+        {
+          "name": "hive_spnego",
+          "reference": "/spnego"
+        },
+        {
+          "name": "hive_smokeuser",
+          "reference": "/smokeuser"
+        }
+      ],
+      "configurations": [
+        {
+          "hive-site": {
+            "hive.metastore.sasl.enabled": "true",
+            "hive.server2.authentication": "KERBEROS"
+          }
+        },
+        {
+          "webhcat-site": {
+            "templeton.kerberos.secret": "secret",
+            "templeton.hive.properties": "hive.metastore.local=false,hive.metastore.uris=${clusterHostInfo/hive_metastore_host|each(thrift://%s:9083, \\\\,, \\s*\\,\\s*)},hive.metastore.sasl.enabled=true,hive.metastore.execute.setugi=true,hive.metastore.warehouse.dir=/apps/hive/warehouse,hive.exec.mode.local.auto=false,hive.metastore.kerberos.principal=hive/_HOST@${realm}"
+          }
+        },
+        {
+          "core-site": {
+            "hadoop.proxyuser.HTTP.hosts": "${clusterHostInfo/webhcat_server_host}"
+          }
+        },
+        {
+          "ranger-hive-audit": {
+            "xasecure.audit.jaas.Client.loginModuleName": "com.sun.security.auth.module.Krb5LoginModule",
+            "xasecure.audit.jaas.Client.loginModuleControlFlag": "required",
+            "xasecure.audit.jaas.Client.option.useKeyTab": "true",
+            "xasecure.audit.jaas.Client.option.storeKey": "false",
+            "xasecure.audit.jaas.Client.option.serviceName": "solr",
+            "xasecure.audit.destination.solr.force.use.inmemory.jaas.config": "true"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name": "HIVE_METASTORE",
+          "identities": [
+            {
+              "name": "hive_hive_metastore_hive",
+              "reference": "/HIVE/HIVE_SERVER/hive_server_hive",
+              "principal": {
+                "configuration": "hive-site/hive.metastore.kerberos.principal"
+              },
+              "keytab": {
+                "configuration": "hive-site/hive.metastore.kerberos.keytab.file"
+              }
+            }
+          ]
+        },
+        {
+          "name": "HIVE_SERVER",
+          "identities": [
+            {
+              "name": "hive_hive_server_hdfs",
+              "reference": "/HDFS/NAMENODE/hdfs"
+            },
+            {
+              "name": "hive_server_hive",
+              "principal": {
+                "value": "hive/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "hive-site/hive.server2.authentication.kerberos.principal",
+                "local_username": "${hive-env/hive_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/hive.service.keytab",
+                "owner": {
+                  "name": "${hive-env/hive_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": "r"
+                },
+                "configuration": "hive-site/hive.server2.authentication.kerberos.keytab"
+              }
+            },
+            {
+              "name": "atlas_kafka",
+              "reference": "/HIVE/HIVE_SERVER/hive_server_hive",
+              "principal": {
+                "configuration": "hive-atlas-application.properties/atlas.jaas.KafkaClient.option.principal"
+              },
+              "keytab": {
+                "configuration": "hive-atlas-application.properties/atlas.jaas.KafkaClient.option.keyTab"
+              }
+            },
+            {
+              "name": "hive_hive_server_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "hive-site/hive.server2.authentication.spnego.principal"
+              },
+              "keytab": {
+                "configuration": "hive-site/hive.server2.authentication.spnego.keytab"
+              }
+            },
+            {
+              "name": "ranger_audit",
+              "reference": "/HIVE/HIVE_SERVER/hive_server_hive",
+              "principal": {
+                "configuration": "ranger-hive-audit/xasecure.audit.jaas.Client.option.principal"
+              },
+              "keytab": {
+                "configuration": "ranger-hive-audit/xasecure.audit.jaas.Client.option.keyTab"
+              }
+            }
+          ]
+        },
+        {
+          "name": "WEBHCAT_SERVER",
+          "identities": [
+            {
+              "name": "hive_webhcat_server_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "webhcat-site/templeton.kerberos.principal"
+              },
+              "keytab": {
+                "configuration": "webhcat-site/templeton.kerberos.keytab"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

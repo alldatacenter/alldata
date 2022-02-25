@@ -1,0 +1,46 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="chart-wrapper">
+  <div {{bindAttr class="view.isReady:hide:show :screensaver :no-borders :chart-container"}}>
+    {{view App.SpinnerView}}
+  </div>
+  <div {{bindAttr class="view.isReady::hidden :actions-container"}}>
+    {{view view.timeRangeListView}}
+    <a {{bindAttr class="view.isExportButtonHidden:hidden :corner-icon"}}
+        href="#" {{action toggleFormatsList target="view"}}>
+      {{t common.export}} <i class="glyphicon glyphicon-save"></i>
+    </a>
+    {{view view.exportMetricsMenuView}}
+  </div>
+  {{#if view.isTimePagingEnable}}
+    <div {{bindAttr class="view.leftArrowVisible:visibleArrow :arrow-left"}} {{action "switchTimeBack" target="view.parentView"}}></div>
+  {{/if}}
+  <div {{bindAttr id="view.containerId"}} {{bindAttr class="view.isReady:shown:hidden view.containerClass :chart-container"}}>
+    <div {{bindAttr id="view.yAxisId"}} {{bindAttr class="view.yAxisClass :chart-y-axis"}}></div>
+    <div {{bindAttr id="view.xAxisId"}} {{bindAttr class="view.xAxisClass :chart-x-axis"}}></div>
+    <div {{bindAttr id="view.legendId"}} {{bindAttr class="view.legendClass :chart-legend"}}></div>
+    <div {{bindAttr id="view.chartId"}} {{bindAttr class="view.chartClass :chart"}}></div>
+    <div {{bindAttr id="view.titleId"}} {{bindAttr class="view.titleClass view.isExportButtonHidden::has-data :chart-title"}}>{{view.title}}</div>
+  </div>
+  {{#if view.isTimePagingEnable}}
+    <div {{bindAttr class="view.rightArrowVisible:visibleArrow :arrow-right"}} {{action "switchTimeForward" "forward" target="view.parentView"}}></div>
+  {{/if}}
+  <div class="timezone mtl15 mll">
+    <strong>{{t common.timezone}}</strong>: {{App.router.userSettingsController.userSettings.timezone.label}}
+  </div>
+</div>

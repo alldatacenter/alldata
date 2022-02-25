@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+     http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. -->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="{C627953F-1C50-4520-AB91-A938F7E01200}" Codepage="1252" Language="1033" Manufacturer="Apache" Name="Ambari-SCOM" UpgradeCode="{CD3CAC20-F0A9-4EF7-9C75-CF660D0697AA}" Version="2.0.0.0">
+        <Package Comments="This installer database contains the logic and data required to install Apache Ambari-SCOM." Compressed="yes" Description="Ambari-SCOM" InstallerVersion="100" Languages="1033" Manufacturer="Apache" Platform="x86" />
+		<Binary Id="GUI" SourceFile="SourceDir\bin\GUI_Ambari.exe" />
+		<Condition Message="You need to be an administrator to install this product.">Privileged</Condition>
+		<CustomAction Id="INSTINTERRUPT" Error="Installation interrupted by user" />
+        <CustomAction Id="INSTSUCCESS" Error="Installation completed succesfully" />
+        <CustomAction Id="INSTFAILED" Error="Installation failed. Please see installation log for details: [TARGETDIR]AmbariInstallFiles\AmbariSetupTools\ambari.winpkg.install.log" />
+		<CustomAction Id="SET_AMB_LAYOUT" Property="AMB_LAYOUT" Value="[%APPDATA]\amb_install\ambariproperties.txt" />
+        <CustomAction Id="Upgrade" BinaryKey="GUI" ExeCommand="upgrade [OLDERVERSIONBEINGUPGRADED]" />
+        <CustomAction Id="GUI" BinaryKey="GUI" ExeCommand="gui [OLDERVERSIONBEINGUPGRADED]" />
+        <CustomAction Id="InstallCommand" Property="InstallDeferred" Value="&quot;cmd.exe&quot; /c &quot;set RECREATE_DB=[RECREATE_DB] &amp;&amp; set START_SERVICES=[START_SERVICES] &amp;&amp; set HDP_LAYOUT=[HDP_LAYOUT] &amp;&amp; set AMB_LAYOUT=[AMB_LAYOUT] &amp;&amp; [AMBARI_SETUP_TOOLS]bootstrap_install.cmd [AMBARI_SETUP_TOOLS]&quot;" />
+        <CustomAction Id="InstallDeferred" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" />
+        <CustomAction Id="UninstallCommand" Property="UninstallDeferred" Value="&quot;cmd.exe&quot; /c &quot;[AMBARI_SETUP_TOOLS]bootstrap_uninstall.cmd [AMBARI_SETUP_TOOLS]&quot;" />
+        <CustomAction Id="UninstallDeferred" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" />
+		<CustomAction Id="Result" BinaryKey="GUI" ExeCommand="install" Execute="deferred" />
+		<CustomAction Id="Result_rem" BinaryKey="GUI" ExeCommand="uninstall" Execute="deferred" />
+		<CustomAction Id="Database" BinaryKey="GUI" ExeCommand="db" Execute="deferred" />
+		<CustomAction Id="MODIFY" Error="Please uninstall current Ambari installation before installing Ambari" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="FromDir" Name="AmbariInstallFiles" ShortName="d6tzoyaf">
+                <Directory Id="PACKAGE_HOME" Name="AmbariPackages" ShortName="98sctbni">
+                    <Component Id="AmbariWinpkg" Guid="{EE5641F2-EA9E-421C-8A9C-8EA92678E940}">
+                        <File Id="AmbariWinpkg" Name="ambari-winpkg.zip" KeyPath="yes" ShortName="0nfmvp3j.zip" DiskId="1" Source="SourceDir\AmbariPackages\Ambari-Winpkg.zip" />
+                    </Component>
+                </Directory>
+                <Directory Id="AMBARI_SETUP_TOOLS" Name="AmbariSetupTools" ShortName="nr2cdh24">
+                    <Component Id="WinpkgTool" Guid="{56CE1985-7C34-4759-801D-04BDB7676ADC}">
+                        <File Id="winpkg.utils.psm1" Name="winpkg.utils.psm1" KeyPath="yes" ShortName="gw4d2dvs.psm" DiskId="1" Source="SourceDir\AmbariSetupTools\winpkg.utils.psm1" />
+                        <File Id="winpkg.ps1" Name="winpkg.ps1" DiskId="1" Source="SourceDir\AmbariSetupTools\winpkg.ps1" />
+                        <File Id="winpkg.cmd" Name="winpkg.cmd" DiskId="1" Source="SourceDir\AmbariSetupTools\winpkg.cmd" />
+                        <File Id="bootstrap_uninstall.cmd" Name="bootstrap_uninstall.cmd" ShortName="qxdboha4.cmd" DiskId="1" Source="SourceDir\AmbariSetupTools\bootstrap_uninstall.cmd" />
+                        <File Id="bootstrap_install.cmd" Name="bootstrap_install.cmd" ShortName="vxuo5ffy.cmd" DiskId="1" Source="SourceDir\AmbariSetupTools\bootstrap_install.cmd" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="Complete" Level="1">
+            <ComponentRef Id="WinpkgTool" />
+            <ComponentRef Id="AmbariWinpkg" />
+        </Feature>
+        <Media Id="1" Cabinet="Sample.cab" EmbedCab="yes" />
+        <Property Id="ALLUSERS" Value="2" />
+        <Property Id="NETFRAMEWORK40CLIENT" Secure="yes" />
+        <Property Id="NETFRAMEWORK40FULL" Secure="yes" />
+		<Property Id="MSIUSEREALADMINDETECTION" Value="1" />
+		<Property Id="OLDERVERSIONBEINGUPGRADED" Secure="yes" />
+		<Property Id="RECREATE_DB" Value="yes" />
+		<Upgrade Id="{CD3CAC20-F0A9-4EF7-9C75-CF660D0697AA}">
+            <UpgradeVersion Minimum="1.0.0" Property="OLDERVERSIONBEINGUPGRADED" IncludeMinimum="yes" />
+        </Upgrade>
+        <InstallExecuteSequence>
+            <Custom Action="MODIFY" Sequence="200">Installed AND NOT REMOVE</Custom>
+            <Custom Action="UninstallCommand" Sequence="1501">Installed</Custom>
+            <Custom Action="UninstallDeferred" Sequence="1502">Installed</Custom>
+            <Custom Action="InstallCommand" Sequence="4003">NOT Installed</Custom>
+            <Custom Action="InstallDeferred" Sequence="4004">NOT Installed</Custom>
+            <Custom Action="Result_rem" Sequence="6500">REMOVE</Custom>
+            <Custom Action="Result" Sequence="6500">NOT Installed</Custom>
+            <Custom Action="Database" Sequence="6510">NOT Installed</Custom>
+            <LaunchConditions Sequence="100" />
+            <FindRelatedProducts Sequence="200" />
+            <ValidateProductID Sequence="700" />
+            <CostInitialize Sequence="800" />
+            <FileCost Sequence="900" />
+            <CostFinalize Sequence="1000" />
+            <MigrateFeatureStates Sequence="1200" />
+            <InstallValidate Sequence="1400" />
+            <InstallInitialize Sequence="1500" />
+            <ProcessComponents Sequence="1600" />
+            <UnpublishFeatures Sequence="1800" />
+            <RemoveEnvironmentStrings Sequence="3300" />
+            <RemoveFiles Sequence="3500" />
+            <RemoveFolders Sequence="3600" />
+            <CreateFolders Sequence="3700" />
+            <InstallFiles Sequence="4000" />
+            <WriteEnvironmentStrings Sequence="5200" />
+            <RegisterUser Sequence="6000" />
+            <RegisterProduct Sequence="6100" />
+            <PublishFeatures Sequence="6300" />
+            <PublishProduct Sequence="6400" />
+            <InstallFinalize Sequence="6600" />
+            <RemoveExistingProducts Sequence="1401" />
+        </InstallExecuteSequence>
+        <InstallUISequence>
+            <Custom Action="INSTFAILED" OnExit="error" />
+            <Custom Action="INSTINTERRUPT" OnExit="cancel" />
+            <Custom Action="INSTSUCCESS" OnExit="success" />
+			<Custom Action="SET_AMB_LAYOUT" Sequence="400">NOT Installed</Custom>
+            <Custom Action="GUI" Sequence="500">NOT Installed</Custom>
+        </InstallUISequence>
+    </Product>
+</Wix>

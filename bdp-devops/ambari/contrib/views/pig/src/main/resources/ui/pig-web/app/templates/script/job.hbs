@@ -1,0 +1,173 @@
+{{!
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+}}
+<div class="job-container">
+  <h3>
+    {{title}} - <span {{bind-attr class=":label jobSuccess:label-success jobError:label-danger jobInProgress:label-warning "}}>{{status}}</span>
+    {{#if hasErrorInLogs}} <span class="label label-danger"><i class="fa fa-exclamation"></i></span> {{/if}}
+  </h3>
+
+    <div class="row">
+
+      <div {{bind-attr class="jobInProgress:col-md-10:col-md-12 :progress-wrap" }} >
+        {{job-progress job=content}}
+      </div>
+      {{#if jobInProgress}}
+        <div class="col-md-2">
+          {{#unless isKilling}}
+            <button {{action "killjob" content}} type="button" class="btn btn-block btn-danger btn-sm kill-button"><i class="fa fa-times"></i> {{t 'job.kill_job'}}</button>
+          {{/unless}}
+          {{#if isKilling}}
+            <div class="spinner-sm pull-left kill-button"></div>
+          {{/if}}
+        </div>
+      {{/if}}
+    </d
+iv>
+  <table class="table job-info">
+    <tbody>
+      <tr>
+        <td>{{t 'job.jobId'}}</td>
+        <td>{{jobId}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'job.started'}}</td>
+        <td>{{showDate dateStarted 'YYYY-MM-DD HH:mm'}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+    {{#view view.collapsePanel class="panel panel-default" collapsed=jobResultsHidden}}
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a {{action 'toggleCollapse' target="view"}} href="#">
+            <i {{bind-attr class=":toggle-icon :fa :fa-fw :fa-chevron-right view.collapsed::fa-rotate-90"}}></i>
+            {{t 'job.results'}}
+          </a>
+          {{#unless jobInProgress}}
+            {{#if jobResults.isFulfilled }}
+              <p class="pull-right" ><a href="#" {{action 'download' 'results'}}><i class="fa fa-download"></i> {{t 'common.download'}}</a></p>
+            {{/if}}
+          {{/unless}}
+        </h4>
+      </div>
+      <div id="scriptResults" class="panel-collapse collapse">
+        <div class="panel-body">
+        {{#if jobResults.isPending}}
+          <div class="spinner-sm"></div>
+        {{else}}
+          {{#if jobResults.isFulfilled }}
+          <pre>{{jobResults.content.fileContent}}</pre>
+          {{/if}}
+          {{#unless jobInProgress}}
+            {{#if jobResults.isRejected}}
+              <div class="alert alert-danger" role="alert">
+                {{jobResults.reason}}
+              </div>
+            {{/if}}
+          {{/unless}}
+        {{/if}}
+        </div>
+      </div>
+    {{/view}}
+
+
+    {{#view view.collapsePanel classBinding=":panel :panel-default" collapsed=jobLogsHidden}}
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a  {{action 'toggleCollapse' target="view"}} href="#">
+            <i {{bind-attr class=":toggle-icon :fa :fa-fw :fa-chevron-right view.collapsed::fa-rotate-90"}} ></i>
+            {{t 'job.logs'}} {{#if hasErrorInLogs}} <span class="label label-danger"><i class="fa fa-exclamation"></i></span> {{/if}}
+          </a>
+          {{#unless jobInProgress}}
+            {{#if jobLogs.isFulfilled}}
+              <p class="pull-right" ><a href="#" {{action 'download' 'logs'}}><i class="fa fa-download"></i> {{t 'common.download'}}</a></p>
+            {{/if}}
+          {{/unless}}
+        </h4>
+      </div>
+      <div id="scriptLogs" class="panel-collapse collapse">
+        <div class="panel-body">
+        {{#if jobLogs.isPending}}
+          <div class="spinner-sm"></div>
+        {{else}}
+          {{#if jobLogs.isFulfilled}}
+            {{highlight-errors text=jobLogs.content.fileContent hasErrors=hasErrorInLogs}}
+          {{/if}}
+          {{#unless jobInProgress}}
+            {{#if jobLogs.isRejected}}
+              <div class="alert alert-danger" role="alert">
+                {{jobLogs.reason}}
+              </div>
+            {{/if}}
+          {{/unless}}
+        {{/if}}
+        </div>
+      </div>
+    {{/view}}
+
+
+    {{#view view.collapsePanel class="panel panel-default" hasEditor=true}}
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a  {{action 'toggleCollapse' target="view"}} href="#">
+            <i {{bind-attr class=":toggle-icon :fa :fa-fw :fa-chevron-right view.collapsed::fa-rotate-90"}}></i>
+            {{t 'job.script_details'}}
+          </a>
+        </h4>
+      </div>
+      <div id="scriptDetails" class="panel-collapse collapse">
+        <div {{bind-attr class=":panel-body :body-title :body-title-contents fullscreen:fullscreen "}} >
+          {{t 'job.script_contents'}}:
+          <div class="fullscreen-toggle pull-right" {{action 'fullscreen'}} data-toggle="tooltip" data-placement="bottom" {{translateAttr title="editor.toggle_fullscreen"}}><i {{bind-attr class=":fa :fa-lg fullscreen:fa-compress:fa-expand"}} ></i></div>
+        </div>
+          {{#if scriptContents.isPending}}
+            <div class="panel-body">
+              <div class="spinner-sm"></div>
+            </div>
+          {{else}}
+            {{#if scriptContents.isFulfilled}}
+              <div class="editor-container">
+                {{code-mirror id="pig_script" content=scriptContents readOnly=true fullscreen=fullscreen}}
+                <div class="ui-resizable-handle ui-resizable-s" id="sgrip"><i class="fa fa-ellipsis-h"></i></div>
+              </div>
+            {{else}}
+              {{#if scriptContents.isRejected}}
+                <div class="alert alert-danger" role="alert">
+                 {{scriptContents.reason}}
+                </div>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        <div class="panel-body body-title">
+          {{t 'common.arguments'}}:
+        </div>
+        <div class="panel-body arguments-wrap">
+          {{#if argumentsArray}}
+            {{#each argumentsArray}}
+              <span class="label label-primary">{{this}}</span>
+            {{/each}}
+          {{else}}
+            <div class="alert alert-info" role="alert">
+              {{t 'job.no_arguments_message'}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    {{/view}}
+
+</div>

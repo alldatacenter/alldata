@@ -1,0 +1,1244 @@
+{
+  "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions?fields=*",
+  "items" : [
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/1",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "RESOURCEMANAGER",
+        "enabled" : true,
+        "id" : 1,
+        "ignore_host" : false,
+        "interval" : 5,
+        "label" : "ResourceManager RPC Latency",
+        "name" : "yarn_resourcemanager_rpc_latency",
+        "scope" : "ANY",
+        "service_name" : "YARN",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "Hadoop:service=ResourceManager,name=RpcActivityForPort*/RpcQueueTimeAvgTime",
+              "Hadoop:service=ResourceManager,name=RpcActivityForPort*/RpcProcessingTimeAvgTime"
+            ],
+            "value" : "{0}"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]"
+            },
+            "warning" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value" : 3000.0
+            },
+            "critical" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value" : 5000.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+            "https" : "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+            "https_property" : "{{yarn-site/yarn.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/2",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "RESOURCEMANAGER",
+        "enabled" : true,
+        "id" : 2,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "ResourceManager Web UI",
+        "name" : "yarn_resourcemanager_webui",
+        "scope" : "ANY",
+        "service_name" : "YARN",
+        "source" : {
+          "reporting" : {
+            "ok" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "warning" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "critical" : {
+              "text" : "Connection failed to {1}"
+            }
+          },
+          "type" : "WEB",
+          "uri" : {
+            "http" : "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+            "https" : "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+            "https_property" : "{{yarn-site/yarn.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/3",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "APP_TIMELINE_SERVER",
+        "enabled" : true,
+        "id" : 3,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "App Timeline Web UI",
+        "name" : "yarn_app_timeline_server_webui",
+        "scope" : "ANY",
+        "service_name" : "YARN",
+        "source" : {
+          "reporting" : {
+            "ok" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "warning" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "critical" : {
+              "text" : "Connection failed to {1}"
+            }
+          },
+          "type" : "WEB",
+          "uri" : {
+            "http" : "{{yarn-site/yarn.timeline-service.webapp.address}}",
+            "https" : "{{yarn-site/yarn.timeline-service.webapp.https.address}}",
+            "https_property" : "{{yarn-site/yarn.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/4",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : null,
+        "description" : null,
+        "enabled" : true,
+        "id" : 4,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Percent NodeManagers Available",
+        "name" : "yarn_nodemanager_webui_percent",
+        "scope" : "SERVICE",
+        "service_name" : "YARN",
+        "source" : {
+          "alert_name" : "yarn_nodemanager_webui",
+          "reporting" : {
+            "ok" : {
+              "text" : "affected: [{1}], total: [{0}]"
+            },
+            "warning" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.1
+            },
+            "critical" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.3
+            }
+          },
+          "type" : "AGGREGATE"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/5",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "RESOURCEMANAGER",
+        "enabled" : true,
+        "id" : 5,
+        "ignore_host" : false,
+        "interval" : 5,
+        "label" : "ResourceManager CPU Utilization",
+        "name" : "yarn_resourcemanager_cpu",
+        "scope" : "ANY",
+        "service_name" : "YARN",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "java.lang:type=OperatingSystem/SystemCpuLoad",
+              "java.lang:type=OperatingSystem/AvailableProcessors"
+            ],
+            "value" : "{0} * 100"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "{1} CPU, load {0:.1%}"
+            },
+            "warning" : {
+              "text" : "{1} CPU, load {0:.1%}",
+              "value" : 200.0
+            },
+            "critical" : {
+              "text" : "{1} CPU, load {0:.1%}",
+              "value" : 250.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+            "https" : "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+            "https_property" : "{{yarn-site/yarn.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/6",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NODEMANAGER",
+        "enabled" : true,
+        "id" : 6,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "NodeManager Health",
+        "name" : "yarn_nodemanager_health",
+        "scope" : "HOST",
+        "service_name" : "YARN",
+        "source" : {
+          "path" : "HDP/2.0.6/services/YARN/package/files/alert_nodemanager_health.py",
+          "type" : "SCRIPT"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/7",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NODEMANAGER",
+        "enabled" : true,
+        "id" : 7,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "NodeManager Web UI",
+        "name" : "yarn_nodemanager_webui",
+        "scope" : "HOST",
+        "service_name" : "YARN",
+        "source" : {
+          "reporting" : {
+            "ok" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "warning" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "critical" : {
+              "text" : "Connection failed to {1}"
+            }
+          },
+          "type" : "WEB",
+          "uri" : {
+            "http" : "{{yarn-site/yarn.nodemanager.webapp.address}}",
+            "https" : "{{yarn-site/yarn.nodemanager.webapp.https.address}}",
+            "https_property" : "{{yarn-site/yarn.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 8042.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/8",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "ZOOKEEPER_SERVER",
+        "enabled" : true,
+        "id" : 8,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "ZooKeeper Server Process",
+        "name" : "zookeeper_server_process",
+        "scope" : "ANY",
+        "service_name" : "ZOOKEEPER",
+        "source" : {
+          "default_port" : 2181.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "{{zookeeper-env/clientPort}}"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/9",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : null,
+        "enabled" : true,
+        "id" : 9,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Percent ZooKeeper Servers Available",
+        "name" : "zookeeper_server_process_percent",
+        "scope" : "SERVICE",
+        "service_name" : "ZOOKEEPER",
+        "source" : {
+          "alert_name" : "zookeeper_server_process",
+          "reporting" : {
+            "ok" : {
+              "text" : "affected: [{1}], total: [{0}]"
+            },
+            "warning" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.35
+            },
+            "critical" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.7
+            }
+          },
+          "type" : "AGGREGATE"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/10",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "HISTORYSERVER",
+        "enabled" : true,
+        "id" : 10,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "History Server Web UI",
+        "name" : "mapreduce_history_server_webui",
+        "scope" : "ANY",
+        "service_name" : "MAPREDUCE2",
+        "source" : {
+          "reporting" : {
+            "ok" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "warning" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "critical" : {
+              "text" : "Connection failed to {1}"
+            }
+          },
+          "type" : "WEB",
+          "uri" : {
+            "http" : "{{mapred-site/mapreduce.jobhistory.webapp.address}}",
+            "https" : "{{mapred-site/mapreduce.jobhistory.webapp.https.address}}",
+            "https_property" : "{{mapred-site/mapreduce.jobhistory.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/11",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "HISTORYSERVER",
+        "enabled" : true,
+        "id" : 11,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "History Server Process",
+        "name" : "mapreduce_history_server_process",
+        "scope" : "ANY",
+        "service_name" : "MAPREDUCE2",
+        "source" : {
+          "default_port" : 19888.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "{{mapred-site/mapreduce.jobhistory.webapp.address}}"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/12",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "HISTORYSERVER",
+        "enabled" : true,
+        "id" : 12,
+        "ignore_host" : false,
+        "interval" : 5,
+        "label" : "History Server RPC Latency",
+        "name" : "mapreduce_history_server_rpc_latency",
+        "scope" : "ANY",
+        "service_name" : "MAPREDUCE2",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "Hadoop:service=JobHistoryServer,name=RpcActivityForPort*/RpcQueueTimeAvgTime",
+              "Hadoop:service=JobHistoryServer,name=RpcActivityForPort*/RpcProcessingTimeAvgTime"
+            ],
+            "value" : "{0}"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]"
+            },
+            "warning" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value" : 3000.0
+            },
+            "critical" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value" : 5000.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{mapred-site/mapreduce.jobhistory.webapp.address}}",
+            "https" : "{{mapred-site/mapreduce.jobhistory.webapp.https.address}}",
+            "https_property" : "{{mapred-site/mapreduce.jobhistory.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/13",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "HISTORYSERVER",
+        "enabled" : true,
+        "id" : 13,
+        "ignore_host" : false,
+        "interval" : 5,
+        "label" : "History Server CPU Utilization",
+        "name" : "mapreduce_history_server_cpu",
+        "scope" : "ANY",
+        "service_name" : "MAPREDUCE2",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "java.lang:type=OperatingSystem/SystemCpuLoad",
+              "java.lang:type=OperatingSystem/AvailableProcessors"
+            ],
+            "value" : "{0} * 100"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "{1} CPU, load {0:.1%}"
+            },
+            "warning" : {
+              "text" : "{1} CPU, load {0:.1%}",
+              "value" : 200.0
+            },
+            "critical" : {
+              "text" : "{1} CPU, load {0:.1%}",
+              "value" : 250.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{mapred-site/mapreduce.jobhistory.webapp.address}}",
+            "https" : "{{mapred-site/mapreduce.jobhistory.webapp.https.address}}",
+            "https_property" : "{{mapred-site/mapreduce.jobhistory.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/14",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "GANGLIA_SERVER",
+        "enabled" : true,
+        "id" : 14,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Ganglia History Server Process Monitor",
+        "name" : "ganglia_monitor_mapreduce_history_server",
+        "scope" : "ANY",
+        "service_name" : "GANGLIA",
+        "source" : {
+          "default_port" : 8666.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "8666"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/15",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "GANGLIA_SERVER",
+        "enabled" : true,
+        "id" : 15,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Ganglia ResourceManager Process Monitor",
+        "name" : "ganglia_monitor_yarn_resourcemanager",
+        "scope" : "ANY",
+        "service_name" : "GANGLIA",
+        "source" : {
+          "default_port" : 8664.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "8664"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/16",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "GANGLIA_SERVER",
+        "enabled" : true,
+        "id" : 16,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Ganglia NameNode Process Monitor",
+        "name" : "ganglia_monitor_hdfs_namenode",
+        "scope" : "ANY",
+        "service_name" : "GANGLIA",
+        "source" : {
+          "default_port" : 8661.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "8661"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/17",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "GANGLIA_SERVER",
+        "enabled" : true,
+        "id" : 17,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Ganglia HBase Master Process Monitor",
+        "name" : "ganglia_monitor_hbase_master",
+        "scope" : "ANY",
+        "service_name" : "GANGLIA",
+        "source" : {
+          "default_port" : 8663.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "8663"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/18",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "GANGLIA_SERVER",
+        "enabled" : true,
+        "id" : 18,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Ganglia Server Process",
+        "name" : "ganglia_server_process",
+        "scope" : "ANY",
+        "service_name" : "GANGLIA",
+        "source" : {
+          "default_port" : 8651.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "8651"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/19",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "SECONDARY_NAMENODE",
+        "enabled" : true,
+        "id" : 19,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Secondary NameNode Process",
+        "name" : "secondary_namenode_process",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "default_port" : 50071.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "{{hdfs-site/dfs.namenode.secondary.http-address}}"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/20",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 20,
+        "ignore_host" : true,
+        "interval" : 1,
+        "label" : "NameNode High Availability Health",
+        "name" : "namenode_ha_health",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "path" : "HDP/2.0.6/services/HDFS/package/files/alert_ha_namenode_health.py",
+          "type" : "SCRIPT"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/21",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "DATANODE",
+        "enabled" : true,
+        "id" : 21,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "DataNode Web UI",
+        "name" : "datanode_webui",
+        "scope" : "HOST",
+        "service_name" : "HDFS",
+        "source" : {
+          "reporting" : {
+            "ok" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "warning" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "critical" : {
+              "text" : "Connection failed to {1}"
+            }
+          },
+          "type" : "WEB",
+          "uri" : {
+            "http" : "{{hdfs-site/dfs.datanode.http.address}}",
+            "https" : "{{hdfs-site/dfs.datanode.https.address}}",
+            "https_property" : "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/22",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 22,
+        "ignore_host" : false,
+        "interval" : 5,
+        "label" : "NameNode Host CPU Utilization",
+        "name" : "namenode_cpu",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "java.lang:type=OperatingSystem/SystemCpuLoad",
+              "java.lang:type=OperatingSystem/AvailableProcessors"
+            ],
+            "value" : "{0} * 100"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "{1} CPU, load {0:.1%}"
+            },
+            "warning" : {
+              "text" : "{1} CPU, load {0:.1%}",
+              "value" : 200.0
+            },
+            "critical" : {
+              "text" : "{1} CPU, load {0:.1%}",
+              "value" : 250.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{hdfs-site/dfs.namenode.http-address}}",
+            "https" : "{{hdfs-site/dfs.namenode.https-address}}",
+            "https_property" : "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/23",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 23,
+        "ignore_host" : false,
+        "interval" : 2,
+        "label" : "NameNode RPC Latency",
+        "name" : "namenode_rpc_latency",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "Hadoop:service=NameNode,name=RpcActivityForPort*/RpcQueueTimeAvgTime",
+              "Hadoop:service=NameNode,name=RpcActivityForPort*/RpcProcessingTimeAvgTime"
+            ],
+            "value" : "{0}"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]"
+            },
+            "warning" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value" : 3000.0
+            },
+            "critical" : {
+              "text" : "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value" : 5000.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{hdfs-site/dfs.namenode.http-address}}",
+            "https" : "{{hdfs-site/dfs.namenode.https-address}}",
+            "https_property" : "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/24",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 24,
+        "ignore_host" : false,
+        "interval" : 2,
+        "label" : "NameNode Blocks Health",
+        "name" : "namenode_hdfs_blocks_health",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "Hadoop:service=NameNode,name=FSNamesystem/MissingBlocks",
+              "Hadoop:service=NameNode,name=FSNamesystem/BlocksTotal"
+            ],
+            "value" : "{0}"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "Total Blocks:[{1}], Missing Blocks:[{0}]"
+            },
+            "warning" : {
+              "text" : "Total Blocks:[{1}], Missing Blocks:[{0}]",
+              "value" : 1.0
+            },
+            "critical" : {
+              "text" : "Total Blocks:[{1}], Missing Blocks:[{0}]",
+              "value" : 1.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{hdfs-site/dfs.namenode.http-address}}",
+            "https" : "{{hdfs-site/dfs.namenode.https-address}}",
+            "https_property" : "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/25",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 25,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "NameNode Web UI",
+        "name" : "namenode_webui",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "reporting" : {
+            "ok" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "warning" : {
+              "text" : "HTTP {0} response in {2:.4f} seconds"
+            },
+            "critical" : {
+              "text" : "Connection failed to {1}"
+            }
+          },
+          "type" : "WEB",
+          "uri" : {
+            "http" : "{{hdfs-site/dfs.namenode.http-address}}",
+            "https" : "{{hdfs-site/dfs.namenode.https-address}}",
+            "https_property" : "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/26",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "DATANODE",
+        "enabled" : true,
+        "id" : 26,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "DateNode Process",
+        "name" : "datanode_process",
+        "scope" : "HOST",
+        "service_name" : "HDFS",
+        "source" : {
+          "default_port" : 50010.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "{{hdfs-site/dfs.datanode.address}}"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/27",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : null,
+        "enabled" : true,
+        "id" : 27,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Percent DataNodes Available",
+        "name" : "datanode_process_percent",
+        "scope" : "SERVICE",
+        "service_name" : "HDFS",
+        "source" : {
+          "alert_name" : "datanode_process",
+          "reporting" : {
+            "ok" : {
+              "text" : "affected: [{1}], total: [{0}]"
+            },
+            "warning" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.1
+            },
+            "critical" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.3
+            }
+          },
+          "type" : "AGGREGATE"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/28",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 28,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "NameNode Process",
+        "name" : "namenode_process",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "default_port" : 50070.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "{{hdfs-site/dfs.namenode.http-address}}"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/29",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 29,
+        "ignore_host" : false,
+        "interval" : 2,
+        "label" : "HDFS Capacity Utilization",
+        "name" : "namenode_hdfs_capacity_utilization",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "Hadoop:service=NameNode,name=FSNamesystemState/CapacityUsed",
+              "Hadoop:service=NameNode,name=FSNamesystemState/CapacityRemaining"
+            ],
+            "value" : "{0}/({0} + {1}) * 100"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "Capacity Used:[{2:d}%, {0}], Capacity Remaining:[{1}]"
+            },
+            "warning" : {
+              "text" : "Capacity Used:[{2:d}%, {0}], Capacity Remaining:[{1}]",
+              "value" : 80.0
+            },
+            "critical" : {
+              "text" : "Capacity Used:[{2:d}%, {0}], Capacity Remaining:[{1}]",
+              "value" : 90.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{hdfs-site/dfs.namenode.http-address}}",
+            "https" : "{{hdfs-site/dfs.namenode.https-address}}",
+            "https_property" : "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/30",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 30,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "NameNode Last Checkpoint",
+        "name" : "namenode_last_checkpoint",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "path" : "HDP/2.0.6/services/HDFS/package/files/alert_checkpoint_time.py",
+          "type" : "SCRIPT"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/31",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "JOURNALNODE",
+        "enabled" : true,
+        "id" : 31,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "JournalNode Process",
+        "name" : "journalnode_process",
+        "scope" : "HOST",
+        "service_name" : "HDFS",
+        "source" : {
+          "default_port" : 8480.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} to {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "{{hdfs-site/dfs.journalnode.http-address}}"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/32",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "ZKFC",
+        "enabled" : true,
+        "id" : 32,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "ZooKeeper Failover Controller Process",
+        "name" : "hdfs_zookeeper_failover_controller_process",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "default_port" : 2181.0,
+          "reporting" : {
+            "ok" : {
+              "text" : "TCP OK - {0:.4f} response on port {1}"
+            },
+            "critical" : {
+              "text" : "Connection failed: {0} on host {1}:{2}"
+            }
+          },
+          "type" : "PORT",
+          "uri" : "{{core-site/ha.zookeeper.quorum}}"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/33",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "NAMENODE",
+        "enabled" : true,
+        "id" : 33,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "NameNode Directory Status",
+        "name" : "namenode_directory_status",
+        "scope" : "ANY",
+        "service_name" : "HDFS",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "Hadoop:service=NameNode,name=NameNodeInfo/NameDirStatuses"
+            ],
+            "value" : "calculate(args)\ndef calculate(args):\n  import json\n  json_statuses = json.loads({0})\n  return len(json_statuses['failed']) if 'failed' in json_statuses else 0"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "Directories are healthy"
+            },
+            "warning" : {
+              "text" : "Failed directory count: {1}",
+              "value" : 1.0
+            },
+            "critical" : {
+              "text" : "Failed directory count: {1}",
+              "value" : 1.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{hdfs-site/dfs.namenode.http-address}}",
+            "https" : "{{hdfs-site/dfs.namenode.https-address}}",
+            "https_property" : "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/34",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : "DATANODE",
+        "enabled" : true,
+        "id" : 34,
+        "ignore_host" : false,
+        "interval" : 2,
+        "label" : "DataNode Storage",
+        "name" : "datanode_storage",
+        "scope" : "HOST",
+        "service_name" : "HDFS",
+        "source" : {
+          "jmx" : {
+            "property_list" : [
+              "Hadoop:service=DataNode,name=FSDatasetState-*/Remaining",
+              "Hadoop:service=DataNode,name=FSDatasetState-*/Capacity"
+            ],
+            "value" : "({1} - {0})/{1} * 100"
+          },
+          "reporting" : {
+            "ok" : {
+              "text" : "Remaining Capacity:[{0}], Total Capacity:[{2:d}% Used, {1}]"
+            },
+            "warning" : {
+              "text" : "Remaining Capacity:[{0}], Total Capacity:[{2:d}% Used, {1}]",
+              "value" : 80.0
+            },
+            "critical" : {
+              "text" : "Remaining Capacity:[{0}], Total Capacity:[{2:d}% Used, {1}]",
+              "value" : 90.0
+            }
+          },
+          "type" : "METRIC",
+          "uri" : {
+            "http" : "{{hdfs-site/dfs.datanode.http.address}}",
+            "https" : "{{hdfs-site/dfs.datanode.https.address}}",
+            "https_property" : "{{hdfs-site/dfs.http.policy}}",
+            "https_property_value" : "HTTPS_ONLY",
+            "default_port" : 0.0
+          }
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/35",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : null,
+        "enabled" : true,
+        "id" : 35,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Percent DataNodes With Available Space",
+        "name" : "datanode_storage_percent",
+        "scope" : "SERVICE",
+        "service_name" : "HDFS",
+        "source" : {
+          "alert_name" : "datanode_storage",
+          "reporting" : {
+            "ok" : {
+              "text" : "affected: [{1}], total: [{0}]"
+            },
+            "warning" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.1
+            },
+            "critical" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.3
+            }
+          },
+          "type" : "AGGREGATE"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/tdk/alert_definitions/36",
+      "AlertDefinition" : {
+        "cluster_name" : "tdk",
+        "component_name" : null,
+        "enabled" : true,
+        "id" : 36,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Percent JournalNodes Available",
+        "name" : "journalnode_process_percent",
+        "scope" : "SERVICE",
+        "service_name" : "HDFS",
+        "source" : {
+          "alert_name" : "journalnode_process",
+          "reporting" : {
+            "ok" : {
+              "text" : "affected: [{1}], total: [{0}]"
+            },
+            "warning" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.33
+            },
+            "critical" : {
+              "text" : "affected: [{1}], total: [{0}]",
+              "value" : 0.5
+            }
+          },
+          "type" : "AGGREGATE"
+        }
+      }
+    },
+    {
+      "href" : "http://host:8080/api/v1/clusters/c1/alert_definitions/37",
+      "AlertDefinition" : {
+        "cluster_name" : "c1",
+        "component_name" : "AMBARI_AGENT",
+        "description" : null,
+        "enabled" : true,
+        "id" : 37,
+        "ignore_host" : false,
+        "interval" : 1,
+        "label" : "Host Disk Usage",
+        "name" : "ambari_agent_disk_usage",
+        "scope" : "HOST",
+        "service_name" : "AMBARI",
+        "source" : {
+          "path" : "alert_disk_space.py",
+          "type" : "SCRIPT"
+        }
+      }
+    }
+  ]
+}

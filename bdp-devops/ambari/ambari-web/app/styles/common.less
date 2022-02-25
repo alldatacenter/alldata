@@ -1,0 +1,248 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * This file only for variables and mixins!
+ */
+
+/************************************************************************
+* Health status(service/host/host component health)icon colors
+***********************************************************************/
+@health-status-red: #EF6162;
+@health-status-blue: #0000ff;
+@health-status-green: #1EB475;
+@health-status-yellow: #FFD13D;
+@health-status-orange: #e98a41;
+@maintenance-black: #000;
+@maintenance-grey: #999999;
+@gray-text: #666;
+@dark-gray: #333;
+/************************************************************************
+* Health status(service/host/host component health)icon colors ends
+***********************************************************************/
+@space-s: 5px;
+@space-m: 10px;
+@space-l: 20px;
+@green: #69BE28;
+@blue: #0572ff;
+@gray-blue: #80A0B9;
+@navigation-navy: #323544;
+
+@spinner-default-width: 36px;
+@spinner-default-height: 36px;
+@spinner-small-width: 30px;
+@spinner-small-height: 30px;
+
+@restart-indicator-color: #FDB82F;
+
+@border-color: #EBECF1;
+@top-nav-bg-color-from: #555;
+@top-nav-bg-color-to: #333;
+@top-nav-brand-color: #999;
+@top-nav-ops-count-color: #fff;
+@top-nav-ops-count-bg-color: #c3c3c3;
+@top-nav-menu-active-text-color: #333;
+@top-nav-menu-active-bg-color: #fff;
+@top-nav-menu-text-color: #c3c3c3;
+@top-nav-menu-text-hover-color: #fff;
+@top-nav-menu-dropdown-border-color: #c3c3c3;
+@top-nav-menu-dropdown-bg-color: #fff;
+@top-nav-menu-dropdown-text-color: #333;
+@top-nav-menu-views-menu-color: #1491c1;
+
+@bootstrap-success: #5cb85c;
+@bootstrap-info: #5bc0de;
+@bootstrap-warning: #f0ad4e;
+@bootstrap-danger: #d9534f;
+@bootstrap-primary: #337ab7;
+
+@-webkit-keyframes orangePulse {
+  from { background-color: @restart-indicator-color; }
+  50% { background-color: #fd910e; }
+  to { background-color: @restart-indicator-color; }
+}
+
+@-moz-keyframes orangePulse {
+  from { background-color: @restart-indicator-color; }
+  50% { background-color: #fd910e; }
+  to { background-color: @restart-indicator-color; }
+}
+
+@keyframes orangePulse {
+  0% { background-color: @restart-indicator-color; }
+  50% { background-color: #fd910e; }
+  100% { background-color: @restart-indicator-color; }
+}
+
+@-webkit-keyframes bluePulse {
+  from { background-color: #118fff; }
+  50% { background-color: #006DCC; }
+  to { background-color: #118fff; }
+}
+
+@-moz-keyframes bluePulse {
+  from { background-color: #118fff; }
+  50% { background-color: #006DCC; }
+  to { background-color: #118fff; }
+}
+
+@keyframes bluePulse {
+  0% { background-color: #118fff; }
+  50% { background-color: #006DCC; }
+  100% { background-color: #118fff; }
+}
+
+@-webkit-keyframes bluePulseInner {
+  from { color: #118fff; }
+  50% { color: #006DCC; }
+  to { color: #118fff; }
+}
+
+@-moz-keyframes bluePulseInner {
+  from { color: #118fff; }
+  50% { color: #006DCC; }
+  to { color: #118fff; }
+}
+
+@keyframes bluePulseInner {
+  0% { color: #118fff; }
+  50% { color: #006DCC; }
+  100% { color: #118fff; }
+}
+
+@-webkit-keyframes redPulse {
+  from { background-color: #ff3333; }
+  50% { background-color: #ff0000; }
+  to { background-color: #ff3333; }
+}
+
+@-moz-keyframes redPulse {
+  from { background-color: #ff3333; }
+  50% { background-color: #ff0000; }
+  to { background-color: #ff3333; }
+}
+
+@keyframes redPulse {
+  0% { background-color: #ff3333; }
+  50% { background-color: #ff0000; }
+  100% { background-color: #ff3333; }
+}
+
+.gradient(@color: #FAFAFA, @start: #FFFFFF, @stop: #F2F2F2) {
+  background: @color;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @start), color-stop(1, @stop));
+  background: -ms-linear-gradient(top, @start, @stop);
+  background: -moz-linear-gradient(center top, @start 0%, @stop 100%);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr= @start, endColorstr= @stop, GradientType=0); // for IE9-
+}
+
+.pulse(@name) {
+  text-shadow: none;
+  -webkit-animation-name: @name;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: @name;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  animation-name: @name;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.infoPulse() {
+  .pulse(bluePulse);
+  background-color: #006DCC;
+}
+
+.infoPulseInner() {
+  .pulse(bluePulseInner);
+}
+
+.warnPulse() {
+  .pulse(orangePulse);
+  background-color: @health-status-orange;
+}
+
+.dangerPulse() {
+  .pulse(redPulse);
+  background-color: @health-status-red;
+}
+
+@footer-height: 100px;
+@side-navigation-width: 230px;
+
+@default-font-size: 14px;
+@smaller-font-size: 12px;
+@default-button-height: 34px;
+@default-line-height: 1.3em;
+@default-line-height-calculated: @default-font-size * unit(@default-line-height);
+@default-paragraph-margin-bottom: 10px;
+
+/************************************************************************
+* Modal popup properties
+***********************************************************************/
+// modal body content padding
+@modal-body-padding: 15px;
+// modal header height
+@modal-header-height: 57px;
+// modal footer height
+@modal-footer-height: 75px;
+// default modal top margin
+@modal-dialog-margin-top-default: 10px;
+// modal top margin for wide screen
+@modal-dialog-margin-top-wide-screen: 30px;
+
+.ellipsis-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ellipsis-overflow-nowrap {
+  .ellipsis-overflow;
+  white-space: nowrap;
+}
+
+@dashboard-widget-height: 157px;
+
+/************************************************************************
+* Top navbar styles
+***********************************************************************/
+@navbar-header-vertical-padding: 19px;
+@navbar-header-padding-right: 15px;
+@navbar-header-padding-left: 0;
+@navbar-header-font-size: 20px;
+
+/************************************************************************
+* Table styles
+***********************************************************************/
+@table-color: @gray-text;
+@table-font-size: 13px;
+@table-hover-background-color: #E7F6FC;
+@table-hover-border-color: #A7DFF2;
+@table-margin-bottom: 20px;
+@table-footer-color: #999;
+@table-footer-border: 2px solid #EEE;
+@table-cell-padding: 8px;
+
+/************************************************************************
+* Checkbox styles
+***********************************************************************/
+@checkbox-color: #1491C1;
+@checkbox-size: 10px;
+@checkbox-border-radius: 2px;
+@checkbox-top: 4px;

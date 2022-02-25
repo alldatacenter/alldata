@@ -1,0 +1,136 @@
+{
+  "properties": {
+    "realm": "${kerberos-env/realm}",
+    "keytab_dir": "/etc/security/keytabs"
+  },
+  "identities": [
+    {
+      "name": "spnego",
+      "principal": {
+        "value": "HTTP/_HOST@${realm}",
+        "type": "service"
+      },
+      "keytab": {
+        "file": "${keytab_dir}/spnego.service.keytab",
+        "owner": {
+          "name": "root",
+          "access": "r"
+        },
+        "group": {
+          "name": "${cluster-env/user_group}",
+          "access": "r"
+        }
+      }
+    },
+    {
+      "name": "hdfs",
+      "principal": {
+        "value": "${hadoop-env/hdfs_user}${principal_suffix}@${realm}",
+        "type": "user",
+        "configuration": "hadoop-env/hdfs_principal_name",
+        "local_username": "${hadoop-env/hdfs_user}"
+      },
+      "keytab": {
+        "file": "${keytab_dir}/hdfs.headless.keytab",
+        "owner": {
+          "name": "${hadoop-env/hdfs_user}",
+          "access": "r"
+        },
+        "group": {
+          "name": "${cluster-env/user_group}",
+          "access": "r"
+        },
+        "configuration": "hadoop-env/hdfs_user_keytab"
+      }
+    },
+    {
+      "name": "smokeuser",
+      "principal": {
+        "value": "${cluster-env/smokeuser}${principal_suffix}@${realm}",
+        "type": "user",
+        "configuration": "cluster-env/smokeuser_principal_name",
+        "local_username": "${cluster-env/smokeuser}"
+      },
+      "keytab": {
+        "file": "${keytab_dir}/smokeuser.headless.keytab",
+        "owner": {
+          "name": "${cluster-env/smokeuser}",
+          "access": "r"
+        },
+        "group": {
+          "name": "${cluster-env/user_group}",
+          "access": "r"
+        },
+        "configuration": "cluster-env/smokeuser_keytab"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "OOZIE",
+      "identities": [
+        {
+          "name": "/spnego"
+        },
+        {
+          "name": "/smokeuser"
+        },
+        {
+          "name": "/hdfs"
+        }
+      ],
+      "auth_to_local_properties" : [
+        "oozie-site/oozie.authentication.kerberos.name.rules"
+      ],
+      "configurations": [
+        {
+          "oozie-site": {
+            "oozie.authentication.type": "kerberos",
+            "oozie.service.AuthorizationService.authorization.enabled": "true",
+            "oozie.service.HadoopAccessorService.kerberos.enabled": "true",
+            "local.realm": "${realm}",
+            "oozie.authentication.kerberos.name.rules": "",
+            "oozie.credentials.credentialclasses": "hcat=org.apache.oozie.action.hadoop.HCatCredentials,hive2=org.apache.oozie.action.hadoop.Hive2Credentials"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name": "OOZIE_SERVER",
+          "identities": [
+            {
+              "name": "oozie_server",
+              "principal": {
+                "value": "oozie/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "oozie-site/oozie.service.HadoopAccessorService.kerberos.principal",
+                "local_username" : "${oozie-env/oozie_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/oozie.service.keytab",
+                "owner": {
+                  "name": "${oozie-env/oozie_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "oozie-site/oozie.service.HadoopAccessorService.keytab.file"
+              }
+            },
+            {
+              "name": "/spnego",
+              "principal": {
+                "configuration": "oozie-site/oozie.authentication.kerberos.principal"
+              },
+              "keytab": {
+                "configuration": "oozie-site/oozie.authentication.kerberos.keytab"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

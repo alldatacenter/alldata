@@ -1,0 +1,1288 @@
+<!--
+~    Licensed to the Apache Software Foundation (ASF) under one or more
+~    contributor license agreements.  See the NOTICE file distributed with
+~    this work for additional information regarding copyright ownership.
+~    The ASF licenses this file to You under the Apache License, Version 2.0
+~    (the "License"); you may not use this file except in compliance with
+~    the License.  You may obtain a copy of the License at
+~
+~        http://www.apache.org/licenses/LICENSE-2.0
+~
+~    Unless required by applicable law or agreed to in writing, software
+~    distributed under the License is distributed on an "AS IS" BASIS,
+~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~    See the License for the specific language governing permissions and
+~    limitations under the License.
+-->
+<script id="name_value_pair_tmpl" type="text/x-handlebars-template">
+<!--div class='alert alert-info globlaPropetiesInfo'>  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> The Properties in global properties will also be saved in Job xml.Please do not dupilcate them
+</div-->
+{{#if prevIndex}}
+<div class="form-group nameValuePair" index="{{index}}">
+{{else}}
+<div class="form-group nameValuePair" id="nameValuePair" index="{{index}}">
+    {{/if}}
+    <label class="control-label col-xs-2"> Name </label>
+    <div class=" col-xs-3">
+        <input type="text" class="form-control" name="configuration.property.name{{prevIndex}}" value="{{name}}" placeholder="name">
+    </div>
+    <label class="control-label col-xs-2"> value </label>
+    <div class=" col-xs-3">
+        <input class="form-control" type="text" indValidations="required"  name="configuration.property.value{{prevIndex}}" value="{{value}}" placeholder="value">
+    </div>
+    <div class="col-xs-1">
+        <input class="form-control btn btn-success" type="button" onclick="{{addNameValuesHandler}}" value="+">
+    </div>
+    {{#if prevIndex}}
+    <div class="col-xs-1">
+        <input class="form-control btn btn-danger" type="button" onclick="{{deleteNameValueHandler}}" value="-">
+    </div>
+    {{/if}}
+</div>
+</script>
+<script id="add_prepare_tmpl" type="text/x-handlebars-template">
+{{#if prevIndex}}
+<div class="form-group prepareHolder" index="{{index}}">
+    {{else}}
+    <div class="form-group prepareHolder" id="prepareHolder" index="{{index}}">
+        {{/if}}
+        <label class="control-label col-xs-2">prepare</label>
+        <div class=" col-xs-3">
+            <select class="form-control" onchange="{{prepareChangeController}}" id="sel_{{index}}" index="{{index}}">
+                {{#if selected1}}
+                <option selected="selected" value="mkdir">mkdir</option>
+                {{else}}
+                <option value="mkdir">mkdir</option>
+                {{/if}}
+                {{#if selected2}}
+                <option selected="selected" value="delete">delete</option>
+                {{else}}
+                <option value="delete">delete</option>
+                {{/if}}
+            </select>
+        </div>
+        <div class="col-xs-offset-2 col-xs-3">
+            <input type="text" class="form-control" index="{{index}}" value="{{value}}" name="prepare.mkdir{{prevIndex}}" path="path_{{prevIndex}}" placeholder="path of the directory">
+        </div>
+        <div class="col-xs-1">
+            <input class="form-control  btn btn-success" type="button" onclick="{{addPrepareHandler}}" value="+">
+        </div>
+        {{#if prevIndex}}
+        <div class="col-xs-1">
+            <input class="form-control btn btn-danger" type="button" onclick="{{deletePrepareHandler}}" value="-">
+        </div>
+        {{/if}}
+    </div>
+    </script>
+    <script id="add_arg_tmpl" type="text/x-handlebars-template">
+    {{#if prevIndex}}
+    <div class="form-group {{dynArgClass}} argHolder" index="{{index}}">
+        {{else}}
+        <div class="form-group {{dynArgClass}} argHolder" id="argHolder" index="{{index}}">
+            {{/if}}
+            <label class="control-label col-xs-2"> arg </label>
+            <div class=" col-xs-7">
+                <input type="text" class="form-control" name="arg[{{prevIndex}}]" value="{{value}}" placeholder="arguments">
+            </div>
+            <div class="col-xs-offset-1 col-xs-1">
+                <input class="form-control btn btn-success" type="button" value="+" onclick="{{addArgHandler}}">
+            </div>
+            {{#if prevIndex}}
+            <div class="col-xs-1">
+                <input class="form-control btn btn-danger" type="button" onclick="{{deleteArgHandler}}" value="-">
+            </div>
+            {{/if}}
+        </div>
+        </script>
+        <script id="add_param_tmpl" type="text/x-handlebars-template">
+        {{#if prevIndex}}
+        <div class="form-group {{dynParamClass}} paramHolder" index="{{index}}">
+            {{else}}
+            <div class="form-group {{dynParamClass}} paramHolder" id="paramHolder" index="{{index}}">
+                {{/if}}
+                <label class="control-label col-xs-2"> Param </label>
+                <div class=" col-xs-7">
+                    <input type="text" class="form-control" name="param[{{prevIndex}}]" value="{{value}}" placeholder="param">
+                </div>
+                <div class="col-xs-offset-1 col-xs-1">
+                    <input class="form-control btn btn-success" type="button" value="+" onclick="{{addParamHandler}}">
+                </div>
+                {{#if prevIndex}}
+                <div class="col-xs-1">
+                    <input class="form-control btn btn-danger" type="button" onclick="{{deleteParamHandler}}" value="-">
+                </div>
+                {{/if}}
+            </div>
+            </script>
+            <script id="add_file_tmpl" type="text/x-handlebars-template">
+            {{#if prevIndex}}
+            <div class="form-group fileHolder" index="{{index}}">
+                {{else}}
+                <div class="form-group fileHolder" id="fileHolder" index="{{index}}">
+                    {{/if}}
+                    <label for="inputEmail" class="control-label col-xs-2">File</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" name="file[{{prevIndex}}]" value="{{value}}" placeholder="File path">
+                    </div>
+                    <div class="col-xs-1">
+                        <input class="form-control btn btn-success Browse" id="Browse" onclick="{{fileBrowserHandler}}" type="button" value="Browse">
+                    </div>
+                    <div class="col-xs-1">
+                        <input class="form-control btn btn-success" type="button" onclick="{{addFileHandler}}" value="+">
+                    </div>
+                    {{#if prevIndex}}
+                    <div class="col-xs-1">
+                        <input class="form-control btn btn-danger" type="button" onclick="{{deleteFileHandler}}" value="-">
+                    </div>
+                    {{/if}}
+                </div>
+                </script>
+                <script id="add_archive_tmpl" type="text/x-handlebars-template">
+                {{#if prevIndex}}
+                <div class="form-group archiveHolder" index="{{index}}">
+                    {{else}}
+                    <div class="form-group archiveHolder" id="archiveHolder" index="{{index}}">
+                        {{/if}}
+                        <label for="inputPassword" class="control-label col-xs-2">Archive</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" name="archive[{{prevIndex}}]" validations="required" value="{{value}}" placeholder="Archive">
+                        </div>
+                        <div class="col-xs-1">
+                            <input class="form-control btn btn-success Browse" id="Browse" onclick="{{fileBrowserHandler}}" type="button" value="Browse">
+                        </div>
+                        <div class="col-xs-1">
+                            <input class="form-control btn btn-success" type="button" onclick="{{addArchiveHandler}}" value="+">
+                        </div>
+                        {{#if prevIndex}}
+                        <div class="col-xs-1">
+                            <input class="form-control btn btn-danger" type="button" onclick="{{deleteArchiveHandler}}" value="-">
+                        </div>
+                        {{/if}}
+                    </div>
+                    </script>
+                    <script id="add_jobxml_tmpl" type="text/x-handlebars-template">
+                    {{#if prevIndex}}
+                    <div class="form-group jobxmlHolder" index="{{index}}">
+                        {{else}}
+                        <div class="form-group jobxmlHolder" id="jobxmlHolder" index="{{index}}">
+                            {{/if}}
+                            <label for="inputEmail" class="control-label col-xs-2">Job XML</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control"  validations="required" name="job-xml[{{prevIndex}}]" value="{{value}}" placeholder="filepath.xml">
+                            </div>
+
+                        <div class="col-xs-1">
+                            <input class="form-control btn btn-success Browse" id="Browse" onclick="{{fileBrowserHandler}}" type="button" value="Browse">
+                        </div>
+                        <div class="col-xs-1">
+                            <input class="form-control btn btn-success" type="button" onclick="{{addJobxmlHandler}}" value="+">
+                        </div>
+                        {{#if prevIndex}}
+                        <div class="col-xs-1">
+                            <input class="form-control btn btn-danger" type="button" onclick="{{deleteJobxmlHandler}}" value="-">
+                        </div>
+                        {{/if}}
+                        </div>
+                        </script>
+                        <script id="add_trans_tmpl" type="text/x-handlebars-template">
+                        {{#if prevIndex}}
+                        <div class="form-group" index="{{index}}">
+                            {{else}}
+                            <div class="form-group" id="transHolder" index="{{index}}">
+                                {{/if}}
+                                <label class="control-label col-xs-2"> select an ok to node</label>
+                                <div class=" col-xs-7">
+                                    <select onchange="{{okNodeHandler}}" name="ok-node" value="{{ok-node}}"  class="form-control">
+                                        {{#each okNodesList}}
+                                        {{#if this.selected}}
+                                        <option selected="selected" value="{{this.name}}">{{this.value}}</option>
+                                        {{else if this.isNext}}
+                                        <option selected="selected" value="{{this.name}}">{{this.value}}</option>
+                                        {{else}}
+                                        <option value="{{this.name}}">{{this.value}}</option>
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            {{#if prevIndex}}
+                            <div class="form-group" index="{{index}}">
+                                {{else}}
+                                <div class="form-group" id="transHolder" index="{{index}}">
+                                    {{/if}}
+                                    <label class="control-label col-xs-2"> select a kill node</label>
+                                    <div class=" col-xs-7">
+                                        <select onchange="{{killNodeHandler}}" name="kill-node" value="{{kill-node}}"  class="form-control">
+                                            {{#each data}}
+                                            {{#if this.selected}}
+                                            <option selected="selected" value="{{this.name}}">{{this.value}}</option>
+                                            {{else}}
+                                            <option value="{{this.name}}">{{this.value}}</option>
+                                            {{/if}}
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                {{#if kill-node-name}}
+                                <div class="form-group" id="killNodeName">
+                                    {{else if createNew}}
+                                    <div class="form-group" id="killNodeName">
+                                        {{else}}
+                                        <div class="form-group hide" id="killNodeName">
+                                            {{/if}}
+                                            <label class="control-label col-xs-2"> Kill node name</label>
+                                            <div class=" col-xs-7">
+                                                <input class="form-control" type="text" name="kill-node-name" value="{{kill-node-name}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-2"> Kill message</label>
+                                            <div class=" col-xs-7">
+
+                                                <textarea class="form-control" rows="5" placeholder="kill node message" name="kill-node-message" value="{{kill-node-message}}">{{kill-node-message}}</textarea>
+                                            </div>
+                                        </div>
+                                        </script>
+                                        <script id="java_props_tmpl" type="text/x-handlebars-template">
+                                        <div class="bs-example">
+                                            <form class="form-horizontal" id="action_properties">
+                                                <div class=" panel panel-default">
+                                                    <div class="panel-heading">General</div>
+                                                    <div class="panel-body">
+                                                        <div class="form-group">
+                                                            <label for="inputEmail" class="control-label col-xs-2">Main class<span class="requiredField">&nbsp;*</span></label>
+                                                            <div class="col-xs-7">
+                                                                <input type="text" class="form-control" name="main-class" value="{{main-class}}"  validations="required,noWhitespace" placeholder="Main class">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputPassword" class="control-label col-xs-2">Java opts</label>
+                                                            <div class="col-xs-7">
+                                                                <input type="text" class="form-control" validations="required" value="{{java-opts}}" name="java-opts" placeholder="Java opts">
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Transition</div>
+                                                            <div class="panel-body handlerPanel">
+                                                                {{staticTempForTrans}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class=" panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                        <a class="accordion-toggle whiteLabel" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="{{toggleIcons}}"> Advanced Properties</a>
+                                                        <i id="pullIcon" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="collapseOne" class="panel-collapse collapse">
+                                                        <br/>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-body handlerPanel">
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail" class="control-label col-xs-2">Job tracker<span class="requiredField">&nbsp;*</span></label>
+                                                                    <div class="col-xs-7">
+                                                                        <input type="text" class="form-control" name="job-tracker" value="{{job-tracker}}" validations="required,noWhitespace" placeholder="Job tracker">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputPassword" class="control-label col-xs-2">Name node<span class="requiredField">&nbsp;*</span></label>
+                                                                    <div class="col-xs-7">
+                                                                        <input type="text" class="form-control"  name="name-node"  value="{{name-node}}" validations="required,noWhitespace" placeholder="Name node">
+                                                                    </div>
+                                                                </div>
+                                                                {{#if this.archive}}
+                                                                {{dynComputedTempForArchive}}
+                                                                {{else}}
+                                                                {{staticTempForArchive}}
+                                                                {{/if}}
+                                                                {{#if this.file}}
+                                                                {{dynComputedTempForFile}}
+                                                                {{else}}
+                                                                {{staticTempForFile}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Properties</div>
+                                                            <div class="panel-body handlerPanel">
+                                                                {{#if this.configuration}}
+                                                                {{dynComputedTempForNameValue}}
+                                                                {{else}}
+                                                                {{staticTempForNameValue}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Prepare</div>
+                                                            <div class="panel-body handlerPanel">
+                                                                {{#if this.prepare}}
+                                                                {{dynComputedTempForPrepare}}
+                                                                {{else}}
+                                                                {{staticTempForPrepare}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Java arguments</div>
+                                                            <div class="panel-body handlerPanel">
+                                                                {{#if this.arg}}
+                                                                {{dynComputedTempForArg}}
+                                                                {{else}}
+                                                                {{staticTempForArg}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-xs-10">
+                                                                <div class="checkbox">
+                                                                    {{#if this.capture-output}}
+                                                                    <label><input type="checkbox" checked name="capture-output"> capture output</label>
+                                                                    {{else}}
+                                                                    <label><input type="checkbox"  name="capture-output"> capture output</label>
+                                                                    {{/if}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </script>
+                                    <script id="mr_props_tmpl" type="text/x-handlebars-template">
+                                    <div class="bs-example">
+                                        <form class="form-horizontal" id="action_properties">
+                                            <div class=" panel panel-default">
+                                                <div class="panel-heading">General</div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label for="inputPassword" class="control-label col-xs-2">config-class<span class="requiredField">&nbsp;*</span></label>
+                                                        <div class="col-xs-7">
+                                                            <input type="text" class="form-control"  validations="required,noWhitespace" name="config-class" value="{{config-class}}" placeholder="config-class">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputEmail" class="control-label col-xs-2">Job XML</label>
+                                                        <div class="col-xs-7">
+                                                            <input type="text" class="form-control"  validations="required" name="job-xml" value="{{job-xml}}" placeholder="job.xml">
+                                                        </div>
+                                                    </div>
+                                                    <div class=" panel panel-default">
+                                                        <div class="panel-heading">Transition</div>
+                                                        <div class="panel-body handlerPanel">
+                                                            {{staticTempForTrans}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a class="accordion-toggle whiteLabel" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="{{toggleIcons}}"> Advanced Properties</a>
+                                                    <i id="pullIcon" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i></h4>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse">
+                                                    <br/>
+                                                    <div class=" panel panel-default">
+                                                        <div class="panel-body">
+                                                            <div class="form-group">
+                                                                <label for="inputEmail" class="control-label col-xs-2">Job tracker<span class="requiredField">&nbsp;*</span></label>
+                                                                <div class="col-xs-7">
+                                                                    <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="localhost:8032">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="inputPassword" class="control-label col-xs-2">Name node<span class="requiredField">&nbsp;*</span></label>
+                                                                <div class="col-xs-7">
+                                                                    <input type="text" class="form-control"  name="name-node" validations="required" value="{{name-node}}" placeholder="hdfs://localhost:8020">
+                                                                </div>
+                                                            </div>
+                                                            {{#if this.archive}}
+                                                            {{dynComputedTempForArchive}}
+                                                            {{else}}
+                                                            {{staticTempForArchive}}
+                                                            {{/if}}
+                                                            {{#if this.file}}
+                                                            {{dynComputedTempForFile}}
+                                                            {{else}}
+                                                            {{staticTempForFile}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class=" panel panel-default">
+                                                        <div class="panel-heading">Param</div>
+                                                        <div class="panel-body">
+                                                            {{#if this.configuration}}
+                                                            {{dynComputedTempForNameValue}}
+                                                            {{else}}
+                                                            {{staticTempForNameValue}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class=" panel panel-default">
+                                                        <div class="panel-heading">Prepare</div>
+                                                        <div class="panel-body">
+                                                            {{#if this.prepare}}
+                                                            {{dynComputedTempForPrepare}}
+                                                            {{else}}
+                                                            {{staticTempForPrepare}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class=" panel panel-default">
+                                                        <div class="panel-heading">MapReduce arguments</div>
+                                                        <div class="panel-body handlerPanel">
+                                                            {{#if this.arg}}
+                                                            {{dynComputedTempForArg}}
+                                                            {{else}}
+                                                            {{staticTempForArg}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                    <div class=" panel panel-default">
+                                                        <div class="panel-heading">MapReduce param</div>
+                                                        <div class="panel-body handlerPanel">
+                                                            {{#if this.param}}
+                                                            {{dynComputedTempForParam}}
+                                                            {{else}}
+                                                            {{staticTempForParam}}
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </script>
+                                        <script id="pig_props_tmpl" type="text/x-handlebars-template">
+                                        <div class="bs-example">
+                                            <form class="form-horizontal" id="action_properties">
+                                                <div class=" panel panel-default">
+                                                    <div class="panel-heading">General</div>
+                                                    <div class="panel-body">
+                                                        <div class="form-group">
+                                                            <label for="inputPassword" class="control-label col-xs-2">Pig Script<span class="requiredField">&nbsp;*</span></label>
+                                                            <div class="col-xs-7">
+                                                                <input type="text" class="form-control"  validations="required,noWhitespace" name="script" value="{{script}}" placeholder="myscript.pig">
+                                                            </div>
+                                                        </div>
+
+                                                                {{#if this.job-xml}}
+                                                                {{dynComputedTempForJobXml}}
+                                                                {{else}}
+                                                                {{staticTempForJobXml}}
+                                                                {{/if}}
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Transition</div>
+                                                            <div class="panel-body handlerPanel">
+                                                                {{staticTempForTrans}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class=" panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <a class="accordion-toggle whiteLabel" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="{{toggleIcons}}"> Advanced Properties</a>
+                                                        <i id="pullIcon" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i></h4>
+                                                    </div>
+                                                    <div id="collapseOne" class="panel-collapse collapse">
+                                                        <br/>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-body">
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail" class="control-label col-xs-2">Job tracker<span class="requiredField">&nbsp;*</span></label>
+                                                                    <div class="col-xs-7">
+                                                                        <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="localhost:8032">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputPassword" class="control-label col-xs-2">Name node<span class="requiredField">&nbsp;*</span></label>
+                                                                    <div class="col-xs-7">
+                                                                        <input type="text" class="form-control"  name="name-node" validations="required" value="{{name-node}}" placeholder="hdfs://localhost:8020">
+                                                                    </div>
+                                                                </div>
+                                                                {{#if this.archive}}
+                                                                {{dynComputedTempForArchive}}
+                                                                {{else}}
+                                                                {{staticTempForArchive}}
+                                                                {{/if}}
+                                                                {{#if this.file}}
+                                                                {{dynComputedTempForFile}}
+                                                                {{else}}
+                                                                {{staticTempForFile}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Param</div>
+                                                            <div class="panel-body">
+                                                                {{#if this.configuration}}
+                                                                {{dynComputedTempForNameValue}}
+                                                                {{else}}
+                                                                {{staticTempForNameValue}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Prepare</div>
+                                                            <div class="panel-body">
+                                                                {{#if this.prepare}}
+                                                                {{dynComputedTempForPrepare}}
+                                                                {{else}}
+                                                                {{staticTempForPrepare}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Pig arguments</div>
+                                                            <div class="panel-body handlerPanel">
+                                                                {{#if this.arg}}
+                                                                {{dynComputedTempForArg}}
+                                                                {{else}}
+                                                                {{staticTempForArg}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Pig param</div>
+                                                            <div class="panel-body handlerPanel">
+                                                                {{#if this.param}}
+                                                                {{dynComputedTempForParam}}
+                                                                {{else}}
+                                                                {{staticTempForParam}}
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            </script>
+                                            <script id="hive_props_tmpl" type="text/x-handlebars-template">
+                                            <div class="bs-example">
+                                                <form class="form-horizontal" id="action_properties">
+                                                    <div class=" panel panel-default">
+                                                        <div class="panel-heading">General</div>
+                                                        <div class="panel-body">
+                                                            <div class="form-group">
+                                                                <label for="inputPassword" class="control-label col-xs-2">Hive Script<span class="requiredField">&nbsp;*</span></label>
+                                                                <div class="col-xs-7">
+                                                                    <input type="text" class="form-control" validations="required,noWhitespace" name="script" value="{{script}}" placeholder="hive.hql">
+                                                                </div>
+                                                            </div>
+                                                                {{#if this.job-xml}}
+                                                                {{dynComputedTempForJobXml}}
+                                                                {{else}}
+                                                                {{staticTempForJobXml}}
+                                                                {{/if}}
+                                                            <!--div class=" panel panel-default">
+                                                            <div class="panel-heading">Hive arguments</div>
+                                                            <div class="panel-body handlerPanel"-->
+                                                                {{#if this.arg}}
+                                                                {{dynComputedTempForArg}}
+                                                                {{else}}
+                                                                {{staticTempForArg}}
+                                                                {{/if}}
+                                                                <!--/div>
+                                                            </div-->
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">Transition</div>
+                                                            <div class="panel-body handlerPanel">
+                                                                {{staticTempForTrans}}
+                                                            </div>
+                                                        </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class=" panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <a class="accordion-toggle whiteLabel" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="{{toggleIcons}}"> Advanced Properties</a>
+                                                            <i id="pullIcon" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i></h4>
+                                                        </div>
+                                                        <div id="collapseOne" class="panel-collapse collapse">
+                                                            <br/>
+                                                            <div class=" panel panel-default">
+                                                                <!--div class="panel-heading">Properties</div-->
+                                                            <br/>
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail" class="control-label col-xs-2">Job tracker<span class="requiredField">&nbsp;*</span></label>
+                                                                    <div class="col-xs-7">
+                                                                        <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="localhost:8032">
+                                                                    </div>
+                                                                </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputPassword" class="control-label col-xs-2">Name node<span class="requiredField">&nbsp;*</span></label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control"  name="name-node" validations="required" value="{{name-node}}" placeholder="hdfs://localhost:8020">
+                                                                        </div>
+                                                                    </div>
+                                                                    {{#if this.file}}
+                                                                    {{dynComputedTempForFile}}
+                                                                    {{else}}
+                                                                    {{staticTempForFile}}
+                                                                    {{/if}}
+                                                                    {{#if this.archive}}
+                                                                    {{dynComputedTempForArchive}}
+                                                                    {{else}}
+                                                                    {{staticTempForArchive}}
+                                                                    {{/if}}
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">Properties</div>
+                                                                <div class="panel-body handlerPanel">
+                                                                    {{#if this.configuration}}
+                                                                    {{dynComputedTempForNameValue}}
+                                                                    {{else}}
+                                                                    {{staticTempForNameValue}}
+                                                                    {{/if}}
+                                                                </div>
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">Prepare</div>
+                                                                <div class="panel-body handlerPanel">
+                                                                    {{#if this.prepare}}
+                                                                    {{dynComputedTempForPrepare}}
+                                                                    {{else}}
+                                                                    {{staticTempForPrepare}}
+                                                                    {{/if}}
+                                                                </div>
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">Hive param</div>
+                                                                <div class="panel-body handlerPanel">
+                                                                    {{#if this.param}}
+                                                                    {{dynComputedTempForParam}}
+                                                                    {{else}}
+                                                                    {{staticTempForParam}}
+                                                                    {{/if}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                </script>
+                                                <script id="sqoop_props_tmpl" type="text/x-handlebars-template">
+                                                <div class="bs-example">
+                                                    <form class="form-horizontal" id="action_properties">
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">General</div>
+                                                            <div class="panel-body">
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-heading">Sqoop arguments</div>
+                                                                    <div class="panel-body handlerPanel">
+                                                                        <div class="form-group"  index="1">
+                                                                            <label class="control-label col-xs-2"> Arguments are to be sent as <span class="requiredField">&nbsp;*</span></label>
+                                                                            <div class=" col-xs-3">
+                                                                                <select class="form-control"  onchange="{{argCommandControllerForSqoop}}" id="sel_{{index}}" index="{{index}}">
+                                                                                    {{#if true}}
+                                                                                    <option value="arg">arg</option>
+                                                                                    {{else}}
+                                                                                    <option value="arg">arg</option>
+                                                                                    {{/if}}
+                                                                                    {{#if command}}
+                                                                                    <option selected="selected" value="command">command</option>
+                                                                                    {{else}}
+                                                                                    <option value="command">command</option>
+                                                                                    {{/if}}
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        {{#if this.arg}}
+                                                                        {{dynComputedTempForArg}}
+                                                                        {{else}}
+                                                                        {{staticTempForArg}}
+                                                                        {{/if}}
+                                                                        <div class="form-group {{dynCommandClass}}" id="commandHolder">
+                                                                            <label for="inputEmail" class="control-label col-xs-2">command<span class="requiredField">&nbsp;*</span></label>
+                                                                            <div class="col-xs-10">
+                                                                                <textarea class="form-control" name="command" rows="5" validations="required" placeholder="import  --connect jdbc:hsqldb:file:db.hsqldb --table TT --target-dir hdfs://localhost:8020/user/tucu/foo -m 1">{{command}}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-heading">Transition</div>
+                                                                    <div class="panel-body handlerPanel">
+                                                                        {{staticTempForTrans}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <a class="accordion-toggle whiteLabel" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="{{toggleIcons}}"> Advanced Properties</a>
+                                                                <i id="pullIcon" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i></h4>
+                                                            </div>
+                                                            <div id="collapseOne" class="panel-collapse collapse">
+                                                                <br/>
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-body handlerPanel">
+                                                                        <div class="form-group">
+                                                                            <label for="inputEmail" class="control-label col-xs-2">Job tracker<span class="requiredField">&nbsp;*</span></label>
+                                                                            <div class="col-xs-7">
+                                                                                <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="foo:8021">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="inputPassword" class="control-label col-xs-2">Name node<span class="requiredField">&nbsp;*</span></label>
+                                                                            <div class="col-xs-7">
+                                                                                <input type="text" class="form-control"  name="name-node" validations="required" value="{{name-node}}" placeholder="bar:8020">
+                                                                            </div>
+                                                                        </div>
+                                                                        {{#if this.job-xml}}
+                                                                        {{dynComputedTempForJobXml}}
+                                                                        {{else}}
+                                                                        {{staticTempForJobXml}}
+                                                                        {{/if}}
+                                                                        {{#if this.archive}}
+                                                                        {{dynComputedTempForArchive}}
+                                                                        {{else}}
+                                                                        {{staticTempForArchive}}
+                                                                        {{/if}}
+                                                                        {{#if this.file}}
+                                                                        {{dynComputedTempForFile}}
+                                                                        {{else}}
+                                                                        {{staticTempForFile}}
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-heading">Param</div>
+                                                                    <div class="panel-body">
+                                                                        {{#if this.configuration}}
+                                                                        {{dynComputedTempForNameValue}}
+                                                                        {{else}}
+                                                                        {{staticTempForNameValue}}
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-heading">Prepare</div>
+                                                                    <div class="panel-body">
+                                                                        {{#if this.prepare}}
+                                                                        {{dynComputedTempForPrepare}}
+                                                                        {{else}}
+                                                                        {{staticTempForPrepare}}
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    </script>
+                                                    <script id="email_props_tmpl" type="text/x-handlebars-template">
+                                                    <div class="bs-example">
+                                                        <form class="form-horizontal" id="action_properties">
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">General</div>
+                                                                <div class="panel-body">
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">to</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="email to">
+                                                                        </div>
+                                                                        <label for="inputPassword" class="control-label col-xs-2">cc</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control"  name="name-node" validations="required" value="{{name-node}}" placeholder="keep cc to">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">subject</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" name="subject" value="{{value}}" placeholder="mail subject">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">body</label>
+                                                                        <div class="col-xs-10">
+                                                                            <textarea class="form-control" name="body" value="{{body}}" rows="15" placeholder="body of the mail"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    </script>
+                                                    <script id="ssh_props_tmpl" type="text/x-handlebars-template">
+                                                    <div class="bs-example">
+                                                        <form class="form-horizontal" id="action_properties">
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">General</div>
+                                                                <div class="panel-body">
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">host</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="host">
+                                                                        </div>
+                                                                        <label for="inputPassword" class="control-label col-xs-2">command</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" value="{{name-node}}"  name="name-node" validations="required" placeholder="command">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">Java arguments</div>
+                                                                <div class="panel-body">
+                                                                    {{#if this.arg}}
+                                                                    {{dynComputedTempForArg}}
+                                                                    {{else}}
+                                                                    {{staticTempForArg}}
+                                                                    {{/if}}
+                                                                </div>
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">Transition</div>
+                                                                <div class="panel-body handlerPanel">
+                                                                    {{staticTempForTrans}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-xs-10">
+                                                                    <div class="checkbox">
+                                                                        {{#if this.capture-output}}
+                                                                        <label><input type="checkbox" checked name="capture-output"> capture output</label>
+                                                                        {{else}}
+                                                                        <label><input type="checkbox"  name="capture-output"> capture output</label>
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    </script>
+                                                    <script id="distcp_props_tmpl" type="text/x-handlebars-template">
+                                                    <div class="bs-example">
+                                                        <form class="form-horizontal" id="action_properties">
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">General</div>
+                                                                <div class="panel-body">
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">Job tracker</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="Job tracker">
+                                                                        </div>
+                                                                        <label for="inputPassword" class="control-label col-xs-2">Name node</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control"  value="{{name-node}}" name="name-node" validations="required" placeholder="Name node">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">configuration</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control"  placeholder="configuration">
+                                                                        </div>
+                                                                        <label for="inputPassword" class="control-label col-xs-2">Java opts</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control"  name="java-opts" value="{{java-opts}}" placeholder="Java opts">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">Java arguments</div>
+                                                                <div class="panel-body">
+                                                                    {{#if this.arg}}
+                                                                    {{dynComputedTempForArg}}
+                                                                    {{else}}
+                                                                    {{staticTempForArg}}
+                                                                    {{/if}}
+                                                                </div>
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">Transition</div>
+                                                                <div class="panel-body handlerPanel">
+                                                                    {{staticTempForTrans}}
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    </script>
+                                                    <script id="spark_props_tmpl" type="text/x-handlebars-template">
+                                                    <div class="bs-example">
+                                                        <form class="form-horizontal" id="action_properties">
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">General</div>
+                                                                <div class="panel-body">
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">Master<span class="requiredField">&nbsp;*</span></label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" name="master" value="{{master}}"  validations="required" placeholder="local[*]">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">Class</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" name="class" value="{{class}}" placeholder="org.apache.spark.examples.mllib.JavaALS">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail" class="control-label col-xs-2">Mode</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" name="mode" value="{{mode}}" placeholder="client">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputPassword" class="control-label col-xs-2">Jar</label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control" name="jar" value="{{jar}}" placeholder="/lib/spark-examples_2.10-1.1.0.jar">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=" panel panel-default">
+                                                                        <div class="panel-heading">Transition</div>
+                                                                        <div class="panel-body handlerPanel">
+                                                                            {{staticTempForTrans}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <a class="accordion-toggle whiteLabel" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="{{toggleIcons}}"> Advanced Properties</a>
+                                                                    <i id="pullIcon" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i></h4>
+                                                                </div>
+                                                                <div id="collapseOne" class="panel-collapse collapse">
+                                                                    <br/>
+                                                                    <div class=" panel panel-default">
+                                                                        <div class="panel-body handlerPanel">
+                                                                            <div class="form-group">
+                                                                                <label for="inputEmail" class="control-label col-xs-2">Job tracker<span class="requiredField">&nbsp;*</span></label>
+                                                                                <div class="col-xs-7">
+                                                                                    <input type="text" class="form-control" name="job-tracker" value="{{job-tracker}}" placeholder="Job tracker">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="inputPassword" class="control-label col-xs-2">Name node<span class="requiredField">&nbsp;*</span></label>
+                                                                                <div class="col-xs-7">
+                                                                                    <input type="text" class="form-control"  name="name-node" validations="required" value="{{name-node}}" placeholder="Name node">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+
+                                                                                <label for="inputPassword" class="control-label col-xs-2">Spark opts</label>
+                                                                                <div class="col-xs-7">
+                                                                                    <input type="text" class="form-control"  value="{{java-opts}}" name="java-opts" placeholder="--executor-memory 20G --num-executors 50">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="inputPassword" class="control-label col-xs-2">Name</label>
+                                                                                <div class="col-xs-7">
+                                                                                    <input type="text" class="form-control" name="spark-name" value="{{spark-name}}" placeholder="Spark Example">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--div class=" panel panel-default">
+                                                                    <div class="panel-body handlerPanel">
+                                                                        {{staticTempForTrans}}
+                                                                    </div>
+                                                                </div-->
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-heading">Properties</div>
+                                                                    <div class="panel-body handlerPanel">
+                                                                        {{#if this.configuration}}
+                                                                        {{dynComputedTempForNameValue}}
+                                                                        {{else}}
+                                                                        {{staticTempForNameValue}}
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-heading">Prepare</div>
+                                                                    <div class="panel-body handlerPanel">
+                                                                        {{#if this.prepare}}
+                                                                        {{dynComputedTempForPrepare}}
+                                                                        {{else}}
+                                                                        {{staticTempForPrepare}}
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-heading">Java arguments</div>
+                                                                    <div class="panel-body handlerPanel">
+                                                                        {{#if this.arg}}
+                                                                        {{dynComputedTempForArg}}
+                                                                        {{else}}
+                                                                        {{staticTempForArg}}
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="col-xs-10">
+                                                                        <div class="checkbox">
+                                                                            {{#if this.capture-output}}
+                                                                            <label><input type="checkbox" checked name="capture-output"> capture output</label>
+                                                                            {{else}}
+                                                                            <label><input type="checkbox"  name="capture-output"> capture output</label>
+                                                                            {{/if}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    </script>
+                                                    <script id="shell_props_tmpl" type="text/x-handlebars-template">
+                                                    <div class="bs-example">
+                                                        <form class="form-horizontal" id="action_properties">
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">General</div>
+                                                                <div class="panel-body">
+                                                                    <div class="form-group">
+                                                                        <label for="inputPassword" class="control-label col-xs-2">Command Shell<span class="requiredField">&nbsp;*</span></label>
+                                                                        <div class="col-xs-7">
+                                                                            <input type="text" class="form-control"  value="{{exec}}"  validations="required" name="exec" placeholder="/usr/bin/python">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=" panel panel-default">
+                                                                        <div class="panel-heading">Transition</div>
+                                                                        <div class="panel-body handlerPanel">
+                                                                            {{staticTempForTrans}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <a class="accordion-toggle whiteLabel" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="{{toggleIcons}}"> Advanced Properties</a>
+                                                                    <i id="pullIcon" class="indicator glyphicon glyphicon-chevron-up  pull-right"></i></h4>
+                                                                </div>
+                                                                <div id="collapseOne" class="panel-collapse collapse">
+                                                                    <br/>
+                                                                    <div class=" panel panel-default">
+                                                                        <div class="panel-body handlerPanel">
+                                                                            <div class="form-group">
+                                                                                <label for="inputEmail" class="control-label col-xs-2">Job tracker<span class="requiredField">&nbsp;*</span></label>
+                                                                                <div class="col-xs-7">
+                                                                                    <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="${jobTracker}">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="inputPassword" class="control-label col-xs-2">Name node<span class="requiredField">&nbsp;*</span></label>
+                                                                                <div class="col-xs-7">
+                                                                                    <input type="text" class="form-control"  name="name-node" validations="required"  value="{{name-node}}" placeholder="${nameNode}">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            {{#if this.job-xml}}
+                                                                            {{dynComputedTempForJobXml}}
+                                                                            {{else}}
+                                                                            {{staticTempForJobXml}}
+                                                                            {{/if}}
+
+                                                                            <div class="form-group">
+                                                                                <label for="inputPassword" class="control-label col-xs-2">env-var</label>
+                                                                                <div class="col-xs-7">
+                                                                                    <input type="text" class="form-control" name="env-var" value="{{env-var}}" placeholder="TZ=PST">
+                                                                                </div>
+                                                                            </div>
+                                                                            {{#if this.archive}}
+                                                                            {{dynComputedTempForArchive}}
+                                                                            {{else}}
+                                                                            {{staticTempForArchive}}
+                                                                            {{/if}}
+                                                                            {{#if this.file}}
+                                                                            {{dynComputedTempForFile}}
+                                                                            {{else}}
+                                                                            {{staticTempForFile}}
+                                                                            {{/if}}
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=" panel panel-default">
+                                                                        <div class="panel-heading">Properties</div>
+                                                                        <div class="panel-body handlerPanel">
+                                                                            {{#if this.configuration}}
+                                                                            {{dynComputedTempForNameValue}}
+                                                                            {{else}}
+                                                                            {{staticTempForNameValue}}
+                                                                            {{/if}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=" panel panel-default">
+                                                                        <div class="panel-heading">Prepare</div>
+                                                                        <div class="panel-body handlerPanel">
+                                                                            {{#if this.prepare}}
+                                                                            {{dynComputedTempForPrepare}}
+                                                                            {{else}}
+                                                                            {{staticTempForPrepare}}
+                                                                            {{/if}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=" panel panel-default">
+                                                                        <div class="panel-heading">Java arguments</div>
+                                                                        <div class="panel-body handlerPanel">
+                                                                            {{#if this.arg}}
+                                                                            {{dynComputedTempForArg}}
+                                                                            {{else}}
+                                                                            {{staticTempForArg}}
+                                                                            {{/if}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="col-xs-10">
+                                                                            <div class="checkbox">
+                                                                                {{#if this.capture-output}}
+                                                                                <label><input type="checkbox" checked name="capture-output"> capture output</label>
+                                                                                {{else}}
+                                                                                <label><input type="checkbox"  name="capture-output"> capture output</label>
+                                                                                {{/if}}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        </script>
+                                                        <script id="props_dialog_tmpl" type="text/x-handlebars-template">
+                                                        <div class="modal fade" id="action_properties_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                        <h4 class="modal-title" id="myModalLabel">{{action_name}} Action Settings</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </script>
+                                                        <script id="global_props_dialog_tmpl" type="text/x-handlebars-template">
+                                                        <div class="modal fade" id="global_properties_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                        <h4 class="modal-title" id="myModalLabel">Global Configuration Settings</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="bs-example">
+                                                                            <form class="form-horizontal" id="global_properties">
+                                                                                <div class="form-group">
+                                                                                    <div class='alert alert-info globlaPropetiesInfo'>  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> The Properties which you save here will be reflected in action nodes of the workflow</div>
+                                                                                </div>
+                                                                                <div class=" panel panel-default">
+                                                                                    <div class="panel-heading">General</div>
+                                                                                    <div class="panel-body">
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputEmail" class="control-label col-xs-2">Job tracker<span class="requiredField">&nbsp;*</span></label>
+                                                                                            <div class="col-xs-7">
+                                                                                                <input type="text" class="form-control" name="job-tracker" validations="required" value="{{job-tracker}}" placeholder="${jobTracker}">
+                                                                                            </div>
+                                                                                            <label for="inputPassword" class="control-label col-xs-2">Name node<span class="requiredField">&nbsp;*</span></label>
+                                                                                            <div class="col-xs-7">
+                                                                                                <input type="text" class="form-control"  name="name-node" validations="required"  value="{{name-node}}" placeholder="${nameNode}">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputEmail" class="control-label col-xs-2">Job XML<span class="requiredField">&nbsp;*</span></label>
+                                                                                            <div class="col-xs-7">
+                                                                                                <input type="text" class="form-control" name="job-xml" validations="required"  value="{{job-xml}}" placeholder="${jobXml}">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class=" panel panel-default">
+                                                                                    <div class="panel-heading">Properties</div>
+                                                                                    <div class="panel-body handlerPanel">
+                                                                                        {{#if this.configuration}}
+                                                                                        {{dynComputedTempForNameValue}}
+                                                                                        {{else}}
+                                                                                        {{staticTempForNameValue}}
+                                                                                        {{/if}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                                            <button type="button" id="" onclick="{{saveGlobalActionProperties}}" class="btn btn-primary">Save</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </script>
+                                                        <script id="xml_dialog_tmpl" type="text/x-handlebars-template">
+                                                        <div class="modal fade" id="xml_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                        <h4 class="modal-title" id="myModalLabel">{{action_name}} Action Settings</h4>
+                                                                    </div>
+                                                                    <div class="panel panel-default">
+                                                                        <div class="panel-body">
+                                                                            <div class="modal-body">
+                                                                                Hello world :)
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <span class='loader'>
+                                                                            <img src="loader.gif"></img>
+                                                                        </span>
+                                                                        <button type="button" class="btn btn-primary" onclick="{{saveWorkflow}}">Save</button>
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </script>
+                                                        <script id="decision_props_tmpl" type="text/x-handlebars-template">
+                                                        <div class="bs-example">
+                                                            <form class="form-horizontal" id="action_properties">
+                                                                <div class=" panel panel-default">
+                                                                    <div class="panel-heading">Decision Node</div>
+                                                                    <div class="panel-body">
+                                                                        <div class="form-group">
+                                                                            <label for="inputEmail" class="control-label col-xs-2">Name <span class="requiredField">&nbsp;*</span></label>
+                                                                            <div class="col-xs-7">
+                                                                                <input type="text" class="form-control" name="decision.name" validations="required"  value="{{action_name}}" placeholder="name of the decsion action">
+                                                                            </div>
+                                                                        </div>
+                                                                        {{#if this.decision}}
+                                                                        {{dynComputedTempForDecision}}
+                                                                        {{else}}
+                                                                        {{staticTempForDecision}}
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        </script>
+                                                        <script id="add_decision_tmpl" type="text/x-handlebars-template">
+                                                        {{#if prevIndex}}
+                                                        <div class="form-group" index="{{index}}">
+                                                            {{else}}
+                                                            <div class="form-group" id="decisionHolder" index="{{index}}">
+                                                                {{/if}}
+                                                                <label class="control-label col-xs-2"> To Node</label>
+                                                                <div class=" col-xs-7">
+                                                                    <select onchange="{{decisionNodeHandler}}" name="decision.switch.case[{{prevIndex}}]" value="{{kill-node}}"  class="form-control">
+                                                                        {{#each nodesForDecission}}
+                                                                        {{#if this.selected}}
+                                                                        <option selected="selected" value="{{this.name}}">{{this.value}}</option>
+                                                                        {{else}}
+                                                                        <option value="{{this.name}}">{{this.value}}</option>
+                                                                        {{/if}}
+                                                                        {{/each}}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group" id="decissionNode" index="{{index}}">
+                                                                <label class="control-label col-xs-2"> Condition</label>
+                                                                <div class=" col-xs-7">
+                                                                    <input class="form-control" type="text" value="{{cond}}" validations="required,noWhitespace" cond="decision.switch.case_{{prevIndex}}">
+                                                                </div>
+                                                            </div>
+                                                            </script>

@@ -1,0 +1,152 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="col-md-12">
+  <div class="col-md-2">
+    {{#if view.showTitle}}
+      {{t dashboard.services.hdfs.summary.components}}
+    {{/if}}
+  </div>
+  <div class="col-md-10">
+    {{! Data Nodes }}
+    {{#if view.isDataNodeCreated}}
+      <div {{bindAttr class=":row :component :col-md-3 view.dataNodeComponent.componentName"}}>
+        <div class="summary-value main-info">
+          {{#if App.router.clusterController.isServiceContentFullyLoaded}}
+            <span>
+              {{#view App.ComponentLiveTextView liveComponentsBinding="view.service.dataNodesStarted" totalComponentsBinding="view.service.dataNodesTotal"}}
+                {{view.liveComponents}}/{{view.totalComponents}}
+              {{/view}}
+            </span>
+            {{t common.started}}
+          {{else}}
+            {{t common.loading.eclipses}}
+          {{/if}}
+        </div>
+        <div class="summary-label">
+          <a href="#" {{action filterHosts view.dataNodeComponent}}>{{t dashboard.services.hdfs.datanodes}}</a>
+        </div>
+      </div>
+    {{/if}}
+    {{! JournalNodes }}
+    {{#if view.isJournalNodeCreated}}
+      <div {{bindAttr class=":row :component :col-md-3 view.journalNodeComponent.componentName"}}>
+        <div class="summary-value main-info">
+          {{#if App.router.clusterController.isComponentsStateLoaded}}
+            <span>
+              {{#view App.ComponentLiveTextView liveComponentsBinding="view.journalNodesLive" totalComponentsBinding="view.journalNodesTotal"}}
+                {{view.liveComponents}}/{{view.totalComponents}}
+              {{/view}}
+            </span>
+            <span> {{t common.live}} </span>
+          {{else}}
+            {{t common.loading.eclipses}}
+          {{/if}}
+        </div>
+        <div class="summary-label">
+          <a
+            href="#" {{action filterHosts view.journalNodeComponent}}>{{t dashboard.services.hdfs.journalnodes}}</a>
+        </div>
+      </div>
+    {{/if}}
+    {{! NFS Gateway }}
+    {{#if view.isNfsInStack}}
+      <div {{bindAttr class=":row :component :col-md-3 view.nfsGatewayComponent.componentName"}}>
+        <div class="summary-value main-info">
+          {{#if App.router.clusterController.isServiceContentFullyLoaded}}
+            <span>
+              {{#view App.ComponentLiveTextView liveComponentsBinding="view.service.nfsGatewaysStarted" totalComponentsBinding="view.service.nfsGatewaysTotal"}}
+                {{view.liveComponents}}/{{view.totalComponents}}
+              {{/view}}
+            </span>
+            {{t common.started}}
+          {{else}}
+            {{t common.loading.eclipses}}
+          {{/if}}
+        </div>
+        <div class="summary-label">
+          <a href="#" {{action filterHosts view.nfsGatewayComponent}}>{{t dashboard.services.hdfs.nfsgateways}}</a>
+        </div>
+      </div>
+    {{/if}}
+    {{! HDFS Clients }}
+    {{#if view.isHDFSClientCreated}}
+      <div {{bindAttr class=":row :component :col-md-3 view.hdfsClientComponent.componentName"}}>
+        <div class="summary-value main-info">
+          <span>{{view.service.installedClients}} {{t common.installed}} </span>
+        </div>
+        <div class="summary-label">
+          <a {{action filterHosts view.hdfsClientComponent}} href="javascript:void(null)">
+            {{pluralize view.service.installedClients singular="t:dashboard.services.hdfs.client" plural="t:dashboard.services.hdfs.clients"}}
+          </a>
+        </div>
+      </div>
+    {{/if}}
+    {{! indent next row}}
+    <div class="row"></div>
+    <div class="summary-label col-md-12">{{t dashboard.services.hdfs.datanodecounts}}</div>
+    {{! Data Node Counts live }}
+    <div class="row datanode-count-live col-md-3">
+      <div class="summary-value">
+        {{#if view.service.metricsNotAvailable}}
+          <div class="main-info">
+            {{t services.service.summary.notAvailable}}
+          </div>
+        {{else}}
+          <span class="main-info" rel="tooltip"
+            {{translateAttr data-original-title="dashboard.services.hdfs.datanode.status.tooltip.live" }}>
+            {{view.service.liveDataNodes.length}}
+          </span>
+          <div class="info-desc">{{t dashboard.services.hdfs.nodes.live}}</div>
+        {{/if}}
+      </div>
+    </div>
+    {{! Data Node Counts dead }}
+    <div class="row datanode-count-dead col-md-3">
+      <div class="summary-value">
+        {{#if view.service.metricsNotAvailable}}
+          <div class="main-info">
+            {{t services.service.summary.notAvailable}}
+          </div>
+        {{else}}
+          <span class="main-info" rel="tooltip"
+            {{translateAttr data-original-title="dashboard.services.hdfs.datanode.status.tooltip.dead" }}>
+            {{view.service.deadDataNodes.length}}
+          </span>
+          <div class="info-desc">{{t dashboard.services.hdfs.nodes.dead}}</div>
+        {{/if}}
+      </div>
+    </div>
+    {{! Data Node Counts decommission }}
+    <div class="row datanode-count-decommission col-md-3">
+      <div class="summary-value">
+        {{#if view.service.metricsNotAvailable}}
+          <div class="main-info">
+            {{t services.service.summary.notAvailable}}
+          </div>
+        {{else}}
+          <span class="main-info" rel="tooltip"
+            {{translateAttr data-original-title="dashboard.services.hdfs.datanode.status.tooltip.decommission" }}>
+            {{view.service.decommissionDataNodes.length}}
+          </span>
+          <div class="info-desc">{{t dashboard.services.hdfs.nodes.decom}}</div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

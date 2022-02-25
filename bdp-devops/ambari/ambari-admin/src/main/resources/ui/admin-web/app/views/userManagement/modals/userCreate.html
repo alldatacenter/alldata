@@ -1,0 +1,161 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<form id="create-user-form" role="form" novalidate name="form.userCreateForm">
+  <div class="modal-header">
+    <h1 class="modal-title col-sm-8">
+      {{'users.create' | translate}}
+    </h1>
+    <a class="close" aria-hidden="true" ng-click="cancel()">&times;</a>
+  </div>
+  <div class="modal-body">
+    <div class="form-group"
+         ng-class="{ 'has-error': (form.userCreateForm.userName.$error.required || form.userCreateForm.userName.$error.pattern) && form.userCreateForm.submitted }">
+      <label for="userName">
+        {{'users.username' | translate}}<span>&nbsp;*</span>&nbsp;
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </label>
+      <input type="text"
+             autofocus
+             placeholder="{{'users.user.name' | translate}}"
+             ng-pattern="/^[^<>&`|\\]+$/"
+             ng-maxlength="80"
+             tooltip="{{'users.userNameTip' | translate}}"
+             autocomplete="off"
+             tooltip-trigger="focus"
+             tooltip-placement="top"
+             class="form-control"
+             ng-model="formData.userName"
+             name="userName"
+             id="userName"
+             ng-change="checkIfInstanceExist()"
+             required>
+      <span class="help-block validation-block"
+            ng-show='form.userCreateForm.userName.$error.required && form.userCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+      <span class="help-block validation-block"
+            ng-show='form.userCreateForm.userName.$error.pattern && form.userCreateForm.submitted'>
+        {{'common.alerts.noSpecialChars' | translate}}
+      </span>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6"
+           ng-class="{ 'has-error': form.userCreateForm.password.$error.required && form.userCreateForm.submitted }">
+        <label for="password">
+          {{'users.password' | translate}}<span>&nbsp;*</span>
+        </label>
+        <input type="password"
+               id="password"
+               class="form-control"
+               name="password"
+               placeholder="{{'users.password' | translate}}"
+               required
+               ng-model="formData.password"
+               autocomplete="off">
+        <span class="help-block validation-block"
+              ng-show='form.userCreateForm.password.$error.required && form.userCreateForm.submitted'>
+          {{'common.alerts.fieldRequired' | translate}}
+        </span>
+      </div>
+      <div class="form-group col-sm-6"
+           ng-class="{ 'has-error': form.userCreateForm.confirmPassword.$error.passwordVerify || (form.userCreateForm.confirmPassword.$error.required && form.userCreateForm.submitted) }">
+        <label for="confirmPassword">
+          {{'users.confirmPassword' | translate}}<span>&nbsp;*</span>
+        </label>
+        <input type="password"
+               id="confirmPassword"
+               class="form-control"
+               name="confirmPassword"
+               placeholder="{{'users.confirmPassword' | translate}}"
+               required
+               password-verify="formData.password"
+               ng-model="formData.confirmPassword"
+               autocomplete="off">
+        <span class="help-block validation-block"
+              ng-show='form.userCreateForm.confirmPassword.$error.required && form.userCreateForm.submitted'>
+          {{'common.alerts.fieldRequired' | translate}}
+        </span>
+        <span class="help-block validation-block"
+              ng-show='form.userCreateForm.confirmPassword.$error.passwordVerify'>
+          {{'users.alerts.wrongPassword' | translate}}
+        </span>
+      </div>
+    </div>
+
+    <div class="row" ng-show="cluster">
+      <div class="form-group col-sm-6"
+           ng-class="{ 'has-error': form.userCreateForm.role.$error.required && form.userCreateForm.submitted }">
+        <label for="role" class="nowrap roles-label">
+          {{'users.role' | translate}}<span>&nbsp;*</span>
+          <i class="fa fa-question-circle" aria-hidden="true" ng-click="showHelpPage()"></i>
+        </label>
+        <select
+          class="form-control"
+          id="role"
+          name="role"
+          ng-model="formData.role"
+          ng-required="cluster">
+          <option value="" class="hide">{{'common.select' | translate}}</option>
+          <option ng-repeat="role in roleOptions" value="{{role.permission_name}}">{{role.permission_label}}</option>
+        </select>
+        <span class="help-block validation-block" ng-show='form.userCreateForm.role.$error.required && form.userCreateForm.submitted'>
+          {{'common.alerts.fieldRequired' | translate}}
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        {{'users.isAmbariAdmin' | translate}}<span>&nbsp;*</span>
+        <i class="fa fa-question-circle"
+           aria-hidden="true"
+           tooltip="{{'users.adminTip' | translate}}"
+           tooltip-trigger="click"
+           tooltip-placement="top"></i>
+      </label>
+      <div>
+        <toggle-switch model="formData.isAdmin" class="switch-success" data-off-color="danger"></toggle-switch>
+        <span ng-if="formData.isAdmin" class="switch-option-label">{{'common.yes' | translate}}</span>
+        <span ng-if="!formData.isAdmin" class="switch-option-label">{{'common.no' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        {{'users.isActive' | translate}}<span>&nbsp;*</span>
+        <i class="fa fa-question-circle"
+           aria-hidden="true"
+           tooltip="{{'users.deactivateTip' | translate}}"
+           tooltip-trigger="click"
+           tooltip-placement="top"></i>
+      </label>
+      <div>
+        <toggle-switch model="formData.isActive" class="switch-success" data-off-color="danger"></toggle-switch>
+        <span ng-if="formData.isActive" class="switch-option-label">{{'users.active' | translate}}</span>
+        <span ng-if="!formData.isActive" class="switch-option-label">{{'users.inactive' | translate}}</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel()">{{'common.controls.cancel' | translate}}</button>
+    <button class="btn btn-primary" ng-click="save()" type="submit">{{'common.controls.save' | translate}}</button>
+  </div>
+</form>

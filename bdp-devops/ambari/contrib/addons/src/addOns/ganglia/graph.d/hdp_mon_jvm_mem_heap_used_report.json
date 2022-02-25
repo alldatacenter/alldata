@@ -1,0 +1,10 @@
+{
+   "report_name" : "jvm_mem_heap_used_report",
+   "report_type" : "standard",
+   "title" : "JVM Heap Memory Used",
+   "vertical_label" : "MB",
+   "series" : [
+      { "metric": "jvm.metrics.memHeapUsedM", "color": "ff0000", "label": "Heap Memory Used", 
+        "line_width": "2", "type": "line" }
+   ]
+}

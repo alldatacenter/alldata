@@ -1,0 +1,3206 @@
+{
+  "HBASE_MASTER": {
+    "HostComponent": [
+      {
+        "type": "ganglia",
+        "metrics": {
+          "default": {
+            "metrics/rpc/deleteTable/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.deleteTable.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/closeRegion_num_ops": {
+              "metric": "rpc.rpc.closeRegion_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/regionServerStartup/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.regionServerStartup.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/unassign_num_ops": {
+              "metric": "rpc.rpc.unassign_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getClusterStatus/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.getClusterStatus.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/modifyTable_num_ops": {
+              "metric": "rpc.rpc.modifyTable_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getProtocolVersion_avg_time": {
+              "metric": "rpc.rpc.getProtocolVersion_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/unassign/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.unassign.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/load/load_one": {
+              "metric": "load_one",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getClosestRowBefore_num_ops": {
+              "metric": "rpc.rpc.getClosestRowBefore_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/memNonHeapUsedM": {
+              "metric": "jvm.JvmMetrics.MemNonHeapUsedM",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/assign/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.assign.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/replicateLogEntries_num_ops": {
+              "metric": "rpc.rpc.replicateLogEntries_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/createTable/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.createTable.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/lockRow_num_ops": {
+              "metric": "rpc.rpc.lockRow_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/flushRegion_avg_time": {
+              "metric": "rpc.rpc.flushRegion_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/multi_avg_time": {
+              "metric": "rpc.rpc.multi_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/swap_total": {
+              "metric": "swap_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/stopMaster_num_ops": {
+              "metric": "rpc.rpc.stopMaster_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/process/proc_total": {
+              "metric": "proc_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/balance_avg_time": {
+              "metric": "rpc.rpc.balance_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/disk/part_max_used": {
+              "metric": "part_max_used",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/splitRegion_num_ops": {
+              "metric": "rpc.rpc.splitRegion_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/modifyColumn_avg_time": {
+              "metric": "rpc.rpc.modifyColumn_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/balance_num_ops": {
+              "metric": "rpc.rpc.balance_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/shutdown_num_ops": {
+              "metric": "rpc.rpc.shutdown_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/flushRegion_num_ops": {
+              "metric": "rpc.rpc.flushRegion_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_idle": {
+              "metric": "cpu_idle",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/modifyTable/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.modifyTable.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/regionServerReport/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.regionServerReport.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getProtocolSignature/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.getProtocolSignature.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/get_num_ops": {
+              "metric": "rpc.rpc.get_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/stopMaster_avg_time": {
+              "metric": "rpc.rpc.stopMaster_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/bytes_in": {
+              "metric": "bytes_in",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/reportRSFatalError/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.reportRSFatalError.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/memNonHeapCommittedM": {
+              "metric": "jvm.JvmMetrics.MemNonHeapCommittedM",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/shutdown/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.shutdown.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getRegionInfo_avg_time": {
+              "metric": "rpc.rpc.getRegionInfo_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/balanceSwitch/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.balanceSwitch.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/disableTable/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.disableTable.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/reportRSFatalError/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.reportRSFatalError.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/assign/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.assign.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/balance/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.balance.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/enableTable_num_ops": {
+              "metric": "rpc.rpc.enableTable_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/lockRow_avg_time": {
+              "metric": "rpc.rpc.lockRow_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/addColumn_avg_time": {
+              "metric": "rpc.rpc.addColumn_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/reportRSFatalError_num_ops": {
+              "metric": "rpc.rpc.reportRSFatalError_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_wio": {
+              "metric": "cpu_wio",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/hbase/master/splitTime_num_ops": {
+              "metric": "master.FileSystem.HlogSplitTime_num_ops",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/getAlterStatus/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.getAlterStatus.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/deleteColumn/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.deleteColumn.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/reportRSFatalError_avg_time": {
+              "metric": "rpc.rpc.reportRSFatalError_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthenticationSuccesses": {
+              "metric": "rpc.rpc.rpcAuthenticationSuccesses",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/network/pkts_in": {
+              "metric": "pkts_in",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/disableTable_avg_time": {
+              "metric": "rpc.rpc.disableTable_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_total": {
+              "metric": "mem_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/memHeapCommittedM": {
+              "metric": "jvm.JvmMetrics.MemHeapCommittedM",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/threadsRunnable": {
+              "metric": "jvm.JvmMetrics.ThreadsRunnable",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/openRegion_avg_time": {
+              "metric": "rpc.rpc.openRegion_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/enableTable/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.enableTable.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/threadsNew": {
+              "metric": "jvm.JvmMetrics.ThreadsNew",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getClusterStatus_num_ops": {
+              "metric": "rpc.rpc.getClusterStatus_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getHTableDescriptors_avg_time": {
+              "metric": "rpc.rpc.getHTableDescriptors_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthorizationFailures": {
+              "metric": "rpc.rpc.rpcAuthorizationFailures",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/regionServerReport_avg_time": {
+              "metric": "rpc.rpc.regionServerReport_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/deleteColumn_num_ops": {
+              "metric": "rpc.rpc.deleteColumn_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/RpcQueueTime_avg_time": {
+              "metric": "rpc.rpc.RpcQueueTime_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/increment_num_ops": {
+              "metric": "rpc.rpc.increment_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getAlterStatus_num_ops": {
+              "metric": "rpc.rpc.getAlterStatus_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/modifyColumn_num_ops": {
+              "metric": "rpc.rpc.modifyColumn_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/next_avg_time": {
+              "metric": "rpc.rpc.next_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/deleteColumn/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.deleteColumn.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/RpcSlowResponse_avg_time": {
+              "metric": "rpc.rpc.RpcSlowResponse_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getClusterStatus/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.getClusterStatus.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/ReceivedBytes": {
+              "metric": "rpc.rpc.ReceivedBytes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_nice": {
+              "metric": "cpu_nice",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/bulkLoadHFiles_num_ops": {
+              "metric": "rpc.rpc.bulkLoadHFiles_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/unassign_avg_time": {
+              "metric": "rpc.rpc.unassign_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/NumOpenConnections": {
+              "metric": "rpc.rpc.NumOpenConnections",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/gcTimeMillis": {
+              "metric": "jvm.JvmMetrics.GcTimeMillis",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/regionServerReport/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.regionServerReport.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getProtocolVersion/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.getProtocolVersion.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/threadsTerminated": {
+              "metric": "jvm.JvmMetrics.ThreadsTerminated",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/bytes_out": {
+              "metric": "bytes_out",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/unassign/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.unassign.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/balanceSwitch_avg_time": {
+              "metric": "rpc.rpc.balanceSwitch_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/load/load_five": {
+              "metric": "load_five",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/boottime": {
+              "metric": "boottime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/compactRegion_avg_time": {
+              "metric": "rpc.rpc.compactRegion_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/openRegion_num_ops": {
+              "metric": "rpc.rpc.openRegion_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/callQueueLen": {
+              "metric": "rpc.rpc.callQueueLen",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/offline/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.offline.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getProtocolSignature/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.getProtocolSignature.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/execCoprocessor_num_ops": {
+              "metric": "rpc.rpc.execCoprocessor_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getOnlineRegions_avg_time": {
+              "metric": "rpc.rpc.getOnlineRegions_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/addColumn/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.addColumn.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/disableTable/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.disableTable.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/incrementColumnValue_avg_time": {
+              "metric": "rpc.rpc.incrementColumnValue_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/RpcProcessingTime_num_ops": {
+              "metric": "rpc.rpc.RpcProcessingTime_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/move_num_ops": {
+              "metric": "rpc.rpc.move_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/stop_num_ops": {
+              "metric": "rpc.rpc.stop_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/replicateLogEntries_avg_time": {
+              "metric": "rpc.rpc.replicateLogEntries_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/deleteTable_num_ops": {
+              "metric": "rpc.rpc.deleteTable_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/logError": {
+              "metric": "jvm.JvmMetrics.LogError",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/get_avg_time": {
+              "metric": "rpc.rpc.get_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/multi_num_ops": {
+              "metric": "rpc.rpc.multi_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getBlockCacheColumnFamilySummaries_num_ops": {
+              "metric": "rpc.rpc.getBlockCacheColumnFamilySummaries_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/deleteColumn_avg_time": {
+              "metric": "rpc.rpc.deleteColumn_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/bulkLoadHFiles_avg_time": {
+              "metric": "rpc.rpc.bulkLoadHFiles_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/exists_avg_time": {
+              "metric": "rpc.rpc.exists_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/offline_avg_time": {
+              "metric": "rpc.rpc.offline_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/unlockRow_avg_time": {
+              "metric": "rpc.rpc.unlockRow_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/delete_num_ops": {
+              "metric": "rpc.rpc.delete_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/exists_num_ops": {
+              "metric": "rpc.rpc.exists_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/regionServerStartup_avg_time": {
+              "metric": "rpc.rpc.regionServerStartup_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/checkAndDelete_num_ops": {
+              "metric": "rpc.rpc.checkAndDelete_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/closeRegion_avg_time": {
+              "metric": "rpc.rpc.closeRegion_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/modifyColumn/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.modifyColumn.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/enableTable/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.enableTable.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getProtocolSignature_avg_time": {
+              "metric": "rpc.rpc.getProtocolSignature_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/createTable_num_ops": {
+              "metric": "rpc.rpc.createTable_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/assign_avg_time": {
+              "metric": "rpc.rpc.assign_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/execCoprocessor_avg_time": {
+              "metric": "rpc.rpc.execCoprocessor_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/isMasterRunning/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.isMasterRunning.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/close_avg_time": {
+              "metric": "rpc.rpc.close_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/process/proc_run": {
+              "metric": "proc_run",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/threadsBlocked": {
+              "metric": "jvm.JvmMetrics.ThreadsBlocked",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getHServerInfo_num_ops": {
+              "metric": "rpc.rpc.getHServerInfo_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/RpcQueueTime_num_ops": {
+              "metric": "rpc.rpc.RpcQueueTime_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/stop_avg_time": {
+              "metric": "rpc.rpc.stop_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/rollHLogWriter_avg_time": {
+              "metric": "rpc.rpc.rollHLogWriter_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/modifyTable/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.modifyTable.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/balance/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.balance.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/isMasterRunning_avg_time": {
+              "metric": "rpc.rpc.isMasterRunning_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/hbase/master/splitSize_num_ops": {
+              "metric": "master.FileSystem.HlogSplitSize_num_ops",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/incrementColumnValue_num_ops": {
+              "metric": "rpc.rpc.incrementColumnValue_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/modifyColumn/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.modifyColumn.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/hbase/master/splitTime_avg_time": {
+              "metric": "master.FileSystem.HlogSplitSize_mean",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_aidle": {
+              "metric": "cpu_aidle",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_free": {
+              "metric": "mem_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/assign_num_ops": {
+              "metric": "rpc.rpc.assign_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/enableTable_avg_time": {
+              "metric": "rpc.rpc.enableTable_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/move/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.move.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/network/pkts_out": {
+              "metric": "pkts_out",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/close_num_ops": {
+              "metric": "rpc.rpc.close_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_cached": {
+              "metric": "mem_cached",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/addColumn/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.addColumn.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/disk/disk_total": {
+              "metric": "disk_total",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/shutdown/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.shutdown.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/openScanner_avg_time": {
+              "metric": "rpc.rpc.openScanner_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/RpcSlowResponse_num_ops": {
+              "metric": "rpc.rpc.RpcSlowResponse_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/deleteTable_avg_time": {
+              "metric": "rpc.rpc.deleteTable_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/hbase/master/splitSize_avg_time": {
+              "metric": "master.FileSystem.HlogSplitSize_mean",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/delete_avg_time": {
+              "metric": "rpc.rpc.delete_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_speed": {
+              "metric": "cpu_speed",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getClosestRowBefore_avg_time": {
+              "metric": "rpc.rpc.getClosestRowBefore_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/hbase/master/cluster_requests": {
+              "metric": "master.Server.clusterRequests",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/stopMaster/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.stopMaster.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/stopMaster/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.stopMaster.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/RpcProcessingTime_avg_time": {
+              "metric": "rpc.rpc.RpcProcessingTime_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/put_num_ops": {
+              "metric": "rpc.rpc.put_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthenticationFailures": {
+              "metric": "rpc.rpc.rpcAuthenticationFailures",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/move_avg_time": {
+              "metric": "rpc.rpc.move_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getClusterStatus_avg_time": {
+              "metric": "rpc.rpc.getClusterStatus_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/regionServerStartup/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.regionServerStartup.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getHTableDescriptors/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.getHTableDescriptors.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/modifyTable_avg_time": {
+              "metric": "rpc.rpc.modifyTable_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/checkAndPut_avg_time": {
+              "metric": "rpc.rpc.checkAndPut_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/put_avg_time": {
+              "metric": "rpc.rpc.put_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getHTableDescriptors/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.getHTableDescriptors.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/SentBytes": {
+              "metric": "rpc.rpc.SentBytes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/createTable_avg_time": {
+              "metric": "rpc.rpc.createTable_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/addColumn_num_ops": {
+              "metric": "rpc.rpc.addColumn_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getAlterStatus_avg_time": {
+              "metric": "rpc.rpc.getAlterStatus_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getHTableDescriptors_num_ops": {
+              "metric": "rpc.rpc.getHTableDescriptors_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getAlterStatus/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.getAlterStatus.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getRegionInfo_num_ops": {
+              "metric": "rpc.rpc.getRegionInfo_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/maxMemoryM": {
+              "metric": "jvm.metrics.maxMemoryM",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/logWarn": {
+              "metric": "jvm.JvmMetrics.LogWarn",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/compactRegion_num_ops": {
+              "metric": "rpc.rpc.compactRegion_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/balanceSwitch/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.balanceSwitch.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/threadsTimedWaiting": {
+              "metric": "jvm.JvmMetrics.ThreadsTimedWaiting",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/gcCount": {
+              "metric": "jvm.JvmMetrics.GcCount",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/deleteTable/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.deleteTable.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getOnlineRegions_num_ops": {
+              "metric": "rpc.rpc.getOnlineRegions_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/memHeapUsedM": {
+              "metric": "jvm.JvmMetrics.MemHeapUsedM",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getProtocolVersion_num_ops": {
+              "metric": "rpc.rpc.getProtocolVersion_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/unlockRow_num_ops": {
+              "metric": "rpc.rpc.unlockRow_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/disk/disk_free": {
+              "metric": "disk_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/threadsWaiting": {
+              "metric": "jvm.JvmMetrics.ThreadsWaiting",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_buffers": {
+              "metric": "mem_buffers",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/disableTable_num_ops": {
+              "metric": "rpc.rpc.disableTable_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/shutdown_avg_time": {
+              "metric": "rpc.rpc.shutdown_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/openScanner_num_ops": {
+              "metric": "rpc.rpc.openScanner_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/offline/aboveOneSec/_avg_time": {
+              "metric": "rpc.rpc.offline.aboveOneSec._avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/regionServerStartup_num_ops": {
+              "metric": "rpc.rpc.regionServerStartup_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_user": {
+              "metric": "cpu_user",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/swap_free": {
+              "metric": "swap_free",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_system": {
+              "metric": "cpu_system",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/regionServerReport_num_ops": {
+              "metric": "rpc.rpc.regionServerReport_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/openRegions_avg_time": {
+              "metric": "rpc.rpc.openRegions_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/isMasterRunning/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.isMasterRunning.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/next_num_ops": {
+              "metric": "rpc.rpc.next_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/createTable/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.createTable.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getBlockCacheColumnFamilySummaries_avg_time": {
+              "metric": "rpc.rpc.getBlockCacheColumnFamilySummaries_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/checkAndDelete_avg_time": {
+              "metric": "rpc.rpc.checkAndDelete_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/load/load_fifteen": {
+              "metric": "load_fifteen",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getHServerInfo_avg_time": {
+              "metric": "rpc.rpc.getHServerInfo_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/logInfo": {
+              "metric": "jvm.JvmMetrics.LogInfo",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/move/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.move.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/isMasterRunning_num_ops": {
+              "metric": "rpc.rpc.isMasterRunning_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/balanceSwitch_num_ops": {
+              "metric": "rpc.rpc.balanceSwitch_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/offline_num_ops": {
+              "metric": "rpc.rpc.offline_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/memory/mem_shared": {
+              "metric": "mem_shared",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getProtocolSignature_num_ops": {
+              "metric": "rpc.rpc.getProtocolSignature_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/getProtocolVersion/aboveOneSec/_num_ops": {
+              "metric": "rpc.rpc.getProtocolVersion.aboveOneSec._num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/cpu/cpu_num": {
+              "metric": "cpu_num",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/rollHLogWriter_num_ops": {
+              "metric": "rpc.rpc.rollHLogWriter_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/rpcAuthorizationSuccesses": {
+              "metric": "rpc.rpc.rpcAuthorizationSuccesses",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/rpc/openRegions_num_ops": {
+              "metric": "rpc.rpc.openRegions_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/logFatal": {
+              "metric": "jvm.JvmMetrics.LogFatal",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/splitRegion_avg_time": {
+              "metric": "rpc.rpc.splitRegion_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/checkAndPut_num_ops": {
+              "metric": "rpc.rpc.checkAndPut_num_ops",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/rpc/increment_avg_time": {
+              "metric": "rpc.rpc.increment_avg_time",
+              "pointInTime": true,
+              "temporal": true
+            }
+          }
+        }
+      },
+      {
+        "type": "jmx",
+        "metrics": {
+          "default": {
+            "metrics/rpc/regionServerReport.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerReport.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memMaxM": {
+              "metric": "Hadoop:service=HBase,name=JvmMetrics.MemMaxM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/reportRSFatalError.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.reportRSFatalError.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/closeRegionMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.closeRegionMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/isMasterRunningAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.isMasterRunningAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTimeAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcQueueTimeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteTableNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteTableNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/splitRegionAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.splitRegionAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHTableDescriptorsMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHTableDescriptorsMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClusterStatus.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClusterStatus.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/splitRegionNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.splitRegionNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolVersionAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolVersionAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyColumnMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyColumnMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getBlockCacheColumnFamilySummariesMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getBlockCacheColumnFamilySummariesMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClosestRowBeforeMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClosestRowBeforeMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolSignatureNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolSignatureNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcSlowResponseMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcSlowResponseMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/AverageLoad": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.averageLoad",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openScannerNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openScannerNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteTable.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteTable.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteColumn.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteColumn.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getCompactionStateMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getCompactionStateMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMaster.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMaster.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerReport.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerReport.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHServerInfoAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHServerInfoAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyColumn.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyColumn.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rollHLogWriterMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.rollHLogWriterMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/offlineMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.offlineMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolSignatureMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolSignatureMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/ServerName": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.tag.serverName",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHServerInfoMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHServerInfoMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitSizeMaxTime": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.HlogSplitSize_max",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/execCoprocessorAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.execCoprocessorAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTimeMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcProcessingTimeMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClusterStatusMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClusterStatusMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/offline.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.offline.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/ZookeeperQuorum": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.tag.zookeeperQuorum",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/hdfsDate": {
+              "metric": "hadoop:service=HBase,name=Info.hdfsDate",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/createTable.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.createTable.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/offlineMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.offlineMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/offline.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.offline.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClosestRowBeforeNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClosestRowBeforeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyColumnNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyColumnNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getLastFlushTimeNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getLastFlushTimeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMaster.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMaster.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteTable.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteTable.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/hdfsUrl": {
+              "metric": "hadoop:service=HBase,name=Info.hdfsUrl",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/NonHeapMemoryMax": {
+              "metric": "java.lang:type=Memory.NonHeapMemoryUsage[max]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/multiMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.multiMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/revision": {
+              "metric": "hadoop:service=HBase,name=Info.revision",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyColumnMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyColumnMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/addColumnMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.addColumnMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHTableDescriptorsNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHTableDescriptorsNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTimeMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcQueueTimeMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/multiNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.multiNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolVersion.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolVersion.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/offline.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.offline.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteTable.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteTable.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/enableTableMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.enableTableMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerReportMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerReportMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/reportRSFatalErrorNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.reportRSFatalErrorNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/addColumn.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.addColumn.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unassign.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unassign.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/reportRSFatalErrorMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.reportRSFatalErrorMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/disableTable.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.disableTable.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/existsAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.existsAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/MasterActiveTime": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.masterActiveTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getBlockCacheColumnFamilySummariesNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getBlockCacheColumnFamilySummariesNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/createTable.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.createTable.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthorizationFailures": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.rpcAuthorizationFailures",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/hdfsUser": {
+              "metric": "hadoop:service=HBase,name=Info.hdfsUser",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerStartupAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerStartupAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerStartupNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerStartupNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteColumnNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteColumnNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/version": {
+              "metric": "hadoop:service=HBase,name=Info.version",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitTimeMaxTime": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.HlogSplitTime_max",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/synchronousBalanceSwitchNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.synchronousBalanceSwitchNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMasterNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMasterNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitTimeNumOps": {
+              "metric": "hadoop:service=Master,name=MasterStatistics.splitTimeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/reportRSFatalErrorAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.reportRSFatalErrorAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/replicateLogEntriesNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.replicateLogEntriesNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/multiMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.multiMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteColumnMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteColumnMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolSignature.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolSignature.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getLastFlushTimeMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getLastFlushTimeMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/disableTable.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.disableTable.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/NumOpenConnections": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.NumOpenConnections",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTimeNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcQueueTimeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerReportMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerReportMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/IsActiveMaster": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.tag.isActiveMaster",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/bulkLoadHFilesMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.bulkLoadHFilesMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/synchronousBalanceSwitch.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.synchronousBalanceSwitch.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/MasterStartTime": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.masterStartTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceSwitchMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceSwitchMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unlockRowMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unlockRowMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/incrementNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.incrementNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/reportRSFatalError.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.reportRSFatalError.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceSwitch.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceSwitch.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/execCoprocessorMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.execCoprocessorMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/enableTable.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.enableTable.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/putMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.putMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/flushRegionMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.flushRegionMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/nextNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.nextNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getOnlineRegionsAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getOnlineRegionsAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/createTableAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.createTableAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyTable.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyTable.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAlterStatusAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAlterStatusAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/assign.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.assign.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerStartup.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerStartup.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceSwitch.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceSwitch.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/isMasterRunningMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.isMasterRunningMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/existsNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.existsNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/compactRegionMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.compactRegionMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/bulkLoadHFilesMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.bulkLoadHFilesMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rollHLogWriterNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.rollHLogWriterNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unlockRowAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unlockRowAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openRegionsNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openRegionsNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/checkAndDeleteMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.checkAndDeleteMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMaster.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMaster.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/splitRegionMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.splitRegionMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHTableDescriptorsMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHTableDescriptorsMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteColumn.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteColumn.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/moveMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.moveMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/shutdown.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.shutdown.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/appendNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.appendNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/appendAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.appendAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClusterStatusNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClusterStatusNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcSlowResponseNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcSlowResponseNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitSize_num_ops": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.HlogSplitSize_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getLastFlushTimeMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getLastFlushTimeMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/checkAndPutNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.checkAndPutNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitTime_avg_time": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.HlogSplitTime_mean",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/createTableMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.createTableMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/incrementMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.incrementMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAlterStatus.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAlterStatus.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getCompactionStateMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getCompactionStateMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitTimeAvgTime": {
+              "metric": "hadoop:service=Master,name=MasterStatistics.splitTimeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getStoreFileListMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getStoreFileListMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolSignature.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolSignature.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTimeAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcProcessingTimeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/incrementColumnValueNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.incrementColumnValueNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/enableTable.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.enableTable.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/multiAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.multiAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/createTable.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.createTable.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/shutdownAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.shutdownAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openRegionMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openRegionMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getBlockCacheColumnFamilySummariesMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getBlockCacheColumnFamilySummariesMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteColumn.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteColumn.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyColumn.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyColumn.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/disableTableNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.disableTableNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolVersion.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolVersion.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/replicateLogEntriesAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.replicateLogEntriesAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/cluster_requests": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.clusterRequests",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHServerInfoMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHServerInfoMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClusterStatusMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClusterStatusMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthenticationFailures": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.rpcAuthenticationFailures",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/Coprocessors": {
+              "metric": "hadoop:service=Master,name=Master.Coprocessors",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unlockRowNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unlockRowNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAlterStatus.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAlterStatus.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerStartup.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerStartup.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyColumn.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyColumn.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/incrementColumnValueMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.incrementColumnValueMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolVersionMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolVersionMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/RegionsInTransition": {
+              "metric": "hadoop:service=Master,name=Master.RegionsInTransition",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceSwitchAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceSwitchAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAlterStatusMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAlterStatusMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unassignMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unassignMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/nextAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.nextAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rollHLogWriterMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.rollHLogWriterMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAlterStatus.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAlterStatus.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/hdfsVersion": {
+              "metric": "hadoop:service=HBase,name=Info.hdfsVersion",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unassignMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unassignMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcSlowResponseAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcSlowResponseAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/assignNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.assignNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getLastFlushTimeAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getLastFlushTimeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClusterStatusAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClusterStatusAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/mutateRowNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.mutateRowNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClosestRowBeforeMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClosestRowBeforeMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerReport.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerReport.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClusterStatus.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClusterStatus.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceSwitchNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceSwitchNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/RegionServers": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.numRegionServers",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/bulkLoadHFilesAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.bulkLoadHFilesAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/compactRegionAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.compactRegionAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/disableTableMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.disableTableMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/closeMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.closeMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/enableTableNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.enableTableNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openScannerMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openScannerMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/moveMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.moveMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/checkAndPutMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.checkAndPutMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteTableAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteTableAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/assign.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.assign.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/ClusterId": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.tag.clusterId",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolVersionMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolVersionMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerStartupMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerStartupMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcQueueTimeMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcQueueTimeMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/createTableNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.createTableNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTimeMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcProcessingTimeMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAlterStatus.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAlterStatus.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitSizeNumOps": {
+              "metric": "hadoop:service=Master,name=MasterStatistics.splitSizeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/addColumnNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.addColumnNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unassignNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unassignNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balance.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balance.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/closeRegionNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.closeRegionNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolSignature.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolSignature.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/synchronousBalanceSwitchAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.synchronousBalanceSwitchAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/appendMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.appendMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unlockRowMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unlockRowMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getStoreFileListMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getStoreFileListMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/moveAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.moveAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/mutateRowMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.mutateRowMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHTableDescriptors.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHTableDescriptors.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getCompactionStateAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getCompactionStateAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/closeRegionMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.closeRegionMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/reportRSFatalError.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.reportRSFatalError.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/HeapMemoryMax": {
+              "metric": "java.lang:type=Memory.HeapMemoryUsage[max]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcSlowResponseMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcSlowResponseMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceSwitchMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceSwitchMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/HeapMemoryUsed": {
+              "metric": "java.lang:type=Memory.HeapMemoryUsage[used]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/lockRowMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.lockRowMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openScannerMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openScannerMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getStoreFileListAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getStoreFileListAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openRegionsAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openRegionsAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/disableTableMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.disableTableMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getOnlineRegionsNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getOnlineRegionsNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteColumnAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteColumnAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/replicationCallQueueLen": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.replicationCallQueueLen",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/putMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.putMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyTableMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyTableMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/reportRSFatalErrorMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.reportRSFatalErrorMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/flushRegionAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.flushRegionAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteColumn.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteColumn.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/offline.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.offline.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitTimeMinTime": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.HlogSplitTime_min",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/createTable.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.createTable.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/lockRowAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.lockRowAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/lockRowMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.lockRowMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/synchronousBalanceSwitch.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.synchronousBalanceSwitch.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClusterStatus.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClusterStatus.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/addColumn.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.addColumn.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/isMasterRunningNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.isMasterRunningNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/closeAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.closeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/addColumn.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.addColumn.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/closeMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.closeMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/replicateLogEntriesMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.replicateLogEntriesMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openRegionsMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openRegionsMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balance.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balance.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/replicateLogEntriesMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.replicateLogEntriesMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/execCoprocessorMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.execCoprocessorMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitTime_num_ops": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.HlogSplitTime_num_ops",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyTableAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyTableAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/assignMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.assignMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/isMasterRunning.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.isMasterRunning.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerReport.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerReport.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthenticationSuccesses": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.rpcAuthenticationSuccesses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/enableTable.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.enableTable.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/execCoprocessorNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.execCoprocessorNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/NonHeapMemoryUsed": {
+              "metric": "java.lang:type=Memory.NonHeapMemoryUsage[used]",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/move.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.move.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/shutdownMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.shutdownMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/assign.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.assign.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerReportNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerReportNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/addColumnAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.addColumnAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/isMasterRunning.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.isMasterRunning.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolVersion.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolVersion.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyTable.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyTable.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rollHLogWriterAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.rollHLogWriterAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getRegionInfoNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getRegionInfoNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/ReceivedBytes": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.ReceivedBytes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/move.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.move.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolSignatureAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolSignatureAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyTableMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyTableMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/incrementColumnValueAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.incrementColumnValueAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyTableNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyTableNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/disableTable.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.disableTable.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClusterStatus.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClusterStatus.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyColumnAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyColumnAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/reportRSFatalError.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.reportRSFatalError.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/DeadRegionServers": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.numDeadRegionServers",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/closeNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.closeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unassign.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unassign.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balance.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balance.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/nextMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.nextMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/appendMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.appendMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/priorityCallQueueLen": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.priorityCallQueueLen",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAlterStatusMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAlterStatusMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/bulkLoadHFilesNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.bulkLoadHFilesNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/callQueueLen": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.callQueueLen",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/synchronousBalanceSwitchMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.synchronousBalanceSwitchMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/flushRegionNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.flushRegionNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerStartup.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerStartup.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unassignAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unassignAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolVersionNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolVersionNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/shutdown.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.shutdown.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/checkAndPutMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.checkAndPutMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/assignAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.assignAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/checkAndDeleteMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.checkAndDeleteMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/shutdownNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.shutdownNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getAlterStatusNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getAlterStatusNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/disableTable.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.disableTable.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openRegionNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openRegionNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyColumn.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyColumn.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/synchronousBalanceSwitch.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.synchronousBalanceSwitch.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getCompactionStateNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getCompactionStateNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHTableDescriptorsAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHTableDescriptorsAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openRegionAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openRegionAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMaster.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMaster.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getRegionInfoMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getRegionInfoMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/putNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.putNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/hdfsRevision": {
+              "metric": "hadoop:service=HBase,name=Info.hdfsRevision",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/url": {
+              "metric": "hadoop:service=HBase,name=Info.url",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolSignature.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolSignature.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openRegionsMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openRegionsMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/compactRegionNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.compactRegionNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/nextMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.nextMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getOnlineRegionsMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getOnlineRegionsMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/checkAndDeleteNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.checkAndDeleteNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/isMasterRunning.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.isMasterRunning.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteTable.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteTable.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unassign.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unassign.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getRegionInfoAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getRegionInfoAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balance.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balance.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHServerInfoNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHServerInfoNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/shutdown.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.shutdown.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteColumnMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteColumnMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getStoreFileListNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getStoreFileListNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteTableMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteTableMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/addColumn.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.addColumn.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/synchronousBalanceSwitchMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.synchronousBalanceSwitchMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/isMasterRunningMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.isMasterRunningMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/closeRegionAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.closeRegionAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/disableTableAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.disableTableAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/assign.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.assign.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/offlineAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.offlineAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/moveNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.moveNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/incrementColumnValueMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.incrementColumnValueMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitSize_avg_time": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.HlogSplitSize_mean",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/load/AverageLoad": {
+              "metric": "hadoop:service=Master,name=Master.AverageLoad",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/checkAndDeleteAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.checkAndDeleteAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/mutateRowAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.mutateRowAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/existsMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.existsMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceSwitch.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceSwitch.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyTable.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyTable.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/synchronousBalanceSwitch.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.synchronousBalanceSwitch.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/date": {
+              "metric": "hadoop:service=HBase,name=Info.date",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/incrementAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.incrementAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/flushRegionMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.flushRegionMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getOnlineRegionsMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getOnlineRegionsMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/user": {
+              "metric": "java.lang:type=Runtime.SystemProperties.user.name",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHTableDescriptors.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHTableDescriptors.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getClosestRowBeforeAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getClosestRowBeforeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/offlineNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.offlineNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/SentBytes": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.SentBytes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/incrementMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.incrementMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/deleteTableMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.deleteTableMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/checkAndPutAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.checkAndPutAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openScannerAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openScannerAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMasterAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMasterAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/assignMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.assignMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/compactRegionMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.compactRegionMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/openRegionMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.openRegionMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/addColumnMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.addColumnMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/RpcProcessingTimeNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.RpcProcessingTimeNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/existsMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.existsMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/enableTableMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.enableTableMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitSizeMinTime": {
+              "metric": "Hadoop:service=HBase,name=Master,sub=Server.HlogSplitSize_min",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/shutdown.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.shutdown.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/enableTableAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.enableTableAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerStartup.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerStartup.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/lockRowNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.lockRowNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolVersion.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolVersion.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMasterMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMasterMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/balanceSwitch.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.balanceSwitch.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/move.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.move.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getProtocolSignatureMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getProtocolSignatureMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/modifyTable.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.modifyTable.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/splitRegionMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.splitRegionMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/mutateRowMinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.mutateRowMinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/hbase/master/splitSizeAvgTime": {
+              "metric": "hadoop:service=Master,name=MasterStatistics.splitSizeAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerReportAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerReportAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/putAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.putAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getNumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getNumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/shutdownMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.shutdownMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getBlockCacheColumnFamilySummariesAvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getBlockCacheColumnFamilySummariesAvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHTableDescriptors.aboveOneSec.MaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHTableDescriptors.aboveOneSec.MaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/regionServerStartupMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.regionServerStartupMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/createTableMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.createTableMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getHTableDescriptors.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getHTableDescriptors.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/rpcAuthorizationSuccesses": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.rpcAuthorizationSuccesses",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/isMasterRunning.aboveOneSec.NumOps": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.isMasterRunning.aboveOneSec.NumOps",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/enableTable.aboveOneSec.AvgTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.enableTable.aboveOneSec.AvgTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/getRegionInfoMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.getRegionInfoMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/unassign.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.unassign.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/stopMasterMaxTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.stopMasterMaxTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/rpc/move.aboveOneSec.MinTime": {
+              "metric": "hadoop:service=HBase,name=RPCStatistics.move.aboveOneSec.MinTime",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      }
+    ]
+  },
+  "HBASE_REGIONSERVER": {
+    "Component": [
+      {
+        "type": "ganglia",
+        "metrics": {
+          "default": {
+            "metrics/rpc/NumOpenConnections": {
+              "metric": "rpc.rpc.NumOpenConnections",
+              "pointInTime": true,
+              "temporal": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

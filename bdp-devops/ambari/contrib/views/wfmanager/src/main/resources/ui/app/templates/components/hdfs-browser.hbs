@@ -1,0 +1,85 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="modal fade" id="filediv" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+          <div >
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">File Browser</h4>
+          </div>
+      </div>
+      <div class="panel-default panel-files">
+        {{#unless hideUpload}}
+          <div class="panel-heading">
+            <div class="row">
+               <div class="col-xs-12">
+                  <div class="pull-right">
+                    <!-- <span class="">
+                        <button type="button" class="btn btn-default" {{action "createFolder"}} disabled={{isFilePathInvalid}}>Create Folder</button>
+                    </span> -->
+                    {{#unless uploadSelected}}
+                      <span>
+                        <button type="button" class="btn btn-default" {{action "uploadSelect"}} disabled={{isFilePathInvalid}}>Upload File</button>
+                      </span>
+                    {{/unless}}
+                    {{#if uploadSelected}}
+                    <span class="">
+                        <span class="file-upload-control">
+                          {{file-upload url="/upload" selectedPath=selectedPath uploadFailure="uploadFailure" uploadSuccess="uploadSuccess" uploadValidation="uploadValidation"}}
+                        </span>
+                        <button type="button" class="close-icon" {{action "closeUpload"}}>x</button>
+                    </span>
+                    {{/if}}
+                  </div>
+                </div>
+            </div>
+          </div>
+        {{/unless}}
+        <div class="panel-body">
+          <div>
+          <div class="directory-viewer-wrap hdfs-browse">
+            {{#directory-viewer
+              config=config
+              errorAction="viewerError"
+              pathSelectAction="viewerSelectedPath"
+              uploaderService=uploaderService
+              width=850
+              homeDirectory = homeDirectory
+            }}{{/directory-viewer}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+              <div class="col-xs-2">
+                <label class="control-label">Selected Path</label>
+              </div>
+              <div class="col-xs-6">
+                {{input name="selectedPath" class="form-control" type="text" value=selectedPath}}
+              </div>
+              <div class="col-xs-4">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" {{action "selectFile"}}>Select</button>
+              </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

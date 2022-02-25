@@ -1,0 +1,165 @@
+<!--
+     Licensed to the Apache Software Foundation (ASF) under one or more
+     contributor license agreements.  See the NOTICE file distributed with
+     this work for additional information regarding copyright ownership.
+     The ASF licenses this file to You under the Apache License, Version 2.0
+     (the "License"); you may not use this file except in compliance with
+     the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+  -->
+<view>
+  <name>WORKFLOW_MANAGER</name>
+  <label>Workflow Manager</label>
+  <version>1.0.0</version>
+  <build>${env.BUILD_NUMBER}</build>
+  <min-ambari-version>2.0.*</min-ambari-version>
+  <resource>
+    <name>proxy</name>
+    <service-class>org.apache.oozie.ambari.view.OozieProxyImpersonator</service-class>
+  </resource>
+
+  <parameter>
+    <name>oozie.service.uri</name>
+    <description>Oozie service URI for the Oozie API.</description>
+    <label>Oozie Service URI</label>
+    <placeholder>http://sandbox.hortonworks.com:11000/oozie</placeholder>
+    <cluster-config>oozie-site/oozie.base.url</cluster-config>
+  </parameter>
+
+
+  <parameter>
+    <name>webhdfs.url</name>
+    <description>Enter the WebHDFS FileSystem URI. Typically this is the dfs.namenode.http-address
+      property in the hdfs-site.xml configuration. URL must be accessible from Ambari Server.
+    </description>
+    <label>WebHDFS FileSystem URI</label>
+    <required>true</required>
+    <cluster-config>core-site/fs.defaultFS</cluster-config>
+  </parameter>
+  <parameter>
+    <name>webhdfs.nameservices</name>
+    <description>Comma-separated list of nameservices. Value of hdfs-site/dfs.nameservices property</description>
+    <label>Logical name of the NameNode cluster</label>
+    <required>false</required>
+    <cluster-config>hdfs-site/dfs.nameservices</cluster-config>
+  </parameter>
+  <parameter>
+    <name>webhdfs.ha.namenodes.list</name>
+    <description>Comma-separated list of namenodes for a given nameservice.
+      Value of hdfs-site/dfs.ha.namenodes.[nameservice] property
+    </description>
+    <label>List of NameNodes</label>
+    <required>false</required>
+    <cluster-config>fake</cluster-config>
+  </parameter>
+  <parameter>
+    <name>webhdfs.ha.namenode.rpc-address.list</name>
+    <description>Comma separated RPC address for name nodes.</description>
+    <label>Comma separated NameNode RPC Addresses</label>
+    <required>false</required>
+    <cluster-config>fake</cluster-config>
+  </parameter>
+  <parameter>
+    <name>webhdfs.ha.namenode.http-address.list</name>
+    <description>Comma separated WebHDFS address for name nodes.</description>
+    <label>Comma separated NameNode HTTP (WebHDFS) Addresses</label>
+    <required>false</required>
+    <cluster-config>fake</cluster-config>
+  </parameter>
+  <parameter>
+    <name>webhdfs.ha.namenode.https-address.list</name>
+    <description>Comma separated WebHDFS Https addresses for name nodes.</description>
+    <label>Comma separated NameNode HTTPS (WebHDFS) Addresses</label>
+    <required>false</required>
+    <cluster-config>fake</cluster-config>
+  </parameter>
+  <parameter>
+    <name>webhdfs.client.failover.proxy.provider</name>
+    <description>The Java class that HDFS clients use to contact the Active NameNode
+      Value of hdfs-site/dfs.client.failover.proxy.provider.[nameservice] property
+    </description>
+    <label>Failover Proxy Provider</label>
+    <required>false</required>
+    <cluster-config>fake</cluster-config>
+  </parameter>
+  <parameter>
+    <name>hdfs.auth_to_local</name>
+    <description>Auth to Local Configuration</description>
+    <label>Auth To Local</label>
+    <required>false</required>
+    <cluster-config>core-site/hadoop.security.auth_to_local</cluster-config>
+  </parameter>
+  <parameter>
+    <name>webhdfs.username</name>
+    <description>doAs for proxy user for HDFS. By default, uses the currently logged-in Ambari user.</description>
+    <label>WebHDFS Username</label>
+    <default-value>${username}</default-value>
+    <required>false</required>
+  </parameter>
+  <parameter>
+    <name>webhdfs.auth</name>
+    <description>Semicolon-separated authentication configs.</description>
+    <placeholder>auth=SIMPLE</placeholder>
+    <label>WebHDFS Authorization</label>
+    <required>false</required>
+  </parameter>
+  <parameter>
+    <name>hadoop.security.authentication</name>
+    <description>Security Authentication (simple/kerberos).</description>
+    <label>Security Authentication Type</label>
+    <placeholder>simple</placeholder>
+    <cluster-config>core-site/hadoop.security.authentication</cluster-config>
+    <default-value>simple</default-value>
+    <required>true</required>
+  </parameter>
+  <parameter>
+    <name>yarn.resourcemanager.address</name>
+    <description>yarn.resourcemanager.address</description>
+    <label>yarn.resourcemanager.address</label>
+    <placeholder>http://sandbox.hortonworks.com:8050</placeholder>
+    <cluster-config>yarn-site/yarn.resourcemanager.address</cluster-config>
+    <required>true</required>
+  </parameter>
+
+  <parameter>
+    <name>view.conf.keyvalues</name>
+    <description>The key values that will be copied to hdfs connection configuration verbatim. Format : key1=value1;
+      key2=value2
+    </description>
+    <label>View Configs</label>
+    <required>false</required>
+  </parameter>
+
+  <persistence>
+    <entity>
+      <class>org.apache.oozie.ambari.view.workflowmanager.model.Workflow</class>
+      <id-property>id</id-property>
+    </entity>
+    <entity>
+      <class>org.apache.oozie.ambari.view.assets.model.ActionAssetDefinition</class>
+      <id-property>id</id-property>
+    </entity>
+    <entity>
+      <class>org.apache.oozie.ambari.view.assets.model.ActionAsset</class>
+      <id-property>id</id-property>
+    </entity>
+
+  </persistence>
+
+  <!--<auto-instance>
+    <name>AUTO_OOZIE_VIEW</name>
+    <label>Oozie UI View</label>
+    <description>This auto-created Oozie View Instance allows accessing and managing Oozie jobs as well as interactively design new Workflows.</description>
+    <stack-id>HDP-2.*</stack-id>
+    <services>
+      <service>OOZIE</service>
+    </services>
+  </auto-instance>-->
+</view>

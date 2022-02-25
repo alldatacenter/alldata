@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="upgrade-pack.xsd">
+  <target>2.2.*.*</target>
+  <target-stack>HDP-2.2.0</target-stack>
+  <type>NON_ROLLING</type>
+  <prerequisite-checks/>
+
+  <order>
+    <group xsi:type="stop" name="STOP_HIVE" title="Stop Hive Server">
+      <service-check>false</service-check>
+      <skippable>true</skippable>
+      <service name="HIVE">
+        <component>HIVE_SERVER</component>
+      </service>
+    </group>    
+
+    <group xsi:type="cluster" name="TEST_ADD_COMPONENT" title="Add New Hive Servers Where There Are DataNodes">
+      <direction>UPGRADE</direction>
+      <skippable>true</skippable>
+      <execute-stage service="HIVE" title="Hive Server">
+        <task xsi:type="add_component" service="HIVE" component="HIVE_SERVER" host-service="HDFS" host-component="DATANODE" hosts="all">
+          <summary>Add New Hive Servers Where There Are DataNodes</summary>
+        </task>
+      </execute-stage>
+    </group>
+    
+    <group xsi:type="restart" name="RESTART_HIVE" title="Restart Hive Server">
+      <service-check>false</service-check>
+      <skippable>true</skippable>
+      <service name="HIVE">
+        <component>HIVE_SERVER</component>
+      </service>
+    </group>    
+  </order>
+  
+  <processing>
+    <service name="HIVE">
+      <component name="HIVE_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task"/>
+        </upgrade>
+      </component>
+    </service>
+  </processing>
+</upgrade>

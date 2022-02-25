@@ -1,0 +1,275 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Dashboard.HistoryServerSummary"
+                     Accessibility="Public" Lifetime="ReferenceCount" />
+
+      <ComponentType ID="Ambari.SCOM.Presentation.Widget.HistoryServerMemoryHeapUtilization"
+                     Base="Ambari.SCOM.Presentation.Widget.ComponentMemoryHeapUtilization"
+                     Accessibility="Internal" />
+      <ComponentType ID="Ambari.SCOM.Presentation.Widget.HistoryServerThreadsStatus"
+                     Base="Ambari.SCOM.Presentation.Widget.ComponentThreadsStatus"
+                     Accessibility="Internal" />
+      <ComponentType ID="Ambari.SCOM.Presentation.Widget.HistoryServerGcTime"
+                     Base="Ambari.SCOM.Presentation.Widget.ComponentGcTime"
+                     Accessibility="Internal" />
+      <ComponentType ID="Ambari.SCOM.Presentation.Widget.HistoryServerAverageRpcWaitTime"
+                     Base="Ambari.SCOM.Presentation.Widget.ComponentAverageRpcWaitTime"
+                     Accessibility="Internal" />
+    </ComponentTypes>
+
+    <ComponentReferences>
+      <ComponentReference ID="Ambari.SCOM.Presentation.FolderItem.HistoryServerSummaryDashboard"
+                          TypeID="Ambari.SCOM.Presentation.Dashboard.HistoryServerSummary"
+                          Parent="Ambari.SCOM.Presentation.ViewFolder.MapReduce2"
+                          Accessibility="Public" />
+    </ComponentReferences>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Widget.HistoryServerMemoryHeapUtilizationImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Widget.HistoryServerMemoryHeapUtilization"
+                               Accessibility="Internal" Platform="Wpf, Silverlight">
+        <Composite>
+          <Base />
+        </Composite>
+      </ComponentImplementation>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Widget.HistoryServerThreadsStatusImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Widget.HistoryServerThreadsStatus"
+                               Accessibility="Internal" Platform="Wpf, Silverlight">
+        <Composite>
+          <Base />
+        </Composite>
+      </ComponentImplementation>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Widget.HistoryServerGcTimeImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Widget.HistoryServerGcTime"
+                               Accessibility="Internal" Platform="Wpf, Silverlight">
+        <Composite>
+          <Base />
+        </Composite>
+      </ComponentImplementation>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Widget.HistoryServerAverageRpcWaitTimeImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Widget.HistoryServerAverageRpcWaitTime"
+                               Accessibility="Internal" Platform="Wpf, Silverlight">
+        <Composite>
+          <Base />
+        </Composite>
+      </ComponentImplementation>
+
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Dashboard.HistoryServerSummaryImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Dashboard.HistoryServerSummary"
+                               Accessibility="Internal" Platform="Wpf, Silverlight">
+        <Composite>
+          <Variable Id="SelectedHistoryServers" Type="mpinstance://System.Library!System.Entity[]" />
+
+          <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.ComponentContainer">
+            <Binding PropertyId="Visual">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.StaticGridLayout">
+                <Binding PropertyId="ConfigType">
+                  <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!GridLayout05CellWideTopConfig" />
+                </Binding>
+                <Binding PropertyId="CellRegionMappings">
+                  <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping[]">
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="0" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.HistoryServersState" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="HistoryServersState" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="SelectedEntities" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedHistoryServers$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="1" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.HistoryServerMemoryHeapUtilization" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="NameNodeMemoryHeapUtilization" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="TargetEntities" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedHistoryServers$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="PerformanceCounterInstanceName" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <SimpleValue Type="xsd://string" Value="% : HistoryServer" />
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="2" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.HistoryServerThreadsStatus" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="NameNodeThreadsStatus" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="TargetEntities" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedHistoryServers$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="PerformanceCounterInstanceName" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <SimpleValue Type="xsd://string" Value="% : HistoryServer" />
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="3" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.HistoryServerGcTime" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="NameNodeGcTime" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="TargetEntities" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedHistoryServers$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="PerformanceCounterInstanceName" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <SimpleValue Type="xsd://string" Value="% : HistoryServer" />
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="4" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.HistoryServerAverageRpcWaitTime" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="NameNodeAverageRpcWaitTime" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="TargetEntities" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedHistoryServers$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="PerformanceCounterInstanceName" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <SimpleValue Type="xsd://string" Value="% : HistoryServer" />
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+                  </ComplexValueCollection>
+                </Binding>
+              </Component>
+            </Binding>
+          </Component>
+        </Composite>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Dashboard.HistoryServerSummary">
+          <Name>HistoryServer Summary</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.FolderItem.HistoryServerSummaryDashboard">
+          <Name>HistoryServer Summary</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Widget.HistoryServerThreadsStatus">
+          <Name>Threads Status</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Widget.HistoryServerMemoryHeapUtilization">
+          <Name>Memory Heap Utilization</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Widget.HistoryServerGcTime">
+          <Name>Garbage Collection Time (ms)</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Widget.HistoryServerAverageRpcWaitTime">
+          <Name>Average RPC Wait Time</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

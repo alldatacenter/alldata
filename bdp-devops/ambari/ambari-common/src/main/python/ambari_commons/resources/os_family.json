@@ -1,0 +1,92 @@
+{
+  "mapping": {
+      "redhat": {
+        "distro": [
+          "redhat",
+          "fedora",
+          "centos",
+          "oraclelinux",
+          "ascendos",
+          "xenserver",
+          "oel",
+          "ovs",
+          "cloudlinux",
+          "slc",
+          "scientific",
+          "psbm",
+          "centos linux"
+        ],
+        "versions": [
+          6,
+          7
+        ]
+      },
+      "redhat-ppc": {
+        "extends" : "redhat",
+        "distro": [
+          "redhat-ppc",
+          "centos-ppc"
+        ],
+        "versions": [
+          6,
+          7
+        ]
+      },
+      "amazonlinux": {
+        "extends" : "redhat",
+        "distro": [
+          "amazonlinux"
+        ],
+        "versions": [
+          2
+        ]
+      },
+      "debian": {
+        "extends" : "ubuntu",
+        "distro": [
+          "debian"
+        ],
+        "versions": [
+          7,
+          9
+        ]
+      },
+      "ubuntu": {
+        "distro": [
+          "ubuntu"
+        ],
+        "versions": [
+          12,
+          14,
+          16,
+          18
+        ]
+      },
+      "suse": {
+        "distro": [
+          "sles",
+          "sled",
+          "opensuse",
+          "suse"
+        ],
+        "versions": [
+          11,
+          12
+        ]
+      },
+      "winsrv": {
+        "distro": [
+          "win2008server",
+          "win2008serverr2",
+          "win2012server",
+          "win2012serverr2"
+        ],
+        "versions": [
+          6
+        ]
+      }
+    },
+    "aliases": {
+      "suse11sp3": "suse11"
+    }
+}

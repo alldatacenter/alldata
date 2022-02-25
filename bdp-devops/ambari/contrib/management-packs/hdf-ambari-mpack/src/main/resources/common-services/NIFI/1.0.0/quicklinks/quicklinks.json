@@ -1,0 +1,35 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol":
+    {
+      "type":"https",
+      "checks":[
+        {
+          "property":"nifi.node.ssl.isenabled",
+          "desired":"true",
+          "site":"nifi-ambari-ssl-config"
+        }
+      ]
+    },
+
+    "links": [
+      {
+        "name": "nifi_ui",
+        "label": "Nifi UI",
+        "requires_user_name": "false",
+        "component_name": "NIFI_MASTER",
+        "url":"%@://%@:%@/nifi",
+        "port":{
+          "http_property": "nifi.node.port",
+          "http_default_port": "9090",
+          "https_property": "nifi.node.ssl.port",
+          "https_default_port": "9091",
+          "regex": "^(\\d+)$",
+          "site": "nifi-ambari-config"
+        }
+      }
+    ]
+  }
+}

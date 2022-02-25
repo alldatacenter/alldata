@@ -1,0 +1,93 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <p class="alert alert-info">{{t services.service.config_groups_popup.notice serviceNameBinding="view.displayName"}}</p>
+  </div>
+</div>
+{{#if controller.isLoaded}}
+  <div class="row manage-configuration-group-content">
+    <div class="col-md-4 col-lg-4 group-list">
+      <span>&nbsp;</span>
+      {{view Em.Select
+        contentBinding="configGroups"
+        optionLabelPath="content.displayNameHosts"
+        selectionBinding="view.selectedConfigGroup"
+        multiple="multiple"
+        class="group-select form-control form-group"
+      }}
+      <div class="btn-toolbar pull-right">
+        <button rel="button-info" class="btn btn-default" {{bindAttr data-original-title="view.addButtonTooltip"}}
+          {{action addConfigGroup target="controller"}}><i class="glyphicon glyphicon-plus"></i></button>
+        <button rel="button-info" class="btn btn-default" {{bindAttr data-original-title="view.removeButtonTooltip" disabled="view.isRemoveButtonDisabled"}}
+          {{action confirmDelete target="controller"}}><i class="glyphicon glyphicon-minus"></i></button>
+        <div class="btn-group">
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-cog"></i>&nbsp;<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li {{bindAttr class="view.isRenameButtonDisabled:disabled"}}>
+              <a href="" rel="button-info-dropdown" {{bindAttr data-original-title="view.renameButtonTooltip"}} {{action renameConfigGroup target="controller"}}>{{t services.service.config_groups_popup.rename}}</a>
+            </li>
+            <li {{bindAttr class="view.isDuplicateButtonDisabled:disabled"}}>
+              <a href="" rel="button-info-dropdown" {{bindAttr data-original-title="view.duplicateButtonTooltip"}} {{action duplicateConfigGroup target="controller"}}>{{t services.service.config_groups_popup.duplicate}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-lg-8 host-list">
+      <span>&nbsp;</span>
+      {{view Em.Select
+        contentBinding="selectedConfigGroup.hosts"
+        multiple="multiple"
+        class="group-select form-control form-group"
+        selectionBinding="selectedHosts"
+      }}
+      <div class="clearfix">
+        <div class="pull-right btn-toolbar">
+          <a rel="button-info" {{bindAttr data-original-title="view.addHostTooltip" class=":btn :btn-default selectedConfigGroup.isAddHostsDisabled:disabled"}} {{action addHosts target="controller"}} ><i class="glyphicon glyphicon-plus"></i></a>
+          <a rel="button-info" {{bindAttr data-original-title="view.removeHostTooltip" class=":btn :btn-default isDeleteHostsDisabled:disabled"}} {{action deleteHosts target="controller"}} ><i class="glyphicon glyphicon-minus"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-lg-3 align-right">{{t common.overrides}}</div>
+        <div class="col-md-9 col-lg-9">
+          <a href="#" class="properties-link" {{action showProperties target="controller"}}
+            {{bindAttr data-original-title="tooltipText" }}>{{selectedConfigGroup.properties.length}} {{t common.properties}}</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-lg-3 align-right">{{t common.description}}</div>
+        <div class="col-md-9 col-lg-9 group-description">{{selectedConfigGroup.description}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-lg-12 text-danger" id="manage-config-group-error-div">
+      {{#if errorMessage}}
+        {{errorMessage}}
+      {{else}}
+        &nbsp;
+      {{/if}}
+    </div>
+  </div>
+{{else}}
+  {{view App.SpinnerView}}
+{{/if}}

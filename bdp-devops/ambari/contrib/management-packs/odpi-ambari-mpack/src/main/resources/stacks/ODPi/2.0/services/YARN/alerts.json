@@ -1,0 +1,418 @@
+{
+  "MAPREDUCE2": {
+    "service": [],
+    "HISTORYSERVER": [
+      {
+        "name": "mapreduce_history_server_webui",
+        "label": "History Server Web UI",
+        "description": "This host-level alert is triggered if the History Server Web UI is unreachable.",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "WEB",
+          "uri": {
+            "http": "{{mapred-site/mapreduce.jobhistory.webapp.address}}",
+            "https": "{{mapred-site/mapreduce.jobhistory.webapp.https.address}}",
+            "https_property": "{{mapred-site/mapreduce.jobhistory.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "kerberos_keytab": "{{mapred-site/mapreduce.jobhistory.webapp.spnego-keytab-file}}",
+            "kerberos_principal": "{{mapred-site/mapreduce.jobhistory.webapp.spnego-principal}}",
+            "connection_timeout": 5.0
+          },
+          "reporting": {
+            "ok": {
+              "text": "HTTP {0} response in {2:.3f}s"
+            },
+            "warning":{
+              "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+            },
+            "critical": {
+              "text": "Connection failed to {1} ({3})"
+            }
+          }
+        }
+      },
+      {
+        "name": "mapreduce_history_server_cpu",
+        "label": "History Server CPU Utilization",
+        "description": "This host-level alert is triggered if the percent of CPU utilization on the History Server exceeds the configured critical threshold. The threshold values are in percent.",
+        "interval": 5,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "METRIC",
+          "uri": {
+            "http": "{{mapred-site/mapreduce.jobhistory.webapp.address}}",
+            "kerberos_keytab": "{{mapred-site/mapreduce.jobhistory.webapp.spnego-keytab-file}}",
+            "kerberos_principal": "{{mapred-site/mapreduce.jobhistory.webapp.spnego-principal}}",
+            "https": "{{mapred-site/mapreduce.jobhistory.webapp.https.address}}",
+            "https_property": "{{mapred-site/mapreduce.jobhistory.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "connection_timeout": 5.0
+          },
+          "reporting": {
+            "ok": {
+              "text": "{1} CPU, load {0:.1%}"
+            },
+            "warning": {
+              "text": "{1} CPU, load {0:.1%}",
+              "value": 200
+            },
+            "critical": {
+              "text": "{1} CPU, load {0:.1%}",
+              "value": 250
+            },
+            "units" : "%",
+            "type": "PERCENT"
+          },
+          "jmx": {
+            "property_list": [
+              "java.lang:type=OperatingSystem/SystemCpuLoad",
+              "java.lang:type=OperatingSystem/AvailableProcessors"
+            ],
+            "value": "{0} * 100"
+          }
+        }
+      },
+      {
+        "name": "mapreduce_history_server_rpc_latency",
+        "label": "History Server RPC Latency",
+        "description": "This host-level alert is triggered if the History Server operations RPC latency exceeds the configured critical threshold. Typically an increase in the RPC processing time increases the RPC queue length, causing the average queue wait time to increase for operations. The threshold values are in milliseconds.",
+        "interval": 5,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "METRIC",
+          "uri": {
+            "http": "{{mapred-site/mapreduce.jobhistory.webapp.address}}",
+            "https": "{{mapred-site/mapreduce.jobhistory.webapp.https.address}}",
+            "kerberos_keytab": "{{mapred-site/mapreduce.jobhistory.webapp.spnego-keytab-file}}",
+            "kerberos_principal": "{{mapred-site/mapreduce.jobhistory.webapp.spnego-principal}}",
+            "https_property": "{{mapred-site/mapreduce.jobhistory.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "connection_timeout": 5.0
+          },
+          "reporting": {
+            "ok": {
+              "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]"
+            },
+            "warning": {
+              "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value": 3000
+            },          
+            "critical": {
+              "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value": 5000
+            },
+            "units" : "ms"
+          },
+          "jmx": {
+            "property_list": [
+              "Hadoop:service=JobHistoryServer,name=RpcActivityForPort*/RpcQueueTimeAvgTime",
+              "Hadoop:service=JobHistoryServer,name=RpcActivityForPort*/RpcProcessingTimeAvgTime"
+            ],
+            "value": "{0}"
+          }
+        }
+      },
+      {
+        "name": "mapreduce_history_server_process",
+        "label": "History Server Process",
+        "description": "This host-level alert is triggered if the History Server process cannot be established to be up and listening on the network.",
+        "interval": 1,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "PORT",
+          "uri": "{{mapred-site/mapreduce.jobhistory.webapp.address}}",
+          "default_port": 19888,
+          "reporting": {
+            "ok": {
+              "text": "TCP OK - {0:.3f}s response on port {1}"
+            },
+            "warning": {
+              "text": "TCP OK - {0:.3f}s response on port {1}",
+              "value": 1.5
+            },
+            "critical": {
+              "text": "Connection failed: {0} to {1}:{2}",
+              "value": 5.0
+            }
+          }
+        }
+      }
+    ]
+  },
+  "YARN": {
+    "service": [
+      {
+        "name": "yarn_nodemanager_webui_percent",
+        "label": "Percent NodeManagers Available",
+        "description": "This alert is triggered if the number of down NodeManagers in the cluster is greater than the configured critical threshold. It aggregates the results of NodeManager process checks.",
+        "interval": 1,
+        "scope": "SERVICE",
+        "enabled": true,
+        "source": {
+          "type": "AGGREGATE",
+          "alert_name": "yarn_nodemanager_webui",
+          "reporting": {
+            "ok": {
+              "text": "affected: [{1}], total: [{0}]"
+            },
+            "warning": {
+              "text": "affected: [{1}], total: [{0}]",
+              "value": 10
+            },
+            "critical": {
+              "text": "affected: [{1}], total: [{0}]",
+              "value": 30
+            },
+            "units" : "%",
+            "type": "PERCENT"
+          }
+        }
+      }
+    ],
+    "NODEMANAGER": [
+      {
+        "name": "yarn_nodemanager_webui",
+        "label": "NodeManager Web UI",
+        "description": "This host-level alert is triggered if the NodeManager Web UI is unreachable.",
+        "interval": 1,
+        "scope": "HOST",
+        "source": {
+          "type": "WEB",
+          "uri": {
+            "http": "{{yarn-site/yarn.nodemanager.webapp.address}}",
+            "https": "{{yarn-site/yarn.nodemanager.webapp.https.address}}",
+            "https_property": "{{yarn-site/yarn.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "default_port": 8042,
+            "kerberos_keytab": "{{yarn-site/yarn.nodemanager.webapp.spnego-keytab-file}}",
+            "kerberos_principal": "{{yarn-site/yarn.nodemanager.webapp.spnego-principal}}",
+            "connection_timeout": 5.0
+          },
+          "reporting": {
+            "ok": {
+              "text": "HTTP {0} response in {2:.3f}s"
+            },
+            "warning":{
+              "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+            },
+            "critical": {
+              "text": "Connection failed to {1} ({3})"
+            }
+          }
+        }
+      },
+      {
+        "name": "yarn_nodemanager_health",
+        "label": "NodeManager Health",
+        "description": "This host-level alert checks the node health property available from the NodeManager component.",
+        "interval": 1,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "YARN/2.1.0.2.0/package/alerts/alert_nodemanager_health.py",
+          "parameters": [
+            {
+              "name": "connection.timeout",
+              "display_name": "Connection Timeout",
+              "value": 5.0,
+              "type": "NUMERIC",
+              "description": "The maximum time before this alert is considered to be CRITICAL",
+              "units": "seconds",
+              "threshold": "CRITICAL"
+            }
+          ]
+        }
+      }
+    ],
+    "RESOURCEMANAGER": [
+      {
+        "name": "yarn_resourcemanager_webui",
+        "label": "ResourceManager Web UI",
+        "description": "This host-level alert is triggered if the ResourceManager Web UI is unreachable.",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "WEB",
+          "uri": {
+            "http": "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+            "https": "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+            "https_property": "{{yarn-site/yarn.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "kerberos_keytab": "{{yarn-site/yarn.resourcemanager.webapp.spnego-keytab-file}}",
+            "kerberos_principal": "{{yarn-site/yarn.resourcemanager.webapp.spnego-principal}}",
+            "connection_timeout": 5.0,
+            "high_availability": {
+              "alias_key" : "{{yarn-site/yarn.resourcemanager.ha.rm-ids}}",
+              "http_pattern" : "{{yarn-site/yarn.resourcemanager.webapp.address.{{alias}}}}",
+              "https_pattern" : "{{yarn-site/yarn.resourcemanager.webapp.https.address.{{alias}}}}"
+            }
+          },
+          "reporting": {
+            "ok": {
+              "text": "HTTP {0} response in {2:.3f}s"
+            },
+            "warning":{
+              "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+            },
+            "critical": {
+              "text": "Connection failed to {1} ({3})"
+            }
+          }
+        }
+      },
+      {
+        "name": "yarn_resourcemanager_cpu",
+        "label": "ResourceManager CPU Utilization",
+        "description": "This host-level alert is triggered if CPU utilization of the ResourceManager exceeds certain warning and critical thresholds. It checks the ResourceManager JMX Servlet for the SystemCPULoad property. The threshold values are in percent.",
+        "interval": 5,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "METRIC",
+          "uri": {
+            "http": "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+            "https": "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+            "kerberos_keytab": "{{yarn-site/yarn.resourcemanager.webapp.spnego-keytab-file}}",
+            "kerberos_principal": "{{yarn-site/yarn.resourcemanager.webapp.spnego-principal}}",
+            "https_property": "{{yarn-site/yarn.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "connection_timeout": 5.0,
+            "high_availability": {
+              "alias_key" : "{{yarn-site/yarn.resourcemanager.ha.rm-ids}}",
+              "http_pattern" : "{{yarn-site/yarn.resourcemanager.webapp.address.{{alias}}}}",
+              "https_pattern" : "{{yarn-site/yarn.resourcemanager.webapp.https.address.{{alias}}}}"
+            }
+          },
+          "reporting": {
+            "ok": {
+              "text": "{1} CPU, load {0:.1%}"
+            },
+            "warning": {
+              "text": "{1} CPU, load {0:.1%}",
+              "value": 200
+            },
+            "critical": {
+              "text": "{1} CPU, load {0:.1%}",
+              "value": 250
+            },
+            "units" : "%",
+            "type": "PERCENT"
+          },
+          "jmx": {
+            "property_list": [
+              "java.lang:type=OperatingSystem/SystemCpuLoad",
+              "java.lang:type=OperatingSystem/AvailableProcessors"
+            ],
+            "value": "{0} * 100"
+          }
+        }
+      },
+      {
+        "name": "yarn_resourcemanager_rpc_latency",
+        "label": "ResourceManager RPC Latency",
+        "description": "This host-level alert is triggered if the ResourceManager operations RPC latency exceeds the configured critical threshold. Typically an increase in the RPC processing time increases the RPC queue length, causing the average queue wait time to increase for ResourceManager operations. The threshold values are in milliseconds.",
+        "interval": 5,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "METRIC",
+          "uri": {
+            "http": "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+            "https": "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+            "kerberos_keytab": "{{yarn-site/yarn.resourcemanager.webapp.spnego-keytab-file}}",
+            "kerberos_principal": "{{yarn-site/yarn.resourcemanager.webapp.spnego-principal}}",
+            "https_property": "{{yarn-site/yarn.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "connection_timeout": 5.0,
+            "high_availability": {
+              "alias_key" : "{{yarn-site/yarn.resourcemanager.ha.rm-ids}}",
+              "http_pattern" : "{{yarn-site/yarn.resourcemanager.webapp.address.{{alias}}}}",
+              "https_pattern" : "{{yarn-site/yarn.resourcemanager.webapp.https.address.{{alias}}}}"
+            }
+          },
+          "reporting": {
+            "ok": {
+              "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]"
+            },
+            "warning": {
+              "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value": 3000
+            },          
+            "critical": {
+              "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+              "value": 5000
+            },
+            "units" : "ms"
+          },
+          "jmx": {
+            "property_list": [
+              "Hadoop:service=ResourceManager,name=RpcActivityForPort*/RpcQueueTimeAvgTime",
+              "Hadoop:service=ResourceManager,name=RpcActivityForPort*/RpcProcessingTimeAvgTime"
+            ],
+            "value": "{0}"
+          }
+        }
+      },
+      {
+        "name": "nodemanager_health_summary",
+        "label": "NodeManager Health Summary",
+        "description": "This service-level alert is triggered if there are unhealthy NodeManagers",
+        "interval": 1,
+        "scope": "SERVICE",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "YARN/2.1.0.2.0/package/alerts/alert_nodemanagers_summary.py",
+          "parameters": [
+            {
+              "name": "connection.timeout",
+              "display_name": "Connection Timeout",
+              "value": 5.0,
+              "type": "NUMERIC",
+              "description": "The maximum time before this alert is considered to be CRITICAL",
+              "units": "seconds",
+              "threshold": "CRITICAL"
+            }
+          ]
+        }
+      }
+    ],
+    "APP_TIMELINE_SERVER": [
+      {
+        "name": "yarn_app_timeline_server_webui",
+        "label": "App Timeline Web UI",
+        "description": "This host-level alert is triggered if the App Timeline Server Web UI is unreachable.",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "WEB",
+          "uri": {
+            "http": "{{yarn-site/yarn.timeline-service.webapp.address}}/ws/v1/timeline",
+            "https": "{{yarn-site/yarn.timeline-service.webapp.https.address}}/ws/v1/timeline",
+            "https_property": "{{yarn-site/yarn.http.policy}}",
+            "https_property_value": "HTTPS_ONLY",
+            "kerberos_keytab": "{{yarn-site/yarn.timeline-service.http-authentication.kerberos.keytab}}",
+            "kerberos_principal": "{{yarn-site/yarn.timeline-service.http-authentication.kerberos.principal}}",
+            "connection_timeout": 5.0
+          },
+          "reporting": {
+            "ok": {
+              "text": "HTTP {0} response in {2:.3f}s"
+            },
+            "warning":{
+              "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+            },
+            "critical": {
+              "text": "Connection failed to {1} ({3})"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

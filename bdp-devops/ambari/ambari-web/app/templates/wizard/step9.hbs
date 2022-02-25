@@ -1,0 +1,135 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="deploy" class="wizard-content col-md-9">
+  <h4 class="step-title">{{t installer.step9.header}}</h4>
+  <p class="step-description">{{t installer.step9.body}}</p>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="overall-progress" {{QAAttr "overall-progress"}}>
+        <div class="progress" {{QAAttr "progress-{status}"}}>
+          <div {{bindAttr class="view.isStepCompleted::progress-bar-striped view.isStepCompleted::active view.barColor :progress-bar"}} {{bindAttr style="view.barWidth"}} {{QAAttr "progress-bar-{progress}"}}>
+          </div>
+        </div>
+        <div {{QAAttr "progress-message"}} class="progress-message">{{view.progressMessage}}</div>
+      </div>
+
+      <div class="panel panel-default panel-internal install-retry-panel">
+        <div class="panel-heading">
+          <div class="pull-right">
+            {{#if controller.showRetry}}
+              <button class="btn btn-default" href="#" {{action retry}} {{QAAttr "retry-button"}}>
+                <i class="glyphicon glyphicon-repeat glyphicon-white"></i>&nbsp;
+                {{t common.retry}}
+              </button>
+            {{/if}}
+          </div>
+          <!-- filter by host level -->
+          <div id="host-filter" class="pull-left">
+            <ul class="clearfix">
+              <li class="first">{{t common.show}}:</li>
+              {{#each category in view.categories}}
+                <li {{bindAttr class=":filter-status category.itemClass"}}>
+                  <a {{action selectCategory category target="view"}} href="#">
+                    {{category.label}}
+                  </a>
+                </li>
+                {{#unless category.last}}
+                  <li class="divider">|</li>
+                {{/unless}}
+              {{/each}}
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="panel-body pre-scrollable">
+          <table id="deploy-status-by-host" class="table table-hover" {{QAAttr "hosts-table"}}>
+            <thead>
+            <tr>
+              <th class="host" {{QAAttr "hosts-table-heading"}}>
+                {{t common.host}}
+              </th>
+              <th class="status" {{QAAttr "hosts-table-heading"}}>{{t common.status}}</th>
+              <!--  given by the parsing function that parses data from bootstrap call -->
+              <th class="message" {{QAAttr "hosts-table-heading"}}>{{t common.message}}</th>
+              <!-- retrieved from local storage initially -->
+            </tr>
+            </thead>
+            <tbody>
+              {{#if view.pageContent}}
+                {{#each host in view.pageContent}}
+                  {{#view App.HostStatusView objBinding="host" controllerBinding="controller" data-qa="hosts-table-body-row"}}
+                  <td class="host" {{QAAttr "hosts-table-body-cell"}}>
+                    <span title="{{unbound host.name}}" class="trim_hostname" {{QAAttr "host-name"}}>{{host.name}}</span>
+                  </td>
+                  <td {{QAAttr "hosts-table-body-cell"}}>
+                    <div class="progress-wrapper pull-left">
+                      <div class="progress">
+                        <div {{bindAttr class="view.isHostCompleted::active view.isHostCompleted::progress-bar-striped view.barColor :progress-bar" style="view.barWidth"}} {{QAAttr "progress-bar"}}></div>
+                      </div>
+                    </div>
+                    <div class="progress-percentage pull-left" {{QAAttr "host-progress-{host.progress}"}}>{{host.progress}}%</div>
+                  </td>
+                  <td class="host-message" {{QAAttr "hosts-table-body-cell"}}>
+                    <a {{bindAttr class="view.isFailed:text-danger view.isSuccess:text-success view.isWarning:text-warning"}}
+                        href="javascript:void(null)"
+                        data-toggle="modal" {{action hostLogPopup target="view"}} {{QAAttr "host-status-message"}}>{{host.message}}</a>
+                  </td>
+                  {{/view}}
+                {{/each}}
+              {{else}}
+              <tr {{QAAttr "hosts-table-body-row"}}>
+                <td colspan="3" {{QAAttr "hosts-table-body-cell"}}><p>{{t installer.step3.hosts.noHosts}}</p></td>
+              </tr>
+              {{/if}}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">
+                  {{view App.PaginationView}}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      {{#if view.resultMsg}}
+        <p {{bindAttr class="view.resultMsgColor :alert :alert-warning"}} {{QAAttr "deploy-result-{status}"}}>{{view.resultMsg}}
+          {{#if view.isHostHeartbeatLost}}
+            <a href="javascript:void(null)"
+               data-toggle="modal" {{action hostWithInstallFailed target="view"}}>{{t common.showDetails}}</a>
+          {{/if}}
+        </p>
+      {{/if}}
+
+    </div>
+
+  </div>
+
+</div>
+<div class="wizard-footer col-md-12">
+    <div class="btn-area">
+      <button class="btn btn-success pull-right" {{QAAttr "wizard-next"}} {{bindAttr disabled="isNextButtonDisabled"}} {{action submit target="controller"}} {{QAAttr "wizard-next"}}>
+        {{#if App.router.nextBtnClickInProgress}}
+          {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+        {{/if}}
+        {{t common.next}} &rarr;
+      </button>
+    </div>
+</div>

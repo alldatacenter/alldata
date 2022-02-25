@@ -1,0 +1,65 @@
+{
+  "properties": {
+    "realm": "${kerberos-env/realm}",
+    "keytab_dir": "/etc/security/keytabs",
+    "additional_realms": "",
+    "principal_suffix": "-${cluster_name|toLower()}"
+  },
+  "identities": [
+    {
+      "name": "spnego",
+      "principal": {
+        "value": "HTTP/_HOST@${realm}",
+        "type" : "service"
+      },
+      "keytab": {
+        "file": "${keytab_dir}/spnego.service.keytab",
+        "owner": {
+          "name": "root",
+          "access": "r"
+        },
+        "group": {
+          "name": "${cluster-env/user_group}",
+          "access": "r"
+        }
+      }
+    },
+    {
+      "name": "smokeuser",
+      "principal": {
+        "value": "${cluster-env/smokeuser}${principal_suffix}@${realm}",
+        "type" : "user",
+        "configuration": "cluster-env/smokeuser_principal_name",
+        "local_username" : "${cluster-env/smokeuser}"
+      },
+      "keytab": {
+        "file": "${keytab_dir}/smokeuser.headless.keytab",
+        "owner": {
+          "name": "${cluster-env/smokeuser}",
+          "access": "r"
+        },
+        "group": {
+          "name": "${cluster-env/user_group}",
+          "access": "r"
+        },
+        "configuration": "cluster-env/smokeuser_keytab"
+      }
+    },
+    {
+      "name": "ambari-server",
+      "principal": {
+        "value": "ambari-server${principal_suffix}@${realm}",
+        "type" : "user",
+        "configuration": "cluster-env/ambari_principal_name"
+      },
+      "keytab": {
+        "file": "${keytab_dir}/ambari.server.keytab",
+        "owner": {
+          "name": "root",
+          "access": "r"
+        }
+      }
+    }
+  ]
+
+}

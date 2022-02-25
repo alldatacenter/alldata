@@ -1,0 +1,78 @@
+{
+  "href": "http://c6404.ambari.apache.org:8080/api/v1/requests/51?fields=*,tasks/Tasks/host_name,tasks/Tasks/status,tasks/Tasks/structured_out/",
+  "Requests": {
+    "aborted_task_count": 0,
+    "completed_task_count": 3,
+    "create_time": 1401908998744,
+    "end_time": 1401909032248,
+    "failed_task_count": 0,
+    "id": 51,
+    "inputs": "{\"check_execute_list\":\"java_home_check\",\"java_home\":\"/usr/jdk64/jdk1.7.0_58\",\"jdk_location\":\"http://c6404.ambari.apache.org:8080/resources/\",\"script_type\":\"PYTHON\",\"script\":\"check_host.py\",\"command_timeout\":\"60\",\"threshold\":\"60\"}",
+    "operation_level": null,
+    "progress_percent": 100,
+    "queued_task_count": 0,
+    "request_context": "Check hosts",
+    "request_schedule": null,
+    "request_status": "COMPLETED",
+    "resource_filters": [
+      {
+        "hosts": [
+          "c6404.ambari.apache.org",
+          "c6405.ambari.apache.org",
+          "c6406.ambari.apache.org"
+        ]
+      }
+    ],
+    "start_time": 1401908998787,
+    "task_count": 3,
+    "timed_out_task_count": 0,
+    "type": "ACTION"
+  },
+  "tasks": [
+    {
+      "href": "http://c6404.ambari.apache.org:8080/api/v1/requests/51/tasks/187",
+      "Tasks": {
+        "host_name": "c6404.ambari.apache.org",
+        "id": 187,
+        "request_id": 51,
+        "status": "COMPLETED",
+        "structured_out": {
+          "java_home_check": {
+            "message": "Java home exist!",
+            "exit_code": "0"
+          }
+        }
+      }
+    },
+    {
+      "href": "http://c6404.ambari.apache.org:8080/api/v1/requests/51/tasks/188",
+      "Tasks": {
+        "host_name": "c6405.ambari.apache.org",
+        "id": 188,
+        "request_id": 51,
+        "status": "COMPLETED",
+        "structured_out": {
+          "java_home_check": {
+            "message": "Java home doesn't exist!",
+            "exit_code": "1"
+          }
+        }
+      }
+    },
+    {
+      "href": "http://c6404.ambari.apache.org:8080/api/v1/requests/51/tasks/189",
+      "Tasks": {
+        "host_name": "c6406.ambari.apache.org",
+        "id": 189,
+        "request_id": 51,
+        "status": "COMPLETED",
+        "structured_out": {
+          "java_home_check": {
+            "message": "Java home doesn't exist!",
+            "exit_code": "1"
+          }
+        }
+      }
+    }
+  ]
+}

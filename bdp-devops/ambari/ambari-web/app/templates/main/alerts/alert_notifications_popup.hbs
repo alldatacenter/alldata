@@ -1,0 +1,74 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#unless view.hideHeader}}
+  <div class="popup-arrow-up"></div>
+  <div class="notifications-header col-sm-12">
+    <div class="notifications-title">{{t alerts.dropdown.dialog.title}} ({{view.alertsNumber}})</div>
+  </div>
+{{/unless}}
+
+
+<div class="notifications-body col-sm-12">
+  {{#if view.isLoaded}}
+    {{#unless view.hideHeader}}
+      <div class="table-controls row">
+        <div class="state-filter pull-right">
+          <span>{{t common.show}}:&nbsp;</span>
+          <div class="btn-group">
+            {{view Ember.Select
+                   contentBinding="view.categories"
+                   optionValuePath="content.value"
+                   optionLabelPath="content.label"
+                   selectionBinding="view.selectedCategory"
+                   classNames="filter-select form-control"
+            }}
+          </div>
+        </div>
+      </div>
+    {{/unless}}
+    <table class="alerts-table table table-hover">
+      <tbody>
+      {{#if view.isAlertEmptyList}}
+        <tr class="no-alert-tr">
+          <td class="no-alert-text">{{t alerts.fastAccess.popup.body.noalerts}}</td>
+        </tr>
+      {{else}}
+        {{#each instance in view.pageContent}}
+          <tr {{action "gotoAlertDetails" instance target="view"}} {{bindAttr class="instance.isVisible::hidden"}}>
+            <td class="status">
+              <span {{bindAttr class="instance.stateClass :icon-circle"}}></span>
+            </td>
+            <td class="content">
+              <div class="name">{{instance.label}}</div>
+              <div class="description">{{instance.text}}</div>
+              <div class="timestamp">{{instance.lastTriggeredAgoFormatted}}</div>
+            </td>
+          </tr>
+        {{/each}}
+      {{/if}}
+      </tbody>
+    </table>
+  {{else}}
+    {{view App.SpinnerView}}
+  {{/if}}
+</div>
+
+<div class="notifications-footer col-sm-12">
+  <button type="button" class="btn btn-primary pull-right" {{action "gotoAllAlerts" target="view"}}>View All</button>
+</div>

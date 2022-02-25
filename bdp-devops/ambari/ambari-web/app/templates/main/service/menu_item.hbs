@@ -1,0 +1,38 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<a class="services-menu-blocks" {{bindAttr href="view.link" data-href="view.dataHref"}}>
+  <span class="pull-right alerts-block">
+    {{view App.AlertBadgeView
+           classNames="medium-size"
+           criticalCountBinding="view.content.criticalCount"
+           warningCountBinding="view.content.warningCount"}}
+  </span>
+  <span class="pull-right">
+    <i rel="tooltip" {{action goToConfigs target="view"}} {{bindAttr class=":glyphicon :glyphicon-refresh :restart-required-service view.content.isRestartRequired::hidden" data-original-title="view.restartRequiredMessage"}}></i>
+  </span>
+  <span class="pull-right">
+    <i rel="tooltip" {{bindAttr class=":icon-medkit :passive-state-service view.content.isInPassive::hidden" }} {{translateAttr data-original-title="services.service.summary.inMaintenanceMode.tooltip"}}></i>
+  </span>
+  {{#unless view.isClientOnlyService}}
+    <i {{bindAttr class="view.content.isStarted:started:stopped :icon-circle :status-icon"}}></i>
+  {{/unless}}
+  <span {{bindAttr class="view.isClientOnlyService:client-only-service :menu-item-name view.content.workStatus view.isMasterDown:master-down" data-original-title="view.content.toolTipContent"}} rel="serviceHealthTooltip">
+      {{view.content.displayName}}
+  </span>
+</a>

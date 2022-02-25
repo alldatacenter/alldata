@@ -1,0 +1,111 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.checkHostFinished}}
+    <div id="host-warnings">
+      <div class="notice">
+        <span>{{t installer.step3.hostWarningsPopup.checks}} <b>{{view.warningsNotice}}</b>.<br>
+          {{t installer.step3.hostWarningsPopup.notice.beginning}}</span>
+      </div>
+      <div class="row">
+        <form class="form-horizontal">
+          <div class="from-group">
+            <div class="col-md-2">
+              <label class="control-label">
+                {{t common.hosts}}
+              </label>
+            </div>
+            <div class="col-md-5">
+              {{view view.hostSelectView classNames="form-control input-sm" data-qa="host-select"}}
+            </div>
+            {{#if view.totalWarningsCount}}
+              <div class="col-md-3 col-md-offset-2">
+                <a href="javascript:void(null)" title="Show Details" {{action openWarningsInDialog target="view"}}
+                   class="control-label display-inline-block">
+                   <i class="icon-external-link"></i>&nbsp;
+                   {{t installer.step3.hostWarningsPopup.report}}
+                </a>
+              </div>
+            {{/if}}
+          </div>
+        </form>
+      </div>
+      <div class="accordion">
+        <div class="panel-group warnings-list" id="accordion2" {{QAAttr "host-checks-list"}}>
+          {{#each category in view.content}}
+            <div class="panel panel-default" {{QAAttr "host-checks-category"}}>
+              <div class="panel-heading" {{action onToggleBlock category}} {{QAAttr "host-checks-category-heading"}}>
+                {{#if category.warnings.length}}
+                  <i class="pull-left icon-warning-sign" {{QAAttr "host-checks-category-warning"}}></i>
+                {{else}}
+                  <i class="pull-left glyphicon glyphicon-ok"{{QAAttr "host-checks-category-success"}}></i>
+                {{/if}}
+                <i {{bindAttr class=":pull-right :panel-toggle category.isCollapsed:icon-angle-down:icon-angle-up"}}></i>
+                <a class="panel-toggle" {{QAAttr "{category.category}-issues"}}>
+                  {{category.title}} ({{category.warnings.length}})
+                </a>
+              </div>
+              <div id="{{unbound category.category}}" class="panel-body collapse in"
+                   style="display: none" {{QAAttr "host-checks-category-body"}}>
+                {{#if category.warnings.length}}
+                  <table class="table">
+                    <thead {{QAAttr "host-checks-category-description"}}>
+                    <tr>
+                      <th colspan="4">{{{category.message}}}</th>
+                    </tr>
+                    <tr>
+                      <th colspan="4"><b>{{category.type}}</b></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each warning in category.warnings}}
+                      <tr>
+                        <td class="warning-name" {{bindAttr data-original-title="warning.command"}} {{QAAttr "host-warning-name"}}>{{{warning.name}}}</td>
+                        {{#if warning.version}}
+                          <td class="package-version">{{warning.version}}</td>
+                        {{else}}
+                          <td></td>
+                        {{/if}}
+                        {{#if warning.target}}
+                          <td class="package-version">{{warning.target}}</td>
+                        {{else}}
+                          <td></td>
+                        {{/if}}
+                        <td>{{category.action}}
+                          <a href="javascript:void(null);"
+                             rel='HostsListTooltip' {{bindAttr data-original-title="warning.hostsList"}} {{action showHostsPopup warning.hostsLong}} {{QAAttr "host-with-warning-link"}}>
+                            {{warning.hosts.length}}
+                            {{pluralize warning.hosts.length singular="t:installer.step3.hostWarningsPopup.host" plular="t:installer.step3.hostWarningsPopup.hosts"}}
+                          </a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                    </tbody>
+                  </table>
+                {{else}}
+                  {{category.emptyName}}
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+{{else}}
+    {{view App.SpinnerView}}
+{{/if}}

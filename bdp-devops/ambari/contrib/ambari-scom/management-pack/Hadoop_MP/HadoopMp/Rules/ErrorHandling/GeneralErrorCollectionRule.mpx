@@ -1,0 +1,86 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Rules>
+      <Rule ID="Ambari.SCOM.GeneralErrorCollectionRule" ConfirmDelivery="false" Enabled="true" Priority="Normal" Remotable="true" Target="Ambari.SCOM.AmbariWatcherNode">
+        <Category>EventCollection</Category>
+        <DataSources>
+          <DataSource ID="DS" TypeID="Ambari.SCOM.Module.CustomEventProvider">
+            <ComputerName>$Target/Host/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName>
+            <LogName>Operations Manager</LogName>
+            <EventNumber>1901</EventNumber>
+          </DataSource>
+        </DataSources>
+        <WriteActions>
+          <WriteAction ID="GenerateAlert" TypeID="Health!System.Health.GenerateAlert">
+            <Priority>2</Priority>
+            <Severity>1</Severity>
+            <AlertMessageId>$MPElement[Name="Ambari.SCOM.GeneralErrorCollectionRule.AlertMessage"]$</AlertMessageId>
+            <AlertParameters>
+              <AlertParameter1>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/NetworkName$</AlertParameter1>
+            </AlertParameters>
+            <Suppression>
+              <SuppressionValue>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/NetworkName$</SuppressionValue>
+            </Suppression>
+          </WriteAction>
+          <WriteAction ID="WriteToDB" TypeID="SC!Microsoft.SystemCenter.CollectEvent" />
+          <WriteAction ID="WriteToDW" TypeID="SCDW!Microsoft.SystemCenter.DataWarehouse.PublishEventData" />
+        </WriteActions>
+      </Rule>
+    </Rules>
+  </Monitoring>
+  <Presentation>
+    <StringResources>
+      <StringResource ID="Ambari.SCOM.GeneralErrorCollectionRule.AlertMessage" />
+    </StringResources>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.GeneralErrorCollectionRule.AlertMessage">
+          <Name>Error on watcher {0}.</Name>
+          <Description>Error on watcher {0}.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.GeneralErrorCollectionRule">
+          <Name>Ambari General Error rule</Name>
+          <Description>This rule detects general errors for Ambari API.</Description>
+        </DisplayString>
+      </DisplayStrings>
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="Ambari.SCOM.GeneralErrorCollectionRule" Visible="true">
+          <MamlContent>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Summary</maml:title>
+              <maml:para>This rule detects general errors for Ambari API</maml:para>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Causes</maml:title>
+              <maml:para>This rule generates alert when Management Pack handles some general exception which is not handled by other monitors and rules.
+                You can find more details about error in Windows Event Log.</maml:para>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Resolutions</maml:title>
+              <maml:para>Check Event log on the watcher computer for details about the error.</maml:para>
+            </maml:section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

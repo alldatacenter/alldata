@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<configuration>
+
+  
+  <property>
+    <name>nifi_node_log_dir</name>
+    <value>/var/log/nifi</value>
+    <display-name>NiFi Log dir</display-name>    
+    <description>NiFi Log dir</description>
+      <on-ambari-upgrade add="true"/>
+  </property> 
+  
+ <property>
+    <name>nifi_pid_dir</name>
+    <value>/var/run/nifi</value>
+    <display-name>NiFi PID dir</display-name>
+    <description>Dir containing process ID file</description>
+     <on-ambari-upgrade add="true"/>
+ </property>
+
+  <property>
+    <name>nifi_user</name>
+    <value>nifi</value>
+    <property-type>USER</property-type>
+    <display-name>Nifi User</display-name>
+    <description>User nifi daemon runs as</description>
+      <on-ambari-upgrade add="true"/>
+  </property> 
+        
+  <property>
+    <name>nifi_group</name>
+    <value>nifi</value>
+    <property-type>GROUP</property-type>
+    <display-name>Nifi Group</display-name>
+    <description>nifi group</description>
+      <on-ambari-upgrade add="true"/>
+  </property> 
+
+  <property>
+    <name>nifi_user_nofile_limit</name>
+    <value>50000</value>
+    <display-name>Open files limit for Nifi</display-name>
+    <description>Max open files (nofile) limit setting for Nifi user.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  
+  <property>
+    <name>nifi_user_nproc_limit</name>
+    <value>10000</value>
+    <display-name>Process limit for Nifi</display-name>
+    <description>Max number of processes (nproc) limit setting for Nifi user.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+                      
+  <property>
+    <name>content</name>
+    <display-name>Template for nifi-env.sh</display-name>        
+    <value>
+#!/bin/sh
+#
+#    Licensed to the Apache Software Foundation (ASF) under one or more
+#    contributor license agreements.  See the NOTICE file distributed with
+#    this work for additional information regarding copyright ownership.
+#    The ASF licenses this file to You under the Apache License, Version 2.0
+#    (the "License"); you may not use this file except in compliance with
+#    the License.  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
+#
+
+# The java implementation to use.
+export JAVA_HOME={{jdk64_home}}
+
+export NIFI_HOME={{nifi_install_dir}}
+
+#The directory for the NiFi pid file
+export NIFI_PID_DIR="{{nifi_pid_dir}}"
+
+#The directory for NiFi log files
+export NIFI_LOG_DIR="{{nifi_node_log_dir}}"
+
+
+  </value>
+  <description>Template for nifi-env.sh</description>
+  <value-attributes>
+    <type>content</type>
+  </value-attributes>  
+  <on-ambari-upgrade add="true"/>
+  </property>
+
+</configuration>
+

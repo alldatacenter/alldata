@@ -1,0 +1,255 @@
+{
+  "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets?Widgets/scope=CLUSTER&fields=*",
+  "items": [
+    {
+      "Widgets": {
+        "id": 1,
+        "scope": "CLUSTER",
+        "widget_name": "RS_READS_WRITES",
+        "display_name": "RegionServer Reads and Writes",
+        "description": "This widget shows all the read requests and write requests on all regions for a RegionServer",
+        "widget_type": "GRAPH",
+        "metrics": [
+          {
+            "name": "regionserver.Server.Get_num_ops",
+            "widget_id": "metrics/hbase/regionserver/Server/Get_num_ops",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          },
+          {
+            "name": "regionserver.Server.Scan_num_ops",
+            "widget_id": "metrics/hbase/regionserver/Server/Scan_num_ops",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          },
+          {
+            "name": "regionserver.Server.Append_num_ops",
+            "widget_id": "metrics/hbase/regionserver/Server/Append_num_ops",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          },
+          {
+            "name": "regionserver.Server.Delete_num_ops",
+            "widget_id": "metrics/hbase/regionserver/Server/Delete_num_ops",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          },
+          {
+            "name": "regionserver.Server.Increment_num_ops",
+            "widget_id": "metrics/hbase/regionserver/Server/Increment_num_ops",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          },
+          {
+            "name": "regionserver.Server.Mutate_num_ops",
+            "widget_id": "metrics/hbase/regionserver/Server/Mutate_num_ops",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          }
+        ],
+        "values": [
+          {
+            "name": "Read Requests",
+            "value": "${regionserver.Server.Get_num_ops + regionserver.Server.Scan_num_ops}"
+          },
+          {
+            "name": "Write Requests",
+            "value": "${regionserver.Server.Append_num_ops + regionserver.Server.Delete_num_ops + regionserver.Server.Increment_num_ops + metrics.hbase.regionserver.Server.Mutate_num_ops}"
+          }
+        ],
+        "properties": {
+          "display_unit": "Requests",
+          "graph_type": "LINE",
+          "time_range": "1 week"
+        }
+      }
+    },
+    {
+      "Widgets": {
+        "id": 2,
+        "scope": "CLUSTER",
+        "widget_name": "ACTIVE_HANDLER",
+        "display_name": "Active Handlers vs Calls in General Queue",
+        "widget_type": "GRAPH",
+        "metrics": [
+          {
+            "name": "ipc.IPC.numOpenConnections",
+            "widget_id": "metrics/hbase/ipc/IPC/numOpenConnections",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          },
+          {
+            "name": "ipc.IPC.numCallsInGeneralQueue",
+            "widget_id": "metrics/hbase/ipc/IPC/numOpenConnections",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          }
+        ],
+        "values": [
+          {
+            "name": "Active Handlers",
+            "value": "${ipc.IPC.numActiveHandler}"
+          },
+          {
+            "name": "Calls in General Queue",
+            "value": "${ipc.IPC.numCallsInGeneralQueue}"
+          }
+        ],
+        "properties": {
+          "graph_type": "LINE",
+          "time_range": "1 hour"
+        }
+      }
+    },
+    {
+      "Widgets": {
+        "id": 3,
+        "scope": "CLUSTER",
+        "widget_name": "OPEN_CONNECTIONS",
+        "display_name": "Open Connections",
+        "description": "This widget shows number of current open connections",
+        "widget_type": "GRAPH",
+        "metrics": [
+          {
+            "name": "ipc.IPC.numOpenConnections",
+            "widget_id": "metrics/hbase/ipc/IPC/numOpenConnections",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          }
+        ],
+        "values": [
+          {
+            "name": "Open Connections",
+            "value": "${ipc.IPC.numOpenConnections}"
+          }
+        ],
+        "properties": {
+          "display_unit": "Connections",
+          "graph_type": "STACK",
+          "time_range": "1 hour"
+        }
+      }
+    },
+    {
+      "Widgets": {
+        "id": 4,
+        "scope": "CLUSTER",
+        "widget_name": "FILES_LOCAL",
+        "display_name": "Files Local",
+        "description": "This widget shows percentage of files local.",
+        "widget_type": "NUMBER",
+        "metrics": [
+          {
+            "name": "regionserver.Server.percentFilesLocal",
+            "widget_id": "metrics/hbase/regionserver/percentFilesLocal",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          }
+        ],
+        "values": [
+          {
+            "name": "Files Local",
+            "value": "${regionserver.Server.percentFilesLocal}"
+          }
+        ],
+        "properties": {
+          "display_unit": "%"
+        }
+      }
+    },
+    {
+      "Widgets": {
+        "id": 5,
+        "scope": "CLUSTER",
+        "widget_name": "UPDATED_BLOCKED_TIME",
+        "display_name": "Updated Blocked Time",
+        "description": "",
+        "widget_type": "GRAPH",
+        "metrics": [
+          {
+            "name": "regionserver.Server.updatesBlockedTime",
+            "widget_id": "metrics/hbase/regionserver/Server/updatesBlockedTime",
+            "category": "",
+            "service_name": "HBASE",
+            "component_name": "HBASE_REGIONSERVER"
+          }
+        ],
+        "values": [
+          {
+            "name": "Updated Blocked Time",
+            "value": "${regionserver.Server.updatesBlockedTime}"
+          }
+        ],
+        "properties": {
+          "display_unit": "seconds",
+          "graph_type": "LINE",
+          "time_range": "1 day"
+        }
+      }
+    },
+    {
+      "Widgets": {
+        "id": 6,
+        "scope": "CLUSTER",
+        "widget_name": "SOME WIDGET NAME",
+        "display_name": "SOME WIDGET",
+        "description": "this is to show .....this is a long description..very long ..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long..very long",
+        "widget_type": "GAUGE",
+        "metrics": [
+          {
+            "service_name": "HBASE"
+          },
+          {
+            "service_name": "HDFS"
+          }
+        ]
+      }
+    },
+    {
+      "Widgets": {
+        "id": 7,
+        "scope": "CLUSTER",
+        "widget_name": "SOME WIDGET NAME2",
+        "display_name": "SOME WIDGET2",
+        "description": "this is to show .....",
+        "widget_type": "GAUGE",
+        "metrics": [
+          {
+            "service_name": "YARN"
+          },
+          {
+            "service_name": "HDFS"
+          }
+        ]
+      }
+    },
+    {
+      "Widgets": {
+        "id": 8,
+        "scope": "CLUSTER",
+        "widget_name": "SOME WIDGET NAME3",
+        "display_name": "SOME WIDGET3",
+        "description": "this is to show .....",
+        "widget_type": "TEMPLATE",
+        "metrics": [
+          {
+            "service_name": "YARN"
+          },
+          {
+            "service_name": "HDFS"
+          }
+        ]
+      }
+    }
+  ]
+}

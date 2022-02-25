@@ -1,0 +1,106 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Monitors>
+      <DependencyMonitor ID="Ambari.SCOM.Rollup.SecondaryNameNodeComponentToHdfsServiceAvailability"
+                         Target="Ambari.SCOM.ClusterService.Hdfs"
+                         ParentMonitorID="Health!System.Health.AvailabilityState"
+                         RelationshipType="Ambari.SCOM.HdfsServiceContainsSecondaryNameNodeComponent"
+                         MemberMonitor="Health!System.Health.AvailabilityState"
+                         Accessibility="Public" Enabled="true" Remotable="true" Priority="Normal">
+        <Category>AvailabilityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+      </DependencyMonitor>
+
+      <DependencyMonitor ID="Ambari.SCOM.Rollup.SecondaryNameNodeComponentToHdfsServicePerformance"
+                         Target="Ambari.SCOM.ClusterService.Hdfs"
+                         ParentMonitorID="Health!System.Health.PerformanceState"
+                         RelationshipType="Ambari.SCOM.HdfsServiceContainsSecondaryNameNodeComponent"
+                         MemberMonitor="Health!System.Health.PerformanceState"
+                         Accessibility="Public" Enabled="true" Remotable="true" Priority="Normal">
+        <Category>PerformanceHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+      </DependencyMonitor>
+    </Monitors>
+  </Monitoring>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Rollup.SecondaryNameNodeComponentToHdfsServiceAvailability">
+          <Name>Secondary NameNode Component Health</Name>
+          <Description>Rolls up Secondary NameNode Component availability monitors to the Hadoop HDFS Service.</Description>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.Rollup.SecondaryNameNodeComponentToHdfsServicePerformance">
+          <Name>Secondary NameNode Component Performance</Name>
+          <Description>Rolls up Secondary NameNode Component performance monitors to the Hadoop HDFS Service.</Description>
+        </DisplayString>
+      </DisplayStrings>
+
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="Ambari.SCOM.Rollup.SecondaryNameNodeComponentToHdfsServiceAvailability" Visible="true">
+          <MamlContent>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Summary</title>
+              <para>This monitor is the rollup of availability monitoring for Secondary NameNode Host Component. If the state is unknown - monitoring has not been initialized yet.</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Causes</title>
+              <para>An unhealthy state for this monitor indicates some problem with availability of Secondary NameNode Host Component. View all current alerts for HDFS Cluster Service using this link:</para>
+              <para>
+                <navigationLink>
+                  <linkText>View Alerts</linkText>
+                  <uri href="Microsoft.SystemCenter.AlertView&amp;viewtarget={$TARGET$}" condition="View" uri="MOM.Console.Exe" />
+                </navigationLink>
+              </para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Resolutions</title>
+              <para>Use the health explorer to drill down and find the cause of the unhealthy state. Use the knowledge on the specific monitor causing the issue to troubleshoot and fix the problem.</para>
+            </section>
+          </MamlContent>
+        </KnowledgeArticle>
+
+        <KnowledgeArticle ElementID="Ambari.SCOM.Rollup.SecondaryNameNodeComponentToHdfsServicePerformance" Visible="true">
+          <MamlContent>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Summary</title>
+              <para>This monitor is the rollup of performance monitoring for Secondary NameNode Host Component. If the state is unknown - monitoring has not been initialized yet.</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Causes</title>
+              <para>An unhealthy state for this monitor indicates some problem with performance of Secondary NameNode Host Component. View all current alerts for HDFS Cluster Service using this link:</para>
+              <para>
+                <navigationLink>
+                  <linkText>View Alerts</linkText>
+                  <uri href="Microsoft.SystemCenter.AlertView&amp;viewtarget={$TARGET$}" condition="View" uri="MOM.Console.Exe" />
+                </navigationLink>
+              </para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Resolutions</title>
+              <para>Use the health explorer to drill down and find the cause of the unhealthy state. Use the knowledge on the specific monitor causing the issue to troubleshoot and fix the problem.</para>
+            </section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

@@ -1,0 +1,10 @@
+{
+   "report_name" : "hbase_regionserver_write_requests_report",
+   "report_type" : "standard",
+   "title" : "Region Server Write Requests",
+   "vertical_label" : "Request count",
+   "series" : [
+      { "metric": "hbase.regionserver.writeRequestsCount", "color": "ff0000", "label": "Write Requests", 
+        "line_width": "2", "type": "line" }
+   ]
+}

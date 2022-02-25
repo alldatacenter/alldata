@@ -1,0 +1,113 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<coordinator-app name="coord-input-logic" frequency="${coord:hours(1)}" start="${start}" end="${end}" timezone="UTC"
+    xmlns="uri:oozie:coordinator:0.5">
+    <controls>
+        <concurrency>1</concurrency>
+    </controls>
+	<parameters>
+		<configuration>
+			<property>
+				<name>ds</name>
+				<value>ewr</value>
+			</property>
+		</configuration>
+	</parameters>
+    <datasets>
+        <dataset name="data-1" frequency="${coord:minutes(20)}" initial-instance="2010-01-01T00:00Z" timezone="UTC">
+            <uri-template>${nameNode}/user/${coord:user()}/${examplesRoot}/input-data/rawLogs/${YEAR}/${MONTH}/${DAY}/${HOUR}/${MINUTE}</uri-template>
+        </dataset>
+        <dataset name="data-2" frequency="${coord:minutes(20)}" initial-instance="2010-01-01T00:00Z" timezone="UTC">
+            <uri-template>${nameNode}/user/${coord:user()}/${examplesRoot}/input-data/rawLogs-2/${YEAR}/${MONTH}/${DAY}/${HOUR}/${MINUTE}</uri-template>
+        </dataset>
+		 <dataset name="data-3" frequency="${coord:minutes(20)}" initial-instance="2010-01-01T00:00Z" timezone="UTC">
+            <uri-template>${nameNode}/user/${coord:user()}/${examplesRoot}/input-data/rawLogs-3/${YEAR}/${MONTH}/${DAY}/${HOUR}/${MINUTE}</uri-template>
+        </dataset>
+		<dataset name="data-4" frequency="${coord:minutes(20)}" initial-instance="2010-01-01T00:00Z" timezone="UTC">
+            <uri-template>${nameNode}/user/${coord:user()}/${examplesRoot}/input-data/rawLogs-4/${YEAR}/${MONTH}/${DAY}/${HOUR}/${MINUTE}</uri-template>
+        </dataset>
+        <dataset name="output" frequency="${coord:hours(1)}" initial-instance="2010-01-01T01:00Z" timezone="UTC">
+            <uri-template>${nameNode}/user/${coord:user()}/${examplesRoot}/output-data/inputLogic/${YEAR}/${MONTH}/${DAY}/${HOUR}</uri-template>
+        </dataset>
+		<dataset name="output-1" frequency="${coord:hours(1)}" initial-instance="2010-01-01T01:00Z" timezone="UTC">
+            <uri-template>${nameNode}/user/${coord:user()}/${examplesRoot}/output-data/inputLogic/${YEAR}/${MONTH}/${DAY}/${HOUR}</uri-template>
+        </dataset>
+    </datasets>
+    <input-events>
+        <data-in name="input-1" dataset="data-1">
+            <start-instance>${coord:current(-2)}</start-instance>
+            <end-instance>${coord:current(0)}</end-instance>
+        </data-in>
+        <data-in name="input-2" dataset="data-2">
+            <start-instance>${coord:current(-2)}</start-instance>
+            <end-instance>${coord:current(0)}</end-instance>
+        </data-in>
+		<data-in name="input-3" dataset="data-4">
+			<instance>2016-08-01T00:00Z</instance>
+			<instance>2016-08-02T00:00Z</instance>
+			<instance>2016-08-03T00:00Z</instance>
+		</data-in>
+    </input-events>
+	<!--input-events>
+		<or name="c1">
+			<data-in name="d1" dataset="data-1"></data-in>
+			<data-in name="d4" dataset="data-4"></data-in>
+			<and name="nc1">
+				<data-in name="d2" dataset="data-2"></data-in>
+				<data-in name="d3" dataset="data-3"></data-in>
+			</and>
+		</or>
+	</input-events-->
+    <input-logic>
+        <or name="input">
+              <data-in dataset="input-1"/>
+              <data-in dataset="input-2"/>
+        </or>
+    </input-logic>
+    <output-events>
+        <data-out name="output" dataset="output">
+            <instance>${coord:current(0)}</instance>
+        </data-out>
+		<data-out name="output-1" dataset="output-1">
+            <instance>${coord:current(0)}</instance>
+        </data-out>
+    </output-events>
+    <action>
+        <workflow>
+            <app-path>${nameNode}/user/${coord:user()}/${examplesRoot}/apps/coord-input-logic</app-path>
+            <configuration>
+                <property>
+                    <name>nameNode</name>
+                    <value>${nameNode}</value>
+                </property>
+                <property>
+                    <name>queueName</name>
+                    <value>${queueName}</value>
+                </property>
+                <property>
+                    <name>outputData</name>
+                    <value>${coord:dataOut('output')}</value>
+                </property>
+                <property>
+                    <name>inputData</name>
+                    <value>${coord:dataIn('input')}</value>
+                </property>
+            </configuration>
+        </workflow>
+    </action>
+</coordinator-app>

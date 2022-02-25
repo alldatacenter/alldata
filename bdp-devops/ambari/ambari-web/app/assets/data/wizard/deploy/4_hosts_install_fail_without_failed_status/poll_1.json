@@ -1,0 +1,855 @@
+{
+  "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1",
+  "Requests" : {
+    "id" : 1,
+    "cluster_name" : "cluster"
+  },
+  "tasks" : [
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/21",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "warning: Dynamic lookup of $hive_pid_dir at /var/lib/ambari-agent/puppet/modules/hdp-hive/manifests/service.pp:58 is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $hive_var_lib at /var/lib/ambari-agent/puppet/modules/hdp-hive/manifests/service.pp:60 is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $start_hiveserver2_script at /var/lib/ambari-agent/puppet/modules/hdp-hive/manifests/service.pp:64 is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $start_metastore_script at /var/lib/ambari-agent/puppet/modules/hdp-hive/manifests/service.pp:70 is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $hive_user at /var/lib/ambari-agent/puppet/modules/hdp-hive/manifests/service.pp:104 is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ensure at /var/lib/ambari-agent/puppet/modules/hdp-hive/manifests/service.pp:106 is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $hadoop_heapsize is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nnotice: /Stage[1]/Hdp::Snappy::Package/Hdp::Snappy::Package::Ln[32]/Hdp::Exec[hdp::snappy::package::ln 32]/Exec[hdp::snappy::package::ln 32]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hive/Configgenerator::Configfile[hive-site]/File[/etc/hive/conf.server/hive-site.xml]/content: content changed '{md5}3498a03e0adedc7d473a101770038ad3' to '{md5}9d05e163acea27bcb90848098d8975a5'\nnotice: Finished catalog run in 3.48 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host1",
+        "id" : 21,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HIVE_SERVER",
+        "start_time" : 1368055521050,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/43",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "warning: Dynamic lookup of $tasktracker_port is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_url is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_driver is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_username is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_password is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nnotice: /Stage[1]/Hdp::Snappy::Package/Hdp::Snappy::Package::Ln[32]/Hdp::Exec[hdp::snappy::package::ln 32]/Exec[hdp::snappy::package::ln 32]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[core-site]/File[/etc/hadoop/conf/core-site.xml]/content: content changed '{md5}20dda7d53e69b5d0a642036e3ee745ee' to '{md5}c06aae61154ba6513f6880c002fdcd8e'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[hdfs-site]/File[/etc/hadoop/conf/hdfs-site.xml]/content: content changed '{md5}2b4ba459c4848bdf36ddfc2ad06ed11b' to '{md5}99a3777ebed53e7bf12d750a7bf443b9'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}c1dedfee4f3b3943de5b5f058e38542f' to '{md5}d2a08d08fc6ff1017b48e1ae83f801fb'\nnotice: Finished catalog run in 4.56 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 43,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "MAPREDUCE_CLIENT",
+        "start_time" : 1368055521420,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/5",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 5,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HBASE_MASTER",
+        "start_time" : 1368055520609,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/18",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "warning: Dynamic lookup of $tasktracker_port is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_url is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_driver is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_username is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_password is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nnotice: /Stage[1]/Hdp::Snappy::Package/Hdp::Snappy::Package::Ln[32]/Hdp::Exec[hdp::snappy::package::ln 32]/Exec[hdp::snappy::package::ln 32]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[core-site]/File[/etc/hadoop/conf/core-site.xml]/content: content changed '{md5}fd0459328d941d2698e2005d96ec9ea2' to '{md5}9c08069ac9156ceaabfc08103a36c2db'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[hdfs-site]/File[/etc/hadoop/conf/hdfs-site.xml]/content: content changed '{md5}0d893cb5a36e40c00c182740bdc54123' to '{md5}9eeeeff99463949dd715671119b05dfb'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}a0ca13c7b38019c13ea2a1edbf8ab2f8' to '{md5}e2001c5600068a3a89d5f86c48461d66'\nnotice: Finished catalog run in 3.41 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host1",
+        "id" : 18,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HDFS_CLIENT",
+        "start_time" : 1368055521004,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/26",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "ABORTED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 26,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "SECONDARY_NAMENODE",
+        "start_time" : 1368055521132,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/24",
+      "Tasks" : {
+        "exit_code" : 777,
+        "stdout" : "notice: /Stage[1]/Hdp::Snappy::Package/Hdp::Snappy::Package::Ln[32]/Hdp::Exec[hdp::snappy::package::ln 32]/Exec[hdp::snappy::package::ln 32]/returns: executed successfully",
+        "status" : "ABORTED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 24,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "MYSQL_SERVER",
+        "start_time" : 1368055521101,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/30",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "ABORTED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 30,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "ZOOKEEPER_SERVER",
+        "start_time" : 1368055521216,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/48",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[log4j.properties]/Hdp::Configfile[/etc/zookeeper/conf/log4j.properties]/File[/etc/zookeeper/conf/log4j.properties]/content: content changed '{md5}ec8870c3a6c3a03e332c6c1152231549' to '{md5}e20def562778e980a584d03423dd77d6'\nnotice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[log4j.properties]/Hdp::Configfile[/etc/zookeeper/conf/log4j.properties]/File[/etc/zookeeper/conf/log4j.properties]/owner: owner changed 'root' to 'zookeeper'\nnotice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[log4j.properties]/Hdp::Configfile[/etc/zookeeper/conf/log4j.properties]/File[/etc/zookeeper/conf/log4j.properties]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[zookeeper-env.sh]/Hdp::Configfile[/etc/zookeeper/conf/zookeeper-env.sh]/File[/etc/zookeeper/conf/zookeeper-env.sh]/ensure: created\nnotice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[configuration.xsl]/Hdp::Configfile[/etc/zookeeper/conf/configuration.xsl]/File[/etc/zookeeper/conf/configuration.xsl]/content: content changed '{md5}fe496167bb149c71dd97c352686c9029' to '{md5}5478ee657cc4bb35e99e13c5d7ae4111'\nnotice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[configuration.xsl]/Hdp::Configfile[/etc/zookeeper/conf/configuration.xsl]/File[/etc/zookeeper/conf/configuration.xsl]/owner: owner changed 'root' to 'zookeeper'\nnotice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[configuration.xsl]/Hdp::Configfile[/etc/zookeeper/conf/configuration.xsl]/File[/etc/zookeeper/conf/configuration.xsl]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-zookeeper/File[/etc/zookeeper/conf/zoo_sample.cfg]/owner: owner changed 'root' to 'zookeeper'\nnotice: /Stage[2]/Hdp-zookeeper/File[/etc/zookeeper/conf/zoo_sample.cfg]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 5.21 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 48,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "ZOOKEEPER_CLIENT",
+        "start_time" : 1368055521514,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/45",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-pig/Hdp::Directory[/etc/pig/conf]/File[/etc/pig/conf]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-pig/Hdp::Directory[/etc/pig/conf]/File[/etc/pig/conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-pig/Hdp-pig::Configfile[pig-env.sh]/Hdp::Configfile[/etc/pig/conf/pig-env.sh]/File[/etc/pig/conf/pig-env.sh]/ensure: created\nnotice: /Stage[2]/Hdp-pig/Hdp-pig::Configfile[pig.properties]/Hdp::Configfile[/etc/pig/conf/pig.properties]/File[/etc/pig/conf/pig.properties]/content: content changed '{md5}ba02e0d405cdbafd081e13ab2ef06403' to '{md5}c53b9db5f04e0c66451e52b4b39c8b17'\nnotice: /Stage[2]/Hdp-pig/Hdp-pig::Configfile[pig.properties]/Hdp::Configfile[/etc/pig/conf/pig.properties]/File[/etc/pig/conf/pig.properties]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-pig/Hdp-pig::Configfile[pig.properties]/Hdp::Configfile[/etc/pig/conf/pig.properties]/File[/etc/pig/conf/pig.properties]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-pig/Hdp-pig::Configfile[log4j.properties]/Hdp::Configfile[/etc/pig/conf/log4j.properties]/File[/etc/pig/conf/log4j.properties]/content: content changed '{md5}fd58c23539a391f6a74db6e22b67f7d3' to '{md5}82b233fb0a252aae098c7267aafeb01f'\nnotice: /Stage[2]/Hdp-pig/Hdp-pig::Configfile[log4j.properties]/Hdp::Configfile[/etc/pig/conf/log4j.properties]/File[/etc/pig/conf/log4j.properties]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-pig/Hdp-pig::Configfile[log4j.properties]/Hdp::Configfile[/etc/pig/conf/log4j.properties]/File[/etc/pig/conf/log4j.properties]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 16.94 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 45,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "PIG",
+        "start_time" : 1368055521466,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/13",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 13,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "TASKTRACKER",
+        "start_time" : 1368055520812,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/8",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 8,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HDFS_CLIENT",
+        "start_time" : 1368055520680,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/29",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "ABORTED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 29,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "ZOOKEEPER_CLIENT",
+        "start_time" : 1368055521200,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/10",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 10,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "MAPREDUCE_CLIENT",
+        "start_time" : 1368055520739,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/16",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[stopGmond.sh]/File[/usr/libexec/hdp/ganglia/stopGmond.sh]/ensure: defined content as '{md5}d858a488d8d21b0881770c5330673b36'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[teardownGanglia.sh]/File[/usr/libexec/hdp/ganglia/teardownGanglia.sh]/ensure: defined content as '{md5}c005a9af684576cfeba9abb1b7fe57fa'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Init_file[gmetad]/File[/etc/init.d/hdp-gmetad]/ensure: defined content as '{md5}cd585a5eb635c79998438ee3fc5aacc9'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Config-gen/Hdp-ganglia::Config::Generate_monitor[HDPJobTracker]/Hdp::Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPJobTracker -o root -g hadoop]/Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPJobTracker -o root -g hadoop]/returns: executed successfully\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Config-gen/Hdp-ganglia::Config::Generate_monitor[HDPSlaves]/Hdp::Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPSlaves -o root -g hadoop]/Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPSlaves -o root -g hadoop]/returns: executed successfully\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d/multicpu.conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d/modgstatus.conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/gmond.conf]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 9.32 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host1",
+        "id" : 16,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1368055520970,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/44",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-oozie/Hdp-oozie::Ownership[ownership]/File[/etc/oozie/conf/action-conf/hive.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-oozie/Hdp-oozie::Ownership[ownership]/File[/etc/oozie/conf/adminusers.txt]/owner: owner changed 'root' to 'oozie'\nnotice: /Stage[2]/Hdp-oozie/Hdp-oozie::Ownership[ownership]/File[/etc/oozie/conf/adminusers.txt]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-oozie/Hdp-oozie::Ownership[ownership]/File[/etc/oozie/conf/oozie-default.xml]/owner: owner changed 'root' to 'oozie'\nnotice: /Stage[2]/Hdp-oozie/Hdp-oozie::Ownership[ownership]/File[/etc/oozie/conf/oozie-default.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-oozie/Configgenerator::Configfile[oozie-site]/File[/etc/oozie/conf/oozie-site.xml]/content: content changed '{md5}11c7e0ea46916a75e66920fac8c93621' to '{md5}40dc1b06cc68314a710162a9532a1321'\nnotice: /Stage[2]/Hdp-oozie/Configgenerator::Configfile[oozie-site]/File[/etc/oozie/conf/oozie-site.xml]/owner: owner changed 'root' to 'oozie'\nnotice: /Stage[2]/Hdp-oozie/Configgenerator::Configfile[oozie-site]/File[/etc/oozie/conf/oozie-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-oozie/Configgenerator::Configfile[oozie-site]/File[/etc/oozie/conf/oozie-site.xml]/mode: mode changed '0644' to '0660'\nnotice: Finished catalog run in 14.60 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 44,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "OOZIE_CLIENT",
+        "start_time" : 1368055521448,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/37",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[stopGmetad.sh]/File[/usr/libexec/hdp/ganglia/stopGmetad.sh]/ensure: defined content as '{md5}55826d55bf08fa14750c87d51a0f68b3'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[stopGmond.sh]/File[/usr/libexec/hdp/ganglia/stopGmond.sh]/ensure: defined content as '{md5}d858a488d8d21b0881770c5330673b36'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[teardownGanglia.sh]/File[/usr/libexec/hdp/ganglia/teardownGanglia.sh]/ensure: defined content as '{md5}c005a9af684576cfeba9abb1b7fe57fa'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Init_file[gmetad]/File[/etc/init.d/hdp-gmetad]/ensure: defined content as '{md5}cd585a5eb635c79998438ee3fc5aacc9'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Config-gen/Hdp-ganglia::Config::Generate_monitor[HDPSlaves]/Hdp::Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPSlaves -o root -g hadoop]/Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPSlaves -o root -g hadoop]/returns: executed successfully\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d/multicpu.conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d/modgstatus.conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/gmond.conf]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 8.51 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 37,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1368055521324,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/41",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "warning: Dynamic lookup of $tasktracker_port is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_url is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_driver is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_username is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_password is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nnotice: /Stage[1]/Hdp::Snappy::Package/Hdp::Snappy::Package::Ln[32]/Hdp::Exec[hdp::snappy::package::ln 32]/Exec[hdp::snappy::package::ln 32]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[core-site]/File[/etc/hadoop/conf/core-site.xml]/content: content changed '{md5}c8a0f85effc4a49564fa27d0be5c546a' to '{md5}20dda7d53e69b5d0a642036e3ee745ee'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[hdfs-site]/File[/etc/hadoop/conf/hdfs-site.xml]/content: content changed '{md5}c2839a88d689a6a6df4070771f4409ff' to '{md5}2b4ba459c4848bdf36ddfc2ad06ed11b'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}1bc7af66457de934cdfd564a3a8c4452' to '{md5}c1dedfee4f3b3943de5b5f058e38542f'\nnotice: Finished catalog run in 3.32 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 41,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HDFS_CLIENT",
+        "start_time" : 1368055521387,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/14",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 14,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "ZOOKEEPER_SERVER",
+        "start_time" : 1368055520928,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/42",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hive/Hdp-hive::Configfile[hive-env.sh]/Hdp::Configfile[/etc/hive/conf/hive-env.sh]/File[/etc/hive/conf/hive-env.sh]/ensure: created\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-env.sh.template]/owner: owner changed 'root' to 'hive'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-env.sh.template]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-default.xml.template]/owner: owner changed 'root' to 'hive'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-default.xml.template]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-exec-log4j.properties.template]/owner: owner changed 'root' to 'hive'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-exec-log4j.properties.template]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-log4j.properties.template]/owner: owner changed 'root' to 'hive'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-log4j.properties.template]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 2.95 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 42,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HIVE_CLIENT",
+        "start_time" : 1368055521402,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/35",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[configuration.xsl]/Hdp::Configfile[/etc/zookeeper/conf/configuration.xsl]/File[/etc/zookeeper/conf/configuration.xsl]/content: content changed '{md5}fe496167bb149c71dd97c352686c9029' to '{md5}5478ee657cc4bb35e99e13c5d7ae4111'\nnotice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[configuration.xsl]/Hdp::Configfile[/etc/zookeeper/conf/configuration.xsl]/File[/etc/zookeeper/conf/configuration.xsl]/owner: owner changed 'root' to 'zookeeper'\nnotice: /Stage[2]/Hdp-zookeeper/Hdp-zookeeper::Configfile[configuration.xsl]/Hdp::Configfile[/etc/zookeeper/conf/configuration.xsl]/File[/etc/zookeeper/conf/configuration.xsl]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-zookeeper/File[/etc/zookeeper/conf/zoo_sample.cfg]/owner: owner changed 'root' to 'zookeeper'\nnotice: /Stage[2]/Hdp-zookeeper/File[/etc/zookeeper/conf/zoo_sample.cfg]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-zookeeper::Service/Hdp::Directory_recursive_create[/grid/0/hadoop/zookeeper]/Hdp::Exec[mkdir -p /grid/0/hadoop/zookeeper]/Exec[mkdir -p /grid/0/hadoop/zookeeper]/returns: executed successfully\nnotice: /Stage[2]/Hdp-zookeeper::Service/Hdp::Directory_recursive_create[/grid/0/hadoop/zookeeper]/Hdp::Directory[/grid/0/hadoop/zookeeper]/File[/grid/0/hadoop/zookeeper]/owner: owner changed 'root' to 'zookeeper'\nnotice: /Stage[2]/Hdp-zookeeper::Service/Hdp::Directory_recursive_create[/grid/0/hadoop/zookeeper]/Hdp::Directory[/grid/0/hadoop/zookeeper]/File[/grid/0/hadoop/zookeeper]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[main]/Hdp-zookeeper::Set_myid/File[/grid/0/hadoop/zookeeper/myid]/ensure: defined content as '{md5}eccbc87e4b5ce2fe28308fd9f2a7baf3'\nnotice: Finished catalog run in 2.97 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host4",
+        "id" : 35,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "ZOOKEEPER_SERVER",
+        "start_time" : 1368055521291,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/28",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "ABORTED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 28,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "WEBHCAT_SERVER",
+        "start_time" : 1368055521169,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/46",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-sqoop/Hdp::Directory[/usr/lib/sqoop/conf]/File[/usr/lib/sqoop/conf]/owner: owner changed 'root' to 'sqoop'\nnotice: /Stage[2]/Hdp-sqoop/Hdp::Directory[/usr/lib/sqoop/conf]/File[/usr/lib/sqoop/conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-sqoop/Hdp-sqoop::Configfile[sqoop-env.sh]/Hdp::Configfile[/usr/lib/sqoop/conf/sqoop-env.sh]/File[/usr/lib/sqoop/conf/sqoop-env.sh]/ensure: created\nnotice: /Stage[2]/Hdp-sqoop/Hdp-sqoop::Ownership[ownership]/File[/usr/lib/sqoop/conf/sqoop-site.xml]/owner: owner changed 'root' to 'sqoop'\nnotice: /Stage[2]/Hdp-sqoop/Hdp-sqoop::Ownership[ownership]/File[/usr/lib/sqoop/conf/sqoop-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-sqoop/Hdp-sqoop::Ownership[ownership]/File[/usr/lib/sqoop/conf/sqoop-env-template.sh]/owner: owner changed 'root' to 'sqoop'\nnotice: /Stage[2]/Hdp-sqoop/Hdp-sqoop::Ownership[ownership]/File[/usr/lib/sqoop/conf/sqoop-env-template.sh]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-sqoop/Hdp-sqoop::Ownership[ownership]/File[/usr/lib/sqoop/conf/sqoop-site-template.xml]/owner: owner changed 'root' to 'sqoop'\nnotice: /Stage[2]/Hdp-sqoop/Hdp-sqoop::Ownership[ownership]/File[/usr/lib/sqoop/conf/sqoop-site-template.xml]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 24.76 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 46,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "SQOOP",
+        "start_time" : 1368055521483,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/19",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hive/Hdp-hive::Configfile[hive-env.sh]/Hdp::Configfile[/etc/hive/conf/hive-env.sh]/File[/etc/hive/conf/hive-env.sh]/ensure: created\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-env.sh.template]/owner: owner changed 'root' to 'hive'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-env.sh.template]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-default.xml.template]/owner: owner changed 'root' to 'hive'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-default.xml.template]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-exec-log4j.properties.template]/owner: owner changed 'root' to 'hive'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-exec-log4j.properties.template]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-log4j.properties.template]/owner: owner changed 'root' to 'hive'\nnotice: /Stage[2]/Hdp-hive/Hdp-hive::Ownership[ownership]/File[/etc/hive/conf/hive-log4j.properties.template]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 10.50 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host1",
+        "id" : 19,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HIVE_CLIENT",
+        "start_time" : 1368055521019,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/34",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[core-site]/File[/etc/hadoop/conf/core-site.xml]/content: content changed '{md5}41efaed3b37c525e0de6d3fdd0ce2c3b' to '{md5}b54386c36d4b6a8f22a64cb2117d827c'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[hdfs-site]/File[/etc/hadoop/conf/hdfs-site.xml]/content: content changed '{md5}f84e4f711105cdd479ffcbc02140e122' to '{md5}2e2e6757210d22480438a93c25364cf2'\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Exec[mkdir -p /var/run/hadoop/mapred]/Exec[mkdir -p /var/run/hadoop/mapred]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Directory[/var/run/hadoop/mapred]/File[/var/run/hadoop/mapred]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Directory[/var/run/hadoop/mapred]/File[/var/run/hadoop/mapred]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Exec[mkdir -p /var/log/hadoop/mapred]/Exec[mkdir -p /var/log/hadoop/mapred]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Directory[/var/log/hadoop/mapred]/File[/var/log/hadoop/mapred]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Directory[/var/log/hadoop/mapred]/File[/var/log/hadoop/mapred]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}838af228cae1e37d8a08cf5dbedb2b39' to '{md5}40881a02f861587caefca60f3403178a'\nnotice: Finished catalog run in 4.23 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host4",
+        "id" : 34,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "TASKTRACKER",
+        "start_time" : 1368055521276,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/17",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[log4j.properties]/Hdp::Configfile[/etc/hbase/conf/log4j.properties]/File[/etc/hbase/conf/log4j.properties]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/content: content changed '{md5}2af7b4a7d7a35b7fc0313332bd883f8b' to '{md5}abcf9f8f2f83e8d15fcc2b87a92d17c0'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/owner: owner changed 'root' to 'hbase'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/content: content changed '{md5}36a3876b43cf900ae016be8d7bfa2269' to '{md5}a9d57354509db9f1edbc5d8c7ecd14bc'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/owner: owner changed 'root' to 'hbase'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase::Regionserver/Hdp-hbase::Service[regionserver]/Hdp::Directory_recursive_create[/var/log/hbase]/Hdp::Directory[/var/log/hbase]/File[/var/log/hbase]/group: group changed 'hbase' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase::Regionserver/Hdp-hbase::Service[regionserver]/Hdp::Directory_recursive_create[/var/run/hbase]/Hdp::Directory[/var/run/hbase]/File[/var/run/hbase]/group: group changed 'hbase' to 'hadoop'\nnotice: Finished catalog run in 13.40 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host1",
+        "id" : 17,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HBASE_REGIONSERVER",
+        "start_time" : 1368055520987,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/6",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 6,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HBASE_REGIONSERVER",
+        "start_time" : 1368055520630,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/12",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 12,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "OOZIE_CLIENT",
+        "start_time" : 1368055520783,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/47",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[core-site]/File[/etc/hadoop/conf/core-site.xml]/content: content changed '{md5}c06aae61154ba6513f6880c002fdcd8e' to '{md5}c3b8a0970290d7a5c184f30f7e4b2911'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[hdfs-site]/File[/etc/hadoop/conf/hdfs-site.xml]/content: content changed '{md5}99a3777ebed53e7bf12d750a7bf443b9' to '{md5}642dea30d1091b8ea281f99862c542ad'\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Exec[mkdir -p /var/run/hadoop/mapred]/Exec[mkdir -p /var/run/hadoop/mapred]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Directory[/var/run/hadoop/mapred]/File[/var/run/hadoop/mapred]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Directory[/var/run/hadoop/mapred]/File[/var/run/hadoop/mapred]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Exec[mkdir -p /var/log/hadoop/mapred]/Exec[mkdir -p /var/log/hadoop/mapred]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Directory[/var/log/hadoop/mapred]/File[/var/log/hadoop/mapred]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Tasktracker/Hdp-hadoop::Service[tasktracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Directory[/var/log/hadoop/mapred]/File[/var/log/hadoop/mapred]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}d2a08d08fc6ff1017b48e1ae83f801fb' to '{md5}79ca5749c9a248e249016893ef7af7ab'\nnotice: Finished catalog run in 4.30 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 47,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "TASKTRACKER",
+        "start_time" : 1368055521498,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/11",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 11,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "NAMENODE",
+        "start_time" : 1368055520762,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/25",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "ABORTED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 25,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "OOZIE_SERVER",
+        "start_time" : 1368055521116,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/2",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[main]/Hdp-repos::Process_repo/File[HDP]/ensure: defined content as '{md5}e4521dbc3c19e73cef603cd7d2a7f1b0'\nnotice: Finished catalog run in 0.05 seconds\nnotice: /Stage[main]/Hdp-repos::Process_repo/File[HDP-epel]/ensure: defined content as '{md5}e9b95c5b568ee24769f8d0f851acade2'\nnotice: Finished catalog run in 0.05 seconds\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}5248c973f1cd3c22fefd056024434bcb' to '{md5}ee13dc8938a61abcb5c8fbdebd86acce'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Exec[mkdir -p /var/log/hadoop/hdfs]/Exec[mkdir -p /var/log/hadoop/hdfs]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Directory[/var/log/hadoop/hdfs]/File[/var/log/hadoop/hdfs]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Directory[/var/log/hadoop/hdfs]/File[/var/log/hadoop/hdfs]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Exec[mkdir -p /var/run/hadoop/hdfs]/Exec[mkdir -p /var/run/hadoop/hdfs]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Directory[/var/run/hadoop/hdfs]/File[/var/run/hadoop/hdfs]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Directory[/var/run/hadoop/hdfs]/File[/var/run/hadoop/hdfs]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 136.37 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none\nnone\nnone",
+        "host_name" : "host3",
+        "id" : 2,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "DATANODE",
+        "start_time" : 1368055520507,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/20",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hive/Hdp-hive::Configfile[hive-env.sh]/Hdp::Configfile[/etc/hive/conf.server/hive-env.sh]/File[/etc/hive/conf.server/hive-env.sh]/ensure: created\nnotice: /Stage[main]/Hdp-hive::Jdbc-connector/Hdp::Package[mysql-connector-java]/Hdp::Package::Process_pkg[mysql-connector-java]/Package[mysql-connector-java]/ensure: created\nnotice: /Stage[main]/Hdp-hive::Jdbc-connector/Hdp::Package[mysql-connector-java]/Hdp::Package::Process_pkg[mysql-connector-java]/Hdp::Java::Package[mysql-connector-java]/File[/usr/jdk/jdk1.6.0_31/bin/java mysql-connector-java]/ensure: created\nnotice: /Stage[main]/Hdp-hive::Jdbc-connector/Hdp::Exec[hive mkdir -p ${artifact_dir} ;  cp /usr/share/java/${jdbc_jar_name}  ${target}]/Exec[hive mkdir -p ${artifact_dir} ;  cp /usr/share/java/${jdbc_jar_name}  ${target}]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hive::Service/File[/tmp/startMetastore.sh]/ensure: defined content as '{md5}0232573569679e6fb6475abc9f38253f'\nnotice: /Stage[2]/Hdp-hive::Service/File[/tmp/startHiveserver2.sh]/ensure: defined content as '{md5}05e3856b6032b764c5b37bc06a95ef52'\nnotice: /Stage[2]/Hdp-hive::Service/Hdp-hive::Service::Directory[/var/lib/hive]/Hdp::Directory_recursive_create[/var/lib/hive]/Hdp::Directory[/var/lib/hive]/File[/var/lib/hive]/group: group changed 'hive' to 'hadoop'\nnotice: /Stage[2]/Hdp-hive::Service/Hdp-hive::Service::Directory[/var/log/hive]/Hdp::Directory_recursive_create[/var/log/hive]/Hdp::Directory[/var/log/hive]/File[/var/log/hive]/group: group changed 'hive' to 'hadoop'\nnotice: /Stage[2]/Hdp-hive::Service/Hdp-hive::Service::Directory[/var/run/hive]/Hdp::Directory_recursive_create[/var/run/hive]/Hdp::Directory[/var/run/hive]/File[/var/run/hive]/group: group changed 'hive' to 'hadoop'\nnotice: Finished catalog run in 59.16 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host1",
+        "id" : 20,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HIVE_METASTORE",
+        "start_time" : 1368055521035,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/4",
+      "Tasks" : {
+        "exit_code" : 777,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 4,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_SERVER",
+        "start_time" : 1368055520581,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/3",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[teardownGanglia.sh]/File[/usr/libexec/hdp/ganglia/teardownGanglia.sh]/ensure: defined content as '{md5}c005a9af684576cfeba9abb1b7fe57fa'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Init_file[gmetad]/File[/etc/init.d/hdp-gmetad]/ensure: defined content as '{md5}cd585a5eb635c79998438ee3fc5aacc9'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Config-gen/Hdp-ganglia::Config::Generate_monitor[HDPNameNode]/Hdp::Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPNameNode -o root -g hadoop]/Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPNameNode -o root -g hadoop]/returns: executed successfully\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Config-gen/Hdp-ganglia::Config::Generate_monitor[HDPSlaves]/Hdp::Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPSlaves -o root -g hadoop]/Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPSlaves -o root -g hadoop]/returns: executed successfully\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Config-gen/Hdp-ganglia::Config::Generate_monitor[HDPHBaseMaster]/Hdp::Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPHBaseMaster -o root -g hadoop]/Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPHBaseMaster -o root -g hadoop]/returns: executed successfully\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d/multicpu.conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d/modgstatus.conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/gmond.conf]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 11.85 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host3",
+        "id" : 3,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1368055520555,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/33",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[log4j.properties]/Hdp::Configfile[/etc/hbase/conf/log4j.properties]/File[/etc/hbase/conf/log4j.properties]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/content: content changed '{md5}2af7b4a7d7a35b7fc0313332bd883f8b' to '{md5}abcf9f8f2f83e8d15fcc2b87a92d17c0'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/owner: owner changed 'root' to 'hbase'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/content: content changed '{md5}36a3876b43cf900ae016be8d7bfa2269' to '{md5}4d4fbb5de8a4e973dd8fa8f3e7250116'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/owner: owner changed 'root' to 'hbase'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase::Regionserver/Hdp-hbase::Service[regionserver]/Hdp::Directory_recursive_create[/var/log/hbase]/Hdp::Directory[/var/log/hbase]/File[/var/log/hbase]/group: group changed 'hbase' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase::Regionserver/Hdp-hbase::Service[regionserver]/Hdp::Directory_recursive_create[/var/run/hbase]/Hdp::Directory[/var/run/hbase]/File[/var/run/hbase]/group: group changed 'hbase' to 'hadoop'\nnotice: Finished catalog run in 13.77 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host4",
+        "id" : 33,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HBASE_REGIONSERVER",
+        "start_time" : 1368055521263,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/15",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[main]/Hdp-repos::Process_repo/File[HDP]/ensure: defined content as '{md5}e4521dbc3c19e73cef603cd7d2a7f1b0'\nnotice: Finished catalog run in 0.05 seconds\nnotice: /Stage[main]/Hdp-repos::Process_repo/File[HDP-epel]/ensure: defined content as '{md5}e9b95c5b568ee24769f8d0f851acade2'\nnotice: Finished catalog run in 0.05 seconds\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}5248c973f1cd3c22fefd056024434bcb' to '{md5}a0ca13c7b38019c13ea2a1edbf8ab2f8'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Exec[mkdir -p /var/log/hadoop/hdfs]/Exec[mkdir -p /var/log/hadoop/hdfs]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Directory[/var/log/hadoop/hdfs]/File[/var/log/hadoop/hdfs]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Directory[/var/log/hadoop/hdfs]/File[/var/log/hadoop/hdfs]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Exec[mkdir -p /var/run/hadoop/hdfs]/Exec[mkdir -p /var/run/hadoop/hdfs]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Directory[/var/run/hadoop/hdfs]/File[/var/run/hadoop/hdfs]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Directory[/var/run/hadoop/hdfs]/File[/var/run/hadoop/hdfs]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 132.87 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none\nnone\nnone",
+        "host_name" : "host1",
+        "id" : 15,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "DATANODE",
+        "start_time" : 1368055520950,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/23",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "warning: Dynamic lookup of $tasktracker_port is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_url is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_driver is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_username is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Dynamic lookup of $ambari_db_rca_password is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nnotice: /Stage[1]/Hdp::Snappy::Package/Hdp::Snappy::Package::Ln[32]/Hdp::Exec[hdp::snappy::package::ln 32]/Exec[hdp::snappy::package::ln 32]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[core-site]/File[/etc/hadoop/conf/core-site.xml]/content: content changed '{md5}fc71ac792e13330646abe876761594b2' to '{md5}524bad910353fd0e90a24f3de55c03bf'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[hdfs-site]/File[/etc/hadoop/conf/hdfs-site.xml]/content: content changed '{md5}b3b695b8eff925a64bae2f7af2b1ca1d' to '{md5}44c12f8db61bca147b8bea69a172bd67'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}acb56ae197fa43d9f66779ae0337f9c6' to '{md5}89cf701090fc810d922e81d8632aa62c'\nnotice: Finished catalog run in 3.76 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host1",
+        "id" : 23,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "MAPREDUCE_CLIENT",
+        "start_time" : 1368055521087,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/36",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[main]/Hdp-repos::Process_repo/File[HDP]/ensure: defined content as '{md5}e4521dbc3c19e73cef603cd7d2a7f1b0'\nnotice: Finished catalog run in 0.05 seconds\nnotice: /Stage[main]/Hdp-repos::Process_repo/File[HDP-epel]/ensure: defined content as '{md5}e9b95c5b568ee24769f8d0f851acade2'\nnotice: Finished catalog run in 0.05 seconds\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}5248c973f1cd3c22fefd056024434bcb' to '{md5}1bc7af66457de934cdfd564a3a8c4452'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Exec[mkdir -p /var/log/hadoop/hdfs]/Exec[mkdir -p /var/log/hadoop/hdfs]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Directory[/var/log/hadoop/hdfs]/File[/var/log/hadoop/hdfs]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Directory[/var/log/hadoop/hdfs]/File[/var/log/hadoop/hdfs]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Exec[mkdir -p /var/run/hadoop/hdfs]/Exec[mkdir -p /var/run/hadoop/hdfs]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Directory[/var/run/hadoop/hdfs]/File[/var/run/hadoop/hdfs]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Directory[/var/run/hadoop/hdfs]/File[/var/run/hadoop/hdfs]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 97.11 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none\nnone\nnone",
+        "host_name" : "host2",
+        "id" : 36,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "DATANODE",
+        "start_time" : 1368055521309,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/38",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[log4j.properties]/Hdp::Configfile[/etc/hbase/conf/log4j.properties]/File[/etc/hbase/conf/log4j.properties]/content: content changed '{md5}1254069b772b9815286f88dc26230552' to '{md5}9c35e818ef1c6567c035d0ed2d895e18'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[log4j.properties]/Hdp::Configfile[/etc/hbase/conf/log4j.properties]/File[/etc/hbase/conf/log4j.properties]/owner: owner changed 'root' to 'hbase'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[log4j.properties]/Hdp::Configfile[/etc/hbase/conf/log4j.properties]/File[/etc/hbase/conf/log4j.properties]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/content: content changed '{md5}2af7b4a7d7a35b7fc0313332bd883f8b' to '{md5}abcf9f8f2f83e8d15fcc2b87a92d17c0'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/owner: owner changed 'root' to 'hbase'\nnotice: /Stage[2]/Hdp-hbase/Hdp-hbase::Configfile[hadoop-metrics.properties]/Hdp::Configfile[/etc/hbase/conf/hadoop-metrics.properties]/File[/etc/hbase/conf/hadoop-metrics.properties]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/content: content changed '{md5}36a3876b43cf900ae016be8d7bfa2269' to '{md5}d1aa5dd2ec8e437312e193f2c69ef2ff'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/owner: owner changed 'root' to 'hbase'\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 14.34 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 38,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HBASE_CLIENT",
+        "start_time" : 1368055521339,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/40",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hcat/Hdp::Package[hcat]/Hdp::Package::Process_pkg[hcat]/Package[hcatalog]/ensure: created\nnotice: /Stage[2]/Hdp-hcat/Hdp::Package[hcat]/Hdp::Package::Process_pkg[hcat]/Hdp::Java::Package[hcat]/File[/usr/jdk/jdk1.6.0_31/bin/java hcat]/ensure: created\nnotice: /Stage[2]/Hdp-hcat/Hdp::User[hcat]/User[hcat]/gid: gid changed '492' to 'hadoop'\nnotice: /Stage[2]/Hdp-hcat/Hdp::Directory[/etc/hcatalog/conf]/File[/etc/hcatalog/conf]/owner: owner changed 'root' to 'hcat'\nnotice: /Stage[2]/Hdp-hcat/Hdp::Directory[/etc/hcatalog/conf]/File[/etc/hcatalog/conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hcat/Hdp::Directory_recursive_create[/var/run/webhcat]/Hdp::Exec[mkdir -p /var/run/webhcat]/Exec[mkdir -p /var/run/webhcat]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hcat/Hdp::Directory_recursive_create[/var/run/webhcat]/Hdp::Directory[/var/run/webhcat]/File[/var/run/webhcat]/owner: owner changed 'root' to 'hcat'\nnotice: /Stage[2]/Hdp-hcat/Hdp::Directory_recursive_create[/var/run/webhcat]/Hdp::Directory[/var/run/webhcat]/File[/var/run/webhcat]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hcat/Hdp-hcat::Configfile[hcat-env.sh]/Hdp::Configfile[/etc/hcatalog/conf/hcat-env.sh]/File[/etc/hcatalog/conf/hcat-env.sh]/ensure: created\nnotice: Finished catalog run in 17.42 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 40,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HCAT",
+        "start_time" : 1368055521374,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/39",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "warning: Dynamic lookup of $security_enabled at /var/lib/ambari-agent/puppet/modules/hdp-hbase/manifests/init.pp:102 is deprecated.  Support will be removed in Puppet 2.8.  Use a fully-qualified variable name (e.g., $classname::variable) or parameterized classes.\nwarning: Scope(Hdp::Configfile[/etc/hbase/conf/hbase-env.sh]): Could not look up qualified variable '::hdp-hadoop::params::conf_dir'; class ::hdp-hadoop::params has not been evaluated\nnotice: /Stage[1]/Hdp::Snappy::Package/Hdp::Snappy::Package::Ln[32]/Hdp::Exec[hdp::snappy::package::ln 32]/Exec[hdp::snappy::package::ln 32]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hbase/Configgenerator::Configfile[hbase-site]/File[/etc/hbase/conf/hbase-site.xml]/content: content changed '{md5}d1aa5dd2ec8e437312e193f2c69ef2ff' to '{md5}4a625935a9a3d5e3da5ede80033d9004'\nnotice: /Stage[2]/Hdp-hbase::Regionserver/Hdp-hbase::Service[regionserver]/Hdp::Directory_recursive_create[/var/log/hbase]/Hdp::Directory[/var/log/hbase]/File[/var/log/hbase]/group: group changed 'hbase' to 'hadoop'\nnotice: /Stage[2]/Hdp-hbase::Regionserver/Hdp-hbase::Service[regionserver]/Hdp::Directory_recursive_create[/var/run/hbase]/Hdp::Directory[/var/run/hbase]/File[/var/run/hbase]/group: group changed 'hbase' to 'hadoop'\nnotice: Finished catalog run in 2.97 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host2",
+        "id" : 39,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HBASE_REGIONSERVER",
+        "start_time" : 1368055521360,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/27",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "ABORTED",
+        "stderr" : "",
+        "host_name" : "host1",
+        "id" : 27,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "TASKTRACKER",
+        "start_time" : 1368055521146,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/9",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 9,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HIVE_CLIENT",
+        "start_time" : 1368055520703,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/32",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[stopGmetad.sh]/File[/usr/libexec/hdp/ganglia/stopGmetad.sh]/ensure: defined content as '{md5}55826d55bf08fa14750c87d51a0f68b3'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[stopGmond.sh]/File[/usr/libexec/hdp/ganglia/stopGmond.sh]/ensure: defined content as '{md5}d858a488d8d21b0881770c5330673b36'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Shell_file[teardownGanglia.sh]/File[/usr/libexec/hdp/ganglia/teardownGanglia.sh]/ensure: defined content as '{md5}c005a9af684576cfeba9abb1b7fe57fa'\nnotice: /Stage[2]/Hdp-ganglia::Config/Hdp-ganglia::Config::Init_file[gmetad]/File[/etc/init.d/hdp-gmetad]/ensure: defined content as '{md5}cd585a5eb635c79998438ee3fc5aacc9'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Config-gen/Hdp-ganglia::Config::Generate_monitor[HDPSlaves]/Hdp::Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPSlaves -o root -g hadoop]/Exec[/usr/libexec/hdp/ganglia/setupGanglia.sh -c HDPSlaves -o root -g hadoop]/returns: executed successfully\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d/multicpu.conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/conf.d/modgstatus.conf]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-ganglia::Monitor::Ownership/File[/etc/ganglia/gmond.conf]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 8.09 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host4",
+        "id" : 32,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "GANGLIA_MONITOR",
+        "start_time" : 1368055521248,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/7",
+      "Tasks" : {
+        "exit_code" : 999,
+        "stdout" : "",
+        "status" : "TIMEDOUT",
+        "stderr" : "",
+        "host_name" : "host3",
+        "id" : 7,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 2,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "HCAT",
+        "start_time" : 1368055520652,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/22",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[core-site]/File[/etc/hadoop/conf/core-site.xml]/content: content changed '{md5}9c08069ac9156ceaabfc08103a36c2db' to '{md5}fc71ac792e13330646abe876761594b2'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[hdfs-site]/File[/etc/hadoop/conf/hdfs-site.xml]/content: content changed '{md5}9eeeeff99463949dd715671119b05dfb' to '{md5}b3b695b8eff925a64bae2f7af2b1ca1d'\nnotice: /Stage[2]/Hdp-hadoop::Jobtracker/Hdp-hadoop::Service[jobtracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Exec[mkdir -p /var/run/hadoop/mapred]/Exec[mkdir -p /var/run/hadoop/mapred]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Jobtracker/Hdp-hadoop::Service[jobtracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Directory[/var/run/hadoop/mapred]/File[/var/run/hadoop/mapred]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Jobtracker/Hdp-hadoop::Service[jobtracker]/Hdp::Directory_recursive_create[/var/run/hadoop/mapred]/Hdp::Directory[/var/run/hadoop/mapred]/File[/var/run/hadoop/mapred]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Jobtracker/Hdp-hadoop::Service[jobtracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Exec[mkdir -p /var/log/hadoop/mapred]/Exec[mkdir -p /var/log/hadoop/mapred]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Jobtracker/Hdp-hadoop::Service[jobtracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Directory[/var/log/hadoop/mapred]/File[/var/log/hadoop/mapred]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Jobtracker/Hdp-hadoop::Service[jobtracker]/Hdp::Directory_recursive_create[/var/log/hadoop/mapred]/Hdp::Directory[/var/log/hadoop/mapred]/File[/var/log/hadoop/mapred]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}e2001c5600068a3a89d5f86c48461d66' to '{md5}acb56ae197fa43d9f66779ae0337f9c6'\nnotice: Finished catalog run in 3.64 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none",
+        "host_name" : "host1",
+        "id" : 22,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "JOBTRACKER",
+        "start_time" : 1368055521073,
+        "stage_id" : 1
+      }
+    },
+    {
+      "href" : "http://ambari-server:8080/api/v1/clusters/cluster/requests/1/tasks/31",
+      "Tasks" : {
+        "exit_code" : 0,
+        "stdout" : "notice: /Stage[main]/Hdp-repos::Process_repo/File[HDP]/ensure: defined content as '{md5}e4521dbc3c19e73cef603cd7d2a7f1b0'\nnotice: Finished catalog run in 0.05 seconds\nnotice: /Stage[main]/Hdp-repos::Process_repo/File[HDP-epel]/ensure: defined content as '{md5}e9b95c5b568ee24769f8d0f851acade2'\nnotice: Finished catalog run in 0.05 seconds\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/content: content changed '{md5}5248c973f1cd3c22fefd056024434bcb' to '{md5}838af228cae1e37d8a08cf5dbedb2b39'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/owner: owner changed 'root' to 'mapred'\nnotice: /Stage[2]/Hdp-hadoop::Initialize/Configgenerator::Configfile[mapred-site]/File[/etc/hadoop/conf/mapred-site.xml]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Exec[mkdir -p /var/log/hadoop/hdfs]/Exec[mkdir -p /var/log/hadoop/hdfs]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Directory[/var/log/hadoop/hdfs]/File[/var/log/hadoop/hdfs]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/log/hadoop/hdfs]/Hdp::Directory[/var/log/hadoop/hdfs]/File[/var/log/hadoop/hdfs]/group: group changed 'root' to 'hadoop'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Exec[mkdir -p /var/run/hadoop/hdfs]/Exec[mkdir -p /var/run/hadoop/hdfs]/returns: executed successfully\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Directory[/var/run/hadoop/hdfs]/File[/var/run/hadoop/hdfs]/owner: owner changed 'root' to 'hdfs'\nnotice: /Stage[2]/Hdp-hadoop::Datanode/Hdp-hadoop::Service[datanode]/Hdp::Directory_recursive_create[/var/run/hadoop/hdfs]/Hdp::Directory[/var/run/hadoop/hdfs]/File[/var/run/hadoop/hdfs]/group: group changed 'root' to 'hadoop'\nnotice: Finished catalog run in 81.85 seconds",
+        "status" : "COMPLETED",
+        "stderr" : "none\nnone\nnone",
+        "host_name" : "host4",
+        "id" : 31,
+        "cluster_name" : "cluster",
+        "attempt_cnt" : 1,
+        "request_id" : 1,
+        "command" : "INSTALL",
+        "role" : "DATANODE",
+        "start_time" : 1368055521233,
+        "stage_id" : 1
+      }
+    }
+  ]
+}

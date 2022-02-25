@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<configuration>
+
+  <property>
+    <name>content</name>
+    <display-name>Template for authorizers.xml</display-name>
+    <description>This is the jinja template for authorizers.xml</description>
+    <value>
+        &lt;!--
+        Licensed to the Apache Software Foundation (ASF) under one or more
+        contributor license agreements.  See the NOTICE file distributed with
+        this work for additional information regarding copyright ownership.
+        The ASF licenses this file to You under the Apache License, Version 2.0
+        (the &quot;License&quot;); you may not use this file except in compliance with
+        the License.  You may obtain a copy of the License at
+        http://www.apache.org/licenses/LICENSE-2.0
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+        --&gt;
+        &lt;!--
+        This file lists the authority providers to use when running securely. In order
+        to use a specific provider it must be configured here and it&apos;s identifier
+        must be specified in the nifi.properties file.
+        --&gt;
+        &lt;authorizers&gt;
+        
+        &lt;!--
+        The FileAuthorizer is NiFi&quot;s provided authorizer and has the following properties:
+        - Authorizations File - The file where the FileAuthorizer will store policies.
+        - Users File - The file where the FileAuthorizer will store users and groups.
+        - Initial Admin Identity - The identity of an initial admin user that will be granted access to the UI and
+            given the ability to create additional users, groups, and policies. The value of this property could be
+            a DN when using certificates or LDAP, or a Kerberos principal. This property will only be used when there
+            are no other users, groups, and policies defined. If this property is specified then a Legacy Authorized
+            Users File can not be specified.
+            NOTE: Any identity mapping rules specified in nifi.properties will also be applied to the initial admin identity,
+            so the value should be the unmapped identity.
+        - Legacy Authorized Users File - The full path to an existing authorized-users.xml that will be automatically
+            converted to the new authorizations model. If this property is specified then an Initial Admin Identity can
+            not be specified, and this property will only be used when there are no other users, groups, and policies defined.
+        - Node Identity [unique key] - The identity of a NiFi cluster node. When clustered, a property for each node
+            should be defined, so that every node knows about every other node. If not clustered these properties can be ignored.
+            The name of each property must be unique, for example for a three node cluster:
+            &quot;Node Identity A&quot;, &quot;Node Identity B&quot;, &quot;Node Identity C&quot; or &quot;Node Identity 1&quot;, &quot;Node Identity 2&quot;, &quot;Node Identity 3&quot;
+            NOTE: Any identity mapping rules specified in nifi.properties will also be applied to the node identities,
+            so the values should be the unmapped identities (i.e. full DN from a certificate).        
+        --&gt;
+        &lt;authorizer&gt;
+        &lt;identifier&gt;{{nifi_authorizer}}&lt;/identifier&gt;
+        {% if has_ranger_admin and enable_ranger_nifi %}
+        &lt;class&gt;org.apache.nifi.ranger.authorization.RangerNiFiAuthorizer&lt;/class&gt;
+        &lt;property name=&quot;Ranger Audit Config Path&quot;&gt;{{nifi_config_dir}}/ranger-nifi-audit.xml&lt;/property&gt;
+        &lt;property name=&quot;Ranger Security Config Path&quot;&gt;{{nifi_config_dir}}/ranger-nifi-security.xml&lt;/property&gt;
+        &lt;property name=&quot;Ranger Service Type&quot;&gt;nifi&lt;/property&gt;
+        &lt;property name=&quot;Ranger Application Id&quot;&gt;nifi&lt;/property&gt;
+        &lt;property name=&quot;Allow Anonymous&quot;&gt;true&lt;/property&gt;
+        &lt;property name=&quot;Ranger Admin Identity&quot;&gt;{{ranger_admin_identity}}&lt;/property&gt;
+        {% if security_enabled %}
+        &lt;property name=&quot;Ranger Kerberos Enabled&quot;&gt;true&lt;/property&gt;
+        {% else %}
+        &lt;property name=&quot;Ranger Kerberos Enabled&quot;&gt;false&lt;/property&gt;
+        {% endif %}
+        {% else %}
+        &lt;class&gt;org.apache.nifi.authorization.FileAuthorizer&lt;/class&gt;
+        &lt;property name=&quot;Authorizations File&quot;&gt;{{nifi_flow_config_dir}}/authorizations.xml&lt;/property&gt;
+        &lt;property name=&quot;Users File&quot;&gt;{{nifi_flow_config_dir}}/users.xml&lt;/property&gt;
+        &lt;property name=&quot;Initial Admin Identity&quot;&gt;{{nifi_initial_admin_id}}&lt;/property&gt;
+        &lt;property name=&quot;Legacy Authorized Users File&quot;&gt;&lt;/property&gt;
+        {% endif %}
+
+        {{nifi_ssl_config_content}}
+
+        &lt;/authorizer&gt;
+        &lt;/authorizers&gt;
+    </value>
+    <value-attributes>
+      <type>content</type>
+    </value-attributes>  
+    <on-ambari-upgrade add="true"/>
+  </property>
+
+</configuration>

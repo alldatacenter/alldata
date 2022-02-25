@@ -1,0 +1,43 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<p>{{{view.message}}}</p>
+<div class="task-top-wrap">
+  <div class="task-detail-ico-wrap">
+    <a href="#" {{translateAttr title="common.fullLogPopup.clickToCopy"}} {{action "textTrigger"}} class="task-detail-copy"><i class="glyphicon glyphicon-copy"></i> {{t common.copy}}</a>
+  </div>
+</div>
+<div class="task-detail-log-info">
+  <div class="content-area">
+    <div {{bindAttr class="view.textareaVisible::hidden :task-detail-log-clipboard-wrap"}}>
+      <textarea class="task-detail-log-clipboard"></textarea>
+    </div>
+    <div {{bindAttr class="view.textareaVisible:hidden :task-detail-log-maintext"}}>
+      <pre class="limited-height">{{visibleHosts}}</pre>
+    </div>
+    {{#unless expanded}}
+      <a href="#" {{action "showAll"}}>{{t tableView.filters.showAll}}</a>
+    {{/unless}}
+  </div>
+  {{#if hostNamesSkipped}}
+    <div class="alert alert-warning">
+      {{view.warningInfo}}<br />
+      <pre class="limited-height alert alert-warning"><strong>{{hostNamesSkippedVisible}}</strong></pre>
+    </div>
+  {{/if}}
+</div>

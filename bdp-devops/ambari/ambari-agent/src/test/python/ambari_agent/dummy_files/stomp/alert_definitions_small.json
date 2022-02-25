@@ -1,0 +1,92 @@
+{
+  "hash": "37fe2bd73438980c619c2b8c2f95d160",
+  "eventType": "CREATE",
+  "clusters": {
+    "0": {
+      "hash": "8f7b4e960133bc691661cbcdaddddec8",
+      "clusterName": "cl1",
+      "hostName": "ctr-e134-1499953498516-81665-01-000008.hwx.site",
+      "publicHostName": "ctr-e134-1499953498516-81665-01-000008.hwx.site",
+      "alertDefinitions": [{
+          "ignore_host": false,
+          "name": "hbase_master_cpu",
+          "componentName": "HBASE_MASTER",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "6c891177-b32f-47c8-befb-3846049f98e8",
+          "label": "HBase Master CPU Utilization",
+          "definitionId": 2,
+          "source": {
+            "jmx": {
+              "value": "{0} * 100",
+              "property_list": [
+                "java.lang:type=OperatingSystem/SystemCpuLoad",
+                "java.lang:type=OperatingSystem/AvailableProcessors"
+              ]
+            },
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 200.0
+              },
+              "ok": {
+                "text": "{1} CPU, load {0:.1%}"
+              },
+              "critical": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 250.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "connection_timeout": 5.0,
+              "default_port": 60010,
+              "http": "{{hbase-site/hbase.master.info.port}}",
+              "kerberos_principal": "{{hbase-site/hbase.security.authentication.spnego.kerberos.principal}}",
+              "kerberos_keytab": "{{hbase-site/hbase.security.authentication.spnego.kerberos.keytab}}"
+            }
+          },
+          "serviceName": "HBASE",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if CPU utilization of the HBase Master exceeds certain warning and critical thresholds. It checks the HBase Master JMX Servlet for the SystemCPULoad property. The threshold values are in percent."
+        },
+        {
+          "ignore_host": false,
+          "name": "hbase_regionserver_process_percent",
+          "enabled": true,
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "69ff4c8f-8e98-4cfd-b90f-6914e2f147ff",
+          "label": "Percent RegionServers Available",
+          "definitionId": 3,
+          "source": {
+            "alert_name": "hbase_regionserver_process",
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 10.0
+              },
+              "ok": {
+                "text": "affected: [{1}], total: [{0}]"
+              },
+              "critical": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 30.0
+              }
+            },
+            "type": "AGGREGATE"
+          },
+          "serviceName": "HBASE",
+          "scope": "SERVICE",
+          "description": "This service-level alert is triggered if the configured percentage of RegionServer processes cannot be determined to be up and listening on the network for the configured warning and critical thresholds. It aggregates the results of RegionServer process down checks."
+        }
+      ]
+    }
+
+  }
+}

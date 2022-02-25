@@ -1,0 +1,32 @@
+[
+  {
+    "repositories": [
+      {
+        "Repositories/base_url": "http://192.168.99.100/repos/HDP-2.4.0.0/",
+        "Repositories/repo_name": "HDP",
+        "Repositories/repo_id": "HDP-2.4"
+      },
+      {
+        "Repositories/base_url": "http://192.168.99.100/repos/HDP-UTILS-1.1.0.20/",
+        "Repositories/repo_name": "HDP-UTILS",
+        "Repositories/repo_id": "HDP-UTILS-1.1.0.20"
+      }
+    ],
+    "OperatingSystems/os_type": "redhat6"
+  },
+  {
+    "repositories": [
+      {
+        "Repositories/base_url": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/2.x/BUILDS/2.4.3.0-207",
+        "Repositories/repo_name": "HDP",
+        "Repositories/repo_id": "HDP-2.4"
+      },
+      {
+        "Repositories/base_url": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+        "Repositories/repo_name": "HDP-UTILS",
+        "Repositories/repo_id": "HDP-UTILS-1.1.0.20"
+      }
+    ],
+    "OperatingSystems/os_type": "redhat7"
+  }
+]

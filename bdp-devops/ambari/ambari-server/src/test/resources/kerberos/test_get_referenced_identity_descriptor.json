@@ -1,0 +1,148 @@
+{
+  "properties": {
+    "realm": "${kerberos-env/realm}",
+    "keytab_dir": "/etc/security/keytabs"
+  },
+  "identities": [
+    {
+      "name": "stack_identity",
+      "principal": {
+        "value": "stack@${realm}",
+        "type": "user"
+      },
+      "keytab": {
+        "file": "${keytab_dir}/stack.keytab",
+        "owner": {
+          "name": "root",
+          "access": "r"
+        },
+        "group": {
+          "name": "${cluster-env/user_group}",
+          "access": "r"
+        }
+      }
+    },
+    {
+      "name": "collision",
+      "principal": {
+        "value": "stack_collision@${realm}",
+        "type": "user"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "SERVICE1",
+      "identities": [
+        {
+          "name": "service1_identity",
+          "principal": {
+            "value": "service1@${realm}",
+            "type": "user"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/service1.keytab",
+            "owner": {
+              "name": "root",
+              "access": "r"
+            },
+            "group": {
+              "name": "${cluster-env/user_group}",
+              "access": "r"
+            }
+          }
+        },
+        {
+          "name": "collision",
+          "principal": {
+            "value": "service1_collision@${realm}",
+            "type": "user"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SERVICE2",
+      "identities": [
+        {
+          "name": "service2_identity",
+          "principal": {
+            "value": "service2@${realm}",
+            "type": "user"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/service2.keytab",
+            "owner": {
+              "name": "root",
+              "access": "r"
+            },
+            "group": {
+              "name": "${cluster-env/user_group}",
+              "access": "r"
+            }
+          }
+        },
+        {
+          "name": "service2_stack_reference",
+          "reference": "/stack_identity",
+          "principal": {
+            "configuration": "service2/property1_principal"
+          },
+          "keytab": {
+            "configuration": "service2/property1_keytab",
+            "file": "${keytab_dir}/service2_stack.keytab"
+          }
+        },
+        {
+          "name": "collision",
+          "principal": {
+            "value": "service2_collision@${realm}",
+            "type": "user"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name": "SERVICE2_COMPONENT1",
+          "identities": [
+            {
+              "name": "service2_component1_identity",
+              "principal": {
+                "value": "service2_component1@${realm}",
+                "type": "user"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/service2_component1.keytab",
+                "owner": {
+                  "name": "root",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": "r"
+                }
+              }
+            },
+            {
+              "name": "component1_service2_stack_reference",
+              "reference": "/SERVICE2/service2_stack_reference",
+              "principal": {
+                "configuration": "component1_service2/property1_principal"
+              },
+              "keytab": {
+                "configuration": "component1_service2/property1_keytab"
+              }
+            },
+            {
+              "name": "collision",
+              "principal": {
+                "value": "service2_component1_collision@${realm}",
+                "type": "user"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

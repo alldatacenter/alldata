@@ -1,0 +1,77 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="alert alert-danger">
+  <h2>Ambari's Experimental Functionality</h2>
+  <p>
+    <span class="label label-important">Important</span> <strong>Changes made here are neither tested nor supported by Ambari</strong>
+  </p>
+  <p>
+    Ambari's experimental functionality is provided <strong>as-is</strong>.<br>
+    Any changes will effect application behavior, including data corruption. Users making changes do so at their own risk.<br>
+    Experimental functionality can be modified or removed at any time without notice.
+  </p>
+</div>
+
+{{#if App}}
+  {{#if App.supports}}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Experimental Functionality</th>
+          <th style="width: 60%;">Description</th>
+          <th style="width: 20%;">Enabled?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each support in controller.supports}}
+          <tr {{bindAttr class="support.selected:active"}}>
+            <td>{{support.name}}</td>
+            <td></td>
+            <td>{{view App.CheckboxView checkedBinding="support.selected"}}</td>
+          </tr>
+        {{/each}}
+    </tbody>
+    </table>
+    <div class="control-group" style="margin-bottom: 70px;">
+        <div class="pull-right">
+        <button class="btn btn-default" {{action doCancel target="controller"}}>{{t form.cancel}}</button>
+        <button class="btn btn-primary" {{action doSave target="controller"}}>{{t common.save}}</button>
+      </div>
+  </div>
+    <hr>
+    <div class="control-group" style="margin-bottom: 100px;">
+      {{#havePermissions "CLUSTER.MANAGE_USER_PERSISTED_DATA"}}
+        <div class="pull-left" style="margin-bottom: 100px;">
+          <button class="btn btn-danger" {{bindAttr disabled="App.router.wizardWatcherController.isNonWizardUser"}} {{action doResetUIStates target="controller"}}>{{t reset.ui.states}}</button>
+          <p class="pull-right" style="margin-left: 10px; padding-top: 5px;">
+              Reset UI state locally and on the server
+          </p>
+        </div>
+      {{/havePermissions}}
+    </div>
+  {{else}}
+    <div class="alert alert-danger">
+      No application supports found. Please login to Ambari and revisit this page.
+    </div>
+  {{/if}}
+{{else}}
+  <div class="alert alert-danger">
+    No application found. Please login to Ambari and revisit this page.
+  </div>
+{{/if}}

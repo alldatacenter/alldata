@@ -1,0 +1,124 @@
+{
+  "href": "http://localhost:8080/api/v1/hosts?fields=Hosts/total_mem,Hosts/cpu_count",
+  "items": [
+    {
+      "href": "http://localhost:8080/api/v1/hosts/localhost.localdomain",
+      "Hosts": {
+        "cpu_count": 1,
+        "total_mem": 4057989,
+        "host_name": "localhost.localdomain",
+        "disk_info": [
+          {
+            "available": "47574176",
+            "used": "3507828",
+            "percent": "7%",
+            "size": "51606140",
+            "type": "ext4",
+            "mountpoint": "/"
+          },
+          {
+            "available": "47574176",
+            "used": "3507828",
+            "percent": "7%",
+            "size": "51606140",
+            "type": "ext4",
+            "mountpoint": "/grid/0"
+          },
+          {
+            "available": "1027204",
+            "used": "260",
+            "percent": "1%",
+            "size": "1027464",
+            "type": "tmpfs",
+            "mountpoint": "/dev/shm"
+          },
+          {
+            "available": "432210",
+            "used": "38034",
+            "percent": "9%",
+            "size": "495844",
+            "type": "ext4",
+            "mountpoint": "/boot"
+          },
+          {
+            "available": "44459872",
+            "used": "184220",
+            "percent": "1%",
+            "size": "47033288",
+            "type": "ext4",
+            "mountpoint": "/home"
+          },
+          {
+            "available": "450200708",
+            "used": "281534268",
+            "percent": "39%",
+            "size": "731734976",
+            "type": "vboxsf",
+            "mountpoint": "/media/sf_ambari"
+          },
+          {
+            "available": "450200708",
+            "used": "281534268",
+            "percent": "39%",
+            "size": "731734976",
+            "type": "vboxsf",
+            "mountpoint": "/host"
+          }
+        ]
+      }
+    },
+    {
+      "href" : "http://ec2-23-22-214-206.compute-1.amazonaws.com:8080/api/v1/hosts/ip-10-4-119-156.ec2.internal",
+      "Hosts" : {
+        "host_status" : "HEALTHY",
+        "public_host_name" : "ec2-23-22-21-211.compute-1.amazonaws.com",
+        "cpu_count" : 1,
+        "rack_info" : "/default-rack",
+        "host_health_report" : "",
+        "os_arch" : "x86_64",
+        "host_name" : "ip-10-4-119-156.ec2.internal",
+        "disk_info" : [
+          {
+            "available" : "3963732",
+            "used" : "1881984",
+            "percent" : "33%",
+            "size" : "5905712",
+            "type" : "ext4",
+            "mountpoint" : "/"
+          },
+          {
+            "available" : "3823076",
+            "used" : "0",
+            "percent" : "0%",
+            "size" : "3823076",
+            "type" : "tmpfs",
+            "mountpoint" : "/dev/shm"
+          },
+          {
+            "available" : "411234588",
+            "used" : "203012",
+            "percent" : "1%",
+            "size" : "433455904",
+            "type" : "ext3",
+            "mountpoint" : "/grid/0"
+          },
+          {
+            "available" : "411234588",
+            "used" : "203012",
+            "percent" : "1%",
+            "size" : "433455904",
+            "type" : "ext3",
+            "mountpoint" : "/grid/1"
+          }
+        ],
+        "ip" : "10.4.119.156",
+        "os_type" : "redhat6",
+        "last_heartbeat_time" : 1355185180819,
+        "host_state" : "HEALTHY",
+        "cluster_name" : "joker2",
+        "last_registration_time" : 1355182278593,
+        "total_mem" : 7644119
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+{{template "templates/common/configs/widgets/config_label"}}
+<div {{bindAttr class=":pull-left view.isOriginalSCP:original-widget view.disabled:disabled view.doNotShowWidget:hide"}}>
+  <div class="input-group">
+    <div class="dropdown btn-group">
+      {{view Em.TextField valueBinding="view.content.value" disabled="disabled" class="form-control"}}
+      <button {{bindAttr class="view.disabled:disabled :btn :btn-default :dropdown-toggle :btn-icon"}} data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul {{bindAttr class=":pull-left :dropdown-menu"}}>
+        {{#each item in view.content.valuesList}}
+          <li>
+            <a href="#" {{bindAttr class="item.configValue :btn-dropdown-menu-combo-config"}} {{action setConfigValue item.configValue target="view"}}>{{item.widgetValue}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+{{template "templates/common/configs/widgets/controls"}}

@@ -1,0 +1,414 @@
+{
+  "itemTotal" : "1",
+  "items" : [
+    {
+      "Hosts" : {
+        "cpu_count" : 1,
+        "host_name" : "dev01.hortonworks.com",
+        "host_status" : "UNHEALTHY",
+        "ip" : "10.0.2.15",
+        "last_heartbeat_time" : 1409659979205,
+        "maintenance_state" : "OFF",
+        "ph_cpu_count" : 1,
+        "public_host_name" : "dev01.hortonworks.com",
+        "total_mem" : 4055304
+      },
+      "stack_versions": [
+        {
+          "HostStackVersions" : {
+            "cluster_name" : "c1",
+            "host_name" : "dev01.hortonworks.com",
+            "id" : 1,
+            "stack" : "HDP",
+            "state" : "CURRENT",
+            "version" : "2.2"
+          },
+          "repository_versions" : [
+            {
+              "RepositoryVersions" : {
+                "id" : 1,
+                "repository_version" : "2.2.0.1-885",
+                "display_name" : "HDP-2.2.0.1-885"
+              }
+            }
+          ]
+        },
+        {
+          "HostStackVersions" : {
+            "cluster_name" : "c1",
+            "host_name" : "dev01.hortonworks.com",
+            "id" : 2,
+            "stack" : "HDP",
+            "state" : "INSTALLED",
+            "version" : "2.2"
+          },
+          "repository_versions" : [
+            {
+              "RepositoryVersions" : {
+                "id" : 2,
+                "repository_version" : "2.2.1.1-885",
+                "display_name" : "HDP-2.2.1.1-885"
+              }
+            }
+          ]
+        },
+        {
+          "HostStackVersions" : {
+            "cluster_name" : "c1",
+            "host_name" : "dev01.hortonworks.com",
+            "id" : 3,
+            "stack" : "HDP",
+            "state" : "OUT_OF_SYNC",
+            "version" : "2.2"
+          },
+          "repository_versions" : [
+            {
+              "RepositoryVersions" : {
+                "id" : 3,
+                "repository_version" : "2.2.2.1-885",
+                "display_name" : "HDP-2.2.2.1-885"
+              }
+            }
+          ]
+        },
+        {
+          "HostStackVersions" : {
+            "cluster_name" : "c1",
+            "host_name" : "dev01.hortonworks.com",
+            "id" : 4,
+            "stack" : "HDP",
+            "state" : "INSTALL_FAILED",
+            "version" : "2.2"
+          },
+          "repository_versions" : [
+            {
+              "RepositoryVersions" : {
+                "id" : 4,
+                "repository_version" : "2.2.3.1-885",
+                "display_name" : "HDP-2.2.3.1-885"
+              }
+            }
+          ]
+        },
+        {
+          "HostStackVersions" : {
+            "cluster_name" : "c1",
+            "host_name" : "dev01.hortonworks.com",
+            "id" : 5,
+            "stack" : "HDP",
+            "state" : "INSTALLING",
+            "version" : "2.3"
+          },
+          "repository_versions" : [
+            {
+              "RepositoryVersions" : {
+                "id" : 6,
+                "repository_version" : "2.2.4.1-885",
+                "display_name" : "HDP-2.2.4.1-885"
+              }
+            }
+          ]
+        }
+      ],
+      "host_components" : [
+        {
+          "HostRoles" : {
+            "component_name" : "APP_TIMELINE_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "YARN",
+            "stale_configs" : false,
+            "state" : "STARTED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "DATANODE",
+            "maintenance_state" : "OFF",
+            "service_name" : "HDFS",
+            "stale_configs" : false,
+            "state" : "STARTED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "DRPC_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "STORM",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "FALCON_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "FALCON",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "FALCON_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "FALCON",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "FLUME_HANDLER",
+            "maintenance_state" : "OFF",
+            "service_name" : "FLUME",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HBASE_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "HBASE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HBASE_MASTER",
+            "maintenance_state" : "OFF",
+            "service_name" : "HBASE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HBASE_REGIONSERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "HBASE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HDFS_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "HDFS",
+            "stale_configs" : false,
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HISTORYSERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "MAPREDUCE2",
+            "stale_configs" : false,
+            "state" : "STARTED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HIVE_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "HIVE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HIVE_METASTORE",
+            "maintenance_state" : "OFF",
+            "service_name" : "HIVE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "HIVE_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "HIVE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "MAPREDUCE2_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "MAPREDUCE2",
+            "stale_configs" : false,
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "MYSQL_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "HIVE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "NAMENODE",
+            "maintenance_state" : "OFF",
+            "service_name" : "HDFS",
+            "stale_configs" : false,
+            "state" : "STARTED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "NIMBUS",
+            "maintenance_state" : "OFF",
+            "service_name" : "STORM",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "NODEMANAGER",
+            "maintenance_state" : "OFF",
+            "service_name" : "YARN",
+            "stale_configs" : false,
+            "state" : "STARTED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "OOZIE_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "OOZIE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "OOZIE_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "OOZIE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "PIG",
+            "maintenance_state" : "OFF",
+            "service_name" : "PIG",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "RESOURCEMANAGER",
+            "maintenance_state" : "OFF",
+            "service_name" : "YARN",
+            "stale_configs" : false,
+            "state" : "STARTED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "SECONDARY_NAMENODE",
+            "maintenance_state" : "OFF",
+            "service_name" : "HDFS",
+            "stale_configs" : false,
+            "state" : "STARTED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "SQOOP",
+            "maintenance_state" : "OFF",
+            "service_name" : "SQOOP",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "STORM_REST_API",
+            "maintenance_state" : "OFF",
+            "service_name" : "STORM",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "STORM_UI_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "STORM",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "SUPERVISOR",
+            "maintenance_state" : "OFF",
+            "service_name" : "STORM",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "TEZ_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "TEZ",
+            "stale_configs" : false,
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "WEBHCAT_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "HIVE",
+            "stale_configs" : false,
+            "state" : "INSTALL_FAILED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "YARN_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "YARN",
+            "stale_configs" : false,
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "ZOOKEEPER_CLIENT",
+            "maintenance_state" : "OFF",
+            "service_name" : "ZOOKEEPER",
+            "stale_configs" : false,
+            "state" : "INSTALLED"
+          }
+        },
+        {
+          "HostRoles" : {
+            "component_name" : "ZOOKEEPER_SERVER",
+            "maintenance_state" : "OFF",
+            "service_name" : "ZOOKEEPER",
+            "stale_configs" : false,
+            "state" : "STARTED"
+          }
+        }
+      ]
+    }
+  ]
+}

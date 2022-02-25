@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<repository-version xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="version_definition.xsd">
+  
+  <release>
+    <type>MAINT</type>
+    <stack-id>HDP-2.3</stack-id>
+    <version>2.3.4.1</version>
+    <build>1234</build>
+    <compatible-with>2.3.4.[1-9]</compatible-with>
+    <release-notes>http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.4/</release-notes>
+  </release>
+  
+  <manifest>
+    <service id="HDFS-271" name="HDFS" version="2.7.1" version-id="10" release-version="2.3.4.0" />
+    <service id="HBASE-899" name="HBASE" version="8.9.9" />
+  </manifest>
+  
+  <available-services />
+  
+  <repository-info>
+    <os family="redhat6">
+      <repo>
+        <baseurl>http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.3.0.0</baseurl>
+        <repoid>HDP-2.3</repoid>
+        <reponame>HDP</reponame>
+        <unique>true</unique>
+      </repo>
+      <repo>
+        <baseurl>http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6</baseurl>
+        <repoid>HDP-UTILS-1.1.0.20</repoid>
+        <reponame>HDP-UTILS</reponame>
+        <unique>false</unique>
+      </repo>
+    </os>
+  </repository-info>
+</repository-version>

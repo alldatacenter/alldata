@@ -1,0 +1,131 @@
+{
+  "stackName": "ODP",
+  "baseStackName": "HDP",
+  "performCommonReplacements": true,
+  "textReplacements": [
+    ["hdp-select", "distro-select"]
+   ],
+  "preservedText": ["ext-2.2", "HDP-oozie", "hdp.version", "HDP_VERSION"],
+  "uiMapping": [
+    {
+      "stackVersionNumber": "0.9",
+      "sign": "<",
+      "baseStackFolder": "HDP2"
+    }
+  ],
+  "ambariProperties": {
+    "jdk.download.supported" : "false",
+    "jce.download.supported" : "false",
+    "jdk1.7.url" : "http://DOWNLOAD_NOT_SUPPORTED",
+    "jdk1.8.url" : "http://DOWNLOAD_NOT_SUPPORTED",
+    "jdk1.7.jcpol-url" : "http://DOWNLOAD_NOT_SUPPORTED",
+    "jdk1.8.jcpol-url" : "http://DOWNLOAD_NOT_SUPPORTED",
+    "rolling.upgrade.min.stack" : "ODP-0.8"
+  },
+  "versions": [
+    {
+      "version": "0.6",
+      "baseVersion": "2.0.6",
+      "family": "redhat6,suse11",
+      "active": "false",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        }
+      ]
+    },
+    {
+      "version": "0.7",
+      "baseVersion": "2.1",
+      "active": "false",
+      "family": "redhat6,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        }
+      ]
+    },
+    {
+      "version": "0.8",
+      "baseVersion": "2.2",
+      "active": "false",
+      "family": "redhat6,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        }
+      ]
+    },
+    {
+      "version": "0.9",
+      "baseVersion": "2.3",
+      "active": "true",
+      "family": "redhat6,redhat7,suse11",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        }
+      ]
+    }
+  ]
+}

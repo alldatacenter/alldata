@@ -1,0 +1,10 @@
+{
+   "report_name" : "hdfs_capacity_remaining_report",
+   "report_type" : "standard",
+   "title" : "HDFS Capacity Remaining",
+   "vertical_label" : "GB",
+   "series" : [
+      { "metric": "dfs.FSNamesystem.CapacityRemainingGB", "color": "ff0000", "label": "Capacity Remaining", 
+        "line_width": "2", "type": "line" }
+   ]
+}

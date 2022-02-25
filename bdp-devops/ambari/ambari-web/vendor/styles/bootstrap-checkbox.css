@@ -1,0 +1,116 @@
+/* ===========================================================
+ * bootstrap-checkbox - v.1.0.1
+ * ===========================================================
+ * Copyright 2014 Roberto Montresor
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+@CHARSET "ISO-8859-1";
+
+.bootstrap-checkbox > button.btn{
+    padding:7px 0 4px 2px;
+    width:28px;
+}
+.bootstrap-checkbox > button.btn.displayAsButton{
+    width:auto;
+}
+.bootstrap-checkbox > button.btn.displayAsButton > span.label-checkbox{
+    padding:0 8px 0 4px;
+}
+.bootstrap-checkbox > button.btn.displayAsButton > span.icon{
+    margin: 2px 4px;
+}
+.bootstrap-checkbox > button.btn.displayAsButton > span.label-prepend-checkbox{
+    padding:0 4px 0 8px;
+}
+.bootstrap-checkbox > button.btn.btn-large{
+    padding:10px 0 6px 2px;
+    width:36px;
+}
+.bootstrap-checkbox > button.btn.btn-small{
+    padding:5px 0 3px 1px;
+    width:24px;
+}
+.bootstrap-checkbox > button.btn.btn-mini{
+    padding:4px 0 1px 1px;
+    width:20px;
+}
+
+.bootstrap-checkbox > .btn.btn-link{
+    text-decoration:none;
+}
+
+label.bootstrap-checkbox.disabled{
+    cursor:default;
+    color:#666;
+}
+
+.bootstrap-checkbox > .label-prepend-checkbox{
+    padding-right:4px;
+}
+
+.bootstrap-checkbox > .label-checkbox{
+    padding-left:4px;
+}
+
+.bootstrap-checkbox.disabled > [class^="label-"],
+.bootstrap-checkbox > .btn[disabled]{
+    cursor:not-allowed;
+}
+
+[class^="cb-icon-"],
+[class*=" cb-icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    *margin-right: .3em;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../img/icons.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+
+.bootstrap-checkbox button.btn > span.cb-icon-check,
+.bootstrap-checkbox.disabled button.btn:hover > span.cb-icon-check,
+.bootstrap-checkbox.disabled button.btn:active > span.cb-icon-check{
+    background-position: 0 -1px;
+}
+.bootstrap-checkbox button.btn:hover > span.cb-icon-check,
+.bootstrap-checkbox button.btn:focus > span.cb-icon-check,
+.bootstrap-checkbox button.btn:active > span.cb-icon-check{
+    background-position: 0 -25px;
+}
+.bootstrap-checkbox button.btn > span.cb-icon-check-empty,
+.bootstrap-checkbox.disabled button.btn:hover > span.cb-icon-check-empty,
+.bootstrap-checkbox.disabled button.btn:active > span.cb-icon-check-empty{
+    background-position: -24px -1px;
+}
+.bootstrap-checkbox button.btn:hover > span.cb-icon-check-empty,
+.bootstrap-checkbox button.btn:focus > span.cb-icon-check-empty,
+.bootstrap-checkbox button.btn:active > span.cb-icon-check-empty{
+    background-position: -24px -25px;
+}
+
+.bootstrap-checkbox button.btn > span.cb-icon-check-indeterminate,
+.bootstrap-checkbox.disabled button.btn:hover > span.cb-icon-check-indeterminate,
+.bootstrap-checkbox.disabled button.btn:active > span.cb-icon-check-indeterminate{
+    background-position: -48px -1px;
+}
+.bootstrap-checkbox button.btn:hover > span.cb-icon-check-indeterminate,
+.bootstrap-checkbox button.btn:focus > span.cb-icon-check-indeterminate,
+.bootstrap-checkbox button.btn:active > span.cb-icon-check-indeterminate{
+    background-position: -48px -25px;
+}

@@ -1,0 +1,58 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<script type="text/ng-template" id="modelClone.html">
+  <div class="modal-header">
+    <h4 tooltip="submit">MODEL CLONE</h4>
+  </div>
+  <ng-form name="forms.model_clone_form" novalidate="novalidate" class="modal-body" style="background-color: white">
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="form-group">
+            <b>Target Project is:</b>
+            <br/>
+            {{targetObj.targetProject}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="form-group">
+            <b>New Model Name:</b>
+            <br/>
+            <input type="text" name="model_name" class="form-control" ng-model="targetObj.modelName" ng-pattern="/^\w+$/"  required  />
+            <small class="help-block red" ng-show="forms.model_clone_form.model_name.$error.required && (forms.model_clone_form.model_name.$dirty)">Model name is required.</small>
+            <small class="help-block red" ng-show="!forms.model_clone_form.model_name.$error.required&&forms.model_clone_form.model_name.$invalid && (forms.model_clone_form.model_name.$dirty)">Model name is invalid.</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </ng-form>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="cancel()">Close</button>
+    <button class="btn btn-success" ng-click="cloneModel()" ng-disabled="forms.model_clone_form.$invalid">Submit</button>
+  </div>
+</script>

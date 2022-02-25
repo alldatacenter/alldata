@@ -1,0 +1,100 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="col-md-12">
+  <div class="col-md-10 col-md-offset-2">
+    {{! NameNode Uptime }}
+    <div class="row namenode-uptime col-md-3">
+      <div class="summary-value main-info">{{view.nodeUptime}}</div>
+      <div class="summary-label">{{t dashboard.services.hdfs.nodes.uptime}}</div>
+    </div>
+    {{! NameNode Heap }}
+    <div class="row namenode-heap col-md-3">
+      <div class="summary-value">
+        <div class="main-info"> {{view.nodeHeapPercent}} </div>
+        <div class="info-desc"> {{view.nodeHeap}} </div>
+      </div>
+      <div class="summary-label">{{t dashboard.services.hdfs.nodes.heap}}</div>
+    </div>
+  </div>
+</div>
+
+{{#if view.showSlaveComponents}}
+  {{view view.slaveComponentsView summaryViewBinding="view.parentView.summaryView"}}
+{{/if}}
+
+{{! Service Metrics Section (namespace specific data)}}
+<div {{bindAttr class=":col-md-12 :metrics-summary view.isNonFederatedHDFS::not-separate-section"}}>
+  <div class="col-md-2">
+    {{#if view.isNonFederatedHDFS}}
+      {{t dashboard.services.hdfs.summary.service-metrics}}
+    {{/if}}
+  </div>
+  <div class="col-md-10">
+    <div class="summary-label col-md-12">{{t services.service.summary.blocks}}</div>
+    {{! Blocks Total }}
+    <div class="row blocks-total col-md-3">
+      <div class="summary-value main-info">
+        <div class="main-info">{{view.dfsTotalBlocks}}</div>
+        <div class="info-desc">{{t dashboard.services.hdfs.blockErrors.total}}</div>
+      </div>
+    </div>
+    {{! Block Errors corrupt }}
+    <div class="row block-errors-corrupt col-md-3">
+      <div class="summary-value main-info">
+        <div class="main-info">{{view.dfsCorruptBlocks}}</div>
+        <div class="info-desc">{{t dashboard.services.hdfs.blockErrors.corrupt}}</div>
+      </div>
+    </div>
+    {{! Block Errors missing }}
+    <div class="row block-errors-missing col-md-3">
+      <div class="summary-value main-info">
+        <div class="main-info">{{view.dfsMissingBlocks}}</div>
+        <div class="info-desc">{{t dashboard.services.hdfs.blockErrors.missing}}</div>
+      </div>
+    </div>
+    {{! Block Errors replicated }}
+    <div class="row block-errors-replicated col-md-3">
+      <div class="summary-value main-info">
+        <div class="main-info">{{view.dfsUnderReplicatedBlocks}}</div>
+        <div class="info-desc">{{t dashboard.services.hdfs.blockErrors.replicated}}</div>
+      </div>
+    </div>
+    {{! indent next row}}
+    <div class="row"></div>
+    {{! Total Files And Directories }}
+    <div class="row total-files-dirs col-md-3">
+      <div class="summary-value main-info">{{view.dfsTotalFiles}}</div>
+      <div class="summary-label">{{t dashboard.services.hdfs.totalFilesAndDirs}}</div>
+    </div>
+    {{! Upgrade Status }}
+    <div class="row upgrade-status col-md-3">
+      <div class="summary-value main-info">
+        <span {{bindAttr class="view.isUpgradeStatusWarning:upgrade-status-warning"}}>{{view.upgradeStatus}}</span>
+      </div>
+      <div class="summary-label">{{t services.service.summary.pendingUpgradeStatus}}</div>
+    </div>
+    {{! Safe Mode Status }}
+    <div class="row safe-mode-status col-md-3">
+      <div class="summary-value main-info">
+        {{view.safeModeStatus}}
+      </div>
+      <div class="summary-label">{{t services.service.summary.safeModeStatus}}</div>
+    </div>
+  </div>
+</div>

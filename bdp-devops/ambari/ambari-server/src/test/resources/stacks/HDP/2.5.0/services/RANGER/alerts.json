@@ -1,0 +1,74 @@
+{
+  "RANGER": {
+    "service": [],
+    "RANGER_ADMIN": [
+      {
+        "name": "ranger_admin_process",
+        "label": "Ranger Admin Process",
+        "description": "This host-level alert is triggered if the Ranger Admin Web UI is unreachable.",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "WEB",
+          "uri": {
+              "http": "{{admin-properties/policymgr_external_url}}",
+              "https": "{{admin-properties/policymgr_external_url}}",
+              "https_property": "{{ranger-admin-site/ranger.service.https.attrib.ssl.enabled}}",
+              "https_property_value": "true",
+              "connection_timeout": 5.0
+            },
+          "reporting": {
+            "ok": {
+              "text": "HTTP {0} response in {2:.3f}s"
+            },
+            "warning": {
+              "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+            },
+            "critical": {
+              "text": "Connection failed to {1} ({3})"
+            }
+          }
+        }
+      },
+      {
+        "name": "ranger_admin_password_check",
+        "label": "Ranger Admin password check",
+        "description": "This alert is used to ensure that the Ranger Admin password in Ambari is correct.",
+        "interval": 30,
+        "scope": "ANY",
+        "source": {
+          "type": "SCRIPT",
+          "path": "RANGER/0.4.0/package/alerts/alert_ranger_admin_passwd_check.py",
+          "parameters": []
+        }
+      }
+    ],
+    "RANGER_USERSYNC": [
+      {
+        "name": "ranger_usersync_process",
+        "label": "Ranger Usersync Process",
+        "description": "This host-level alert is triggered if the Ranger Usersync cannot be determined to be up.",
+        "interval": 1,
+        "scope": "HOST",
+        "source": {
+          "type": "PORT",
+          "uri": "{{ranger-ugsync-site/ranger.usersync.port}}",
+          "default_port": 5151,
+          "reporting": {
+            "ok": {
+              "text": "TCP OK - {0:.3f}s response on port {1}"
+            },
+            "warning": {
+              "text": "TCP OK - {0:.3f}s response on port {1}",
+              "value": 1.5
+            },
+            "critical": {
+              "text": "Connection failed: {0} to {1}:{2}",
+              "value": 5.0
+            }
+          }
+        }
+      }
+    ]
+  }
+}

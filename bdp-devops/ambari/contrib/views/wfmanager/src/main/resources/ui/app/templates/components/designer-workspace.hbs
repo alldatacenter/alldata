@@ -1,0 +1,179 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="main">
+  <nav class="navbar navbar-default mb0">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="navbar-brand">
+            <label for="">Workflow Manager</label>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="text-right pull-right paddingtop7">
+              <button id="dashboard-btn" {{action 'showDashboard'}} class="backto-dashboard btn btn-default" title="Workflow Dashboard">
+                <i class="fa fa-th marginright5"></i>Dashboard
+              </button>
+            <div class="btn-group">
+            <div class="btn-group">
+            <div class="dropdown create-wf-menu">
+              <button id="create-workflows-btn" class="btn btn-default dropdown-toggle borderRightRadiusNone" type="button" data-toggle="dropdown">Create
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a id="wfs_btn" class="pointer" {{action 'show' 'wf'}}>
+                      <i class="fa fa-sitemap marginright5"></i>
+                      {{#if hasMultitabSupport}}
+                      Workflow
+                      {{else}}
+                      Workflow
+                      {{/if}}
+                    </a>
+                  </li>
+                  <li>
+                    <a id="coords_btn" class="pointer" {{action 'show' 'coord'}}>
+                      <i class="fa fa-history marginright5"></i>
+                      {{#if hasMultitabSupport}}
+                      Coordinator
+                      {{else}}
+                      Coordinator
+                      {{/if}}
+                    </a>
+                  </li>
+                  <li>
+                    <a id="bundles_btn" class="pointer" {{action 'show' 'bundle'}}>
+                      <i class="fa fa-cubes marginright5"></i>
+                      {{#if hasMultitabSupport}}
+                      Bundle
+                      {{else}}
+                      Bundle
+                      {{/if}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="btn-group">
+            <div class="dropdown create-wf-menu">
+              <button id="recent-workflows-btn" class="btn btn-default dropdown-toggle borderRadiusNone" {{action "showTopRecentList"}} type="button" data-toggle="dropdown">Recent
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu proj-menu">
+                 {{#if projList}}
+                  {{#each projList as |proj index|}}
+                    <li>
+                      <a id="wfs_btn" class="pointer projects-list" title={{proj.workflowDefinitionPath}} {{action "editWorkflow" proj.workflowDefinitionPath proj.type}}>
+                      {{#if (eq proj.type "WORKFLOW")}}
+                          <i class="fa fa-sitemap marginright10"></i><span class="action-link">{{proj.name}}</span>
+                      {{else if  (eq proj.type "COORDINATOR")}}
+                          <i class="fa fa-history marginright10"></i><span class="action-link">{{proj.name}}</span>
+                      {{else}}
+                          <i class="fa fa-cubes marginright10"></i><span class="action-link">{{proj.name}}</span>
+                      {{/if}}
+                      </a>
+                    </li>
+                   {{/each}}
+                  <li>
+                      <a id="more-workflows-btn" {{action "showProjectManagerList"}} title="My Workflows" class="pointer">
+                      More...
+                      </a>
+                  </li>
+                 {{else}}
+                  <li class="pl10">
+                    No recent workflows.
+                  </li>
+                 {{/if}}
+                </ul>
+             </div>
+             </div>
+              <button id="manage-assets-btn" {{action "showAssetManager" true}} class="btn btn-default" title="Manage Assets">
+                  Manage Assets
+              </button>
+            </div>
+              {{help-icon}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <ul class="nav nav-tabs tab-panel-heading">
+      {{#each tabs as |tab index|}}
+      <li class="{{if (eq index currentIndex) 'active'}}" title="{{tab.filePath}}" data-type="{{tab.type}}">
+        <a href="#{{tab.id}}" data-toggle="tab" {{action 'interceptShow' tab preventDefault=true}}>
+          {{#if (eq tab.type 'wf')}}
+          <i class="fa fa-sitemap marginright5"></i>
+          {{else if (eq tab.type 'coord')}}
+          <i class="fa fa-history marginright5"></i>
+          {{else if (eq tab.type 'bundle')}}
+          <i class="fa fa-cubes marginright5"></i>
+          {{else if (eq tab.type 'Projects')}}
+          <i class="fa fa-folder marginright5"></i>
+          {{else}}
+          <i class="fa fa-th marginright5"></i>
+          {{/if}}
+          <div class="tab-name">{{tab.name}}</div>
+          <span class="closeTab" {{action "showWarning" index bubbles=false }}>x</span>
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+    <div class="tab-content">
+      {{#each tabs as |tab index|}}
+      <div class="tab-pane {{if (eq index currentIndex) 'active'}}" id="{{tab.id}}">
+        {{#if (eq tab.type 'wf')}}
+          {{flow-designer xmlAppPath=tab.path register="register" openTab="openTab" changeTabName="changeTabName"
+          changeFilePath="changeFilePath" tabInfo=tab}}
+        {{else if (eq tab.type 'coord')}}
+          {{coord-config xmlAppPath=tab.path register="register" openTab="openTab" changeTabName="changeTabName"
+          changeFilePath="changeFilePath" tabInfo=tab}}
+        {{else if (eq tab.type 'bundle')}}
+          {{bundle-config register="register" openTab="openTab" changeTabName="changeTabName"
+          changeFilePath="changeFilePath" tabInfo=tab}}
+        {{else if (eq tab.type 'dashboard')}}
+          {{outlet}}
+        {{else if (eq tab.type 'Projects')}}
+          {{#if (eq isProjectManagerEnabled "true")}}
+          {{outlet}}
+          {{/if}}
+        {{else}}
+          {{spin-spinner lines=7 length=3 width=3 radius=3 top=-10 left=150}}
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  {{#if showingAssetManager}}
+    {{#asset-manager showAssetManager="showAssetManager"}}{{/asset-manager}}
+  {{/if}}
+  {{#if isProjManagerVisible}}
+    {{recent-projects recentFiles=recentFiles routeToDesigner="routeToDesigner" editWorkflow="editWorkflow" deleteWorkflow="deleteWorkflow" close="hideProjectManagerList" deleteWorkflowJob="deleteWorkflowJob" currentDraft=currentDraft showProjectManagerList="showProjectManagerList"}}
+  {{/if}}
+  {{#if showingWarning}}
+  {{#confirmation-dialog title="Confirm workflow reset"
+    confirmationMessage="Any unsaved changes will be lost. Do you want to close this tab ?"
+    okBtnText="Continue" cancelBtnText="Cancel" onOk="closeTab"}}{{/confirmation-dialog}}
+  {{/if}}
+  <!--
+  {{#if (eq type 'wf')}}
+  {{flow-designer xmlAppPath=appPath isNew=isNew}}
+  {{else if (eq type 'coord')}}
+  {{coord-config}}
+  {{else if (eq type 'bundle')}}
+  {{bundle-config}}
+  {{else}}
+  {{spin-spinner lines=7 length=3 width=3 radius=3 top=-10 left=150}}
+  {{/if}} -->

@@ -212,107 +212,125 @@ job-schedule: 任务提交平台
 ```
 
 10、启动配置教程
+```markdown
+10.1 启动前，打包dubbo-servie项目，进入dubbo-service目录，执行mvn clean package -DskipTests=TRUE打包，然后执行mvn install.
 
- 10.1 启动前，打包dubbo-servie项目，进入dubbo-service目录，执行mvn clean package -DskipTests=TRUE打包，然后执行mvn install.
+10.2 启动dubbo-service项目，配置tomcat端口为8091
 
- 10.2 启动dubbo-service项目，配置tomcat端口为8091
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/61.png
 
- https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/61.png
- 
- 10.3 启动商城项目的多个子系统
+10.3 启动商城项目的多个子系统
 
 后台：访问http://localhost:8090
-     
- 10.3.1、前端：启动mall-admin-web项目，进入项目目录，执行npm install，然后执行npm run dev；
-
- 10.3.2、后端：启动mall-admin-service/mall-admin-search项目，配置tomcat端口为8092，接着启动mall-manage-service项目，tomcat端口配置为8093；
-
- https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/62.png
-
- https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/63.png
-
- 前台：小程序手机预览，移动端访问：http://localhost:6255
-     
- 10.3.3、小程序和移动端
-  	 
- 10.3.3.1、前端：商城小程序，启动mall-shopping-wc项目，安装微信开发者工具，配置开发者key和secret，使用微信开发者工具导入即可，然后点击编译，可以手机预览使用。
-
- https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/66.png
-
- 10.3.3.2、前端：商城移动端，启动mall-shopping-mobile，进入项目目录，执行npm install和npm run dev；
-
- 10.3.3.3、后端：小程序和移动端用的是同一个后台服务，启动mall-shopping-service项目，进入项目目录，配置tomcat端口8094
-
- https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/64.png
-
- 10.3.4、商城PC端 访问http://localhost:8099
-
- 10.3.4.1、前端：启动mall-shopping-pc项目，进入项目目录，执行npm install和npm run dev；
-
- 10.3.4.2、后端：启动mall-shopping-pc-service项目，配置tomcat端口为8095；
-
- https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/65.png
-
- 11 开发计划
  
- https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92v1.0.png
+10.3.1、前端：启动mall-admin-web项目，进入项目目录，执行npm install，然后执行npm run dev；
 
- 12 架构1.0
-  
-     1、数据平台架构
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/1571898118926.png
-  
-     2、电商
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E7%94%B5%E5%95%86.png
-  
-     3、微服务
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/microservice.png
-     
-     4、容器化部署system-deploy
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy.png
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy02.png
-     
-     5、自动化运维平台system-devops
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-devops.png
-     
-     6、使用Kong作为调用中心网关入口system-api-gateway
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway01.png
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway02.png
-     
-     7、日志中心system-elk
-     
-     https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk.png
-     
-     8、告警平台system-alarm-platform
-     
-         8.1 监控系统
-     
-         https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/Prometheus.png
-     
-         8.2 数据采集
-     
-         https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/log-collect.png
-     
-         8.3 数据展示
-     
-         https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk%20%282%29.png
-     
-     9、监控中心system-apm
-     
-         https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-apm.png
-     
-     10、使用Apollo作为配置中心system-config
-     
-         https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/apollo.png
-     
-     11、数据平台开发规划
-     
-         https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92v1.0.png
+10.3.2、后端：启动mall-admin-service/mall-admin-search项目，配置tomcat端口为8092，接着启动mall-manage-service项目，tomcat端口配置为8093；
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/62.png
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/63.png
+
+前台：小程序手机预览，移动端访问：http://localhost:6255
+ 
+10.3.3、小程序和移动端
+ 
+10.3.3.1、前端：商城小程序，启动mall-shopping-wc项目，安装微信开发者工具，配置开发者key和secret，使用微信开发者工具导入即可，然后点击编译，可以手机预览使用。
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/66.png
+
+10.3.3.2、前端：商城移动端，启动mall-shopping-mobile，进入项目目录，执行npm install和npm run dev；
+
+10.3.3.3、后端：小程序和移动端用的是同一个后台服务，启动mall-shopping-service项目，进入项目目录，配置tomcat端口8094
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/64.png
+
+10.3.4、商城PC端 访问http://localhost:8099
+
+10.3.4.1、前端：启动mall-shopping-pc项目，进入项目目录，执行npm install和npm run dev；
+
+10.3.4.2、后端：启动mall-shopping-pc-service项目，配置tomcat端口为8095；
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/65.png
+
+```
+
+
+11 开发计划
+
+```markdown
+    https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92v1.0.png
+```
+
+12 架构1.0
+
+```markdown
+12.1、数据平台架构
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/1571898118926.png
+
+12.2、电商
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E7%94%B5%E5%95%86.png
+
+12.3、微服务
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/microservice.png
+
+12.4、容器化部署system-deploy
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy.png
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-deploy02.png
+
+12.5、自动化运维平台system-devops
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-devops.png
+
+12.6、使用Kong作为调用中心网关入口system-api-gateway
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway01.png
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-api-gateway02.png
+
+12.7、日志中心system-elk
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk.png
+
+12.8、告警平台system-alarm-platform
+
+ 12.8.1 监控系统
+
+ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/Prometheus.png
+
+ 12.8.2 数据采集
+
+ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/log-collect.png
+
+12.8.3 数据展示
+
+ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-elk%20%282%29.png
+
+12.9、监控中心system-apm
+
+ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/system-apm.png
+
+12.10、使用Apollo作为配置中心system-config
+
+ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/apollo.png
+
+12.11、数据平台开发规划
+
+ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92v1.0.png
+```
+
+13、技术交流群二维码
+```markdown
+
+Github大数据平台QQ群号：935658273
+
+Github大数据QQ群二维码：
+
+https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/wechat_group/1651645786364_.pic.jpg
+
+```

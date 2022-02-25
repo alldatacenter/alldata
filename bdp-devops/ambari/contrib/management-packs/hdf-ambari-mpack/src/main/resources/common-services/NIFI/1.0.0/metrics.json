@@ -1,0 +1,131 @@
+{
+  "NIFI_MASTER": {
+    "Component": [{
+        "type": "ganglia",
+        "metrics": {
+          "default": {
+            "metrics/nifi/FlowFilesReceivedLast5Minutes": {
+              "metric": "FlowFilesReceivedLast5Minutes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/BytesReceivedLast5Minutes": {
+              "metric": "BytesReceivedLast5Minutes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/FlowFilesSentLast5Minutes": {
+              "metric": "FlowFilesSentLast5Minutes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/BytesSentLast5Minutes": {
+              "metric": "BytesSentLast5Minutes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/FlowFilesQueued": {
+              "metric": "FlowFilesQueued",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/BytesQueued": {
+              "metric": "BytesQueued",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/BytesReadLast5Minutes": {
+              "metric": "BytesReadLast5Minutes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/BytesWrittenLast5Minutes": {
+              "metric": "BytesWrittenLast5Minutes",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/ActiveThreads": {
+              "metric": "ActiveThreads",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/TotalTaskDurationSeconds": {
+              "metric": "TotalTaskDurationSeconds",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/nifi/TotalTaskDurationNanoSeconds": {
+              "metric": "TotalTaskDurationNanoSeconds",
+              "pointInTime": false,
+              "temporal": true
+            },
+            "metrics/jvm/uptime": {
+              "metric": "jvm.uptime",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/heap_used": {
+              "metric": "jvm.heap_used",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/heap_usage": {
+              "metric": "jvm.heap_usage",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/non_heap_usage": {
+              "metric": "jvm.non_heap_usage",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/thread_states/runnable": {
+              "metric": "jvm.thread_states.runnable",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/thread_states/blocked": {
+              "metric": "jvm.thread_states.blocked",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/thread_states/timed_waiting": {
+              "metric": "jvm.thread_states.timed_waiting",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/thread_states/terminated": {
+              "metric": "jvm.thread_states.terminated",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/thread_count": {
+              "metric": "jvm.thread_count",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/daemon_thread_count": {
+              "metric": "jvm.daemon_thread_count",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/file_descriptor_usage": {
+              "metric": "jvm.file_descriptor_usage",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/gc/runs/$1": {
+              "metric": "jvm.gc.runs.(\\w+)",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/jvm/gc/time/$1": {
+              "metric": "jvm.gc.time.(\\w+)",
+              "pointInTime": true,
+              "temporal": true
+            }
+          }
+        }
+    }]
+  }
+}

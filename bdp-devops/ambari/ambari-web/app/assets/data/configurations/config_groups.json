@@ -1,0 +1,66 @@
+{
+  "href" : "http://c6401:8080/api/v1/clusters/1/config_groups?fields=*",
+  "items" : [
+    {
+      "href" : "http://c6401:8080/api/v1/clusters/1/config_groups/2",
+      "ConfigGroup" : {
+        "cluster_name" : "1",
+        "description" : "1",
+        "desired_configs" : [
+          {
+            "tag" : "version1426088081862",
+            "type" : "hadoop-env",
+            "href" : "http://c6401:8080/api/v1/clusters/1/configurations?type=hadoop-env&tag=version1426088081862"
+          }
+        ],
+        "group_name" : "1",
+        "hosts" : [
+          {
+            "host_name" : "c6401.ambari.apache.org",
+            "href" : "http://c6401:8080/api/v1/clusters/1/hosts/c6401.ambari.apache.org"
+          }
+        ],
+        "id" : 2,
+        "tag" : "HDFS"
+      }
+    },
+    {
+      "href" : "http://c6401:8080/api/v1/clusters/1/config_groups/3",
+      "ConfigGroup" : {
+        "cluster_name" : "1",
+        "description" : "hdfs2",
+        "desired_configs" : [ ],
+        "group_name" : "hdfs2",
+        "hosts" : [
+          {
+            "host_name" : "c6402.ambari.apache.org",
+            "href" : "http://c6401:8080/api/v1/clusters/1/hosts/c6402.ambari.apache.org"
+          }
+        ],
+        "id" : 3,
+        "tag" : "HDFS"
+      }
+    },
+    {
+      "href" : "http://c6401:8080/api/v1/clusters/1/config_groups/4",
+      "ConfigGroup" : {
+        "cluster_name" : "1",
+        "description" : "yarn1",
+        "desired_configs" : [ ],
+        "group_name" : "yarn1",
+        "hosts" : [
+          {
+            "host_name" : "c6401.ambari.apache.org",
+            "href" : "http://c6401:8080/api/v1/clusters/1/hosts/c6401.ambari.apache.org"
+          },
+          {
+            "host_name" : "c6402.ambari.apache.org",
+            "href" : "http://c6401:8080/api/v1/clusters/1/hosts/c6402.ambari.apache.org"
+          }
+        ],
+        "id" : 4,
+        "tag" : "YARN"
+      }
+    }
+  ]
+}

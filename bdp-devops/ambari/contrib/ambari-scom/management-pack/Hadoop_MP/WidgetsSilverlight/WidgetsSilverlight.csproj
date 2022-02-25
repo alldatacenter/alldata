@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{729E6DB2-31F7-4EB1-9146-A2F2263585EE}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ambari.SCOM.Widgets</RootNamespace>
+    <AssemblyName>Ambari.SCOM.Widgets.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.EnterpriseManagement.CompositionEngine">
+      <HintPath>..\Items\Libs\SCOM2012_Web\Microsoft.EnterpriseManagement.CompositionEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EnterpriseManagement.CompositionEngine.Extensibility">
+      <HintPath>..\Items\Libs\SCOM2012_Web\Microsoft.EnterpriseManagement.CompositionEngine.Extensibility.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EnterpriseManagement.Presentation.Controls">
+      <HintPath>..\Items\Libs\SCOM2012_Web\Microsoft.EnterpriseManagement.Presentation.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EnterpriseManagement.Presentation.Core">
+      <HintPath>..\Items\Libs\SCOM2012_Web\Microsoft.EnterpriseManagement.Presentation.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Silverlight">
+      <HintPath>..\Items\Libs\SCOM2012_Web\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.Composition, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>..\Items\Libs\SCOM2012_Web\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\WidgetsWpf\Charting\Axes\ForegroundDateTimeAxis.cs">
+      <Link>Charting\Axes\ForegroundDateTimeAxis.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\Axes\ForegroundDateTimeDataToAxisConverter.cs">
+      <Link>Charting\Axes\ForegroundDateTimeDataToAxisConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\Axes\ForegroundLinearAxis.cs">
+      <Link>Charting\Axes\ForegroundLinearAxis.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\Axes\ForegroundLinearDataToAxisConverter.cs">
+      <Link>Charting\Axes\ForegroundLinearDataToAxisConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\Chart.xaml.cs">
+      <Link>Charting\Chart.xaml.cs</Link>
+      <DependentUpon>Chart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\ChartingConstants.cs">
+      <Link>Charting\ChartingConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\DataSeriesConverters\ExtendedDataToSeriesConverterBase.cs">
+      <Link>Charting\DataSeriesConverters\ExtendedDataToSeriesConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\DataSeriesConverters\SeriesDefinitionDataToSeriesConverter.cs">
+      <Link>Charting\DataSeriesConverters\SeriesDefinitionDataToSeriesConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\DataSeriesConverters\StackedAreaDataToSeriesConverter.cs">
+      <Link>Charting\DataSeriesConverters\StackedAreaDataToSeriesConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\SeriesFactories\StackableSeriesFactory.cs">
+      <Link>Charting\SeriesFactories\StackableSeriesFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\SeriesStacker.cs">
+      <Link>Charting\SeriesStacker.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Charting\StackedSeriesManager.cs">
+      <Link>Charting\StackedSeriesManager.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Components\CollectionElementAccessor.cs">
+      <Link>Components\CollectionElementAccessor.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Components\EntitiesToInstancesWithRecursionLevelConverter.cs">
+      <Link>Components\EntitiesToInstancesWithRecursionLevelConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Components\InitializableComponentBase.cs">
+      <Link>Components\InitializableComponentBase.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Components\StringFormatter.cs">
+      <Link>Components\StringFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Components\StringSplitter.cs">
+      <Link>Components\StringSplitter.cs</Link>
+    </Compile>
+    <Compile Include="..\WidgetsWpf\Extensions\DataTypeExtensions.cs">
+      <Link>Extensions\DataTypeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\WidgetsWpf\Charting\Chart.xaml">
+      <Link>Charting\Chart.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

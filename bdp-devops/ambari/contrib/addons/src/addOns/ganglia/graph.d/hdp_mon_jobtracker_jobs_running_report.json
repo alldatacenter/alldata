@@ -1,0 +1,10 @@
+{
+   "report_name" : "jobtracker_jobs_running_report",
+   "report_type" : "standard",
+   "title" : "Jobs Running",
+   "vertical_label" : "Number Of Jobs",
+   "series" : [
+      { "metric": "mapred.jobtracker.jobs_running", "color": "ff0000", "label": "Jobs Running", 
+        "line_width": "2", "type": "line" }
+   ]
+}

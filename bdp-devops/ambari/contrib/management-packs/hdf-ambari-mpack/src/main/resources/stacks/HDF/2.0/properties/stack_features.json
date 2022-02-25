@@ -1,0 +1,279 @@
+{
+  "stack_features": [
+    {
+      "name": "snappy",
+      "description": "Snappy compressor/decompressor support",
+      "min_version": "0.0.0.0",
+      "max_version": "0.2.0.0"
+    },
+    {
+      "name": "lzo",
+      "description": "LZO libraries support",
+      "min_version": "0.2.1.0"
+    },
+    {
+      "name": "express_upgrade",
+      "description": "Express upgrade support",
+      "min_version": "0.1.0.0"
+    },
+    {
+      "name": "rolling_upgrade",
+      "description": "Rolling upgrade support",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "secure_zookeeper",
+      "description": "Protect ZNodes with SASL acl in secure clusters",
+      "min_version": "2.6.0.0"
+    },
+    {
+      "name": "config_versioning",
+      "description": "Configurable versions support",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "datanode_non_root",
+      "description": "DataNode running as non-root support (AMBARI-7615)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "remove_ranger_hdfs_plugin_env",
+      "description": "HDFS removes Ranger env files (AMBARI-14299)",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "ranger",
+      "description": "Ranger Service support",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "ranger_tagsync_component",
+      "description": "Ranger Tagsync component support (AMBARI-14383)",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "phoenix",
+      "description": "Phoenix Service support",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "nfs",
+      "description": "NFS support",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "tez_for_spark",
+      "description": "Tez dependency for Spark",
+      "min_version": "0.2.0.0",
+      "max_version": "0.3.0.0"
+    },
+    {
+      "name": "timeline_state_store",
+      "description": "Yarn application timeline-service supports state store property (AMBARI-11442)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "copy_tarball_to_hdfs",
+      "description": "Copy tarball to HDFS support (AMBARI-12113)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "spark_16plus",
+      "description": "Spark 1.6+",
+      "min_version": "1.2.0.0"
+    },
+    {
+      "name": "spark_thriftserver",
+      "description": "Spark Thrift Server",
+      "min_version": "0.3.2.0"
+    },
+    {
+      "name": "storm_kerberos",
+      "description": "Storm Kerberos support (AMBARI-7570)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "storm_ams",
+      "description": "Storm AMS integration (AMBARI-10710)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "kafka_listeners",
+      "description": "Kafka listeners (AMBARI-10984)",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "kafka_kerberos",
+      "description": "Kafka Kerberos support (AMBARI-10984)",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "pig_on_tez",
+      "description": "Pig on Tez support (AMBARI-7863)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "ranger_usersync_non_root",
+      "description": "Ranger Usersync as non-root user (AMBARI-10416)",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "ranger_audit_db_support",
+      "description": "Ranger Audit to DB support",
+      "min_version": "0.2.0.0",
+      "max_version": "2.0.0.0"
+    },
+    {
+      "name": "accumulo_kerberos_user_auth",
+      "description": "Accumulo Kerberos User Auth (AMBARI-10163)",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "knox_versioned_data_dir",
+      "description": "Use versioned data dir for Knox (AMBARI-13164)",
+      "min_version": "0.3.2.0"
+    },
+    {
+      "name": "knox_sso_topology",
+      "description": "Knox SSO Topology support (AMBARI-13975)",
+      "min_version": "0.3.8.0"
+    },
+    {
+      "name": "atlas_rolling_upgrade",
+      "description": "Rolling upgrade support for Atlas",
+      "min_version": "0.3.0.0"
+    },
+    {
+      "name": "oozie_admin_user",
+      "description": "Oozie install user as an Oozie admin user (AMBARI-7976)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "oozie_create_hive_tez_configs",
+      "description": "Oozie create configs for Ambari Hive and Tez deployments (AMBARI-8074)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "oozie_setup_shared_lib",
+      "description": "Oozie setup tools used to shared Oozie lib to HDFS (AMBARI-7240)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "oozie_host_kerberos",
+      "description": "Oozie in secured clusters uses _HOST in Kerberos principal (AMBARI-9775)",
+      "min_version": "0.0.0.0"
+    },
+    {
+      "name": "falcon_extensions",
+      "description": "Falcon Extension",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "hive_metastore_upgrade_schema",
+      "description": "Hive metastore upgrade schema support (AMBARI-11176)",
+      "min_version": "0.3.0.0"
+     },
+    {
+      "name": "hive_server_interactive",
+      "description": "Hive server interactive support (AMBARI-15573)",
+      "min_version": "2.0.0.0"
+     },
+    {
+      "name": "hive_webhcat_specific_configs",
+      "description": "Hive webhcat specific configurations support (AMBARI-12364)",
+      "min_version": "0.3.0.0"
+     },
+    {
+      "name": "hive_purge_table",
+      "description": "Hive purge table support (AMBARI-12260)",
+      "min_version": "0.3.0.0"
+     },
+    {
+      "name": "hive_server2_kerberized_env",
+      "description": "Hive server2 working on kerberized environment (AMBARI-13749)",
+      "min_version": "0.2.3.0",
+      "max_version": "0.2.5.0"
+     },
+    {
+      "name": "hive_env_heapsize",
+      "description": "Hive heapsize property defined in hive-env (AMBARI-12801)",
+      "min_version": "0.2.0.0"
+    },
+    {
+      "name": "ranger_kms_hsm_support",
+      "description": "Ranger KMS HSM support (AMBARI-15752)",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "ranger_log4j_support",
+      "description": "Ranger supporting log-4j properties (AMBARI-15681)",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "ranger_kerberos_support",
+      "description": "Ranger Kerberos support",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "hive_metastore_site_support",
+      "description": "Hive Metastore site support",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "ranger_usersync_password_jceks",
+      "description": "Saving Ranger Usersync credentials in jceks",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "ranger_install_infra_client",
+      "description": "Ambari Infra Service support",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "hbase_home_directory",
+      "description": "Hbase home directory in HDFS needed for HBASE backup",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "spark_livy",
+      "description": "Livy as slave component of spark",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "atlas_ranger_plugin_support",
+      "description": "Atlas Ranger plugin support",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "atlas_conf_dir_in_path",
+      "description": "Prepend the Atlas conf dir (/etc/atlas/conf) to the classpath of Storm and Falcon",
+      "min_version": "0.3.0.0",
+      "max_version": "0.4.99.99"
+    },
+    {
+      "name": "atlas_upgrade_support",
+      "description": "Atlas supports express and rolling upgrades",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "ranger_pid_support",
+      "description": "Ranger Service support pid generation AMBARI-16756",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "ranger_kms_pid_support",
+      "description": "Ranger KMS Service support pid generation",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "ranger_admin_password_change",
+      "description": "Allow ranger admin credentials to be specified during cluster creation (AMBARI-17000)",
+      "min_version": "2.0.0.0"
+    },
+    {
+      "name": "storm_metrics_apache_classes",
+      "description": "Metrics sink for Storm that uses Apache class names",
+      "min_version": "2.0.0.0"
+    }
+  ]
+}

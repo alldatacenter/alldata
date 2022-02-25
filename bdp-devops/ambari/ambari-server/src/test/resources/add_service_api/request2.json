@@ -1,0 +1,24 @@
+{
+  "services": [
+    { "name" : "STORM" },
+    { "name" : "BEACON" }
+  ],
+
+  "components" : [
+    {
+      "name" : "NIMBUS",
+      "hosts": [
+        { "fqdn" : "c7401.ambari.apache.org" },
+        { "fqdn" : "c7402.ambari.apache.org" }
+      ]
+    },
+    {
+      "name" : "BEACON_SERVER",
+      "hosts": [
+        { "fqdn" : "c7402.ambari.apache.org" },
+        { "fqdn" : "c7403.ambari.apache.org" }
+      ]
+    }
+  ]
+
+}

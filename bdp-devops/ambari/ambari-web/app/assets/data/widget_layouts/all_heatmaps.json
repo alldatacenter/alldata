@@ -1,0 +1,258 @@
+
+{
+  "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets?WidgetInfo/widget_type=HEATMAP&WidgetInfo/scope=CLUSTER",
+  "items" : [
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/1",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "Host Disk Space Used %",
+        "id" : 1,
+        "scope" : "CLUSTER",
+        "widget_name" : "HOST_DISK_USED",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/2",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "Host Memory Used %",
+        "id" : 2,
+        "scope" : "CLUSTER",
+        "widget_name" : "HOST_MEMORY_USED",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/3",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "Host CPU Wait IO %",
+        "id" : 3,
+        "scope" : "CLUSTER",
+        "widget_name" : "HOST_CPU_WAIT_IO",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/12",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HDFS Bytes Read",
+        "id" : 12,
+        "scope" : "CLUSTER",
+        "widget_name" : "HDFS_BYTES_READ",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/13",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HDFS Bytes Written",
+        "id" : 13,
+        "scope" : "CLUSTER",
+        "widget_name" : "HDFS_BYTES_WRITE",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/14",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode Garbage Collection Time",
+        "id" : 14,
+        "scope" : "CLUSTER",
+        "widget_name" : "DN_GC_TIME",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/15",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode JVM Heap Memory Used",
+        "id" : 15,
+        "scope" : "CLUSTER",
+        "widget_name" : "DN_JVM_HEAP_USED",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/16",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode JVM Heap Memory Committed",
+        "id" : 16,
+        "scope" : "CLUSTER",
+        "widget_name" : "DN_JVM_HEAP_COMMITTED",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/17",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode Process Disk I/O Utilization",
+        "id" : 17,
+        "scope" : "CLUSTER",
+        "widget_name" : "DN_DISK_IO",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/18",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "DataNode Process Network I/O Utilization",
+        "id" : 18,
+        "scope" : "CLUSTER",
+        "widget_name" : "DN_NETWORK_IO",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/23",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager Garbage Collection Time",
+        "id" : 23,
+        "scope" : "CLUSTER",
+        "widget_name" : "NM_GC_TIME",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/24",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager JVM Heap Memory Used",
+        "id" : 24,
+        "scope" : "CLUSTER",
+        "widget_name" : "NM_JVM_Heap_Used",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/25",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "YARN Memory used %",
+        "id" : 25,
+        "scope" : "CLUSTER",
+        "widget_name" : "YARN_MEMORY_USED",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/26",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "Allocated Containers",
+        "id" : 26,
+        "scope" : "CLUSTER",
+        "widget_name" : "ALLOCATED_CONTAINER",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/27",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager RAM Utilized",
+        "id" : 27,
+        "scope" : "CLUSTER",
+        "widget_name" : "NM_RAM_UTILIZED",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/28",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "NodeManager CPU Utilized",
+        "id" : 28,
+        "scope" : "CLUSTER",
+        "widget_name" : "NM_CPU_UTILIZED",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/37",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Compaction Queue Size",
+        "id" : 37,
+        "scope" : "CLUSTER",
+        "widget_name" : "HBASE_COMPACTION_QUEUE_SIZE",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/38",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Memstore Sizes",
+        "id" : 38,
+        "scope" : "CLUSTER",
+        "widget_name" : "HBASE_MEMSTORE_SIZES",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/39",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Read Request Count",
+        "id" : 39,
+        "scope" : "CLUSTER",
+        "widget_name" : "HBASE_READ_REQUEST",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/40",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Write Request Count",
+        "id" : 40,
+        "scope" : "CLUSTER",
+        "widget_name" : "HBASE_WRITE_REQUEST",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://104.196.82.37:8080/api/v1/clusters/c1/widgets/41",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Regions",
+        "id" : 41,
+        "scope" : "CLUSTER",
+        "widget_name" : "HBASE_REGIONS",
+        "widget_type" : "HEATMAP"
+      }
+    }
+  ]
+}

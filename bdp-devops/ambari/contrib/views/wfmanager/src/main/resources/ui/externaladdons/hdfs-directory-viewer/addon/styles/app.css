@@ -1,0 +1,190 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+.directory-viewer{
+  width: 500px;
+}
+.directory-viewer-wrap {
+  height: 500px;
+  border: 1px solid #e2e2e2;
+}
+
+.directory-viewer .container-wrap {
+	position:relative;
+	height:400px;
+}
+.directory-viewer .top-header {
+	position: relative;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	width: 500px;
+	border-bottom:1px solid #e2e2e2;
+}
+.directory-viewer .row-selected {
+	background-color:#c7ddef!important
+}
+.directory-viewer .file-row {
+	padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e2e2;
+}
+.directory-viewer .dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #337ab7;
+    white-space: nowrap;
+}
+.directory-viewer .file-row:hover {
+    background-color: #f5f5f5;
+}
+.directory-viewer .mod-icon {
+	font-size:1.5em
+}
+.directory-viewer .elipsisClass{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 50%;
+}
+.directory-viewer .elipsis-link{
+    overflow: initial;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 50px;
+}
+.directory-viewer .pointer {
+    cursor: pointer;
+}
+.directory-viewer .breadcrumbs-label {
+	display: inline-block;
+	padding: 8px;
+}
+.directory-viewer #file-view-unix {
+	width:500px;
+	position:relative;
+	overflow:auto;
+	float:left;
+}
+.directory-viewer .padding-left-10px {
+	padding-left: 10px;
+}
+.directory-viewer .padding-right-10px {
+	padding-right: 10px;
+}
+.directory-viewer .home-icon {
+	top:3px;
+	font-size:1.5em;
+	position:relative;
+}
+.directory-viewer .breadcrumb {
+	background-color:white;
+	margin-bottom:0px;
+	padding: 0px;
+}
+.directory-viewer .container-fluid {
+	position:relative;
+	height:400px;
+}
+.directory-viewer .folder-name {
+	width:100% !important;
+}
+.directory-viewer .add-folder {
+    padding: 10px;
+    height: auto;
+    padding-top:0px;
+    padding-left:10px;
+    padding-bottom:4px;
+    margin-top:3px;
+    left:16px;
+}
+.directory-viewer .go-to-folder {
+    height: auto;
+    padding-right: 0px;
+    padding-left: 10px;
+    padding-bottom: 4px;
+    margin-top:3px;
+    left: 8px;
+}
+.directory-viewer .btn-action {
+	padding: 5px 10px;
+}
+.directory-viewer #folderPath, .directory-viewer #folderName {
+	height: 32px;
+	top: 2px;
+	position: relative;
+}
+.directory-viewer .margin-right-5 {
+	margin-right: 5px !important;
+}
+.directory-viewer a, .directory-viewer .file-system-count  {
+  color: #337ab7;
+}
+.directory-viewer .top-header button.btn{
+  color: #fff !important;
+}
+
+.directory-viewer .form-group{
+  padding-left:0px;
+  width:90%;
+}
+
+.directory-viewer button{
+  position:relative;
+  top:2px;
+  left:5px;
+}
+
+.directory-viewer .file-creation-status {
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+.directory-viewer .file-creation-success {
+  color:green;
+}
+
+.directory-viewer .file-creation-failure {
+  color:red;
+}
+
+.directory-viewer .inline {
+  display:inline-block;
+}
+
+.directory-viewer .file-viewer-settings {
+  position:relative;
+  top:5px;
+}
+
+.directory-viewer .no-padding {
+  padding:0px;
+}
+
+.directory-viewer .file-system-status {
+  margin-top:10px;
+  padding-left:20px;
+}
+
+.directory-viewer .file-system-count {
+  text-align:center;
+}

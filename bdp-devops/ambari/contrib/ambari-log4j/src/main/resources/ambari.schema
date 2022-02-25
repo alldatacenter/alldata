@@ -1,0 +1,88 @@
+--
+-- Licensed to the Apache Software Foundation (ASF) under one
+-- or more contributor license agreements.  See the NOTICE file
+-- distributed with this work for additional information
+-- regarding copyright ownership.  The ASF licenses this file
+-- to you under the Apache License, Version 2.0 (the
+-- "License"); you may not use this file except in compliance
+-- with the License.  You may obtain a copy of the License at
+--
+--     http://www.apache.org/licenses/LICENSE-2.0
+--
+-- Unless required by applicable law or agreed to in writing, software
+-- distributed under the License is distributed on an "AS IS" BASIS,
+-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-- See the License for the specific language governing permissions and
+-- limitations under the License.
+--
+CREATE TABLE workflow (
+  workflowId TEXT, workflowName TEXT,
+  parentWorkflowId TEXT,  
+  workflowContext TEXT, userName TEXT,
+  startTime BIGINT, lastUpdateTime BIGINT,
+  numJobsTotal INTEGER, numJobsCompleted INTEGER,
+  PRIMARY KEY (workflowId),
+  FOREIGN KEY (parentWorkflowId) REFERENCES workflow(workflowId)
+);
+
+CREATE TABLE job (
+  jobId TEXT, workflowId TEXT, jobName TEXT, workflowEntityName TEXT,
+  userName TEXT, queue TEXT, acls TEXT, confPath TEXT, 
+  submitTime BIGINT, launchTime BIGINT, finishTime BIGINT, 
+  maps INTEGER, reduces INTEGER, status TEXT, priority TEXT, 
+  finishedMaps INTEGER, finishedReduces INTEGER, 
+  failedMaps INTEGER, failedReduces INTEGER, 
+  mapsRuntime BIGINT, reducesRuntime BIGINT,
+  mapCounters TEXT, reduceCounters TEXT, jobCounters TEXT, 
+  inputBytes BIGINT, outputBytes BIGINT,
+  PRIMARY KEY(jobId),
+  FOREIGN KEY(workflowId) REFERENCES workflow(workflowId)
+);
+
+CREATE TABLE task (
+  taskId TEXT, jobId TEXT, taskType TEXT, splits TEXT, 
+  startTime BIGINT, finishTime BIGINT, status TEXT, error TEXT, counters TEXT, 
+  failedAttempt TEXT, 
+  PRIMARY KEY(taskId), 
+  FOREIGN KEY(jobId) REFERENCES job(jobId)
+);
+
+CREATE TABLE taskAttempt (
+  taskAttemptId TEXT, taskId TEXT, jobId TEXT, taskType TEXT, taskTracker TEXT, 
+  startTime BIGINT, finishTime BIGINT, 
+  mapFinishTime BIGINT, shuffleFinishTime BIGINT, sortFinishTime BIGINT, 
+  locality TEXT, avataar TEXT, 
+  status TEXT, error TEXT, counters TEXT, 
+  inputBytes BIGINT, outputBytes BIGINT,
+  PRIMARY KEY(taskAttemptId), 
+  FOREIGN KEY(jobId) REFERENCES job(jobId), 
+  FOREIGN KEY(taskId) REFERENCES task(taskId)
+); 
+
+CREATE TABLE hdfsEvent (
+  timestamp BIGINT,
+  userName TEXT,
+  clientIP TEXT,
+  operation TEXT,
+  srcPath TEXT,
+  dstPath TEXT,
+  permissions TEXT
+);
+
+CREATE TABLE mapreduceEvent (
+  timestamp BIGINT,
+  userName TEXT,
+  clientIP TEXT,
+  operation TEXT,
+  target TEXT,
+  result TEXT,
+  description TEXT,
+  permissions TEXT
+);
+
+CREATE TABLE clusterEvent (
+  timestamp BIGINT, 
+  service TEXT, status TEXT, 
+  error TEXT, data TEXT , 
+  host TEXT, rack TEXT
+);

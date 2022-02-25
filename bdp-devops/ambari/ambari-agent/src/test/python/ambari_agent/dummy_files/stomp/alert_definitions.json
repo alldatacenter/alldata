@@ -1,0 +1,2669 @@
+{
+  "hash": "37fe2bd73438980c619c2b8c2f95d160",
+  "eventType": "CREATE",
+  "clusters": {
+    "0": {
+      "hash": "8f7b4e960133bc691661cbcdaddddec8",
+      "clusterName": "cl1",
+      "hostName": "ctr-e134-1499953498516-81665-01-000008.hwx.site",
+      "publicHostName": "ctr-e134-1499953498516-81665-01-000008.hwx.site",
+      "alertDefinitions": [{
+          "ignore_host": false,
+          "name": "hbase_master_cpu",
+          "componentName": "HBASE_MASTER",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "6c891177-b32f-47c8-befb-3846049f98e8",
+          "label": "HBase Master CPU Utilization",
+          "definitionId": 2,
+          "source": {
+            "jmx": {
+              "value": "{0} * 100",
+              "property_list": [
+                "java.lang:type=OperatingSystem/SystemCpuLoad",
+                "java.lang:type=OperatingSystem/AvailableProcessors"
+              ]
+            },
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 200.0
+              },
+              "ok": {
+                "text": "{1} CPU, load {0:.1%}"
+              },
+              "critical": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 250.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "connection_timeout": 5.0,
+              "default_port": 60010,
+              "http": "{{hbase-site/hbase.master.info.port}}",
+              "kerberos_principal": "{{hbase-site/hbase.security.authentication.spnego.kerberos.principal}}",
+              "kerberos_keytab": "{{hbase-site/hbase.security.authentication.spnego.kerberos.keytab}}"
+            }
+          },
+          "serviceName": "HBASE",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if CPU utilization of the HBase Master exceeds certain warning and critical thresholds. It checks the HBase Master JMX Servlet for the SystemCPULoad property. The threshold values are in percent."
+        },
+        {
+          "ignore_host": false,
+          "name": "hbase_regionserver_process_percent",
+          "enabled": true,
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "69ff4c8f-8e98-4cfd-b90f-6914e2f147ff",
+          "label": "Percent RegionServers Available",
+          "definitionId": 3,
+          "source": {
+            "alert_name": "hbase_regionserver_process",
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 10.0
+              },
+              "ok": {
+                "text": "affected: [{1}], total: [{0}]"
+              },
+              "critical": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 30.0
+              }
+            },
+            "type": "AGGREGATE"
+          },
+          "serviceName": "HBASE",
+          "scope": "SERVICE",
+          "description": "This service-level alert is triggered if the configured percentage of RegionServer processes cannot be determined to be up and listening on the network for the configured warning and critical thresholds. It aggregates the results of RegionServer process down checks."
+        },
+        {
+          "ignore_host": false,
+          "name": "yarn_nodemanager_webui_percent",
+          "enabled": true,
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "35ec3949-9cf6-4ef2-86f7-996e9bb15ced",
+          "label": "Percent NodeManagers Available",
+          "definitionId": 6,
+          "source": {
+            "alert_name": "yarn_nodemanager_webui",
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 10.0
+              },
+              "ok": {
+                "text": "affected: [{1}], total: [{0}]"
+              },
+              "critical": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 30.0
+              }
+            },
+            "type": "AGGREGATE"
+          },
+          "serviceName": "YARN",
+          "scope": "SERVICE",
+          "description": "This alert is triggered if the number of down NodeManagers in the cluster is greater than the configured critical threshold. It aggregates the results of NodeManager process checks."
+        },
+        {
+          "ignore_host": false,
+          "name": "yarn_resourcemanager_webui",
+          "componentName": "RESOURCEMANAGER",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "8313d813-4a75-45ec-ad01-c6c7841d9b2d",
+          "label": "ResourceManager Web UI",
+          "definitionId": 8,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+              },
+              "ok": {
+                "text": "HTTP {0} response in {2:.3f}s"
+              },
+              "critical": {
+                "text": "Connection failed to {1} ({3})"
+              }
+            },
+            "type": "WEB",
+            "uri": {
+              "http": "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{yarn-site/yarn.resourcemanager.webapp.spnego-keytab-file}}",
+              "https_property": "{{yarn-site/yarn.http.policy}}",
+              "https": "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{yarn-site/yarn.resourcemanager.webapp.spnego-principal}}",
+              "high_availability": {
+                "alias_key": "{{yarn-site/yarn.resourcemanager.ha.rm-ids}}",
+                "https_pattern": "{{yarn-site/yarn.resourcemanager.webapp.https.address.{{alias}}}}",
+                "http_pattern": "{{yarn-site/yarn.resourcemanager.webapp.address.{{alias}}}}"
+              }
+            }
+          },
+          "serviceName": "YARN",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the ResourceManager Web UI is unreachable."
+        },
+        {
+          "ignore_host": false,
+          "name": "yarn_resourcemanager_cpu",
+          "componentName": "RESOURCEMANAGER",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "99bf5ce1-ce97-48ed-803b-72d5f1bbe41b",
+          "label": "ResourceManager CPU Utilization",
+          "definitionId": 9,
+          "source": {
+            "jmx": {
+              "value": "{0} * 100",
+              "property_list": [
+                "java.lang:type=OperatingSystem/SystemCpuLoad",
+                "java.lang:type=OperatingSystem/AvailableProcessors"
+              ]
+            },
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 200.0
+              },
+              "ok": {
+                "text": "{1} CPU, load {0:.1%}"
+              },
+              "critical": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 250.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{yarn-site/yarn.resourcemanager.webapp.spnego-keytab-file}}",
+              "https_property": "{{yarn-site/yarn.http.policy}}",
+              "https": "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{yarn-site/yarn.resourcemanager.webapp.spnego-principal}}",
+              "high_availability": {
+                "alias_key": "{{yarn-site/yarn.resourcemanager.ha.rm-ids}}",
+                "https_pattern": "{{yarn-site/yarn.resourcemanager.webapp.https.address.{{alias}}}}",
+                "http_pattern": "{{yarn-site/yarn.resourcemanager.webapp.address.{{alias}}}}"
+              }
+            }
+          },
+          "serviceName": "YARN",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if CPU utilization of the ResourceManager exceeds certain warning and critical thresholds. It checks the ResourceManager JMX Servlet for the SystemCPULoad property. The threshold values are in percent."
+        },
+        {
+          "ignore_host": false,
+          "name": "yarn_resourcemanager_rpc_latency",
+          "componentName": "RESOURCEMANAGER",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "3a0cb326-f8d3-42ec-b527-01a6c597b5aa",
+          "label": "ResourceManager RPC Latency",
+          "definitionId": 11,
+          "source": {
+            "jmx": {
+              "value": "{0}",
+              "property_list": [
+                "Hadoop:service=ResourceManager,name=RpcActivityForPort*/RpcQueueTimeAvgTime",
+                "Hadoop:service=ResourceManager,name=RpcActivityForPort*/RpcProcessingTimeAvgTime"
+              ]
+            },
+            "reporting": {
+              "units": "ms",
+              "warning": {
+                "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+                "value": 3000.0
+              },
+              "ok": {
+                "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]"
+              },
+              "critical": {
+                "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+                "value": 5000.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{yarn-site/yarn.resourcemanager.webapp.address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{yarn-site/yarn.resourcemanager.webapp.spnego-keytab-file}}",
+              "https_property": "{{yarn-site/yarn.http.policy}}",
+              "https": "{{yarn-site/yarn.resourcemanager.webapp.https.address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{yarn-site/yarn.resourcemanager.webapp.spnego-principal}}",
+              "high_availability": {
+                "alias_key": "{{yarn-site/yarn.resourcemanager.ha.rm-ids}}",
+                "https_pattern": "{{yarn-site/yarn.resourcemanager.webapp.https.address.{{alias}}}}",
+                "http_pattern": "{{yarn-site/yarn.resourcemanager.webapp.address.{{alias}}}}"
+              }
+            }
+          },
+          "serviceName": "YARN",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the ResourceManager operations RPC latency exceeds the configured critical threshold. Typically an increase in the RPC processing time increases the RPC queue length, causing the average queue wait time to increase for ResourceManager operations. The threshold values are in milliseconds."
+        },
+        {
+          "ignore_host": false,
+          "name": "nodemanager_health_summary",
+          "componentName": "RESOURCEMANAGER",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "0315ba12-ada0-4004-a4b4-f174490e4b3c",
+          "label": "NodeManager Health Summary",
+          "definitionId": 12,
+          "source": {
+            "path": "YARN/2.1.0.2.0/package/alerts/alert_nodemanagers_summary.py",
+            "type": "SCRIPT",
+            "parameters": [{
+              "display_name": "Connection Timeout",
+              "name": "connection.timeout",
+              "value": 5.0,
+              "threshold": "CRITICAL",
+              "units": "seconds",
+              "type": "NUMERIC",
+              "description": "The maximum time before this alert is considered to be CRITICAL"
+            }]
+          },
+          "serviceName": "YARN",
+          "scope": "SERVICE",
+          "enabled": true,
+          "description": "This service-level alert is triggered if there are unhealthy NodeManagers"
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_cpu",
+          "componentName": "NAMENODE",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "3b5e6dd2-115c-4340-8c0e-c33baeb4313b",
+          "label": "NameNode Host CPU Utilization",
+          "definitionId": 20,
+          "source": {
+            "jmx": {
+              "value": "{0} * 100",
+              "property_list": [
+                "java.lang:type=OperatingSystem/SystemCpuLoad",
+                "java.lang:type=OperatingSystem/AvailableProcessors"
+              ]
+            },
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 200.0
+              },
+              "ok": {
+                "text": "{1} CPU, load {0:.1%}"
+              },
+              "critical": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 250.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{hdfs-site/dfs.namenode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.namenode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}",
+              "high_availability": {
+                "nameservice": "{{hdfs-site/dfs.internal.nameservices}}",
+                "http_pattern": "{{hdfs-site/dfs.namenode.http-address.{{ha-nameservice}}.{{alias}}}}",
+                "https_pattern": "{{hdfs-site/dfs.namenode.https-address.{{ha-nameservice}}.{{alias}}}}",
+                "alias_key": "{{hdfs-site/dfs.ha.namenodes.{{ha-nameservice}}}}"
+              }
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if CPU utilization of the NameNode exceeds certain warning and critical thresholds. It checks the NameNode JMX Servlet for the SystemCPULoad property. The threshold values are in percent."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_hdfs_pending_deletion_blocks",
+          "componentName": "NAMENODE",
+          "interval": 2,
+          "clusterId": 2,
+          "uuid": "416030cb-e996-4de9-b985-457f6bd5ac72",
+          "label": "HDFS Pending Deletion Blocks",
+          "definitionId": 22,
+          "source": {
+            "jmx": {
+              "value": "{0}",
+              "property_list": [
+                "Hadoop:service=NameNode,name=FSNamesystem/PendingDeletionBlocks"
+              ]
+            },
+            "reporting": {
+              "units": "Blocks",
+              "warning": {
+                "text": "Pending Deletion Blocks:[{0}]",
+                "value": 100000.0
+              },
+              "ok": {
+                "text": "Pending Deletion Blocks:[{0}]"
+              },
+              "critical": {
+                "text": "Pending Deletion Blocks:[{0}]",
+                "value": 100000.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{hdfs-site/dfs.namenode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.namenode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}",
+              "high_availability": {
+                "nameservice": "{{hdfs-site/dfs.internal.nameservices}}",
+                "http_pattern": "{{hdfs-site/dfs.namenode.http-address.{{ha-nameservice}}.{{alias}}}}",
+                "https_pattern": "{{hdfs-site/dfs.namenode.https-address.{{ha-nameservice}}.{{alias}}}}",
+                "alias_key": "{{hdfs-site/dfs.ha.namenodes.{{ha-nameservice}}}}"
+              }
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the number of blocks pending deletion in HDFS exceeds the configured warning and critical thresholds. It checks the NameNode JMX Servlet for the PendingDeletionBlock property."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_client_rpc_queue_latency_daily",
+          "componentName": "NAMENODE",
+          "interval": 480,
+          "clusterId": 2,
+          "uuid": "d2a84ae6-53b1-4eb6-b573-f26220a1cc4f",
+          "label": "NameNode Client RPC Queue Latency (Daily)",
+          "definitionId": 23,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 1440.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "rpc.rpc.client.RpcQueueTimeAvgTime",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 100.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC queue latency growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC queue latency growth."
+              },
+              {
+                "display_name": "Minimum Latency",
+                "name": "minimumValue",
+                "value": 30.0,
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The minimum latency to measure growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "ms",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the deviation of RPC latency on client port has grown beyond the specified threshold within a day period."
+        },
+        {
+          "ignore_host": true,
+          "name": "namenode_ha_health",
+          "componentName": "NAMENODE",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "990b0d19-f7bf-45a3-ad45-d55fb4814bdd",
+          "label": "NameNode High Availability Health",
+          "definitionId": 24,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_ha_namenode_health.py",
+            "type": "SCRIPT",
+            "parameters": [{
+              "display_name": "Connection Timeout",
+              "name": "connection.timeout",
+              "value": 5.0,
+              "threshold": "CRITICAL",
+              "units": "seconds",
+              "type": "NUMERIC",
+              "description": "The maximum time before this alert is considered to be CRITICAL"
+            }]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if either the Active NameNode or Standby NameNode are not running."
+        },
+        {
+          "ignore_host": false,
+          "name": "datanode_health_summary",
+          "componentName": "NAMENODE",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "9550f814-70ce-4ad2-8dea-569fbc3e8636",
+          "label": "DataNode Health Summary",
+          "definitionId": 26,
+          "source": {
+            "jmx": {
+              "value": "{0} + {1}",
+              "property_list": [
+                "Hadoop:service=NameNode,name=FSNamesystemState/NumDeadDataNodes",
+                "Hadoop:service=NameNode,name=FSNamesystemState/NumStaleDataNodes",
+                "Hadoop:service=NameNode,name=FSNamesystemState/NumLiveDataNodes"
+              ]
+            },
+            "reporting": {
+              "units": "DNs",
+              "warning": {
+                "text": "DataNode Health: [Live={2}, Stale={1}, Dead={0}]",
+                "value": 1.0
+              },
+              "ok": {
+                "text": "All {2} DataNode(s) are healthy"
+              },
+              "critical": {
+                "text": "DataNode Health: [Live={2}, Stale={1}, Dead={0}]",
+                "value": 1.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{hdfs-site/dfs.namenode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.namenode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}",
+              "high_availability": {
+                "nameservice": "{{hdfs-site/dfs.internal.nameservices}}",
+                "http_pattern": "{{hdfs-site/dfs.namenode.http-address.{{ha-nameservice}}.{{alias}}}}",
+                "https_pattern": "{{hdfs-site/dfs.namenode.https-address.{{ha-nameservice}}.{{alias}}}}",
+                "alias_key": "{{hdfs-site/dfs.ha.namenodes.{{ha-nameservice}}}}"
+              }
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "SERVICE",
+          "enabled": true,
+          "description": "This service-level alert is triggered if there are unhealthy DataNodes"
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_service_rpc_queue_latency_daily",
+          "componentName": "NAMENODE",
+          "interval": 480,
+          "clusterId": 2,
+          "uuid": "54f022db-51f6-4193-8aa7-52c22a0f4194",
+          "label": "NameNode Service RPC Queue Latency (Daily)",
+          "definitionId": 28,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 1440.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "rpc.rpc.datanode.RpcQueueTimeAvgTime",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 100.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC queue latency growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC queue latency growth."
+              },
+              {
+                "display_name": "Minimum Latency",
+                "name": "minimumValue",
+                "value": 30.0,
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The minimum latency to measure growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "MB",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the deviation of RPC latency on datanode port has grown beyond the specified threshold within a day period."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_client_rpc_processing_latency_daily",
+          "componentName": "NAMENODE",
+          "interval": 480,
+          "clusterId": 2,
+          "uuid": "19498de1-618b-4097-b916-cc65d6b2b2ca",
+          "label": "NameNode Client RPC Processing Latency (Daily)",
+          "definitionId": 30,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 1440.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "rpc.rpc.client.RpcProcessingTimeAvgTime",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 100.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC processing latency growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC processing latency growth."
+              },
+              {
+                "display_name": "Minimum Latency",
+                "name": "minimumValue",
+                "value": 30.0,
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The minimum latency to measure growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "ms",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the deviation of RPC latency on client port has grown beyond the specified threshold within a day period."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_hdfs_blocks_health",
+          "componentName": "NAMENODE",
+          "interval": 2,
+          "clusterId": 2,
+          "uuid": "47817ad5-f654-46a6-9f72-482e527394a9",
+          "label": "NameNode Blocks Health",
+          "definitionId": 31,
+          "source": {
+            "jmx": {
+              "value": "{0}",
+              "property_list": [
+                "Hadoop:service=NameNode,name=FSNamesystem/MissingBlocks",
+                "Hadoop:service=NameNode,name=FSNamesystem/BlocksTotal"
+              ]
+            },
+            "reporting": {
+              "units": "Blocks",
+              "warning": {
+                "text": "Total Blocks:[{1}], Missing Blocks:[{0}]",
+                "value": 1.0
+              },
+              "ok": {
+                "text": "Total Blocks:[{1}], Missing Blocks:[{0}]"
+              },
+              "critical": {
+                "text": "Total Blocks:[{1}], Missing Blocks:[{0}]",
+                "value": 1.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{hdfs-site/dfs.namenode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.namenode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}",
+              "high_availability": {
+                "nameservice": "{{hdfs-site/dfs.internal.nameservices}}",
+                "http_pattern": "{{hdfs-site/dfs.namenode.http-address.{{ha-nameservice}}.{{alias}}}}",
+                "https_pattern": "{{hdfs-site/dfs.namenode.https-address.{{ha-nameservice}}.{{alias}}}}",
+                "alias_key": "{{hdfs-site/dfs.ha.namenodes.{{ha-nameservice}}}}"
+              }
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the number of corrupt or missing blocks exceeds the configured critical threshold. The threshold values are in blocks."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_webui",
+          "componentName": "NAMENODE",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "edae319f-c785-4386-ad8b-df12a3ed4854",
+          "label": "NameNode Web UI",
+          "definitionId": 32,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+              },
+              "ok": {
+                "text": "HTTP {0} response in {2:.3f}s"
+              },
+              "critical": {
+                "text": "Connection failed to {1} ({3})"
+              }
+            },
+            "type": "WEB",
+            "uri": {
+              "http": "{{hdfs-site/dfs.namenode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.namenode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}",
+              "high_availability": {
+                "nameservice": "{{hdfs-site/dfs.internal.nameservices}}",
+                "http_pattern": "{{hdfs-site/dfs.namenode.http-address.{{ha-nameservice}}.{{alias}}}}",
+                "https_pattern": "{{hdfs-site/dfs.namenode.https-address.{{ha-nameservice}}.{{alias}}}}",
+                "alias_key": "{{hdfs-site/dfs.ha.namenodes.{{ha-nameservice}}}}"
+              }
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the NameNode Web UI is unreachable."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_service_rpc_processing_latency_hourly",
+          "componentName": "NAMENODE",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "e0826fd1-091e-463c-b3b2-38ded95acef7",
+          "label": "NameNode Service RPC Processing Latency (Hourly)",
+          "definitionId": 35,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 60.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "rpc.rpc.datanode.RpcProcessingTimeAvgTime",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 100.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC processing latency growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC processing latency growth."
+              },
+              {
+                "display_name": "Minimum Latency",
+                "name": "minimumValue",
+                "value": 30.0,
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The minimum latency to measure growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "ms",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the deviation of RPC latency on datanode port has grown beyond the specified threshold within an hour period."
+        },
+        {
+          "ignore_host": false,
+          "name": "nfsgateway_process",
+          "componentName": "NFS_GATEWAY",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "2b1e103d-5dd2-45b5-86ec-3ea6a0fb6de3",
+          "label": "NFS Gateway Process",
+          "definitionId": 36,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "TCP OK - {0:.3f}s response on port {1}",
+                "value": 1.5
+              },
+              "ok": {
+                "text": "TCP OK - {0:.3f}s response on port {1}"
+              },
+              "critical": {
+                "text": "Connection failed: {0} to {1}:{2}",
+                "value": 5.0
+              }
+            },
+            "type": "PORT",
+            "uri": "{{hdfs-site/nfs.server.port}}",
+            "default_port": 2049
+          },
+          "serviceName": "HDFS",
+          "scope": "HOST",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the NFS Gateway process cannot be confirmed to be up and listening on the network."
+        },
+        {
+          "ignore_host": false,
+          "name": "journalnode_process_percent",
+          "enabled": true,
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "abff90f2-5feb-4d19-a89e-68a9e8a0a300",
+          "label": "Percent JournalNodes Available",
+          "definitionId": 37,
+          "source": {
+            "alert_name": "journalnode_process",
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 33.0
+              },
+              "ok": {
+                "text": "affected: [{1}], total: [{0}]"
+              },
+              "critical": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 50.0
+              }
+            },
+            "type": "AGGREGATE"
+          },
+          "serviceName": "HDFS",
+          "scope": "SERVICE",
+          "description": "This alert is triggered if the number of down JournalNodes in the cluster is greater than the configured critical threshold. It aggregates the results of JournalNode process checks."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_increase_in_storage_capacity_usage_daily",
+          "componentName": "NAMENODE",
+          "interval": 480,
+          "clusterId": 2,
+          "uuid": "988253fe-3834-4c95-91f3-24d1e62fb1ac",
+          "label": "HDFS Storage Capacity Usage (Daily)",
+          "definitionId": 38,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 1440.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "dfs.FSNamesystem.CapacityUsed",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 30.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of storage capacity usage growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 50.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of storage capacity usage growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "B",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              },
+              {
+                "display_name": "Minimum Capacity",
+                "name": "minimumValue",
+                "value": 100.0,
+                "units": "MB",
+                "type": "NUMERIC",
+                "description": "The minimum capacity increase in a day."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the increase in storage capacity usage deviation has grown beyond the specified threshold within a day period."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_client_rpc_queue_latency_hourly",
+          "componentName": "NAMENODE",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "02110587-22f1-42ed-8411-8b488dca7342",
+          "label": "NameNode Client RPC Queue Latency (Hourly)",
+          "definitionId": 39,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 60.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "rpc.rpc.client.RpcQueueTimeAvgTime",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 100.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC queue latency growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC queue latency growth."
+              },
+              {
+                "display_name": "Minimum Latency",
+                "name": "minimumValue",
+                "value": 30.0,
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The minimum latency to measure growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "ms",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the deviation of RPC queue latency on client port has grown beyond the specified threshold within an hour period."
+        },
+        {
+          "ignore_host": false,
+          "name": "datanode_storage_percent",
+          "enabled": true,
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "862dd1c8-0d15-435b-8adc-96e113bd8477",
+          "label": "Percent DataNodes With Available Space",
+          "definitionId": 40,
+          "source": {
+            "alert_name": "datanode_storage",
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 10.0
+              },
+              "ok": {
+                "text": "affected: [{1}], total: [{0}]"
+              },
+              "critical": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 30.0
+              }
+            },
+            "type": "AGGREGATE"
+          },
+          "serviceName": "HDFS",
+          "scope": "SERVICE",
+          "description": "This service-level alert is triggered if the storage on a certain percentage of DataNodes exceeds either the warning or critical threshold values."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_service_rpc_processing_latency_daily",
+          "componentName": "NAMENODE",
+          "interval": 480,
+          "clusterId": 2,
+          "uuid": "c2919f99-c413-4d70-b58c-29dbce9f50c7",
+          "label": "NameNode Service RPC Processing Latency (Daily)",
+          "definitionId": 41,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 1440.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "rpc.rpc.datanode.RpcProcessingTimeAvgTime",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 100.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC processing latency growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC processing latency growth."
+              },
+              {
+                "display_name": "Minimum Latency",
+                "name": "minimumValue",
+                "value": 30.0,
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The minimum latency to measure growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "ms",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the deviation of RPC latency on datanode port has grown beyond the specified threshold within a day period."
+        },
+        {
+          "ignore_host": false,
+          "name": "upgrade_finalized_state",
+          "componentName": "NAMENODE",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "efd896ec-4a61-4622-bac7-a2008cb9b42a",
+          "label": "HDFS Upgrade Finalized State",
+          "definitionId": 42,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_upgrade_finalized.py",
+            "type": "SCRIPT",
+            "parameters": [
+
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "SERVICE",
+          "enabled": true,
+          "description": "This service-level alert is triggered if HDFS is not in the finalized state"
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_client_rpc_processing_latency_hourly",
+          "componentName": "NAMENODE",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "2b939d84-fc92-4b6b-88a7-b5c5d0151040",
+          "label": "NameNode Client RPC Processing Latency (Hourly)",
+          "definitionId": 43,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 60.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "rpc.rpc.client.RpcProcessingTimeAvgTime",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 100.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC processing latency growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC processing latency growth."
+              },
+              {
+                "display_name": "Minimum Latency",
+                "name": "minimumValue",
+                "value": 30.0,
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The minimum latency to measure growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "ms",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the deviation of RPC latency on client port has grown beyond the specified threshold within an hour period."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_increase_in_storage_capacity_usage_weekly",
+          "componentName": "NAMENODE",
+          "interval": 1440,
+          "clusterId": 2,
+          "uuid": "aa5c734e-791f-40cc-8f94-2d4a2e4dd7ae",
+          "label": "HDFS Storage Capacity Usage (Weekly)",
+          "definitionId": 44,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 10080.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "dfs.FSNamesystem.CapacityUsed",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 10.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of storage capacity usage growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 20.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of storage capacity usage growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "B",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              },
+              {
+                "display_name": "Minimum Capacity",
+                "name": "minimumValue",
+                "value": 1000.0,
+                "units": "MB",
+                "type": "NUMERIC",
+                "description": "The minimum capacity increase in a week."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the increase in storage capacity usage deviation has grown beyond the specified threshold within a week period."
+        },
+        {
+          "ignore_host": false,
+          "name": "journalnode_process",
+          "componentName": "JOURNALNODE",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "709a69ae-ef63-4ec4-ba68-3de27f6a25bb",
+          "label": "JournalNode Web UI",
+          "definitionId": 45,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+              },
+              "ok": {
+                "text": "HTTP {0} response in {2:.3f}s"
+              },
+              "critical": {
+                "text": "Connection failed to {1} ({3})"
+              }
+            },
+            "type": "WEB",
+            "uri": {
+              "http": "{{hdfs-site/dfs.journalnode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.journalnode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}"
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "HOST",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the JournalNode Web UI is unreachable."
+        },
+        {
+          "ignore_host": false,
+          "name": "hdfs_zookeeper_failover_controller_process",
+          "componentName": "ZKFC",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "31432389-cfe0-4b28-8660-7b69243698e8",
+          "label": "ZooKeeper Failover Controller Process",
+          "definitionId": 46,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "TCP OK - {0:.3f}s response on port {1}",
+                "value": 1.5
+              },
+              "ok": {
+                "text": "TCP OK - {0:.3f}s response on port {1}"
+              },
+              "critical": {
+                "text": "Connection failed: {0} to {1}:{2}",
+                "value": 5.0
+              }
+            },
+            "type": "PORT",
+            "uri": "{{hdfs-site/dfs.ha.zkfc.port}}",
+            "default_port": 8019
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the ZooKeeper Failover Controller process cannot be confirmed to be up and listening on the network."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_directory_status",
+          "componentName": "NAMENODE",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "a4142c8f-5f2d-4f75-be0d-8dbbc9b312d8",
+          "label": "NameNode Directory Status",
+          "definitionId": 47,
+          "source": {
+            "jmx": {
+              "value": "calculate(args)\ndef calculate(args):\n  import json\n  json_statuses = json.loads({0})\n  return len(json_statuses['failed']) if 'failed' in json_statuses else 0",
+              "property_list": [
+                "Hadoop:service=NameNode,name=NameNodeInfo/NameDirStatuses"
+              ]
+            },
+            "reporting": {
+              "units": "Dirs",
+              "warning": {
+                "text": "Failed directory count: {1}",
+                "value": 1.0
+              },
+              "ok": {
+                "text": "Directories are healthy"
+              },
+              "critical": {
+                "text": "Failed directory count: {1}",
+                "value": 1.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{hdfs-site/dfs.namenode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.namenode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}",
+              "high_availability": {
+                "nameservice": "{{hdfs-site/dfs.internal.nameservices}}",
+                "http_pattern": "{{hdfs-site/dfs.namenode.http-address.{{ha-nameservice}}.{{alias}}}}",
+                "https_pattern": "{{hdfs-site/dfs.namenode.https-address.{{ha-nameservice}}.{{alias}}}}",
+                "alias_key": "{{hdfs-site/dfs.ha.namenodes.{{ha-nameservice}}}}"
+              }
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the NameNode NameDirStatuses metric (name=NameNodeInfo/NameDirStatuses) reports a failed directory. The threshold values are in the number of directories that are not healthy."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_service_rpc_queue_latency_hourly",
+          "componentName": "NAMENODE",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "8aceab50-916f-4642-9bb7-811cbccb5c46",
+          "label": "NameNode Service RPC Queue Latency (Hourly)",
+          "definitionId": 48,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 60.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "rpc.rpc.datanode.RpcQueueTimeAvgTime",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 100.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC queue latency growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of RPC queue latency growth."
+              },
+              {
+                "display_name": "Minimum Latency",
+                "name": "minimumValue",
+                "value": 30.0,
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The minimum latency to measure growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "ms",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the deviation of RPC queue latency on datanode port has grown beyond the specified threshold within an hour period."
+        },
+        {
+          "ignore_host": false,
+          "name": "increase_nn_heap_usage_weekly",
+          "componentName": "NAMENODE",
+          "interval": 1440,
+          "clusterId": 2,
+          "uuid": "8ca3a9de-1d43-40e3-bdad-d28cb59921a6",
+          "label": "NameNode Heap Usage (Weekly)",
+          "definitionId": 49,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 10080.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "jvm.JvmMetrics.MemHeapUsedM",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 20.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of NameNode heap usage growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 50.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of NameNode heap usage growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "MB",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              },
+              {
+                "display_name": "Minimum Heap",
+                "name": "minimumValue",
+                "value": 1000.0,
+                "units": "MB",
+                "type": "NUMERIC",
+                "description": "The minimum heap increase in a week."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the NameNode heap usage deviation has grown beyond the specified threshold within a week period."
+        },
+        {
+          "ignore_host": false,
+          "name": "datanode_process_percent",
+          "enabled": true,
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "981b9a0e-09d8-4e50-98a6-307dde57555b",
+          "label": "Percent DataNodes Available",
+          "definitionId": 50,
+          "source": {
+            "alert_name": "datanode_process",
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 10.0
+              },
+              "ok": {
+                "text": "affected: [{1}], total: [{0}]"
+              },
+              "critical": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 30.0
+              }
+            },
+            "type": "AGGREGATE"
+          },
+          "serviceName": "HDFS",
+          "scope": "SERVICE",
+          "description": "This alert is triggered if the number of down DataNodes in the cluster is greater than the configured critical threshold. It aggregates the results of DataNode process checks."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_hdfs_capacity_utilization",
+          "componentName": "NAMENODE",
+          "interval": 2,
+          "clusterId": 2,
+          "uuid": "ce199698-13f1-408f-9615-b00e24533c0d",
+          "label": "HDFS Capacity Utilization",
+          "definitionId": 51,
+          "source": {
+            "jmx": {
+              "value": "{0}/({0} + {1}) * 100.0",
+              "property_list": [
+                "Hadoop:service=NameNode,name=FSNamesystemState/CapacityUsed",
+                "Hadoop:service=NameNode,name=FSNamesystemState/CapacityRemaining"
+              ]
+            },
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "Capacity Used:[{2:.0f}%, {0}], Capacity Remaining:[{1}]",
+                "value": 75.0
+              },
+              "ok": {
+                "text": "Capacity Used:[{2:.0f}%, {0}], Capacity Remaining:[{1}]"
+              },
+              "critical": {
+                "text": "Capacity Used:[{2:.0f}%, {0}], Capacity Remaining:[{1}]",
+                "value": 80.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{hdfs-site/dfs.namenode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.namenode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}",
+              "high_availability": {
+                "nameservice": "{{hdfs-site/dfs.internal.nameservices}}",
+                "http_pattern": "{{hdfs-site/dfs.namenode.http-address.{{ha-nameservice}}.{{alias}}}}",
+                "https_pattern": "{{hdfs-site/dfs.namenode.https-address.{{ha-nameservice}}.{{alias}}}}",
+                "alias_key": "{{hdfs-site/dfs.ha.namenodes.{{ha-nameservice}}}}"
+              }
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the HDFS capacity utilization exceeds the configured warning and critical thresholds. It checks the NameNode JMX Servlet for the CapacityUsed and CapacityRemaining properties. The threshold values are in percent."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_rpc_latency",
+          "componentName": "NAMENODE",
+          "interval": 2,
+          "clusterId": 2,
+          "uuid": "5093fa60-77d4-461a-bb8f-c2c01da3a2ce",
+          "label": "NameNode RPC Latency",
+          "definitionId": 52,
+          "source": {
+            "jmx": {
+              "value": "{0}",
+              "property_list": [
+                "Hadoop:service=NameNode,name=RpcActivityForPort*/RpcQueueTimeAvgTime",
+                "Hadoop:service=NameNode,name=RpcActivityForPort*/RpcProcessingTimeAvgTime"
+              ]
+            },
+            "reporting": {
+              "units": "ms",
+              "warning": {
+                "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+                "value": 3000.0
+              },
+              "ok": {
+                "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]"
+              },
+              "critical": {
+                "text": "Average Queue Time:[{0}], Average Processing Time:[{1}]",
+                "value": 5000.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "http": "{{hdfs-site/dfs.namenode.http-address}}",
+              "https_property_value": "HTTPS_ONLY",
+              "kerberos_keytab": "{{hdfs-site/dfs.web.authentication.kerberos.keytab}}",
+              "https_property": "{{hdfs-site/dfs.http.policy}}",
+              "https": "{{hdfs-site/dfs.namenode.https-address}}",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{hdfs-site/dfs.web.authentication.kerberos.principal}}",
+              "high_availability": {
+                "nameservice": "{{hdfs-site/dfs.internal.nameservices}}",
+                "http_pattern": "{{hdfs-site/dfs.namenode.http-address.{{ha-nameservice}}.{{alias}}}}",
+                "https_pattern": "{{hdfs-site/dfs.namenode.https-address.{{ha-nameservice}}.{{alias}}}}",
+                "alias_key": "{{hdfs-site/dfs.ha.namenodes.{{ha-nameservice}}}}"
+              }
+            }
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the NameNode RPC latency exceeds the configured critical threshold. Typically an increase in the RPC processing time increases the RPC queue length, causing the average queue wait time to increase for NameNode operations. The threshold values are in milliseconds."
+        },
+        {
+          "ignore_host": false,
+          "name": "namenode_last_checkpoint",
+          "componentName": "NAMENODE",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "6d4c3c01-4971-4077-9dd2-0e4cf8f54573",
+          "label": "NameNode Last Checkpoint",
+          "definitionId": 53,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_checkpoint_time.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Connection Timeout",
+                "name": "connection.timeout",
+                "value": 5.0,
+                "threshold": "CRITICAL",
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The maximum time before this alert is considered to be CRITICAL"
+              },
+              {
+                "display_name": "Checkpoint Warning",
+                "name": "checkpoint.time.warning.threshold",
+                "value": 200.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of the last checkpoint time greater than the interval in order to trigger a warning alert."
+              },
+              {
+                "display_name": "Checkpoint Critical",
+                "name": "checkpoint.time.critical.threshold",
+                "value": 200.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of the last checkpoint time greater than the interval in order to trigger a critical alert."
+              },
+              {
+                "display_name": "Uncommitted transactions Warning",
+                "name": "checkpoint.txns.multiplier.warning.threshold",
+                "value": 2.0,
+                "threshold": "WARNING",
+                "type": "NUMERIC",
+                "description": "The multiplier to use against dfs.namenode.checkpoint.period compared to the difference between last transaction id and most recent transaction id beyond which to trigger a warning alert."
+              },
+              {
+                "display_name": "Uncommitted transactions Critical",
+                "name": "checkpoint.txns.multiplier.critical.threshold",
+                "value": 4.0,
+                "threshold": "CRITICAL",
+                "type": "NUMERIC",
+                "description": "The multiplier to use against dfs.namenode.checkpoint.period compared to the difference between last transaction id and most recent transaction id beyond which to trigger a critical alert."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert will trigger if the last time that the NameNode performed a checkpoint was too long ago. It will also trigger if the number of uncommitted transactions is beyond a certain threshold."
+        },
+        {
+          "ignore_host": false,
+          "name": "increase_nn_heap_usage_daily",
+          "componentName": "NAMENODE",
+          "interval": 480,
+          "clusterId": 2,
+          "uuid": "dc701c46-b8a9-42dd-938b-bde3ee3ec20c",
+          "label": "NameNode Heap Usage (Daily)",
+          "definitionId": 54,
+          "source": {
+            "path": "HDFS/2.1.0.2.0/package/alerts/alert_metrics_deviation.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Whether active and stanby NameNodes metrics should be merged",
+                "name": "mergeHaMetrics",
+                "visibility": "HIDDEN",
+                "value": "false",
+                "type": "STRING",
+                "description": "Whether active and stanby NameNodes metrics should be merged."
+              },
+              {
+                "display_name": "Time interval in minutes",
+                "name": "interval",
+                "visibility": "HIDDEN",
+                "value": 1440.0,
+                "type": "NUMERIC",
+                "description": "Time interval in minutes."
+              },
+              {
+                "display_name": "AMS application id",
+                "name": "appId",
+                "visibility": "HIDDEN",
+                "value": "NAMENODE",
+                "type": "STRING",
+                "description": "The application id used to retrieve the metric."
+              },
+              {
+                "display_name": "Metric Name",
+                "name": "metricName",
+                "visibility": "HIDDEN",
+                "value": "jvm.JvmMetrics.MemHeapUsedM",
+                "type": "STRING",
+                "description": "The metric to monitor."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.warning.threshold",
+                "value": 20.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of NameNode heap usage growth."
+              },
+              {
+                "display_name": "Growth Rate",
+                "name": "metric.deviation.critical.threshold",
+                "value": 50.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percentage of NameNode heap usage growth."
+              },
+              {
+                "display_name": "Metric Units",
+                "name": "metric.units",
+                "visibility": "HIDDEN",
+                "value": "MB",
+                "type": "STRING",
+                "description": "The units that the metric data points are reported in."
+              },
+              {
+                "display_name": "Minimum Heap",
+                "name": "minimumValue",
+                "value": 100.0,
+                "units": "MB",
+                "type": "NUMERIC",
+                "description": "The minimum heap increase in a day."
+              }
+            ]
+          },
+          "serviceName": "HDFS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This service-level alert is triggered if the NameNode heap usage deviation has grown beyond the specified threshold within a day period."
+        },
+        {
+          "ignore_host": false,
+          "name": "kafka_broker_process",
+          "componentName": "KAFKA_BROKER",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "a240cb65-de3d-421c-b242-f0022939d41d",
+          "label": "Kafka Broker Process",
+          "definitionId": 55,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "TCP OK - {0:.3f}s response on port {1}",
+                "value": 1.5
+              },
+              "ok": {
+                "text": "TCP OK - {0:.3f}s response on port {1}"
+              },
+              "critical": {
+                "text": "Connection failed: {0} to {1}:{2}",
+                "value": 5.0
+              }
+            },
+            "type": "PORT",
+            "uri": "{{kafka-broker/listeners}}",
+            "default_port": 6667
+          },
+          "serviceName": "KAFKA",
+          "scope": "HOST",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the Kafka Broker cannot be determined to be up."
+        },
+        {
+          "ignore_host": false,
+          "name": "ams_metrics_monitor_process",
+          "componentName": "METRICS_MONITOR",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "4e90992b-420d-43ce-9f58-29a420b6d45f",
+          "label": "Metrics Monitor Status",
+          "definitionId": 56,
+          "source": {
+            "path": "AMBARI_METRICS/0.1.0/package/alerts/alert_ambari_metrics_monitor.py",
+            "type": "SCRIPT"
+          },
+          "serviceName": "AMBARI_METRICS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This alert indicates the status of the Metrics Monitor process as determined by the monitor status script."
+        },
+        {
+          "ignore_host": false,
+          "name": "ams_metrics_collector_process",
+          "componentName": "METRICS_COLLECTOR",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "c6b8d79a-24d1-4303-a131-ca0a094116f0",
+          "label": "Metrics Collector Process",
+          "definitionId": 57,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "TCP OK - {0:.3f}s response on port {1}",
+                "value": 1.5
+              },
+              "ok": {
+                "text": "TCP OK - {0:.3f}s response on port {1}"
+              },
+              "critical": {
+                "text": "Connection failed: {0} to {1}:{2}",
+                "value": 5.0
+              }
+            },
+            "type": "PORT",
+            "uri": "{{ams-site/timeline.metrics.service.webapp.address}}",
+            "default_port": 6188
+          },
+          "serviceName": "AMBARI_METRICS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This alert is triggered if the Metrics Collector cannot be confirmed to be up and listening on the configured port for number of seconds equal to threshold."
+        },
+        {
+          "ignore_host": false,
+          "name": "ams_metrics_collector_hbase_master_process",
+          "componentName": "METRICS_COLLECTOR",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "1a74bb64-dc67-4a2c-8ae3-5d52e72cee43",
+          "label": "Metrics Collector - HBase Master Process",
+          "definitionId": 58,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "TCP OK - {0:.3f}s response on port {1}",
+                "value": 1.5
+              },
+              "ok": {
+                "text": "TCP OK - {0:.3f}s response on port {1}"
+              },
+              "critical": {
+                "text": "Connection failed: {0} to {1}:{2}",
+                "value": 5.0
+              }
+            },
+            "type": "PORT",
+            "uri": "{{ams-hbase-site/hbase.master.info.port}}",
+            "default_port": 61310
+          },
+          "serviceName": "AMBARI_METRICS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This alert is triggered if the Metrics Collector's HBase master processes cannot be confirmed to be up and listening on the network for the configured critical threshold, given in seconds."
+        },
+        {
+          "ignore_host": false,
+          "name": "ams_metrics_collector_hbase_master_cpu",
+          "componentName": "METRICS_COLLECTOR",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "37dfdfa3-6725-4b3a-be84-2e43f27ad4d7",
+          "label": "Metrics Collector - HBase Master CPU Utilization",
+          "definitionId": 59,
+          "source": {
+            "jmx": {
+              "value": "{0} * 100",
+              "property_list": [
+                "java.lang:type=OperatingSystem/SystemCpuLoad",
+                "java.lang:type=OperatingSystem/AvailableProcessors"
+              ]
+            },
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 200.0
+              },
+              "ok": {
+                "text": "{1} CPU, load {0:.1%}"
+              },
+              "critical": {
+                "text": "{1} CPU, load {0:.1%}",
+                "value": 250.0
+              }
+            },
+            "type": "METRIC",
+            "uri": {
+              "connection_timeout": 5.0,
+              "http": "{{ams-hbase-site/hbase.master.info.port}}",
+              "default_port": 61310
+            }
+          },
+          "serviceName": "AMBARI_METRICS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if CPU utilization of the Metrics Collector's HBase Master exceeds certain warning and critical thresholds. It checks the HBase Master JMX Servlet for the SystemCPULoad property. The threshold values are in percent."
+        },
+        {
+          "ignore_host": false,
+          "name": "metrics_monitor_process_percent",
+          "enabled": true,
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "bf7e0134-6584-4b00-bc02-8b46f2bbca4c",
+          "label": "Percent Metrics Monitors Available",
+          "definitionId": 60,
+          "source": {
+            "alert_name": "ams_metrics_monitor_process",
+            "reporting": {
+              "units": "%",
+              "type": "PERCENT",
+              "warning": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 10.0
+              },
+              "ok": {
+                "text": "affected: [{1}], total: [{0}]"
+              },
+              "critical": {
+                "text": "affected: [{1}], total: [{0}]",
+                "value": 30.0
+              }
+            },
+            "type": "AGGREGATE"
+          },
+          "serviceName": "AMBARI_METRICS",
+          "scope": "SERVICE",
+          "description": "This alert is triggered if a percentage of Metrics Monitor processes are not up and listening on the network for the configured warning and critical thresholds."
+        },
+        {
+          "ignore_host": false,
+          "name": "ams_metrics_collector_autostart",
+          "componentName": "METRICS_COLLECTOR",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "5e10e9ed-0bd3-4e2a-8469-66d77d714650",
+          "label": "Metrics Collector - Auto-Restart Status",
+          "definitionId": 61,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "Metrics Collector has been auto-started {1} times{0}."
+              },
+              "ok": {
+                "text": "Metrics Collector has not been auto-started and is running normally{0}."
+              },
+              "critical": {
+                "text": "Metrics Collector has been auto-started {1} times{0}."
+              }
+            },
+            "type": "RECOVERY"
+          },
+          "serviceName": "AMBARI_METRICS",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This alert is triggered if the Metrics Collector has been restarted automatically too frequently in last one hour. By default, a Warning alert is triggered if restarted twice in one hour and a Critical alert is triggered if restarted 4 or more times in one hour."
+        },
+        {
+          "ignore_host": false,
+          "name": "ranger_admin_process",
+          "componentName": "RANGER_ADMIN",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "a44c6f48-a3ce-4bd8-8716-4fd7aba14dbc",
+          "label": "Ranger Admin Process",
+          "definitionId": 63,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "HTTP {0} response from {1} in {2:.3f}s ({3})"
+              },
+              "ok": {
+                "text": "HTTP {0} response in {2:.3f}s"
+              },
+              "critical": {
+                "text": "Connection failed to {1} ({3})"
+              }
+            },
+            "type": "WEB",
+            "uri": {
+              "http": "{{admin-properties/policymgr_external_url}}/login.jsp",
+              "https_property_value": "true",
+              "kerberos_keytab": "{{cluster-env/smokeuser_keytab}}",
+              "https_property": "{{ranger-admin-site/ranger.service.https.attrib.ssl.enabled}}",
+              "https": "{{admin-properties/policymgr_external_url}}/login.jsp",
+              "default_port": 0,
+              "connection_timeout": 5.0,
+              "kerberos_principal": "{{cluster-env/smokeuser_principal_name}}"
+            }
+          },
+          "serviceName": "RANGER",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the Ranger Admin Web UI is unreachable."
+        },
+        {
+          "ignore_host": false,
+          "name": "ranger_admin_password_check",
+          "componentName": "RANGER_ADMIN",
+          "interval": 30,
+          "clusterId": 2,
+          "uuid": "0a8f26c9-d629-4df9-aa00-083af470cbcb",
+          "label": "Ranger Admin password check",
+          "definitionId": 64,
+          "source": {
+            "path": "RANGER/0.4.0/package/alerts/alert_ranger_admin_passwd_check.py",
+            "type": "SCRIPT",
+            "parameters": [
+
+            ]
+          },
+          "serviceName": "RANGER",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This alert is used to ensure that the Ranger Admin password in Ambari is correct."
+        },
+        {
+          "ignore_host": false,
+          "name": "ranger_usersync_process",
+          "componentName": "RANGER_USERSYNC",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "3e0d5403-dda1-4525-8b8c-6d0be1a47ae8",
+          "label": "Ranger Usersync Process",
+          "definitionId": 65,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "TCP OK - {0:.3f}s response on port {1}",
+                "value": 1.5
+              },
+              "ok": {
+                "text": "TCP OK - {0:.3f}s response on port {1}"
+              },
+              "critical": {
+                "text": "Connection failed: {0} to {1}:{2}",
+                "value": 5.0
+              }
+            },
+            "type": "PORT",
+            "uri": "{{ranger-ugsync-site/ranger.usersync.port}}",
+            "default_port": 5151
+          },
+          "serviceName": "RANGER",
+          "scope": "HOST",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the Ranger Usersync cannot be determined to be up."
+        },
+        {
+          "ignore_host": false,
+          "name": "hive_metastore_process",
+          "componentName": "HIVE_METASTORE",
+          "interval": 3,
+          "clusterId": 2,
+          "uuid": "20be0af4-207a-4726-bef4-5b924e7413c8",
+          "label": "Hive Metastore Process",
+          "definitionId": 70,
+          "source": {
+            "path": "HIVE/0.12.0.2.0/package/alerts/alert_hive_metastore.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Command Timeout",
+                "name": "check.command.timeout",
+                "value": 60.0,
+                "threshold": "CRITICAL",
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The maximum time before check command will be killed by timeout"
+              },
+              {
+                "display_name": "Default Smoke User",
+                "name": "default.smoke.user",
+                "visibility": "HIDDEN",
+                "value": "ambari-qa",
+                "type": "STRING",
+                "description": "The user that will run the Hive commands if not specified in cluster-env/smokeuser"
+              },
+              {
+                "display_name": "Default Smoke Principal",
+                "name": "default.smoke.principal",
+                "visibility": "HIDDEN",
+                "value": "ambari-qa@EXAMPLE.COM",
+                "type": "STRING",
+                "description": "The principal to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_principal_name"
+              },
+              {
+                "display_name": "Default Smoke Keytab",
+                "name": "default.smoke.keytab",
+                "visibility": "HIDDEN",
+                "value": "/etc/security/keytabs/smokeuser.headless.keytab",
+                "type": "STRING",
+                "description": "The keytab to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_keytab"
+              }
+            ]
+          },
+          "serviceName": "HIVE",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the Hive Metastore process cannot be determined to be up and listening on the network."
+        },
+        {
+          "ignore_host": false,
+          "name": "hive_server_interactive_process",
+          "componentName": "HIVE_SERVER_INTERACTIVE",
+          "interval": 3,
+          "clusterId": 2,
+          "uuid": "2df82a83-8d1a-45d7-bfcb-cd58d4c486ec",
+          "label": "HiveServer2 Interactive Process",
+          "definitionId": 71,
+          "source": {
+            "path": "HIVE/0.12.0.2.0/package/alerts/alert_hive_interactive_thrift_port.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Command Timeout",
+                "name": "check.command.timeout",
+                "value": 60.0,
+                "threshold": "CRITICAL",
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The maximum time before check command will be killed by timeout"
+              },
+              {
+                "display_name": "Default Smoke User",
+                "name": "default.smoke.user",
+                "visibility": "HIDDEN",
+                "value": "ambari-qa",
+                "type": "STRING",
+                "description": "The user that will run the Hive commands if not specified in cluster-env/smokeuser"
+              },
+              {
+                "display_name": "Default Smoke Principal",
+                "name": "default.smoke.principal",
+                "visibility": "HIDDEN",
+                "value": "ambari-qa@EXAMPLE.COM",
+                "type": "STRING",
+                "description": "The principal to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_principal_name"
+              },
+              {
+                "display_name": "Default Smoke Keytab",
+                "name": "default.smoke.keytab",
+                "visibility": "HIDDEN",
+                "value": "/etc/security/keytabs/smokeuser.headless.keytab",
+                "type": "STRING",
+                "description": "The keytab to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_keytab"
+              }
+            ]
+          },
+          "serviceName": "HIVE",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the HiveServerInteractive cannot be determined to be up and responding to client requests."
+        },
+        {
+          "ignore_host": false,
+          "name": "llap_application",
+          "componentName": "HIVE_SERVER_INTERACTIVE",
+          "interval": 3,
+          "clusterId": 2,
+          "uuid": "dbdb5e8b-cf32-4330-bf6a-5765587a6f24",
+          "label": "LLAP Application",
+          "definitionId": 72,
+          "source": {
+            "path": "HIVE/0.12.0.2.0/package/alerts/alert_llap_app_status.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Command Timeout",
+                "name": "check.command.timeout",
+                "value": 120.0,
+                "threshold": "CRITICAL",
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The maximum time before check command will be killed by timeout"
+              },
+              {
+                "display_name": "Default HIVE User",
+                "name": "default.hive.user",
+                "visibility": "HIDDEN",
+                "value": "hive",
+                "type": "STRING",
+                "description": "The user that will run the Hive commands if not specified in cluster-env"
+              },
+              {
+                "display_name": "Default HIVE Principal",
+                "name": "default.hive.principal",
+                "visibility": "HIDDEN",
+                "value": "hive/_HOST@EXAMPLE.COM",
+                "type": "STRING",
+                "description": "The principal to use when retrieving the kerberos ticket if not specified in cluster-env"
+              },
+              {
+                "display_name": "Default HIVE Keytab",
+                "name": "default.hive.keytab",
+                "visibility": "HIDDEN",
+                "value": "/etc/security/keytabs/hive.llap.zk.sm.keytab",
+                "type": "STRING",
+                "description": "The keytab to use when retrieving the kerberos ticket if not specified in cluster-env."
+              }
+            ]
+          },
+          "serviceName": "HIVE",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This alert is triggered if the LLAP Application cannot be determined to be up and responding to requests."
+        },
+        {
+          "ignore_host": false,
+          "name": "hive_server_process",
+          "componentName": "HIVE_SERVER",
+          "interval": 3,
+          "clusterId": 2,
+          "uuid": "520a3c1e-cd56-4643-b0df-9417fdb99d30",
+          "label": "HiveServer2 Process",
+          "definitionId": 73,
+          "source": {
+            "path": "HIVE/0.12.0.2.0/package/alerts/alert_hive_thrift_port.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Command Timeout",
+                "name": "check.command.timeout",
+                "value": 60.0,
+                "threshold": "CRITICAL",
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The maximum time before check command will be killed by timeout"
+              },
+              {
+                "display_name": "Default Smoke User",
+                "name": "default.smoke.user",
+                "visibility": "HIDDEN",
+                "value": "ambari-qa",
+                "type": "STRING",
+                "description": "The user that will run the Hive commands if not specified in cluster-env/smokeuser"
+              },
+              {
+                "display_name": "Default Smoke Principal",
+                "name": "default.smoke.principal",
+                "visibility": "HIDDEN",
+                "value": "ambari-qa@EXAMPLE.COM",
+                "type": "STRING",
+                "description": "The principal to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_principal_name"
+              },
+              {
+                "display_name": "Default Smoke Keytab",
+                "name": "default.smoke.keytab",
+                "visibility": "HIDDEN",
+                "value": "/etc/security/keytabs/smokeuser.headless.keytab",
+                "type": "STRING",
+                "description": "The keytab to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_keytab"
+              }
+            ]
+          },
+          "serviceName": "HIVE",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the HiveServer cannot be determined to be up and responding to client requests."
+        },
+        {
+          "ignore_host": false,
+          "name": "hive_webhcat_server_status",
+          "componentName": "WEBHCAT_SERVER",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "2848b6e8-19e3-471a-8bf8-a233cb77f8f6",
+          "label": "WebHCat Server Status",
+          "definitionId": 74,
+          "source": {
+            "path": "HIVE/0.12.0.2.0/package/alerts/alert_webhcat_server.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Default Smoke User",
+                "name": "default.smoke.user",
+                "visibility": "HIDDEN",
+                "value": "ambari-qa",
+                "type": "STRING",
+                "description": "The user that will run the Hive commands if not specified in cluster-env/smokeuser"
+              },
+              {
+                "display_name": "Connection Timeout",
+                "name": "connection.timeout",
+                "value": 5.0,
+                "threshold": "CRITICAL",
+                "units": "seconds",
+                "type": "NUMERIC",
+                "description": "The maximum time before this alert is considered to be CRITICAL"
+              }
+            ]
+          },
+          "serviceName": "HIVE",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the templeton server status is not healthy."
+        },
+        {
+          "ignore_host": false,
+          "name": "ambari_agent_version_select",
+          "componentName": "AMBARI_AGENT",
+          "interval": 5,
+          "clusterId": 2,
+          "uuid": "8de482ed-a1d4-4836-9b75-0e3e19b6aa3a",
+          "label": "Ambari Agent Distro/Conf Select Versions",
+          "definitionId": 76,
+          "source": {
+            "path": "alert_version_select.py",
+            "type": "SCRIPT"
+          },
+          "serviceName": "AMBARI",
+          "scope": "HOST",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the distro selector such as hdp-select cannot calculate versions available on this host. This may indicate that /usr/$stack/ directory has links/dirs that do not belong inside of it."
+        },
+        {
+          "ignore_host": false,
+          "name": "ambari_agent_disk_usage",
+          "componentName": "AMBARI_AGENT",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "ead567fe-4f79-45dc-962f-2277b6a72b68",
+          "label": "Host Disk Usage",
+          "definitionId": 77,
+          "source": {
+            "path": "alert_disk_space.py",
+            "type": "SCRIPT",
+            "parameters": [{
+                "display_name": "Minimum Free Space",
+                "name": "minimum.free.space",
+                "value": 5000000000.0,
+                "threshold": "WARNING",
+                "units": "bytes",
+                "type": "NUMERIC",
+                "description": "The overall amount of free disk space left before an alert is triggered."
+              },
+              {
+                "display_name": "Warning",
+                "name": "percent.used.space.warning.threshold",
+                "value": 50.0,
+                "threshold": "WARNING",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percent of disk space consumed before a warning is triggered."
+              },
+              {
+                "display_name": "Critical",
+                "name": "percent.free.space.critical.threshold",
+                "value": 80.0,
+                "threshold": "CRITICAL",
+                "units": "%",
+                "type": "PERCENT",
+                "description": "The percent of disk space consumed before a critical alert is triggered."
+              }
+            ]
+          },
+          "serviceName": "AMBARI",
+          "scope": "HOST",
+          "enabled": true,
+          "description": "This host-level alert is triggered if the amount of disk space used goes above specific thresholds. The default threshold values are 50% for WARNING and 80% for CRITICAL."
+        }
+      ]
+    }
+
+  }
+}

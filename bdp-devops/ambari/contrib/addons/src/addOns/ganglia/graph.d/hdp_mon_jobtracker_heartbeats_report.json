@@ -1,0 +1,10 @@
+{
+   "report_name" : "jobtracker_heartbeats_report",
+   "report_type" : "standard",
+   "title" : "JobTracker Heartbeats",
+   "vertical_label" : "Heartbeats/Sec",
+   "series" : [
+      { "metric": "mapred.jobtracker.heartbeats", "color": "ff0000", "label": "Heartbeats/Sec", 
+        "line_width": "2", "type": "line" }
+   ]
+}

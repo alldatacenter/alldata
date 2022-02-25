@@ -1,0 +1,216 @@
+{
+  "href" : "http://localhost:8080/api/clusters/mycluster/requests/1",
+  "Requests" : {
+    "id" : 1
+  },
+  "tasks" : [
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/1",
+      "Tasks" : {
+        "id" : "1",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "GANGLIA_SERVER",
+        "stderr" : "",
+        "host_name" : "ip-10-191-202-42.ec2.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/2",
+      "Tasks" : {
+        "id" : "2",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "QUEUED",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "GANGLIA_MONITOR",
+        "stderr" : "",
+        "host_name" : "ip-10-191-202-42.ec2.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "3",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "GANGLIA_MONITOR",
+        "stderr" : "",
+        "host_name" : "ip-10-110-38-164.ec2.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "4",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "GANGLIA_MONITOR",
+        "stderr" : "",
+        "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "5",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "GANGLIA_MONITOR",
+        "stderr" : "",
+        "host_name" : "ip-10-110-79-42.ec2.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "6",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "GANGLIA_MONITOR",
+        "stderr" : "",
+        "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/2",
+      "Tasks" : {
+        "id" : "7",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "QUEUED",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "DATANODE",
+        "stderr" : "",
+        "host_name" : "ip-10-191-202-42.ec2.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "8",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "DATANODE",
+        "stderr" : "",
+        "host_name" : "ip-10-110-38-164.ec2.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "9",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "DATANODE",
+        "stderr" : "",
+        "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "10",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "DATANODE",
+        "stderr" : "",
+        "host_name" : "ip-10-110-79-42.ec2.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "11",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "DATANODE",
+        "stderr" : "",
+        "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "12",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "NAMENODE",
+        "stderr" : "",
+        "host_name" : "ip-10-191-202-42.ec2.internal",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/1/tasks/3",
+      "Tasks" : {
+        "id" : "13",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "PENDING",
+        "command" : "UPGRADE",
+        "start_time" : "-1",
+        "role" : "SECONDARY_NAMENODE",
+        "stderr" : "",
+        "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal",
+        "stage_id" : "1"
+      }
+    }
+  ]
+}

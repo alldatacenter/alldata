@@ -1,0 +1,153 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.ambari</groupId>
+    <artifactId>ambari-project</artifactId>
+    <version>${revision}</version>
+    <relativePath>../../ambari-project</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.ambari.contrib.mpacks</groupId>
+  <artifactId>ambari-contrib-mpacks</artifactId>
+  <packaging>pom</packaging>
+  <name>Ambari Contrib Management Packs</name>
+  <properties>
+    <ambari.version>${revision}</ambari.version>
+    <ambari.dir>${project.parent.parent.basedir}</ambari.dir>
+    <hadoop.version>2.7.1</hadoop.version>
+  </properties>
+  <modules>
+    <module>microsoft-r_mpack</module>
+    <module>hdf-ambari-mpack</module>
+    <module>isilon-onefs-mpack</module>
+  </modules>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <!--GIT files-->
+            <exclude>.git/</exclude>
+            <exclude>**/.gitattributes</exclude>
+            <!--gitignore content-->
+            <exclude>.idea/</exclude>
+            <exclude>pass.txt</exclude>
+            <exclude>.DS_Store</exclude>
+            <exclude>.iml/</exclude>
+            <exclude>.classpath</exclude>
+            <exclude>.project</exclude>
+            <exclude>.settings</exclude>
+            <exclude>**/.gitkeep</exclude>
+            <exclude>**/.bowerrc</exclude>
+            <exclude>**/.editorconfig</exclude>
+            <exclude>**/.jshintrc</exclude>
+            <exclude>**/.tmp/**</exclude>
+            <exclude>**/tmp/**</exclude>
+            <exclude>**/*.json</exclude>
+            <exclude>**/fast-hdfs-resource.jar</exclude>
+            <exclude>**/*.svg</exclude>
+            <exclude>**/vendor/**</exclude>
+            <exclude>**/bin</exclude>
+            <exclude>**/node_modules/**</exclude>
+            <exclude>**/vendor/**</exclude>
+            <exclude>**/public/**</exclude>
+            <exclude>**/dist/**</exclude>
+            <exclude>**/bower_components/**</exclude>
+            <exclude>**/bower/**</exclude>
+            <exclude>**/node/**</exclude>
+            <exclude>**/runner.js</exclude>
+            <exclude>**/assets/javascripts/**</exclude>
+            <exclude>**/assets/stylesheets/**</exclude>
+            <exclude>**/assets/static/javascripts/**</exclude>
+            <exclude>**/assets/static/stylesheets/**</exclude>
+            <exclude>storm/src/main/resources/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>rpm-maven-plugin</artifactId>
+        <version>2.0.1</version>
+        <executions>
+          <execution>
+            <!-- unbinds rpm creation from maven lifecycle -->
+            <phase>none</phase>
+            <goals>
+              <goal>rpm</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <copyright>2012, Apache Software Foundation</copyright>
+          <group>Development</group>
+          <description>Maven Recipe: RPM Package.</description>
+          <mappings/>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.vafer</groupId>
+        <artifactId>jdeb</artifactId>
+        <version>1.0.1</version>
+        <executions>
+          <execution>
+            <phase>none</phase>
+            <goals>
+              <goal>jdeb</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <skip>true</skip>
+          <attach>false</attach>
+          <submodules>true</submodules>
+          <controlDir>${ambari.dir}/ambari-project/src/main/package/deb/control</controlDir>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptors>
+            <descriptor>${ambari.dir}/ambari-project/src/main/assemblies/empty.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>linux</id>
+      <activation>
+        <os>
+          <family>unix</family>
+        </os>
+      </activation>
+      <modules>
+        <module>microsoft-r_mpack</module>
+        <module>hdf-ambari-mpack</module>
+      </modules>
+    </profile>
+  </profiles>
+  <dependencyManagement>
+    <dependencies>
+    </dependencies>
+  </dependencyManagement>
+
+</project>

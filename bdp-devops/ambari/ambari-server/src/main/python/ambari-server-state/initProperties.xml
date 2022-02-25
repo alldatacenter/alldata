@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<configurations>
+    <configuration>
+        <stack>
+            <comment>stack comment</comment>
+            <repository>
+                <comment>Could be winpkg/tarball/others</comment>
+                <info>
+                    <key1>value for key1</key1>
+                    <key2>value for key2</key2>
+                    <key3>value for key3</key3>
+                </info>
+            </repository>
+
+            <services>
+                <service>
+                    <name>service1</name>
+                    <version>1.0.1</version>
+                    <enabled>true</enabled>
+                    <user>root</user>
+                    <comment>some hadoop service</comment>
+                </service>
+                <service>
+                    <name>service2</name>
+                    <version>1.0.2</version>
+                    <enabled>false</enabled>
+                    <user>toor</user>
+                    <comment>some hadoop service2</comment>
+                </service>
+            </services>
+        </stack>
+
+        <hadoop-env>
+            <conf-dir>/etc/hadoop</conf-dir>
+            <namenode-jvm-opts>-Dsecurity.audit.logger=INFO,DRFAS -Dhdfs.audit.logger=INFO,DRFAAUDIT</namenode-jvm-opts>
+            <client-opts>-Xmx128m</client-opts>
+        </hadoop-env>
+        <core-site>
+            <fs-default-name>hdfs://${namenode}:8020/</fs-default-name>
+            <!-- hadoop-tmp-dir>/grid/0/hadoop/tmp</hadoop-tmp-dir -->
+            <hadoop-security-authentication>kerberos</hadoop-security-authentication>
+        </core-site>
+
+        <hosts>
+            <comment>This can also be thought of as representation of hosts eg. small/medium/large</comment>
+            <host>host_1</host>
+            <host>host_2</host>
+        </hosts>
+
+        <!-- TODO Roles block -->
+        <!--<roles>-->
+            <!--<comment></comment>-->
+
+        <!--</roles>-->
+
+    </configuration>
+
+
+</configurations>

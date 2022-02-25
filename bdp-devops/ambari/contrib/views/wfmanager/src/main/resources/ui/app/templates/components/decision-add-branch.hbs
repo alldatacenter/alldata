@@ -1,0 +1,64 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<a data-placement="bottom" data-toggle="popover" data-container="body" data-placement="right"
+type="button" data-html="true">
+{{yield}}
+</a>
+
+<div id="selector-content" style="display:none" class="decision-add-branch-popover">
+  <div class="panel panel-default">
+    <div class="panel-heading">Add Decision Branch</div>
+    <div class="panel-body">
+
+      <div class="bs-example">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="inputPassword" class="control-label col-xs-4">Condition<span class="requiredField">&nbsp;*</span></label>
+            <div class="col-xs-7">
+              {{input type="text" class="form-control" value=condition}}
+              {{field-error model=this field='condition' showErrorMessage=showErrorMessage}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="control-label col-xs-4">Select target Node<span class="requiredField">&nbsp;*</span></label>
+            <div class="col-xs-7">
+              <select id="target-node-select" onchange={{action "onTargetNodeChange" value="target.value"}} name="select-node" class="form-control">
+                <option value="">Select</option>
+                {{#each descendantNodes as |node index|}}
+                <option value={{node.id}} selected={{eq node.name currentNode.errorNode.name}}>{{node.name}}</option>
+                {{/each}}
+                {{#each killNodes as |node index|}}
+                <option value={{node.id}} selected={{eq node.name currentNode.errorNode.name}}>{{node.name}}</option>
+                {{/each}}
+              </select>
+              {{field-error model=this field='targetNode' showErrorMessage=showErrorMessage}}
+            </div>
+          </div>
+        </form>
+      </div>
+      <hr class="hrClass"/>
+      <div class="form-group">
+        <label for="inputPassword" class="control-label col-xs-3"></label>
+        <div class="col-xs-6 pull-right">
+          <button type="button" {{action "save"}} class="btn btn-primary" data-dismiss="modal">Save</button>
+          <button type="button" {{action "cancel"}} data-dismiss="modal" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Component.ColumnsToQueryConfigurationMapper" Accessibility="Internal">
+        <Property Name="PropertyList" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/ColumnBase[]" BindingDirection="In" />
+        <Property Name="SortPropertyList" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/SortColumnBase[]" BindingDirection="In" />
+        <Property Name="PropertyCollections" Type="BaseDataType" BindingDirection="Out" />
+        <Property Name="SortPropertyCollections" Type="BaseDataType" BindingDirection="Out" />
+      </ComponentType>
+    </ComponentTypes>
+    
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Component.ColumnsToQueryConfigurationMapperImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Component.ColumnsToQueryConfigurationMapper"
+                               Platform="Wpf, Silverlight" Accessibility="Internal">
+        <Unit>
+          <ContractFactory>Microsoft.EnterpriseManagement.Monitoring.UnitComponents.Data.ColumnsToQueryConfigurationMapper</ContractFactory>
+          <Property Name="PropertyList" Direction="In">
+            <Reference>$Property/PropertyList$</Reference>
+          </Property>
+          <Property Name="SortPropertyList" Direction="In">
+            <Reference>$Property/SortPropertyList$</Reference>
+          </Property>
+          <Property Name="PropertyCollections" Direction="Out">
+            <Reference>$Property/PropertyCollections$</Reference>
+          </Property>
+          <Property Name="SortPropertyCollections" Direction="Out">
+            <Reference>$Property/SortPropertyCollections$</Reference>
+          </Property>
+        </Unit>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+</ManagementPackFragment>

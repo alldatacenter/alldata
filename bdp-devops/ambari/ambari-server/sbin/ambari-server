@@ -1,0 +1,223 @@
+#!/usr/bin/env bash
+# chkconfig: 345 95 20
+# description: ambari-server daemon
+# processname: ambari-server
+
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+### BEGIN INIT INFO
+# Provides:          ambari-server
+# Required-Start:    $local_fs $remote_fs $network
+# Required-Start:
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 6
+### END INIT INFO
+
+# /etc/init.d/ambari-server
+set -u # fail on unset variables
+VERSION="${ambariFullVersion}"
+HASH="${buildNumber}"
+
+case "${1:-}" in
+  --version)
+        echo -e $VERSION
+        exit 0
+        ;;
+  --hash)
+        echo -e $HASH
+        exit 0
+        ;;
+esac
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# the below line (ROOT="/") is replaced by install-helper.sh. Don't edit/remove it.
+ROOT="/"
+ROOT=`echo $ROOT | sed 's/\/$//'`
+export ROOT
+
+export PATH=$ROOT/usr/lib/ambari-server/*:$PATH:/sbin/:/usr/sbin
+export AMBARI_CONF_DIR=$ROOT/etc/ambari-server/conf
+
+PYTHON_WRAP="$ROOT/usr/bin/ambari-python-wrap"
+AMBARI_ENV="$ROOT/var/lib/ambari-server/ambari-env.sh"
+AMBARI_PYTHON_EXECUTABLE="$ROOT/usr/sbin/ambari-server.py"
+AMBARI_EXECUTABLE="$ROOT/usr/sbin/ambari-server"
+
+current_user=`id -u -n`
+echo "" | sudo -S -l > /dev/null 2>&1
+if [ "$?" != "0" ] && [ "$EUID" -ne 0 ] ; then
+ echo "You can't perform this operation as non-sudoer user. Please re-login or configure sudo access for this user."
+ exit -1
+fi
+
+if [ -z "${PYTHON:-}" ] ; then
+  export PYTHON=`readlink $PYTHON_WRAP`
+fi
+
+if [ -a "$AMBARI_ENV" ]; then
+  set +u # temporary disable variables checking for env
+  . "$AMBARI_ENV"
+  set -u
+fi
+
+if [ -z "${AMBARI_PASSPHRASE:-}" ]; then
+  AMBARI_PASSPHRASE="DEV"
+fi
+
+if [ -n "${JAVA_HOME:-}" ]; then
+  export JAVA_HOME=$JAVA_HOME
+fi
+
+export AMBARI_PASSPHRASE=$AMBARI_PASSPHRASE
+
+# check for version
+majversion=`$PYTHON -V 2>&1 | awk '{print $2}' | cut -d'.' -f1`
+minversion=`$PYTHON -V 2>&1 | awk '{print $2}' | cut -d'.' -f2`
+numversion=$(( 10 * $majversion + $minversion))
+if (( $numversion < 26 )); then
+  echo "Need python version > 2.6"
+  exit 1
+fi
+echo "Using python " $PYTHON
+
+ret=0
+case "${1:-}" in
+  start)
+        echo -e "Starting ambari-server"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  stop)
+        echo -e "Stopping ambari-server"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  reset)
+        echo -e "Resetting ambari-server"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  restart)
+        echo -e "Restarting ambari-server"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  upgrade)
+        echo -e "Upgrading ambari-server"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  status)
+        echo -e "Ambari-server status"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  upgradestack)
+        echo -e "Upgrading stack of ambari-server"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup)
+        echo -e "Setup ambari-server"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup-jce)
+        echo -e "Updating jce policy"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup-jdbc)
+        echo -e "Setting up JDBC driver"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup-pam)
+        echo -e "Setting up PAM properties..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  migrate-ldap-pam)
+        echo -e "Migration LDAP to PAM"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup-ldap)
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  sync-ldap)
+        echo -e "Syncing with LDAP..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  set-current)
+        echo -e "Setting current version..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup-security)
+        echo -e "Security setup options..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  refresh-stack-hash)
+        echo -e "Refreshing stack hashes..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  backup)
+        echo -e "Backing up Ambari File System state... *this will not backup the server database*"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  restore)
+        echo -e "Restoring Ambari File System state"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  update-host-names)
+        echo -e "Updating host names"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  check-database)
+        echo -e "Checking database"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  enable-stack)
+        echo -e "Enabling stack(s)..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup-sso)
+        echo -e "Setting up SSO authentication properties..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup-trusted-proxy)
+         echo -e "Setting up Trusted Proxy support..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  db-purge-history)
+        echo -e "Purge database history..."
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  install-mpack)
+        echo -e "Installing management pack"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  uninstall-mpack)
+        echo -e "Uninstalling management pack"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  upgrade-mpack)
+        echo -e "Upgrading management pack"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  setup-kerberos)
+        echo -e "Setting up Kerberos authentication"
+        $PYTHON "$AMBARI_PYTHON_EXECUTABLE" "$@"
+        ;;
+  *)
+        echo "Usage: $AMBARI_EXECUTABLE
+        {start|stop|reset|restart|upgrade|status|upgradestack|setup|setup-jce|setup-ldap|sync-ldap|set-current|setup-security|refresh-stack-hash|backup|restore|update-host-names|check-database|enable-stack|setup-sso|setup-trusted-proxy|db-purge-history|install-mpack|uninstall-mpack|upgrade-mpack|setup-kerberos|setup-pam|migrate-ldap-pam} [options]
+        Use $AMBARI_PYTHON_EXECUTABLE <action> --help to get details on options available.
+        Or, simply invoke ambari-server.py --help to print the options."
+        exit 1
+esac
+
+exit $?

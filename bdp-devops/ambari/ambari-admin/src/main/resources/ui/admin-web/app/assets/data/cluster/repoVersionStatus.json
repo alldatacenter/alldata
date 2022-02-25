@@ -1,0 +1,37 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/stack_versions?fields=*&ClusterStackVersions/repository_version=1",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/stack_versions/1",
+      "ClusterStackVersions" : {
+        "cluster_name" : "c1",
+        "id" : 1,
+        "repository_version" : 1,
+        "stack" : "HDP",
+        "state" : "CURRENT",
+        "version" : "2.2",
+        "host_states" : {
+          "CURRENT" : [
+            "c6401.ambari.apache.org"
+          ],
+          "INSTALLED" : [ ],
+          "INSTALLING" : [ ],
+          "INSTALL_FAILED" : [ ],
+          "UPGRADED" : [ ],
+          "UPGRADE_FAILED" : [ ],
+          "UPGRADING" : [ ]
+        }
+      },
+      "repository_versions" : [
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/stack_versions/1/repository_versions/1",
+          "RepositoryVersions" : {
+            "id" : 1,
+            "stack_name" : "HDP",
+            "stack_version" : "2.2"
+          }
+        }
+      ]
+    }
+  ]
+}

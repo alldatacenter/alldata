@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+        
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<configuration>
+  <!--
+    Refer to the oozie-default.xml file for the complete list of
+    Oozie configuration properties and their default values.
+-->
+  <property>
+    <name>oozie.base.url</name>
+    <value>http://localhost:11000/oozie</value>
+    <description>Base Oozie URL.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.system.id</name>
+    <value>oozie-${user.name}</value>
+    <description>
+    The Oozie system ID.
+    </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.systemmode</name>
+    <value>NORMAL</value>
+    <description>
+     System mode for  Oozie at startup.
+     </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.AuthorizationService.security.enabled</name>
+    <value>true</value>
+    <description>
+     Specifies whether security (user name/admin role) is enabled or not.
+     If disabled any user can manage Oozie system and manage any job.
+     </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.PurgeService.older.than</name>
+    <value>30</value>
+    <description>
+     Jobs older than this value, in days, will be purged by the PurgeService.
+     </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.PurgeService.purge.interval</name>
+    <value>3600</value>
+    <description>
+     Interval at which the purge service will run, in seconds.
+     </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.CallableQueueService.queue.size</name>
+    <value>1000</value>
+    <description>Max callable queue size</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.CallableQueueService.threads</name>
+    <value>10</value>
+    <description>Number of threads used for executing callables</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.CallableQueueService.callable.concurrency</name>
+    <value>3</value>
+    <description>
+     Maximum concurrency for a given callable type.
+     Each command is a callable type (submit, start, run, signal, job, jobs, suspend,resume, etc).
+     Each action type is a callable type (Map-Reduce, Pig, SSH, FS, sub-workflow, etc).
+     All commands that use action executors (action-start, action-end, action-kill and action-check) use
+     the action type as the callable type.
+     </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.coord.normal.default.timeout</name>
+    <value>120</value>
+    <description>Default timeout for a coordinator action input check (in minutes) for normal job.
+      -1 means infinite timeout</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.db.schema.name</name>
+    <value>oozie</value>
+    <description>
+      Oozie DataBase Name
+     </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.HadoopAccessorService.jobTracker.whitelist</name>
+    <value> </value>
+    <description>
+      Whitelisted job tracker for Oozie service.
+      </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.authentication.type</name>
+    <value>simple</value>
+    <description>
+      </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.HadoopAccessorService.nameNode.whitelist</name>
+    <value> </value>
+    <description>
+      </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.WorkflowAppService.system.libpath</name>
+    <value>/user/${user.name}/share/lib</value>
+    <description>
+      System library path to use for workflow applications.
+      This path is added to workflow application if their job properties sets
+      the property 'oozie.use.system.libpath' to true.
+      </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>use.system.libpath.for.mapreduce.and.pig.jobs</name>
+    <value>false</value>
+    <description>
+      If set to true, submissions of MapReduce and Pig jobs will include
+      automatically the system library path, thus not requiring users to
+      specify where the Pig JAR files are. Instead, the ones from the system
+      library path are used.
+      </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.authentication.kerberos.name.rules</name>
+    <value>
+
+
+
+
+
+        </value>
+    <description>The mapping from kerberos principal names to local OS user names.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.HadoopAccessorService.hadoop.configurations</name>
+    <value>*=/etc/hadoop/conf</value>
+    <description>
+          Comma separated AUTHORITY=HADOOP_CONF_DIR, where AUTHORITY is the HOST:PORT of
+          the Hadoop service (JobTracker, HDFS). The wildcard '*' configuration is
+          used when there is no exact match for an authority. The HADOOP_CONF_DIR contains
+          the relevant Hadoop *-site.xml files. If the path is relative is looked within
+          the Oozie configuration directory; though the path can be absolute (i.e. to point
+          to Hadoop client conf/ directories in the local filesystem.
+      </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.ActionService.executor.ext.classes</name>
+    <value>
+            org.apache.oozie.action.email.EmailActionExecutor,
+            org.apache.oozie.action.hadoop.HiveActionExecutor,
+            org.apache.oozie.action.hadoop.ShellActionExecutor,
+            org.apache.oozie.action.hadoop.SqoopActionExecutor,
+            org.apache.oozie.action.hadoop.DistcpActionExecutor
+        </value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.SchemaService.wf.ext.schemas</name>
+    <value>shell-action-0.1.xsd,email-action-0.1.xsd,hive-action-0.2.xsd,sqoop-action-0.2.xsd,ssh-action-0.1.xsd,distcp-action-0.1.xsd,hive-action-0.3.xsd</value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.JPAService.create.db.schema</name>
+    <value>false</value>
+    <description>
+            Creates Oozie DB.
+
+            If set to true, it creates the DB schema if it does not exist. If the DB schema exists is a NOP.
+            If set to false, it does not create the DB schema. If the DB schema does not exist it fails start up.
+        </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.JPAService.jdbc.driver</name>
+    <value>org.apache.derby.jdbc.EmbeddedDriver</value>
+    <description>
+            JDBC driver class.
+        </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.JPAService.jdbc.url</name>
+    <value>jdbc:derby:${oozie.data.dir}/${oozie.db.schema.name}-db;create=true</value>
+    <description>
+            JDBC URL.
+        </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.JPAService.jdbc.username</name>
+    <value>sa</value>
+    <description>
+            DB user name.
+        </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.JPAService.jdbc.password</name>
+    <value> </value>
+    <description>
+            DB user password.
+
+            IMPORTANT: if password is emtpy leave a 1 space string, the service trims the value,
+                       if empty Configuration assumes it is NULL.
+        </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie.service.JPAService.pool.max.active.conn</name>
+    <value>10</value>
+    <description>
+             Max number of connections.
+        </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="action_definition.xsl"?>
+
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<actionDefinitions>
+  <actionDefinition>
+    <actionName>check_host</actionName>
+    <actionType>SYSTEM</actionType>
+    <inputs/>
+    <targetService/>
+    <targetComponent/>
+    <defaultTimeout>60</defaultTimeout>
+    <description>General check for host</description>
+    <targetType>ANY</targetType>
+    <permissions>HOST.ADD_DELETE_HOSTS</permissions>
+  </actionDefinition>
+  <actionDefinition>
+    <actionName>update_repo</actionName>
+    <actionType>SYSTEM</actionType>
+    <inputs/>
+    <targetService/>
+    <targetComponent/>
+    <defaultTimeout>60</defaultTimeout>
+    <description>Update repo files on hosts</description>
+    <targetType>ALL</targetType>
+    <permissions>HOST.ADD_DELETE_COMPONENTS, HOST.ADD_DELETE_HOSTS, SERVICE.ADD_DELETE_SERVICES</permissions>
+  </actionDefinition>
+  <actionDefinition>
+    <actionName>clear_repocache</actionName>
+    <actionType>SYSTEM</actionType>
+    <inputs/>
+    <targetService/>
+    <targetComponent/>
+    <defaultTimeout>60</defaultTimeout>
+    <description>Clear repository cache on hosts</description>
+    <targetType>ALL</targetType>
+    <permissions>HOST.ADD_DELETE_COMPONENTS, HOST.ADD_DELETE_HOSTS, SERVICE.ADD_DELETE_SERVICES</permissions>
+  </actionDefinition>
+  <actionDefinition>
+    <actionName>validate_configs</actionName>
+    <actionType>SYSTEM</actionType>
+    <inputs/>
+    <targetService/>
+    <targetComponent/>
+    <defaultTimeout>60</defaultTimeout>
+    <description>Validate if provided service config can be applied to specified hosts</description>
+    <targetType>ALL</targetType>
+    <permissions>CLUSTER.MODIFY_CONFIGS, SERVICE.MODIFY_CONFIGS</permissions>
+  </actionDefinition>
+  <actionDefinition>
+    <actionName>install_packages</actionName>
+    <actionType>SYSTEM</actionType>
+    <inputs>base_urls, package_list</inputs>
+    <targetService/>
+    <targetComponent/>
+    <defaultTimeout>60</defaultTimeout>
+    <description>Distribute repositories and install packages</description>
+    <targetType>ALL</targetType>
+    <permissions>HOST.ADD_DELETE_COMPONENTS, HOST.ADD_DELETE_HOSTS, SERVICE.ADD_DELETE_SERVICES</permissions>
+  </actionDefinition>
+  <actionDefinition>
+    <actionName>ru_execute_tasks</actionName>
+    <actionType>SYSTEM</actionType>
+    <inputs>tasks</inputs>
+    <targetService/>
+    <targetComponent/>
+    <description>Perform upgrade action</description>
+    <targetType>ANY</targetType>
+    <permissions>CLUSTER.UPGRADE_DOWNGRADE_STACK</permissions>
+  </actionDefinition>
+  <actionDefinition>
+    <actionName>remove_previous_stacks</actionName>
+    <actionType>SYSTEM</actionType>
+    <inputs>version</inputs>
+    <targetService/>
+    <targetComponent/>
+    <defaultTimeout>600</defaultTimeout>
+    <description>Perform remove old stack version action</description>
+    <targetType>ANY</targetType>
+  </actionDefinition>
+</actionDefinitions>

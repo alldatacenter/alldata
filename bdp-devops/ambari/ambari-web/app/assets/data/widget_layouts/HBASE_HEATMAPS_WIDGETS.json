@@ -1,0 +1,71 @@
+
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets?WidgetInfo/widget_type=HEATMAP&WidgetInfo/scope=CLUSTER&WidgetInfo/metrics.matches(.*\\\"service_name\\\":\\\"HBASE\\\".*)&fields=WidgetInfo/metrics",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/29",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Compaction Queue Size",
+        "id" : 29,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dHBase,name\\u003dRegionServer,sub\\u003dServer.compactionQueueLength\",\"metric_path\":\"metrics/hbase/regionserver/compactionQueueSize\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "HBase Compaction Queue Size",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/30",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Memstore Sizes",
+        "id" : 30,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dHBase,name\\u003dRegionServer,sub\\u003dServer.memStoreSize\",\"metric_path\":\"metrics/hbase/regionserver/memstoreSize\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "HBase Memstore Sizes",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/31",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Read Request Count",
+        "id" : 31,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dHBase,name\\u003dRegionServer,sub\\u003dServer.readRequestCount\",\"metric_path\":\"metrics/hbase/regionserver/readRequestsCount\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "HBase Read Request Count",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/32",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Write Request Count",
+        "id" : 32,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dHBase,name\\u003dRegionServer,sub\\u003dServer.writeRequestCount\",\"metric_path\":\"metrics/hbase/regionserver/writeRequestsCount\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "HBase Write Request Count",
+        "widget_type" : "HEATMAP"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/33",
+      "WidgetInfo" : {
+        "author" : "ambari",
+        "cluster_name" : "c1",
+        "display_name" : "HBase Regions",
+        "id" : 33,
+        "metrics" : "[{\"name\":\"Hadoop:service\\u003dHBase,name\\u003dRegionServer,sub\\u003dServer.regionCount\",\"metric_path\":\"metrics/hbase/regionserver/regions\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+        "scope" : "CLUSTER",
+        "widget_name" : "HBase Regions",
+        "widget_type" : "HEATMAP"
+      }
+    }
+  ]
+}

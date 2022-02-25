@@ -1,0 +1,76 @@
+{
+  "services": [
+    {
+      "name": "ONEFS",
+      "identities": [
+        {
+          "name": "hdfs_spnego",
+          "reference": "/spnego",
+          "principal": {
+            "configuration": "hdfs-site/dfs.web.authentication.kerberos.principal"
+          },
+          "keytab": {
+            "configuration": "hdfs-site/dfs.web.authentication.kerberos.keytab"
+          }
+        },
+        {
+          "name": "hdfs_smokeuser",
+          "reference": "/smokeuser"
+        }
+      ],
+      "auth_to_local_properties" : [
+        "core-site/hadoop.security.auth_to_local"
+      ],
+      "configurations": [
+        {
+          "core-site": {
+            "hadoop.security.authentication": "kerberos",
+            "hadoop.security.authorization": "true",
+            "hadoop.proxyuser.HTTP.groups": "${hadoop-env/proxyuser_group}",
+            "hadoop.security.token.service.use_ip" : "false",
+            "dfs.namenode.kerberos.principal": "${hadoop-env/hdfs_user}/${onefs/onefs_host}@${realm}",
+            "dfs.namenode.kerberos.principal.pattern": "*"
+          }
+        },
+        {
+          "ranger-hdfs-audit": {
+            "xasecure.audit.jaas.Client.loginModuleName": "com.sun.security.auth.module.Krb5LoginModule",
+            "xasecure.audit.jaas.Client.loginModuleControlFlag": "required",
+            "xasecure.audit.jaas.Client.option.useKeyTab": "true",
+            "xasecure.audit.jaas.Client.option.storeKey": "false",
+            "xasecure.audit.jaas.Client.option.serviceName": "solr",
+            "xasecure.audit.destination.solr.force.use.inmemory.jaas.config": "true"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name":  "ONEFS_CLIENT",
+          "identities": [
+            {
+              "name": "hdfs_hdfs_client_hdfs",
+              "principal": {
+                "value": "${hadoop-env/hdfs_user}${principal_suffix}@${realm}",
+                "type" : "user" ,
+                "configuration": "hadoop-env/hdfs_principal_name",
+                "local_username" : "${hadoop-env/hdfs_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/hdfs.headless.keytab",
+                "owner": {
+                  "name": "${hadoop-env/hdfs_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "hadoop-env/hdfs_user_keytab"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

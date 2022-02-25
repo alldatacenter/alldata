@@ -1,0 +1,43 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="alert alert-warning">
+  {{view.warningMsg}}
+</div>
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label">{{t popup.invalid.KDC.admin.principal}}</label>
+    {{view Ember.TextField valueBinding="view.parentView.principal" class="form-control"}}
+  </div>
+  <div class="control-group">
+    <label class="control-label">{{t popup.invalid.KDC.admin.password}}</label>
+    {{view Ember.TextField type="password" valueBinding="view.parentView.password" class="form-control"}}
+  </div>
+  <div class="control-group">
+    <span class="control-label"></span>
+    <div>
+      <label>
+        {{view App.CheckboxView checkedBinding="view.parentView.storeCredentials" disabledBinding="view.parentView.checkboxDisabled" classNames="pull-left"}}
+        <span {{bindAttr class=":mls view.parentView.checkboxDisabled:muted"}}>
+          {{t admin.kerberos.credentials.store.label}}
+          <a class="glyphicon-question-sign glyphicon glyphicon-blue" rel="tooltip" href="javascript:void(null);" data-toggle="tooltip" {{bindAttr data-original-title="view.parentView.hintMessage"}}></a>
+        </span>
+      </label>
+    </div>
+  </div>
+</form>

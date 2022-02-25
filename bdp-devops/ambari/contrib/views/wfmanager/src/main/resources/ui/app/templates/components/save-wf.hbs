@@ -1,0 +1,79 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="modal fade" id="configureJob" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Save {{displayName}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{#if alertType}}
+            <div id="error" class="alert alert-{{alertType}}">
+              <div>{{alertMessage}}</div>
+              <div>{{alertDetails}}</div>
+              {{#if isStackTraceAvailable}}
+                {{#if isStackTraceVisible}}
+                  <a href="#" class="action-link" {{action "hideStackTrace"}}>Hide Log</a>
+                  <div id="stackTrace">{{{stackTrace}}}</div>
+                {{/if}}
+                {{#unless isStackTraceVisible}}
+                  <a href="#" class="action-link" {{action "showStackTrace"}}>Show Log</a>
+                {{/unless}}
+              {{/if}}
+            </div>
+            {{/if}}
+            <div class="row form-group">
+              <div class="col-xs-3">
+                <label class="control-label" for="{{type}}-path">{{displayName}} path</label><span class="requiredField">&nbsp;*</span>
+              </div>
+              <div class="col-xs-8">
+                <div class="input-group">
+                  {{input class="form-control" type="text" name="{{type}}-path"  value=filePath}}
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" {{action "selectFile"}}>Browse</button>
+                  </span>
+                </div>
+                {{field-error model=this field='filePath' showErrorMessage=showErrorMessage}}
+                {{input type="checkbox" checked=overwritePath}}Overwrite
+                {{#if overwritePath}}
+                  <div class="alert alert-info">
+                     Sending overwrite option will replace the existing file in hdfs file system.
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        {{#if savingInProgress}}
+        {{spin-spinner lines=10 length=10 width=5 radius=10 }}
+        <span class="pull-left">Saving {{displayName}}</span>
+        {{/if}}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" {{action "saveWorkflow"}}>Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{#if showingFileBrowser}}
+{{hdfs-browser closeFileBrowser="closeFileBrowser" selectFileCallback=selectFileCallback filePath=filePath}}
+{{/if}}

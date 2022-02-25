@@ -1,0 +1,82 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<br/>
+<div class="home-directory-pane" ng-controller="HomeDirectoryCtrl">
+  <form class="form-horizontal" novalidate name="form" autocomplete="off">
+    <div class="well">
+      <div class="alert alert-info">
+        {{'common.loginActivities.homeDirectory.alert' | translate}}
+      </div>
+      <fieldset>
+        <div class="form-group">
+          <label class="col-sm-4 switch-inline-label">{{'common.loginActivities.homeDirectory.autoCreate' | translate}}</label>
+          <div class="col-sm-8">
+            <toggle-switch model="autoCreate" class="switch-success"></toggle-switch>
+            <span ng-if="autoCreate" class="switch-option-label">{{'common.enabled' | translate}}</span>
+            <span ng-if="!autoCreate" class="switch-option-label">{{'common.disabled' | translate}}</span>
+          </div>
+          <input type="checkbox" name="autoCreate" class="hidden" ng-model="autoCreate">
+        </div>
+        <h4>{{'common.loginActivities.homeDirectory.header' | translate}}</h4>
+        <hr class="separator"/>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">{{'common.loginActivities.homeDirectory.template' | translate}}</label>
+          <div class="col-sm-8">
+            <input type="text"
+                   class="form-control"
+                   name="template"
+                   placeholder="{{TEMPLATE_PLACEHOLER}}"
+                   ng-model="template"
+                   ng-disabled="!autoCreate"
+                   autocomplete="off">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">{{'common.loginActivities.homeDirectory.group' | translate}}</label>
+          <div class="col-sm-8">
+            <input type="text"
+                   class="form-control"
+                   name="template"
+                   placeholder="users"
+                   ng-model="group"
+                   ng-disabled="!autoCreate"
+                   autocomplete="off">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">{{'common.loginActivities.homeDirectory.permissions' | translate}}</label>
+          <div class="col-sm-8">
+            <input type="text"
+                   class="form-control"
+                   name="template"
+                   placeholder="750"
+                   ng-model="permissions"
+                   ng-disabled="!autoCreate"
+                   autocomplete="off">
+          </div>
+        </div>
+          <button
+              class="btn btn-primary pull-right"
+              ng-click="save()" ng-disabled="!(autoCreate && form.$dirty)">
+            {{'common.controls.save' | translate}}
+          </button>
+      </fieldset>
+    </div>
+  </form>
+</div>

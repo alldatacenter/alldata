@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration>
+  <property>
+    <name>zk_user</name>
+    <value>zookeeper</value>
+    <description>ZooKeeper User.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>zookeeperserver_host</name>
+    <value/>
+    <description>ZooKeeper Server Hosts.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>zk_data_dir</name>
+    <value>/hadoop/zookeeper</value>
+    <description>Data directory for ZooKeeper.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>zk_log_dir</name>
+    <value>/var/log/zookeeper</value>
+    <description>ZooKeeper Log Dir</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>zk_pid_dir</name>
+    <value>/var/run/zookeeper</value>
+    <description>ZooKeeper Pid Dir</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>zk_pid_file</name>
+    <value>/var/run/zookeeper/zookeeper_server.pid</value>
+    <description>ZooKeeper Pid File</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>tickTime</name>
+    <value>2000</value>
+    <description>The length of a single tick in milliseconds, which is the basic time unit used by ZooKeeper</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>initLimit</name>
+    <value>10</value>
+    <description>Ticks to allow for sync at Init.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>syncLimit</name>
+    <value>5</value>
+    <description>Ticks to allow for sync at Runtime.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>clientPort</name>
+    <value>2181</value>
+    <description>Port for running ZK Server.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

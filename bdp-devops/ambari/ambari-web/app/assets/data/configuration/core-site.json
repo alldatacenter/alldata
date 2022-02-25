@@ -1,0 +1,28 @@
+{
+  "href" : "http://dev.hortonworks.com:8080/api/v1/clusters/mycluster/configurations/?type=core-site&tag=version1&_=1363102423792",
+  "items" : [
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/clusters/mycluster/configurations?type=core-site&tag=version1",
+      "tag" : "version1",
+      "type" : "core-site",
+      "Config" : {
+        "cluster_name" : "mycluster"
+      },
+      "properties" : {
+        "io.serializations" : "org.apache.hadoop.io.serializer.WritableSerialization",
+        "fs.checkpoint.size" : "0.5",
+        "io.file.buffer.size" : "131072",
+        "fs.checkpoint.period" : "21600",
+        "io.compression.codec.lzo.class" : "com.hadoop.compression.lzo.LzoCodec",
+        "ipc.client.connection.maxidletime" : "30000",
+        "webinterface.private.actions" : "false",
+        "fs.checkpoint.edits.dir" : "/hadoop/hdfs/namesecondary",
+        "fs.trash.interval" : "360",
+        "fs.default.name" : "hdfs://dev.hortonworks.com:8020",
+        "ipc.client.idlethreshold" : "8000",
+        "fs.checkpoint.dir" : "/hadoop/hdfs/namesecondary",
+        "ipc.client.connect.max.retries" : "50"
+      }
+    }
+  ]
+}

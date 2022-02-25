@@ -1,0 +1,66 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div  class="node nodecontainer" id={{node.id}}>
+  <div class='node-item {{nodeSpecificClasses}}' >
+  {{#if (eq node.type 'start')}}
+    <i class="fa fa-play nodeStart"></i>
+  {{else if (eq node.type 'end')}}
+    <i class="fa fa-stop nodeEnd"></i>
+  {{else if (eq node.type 'kill')}}
+    <div class="node_actions node_left">
+      <i class="fa fa-cog node_properties" title="Edit" {{action "openEditor"}}></i>
+      <i class="fa fa-trash-o" title="Delete" {{action "deleteNode" }}></i>
+    </div>
+    <div class="action_node_data">
+      <i class="fa fa-ban"></i>
+      {{input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" name="actionName" data-toggle="tooltip" title=node.name class="editable" classBinding="node.isUnique" value=node.name placeholder="Kill Node Name"}}
+    </div>
+  {{else if (eq node.type 'decision')}}
+    <div class='decision-data-wrapper'>
+      <div class="decision_node_data">
+        {{input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" name="actionName" data-toggle="tooltip" title=node.name classBinding="node.errors:error:editable" class="editable" value=node.name placeholder="Action Name"}}
+      </div>
+    </div>
+    <div class="node_actions node_left">
+      <i class="fa fa-code-fork" title="Add condition" {{action "showAddBranch"}}></i>
+      <i class="fa fa-cog node_properties" title="Edit" {{action "openEditor"}}></i>
+      <i class="fa fa-trash-o" title="Delete" {{action "deleteNode"}}></i>
+    </div>
+  {{else if (eq node.type 'fork')}}
+    <div class="node_actions node_left forkAction">
+      <i class="fa fa-code-fork" title="Add Branch" {{action "addBranch"}}></i>
+      <i class="fa fa-trash-o" title="Delete" {{action "deleteNode"}}></i>
+    </div>
+    <div class="fork_node_data">
+      {{input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" name="actionName" data-toggle="tooltip" title=node.name classBinding="node.errors:error:editable" class="editable" value=node.name placeholder="Action Name"}}
+    </div>
+  {{else if (eq node.type 'action')}}
+    <div class="node_actions node_left">
+      <i class="fa fa-cog node_properties" title="Edit" {{action "openEditor"}}></i>
+      <i class="fa fa-trash-o" title="Delete" {{action "deleteNode"}}></i>
+      <i class="fa fa-copy" title="Copy" {{action "copyNode"}}></i>
+    </div>
+    <div class="action_node_data">
+      <i class="fa fa-{{icon}}" {{action "showNotification" node  on="mouseEnter"}}></i>
+      {{input required pattern="([a-zA-Z_]([\-_a-zA-Z0-9])*){1,39}" name="actionName" data-toggle="tooltip" title=node.name classBinding="node.errors:error:editable" class="editable" value=node.name placeholder="Action Name"}}
+    </div>
+
+  {{/if}}
+</div>
+{{decision-add-branch node=node registerAddBranchAction="registerAddBranchAction" addDecisionBranch="addDecisionBranch"}}
+</div>

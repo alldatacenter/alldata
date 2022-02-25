@@ -1,0 +1,147 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/users/admin/activeWidgetLayouts?WidgetLayoutInfo/section_name=HDFS_SUMMARY",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widget_layouts/8",
+      "WidgetLayoutInfo" : {
+        "cluster_name" : "c1",
+        "display_name" : "Standard HDFS Dashboard",
+        "id" : 8,
+        "layout_name" : "admin_hdfs_dashboard",
+        "scope" : "USER",
+        "section_name" : "HDFS_SUMMARY",
+        "user_name" : "admin",
+        "widgets" : [
+          {
+            "WidgetInfo" : {
+              "id" : 4,
+              "metrics" : "[{\"name\":\"jvm.JvmMetrics.GcCount\",\"metric_path\":\"metrics/jvm/gcCount\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"},{\"name\":\"jvm.JvmMetrics.GcTimeMillisConcurrentMarkSweep\",\"metric_path\":\"metrics/jvm/GcTimeMillisConcurrentMarkSweep\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"},{\"name\":\"jvm.JvmMetrics.GcCountConcurrentMarkSweep\",\"metric_path\":\"metrics/jvm/GcCountConcurrentMarkSweep\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"}]",
+              "author" : "ambari",
+              "description" : "This widget shows JVM Garbage collection statistics for Active NameNode",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"Requests\",\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "GC Statistics",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622107,
+              "display_name" : "GC Statistics",
+              "values" : "[{\"name\":\"GC total count\",\"value\":\"${jvm.JvmMetrics.GcCount}\"},{\"name\":\"GC time in major collection\",\"value\":\"${jvm.JvmMetrics.GcTimeMillisConcurrentMarkSweep}\"},{\"name\":\"GC count of type major collection\",\"value\":\"${jvm.JvmMetrics.GcCountConcurrentMarkSweep}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 5,
+              "metrics" : "[{\"name\":\"rpc.rpc.NumOpenConnections\",\"metric_path\":\"metrics/rpc/NumOpenConnections\",\"category\":\"\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"}]",
+              "author" : "ambari",
+              "description" : "Number of open connections for Active NameNode.",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"Connections\",\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "Client connections",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622107,
+              "display_name" : "Client connections",
+              "values" : "[{\"name\":\"Client connections\",\"value\":\"${rpc.rpc.NumOpenConnections}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 6,
+              "metrics" : "[{\"name\":\"jvm.JvmMetrics.MemHeapCommittedM\",\"metric_path\":\"metrics/jvm/memHeapCommittedM\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"},{\"name\":\"jvm.JvmMetrics.MemHeapUsedM\",\"metric_path\":\"metrics/jvm/memHeapUsedM\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"}]",
+              "author" : "ambari",
+              "description" : null,
+              "scope" : "CLUSTER",
+              "properties" : "{\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "NameNode JVM Heap Statistics",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622107,
+              "display_name" : "NameNode JVM Heap Statistics",
+              "values" : "[{\"name\":\"JVM heap committed\",\"value\":\"${jvm.JvmMetrics.MemHeapCommittedM}\"},{\"name\":\"JVM heap used\",\"value\":\"${jvm.JvmMetrics.MemHeapUsedM}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 7,
+              "metrics" : "[{\"name\":\"cpu_idle\",\"metric_path\":\"metrics/cpu/cpu_idle\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"},{\"name\":\"proc_total\",\"metric_path\":\"metrics/process/proc_total\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"}]",
+              "author" : "ambari",
+              "description" : null,
+              "scope" : "CLUSTER",
+              "properties" : "{\"graph_type\":\"LINE\",\"time_range\":\"1\"}",
+              "widget_name" : "NameNode CPU and RAM Utilization",
+              "widget_type" : "GRAPH",
+              "time_created" : 1429906622107,
+              "display_name" : "NameNode CPU and RAM Utilization",
+              "values" : "[{\"name\":\"CPU Idle on NameNode host\",\"value\":\"${cpu_idle}\"},{\"name\":\"Total Processes on NameNode host\",\"value\":\"${proc_total}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 8,
+              "metrics" : "[{\"name\":\"Hadoop:service\\u003dNameNode,name\\u003dRpcActivity.RpcQueueTimeAvgTime\",\"metric_path\":\"metrics/rpc/client/RpcQueueTime_avg_time\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"}]",
+              "author" : "ambari",
+              "description" : null,
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"ms\"}",
+              "widget_name" : "RPC Queue Wait time",
+              "widget_type" : "NUMBER",
+              "time_created" : 1429906622107,
+              "display_name" : "RPC Queue Wait time",
+              "values" : "[{\"name\":\"RPC Queue Wait time\",\"value\":\"${Hadoop:service\\u003dNameNode,name\\u003dRpcActivity.RpcQueueTimeAvgTime}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 9,
+              "metrics" : "[{\"name\":\"Hadoop:service\\u003dDataNode,name\\u003dRpcActivity.RpcProcessingTimeAvgTime\",\"metric_path\":\"metrics/rpc/RpcProcessingTime_avg_time\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\",\"host_component_criteria\":\"host_components/metrics/dfs/FSNamesystem/HAState\\u003dactive\"}]",
+              "author" : "ambari",
+              "description" : null,
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"ms\"}",
+              "widget_name" : "RPC_PROCESSING_TIME",
+              "widget_type" : "NUMBER",
+              "time_created" : 1429906622107,
+              "display_name" : "RPC Processing time",
+              "values" : "[{\"name\":\"RPC Processing time\",\"value\":\"${Hadoop:service\\u003dDataNode,name\\u003dRpcActivity.RpcProcessingTimeAvgTime}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 11,
+              "metrics" : "[{\"name\":\"Hadoop:service\\u003dNameNode,name\\u003dFSNamesystem.UnderReplicatedBlocks\",\"metric_path\":\"metrics/dfs/FSNamesystem/UnderReplicatedBlocks\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\"}]",
+              "author" : "ambari",
+              "description" : null,
+              "scope" : "CLUSTER",
+              "properties" : "{}",
+              "widget_name" : "Under Replicated Blocks",
+              "widget_type" : "NUMBER",
+              "time_created" : 1429906622107,
+              "display_name" : "Under Replicated Blocks",
+              "values" : "[{\"name\":\"Under Replicated Blocks\",\"value\":\"${Hadoop:service\\u003dNameNode,name\\u003dFSNamesystem.UnderReplicatedBlocks}\"}]",
+              "cluster_name" : "c1"
+            }
+          },
+          {
+            "WidgetInfo" : {
+              "id" : 10,
+              "metrics" : "[{\"name\":\"Hadoop:service\\u003dNameNode,name\\u003dFSNamesystem.CorruptBlocks\",\"metric_path\":\"metrics/dfs/FSNamesystem/CorruptBlocks\",\"service_name\":\"HDFS\",\"component_name\":\"NAMENODE\"}]",
+              "author" : "ambari",
+              "description" : null,
+              "scope" : "CLUSTER",
+              "properties" : "{}",
+              "widget_name" : "Blocks With Corrupted Replicas",
+              "widget_type" : "NUMBER",
+              "time_created" : 1429906622107,
+              "display_name" : "Blocks With Corrupted Replicas",
+              "values" : "[{\"name\":\"Blocks With Corrupted Replicas\",\"value\":\"${Hadoop:service\\u003dNameNode,name\\u003dFSNamesystem.CorruptBlocks}\"}]",
+              "cluster_name" : "c1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{ "resources": [
+  {
+    "items": [
+      {
+        "type": "configuration",
+        "level": "ERROR",
+        "message": "Value should be integer",
+        "config-type": "mapred-site",
+        "config-name": "mapreduce.map.memory.mb"
+      },
+      {
+        "type": "configuration",
+        "level": "WARN",
+        "message": "Maximum memory exceeds map memory size",
+        "config-type": "mapred-site",
+        "config-name": "mapreduce.map.java.opt"
+      },
+      {
+        "type": "configuration",
+        "level": "ERROR",
+        "message": "yarn.new-config should be defined for HDP-2.1 Yarn service",
+        "config-type": "yarn-site",
+        "config-name": "yarn.new-config"
+      },
+      {
+        "type": "configuration",
+        "level": "WARN",
+        "message": "yarn.old-config has been deprecated in HDP-2.1",
+        "config-type": "yarn-site",
+        "config-name": "yarn.old-config"
+      },
+      {
+        "type": "host-component",
+        "level": "ERROR",
+        "message": "NameNode and Secondary NameNode cannot be hosted on same machine",
+        "component-name": "NAMENODE",
+        "host": "c6401.ambari.apache.org"
+      },
+      {
+        "type": "host-component",
+        "level": "ERROR",
+        "message": "NameNode and Secondary NameNode cannot be hosted on same machine",
+        "component-name": "SNAMENODE",
+        "host": "c6401.ambari.apache.org"
+      },
+      {
+        "type": "host-component",
+        "level": "WARN",
+        "message": "DataNode should not be places on c6401.ambari.apache.org DataNode should not be places on c6401.ambari.apache.org DataNode should not be places on c6401.ambari.apache.org  DataNode should not be places on c6401.ambari.apache.orgDataNode should not be places on c6401.ambari.apache.org",
+        "component-name": "DATANODE",
+        "host": "c6402.ambari.apache.org"
+      },
+      {
+        "type": "host-component",
+        "level": "WARN",
+        "message": "Another small message",
+        "component-name": "DATANODE",
+        "host": "c6402.ambari.apache.org"
+      },
+      {
+        "type": "host-component",
+        "level": "WARN",
+        "message": "It's better to not place HIVE_CLIENT on c6403.ambari.apache.org",
+        "component-name": "HIVE_CLIENT",
+        "host": "c6403.ambari.apache.org"
+      }
+    ]
+  }
+]
+}

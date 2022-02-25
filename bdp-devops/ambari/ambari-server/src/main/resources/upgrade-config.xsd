@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.1">
+  <xs:annotation>
+    <xs:documentation>
+    This document describes the schema for Upgrade Pack configuration changes.
+    </xs:documentation>
+  </xs:annotation>
+  
+  <xs:simpleType name="transfer-operation-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="delete"/>
+      <xs:enumeration value="move"/>
+      <xs:enumeration value="copy"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="set-if-key-state-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="present"/>
+      <xs:enumeration value="absent"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="if-value-match-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="partial"/>
+      <xs:enumeration value="exact" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="transfer-operation-coerce-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="yaml-array"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="insertion-type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="prepend"/>
+      <xs:enumeration value="append"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="configure">
+    <xs:sequence>
+      <xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="transfer" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="keep-key" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="operation" use="required" type="transfer-operation-type"/>
+            <xs:attribute name="from-type" use="optional" type="xs:string"/>
+            <xs:attribute name="from-key" use="optional" type="xs:string"/>
+            <xs:attribute name="to-key" use="optional" type="xs:string"/>
+            <xs:attribute name="delete-key" use="optional" type="xs:string"/>
+            <xs:attribute name="preserve-edits" use="optional" type="xs:boolean"/>
+            <xs:attribute name="default-value" use="optional" type="xs:string"/>
+            <xs:attribute name="coerce-to" use="optional" type="transfer-operation-coerce-type"/>
+            <xs:attribute name="if-key" use="optional" type="xs:string"/>
+            <xs:attribute name="if-type" use="optional" type="xs:string"/>
+            <xs:attribute name="if-value" use="optional" type="xs:string"/>
+            <xs:attribute name="if-key-state" use="optional" type="set-if-key-state-type"/>
+            <xs:attribute name="if-value-match-type" use="optional" type="if-value-match-type"/>
+            <xs:attribute name="if-value-not-matched" use="optional" type="xs:boolean"/>
+            <xs:attribute name="mask" use="optional" type="xs:boolean"/>          
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="set" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="key" use="required" type="xs:string"/>
+            <xs:attribute name="value" use="required" type="xs:string"/>
+            <xs:attribute name="if-key" use="optional" type="xs:string"/>
+            <xs:attribute name="if-type" use="optional" type="xs:string"/>
+            <xs:attribute name="if-value" use="optional" type="xs:string"/>
+            <xs:attribute name="if-key-state" use="optional" type="set-if-key-state-type"/>
+            <xs:attribute name="if-value-match-type" use="optional" type="if-value-match-type"/>
+            <xs:attribute name="if-value-not-matched" use="optional" type="xs:boolean"/>
+            <xs:attribute name="mask" use="optional" type="xs:boolean"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="replace" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="key" use="required" type="xs:string"/>
+            <xs:attribute name="find" use="required" type="xs:string"/>
+            <xs:attribute name="replace-with" use="required" type="xs:string"/>
+            <xs:attribute name="if-key" use="optional" type="xs:string"/>
+            <xs:attribute name="if-type" use="optional" type="xs:string"/>
+            <xs:attribute name="if-value" use="optional" type="xs:string"/>
+            <xs:attribute name="if-key-state" use="optional" type="set-if-key-state-type"/>
+            <xs:attribute name="if-value-match-type" use="optional" type="if-value-match-type"/>
+            <xs:attribute name="if-value-not-matched" use="optional" type="xs:boolean"/>
+            <xs:attribute name="mask" use="optional" type="xs:boolean"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="regex-replace" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="key" use="required" type="xs:string"/>
+            <xs:attribute name="find" use="required" type="xs:string"/>
+            <xs:attribute name="replace-with" use="required" type="xs:string"/>
+            <xs:attribute name="match-all" use="optional" type="xs:boolean"/>
+            <xs:attribute name="if-key" use="optional" type="xs:string"/>
+            <xs:attribute name="if-type" use="optional" type="xs:string"/>
+            <xs:attribute name="if-value" use="optional" type="xs:string"/>
+            <xs:attribute name="if-key-state" use="optional" type="set-if-key-state-type"/>
+            <xs:attribute name="if-value-match-type" use="optional" type="if-value-match-type"/>
+            <xs:attribute name="if-value-not-matched" use="optional" type="xs:boolean"/>
+            <xs:attribute name="mask" use="optional" type="xs:boolean"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="insert" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="key" use="required" type="xs:string"/>
+            <xs:attribute name="value" use="required" type="xs:string"/>
+            <xs:attribute name="insert-type" use="required" type="insertion-type"/>
+            <xs:attribute name="newline-before" use="optional" type="xs:boolean"/>
+            <xs:attribute name="newline-after" use="optional" type="xs:boolean"/>
+            <xs:attribute name="if-key" use="optional" type="xs:string"/>
+            <xs:attribute name="if-type" use="optional" type="xs:string"/>
+            <xs:attribute name="if-value" use="optional" type="xs:string"/>
+            <xs:attribute name="if-key-state" use="optional" type="set-if-key-state-type"/>
+            <xs:attribute name="if-value-match-type" use="optional" type="if-value-match-type"/>
+            <xs:attribute name="if-value-not-matched" use="optional" type="xs:boolean"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" use="required" type="xs:string"/>
+    <xs:attribute name="summary" use="optional" type="xs:string"/>
+  </xs:complexType>
+  
+  <xs:complexType name="changes-type">
+    <xs:sequence>
+      <xs:element name="definition" type="configure" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>  
+  
+  <xs:complexType name="component-type">
+    <xs:sequence>
+      <xs:element name="changes" type="changes-type" minOccurs="1" maxOccurs="1">
+        <xs:unique name="unique-by-definition-id">
+          <xs:annotation>
+            <xs:documentation>Ensures that the element "changes" does not have duplicate definitions</xs:documentation>
+          </xs:annotation>
+          <xs:selector xpath="definition"/>
+          <xs:field xpath="@id"/>
+        </xs:unique>            
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" use="required" type="xs:string"/>
+  </xs:complexType>
+  
+ <xs:complexType name="service-type">
+    <xs:sequence>
+      <xs:element name="component" type="component-type" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" use="required" type="xs:string"/>
+  </xs:complexType>
+  
+  <xs:complexType name="services-type">
+    <xs:sequence>
+      <xs:element name="service" type="service-type" minOccurs="1" maxOccurs="unbounded">
+        <xs:unique name="unique-by-component">
+          <xs:annotation>
+            <xs:documentation>Ensures that the element "service" does not have duplicate components</xs:documentation>
+          </xs:annotation>
+          <xs:selector xpath="component" />
+          <xs:field xpath="@name" />
+        </xs:unique>
+      </xs:element>      
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="upgrade-config-changes">
+    <xs:annotation>
+      <xs:documentation>
+      This is the root element of an the configuration changes for an Upgrade Pack.
+      </xs:documentation>
+    </xs:annotation>
+    
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="services" type="services-type" minOccurs="1">
+          <xs:unique name="unique-by-service">
+            <xs:annotation>
+              <xs:documentation>Ensures that the element "services" does not have duplicate services</xs:documentation>
+            </xs:annotation>
+            <xs:selector xpath="service" />
+            <xs:field xpath="@name" />
+          </xs:unique>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

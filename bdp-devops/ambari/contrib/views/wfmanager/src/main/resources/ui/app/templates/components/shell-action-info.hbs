@@ -1,0 +1,48 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="notificationWidget" class="">
+    <!--a href="#" class="close " data-dismiss="alert" aria-label="close">&times;</a-->
+	<ul class="list-group">
+	  <li class="list-group-item">{{info-header  hoveredAction=hoveredAction hideNotification="hideNotification"}}</li>
+	  {{#if hoveredAction.nameNode}}<li class="list-group-item"><b>Name Node : </b><br/>{{hoveredAction.nameNode}}</li>{{/if}}
+	  {{#if hoveredAction.jobTracker}}<li class="list-group-item"><b>Resource Manager :</b> <br/>{{hoveredAction.jobTracker}} </li>{{/if}}
+	  {{#if hoveredAction.exec}}<li class="list-group-item"><b>Exec :  </b><br/>{{hoveredAction.exec}}</li>{{/if}}
+	  {{#if hoveredAction.envVar}}<li class="list-group-item"><b>Env Var : </b>
+	    {{#property-value-config action=hoveredAction.envVar}}{{/property-value-config}}
+	  </li>{{/if}}
+	  {{#if hoveredAction.captureOutput}}<li class="list-group-item"><b>Capture Output :  </b><br/>{{hoveredAction.captureOutput}}</li>{{/if}}
+	  {{#if hoveredAction.jobXml}}<li class="list-group-item"><b>Job xml : </b>
+	    {{#property-value-config action=hoveredAction.jobXml}}{{/property-value-config}}
+	  </li>{{/if}}
+	  {{#if hoveredAction.archives}}<li class="list-group-item"><b>Archives : </b>
+	    {{#property-value-config action=hoveredAction.archives}}{{/property-value-config}}
+	  </li>{{/if}}
+	  {{#if hoveredAction.files}}<li class="list-group-item"><b>Files : </b>
+	    {{#property-value-config action=hoveredAction.files}}{{/property-value-config}}
+	  </li>{{/if}}
+	  {{#if hoveredAction.args}}<li class="list-group-item"><b>Args : </b>
+	    {{#property-value-config action=hoveredAction.args}}{{/property-value-config}}
+	  </li>{{/if}}
+	  {{#if hoveredAction.prepare}}<li class="list-group-item"><b>Prepare : </b>
+	    {{#prepare-config-info action=hoveredAction}}{{/prepare-config-info}}
+	  </li>{{/if}}
+	  {{#if hoveredAction.configuration.property}}<li class="list-group-item"><b>Configuration : </b>
+	    {{#name-value-info action=hoveredAction}}{{/name-value-info}}
+	  </li>{{/if}}
+	</ul>
+</div>

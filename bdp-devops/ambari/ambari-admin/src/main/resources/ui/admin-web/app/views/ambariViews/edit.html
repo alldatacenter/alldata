@@ -1,0 +1,302 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<div class="clearfix">
+  <ol class="breadcrumb pull-left">
+    <li><a href="#!/views">{{'common.views' | translate}}</a></li>
+    <li class="active">{{instance.ViewInstanceInfo.label}}
+      <a class="gotoinstance" ng-show="instance.ViewInstanceInfo.visible"
+         href="{{fromSiteRoot('/#!/main/views/' + viewUrl)}}" target="_blank">
+        {{'views.goToInstance' | translate}}
+      </a>
+    </li>
+  </ol>
+  <div class="pull-right top-margin-4" ng-switch="instance.ViewInstanceInfo.static">
+    <button ng-switch-when="true" class="btn disabled btn-default btn-delete-instance" tooltip="{{'views.alerts.cannotDeleteStaticInstance' | translate}}">{{'common.delete' | translate:{term: instanceType} }}</button>
+    <button ng-switch-when="false" class="btn btn-danger" ng-click="deleteInstance(instance)">{{'common.delete' | translate:{term: constants.instance} }}</button>
+  </div>
+</div>
+<hr>
+<div class="form-horizontal create-view-form" role="form" name="form.instanceEditForm">
+  <div class="view-header">
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label for="" class="control-label">{{'common.view' | translate}}</label>
+      </div>
+      <div class="col-sm-10"><label for="" class="control-label">{{instance.ViewInstanceInfo.view_name}}</label></div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2"><label for="" class="control-label">{{'common.version' | translate}}</label></div>
+      <div class="col-sm-3">
+        <input disabled="disabled" type="text" class="form-control instancename-input" placeholder="{{'common.version' | translate}}" value="{{instance.ViewInstanceInfo.version}}"></div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default" ng-cloak ng-show="instance">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">{{'common.details' | translate}}</h3>
+    <div class="pull-right" ng-switch="instance.ViewInstanceInfo.static">
+      <a href ng-switch-when="false" ng-click="toggleDetailsSettingsEdit()" ng-show="editDetailsSettingsDisabled" class="settings-edit-toggle"> <span class="glyphicon glyphicon-pencil" ></span> {{'views.edit' | translate}}</a>
+      <a href ng-switch-when="true" class="settings-edit-toggle disabled" tooltip="{{'views.cannotEditInstance' | translate}}"> <span class="glyphicon glyphicon-pencil" ></span> {{'views.edit' | translate}}</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" name="detailsForm" novalidate>
+      <fieldset ng-disabled="editDetailsSettingsDisabled">
+        <div class="form-group">
+          <label for="" class="col-sm-3 control-label">{{'views.instanceName' | translate}}</label>
+          <div class="col-sm-9"><input disabled="disabled" type="text" class="form-control instancename-input" placeholder="{{'views.displayName' | translate}}" value="{{instance.ViewInstanceInfo.instance_name}}"></div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : (detailsForm.displayName.$error.required || detailsForm.displayName.$error.pattern) && !editDetailsSettingsDisabled}">
+          <label for="" class="col-sm-3 control-label">{{'views.displayName' | translate}}</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control instancename-input" placeholder="{{'views.displayName' | translate}}" name="displayName" required ng-model="settings.label" ng-pattern="/^([a-zA-Z0-9._\s]+)$/">
+            <div class="alert alert-danger no-margin-bottom top-margin" ng-show='detailsForm.displayName.$error.required  && !editDetailsSettingsDisabled'>
+              {{'common.alerts.fieldIsRequired' | translate}}
+            </div>
+            <div class="alert alert-danger no-margin-bottom top-margin" ng-show='detailsForm.displayName.$error.pattern && !editDetailsSettingsDisabled'>
+              {{'views.alerts.noSpecialChars' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : detailsForm.description.$error.required  && !editDetailsSettingsDisabled}">
+          <label for="" class="control-label col-sm-3">{{'views.description' | translate}}</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" ng-model="settings.description" name="description" placeholder="{{'views.instanceDescription' | translate}}" required>
+            <div class="alert alert-danger no-margin-bottom top-margin" ng-show='detailsForm.description.$error.required  && !editDetailsSettingsDisabled'>
+              {{'common.alerts.fieldIsRequired' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="control-label col-sm-3">{{'views.shortUrl' | translate}}</label>
+
+          <div class="col-sm-9">
+            <div ng-if="settings.shortUrl">
+            <p class="form-control-static"><a target="_blank" href="{{fromSiteRoot('/#!/main/view/' + instance.ViewInstanceInfo.view_name + '/' + settings.shortUrl)}}" ng-if="settings.shortUrl">/main/view/{{instance.ViewInstanceInfo.view_name}}/{{settings.shortUrl}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+             &nbsp;<a ng-hide="editDetailsSettingsDisabled" href="javascript:void(0)" ng-click="deleteShortURL(settings.shortUrlName)" class="alert-link">{{'common.delete' | translate }}</a>
+             </p>
+          </div>
+            <div ng-if="!settings.shortUrl">
+              <p ng-hide="!editDetailsSettingsDisabled" class="form-control-static">
+                <a href="#!/urls/link/{{instance.ViewInstanceInfo.view_name}}/{{instance.ViewInstanceInfo.version}}/{{instance.ViewInstanceInfo.instance_name}}">{{'urls.createNewUrl' | translate}}</a>
+              </p>
+              <p class="form-control-static" ng-hide="editDetailsSettingsDisabled">
+                <a href="#!/urls/link/{{instance.ViewInstanceInfo.view_name}}/{{instance.ViewInstanceInfo.version}}/{{instance.ViewInstanceInfo.instance_name}}">{{'urls.createNewUrl' | translate}}</a>
+              </p>
+            </div>
+          </div>
+          </div>
+
+
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-10">
+            <div class="checkbox">
+              <input type="checkbox" class="form-control" ng-model="settings.visible" id="visible" ng-class="instancevisibility-input">
+              <label for="visible">{{'views.visible' | translate}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-hide="editDetailsSettingsDisabled">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary pull-right left-margin settingssave-btn" ng-click="saveDetails()">{{'common.controls.save' | translate}}</button>
+            <button class="btn btn-default pull-right settingscancel-btn" ng-click="cancelDetails()">{{'common.controls.cancel' | translate}}</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<div class="panel panel-default" ng-cloak ng-hide="isSettingsEmpty && instance">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">{{'views.settings' | translate}}</h3>
+    <div class="pull-right" ng-switch="instance.ViewInstanceInfo.static">
+      <a href ng-switch-when="false" ng-click="toggleSettingsEdit()" ng-show="editSettingsDisabled" class="settings-edit-toggle"> <span class="glyphicon glyphicon-pencil" ></span> {{'views.edit' | translate}}</a>
+      <a href ng-switch-when="true" class="settings-edit-toggle disabled" tooltip="{{'views.alerts.cannotEditInstance' | translate}}"> <span class="glyphicon glyphicon-pencil" ></span> {{'views.edit' | translate}}</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" name="settingsForm" novalidate>
+      <fieldset ng-disabled="editSettingsDisabled">
+        <div class="form-group" ng-repeat="property in configurationMeta | filter:{clusterConfig:false}" ng-class="{'has-error' : (!editSettingsDisabled && ((property.required && settingsForm[property.name].$error.required && !editSettingsDisabled) || settingsForm[property.name].validationError))}">
+          <label for="" class="control-label col-sm-3" ng-class="{'not-required': !property.required}">{{property.label || property.displayName}}{{property.required ? '*' : ''}}</label>
+          <div ng-switch="property.type">
+            <div class="col-sm-9 checkbox" ng-switch-when="boolean">
+              <input type="checkbox" class="propertie-input" ng-disabled="editSettingsDisabled" name="{{property.name}}" ng-model="configuration[property.name]" ng-true-value="true" ng-false-value="false" popover="{{property.description}}" popover-title="{{property.name}}" popover-trigger="mouseenter">
+            </div>
+            <div class="col-sm-9" ng-switch-default>
+              <input type="{{property.masked ? 'password' : 'text'}}" class="form-control propertie-input" ng-required="property.required" ng-change="settingsForm[property.name].validationError=''" ng-disabled="editSettingsDisabled" name="{{property.name}}" ng-model="configuration[property.name]" popover="{{property.description}}" popover-title="{{property.name}}" popover-trigger="mouseenter" placeholder="{{property.placeholder}}">
+              <div class="alert alert-danger no-margin-bottom top-margin" ng-show='property.required && settingsForm[property.name].$error.required && !editSettingsDisabled'>
+                {{'common.alerts.fieldIsRequired' | translate}}
+              </div>
+              <div class="alert alert-danger no-margin-bottom top-margin" ng-show='property.required && settingsForm[property.name].validationError && !editSettingsDisabled'>
+                {{propertiesForm[property.name].validationMessage}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-hide="editSettingsDisabled">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary pull-right left-margin settingssave-btn" ng-click="saveSettings()">{{'common.controls.save' | translate}}</button>
+            <button class="btn btn-default pull-right settingscancel-btn" ng-click="cancelSettings()">{{'common.controls.cancel' | translate}}</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<div class="panel panel-default" ng-hide="isConfigurationEmpty && !clusterConfigurable">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">{{'views.clusterConfiguration' | translate}}</h3>
+    <div class="pull-right" ng-switch="instance.ViewInstanceInfo.static">
+      <a href ng-switch-when="false" ng-hide="isConfigurationEmpty && !clusterConfigurable" ng-click="togglePropertiesEditing()" ng-show="editConfigurationDisabled" class="properties-toggle"> <span class="glyphicon glyphicon-pencil"></span> {{'views.edit' | translate}}</a>
+      <a href ng-switch-when="true" ng-hide="isConfigurationEmpty && !clusterConfigurable"  class="properties-toggle disabled"> <span class="glyphicon glyphicon-pencil"></span> {{'views.edit' | translate}}</a>
+    </div>
+  </div>
+  <div class="panel-body property-form" popover="{{clusterConfigurableErrorMsg}}" popover-trigger="mouseenter">
+    <div class="checkbox">
+      <input type="radio" id="local-cluster" ng-model="data.clusterType" ng-change="enableLocalCluster()" ng-disabled="!clusterConfigurable || editConfigurationDisabled || noLocalClusterAvailible" value="LOCAL_AMBARI" class="visibilityCheckbox form-control">
+      <label for="local-cluster">{{'views.localCluster' | translate}}</label>
+    </div>
+    <div class="form-horizontal property-form">
+      <div class="form-group">
+        <label for="" class="control-label col-sm-3 ng-binding not-required" >{{'views.clusterName' | translate}}</label>
+        <div>
+          <div class="col-sm-9">
+            <select ng-model="cluster" ng-disabled="(data.clusterType != 'LOCAL_AMBARI') || editConfigurationDisabled" ng-change="onClusterChange()" class="clusters-name-dropdown form-control"  ng-options="o as o.name for o in clusters"></select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>&nbsp</p>
+      <div class="checkbox">
+        <input type="radio" id="remote-cluster" ng-model="data.clusterType" ng-change="enableLocalCluster()" ng-disabled="!clusterConfigurable || editConfigurationDisabled || noRemoteClusterAvailible" value="REMOTE_AMBARI" class="visibilityCheckbox form-control">
+        <label for="remote-cluster">{{'views.remoteCluster' | translate}}</label>
+      </div>
+      <div class="form-horizontal property-form">
+        <div class="form-group">
+          <label for="" class="control-label col-sm-3 ng-binding not-required" >{{'views.clusterName' | translate}}</label>
+          <div>
+            <div class="col-sm-9">
+              <select ng-model="data.remoteCluster" ng-disabled="(data.clusterType != 'REMOTE_AMBARI') || editConfigurationDisabled" ng-change="onClusterChange()" class="clusters-name-dropdown form-control"  ng-options="o as o.name for o in remoteClusters"></select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp</p>
+    <div class="checkbox" ng-hide="isConfigurationEmpty">
+      <input type="radio"
+             id="custom-view"
+             ng-model="data.clusterType"
+             ng-disabled="editConfigurationDisabled"
+             value="NONE"
+             ng-change="disableLocalCluster()"
+             class="visibilityCheckbox">
+      <label for="custom-view">{{'views.custom' | translate}}</label>
+    </div>
+  </div>
+  <div class="panel-body edit-view-custom-wrap">
+    <form name="propertiesForm" class="form-horizontal property-form"  novalidate>
+      <fieldset>
+        <div class="form-group" ng-hide="isConfigurationEmpty" ng-repeat="property in configurationMeta | filter:{clusterConfig:true}" ng-class="{'has-error' : (!editConfigurationDisabled && (data.clusterType == 'NONE') && ((property.required && propertiesForm[property.name].$error.required && !editConfigurationDisabled) || propertiesForm[property.name].validationError))}">
+          <label for="" class="control-label col-sm-3" ng-class="{'not-required': !property.required}">{{property.label || property.displayName}}{{property.required ? '*' : ''}}</label>
+          <div ng-switch="property.type">
+            <div class="col-sm-9 checkbox" ng-switch-when="boolean">
+              <input type="checkbox" class="propertie-input" ng-disabled="(data.clusterType != 'NONE') || editConfigurationDisabled" name="{{property.name}}" ng-model="configuration[property.name]" ng-true-value="true" ng-false-value="false" popover="{{property.description}}" popover-title="{{property.name}}" popover-trigger="mouseenter">
+            </div>
+            <div class="col-sm-9" ng-switch-default>
+              <input type="{{property.masked ? 'password' : 'text'}}" class="form-control propertie-input" ng-required="property.required && (data.clusterType == 'NONE')" ng-change="propertiesForm[property.name].validationError=''" ng-disabled="(data.clusterType != 'NONE') || editConfigurationDisabled" name="{{property.name}}" ng-model="configuration[property.name]" popover="{{property.description}}" popover-title="{{property.name}}" popover-trigger="mouseenter" placeholder="{{property.placeholder}}">
+              <div class="alert alert-danger no-margin-bottom top-margin" ng-show="property.required && propertiesForm[property.name].$error.required && !editConfigurationDisabled && (data.clusterType == 'NONE')">
+                {{'common.alerts.fieldIsRequired' | translate}}
+              </div>
+              <div class="alert alert-danger no-margin-bottom top-margin" ng-show="property.required && propertiesForm[property.name].validationError && !editConfigurationDisabled && (data.clusterType == 'NONE')">
+                {{propertiesForm[property.name].validationMessage}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-hide="editConfigurationDisabled">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary pull-right left-margin propertie-save" ng-click="saveConfiguration()">{{'common.controls.save' | translate}}</button>
+            <button class="btn btn-default pull-right propertie-cancel" ng-click="cancelConfiguration()">{{'common.controls.cancel' | translate}}</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <div ng-show="isConfigurationEmpty && !clusterConfigurable">
+      <div class="alert alert-info">{{'views.alerts.notDefined' | translate:{term: constants.props} }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default views-permissions-panel" style="">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">{{'views.permissions' | translate}}</h3>
+  </div>
+  <div class="panel-body">
+
+
+    <table class="table" ng-show="!isPermissionsEmpty">
+      <thead>
+      <tr>
+        <th class="col-sm-2"><label>{{'views.permission' | translate}}</label></th>
+        <th><label>{{'views.grantUsers' | translate}}</label></th>
+        <th><label>{{'views.grantGroups' | translate}}</label></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="permission in permissions">
+        <td>
+          <label class="" tooltip="{{permission.PermissionInfo.permission_name}}">{{permission.PermissionInfo.permission_name | translate}}</label>
+        </td>
+        <td>
+          <editable-list items-source="permissionsEdit[permission.PermissionInfo.permission_name].USER" editable="true" resource-type="User"></editable-list>
+        </td>
+        <td>
+          <editable-list items-source="permissionsEdit[permission.PermissionInfo.permission_name].GROUP" editable="true" resource-type="Group" ></editable-list>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="cluster-inherited-permission">
+      <strong>{{'views.clusterPermissions.label' | translate}}</strong>
+    </div>
+    <div ng-show="!isPermissionsEmpty && (data.clusterType == 'LOCAL_AMBARI') && editConfigurationDisabled">
+      <div class="col-sm-12">
+        <span translate="views.clusterPermissions.infoMessage" translate-values="{cluster: cluster.name}"></span>
+      </div>
+      <div class="col-sm-10">
+        <div class="checkbox col-sm-12" ng-repeat="key in permissionRoles">
+          <div ng-init="i18nKey = 'views.clusterPermissions.' + key.split('.').join('').toLowerCase()">
+            <input ng-attr-id="{{i18nKey}}" type="checkbox" class="form-control" ng-model="permissionsEdit['VIEW.USER']['ROLE'][key]">
+            <label ng-attr-for="{{i18nKey}}">{{i18nKey | translate}}</label>
+          </div>
+        </div>
+        <a href ng-click="checkAllRoles()">{{'common.controls.checkAll' | translate}}</a> | <a href ng-click="clearAllRoles()">{{'common.controls.clearAll' | translate}}</a>
+      </div>
+    </div>
+    <div ng-show="data.clusterType != 'LOCAL_AMBARI'" class="alert alert-info">
+      <span translate="views.clusterPermissions.nonLocalClusterMessage"></span>
+    </div>
+    <div ng-show="isPermissionsEmpty">
+      <div class="alert alert-info">{{'views.alerts.notDefined' | translate:{term: constants.perms} }}</div>
+    </div>
+  </div>
+</div>

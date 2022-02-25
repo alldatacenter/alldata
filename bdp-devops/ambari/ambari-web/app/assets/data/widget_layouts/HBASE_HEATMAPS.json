@@ -1,0 +1,35 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/users/admin/activeWidgetLayouts?WidgetLayoutInfo/section_name=HBASE_HEATMAPS",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widget_layouts/17",
+      "WidgetLayoutInfo" : {
+        "cluster_name" : "c1",
+        "display_name" : "HBase Heatmaps",
+        "id" : 17,
+        "layout_name" : "admin_hbase_heatmap",
+        "scope" : "USER",
+        "section_name" : "HBASE_HEATMAPS",
+        "user_name" : "admin",
+        "widgets" : [
+          {
+            "WidgetInfo" : {
+              "id" : 29,
+              "metrics" : "[{\"name\":\"Hadoop:service\\u003dHBase,name\\u003dRegionServer,sub\\u003dServer.compactionQueueLength\",\"metric_path\":\"metrics/hbase/regionserver/compactionQueueSize\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author" : "ambari",
+              "description" : "",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"\",\"max_limit\":\"10\"}",
+              "widget_name" : "HBase Compaction Queue Size",
+              "widget_type" : "HEATMAP",
+              "time_created" : 1429906622306,
+              "display_name" : "HBase Compaction Queue Size",
+              "values" : "[{\"name\":\"HBase Compaction Queue Size\",\"value\":\"${Hadoop:service\\u003dHBase,name\\u003dRegionServer,sub\\u003dServer.compactionQueueLength} \"}]",
+              "cluster_name" : "c1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

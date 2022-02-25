@@ -1,0 +1,158 @@
+{{!
+* Licensed to the Apache Software  Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="queue-acl-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div id="collapseQueueAclPanelBtn" href="#collapsibleQueueAclPanel" data-toggle="collapse" {{bind-attr class=":panel-title :collapsible-panel-btn view.isAclPanelCollapsed:collapsed"}}>
+        Access Control List
+        {{#if isAnyAccessControlListDirty}}
+          {{warning-info class="yellow-warning" tooltip="Need refresh queues / restart RM"}}
+        {{/if}}
+        <a class="pull-right"><i {{bind-attr class=":fa view.isAclPanelCollapsed:fa-plus:fa-minus"}}></i></a>
+      </div>
+    </div>
+    <div id="collapsibleQueueAclPanel" {{bind-attr class=":panel-collapse :collapse view.isAclPanelCollapsed::in"}}>
+      <div class="panel-body">
+        {{#unless isRangerEnabledForYarn}}
+          {{#if isOperator}}
+            <div class="row form-group">
+              {{tooltip-label
+                class="col-sm-4 col-md-4 control-label"
+                label='Administer Queue'
+                message='The access control list of users and groups that have authorization to perform administrative functions on this queue.'
+              }}
+              <div class="col-md-6 col-sm-6 control-value">
+                <div class="btn-group btn-group-xs" data-toggle="buttons">
+                  {{radio-button label="Anyone" selectionBinding="acl_administer_queue" value="*"}}
+                  {{radio-button label="Custom" selectionBinding="acl_administer_queue" value="custom"}}
+                </div>
+                {{#if queueDirtyFields.acl_administer_queue}}
+                <div class="btn-group btn-group-xs">
+                  <a {{action 'rollbackProp' 'acl_administer_queue' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                </div>
+                {{/if}}
+              </div>
+            </div>
+            {{#unless aaq_anyone}}
+              {{user-group-input ug=content.acl_administer_queue disabled=aaq_anyone}}
+            {{/unless}}
+            <div class="form-group row">
+              {{tooltip-label
+                tagName='small'
+                class="col-sm-4 col-md-4 control-label"
+                label='Effective Administraters'
+                message='The effective permissions to perform administrative functions on this queue.'
+              }}
+              <div class="col-md-6 col-sm-6 control-value">
+                <label>{{escapeACL aaq_effective_permission}}</label>
+              </div>
+           </div>
+           <hr/>
+           <div class="row form-group">
+             {{tooltip-label
+               class="col-sm-4 col-md-4 control-label"
+               label='Submit Applications'
+               message='The access control list of users and groups that have authorization to submit applications to this queue.'
+             }}
+             <div class="col-sm-6 col-md-6 control-value">
+               <div class="btn-group btn-group-xs" data-toggle="buttons">
+                 {{radio-button label="Anyone" selectionBinding="acl_submit_applications" value="*"}}
+                 {{radio-button label="Custom" selectionBinding="acl_submit_applications" value="custom"}}
+               </div>
+               {{#if queueDirtyFields.acl_submit_applications}}
+               <div class="btn-group btn-group-xs" >
+                   <a {{action 'rollbackProp' 'acl_submit_applications' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+               </div>
+               {{/if}}
+             </div>
+           </div>
+           {{#unless asa_anyone}}
+             {{user-group-input ug=content.acl_submit_applications disabled=asa_anyone}}
+           {{/unless}}
+           <div class="form-group row">
+              {{tooltip-label
+                tagName='small'
+                class="col-md-4 col-sm-4 control-label"
+                label='Effective Users'
+                message='The effective permissions to submit applications to this queue.'
+              }}
+              <div class="col-sm-6 col-md-6 control-value">
+                <label>{{escapeACL asa_effective_permission}}</label>
+              </div>
+           </div>
+          {{else}}
+            <div class="form-group row">
+              {{tooltip-label
+                class="col-sm-4 col-md-4 control-label"
+                label='Administer Queue'
+                message='The access control list of users and groups that have authorization to perform administrative functions on this queue.'
+              }}
+              <div class="col-sm-6 col-md-6 control-value">
+               <p class="form-control-static">
+                {{escapeACL content.acl_administer_queue}}
+               </p>
+              </div>
+            </div>
+            <div class="form-group row">
+               {{tooltip-label
+                 tagName='small'
+                 class="col-sm-4 col-md-4 control-label"
+                 label='Effective Administraters'
+                 message='The effective permissions to perform administrative functions on this queue.'
+               }}
+               <div class="col-sm-6 col-md-6 control-value">
+                 <p class="form-control-static">
+                   {{escapeACL aaq_effective_permission}}
+                 </p>
+               </div>
+            </div>
+            <hr/>
+            <div class="form-group row">
+              {{tooltip-label
+                class="col-sm-4 col-md-4 control-label"
+                label='Submit Applications'
+                message='The access control list of users and groups that have authorization to submit applications to this queue.'
+              }}
+              <div class="col-sm-6 col-md-6 control-value">
+               <p class="form-control-static">
+                {{escapeACL content.acl_submit_applications}}
+               </p>
+              </div>
+            </div>
+            <div class="form-group row">
+               {{tooltip-label
+                 tagName='small'
+                 class="col-sm-4 col-md-4 control-label"
+                 label='Effective Users'
+                 message='The effective permissions to submit applications to this queue.'
+               }}
+               <div class="col-sm-6 col-md-6 control-valu">
+                 <p class="form-control-static">
+                   {{escapeACL asa_effective_permission}}
+                 </p>
+               </div>
+            </div>
+          {{/if}}
+        {{else}}
+          <div>Permissions are managed by Ranger</div>
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+</div>

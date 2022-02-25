@@ -1,0 +1,328 @@
+
+{
+  "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/stackServices/KERBEROS/configurations?fields=*",
+  "items" : [
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/admin_server_host",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "\n      The IP address or FQDN of the administrative Kerberos server, optionally a port number may be\n      provided\n    ",
+        "property_name" : "admin_server_host",
+        "property_type" : [ ],
+        "property_value" : "",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/conf_dir",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "The kadm.acl configuration directory",
+        "property_name" : "conf_dir",
+        "property_type" : [ ],
+        "property_value" : "/var/kerberos/krb5kdc",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "kadm5-acl.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/conf_dir",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "The kdc.conf configuration directory",
+        "property_name" : "conf_dir",
+        "property_type" : [ ],
+        "property_value" : "/var/kerberos/krb5kdc",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "kdc-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/conf_dir",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "The krb5.conf configuration directory",
+        "property_name" : "conf_dir",
+        "property_type" : [ ],
+        "property_value" : "/etc",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/content",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "The jinja template for the kadm5.acl file",
+        "property_name" : "content",
+        "property_type" : [ ],
+        "property_value" : "\n      */admin@{{realm}}\t*\n\n      {# Append additional realm declarations should be placed below #}\n    ",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "kadm5-acl.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/content",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "The jinja template for the kdc.conf file",
+        "property_name" : "content",
+        "property_type" : [ ],
+        "property_value" : "\n      [kdcdefaults]\n        kdc_ports = {{kdcdefaults_kdc_ports}}\n        kdc_tcp_ports = {{kdcdefaults_kdc_tcp_ports}}\n\n      [realms]\n        {{realm}} = {\n          acl_file = {{kadm5_acl_path}}\n          dict_file = /usr/share/dict/words\n          admin_keytab = {{kadm5_acl_dir}}/kadm5.keytab\n          supported_enctypes = {{libdefaults_default_tgs_enctypes}}\n      }\n\n      {# Append additional realm declarations should be placed below #}\n    ",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "kdc-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/content",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "The jinja template for the krb5.conf file",
+        "property_name" : "content",
+        "property_type" : [ ],
+        "property_value" : "\n[libdefaults]\n  renew_lifetime = 7d\n  forwardable = true\n  default_realm = {{realm}}\n  ticket_lifetime = 24h\n  dns_lookup_realm = false\n  dns_lookup_kdc = false\n  #default_tgs_enctypes = {{encryption_types}}\n  #default_tkt_enctypes = {{encryption_types}}\n{% if domains %}\n[domain_realm]\n{%- for domain in domains.split(',') %}\n  {{domain|trim()}} = {{realm}}\n{%- endfor %}\n{% endif %}\n[logging]\n  default = FILE:/var/log/krb5kdc.log\n  admin_server = FILE:/var/log/kadmind.log\n  kdc = FILE:/var/log/krb5kdc.log\n\n[realms]\n  {{realm}} = {\n{%- if kdc_hosts > 0 -%}\n{%- set kdc_host_list = kdc_hosts.split(',')  -%}\n{%- if kdc_host_list and kdc_host_list|length > 0 %}\n    admin_server = {{admin_server_host|default(kdc_host_list[0]|trim(), True)}}\n{%- if kdc_host_list -%}\n{% for kdc_host in kdc_host_list %}\n    kdc = {{kdc_host|trim()}}\n{%- endfor -%}\n{% endif %}\n{%- endif %}\n{%- endif %}\n  }\n\n{# Append additional realm declarations below #}\n    ",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/domains",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "\n      A comma-delimited list of domain names that the realm serves (optional)\n    ",
+        "property_name" : "domains",
+        "property_type" : [ ],
+        "property_value" : "",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/kdc_hosts",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "\n            A comma-delimited list of IP addresses or FQDNs declaring the KDC hosts. Optionally a port number may be included in each entry by separating each host and port by a colon (:). Example:  kdc1.example.com:88, kdc2.example.com:88\n    ",
+        "property_name" : "kdc_hosts",
+        "property_type" : [ ],
+        "property_value" : "",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/kdc_type",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "\n      The type of KDC being used. Either mit-kdc or active-directory\n    ",
+        "property_name" : "kdc_type",
+        "property_type" : [ ],
+        "property_value" : "mit-kdc",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "kerberos-env.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/kdcdefaults_kdc_ports",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "kdcdefaults_kdc_ports",
+        "property_type" : [ ],
+        "property_value" : "88",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "kdc-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/kdcdefaults_kdc_tcp_ports",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "kdcdefaults_kdc_tcp_ports",
+        "property_type" : [ ],
+        "property_value" : "88",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "kdc-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/libdefaults_default_tgs_enctypes",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "\n      a space-delimited list of session key encryption types supported by the KDC or Active\n      Directory\n    ",
+        "property_name" : "libdefaults_default_tgs_enctypes",
+        "property_type" : [ ],
+        "property_value" : "\n      aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 des3-cbc-sha1 arcfour-hmac-md5\n      camellia256-cts-cmac camellia128-cts-cmac des-cbc-crc des-cbc-md5 des-cbc-md4\n    ",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/libdefaults_default_tkt_enctypes",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "\n      a space-delimited list of session key encryption types supported by the KDC or Active\n      Directory\n    ",
+        "property_name" : "libdefaults_default_tkt_enctypes",
+        "property_type" : [ ],
+        "property_value" : "\n      aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 des3-cbc-sha1 arcfour-hmac-md5\n      camellia256-cts-cmac camellia128-cts-cmac des-cbc-crc des-cbc-md5 des-cbc-md4\n    ",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/libdefaults_dns_lookup_kdc",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "libdefaults_dns_lookup_kdc",
+        "property_type" : [ ],
+        "property_value" : "false",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/libdefaults_dns_lookup_realm",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "libdefaults_dns_lookup_realm",
+        "property_type" : [ ],
+        "property_value" : "false",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/libdefaults_forwardable",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "libdefaults_forwardable",
+        "property_type" : [ ],
+        "property_value" : "true",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/libdefaults_renew_lifetime",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "libdefaults_renew_lifetime",
+        "property_type" : [ ],
+        "property_value" : "7d",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/libdefaults_ticket_lifetime",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "libdefaults_ticket_lifetime",
+        "property_type" : [ ],
+        "property_value" : "24h",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/logging_admin_server",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "logging_admin_server",
+        "property_type" : [ ],
+        "property_value" : "FILE:/var/log/kadmind.log",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/logging_default",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "logging_default",
+        "property_type" : [ ],
+        "property_value" : "FILE:/var/log/krb5libs.log",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/logging_kdc",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : null,
+        "property_name" : "logging_kdc",
+        "property_type" : [ ],
+        "property_value" : "FILE:/var/log/krb5kdc.log",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    },
+    {
+      "href" : "http://c6403.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.2/services/KERBEROS/configurations/realm",
+      "StackConfigurations" : {
+        "final" : "false",
+        "property_description" : "\n      The realm to use when creating service principals\n    ",
+        "property_name" : "realm",
+        "property_type" : [ ],
+        "property_value" : "",
+        "service_name" : "KERBEROS",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "type" : "krb5-conf.xml"
+      }
+    }
+  ]
+}

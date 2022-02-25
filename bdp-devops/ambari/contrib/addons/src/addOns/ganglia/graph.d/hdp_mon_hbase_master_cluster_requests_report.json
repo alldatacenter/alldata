@@ -1,0 +1,10 @@
+{
+   "report_name" : "hbase_master_cluster_requests_report",
+   "report_type" : "standard",
+   "title" : "Cluster Requests",
+   "vertical_label" : "Request count",
+   "series" : [
+      { "metric": "hbase.master.cluster_requests", "color": "ff0000", "label": "Cluster Requests", 
+        "line_width": "2", "type": "line" }
+   ]
+}

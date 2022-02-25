@@ -1,0 +1,134 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{! #with view.categoryConfigProperty}}
+  <form class="form-horizontal mbm" autocomplete="off">
+      <div class="override-controls">
+        <div class="alert alert-info">{{view.parentView.dialogMessage}}</div>
+        {{#if view.parentView.warningMessage}}
+          <div class="text-warning">
+            {{view.parentView.warningMessage}}
+          </div>
+        {{/if}}
+
+        <div class="row">
+          <div class="col-md-6 selected-hosts-link">
+            <a href="#" {{action toggleShowSelectedHosts target="view" }}>{{view.hostSelectMessage}}</a>
+            {{#if view.showOnlySelectedHosts}}
+              <i class='glyphicon glyphicon-ok-sign'></i>
+            {{/if}}
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-7" id="filter-dropdown-div">
+              <!-- Filter text box with drop-down -->
+              <div class="input-group">
+                {{view Ember.TextField valueBinding="view.filterText" id="appendedDropdownButton"
+                       placeholderBinding="view.filterTextPlaceholder" classNames="form-control" disabledBinding="view.isDisabled"}}
+                <div class="input-group-btn">
+                  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" {{bindAttr disabled="view.isDisabled"}}>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    {{#each column in view.filterColumns}}
+                      <li>
+                        <a href="#" {{action selectFilterColumn column target="view"}}>
+                          {{#if column.selected}}
+                            <i class='glyphicon glyphicon-ok-sign'></i>
+                          {{else}}
+                            <i class='glyphicon glyphicon-placeholder'></i>
+                          {{/if}}
+                          {{column.name}}
+                        </a>
+                      </li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5" id="component-dropdown-div">
+              <!-- Host-components drop-down -->
+              <div>
+                <button class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" href="#" {{bindAttr disabled="view.isDisabled"}}>
+                  {{t common.components}}
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- dropdown menu links -->
+                  {{#each component in view.filterComponents}}
+                    <li>
+                      <a href="#" {{action selectFilterComponent component target="view"}}>
+                        {{#if component.selected}}
+                          <i class='glyphicon glyphicon-ok-sign'></i>
+                        {{else}}
+                          <i class='glyphicon glyphicon-placeholder'></i>
+                        {{/if}}
+                        {{component.displayName}}
+                      </a>
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>
+                {{view App.CheckboxView checkedBinding="view.allHostsSelected" disabledBinding="view.isDisabled"}}
+              </th>
+              <th>{{t common.host}}</th>
+              <th>{{view.filterColumn.name}}</th>
+            </tr>
+          </thead>
+         </table>
+        <div class="hosts-table-container">
+          <table class="table table-hover">
+            <tbody>
+              {{#each entry in view.pageContent}}
+                <tr {{bindAttr class="entry.filtered::hidden entry.selected:active"}}>
+                  <td>
+                    {{view App.CheckboxView checkedBinding="entry.selected"}}
+                  </td>
+                  <td>
+                    {{entry.host.hostName}}
+                  </td>
+                  <td>
+                    {{entry.filterColumnValue}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+         </table>
+        </div>
+        {{#if view.isPaginate}}
+          <table class="table table-hover">
+            <tfoot>
+              <tr>
+                <td>
+                  {{view App.PaginationView}}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        {{/if}}
+      </div>
+  </form>
+
+{{! /with}}

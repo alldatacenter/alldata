@@ -1,0 +1,52 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.lastComponent}}
+  <div class="alert alert-danger">
+    <div class="row row-no-pad">
+      <div class="col-md-1 checkbox-colored-background">{{view App.CheckboxView checkedBinding="view.parentView.isChecked"}}</div>
+      <div class="col-md-11">{{{view.lastComponentError}}}</div>
+    </div>
+  </div>
+{{/if}}
+{{#if view.anyHostsWithoutComponent}}
+  {{#if view.fromServiceSummary}}
+    <div>{{view.selectHostMsg}}</div>
+    <div class="row">
+      <div class="col-md-12">
+        {{view Ember.Select contentBinding="view.hostsWithoutComponent" selectionBinding="view.selectedHost" classNames="form-control"}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if controller.isReconfigureRequired}}
+    {{#if controller.isConfigsLoadingInProgress}}
+      {{view App.SpinnerView}}
+    {{else}}
+      {{view.commonMessage}}
+      {{#if controller.hasPropertiesToChange}}
+        {{view App.DependentConfigsListView isAfterRecommendation=false recommendationsBinding="controller.recommendedPropertiesToChange" requiredChangesBinding="controller.requiredPropertiesToChange"}}
+      {{/if}}
+      {{{view.manualKerberosWarning}}}
+    {{/if}}
+  {{else}}
+    <div>{{view.commonMessage}}</div>
+    <div>{{{view.manualKerberosWarning}}}</div>
+  {{/if}}
+{{else}}
+  {{view.thereIsNoHostsMsg}}
+{{/if}}

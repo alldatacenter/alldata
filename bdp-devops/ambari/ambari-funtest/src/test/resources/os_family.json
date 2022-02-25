@@ -1,0 +1,45 @@
+{
+  "redhat": {
+    "distro": [
+      "redhat",
+      "fedora",
+      "centos",
+      "oraclelinux"
+    ],
+    "versions": [
+      5,
+      6
+    ]
+  },
+  "ubuntu": {
+    "distro": [
+      "ubuntu",
+      "debian"
+    ],
+    "versions": [
+      12
+    ]
+  },
+  "suse": {
+    "distro": [
+      "sles",
+      "sled",
+      "opensuse",
+      "suse"
+    ],
+    "versions": [
+      11
+    ]
+  },
+  "winsrv": {
+    "distro": [
+      "win2008server",
+      "win2008serverr2",
+      "win2012server",
+      "win2012serverr2"
+    ],
+    "versions": [
+      6
+    ]
+  }
+}

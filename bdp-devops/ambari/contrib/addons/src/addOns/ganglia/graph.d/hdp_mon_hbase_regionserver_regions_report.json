@@ -1,0 +1,10 @@
+{
+   "report_name" : "hbase_regionserver_regions_report",
+   "report_type" : "standard",
+   "title" : "Total Cluster Regions",
+   "vertical_label" : "Region count",
+   "series" : [
+      { "metric": "hbase.regionserver.regions", "color": "ff0000", "label": "Regions", 
+        "line_width": "2", "type": "line" }
+   ]
+}

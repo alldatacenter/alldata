@@ -1,0 +1,66 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div id="deploy-summary" class="wizard-content col-md-9">
+  <h4 class="step-title">{{t installer.step10.header}}</h4>
+  {{#if view.serviceRestartText}}
+    <div id="step10-alert-message" class="alert alert-danger">
+      {{{view.serviceRestartText}}}
+    </div>
+  {{/if}}
+  <p class="step-description">
+    {{t installer.step10.body}}
+  </p>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div id="step10-content" class="well pre-scrollable" {{QAAttr "summary"}}>
+        <ul>
+          {{#each item in clusterInfo}}
+            <li>
+              <span {{bindAttr class="item.color"}}>{{item.displayStatement}}</span>
+              <ul>
+                {{#each status in item.status}}
+                  <li>
+                    <span {{bindAttr class="status.color"}}>{{status.displayStatement}}</span>
+                    <ul>
+                      {{#each statement in status.statements}}
+                        <li>
+                          <span {{bindAttr class="status.color"}}>{{statement.displayStatement}}</span>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </li>
+                {{/each}}
+              </ul>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    <button type="button" {{QAAttr "wizard-next"}} class="btn btn-success pull-right" {{bindAttr disabled="App.router.btnClickInProgress"}} {{action complete}}>
+      {{#if App.router.nextBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+      {{/if}}
+      {{t common.complete}} &rarr;
+    </button>
+  </div>
+</div>

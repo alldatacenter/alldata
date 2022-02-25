@@ -1,0 +1,66 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="Ambari.SCOM.AmbariEntity" Accessibility="Public" Base="System!System.LogicalEntity" Hosted="false" Abstract="true" Singleton="false" />
+        <ClassType ID="Ambari.SCOM.AmbariManagedEntity" Accessibility="Public" Base="Ambari.SCOM.AmbariEntity" Hosted="false" Abstract="true" Singleton="false">
+          <Property ID="AmbariUri" Type="string" />
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+
+  <!--<Categories>
+    <Category ID="Ambari.SCOM.AmbariManagedEntity.16x16Image.Category" Target="Ambari.SCOM.AmbariManagedEntity.16x16Image" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+    <Category ID="Ambari.SCOM.AmbariManagedEntity.80x80Image.Category" Target="Ambari.SCOM.AmbariManagedEntity.80x80Image" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+  </Categories>
+
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="Ambari.SCOM.AmbariManagedEntity" ImageID="Ambari.SCOM.AmbariManagedEntity.16x16Image" />
+      <ImageReference ElementID="Ambari.SCOM.AmbariManagedEntity" ImageID="Ambari.SCOM.AmbariManagedEntity.80x80Image" />
+    </ImageReferences>
+  </Presentation>-->
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.AmbariEntity">
+          <Name>Ambari Entity</Name>
+          <Description>This class represents any Ambari Service entity.</Description>
+        </DisplayString>
+        
+        <DisplayString ElementID="Ambari.SCOM.AmbariManagedEntity">
+          <Name>Ambari Managed Entity</Name>
+          <Description>This class represents entity managed by Ambari Service.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.AmbariManagedEntity" SubElementID="AmbariUri">
+          <Name>Ambari URI</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+
+  <!--
+  <Resources>
+    <Image ID="Ambari.SCOM.AmbariManagedEntity.16x16Image" Accessibility="Public" FileName="Cluster-16.png" />
+    <Image ID="Ambari.SCOM.AmbariManagedEntity.80x80Image" Accessibility="Public" FileName="Cluster-80.png" />
+  </Resources>
+  -->
+</ManagementPackFragment>

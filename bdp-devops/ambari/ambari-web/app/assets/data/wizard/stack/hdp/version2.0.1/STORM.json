@@ -1,0 +1,1085 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations?fields=*&_=1389714316488",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/dev.zookeeper.path",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "dev.zookeeper.path",
+        "property_value" : "/tmp/dev-storm-zookeeper",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/drpc.childopts",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "drpc.childopts",
+        "property_value" : "-Xmx768m",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/drpc.invocations.port",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "drpc.invocations.port",
+        "property_value" : "3773",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/drpc.port",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "drpc.port",
+        "property_value" : "3772",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/drpc.queue.size",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "drpc.queue.size",
+        "property_value" : "128",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/drpc.request.timeout.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "drpc.request.timeout.secs",
+        "property_value" : "600",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/drpc.worker.threads",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "drpc.worker.threads",
+        "property_value" : "64",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/java.library.path",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "java.library.path",
+        "property_value" : "/usr/local/lib:/opt/local/lib:/usr/lib",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/logviewer.appender.name",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "logviewer.appender.name",
+        "property_value" : "A1",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/logviewer.childopts",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "logviewer.childopts",
+        "property_value" : "-Xmx128m",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/logviewer.port",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "logviewer.port",
+        "property_value" : "8000",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.childopts",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.childopts",
+        "property_value" : "-Xmx1024m",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.cleanup.inbox.freq.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.cleanup.inbox.freq.secs",
+        "property_value" : "600",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.file.copy.expiration.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.file.copy.expiration.secs",
+        "property_value" : "600",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.host",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.host",
+        "property_value" : "localhost",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.inbox.jar.expiration.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.inbox.jar.expiration.secs",
+        "property_value" : "3600",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.monitor.freq.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.monitor.freq.secs",
+        "property_value" : "10",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.reassign",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.reassign",
+        "property_value" : "true",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.supervisor.timeout.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.supervisor.timeout.secs",
+        "property_value" : "60",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.task.launch.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.task.launch.secs",
+        "property_value" : "120",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.task.timeout.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.task.timeout.secs",
+        "property_value" : "30",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.thrift.max_buffer_size",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.thrift.max_buffer_size",
+        "property_value" : "1048576",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.thrift.port",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.thrift.port",
+        "property_value" : "6627",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/nimbus.topology.validator",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "nimbus.topology.validator",
+        "property_value" : "backtype.storm.nimbus.DefaultTopologyValidator",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.cluster.mode",
+      "StackConfigurations" : {
+        "property_description" : "Can be distributed or local",
+        "property_name" : "storm.cluster.mode",
+        "property_value" : "distributed",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.local.dir",
+      "StackConfigurations" : {
+        "property_description" : "The place where jars are kept",
+        "property_name" : "storm.local.dir",
+        "property_value" : "/hadoop/storm",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.local.mode.zmq",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.local.mode.zmq",
+        "property_value" : "false",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.messaging.netty.buffer_size",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.messaging.netty.buffer_size",
+        "property_value" : "5242880",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.messaging.netty.client_worker_threads",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.messaging.netty.client_worker_threads",
+        "property_value" : "1",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.messaging.netty.max_retries",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.messaging.netty.max_retries",
+        "property_value" : "30",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.messaging.netty.max_wait_ms",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.messaging.netty.max_wait_ms",
+        "property_value" : "1000",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.messaging.netty.min_wait_ms",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.messaging.netty.min_wait_ms",
+        "property_value" : "100",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.messaging.netty.server_worker_threads",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.messaging.netty.server_worker_threads",
+        "property_value" : "1",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.messaging.transport",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.messaging.transport",
+        "property_value" : "backtype.storm.messaging.netty.Context",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.thrift.transport",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.thrift.transport",
+        "property_value" : "backtype.storm.security.auth.SimpleTransportPlugin",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.zookeeper.connection.timeout",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.zookeeper.connection.timeout",
+        "property_value" : "15000",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.zookeeper.port",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.zookeeper.port",
+        "property_value" : "2181",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.zookeeper.retry.interval",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.zookeeper.retry.interval",
+        "property_value" : "1000",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.zookeeper.retry.intervalceiling.millis",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.zookeeper.retry.intervalceiling.millis",
+        "property_value" : "30000",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.zookeeper.retry.times",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.zookeeper.retry.times",
+        "property_value" : "5",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.zookeeper.root",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.zookeeper.root",
+        "property_value" : "/storm",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.zookeeper.servers",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.zookeeper.servers",
+        "property_value" : "['localhost']",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/storm.zookeeper.session.timeout",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "storm.zookeeper.session.timeout",
+        "property_value" : "20000",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/supervisor.childopts",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "supervisor.childopts",
+        "property_value" : "-Xmx256m",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/supervisor.heartbeat.frequency.secs",
+      "StackConfigurations" : {
+        "property_description" : "How frequently the supervisor heartbeats to the cluster state (for nimbus)",
+        "property_name" : "supervisor.heartbeat.frequency.secs",
+        "property_value" : "5",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/supervisor.monitor.frequency.secs",
+      "StackConfigurations" : {
+        "property_description" : "How frequently the supervisor checks on the status of the processes it's monitoring and restarts if necessary",
+        "property_name" : "supervisor.monitor.frequency.secs",
+        "property_value" : "3",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/supervisor.slots.ports",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "supervisor.slots.ports",
+        "property_value" : "[6700, 6701, 6702, 6703]",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/supervisor.worker.start.timeout.secs",
+      "StackConfigurations" : {
+        "property_description" : "How long supervisor will wait to ensure that a worker process is started",
+        "property_name" : "supervisor.worker.start.timeout.secs",
+        "property_value" : "120",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/supervisor.worker.timeout.secs",
+      "StackConfigurations" : {
+        "property_description" : "How long between heartbeats until supervisor considers that worker dead and tries to restart it",
+        "property_name" : "supervisor.worker.timeout.secs",
+        "property_value" : "30",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/task.heartbeat.frequency.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "task.heartbeat.frequency.secs",
+        "property_value" : "3",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/task.refresh.poll.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "task.refresh.poll.secs",
+        "property_value" : "10",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.acker.executors",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.acker.executors",
+        "property_value" : "null",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.builtin.metrics.bucket.size.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.builtin.metrics.bucket.size.secs",
+        "property_value" : "60",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.debug",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.debug",
+        "property_value" : "false",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.disruptor.wait.strategy",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.disruptor.wait.strategy",
+        "property_value" : "com.lmax.disruptor.BlockingWaitStrategy",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.enable.message.timeouts",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.enable.message.timeouts",
+        "property_value" : "true",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.error.throttle.interval.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.error.throttle.interval.secs",
+        "property_value" : "10",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.executor.receive.buffer.size",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.executor.receive.buffer.size",
+        "property_value" : "1024",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.executor.send.buffer.size",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.executor.send.buffer.size",
+        "property_value" : "1024",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.fall.back.on.java.serialization",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.fall.back.on.java.serialization",
+        "property_value" : "true",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.kryo.factory",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.kryo.factory",
+        "property_value" : "backtype.storm.serialization.DefaultKryoFactory",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.max.error.report.per.interval",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.max.error.report.per.interval",
+        "property_value" : "5",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.max.spout.pending",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.max.spout.pending",
+        "property_value" : "null",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.max.task.parallelism",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.max.task.parallelism",
+        "property_value" : "null",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.message.timeout.secs",
+      "StackConfigurations" : {
+        "property_description" : "Maximum amount of time a message has to complete before it's considered failed",
+        "property_name" : "topology.message.timeout.secs",
+        "property_value" : "30",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.optimize",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.optimize",
+        "property_value" : "true",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.receiver.buffer.size",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.receiver.buffer.size",
+        "property_value" : "8",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.receiver.buffer.size",
+      "StackConfigurations" : {
+        "property_description" : "Setting it too high causes a lot of problems (heartbeat thread gets starved, throughput plummets)",
+        "property_name" : "topology.receiver.buffer.size",
+        "property_value" : "8",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.skip.missing.kryo.registrations",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.skip.missing.kryo.registrations",
+        "property_value" : "false",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.sleep.spout.wait.strategy.time.ms",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.sleep.spout.wait.strategy.time.ms",
+        "property_value" : "1",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.spout.wait.strategy",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.spout.wait.strategy",
+        "property_value" : "backtype.storm.spout.SleepSpoutWaitStrategy",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.state.synchronization.timeout.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.state.synchronization.timeout.secs",
+        "property_value" : "60",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.stats.sample.rate",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.stats.sample.rate",
+        "property_value" : "0.05",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.tick.tuple.freq.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.tick.tuple.freq.secs",
+        "property_value" : "null",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.transfer.buffer.size",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.transfer.buffer.size",
+        "property_value" : "1024",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.trident.batch.emit.interval.millis",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.trident.batch.emit.interval.millis",
+        "property_value" : "500",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.tuple.serializer",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.tuple.serializer",
+        "property_value" : "backtype.storm.serialization.types.ListDelegateSerializer",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.worker.childopts",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.worker.childopts",
+        "property_value" : "null",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.worker.shared.thread.pool.size",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.worker.shared.thread.pool.size",
+        "property_value" : "4",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/topology.workers",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "topology.workers",
+        "property_value" : "1",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/transactional.zookeeper.port",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "transactional.zookeeper.port",
+        "property_value" : "null",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/transactional.zookeeper.root",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "transactional.zookeeper.root",
+        "property_value" : "/transactional",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/transactional.zookeeper.servers",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "transactional.zookeeper.servers",
+        "property_value" : "null",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/ui.childopts",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "ui.childopts",
+        "property_value" : "-Xmx768m",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/ui.port",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "ui.port",
+        "property_value" : "8080",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/worker.childopts",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "worker.childopts",
+        "property_value" : "-Xmx768m",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/worker.heartbeat.frequency.secs",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "worker.heartbeat.frequency.secs",
+        "property_value" : "1",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/zmq.hwm",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "zmq.hwm",
+        "property_value" : "0",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/zmq.linger.millis",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "zmq.linger.millis",
+        "property_value" : "5000",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks2/HDP/versions/2.0.8/stackServices/STORM/configurations/zmq.threads",
+      "StackConfigurations" : {
+        "property_description" : "",
+        "property_name" : "zmq.threads",
+        "property_value" : "1",
+        "service_name" : "STORM",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.8",
+        "type" : "storm-site.xml"
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<form class="form-horizontal add-property-window" autocomplete="off">
+  <div class="each-row form-group">
+    <label class="control-label col-md-2">{{t common.type}}</label>
+
+    <div class="col-md-5">
+      <input class="form-control" type="text" disabled {{bindAttr value="view.fileName"}}/>
+    </div>
+    <div class="col-md-5">
+      <div class="btn-group add-mode pull-right" {{action toggleBulkMode target="view" }}>
+        <a href="#"
+          {{bindAttr class=":btn :btn-default view.serviceConfigObj.isBulkMode::active"}}
+          {{translateAttr title="services.service.config.addPropertyWindow.singleMode" }}
+           data-toggle="tooltip"><i class="glyphicon glyphicon-tag"></i></a>
+        <a href="#"
+          {{bindAttr class=":btn :btn-default view.serviceConfigObj.isBulkMode:active"}}
+          {{translateAttr data-original-title="services.service.config.addPropertyWindow.bulkMode" }}
+           data-toggle="tooltip"><i class="glyphicon glyphicon-tags"></i></a>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  {{#if view.serviceConfigObj.isBulkMode}}
+    <div {{bindAttr class="view.serviceConfigObj.bulkConfigError:has-error :each-row :form-group"}}>
+      <label class="control-label col-md-2">
+        {{t services.service.config.addPropertyWindow.properties}}
+        <br>
+        <small>{{t services.service.config.addPropertyWindow.propertiesHelper}}</small>
+      </label>
+
+      <div class="col-md-10">
+        {{view Ember.TextArea
+        valueBinding="view.serviceConfigObj.bulkConfigValue" rows="4"
+        classNames="input-block-level form-control"
+        placeholderTranslation="services.service.config.addPropertyWindow.propertiesPlaceholder"
+        }}
+        <span class="help-block validation-block">{{{view.serviceConfigObj.bulkConfigErrorMessage}}}</span>
+      </div>
+    </div>
+  {{else}}
+    <div {{bindAttr class="view.serviceConfigObj.isKeyError:has-error :each-row :form-group"}}>
+      <label class="control-label col-md-2">{{t common.key}}</label>
+      <div class="col-md-10">
+        {{view Ember.TextField valueBinding="view.serviceConfigObj.name" class="input-block-level form-control"}}
+
+        {{#if view.serviceConfigObj.isKeyError}}
+          <span class="help-block validation-block">
+            {{view.serviceConfigObj.errorMessage}}
+          </span>
+        {{else}}
+          {{#if view.serviceConfigObj.isKeyWarning}}
+            <span class="has-warning">
+              <span class="help-block validation-block">
+                {{view.serviceConfigObj.warningMessage}}
+              </span>
+            </span>
+          {{/if}}
+        {{/if}}
+
+        {{#if view.serviceConfigObj.showFilterLink}}
+          {{#if view.notMisc}}
+          <a href="#" class="btn-padding" {{action filterByKey target="view" }}>
+            {{t services.service.config.addPropertyWindow.filterKeyLink}}
+          </a>
+            {{/if}}
+        {{/if}}
+      </div>
+    </div>
+    <div class="each-row form-group">
+      <label class="control-label col-md-2">{{t common.value}}</label>
+
+      <div class="col-md-10">
+        {{view Ember.TextArea valueBinding="view.serviceConfigObj.value" rows="4" classNames="input-block-level form-control"}}
+      </div>
+    </div>
+    <div class="each-row form-group">
+      <label class="control-label col-md-2">{{t common.propertyType}}</label>
+
+      <div class="col-md-10">
+        {{view Em.Select
+            classNames="input-block-level form-control"
+            multiple="multiple"
+            contentBinding="view.serviceConfigObj.content"
+            selectionBinding="view.serviceConfigObj.propertyType"
+        }}
+      </div>
+    </div>
+  {{/if}}
+</form>

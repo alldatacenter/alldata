@@ -1,0 +1,210 @@
+{
+  "AMBARI": {
+    "service": [
+    ],
+    "AMBARI_SERVER" : [
+      {
+        "name": "ambari_server_agent_heartbeat",
+        "label": "Ambari Agent Heartbeat",
+        "description": "This alert is triggered if the server has lost contact with an agent.",
+        "interval": 2,
+        "help_url": "https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Alerts#AmbariAlerts-ambari_agent_heartbeat",
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SERVER",
+          "class": "org.apache.ambari.server.alerts.AgentHeartbeatAlertRunnable"
+        }
+      },
+      {
+        "name": "ambari_server_stale_alerts",
+        "label": "Ambari Server Alerts",
+        "description": "This alert is triggered if the server detects that there are alerts which have not run in a timely manner.",
+        "interval": 5,
+        "scope": "SERVICE",
+        "enabled": true,
+        "source": {
+          "type": "SERVER",
+          "class": "org.apache.ambari.server.alerts.StaleAlertRunnable",
+          "parameters": [
+            {
+              "name": "stale.interval.multiplier",
+              "display_name": "Interval Multiplier",
+              "value": 2,
+              "type": "NUMERIC",
+              "description": "The number of intervals which must pass before an an alert is considered stale. This value is a multiplier for each alert's individual interval.",
+              "units": "Intervals",
+              "threshold": "CRITICAL"
+            }
+          ]
+        }
+      },
+      {
+        "name": "ambari_server_performance",
+        "label": "Ambari Server Performance",
+        "description": "This alert is triggered if the Ambari Server detects that there is a potential performance problem with Ambari. This type of issue can arise for many reasons, but is typically attributed to slow database queries and host resource exhaustion.",
+        "interval": 5,
+        "scope": "SERVICE",
+        "enabled": true,
+        "source": {
+          "type": "SERVER",
+          "class": "org.apache.ambari.server.alerts.AmbariPerformanceRunnable",
+          "parameters": [
+            {
+              "name": "request.by.status.warning.threshold",
+              "display_name": "Get Request Progress",
+              "value": 3000,
+              "type": "NUMERIC",
+              "description": "The time to find requests in progress before a warning alert is triggered.",
+              "units": "ms",
+              "threshold": "WARNING"
+            },
+            {
+              "name": "request.by.status.critical.threshold",
+              "display_name": "Get Request Progress",
+              "value": 5000,
+              "type": "NUMERIC",
+              "description": "The time to find requests in progress before a critical alert is triggered.",
+              "units": "ms",
+              "threshold": "CRITICAL"
+            },
+            {
+              "name": "task.status.aggregation.warning.threshold",
+              "display_name": "Get Request Status",
+              "value": 3000,
+              "type": "NUMERIC",
+              "description": "The time to calculate a request's status from its tasks before a warning alert is triggered.",
+              "units": "ms",
+              "threshold": "WARNING"
+            },
+            {
+              "name": "task.status.aggregation.critical.threshold",
+              "display_name": "Get Request Status",
+              "value": 5000,
+              "type": "NUMERIC",
+              "description": "The time to calculate a request's status from its tasks before a critical alert is triggered.",
+              "units": "ms",
+              "threshold": "CRITICAL"
+            },
+            {
+              "name": "rest.api.cluster.warning.threshold",
+              "display_name": "Get Cluster",
+              "value": 5000,
+              "type": "NUMERIC",
+              "description": "The time to get a cluster via the REST API before a warning alert is triggered.",
+              "units": "ms",
+              "threshold": "WARNING"
+            },
+            {
+              "name": "rest.api.cluster.critical.threshold",
+              "display_name": "Get Cluster",
+              "value": 7000,
+              "type": "NUMERIC",
+              "description": "The time to get a cluster via the REST API before a critical alert is triggered.",
+              "units": "ms",
+              "threshold": "CRITICAL"
+            }
+          ]
+        }
+      },
+      {
+        "name": "ambari_server_component_version",
+        "label": "Component Version",
+        "description": "This alert is triggered if the server detects that there is a problem with the expected and reported version of a component. The alert is suppressed automatically during an upgrade.",
+        "interval": 5,
+        "scope": "SERVICE",
+        "enabled": true,
+        "source": {
+          "type": "SERVER",
+          "class": "org.apache.ambari.server.alerts.ComponentVersionAlertRunnable"
+        }
+      }
+    ],
+    "AMBARI_AGENT" : [
+      {
+        "name": "ambari_agent_disk_usage",
+        "label": "Host Disk Usage",
+        "description": "This host-level alert is triggered if the amount of disk space used goes above specific thresholds. The default threshold values are 50% for WARNING and 80% for CRITICAL.",
+        "interval": 1,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "alert_disk_space.py",
+          "parameters": [
+            {
+              "name": "minimum.free.space",
+              "display_name": "Minimum Free Space",
+              "value": 5000000000,
+              "type": "NUMERIC",
+              "description": "The overall amount of free disk space left before an alert is triggered.",
+              "units": "bytes",
+              "threshold": "WARNING"
+            },
+            {
+              "name": "percent.used.space.warning.threshold",
+              "display_name": "Warning",
+              "value": 50,
+              "type": "PERCENT",
+              "description": "The percent of disk space consumed before a warning is triggered.",
+              "units": "%",
+              "threshold": "WARNING"
+            },
+            {
+              "name": "percent.free.space.critical.threshold",
+              "display_name": "Critical",
+              "value": 80,
+              "type": "PERCENT",
+              "description": "The percent of disk space consumed before a critical alert is triggered.",
+              "units": "%",
+              "threshold": "CRITICAL"
+            }
+          ]
+        }
+      },
+      {
+        "name": "ambari_agent_ulimit",
+        "label": "Ulimit for open files",
+        "description": "This host-level alert is triggered if value of ulimit for open files (-n) goes above specific thresholds. The default threshold values are 200000 for WARNING and 800000 for CRITICAL.",
+        "interval": 1,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "alert_ulimit.py",
+          "parameters": [
+            {
+              "name": "ulimit.warning.threshold",
+              "display_name": "Warning",
+              "value": 200000,
+              "type": "NUMERIC",
+              "description": "The threshold of ulimit for open files (-n) for WARNING alert.",
+              "threshold": "WARNING"
+            },
+            {
+              "name": "ulimit.critical.threshold",
+              "display_name": "Critical",
+              "value": 800000,
+              "type": "NUMERIC",
+              "description": "The threshold of ulimit for open files (-n) for CRITICAL alert.",
+              "threshold": "CRITICAL"
+            }
+          ]
+        }
+      },
+      {
+        "name": "ambari_agent_version_select",
+        "label": "Ambari Agent Distro/Conf Select Versions",
+        "description": "This host-level alert is triggered if the distro selector such as hdp-select cannot calculate versions available on this host. This may indicate that /usr/$stack/ directory has links/dirs that do not belong inside of it.",
+        "interval": 5,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "alert_version_select.py"
+        }
+      }
+
+    ]
+  }
+}

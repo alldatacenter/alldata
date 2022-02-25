@@ -1,0 +1,105 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions?fields=repository_versions/operatingSystems/repositories/*&repository_versions/RepositoryVersions/repository_version=2.3.6.0-3509",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3",
+      "Versions" : {
+        "stack_name" : "HDP",
+        "stack_version" : "2.3"
+      },
+      "repository_versions" : [
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3/repository_versions/15",
+          "RepositoryVersions" : {
+            "id" : 15,
+            "repository_version" : "2.3.6.0-3509",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3",
+            "type": "PATCH",
+            "release": {
+              "stack_id": "HDP-2.3",
+              "version": "2.3.6.0",
+              "build": "3509",
+              "compatible_with": "2.3.6.0-[1-9]",
+              "release_notes": "http://someurl"
+            },
+            "services": [
+              {
+                "name": "HDFS",
+                "display_name": "HDFS",
+                "versions": [
+                  {
+                    "version": "2.1.1",
+                    "version_id": "10",
+                    "components": [ "NAMENODE"]
+                  }
+                ]
+              },
+              {
+                "name": "HIVE",
+                "display_name": "Hive",
+                "versions": [
+                  {
+                    "version": "1.2.1"
+                  }
+                ]
+              },
+              {
+                "name": "ZOOKEEPER",
+                "display_name": "ZooKeeper",
+                "versions": [
+                  {
+                    "version": "3.4.5"
+                  }
+                ]
+              }
+            ]
+          },
+          "operating_systems" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3/repository_versions/15/operating_systems/redhat6",
+              "OperatingSystems" : {
+                "os_type" : "redhat6",
+                "repository_version_id" : 15,
+                "stack_name" : "HDP",
+                "stack_version" : "2.3"
+              },
+              "repositories" : [
+                {
+                  "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3/repository_versions/15/operating_systems/redhat6/repositories/HDP-2.3.6.0-3509",
+                  "Repositories" : {
+                    "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.3.6.0-3509",
+                    "default_base_url" : "",
+                    "latest_base_url" : "",
+                    "mirrors_list" : "",
+                    "os_type" : "redhat6",
+                    "repo_id" : "HDP-2.3.6.0-3509",
+                    "repo_name" : "HDP",
+                    "repository_version_id" : 15,
+                    "stack_name" : "HDP",
+                    "stack_version" : "2.3"
+                  }
+                },
+                {
+                  "href" : "http://c6401.ambari.apache.org:8080/api/v1/stacks/HDP/versions/2.3/repository_versions/15/operating_systems/redhat6/repositories/HDP-UTILS-2.3.6.0-3509",
+                  "Repositories" : {
+                    "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                    "default_base_url" : "",
+                    "latest_base_url" : "",
+                    "mirrors_list" : "",
+                    "os_type" : "redhat6",
+                    "repo_id" : "HDP-UTILS-2.3.6.0-3509",
+                    "repo_name" : "HDP-UTILS",
+                    "repository_version_id" : 15,
+                    "stack_name" : "HDP",
+                    "stack_version" : "2.3"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

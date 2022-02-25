@@ -1,0 +1,51 @@
+{
+    "roleCommand": "ACTIONEXECUTE",
+    "clusterName": "c1",
+    "hostname": "c6401.ambari.apache.org",
+    "passiveInfo": [],
+    "hostLevelParams": {
+        "jdk_location": "http://192.168.64.1:8080/resources",
+        "ambari_db_rca_password": "mapred",
+        "java_home": "/usr/jdk64/jdk1.6.0_31",
+        "ambari_db_rca_url": "jdbc:postgresql://192.168.64.1/ambarirca",
+        "stack_name": "HDP",
+        "oracle_jdbc_url": "http://192.168.64.1:8080/resources/ojdbc6.jar",
+        "stack_version": "2.1",
+        "db_name": "ambari",
+        "ambari_db_rca_driver": "org.postgresql.Driver",
+        "jdk_name": "jdk-6u31-linux-x64.bin",
+        "ambari_db_rca_username": "mapred",
+        "db_driver_filename": "mysql-connector-java.jar",
+        "mysql_jdbc_url": "http://192.168.64.1:8080/resources/mysql-connector-java.jar"
+    },
+    "commandType": "EXECUTION_COMMAND",
+    "roleParams": {
+        "script": "check_host.py",
+        "check_execute_list": "host_resolution_check",
+        "threshold": "20",
+        "hosts": "c6401.ambari.apache.org, c6402.ambari.apache.org, c6403.ambari.apache.org, foobar, !!!",
+        "command_timeout": "60",
+        "script_type": "PYTHON"
+    },
+    "serviceName": "null",
+    "role": "check_host",
+    "commandParams": {
+        "script": "check_host.py",
+        "check_execute_list": "host_resolution_check",
+        "threshold": "20",
+        "hosts": "c6401.ambari.apache.org, c6402.ambari.apache.org, c6403.ambari.apache.org, foobar, !!!",
+        "command_timeout": "60",
+        "script_type": "PYTHON"
+    },
+    "taskId": 158,
+    "public_hostname": "c6401.ambari.apache.org",
+    "configurations": {},
+    "commandId": "27-1",
+    "clusterHostInfo": {
+        "ambari_server_host": [
+            "192.168.64.1"
+        ],
+        "all_hosts": [],
+        "all_ping_ports": []
+    }
+}

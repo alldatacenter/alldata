@@ -1,0 +1,77 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="row form-inline node-label-item">
+  {{#if label.isNotExist}}
+    <div class="col-md-12 col-sm-12 text-warning">
+      {{#if label.store.isRmOffline}}
+        <small>Unable to obtain information about the node label from the resource manager</small>
+      {{else}}
+        <small>Label does not exist on cluster</small>
+      {{/if}}
+    </div>
+  {{else}}
+    <div class="col-md-2 col-sm-2">
+      {{#link-to 'capsched.queuesconf.editqueue' queue}}{{queue.name}}{{/link-to}}
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <div class="form-group input-group label-capacity-input">
+        {{decimal-capacity-input class='input-sm' value=label.capacity maxVal=100 disabled=isAccessDisabled}}
+        <span class="input-group-addon">%</span>
+      </div>
+      <div class="form-group label-capacity-slider">
+        {{decimal-input-range min="0" max="100" step="0.01" value=label.capacity class="input-sm" disabled=isAccessDisabled}}
+      </div>
+      {{#unless isAccessDisabled}}
+        {{#if isLabelCapacityDirty}}
+          <div class="btn-group btn-group-xs label-capacity-rollback">
+            <a {{action 'rollbackProp' 'capacity' label}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+          </div>
+        {{/if}}
+      {{/unless}}
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <div {{bind-attr class=":form-group :input-group :label-capacity-input isInvalidLabelMaxCapacity:has-error"}}>
+        {{decimal-maxcapacity-input class='input-sm' value=label.maximum_capacity maxVal=100 disabled=isAccessDisabled}}
+        <span class="input-group-addon">%</span>
+      </div>
+      <div class="form-group label-capacity-slider">
+        {{decimal-input-range min="0" max="100" step="0.01" value=label.maximum_capacity class="input-sm" disabled=isAccessDisabled}}
+      </div>
+      {{#unless isAccessDisabled}}
+        {{#if isLabelMaxCapacityDirty}}
+          <div class="btn-group btn-group-xs label-capacity-rollback">
+            <a {{action 'rollbackProp' 'maximum_capacity' label}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+          </div>
+        {{/if}}
+      {{/unless}}
+      {{#if isInvalidLabelMaxCapacity}}
+        <div class="label-maxcapacity-error">
+          <small class="text-danger">Maximum capacity must be greater than or equal to capacity</small>
+        </div>
+      {{/if}}
+    </div>
+    <div class="col-md-2 col-sml-2">
+      {{#if isAccessEnabled}}
+        <button type="button" class="btn btn-small btn-danger" {{action "disableAccess"}}>Disable Access</button>
+      {{else}}
+        <button type="button" class="btn btn-small btn-primary" {{action "enableAccess"}} {{bind-attr disabled=isDisabledByParent}}>Enable Access</button>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>

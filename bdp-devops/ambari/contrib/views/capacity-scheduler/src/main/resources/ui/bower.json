@@ -1,0 +1,55 @@
+{
+  "name": "capacity-scheduler-web",
+  "version": "0.0.1",
+  "main": "public/app.js",
+  "dependencies": {
+    "ember": "1.7.0",
+    "ember-data": "1.0.0-beta.8",
+    "jquery": "2.x",
+    "bootstrap": "3.1.x",
+    "moment": "~2.5.1",
+    "ember-i18n": "~1.6.0",
+    "font-awesome": "~4.1",
+    "bootstrap3-typeahead": "~3.0.3",
+    "perfect-scrollbar": "~0.5.8",
+    "file-saver": "https://github.com/eligrey/FileSaver.js.git#eb8d76f845ef6ad1e39a840c29bb852098c6a401",
+    "Blob": "https://github.com/eligrey/Blob.js.git#079824b6c118fbcd0b99c561d57ad192d2c6619b",
+    "d3": "~3.5.17",
+    "jsdifflib": "https://github.com/cemerick/jsdifflib.git#ce74529f9d51943db440dbd7c15d515597cda2e1"
+  },
+  "overrides": {
+    "jquery": {
+      "main": "dist/jquery.js"
+    },
+    "ember-uploader": {
+      "main": "dist/ember-uploader.js"
+    },
+    "cldr": {
+      "main": "plurals.js"
+    },
+    "ember-i18n": {
+      "scripts": []
+    },
+    "bootstrap": {
+      "main": [
+        "./dist/js/bootstrap.js"
+      ]
+    },
+    "font-awesome": {
+      "main": "css/font-awesome.css"
+    },
+    "file-saver": {
+      "main": "FileSaver.js"
+    },
+    "Blob": {
+      "main": "Blob.js"
+    },
+    "jsdifflib": {
+      "main": [
+        "difflib.js",
+        "diffview.js",
+        "diffview.css"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1183 @@
+{
+  "beans" : [ {
+    "name" : "java.lang:type=MemoryPool,name=CMS Old Gen",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "CMS Old Gen",
+    "Type" : "HEAP",
+    "Valid" : true,
+    "Usage" : {
+      "committed" : 65404928,
+      "init" : 65404928,
+      "max" : 1030160384,
+      "used" : 4226480
+    },
+    "CollectionUsage" : {
+      "committed" : 65404928,
+      "init" : 65404928,
+      "max" : 1030160384,
+      "used" : 1680304
+    },
+    "CollectionUsageThreshold" : 0,
+    "CollectionUsageThresholdCount" : 0,
+    "MemoryManagerNames" : [ "ConcurrentMarkSweep" ],
+    "PeakUsage" : {
+      "committed" : 65404928,
+      "init" : 65404928,
+      "max" : 1030160384,
+      "used" : 4226480
+    },
+    "UsageThreshold" : 0,
+    "UsageThresholdCount" : 0,
+    "CollectionUsageThresholdExceeded" : true,
+    "CollectionUsageThresholdSupported" : true,
+    "UsageThresholdExceeded" : true,
+    "UsageThresholdSupported" : true
+  }, {
+    "name" : "java.lang:type=Memory",
+    "modelerType" : "sun.management.MemoryImpl",
+    "Verbose" : false,
+    "HeapMemoryUsage" : {
+      "committed" : 85000192,
+      "init" : 0,
+      "max" : 1069416448,
+      "used" : 4806976
+    },
+    "NonHeapMemoryUsage" : {
+      "committed" : 44236800,
+      "init" : 24313856,
+      "max" : 136314880,
+      "used" : 28971240
+    },
+    "ObjectPendingFinalizationCount" : 0
+  }, {
+    "name" : "hadoop:service=HBase,name=Info",
+    "modelerType" : "org.apache.hadoop.hbase.metrics.HBaseInfo$HBaseInfoMBean",
+    "revision" : "Unknown",
+    "hdfsUser" : "jenkins",
+    "hdfsDate" : "Thu Jan 10 03:38:39 PST 2013",
+    "hdfsUrl" : "",
+    "date" : "Thu Jan 10 03:45:56 PST 2013",
+    "hdfsRevision" : "",
+    "user" : "jenkins",
+    "hdfsVersion" : "1.1.2.21",
+    "url" : "file:///mnt/disk1/jenkins/workspace/BIGTOP-Bimota-Centos6/build/hbase/rpm/BUILD/hbase-0.94.2.21",
+    "version" : "0.94.2.21"
+  }, {
+    "name" : "java.lang:type=MemoryPool,name=Code Cache",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "Code Cache",
+    "Type" : "NON_HEAP",
+    "Valid" : true,
+    "Usage" : {
+      "committed" : 3080192,
+      "init" : 2555904,
+      "max" : 50331648,
+      "used" : 3022208
+    },
+    "CollectionUsage" : null,
+    "MemoryManagerNames" : [ "CodeCacheManager" ],
+    "PeakUsage" : {
+      "committed" : 3080192,
+      "init" : 2555904,
+      "max" : 50331648,
+      "used" : 3023488
+    },
+    "UsageThreshold" : 0,
+    "UsageThresholdCount" : 0,
+    "CollectionUsageThresholdSupported" : false,
+    "UsageThresholdExceeded" : true,
+    "UsageThresholdSupported" : true
+  }, {
+    "name" : "java.lang:type=Runtime",
+    "modelerType" : "sun.management.RuntimeImpl",
+    "Name" : "17489@ip-10-85-118-178.ec2.internal",
+    "ClassPath" : "/etc/hbase/conf:/usr/jdk/jdk1.6.0_31/lib/tools.jar:/usr/lib/hbase/bin/..:/usr/lib/hbase/bin/../hbase-0.94.2.21-tests.jar:/usr/lib/hbase/bin/../hbase-0.94.2.21.jar:/usr/lib/hbase/bin/../lib/activation-1.1.jar:/usr/lib/hbase/bin/../lib/asm-3.1.jar:/usr/lib/hbase/bin/../lib/avro-1.5.3.jar:/usr/lib/hbase/bin/../lib/avro-ipc-1.5.3.jar:/usr/lib/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/lib/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/lib/hbase/bin/../lib/commons-cli-1.2.jar:/usr/lib/hbase/bin/../lib/commons-codec-1.4.jar:/usr/lib/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/lib/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/lib/hbase/bin/../lib/commons-digester-1.8.jar:/usr/lib/hbase/bin/../lib/commons-el-1.0.jar:/usr/lib/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/lib/hbase/bin/../lib/commons-io-2.1.jar:/usr/lib/hbase/bin/../lib/commons-lang-2.5.jar:/usr/lib/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/lib/hbase/bin/../lib/commons-math-2.1.jar:/usr/lib/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/lib/hbase/bin/../lib/core-3.1.1.jar:/usr/lib/hbase/bin/../lib/guava-11.0.2.jar:/usr/lib/hbase/bin/../lib/hadoop-core.jar:/usr/lib/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/lib/hbase/bin/../lib/httpclient-4.1.2.jar:/usr/lib/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/lib/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/lib/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/lib/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/lib/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/lib/hbase/bin/../lib/jaxb-api-2.1.jar:/usr/lib/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/lib/hbase/bin/../lib/jersey-core-1.8.jar:/usr/lib/hbase/bin/../lib/jersey-json-1.8.jar:/usr/lib/hbase/bin/../lib/jersey-server-1.8.jar:/usr/lib/hbase/bin/../lib/jettison-1.1.jar:/usr/lib/hbase/bin/../lib/jetty-6.1.26.jar:/usr/lib/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/lib/hbase/bin/../lib/jruby-complete-1.6.5.jar:/usr/lib/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/lib/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/lib/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/lib/hbase/bin/../lib/junit-4.10-HBASE-1.jar:/usr/lib/hbase/bin/../lib/libthrift-0.8.0.jar:/usr/lib/hbase/bin/../lib/log4j-1.2.16.jar:/usr/lib/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/lib/hbase/bin/../lib/netty-3.2.4.Final.jar:/usr/lib/hbase/bin/../lib/protobuf-java-2.4.0a.jar:/usr/lib/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/lib/hbase/bin/../lib/slf4j-api-1.4.3.jar:/usr/lib/hbase/bin/../lib/slf4j-log4j12-1.4.3.jar:/usr/lib/hbase/bin/../lib/snappy-java-1.0.3.2.jar:/usr/lib/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/lib/hbase/bin/../lib/velocity-1.7.jar:/usr/lib/hbase/bin/../lib/xmlenc-0.52.jar:/usr/lib/hbase/bin/../lib/zookeeper.jar::::/usr/lib/hadoop/libexec/../conf:/usr/jdk/jdk1.6.0_31/lib/tools.jar:/usr/lib/hadoop/libexec/..:/usr/lib/hadoop/libexec/../hadoop-core-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/ambari-log4j-1.0.jar:/usr/lib/hadoop/libexec/../lib/asm-3.2.jar:/usr/lib/hadoop/libexec/../lib/aspectjrt-1.6.11.jar:/usr/lib/hadoop/libexec/../lib/aspectjtools-1.6.11.jar:/usr/lib/hadoop/libexec/../lib/commons-beanutils-1.7.0.jar:/usr/lib/hadoop/libexec/../lib/commons-beanutils-core-1.8.0.jar:/usr/lib/hadoop/libexec/../lib/commons-cli-1.2.jar:/usr/lib/hadoop/libexec/../lib/commons-codec-1.4.jar:/usr/lib/hadoop/libexec/../lib/commons-collections-3.2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-configuration-1.6.jar:/usr/lib/hadoop/libexec/../lib/commons-daemon-1.0.1.jar:/usr/lib/hadoop/libexec/../lib/commons-digester-1.8.jar:/usr/lib/hadoop/libexec/../lib/commons-el-1.0.jar:/usr/lib/hadoop/libexec/../lib/commons-httpclient-3.0.1.jar:/usr/lib/hadoop/libexec/../lib/commons-io-2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-lang-2.4.jar:/usr/lib/hadoop/libexec/../lib/commons-logging-1.1.1.jar:/usr/lib/hadoop/libexec/../lib/commons-logging-api-1.0.4.jar:/usr/lib/hadoop/libexec/../lib/commons-math-2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-net-3.1.jar:/usr/lib/hadoop/libexec/../lib/core-3.1.1.jar:/usr/lib/hadoop/libexec/../lib/hadoop-capacity-scheduler-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-fairscheduler-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-lzo-0.5.0.jar:/usr/lib/hadoop/libexec/../lib/hadoop-thriftfs-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-tools.jar:/usr/lib/hadoop/libexec/../lib/hsqldb-1.8.0.10.jar:/usr/lib/hadoop/libexec/../lib/jackson-core-asl-1.8.8.jar:/usr/lib/hadoop/libexec/../lib/jackson-mapper-asl-1.8.8.jar:/usr/lib/hadoop/libexec/../lib/jasper-compiler-5.5.12.jar:/usr/lib/hadoop/libexec/../lib/jasper-runtime-5.5.12.jar:/usr/lib/hadoop/libexec/../lib/jdeb-0.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-core-1.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-json-1.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-server-1.8.jar:/usr/lib/hadoop/libexec/../lib/jets3t-0.6.1.jar:/usr/lib/hadoop/libexec/../lib/jetty-6.1.26.jar:/usr/lib/hadoop/libexec/../lib/jetty-util-6.1.26.jar:/usr/lib/hadoop/libexec/../lib/jsch-0.1.42.jar:/usr/lib/hadoop/libexec/../lib/junit-4.5.jar:/usr/lib/hadoop/libexec/../lib/kfs-0.2.2.jar:/usr/lib/hadoop/libexec/../lib/log4j-1.2.15.jar:/usr/lib/hadoop/libexec/../lib/mockito-all-1.8.5.jar:/usr/lib/hadoop/libexec/../lib/oro-2.0.8.jar:/usr/lib/hadoop/libexec/../lib/postgresql-9.1-901-1.jdbc4.jar:/usr/lib/hadoop/libexec/../lib/servlet-api-2.5-20081211.jar:/usr/lib/hadoop/libexec/../lib/slf4j-api-1.4.3.jar:/usr/lib/hadoop/libexec/../lib/slf4j-log4j12-1.4.3.jar:/usr/lib/hadoop/libexec/../lib/xmlenc-0.52.jar:/usr/lib/hadoop/libexec/../lib/jsp-2.1/jsp-2.1.jar:/usr/lib/hadoop/libexec/../lib/jsp-2.1/jsp-api-2.1.jar",
+    "StartTime" : 1358364475754,
+    "VmName" : "Java HotSpot(TM) 64-Bit Server VM",
+    "VmVendor" : "Sun Microsystems Inc.",
+    "VmVersion" : "20.6-b01",
+    "InputArguments" : [ "-XX:OnOutOfMemoryError=kill", "-9", "%p", "-Xmx1000m", "-ea", "-XX:+UseConcMarkSweepGC", "-XX:+CMSIncrementalMode", "-Xmx1024m", "-Dhbase.log.dir=/var/log/hbase", "-Dhbase.log.file=hbase-hbase-master-ip-10-85-118-178.log", "-Dhbase.home.dir=/usr/lib/hbase/bin/..", "-Dhbase.id.str=hbase", "-Dhbase.root.logger=INFO,DRFA", "-Djava.library.path=/usr/lib/hadoop/libexec/../lib/native/Linux-amd64-64:/usr/lib/hbase/bin/../lib/native/Linux-amd64-64", "-Dhbase.security.logger=INFO,DRFAS" ],
+    "BootClassPath" : "/usr/jdk/jdk1.6.0_31/jre/lib/resources.jar:/usr/jdk/jdk1.6.0_31/jre/lib/rt.jar:/usr/jdk/jdk1.6.0_31/jre/lib/sunrsasign.jar:/usr/jdk/jdk1.6.0_31/jre/lib/jsse.jar:/usr/jdk/jdk1.6.0_31/jre/lib/jce.jar:/usr/jdk/jdk1.6.0_31/jre/lib/charsets.jar:/usr/jdk/jdk1.6.0_31/jre/lib/modules/jdk.boot.jar:/usr/jdk/jdk1.6.0_31/jre/classes",
+    "LibraryPath" : "/usr/lib/hadoop/libexec/../lib/native/Linux-amd64-64:/usr/lib/hbase/bin/../lib/native/Linux-amd64-64",
+    "BootClassPathSupported" : true,
+    "ManagementSpecVersion" : "1.2",
+    "SpecName" : "Java Virtual Machine Specification",
+    "SpecVendor" : "Sun Microsystems Inc.",
+    "SpecVersion" : "1.0",
+    "SystemProperties" : [ {
+      "key" : "java.ext.dirs",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre/lib/ext:/usr/java/packages/lib/ext"
+    }, {
+      "key" : "java.vm.specification.vendor",
+      "value" : "Sun Microsystems Inc."
+    }, {
+      "key" : "hbase.log.dir",
+      "value" : "/var/log/hbase"
+    }, {
+      "key" : "user.timezone",
+      "value" : "America/New_York"
+    }, {
+      "key" : "java.vm.vendor",
+      "value" : "Sun Microsystems Inc."
+    }, {
+      "key" : "user.name",
+      "value" : "hbase"
+    }, {
+      "key" : "java.vm.specification.name",
+      "value" : "Java Virtual Machine Specification"
+    }, {
+      "key" : "user.dir",
+      "value" : "/var/run/hbase"
+    }, {
+      "key" : "user.country",
+      "value" : "US"
+    }, {
+      "key" : "user.language",
+      "value" : "en"
+    }, {
+      "key" : "java.specification.version",
+      "value" : "1.6"
+    }, {
+      "key" : "sun.cpu.endian",
+      "value" : "little"
+    }, {
+      "key" : "java.home",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre"
+    }, {
+      "key" : "hbase.log.file",
+      "value" : "hbase-hbase-master-ip-10-85-118-178.log"
+    }, {
+      "key" : "sun.jnu.encoding",
+      "value" : "ANSI_X3.4-1968"
+    }, {
+      "key" : "file.separator",
+      "value" : "/"
+    }, {
+      "key" : "java.vendor.url",
+      "value" : "http://java.sun.com/"
+    }, {
+      "key" : "java.awt.graphicsenv",
+      "value" : "sun.awt.X11GraphicsEnvironment"
+    }, {
+      "key" : "os.arch",
+      "value" : "amd64"
+    }, {
+      "key" : "java.io.tmpdir",
+      "value" : "/tmp"
+    }, {
+      "key" : "java.runtime.name",
+      "value" : "Java(TM) SE Runtime Environment"
+    }, {
+      "key" : "java.awt.printerjob",
+      "value" : "sun.print.PSPrinterJob"
+    }, {
+      "key" : "file.encoding",
+      "value" : "ANSI_X3.4-1968"
+    }, {
+      "key" : "java.version",
+      "value" : "1.6.0_31"
+    }, {
+      "key" : "java.vendor.url.bug",
+      "value" : "http://java.sun.com/cgi-bin/bugreport.cgi"
+    }, {
+      "key" : "java.vm.specification.version",
+      "value" : "1.0"
+    }, {
+      "key" : "file.encoding.pkg",
+      "value" : "sun.io"
+    }, {
+      "key" : "sun.java.command",
+      "value" : "org.apache.hadoop.hbase.master.HMaster start"
+    }, {
+      "key" : "sun.java.launcher",
+      "value" : "SUN_STANDARD"
+    }, {
+      "key" : "path.separator",
+      "value" : ":"
+    }, {
+      "key" : "java.runtime.version",
+      "value" : "1.6.0_31-b04"
+    }, {
+      "key" : "java.class.path",
+      "value" : "/etc/hbase/conf:/usr/jdk/jdk1.6.0_31/lib/tools.jar:/usr/lib/hbase/bin/..:/usr/lib/hbase/bin/../hbase-0.94.2.21-tests.jar:/usr/lib/hbase/bin/../hbase-0.94.2.21.jar:/usr/lib/hbase/bin/../lib/activation-1.1.jar:/usr/lib/hbase/bin/../lib/asm-3.1.jar:/usr/lib/hbase/bin/../lib/avro-1.5.3.jar:/usr/lib/hbase/bin/../lib/avro-ipc-1.5.3.jar:/usr/lib/hbase/bin/../lib/commons-beanutils-1.7.0.jar:/usr/lib/hbase/bin/../lib/commons-beanutils-core-1.8.0.jar:/usr/lib/hbase/bin/../lib/commons-cli-1.2.jar:/usr/lib/hbase/bin/../lib/commons-codec-1.4.jar:/usr/lib/hbase/bin/../lib/commons-collections-3.2.1.jar:/usr/lib/hbase/bin/../lib/commons-configuration-1.6.jar:/usr/lib/hbase/bin/../lib/commons-digester-1.8.jar:/usr/lib/hbase/bin/../lib/commons-el-1.0.jar:/usr/lib/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/lib/hbase/bin/../lib/commons-io-2.1.jar:/usr/lib/hbase/bin/../lib/commons-lang-2.5.jar:/usr/lib/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/lib/hbase/bin/../lib/commons-math-2.1.jar:/usr/lib/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/lib/hbase/bin/../lib/core-3.1.1.jar:/usr/lib/hbase/bin/../lib/guava-11.0.2.jar:/usr/lib/hbase/bin/../lib/hadoop-core.jar:/usr/lib/hbase/bin/../lib/high-scale-lib-1.1.1.jar:/usr/lib/hbase/bin/../lib/httpclient-4.1.2.jar:/usr/lib/hbase/bin/../lib/httpcore-4.1.3.jar:/usr/lib/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/lib/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/lib/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/lib/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/lib/hbase/bin/../lib/jaxb-api-2.1.jar:/usr/lib/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/lib/hbase/bin/../lib/jersey-core-1.8.jar:/usr/lib/hbase/bin/../lib/jersey-json-1.8.jar:/usr/lib/hbase/bin/../lib/jersey-server-1.8.jar:/usr/lib/hbase/bin/../lib/jettison-1.1.jar:/usr/lib/hbase/bin/../lib/jetty-6.1.26.jar:/usr/lib/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/lib/hbase/bin/../lib/jruby-complete-1.6.5.jar:/usr/lib/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/lib/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/lib/hbase/bin/../lib/jsr305-1.3.9.jar:/usr/lib/hbase/bin/../lib/junit-4.10-HBASE-1.jar:/usr/lib/hbase/bin/../lib/libthrift-0.8.0.jar:/usr/lib/hbase/bin/../lib/log4j-1.2.16.jar:/usr/lib/hbase/bin/../lib/metrics-core-2.1.2.jar:/usr/lib/hbase/bin/../lib/netty-3.2.4.Final.jar:/usr/lib/hbase/bin/../lib/protobuf-java-2.4.0a.jar:/usr/lib/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/lib/hbase/bin/../lib/slf4j-api-1.4.3.jar:/usr/lib/hbase/bin/../lib/slf4j-log4j12-1.4.3.jar:/usr/lib/hbase/bin/../lib/snappy-java-1.0.3.2.jar:/usr/lib/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/lib/hbase/bin/../lib/velocity-1.7.jar:/usr/lib/hbase/bin/../lib/xmlenc-0.52.jar:/usr/lib/hbase/bin/../lib/zookeeper.jar::::/usr/lib/hadoop/libexec/../conf:/usr/jdk/jdk1.6.0_31/lib/tools.jar:/usr/lib/hadoop/libexec/..:/usr/lib/hadoop/libexec/../hadoop-core-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/ambari-log4j-1.0.jar:/usr/lib/hadoop/libexec/../lib/asm-3.2.jar:/usr/lib/hadoop/libexec/../lib/aspectjrt-1.6.11.jar:/usr/lib/hadoop/libexec/../lib/aspectjtools-1.6.11.jar:/usr/lib/hadoop/libexec/../lib/commons-beanutils-1.7.0.jar:/usr/lib/hadoop/libexec/../lib/commons-beanutils-core-1.8.0.jar:/usr/lib/hadoop/libexec/../lib/commons-cli-1.2.jar:/usr/lib/hadoop/libexec/../lib/commons-codec-1.4.jar:/usr/lib/hadoop/libexec/../lib/commons-collections-3.2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-configuration-1.6.jar:/usr/lib/hadoop/libexec/../lib/commons-daemon-1.0.1.jar:/usr/lib/hadoop/libexec/../lib/commons-digester-1.8.jar:/usr/lib/hadoop/libexec/../lib/commons-el-1.0.jar:/usr/lib/hadoop/libexec/../lib/commons-httpclient-3.0.1.jar:/usr/lib/hadoop/libexec/../lib/commons-io-2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-lang-2.4.jar:/usr/lib/hadoop/libexec/../lib/commons-logging-1.1.1.jar:/usr/lib/hadoop/libexec/../lib/commons-logging-api-1.0.4.jar:/usr/lib/hadoop/libexec/../lib/commons-math-2.1.jar:/usr/lib/hadoop/libexec/../lib/commons-net-3.1.jar:/usr/lib/hadoop/libexec/../lib/core-3.1.1.jar:/usr/lib/hadoop/libexec/../lib/hadoop-capacity-scheduler-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-fairscheduler-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-lzo-0.5.0.jar:/usr/lib/hadoop/libexec/../lib/hadoop-thriftfs-1.1.2.21.jar:/usr/lib/hadoop/libexec/../lib/hadoop-tools.jar:/usr/lib/hadoop/libexec/../lib/hsqldb-1.8.0.10.jar:/usr/lib/hadoop/libexec/../lib/jackson-core-asl-1.8.8.jar:/usr/lib/hadoop/libexec/../lib/jackson-mapper-asl-1.8.8.jar:/usr/lib/hadoop/libexec/../lib/jasper-compiler-5.5.12.jar:/usr/lib/hadoop/libexec/../lib/jasper-runtime-5.5.12.jar:/usr/lib/hadoop/libexec/../lib/jdeb-0.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-core-1.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-json-1.8.jar:/usr/lib/hadoop/libexec/../lib/jersey-server-1.8.jar:/usr/lib/hadoop/libexec/../lib/jets3t-0.6.1.jar:/usr/lib/hadoop/libexec/../lib/jetty-6.1.26.jar:/usr/lib/hadoop/libexec/../lib/jetty-util-6.1.26.jar:/usr/lib/hadoop/libexec/../lib/jsch-0.1.42.jar:/usr/lib/hadoop/libexec/../lib/junit-4.5.jar:/usr/lib/hadoop/libexec/../lib/kfs-0.2.2.jar:/usr/lib/hadoop/libexec/../lib/log4j-1.2.15.jar:/usr/lib/hadoop/libexec/../lib/mockito-all-1.8.5.jar:/usr/lib/hadoop/libexec/../lib/oro-2.0.8.jar:/usr/lib/hadoop/libexec/../lib/postgresql-9.1-901-1.jdbc4.jar:/usr/lib/hadoop/libexec/../lib/servlet-api-2.5-20081211.jar:/usr/lib/hadoop/libexec/../lib/slf4j-api-1.4.3.jar:/usr/lib/hadoop/libexec/../lib/slf4j-log4j12-1.4.3.jar:/usr/lib/hadoop/libexec/../lib/xmlenc-0.52.jar:/usr/lib/hadoop/libexec/../lib/jsp-2.1/jsp-2.1.jar:/usr/lib/hadoop/libexec/../lib/jsp-2.1/jsp-api-2.1.jar"
+    }, {
+      "key" : "os.name",
+      "value" : "Linux"
+    }, {
+      "key" : "hbase.home.dir",
+      "value" : "/usr/lib/hbase/bin/.."
+    }, {
+      "key" : "line.separator",
+      "value" : "\n"
+    }, {
+      "key" : "os.version",
+      "value" : "2.6.32-220.17.1.el6.centos.plus.x86_64"
+    }, {
+      "key" : "sun.arch.data.model",
+      "value" : "64"
+    }, {
+      "key" : "java.class.version",
+      "value" : "50.0"
+    }, {
+      "key" : "sun.io.unicode.encoding",
+      "value" : "UnicodeLittle"
+    }, {
+      "key" : "java.vendor",
+      "value" : "Sun Microsystems Inc."
+    }, {
+      "key" : "sun.boot.class.path",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre/lib/resources.jar:/usr/jdk/jdk1.6.0_31/jre/lib/rt.jar:/usr/jdk/jdk1.6.0_31/jre/lib/sunrsasign.jar:/usr/jdk/jdk1.6.0_31/jre/lib/jsse.jar:/usr/jdk/jdk1.6.0_31/jre/lib/jce.jar:/usr/jdk/jdk1.6.0_31/jre/lib/charsets.jar:/usr/jdk/jdk1.6.0_31/jre/lib/modules/jdk.boot.jar:/usr/jdk/jdk1.6.0_31/jre/classes"
+    }, {
+      "key" : "hbase.root.logger",
+      "value" : "INFO,DRFA"
+    }, {
+      "key" : "java.vm.info",
+      "value" : "mixed mode"
+    }, {
+      "key" : "java.specification.name",
+      "value" : "Java Platform API Specification"
+    }, {
+      "key" : "java.vm.name",
+      "value" : "Java HotSpot(TM) 64-Bit Server VM"
+    }, {
+      "key" : "java.vm.version",
+      "value" : "20.6-b01"
+    }, {
+      "key" : "sun.boot.library.path",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre/lib/amd64"
+    }, {
+      "key" : "java.endorsed.dirs",
+      "value" : "/usr/jdk/jdk1.6.0_31/jre/lib/endorsed"
+    }, {
+      "key" : "sun.os.patch.level",
+      "value" : "unknown"
+    }, {
+      "key" : "sun.cpu.isalist",
+      "value" : ""
+    }, {
+      "key" : "hbase.security.logger",
+      "value" : "INFO,DRFAS"
+    }, {
+      "key" : "hbase.id.str",
+      "value" : "hbase"
+    }, {
+      "key" : "user.home",
+      "value" : "/var/run/hbase"
+    }, {
+      "key" : "java.library.path",
+      "value" : "/usr/lib/hadoop/libexec/../lib/native/Linux-amd64-64:/usr/lib/hbase/bin/../lib/native/Linux-amd64-64"
+    }, {
+      "key" : "java.specification.vendor",
+      "value" : "Sun Microsystems Inc."
+    }, {
+      "key" : "sun.management.compiler",
+      "value" : "HotSpot 64-Bit Tiered Compilers"
+    } ],
+    "Uptime" : 94410730
+  }, {
+    "name" : "java.lang:type=ClassLoading",
+    "modelerType" : "sun.management.ClassLoadingImpl",
+    "LoadedClassCount" : 3318,
+    "UnloadedClassCount" : 0,
+    "TotalLoadedClassCount" : 3318,
+    "Verbose" : false
+  }, {
+    "name" : "hadoop:service=Master,name=MasterStatistics",
+    "modelerType" : "org.apache.hadoop.hbase.master.metrics.MasterStatistics",
+    "splitTimeNumOps" : 1,
+    "splitTimeAvgTime" : 0,
+    "splitTimeMinTime" : 0,
+    "splitTimeMaxTime" : 0,
+    "splitSizeNumOps" : 1,
+    "splitSizeAvgTime" : 0,
+    "splitSizeMinTime" : 0,
+    "splitSizeMaxTime" : 0,
+    "cluster_requests" : 0.0
+  }, {
+    "name" : "hadoop:service=Master,name=Master",
+    "modelerType" : "org.apache.hadoop.hbase.master.MXBeanImpl",
+    "ClusterId" : "6ea765df-de99-404a-8ba2-2ae5524e3334",
+    "MasterStartTime" : 1358364479179,
+    "MasterActiveTime" : 1358364479213,
+    "Coprocessors" : [ ],
+    "ServerName" : "ip-10-85-118-178.ec2.internal,60000,1358364478188",
+    "AverageLoad" : 3.0,
+    "RegionsInTransition" : [ ],
+    "RegionServers" : [ {
+      "key" : "ip-10-85-111-149.ec2.internal,60020,1358364532498",
+      "value" : {
+        "coprocessors" : [ ],
+        "load" : 3,
+        "maxHeapMB" : 1004,
+        "memStoreSizeInMB" : 0,
+        "numberOfRegions" : 3,
+        "numberOfRequests" : 0,
+        "regionsLoad" : [ {
+          "key" : [ 117, 115, 101, 114, 116, 97, 98, 108, 101, 44, 44, 49, 51, 53, 56, 51, 54, 52, 53, 56, 50, 51, 56, 53, 46, 50, 50, 52, 52, 99, 48, 99, 101, 57, 55, 102, 102, 56, 51, 50, 98, 101, 53, 52, 100, 101, 99, 56, 98, 97, 49, 49, 54, 54, 53, 48, 99, 46 ],
+          "value" : {
+            "currentCompactedKVs" : 0,
+            "memStoreSizeMB" : 0,
+            "name" : [ 117, 115, 101, 114, 116, 97, 98, 108, 101, 44, 44, 49, 51, 53, 56, 51, 54, 52, 53, 56, 50, 51, 56, 53, 46, 50, 50, 52, 52, 99, 48, 99, 101, 57, 55, 102, 102, 56, 51, 50, 98, 101, 53, 52, 100, 101, 99, 56, 98, 97, 49, 49, 54, 54, 53, 48, 99, 46 ],
+            "nameAsString" : "usertable,,1358364582385.2244c0ce97ff832be54dec8ba116650c.",
+            "readRequestsCount" : 2,
+            "requestsCount" : 3,
+            "rootIndexSizeKB" : 0,
+            "storefileIndexSizeMB" : 0,
+            "storefileSizeMB" : 0,
+            "storefiles" : 0,
+            "stores" : 1,
+            "totalCompactingKVs" : 0,
+            "totalStaticBloomSizeKB" : 0,
+            "totalStaticIndexSizeKB" : 0,
+            "version" : 2,
+            "writeRequestsCount" : 1
+          }
+        }, {
+          "key" : [ 46, 77, 69, 84, 65, 46, 44, 44, 49 ],
+          "value" : {
+            "currentCompactedKVs" : 0,
+            "memStoreSizeMB" : 0,
+            "name" : [ 46, 77, 69, 84, 65, 46, 44, 44, 49 ],
+            "nameAsString" : ".META.,,1",
+            "readRequestsCount" : 653,
+            "requestsCount" : 655,
+            "rootIndexSizeKB" : 0,
+            "storefileIndexSizeMB" : 0,
+            "storefileSizeMB" : 0,
+            "storefiles" : 0,
+            "stores" : 1,
+            "totalCompactingKVs" : 0,
+            "totalStaticBloomSizeKB" : 0,
+            "totalStaticIndexSizeKB" : 0,
+            "version" : 2,
+            "writeRequestsCount" : 2
+          }
+        }, {
+          "key" : [ 45, 82, 79, 79, 84, 45, 44, 44, 48 ],
+          "value" : {
+            "currentCompactedKVs" : 0,
+            "memStoreSizeMB" : 0,
+            "name" : [ 45, 82, 79, 79, 84, 45, 44, 44, 48 ],
+            "nameAsString" : "-ROOT-,,0",
+            "readRequestsCount" : 59,
+            "requestsCount" : 60,
+            "rootIndexSizeKB" : 0,
+            "storefileIndexSizeMB" : 0,
+            "storefileSizeMB" : 0,
+            "storefiles" : 1,
+            "stores" : 1,
+            "totalCompactingKVs" : 0,
+            "totalStaticBloomSizeKB" : 0,
+            "totalStaticIndexSizeKB" : 0,
+            "version" : 2,
+            "writeRequestsCount" : 1
+          }
+        } ],
+        "storefileIndexSizeInMB" : 0,
+        "storefileSizeInMB" : 0,
+        "storefiles" : 1,
+        "totalNumberOfRequests" : 0,
+        "usedHeapMB" : 103,
+        "version" : 2
+      }
+    } ],
+    "ZookeeperQuorum" : "ip-10-116-103-5.ec2.internal:2181,ip-10-85-118-178.ec2.internal:2181,ip-10-85-111-149.ec2.internal:2181",
+    "DeadRegionServers" : [ ],
+    "IsActiveMaster" : true
+  }, {
+    "name" : "java.lang:type=GarbageCollector,name=ConcurrentMarkSweep",
+    "modelerType" : "sun.management.GarbageCollectorImpl",
+    "LastGcInfo" : {
+      "GcThreadCount" : 3,
+      "duration" : 65878,
+      "endTime" : 72276,
+      "id" : 2,
+      "memoryUsageAfterGc" : [ {
+        "key" : "CMS Perm Gen",
+        "value" : {
+          "committed" : 29929472,
+          "init" : 21757952,
+          "max" : 85983232,
+          "used" : 24692864
+        }
+      }, {
+        "key" : "Code Cache",
+        "value" : {
+          "committed" : 2555904,
+          "init" : 2555904,
+          "max" : 50331648,
+          "used" : 1380480
+        }
+      }, {
+        "key" : "CMS Old Gen",
+        "value" : {
+          "committed" : 65404928,
+          "init" : 65404928,
+          "max" : 1030160384,
+          "used" : 1680304
+        }
+      }, {
+        "key" : "Par Eden Space",
+        "value" : {
+          "committed" : 17432576,
+          "init" : 17432576,
+          "max" : 34930688,
+          "used" : 8752024
+        }
+      }, {
+        "key" : "Par Survivor Space",
+        "value" : {
+          "committed" : 2162688,
+          "init" : 2162688,
+          "max" : 4325376,
+          "used" : 2122944
+        }
+      } ],
+      "memoryUsageBeforeGc" : [ {
+        "key" : "CMS Perm Gen",
+        "value" : {
+          "committed" : 29929472,
+          "init" : 21757952,
+          "max" : 85983232,
+          "used" : 22330776
+        }
+      }, {
+        "key" : "Code Cache",
+        "value" : {
+          "committed" : 2555904,
+          "init" : 2555904,
+          "max" : 50331648,
+          "used" : 1103040
+        }
+      }, {
+        "key" : "CMS Old Gen",
+        "value" : {
+          "committed" : 65404928,
+          "init" : 65404928,
+          "max" : 1030160384,
+          "used" : 779512
+        }
+      }, {
+        "key" : "Par Eden Space",
+        "value" : {
+          "committed" : 17432576,
+          "init" : 17432576,
+          "max" : 34930688,
+          "used" : 8419616
+        }
+      }, {
+        "key" : "Par Survivor Space",
+        "value" : {
+          "committed" : 2162688,
+          "init" : 2162688,
+          "max" : 4325376,
+          "used" : 1933744
+        }
+      } ],
+      "startTime" : 6398
+    },
+    "CollectionCount" : 2,
+    "CollectionTime" : 52,
+    "Name" : "ConcurrentMarkSweep",
+    "Valid" : true,
+    "MemoryPoolNames" : [ "Par Eden Space", "Par Survivor Space", "CMS Old Gen", "CMS Perm Gen" ]
+  }, {
+    "name" : "java.lang:type=Threading",
+    "modelerType" : "sun.management.ThreadImpl",
+    "ThreadAllocatedMemoryEnabled" : true,
+    "ThreadAllocatedMemorySupported" : true,
+    "ThreadContentionMonitoringEnabled" : false,
+    "AllThreadIds" : [ 3816, 3772, 122, 109, 105, 104, 103, 102, 88, 97, 96, 95, 94, 91, 90, 89, 63, 10, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 11, 23, 25, 24, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 5, 3, 2, 1 ],
+    "DaemonThreadCount" : 64,
+    "PeakThreadCount" : 77,
+    "CurrentThreadCpuTimeSupported" : true,
+    "ObjectMonitorUsageSupported" : true,
+    "SynchronizerUsageSupported" : true,
+    "ThreadContentionMonitoringSupported" : true,
+    "ThreadCpuTimeEnabled" : true,
+    "CurrentThreadCpuTime" : 370000000,
+    "CurrentThreadUserTime" : 350000000,
+    "ThreadCount" : 72,
+    "TotalStartedThreadCount" : 3809,
+    "ThreadCpuTimeSupported" : true
+  }, {
+    "name" : "java.util.logging:type=Logging",
+    "modelerType" : "java.util.logging.Logging",
+    "LoggerNames" : [ "sun.awt.AppContext", "javax.management", "global", "javax.management.mbeanserver", "" ]
+  }, {
+    "name" : "java.lang:type=Compilation",
+    "modelerType" : "sun.management.CompilationImpl",
+    "Name" : "HotSpot 64-Bit Tiered Compilers",
+    "CompilationTimeMonitoringSupported" : true,
+    "TotalCompilationTime" : 17603
+  }, {
+    "name" : "java.lang:type=GarbageCollector,name=ParNew",
+    "modelerType" : "sun.management.GarbageCollectorImpl",
+    "LastGcInfo" : {
+      "GcThreadCount" : 3,
+      "duration" : 2,
+      "endTime" : 94402220,
+      "id" : 646,
+      "memoryUsageAfterGc" : [ {
+        "key" : "CMS Perm Gen",
+        "value" : {
+          "committed" : 41156608,
+          "init" : 21757952,
+          "max" : 85983232,
+          "used" : 25944224
+        }
+      }, {
+        "key" : "Code Cache",
+        "value" : {
+          "committed" : 3080192,
+          "init" : 2555904,
+          "max" : 50331648,
+          "used" : 3022208
+        }
+      }, {
+        "key" : "CMS Old Gen",
+        "value" : {
+          "committed" : 65404928,
+          "init" : 65404928,
+          "max" : 1030160384,
+          "used" : 4226480
+        }
+      }, {
+        "key" : "Par Eden Space",
+        "value" : {
+          "committed" : 17432576,
+          "init" : 17432576,
+          "max" : 34930688,
+          "used" : 0
+        }
+      }, {
+        "key" : "Par Survivor Space",
+        "value" : {
+          "committed" : 2162688,
+          "init" : 2162688,
+          "max" : 4325376,
+          "used" : 100136
+        }
+      } ],
+      "memoryUsageBeforeGc" : [ {
+        "key" : "CMS Perm Gen",
+        "value" : {
+          "committed" : 41156608,
+          "init" : 21757952,
+          "max" : 85983232,
+          "used" : 25944224
+        }
+      }, {
+        "key" : "Code Cache",
+        "value" : {
+          "committed" : 3080192,
+          "init" : 2555904,
+          "max" : 50331648,
+          "used" : 3022208
+        }
+      }, {
+        "key" : "CMS Old Gen",
+        "value" : {
+          "committed" : 65404928,
+          "init" : 65404928,
+          "max" : 1030160384,
+          "used" : 4226480
+        }
+      }, {
+        "key" : "Par Eden Space",
+        "value" : {
+          "committed" : 17432576,
+          "init" : 17432576,
+          "max" : 34930688,
+          "used" : 17432576
+        }
+      }, {
+        "key" : "Par Survivor Space",
+        "value" : {
+          "committed" : 2162688,
+          "init" : 2162688,
+          "max" : 4325376,
+          "used" : 242504
+        }
+      } ],
+      "startTime" : 94402218
+    },
+    "CollectionCount" : 646,
+    "CollectionTime" : 1685,
+    "Name" : "ParNew",
+    "Valid" : true,
+    "MemoryPoolNames" : [ "Par Eden Space", "Par Survivor Space" ]
+  }, {
+    "name" : "java.lang:type=MemoryPool,name=Par Eden Space",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "Par Eden Space",
+    "Type" : "HEAP",
+    "Valid" : true,
+    "Usage" : {
+      "committed" : 17432576,
+      "init" : 17432576,
+      "max" : 34930688,
+      "used" : 575008
+    },
+    "CollectionUsage" : {
+      "committed" : 17432576,
+      "init" : 17432576,
+      "max" : 34930688,
+      "used" : 0
+    },
+    "CollectionUsageThreshold" : 0,
+    "CollectionUsageThresholdCount" : 0,
+    "MemoryManagerNames" : [ "ConcurrentMarkSweep", "ParNew" ],
+    "PeakUsage" : {
+      "committed" : 17432576,
+      "init" : 17432576,
+      "max" : 34930688,
+      "used" : 17432576
+    },
+    "CollectionUsageThresholdExceeded" : true,
+    "CollectionUsageThresholdSupported" : true,
+    "UsageThresholdSupported" : false
+  }, {
+    "name" : "hadoop:service=HBase,name=RPCStatistics-60000",
+    "modelerType" : "org.apache.hadoop.hbase.ipc.HBaseRPCStatistics",
+    "enableTableNumOps" : 0,
+    "enableTableAvgTime" : 0,
+    "enableTableMinTime" : -1,
+    "enableTableMaxTime" : 0,
+    "assignNumOps" : 0,
+    "assignAvgTime" : 0,
+    "assignMinTime" : -1,
+    "assignMaxTime" : 0,
+    "enableTable.aboveOneSec.NumOps" : 0,
+    "enableTable.aboveOneSec.AvgTime" : 0,
+    "enableTable.aboveOneSec.MinTime" : -1,
+    "enableTable.aboveOneSec.MaxTime" : 0,
+    "RpcSlowResponseNumOps" : 0,
+    "RpcSlowResponseAvgTime" : 0,
+    "RpcSlowResponseMinTime" : -1,
+    "RpcSlowResponseMaxTime" : 0,
+    "getStoreFileListNumOps" : 0,
+    "getStoreFileListAvgTime" : 0,
+    "getStoreFileListMinTime" : -1,
+    "getStoreFileListMaxTime" : 0,
+    "getProtocolVersion.aboveOneSec.NumOps" : 0,
+    "getProtocolVersion.aboveOneSec.AvgTime" : 0,
+    "getProtocolVersion.aboveOneSec.MinTime" : -1,
+    "getProtocolVersion.aboveOneSec.MaxTime" : 0,
+    "getAlterStatus.aboveOneSec.NumOps" : 0,
+    "getAlterStatus.aboveOneSec.AvgTime" : 0,
+    "getAlterStatus.aboveOneSec.MinTime" : -1,
+    "getAlterStatus.aboveOneSec.MaxTime" : 0,
+    "moveNumOps" : 0,
+    "moveAvgTime" : 0,
+    "moveMinTime" : -1,
+    "moveMaxTime" : 0,
+    "openRegionNumOps" : 0,
+    "openRegionAvgTime" : 0,
+    "openRegionMinTime" : -1,
+    "openRegionMaxTime" : 0,
+    "incrementNumOps" : 0,
+    "incrementAvgTime" : 0,
+    "incrementMinTime" : -1,
+    "incrementMaxTime" : 0,
+    "regionServerStartup.aboveOneSec.NumOps" : 0,
+    "regionServerStartup.aboveOneSec.AvgTime" : 0,
+    "regionServerStartup.aboveOneSec.MinTime" : -1,
+    "regionServerStartup.aboveOneSec.MaxTime" : 0,
+    "deleteTableNumOps" : 0,
+    "deleteTableAvgTime" : 0,
+    "deleteTableMinTime" : -1,
+    "deleteTableMaxTime" : 0,
+    "balance.aboveOneSec.NumOps" : 0,
+    "balance.aboveOneSec.AvgTime" : 0,
+    "balance.aboveOneSec.MinTime" : -1,
+    "balance.aboveOneSec.MaxTime" : 0,
+    "execCoprocessorNumOps" : 0,
+    "execCoprocessorAvgTime" : 0,
+    "execCoprocessorMinTime" : -1,
+    "execCoprocessorMaxTime" : 0,
+    "getHTableDescriptorsNumOps" : 0,
+    "getHTableDescriptorsAvgTime" : 0,
+    "getHTableDescriptorsMinTime" : 7,
+    "getHTableDescriptorsMaxTime" : 1763,
+    "addColumnNumOps" : 0,
+    "addColumnAvgTime" : 0,
+    "addColumnMinTime" : -1,
+    "addColumnMaxTime" : 0,
+    "offline.aboveOneSec.NumOps" : 0,
+    "offline.aboveOneSec.AvgTime" : 0,
+    "offline.aboveOneSec.MinTime" : -1,
+    "offline.aboveOneSec.MaxTime" : 0,
+    "multiNumOps" : 0,
+    "multiAvgTime" : 0,
+    "multiMinTime" : -1,
+    "multiMaxTime" : 0,
+    "closeRegionNumOps" : 0,
+    "closeRegionAvgTime" : 0,
+    "closeRegionMinTime" : -1,
+    "closeRegionMaxTime" : 0,
+    "disableTableNumOps" : 0,
+    "disableTableAvgTime" : 0,
+    "disableTableMinTime" : -1,
+    "disableTableMaxTime" : 0,
+    "bulkLoadHFilesNumOps" : 0,
+    "bulkLoadHFilesAvgTime" : 0,
+    "bulkLoadHFilesMinTime" : -1,
+    "bulkLoadHFilesMaxTime" : 0,
+    "putNumOps" : 0,
+    "putAvgTime" : 0,
+    "putMinTime" : -1,
+    "putMaxTime" : 0,
+    "createTableNumOps" : 0,
+    "createTableAvgTime" : 0,
+    "createTableMinTime" : 38,
+    "createTableMaxTime" : 38,
+    "nextNumOps" : 0,
+    "nextAvgTime" : 0,
+    "nextMinTime" : -1,
+    "nextMaxTime" : 0,
+    "unlockRowNumOps" : 0,
+    "unlockRowAvgTime" : 0,
+    "unlockRowMinTime" : -1,
+    "unlockRowMaxTime" : 0,
+    "reportRSFatalErrorNumOps" : 0,
+    "reportRSFatalErrorAvgTime" : 0,
+    "reportRSFatalErrorMinTime" : -1,
+    "reportRSFatalErrorMaxTime" : 0,
+    "rpcAuthenticationFailures" : 0,
+    "getRegionInfoNumOps" : 0,
+    "getRegionInfoAvgTime" : 0,
+    "getRegionInfoMinTime" : -1,
+    "getRegionInfoMaxTime" : 0,
+    "openScannerNumOps" : 0,
+    "openScannerAvgTime" : 0,
+    "openScannerMinTime" : -1,
+    "openScannerMaxTime" : 0,
+    "offlineNumOps" : 0,
+    "offlineAvgTime" : 0,
+    "offlineMinTime" : -1,
+    "offlineMaxTime" : 0,
+    "getAlterStatusNumOps" : 0,
+    "getAlterStatusAvgTime" : 0,
+    "getAlterStatusMinTime" : -1,
+    "getAlterStatusMaxTime" : 0,
+    "deleteNumOps" : 0,
+    "deleteAvgTime" : 0,
+    "deleteMinTime" : -1,
+    "deleteMaxTime" : 0,
+    "RpcProcessingTimeNumOps" : 4,
+    "RpcProcessingTimeAvgTime" : 0,
+    "RpcProcessingTimeMinTime" : 0,
+    "RpcProcessingTimeMaxTime" : 1763,
+    "move.aboveOneSec.NumOps" : 0,
+    "move.aboveOneSec.AvgTime" : 0,
+    "move.aboveOneSec.MinTime" : -1,
+    "move.aboveOneSec.MaxTime" : 0,
+    "getLastFlushTimeNumOps" : 0,
+    "getLastFlushTimeAvgTime" : 0,
+    "getLastFlushTimeMinTime" : -1,
+    "getLastFlushTimeMaxTime" : 0,
+    "shutdownNumOps" : 0,
+    "shutdownAvgTime" : 0,
+    "shutdownMinTime" : -1,
+    "shutdownMaxTime" : 0,
+    "openRegionsNumOps" : 0,
+    "openRegionsAvgTime" : 0,
+    "openRegionsMinTime" : -1,
+    "openRegionsMaxTime" : 0,
+    "getClosestRowBeforeNumOps" : 0,
+    "getClosestRowBeforeAvgTime" : 0,
+    "getClosestRowBeforeMinTime" : -1,
+    "getClosestRowBeforeMaxTime" : 0,
+    "getHServerInfoNumOps" : 0,
+    "getHServerInfoAvgTime" : 0,
+    "getHServerInfoMinTime" : -1,
+    "getHServerInfoMaxTime" : 0,
+    "getProtocolSignatureNumOps" : 0,
+    "getProtocolSignatureAvgTime" : 0,
+    "getProtocolSignatureMinTime" : -1,
+    "getProtocolSignatureMaxTime" : 0,
+    "replicationCallQueueLen" : 0,
+    "SentBytes" : 64,
+    "existsNumOps" : 0,
+    "existsAvgTime" : 0,
+    "existsMinTime" : -1,
+    "existsMaxTime" : 0,
+    "shutdown.aboveOneSec.NumOps" : 0,
+    "shutdown.aboveOneSec.AvgTime" : 0,
+    "shutdown.aboveOneSec.MinTime" : -1,
+    "shutdown.aboveOneSec.MaxTime" : 0,
+    "regionServerStartupNumOps" : 0,
+    "regionServerStartupAvgTime" : 0,
+    "regionServerStartupMinTime" : 7,
+    "regionServerStartupMaxTime" : 7,
+    "compactRegionNumOps" : 0,
+    "compactRegionAvgTime" : 0,
+    "compactRegionMinTime" : -1,
+    "compactRegionMaxTime" : 0,
+    "unassign.aboveOneSec.NumOps" : 0,
+    "unassign.aboveOneSec.AvgTime" : 0,
+    "unassign.aboveOneSec.MinTime" : -1,
+    "unassign.aboveOneSec.MaxTime" : 0,
+    "balanceSwitchNumOps" : 0,
+    "balanceSwitchAvgTime" : 0,
+    "balanceSwitchMinTime" : -1,
+    "balanceSwitchMaxTime" : 0,
+    "rollHLogWriterNumOps" : 0,
+    "rollHLogWriterAvgTime" : 0,
+    "rollHLogWriterMinTime" : -1,
+    "rollHLogWriterMaxTime" : 0,
+    "splitRegionNumOps" : 0,
+    "splitRegionAvgTime" : 0,
+    "splitRegionMinTime" : -1,
+    "splitRegionMaxTime" : 0,
+    "ReceivedBytes" : 1008,
+    "isMasterRunning.aboveOneSec.NumOps" : 0,
+    "isMasterRunning.aboveOneSec.AvgTime" : 0,
+    "isMasterRunning.aboveOneSec.MinTime" : -1,
+    "isMasterRunning.aboveOneSec.MaxTime" : 0,
+    "addColumn.aboveOneSec.NumOps" : 0,
+    "addColumn.aboveOneSec.AvgTime" : 0,
+    "addColumn.aboveOneSec.MinTime" : -1,
+    "addColumn.aboveOneSec.MaxTime" : 0,
+    "createTable.aboveOneSec.NumOps" : 0,
+    "createTable.aboveOneSec.AvgTime" : 0,
+    "createTable.aboveOneSec.MinTime" : -1,
+    "createTable.aboveOneSec.MaxTime" : 0,
+    "getOnlineRegionsNumOps" : 0,
+    "getOnlineRegionsAvgTime" : 0,
+    "getOnlineRegionsMinTime" : -1,
+    "getOnlineRegionsMaxTime" : 0,
+    "closeNumOps" : 0,
+    "closeAvgTime" : 0,
+    "closeMinTime" : -1,
+    "closeMaxTime" : 0,
+    "balanceNumOps" : 0,
+    "balanceAvgTime" : 0,
+    "balanceMinTime" : -1,
+    "balanceMaxTime" : 0,
+    "getProtocolSignature.aboveOneSec.NumOps" : 0,
+    "getProtocolSignature.aboveOneSec.AvgTime" : 0,
+    "getProtocolSignature.aboveOneSec.MinTime" : -1,
+    "getProtocolSignature.aboveOneSec.MaxTime" : 0,
+    "getClusterStatusNumOps" : 0,
+    "getClusterStatusAvgTime" : 0,
+    "getClusterStatusMinTime" : -1,
+    "getClusterStatusMaxTime" : 0,
+    "balanceSwitch.aboveOneSec.NumOps" : 0,
+    "balanceSwitch.aboveOneSec.AvgTime" : 0,
+    "balanceSwitch.aboveOneSec.MinTime" : -1,
+    "balanceSwitch.aboveOneSec.MaxTime" : 0,
+    "modifyTable.aboveOneSec.NumOps" : 0,
+    "modifyTable.aboveOneSec.AvgTime" : 0,
+    "modifyTable.aboveOneSec.MinTime" : -1,
+    "modifyTable.aboveOneSec.MaxTime" : 0,
+    "appendNumOps" : 0,
+    "appendAvgTime" : 0,
+    "appendMinTime" : -1,
+    "appendMaxTime" : 0,
+    "getBlockCacheColumnFamilySummariesNumOps" : 0,
+    "getBlockCacheColumnFamilySummariesAvgTime" : 0,
+    "getBlockCacheColumnFamilySummariesMinTime" : -1,
+    "getBlockCacheColumnFamilySummariesMaxTime" : 0,
+    "synchronousBalanceSwitchNumOps" : 0,
+    "synchronousBalanceSwitchAvgTime" : 0,
+    "synchronousBalanceSwitchMinTime" : -1,
+    "synchronousBalanceSwitchMaxTime" : 0,
+    "getNumOps" : 0,
+    "getAvgTime" : 0,
+    "getMinTime" : -1,
+    "getMaxTime" : 0,
+    "stopMasterNumOps" : 0,
+    "stopMasterAvgTime" : 0,
+    "stopMasterMinTime" : -1,
+    "stopMasterMaxTime" : 0,
+    "priorityCallQueueLen" : 0,
+    "checkAndPutNumOps" : 0,
+    "checkAndPutAvgTime" : 0,
+    "checkAndPutMinTime" : -1,
+    "checkAndPutMaxTime" : 0,
+    "deleteColumnNumOps" : 0,
+    "deleteColumnAvgTime" : 0,
+    "deleteColumnMinTime" : -1,
+    "deleteColumnMaxTime" : 0,
+    "disableTable.aboveOneSec.NumOps" : 0,
+    "disableTable.aboveOneSec.AvgTime" : 0,
+    "disableTable.aboveOneSec.MinTime" : -1,
+    "disableTable.aboveOneSec.MaxTime" : 0,
+    "stopMaster.aboveOneSec.NumOps" : 0,
+    "stopMaster.aboveOneSec.AvgTime" : 0,
+    "stopMaster.aboveOneSec.MinTime" : -1,
+    "stopMaster.aboveOneSec.MaxTime" : 0,
+    "callQueueLen" : 0,
+    "replicateLogEntriesNumOps" : 0,
+    "replicateLogEntriesAvgTime" : 0,
+    "replicateLogEntriesMinTime" : -1,
+    "replicateLogEntriesMaxTime" : 0,
+    "rpcAuthorizationSuccesses" : 0,
+    "stopNumOps" : 0,
+    "stopAvgTime" : 0,
+    "stopMinTime" : -1,
+    "stopMaxTime" : 0,
+    "incrementColumnValueNumOps" : 0,
+    "incrementColumnValueAvgTime" : 0,
+    "incrementColumnValueMinTime" : -1,
+    "incrementColumnValueMaxTime" : 0,
+    "flushRegionNumOps" : 0,
+    "flushRegionAvgTime" : 0,
+    "flushRegionMinTime" : -1,
+    "flushRegionMaxTime" : 0,
+    "unassignNumOps" : 0,
+    "unassignAvgTime" : 0,
+    "unassignMinTime" : -1,
+    "unassignMaxTime" : 0,
+    "getClusterStatus.aboveOneSec.NumOps" : 0,
+    "getClusterStatus.aboveOneSec.AvgTime" : 0,
+    "getClusterStatus.aboveOneSec.MinTime" : -1,
+    "getClusterStatus.aboveOneSec.MaxTime" : 0,
+    "reportRSFatalError.aboveOneSec.NumOps" : 0,
+    "reportRSFatalError.aboveOneSec.AvgTime" : 0,
+    "reportRSFatalError.aboveOneSec.MinTime" : -1,
+    "reportRSFatalError.aboveOneSec.MaxTime" : 0,
+    "NumOpenConnections" : 1,
+    "rpcAuthenticationSuccesses" : 0,
+    "mutateRowNumOps" : 0,
+    "mutateRowAvgTime" : 0,
+    "mutateRowMinTime" : -1,
+    "mutateRowMaxTime" : 0,
+    "modifyTableNumOps" : 0,
+    "modifyTableAvgTime" : 0,
+    "modifyTableMinTime" : -1,
+    "modifyTableMaxTime" : 0,
+    "synchronousBalanceSwitch.aboveOneSec.NumOps" : 0,
+    "synchronousBalanceSwitch.aboveOneSec.AvgTime" : 0,
+    "synchronousBalanceSwitch.aboveOneSec.MinTime" : -1,
+    "synchronousBalanceSwitch.aboveOneSec.MaxTime" : 0,
+    "rpcAuthorizationFailures" : 0,
+    "getProtocolVersionNumOps" : 0,
+    "getProtocolVersionAvgTime" : 0,
+    "getProtocolVersionMinTime" : 0,
+    "getProtocolVersionMaxTime" : 1,
+    "RpcQueueTimeNumOps" : 4,
+    "RpcQueueTimeAvgTime" : 0,
+    "RpcQueueTimeMinTime" : 0,
+    "RpcQueueTimeMaxTime" : 112,
+    "checkAndDeleteNumOps" : 0,
+    "checkAndDeleteAvgTime" : 0,
+    "checkAndDeleteMinTime" : -1,
+    "checkAndDeleteMaxTime" : 0,
+    "deleteTable.aboveOneSec.NumOps" : 0,
+    "deleteTable.aboveOneSec.AvgTime" : 0,
+    "deleteTable.aboveOneSec.MinTime" : -1,
+    "deleteTable.aboveOneSec.MaxTime" : 0,
+    "isMasterRunningNumOps" : 0,
+    "isMasterRunningAvgTime" : 0,
+    "isMasterRunningMinTime" : 0,
+    "isMasterRunningMaxTime" : 1,
+    "modifyColumnNumOps" : 0,
+    "modifyColumnAvgTime" : 0,
+    "modifyColumnMinTime" : -1,
+    "modifyColumnMaxTime" : 0,
+    "lockRowNumOps" : 0,
+    "lockRowAvgTime" : 0,
+    "lockRowMinTime" : -1,
+    "lockRowMaxTime" : 0,
+    "modifyColumn.aboveOneSec.NumOps" : 0,
+    "modifyColumn.aboveOneSec.AvgTime" : 0,
+    "modifyColumn.aboveOneSec.MinTime" : -1,
+    "modifyColumn.aboveOneSec.MaxTime" : 0,
+    "regionServerReport.aboveOneSec.NumOps" : 0,
+    "regionServerReport.aboveOneSec.AvgTime" : 0,
+    "regionServerReport.aboveOneSec.MinTime" : -1,
+    "regionServerReport.aboveOneSec.MaxTime" : 0,
+    "getCompactionStateNumOps" : 0,
+    "getCompactionStateAvgTime" : 0,
+    "getCompactionStateMinTime" : -1,
+    "getCompactionStateMaxTime" : 0,
+    "assign.aboveOneSec.NumOps" : 0,
+    "assign.aboveOneSec.AvgTime" : 0,
+    "assign.aboveOneSec.MinTime" : -1,
+    "assign.aboveOneSec.MaxTime" : 0,
+    "regionServerReportNumOps" : 4,
+    "regionServerReportAvgTime" : 0,
+    "regionServerReportMinTime" : 0,
+    "regionServerReportMaxTime" : 48,
+    "deleteColumn.aboveOneSec.NumOps" : 0,
+    "deleteColumn.aboveOneSec.AvgTime" : 0,
+    "deleteColumn.aboveOneSec.MinTime" : -1,
+    "deleteColumn.aboveOneSec.MaxTime" : 0,
+    "getHTableDescriptors.aboveOneSec.NumOps" : 0,
+    "getHTableDescriptors.aboveOneSec.AvgTime" : 0,
+    "getHTableDescriptors.aboveOneSec.MinTime" : 1356,
+    "getHTableDescriptors.aboveOneSec.MaxTime" : 1763
+  }, {
+    "name" : "com.sun.management:type=HotSpotDiagnostic",
+    "modelerType" : "sun.management.HotSpotDiagnostic",
+    "DiagnosticOptions" : [ {
+      "name" : "HeapDumpBeforeFullGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "HeapDumpAfterFullGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "HeapDumpOnOutOfMemoryError",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "HeapDumpPath",
+      "origin" : "DEFAULT",
+      "value" : "",
+      "writeable" : true
+    }, {
+      "name" : "CMSAbortablePrecleanWaitMillis",
+      "origin" : "DEFAULT",
+      "value" : "100",
+      "writeable" : true
+    }, {
+      "name" : "CMSWaitDuration",
+      "origin" : "DEFAULT",
+      "value" : "2000",
+      "writeable" : true
+    }, {
+      "name" : "PrintGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintGCDetails",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintGCDateStamps",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintGCTimeStamps",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintClassHistogramBeforeFullGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintClassHistogramAfterFullGC",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintClassHistogram",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    }, {
+      "name" : "PrintConcurrentLocks",
+      "origin" : "DEFAULT",
+      "value" : "false",
+      "writeable" : true
+    } ]
+  }, {
+    "name" : "java.lang:type=MemoryPool,name=CMS Perm Gen",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "CMS Perm Gen",
+    "Type" : "NON_HEAP",
+    "Valid" : true,
+    "Usage" : {
+      "committed" : 41156608,
+      "init" : 21757952,
+      "max" : 85983232,
+      "used" : 25949032
+    },
+    "CollectionUsage" : {
+      "committed" : 29929472,
+      "init" : 21757952,
+      "max" : 85983232,
+      "used" : 24692864
+    },
+    "CollectionUsageThreshold" : 0,
+    "CollectionUsageThresholdCount" : 0,
+    "MemoryManagerNames" : [ "ConcurrentMarkSweep" ],
+    "PeakUsage" : {
+      "committed" : 41156608,
+      "init" : 21757952,
+      "max" : 85983232,
+      "used" : 25949032
+    },
+    "UsageThreshold" : 0,
+    "UsageThresholdCount" : 0,
+    "CollectionUsageThresholdExceeded" : true,
+    "CollectionUsageThresholdSupported" : true,
+    "UsageThresholdExceeded" : true,
+    "UsageThresholdSupported" : true
+  }, {
+    "name" : "java.lang:type=OperatingSystem",
+    "modelerType" : "com.sun.management.UnixOperatingSystem",
+    "MaxFileDescriptorCount" : 32768,
+    "OpenFileDescriptorCount" : 181,
+    "CommittedVirtualMemorySize" : 1626152960,
+    "FreePhysicalMemorySize" : 4532117504,
+    "FreeSwapSpaceSize" : 0,
+    "ProcessCpuTime" : 382410000000,
+    "TotalPhysicalMemorySize" : 7694454784,
+    "TotalSwapSpaceSize" : 0,
+    "Name" : "Linux",
+    "Version" : "2.6.32-220.17.1.el6.centos.plus.x86_64",
+    "AvailableProcessors" : 2,
+    "Arch" : "amd64",
+    "SystemLoadAverage" : 0.54
+  }, {
+    "name" : "java.lang:type=MemoryPool,name=Par Survivor Space",
+    "modelerType" : "sun.management.MemoryPoolImpl",
+    "Name" : "Par Survivor Space",
+    "Type" : "HEAP",
+    "Valid" : true,
+    "Usage" : {
+      "committed" : 2162688,
+      "init" : 2162688,
+      "max" : 4325376,
+      "used" : 100136
+    },
+    "CollectionUsage" : {
+      "committed" : 2162688,
+      "init" : 2162688,
+      "max" : 4325376,
+      "used" : 100136
+    },
+    "CollectionUsageThreshold" : 0,
+    "CollectionUsageThresholdCount" : 0,
+    "MemoryManagerNames" : [ "ConcurrentMarkSweep", "ParNew" ],
+    "PeakUsage" : {
+      "committed" : 2162688,
+      "init" : 2162688,
+      "max" : 4325376,
+      "used" : 2122944
+    },
+    "CollectionUsageThresholdExceeded" : true,
+    "CollectionUsageThresholdSupported" : true,
+    "UsageThresholdSupported" : false
+  }, {
+    "name" : "JMImplementation:type=MBeanServerDelegate",
+    "modelerType" : "javax.management.MBeanServerDelegate",
+    "MBeanServerId" : "ip-10-85-118-178.ec2.internal_1358364478079",
+    "SpecificationName" : "Java Management Extensions",
+    "SpecificationVersion" : "1.4",
+    "SpecificationVendor" : "Sun Microsystems",
+    "ImplementationName" : "JMX",
+    "ImplementationVersion" : "1.6.0_31-b04",
+    "ImplementationVendor" : "Sun Microsystems"
+  }, {
+    "name" : "java.lang:type=MemoryManager,name=CodeCacheManager",
+    "modelerType" : "sun.management.MemoryManagerImpl",
+    "Name" : "CodeCacheManager",
+    "Valid" : true,
+    "MemoryPoolNames" : [ "Code Cache" ]
+  } ]
+}

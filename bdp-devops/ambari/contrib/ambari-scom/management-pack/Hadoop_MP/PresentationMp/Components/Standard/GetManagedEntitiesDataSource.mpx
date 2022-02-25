@@ -1,0 +1,87 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Component.GetManagedEntitiesDataSource"
+                     Base="Ambari.SCOM.Presentation.Component.CommonDataSourceInterface" Accessibility="Internal">
+        <Property Name="CriteriaString" Type="xsd://string" BindingDirection="In" />
+        <Property Name="BaseTypeNames" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType[]" BindingDirection="In" />
+        <Property Name="MaxEntities" Type="xsd://int" BindingDirection="In" />
+        <Property Name="TargetEntities" Type="mpinstance://System.Library!System.Entity[]" BindingDirection="In" />
+        <Property Name="RecursionTypeNames" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType[]" BindingDirection="In" />
+        <Property Name="SortProperties" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataSourceTypes/SortValueDefinition[]" BindingDirection="In" />
+      </ComponentType>
+    </ComponentTypes>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Component.GetManagedEntitiesDataSourceImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Component.GetManagedEntitiesDataSource"
+                               Platform="Wpf, Silverlight" Accessibility="Internal">
+        <Unit>
+          <ContractFactory>Microsoft.EnterpriseManagement.Monitoring.UnitComponents.Data.GetManagedEntitiesDataSource</ContractFactory>
+          <Property Name="ConnectionSessionTicket" Direction="In">
+            <Reference>$Service/ConnectionSessionTicket$</Reference>
+          </Property>
+          <Property Name="IsBusy" Direction="Out">
+            <Reference>$Service/IsBusy$</Reference>
+          </Property>
+          <Property Name="LastError" Direction="Out">
+            <Reference>$Service/LastError$</Reference>
+          </Property>
+          <Property Name="Refresh" Direction="In">
+            <Reference>$Property/Refresh$</Reference>
+          </Property>
+          <Property Name="Properties" Direction="In">
+            <Reference>$Property/Properties$</Reference>
+          </Property>
+          <Property Name="DataSourceIncludeProperties" Direction="In">
+            <Reference>$Property/DataSourceIncludeProperties$</Reference>
+          </Property>
+          <Property Name="Output" Direction="Out">
+            <Reference>$Property/Output$</Reference>
+          </Property>
+          <Property Name="OutputItem" Direction="Out">
+            <Reference>$Property/OutputItem$</Reference>
+          </Property>
+          <Property Name="DisplayStrings" Direction="Out">
+            <Reference>$Property/DisplayStrings$</Reference>
+          </Property>
+          <Property Name="CriteriaString" Direction="In">
+            <Reference>$Property/CriteriaString$</Reference>
+          </Property>
+          <Property Name="BaseTypeNames" Direction="In">
+            <Reference>$Property/BaseTypeNames$</Reference>
+          </Property>
+          <Property Name="MaxEntities" Direction="In">
+            <Reference>$Property/MaxEntities$</Reference>
+          </Property>
+          <Property Name="TargetEntities" Direction="In">
+            <Reference>$Property/TargetEntities$</Reference>
+          </Property>
+          <Property Name="RecursionTypeNames" Direction="In">
+            <Reference>$Property/RecursionTypeNames$</Reference>
+          </Property>
+          <Property Name="SortProperties" Direction="In">
+            <Reference>$Property/SortProperties$</Reference>
+          </Property>
+        </Unit>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+</ManagementPackFragment>

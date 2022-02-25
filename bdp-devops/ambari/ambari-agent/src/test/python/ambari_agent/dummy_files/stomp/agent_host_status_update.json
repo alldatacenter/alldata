@@ -1,0 +1,32 @@
+{
+  "agentEnv":{
+    "transparentHugePage":"always",
+    "hostHealth":{
+      "agentTimeStampAtReporting":1490791042327,
+      "activeJavaProcs":[
+
+      ],
+      "liveServices":[
+        {
+          "status":"Healthy",
+          "name":"ntpd or chronyd",
+          "desc":""
+        }
+      ]
+    },
+    "reverseLookup":true,
+    "alternatives":[
+
+    ],
+    "hasUnlimitedJcePolicy":true,
+    "umask":"23",
+    "firewallName":"iptables",
+    "stackFoldersAndFiles":[
+
+    ],
+    "existingUsers":[
+
+    ],
+    "firewallRunning":true
+  }
+}

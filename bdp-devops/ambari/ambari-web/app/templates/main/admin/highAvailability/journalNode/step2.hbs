@@ -1,0 +1,96 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="wizard-content col-md-9">
+  <h4 class="step-title">{{t admin.manageJournalNode.wizard.step2.header}}</h4>
+  <p class="step-description">
+    {{t admin.manageJournalNode.wizard.step3.confirm.hosts.body}}
+  </p>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div id="manage-journal-node-step2-content" class="well pre-scrollable">
+        <div id="step8-info">
+          <table id="manage-journal-node-step2-review-table">
+            {{#if view.journalNodesToAdd.length}}
+              <tr>
+                <td>{{t admin.highAvailability.wizard.step3.journalNode}}</td>
+                <td>
+                  <ul>
+                    {{#each item in view.journalNodesToAdd}}
+                      <li>{{item}}</li>
+                    {{/each}}
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    {{#each item in view.journalNodesToAdd}}
+                      <li><span class="to-be-installed-green"><i class="icon-plus"></i>
+                                &nbsp;{{t admin.highAvailability.wizard.step3.toBeInstalled}}</span></li>
+                    {{/each}}
+                  </ul>
+                </td>
+              </tr>
+            {{/if}}
+
+            {{#if view.journalNodesToDelete.length}}
+              <tr>
+                <td>{{t admin.highAvailability.wizard.step3.journalNode}}</td>
+                <td>
+                  <ul>
+                    {{#each item in view.journalNodesToDelete}}
+                      <li>{{item}}</li>
+                    {{/each}}
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    {{#each item in view.journalNodesToDelete}}
+                      <li><span class="to-be-disabled-red"><i class="icon-minus"></i>
+                                &nbsp;{{t admin.highAvailability.wizard.step3.toBeDeleted}}</span></li>
+                    {{/each}}
+                  </ul>
+                </td>
+              </tr>
+            {{/if}}
+          </table>
+        </div>
+      </div>
+      <div id="serviceConfig">
+        {{#if controller.isLoaded}}
+          <div class="alert alert-info">
+            {{{t admin.manageJournalNode.wizard.step3.confirm.config.body}}}
+          </div>
+          {{view App.ServiceConfigView isNotEditableBinding="controller.isNotEditable"}}
+        {{else}}
+          {{view App.SpinnerView}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    <a class="btn" {{action back}}>&larr; {{t common.back}}</a>
+    <a class="btn btn-success pull-right" {{bindAttr disabled="controller.isNextDisabled"}} {{action next}}>{{t common.next}} &rarr;</a>
+    {{#if App.router.nextBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="pull-right"}}
+    {{/if}}
+  </div>
+</div>
+

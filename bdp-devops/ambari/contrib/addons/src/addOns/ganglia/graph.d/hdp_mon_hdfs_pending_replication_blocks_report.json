@@ -1,0 +1,10 @@
+{
+   "report_name" : "hdfs_pending_replication_blocks_report",
+   "report_type" : "standard",
+   "title" : "HDFS Blocks Pending Replication",
+   "vertical_label" : "Block count",
+   "series" : [
+      { "metric": "dfs.FSNamesystem.PendingReplicationBlocks", "color": "ff0000", "label": "Blocks Pending Replication", 
+        "line_width": "2", "type": "line" }
+   ]
+}

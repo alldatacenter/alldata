@@ -1,0 +1,150 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@import 'common.less';
+
+@button-width: 150px;
+
+#config-versions-control {
+  .dropdown-menu {
+    min-width: 600px;
+    padding-bottom: 8px;
+    li {
+      padding: 3px 20px;
+    }
+  }
+  .versions-list {
+    max-height: 405px;
+    overflow-y: auto;
+    padding-left: 0;
+    margin-bottom: 0;
+    li {
+      list-style-type: none;
+    }
+  }
+  .bottom-shadow {
+    box-shadow: inset 0 0 0 @border-color, inset 0px -10px 8px -8px @border-color;
+  }
+  .grey-text {
+    vertical-align: middle;
+    color: @top-nav-brand-color;
+  }
+  .close {
+    vertical-align: middle;
+  }
+  .current-color {
+    color: @health-status-green;
+  }
+  .notes-color {
+    color: #666;
+  }
+  .version-info.selected {
+    background-color: rgb(242, 249, 242);
+    border: 2px solid @border-color;
+    box-shadow: none;
+  }
+  .btn.dropdown-toggle {
+    padding: 10px;
+    text-align: left;
+    span {
+      text-transform: capitalize;
+    }
+    strong {
+      margin-left: 10px;
+      margin-right: 5px;
+    }
+  }
+  .search-input {
+    width: 100%;
+    margin: 5px 0 10px 0;
+    .btn {
+      padding: 10px;
+    }
+  }
+  .version-info {
+    border: 1px solid @border-color;
+    box-shadow: 0 0 5px 2px @border-color;
+    border-radius: 3px;
+    padding: 0 10px;
+    width: 93%;
+    display: inline-block;
+    cursor: pointer;
+    min-height: 60px;
+  }
+  .compare-button {
+    width: 5%;
+    vertical-align: top;
+    padding: 0 6px;
+    margin: 15px 0 0 6px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .compare-bar {
+    background-color: @border-color;
+    padding: 10px 15px;
+    .compare-label {
+      vertical-align: middle;
+    }
+  }
+}
+
+.host-configs {
+  .config-layout {
+    margin-bottom: 10px;
+  }
+}
+
+.config-manage-nav {
+  .config-groups-dropdown {
+    display: inline-block;
+    width: @button-width;
+    .btn.dropdown-toggle {
+      text-transform: none;
+      width: 100%;
+      text-align: left;
+      padding: 10px;
+    }
+  }
+  .filter-combobox {
+    display: inline-block;
+    width: @button-width;
+  }
+  .spinner {
+    background-size: 20px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+div.config-manage-nav.pull-bottom {
+  margin-top: 0;
+}
+
+.config-manage-nav.pull-top {
+  margin-top: -42px;
+}
+
+.configs-save-panel {
+  position: fixed;
+  background: white;
+  padding: 15px 30px 20px;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 3;
+  box-shadow: 0 -3px 5px 2px @border-color;
+}

@@ -1,0 +1,56 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="row">
+  <div class={{get-value-from-columns columnHeaders 'name' 'columnClass'}}>
+    {{#if file.isDirectory}}
+      {{#link-to 'files' (query-params path=file.path filter='') bubbles=false title=file.name}}{{fa-icon "folder-o"}} {{shorten-text file.name 40}} {{/link-to}}
+    {{else}}
+      <span title={{ file.name }}>{{fa-icon "file-o"}} {{shorten-text file.name 40}}</span>
+    {{/if}}
+  </div>
+  <div class={{get-value-from-columns columnHeaders 'size' 'columnClass'}}>
+    {{#unless file.isDirectory}}
+      {{size-humanize file.size}}
+    {{else}}
+      --
+    {{/unless}}
+  </div>
+  <div class={{get-value-from-columns columnHeaders 'date' 'columnClass'}}>
+    {{show-date file.modificationTime 'YYYY-MM-DD HH:mm'}}
+  </div>
+  <div class={{get-value-from-columns columnHeaders 'owner' 'columnClass'}}>
+    {{shorten-text file.owner 20}}
+  </div>
+  <div class={{get-value-from-columns columnHeaders 'group' 'columnClass'}}>
+    {{shorten-text file.group 10}}
+  </div>
+  <div class={{get-value-from-columns columnHeaders 'permission' 'columnClass'}}>
+    {{show-permission-string file}}
+  </div>
+  <div class={{get-value-from-columns columnHeaders 'erasureCodingPolicyName' 'columnClass'}}>
+    {{file.erasureCodingPolicyName}}
+  </div>
+  <div class={{get-value-from-columns columnHeaders 'isEncrypted' 'columnClass'}}>
+    {{#if file.isEncrypted}}
+      Yes
+    {{else}}
+      No
+    {{/if}}
+  </div>
+</div>

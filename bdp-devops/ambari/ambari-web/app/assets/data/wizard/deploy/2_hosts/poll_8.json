@@ -1,0 +1,40 @@
+{
+  "href" : "http://localhost:8080/api/clusters/mycluster/requests/2",
+  "Requests" : {
+    "id" : 2
+  },
+  "tasks" : [
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/2/tasks/1",
+      "Tasks" : {
+        "id" : "1",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "IN_PROGRESS",
+        "command" : "START",
+        "start_time" : "-1",
+        "role" : "DATANODE",
+        "stderr" : "",
+        "host_name" : "localhost.localdomain",
+        "stage_id" : "1"
+      }
+    },
+    {
+      "href" : "http://localhost:8080/api/clusters/mycluster/requests/2/tasks/2",
+      "Tasks" : {
+        "id" : "2",
+        "attempt_cnt" : "0",
+        "exit_code" : "999",
+        "stdout" : "",
+        "status" : "COMPLETED",
+        "command" : "START",
+        "start_time" : "-1",
+        "role" : "NAMENODE",
+        "stderr" : "",
+        "host_name" : "localhost.localdomain",
+        "stage_id" : "1"
+      }
+    }
+  ]
+}

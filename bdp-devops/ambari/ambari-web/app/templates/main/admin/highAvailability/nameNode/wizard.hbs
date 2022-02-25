@@ -1,0 +1,36 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="wizard">
+  <div class="wizard-body row">
+    <div class="wizard-nav col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li {{bindAttr class="isStep1:active view.isStep1Disabled:disabled view.isStep1Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep1 target="controller"}}><i class="step-marker"><span class="step-index">1</span></i><p class="step-name">{{t admin.highAvailability.wizard.step1.header}}</p></a></li>
+        <li {{bindAttr class="isStep2:active view.isStep2Disabled:disabled view.isStep2Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep2 target="controller"}}><i class="step-marker"><span class="step-index">2</span></i><p class="step-name">{{t admin.highAvailability.wizard.step2.header}}</p></a></li>
+        <li {{bindAttr class="isStep3:active view.isStep3Disabled:disabled view.isStep3Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep3 target="controller"}}><i class="step-marker"><span class="step-index">3</span></i><p class="step-name">{{t admin.highAvailability.wizard.step3.header}}</p></a></li>
+        <li {{bindAttr class="isStep4:active view.isStep4Disabled:disabled view.isStep4Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep4 target="controller"}}><i class="step-marker"><span class="step-index">4</span></i><p class="step-name">{{t admin.highAvailability.wizard.step4.header}}</p></a></li>
+        <li {{bindAttr class="isStep5:active view.isStep5Disabled:disabled view.isStep5Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep5 target="controller"}}><i class="step-marker"><span class="step-index">5</span></i><p class="step-name">{{t admin.highAvailability.wizard.step5.header}}</p></a></li>
+        <li {{bindAttr class="isStep6:active view.isStep6Disabled:disabled view.isStep6Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep6 target="controller"}}><i class="step-marker"><span class="step-index">6</span></i><p class="step-name">{{t admin.highAvailability.wizard.step6.header}}</p></a></li>
+        <li {{bindAttr class="isStep7:active view.isStep7Disabled:disabled view.isStep7Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep7 target="controller"}}><i class="step-marker"><span class="step-index">7</span></i><p class="step-name">{{t admin.highAvailability.wizard.step7.header}}</p></a></li>
+        <li {{bindAttr class="isStep8:active view.isStep8Disabled:disabled view.isStep8Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep8 target="controller"}}><i class="step-marker"><span class="step-index">8</span></i><p class="step-name">{{t admin.highAvailability.wizard.step8.header}}</p></a></li>
+        <li {{bindAttr class="isStep9:active view.isStep9Disabled:disabled view.isStep9Completed:completed"}}><a href="javascript:void(null);"  {{action gotoStep9 target="controller"}}><i class="step-marker"><span class="step-index">9</span></i><p class="step-name">{{t admin.highAvailability.wizard.step9.header}}</p></a></li>
+      </ul>
+    </div>
+    {{outlet}}
+  </div>
+</div>

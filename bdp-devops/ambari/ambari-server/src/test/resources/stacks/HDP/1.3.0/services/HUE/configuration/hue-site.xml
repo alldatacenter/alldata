@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more# Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with# contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.# this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0# The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with# (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at# the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0#     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software# Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,# distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and# See the License for the specific language governing permissions and
+   limitations under the License.# limitations under the License.
+-->
+<configuration>
+  <!-- General Hue server configuration properties -->
+  <property>
+    <name>send_debug_messages</name>
+    <value>1</value>
+    <description/>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>database_logging</name>
+    <value>0</value>
+    <description>To show database transactions, set database_logging to 1.
+      default, database_logging=0</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>secret_key</name>
+    <value/>
+    <description>This is used for secure hashing in the session store.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>http_host</name>
+    <value>0.0.0.0</value>
+    <description>Webserver listens on this address and port</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>http_port</name>
+    <value>8000</value>
+    <description>Webserver listens on this address and port</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>time_zone</name>
+    <value>America/Los_Angeles</value>
+    <description>Time zone name</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>django_debug_mode</name>
+    <value>1</value>
+    <description>Turn off debug</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>use_cherrypy_server</name>
+    <value>false</value>
+    <description>Set to true to use CherryPy as the webserver, set to false
+      to use Spawning as the webserver. Defaults to Spawning if
+      key is not specified.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>http_500_debug_mode</name>
+    <value>1</value>
+    <description>Turn off backtrace for server error</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>server_user</name>
+    <value/>
+    <description>Webserver runs as this user</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>server_group</name>
+    <value/>
+    <description>Webserver runs as this user</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>backend_auth_policy</name>
+    <value>desktop.auth.backend.AllowAllBackend</value>
+    <description>Authentication backend.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- Hue Database configuration properties -->
+  <property>
+    <name>db_engine</name>
+    <value>mysql</value>
+    <description>Configuration options for specifying the Desktop Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>db_host</name>
+    <value>localhost</value>
+    <description>Configuration options for specifying the Desktop Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>db_port</name>
+    <value>3306</value>
+    <description>Configuration options for specifying the Desktop Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>db_user</name>
+    <value>sandbox</value>
+    <description>Configuration options for specifying the Desktop Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>db_password</name>
+    <value>1111</value>
+    <description>Configuration options for specifying the Desktop Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>db_name</name>
+    <value>sandbox</value>
+    <description>Configuration options for specifying the Desktop Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- Hue Email configuration properties -->
+  <property>
+    <name>smtp_host</name>
+    <value>localhost</value>
+    <description>The SMTP server information for email notification delivery.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>smtp_port</name>
+    <value>25</value>
+    <description>The SMTP server information for email notification delivery.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>smtp_user</name>
+    <value/>
+    <description>The SMTP server information for email notification delivery.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>smtp_password</name>
+    <value>25</value>
+    <description>The SMTP server information for email notification delivery.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>tls</name>
+    <value>no</value>
+    <description>Whether to use a TLS (secure) connection when talking to the SMTP server.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>default_from_email</name>
+    <value>sandbox@hortonworks.com</value>
+    <description>The SMTP server information for email notification delivery.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- Hue Hadoop configuration properties -->
+  <property>
+    <name>fs_defaultfs</name>
+    <value/>
+    <description>Enter the filesystem uri. E.g
+      .:hdfs://sandbox:8020</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>webhdfs_url</name>
+    <value/>
+    <description>Use WebHdfs/HttpFs as the communication mechanism. To fallback to
+      using the Thrift plugin (used in Hue 1.x), this must be uncommented
+      and explicitly set to the empty value.
+      Value e.g.: http://localhost:50070/webhdfs/v1/</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>jobtracker_host</name>
+    <value/>
+    <description>Enter the host on which you are running the Hadoop JobTracker.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>jobtracker_port</name>
+    <value>50030</value>
+    <description>The port where the JobTracker IPC listens on.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hadoop_mapred_home</name>
+    <value>/usr/lib/hadoop/lib</value>
+    <description>The SMTP server information for email notification delivery.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>resourcemanager_host</name>
+    <value/>
+    <description>Enter the host on which you are running the ResourceManager.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>resourcemanager_port</name>
+    <value/>
+    <description>The port where the ResourceManager IPC listens on.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- Hue Beeswax configuration properties -->
+  <property>
+    <name>hive_home_dir</name>
+    <value/>
+    <description>Hive home directory.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hive_conf_dir</name>
+    <value/>
+    <description>Hive configuration directory, where hive-site.xml is
+      located.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>templeton_url</name>
+    <value/>
+    <description>WebHcat http URL</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- Hue shell types configuration -->
+  <property>
+    <name>pig_nice_name</name>
+    <value/>
+    <description>Define and configure a new shell type pig</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>pig_shell_command</name>
+    <value>/usr/bin/pig -l /dev/null</value>
+    <description>Define and configure a new shell type pig.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>pig_java_home</name>
+    <value/>
+    <description>Define and configure a new shell type pig.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_nice_name</name>
+    <value>HBase Shell</value>
+    <description>Define and configure a new shell type hbase</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_shell_command</name>
+    <value>/usr/bin/hbase shell</value>
+    <description>Define and configure a new shell type hbase.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>bash_nice_name</name>
+    <value/>
+    <description>Define and configure a new shell type bash for testing
+      only</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>bash_shell_command</name>
+    <value>/bin/bash</value>
+    <description>Define and configure a new shell type bash for testing only
+      .</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- Hue Settings for the User Admin application -->
+  <property>
+    <name>whitelist</name>
+    <value>(localhost|127\.0\.0\.1):(50030|50070|50060|50075|50111)</value>
+    <description>proxy settings</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<!-- ResourceManager -->
+
+  <property>
+    <name>yarn.resourcemanager.resource-tracker.address</name>
+    <value>localhost:8025</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.scheduler.address</name>
+    <value>localhost:8030</value>
+    <description>The address of the scheduler interface.</description>
+  </property>
+  
+  <property>
+    <name>yarn.resourcemanager.address</name>
+    <value>localhost:8050</value>
+    <description>
+      The address of the applications manager interface in the
+      RM.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.admin.address</name>
+    <value>localhost:8141</value>
+    <description>The address of the RM admin interface.</description>
+  </property>
+
+  <property>
+   <name>yarn.resourcemanager.scheduler.class</name>
+   <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+    <description>The class to use as the resource scheduler.</description>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>512</value>
+    <description>
+      The minimum allocation for every container request at the RM,
+      in MBs. Memory requests lower than this won't take effect,
+      and the specified value will get allocated at minimum.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>6144</value>
+    <description>
+      The maximum allocation for every container request at the RM,
+      in MBs. Memory requests higher than this won't take effect,
+      and will get capped to this value.
+    </description>
+  </property>
+  
+  <property>
+    <name>yarn.acl.enable</name>
+    <value>true</value>
+  </property>
+  
+  <property>
+    <name>yarn.admin.acl</name>
+    <value>*</value>
+  </property>
+
+<!-- NodeManager -->
+
+  <property>
+    <name>yarn.nodemanager.address</name>
+    <value>0.0.0.0:45454</value>
+    <description>The address of the container manager in the NM.</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>10240</value>
+    <description>Amount of physical memory, in MB, that can be allocated
+      for containers.</description>
+  </property>
+
+  <property>
+    <name>yarn.application.classpath</name>
+    <value>/etc/hadoop/conf,/usr/lib/hadoop/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop-hdfs/*,/usr/lib/hadoop-hdfs/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-mapreduce/*,/usr/lib/hadoop-mapreduce/lib/*</value>
+  <description>Classpath for typical applications.</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.vmem-pmem-ratio</name>
+    <value>2.1</value>
+    <description>Ratio between virtual memory to physical memory when
+    setting memory limits for containers. Container allocations are
+    expressed in terms of physical memory, and virtual memory usage
+    is allowed to exceed this allocation by this ratio.
+    </description>
+  </property>
+  
+  <property>
+    <name>yarn.nodemanager.container-executor.class</name>
+    <value>org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor</value>
+    <description>ContainerExecutor for launching containers</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.linux-container-executor.group</name>
+    <value>hadoop</value>
+    <description>Unix group of the NodeManager</description>
+  </property>
+ 
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce.shuffle</value>
+    <description>Auxilliary services of NodeManager</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+    <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.log-dirs</name>
+    <value></value>
+    <description>
+      Where to store container logs. An application's localized log directory
+      will be found in ${yarn.nodemanager.log-dirs}/application_${appid}.
+      Individual containers' log directories will be below this, in directories
+      named container_{$contid}. Each container directory will contain the files
+      stderr, stdin, and syslog generated by that container.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.local-dirs</name>
+    <value></value>
+    <description>
+      List of directories to store localized files in. An
+      application's localized file directory will be found in:
+      ${yarn.nodemanager.local-dirs}/usercache/${user}/appcache/application_${appid}.
+      Individual containers' work directories, called container_${contid}, will
+      be subdirectories of this.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.container-monitor.interval-ms</name>
+    <value>3000</value>
+    <description>
+      The interval, in milliseconds, for which the node manager
+      waits  between two cycles of monitoring its containers' memory usage.
+    </description>
+  </property>
+
+  <!-- 
+  <property>
+    <name>yarn.nodemanager.health-checker.script.path</name>
+    <value>/etc/hadoop/conf/health_check_nodemanager</value>
+    <description>The health check script to run.</description>
+  </property>
+   -->
+
+  <property>
+    <name>yarn.nodemanager.health-checker.interval-ms</name>
+    <value>135000</value>
+    <description>Frequency of running node health script.</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.health-checker.script.timeout-ms</name>
+    <value>60000</value>
+    <description>Script time out period.</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.log.retain-second</name>
+    <value>604800</value>
+    <description>
+      Time in seconds to retain user logs. Only applicable if
+      log aggregation is disabled.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.log-aggregation-enable</name>
+    <value>true</value>
+    <description>Whether to enable log aggregation</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.remote-app-log-dir</name>
+    <value>/app-logs</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.remote-app-log-dir-suffix</name>
+    <value>logs</value>
+    <description>
+      The remote log dir will be created at
+      {yarn.nodemanager.remote-app-log-dir}/${user}/{thisParam}.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.log-aggregation.compression-type</name>
+    <value>gz</value>
+    <description>
+      T-file compression types used to compress aggregated logs.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.delete.debug-delay-sec</name>
+    <value>0</value>
+    <description>
+      Number of seconds after an application finishes before the nodemanager's
+      DeletionService will delete the application's localized file directory
+      and log directory.
+
+      To diagnose Yarn application problems, set this property's value large
+      enough (for example, to 600 = 10 minutes) to permit examination of these
+      directories. After changing the property's value, you must restart the
+      nodemanager in order for it to have an effect.
+
+      The roots of Yarn applications' work directories is configurable with
+      the yarn.nodemanager.local-dirs property (see below), and the roots
+      of the Yarn applications' log directories is configurable with the
+      yarn.nodemanager.log-dirs property (see also below).
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.log-aggregation.retain-seconds</name>
+    <value>2592000</value>
+    <description>
+      How long to keep aggregation logs before deleting them. -1 disables.
+      Be careful set this too small and you will spam the name node.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.admin-env</name>
+    <value>MALLOC_ARENA_MAX=$MALLOC_ARENA_MAX</value>
+    <description>
+      Environment variables that should be forwarded from the NodeManager's
+      environment to the container's.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.disk-health-checker.min-healthy-disks</name>
+    <value>0.25</value>
+    <description>
+      The minimum fraction of number of disks to be healthy for the nodemanager
+      to launch new containers. This correspond to both
+      yarn-nodemanager.local-dirs and yarn.nodemanager.log-dirs. i.e.
+      If there are less number of healthy local-dirs (or log-dirs) available,
+      then new containers will not be launched on this node.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.am.max-attempts</name>
+    <value>2</value>
+    <description>
+      The maximum number of application attempts. It's a global
+      setting for all application masters. Each application master can specify
+      its individual maximum number of application attempts via the API, but the
+      individual number cannot be more than the global upper bound. If it is,
+      the resourcemanager will override it. The default number is set to 2, to
+      allow at least one retry for AM.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.webapp.address</name>
+    <value>localhost:8088</value>
+    <description>
+      The address of the RM web application.
+    </description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.vmem-check-enabled</name>
+    <value>false</value>
+    <description>
+      Whether virtual memory limits will be enforced for containers.
+    </description>
+  </property>
+
+</configuration>

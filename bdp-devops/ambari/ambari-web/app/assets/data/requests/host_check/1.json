@@ -1,0 +1,89 @@
+{
+  "tasks": [
+    {
+      "href": "http://192.168.56.101:8080/api/v1/requests/58/tasks/116",
+      "Tasks": {
+        "attempt_cnt": 0,
+        "command": "ACTIONEXECUTE",
+        "command_detail": "check_host ACTIONEXECUTE",
+        "end_time": -1,
+        "exit_code": 999,
+        "host_name": "dev01.hortonworks.com",
+        "id": 116,
+        "request_id": 58,
+        "role": "check_host",
+        "stage_id": 1,
+        "start_time": -1,
+        "status": "COMPLETED",
+        "stderr": "",
+        "stdout": "",
+        "structured_out": {
+          "last_agent_env_check": {
+            "failures": [
+              {
+                "type": "FORWARD_LOOKUP",
+                "host": "foobar",
+                "cause": [-3, "Temporary failure in name resolution"]
+              },
+              {
+                "type": "FORWARD_LOOKUP",
+                "host": "!!!",
+                "cause": [-3, "Temporary failure in name resolution"]
+              }
+            ],
+            "failed_count": 2,
+            "success_count": 3,
+            "exit_code": "0",
+            "message": "There were 2 host(s) that could not resolve to an IP address."
+          }
+        }
+      }
+    },
+    {
+      "href": "http://192.168.56.101:8080/api/v1/requests/58/tasks/117",
+      "Tasks": {
+        "attempt_cnt": 0,
+        "command": "ACTIONEXECUTE",
+        "command_detail": "check_host ACTIONEXECUTE",
+        "end_time": -1,
+        "exit_code": 999,
+        "host_name": "dev02.hortonworks.com",
+        "id": 116,
+        "request_id": 58,
+        "role": "check_host",
+        "stage_id": 1,
+        "start_time": -1,
+        "status": "COMPLETED",
+        "stderr": "",
+        "stdout": "",
+        "structured_out": {
+          "last_agent_env_check": {
+            "failed_count": "0",
+            "failures": [],
+            "success_count": "5"
+          }
+        }
+      }
+    },
+    {
+      "href": "http://192.168.56.101:8080/api/v1/requests/58/tasks/118",
+      "Tasks": {
+        "attempt_cnt": 0,
+        "command": "ACTIONEXECUTE",
+        "command_detail": "check_host ACTIONEXECUTE",
+        "end_time": -1,
+        "exit_code": 999,
+        "host_name": "dev03.hortonworks.com",
+        "id": 116,
+        "request_id": 58,
+        "role": "check_host",
+        "stage_id": 1,
+        "start_time": -1,
+        "status": "FAILED",
+        "stderr": "",
+        "stdout": "",
+        "structured_out": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<configuration>
+
+  
+  <property>
+    <name>content</name>
+    <display-name>Template for logback.xml</display-name>                    
+    <value>
+&lt;!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--&gt;
+
+&lt;configuration scan="true" scanPeriod="30 seconds"&gt;
+    &lt;contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"&gt;
+        &lt;resetJUL&gt;true&lt;/resetJUL&gt;
+    &lt;/contextListener&gt;
+
+    &lt;appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"&gt;
+        &lt;file&gt;${org.apache.nifi.bootstrap.config.log.dir}/nifi-app.log&lt;/file&gt;
+        &lt;rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"&gt;
+            &lt;!--
+              For daily rollover, use 'app_%d.log'.
+              For hourly rollover, use 'app_%d{yyyy-MM-dd_HH}.log'.
+              To GZIP rolled files, replace '.log' with '.log.gz'.
+              To ZIP rolled files, replace '.log' with '.log.zip'.
+            --&gt;
+            &lt;fileNamePattern&gt;${org.apache.nifi.bootstrap.config.log.dir}/nifi-app_%d{yyyy-MM-dd_HH}.%i.log.gz&lt;/fileNamePattern&gt;
+            &lt;timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"&gt;
+                &lt;maxFileSize&gt;100MB&lt;/maxFileSize&gt;
+            &lt;/timeBasedFileNamingAndTriggeringPolicy&gt;
+            &lt;!-- keep 30 log files worth of history --&gt;
+            &lt;maxHistory&gt;30&lt;/maxHistory&gt;
+        &lt;/rollingPolicy&gt;
+        &lt;encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt;
+            &lt;pattern&gt;%date %level [%thread] %logger{40} %msg%n&lt;/pattern&gt;
+            &lt;immediateFlush&gt;true&lt;/immediateFlush&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+
+    &lt;appender name="USER_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"&gt;
+        &lt;file&gt;${org.apache.nifi.bootstrap.config.log.dir}/nifi-user.log&lt;/file&gt;
+        &lt;rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"&gt;
+            &lt;!--
+              For daily rollover, use 'user_%d.log'.
+              For hourly rollover, use 'user_%d{yyyy-MM-dd_HH}.log'.
+              To GZIP rolled files, replace '.log' with '.log.gz'.
+              To ZIP rolled files, replace '.log' with '.log.zip'.
+            --&gt;
+            &lt;fileNamePattern&gt;${org.apache.nifi.bootstrap.config.log.dir}/nifi-user_%d.log.gz&lt;/fileNamePattern&gt;
+            &lt;!-- keep 30 log files worth of history --&gt;
+            &lt;maxHistory&gt;30&lt;/maxHistory&gt;
+        &lt;/rollingPolicy&gt;
+        &lt;encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt;
+            &lt;pattern&gt;%date %level [%thread] %logger{40} %msg%n&lt;/pattern&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+
+    &lt;appender name="BOOTSTRAP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"&gt;
+        &lt;file&gt;${org.apache.nifi.bootstrap.config.log.dir}/nifi-bootstrap.log&lt;/file&gt;
+        &lt;rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"&gt;
+            &lt;!--
+              For daily rollover, use 'user_%d.log'.
+              For hourly rollover, use 'user_%d{yyyy-MM-dd_HH}.log'.
+              To GZIP rolled files, replace '.log' with '.log.gz'.
+              To ZIP rolled files, replace '.log' with '.log.zip'.
+            --&gt;
+            &lt;fileNamePattern&gt;${org.apache.nifi.bootstrap.config.log.dir}/nifi-bootstrap_%d.log.gz&lt;/fileNamePattern&gt;
+            &lt;!-- keep 5 log files worth of history --&gt;
+            &lt;maxHistory&gt;5&lt;/maxHistory&gt;
+        &lt;/rollingPolicy&gt;
+        &lt;encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt;
+            &lt;pattern&gt;%date %level [%thread] %logger{40} %msg%n&lt;/pattern&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+
+    &lt;appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender"&gt;
+        &lt;encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt;
+            &lt;pattern&gt;%date %level [%thread] %logger{40} %msg%n&lt;/pattern&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+
+    &lt;!-- valid logging levels: TRACE, DEBUG, INFO, WARN, ERROR --&gt;
+
+    &lt;logger name="org.apache.nifi" level="INFO"/&gt;
+    &lt;logger name="org.apache.nifi.processors" level="WARN"/&gt;
+    &lt;logger name="org.apache.nifi.processors.standard.LogAttribute" level="INFO"/&gt;
+    &lt;logger name="org.apache.nifi.controller.repository.StandardProcessSession" level="WARN" /&gt;
+
+
+    &lt;logger name="org.apache.zookeeper.ClientCnxn" level="ERROR" /&gt;
+    &lt;logger name="org.apache.zookeeper.server.NIOServerCnxn" level="ERROR" /&gt;
+    &lt;logger name="org.apache.zookeeper.server.NIOServerCnxnFactory" level="ERROR" /&gt;
+    &lt;logger name="org.apache.zookeeper.server.quorum" level="ERROR" /&gt;
+    &lt;logger name="org.apache.zookeeper.ZooKeeper" level="ERROR" /&gt;
+
+    &lt;!-- Logger for managing logging statements for nifi clusters. --&gt;
+    &lt;logger name="org.apache.nifi.cluster" level="INFO"/&gt;
+
+    &lt;!-- Logger for logging HTTP requests received by the web server. --&gt;
+    &lt;logger name="org.apache.nifi.server.JettyServer" level="INFO"/&gt;
+
+    &lt;!-- Logger for managing logging statements for jetty --&gt;
+    &lt;logger name="org.eclipse.jetty" level="INFO"/&gt;
+
+    &lt;!-- Suppress non-error messages due to excessive logging by class or library --&gt;
+    &lt;logger name="com.sun.jersey.spi.container.servlet.WebComponent" level="ERROR"/&gt;
+    &lt;logger name="com.sun.jersey.spi.spring" level="ERROR"/&gt;
+    &lt;logger name="org.springframework" level="ERROR"/&gt;
+
+    &lt;!-- Suppress non-error messages due to known warning about redundant path annotation (NIFI-574) --&gt;
+    &lt;logger name="com.sun.jersey.spi.inject.Errors" level="ERROR"/&gt;
+
+    &lt;!--
+        Logger for capturing user events. We do not want to propagate these
+        log events to the root logger. These messages are only sent to the
+        user-log appender.
+    --&gt;
+    &lt;logger name="org.apache.nifi.web.security" level="INFO" additivity="false"&gt;
+        &lt;appender-ref ref="USER_FILE"/&gt;
+    &lt;/logger&gt;
+    &lt;logger name="org.apache.nifi.web.api.config" level="INFO" additivity="false"&gt;
+        &lt;appender-ref ref="USER_FILE"/&gt;
+    &lt;/logger&gt;
+    &lt;logger name="org.apache.nifi.authorization" level="INFO" additivity="false"&gt;
+        &lt;appender-ref ref="USER_FILE"/&gt;
+    &lt;/logger&gt;
+    &lt;logger name="org.apache.nifi.cluster.authorization" level="INFO" additivity="false"&gt;
+        &lt;appender-ref ref="USER_FILE"/&gt;
+    &lt;/logger&gt;
+    &lt;logger name="org.apache.nifi.web.filter.RequestLogger" level="INFO" additivity="false"&gt;
+        &lt;appender-ref ref="USER_FILE"/&gt;
+    &lt;/logger&gt;
+
+
+    &lt;!--
+        Logger for capturing Bootstrap logs and NiFi's standard error and standard out.
+    --&gt;
+    &lt;logger name="org.apache.nifi.bootstrap" level="INFO" additivity="false"&gt;
+        &lt;appender-ref ref="BOOTSTRAP_FILE" /&gt;
+    &lt;/logger&gt;
+    &lt;logger name="org.apache.nifi.bootstrap.Command" level="INFO" additivity="false"&gt;
+        &lt;appender-ref ref="CONSOLE" /&gt;
+        &lt;appender-ref ref="BOOTSTRAP_FILE" /&gt;
+    &lt;/logger&gt;
+
+    &lt;!-- Everything written to NiFi's Standard Out will be logged with the logger org.apache.nifi.StdOut at INFO level --&gt;
+    &lt;logger name="org.apache.nifi.StdOut" level="INFO" additivity="false"&gt;
+        &lt;appender-ref ref="BOOTSTRAP_FILE" /&gt;
+    &lt;/logger&gt;
+
+    &lt;!-- Everything written to NiFi's Standard Error will be logged with the logger org.apache.nifi.StdErr at ERROR level --&gt;
+    &lt;logger name="org.apache.nifi.StdErr" level="ERROR" additivity="false"&gt;
+        &lt;appender-ref ref="BOOTSTRAP_FILE" /&gt;
+    &lt;/logger&gt;
+
+
+    &lt;root level="INFO"&gt;
+        &lt;appender-ref ref="APP_FILE"/&gt;
+    &lt;/root&gt;
+
+&lt;/configuration&gt;
+
+  </value>
+  <description>Template for logback.xml</description>
+  <value-attributes>
+    <type>content</type>
+  </value-attributes>      
+  <on-ambari-upgrade add="true"/>
+  </property>
+
+</configuration>
+

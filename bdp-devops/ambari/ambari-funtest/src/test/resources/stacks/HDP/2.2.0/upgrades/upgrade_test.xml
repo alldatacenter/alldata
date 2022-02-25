@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <target>2.2.*</target>
+  <target-stack>HDP-2.2.0</target-stack>
+  <type>ROLLING</type>
+  <prerequisite-checks>
+    <check>org.apache.ambari.server.checks.HiveMultipleMetastoreCheck</check>
+    <check>org.apache.ambari.server.checks.MapReduce2JobHistoryStatePreservingCheck</check>
+    <check>org.apache.ambari.server.checks.SecondaryNamenodeDeletedCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesMapReduceDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesNamenodeHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesNamenodeTruncateCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesTezDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesYarnWorkPreservingCheck</check>
+    <check>org.apache.ambari.server.checks.YarnRMHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.YarnTimelineServerStatePreservingCheck</check>
+  </prerequisite-checks>
+  <order>
+    <group xsi:type="cluster" name="PRE_CLUSTER" title="Pre {{direction.text.proper}}">
+      <execute-stage title="Confirm 1">
+        <task xsi:type="manual">
+          <message>Foo</message>
+        </task>
+      </execute-stage>
+      <execute-stage service="HDFS" component="NAMENODE" title="Pre Upgrade HIVE">
+        <task xsi:type="manual">
+          <message>Back stuff up.</message>
+        </task>
+      </execute-stage>
+      <execute-stage service="HDFS" component="NAMENODE" title="Finalize HDFS">
+        <task xsi:type="execute">
+          <command>ls</command>
+        </task>
+      </execute-stage>
+      <execute-stage title="Confirm 2">
+        <task xsi:type="manual">
+          <message>Goo</message>
+        </task>
+      </execute-stage>
+    </group>
+  
+    <group name="ZOOKEEPER" title="Zookeeper">
+      <skippable>true</skippable>
+      <allow-retry>false</allow-retry>
+      <service name="ZOOKEEPER">
+        <component>ZOOKEEPER_SERVER</component>
+        <component>ZOOKEEPER_CLIENT</component>
+      </service>
+    </group>
+    
+    <group name="CORE_MASTER" title="Core Masters">
+      <service name="HDFS">
+        <component>JOURNALNODE</component>
+        <component>NAMENODE</component>
+      </service>
+      <service name="YARN">
+        <component>RESOURCEMANAGER</component>
+      </service>
+    </group>
+    
+    <group name="CORE_SLAVES" title="Core Slaves" xsi:type="colocated">
+      <skippable>true</skippable>      <!-- set skippable for test -->
+      <allow-retry>false</allow-retry> <!-- set no retry for test -->
+      <service name="HDFS">
+        <component>DATANODE</component>
+      </service>
+      <service name="HBASE">
+        <component>REGIONSERVER</component>
+      </service>
+      <service name="YARN">
+        <component>NODEMANAGER</component>
+      </service>
+      
+      <batch>
+        <percent>20</percent>
+        <message>Please run additional tests on {{components}}</message>
+      </batch>
+    </group>
+    
+    <group name="HIVE" title="Hive">
+      <skippable>true</skippable>
+      <service name="HIVE">
+        <component>HIVE_METASTORE</component>
+        <component>HIVE_SERVER</component>
+        <component>WEBHCAT_SERVER</component>
+      </service>
+    </group>    
+    
+    <group xsi:type="cluster" name="POST_CLUSTER" title="Finalize {{direction.text.proper}}">
+      <execute-stage title="Confirm Finalize">
+        <task xsi:type="manual">
+          <message>Please confirm you are ready to finalize</message>
+        </task>
+      </execute-stage>
+      <execute-stage title="Update remaining HDP stack to {{version}}">
+        <task xsi:type="execute">
+          <script>scripts/ru_set_all.py</script>
+          <function>actionexecute</function>
+        </task>
+      </execute-stage>
+      <execute-stage title="Save Cluster State" service="" component="">
+        <task xsi:type="server_action" class="org.apache.ambari.server.serveraction.upgrades.FinalizeUpgradeAction">
+        </task>
+      </execute-stage>
+    </group>
+        
+  </order>
+  
+
+  <processing>
+    <service name="ZOOKEEPER">
+      <component name="ZOOKEEPER_SERVER">
+        <pre-upgrade>
+          <task xsi:type="manual">
+            <summary>SUMMARY OF PREPARE</summary>
+            <message>This is a manual task with a placeholder of {{foo/bar}}</message>
+          </task>
+        </pre-upgrade>
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+        <post-upgrade>
+          <task xsi:type="configure" />
+        </post-upgrade>
+      </component>
+    </service>
+    
+    <service name="HDFS">
+      <component name="NAMENODE">
+        <pre-upgrade>
+          <task xsi:type="execute" hosts="master">
+            <command>su - {hdfs-user} -c 'dosomething'</command>
+          </task>
+          <task xsi:type="configure">
+            <type>hdfs-site</type>
+            <set key="myproperty" value="mynewvalue"/>
+          </task>
+          <task xsi:type="manual">
+            <message>{{direction.verb.proper}} your database</message>
+          </task>
+        </pre-upgrade>
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+        <post-upgrade>
+          <task xsi:type="execute">
+            <command>ls</command>
+          </task>
+        </post-upgrade>
+      </component>
+      <component name="DATANODE">
+        <pre-downgrade />
+        <upgrade>
+          <task xsi:type="restart-task" />
+        </upgrade>
+        <post-downgrade>
+          <task xsi:type="manual">
+            <message>Manual Downgrade</message>
+          </task>
+        </post-downgrade>
+      </component>
+    </service>
+    
+    <service name="YARN">
+      <component name="RESOURCEMANAGER">
+        <pre-upgrade>
+          <task xsi:type="execute">
+            <command>ls</command>
+          </task>
+        </pre-upgrade>
+      </component>
+      <component name="NODEMANAGER">
+        <pre-upgrade>
+          <task xsi:type="execute">
+            <command>ls</command>
+          </task>
+        </pre-upgrade>
+      </component>
+    </service>
+    
+    <service name="HIVE">
+      <component name="HIVE_SERVER">
+        <pre-upgrade>
+          <task xsi:type="manual">
+            <summary>HiveServer Port Availability</summary>
+            <message>The HiveServer port will now change to 10010 if hive is using a binary transfer mode or 10011 if hive is using an http transport mode. You can use "netstat -anp | grep 1001[01]" to determine if the port is available on each of following HiveServer host(s): {{hosts.all}}. If the port is not available, the process using it must be terminated.</message>
+          </task>
+
+          <task xsi:type="configure">
+            <condition type="hive-site" key="hive.server2.transport.mode" value="binary">
+              <type>hive-site</type>
+              <key>hive.server2.thrift.port</key>
+              <value>10010</value>
+            </condition>
+            <condition type="hive-site" key="hive.server2.transport.mode" value="http">
+              <type>hive-site</type>
+              <key>hive.server2.http.port</key>
+              <value>10011</value>
+            </condition>
+          </task>
+        </pre-upgrade>
+       </component>
+     </service>    
+  </processing>
+</upgrade>

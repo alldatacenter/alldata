@@ -1,0 +1,26 @@
+{
+    "mapreduce": {
+        "service_type": "MAPREDUCE",
+        "jobtracker_addr": "jthost:50030",
+        "trackers_total": 10,
+        "trackers_live": 7,
+        "trackers_graylisted": 1,
+        "trackers_blacklisted": 1,
+        "trackers_excluded": 1,
+        "start_time": 23235351,
+        "version": "1.0.0, r12345",
+        "memory_heap_committed": 1004242423,
+        "memory_heap_total": 8003242423,
+        "map_task_capacity": 32,
+        "reduce_task_capacity": 8,
+        "average_node_capacity": 5,
+        "job_total_submissions": 6,
+        "job_total_completions": 3,
+        "running_map_tasks": 5,
+        "running_reduce_tasks": 5,
+        "occupied map slots": 3,
+        "occupied reduce slots": 4,
+        "reserved map slots": 3,
+        "reserved reduce slots": 5
+    }
+}

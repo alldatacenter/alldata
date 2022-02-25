@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<configuration>
+  <property>
+    <name>jobtracker_host</name>
+    <value></value>
+    <description>JobTracker Host.</description>
+  </property>
+  <property>
+    <name>tasktracker_hosts</name>
+    <value></value>
+    <description>TaskTracker hosts.</description>
+  </property>
+  <property>
+    <name>mapred_local_dir</name>
+    <value>/hadoop/mapred</value>
+    <description>MapRed Local Directories.</description>
+  </property>
+  <property>
+    <name>mapred_system_dir</name>
+    <value>/mapred/system</value>
+    <description>MapRed System Directories.</description>
+  </property>
+  <property>
+    <name>scheduler_name</name>
+    <value>org.apache.hadoop.mapred.CapacityTaskScheduler</value>
+    <description>MapRed Capacity Scheduler.</description>
+  </property>
+  <property>
+    <name>jtnode_opt_newsize</name>
+    <value>200</value>
+    <description>Mem New Size.</description>
+  </property>
+  <property>
+    <name>jtnode_opt_maxnewsize</name>
+    <value>200</value>
+    <description>Max New size.</description>
+  </property>
+  <property>
+    <name>hadoop_heapsize</name>
+    <value>1024</value>
+    <description>Hadoop maximum Java heap size</description>
+  </property>
+  <property>
+    <name>jtnode_heapsize</name>
+    <value>1024</value>
+    <description>Maximum Java heap size for JobTracker in MB (Java option -Xmx)</description>
+  </property>
+  <property>
+    <name>mapred_map_tasks_max</name>
+    <value>4</value>
+    <description>Number of slots that Map tasks that run simultaneously can occupy on a TaskTracker</description>
+  </property>
+  <property>
+    <name>mapred_red_tasks_max</name>
+    <value>2</value>
+    <description>Number of slots that Reduce tasks that run simultaneously can occupy on a TaskTracker</description>
+  </property>
+  <property>
+    <name>mapred_cluster_map_mem_mb</name>
+    <value>-1</value>
+    <description>The virtual memory size of a single Map slot in the MapReduce framework</description>
+  </property>
+  <property>
+    <name>mapred_cluster_red_mem_mb</name>
+    <value>-1</value>
+    <description>The virtual memory size of a single Reduce slot in the MapReduce framework</description>
+  </property>
+  <property>
+    <name>mapred_job_map_mem_mb</name>
+    <value>-1</value>
+    <description>Virtual memory for single Map task</description>
+  </property>
+  <property>
+    <name>mapred_child_java_opts_sz</name>
+    <value>768</value>
+    <description>Java options for the TaskTracker child processes.</description>
+  </property>
+  <property>
+    <name>io_sort_mb</name>
+    <value>200</value>
+    <description>The total amount of Map-side buffer memory to use while sorting files (Expert-only configuration).</description>
+  </property>
+  <property>
+    <name>io_sort_spill_percent</name>
+    <value>0.9</value>
+    <description>Percentage of sort buffer used for record collection (Expert-only configuration.</description>
+  </property>
+  <property>
+    <name>mapreduce_userlog_retainhours</name>
+    <value>24</value>
+    <description>The maximum time, in hours, for which the user-logs are to be retained after the job completion.</description>
+  </property>
+  <property>
+    <name>maxtasks_per_job</name>
+    <value>-1</value>
+    <description>Maximum number of tasks for a single Job</description>
+  </property>
+  <property>
+    <name>lzo_enabled</name>
+    <value>false</value>
+    <description>LZO compression enabled</description>
+  </property>
+  <property>
+    <name>snappy_enabled</name>
+    <value>true</value>
+    <description>LZO compression enabled</description>
+  </property>
+  <property>
+    <name>rca_enabled</name>
+    <value>true</value>
+    <description>Enable Job Diagnostics.</description>
+  </property>
+  <property>
+    <name>mapred_hosts_exclude</name>
+    <value></value>
+    <description>Exclude entered hosts</description>
+  </property>
+  <property>
+    <name>mapred_hosts_include</name>
+    <value></value>
+    <description>Include entered hosts</description>
+  </property>
+  <property>
+    <name>mapred_jobstatus_dir</name>
+    <value>file:////mapred/jobstatus</value>
+    <description>Job Status directory</description>
+  </property>
+  <property>
+    <name>task_controller</name>
+    <value>org.apache.hadoop.mapred.DefaultTaskController</value>
+    <description>Task Controller.</description>
+  </property>
+  <property>
+    <name>mapred_user</name>
+    <value>mapred</value>
+    <description>MapReduce User.</description>
+  </property>
+
+</configuration>

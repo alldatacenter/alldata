@@ -1,0 +1,142 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="main">
+  <nav class="navbar navbar-default mb0 borderTopNone">
+    <div class="container-fluid container-custom">
+      <div class="navbar-header">
+        <div class="form-inline col-xs-6 paddingtop8">
+          <div class="form-group {{if (v-get this 'bundle.name' 'isInvalid') 'has-error'}}" >
+            <label for="wf_title">Name<span class="requiredField">&nbsp;*</span></label>
+            {{input class="form-control" type="text" name="bundle_title" value=bundle.name title="Bundle Name" placeholder="Bundle Name"}}
+            {{#if (v-get this 'bundle.name' 'isInvalid')}}
+              <span class="text-danger" title="Name is required"><i class="fa fa-close"></i>Name is required</span>
+            {{/if}}
+          </div>
+        </div>
+        <div class="navbar-brand pull-right paddingtop8 col-xs-18">
+          <div class="dropdown inlineBlock">
+            <button class="btn btn-default dropdown-toggle borderRightRadiusNone" type="button" data-toggle="dropdown">Bundle
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li>
+              <a  class="pointer" title="Import workflow" {{action "openFileBrowser" "bundleFilePath"}}>
+                <i class="fa fa-download marginright5"></i>Import
+              </a>
+            </li>
+            <li>
+              <a class="pointer" href="#" data-toggle="modal" data-target="#ConfirmDialog" title="Reset Bundle" {{action "confirmReset"}}>
+                <i class="fa fa-refresh marginright5"></i>Reset
+              </a>
+            </li>
+            <li>
+              <a class="pointer" href="#" data-toggle="modal" title="Preview Xml" {{action "preview"}}>
+                  <i class="fa fa-eye marginright5"></i>Preview xml
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" title="Bundle Versions" {{action "showVersionSettings" true}}>
+              <i class="fa fa-cog marginright5"></i>Versions
+            </button>
+            <button  id="import-bundle-test" type="button" class="btn btn-default hide" title="Import Bundle Test" {{action "importBundleTest"}}>
+              <i class="fa fa-download"></i>
+            </button>
+            <button id="save-bundle" type="button" class="btn btn-default" title="Save coordinator in HDFS" {{action "save"}}>
+                <i class="fa fa-floppy-o"></i> Save
+            </button>
+            <button type="button" class="btn btn-primary" title="Submit Bundle" {{action "submitBundle"}}>
+              <i class="fa fa-upload"></i> Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div id='loading'>
+      {{spin-spinner lines=13 length=20 width=10}}
+    </div>
+    {{designer-errors errors=errors validationErrors=validationErrors errorMsg=errorMsg data=data}}
+    <form class="form-horizontal">
+      <div class="col-sm-12 paddingtop10">
+        <div class="col-sm-8 centralize-panel">
+
+          <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+              <h4 class="panel-title pull-left paddingtop7">Coordinators</h4>
+              <button id="coordinator-create-btn" {{action 'createCoordinator'}} type="button" class="btn btn-default pull-right">
+                      <i class="fa fa-plus-circle"></i> Add Coordinator
+              </button>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                  {{#each bundle.coordinators as |coordinator index|}}
+                  <li class="list-group-item">
+                    {{coordinator.name}}
+                    <span class="pull-right">
+                      <i class="fa fa-trash-o" title="Delete" {{action "deleteCoordinator" index bubbles=false}}></i>
+                    </span>
+                    <span class="pull-right paddingright10">
+                      <i class="fa fa-pencil" title="Edit" {{action "editCoordinator" index bubbles=false}}></i>
+                    </span>
+                  </li>
+                  {{else}}
+                  <li class="list-group-item">No Coordinators Configured.</li>
+                  {{/each}}
+                </ul>
+                {{#field-error model=this field='bundle.coordinators' showErrorMessage=showErrorMessage}}{{/field-error}}
+
+              {{#if coordinatorCreateMode}}
+              {{#bundle-coord-config coordinator=currentCoordinator openTab="openTab" openFileBrowser="openFileBrowser" add="addCoordinator" cancel="cancelCoordinatorOperation" createMode=coordinatorCreateMode errorMsg=errorMsg data=data appendFileName=appendFileName}}{{/bundle-coord-config}}
+              {{/if}}
+              {{#if coordinatorEditMode}}
+              {{#bundle-coord-config coordinator=currentCoordinator openTab="openTab" openFileBrowser="openFileBrowser" update="updateCoordinator" cancel="cancelCoordinatorOperation" editMode=coordinatorEditMode errorMsg=errorMsg data=data appendFileName=appendFileName}}{{/bundle-coord-config}}
+              {{/if}}
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              {{#date-with-expr inputName="kickOffTime" label="Kick off Time" inputPlaceholder="Kick Off Time" dateField=bundle.kickOffTime}}{{/date-with-expr}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{{#if showingFileBrowser}}
+  {{hdfs-browser closeFileBrowser="closeFileBrowser" selectFileCallback=selectFileCallback filePath=filePath hideUpload=true}}
+{{/if}}
+{{#if showingJobConfig}}
+  {{job-config type='bundle' closeJobConfigs="closeBundleSubmitConfig" jobFilePath=bundleFilePath openFileBrowser="openFileBrowser" closeFileBrowser="closeFileBrowser" jobConfigs=bundleConfigs containsParameteriedPaths=containsParameteriedPaths jobConfigProperties=jobConfigProperties}}
+{{/if}}
+{{#if showingResetConfirmation}}
+  {{#confirmation-dialog title="Confirm Bundle Reset"
+  confirmationMessage="File will be reset to last saved version in the HDFS. Do you want to proceed?"
+  okBtnText="Continue" cancelBtnText="Cancel" onOk="resetBundle"}}{{/confirmation-dialog}}
+{{/if}}
+{{#if showingPreview}}
+  {{#preview-dialog title="Bundle XML Preview" previewXml=previewXml closePreview="closePreview"}}{{/preview-dialog}}
+{{/if}}
+{{#if showVersionSettings}}
+  {{bundle-version-settings bundle=bundle showVersionSettings="showVersionSettings" }}
+{{/if}}
+{{#if showingSaveWorkflow}}
+  {{save-wf type='bundle' close="closeSave" jobFilePath=bundleFilePath openFileBrowser="openFileBrowser" closeFileBrowser="closeFileBrowser" jobConfigs=configForSave}}
+{{/if}}

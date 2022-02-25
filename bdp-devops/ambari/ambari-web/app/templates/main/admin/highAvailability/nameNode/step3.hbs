@@ -1,0 +1,83 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="wizard-content col-md-9">
+  <h4 class="step-title">{{t admin.highAvailability.wizard.step3.header}}</h4>
+  <p class="step-description">{{t admin.highAvailability.wizard.step3.confirm.host.body}}</p>
+  <div class="panel panel-default">
+    <div class="panel-body">
+    <div id="ha-step3-content" class="well pre-scrollable">
+      <div id="step8-info">
+        <table id="ha-step3-review-table">
+            <tr>
+                <td>{{t admin.highAvailability.wizard.step3.curNameNode}}</td>
+                <td>{{view.curNameNode}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>{{t admin.highAvailability.wizard.step3.secNameNode}}</td>
+                <td>{{view.secondaryNameNode}}</td>
+                <td><span class="to-be-disabled-red"><i class="glyphicon glyphicon-minus"></i>&nbsp;{{t admin.highAvailability.wizard.step3.toBeDeleted}}</span></td>
+            </tr>
+            <tr>
+                <td>{{t admin.highAvailability.wizard.step3.addNameNode}}</td>
+                <td>{{view.addNameNode}}</td>
+                <td><span class="to-be-installed-green"><i class="glyphicon glyphicon-plus"></i>&nbsp;{{t admin.highAvailability.wizard.step3.toBeInstalled}}</span></td>
+            </tr>
+            <tr>
+                <td>{{t admin.highAvailability.wizard.step3.journalNode}}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {{#each item in view.journalNodes}}
+                            <li>{{item.hostName}}</li>
+                        {{/each}}
+                    </ul>
+                </td>
+                <td>
+                    <ul class="list-unstyled">
+                        {{#each item in view.journalNodes}}
+                            <li><span class="to-be-installed-green"><i
+                                    class="glyphicon glyphicon-plus"></i>&nbsp;{{t admin.highAvailability.wizard.step3.toBeInstalled}}</span></li>
+                        {{/each}}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    <div id="serviceConfig">
+        {{#if controller.isLoaded}}
+            {{{t admin.highAvailability.wizard.step3.confirm.config.body}}}
+            {{view App.ServiceConfigView isNotEditableBinding="controller.isNotEditable"}}
+        {{else}}
+            {{view App.SpinnerView}}
+        {{/if}}
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-footer col-md-12">
+    <div class="btn-area">
+      <button class="btn btn-default" {{action back}}>&larr; {{t common.back}}</button>
+      <button class="btn btn-success pull-right" {{bindAttr disabled="controller.isNextDisabled"}} {{action next}}>{{t common.next}} &rarr;</button>
+      {{#if App.router.nextBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="pull-right"}}
+      {{/if}}
+    </div>
+</div>

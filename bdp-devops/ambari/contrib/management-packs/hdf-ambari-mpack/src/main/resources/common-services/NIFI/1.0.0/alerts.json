@@ -1,0 +1,18 @@
+{
+  "NIFI": {
+    "service": [],
+    "NIFI_MASTER": [
+      {
+        "name": "nifi_status",
+        "label": "Nifi Status",
+        "description": "This host-level alert is triggered if the Nifi service cannot be determined to be up and responding to client requests.",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "SCRIPT",
+          "path": "NIFI/1.0.0/package/scripts/alert_check_nifi.py"
+        }
+      }
+    ]
+  }
+}

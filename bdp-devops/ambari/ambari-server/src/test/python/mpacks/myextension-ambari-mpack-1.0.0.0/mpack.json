@@ -1,0 +1,16 @@
+{
+  "type" : "full-release",
+  "name" : "myextension-ambari-mpack",
+  "version": "1.0.0.0",
+  "description" : "MyExtension Management Pack",
+  "prerequisites": {
+    "min_ambari_version" : "2.4.0.0"
+  },
+  "artifacts": [
+    {
+      "name" : "myextension-extension-definitions",
+      "type" : "extension-definitions",
+      "source_dir": "extensions"
+    }
+  ]
+}

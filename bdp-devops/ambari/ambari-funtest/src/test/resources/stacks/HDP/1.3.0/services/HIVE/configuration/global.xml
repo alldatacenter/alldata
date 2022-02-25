@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<configuration>
+  <property>
+    <name>hivemetastore_host</name>
+    <value></value>
+    <description>Hive Metastore host.</description>
+  </property>
+  <property>
+    <name>hive_database</name>
+    <value></value>
+    <description>Hive database name.</description>
+  </property>
+  <property>
+    <name>hive_existing_mysql_database</name>
+    <value></value>
+    <description>Hive database name.</description>
+  </property>
+  <property>
+    <name>hive_existing_mysql_host</name>
+    <value></value>
+    <description></description>
+  </property>
+  <property>
+    <name>hive_existing_oracle_database</name>
+    <value></value>
+    <description>Hive database name.</description>
+  </property>
+  <property>
+    <name>hive_existing_oracle_host</name>
+    <value></value>
+    <description></description>
+  </property>
+  <property>
+    <name>hive_ambari_database</name>
+    <value>MySQL</value>
+    <description>Database type.</description>
+  </property>  
+  <property>
+    <name>hive_ambari_host</name>
+    <value></value>
+    <description>Database hostname.</description>
+  </property>
+  <property>
+    <name>hive_database_name</name>
+    <value></value>
+    <description>Database hname</description>
+  </property>    
+  <property>
+    <name>hive_metastore_user_name</name>
+    <value>hive</value>
+    <description>Database username to use to connect to the database.</description>
+  </property>    
+  <property>
+    <name>hive_metastore_user_passwd</name>
+    <value></value>
+    <description>Database password to use to connect to the database.</description>
+  </property>    
+  <property>
+    <name>hive_metastore_port</name>
+    <value>9083</value>
+    <description>Hive Metastore port.</description>
+  </property>    
+  <property>
+    <name>hive_lib</name>
+    <value>/usr/lib/hive/lib/</value>
+    <description>Hive Library.</description>
+  </property>    
+  <property>
+    <name>hive_conf_dir</name>
+    <value>/etc/hive/conf</value>
+    <description>Hive Conf Dir.</description>
+  </property>
+  <property>
+    <name>hive_log_dir</name>
+    <value>/var/log/hive</value>
+    <description>Directory for Hive Log files.</description>
+  </property>
+  <property>
+    <name>hive_pid_dir</name>
+    <value>/var/run/hive</value>
+    <description>Hive PID Dir.</description>
+  </property>
+  <property>
+    <name>mysql_connector_url</name>
+    <value>${download_url}/mysql-connector-java-5.1.18.zip</value>
+    <description>Hive PID Dir.</description>
+  </property>
+  <property>
+    <name>hive_aux_jars_path</name>
+    <value>/usr/lib/hcatalog/share/hcatalog/hcatalog-core.jar</value>
+    <description>Hive auxiliary jar path.</description>
+  </property>
+  <property>
+    <name>hive_user</name>
+    <value>hive</value>
+    <description>Hive User.</description>
+  </property>
+  
+</configuration>

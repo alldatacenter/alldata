@@ -1,0 +1,66 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Component.GetPerformanceDataForEntitiesDataSource" Accessibility="Internal">
+        <Property Name="Output" Type="BaseDataType[]" BindingDirection="Out" />
+        <Property Name="Refresh" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ActionTypes/RefreshAction" BindingDirection="In" />
+        <Property Name="IsBusy" Type="BaseDataType" BindingDirection="Out" />
+        <Property Name="LastError" Type="BaseDataType" BindingDirection="Out" />
+        <Property Name="Interval" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/DynamicDateTimeRange" BindingDirection="In" />
+        <Property Name="NumberOfDatapoints" Type="xsd://int" BindingDirection="In" />
+        <Property Name="PerformanceDataSeriesQueryItems" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataSourceTypes/PerformanceDataSeriesQueryType[]" BindingDirection="In" />
+      </ComponentType>
+    </ComponentTypes>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Component.GetPerformanceDataForEntitiesDataSourceImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Component.GetPerformanceDataForEntitiesDataSource"
+                               Platform="Wpf, Silverlight" Accessibility="Internal">
+        <Unit>
+          <ContractFactory>Microsoft.EnterpriseManagement.Monitoring.UnitComponents.Data.GetPerformanceDataSeriesDataSource</ContractFactory>
+          <Property Name="Output" Direction="Out">
+            <Reference>$Property/Output$</Reference>
+          </Property>
+          <Property Name="Refresh" Direction="In">
+            <Reference>$Property/Refresh$</Reference>
+          </Property>
+          <Property Name="IsBusy" Direction="Out">
+            <Reference>$Service/IsBusy$</Reference>
+          </Property>
+          <Property Name="LastError" Direction="Out">
+            <Reference>$Service/LastError$</Reference>
+          </Property>
+          <Property Name="Interval" Direction="In">
+            <Reference>$Property/Interval$</Reference>
+          </Property>
+          <Property Name="NumberOfDatapoints" Direction="In">
+            <Reference>$Property/NumberOfDatapoints$</Reference>
+          </Property>
+          <Property Name="PerformanceDataSeriesQueryItems" Direction="In">
+            <Reference>$Property/PerformanceDataSeriesQueryItems$</Reference>
+          </Property>
+          <Property Name="ConnectionSessionTicket" Direction="In">
+            <Reference>$Service/ConnectionSessionTicket$</Reference>
+          </Property>
+        </Unit>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+</ManagementPackFragment>

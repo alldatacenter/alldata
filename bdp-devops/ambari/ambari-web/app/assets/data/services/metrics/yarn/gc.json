@@ -1,0 +1,16 @@
+{
+  "href" : "http://ambari/clusters/SrimanthAmbari/hosts/hostname/host_components/RESOURCEMANAGER?fields=metrics/jvm/gcTimeMillis[1351213550,1351217148,60]",
+  "HostRoles" : {
+    "cluster_name" : "SrimanthAmbari",
+    "component_name" : "RESOURCEMANAGER",
+    "host_name" : "hostname"
+  },
+  "host" : {
+    "href" : "http://ambari/clusters/SrimanthAmbari/hosts/hostname"
+  },
+  "metrics" : {
+    "jvm" : {
+      "gcTimeMillis" : "[[0.0,1351213560],[0.0,1351213920],[0.0,1351214280],[0.0,1351214640],[0.0,1351215000],[0.0,1351215360],[0.011111111111,1351215720],[0.0,1351216080],[0.0,1351216440],[1.1930462189E7,1351216800],[0.069444444444,1351217160]]"
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="hosts" class="container-wrap-table">
+
+  <div class="row">
+    <h2 class="table-title col-sm-1">{{t common.hosts}}</h2>
+    <div class="table-controls row col-sm-10 pull-right">
+      <div class="col-sm-12">
+        {{#havePermissions "HOST.ADD_DELETE_COMPONENTS, HOST.TOGGLE_MAINTENANCE, HOST.ADD_DELETE_HOSTS"}}
+          {{view App.HostTableMenuView}}
+        {{/havePermissions}}
+        <div class="VS-open-box pull-right">
+          <button class="btn btn-default">
+            <i class="icon-filter"></i>
+          </button>
+          <div class="popup-arrow-up hide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row search-box-row hide">
+    {{view App.MainHostComboSearchBoxView}}
+  </div>
+  <table class="table advanced-header-table table-hover" id="hosts-table">
+    <thead>
+      {{#view view.sortView classNames="label-row" contentBinding="view.filteredContent"}}
+        <th>
+          <div class="ember-view view-wrapper">
+            {{view App.CheckboxView classNames="host-select-all" checkedBinding="view.parentView.selectAllHosts"}}
+          </div>
+        </th>
+        <th> </th>
+        {{view view.parentView.nameSort}}
+        <th> </th>
+        <th> </th>
+        {{view view.parentView.ipSort}}
+        {{view view.parentView.rackSort}}
+        {{view view.parentView.cpuSort}}
+        {{view view.parentView.memorySort}}
+        {{view view.parentView.diskUsageSort}}
+        {{view view.parentView.loadAvgSort}}
+        <th {{bindAttr class="App.stackVersionsAvailable::hidden :sort-view-11"}}>
+          {{t hosts.host.menu.stackVersions}}
+        </th>
+        <th class="sort-view-6">{{t common.components}}</th>
+
+      {{/view}}
+    </thead>
+    <tbody>
+    {{#if view.pageContent}}
+      {{#each host in view.pageContent}}
+        {{#view view.HostView contentBinding="host"}}
+          <td>{{view App.CheckboxView checkedBinding="host.selected"}}</td>
+
+          <td class="health">
+            <span rel="HealthTooltip" {{bindAttr class="host.healthClass host.healthIconClass"}} {{bindAttr data-original-title="host.healthToolTip" }}></span>
+          </td>
+
+          <td class="name">
+            <span class="trim_hostname">
+              <a  rel="UsageTooltip" data-original-title="{{unbound host.hostName}}" href="#" {{action "showDetails" host}}>{{unbound host.hostName}}</a>
+            </span>
+            {{#if host.criticalWarningAlertsCount}}
+              <span {{action "goToHostAlerts" host target="controller"}}>
+                {{view App.AlertBadgeView
+                       classNames="medium-size"
+                       criticalCountBinding="host.alertsSummary.CRITICAL"
+                       warningCountBinding="host.alertsSummary.WARNING"}}
+              </span>
+            {{/if}}
+          </td>
+          <td class="restart">
+            {{#if host.componentsWithStaleConfigsCount}}
+              <span class="muted glyphicon glyphicon-refresh" rel="ComponentsTooltip" {{bindAttr title="view.restartRequiredComponentsMessage"}}></span>
+            {{/if}}
+          </td>
+          <td class="passive-state">
+              <span rel="ComponentsTooltip" {{bindAttr data-original-title="view.componentsInPassiveStateMessage" class="host.componentsInPassiveStateCount:icon-medkit"}}></span>
+          </td>
+          <td class="host-ip">{{host.ip}}</td>
+          <td class="rack-id">
+            <span rel="UsageTooltip" {{bindAttr data-original-title="host.rack"}}>{{host.rack}}</span>
+          </td>
+          <td class="cores-formatted">{{host.coresFormatted}}</td>
+          <td class="memory-formatted">{{host.memoryFormatted}}</td>
+
+          <td class="disk-info">
+            <div class="progress" {{bindAttr data-original-title="host.diskInfoBar"}} rel="UsageTooltip">
+              <div class="progress-bar progress-bar-info" {{bindAttr style="view.usageStyle"}}></div>
+            </div>
+          </td>
+
+          <td class="load-avg">{{host.loadAvg}}</td>
+          <td {{bindAttr class="App.stackVersionsAvailable::hidden view.hasSingleVersion:not-active-link :host-table-versions"}}>
+            <a href="#" class="black" {{action displayVersions target="view"}}>
+              {{view.currentVersion}}
+            </a>
+          </td>
+          <td {{bindAttr class="view.hasNoComponents:not-active-link :host-table-components"}}>
+            <a href="#" class="black" {{action displayComponents target="view"}}>
+              {{view.content.hostComponents.length}} {{pluralize view.content.hostComponents.length singular="t:common.component" plural="t:common.components"}}
+            </a>
+          </td>
+        {{/view}}
+      {{/each}}
+    {{else}}
+      <tr>
+        <td class="first"></td>
+        <td colspan="12">
+          {{t hosts.table.noHosts}}
+        </td>
+      </tr>
+    {{/if}}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="13">
+          {{#if view.showSelectedFilter}}
+            <div class="display-inline-block">
+              <a {{action filterSelected target="view"}} {{QAAttr "selected-hosts-count"}} href="#">
+                {{view.selectedHosts.length}}
+                {{pluralize view.selectedHostsCount singular="t:hosts.filters.selectedHostInfo" plural="t:hosts.filters.selectedHostsInfo"}}
+              </a>
+              - <a {{action clearSelection target="view"}} {{QAAttr "clear-hosts-selection"}}  href="#">{{t hosts.filters.clearSelection}}</a>
+            </div>
+          {{/if}}
+          {{view App.PaginationView isDataLoadedBinding="view.filteringComplete" rowsPerPageSelectViewBinding="view.rowsPerPageSelectView"}}
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div {{bindAttr class="view.filteringComplete:hidden :table-overlay"}}>
+    {{view App.SpinnerView}}
+  </div>
+
+</div>

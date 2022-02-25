@@ -1,0 +1,105 @@
+{
+  "eventType":"CREATE",
+  "hash":"1a49a0f19639c5c2528220bfc5ad0778",
+  "clusters":{
+    "0":{
+      "components":[
+        {
+          "componentName":"NAMENODE",
+          "serviceName":"HDFS",
+          "version":"2.6.0.3-8",
+          "hostIds":[
+            0
+          ],
+          "componentLevelParams": {
+            "unlimited_key_jce_required": "false",
+            "clientsToUpdateConfigs": "[\"*\"]"
+          },
+          "commandParams": {
+            "script": "scripts/namenode.py",
+            "script_type":"PYTHON",
+            "command_timeout":"1200"
+          }
+        },
+        {
+          "componentName":"DATANODE",
+          "serviceName":"HDFS",
+          "version":"2.6.0.3-8",
+          "hostIds":[
+            0,
+            1
+          ],
+          "componentLevelParams": {
+            "unlimited_key_jce_required": "false",
+            "clientsToUpdateConfigs": "[\"*\"]"
+          },
+          "commandParams": {
+            "script": "scripts/datanode.py",
+            "script_type":"PYTHON",
+            "command_timeout":"1200"
+          }
+        },
+        {
+          "componentName":"HDFS_CLIENT",
+          "serviceName":"HDFS",
+          "version":"2.6.0.3-8",
+          "hostIds":[
+            0
+          ],
+          "componentLevelParams": {
+            "unlimited_key_jce_required": "false",
+            "clientsToUpdateConfigs": "[\"*\"]"
+          },
+          "commandParams": {
+            "script": "scripts/hdfs_client.py",
+            "script_type":"PYTHON",
+            "command_timeout":"1200"
+          }
+        }
+      ],
+      "hosts":[
+        {
+          "hostId":0,
+          "hostName":"c6401.ambari.apache.org",
+          "rackName":"/default-rack",
+          "ipv4":"192.168.64.101"
+        },
+        {
+          "hostId":1,
+          "hostName":"c6402.ambari.apache.org",
+          "rackName":"/default-rack",
+          "ipv4":"192.168.64.102"
+        }
+      ]
+    },
+    "1": {
+      "components":[
+        {
+          "componentName":"NAMENODE",
+          "serviceName":"HDFS",
+          "version":"2.6.0.3-8",
+          "hostIds":[
+            0
+          ],
+          "componentLevelParams": {
+            "unlimited_key_jce_required": "false",
+            "clientsToUpdateConfigs": "[\"*\"]"
+          },
+          "commandParams": {
+            "script": "scripts/namenode.py",
+            "script_type":"PYTHON",
+            "command_timeout":"1200"
+          }
+        }
+      ],
+      "hosts":[
+        {
+          "hostId":0,
+          "hostName":"c6401.ambari.apache.org",
+          "rackName":"/default-rack",
+          "ipv4":"192.168.64.101"
+        }
+      ]
+    }
+  }
+}

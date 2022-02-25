@@ -1,0 +1,61 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.dataIsReady}}
+  {{#unless view.content.isHiddenByFilter}}
+    <div class="accordion">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          {{#each row in view.content.sectionRows}}
+            {{#each section in row}}
+              {{#unless section.isHiddenByFilter}}
+                {{#view App.DirectoriesLayoutCategoryView}}
+                  <div class="panel-heading" {{action "toggleCollapsed" target="view"}}>
+                    <h3 class="panel-title">
+                      <i {{bindAttr class=":pull-right :panel-toggle view.isCollapsed:icon-angle-down:icon-angle-up"}}></i>
+                      <a class="panel-toggle category-header" {{QAAttr "category-header"}}>
+                        <span class="category-name" {{QAAttr "category-name"}}>{{section.displayName}}</span>
+                      </a>
+                    </h3>
+                  </div>
+                  <div class="panel-body collapse in" {{QAAttr "panel-body"}}>
+                    <div class="service-config-section">
+                      {{#each subRow in section.subsectionRows}}
+                        {{#each subsection in subRow}}
+                          {{#each config in subsection.configs}}
+                            {{#if config.widget}}
+                              {{#if config.isVisible}}
+                                {{#unless config.isHiddenByFilter}}
+                                  {{view config.widget configBinding="config" canEditBinding="view.parentView.canEdit" sectionBinding="section" subSectionBinding="subsection" tabBinding="view.parentView.content" inlineControls=true}}
+                                {{/unless}}
+                              {{/if}}
+                            {{/if}}
+                          {{/each}}
+                        {{/each}}
+                      {{/each}}
+                    </div>
+                  </div>
+                {{/view}}
+              {{/unless}}
+            {{/each}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/unless}}
+{{/if}}

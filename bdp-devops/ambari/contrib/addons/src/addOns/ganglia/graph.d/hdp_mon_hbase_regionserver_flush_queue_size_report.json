@@ -1,0 +1,10 @@
+{
+   "report_name" : "hbase_regionserver_flush_queue_size_report",
+   "report_type" : "standard",
+   "title" : "Total flush Queue size",
+   "vertical_label" : "Queue Size",
+   "series" : [
+      { "metric": "hbase.regionserver.flushQueueSize", "color": "ff0000", "label": "flushQueueSize", 
+        "line_width": "2", "type": "line" }
+   ]
+}

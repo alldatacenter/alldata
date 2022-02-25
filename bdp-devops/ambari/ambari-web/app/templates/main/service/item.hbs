@@ -1,0 +1,70 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{view App.MainServiceInfoMenuView
+    configTabBinding="view.hasConfigTab"
+    heatmapTabBinding="view.hasHeatmapTab"
+    metricTabBinding="view.hasMetricTab"}}
+
+{{#isAuthorized "SERVICE.RUN_CUSTOM_COMMAND, SERVICE.RUN_SERVICE_CHECK, SERVICE.START_STOP, SERVICE.TOGGLE_MAINTENANCE, SERVICE.ENABLE_HA"}}
+<div class="service-button">
+  {{#if view.isMaintenanceActive}}
+    <div class="btn-group display-inline-block">
+      <button class="btn btn-success dropdown-toggle" id="service-actions-dropdown-btn" data-toggle="dropdown" href="#">
+        {{t common.actions}}
+        <span class="caret"></span>
+      </button>
+      <ul class="pull-right dropdown-menu">
+        <!-- dropdown menu links -->
+
+        {{#if view.maintenance.length}}
+          <!-- Service actions -->
+          {{#each option in view.maintenance}}
+            {{#unless option.isHidden}}
+              <li {{bindAttr class="option.disabled option.hasSubmenu:dropdown-submenu option.hasSubmenu:submenu-left"}}>
+                <a {{action "doAction" option target="controller" href=true}}
+                  {{bindAttr data-title="option.tooltip" rel="view.tooltipAttribute"}}>
+                  <i {{bindAttr class="option.cssClass"}}></i>
+                  {{option.label}}
+                </a>
+                {{#if option.hasSubmenu}}
+                  <div class="dropdown-menu-wrap">
+                    <ul class="dropdown-menu">
+                      {{#each item in option.submenuOptions}}
+                        <li>
+                          <a class="ellipsis-overflow" {{action "doAction" item target="controller" href=true}}
+                            {{bindAttr data-title="item.tooltip" rel="view.tooltipAttribute"}}>
+                            {{item.context.label}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                {{/if}}
+              </li>
+            {{/unless}}
+          {{/each}}
+        {{else}}
+          {{view App.SpinnerView classNames="service-button-spinner"}}
+        {{/if}}
+      </ul>
+    </div>
+  {{/if}}
+</div>
+{{/isAuthorized}}
+{{outlet}}

@@ -1,0 +1,122 @@
+{"alerts":
+	[
+		{
+			"service_type":"SYSTEM",
+			"service_description":"0 SYSTEM Load-critical",
+			"host_name":"ip-10-242-191-48.ec2.internal",
+			"current_attempt":"1",
+			"last_hard_state":"2",
+			"plugin_output":"OK - load average: 0.12, 0.11, 0.08 99999999999999999999",
+			"last_hard_state_change":"1327362079",
+			"last_time_ok":"1327385479",
+			"last_time_warning":"0",
+			"last_time_unknown":"0",
+			"last_time_critical":"0",
+			"is_flapping":"0",
+			"last_check":"1328827745"
+		},
+		{
+			"service_type":"MAPREDUCE",
+			"service_description":"1 MAPRED Current Users - 222",
+			"host_name":"ip-10-242-191-48.ec2.internal",
+			"current_attempt":"1",
+			"last_hard_state":"1",
+			"plugin_output":"USERS OK - 1 users currently logged in",
+			"last_hard_state_change":"1327362154",
+			"last_time_ok":"1327385554",
+			"last_time_warning":"0",
+			"last_time_unknown":"0",
+			"last_time_critical":"0",
+			"is_flapping":"0",
+			"last_check":"1328827745"
+		},
+		{
+			"service_type":"HBASE",
+			"service_description":"2 HBASE",
+			"host_name":"ip-10-242-191-48.ec2.internal",
+			"current_attempt":"1",
+			"last_hard_state":"0",
+			"plugin_output":"PING OK - Packet loss = 0%, RTA = 0.04 ms",
+			"last_hard_state_change":"1327362229",
+			"last_time_ok":"1327385629",
+			"last_time_warning":"0",
+			"last_time_unknown":"0",
+			"last_time_critical":"0",
+			"is_flapping":"0",
+			"last_check":"1328827745"
+		},
+		{
+			"service_type":"HDFS",
+			"service_description":"3 HDFS warning",
+			"host_name":"ip-10-242-191-48.ec2.internal",
+			"current_attempt":"1",
+			"last_hard_state":"1",
+			"plugin_output":"DISK OK - free space: \/ 6605 MB (69% inode=88%):",
+			"last_hard_state_change":"1327362304",
+			"last_time_ok":"1327385704",
+			"last_time_warning":"0",
+			"last_time_unknown":"0",
+			"last_time_critical":"0",
+			"is_flapping":"0",
+			"last_check":"1328827745"
+		},
+		{
+			"service_type":"HDFS",
+			"service_description":"4 HDFS critical",
+			"host_name":"ip-10-40-199-111.ec2.internal",
+			"current_attempt":"1",
+			"last_hard_state":"2",
+			"plugin_output":"4:HDFS critical alert",
+			"last_hard_state_change":"1327362104",
+			"last_time_ok":"1327385504",
+			"last_time_warning":"0",
+			"last_time_unknown":"0",
+			"last_time_critical":"0",
+			"is_flapping":"0",
+			"last_check":"1328827745"
+		},
+		{
+			"service_type":"MAPREDUCE",
+			"service_description":"5 MAPREDUCE ok",
+			"host_name":"ip-10-40-199-111.ec2.internal",
+			"current_attempt":"1",
+			"last_hard_state":"0",
+			"plugin_output":"DISK OK - free space: \/ 6605 MB (69% inode=88%):",
+			"last_hard_state_change":"1327362254",
+			"last_time_ok":"1327385654",
+			"last_time_warning":"0",
+			"last_time_unknown":"0",
+			"last_time_critical":"0",
+			"is_flapping":"0",
+			"last_check":"1328827745"
+		},
+		{
+			"service_type":"ZOOKEEPER","service_description":"DATANODE Total Processes","host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"1","plugin_output":"PROCS OK: 73 processes with STATE = RSZDT","last_hard_state_change":"1327362129","last_time_ok":"1327385529","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0","last_check":"1328827745"},
+		{
+			"service_type":"HIVE-METASTORE","service_description":"PING","host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"1","plugin_output":"PING OK - Packet loss = 0%, RTA = 2.92 ms","last_hard_state_change":"1327362204","last_time_ok":"1327385604","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0","last_check":"1328827745"},
+		{
+			"service_type":"HBASE","service_description":"DATANODE Total Processes","host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"PROCS OK: 73 processes with STATE = RSZDT","last_hard_state_change":"1327362129","last_time_ok":"1327385529","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0","last_check":"1328827745"},
+		{
+			"service_type":"HBASE","service_description":"PING","host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"PING OK - Packet loss = 0%, RTA = 2.92 ms","last_hard_state_change":"1327362204","last_time_ok":"1327385604","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0","last_check":"1328827745"},
+		{
+			"service_type":"HBASE","service_description":"Root Partition","host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"DISK OK - free space: \/ 6605 MB (69% inode=88%):","last_hard_state_change":"1327362279","last_time_ok":"1327385679","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0","last_check":"1328827745"},
+		{
+			"service_type":"HBASE","service_description":"Root Partition","host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"DISK OK - free space: \/ 6605 MB (69% inode=88%):","last_hard_state_change":"1327362279","last_time_ok":"1327385679","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0","last_check":"1328827745"
+		}
+	],
+"hosts":
+	[
+		{"host_name":"ip-10-242-191-48.ec2.internal","last_hard_state":"0","last_hard_state":"0","plugin_output":"PING OK - Packet loss = 0%, RTA = 0.04 ms","last_check":"1327385564","current_attempt":"1","last_hard_state_change":"1327362079","last_time_up":"1327385574","last_time_down":"0","last_time_unreachable":"0","is_flapping":"0","alerts":[{"service_description":"HDFS Current Load","host_name":"ip-10-242-191-48.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"OK - load average: 0.12, 0.11, 0.08","last_hard_state_change":"1327362079","last_time_ok":"1327385479","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"},
+		{"service_description":"MAPRED Current Users","host_name":"ip-10-242-191-48.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"USERS OK - 1 users currently logged in","last_hard_state_change":"1327362154","last_time_ok":"1327385554","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"},
+		{"service_description":"PING","host_name":"ip-10-242-191-48.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"PING OK - Packet loss = 0%, RTA = 0.04 ms","last_hard_state_change":"1327362229","last_time_ok":"1327385629","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"},
+		{"service_description":"Root Partition","host_name":"ip-10-242-191-48.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"DISK OK - free space: \/ 6605 MB (69% inode=88%):","last_hard_state_change":"1327362304","last_time_ok":"1327385704","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"}]},
+		{"host_name":"ip-10-40-199-111.ec2.internal","last_hard_state":"1","last_hard_state":"0","plugin_output":"(Host Check Timed Out)","last_check":"1327385664","current_attempt":"2","last_hard_state_change":"1327383724","last_time_up":"1327385574","last_time_down":"1327385694","last_time_unreachable":"0","is_flapping":"0",
+			"alerts":[{"service_description":"DATANODE Total Processes","host_name":"ip-10-40-199-111.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"PROCS OK: 73 processes with STATE = RSZDT","last_hard_state_change":"1327362104","last_time_ok":"1327385504","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"},
+		{"service_description":"Root Partition","host_name":"ip-10-40-199-111.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"DISK OK - free space: \/ 6605 MB (69% inode=88%):","last_hard_state_change":"1327362254","last_time_ok":"1327385654","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"}]},
+		{"host_name":"ip-10-80-119-243.ec2.internal","last_hard_state":"0","last_hard_state":"0","plugin_output":"PING OK - Packet loss = 0%, RTA = 0.44 ms","last_check":"1327385464","current_attempt":"1","last_hard_state_change":"1327362129","last_time_up":"1327385474","last_time_down":"0","last_time_unreachable":"0","is_flapping":"0",
+			"alerts":[{"service_description":"DATANODE Total Processes","host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"PROCS OK: 73 processes with STATE = RSZDT","last_hard_state_change":"1327362129","last_time_ok":"1327385529","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"},
+		{"service_description":"PING","host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"PING OK - Packet loss = 0%, RTA = 2.92 ms","last_hard_state_change":"1327362204","last_time_ok":"1327385604","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"},{"service_description":"Root Partition",
+		"host_name":"ip-10-80-119-243.ec2.internal","current_attempt":"1","last_hard_state":"0","plugin_output":"DISK OK - free space: \/ 6605 MB (69% inode=88%):","last_hard_state_change":"1327362279","last_time_ok":"1327385679","last_time_warning":"0","last_time_unknown":"0","last_time_critical":"0","is_flapping":"0"}]}],
+"hostcounts":{"up_hosts":9,"down_hosts":0},
+"servicestates":{"HIVE-METASTORE":1,"ZOOKEEPER":0,"HBASE":"0","HDFS":"0","MAPREDUCE":"0"}
+}

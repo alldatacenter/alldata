@@ -1,0 +1,17 @@
+{
+  "car": {
+    "properties": {
+      "manufacturer": {
+        "type": "text",
+        "index": "false"
+      },
+      "model": {
+        "type": "text",
+        "index": "true"
+      },
+      "description": {
+        "type": "text"
+      }
+    }
+  }
+}

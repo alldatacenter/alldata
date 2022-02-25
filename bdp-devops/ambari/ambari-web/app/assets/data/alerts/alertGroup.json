@@ -1,0 +1,82 @@
+{
+  "href" : "http://c6407.ambari.apache.org:8080/api/v1/clusters/c789/alert_groups/16",
+  "AlertGroup" : {
+    "cluster_name" : "c789",
+    "default" : false,
+    "definitions" : [
+      {
+        "name" : "mapreduce_history_server_webui",
+        "label" : "History Server Web UI",
+        "service_name" : "MAPREDUCE2",
+        "component_name" : "HISTORYSERVER",
+        "id" : 1
+      },
+      {
+        "name" : "mapreduce_history_server_process",
+        "label" : "History Server Process",
+        "service_name" : "MAPREDUCE2",
+        "component_name" : "HISTORYSERVER",
+        "id" : 2
+      },
+      {
+        "name" : "datanode_process",
+        "label" : "DateNode Process",
+        "service_name" : "HDFS",
+        "component_name" : "DATANODE",
+        "id" : 19
+      },
+      {
+        "name" : "mapreduce_history_server_rpc_latency",
+        "label" : "History Server RPC Latency",
+        "service_name" : "MAPREDUCE2",
+        "component_name" : "HISTORYSERVER",
+        "id" : 3
+      },
+      {
+        "name" : "mapreduce_history_server_cpu",
+        "label" : "History Server CPU Utilization",
+        "service_name" : "MAPREDUCE2",
+        "component_name" : "HISTORYSERVER",
+        "id" : 4
+      },
+      {
+        "name" : "falcon_server_webui",
+        "label" : "Falcon Server Web UI",
+        "service_name" : "FALCON",
+        "component_name" : "FALCON_SERVER",
+        "id" : 5
+      },
+      {
+        "name" : "falcon_server_process",
+        "label" : "Falcon Server Process",
+        "service_name" : "FALCON",
+        "component_name" : "FALCON_SERVER",
+        "id" : 6
+      },
+      {
+        "name" : "flume_agent_status",
+        "label" : "Flume Agent Status",
+        "service_name" : "FLUME",
+        "component_name" : "FLUME_HANDLER",
+        "id" : 7
+      },
+      {
+        "name" : "datanode_storage",
+        "label" : "DataNode Storage",
+        "service_name" : "HDFS",
+        "component_name" : "DATANODE",
+        "id" : 26
+      },
+      {
+        "name" : "datanode_webui",
+        "label" : "DataNode Web UI",
+        "service_name" : "HDFS",
+        "component_name" : "DATANODE",
+        "id" : 14
+      }
+    ],
+    "id" : 16,
+    "name" : "group lalala",
+    "targets" : []
+  }
+}

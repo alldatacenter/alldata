@@ -1,0 +1,87 @@
+{
+  "resources": [
+    {
+      "href": "http://c6405:8080/api/v1/stacks/HDP/versions/2.2/recommendations/5",
+      "hosts": [
+        "c6406.ambari.apache.org",
+        "c6405.ambari.apache.org"
+      ],
+      "services": [
+        "HDFS",
+        "MAPREDUCE2",
+        "ZOOKEEPER",
+        "YARN"
+      ],
+      "Recommendation": {
+        "id": 5
+      },
+      "Versions": {
+        "stack_name": "HDP",
+        "stack_version": "2.2"
+      },
+      "recommendations": {
+        "blueprint": {
+          "host_groups": [
+            {
+              "components": [
+                {
+                  "name": "DATANODE"
+                }
+              ],
+              "name": "host-group-1"
+            },
+            {
+              "components": [
+                {
+                  "name": "DATANODE"
+                }
+              ],
+              "name": "host-group-2"
+            }
+          ],
+          "configurations": {
+            "mapred-site": {
+              "properties": {
+                "mapreduce.map.java.opts": "-Xmx546m1",
+                "mapreduce.map.memory.mb": "6821",
+                "mapreduce.reduce.java.opts": "-Xmx546m1",
+                "mapreduce.reduce.memory.mb": "6821",
+                "mapreduce.task.io.sort.mb": "2731",
+                "yarn.app.mapreduce.am.command-opts": "-Xmx546m -Dhdp.version=${hdp.version}1",
+                "yarn.app.mapreduce.am.resource.mb": "6821"
+              }
+            },
+            "yarn-site": {
+              "properties": {
+                "yarn.nodemanager.resource.cpu-vcores": "11",
+                "yarn.nodemanager.resource.memory-mb": "2048",
+                "yarn.scheduler.maximum-allocation-mb": "20481",
+                "yarn.scheduler.minimum-allocation-mb": "6821"
+              }
+            }
+          }
+        },
+        "blueprint_cluster_binding": {
+          "host_groups": [
+            {
+              "hosts": [
+                {
+                  "name": "c6405.ambari.apache.org"
+                }
+              ],
+              "name": "host-group-1"
+            },
+            {
+              "hosts": [
+                {
+                  "name": "c6406.ambari.apache.org"
+                }
+              ],
+              "name": "host-group-2"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "hdfs": {
+    "service_type": "HDFS",
+    "installed": true,
+    "namenode_addr": "namenode:50070",
+    "secondary_namenode_addr": "snamenode:50090",
+    "total_nodes": "1",
+    "memory_heap_used": 151642616,
+    "memory_heap_max": 453050368,
+    "dfs_dirfiles_count": 252,
+    "dfs_blocks_total": 146,
+    "dfs_blocks_underreplicated": 145,
+    "dfs_blocks_missing": 0,
+    "dfs_blocks_corrupt": 0,
+    "dfs_state": "Operational",
+    "start_time": 1348935028,
+    "live_nodes": 1,
+    "dead_nodes": 0,
+    "decommissioning_nodes": 0,
+    "version": "1.0.3.15, r",
+    "safemode": false,
+    "pending_upgrades": false,
+    "dfs_configured_capacity": 885570207744,
+    "dfs_percent_used": 0.01,
+    "dfs_percent_remaining": 95.09,
+    "dfs_total_bytes": 885570207744,
+    "dfs_used_bytes": 104898560,
+    "nondfs_used_bytes": 43365113856,
+    "dfs_free_bytes": 842100195328
+  }
+}

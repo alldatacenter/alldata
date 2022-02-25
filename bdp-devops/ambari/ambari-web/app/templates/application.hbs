@@ -1,0 +1,221 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if App.enableDigitalClock}}
+  {{view App.ClockView}}
+{{/if}}
+
+{{#if App.router.mainController.isClusterDataLoaded}}
+  <div id="side-nav" class="navigation-bar">
+    <div class="navigation-bar-container">
+    <ul class="side-nav-header nav nav-pills nav-stacked">
+      <li class="navigation-header">
+        <a href="#" {{action goToDashboard target="controller"}} class="ambari-logo">
+          <img src="/img/ambari-logo.png" alt="Apache Ambari" title="Apache Ambari" {{QAAttr "ambari-logo"}}>
+        </a>
+        <div class="btn-group" {{action goToDashboard target="controller"}}>
+          <span class="ambari-header" title="Apache Ambari" {{QAAttr "ambari-title"}}>{{t app.name}}</span>
+        </div>
+      </li>
+    </ul>
+    {{view App.MainSideMenuView}}
+    <ul class="side-nav-footer nav nav-pills nav-stacked">
+      <li class="navigation-footer">
+        <a href="#" data-toggle="collapse-side-nav">
+          <span class="navigation-icon icon-double-angle-left"></span>
+        </a>
+      </li>
+    </ul>
+    </div>
+  </div>
+{{/if}}
+
+<div id="main">
+  <div id="top-nav">
+    {{#if App.router.loggedIn}}
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container main-container">
+          <div class="navbar-header navbar-nav">
+            {{view App.BreadcrumbsView}}
+          </div>
+
+          {{! right offset. don't delete me! }}
+          <ul class="nav navbar-nav navbar-right"></ul>
+
+          {{! user dropdown }}
+          <div class="top-nav-user navbar-right btn-group">
+            <button {{QAAttr "user-dropdown"}} class="dropdown-toggle navbar-btn btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="glyphicon glyphicon-user"></i>&nbsp;{{App.router.displayLoginName}}&nbsp;<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+
+              {{! about }}
+              <li><a href="#" id="about" {{action showAboutPopup target="controller"}}>{{t app.aboutAmbari}}</a></li>
+              {{! about end }}
+
+              {{! manage ambari }}
+              {{#if showManageAmbari}}
+                {{#isAuthorized "AMBARI.ADD_DELETE_CLUSTERS, AMBARI.ASSIGN_ROLES, AMBARI.EDIT_STACK_REPOS, AMBARI.MANAGE_GROUPS, AMBARI.MANAGE_STACK_VERSIONS, AMBARI.MANAGE_USERS, AMBARI.MANAGE_VIEWS, AMBARI.RENAME_CLUSTER, AMBARI.MANAGE_USERS"}}
+                  <li>
+                    <a href="#" id="manage-ambari" {{action goToAdminView target="controller"}}>
+                      {{t app.manageAmbari}}
+                    </a>
+                  </li>
+                {{/isAuthorized}}
+              {{/if}}
+              {{! manage ambari end }}
+
+              {{! user settings }}
+              {{#if isExistingClusterDataLoaded}}
+                {{#isAuthorized "AMBARI.MANAGE_SETTINGS"}}
+                  <li>
+                    <a href="#" {{action showSettingsPopup target="App.router.userSettingsController"}}>
+                      {{t app.settings}}
+                    </a>
+                  </li>
+                {{/isAuthorized}}
+              {{/if}}
+              {{! user settings end }}
+
+              {{! sign out }}
+              {{#if showExitLink}}
+                <li role="separator" class="divider"></li>
+                <li><a href="" id="sign-out" {{QAAttr "sign-out"}} {{action logoff}}>{{t app.signout}}</a></li>
+              {{/if}}
+              {{! sign out end }}
+            </ul>
+          </div>
+          {{! user dropdown end }}
+
+          {{! views menu}}
+          <div class="navbar-nav navbar-right ambari-views notifications-group">
+            {{#if enableLinks}}
+              <i class="icon-th dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+              <ul class="notifications-dropdown row dropdown-menu">
+                <div class="popup-arrow-up"></div>
+                <div class="notifications-header col-sm-12">
+                  <div class="notifications-title">{{t common.views}}</div>
+                </div>
+                <div class="notifications-body col-sm-12">
+                  {{#if view.views.length}}
+                    {{#each item in view.views}}
+                      <li>
+                        <a href="#" {{action "setView" item target="App.router.mainViewsController"}}>{{item.label}}</a>
+                      </li>
+                    {{/each}}
+                  {{else}}
+                    <li class="disabled"><a href="javascript:void(null);">{{t menu.item.views.noViews}}</a></li>
+                  {{/if}}
+                </div>
+              </ul>
+            {{/if}}
+          </div>
+          {{!views menu end}}
+
+          <div class="navbar-nav navbar-right cluster-notifications">
+            {{#if enableLinks}}
+            {{! bg label }}
+            <a href="#" class="bg-label" {{action "showPopup" target="App.router.backgroundOperationsController"}}>
+              {{#with App.router.backgroundOperationsController}}
+                <span class="glyphicon glyphicon-cog"></span>
+                <span id="span-bg-operation-count" {{bindAttr class="runningOperationsCount:operations-count :numberCircle"}}>
+                  {{runningOperationsCount}}
+                </span>
+              {{/with}}
+            </a>
+            {{! bg label end }}
+
+              {{! new alerts label }}
+              {{#if App.router.clusterController.isAlertsLoaded}}
+                <span class="notifications-group">
+                <span class="alerts-label dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                  <span class="glyphicon glyphicon-bell"></span>
+                  {{view App.AlertBadgeView
+                    criticalCountBinding="App.router.mainAlertDefinitionsController.criticalAlertInstancesCount"
+                    warningCountBinding="App.router.mainAlertDefinitionsController.warningAlertInstancesCount"}}
+                </span>
+                <div id="notifications-dropdown" class="dropdown-menu row">
+                  {{view App.AlertInstancesPopupView}}
+                </div>
+              </span>
+              {{/if}}
+            {{! alerts label end }}
+            {{/if}}
+          </div>
+
+          <div class="navbar-nav navbar-text navbar-right brand-wrapper">
+            {{! cluster name }}
+            <div {{bindAttr title="clusterName"}} class="cluster-name">
+              {{#unless App.isClusterUser}}
+                <span>{{clusterDisplayName}}</span>
+              {{/unless}}
+            </div>
+            {{! cluster name end }}
+          </div>
+        </div>
+      </nav>
+    {{else}}
+      <nav class="navigation-bar-container login-header">
+        <ul class="side-nav-header nav nav-pills nav-stacked">
+          <li class="navigation-header">
+            <a class="ambari-logo">
+              <img src="/img/ambari-logo.png" alt="Apache Ambari" title="Apache Ambari" {{QAAttr "ambari-logo"}}>
+            </a>
+            <div class="btn-group">
+              <span class="ambari-header" title="Apache Ambari" {{QAAttr "ambari-title"}}>{{t app.name}}</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    {{/if}}
+  </div>
+
+  <div class="container main-container">
+    <div id="content">
+      {{#if App.wizardIsNotFinished}}
+        <div class="ru-badge row">
+          {{#if isExistingClusterDataLoaded}}
+            <p class="col-md-4 col-md-offset-4">
+              {{#if showUpgradeLabel}}
+                <a href="#" {{action "openUpgradeDialog" target="App.router.mainAdminStackAndUpgradeController"}}>
+                  <span {{bindAttr class="upgradeMap.cls :label"}}>
+                    <i {{bindAttr class="upgradeMap.icon :glyphicon"}}></i>&nbsp;
+                    {{upgradeMap.msg}}
+                  </span>
+                </a>
+              {{else}}
+                {{#if App.router.wizardWatcherController.isNonWizardUser}}
+                  <span class="label upgrade-in-progress">
+                  <i class="glyphicon glyphicon-cog"></i>&nbsp;{{App.router.wizardWatcherController.wizardDisplayName}}
+                </span>
+                {{/if}}
+              {{/if}}
+            </p>
+          {{/if}}
+        </div>
+        <div class="row">
+          {{#if App.router.mainAdminStackAndUpgradeController.isFinalizeItem}}
+          <p class="col-md-10 col-md-offset-1 alert alert-danger">{{t admin.stackVersions.version.upgrade.notFinalized.warning}}</p>
+          {{/if}}
+        </div>
+      {{/if}}
+      {{outlet}}
+    </div>
+  </div>
+</div>

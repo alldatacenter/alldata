@@ -1,0 +1,24 @@
+{
+    "hdfs": {
+        "service_type": "HDFS",
+        "namenode_addr": "nnhost:50070",
+        "total_nodes": 10,
+        "live_nodes": 8,
+        "dead_nodes": 1,
+        "decommissioned_nodes": 1,
+        "start_time": 23235351,
+        "pending_upgrades": false,
+        "version": "1.0.0, r1234555555555555555555555555555555555555333333333",
+        "safemode": false,
+        "memory_heap_committed": 100131233,
+        "memory_heap_total": 800212312,
+        "dfs_configured_capacity": 1234456545644,
+        "dfs_percent_used": 24,
+        "dfs_percent_remaining": 76,
+        "dfs_blocks_total": 100113,
+        "dfs_blocks_underreplicated": 0,
+        "dfs_blocks_missing": 0,
+        "dfs_blocks_corrupt": 0,
+        "dfs_dirfiles_count": 1045
+    }
+}

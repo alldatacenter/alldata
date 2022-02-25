@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{63b476b6-efcd-468f-80d9-94e2cff1b5db}</ProjectGuid>
+    <RootNamespace>Ambari.SCOM</RootNamespace>
+    <Name>Ambari SCOM Monitoring</Name>
+    <ManagementPackName>Ambari.SCOM.Monitoring</ManagementPackName>
+    <Version>2.0.0.0</Version>
+    <MpFrameworkVersion>v7.0</MpFrameworkVersion>
+    <MpFrameworkProfile>OM</MpFrameworkProfile>
+    <ProductVersion>2.0.0.0</ProductVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <GenerateSealed>True</GenerateSealed>
+    <Company>MyCompany</Company>
+    <Copyright>Copyright (c) MyCompany. All rights reserved.</Copyright>
+    <DelaySigning>False</DelaySigning>
+    <AssemblyOriginatorKeyFile>..\Items\key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DelaySigning>False</DelaySigning>
+    <Company>MyCompany</Company>
+    <Copyright>Copyright (c) MyCompany. All rights reserved.</Copyright>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\Items\key.snk</AssemblyOriginatorKeyFile>
+    <GenerateSealed>True</GenerateSealed>
+  </PropertyGroup>
+  <ItemGroup>
+    <ManagementPackReference Include="Microsoft.SystemCenter.DataWarehouse.Library">
+      <HintPath>C:\Program Files (x86)\System Center 2012 Visual Studio Authoring Extensions\References\OM2012\Microsoft.SystemCenter.DataWarehouse.Library.mp</HintPath>
+      <Alias>SCDW</Alias>
+      <MinVersion>7.0.8427.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Library">
+      <Alias>SC</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.SystemCenter.OperationsManager.Library">
+      <HintPath>C:\Program Files (x86)\System Center 2012 Visual Studio Authoring Extensions\References\OM2012\Microsoft.SystemCenter.OperationsManager.Library.mp</HintPath>
+      <Alias>OM</Alias>
+      <MinVersion>7.0.8560.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.Windows.Library">
+      <Alias>Windows</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Health.Library">
+      <Alias>Health</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Library">
+      <Alias>System</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Visualization.Library">
+      <Alias>Visualization</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Performance.Library">
+      <HintPath>C:\Program Files (x86)\System Center 2012 Visual Studio Authoring Extensions\References\OM2012\System.Performance.Library.mp</HintPath>
+      <Alias>Perf</Alias>
+      <MinVersion>7.0.8427.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AmbariAccessorRole.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\AmbariEntity.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\AmbariSeed.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\AmbariWatcherNode.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Cluster.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ClusterProjection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ClusterService.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ClustersGroup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ClusterSoftwareProjection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ClusterHardwareProjection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Host.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\HostComponent.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Discoveries\ClustersGroupPopulator.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Discoveries\HostComponentsDiscovery.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Images\Icons.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManagementPack.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\ConditionDetections\PropertyBagMultiplePerformanceDataMapper.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\ConditionDetections\PropertyBagPerformanceDataMapper.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Discovery\AmbariSeedDiscoveryDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Discovery\ClustersDiscoveryDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Discovery\ClusterServicesDiscoveryDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Discovery\HostsDiscoveryDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Discovery\PowerShellDiscoveryDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Discovery\HostComponentsDiscoveryDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\BaseScriptedPropertyBagDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\CustomEventProvider.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\SyntheticTransactionDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\HdfsServiceMetricsDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\HdfsServiceMetricsPerformanceDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\HostComponentHealthStateDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\HostComponentMetricsDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\ClusterServiceMetricsDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\HostComponentMetricsPerformanceDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\MapReduceServiceMetricsDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\MapReduceServiceMetricsPerformanceDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\YarnServiceMetricsDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataSources\Monitoring\YarnServiceMetricsPerformanceDataSource.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\ProbeActions\ImpersonatedPowerShellPropertyBagProbe.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\ErrorHandling\APIAuthenticationMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\ErrorHandling\APIAvailabilityMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\ErrorHandling\TimeoutMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HdfsService\CorruptedBlocksUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HdfsService\DeadDataNodesUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HdfsService\CapacityRemainingUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HdfsService\UnderReplicatedBlocksUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\DataNodeHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\HistoryServerHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\HiveMetastoreHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\HiveServerHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\JobTrackerHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\NameNodeHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\NodeManagerHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\OozieServerHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\ResourceManagerHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\SecondaryNameNodeHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\TaskTrackerHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\HostComponentsHeathState\TempletonServerHealthStateUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\JobTracker\MemoryHeapUsageUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\MapReduceService\DeadTaskTrackersUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\MapReduceService\FailedJobsUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\MapReduceService\InvalidTaskTrackersUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\NameNode\MemoryHeapUsageUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\ResourceManager\AppsFailedUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\ResourceManager\LostNMsUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\ResourceManager\MemoryHeapUsageUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\ResourceManager\UnhealthyNMsUnitMonitor.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\HistoryServerToMapReduce2ServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\HiveMetastoreComponentToHiveServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\HiveServerComponentToHiveServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\HostComponentToHostRollups.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\HostToHardwareProjectionRollups.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\ClusterServiceToSoftwareProjectionRollups.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\JobTrackerComponentToMapReduceServiceRolllup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\NameNodeComponentToHdfsServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\NodeManagerToYARNServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\OozieServerComponentToOozieServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\ResourceManagerToYARNServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\SecondaryNameNodeComponentToHdfsServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\SoftwareProjectionToClusterRollups.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Rollups\TempletonServerComponentToTempletonServiceRollup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\InvalidTaskTrackersMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\HdfsServiceThreeStateThresholdMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\HdfsServiceTwoStateThresholdMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\HostComponentThreeStateThresholdMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\MapReduceServiceThreeStateThresholdMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\HostComponentHealthStateMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\RepeatedEventLogManualReset2StateMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\SyntheticTransactionMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorTypes\YarnServiceThreeStateThresholdMonitorType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presentation\ActiveAlerts.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presentation\ClustersDiagram.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="References.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\ErrorHandling\GeneralErrorCollectionRule.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\BlocksReadCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\BlocksWrittenCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\BytesReadCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\BytesWrittenCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\CapacityNonDfsUsedGbCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\CapacityRemainingGbCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\CapacityTotalGbCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\CapacityUsedGbCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\CorruptedBlocksCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\DeadNodesCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\DecommissionedNodesCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\FilesAppendedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\FilesCreatedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\FilesDeletedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\LiveNodesCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\MissingBlocksCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\PendingDeletionBlocksCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\PendingReplicationBlocksCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\TotalBlocksCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\TotalFilesCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HdfsService\UnderReplicatedBlocksCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlockChecksumOpsAvgTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlockCopyOpsAvgTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlockReadOpsAvgTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlockReplaceOpsAvgTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlocksReadCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlocksRemovedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlocksReplicatedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlocksVerifiedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlocksWrittenCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlockVerificationFailuresCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BlockWriteOpsAvgTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BytesReadCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\BytesWrittenCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\DataNode\HeartBeatsAvgTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\GcCountCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\LogErrorCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\LogFatalCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\MemoryNonHeapCommittedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\MemoryNonHeapUsedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\ReceivedBytesCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\RpcAuthorizationFailuresCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\RpcProcessingAvgTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\RpcProcessingNumOpsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\RpcQueueAvgTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\RpcQueueNumOpsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\HeadNode\SentBytesCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\ActiveApplicationsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\ActiveNMCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\ActiveUsersCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AggregateContainersAllocatedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AggregateContainersReleasedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AllocatedContainersCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AllocatedMBCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AllocatedVCoresCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AppsCompletedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AppsFailedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AppsKilledCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AppsPendingCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AppsRunningCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AppsSubmittedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AvailableMBCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\AvailableVCoresCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\DecommissionedNMCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\LostNMCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\PendingContainersCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\PendingMBCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\PendingVCoresCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\RebootedNMCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\ReservedContainersCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\ReservedMBCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\ReservedVCoresCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\running_1440Collection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\running_300Collection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\running_60Collection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\ResourceManager\UnhealthyNMCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\GcTimeCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\MemoryHeapCommittedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\MemoryHeapUsedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\ThreadsBlockedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\ThreadsNewCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\ThreadsRunnableCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\ThreadsTerminatedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\ThreadsTimedWaitingCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\Shared\ThreadsWaitingCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presentation\ClusterServicesPerformance.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presentation\Folders.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presentation\HostComponentsPerformance.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\MapSlotsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\MapsRunningCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\ReduceSlotsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\ReducesRunningCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\ShuffleExceptionCaughtCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\ShuffleFailedOutputsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\ShuffleHandlerBusyPercentCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\ShuffleOutputBytesCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\HostComponents\TaskTracker\ShuffleSuccessOutputsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\DeadTaskTrackersCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\FailedJobsPercentCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\JobsCompletedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\JobsFailedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\JobsKilledCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\JobsPreparingCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\JobsRunningCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\JobsSubmittedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\LiveTaskTrackersCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\MapsCompletedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\MapsFailedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\MapsKilledCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\MapsLaunchedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\MapsRunningCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\MapsWaitingCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\NumberOfTaskTrackersCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\OccupiedMapSlotsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\OccupiedReduceSlotsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\ReducesCompletedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\ReducesFailedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\ReducesKilledCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\ReducesLaunchedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\ReducesRunningCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\ReducesWaitingCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\ReservedMapSlotsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\ReservedReduceSlotsCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\TaskTrackersBlacklistedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\TaskTrackersDecommissionedCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Performance\MapReduceService\TaskTrackersGraylisted.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Widgets\LiveVsDeadNodes.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Widgets\SpaceUtilization.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RunAsProfiles.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Templates\DiscoveryTemplate.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Discoveries" />
+    <Folder Include="Modules" />
+    <Folder Include="Modules\DataSources" />
+    <Folder Include="Classes" />
+    <Folder Include="Modules\DataSources\Discovery" />
+    <Folder Include="Modules\DataSources\Discovery\Scripts" />
+    <Folder Include="Images" />
+    <Folder Include="Modules\ConditionDetections" />
+    <Folder Include="Modules\DataSources\Monitoring" />
+    <Folder Include="Modules\DataSources\Monitoring\Scripts" />
+    <Folder Include="Modules\ProbeActions" />
+    <Folder Include="Monitors" />
+    <Folder Include="Monitors\HdfsService" />
+    <Folder Include="Monitors\NameNode" />
+    <Folder Include="Monitors\MapReduceService" />
+    <Folder Include="Monitors\JobTracker" />
+    <Folder Include="Monitors\HostComponentsHeathState" />
+    <Folder Include="Monitors\ErrorHandling" />
+    <Folder Include="Monitors\ResourceManager" />
+    <Folder Include="Monitors\Rollups" />
+    <Folder Include="MonitorTypes" />
+    <Folder Include="Rules" />
+    <Folder Include="Rules\ErrorHandling" />
+    <Folder Include="Rules\Performance\HostComponents\DataNode" />
+    <Folder Include="Rules\Performance\HostComponents\ResourceManager" />
+    <Folder Include="Rules\Widgets" />
+    <Folder Include="Rules\Performance" />
+    <Folder Include="Presentation" />
+    <Folder Include="Rules\Performance\HostComponents" />
+    <Folder Include="Rules\Performance\HostComponents\HeadNode" />
+    <Folder Include="Rules\Performance\HostComponents\TaskTracker" />
+    <Folder Include="Rules\Performance\HostComponents\Shared" />
+    <Folder Include="Rules\Performance\HdfsService" />
+    <Folder Include="Rules\Performance\MapReduceService" />
+    <Folder Include="Templates" />
+    <Folder Include="Shared Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\DataSources\Discovery\Scripts\ClustersDiscovery.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Discovery\Scripts\HostComponentsDiscovery.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Discovery\Scripts\HostsDiscovery.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Discovery\Scripts\ClusterServicesDiscovery.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Monitoring\Scripts\HdfsServiceMetrics.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Monitoring\Scripts\HostComponentHealthState.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Monitoring\Scripts\HostComponentMetrics.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Monitoring\Scripts\MapReduceServiceMetrics.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Monitoring\Scripts\SyntheticTransaction.ps1" />
+    <EmbeddedResource Include="Modules\DataSources\Monitoring\Scripts\YarnServiceMetrics.ps1" />
+    <EmbeddedResource Include="Shared Scripts\DiscoveryHelpers.ps1" />
+    <EmbeddedResource Include="Shared Scripts\HealthServicesManagement.ps1" />
+    <EmbeddedResource Include="Shared Scripts\JsonParser.ps1" />
+    <EmbeddedResource Include="Shared Scripts\Logging.ps1" />
+    <EmbeddedResource Include="Shared Scripts\MonitoringHelpers.ps1" />
+    <EmbeddedResource Include="Shared Scripts\RestApi.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\DataNode.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\DataNode_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\hdfs.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\hdfs_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\HiveClient.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\HiveClient_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\HiveMetastore.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\HiveMetastore_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\HiveServer.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\HiveServer_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\hiveservice.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\hiveservice_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Cluster.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Cluster_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Host.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\hosts.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\hosts_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Host_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\JobTracker.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\JobTracker_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\mapreduce.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\mapreduce_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NameNode.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NameNode_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\OozieServer.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\OozieServer_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\OozieService.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\OozieService_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Pig.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\PigService.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\PigService_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Pig_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Scoop.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ScoopService.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ScoopService_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Scoop_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\SecNameNode.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\SecNameNode_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Services.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Services_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\TaskTracker.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\TaskTracker_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\TempletonService.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\TempletonService_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\TrmpletonServer.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\TrmpletonServer_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Name>Modules</Name>
+      <Project>{aeaa0fb0-d274-491a-beb5-5354584f1400}</Project>
+      <Private>True</Private>
+      <PackageToBundle>True</PackageToBundle>
+    </ProjectReference>
+    <ProjectReference Include="..\ScomPages\ScomPages.csproj">
+      <Name>ScomPages</Name>
+      <Project>{b77e5ea7-3fe4-49c9-88ac-3ab871a26f9b}</Project>
+      <Private>True</Private>
+      <PackageToBundle>True</PackageToBundle>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\HistoryServer.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\HistoryServer_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Mapreduce2.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Mapreduce2Client.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Mapreduce2Client_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Mapreduce2_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NodeManager.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\NodeManager_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ResourceManager.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ResourceManager_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Yarn.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\YarnClient.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\YarnClient_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Yarn_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\JournalNode.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\JournalNode_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ZooKeeperClient.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ZooKeeperClient_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ZooKeeperFailoverController.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ZooKeeperFailoverController_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ZooKeeperServer.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ZooKeeperServer_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ZooKeeperService.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ZooKeeperService_.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
+</Project>

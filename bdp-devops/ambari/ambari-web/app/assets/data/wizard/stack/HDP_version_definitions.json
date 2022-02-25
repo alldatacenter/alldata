@@ -1,0 +1,2740 @@
+
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions?fields=VersionDefinition/stack_default,operating_systems/repositories/Repositories/*,operating_systems/OperatingSystems/*,VersionDefinition/stack_services,VersionDefinition/repository_version&VersionDefinition/show_available=true&VersionDefinition/stack_name=HDP",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2",
+      "VersionDefinition" : {
+        "id" : "HDP-2.2",
+        "repository_version" : "2.2",
+        "show_available" : true,
+        "stack_default" : true,
+        "stack_name" : "HDP",
+        "stack_services" : [
+          {
+            "name" : "TEZ",
+            "display_name" : "Tez",
+            "comment" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "versions" : [
+              "0.5.2.2.2"
+            ]
+          },
+          {
+            "name" : "KERBEROS",
+            "display_name" : "Kerberos",
+            "comment" : "A computer network authentication protocol which works on\n        the basis of 'tickets' to allow nodes communicating over a\n        non-secure network to prove their identity to one another in a\n        secure manner.\n      ",
+            "versions" : [
+              "1.10.3-10"
+            ]
+          },
+          {
+            "name" : "YARN",
+            "display_name" : "YARN",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.6.0.2.2"
+            ]
+          },
+          {
+            "name" : "FLUME",
+            "display_name" : "Flume",
+            "comment" : "A distributed service for collecting, aggregating, and moving large amounts of streaming data into HDFS",
+            "versions" : [
+              "1.5.2.2.2"
+            ]
+          },
+          {
+            "name" : "SMARTSENSE",
+            "display_name" : "SmartSense",
+            "comment" : "SmartSense - Hortonworks SmartSense Tool (HST) helps quickly\n        gather configuration, metrics, logs from common HDP services that\n        aids to quickly troubleshoot support cases and receive\n        cluster-specific recommendations.\n      ",
+            "versions" : [
+              "1.2.2.0-567"
+            ]
+          },
+          {
+            "name" : "RANGER",
+            "display_name" : "Ranger",
+            "comment" : "Comprehensive security for Hadoop",
+            "versions" : [
+              "0.4.0"
+            ]
+          },
+          {
+            "name" : "SPARK",
+            "display_name" : "Spark",
+            "comment" : "Apache Spark is a fast and general engine for large-scale data processing.",
+            "versions" : [
+              "1.2.1.2.2"
+            ]
+          },
+          {
+            "name" : "AMBARI_METRICS",
+            "display_name" : "Ambari Metrics",
+            "comment" : "A system for metrics collection that provides storage and retrieval capability for metrics collected from the cluster\n      ",
+            "versions" : [
+              "0.1.0"
+            ]
+          },
+          {
+            "name" : "OOZIE",
+            "display_name" : "Oozie",
+            "comment" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "versions" : [
+              "4.1.0.2.2"
+            ]
+          },
+          {
+            "name" : "HIVE",
+            "display_name" : "Hive",
+            "comment" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "versions" : [
+              "0.14.0.2.2"
+            ]
+          },
+          {
+            "name" : "LOGSEARCH",
+            "display_name" : "Log Search",
+            "comment" : "Log aggregation, analysis, and visualization for Ambari managed services",
+            "versions" : [
+              "0.5.0"
+            ]
+          },
+          {
+            "name" : "FALCON",
+            "display_name" : "Falcon",
+            "comment" : "Data management and processing platform",
+            "versions" : [
+              "0.6.0.2.2"
+            ]
+          },
+          {
+            "name" : "SQOOP",
+            "display_name" : "Sqoop",
+            "comment" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "versions" : [
+              "1.4.5.2.2"
+            ]
+          },
+          {
+            "name" : "KNOX",
+            "display_name" : "Knox",
+            "comment" : "Provides a single point of authentication and access for Apache Hadoop services in a cluster",
+            "versions" : [
+              "0.5.0.2.2"
+            ]
+          },
+          {
+            "name" : "STORM",
+            "display_name" : "Storm",
+            "comment" : "Apache Hadoop Stream processing framework",
+            "versions" : [
+              "0.9.3.2.2"
+            ]
+          },
+          {
+            "name" : "MAPREDUCE2",
+            "display_name" : "MapReduce2",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.6.0.2.2"
+            ]
+          },
+          {
+            "name" : "ZOOKEEPER",
+            "display_name" : "ZooKeeper",
+            "comment" : "Centralized service which provides highly reliable distributed coordination",
+            "versions" : [
+              "3.4.6.2.2"
+            ]
+          },
+          {
+            "name" : "KAFKA",
+            "display_name" : "Kafka",
+            "comment" : "A high-throughput distributed messaging system",
+            "versions" : [
+              "0.8.1.2.2"
+            ]
+          },
+          {
+            "name" : "HDFS",
+            "display_name" : "HDFS",
+            "comment" : "Apache Hadoop Distributed File System",
+            "versions" : [
+              "2.6.0.2.2"
+            ]
+          },
+          {
+            "name" : "HBASE",
+            "display_name" : "HBase",
+            "comment" : "Non-relational distributed database and centralized service for configuration management &\n        synchronization\n      ",
+            "versions" : [
+              "0.98.4.2.2"
+            ]
+          },
+          {
+            "name" : "GANGLIA",
+            "display_name" : "Ganglia",
+            "comment" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "versions" : [
+              "3.5.0"
+            ]
+          },
+          {
+            "name" : "PIG",
+            "display_name" : "Pig",
+            "comment" : "Scripting platform for analyzing large datasets",
+            "versions" : [
+              "0.14.0.2.2"
+            ]
+          },
+          {
+            "name" : "SLIDER",
+            "display_name" : "Slider",
+            "comment" : "A framework for deploying, managing and monitoring existing distributed applications on YARN.",
+            "versions" : [
+              "0.60.0.2.2"
+            ]
+          }
+        ],
+        "stack_version" : "2.2"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat6",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "version_definition_id" : "HDP-2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/redhat6/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.2.6.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.2.6.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.2",
+                "version_definition_id" : "HDP-2.2"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.2",
+                "version_definition_id" : "HDP-2.2"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/suse11",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "suse11",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "version_definition_id" : "HDP-2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/suse11/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/suse11sp3/2.x/updates/2.2.6.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/suse11sp3/2.x/updates/2.2.6.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.2",
+                "version_definition_id" : "HDP-2.2"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/suse11/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.2",
+                "version_definition_id" : "HDP-2.2"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/ubuntu12",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu12",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "version_definition_id" : "HDP-2.2"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/ubuntu12/repositories/HDP-2.2",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.x/updates/2.2.6.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.x/updates/2.2.6.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-2.2",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.2",
+                "version_definition_id" : "HDP-2.2"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.2/operating_systems/ubuntu12/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.2",
+                "version_definition_id" : "HDP-2.2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3",
+      "VersionDefinition" : {
+        "id" : "HDP-2.3",
+        "repository_version" : "2.3",
+        "show_available" : true,
+        "stack_default" : true,
+        "stack_name" : "HDP",
+        "stack_services" : [
+          {
+            "name" : "FLUME",
+            "display_name" : "Flume",
+            "comment" : "A distributed service for collecting, aggregating, and moving large amounts of streaming data into HDFS",
+            "versions" : [
+              "1.5.2.2.3"
+            ]
+          },
+          {
+            "name" : "OOZIE",
+            "display_name" : "Oozie",
+            "comment" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "versions" : [
+              "4.2.0.2.3"
+            ]
+          },
+          {
+            "name" : "HBASE",
+            "display_name" : "HBase",
+            "comment" : "A Non-relational distributed database, plus Phoenix, a high performance SQL layer for low latency applications.",
+            "versions" : [
+              "1.1.1.2.3"
+            ]
+          },
+          {
+            "name" : "KAFKA",
+            "display_name" : "Kafka",
+            "comment" : "A high-throughput distributed messaging system",
+            "versions" : [
+              "0.9.0.2.3"
+            ]
+          },
+          {
+            "name" : "HDFS",
+            "display_name" : "HDFS",
+            "comment" : "Apache Hadoop Distributed File System",
+            "versions" : [
+              "2.7.1.2.3"
+            ]
+          },
+          {
+            "name" : "ATLAS",
+            "display_name" : "Atlas",
+            "comment" : "Atlas Metadata and Governance platform",
+            "versions" : [
+              "0.5.0.2.3"
+            ]
+          },
+          {
+            "name" : "SQOOP",
+            "display_name" : "Sqoop",
+            "comment" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "versions" : [
+              "1.4.6.2.3"
+            ]
+          },
+          {
+            "name" : "STORM",
+            "display_name" : "Storm",
+            "comment" : "Apache Hadoop Stream processing framework",
+            "versions" : [
+              "0.10.0.2.3"
+            ]
+          },
+          {
+            "name" : "TEZ",
+            "display_name" : "Tez",
+            "comment" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "versions" : [
+              "0.7.0.2.3"
+            ]
+          },
+          {
+            "name" : "GANGLIA",
+            "display_name" : "Ganglia",
+            "comment" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "versions" : [
+              "3.5.0"
+            ]
+          },
+          {
+            "name" : "MAHOUT",
+            "display_name" : "Mahout",
+            "comment" : "\n        Project of the Apache Software Foundation to produce free implementations of distributed or\n        otherwise scalable machine learning algorithms focused primarily in the areas of collaborative\n        filtering, clustering and classification\n      ",
+            "versions" : [
+              "0.9.0.2.3"
+            ]
+          },
+          {
+            "name" : "FALCON",
+            "display_name" : "Falcon",
+            "comment" : "Data management and processing platform",
+            "versions" : [
+              "0.6.1.2.3"
+            ]
+          },
+          {
+            "name" : "ZOOKEEPER",
+            "display_name" : "ZooKeeper",
+            "comment" : "Centralized service which provides highly reliable distributed coordination",
+            "versions" : [
+              "3.4.6.2.3"
+            ]
+          },
+          {
+            "name" : "RANGER_KMS",
+            "display_name" : "Ranger KMS",
+            "comment" : "Key Management Server",
+            "versions" : [
+              "0.5.0.2.3"
+            ]
+          },
+          {
+            "name" : "SMARTSENSE",
+            "display_name" : "SmartSense",
+            "comment" : "SmartSense - Hortonworks SmartSense Tool (HST) helps quickly\n        gather configuration, metrics, logs from common HDP services that\n        aids to quickly troubleshoot support cases and receive\n        cluster-specific recommendations.\n      ",
+            "versions" : [
+              "1.2.2.0-567"
+            ]
+          },
+          {
+            "name" : "AMBARI_METRICS",
+            "display_name" : "Ambari Metrics",
+            "comment" : "A system for metrics collection that provides storage and retrieval capability for metrics collected from the cluster\n      ",
+            "versions" : [
+              "0.1.0"
+            ]
+          },
+          {
+            "name" : "MAPREDUCE2",
+            "display_name" : "MapReduce2",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1.2.3"
+            ]
+          },
+          {
+            "name" : "SLIDER",
+            "display_name" : "Slider",
+            "comment" : "A framework for deploying, managing and monitoring existing distributed applications on YARN.",
+            "versions" : [
+              "0.80.0.2.3"
+            ]
+          },
+          {
+            "name" : "LOGSEARCH",
+            "display_name" : "Log Search",
+            "comment" : "Log aggregation, analysis, and visualization for Ambari managed services",
+            "versions" : [
+              "0.5.0"
+            ]
+          },
+          {
+            "name" : "KERBEROS",
+            "display_name" : "Kerberos",
+            "comment" : "A computer network authentication protocol which works on\n        the basis of 'tickets' to allow nodes communicating over a\n        non-secure network to prove their identity to one another in a\n        secure manner.\n      ",
+            "versions" : [
+              "1.10.3-10"
+            ]
+          },
+          {
+            "name" : "RANGER",
+            "display_name" : "Ranger",
+            "comment" : "Comprehensive security for Hadoop",
+            "versions" : [
+              "0.5.0.2.3"
+            ]
+          },
+          {
+            "name" : "ACCUMULO",
+            "display_name" : "Accumulo",
+            "comment" : "Robust, scalable, high performance distributed key/value store.\n      ",
+            "versions" : [
+              "1.7.0.2.3"
+            ]
+          },
+          {
+            "name" : "YARN",
+            "display_name" : "YARN",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1.2.3"
+            ]
+          },
+          {
+            "name" : "PIG",
+            "display_name" : "Pig",
+            "comment" : "Scripting platform for analyzing large datasets",
+            "versions" : [
+              "0.15.0.2.3"
+            ]
+          },
+          {
+            "name" : "KNOX",
+            "display_name" : "Knox",
+            "comment" : "Provides a single point of authentication and access for Apache Hadoop services in a cluster",
+            "versions" : [
+              "0.6.0.2.3"
+            ]
+          },
+          {
+            "name" : "SPARK",
+            "display_name" : "Spark",
+            "comment" : "Apache Spark is a fast and general engine for large-scale data processing.",
+            "versions" : [
+              "1.5.2.2.3"
+            ]
+          },
+          {
+            "name" : "HIVE",
+            "display_name" : "Hive",
+            "comment" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "versions" : [
+              "1.2.1.2.3"
+            ]
+          }
+        ],
+        "stack_version" : "2.3"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/debian7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "debian7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3",
+            "version_definition_id" : "HDP-2.3"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/debian7/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/debian7/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/debian7/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/debian7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat6",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3",
+            "version_definition_id" : "HDP-2.3"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/redhat6/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/redhat7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3",
+            "version_definition_id" : "HDP-2.3"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/redhat7/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/redhat7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/suse11",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "suse11",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3",
+            "version_definition_id" : "HDP-2.3"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/suse11/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/suse11sp3/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/suse11sp3/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/suse11/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/ubuntu12",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu12",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3",
+            "version_definition_id" : "HDP-2.3"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/ubuntu12/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/ubuntu12/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/ubuntu14",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu14",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3",
+            "version_definition_id" : "HDP-2.3"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/ubuntu14/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu14/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu14/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3/operating_systems/ubuntu14/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3",
+                "version_definition_id" : "HDP-2.3"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS",
+      "VersionDefinition" : {
+        "id" : "HDP-2.3.ECS",
+        "repository_version" : "2.3.ECS",
+        "show_available" : true,
+        "stack_default" : true,
+        "stack_name" : "HDP",
+        "stack_services" : [
+          {
+            "name" : "ECS",
+            "display_name" : "ECS",
+            "comment" : "Hadoop Compatible File System Client for ECS",
+            "versions" : [
+              "2.3.0.0"
+            ]
+          },
+          {
+            "name" : "YARN",
+            "display_name" : "YARN",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1.2.3"
+            ]
+          },
+          {
+            "name" : "SMARTSENSE",
+            "display_name" : "SmartSense",
+            "comment" : "SmartSense - Hortonworks SmartSense Tool (HST) helps quickly\n        gather configuration, metrics, logs from common HDP services that\n        aids to quickly troubleshoot support cases and receive\n        cluster-specific recommendations.\n      ",
+            "versions" : [
+              "1.2.2.0-567"
+            ]
+          },
+          {
+            "name" : "AMBARI_METRICS",
+            "display_name" : "Ambari Metrics",
+            "comment" : "A system for metrics collection that provides storage and retrieval capability for metrics collected from the cluster\n      ",
+            "versions" : [
+              "0.1.0"
+            ]
+          },
+          {
+            "name" : "LOGSEARCH",
+            "display_name" : "Log Search",
+            "comment" : "Log aggregation, analysis, and visualization for Ambari managed services",
+            "versions" : [
+              "0.5.0"
+            ]
+          },
+          {
+            "name" : "KERBEROS",
+            "display_name" : "Kerberos",
+            "comment" : "A computer network authentication protocol which works on\n        the basis of 'tickets' to allow nodes communicating over a\n        non-secure network to prove their identity to one another in a\n        secure manner.\n      ",
+            "versions" : [
+              "1.10.3-10"
+            ]
+          },
+          {
+            "name" : "HIVE",
+            "display_name" : "Hive",
+            "comment" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "versions" : [
+              "1.2.1.2.3"
+            ]
+          },
+          {
+            "name" : "TEZ",
+            "display_name" : "Tez",
+            "comment" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "versions" : [
+              "0.7.0.2.3"
+            ]
+          },
+          {
+            "name" : "HBASE",
+            "display_name" : "HBase",
+            "comment" : "A Non-relational distributed database, plus Phoenix, a high performance SQL layer for low latency applications.",
+            "versions" : [
+              "1.1.1.2.3"
+            ]
+          },
+          {
+            "name" : "MAPREDUCE2",
+            "display_name" : "MapReduce2",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1.2.3"
+            ]
+          },
+          {
+            "name" : "PIG",
+            "display_name" : "Pig",
+            "comment" : "Scripting platform for analyzing large datasets",
+            "versions" : [
+              "0.15.0.2.3"
+            ]
+          },
+          {
+            "name" : "GANGLIA",
+            "display_name" : "Ganglia",
+            "comment" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "versions" : [
+              "3.5.0"
+            ]
+          },
+          {
+            "name" : "ZOOKEEPER",
+            "display_name" : "ZooKeeper",
+            "comment" : "Centralized service which provides highly reliable distributed coordination",
+            "versions" : [
+              "3.4.6.2.3"
+            ]
+          }
+        ],
+        "stack_version" : "2.3.ECS"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/debian7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "debian7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3.ECS",
+            "version_definition_id" : "HDP-2.3.ECS"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/debian7/repositories/ECS-2.2.0.0",
+              "Repositories" : {
+                "base_url" : "http://ECS_CLIENT_REPO/",
+                "default_base_url" : "http://ECS_CLIENT_REPO/",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "ECS-2.2.0.0",
+                "repo_name" : "ECS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/debian7/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/debian7/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/debian7/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/debian7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat6",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3.ECS",
+            "version_definition_id" : "HDP-2.3.ECS"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/redhat6/repositories/ECS-2.2.0.0",
+              "Repositories" : {
+                "base_url" : "http://ECS_CLIENT_REPO/",
+                "default_base_url" : "http://ECS_CLIENT_REPO/",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "ECS-2.2.0.0",
+                "repo_name" : "ECS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/redhat6/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/redhat7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3.ECS",
+            "version_definition_id" : "HDP-2.3.ECS"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/redhat7/repositories/ECS-2.2.0.0",
+              "Repositories" : {
+                "base_url" : "http://ECS_CLIENT_REPO/",
+                "default_base_url" : "http://ECS_CLIENT_REPO/",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "ECS-2.2.0.0",
+                "repo_name" : "ECS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/redhat7/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/redhat7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/suse11",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "suse11",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3.ECS",
+            "version_definition_id" : "HDP-2.3.ECS"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/suse11/repositories/ECS-2.2.0.0",
+              "Repositories" : {
+                "base_url" : "http://ECS_CLIENT_REPO/",
+                "default_base_url" : "http://ECS_CLIENT_REPO/",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "ECS-2.2.0.0",
+                "repo_name" : "ECS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/suse11/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/suse11sp3/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/suse11sp3/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/suse11/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/ubuntu12",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu12",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3.ECS",
+            "version_definition_id" : "HDP-2.3.ECS"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/ubuntu12/repositories/ECS-2.2.0.0",
+              "Repositories" : {
+                "base_url" : "http://ECS_CLIENT_REPO/",
+                "default_base_url" : "http://ECS_CLIENT_REPO/",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "ECS-2.2.0.0",
+                "repo_name" : "ECS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/ubuntu12/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/ubuntu12/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/ubuntu14",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu14",
+            "stack_name" : "HDP",
+            "stack_version" : "2.3.ECS",
+            "version_definition_id" : "HDP-2.3.ECS"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/ubuntu14/repositories/ECS-2.2.0.0",
+              "Repositories" : {
+                "base_url" : "http://ECS_CLIENT_REPO/",
+                "default_base_url" : "http://ECS_CLIENT_REPO/",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "ECS-2.2.0.0",
+                "repo_name" : "ECS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/ubuntu14/repositories/HDP-2.3",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu14/2.x/updates/2.3.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu14/2.x/updates/2.3.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "HDP-2.3",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.3.ECS/operating_systems/ubuntu14/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.3.ECS",
+                "version_definition_id" : "HDP-2.3.ECS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4",
+      "VersionDefinition" : {
+        "id" : "HDP-2.4",
+        "repository_version" : "2.4",
+        "show_available" : true,
+        "stack_default" : true,
+        "stack_name" : "HDP",
+        "stack_services" : [
+          {
+            "name" : "ZOOKEEPER",
+            "display_name" : "ZooKeeper",
+            "comment" : "Centralized service which provides highly reliable distributed coordination",
+            "versions" : [
+              "3.4.6.2.4"
+            ]
+          },
+          {
+            "name" : "TEZ",
+            "display_name" : "Tez",
+            "comment" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "versions" : [
+              "0.7.0.2.4"
+            ]
+          },
+          {
+            "name" : "SLIDER",
+            "display_name" : "Slider",
+            "comment" : "A framework for deploying, managing and monitoring existing distributed applications on YARN.",
+            "versions" : [
+              "0.80.0.2.4"
+            ]
+          },
+          {
+            "name" : "HDFS",
+            "display_name" : "HDFS",
+            "comment" : "Apache Hadoop Distributed File System",
+            "versions" : [
+              "2.7.1.2.4"
+            ]
+          },
+          {
+            "name" : "RANGER",
+            "display_name" : "Ranger",
+            "comment" : "Comprehensive security for Hadoop",
+            "versions" : [
+              "0.5.0.2.4"
+            ]
+          },
+          {
+            "name" : "MAPREDUCE2",
+            "display_name" : "MapReduce2",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1.2.4"
+            ]
+          },
+          {
+            "name" : "HBASE",
+            "display_name" : "HBase",
+            "comment" : "A Non-relational distributed database, plus Phoenix, a high performance SQL layer for low latency applications.",
+            "versions" : [
+              "1.1.2.2.4"
+            ]
+          },
+          {
+            "name" : "KNOX",
+            "display_name" : "Knox",
+            "comment" : "Provides a single point of authentication and access for Apache Hadoop services in a cluster",
+            "versions" : [
+              "0.6.0.2.4"
+            ]
+          },
+          {
+            "name" : "HIVE",
+            "display_name" : "Hive",
+            "comment" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "versions" : [
+              "1.2.1.2.4"
+            ]
+          },
+          {
+            "name" : "KAFKA",
+            "display_name" : "Kafka",
+            "comment" : "A high-throughput distributed messaging system",
+            "versions" : [
+              "0.9.0.2.4"
+            ]
+          },
+          {
+            "name" : "STORM",
+            "display_name" : "Storm",
+            "comment" : "Apache Hadoop Stream processing framework",
+            "versions" : [
+              "0.10.0.2.4"
+            ]
+          },
+          {
+            "name" : "GANGLIA",
+            "display_name" : "Ganglia",
+            "comment" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "versions" : [
+              "3.5.0"
+            ]
+          },
+          {
+            "name" : "RANGER_KMS",
+            "display_name" : "Ranger KMS",
+            "comment" : "Key Management Server",
+            "versions" : [
+              "0.5.0.2.4"
+            ]
+          },
+          {
+            "name" : "SPARK",
+            "display_name" : "Spark",
+            "comment" : "Apache Spark is a fast and general engine for large-scale data processing.",
+            "versions" : [
+              "1.6.x.2.4"
+            ]
+          },
+          {
+            "name" : "MAHOUT",
+            "display_name" : "Mahout",
+            "comment" : "\n        Project of the Apache Software Foundation to produce free implementations of distributed or\n        otherwise scalable machine learning algorithms focused primarily in the areas of collaborative\n        filtering, clustering and classification\n      ",
+            "versions" : [
+              "0.9.0.2.4"
+            ]
+          },
+          {
+            "name" : "FLUME",
+            "display_name" : "Flume",
+            "comment" : "A distributed service for collecting, aggregating, and moving large amounts of streaming data into HDFS",
+            "versions" : [
+              "1.5.2.2.4"
+            ]
+          },
+          {
+            "name" : "YARN",
+            "display_name" : "YARN",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1.2.4"
+            ]
+          },
+          {
+            "name" : "SMARTSENSE",
+            "display_name" : "SmartSense",
+            "comment" : "SmartSense - Hortonworks SmartSense Tool (HST) helps quickly\n        gather configuration, metrics, logs from common HDP services that\n        aids to quickly troubleshoot support cases and receive\n        cluster-specific recommendations.\n      ",
+            "versions" : [
+              "1.2.2.0-567"
+            ]
+          },
+          {
+            "name" : "PIG",
+            "display_name" : "Pig",
+            "comment" : "Scripting platform for analyzing large datasets",
+            "versions" : [
+              "0.15.0.2.4"
+            ]
+          },
+          {
+            "name" : "AMBARI_METRICS",
+            "display_name" : "Ambari Metrics",
+            "comment" : "A system for metrics collection that provides storage and retrieval capability for metrics collected from the cluster\n      ",
+            "versions" : [
+              "0.1.0"
+            ]
+          },
+          {
+            "name" : "OOZIE",
+            "display_name" : "Oozie",
+            "comment" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "versions" : [
+              "4.2.0.2.4"
+            ]
+          },
+          {
+            "name" : "LOGSEARCH",
+            "display_name" : "Log Search",
+            "comment" : "Log aggregation, analysis, and visualization for Ambari managed services",
+            "versions" : [
+              "0.5.0"
+            ]
+          },
+          {
+            "name" : "SQOOP",
+            "display_name" : "Sqoop",
+            "comment" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "versions" : [
+              "1.4.6.2.4"
+            ]
+          },
+          {
+            "name" : "ACCUMULO",
+            "display_name" : "Accumulo",
+            "comment" : "Robust, scalable, high performance distributed key/value store.\n      ",
+            "versions" : [
+              "1.7.0.2.4"
+            ]
+          },
+          {
+            "name" : "KERBEROS",
+            "display_name" : "Kerberos",
+            "comment" : "A computer network authentication protocol which works on\n        the basis of 'tickets' to allow nodes communicating over a\n        non-secure network to prove their identity to one another in a\n        secure manner.\n      ",
+            "versions" : [
+              "1.10.3-10"
+            ]
+          },
+          {
+            "name" : "ATLAS",
+            "display_name" : "Atlas",
+            "comment" : "Atlas Metadata and Governance platform",
+            "versions" : [
+              "0.5.0.2.4"
+            ]
+          },
+          {
+            "name" : "FALCON",
+            "display_name" : "Falcon",
+            "comment" : "Data management and processing platform",
+            "versions" : [
+              "0.6.1.2.4"
+            ]
+          }
+        ],
+        "stack_version" : "2.4"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/debian7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "debian7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.4",
+            "version_definition_id" : "HDP-2.4"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/debian7/repositories/HDP-2.4",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/debian7/2.x/updates/2.4.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/debian7/2.x/updates/2.4.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-2.4",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/debian7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat6",
+            "stack_name" : "HDP",
+            "stack_version" : "2.4",
+            "version_definition_id" : "HDP-2.4"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/redhat6/repositories/HDP-2.4",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.4.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.4.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.4",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/redhat7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.4",
+            "version_definition_id" : "HDP-2.4"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/redhat7/repositories/HDP-2.4",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.4.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.4.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-2.4",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/redhat7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/suse11",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "suse11",
+            "stack_name" : "HDP",
+            "stack_version" : "2.4",
+            "version_definition_id" : "HDP-2.4"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/suse11/repositories/HDP-2.4",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/suse11sp3/2.x/updates/2.4.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/suse11sp3/2.x/updates/2.4.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-2.4",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/suse11/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/ubuntu12",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu12",
+            "stack_name" : "HDP",
+            "stack_version" : "2.4",
+            "version_definition_id" : "HDP-2.4"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/ubuntu12/repositories/HDP-2.4",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.x/updates/2.4.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.x/updates/2.4.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-2.4",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/ubuntu12/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/ubuntu14",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu14",
+            "stack_name" : "HDP",
+            "stack_version" : "2.4",
+            "version_definition_id" : "HDP-2.4"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/ubuntu14/repositories/HDP-2.4",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu14/2.x/updates/2.4.0.0",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP/ubuntu14/2.x/updates/2.4.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "HDP-2.4",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.4/operating_systems/ubuntu14/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.4",
+                "version_definition_id" : "HDP-2.4"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5",
+      "VersionDefinition" : {
+        "id" : "HDP-2.5",
+        "repository_version" : "2.5",
+        "show_available" : true,
+        "stack_default" : true,
+        "stack_name" : "HDP",
+        "stack_services" : [
+          {
+            "name" : "SPARK",
+            "display_name" : "Spark",
+            "comment" : "Apache Spark is a fast and general engine for large-scale data processing.",
+            "versions" : [
+              "1.6.x.2.5"
+            ]
+          },
+          {
+            "name" : "SLIDER",
+            "display_name" : "Slider",
+            "comment" : "A framework for deploying, managing and monitoring existing distributed applications on YARN.",
+            "versions" : [
+              "0.80.0.2.5"
+            ]
+          },
+          {
+            "name" : "ZEPPELIN",
+            "display_name" : "Zeppelin Notebook",
+            "comment" : "A web-based notebook that enables interactive data analytics. It enables you to\n        make beautiful data-driven, interactive and collaborative documents with SQL, Scala\n        and more.\n      ",
+            "versions" : [
+              "0.6.0.2.5"
+            ]
+          },
+          {
+            "name" : "PIG",
+            "display_name" : "Pig",
+            "comment" : "Scripting platform for analyzing large datasets",
+            "versions" : [
+              "0.15.0.2.5"
+            ]
+          },
+          {
+            "name" : "ZOOKEEPER",
+            "display_name" : "ZooKeeper",
+            "comment" : "Centralized service which provides highly reliable distributed coordination",
+            "versions" : [
+              "3.4.6.2.5"
+            ]
+          },
+          {
+            "name" : "MAPREDUCE2",
+            "display_name" : "MapReduce2",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1.2.4"
+            ]
+          },
+          {
+            "name" : "OOZIE",
+            "display_name" : "Oozie",
+            "comment" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "versions" : [
+              "4.2.0.2.5"
+            ]
+          },
+          {
+            "name" : "KAFKA",
+            "display_name" : "Kafka",
+            "comment" : "A high-throughput distributed messaging system",
+            "versions" : [
+              "0.9.0.2.5"
+            ]
+          },
+          {
+            "name" : "FALCON",
+            "display_name" : "Falcon",
+            "comment" : "Data management and processing platform",
+            "versions" : [
+              "0.6.1.2.5"
+            ]
+          },
+          {
+            "name" : "RANGER_KMS",
+            "display_name" : "Ranger KMS",
+            "comment" : "Key Management Server",
+            "versions" : [
+              "0.6.0.2.5"
+            ]
+          },
+          {
+            "name" : "YARN",
+            "display_name" : "YARN",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1.2.5"
+            ]
+          },
+          {
+            "name" : "GANGLIA",
+            "display_name" : "Ganglia",
+            "comment" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "versions" : [
+              "3.5.0"
+            ]
+          },
+          {
+            "name" : "RANGER",
+            "display_name" : "Ranger",
+            "comment" : "Comprehensive security for Hadoop",
+            "versions" : [
+              "0.6.0.2.5"
+            ]
+          },
+          {
+            "name" : "MAHOUT",
+            "display_name" : "Mahout",
+            "comment" : "\n        Project of the Apache Software Foundation to produce free implementations of distributed or\n        otherwise scalable machine learning algorithms focused primarily in the areas of collaborative\n        filtering, clustering and classification\n      ",
+            "versions" : [
+              "0.9.0.2.5"
+            ]
+          },
+          {
+            "name" : "HDFS",
+            "display_name" : "HDFS",
+            "comment" : "Apache Hadoop Distributed File System",
+            "versions" : [
+              "2.7.1.2.5"
+            ]
+          },
+          {
+            "name" : "HBASE",
+            "display_name" : "HBase",
+            "comment" : "A Non-relational distributed database, plus Phoenix, a high performance SQL layer for low latency applications.",
+            "versions" : [
+              "1.1.2.2.5"
+            ]
+          },
+          {
+            "name" : "STORM",
+            "display_name" : "Storm",
+            "comment" : "Apache Hadoop Stream processing framework",
+            "versions" : [
+              "1.0.1.2.5"
+            ]
+          },
+          {
+            "name" : "SQOOP",
+            "display_name" : "Sqoop",
+            "comment" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "versions" : [
+              "1.4.6.2.5"
+            ]
+          },
+          {
+            "name" : "KNOX",
+            "display_name" : "Knox",
+            "comment" : "Provides a single point of authentication and access for Apache Hadoop services in a cluster",
+            "versions" : [
+              "0.6.0.2.5"
+            ]
+          },
+          {
+            "name" : "FLUME",
+            "display_name" : "Flume",
+            "comment" : "A distributed service for collecting, aggregating, and moving large amounts of streaming data into HDFS",
+            "versions" : [
+              "1.5.2.2.5"
+            ]
+          },
+          {
+            "name" : "SMARTSENSE",
+            "display_name" : "SmartSense",
+            "comment" : "SmartSense - Hortonworks SmartSense Tool (HST) helps quickly\n        gather configuration, metrics, logs from common HDP services that\n        aids to quickly troubleshoot support cases and receive\n        cluster-specific recommendations.\n      ",
+            "versions" : [
+              "1.2.2.0-567"
+            ]
+          },
+          {
+            "name" : "AMBARI_METRICS",
+            "display_name" : "Ambari Metrics",
+            "comment" : "A system for metrics collection that provides storage and retrieval capability for metrics collected from the cluster\n      ",
+            "versions" : [
+              "0.1.0"
+            ]
+          },
+          {
+            "name" : "KERBEROS",
+            "display_name" : "Kerberos",
+            "comment" : "A computer network authentication protocol which works on\n        the basis of 'tickets' to allow nodes communicating over a\n        non-secure network to prove their identity to one another in a\n        secure manner.\n      ",
+            "versions" : [
+              "1.10.3-10"
+            ]
+          },
+          {
+            "name" : "ATLAS",
+            "display_name" : "Atlas",
+            "comment" : "Atlas Metadata and Governance platform",
+            "versions" : [
+              "0.5.0.2.5"
+            ]
+          },
+          {
+            "name" : "LOGSEARCH",
+            "display_name" : "Log Search",
+            "comment" : "Log aggregation, analysis, and visualization for Ambari managed services",
+            "versions" : [
+              "0.5.0"
+            ]
+          },
+          {
+            "name" : "TEZ",
+            "display_name" : "Tez",
+            "comment" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "versions" : [
+              "0.7.0.2.5"
+            ]
+          },
+          {
+            "name" : "ACCUMULO",
+            "display_name" : "Accumulo",
+            "comment" : "Robust, scalable, high performance distributed key/value store.\n      ",
+            "versions" : [
+              "1.7.0.2.5"
+            ]
+          },
+          {
+            "name" : "HIVE",
+            "display_name" : "Hive",
+            "comment" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "versions" : [
+              "1.2.1.2.5"
+            ]
+          }
+        ],
+        "stack_version" : "2.5"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/debian7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "debian7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/debian7/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/debian7/2.x/updates/2.5.0.0",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/debian7/2.x/updates/2.5.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/debian7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat6",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/redhat6/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/updates/2.5.0.0",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/updates/2.5.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/redhat7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/redhat7/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/2.x/updates/2.5.0.0",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/2.x/updates/2.5.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/redhat7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/suse11",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "suse11",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/suse11/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/suse11sp3/2.x/updates/2.5.0.0",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/suse11sp3/2.x/updates/2.5.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/suse11/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/suse12",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "suse12",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/suse12/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/suse11sp3/2.x/updates/2.5.0.0",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/suse11sp3/2.x/updates/2.5.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse12",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/suse12/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse12",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/ubuntu12",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu12",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/ubuntu12/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/ubuntu12/2.x/updates/2.5.0.0",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/ubuntu12/2.x/updates/2.5.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/ubuntu12/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/ubuntu14",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu14",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/ubuntu14/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/ubuntu14/2.x/updates/2.5.0.0",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/ubuntu14/2.x/updates/2.5.0.0",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5/operating_systems/ubuntu14/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu14",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0",
+      "VersionDefinition" : {
+        "id" : "HDP-2.5-2.5.0.0",
+        "repository_version" : "2.5.0.0",
+        "show_available" : true,
+        "stack_default" : false,
+        "stack_name" : "HDP",
+        "stack_services" : [
+          {
+            "name" : "SPARK",
+            "display_name" : "Spark",
+            "comment" : "Apache Spark is a fast and general engine for large-scale data processing.",
+            "versions" : [
+              "1.6.1"
+            ]
+          },
+          {
+            "name" : "SLIDER",
+            "display_name" : "Slider",
+            "comment" : "A framework for deploying, managing and monitoring existing distributed applications on YARN.",
+            "versions" : [
+              "0.80.0"
+            ]
+          },
+          {
+            "name" : "ZEPPELIN",
+            "display_name" : "Zeppelin Notebook",
+            "comment" : "A web-based notebook that enables interactive data analytics. It enables you to\n        make beautiful data-driven, interactive and collaborative documents with SQL, Scala\n        and more.\n      ",
+            "versions" : [
+              "0.6.0"
+            ]
+          },
+          {
+            "name" : "PIG",
+            "display_name" : "Pig",
+            "comment" : "Scripting platform for analyzing large datasets",
+            "versions" : [
+              "0.15.0"
+            ]
+          },
+          {
+            "name" : "ZOOKEEPER",
+            "display_name" : "ZooKeeper",
+            "comment" : "Centralized service which provides highly reliable distributed coordination",
+            "versions" : [
+              "3.4.6"
+            ]
+          },
+          {
+            "name" : "MAPREDUCE2",
+            "display_name" : "MapReduce2",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1"
+            ]
+          },
+          {
+            "name" : "OOZIE",
+            "display_name" : "Oozie",
+            "comment" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "versions" : [
+              "4.2.0"
+            ]
+          },
+          {
+            "name" : "KAFKA",
+            "display_name" : "Kafka",
+            "comment" : "A high-throughput distributed messaging system",
+            "versions" : [
+              "0.10.0"
+            ]
+          },
+          {
+            "name" : "FALCON",
+            "display_name" : "Falcon",
+            "comment" : "Data management and processing platform",
+            "versions" : [
+              "0.10.0"
+            ]
+          },
+          {
+            "name" : "RANGER_KMS",
+            "display_name" : "Ranger KMS",
+            "comment" : "Key Management Server",
+            "versions" : [
+              "0.6.0"
+            ]
+          },
+          {
+            "name" : "YARN",
+            "display_name" : "YARN",
+            "comment" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "versions" : [
+              "2.7.1"
+            ]
+          },
+          {
+            "name" : "GANGLIA",
+            "display_name" : "Ganglia",
+            "comment" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "versions" : [
+              "3.5.0"
+            ]
+          },
+          {
+            "name" : "RANGER",
+            "display_name" : "Ranger",
+            "comment" : "Comprehensive security for Hadoop",
+            "versions" : [
+              "0.6.0"
+            ]
+          },
+          {
+            "name" : "MAHOUT",
+            "display_name" : "Mahout",
+            "comment" : "\n        Project of the Apache Software Foundation to produce free implementations of distributed or\n        otherwise scalable machine learning algorithms focused primarily in the areas of collaborative\n        filtering, clustering and classification\n      ",
+            "versions" : [
+              "0.9.0"
+            ]
+          },
+          {
+            "name" : "HDFS",
+            "display_name" : "HDFS",
+            "comment" : "Apache Hadoop Distributed File System",
+            "versions" : [
+              "2.7.1"
+            ]
+          },
+          {
+            "name" : "HBASE",
+            "display_name" : "HBase",
+            "comment" : "A Non-relational distributed database, plus Phoenix, a high performance SQL layer for low latency applications.",
+            "versions" : [
+              "1.1.2"
+            ]
+          },
+          {
+            "name" : "STORM",
+            "display_name" : "Storm",
+            "comment" : "Apache Hadoop Stream processing framework",
+            "versions" : [
+              "1.0.1"
+            ]
+          },
+          {
+            "name" : "SQOOP",
+            "display_name" : "Sqoop",
+            "comment" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "versions" : [
+              "1.4.6"
+            ]
+          },
+          {
+            "name" : "KNOX",
+            "display_name" : "Knox",
+            "comment" : "Provides a single point of authentication and access for Apache Hadoop services in a cluster",
+            "versions" : [
+              "0.9.0"
+            ]
+          },
+          {
+            "name" : "FLUME",
+            "display_name" : "Flume",
+            "comment" : "A distributed service for collecting, aggregating, and moving large amounts of streaming data into HDFS",
+            "versions" : [
+              "1.5.2"
+            ]
+          },
+          {
+            "name" : "SMARTSENSE",
+            "display_name" : "SmartSense",
+            "comment" : "SmartSense - Hortonworks SmartSense Tool (HST) helps quickly\n        gather configuration, metrics, logs from common HDP services that\n        aids to quickly troubleshoot support cases and receive\n        cluster-specific recommendations.\n      ",
+            "versions" : [
+              "1.2.2.0-567"
+            ]
+          },
+          {
+            "name" : "AMBARI_METRICS",
+            "display_name" : "Ambari Metrics",
+            "comment" : "A system for metrics collection that provides storage and retrieval capability for metrics collected from the cluster\n      ",
+            "versions" : [
+              "0.1.0"
+            ]
+          },
+          {
+            "name" : "KERBEROS",
+            "display_name" : "Kerberos",
+            "comment" : "A computer network authentication protocol which works on\n        the basis of 'tickets' to allow nodes communicating over a\n        non-secure network to prove their identity to one another in a\n        secure manner.\n      ",
+            "versions" : [
+              "1.10.3-10"
+            ]
+          },
+          {
+            "name" : "ATLAS",
+            "display_name" : "Atlas",
+            "comment" : "Atlas Metadata and Governance platform",
+            "versions" : [
+              "0.7.0"
+            ]
+          },
+          {
+            "name" : "LOGSEARCH",
+            "display_name" : "Log Search",
+            "comment" : "Log aggregation, analysis, and visualization for Ambari managed services",
+            "versions" : [
+              "0.5.0"
+            ]
+          },
+          {
+            "name" : "TEZ",
+            "display_name" : "Tez",
+            "comment" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "versions" : [
+              "0.7.0"
+            ]
+          },
+          {
+            "name" : "ACCUMULO",
+            "display_name" : "Accumulo",
+            "comment" : "Robust, scalable, high performance distributed key/value store.\n      ",
+            "versions" : [
+              "1.7.0"
+            ]
+          },
+          {
+            "name" : "HIVE",
+            "display_name" : "Hive",
+            "comment" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "versions" : [
+              "1.2.1000"
+            ]
+          }
+        ],
+        "stack_version" : "2.5"
+      },
+      "operating_systems" : [
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/debian7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "debian7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5-2.5.0.0"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/debian7/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/debian7/2.x/BUILDS/2.5.0.0-435",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/debian7/2.x/BUILDS/2.5.0.0-435",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/debian7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian7",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/debian7",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "debian7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/redhat6",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat6",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5-2.5.0.0"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/redhat6/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.5.0.0-453",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.5.0.0-453",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos6",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat6",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/redhat7",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "redhat7",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5-2.5.0.0"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/redhat7/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/2.x/BUILDS/2.5.0.0-453",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/2.x/BUILDS/2.5.0.0-453",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/redhat7/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/centos7",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "redhat7",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/suse11",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "suse11",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5-2.5.0.0"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/suse11/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/suse11sp3/2.x/BUILDS/2.5.0.0-453",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/suse11sp3/2.x/BUILDS/2.5.0.0-453",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/suse11/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/suse11sp3",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "suse11",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/ubuntu12",
+          "OperatingSystems" : {
+            "ambari_managed_repositories" : true,
+            "os_type" : "ubuntu12",
+            "stack_name" : "HDP",
+            "stack_version" : "2.5",
+            "version_definition_id" : "HDP-2.5-2.5.0.0"
+          },
+          "repositories" : [
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/ubuntu12/repositories/HDP-2.5",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/ubuntu12/2.x/BUILDS/2.5.0.0-453",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP/ubuntu12/2.x/BUILDS/2.5.0.0-453",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-2.5",
+                "repo_name" : "HDP",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            },
+            {
+              "href" : "http://c6401.ambari.apache.org:8080/api/v1/version_definitions/HDP-2.5-2.5.0.0/operating_systems/ubuntu12/repositories/HDP-UTILS-1.1.0.20",
+              "Repositories" : {
+                "base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "default_base_url" : "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu12",
+                "latest_base_url" : null,
+                "mirrors_list" : null,
+                "os_type" : "ubuntu12",
+                "repo_id" : "HDP-UTILS-1.1.0.20",
+                "repo_name" : "HDP-UTILS",
+                "stack_name" : "HDP",
+                "stack_version" : "2.5",
+                "version_definition_id" : "HDP-2.5-2.5.0.0"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

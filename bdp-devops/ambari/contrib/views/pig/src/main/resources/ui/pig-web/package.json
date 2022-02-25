@@ -1,0 +1,27 @@
+{
+  "name": "pig-ui",
+  "version": "0.0.1",
+  "engines": {
+    "node": "~0.6.10 || 0.8 || 0.9"
+  },
+  "scripts": {
+    "test": "node_modules/phantomjs/bin/phantomjs runner.js public/tests.html",
+    "start": "brunch watch --server"
+  },
+  "dependencies": {
+    "brunch": "1.7.17",
+    "javascript-brunch": ">= 1.0 < 1.8",
+    "css-brunch": ">= 1.0 < 1.8",
+    "uglify-js-brunch": ">= 1.0 < 1.8",
+    "bower": ">= 1.2.0",
+    "ember-precompile-brunch": "^0.1.0",
+    "less-brunch": "~1.7.1",
+    "scaffolt": "^0.4.3"
+  },
+  "devDependencies": {
+    "phantomjs": "^1.9.2",
+    "karma": "*",
+    "karma-qunit": "*",
+    "karma-phantomjs-launcher": "~0.1.2"
+  }
+}

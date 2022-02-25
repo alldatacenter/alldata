@@ -1,0 +1,10 @@
+{
+   "report_name" : "hbase_regionserver_compaction_queue_size_report",
+   "report_type" : "standard",
+   "title" : "Total Compaction Queue Size",
+   "vertical_label" : "Queue Size",
+   "series" : [
+      { "metric": "hbase.regionserver.compactionQueueSize", "color": "ff0000", "label": "Compaction Queue Size", 
+        "line_width": "2", "type": "line" }
+   ]
+}

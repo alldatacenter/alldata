@@ -1,0 +1,72 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="serviceConfig" class="wizard-content col-md-9" {{QAAttr "service-configs"}}>
+  {{#if stepConfigsCreated}}
+    <ul class="nav nav-tabs config-categories-tabs">
+      {{#each tab in controller.tabs}}
+        <li {{bindAttr class="tab.isActive:active tab.isDisabled:disabled"}}>
+          <a href="#{{unbound tab.name}}" {{action selectTab tab target="controller"}}><i {{bindAttr class=":glyphicon tab.icon"}}></i> {{tab.displayName}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {{#if isConfigsLoaded}}
+          <div class="tab-content">
+            {{#each tab in controller.tabs}}
+              {{#if tab.isActive}}
+                <div {{bindAttr class=":tab-pane tab.isActive:active" id="tab.name"}}>
+                  {{#if tab.tabView}}
+                    {{view tab.tabView}}
+                  {{/if}}
+                </div>
+              {{/if}}
+            {{/each}}
+          </div>
+        {{else}}
+          {{view App.SpinnerView}}
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
+</div>
+
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    <button type="button" {{QAAttr "wizard-back"}} class="btn btn-default installer-back-btn pull-left" {{bindAttr disabled="App.router.btnClickInProgress"}} {{action back target="controller"}}>
+      &larr; {{t common.back}}
+      {{#if App.router.backBtnClickInProgress}}
+        {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+      {{/if}}
+    </button>
+    {{template "templates/wizard/installer_cancel_button"}}
+    <div class="pull-right">
+      {{#if App.supports.preInstallChecks}}
+        <a class="btn btn-default" {{action runPreInstallChecks target="App.router.preInstallChecksController"}} {{bindAttr disabled="isSubmitDisabled"}}><i class="glyphicon glyphicon-exclamation"></i> {{t installer.step7.preInstallChecks}}</a>
+      {{/if}}
+      <button type="button" class="btn btn-success" {{QAAttr "wizard-next"}} {{bindAttr disabled="isNextDisabled"}} {{action next target="controller"}}>
+        {{#if App.router.nextBtnClickInProgress}}
+          {{view App.SpinnerView tagName="span" classNames="service-button-spinner"}}
+        {{/if}}
+        {{t common.next}} &rarr;
+      </button>
+    </div>
+  </div>
+</div>

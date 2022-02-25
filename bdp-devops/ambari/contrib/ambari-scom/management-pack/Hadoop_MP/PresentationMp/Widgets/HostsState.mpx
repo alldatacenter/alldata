@@ -1,0 +1,204 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <StringResources>
+      <StringResource ID="Ambari.SCOM.Presentation.StringResource.HostsState.HostName" />
+      <StringResource ID="Ambari.SCOM.Presentation.StringResource.HostsState.IpAddress" />
+    </StringResources>
+
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Widget.HostsState"
+                     Base="Visualization!Microsoft.SystemCenter.Visualization.StateWidget"
+                     Accessibility="Internal" />
+    </ComponentTypes>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Widget.HostsStateImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Widget.HostsState"
+                               Accessibility="Internal" Platform="Wpf, Silverlight">
+        <Composite>
+          <Base>
+            <Binding PropertyId="BaseManagementPackTypes">
+              <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType[]">
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType">
+                  <Binding PropertyId="FullyQualifiedName">
+                    <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Monitoring!Ambari.SCOM.Host" />
+                  </Binding>
+                </ComplexValue>
+              </ComplexValueCollection>
+            </Binding>
+            
+            <Binding PropertyId="RecursionTypeNames">
+              <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType[]">
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.OperationalDataTypes/BaseManagementPackType">
+                  <Binding PropertyId="FullyQualifiedName">
+                    <SimpleValue Type="xsd://string" Value="System.Library!System.Entity" />
+                  </Binding>
+                </ComplexValue>
+              </ComplexValueCollection>
+            </Binding>
+            
+            <Binding PropertyId="ShowSearchBar">
+              <SimpleValue Type="xsd://boolean" Value="True" />
+            </Binding>
+            
+            <Binding PropertyId="Columns">
+              <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn[]">
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="HeaderDisplayObject">
+                    <SimpleValue Type="xsd://string" Value="$MPReference/Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.Library.Entity.HealthState/DisplayName$" />
+                  </Binding>
+                  <Binding PropertyId="SortableGroupable">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="CanResize">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="Width">
+                    <SimpleValue Type="xsd://string" Value="Auto" />
+                  </Binding>
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="HealthState" />
+                  </Binding>
+                  <Binding PropertyId="XPath">
+                    <SimpleValue Type="xsd://string" Value="$Object/Property[Name='HealthState']$" />
+                  </Binding>
+                  <Binding PropertyId="SourceType">
+                    <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+                  </Binding>
+                </ComplexValue>
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="HeaderDisplayObject">
+                    <SimpleValue Type="xsd://string" Value="$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.StringResource.HostsState.HostName/DisplayName$" />
+                  </Binding>
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="DisplayName" />
+                  </Binding>
+                  <Binding PropertyId="XPath">
+                    <SimpleValue Type="xsd://string" Value="$Object/PropertyCollection[Name='DisplayName']$" />
+                  </Binding>
+                  <Binding PropertyId="SourceType">
+                    <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+                  </Binding>
+                  <Binding PropertyId="SortableGroupable">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="CanResize">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="Width">
+                    <SimpleValue Type="xsd://string" Value="Auto" />
+                  </Binding>
+                </ComplexValue>
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="HeaderDisplayObject">
+                    <SimpleValue Type="xsd://string" Value="$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.StringResource.HostsState.IpAddress/DisplayName$" />
+                  </Binding>
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="IpAddress" />
+                  </Binding>
+                  <Binding PropertyId="XPath">
+                    <SimpleValue Type="xsd://string" Value="$Object/PropertyCollection[Name='IpAddress']$" />
+                  </Binding>
+                  <Binding PropertyId="SourceType">
+                    <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+                  </Binding>
+                  <Binding PropertyId="SortableGroupable">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="CanResize">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="Width">
+                    <SimpleValue Type="xsd://string" Value="Auto" />
+                  </Binding>
+                </ComplexValue>
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="HeaderDisplayObject">
+                    <SimpleValue Type="xsd://string" Value="$MPReference/Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.Library.Entity.InMaintenanceMode/DisplayName$" />
+                  </Binding>
+                  <Binding PropertyId="SortableGroupable">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="CanResize">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="Width">
+                    <SimpleValue Type="xsd://string" Value="Auto" />
+                  </Binding>
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="InMaintenanceMode" />
+                  </Binding>
+                  <Binding PropertyId="XPath">
+                    <SimpleValue Type="xsd://string" Value="$Object/Property[Name='InMaintenanceMode']$" />
+                  </Binding>
+                  <Binding PropertyId="SourceType">
+                    <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+                  </Binding>
+                </ComplexValue>
+              </ComplexValueCollection>
+            </Binding>
+
+            <Binding PropertyId="SortedColumns">
+              <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataCollectionViewColumn[]">
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="DisplayName" />
+                  </Binding>
+                  <Binding PropertyId="XPath">
+                    <SimpleValue Type="xsd://string" Value="$Object/PropertyCollection[Name='DisplayName']$" />
+                  </Binding>
+                  <Binding PropertyId="SourceType">
+                    <SimpleValue Type="xsd://string" Value="ManagedEntity" />
+                  </Binding>
+                </ComplexValue>
+              </ComplexValueCollection>
+            </Binding>
+          </Base>
+        </Composite>
+      </ComponentImplementation>
+    </ComponentImplementations>
+
+    <ComponentBehaviors>
+      <ComponentBehavior ID="Ambari.SCOM.Presentation.Widget.HostsStatePersonalizeBehavior"
+                         BehaviorTypeId="Visualization!Microsoft.SystemCenter.Visualization.PersonalizeBehavior"
+                         ComponentTypeId="Ambari.SCOM.Presentation.Widget.HostsState"
+                         Accessibility="Internal">
+        <Bindings />
+      </ComponentBehavior>
+    </ComponentBehaviors>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Widget.HostsState">
+          <Name>Hosts</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.Presentation.StringResource.HostsState.HostName">
+          <Name>Name</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.StringResource.HostsState.IpAddress">
+          <Name>IP Address</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

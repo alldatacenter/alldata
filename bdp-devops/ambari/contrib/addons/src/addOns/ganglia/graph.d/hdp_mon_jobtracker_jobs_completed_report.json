@@ -1,0 +1,10 @@
+{
+   "report_name" : "jobtracker_jobs_completed_report",
+   "report_type" : "standard",
+   "title" : "Jobs Completion rate",
+   "vertical_label" : "Jobs/Sec",
+   "series" : [
+      { "metric": "mapred.jobtracker.jobs_completed", "color": "ff0000", "label": "Jobs Completed", 
+        "line_width": "2", "type": "line" }
+   ]
+}

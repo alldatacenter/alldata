@@ -1,0 +1,49 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="top-wrap top-wrap-header">
+  <div class="log-tail-popup-info">
+    <strong>{{t common.file}}: </strong>
+    <span class="muted">{{view.content.filePath}}</span>
+    <div class="pull-right action-bar">
+      <a href="#" {{action toggleCopy target="view"}}>
+        <i class="glyphicon glyphicon-copy"></i>
+        {{t common.copy}}
+      </a>
+      <a href="#" {{action openInNewTab target="view"}}>
+        <i class="icon-external-link"></i>
+        {{t common.open}}
+      </a>
+      <a class="open-in-log-search" {{bindAttr href="view.logSearchUrl"}} target="_blank" rel="noopener noreferrer">
+        <i class="icon-external-link"></i>
+        {{t popup.logTail.openInLogSearch}}
+      </a>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div>
+  <div {{bindAttr class=":task-detail-info view.isCopyActive::hidden"}}>
+    <div class="clipboard-wrap task-detail-log-info">
+      {{view App.NotScrollableTextArea class="task-detail-log-clipboard copy-textarea" valueBinding="view.copyContent"}}
+    </div>
+  </div>
+  <div {{bindAttr class="view.isCopyActive:hidden"}}>
+    {{view view.logTailContentView}}
+  </div>
+</div>

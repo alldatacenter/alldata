@@ -1,0 +1,42 @@
+{{!
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+}}
+
+<div class="pagination-block">
+  <div class="items-count">
+    <label >{{t 'common.show'}}
+      {{view "select" content=perPageOptions class="form-control" value=perPage}}
+    </label>
+  </div>
+  <div class="items-info">
+    <span>{{paginationInfo}}</span>
+  </div>
+  <div class="items-buttons">
+    <ul class="pagination">
+      {{#if prevPage}}
+        <li><a href="#" {{action "selectPage" prevPage}}><i class="fa fa-arrow-left"></i></a></li>
+      {{else}}
+        <li class="disabled"><a><i class="fa fa-arrow-left"></i></a></li>
+      {{/if}}
+      {{#if nextPage}}
+        <li><a href="#" {{action "selectPage" nextPage}}><i class="fa fa-arrow-right"></i></a></li>
+      {{else}}
+        <li class="disabled"><a><i class="fa fa-arrow-right"></i></a></li>
+      {{/if}}
+    </ul>
+  </div>
+</div>

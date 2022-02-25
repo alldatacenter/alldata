@@ -1,0 +1,261 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<view>
+    <name>PIG</name>
+    <label>Pig</label>
+    <version>1.0.0</version>
+    <build>${env.BUILD_NUMBER}</build>
+
+    <min-ambari-version>2.0.*</min-ambari-version>
+    <max-ambari-version>2.5.*</max-ambari-version>
+
+    <validator-class>org.apache.ambari.view.pig.PropertyValidator</validator-class>
+    <view-class>org.apache.ambari.view.utils.ViewImpl</view-class>
+
+    <!-- HDFS Configs -->
+    <parameter>
+        <name>webhdfs.url</name>
+        <description>Enter the WebHDFS FileSystem URI. Typically this is the dfs.namenode.http-address
+            property in the hdfs-site.xml configuration. URL must be accessible from Ambari Server.</description>
+        <label>WebHDFS FileSystem URI</label>
+        <placeholder>webhdfs://namenode:50070</placeholder>
+        <required>true</required>
+        <cluster-config>core-site/fs.defaultFS</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.nameservices</name>
+        <description>Comma-separated list of nameservices. Value of hdfs-site/dfs.nameservices property</description>
+        <label>Logical name of the NameNode cluster</label>
+        <required>false</required>
+        <cluster-config>hdfs-site/dfs.nameservices</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.ha.namenodes.list</name>
+        <description>Comma-separated list of namenodes for a given nameservice.
+            Value of hdfs-site/dfs.ha.namenodes.[nameservice] property</description>
+        <label>List of NameNodes</label>
+        <required>false</required>
+        <cluster-config>fake</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.ha.namenode.rpc-address.nn1</name>
+        <description>RPC address for first name node.
+            Value of hdfs-site/dfs.namenode.rpc-address.[nameservice].[namenode1] property</description>
+        <label>First NameNode RPC Address</label>
+        <required>false</required>
+        <cluster-config>fake</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.ha.namenode.rpc-address.nn2</name>
+        <description>RPC address for second name node.
+            Value of hdfs-site/dfs.namenode.rpc-address.[nameservice].[namenode2] property</description>
+        <label>Second NameNode RPC Address</label>
+        <required>false</required>
+        <cluster-config>fake</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.ha.namenode.http-address.nn1</name>
+        <description>WebHDFS address for first name node.
+            Value of hdfs-site/dfs.namenode.http-address.[nameservice].[namenode1] property</description>
+        <label>First NameNode HTTP (WebHDFS) Address</label>
+        <required>false</required>
+        <cluster-config>fake</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.ha.namenode.http-address.nn2</name>
+        <description>WebHDFS address for second name node.
+            Value of hdfs-site/dfs.namenode.http-address.[nameservice].[namenode2] property</description>
+        <label>Second NameNode HTTP (WebHDFS) Address</label>
+        <required>false</required>
+        <cluster-config>fake</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.ha.namenode.https-address.nn1</name>
+        <description>WebHDFS Https address for first name node.
+            Value of hdfs-site/dfs.namenode.https-address.[nameservice].[namenode1] property</description>
+        <label>First NameNode HTTPS (WebHDFS) Address</label>
+        <required>false</required>
+        <cluster-config>fake</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.ha.namenode.https-address.nn2</name>
+        <description>WebHDFS Https address for second name node.
+            Value of hdfs-site/dfs.namenode.https-address.[nameservice].[namenode2] property</description>
+        <label>Second NameNode HTTPS (WebHDFS) Address</label>
+        <required>false</required>
+        <cluster-config>fake</cluster-config>
+    </parameter>
+    <parameter>
+        <name>webhdfs.client.failover.proxy.provider</name>
+        <description>The Java class that HDFS clients use to contact the Active NameNode
+            Value of hdfs-site/dfs.client.failover.proxy.provider.[nameservice] property</description>
+        <label>Failover Proxy Provider</label>
+        <required>false</required>
+        <cluster-config>fake</cluster-config>
+    </parameter>
+
+    <parameter>
+        <name>hdfs.umask-mode</name>
+        <description>The umask used when creating files and directories. Defaults to 022</description>
+        <label>Umask</label>
+        <default-value>022</default-value>
+        <required>false</required>
+        <cluster-config>hdfs-site/fs.permissions.umask-mode</cluster-config>
+    </parameter>
+
+    <parameter>
+        <name>webhdfs.username</name>
+        <description>User and doAs for proxy user for HDFS. By default, uses the currently logged-in Ambari user.</description>
+        <label>WebHDFS Username</label>
+        <default-value>${username}</default-value>
+        <required>false</required>
+    </parameter>
+
+    <parameter>
+        <name>webhdfs.auth</name>
+        <description>Semicolon-separated authentication configs. Default: auth=SIMPLE</description>
+        <label>WebHDFS Authentication</label>
+        <placeholder>auth=SIMPLE</placeholder>
+        <required>false</required>
+    </parameter>
+
+    <parameter>
+        <name>hdfs.auth_to_local</name>
+        <description>Auth to Local Configuration</description>
+        <label>Auth To Local</label>
+        <required>false</required>
+        <cluster-config>core-site/hadoop.security.auth_to_local</cluster-config>
+    </parameter>
+
+    <!-- WebHCat Configs -->
+    <parameter>
+        <name>webhcat.hostname</name>
+        <description>Enter the WebHCat host name for accessing WebHCat. Host must be accessible from Ambari Server.</description>
+        <label>WebHCat Hostname</label>
+        <placeholder>webhcat-host.example.com</placeholder>
+        <cluster-config>fake</cluster-config>
+        <required>true</required>
+    </parameter>
+
+    <parameter>
+        <name>webhcat.port</name>
+        <description>Enter the WebHCat port for accessing WebHCat.</description>
+        <label>WebHCat Port</label>
+        <default-value>50111</default-value>
+        <cluster-config>webhcat-site/templeton.port</cluster-config>
+        <required>true</required>
+    </parameter>
+
+    <parameter>
+        <name>webhcat.username</name>
+        <description>User and doAs for proxy user for WebHCat. By default, uses the currently logged-in Ambari user.</description>
+        <label>WebHCat Username</label>
+        <required>false</required>
+    </parameter>
+
+
+    <!-- General Configs -->
+    <parameter>
+        <name>scripts.dir</name>
+        <description>HDFS directory to store Pig scripts.</description>
+        <label>Scripts HDFS Directory</label>
+        <placeholder>/user/${username}/pig/scripts</placeholder>
+        <default-value>/user/${username}/pig/scripts</default-value>
+        <required>true</required>
+    </parameter>
+
+    <parameter>
+        <name>jobs.dir</name>
+        <description>HDFS directory to store Pig job status.</description>
+        <label>Jobs HDFS Directory</label>
+        <placeholder>/user/${username}/pig/jobs</placeholder>
+        <default-value>/user/${username}/pig/jobs</default-value>
+        <required>true</required>
+    </parameter>
+
+    <parameter>
+        <name>store.dir</name>
+        <description>HDFS directory to store meta information about Pig scripts and jobs.</description>
+        <label>Meta HDFS Directory</label>
+        <placeholder>/user/${username}/pig/store</placeholder>
+        <required>false</required>
+    </parameter>
+
+    <parameter>
+        <name>view.conf.keyvalues</name>
+        <description>The key values that will be copied to hdfs connection configuration verbatim.</description>
+        <label>View Configs</label>
+        <required>false</required>
+    </parameter>
+
+    <resource>
+        <name>script</name>
+        <plural-name>scripts</plural-name>
+        <id-property>id</id-property>
+        <resource-class>org.apache.ambari.view.pig.resources.scripts.models.PigScript</resource-class>
+        <provider-class>org.apache.ambari.view.pig.resources.scripts.ScriptResourceProvider</provider-class>
+        <service-class>org.apache.ambari.view.pig.resources.scripts.ScriptService</service-class>
+    </resource>
+
+    <resource>
+        <name>job</name>
+        <plural-name>jobs</plural-name>
+        <id-property>id</id-property>
+        <resource-class>org.apache.ambari.view.pig.resources.jobs.models.PigJob</resource-class>
+        <provider-class>org.apache.ambari.view.pig.resources.jobs.JobResourceProvider</provider-class>
+        <service-class>org.apache.ambari.view.pig.resources.jobs.JobService</service-class>
+    </resource>
+
+    <resource>
+        <name>udf</name>
+        <plural-name>udfs</plural-name>
+        <id-property>id</id-property>
+        <resource-class>org.apache.ambari.view.pig.resources.udf.models.UDF</resource-class>
+        <provider-class>org.apache.ambari.view.pig.resources.udf.UDFResourceProvider</provider-class>
+        <service-class>org.apache.ambari.view.pig.resources.udf.UDFService</service-class>
+    </resource>
+
+    <resource>
+        <name>file</name>
+        <service-class>org.apache.ambari.view.pig.resources.files.FileService</service-class>
+    </resource>
+
+    <resource>
+        <name>pig</name>
+        <service-class>org.apache.ambari.view.pig.PigServiceRouter</service-class>
+    </resource>
+
+    <persistence>
+        <entity>
+            <class>org.apache.ambari.view.pig.persistence.SmokeTestEntity</class>
+            <id-property>id</id-property>
+        </entity>
+        <entity>
+            <class>org.apache.ambari.view.pig.resources.jobs.models.PigJob</class>
+            <id-property>id</id-property>
+        </entity>
+        <entity>
+            <class>org.apache.ambari.view.pig.resources.scripts.models.PigScript</class>
+            <id-property>id</id-property>
+        </entity>
+        <entity>
+            <class>org.apache.ambari.view.pig.resources.udf.models.UDF</class>
+            <id-property>id</id-property>
+        </entity>
+    </persistence>
+
+</view>

@@ -1,0 +1,108 @@
+{
+    "configurations" : [
+    ],
+    "host_groups" : [
+        {
+            "name" : "master_1",
+            "components" : [
+                {
+                    "name" : "NAMENODE"
+                },
+                {
+                    "name" : "ZOOKEEPER_SERVER"
+                },
+                {
+                    "name" : "HDFS_CLIENT"
+                },
+                {
+                    "name" : "YARN_CLIENT"
+                }
+            ],
+            "cardinality" : "1"
+        },
+        {
+            "name" : "master_2",
+            "components" : [
+
+                {
+                    "name" : "ZOOKEEPER_CLIENT"
+                },
+                {
+                    "name" : "HISTORYSERVER"
+                },
+                {
+                    "name" : "SECONDARY_NAMENODE"
+                },
+                {
+                    "name" : "HDFS_CLIENT"
+                },
+                {
+                    "name" : "YARN_CLIENT"
+                },
+                {
+                    "name" : "POSTGRESQL_SERVER"
+                }
+            ],
+            "cardinality" : "1"
+        },
+        {
+            "name" : "master_3",
+            "components" : [
+                {
+                    "name" : "RESOURCEMANAGER"
+                },
+                {
+                    "name" : "ZOOKEEPER_SERVER"
+                }
+            ],
+            "cardinality" : "1"
+        },
+        {
+            "name" : "master_4",
+            "components" : [
+                {
+                    "name" : "ZOOKEEPER_SERVER"
+                }
+            ],
+            "cardinality" : "1"
+        },
+        {
+            "name" : "slave",
+            "components" : [
+                {
+                    "name" : "NODEMANAGER"
+                },
+                {
+                    "name" : "DATANODE"
+                }
+            ],
+            "cardinality" : "${slavesCount}"
+        },
+        {
+            "name" : "gateway",
+            "components" : [
+                {
+                    "name" : "AMBARI_SERVER"
+                },
+                {
+                    "name" : "ZOOKEEPER_CLIENT"
+                },
+                {
+                    "name" : "HDFS_CLIENT"
+                },
+                {
+                    "name" : "YARN_CLIENT"
+                },
+                {
+                    "name" : "MAPREDUCE2_CLIENT"
+                }
+            ],
+            "cardinality" : "1"
+        }
+    ],
+    "Blueprints" : {
+        "blueprint_name" : "blueprint-multinode-default",
+        "stack_name" : "ODPi",
+        "stack_version" : "2.0"
+    }
+}

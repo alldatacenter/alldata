@@ -1,0 +1,54 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#each queue in view.leaf }}
+  {{#link-to "queue" queue classNameBindings=":list-group-item queue.overCapacity:list-group-item-danger queue.isNew:list-group-item-info" disabled=queue.isDeletedQueue }}
+    <span class="col-md-offset-{{unbound queue.depth}} col-sm-offset-{{unbound queue.depth}} col-xs-offset-{{unbound queue.depth}}">
+
+    <div class="progress">
+      {{view 'view.capacityBarView' queue=queue}}
+    </div>
+    {{queue.name}} ({{queue.capacity}}%)
+
+    {{#if queue.version}}
+        <span class="label label-info">v{{queue.version}}</span>
+    {{/if}}
+
+    {{#if queue.noCapacity}}
+      {{warn-badge}}
+    {{/if}}
+
+    {{queue-badge q=queue class="badge pull-right"}}
+
+    {{#if queue.isDeletedQueue}}
+      <span class="btn-group btn-group-xs pull-right">
+        <span  {{action 'addQ' queue.parentPath queue.name }} {{bind-attr class=":btn :btn-default view.parentIsDeleted:disabled" }} >Restore</span>
+      </span>
+    {{/if}}
+
+    {{#unless queue.queues}}
+      <span class="badge pull-right">
+        <i class="fa fa-leaf"></i>
+      </span>
+    {{/unless}}
+
+    </span>
+  {{/link-to}}
+
+  {{recurce-queues depth=view.childDepth parent=queue.path parentIsDeleted=queue.isDeletedQueue}}
+{{/each}}

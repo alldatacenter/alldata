@@ -1,0 +1,10 @@
+{
+   "report_name" : "hdfs_under_replicated_blocks_report",
+   "report_type" : "standard",
+   "title" : "HDFS Under-Replicated Blocks",
+   "vertical_label" : "Block Count",
+   "series" : [
+      { "metric": "dfs.FSNamesystem.UnderReplicatedBlocks", "color": "ff0000", "label": "Under-Replicated Blocks", 
+        "line_width": "2", "type": "line" }
+   ]
+}

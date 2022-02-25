@@ -1,0 +1,64 @@
+{{!
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+}}
+
+<div class="panel-history">
+  <div class="title-row">
+    <h3 class="pull-left"> {{t 'common.history'}}</h3>
+  </div>
+  <table class="table table-striped ">
+    <thead>
+      <tr class="label-row">
+        <th class="first">{{t 'common.date'}}</th>
+        <th>{{t 'scripts.script'}}</th>
+        <th>{{t 'job.status'}}</th> 
+        <th>{{t 'history.duration'}}</th>
+        <th>{{t 'common.actions'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each paginatedContent}}
+      <tr>
+        <td>{{#link-to 'script.job' this.id }} {{showDate this.dateStarted 'YYYY-MM-DD HH:mm'}} {{/link-to}}</td>
+        <td>
+          {{#view view.scriptLink scriptId=this.scriptId allIds=controller.scriptIds}}{{this.title}}{{/view}}
+        </td>
+        <td>
+          <h4>
+            <span {{bind-attr class=":label jobSuccess:label-success jobError:label-danger jobInProgress:label-warning "}} class="label label-success">{{status}}</span>
+          </h4>
+        </td>
+        <td>{{#unless jobInProgress}}{{durationTime}}{{/unless}}</td>
+        <td>
+          {{#unless jobInProgress}}
+            <a {{action 'logsPopup' this}} href="#"> <i class="fa fa-file-text-o"></i> {{t 'job.logs'}}</a>
+            <a {{action 'resultsPopup' this}} href="#"> <i class="fa fa-table"></i> {{t 'job.results'}}</a>
+          {{/unless}}
+          <a {{action 'deleteJob' this}} href="#"><i class="fa fa-trash-o"></i> {{t 'common.delete'}}</a>
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+  {{#unless content}}
+    <div class="alert alert-info" role="alert">{{t 'history.no_jobs_message'}}</div>
+  {{/unless}}
+</div>
+
+{{#if content}}
+  {{partial 'partials/paginationControls'}}
+{{/if}}

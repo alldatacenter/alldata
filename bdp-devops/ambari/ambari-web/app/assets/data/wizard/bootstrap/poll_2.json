@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "hostsStatus": [
+    {
+      "status": "DONE",
+      "hostName": "localhost.localdomain",
+      "log": "STDOUT\n\nSTDERR\nWarning: Permanently added 'dev002,10.0.2.16' (RSA) to the list of known hosts.\r\n/etc/yum.repos.d/ambari.repo: No such file or directory\nSTDOUT\n\nSTDERR\nPermission denied, please try again.\r\nConnection closed by UNKNOWN\r\nlost connection\nSTDOUT\n\nSTDERR\npython: can't open file '/tmp/setupAgent.py': [Errno 2] No such file or directory\n"
+    }
+  ],
+  "log": "\n\nINFO:root:BootStrapping hosts ['dev001','dev002'] using /root/dev/ambari/ambari-server/src/main/python with sshKey File /tmp/bootstrap/1/sshKey using tmp dir /tmp/bootstrap/1 ambari: localhost\nINFO:root:Running scp command scp -o ConnectTimeout=3 -o StrictHostKeyChecking=no -i /tmp/bootstrap/1/sshKey /etc/yum.repos.d/ambari.repo root@dev001:/etc/yum.repos.d\nINFO:root:scp /etc/yum.repos.d/ambari.repo done for host dev001, exitcode=1\nINFO:root:Parallel scp returns for repo file\nINFO:root:Running scp command scp -o ConnectTimeout=3 -o StrictHostKeyChecking=no -i /tmp/bootstrap/1/sshKey /root/dev/ambari/ambari-server/src/main/python/setupAgent.py root@dev001:/tmp\nINFO:root:scp /root/dev/ambari/ambari-server/src/main/python/setupAgent.py done for host dev001, exitcode=1\nINFO:root:Parallel scp returns for agent script\nINFO:root:Running setup agent...\nINFO:root:Running ssh command ssh -o ConnectTimeOut=3 -o StrictHostKeyChecking=no -i /tmp/bootstrap/1/sshKey root@dev001 python /tmp/setupAgent.py tmp localhost\nINFO:root:Setup agent done for host dev001, exitcode=2\nINFO:root:Parallel ssh returns for setup agent\n"
+}

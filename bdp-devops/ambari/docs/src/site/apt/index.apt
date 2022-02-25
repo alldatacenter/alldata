@@ -1,0 +1,85 @@
+~~ Licensed to the Apache Software Foundation (ASF) under one or more
+~~ contributor license agreements.  See the NOTICE file distributed with
+~~ this work for additional information regarding copyright ownership.
+~~ The ASF licenses this file to You under the Apache License, Version 2.0
+~~ (the "License"); you may not use this file except in compliance with
+~~ the License.  You may obtain a copy of the License at
+~~
+~~     http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~ Unless required by applicable law or agreed to in writing, software
+~~ distributed under the License is distributed on an "AS IS" BASIS,
+~~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~~ See the License for the specific language governing permissions and
+~~ limitations under the License.
+~~
+Introduction
+
+  The Apache Ambari project is aimed at making Hadoop management simpler by developing software for provisioning, managing, and monitoring Apache Hadoop clusters.
+  Ambari provides an intuitive, easy-to-use Hadoop management web UI backed by its RESTful APIs.
+
+  []
+
+  Ambari enables System Administrators to:
+
+  * Provision a Hadoop Cluster
+  
+    * Ambari provides a step-by-step wizard for installing Hadoop services across any number of hosts.
+    
+    * Ambari handles configuration of Hadoop services for the cluster.
+
+  []
+
+  * Manage a Hadoop Cluster
+  
+    * Ambari provides central management for starting, stopping, and reconfiguring Hadoop services across the entire cluster.
+
+  []
+
+  * Monitor a Hadoop Cluster
+  
+    * Ambari provides a dashboard for monitoring health and status of the Hadoop cluster.
+
+    * Ambari leverages {{{https://issues.apache.org/jira/browse/AMBARI-5707} Ambari Metrics System}} for metrics collection.
+
+    * Ambari leverages {{{https://issues.apache.org/jira/browse/AMBARI-6354} Ambari Alert Framework}} for system alerting and will notify you when your attention is needed (e.g., a node goes down, remaining disk space is low, etc).
+
+  []
+
+  Ambari enables Application Developers and System Integrators to:
+
+  * Easily integrate Hadoop provisioning, management, and monitoring capabilities to their own applications with the {{{https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md} Ambari REST APIs}}.
+
+Getting Started with Ambari
+
+  Follow the {{{https://cwiki.apache.org/confluence/display/AMBARI/Installation+Guide+for+Ambari+2.7.6} installation guide for Ambari 2.7.6}}.
+
+  Note: Ambari currently supports the 64-bit version of the following Operating Systems:
+
+  * RHEL (Redhat Enterprise Linux) 7.4, 7.3, 7.2
+
+  * CentOS 7.4, 7.3, 7.2
+
+  * OEL (Oracle Enterprise Linux) 7.4, 7.3, 7.2
+
+  * Amazon Linux 2
+
+  * SLES (SuSE Linux Enterprise Server) 12 SP3, 12 SP2
+
+  * Ubuntu 14 and 16
+
+  * Debian 9
+
+Get Involved
+
+  Visit the {{{https://cwiki.apache.org/confluence/display/AMBARI/Ambari} Ambari Wiki}} for design documents, roadmap, development guidelines, etc.
+
+  {{{http://www.meetup.com/Apache-Ambari-User-Group} Join the Ambari User Meetup Group}}.  
+  You can see the slides from {{{http://www.meetup.com/Apache-Ambari-User-Group/events/109316812/} April 2, 2013}}, {{{http://www.meetup.com/Apache-Ambari-User-Group/events/119184782/} June 25, 2013}}, and {{{http://www.meetup.com/Apache-Ambari-User-Group/events/134373312/} September 25, 2013}} meetups.
+
+What's New?
+
+  Check out the work going on for the {{{./whats-new.html} upcoming releases}}.
+
+
+

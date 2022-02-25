@@ -1,0 +1,12 @@
+{
+   "report_name" : "jobtracker_mapreduce_report",
+   "report_type" : "standard",
+   "title" : "Waiting Map/Reduce tasks",
+   "vertical_label" : "Tasks",
+   "series" : [
+      { "metric": "mapred.jobtracker.waiting_maps", "color": "ff0000", "label": "Waiting Maps", 
+        "line_width": "2", "type": "stack" },
+      { "metric": "mapred.jobtracker.waiting_reduces", "color": "0000ff", "label": "Waiting Reduces", 
+        "line_width": "2", "type": "stack" }
+   ]
+}

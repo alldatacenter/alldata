@@ -1,0 +1,27 @@
+{
+  "href" : "http://host:8080/api/v1/alert_targets?fields=*",
+  "items" : [
+    {
+      "href" : "http://host:8080/api/v1/alert_targets/1",
+      "AlertTarget" : {
+        "alert_states" : [
+          "UNKNOWN",
+          "CRITICAL",
+          "OK",
+          "WARNING"
+        ],
+        "description" : "123",
+        "id" : 1,
+        "global": true,
+        "name" : "123",
+        "notification_type" : "EMAIL",
+        "properties" : {
+          "ambari.dispatch.recipients" : [
+            "123@123.com"
+          ],
+          "dd": "ddd"
+        }
+      }
+    }
+  ]
+}

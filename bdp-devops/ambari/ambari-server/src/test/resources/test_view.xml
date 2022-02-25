@@ -1,0 +1,97 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<view>
+  <name>view1</name>
+  <label>str1234</label>
+  <version>str1234</version>
+  <description>str1234</description>
+  <icon64>str1234</icon64>
+  <icon>str1234</icon>
+  <system>true</system>
+  <view-class>str1234</view-class>
+  <masker-class>str1234</masker-class>
+  <parameter>
+    <name>parameter1</name>
+    <description>str1234</description>
+    <label>str1234</label>
+    <placeholder>str1234</placeholder>
+    <default-value>str1234</default-value>
+    <required>true</required>
+    <masked>true</masked>
+  </parameter>
+  <parameter>
+    <name>parameter2</name>
+    <description>str1234</description>
+    <required>false</required>
+    <masked>false</masked>
+  </parameter>
+  <resource>
+    <name>resource1</name>
+    <plural-name>str1234</plural-name>
+    <id-property>str1234</id-property>
+    <resource-class>str1234</resource-class>
+    <provider-class>str1234</provider-class>
+    <service-class>str1234</service-class>
+    <sub-resource-name>resource2</sub-resource-name>
+  </resource>
+  <resource>
+    <name>resource2</name>
+    <plural-name>str1234</plural-name>
+    <id-property>str1234</id-property>
+    <resource-class>str1234</resource-class>
+    <provider-class>str1234</provider-class>
+    <service-class>str1234</service-class>
+  </resource>
+  <resource>
+    <name>resource3</name>
+    <service-class>str1234</service-class>
+  </resource>
+  <permission>
+    <name>permission1</name>
+    <description>str1234</description>
+  </permission>
+  <permission>
+    <name>permission2</name>
+    <description>str1234</description>
+  </permission>
+  <persistence>
+    <entity>
+      <class>entity1</class>
+      <id-property>str1234</id-property>
+    </entity>
+    <entity>
+      <class>entity2</class>
+      <id-property>str1234</id-property>
+    </entity>
+  </persistence>
+  <instance>
+    <name>instance1</name>
+    <label>str1234</label>
+    <description>str1234</description>
+    <icon64>str1234</icon64>
+    <icon>str1234</icon>
+    <visible>true</visible>
+    <property>
+      <key>parameter1</key>
+      <value>str1234</value>
+    </property>
+    <property>
+      <key>parameter2</key>
+      <value>str1234</value>
+    </property>
+  </instance>
+</view>

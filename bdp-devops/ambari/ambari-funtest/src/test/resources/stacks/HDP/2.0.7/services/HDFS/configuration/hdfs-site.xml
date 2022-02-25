@@ -1,0 +1,514 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+  <!-- file system properties -->
+
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <!-- cluster variant -->
+    <value>/hadoop/hdfs/namenode</value>
+    <description>Determines where on the local filesystem the DFS name node
+      should store the name table.  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+    <final>true</final>
+  </property>
+
+  <property>
+    <name>dfs.support.append</name>
+    <value>true</value>
+    <description>to enable dfs append</description>
+    <final>true</final>
+  </property>
+
+  <property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+    <description>Whether to enable WebHDFS feature</description>
+    <final>true</final>
+  </property>
+
+  <property>
+    <name>dfs.datanode.failed.volumes.tolerated</name>
+    <value>0</value>
+    <description> Number of failed disks a DataNode would tolerate before it stops offering service</description>
+    <final>true</final>
+  </property>
+
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>/hadoop/hdfs/data</value>
+    <description>Determines where on the local filesystem an DFS data node
+      should store its blocks.  If this is a comma-delimited
+      list of directories, then data will be stored in all named
+      directories, typically on different devices.
+      Directories that do not exist are ignored.
+    </description>
+    <final>true</final>
+  </property>
+
+  <property>
+    <name>dfs.hosts.exclude</name>
+    <value>/etc/hadoop/conf/dfs.exclude</value>
+    <description>Names a file that contains a list of hosts that are
+      not permitted to connect to the namenode.  The full pathname of the
+      file must be specified.  If the value is empty, no hosts are
+      excluded.</description>
+  </property>
+
+  <!--
+    <property>
+      <name>dfs.hosts</name>
+      <value>/etc/hadoop/conf/dfs.include</value>
+      <description>Names a file that contains a list of hosts that are
+      permitted to connect to the namenode. The full pathname of the file
+      must be specified.  If the value is empty, all hosts are
+      permitted.</description>
+    </property>
+  -->
+
+  <property>
+    <name>dfs.namenode.checkpoint.dir</name>
+    <value>/hadoop/hdfs/namesecondary</value>
+    <description>Determines where on the local filesystem the DFS secondary
+      name node should store the temporary images to merge.
+      If this is a comma-delimited list of directories then the image is
+      replicated in all of the directories for redundancy.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.checkpoint.edits.dir</name>
+    <value>${dfs.namenode.checkpoint.dir}</value>
+    <description>Determines where on the local filesystem the DFS secondary
+      name node should store the temporary edits to merge.
+      If this is a comma-delimited list of directoires then teh edits is
+      replicated in all of the directoires for redundancy.
+      Default value is same as dfs.namenode.checkpoint.dir
+    </description>
+  </property>
+
+
+  <property>
+    <name>dfs.namenode.checkpoint.period</name>
+    <value>21600</value>
+    <description>The number of seconds between two periodic checkpoints.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.checkpoint.txns</name>
+    <value>1000000</value>
+    <description>The Secondary NameNode or CheckpointNode will create a checkpoint
+      of the namespace every 'dfs.namenode.checkpoint.txns' transactions,
+      regardless of whether 'dfs.namenode.checkpoint.period' has expired.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.replication.max</name>
+    <value>50</value>
+    <description>Maximal block replication.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.replication</name>
+    <value>3</value>
+    <description>Default block replication.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.heartbeat.interval</name>
+    <value>3</value>
+    <description>Determines datanode heartbeat interval in seconds.</description>
+  </property>
+
+  <property>
+    <name>dfs.heartbeat.interval</name>
+    <value>3</value>
+    <description>Determines datanode heartbeat interval in seconds.</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.safemode.threshold-pct</name>
+    <value>1.0f</value>
+    <description>
+      Specifies the percentage of blocks that should satisfy
+      the minimal replication requirement defined by dfs.namenode.replication.min.
+      Values less than or equal to 0 mean not to start in safe mode.
+      Values greater than 1 will make safe mode permanent.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.datanode.balance.bandwidthPerSec</name>
+    <value>6250000</value>
+    <description>
+      Specifies the maximum amount of bandwidth that each datanode
+      can utilize for the balancing purpose in term of
+      the number of bytes per second.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.https.port</name>
+    <value>50470</value>
+    <description>
+      This property is used by HftpFileSystem.
+    </description>
+  </property>
+
+  <property>
+    <name>ambari.dfs.datanode.port</name>
+    <value>50010</value>
+    <description>
+      The datanode port for data transfer. This property is effective only if referenced from dfs.datanode.address property.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.datanode.address</name>
+    <value>0.0.0.0:${ambari.dfs.datanode.port}</value>
+    <description>
+      The datanode server address and port for data transfer.
+    </description>
+  </property>
+
+  <property>
+    <name>ambari.dfs.datanode.http.port</name>
+    <value>50075</value>
+    <description>
+      The datanode http port. This property is effective only if referenced from dfs.datanode.http.address property.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>0.0.0.0:${ambari.dfs.datanode.http.port}</value>
+    <description>
+      The datanode http server address and port.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.blocksize</name>
+    <value>134217728</value>
+    <description>The default block size for new files.</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.http-address</name>
+    <value>localhost:50070</value>
+    <description>The name of the default file system.  Either the
+      literal string "local" or a host:port for HDFS.</description>
+    <final>true</final>
+  </property>
+
+  <property>
+    <name>dfs.datanode.du.reserved</name>
+    <!-- cluster variant -->
+    <value>1073741824</value>
+    <description>Reserved space in bytes per volume. Always leave this much space free for non dfs use.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.datanode.ipc.address</name>
+    <value>0.0.0.0:8010</value>
+    <description>
+      The datanode ipc server address and port.
+      If the port is 0 then the server will start on a free port.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.blockreport.initialDelay</name>
+    <value>120</value>
+    <description>Delay for first block report in seconds.</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.handler.count</name>
+    <value>40</value>
+    <description>The number of server threads for the namenode.</description>
+  </property>
+
+  <property>
+    <name>dfs.datanode.max.transfer.threads</name>
+    <value>1024</value>
+    <description>PRIVATE CONFIG VARIABLE</description>
+  </property>
+
+  <!-- Permissions configuration -->
+
+  <property>
+    <name>fs.permissions.umask-mode</name>
+    <value>022</value>
+    <description>
+      The octal umask used when creating files and directories.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.permissions.enabled</name>
+    <value>true</value>
+    <description>
+      If "true", enable permission checking in HDFS.
+      If "false", permission checking is turned off,
+      but all other behavior is unchanged.
+      Switching from one parameter value to the other does not change the mode,
+      owner or group of files or directories.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.permissions.superusergroup</name>
+    <value>hdfs</value>
+    <description>The name of the group of super-users.</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.handler.count</name>
+    <value>100</value>
+    <description>Added to grow Queue size so that more client connections are allowed</description>
+  </property>
+
+  <property>
+    <name>dfs.block.access.token.enable</name>
+    <value>true</value>
+    <description>
+      If "true", access tokens are used as capabilities for accessing datanodes.
+      If "false", no access tokens are checked on accessing datanodes.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.kerberos.principal</name>
+    <value></value>
+    <description>
+      Kerberos principal name for the NameNode
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.secondary.namenode.kerberos.principal</name>
+    <value></value>
+    <description>
+      Kerberos principal name for the secondary NameNode.
+    </description>
+  </property>
+
+
+  <!--
+    This is KRB DOMAIN specific. The FQDN of the namenode has to be mentioned.
+  -->
+  <property>
+    <name>dfs.namenode.kerberos.https.principal</name>
+    <value></value>
+    <description>The Kerberos principal for the host that the NameNode runs on.</description>
+
+  </property>
+
+  <property>
+    <name>dfs.secondary.namenode.kerberos.https.principal</name>
+    <value></value>
+    <description>The Kerberos principal for the hostthat the secondary NameNode runs on.</description>
+
+  </property>
+
+  <property>
+    <!-- cluster variant -->
+    <name>dfs.namenode.secondary.http-address</name>
+    <value>localhost:50090</value>
+    <description>Address of secondary namenode web server</description>
+  </property>
+
+  <property>
+    <name>dfs.web.authentication.kerberos.principal</name>
+    <value></value>
+    <description>
+      The HTTP Kerberos principal used by Hadoop-Auth in the HTTP endpoint.
+      The HTTP Kerberos principal MUST start with 'HTTP/' per Kerberos
+      HTTP SPENGO specification.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.web.authentication.kerberos.keytab</name>
+    <value></value>
+    <description>
+      The Kerberos keytab file with the credentials for the
+      HTTP Kerberos principal used by Hadoop-Auth in the HTTP endpoint.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.datanode.kerberos.principal</name>
+    <value></value>
+    <description>
+      The Kerberos principal that the DataNode runs as. "_HOST" is replaced by the real host name.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.keytab.file</name>
+    <value></value>
+    <description>
+      Combined keytab file containing the namenode service and host principals.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.secondary.namenode.keytab.file</name>
+    <value></value>
+    <description>
+      Combined keytab file containing the namenode service and host principals.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.datanode.keytab.file</name>
+    <value></value>
+    <description>
+      The filename of the keytab file for the DataNode.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.https-address</name>
+    <value>localhost:50470</value>
+    <description>The https address where namenode binds</description>
+
+  </property>
+
+  <property>
+    <name>dfs.datanode.data.dir.perm</name>
+    <value>750</value>
+    <description>The permissions that should be there on dfs.datanode.data.dir
+      directories. The datanode will not come up if the permissions are
+      different on existing dfs.datanode.data.dir directories. If the directories
+      don't exist, they will be created with this permission.</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.accesstime.precision</name>
+    <value>0</value>
+    <description>The access time for HDFS file is precise up to this value.
+      The default value is 1 hour. Setting a value of 0 disables
+      access times for HDFS.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.cluster.administrators</name>
+    <value> hdfs</value>
+    <description>ACL for who all can view the default servlets in the HDFS</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.avoid.read.stale.datanode</name>
+    <value>true</value>
+    <description>
+      Indicate whether or not to avoid reading from stale datanodes whose
+      heartbeat messages have not been received by the namenode for more than a
+      specified time interval.
+    </description>
+  </property>
+  <property>
+    <name>dfs.namenode.avoid.write.stale.datanode</name>
+    <value>true</value>
+    <description>
+      Indicate whether or not to avoid writing to stale datanodes whose
+      heartbeat messages have not been received by the namenode for more than a
+      specified time interval.
+    </description>
+  </property>
+  <property>
+    <name>dfs.namenode.write.stale.datanode.ratio</name>
+    <value>1.0f</value>
+    <description>When the ratio of number stale datanodes to total datanodes marked is greater
+      than this ratio, stop avoiding writing to stale nodes so as to prevent causing hotspots.
+    </description>
+  </property>
+  <property>
+    <name>dfs.namenode.stale.datanode.interval</name>
+    <value>30000</value>
+    <description>Datanode is stale after not getting a heartbeat in this interval in ms</description>
+  </property>
+
+  <property>
+    <name>dfs.journalnode.http-address</name>
+    <value>0.0.0.0:8480</value>
+    <description>The address and port the JournalNode web UI listens on.
+      If the port is 0 then the server will start on a free port. </description>
+  </property>
+
+  <property>
+    <name>dfs.journalnode.edits.dir</name>
+    <value>/grid/0/hdfs/journal</value>
+    <description>The path where the JournalNode daemon will store its local state. </description>
+  </property>
+
+  <!-- HDFS Short-Circuit Local Reads -->
+
+  <property>
+    <name>dfs.client.read.shortcircuit</name>
+    <value>true</value>
+    <description>
+      This configuration parameter turns on short-circuit local reads.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.client.read.shortcircuit.skip.checksum</name>
+    <value></value>
+    <description>Enable/disbale skipping the checksum check</description>
+  </property>
+
+  <property>
+    <name>dfs.domain.socket.path</name>
+    <value>/var/lib/hadoop-hdfs/dn_socket</value>
+  </property>
+
+  <property>
+    <name>dfs.client.read.shortcircuit.streams.cache.size</name>
+    <value>4096</value>
+    <description>
+      The DFSClient maintains a cache of recently opened file descriptors. This
+      parameter controls the size of that cache. Setting this higher will use
+      more file descriptors, but potentially provide better performance on
+      workloads involving lots of seeks.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.name.dir.restore</name>
+    <value>true</value>
+    <description>Set to true to enable NameNode to attempt recovering a previously failed dfs.namenode.name.dir.
+      When enabled, a recovery of any failed directory is attempted during checkpoint.</description>
+  </property>
+
+</configuration>

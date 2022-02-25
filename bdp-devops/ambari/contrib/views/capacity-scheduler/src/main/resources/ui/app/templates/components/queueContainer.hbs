@@ -1,0 +1,88 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+
+<div class="queue-container">
+  {{#if controller.isOperator}}
+    <div class="btn-group btn-group-xs pull-right">
+      <a href="#" {{action 'toggleProperty' 'labelsEnabled' this}} class="btn btn-default labels-enabler">
+        <i {{bind-attr class=":fa labelsEnabled:fa-check-square-o:fa-square-o"}}></i> Enable node labels
+      </a>
+    </div>
+  {{/if}}
+  <div class="queue-capacity">
+    <h5><strong>{{this.name}}</strong></h5>
+    {{render "capacityEditForm" this}}
+  </div>
+  <div {{bind-attr class=":labels-toggle-wrap labelsEnabled::hide"}}>
+      {{tooltip-label
+        tagName='small'
+        label='Node Labels Access'
+        message= 'Whether this queue has associated node labels that applications submitted to the queue can access.'
+      }}
+      {{#if controller.isOperator}}
+        <div class="btn-group btn-group-xs labels-toggle-all" >
+          <button {{action 'toggleProperty' 'accessAllLabels' this}} type="button" {{bind-attr class=":btn this.accessAllLabels:btn-success:btn-default"}}><i class="fa fa-asterisk"></i></button>
+        </div>
+      {{else}}
+        {{#if accessAllLabels}}
+          <i class="fa fa-asterisk sign"></i>
+        {{else}}
+          <i class="fa fa-sliders sign"></i>
+        {{/if}}
+      {{/if}}
+    {{#each row in controller.arrangedNodeLabels}}
+      <div class="btn-group btn-group-xs btn-group-justified labels-toggle">
+        {{#each label in row}}
+          {{#view 'view.nodeLabelsToggles' labelName=label.name queue=this leaf=controller.leafQueues notExist=label.notExist}}
+            <span> {{label.name}} </span>
+            {{view 'view.nodeLabelsBar'}}
+            {{view 'view.currentQueueBar'}}
+          {{/view}}
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+  {{#if this.labels}}
+    <div {{bind-attr class=":labels-capacity-wrap labelsEnabled::hide" }}>
+      {{#each label in  this.sortedLabels}}
+        <div class="label-capacity">
+          <div class="queue-capacity">
+            {{#if label.isNotExist}}
+              <span {{bind-attr class=":label label.overCapacity:label-danger:label-warning"}}>{{label.name}}</span>
+              {{#if label.store.isRmOffline}}
+                <small>Unable to obtain information  about node label from the resource manager</small>
+              {{else}}
+                <small>Label does not exist on cluster</small>
+              {{/if}}
+            {{else}}
+              <span {{bind-attr class=":label label.overCapacity:label-danger:label-success"}}>{{label.name}}</span>
+              <span {{bind-attr class=":label :label-default label.isDefault::hide"}}>default</span>
+
+              <div class="btn-group btn-group-xs pull-right">
+                <a  {{action 'toggleDefaultLabel' this label}} class="btn btn-default toggle-default-label"><i {{bind-attr class=":fa label.isDefault:fa-dot-circle-o:fa-circle-o"}}></i> Use by default</a>
+              </div>
+
+            {{/if}}
+            {{render "capacityEditForm" label}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

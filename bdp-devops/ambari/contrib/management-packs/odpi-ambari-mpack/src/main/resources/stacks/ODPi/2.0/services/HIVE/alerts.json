@@ -1,0 +1,232 @@
+{
+  "HIVE": {
+    "service": [],
+    "HIVE_METASTORE": [
+      {
+        "name": "hive_metastore_process",
+        "label": "Hive Metastore Process",
+        "description": "This host-level alert is triggered if the Hive Metastore process cannot be determined to be up and listening on the network.",
+        "interval": 3,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "HIVE/0.12.0.2.0/package/alerts/alert_hive_metastore.py",
+          "parameters": [
+            {
+              "name": "check.command.timeout",
+              "display_name": "Command Timeout",
+              "value": 60.0,
+              "type": "NUMERIC",
+              "description": "The maximum time before check command will be killed by timeout",
+              "units": "seconds",
+              "threshold": "CRITICAL"
+            },
+            {
+              "name": "default.smoke.user",
+              "display_name": "Default Smoke User",
+              "value": "ambari-qa",
+              "type": "STRING",
+              "description": "The user that will run the Hive commands if not specified in cluster-env/smokeuser",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "default.smoke.principal",
+              "display_name": "Default Smoke Principal",
+              "value": "ambari-qa@EXAMPLE.COM",
+              "type": "STRING",
+              "description": "The principal to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_principal_name",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "default.smoke.keytab",
+              "display_name": "Default Smoke Keytab",
+              "value": "/etc/security/keytabs/smokeuser.headless.keytab",
+              "type": "STRING",
+              "description": "The keytab to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_keytab",
+              "visibility": "HIDDEN"
+            }
+          ]
+        }
+      }
+    ],
+    "HIVE_SERVER": [
+      {
+        "name": "hive_server_process",
+        "label": "HiveServer2 Process",
+        "description": "This host-level alert is triggered if the HiveServer cannot be determined to be up and responding to client requests.",
+        "interval": 3,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "HIVE/0.12.0.2.0/package/alerts/alert_hive_thrift_port.py",
+          "parameters": [
+            {
+              "name": "check.command.timeout",
+              "display_name": "Command Timeout",
+              "value": 60.0,
+              "type": "NUMERIC",
+              "description": "The maximum time before check command will be killed by timeout",
+              "units": "seconds",
+              "threshold": "CRITICAL"
+            },
+            {
+              "name": "default.smoke.user",
+              "display_name": "Default Smoke User",
+              "value": "ambari-qa",
+              "type": "STRING",
+              "description": "The user that will run the Hive commands if not specified in cluster-env/smokeuser",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "default.smoke.principal",
+              "display_name": "Default Smoke Principal",
+              "value": "ambari-qa@EXAMPLE.COM",
+              "type": "STRING",
+              "description": "The principal to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_principal_name",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "default.smoke.keytab",
+              "display_name": "Default Smoke Keytab",
+              "value": "/etc/security/keytabs/smokeuser.headless.keytab",
+              "type": "STRING",
+              "description": "The keytab to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_keytab",
+              "visibility": "HIDDEN"
+            }
+          ]
+        }
+      }
+    ],
+    "HIVE_SERVER_INTERACTIVE": [
+      {
+        "name": "hive_server_interactive_process",
+        "label": "HiveServer2 Interactive Process",
+        "description": "This host-level alert is triggered if the HiveServerInteractive cannot be determined to be up and responding to client requests.",
+        "interval": 3,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "HIVE/0.12.0.2.0/package/alerts/alert_hive_interactive_thrift_port.py",
+          "parameters": [
+            {
+              "name": "check.command.timeout",
+              "display_name": "Command Timeout",
+              "value": 60.0,
+              "type": "NUMERIC",
+              "description": "The maximum time before check command will be killed by timeout",
+              "units": "seconds",
+              "threshold": "CRITICAL"
+            },
+            {
+              "name": "default.smoke.user",
+              "display_name": "Default Smoke User",
+              "value": "ambari-qa",
+              "type": "STRING",
+              "description": "The user that will run the Hive commands if not specified in cluster-env/smokeuser",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "default.smoke.principal",
+              "display_name": "Default Smoke Principal",
+              "value": "ambari-qa@EXAMPLE.COM",
+              "type": "STRING",
+              "description": "The principal to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_principal_name",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "default.smoke.keytab",
+              "display_name": "Default Smoke Keytab",
+              "value": "/etc/security/keytabs/smokeuser.headless.keytab",
+              "type": "STRING",
+              "description": "The keytab to use when retrieving the kerberos ticket if not specified in cluster-env/smokeuser_keytab",
+              "visibility": "HIDDEN"
+            }
+          ]
+        }
+      },
+      {
+        "name": "llap_application",
+        "label": "LLAP Application",
+        "description": "This alert is triggered if the LLAP Application cannot be determined to be up and responding to requests.",
+        "interval": 3,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "HIVE/0.12.0.2.0/package/alerts/alert_llap_app_status.py",
+          "parameters": [
+            {
+              "name": "check.command.timeout",
+              "display_name": "Command Timeout",
+              "value": 120.0,
+              "type": "NUMERIC",
+              "description": "The maximum time before check command will be killed by timeout",
+              "units": "seconds",
+              "threshold": "CRITICAL"
+            },
+            {
+              "name": "default.hive.user",
+              "display_name": "Default HIVE User",
+              "value": "hive",
+              "type": "STRING",
+              "description": "The user that will run the Hive commands if not specified in cluster-env",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "default.hive.principal",
+              "display_name": "Default HIVE Principal",
+              "value": "hive/_HOST@EXAMPLE.COM",
+              "type": "STRING",
+              "description": "The principal to use when retrieving the kerberos ticket if not specified in cluster-env",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "default.hive.keytab",
+              "display_name": "Default HIVE Keytab",
+              "value": "/etc/security/keytabs/hive.llap.zk.sm.keytab",
+              "type": "STRING",
+              "description": "The keytab to use when retrieving the kerberos ticket if not specified in cluster-env.",
+              "visibility": "HIDDEN"
+            }
+          ]
+        }
+      }
+    ],
+    "WEBHCAT_SERVER": [
+      {
+        "name": "hive_webhcat_server_status",
+        "label": "WebHCat Server Status",
+        "description": "This host-level alert is triggered if the templeton server status is not healthy.",
+        "interval": 1,
+        "scope": "ANY",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "HIVE/0.12.0.2.0/package/alerts/alert_webhcat_server.py",
+          "parameters": [
+            {
+              "name": "default.smoke.user",
+              "display_name": "Default Smoke User",
+              "value": "ambari-qa",
+              "type": "STRING",
+              "description": "The user that will run the Hive commands if not specified in cluster-env/smokeuser",
+              "visibility": "HIDDEN"
+            },
+            {
+              "name": "connection.timeout",
+              "display_name": "Connection Timeout",
+              "value": 5.0,
+              "type": "NUMERIC",
+              "description": "The maximum time before this alert is considered to be CRITICAL",
+              "units": "seconds",
+              "threshold": "CRITICAL"
+            }
+          ]
+        }
+      }    
+    ]
+  }
+}

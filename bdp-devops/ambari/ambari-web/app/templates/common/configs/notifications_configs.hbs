@@ -1,0 +1,118 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="panel panel-default">
+  <div class="panel-heading" {{action "onToggleBlock" category target="view"}}>
+    <h3 class="panel-title">
+      <i {{bindAttr class=":pull-left :panel-toggle view.category.isCollapsed:icon-caret-right:icon-caret-down"}}></i>
+      <a class="panel-toggle category-header"><span class="category-name">{{view.category.displayName}}</span></a>
+    </h3>
+  </div>
+
+  <div class="panel-body collapse in" {{bindAttr style="view.isCategoryBodyVisible"}}>
+    <div class="service-config-section">
+      <form class="form-horizontal" autocomplete="off">
+
+        <div class="entry-row row">
+          {{view App.RadioButtonView name="createNotification"
+            classNames="radio"
+            labelTranslate="installer.step7.misc.notification.configure.later"
+            selectionBinding="view.createNotification"
+            value="no"}}
+        </div>
+
+        <div class="entry-row row">
+          {{view App.RadioButtonView name="createNotification"
+            classNames="radio"
+            labelTranslate="installer.step7.misc.notification.configure"
+            selectionBinding="view.createNotification" value="yes"}}
+        </div>
+
+          {{#each config in view.categoryConfigs}}
+            <div {{bindAttr class=":entry-row :row config.rowStyleClass config.isUserProperty:indent-1"}}>
+              <span {{bindAttr class="config.errorMessage:has-error :form-group :control-label-span :col-md-3"}}>
+                <label class="control-label">
+                  {{formatWordBreak config.displayName}}
+                </label>
+              </span>
+
+              <div class="col-md-9">
+                <div {{bindAttr class="config.errorMessage:has-error config.warnMessage:warning: :form-group"}}>
+                  <div class="row">
+                    <div class="col-md-9">
+                        {{view config.viewClass serviceConfigBinding="config" categoryConfigsAllBinding="view.categoryConfigsAll" }}
+                    </div>
+                    <div class="col-md-3">
+                        {{#if config.isRemovable}}
+                            {{#isAuthorized "SERVICE.MODIFY_CONFIGS"}}
+                                {{#unless config.isComparison}}
+                                  <a class="btn-sm" href="#" data-toggle="tooltip"
+                                      {{action "removeProperty" config target="view"}}
+                                      {{translateAttr data-original-title="common.remove"}}>
+                                    <i class="icon-minus-sign"></i>
+                                  </a>
+                                {{/unless}}
+                            {{/isAuthorized}}
+                        {{/if}}
+                      {{#if config.errorMessage}}
+                        <span class="help-block validation-block">{{config.errorMessage}}</span>
+                      {{/if}}
+                      {{#if config.warnMessage}}
+                        <span class="help-block validation-block">{{config.warnMessage}}</span>
+                      {{/if}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+
+        <div class="entry-row row indent-1">
+          {{view App.RadioButtonView
+            classNames="checkbox"
+            labelTranslate="installer.step7.misc.notification.use_tls"
+            name="tlsOrSsl"
+            disabledBinding="view.configsAreDisabled"
+            selectionBinding="view.tlsOrSsl"
+            value="tls"}}
+        </div>
+
+        <div class="entry-row row indent-1">
+          {{view App.RadioButtonView
+            classNames="checkbox"
+            labelTranslate="installer.step7.misc.notification.use_ssl"
+            name="tlsOrSsl" disabledBinding="view.configsAreDisabled"
+            selectionBinding="view.tlsOrSsl"
+            value="ssl"}}
+        </div>
+
+          {{#isAuthorized "SERVICE.MODIFY_CONFIGS"}}
+              {{#if view.canEdit}}
+                  {{#unless view.configsAreDisabled}}
+                    <div class="entry-row indent-1">
+                      <a
+                        href="#" {{action "showAddPropertyWindow" this target="view" }} >{{t installer.step7.config.addProperty}}
+                        ...</a>
+                    </div>
+                  {{/unless}}
+              {{/if}}
+          {{/isAuthorized}}
+      </form>
+    </div>
+  </div>
+</div>

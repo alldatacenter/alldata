@@ -1,0 +1,241 @@
+{
+  "name": "default",
+  "description": "Default theme for YARN service",
+  "configuration": {
+    "layouts": [
+      {
+        "name": "default",
+        "tabs": [
+          {
+            "name": "settings",
+            "display-name": "Settings",
+            "layout": {
+              "tab-columns": "3",
+              "tab-rows": "2",
+              "sections": [
+                {
+                  "name": "section-nm-sizing",
+                  "display-name": "NodeManager Sizing",
+                  "row-index": "0",
+                  "column-index": "0",
+                  "row-span": "1",
+                  "column-span": "2",
+                  "section-columns": "2",
+                  "section-rows": "1",
+                  "subsections": [
+                    {
+                      "name": "subsection-nm-sizing-col1",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    },
+                    {
+                      "name": "subsection-nm-sizing-col2",
+                      "row-index": "0",
+                      "column-index": "1",
+                      "row-span": "1",
+                      "column-span": "1"
+                    }
+                  ]
+                },
+                {
+                  "name": "section-yarn-platform-features",
+                  "display-name": "YARN Platform Features",
+                  "row-index": "0",
+                  "column-index": "2",
+                  "row-span": "1",
+                  "column-span": "1",
+                  "section-columns": "1",
+                  "section-rows": "1",
+                  "subsections": [
+                    {
+                      "name": "subsection-yarn-platform-features-col1",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    }
+                  ]
+                },
+                {
+                  "name": "section-container-sizing",
+                  "display-name": "Container Sizing",
+                  "row-index": "1",
+                  "column-index": "0",
+                  "row-span": "1",
+                  "column-span": "2",
+                  "section-columns": "2",
+                  "section-rows": "1",
+                  "subsections": [
+                    {
+                      "name": "subsection-container-sizing-col1",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    },
+                    {
+                      "name": "subsection-container-sizing-col2",
+                      "row-index": "0",
+                      "column-index": "1",
+                      "row-span": "1",
+                      "column-span": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "placement": {
+      "configuration-layout": "default",
+      "configs": [
+        {
+          "config": "yarn-site/yarn.nodemanager.resource.memory-mb",
+          "subsection-name": "subsection-nm-sizing-col1"
+        },
+        {
+          "config": "yarn-site/yarn.nodemanager.vmem-pmem-ratio",
+          "subsection-name": "subsection-nm-sizing-col1"
+        },
+        {
+          "config": "yarn-site/yarn.nodemanager.resource.percentage-physical-cpu-limit",
+          "subsection-name": "subsection-nm-sizing-col2"
+        },
+        {
+          "config": "yarn-site/yarn.nodemanager.resource.cpu-vcores",
+          "subsection-name": "subsection-nm-sizing-col2"
+        },
+        {
+          "config": "yarn-site/yarn.scheduler.minimum-allocation-mb",
+          "subsection-name": "subsection-container-sizing-col1"
+        },
+        {
+          "config": "yarn-site/yarn.scheduler.maximum-allocation-mb",
+          "subsection-name": "subsection-container-sizing-col1"
+        },
+        {
+          "config": "yarn-site/yarn.scheduler.minimum-allocation-vcores",
+          "subsection-name": "subsection-container-sizing-col2"
+        },
+        {
+          "config": "yarn-site/yarn.scheduler.maximum-allocation-vcores",
+          "subsection-name": "subsection-container-sizing-col2"
+        },
+        {
+          "config": "yarn-site/yarn.resourcemanager.work-preserving-recovery.enabled",
+          "subsection-name": "subsection-yarn-platform-features-col1"
+        },
+        {
+          "config": "yarn-site/yarn.log-aggregation-enable",
+          "subsection-name": "subsection-yarn-platform-features-col1"
+        }
+      ]
+    },
+    "widgets": [
+      {
+        "config": "yarn-site/yarn.nodemanager.resource.memory-mb",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "MB"
+            }
+          ]
+        }
+      },
+      {
+        "config": "yarn-site/yarn.nodemanager.vmem-pmem-ratio",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "float"
+            }
+          ]
+        }
+      },
+      {
+        "config": "yarn-site/yarn.nodemanager.resource.percentage-physical-cpu-limit",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "percent"
+            }
+          ]
+        }
+      },
+      {
+        "config": "yarn-site/yarn.nodemanager.resource.cpu-vcores",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "int"
+            }
+          ]
+        }
+      },
+      {
+        "config": "yarn-site/yarn.scheduler.minimum-allocation-mb",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "MB"
+            }
+          ]
+        }
+      },
+      {
+        "config": "yarn-site/yarn.scheduler.maximum-allocation-mb",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "MB"
+            }
+          ]
+        }
+      },
+      {
+        "config": "yarn-site/yarn.scheduler.minimum-allocation-vcores",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "int"
+            }
+          ]
+        }
+      },
+      {
+        "config": "yarn-site/yarn.scheduler.maximum-allocation-vcores",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "int"
+            }
+          ]
+        }
+      },
+      {
+        "config": "yarn-site/yarn.log-aggregation-enable",
+        "widget": {
+          "type": "checkbox"
+        }
+      },
+      {
+        "config": "yarn-site/yarn.resourcemanager.work-preserving-recovery.enabled",
+        "widget": {
+          "type": "checkbox"
+        }
+      }
+    ]
+  }
+}

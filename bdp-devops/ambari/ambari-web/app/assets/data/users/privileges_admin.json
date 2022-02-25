@@ -1,0 +1,14 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/privileges?PrivilegeInfo/principal_name=admin&fields=PrivilegeInfo/*",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/privileges/1",
+      "PrivilegeInfo" : {
+        "permission_name" : "AMBARI.ADMINISTRATOR",
+        "principal_name" : "admin",
+        "principal_type" : "USER",
+        "privilege_id" : 1
+      }
+    }
+  ]
+}

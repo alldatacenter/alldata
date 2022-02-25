@@ -1,0 +1,113 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations?fields=*",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/clientPort",
+      "StackConfigurations" : {
+        "property_description" : "Port for running ZK Server.",
+        "property_name" : "clientPort",
+        "property_value" : "2181",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/initLimit",
+      "StackConfigurations" : {
+        "property_description" : "Ticks to allow for sync at Init.",
+        "property_name" : "initLimit",
+        "property_value" : "10",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/syncLimit",
+      "StackConfigurations" : {
+        "property_description" : "Ticks to allow for sync at Runtime.",
+        "property_name" : "syncLimit",
+        "property_value" : "5",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/tickTime",
+      "StackConfigurations" : {
+        "property_description" : "The length of a single tick in milliseconds, which is the basic time unit used by ZooKeeper",
+        "property_name" : "tickTime",
+        "property_value" : "2000",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/zk_data_dir",
+      "StackConfigurations" : {
+        "property_description" : "Data directory for ZooKeeper.",
+        "property_name" : "zk_data_dir",
+        "property_value" : "/hadoop/zookeeper",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/zk_log_dir",
+      "StackConfigurations" : {
+        "property_description" : "ZooKeeper Log Dir",
+        "property_name" : "zk_log_dir",
+        "property_value" : "/var/log/zookeeper",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/zk_pid_dir",
+      "StackConfigurations" : {
+        "property_description" : "ZooKeeper Pid Dir",
+        "property_name" : "zk_pid_dir",
+        "property_value" : "/var/run/zookeeper",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/zk_pid_file",
+      "StackConfigurations" : {
+        "property_description" : "ZooKeeper Pid File",
+        "property_name" : "zk_pid_file",
+        "property_value" : "/var/run/zookeeper/zookeeper_server.pid",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/ZOOKEEPER/configurations/zk_user",
+      "StackConfigurations" : {
+        "property_description" : "ZooKeeper User.",
+        "property_name" : "zk_user",
+        "property_value" : "zookeeper",
+        "service_name" : "ZOOKEEPER",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    }
+  ]
+}

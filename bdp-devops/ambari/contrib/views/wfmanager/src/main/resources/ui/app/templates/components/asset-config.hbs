@@ -1,0 +1,62 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="modal fade" id="asset_config_dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" {{action 'close'}}>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Publish Asset</h4>
+      </div>
+      <div class="modal-body">
+          {{#if (and assetErrorMsg (not (eq assetErrorMsg "")))}}
+            <div id="alert"class="alert alert-danger alert-dismissible" role="alert">
+                {{assetErrorMsg}}
+            </div>
+          {{/if}}
+          <form class="form-horizontal">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="form-group">
+                  <label for="assetName" class="control-label col-xs-2">Name</label>
+                  <div class="col-xs-7">
+                    {{input type="text" class="form-control" name="assetName" value=assetModel.name placeholder="Asset Name"}}
+                    {{field-error model=this field='assetModel.name' showErrorMessage=showErrorMessage}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="assetDescription" class="control-label col-xs-2">Description</label>
+                  <div class="col-xs-7">
+                    {{input type="text" class="form-control"  name="assetDescription" value=assetModel.description placeholder="Asset Description"}}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" {{action 'close'}}>Cancel</button>
+        <button type="button" class="btn btn-primary" {{action 'save'}}>Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{#if inProgress}}
+  {{spin-spinner lines=13 length=20 width=10 top=200}}
+{{/if}}

@@ -1,0 +1,83 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="edit-queue-wrapper">
+
+  <div class="row edit-queuename-wrapper">
+    {{#if isOperator}}
+      {{#if enableEditQName}}
+        <div {{bind-attr class="isInvalidQName:has-error :col-md-10 :col-sm-10"}} class="">
+          {{input type="text" name="queueName" class="form-control input-sm input-queue-name" value=updatedQName}}
+          <div class="btn-group btn-group-sm">
+            <button type="button" name="renameQ" class="btn btn-primary" {{action "renameQueue"}} {{bind-attr disabled=isInvalidQName}}>Rename</button>
+            <button type="button" name="cancelQEdit" class="btn btn-default" {{action "cancelQNameEdit"}}>Cancel</button>
+          </div>
+          {{#if isInvalidQName}}
+            <div class="tooltip bottom invalid-qname-tooltip" role="tooltip">
+              <div class="tooltip-arrow"></div>
+              <div class="tooltip-inner">
+                {{invalidQNameMessage}}
+              </div>
+            </div>
+          {{/if}}
+        </div>
+      {{else}}
+        <div class="col-md-8 col-sm-8">
+          <label>Queue Name: </label>
+          <span>{{content.name}}</span>
+          {{#unless isRoot}}
+            <a href="#" class="edit-qname-btn" {{action "editQueueName"}}>
+              <i class="fa fa-pencil-square-o"></i>
+            </a>
+          {{/unless}}
+          {{#if queueDirtyFields.name}}
+            <div class="btn-group btn-group-xs">
+              <a {{action 'rollbackProp' 'name' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="col-md-8 col-sm-8">
+        <label>Queue Name: </label>
+        <span>{{content.name}}</span>
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="queue-capacity-wrapper">
+    {{partial "capsched/partials/queueCapacity"}}
+  </div>
+
+  <div class="label-capacity-wrapper">
+    {{partial "capsched/partials/labelCapacity"}}
+  </div>
+
+  <div class="queue-preemption-wrapper">
+    {{partial "capsched/partials/preemption"}}
+  </div>
+
+  <div class="queue-acl-wrapper">
+    {{partial "capsched/partials/accessControlList"}}
+  </div>
+
+  <div class="queue-resources-wrapper">
+    {{partial "capsched/partials/queueResources"}}
+  </div>
+
+</div>

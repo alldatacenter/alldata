@@ -1,0 +1,16 @@
+{
+  "href" : "http://ambari/clusters/mycluster/services/HBASE/components/HBASE_REGIONSERVER?fields=metrics/hbase/regionserver/flushQueueSize[1351356190,1351359791,120],metrics/hbase/regionserver/compactionQueueSize[1351356190,1351359791,120]",
+  "metrics" : {
+    "hbase" : {
+      "regionserver" : {
+        "compactionQueueSize" : "[[0.0,1351356480],[0.0,1351356840],[0.0,1351357200],[0.0,1351357560],[0.0,1351357920],[0.0,1351358280],[0.0,1351358640],[0.0,1351359000],[0.0,1351359360],[0.0,1351359720],[0.0,1351360080]]",
+        "flushQueueSize" : "[[0.0,1351356480],[0.0,1351356840],[0.0,1351357200],[0.0,1351357560],[0.0,1351357920],[0.0,1351358280],[0.0,1351358640],[0.0,1351359000],[0.0,1351359360],[0.0,1351359720],[0.0,1351360080]]"
+      }
+    }
+  },
+  "ServiceComponentInfo" : {
+    "cluster_name" : "mycluster",
+    "component_name" : "HBASE_REGIONSERVER",
+    "service_name" : "HBASE"
+  }
+}

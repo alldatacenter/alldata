@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{1bab40e2-b43f-469a-8583-cc196a792a38}</ProjectGuid>
+    <RootNamespace>Ambari.SCOM.Management</RootNamespace>
+    <Name>Ambari SCOM Management</Name>
+    <ManagementPackName>Ambari.SCOM.Management</ManagementPackName>
+    <Version>2.0.0.0</Version>
+    <MpFrameworkVersion>v7.0</MpFrameworkVersion>
+    <MpFrameworkProfile>OM</MpFrameworkProfile>
+    <ProductVersion>2.0.0.0</ProductVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <GenerateSealed>True</GenerateSealed>
+    <Company>MyCompany</Company>
+    <Copyright>Copyright (c) MyCompany. All rights reserved.</Copyright>
+    <DelaySigning>False</DelaySigning>
+    <AssemblyOriginatorKeyFile>..\Items\key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DelaySigning>False</DelaySigning>
+    <Company>MyCompany</Company>
+    <Copyright>Copyright (c) MyCompany. All rights reserved.</Copyright>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\Items\key.snk</AssemblyOriginatorKeyFile>
+    <GenerateSealed>True</GenerateSealed>
+  </PropertyGroup>
+  <ItemGroup>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Library">
+      <Alias>SC</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.Windows.Library">
+      <Alias>Windows</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Health.Library">
+      <Alias>Health</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Library">
+      <Alias>System</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Visualization.Library">
+      <Alias>Visualization</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules" />
+    <Folder Include="Modules\Scripts" />
+    <Folder Include="Shared Scripts" />
+    <Folder Include="Tasks" />
+    <Folder Include="Tasks\HostComponent" />
+    <Folder Include="Tasks\ClusterService" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ManagementPack.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\BaseChangeStateWriteAction.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\BaseScriptedWriteAction.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\ChangeClusterServiceStateWriteAction.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\ChangeHostComponentStateWriteAction.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\ClusterService\StartClusterService.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\ClusterService\StopClusterService.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\HostComponent\StartHostComponent.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\HostComponent\StopHostComponent.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HadoopMp\HadoopMp.mpproj">
+      <Name>HadoopMp</Name>
+      <Project>{63b476b6-efcd-468f-80d9-94e2cff1b5db}</Project>
+      <Private>True</Private>
+      <Alias>HDLibrary</Alias>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\Scripts\ChangeClusterServiceState.ps1" />
+    <EmbeddedResource Include="Modules\Scripts\ChangeHostComponentState.ps1" />
+    <EmbeddedResource Include="Shared Scripts\Helpers.ps1" />
+    <EmbeddedResource Include="Shared Scripts\JsonParser.ps1" />
+    <EmbeddedResource Include="Shared Scripts\RestApi.ps1" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
+</Project>

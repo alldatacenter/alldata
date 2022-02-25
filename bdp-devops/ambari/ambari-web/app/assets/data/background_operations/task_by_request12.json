@@ -1,0 +1,104 @@
+{
+  "Requests" : {
+    "aborted_task_count" : 0,
+    "cluster_name" : "tdk",
+    "completed_task_count" : 6,
+    "create_time" : 1414268004421,
+    "end_time" : 1414268130964,
+    "exclusive" : false,
+    "failed_task_count" : 0,
+    "id" : 12,
+    "inputs" : null,
+    "operation_level" : null,
+    "progress_percent" : 100.0,
+    "queued_task_count" : 0,
+    "request_context" : "Install Services",
+    "request_schedule" : null,
+    "request_status" : "COMPLETED",
+    "resource_filters" : [ ],
+    "start_time" : 1414268004446,
+    "task_count" : 6,
+    "timed_out_task_count" : 0,
+    "type" : "INTERNAL_REQUEST"
+  },
+  "tasks" : [
+    {
+      "Tasks" : {
+        "command" : "INSTALL",
+        "command_detail" : "DATANODE INSTALL",
+        "end_time" : 1414268113552,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 18,
+        "role" : "DATANODE",
+        "start_time" : 1414268004452,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "INSTALL",
+        "command_detail" : "HDFS_CLIENT INSTALL",
+        "end_time" : 1414268115738,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 19,
+        "role" : "HDFS_CLIENT",
+        "start_time" : 1414268004453,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "INSTALL",
+        "command_detail" : "NAMENODE INSTALL",
+        "end_time" : 1414268125127,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 20,
+        "role" : "NAMENODE",
+        "start_time" : 1414268004453,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "INSTALL",
+        "command_detail" : "SECONDARY_NAMENODE INSTALL",
+        "end_time" : 1414268127338,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 21,
+        "role" : "SECONDARY_NAMENODE",
+        "start_time" : 1414268004453,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "INSTALL",
+        "command_detail" : "ZOOKEEPER_CLIENT INSTALL",
+        "end_time" : 1414268129250,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 22,
+        "role" : "ZOOKEEPER_CLIENT",
+        "start_time" : 1414268004453,
+        "status" : "COMPLETED"
+      }
+    },
+    {
+      "Tasks" : {
+        "command" : "INSTALL",
+        "command_detail" : "ZOOKEEPER_SERVER INSTALL",
+        "end_time" : 1414268130957,
+        "exit_code" : 0,
+        "host_name" : "dev01.hortonworks.com",
+        "id" : 23,
+        "role" : "ZOOKEEPER_SERVER",
+        "start_time" : 1414268004453,
+        "status" : "COMPLETED"
+      }
+    }
+  ]
+}

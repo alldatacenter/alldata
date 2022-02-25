@@ -1,0 +1,335 @@
+{
+  "ONEFS_CLIENT" : {
+    "Component" : [
+      {
+        "type" : "jmx",
+        "jmx_source_uri": {
+          "http": "${hdfs-site/dfs.namenode.http-address}",
+          "https": "${hdfs-site/dfs.namenode.https-address}",
+          "https_property": "${hdfs-site/dfs.http.policy}",
+          "https_property_value": "HTTPS_ONLY",
+          "connection_timeout": 5.0
+        },
+        "metrics": {
+          "default": {
+            "metrics/runtime/StartTime": {
+              "metric": "java.lang:type=Runtime.StartTime",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/TotalFiles": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.TotalFiles",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/UpgradeFinalized": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.UpgradeFinalized",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/DecomNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.DecomNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/LiveNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.LiveNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/namenode/DeadNodes": {
+              "metric": "Hadoop:service=NameNode,name=NameNodeInfo.DeadNodes",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/gcCount": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.GcCount",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memHeapUsedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemHeapUsedM",
+              "unit": "MB",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/memHeapCommittedM": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.MemHeapCommittedM",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/GcTimeMillisConcurrentMarkSweep": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.GcTimeMillisConcurrentMarkSweep",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/jvm/GcCountConcurrentMarkSweep": {
+              "metric": "Hadoop:service=NameNode,name=JvmMetrics.GcCountConcurrentMarkSweep",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityNonDFSUsed": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityNonDFSUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/MissingBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.MissingBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CorruptBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CorruptBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/UnderReplicatedBlocks": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.UnderReplicatedBlocks",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityTotal": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityTotal",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityUsed": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityUsed",
+              "pointInTime": true,
+              "temporal": false
+            },
+            "metrics/dfs/FSNamesystem/CapacityRemaining": {
+              "metric": "Hadoop:service=NameNode,name=FSNamesystem.CapacityRemaining",
+              "pointInTime": true,
+              "temporal": false
+            }
+          }
+        }
+      },
+      {
+        "type" : "ganglia",
+        "properties" : {
+          "overridden_host" : "${core-site/fs.defaultFS}"
+        },
+        "metrics" : {
+          "default" : {
+            "metrics/load/load_five" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "load_five",
+              "amsHostMetric" : true
+            },
+            "metrics/cpu/cpu_num": {
+              "metric": "cpu_num",
+              "pointInTime": true,
+              "temporal": true,
+              "amsHostMetric" : true
+            },
+            "metrics/jvm/JvmMetrics/GcCountConcurrentMarkSweep" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "jvm.JvmMetrics.GcCountConcurrentMarkSweep"
+            },
+            "metrics/cpu/cpu_nice" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "cpu_nice",
+              "amsHostMetric" : true
+            },
+            "metrics/rpc/NumOpenConnections" : {
+              "temporal" : true,
+              "pointInTime" : false,
+              "metric" : "rpc.rpc.NumOpenConnections"
+            },
+            "metrics/network/bytes_in" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "bytes_in",
+              "amsHostMetric" : true
+            },
+            "metrics/cpu/cpu_wio" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "cpu_wio",
+              "amsHostMetric" : true
+            },
+            "metrics/process/proc_run" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "proc_run",
+              "amsHostMetric" : true
+            },
+            "metrics/memory/mem_cached" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "mem_cached",
+              "amsHostMetric" : true
+            },
+            "metrics/disk/write_bytes" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "write_bytes",
+              "amsHostMetric" : true
+            },
+            "metrics/network/bytes_out" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "bytes_out",
+              "amsHostMetric" : true
+            },
+            "metrics/cpu/cpu_idle" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "cpu_idle",
+              "amsHostMetric" : true
+            },
+            "metrics/memory/mem_total" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "mem_total",
+              "amsHostMetric" : true
+            },
+            "metrics/jvm/memHeapUsedM" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "jvm.JvmMetrics.MemHeapUsedM",
+              "unit" : "MB"
+            },
+            "metrics/memory/mem_shared" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "mem_shared",
+              "amsHostMetric" : true
+            },
+            "metrics/disk/write_count" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "write_count",
+              "amsHostMetric" : true
+            },
+            "metrics/network/pkts_in" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "pkts_in",
+              "amsHostMetric" : true
+            },
+            "metrics/network/pkts_out" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "pkts_out",
+              "amsHostMetric" : true
+            },
+            "metrics/load/load_one" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "load_one",
+              "amsHostMetric" : true
+            },
+            "metrics/rpc/RpcProcessingTime_avg_time" : {
+              "temporal" : true,
+              "pointInTime" : false,
+              "metric" : "rpc.rpc.RpcProcessingTimeAvgTime"
+            },
+            "metrics/jvm/JvmMetrics/GcTimeMillisConcurrentMarkSweep" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "jvm.JvmMetrics.GcTimeMillisConcurrentMarkSweep"
+            },
+            "metrics/memory/swap_total" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "swap_total",
+              "amsHostMetric" : true
+            },
+            "metrics/disk/read_bytes" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "read_bytes",
+              "amsHostMetric" : true
+            },
+            "metrics/jvm/gcTimeMillis" : {
+              "temporal" : true,
+              "pointInTime" : false,
+              "metric" : "jvm.JvmMetrics.GcTimeMillis"
+            },
+            "metrics/jvm/gcCount" : {
+              "temporal" : true,
+              "pointInTime" : false,
+              "metric" : "jvm.JvmMetrics.GcCount"
+            },
+            "metrics/memory/swap_free" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "swap_free",
+              "amsHostMetric" : true
+            },
+            "metrics/process/proc_total" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "proc_total",
+              "amsHostMetric" : true
+            },
+            "metrics/load/load_fifteen" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "load_fifteen",
+              "amsHostMetric" : true
+            },
+            "metrics/cpu/cpu_user" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "cpu_user",
+              "amsHostMetric" : true
+            },
+            "metrics/jvm/memHeapCommittedM" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "jvm.JvmMetrics.MemHeapCommittedM"
+            },
+            "metrics/disk/disk_total" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "disk_total",
+              "amsHostMetric" : true
+            },
+            "metrics/disk/disk_free" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "disk_free",
+              "amsHostMetric" : true
+            },
+            "metrics/disk/disk_percent" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "disk_percent",
+              "amsHostMetric" : true
+            },
+            "metrics/disk/read_count" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "read_count",
+              "amsHostMetric" : true
+            },
+            "metrics/memory/mem_free" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "mem_free",
+              "amsHostMetric" : true
+            },
+            "metrics/rpc/RpcQueueTime_avg_time" : {
+              "temporal" : true,
+              "pointInTime" : false,
+              "metric" : "rpc.rpc.RpcQueueTimeAvgTime"
+            },
+            "metrics/cpu/cpu_system" : {
+              "temporal" : true,
+              "pointInTime" : true,
+              "metric" : "cpu_system",
+              "amsHostMetric" : true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

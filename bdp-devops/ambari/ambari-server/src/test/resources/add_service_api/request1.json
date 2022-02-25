@@ -1,0 +1,64 @@
+{
+  "operation_type" : "ADD_SERVICE",
+  "config_recommendation_strategy" : "ALWAYS_APPLY",
+  "validation": "PERMISSIVE",
+  "provision_action" : "INSTALL_ONLY",
+  "stack_name" : "HDP",
+  "stack_version" : "3.0",
+
+  "services": [
+    { "name" : "STORM", "provision_action": "INSTALL_AND_START" },
+    { "name" : "BEACON" }
+  ],
+
+  "components" : [
+    {
+      "name" : "NIMBUS",
+      "provision_action" : "START_ONLY",
+      "hosts": [
+        { "fqdn" : "c7401.ambari.apache.org" },
+        { "fqdn" : "c7402.ambari.apache.org" }
+      ]
+    },
+    {
+      "name" : "BEACON_SERVER",
+      "hosts": [
+        { "fqdn" : "c7402.ambari.apache.org" },
+        { "fqdn" : "c7403.ambari.apache.org" }
+      ]
+    }
+  ],
+
+  "security": {
+    "type": "KERBEROS",
+    "kerberos_descriptor": {
+      "services": [ { "name": "ZOOKEEPER" } ]
+    },
+    "kerberos_descriptor_reference": "ref_to_kerb_desc"
+  },
+
+  "credentials": [
+    {
+      "alias": "kdc.admin.credential",
+      "principal": "admin/admin@EXAMPLE.COM",
+      "key": "k",
+      "type": "TEMPORARY"
+    }
+  ],
+
+  "configurations" : [
+    {
+      "storm-site" : {
+        "properties_attributes" : {
+          "final" : {
+            "fs.defaultFS" : "true"
+          }
+        },
+        "properties" : {
+          "ipc.client.connect.max.retries" : "50"
+        }
+      }
+    }
+  ]
+
+}

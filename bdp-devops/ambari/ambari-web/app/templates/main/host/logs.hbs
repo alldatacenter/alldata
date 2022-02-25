@@ -1,0 +1,65 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="row">
+  <h2 class="table-title col-sm-1">{{t hosts.host.menu.logs}}</h2>
+</div>
+<table class="table advanced-header-table table-hover">
+  <thead>
+    {{#view view.sortView contentBinding="view.filteredContent"}}
+      {{view view.parentView.serviceNameSort classNames="first"}}
+      {{view view.parentView.componentNameSort}}
+      {{view view.parentView.fileExtensionsSort}}
+    {{/view}}
+    <tr class="filter-row">
+      <th class="first service-name-filter">{{view view.serviceNameFilterView}}</th>
+      <th class="component-name-filter">{{view view.componentNameFilterView}}</th>
+      <th class="file-extension-filter">{{view view.fileExtensionsFilter}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if view.pageContent}}
+      {{#each row in view.pageContent}}
+        {{#view view.logFileRowView contentBinding="row"}}
+          <td class="first">{{row.serviceDisplayName}}</td>
+          <td>{{row.componentDisplayName}}</td>
+          <td>
+            {{#each file in row.fileNamesObject}}
+              <div>
+                <a {{action openLogFile row file.filePath target="view.parentView"}} href="#" rel="log-file-name-tooltip" {{bindAttr data-original-title="file.filePath"}}>{{file.fileName}}</a>
+                {{#view App.LogSearchUILinkView linkQueryParamsBinding="file.linkTail" tagName="span"}}
+                  <a {{bindAttr href="view.formatedLink"}} target="_blank" rel="log-file-name-tooltip noopener noreferrer" {{translateAttr title="popup.logTail.openInLogSearch"}} class="pull-right external-link">
+                    <i class="icon-external-link"></i>
+                    {{t popup.logTail.openInLogSearch}}
+                  </a>
+                {{/view}}
+              </div>
+              {{/each}}
+          </td>
+        {{/view}}
+      {{/each}}
+    {{/if}}
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="3">
+      {{view App.PaginationView}}
+    </td>
+  </tr>
+  </tfoot>
+</table>

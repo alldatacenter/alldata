@@ -1,0 +1,155 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="scheduler-panel">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">
+        Scheduler Configurations
+        {{#if isSchedulerDirty}}
+          {{warning-info class="yellow-warning" tooltip="Need restart RM to take effect"}}
+        {{/if}}
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="row form-group">
+        <div class="col-md-4">
+          {{tooltip-label
+            label='Maximum Applications'
+            class="control-label"
+            message='For entire cluster, maximum number of applications that can be running or pending at any point of time'
+          }}
+        </div>
+        {{#if isOperator}}
+          <div class="col-sm-3">
+            {{int-input value=scheduler.maximum_applications maxlength=15 class="input-sm input-int input-control"}}
+            {{#if schedulerDirtyFields.maximum_applications}}
+              <div class="btn-group btn-group-xs">
+                  <a {{action 'rollbackProp' 'maximum_applications' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+        {{else}}
+          <div class="col-sm-2">
+            <p class="form-control-static">{{scheduler.maximum_applications}}</p>
+          </div>
+        {{/if}}
+      </div>
+      <div class="row form-group">
+        <div class="col-md-4">
+          {{tooltip-label
+            label='Maximum AM Resource'
+            class="control-label"
+            message='For entire cluster, maximum percentage of total capacity that can be utilized by application masters at any point in time.'
+          }}
+        </div>
+        {{#if isOperator}}
+          <div class="col-sm-3">
+            <div class="input-group input-resource-percent">
+              {{int-input value=scheduler.maximum_am_resource_percent class="input-sm" maxVal=100}}
+              <span class="input-group-addon">%</span>
+            </div>
+            {{#if schedulerDirtyFields.maximum_am_resource_percent}}
+              <div class="btn-group btn-group-xs rollback-resource-percent">
+                  <a {{action 'rollbackProp' 'maximum_am_resource_percent' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+        {{else}}
+          <div class="col-sm-2">
+            {{#if scheduler.maximum_am_resource_percent}}
+              <p class="form-control-static">{{scheduler.maximum_am_resource_percent}}%</p>
+            {{else}}
+              <p class="form-control-static">-</p>
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+      <div class="row form-group">
+        <div class="col-md-4">
+          {{tooltip-label
+            label='Node Locality Delay'
+            class="control-label"
+            message='Number of missed scheduling cycles after which the scheduler attempts to schedule rack-local containers.'
+          }}
+        </div>
+        {{#if isOperator}}
+          <div class="col-sm-3">
+            {{int-input value=scheduler.node_locality_delay maxlength=10 class="input-sm input-int input-control"}}
+            {{#if schedulerDirtyFields.node_locality_delay}}
+              <div class="btn-group btn-group-xs" >
+                  <a {{action 'rollbackProp' 'node_locality_delay' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+        {{else}}
+          <div class="col-sm-2">
+            {{#if scheduler.node_locality_delay}}
+              <p class="form-control-static">{{scheduler.node_locality_delay}}</p>
+            {{else}}
+              <p class="form-control-static">-</p>
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+      {{#if isOperator}}
+        <div class="row form-group">
+          <div class="col-md-4">
+            {{tooltip-label
+              label='Resource Calculator'
+              class="control-label"
+              message='The method by which the scheduler calculates resource capacity across resource types. <br/> Default Resource Calculator allocates resources based on memory alone. <br/> Dominant Resource Calculator allocates resources based on memory, cpu etc.'
+            }}
+          </div>
+          <div class="col-sm-4">
+            {{view Ember.Select
+              class="form-control input-sm resource-calc-control"
+              content=resourceCalculatorValues
+              optionLabelPath="content.label"
+              optionValuePath="content.value"
+              value=scheduler.resource_calculator
+            }}
+            {{#if schedulerDirtyFields.resource_calculator}}
+              <div class="btn-group btn-group-xs">
+                <a {{action 'rollbackProp' 'resource_calculator' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
+{{#if isOperator}}
+  <div class="row">
+    <div class="btn btn-group-sm col-sm-offset-2">
+      {{#if isSchedulerPropsNeedSaveOrRestart}}
+        {{warning-info class="yellow-warning fa-2x resfresh-restart-warning" tooltip="Restart RM is required" placement="top"}}
+      {{/if}}
+      <button type="button" {{bind-attr class=":btn :btn-default :btn-success isSchedulerDirty::disabled"}} name="saveOnly" {{action 'showSaveConfigDialog'}}>Save Only</button>
+      <button type="button" {{bind-attr class=":btn :btn-default :btn-success isSchedulerPropsNeedSaveOrRestart::disabled"}} name="saveRestart" {{action 'showSaveConfigDialog' 'restart'}}>Save And Restart RM</button>
+      <button type="button" {{bind-attr class=":btn :btn-default :btn-danger isSchedulerDirty::disabled"}} name="cancelAdvanced" {{action 'showConfirmDialog'}}>Discard Changes</button>
+      <button type="button" {{bind-attr class=":btn :btn-primary isSchedulerDirty::disabled"}} name="viewXmlDiff" {{action "viewConfigXmlDiff"}}>View Diff</button>
+      <button type="button" class="btn btn-default" name="viewCapSchedXml" {{action "viewCapSchedConfigXml"}}>View XML</button>
+    </div>
+  </div>
+{{/if}}
+
+{{confirm-discard-changes isDialogOpen=isConfirmDialogOpen action="rollbackSchedulerProps"}}
+
+{{save-config-dialog isDialogOpen=isSaveConfigDialogOpen configNote=configNote action="saveCapSchedConfigs" param=saveMode forceRefresh=forceRestartRequired}}

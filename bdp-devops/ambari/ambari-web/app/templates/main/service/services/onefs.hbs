@@ -1,0 +1,187 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="row">
+  {{! Component Section }}
+  <div class="component-summary">
+    {{view view.dashboardMasterComponentView}}
+    <div class="col-md-12">
+      <div class="col-md-10 col-md-offset-2">
+        {{! NameNode Uptime }}
+        <div class="row namenode-uptime col-md-3">
+          <div class="summary-value main-info">{{view.nodeUptime}}</div>
+          <div class="summary-label">{{t dashboard.services.hdfs.nodes.uptime}}</div>
+        </div>
+        {{! NameNode Heap }}
+        <div class="row namenode-heap col-md-3">
+          <div class="summary-value">
+            <div class="main-info"> {{view.nodeHeapPercent}} </div>
+            <div class="info-desc"> {{view.nodeHeap}} </div>
+          </div>
+          <div class="summary-label">{{t dashboard.services.hdfs.nodes.heap}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-2">
+        {{#if view.showComponentsTitleForNonMasters}}
+          {{t dashboard.services.hdfs.summary.components}}
+        {{/if}}
+      </div>
+      <div class="col-md-10">
+        {{! Data Nodes }}
+        {{#if view.isDataNodeCreated}}
+          <div {{bindAttr class=":row :component :col-md-3 view.dataNodeComponent.componentName"}}>
+            <div class="summary-value main-info">
+              {{#if App.router.clusterController.isServiceContentFullyLoaded}}
+                <span>
+                  {{#view App.ComponentLiveTextView liveComponentsBinding="view.service.dataNodesStarted" totalComponentsBinding="view.service.dataNodesTotal"}}
+                    {{view.liveComponents}}/{{view.totalComponents}}
+                  {{/view}}
+                </span>
+                {{t common.started}}
+              {{else}}
+                {{t common.loading.eclipses}}
+              {{/if}}
+            </div>
+            <div class="summary-label">
+              <a href="#" {{action filterHosts view.dataNodeComponent}}>{{t dashboard.services.hdfs.datanodes}}</a>
+            </div>
+          </div>
+        {{/if}}
+        {{! indent next row}}
+        <div class="row"></div>
+        {{! Data Node Counts live }}
+        <div class="row datanode-count-live col-md-3">
+          <div class="summary-value">
+            {{#if view.service.metricsNotAvailable}}
+              <div class="main-info">
+                {{t services.service.summary.notAvailable}}
+              </div>
+            {{else}}
+              <span class="main-info" rel="tooltip"
+                {{translateAttr data-original-title="dashboard.services.hdfs.datanode.status.tooltip.live" }}>
+                {{view.service.liveDataNodes.length}}
+              </span>
+              <div class="info-desc">{{t dashboard.services.hdfs.nodes.live}}</div>
+            {{/if}}
+          </div>
+          <div class="summary-label">{{t dashboard.services.hdfs.datanodecounts}}</div>
+        </div>
+        {{! Data Node Counts dead }}
+        <div class="row datanode-count-dead col-md-3">
+          <div class="summary-value">
+            {{#if view.service.metricsNotAvailable}}
+              <div class="main-info">
+                {{t services.service.summary.notAvailable}}
+              </div>
+            {{else}}
+              <span class="main-info" rel="tooltip"
+                {{translateAttr data-original-title="dashboard.services.hdfs.datanode.status.tooltip.dead" }}>
+                {{view.service.deadDataNodes.length}}
+              </span>
+              <div class="info-desc">{{t dashboard.services.hdfs.nodes.dead}}</div>
+            {{/if}}
+          </div>
+          <div class="summary-label">{{t dashboard.services.hdfs.datanodecounts}}</div>
+        </div>
+        {{! Data Node Counts decommission }}
+        <div class="row datanode-count-decommission col-md-3">
+          <div class="summary-value">
+            {{#if view.service.metricsNotAvailable}}
+              <div class="main-info">
+                {{t services.service.summary.notAvailable}}
+              </div>
+            {{else}}
+              <span class="main-info" rel="tooltip"
+                {{translateAttr data-original-title="dashboard.services.hdfs.datanode.status.tooltip.decommission" }}>
+                {{view.service.decommissionDataNodes.length}}
+              </span>
+              <div class="info-desc">{{t dashboard.services.hdfs.nodes.decom}}</div>
+            {{/if}}
+          </div>
+          <div class="summary-label">{{t dashboard.services.hdfs.datanodecounts}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{! left column end }}
+
+  {{! Service Metrics Section }}
+  <div class="col-md-12 metrics-summary">
+    <div class="col-md-2">{{t dashboard.services.hdfs.summary.service-metrics}}</div>
+    <div class="col-md-10">
+      {{! HDFS Capacity (Disk Usage)}}
+      <div class="row dfs-usage col-md-3">
+        <div class="summary-value">
+          <div class="main-info">{{view.dfsUsedDiskPercent}}</div>
+          <div class="info-desc">{{view.dfsUsedDisk}}</div>
+        </div>
+        <div class="summary-label">{{t dashboard.services.hdfs.capacity.dfsUsed}}</div>
+      </div>
+      <div class="row non-dfs-used col-md-3">
+        <div class="summary-value main-info">
+          <div class="main-info">{{view.nonDfsUsedDiskPercent}}</div>
+          <div class="info-desc">{{view.nonDfsUsedDisk}}</div>
+        </div>
+        <div class="summary-label">{{t dashboard.services.hdfs.capacity.nonDfsUsed}}</div>
+      </div>
+      <div class="row capacity-remaining col-md-3">
+        <div class="summary-value">
+          <div class="main-info">{{view.remainingDiskPercent}}</div>
+          <div class="info-desc">{{view.remainingDisk}}</div>
+        </div>
+        <div class="summary-label">{{t dashboard.services.hdfs.capacity.remaining}}</div>
+      </div>
+      {{! indent next row}}
+      <div class="row"></div>
+      {{! Block Errors corrupt }}
+      <div class="row block-errors-corrupt col-md-3">
+        <div class="summary-value main-info">
+          <div class="main-info">{{view.dfsCorruptBlocks}}</div>
+          <div class="info-desc">{{t dashboard.services.hdfs.blockErrors.corrupt}}</div>
+        </div>
+        <div class="summary-label">{{t services.service.summary.blockErrors}}</div>
+      </div>
+      {{! Block Errors missing }}
+      <div class="row block-errors-missing col-md-3">
+        <div class="summary-value main-info">
+          <div class="main-info">{{view.dfsMissingBlocks}}</div>
+          <div class="info-desc">{{t dashboard.services.hdfs.blockErrors.missing}}</div>
+        </div>
+        <div class="summary-label">{{t services.service.summary.blockErrors}}</div>
+      </div>
+      {{! Block Errors replicated }}
+      <div class="row block-errors-replicated col-md-3">
+        <div class="summary-value main-info">
+          <div class="main-info">{{view.dfsUnderReplicatedBlocks}}</div>
+          <div class="info-desc">{{t dashboard.services.hdfs.blockErrors.replicated}}</div>
+        </div>
+        <div class="summary-label">{{t services.service.summary.blockErrors}}</div>
+      </div>
+      {{! indent next row}}
+      <div class="row"></div>
+      {{! Total Files And Directories }}
+      <div class="row total-files-dirs col-md-3">
+        <div class="summary-value main-info">{{view.dfsTotalFiles}}</div>
+        <div class="summary-label">{{t dashboard.services.hdfs.totalFilesAndDirs}}</div>
+      </div>
+    </div>
+  </div>
+  {{! right column end }}
+</div>

@@ -1,0 +1,170 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="modal fade" id="configureJob" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        {{#if isDryrun}}
+          <h4 class="modal-title">Validate {{displayName}}</h4>
+        {{else}}
+          <h4 class="modal-title">Submit {{displayName}}</h4>
+        {{/if}}
+      </div>
+      <div class="modal-body">
+        {{designer-errors errors=jobConfigs.errors}}
+        {{#if (and (eq type 'coord') containsParameteriedPaths)}}
+        <div class="col-xs-24">
+          <div class="alert alert-warning" role="alert">
+            Workflow path contains variables. Please provide the absolute path to auto detect templatized variables. Skip this step if you have configured all the templatized variables of the workflow in the coordinator.
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-xs-3">
+            <label class="control-label" for="path">Workflow path</label><span class="requiredField">&nbsp;*</span>
+          </div>
+          <div class="col-xs-8">
+            <div class="input-group">
+              {{input class="form-control" type="text" name='wfPath' value=parameterizedWorkflowPath}}
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-secondary" {{action "selectFile" 'wfPath'}}>Browse</button>
+              </span>
+            </div>
+            {{field-error model=this field='filePath' showErrorMessage=showErrorMessage}}
+          </div>
+        </div>
+        {{else}}
+        {{#if (and (eq type 'bundle') containsParameteriedPaths)}}
+          <div class="col-xs-24">
+            <div class="alert alert-warning" role="alert">
+              <span>Auto detecting variables is not possible as one or more underlying workflow/coordinator path contains variables.  You have to configure the variables in custom job properties/coordinator configuration.</span>
+            </div>
+          </div>
+        {{/if}}
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{#if alertType}}
+            <div id="error" class="alert alert-{{alertType}}">
+              <div>{{alertMessage}}</div>
+              <div>{{alertDetails}}</div>
+              {{#if isStackTraceAvailable}}
+                {{#if isStackTraceVisible}}
+                  <a href="#" class="action-link" {{action "hideStackTrace"}}>Hide Log</a>
+                  <div id="stackTrace">{{{stackTrace}}}</div>
+                {{/if}}
+                {{#unless isStackTraceVisible}}
+                  <a href="#" class="action-link" {{action "showStackTrace"}}>Show Log</a>
+                {{/unless}}
+              {{/if}}
+            </div>
+            {{/if}}
+            <div class="row form-group">
+              <div class="col-xs-3">
+                <label class="control-label" for="{{type}}-path">{{displayName}} path</label><span class="requiredField">&nbsp;*</span>
+              </div>
+              <div class="col-xs-8">
+                <div class="input-group">
+                  {{input class="form-control" name="filePath" type="text" value=filePath}}
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" {{action "selectFile" "filePath"}}>Browse</button>
+                  </span>
+                </div>
+                {{field-error model=this field='filePath' showErrorMessage=showErrorMessage}}
+                {{input type="checkbox" checked=overwritePath}}Overwrite
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">
+                <label class="control-label">Execution Settings</label>
+              </div>
+              <div class="col-xs-8">
+                {{#each systemConfigs as |config|}}
+                <div>
+                  {{input type="checkbox" checked=config.value}}{{config.displayName}}
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="jobProperties">
+          {{#if configMap.length}}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Job Properties
+              </div>
+              <div class="panel-body">
+                {{field-error model=this field='configMap' showErrorMessage=showErrorMessage}}
+                {{#each configMap as |prop index|}}
+                  <div class="row form-group">
+                    <div class="col-xs-3">
+                      <label class="control-label" for="{{prop}}">{{prop.name}}</label>
+                      {{#if prop.isRequired}}
+                        <span class="requiredField">&nbsp;*</span>
+                      {{/if}}
+                    </div>
+                    <div class="col-xs-8">
+                      {{input class="form-control" type="text" value=prop.value}}
+                    </div>
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          {{/if}}
+          <div class=" panel panel-default">
+            <div class="panel-heading">Custom Job Properties</div>
+            <div class="panel-body handlerPanel">
+              <form class="form-horizontal">
+                {{#name-value-config configuration=customProps.configuration register="register"}}{{/name-value-config}}
+              </form>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+
+      </div>
+      <div class="modal-footer">
+        {{#if (and (eq type 'coord') containsParameteriedPaths)}}
+          <button type="button" class="btn btn-default" {{action "skip"}}>Skip</button>
+          <button type="button" class="btn btn-primary" {{action "next"}}>Next</button>
+        {{else}}
+          {{#if savingInProgress}}
+            {{spin-spinner lines=10 length=10 width=5 radius=10 }}
+            <span class="pull-left">Saving {{displayName}}</span>
+            {{/if}}
+          {{#if startingInProgress}}
+            {{spin-spinner lines=8 length=5 width=10 radius=5}}
+            <span class="pull-left">Starting {{displayName}}</span>
+          {{/if}}
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          {{#if isDryrun}}
+            <button type="button" class="btn btn-primary" {{action "dryrun"}}>Validate</button>
+          {{else}}
+            {{#if (not (eq type 'bundle'))}}
+              <button type="button" class="btn btn-default" {{action "dryrun"}}>Validate</button>
+            {{/if}}
+            <button type="button" class="btn btn-primary" {{action "save"}}>Submit</button>
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+{{#if showingFileBrowser}}
+{{hdfs-browser closeFileBrowser="closeFileBrowser" selectFileCallback=selectFileCallback filePath=selectedPath}}
+{{/if}}

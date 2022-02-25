@@ -1,0 +1,60 @@
+{
+  "stack":{
+    "comment":"Stack Definition defines where the artifacts need to be fetched from.""name":"hdp-1.0.1",
+    "services":{
+      "hadoop":{
+        "version":1.0
+      }
+      "oozie":{
+        "version":1.1
+      }
+    }
+    "repository":{
+      "comment":"Could be winpkg/tarball/others""type":yum,
+      "info":{
+        "key_1":"value_1",
+        "url":"url"
+      }
+    }
+  },
+  "hosts":[
+    "comment":"This can also be thought of as representation of hosts eg. small/medium/large""host_1",
+    "host_2"
+  ],
+  "configuration":{
+    "hadoop-env":{
+      "HADOOP_CONF_DIR":"/etc/hadoop",
+      "HADOOP_NAMENODE_OPTS":"-Dsecurity.audit.logger=INFO,DRFAS -Dhdfs.audit.logger=INFO,DRFAAUDIT",
+      "HADOOP_CLIENT_OPTS":"-Xmx128m"
+    },
+    "core-site":{
+      "fs.default.name":"hdfs://${namenode}:8020/",
+      "hadoop.tmp.dir":"/grid/0/hadoop/tmp",
+      "!hadoop.security.authentication":"kerberos",
+      
+    }
+  },
+  "services":{
+    "comment":"Spec for which services need to be configured for a cluster and also service config properties",
+    "hdfs":{
+      "enabled":true,
+      "user":"hdfs"
+    }
+    "mapred":{
+      "user":"mapred",
+      "enabled":false
+    }
+  },
+  "roles":{
+    "comment_1":"Configuration knobs that are host specific",
+    "comment_2":"Also the host role mapping here can just be mapping to ec2/azure instance of small/large",
+    "namenode":{
+      "host":"host_1",
+      "configuration":{
+        "hdfs-site":{
+          "dfs.https.enable":"true"
+        }
+      }
+    }
+  }
+}

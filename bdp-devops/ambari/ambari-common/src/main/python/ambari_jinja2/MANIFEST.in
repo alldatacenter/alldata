@@ -1,0 +1,12 @@
+include MANIFEST.in Makefile CHANGES LICENSE AUTHORS ambari_jinja2/_debugsupport.c
+recursive-include docs *
+recursive-include custom_fixers *
+recursive-include ext *
+recursive-include artwork *
+recursive-include examples *
+recursive-include ambari_jinja2/testsuite/res *
+recursive-exclude docs/_build *
+recursive-exclude ambari_jinja2 *.pyc
+recursive-exclude docs *.pyc
+recursive-exclude ambari_jinja2 *.pyo
+recursive-exclude docs *.pyo

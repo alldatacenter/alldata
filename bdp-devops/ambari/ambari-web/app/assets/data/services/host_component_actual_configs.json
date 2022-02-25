@@ -1,0 +1,1219 @@
+{
+  "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services?fields=components/ServiceComponentInfo,components/host_components,components/host_components/HostRoles&_=1358264805285",
+  "items" : [
+    {
+      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HBASE",
+      "ServiceInfo" : {
+        "cluster_name" : "cl1",
+        "service_name" : "HBASE"
+      },
+      "components" : [
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HBASE/components/HBASE_REGIONSERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "HBASE_REGIONSERVER",
+            "service_name" : "HBASE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/HBASE_REGIONSERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "hbase-site" : "version1",
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HBASE_REGIONSERVER",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/HBASE_REGIONSERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "hbase-site" : "version1",
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HBASE_REGIONSERVER",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/HBASE_REGIONSERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "hbase-site" : "version1",
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HBASE_REGIONSERVER",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/HBASE_REGIONSERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "hbase-site" : "version1",
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HBASE_REGIONSERVER",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/HBASE_REGIONSERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "hbase-site" : "version1",
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HBASE_REGIONSERVER",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HBASE/components/HBASE_MASTER",
+          "ServiceComponentInfo" : {
+            "MasterStartTime" : 1358245370553,
+            "MasterActiveTime" : 1358245370618,
+            "RegionsInTransition" : [ ],
+            "component_name" : "HBASE_MASTER",
+            "state" : "STARTED",
+            "HeapMemoryUsed" : 14455400,
+            "Revision" : "Unknown",
+            "service_name" : "HBASE",
+            "HeapMemoryMax" : 1069416448,
+            "AverageLoad" : 1.0,
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "Version" : "0.94.2.21"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/HBASE_MASTER",
+              "HostRoles" : {
+                "configs" : {
+                  "hbase-site" : "version1",
+                  "global" : "version1"
+                },
+                "ha_status" : "active",
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HBASE_MASTER",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HBASE/components/HBASE_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "INSTALLED",
+            "component_name" : "HBASE_CLIENT",
+            "service_name" : "HBASE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/HBASE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HBASE_CLIENT",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/HBASE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HBASE_CLIENT",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/HBASE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HBASE_CLIENT",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/HBASE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HBASE_CLIENT",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/HBASE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HBASE_CLIENT",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/SQOOP",
+      "ServiceInfo" : {
+        "cluster_name" : "cl1",
+        "service_name" : "SQOOP"
+      },
+      "components" : [
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/SQOOP/components/SQOOP",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "INSTALLED",
+            "component_name" : "SQOOP",
+            "service_name" : "SQOOP"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/SQOOP",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "SQOOP",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/SQOOP",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "SQOOP",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/SQOOP",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "SQOOP",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/SQOOP",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "SQOOP",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/SQOOP",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "SQOOP",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HDFS",
+      "ServiceInfo" : {
+        "cluster_name" : "cl1",
+        "service_name" : "HDFS"
+      },
+      "components" : [
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HDFS/components/HDFS_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "INSTALLED",
+            "component_name" : "HDFS_CLIENT",
+            "service_name" : "HDFS"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/HDFS_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HDFS_CLIENT",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/HDFS_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HDFS_CLIENT",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/HDFS_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HDFS_CLIENT",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/HDFS_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HDFS_CLIENT",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/HDFS_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HDFS_CLIENT",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HDFS/components/DATANODE",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "DATANODE",
+            "service_name" : "HDFS"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/DATANODE",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : {
+                    "tag": "version1" 
+                  },
+                  "global" : {
+                    "tag": "version1" 
+                  },
+                  "core-site" : {
+                    "tag": "version1"   
+                  }
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "DATANODE",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/DATANODE",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : {
+                    "tag": "version4" 
+                  },
+                  "global" : {
+                    "tag": "version1" 
+                  },
+                  "core-site" : {
+                    "tag": "version1"   
+                  }
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "DATANODE",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/DATANODE",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : {
+                    "tag": "version4" 
+                  },
+                  "global" : {
+                    "tag": "version4" 
+                  },
+                  "core-site" : {
+                    "tag": "version1"   
+                  }
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "UPGRADE_FAILED",
+                "component_name" : "DATANODE",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/DATANODE",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : {
+                    "tag": "version4" 
+                  },
+                  "global" : {
+                    "tag": "version4" 
+                  },
+                  "core-site" : {
+                    "tag": "version4"   
+                  }
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "DATANODE",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/DATANODE",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version4",
+                  "global" : "version4",
+                  "core-site" : "version4"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : {
+                    "tag": "version4" 
+                  },
+                  "global" : {
+                    "tag": "version4" 
+                  },
+                  "core-site" : {
+                    "tag": "version4"   
+                  }
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "DATANODE",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HDFS/components/NAMENODE",
+          "ServiceComponentInfo" : {
+            "PercentRemaining" : 94.86242,
+            "CapacityUsed" : 482971648,
+            "state" : "STARTED",
+            "HeapMemoryUsed" : 324295392,
+            "service_name" : "HDFS",
+            "UpgradeFinalized" : true,
+            "HeapMemoryMax" : 1006632960,
+            "DecomNodes" : "{}",
+            "Safemode" : "",
+            "CapacityRemaining" : 4210552782848,
+            "StartTime" : 1358245243704,
+            "Version" : "1.1.2.21, r",
+            "BlocksTotal" : 248,
+            "LiveNodes" : "{\"ip-10-110-38-164.ec2.internal\":{\"usedSpace\":87072768,\"lastContact\":1},\"ip-10-110-79-42.ec2.internal\":{\"usedSpace\":133492736,\"lastContact\":1},\"ip-10-191-202-42.ec2.internal\":{\"usedSpace\":65101824,\"lastContact\":1},\"domU-12-31-39-0E-E6-01.compute-1.internal\":{\"usedSpace\":160288768,\"lastContact\":0},\"domU-12-31-39-16-48-4B.compute-1.internal\":{\"usedSpace\":37015552,\"lastContact\":1}}",
+            "component_name" : "NAMENODE",
+            "PercentUsed" : 0.010881199,
+            "TotalFiles" : 375,
+            "NonDfsUsedSpace" : 227552702454,
+            "MissingBlocks" : 0,
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "UnderReplicatedBlocks" : 0,
+            "CapacityTotal" : 4438588456950,
+            "CorruptBlocks" : 0,
+            "DeadNodes" : "{}"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/NAMENODE",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : {
+                    "tag": "version4"
+                  },
+                  "global" : {
+                    "tag": "version4"
+                  },
+                  "core-site" : {
+                    "tag": "version4"
+                  }
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "NAMENODE",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HDFS/components/SECONDARY_NAMENODE",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "SECONDARY_NAMENODE",
+            "service_name" : "HDFS"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/SECONDARY_NAMENODE",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : {
+                    "tag": "version4"
+                  },
+                  "global" : {
+                    "tag": "version4"
+                  },
+                  "core-site" : {
+                    "tag": "version4"
+                  }
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "SECONDARY_NAMENODE",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HIVE",
+      "ServiceInfo" : {
+        "cluster_name" : "cl1",
+        "service_name" : "HIVE"
+      },
+      "components" : [
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HIVE/components/HIVE_METASTORE",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "HIVE_METASTORE",
+            "service_name" : "HIVE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/HIVE_METASTORE",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1",
+                  "hive-site" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HIVE_METASTORE",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HIVE/components/HIVE_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "INSTALLED",
+            "component_name" : "HIVE_CLIENT",
+            "service_name" : "HIVE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/HIVE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HIVE_CLIENT",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/HIVE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HIVE_CLIENT",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/HIVE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HIVE_CLIENT",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/HIVE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HIVE_CLIENT",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/HIVE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HIVE_CLIENT",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HIVE/components/MYSQL_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "MYSQL_SERVER",
+            "service_name" : "HIVE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/MYSQL_SERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1",
+                  "hive-site" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "MYSQL_SERVER",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HIVE/components/HIVE_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "HIVE_SERVER",
+            "service_name" : "HIVE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/HIVE_SERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1",
+                  "hive-site" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HIVE_SERVER",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/PIG",
+      "ServiceInfo" : {
+        "cluster_name" : "cl1",
+        "service_name" : "PIG"
+      },
+      "components" : [
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/PIG/components/PIG",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "INSTALLED",
+            "component_name" : "PIG",
+            "service_name" : "PIG"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/PIG",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "PIG",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/PIG",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "PIG",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/PIG",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "PIG",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/PIG",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "PIG",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/PIG",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "PIG",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/GANGLIA",
+      "ServiceInfo" : {
+        "cluster_name" : "cl1",
+        "service_name" : "GANGLIA"
+      },
+      "components" : [
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/GANGLIA/components/GANGLIA_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "GANGLIA_SERVER",
+            "service_name" : "GANGLIA"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/GANGLIA_SERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_SERVER",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/GANGLIA/components/GANGLIA_MONITOR",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "GANGLIA_MONITOR",
+            "service_name" : "GANGLIA"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/OOZIE",
+      "ServiceInfo" : {
+        "cluster_name" : "cl1",
+        "service_name" : "OOZIE"
+      },
+      "components" : [
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/OOZIE/components/OOZIE_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "OOZIE_SERVER",
+            "service_name" : "OOZIE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/OOZIE_SERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1",
+                  "oozie-site" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "OOZIE_SERVER",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/OOZIE/components/OOZIE_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "INSTALLED",
+            "component_name" : "OOZIE_CLIENT",
+            "service_name" : "OOZIE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/OOZIE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "OOZIE_CLIENT",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/OOZIE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "OOZIE_CLIENT",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/OOZIE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "OOZIE_CLIENT",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/OOZIE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "OOZIE_CLIENT",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/OOZIE_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "OOZIE_CLIENT",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/ZOOKEEPER",
+      "ServiceInfo" : {
+        "cluster_name" : "cl1",
+        "service_name" : "ZOOKEEPER"
+      },
+      "components" : [
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/ZOOKEEPER/components/ZOOKEEPER_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "ZOOKEEPER_SERVER",
+            "service_name" : "ZOOKEEPER"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/ZOOKEEPER_SERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "ZOOKEEPER_SERVER",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/ZOOKEEPER_SERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "ZOOKEEPER_SERVER",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/ZOOKEEPER_SERVER",
+              "HostRoles" : {
+                "configs" : {
+                  "global" : "version1"
+                },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "ZOOKEEPER_SERVER",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            }
+          ]
+        },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/ZOOKEEPER/components/ZOOKEEPER_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "cl1",
+            "desired_configs" : { },
+            "state" : "INSTALLED",
+            "component_name" : "ZOOKEEPER_CLIENT",
+            "service_name" : "ZOOKEEPER"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-16-48-4B.compute-1.internal/host_components/ZOOKEEPER_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "ZOOKEEPER_CLIENT",
+                "host_name" : "domU-12-31-39-16-48-4B.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-191-202-42.ec2.internal/host_components/ZOOKEEPER_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "ZOOKEEPER_CLIENT",
+                "host_name" : "ip-10-191-202-42.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/ZOOKEEPER_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "ZOOKEEPER_CLIENT",
+                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-38-164.ec2.internal/host_components/ZOOKEEPER_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "ZOOKEEPER_CLIENT",
+                "host_name" : "ip-10-110-38-164.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/ip-10-110-79-42.ec2.internal/host_components/ZOOKEEPER_CLIENT",
+              "HostRoles" : {
+                "configs" : { },
+                "cluster_name" : "cl1",
+                "desired_configs" : { },
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "ZOOKEEPER_CLIENT",
+                "host_name" : "ip-10-110-79-42.ec2.internal"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

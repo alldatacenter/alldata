@@ -1,0 +1,362 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="create-edit-alert-notification row">
+
+  <form class="form-horizontal">
+
+    {{! alert-notification name }}
+    <div {{bindAttr class=":form-group controller.inputFields.name.errorMsg:has-error"}}>
+      <label class="control-label col-md-2" for="inputName">{{controller.inputFields.name.label}}</label>
+      <div class="col-md-10">
+        {{view Em.TextField valueBinding="controller.inputFields.name.value" id="inputName" classNames="form-control"}}
+      </div>
+      {{#if controller.inputFields.name.errorMsg}}
+        <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+          {{controller.inputFields.name.errorMsg}}
+        </div>
+      {{/if}}
+    </div>
+    {{! alert-notification name end }}
+
+    {{! alert-notification groups }}
+    <div class="form-group">
+      <label class="control-label col-md-2" for="inputGroups">{{controller.inputFields.groups.label}}</label>
+      <div class="col-md-10">
+          {{view App.RadioButtonView name="allGroups" selectionBinding="controller.inputFields.allGroups.value"
+           classNames="radio" labelTranslate="common.all" value="all"}}
+          {{view App.RadioButtonView name="allGroups" selectionBinding="controller.inputFields.allGroups.value"
+           classNames="radio" labelTranslate="common.custom" value="custom"}}
+        <div>
+          {{view view.groupsSelectView multiple="true" id="inputGroups" class="form-control"
+            disabledBinding="controller.inputFields.allGroups.isAll"
+            selectionBinding="controller.inputFields.groups.value"
+            contentBinding="controller.allAlertGroups"
+            optionLabelPath="content.displayName"
+          }}
+        </div>
+        <div>
+          <a href="#" {{action selectAllGroups target="view"}} {{bindAttr class="controller.inputFields.allGroups.isAll:disabled view.allGroupsSelected:disabled"}}>{{t alerts.actions.manage_alert_notifications_popup.selectAll}}</a> |
+          <a href="#" {{action clearAllGroups target="view"}} {{bindAttr class="controller.inputFields.allGroups.isAll:disabled view.noneGroupsSelected:disabled"}}>{{t alerts.actions.manage_alert_notifications_popup.clearAll}}</a>
+        </div>
+      </div>
+    </div>
+    {{! alert-notification groups end }}
+
+    {{! alert-notification severity }}
+    <div class="form-group">
+      <label class="control-label col-md-2">{{controller.inputFields.severityFilter.label}}</label>
+
+      <div class="col-md-10">
+        <div>
+          {{view view.severitySelectView multiple="true" id="inputSeverity" class="form-control"
+            selectionBinding="controller.inputFields.severityFilter.value"
+            contentBinding="controller.severities"
+          }}
+        </div>
+        <div>
+          <a href="#" {{action selectAllSeverity target="view"}} {{bindAttr class="view.allSeveritySelected:disabled"}}>{{t alerts.actions.manage_alert_notifications_popup.selectAll}}</a> |
+          <a href="#" {{action clearAllSeverity target="view"}} {{bindAttr class="view.noneSeveritySelected:disabled"}}>{{t alerts.actions.manage_alert_notifications_popup.clearAll}}</a>
+        </div>
+      </div>
+    </div>
+    {{! alert-notification severity end }}
+
+    {{! alert-notification description }}
+    <div class="form-group">
+      <label class="control-label col-md-2" for="inputDescription">{{controller.inputFields.description.label}}</label>
+
+      <div class="col-md-10">
+        {{view Em.TextArea valueBinding="controller.inputFields.description.value" id="inputDescription" rows="4" class="form-control"}}
+      </div>
+    </div>
+    {{! alert-notification description end }}
+
+    {{! alert-notification method }}
+    <div class="form-group">
+      <label class="control-label col-md-2" for="inputMethod">{{controller.inputFields.method.label}}</label>
+
+      <div class="col-md-10">
+        {{view Em.Select contentBinding="controller.methods" selectionBinding="controller.inputFields.method.value" id="inputMethod" classNames="form-control"}}
+      </div>
+    </div>
+    {{! alert-notification method end }}
+
+    {{! alert-notification email }}
+    {{#if view.isEmailMethodSelected}}
+      <div {{bindAttr class=":form-group controller.inputFields.email.errorMsg:has-error"}}>
+        <label class="control-label col-md-2" for="inputEmail">{{controller.inputFields.email.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.email.value" id="inputEmail" classNames="form-control"}}
+        </div>
+        {{#if controller.inputFields.email.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.email.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-2">{{controller.inputFields.SMTPServer.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.SMTPServer.value" classNames="form-control"}}
+        </div>
+      </div>
+
+      <div {{bindAttr class=":form-group controller.inputFields.SMTPPort.errorMsg:has-error"}}>
+        <label class="control-label col-md-2">{{controller.inputFields.SMTPPort.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.SMTPPort.value" classNames="form-control"}}
+        </div>
+
+        {{#if controller.inputFields.SMTPPort.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.SMTPPort.errorMsg}}
+          </div>
+        {{/if}}
+
+      </div>
+
+      <div {{bindAttr class=":form-group controller.inputFields.emailFrom.errorMsg:has-error"}}>
+        <label class="control-label col-md-2">{{controller.inputFields.emailFrom.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.emailFrom.value" classNames="form-control"}}
+        </div>
+
+        {{#if controller.inputFields.emailFrom.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.emailFrom.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+
+      {{#view App.CheckboxView classNames="form-group"
+        isCustomTemplate="true"
+        checkedBinding="controller.inputFields.SMTPUseAuthentication.value"}}
+        <label class="control-label col-md-2 inputUseAuthentication" {{bindAttr for="view.checkboxId"}}>{{controller.inputFields.SMTPUseAuthentication.label}}</label>
+        <div class="col-md-10">
+          {{view view.checkboxView customCheckboxId="inputUseAuthentication" labelAlign="left"}}
+          {{view view.labelView}}
+        </div>
+      {{/view}}
+
+      <div {{bindAttr class=":form-group controller.inputFields.SMTPUsername.errorMsg:has-error"}}>
+        <label class="control-label col-md-2">{{controller.inputFields.SMTPUsername.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField disabledBinding="controller.inputFields.SMTPUseAuthentication.invertedValue" valueBinding="controller.inputFields.SMTPUsername.value" classNames="form-control"}}
+        </div>
+
+        {{#if controller.inputFields.SMTPUsername.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.SMTPUsername.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div {{bindAttr class=":form-group controller.inputFields.SMTPPassword.errorMsg:has-error"}}>
+        <label class="control-label col-md-2">{{controller.inputFields.SMTPPassword.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField type="password" disabledBinding="controller.inputFields.SMTPUseAuthentication.invertedValue" valueBinding="controller.inputFields.SMTPPassword.value" classNames="form-control"}}
+        </div>
+
+        {{#if controller.inputFields.SMTPPassword.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.SMTPPassword.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div {{bindAttr class=":form-group controller.inputFields.retypeSMTPPassword.errorMsg:has-error"}}>
+        <label class="control-label col-md-2">{{controller.inputFields.retypeSMTPPassword.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField type="password" disabledBinding="controller.inputFields.SMTPUseAuthentication.invertedValue" valueBinding="controller.inputFields.retypeSMTPPassword.value" classNames="form-control"}}
+        </div>
+
+        {{#if controller.inputFields.retypeSMTPPassword.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.retypeSMTPPassword.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-2" for="inputSMTPSTARTTLS">{{controller.inputFields.SMTPSTARTTLS.label}}</label>
+
+        <div class="col-md-10">
+          {{view App.CheckboxView disabledBinding="controller.inputFields.SMTPUseAuthentication.invertedValue" checkedBinding="controller.inputFields.SMTPSTARTTLS.value" id="inputSMTPSTARTTLS"}}
+        </div>
+      </div>
+    {{/if}}
+    {{! alert-notification email end }}
+
+    {{! alert-notification SNMP }}
+    {{#if view.isSNMPMethodSelected}}
+      <div class="form-group">
+        <label class="control-label col-md-2">{{controller.inputFields.version.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.Select selectionBinding="controller.inputFields.version.value" contentBinding="controller.SNMPVersions" classNames="form-control"}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-2">{{controller.inputFields.community.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.community.value" classNames="form-control"}}
+        </div>
+      </div>
+
+      <div {{bindAttr class=":form-group controller.inputFields.host.errorMsg:has-error"}}>
+          <label class="control-label col-md-2">{{controller.inputFields.host.label}}</label>
+
+          <div class="col-md-10">
+            {{view Em.TextField valueBinding="controller.inputFields.host.value" classNames="form-control"}}
+          </div>
+
+        {{#if controller.inputFields.host.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.host.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div {{bindAttr class=":form-group controller.inputFields.port.errorMsg:has-error"}}>
+          <label class="control-label col-md-2">{{controller.inputFields.port.label}}</label>
+
+          <div class="col-md-10">
+            {{view Em.TextField valueBinding="controller.inputFields.port.value" classNames="form-control"}}
+          </div>
+
+        {{#if controller.inputFields.port.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.port.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+    {{! alert-notification SNMP end }}
+
+    {{! alert-notification Custom SNMP }}
+    {{#if view.isCustomSNMPMethodSelected}}
+      <div class="form-group">
+        <label class="control-label col-md-2">{{controller.inputFields.version.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.Select selectionBinding="controller.inputFields.version.value" contentBinding="controller.SNMPVersions" classNames="form-control"}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-2">{{controller.inputFields.OIDs.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.OIDs.value" classNames="form-control"}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-2">{{controller.inputFields.community.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.community.value" classNames="form-control"}}
+        </div>
+      </div>
+
+      <div {{bindAttr class=":form-group controller.inputFields.host.errorMsg:has-error"}}>
+        <label class="control-label col-md-2">{{controller.inputFields.host.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.host.value" classNames="form-control"}}
+        </div>
+
+        {{#if controller.inputFields.host.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.host.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div {{bindAttr class=":form-group controller.inputFields.port.errorMsg:has-error"}}>
+        <label class="control-label col-md-2">{{controller.inputFields.port.label}}</label>
+
+        <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.port.value" classNames="form-control"}}
+        </div>
+
+        {{#if controller.inputFields.port.errorMsg}}
+          <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+            {{controller.inputFields.port.errorMsg}}
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+    {{! alert-notification Custom SNMP end }}
+
+    {{! alert-notification Alert Script }}
+    {{#if view.isAlertScriptMethodSelected}}
+    <div {{bindAttr class=":form-group controller.inputFields.scriptFileName.errorMsg:has-error"}}>
+       <label class="control-label col-md-2">{{controller.inputFields.scriptFileName.label}}</label>
+
+       <div class="col-md-10">
+          {{view Em.TextField valueBinding="controller.inputFields.scriptFileName.value" class="form-control"}}
+       </div>
+
+       {{#if controller.inputFields.scriptFileName.errorMsg}}
+        <div class="col-md-10 col-md-offset-2 help-block validation-block error-msg">
+           {{controller.inputFields.scriptFileName.errorMsg}}
+        </div>
+       {{/if}}
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-md-2">{{controller.inputFields.scriptDispatchProperty.label}}</label>
+
+      <div class="col-md-10">
+         {{view Em.TextField valueBinding="controller.inputFields.scriptDispatchProperty.value" class="form-control"}}
+      </div>
+    </div>
+    {{/if}}
+    {{! alert-notification Alert Script end}}
+
+    {{! alert-notification custom properties }}
+    {{#each customProperty in controller.inputFields.customProperties}}
+      <div class="form-group">
+        <label class="control-label col-md-2" for="inputGroups">{{customProperty.name}}</label>
+
+        <div class="col-md-9">
+          {{view Em.TextField valueBinding="customProperty.value" classNames="form-control"}}
+        </div>
+        <div class="col-md-1">
+          <a href="#" {{action "removeCustomPropertyHandler" customProperty target="controller"}} class="btn-sm"><span class="icon-minus-sign"></span></a>
+        </div>
+      </div>
+    {{/each}}
+    {{! alert-notification custom properties end }}
+
+    <a href="#" class="add-custom-property" {{action addCustomPropertyHandler target="controller"}}>{{t installer.step7.config.addProperty}} ...</a>
+
+  </form>
+</div>

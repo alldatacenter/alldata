@@ -1,0 +1,14 @@
+{
+  "RootServiceComponents" : {
+    "component_name" : "AMBARI_SERVER",
+    "service_name" : "AMBARI",
+    "properties" : {
+      "skip.service.checks" : "false",
+      "java.home" : "/usr/jdk64/jdk1.7.0_58",
+      "jdk_location" : "http://c6404.ambari.apache.org:8080/resources",
+      "jdk.name": "jdk-7u67-linux-x64.tar.gz",
+      "server.os_type": "redhat"
+    },
+    "component_version": "1.5.0"
+  }
+}

@@ -1,0 +1,129 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <MonitorTypes>
+      <UnitMonitorType ID="Ambari.SCOM.RepeatedEventLogTimer2StateMonitorType" Accessibility="Public">
+        <MonitorTypeStates>
+          <MonitorTypeState ID="RepeatedEventRaised" />
+          <MonitorTypeState ID="TimerEventRaised" />
+        </MonitorTypeStates>
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>System!System.ExpressionEvaluatorSchema</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="ComputerName" type="xsd:string" />
+          <xsd:element name="LogName" type="xsd:string" />
+          <xsd:element name="EventNumber" type="xsd:int" />
+          <xsd:element name="TimeInterval" type="xsd:int" />
+          <xsd:element name="Count" type="xsd:int" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="TimeInterval" Selector="$Config/TimeInterval$" ParameterType="int" />
+          <OverrideableParameter ID="Count" Selector="$Config/Count$" ParameterType="int" />
+        </OverrideableParameters>
+        <MonitorImplementation>
+          <MemberModules>
+            <DataSource TypeID="Windows!Microsoft.Windows.BaseEventProvider" ID="RepeatedDataSource">
+              <ComputerName>$Config/ComputerName$</ComputerName>
+              <LogName>$Config/LogName$</LogName>
+            </DataSource>
+            <ProbeAction TypeID="System!System.PassThroughProbe" ID="OnDemandReset" />
+            <ConditionDetection TypeID="System!System.ExpressionFilter" ID="RepeatedFilterCondition">
+              <Expression>
+                <SimpleExpression>
+                  <ValueExpression>
+                    <XPathQuery Type="UnsignedInteger">EventDisplayNumber</XPathQuery>
+                  </ValueExpression>
+                  <Operator>Equal</Operator>
+                  <ValueExpression>
+                    <Value Type="UnsignedInteger">$Config/EventNumber$</Value>
+                  </ValueExpression>
+                </SimpleExpression>
+              </Expression>
+            </ConditionDetection>
+            <ConditionDetection TypeID="System!System.ConsolidatorCondition" ID="RepeatedDataCondition">
+              <Consolidator>
+                <ConsolidationProperties />
+                <TimeControl>
+                  <WithinTimeSchedule>
+                    <Interval>$Config/TimeInterval$</Interval>
+                  </WithinTimeSchedule>
+                </TimeControl>
+                <CountingCondition>
+                  <Count>$Config/Count$</Count>
+                  <CountMode>OnNewItemTestOutputRestart_OnTimerRestart</CountMode>
+                </CountingCondition>
+              </Consolidator>
+            </ConditionDetection>
+            <ConditionDetection TypeID="System!System.TimerCondition" ID="TimerCondition">
+              <TimerWaitInSeconds>$Config/TimeInterval$</TimerWaitInSeconds>
+            </ConditionDetection>
+          </MemberModules>
+          <RegularDetections>
+            <RegularDetection MonitorTypeStateID="RepeatedEventRaised">
+              <Node ID="RepeatedDataCondition">
+                <Node ID="RepeatedFilterCondition">
+                  <Node ID="RepeatedDataSource" />
+                </Node>
+              </Node>
+            </RegularDetection>
+            <RegularDetection MonitorTypeStateID="TimerEventRaised">
+              <Node ID="TimerCondition">
+                <Node ID="RepeatedDataCondition">
+                  <Node ID="RepeatedFilterCondition">
+                    <Node ID="RepeatedDataSource" />
+                  </Node>
+                </Node>
+              </Node>
+            </RegularDetection>
+          </RegularDetections>
+          <OnDemandDetections>
+            <OnDemandDetection MonitorTypeStateID="TimerEventRaised">
+              <Node ID="OnDemandReset" />
+            </OnDemandDetection>
+          </OnDemandDetections>
+      </MonitorImplementation>
+      </UnitMonitorType>
+    </MonitorTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.RepeatedEventLogTimer2StateMonitorType">
+          <Name>Repeated event log timer two state unit monitor type</Name>
+          <Description>This two-state unit monitor type looks for repeated event in the event log.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.RepeatedEventLogTimer2StateMonitorType" SubElementID="RepeatedEventRaised">
+          <Name>Repeated Event Raised</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.RepeatedEventLogTimer2StateMonitorType" SubElementID="TimerEventRaised">
+          <Name>Timer Event Raised</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.RepeatedEventLogTimer2StateMonitorType" SubElementID="TimeInterval">
+          <Name>Time Interval (sec)</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.RepeatedEventLogTimer2StateMonitorType" SubElementID="Count">
+          <Name>Count (>=2)</Name>
+          <Description>Please note that count should be greater or equal to 2.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

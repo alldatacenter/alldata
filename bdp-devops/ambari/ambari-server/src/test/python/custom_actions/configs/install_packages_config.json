@@ -1,0 +1,245 @@
+{
+    "configurationAttributes": {}, 
+    "roleCommand": "ACTIONEXECUTE", 
+    "clusterName": "cc", 
+    "hostname": "0b3.vm", 
+    "passiveInfo": [], 
+    "clusterLevelParams": {
+        "stack_version": "2.1", 
+        "not_managed_hdfs_path_list": "[\"/apps/hive/warehouse\",\"/apps/falcon\",\"/mr-history/done\",\"/app-logs\",\"/tmp\"]",
+        "hooks_folder": "stack-hooks", 
+        "stack_name": "HDP", 
+        "group_list": "[\"hdfs\",\"hadoop\",\"users\"]", 
+        "user_groups": "{\"hive\":[\"hadoop\"], \"oozie\":[\"hadoop\",\"users\"], \"nobody\":[\"hadoop\",\"nobody\"], \"ambari-qa\":[\"hadoop\",\"users\"], \"flume\":[\"hadoop\"], \"hdfs\":[\"hadoop\"], \"storm\":[\"hadoop\"], \"mapred\":[\"hadoop\"], \"hbase\":[\"hadoop\"], \"tez\":[\"hadoop\",\"users\"], \"zookeeper\":[\"hadoop\"], \"falcon\":[\"hadoop\",\"users\"], \"sqoop\":[\"hadoop\"], \"yarn\":[\"hadoop\"], \"hcat\":[\"hadoop\"]}", 
+        "cluster_name": "c1", 
+        "user_list": "[\"ambari-qa\",\"hdfs\"]"
+    },
+    "ambariLevelParams": {
+        "jdk_location": "http://c6401.ambari.apache.org:8080/resources",
+        "agent_stack_retry_count": "5", 
+        "db_driver_filename": "mysql-connector-java.jar", 
+        "agent_stack_retry_on_unavailability": "false", 
+        "ambari_db_rca_url": "jdbc:postgresql://c6401.ambari.apache.org/ambarirca", 
+        "jce_name": "jce_policy-7.zip", 
+        "java_version": "7", 
+        "ambari_db_rca_password": "mapred", 
+        "host_sys_prepped": "false", 
+        "db_name": "ambari", 
+        "oracle_jdbc_url": "http://c6401.ambari.apache.org/resources/ojdbc6.jar",
+        "ambari_db_rca_driver": "org.postgresql.Driver", 
+        "ambari_db_rca_username": "mapred", 
+        "jdk_name": "jdk-7u45-linux-x64.tar.gz", 
+        "java_home": "/usr/jdk64/jdk1.7.0_45", 
+        "mysql_jdbc_url": "http://c6401.ambari.apache.org/resources/mysql-connector-java.jar"
+    },
+    "repositoryFile": {
+        "resolved": true, 
+        "repoVersion": "2.6.4.0-60", 
+        "repositories": [
+            {
+                "mirrorsList": null, 
+                "ambariManaged": true, 
+                "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.6.4.0-60", 
+                "repoName": "HDP", 
+                "components": null, 
+                "osType": "redhat6", 
+                "distribution": null, 
+                "repoId": "HDP-2.6-repo-1"
+            }, 
+            {
+                "mirrorsList": null, 
+                "ambariManaged": true, 
+                "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-GPL/centos6/2.x/BUILDS/2.6.4.0-60", 
+                "repoName": "HDP-GPL", 
+                "components": null, 
+                "osType": "redhat6", 
+                "distribution": null, 
+                "repoId": "HDP-2.6-GPL-repo-1"
+            }, 
+            {
+                "mirrorsList": null, 
+                "ambariManaged": true, 
+                "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.22/repos/centos6", 
+                "repoName": "HDP-UTILS", 
+                "components": null, 
+                "osType": "redhat6", 
+                "distribution": null, 
+                "repoId": "HDP-UTILS-1.1.0.22-repo-1"
+            }
+        ], 
+        "feature": {
+            "m_isScoped": true, 
+            "m_isPreInstalled": false
+        }, 
+        "stackName": "HDP", 
+        "repoVersionId": 1
+    },
+    "agentLevelParams": {
+        "public_hostname": "c6401.ambari.apache.org", 
+        "hostname": "c6401.ambari.apache.org", 
+        "agentConfigParams": {
+            "agent": {
+                "parallel_execution": 0, 
+                "use_system_proxy_settings": true
+            }
+        }, 
+        "agentCacheDir": "/var/lib/ambari-agent/cache"
+    },
+    "hostLevelParams": {
+        "recoveryConfig": {
+            "retryGap": "5", 
+            "windowInMinutes": "60", 
+            "maxLifetimeCount": "1024", 
+            "components": "", 
+            "maxCount": "6", 
+            "type": "AUTO_START"
+        }, 
+        "hostRepositories": {
+            "componentRepos": {
+                "NAMENODE": 1, 
+                "SECONDARY_NAMENODE": 1, 
+                "DATANODE": 1, 
+                "HDFS_CLIENT": 1
+            }, 
+            "commandRepos": {
+                "1": {
+                    "resolved": true, 
+                    "repoVersion": "2.1.4.0-60", 
+                    "repositories": [
+                        {
+                            "mirrorsList": null, 
+                            "ambariManaged": true, 
+                            "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.6.4.0-60", 
+                            "repoName": "HDP", 
+                            "components": null, 
+                            "osType": "redhat6", 
+                            "distribution": null, 
+                            "repoId": "HDP-2.6-repo-1"
+                        }, 
+                        {
+                            "mirrorsList": null, 
+                            "ambariManaged": true, 
+                            "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-GPL/centos6/2.x/BUILDS/2.6.4.0-60", 
+                            "repoName": "HDP-GPL", 
+                            "components": null, 
+                            "osType": "redhat6", 
+                            "distribution": null, 
+                            "repoId": "HDP-2.6-GPL-repo-1"
+                        }, 
+                        {
+                            "mirrorsList": null, 
+                            "ambariManaged": true, 
+                            "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.22/repos/centos6", 
+                            "repoName": "HDP-UTILS", 
+                            "components": null, 
+                            "osType": "redhat6", 
+                            "distribution": null, 
+                            "repoId": "HDP-UTILS-1.1.0.22-repo-1"
+                        }
+                    ], 
+                    "feature": {
+                        "m_isScoped": true, 
+                        "m_isPreInstalled": false
+                    }, 
+                    "stackName": "HDP", 
+                    "repoVersionId": 1
+                }
+            }
+        }
+    },
+    "serviceLevelParams": {
+        "credentialStoreEnabled": false, 
+        "status_commands_timeout": 300, 
+        "version": "2.7.3", 
+        "service_package_folder": "common-services/HDFS/2.1.0.2.0/package"
+    },
+    "commandType": "EXECUTION_COMMAND", 
+    "roleParams": {
+        "stack_id": "HDP-2.2",
+        "repository_version": "2.2.0.1-885",
+        "base_urls": "[{\"name\":\"HDP-UTILS\",\"baseUrl\":\"http://repo1/HDP/centos5/2.x/updates/2.2.0.0\",\"repositoryId\":\"HDP-UTILS-1.1.0.20\"},{\"name\":\"HDP\",\"baseUrl\":\"http://repo1/HDP/centos5/2.x/updates/2.2.0.0\",\"repositoryId\":\"HDP-2.2\"}]",
+        "package_list": "[{\"name\":\"hadoop_${stack_version}\", \"condition\": \"\"},{\"name\":\"snappy\", \"condition\": \"\"},{\"name\":\"snappy-devel\", \"condition\": \"\"},{\"name\":\"lzo\", \"condition\": \"\"},{\"name\":\"hadooplzo_${stack_version}\", \"condition\": \"\"},{\"name\":\"hadoop_${stack_version}-libhdfs\", \"condition\": \"\"},{\"name\":\"ambari-log4j\", \"condition\": \"\"}]"
+    }, 
+    "serviceName": "null", 
+    "role": "install_packages", 
+    "forceRefreshConfigTags": [], 
+    "taskId": 61, 
+    "public_hostname": "0b3.vm", 
+    "configurations": {
+            "cluster-env": {
+                "repo_suse_rhel_template": "[{{repo_id}}]\nname={{repo_id}}\n{% if mirror_list %}mirrorlist={{mirror_list}}{% else %}baseurl={{base_url}}{% endif %}\n\npath=/\nenabled=1\ngpgcheck=0",
+                "repo_ubuntu_template": "{{package_type}} {{base_url}} {{components}}"
+        }
+    },
+    "commandParams": {
+        "command_timeout": "60", 
+        "script_type": "PYTHON",
+        "repository_version": "2.2.0.1-885",
+        "base_urls": "[{\"name\":\"HDP-UTILS\",\"baseUrl\":\"http://repo1/HDP/centos5/2.x/updates/2.2.0.0\",\"repositoryId\":\"HDP-UTILS-1.1.0.20\"},{\"name\":\"HDP\",\"baseUrl\":\"http://repo1/HDP/centos5/2.x/updates/2.2.0.0\",\"repositoryId\":\"HDP-2.2\"}]",
+        "package_list": "[{\"name\":\"hadoop_${stack_version}\", \"condition\": \"\"},{\"name\":\"snappy\", \"condition\": \"\"},{\"name\":\"snappy-devel\", \"condition\": \"\"},{\"name\":\"lzo\", \"condition\": \"\"},{\"name\":\"hadooplzo_${stack_version}\", \"condition\": \"\"},{\"name\":\"hadoop_${stack_version}-libhdfs\", \"condition\": \"\"},{\"name\":\"ambari-log4j\", \"condition\": \"\"}]",
+        "script": "install_packages.py"
+    }, 
+    "commandId": "14-1",
+    "repositoryFile": {
+        "stackName": "HDP",
+        "repoVersionId": 1,
+        "repoVersion": "2.2.0.1-885",
+        "repoFileName": "ambari-hdp-1",
+        "repositories": [
+            {
+                "repoName": "HDP-UTILS",
+                "baseUrl": "http://repo1/HDP/centos5/2.x/updates/2.2.0.0",
+                "repoId": "HDP-UTILS-1.1.0.20"
+            },
+            {
+                "repoName": "HDP",
+                "baseUrl": "http://repo1/HDP/centos5/2.x/updates/2.2.0.0",
+                "repoId": "HDP-2.2"
+            }
+        ]
+    },
+    "clusterHostInfo": {
+        "snamenode_host": [
+            "0b3.vm"
+        ], 
+        "nm_hosts": [
+            "0b3.vm"
+        ], 
+        "app_timeline_server_hosts": [
+            "0b3.vm"
+        ], 
+        "all_ping_ports": [
+            "8670"
+        ], 
+        "resourcemanager_hosts": [
+            "0b3.vm"
+        ], 
+        "all_hosts": [
+            "0b3.vm"
+        ], 
+        "slave_hosts": [
+            "0b3.vm"
+        ], 
+        "namenode_host": [
+            "0b3.vm"
+        ], 
+        "ambari_server_host": [
+            "0b3.vm"
+        ], 
+        "zookeeper_server_hosts": [
+            "0b3.vm"
+        ], 
+        "hs_host": [
+            "0b3.vm"
+        ]
+    },
+    "configurations": {
+        "cluster-env": {
+            "repo_suse_rhel_template": "[{{repo_id}}]\nname={{repo_id}}\n{% if mirror_list %}mirrorlist={{mirror_list}}{% else %}baseurl={{base_url}}{% endif %}\n\npath=/\nenabled=1\ngpgcheck=0", 
+            "repo_ubuntu_template": "{{package_type}} {{base_url}} {{components}}"
+        },
+        "core-site": {
+            "io.compression.codecs": "com.hadoop.compression.lzo"
+        }
+    }
+}

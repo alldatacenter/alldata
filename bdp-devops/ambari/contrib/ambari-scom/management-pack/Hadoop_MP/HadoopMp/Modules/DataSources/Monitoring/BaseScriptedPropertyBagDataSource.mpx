@@ -1,0 +1,116 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <DataSourceModuleType ID="Ambari.SCOM.Module.BaseScriptedPropertyBagDataSource" Accessibility="Internal">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Windows!Microsoft.Windows.PowerShellSchema</SchemaType>
+            <SchemaType>System!System.ExpressionEvaluatorSchema</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="IntervalSeconds" type="xsd:integer" />
+          <xsd:element name="SyncTime" type="xsd:string" minOccurs="0" />
+          <xsd:element name="TimeoutSeconds" type="xsd:int" />
+
+          <xsd:element name="StartupExpression" type="ExpressionType" minOccurs="0" />
+          
+          <xsd:element name="WorkflowName" type="xsd:string" />
+          <xsd:element name="Script" type="NonNullString" />
+          <xsd:element name="Parameters" type="NamedParametersType" />
+        </Configuration>
+        <ModuleImplementation>
+          <Composite>
+            <MemberModules>
+              <DataSource ID="Scheduler" TypeID="System!System.SimpleScheduler">
+                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+                <SyncTime>$Config/SyncTime$</SyncTime>
+              </DataSource>
+              <ProbeAction ID="PS" TypeID="Ambari.SCOM.Module.ImpersonatedPowerShellPropertyBagProbe" >
+                <ScriptName>$Config/WorkflowName$.ps1</ScriptName>
+                <ScriptBody>
+                  $Config/Script$
+
+                  $IncludeFileContent/Shared Scripts/Logging.ps1$
+                  $IncludeFileContent/Shared Scripts/JsonParser.ps1$
+                  $IncludeFileContent/Shared Scripts/RestApi.ps1$
+                  $IncludeFileContent/Shared Scripts/MonitoringHelpers.ps1$
+
+                  if (!$Username) { return }
+
+                  $ScriptApi = New-Object -ComObject "MOM.ScriptAPI"
+
+                  try {
+                  Main
+                  } catch [System.Net.WebException] {
+                  if ($_.Exception.Response.StatusCode -eq [System.Net.HttpStatusCode]::Forbidden)
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1902
+                  }
+                  elseif ($_.Exception.Response.StatusCode -eq [System.Net.HttpStatusCode]::NotFound)
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1903
+                  }
+                  elseif ($_.Exception.Status -eq [System.Net.WebExceptionStatus]::ConnConnectFailure)
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1903
+                  }
+                  elseif ($_.Exception.Status -eq [System.Net.WebExceptionStatus]::Timeout)
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1904
+                  }
+                  else
+                  {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1901
+                  }
+                  } catch {
+                  LogMessage '$Config/WorkflowName$' 1 $_ 1901
+                  }
+                </ScriptBody>
+                <Parameters>$Config/Parameters$</Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+              </ProbeAction>
+              <ConditionDetection ID="StartupCheck" TypeID="System!System.ExpressionFilter">
+                <Expression>$Config/StartupExpression$</Expression>
+              </ConditionDetection>
+            </MemberModules>
+            <Composition>
+              <Node ID="PS">
+                <Node ID="StartupCheck">
+                  <Node ID="Scheduler" />
+                </Node>
+              </Node>
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.PropertyBagData</OutputType>
+      </DataSourceModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Module.BaseScriptedPropertyBagDataSource">
+          <Name>Hadoop Base Scripted Property Bag Data Provider</Name>
+          <Description>This module allows to execute Powershell scripts to collect data into Property Bag objects.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

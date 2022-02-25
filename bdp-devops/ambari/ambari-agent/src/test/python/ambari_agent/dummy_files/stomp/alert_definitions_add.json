@@ -1,0 +1,45 @@
+{
+  "hash": "c3046b031f8e27facf803151cddf0619",
+  "eventType": "UPDATE",
+  "clusters": {
+    "0": {
+      "hash": "8f7b4e960133bc691661cbcdaddddec8",
+      "clusterName": "cl1",
+      "hostName": "ctr-e134-1499953498516-81665-01-000008.hwx.site",
+      "publicHostName": "ctr-e134-1499953498516-81665-01-000008.hwx.site",
+      "alertDefinitions": [{
+          "ignore_host": false,
+          "name": "hbase_master_process",
+          "componentName": "HBASE_MASTER",
+          "interval": 1,
+          "clusterId": 2,
+          "uuid": "ff73ead7-13b4-43ea-a747-d230f17bf230",
+          "label": "HBase Master Process",
+          "definitionId": 1,
+          "source": {
+            "reporting": {
+              "warning": {
+                "text": "TCP OK - {0:.3f}s response on port {1}",
+                "value": 1.5
+              },
+              "ok": {
+                "text": "TCP OK - {0:.3f}s response on port {1}"
+              },
+              "critical": {
+                "text": "Connection failed: {0} to {1}:{2}",
+                "value": 5.0
+              }
+            },
+            "type": "PORT",
+            "uri": "{{hbase-site/hbase.master.port}}",
+            "default_port": 60000
+          },
+          "serviceName": "HBASE",
+          "scope": "ANY",
+          "enabled": true,
+          "description": "This alert is triggered if the HBase master processes cannot be confirmed to be up and listening on the network for the configured critical threshold, given in seconds."
+        }
+      ]
+    }
+  }
+}

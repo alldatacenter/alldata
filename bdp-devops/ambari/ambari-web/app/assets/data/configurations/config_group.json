@@ -1,0 +1,22 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/config_groups?ConfigGroup/tag=HDFS&fields=*&_=1393334422559",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/config_groups/2",
+      "ConfigGroup" : {
+        "cluster_name" : "cl",
+        "description" : "testmode group",
+        "desired_configs" : [ ],
+        "group_name" : "test",
+        "hosts" : [
+          {
+            "host_name" : "dev01.hortonworks.com",
+            "href" : "http://192.168.56.101:8080/api/v1/clusters/cl/hosts/dev01.hortonworks.com"
+          }
+        ],
+        "id" : 2,
+        "tag" : "HDFS"
+      }
+    }
+  ]
+}

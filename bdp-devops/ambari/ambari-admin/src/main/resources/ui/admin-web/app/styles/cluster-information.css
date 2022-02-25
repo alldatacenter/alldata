@@ -1,0 +1,81 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#cluster-information .cluster-name label {
+  font-weight: normal;
+}
+
+#cluster-information .dev-blueprint {
+  line-height: 35px;
+}
+
+#cluster-information .dev-blueprint span {
+  vertical-align: text-top;
+}
+#cluster-information .cluster-name .cluster-input-block{
+  float: left;
+  width: 75%;
+}
+
+#cluster-information .cluster-name button {
+  float: right;
+}
+
+#cluster-information .cluster-name input.edited {
+  background-color: #fdfbdd;
+}
+
+#cluster-information .welcome-header {
+  margin: -15px;
+  padding: 15px 15px 40px 15px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+#cluster-information .create-cluster-section {
+  text-align: center;
+  padding: 30px;
+}
+
+#cluster-information .install-button {
+  height: 40px;
+}
+
+#cluster-information .install-button a {
+  height: 100%;
+  padding: 0;
+  width: 225px;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+@keyframes INSTALL-BOX-ROTATE {
+  0% {transform: rotate(0deg)}
+  12.5% {transform: rotate(-30deg)}
+  37.5% {transform: rotate(30deg)}
+  62.5% {transform: rotate(-30deg)}
+  87.5% {transform: rotate(30deg)}
+  100% {transform: rotate(0deg)}
+}
+
+#cluster-information #install-box {
+  animation: INSTALL-BOX-ROTATE 2s;
+  width: 116px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}

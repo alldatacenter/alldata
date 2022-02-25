@@ -1,0 +1,127 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div id="views-table">
+
+    <div class="clearfix">
+        <div class="pull-right">
+            <button ng-disabled="views.length === 0" ng-click="createInstance();" class="btn btn-default">
+                {{'views.create' | translate}}
+            </button>
+        </div>
+        <div class="search-box-button pull-right">
+            <button class="btn btn-default" ng-click="toggleSearchBox()">
+                <i class="fa fa-filter" aria-hidden="true"></i>
+            </button>
+            <div class="popup-arrow-up hide"></div>
+        </div>
+    </div>
+
+    <div class="search-box-row hide">
+        <combo-search suggestions="filters" filter-change="filterInstances" placeholder="Search"></combo-search>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th class="col-md-2">
+                <span>{{'common.name' | translate}}</span>
+            </th>
+            <th class="col-md-3">
+                <span>{{'urls.url' | translate}}</span>
+            </th>
+            <th class="col-md-2">
+                <span>{{'views.table.viewType' | translate}}</span>
+            </th>
+            <th class="col-md-2">
+                <span>{{'views.urlName' | translate}}</span>
+            </th>
+            <th class="col-md-2 entity-actions">
+                <span>{{'common.actions' | translate}}</span>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="instance in instances | filter : { isShowed: true }">
+            <td>
+                <span>{{instance.instance_name}}</span>
+            </td>
+            <td>
+                <a target="_blank"
+                   href="{{fromSiteRoot('/#!/main/view/' + instance.view_name + '/' + instance.short_url)}}">/main/view/{{instance.view_name}}/{{instance.short_url}}
+                    &nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+            </td>
+            <td>
+                <span>{{instance.view_name}} {{"{"+instance.version+"}"}} </span>
+            </td>
+            <td>
+                <span>{{instance.short_url_name}}</span>
+            </td>
+            <td class="entity-actions" ng-switch="instance.versionObj.status">
+                <span ng-switch-when="PENDING">
+                    <i class="viewstatus pending"></i>
+                    {{'views.pending' | translate}}
+                </span>
+                <span ng-switch-when="DEPLOYING">
+                    <div class="viewstatus deploying">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                    </div>
+                    {{'views.deploying' | translate}}
+                </span>
+
+                <span ng-switch-when="DEPLOYED">
+                    <a  href="#!/views/{{instance.view_name}}/versions/{{instance.version}}/instances/{{instance.instance_name}}/edit">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a href ng-click="cloneInstance(instance);">
+                        <i class="fa fa-copy"></i>
+                    </a>
+                    <a href ng-click="deleteInstance(instance)">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </span>
+                <span ng-switch-when="ERROR" class="error" tooltip="{{'views.alerts.deployError' | translate}}">
+                    <i class="fa fa-exclamation-triangle"></i>
+                    {{'common.error' | translate}}
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-if="isLoading" class="spinner-container">
+      <i class="fa fa-2x fa-spinner fa-spin" aria-hidden="true"></i>
+    </div>
+    <div class="alert empty-table-alert col-sm-12" ng-show="!tableInfo.filtered && !isLoading">
+        {{'views.emptyTable'| translate}}
+    </div>
+    <div class="col-sm-12 table-bar" ng-show="instances.length >= minInstanceForPagination">
+        <div class="pull-left filtered-info">
+            <span>{{'common.filterInfo' | translate:{showed: tableInfo.showed, total: tableInfo.filtered, term: urs.urls} }}</span>
+        </div>
+        <div class="pull-right left-margin">
+            <pagination class="paginator" total-items="tableInfo.filtered" max-size="pagination.maxVisiblePages" items-per-page="pagination.itemsPerPage" ng-model="pagination.currentPage" ng-change="pageChanged()"></pagination>
+        </div>
+        <div class="pull-right">
+            <select class="form-control" ng-model="pagination.itemsPerPage" ng-change="resetPagination()" ng-options="currOption for currOption in [10, 25, 50, 100]"></select>
+        </div>
+    </div>
+
+</div>

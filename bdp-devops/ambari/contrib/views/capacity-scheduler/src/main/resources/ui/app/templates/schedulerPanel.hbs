@@ -1,0 +1,192 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="panel panel-default panel-scheduler">
+  <div class="panel-heading">
+    <div class="panel-title">
+      Scheduler
+      {{queue-badge q=scheduler class="pull-right"}}
+    </div>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        {{tooltip-label
+          label='Maximum Applications'
+          class="col-xs-5 control-label"
+          message='For entire cluster, maximum number of applications that can be running or pending at any point of time'
+        }}
+        {{#if isOperator}}
+        <div class="col-xs-6 control-value">
+          {{int-input value=scheduler.maximum_applications maxlength=15 class="input-sm input-int"}}
+          {{#if schedulerDirtyFilelds.maximum_applications}}
+            <div class="btn-group btn-group-xs" >
+                <a {{action 'rollbackProp' 'maximum_applications' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+            </div>
+          {{/if}}
+        </div>
+        {{else}}
+        <div class="col-xs-6">
+          <p class="form-control-static">{{scheduler.maximum_applications}}</p>
+        </div>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        {{tooltip-label
+          label='Maximum AM Resource'
+          class="col-xs-5 control-label"
+          message='For entire cluster, maximum percentage of total capacity that can be utilized by application masters at any point in time.'
+        }}
+        {{#if isOperator}}
+        <div class="col-xs-6 control-value input-percent-wrap">
+          <div>
+            <div class="input-group input-percent">
+              {{int-input value=scheduler.maximum_am_resource_percent class="input-sm" maxVal=100}}
+              <span class="input-group-addon">%</span>
+            </div>
+          </div>
+          {{#if schedulerDirtyFilelds.maximum_am_resource_percent}}
+            <div class="btn-group btn-group-xs" >
+                <a {{action 'rollbackProp' 'maximum_am_resource_percent' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+            </div>
+          {{/if}}
+        </div>
+        {{else}}
+        <div class="col-xs-6">
+          {{#if scheduler.maximum_am_resource_percent}}
+            <p class="form-control-static">{{scheduler.maximum_am_resource_percent}} %</p>
+          {{else}}
+            <p class="form-control-static">-</p>
+          {{/if}}
+        </div>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        {{tooltip-label
+          label='Node Locality Delay'
+          class="col-xs-5 control-label"
+          message='Number of missed scheduling cycles after which the scheduler attempts to schedule rack-local containers.'
+        }}
+        {{#if isOperator}}
+          <div class="col-xs-6 control-value">
+            {{int-input value=scheduler.node_locality_delay maxlength=10 class="input-sm input-int"}}
+            {{#if schedulerDirtyFilelds.node_locality_delay}}
+              <div class="btn-group btn-group-xs" >
+                  <a {{action 'rollbackProp' 'node_locality_delay' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+        {{else}}
+          <div class="col-xs-6">
+            {{#if scheduler.node_locality_delay}}
+              <p class="form-control-static">{{scheduler.node_locality_delay}} %</p>
+            {{else}}
+              <p class="form-control-static">-</p>
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+      {{#if isOperator}}
+          <div class="form-group">
+            {{tooltip-label
+              label='Calculator'
+              class="col-xs-5 control-label"
+              message='The method by which the scheduler calculates resource capacity across resource types. <br/> Default Resource Calculator allocates resources based on memory alone. <br/> Dominant Resource Calculator allocates resources based on memory, cpu etc.'
+            }}
+            <div class="col-xs-7 control-value">
+              {{view Ember.Select
+                class="form-control input-sm input-resource-calc"
+                content=resourceCalculatorValues
+                optionLabelPath="content.label"
+                optionValuePath="content.value"
+                value=scheduler.resource_calculator
+              }}
+              {{#if schedulerDirtyFilelds.resource_calculator}}
+                <div class="btn-group btn-group-xs" >
+                    <a {{action 'rollbackProp' 'resource_calculator' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                </div>
+              {{/if}}
+            </div>
+          </div>
+      {{/if}}
+      <div class="form-group">
+        {{tooltip-label
+          label='Queue Mappings'
+          class="col-xs-5 control-label"
+          message='This configuration specifies the mapping of user or group to aspecific queue. You can map a single user or a list of users to queues. Syntax: [u or g]:[name]:[queue_name][,next_mapping]*. Here, u or g indicates whether the mapping is for a user or group. The value is u for user and g for group. name indicates the user name or group name. To specify the user who has submitted the application, %user can be used. queue_name indicates the queue name for which the application has to be mapped. To specify queue name same as user name, %user can be used. To specify queue name same as the name of the primary group for which the user belongs to, %primary_group can be used.'
+        }}
+        {{#if isOperator}}
+          <div class="col-xs-7 control-value">
+            {{expandable-input value=scheduler.queue_mappings classNameBindings="hasInvalidQueueMappings:list-group-item-danger" class="input-sm form-control input-expand"}}
+            {{#if schedulerDirtyFilelds.queue_mappings}}
+              <div class="btn-group btn-group-xs" >
+                  <a {{action 'rollbackProp' 'queue_mappings' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+        {{else}}
+          <div class="col-xs-6">
+            {{#if scheduler.queue_mappings}}
+              <p class="form-control-static">{{scheduler.queue_mappings}}</p>
+            {{else}}
+              <p class="form-control-static">-</p>
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        {{tooltip-label
+          class="col-xs-5 control-label"
+          label='Queue Mappings Override'
+          message='This function is used to specify whether the user specified queues can be overridden. This is a Boolean value and the default value is false.'
+        }}
+          {{#if isOperator}}
+          <div class="col-xs-7 control-value input-percent-wrap">
+            <div>
+              <div class="btn-group btn-group-sm pull-right">
+                <a href="#" {{action 'toggleProperty' 'queue_mappings_override_enable' scheduler}} class="btn btn-default">
+                  <i {{bind-attr class=":fa scheduler.queue_mappings_override_enable:fa-check-square-o:fa-square-o"}}></i>
+                  {{#if scheduler.queue_mappings_override_enable}}
+                    Enabled
+                  {{else}}
+                    Disabled
+                  {{/if}}
+                </a>
+              </div>
+            </div>
+            {{#if schedulerDirtyFilelds.queue_mappings_override_enable}}
+              <div class="btn-group btn-group-xs" >
+                <a {{action 'rollbackProp' 'queue_mappings_override_enable' scheduler}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+          {{else}}
+          <div class="col-xs-6">
+            <p class="form-control-static">
+            {{#if scheduler.queue_mappings_override_enable}}
+              Enabled
+            {{else}}
+              Disabled
+            {{/if}}
+            </p>
+          </div>
+          {{/if}}
+      </div>
+    </form>
+  </div>
+</div>

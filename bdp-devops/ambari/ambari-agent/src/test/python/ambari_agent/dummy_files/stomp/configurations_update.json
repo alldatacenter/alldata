@@ -1,0 +1,53 @@
+{
+  "hash": "a1a71f4b46feaf72bf33627d78bbdc3e",
+  "timestamp": 1510577217,
+  "clusters": {
+    "0":{
+      "configurations":{
+        "zookeeper-env":{
+          "zk_user":"zookeeper",
+          "zk_log_dir":"/var/log/zookeeper",
+          "content":"\nexport JAVA_HOME={{java64_home}}\nexport ZOO_LOG_DIR={{zk_log_dir}}\nexport ZOOPIDFILE={{zk_pid_file}}\nexport SERVER_JVMFLAGS={{zk_server_heapsize}}\nexport JAVA=$JAVA_HOME/bin/java\nexport CLASSPATH=$CLASSPATH:/usr/share/zookeeper/*\n\n{% if security_enabled %}\nexport SERVER_JVMFLAGS=\"$SERVER_JVMFLAGS -Djava.security.auth.login.config={{zk_server_jaas_file}}\"\nexport CLIENT_JVMFLAGS=\"$CLIENT_JVMFLAGS -Djava.security.auth.login.config={{zk_client_jaas_file}}\"\n{% endif %}",
+          "zk_pid_dir":"/var/run/zookeeper",
+          "zookeeper_principal_name":"zookeeper/_HOST@EXAMPLE.COM",
+          "zookeeper_keytab_path":"/etc/security/keytabs/zk.service.keytab"
+        },
+        "zoo.cfg":{
+          "clientPort":"2181",
+          "syncLimit":"5",
+          "initLimit":"10",
+          "dataDir":"/hadoop/zookeeper",
+          "tickTime":"2000"
+        },
+        "hadoop-env": {
+          "proxyuser_group": "users",
+          "hdfs_user_nproc_limit": "65536",
+          "hdfs_log_dir_prefix": "/var/log/hadoop",
+          "keyserver_host": " ",
+          "namenode_opt_maxnewsize": "200m",
+          "nfsgateway_heapsize": "1024",
+          "dtnode_heapsize": "1024m",
+          "namenode_heapsize": "1024m",
+          "namenode_opt_maxpermsize": "256m",
+          "namenode_opt_permsize": "128m",
+          "hdfs_tmp_dir": "/tmp",
+          "hdfs_user": "hdfs",
+          "hdfs_user_nofile_limit": "128000",
+          "namenode_opt_newsize": "200m",
+          "keyserver_port": "",
+          "namenode_backup_dir": "/tmp/upgrades",
+          "hadoop_root_logger": "INFO,RFA",
+          "hadoop_heapsize": "1024",
+          "hadoop_pid_dir_prefix": "/var/run/hadoop"
+        }
+      },
+      "configurationAttributes":{
+        "core-site":{
+          "final":{
+            "fs.defaultFS":"true"
+          }
+        }
+      }
+    }
+  }
+}

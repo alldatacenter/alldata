@@ -1,0 +1,445 @@
+{
+  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions?fields=*,repository_versions/*,repository_versions/operatingSystems/*",
+  "items": [
+    {
+      "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/1",
+      "ClusterStackVersions": {
+        "cluster_name": "1",
+        "id": 1,
+        "repository_version": 1,
+        "stack": "HDP",
+        "state": "CURRENT",
+        "version": "2.2",
+        "host_states": {
+          "CURRENT": [
+            "ab3test-4.c.pramod-thangali.internal"
+          ],
+          "INSTALLED": [],
+          "INSTALLING": [],
+          "INSTALL_FAILED": [],
+          "UPGRADED": [],
+          "UPGRADE_FAILED": [],
+          "UPGRADING": []
+        }
+      },
+      "repository_versions": [
+        {
+          "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/1/repository_versions/1",
+          "RepositoryVersions": {
+            "display_name": "HDP-2.2",
+            "id": 1,
+            "repository_version": "2.2.0.2",
+            "stack_name": "HDP",
+            "stack_version": "2.2",
+            "upgrade_pack": ""
+          },
+          "operating_systems": []
+        }
+      ]
+    },
+    {
+      "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/2",
+      "ClusterStackVersions": {
+        "cluster_name": "1",
+        "id": 2,
+        "repository_version": 2,
+        "stack": "HDP",
+        "state": "INSTALLED",
+        "version": "2.2",
+        "host_states": {
+          "CURRENT": [],
+          "INSTALLED": [
+            "ab3test-4.c.pramod-thangali.internal"
+          ],
+          "INSTALLING": [],
+          "INSTALL_FAILED": [],
+          "UPGRADED": [],
+          "UPGRADE_FAILED": [],
+          "UPGRADING": []
+        }
+      },
+      "repository_versions": [
+        {
+          "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/2/repository_versions/2",
+          "RepositoryVersions": {
+            "display_name": "HDP 2.2.0",
+            "id": 2,
+            "repository_version": "2.2.0.1-885",
+            "stack_name": "HDP",
+            "stack_version": "2.2",
+            "upgrade_pack": "upgrade-2.2"
+          },
+          "operating_systems": [
+            {
+              "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/2/repository_versions/2/operating_systems/redhat6",
+              "OperatingSystems": {
+                "os_type": "redhat6",
+                "repository_version_id": 2,
+                "stack_name": "HDP",
+                "stack_version": "2.2"
+              },
+              "repositories": [
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/2/repository_versions/2/operating_systems/redhat6/repositories/HDP-2.2",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-2.2",
+                    "repository_version_id": 2,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                },
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/2/repository_versions/2/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-UTILS-1.1.0.20",
+                    "repository_version_id": 2,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/3",
+      "ClusterStackVersions": {
+        "cluster_name": "1",
+        "id": 3,
+        "repository_version": 3,
+        "stack": "HDP",
+        "state": "INSTALLING",
+        "version": "2.2",
+        "host_states": {
+          "CURRENT": [],
+          "INSTALLED": [],
+          "INSTALLING": ["ab3test-4.c.pramod-thangali.internal"],
+          "INSTALL_FAILED": [],
+          "UPGRADED": [],
+          "UPGRADE_FAILED": [],
+          "UPGRADING": []
+        }
+      },
+      "repository_versions": [
+        {
+          "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/3/repository_versions/3",
+          "RepositoryVersions": {
+            "display_name": "HDP 2.2.1",
+            "id": 3,
+            "repository_version": "2.2.1.1-885",
+            "stack_name": "HDP",
+            "stack_version": "2.2",
+            "upgrade_pack": "upgrade-2.2"
+          },
+          "operating_systems": [
+            {
+              "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/3/repository_versions/3/operating_systems/redhat6",
+              "OperatingSystems": {
+                "os_type": "redhat6",
+                "repository_version_id": 3,
+                "stack_name": "HDP",
+                "stack_version": "2.2"
+              },
+              "repositories": [
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/3/repository_versions/3/operating_systems/redhat6/repositories/HDP-2.2",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-2.2",
+                    "repository_version_id": 3,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                },
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/3/repository_versions/3/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-UTILS-1.1.0.20",
+                    "repository_version_id": 3,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/4",
+      "ClusterStackVersions": {
+        "cluster_name": "1",
+        "id": 4,
+        "repository_version": 4,
+        "stack": "HDP",
+        "state": "INSTALL_FAILED",
+        "version": "2.2",
+        "host_states": {
+          "CURRENT": [],
+          "INSTALLED": [],
+          "INSTALLING": [],
+          "INSTALL_FAILED": ["ab3test-4.c.pramod-thangali.internal"],
+          "UPGRADED": [],
+          "UPGRADE_FAILED": [],
+          "UPGRADING": []
+        }
+      },
+      "repository_versions": [
+        {
+          "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/4/repository_versions/4",
+          "RepositoryVersions": {
+            "display_name": "HDP 2.2.2",
+            "id": 4,
+            "repository_version": "2.2.2.1-885",
+            "stack_name": "HDP",
+            "stack_version": "2.2",
+            "upgrade_pack": "upgrade-2.2"
+          },
+          "operating_systems": [
+            {
+              "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/4/repository_versions/4/operating_systems/redhat6",
+              "OperatingSystems": {
+                "os_type": "redhat6",
+                "repository_version_id": 4,
+                "stack_name": "HDP",
+                "stack_version": "2.2"
+              },
+              "repositories": [
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/4/repository_versions/4/operating_systems/redhat6/repositories/HDP-2.2",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-2.2",
+                    "repository_version_id": 4,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                },
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/4/repository_versions/4/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-UTILS-1.1.0.20",
+                    "repository_version_id": 4,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/5",
+      "ClusterStackVersions": {
+        "cluster_name": "1",
+        "id": 5,
+        "repository_version": 5,
+        "stack": "HDP",
+        "state": "INSTALLED",
+        "version": "2.2",
+        "host_states": {
+          "CURRENT": [],
+          "INSTALLED": [
+            "ab3test-4.c.pramod-thangali.internal"
+          ],
+          "INSTALLING": [],
+          "INSTALL_FAILED": [],
+          "UPGRADED": [],
+          "UPGRADE_FAILED": [],
+          "UPGRADING": []
+        }
+      },
+      "repository_versions": [
+        {
+          "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/5/repository_versions/5",
+          "RepositoryVersions": {
+            "display_name": "HDP 2.2.3",
+            "id": 5,
+            "repository_version": "2.2.3.1-885",
+            "stack_name": "HDP",
+            "stack_version": "2.2",
+            "upgrade_pack": "upgrade-2.2"
+          },
+          "operating_systems": [
+            {
+              "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/5/repository_versions/5/operating_systems/redhat6",
+              "OperatingSystems": {
+                "os_type": "redhat6",
+                "repository_version_id": 5,
+                "stack_name": "HDP",
+                "stack_version": "2.2"
+              },
+              "repositories": [
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/5/repository_versions/5/operating_systems/redhat6/repositories/HDP-2.2",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-2.2",
+                    "repository_version_id": 5,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                },
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/5/repository_versions/5/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-UTILS-1.1.0.20",
+                    "repository_version_id": 5,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/6",
+      "ClusterStackVersions": {
+        "cluster_name": "1",
+        "id": 6,
+        "repository_version": 6,
+        "stack": "HDP",
+        "state": "UPGRADING",
+        "version": "2.2",
+        "host_states": {
+          "CURRENT": [],
+          "INSTALLED": [
+            "ab3test-4.c.pramod-thangali.internal"
+          ],
+          "INSTALLING": [],
+          "INSTALL_FAILED": [],
+          "UPGRADED": [],
+          "UPGRADE_FAILED": [],
+          "UPGRADING": []
+        }
+      },
+      "repository_versions": [
+        {
+          "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/6/repository_versions/6",
+          "RepositoryVersions": {
+            "display_name": "HDP 2.2.4",
+            "id": 6,
+            "repository_version": "2.2.4.1-885",
+            "stack_name": "HDP",
+            "stack_version": "2.2",
+            "upgrade_pack": "upgrade-2.2"
+          },
+          "operating_systems": [
+            {
+              "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/6/repository_versions/6/operating_systems/redhat6",
+              "OperatingSystems": {
+                "os_type": "redhat6",
+                "repository_version_id": 6,
+                "stack_name": "HDP",
+                "stack_version": "2.2"
+              },
+              "repositories": [
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/6/repository_versions/6/operating_systems/redhat6/repositories/HDP-2.2",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-2.2",
+                    "repository_version_id": 6,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                },
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/6/repository_versions/6/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-UTILS-1.1.0.20",
+                    "repository_version_id": 6,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/7",
+      "ClusterStackVersions": {
+        "cluster_name": "1",
+        "id": 7,
+        "repository_version": 7,
+        "stack": "HDP",
+        "state": "OUT_OF_SYNC",
+        "version": "2.2",
+        "host_states": {
+          "CURRENT": [],
+          "INSTALLED": [
+            "ab3test-4.c.pramod-thangali.internal"
+          ],
+          "INSTALLING": [],
+          "INSTALL_FAILED": [],
+          "UPGRADED": [],
+          "UPGRADE_FAILED": [],
+          "UPGRADING": []
+        }
+      },
+      "repository_versions": [
+        {
+          "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/7/repository_versions/7",
+          "RepositoryVersions": {
+            "display_name": "HDP 2.2.5",
+            "id": 7,
+            "repository_version": "2.2.5.1-885",
+            "stack_name": "HDP",
+            "stack_version": "2.2",
+            "upgrade_pack": "upgrade-2.2"
+          },
+          "operating_systems": [
+            {
+              "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/7/repository_versions/7/operating_systems/redhat6",
+              "OperatingSystems": {
+                "os_type": "redhat6",
+                "repository_version_id": 7,
+                "stack_name": "HDP",
+                "stack_version": "2.2"
+              },
+              "repositories": [
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/7/repository_versions/7/operating_systems/redhat6/repositories/HDP-2.2",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-2.2",
+                    "repository_version_id": 7,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                },
+                {
+                  "href": "http://162.216.149.241:8080/api/v1/clusters/1/stack_versions/7/repository_versions/7/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.20",
+                  "Repositories": {
+                    "os_type": "redhat6",
+                    "repo_id": "HDP-UTILS-1.1.0.20",
+                    "repository_version_id": 7,
+                    "stack_name": "HDP",
+                    "stack_version": "2.2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

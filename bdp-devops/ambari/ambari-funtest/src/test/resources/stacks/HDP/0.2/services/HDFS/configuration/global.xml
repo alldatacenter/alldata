@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<configuration>
+  <property>
+    <name>namenode_host</name>
+    <value></value>
+    <description>NameNode Host.</description>
+  </property>
+  <property>
+    <name>dfs_name_dir</name>
+    <value>/hadoop/hdfs/namenode</value>
+    <description>NameNode Directories.</description>
+  </property>
+  <property>
+    <name>snamenode_host</name>
+    <value></value>
+    <description>Secondary NameNode.</description>
+  </property>
+  <property>
+    <name>fs_checkpoint_dir</name>
+    <value>/hadoop/hdfs/namesecondary</value>
+    <description>Secondary NameNode checkpoint dir.</description>
+  </property>
+  <property>
+    <name>datanode_hosts</name>
+    <value></value>
+    <description>List of Datanode Hosts.</description>
+  </property>
+  <property>
+    <name>dfs_data_dir</name>
+    <value>/hadoop/hdfs/data</value>
+    <description>Data directories for Data Nodes.</description>
+  </property>
+  <property>
+    <name>hdfs_log_dir_prefix</name>
+    <value>/var/log/hadoop</value>
+    <description>Hadoop Log Dir Prefix</description>
+  </property>
+  <property>
+    <name>hadoop_pid_dir_prefix</name>
+    <value>/var/run/hadoop</value>
+    <description>Hadoop PID Dir Prefix</description>
+  </property>
+  <property>
+    <name>dfs_webhdfs_enabled</name>
+    <value>true</value>
+    <description>WebHDFS enabled</description>
+  </property>
+  <property>
+    <name>hadoop_heapsize</name>
+    <value>1024</value>
+    <description>Hadoop maximum Java heap size</description>
+  </property>
+  <property>
+    <name>namenode_heapsize</name>
+    <value>1024</value>
+    <description>NameNode Java heap size</description>
+  </property>
+  <property>
+    <name>namenode_opt_newsize</name>
+    <value>200</value>
+    <description>Default size of Java new generation for NameNode (Java option -XX:NewSize) Note: The value of NameNode new generation size (default size of Java new generation for NameNode (Java option -XX:NewSize)) should be 1/8 of maximum heap size (-Xmx). Ensure that the value of the namenode_opt_newsize property is 1/8 the value of maximum heap size (-Xmx).</description>
+  </property>
+  <property>
+    <name>namenode_opt_maxnewsize</name>
+    <value>640</value>
+    <description>NameNode maximum new generation size</description>
+  </property>
+  <property>
+    <name>namenode_opt_permsize</name>
+    <value>128</value>
+    <description>NameNode permanent generation size</description>
+  </property>
+  <property>
+    <name>namenode_opt_maxpermsize</name>
+    <value>256</value>
+    <description>NameNode maximum permanent generation size</description>
+  </property>
+  <property>
+    <name>datanode_du_reserved</name>
+    <value>1</value>
+    <description>Reserved space for HDFS</description>
+  </property>
+  <property>
+    <name>dtnode_heapsize</name>
+    <value>1024</value>
+    <description>DataNode maximum Java heap size</description>
+  </property>
+  <property>
+    <name>dfs_datanode_failed_volume_tolerated</name>
+    <value>0</value>
+    <description>DataNode volumes failure toleration</description>
+  </property>
+  <property>
+    <name>fs_checkpoint_period</name>
+    <value>21600</value>
+    <description>HDFS Maximum Checkpoint Delay</description>
+  </property>
+  <property>
+    <name>fs_checkpoint_size</name>
+    <value>0.5</value>
+    <description>FS Checkpoint Size.</description>
+  </property>
+  <property>
+    <name>security_enabled</name>
+    <value>false</value>
+    <description>Hadoop Security</description>
+  </property>
+  <property>
+    <name>kerberos_domain</name>
+    <value>EXAMPLE.COM</value>
+    <description>Kerberos realm.</description>
+  </property>
+  <property>
+    <name>kerberos_domain</name>
+    <value>EXAMPLE.COM</value>
+    <description>Kerberos realm.</description>
+  </property>
+  <property>
+    <name>keytab_path</name>
+    <value>/etc/security/keytabs</value>
+    <description>KeyTab Directory.</description>
+  </property>
+  
+</configuration>

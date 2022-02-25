@@ -1,0 +1,89 @@
+{
+  "name": "YARN",
+  "configurations": [
+  ],
+  "components": [
+    {
+      "name": "NODEMANAGER",
+      "identities": [
+        {
+          "name": "nodemanager_nm",
+          "principal": {
+            "value": "nm/_HOST@${realm}",
+            "configuration": "yarn-site/yarn.nodemanager.principal"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/nm.service.keytab",
+            "owner": {
+              "name": "${hadoop-env/hdfs_user}",
+              "access": "r"
+            },
+            "group": {
+              "name": "${cluster-env/user_group}",
+              "access": ""
+            },
+            "configuration": "yarn-site/yarn.nodemanager.keytab"
+          }
+        },
+        {
+          "name": "nodemanager_host",
+          "principal": {
+            "value": "host/_HOST@${realm}"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/nm.service.keytab",
+            "owner": {
+              "name": "${hadoop-env/hdfs_user}",
+              "access": "r"
+            },
+            "group": {
+              "name": "${cluster-env/user_group}",
+              "access": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RESOURCEMANAGER",
+      "identities": [
+        {
+          "name": "resource_manager_rm",
+          "principal": {
+            "value": "rm/_HOST@${realm}",
+            "configuration": "yarn-site/yarn.resourcemanager.principal"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/rm.service.keytab",
+            "owner": {
+              "name": "${hadoop-env/hdfs_user}",
+              "access": "r"
+            },
+            "group": {
+              "name": "${cluster-env/user_group}",
+              "access": ""
+            },
+            "configuration": "yarn-site/yarn.resourcemanager.keytab"
+          }
+        },
+        {
+          "name": "resource_manager_host",
+          "principal": {
+            "value": "host/_HOST@${realm}"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/rm.service.keytab",
+            "owner": {
+              "name": "${hadoop-env/hdfs_user}",
+              "access": "r"
+            },
+            "group": {
+              "name": "${cluster-env/user_group}",
+              "access": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

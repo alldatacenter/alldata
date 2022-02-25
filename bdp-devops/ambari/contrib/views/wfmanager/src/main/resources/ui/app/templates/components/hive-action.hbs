@@ -1,0 +1,100 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="panel panel-default">
+  <div class="panel-heading">General</div>
+  <div class="form-group padding10">
+    <label class="control-label col-xs-2">Hive Option</label>
+    <div class="col-xs-2">
+      <input type="radio" name="hiveOption" checked={{if (eq isScript true) 'checked'}}  {{action "setIsScript" true preventDefault=false on="change"}}> Script
+    </div>
+    <div class="col-xs-2">
+      <input type="radio" name="hiveOption" checked={{if (eq isScript false) 'checked'}}  {{action "setIsScript" false preventDefault=false on="change"}}> Query
+    </div>
+  </div>
+  <div id="script-option">
+    <div class="form-group padding10">
+      <label class="control-label col-xs-2">Script<span class="requiredField">&nbsp;*</span></label>
+      <div class="col-xs-7">
+        <div class="input-group">
+          {{input type="text" class="form-control" name="script" value=actionModel.script placeholder="hive.hql"}}
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button" {{action "openFileBrowser" "actionModel.script"}}>Browse</button>
+          </span>
+        </div>
+        {{field-error model=this field='actionModel.script' showErrorMessage=showErrorMessage}}
+      </div>
+    </div>
+  </div>
+  <div id="query-option">
+    <div class="form-group padding10">
+      <label class="control-label col-xs-2">Query<span class="requiredField">&nbsp;*</span></label>
+      <div class="col-xs-7">
+        <div class="input-group">
+          {{textarea class="form-control" name="query" class="query-text-area" value=actionModel.query placeholder="hive query"}}
+        </div>
+        {{field-error model=this field='actionModel.query' showErrorMessage=showErrorMessage}}
+      </div>
+    </div>
+  </div>
+  {{#jobxml-config jobXml=actionModel.jobXml openFileBrowser="openFileBrowser" register="register"}}{{/jobxml-config}}
+  {{#arg-config args=actionModel.params register="register" title="Param"}}{{/arg-config}}
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Transition</div>
+  <div class="panel-body handlerPanel">
+    {{#transition-config transition=transition killNodes=killNodes currentNode=currentNode register="register"}}{{/transition-config}}
+  </div>
+</div>
+{{#action-credential-config credentials=credentials actionCredentials=actionModel.credentials}}{{/action-credential-config}}
+<div class="panel panel-default">
+  <div class="panel-heading" id="accordion" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+      Advanced Properties
+      <i class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <br/>
+      <div class=" panel panel-default">
+        <div class="panel-body handlerPanel">
+          <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">Resource Manager</label>
+            <div class="col-xs-7">
+              {{input type="text" class="form-control" name="job-tracker" value=actionModel.jobTracker placeholder="Resource Manager"}}
+            </div>
+            {{field-error error=errors.actionModel.jobTracker}}
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="control-label col-xs-2">Name node</label>
+            <div class="col-xs-7">
+              {{input type="text" class="form-control"  name="name-node" value=actionModel.nameNode validations="required,noWhitespace" placeholder="Name node"}}
+            </div>
+          </div>
+          {{#file-config files=actionModel.files openFileBrowser="openFileBrowser" register="register" title="File"}}{{/file-config}}
+          {{#file-config files=actionModel.archives openFileBrowser="openFileBrowser" register="register" title="Archive"}}{{/file-config}}
+          {{#prepare-config prepare=actionModel.prepare openFileBrowser="openFileBrowser" register="register"}}{{/prepare-config}}
+          {{#arg-config args=actionModel.args register="register" title="arg"}}{{/arg-config}}
+        </div>
+      </div>
+      <div class=" panel panel-default">
+        <div class="panel-heading">Configuration</div>
+        <div class="panel-body handlerPanel">
+          {{#name-value-config configuration=actionModel.configuration register="register"}}{{/name-value-config}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{#sla-info slaInfo=actionModel.slaInfo slaEnabled=actionModel.slaEnabled register="register"}}{{/sla-info}}

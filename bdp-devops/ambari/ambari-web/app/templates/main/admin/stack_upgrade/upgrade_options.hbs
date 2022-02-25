@@ -1,0 +1,101 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.parentView.controller.isUpgradeTypesLoaded}}
+  {{#if view.parentView.controller.getSupportedUpgradeError}}
+    <i class="glyphicon glyphicon-remove"/>{{t admin.stackVersions.version.upgrade.upgradeOptions.error}}
+    <pre>{{view.parentView.controller.getSupportedUpgradeError}}</pre>
+  {{else}}
+    <div id="upgrade-options-popup-content">
+      <p class="text">{{{view.versionText}}}</p>
+      {{#if view.upgradeShow}}
+        <p class="text method-text">{{t admin.stackVersions.version.upgrade.upgradeOptions.bodyMsg.method}}</p>
+      {{/if}}
+      <div {{bindAttr class=":row :method-options view.isInUpgradeWizard:disabled"}}>
+        {{#each method in view.upgradeMethods}}
+          {{#unless method.cantBeStarted}}
+            <div class="method-option col-md-6">
+              <div {{bindAttr class="method.allowed::not-allowed method.allowed::not-allowed-by-version
+                            method.isPrecheckFailed:not-allowed method.isPrecheckFailed:check-failed
+                            method.selected:selected method.type :img-thumbnail
+                            view.upgradeShow::default-cursor"}}
+                {{action selectMethod method target="view"}}>
+                <div {{bindAttr class="method.icon :method-icon"}}></div>
+                <div class="method-name">{{method.displayName}}</div>
+                <div class="method-description">{{{method.description}}}</div>
+                {{#if view.showPreUpgradeChecks}}
+                  {{#if method.isCheckRequestInProgress}}
+                    <div class="method-precheck-message checking">
+                      {{view App.SpinnerView message="admin.stackVersions.version.upgrade.upgradeOptions.preCheck.msg.checking"}}
+                    </div>
+                  {{else}}
+                    <div {{bindAttr class=":method-precheck-message method.precheckResultsMessageClass"}}>
+                      <i {{bindAttr class="method.precheckResultsMessageIconClass"}}></i>
+                      <b>{{method.precheckResultsTitle}}</b>&nbsp;
+                      <a {{action runAction method target="view"}}>
+                        {{method.precheckResultsMessage}}
+                      </a>
+                      {{#if method.bypassedFailures}}
+                        <div
+                          class="alert-danger">{{t admin.stackVersions.version.upgrade.upgradeOptions.errors_bypassed}}</div>
+                      {{/if}}
+                    </div>
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+      {{#if view.upgradeShow}}
+        <div class="text tolerance-text">{{t admin.stackVersions.version.upgrade.upgradeOptions.bodyMsg.tolerance}}
+          <i class="glyphicon glyphicon-question-sign failure-tolerance-tooltip" data-toggle="tooltip"></i>
+          <div>
+            {{view App.CheckboxView
+            labelClassNames="tolerance-option"
+            labelTranslate="admin.stackVersions.version.upgrade.upgradeOptions.tolerance.option2"
+            checkedBinding="view.parentView.skipSCFailures"}}
+          </div>
+          <div>
+            {{view App.CheckboxView
+            labelClassNames="tolerance-option"
+            labelTranslate="admin.stackVersions.version.upgrade.upgradeOptions.tolerance.option1"
+            checkedBinding="view.parentView.skipComponentFailures"
+            }}
+          </div>
+        </div>
+      {{/if}}
+      <div class="alert alert-warning">{{t admin.stackVersions.version.upgrade.alertsWarning}}</div>
+    </div>
+  {{/if}}
+{{else}}
+  <div class="row">
+    <div class="col-md-1 col-md-offset-3">{{view App.SpinnerView}}</div>
+    <div class="col-md-8 spinner-text">
+      {{t admin.stackVersions.version.upgrade.upgradeOptions.loading}}
+    </div>
+  </div>
+  <div class="text tolerance-text">{{t admin.stackVersions.version.upgrade.upgradeOptions.bodyMsg.tolerance}}
+    <i class="icon-question-sign failure-tolerance-tooltip" data-toggle="tooltip"></i>
+    <label class="tolerance-option">{{view Ember.Checkbox checkedBinding="view.parentView.skipSCFailures"}}
+      {{t admin.stackVersions.version.upgrade.upgradeOptions.tolerance.option2}}</label>
+    <label class="tolerance-option">{{view Ember.Checkbox checkedBinding="view.parentView.skipComponentFailures"}}
+      {{t admin.stackVersions.version.upgrade.upgradeOptions.tolerance.option1}}</label>
+  </div>
+  <div class="alert alert-warning">{{t admin.stackVersions.version.upgrade.alertsWarning}}</div>
+{{/if}}

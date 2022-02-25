@@ -1,0 +1,59 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="row component-summary">
+  {{view view.dashboardMasterComponentView}}
+  <div class="col-md-12">
+    <div class="col-md-2">
+      {{#if view.showComponentsTitleForNonMasters}}
+        {{t dashboard.services.hdfs.summary.components}}
+      {{/if}}
+    </div>
+    <div class="col-md-10">
+      {{view App.SummaryClientComponentsView clientsObjBinding="view.parentView.clientObj"}}
+    </div>
+  </div>
+</div>
+{{#each endpoint in hiveServerEndPoints}}
+  {{#if endpoint.isVisible}}
+    <div {{bindAttr class=":row :component endpoint.componentName"}}>
+      <div class="col-md-2 col-lg-2 summary-label" style="margin-top: 0px;">{{endpoint.label}}</div>
+      <div class="col-md-10 col-lg-10 summary-value">
+        <span class="endpoint-value">
+          {{endpoint.value}}
+          {{#view view.clipBoardView data-clipboard-action= "copy" data-clipboard-textBinding="endpoint.value"}}
+            <img src="/img/clippy.svg" alt="Copy" rel="clipboard-tooltip" data-toggle="tooltip" data-placement="bottom" title="Copied!"/>
+          {{/view}}
+        </span>
+      </div>
+    </div>
+  {{/if}}
+{{/each}}
+
+<div class="row">
+  <div class="col-md-6">
+    {{#each link in view.viewLinks}}
+      <div class="row">
+        <div class="col-md-6 summary-label" style="margin-top: 0px;">{{link.label}}</div>
+        <div class="col-md-6 summary-value">
+          <a href="#" target="_blank" {{action goToView link.viewInstance target="controller"}}>{{t app.goToView}}</a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,61 @@
+{
+  "href" : "http://dev.hortonworks.com:8080/api/v1/clusters/mycluster/configurations/?type=hdfs-site&tag=version1&_=1363102423788",
+  "items" : [
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/clusters/mycluster/configurations?type=hdfs-site&tag=version1",
+      "tag" : "version1",
+      "type" : "hdfs-site",
+      "Config" : {
+        "cluster_name" : "mycluster"
+      },
+      "properties" : {
+        "dfs.http.address" : "dev.hortonworks.com:50070",
+        "dfs.https.address" : "dev.hortonworks.com:50470",
+        "dfs.datanode.max.xcievers" : "4096",
+        "dfs.safemode.threshold.pct" : "1.0f",
+        "dfs.datanode.http.address" : "0.0.0.0:50075",
+        "dfs.datanode.address" : "0.0.0.0:50010",
+        "dfs.namenode.keytab.file" : "/etc/security/keytabs/nn.service.keytab",
+        "dfs.datanode.failed.volumes.tolerated" : "0",
+        "dfs.datanode.data.dir.perm" : "750",
+        "ipc.server.read.threadpool.size" : "5",
+        "dfs.datanode.du.pct" : "0.85f",
+        "ipc.server.max.response.size" : "5242880",
+        "dfs.datanode.socket.write.timeout" : "0",
+        "dfs.datanode.du.reserved" : "1",
+        "dfs.namenode.handler.count" : "40",
+        "dfs.web.ugi" : "gopher,gopher",
+        "dfs.datanode.keytab.file" : "/etc/security/keytabs/dn.service.keytab",
+        "dfs.name.dir" : "/hadoop/hdfs/namenode",
+        "dfs.balance.bandwidthPerSec" : "6250000",
+        "dfs.heartbeat.interval" : "3",
+        "dfs.permissions.supergroup" : "hdfs",
+        "dfs.secondary.namenode.keytab.file" : "/etc/security/keytabs/nn.service.keytab",
+        "dfs.cluster.administrators" : " hdfs",
+        "dfs.hosts.exclude" : "/etc/hadoop/dfs.exclude",
+        "dfs.namenode.kerberos.https.principal" : "host/_HOST@EXAMPLE.COM",
+        "dfs.permissions" : "true",
+        "dfs.datanode.kerberos.principal" : "dn/_HOST@EXAMPLE.COM",
+        "dfs.web.authentication.kerberos.keytab" : "/etc/security/keytabs/spnego.service.keytab",
+        "dfs.webhdfs.enabled" : "false",
+        "dfs.secondary.https.port" : "50490",
+        "dfs.secondary.namenode.kerberos.https.principal" : "host/_HOST@EXAMPLE.COM",
+        "dfs.block.size" : "134217728",
+        "dfs.datanode.ipc.address" : "0.0.0.0:8010",
+        "dfs.data.dir" : "/hadoop/hdfs/data",
+        "dfs.access.time.precision" : "0",
+        "dfs.blockreport.initialDelay" : "120",
+        "dfs.block.access.token.enable" : "true",
+        "dfs.https.port" : "50470",
+        "dfs.umaskmode" : "077",
+        "dfs.secondary.http.address" : "dev.hortonworks.com:50090",
+        "dfs.replication" : "3",
+        "dfs.secondary.namenode.kerberos.principal" : "nn/_HOST@EXAMPLE.COM",
+        "dfs.replication.max" : "50",
+        "dfs.hosts" : "/etc/hadoop/dfs.include",
+        "dfs.namenode.kerberos.principal" : "nn/_HOST@EXAMPLE.COM",
+        "dfs.block.local-path-access.user" : "hbase"
+      }
+    }
+  ]
+}

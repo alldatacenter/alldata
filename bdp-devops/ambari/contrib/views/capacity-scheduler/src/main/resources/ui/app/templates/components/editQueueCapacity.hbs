@@ -1,0 +1,58 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="row form-inline">
+  <div class="col-md-2 col-sm-2">
+    {{#link-to 'capsched.queuesconf.editqueue' queue}}{{queue.name}}{{/link-to}}
+  </div>
+  <div class="col-md-5 col-md-5">
+    <div {{bind-attr class=":form-group :input-group :capacity-input-percent warnInvalidTotalCapacity:has-error"}}>
+      {{decimal-capacity-input class='input-sm' value=queue.capacity queue=queue maxVal=100}}
+      <span class="input-group-addon">%</span>
+    </div>
+    <div class="form-group capacity-input-slider">
+      {{decimal-input-range min="0" max="100" step="0.01" value=queue.capacity class="input-sm"}}
+    </div>
+    {{#if isQueueCapacityDirty}}
+      <div class="btn-group btn-group-xs">
+        <a {{action 'rollbackProp' 'capacity' queue}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+      </div>
+    {{/if}}
+  </div>
+  <div class="col-md-5 col-sm-5">
+    <div {{bind-attr class=":form-group :input-group :capacity-input-percent isInvalidQueueMaximumCapacity:has-error"}}>
+      {{decimal-maxcapacity-input class='input-sm' value=queue.maximum_capacity queue=queue maxVal=100}}
+      <span class="input-group-addon">%</span>
+    </div>
+    <div class="form-group capacity-input-slider">
+      {{decimal-input-range min="0" max="100" step="0.01" value=queue.maximum_capacity class="input-sm"}}
+    </div>
+    {{#if isQueueMaximumCapacityDirty}}
+      <div class="btn-group btn-group-xs">
+        <a {{action 'rollbackProp' 'maximum_capacity' queue}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+      </div>
+    {{/if}}
+    {{#if isInvalidQueueMaximumCapacity}}
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <small class="text-danger">Maximum capacity must be greater than or equal to capacity</small>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</div>

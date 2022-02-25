@@ -1,0 +1,139 @@
+{
+  "patches": [
+    {
+      "id":              "TYPEDEF_PATCH_2000_103",
+      "description":     "Set serviceType 'rdbms' to rdbms_instance",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_instance",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_104",
+      "description":     "Set serviceType 'rdbms' to rdbms_db",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_db",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_105",
+      "description":     "Set serviceType 'rdbms' to rdbms_table",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_table",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_106",
+      "description":     "Set serviceType 'rdbms' to rdbms_column",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_column",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_107",
+      "description":     "Set serviceType 'rdbms' to rdbms_index",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_index",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_108",
+      "description":     "Set serviceType 'rdbms' to rdbms_foreign_key",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_foreign_key",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_109",
+      "description":     "Set serviceType 'rdbms' to rdbms_instance_databases",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_instance_databases",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_110",
+      "description":     "Set serviceType 'rdbms' to rdbms_db_tables",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_db_tables",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_111",
+      "description":     "Set serviceType 'rdbms' to rdbms_table_columns",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_table_columns",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_112",
+      "description":     "Set serviceType 'rdbms' to rdbms_table_indexes",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_table_indexes",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_113",
+      "description":     "Set serviceType 'rdbms' to rdbms_index_columns",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_index_columns",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_114",
+      "description":     "Set serviceType 'rdbms' to rdbms_table_foreign_key",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_table_foreign_key",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_115",
+      "description":     "Set serviceType 'rdbms' to rdbms_foreign_key_key_columns",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_foreign_key_key_columns",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_116",
+      "description":     "Set serviceType 'rdbms' to rdbms_foreign_key_table_references",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_foreign_key_table_references",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    },
+    {
+      "id":              "TYPEDEF_PATCH_2000_117",
+      "description":     "Set serviceType 'rdbms' to rdbms_foreign_key_column_references",
+      "action":          "SET_SERVICE_TYPE",
+      "typeName":        "rdbms_foreign_key_column_references",
+      "applyToVersion":  "1.0",
+      "updateToVersion": "1.1",
+      "serviceType":     "rdbms"
+    }
+  ]
+}

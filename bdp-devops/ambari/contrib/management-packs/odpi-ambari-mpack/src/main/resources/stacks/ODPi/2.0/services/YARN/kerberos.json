@@ -1,0 +1,224 @@
+{
+  "services": [
+    {
+      "name": "YARN",
+      "identities": [
+        {
+          "name": "yarn_spnego",
+          "reference": "/spnego"
+        },
+        {
+          "name": "yarn_smokeuser",
+          "reference": "/smokeuser"
+        }
+      ],
+      "configurations": [
+        {
+          "yarn-site": {
+            "yarn.timeline-service.enabled": "false",
+            "yarn.timeline-service.http-authentication.type": "kerberos",
+            "yarn.acl.enable": "true",
+            "yarn.timeline-service.http-authentication.signature.secret": "",
+            "yarn.timeline-service.http-authentication.signature.secret.file": "",
+            "yarn.timeline-service.http-authentication.signer.secret.provider": "",
+            "yarn.timeline-service.http-authentication.signer.secret.provider.object": "",
+            "yarn.timeline-service.http-authentication.token.validity": "",
+            "yarn.timeline-service.http-authentication.cookie.domain": "",
+            "yarn.timeline-service.http-authentication.cookie.path": "",
+            "yarn.timeline-service.http-authentication.proxyusers.*.hosts": "",
+            "yarn.timeline-service.http-authentication.proxyusers.*.users": "",
+            "yarn.timeline-service.http-authentication.proxyusers.*.groups": "",
+            "yarn.timeline-service.http-authentication.kerberos.name.rules": "",
+            "yarn.resourcemanager.proxyusers.*.groups": "",
+            "yarn.resourcemanager.proxyusers.*.hosts": "",
+            "yarn.resourcemanager.proxyusers.*.users": "",
+            "yarn.resourcemanager.proxy-user-privileges.enabled": "true",
+            "yarn.nodemanager.linux-container-executor.cgroups.mount-path": ""
+          }
+        },
+        {
+          "core-site": {
+            "hadoop.proxyuser.${yarn-env/yarn_user}.groups": "*",
+            "hadoop.proxyuser.${yarn-env/yarn_user}.hosts": "${clusterHostInfo/rm_host}"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name": "NODEMANAGER",
+          "identities": [
+            {
+              "name": "nodemanager_nm",
+              "principal": {
+                "value": "nm/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "yarn-site/yarn.nodemanager.principal",
+                "local_username": "${yarn-env/yarn_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/nm.service.keytab",
+                "owner": {
+                  "name": "${yarn-env/yarn_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "yarn-site/yarn.nodemanager.keytab"
+              }
+            },
+            {
+              "name": "yarn_nodemanager_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "yarn-site/yarn.nodemanager.webapp.spnego-principal"
+              },
+              "keytab": {
+                "configuration": "yarn-site/yarn.nodemanager.webapp.spnego-keytab-file"
+              }
+            }
+          ],
+          "configurations": [
+            {
+              "yarn-site": {
+                "yarn.nodemanager.container-executor.class": "org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor"
+              }
+            }
+          ]
+        },
+        {
+          "name": "RESOURCEMANAGER",
+          "identities": [
+            {
+              "name": "resource_manager_rm",
+              "principal": {
+                "value": "rm/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "yarn-site/yarn.resourcemanager.principal",
+                "local_username": "${yarn-env/yarn_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/rm.service.keytab",
+                "owner": {
+                  "name": "${yarn-env/yarn_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "yarn-site/yarn.resourcemanager.keytab"
+              }
+            },
+            {
+              "name": "yarn_resourcemanager_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "yarn-site/yarn.resourcemanager.webapp.spnego-principal"
+              },
+              "keytab": {
+                "configuration": "yarn-site/yarn.resourcemanager.webapp.spnego-keytab-file"
+              }
+            }
+          ]
+        },
+        {
+          "name": "APP_TIMELINE_SERVER",
+          "identities": [
+            {
+              "name": "app_timeline_server_yarn",
+              "principal": {
+                "value": "yarn/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "yarn-site/yarn.timeline-service.principal",
+                "local_username": "${yarn-env/yarn_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/yarn.service.keytab",
+                "owner": {
+                  "name": "${yarn-env/yarn_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "yarn-site/yarn.timeline-service.keytab"
+              }
+            },
+            {
+              "name": "yarn_app_timeline_server_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "yarn-site/yarn.timeline-service.http-authentication.kerberos.principal"
+              },
+              "keytab": {
+                "configuration": "yarn-site/yarn.timeline-service.http-authentication.kerberos.keytab"
+              }
+            },
+            {
+              "name": "yarn_app_timelineserver_hdfs",
+              "reference": "/HDFS/NAMENODE/hdfs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAPREDUCE2",
+      "identities": [
+        {
+          "name": "mapreduce2_spnego",
+          "reference": "/spnego"
+        },
+        {
+          "name": "mapreduce2_smokeuser",
+          "reference": "/smokeuser"
+        }
+      ],
+      "components": [
+        {
+          "name": "HISTORYSERVER",
+          "identities": [
+            {
+              "name": "mapreduce2_history_server_hdfs",
+              "reference": "/HDFS/NAMENODE/hdfs"
+            },
+            {
+              "name": "history_server_jhs",
+              "principal": {
+                "value": "jhs/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "mapred-site/mapreduce.jobhistory.principal",
+                "local_username": "${mapred-env/mapred_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/jhs.service.keytab",
+                "owner": {
+                  "name": "${mapred-env/mapred_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "mapred-site/mapreduce.jobhistory.keytab"
+              }
+            },
+            {
+              "name": "mapreduce2_history_server_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "mapred-site/mapreduce.jobhistory.webapp.spnego-principal"
+              },
+              "keytab": {
+                "configuration": "mapred-site/mapreduce.jobhistory.webapp.spnego-keytab-file"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

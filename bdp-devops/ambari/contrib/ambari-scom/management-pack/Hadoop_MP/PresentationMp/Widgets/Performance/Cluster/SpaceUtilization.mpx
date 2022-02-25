@@ -1,0 +1,318 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Widget.SpaceUtilization"
+                     Base="Ambari.SCOM.Presentation.Widget.BaseStackedPerformanceWidget"
+                     Accessibility="Internal">
+        <Property Name="SelectedClusters" Type="mpinstance://System.Library!System.Entity[]" BindingDirection="In" />
+      </ComponentType>
+    </ComponentTypes>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Widget.SpaceUtilizationImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Widget.SpaceUtilization"
+                               Accessibility="Internal" Platform="Wpf, Silverlight">
+        <Composite>
+          <Base>
+            <Binding PropertyId="AutoRefreshTickInterval">
+              <Reference>$Property/AutoRefreshTickInterval$</Reference>
+            </Binding>
+
+            <Binding PropertyId="PerformanceObjectCounters">
+              <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataSourceTypes/PerformanceDataSeriesQueryType[]">
+                <ComplexValue Type="xsd://Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Schema.BasePerformanceWidget/PerformanceDataSeriesQueryType">
+                  <Binding PropertyId="EscapeSQL">
+                    <SimpleValue Type="xsd://boolean" Value="False" />
+                  </Binding>
+                  <Binding PropertyId="PerformanceObjectName">
+                    <SimpleValue Type="xsd://string" Value="Hadoop : Dashboards" />
+                  </Binding>
+                  <Binding PropertyId="PerformanceCounterName">
+                    <SimpleValue Type="xsd://string" Value="Space Utilization" />
+                  </Binding>
+                  <Binding PropertyId="PerformanceCounterInstanceName">
+                    <SimpleValue Type="xsd://string" Value="%" />
+                  </Binding>
+                  <Binding PropertyId="ManagedEntityIds">
+                    <Reference>$Property/SelectedClusters$</Reference>
+                  </Binding>
+                  <Binding PropertyId="DatapointReduction">
+                    <SimpleValue Type="xsd://string" Value="Average" />
+                  </Binding>
+                </ComplexValue>
+              </ComplexValueCollection>
+            </Binding>
+
+            <Binding PropertyId="DateRange">
+              <Reference>$Property/DateRange$</Reference>
+            </Binding>
+
+            <Binding PropertyId="Axes">
+              <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/LinearAxis[]">
+                <ComplexValue Type="xsd://Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Schema.ChartDataTypes/ForegroundLinearAxis">
+                  <Binding PropertyId="Minimum">
+                    <SimpleValue Type="xsd://integer" Value="0" />
+                  </Binding>
+                  <Binding PropertyId="Interval">
+                    <SimpleValue Type="xsd://integer" Value="0" />
+                  </Binding>
+                  <Binding PropertyId="AutoCalculate">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="Title">
+                    <SimpleValue Type="xsd://string" Value="" />
+                  </Binding>
+                  <Binding PropertyId="Orientation">
+                    <SimpleValue Type="xsd://string" Value="Y" />
+                  </Binding>
+                </ComplexValue>
+              </ComplexValueCollection>
+            </Binding>
+
+            <Binding PropertyId="SeriesConfigurations">
+              <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/ConfigurationMapping[]">
+                <!-- Non-DFS Used -->
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/ConfigurationMapping">
+                  <Binding PropertyId="KeyPropertyName">
+                    <SimpleValue Type="xsd://string" Value="InstanceName" />
+                  </Binding>
+                  <Binding PropertyId="Id">
+                    <SimpleValue Type="xsd://string" Value="Non-DFS Used"/>
+                  </Binding>
+                  <Binding PropertyId="Configuration">
+                    <ComplexValue Type="xsd://Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Schema.ChartDataTypes/StackableSeriesConfiguration">
+                      <Binding PropertyId="Order">
+                        <SimpleValue Type="xsd://int" Value="1"/>
+                      </Binding>
+                      <Binding PropertyId="StackSize">
+                        <SimpleValue Type="xsd://int" Value="3"/>
+                      </Binding>
+                      <Binding PropertyId="DataKey">
+                        <SimpleValue Type="xsd://string" Value="DataSet" />
+                      </Binding>
+                      <Binding PropertyId="StackedSeriesType">
+                        <SimpleValue Type="xsd://string" Value="xsd://Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Schema.ChartDataTypes/StackedAreaSeries" />
+                      </Binding>
+                      <Binding PropertyId="Color">
+                        <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/HexColor">
+                          <Binding PropertyId="HexString">
+                            <SimpleValue Type="xsd://string" Value="#707070" />
+                          </Binding>
+                        </ComplexValue>
+                      </Binding>
+                    </ComplexValue>
+                  </Binding>
+                </ComplexValue>
+
+                <!-- Used -->
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/ConfigurationMapping">
+                  <Binding PropertyId="KeyPropertyName">
+                    <SimpleValue Type="xsd://string" Value="InstanceName" />
+                  </Binding>
+                  <Binding PropertyId="Id">
+                    <SimpleValue Type="xsd://string" Value="Used"/>
+                  </Binding>
+                  <Binding PropertyId="Configuration">
+                    <ComplexValue Type="xsd://Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Schema.ChartDataTypes/StackableSeriesConfiguration">
+                      <Binding PropertyId="Order">
+                        <SimpleValue Type="xsd://int" Value="2"/>
+                      </Binding>
+                      <Binding PropertyId="StackSize">
+                        <SimpleValue Type="xsd://int" Value="3"/>
+                      </Binding>
+                      <Binding PropertyId="DataKey">
+                        <SimpleValue Type="xsd://string" Value="DataSet" />
+                      </Binding>
+                      <Binding PropertyId="StackedSeriesType">
+                        <SimpleValue Type="xsd://string" Value="xsd://Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Schema.ChartDataTypes/StackedAreaSeries" />
+                      </Binding>
+                      <Binding PropertyId="Color">
+                        <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/HexColor">
+                          <Binding PropertyId="HexString">
+                            <SimpleValue Type="xsd://string" Value="#1842A7" />
+                          </Binding>
+                        </ComplexValue>
+                      </Binding>
+                    </ComplexValue>
+                  </Binding>
+                </ComplexValue>
+
+                <!-- Free -->
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/ConfigurationMapping">
+                  <Binding PropertyId="KeyPropertyName">
+                    <SimpleValue Type="xsd://string" Value="InstanceName" />
+                  </Binding>
+                  <Binding PropertyId="Id">
+                    <SimpleValue Type="xsd://string" Value="Free"/>
+                  </Binding>
+                  <Binding PropertyId="Configuration">
+                    <ComplexValue Type="xsd://Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Schema.ChartDataTypes/StackableSeriesConfiguration">
+                      <Binding PropertyId="Order">
+                        <SimpleValue Type="xsd://int" Value="3"/>
+                      </Binding>
+                      <Binding PropertyId="StackSize">
+                        <SimpleValue Type="xsd://int" Value="3"/>
+                      </Binding>
+                      <Binding PropertyId="DataKey">
+                        <SimpleValue Type="xsd://string" Value="DataSet" />
+                      </Binding>
+                      <Binding PropertyId="StackedSeriesType">
+                        <SimpleValue Type="xsd://string" Value="xsd://Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Schema.ChartDataTypes/StackedAreaSeries" />
+                      </Binding>
+                      <Binding PropertyId="Color">
+                        <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/HexColor">
+                          <Binding PropertyId="HexString">
+                            <SimpleValue Type="xsd://string" Value="#6A9304" />
+                          </Binding>
+                        </ComplexValue>
+                      </Binding>
+                    </ComplexValue>
+                  </Binding>
+                </ComplexValue>
+
+                <!-- Total line -->
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/ConfigurationMapping">
+                  <Binding PropertyId="KeyPropertyName">
+                    <SimpleValue Type="xsd://string" Value="InstanceName" />
+                  </Binding>
+                  <Binding PropertyId="Id">
+                    <SimpleValue Type="xsd://string" Value="Total"/>
+                  </Binding>
+                  <Binding PropertyId="Configuration">
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/LineSeries2DConfiguration">
+                      <Binding PropertyId="DataKey">
+                        <SimpleValue Type="xsd://string" Value="DataSet" />
+                      </Binding>
+                      <Binding PropertyId="LineThickness">
+                        <SimpleValue Type="xsd://string" Value="4.0"/>
+                      </Binding>
+                      <Binding PropertyId="Color">
+                        <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ChartDataTypes/HexColor">
+                          <Binding PropertyId="HexString">
+                            <SimpleValue Type="xsd://string" Value="#F6881D" />
+                          </Binding>
+                        </ComplexValue>
+                      </Binding>
+                    </ComplexValue>
+                  </Binding>
+                </ComplexValue>
+              </ComplexValueCollection>
+            </Binding>
+
+            <Binding PropertyId="LegendColumns">
+              <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn[]">
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="HeaderDisplayObject">
+                    <SimpleValue Type="xsd://string" Value="$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.CommonString.PerfChartColumns.MetricName/DisplayName$" />
+                  </Binding>
+                  <Binding PropertyId="SortableGroupable">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="CanResize">
+                    <SimpleValue Type="xsd://boolean" Value="True" />
+                  </Binding>
+                  <Binding PropertyId="Width">
+                    <SimpleValue Type="xsd://string" Value="*" />
+                  </Binding>
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="InstanceName" />
+                  </Binding>
+                </ComplexValue>
+
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="CellComponentType">
+                    <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Control.GridCell.TwoDecimalDigitsNumberCell" />
+                  </Binding>
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="LastValue" />
+                  </Binding>
+                  <Binding PropertyId="HeaderDisplayObject">
+                    <SimpleValue Type="xsd://string" Value="$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.CommonString.PerfChartColumns.LastValue/DisplayName$" />
+                  </Binding>
+                  <Binding PropertyId="SortableGroupable">
+                    <SimpleValue Type="xsd://boolean" Value="False" />
+                  </Binding>
+                  <Binding PropertyId="CanResize">
+                    <SimpleValue Type="xsd://boolean" Value="False" />
+                  </Binding>
+                  <Binding PropertyId="Width">
+                    <SimpleValue Type="xsd://string" Value="50" />
+                  </Binding>
+                </ComplexValue>
+
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="CellComponentType">
+                    <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Control.GridCell.TwoDecimalDigitsNumberCell" />
+                  </Binding>
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="AverageValue" />
+                  </Binding>
+                  <Binding PropertyId="HeaderDisplayObject">
+                    <SimpleValue Type="xsd://string" Value="$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.CommonString.PerfChartColumns.AverageValue/DisplayName$" />
+                  </Binding>
+                  <Binding PropertyId="SortableGroupable">
+                    <SimpleValue Type="xsd://boolean" Value="False" />
+                  </Binding>
+                  <Binding PropertyId="CanResize">
+                    <SimpleValue Type="xsd://boolean" Value="False" />
+                  </Binding>
+                  <Binding PropertyId="Width">
+                    <SimpleValue Type="xsd://string" Value="50" />
+                  </Binding>
+                </ComplexValue>
+
+                <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.ColumnType/DataGridColumn">
+                  <Binding PropertyId="CellComponentType">
+                    <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Control.GridCell.TwoDecimalDigitsNumberCell" />
+                  </Binding>
+                  <Binding PropertyId="PropertyName">
+                    <SimpleValue Type="xsd://string" Value="MaximumValue" />
+                  </Binding>
+                  <Binding PropertyId="HeaderDisplayObject">
+                    <SimpleValue Type="xsd://string" Value="$MPReference/Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.CommonString.PerfChartColumns.MaximumValue/DisplayName$" />
+                  </Binding>
+                  <Binding PropertyId="SortableGroupable">
+                    <SimpleValue Type="xsd://boolean" Value="False" />
+                  </Binding>
+                  <Binding PropertyId="CanResize">
+                    <SimpleValue Type="xsd://boolean" Value="False" />
+                  </Binding>
+                  <Binding PropertyId="Width">
+                    <SimpleValue Type="xsd://string" Value="50" />
+                  </Binding>
+                </ComplexValue>
+              </ComplexValueCollection>
+            </Binding>
+          </Base>
+        </Composite>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Widget.SpaceUtilization">
+          <Name>Space Utilization (GB)</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

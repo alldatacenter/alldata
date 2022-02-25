@@ -1,0 +1,65 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="workflow-actions-pop">
+  <span data-toggle="popover" title="Click on an Action to Insert"></span>
+  <div id="actions">
+    <div class="_actions_popup">
+      <div class="clearfix"></div>
+      <h4>Control Flow Nodes</h4>
+      <ul class="actions_list_left control_flow">
+          <li {{action 'addAction' 'fork'}} data-name="fork" data-type="fork" class="dr_action_fork _fork enabled"> <i class="fa fa-sitemap"></i> Fork </li>
+          <li {{action 'addAction' 'decision'}} class="dr_action_switch switch enabled" data-name="Decision" data-type="decision"><span class="decisionText">Decision</span> </li>
+      </ul>
+      <div class="clearfix"></div>
+      <h4>Action Nodes</h4>
+      {{#if clipboardHasContents}}
+        <div>
+           <span class="btn paste-action-btn" {{action 'pasteNode'}}>
+             <i class="fa fa-paste"></i>
+             <span class="paste-action">Paste from clipboard</span>
+           </span>
+        </div>
+      {{/if}}
+      <div {{action 'showAssetNodeList'}} class="btn asset-import-btn margin3"> <i class="fa fa-download"></i> <span class="font10px">Import Asset from Local Ambari Database</span></div>
+      <div {{action 'showImportActionNodeFileBrowser'}} class="btn asset-import-btn margin3"> <i class="fa fa-cloud-download"></i> <span class="font10px">Import Asset from Shared File System</span></div>
+      <div class="clearfix"></div>
+      <ul class="actions_list_left actionNodes">
+{{!--           <li {{action 'addAction' 'hive'}} class="dr_action enabled" data-name="Hive" data-type="hive"> <i class="fa fa-server"></i> Hive </li> --}}
+          <li {{action 'addAction' 'hive2'}} class="dr_action enabled" data-name="Hive" data-type="hive2"> <i class="fa fa-server"></i> Hive2</li>
+          <li {{action 'addAction' 'sqoop'}} class="dr_action enabled" data-name="Sqoop" data-type="sqoop"> <i class="fa fa-database"></i> Sqoop </li>
+          <li {{action 'addAction' 'pig'}} class="dr_action enabled" data-name="Pig" data-type="pig"> <i class="fa fa-product-hunt"></i>&nbsp; Pig </li>
+          <li {{action 'addAction' 'sub-workflow'}} class="dr_action enabled" data-name="sub-workflow" data-type="sub-workflow"> <i class="fa fa-share-alt-square"></i>Sub-wf</li>
+
+          <li {{action 'addAction' 'hdfs'}} class="dr_action disabled hide" data-name="HDFS" data-type="hdfs"> <i class="fa fa-copy"></i> HDFS </li>
+          <li {{action 'addAction' 'java'}} class="dr_action enabled" data-name="Java" data-type="java"> <i class="fa fa-code"></i> Java </li>
+          <li {{action 'addAction' 'shell'}} class="dr_action enabled" data-name="Shell" data-type="shell"> <i class="fa fa-terminal"></i> Shell </li>
+          <li {{action 'addAction' 'distcp'}} class="dr_action enabled" data-name="distcp" data-type="distcp"> <i class="fa fa-clone"></i> distcp </li>
+          <li {{action 'addAction' 'map-reduce'}} class="dr_action enabled" data-name="MR" data-type="map-reduce"> <i class="fa fa-cubes"></i> MR </li>
+          <li {{action 'addAction' 'ssh'}} class="dr_action enabled" data-name="SSH" data-type="ssh"> <i class="fa fa-terminal"></i> ssh </li>
+          <li {{action 'addAction' 'spark'}} class="dr_action enabled" data-name="Spark" data-type="spark"> <i class="fa fa-star"></i> Spark </li>
+          <li class="dr_action disabled hide" data-name="Stream" data-type="stream"> <i class="fa fa-exchange"></i> Stream </li>
+          <li {{action 'addAction' 'email'}} class="dr_action  enabled" data-name="Email" data-type="email"> <i class="fa fa-envelope"></i> Email </li>
+          <li {{action 'addAction' 'fs'}} class="dr_action  enabled" data-name="fs" data-type="fs"> <i class="fa fa-folder-o"></i> FS </li>
+          {{#if customActionEnabled}}
+            <li {{action 'addAction' 'custom'}} class="dr_action  enabled" data-name="custom" data-type="custom"> <i class="fa fa-magic" aria-hidden="true"></i> Custom </li>
+          {{/if}}
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

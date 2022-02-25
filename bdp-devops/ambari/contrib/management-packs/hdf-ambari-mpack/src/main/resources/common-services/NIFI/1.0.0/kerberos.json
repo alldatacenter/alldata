@@ -1,0 +1,74 @@
+{
+  "services": [
+    {
+      "name": "NIFI",
+      "components": [
+        {
+          "name": "NIFI_MASTER",
+          "identities": [
+            {
+              "name": "nifi_nifi_master_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "nifi-properties/nifi.kerberos.spnego.principal"
+              },
+              "keytab": {
+                "configuration": "nifi-properties/nifi.kerberos.spnego.keytab.location"
+              }
+            },
+            {
+              "name": "nifi_principal",
+              "principal": {
+                "value": "${nifi-env/nifi_user}/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "nifi-properties/nifi.kerberos.service.principal",
+                "local_username": "${nifi-env/nifi_user}"
+
+              },
+              "keytab": {
+                "file": "${keytab_dir}/nifi.service.keytab",
+                "owner": {
+                  "name": "${nifi-env/nifi_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "nifi-properties/nifi.kerberos.service.keytab.location"
+              }
+            },
+            {
+              "name": "nifi_nifi_master_nifi_principal",
+              "reference": "/NIFI/NIFI_MASTER/nifi_principal",
+              "principal": {
+                "configuration": "ranger-nifi-audit/xasecure.audit.jaas.Client.option.principal"
+              },
+              "keytab": {
+                "configuration": "ranger-nifi-audit/xasecure.audit.jaas.Client.option.keyTab"
+              }
+            }
+          ],
+          "configurations": [
+            {
+              "nifi-properties": {
+                "nifi.kerberos.krb5.file": "${krb5-conf/conf_dir}/krb5.conf",
+                "nifi.security.user.login.identity.provider": "kerberos-provider"
+              }
+            },
+            {
+              "ranger-nifi-audit": {
+                "xasecure.audit.jaas.Client.loginModuleName": "com.sun.security.auth.module.Krb5LoginModule",
+                "xasecure.audit.jaas.Client.loginModuleControlFlag": "required",
+                "xasecure.audit.jaas.Client.option.useKeyTab": "true",
+                "xasecure.audit.jaas.Client.option.storeKey": "false",
+                "xasecure.audit.jaas.Client.option.serviceName": "solr",
+                "xasecure.audit.destination.solr.force.use.inmemory.jaas.config": "true"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

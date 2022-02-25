@@ -1,0 +1,47 @@
+{
+  "href" : "http://dev.hortonworks.com:8080/api/v1/users/?fields=*",
+  "items" : [
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/users/user",
+      "Users" : {
+        "user_name" : "user",
+        "ldap_user" : false,
+        "roles" : [
+          "user"
+        ]
+      }
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/users/admin",
+      "Users" : {
+        "user_name" : "admin",
+        "ldap_user" : false,
+        "roles" : [
+          "admin",
+          "user"
+        ]
+      }
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/users/jone",
+      "Users" : {
+        "user_name" : "jone",
+        "ldap_user" : true,
+        "roles" : [
+          "user"
+        ]
+      }
+    },
+    {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/users/alex",
+      "Users" : {
+        "user_name" : "alex",
+        "ldap_user" : false,
+        "roles" : [
+          "admin",
+          "user"
+        ]
+      }
+    }
+  ]
+}

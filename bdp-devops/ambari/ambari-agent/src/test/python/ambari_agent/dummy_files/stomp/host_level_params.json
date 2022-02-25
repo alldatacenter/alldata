@@ -1,0 +1,37 @@
+{
+  "hash":"aa4cd03688d36f18fc2cbba06614bafe",
+  "clusters":{
+    "0":{
+      "repoInfo": [
+        {
+          "defaultBaseUrl": "http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.6.0.3",
+          "ambariManagedRepositories": true,
+          "baseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.6.1.0-129/",
+          "latestBaseUrl": "http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos6/2.x/BUILDS/2.6.1.0-129",
+          "repoSaved": true,
+          "repoName": "HDP",
+          "osType": "redhat6",
+          "unique": true,
+          "repoId": "HDP-2.6"
+        },
+        {
+          "defaultBaseUrl": "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos6",
+          "ambariManagedRepositories": true,
+          "baseUrl": "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos6",
+          "latestBaseUrl": "http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.21/repos/centos6",
+          "repoSaved": true,
+          "repoName": "HDP-UTILS",
+          "osType": "redhat6",
+          "unique": false,
+          "repoId": "HDP-UTILS-1.1.0.21"
+        }
+      ],
+      "recoveryConfig": {
+        "type" : "AUTO_INSTALL_START",
+        "maxCount" : 10,
+        "windowInMinutes" : 60,
+        "components" : "NAMENODE,DATANODE"
+      }
+    }
+  }
+}

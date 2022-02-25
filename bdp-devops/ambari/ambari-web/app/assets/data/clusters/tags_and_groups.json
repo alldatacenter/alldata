@@ -1,0 +1,101 @@
+{
+  "href" : "http://ec2-23-20-184-220.compute-1.amazonaws.com:8080/api/v1/clusters/tdk?fields=Clusters",
+  "Clusters" : {
+    "cluster_name" : "tdk",
+    "cluster_id" : 1,
+    "version" : "HDP-1.3.0",
+    "desired_configs" : {
+      "mapred-site" : {
+        "tag" : "version1"
+      },
+      "hbase-site" : {
+        "tag" : "version1"
+      },
+      "global" : {
+        "tag" : "version1"
+      },
+      "hdfs-site" : {
+        "tag" : "version1"
+      },
+      "mapred-queue-acls" : {
+        "tag" : "version1"
+      },
+      "webhcat-site" : {
+        "tag" : "version1"
+      },
+      "oozie-site" : {
+        "tag" : "version1"
+      },
+      "hive-site" : {
+        "tag" : "version1"
+      },
+      "capacity-scheduler" : {
+        "tag" : "version1"
+      },
+      "storm-site" : {
+        "tag" : "version1"
+      },
+      "tez-site": {
+        "tag": "version1"
+      },
+      "flume-conf": {
+        "tag": "version1"
+      },
+      "core-site" : {
+        "tag" : "version1"
+      }
+    }
+  },
+  "config_groups" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/mycluster/config_groups/10",
+      "ConfigGroup" : {
+        "cluster_name" : "mycluster",
+        "description" : "test config group",
+        "desired_configs" : [
+          {
+            "tag" : "test1",
+            "type" : "mapred-site",
+            "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/mycluster/configurations?type=mapred-site&tag=test_hdfs"
+          }
+        ],
+        "group_name" : "HDFS test group",
+        "hosts" : [
+          {
+            "host_name" : "c6401.ambari.apache.org",
+            "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/mycluster/hosts/c6401.ambari.apache.org"
+          },
+          {
+            "host_name" : "c6402.ambari.apache.org",
+            "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/mycluster/hosts/c6402.ambari.apache.org"
+          }
+        ],
+        "id" : 10,
+        "tag" : "HDFS"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/mycluster/config_groups/11",
+      "ConfigGroup" : {
+        "cluster_name" : "mycluster",
+        "description" : "test config group",
+        "desired_configs" : [
+          {
+            "tag" : "test_hbase",
+            "type" : "hbase-site",
+            "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/mycluster/configurations?type=hbase-site&tag=test_hbase"
+          }
+        ],
+        "group_name" : "HBASE test group",
+        "hosts" : [
+          {
+            "host_name" : "c6402.ambari.apache.org",
+            "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/mycluster/hosts/c6402.ambari.apache.org"
+          }
+        ],
+        "id" : 11,
+        "tag" : "HBASE"
+      }
+    }
+  ]
+}

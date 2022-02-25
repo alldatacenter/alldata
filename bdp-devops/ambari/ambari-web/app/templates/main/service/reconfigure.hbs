@@ -1,0 +1,62 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<table id="security-stages" class="table no-borders">
+  <tbody>
+  {{#each command in controller.commands}}
+    {{#if command.isVisible}}
+      <tr>
+        <td>
+          {{#view App.StageLabelView commandBinding="command"}}
+            <p {{bindAttr class="view.isStarted::faintText"}}>{{command.index}}.&nbsp{{command.label}}</p>
+          {{/view}}
+        </td>
+        <td>
+          {{#if command.isCompleted}}
+            {{#if command.isSuccess}}
+              {{view App.StageSuccessView}}
+            {{else}}
+              {{#if command.isError}}
+                {{view App.StageFailureView}}
+              {{/if}}
+            {{/if}}
+          {{else}}
+            {{#if command.isStarted}}
+              {{#if command.isPolling}}
+                <div class="progress-wrapper pull-left">
+                  {{view App.StageInProgressView commandBinding=command}}
+                </div>
+                <div class="progress-percentage pull-left">{{command.progress}}%</div>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        </td>
+        <td>
+          {{#if command.isError}}
+            <a class="btn btn-primary"
+               href="javascript:void(null)" {{action retry target = "controller"}}><i
+                    class="glyphicon glyphicon-repeat glyphicon-white"></i>
+              {{t common.retry}}
+            </a>
+          {{/if}}
+        </td>
+      </tr>
+    {{/if}}
+  {{/each}}
+  </tbody>
+</table>

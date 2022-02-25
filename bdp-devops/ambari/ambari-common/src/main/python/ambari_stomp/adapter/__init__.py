@@ -1,0 +1,2 @@
+"""Non-standard adapters.
+"""

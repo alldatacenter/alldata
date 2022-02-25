@@ -1,0 +1,47 @@
+### Licensed to the Apache Software Foundation (ASF) under one or more
+### contributor license agreements.  See the NOTICE file distributed with
+### this work for additional information regarding copyright ownership.
+### The ASF licenses this file to You under the Apache License, Version 2.0
+### (the "License"); you may not use this file except in compliance with
+### the License.  You may obtain a copy of the License at
+###
+###     http://www.apache.org/licenses/LICENSE-2.0
+###
+### Unless required by applicable law or agreed to in writing, software
+### distributed under the License is distributed on an "AS IS" BASIS,
+### WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+### See the License for the specific language governing permissions and
+### limitations under the License.
+
+#Log directory
+HDP_LOG_DIR=d:\hadoop\logs
+
+#Data directory
+HDP_DATA_DIR=d:\hdp\data
+
+#Hosts (this is a comment)
+NAMENODE_HOST=NAMENODE_MASTER.acme.com
+SECONDARY_NAMENODE_HOST=SECONDARY_NAMENODE_MASTER.acme.com
+JOBTRACKER_HOST=JOBTRACKER_MASTER.acme.com
+HIVE_SERVER_HOST=HIVE_SERVER_MASTER.acme.com
+OOZIE_SERVER_HOST=OOZIE_SERVER_MASTER.acme.com
+WEBHCAT_HOST=WEBHCAT_MASTER.acme.com
+FLUME_HOSTS=FLUME_SERVICE1.acme.com,FLUME_SERVICE2.acme.com,FLUME_SERVICE3.acme.com
+HBASE_MASTER=HBASE_MASTER.acme.com
+HBASE_REGIONSERVERS=slave1.acme.com, slave2.acme.com, slave3.acme.com
+ZOOKEEPER_HOSTS=slave1.acme.com, slave2.acme.com, slave3.acme.com
+SLAVE_HOSTS=slave1.acme.com, slave2.acme.com, slave3.acme.com
+
+#Database host
+DB_FLAVOR=derby
+DB_HOSTNAME=DB_myHostName
+
+#Hive properties
+HIVE_DB_NAME=hive
+HIVE_DB_USERNAME=hive
+HIVE_DB_PASSWORD=hive
+
+#Oozie properties
+OOZIE_DB_NAME=oozie
+OOZIE_DB_USERNAME=oozie
+OOZIE_DB_PASSWORD=oozie

@@ -1,0 +1,395 @@
+{
+  "href": "http://host:8080/api/v1/clusters/tdk/alert_groups?fields=*",
+  "items": [
+    {
+      "href": "http://host:8080/api/v1/clusters/tdk/alert_groups/1",
+       "AlertGroup": {
+        "targets": [],
+        "cluster_name": "tdk",
+        "default": true,
+        "definitions": [ ],
+        "id": 1,
+        "name": "SLIDER"
+      }
+    },
+    {
+      "href": "http://host:8080/api/v1/clusters/tdk/alert_groups/2",
+       "AlertGroup": {"targets": [],
+        "cluster_name": "tdk",
+        "default": true,
+        "definitions": [
+          {
+            "name": "yarn_resourcemanager_rpc_latency",
+            "label": "ResourceManager RPC Latency",
+            "enabled": true,
+            "service_name": "YARN",
+            "component_name": "RESOURCEMANAGER",
+            "id": 1,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "yarn_resourcemanager_webui",
+            "label": "ResourceManager Web UI",
+            "enabled": true,
+            "service_name": "YARN",
+            "component_name": "RESOURCEMANAGER",
+            "id": 2,
+            "source_type": "WEB"
+          },
+          {
+            "name": "yarn_app_timeline_server_webui",
+            "label": "App Timeline Web UI",
+            "enabled": true,
+            "service_name": "YARN",
+            "component_name": "APP_TIMELINE_SERVER",
+            "id": 3,
+            "source_type": "WEB"
+          },
+          {
+            "name": "yarn_nodemanager_webui_percent",
+            "label": "Percent NodeManagers Available",
+            "enabled": true,
+            "service_name": "YARN",
+            "component_name": null,
+            "id": 4,
+            "source_type": "AGGREGATE"
+          },
+          {
+            "name": "yarn_resourcemanager_cpu",
+            "label": "ResourceManager CPU Utilization",
+            "enabled": true,
+            "service_name": "YARN",
+            "component_name": "RESOURCEMANAGER",
+            "id": 5,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "yarn_nodemanager_health",
+            "label": "NodeManager Health",
+            "enabled": true,
+            "service_name": "YARN",
+            "component_name": "NODEMANAGER",
+            "id": 6,
+            "source_type": "SCRIPT"
+          },
+          {
+            "name": "yarn_nodemanager_webui",
+            "label": "NodeManager Web UI",
+            "enabled": true,
+            "service_name": "YARN",
+            "component_name": "NODEMANAGER",
+            "id": 7,
+            "source_type": "WEB"
+          }
+        ],
+        "id": 2,
+        "name": "YARN"
+      }
+    },
+    {
+      "href": "http://host:8080/api/v1/clusters/tdk/alert_groups/3",
+       "AlertGroup": {"targets": [],
+        "cluster_name": "tdk",
+        "default": true,
+        "definitions": [
+          {
+            "name": "zookeeper_server_process",
+            "label": "ZooKeeper Server Process",
+            "enabled": true,
+            "service_name": "ZOOKEEPER",
+            "component_name": "ZOOKEEPER_SERVER",
+            "id": 8,
+            "source_type": "PORT"
+          },
+          {
+            "name": "zookeeper_server_process_percent",
+            "label": "Percent ZooKeeper Servers Available",
+            "enabled": true,
+            "service_name": "ZOOKEEPER",
+            "component_name": null,
+            "id": 9,
+            "source_type": "AGGREGATE"
+          }
+        ],
+        "id": 3,
+        "name": "ZOOKEEPER"
+      }
+    },
+    {
+      "href": "http://host:8080/api/v1/clusters/tdk/alert_groups/4",
+       "AlertGroup": {"targets": [],
+        "cluster_name": "tdk",
+        "default": true,
+        "definitions": [
+          {
+            "name": "mapreduce_history_server_rpc_latency",
+            "label": "History Server RPC Latency",
+            "enabled": true,
+            "service_name": "MAPREDUCE2",
+            "component_name": "HISTORYSERVER",
+            "id": 12,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "mapreduce_history_server_cpu",
+            "label": "History Server CPU Utilization",
+            "enabled": true,
+            "service_name": "MAPREDUCE2",
+            "component_name": "HISTORYSERVER",
+            "id": 13,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "mapreduce_history_server_webui",
+            "label": "History Server Web UI",
+            "enabled": true,
+            "service_name": "MAPREDUCE2",
+            "component_name": "HISTORYSERVER",
+            "id": 10,
+            "source_type": "WEB"
+          },
+          {
+            "name": "mapreduce_history_server_process",
+            "label": "History Server Process",
+            "enabled": true,
+            "service_name": "MAPREDUCE2",
+            "component_name": "HISTORYSERVER",
+            "id": 11,
+            "source_type": "PORT"
+          }
+        ],
+        "id": 4,
+        "name": "MAPREDUCE2"
+      }
+    },
+    {
+      "href": "http://host:8080/api/v1/clusters/tdk/alert_groups/5",
+       "AlertGroup": {"targets": [],
+        "cluster_name": "tdk",
+        "default": true,
+        "definitions": [
+          {
+            "name": "ganglia_monitor_hbase_master",
+            "label": "Ganglia HBase Master Process Monitor",
+            "enabled": true,
+            "service_name": "GANGLIA",
+            "component_name": "GANGLIA_SERVER",
+            "id": 17,
+            "source_type": "PORT"
+          },
+          {
+            "name": "ganglia_monitor_hdfs_namenode",
+            "label": "Ganglia NameNode Process Monitor",
+            "enabled": true,
+            "service_name": "GANGLIA",
+            "component_name": "GANGLIA_SERVER",
+            "id": 16,
+            "source_type": "PORT"
+          },
+          {
+            "name": "ganglia_server_process",
+            "label": "Ganglia Server Process",
+            "enabled": true,
+            "service_name": "GANGLIA",
+            "component_name": "GANGLIA_SERVER",
+            "id": 18,
+            "source_type": "PORT"
+          },
+          {
+            "name": "ganglia_monitor_mapreduce_history_server",
+            "label": "Ganglia History Server Process Monitor",
+            "enabled": true,
+            "service_name": "GANGLIA",
+            "component_name": "GANGLIA_SERVER",
+            "id": 14,
+            "source_type": "PORT"
+          },
+          {
+            "name": "ganglia_monitor_yarn_resourcemanager",
+            "label": "Ganglia ResourceManager Process Monitor",
+            "enabled": true,
+            "service_name": "GANGLIA",
+            "component_name": "GANGLIA_SERVER",
+            "id": 15,
+            "source_type": "PORT"
+          }
+        ],
+        "id": 5,
+        "name": "GANGLIA"
+      }
+    },
+    {
+      "href": "http://host:8080/api/v1/clusters/tdk/alert_groups/6",
+       "AlertGroup": {"targets": [],
+        "cluster_name": "tdk",
+        "default": true,
+        "definitions": [
+          {
+            "name": "datanode_storage",
+            "label": "DataNode Storage",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "DATANODE",
+            "id": 34,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "datanode_storage_percent",
+            "label": "Percent DataNodes With Available Space",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": null,
+            "id": 35,
+            "source_type": "AGGREGATE"
+          },
+          {
+            "name": "hdfs_zookeeper_failover_controller_process",
+            "label": "ZooKeeper Failover Controller Process",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "ZKFC",
+            "id": 32,
+            "source_type": "PORT"
+          },
+          {
+            "name": "namenode_directory_status",
+            "label": "NameNode Directory Status",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 33,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "journalnode_process_percent",
+            "label": "Percent JournalNodes Available",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": null,
+            "id": 36,
+            "source_type": "AGGREGATE"
+          },
+          {
+            "name": "secondary_namenode_process",
+            "label": "Secondary NameNode Process",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "SECONDARY_NAMENODE",
+            "id": 19,
+            "source_type": "PORT"
+          },
+          {
+            "name": "datanode_webui",
+            "label": "DataNode Web UI",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "DATANODE",
+            "id": 21,
+            "source_type": "WEB"
+          },
+          {
+            "name": "namenode_ha_health",
+            "label": "NameNode High Availability Health",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 20,
+            "source_type": "SCRIPT"
+          },
+          {
+            "name": "namenode_rpc_latency",
+            "label": "NameNode RPC Latency",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 23,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "namenode_cpu",
+            "label": "NameNode Host CPU Utilization",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 22,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "namenode_webui",
+            "label": "NameNode Web UI",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 25,
+            "source_type": "WEB"
+          },
+          {
+            "name": "namenode_hdfs_blocks_health",
+            "label": "NameNode Blocks Health",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 24,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "datanode_process_percent",
+            "label": "Percent DataNodes Available",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": null,
+            "id": 27,
+            "source_type": "AGGREGATE"
+          },
+          {
+            "name": "datanode_process",
+            "label": "DateNode Process",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "DATANODE",
+            "id": 26,
+            "source_type": "PORT"
+          },
+          {
+            "name": "namenode_hdfs_capacity_utilization",
+            "label": "HDFS Capacity Utilization",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 29,
+            "source_type": "METRIC"
+          },
+          {
+            "name": "namenode_process",
+            "label": "NameNode Process",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 28,
+            "source_type": "PORT"
+          },
+          {
+            "name": "journalnode_process",
+            "label": "JournalNode Process",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "JOURNALNODE",
+            "id": 31,
+            "source_type": "PORT"
+          },
+          {
+            "name": "namenode_last_checkpoint",
+            "label": "NameNode Last Checkpoint",
+            "enabled": true,
+            "service_name": "HDFS",
+            "component_name": "NAMENODE",
+            "id": 30,
+            "source_type": "SCRIPT"
+          }
+        ],
+        "id": 6,
+        "name": "HDFS"
+      }
+    }
+  ]
+}

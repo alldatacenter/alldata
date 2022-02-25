@@ -1,0 +1,383 @@
+{
+  "stackName": "SAPHD",
+  "baseStackName": "HDP",
+  "performCommonReplacements": true,
+  "textReplacements": [
+    ["hdp-select", "distro-select"]
+   ],
+  "preservedText": ["ext-2.2", "HDP-oozie", "hdp.version", "HDP_VERSION", "192.168."],
+  "uiMapping": [
+    {
+      "stackVersionNumber": "1.0",
+      "sign": "<",
+      "baseStackFolder": "HDP2"
+    }
+  ],
+  "ambariProperties": {
+    "jdk.download.supported" : "false",
+    "jce.download.supported" : "false",
+    "jdk1.7.url" : "http://DOWNLOAD_NOT_SUPPORTED",
+    "jdk1.8.url" : "http://DOWNLOAD_NOT_SUPPORTED",
+    "jdk1.7.jcpol-url" : "http://DOWNLOAD_NOT_SUPPORTED",
+    "jdk1.8.jcpol-url" : "http://DOWNLOAD_NOT_SUPPORTED",
+    "rolling.upgrade.min.stack" : "SAPHD-0.9",
+    "server.setup.default.dbms" : "sqlanywhere"
+  },
+  "common-services": [
+    {
+      "name": "HIVE",
+      "versions": [
+        {
+          "version": "0.12.0.2.0",
+          "configurations": [
+            {
+              "name": "hive-env",
+              "properties": {
+                "hive_database_type": "sqlanywhere",
+                "hive_database": "Existing SQL Anywhere Database"
+              }
+            },
+            {
+              "name": "hive-site",
+              "properties": {
+                "javax.jdo.option.ConnectionURL": "jdbc:sqlanywhere:host=localhost;database=hive",
+                "javax.jdo.option.ConnectionDriverName": "sap.jdbc4.sqlanywhere.IDriver"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OOZIE",
+      "versions": [
+        {
+          "version": "4.0.0.2.0",
+          "configurations": [
+            {
+              "name": "oozie-env",
+              "properties": {
+                "oozie_database": "Existing SQL Anywhere Database"
+              }
+            },
+            {
+              "name": "oozie-site",
+              "properties": {
+                "oozie.service.JPAService.jdbc.url": "jdbc:sqlanywhere:host=localhost;database=oozie",
+                "oozie.service.JPAService.jdbc.driver": "sap.jdbc4.sqlanywhere.IDriver"
+              }
+            }
+          ]
+        },
+        {
+          "version": "4.2.0.2.3",
+          "configurations": [
+            {
+              "name": "oozie-site",
+              "properties": {
+                "oozie.service.JPAService.jdbc.url": "jdbc:sqlanywhere:host=localhost;database=oozie",
+                "oozie.service.JPAService.jdbc.driver": "sap.jdbc4.sqlanywhere.IDriver"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RANGER",
+      "versions": [
+        {
+          "version": "0.4.0",
+          "configurations": [
+            {
+              "name": "admin-properties",
+              "properties": {
+                "DB_FLAVOR": "SQLA"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "versions": [
+    {
+      "version": "0.7",
+      "baseVersion": "2.0.6",
+      "active": "false",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE"
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "FLUME"
+        },
+        {
+          "name": "SQOOP"
+        }
+      ]
+    },
+    {
+      "version": "0.8",
+      "baseVersion": "2.1",
+      "active": "false",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE",
+          "configurations": [
+            {
+              "name": "oozie-site",
+              "properties": {
+                "oozie.service.JPAService.jdbc.url": "jdbc:sqlanywhere:host=localhost;database=oozie",
+                "oozie.service.JPAService.jdbc.driver": "sap.jdbc4.sqlanywhere.IDriver"
+              }
+            }
+          ]
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "FLUME"
+        },
+        {
+          "name": "SQOOP"
+        },
+        {
+          "name": "FALCON"
+        },
+        {
+          "name": "STORM"
+        }
+      ]
+    },
+    {
+      "version": "0.9",
+      "baseVersion": "2.2",
+      "active": "false",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE",
+          "configurations": [
+            {
+              "name": "hive-site",
+              "properties": {
+                "javax.jdo.option.ConnectionURL": "jdbc:sqlanywhere:host=localhost;database=hive",
+                "javax.jdo.option.ConnectionDriverName": "sap.jdbc4.sqlanywhere.IDriver"
+              }
+            }
+          ]
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE"
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "FLUME"
+        },
+        {
+          "name": "SQOOP"
+        },
+        {
+          "name": "FALCON"
+        },
+        {
+          "name": "STORM"
+        },
+        {
+          "name": "KAFKA"
+        },
+        {
+          "name": "RANGER"
+        },
+        {
+          "name": "SLIDER"
+        },
+        {
+          "name": "SPARK"
+        }
+      ]
+    },
+    {
+      "version": "1.0",
+      "baseVersion": "2.3",
+      "active": "true",
+      "services": [
+        {
+          "name": "KERBEROS"
+        },
+        {
+          "name": "AMBARI_METRICS"
+        },
+        {
+          "name": "HDFS"
+        },
+        {
+          "name": "ZOOKEEPER"
+        },
+        {
+          "name": "HBASE"
+        },
+        {
+          "name": "YARN"
+        },
+        {
+          "name": "MAPREDUCE2"
+        },
+        {
+          "name": "HIVE"
+        },
+        {
+          "name": "TEZ"
+        },
+        {
+          "name": "OOZIE"
+        },
+        {
+          "name": "KNOX"
+        },
+        {
+          "name": "PIG"
+        },
+        {
+          "name": "FLUME"
+        },
+        {
+          "name": "SQOOP"
+        },
+        {
+          "name": "FALCON"
+        },
+        {
+          "name": "STORM"
+        },
+        {
+          "name": "KAFKA"
+        },
+        {
+          "name": "RANGER",
+          "configurations":[
+            {
+              "name": "ranger-admin-site",
+              "properties": {
+                "ranger.jpa.jdbc.driver": "sap.jdbc4.sqlanywhere.IDriver",
+                "ranger.jpa.jdbc.url": "jdbc:sqlanywhere:host=localhost;database=ranger"
+              }
+            }
+          ]
+        },
+        {
+          "name": "SLIDER"
+        },
+        {
+          "name": "SPARK"
+        },
+        {
+          "name": "RANGER_KMS"
+        },
+        {
+          "name": "ACCUMULO"
+        },
+        {
+          "name": "ATLAS"
+        },
+        {
+          "name": "MAHOUT"
+        }
+      ]
+    }
+  ]
+}

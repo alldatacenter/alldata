@@ -1,0 +1,469 @@
+{
+  "HDP": {
+    "stack_features": [
+      {
+        "name": "snappy",
+        "description": "Snappy compressor/decompressor support",
+        "min_version": "2.0.0.0",
+        "max_version": "2.2.0.0"
+      },
+      {
+        "name": "lzo",
+        "description": "LZO libraries support",
+        "min_version": "2.2.1.0"
+      },
+      {
+        "name": "express_upgrade",
+        "description": "Express upgrade support",
+        "min_version": "2.1.0.0"
+      },
+      {
+        "name": "rolling_upgrade",
+        "description": "Rolling upgrade support",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "kafka_acl_migration_support",
+        "description": "ACL migration support",
+        "min_version": "2.3.4.0"
+      },
+      {
+        "name": "secure_zookeeper",
+        "description": "Protect ZNodes with SASL acl in secure clusters",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "config_versioning",
+        "description": "Configurable versions support",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "datanode_non_root",
+        "description": "DataNode running as non-root support (AMBARI-7615)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "remove_ranger_hdfs_plugin_env",
+        "description": "HDFS removes Ranger env files (AMBARI-14299)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "ranger",
+        "description": "Ranger Service support",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "ranger_tagsync_component",
+        "description": "Ranger Tagsync component support (AMBARI-14383)",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "phoenix",
+        "description": "Phoenix Service support",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "nfs",
+        "description": "NFS support",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "tez_for_spark",
+        "description": "Tez dependency for Spark",
+        "min_version": "2.2.0.0",
+        "max_version": "2.3.0.0"
+      },
+      {
+        "name": "timeline_state_store",
+        "description": "Yarn application timeline-service supports state store property (AMBARI-11442)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "copy_tarball_to_hdfs",
+        "description": "Copy tarball to HDFS support (AMBARI-12113)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "spark_16plus",
+        "description": "Spark 1.6+",
+        "min_version": "2.4.0.0"
+      },
+      {
+        "name": "spark_thriftserver",
+        "description": "Spark Thrift Server",
+        "min_version": "2.3.2.0"
+      },
+      {
+        "name": "storm_kerberos",
+        "description": "Storm Kerberos support (AMBARI-7570)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "storm_ams",
+        "description": "Storm AMS integration (AMBARI-10710)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "kafka_listeners",
+        "description": "Kafka listeners (AMBARI-10984)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "kafka_kerberos",
+        "description": "Kafka Kerberos support (AMBARI-10984)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "pig_on_tez",
+        "description": "Pig on Tez support (AMBARI-7863)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "ranger_usersync_non_root",
+        "description": "Ranger Usersync as non-root user (AMBARI-10416)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "ranger_audit_db_support",
+        "description": "Ranger Audit to DB support",
+        "min_version": "2.2.0.0",
+        "max_version": "2.4.99.99"
+      },
+      {
+        "name": "accumulo_kerberos_user_auth",
+        "description": "Accumulo Kerberos User Auth (AMBARI-10163)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "knox_versioned_data_dir",
+        "description": "Use versioned data dir for Knox (AMBARI-13164)",
+        "min_version": "2.3.2.0"
+      },
+      {
+        "name": "knox_sso_topology",
+        "description": "Knox SSO Topology support (AMBARI-13975)",
+        "min_version": "2.3.8.0"
+      },
+      {
+        "name": "atlas_rolling_upgrade",
+        "description": "Rolling upgrade support for Atlas",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "oozie_admin_user",
+        "description": "Oozie install user as an Oozie admin user (AMBARI-7976)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "oozie_create_hive_tez_configs",
+        "description": "Oozie create configs for Ambari Hive and Tez deployments (AMBARI-8074)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "oozie_setup_shared_lib",
+        "description": "Oozie setup tools used to shared Oozie lib to HDFS (AMBARI-7240)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "oozie_host_kerberos",
+        "description": "Oozie in secured clusters uses _HOST in Kerberos principal (AMBARI-9775)",
+        "min_version": "2.0.0.0"
+      },
+      {
+        "name": "falcon_extensions",
+        "description": "Falcon Extension",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "hive_metastore_upgrade_schema",
+        "description": "Hive metastore upgrade schema support (AMBARI-11176)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "hive_server_interactive",
+        "description": "Hive server interactive support (AMBARI-15573)",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "hive_webhcat_specific_configs",
+        "description": "Hive webhcat specific configurations support (AMBARI-12364)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "hive_purge_table",
+        "description": "Hive purge table support (AMBARI-12260)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "hive_server2_kerberized_env",
+        "description": "Hive server2 working on kerberized environment (AMBARI-13749)",
+        "min_version": "2.2.3.0",
+        "max_version": "2.2.5.0"
+      },
+      {
+        "name": "hive_env_heapsize",
+        "description": "Hive heapsize property defined in hive-env (AMBARI-12801)",
+        "min_version": "2.2.0.0"
+      },
+      {
+        "name": "ranger_kms_hsm_support",
+        "description": "Ranger KMS HSM support (AMBARI-15752)",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_log4j_support",
+        "description": "Ranger supporting log-4j properties (AMBARI-15681)",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_kerberos_support",
+        "description": "Ranger Kerberos support",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "hive_metastore_site_support",
+        "description": "Hive Metastore site support",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_usersync_password_jceks",
+        "description": "Saving Ranger Usersync credentials in jceks",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_install_infra_client",
+        "description": "Ambari Infra Service support",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "falcon_atlas_support_2_3",
+        "description": "Falcon Atlas integration support for 2.3 stack",
+        "min_version": "2.3.99.0",
+        "max_version": "2.4.0.0"
+      },
+      {
+        "name": "falcon_atlas_support",
+        "description": "Falcon Atlas integration",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "hbase_home_directory",
+        "description": "Hbase home directory in HDFS needed for HBASE backup",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "spark_livy",
+        "description": "Livy as slave component of spark",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "spark_livy2",
+        "description": "Livy as slave component of spark",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "atlas_ranger_plugin_support",
+        "description": "Atlas Ranger plugin support",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "atlas_conf_dir_in_path",
+        "description": "Prepend the Atlas conf dir (/etc/atlas/conf) to the classpath of Storm and Falcon",
+        "min_version": "2.3.0.0",
+        "max_version": "2.4.99.99"
+      },
+      {
+        "name": "atlas_upgrade_support",
+        "description": "Atlas supports express and rolling upgrades",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "atlas_hook_support",
+        "description": "Atlas support for hooks in Hive, Storm, Falcon, and Sqoop",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_pid_support",
+        "description": "Ranger Service support pid generation AMBARI-16756",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_kms_pid_support",
+        "description": "Ranger KMS Service support pid generation",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_admin_password_change",
+        "description": "Allow ranger admin credentials to be specified during cluster creation (AMBARI-17000)",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_setup_db_on_start",
+        "description": "Allows setup of ranger db and java patches to be called multiple times on each START",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "storm_metrics_apache_classes",
+        "description": "Metrics sink for Storm that uses Apache class names",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "spark_java_opts_support",
+        "description": "Allow Spark to generate java-opts file",
+        "min_version": "2.2.0.0",
+        "max_version": "2.4.0.0"
+      },
+      {
+        "name": "atlas_hbase_setup",
+        "description": "Use script to create Atlas tables in Hbase and set permissions for Atlas user.",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "ranger_hive_plugin_jdbc_url",
+        "description": "Handle Ranger hive repo config jdbc url change for stack 2.5 (AMBARI-18386)",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "zkfc_version_advertised",
+        "description": "ZKFC advertise version",
+        "min_version": "2.5.0.0"
+      },
+      {
+        "name": "phoenix_core_hdfs_site_required",
+        "description": "HDFS and CORE site required for Phoenix",
+        "max_version": "2.5.9.9"
+      },
+      {
+        "name": "ranger_tagsync_ssl_xml_support",
+        "description": "Ranger Tagsync ssl xml support.",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "ranger_xml_configuration",
+        "description": "Ranger code base support xml configurations",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "kafka_ranger_plugin_support",
+        "description": "Ambari stack changes for Ranger Kafka Plugin (AMBARI-11299)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "yarn_ranger_plugin_support",
+        "description": "Implement Stack changes for Ranger Yarn Plugin integration (AMBARI-10866)",
+        "min_version": "2.3.0.0"
+      },
+      {
+        "name": "ranger_solr_config_support",
+        "description": "Showing Ranger solrconfig.xml on UI",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "hive_interactive_atlas_hook_required",
+        "description": "Registering Atlas Hook for Hive Interactive.",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "core_site_for_ranger_plugins",
+        "description": "Adding core-site.xml in when Ranger plugin is enabled for Storm, Kafka, and Knox.",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "atlas_install_hook_package_support",
+        "description": "Stop installing packages from 2.6",
+        "max_version": "2.5.9.9"
+      },
+      {
+        "name": "atlas_hdfs_site_on_namenode_ha",
+        "description": "Need to create hdfs-site under atlas-conf dir when Namenode-HA is enabled.",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "hive_interactive_ga",
+        "description": "Hive Interactive GA support",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "secure_ranger_ssl_password",
+        "description": "Securing Ranger Admin and Usersync SSL and Trustore related passwords in jceks",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "ranger_kms_ssl",
+        "description": "Ranger KMS SSL properties in ambari stack",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "nifi_encrypt_config",
+        "description": "Encrypt sensitive properties written to nifi property file",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "toolkit_config_update",
+        "description": "Support separate input and output for toolkit configuration",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "admin_toolkit_support",
+        "description": "Supports the nifi admin toolkit",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "tls_toolkit_san",
+        "description": "Support subject alternative name flag",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "nifi_jaas_conf_create",
+        "description": "Create NIFI jaas configuration when kerberos is enabled",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "atlas_core_site_support",
+        "description": "Need to create core-site under Atlas conf directory.",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "hadoop_custom_extensions",
+        "description": "Support hadoop custom extensions",
+        "min_version": "2.6.0.0"
+      },
+      {
+        "name": "registry_remove_rootpath",
+        "description": "Registry remove root path setting",
+        "min_version": "2.6.3.0"
+      },
+      {
+        "name": "registry_allowed_resources_support",
+        "description": "Registry allowed resources",
+        "min_version": "2.6.3.0"
+      },
+      {
+        "name": "registry_rewriteuri_filter_support",
+        "description": "Registry RewriteUri servlet filter",
+        "min_version": "2.6.3.0"
+      },
+      {
+        "name": "sam_storage_core_in_registry",
+        "description": "Storage core module moved to registry",
+        "min_version": "2.6.3.0"
+      },
+      {
+        "name": "kafka_extended_sasl_support",
+        "description": "Support SASL PLAIN and GSSAPI",
+        "min_version": "2.6.5.0"
+      },
+      {
+        "name": "oozie_extjs_included",
+        "description": "ExtJS is included in the repository and automatically installed by Ambari",
+        "min_version": "2.2.0.0",
+        "max_version": "2.6.0.0"
+      },
+      {
+        "name": "ams_legacy_hadoop_sink",
+        "description": "Legacy AMS hadoop sink should be used",
+        "max_version": "2.6.99.99"
+      }
+    ]
+  }
+}

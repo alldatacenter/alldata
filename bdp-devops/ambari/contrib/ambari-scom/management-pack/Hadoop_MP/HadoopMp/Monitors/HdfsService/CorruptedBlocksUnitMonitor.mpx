@@ -1,0 +1,100 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Monitors>
+      <UnitMonitor ID="Ambari.SCOM.UnitMonitor.HdfsCorruptedBlocks"
+                   TypeID="Ambari.SCOM.UnitMonitorType.HdfsServiceTwoStateThreshold"
+                   Target="Ambari.SCOM.ClusterService.Hdfs"
+                   ParentMonitorID="Health!System.Health.PerformanceState"
+                   Remotable="true" Priority="Normal" Accessibility="Public" Enabled="true" ConfirmDelivery="true">
+        <Category>PerformanceHealth</Category>
+        <AlertSettings AlertMessage="Ambari.SCOM.UnitMonitor.HdfsCorruptedBlocks.AlertMessage">
+          <AlertOnState>Error</AlertOnState>
+          <AutoResolve>true</AutoResolve>
+          <AlertPriority>Normal</AlertPriority>
+          <AlertSeverity>MatchMonitorHealth</AlertSeverity>
+          <AlertParameters>
+            <AlertParameter1>$Target/Host/Property[Type="Ambari.SCOM.ClusterService.Private"]/ClusterName$</AlertParameter1>
+            <AlertParameter2>$Data/Context/Property[@Name='corruptblocks']$</AlertParameter2>
+          </AlertParameters>
+        </AlertSettings>
+        <OperationalStates>
+          <OperationalState ID="Healthy" MonitorTypeStateID="Healthy" HealthState="Success" />
+          <OperationalState ID="Critical" MonitorTypeStateID="Critical" HealthState="Error" />
+        </OperationalStates>
+        <Configuration>
+          <IntervalSeconds>900</IntervalSeconds>
+          <TimeoutSeconds>300</TimeoutSeconds>
+          <PropertyName>corruptblocks</PropertyName>
+          <TheGreaterTheBetter>false</TheGreaterTheBetter>
+          <Threshold>1</Threshold>
+        </Configuration>
+      </UnitMonitor>
+    </Monitors>
+  </Monitoring>
+
+  <Presentation>
+    <StringResources>
+      <StringResource ID="Ambari.SCOM.UnitMonitor.HdfsCorruptedBlocks.AlertMessage"/>
+    </StringResources>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.HdfsCorruptedBlocks">
+          <Name>Corrupted Blocks</Name>
+          <Description>Gives critical alert if number of corrupted blocks is more than threshold.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.HdfsCorruptedBlocks" SubElementID="Healthy">
+          <Name>Low</Name>
+          <Description>Number of corrupted blocks is low</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.HdfsCorruptedBlocks" SubElementID="Critical">
+          <Name>High</Name>
+          <Description>Significant number of blocks are corrupted</Description>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.HdfsCorruptedBlocks.AlertMessage">
+          <Name>There are corrupted file blocks in HDFS.</Name>
+          <Description>There are {1} corrupted blocks in the HDFS of cluster "{0}".</Description>
+        </DisplayString>
+      </DisplayStrings>
+
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="Ambari.SCOM.UnitMonitor.HdfsCorruptedBlocks" Visible="true">
+          <MamlContent>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Summary</title>
+              <para>Gives critical alert if number of corrupted blocks is more than threshold.</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Causes</title>
+              <para>TBD</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Resolutions</title>
+              <para>TBD</para>
+            </section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

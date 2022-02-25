@@ -1,0 +1,464 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'common.less';
+
+select.form-control {
+  display: inline-block;
+}
+
+.form-group {
+  .help-block {
+    &.help-inline {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.alert {
+  & > ul, ol {
+    padding-left: inherit;
+  }
+}
+
+.dropdown-toggle.btn-icon {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.label {
+  background: #999;
+
+  &.label {
+    &-primary {
+      background-color: @bootstrap-primary;
+    }
+
+    &-success {
+      background-color: @bootstrap-success;
+    }
+
+    &-info {
+      background-color: @bootstrap-info;
+    }
+
+    &-warning {
+      background-color: @bootstrap-warning;
+    }
+
+    &-danger {
+      background-color: @bootstrap-danger;
+    }
+  }
+}
+
+.modal-open {
+  overflow-y: scroll;
+}
+
+.table {
+  background-color: #fff;
+}
+
+.panel {
+  background-color: #fff;
+  .panel-heading {
+    background-color: #fff;
+    .panel-title {
+      line-height: 34px;
+    }
+  }
+}
+
+.row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.form-control {
+  float: none;
+}
+
+[class^="glyphicon-"],
+[class*="glyphicon-"] {
+  &.glyphicon .glyphicon-blue {
+    color: @blue;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+//vertical alignment for extra high icons
+.glyphicon-repeat,
+.glyphicon-time,
+.glyphicon-refresh,
+.glyphicon-remove {
+  top: 2px;
+}
+
+
+.tooltip {
+  z-index: 10000;
+}
+
+.tooltip-inner {
+  text-align: left;
+  max-width: 400px;
+  overflow-wrap: break-word;
+  white-space:pre-wrap;
+  &.alert-def-detail-tooltip {
+    max-height: 300px;
+    max-width: 650px;
+    overflow: scroll;
+  }
+  &.graph-tooltip {
+    max-width: 200px;
+  }
+}
+
+.popover {
+  word-wrap: break-word;
+  z-index: 10000;
+  width: 350px;
+  .popover-inner {
+    word-wrap: break-word;
+  }
+  .popover-content {
+    white-space: pre-line;
+  }
+  small {
+    font-size: 1.3rem;
+  }
+}
+
+.text-tooltip {
+  border-bottom: 1px silver dotted;
+  cursor: pointer;
+}
+
+.well {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.table-bordered {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  thead:first-child tr:first-child th:first-child,
+  tbody:first-child tr:first-child td:first-child,
+  thead:first-child tr:first-child th:last-child,
+  tbody:first-child tr:first-child td:last-child {
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+    -moz-border-radius-topright: 0;
+  }
+}
+
+.img-thumbnail {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  line-height: 20px;
+}
+
+.dropdown-menu,
+.dropdown-submenu > .dropdown-menu,
+.dropdown-menu-wrap > .dropdown-menu,
+.nav-pills .dropdown-menu,
+.nav-pills > li > a,
+.nav-tabs > li > a,
+.panel-group {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+}
+.submenu-left {
+  > .dropdown-menu-wrap {
+    position: relative;
+    width: 100%;
+    left: -100%;
+    > .dropdown-menu {
+      position: absolute;
+      top: 0;
+      right: -10px;
+      margin-top: -32px;
+    }
+  }
+  &:hover {
+    > .dropdown-menu-wrap {
+      > .dropdown-menu {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu > a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #333;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+
+.dropdown-submenu:hover > a:after {
+  border-left-color: #333;
+}
+
+.dropdown-submenu.pull-left {
+  float: none!important;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  width: 100%;
+}
+
+.dropdown-submenu > a.disabled:after {
+  border-left-color: #ccc;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background-color: #666;
+}
+
+.nav-list > li.active > a, .nav-list > li.active > a:hover {
+  background-color: #666;
+  color: #fff;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: transparent;
+}
+
+@media (max-width: 992px) {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+  }
+  .col-md-12 {
+    width: 100%;
+  }
+  .col-md-11 {
+    width: 91.66666667%;
+  }
+  .col-md-10 {
+    width: 83.33333333%;
+  }
+  .col-md-9 {
+    width: 75%;
+  }
+  .col-md-8 {
+    width: 66.66666667%;
+  }
+  .col-md-7 {
+    width: 58.33333333%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-5 {
+    width: 41.66666667%;
+  }
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+  .col-md-3 {
+    width: 25%;
+  }
+  .col-md-2 {
+    width: 16.66666667%;
+  }
+  .col-md-1 {
+    width: 8.33333333%;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .row {
+    *zoom: 1;
+  }
+
+  .row:before,
+  .row:after {
+    line-height: 0;
+  }
+
+  .row:after {
+    clear: both;
+  }
+
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 1130px;
+  }
+
+  .main-container, .container {
+    width: 1170px;
+  }
+
+  #top-nav {
+    min-width: 1170px;
+  }
+
+  .contribview  .main-container {
+    width: auto;
+  }
+
+  .contribview .navbar .main-container {
+    width: 1170px;
+    margin: 0 auto;
+  }
+
+  .thumbnails {
+    margin-left: -30px;
+  }
+
+  .thumbnails > li {
+    margin-left: 30px;
+  }
+
+  .row .thumbnails {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+@media (min-width: 1500px) {
+
+  .row {
+    *zoom: 1;
+  }
+
+  .row:before,
+  .row:after {
+    line-height: 0;
+  }
+
+  .row:after {
+    clear: both;
+  }
+
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 1300px;
+  }
+
+  .main-container, .container {
+    width: 1340px;
+  }
+
+  #top-nav {
+    min-width: 1340px;
+  }
+
+  .contribview  .main-container {
+    width: auto;
+  }
+
+  .contribview .navbar .main-container {
+    width: 1340px;
+    margin: 0 auto;
+  }
+
+  .thumbnails {
+    margin-left: -30px;
+  }
+
+  .thumbnails > li {
+    margin-left: 30px;
+  }
+
+  .row .thumbnails {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+.wizard .wizard-body {
+  padding: 0 !important;
+}
+
+.table.table-hover .action {
+  padding-right: 10px;
+}
+
+.btn-group.open .dropdown-menu input[type="checkbox"] + label,
+.dropdown.open .dropdown-menu input[type="checkbox"] + label {
+  line-height: @default-line-height;
+}
+
+.navigation-bar-container.collapsed ul.nav.side-nav-menu li ul.sub-menu,
+.navigation-bar-container.collapsed ul.nav.side-nav-footer li ul.sub-menu {
+  padding: 5px 0;
+  background-color: #323544;
+  max-height: ~"calc(100% - 100px)";
+  overflow-y: scroll;
+}
+
+input[type="checkbox"]:checked + label:after {
+  line-height: 2em;
+}
+
+.checkbox-colored-background input[type="checkbox"] + label:before {
+  border-color: #999;
+}
+
+.radio, .checkbox {
+  margin-bottom: 0;
+  margin-top: 0;
+  label {
+    vertical-align: middle;
+  }
+}
+
+.navigation-bar-container ul.nav.side-nav-menu li.submenu-li > a {
+  padding: 10px 5px 10px 46px;
+}

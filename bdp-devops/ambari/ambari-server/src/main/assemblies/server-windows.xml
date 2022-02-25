@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<assembly>
+  <id>dist</id>
+  <formats>
+    <format>dir</format>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <files>
+    <file>
+      <source>${project.build.directory}/${artifact.artifactId}-${artifact.version}.jar</source>
+      <outputDirectory>ambari-server-${project.version}/lib</outputDirectory>
+    </file>
+    <file>
+      <source>${project.build.directory}/DBConnectionVerification.jar</source>
+      <outputDirectory>ambari-server-${project.version}/resources</outputDirectory>
+    </file>
+    <file>
+      <source>${project.build.directory}/bootstrap.zip</source>
+      <outputDirectory>/ambari-server-${project.version}/resources</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/conf/windows/ambari.properties</source>
+      <outputDirectory>/ambari-server-${project.version}/conf</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/conf/windows/log4j.properties</source>
+      <outputDirectory>/ambari-server-${project.version}/conf</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/conf/windows/metrics.properties</source>
+      <outputDirectory>/ambari-server-${project.version}/conf</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/conf/windows/ca.config</source>
+      <outputDirectory>/ambari-server-${project.version}/keystore</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/src/main/python/ambari-server.py</source>
+      <outputDirectory>/ambari-server-${project.version}/sbin</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/src/main/python/ambari_server_main.py</source>
+      <outputDirectory>/ambari-server-${project.version}/sbin</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/src/main/python/ambari_windows_service.py</source>
+      <outputDirectory>/ambari-server-${project.version}/sbin</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/src/main/python/bootstrap.py</source>
+      <outputDirectory>/ambari-server-${project.version}/sbin</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/src/main/windows/ambari-server.cmd</source>
+      <outputDirectory>/ambari-server-${project.version}</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/src/main/windows/ambari-server.ps1</source>
+      <outputDirectory>/ambari-server-${project.version}</outputDirectory>
+    </file>
+    <file>
+      <source>${project.build.directory}/version</source>
+      <outputDirectory>ambari-server-${project.version}/</outputDirectory>
+    </file>
+  </files>
+  <fileSets>
+    <!-- Distro files, readme, licenses, etc -->
+    <fileSet>
+      <directory>${basedir}/src/main/windows/psremoting/</directory>
+      <outputDirectory>/ambari-server-${project.version}/sbin</outputDirectory>
+      <includes>
+        <include>*.ps1</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/../ambari-admin/target</directory>
+      <outputDirectory>/ambari-server-${project.version}/resources/views</outputDirectory>
+      <includes>
+        <include>*.jar</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/../</directory>
+      <outputDirectory>ambari-server-${project.version}/</outputDirectory>
+      <includes>
+        <include>*.txt</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/src/main/python/ambari_server</directory>
+      <outputDirectory>ambari-server-${project.version}/sbin/ambari_server</outputDirectory>
+      <includes>
+        <include>*.py</include>
+        <include>*.pyc</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/../ambari-common/src/main/python/ambari_commons</directory>
+      <outputDirectory>ambari-server-${project.version}/sbin/ambari_commons</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/../ambari-common/src/main/python/ambari_jinja2/ambari_jinja2</directory>
+      <outputDirectory>ambari-server-${project.version}/sbin/ambari_jinja2</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/../ambari-common/src/main/python/ambari_simplejson</directory>
+      <outputDirectory>ambari-server-${project.version}/sbin/ambari_simplejson</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/../ambari-common/src/main/python/resource_management</directory>
+      <outputDirectory>ambari-server-${project.version}/sbin/resource_management</outputDirectory>
+    </fileSet>
+     <!--
+    <fileSet>
+      <directory>${project.build.directory}/web/</directory>
+      <outputDirectory>ambari-server-${project.version}/web/</outputDirectory>
+      <includes>
+        <include>*</include>
+      </includes>
+    </fileSet>
+    -->
+    <!--
+    <fileSet>
+      <directory>${basedir}/src/main/bin</directory>
+      <outputDirectory>ambari-server-${project.version}/bin</outputDirectory>
+      <includes>
+        <include>*</include>
+      </includes>
+      <fileMode>0755</fileMode>
+    </fileSet>
+    -->
+    <fileSet>
+      <directory>${basedir}/src/main/resources/</directory>
+      <outputDirectory>/ambari-server-${project.version}/keystore</outputDirectory>
+      <includes>
+        <include>db/*</include>
+        <include>pass.txt</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/../ambari-web/public</directory>
+      <outputDirectory>ambari-server-${project.version}/web</outputDirectory>
+      <includes>
+        <include>**</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/src/main/resources</directory>
+      <outputDirectory>/ambari-server-${project.version}/resources/</outputDirectory>
+      <includes>
+        <include>Ambari-DDL-SQLServer-*.sql</include>
+        <include>custom_action_definitions/**</include>
+        <include>custom_actions/**</include>
+        <include>host_scripts/**</include>
+        <include>stacks/stack_advisor.py</include>
+        <include>scripts/**</include>
+        <include>common-services/**</include>
+        <include>stacks/HDPWIN/**</include>
+        <include>upgrade/**</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>ambari-server-${project.version}/lib</outputDirectory>
+      <unpack>false</unpack>
+      <scope>compile</scope>
+    </dependencySet>
+  </dependencySets>
+</assembly>

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>AMBARI_METRICS</name>
+      <displayName>Ambari Metrics</displayName>
+      <version>1.0</version>
+      <comment>A system for metrics collection that provides storage and retrieval capability for metrics collected from the cluster
+      </comment>
+      <components>
+        <component>
+          <name>METRICS_COLLECTOR</name>
+          <displayName>Metrics Collector</displayName>
+          <category>MASTER</category>
+          <cardinality>1</cardinality>
+          <versionAdvertised>false</versionAdvertised>
+          <dependencies>
+            <dependency>
+              <name>ZOOKEEPER/ZOOKEEPER_SERVER</name>
+              <scope>cluster</scope>
+              <auto-deploy>
+                <enabled>true</enabled>
+              </auto-deploy>
+            </dependency>
+          </dependencies>
+          <commandScript>
+            <script>scripts/metrics_collector.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>1200</timeout>
+          </commandScript>
+        </component>
+        <component>
+          <name>METRICS_MONITOR</name>
+          <displayName>Metrics Monitor</displayName>
+          <category>SLAVE</category>
+          <cardinality>ALL</cardinality>
+          <versionAdvertised>false</versionAdvertised>
+          <auto-deploy>
+            <enabled>true</enabled>
+          </auto-deploy>
+          <commandScript>
+            <script>scripts/metrics_monitor.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>1200</timeout>
+          </commandScript>
+        </component>
+      </components>
+
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>redhat5,amazon2015,redhat6,suse11</osFamily>
+          <packages>
+            <package>
+              <name>ambari-metrics-collector</name>
+              <condition>should_install_ams_collector</condition>
+            </package>
+            <package>
+              <name>ambari-metrics-monitor</name>
+            </package>
+            <package>
+              <name>ambari-metrics-hadoop-sink</name>
+            </package>
+            <package>
+              <name>gcc</name>
+            </package>
+          </packages>
+        </osSpecific>
+        <osSpecific>
+          <osFamily>ubuntu12</osFamily>
+          <packages>
+            <package>
+              <name>ambari-metrics-assembly</name>
+            </package>
+            <package>
+              <name>gcc</name>
+            </package>
+          </packages>
+        </osSpecific>
+        <osSpecific>
+          <osFamily>winsrv6</osFamily>
+          <packages>
+            <package>
+              <name>ambari-metrics-collector.msi</name>
+            </package>
+            <package>
+              <name>ambari-metrics-monitor.msi</name>
+            </package>
+            <package>
+              <name>ambari-metrics-hadoop-sink.msi</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
+
+      <commandScript>
+        <script>scripts/service_check.py</script>
+        <scriptType>PYTHON</scriptType>
+        <timeout>300</timeout>
+      </commandScript>
+
+      <requiredServices>
+        <service>ZOOKEEPER</service>
+      </requiredServices>
+
+      <configuration-dependencies>
+        <config-type>ams-site</config-type>
+        <config-type>ams-log4j</config-type>
+        <config-type>ams-hbase-policy</config-type>
+        <config-type>ams-hbase-site</config-type>
+        <config-type>ams-hbase-security-site</config-type>
+        <config-type>ams-hbase-env</config-type>
+        <config-type>ams-hbase-log4j</config-type>
+      </configuration-dependencies>
+
+    </service>
+  </services>
+</metainfo>

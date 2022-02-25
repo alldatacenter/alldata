@@ -1,0 +1,276 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<div ng-controller="streamingConfigCtrl">
+
+  <form name="form.cube_streaming_form" novalidate>
+
+    <div>
+      <accordion>
+        <accordion-group is-open="state.isKfkSettingOpen" ng-init="state.isKfkSettingOpen=true">
+          <accordion-heading>
+            Kafka Setting
+            <i class="pull-right glyphicon"
+               ng-class="{'glyphicon-chevron-down': state.isKfkSettingOpen, 'glyphicon-chevron-right': !state.isKfkSettingOpen}"></i>
+          </accordion-heading>
+
+          <div class="form-group middle-popover" ng-class="{'required':state.mode=='edit'}">
+        <div class="row">
+          <label class="col-xs-12 col-sm-3 control-label no-padding-right">
+            <b>Topic</b>
+            <i class="fa fa-info-circle" kylinpopover placement="right" title="Topic"  template="KafkaTopicTip.html"></i>
+          </label>
+          <div class="col-xs-12 col-sm-6"   ng-class="{'has-error':form.cube_streaming_form.topic.$invalid && (form.cube_streaming_form.topic.$dirty||form.cube_streaming_form.$submitted)}">
+            <input  ng-if="state.mode=='edit'"  name="topic" required ng-model="kafkaMeta.topic" type="text"
+                    placeholder="Input kafkaConfig topic"
+                    class="form-control"/>
+            <small class="help-block"
+                   ng-show="!form.cube_streaming_form.topic.$error.required && form.cube_streaming_form.topic.$invalid && (form.cube_streaming_form.topic.$dirty||form.cube_streaming_form.$submitted)">
+              Kafka topic is invalid.
+            </small>
+            <small class="help-block" ng-show="form.cube_streaming_form.topic.$error.required && (form.cube_streaming_form.topic.$dirty||form.cube_streaming_form.$submitted)">Kafka topic is required.</small>
+            <span ng-if="state.mode=='view'">{{kafkaMeta.topic}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div ng-repeat="cluster in kafkaMeta.clusters | filter: state.measureFilter track by $index" class="box">
+        <div class="box-header">
+          <h3 class="box-title">Cluster-{{$index+1}}</h3>
+          <button ng-if="state.mode=='edit'" type="button" ng-click="removeCluster(cluster)" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="box-body no-padding">
+          <table class="table table-condensed" ng-if="cluster.brokers.length||cluster.newBroker">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Host</th>
+              <th>Port</th>
+              <th ng-if="state.mode=='edit'">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="broker in cluster.brokers| filter: state.measureFilter track by $index">
+              <td style="vertical-align: middle;">{{broker.id}}</td>
+              <td ng-if="cluster.edit_index!=$index">{{broker.host}}</td>
+              <td ng-if="cluster.edit_index==$index">
+                <div class="input-group">
+                  <input class="form-control" type="text" ng-model="cluster.newBroker.host" name="broker_host" placeholder="Input broker host">
+                </div>
+              </td>
+              <td ng-if="cluster.edit_index!=$index">{{broker.port}}</td>
+              <td ng-if="cluster.edit_index==$index">
+                <div class="input-group">
+                  <input class="form-control" type="text" ng-model="cluster.newBroker.port" name="broker_port" placeholder="Input broker port" onInput="this.value=this.value.replace(/[^0-9]/g, '')">
+                </div>
+              </td>
+              <td ng-if="state.mode=='edit'">
+                <!--Edit Button -->
+                <button ng-if="cluster.edit_index!=$index" class="btn btn-xs btn-info" ng-click="addBroker(cluster,broker)">
+                  <i class="fa fa-pencil"></i>
+                </button>
+
+                <button class="btn btn-xs btn-danger" ng-click="removeElement(cluster,broker)"><i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+            <tr ng-if="cluster.newBroker&&cluster.edit_index===undefined">
+              <td>
+                <div class="input-group">
+                  <input class="form-control" type="text" ng-model="cluster.newBroker.id" name="broker_id" placeholder="Input broker ID" onInput="this.value=this.value.replace(/[^0-9]/g, '')"/>
+                </div>
+              </td>
+              <td>
+                <div class="input-group">
+                  <input class="form-control" type="text" ng-model="cluster.newBroker.host" name="broker_host" placeholder="Input broker host">
+                </div>
+              </td>
+              <td>
+                <div class="input-group">
+                  <input class="form-control" type="text" ng-model="cluster.newBroker.port" name="broker_port" placeholder="Input broker port" onInput="this.value=this.value.replace(/[^0-9]/g, '')">
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-xs btn-danger" ng-click="removeNewBroker(cluster)"><i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer">
+          <div>
+            <button class="btn btn-sm btn-success" ng-click="addBroker(cluster)" ng-show="state.mode=='edit'&&!cluster.newBroker">
+              <i class="fa fa-plus"></i> Broker
+            </button>
+            <button class="btn btn-sm btn-info" ng-click="saveNewBroker(cluster)" ng-show="state.mode=='edit'&&cluster.newBroker">
+              <i class="fa fa-saved"></i> Save
+            </button>
+            <button class="btn btn-link" ng-click="clearNewBroker(cluster)"  ng-show="state.mode=='edit'&&cluster.newBroker">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <!--Add Measures Button-->
+      <div class="form-group">
+        <button class="btn btn-sm btn-info" ng-click="addCluster()" ng-show="state.mode=='edit'">
+          <i class="fa fa-plus"></i> Cluster
+        </button>
+      </div>
+
+          </accordion-group>
+        </accordion>
+      <hr/>
+      <accordion>
+
+        <accordion-group is-open="state.isParserHeaderOpen=true">
+          <accordion-heading>
+            Parser Setting
+            <i class="pull-right glyphicon"
+               ng-class="{'glyphicon-chevron-down': state.isParserHeaderOpen, 'glyphicon-chevron-right': !state.isParserHeaderOpen}"></i>
+          </accordion-heading>
+
+          <div class="form-group middle-popover" ng-class="{'required':state.mode=='edit'}">
+            <div class="row">
+              <label class="col-xs-12 col-sm-3 control-label no-padding-right">
+                <b>Parser Name</b>
+                <i class="fa fa-info-circle" kylinpopover placement="right" title="Parser Name" template="ParserName.html"></i>
+              </label>
+
+              <div class="col-xs-12 col-sm-6"
+                   ng-class="{'has-error':form.cube_streaming_form.parserName.$invalid && (form.cube_streaming_form.parserName.$dirty||form.cube_streaming_form.$submitted)}">
+                <input ng-if="state.mode=='edit'" name="parserName" required ng-model="kafkaMeta.parserName" type="text"
+                       placeholder="Input kafkaConfig parserName"
+                       class="form-control"/>
+                <small class="help-block"
+                       ng-show="!form.cube_streaming_form.parserName.$error.required && form.cube_streaming_form.parserName.$invalid && (form.cube_streaming_form.parserName.$dirty||form.cube_streaming_form.$submitted)">
+                  Kafka parser name is invalid.
+                </small>
+                <small class="help-block"
+                       ng-show="form.cube_streaming_form.parserName.$error.required && (form.cube_streaming_form.parserName.$dirty||form.cube_streaming_form.$submitted)">
+                  Kafka parser name is required.
+                </small>
+                <span ng-if="state.mode=='view'">{{kafkaMeta.parserName}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group middle-popover" ng-if="state.mode=='edit'&&state.target!=='kfkConfig'" ng-class="{'required':state.mode=='edit'}">
+            <div class="row">
+              <label class="col-xs-12 col-sm-3 control-label no-padding-right">
+                <b>Parser Timestamp Field</b>
+                <i class="fa fa-info-circle" kylinpopover placement="right" title="Parser Timestamp Field" template="ParserTimestampFieldsTip.html"></i>
+              </label>
+
+              <div class="col-xs-12 col-sm-6 streamingParserCtr">
+                <select chosen ng-model="streamingCfg.parseTsColumn"
+                        ng-options="column as column for column in streamingCfg.columnOptions "
+                        ng-change="streamingTsColUpdate()"
+                        data-placeholder="select a column"
+                        class="chosen-select">
+                  <option value=""></option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group middle-popover" ng-class="{'required':state.mode=='edit'}">
+            <div class="row">
+              <label class="col-xs-12 col-sm-3 control-label no-padding-right">
+                <b>Parser Properties</b>
+                <i class="fa fa-info-circle" kylinpopover placement="right" title="Parser Properties" template="ParserPropertiesTip.html"></i>
+              </label>
+
+              <div class="col-xs-12 col-sm-6"
+                   ng-class="{'has-error':form.cube_streaming_form.parserProperties.$invalid && (form.cube_streaming_form.parserProperties.$dirty||form.cube_streaming_form.$submitted)}">
+                <input ng-if="state.mode=='edit'" name="parserProperties" required ng-model="kafkaMeta.parserProperties" type="text"
+                       placeholder="configA=1;configB=2"
+                       class="form-control"/>
+                <small class="help-block"
+                       ng-show="!form.cube_streaming_form.parserProperties.$error.required && form.cube_streaming_form.parserProperties.$invalid && (form.cube_streaming_form.parserProperties.$dirty||form.cube_streaming_form.$submitted)">
+                  Parser properties is invalid.
+                </small>
+                <small class="help-block"
+                       ng-show="form.cube_streaming_form.parserProperties.$error.required && (form.cube_streaming_form.parserProperties.$dirty||form.cube_streaming_form.$submitted)">
+                  Parser properties is required.
+                </small>
+                <span ng-if="state.mode=='view'">{{kafkaMeta.parserProperties}}</span>
+              </div>
+            </div>
+          </div>
+        </accordion-group>
+      </accordion>
+      <hr/>
+      <!--Advanced setting-->
+      <accordion>
+        <accordion-group is-open="state.isStreamingAdOpen" ng-init="state.isStreamingAdOpen">
+          <accordion-heading>
+            Advanced Setting
+            <i class="pull-right glyphicon"
+               ng-class="{'glyphicon-chevron-down': state.isStreamingAdOpen, 'glyphicon-chevron-right': !state.isStreamingAdOpen}"></i>
+          </accordion-heading>
+
+          <div class="form-group middle-popover" ng-class="{'required':state.mode=='edit'}">
+            <div class="row">
+              <label class="col-xs-12 col-sm-3 control-label no-padding-right">
+                <b>Timeout</b>
+                <i class="fa fa-info-circle" kylinpopover placement="right" title="Timeout" template="TimeoutTip.html"></i>
+              </label>
+
+              <div class="col-xs-12 col-sm-6"
+                   ng-class="{'has-error':form.cube_streaming_form.timeout.$invalid && (form.cube_streaming_form.timeout.$dirty||form.cube_streaming_form.$submitted)}">
+                <input ng-if="state.mode=='edit'" name="timeout" required ng-model="kafkaMeta.timeout" type="text"
+                       placeholder="Input kafkaConfig timeout"
+                       ng-pattern="/^\+?[1-9][0-9]*$/"
+                       class="form-control"
+                       onInput="this.value=this.value.replace(/[^0-9]/g, '')"/>
+                <small class="help-block"
+                       ng-show="!form.cube_streaming_form.timeout.$error.required && form.cube_streaming_form.timeout.$invalid && (form.cube_streaming_form.timeout.$dirty||form.cube_streaming_form.$submitted)">
+                  Kafka timeout is invalid.
+                </small>
+                <small class="help-block"
+                       ng-show="form.cube_streaming_form.timeout.$error.required && (form.cube_streaming_form.timeout.$dirty||form.cube_streaming_form.$submitted)">
+                  Kafka timeout is required.
+                </small>
+                <span ng-if="state.mode=='view'">{{kafkaMeta.timeout}}</span>
+              </div>
+            </div>
+          </div>
+
+        </accordion-group>
+      </accordion>
+
+    </div>
+  </form>
+</div>
+
+<script type="text/ng-template" id="KafkaTopicTip.html">
+    <p>Input the kafka topic that contains source data.</p>
+  </script>
+<script type="text/ng-template" id="TimeoutTip.html">
+    <p>Set timeout for kafka client.</p>
+  </script>
+<script type="text/ng-template" id="MarginTip.html">
+    <p>Deprecated. When the messages in kafka is not strictly sorted on timestamp, read more data (expressed in ts) before and after the specified interval to avoid data loss.</p>
+  </script>
+<script type="text/ng-template" id="ParserName.html">
+    <p>Set the parser to parse source data messages. The default parser works for json messages with a timestamp field.</p>
+  </script>
+<script type="text/ng-template" id="ParserTimestampFieldsTip.html">
+    <p>Provide the name of the timestamp field to the default parser.</p>
+  </script>
+<script type="text/ng-template" id="ParserPropertiesTip.html">
+    <p>Provide a list of KV properties to the parser, delimited by semicolon.</p>
+</script>

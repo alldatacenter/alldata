@@ -1,0 +1,109 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="log-file-search-toolbar">
+  <div class="filter-block pull-left">
+    <div class="toolbar-row">
+      <div class="display-inline-block">
+        <div class="display-inline-block">{{t common.keywords}}:</div>
+        {{view view.keywordsFilterView classNames="display-inline-block" valueBinding="view.keywordsFilterValue"}}
+        <button {{action submitKeywordsValue target="view"}} class="btn btn-primary display-inline-block">Search</button>
+      </div>
+      <div class="display-inline-block date-filter">
+        <div class="display-inline-block date-filter-item">
+          {{t from}}:
+          {{view App.DatepickerFieldView valueBinding="view.dateFromValue"}}
+        </div>
+        <div class="display-inline-block date-filter-item">
+          {{t to}}:
+          {{view App.DatepickerFieldView valueBinding="view.dateToValue"}}
+        </div>
+      </div>
+      <div class="pull-right">
+        <a {{action resetKeywordsDateFilter target="view"}} href="#" class="reset-link">{{t common.reset}}</a>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="toolbar-row levels-filter-block">
+      <div class="display-inline-block">{{t common.levels}}:</div>
+      {{#each level in view.levelsContext}}
+        <div class="display-inline-block level-checkbox">
+          <label>
+            {{view App.CheckboxView checkedBinding="level.checked"}}
+            {{level.displayName}} ({{level.counter}})
+          </label>
+        </div>
+      {{/each}}
+      <div class="pull-right">
+        <a {{action resetLevelsFilter target="view"}} href="#" class="reset-link">{{t common.reset}}</a>
+      </div>
+    </div>
+    <div class="toolbar-row include-exclude-filter-block">
+      <div class="display-inline-block">
+        {{t common.filters}}:
+        <div class="keywords-list">
+          {{#each keyword in view.selectedKeywords}}
+            <div {{bindAttr class=":keyword-item :btn keyword.isIncluded:btn-success:btn-danger"}}>
+              {{#if keyword.isIncluded}}
+                {{t common.include.short}}:
+              {{else}}
+                {{t common.exclude.short}}:
+              {{/if}}
+              <span> '{{keyword.value}}'</span>
+              <a {{action removeKeyword keyword target="view"}} class="close" href="#">x</a>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="pull-right">
+        <a {{action resetKeywordsFilter target="view"}} href="#" class="reset-link">{{t common.reset}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="context-menu pull-left">
+    <a href="#" {{action moveTableTop target="view"}} class="move-to-top glyphicon glyphicon-caret-up"></a>
+    <a href="#" {{action moveTableBottom target="view"}} class="move-to-bottom glyphicon glyphicon-caret-down"></a>
+    <a href="#" {{action navigateToLogUI target="view"}} class="icon-external-link"></a>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="log-file-search-content container">
+  {{#each logData in view.content}}
+    <div class="row log-data-item">
+      <div class="col-md-1 log-data-date">
+        {{logData.date}}
+        <br />
+        <span class="log-data-level">
+          {{logData.level}}
+        </span>
+      </div>
+      <div class="col-md-11 log-data-message">{{logData.message}}</div>
+      <div class="clearfix"></div>
+    </div>
+  {{/each}}
+</div>
+<div id="log-file-search-item-context-menu">
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a {{action includeSelected target="view"}} href="#">{{t common.include}}</a>
+    </li>
+    <li>
+      <a {{action excludeSelected target="view"}} href="#">{{t common.exclude}}</a>
+    </li>
+  </ul>
+</div>

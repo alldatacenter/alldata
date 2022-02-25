@@ -1,0 +1,119 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="queue-config-container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="list-group queue-hierarchy">
+            {{queue-hierarchy depth=0 queues=queues deletedQs=deletedQueues}}
+          </div>
+          {{#if isOperator}}
+            {{#if selectedQueue}}
+              <div class="queue-actions-wrapper">
+                <div class="pull-left">
+                  <button type="button" {{bind-attr class=":btn :btn-primary :btn-xs canAddChildrenQueues::disabled"}} name="addQueueBtn" {{action "addNewQueue"}}>Add Queue</button>
+                </div>
+                {{#unless canAddChildrenQueues}}
+                  {{warning-info class="yellow-warning" tooltip="Queue must be STOPPED to add children queues"}}
+                {{/unless}}
+                <div class="pull-right">
+                  {{#if isSelectedQRunning}}
+                    <button type="button" class="btn btn-primary btn-xs" name="queueStateBtn" {{action "stopQueue"}}>Stop Queue</button>
+                  {{/if}}
+                  {{#if isSelectedQStopped}}
+                    <button type="button" class="btn btn-primary btn-xs" name="queueStateBtn" {{action "startQueue"}}>Start Queue</button>
+                  {{/if}}
+                  {{#unless isRootQSelected}}
+                    <button type="button" {{bind-attr class=":btn :btn-danger :btn-xs isSelectedQueueDeletable::disabled"}} class="btn btn-danger btn-xs" name="deleteQueueBtn" {{action "showDeleteQueueDialog" target="view"}}>Delete Queue</button>
+                    {{#unless isSelectedQueueDeletable}}
+                      {{warning-info class="yellow-warning" tooltip="Queue must be STOPPED to delete"}}
+                    {{/unless}}
+                  {{/unless}}
+                </div>
+              </div>
+              {{#if showQueueNameInput}}
+                <div {{bind-attr class=":add-newqueuename-wrapper isInvalidQueueName:has-error"}} class="add-newqueuename-wrapper">
+                  {{input type="text" name="addNewQueueName" class="form-control input-sm new-queue-name" value=newQueueName placeholder="Enter queue name..."}}
+                  <div class="btn-group btn-group-sm pull-right">
+                    <button type="button" class="btn btn-primary" name="createNewQueueBtn" {{action "createNewQueue"}} {{bind-attr disabled=isInvalidQueueName}}>Create</button>
+                    <button type="button" class="btn btn-default" name="cancelNewQueueBtn" {{action "clearCreateQueue"}}>Cancel</button>
+                  </div>
+                  {{#if isInvalidQueueName}}
+                    <div class="tooltip bottom invalid-qname-tooltip" role="tooltip">
+                      <div class="tooltip-arrow"></div>
+                      <div class="tooltip-inner">
+                        {{invalidQueueNameMessage}}
+                      </div>
+                    </div>
+                  {{/if}}
+                </div>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        </div>
+        <div class="col-sm-5">
+          {{queue-summary queue=selectedQueue allQueues=queues queuesNeedRefresh=queuesNeedRefresh}}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{#if isOperator}}
+    <div class="btn btn-group-sm col-sm-offset-1">
+      {{#if showNeedRefreshOrRestartWarning}}
+        {{warning-info class="yellow-warning fa-2x resfresh-restart-warning" tooltip="Require refresh queues/restart RM" placement="top"}}
+      {{/if}}
+      <button type="button" {{bind-attr class=":btn :btn-success canNotSave:disabled needSave::disabled"}} name="saveOnly" {{action "showSaveConfigDialog"}}>Save Only</button>
+      <button type="button" {{bind-attr class=":btn :btn-success canNotSave:disabled isDirtyQueuesNeedRefreshQsOp::disabled"}} name="saveAndRefresh" {{action "showSaveConfigDialog" "refresh"}}>Save And Refresh Queues</button>
+      <button type="button" {{bind-attr class=":btn :btn-success canNotSave:disabled isDirtyQueuesNeedRestartRmOp::disabled"}} name="saveAndRestart" {{action "showSaveConfigDialog" "restart"}}>Save And Restart RM</button>
+      <button type="button" {{bind-attr class=":btn :btn-danger isAnyQueueDirty::disabled"}} name="cancelQueuesconfBtn" {{action "showConfirmDialog"}}>Discard Changes</button>
+      <button type="button" {{bind-attr class=":btn :btn-primary isAnyQueueDirty::disabled"}} name="viewXmlDiff" {{action "viewConfigXmlDiff"}}>View Diff</button>
+      <button type="button" class="btn btn-default" name="viewCapSchedXml" {{action "viewCapSchedConfigXml"}}>View XML</button>
+    </div>
+  {{/if}}
+</div>
+
+{{save-config-dialog isDialogOpen=isSaveConfigDialogOpen configNote=configNote action="saveCapSchedConfigs" param=saveMode forceRefresh=forceRefreshOrRestartRequired}}
+
+{{confirm-discard-changes isDialogOpen=isConfirmDialogOpen action="discardQueuesChanges"}}
+
+{{!-- DELETE QUEUE CONFIRM MODAL --}}
+<div class="modal fade" id="deleteQueueModalDialog" tabindex="-1" role="dialog" aria-labelledby="deleteQModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="deleteQModalLabel">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <span>Are you sure you want to delete the queue?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" {{action "deleteQueue"}}>Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

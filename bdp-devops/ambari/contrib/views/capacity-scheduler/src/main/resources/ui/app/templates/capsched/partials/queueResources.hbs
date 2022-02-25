@@ -1,0 +1,224 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="queue-resources-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div id="collapseResourcesPanelBtn" href="#collapsibleQueueResourcesPanel" data-toggle="collapse" {{bind-attr class=":panel-title :collapsible-panel-btn view.isResourcesPanelCollapsed:collapsed"}}>
+        Other Configs (User Limit factor, Max AM Resource etc)
+        {{#if isAnyQueueResourcesDirty}}
+          {{warning-info class="yellow-warning" tooltip="Need refresh queues / restart RM"}}
+        {{/if}}
+        <a class="pull-right"><i {{bind-attr class=":fa view.isResourcesPanelCollapsed:fa-plus:fa-minus"}}></i></a>
+      </div>
+    </div>
+    <div id="collapsibleQueueResourcesPanel" {{bind-attr class=":panel-collapse :collapse view.isResourcesPanelCollapsed::in"}}>
+      <div class="panel-body">
+
+        <div class="row form-group">
+          {{tooltip-label
+            class="col-sm-4 control-label"
+            label='User Limit Factor'
+            message='The upper limit multiple of the queue’s configured minimum capacity that one user’s applications can utilize.'
+          }}
+          {{#if isOperator}}
+            <div class="col-sm-3">
+              {{int-input value=content.user_limit_factor maxlength=10 class="input-sm input-int input-width-control" defaultVal=1 placeholder=1}}
+              {{#if queueDirtyFields.user_limit_factor}}
+              <div class="btn-group btn-group-xs">
+                <a {{action 'rollbackProp' 'user_limit_factor' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+              {{/if}}
+            </div>
+          {{else}}
+            <div class="col-sm-2">
+              {{#if content.user_limit_factor}}
+                <p class="form-control-static">{{content.user_limit_factor}}</p>
+              {{else}}
+                <p class="form-control-static">1</p>
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="row form-group">
+          {{tooltip-label
+            class="col-sm-4 control-label"
+            label='Minimum User Limit'
+            message='The minimum guaranteed percentage of queue capacity allocated for a user\'s applications.'
+          }}
+          {{#if isOperator}}
+            <div class="col-sm-3 control-value input-percent-wrap">
+              <div class="input-group input-percent">
+                {{int-input value=content.minimum_user_limit_percent class="input-sm" maxVal=100 placeholder=100}}
+                <span class="input-group-addon">%</span>
+              </div>
+              {{#if queueDirtyFields.minimum_user_limit_percent}}
+                <div class="btn-group btn-group-xs input-percent-rollback">
+                    <a {{action 'rollbackProp' 'minimum_user_limit_percent' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                </div>
+              {{/if}}
+            </div>
+          {{else}}
+            <div class="col-sm-2">
+              {{#if content.minimum_user_limit_percent}}
+                <p class="form-control-static">{{content.minimum_user_limit_percent}}%</p>
+              {{else}}
+                <p class="form-control-static">100%</p>
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="row form-group">
+          {{tooltip-label
+            class="col-sm-4 control-label"
+            label='Maximum Applications'
+            message='The maximum number of applications that can be running or pending in this specific queue at any point of time.'
+          }}
+          {{#if isOperator}}
+            <div class="col-sm-3 control-value">
+              {{int-input placeholder="Inherited" maxlength=15 value=maximumApplications class="input-sm input-int input-width-control"}}
+              {{#if queueDirtyFields.maximum_applications}}
+                <div class="btn-group btn-group-xs" >
+                  <a {{action 'rollbackProp' 'maximum_applications' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                </div>
+              {{/if}}
+            </div>
+            {{#if isMaximumApplicationsInherited}}
+              <div class="col-sm-2 inherited-value">
+                <span>(Inherited)</span>
+              </div>
+            {{/if}}
+          {{else}}
+            <div class="col-sm-3">
+            {{#if maximumApplications}}
+              <p class="form-control-static">{{maximumApplications}} {{#if isMaximumApplicationsInherited}}(Inherited){{/if}}</p>
+            {{else}}
+              <p class="form-control-static">Inherited</p>
+            {{/if}}
+          </div>
+          {{/if}}
+        </div>
+
+        <div class="row form-group">
+          {{tooltip-label
+            class="col-sm-4 control-label"
+            label='Maximum AM Resource'
+            message='The maximum percentage of total capacity of this specific queue that can be utilized by application masters at any point in time.'
+          }}
+          {{#if isOperator}}
+            <div class="col-sm-3 control-value input-percent-wrap">
+              <div class="input-group input-percent">
+                {{int-input placeholder="Inherited" value=maximumAMResourcePercent class="input-sm" maxVal=100}}
+                <span class="input-group-addon">%</span>
+              </div>
+              {{#if queueDirtyFields.maximum_am_resource_percent}}
+                <div class="btn-group btn-group-xs">
+                  <a {{action 'rollbackProp' 'maximum_am_resource_percent' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                </div>
+              {{/if}}
+            </div>
+            {{#if isMaxAmResourcePercentInherited}}
+              <div class="col-sm-2 inherited-value">
+                <span>(Inherited)</span>
+              </div>
+            {{/if}}
+          {{else}}
+            <div class="col-sm-2">
+              {{#if maximumAMResourcePercent}}
+                <p class="form-control-static">{{maximumAMResourcePercent}}% {{#if isMaxAmResourcePercentInherited}}(Inherited){{/if}}</p>
+              {{else}}
+                <p class="form-control-static">Inherited</p>
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="row form-group">
+          {{tooltip-label
+            class="col-sm-4 control-label"
+            label='Ordering policy'
+            message='The ordering policy to use for applications scheduled to this queue. <br/> FIFO: Applications get available capacity based on order they are submitted <br/> Fair: Applications will get fair share of capacity, regardless of order submitted'}}
+          {{#if isOperator}}
+          <div class="col-sm-3 control-value input-percent-wrap">
+            <div class="input-percent">
+              {{view Ember.Select
+                class="form-control input-sm"
+                content=orderingPolicyValues
+                optionLabelPath="content.label"
+                optionValuePath="content.value"
+                value=currentOP}}
+            </div>
+            {{#if queueDirtyFields.ordering_policy}}
+              <div class="btn-group btn-group-xs" >
+                <a {{action 'rollbackProp' 'ordering_policy' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+              </div>
+            {{/if}}
+          </div>
+          {{else}}
+          <div class="col-sm-2">
+            {{#if content.ordering_policy}}
+              <p class="form-control-static">{{uppercase content.ordering_policy}}</p>
+            {{else}}
+              <p class="form-control-static">FIFO</p>
+            {{/if}}
+          </div>
+          {{/if}}
+        </div>
+
+        <div class="row">
+          {{#if isFairOP}}
+            <div class="form-group">
+              {{tooltip-label
+                class="col-sm-4 control-label"
+                label='Enable Size Based Weight Ordering'
+                message='If true, then Fair Ordering Policy will use resource needs of an application as way to prioritize capacity allocation - larger applications will get higher priority'
+              }}
+              {{#if isOperator}}
+              <div class="col-sm-3 control-value input-toggle-wrap">
+                <div class="btn-group btn-group-sm">
+                  <a href="#" {{action 'toggleProperty' 'enable_size_based_weight' content}} class="btn btn-default">
+                    <i {{bind-attr class=":fa content.enable_size_based_weight:fa-check-square-o:fa-square-o"}}></i>
+                  </a>
+                </div>
+                {{#if queueDirtyFields.enable_size_based_weight}}
+                  <div class="btn-group btn-group-xs" >
+                    <a {{action 'rollbackProp' 'enable_size_based_weight' content}} href="#" class="btn btn-default btn-warning"><i class="fa fa-undo"></i></a>
+                  </div>
+                {{/if}}
+              </div>
+              {{else}}
+              <div class="col-sm-2">
+                <p class="form-control-static">
+                  {{#if content.enable_size_based_weight}}
+                    Enabled
+                  {{else}}
+                    Disabled
+                  {{/if}}
+                </p>
+              </div>
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

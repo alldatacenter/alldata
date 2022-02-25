@@ -1,0 +1,1382 @@
+{
+  "href": "http://host:8080/api/v1/clusters/tdk/alerts?format=groupedSummary",
+  "alerts_summary_grouped" : [
+    {
+      "definition_id" : 39,
+      "definition_name" : "yarn_resourcemanager_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 1420679098791,
+          "maintenance_count" : 1,
+          "latest_text" : "Connection failed to http://c6408.ambari.apache.org:8088"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 9,
+      "definition_name" : "hive_metastore_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673051294,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 9083"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 35,
+      "definition_name" : "mapreduce_history_server_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673231360,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 19888"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 51,
+      "definition_name" : "storm_server_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673291457,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 8744"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 20,
+      "definition_name" : "namenode_rpc_latency",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673074138,
+          "maintenance_count" : 1,
+          "latest_text" : "Average Queue Time:[1.0], Average Processing Time:[0.0]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 22,
+      "definition_name" : "namenode_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673074107,
+          "maintenance_count" : 1,
+          "latest_text" : "HTTP 200 response in 0.000 seconds"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 40,
+      "definition_name" : "yarn_app_timeline_server_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 1420679098808,
+          "maintenance_count" : 1,
+          "latest_text" : "Connection failed to http://c6408.ambari.apache.org:8188"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 31,
+      "definition_name" : "datanode_storage",
+      "summary" : {
+        "OK" : {
+          "count" : 1,
+          "original_timestamp" : 1420673157952,
+          "maintenance_count" : 0,
+          "latest_text" : "Remaining Capacity:[493093068800], Total Capacity:[0% Used, 524208947200]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 32,
+      "definition_name" : "datanode_storage_percent",
+      "summary" : {
+        "OK" : {
+          "count" : 1,
+          "original_timestamp" : 1420673283414,
+          "maintenance_count" : 0,
+          "latest_text" : "affected: [0], total: [1]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 55,
+      "definition_name" : "oozie_server_status",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673534348,
+          "maintenance_count" : 1,
+          "latest_text" : "Oozie check success"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 12,
+      "definition_name" : "ganglia_monitor_yarn_resourcemanager",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673051311,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 8664"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 34,
+      "definition_name" : "mapreduce_history_server_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673238908,
+          "maintenance_count" : 1,
+          "latest_text" : "HTTP 200 response in 0.000 seconds"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 45,
+      "definition_name" : "storm_drpc_server",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673171371,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 3772"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 7,
+      "definition_name" : "zookeeper_server_process_percent",
+      "summary" : {
+        "OK" : {
+          "count" : 1,
+          "original_timestamp" : 1420677095267,
+          "maintenance_count" : 0,
+          "latest_text" : "affected: [0], total: [3]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 48,
+      "definition_name" : "storm_nimbus_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 1420676951374,
+          "maintenance_count" : 1,
+          "latest_text" : "Connection failed: [Errno 111] Connection refused to c6408.ambari.apache.org:6627"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 42,
+      "definition_name" : "yarn_resourcemanager_cpu",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 1420679338815,
+          "maintenance_count" : 1,
+          "latest_text" : "<urlopen error [Errno 111] Connection refused>"
+        }
+      }
+    },
+    {
+      "definition_id" : 19,
+      "definition_name" : "namenode_cpu",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673133996,
+          "maintenance_count" : 1,
+          "latest_text" : "1 CPU, load 5.6%"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 36,
+      "definition_name" : "mapreduce_history_server_rpc_latency",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673291603,
+          "maintenance_count" : 1,
+          "latest_text" : "Average Queue Time:[0.0], Average Processing Time:[0.0]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 3,
+      "definition_name" : "hbase_regionserver_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 1,
+          "original_timestamp" : 1420753810619,
+          "maintenance_count" : 0,
+          "latest_text" : "Connection failed: [Errno 111] Connection refused to c6409.ambari.apache.org:60030"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 38,
+      "definition_name" : "yarn_resourcemanager_rpc_latency",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 1420679338792,
+          "maintenance_count" : 1,
+          "latest_text" : "<urlopen error [Errno 111] Connection refused>"
+        }
+      }
+    },
+    {
+      "definition_id" : 46,
+      "definition_name" : "storm_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673292323,
+          "maintenance_count" : 1,
+          "latest_text" : "HTTP 200 response in 0.000 seconds"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 13,
+      "definition_name" : "ganglia_monitor_hdfs_namenode",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673051315,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 8661"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 5,
+      "definition_name" : "flume_agent_status",
+      "summary" : {
+        "OK" : {
+          "count" : 1,
+          "original_timestamp" : 1420672497948,
+          "maintenance_count" : 0,
+          "latest_text" : "No agents defined on c6409.ambari.apache.org"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 15,
+      "definition_name" : "ganglia_server_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673051329,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 8651"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 11,
+      "definition_name" : "ganglia_monitor_mapreduce_history_server",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673051304,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 8666"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 10,
+      "definition_name" : "hive_server_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673476206,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 2.3831 response on port 10000"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 52,
+      "definition_name" : "falcon_server_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673711755,
+          "maintenance_count" : 1,
+          "latest_text" : "HTTP 200 response in 0.000 seconds"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 54,
+      "definition_name" : "oozie_server_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673538424,
+          "maintenance_count" : 1,
+          "latest_text" : "HTTP 200 response in 0.000 seconds"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 56,
+      "definition_name" : "ambari_agent_disk_usage",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420672251762,
+          "maintenance_count" : 3,
+          "latest_text" : "Capacity Used: [0.58%, 3.0 GB], Capacity Total: [525.3 GB]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 27,
+      "definition_name" : "namenode_last_checkpoint",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673074183,
+          "maintenance_count" : 1,
+          "latest_text" : "Last Checkpoint: [22 hours, 43 minutes, 4731 transactions]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 50,
+      "definition_name" : "storm_supervisor_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 1,
+          "original_timestamp" : 1420676937923,
+          "maintenance_count" : 0,
+          "latest_text" : "Connection failed: [Errno 111] Connection refused to c6409.ambari.apache.org:56431"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 44,
+      "definition_name" : "yarn_nodemanager_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 1,
+          "original_timestamp" : 1420679100233,
+          "maintenance_count" : 0,
+          "latest_text" : "Connection failed to http://c6409.ambari.apache.org:8042"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 4,
+      "definition_name" : "hbase_master_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 1420676133965,
+          "maintenance_count" : 1,
+          "latest_text" : "Connection failed: [Errno 111] Connection refused to c6407.ambari.apache.org:60000"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 16,
+      "definition_name" : "secondary_namenode_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673291332,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 50090"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 8,
+      "definition_name" : "hive_webhcat_server_status",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673892709,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.0030 response on port 50111"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 18,
+      "definition_name" : "datanode_webui",
+      "summary" : {
+        "OK" : {
+          "count" : 1,
+          "original_timestamp" : 1420673038154,
+          "maintenance_count" : 0,
+          "latest_text" : "HTTP 200 response in 0.000 seconds"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 1,
+      "definition_name" : "hbase_master_cpu",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 1420676133969,
+          "maintenance_count" : 1,
+          "latest_text" : "<urlopen error [Errno 111] Connection refused>"
+        }
+      }
+    },
+    {
+      "definition_id" : 53,
+      "definition_name" : "falcon_server_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673711487,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 15000"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 2,
+      "definition_name" : "hbase_regionserver_process_percent",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 1,
+          "original_timestamp" : 1420753879844,
+          "maintenance_count" : 0,
+          "latest_text" : "affected: [1], total: [1]"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 21,
+      "definition_name" : "namenode_hdfs_blocks_health",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420741685856,
+          "maintenance_count" : 1,
+          "latest_text" : "Total Blocks:[408], Missing Blocks:[0]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 14,
+      "definition_name" : "ganglia_monitor_hbase_master",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673051328,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 8663"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 6,
+      "definition_name" : "zookeeper_server_process",
+      "summary" : {
+        "OK" : {
+          "count" : 1,
+          "original_timestamp" : 1420677093961,
+          "maintenance_count" : 2,
+          "latest_text" : "TCP OK - 0.000s response on port 2181"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 25,
+      "definition_name" : "namenode_process",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673073990,
+          "maintenance_count" : 1,
+          "latest_text" : "TCP OK - 0.000s response on port 50070"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 24,
+      "definition_name" : "datanode_process_percent",
+      "summary" : {
+        "OK" : {
+          "count" : 1,
+          "original_timestamp" : 1420673101024,
+          "maintenance_count" : 0,
+          "latest_text" : "affected: [0], total: [1]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 23,
+      "definition_name" : "datanode_process",
+      "summary" : {
+        "OK" : {
+          "count" : 1,
+          "original_timestamp" : 1420673037943,
+          "maintenance_count" : 0,
+          "latest_text" : "TCP OK - 0.000s response on port 50010"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 26,
+      "definition_name" : "namenode_hdfs_capacity_utilization",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420741565888,
+          "maintenance_count" : 1,
+          "latest_text" : "Capacity Used:[0%, 602263552], Capacity Remaining:[493093048320]"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 41,
+      "definition_name" : "yarn_nodemanager_webui_percent",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 1,
+          "original_timestamp" : 1420679160575,
+          "maintenance_count" : 0,
+          "latest_text" : "affected: [1], total: [1]"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 49,
+      "definition_name" : "storm_supervisor_process_percent",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 1,
+          "original_timestamp" : 1420677005373,
+          "maintenance_count" : 0,
+          "latest_text" : "affected: [1], total: [1]"
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 30,
+      "definition_name" : "namenode_directory_status",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673074183,
+          "maintenance_count" : 1,
+          "latest_text" : "Directories are healthy"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    },
+    {
+      "definition_id" : 43,
+      "definition_name" : "yarn_nodemanager_health",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 1,
+          "original_timestamp" : 1420672497953,
+          "maintenance_count" : 0,
+          "latest_text" : "Unable to find 'HDP/2.0.6/services/YARN/package/alerts/alert_nodemanager_health.py' as an absolute path or part of /var/lib/ambari-agent/cache/stacks or /var/lib/ambari-agent/cache/host_scripts"
+        }
+      }
+    },
+    {
+      "definition_id" : 37,
+      "definition_name" : "mapreduce_history_server_cpu",
+      "summary" : {
+        "OK" : {
+          "count" : 0,
+          "original_timestamp" : 1420673291601,
+          "maintenance_count" : 1,
+          "latest_text" : "1 CPU, load 8.5%"
+        },
+        "WARNING" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "CRITICAL" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        },
+        "UNKNOWN" : {
+          "count" : 0,
+          "original_timestamp" : 0,
+          "maintenance_count" : 0
+        }
+      }
+    }
+  ]
+}

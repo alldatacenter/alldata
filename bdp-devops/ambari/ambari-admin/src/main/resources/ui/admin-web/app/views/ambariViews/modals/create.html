@@ -1,0 +1,247 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<form role="form" id="create-instance-form" name="form.instanceCreateForm" novalidate>
+<div class="modal-header">
+  <h1 class="modal-title col-sm-8">
+    <span ng-if="!instanceClone">
+      {{'views.create' | translate}}
+    </span>
+    <span ng-if="instanceClone">
+      {{'views.clone' | translate}}
+    </span>
+  </h1>
+  <a class="close" aria-hidden="true" ng-click="cancel()">&times;</a>
+</div>
+<div class="modal-body" ng-hide="isLoading">
+
+  <div class="row">
+
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': form.instanceCreateForm.view.$error.required && form.instanceCreateForm.submitted }">
+      <label for="view">
+        {{'views.createInstance.selectView' | translate}}<span>*</span>&nbsp;
+      </label>
+      <select
+        ng-disabled="instanceClone"
+        class="form-control"
+        id="view"
+        name="view"
+        ng-model="formData.view"
+        ng-change="updateVersionOptions()"
+        ng-options="item.label for item in viewOptions"
+        required>
+      </select>
+      <span class="help-block validation-block" ng-show='form.instanceCreateForm.view.$error.required && form.instanceCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+    </div>
+
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': form.instanceCreateForm.version.$error.required && form.instanceCreateForm.submitted }">
+      <label for="version">
+        {{'views.createInstance.selectVersion' | translate}}<span>*</span>&nbsp;
+      </label>
+      <select
+        ng-disabled="instanceClone"
+        class="form-control"
+        id="version"
+        name="version"
+        ng-model="formData.version"
+        ng-change="updateSettingsList()"
+        ng-options="item.label for item in versionOptions">
+      </select>
+      <span class="help-block validation-block" ng-show='form.instanceCreateForm.version.$error.required && form.instanceCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+    </div>
+  </div>
+
+  <div class="details-section">
+    <h2>{{'common.details' | translate}}</h2>
+    <div class="form-group"
+         ng-class="{ 'has-error': (form.instanceCreateForm.instanceName.$error.required || form.instanceCreateForm.instanceName.$error.pattern || isInstanceExists) && form.instanceCreateForm.submitted }">
+      <label for="instanceName">
+        {{'views.instanceName' | translate}}<span>*</span>&nbsp;
+      </label>
+      <input type="text" class="form-control"
+             ng-model="formData.instanceName"
+             name="instanceName"
+             id="instanceName"
+             ng-change="checkIfInstanceExist()"
+             ng-pattern="nameValidationPattern" required>
+      <span class="help-block validation-block"
+            ng-show='form.instanceCreateForm.instanceName.$error.required && form.instanceCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+      <span class="help-block validation-block"
+            ng-show='form.instanceCreateForm.instanceName.$error.pattern && form.instanceCreateForm.submitted'>
+      {{'common.alerts.noSpecialChars' | translate}}
+    </span>
+      <span class="help-block validation-block" ng-show='isInstanceExists && form.instanceCreateForm.submitted'>
+        {{'views.alerts.instanceExists' | translate}}
+      </span>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': form.instanceCreateForm.displayName.$error.required && form.instanceCreateForm.submitted }">
+      <label for="displayName">
+        {{'views.displayName' | translate}}<span>*</span>&nbsp;
+      </label>
+      <input type="text" class="form-control" required
+             name="displayName"
+             ng-model="formData.displayName"
+             id="displayName">
+      <span class="help-block validation-block" ng-show='form.instanceCreateForm.displayName.$error.required && form.instanceCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': form.instanceCreateForm.description.$error.required && form.instanceCreateForm.submitted }">
+      <label for="description">
+        {{'views.description' | translate}}<span>*</span>&nbsp;
+      </label>
+      <input type="text" class="form-control" required
+             name="description"
+             ng-model="formData.description"
+             id="description">
+      <span class="help-block validation-block" ng-show='form.instanceCreateForm.description.$error.required && form.instanceCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+    </div>
+
+    <div class="form-group checkbox">
+      <input type="checkbox" class="form-control"
+             name="visible"
+             ng-model="formData.visible"
+             id="visible">
+      <label for="visible">
+        {{'views.visible' | translate}}
+      </label>
+    </div>
+  </div>
+
+  <div class="settings-section" ng-show="nonClusterSettingsCount">
+    <h2>{{'views.settings' | translate}}</h2>
+    <div class="form-group"
+         ng-repeat="parameter in formData.settings | filter: { clusterConfig: false }"
+         ng-class="{ 'has-error': (form.instanceCreateForm[parameter.name].$error.required && form.instanceCreateForm.submitted) || form.instanceCreateForm[parameter.name].validationError }">
+      <label ng-attr-for="{{parameter.name}}">
+        {{parameter.label || parameter.displayName}}{{parameter.required ? '*' : ''}}
+      </label>
+      <input class="form-control"
+             type="{{parameter.masked ? 'password' : 'text'}}"
+             ng-required="parameter.required"
+             ng-change="form.instanceCreateForm[parameter.name].validationError=''"
+             ng-attr-name="{{parameter.name}}"
+             popover="{{parameter.description}}"
+             popover-title="{{parameter.name}}"
+             popover-trigger="mouseenter"
+             placeholder="{{parameter.placeholder}}"
+             ng-model="parameter.value"
+             ng-attr-id="{{parameter.name}}">
+      <span class="help-block validation-block" ng-show='form.instanceCreateForm[parameter.name].$error.required && form.instanceCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+      <span class="help-block validation-block" ng-show='form.instanceCreateForm[parameter.name].validationError'>
+        {{form.instanceCreateForm[parameter.name].validationMessage}}
+      </span>
+    </div>
+  </div>
+
+  <div class="cluster-type-section">
+    <h2>{{'views.clusterConfiguration' | translate}}</h2>
+    <div class="form-group">
+      <label for="clusterType">
+        {{'views.createInstance.clusterType' | translate}}?&nbsp;
+      </label>
+      <div>
+        <div class="btn-group" role="group" id="clusterType">
+          <button type="button" class="btn btn-default"
+                  ng-class="clusterType === 'LOCAL_AMBARI' && 'active'"
+                  ng-click="switchClusterType('LOCAL_AMBARI')">
+            {{'common.local' | translate}}
+          </button>
+          <button type="button" class="btn btn-default"
+                  ng-class="clusterType === 'REMOTE_AMBARI' && 'active'"
+                  ng-click="switchClusterType('REMOTE_AMBARI')">
+            {{'common.remote' | translate}}
+          </button>
+          <button type="button" class="btn btn-default"
+                  ng-if="clusterSettingsCount && clusterConfigurable"
+                  ng-class="clusterType === 'NONE' && 'active'"
+                  ng-click="switchClusterType('NONE')">
+            {{'views.custom' | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-6" ng-class="{ 'has-error': form.instanceCreateForm.clusterName.$error.required && form.instanceCreateForm.submitted }">
+        <label for="clusterName">
+          {{'views.clusterName' | translate}}<span>*</span>&nbsp;
+        </label>
+        <select
+          ng-required="clusterType !== 'NONE'"
+          ng-disabled="clusterType === 'NONE'"
+          name="clusterName"
+          ng-options="item.label for item in clusterOptions"
+          class="form-control"
+          ng-model="formData.clusterName"
+          id="clusterName">
+        </select>
+        <span class="help-block validation-block" ng-show='form.instanceCreateForm.clusterName.$error.required && form.instanceCreateForm.submitted'>
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+      </div>
+    </div>
+    <div class="cluster-configurations-section" ng-show="clusterSettingsCount && clusterConfigurable">
+      <div class="form-group"
+           ng-repeat="parameter in formData.settings | filter: { clusterConfig: true }"
+           ng-class="{ 'has-error': (form.instanceCreateForm[parameter.name].$error.required && form.instanceCreateForm.submitted) || form.instanceCreateForm[parameter.name].validationError }">
+        <label ng-attr-for="{{parameter.name}}">
+          {{parameter.label || parameter.displayName}}{{parameter.required ? '*' : ''}}
+        </label>
+        <input class="form-control"
+               ng-disabled="clusterType !== 'NONE'"
+               type="{{parameter.masked ? 'password' : 'text'}}"
+               ng-required="clusterType === 'NONE' && parameter.required"
+               ng-change="form.instanceCreateForm[parameter.name].validationError=''"
+               ng-attr-name="{{parameter.name}}"
+               popover="{{parameter.description}}"
+               popover-title="{{parameter.name}}"
+               popover-trigger="mouseenter"
+               placeholder="{{parameter.placeholder}}"
+               ng-model="parameter.value"
+               ng-attr-id="{{parameter.name}}">
+        <span class="help-block validation-block" ng-show="form.instanceCreateForm[parameter.name].$error.required && form.instanceCreateForm.submitted && (clusterType === 'NONE')">
+        {{'common.alerts.fieldRequired' | translate}}
+      </span>
+        <span class="help-block validation-block" ng-show='form.instanceCreateForm[parameter.name].validationError'>
+        {{form.instanceCreateForm[parameter.name].validationMessage}}
+      </span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<div ng-if="isLoading" class="spinner-container">
+  <i class="fa fa-2x fa-spinner fa-spin" aria-hidden="true"></i>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click="cancel()">{{'common.controls.cancel' | translate}}</button>
+  <button class="btn btn-primary" ng-click="save()" type="submit">{{'common.controls.save' | translate}}</button>
+</div>
+</form>

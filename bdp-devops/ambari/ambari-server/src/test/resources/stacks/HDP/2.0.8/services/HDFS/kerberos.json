@@ -1,0 +1,145 @@
+{
+  "services": [
+    {
+      "name": "HDFS",
+      "identities": [
+        {
+          "name": "hdfs_spnego",
+          "reference": "/spnego",
+          "principal": {
+            "configuration": "hdfs-site/dfs.web.authentication.kerberos.principal"
+          },
+          "keytab": {
+            "configuration": "hdfs-site/dfs.web.authentication.kerberos.keytab"
+          }
+        },
+        {
+          "name": "hdfs_smokeuser",
+          "reference": "/smokeuser"
+        },
+        {
+          "name": "hdfs",
+          "principal": {
+            "value": "${hadoop-env/hdfs_user}${principal_suffix}@${realm}",
+            "type" : "user" ,
+            "configuration": "hadoop-env/hdfs_principal_name",
+            "local_username" : "${hadoop-env/hdfs_user}"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/hdfs.headless.keytab",
+            "owner": {
+              "name": "${hadoop-env/hdfs_user}",
+              "access": "r"
+            },
+            "group": {
+              "name": "${cluster-env/user_group}",
+              "access": "r"
+            },
+            "configuration": "hadoop-env/hdfs_user_keytab"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name": "NAMENODE",
+          "identities": [
+            {
+              "name": "namenode_nn",
+              "principal": {
+                "value": "nn/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "hdfs-site/dfs.namenode.kerberos.principal",
+                "local_username": "${hadoop-env/hdfs_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/nn.service.keytab",
+                "owner": {
+                  "name": "${hadoop-env/hdfs_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "hdfs-site/dfs.namenode.keytab.file"
+              }
+            },
+            {
+              "name": "hdfs_namenode_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "hdfs-site/dfs.namenode.kerberos.internal.spnego.principal"
+              }
+            }
+          ],
+          "configurations": [
+            {
+              "hdfs-site": {
+                "dfs.block.access.token.enable": "true"
+              }
+            }
+          ]
+        },
+        {
+          "name": "DATANODE",
+          "identities": [
+            {
+              "name": "datanode_dn",
+              "principal": {
+                "value": "dn/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "hdfs-site/dfs.datanode.kerberos.principal",
+                "local_username": "${hadoop-env/hdfs_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/dn.service.keytab",
+                "owner": {
+                  "name": "${hadoop-env/hdfs_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "hdfs-site/dfs.datanode.keytab.file"
+              }
+            }
+          ]
+        },
+        {
+          "name": "SECONDARY_NAMENODE",
+          "identities": [
+            {
+              "name": "secondary_namenode_nn",
+              "principal": {
+                "value": "nn/_HOST@${realm}",
+                "type" : "service",
+                "configuration": "hdfs-site/dfs.secondary.namenode.kerberos.principal",
+                "local_username": "${hadoop-env/hdfs_user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/snn.service.keytab",
+                "owner": {
+                  "name": "${hadoop-env/hdfs_user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "hdfs-site/dfs.secondary.namenode.kerberos.principal"
+              }
+            },
+            {
+              "name": "hdfs_secondary_namenode_spnego",
+              "reference": "/spnego",
+              "principal": {
+                "configuration": "hdfs-site/dfs.secondary.namenode.kerberos.internal.spnego.principal"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

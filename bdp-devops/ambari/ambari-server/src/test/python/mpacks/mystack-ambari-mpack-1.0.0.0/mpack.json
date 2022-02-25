@@ -1,0 +1,33 @@
+{
+  "type" : "full-release",
+  "name" : "mystack-ambari-mpack",
+  "version": "1.0.0.0",
+  "description" : "HDP Management Pack",
+  "prerequisites": {
+    "min_ambari_version" : "2.4.0.0"
+  },
+  "hooks": [
+    {
+      "name": "before-install",
+      "type": "python",
+      "script": "hooks/before_install.py"
+    },
+    {
+      "name": "after-install",
+      "type": "python",
+      "script": "hooks/after_install.py"
+    }
+  ],
+  "artifacts": [
+    {
+      "name" : "mystack-service-definitions",
+      "type" : "service-definitions",
+      "source_dir": "common-services"
+    },
+    {
+      "name" : "mystack-stack-definitions",
+      "type" : "stack-definitions",
+      "source_dir": "stacks"
+    }
+  ]
+}

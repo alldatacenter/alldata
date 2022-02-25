@@ -1,0 +1,83 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if controller.isInstallWizard}}
+  {{#if view.allConfigsWithErrors.length}}
+    <h5>
+      {{t installer.step7.requirements.popover.header}}
+      <span class="alert-badge" {{QAAttr "error-badge"}}>
+        <span class="counter label alerts-crit-count">
+          {{view.allConfigsWithErrors.length}}
+        </span>
+      </span>
+    </h5>
+    <div class="recommendations-message">
+      {{t installer.step7.requirements.popover.message}}
+    </div>
+
+    <table class="table table-hover required-table">
+      <thead>
+      <tr>
+        <th>{{t common.service}}</th>
+        <th>{{t common.property}}</th>
+        <th>{{t common.property}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each config in view.allConfigsWithErrors}}
+        <tr>
+          <td>{{formatRole config.serviceName}}</td>
+          <td>
+            <a href="#" {{action "showConfigProperty" config target="controller"}}>
+              {{config.displayName}}
+            </a>
+          </td>
+          <td>
+            <button {{action "showConfigProperty" config target="controller"}}>{{t common.edit}}</button>
+          </td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+
+  {{/if}}
+  {{view App.ValidationsView configErrorsBinding="controller.configErrorList"}}
+  {{#if controller.hasChangedDependencies}}
+    <h5>
+      {{t installer.step7.recommendations.popover.header}}
+      <span class="alert-badge" {{QAAttr "error-badge"}}>
+        <span class="counter label alerts-none-count">
+          {{view.recommendations.length}}
+        </span>
+      </span>
+    </h5>
+    <div class="recommendations-message">
+      {{t installer.step7.recommendations.popover.message}}
+    </div>
+  {{/if}}
+{{/if}}
+<span id="config-dependencies" class="limited-height-2">
+  {{#if view.recommendations.length}}
+    {{view App.DependentConfigsTableView recommendationsBinding="view.recommendations"
+      isClickableBinding="view.isRecommendationsClickable" showPopoversBinding="view.showRecommendationsPopovers"}}
+  {{/if}}
+  {{#if view.requiredChanges.length}}
+    {{view App.DependentConfigsTableView recommendationsBinding="view.requiredChanges" isEditable=false
+      isClickableBinding="view.isRecommendationsClickable" showPopoversBinding="view.showRecommendationsPopovers"}}
+  {{/if}}
+</span>

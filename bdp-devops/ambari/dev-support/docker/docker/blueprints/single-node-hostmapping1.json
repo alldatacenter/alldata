@@ -1,0 +1,14 @@
+{
+    "blueprint": "single-node-blueprint1",
+    "default_password": "changeme",
+    "host_groups": [
+        {
+            "hosts": [
+                {
+                    "fqdn": "node1.mydomain.com"
+                }
+            ],
+            "name": "host_group_1"
+        }
+    ]
+}

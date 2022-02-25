@@ -1,0 +1,385 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="main">
+  <nav class="navbar navbar-default mb0 borderTopNone">
+    <div class="container-fluid container-custom">
+      <div class="navbar-header">
+        <div class="form-inline col-xs-6 paddingtop8">
+          <div class="form-group {{if (v-get this 'coordinator.name' 'isInvalid') 'has-error'}}">
+            <label for="wf_title">Name </label>
+            {{input class="form-control" type="text" name="coord_title" value=coordinator.name title="Coordinator Name" placeholder="Coordinator Name"}}
+            {{#if (v-get this 'coordinator.name' 'isInvalid')}}
+            <span class="text-danger" title="Name is required"><i class="fa fa-close"></i>Name is required</span>
+            {{/if}}
+          </div>
+        </div>
+        <div class="navbar-brand pull-right paddingtop8 col-xs-18">
+          <div class="dropdown inlineBlock">
+            <button class="btn btn-default dropdown-toggle borderRightRadiusNone" type="button" data-toggle="dropdown">Coordinator
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li>
+                <a  class="pointer" title="Import workflow" {{action "openFileBrowser" "coordinatorFilePath"}}>
+                  <i class="fa fa-download marginright5"></i>Import
+                </a>
+             </li>
+             <li>
+               <a class="pointer" href="#" data-toggle="modal" data-target="#ConfirmDialog" title="Reset Coordinator" {{action "confirmReset"}}>
+                 <i class="fa fa-refresh marginright5"></i>Reset
+               </a>
+             </li>
+              <li>
+                <a class="pointer" href="#" data-toggle="modal" title="Preview Xml" {{action "preview"}}>
+                  <i class="fa fa-eye marginright5"></i>Preview xml
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown inlineBlock">
+            <button class="btn btn-default dropdown-toggle borderRightRadiusNone" type="button" data-toggle="dropdown"><i class="fa fa-cog marginright5"></i>Settings
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li>
+                <a  class="pointer" title="Import workflow" title="Parameters Configuration" {{action "showParameterSettings" true}}>
+                  <i class="fa fa-cog marginright5"></i>Parameters
+                </a>
+             </li>
+              <li>
+                <a class="pointer" href="#" data-toggle="modal" data-target="#control-dialog" title="Coordinator Controls" {{action "showControlConfig"}}>
+                  <i class="fa fa-wrench marginright5"></i>Controls
+                </a>
+              </li>
+              <li>
+                <a class="pointer" href="#" title="Coordinator Versions" {{action "showVersionSettings" true}}>
+                  <i class="fa fa-cog marginright5"></i>Versions
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="btn-group" role="group" aria-label="...">
+            <button  id="import-test" type="button" class="btn btn-default hide" title="Import coordinator Test" {{action "importCoordinatorTest"}}>
+              <i class="fa fa-download"></i>
+            </button>
+            <button id="save-coord" type="button" class="btn btn-default" title="Save coordinator in HDFS" {{action "save"}}>
+                <i class="fa fa-floppy-o"></i> Save
+            </button>
+            <button type="button" class="btn btn-default" title="Validate Coordinator" {{action "dryrunCoordinator"}}>
+                <i class="fa fa-play marginright5"></i>Validate
+            </button>
+            <button type="button" class="btn btn-primary" title="Submit Coordinator" {{action "submitCoordinator"}}>
+              <i class="fa fa-upload marginright5"></i>Submit
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div id='loading'>
+  {{spin-spinner lines=13 length=20 width=10}}
+</div>
+<div class="container-fluid">
+  {{designer-errors errors=errors validationErrors=validationErrors errorMsg=errorMsg data=data}}
+  <form class="form-horizontal">
+    <div class="col-sm-12 paddingtop10">
+      <div class="col-sm-8 centralize-panel">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="control-label col-xs-2">Workflow Path<span class="requiredField">&nbsp;*</span></label>
+              <div class="col-xs-7">
+                <div class="input-group">
+                  {{input type="text" class="form-control" name="appPath" focus-out="showWorkflowName" value=coordinator.workflow.appPath placeholder="Path of the workflow file"}}
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button" {{action "openFileBrowser" "coordinator.workflow.appPath"}}>Browse</button>
+                    <button class="btn btn-default" type="button" disabled={{containsParameteriedPaths}} title={{parameterizedPathWarning}} {{action "openTab" 'wf' coordinator.workflow.appPath}} name="button"><i class="fa fa-external-link"></i></button>
+                  </span>
+                </div>
+                {{#if workflowName}}
+                <span title="Name of the workflow">({{workflowName}})</span>
+                {{/if}}
+                {{#field-error model=this field='coordinator.workflow.appPath' showErrorMessage=showErrorMessage}}{{/field-error}}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-2">Frequency<span class="requiredField">&nbsp;*</span></label>
+              <div class="col-xs-2">
+                <select class="form-control" name="frequency-type" title="Frequency type" onchange={{action (mut coordinator.frequency.type) value="target.value"}}>
+                  {{#each timeUnitOptions as |timeUnit|}}
+                  <option value={{timeUnit.value}} selected={{eq timeUnit.value coordinator.frequency.type}}>{{timeUnit.displayName}}</option>
+                  {{/each}}
+                </select>
+                {{#field-error model=this field='coordinator.frequency.type' showErrorMessage=showErrorMessage}}{{/field-error}}
+              </div>
+              <div class="col-xs-3">
+                {{input class="form-control" type="text" value=coordinator.frequency.value placeholder="frequency" title="Periodic intervals at which datasets that are produced, and coordinator applications are scheduled to run"}}
+                {{field-error model=this field='coordinator.frequency.value' showErrorMessage=showErrorMessage}}
+              </div>
+            </div>
+            {{#date-with-expr required=true inputName="start" label="Start" inputPlaceholder="Start Time" dateField=coordinator.start timezone=coordinator.timezone register="registerChild" deregister="deregisterChild"}}{{/date-with-expr}}
+            {{#date-with-expr required=true inputName="end" label="End" inputPlaceholder="End Time" dateField=coordinator.end timezone=coordinator.timezone register="registerChild" deregister="deregisterChild"}}{{/date-with-expr}}
+            <div class="form-group">
+              <label for="" class="control-label col-xs-2">Time Zone<span class="requiredField">&nbsp;*</span></label>
+              <div class="col-xs-7">
+                <select onchange={{action (mut coordinator.timezone) value="target.value"}} name="select-input" class="form-control" data-show-icon="true">
+                  {{#each timezoneList as |timezone index|}}
+                  <option value={{timezone.value}} selected={{eq timezone.value coordinator.timezone}}>{{timezone.displayName}}</option>
+                  {{/each}}
+                </select>
+                {{field-error  model=this field='coordinator.timezone' showErrorMessage=showErrorMessage}}
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading clearfix">
+                <h4 class="panel-title pull-left paddingtop7">Configuration</h4>
+              </div>
+              <div class="panel-body handlerPanel">
+                {{#name-value-config configuration=coordinator.workflow.configuration}}{{/name-value-config}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix" {{action 'toggleIO'}}>
+            <h4 class="panel-title pull-left paddingtop7">Input / Output Configuration</h4>
+            <i class="indicator glyphicon glyphicon-chevron-down pull-right paddingtop7"></i>
+          </div>
+          <div id="collapse" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                  <h4 class="panel-title pull-left paddingtop7">Datasets</h4>
+                  <button id="dataset-create-btn" {{action 'createDataset'}} type="button" class="btn btn-default pull-right">
+                    <i class="fa fa-plus-circle"></i> Add Dataset
+                  </button>
+                </div>
+                <div class="panel-body">
+                  <ul class="list-group">
+                    {{#each coordinator.datasets as |dataset index|}}
+                    <li class="list-group-item">
+                      {{dataset.name}}
+                      <span class="pull-right">
+                        <i class="fa fa-trash-o" title="Delete" {{action "deleteDataset" index bubbles=false}}></i>
+                      </span>
+                      <span class="pull-right paddingright10">
+                        <i class="fa fa-pencil" title="Edit" {{action "editDataset" index bubbles=false}}></i>
+                      </span>
+                    </li>
+                    {{else}}
+                    <li class="list-group-item">No Datasets Configured.</li>
+                    {{/each}}
+                  </ul>
+                  {{#if datasetCreateMode}}
+                  {{#dataset-config dataset=currentDataset add="addDataset" cancel="cancelDatasetOperation" createMode=datasetCreateMode}}{{/dataset-config}}
+                  {{/if}}
+                  {{#if datasetEditMode}}
+                  {{#dataset-config dataset=currentDataset update="updateDataset" cancel="cancelDatasetOperation" editMode=datasetEditMode}}{{/dataset-config}}
+                  {{/if}}
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                  <h4 class="panel-title pull-left paddingtop7">Input Data Events</h4>
+                  {{#if coordinator.supportsConditionalDataInput}}
+                  <div class="">
+                    <label for="" class="control-label col-xs-2">Data Input Type</label>
+                    <div class="btn-group">
+                      <button {{action 'toggleDataTnput' 'simple'}} type="button" class="btn btn-default {{if (eq coordinator.dataInputType 'simple') 'btn-secondary' ''}} scope-btn">
+                        Simple
+                      </button>
+                      <button {{action 'toggleDataTnput' 'logical'}} type="button" class="btn btn-default {{if (eq coordinator.dataInputType 'logical') 'btn-secondary' ''}} scope-btn">
+                        Conditional
+                      </button>
+                    </div>
+                  </div>
+                  {{/if}}
+                  {{#if (eq coordinator.dataInputType 'simple')}}
+                  <button id="dataset-create-btn" {{action 'createDataInput'}} type="button" class="btn btn-default pull-right">
+                    <i class="fa fa-plus-circle"></i> Add Data Input
+                  </button>
+                  {{else}}
+                  {{#if (not conditionalDataInExists)}}
+                  <button id="condition-create-btn" {{action 'createCondition'}} type="button" class="btn btn-default pull-right">
+                    <i class="fa fa-plus-circle"></i> Add Condition
+                  </button>
+                  {{/if}}
+                  {{/if}}
+                </div>
+                <div class="panel-body">
+                  {{#if (eq coordinator.dataInputType 'simple')}}
+                  <ul class="list-group">
+                    {{#each coordinator.dataInputs as |data index|}}
+                    <li class="list-group-item">
+                      {{data.name}}
+                      <span class="pull-right">
+                        <i class="fa fa-trash-o" title="Delete" {{action "deleteDataInput" index bubbles=false}}></i>
+                      </span>
+                      <span class="pull-right paddingright10">
+                        <i class="fa fa-pencil" title="Edit" {{action "editDataInput" index bubbles=false}}></i>
+                      </span>
+                    </li>
+                    {{else}}
+                    <li class="list-group-item">No Data inputs Configured</li>
+                    {{/each}}
+                  </ul>
+                  {{#if dataInputCreateMode}}
+                  {{#data-input-output-config datasets=datasetsForInputs data=currentDataInput type="input" add="addDataInput" cancel="cancelDataInputOperation" createMode=dataInputCreateMode}}{{/data-input-output-config}}
+                  {{/if}}
+                  {{#if dataInputEditMode}}
+                  {{#data-input-output-config datasets=datasetsForInputs data=currentDataInput type="input" update="updateDataInput" cancel="cancelDataInputOperation" editMode=dataInputEditMode}}{{/data-input-output-config}}
+                  {{/if}}
+                  {{/if}}
+                  {{#if (eq coordinator.dataInputType 'logical')}}
+                  <ul class="list-groups">
+                    {{#if conditionalDataInExists}}
+                    <li class="list-group-item">
+                      {{#conditional-data-input condition=coordinator.conditionalDataInput datasets=coordinator.dataInputs isToplevel=true register="registerChild" deregister="deregisterChild"}}
+                      <span class="pull-right">
+                        <i class="fa fa-trash-o" title="Delete" {{action "deleteCondition" index bubbles=false}}></i>
+                      </span>
+                      {{/conditional-data-input}}
+                    </li>
+                    {{else}}
+                    <li class="list-group-item">No Conditional Data Inputs Configured</li>
+                    {{/if}}
+                  </ul>
+                  {{/if}}
+                  {{input type="checkbox" checked=inputLogicEnabled}} Advanced
+                  {{#if inputLogicEnabled}}
+                  <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                      <h4 class="panel-title pull-left paddingtop7">Input Logic</h4>
+                      {{#if (not inputLogicExists)}}
+                      <button id="condition-create-btn" {{action 'createInputLogic'}} type="button" class="btn btn-default pull-right">
+                        <i class="fa fa-plus-circle"></i> Add Condition
+                      </button>
+                      {{/if}}
+                    </div>
+                    <div class="panel-body handlerPanel">
+                      <ul class="list-group">
+                        {{#if inputLogicExists}}
+                        <li class="list-group-item">
+                          {{#conditional-data-input condition=coordinator.inputLogic datasets=coordinator.dataInputs isToplevel=true register="registerChild" deregister="deregisterChild"}}
+                          <span class="pull-right">
+                            <i class="fa fa-trash-o" title="Delete" {{action "deleteInputLogic" index bubbles=false}}></i>
+                          </span>
+                          {{/conditional-data-input}}
+                        </li>
+                        {{else}}
+                        <li class="list-group-item">No Input Logic Configured</li>
+                        {{/if}}
+                      </ul>
+                    </div>
+                  </div>
+                  {{/if}}
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                  <h4 class="panel-title pull-left paddingtop7">Output Data Events</h4>
+                  <button id="dataset-create-btn" {{action 'createDataOutput'}} type="button" class="btn btn-default pull-right">
+                    <i class="fa fa-plus-circle"></i> Add Data Output
+                  </button>
+                </div>
+                <div class="panel-body">
+                  <ul class="list-group">
+                    {{#each coordinator.dataOutputs as |data index|}}
+                    <li class="list-group-item">
+                      {{data.name}}
+                      <span class="pull-right">
+                        <i class="fa fa-trash-o" title="Delete" {{action "deleteDataOutput" index bubbles=false}}></i>
+                      </span>
+                      <span class="pull-right paddingright10">
+                        <i class="fa fa-pencil" title="Edit" {{action "editDataOutput" index bubbles=false}}></i>
+                      </span>
+                    </li>
+                    {{else}}
+                    <li class="list-group-item">No Data Ouputs Configured</li>
+                    {{/each}}
+                  </ul>
+                  {{#if dataOutputCreateMode}}
+                  {{#data-input-output-config datasets=datasetsForOutputs data=currentDataOutput type="output" add="addDataOutput" cancel="cancelDataOutputOperation" createMode=dataOutputCreateMode}}{{/data-input-output-config}}
+                  {{/if}}
+                  {{#if dataOutputEditMode}}
+                  {{#data-input-output-config datasets=datasetsForOutputs data=currentDataOutput type="output" update="updateDataOutput" cancel="cancelDataOutputOperation" editMode=dataOutputEditMode}}{{/data-input-output-config}}
+                  {{/if}}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        {{#sla-info slaInfo=coordinator.slaInfo register="registerChild" slaEnabled=coordinator.slaEnabled}}{{/sla-info}}
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+{{#if showingFileBrowser}}
+{{hdfs-browser closeFileBrowser="closeFileBrowser" selectFileCallback=selectFileCallback filePath=filePath hideUpload=true}}
+{{/if}}
+{{#if showingJobConfig}}
+  {{job-config type='coord' closeJobConfigs="closeCoordSubmitConfig"
+    parameterizedWorkflowPath=parameterizedWorkflowPath
+    extractProperties="extractProperties" containsParameteriedPaths=containsParameteriedPaths
+    jobFilePath=coordinatorFilePath openFileBrowser="openFileBrowser"
+    closeFileBrowser="closeFileBrowser" jobConfigs=coordinatorConfigs isDryrun=dryrun jobConfigProperties=jobConfigProperties}}
+{{/if}}
+{{#if showingResetConfirmation}}
+{{#confirmation-dialog title="Confirm Coordinator Reset"
+confirmationMessage="File will be reset to last saved version in the HDFS. Do you want to proceed?"
+okBtnText="Continue" cancelBtnText="Cancel" onOk="resetCoordinator"}}{{/confirmation-dialog}}
+{{/if}}
+{{#if showingPreview}}
+{{#preview-dialog title="Coordinator XML Preview" previewXml=previewXml closePreview="closePreview"}}{{/preview-dialog}}
+{{/if}}
+{{#if showParameterSettings}}
+{{#workflow-parameters type='coord' closeWorkFlowParam="closeWorkFlowParam" saveWorkFlowParam="saveWorkFlowParam" parameters=parameters}}{{/workflow-parameters}}
+{{/if}}
+{{#if showVersionSettings}}
+  {{coord-version-settings coordinator=coordinator showVersionSettings="showVersionSettings" }}
+{{/if}}
+{{#if showControlConfig}}
+<div id="control-dialog" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Controls</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-default">
+          <div class="panel-body handlerPanel form-horizontal">
+            {{#each coordinatorControls as |property|}}
+            {{#named-properties property=property labelWidthClass="col-xs-4" inputWidthClass="col-xs-8"}}{{/named-properties}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" {{action "saveCoordControls"}}>Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick={{action (mut showControlConfig) false}}>Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+{{#if showingSaveWorkflow}}
+  {{save-wf type='coord' close="closeSave" jobFilePath=coordinatorFilePath openFileBrowser="openFileBrowser" closeFileBrowser="closeFileBrowser" jobConfigs=configForSave}}
+{{/if}}

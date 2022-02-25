@@ -1,0 +1,106 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <SchemaTypes>
+      <SchemaType ID="Ambari.SCOM.Schema.PropertyBagMultiplePerformanceDataMapper" Accessibility="Internal">
+        <xsd:complexType name="MappingsType">
+          <xsd:sequence>
+            <xsd:element name="Mapping" minOccurs="0" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="PropertyName" type="xsd:string" />
+                  <xsd:element name="ObjectName" type="xsd:string" />
+                  <xsd:element name="CounterName" type="xsd:string" />
+                  <xsd:element name="InstanceName" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </SchemaType>
+    </SchemaTypes>
+    
+    <ModuleTypes>
+      <ConditionDetectionModuleType ID="Ambari.SCOM.Module.PropertyBagMultiplePerformanceDataMapper"
+                                    Accessibility="Internal" Batching="false" Stateful="false" PassThrough="false">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Ambari.SCOM.Schema.PropertyBagMultiplePerformanceDataMapper</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="Mappings" type="MappingsType" />
+        </Configuration>
+        <ModuleImplementation>
+          <Composite>
+            <MemberModules>
+              <ConditionDetection ID="Internal" TypeID="Ambari.SCOM.Module.PropertyBagMultiplePerformanceDataMapperInternal">
+                <Mappings>$Config/Mappings$</Mappings>
+                <RuleId>$MPElement$</RuleId>
+                <ManagedEntityId>$Target/Id$</ManagedEntityId>
+              </ConditionDetection>
+            </MemberModules>
+            <Composition>
+              <Node ID="Internal" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>SC!Microsoft.SystemCenter.Performance.LinkedData</OutputType>
+        <InputTypes>
+          <InputType>System!System.PropertyBagData</InputType>
+        </InputTypes>
+      </ConditionDetectionModuleType>
+
+      <ConditionDetectionModuleType ID="Ambari.SCOM.Module.PropertyBagMultiplePerformanceDataMapperInternal"
+                                    Accessibility="Internal" Batching="false" Stateful="false" PassThrough="false">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Ambari.SCOM.Schema.PropertyBagMultiplePerformanceDataMapper</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="Mappings" type="MappingsType" />
+          <xsd:element name="RuleId" type="xsd:string" />
+          <xsd:element name="ManagedEntityId" type="xsd:string" />
+        </Configuration>
+        <ModuleImplementation Isolation="Any">
+          <Managed>
+            <Assembly>Ambari.SCOM.Assembly.Modules</Assembly>
+            <Type>Ambari.SCOM.Modules.PropertyBagMultiplePerformanceDataMapper</Type>
+          </Managed>
+        </ModuleImplementation>
+        <OutputType>SC!Microsoft.SystemCenter.Performance.LinkedData</OutputType>
+        <InputTypes>
+          <!-- For some reason on Agent machine data item coming from PowershellPropertyBagProbe is not typed. -->
+          <InputType>System!System.BaseData</InputType>
+        </InputTypes>
+      </ConditionDetectionModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Module.PropertyBagMultiplePerformanceDataMapper">
+          <Name>Hadoop Property Bag Multiple Performance Data Mapper</Name>
+          <Description>Converts property bag to Linked Performance Data.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Module.PropertyBagMultiplePerformanceDataMapperInternal">
+          <Name>Hadoop Internal Property Bag Multiple Performance Data Mapper</Name>
+          <Description>Converts property bag to Linked Performance Data.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

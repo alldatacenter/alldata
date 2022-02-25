@@ -1,0 +1,114 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="widget-browser-popup">
+  {{#if view.isLoaded}}
+    <div class="widget-browser-content">
+
+      <!--Filters bar: service name filter, status filter here-->
+      <ul id="services-filter-bar" class="nav nav-tabs">
+        {{#each service in view.services}}
+          <li {{bindAttr class="service.isActive:active"}}>
+            <a {{action "filterByService" service.value target="view"}}>{{service.label}}</a></li>
+        {{/each}}
+        {{#havePermissions "SERVICE.MODIFY_CONFIGS"}}
+          <li class="pull-right">
+            <button type="button" class="btn btn-primary" {{bindAttr disabled="App.router.wizardWatcherController.isNonWizardUser"}} {{action "createWidget" target="view"}} >
+              <i class="glyphicon glyphicon-plus"></i> &nbsp; {{t dashboard.widgets.create}}
+            </button>
+          </li>
+        {{/havePermissions}}
+      </ul>
+
+      <!--Widgets table two column-->
+      <div id="widgets-info">
+        {{#if view.isWidgetEmptyList}}
+           <div class="no-widgets-text">{{t dashboard.widgets.browser.noWidgets}}</div>
+        {{else}}
+          <div class="widgets-info-container row">
+            {{#each widget in view.filteredContent}}
+              <div class="col-md-6 widget-info-section">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="icon">
+                      <a class="widget-icon-image" target="_blank"><img {{bindAttr src="widget.iconPath"}}></a>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="label-description">
+                      <p class="label-text">
+                        {{widget.widgetName}}
+                        {{#if widget.tag}} - {{widget.tag}}{{/if}}
+                      </p>
+                      <p class="is-shared-icon pull-right">
+                        {{#if widget.isShared}}
+                          <i class="glyphicon glyphicon-group" rel="shared-icon-tooltip"
+                            {{translateAttr data-original-title="dashboard.widgets.browser.shareIcon.tooltip"}}></i>
+                        {{/if}}
+                      </p>
+                      <p class="description-text">{{widget.description}}</p>
+                    </div>
+                    {{! buttons }}
+                    <div class="widget-section-actions align-right">
+                      {{#if widget.added}}
+                        <button type="button" class="btn added-btn" {{action "hideWidgetBrowser" widget target="controller"}} >
+                          <i class="glyphicon glyphicon-ok"></i> &nbsp; {{t dashboard.widgets.browser.action.added}}
+                        </button>
+                      {{else}}
+                        <div class="btn-group">
+                          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            {{t common.more}}<span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a href="#" {{action "deleteWidget" widget target="controller"}}>
+                                {{t dashboard.widgets.browser.action.delete}}
+                              </a>
+                            </li>
+                            <li>
+                              {{#unless widget.isShared}}
+                                <a href="#" {{action "shareWidget" widget target="controller"}}>
+                                  {{t dashboard.widgets.browser.action.share}}
+                                </a>
+                              {{/unless}}
+                            </li>
+                          </ul>
+                        </div>
+                        <button type="button" class="btn btn-default" {{action "addWidget" widget target="controller"}} >
+                          {{t dashboard.widgets.browser.action.add}}
+                        </button>
+                      {{/if}}
+                    </div>
+                    {{! buttons end }}
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="table-overlay">
+       {{view App.SpinnerView}}
+    </div>
+  {{else}}
+      {{view App.SpinnerView}}
+  {{/if}}
+</div>
+

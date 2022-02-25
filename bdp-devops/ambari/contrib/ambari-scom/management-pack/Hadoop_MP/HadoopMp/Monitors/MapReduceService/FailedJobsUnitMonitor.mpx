@@ -1,0 +1,102 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Monitors>
+      <UnitMonitor ID="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs"
+                   TypeID="Ambari.SCOM.UnitMonitorType.MapReduceServiceThreeStateThreshold"
+                   Target="Ambari.SCOM.ClusterService.MapReduce"
+                   ParentMonitorID="Health!System.Health.PerformanceState"
+                   Remotable="true" Priority="Normal" Accessibility="Public" Enabled="true" ConfirmDelivery="true">
+        <Category>PerformanceHealth</Category>
+        <AlertSettings AlertMessage="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs.AlertMessage">
+          <AlertOnState>Warning</AlertOnState>
+          <AutoResolve>true</AutoResolve>
+          <AlertPriority>Normal</AlertPriority>
+          <AlertSeverity>MatchMonitorHealth</AlertSeverity>
+          <AlertParameters>
+            <AlertParameter1>$Target/Host/Property[Type="Ambari.SCOM.ClusterService.Private"]/ClusterName$</AlertParameter1>
+          </AlertParameters>
+        </AlertSettings>
+        <OperationalStates>
+          <OperationalState ID="Healthy" MonitorTypeStateID="Healthy" HealthState="Success" />
+          <OperationalState ID="Warning" MonitorTypeStateID="Warning" HealthState="Warning" />
+          <OperationalState ID="Critical" MonitorTypeStateID="Critical" HealthState="Error" />
+        </OperationalStates>
+        <Configuration>
+          <IntervalSeconds>900</IntervalSeconds>
+          <TimeoutSeconds>300</TimeoutSeconds>
+          <PropertyName>failedjobs_percent</PropertyName>
+          <TheGreaterTheBetter>false</TheGreaterTheBetter>
+          <WarningThreshold>10</WarningThreshold>
+          <CriticalThreshold>40</CriticalThreshold>
+        </Configuration>
+      </UnitMonitor>
+    </Monitors>
+  </Monitoring>
+
+  <Presentation>
+    <StringResources>
+      <StringResource ID="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs.AlertMessage"/>
+    </StringResources>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs">
+          <Name>Failed Jobs</Name>
+          <Description>Gives warning/critical alert if percentage of map-reduce failed jobs is more than lower/upper threshold.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs" SubElementID="Healthy">
+          <Name>Low</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs" SubElementID="Warning">
+          <Name>High</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs" SubElementID="Critical">
+          <Name>Critical</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs.AlertMessage">
+          <Name>MapReduce jobs are failing too frequently.</Name>
+          <Description>Significant number of MapReduce jobs are failing in cluster "{0}".</Description>
+        </DisplayString>
+      </DisplayStrings>
+
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="Ambari.SCOM.UnitMonitor.MapReduceFailedJobs" Visible="true">
+          <MamlContent>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Summary</title>
+              <para>Gives warning/critical alert if percentage of map-reduce failed jobs is more than lower/upper threshold.</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Causes</title>
+              <para>TBD</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Resolutions</title>
+              <para>TBD</para>
+            </section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

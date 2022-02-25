@@ -1,0 +1,40 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/views?fields=versions/instances/ViewInstanceInfo,versions/ViewVersionInfo/label",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/views/ADMIN_VIEW",
+      "ViewInfo" : {
+        "view_name" : "ADMIN_VIEW"
+      },
+      "versions" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/views/ADMIN_VIEW/versions/1.0.0",
+          "ViewVersionInfo" : {
+            "label" : "Ambari Admin View",
+            "version" : "1.0.0",
+            "view_name" : "ADMIN_VIEW"
+          },
+          "instances" : [
+            {
+              "href" : "http://192.168.56.101:8080/api/v1/views/ADMIN_VIEW/versions/1.0.0/instances/INSTANCE",
+              "ViewInstanceInfo" : {
+                "context_path" : "/views/ADMIN_VIEW/2.0.0/INSTANCE",
+                "description" : "This view provides administration capabilities for Ambari",
+                "icon64_path" : null,
+                "icon_path" : null,
+                "instance_name" : "INSTANCE",
+                "label" : "Ambari Admin View",
+                "static" : true,
+                "version" : "1.0.0",
+                "view_name" : "ADMIN_VIEW",
+                "visible" : false,
+                "instance_data" : { },
+                "properties" : { }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/clus/rolling_upgrades_check/",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/clus/rolling_upgrade_check/HOST_HEARTBEAT",
+      "UpgradeChecks" : {
+        "cluster_name" : "clus",
+        "id" : "HOST_HEARTBEAT",
+        "check" : "All hosts must be heartbeating with the server unless they are in Maintenance Mode",
+        "check_type" : "HOST",
+        "failed_on" : ["c6401.ambari.apache.org"],
+        "reason" : "Some hosts are not heartbeating with the server",
+        "status" : "FAIL"
+      }
+    },
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/clus/rolling_upgrade_check/SERVICES_MAINTENANCE_MODE",
+      "UpgradeChecks" : {
+        "cluster_name" : "clus",
+        "id" : "SERVICES_MAINTENANCE_MODE",
+        "check" : "All services must not in Maintenance Mode",
+        "check_type" : "SERVICE",
+        "failed_on" : [],
+        "reason" : "",
+        "status" : "PASS"
+      }
+    }
+  ]
+}

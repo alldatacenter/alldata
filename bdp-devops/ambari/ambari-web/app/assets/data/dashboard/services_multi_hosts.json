@@ -1,0 +1,1502 @@
+{
+  "href" : "http://ambari:8080/api/clusters/mycluster/services?fields=components/host_components/*",
+  "items" : [
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS",
+      "ServiceInfo" : {
+        "cluster_name" : "mycluster",
+        "service_name" : "HDFS"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/HDFS_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "HDFS_CLIENT",
+            "service_name" : "HDFS"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/HDFS_CLIENT",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HDFS_CLIENT",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/HDFS_CLIENT",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "HDFS_CLIENT",
+                    "service_name" : "HDFS"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/DATANODE",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "DATANODE",
+            "service_name" : "HDFS"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-118-149-18.ec2.internal/host_components/DATANODE",
+              "HostRoles" : {
+                "configs" : "{\"global\":\"version1\",\"hdfs-site\":\"version1\",\"core-site\":\"version1\"}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "DATANODE",
+                "host_name" : "ip-10-118-149-18.ec2.internal"
+              },
+              "metrics" : {
+                "boottime" : 1.352944346E9,
+                "process" : {
+                  "proc_total" : 264.063888889,
+                  "proc_run" : 1.16944444444
+                },
+                "rpc" : {
+                  "rpcAuthorizationSuccesses" : 1.19304647083E7,
+                  "SentBytes" : 1.19304639222E7,
+                  "rpcAuthorizationFailures" : 0.0,
+                  "ReceivedBytes" : 1.19304635583E7,
+                  "NumOpenConnections" : 0.0,
+                  "callQueueLen" : 0.0,
+                  "rpcAuthenticationSuccesses" : 0.0,
+                  "RpcQueueTime_num_ops" : 1.19304647056E7,
+                  "RpcProcessingTime_num_ops" : 1.19304647056E7,
+                  "RpcProcessingTime_avg_time" : 0.344444444444,
+                  "rpcAuthenticationFailures" : 0.0,
+                  "RpcQueueTime_avg_time" : 3.78888888889
+                },
+                "ugi" : {
+                  "loginFailure_num_ops" : 0.0,
+                  "loginSuccess_num_ops" : 0.0,
+                  "loginSuccess_avg_time" : 0.0,
+                  "loginFailure_avg_time" : 0.0
+                },
+                "dfs" : {
+                  "datanode" : {
+                    "readBlockOp_num_ops" : 0.0,
+                    "writeBlockOp_avg_time" : 4.42857142857,
+                    "block_verification_failures" : 0.0,
+                    "blockChecksumOp_num_ops" : 0.0,
+                    "blocks_read" : 0.0,
+                    "copyBlockOp_avg_time" : 0.0,
+                    "blocks_written" : 0.0,
+                    "heartBeats_num_ops" : 0.3325,
+                    "writes_from_remote_client" : 0.0,
+                    "replaceBlockOp_num_ops" : 0.0,
+                    "blocks_replicated" : 0.0,
+                    "blockReports_avg_time" : 1.0,
+                    "writeBlockOp_num_ops" : 0.0,
+                    "heartBeats_avg_time" : 2.44421296296,
+                    "bytes_read" : 0.0,
+                    "copyBlockOp_num_ops" : 0.0,
+                    "blockReports_num_ops" : 0.0,
+                    "bytes_written" : 0.0,
+                    "replaceBlockOp_avg_time" : 0.0,
+                    "reads_from_remote_client" : 0.0,
+                    "readBlockOp_avg_time" : 3.0,
+                    "reads_from_local_client" : 0.0,
+                    "blocks_verified" : 0.00555555555556,
+                    "writes_from_local_client" : 0.0,
+                    "blocks_get_local_pathinfo" : 0.0,
+                    "blockChecksumOp_avg_time" : 0.0,
+                    "blocks_removed" : 0.0
+                  }
+                },
+                "disk" : {
+                  "disk_free" : 845.599,
+                  "part_max_used" : 43.9
+                },
+                "cpu" : {
+                  "cpu_speed" : 2266.0,
+                  "cpu_num" : 2.0,
+                  "cpu_wio" : 0.0,
+                  "cpu_idle" : 98.6938888889,
+                  "cpu_nice" : 0.0,
+                  "cpu_aidle" : 0.0,
+                  "cpu_system" : 0.531111111111,
+                  "cpu_user" : 0.775
+                },
+                "load" : {
+                  "load_fifteen" : 0.00313888888889,
+                  "load_one" : 0.0282777777778,
+                  "load_five" : 0.0163055555556
+                },
+                "jvm" : {
+                  "memHeapCommittedM" : 174.446875,
+                  "logFatal" : 0.0,
+                  "threadsBlocked" : 0.0,
+                  "threadsWaiting" : 14.4361111111,
+                  "gcCount" : 1.19304647115E8,
+                  "logWarn" : 0.0,
+                  "logError" : 0.0,
+                  "memNonHeapCommittedM" : 24.3248698333,
+                  "gcTimeMillis" : 1.43165576518E8,
+                  "memNonHeapUsedM" : 19.4993658028,
+                  "logInfo" : 2.38609294222E7,
+                  "threadsNew" : 0.0,
+                  "memHeapUsedM" : 18.087863945,
+                  "threadsTerminated" : 0.0,
+                  "maxMemoryM" : 1004.0,
+                  "threadsTimedWaiting" : 7.46388888889,
+                  "threadsRunnable" : 7.43611111111
+                },
+                "memory" : {
+                  "mem_total" : 7646152.0,
+                  "swap_free" : 0.0,
+                  "mem_buffers" : 52429.0222222,
+                  "mem_shared" : 0.0,
+                  "mem_free" : 5610725.88889,
+                  "mem_cached" : 1247511.4,
+                  "swap_total" : 0.0
+                },
+                "network" : {
+                  "pkts_out" : 116.179833333,
+                  "bytes_in" : 1897.15633333,
+                  "bytes_out" : 23871.1300833,
+                  "pkts_in" : 11.2918333333
+                }
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/DATANODE",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "DATANODE",
+                    "service_name" : "HDFS"
+                  }
+                }
+              ]
+            },
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/DATANODE",
+              "HostRoles" : {
+                "configs" : "{\"global\":\"version1\",\"hdfs-site\":\"version1\",\"core-site\":\"version1\"}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "DATANODE",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "metrics" : {
+                "boottime" : 1.352944347E9,
+                "process" : {
+                  "proc_total" : 263.683333333,
+                  "proc_run" : 0.813888888889
+                },
+                "rpc" : {
+                  "rpcAuthorizationSuccesses" : 0.0166666666667,
+                  "SentBytes" : 14.6277777778,
+                  "rpcAuthorizationFailures" : 0.0,
+                  "ReceivedBytes" : 54.325,
+                  "NumOpenConnections" : 0.0,
+                  "callQueueLen" : 0.0,
+                  "rpcAuthenticationSuccesses" : 0.0,
+                  "RpcQueueTime_num_ops" : 0.122222222222,
+                  "RpcProcessingTime_num_ops" : 0.122222222222,
+                  "RpcProcessingTime_avg_time" : 0.544444444444,
+                  "rpcAuthenticationFailures" : 0.0,
+                  "RpcQueueTime_avg_time" : 2.51111111111
+                },
+                "ugi" : {
+                  "loginFailure_num_ops" : 0.0,
+                  "loginSuccess_num_ops" : 0.0,
+                  "loginSuccess_avg_time" : 0.0,
+                  "loginFailure_avg_time" : 0.0
+                },
+                "dfs" : {
+                  "datanode" : {
+                    "readBlockOp_num_ops" : 0.0,
+                    "writeBlockOp_avg_time" : 10.9298245614,
+                    "block_verification_failures" : 0.0,
+                    "blockChecksumOp_num_ops" : 0.0,
+                    "blocks_read" : 0.0,
+                    "copyBlockOp_avg_time" : 0.0,
+                    "blocks_written" : 0.0,
+                    "heartBeats_num_ops" : 0.335833333333,
+                    "writes_from_remote_client" : 0.0,
+                    "replaceBlockOp_num_ops" : 0.0,
+                    "blocks_replicated" : 0.0,
+                    "blockReports_avg_time" : 9.0,
+                    "writeBlockOp_num_ops" : 0.0,
+                    "heartBeats_avg_time" : 2.92106481481,
+                    "bytes_read" : 0.0,
+                    "copyBlockOp_num_ops" : 0.0,
+                    "blockReports_num_ops" : 0.0,
+                    "bytes_written" : 0.0,
+                    "replaceBlockOp_avg_time" : 0.0,
+                    "reads_from_remote_client" : 0.0,
+                    "readBlockOp_avg_time" : 6.5,
+                    "reads_from_local_client" : 0.0,
+                    "blocks_verified" : 0.0125,
+                    "writes_from_local_client" : 0.0,
+                    "blocks_get_local_pathinfo" : 0.0,
+                    "blockChecksumOp_avg_time" : 0.0,
+                    "blocks_removed" : 0.0
+                  }
+                },
+                "disk" : {
+                  "disk_free" : 845.075,
+                  "part_max_used" : 52.6
+                },
+                "cpu" : {
+                  "cpu_speed" : 2659.0,
+                  "cpu_num" : 2.0,
+                  "cpu_wio" : 0.123888888889,
+                  "cpu_idle" : 99.0469444444,
+                  "cpu_nice" : 0.0,
+                  "cpu_aidle" : 0.0,
+                  "cpu_system" : 0.401944444444,
+                  "cpu_user" : 0.4
+                },
+                "load" : {
+                  "load_fifteen" : 0.0466666666667,
+                  "load_one" : 6.11111111111E-4,
+                  "load_five" : 6.11111111111E-4
+                },
+                "jvm" : {
+                  "memHeapCommittedM" : 760.003819444,
+                  "logFatal" : 0.0,
+                  "threadsBlocked" : 0.0,
+                  "threadsWaiting" : 38.2944444444,
+                  "gcCount" : 2.3860929425E7,
+                  "logWarn" : 0.0,
+                  "logError" : 0.0,
+                  "memNonHeapCommittedM" : 32.7367406333,
+                  "gcTimeMillis" : 7.63549738133E7,
+                  "memNonHeapUsedM" : 21.0635269694,
+                  "logInfo" : 7.158278827E7,
+                  "threadsNew" : 0.0,
+                  "memHeapUsedM" : 83.2495438167,
+                  "threadsTerminated" : 0.0,
+                  "maxMemoryM" : 1004.0,
+                  "threadsTimedWaiting" : 11.1388888889,
+                  "threadsRunnable" : 14.2777777778
+                },
+                "memory" : {
+                  "mem_total" : 7646152.0,
+                  "swap_free" : 0.0,
+                  "mem_buffers" : 62720.2888889,
+                  "mem_shared" : 0.0,
+                  "mem_free" : 4978855.83333,
+                  "mem_cached" : 1756252.53333,
+                  "swap_total" : 0.0
+                },
+                "network" : {
+                  "pkts_out" : 105.755833333,
+                  "bytes_in" : 1895.95808333,
+                  "bytes_out" : 21296.58625,
+                  "pkts_in" : 11.2986666667
+                }
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/DATANODE",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "DATANODE",
+                    "service_name" : "HDFS"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/NAMENODE",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "NAMENODE",
+            "service_name" : "HDFS"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-83-47-139.ec2.internal/host_components/NAMENODE",
+              "HostRoles" : {
+                "configs" : "{\"global\":\"version1\",\"hdfs-site\":\"version1\",\"core-site\":\"version1\"}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "NAMENODE",
+                "host_name" : "ip-10-83-47-139.ec2.internal"
+              },
+              "metrics" : {
+                "boottime" : 1.352944348E9,
+                "process" : {
+                  "proc_total" : 293.494444444,
+                  "proc_run" : 2.86944444444
+                },
+                "rpc" : {
+                  "client": {
+                    "rpcAuthorizationSuccesses" : 0.0861111111111,
+                    "SentBytes" : 106.391481481,
+                    "rpcAuthorizationFailures" : 0.0,
+                    "ReceivedBytes" : 229.217407407,
+                    "NumOpenConnections" : 0.0,
+                    "callQueueLen" : 0.0,
+                    "rpcAuthenticationSuccesses" : 0.0,
+                    "RpcQueueTime_num_ops" : 0.748703703704,
+                    "RpcProcessingTime_num_ops" : 0.748703703704,
+                    "RpcProcessingTime_avg_time" : 0.110499338624,
+                    "rpcAuthenticationFailures" : 0.0,
+                    "RpcQueueTime_avg_time" : 0.323186728395
+                  }
+                },
+                "ugi" : {
+                  "loginFailure_num_ops" : 0.0,
+                  "loginSuccess_num_ops" : 0.0,
+                  "loginSuccess_avg_time" : 0.0,
+                  "loginFailure_avg_time" : 0.0
+                },
+                "dfs" : {
+                  "namenode" : {
+                    "AddBlockOps" : 0.0,
+                    "fsImageLoadTime" : 1300.0,
+                    "FilesRenamed" : 0.0,
+                    "JournalTransactionsBatchedInSync" : 0.0,
+                    "FileInfoOps" : 0.0,
+                    "CreateFileOps" : 0.0,
+                    "GetListingOps" : 0.0166666666667,
+                    "Transactions_num_ops" : 0.0,
+                    "GetBlockLocations" : 0.0,
+                    "Syncs_avg_time" : 2.87394957983,
+                    "blockReport_num_ops" : 0.0,
+                    "Syncs_num_ops" : 0.0,
+                    "SafemodeTime" : 1317.0,
+                    "Transactions_avg_time" : 0.0337423312883,
+                    "FilesInGetListingOps" : 0.0,
+                    "FilesDeleted" : 0.0,
+                    "FilesAppended" : 0.0,
+                    "DeleteFileOps" : 0.0,
+                    "FilesCreated" : 0.0,
+                    "blockReport_avg_time" : 4.0
+                  },
+                  "FSNamesystem" : {
+                    "BlocksTotal" : 403.0,
+                    "ScheduledReplicationBlocks" : 0.0,
+                    "CapacityTotalGB" : 11.0,
+                    "CapacityUsedGB" : 0.0,
+                    "ExcessBlocks" : 0.0,
+                    "MissingBlocks" : 0.0,
+                    "PendingReplicationBlocks" : 0.0,
+                    "FilesTotal" : 324.0,
+                    "CapacityRemainingGB" : 6.0,
+                    "UnderReplicatedBlocks" : 215.0,
+                    "TotalLoad" : 2.0,
+                    "PendingDeletionBlocks" : 0.0,
+                    "CorruptBlocks" : 0.0,
+                    "BlockCapacity" : 2097152.0
+                  }
+                },
+                "disk" : {
+                  "disk_total" : 893.765,
+                  "disk_free" : 845.308827778,
+                  "part_max_used" : 48.7186111111
+                },
+                "cpu" : {
+                  "cpu_speed" : 2266.0,
+                  "cpu_num" : 2.0,
+                  "cpu_wio" : 0.493888888889,
+                  "cpu_idle" : 84.9672222222,
+                  "cpu_nice" : 0.0,
+                  "cpu_aidle" : 0.0,
+                  "cpu_system" : 3.33388888889,
+                  "cpu_user" : 11.2113888889
+                },
+                "rpcdetailed" : {
+                  "addBlock_avg_time" : 0.465909090909,
+                  "rollFsImage_num_ops" : 0.0,
+                  "register_num_ops" : 0.0,
+                  "versionRequest_num_ops" : 0.0,
+                  "create_avg_time" : 5.04545454545,
+                  "fsync_num_ops" : 0.0,
+                  "getBlockLocations_num_ops" : 0.0,
+                  "addBlock_num_ops" : 0.0,
+                  "getListing_avg_time" : 1.69444444444,
+                  "getBlockLocations_avg_time" : 0.0,
+                  "renewLease_num_ops" : 0.0666666666667,
+                  "getFileInfo_num_ops" : 0.0,
+                  "register_avg_time" : 2.5,
+                  "setPermission_num_ops" : 0.0,
+                  "versionRequest_avg_time" : 0.5,
+                  "fsync_avg_time" : 0.0,
+                  "complete_num_ops" : 0.0,
+                  "setOwner_num_ops" : 0.0,
+                  "getProtocolVersion_num_ops" : 0.0,
+                  "setOwner_avg_time" : 15.5,
+                  "setReplication_num_ops" : 0.0,
+                  "blockReport_avg_time" : 4.0,
+                  "setPermission_avg_time" : 3.66666666667,
+                  "getListing_num_ops" : 0.0166666666667,
+                  "renewLease_avg_time" : 0.0430555555556,
+                  "sendHeartbeat_num_ops" : 0.662592592593,
+                  "blocksBeingWrittenReport_avg_time" : 0.5,
+                  "rename_num_ops" : 0.0,
+                  "mkdirs_avg_time" : 3.95,
+                  "delete_num_ops" : 0.0,
+                  "blockReport_num_ops" : 0.0,
+                  "create_num_ops" : 0.0,
+                  "getEditLogSize_num_ops" : 0.00277777777778,
+                  "rollEditLog_num_ops" : 0.0,
+                  "rollFsImage_avg_time" : 48.0,
+                  "mkdirs_num_ops" : 0.0,
+                  "delete_avg_time" : 4.0,
+                  "getFileInfo_avg_time" : 0.0,
+                  "rename_avg_time" : 3.0,
+                  "getProtocolVersion_avg_time" : 0.0,
+                  "rollEditLog_avg_time" : 83.0,
+                  "blockReceived_avg_time" : 0.205714285714,
+                  "getEditLogSize_avg_time" : 0.0,
+                  "sendHeartbeat_avg_time" : 0.0732804232804,
+                  "complete_avg_time" : 1.44943820225,
+                  "blockReceived_num_ops" : 0.0,
+                  "setSafeMode_avg_time" : 0.0,
+                  "blocksBeingWrittenReport_num_ops" : 0.0,
+                  "setSafeMode_num_ops" : 0.0,
+                  "setReplication_avg_time" : 1.5
+                },
+                "load" : {
+                  "load_fifteen" : 0.356833333333,
+                  "load_one" : 0.511388888889,
+                  "load_five" : 0.374166666667
+                },
+                "jvm" : {
+                  "memHeapCommittedM" : 960.0,
+                  "logFatal" : 0.0,
+                  "threadsBlocked" : 0.0,
+                  "threadsWaiting" : 14.0,
+                  "gcCount" : 0.0,
+                  "logWarn" : 0.0,
+                  "logError" : 0.0,
+                  "memNonHeapCommittedM" : 23.1875,
+                  "gcTimeMillis" : 0.0,
+                  "memNonHeapUsedM" : 20.7895987972,
+                  "logInfo" : 0.0,
+                  "threadsNew" : 0.0,
+                  "memHeapUsedM" : 384.695487139,
+                  "threadsTerminated" : 0.0,
+                  "threadsTimedWaiting" : 7.0,
+                  "threadsRunnable" : 6.0
+                },
+                "memory" : {
+                  "mem_total" : 7646152.0,
+                  "swap_free" : 0.0,
+                  "mem_buffers" : 63871.6111111,
+                  "mem_shared" : 0.0,
+                  "mem_free" : 4787186.06667,
+                  "mem_cached" : 1545617.4,
+                  "swap_total" : 0.0
+                },
+                "network" : {
+                  "pkts_out" : 29.3245833333,
+                  "bytes_in" : 45395.5750833,
+                  "bytes_out" : 15665.7432778,
+                  "pkts_in" : 234.953444444
+                }
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/NAMENODE",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "NAMENODE",
+                    "service_name" : "HDFS"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/SECONDARY_NAMENODE",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "SECONDARY_NAMENODE",
+            "service_name" : "HDFS"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-204-102-239.ec2.internal/host_components/SECONDARY_NAMENODE",
+              "HostRoles" : {
+                "configs" : "{\"global\":\"version1\",\"hdfs-site\":\"version1\",\"core-site\":\"version1\"}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "SECONDARY_NAMENODE",
+                "host_name" : "ip-10-204-102-239.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HDFS/components/SECONDARY_NAMENODE",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "SECONDARY_NAMENODE",
+                    "service_name" : "HDFS"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/services/SQOOP",
+      "ServiceInfo" : {
+        "cluster_name" : "mycluster",
+        "service_name" : "SQOOP"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/SQOOP/components/SQOOP",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "SQOOP",
+            "service_name" : "SQOOP"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/SQOOP",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "SQOOP",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/SQOOP/components/SQOOP",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "SQOOP",
+                    "service_name" : "SQOOP"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/services/OOZIE",
+      "ServiceInfo" : {
+        "cluster_name" : "mycluster",
+        "service_name" : "OOZIE"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/OOZIE/components/OOZIE_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "OOZIE_CLIENT",
+            "service_name" : "OOZIE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/OOZIE_CLIENT",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "OOZIE_CLIENT",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/OOZIE/components/OOZIE_CLIENT",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "OOZIE_CLIENT",
+                    "service_name" : "OOZIE"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/OOZIE/components/OOZIE_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "OOZIE_SERVER",
+            "service_name" : "OOZIE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-204-102-239.ec2.internal/host_components/OOZIE_SERVER",
+              "HostRoles" : {
+                "configs" : "{\"global\":\"version1\",\"oozie-site\":\"version1\",\"core-site\":\"version1\"}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "OOZIE_SERVER",
+                "host_name" : "ip-10-204-102-239.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/OOZIE/components/OOZIE_SERVER",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "OOZIE_SERVER",
+                    "service_name" : "OOZIE"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/services/HBASE",
+      "ServiceInfo" : {
+        "cluster_name" : "mycluster",
+        "service_name" : "HBASE"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/HBASE/components/HBASE_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "HBASE_CLIENT",
+            "service_name" : "HBASE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/HBASE_CLIENT",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "HBASE_CLIENT",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "metrics" : {
+                "boottime" : 1.352944347E9,
+                "process" : {
+                  "proc_total" : 263.683333333,
+                  "proc_run" : 0.813888888889
+                },
+                "rpc" : {
+                  "rpcAuthorizationSuccesses" : 0.0166666666667,
+                  "rpcAuthorizationFailures" : 0.0,
+                  "SentBytes" : 14.6277777778,
+                  "ReceivedBytes" : 54.325,
+                  "NumOpenConnections" : 0.0,
+                  "callQueueLen" : 0.0,
+                  "RpcQueueTime_num_ops" : 0.122222222222,
+                  "rpcAuthenticationSuccesses" : 0.0,
+                  "RpcProcessingTime_num_ops" : 0.122222222222,
+                  "RpcProcessingTime_avg_time" : 0.544444444444,
+                  "rpcAuthenticationFailures" : 0.0,
+                  "RpcQueueTime_avg_time" : 2.51111111111
+                },
+                "ugi" : {
+                  "loginFailure_num_ops" : 0.0,
+                  "loginSuccess_num_ops" : 0.0,
+                  "loginSuccess_avg_time" : 0.0,
+                  "loginFailure_avg_time" : 0.0
+                },
+                "disk" : {
+                  "disk_free" : 845.075,
+                  "part_max_used" : 52.6
+                },
+                "cpu" : {
+                  "cpu_speed" : 2659.0,
+                  "cpu_num" : 2.0,
+                  "cpu_wio" : 0.123888888889,
+                  "cpu_idle" : 99.0469444444,
+                  "cpu_nice" : 0.0,
+                  "cpu_aidle" : 0.0,
+                  "cpu_system" : 0.401944444444,
+                  "cpu_user" : 0.4
+                },
+                "jvm" : {
+                  "memHeapCommittedM" : 760.003819444,
+                  "logFatal" : 0.0,
+                  "threadsBlocked" : 0.0,
+                  "threadsWaiting" : 38.2944444444,
+                  "gcCount" : 2.3860929425E7,
+                  "logError" : 0.0,
+                  "logWarn" : 0.0,
+                  "memNonHeapCommittedM" : 32.7367406333,
+                  "gcTimeMillis" : 7.63549738133E7,
+                  "memNonHeapUsedM" : 21.0635269694,
+                  "logInfo" : 7.158278827E7,
+                  "memHeapUsedM" : 83.2495438167,
+                  "threadsNew" : 0.0,
+                  "threadsTerminated" : 0.0,
+                  "threadsTimedWaiting" : 11.1388888889,
+                  "maxMemoryM" : 1004.0,
+                  "threadsRunnable" : 14.2777777778
+                },
+                "load" : {
+                  "load_fifteen" : 0.0466666666667,
+                  "load_one" : 6.11111111111E-4,
+                  "load_five" : 6.11111111111E-4
+                },
+                "memory" : {
+                  "mem_total" : 7646152.0,
+                  "swap_free" : 0.0,
+                  "mem_buffers" : 62720.2888889,
+                  "mem_shared" : 0.0,
+                  "mem_free" : 4978855.83333,
+                  "mem_cached" : 1756252.53333,
+                  "swap_total" : 0.0
+                },
+                "network" : {
+                  "pkts_out" : 105.755833333,
+                  "bytes_in" : 1895.95808333,
+                  "bytes_out" : 21296.58625,
+                  "pkts_in" : 11.2986666667
+                }
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HBASE/components/HBASE_CLIENT",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "HBASE_CLIENT",
+                    "service_name" : "HBASE"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/HBASE/components/HBASE_MASTER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "HBASE_MASTER",
+            "service_name" : "HBASE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-83-47-139.ec2.internal/host_components/HBASE_MASTER",
+              "HostRoles" : {
+                "configs" : "{\"hbase-site\":\"version1\",\"global\":\"version1\",\"core-site\":\"version1\"}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HBASE_MASTER",
+                "host_name" : "ip-10-83-47-139.ec2.internal"
+              },
+              "metrics" : {
+                "boottime" : 1.352944348E9,
+                "process" : {
+                  "proc_total" : 293.219444444,
+                  "proc_run" : 0.0972222222222
+                },
+                "hbase" : {
+                  "master" : {
+                    "splitSize_avg_time" : 0.0,
+                    "splitTime_avg_time" : 0.0,
+                    "splitTime_num_ops" : 0.0,
+                    "cluster_requests" : 0.0,
+                    "splitSize_num_ops" : 0.0
+                  }
+                },
+                "disk" : {
+                  "disk_total" : 893.765,
+                  "disk_free" : 845.308872222,
+                  "part_max_used" : 48.7180555556
+                },
+                "cpu" : {
+                  "cpu_speed" : 2266.0,
+                  "cpu_num" : 2.0,
+                  "cpu_wio" : 0.495833333333,
+                  "cpu_idle" : 84.5666666667,
+                  "cpu_nice" : 0.0,
+                  "cpu_aidle" : 0.0,
+                  "cpu_system" : 3.34,
+                  "cpu_user" : 11.5819444444
+                },
+                "jvm" : {
+                  "memHeapCommittedM" : 81.0625,
+                  "logFatal" : 0.0,
+                  "threadsBlocked" : 0.0,
+                  "threadsWaiting" : 42.0,
+                  "gcCount" : 18.9194444444,
+                  "logError" : 0.0,
+                  "logWarn" : 0.0,
+                  "memNonHeapCommittedM" : 36.679688,
+                  "gcTimeMillis" : 113.919444444,
+                  "memNonHeapUsedM" : 22.1864361111,
+                  "logInfo" : 0.0,
+                  "memHeapUsedM" : 10.7416655886,
+                  "threadsNew" : 0.0,
+                  "threadsTerminated" : 0.0,
+                  "threadsTimedWaiting" : 8.24444444444,
+                  "maxMemoryM" : 1019.875,
+                  "threadsRunnable" : 16.0
+                },
+                "load" : {
+                  "load_fifteen" : 0.356222222222,
+                  "load_one" : 0.504861111111,
+                  "load_five" : 0.372333333333
+                },
+                "memory" : {
+                  "mem_total" : 7646152.0,
+                  "swap_free" : 0.0,
+                  "mem_buffers" : 63860.1,
+                  "mem_shared" : 0.0,
+                  "mem_free" : 4787479.36667,
+                  "mem_cached" : 1545456.5,
+                  "swap_total" : 0.0
+                },
+                "network" : {
+                  "pkts_out" : 29.2349444444,
+                  "bytes_in" : 45360.1838889,
+                  "bytes_out" : 15245.1213056,
+                  "pkts_in" : 234.745277778
+                }
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HBASE/components/HBASE_MASTER",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "HBASE_MASTER",
+                    "service_name" : "HBASE"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/HBASE/components/HBASE_REGIONSERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "HBASE_REGIONSERVER",
+            "service_name" : "HBASE"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/HBASE_REGIONSERVER",
+              "HostRoles" : {
+                "configs" : "{\"hbase-site\":\"version1\",\"global\":\"version1\",\"core-site\":\"version1\"}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HBASE_REGIONSERVER",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "metrics" : {
+                "boottime" : 1.352944347E9,
+                "process" : {
+                  "proc_total" : 263.683333333,
+                  "proc_run" : 0.813888888889
+                },
+                "rpc" : {
+                  "rpcAuthorizationSuccesses" : 0.0166666666667,
+                  "rpcAuthorizationFailures" : 0.0,
+                  "SentBytes" : 14.6277777778,
+                  "ReceivedBytes" : 54.325,
+                  "NumOpenConnections" : 0.0,
+                  "callQueueLen" : 0.0,
+                  "RpcQueueTime_num_ops" : 0.122222222222,
+                  "rpcAuthenticationSuccesses" : 0.0,
+                  "RpcProcessingTime_num_ops" : 0.122222222222,
+                  "RpcProcessingTime_avg_time" : 0.544444444444,
+                  "rpcAuthenticationFailures" : 0.0,
+                  "RpcQueueTime_avg_time" : 2.51111111111
+                },
+                "ugi" : {
+                  "loginFailure_num_ops" : 0.0,
+                  "loginSuccess_num_ops" : 0.0,
+                  "loginSuccess_avg_time" : 0.0,
+                  "loginFailure_avg_time" : 0.0
+                },
+                "hbase" : {
+                  "regionserver" : {
+                    "compactionSize_avg_time" : 0.0,
+                    "fsReadLatencyHistogram_99th_percentile" : 0.0,
+                    "fsWriteLatencyHistogram_median" : 0.0,
+                    "requests" : 0.0,
+                    "fsReadLatencyHistogram_num_ops" : 0.0,
+                    "hdfsBlocksLocalityIndex" : 0.0,
+                    "fsWriteLatencyHistogram_std_dev" : 0.0,
+                    "writeRequestsCount" : 1.0,
+                    "flushSize_avg_time" : 0.0,
+                    "fsWriteLatencyHistogram_max" : 0.0,
+                    "fsSyncLatency_num_ops" : 1.0,
+                    "fsWriteLatencyHistogram_95th_percentile" : 0.0,
+                    "fsSyncLatency_avg_time" : 0.0,
+                    "compactionSize_num_ops" : 0.0,
+                    "compactionTime_num_ops" : 0.0,
+                    "fsReadLatencyHistogram_mean" : 0.0,
+                    "blockCacheEvictedCount" : 0.0,
+                    "storefileIndexSizeMB" : 0.0,
+                    "fsWriteLatencyHistogram_75th_percentile" : 0.0,
+                    "fsWriteLatency_avg_time" : 0.0,
+                    "fsReadLatencyHistogram_max" : 0.0,
+                    "fsWriteLatencyHistogram_min" : 0.0,
+                    "compactionQueueSize" : 0.0,
+                    "totalStaticBloomSizeKB" : 0.0,
+                    "fsWriteLatencyHistogram_mean" : 0.0,
+                    "blockCacheFree" : 2.61032304E8,
+                    "totalStaticIndexSizeKB" : 0.0,
+                    "fsReadLatency_avg_time" : 0.0,
+                    "fsWriteLatency_num_ops" : 1.0,
+                    "memstoreSizeMB" : 0.0,
+                    "regions" : 1.0,
+                    "blockCacheCount" : 0.0,
+                    "blockCacheHitRatio" : 0.0,
+                    "flushQueueSize" : 0.0,
+                    "blockCacheHitCachingRatio" : 0.0,
+                    "fsReadLatencyHistogram_95th_percentile" : 0.0,
+                    "blockCacheHitCount" : 0.0,
+                    "flushTime_avg_time" : 0.0,
+                    "fsReadLatencyHistogram_min" : 0.0,
+                    "flushTime_num_ops" : 0.0,
+                    "compactionTime_avg_time" : 0.0,
+                    "fsReadLatency_num_ops" : 0.0,
+                    "blockCacheSize" : 2160272.0,
+                    "rootIndexSizeKB" : 0.0,
+                    "fsReadLatencyHistogram_std_dev" : 0.0,
+                    "readRequestsCount" : 2.0,
+                    "fsReadLatencyHistogram_75th_percentile" : 0.0,
+                    "blockCacheMissCount" : 0.0,
+                    "storefiles" : 0.0,
+                    "fsWriteLatencyHistogram_num_ops" : 0.0,
+                    "flushSize_num_ops" : 0.0,
+                    "fsWriteLatencyHistogram_99th_percentile" : 0.0,
+                    "stores" : 1.0,
+                    "fsReadLatencyHistogram_median" : 0.0
+                  }
+                },
+                "disk" : {
+                  "disk_free" : 845.075,
+                  "part_max_used" : 52.6
+                },
+                "cpu" : {
+                  "cpu_speed" : 2659.0,
+                  "cpu_num" : 2.0,
+                  "cpu_wio" : 0.123888888889,
+                  "cpu_idle" : 99.0469444444,
+                  "cpu_nice" : 0.0,
+                  "cpu_aidle" : 0.0,
+                  "cpu_system" : 0.401944444444,
+                  "cpu_user" : 0.4
+                },
+                "jvm" : {
+                  "memHeapCommittedM" : 760.003819444,
+                  "logFatal" : 0.0,
+                  "threadsBlocked" : 0.0,
+                  "threadsWaiting" : 38.2944444444,
+                  "gcCount" : 2.3860929425E7,
+                  "logError" : 0.0,
+                  "logWarn" : 0.0,
+                  "memNonHeapCommittedM" : 32.7367406333,
+                  "gcTimeMillis" : 7.63549738133E7,
+                  "memNonHeapUsedM" : 21.0635269694,
+                  "logInfo" : 7.158278827E7,
+                  "memHeapUsedM" : 83.2495438167,
+                  "threadsNew" : 0.0,
+                  "threadsTerminated" : 0.0,
+                  "threadsTimedWaiting" : 11.1388888889,
+                  "maxMemoryM" : 1004.0,
+                  "threadsRunnable" : 14.2777777778
+                },
+                "load" : {
+                  "load_fifteen" : 0.0466666666667,
+                  "load_one" : 6.11111111111E-4,
+                  "load_five" : 6.11111111111E-4
+                },
+                "memory" : {
+                  "mem_total" : 7646152.0,
+                  "swap_free" : 0.0,
+                  "mem_buffers" : 62720.2888889,
+                  "mem_shared" : 0.0,
+                  "mem_free" : 4978855.83333,
+                  "mem_cached" : 1756252.53333,
+                  "swap_total" : 0.0
+                },
+                "network" : {
+                  "pkts_out" : 105.755833333,
+                  "bytes_in" : 1895.95808333,
+                  "bytes_out" : 21296.58625,
+                  "pkts_in" : 11.2986666667
+                }
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HBASE/components/HBASE_REGIONSERVER",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "HBASE_REGIONSERVER",
+                    "service_name" : "HBASE"
+                  }
+                }
+              ]
+            },
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-118-149-18.ec2.internal/host_components/HBASE_REGIONSERVER",
+              "HostRoles" : {
+                "configs" : "{\"hbase-site\":\"version1\",\"global\":\"version1\",\"core-site\":\"version1\"}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "HBASE_REGIONSERVER",
+                "host_name" : "ip-10-118-149-18.ec2.internal"
+              },
+              "metrics" : {
+                "boottime" : 1.352944346E9,
+                "process" : {
+                  "proc_total" : 264.063888889,
+                  "proc_run" : 1.16944444444
+                },
+                "rpc" : {
+                  "rpcAuthorizationSuccesses" : 1.19304647083E7,
+                  "rpcAuthorizationFailures" : 0.0,
+                  "SentBytes" : 1.19304639222E7,
+                  "ReceivedBytes" : 1.19304635583E7,
+                  "NumOpenConnections" : 0.0,
+                  "callQueueLen" : 0.0,
+                  "RpcQueueTime_num_ops" : 1.19304647056E7,
+                  "rpcAuthenticationSuccesses" : 0.0,
+                  "RpcProcessingTime_num_ops" : 1.19304647056E7,
+                  "RpcProcessingTime_avg_time" : 0.344444444444,
+                  "rpcAuthenticationFailures" : 0.0,
+                  "RpcQueueTime_avg_time" : 3.78888888889
+                },
+                "ugi" : {
+                  "loginFailure_num_ops" : 0.0,
+                  "loginSuccess_num_ops" : 0.0,
+                  "loginSuccess_avg_time" : 0.0,
+                  "loginFailure_avg_time" : 0.0
+                },
+                "hbase" : {
+                  "regionserver" : {
+                    "compactionSize_avg_time" : 0.0,
+                    "fsReadLatencyHistogram_99th_percentile" : 0.0,
+                    "fsWriteLatencyHistogram_median" : 0.0,
+                    "requests" : 0.0,
+                    "fsReadLatencyHistogram_num_ops" : 0.0,
+                    "hdfsBlocksLocalityIndex" : 100.0,
+                    "fsWriteLatencyHistogram_std_dev" : 0.0,
+                    "writeRequestsCount" : 3.0,
+                    "flushSize_avg_time" : 0.0,
+                    "fsWriteLatencyHistogram_max" : 0.0,
+                    "fsSyncLatency_num_ops" : 4.0,
+                    "fsWriteLatencyHistogram_95th_percentile" : 0.0,
+                    "fsSyncLatency_avg_time" : 0.0,
+                    "compactionSize_num_ops" : 0.0,
+                    "compactionTime_num_ops" : 0.0,
+                    "fsReadLatencyHistogram_mean" : 0.0,
+                    "blockCacheEvictedCount" : 0.0,
+                    "storefileIndexSizeMB" : 0.0,
+                    "fsWriteLatencyHistogram_75th_percentile" : 0.0,
+                    "fsWriteLatency_avg_time" : 0.0,
+                    "fsReadLatencyHistogram_max" : 0.0,
+                    "fsWriteLatencyHistogram_min" : 0.0,
+                    "compactionQueueSize" : 0.0,
+                    "totalStaticBloomSizeKB" : 0.0,
+                    "fsWriteLatencyHistogram_mean" : 0.0,
+                    "blockCacheFree" : 2.61031624E8,
+                    "totalStaticIndexSizeKB" : 0.0,
+                    "fsReadLatency_avg_time" : 0.0,
+                    "fsWriteLatency_num_ops" : 3.0,
+                    "memstoreSizeMB" : 0.0,
+                    "regions" : 2.0,
+                    "blockCacheCount" : 1.0,
+                    "blockCacheHitRatio" : 96.0,
+                    "flushQueueSize" : 0.0,
+                    "blockCacheHitCachingRatio" : 96.0,
+                    "fsReadLatencyHistogram_95th_percentile" : 0.0,
+                    "blockCacheHitCount" : 26.0,
+                    "flushTime_avg_time" : 0.0,
+                    "fsReadLatencyHistogram_min" : 0.0,
+                    "flushTime_num_ops" : 0.0,
+                    "compactionTime_avg_time" : 0.0,
+                    "fsReadLatency_num_ops" : 0.0,
+                    "blockCacheSize" : 2160952.0,
+                    "rootIndexSizeKB" : 0.0,
+                    "fsReadLatencyHistogram_std_dev" : 0.0,
+                    "readRequestsCount" : 88.4222222222,
+                    "fsReadLatencyHistogram_75th_percentile" : 0.0,
+                    "blockCacheMissCount" : 1.0,
+                    "storefiles" : 1.0,
+                    "fsWriteLatencyHistogram_num_ops" : 0.0,
+                    "flushSize_num_ops" : 0.0,
+                    "fsWriteLatencyHistogram_99th_percentile" : 0.0,
+                    "stores" : 2.0,
+                    "fsReadLatencyHistogram_median" : 0.0
+                  }
+                },
+                "disk" : {
+                  "disk_free" : 845.599,
+                  "part_max_used" : 43.9
+                },
+                "cpu" : {
+                  "cpu_speed" : 2266.0,
+                  "cpu_num" : 2.0,
+                  "cpu_wio" : 0.0,
+                  "cpu_idle" : 98.6938888889,
+                  "cpu_nice" : 0.0,
+                  "cpu_aidle" : 0.0,
+                  "cpu_system" : 0.531111111111,
+                  "cpu_user" : 0.775
+                },
+                "jvm" : {
+                  "memHeapCommittedM" : 174.446875,
+                  "logFatal" : 0.0,
+                  "threadsBlocked" : 0.0,
+                  "threadsWaiting" : 14.4361111111,
+                  "gcCount" : 1.19304647115E8,
+                  "logError" : 0.0,
+                  "logWarn" : 0.0,
+                  "memNonHeapCommittedM" : 24.3248698333,
+                  "gcTimeMillis" : 1.43165576518E8,
+                  "memNonHeapUsedM" : 19.4993658028,
+                  "logInfo" : 2.38609294222E7,
+                  "memHeapUsedM" : 18.087863945,
+                  "threadsNew" : 0.0,
+                  "threadsTerminated" : 0.0,
+                  "threadsTimedWaiting" : 7.46388888889,
+                  "maxMemoryM" : 1004.0,
+                  "threadsRunnable" : 7.43611111111
+                },
+                "load" : {
+                  "load_fifteen" : 0.00313888888889,
+                  "load_one" : 0.0282777777778,
+                  "load_five" : 0.0163055555556
+                },
+                "memory" : {
+                  "mem_total" : 7646152.0,
+                  "swap_free" : 0.0,
+                  "mem_buffers" : 52429.0222222,
+                  "mem_shared" : 0.0,
+                  "mem_free" : 5610725.88889,
+                  "mem_cached" : 1247511.4,
+                  "swap_total" : 0.0
+                },
+                "network" : {
+                  "pkts_out" : 116.179833333,
+                  "bytes_in" : 1897.15633333,
+                  "bytes_out" : 23871.1300833,
+                  "pkts_in" : 11.2918333333
+                }
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/HBASE/components/HBASE_REGIONSERVER",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "HBASE_REGIONSERVER",
+                    "service_name" : "HBASE"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/services/PIG",
+      "ServiceInfo" : {
+        "cluster_name" : "mycluster",
+        "service_name" : "PIG"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/PIG/components/PIG",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "PIG",
+            "service_name" : "PIG"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/PIG",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "PIG",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/PIG/components/PIG",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "PIG",
+                    "service_name" : "PIG"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA",
+      "ServiceInfo" : {
+        "cluster_name" : "mycluster",
+        "service_name" : "GANGLIA"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA/components/GANGLIA_MONITOR",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "GANGLIA_MONITOR",
+            "service_name" : "GANGLIA"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-204-102-239.ec2.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "ip-10-204-102-239.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA/components/GANGLIA_MONITOR",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "GANGLIA_MONITOR",
+                    "service_name" : "GANGLIA"
+                  }
+                }
+              ]
+            },
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-83-47-139.ec2.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "ip-10-83-47-139.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA/components/GANGLIA_MONITOR",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "GANGLIA_MONITOR",
+                    "service_name" : "GANGLIA"
+                  }
+                }
+              ]
+            },
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA/components/GANGLIA_MONITOR",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "GANGLIA_MONITOR",
+                    "service_name" : "GANGLIA"
+                  }
+                }
+              ]
+            },
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-204-62-16.ec2.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "ip-10-204-62-16.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA/components/GANGLIA_MONITOR",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "GANGLIA_MONITOR",
+                    "service_name" : "GANGLIA"
+                  }
+                }
+              ]
+            },
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-118-149-18.ec2.internal/host_components/GANGLIA_MONITOR",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_MONITOR",
+                "host_name" : "ip-10-118-149-18.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA/components/GANGLIA_MONITOR",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "GANGLIA_MONITOR",
+                    "service_name" : "GANGLIA"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA/components/GANGLIA_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "GANGLIA_SERVER",
+            "service_name" : "GANGLIA"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-83-47-139.ec2.internal/host_components/GANGLIA_SERVER",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "GANGLIA_SERVER",
+                "host_name" : "ip-10-83-47-139.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/GANGLIA/components/GANGLIA_SERVER",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "GANGLIA_SERVER",
+                    "service_name" : "GANGLIA"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "href" : "http://ambari:8080/api/clusters/mycluster/services/ZOOKEEPER",
+      "ServiceInfo" : {
+        "cluster_name" : "mycluster",
+        "service_name" : "ZOOKEEPER"
+      },
+      "components" : [
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/ZOOKEEPER/components/ZOOKEEPER_SERVER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "ZOOKEEPER_SERVER",
+            "service_name" : "ZOOKEEPER"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-204-62-16.ec2.internal/host_components/ZOOKEEPER_SERVER",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "ZOOKEEPER_SERVER",
+                "host_name" : "ip-10-204-62-16.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/ZOOKEEPER/components/ZOOKEEPER_SERVER",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "ZOOKEEPER_SERVER",
+                    "service_name" : "ZOOKEEPER"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "href" : "http://ambari:8080/api/clusters/mycluster/services/ZOOKEEPER/components/ZOOKEEPER_CLIENT",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "mycluster",
+            "component_name" : "ZOOKEEPER_CLIENT",
+            "service_name" : "ZOOKEEPER"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ambari:8080/api/clusters/mycluster/hosts/ip-10-196-102-80.ec2.internal/host_components/ZOOKEEPER_CLIENT",
+              "HostRoles" : {
+                "configs" : "{}",
+                "cluster_name" : "mycluster",
+                "desired_configs" : "{}",
+                "desired_state" : "INSTALLED",
+                "state" : "INSTALLED",
+                "component_name" : "ZOOKEEPER_CLIENT",
+                "host_name" : "ip-10-196-102-80.ec2.internal"
+              },
+              "component" : [
+                {
+                  "href" : "http://ambari:8080/api/clusters/mycluster/services/ZOOKEEPER/components/ZOOKEEPER_CLIENT",
+                  "ServiceComponentInfo" : {
+                    "cluster_name" : "mycluster",
+                    "component_name" : "ZOOKEEPER_CLIENT",
+                    "service_name" : "ZOOKEEPER"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "resources" : [
+{
+  "Versions": {
+    "stack_name": "HDP",
+    "stack_version": "2.1.1"
+  },
+  "hosts": ["dev1.hortonworks.com", "dev2.hortonworks.com", "dev3.hortonworks.com"],
+  "services": ["FALCON", "FLUME", "GANGLIA", "HBASE", "HDFS", "HIVE", "MAPREDUCE2", "OOZIE", "PIG", "SQOOP", "STORM", "TEZ", "WEBCHAT", "YARN", "ZOOKEEPER"],
+  "recommendations": {
+    "blueprint": {
+      "configurations": {
+        "global": {
+          "properties": {
+            "hbase_user": "hbase",
+            "clientPort": "2181",
+            "hadoop_heapsize": "1024"
+          }
+        },
+        "core-site": { },
+        "hdfs-site": { },
+        "yarn-site": { },
+        "hbase-site": { }
+      },
+      "host_groups": [
+        {
+          "name": "host-group-1",
+          "components": [
+            {
+              "name": "NAMENODE"
+            },
+            {
+              "name": "GANGLIA_SERVER"
+            },
+            {
+              "name": "HBASE_MASTER"
+            },
+            {
+              "name": "ZOOKEEPER_SERVER"
+            },
+            {
+              "name": "DRPC_SERVER"
+            },
+            {
+              "name": "NIMBUS"
+            },
+            {
+              "name": "STORM_REST_API"
+            },
+            {
+              "name": "STORM_UI_SERVER"
+            }
+          ]
+        },
+        {
+          "name": "host-group-2",
+          "components": [
+            {
+              "name": "SECONDARY_NAMENODE"
+            },
+            {
+              "name": "HISTORYSERVER"
+            },
+            {
+              "name": "APP_TIMELINE_SERVER"
+            },
+            {
+              "name": "RESOURCEMANAGER"
+            },
+            {
+              "name": "HIVE_METASTORE"
+            },
+            {
+              "name": "HIVE_SERVER"
+            },
+            {
+              "name": "WEBHCAT_SERVER"
+            },
+            {
+              "name": "OOZIE_SERVER"
+            },
+            {
+              "name": "ZOOKEEPER_SERVER"
+            },
+            {
+              "name": "FALCON_SERVER"
+            }
+          ]
+        },
+        {
+          "name": "host-group-3",
+          "components": [
+            {
+              "name": "ZOOKEEPER_SERVER"
+            },
+            {
+              "name": "DATANODE"
+            },
+            {
+              "name": "NODEMANAGER"
+            },
+            {
+              "name": "HBASE_REGIONSERVER"
+            },
+            {
+              "name": "SUPERVISOR"
+            },
+            {
+              "name": "CLIENT"
+            }
+          ]
+        }
+      ]
+    },
+    "blueprint_cluster_binding": {
+      "host_groups": [
+        {
+          "name": "host-group-1",
+          "hosts": [
+            {
+              "fqdn": "hwa-cls2-m.viacode.com"
+            }
+          ]
+        },
+        {
+          "name": "host-group-2",
+          "hosts": [
+            {
+              "fqdn": "hwa-cls2-s1.viacode.com"
+            }
+          ]
+        },
+        {
+          "name": "host-group-3",
+          "hosts": [
+            {
+              "fqdn": "hwa-cls2-s2.viacode.com"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+]
+}

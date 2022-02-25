@@ -1,0 +1,119 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.isOutOfSync}}
+  <i class="glyphicon glyphicon-exclamation-sign out-of-sync-badge"></i>
+{{/if}}
+
+<p {{bindAttr class=":version view.isRepoUrlsEditDisabled:not-active-link"}}>
+  <span>{{view.content.displayName}}</span>
+  <a class="pull-right not-active link-tooltip" {{action editRepositories target="view"}}>
+    <i class="glyphicon glyphicon-edit"></i>
+  </a>
+</p>
+<p class="repository-name">({{view.content.repositoryVersion}})</p>
+
+<p class="patch-icon">
+  {{#if view.content.isMaint}}
+    <i class="icon-wrench"></i>&nbsp;{{t common.maint}}
+  {{/if}}
+  {{#if view.content.isPatch}}
+    <i class="icon-bug"></i>&nbsp;{{t common.patch}}
+  {{/if}}
+  {{#if view.content.isService}}
+    <i class="icon-umbrella"></i>&nbsp;{{t common.service}}
+  {{/if}}
+</p>
+
+
+<div {{bindAttr class="view.stateElement.isInstalling:installing :align-center :state :repo-version-tooltip"}}>
+  {{#if view.stateElement.isButton}}
+    <button class="btn btn-primary"
+      {{action runAction target="view"}}
+      {{bindAttr disabled="view.stateElement.isDisabled"}}>
+      {{view.stateElement.text}}
+    </button>
+  {{/if}}
+  {{#if view.stateElement.isButtonGroup}}
+    <div class="btn-group">
+      <button class="btn btn-primary"
+        {{action runAction target="view"}}
+        {{bindAttr disabled="view.stateElement.isDisabled"}}>
+        {{view.stateElement.text}}
+      </button>
+      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" {{bindAttr disabled="view.stateElement.isDisabled"}}>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        {{#each button in view.stateElement.buttons}}
+          <li {{bindAttr class="button.isDisabled:disabled"}}>
+            <a {{action runAction button.action target="view"}}>
+              {{button.text}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+  {{#if view.stateElement.isLabel}}
+    {{#if view.stateElement.iconClass}}
+      <i {{bindAttr class="view.stateElement.iconClass" disabled="view.stateElement.isDisabled"}}></i>
+    {{/if}}
+    <span {{bindAttr class="view.stateElement.class"}}>{{view.stateElement.text}}</span>
+  {{/if}}
+  {{#if view.stateElement.isLink}}
+    {{#if view.stateElement.iconClass}}
+      <i {{bindAttr class="view.stateElement.iconClass" disabled="view.stateElement.isDisabled"}}></i>
+    {{/if}}
+    <a href="#" {{action runAction target="view"}}
+        {{bindAttr disabled="view.stateElement.isDisabled"}}>{{view.stateElement.text}}</a>
+    {{#if view.stateElement.isInstalling}}
+      {{view App.ProgressBarView
+        progressBinding="view.installProgress"
+        statusBinding="view.PROGRESS_STATUS"
+      }}
+    {{/if}}
+  {{/if}}
+  {{#if view.stateElement.isSpinner}}
+    {{view App.SpinnerView}}
+  {{/if}}
+</div>
+
+<div class="hosts-section">
+  <div class="hosts-bar">{{t common.hosts}}</div>
+  <div class="row host-link">
+    <div class="col-md-4 align-center not-installed-hosts">
+      <div><a href="#" class="hosts-tooltip not-active" {{bindAttr data-original-title="view.content.noInitHostsTooltip" }}
+        {{action showHosts view.versionStateMap.not_installed target="view"}}>
+        {{view.notInstalledHosts.length}}</a></div>
+      <div>{{t admin.stackVersions.version.notInstalled}}</div>
+    </div>
+    <div class="col-md-4 align-center installed-hosts">
+      <div><a href="#" class="hosts-tooltip not-active" {{bindAttr data-original-title="view.content.noInstalledHostsTooltip" }}
+        {{action showHosts view.versionStateMap.installed target="view"}}>
+        {{view.installedHosts.length}}</a></div>
+      <div>{{t common.installed}}</div>
+    </div>
+    <div class="col-md-4 align-center current-hosts">
+      <div><a href="#" class="hosts-tooltip not-active" {{bindAttr data-original-title="view.content.noCurrentHostsTooltip" }}
+        {{action showHosts view.versionStateMap.current target="view"}}>
+        {{view.currentHosts.length}}</a></div>
+      <div>{{t common.current}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+{
+  "clusters": {
+    "0": {
+      "topologyHash": "fagrewtqwfasfa",
+      "configurationsHash": "mgasdeg443fas",
+      "metadataHash": "1rgw23rfwfaas",
+      "configurationAttributesHash": "s5rtwderfrqwwqr"
+    }
+  },
+  "timestamp":1491211168994,
+  "hostname":"gc6401",
+  "responseId":-1,
+  "publicHostname":"gc6401",
+  "hardwareProfile":{  
+    "kernel":"Linux",
+    "domain":"",
+    "physicalprocessorcount":1,
+    "kernelrelease":"2.6.32-642.15.1.el6.x86_64",
+    "uptime_days":"0",
+    "memorytotal":3664596,
+    "swapfree":"0.00 GB",
+    "memorysize":3664596,
+    "osfamily":"redhat",
+    "swapsize":"0.00 GB",
+    "processorcount":1,
+    "netmask":"255.255.255.255",
+    "timezone":"UTC",
+    "hardwareisa":"x86_64",
+    "memoryfree":1588136,
+    "operatingsystem":"centos",
+    "kernelmajversion":"2.6",
+    "kernelversion":"2.6.32",
+    "macaddress":"42:01:0A:F0:00:2D",
+    "operatingsystemrelease":"6.8",
+    "ipaddress":"10.240.0.45",
+    "hostname":"gc6401",
+    "uptime_hours":"0",
+    "fqdn":"gc6401",
+    "id":"root",
+    "architecture":"x86_64",
+    "selinux":true,
+    "mounts":[  
+      {  
+        "available":"7075452",
+        "used":"2589424",
+        "percent":"27%",
+        "device":"/dev/sda1",
+        "mountpoint":"/",
+        "type":"ext4",
+        "size":"10189112"
+      }
+    ],
+    "hardwaremodel":"x86_64",
+    "uptime_seconds":"256",
+    "interfaces":"eth0,lo"
+  },
+  "currentPingPort":8670,
+  "prefix":"/var/lib/ambari-agent/data",
+  "agentVersion":"2.0.0.0",
+  "agentEnv":{  
+    "transparentHugePage":"always",
+    "hostHealth":{  
+      "agentTimeStampAtReporting":1491211169096,
+      "activeJavaProcs":[  
+
+      ],
+      "liveServices":[  
+        {  
+          "status":"Healthy",
+          "name":"ntpd or chronyd",
+          "desc":""
+        }
+      ]
+    },
+    "reverseLookup":true,
+    "alternatives":[  
+
+    ],
+    "hasUnlimitedJcePolicy":null,
+    "umask":"23",
+    "firewallName":"iptables",
+    "stackFoldersAndFiles":[  
+
+    ],
+    "existingUsers":[  
+
+    ],
+    "firewallRunning":true
+  }
+}

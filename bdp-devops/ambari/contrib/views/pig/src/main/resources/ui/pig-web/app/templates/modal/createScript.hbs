@@ -1,0 +1,38 @@
+{{!
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+}}
+
+{{#pig-modal ok='confirm' close='cancel'}}
+  <div class="modal-header">
+    <button type="button" class="close"  {{action "cancel"}} data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">{{t 'scripts.modal.create_script'}}</h4>
+  </div>
+  <div class="modal-body">
+  <div {{bind-attr class=":form-group titleErrorMessage:has-error"}}>
+      <label>{{t 'scripts.title'}}</label>
+      {{input class="form-control" placeholderTranslation="scripts.modal.script_title_placeholder" valueBinding="content.title" change=titleChange}}
+    </div>
+    {{#if content.isBlankTitle}}
+      <div  {{bind-attr class=":alert :alert-danger titleErrorMessage::hide"}}>{{titleErrorMessage}}</div>
+    {{/if}}
+    <div class="form-group">
+      <label>{{t 'scripts.path'}}</label>
+      {{path-input class="form-control" placeholderTranslation="scripts.modal.file_path_placeholder" valueBinding="filePath" storeBinding="content.store"}}
+      <small class="pull-right help-block">{{t 'scripts.modal.file_path_hint'}}</small>
+    </div>
+  </div>
+{{/pig-modal}}

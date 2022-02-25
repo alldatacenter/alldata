@@ -1,0 +1,102 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <DataSourceModuleType ID="Ambari.SCOM.Module.ClusterServiceMetricsDataSource" Accessibility="Internal">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Windows!Microsoft.Windows.PowerShellSchema</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="IntervalSeconds" type="xsd:integer" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SyncTime" type="xsd:string" />
+          <xsd:element name="TimeoutSeconds" type="xsd:int" />
+
+          <xsd:element name="CollectionScript" type="NonNullString" />
+          <xsd:element name="ServiceName" type="xsd:string" />
+        </Configuration>
+        <ModuleImplementation>
+          <Composite>
+            <MemberModules>
+              <DataSource ID="DS" TypeID="Ambari.SCOM.Module.BaseScriptedPropertyBagDataSource">
+                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+                <SyncTime>$Config/SyncTime$</SyncTime>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+
+                <StartupExpression>
+                  <And>
+                    <Expression>
+                      <Exists>
+                        <ValueExpression>
+                          <Value Type="String">$Target/Host/Property[Type="Ambari.SCOM.AmbariManagedEntity"]/AmbariUri$</Value>
+                        </ValueExpression>
+                      </Exists>
+                    </Expression>
+                    <Expression>
+                      <SimpleExpression>
+                        <ValueExpression>
+                          <Value Type="String">$Target/Host/Property[Type="Ambari.SCOM.AmbariManagedEntity"]/AmbariUri$</Value>
+                        </ValueExpression>
+                        <Operator>NotEqual</Operator>
+                        <ValueExpression>
+                          <Value Type="String" />
+                        </ValueExpression>
+                      </SimpleExpression>
+                    </Expression>
+                  </And>
+                </StartupExpression>
+
+                <WorkflowName>$Config/ServiceName$ServiceMetricsCollection</WorkflowName>
+                <Script>$Config/CollectionScript$</Script>
+                <Parameters>
+                  <Parameter>
+                    <Name>MonitoringAmbariUri</Name>
+                    <Value>$Target/Host/Property[Type="Ambari.SCOM.AmbariManagedEntity"]/AmbariUri$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Username</Name>
+                    <Value>$RunAs[Name="Ambari.SCOM.Profile.Ambari"]/UserName$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Password</Name>
+                    <Value>$RunAs[Name="Ambari.SCOM.Profile.Ambari"]/Password$</Value>
+                  </Parameter>
+                </Parameters>
+              </DataSource>
+            </MemberModules>
+            <Composition>
+              <Node ID="DS" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.PropertyBagData</OutputType>
+      </DataSourceModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Module.ClusterServiceMetricsDataSource">
+          <Name>Hadoop Base Cluster Service Metrics Property Bag Data Provider</Name>
+          <Description>This module collects all metrics available for target Cluster Service into property bag using provided collection script.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

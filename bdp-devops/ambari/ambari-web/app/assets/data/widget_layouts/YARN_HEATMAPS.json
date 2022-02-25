@@ -1,0 +1,35 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/users/admin/activeWidgetLayouts?WidgetLayoutInfo/section_name=YARN_HEATMAPS",
+  "items" : [
+    {
+      "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widget_layouts/11",
+      "WidgetLayoutInfo" : {
+        "cluster_name" : "c1",
+        "display_name" : "YARN Heatmaps",
+        "id" : 11,
+        "layout_name" : "admin_yarn_heatmap",
+        "scope" : "USER",
+        "section_name" : "YARN_HEATMAPS",
+        "user_name" : "admin",
+        "widgets" : [
+          {
+            "WidgetInfo" : {
+              "id" : 41,
+              "metrics" : "[{\"name\":\"yarn.NodeManagerMetrics.AllocatedContainers\",\"metric_path\":\"metrics/yarn/AllocatedContainers\",\"service_name\":\"YARN\",\"component_name\":\"NODEMANAGER\"}]",
+              "author" : "ambari",
+              "description" : "",
+              "scope" : "CLUSTER",
+              "properties" : "{\"display_unit\":\"\",\"max_limit\":\"100\"}",
+              "widget_name" : "Allocated Containers",
+              "widget_type" : "HEATMAP",
+              "time_created" : 1429906622523,
+              "display_name" : "Allocated Containers",
+              "values" : "[{\"name\":\"Allocated Containers\",\"value\":\"${yarn.NodeManagerMetrics.AllocatedContainers}\"}]",
+              "cluster_name" : "c1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

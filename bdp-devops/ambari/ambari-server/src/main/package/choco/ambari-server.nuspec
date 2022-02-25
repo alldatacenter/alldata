@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
+    <id>ambari-server</id>
+    <title>Ambari Server</title>
+    <version>1.0</version>
+    <authors>Apache Ambari</authors>
+    <owners>Apache Ambari</owners>
+    <summary>Ambari Server</summary>
+    <description>Ambari Server
+    </description>
+    <projectUrl>http://ambari.apache.org</projectUrl>
+    <tags>ambari-server</tags>
+    <copyright>https://github.com/apache/ambari/blob/trunk/NOTICE.txt</copyright>
+    <licenseUrl>https://github.com/apache/ambari/blob/trunk/LICENSE.txt</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes></releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+    <file src="content\**" target="content" />
+    <file src="modules\**" target="modules" />
+  </files>
+</package>

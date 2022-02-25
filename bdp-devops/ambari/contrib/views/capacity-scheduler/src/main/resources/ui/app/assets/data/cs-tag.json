@@ -1,0 +1,13 @@
+{
+  "href" : "http://c6401.ambari.apache.org:8080/api/v1/clusters/MyCluster?fields=Clusters/desired_configs/capacity-scheduler",
+  "Clusters" : {
+    "cluster_name" : "MyCluster",
+    "version" : "HDP-2.1",
+    "desired_configs" : {
+      "capacity-scheduler" : {
+        "user" : "admin",
+        "tag" : "version1"
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#if view.isLoaded}}
+  <div id="host-details">
+       <div class="content">
+      {{view App.MainHostMenuView hostBinding="view.content"}}
+        <div class="service-button">
+          <div class="btn-group display-inline-block">
+            <button href="javascript:void(null)" {{bindAttr class=":btn :btn-default :dropdown-toggle"}} id="host-details-action-btn" data-toggle="dropdown">
+              {{t hosts.host.details.hostActions}}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu pull-right">
+              <!-- dropdown menu links -->
+              {{#each option in view.maintenance}}
+                <li {{bindAttr class="controller.isStopDisabled:disabled option.liClass"}}>
+                  <a {{action "doAction" option target="controller" href=true}}><i {{bindAttr class="option.cssClass option.liClass"}}></i> {{option.label}}
+                  </a>
+                </li>
+              {{/each}}
+              {{#if view.clients}}
+                <li class="dropdown-submenu submenu-left">
+                  <a><i class="glyphicon glyphicon-download-alt"></i> {{t services.service.actions.downloadClientConfigs}}</a>
+
+                  <div class="dropdown-menu-wrap">
+                    <ul class="dropdown-menu">
+                    {{#if view.hasManyClientsWithConfigs}}
+                      <li>
+                         <a id="all-clients-on-host-link" {{action "downloadAllClientConfigs" target="controller" href=true}}>{{t host.host.details.downloadAllClients}}</a>
+                      </li>
+                    {{/if}}
+                      {{#each client in view.clientsWithConfigs}}
+                        <li>
+                          <a {{action "downloadClientConfigs" client target="controller" href=true}}>{{client.displayName}}</a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                </li>
+              {{/if}}
+              <li>
+                <a {{action "confirmRecoverHost" target="controller"}}><i class="icon-time"></i> {{t hosts.host.details.recoverHost}} </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  {{view App.SpinnerView}}
+{{/if}}

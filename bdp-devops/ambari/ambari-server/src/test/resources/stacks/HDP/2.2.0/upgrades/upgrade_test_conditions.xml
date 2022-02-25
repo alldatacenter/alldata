@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<upgrade xsi:noNamespaceSchemaLocation="upgrade-pack.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <target>2.5.*.*</target>
+  <target-stack>HDP-2.5.0</target-stack>
+  <type>ROLLING</type>
+
+  <order>
+    <group xsi:type="cluster" name="CLUSTER_SECURITY_CONDITION_TEST" title="Cluster Security Condition Test">
+      <condition xsi:type="security" type="kerberos"/>
+      <execute-stage title="Confirm 1">
+        <task xsi:type="manual">
+          <message>Foo</message>
+        </task>
+      </execute-stage>
+    </group>
+
+    <group xsi:type="cluster" name="CLUSTER_SECURITY_CONDITION_TEST_WITH_KDC" title="Cluster Security Condition Test With KDC Type">
+      <condition xsi:type="security" type="kerberos" kdc-type="none"/>
+      <execute-stage title="Confirm 1">
+        <task xsi:type="manual">
+          <message>Foo</message>
+        </task>
+      </execute-stage>
+    </group>
+
+    <group name="ZOOKEEPER_CONFIG_CONDITION_TEST" title="ZooKeeper Config Condition Test">
+      <condition xsi:type="config" type="foo-site" property="foo-property" value="foo-value" comparison="equals"/>
+      <skippable>true</skippable>
+      <allow-retry>false</allow-retry>
+      <service name="ZOOKEEPER">
+        <component>ZOOKEEPER_SERVER</component>
+        <component>ZOOKEEPER_CLIENT</component>
+      </service>
+    </group>
+    
+    <group xsi:type="cluster" name="STAGE_SECURITY_CONDITION_TEST" title="Stage Security Condition Test">      
+      <execute-stage title="Confirm 1">
+        <condition xsi:type="security" type="kerberos"/>
+        <task xsi:type="manual">
+          <message>Foo</message>
+        </task>
+      </execute-stage>      
+     </group>
+     
+    <group xsi:type="cluster" name="TASK_SECURITY_CONDITION_TEST" title="Task Security Condition Test">
+      <!-- no condition -->      
+      <execute-stage title="Confirm 1">
+        <task xsi:type="manual">
+          <message>Foo</message>
+        </task>
+      </execute-stage>
+
+      <!-- condition -->
+      <execute-stage title="Confirm 2">
+        <task xsi:type="manual">
+          <condition xsi:type="security" type="kerberos"/>
+          <message>Task based on security condition</message>
+        </task>
+      </execute-stage>      
+     </group>     
+          
+  </order>
+
+  <processing>
+    <service name="ZOOKEEPER">
+      <component name="ZOOKEEPER_SERVER">
+        <upgrade>
+          <task xsi:type="restart-task" />          
+        </upgrade>
+      </component>
+    </service>
+  </processing>
+</upgrade>

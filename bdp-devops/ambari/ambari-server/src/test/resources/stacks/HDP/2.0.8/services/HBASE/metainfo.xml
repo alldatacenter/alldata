@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<metainfo>
+  <!--
+  We can use this to distinguish old vs. new.
+  -->
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>HBASE</name>
+      <comment>Non-relational distributed database and centralized service for configuration management &amp;
+        synchronization
+      </comment>
+      <version>0.96.0.2.0.6.0</version>
+      <components>
+        <component>
+          <name>HBASE_MASTER</name>
+          <category>MASTER</category>
+          <customCommands>
+            <customCommand> <!--Specialized only for custom commands, can use the same script as well -->
+              <name>RESTART</name>
+              <commandScript>
+                <script>scripts/hbase_master_restart.py</script>
+                <scriptType>PYTHON</scriptType>
+                <timeout>888</timeout>
+              </commandScript>
+              <name>RESTART</name>
+              <commandScript>
+                <script>scripts/hbase_master_restart.py</script>
+                <scriptType>PYTHON</scriptType>
+                <timeout>888</timeout>
+              </commandScript>
+            </customCommand>
+          </customCommands>
+        </component>
+
+        <component>
+          <name>HBASE_REGIONSERVER</name>
+          <category>SLAVE</category>
+          <commandScript> <!--This is the script to handle all default commands -->
+            <script>scripts/hbase_master.py</script>
+            <scriptType>PYTHON</scriptType>
+          </commandScript>
+        </component>
+
+        <component>
+          <name>HBASE_CLIENT</name>
+          <category>CLIENT</category>
+          <commandScript>
+            <script>scripts/hbase_client.py</script>
+            <scriptType>PYTHON</scriptType>
+          </commandScript>          
+        </component>
+      </components>
+
+      <customCommands>
+        <customCommand>
+          <name>SERVICE_VALIDATION</name>
+          <commandScript>
+            <script>scripts/hbase_validation.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>300</timeout>
+          </commandScript>
+        </customCommand>
+      </customCommands>
+      <excluded-config-types>
+        <config-type>global</config-type>
+    </excluded-config-types>
+      <configuration-dependencies>
+      </configuration-dependencies>
+    </service>
+  </services>
+</metainfo>

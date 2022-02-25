@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+ 
+        http://www.apache.org/licenses/LICENSE-2.0
+ 
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+<!-- Put site-specific property overrides in this file. -->
+<configuration xmlns:xi="http://www.w3.org/2001/XInclude" supports_final="true">
+  <!-- i/o properties -->
+  <property>
+    <name>io.file.buffer.size</name>
+    <value>131072</value>
+    <description>The size of buffer for use in sequence files.
+  The size of this buffer should probably be a multiple of hardware
+  page size (4096 on Intel x86), and it determines how much data is
+  buffered during read and write operations.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>io.serializations</name>
+    <value>org.apache.hadoop.io.serializer.WritableSerialization</value>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>io.compression.codecs</name>
+    <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec</value>
+    <description>A list of the compression codec classes that can be used
+                 for compression/decompression.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- file system properties -->
+  <property>
+    <name>fs.defaultFS</name>
+    <!-- cluster variant -->
+    <value/>
+    <description>The name of the default file system.  Either the
+  literal string "local" or a host:port for HDFS.</description>
+    <final>true</final>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>fs.trash.interval</name>
+    <value>360</value>
+    <description>Number of minutes between trash checkpoints.
+  If zero, the trash feature is disabled.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>dfs.namenode.checkpoint.dir</name>
+    <value/>
+    <description>Determines where on the local filesystem the DFS secondary
+        name node should store the temporary images to merge.
+        If this is a comma-delimited list of directories then the image is
+        replicated in all of the directories for redundancy.
+    </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>dfs.namenode.checkpoint.edits.dir</name>
+    <display-name>NameNode Checkpoint Edits directory</display-name>
+    <value>${dfs.namenode.checkpoint.dir}</value>
+    <description>Determines where on the local filesystem the DFS secondary
+        name node should store the temporary edits to merge.
+        If this is a comma-delimited list of directoires then teh edits is
+        replicated in all of the directoires for redundancy.
+        Default value is same as dfs.namenode.checkpoint.dir
+    </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>dfs.namenode.checkpoint.period</name>
+    <value>21600</value>
+    <description>The number of seconds between two periodic checkpoints.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- ipc properties: copied from kryptonite configuration -->
+  <property>
+    <name>ipc.client.idlethreshold</name>
+    <value>8000</value>
+    <description>Defines the threshold number of connections after which
+               connections will be inspected for idleness.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>ipc.client.connection.maxidletime</name>
+    <value>30000</value>
+    <description>The maximum time after which a client will bring down the
+               connection to the server.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>ipc.client.connect.max.retries</name>
+    <value>50</value>
+    <description>Defines the maximum number of retries for IPC connections.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <!-- Web Interface Configuration -->
+  <property>
+    <name>mapreduce.jobtracker.webinterface.trusted</name>
+    <value>false</value>
+    <description> If set to true, the web interfaces of JT and NN may contain
+                actions, such as kill job, delete file, etc., that should
+                not be exposed to public. Enable this option if the interfaces
+                are only reachable by those who have the right authorization.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hadoop.security.authentication</name>
+    <value>simple</value>
+    <description>
+   Set the authentication for the cluster. Valid values are: simple or
+   kerberos.
+   </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hadoop.security.authorization</name>
+    <value>false</value>
+    <description>
+     Enable authorization for different protocols.
+  </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hadoop.security.auth_to_local</name>
+    <value>
+        RULE:[2:$1@$0]([rn]m@.*)s/.*/yarn/
+        RULE:[2:$1@$0](jhs@.*)s/.*/mapred/
+        RULE:[2:$1@$0]([nd]n@.*)s/.*/hdfs/
+        RULE:[2:$1@$0](hm@.*)s/.*/hbase/
+        RULE:[2:$1@$0](rs@.*)s/.*/hbase/
+        DEFAULT
+    </value>
+    <description>The mapping from kerberos principal names to local OS mapreduce.job.user.names.
+  So the default rule is just "DEFAULT" which takes all principals in your default domain to their first component.
+  "omalley@APACHE.ORG" and "omalley/admin@APACHE.ORG" to "omalley", if your default domain is APACHE.ORG.
+The translations rules have 3 sections:
+      base     filter    substitution
+The base consists of a number that represents the number of components in the principal name excluding the realm and the pattern for building the name from the sections of the principal name. The base uses $0 to mean the realm, $1 to mean the first component and $2 to mean the second component.
+
+[1:$1@$0] translates "omalley@APACHE.ORG" to "omalley@APACHE.ORG"
+[2:$1] translates "omalley/admin@APACHE.ORG" to "omalley"
+[2:$1%$2] translates "omalley/admin@APACHE.ORG" to "omalley%admin"
+
+The filter is a regex in parens that must the generated string for the rule to apply.
+
+"(.*%admin)" will take any string that ends in "%admin"
+"(.*@ACME.COM)" will take any string that ends in "@ACME.COM"
+
+Finally, the substitution is a sed rule to translate a regex into a fixed string.
+
+"s/@ACME\.COM//" removes the first instance of "@ACME.COM".
+"s/@[A-Z]*\.COM//" removes the first instance of "@" followed by a name followed by ".COM".
+"s/X/Y/g" replaces all of the "X" in the name with "Y"
+
+So, if your default realm was APACHE.ORG, but you also wanted to take all principals from ACME.COM that had a single component "joe@ACME.COM", you'd do:
+
+RULE:[1:$1@$0](.@ACME.ORG)s/@.//
+DEFAULT
+
+To also translate the names with a second component, you'd make the rules:
+
+RULE:[1:$1@$0](.@ACME.ORG)s/@.//
+RULE:[2:$1@$0](.@ACME.ORG)s/@.//
+DEFAULT
+
+If you want to treat all principals from APACHE.ORG with /admin as "admin", your rules would look like:
+
+RULE[2:$1%$2@$0](.%admin@APACHE.ORG)s/./admin/
+DEFAULT
+    </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

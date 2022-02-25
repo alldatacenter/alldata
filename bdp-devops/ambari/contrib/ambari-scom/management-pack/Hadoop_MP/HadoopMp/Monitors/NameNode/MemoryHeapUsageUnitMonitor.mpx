@@ -1,0 +1,103 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Monitors>
+      <UnitMonitor ID="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed"
+                   TypeID="Ambari.SCOM.UnitMonitorType.HostComponentThreeStateThreshold"
+                   Target="Ambari.SCOM.HostComponent.NameNode"
+                   ParentMonitorID="Health!System.Health.PerformanceState"
+                   Remotable="true" Priority="Normal" Accessibility="Public" Enabled="true" ConfirmDelivery="true">
+        <Category>PerformanceHealth</Category>
+        <AlertSettings AlertMessage="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed.AlertMessage">
+          <AlertOnState>Warning</AlertOnState>
+          <AutoResolve>true</AutoResolve>
+          <AlertPriority>Normal</AlertPriority>
+          <AlertSeverity>MatchMonitorHealth</AlertSeverity>
+          <AlertParameters>
+            <AlertParameter1>$Target/Host/Host/Property[Type="Ambari.SCOM.Host.Private"]/ClusterName$</AlertParameter1>
+            <AlertParameter2>$Data/Context/Property[@Name='calculated.memheapusedpercent']$</AlertParameter2>
+          </AlertParameters>
+        </AlertSettings>
+        <OperationalStates>
+          <OperationalState ID="Healthy" MonitorTypeStateID="Healthy" HealthState="Success" />
+          <OperationalState ID="Warning" MonitorTypeStateID="Warning" HealthState="Warning" />
+          <OperationalState ID="Critical" MonitorTypeStateID="Critical" HealthState="Error" />
+        </OperationalStates>
+        <Configuration>
+          <IntervalSeconds>900</IntervalSeconds>
+          <TimeoutSeconds>300</TimeoutSeconds>
+          <PropertyName>calculated.memheapusedpercent</PropertyName>
+          <TheGreaterTheBetter>false</TheGreaterTheBetter>
+          <WarningThreshold>80</WarningThreshold>
+          <CriticalThreshold>90</CriticalThreshold>
+        </Configuration>
+      </UnitMonitor>
+    </Monitors>
+  </Monitoring>
+
+  <Presentation>
+    <StringResources>
+      <StringResource ID="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed.AlertMessage"/>
+    </StringResources>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed">
+          <Name>NameNode Memory Heap Usage</Name>
+          <Description>Gives warning/critical alert if percentage of used NameNode memory heap is more than lower/upper threshold.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed" SubElementID="Healthy">
+          <Name>Low</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed" SubElementID="Warning">
+          <Name>High</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed" SubElementID="Critical">
+          <Name>Critical</Name>
+        </DisplayString>
+
+        <DisplayString ElementID="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed.AlertMessage">
+          <Name>NameNode is working under high memory pressure.</Name>
+          <Description>There are {1}% of committed heap memory used by NameNode of cluster "{0}".</Description>
+        </DisplayString>
+      </DisplayStrings>
+
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="Ambari.SCOM.UnitMonitor.NameNodeMemoryHeapUsed" Visible="true">
+          <MamlContent>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Summary</title>
+              <para>Gives warning/critical alert if percentage of used NameNode memory heap is more than lower/upper threshold.</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Causes</title>
+              <para>TBD</para>
+            </section>
+            <section xmlns="http://schemas.microsoft.com/maml/2004/10">
+              <title>Resolutions</title>
+              <para>TBD</para>
+            </section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

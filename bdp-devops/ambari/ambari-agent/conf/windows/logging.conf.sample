@@ -1,0 +1,65 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific
+
+#To create separate log levels and log files for different classes and modules,
+# user should rename current file to "logging.conf" and restart ambari-agent.
+# Before restart, user have to define his own loggers and handlers which be
+# logging accordingly their qualname's 
+
+# Loggers definitions section. 
+# root logger definition is mandatory.
+# User can define so many loggers as need
+# User defined loggers have to described in separate sections e.g. [logger_<logger name>] 
+[loggers]
+keys=root,Controller
+
+# Handlers section defined name of handlers which processed log info
+# At least one handler should be defined.
+# Settings of user defined have to be done in [handler_<user defined handler name>] section
+[handlers]
+keys=logfile
+
+# This section defined name of formatters for which use to formate log string
+# Format of string have to be defined in [formatter_<formatter name>] section
+[formatters]
+keys=logfileformatter
+
+# This section is mandatory! This section defined settings for root logger
+[logger_root]
+level=WARNING
+handlers=logfile
+
+# Settings of user defined logger called Controller (this logger added as example)
+# level - for this logger can be different from root log level and can be:
+# CRITICAL|ERROR|WARNING|INFO|DEBUG
+# If level was not defined, by default it will be NOTSET
+# handler - name of handler which will be processed log (mandatory)
+# qualname - fully qualified name of logger (mandatory)
+# Usually qualname of logger defined in code as logger = logging.getLogger(__name__) that the same to file name
+[logger_Controller]
+level=DEBUG
+handlers=logfile
+qualname=Controller
+
+# Format of log string definition
+[formatter_logfileformatter]
+format=%(levelname)s %(asctime)s %(filename)s:%(lineno)d - %(message)s
+
+# Definition of handler for logging
+# User can create different type of handlers 
+[handler_logfile]
+class=handlers.RotatingFileHandler
+level=DEBUG
+args=('\\var\\log\\ambari-agent\\ambari-agent.log',"a", 10000000, 25)
+formatter=logfileformatter

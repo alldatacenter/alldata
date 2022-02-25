@@ -1,0 +1,74 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <WriteActionModuleType ID="Ambari.SCOM.Management.Module.BaseScriptedWriteAction"
+                             RunAs="HDLibrary!Ambari.SCOM.Profile.Workflow"
+                             Accessibility="Internal">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Windows!Microsoft.Windows.PowerShellSchema</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="ScriptName" type="NonNullString" />
+          <xsd:element name="ScriptBody" type="NonNullString" />
+          <xsd:element name="Parameters" type="NamedParametersType" />
+          <xsd:element name="TimeoutSeconds" type="xsd:int" />
+        </Configuration>
+        <OverrideableParameters />
+        <ModuleImplementation>
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="Action" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>$Config/ScriptName$</ScriptName>
+                <ScriptBody>
+                  $Config/ScriptBody$
+
+                  $IncludeFileContent/Shared Scripts/Helpers.ps1$
+                  $IncludeFileContent/Shared Scripts/RestApi.ps1$
+                  $IncludeFileContent/Shared Scripts/JsonParser.ps1$
+
+                  Main
+                </ScriptBody>
+                <SnapIns />
+                <Parameters>$Config/Parameters$</Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+                <StrictErrorHandling>true</StrictErrorHandling>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="Action" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Management.Module.BaseScriptedWriteAction">
+          <Name>Hadoop Generic PowerShell Write Action</Name>
+          <Description>This module allows you to execute PowerShell scripts from tasks.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

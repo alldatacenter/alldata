@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration>
+  <property>
+    <name>oozie_user</name>
+    <value>oozie</value>
+    <description>Oozie User.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozieserver_host</name>
+    <value/>
+    <description>Oozie Server Host.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_database</name>
+    <value/>
+    <description>Oozie Server Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_derby_database</name>
+    <value>Derby</value>
+    <description>Oozie Derby Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_existing_mysql_database</name>
+    <value>MySQL</value>
+    <description>Oozie MySQL Database.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_existing_mysql_host</name>
+    <value/>
+    <description>Existing MySQL Host.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_existing_oracle_database</name>
+    <value>Oracle</value>
+    <description>Oracle Database</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_existing_oracle_host</name>
+    <value/>
+    <description>Database Host.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_ambari_database</name>
+    <value>MySQL</value>
+    <description>Database default.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_ambari_host</name>
+    <value/>
+    <description>Host on which databse will be created.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_database_name</name>
+    <value>oozie</value>
+    <description>Database name used for the Oozie.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_metastore_user_name</name>
+    <value>oozie</value>
+    <description>Database user name to use to connect to the database</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_metastore_user_passwd</name>
+    <value/>
+    <description>Database password to use to connect to the database</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_data_dir</name>
+    <value>/hadoop/oozie/data</value>
+    <description>Data directory in which the Oozie DB exists</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_log_dir</name>
+    <value>/var/log/oozie</value>
+    <description>Directory for oozie logs</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>oozie_pid_dir</name>
+    <value>/var/run/oozie</value>
+    <description>Directory in which the pid files for oozie reside.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

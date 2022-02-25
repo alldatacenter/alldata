@@ -1,0 +1,665 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations?fields=*",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/client_scannercaching",
+      "StackConfigurations" : {
+        "property_description" : "Base Client Scanner Caching",
+        "property_name" : "client_scannercaching",
+        "property_value" : "100",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/dfs.domain.socket.path",
+      "StackConfigurations" : {
+        "property_description" : "Path to domain socket.",
+        "property_name" : "dfs.domain.socket.path",
+        "property_value" : "/var/lib/hadoop-hdfs/dn_socket",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.client.keyvalue.maxsize",
+      "StackConfigurations" : {
+        "property_description" : "Specifies the combined maximum allowed size of a KeyValue\n    instance. This is to set an upper boundary for a single entry saved in a\n    storage file. Since they cannot be split it helps avoiding that a region\n    cannot be split any further because the data is too large. It seems wise\n    to set this to a fraction of the maximum region size. Setting it to zero\n    or less disables the check.\n    ",
+        "property_name" : "hbase.client.keyvalue.maxsize",
+        "property_value" : "10485760",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.client.scanner.caching",
+      "StackConfigurations" : {
+        "property_description" : "Number of rows that will be fetched when calling next\n    on a scanner if it is not served from (local, client) memory. Higher\n    caching values will enable faster scanners but will eat up more memory\n    and some calls of next may take longer and longer times when the cache is empty.\n    Do not set this value such that the time between invocations is greater\n    than the scanner timeout; i.e. hbase.regionserver.lease.period\n    ",
+        "property_name" : "hbase.client.scanner.caching",
+        "property_value" : "100",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.cluster.distributed",
+      "StackConfigurations" : {
+        "property_description" : "The mode the cluster will be in. Possible values are\n      false for standalone mode and true for distributed mode.  If\n      false, startup will run all HBase and ZooKeeper daemons together\n      in the one JVM.\n    ",
+        "property_name" : "hbase.cluster.distributed",
+        "property_value" : "true",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.defaults.for.version.skip",
+      "StackConfigurations" : {
+        "property_description" : "Disables version verification.",
+        "property_name" : "hbase.defaults.for.version.skip",
+        "property_value" : "true",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.hregion.majorcompaction",
+      "StackConfigurations" : {
+        "property_description" : "The time (in milliseconds) between 'major' compactions of all\n    HStoreFiles in a region.  Default: 1 day.\n    Set to 0 to disable automated major compactions.\n    ",
+        "property_name" : "hbase.hregion.majorcompaction",
+        "property_value" : "86400000",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.hregion.max.filesize",
+      "StackConfigurations" : {
+        "property_description" : "\n    Maximum HStoreFile size. If any one of a column families' HStoreFiles has\n    grown to exceed this value, the hosting HRegion is split in two.\n    Default: 1G.\n    ",
+        "property_name" : "hbase.hregion.max.filesize",
+        "property_value" : "10737418240",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.hregion.memstore.block.multiplier",
+      "StackConfigurations" : {
+        "property_description" : "Block updates if memstore has hbase.hregion.memstore.block.multiplier\n    time hbase.hregion.flush.size bytes.  Useful preventing\n    runaway memstore during spikes in update traffic.  Without an\n    upper-bound, memstore fills such that when it flushes the\n    resultant flush files take a long time to compact or split, or\n    worse, we OOME\n    ",
+        "property_name" : "hbase.hregion.memstore.block.multiplier",
+        "property_value" : "2",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.hregion.memstore.flush.size",
+      "StackConfigurations" : {
+        "property_description" : "\n    Memstore will be flushed to disk if size of the memstore\n    exceeds this number of bytes.  Value is checked by a thread that runs\n    every hbase.server.thread.wakefrequency.\n    ",
+        "property_name" : "hbase.hregion.memstore.flush.size",
+        "property_value" : "134217728",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.hregion.memstore.mslab.enabled",
+      "StackConfigurations" : {
+        "property_description" : "\n      Enables the MemStore-Local Allocation Buffer,\n      a feature which works to prevent heap fragmentation under\n      heavy write loads. This can reduce the frequency of stop-the-world\n      GC pauses on large heaps.\n    ",
+        "property_name" : "hbase.hregion.memstore.mslab.enabled",
+        "property_value" : "true",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.hstore.blockingStoreFiles",
+      "StackConfigurations" : {
+        "property_description" : "\n    If more than this number of StoreFiles in any one Store\n    (one StoreFile is written per flush of MemStore) then updates are\n    blocked for this HRegion until a compaction is completed, or\n    until hbase.hstore.blockingWaitTime has been exceeded.\n    ",
+        "property_name" : "hbase.hstore.blockingStoreFiles",
+        "property_value" : "10",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.hstore.compactionThreshold",
+      "StackConfigurations" : {
+        "property_description" : "\n    If more than this number of HStoreFiles in any one HStore\n    (one HStoreFile is written per flush of memstore) then a compaction\n    is run to rewrite all HStoreFiles files as one.  Larger numbers\n    put off compaction but when it runs, it takes longer to complete.\n    ",
+        "property_name" : "hbase.hstore.compactionThreshold",
+        "property_value" : "3",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.hstore.flush.retries.number",
+      "StackConfigurations" : {
+        "property_description" : "\n    The number of times the region flush operation will be retried.\n    ",
+        "property_name" : "hbase.hstore.flush.retries.number",
+        "property_value" : "120",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.regionserver.global.memstore.lowerLimit",
+      "StackConfigurations" : {
+        "property_description" : "When memstores are being forced to flush to make room in\n      memory, keep flushing until we hit this mark. Defaults to 35% of heap.\n      This value equal to hbase.regionserver.global.memstore.upperLimit causes\n      the minimum possible flushing to occur when updates are blocked due to\n      memstore limiting.\n    ",
+        "property_name" : "hbase.regionserver.global.memstore.lowerLimit",
+        "property_value" : "0.38",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.regionserver.global.memstore.upperLimit",
+      "StackConfigurations" : {
+        "property_description" : "Maximum size of all memstores in a region server before new\n      updates are blocked and flushes are forced. Defaults to 40% of heap\n    ",
+        "property_name" : "hbase.regionserver.global.memstore.upperLimit",
+        "property_value" : "0.4",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.regionserver.handler.count",
+      "StackConfigurations" : {
+        "property_description" : "Count of RPC Listener instances spun up on RegionServers.\n    Same property is used by the Master for count of master handlers.\n    Default is 10.\n    ",
+        "property_name" : "hbase.regionserver.handler.count",
+        "property_value" : "60",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.rootdir",
+      "StackConfigurations" : {
+        "property_description" : "The directory shared by region servers and into\n    which HBase persists.  The URL should be 'fully-qualified'\n    to include the filesystem scheme.  For example, to specify the\n    HDFS directory '/hbase' where the HDFS instance's namenode is\n    running at namenode.example.org on port 9000, set this value to:\n    hdfs://namenode.example.org:9000/hbase.  By default HBase writes\n    into /tmp.  Change this configuration else all data will be lost\n    on machine restart.\n    ",
+        "property_name" : "hbase.rootdir",
+        "property_value" : "hdfs://localhost:8020/apps/hbase/data",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.security.authentication",
+      "StackConfigurations" : {
+        "property_description" : null,
+        "property_name" : "hbase.security.authentication",
+        "property_value" : "simple",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.security.authorization",
+      "StackConfigurations" : {
+        "property_description" : "Enables HBase authorization. Set the value of this property to false to disable HBase authorization.\n    ",
+        "property_name" : "hbase.security.authorization",
+        "property_value" : "false",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.superuser",
+      "StackConfigurations" : {
+        "property_description" : "List of users or groups (comma-separated), who are allowed\n    full privileges, regardless of stored ACLs, across the cluster.\n    Only used when HBase security is enabled.\n    ",
+        "property_name" : "hbase.superuser",
+        "property_value" : "hbase",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.tmp.dir",
+      "StackConfigurations" : {
+        "property_description" : "Temporary directory on the local filesystem.\n    Change this setting to point to a location more permanent\n    than '/tmp' (The '/tmp' directory is often cleared on\n    machine restart).\n    ",
+        "property_name" : "hbase.tmp.dir",
+        "property_value" : "/hadoop/hbase",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.zookeeper.property.clientPort",
+      "StackConfigurations" : {
+        "property_description" : "Property from ZooKeeper's config zoo.cfg.\n    The port at which the clients will connect.\n    ",
+        "property_name" : "hbase.zookeeper.property.clientPort",
+        "property_value" : "2181",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.zookeeper.quorum",
+      "StackConfigurations" : {
+        "property_description" : "Comma separated list of servers in the ZooKeeper Quorum.\n    For example, \"host1.mydomain.com,host2.mydomain.com,host3.mydomain.com\".\n    By default this is set to localhost for local and pseudo-distributed modes\n    of operation. For a fully-distributed setup, this should be set to a full\n    list of ZooKeeper quorum servers. If HBASE_MANAGES_ZK is set in hbase-env.sh\n    this is the list of servers which we will start/stop ZooKeeper on.\n    ",
+        "property_name" : "hbase.zookeeper.quorum",
+        "property_value" : "localhost",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase.zookeeper.useMulti",
+      "StackConfigurations" : {
+        "property_description" : "Instructs HBase to make use of ZooKeeper's multi-update functionality.\n    This allows certain ZooKeeper operations to complete more quickly and prevents some issues\n    with rare Replication failure scenarios (see the release note of HBASE-2611 for an example).Â·\n    IMPORTANT: only set this to true if all ZooKeeper servers in the cluster are on version 3.4+\n    and will not be downgraded.  ZooKeeper versions before 3.4 do not support multi-update and will\n    not fail gracefully if multi-update is invoked (see ZOOKEEPER-1495).\n    ",
+        "property_name" : "hbase.zookeeper.useMulti",
+        "property_value" : "true",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_conf_dir",
+      "StackConfigurations" : {
+        "property_description" : "Config Directory for HBase.",
+        "property_name" : "hbase_conf_dir",
+        "property_value" : "/etc/hbase",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_conf_dir",
+      "StackConfigurations" : {
+        "property_description" : "HBase conf dir.",
+        "property_name" : "hbase_conf_dir",
+        "property_value" : "/etc/hbase",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_hdfs_root_dir",
+      "StackConfigurations" : {
+        "property_description" : "HBase Relative Path to HDFS.",
+        "property_name" : "hbase_hdfs_root_dir",
+        "property_value" : "/apps/hbase/data",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_log_dir",
+      "StackConfigurations" : {
+        "property_description" : "Log Directories for HBase.",
+        "property_name" : "hbase_log_dir",
+        "property_value" : "/var/log/hbase",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_master_heapsize",
+      "StackConfigurations" : {
+        "property_description" : "HBase Master Heap Size",
+        "property_name" : "hbase_master_heapsize",
+        "property_value" : "1024",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_pid_dir",
+      "StackConfigurations" : {
+        "property_description" : "Log Directories for HBase.",
+        "property_name" : "hbase_pid_dir",
+        "property_value" : "/var/run/hbase",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_regionserver_heapsize",
+      "StackConfigurations" : {
+        "property_description" : "RegionServers heap size.",
+        "property_name" : "hbase_regionserver_heapsize",
+        "property_value" : "1024",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_regionserver_xmn_max",
+      "StackConfigurations" : {
+        "property_description" : "Maximum value for minimum RegionServers Java heap size",
+        "property_name" : "hbase_regionserver_xmn_max",
+        "property_value" : "512",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_regionserver_xmn_ratio",
+      "StackConfigurations" : {
+        "property_description" : "RegionServers -Xmn is calculated as a percentage of -Xmx",
+        "property_name" : "hbase_regionserver_xmn_ratio",
+        "property_value" : "0.2",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hbase_user",
+      "StackConfigurations" : {
+        "property_description" : "HBase User Name.",
+        "property_name" : "hbase_user",
+        "property_value" : "hbase",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hdfs_enable_shortcircuit_read",
+      "StackConfigurations" : {
+        "property_description" : "HDFS Short Circuit Read",
+        "property_name" : "hdfs_enable_shortcircuit_read",
+        "property_value" : "true",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hdfs_support_append",
+      "StackConfigurations" : {
+        "property_description" : "HDFS append support",
+        "property_name" : "hdfs_support_append",
+        "property_value" : "true",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hfile.block.cache.size",
+      "StackConfigurations" : {
+        "property_description" : "\n        Percentage of maximum heap (-Xmx setting) to allocate to block cache\n        used by HFile/StoreFile. Default of 0.25 means allocate 25%.\n        Set to 0 to disable but it's not recommended.\n    ",
+        "property_name" : "hfile.block.cache.size",
+        "property_value" : "0.40",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hfile_blockcache_size",
+      "StackConfigurations" : {
+        "property_description" : "HFile block cache size.",
+        "property_name" : "hfile_blockcache_size",
+        "property_value" : "0.40",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hfile_max_keyvalue_size",
+      "StackConfigurations" : {
+        "property_description" : "HBase Client Maximum key-value Size",
+        "property_name" : "hfile_max_keyvalue_size",
+        "property_value" : "10485760",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hregion_blockmultiplier",
+      "StackConfigurations" : {
+        "property_description" : "HBase Region Block Multiplier",
+        "property_name" : "hregion_blockmultiplier",
+        "property_value" : "2",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hregion_majorcompaction",
+      "StackConfigurations" : {
+        "property_description" : "The time between major compactions of all HStoreFiles in a region. Set to 0 to disable automated major compactions.",
+        "property_name" : "hregion_majorcompaction",
+        "property_value" : "604800000",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hstore_blockingstorefiles",
+      "StackConfigurations" : {
+        "property_description" : "HStore blocking storefiles.",
+        "property_name" : "hstore_blockingstorefiles",
+        "property_value" : "10",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hstore_compactionthreshold",
+      "StackConfigurations" : {
+        "property_description" : "HBase HStore compaction threshold.",
+        "property_name" : "hstore_compactionthreshold",
+        "property_value" : "3",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/hstorefile_maxsize",
+      "StackConfigurations" : {
+        "property_description" : "Maximum HStoreFile Size",
+        "property_name" : "hstorefile_maxsize",
+        "property_value" : "10737418240",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/regionserver_handlers",
+      "StackConfigurations" : {
+        "property_description" : "RegionServer Handler",
+        "property_name" : "regionserver_handlers",
+        "property_value" : "60",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/regionserver_memstore_lab",
+      "StackConfigurations" : {
+        "property_description" : "Region Server memstore.",
+        "property_name" : "regionserver_memstore_lab",
+        "property_value" : "true",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/regionserver_memstore_lowerlimit",
+      "StackConfigurations" : {
+        "property_description" : "Region Server memstore lower limit.",
+        "property_name" : "regionserver_memstore_lowerlimit",
+        "property_value" : "0.38",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/regionserver_memstore_upperlimit",
+      "StackConfigurations" : {
+        "property_description" : "Region Server memstore upper limit.",
+        "property_name" : "regionserver_memstore_upperlimit",
+        "property_value" : "0.4",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/security.admin.protocol.acl",
+      "StackConfigurations" : {
+        "property_description" : "ACL for HMasterInterface protocol implementation (ie. \n    clients talking to HMaster for admin operations).\n    The ACL is a comma-separated list of user and group names. The user and \n    group list is separated by a blank. For e.g. \"alice,bob users,wheel\". \n    A special value of \"*\" means all users are allowed.",
+        "property_name" : "security.admin.protocol.acl",
+        "property_value" : "*",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-policy.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/security.client.protocol.acl",
+      "StackConfigurations" : {
+        "property_description" : "ACL for HRegionInterface protocol implementations (ie. \n    clients talking to HRegionServers)\n    The ACL is a comma-separated list of user and group names. The user and \n    group list is separated by a blank. For e.g. \"alice,bob users,wheel\". \n    A special value of \"*\" means all users are allowed.",
+        "property_name" : "security.client.protocol.acl",
+        "property_value" : "*",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-policy.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/security.masterregion.protocol.acl",
+      "StackConfigurations" : {
+        "property_description" : "ACL for HMasterRegionInterface protocol implementations\n    (for HRegionServers communicating with HMaster)\n    The ACL is a comma-separated list of user and group names. The user and \n    group list is separated by a blank. For e.g. \"alice,bob users,wheel\". \n    A special value of \"*\" means all users are allowed.",
+        "property_name" : "security.masterregion.protocol.acl",
+        "property_value" : "*",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-policy.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/zookeeper.session.timeout",
+      "StackConfigurations" : {
+        "property_description" : "ZooKeeper session timeout.\n      HBase passes this to the zk quorum as suggested maximum time for a\n      session (This setting becomes zookeeper's 'maxSessionTimeout').  See\n      http://hadoop.apache.org/zookeeper/docs/current/zookeeperProgrammers.html#ch_zkSessions\n      \"The client sends a requested timeout, the server responds with the\n      timeout that it can give the client. \" In milliseconds.\n    ",
+        "property_name" : "zookeeper.session.timeout",
+        "property_value" : "30000",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/zookeeper.znode.parent",
+      "StackConfigurations" : {
+        "property_description" : "Root ZNode for HBase in ZooKeeper. All of HBase's ZooKeeper\n      files that are configured with a relative path will go under this node.\n      By default, all of HBase's ZooKeeper file path are configured with a\n      relative path, so they will all go under this directory unless changed.\n    ",
+        "property_name" : "zookeeper.znode.parent",
+        "property_value" : "/hbase-unsecure",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "hbase-site.xml"
+      }
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/HBASE/configurations/zookeeper_sessiontimeout",
+      "StackConfigurations" : {
+        "property_description" : "ZooKeeper Session Timeout",
+        "property_name" : "zookeeper_sessiontimeout",
+        "property_value" : "30000",
+        "service_name" : "HBASE",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.1",
+        "type" : "global.xml"
+      }
+    }
+  ]
+}

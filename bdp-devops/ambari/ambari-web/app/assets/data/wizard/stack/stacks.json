@@ -1,0 +1,3125 @@
+{
+  "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions?fields=services/StackServices,Versions",
+  "items" : [
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0",
+      "Versions" : {
+        "active" : true,
+        "min_upgrade_version" : null,
+        "parent_stack_version" : "2.0.6",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0",
+        "config_types" : {
+          "cluster-env" : {
+            "supports" : {
+              "adding_forbidden" : "false",
+              "final" : "false"
+            }
+          }
+        }
+      },
+      "services" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/FLUME",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Flume",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FLUME",
+            "service_version" : "1.4.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "flume-conf" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/GANGLIA",
+          "StackServices" : {
+            "comments" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "custom_commands" : [ ],
+            "display_name" : "Ganglia",
+            "required_services" : null,
+            "service_check_supported" : false,
+            "service_name" : "GANGLIA",
+            "service_version" : "3.5.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "ganglia-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/HBASE",
+          "StackServices" : {
+            "comments" : "Non-relational distributed database and centralized service for configuration management &\n        synchronization\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "HBase",
+            "required_services" : [
+              "ZOOKEEPER",
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HBASE",
+            "service_version" : "0.96.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "hbase-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hbase-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/HDFS",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Distributed File System",
+            "custom_commands" : [ ],
+            "display_name" : "HDFS",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HDFS",
+            "service_version" : "2.1.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "core-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hadoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hadoop-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hdfs-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hdfs-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/HIVE",
+          "StackServices" : {
+            "comments" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "custom_commands" : [ ],
+            "display_name" : "Hive",
+            "required_services" : [
+              "ZOOKEEPER",
+              "YARN",
+              "TEZ"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HIVE",
+            "service_version" : "0.12.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "hcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-exec-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "webhcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "webhcat-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/MAPREDUCE2",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "MapReduce2",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "MAPREDUCE2",
+            "service_version" : "2.1.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "mapred-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "mapred-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/OOZIE",
+          "StackServices" : {
+            "comments" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Oozie",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "OOZIE",
+            "service_version" : "4.0.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "oozie-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/PIG",
+          "StackServices" : {
+            "comments" : "Scripting platform for analyzing large datasets",
+            "custom_commands" : [ ],
+            "display_name" : "Pig",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "PIG",
+            "service_version" : "0.12.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "pig-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/SQOOP",
+          "StackServices" : {
+            "comments" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Sqoop",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "SQOOP",
+            "service_version" : "1.4.4.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "sqoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/YARN",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "YARN",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "YARN",
+            "service_version" : "2.1.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "capacity-scheduler" : {
+                "supports" : {
+                  "adding_forbidden" : "true",
+                  "final" : "false"
+                }
+              },
+              "yarn-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0/services/ZOOKEEPER",
+          "StackServices" : {
+            "comments" : "Centralized service which provides highly reliable distributed coordination",
+            "custom_commands" : [ ],
+            "display_name" : "ZooKeeper",
+            "required_services" : [ ],
+            "service_check_supported" : true,
+            "service_name" : "ZOOKEEPER",
+            "service_version" : "3.4.5.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0",
+            "user_name" : null,
+            "config_types" : {
+              "zookeeper-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "zookeeper-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6",
+      "Versions" : {
+        "active" : false,
+        "min_upgrade_version" : null,
+        "parent_stack_version" : null,
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.6",
+        "config_types" : {
+          "cluster-env" : {
+            "supports" : {
+              "adding_forbidden" : "false",
+              "final" : "false"
+            }
+          }
+        }
+      },
+      "services" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/FLUME",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Flume",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FLUME",
+            "service_version" : "1.4.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "flume-conf" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/GANGLIA",
+          "StackServices" : {
+            "comments" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "custom_commands" : [ ],
+            "display_name" : "Ganglia",
+            "required_services" : null,
+            "service_check_supported" : false,
+            "service_name" : "GANGLIA",
+            "service_version" : "3.5.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "ganglia-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/HBASE",
+          "StackServices" : {
+            "comments" : "Non-relational distributed database and centralized service for configuration management &\n        synchronization\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "HBase",
+            "required_services" : [
+              "ZOOKEEPER",
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HBASE",
+            "service_version" : "0.96.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "hbase-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hbase-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/HDFS",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Distributed File System",
+            "custom_commands" : [ ],
+            "display_name" : "HDFS",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HDFS",
+            "service_version" : "2.1.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "core-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hadoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hadoop-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hdfs-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hdfs-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/HIVE",
+          "StackServices" : {
+            "comments" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "custom_commands" : [ ],
+            "display_name" : "Hive",
+            "required_services" : [
+              "ZOOKEEPER",
+              "YARN",
+              "TEZ"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HIVE",
+            "service_version" : "0.12.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "hcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-exec-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "webhcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "webhcat-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/MAPREDUCE2",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "MapReduce2",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "MAPREDUCE2",
+            "service_version" : "2.1.0.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "mapred-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "mapred-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/OOZIE",
+          "StackServices" : {
+            "comments" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Oozie",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "OOZIE",
+            "service_version" : "4.0.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "oozie-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/PIG",
+          "StackServices" : {
+            "comments" : "Scripting platform for analyzing large datasets",
+            "custom_commands" : [ ],
+            "display_name" : "Pig",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "PIG",
+            "service_version" : "0.12.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "pig-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/SQOOP",
+          "StackServices" : {
+            "comments" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Sqoop",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "SQOOP",
+            "service_version" : "1.4.4.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "sqoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/YARN",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "YARN",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "YARN",
+            "service_version" : "2.1.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "capacity-scheduler" : {
+                "supports" : {
+                  "adding_forbidden" : "true",
+                  "final" : "false"
+                }
+              },
+              "yarn-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6/services/ZOOKEEPER",
+          "StackServices" : {
+            "comments" : "Centralized service which provides highly reliable distributed coordination",
+            "custom_commands" : [ ],
+            "display_name" : "ZooKeeper",
+            "required_services" : null,
+            "service_check_supported" : true,
+            "service_name" : "ZOOKEEPER",
+            "service_version" : "3.4.5.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6",
+            "user_name" : null,
+            "config_types" : {
+              "zookeeper-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "zookeeper-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS",
+      "Versions" : {
+        "active" : false,
+        "min_upgrade_version" : null,
+        "parent_stack_version" : "2.0.6",
+        "stack_name" : "HDP",
+        "stack_version" : "2.0.6.GlusterFS",
+        "config_types" : {
+          "cluster-env" : {
+            "supports" : {
+              "adding_forbidden" : "false",
+              "final" : "false"
+            }
+          }
+        }
+      },
+      "services" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/FLUME",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Flume",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FLUME",
+            "service_version" : "1.4.0.2.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "flume-conf" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/GANGLIA",
+          "StackServices" : {
+            "comments" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "custom_commands" : [ ],
+            "display_name" : "Ganglia",
+            "required_services" : null,
+            "service_check_supported" : false,
+            "service_name" : "GANGLIA",
+            "service_version" : "3.5.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "ganglia-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/GLUSTERFS",
+          "StackServices" : {
+            "comments" : "An Hadoop Compatible File System",
+            "custom_commands" : [ ],
+            "display_name" : "GLUSTERFS",
+            "required_services" : null,
+            "service_check_supported" : true,
+            "service_name" : "GLUSTERFS",
+            "service_version" : "3.4.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "core-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hadoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/HBASE",
+          "StackServices" : {
+            "comments" : "Non-relational distributed database and centralized service for configuration management &\n        synchronization\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "HBase",
+            "required_services" : [
+              "ZOOKEEPER",
+              "GLUSTERFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HBASE",
+            "service_version" : "0.96.1.2.0.6.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "hbase-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hbase-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/HDFS",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Distributed File System",
+            "custom_commands" : [ ],
+            "display_name" : "HDFS",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HDFS",
+            "service_version" : "2.2.0.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "core-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "global" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hadoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hadoop-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hdfs-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hdfs-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/HIVE",
+          "StackServices" : {
+            "comments" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "custom_commands" : [ ],
+            "display_name" : "Hive",
+            "required_services" : [
+              "ZOOKEEPER",
+              "YARN",
+              "TEZ"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HIVE",
+            "service_version" : "0.12.0.2.0.6.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "hcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-exec-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "webhcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "webhcat-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/MAPREDUCE2",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "MapReduce2",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "MAPREDUCE2",
+            "service_version" : "2.2.0.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "mapred-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "mapred-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/OOZIE",
+          "StackServices" : {
+            "comments" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Oozie",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "OOZIE",
+            "service_version" : "4.0.0.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "oozie-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/PIG",
+          "StackServices" : {
+            "comments" : "Scripting platform for analyzing large datasets",
+            "custom_commands" : [ ],
+            "display_name" : "Pig",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "PIG",
+            "service_version" : "0.12.0.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "pig-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/SQOOP",
+          "StackServices" : {
+            "comments" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Sqoop",
+            "required_services" : [
+              "GLUSTERFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "SQOOP",
+            "service_version" : "1.4.4.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "sqoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/YARN",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "YARN",
+            "required_services" : [
+              "GLUSTERFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "YARN",
+            "service_version" : "2.2.0.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "capacity-scheduler" : {
+                "supports" : {
+                  "adding_forbidden" : "true",
+                  "final" : "false"
+                }
+              },
+              "yarn-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.0.6.GlusterFS/services/ZOOKEEPER",
+          "StackServices" : {
+            "comments" : "Centralized service which provides highly reliable distributed\n        coordination.",
+            "custom_commands" : [ ],
+            "display_name" : "ZooKeeper",
+            "required_services" : [ ],
+            "service_check_supported" : true,
+            "service_name" : "ZOOKEEPER",
+            "service_version" : "3.4.5.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.0.6.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "zookeeper-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "zookeeper-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1",
+      "Versions" : {
+        "active" : true,
+        "min_upgrade_version" : null,
+        "parent_stack_version" : "2.0.6",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1",
+        "config_types" : {
+          "cluster-env" : {
+            "supports" : {
+              "adding_forbidden" : "false",
+              "final" : "false"
+            }
+          }
+        }
+      },
+      "services" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/FALCON",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Falcon",
+            "required_services" : [
+              "OOZIE"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FALCON",
+            "service_version" : "0.5.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "falcon-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "falcon-runtime.properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "falcon-startup.properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/FLUME",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Flume",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FLUME",
+            "service_version" : "1.4.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "flume-conf" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/GANGLIA",
+          "StackServices" : {
+            "comments" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "custom_commands" : [ ],
+            "display_name" : "Ganglia",
+            "required_services" : null,
+            "service_check_supported" : false,
+            "service_name" : "GANGLIA",
+            "service_version" : "3.5.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "ganglia-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/HBASE",
+          "StackServices" : {
+            "comments" : "Non-relational distributed database and centralized service for configuration management &\n        synchronization\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "HBase",
+            "required_services" : [
+              "ZOOKEEPER",
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HBASE",
+            "service_version" : "0.98.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "hbase-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hbase-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/HDFS",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Distributed File System",
+            "custom_commands" : [ ],
+            "display_name" : "HDFS",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HDFS",
+            "service_version" : "2.4.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "core-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hadoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hadoop-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hdfs-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hdfs-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/HIVE",
+          "StackServices" : {
+            "comments" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "custom_commands" : [ ],
+            "display_name" : "Hive",
+            "required_services" : [
+              "ZOOKEEPER",
+              "YARN",
+              "TEZ"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HIVE",
+            "service_version" : "0.13.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "hcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-exec-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "webhcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "webhcat-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/MAPREDUCE2",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "MapReduce2",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "MAPREDUCE2",
+            "service_version" : "2.1.0.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "mapred-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "mapred-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/OOZIE",
+          "StackServices" : {
+            "comments" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Oozie",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "OOZIE",
+            "service_version" : "4.0.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "oozie-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/PIG",
+          "StackServices" : {
+            "comments" : "Scripting platform for analyzing large datasets",
+            "custom_commands" : [ ],
+            "display_name" : "Pig",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "PIG",
+            "service_version" : "0.12.1.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "pig-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/SQOOP",
+          "StackServices" : {
+            "comments" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Sqoop",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "SQOOP",
+            "service_version" : "1.4.4.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "sqoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/STORM",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Stream processing framework",
+            "custom_commands" : [ ],
+            "display_name" : "Storm",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "STORM",
+            "service_version" : "0.9.1.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "storm-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "storm-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/TEZ",
+          "StackServices" : {
+            "comments" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "custom_commands" : [ ],
+            "display_name" : "Tez",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : false,
+            "service_name" : "TEZ",
+            "service_version" : "0.4.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "tez-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "tez-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/YARN",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "YARN",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "YARN",
+            "service_version" : "2.4.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "capacity-scheduler" : {
+                "supports" : {
+                  "adding_forbidden" : "true",
+                  "final" : "false"
+                }
+              },
+              "yarn-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1/services/ZOOKEEPER",
+          "StackServices" : {
+            "comments" : "Centralized service which provides highly reliable distributed coordination",
+            "custom_commands" : [ ],
+            "display_name" : "ZooKeeper",
+            "required_services" : [ ],
+            "service_check_supported" : true,
+            "service_name" : "ZOOKEEPER",
+            "service_version" : "3.4.5.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1",
+            "user_name" : null,
+            "config_types" : {
+              "zookeeper-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "zookeeper-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS",
+      "Versions" : {
+        "active" : false,
+        "min_upgrade_version" : null,
+        "parent_stack_version" : "2.0.6",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1.GlusterFS",
+        "config_types" : {
+          "cluster-env" : {
+            "supports" : {
+              "adding_forbidden" : "false",
+              "final" : "false"
+            }
+          }
+        }
+      },
+      "services" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/FALCON",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Falcon",
+            "required_services" : [
+              "OOZIE"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FALCON",
+            "service_version" : "0.5.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "falcon-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "falcon-runtime.properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "falcon-startup.properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/FLUME",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Flume",
+            "required_services" : [
+              "GLUSTERFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FLUME",
+            "service_version" : "1.4.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "flume-conf" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/GANGLIA",
+          "StackServices" : {
+            "comments" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "custom_commands" : [ ],
+            "display_name" : "Ganglia",
+            "required_services" : null,
+            "service_check_supported" : false,
+            "service_name" : "GANGLIA",
+            "service_version" : "3.5.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "ganglia-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/GLUSTERFS",
+          "StackServices" : {
+            "comments" : "An Hadoop Compatible File System",
+            "custom_commands" : [ ],
+            "display_name" : "GLUSTERFS",
+            "required_services" : null,
+            "service_check_supported" : true,
+            "service_name" : "GLUSTERFS",
+            "service_version" : "2.1.3.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "core-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hadoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/HBASE",
+          "StackServices" : {
+            "comments" : "Non-relational distributed database and centralized service for configuration management &\n        synchronization\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "HBase",
+            "required_services" : [
+              "ZOOKEEPER",
+              "GLUSTERFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HBASE",
+            "service_version" : "0.98.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "hbase-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hbase-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/HDFS",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Distributed File System",
+            "custom_commands" : [ ],
+            "display_name" : "HDFS",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HDFS",
+            "service_version" : "2.4.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "core-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hadoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hadoop-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hdfs-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hdfs-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/HIVE",
+          "StackServices" : {
+            "comments" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "custom_commands" : [ ],
+            "display_name" : "Hive",
+            "required_services" : [
+              "ZOOKEEPER",
+              "YARN",
+              "TEZ"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HIVE",
+            "service_version" : "0.13.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "hcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-exec-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "webhcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "webhcat-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/MAPREDUCE2",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "MapReduce2",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "MAPREDUCE2",
+            "service_version" : "2.1.0.2.0.6.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "mapred-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "mapred-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/OOZIE",
+          "StackServices" : {
+            "comments" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Oozie",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "OOZIE",
+            "service_version" : "4.0.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "oozie-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/PIG",
+          "StackServices" : {
+            "comments" : "Scripting platform for analyzing large datasets",
+            "custom_commands" : [ ],
+            "display_name" : "Pig",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "PIG",
+            "service_version" : "0.12.1.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "pig-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/SQOOP",
+          "StackServices" : {
+            "comments" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Sqoop",
+            "required_services" : [
+              "GLUSTERFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "SQOOP",
+            "service_version" : "1.4.4.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "sqoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/STORM",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Stream processing framework",
+            "custom_commands" : [ ],
+            "display_name" : "Storm",
+            "required_services" : null,
+            "service_check_supported" : true,
+            "service_name" : "STORM",
+            "service_version" : "0.9.1.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "storm-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "storm-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/TEZ",
+          "StackServices" : {
+            "comments" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "custom_commands" : [ ],
+            "display_name" : "Tez",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : false,
+            "service_name" : "TEZ",
+            "service_version" : "0.4.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "tez-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "tez-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/YARN",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "YARN",
+            "required_services" : [
+              "GLUSTERFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "YARN",
+            "service_version" : "2.4.0.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "capacity-scheduler" : {
+                "supports" : {
+                  "adding_forbidden" : "true",
+                  "final" : "false"
+                }
+              },
+              "yarn-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.1.GlusterFS/services/ZOOKEEPER",
+          "StackServices" : {
+            "comments" : "Centralized service which provides highly reliable distributed\n        coordination.",
+            "custom_commands" : [ ],
+            "display_name" : "ZooKeeper",
+            "required_services" : [ ],
+            "service_check_supported" : true,
+            "service_name" : "ZOOKEEPER",
+            "service_version" : "3.4.5.2.1",
+            "stack_name" : "HDP",
+            "stack_version" : "2.1.GlusterFS",
+            "user_name" : null,
+            "config_types" : {
+              "zookeeper-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "zookeeper-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2",
+      "Versions" : {
+        "active" : true,
+        "min_upgrade_version" : null,
+        "parent_stack_version" : "2.1",
+        "stack_name" : "HDP",
+        "stack_version" : "2.2",
+        "config_types" : {
+          "cluster-env" : {
+            "supports" : {
+              "adding_forbidden" : "false",
+              "final" : "false"
+            }
+          }
+        }
+      },
+      "services" : [
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/FALCON",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Falcon",
+            "required_services" : [
+              "OOZIE"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FALCON",
+            "service_version" : "0.6.0.2.2.9.9",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "falcon-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "falcon-runtime.properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "falcon-startup.properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/FLUME",
+          "StackServices" : {
+            "comments" : "Data management and processing platform",
+            "custom_commands" : [ ],
+            "display_name" : "Flume",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "FLUME",
+            "service_version" : "1.5.0.1.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "flume-conf" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "flume-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/GANGLIA",
+          "StackServices" : {
+            "comments" : "Ganglia Metrics Collection system (<a href=\"http://oss.oetiker.ch/rrdtool/\" target=\"_blank\">RRDTool</a> will be installed too)",
+            "custom_commands" : [ ],
+            "display_name" : "Ganglia",
+            "required_services" : null,
+            "service_check_supported" : false,
+            "service_name" : "GANGLIA",
+            "service_version" : "3.5.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "ganglia-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/HBASE",
+          "StackServices" : {
+            "comments" : "Non-relational distributed database and centralized service for configuration management &\n        synchronization\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "HBase",
+            "required_services" : [
+              "ZOOKEEPER",
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HBASE",
+            "service_version" : "0.98.4.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "hbase-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hbase-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hbase-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/HDFS",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Distributed File System",
+            "custom_commands" : [ ],
+            "display_name" : "HDFS",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HDFS",
+            "service_version" : "2.6.0.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "core-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hadoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hadoop-policy" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "hdfs-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hdfs-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/HIVE",
+          "StackServices" : {
+            "comments" : "Data warehouse system for ad-hoc queries & analysis of large datasets and table & storage management service",
+            "custom_commands" : [ ],
+            "display_name" : "Hive",
+            "required_services" : [
+              "PIG"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "HIVE",
+            "service_version" : "0.14.0.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "hcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-exec-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "hive-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "webhcat-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "webhcat-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/KAFKA",
+          "StackServices" : {
+            "comments" : "A high-throughput distributed messaging system",
+            "custom_commands" : [ ],
+            "display_name" : "Kafka",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "KAFKA",
+            "service_version" : "0.8.1.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "kafka-broker" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "kafka-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "kafka-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/KNOX",
+          "StackServices" : {
+            "comments" : "Provides a single point of authentication and access for Apache Hadoop services in a cluster",
+            "custom_commands" : [ ],
+            "display_name" : "Knox",
+            "required_services" : null,
+            "service_check_supported" : true,
+            "service_name" : "KNOX",
+            "service_version" : "0.5.0.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "ambari-topology" : {
+                "supports" : {
+                  "adding_forbidden" : "true",
+                  "final" : "false"
+                }
+              },
+              "gateway-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "gateway-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "knox-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "ldap-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "users-ldif" : {
+                "supports" : {
+                  "adding_forbidden" : "true",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/MAPREDUCE2",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "MapReduce2",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "MAPREDUCE2",
+            "service_version" : "2.6.0.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "mapred-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "mapred-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/OOZIE",
+          "StackServices" : {
+            "comments" : "System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the <a target=\"_blank\" href=\"http://www.sencha.com/legal/open-source-faq/\">ExtJS</a> Library.\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Oozie",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "OOZIE",
+            "service_version" : "4.1.0.2.2.9.9",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "oozie-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "oozie-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/PIG",
+          "StackServices" : {
+            "comments" : "Scripting platform for analyzing large datasets",
+            "custom_commands" : [ ],
+            "display_name" : "Pig",
+            "required_services" : [
+              "TEZ"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "PIG",
+            "service_version" : "0.14.0.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "pig-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "pig-properties" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/SLIDER",
+          "StackServices" : {
+            "comments" : "A framework for deploying, managing and monitoring existing distributed applications on YARN.",
+            "custom_commands" : [ ],
+            "display_name" : "Slider",
+            "required_services" : [
+              "YARN",
+              "HDFS",
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "SLIDER",
+            "service_version" : "0.60.0.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "slider-client" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              },
+              "slider-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "slider-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/SQOOP",
+          "StackServices" : {
+            "comments" : "Tool for transferring bulk data between Apache Hadoop and\n        structured data stores such as relational databases\n      ",
+            "custom_commands" : [ ],
+            "display_name" : "Sqoop",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "SQOOP",
+            "service_version" : "1.4.5.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "sqoop-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/STORM",
+          "StackServices" : {
+            "comments" : "Apache Hadoop Stream processing framework",
+            "custom_commands" : [ ],
+            "display_name" : "Storm",
+            "required_services" : [
+              "ZOOKEEPER"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "STORM",
+            "service_version" : "0.9.3.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "storm-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "storm-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/TEZ",
+          "StackServices" : {
+            "comments" : "Tez is the next generation Hadoop Query Processing framework written on top of YARN.",
+            "custom_commands" : [ ],
+            "display_name" : "Tez",
+            "required_services" : [
+              "YARN"
+            ],
+            "service_check_supported" : false,
+            "service_name" : "TEZ",
+            "service_version" : "0.6.0.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "tez-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "tez-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/YARN",
+          "StackServices" : {
+            "comments" : "Apache Hadoop NextGen MapReduce (YARN)",
+            "custom_commands" : [ ],
+            "display_name" : "YARN",
+            "required_services" : [
+              "HDFS"
+            ],
+            "service_check_supported" : true,
+            "service_name" : "YARN",
+            "service_version" : "2.6.0.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "capacity-scheduler" : {
+                "supports" : {
+                  "adding_forbidden" : "true",
+                  "final" : "false"
+                }
+              },
+              "yarn-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "yarn-site" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "href" : "http://192.168.56.101:8080/api/v1/stacks/HDP/versions/2.2/services/ZOOKEEPER",
+          "StackServices" : {
+            "comments" : "Centralized service which provides highly reliable distributed coordination",
+            "custom_commands" : [ ],
+            "display_name" : "ZooKeeper",
+            "required_services" : [ ],
+            "service_check_supported" : true,
+            "service_name" : "ZOOKEEPER",
+            "service_version" : "3.4.5.2.2.0.0",
+            "stack_name" : "HDP",
+            "stack_version" : "2.2",
+            "user_name" : null,
+            "config_types" : {
+              "zookeeper-env" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              },
+              "zookeeper-log4j" : {
+                "supports" : {
+                  "adding_forbidden" : "false",
+                  "final" : "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

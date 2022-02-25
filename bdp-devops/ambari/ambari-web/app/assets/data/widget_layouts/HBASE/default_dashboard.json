@@ -1,0 +1,171 @@
+{
+  "items": [
+    {
+      "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widget_layouts/6",
+      "WidgetLayoutInfo": {
+        "cluster_name": "c1",
+        "display_name": "Standard HBase Dashboard",
+        "id": 6,
+        "layout_name": "default_hbase_dashboard",
+        "scope": "CLUSTER",
+        "section_name": "HBASE_SUMMARY",
+        "user_name": "ambari",
+        "widgets": [
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/29",
+            "WidgetInfo": {
+              "id": 29,
+              "metrics": "[{\"name\":\"regionserver.Server.Get_num_ops\",\"metric_path\":\"metrics/jvm/gcCount\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.ScanNext_num_ops\",\"metric_path\":\"metrics/hbase/regionserver/Server/ScanNext_num_ops\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Append_num_ops\",\"metric_path\":\"metrics/hbase/regionserver/Server/Append_num_ops\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Delete_num_ops\",\"metric_path\":\"metrics/hbase/regionserver/Server/Delete_num_ops\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Increment_num_ops\",\"metric_path\":\"metrics/hbase/regionserver/Server/Increment_num_ops\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Mutate_num_ops\",\"metric_path\":\"metrics/hbase/regionserver/Server/Mutate_num_ops\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": "This widget shows all the read requests and write requests on all regions for a RegionServer",
+              "scope": "CLUSTER",
+              "properties": "{\"display_unit\":\"Requests\",\"graph_type\":\"LINE\",\"time_range\":\"86400000\"}",
+              "widget_name": "RS_READS_WRITES",
+              "widget_type": "GRAPH",
+              "time_created": 1428990958952,
+              "display_name": "RegionServer Reads and Writes",
+              "values": "[{\"name\":\"Write Requests\",\"value\":\"${regionserver.Server.Append_num_ops}\"}]",
+              "cluster_name": "c1"
+            }
+          },
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/30",
+            "WidgetInfo": {
+              "id": 30,
+              "metrics": "[{\"name\":\"regionserver.Server.Get_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Get_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.ScanNext_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/ScanNext_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": "This widget shows 95th percentile of the read latency.",
+              "scope": "CLUSTER",
+              "properties": "{\"display_unit\":\"\"}",
+              "widget_name": "READ_LATENCY_95",
+              "widget_type": "NUMBER",
+              "time_created": 1428990958952,
+              "display_name": "95% Read Latency",
+              "values": "[{\"name\":\"95% Read Latency\",\"value\":\"${regionserver.Server.Get_95th_percentile+regionserver.Server.ScanNext_95th_percentile}\"}]",
+              "cluster_name": "c1"
+            }
+          },
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/31",
+            "WidgetInfo": {
+              "id": 31,
+              "metrics": "[{\"name\":\"regionserver.Server.Mutate_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Mutate_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Increment_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Increment_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Append_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Append_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.Delete_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Delete_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": "This widget shows 95th percentile of the write latency.",
+              "scope": "CLUSTER",
+              "properties": "{\"display_unit\":\"\"}",
+              "widget_name": "WRITE_LATENCY_95",
+              "widget_type": "NUMBER",
+              "time_created": 1428990958952,
+              "display_name": "95% Write Latency",
+              "values": "[{\"name\":\"95% Write Latency\",\"value\":\"${regionserver.Server.Mutate_95th_percentile+regionserver.Server.Increment_95th_percentile+regionserver.Server.Append_95th_percentile+regionserver.Server.Delete_95th_percentile}\"}]",
+              "cluster_name": "c1"
+            }
+          },
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/32",
+            "WidgetInfo": {
+              "id": 32,
+              "metrics": "[{\"name\":\"ipc.IPC.numOpenConnections\",\"metric_path\":\"metrics/hbase/ipc/IPC/numOpenConnections\",\"category\":\"\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": "This widget shows number of current open connections",
+              "scope": "CLUSTER",
+              "properties": "{\"display_unit\":\"Connections\",\"graph_type\":\"LINE\",\"time_range\":\"86400000\"}",
+              "widget_name": "OPEN_CONNECTIONS",
+              "widget_type": "GRAPH",
+              "time_created": 1428990958952,
+              "display_name": "Open Connections",
+              "values": "[{\"name\":\"Open Connections\",\"value\":\"${ipc.IPC.numOpenConnections}\"}]",
+              "cluster_name": "c1"
+            }
+          },
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/33",
+            "WidgetInfo": {
+              "id": 33,
+              "metrics": "[{\"name\":\"ipc.IPC.numOpenConnections\",\"metric_path\":\"metrics/hbase/ipc/IPC/numOpenConnections\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"ipc.IPC.numCallsInGeneralQueue\",\"metric_path\":\"metrics/hbase/ipc/IPC/numOpenConnections\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": null,
+              "scope": "CLUSTER",
+              "properties": "{\"graph_type\":\"LINE\",\"time_range\":\"86400000\"}",
+              "widget_name": "ACTIVE_HANDLER",
+              "widget_type": "GRAPH",
+              "time_created": 1428990958952,
+              "display_name": "Active Handlers vs Calls in General Queue",
+              "values": "[{\"name\":\"Active Handlers\",\"value\":\"${ipc.IPC.numActiveHandler}\"},{\"name\":\"Calls in General Queue\",\"value\":\"${ipc.IPC.numCallsInGeneralQueue}\"}]",
+              "cluster_name": "c1"
+            }
+          },
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/34",
+            "WidgetInfo": {
+              "id": 34,
+              "metrics": "[{\"name\":\"regionserver.Server.percentFilesLocal\",\"metric_path\":\"metrics/hbase/regionserver/percentFilesLocal\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": "This widget shows percentage of files local.",
+              "scope": "CLUSTER",
+              "properties": "{\"display_unit\":\"%\"}",
+              "widget_name": "FILES_LOCAL",
+              "widget_type": "NUMBER",
+              "time_created": 1428990958952,
+              "display_name": "Files Local",
+              "values": "[{\"name\":\"Files Local\",\"value\":\"${regionserver.Server.percentFilesLocal}\"}]",
+              "cluster_name": "c1"
+            }
+          },
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/35",
+            "WidgetInfo": {
+              "id": 35,
+              "metrics": "[{\"name\":\"regionserver.Server.updatesBlockedTime\",\"metric_path\":\"metrics/hbase/regionserver/Server/updatesBlockedTime\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": "Updates Blocked Time",
+              "scope": "CLUSTER",
+              "properties": "{\"display_unit\":\"seconds\",\"graph_type\":\"LINE\",\"time_range\":\"86400000\"}",
+              "widget_name": "UPDATED_BLOCKED_TIME",
+              "widget_type": "GRAPH",
+              "time_created": 1428990958952,
+              "display_name": "Updates Blocked Time",
+              "values": "[{\"name\":\"Updated Blocked Time\",\"value\":\"${regionserver.Server.updatesBlockedTime}\"}]",
+              "cluster_name": "c1"
+            }
+          },
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/36",
+            "WidgetInfo": {
+              "id": 36,
+              "metrics": "[{\"name\":\"cpu_idle\",\"metric_path\":\"metrics/cpu/cpu_idle\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"disk_free\",\"metric_path\":\"metrics/disk/disk_free\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"pkts_in\",\"metric_path\":\"metrics/network/pkts_in\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"pkts_out\",\"metric_path\":\"metrics/network/pkts_out\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": "RegionServer widget for Host CPU, Network and Disk Utilization",
+              "scope": "CLUSTER",
+              "properties": "{\"graph_type\":\"LINE\",\"time_range\":\"86400000\"}",
+              "widget_name": "RS_HOST_METRICS",
+              "widget_type": "GRAPH",
+              "time_created": 1428990958952,
+              "display_name": "RegionServer System Metrics",
+              "values": "[{\"name\":\"CPU Idle\",\"value\":\"${cpu_idle}\"},{\"name\":\"Disk Free\",\"value\":\"${disk_free}\"},{\"name\":\"Network Packets In/Out\",\"value\":\"${pkts_in + pkts_out}\"}]",
+              "cluster_name": "c1"
+            }
+          },
+          {
+            "href": "http://c6401.ambari.apache.org:8080/api/v1/clusters/c1/widgets/30",
+            "WidgetInfo": {
+              "id": 37,
+              "metrics": "[{\"name\":\"regionserver.Server.Get_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/Get_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"},{\"name\":\"regionserver.Server.ScanNext_95th_percentile\",\"metric_path\":\"metrics/hbase/regionserver/Server/ScanNext_95th_percentile\",\"service_name\":\"HBASE\",\"component_name\":\"HBASE_REGIONSERVER\"}]",
+              "author": "ambari",
+              "description": "This widget shows 95th percentile of the read latency.",
+              "scope": "CLUSTER",
+              "properties": "{\"display_unit\":\"%\"}",
+              "widget_name": "READ_LATENCY_97",
+              "widget_type": "TEMPLATE",
+              "time_created": 1428990958952,
+              "display_name": "95% Read Latency",
+              "values": "[{\"name\":\"95% Read Latency\",\"value\":\"${regionserver.Server.Get_95th_percentile+regionserver.Server.ScanNext_95th_percentile}/${regionserver.Server.Get_95th_percentile}\"}]",
+              "cluster_name": "c1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

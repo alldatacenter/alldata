@@ -1,0 +1,221 @@
+{
+  "hash": "9f8a0520670d08cc2bd38f2a6f37e8a83fb5fe980c9e26410efe46ff4131903ea43f52d6838c3b9b82f993f0b4bc80f349c1f97733fd74183252eac1f0bdac52",
+  "clusters": {
+    "0": {
+      "clusterLevelParams": {
+        "cluster_name": "c1",
+        "not_managed_hdfs_path_list": "[\"/tmp\"]",
+        "stack_name": "HDP",
+        "group_list": "[\"hadoop\",\"users\"]",
+        "user_groups": "{}",
+        "stack_version": "2.6",
+        "user_list": "[\"zookeeper\",\"ambari-qa\",\"hdfs\"]"
+      },
+      "serviceLevelParams": {
+        "SQOOP": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "1.4.6",
+          "service_package_folder": "common-services/SQOOP/1.4.4.2.0/package"
+        },
+        "AMBARI_METRICS": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 600,
+          "version": "0.1.0",
+          "service_package_folder": "common-services/AMBARI_METRICS/0.1.0/package"
+        },
+        "KERBEROS": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "1.10.3-10",
+          "service_package_folder": "common-services/KERBEROS/1.10.3-10/package"
+        },
+        "RANGER": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.7.0",
+          "service_package_folder": "common-services/RANGER/0.4.0/package"
+        },
+        "ZEPPELIN": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.7.0",
+          "service_package_folder": "common-services/ZEPPELIN/0.6.0.2.5/package"
+        },
+        "ATLAS": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.8.0",
+          "service_package_folder": "common-services/ATLAS/0.1.0.2.3/package"
+        },
+        "KNOX": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.12.0",
+          "service_package_folder": "common-services/KNOX/0.5.0.2.2/package"
+        },
+        "GANGLIA": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": null,
+          "version": "3.5.0",
+          "service_package_folder": "common-services/GANGLIA/3.5.0/package"
+        },
+        "RANGER_KMS": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.7.0",
+          "service_package_folder": "common-services/RANGER_KMS/0.5.0.2.3/package"
+        },
+        "FLUME": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "1.5.2",
+          "service_package_folder": "common-services/FLUME/1.4.0.2.0/package"
+        },
+        "DRUID": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.9.2",
+          "service_package_folder": "common-services/DRUID/0.9.2/package"
+        },
+        "YARN": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "2.7.3",
+          "service_package_folder": "common-services/YARN/2.1.0.2.0/package"
+        },
+        "PIG": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.16.0",
+          "service_package_folder": "common-services/PIG/0.12.0.2.0/package"
+        },
+        "MAHOUT": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.9.0",
+          "service_package_folder": "common-services/MAHOUT/1.0.0.2.3/package"
+        },
+        "TEZ": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.7.0",
+          "service_package_folder": "common-services/TEZ/0.4.0.2.1/package"
+        },
+        "MAPREDUCE2": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "2.7.3",
+          "service_package_folder": "common-services/YARN/2.1.0.2.0/package"
+        },
+        "OOZIE": {
+          "credentialStoreEnabled": true,
+          "status_commands_timeout": 300,
+          "version": "4.2.0",
+          "service_package_folder": "common-services/OOZIE/4.0.0.2.0/package"
+        },
+        "SPARK": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "1.6.x",
+          "service_package_folder": "common-services/SPARK/1.2.1/package"
+        },
+        "ACCUMULO": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "1.7.0",
+          "service_package_folder": "common-services/ACCUMULO/1.6.1.2.2.0/package"
+        },
+        "LOGSEARCH": {
+          "credentialStoreEnabled": true,
+          "status_commands_timeout": 300,
+          "version": "0.5.0",
+          "service_package_folder": "common-services/LOGSEARCH/0.5.0/package"
+        },
+        "SPARK2": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "2.x",
+          "service_package_folder": "common-services/SPARK2/2.0.0/package"
+        },
+        "SLIDER": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.92.0",
+          "service_package_folder": "common-services/SLIDER/0.60.0.2.2/package"
+        },
+        "STORM": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "1.1.0",
+          "service_package_folder": "common-services/STORM/0.9.1/package"
+        },
+        "FALCON": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.10.0",
+          "service_package_folder": "common-services/FALCON/0.5.0.2.1/package"
+        },
+        "HDFS": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "2.7.3",
+          "service_package_folder": "common-services/HDFS/2.1.0.2.0/package"
+        },
+        "ZOOKEEPER": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "3.4.6",
+          "service_package_folder": "common-services/ZOOKEEPER/3.4.5/package"
+        },
+        "HIVE": {
+          "credentialStoreEnabled": true,
+          "status_commands_timeout": 300,
+          "version": "1.2.1000",
+          "service_package_folder": "common-services/HIVE/0.12.0.2.0/package"
+        },
+        "KAFKA": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.10.1",
+          "service_package_folder": "common-services/KAFKA/0.8.1/package"
+        },
+        "AMBARI_INFRA": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "0.1.0",
+          "service_package_folder": "common-services/AMBARI_INFRA/0.1.0/package"
+        },
+        "HBASE": {
+          "credentialStoreEnabled": false,
+          "status_commands_timeout": 300,
+          "version": "1.1.2",
+          "service_package_folder": "common-services/HBASE/0.96.0.2.0/package"
+        }
+      },
+      "status_commands_to_run": [
+        "STATUS"
+      ]
+    },
+    "-1": {
+      "clusterLevelParams": {
+        "jdk_location": "http://gc6401:8080/resources",
+        "agent_stack_retry_count": "5",
+        "db_driver_filename": "mysql-connector-java.jar",
+        "agent_stack_retry_on_unavailability": "false",
+        "ambari_db_rca_url": "jdbc:postgresql://gc6401/ambarirca",
+        "jce_name": "jce_policy-8.zip",
+        "java_version": "8",
+        "ambari_db_rca_password": "mapred",
+        "host_sys_prepped": "false",
+        "db_name": "ambari",
+        "oracle_jdbc_url": "http://gc6401:8080/resources/ojdbc6.jar",
+        "ambari_db_rca_driver": "org.postgresql.Driver",
+        "ambari_db_rca_username": "mapred",
+        "jdk_name": "jdk-8u112-linux-x64.tar.gz",
+        "java_home": "/usr/jdk64/jdk1.8.0_112",
+        "mysql_jdbc_url": "http://gc6401:8080/resources/mysql-connector-java.jar"
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div id="config_history" class="container-wrap-table">
+  <div class="row">
+    <h2 class="table-title col-md-6">{{t dashboard.configHistory.title}}</h2>
+    <div class="table-controls row col-sm-6 pull-right">
+      <div class="col-sm-12">
+        <div class="VS-open-box pull-right">
+          <button class="btn btn-default">
+            <i class="icon-filter"></i>
+          </button>
+          <div class="popup-arrow-up hide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row search-box-row hide">
+    {{view App.MainConfigHistorySearchBoxView}}
+  </div>
+  <table class="table advanced-header-table table-hover">
+    <thead>
+    {{#view view.sortView classNames="label-row config-history-sort-row"}}
+      {{view view.parentView.versionSort}}
+      {{view view.parentView.configGroupSort}}
+      {{view view.parentView.modifiedSort}}
+      {{view view.parentView.authorSort}}
+      {{view view.parentView.notesSort}}
+    {{/view}}
+    </thead>
+    <tbody class="services-menu">
+    {{#if view.filteringComplete}}
+      {{#if view.pageContent}}
+        {{#each item in view.pageContent}}
+          {{#view view.ConfigVersionView contentBinding="item"}}
+            <td class="first">
+              <span class="label label-info">{{item.versionText}}</span>
+              {{#if view.isServiceLinkDisabled}}
+                {{item.displayName}}
+              {{else}}
+                <a {{action goToServiceConfigs item}} class="service-name">
+                  {{item.displayName}}
+                </a>
+              {{/if}}
+              <i {{bindAttr class=":glyphicon :glyphicon-refresh :restart-required-service item.isRestartRequired::hidden"}}
+                rel="Tooltip" {{translateAttr data-original-title="dashboard.configHistory.table.restart.tooltip"}}></i>
+            </td>
+            <td>{{item.configGroupName}}
+              {{#if item.isCurrent}}
+                <span class="label label-success" rel="Tooltip"
+                {{bindAttr data-original-title="item.currentTooltip"}}>{{t common.current}}
+                </span>
+              {{/if}}
+            </td>
+            <td>{{item.createdDate}}</td>
+            <td><span rel="Tooltip" {{bindAttr title="item.author"}}>{{item.authorFormatted}}</span></td>
+            <td class="notes">
+              {{#if item.moreNotesExists}}
+                {{#if view.showLessNotes}}
+                  {{item.briefNotes}}
+                  <a {{action toggleShowLessStatus target="view"}} class="show-more-button">>> More</a>
+                {{else}}
+                  {{item.fullNotes}}
+                  <a {{action toggleShowLessStatus target="view"}} class="show-more-button"><< Less</a>
+                {{/if}}
+              {{else}}
+                {{item.briefNotes}}
+              {{/if}}
+            </td>
+          {{/view}}
+        {{/each}}
+      {{else}}
+        <tr>
+          <td class="first" colspan="5">
+            {{t dashboard.configHistory.table.empty}}
+          </td>
+        </tr>
+      {{/if}}
+    {{else}}
+      <tr><td colspan="5">{{view App.SpinnerView}}</td></tr>
+    {{/if}}
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="5">
+        {{view App.PaginationView dataViewBinding="view" isDataLoadedBinding="view.filteringComplete"}}
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+
+</div>

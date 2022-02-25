@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration>
+  <property>
+    <name>hbasemaster_host</name>
+    <value/>
+    <description>HBase Master Host.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>regionserver_hosts</name>
+    <value/>
+    <description>Region Server Hosts</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_log_dir</name>
+    <display-name>HBase Log Dir Prefix</display-name>
+    <value>/var/log/hbase</value>
+    <description>Log Directories for HBase.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_pid_dir</name>
+    <display-name>HBase PID Dir</display-name>
+    <value>/var/run/hbase</value>
+    <description>Log Directories for HBase.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_log_dir</name>
+    <display-name>HBase Log Dir Prefix</display-name>
+    <value>/var/log/hbase</value>
+    <description>Log Directories for HBase.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_regionserver_heapsize</name>
+    <value>1024</value>
+    <description>RegionServers heap size.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_regionserver_xmn_max</name>
+    <value>512</value>
+    <description>
+Sets the upper bound on HBase RegionServers' young generation size.
+This value is used in case the young generation size (-Xmn) calculated based on the max heapsize (hbase_regionserver_heapsize)
+and the -Xmn ratio (hbase_regionserver_xmn_ratio) exceeds this value.
+    </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_regionserver_xmn_ratio</name>
+    <value>0.2</value>
+    <description>Percentage of max heap size which used for young generation heap (-Xmx).</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_master_heapsize</name>
+    <value>1024</value>
+    <description>HBase Master Heap Size</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hstore_compactionthreshold</name>
+    <value>3</value>
+    <description>HBase HStore compaction threshold.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hfile_blockcache_size</name>
+    <value>0.40</value>
+    <description>HFile block cache size.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hstorefile_maxsize</name>
+    <value>10737418240</value>
+    <description>Maximum HStoreFile Size</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>regionserver_handlers</name>
+    <value>60</value>
+    <description>HBase RegionServer Handler</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hregion_majorcompaction</name>
+    <value>604800000</value>
+    <description>The time between major compactions of all HStoreFiles in a region. Set to 0 to disable automated major compactions.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hregion_blockmultiplier</name>
+    <value>2</value>
+    <description>HBase Region Block Multiplier</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hregion_memstoreflushsize</name>
+    <value/>
+    <description>HBase Region MemStore Flush Size.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>client_scannercaching</name>
+    <value>100</value>
+    <description>Base Client Scanner Caching</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>zookeeper_sessiontimeout</name>
+    <value>30000</value>
+    <description>ZooKeeper Session Timeout</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hfile_max_keyvalue_size</name>
+    <value>10485760</value>
+    <description>HBase Client Maximum key-value Size</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_hdfs_root_dir</name>
+    <value>/apps/hbase/data</value>
+    <description>HBase Relative Path to HDFS.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_conf_dir</name>
+    <value>/etc/hbase</value>
+    <description>Config Directory for HBase.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hdfs_enable_shortcircuit_read</name>
+    <value>true</value>
+    <description>HDFS Short Circuit Read</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hdfs_support_append</name>
+    <value>true</value>
+    <description>HDFS append support</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hstore_blockingstorefiles</name>
+    <value>10</value>
+    <description>HStore blocking storefiles.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>regionserver_memstore_lab</name>
+    <value>true</value>
+    <description>Region Server memstore.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>regionserver_memstore_lowerlimit</name>
+    <value>0.38</value>
+    <description>Region Server memstore lower limit.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>regionserver_memstore_upperlimit</name>
+    <value>0.4</value>
+    <description>Region Server memstore upper limit.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_conf_dir</name>
+    <value>/etc/hbase</value>
+    <description>HBase conf dir.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>hbase_user</name>
+    <value>hbase</value>
+    <description>HBase User Name.</description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+</configuration>

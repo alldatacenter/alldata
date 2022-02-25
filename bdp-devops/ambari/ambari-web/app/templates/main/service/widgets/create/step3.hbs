@@ -1,0 +1,85 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="step3 wizard-content col-md-9">
+  <h4 class="step-title">{{t widget.create.wizard.step3.header}}</h4>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form class="form-horizontal">
+        <div {{bindAttr class="isNameInvalid:has-error :row :form-group"}}>
+          <div class="col-md-2 title">
+            <label class="control-label">{{t widget.create.wizard.step3.widgetName}}<i class="glyphicon glyphicon-asterisk"></i></label>
+          </div>
+          <div class="col-md-10">
+            {{view Ember.TextField valueBinding="widgetName" class="form-control"}}
+            {{#if isNameInvalid}}
+              <div>
+                <span class="help-block validation-block">
+                  {{widgetNameErrorMessage}}
+                </span>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 title">
+            <label class="control-label">{{t common.author}}</label>
+          </div>
+          <div class="col-md-10"><span class="form-text">{{widgetAuthor}}</span></div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 title">
+            <label class="control-label">{{t widget.create.wizard.step3.sharing}}</label>
+          </div>
+          <div class="col-md-10">
+            {{view App.CheckboxView
+              classNames="checkbox"
+              disabledBinding="controller.isSharedCheckboxDisabled"
+              checkedBinding="controller.isSharedChecked"
+              labelTranslate="widget.create.wizard.step3.sharing.msg"
+            }}
+          </div>
+        </div>
+
+        <div {{bindAttr class=":row :form-group isDescriptionInvalid:has-error"}}>
+          <div class="col-md-2 title">
+            <label class="control-label">{{t common.description}}</label>
+          </div>
+          <div class="col-md-10">
+            {{view Ember.TextArea valueBinding="widgetDescription" class="form-control description-text-area"}}
+            {{#if isDescriptionInvalid}}
+              <div>
+                <span class="help-block validation-block">
+                  {{descriptionErrorMessage}}
+                </span>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<div class="wizard-footer col-md-12">
+  <div class="btn-area">
+    <button id="add-widget-step3-back" class="btn btn-default" {{action back}}>&larr; {{t common.back}}</button>
+    <button id="add-widget-step3-save" class="btn btn-success pull-right" {{bindAttr disabled="isSubmitDisabled"}} {{action "complete" target="controller"}}>{{t common.save}}</button>
+    <button id="add-widget-step3-cancel" class="btn btn-default pull-right" {{action "cancel" target="controller"}}>{{t common.cancel}}</button>
+  </div>
+</div>

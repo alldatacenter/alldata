@@ -1,0 +1,96 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Colors that look better on the selected background
+@text-on-background: #FFFFFF;
+@green-on-background: #6FD00F;
+@grey-on-background: #BDBDBD;
+
+// Background color
+body {
+  background: linear-gradient(#41A5AD, #13396b);
+  background-attachment: fixed;
+}
+
+// Color of text located directly on background
+.background-text {
+  color: @text-on-background;
+  &.muted {
+    color: @grey-on-background;
+  }
+  &.text-success {
+    color: @green-on-background;
+  }
+
+  // Text color for not-active nav tab
+  &.nav-tabs > li > a {
+    color: @text-on-background;
+  }
+
+  // Text color for hovered nav tab
+  &.nav-tabs > li:hover > a {
+    color: #000000;
+  }
+
+  // Text color for active nav tab
+  &.nav-tabs > li.active > a {
+    color: #000000;
+  }
+}
+
+// Text and caret color for quick links dropdown (not active)
+li.dropdown #quick-links-dropdown-btn {
+  color: @text-on-background;
+  .caret {
+    border-bottom-color: @text-on-background;
+    border-top-color: @text-on-background;
+  }
+}
+
+// Text and caret color for active or hovered quick links dropdown
+li.dropdown:hover #quick-links-dropdown-btn, li.dropdown.open #quick-links-dropdown-btn {
+  color: #000000;
+  .caret {
+    border-bottom-color: #000000;
+    border-top-color: #000000;
+  }
+}
+
+// Styles for title block for alert definition and host details pages
+.host-details-header, .alert-definition-details-header {
+  background-color: #E6F1F6;
+  border-radius: 4px;
+  padding: 10px;
+  border-color: #D2D9DD;
+  border-width: 1px;
+  box-sizing: border-box;
+}
+
+.host-details-header {
+  margin: 0 10px;
+}
+
+// Health status green color for custom background
+.alert-definition-enable {
+  color: @green-on-background;
+}
+
+// Health status grey color for custom background
+.alert-definition-disable {
+  color: @grey-on-background;
+}

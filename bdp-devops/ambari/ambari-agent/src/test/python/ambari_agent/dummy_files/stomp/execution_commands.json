@@ -1,0 +1,81 @@
+{
+  "requiredConfigTimestamp": 1510577217,
+  "clusters": {
+    "0":{
+      "commands":[
+        {
+          "requestId":5,
+          "taskId":9,
+          "commandId":1,
+          "serviceName":"HDFS",
+          "role":"DATANODE",
+          "commandType":"EXECUTION_COMMAND",
+          "roleCommand":"INSTALL",
+          "clusterId": "0",
+          "configuration_credentials":{
+
+          },
+          "commandParams":{
+            "command_retry_enabled": "true",
+            "refresh_topology":"true"
+          }
+        },
+        {
+          "requestId":6,
+          "taskId":9,
+          "commandId":0,
+          "clusterId": "0",
+          "serviceName":"ZOOKEEPER",
+          "role":"ZOOKEEPER_SERVER",
+          "commandType":"EXECUTION_COMMAND",
+          "roleCommand":"INSTALL",
+          "configuration_credentials":{
+
+          },
+          "commandParams":{
+            "service_package_folder":"common-services/ZOOKEEPER/3.4.5/package",
+            "hooks_folder":"HDP/2.0.6/hooks",
+            "script":"scripts/datanode.py",
+            "phase":"INITIAL_INSTALL",
+            "max_duration_for_retries":"600",
+            "command_retry_enabled":"false",
+            "command_timeout":"1200",
+            "refresh_topology":"True",
+            "script_type":"PYTHON"
+          }
+        }
+      ]
+    },
+    "-1":{
+      "commands":[
+        {
+          "roleCommand":"ACTIONEXECUTE",
+          "serviceName":"null",
+          "role":"check_host",
+          "commandType":"EXECUTION_COMMAND",
+          "taskId":2,
+          "commandId":1,
+          "clusterId": "null",
+          "commandParams":{
+            "script":"check_host.py",
+            "check_execute_list":"host_resolution_check",
+            "threshold":"20",
+            "hosts":"gc6401",
+            "command_timeout":"900",
+            "script_type":"PYTHON"
+          },
+          "roleParams":{
+            "threshold":"20",
+            "check_execute_list":"host_resolution_check",
+            "hosts":"gc6401"
+          },
+          "hostLevelParams":{
+            "agent_stack_retry_count":"5",
+            "agent_stack_retry_on_unavailability":"false",
+            "agentCacheDir":"/var/lib/ambari-agent/cache"
+          }
+        }
+      ]
+    }
+  }
+}

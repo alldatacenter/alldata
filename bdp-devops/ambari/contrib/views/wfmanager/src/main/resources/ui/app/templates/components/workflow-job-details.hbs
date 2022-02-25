@@ -1,0 +1,287 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+{{yield}}
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="jobInfo">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-2">Job Id</div>
+            <div class="col-md-10">{{id}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">Status</div>
+            <div class="col-md-10">{{model.status}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">User</div>
+            <div class="col-md-10">{{model.user}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">Group</div>
+            <div class="col-md-10">{{model.group}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">App Path</div>
+            <div class="col-md-10" id="job-detail-app-path">{{model.appPath}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">Run</div>
+            <div class="col-md-10">{{model.run}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">Parent Coord</div>
+            <div class="col-md-10">{{model.parentId}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">Created Time</div>
+            <div class="col-md-10">{{model.createdTime}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">Start Time</div>
+            <div class="col-md-10">{{model.startTime}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">Last Modified Time</div>
+            <div class="col-md-10">{{model.lastModTime}}</div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-2">End Time</div>
+            <div class="col-md-10">{{model.endTime}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="jobAction">
+    <div id="actions-list-header-conatiner">
+      <table id="actions-list-header" class="table listing job-listing table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th class="col-xs-2">Name</th>
+            <th class="col-xs-1">Type</th>
+            <th class="col-xs-1">Status</th>
+            <th class="col-xs-2">Transition</th>
+            <th class="col-xs-2">Start Time</th>
+            <th class="col-xs-2">End Time</th>
+            <th class="col-xs-1">Job Url</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div id="actions-list-body-conatiner">
+      <table id="actions-list-body" class="table listing job-listing table-striped table-hover table-bordered">
+        <tbody>
+          {{#each model.actions as |actionInfo|}}
+            {{workflow-job-action actionInfo=actionInfo getActionDetails="getActionDetails"}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{#if model.actionDetails}}
+    <div id="action-details">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Action Details : {{model.actionDetails.name}}
+        </div>
+        <div class="panel-body">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#actionInfo" class="action-link" aria-controls="action-info" role="tab" data-toggle="tab">Info</a></li>
+            <li role="presentation"><a href="#actionConf" class="action-link" aria-controls="action-conf" role="tab" data-toggle="tab">Configuration</a></li>
+          </ul>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="actionInfo">
+              {{#if model.actionDetails}}
+              {{#workflow-job-action-info actionInfo=model.actionDetails}}
+              {{/workflow-job-action-info}}
+              {{/if}}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="actionConf">
+              <div class="panel panel-default">
+                <div class="panel-body preview">
+                  <pre class="prettyprint">{{model.actionDetails.conf}}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  <div role="tabpanel" class="tab-pane" id="jobDefinition">
+    <div class="panel panel-default">
+      <div class="panel-body preview">
+        <pre class="prettyprint">
+          {{ivy-codemirror value=jobDefinition options=(hash lineNumbers=false mode="xml" indentWithTabs=true readOnly=true)}}
+        </pre>
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="jobConfig">
+    <div class="panel panel-default">
+      <div class="panel-body preview">
+        <table class="table table-striped configuration-property-table listing">
+          <thead>
+            <tr>
+              <th class="propertyName">Name</th>
+              <th class="propertyValue">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each configurationProperties as |configurationProperty|}}
+              <tr>
+                <td class="propertyName">{{configurationProperty.name}}</td>
+                <td class="propertyValue">{{configurationProperty.value}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="jobLog">
+    {{#job-log getJobLog="getJobLog" jobType=model.jobType jobLog=model.jobLog error=model.error}}{{/job-log}}
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="jobErrorLog">
+    <div class="panel panel-default">
+      <div class="panel-body preview">
+        {{#if model.errorLog}}
+        <pre>{{model.errorLog}}</pre>
+        {{else if model.error}}
+        <pre>{{model.errorLog}}</pre>
+        {{else}}
+        {{spin-spinner lines=8 length=5 width=3 radius=5 top=220}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="jobAuditLog">
+    <div class="panel panel-default">
+      <div class="panel-body preview">
+        {{#if model.auditLog}}
+        <pre>{{model.auditLog}}</pre>
+        {{else if model.error}}
+        <pre>{{model.auditLog}}</pre>
+        {{else}}
+        {{spin-spinner lines=8 length=5 width=3 radius=5 top=220}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="jobDag">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <!-- <img src={{dagUrl}} /> -->
+        {{#if model.inProgress}}
+          {{spin-spinner lines=8 length=5 width=3 radius=5 top=350}}
+        {{/if}}
+        <div class="row">
+          <div class="col-xs-8">
+            {{#if model.flowGraphMaxNodeCountReached}}
+              <div id="alert"class="alert alert-danger alert-dismissible workflow-error" role="alert">
+                Workflow is too large to be rendered.
+              </div>
+            {{else}}
+              <div class="cy-note"><div class="pull-right">Click on node to get details</div></div>
+            {{/if}}
+            <div id="cy" class="cy-panel"></div>
+            <div class="overlay-transition-content">
+              <div class="decision-condition-label">
+                <div class="decision-condition-header">Condition</div>
+                <div class="decision-condition-body"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            {{#if model.nodeName}}
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-4 text-bold">Name</div>
+                  <div class="col-md-8">{{model.nodeName}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 text-bold">Type</div>
+                  <div class="col-md-8">{{model.nodeType}}</div>
+                </div>
+                {{#if model.actionInfo}}
+                <div class="row">
+                  <div class="col-md-4 text-bold">Status</div>
+                  <div class="col-md-8">{{model.actionInfo.status}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 text-bold">Start Time</div>
+                  <div class="col-md-8">{{model.actionInfo.startTime}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 text-bold">End Time</div>
+                  <div class="col-md-8">{{model.actionInfo.endTime}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 text-bold">External ID</div>
+                  <div class="col-md-8">{{model.actionInfo.externalId}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 text-bold">Job URL</div>
+                  <div class="col-md-8">
+                    {{#if validTrackerUrl}}
+                      <a target="_blank" href="{{model.actionInfo.consoleUrl}}"><i class="fa fa-external-link action-link" aria-hidden="true"></i></a>
+                    {{else}}
+                      -
+                    {{/if}}
+                  </div>
+                </div>
+                <div class="row pull-right" {{action 'getActionDetails' model.actionInfo}}>
+                  <div class="col-md-12">
+                    <a data-toggle="modal" href="#" data-target="#actionDetailsModal" class="action-link">More</a>
+                  </div>
+                </div>
+                {{else}}
+                <div class="row">
+                  <div class="col-md-4 text-bold">Status</div>
+                  <div class="col-md-8">Not Started</div>
+                </div>
+                {{/if}}
+              </div>
+            </div>
+            {{#if model.actionDetails}}
+              <div class="modal fade" role="dialog" id="actionDetailsModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Job Action Details</h4>
+                    </div>
+                    <div class="modal-body">
+                      {{#workflow-job-action-info actionInfo=model.actionDetails}}
+                      {{/workflow-job-action-info}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{/if}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

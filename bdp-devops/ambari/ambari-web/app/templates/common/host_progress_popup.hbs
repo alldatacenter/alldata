@@ -1,0 +1,366 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+<div class="host-component-popup-wrap">
+
+  {{#if view.parentView.isLoaded}}
+  {{!-- OPERATIONS --}}
+
+    <div {{bindAttr class="view.parentView.isServiceListHidden:hidden :task-list-main-wrap :table-body-wrap"}}>
+      <div class="top-wrap">
+        <div class="row">
+          <h2 class="table-title col-sm-6">{{view view.parentView.titleClass}}</h2>
+          <div class="table-controls col-sm-6">
+            <div class="btn-group pull-right status-dropdown">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                {{view.serviceCategory.label}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                {{#each category in view.categories}}
+                  <li><a href="#" {{action selectServiceCategory category target="view"}}>{{category.label}}</a></li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="service-info">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th class="col-sm-5">{{t common.operations}}</th>
+          <th class="col-sm-3">{{t common.status}}</th>
+          <th class="col-sm-1">{{t common.user}}</th>
+          <th class="col-sm-2">{{t common.startTime}}</th>
+          <th class="col-sm-2" colspan="2">{{t common.duration}}</th>
+        </tr>
+        </thead>
+      <tbody>
+        {{#if view.isServiceEmptyList}}
+        <tr>
+          <td colspan="5">
+            <div class="log-list-wrap">{{t hostPopup.noServicesToShow}}</div>
+          </td>
+        </tr>
+        {{else}}
+          {{#each servicesInfo in view.services}}
+          <tr {{action onOpClick servicesInfo}} {{bindAttr class="servicesInfo.isVisible::hidden :pointer"}}>
+            <td class="col-sm-5">
+              {{view statusIcon servicesInfoBinding="servicesInfo"}}
+              <a href="#">
+                {{servicesInfo.name}}
+              </a>
+            </td>
+            <td class="col-sm-3">
+              <div class="progress-wrapper col-sm-8">
+                <div class="progress">
+                  <div {{bindAttr class="servicesInfo.isInProgress:active servicesInfo.isInProgress:progress-bar-striped servicesInfo.barColor :progress-bar" style="servicesInfo.barWidth"}}></div>
+                </div>
+              </div>
+              <div class="progress-percentage col-sm-2">{{servicesInfo.progress}}%</div>
+            </td>
+            {{!-- Hardcoding this for now. Will change it once BE returns this value --}}
+            <td class="col-sm-1">{{servicesInfo.userName}}</td>
+            <td class="col-sm-2">{{servicesInfo.startTime}}</td>
+            <td class="col-sm-2">{{servicesInfo.duration}}</td>
+            <td class="col-sm-1 text-right">
+              {{#if servicesInfo.isAbortable}}
+                {{view abortIcon servicesInfoBinding="servicesInfo"}}
+              {{/if}}
+              <a class="action" href="#">
+                <span class="icon icon-caret-right"></span>
+              </a>
+            </td>
+          </tr>
+          {{/each}}
+        {{/if}}
+      </tbody>
+        {{#if view.isPaginate}}
+          <tfoot>
+            <tr>
+              <td colspan="5">
+                {{view App.PaginationView}}
+              </td>
+            </tr>
+          </tfoot>
+        {{/if}}
+      </table>
+        {{#if view.isShowMore}}
+          <div class="show-more" {{action requestMoreOperations}}><a href="#">{{t hostPopup.serviceInfo.showMore}}</a>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+
+    {{!-- HOSTS ---}}
+
+    <div {{bindAttr class="view.parentView.isHostListHidden:hidden :task-list-main-wrap :table-body-wrap"}}>
+      <div class="top-wrap">
+        <div class="row">
+          <h2 class="table-title col-sm-2">{{t common.hosts}}</h2>
+          <div class="table-controls col-sm-10">
+            <div class="btn-group pull-right status-dropdown">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                {{view.hostCategory.label}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                {{#each category in view.categories}}
+                  <li><a href="#" {{action selectHostCategory category target="view"}}>{{category.label}}</a></li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{#if view.isRequestSchedule}}
+        {{#if view.sourceRequestScheduleRunning}}
+          <div class="alert alert-info request-schedule-abort">
+            {{t hostPopup.bgop.sourceRequestSchedule.running}}
+            <button type="button" class="btn btn-warning pull-right"
+              {{action doAbortRequestSchedule view.sourceRequestScheduleId target="view"}}>
+              {{view.requestScheduleAbortLabel}}
+            </button>
+          </div>
+        {{/if}}
+        {{#if view.sourceRequestScheduleAborted}}
+          <div class="alert alert-info request-schedule-abort">
+            {{t hostPopup.bgop.sourceRequestSchedule.aborted}}
+          </div>
+        {{/if}}
+      {{/if}}
+      {{#if view.isLevelLoaded}}
+        <div id="host-info" {{bindAttr class="view.isRequestSchedule:scheduled"}}>
+          {{#if view.isHostEmptyList}}
+            <div class="log-list-wrap">{{t hostPopup.noHostsToShow}}</div>
+          {{else}}
+            <table class="table table-hover">
+              <tbody>
+              {{#each hostInfo in view.pageContent}}
+                <tr {{action onHostClick hostInfo}} {{bindAttr class="hostInfo.isVisible::hidden :pointer"}}>
+                  <td class="col-sm-6 text-nowrap">
+                    {{view statusIcon servicesInfoBinding="hostInfo"}}
+                    <a href="#">
+                      {{hostInfo.displayName}}
+                    </a>
+                  </td>
+                  <td class="col-sm-5">
+                    <div class="progress-wrapper col-md-6">
+                      <div class="progress">
+                        <div {{bindAttr class="hostInfo.isInProgress:progress-bar-striped :active hostInfo.barColor :progress-bar" style="hostInfo.barWidth"}}></div>
+                      </div>
+                    </div>
+                    <div class="progress-percentage col-sm-2">{{hostInfo.progress}}%</div>
+                  </td>
+                  <td class="col-sm-1 text-right">
+                    <a class="action" href="#">
+                      <span class="icon icon-caret-right"></span>
+                    </a>
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+              {{#if view.isPaginate}}
+                <tfoot>
+                <tr>
+                  <td colspan="3">
+                    {{view App.PaginationView}}
+                  </td>
+                </tr>
+                </tfoot>
+              {{/if}}
+            </table>
+          {{/if}}
+        </div>
+      {{else}}
+        {{view App.SpinnerView}}
+      {{/if}}
+    </div>
+
+
+    {{!-- TASKS ---}}
+
+    <div {{bindAttr class="view.parentView.isTaskListHidden:hidden :task-list-main-wrap :table-body-wrap"}}>
+      <div class="top-wrap">
+        <div class="row">
+          <h2 class="table-title col-sm-2">{{t common.tasks}}</h2>
+          <div class="table-controls col-sm-10">
+            <div class="btn-group pull-right status-dropdown">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                {{view.taskCategory.label}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                {{#each category in view.categories}}
+                  <li><a href="#" {{action selectTaskCategory category target="view"}}>{{category.label}}</a></li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="host-log">
+        {{#if view.hostInfoLoaded}}
+          {{#if view.isTasksEmptyList}}
+            <div class="log-list-wrap">{{t hostPopup.noTasksToShow}}</div>
+          {{else}}
+            <table class="table table-hover">
+              <tbody>
+              {{#each taskInfo in view.tasks}}
+                <tr {{action onTaskClick taskInfo}} {{bindAttr class="taskInfo.isVisible::hidden :pointer"}}>
+                  <td class="col-sm-3">
+                    {{view statusIcon servicesInfoBinding="taskInfo"}}
+                    <a href="#">
+                      {{taskInfo.commandDetail}}
+                    </a>
+                  </td>
+                  <td class="col-sm-9 text-right">
+                    <a class="action" href="#">
+                      <span class="icon icon-caret-right"></span>
+                    </a>
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+              {{#if view.isPaginate}}
+                <tfoot>
+                <tr>
+                  <td colspan="2">
+                    {{view App.PaginationView}}
+                  </td>
+                </tr>
+                </tfoot>
+              {{/if}}
+            </table>
+          {{/if}}
+        {{else}}
+          {{view App.SpinnerView}}
+        {{/if}}
+      </div>
+    </div>
+
+
+    <!-- TASK DETAILS --->
+
+    <div {{bindAttr class="view.parentView.isLogWrapHidden:hidden :task-detail-info view.hostComponentLogsExists:task-detail-info-tabbed"}}>
+      <div class="task-top-wrap top-wrap">
+        <div {{bindAttr class="view.hostComponentLogsExists:task-detail-log-nav-actions :row"}}>
+          <h2 class="table-title col-sm-5">{{t common.taskLog}}</h2>
+          <div class="table-controls col-sm-7 pull-right">
+            {{#if App.supports.logSearch}}
+              {{#if view.isLogSearchInstalled}}
+                {{#havePermissions "SERVICE.VIEW_OPERATIONAL_LOGS"}}
+                  <button type="button" class="btn btn-link pull-right" {{action navigateToHostLogs target="view"}}
+                    {{bindAttr class="view.isLogsLinkVisible::hidden" disabled="App.router.wizardWatcherController.isNonWizardUser"}}>
+                    <i class="glyphicon glyphicon-file"></i>&nbsp;{{t common.host}} {{t common.logs}}
+                  </button>
+                {{/havePermissions}}
+              {{/if}}
+            {{/if}}
+            <button type="button" class="btn btn-link pull-right"
+              {{translateAttr title="common.openNewWindow"}}
+              {{action openTaskLogInDialog}}>
+              <i class="icon icon-external-link"></i>&nbsp;{{t common.open}}
+            </button>
+            <button type="button" class="btn btn-link pull-right copy-clipboard"
+              {{translateAttr title="common.fullLogPopup.clickToCopy"}}
+              {{action "textTrigger" taskInfo target="view"}}>
+              <i class="glyphicon glyphicon-copy"></i>&nbsp;{{t common.copy}}
+            </button>
+          </div>
+        </div>
+        <ul {{bindAttr class="view.hostComponentLogsExists::hide :nav :nav-tabs :task-detail-nav"}}>
+          <li {{bindAttr class="view.isLevelLoaded:active"}}>
+            <a href="#" data-target="#task-log-tab"
+               data-toggle="tab" {{action setActiveTaskLogTab target="view"}}>{{t app.name}} stdout/stderr</a>
+          </li>
+          {{#each hostLog in view.hostComponentLogs}}
+            <li>
+              <a href="#" {{action setActiveLogTab hostLog target="view"}} {{bindAttr data-target="hostLog.tabClassNameSelector"}}
+                 data-toggle="tab">{{hostLog.displayedFileName}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{#if view.isLevelLoaded}}
+        <div class="task-detail-log-info">
+          <div class="content-area">
+            <div class="tab-content">
+              <div class="task-detail-log-clipboard-wrap">
+                {{#if view.isClipBoardActive}}
+                  {{view App.NotScrollableTextArea class="task-detail-log-clipboard" valueBinding="view.textAreaValue"}}
+                {{/if}}
+              </div>
+              <div id="task-log-tab" class="tab-pane active">
+                <div {{bindAttr class=":task-detail-log-maintext view.isClipBoardActive:hidden"}}>
+                  {{#if view.openedTask.isRebalanceHDFSTask }}
+                    <h5>{{t services.hdfs.rebalance.title}}</h5>
+
+                    <div class="progresspopup-rebalancehdfs">
+                      <div class="progress-bar">
+                        <div {{bindAttr class=":progress view.openedTask.isInProgress:progress-bar-striped view.openedTask.barColor :active" style="view.openedTask.completionProgressStyle"}}></div>
+                      </div>
+                    </div>
+                    <div class="clearfix">
+                      <div class="pull-left">
+                        {{view.openedTask.dataMoved}} moved /
+                        {{view.openedTask.dataLeft}} left /
+                        {{view.openedTask.dataBeingMoved}} being processed
+                      </div>
+                      {{#if view.openedTask.isNotComplete}}
+                        <button class="btn btn-danger pull-right" {{action stopRebalanceHDFS}}>{{t common.cancel}}</button>
+                      {{/if}}
+                    </div>
+                    <hr>
+                  {{/if}}
+                  <p>{{t common.stderr}}: &nbsp; <span class="muted">{{view.openedTask.errorLog}} </span></p>
+                  <pre class="stderr">{{view.openedTask.stderr}}</pre>
+                  <p>{{t common.stdout}}: &nbsp; <span class="muted"> {{view.openedTask.outputLog}} </span></p>
+                  <pre class="stdout">{{view.openedTask.stdout}}</pre>
+                </div>
+              </div>
+              {{#each hostLog in view.hostComponentLogs}}
+                <div {{bindAttr class=":tab-pane :log-component-tab hostLog.tabClassName"}}>
+                  <p {{bindAttr class="view.isClipBoardActive:hidden"}}>
+                    <strong>{{t common.file}}: &nbsp; </strong>
+                    <strong class="muted">{{hostLog.fileName}}</strong>
+                    {{#view App.LogSearchUILinkView linkQueryParamsBinding="hostLog.linkTail" tagName="span"}}
+                      <a {{bindAttr href="view.formatedLink" class=":pull-right view.isLodaded::disabled"}}
+                              target="_blank" rel="noopener noreferrer">
+                        <i class="icon-external-link"></i>
+                        {{t popup.logTail.openInLogSearch}}</a>
+                    {{/view}}
+                  </p>
+                  <div {{bindAttr class="view.isClipBoardActive:hidden"}}>
+                    {{view view.logTailView contentBinding="hostLog"}}
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      {{else}}
+        {{view App.SpinnerView}}
+      {{/if}}
+    </div>
+  {{else}}
+    {{view App.SpinnerView}}
+  {{/if}}
+</div>

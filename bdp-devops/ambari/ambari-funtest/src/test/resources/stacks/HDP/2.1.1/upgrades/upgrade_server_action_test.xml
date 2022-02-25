@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<upgrade xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <target>2.2.*.*</target>
+  <target-stack>HDP-2.2.0</target-stack>
+  <type>ROLLING</type>
+  <prerequisite-checks>
+    <!-- List of additional pre-req checks to run in addition to the required pre-reqs -->
+    <check>org.apache.ambari.server.checks.HiveMultipleMetastoreCheck</check>
+    <check>org.apache.ambari.server.checks.MapReduce2JobHistoryStatePreservingCheck</check>
+    <check>org.apache.ambari.server.checks.SecondaryNamenodeDeletedCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesMapReduceDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesNamenodeHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesTezDistributedCacheCheck</check>
+    <check>org.apache.ambari.server.checks.ServicesYarnWorkPreservingCheck</check>
+    <check>org.apache.ambari.server.checks.YarnRMHighAvailabilityCheck</check>
+    <check>org.apache.ambari.server.checks.YarnTimelineServerStatePreservingCheck</check>
+  </prerequisite-checks>
+
+  <order>
+    <group xsi:type="cluster" name="CLUSTER_SERVER_ACTIONS" title="Cluster Server Actions">
+
+      <execute-stage title="Pre Upgrade">
+        <task xsi:type="manual">
+          <message>Foo</message>
+        </task>
+      </execute-stage>
+      <execute-stage service="ZOOKEEPER" component="ZOOKEEPER_SERVER" title="Pre Upgrade Zookeeper">
+        <task xsi:type="manual">
+          <message>Back stuff up.</message>
+        </task>
+      </execute-stage>
+
+      <execute-stage title="Configuring">
+        <task xsi:type="configure" id="hdp_2_2_0_nn_pre_upgrade"/>
+      </execute-stage>
+      <execute-stage service="HDFS" component="NAMENODE" title="Configuring HDFS">
+        <task xsi:type="configure" id="hdp_2_2_0_nn_pre_upgrade"/>
+      </execute-stage>
+
+      <execute-stage title="Calculating Properties">
+        <task xsi:type="server_action" summary="Calculating Properties" class="org.apache.ambari.server.serveraction.upgrades.HBaseConfigCalculation" />
+      </execute-stage>
+      <execute-stage service="HDFS" component="NAMENODE" title="Calculating HDFS Properties">
+        <task xsi:type="server_action" summary="Calculating Properties" class="org.apache.ambari.server.serveraction.upgrades.HBaseConfigCalculation" />
+      </execute-stage>
+
+    </group>
+  </order>
+</upgrade>

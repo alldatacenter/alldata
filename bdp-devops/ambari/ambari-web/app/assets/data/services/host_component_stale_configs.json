@@ -1,0 +1,38 @@
+{
+  "items" : [
+    {
+      "ServiceComponentInfo" : {
+        "component_name" : "DATANODE"
+      },
+      "host_components" : [
+        {
+          "HostRoles" : {
+            "component_name" : "DATANODE",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "service_name" : "HDFS",
+            "stale_configs" : true,
+            "state" : "STARTED"
+          }
+        }
+      ]
+    },
+    {
+      "ServiceComponentInfo" : {
+        "component_name" : "HDFS_CLIENT"
+      },
+      "host_components" : [
+        {
+          "HostRoles" : {
+            "component_name" : "HDFS_CLIENT",
+            "host_name" : "dev01.hortonworks.com",
+            "maintenance_state" : "OFF",
+            "service_name" : "HDFS",
+            "stale_configs" : true,
+            "state" : "INSTALLED"
+          }
+        }
+      ]
+    }
+  ]
+}

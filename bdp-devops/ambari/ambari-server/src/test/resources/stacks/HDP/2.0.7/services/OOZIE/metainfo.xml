@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>OOZIE</name>
+      <displayName>Oozie</displayName>
+      <comment>System for workflow coordination and execution of Apache Hadoop jobs.  This also includes the installation of the optional Oozie Web Console which relies on and will install the &lt;a target="_blank" href="http://www.sencha.com/legal/open-source-faq/"&gt;ExtJS&lt;/a&gt; Library.</comment>
+      <version>4.2.0.2.3</version>
+
+      <components>
+        <component>
+          <name>OOZIE_SERVER</name>
+          <displayName>Oozie Server</displayName>
+          <category>MASTER</category>
+          <cardinality>1+</cardinality>
+          <versionAdvertised>true</versionAdvertised>
+          <dependencies>
+            <dependency>
+              <name>HDFS/HDFS_CLIENT</name>
+              <scope>host</scope>
+              <auto-deploy>
+                <enabled>true</enabled>
+              </auto-deploy>
+            </dependency>
+            <dependency>
+              <name>MAPREDUCE2/MAPREDUCE2_CLIENT</name>
+              <scope>host</scope>
+              <auto-deploy>
+                <enabled>true</enabled>
+              </auto-deploy>
+            </dependency>
+            <dependency>
+              <name>YARN/YARN_CLIENT</name>
+              <scope>host</scope>
+              <auto-deploy>
+                <enabled>true</enabled>
+              </auto-deploy>
+            </dependency>
+          </dependencies>
+          <commandScript>
+            <script>scripts/oozie_server.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>1200</timeout>
+          </commandScript>
+        </component>
+
+        <component>
+          <name>OOZIE_CLIENT</name>
+          <displayName>Oozie Client</displayName>
+          <category>CLIENT</category>
+          <cardinality>1+</cardinality>
+          <versionAdvertised>true</versionAdvertised>
+          <dependencies>
+            <dependency>
+              <name>HDFS/HDFS_CLIENT</name>
+              <scope>host</scope>
+              <auto-deploy>
+                <enabled>true</enabled>
+              </auto-deploy>
+            </dependency>
+            <dependency>
+              <name>MAPREDUCE2/MAPREDUCE2_CLIENT</name>
+              <scope>host</scope>
+              <auto-deploy>
+                <enabled>true</enabled>
+              </auto-deploy>
+            </dependency>
+          </dependencies>
+          <commandScript>
+            <script>scripts/oozie_client.py</script>
+            <scriptType>PYTHON</scriptType>
+          </commandScript>
+          <configFiles>
+            <configFile>
+              <type>xml</type>
+              <fileName>oozie-site.xml</fileName>
+              <dictionaryName>oozie-site</dictionaryName>
+            </configFile>
+            <configFile>
+              <type>env</type>
+              <fileName>oozie-env.sh</fileName>
+              <dictionaryName>oozie-env</dictionaryName>
+            </configFile>
+            <configFile>
+              <type>env</type>
+              <fileName>oozie-log4j.properties</fileName>
+              <dictionaryName>oozie-log4j</dictionaryName>
+            </configFile>
+          </configFiles>
+        </component>
+      </components>
+
+      <commandScript>
+        <script>scripts/service_check.py</script>
+        <scriptType>PYTHON</scriptType>
+        <timeout>300</timeout>
+      </commandScript>
+
+      <requiredServices>
+        <service>YARN</service>
+      </requiredServices>
+
+      <configuration-dependencies>
+        <config-type>oozie-site</config-type>
+        <config-type>oozie-env</config-type>
+        <config-type>oozie-log4j</config-type>
+        <config-type>yarn-site</config-type>
+        <config-type>hive-site</config-type>
+        <config-type>tez-site</config-type>
+      </configuration-dependencies>
+
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>any</osFamily>
+          <packages>
+            <package>
+              <name>zip</name>
+            </package>
+            <package>
+              <name>mysql-connector-java</name>
+              <skipUpgrade>true</skipUpgrade>
+            </package>
+            <package>
+              <name>extjs</name>
+            </package>
+          </packages>
+        </osSpecific>
+        <osSpecific>
+          <osFamily>redhat5,redhat6,redhat7,suse11</osFamily>
+          <packages>
+            <package>
+              <name>oozie_2_3_*</name>
+            </package>
+            <package>
+              <name>falcon_2_3_*</name>
+            </package>
+          </packages>
+        </osSpecific>
+        <osSpecific>
+          <osFamily>debian7,ubuntu12,ubuntu14</osFamily>
+          <packages>
+            <package>
+              <name>oozie-2-3-.*</name>
+            </package>
+            <package>
+              <name>falcon-2-3-.*</name>
+            </package>
+            <package>
+              <name>extjs</name>
+            </package>
+            <package>
+              <name>libxml2-utils</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
+    </service>
+  </services>
+</metainfo>

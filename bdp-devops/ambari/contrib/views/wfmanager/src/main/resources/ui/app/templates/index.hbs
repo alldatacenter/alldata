@@ -1,0 +1,77 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+<div class="container">
+  {{#if serviceChecksComplete }}
+    {{#if errors}}
+      <h3>Service checks failed.</h3>
+    {{else}}
+      <h3>Service checks completed.</h3>
+    {{/if}}
+  {{else}}
+    <h3>Service checks in progress.</h3>
+  {{/if}}
+  {{#if errors}}
+    <div class="progress active">
+      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{{width}}">
+        <span class="sr-only">70% Complete</span>
+      </div>
+    </div>
+  {{else}}
+    <div class="progress progress-striped active">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{{width}}">
+        <span class="sr-only">70% Complete</span>
+      </div>
+    </div>
+  {{/if}}
+  <ul class="list-group">
+    {{#each serviceChecks as |check|}}
+      <li class="list-group-item">
+        <span>
+          {{#if (and check.isAvailable check.checkCompleted)}}
+            <i class="fa fa-check"></i>
+          {{else if (and (not check.isAvailable) check.checkCompleted)}}
+            <i class="fa fa-remove"></i>
+          {{else if (not check.checkCompleted)}}
+            <i class="fa fa-arrow-right"></i>
+          {{/if}}
+        </span>
+        <span>{{check.displayName}}</span>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if errors}}
+    <div class="">
+      <h3>Issues detected</h3>
+      {{#each serviceChecks as |check|}}
+        {{#if (and (not check.isAvailable) check.checkCompleted)}}
+          {{check.errorMessage}} <a class="pointer action-link" href="javascript:void(0)" {{action "showDetails" check}}>Details</a><br>
+          {{#if check.showingDetails}}
+            <div class="well">{{check.stackTrace}}</div>
+          {{/if}}
+        {{/if}}
+      {{/each}}
+    </div>
+    <div class="">
+      {{#link-to 'design' class="backto-dashboard"}}
+        <button type="button" class="btn btn-default pull-right" title="You can continue to Workflow Designer View. But some functionalities may be unavailable.">
+          <i class="fa fa-arrow-right marginright5"></i> Continue
+        </button>
+      {{/link-to}}
+    </div>
+  {{/if}}
+</div>

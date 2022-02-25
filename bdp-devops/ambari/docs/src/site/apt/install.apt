@@ -1,0 +1,161 @@
+~~ Licensed under the Apache License, Version 2.0 (the "License");
+~~ you may not use this file except in compliance with the License.
+~~ You may obtain a copy of the License at
+~~
+~~   http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~ Unless required by applicable law or agreed to in writing, software
+~~ distributed under the License is distributed on an "AS IS" BASIS,
+~~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~~ See the License for the specific language governing permissions and
+~~ limitations under the License. See accompanying LICENSE file.
+
+Supported Operating Systems
+
+  * Ambari currently supports:
+  
+    * RHEL/CentOS 5.*, 64-bit version
+
+    * RHEL/CentOS 6.*, 64-bit version
+
+Getting Ambari
+
+  The source can be checked out anonymously from SVN with the following command:
+
++--
+$ svn checkout http://svn.apache.org/repos/asf/incubator/ambari/trunk ambari
++--
+
+How to build Ambari
+
+  You need to build Ambari RPMs from the source code that you checked out:
+
++--
+$ yum install rpm-build
+$ cd ambari/hmc/package/rpm
+$ ./create_hmc_rpm.sh
+
+$ cd ambari/mon_dashboard/package/rpm
+$ ./create_dashboard_rpm.sh
++--
+
+  When this succeeds, you will find following RPMs inside the ambari directory:
+
+  1) ambari/hmc/package/rpm/build/rpmbuild/RPMS/noarch/ambari-1.0.0-1[.el6].noarch.rpm
+
+  2) ambari/hmc/package/rpm/build/rpmbuild/RPMS/noarch/ambari-agent-1.0.0-1[.el6].noarch.rpm
+
+  3) ambari/mon_dashboard/package/rpm/build/rpmbuild/RPMS/noarch/hdp_mon_dashboard-0.0.2.14-1.noarch.rpm
+
+
+Installing Ambari
+
+  We will refer to the node running the Ambari server as <Ambari master>
+  and the nodes to which Hadoop services will be installed as <cluster nodes>.
+
+  1) Set up password-less SSH for root on all your cluster nodes.
+
+    * Copy root's SSH public key to all the cluster nodes in the .ssh/authorized_keys file.
+
+    * Save the corresponding SSH private key file locally.  You will be prompted by Ambari UI to upload it during cluster installation.
+
+  2) Install ambari-agent on each of the cluster nodes.
+
+    * To install ambari-agent, point to the freely accessible HDP repo
+that contains the required dependencies.  Then use yum to install ambari-agent RPM and all of its dependencies.
+
+    On RHEL/CentOS 5:
+
++--
+$ sudo rpm -Uvh http://public-repo-1.hortonworks.com/HDP-1.0.1.14/repos/centos5/hdp-release-1.0.1.14-1.el5.noarch.rpm
+$ sudo yum install epel-release
+$ sudo yum install ambari-agent-1.0.0-1.noarch.rpm --nogpgcheck
++--
+
+    On RHEL/CentOS 6:
+
++--
+$ sudo rpm -Uvh http://public-repo-1.hortonworks.com/HDP-1.0.1.14/repos/centos6/hdp-release-1.0.1.14-1.el6.noarch.rpm
+$ sudo yum install epel-release
+$ sudo yum install ambari-agent-1.0.0-1.el6.noarch.rpm
++--
+
+  3) Stop iptables on Ambari master:
+
+    * Run the following command on the Ambari master:
+
++--
+$ sudo service iptables stop
++--
+
+  4) Install Ambari server on Ambari master:
+
+    * To install Ambari server, point to the freely accessible HDP repo that contains the required dependencies (e.g., PHP, etc).  Then use yum to install Ambari RPMs and all of the dependencies.
+
+    On RHEL/CentOS 5:
+
++--
+$ sudo rpm -Uvh http://public-repo-1.hortonworks.com/HDP-1.0.1.14/repos/centos5/hdp-release-1.0.1.14-1.el5.noarch.rpm
+$ sudo yum install epel-release
+$ sudo yum install php-pecl-json
+$ sudo yum install ambari-1.0.0-1.noarch.rpm --nogpgcheck
+$ sudo yum install hdp_mon_dashboard-0.0.2.14-1.noarch.rpm --nogpgcheck
++--
+
+    On RHEL/CentOS 6:
+
++--
+$ sudo rpm -Uvh http://public-repo-1.hortonworks.com/HDP-1.0.1.14/repos/centos6/hdp-release-1.0.1.14-1.el6.noarch.rpm
+$ sudo yum install epel-release
+$ sudo yum install ambari-1.0.0-1.el6.noarch.rpm
+$ sudo yum install hdp_mon_dashboard-0.0.2.14-1.noarch.rpm
++--
+
+    * Hadoop requires JDK.  You can download the JDK files from the Oracle website:
+      {{{http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u26-download-400750.html} http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u26-download-400750.html}}
+      After accepting the license and downloading the files, copy them to /var/run/hmc/downloads/ directory on the
+      Ambari master (Note: Upon download, these files may have .sh extension, so make sure you remove the .sh extension
+      from the filenames and also set the execute permission on them).
+      Also, JCE Policy Files 6 needs to be downloaded and uploaded to the same directory on the Ambari master server (/var/run/hmc/downloads/).
+      You can download it from {{{http://www.oracle.com/technetwork/java/javase/downloads/jce-6-download-429243.html} http://www.oracle.com/technetwork/java/javase/downloads/jce-6-download-429243.html}}
+
+      1) jdk-6u26-linux-x64.bin
+
+      2) jdk-6u26-linux-i586.bin
+
+      3) jce_policy-6.zip
+
+
+How to run Ambari
+
++--
+$ sudo service ambari start
++--
+
+  Now that Ambari server is installed and started, you can start installing Apache Hadoop and its ecosystem components on your cluster nodes by visiting:
+
+  http://AMBARIMASTER/hmc/html/
+
+  from your browser.
+
+
+Notes for Developers
+
+  If you have made any changes to Nagios or Ganglia addons code (mon_dashboard/src/addOns/[ganglia|nagios]), you will also have to install
+  hdp_mon_ganglia_addons-0.0.2.14-1.noarch.rpm and hdp_mon_nagios_addons-0.0.2.14-1.noarch.rpm on the hosts running
+  Ganglia and Nagios server, respectively, to make your changes effective.
+  After your Hadoop cluster is installed using Ambari, go to the host(s) running Nagios and Ganglia server,
+  remove these pre-installed addon RPMs for Nagios and Ganglia, and install the new ones built from the source.
+  To build these RPMs from the source, run:
+
++--
+$ cd mon_dashboard/package/rpm
+$ ./create_ganglia_addon_rpm.sh
+$ ./create_nagios_addon_rpm.sh
++--
+
+  Running the above creates the following two RPMs:
+
+   * mon_dashboard/package/rpm/build/rpmbuild/RPMS/noarch/hdp_mon_ganglia_addons-0.0.2.14-1.noarch.rpm
+
+   * mon_dashboard/package/rpm/build/rpmbuild/RPMS/noarch/hdp_mon_nagios_addons-0.0.2.14-1.noarch.rpm

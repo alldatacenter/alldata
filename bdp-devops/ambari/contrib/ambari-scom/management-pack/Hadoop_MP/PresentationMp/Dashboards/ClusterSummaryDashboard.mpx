@@ -1,0 +1,232 @@
+﻿<!--## Licensed to the Apache Software Foundation (ASF) under one
+## or more contributor license agreements.  See the NOTICE file
+## distributed with this work for additional information
+## regarding copyright ownership.  The ASF licenses this file
+## to you under the Apache License, Version 2.0 (the
+## "License"); you may not use this file except in compliance
+## with the License.  You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing,
+## software distributed under the License is distributed on an
+## "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+## KIND, either express or implied.  See the License for the
+## specific language governing permissions and limitations
+## under the License.-->
+
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="Ambari.SCOM.Presentation.Dashboard.ClusterSummary"
+                     Accessibility="Public" Lifetime="ReferenceCount" />
+    </ComponentTypes>
+
+    <ComponentReferences>
+      <ComponentReference ID="Ambari.SCOM.Presentation.FolderItem.ClusterSummaryDashboard"
+                          TypeID="Ambari.SCOM.Presentation.Dashboard.ClusterSummary"
+                          Parent="HDLibrary!Ambari.SCOM.ViewFolder.Root"
+                          Accessibility="Public" />
+    </ComponentReferences>
+
+    <ComponentImplementations>
+      <ComponentImplementation ID="Ambari.SCOM.Presentation.Dashboard.ClusterSummaryImplementation"
+                               TypeId="Ambari.SCOM.Presentation.Dashboard.ClusterSummary"
+                               Accessibility="Internal" Platform="Wpf, Silverlight">
+        <Composite>
+          <Variable Id="SelectedClusters" Type="mpinstance://System.Library!System.Entity[]" />
+          <Variable Id="ClustersWithRecursionLevel" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataProvider/MPInstanceWithRecursionLevel[]" />
+          <Variable Id="SelectedServices" Type="mpinstance://System.Library!System.Entity[]" />
+          <Variable Id="ServicesWithRecursionLevel" Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.DataProvider/MPInstanceWithRecursionLevel[]" />
+
+          <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.ComponentContainer">
+            <Binding PropertyId="Visual">
+              <Component TypeId="Visualization!Microsoft.SystemCenter.Visualization.StaticGridLayout">
+                <Binding PropertyId="ConfigType">
+                  <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!GridLayout05CellWideTopSmallTopLeftConfig" />
+                </Binding>
+                <Binding PropertyId="CellRegionMappings">
+                  <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping[]">
+                    <!-- Clusters list -->
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="0" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.ClustersState" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="ClustersState" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="SelectedEntities" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedClusters$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+
+                    <!-- Services list -->
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="1" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.ClusterServicesState" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="ClusterServicesState" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="TargetIds" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/ClustersWithRecursionLevel$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="SelectedEntities" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedServices$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+
+                    <!-- Hosts list -->
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="3" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.HostComponentsOfClusterServiceState" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="HostComponentsOfClusterServiceState" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="TargetIds" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/ServicesWithRecursionLevel$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+
+                    <!-- Live vs Dead nodes -->
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="2" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.LiveVsDeadNodes" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="LiveVsDeadNodes" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="SelectedClusters" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedClusters$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+
+                    <!-- Space Utilization -->
+                    <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/CellRegionMapping">
+                      <Binding PropertyId="CellIndex">
+                        <SimpleValue Type="xsd://int" Value="4" />
+                      </Binding>
+                      <Binding PropertyId="RegionContent">
+                        <SimpleValue Type="xsd://string" Value="Ambari.SCOM.Presentation!Ambari.SCOM.Presentation.Widget.SpaceUtilization" />
+                      </Binding>
+                      <Binding PropertyId="RegionId">
+                        <SimpleValue Type="xsd://string" Value="SpaceUtilization" />
+                      </Binding>
+                      <Binding PropertyId="RegionParameters">
+                        <ComplexValueCollection Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter[]">
+                          <ComplexValue Type="xsd://Microsoft.SystemCenter.Visualization.Library!Microsoft.SystemCenter.Visualization.LayoutConfig/HostedRequestParameter">
+                            <Binding PropertyId="Name">
+                              <SimpleValue Type="xsd://string" Value="SelectedClusters" />
+                            </Binding>
+                            <Binding PropertyId="Value">
+                              <Reference>$Variable/SelectedClusters$</Reference>
+                            </Binding>
+                          </ComplexValue>
+                        </ComplexValueCollection>
+                      </Binding>
+                    </ComplexValue>
+                  </ComplexValueCollection>
+                </Binding>
+              </Component>
+            </Binding>
+
+            <Binding PropertyId="Objects">
+              <Component TypeId="Ambari.SCOM.Presentation.Component.EntitiesToInstancesWithRecursionLevelConverter">
+                <Binding PropertyId="Entities">
+                  <Reference>$Variable/SelectedClusters$</Reference>
+                </Binding>
+                <Binding PropertyId="RecursionLevel">
+                  <SimpleValue Type="xsd://int" Value="2" />
+                </Binding>
+                <Binding PropertyId="InstancesWithRecursionLevel">
+                  <Reference>$Variable/ClustersWithRecursionLevel$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+
+            <Binding PropertyId="Objects">
+              <Component TypeId="Ambari.SCOM.Presentation.Component.EntitiesToInstancesWithRecursionLevelConverter">
+                <Binding PropertyId="Entities">
+                  <Reference>$Variable/SelectedServices$</Reference>
+                </Binding>
+                <Binding PropertyId="RecursionLevel">
+                  <SimpleValue Type="xsd://int" Value="1" />
+                </Binding>
+                <Binding PropertyId="InstancesWithRecursionLevel">
+                  <Reference>$Variable/ServicesWithRecursionLevel$</Reference>
+                </Binding>
+              </Component>
+            </Binding>
+          </Component>
+        </Composite>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.Dashboard.ClusterSummary">
+          <Name>Cluster Summary</Name>
+        </DisplayString>
+        <DisplayString ElementID="Ambari.SCOM.Presentation.FolderItem.ClusterSummaryDashboard">
+          <Name>Cluster Summary</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>
