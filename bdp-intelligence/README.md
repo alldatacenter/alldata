@@ -1,5 +1,7 @@
 # AI FOR BDP PLATFORM 人工智能引擎
 
+数据平台的人工智能引擎：AI算法驱动
+
 1、pytorch
 2、tensorflow
 3、分类算法
