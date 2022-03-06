@@ -1,9 +1,8 @@
-package com.platform.schedule.util;
+package com.platform.ds.plugin.task.java;
 
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Map;
 
 /**
