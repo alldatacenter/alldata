@@ -1,0 +1,55 @@
+griffin:
+
+  image: apachegriffin/griffin_spark2:0.3.0 # 下载的镜像名称
+
+  hostname: griffin # 设置的docker主机名
+
+  links:
+
+    - es # 关联的其他docker的主机名
+
+  environment:  # 配置环境变量
+
+    ES_HOSTNAME: es
+
+  volumes:
+
+    - /var/lib/mysql
+
+  ports:  #映射到docker外的端口号: docker内组件的端口号
+
+    - 32122:2122
+
+    - 38088:8088  # yarn rm web ui
+
+    - 33306:3306  # mysql
+
+    - 35432:5432  # postgres
+
+    - 38042:8042  # yarn nm web ui
+
+    - 39083:9083  # hive-metastore
+
+    - 38998:8998  # livy
+
+    - 38080:8080  # griffin ui
+
+  tty: true
+
+  container_name: griffin # docker名称
+
+ 
+
+es:
+
+  image: apachegriffin/elasticsearch
+
+  hostname: es
+
+  ports:
+
+    - 39200:9200
+
+    - 39300:9300
+
+  container_name: es

@@ -7,3 +7,13 @@
 
 开源方案： Apache Griffin + ES + SparkSql
 Griffin measure SparkSql规则任务二次开发
+
+3.1 Measure源码二次开发
+
+3.2 支持用户自定义规则
+
+3.3 内置常用的griffin规则
+
+3.4 支持spark sql转化为规则
+
+3.5 支持数据质量全链路告警监控

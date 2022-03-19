@@ -1,0 +1,70 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 661,
+    "max_score": 1.0,
+    "hits": [{
+      "_index": "griffin",
+      "_type": "accuracy",
+      "_id": "AX-TUbjN6xwiw4NaE4p1",
+      "_score": 1.0,
+      "_source": {
+        "name": "testwlh",
+        "tmst": 1647357659000,
+        "value": {
+          "county_distcount": 9,
+          "county_count": 100
+        }
+      }
+    },
+      {
+        "_index": "griffin",
+        "_type": "accuracy",
+        "_id": "AX-TUgLL6xwiw4NaE4p2",
+        "_score": 1.0,
+        "_source": {
+          "name": "testwlh",
+          "tmst": 1647357660000,
+          "value": {
+            "county_distcount": 9,
+            "county_count": 100
+          }
+        }
+      },
+      {
+        "_index": "griffin",
+        "_type": "accuracy",
+        "_id": "AX-TU4uC6xwiw4NaE4p5",
+        "_score": 1.0,
+        "_source": {
+          "name": "testwlh",
+          "tmst": 1647357779000,
+          "value": {
+            "county_distcount": 9,
+            "county_count": 100
+          }
+        }
+      },
+      {
+        "_index": "griffin",
+        "_type": "accuracy",
+        "_id": "AX-TVHUe6xwiw4NaE4p7",
+        "_score": 1.0,
+        "_source": {
+          "name": "testwlh",
+          "tmst": 1647357839000,
+          "value": {
+            "county_distcount": 9,
+            "county_count": 100
+          }
+        }
+      }
+    ]
+  }
+}
