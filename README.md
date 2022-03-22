@@ -333,4 +333,8 @@ Github大数据QQ群二维码：
 
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/design/wechat_group/1651645786364_.pic.jpg
 
+开源大数据平台原型图:
+
+https://modao.cc/app/HhitGZQTr954c7Ug8XBvAY#screen=sl11y8j8sne21p9
+
 ```
