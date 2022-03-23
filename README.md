@@ -132,7 +132,7 @@ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/spark/291158755753
 	mall-shopping-wc: 商城小程序
 	mall-shopping-mobile: 商城前台
 	mall-shopping-pc: 商城pc端
-	mall-shopping-pc-service: 商城pc端服务
+	mall-pc-backend: 商城pc端服务
 	mall-shopping-service: 商城前台服务（小程序和前台接入此接口）
 商城后台：
 	mall-admin-web: 商城后台
@@ -249,7 +249,7 @@ https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/64.png
 
 10.3.4.1、前端：启动mall-shopping-pc项目，进入项目目录，执行npm install和npm run dev；
 
-10.3.4.2、后端：启动mall-shopping-pc-service项目，配置tomcat端口为8095；
+10.3.4.2、后端：启动mall-pc-backend项目，配置tomcat端口为8095；
 
 https://my-macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/65.png
 

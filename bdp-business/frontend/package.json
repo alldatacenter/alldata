@@ -1,0 +1,102 @@
+{
+  "name": "DASHBOARD-BDP-PLATFORM",
+  "version": "1.0.0",
+  "private": true,
+  "description": "开源大数据平台",
+  "scripts": {
+    "start": "cross-env UMI_UI=none MOCK=none umi dev",
+    "start:dev": "cross-env REACT_APP_ENV=dev UMI_UI=none MOCK=none umi dev",
+    "start:pre": "cross-env REACT_APP_ENV=pre UMI_UI=none MOCK=none umi dev",
+    "start:test": "cross-env REACT_APP_ENV=test UMI_UI=none MOCK=none umi dev",
+    "analyze": "cross-env ANALYZE=1 umi build",
+    "build:prod": "UMI_ENV=prod umi build",
+    "build:test": "UMI_ENV=test umi build",
+    "deploy": "serve -l 7000 -s dist",
+    "postinstall": "umi g tmp",
+    "lint": "umi g tmp && npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:prettier": "prettier --c \"**/*\" --end-of-line auto",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "prettier": "prettier -c --write \"**/*\"",
+    "pretest": "node ./tests/beforeTest",
+    "test": "umi test",
+    "test:all": "node ./tests/run-tests.js",
+    "test:component": "umi test ./src/components",
+    "tsc": "tsc"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.less": "stylelint --fix --syntax less",
+    "**/*.{js,jsx,ts,tsx}": "eslint --fix",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": "prettier --write"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "dependencies": {
+    "@ant-design/icons": "^4.0.0",
+    "@ant-design/pro-layout": "^6.2.5",
+    "@ant-design/pro-table": "^2.4.4",
+    "@antv/data-set": "^0.11.4",
+    "@antv/g2": "^4.0.13",
+    "@antv/g6": "^3.8.0",
+    "@antv/graphin": "^1.4.4",
+    "@apollo/client": "^3.0.2",
+    "accurate": "^1.5.5",
+    "antd": "^4.4.3",
+    "babel-plugin-import": "^1.13.1",
+    "bizcharts": "^4.0.11",
+    "braft-editor": "^2.3.9",
+    "classnames": "^2.2.6",
+    "graphql": "^15.3.0",
+    "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.19",
+    "moment": "^2.27.0",
+    "omit.js": "^1.0.2",
+    "qs": "^6.9.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.2.0",
+    "serve": "^11.3.2",
+    "umi": "^3.1.0",
+    "umi-request": "^1.0.8",
+    "use-merge-value": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.7",
+    "@types/express": "^4.17.0",
+    "@types/history": "^4.7.2",
+    "@types/jest": "^26.0.5",
+    "@types/lodash": "^4.14.158",
+    "@types/qs": "^6.5.3",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "^5.0.13",
+    "@umijs/fabric": "^2.2.0",
+    "@umijs/plugin-esbuild": "^1.0.0-beta.2",
+    "@umijs/preset-ant-design-pro": "^1.2.0",
+    "@umijs/preset-react": "^1.5.19",
+    "carlo": "^0.9.46",
+    "cross-env": "^7.0.0",
+    "cross-port-killer": "^1.1.1",
+    "detect-installer": "^1.0.1",
+    "eslint": "^7.5.0",
+    "express": "^4.17.1",
+    "husky": "^4.0.7",
+    "lint-staged": "^10.0.0",
+    "mockjs": "^1.0.1-beta3",
+    "prettier": "^2.0.5",
+    "puppeteer-core": "^3.0.0",
+    "stylelint": "^13.0.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}
