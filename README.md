@@ -1,4 +1,4 @@
-# 大数据生态解决方案数据平台 https://github.com/wlhbdp/bdp-platform
+# 大数据生态解决方案数据平台 https://github.com/authorwlh/wlhbdp
 
 # Demo网页体验 
 
