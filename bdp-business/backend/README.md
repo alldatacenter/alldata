@@ -1,6 +1,7 @@
-# BACKEND FOR BDP PLATFORM
+# DJANGO BACKEND FOR BDP PLATFORM
 
-> 开源大数据平台
+> 开源大数据平台Django后端
+> 基本上轻量级Django orm类型的接口都走backend, 譬如登陆
 
 ## 环境配置
 1.建议在项目根目录创建 `venv` 虚拟环境，通过以下命令进入虚拟环境：
@@ -38,7 +39,7 @@ main/settings
 1.启动命令
 
 ```bash
-python manage.py runserver
+python manage.py runserver localhost:9800
 ```
 
 2.生成迁移文件
