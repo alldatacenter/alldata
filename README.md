@@ -1,5 +1,17 @@
 # 大数据生态解决方案数据平台 https://github.com/wlhbdp/bdp-platform
 
+# demo地址 
+
+~~~markdown
+
+url: http://112.74.93.144:3000/
+
+测试账号：test
+
+密码：test123.
+
+~~~
+
 ~~~markdown
 1、数据平台:
 	bdp-platform：基于大数据、数据平台、微服务、机器学习、商城、自动化运维、DevOps、容器部署平台、数据平台采集、数据平台存储、数据平台计算、数据平台开发、数据平台应用搭建的大数据解决方案。
