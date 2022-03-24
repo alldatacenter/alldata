@@ -1,8 +1,7 @@
 # 大数据生态解决方案数据平台 https://github.com/wlhbdp/bdp-platform
 
-# demo地址 
+# Demo网页体验 
 
-~~~markdown
 
 url: http://112.74.93.144:3000/
 
@@ -10,7 +9,21 @@ url: http://112.74.93.144:3000/
 
 密码：test123.
 
-~~~
+原型图：
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
+
+Demo效果图：
+<img width="1436" alt="image" src="https://user-images.githubusercontent.com/20246692/159821607-34a560e8-680e-43eb-9143-6edd44fda1d4.png">
+<img width="1121" alt="image" src="https://user-images.githubusercontent.com/20246692/159821634-a478387c-8c39-4141-b231-fbd8a5dea411.png">
+<img width="1077" alt="image" src="https://user-images.githubusercontent.com/20246692/159821730-eef830b8-1029-4ffb-8373-ed49bd583b96.png">
+<img width="1085" alt="image" src="https://user-images.githubusercontent.com/20246692/159821745-16bba52a-67df-483f-ad75-de5f2b0f0bbc.png">
+<img width="1194" alt="image" src="https://user-images.githubusercontent.com/20246692/159821759-62281f52-1730-4ce8-94be-38afbf0ff562.png">
+<img width="1066" alt="image" src="https://user-images.githubusercontent.com/20246692/159821776-f480fde9-7e2f-4840-8d2f-b871336a49e0.png">
+<img width="1080" alt="image" src="https://user-images.githubusercontent.com/20246692/159821800-0a9f15e6-d6f1-4d0d-a136-e7cb5b839c3f.png">
+<img width="1174" alt="image" src="https://user-images.githubusercontent.com/20246692/159821817-2688c2ea-8116-4a4b-93cf-80442c1c801b.png">
+<img width="1095" alt="image" src="https://user-images.githubusercontent.com/20246692/159821835-e95f5ca6-c090-4722-9ad5-2c3f6c5ae78f.png">
+<img width="1072" alt="image" src="https://user-images.githubusercontent.com/20246692/159821850-11309976-51d4-40c9-92ed-d49b08dd762c.png">
+
 
 ~~~markdown
 1、数据平台:
