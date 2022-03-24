@@ -17,7 +17,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'wlhbdp_mysql',
         'USER': 'root',
-        'PASSWORD': 'YL1cvhweVPspMQ.',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': 3306,
         'OPTIONS': {
@@ -25,5 +25,3 @@ DATABASES = {
         }
     }
 }
-# Json file path
-JSON_PATH = '/Users/wlhbdp/Downloads/wlhbdp/bdp/bdp-brandmining/backend/data/'

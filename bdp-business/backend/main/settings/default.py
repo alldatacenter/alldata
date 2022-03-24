@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "^3vp4=)-sbxb5d%sim79^j-sy4!=h=i0f6#)2-aw#r*9(y-ced"
+SECRET_KEY = "xxxkey"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -143,9 +143,6 @@ REDIS_DB = 0
 
 # Access host
 ACCESS_HOST = "http://127.0.0.1:3000"
-
-# Json file path
-JSON_PATH = '/Users/wlhbdp/Downloads/wlhbdp/bdp/bdp-brandmining/backend/data/'
 
 # Crontab
 CRONTAB_COMMAND_SUFFIX = "2>&1"

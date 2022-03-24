@@ -13,8 +13,12 @@ source venv/bin/activate
 2.安装项目依赖：
 
 ```bash
+建议使用mysql5.7, 而不是mysql8
+
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+
 export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
+
 pip install -r requirements.txt
 ```
 
@@ -57,7 +61,7 @@ python manage.py migrate
 
 ### 生产环境 & 测试环境
 
-**注意：环境千万不要用错，否则可能导致不可挽回的局面（比如在测试环境连了生产环境的数据库，然后一顿猛操作...）**
+**注意：环境千万不要用错**
 
 1.启动
 
