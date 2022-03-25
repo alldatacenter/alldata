@@ -1,13 +1,10 @@
-# 大数据生态解决方案数据平台 https://github.com/authorwlh/wlhbdp
+# 🔥大数据生态解决方案数据平台 
+# https://github.com/authorwlh/wlhbdp
 
-# Demo网页体验 
+# 💥 Demo网页体验
+# http://112.74.93.144:3000
 
-
-url: http://112.74.93.144:3000/
-
-测试账号：test
-
-密码：test123.
+⚡️⚡️ 测试账号：test 密码：test123.
 
 原型图：
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
