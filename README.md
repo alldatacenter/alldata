@@ -358,9 +358,10 @@ job-schedule: 任务提交平台
 <img width="341" alt="image" src="https://user-images.githubusercontent.com/20246692/160220720-6be76006-434e-4560-86f9-bc4ec5bafe2e.png">
 <br/>
 
+⭐️ [linhaopenghong@gmail.com](https://mail.google.com/mail/u/0/#inbox)
 <br/>
-⭐️ [邮箱](linhaopenghong@gmail.com)  |  ⭐️ [微信](https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png)
+⭐️ [Wechat](https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png)
 <br/>
-<br/>
+
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png">
 <br>
