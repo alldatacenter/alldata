@@ -1,0 +1,28 @@
+{
+  "session_properties": [
+    {
+      "user": "admin",
+      "property": ".*",
+      "allow": true
+    },
+    {
+      "user": "alice",
+      "property": "dangerous",
+      "allow": false
+    },
+    {
+      "user": "alice",
+      "allow": true
+    },
+    {
+      "user": "bob",
+      "property": "safe",
+      "allow": true
+    },
+    {
+      "group": "staff",
+      "property": "staff",
+      "allow": true
+    }
+  ]
+}

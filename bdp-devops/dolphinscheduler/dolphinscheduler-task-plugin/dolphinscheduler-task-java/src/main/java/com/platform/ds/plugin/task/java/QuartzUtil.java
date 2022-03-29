@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 /**
- * @program: bdp-platform
+ * @program: wlhbdp
  * @description: 对quartz任务进行操作
  * @author: wlhbdp
  * @create: 2021-06-16 17:29

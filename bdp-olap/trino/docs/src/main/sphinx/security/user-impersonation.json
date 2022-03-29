@@ -1,0 +1,17 @@
+{
+    "impersonation": [
+        {
+            "original_role": "admin",
+            "new_user": "bob",
+            "allow": false
+        },
+        {
+            "original_role": "admin",
+            "new_user": ".*"
+        },
+        {
+            "original_user": ".*",
+            "new_user": "test"
+        }
+    ]
+}
