@@ -14,7 +14,10 @@
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
 
 # 💥 Demo展示：
-<img width="1436" alt="image" src="https://user-images.githubusercontent.com/20246692/159821607-34a560e8-680e-43eb-9143-6edd44fda1d4.png">
+<img width="706" alt="image" src="https://user-images.githubusercontent.com/20246692/160780581-b9b1ecc7-8675-4085-80c8-d781032b7751.png">
+<img width="699" alt="image" src="https://user-images.githubusercontent.com/20246692/160780205-17756e35-439e-479c-b950-25c444f0dbcf.png">
+<img width="715" alt="image" src="https://user-images.githubusercontent.com/20246692/160780446-627b34c4-2418-455f-ba87-09c788bb175c.png">
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/20246692/160780684-ed3a29ac-3c6c-4931-852a-be2066983b8a.png">
 <br/>
 
 ~~~markdown
