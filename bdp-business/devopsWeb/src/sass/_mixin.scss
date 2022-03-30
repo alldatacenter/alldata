@@ -1,0 +1,811 @@
+@charset "utf-8";
+
+/**
+ * _mixin.scss 常见样式封装、兼容性封装、常见工具方法
+ *
+ * --- prefixer ---
+ *
+ * --- flex ----
+ * display_flex
+ * flex
+ * flex_grow
+ * flex_shrink
+ * flex_basis
+ * flex_align_items
+ * flex_justify_content
+ * flex_childPos
+ *
+ * --- layout  ---
+ * box_sizing
+ * clear
+ *
+ * --- appearance ---
+ * text_ellipsis
+ * opacity
+ * box_shadow
+ * appearance
+ * bg_gradient
+ *   #twoColor
+ *   #threeColor
+ *
+ * --- transform ---
+ * transform
+ * scale
+ * skew
+ * translate
+ * rotate
+ * perspective
+ * origin
+ *
+ * --- transition ---
+ * transition
+ * transition-transform
+ *
+ * --- animation ---
+ * animation
+ * keyframes
+ *
+ * --- media ---
+ * screenResolution
+ * screenForIE10AndLater
+ * screenForIE8
+ * media
+ *
+ * --- other ---
+ * inlineBlock
+ * square
+ * absoluteCenter
+ * triangle
+ * bfc
+ * retina 1px line
+ * update in 2016-05-18
+ * setFontSizeForRem
+ *
+ * --- function ---
+ * update in 2016-01-21
+ * stripUnits
+ * px2rem
+ * 
+ */
+
+
+/* ------------------------------ prefixer ------------------------------ */
+
+
+/* 是否支持某个浏览器的前缀，如果你不想支持，可以设置为false */
+
+$prefix-for-webkit: true !default;
+$prefix-for-mozilla: true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera: true !default;
+$prefix-for-spec: true !default; // 标准版
+@mixin prefixer($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+        @if $prefix==webkit and $prefix-for-webkit==true {
+            -webkit-#{$property}: $value;
+        }
+        @else if $prefix==moz and $prefix-for-mozilla==true {
+            -moz-#{$property}: $value;
+        }
+        @else if $prefix==ms and $prefix-for-microsoft==true {
+            -ms-#{$property}: $value;
+        }
+        @else if $prefix==o and $prefix-for-opera==true {
+            -o-#{$property}: $value;
+        }
+        @else if $prefix==spec and $prefix-for-spec==true {
+            #{$property}: $value;
+        }
+        @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
+    }
+}
+
+// 调用范例：
+// selector {
+//   @include prefixer(box-shadow, $shadow, webkit spec);
+// }
+
+/* ------------------------------ flex ------------------------------ */
+
+
+/* display_flex */
+
+%display_flex {
+    display: -o-box;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+
+/**
+ * 容器的属性
+ * flex-direction、flex-wrap、flex-flow、justify-content、align-items、align-content
+ */
+
+
+/**
+ * flex_direction 伸缩流方向，决定主轴 main axis 的方向
+ * @param: row | row-reverse | column | column-reverse
+ */
+
+@mixin flex_direction_ForOld($direction) {
+    @if $direction==row {
+        //old版本还有 inline-axis | block-axis，暂不考虑
+        @include prefixer(box-orient, horizontal, webkit moz spec);
+    }
+    @else if $direction==column {
+        @include prefixer(box-orient, vertical, webkit moz spec);
+    }
+    @else if $direction==row-reverse {
+        @include prefixer(box-orient, horizontal, webkit moz spec);
+        @include prefixer(box-direction, reverse, webkit moz spec);
+    }
+    @else {
+        @include prefixer(box-orient, vertical, webkit moz spec);
+        @include prefixer(box-direction, reverse, webkit moz spec);
+    }
+}
+
+@mixin flex_direction($direction) {
+    @include flex_direction_ForOld($direction);
+    @include prefixer(flex-direction, $direction, webkit moz ms spec);
+}
+
+
+/* 
+ * flex_justify_content 属性定义了项目在主轴上的对齐方式
+ * @param: flex-start | flex-end | center | space-between | space-around
+ */
+
+@mixin flex_justify_content($value) {
+    // box-pack:start|end|center|justify
+    // flex-pack:start|end|center|justify|distribute, for IE10
+    @if $value=='space-around' {
+        @include prefixer(box-pack, justify, webkit moz);
+        -ms-flex-pack: distribute;
+    }
+    @else if $value=='flex-start' {
+        @include prefixer(box-pack, start, webkit moz);
+        -ms-flex-pack: start;
+    }
+    @else if $value=='flex-end' {
+        @include prefixer(box-pack, end, webkit moz);
+        -ms-flex-pack: end;
+    }
+    @else {
+        @include prefixer(box-pack, $value, webkit moz);
+        -ms-flex-pack: $value;
+    }
+    -ms-flex-pack: $value; // for IE10
+    @include prefixer(justify-content, $value, webkit ms spec);
+}
+
+
+/* 
+ * flex_align_items 属性定义项目在交叉轴上如何对齐
+ * @param: flex-start | flex-end | center | baseline | stretch
+ */
+
+@mixin flex_align_items($value) {
+    // box-align:start|end|center|baseline|stretch
+    @if $value=='flex-start' {
+        @include prefixer(box-align, start, webkit moz ms o);
+    }
+    @else if $value=='flex-end' {
+        @include prefixer(box-align, end, webkit moz ms o);
+    }
+    @else {
+        @include prefixer(box-align, $value, webkit moz ms o);
+    }
+    -ms-flex-align: $value; // for IE10
+    @include prefixer(align-items, $value, webkit moz ms o spec);
+}
+
+
+/* flex_childPos horizontal/vertical */
+
+@mixin flex_childPos($dir, $value) {
+    @if $dir=='horizontal' {
+        @include flex_justify_content($value);
+    }
+    @if $dir=='vertical' {
+        @include flex_align_items($value);
+    }
+}
+
+
+/**
+ * flex_align_content 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用，所以此时 flex-wrap 必须为 wrap。
+ * @param: flex-start | flex-end | center | space-between | space-around | stretch
+ */
+
+@mixin flex_align_content($value) {
+    @include prefixer(align-content, $value, webkit moz ms o spec);
+}
+
+
+/**
+ * 项目的属性
+ * order、flex-grow、flex-shrink、flex-basis、flex、align-self
+ */
+
+
+/* 
+ * flex_grow 属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+ * @param: <number>(default 0)
+ */
+
+@mixin flex_grow($num) {
+    -ms-flex: $num; // for IE10
+    -moz-box-flex-grow: $num;
+    @include prefixer(box-flex, $num, webkit moz ms o);
+    @include prefixer(flex-grow, $num, webkit ms spec);
+}
+
+
+/* 
+ * flex_shrink 属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+ * @param: <number>(default 1)
+ */
+
+@mixin flex_shrink($num) {
+    @include prefixer(box-flex-shrink, $num, webkit moz);
+    @include prefixer(flex-shrink, $num, webkit ms spec);
+}
+
+
+/* 
+ * flex_basis 属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+ * @param: <length> | auto(default)
+ */
+
+@mixin flex_basis($num) {
+    @include prefixer(box-flex-basis, $num, webkit moz);
+    @include prefixer(flex-basis, $num, webkit ms spec);
+}
+
+
+/* 
+ * flex 是flex-grow, flex-shrink 和 flex-basis的简写，默认值为 0 1 auto，后两个属性可选。
+ * @param: flex-grow flex-shrink flex-basis
+ */
+
+@mixin flex($value) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    @include prefixer(box-flex, $value, webkit moz ms o);
+    @include prefixer(flex, $value, webkit moz ms o spec);
+}
+
+
+/* 
+ * align_self 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+ * @param: auto(default) | flex-start | flex-end | center | baseline | stretch
+ */
+
+@mixin align_self($value) {
+    @include prefixer(align-self, $value, webkit moz ms o spec);
+}
+
+
+/* ------------------------------ layout ------------------------------ */
+
+
+/* box_sizing */
+
+@mixin box_sizing($value) {
+    @include prefixer(box-sizing, $value, webkit moz spec);
+}
+
+
+/* clear */
+
+%clear {
+    *zoom: 1;
+    &:after {
+        clear: both;
+        content: ".";
+        display: block;
+        line-height: 0;
+        font-size: 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
+}
+
+
+/* ------------------------------ appearance ------------------------------ */
+
+
+/* text_ellipsis */
+
+%text_ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+
+/* opacity */
+
+@mixin opacity($var) {
+    -khtml-opacity: $var;
+    filter: alpha(opacity=$var*100);
+    @include prefixer(opacity, $var, webkit moz spec);
+}
+
+
+/* box_shadow */
+
+@mixin box_shadow($value...) {
+    @include prefixer(box-shadow, $value, webkit moz spec);
+}
+
+
+/* appearance */
+
+@mixin appearance($value) {
+    // 暂不支持IE和Opera
+    @include prefixer(appearance, $value, webkit moz spec);
+}
+
+
+/* bg_gradient 跨浏览器的渐变背景 */
+
+
+/* twoColor 两种颜色的渐变 */
+
+
+/* 垂直渐变，自上而下 */
+
+@mixin gradient_vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+    background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent); // Opera 12
+    background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+}
+
+
+/* 水平渐变，自左而右 */
+
+@mixin gradient_horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+    background-image: -webkit-linear-gradient(left, color-stop($start-color $start-percent), color-stop($end-color $end-percent)); // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
+    background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+}
+
+
+/* threeColor 三种颜色的渐变 */
+
+
+/* 垂直渐变，自上而下 */
+
+@mixin gradient_vertical_threeColor($start-color: #555, $middle-color: #444, $end-color: #333, $start-percent: 0%, $middle-percent: 50%, $end-percent: 100%) {
+    background-image: -webkit-linear-gradient(top, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(top, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Opera 12
+    background-image: linear-gradient(to bottom, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+}
+
+
+/* 水平渐变，自左而右 */
+
+@mixin gradient_horizontal_threeColor($start-color: #555, $middle-color: #444, $end-color: #333, $start-percent: 0%, $middle-percent: 50%, $end-percent: 100%) {
+    background-image: -webkit-linear-gradient(left, color-stop($start-color $start-percent), color-stop($middle-color $middle-percent), color-stop($end-color $end-percent)); // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(left, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Opera 12
+    background-image: linear-gradient(to right, $start-color $start-percent, $middle-color $middle-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+}
+
+
+/* ------------------------------ transform ------------------------------ */
+
+
+/* transform */
+
+@mixin transform($value...) {
+    @include prefixer(transform, $value, webkit moz ms o spec);
+}
+
+
+/* scale */
+
+@mixin scale($ratio...) {
+    @include prefixer(transform, scale($ratio), webkit moz ms o spec);
+}
+
+@mixin scale($ratioX, $ratioY...) {
+    @include prefixer(transform, scale($ratioX, $ratioY), webkit moz ms o spec);
+}
+
+@mixin scaleX($ratio) {
+    @include prefixer(transform, scaleX($ratio), webkit moz ms o spec);
+}
+
+@mixin scaleY($ratio) {
+    @include prefixer(transform, scaleY($ratio), webkit moz ms o spec);
+}
+
+
+/* skew */
+
+@mixin skew($x, $y) {
+    @include prefixer(transform, skew($x, $y), webkit moz o spec);
+    -ms-transform: skewX($x) skewY($y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
+}
+
+
+/* translate */
+
+@mixin translate($x, $y) {
+    @include prefixer(transform, translate($x, $y), webkit moz ms o spec);
+}
+
+@mixin translate3d($x, $y, $z) {
+    @include prefixer(transform, translate3d($x, $y, $z), webkit moz spec);
+}
+
+
+/* rotate */
+
+@mixin rotate($degrees) {
+    @include prefixer(transform, rotate($degrees), webkit moz ms o spec);
+}
+
+@mixin rotateX($degrees) {
+    @include prefixer(transform, rotateX($degrees), webkit moz ms o spec);
+}
+
+@mixin rotateY($degrees) {
+    @include prefixer(transform, rotateY($degrees), webkit moz ms o spec);
+}
+
+
+/* perspective */
+
+@mixin perspective($perspective) {
+    @include prefixer(perspective, $perspective, webkit moz spec);
+}
+
+
+/* origin */
+
+@mixin perspective-origin($perspective) {
+    @include prefixer(perspective-origin, $perspective, webkit moz spec);
+}
+
+@mixin transform-origin($origin) {
+    @include prefixer(transform-origin, $origin, webkit moz ms spec);
+}
+
+
+/* ------------------------------ transition ------------------------------ */
+
+
+/* transition */
+
+@mixin transition($transition...) {
+    @include prefixer(transition, $transition, webkit moz o spec);
+}
+
+@mixin transition-property($transition-property...) {
+    @include prefixer(transition-property, $transition-property, webkit moz o spec);
+}
+
+@mixin transition-delay($transition-delay) {
+    @include prefixer(transition-delay, $transition-delay, webkit moz o spec);
+}
+
+@mixin transition-duration($transition-duration...) {
+    @include prefixer(transition-duration, $transition-duration, webkit moz o spec);
+}
+
+@mixin transition-timing-function($timing-function) {
+    @include prefixer(transition-timing-function, $timing-function, webkit moz o spec);
+}
+
+
+/* ------------------------------ animation ------------------------------ */
+
+
+/* animation */
+
+@mixin animation($animation) {
+    @include prefixer(animation, $animation, webkit moz o spec);
+}
+
+@mixin animation-name($name) {
+    @include prefixer(animation-name, $name, webkit moz o spec);
+}
+
+@mixin animation-duration($duration) {
+    @include prefixer(animation-duration, $duration, webkit moz o spec);
+}
+
+@mixin animation-timing-function($timing-function) {
+    @include prefixer(animation-timing-function, $timing-function, webkit moz o spec);
+}
+
+@mixin animation-delay($delay) {
+    @include prefixer(animation-delay, $delay, webkit moz o spec);
+}
+
+@mixin animation-iteration-count($iteration-count) {
+    @include prefixer(animation-iteration-count, $iteration-count, webkit moz o spec);
+}
+
+@mixin animation-direction($direction) {
+    @include prefixer(animation-direction, $direction, webkit moz o spec);
+}
+
+@mixin animation-fill-mode($fill-mode) {
+    @include prefixer(animation-fill-mode, $fill-mode, webkit moz o spec);
+}
+
+
+/* keyframes */
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-o-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+// 封装keyframes作用不大，上面的写法不能根据前缀对应相应的内容。当然可以在内部做前缀的判断，但 sass v3.4.1 之后有修改日志：
+// Don’t put rulesets inside @keyframes directives when bubbling them up to the top level.
+// 以下例子可用于说明区别：（可自行用不同版本sass测试，也可线上测试：http://sassmeister.com/）
+// @mixin keyframes($animationName) {
+//     @-webkit-keyframes #{$animationName} {
+//         $browser: '-webkit-'; @content;
+//     }
+//     @-moz-keyframes #{$animationName} {
+//         $browser: '-moz-'; @content;
+//     }
+//     @-o-keyframes #{$animationName} {
+//         $browser: '-o-'; @content;
+//     }
+//     @keyframes #{$animationName} {
+//         $browser: ''; @content;
+//     }
+// } 
+// $browser: null;
+// @include keyframes('rotate') {
+//     from { #{$browser}transform: rotate(0deg);}
+//     to { #{$browser}transform: rotate(360deg);}
+// }
+
+/* ------------------------------ media ------------------------------ */
+
+
+/* screenResolution */
+
+@mixin screenResolution($num) {
+    @media only screen and (-webkit-min-device-pixel-ratio: $num), only screen and (min--moz-device-pixel-ratio: $num), only screen and (-o-min-device-pixel-ratio: $num), only screen and (min-device-pixel-ratio: $num), only screen and (min-resolution: #{$num}dppx), only screen and (min-resolution: #{$num*96}dpi) {
+        @content;
+    }
+}
+
+
+/* screenForIE10AndLater 兼容IE10&11 */
+
+@mixin screenForIE10AndLater {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        @content;
+    }
+}
+
+
+/* screenForIE8 */
+
+@mixin forIE8 {
+    @media \0screen {
+        @content;
+    }
+}
+
+
+/**
+  * media 通用media设置
+  * @param {String} $attr (eg: "min-width" "max-width")
+  * @param {String} $val (eg: "1024px")
+  */
+
+@mixin setMedia($attr, $val) {
+    @media (#{$attr}: $val) {
+        @content;
+    }
+}
+
+
+/* ------------------------------ other ------------------------------ */
+
+
+/* inlineBlock */
+
+@mixin inlineBlock {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+
+/* square 产生正方形的宽高 */
+
+@mixin square($length) {
+    width: $length;
+    height: $length;
+}
+
+
+/* absoluteCenter */
+
+@mixin absoluteCenter($width, $height) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: (-$height)/2, 0, 0, (-$width)/2;
+}
+
+
+/* triangle 小三角 */
+
+%triangleCommonStyle {
+    display: block;
+    content: " ";
+    width: 0;
+    line-height: 0;
+    font-size: 0;
+    border-style: solid;
+    border-color: transparent;
+}
+
+@mixin triangle($width, $height, $direction, $borderColor, $ie6borderColor:#f00) {
+    @extend %triangleCommonStyle;
+    border-width: $width $height;
+    _border-color: $ie6borderColor;
+    _filter: chroma(color=$ie6borderColor);
+    /* 向上小三角 */
+    @if $direction==top {
+        border-top: 0;
+        border-bottom-color: $borderColor;
+        _border-bottom-color: $borderColor;
+    }
+    /* 向下小三角 */
+    @else if $direction==bottom {
+        border-bottom: 0;
+        border-top-color: $borderColor;
+        _border-top-color: $borderColor;
+    }
+    /* 向左小三角 */
+    @else if $direction==left {
+        border-left: 0;
+        border-right-color: $borderColor;
+        _border-right-color: $borderColor;
+    }
+    /* 向右小三角 */
+    @else if $direction==right {
+        border-right: 0;
+        border-left-color: $borderColor;
+        _border-left-color: $borderColor;
+    }
+}
+
+
+/* bfc */
+
+@mixin bfc {
+    overflow: hidden;
+    zoom: 1;
+}
+
+
+/* retina 1px line */
+
+%line1px {
+    content: '';
+    width: 200%;
+    height: 1px;
+    background: url(../images/bg_line.png) repeat-x 0 0;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+
+/**
+ * setFontSizeForRem
+ * 如果要精确控制，则用js来计算设置html的fontSize，如下：
+ * 
+ * (function (doc, win) {
+    var docEl = doc.documentElement,
+    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+    recalc = function () {
+      var clientWidth = docEl.clientWidth;
+      if (!clientWidth) return;
+      docEl.style.fontSize = 37.5 * (clientWidth / 375) + 'px';
+    };
+
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvt, recalc, false);
+    doc.addEventListener('DOMContentLoaded', recalc, false); // DOM加载之后及资源加载之前去执行，即对应jQuery中的document ready
+    })(document, window);
+ * 
+ */
+
+$driveWidth: (240, 320, 360, 375, 384, 412, 411, 414, 435, 480, 540, 600, 640, 720, 768, 800, 1080, 1280, 1440, 2160, 1600);
+@mixin remProject {
+    @each $i in $driveWidth {
+        @media (width: #{$i}px) {
+            html {
+                font-size: $i/10 * 1px;
+            }
+        }
+    }
+}
+
+
+/* ------------------------------ function ------------------------------ */
+
+
+/* stripUnits */
+
+@function stripUnits($val) {
+    @return $val / ($val * 0 + 1);
+}
+
+
+/* px2rem */
+
+$design-width: 750px!default;
+$px-only: false; // true for lt IE8
+@function px2rem($pxs) {
+    $list: ();
+    @each $px in $pxs {
+        @if (unitless($px)) {
+            /*@warn 'Assuming #{$px} to be in pixels, attempting to convert it into pixels for you';
+      @return px2em($px + 0px); // That may fail.*/
+            @warn 'No unit. Pls set "px" to the numbers.';
+        }
+        @else if (unit($px)=='px') {
+            @if ($px-only) {
+                $list: append($list, $px);
+            }
+            @else {
+                // 这里的0.1对应计算html的font-size时的0.1
+                // 推导：
+                // 因为 designContentWidth / designWidth = htmlFontSize / deviceWidth * ? rem
+                // 其中 htmlFontSize = deviceWidth * 0.1
+                // 所以 ? rem = (designContentWidth / (designWidth * 0.1)) * 1rem
+                $list: append($list, ($px / ($design-width * 0.1)) * 1rem);
+            }
+        }
+        @else {
+            @warn 'Wrong unit. Pls set "px" to the numbers.';
+        }
+    }
+    @return $list();
+}

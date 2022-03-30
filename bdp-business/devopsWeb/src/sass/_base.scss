@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+/**
+ * _base.scss 项目基础样式、项目用方法、项目用function
+ */
+
+body,
+input,
+textarea,
+select,
+button {
+    font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Helvetica Neue", "Roboto", "Helvetica", "Arial", STheiti, sans-serif, sans-serif;
+}
+
+body {
+    background: #f8f9fb;
+    font-size: 14px;
+    color: #666;
+    -webkit-tap-highlight-color: transparent; // keyNote：该属性可继承，可以去掉button标签、textarea标签、标签绑定javascript事件等点击触发的高亮表现。a标签除外
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+    color: #e5b56f;
+    &,
+    &:hover,
+    &:active {
+        outline: none;
+    }
+    &,
+    &:hover {
+        text-decoration: none;
+    }
+    /* 扩大通用a标签点击时的表现区域 */
+    &:active {
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            pointer-events: none;
+            /* key note：事件穿透 */
+            top: -6px;
+            left: -6px;
+            width: 100%;
+            height: 100%;
+            padding: 6px;
+        }
+    }
+}
+
+
+/* 为适配旧版不支持flex的缩写方法，要设置这样一个空标签 */
+
+.func_growSpace {
+    display: block;
+    width: 0;
+    @include flex_grow(1);
+    @include flex_basis(0);
+}
+
+
+/* 修改placeholder颜色值 */
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #c8c8c8;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #c8c8c8;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #c8c8c8;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #c8c8c8;
+}
+
+
+/* input appearance */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    &:checked {
+        background-color: transparent;
+    }
+}
+
+label {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 24px;
+    color: #333;
+    font-weight: bold;
+}

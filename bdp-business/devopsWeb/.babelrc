@@ -1,0 +1,19 @@
+{
+    "presets": [
+        ["es2015",
+        {
+            "modules": false
+        }],
+        "stage-2",
+        "react"
+    ],
+    "plugins": [
+        "react-hot-loader/babel",
+        "transform-object-rest-spread",
+        // ["import",
+        // {
+        //     "libraryName": "antd",
+        //     "style": "css"
+        // }]
+    ]
+}

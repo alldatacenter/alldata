@@ -1,0 +1,24 @@
+{
+ "apps": [
+	 {
+	  "name": "k8s-middlelayer",
+	  "cwd": "./",
+	  "script": "app.js",
+	  "log_date_format": "YYYY-MM-DD HH:mm:ss Z",
+	  "error_file": "./log/node-app-stderr.log",
+	  "out_file": "./log/node-app-stdout.log",
+	  "pid_file": "./pids/node-geo-api.pid",
+	  "instances": 1,
+	  "min_uptime": "200s",
+	  "max_restarts": 10,
+	  "cron_restart": "1 0 * * *",
+	  "watch": false,
+	  "merge_logs": true,
+	  "exec_interpreter": "node",
+	  "exec_mode": "cluster",
+	  "instance_var": "INSTANCE_ID",
+	  "autorestart": false,
+	  "vizion": false
+	 }
+ 	]
+}
