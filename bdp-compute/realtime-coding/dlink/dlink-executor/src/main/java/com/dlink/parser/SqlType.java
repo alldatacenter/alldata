@@ -1,0 +1,53 @@
+package com.dlink.parser;
+
+/**
+ * SqlType
+ *
+ * @author wenmo
+ * @since 2021/7/3 11:11
+ */
+public enum SqlType {
+    SELECT("SELECT"),
+    CREATE("CREATE"),
+    DROP("DROP"),
+    ALTER("ALTER"),
+    INSERT("INSERT"),
+    DESC("DESC"),
+    DESCRIBE("DESCRIBE"),
+    EXPLAIN("EXPLAIN"),
+    USE("USE"),
+    SHOW("SHOW"),
+    LOAD("LOAD"),
+    UNLOAD("UNLOAD"),
+    SET("SET"),
+    RESET("RESET"),
+    EXECUTE("EXECUTE"),
+    UNKNOWN("UNKNOWN"),
+    ;
+
+    private String type;
+
+    SqlType(String type) {
+        this.type = type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public boolean equalsValue(String value) {
+        return type.equalsIgnoreCase(value);
+    }
+
+    public boolean isInsert() {
+        if (type.equals("INSERT")) {
+            return true;
+        }
+        return false;
+    }
+
+}
