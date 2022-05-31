@@ -1,4 +1,4 @@
-# 🔥大数据生态解决方案数据平台 
+# 🔥大数据生态解决方案数据平台
 # https://github.com/authorwlh/wlhbdp
 
 # 💥 Demo网页体验
@@ -13,6 +13,31 @@
 <br/>
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
 
+# 💥 数据质量：
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171132004-542b699c-2878-4648-a79e-f118f28a0ed2.png">
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171131705-86a2c0bd-cd9d-4a66-b209-5c41d1b18e56.png">
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171132036-613e1271-d122-47dc-af7c-a3ee2a203a2e.png">
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171132186-261b742a-dc88-4739-8327-08b503fce8d8.png">
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171132633-193bbba4-58d6-4b38-8e9e-4674cdfa7cdd.png">
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171132684-37ebcec6-05dd-45d6-83cd-d4f18416b755.png"> 
+<br/>
+
+<br/>
+Livy访问查看JOB
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171131636-4cb6d93b-c994-4dfa-bfee-48d2a04c4963.png">  
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171133364-8e4a8e84-c9f9-456c-9f33-c90b90cf54e4.png"> 
+<br/>
+
+<br/>
+
 # 💥 Demo展示：
 <img width="706" alt="image" src="https://user-images.githubusercontent.com/20246692/160780581-b9b1ecc7-8675-4085-80c8-d781032b7751.png">
 <img width="699" alt="image" src="https://user-images.githubusercontent.com/20246692/160780205-17756e35-439e-479c-b950-25c444f0dbcf.png">
@@ -20,35 +45,36 @@
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/20246692/160780684-ed3a29ac-3c6c-4931-852a-be2066983b8a.png">
 <br/>
 
+
 ~~~markdown
 1、数据平台:
-	bdp-platform：基于大数据、数据平台、微服务、机器学习、商城、自动化运维、DevOps、容器部署平台、数据平台采集、数据平台存储、数据平台计算、数据平台开发、数据平台应用搭建的大数据解决方案。
+bdp-platform：基于大数据、数据平台、微服务、机器学习、商城、自动化运维、DevOps、容器部署平台、数据平台采集、数据平台存储、数据平台计算、数据平台开发、数据平台应用搭建的大数据解决方案。
 数据来源：
-	商城：使用SpringBoot，Java，Vue，React，Android开发多端商城，包括网站、App、微信小程序；
-	日志：使用Java开发服务端日志、客户端日志收集系统，使用DataX实现数据的导入导出系统；
-	爬虫：爬虫平台支持可配置的爬取公网数据的任务开发；
+商城：使用SpringBoot，Java，Vue，React，Android开发多端商城，包括网站、App、微信小程序；
+日志：使用Java开发服务端日志、客户端日志收集系统，使用DataX实现数据的导入导出系统；
+爬虫：爬虫平台支持可配置的爬取公网数据的任务开发；
 数据存储：
-	分布式文件系统使用HDFS，分布式数据库使用HBase，Mongodb、Elasticsearch，内存数据库使用redis；
+分布式文件系统使用HDFS，分布式数据库使用HBase，Mongodb、Elasticsearch，内存数据库使用redis；
 数据计算：
-	使用Hive、MR、HiveSQL、ETL开发离线计算系统；
-	使用storm、flink、spark streaming开发实时计算系统；
-	使用kylin, spark开发多维度分析系统；
+使用Hive、MR、HiveSQL、ETL开发离线计算系统；
+使用storm、flink、spark streaming开发实时计算系统；
+使用kylin, spark开发多维度分析系统；
 数据开发：
-	任务管理系统：负责调度、分配、提交任务到数据平台；
-	任务运维系统：查看Task运行情况；
+任务管理系统：负责调度、分配、提交任务到数据平台；
+任务运维系统：查看Task运行情况；
 数据应用：
-	使用python，ml，spark mllib实现个性化推荐系统；
-	使用python，scrapy，django，elasticsearch实现搜索引擎；
-	使用scala，flink开发反作弊系统；
-	使用FineReport，scala，playframework开发报表分析系统；
+使用python，ml，spark mllib实现个性化推荐系统；
+使用python，scrapy，django，elasticsearch实现搜索引擎；
+使用scala，flink开发反作弊系统；
+使用FineReport，scala，playframework开发报表分析系统；
 DevOps：
-	使用ELK技术栈搭建日志搜索平台；
-	使用skywalking，Phoenix实现监控平台；
-	使用scala、playframework，docker，k8s，shell实现云容器平台，包含服务管理（查看docker容器配置，添加容器实例，授权记录，操作记录，历史版本回溯，k8s启停服务，操作记录，对比yaml配置，更新服务）、任务管理、配置管理、镜像构建（包括环境变量和参数配置）、应用日志
-	使用自动化运维平台CoDo开发system-devops；
-    	使用Kong开发统一网关入口系统system-api-gateway；
-    	使用vue、scala、playframework、docker、k8s、Prometheus、grafana开发监控告警平台system-alarm-platform；
-    	使用Apollo开发system-config配置中心；
+使用ELK技术栈搭建日志搜索平台；
+使用skywalking，Phoenix实现监控平台；
+使用scala、playframework，docker，k8s，shell实现云容器平台，包含服务管理（查看docker容器配置，添加容器实例，授权记录，操作记录，历史版本回溯，k8s启停服务，操作记录，对比yaml配置，更新服务）、任务管理、配置管理、镜像构建（包括环境变量和参数配置）、应用日志
+使用自动化运维平台CoDo开发system-devops；
+使用Kong开发统一网关入口系统system-api-gateway；
+使用vue、scala、playframework、docker、k8s、Prometheus、grafana开发监控告警平台system-alarm-platform；
+使用Apollo开发system-config配置中心；
 ~~~
 
 ~~~markdown
@@ -70,7 +96,7 @@ DevOps：
 
 ~~~markdown
 2.2 compute-mr
-	
+
 	1、mr-website-analyse: 
 	    1.1 主要做的事情：
 		hadoop HA集群搭建部署；
@@ -108,29 +134,29 @@ DevOps：
 
 ~~~markdown
 2.3 compute-realtime:
-1、compute-realtime-spark: 
-    1.1 主要做的事情：
-	基于Javee平台展示的Spark实时数据分析平台
-	hadoop HA集群搭建部署；
-	基于zookeeper的kafka HA集群搭建部署；
-	HA: 本地搭建时共5个节点,2个namenode,3个datanode；
-	spark core, spark sql, spark streaming基础掌握；
-	kafka实时模拟生成数据并使用spark streaming实时处理来自kafka的数据；
-	实时处理分析结果保存到mysql, 由highcharts动态刷新；
-	highcharts实时展示统计分析结果，以及spark sql算子执行结果；
-    1.2 主要模块
-	广告点击流量分析
-	广告点击趋势分析
-	各省份top3热门广告分析
-	各区域top3热门商品统计
-	页面单跳转化率
-	用户访问session分析
-	Top10热门品类分析
-	Top10用户session分析
+1、compute-realtime-spark:
+1.1 主要做的事情：
+基于Javee平台展示的Spark实时数据分析平台
+hadoop HA集群搭建部署；
+基于zookeeper的kafka HA集群搭建部署；
+HA: 本地搭建时共5个节点,2个namenode,3个datanode；
+spark core, spark sql, spark streaming基础掌握；
+kafka实时模拟生成数据并使用spark streaming实时处理来自kafka的数据；
+实时处理分析结果保存到mysql, 由highcharts动态刷新；
+highcharts实时展示统计分析结果，以及spark sql算子执行结果；
+1.2 主要模块
+广告点击流量分析
+广告点击趋势分析
+各省份top3热门广告分析
+各区域top3热门商品统计
+页面单跳转化率
+用户访问session分析
+Top10热门品类分析
+Top10用户session分析
 
 2、compute-realtime-view
-    2.1 数据可视化显示，定时模拟kafka消息队列的数据
-    2.2 主要使用highcharts，html，css, js显示compute-realtime-spark数据处理的统计数据，存在mysql
+2.1 数据可视化显示，定时模拟kafka消息队列的数据
+2.2 主要使用highcharts，html，css, js显示compute-realtime-spark数据处理的统计数据，存在mysql
 
 ~~~
 
@@ -158,14 +184,14 @@ DevOps：
 
 ~~~markdown
 4、数据收集
-	log-collect-server: 
-		服务端日志收集系统
-	log-collect-client: 
-		支持各app集成的客户端SDK，负责收集app客户端数据；
-	data-import-export: 
-		基于DataX实现数据集成(导入导出)
-	data-spider:
-		爬虫平台支持可配置的爬取公网数据的任务开发；
+log-collect-server:
+服务端日志收集系统
+log-collect-client:
+支持各app集成的客户端SDK，负责收集app客户端数据；
+data-import-export:
+基于DataX实现数据集成(导入导出)
+data-spider:
+爬虫平台支持可配置的爬取公网数据的任务开发；
 ~~~
 <br/>
 <img width="980" alt="image" src="https://user-images.githubusercontent.com/20246692/160220310-25525dad-03ea-42ed-acd1-c5625a7c809f.png">
@@ -212,7 +238,7 @@ system-ad: 广告
 system-search: 搜索
 system-anti-cheating: 反作弊
 system-report-analysis: 报表分析
-system-elk: ELK日志系统，实现日志搜索平台 
+system-elk: ELK日志系统，实现日志搜索平台
 system-apm: skywalking监控平台
 system-deploy: k8s，scala，playframework，docker打包平台。
 job-schedule: 任务提交平台

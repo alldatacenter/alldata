@@ -17,3 +17,42 @@ Griffin measure SparkSql规则任务二次开发
 3.4 支持spark sql转化为规则
 
 3.5 支持数据质量全链路告警监控
+
+3.6 新增MySqlSink
+
+4、安装部署
+
+4.1 Mysql初始化数据库
+
+create database griffin_wlhbdp; 
+
+use griffin_wlhbdp; 
+
+然后登录数据库
+
+source bdp-govern/quality/service/src/main/resources/Init_quartz_mysql_innodb.sql
+
+
+4.2 拷贝集群配置文件
+
+core-site.xml/hdfs-site.xml/mapred-site.xml/yarn-site.xml/hive-site.xml
+
+到bdp-govern/quality/service/src/main/resources目录
+
+4.3 mvn clean package -Dskiptests=TRUE
+
+4.4 获取tar.gz安装包, 解压
+
+4.5 正式部署griffin的环境，创建hdfs路径hdfs://griffin/spark_conf
+    
+    与hdfs://griffin/batch/persist
+    
+    与hdfs://griffin/streaming/persist（可选）
+
+4.6 然后把measure.jar包上传到hdfs的目录hdfs:///griffin/
+
+4.7 把hive-site.xml文件放上去hdfs:///griffin/spark_conf/
+
+4.5 cd 安装包bin目录，执行./griffin.sh start or ./griffin.sh stop启停
+
+4.6 访问localhost:8090

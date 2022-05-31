@@ -1,0 +1,39 @@
+{
+  "spark": {
+    "log.level": "WARN",
+    "config": {
+      "spark.master": "local[*]"
+    }
+  },
+  "sinks": [
+    {
+      "name": "consoleSink",
+      "type": "CONSOLE",
+      "config": {
+        "numRows": 20
+      }
+    },
+    {
+      "name": "hdfs",
+      "type": "HDFS",
+      "config": {
+        "path": "hdfs:///griffin/batch/persist",
+        "max.persist.lines": 10000,
+        "max.lines.per.file": 10000
+      }
+    },
+    {
+      "name": "mysql",
+      "type": "MYSQL",
+      "config": {
+        "over.time": "1m",
+        "retry": 5,
+        "driver": "com.mysql.jdbc.Driver",
+        "url": "jdbc:mysql://localhost:3306/griffin_wlhbdp",
+        "username": "root",
+        "password": "123456"
+      }
+    }
+  ],
+  "griffin.checkpoint": []
+}
