@@ -1,5 +1,5 @@
 # 🔥大数据生态解决方案数据平台
-# https://github.com/authorwlh/wlhbdp
+# https://github.com/authorwlh/alldata
 
 # 💥 Demo网页体验
 # http://112.74.93.144:3000
@@ -12,6 +12,13 @@
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/160220740-ee4825fd-8825-4ab6-84a3-e525d1ea646d.png">
 <br/>
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
+<br/>
+# 💥 架构图：
+<br/>
+<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/171598215-0914f665-9950-476c-97ff-e7e07aa10eaf.png">
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171598333-d14ff53f-3af3-481c-9f60-4f891a535b5c.png">
+<br/>
 
 # 💥 数据质量：
 <br/>

@@ -1,0 +1,20 @@
+spring:
+  jpa:
+    generate-ddl: 'true'
+    show-sql: 'true'
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/alldata_wlhbdp?autoReconnect=true&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  type-aliases-package: org.apache.griffin.core.entity
+  type-handlers-package: org.apache.griffin.core.handler
+
+server:
+  port: '8090'
+
+logging:
+  file: logs/olap-service.log

@@ -184,7 +184,7 @@ object RunAppDemo {
 
     val mysqlConf = Map(
       "driver" -> "com.mysql.jdbc.Driver",
-      "url" -> "jdbc:mysql://localhost:3306/griffin_wlhbdp",
+      "url" -> "jdbc:mysql://localhost:3306/alldata_wlhbdp",
       "username" -> "root",
       "password" -> "123456")
 
