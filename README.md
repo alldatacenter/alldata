@@ -1,26 +1,49 @@
-# 🔥大数据生态解决方案数据平台
-# https://github.com/authorwlh/alldata
+## AllData 大数据生态解决方案数据平台
 
-# 💥 Demo网页体验
+
+<p>
+  <a href="https://github.com/authorwlh/alldata/commits/master" target="_blank">
+    <img src="https://img.shields.io/github/last-commit/authorwlh/alldata.svg">
+  </a>
+  <a href="https://github.com/authorwlh/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Abug" target="_blank">
+    <img src="https://img.shields.io/github/issues/authorwlh/alldata/bug.svg?label=bugs&color=red">
+  </a>
+  <a href="https://github.com/authorwlh/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement" target="_blank">
+    <img src="https://img.shields.io/github/issues/authorwlh/alldata/enhancement.svg?label=enhancements&color=cyan">
+  </a>
+  <a href="https://github.com/authorwlh/alldata/blob/master/LICENSE" target="_blank">
+    <img src="https://img.shields.io/github/license/authorwlh/alldata.svg">
+  </a>
+</p>
+
+[中文](https://github.com/authorwlh/alldata/blob/master/README-zh.md) | English
+
+[Demo](http://112.74.93.144:3000) | [Documentation](https://github.com/authorwlh/alldata/blob/master/README.md) | [Installation](#installation) | [Run](#run) | [Screenshot](#screenshot) | [Architecture](#architecture) | [Integration](#integration-with-other-frameworks) | [Compare](#comparison-with-other-frameworks) | [Community & Sponsorship](#community--sponsorship)
+
+
+
+## Quick Start
+## Demo网页体验
 # http://112.74.93.144:3000
+## 测试账号：test 密码：test123.
 
-# ⚡️⚡️ 测试账号：test 密码：test123.
-
-# 💥 原型图：
-⭐️ [开源大数据平台原型图](https://modao.cc/app/HhitGZQTr954c7Ug8XBvAY#screen=sl11y8j8sne21p9):
+## [开源大数据平台原型图](https://modao.cc/app/HhitGZQTr954c7Ug8XBvAY#screen=sl11y8j8sne21p9)
 <br/>
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/160220740-ee4825fd-8825-4ab6-84a3-e525d1ea646d.png">
 <br/>
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
 <br/>
-# 💥 架构图：
+
+## Architecture
 <br/>
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/171598215-0914f665-9950-476c-97ff-e7e07aa10eaf.png">
 <br/>
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171598333-d14ff53f-3af3-481c-9f60-4f891a535b5c.png">
 <br/>
 
-# 💥 数据质量：
+## Integration
+
+## Data Quality
 <br/>
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171132004-542b699c-2878-4648-a79e-f118f28a0ed2.png">
 <br/>
@@ -45,7 +68,8 @@ Livy访问查看JOB
 
 <br/>
 
-# 💥 Demo展示：
+## Demo EXAMPLES
+<br/>
 <img width="706" alt="image" src="https://user-images.githubusercontent.com/20246692/160780581-b9b1ecc7-8675-4085-80c8-d781032b7751.png">
 <img width="699" alt="image" src="https://user-images.githubusercontent.com/20246692/160780205-17756e35-439e-479c-b950-25c444f0dbcf.png">
 <img width="715" alt="image" src="https://user-images.githubusercontent.com/20246692/160780446-627b34c4-2418-455f-ba87-09c788bb175c.png">
@@ -85,7 +109,7 @@ DevOps：
 ~~~
 
 ~~~markdown
-2、数据平台展示
+2、商城展示
 ~~~
 <br>
 <img width="348" alt="image" src="https://user-images.githubusercontent.com/20246692/160219586-e2e190fa-21f6-4f87-bbbc-7cdd6ecc625a.png">
@@ -93,43 +117,9 @@ DevOps：
 <img width="343" alt="image" src="https://user-images.githubusercontent.com/20246692/160219678-10998762-6266-42b7-8fa4-0a725f215881.png">
 <img width="337" alt="image" src="https://user-images.githubusercontent.com/20246692/160219693-84c4a0de-d4ab-4ad9-bc55-202d0ec0afb0.png">
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/160221446-24d9438d-703c-4d17-880e-5d34d0f8d229.png">
-<img width="477" alt="image" src="https://user-images.githubusercontent.com/20246692/160221628-b91557b3-8e3a-464c-bff0-ef5fee1b07ac.png">
-<img width="662" alt="image" src="https://user-images.githubusercontent.com/20246692/160221639-e5c8107c-a828-4e2a-8f6c-5a202466e929.png">
 <img width="967" alt="image" src="https://user-images.githubusercontent.com/20246692/160221463-772477c8-f996-45df-ab74-9e7a179adc81.png">
-<img width="1139" alt="image" src="https://user-images.githubusercontent.com/20246692/160221474-eea228cf-401d-43e7-bc73-9f7c2a0c5d86.png">
-<img width="1220" alt="image" src="https://user-images.githubusercontent.com/20246692/160221479-68ce632f-3773-47f0-a40e-ce13021dc444.png">
 
 <br/>
-
-~~~markdown
-2.2 compute-mr
-
-	1、mr-website-analyse: 
-	    1.1 主要做的事情：
-		hadoop HA集群搭建部署；
-		mapreduce基础掌握；
-		使用 oozie进行任务调度；
-		使用 hive保存数据到hdfs，以及从hdfs导出到 mysql；
-		使用hbase结合mapreduce处理业务，如用户行为分析；
-		使用flume,nginx模拟收集日志，从java sdk端和js 网站端收集数据等; 
-	    1.2 主要模块
-		用户基本信息分析
-		浏览器分析
-		地域分析
-		浏览深度分析
-		搜索引擎分析
-		事件分析
-		订单分析
-
-	2、mr-website-sdk
-	    2.1 java服务端sdk采集
-	    2.2 JS前端页面的数据模拟采集  
-
-	3、mr-website-view
-	    3.1 数据可视化显示
-	    3.2 主要使用highcharts，html，css, js显示mr-website-analyse数据处理的统计数据，存在mysql
-~~~
-<br>
 <img width="941" alt="image" src="https://user-images.githubusercontent.com/20246692/160219940-b1cd2135-8bea-4dac-b280-e52e091acee8.png">
 <img width="945" alt="image" src="https://user-images.githubusercontent.com/20246692/160219956-9f399ef9-167b-43be-b1fc-f53bfc0134a2.png">
 <img width="927" alt="image" src="https://user-images.githubusercontent.com/20246692/160219976-da7f430e-b6b8-46d4-8089-1e165405bd3d.png">
@@ -137,35 +127,8 @@ DevOps：
 <img width="934" alt="image" src="https://user-images.githubusercontent.com/20246692/160219996-1c87cbb2-45a0-47c2-a55c-0434b091bd14.png">
 <img width="941" alt="image" src="https://user-images.githubusercontent.com/20246692/160220007-26378cb1-c7b5-482c-b0d2-e184df5955cf.png">
 <img width="944" alt="image" src="https://user-images.githubusercontent.com/20246692/160220010-6f05551a-85b4-48da-ab9b-141df7a53e70.png">
-<br>
-
-~~~markdown
-2.3 compute-realtime:
-1、compute-realtime-spark:
-1.1 主要做的事情：
-基于Javee平台展示的Spark实时数据分析平台
-hadoop HA集群搭建部署；
-基于zookeeper的kafka HA集群搭建部署；
-HA: 本地搭建时共5个节点,2个namenode,3个datanode；
-spark core, spark sql, spark streaming基础掌握；
-kafka实时模拟生成数据并使用spark streaming实时处理来自kafka的数据；
-实时处理分析结果保存到mysql, 由highcharts动态刷新；
-highcharts实时展示统计分析结果，以及spark sql算子执行结果；
-1.2 主要模块
-广告点击流量分析
-广告点击趋势分析
-各省份top3热门广告分析
-各区域top3热门商品统计
-页面单跳转化率
-用户访问session分析
-Top10热门品类分析
-Top10用户session分析
-
-2、compute-realtime-view
-2.1 数据可视化显示，定时模拟kafka消息队列的数据
-2.2 主要使用highcharts，html，css, js显示compute-realtime-spark数据处理的统计数据，存在mysql
-
-~~~
+<br/>
+<br/>
 
 <img width="948" alt="image" src="https://user-images.githubusercontent.com/20246692/160220078-bdabde8b-9467-4d26-8675-37712e1d48b1.png">
 <img width="951" alt="image" src="https://user-images.githubusercontent.com/20246692/160220090-d5c33c1f-9507-4338-98e1-0abc29c4dbad.png">
@@ -255,6 +218,7 @@ job-schedule: 任务提交平台
 <img width="805" alt="image" src="https://user-images.githubusercontent.com/20246692/160220425-afc819af-e8f9-4fbb-811d-c0b67cccf7d0.png">
 <br/>
 
+## Installation | ## Run
 
 10、启动配置教程
 
@@ -316,88 +280,64 @@ job-schedule: 任务提交平台
 <img width="1221" alt="image" src="https://user-images.githubusercontent.com/20246692/160220506-688f51cc-1b3d-46a9-ad3e-ec033ee69562.png">
 
 
-11 开发计划
 
-<img width="1438" alt="image" src="https://user-images.githubusercontent.com/20246692/160220517-5db30ffe-6fa2-4bac-9070-bd6282cac0e8.png">
+12 DevOPS
 
-
-
-12 架构1.0
-
-12.1、数据平台架构
-
-
-<img width="604" alt="image" src="https://user-images.githubusercontent.com/20246692/160220540-fd4f8027-671b-481b-bfd7-bb3bbb3d267e.png">
-
-
-12.2、电商
-
-<img width="919" alt="image" src="https://user-images.githubusercontent.com/20246692/160220562-9621df78-4046-4b43-b86a-4601e88f322e.png">
-
-12.3、微服务
-
-<img width="843" alt="image" src="https://user-images.githubusercontent.com/20246692/160220572-421d0f72-169d-4c7b-b48c-10993b5addb0.png">
-
-
-12.4、容器化部署system-deploy
-
+12.1 容器化部署system-deploy
 
 <img width="914" alt="image" src="https://user-images.githubusercontent.com/20246692/160220577-3409bf17-d828-4905-b10e-7e9ba20e544e.png">
 <img width="1223" alt="image" src="https://user-images.githubusercontent.com/20246692/160220585-e245f8bc-0821-47ab-b748-808c884cd4de.png">
 
-12.5、自动化运维平台system-devops
+12.2、自动化运维平台system-devops
 
 <img width="1280" alt="image" src="https://user-images.githubusercontent.com/20246692/160220594-40e4c4ba-123b-4ecc-98f3-345e0cd0843b.png">
 
-12.6、使用Kong作为调用中心网关入口system-api-gateway
+12.3、使用Kong作为调用中心网关入口system-api-gateway
 
 <img width="887" alt="image" src="https://user-images.githubusercontent.com/20246692/160220600-6b3443ef-cf30-433a-bf28-a03147c0b069.png">
 <img width="861" alt="image" src="https://user-images.githubusercontent.com/20246692/160220611-5f8327b4-0ca9-457c-b623-8f2026e81f59.png">
 
 
-12.7、日志中心system-elk
+12.4、日志中心system-elk
 
 <img width="768" alt="image" src="https://user-images.githubusercontent.com/20246692/160220621-bd22df74-e11c-4a34-86f1-35fd17b881c6.png">
 
-12.8、告警平台system-alarm-platform
+12.5、告警平台system-alarm-platform
 
-12.8.1 监控系统
+12.6 监控系统
 
 <img width="970" alt="image" src="https://user-images.githubusercontent.com/20246692/160220634-1e1bdf37-26e5-4c35-b56f-ee55af4dcd45.png">
 
-12.8.2 数据采集
+12.7 数据采集
 
 <img width="999" alt="image" src="https://user-images.githubusercontent.com/20246692/160220653-6264e6a7-09a2-4811-a99f-99b118433208.png">
 
-12.8.3 数据展示
+12.8 数据展示
 
 <img width="1165" alt="image" src="https://user-images.githubusercontent.com/20246692/160220670-1b30e201-28b0-4fcc-8f0e-9aea8154f43a.png">
 
 
-12.9、监控中心system-apm
+12.9 监控中心system-apm
 
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220682-24063605-59b8-43ad-928b-d1ce8be603b2.png">
 
 
-12.10、使用Apollo作为配置中心system-config
+12.10 使用Apollo作为配置中心system-config
 
 <img width="882" alt="image" src="https://user-images.githubusercontent.com/20246692/160220690-7fc23e65-ad53-4f5f-a0f2-aa55e649f500.png">
 
-
+## Community & Sponsorship
 
 13、技术交流群二维码
 <br/>
-⭐️ Github大数据平台QQ群号：935658273
-<br/>
-⭐️ Github大数据QQ群二维码：
-<br/>
+## Github大数据平台QQ群号：935658273
+
+## Github大数据QQ群二维码
 <img width="341" alt="image" src="https://user-images.githubusercontent.com/20246692/160220720-6be76006-434e-4560-86f9-bc4ec5bafe2e.png">
 <br/>
 
-⭐️ [linhaopenghong@gmail.com](https://mail.google.com/mail/u/0/#inbox)
-<br/>
-⭐️ [Wechat](https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png)
-<br/>
-
+## 个人微信
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png">
 <br>
+
+## [wechat](https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png) | [linhaopenghong@gmail.com](https://mail.google.com/mail/u/0/#inbox)
