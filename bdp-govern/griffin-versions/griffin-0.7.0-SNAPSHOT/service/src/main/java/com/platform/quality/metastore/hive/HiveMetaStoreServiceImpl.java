@@ -1,22 +1,3 @@
-/*
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
-*/
-
 package com.platform.quality.metastore.hive;
 
 import java.io.IOException;
@@ -55,13 +36,15 @@ import org.springframework.stereotype.Service;
 public class HiveMetaStoreServiceImpl implements HiveMetaStoreService {
 
     private static final Logger LOGGER = LoggerFactory
-        .getLogger(HiveMetaStoreService.class);
+            .getLogger(HiveMetaStoreService.class);
 
     private static final String SHOW_TABLES_IN = "show tables in ";
 
     private static final String SHOW_DATABASE = "show databases";
 
     private static final String SHOW_CREATE_TABLE = "show create table ";
+
+    private static final String DESC_TABLE = "DESC ";
 
     @Value("${hive.jdbc.className}")
     private String hiveClassName;
@@ -119,9 +102,7 @@ public class HiveMetaStoreServiceImpl implements HiveMetaStoreService {
     @Override
     @Cacheable(unless = "#result==null")
     public Iterable<String> getAllDatabases() {
-        List dbs = new ArrayList<>();
-        dbs.add("a_test");
-        return dbs;
+        return queryHiveString(SHOW_DATABASE);
     }
 
     @Override
@@ -143,13 +124,23 @@ public class HiveMetaStoreServiceImpl implements HiveMetaStoreService {
     }
 
     @Override
-    public List<Table> getAllTable(String db) {
-        return null;
+    public List<Table> getAllTable(String dbName) {
+        List<Table> tables = new ArrayList<>();
+        for (String tableName : getAllTableNames(dbName)) {
+            Table tb = getTable(dbName, tableName);
+            tables.add(tb);
+        }
+        return tables;
     }
 
     @Override
     public Map<String, List<Table>> getAllTable() {
-        return null;
+        Map<String, List<Table>> dbTableMap = new HashMap<>();
+        for (String dbName : getAllDatabases()) {
+            List<Table> tables = getAllTable(dbName);
+            dbTableMap.put(dbName, tables);
+        }
+        return dbTableMap;
     }
 
     @Override
@@ -160,10 +151,11 @@ public class HiveMetaStoreServiceImpl implements HiveMetaStoreService {
         result.setTableName(tableName);
 
         String sql = SHOW_CREATE_TABLE + dbName + "." + tableName;
+        String sqlDesc = DESC_TABLE + dbName + "." + tableName;
         Statement stmt = null;
         ResultSet rs = null;
         StringBuilder sb = new StringBuilder();
-
+        List<FieldSchema> cols = new ArrayList<>();
         try {
             Class.forName(hiveClassName);
             if (conn == null) {
@@ -177,8 +169,18 @@ public class HiveMetaStoreServiceImpl implements HiveMetaStoreService {
                 String s = rs.getString(1);
                 sb.append(s);
             }
+            rs = stmt.executeQuery(sqlDesc);
+            while (rs.next()) {
+                String column = rs.getString(1);
+                if ("".equals(column) || column.contains("Partition Information")) {
+                    break;
+                }
+                String type = rs.getString(2);
+                String comment = rs.getString(3);
+                FieldSchema schema = new FieldSchema(column, type, comment);
+                cols.add(schema);
+            }
             String location = getLocation(sb.toString());
-            List<FieldSchema> cols = getColums(sb.toString());
             StorageDescriptor sd = new StorageDescriptor();
             sd.setLocation(location);
             sd.setCols(cols);
@@ -192,11 +194,11 @@ public class HiveMetaStoreServiceImpl implements HiveMetaStoreService {
     }
 
     @Scheduled(fixedRateString =
-        "${cache.evict.hive.fixedRate.in.milliseconds}")
+            "${cache.evict.hive.fixedRate.in.milliseconds}")
     @CacheEvict(
-        cacheNames = "jdbcHive",
-        allEntries = true,
-        beforeInvocation = true)
+            cacheNames = "jdbcHive",
+            allEntries = true,
+            beforeInvocation = true)
     public void evictHiveCache() {
         LOGGER.info("Evict hive cache");
     }
@@ -270,52 +272,6 @@ public class HiveMetaStoreServiceImpl implements HiveMetaStoreService {
         }
 
         return tableMetadata.substring(start + 1, end);
-    }
-
-    /**
-     * Get the Hive table schema: column name, column type, column comment
-     * The input String looks like following:
-     * <p>
-     * CREATE TABLE `employee`(
-     * `eid` int,
-     * `name` string,
-     * `salary` string,
-     * `destination` string)
-     * COMMENT 'Employee details'
-     * ROW FORMAT SERDE
-     * 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
-     * WITH SERDEPROPERTIES (
-     * 'field.delim'='\t',
-     * 'line.delim'='\n',
-     * 'serialization.format'='\t')
-     * STORED AS INPUTFORMAT
-     * 'org.apache.hadoop.mapred.TextInputFormat'
-     * OUTPUTFORMAT
-     * 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-     * LOCATION
-     * 'file:/user/hive/warehouse/employee'
-     * TBLPROPERTIES (
-     * 'bucketing_version'='2',
-     * 'transient_lastDdlTime'='1562086077')
-     *
-     * @param tableMetadata hive table metadata string
-     * @return List of FieldSchema
-     */
-    public List<FieldSchema> getColums(String tableMetadata) {
-        List<FieldSchema> res = new ArrayList<>();
-        int start = tableMetadata.indexOf("(") + 1; // index of the first '('
-        int end = tableMetadata.indexOf(")", start); // index of the first ')'
-        String[] colsArr = tableMetadata.substring(start, end).split(",");
-        for (String colStr : colsArr) {
-            colStr = colStr.trim();
-            String[] parts = colStr.split(" ");
-            String colName = parts[0].trim().substring(1, parts[0].trim().length() - 1);
-            String colType = parts[1].trim();
-            String comment = getComment(colStr);
-            FieldSchema schema = new FieldSchema(colName, colType, comment);
-            res.add(schema);
-        }
-        return res;
     }
 
     /**
