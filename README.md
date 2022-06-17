@@ -67,6 +67,18 @@ Livy访问查看JOB
 <br/>
 
 <br/>
+Flink1.13.6整合引入最新Flink1.16 OGG-JSON解析
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174279501-3774b028-8252-466d-9ba5-9a02ba677c63.png">
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174279566-d528dde0-e9af-4f4d-9864-318f41f82ead.png">
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174279777-24966e66-5b93-4e2b-bf4b-2e8ead49380c.png">
+S3 Hudi成功写入
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174279203-b5a39a9f-05e1-466b-a12f-3f6cf9ed3033.png">
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174279028-b53d45f2-255d-48bd-b3aa-0df8f0b9698c.png">
+
+
+<br/>
+
 
 ## Demo EXAMPLES
 <br/>
