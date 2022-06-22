@@ -76,6 +76,11 @@ S3 Hudi成功写入
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174279203-b5a39a9f-05e1-466b-a12f-3f6cf9ed3033.png">
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174279028-b53d45f2-255d-48bd-b3aa-0df8f0b9698c.png">
 
+Dlink批流一体平台
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/175014247-9fa133f8-4357-4cec-b4db-00d37d807436.png">
+PERJOB启动FlinkSQL
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/175015242-179de0df-dc57-4e9b-8886-719dc3cff0b5.png">
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/175015309-f29d4469-3772-4b41-9389-93cb454259cd.png">
 
 <br/>
 
