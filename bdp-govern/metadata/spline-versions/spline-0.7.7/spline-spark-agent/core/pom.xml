@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2017 ABSA Group Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>agent-core_2.11</artifactId>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>za.co.absa.spline.agent.spark</groupId>
+        <artifactId>spline-spark-agent_2.11</artifactId>
+        <relativePath>../pom.xml</relativePath>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ssX</maven.build.timestamp.format>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>za.co.absa.commons</groupId>
+            <artifactId>commons_${scala.binary.version}</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.binary.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${scala.binary.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.scalaj</groupId>
+            <artifactId>scalaj-http_${scala.binary.version}</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId>
+            <version>4.8.116</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-graph</groupId>
+            <artifactId>graph-core_${scala.binary.version}</artifactId>
+            <version>1.12.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.uuid</groupId>
+            <artifactId>java-uuid-generator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lihaoyi</groupId>
+            <artifactId>fastparse_${scala.binary.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.bfil</groupId>
+            <artifactId>automapper_${scala.binary.version}</artifactId>
+            <version>${automapper.version}</version>
+        </dependency>
+
+        <!-- optional dependencies (for plugins) -->
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_${scala.binary.version}</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql-kafka-0-10_${scala.binary.version}</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.databricks</groupId>
+            <artifactId>spark-xml_${scala.binary.version}</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.crealytics</groupId>
+            <artifactId>spark-excel_${scala.binary.version}</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.datastax.spark</groupId>
+            <artifactId>spark-cassandra-connector_${scala.binary.version}</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb.spark</groupId>
+            <artifactId>mongo-spark-connector_${scala.binary.version}</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch-hadoop</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>za.co.absa.cobrix</groupId>
+            <artifactId>spark-cobol_${scala.binary.version}</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- test scope -->
+
+        <dependency>
+            <groupId>org.json4s</groupId>
+            <artifactId>json4s-ext_${scala.binary.version}</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scmConnectionUrl>scm:git:</scmConnectionUrl>
+                    <revisionOnScmFailure>unknown</revisionOnScmFailure>
+                    <timestampFormat>{0,date,${maven.build.timestamp.format}}</timestampFormat>
+                    <shortRevisionLength>7</shortRevisionLength>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>3.0.21</version> <!-- please note 3.0.22+ were problematic on Windows. See Issue #185 -->
+                <configuration>
+                    <language>scala</language>
+                    <generateModels>true</generateModels>
+                    <generateApis>false</generateApis>
+                    <generateSupportingFiles>false</generateSupportingFiles>
+                    <typeMappings>array=Seq</typeMappings>
+                    <configOptions>
+                        <modelPropertyNaming>original</modelPropertyNaming>
+                    </configOptions>
+                    <inputSpec/>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>swagger.api.v1_0</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/producer.api.v1.0.json</inputSpec>
+                            <modelPackage>za.co.absa.spline.producer.dto.v1_0</modelPackage>
+                            <language/>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>swagger.api.v1_1</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/producer.api.v1.1.json</inputSpec>
+                            <modelPackage>za.co.absa.spline.producer.dto.v1_1</modelPackage>
+                            <language/>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>swagger.api.v1_2</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/producer.api.v1.2.json</inputSpec>
+                            <modelPackage>za.co.absa.spline.producer.dto.v1_2</modelPackage>
+                            <language/>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>swagger.openlineage.api.v0_3_1</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/api/openlineage/OpenLineage.yml</inputSpec>
+                            <modelPackage>za.co.absa.spline.producer.model.openlineage.v0_3_1</modelPackage>
+                            <language/>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-sources/swagger/src/main/scala</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.cerveada</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

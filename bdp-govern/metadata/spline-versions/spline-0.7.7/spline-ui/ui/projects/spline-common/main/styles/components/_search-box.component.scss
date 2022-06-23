@@ -1,0 +1,173 @@
+/*!
+ * Copyright 2020 ABSA Group Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '../vars';
+@import '../mixins';
+
+// TODO: adjust colors and use it from palette.
+$input-bg: $color-grey-light-2;
+$input-text-color: $color-grey-dark-75;
+
+$input-bg--active: $color-grey-light-2;
+$input-text-color--active: $color-grey-dark;
+
+$height: 40px;
+$border-radius: $height / 2;
+
+.spline-search-box {
+    $self: &;
+
+    align-items: center;
+    // CONTAINER
+    background: $input-bg;
+    border-radius: $border-radius;
+    display: flex;
+    line-height: $height;
+    padding: 0;
+    position: relative;
+    transition: all 200ms ease-in-out;
+
+    // ICONS
+
+    &__search-icon,
+    &__clear-icon {
+        @include icon-size(22px);
+        color: $input-text-color;
+        position: absolute;
+    }
+
+    &__clear-icon {
+        right: 1rem;
+    }
+
+    &__search-icon {
+        left: 1rem;
+    }
+
+    &__clear-icon {
+        cursor: pointer;
+        margin-left: 0.75rem;
+    }
+
+    // INPUT
+
+    input {
+        background: none;
+        border-style: none;
+        color: $input-text-color;
+        flex: 1;
+        font-size: 14px;
+        outline: none;
+        padding: 0 3rem;
+        width: 100%;
+
+        &::placeholder {
+            color: $input-text-color;
+        }
+    }
+
+    // FOCUSED STATE
+
+    &--focused {
+        background: $input-bg--active;
+
+        #{$self}__search-icon,
+        #{$self}__clear-icon {
+            color: $input-text-color--active;
+        }
+
+        input {
+            color: $input-text-color--active;
+
+            &::placeholder {
+                color: $input-text-color--active;
+            }
+        }
+    }
+}
+
+@mixin spline-search-box($bg-color, $text-color, $text-color--active: inherit, $bg-color--active: $bg-color) {
+
+    $self: &;
+
+    background: $bg-color;
+
+    &__search-icon,
+    &__clear-icon {
+        color: $text-color;
+    }
+
+    input {
+        color: $text-color;
+
+        &::placeholder {
+            color: $text-color;
+        }
+    }
+
+    &--focused {
+
+        background: $bg-color--active;
+
+        .spline-search-box__search-icon,
+        .spline-search-box__clear-icon {
+            color: $text-color--active;
+        }
+
+        input {
+            color: $text-color--active;
+
+            &::placeholder {
+                color: $text-color--active;
+            }
+        }
+    }
+}
+
+spline-search-box[theme='grey'] .spline-search-box {
+    @include spline-search-box($color-grey-light, $color-grey-dark-50, $color-grey-dark);
+}
+
+spline-search-box[theme='white-transparent'] .spline-search-box {
+    @include spline-search-box($color-white-25, $color-white-55, $color-grey-dark, $color-grey-light-2);
+}
+
+
+@mixin spline-search-box-size($height: 40px, $padding-x: 0.75rem, $icon-size: 22px, $font-size: 14px) {
+    $border-radius: $height / 2;
+
+    border-radius: $border-radius;
+    display: flex;
+    line-height: $height;
+
+    &__search-icon,
+    &__clear-icon {
+        @include icon-size($icon-size);
+    }
+
+    &__clear-icon {
+        right: $padding-x;
+    }
+
+    &__search-icon {
+        left: $padding-x;
+    }
+
+    input {
+        font-size: $font-size;
+        padding: 0 calc((#{$padding-x} * 2 + #{$icon-size}));
+    }
+}

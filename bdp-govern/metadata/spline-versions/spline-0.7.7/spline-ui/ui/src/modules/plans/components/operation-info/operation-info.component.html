@@ -1,0 +1,70 @@
+<!--
+  ~ Copyright 2021 ABSA Group Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div *ngIf="(dataSource.loadingProcessing$ | async) as loadingProcessing">
+
+    <!-- LOADER -->
+    <spline-loader *ngIf="loadingProcessing.processing"></spline-loader>
+    <!-- ./LOADER -->
+
+    <!-- ERROR -->
+    <spline-content-error *ngIf="loadingProcessing.processingError"
+                          [statusCode]="loadingProcessing.processingError?.status"
+                          [errorId]="loadingProcessing.processingError?.error?.errorId">
+    </spline-content-error>
+    <!-- ./ERROR -->
+
+    <ng-container *ngIf="state$ | async as state">
+
+        <ng-container *ngIf="!loadingProcessing.processingError && !loadingProcessing.processing">
+
+            <!-- OPERATION -->
+            <spline-data-view [dataViewSchema]="state.operationDvs" (event$)="onDataViewEvent($event)"></spline-data-view>
+            <!-- ./OPERATION -->
+
+            <mat-tab-group>
+
+                <!-- DETAILS -->
+                <mat-tab [label]="'PLANS.OPERATION_INFO__TAB__DETAILS' | translate" *ngIf="!!state.detailsDvs">
+                    <spline-data-view [dataViewSchema]="state.detailsDvs" (event$)="onDataViewEvent($event)"></spline-data-view>
+                </mat-tab>
+                <!-- DETAILS -->
+
+                <!-- OUTPUT DS -->
+                <mat-tab [label]="'PLANS.OPERATION_INFO__TAB__OUTPUT' | translate" *ngIf="!!state.outputDvs">
+                    <spline-data-view [dataViewSchema]="state.outputDvs" (event$)="onDataViewEvent($event)"></spline-data-view>
+                </mat-tab>
+                <!-- OUTPUT DS -->
+
+                <!-- INPUTS DS -->
+                <mat-tab *ngIf="!!state.inputsDvs">
+
+                    <ng-template matTabLabel>
+                        {{ 'PLANS.OPERATION_INFO__TAB__INPUTS' | translate}} ({{state.inputsNumber}})
+                    </ng-template>
+
+                    <spline-data-view [dataViewSchema]="state.inputsDvs" (event$)="onDataViewEvent($event)"></spline-data-view>
+                </mat-tab>
+                <!-- ./INPUTS DS -->
+
+            </mat-tab-group>
+
+        </ng-container>
+    </ng-container>
+
+</div>
+
+

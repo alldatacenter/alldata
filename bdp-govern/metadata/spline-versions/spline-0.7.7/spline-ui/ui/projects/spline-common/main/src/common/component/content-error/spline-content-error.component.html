@@ -1,0 +1,35 @@
+<!--
+  ~ Copyright 2021 ABSA Group Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<div class="spline-content-error"
+     [class.spline-content-error--floating]="floating">
+
+    <mat-icon>error_outline</mat-icon>
+
+    <h2 class="spline-content-error__message">
+        {{ errorMessage | translate }}
+    </h2>
+
+    <h4 *ngIf="statusCode" class="spline-content-error__details">
+        <span class="spline-content-error__details-label">{{ 'COMMON.SERVER_COMMUNICATION_ERROR__STATUS_CODE' | translate }}</span>
+        {{ statusCode }}
+    </h4>
+
+    <h4 *ngIf="errorId" class="spline-content-error__details">
+        <span class="spline-content-error__details-label">{{ 'COMMON.SERVER_COMMUNICATION_ERROR__ID' | translate }}</span>
+        {{ errorId }}
+    </h4>
+
+</div>

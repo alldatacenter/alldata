@@ -1,0 +1,29 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# local node
+/node/
+
+# compiled output
+/dist/
+/tmp/
+/out-tsc/
+# Only exists if Bazel was run
+/bazel-out/
+
+# dependencies
+/node_modules/
+/typings/
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/src/assets/config.json

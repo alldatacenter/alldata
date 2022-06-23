@@ -1,0 +1,121 @@
+<!--
+  ~ Copyright 2021 ABSA Group Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<ng-container *ngIf="store.state$ | async as state">
+
+    <!-- LOADER -->
+    <spline-loader *ngIf="state.loading.processing"></spline-loader>
+    <!-- ./LOADER -->
+
+    <!-- ERROR -->
+    <spline-content-error *ngIf="state.loading.processingError"
+                          [statusCode]="state.loading.processingError?.status"
+                          [errorId]="state.loading.processingError?.error?.errorId">
+    </spline-content-error>
+    <!-- ./ERROR -->
+
+    <div *ngIf="!!state.graphData" class="e2e-container">
+
+        <!-- HEADER -->
+        <div class="header-container">
+            <div class="container">
+
+                <!-- BREADCRUMBS -->
+                <sl-breadcrumbs *ngIf="breadcrumbs$ | async as breadcrumbs"
+                                [breadcrumbs]="breadcrumbs">
+                </sl-breadcrumbs>
+                <!-- ./BREADCRUMBS -->
+
+                <plan-header *ngIf="state.executionPlan"
+                             [executionPlan]="state.executionPlan">
+                </plan-header>
+            </div>
+        </div>
+        <!-- ./HEADER -->
+
+
+        <div class="e2e-container__body">
+            <div class="e2e-container flex-row">
+
+                <div class="sl-content-sidebar">
+
+                    <div [hidden]="state.selectedNodeId">
+
+                        <!-- EXECUTION PLAN INFO -->
+                        <plan-info (selectedAttributeChanged$)="onSelectedAttributeChanged($event.attributeId)"
+                                   [executionPlan]="state.executionPlan"
+                                   [selectedAttributeId]="state.selectedAttributeId">
+                        </plan-info>
+                        <!-- ./EXECUTION PLAN INFO -->
+                    </div>
+
+                    <!-- SELECTED NODE INFO -->
+                    <sl-content-sidebar-dialog (close$)="onContentSidebarDialogClosed()"
+                                               [dialogTitle]="'PLANS.PLAN_OVERVIEW__SELECTED_NODE_TITLE'"
+                                               [visible]="!!state.selectedNodeId">
+
+                        <plan-operation-info (focusNode$)="onNodeFocus($event.nodeId)"
+                                             (selectedAttributeChanged$)="onSelectedAttributeChanged($event.attributeId)"
+                                             [node]="store.selectedNode$ | async"
+                                             [agentInfo]="(store.executionPlan$ | async).agentInfo"
+                                             [selectedAttributeId]="state.selectedAttributeId">
+                        </plan-operation-info>
+
+                    </sl-content-sidebar-dialog>
+                    <!-- ./SELECTED NODE INFO -->
+                </div>
+
+                <div class="e2e-container__body">
+                    <sg-container (nodeSelectionChange$)="onNodeSelected($event.nodeId)"
+                                  (graphNodeViewChange$)="onGraphNodeViewChanged($event.nodeView)"
+                                  [sgAttributeLineage]="state.attributeLineage"
+                                  [graphNodeView]="state.graphNodeView"
+                                  (highlightedRelationsNodesIdsChange$)="onHighlightedRelationsNodesIdsChange($event.nodeIds)"
+                                  [graphData]="state.graphData"
+                                  [selectedNodeId]="state.selectedNodeId">
+
+                        <!-- TOOLBAR -->
+                        <sg-toolbar position="top-right">
+
+                            <div class="text-right mb-3">
+                                <button mat-button mat-icon-button class="sg-toolbar__icon-button"
+                                        sgFullScreenControl
+                                        [matTooltip]="(!isGraphFullScreen ? 'SHARED.SG_MAXIMIZE' : 'SHARED.SG_MINIMIZE') | translate"
+                                        [(isFullScreenMode)]="isGraphFullScreen">
+                                    <mat-icon>{{ isGraphFullScreen ? 'close_fullscreen' : 'open_in_full' }} </mat-icon>
+                                </button>
+                            </div>
+
+                            <spline-attribute-lineage-info *ngIf="store.selectedAttribute$ | async as selectedAttribute"
+                                                           (close$)="onSelectedAttributeChanged(null)"
+                                                           (showAttrLineage$)="onShowAttrLineage(selectedAttribute, $event.lineageType)"
+                                                           [attributeLineage]="state.attributeLineage"
+                                                           [attribute]="selectedAttribute"
+                                                           [loading]="state.attributeLineageLoading.processing">
+                            </spline-attribute-lineage-info>
+                        </sg-toolbar>
+                        <!-- ./TOOLBAR -->
+                    </sg-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+
+
+
