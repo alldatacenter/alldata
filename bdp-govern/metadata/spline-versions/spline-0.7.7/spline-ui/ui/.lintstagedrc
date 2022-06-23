@@ -1,0 +1,8 @@
+{
+    "*.scss": [
+        "stylelint --syntax=scss",
+    ],
+    "*.ts": [
+        "eslint",
+    ]
+}

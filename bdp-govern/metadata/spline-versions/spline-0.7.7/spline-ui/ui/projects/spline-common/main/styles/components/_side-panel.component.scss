@@ -1,0 +1,100 @@
+/*!
+ * Copyright 2021 ABSA Group Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'vars';
+@import 'mixins';
+
+$dialog-width: 550px;
+$dialog-width__small: 544px;
+
+$dialog-full-width-break: 1280px;
+
+$top-offset: 8px;
+$margin: 16px;
+
+$padding-x: 24px;
+$padding-y: 24px;
+
+.spline-side-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+
+    &__wrapper {
+        @include shadow-level-2();
+        background-color: $color-white;
+        border-radius: 32px;
+        border-top: 5px solid $color-orange;
+        bottom: 0;
+        height: calc(100% - #{$top-offset} - #{$margin * 2});
+        opacity: 0.5;
+        overflow: hidden;
+        position: fixed;
+        right: -$dialog-width;
+        top: $top-offset + $margin;
+        transition: all ease .2s;
+
+        visibility: hidden;
+
+        width: $dialog-width;
+
+        &.visible {
+            opacity: 1;
+            right: $margin;
+            top: $top-offset + $margin;
+            visibility: visible;
+            width: $dialog-width;
+            @media (max-width: $dialog-full-width-break) {
+                width: calc(100% - 270px);
+            }
+        }
+    }
+
+    &__close-btn {
+        line-height: 40px;
+        position: absolute;
+        right: $padding-x;
+        top: 12px;
+        z-index: 2;
+    }
+
+    &__header-content {
+        line-height: 64px;
+    }
+
+    &__header {
+        background: $color-white;
+        line-height: 64px;
+        min-height: 64px;
+        padding: 0 16px;
+    }
+
+    &__content-wrapper {
+        background-color: $color-grey-light-2;
+        border-radius: 2rem;
+        height: calc(100% - 16px);
+        margin: 0 8px 8px;
+        overflow: hidden;
+        padding: $padding-y 0;
+    }
+
+    &__content {
+        height: 100%;
+        overflow: auto;
+        padding: 0 $padding-x;
+    }
+}

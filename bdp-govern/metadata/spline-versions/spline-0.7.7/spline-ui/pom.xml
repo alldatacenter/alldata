@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2020 ABSA Group Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>za.co.absa.spline</groupId>
+        <artifactId>package-pom</artifactId>
+        <version>0.6.1</version>
+    </parent>
+
+    <version>0.7.4</version>
+
+    <groupId>za.co.absa.spline.ui</groupId>
+    <artifactId>project</artifactId>
+    <name>${project.artifactId}</name>
+
+    <packaging>pom</packaging>
+
+    <scm>
+        <url>${scm.url}</url>
+        <connection>${scm.connection}</connection>
+        <developerConnection>${scm.developerConnection}</developerConnection>
+        <tag>release/0.7.4</tag>
+    </scm>
+
+    <modules>
+        <module>ui</module>
+        <module>deployment/web</module>
+    </modules>
+
+    <build>
+        <plugins>
+
+            <!-- customize "license-check" profile -->
+
+            <plugin>
+                <groupId>org.apache.rat</groupId>
+                <artifactId>apache-rat-plugin</artifactId>
+                <configuration>
+                    <excludes combine.children="append">
+                        <exclude>.editorconfig</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- Customize "release" profile to include "package.json" into the version commit bucket -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <preparationGoals>
+                        clean verify
+                        scm:add -Dincludes=**/package*.json scm:add -Dexcludes=**/node_modules/**
+                        -Dscm.url=${project.scm.url}
+                        -Dscm.connection=${project.scm.connection}
+                        -Dscm.developerConnection=${project.scm.developerConnection}
+                    </preparationGoals>
+                    <completionGoals>
+                        generate-resources
+                        scm:add -Dincludes=**/package*.json -Dexcludes=**/node_modules/**
+                        -Dscm.url=${project.scm.url}
+                        -Dscm.connection=${project.scm.connection}
+                        -Dscm.developerConnection=${project.scm.developerConnection}
+                    </completionGoals>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

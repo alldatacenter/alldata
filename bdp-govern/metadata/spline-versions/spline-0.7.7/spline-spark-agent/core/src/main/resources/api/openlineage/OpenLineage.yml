@@ -1,0 +1,25 @@
+openapi: 3.0.2
+info:
+  title: OpenLineage
+  version: 0.0.1
+  description: OpenLineage is an open source **lineage and metadata collection API** for the data ecosystem.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /lineage:
+    post:
+      summary: Send an event related to the state of a run
+      description: Updates a run state for a job.
+      operationId: postRunEvent
+      tags:
+        - OpenLineage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'OpenLineage.json#/$defs/RunEvent'
+      responses:
+        '200':
+          description: OK
+

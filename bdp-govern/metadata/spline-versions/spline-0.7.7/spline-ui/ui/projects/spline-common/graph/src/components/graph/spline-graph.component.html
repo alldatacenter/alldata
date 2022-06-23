@@ -1,0 +1,87 @@
+<!--
+  ~ Copyright 2021 ABSA Group Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div class="spline-graph__container" xmlns:svg="http://www.w3.org/1999/XSL/Transform"
+     xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <ngx-graph *ngIf="(nativeGraphData$ | async) as nativeGraphData"
+               [links]="nativeGraphData.links"
+               [nodes]="nativeGraphData.nodes"
+               [curve]="curve"
+               [autoZoom]="true"
+               [autoCenter]="true"
+               [draggingEnabled]="false"
+               [panToNode$]="focusNode$"
+               [layoutSettings]="layoutSettings"
+               (clickHandler)="onGraphClicked($event)"
+               [enableZoom]="true">
+
+        <ng-template #linkTemplate let-link>
+            <svg:g class=" edge">
+                <svg:path class="line" stroke-width="3" [attr.marker-end]="'url(#arrow-' + link.id + ')'"></svg:path>
+            </svg:g>
+            <svg:marker [id]="'arrow-' + link.id"
+                        class="arrow"
+                        viewBox="0 -5 12 12"
+                        refX="10"
+                        refY="0"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto">
+                <svg:path d="M0,-5L12,0L0,5" class="arrow-head"/>
+            </svg:marker>
+        </ng-template>
+
+        <ng-template #nodeTemplate let-node>
+            <svg:g class="node" xmlns="http://www.w3.org/1999/xhtml"
+                   [attr.width]="node?.dimension?.width ? node.dimension.width : defaultNodeWidth"
+                   [attr.height]="node?.dimension?.height ? node.dimension.height : defaultNodeHeight">
+
+                <svg:foreignObject [attr.width]="node?.dimension?.width ? node.dimension.width : defaultNodeWidth"
+                                   [attr.height]="node?.dimension?.height ? node.dimension.height : defaultNodeHeight"
+                                   class="spline-graph__node-container"
+                                   [class.spline-graph__node--selected]="node.id === _selectedNodeId"
+                                   [class.spline-graph__node--focused]="node.id === _focusedNodeId">
+                    <xhtml:div>
+                        <sg-node-control
+                                [schema]="node.schema"
+                                [isSelected]="node.id === _selectedNodeId"
+                                [isFocused]="node.id === _focusedNodeId"
+                                [isTarget]="node.id === _targetNodeId"
+                                (click)="onNodeClicked(node, $event)"
+                                (event$)="onNodeEvent(node, $event)">
+                        </sg-node-control>
+                    </xhtml:div>
+                </svg:foreignObject>
+            </svg:g>
+        </ng-template>
+
+    </ngx-graph>
+
+    <!-- CONTROL PANEL -->
+    <sg-control-panel>
+
+        <!-- CP :: EXTRA SECTIONS -->
+        <ng-container *ngFor="let actionTmpl of controlPanelExtraSections">
+            <spline-divider class="py-2"></spline-divider>
+            <ng-container *ngTemplateOutlet="actionTmpl.template"></ng-container>
+        </ng-container>
+        <!-- ./CP :: EXTRA SECTIONS -->
+
+    </sg-control-panel>
+    <!-- ./CONTROL PANEL -->
+
+    <ng-content></ng-content>
+</div>

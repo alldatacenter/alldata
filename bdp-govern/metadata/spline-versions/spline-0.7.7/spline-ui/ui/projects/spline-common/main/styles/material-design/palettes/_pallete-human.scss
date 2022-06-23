@@ -1,0 +1,53 @@
+/*!
+ * Copyright 2020 ABSA Group Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '~@angular/material/theming';
+
+$spline-color-map-human: (
+    50 : #f5e1e6,
+    100 : #e6b4c0,
+    200 : #d58296,
+    300 : #c4506c,
+    400 : #b72b4d,
+    500 : #aa052d,
+    600 : #a30428,
+    700 : #990422,
+    800 : #90031c,
+    900 : #7f0111,
+    A100 : #ffadb2,
+    A200 : #ff7a82,
+    A400 : #ff4752,
+    A700 : #ff2d3a,
+    contrast: (
+        50 : #000,
+        100 : #000,
+        200 : #000,
+        300 : #fff,
+        400 : #fff,
+        500 : #fff,
+        600 : #fff,
+        700 : #fff,
+        800 : #fff,
+        900 : #fff,
+        A100 : #000,
+        A200 : #000,
+        A400 : #fff,
+        A700 : #fff,
+    )
+);
+
+$spline-palette-human: mat-palette($spline-color-map-human);
+
