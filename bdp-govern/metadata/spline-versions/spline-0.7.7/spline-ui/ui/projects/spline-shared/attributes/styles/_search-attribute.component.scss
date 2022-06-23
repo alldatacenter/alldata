@@ -1,0 +1,68 @@
+/*!
+ * Copyright 2020 ABSA Group Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'vars';
+@import 'components/search-box.component';
+
+$text-color: $color-black;
+$dropdown-item-bg-color--active: $color-grey-light-2;
+$dropdown-item-border-color: $color-grey-light;
+$execution-event-name-color: $color-grey-dark;
+
+$type-border-color: $color-grey-light;
+$type-border-color--hover: $color-grey;
+$type-bg-color: $color-white;
+
+.spline-search-attribute {
+    &__option {
+        align-items: center;
+        display: flex;
+        line-height: 1.5;
+        width: 100%;
+    }
+
+    &__option-name-container {
+        flex-grow: 1;
+        overflow: hidden;
+        padding-right: 0.5rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__option-name {
+        color: $text-color;
+    }
+
+    &__option-execution-event-name {
+        color: $execution-event-name-color;
+        font-size: 12px;
+        line-height: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__option-type {
+        background: $type-bg-color;
+        border: 1px solid $type-border-color;
+        border-radius: 28px;
+        color: $text-color;
+        display: inline-block;
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+}

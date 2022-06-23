@@ -1,0 +1,74 @@
+/*!
+ * Copyright 2020 ABSA Group Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'vars';
+
+.spline-attributes-tree {
+    ul,
+    li {
+        list-style-type: none;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    &__details {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    &__highlight-btn {
+        color: $color-grey-dark;
+
+        &--active {
+            color: $color-orange;
+        }
+    }
+
+    .mat-tree-node {
+        display: flex;
+    }
+
+    .mat-tree-node--active {
+        color: $color-orange;
+        font-weight: bold;
+
+        .mat-tree-node {
+            color: $color-orange;
+            font-weight: bold;
+        }
+    }
+
+    > .cdk-tree-node:hover > li {
+        background: $color-grey-light-1;
+        border-radius: 24px;
+        cursor: pointer;
+    }
+
+    &--dissallow-selection {
+        > .cdk-tree-node:hover > li {
+            cursor: default;
+        }
+    }
+
+    &--disallow-attr-selection {
+        > .cdk-tree-node:hover > li {
+            cursor: inherit;
+        }
+    }
+
+}

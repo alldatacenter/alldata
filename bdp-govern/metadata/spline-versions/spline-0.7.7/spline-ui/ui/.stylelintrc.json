@@ -1,0 +1,35 @@
+{
+    "plugins": [
+        "stylelint-scss"
+    ],
+    "extends": [
+        "stylelint-config-sass-guidelines"
+    ],
+    "rules": {
+        "indentation": 4,
+        "number-leading-zero": null,
+        "block-no-empty": null,
+        "selector-pseudo-element-no-unknown": [
+            true,
+            {
+                "ignorePseudoElements": [
+                    "/ng-deep/"
+                ]
+            }
+        ],
+        "max-nesting-depth": 5,
+        "selector-max-compound-selectors": 5,
+        "selector-no-qualifying-type": [
+            true,
+            {
+                "ignore": [
+                    "attribute",
+                    "class",
+                    "id"
+                ]
+            }
+        ],
+        "selector-class-pattern": "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)*?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$",
+        "scss/dollar-variable-pattern": "^[a-z]+([a-z0-9-__]+[a-z0-9]+)?$"
+    }
+}

@@ -1,0 +1,66 @@
+<!--
+  ~ Copyright 2021 ABSA Group Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+
+<div class="mat-dialog-content--no-padding">
+
+    <div class="e2e-container flex-row">
+
+        <!-- GRAPH -->
+        <div class="e2e-container__body sl-content">
+
+            <spline-loader *ngIf="!isInitialized" mode="cover"></spline-loader>
+
+            <sg-container *ngIf="!!data?.graphData && isInitialized"
+                          [showGraphNodeView]="false"
+                          [graphData]="data.graphData"
+                          [targetNodeId]="data.attributeTreeSchema[0].id">
+            </sg-container>
+        </div>
+        <!-- ./GRAPH -->
+
+        <!-- SIDEBAR -->
+        <div class="sl-content-sidebar">
+            <div class="e2e-container px-4 py-4">
+                <!-- SIDEBAR :: HEADER -->
+                <div class="sl-content-sidebar__header">
+                    <!-- TITLE -->
+                    <h2>
+                        {{dialogTitle | translate}}
+                    </h2>
+                    <!-- ./TITLE -->
+
+                    <!-- CLOSE BUTTON -->
+                    <div class="mat-dialog-close-btn--top-right">
+                        <button mat-button mat-icon-button [autofocus]="false" [tabIndex]="-1">
+                            <mat-icon mat-dialog-close [matTooltip]="'COMMON.CLOSE' | translate">close</mat-icon>
+                        </button>
+                    </div>
+                    <!-- ./CLOSE BUTTON -->
+                </div>
+                <!-- ./SIDEBAR :: HEADER -->
+
+                <div class="e2e-container__body-with-scroll">
+                    <div class="mt-4">
+                        <plan-attribute-info [attributeTreeSchema]="data.attributeTreeSchema"></plan-attribute-info>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./SIDEBAR -->
+
+    </div>
+</div>
