@@ -94,40 +94,28 @@ PERJOB启动FlinkSQL
 <br/>
 
 
-~~~markdown
-1、数据平台:
-bdp-platform：基于大数据、数据平台、微服务、机器学习、商城、自动化运维、DevOps、容器部署平台、数据平台采集、数据平台存储、数据平台计算、数据平台开发、数据平台应用搭建的大数据解决方案。
-数据来源：
-商城：使用SpringBoot，Java，Vue，React，Android开发多端商城，包括网站、App、微信小程序；
-日志：使用Java开发服务端日志、客户端日志收集系统，使用DataX实现数据的导入导出系统；
-爬虫：爬虫平台支持可配置的爬取公网数据的任务开发；
-数据存储：
-分布式文件系统使用HDFS，分布式数据库使用HBase，Mongodb、Elasticsearch，内存数据库使用redis；
-数据计算：
-使用Hive、MR、HiveSQL、ETL开发离线计算系统；
-使用storm、flink、spark streaming开发实时计算系统；
-使用kylin, spark开发多维度分析系统；
-数据开发：
-任务管理系统：负责调度、分配、提交任务到数据平台；
-任务运维系统：查看Task运行情况；
-数据应用：
-使用python，ml，spark mllib实现个性化推荐系统；
-使用python，scrapy，django，elasticsearch实现搜索引擎；
-使用scala，flink开发反作弊系统；
-使用FineReport，scala，playframework开发报表分析系统；
-DevOps：
-使用ELK技术栈搭建日志搜索平台；
-使用skywalking，Phoenix实现监控平台；
-使用scala、playframework，docker，k8s，shell实现云容器平台，包含服务管理（查看docker容器配置，添加容器实例，授权记录，操作记录，历史版本回溯，k8s启停服务，操作记录，对比yaml配置，更新服务）、任务管理、配置管理、镜像构建（包括环境变量和参数配置）、应用日志
-使用自动化运维平台CoDo开发system-devops；
-使用Kong开发统一网关入口系统system-api-gateway；
-使用vue、scala、playframework、docker、k8s、Prometheus、grafana开发监控告警平台system-alarm-platform；
-使用Apollo开发system-config配置中心；
-~~~
+### 1、数据平台
 
-~~~markdown
-2、商城展示
-~~~
+&nbsp; &nbsp; &nbsp; &nbsp; AllData is one of the few open source big data platform projects on Github. It will develop into a successful solution to solve a series of problems in big data e-commerce scenarios.
+
+&nbsp; &nbsp; &nbsp; &nbsp; It will also become a general big data base for other developers to use and Contribution, my original intention is to create a product that is useful to society.
+
+| Component | Description | Important Composition |
+| --------------- | -----------------------|-----------------------|
+| [**bdp-ai**](https://github.com/authorwlh/alldata/tree/master/bdp-ai) | AI FOR BDP PLATFORM artificial intelligence engine | 人工智能引擎                |
+| [**bdp-business**](https://github.com/authorwlh/alldata/tree/master/bdp-business) | BUSINESS FOR BDP PLATFORM | 商业项目                  |
+| [**bdp-compute**](https://github.com/authorwlh/alldata/tree/master/bdp-compute) | BUSINESS FOR BDP PLATFORM CALCULATION ENGINE | 计算引擎
+| [**bdp-devops**](https://github.com/authorwlh/alldata/tree/master/bdp-devops) | DEVOPS FOR BDP PLATFORM O&M Engine | 运维引擎                  |
+| [**bdp-assembly**](https://github.com/authorwlh/alldata/tree/master/bdp-assembly) | whole package build | 整包构建                  |
+| [**bdp-docs**](https://github.com/authorwlh/alldata/tree/master/bdp-docs) |  Document                   |       文档        | 
+| [**bdp-govern**](https://github.com/authorwlh/alldata/tree/master/bdp-govern) | DATA GOVERN FOR BDP PLATFORM Data Governance Engine | 数据治理引擎                |
+| [**bdp-integrate**](https://github.com/authorwlh/alldata/tree/master/bdp-integrate) | DATA Integrate FOR BDP PLATFORM Data Integration Engine | 数据集成引擎                |
+| [**bdp-ods**](https://github.com/authorwlh/alldata/tree/master/bdp-ods) | DATA ODS FOR BDP PLATFORM data acquisition engine | 数据采集引擎                |
+| [**bdp-olap**](https://github.com/authorwlh/alldata/tree/master/bdp-olap) | OLAP FOR BDP PLATFORM OLAP query engine | OLAP查询引擎              |
+| [**bdp-optimize**](https://github.com/authorwlh/alldata/tree/master/bdp-optimize) | OPTIMIZE FOR BDP PLATFORM performance optimization engine | 性能优化引擎                |
+| [**bdp-storage**](https://github.com/authorwlh/alldata/tree/master/bdp-storage) | DATABASES FOR BDP PLATFORM distributed storage engine | 分布式存储引擎               |
+
+### 2、商城展示
 <br>
 <img width="348" alt="image" src="https://user-images.githubusercontent.com/20246692/160219586-e2e190fa-21f6-4f87-bbbc-7cdd6ecc625a.png">
 <img width="341" alt="image" src="https://user-images.githubusercontent.com/20246692/160219649-d6a0b18c-7e54-4f8d-8d95-17777cdbe9d9.png">
@@ -153,9 +141,8 @@ DevOps：
 <img width="943" alt="image" src="https://user-images.githubusercontent.com/20246692/160220106-0341a2f4-b4df-4d2b-9ec1-b0f10affd22d.png">
 <br/>
 
+### 3、数据来源
 ~~~markdown
-3、数据来源
-
 	商城前台：
 		mall-shopping-app: 商城App
 		mall-shopping-app-service: 商城App服务
@@ -169,8 +156,8 @@ DevOps：
 		mall-admin-service: 商城后台服务
 ~~~
 
+### 4、数据收集
 ~~~markdown
-4、数据收集
 log-collect-server:
 服务端日志收集系统
 log-collect-client:
@@ -186,22 +173,22 @@ data-spider:
 <img width="999" alt="image" src="https://user-images.githubusercontent.com/20246692/160220323-db53951d-1956-4c83-8642-b086b8f4d90c.png">
 <br/>
 
+### 5、数据存储
 ~~~markdown
-5、数据存储
 分布式文件系统：hdfs
 分布式数据库：hbase、mongodb、elasticsearch
 分布式内存存储系统：redis
 ~~~
 
+### 6、数据计算
 ~~~markdown
-6、数据计算
 compute-mr（离线计算）: Hive、MR
 compute-realtime（流计算）: storm、flink
 multi-dimension-analysis（多维度分析）: kylin, spark
 ~~~
 
+### 7、数据开发
 ~~~markdown
-7、数据开发
 task-schedular: 任务调度
 task-ops: 任务运维
 ~~~
@@ -211,15 +198,15 @@ task-ops: 任务运维
 <img width="1275" alt="image" src="https://user-images.githubusercontent.com/20246692/160220381-c1cc8344-e16c-4d03-8434-b9d1ef43470c.png">
 <br/>
 
+### 8、数据产品
 ~~~markdown
-8、数据产品
 data-face: 数据可视化
 data-insight: 用户画像分析
 ~~~
 <br/>
 
+### 9、数据应用
 ~~~markdown
-9、数据应用
 system-recommender: 推荐
 system-ad: 广告
 system-search: 搜索
@@ -237,7 +224,7 @@ job-schedule: 任务提交平台
 
 ## Installation | ## Run
 
-10、启动配置教程
+### 10、启动配置教程
 
 10.1 启动前，打包dubbo-servie项目，进入dubbo-service目录，
 
@@ -298,54 +285,55 @@ job-schedule: 任务提交平台
 
 
 
-12 DevOPS
+### 11、DevOPS
 
-12.1 容器化部署system-deploy
+11.1 容器化部署system-deploy
 
 <img width="914" alt="image" src="https://user-images.githubusercontent.com/20246692/160220577-3409bf17-d828-4905-b10e-7e9ba20e544e.png">
 <img width="1223" alt="image" src="https://user-images.githubusercontent.com/20246692/160220585-e245f8bc-0821-47ab-b748-808c884cd4de.png">
 
-12.2、自动化运维平台system-devops
+11.2、自动化运维平台system-devops
 
 <img width="1280" alt="image" src="https://user-images.githubusercontent.com/20246692/160220594-40e4c4ba-123b-4ecc-98f3-345e0cd0843b.png">
 
-12.3、使用Kong作为调用中心网关入口system-api-gateway
+11.3、使用Kong作为调用中心网关入口system-api-gateway
 
 <img width="887" alt="image" src="https://user-images.githubusercontent.com/20246692/160220600-6b3443ef-cf30-433a-bf28-a03147c0b069.png">
 <img width="861" alt="image" src="https://user-images.githubusercontent.com/20246692/160220611-5f8327b4-0ca9-457c-b623-8f2026e81f59.png">
 
 
-12.4、日志中心system-elk
+11.4、日志中心system-elk
 
 <img width="768" alt="image" src="https://user-images.githubusercontent.com/20246692/160220621-bd22df74-e11c-4a34-86f1-35fd17b881c6.png">
 
-12.5、告警平台system-alarm-platform
+11.5、告警平台system-alarm-platform
 
-12.6 监控系统
+11.6 监控系统
 
 <img width="970" alt="image" src="https://user-images.githubusercontent.com/20246692/160220634-1e1bdf37-26e5-4c35-b56f-ee55af4dcd45.png">
 
-12.7 数据采集
+11.7 数据采集
 
 <img width="999" alt="image" src="https://user-images.githubusercontent.com/20246692/160220653-6264e6a7-09a2-4811-a99f-99b118433208.png">
 
-12.8 数据展示
+11.8 数据展示
 
 <img width="1165" alt="image" src="https://user-images.githubusercontent.com/20246692/160220670-1b30e201-28b0-4fcc-8f0e-9aea8154f43a.png">
 
 
-12.9 监控中心system-apm
+11.9 监控中心system-apm
 
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220682-24063605-59b8-43ad-928b-d1ce8be603b2.png">
 
 
-12.10 使用Apollo作为配置中心system-config
+11.10 使用Apollo作为配置中心system-config
 
 <img width="882" alt="image" src="https://user-images.githubusercontent.com/20246692/160220690-7fc23e65-ad53-4f5f-a0f2-aa55e649f500.png">
 
 ## Community & Sponsorship
 
-13、技术交流群二维码
+### 12、技术交流群二维码
+
 <br/>
 ## Github大数据平台QQ群号：935658273
 
