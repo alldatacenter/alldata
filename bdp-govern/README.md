@@ -1,4 +1,4 @@
-# DATA GOVERN FOR BDP PLATFORM 数据治理引擎
+# DATA GOVERN FOR ALL DATA PLATFORM 数据治理引擎
 
 ```markdown
 数据平台的数据治理：数据治理是一个大而全的治理体系。需要数据质量管理、元数据管理、主数据管理、模型管理管理、数据价值管理、

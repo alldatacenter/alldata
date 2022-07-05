@@ -1,4 +1,4 @@
-# DATA ODS FOR BDP PLATFORM 数据采集引擎
+# DATA ODS FOR ALL DATA PLATFORM 数据采集引擎
 
 数据平台的人工智能引擎：数据采集引擎
 

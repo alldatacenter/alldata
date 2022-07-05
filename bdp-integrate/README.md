@@ -1,4 +1,4 @@
-# DATA Integrate FOR BDP PLATFORM 数据集成引擎
+# DATA Integrate FOR ALL DATA PLATFORM 数据集成引擎
 
 数据平台的数据集成：业务端数据往集群存储灌输数据
 

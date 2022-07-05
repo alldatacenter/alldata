@@ -157,11 +157,11 @@ DevOps：
 		mall-shopping-wc: 商城小程序
 		mall-shopping-mobile: 商城前台
 		mall-shopping-pc: 商城pc端
-		mall-pc-backend: 商城pc端服务
-		mall-shopping-service: 商城前台服务（小程序和前台接入此接口）
+		pcAdminService: 商城pc端服务
+		mobileService: 商城前台服务（小程序和前台接入此接口）
 	商城后台：
 		mall-admin-web: 商城后台
-		mall-admin-service: 商城后台服务
+		pcAdminService: 商城后台服务
 ~~~
 
 ~~~markdown
@@ -234,11 +234,11 @@ job-schedule: 任务提交平台
 
 10、启动配置教程
 
-10.1 启动前，打包dubbo-servie项目，进入dubbo-service目录，
+10.1 启动前，打包dubbo-servie项目，进入dubbo目录，
 
 执行mvn clean package -DskipTests=TRUE打包，然后执行mvn install.
 
-10.2 启动dubbo-service项目，配置tomcat端口为8091
+10.2 启动dubbo项目，配置tomcat端口为8091
 
 <img width="1210" alt="image" src="https://user-images.githubusercontent.com/20246692/160220455-45898c53-0de6-4a06-80b0-ae7e758b9457.png">
 
@@ -249,9 +249,9 @@ job-schedule: 任务提交平台
 
 10.3.1、前端：启动mall-admin-web项目，进入项目目录，执行npm install，然后执行npm run dev；
 
-10.3.2、后端：启动mall-admin-service/mall-admin-search项目，
+10.3.2、后端：启动pcAdminService/mall-admin-search项目，
 
-配置tomcat端口为8092，接着启动mall-manage-service项目，tomcat端口配置为8093；
+配置tomcat端口为8092，接着启动pcManage项目，tomcat端口配置为8093；
 
 <img width="1226" alt="image" src="https://user-images.githubusercontent.com/20246692/160220467-283a7964-27c1-4184-9ece-778e87fc38f7.png">
 <img width="1217" alt="image" src="https://user-images.githubusercontent.com/20246692/160220472-68a6d9a4-e295-4b86-a9e6-75b53f821d52.png">
@@ -276,7 +276,7 @@ job-schedule: 任务提交平台
 
 10.3.3.3、后端：小程序和移动端用的是同一个后台服务，
 
-启动mall-shopping-service项目，进入项目目录，配置tomcat端口8094
+启动mobileService项目，进入项目目录，配置tomcat端口8094
 
 <img width="1221" alt="image" src="https://user-images.githubusercontent.com/20246692/160220500-7c6b9097-7a82-4f23-95be-eda9c8f9eee5.png">
 
@@ -287,7 +287,7 @@ job-schedule: 任务提交平台
 
 进入项目目录，执行npm install和npm run dev；
 
-10.3.4.2、后端：启动mall-pc-backend项目，配置tomcat端口为8095；
+10.3.4.2、后端：启动pcAdminService项目，配置tomcat端口为8095；
 
 <img width="1221" alt="image" src="https://user-images.githubusercontent.com/20246692/160220506-688f51cc-1b3d-46a9-ad3e-ec033ee69562.png">
 
