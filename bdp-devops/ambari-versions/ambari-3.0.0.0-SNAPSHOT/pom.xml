@@ -259,14 +259,6 @@
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <copyright>2012, Apache Software Foundation</copyright>
-          <group>Development</group>
-          <description>Maven Recipe: RPM Package.</description>
-          <release>${package-release}</release>
-          <version>${package-version}</version>
-          <mappings/>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.rat</groupId>
@@ -412,7 +404,6 @@
           </execution>
         </executions>
         <configuration>
-          <skip>true</skip>
           <attach>false</attach>
           <submodules>true</submodules>
           <controlDir>${basedir}/ambari-project/src/main/package/deb/control</controlDir>
@@ -609,7 +600,7 @@
           <plugin>
             <groupId>com.atlassian.maven.plugins</groupId>
             <artifactId>maven-clover2-plugin</artifactId>
-            <version>${clover.version}</version>
+            <version>3.1.11</version>
             <configuration>
               <includesAllSourceRoots>true</includesAllSourceRoots>
               <includesTestSourceRoots>true</includesTestSourceRoots>
@@ -696,7 +687,7 @@ instead of a SNAPSHOT. -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>1.5</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>

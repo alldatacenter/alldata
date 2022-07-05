@@ -17,7 +17,7 @@ export default (): React.ReactNode => {
         <Alert
           message={intl.formatMessage({
             id: 'pages.welcome.alertMessage',
-            defaultMessage: 'FLINK SQL IDE FOR ALLDATA',
+            defaultMessage: 'FLINK SQL IDE FOR ALL DATA',
           })}
           type="success"
           showIcon

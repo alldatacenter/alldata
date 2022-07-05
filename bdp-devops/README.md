@@ -1,4 +1,4 @@
-# DEVOPS FOR BDP PLATFORM 运维引擎
+# DEVOPS FOR ALL DATA PLATFORM 运维引擎
 
 数据平台的运维引擎：ambari+ds+其他
 
