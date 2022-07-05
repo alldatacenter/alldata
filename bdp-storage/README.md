@@ -1,4 +1,4 @@
-# DATABASES FOR BDP PLATFORM 分布式存储引擎
+# DATABASES FOR ALL DATA PLATFORM 分布式存储引擎
 
 数据平台的分布式存储引擎：存算分离譬如Kylin+Parquet 存算一体譬如CK
 
