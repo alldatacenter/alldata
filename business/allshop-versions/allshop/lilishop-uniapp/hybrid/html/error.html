@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>服务器异常</title>
+		
+		<script type="text/javascript" src="./js/webView.js"></script>
+		<script type="text/javascript">
+			// H5 plus事件处理
+			var ws = null;
+
+			function plusReady() {
+				// Android处理返回键
+				plus.key.addEventListener('backbutton', function() {
+					(history.length == 1) && ws.close();
+					var c = setTimeout(function() {
+						ws.close();
+					}, 1000);
+					window.onbeforeunload = function() {
+						clearTimeout(c);
+					}
+					history.go(-2);
+				}, false);
+				ws = plus.webview.currentWebview();
+			}
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+			document.addEventListener('touchstart', function() {
+				return false;
+			}, true);
+			// 禁止选择
+			document.oncontextmenu = function() {
+				return false;
+			};
+		</script>
+		<style>
+			html,
+			body {
+				padding: 0;
+				margin: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.main {
+				height: 100%;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				line-height: 80px;
+				flex-direction: column;
+			}
+
+			.text {
+				font-size: 14px;
+				color: #999999;
+			}
+
+			img {
+				width: 150px;
+				height: 130px;
+			}
+
+			button {
+				border: 1px solid #1ABC9C;
+				border-radius: 2px;
+				background-color: #FFFFFF;
+				color: #1ABC9C;
+				width: 100px;
+				height: 30px;
+				margin-bottom: 30px;
+				outline: none;
+			}
+
+			.go-index {
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="text">服务器异常</div>
+			<button onclick="if(history.length == 1){ws.close();}else{ws.back();ws.back();}">点击刷新</button>
+			<button onclick="ws.close()">点击关闭</button>
+			<button onclick="plus.runtime.restart()">点击重启</button>
+		</div>
+		</div>
+	</body>
+</html>

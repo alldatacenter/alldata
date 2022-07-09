@@ -1,0 +1,131 @@
+.view-item {
+	background: #fff;
+	border-radius: 0.4em;
+	margin: 20rpx 30rpx;
+	padding: 20rpx 0;
+}
+
+.nodata {
+	text-align: center;
+	margin: 40rpx 0 20rpx 0;
+}
+
+.container-wrap {
+	width: 100%;
+}
+.white_class {
+	color: #fff;
+	font-size: 28rpx;
+}
+
+.popupTips {
+	font-size: 22rpx;
+	font-family: PingFang SC, PingFang SC-Regular;
+	font-weight: 400;
+	text-align: left;
+	color: #999999;
+	margin: 0 20rpx;
+
+	/deep/ view {
+		line-height: 1.75;
+	}
+}
+
+.search {
+	margin: 30rpx 20rpx !important;
+}
+
+.view-left,
+.view-content,
+.view-right,
+.view-item {
+	display: flex;
+}
+
+.wrapper {
+	width: 100%;
+	overflow: hidden;
+}
+.view-left {
+	width: 226rpx;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+}
+.view-content {
+	width: calc((100% - 240rpx));
+	padding-left: 20rpx;
+	flex-direction: column;
+	justify-content: center;
+
+	text-align: center;
+}
+.buy-content {
+	font-size: 22rpx;
+	font-family: PingFang SC, PingFang SC-Regular;
+	font-weight: 400;
+	margin-top: 15rpx;
+	text-align: center;
+	color: #999999;
+}
+.view-content-bottom {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.group-wrapper {
+	padding: 16rpx 32rpx;
+}
+.view-content-name {
+	font-family: PingFang SC, PingFang SC-Regular;
+	font-weight: 400;
+	text-align: left;
+	color: #333333;
+	font-size: 28rpx;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+.view-content-price {
+	margin: 10rpx 0;
+	letter-spacing: 0px;
+	overflow: hidden;
+	font-size: 28rpx;
+	font-family: PingFang SC, PingFang SC-Regular;
+	font-weight: 400;
+	text-align: left;
+	color: #ff5a10;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.view-content-original_price {
+	font-size: 22rpx;
+	font-family: PingFang SC, PingFang SC-Regular;
+	font-weight: 400;
+	text-decoration: line-through;
+	text-align: left;
+	color: #999999;
+}
+
+.btn-group {
+	background: $aider-light-color;
+	border-radius: 10rpx;
+	font-size: 24rpx;
+	font-family: PingFang SC, PingFang SC-Regular;
+	font-weight: 400;
+	color: #fff;
+	text-align: center;
+	padding: 6rpx 16rpx;
+}
+/deep/ .empty {
+	position: relative;
+	padding-top: 20%;
+	> .empty-content {
+		position: relative;
+		padding-top: 20%;
+	}
+}

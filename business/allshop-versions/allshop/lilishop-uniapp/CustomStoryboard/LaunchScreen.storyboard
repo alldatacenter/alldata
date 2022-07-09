@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad12_9" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment version="4096" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" tag="1" contentMode="scaleAspectFit" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LILI商城  享你所购" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aap-f2-ctd">
+                                <rect key="frame" x="417.5" y="1291" width="189" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="189" id="IEH-DH-MSh"/>
+                                    <constraint firstAttribute="height" constant="65" id="Owl-Zu-11N"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="pa9-7L-Yn2"/>
+                                    <constraint firstAttribute="width" constant="189" id="xdI-XG-GYE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" highlightedImage="1.png" translatesAutoresizingMaskIntoConstraints="NO" id="tDb-oz-ZqQ" userLabel="logo.png">
+                                <rect key="frame" x="437" y="1126" width="150" height="150"/>
+                                <color key="tintColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2Pc-RJ-7fL"/>
+                                    <constraint firstAttribute="width" secondItem="tDb-oz-ZqQ" secondAttribute="height" multiplier="1:1" id="K9U-1h-yR6"/>
+                                    <constraint firstAttribute="height" constant="150" id="Ocb-HD-CX3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IW3-oA-Ytg"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IW3-oA-Ytg" firstAttribute="bottom" secondItem="aap-f2-ctd" secondAttribute="bottom" constant="10" id="AaD-Ch-YkJ"/>
+                            <constraint firstItem="aap-f2-ctd" firstAttribute="top" secondItem="tDb-oz-ZqQ" secondAttribute="bottom" constant="15" id="TSj-WP-wlO"/>
+                            <constraint firstItem="tDb-oz-ZqQ" firstAttribute="centerX" secondItem="IW3-oA-Ytg" secondAttribute="centerX" id="XFM-cQ-LjU"/>
+                            <constraint firstItem="tDb-oz-ZqQ" firstAttribute="centerX" secondItem="aap-f2-ctd" secondAttribute="centerX" id="gTF-LF-cb1"/>
+                        </constraints>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.390625" y="373.35285505124449"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1.png" width="86" height="57"/>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

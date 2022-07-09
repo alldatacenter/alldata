@@ -1,0 +1,46 @@
+/deep/ .u-input__input,
+.u-input {
+  font-size: 80rpx !important;
+  height: 102rpx !important;
+}
+/deep/ .u-input__input {
+  height: 100%;
+  font-size: 80rpx;
+}
+.content {
+  display: flex;
+  > .price {
+    width: 60%;
+    margin: 20rpx 0;
+    font-size: 80rpx;
+    display: flex;
+  }
+  > .all {
+    justify-content: center;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+.-list {
+  margin: 20rpx 0;
+  background: #fff;
+  padding: 16rpx 32rpx;
+}
+.title {
+  font-size: 35rpx;
+}
+.light {
+  opacity: 0.6;
+}
+.submit {
+  margin: 80rpx auto;
+  width: 94%;
+  background: $light-color;
+  height: 90rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 90rpx;
+}

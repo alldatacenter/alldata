@@ -1,0 +1,68 @@
+.sub-title {
+	font-size: 24rpx;
+	color: #999;
+}
+.cell {
+	margin: 40rpx 0;
+}
+.login-ball {
+	border-bottom-left-radius: 300rpx;
+	height: 400rpx;
+	position: relative;
+}
+
+/deep/ .u-form-item--right__content__slot {
+	width: 100%;
+	display: block;
+}
+
+.title {
+	font-size: 48rpx;
+	color: #000;
+	text-align: center;
+}
+.privacy {
+	font-size: 24upx;
+	color: #999;
+	text-align: center;
+	margin-top: 360rpx;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+span {
+	color: $aider-light-color;
+}
+.form {
+	padding: 0 72rpx;
+}
+.divider {
+	margin: 30rpx 0 !important;
+}
+.submit {
+	height: 80rpx;
+	line-height: 80rpx;
+	color: #fff;
+	text-align: center;
+	font-size: 30rpx;
+	border-radius: 100px;
+}
+.logo {
+	margin-top: 20rpx;
+	width: 200rpx;
+	height: 200rpx;
+	text-align: center;
+}
+.logo-cell {
+	text-align: center;
+}
+.text-tips {
+	text-align: center;
+}
+.tips {
+	position: absolute;
+	bottom: 10rpx;
+	width: 100%;
+
+	text-align: center;
+}

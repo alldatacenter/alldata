@@ -1,0 +1,57 @@
+.position-box{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.join-box {
+    display: flex;
+  }
+  .item-price {
+    > span {
+      font-size: 15px;
+      font-weight: 500;
+      color: #e1212b;
+    }
+  }
+  .join-item {
+    flex: 1;
+  }
+  .item-img {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+    display: block;
+  }
+  .item-img-box {
+    position: relative;
+  }
+  .item-line-through {
+    > span {
+      font-size: 10px;
+      font-weight: 400;
+      text-decoration: line-through;
+      color: #999;
+    }
+  }
+  .item-position-tips {
+    position: absolute;
+    right: 0;
+    color: #fff;
+    font-size: 12px;
+    bottom: 0;
+  }
+  .join-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    height: 50px;
+    > div:nth-of-type(1) {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    > div:nth-of-type(2) {
+      font-size: 12px;
+      color: #999;
+    }
+  }

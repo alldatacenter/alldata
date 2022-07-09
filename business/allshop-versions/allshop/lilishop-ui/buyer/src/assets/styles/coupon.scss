@@ -1,0 +1,91 @@
+
+// coupon
+.coupon-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.coupon-item {
+    width: 380px;
+    height: 145px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    position: relative;
+    border: 1px solid #eee;
+    .c-left {
+        width: 100%;
+        padding: 20px;
+        > div,
+        > p {
+            margin-bottom: 10px;
+        }
+        > div {
+            .price {
+                color: $theme_color;
+                font-size: 20px;
+            }
+            .describe {
+                background-color: #fff4ec;
+                color: $theme_color;
+                padding: 0 5px;
+                margin-left: 10px;
+                font-size: 13px;
+            }
+        }
+        p:nth-of-type(1) {
+            font-weight: bold;
+        }
+        p:nth-of-type(2) {
+            color: #999;
+        }
+    }
+    b {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 50px;
+        display: block;
+        width: 3px;
+        height: 100%;
+    }
+    .c-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 52px;
+        height: 100%;
+        background-color: $theme_color;
+        color: #fff;
+        font-size: 16px;
+        padding: 20px;
+    }
+    i {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 42px;
+        border: 1px solid #eee;
+        background-color: #fff;
+        border-radius: 20px;
+        &:after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 20px;
+            left: -2px;
+            background-color: #fff;
+        }
+    }
+    i.circle-top {
+        top: -10px;
+        &::after {
+            top: -11px;
+        }
+    }
+    i.circle-bottom {
+        bottom: -10px;
+        &::after {
+            bottom: -11px;
+        }
+    }
+}

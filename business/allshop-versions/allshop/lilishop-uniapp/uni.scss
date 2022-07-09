@@ -1,0 +1,179 @@
+/* 页面左右间距 */
+$page-color-base: #f8f8f8;
+@import "uview-ui/theme.scss";
+
+/* 文字尺寸 */
+$font-sm: 24rpx;
+$font-base: 28rpx;
+$font-lg: 32rpx;
+$font-sl: 36rpx;
+/*文字颜色*/
+$font-color-dark: #303133;
+$font-color-white: #ffffff;
+$font-color-base: #606266;
+$font-color-light: #909399;
+$font-color-disabled: #c0c4cc;
+/* 边框颜色 */
+$border-color-dark: #dcdfe6;
+$border-color-base: #e4e7ed;
+$border-color-light: #ebeef5;
+/* 图片加载中颜色 */
+$image-bg-color: #eee;
+/* 行为相关颜色 */
+$uni-color-primary: #fa436a;
+$uni-color-success: #4cd964;
+$uni-color-warning: #f0ad4e;
+$uni-color-error: #dd524d;
+
+/*主题颜色 具体参考   https://ant.design/docs/spec/colors-cn */
+/**微信登录按钮颜色 */
+$weChat-color:#00a327;
+/**主颜色*/
+$main-color: #ff3c2a;
+/*用于金钱等颜色 */
+$price-color: #ff3c2a;
+/*主题高亮颜色*/
+$light-color: #ff6b35;
+/*辅助高亮颜色*/
+$aider-light-color: #ff9f28;
+
+/*主题高亮背景颜色*/
+$main-light-color: #edfcf7;
+/*价格红高亮背景颜色*/
+$price-light-color: #fcedeb;
+
+/*辅助色*/
+$aider-color-red: #ff6262;
+$aider-color-yellow: #ffc71c;
+$aider-color-green: #28d094;
+$aider-color-blue: #1e9ff2;
+// 中性色
+$neutral-color: #333333;
+//背景色
+$bg-color: #f9f9f9;
+
+// 字体
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+	"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-weight-b: 500;
+$font-weight: 400;
+.light-color {
+	color: $light-color;
+}
+.main-color {
+	color: $main-color !important;
+}
+.bg-light-color {
+	background-color: $light-color !important;
+	/deep/ * {
+		background-color: $light-color !important;
+	}
+}
+.bg-main-color {
+	background-color: $main-color !important;
+}
+
+// 渐变主题颜色
+.bg-linear-gradient {
+	background-image: linear-gradient(25deg, #fa123b, #ff6b35, #ff9f28, #ffcc03);
+}
+.uni-tabbar .uni-tabbar__icon {
+	width: 20px;
+	height: 18px;
+}
+
+.flex {
+	display: flex;
+}
+
+.btn {
+	background-color: $light-color;
+	color: #ffffff;
+	border-width: 0px;
+	border: none;
+	border-radius: 44px;
+	height: 44px;
+	box-shadow: none;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 44px;
+	text-align: center;
+	&::after {
+		border: none;
+	}
+}
+.button-hover {
+	opacity: 0.7;
+}
+
+.margin {
+	margin: 10px;
+}
+
+.tag {
+	background-color: rgba(242, 242, 242, 1);
+	color: #333333;
+	height: 28px;
+	border-radius: 28px;
+	box-shadow: none;
+	font-family: "PingFangSC-Regular", "PingFang SC", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 28px;
+	text-align: center;
+	width: 90px;
+}
+
+.c-content {
+	background-color: #ffffff;
+	// margin-top: 30rpx;
+	border-top: 1px solid $border-color-light;
+	border-bottom: 1px solid $border-color-light;
+}
+.mt-30 {
+	margin-top: 30rpx;
+}
+.border-top {
+	border-top: 1px solid $border-color-light;
+}
+.describe {
+	color: $font-color-light;
+	font-size: $font-sm;
+	padding: 30rpx;
+}
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.flex-a-c{
+	align-items: center;
+}
+.relative {
+	position: relative;
+}
+
+.wes {
+	/* 多出部分用省略号表示 , 用于一行 */
+	overflow: hidden;
+	word-wrap: normal;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.wes-2 {
+	/* 适用于webkit内核和移动端 */
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
+.wes-3 {
+	/* 适用于webkit内核和移动端 */
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}

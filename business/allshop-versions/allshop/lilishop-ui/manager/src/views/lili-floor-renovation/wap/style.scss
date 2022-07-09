@@ -1,0 +1,98 @@
+.model-view {
+  display: flex;
+  .model-view-menu {
+    flex: 1.5;
+    min-width: 250px;
+    > .model-view-menu-item {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+  .model-config {
+    flex: 2.5;
+  }
+  .model-view-content {
+    flex: 6;
+  }
+  .model-item {
+    line-height: 1.75;
+    font-size: 13px;
+    margin: 0 5px 10px 5px;
+    border: 1px solid #ededed;
+    background: #f6f6f9;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+.model-view-content {
+  background: #f6f6f9;
+  border-radius: 0.8em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.wap-title {
+  line-height: 44px;
+  text-align: center;
+  height: 44px;
+  border-bottom: 1px solid #ededed;
+}
+.content {
+  margin: 20px 0;
+  padding: 50px 13px;
+  width: 360px;
+  background: url("../../../assets/iPhoneX_model.png") no-repeat;
+  height: 780px;
+  background-size: 360px;
+  overflow: hidden;
+  > .component,
+  .draggable {
+    height: 590px;
+    overflow-y: auto;
+    background: #ebebeb;
+  }
+  > .draggable {
+    padding-bottom: 100px;
+  }
+}
+.list {
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  z-index: 99;
+}
+
+.model-btn {
+  > * {
+    margin: 0 4px;
+  }
+}
+.qrCode {
+  width: 100px;
+  height: 100px;
+}
+.default-view-content {
+  text-align: center;
+  font-weight: bold;
+  line-height: 2;
+  /deep/ img {
+    margin: 0 auto;
+  }
+}
+.model-config {
+  overflow-y: auto;
+}
+
+.active {
+  box-sizing: border-box;
+  border: 1px solid $theme_color;
+}
