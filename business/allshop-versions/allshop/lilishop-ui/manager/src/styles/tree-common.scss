@@ -1,0 +1,38 @@
+.search {
+    .operation {
+        margin-bottom: 2vh;
+    }
+
+
+    .select-clear {
+        margin-left: 10px;
+    }
+}
+
+.tree-bar {
+    overflow: auto;
+    margin-top: 5px;
+    position: relative;
+    min-height: 80px;
+}
+
+.tree-bar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.tree-bar::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 0 2px #d1d1d1;
+    background: #e4e4e4;
+}
+
+.block-tool .ivu-tooltip,
+.block-tool .ivu-tooltip-rel {
+    display: block;
+}
+
+.block-pop .ivu-poptip,
+.block-pop .ivu-poptip-rel {
+    display: block;
+}

@@ -1,0 +1,117 @@
+// text
+@prefixCls: zk-checkbox;
+// color
+@border: #dddee1;
+@hoverBorder: #bcbcbc;
+@blue: #2d8cf0;
+
+.@{prefixCls}-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.@{prefixCls} {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    .@{prefixCls}__inner {
+      border-color: @hoverBorder;
+    }
+  }
+}
+
+.@{prefixCls}__inner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 1px solid @border;
+  border-radius: 2px;
+  background-color: #ffffff;
+  transition: border-color .2s ease-in-out,background-color .2s ease-in-out;
+  &::after {
+    content: "";
+    display: table;
+    width: 4px;
+    height: 8px;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg) scale(0);
+    transition: all .2s ease-in-out;
+  }
+}
+
+.@{prefixCls}--indeterminate {
+  .@{prefixCls}__inner {
+    background-color: @blue;
+    border-color: @blue;
+    &::after {
+      content: "";
+      width: 8px;
+      height: 1px;
+      transform: scale(1);
+      position: absolute;
+      left: 2px;
+      top: 5px;
+    }
+  }
+  &:hover {
+    .@{prefixCls}__inner {
+      border-color: @blue;
+    }
+  }
+}
+
+.@{prefixCls}--checked {
+  .@{prefixCls}__inner {
+    border-color: @blue;
+    background-color: @blue;
+    &::after {
+      content: "";
+      display: table;
+      width: 4px;
+      height: 8px;
+      position: absolute;
+      top: 1px;
+      left: 4px;
+      border: 2px solid #ffffff;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(45deg) scale(1);
+      transition: all .2s ease-in-out;
+    }
+  }
+  &:hover {
+    .@{prefixCls}__inner {
+      border-color: @blue;
+    }
+  }
+}
+
+.@{prefixCls}--disabled {
+  cursor: not-allowed;
+  .@{prefixCls}__inner {
+    background-color: #f3f3f3;
+    border-color: @border;
+    &::after {
+      animation-name: none;
+      border-color: #ccc;
+    }
+  }
+  &:hover {
+    .@{prefixCls}__inner {
+      border-color: @border;
+    }
+  }
+}

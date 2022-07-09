@@ -1,0 +1,339 @@
+//引入主题色
+
+
+// 明亮主题颜色
+$primary_color: #2d8cf0;
+$primary_light_color: #0f1011;
+$primary_dark_color: #2b85e4;
+$success_color: #19be6b;
+$warning_color: #ff9900;
+$error_color: #ed3f14;
+$handle-btn-color: #438cde;
+
+$theme_color: #e4393c;
+
+$border_color: #dddee1;
+$title_color: #8c8c8c;
+$light_title_color: #1c2438;
+$light_content_color: #495060;
+$light_sub_color: #80848f;
+$light_background_color: #f8f8f9;
+$light_white_background_color: #fff;
+// 暗黑主题颜色
+$dark_background_color: #141414;
+$dark_sub_background_color: #1d1d1d; //稍微浅一点的
+$dark_content_color: #d5d5d5;
+
+/***** 封装一些方法可用于 黑暗主题 ，明亮主题 *****/
+
+// 背景颜色
+@mixin background_color($color) {
+    /*通过该函数设置字体颜色，后期方便统一管理；*/
+    background-color: $color;
+    transition: 0.35s;
+    [data-theme="dark"] & {
+        background-color: $dark_background_color;
+    }
+    [data-theme="light"] & {
+        background-color: $light_background_color;
+    }
+}
+// 辅助背景颜色
+@mixin sub_background_color($color) {
+    /*通过该函数设置字体颜色，后期方便统一管理；*/
+    background-color: $color;
+    transition: 0.35s;
+    [data-theme="dark"] & {
+        background-color: $dark_sub_background_color;
+    }
+    [data-theme="light"] & {
+        background-color: $light_background_color;
+    }
+}
+
+@mixin white_background_color() {
+    /*通过该函数设置字体颜色，后期方便统一管理；*/
+    background-color: $light_white_background_color;
+    transition: 0.35s;
+    [data-theme="dark"] & {
+        background-color: $dark_sub_background_color;
+    }
+    [data-theme="light"] & {
+        background-color: $light_white_background_color;
+    }
+}
+
+// 正文颜色
+@mixin content_color($color) {
+    /*通过该函数设置字体颜色，后期方便统一管理；*/
+    color: $color;
+    [data-theme="dark"] & {
+        color: $dark_content_color;
+    }
+    [data-theme="light"] & {
+        color: $light_content_color;
+    }
+}
+
+// 辅助颜色
+@mixin sub_color($color) {
+    /*通过该函数设置字体颜色，后期方便统一管理；*/
+    color: $color;
+    [data-theme="dark"] & {
+        color: $dark_content_color;
+    }
+    [data-theme="light"] & {
+        color: $light_sub_color;
+    }
+}
+
+// 标题颜色
+@mixin title_color($color) {
+    /*通过该函数设置字体颜色，后期方便统一管理；*/
+    color: $color;
+    [data-theme="dark"] & {
+        color: $dark_content_color;
+    }
+    [data-theme="light"] & {
+        color: $light_title_color;
+    }
+}
+
+
+
+// 全局变量
+.global_color {
+    color: $theme_color;
+}
+.global_background_color {
+    background-color: $theme_color;
+}
+.global_text_left {
+    text-align: left;
+}
+.global_text_right {
+    text-align: right;
+}
+.global_float_left {
+    float: left;
+}
+.global_float_right {
+    float: right;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.width_1200 {
+    width: 1200px;
+}
+.width_800 {
+    width: 800px;
+}
+.width_400 {
+    width: 400px;
+}
+.width_300 {
+    width: 300px;
+}
+.width_200 {
+    width: 200px;
+}
+.width_100 {
+    width: 100px;
+}
+
+.fontsize_12 {
+    font-size: 12px;
+}
+.fontsize_14 {
+    font-size: 14px;
+}
+.fontsize_16 {
+    font-size: 16px;
+}
+.fontsize_18 {
+    font-size: 18px;
+}
+
+.mb_20 {
+    margin-bottom: 20px;
+}
+.mt_20 {
+    margin-top: 20px;
+}
+.ml_20 {
+    margin-left: 20px;
+}
+.mr_20 {
+    margin-right: 20px;
+}
+
+.mb_10 {
+    margin-bottom: 10px;
+}
+.mt_10 {
+    margin-top: 10px;
+}
+.ml_10 {
+    margin-left: 10px;
+}
+.mr_10 {
+    margin-right: 10px;
+}
+
+.pb_20 {
+    padding-bottom: 20px;
+}
+.pt_20 {
+    padding-top: 20px;
+}
+.pl_20 {
+    padding-left: 20px;
+}
+.pr_20 {
+    padding-right: 20px;
+}
+
+.pb_10 {
+    padding-bottom: 10px;
+}
+.pt_10 {
+    padding-top: 10px;
+}
+.pl_10 {
+    padding-left: 10px;
+}
+.pr_10 {
+    padding-right: 10px;
+}
+
+.color999 {
+    color: #999;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
+        sans-serif;
+    // overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+.hover-color:hover {
+    color: $theme_color !important;
+    cursor: pointer;
+}
+.hover-pointer {
+    cursor: pointer;
+}
+.center {
+    margin: 0 auto;
+}
+.relative {
+    position: relative;
+}
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.promotion-decorate {
+    width: 200px;
+    text-align: center;
+    font-size: 25px;
+    position: relative;
+    font-weight: bold;
+    margin: 30px auto 30px;
+    &::before,
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 25px;
+        height: 20px;
+        background-size: 50px 20px;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        position: absolute;
+        top: 10px;
+        left: -3px;
+    }
+    &::after {
+        background-position: -24px 0;
+        right: -3px;
+        left: auto;
+    }
+}
+
+
+
+
+
+
+
+//  goodsList
+
+.text-danger {
+    color: $theme_color;
+  }
+  .seckill-price{
+    margin-right: 5px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .goods-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .goods-show-info {
+    width: 235px;
+    padding: 6px;
+    margin: 10px 0px;
+    margin-left: 5px;
+    position: relative;
+    border: 1px solid #fff;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  .goods-show-info:hover {
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 15px #ccc;
+  }
+  .goods-show-price {
+    margin-top: 6px;
+  }
+  .goods-show-detail {
+    font-size: 12px;
+    margin: 6px 0px;
+  }
+  .goods-show-num {
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: #666;
+  }
+  .goods-show-num {
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: #009688;
+  }
+  .goods-show-num span {
+    color: #005aa0;
+    font-weight: bold;
+  }
+  .goods-show-seller {
+    font-size: 12px;
+    color: $theme_color;
+  }
+  .goods-page {
+    margin:10px auto ;
+    text-align: right;
+    width: 1200px;
+  }

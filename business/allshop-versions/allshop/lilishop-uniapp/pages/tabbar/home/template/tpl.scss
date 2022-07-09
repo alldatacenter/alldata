@@ -1,0 +1,32 @@
+.image-mode {
+   width: 100%;
+   height: 100%;
+    display: block;
+    padding: 2rpx;
+}
+.layout {
+    padding: 16rpx;
+    margin: 8rpx 0;
+    background: #fff;
+}
+.layout,
+.view-height-75,
+.view-height-150 {
+    overflow: hidden;
+}
+.view-width-100 {
+    width: 100%;
+}
+.view-height-75 {
+    // height: 150rpx;
+}
+.view-height-150 {
+    // height: 300rpx;
+    flex: 1;
+}
+
+.view-height-85 {
+    height: 170rpx;
+    flex: 1;
+}
+

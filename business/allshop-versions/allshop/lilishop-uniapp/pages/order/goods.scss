@@ -1,0 +1,107 @@
+.goods-item-view {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10rpx 30rpx;
+		
+		.goods-img {flex: 1;}
+	
+		.goods-info {
+			padding-left: 30rpx;
+			flex: 3;
+	
+			.goods-title {
+				margin-bottom: 10rpx;
+				color: $font-color-dark;
+			}
+	
+			.goods-specs {
+				font-size: 24rpx;
+				margin-bottom: 10rpx;
+				color: #cccccc;
+			}
+	
+			.goods-price {
+				font-size: 28rpx;
+				margin-bottom: 10rpx;
+				color: #ff5a10;
+			}
+		}
+	
+		.goods-num {
+			>.good-complaint{
+				margin-top:10rpx;
+			}
+			text-align: center;
+			flex: 1;
+			width: 60rpx;
+			color: $main-color;
+		}
+	}
+	
+	
+	
+	.seller-view {
+		background-color: #fff;
+		margin: 20rpx 0rpx;
+	
+		.seller-info {
+			height: 70rpx;
+			padding: 0 20rpx;
+	
+			.seller-name {
+				font-size: 33rpx;
+				font-weight: 600;
+				display: flex;
+				width: 100%;
+				flex-direction: row;
+				align-items: center;
+				height: 90rpx;
+				// justify-content: space-between;
+	
+				image {
+					width: 32rpx;
+					height: 30rpx;
+				}
+	
+				.name {
+					margin-left: 15rpx;
+					margin-top: -2rpx;
+					font-size: 28rpx;
+					flex: 1;
+				}
+	
+				.status {
+				
+					font-size: 26rpx;
+					color: #ff6262;
+				}
+			}
+	
+			.order-sn {
+				color: #ff0000;
+			}
+		}
+	
+		
+	
+		.btn-view {
+			// padding: 25rpx 30rpx;
+			margin-bottom: 60rpx;
+			margin-right: 30rpx;
+	
+			.description {
+				color: #909399;
+				size: 25rpx;
+	
+				.price {
+					color: #ff0000;
+				}
+			}
+	
+			.right-btn {
+				float: right;
+			}
+		}
+	}

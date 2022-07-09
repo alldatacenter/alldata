@@ -1,0 +1,37 @@
+.view-class-title {
+    font-size: 26rpx;
+    color: #262626;
+
+    font-weight: 700;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.confirmBtn {
+    width: 90%;
+}
+.confirmBtn,
+.box-btn {
+    line-height: 80rpx;
+    height: 80rpx;
+    
+    background: $price-color;
+    color: #fff;
+    border-radius: 200px;
+    text-align: center;
+    margin: 5rpx auto;
+}
+
+.btns {
+    display: flex;
+    width: 100%;
+
+    margin: 0 auto;
+}
+.goods-price-bigshow {
+    font-size: 48rpx;
+    font-weight: bold;
+}
+.box-btn {
+    flex: 1;
+    margin: 0 10rpx;
+}

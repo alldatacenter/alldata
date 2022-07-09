@@ -1,0 +1,41 @@
+.search {
+  .operation {
+    margin-bottom: 2vh;
+  }
+  .select-clear {
+    margin-left: 10px;
+  }
+}
+
+.search-input {
+  width: 270px;
+  margin-right: 20px;
+}
+
+.search-form {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 0.4em;
+  padding: 10px;
+  margin: 0;
+  flex-wrap: wrap;
+  > .ivu-form-item {
+    margin: 8px 10px !important;
+  }
+}
+.padding-row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.search-btn {
+  margin-left: 20px;
+}
+
+.div-zoom {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
