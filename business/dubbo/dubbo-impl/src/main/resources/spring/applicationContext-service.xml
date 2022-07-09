@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:property-placeholder location="classpath:conf/*.properties"/>
+
+    <!--配置包扫描器-->
+    <context:component-scan base-package="com.platform.mall.service,com.platform.mall.entity"/>
+
+    <!-- task任务扫描注解 -->
+    <!--<task:annotation-driven/>-->
+
+    <!--异步与定时任务扫描注解-->
+    <task:executor id="myexecutor" pool-size="100-10000" queue-capacity="10"/>
+    <task:annotation-driven executor="myexecutor"/>
+
+    <!-- 目的：找到注册中心，注册当前服务的基本信息 -->
+    <!-- 使用dubbo发布服务 -->
+    <!-- 1.配置别名， 目的是在后台可以看到这个服务的别名，好区分到底是谁 -->
+    <dubbo:application name="${dubbo.application.name}">
+        <dubbo:parameter key="qos.enable" value="${qos.enable}" />
+        <dubbo:parameter key="qos.accept.foreign.ip" value="${qos.accept.foreign.ip}" />
+        <dubbo:parameter key="qos.port" value="${qos.port}" />
+    </dubbo:application>
+    <!-- 2. 配置注册中心  address : 注册中心地址 protocol: 注册中心的协议格式 -->
+    <dubbo:registry address="${dubbo.registry.address}" protocol="${dubbo.registry.name}"/>
+    <!-- 3、配置当前服务暴露的端口 以及暴露协议 -->
+    <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" payload="2147483645"
+                    buffer="2147483645"/>
+    <!-- 4. 选择需要暴露的方法 interface: 目标类的类型 ref: 目标类的具体实现 timeout: 超时连接时间-->
+    <dubbo:service interface="com.platform.mall.service.ItemService" ref="itemServiceImpl" timeout="10000" />
+    <dubbo:service interface="com.platform.mall.service.MemberService" ref="memberServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.ItemCatService" ref="itemCatServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.UserService" ref="userServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.OrderService" ref="orderServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.ThanksService" ref="thanksServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.SystemService" ref="systemServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.DictService" ref="dictServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.ExpressService" ref="expressServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.CountService" ref="countServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.PanelService" ref="panelServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.ContentService" ref="contentServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.SearchService" ref="searchServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.SearchItemService" ref="searchItemServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.LoginService" ref="loginServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.RegisterService" ref="registerServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.CartService" ref="cartServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.AddressService" ref="addressServiceImpl" timeout="10000"/>
+
+    <!--admin-->
+    <dubbo:service interface="com.platform.mall.service.admin.CmsPrefrenceAreaService" ref="cmsPrefrenceAreaServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.CmsSubjectService" ref="cmsSubjectServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.OmsCompanyAddressService" ref="omsCompanyAddressServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.OmsOrderReturnApplyService" ref="omsOrderReturnApplyServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.OmsOrderReturnReasonService" ref="omsOrderReturnReasonServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.OmsOrderService" ref="omsOrderServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.OmsOrderSettingService" ref="omsOrderSettingServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.PmsBrandService" ref="pmsBrandServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.PmsProductAttributeCategoryService" ref="pmsProductAttributeCategoryServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.PmsProductAttributeService" ref="pmsProductAttributeServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.PmsProductCategoryService" ref="pmsProductCategoryServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.PmsProductService" ref="pmsProductServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.PmsSkuStockService" ref="pmsSkuStockServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsCouponHistoryService" ref="smsCouponHistoryServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsCouponService" ref="smsCouponServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsFlashPromotionProductRelationService" ref="smsFlashPromotionProductRelationServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsFlashPromotionService" ref="smsFlashPromotionServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsFlashPromotionSessionService" ref="smsFlashPromotionSessionServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsHomeAdvertiseService" ref="smsHomeAdvertiseServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsHomeBrandService" ref="smsHomeBrandServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsHomeNewProductService" ref="smsHomeNewProductServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsHomeRecommendProductService" ref="smsHomeRecommendProductServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.SmsHomeRecommendSubjectService" ref="smsHomeRecommendSubjectServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.UmsMemberLevelService" ref="umsMemberLevelServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.UmsPermissionService" ref="umsPermissionServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.admin.UmsRoleService" ref="umsRoleServiceImpl" timeout="10000"/>
+
+    <!--mobile-->
+    <dubbo:service interface="com.platform.mall.service.mobile.CouponAssignService" ref="couponAssignServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.CouponVerifyService" ref="couponVerifyServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallAddressService" ref="litemallAddressServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallAdminService" ref="litemallAdminServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallAdService" ref="litemallAdServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallBrandService" ref="litemallBrandServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallCartService" ref="litemallCartServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallCategoryService" ref="litemallCategoryServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallCollectService" ref="litemallCollectServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallCommentService" ref="litemallCommentServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallCouponService" ref="litemallCouponServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallCouponUserService" ref="litemallCouponUserServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallFeedbackService" ref="litemallFeedbackServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallFootprintService" ref="litemallFootprintServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallGoodsAttributeService" ref="litemallGoodsAttributeServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallGoodsProductService" ref="litemallGoodsProductServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallGoodsService" ref="litemallGoodsServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallGoodsSpecificationService" ref="litemallGoodsSpecificationServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallGrouponRulesService" ref="litemallGrouponRulesServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallGrouponService" ref="litemallGrouponServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallIssueService" ref="litemallIssueServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallKeywordService" ref="litemallKeywordServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallLogService" ref="litemallLogServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallOrderGoodsService" ref="litemallOrderGoodsServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallOrderService" ref="litemallOrderServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallPermissionService" ref="litemallPermissionServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallRegionService" ref="litemallRegionServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallRoleService" ref="litemallRoleServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallSearchHistoryService" ref="litemallSearchHistoryServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallStorageService" ref="litemallStorageServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallSystemConfigService" ref="litemallSystemConfigServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallTopicService" ref="litemallTopicServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallUserFormIdService" ref="litemallUserFormIdServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.LitemallUserService" ref="litemallUserServiceImpl" timeout="10000"/>
+    <dubbo:service interface="com.platform.mall.service.mobile.StatService" ref="statServiceImpl" timeout="10000"/>
+
+</beans>
