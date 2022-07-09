@@ -1,0 +1,124 @@
+.head-title {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 400;
+}
+.detail-body{
+  margin-top: 17px;
+  overflow: hidden;
+}
+
+
+.head-info {
+  display: flex;
+  height: 130px;
+  background: #93b5e1;
+  padding: 12px;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.ant-layout, .ant-layout * {
+  box-sizing: border-box;
+}
+
+.base-info {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 12px;
+  height: 250px;
+}
+
+.ant-col-md-6 {
+  display: block;
+  box-sizing: border-box;
+  width: 33%;
+  float: left;
+  margin-left: 20px;
+}
+.info-2{
+  float: left;
+}
+
+.ant-row {
+  position: relative;
+  height: auto;
+  margin-right: 0;
+  margin-left: 0;
+  zoom: 1;
+  display: block;
+  box-sizing: border-box;
+}
+.bottom-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  margin-top: 6px;
+  height: 36px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.ant-layout * {
+  box-sizing: border-box;
+}
+.name{
+  margin-left: 10px;
+  color: #fff;
+  font-size: 18px;
+}
+.phone{
+  margin-left: 20px;
+  font-size: 14px;
+  color: #fff;
+}
+.item {
+  display: flex;
+  align-items: flex-start;
+  line-height: 30px;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.label {
+  flex-basis: 95px;
+  //text-align: right;
+  color: rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.info {
+  font-weight: 500;
+  padding-left: 0;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.pointsTitle {
+  background-color: #fafafa;
+  padding: 15px 20px;
+  display: flex;
+  font-size: 16px;
+  line-height: 1.8;
+  flex-direction: row;
+  justify-content: space-around;
+  color: #333;
+  text-align: center;
+  margin-bottom: 16px;
+  .points-top-title{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.4);
+    line-height: 14px;
+    margin-bottom: 8px;
+  }
+  .points-top-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #93b5e1;
+    line-height: 16px;
+  }
+}

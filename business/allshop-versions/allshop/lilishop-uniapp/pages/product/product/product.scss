@@ -1,0 +1,64 @@
+.recommend-box,
+.detail-box,
+.store-recommend,
+.store-info,
+.evaluate-box,
+.card-box,
+.group-list {
+  border-radius: 32rpx;
+  padding: 0rpx 32rpx 0 32rpx;
+  background: #fff;
+  overflow: hidden;
+  margin: 20rpx 0;
+}
+.goods-recommend-title,
+.store-recommend-title,
+.evaluate-title,
+.group-name {
+  color: #262626;
+  font-size: 30rpx;
+  font-weight: 700;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding-left: 14rpx;
+  position: relative;
+  &::before {
+    background-image: linear-gradient(180deg, $price-color, $price-light-color);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 3px;
+    height: 15px;
+  }
+}
+.scroll_mask {
+  height: 868rpx;
+  // padding-bottom: 100rpx;
+  overflow-y: auto;
+}
+
+.mask {
+  height: 600px;
+}
+.card-box {
+  padding-top: 0 !important;
+}
+.card-content {
+  padding: 0 40rpx;
+  flex: 8;
+}
+.card-flex {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  padding: 36rpx 0;
+  border-bottom: 2rpx solid #f9f9f9;
+}
+.card-title {
+  flex: 1;
+  color: #262626;
+  font-weight: 700;
+}

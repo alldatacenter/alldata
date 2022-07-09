@@ -1,0 +1,18 @@
+import {commonUrl, getRequest} from '@/libs/axios';
+
+// 通过id获取子地区
+export const getChildRegion = (id) => {
+  return getRequest(`${commonUrl}/common/common/region/item/${id}`);
+};
+
+// 点地图获取地址信息
+export const getRegion = (params) => {
+  return getRequest(`${commonUrl}/common/common/region/region`, params);
+};
+
+
+
+// 获取IM接口前缀
+export function getIMDetail () {
+  return getRequest(`${commonUrl}/common/common/IM`);
+}

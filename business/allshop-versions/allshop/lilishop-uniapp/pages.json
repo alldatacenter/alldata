@@ -1,0 +1,782 @@
+{
+
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		
+		{
+			"path": "pages/tabbar/home/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh":true  
+			}
+		}, 
+		{
+			"path":"pages/tabbar/screen/fullScreen",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"app-plus":{
+					"animationType": "fade-in", // 设置fade-in淡入动画，为最合理的动画类型
+					"background": "transparent", // 背景透明
+					"backgroundColor": "rgba(0,0,0,0)", // 背景透明
+					"popGesture": "none" // 关闭IOS屏幕左边滑动关闭当前页面的功能
+				}
+			}
+		},
+		{
+			"path": "pages/tabbar/cart/cartList",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"navigationBarBackgroundColor": "#fff",
+				"enablePullDownRefresh":true    //实现下拉刷新样式
+
+			}
+		}, {
+			"path": "pages/tabbar/category/category",
+			"style": {
+				"navigationBarTitleText": "分类",
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "black",
+				"disableScroll": true,
+					"bounce": "none",
+					"scrollIndicator": "none"
+					
+				
+			}
+		},
+				
+		{
+			"path": "pages/navigation/search/searchPage",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"navigationStyle": "custom",
+				
+				"app-plus": {
+					//app页面不显示滚动条
+					"scrollIndicator": "none",
+					"bottom": "0",
+					"contentAdjust": "false",
+					"bounce": "none",
+					"safearea": {
+					"bottom": "none"
+					}
+				}
+			}
+		}, {
+			"path": "pages/tabbar/user/my",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+		},
+		
+		{
+			"path": "pages/tabbar/home/web-view",
+			"style": {
+				
+			}
+		}
+
+	],
+	"subPackages": [
+
+		{
+			"root": "pages/mine",
+			"pages": [
+				
+				{
+					"path": "signIn",
+					"style": {
+						"navigationBarTitleText": "签到"
+					}
+				}, {
+					"path": "myTracks",
+					"style": {
+						"navigationBarTitleText": "我的足迹",
+						"enablePullDownRefresh": true,
+						"navigationStyle": "custom"
+					}
+				}, {
+					"path": "myCollect",
+					"style": {
+						"navigationBarTitleText": "收藏",
+						"enablePullDownRefresh": true, //下拉刷新
+						"navigationStyle": "custom",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},
+				{
+					"path": "distribution/list",
+					"style": {
+						"navigationBarTitleText": "推广分佣",
+						"app-plus": {
+							//app页面不显示滚动条
+							"scrollIndicator": "none"
+						}
+					}
+				},
+				{
+					"path": "distribution/withdrawal",
+					"style": {
+						"navigationBarTitleText": "提现",
+						"app-plus": {
+							//app页面不显示滚动条
+							"scrollIndicator": "none"
+						}
+					}
+				},
+				{
+					"path": "distribution/join",
+					"style": {
+						"navigationBarTitleText": "推广资格申请",
+						"navigationBarTextStyle": "black",
+						"app-plus": {
+							//app页面不显示滚动条
+							"scrollIndicator": "none"
+						}
+					}
+				},
+				{
+					"path": "distribution/history",
+					"style": {
+						"navigationBarTitleText": "提现历史"
+
+					}
+				},
+				{
+					"path": "distribution/auth",
+					"style": {
+						"navigationBarTitleText": "会员实名认证"
+
+					}
+				},
+				{
+					"path": "distribution/achievement",
+					"style": {
+						"navigationBarTitleText": "我的分销业绩"
+
+					}
+				},
+				{
+					"path": "distribution/home",
+					"style": {
+						"navigationBarTitleText": "推广分佣"
+
+					}
+				},
+				{
+					"path": "deposit/index",
+					"style": {
+						"navigationStyle": "custom"
+
+					}
+				},
+				{
+					"path": "deposit/operation",
+					"style": {
+						"navigationStyle": "custom"
+
+					}
+				},
+				{
+					"path": "deposit/recharge",
+					"style": {
+						"navigationBarTitleText": "充值金额"
+
+					}
+				},
+				{
+					"path": "deposit/withdrawal",
+					"style": {
+						"navigationBarTitleText": "提现金额"
+
+					}
+				},
+			
+			{
+				"path": "deposit/info",
+				"style": {
+					"navigationBarTitleText": "预存款详情"
+
+				}
+			},
+				 {
+					"path": "address/address",
+					"style": {
+						"enablePullDownRefresh": true,
+						"navigationBarTitleText": "地址管理"
+					}
+				},
+				{
+					"path": "address/add",
+					"style": {
+						"navigationBarTitleText": "收货人"
+					}
+				},
+				{
+					"path": "address/addressManage",
+					"style": {
+						"navigationBarTitleText": "地址管理"
+					}
+				},
+				{
+					"path": "set/versionFunctionList",
+					"style": {
+						"navigationBarTitleText": "功能介绍"
+					}
+				},
+
+				{
+					"path": "set/securityCenter/fingerLogin",
+					"style": {
+						"navigationBarTitleText": "指纹登录"
+					}
+				},
+				{
+					"path": "set/securityCenter/faceLogin",
+					"style": {
+						"navigationBarTitleText": "面容登录"
+					}
+				},
+				{
+					"path": "set/securityCenter/editPassword",
+					"style": {
+						"navigationBarTitleText": "修改密码",
+						"app-plus": {
+
+						}
+					}
+				},
+
+
+				{
+					"path": "set/feedBack",
+					"style": {
+						"navigationBarTitleText": "意见反馈"
+					}
+				},
+				{
+					"path": "set/securityCenter/securityCenter",
+					"style": {
+						"navigationBarTitleText": "安全中心"
+					}
+				},
+
+				{
+					"path": "set/editionIntro",
+					"style": {
+						"navigationBarTitleText": "关于我们"
+					}
+				},
+				{
+					"path": "set/setUp",
+					"style": {
+						"navigationBarTitleText": "设置"
+					}
+				},
+				{
+					"path": "set/personMsg",
+					"style": {
+						"navigationBarTitleText": "个人信息",
+						"app-plus": {
+							"titleNView": {
+								"padding-right": "12",
+								"buttons": [{
+									"text": "保存",
+									"fontSize": "16",
+									"width": "auto",
+									"color": "#FFFFFF"
+								}]
+							}
+						}
+					}
+				}, {
+					"path": "help/tips",
+					"style": {
+						"navigationBarTitleText": ""
+					}
+				}, {
+					"path": "point/myPoint",
+					"style": {
+						"navigationBarTitleText": "我的积分"
+					}
+				},
+				 {
+					"path": "msgTips/main",
+					"style": {
+						"navigationBarTitleText": "消息中心"
+					}
+				},
+				{
+					"path": "msgTips/sysMsg/index",
+					"style": {
+						"navigationBarTitleText": "系统消息"
+					}
+				},
+				{
+					"path": "msgTips/serviceMsg/index",
+					"style": {
+						"navigationBarTitleText": "客服记录"
+					}
+				},
+				{
+					"path": "msgTips/packageMsg/index",
+					"style": {
+						"navigationBarTitleText": "物流消息"
+					}
+				},
+				{
+					"path": "msgTips/packageMsg/logisticsDetail",
+					"style": {
+						"navigationBarTitleText": "订单跟踪"
+					}
+				}
+
+			]
+
+		},
+
+
+		{
+			"root": "pages/product",
+			"pages": [{
+				"path": "shopPage",
+				"style": {
+					"navigationBarTitleText": "",
+					"navigationStyle": "custom"
+				}
+			},{
+				"path": "shopList",
+				"style": {
+					"navigationBarTitleText": "",
+					"navigationStyle": "custom"
+				}
+			},{
+				"path": "licencePhoto",
+				"style": {
+					"navigationBarTitleText": "营业执照"
+				}
+			},{
+				"path": "shopPageGoods",
+				"style": {
+					"navigationBarTitleText": "",
+					"navigationStyle": "custom"
+				}
+			},
+				{
+					"path": "goods",
+					"style": {
+						"backgroundColor": "#fff",
+						"navigationStyle": "custom",
+						"app-plus": {
+							// 将回弹属性关掉
+							"bounce": "none",
+							// 禁止页面滚动
+							"scrollIndicator": "none",
+							"safearea": {
+								"bottom": {  
+									  "offset": "none" 
+								  }   
+							  }
+						}
+					}
+				},
+				{
+					"path": "askList",
+					"style": {
+						"navigationBarTitleText": "问答专区"
+					}
+				},
+				{ //商品评价
+					"path": "comment",
+					"navigationStyle": "custom",
+					"style": {
+						"navigationBarTitleText": "商品评价",
+						//app页面不显示滚动条
+						"scrollIndicator": "none"
+					}
+				},
+				{ // 客服
+					"path": "customerservice/index",
+					"style": {
+						"navigationBarTitleText": "客服",
+						"usingComponents": {
+							// #ifdef MP-WEIXIN
+							"chat": "plugin://myPlugin/chat"
+							// #endif
+						}
+					}
+				}
+			]
+
+		},
+		{
+			"root": "pages/floor",
+			"pages": [{
+				"path": "empty"
+			}]
+
+		},
+		{
+			"root": "pages/passport",
+			"pages": [{
+					"path": "login",
+					"style": {
+						"navigationBarTitleText": "",
+						"navigationStyle": "custom",
+						"app-plus": {
+							"titleNView": false,
+							"animationType": "slide-in-bottom",
+							"scrollIndicator": "none",
+							"safearea": {
+								"bottom": {  
+									  "offset": "none" 
+								  }   
+							  }
+						}
+					}
+				},
+				{
+					"path": "article",
+					"style": {
+						"navigationBarTitleText": "文章"
+					}
+				},
+				{
+					"path": "wechatMPLogin",
+					"style": {
+						"navigationBarTitleText": "小程序登录",
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "black"
+					}
+				}
+			]
+
+		},
+
+		{
+			"root": "pages/promotion",
+			"pages": [ {
+					"path": "seckill",
+					"style": {
+						"navigationBarTitleText": "限时抢购",
+						"app-plus": {
+							"titleNView": {
+								"homeButton":true
+							}
+						}
+					}
+				},
+			
+				 {
+					"path": "joinGroup",
+					"style": {
+						"navigationBarTitleText": "拼团活动",
+						"navigationStyle": "custom", // 隐藏系统导航栏
+						"app-plus": {
+							// 将回弹属性关掉
+							"bounce": "none"
+						}
+					}
+				},{
+					"path": "lives",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "black"
+
+					}
+				},{
+					"path": "bargain/list",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "white"
+
+					}
+				},{
+					"path": "bargain/detail",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "white"
+
+					}
+				},{
+					"path": "bargain/log",
+					"style": {
+						"navigationBarTitleText": "砍价记录"
+					}
+				},{
+					"path": "point/detail",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "white"
+
+					}
+				},{
+					"path": "point/pointList",
+					"style": {
+						"navigationBarTitleText": "积分商城"
+						
+
+					}
+				}
+
+			]
+
+		},
+		{
+			"root": "pages/cart",
+			"pages": [{
+					"path": "coupon/myCoupon",
+					"style": {
+						"navigationBarTitleText": "我的优惠券",
+						"app-plus": {
+							"bounce": "coupon/none"
+							
+						}
+					}
+				},
+				{
+					"path": "coupon/couponDetail",
+					"style": {
+						"navigationBarTitleText": "优惠券详情"
+					}
+				},
+				{
+					"path": "coupon/index",
+					"style": {
+						"navigationBarTitleText": "优惠券"
+					}
+				},
+				
+				{
+					"path": "coupon/couponCenter",
+					"style": {
+						"navigationBarTitleText": "领券中心",
+						"enablePullDownRefresh": true
+						
+					}
+				},
+				{
+					"path": "payment/payOrder",
+					"style": {
+						"navigationBarTitleText": "支付订单",
+						"app-plus": {
+							"popGesture": "none" //禁止侧滑退出
+
+						}
+					}
+				},
+				{
+					"path": "payment/success",
+					"style": {
+						"navigationBarTitleText": "支付成功",
+						"navigationStyle": "custom", // 隐藏系统导航栏
+						"navigationBarTextStyle": "white",
+						"app-plus": {
+							"popGesture": "none", //禁止侧滑退出
+							"titleNView": false
+						}
+					}
+				},
+				{
+					"path": "payment/shareOrderGoods",
+					"style": {
+						"navigationBarTitleText": "",
+						"app-plus": {
+
+						}
+					}
+				}
+				
+			]
+
+		},
+		{
+			"root": "pages/order",
+			"pages": [{
+					"path": "complain/complain",
+					"style": {
+						"navigationBarTitleText": "订单商品投诉"
+					}
+				},
+				{
+					"path": "complain/complainInfo",
+					"style": {
+						"navigationBarTitleText": "投诉详情"
+					}
+				},
+				{
+					"path": "complain/complainList",
+					"style": {
+						"navigationBarTitleText": "投诉列表"
+					}
+				},
+				{
+					"path": "myOrder",
+					"style": {
+						"navigationBarTitleText": "我的订单",
+						"enablePullDownRefresh": true,
+						"app-plus": {
+							"bounce": "none"
+						
+						}
+					}
+				},
+				{
+					"path": "invoice/invoiceDetail",
+					"style": {
+						"navigationBarTitleText": "发票详情"
+					}
+				},
+				{
+					"path": "orderDetail",
+					"style": {
+						"navigationBarTitleText": "订单详情"
+					}
+				},
+				{
+					"path": "evaluate/evaluateDetail",
+					"style": {
+						"navigationBarTitleText": "评价详情"
+					}
+				},
+			
+				{
+					"path": "evaluate/releaseEvaluate",
+					"style": {
+						"navigationBarTitleText": "发布评价"
+					}
+				},
+				{
+					"path": "evaluate/myEvaluate",
+					"style": {
+						"navigationBarTitleText": "我的评价"
+					}
+				},
+				
+				{
+					"path": "afterSales/applyProgress",
+					"style": {
+						"navigationBarTitleText": "售后服务"
+					}
+				},
+				{
+					"path": "afterSales/applyDetail",
+					"style": {
+						"navigationBarTitleText": "售后服务"
+					}
+				},
+				{
+					"path": "afterSales/applySuccess",
+					"style": {
+						"navigationBarTitleText": "提交成功",
+						"app-plus": {
+							"bounce": "none",
+							"titleNView": {
+								"titleColor": "#FFFFFF",
+								"buttons": [{
+									"text": "完成",
+									"fontSize": "14",
+									"color": "#FFFFFF",
+									"width": "36px"
+									// "background": "rgba(0,0,0,0)"
+								}]
+							}
+						}
+					}
+				},
+				{
+					"path": "afterSales/afterSalesDetailExpress"
+				},
+				{
+					"path": "afterSales/afterSalesSelect",
+					"style": {
+						"navigationBarTitleText": "申请售后"
+					}
+				},
+				{
+					"path": "afterSales/afterSalesDetail",
+					"style": {
+						"navigationBarTitleText": "申请售后"
+					}
+				},
+				{
+					"path": "afterSales/afterSales",
+					"style": {
+						"navigationBarTitleText": "售后管理",
+						"enablePullDownRefresh": true
+					}
+				},
+				{
+					"path": "fillorder",
+					"style": {
+						"navigationBarTitleText": "填写订单"
+					}
+				}
+			]
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "Lili商城",
+		"titleColor": "#303133",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#fff",
+		"color": "#FFFFFF",
+		"app-plus": {
+			// 全局关闭回弹功能
+			"bounce": "none"
+
+		}
+	},
+	"tabBar": {
+		"color": "#666",
+		"selectedColor": "#ff573e",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/tabbar/home/index",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-s.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tabbar/category/category",
+				"iconPath": "static/tabbar/category.png",
+				"selectedIconPath": "static/tabbar/category-s.png",
+				"text": "分类"
+			},
+		
+			{
+				"pagePath": "pages/tabbar/cart/cartList",
+				"iconPath": "static/tabbar/cart.png",
+				"selectedIconPath": "static/tabbar/cart-s.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/tabbar/user/my",
+				"iconPath": "static/tabbar/mine.png",
+				"selectedIconPath": "static/tabbar/mine-s.png",
+				"text": "我的"
+			}
+		]
+	},
+	// #todo 为什么要注释condition下代码？ 
+	// IOS plus.runtime.arguments 添加 condition节点后， 框架会修改 runtime.arguments
+	// 会影响什么功能？
+	//    -在h5中唤醒app会一直返回默认值 {"name":"","path":"","query":"","id":0}
+	"condition": { //模式配置，仅开发期间生效   
+		// "current": 0, //当前激活的模式(list 的索引项)
+		// "list": [{
+		// 	"name": "", //模式名称
+		// 	"path":"", //启动页面，必选
+		// 	"query": "" //启动参数，在页面的onLoad函数里面得到
+		// }]
+	}
+}

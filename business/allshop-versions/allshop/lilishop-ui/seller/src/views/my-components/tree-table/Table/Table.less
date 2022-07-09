@@ -1,0 +1,170 @@
+@import "./font/iconfont";
+
+// text
+@prefixCls: zk-table;
+// color
+@black: #515a6e;
+@white: #ffffff;
+@border: #e9eaec;
+@hoverRow: #ebf7ff;
+@backgroundRow: #f8f8f9;
+
+.@{prefixCls} {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: @white;
+  border: 1px solid @border;
+  font-size: 14px;
+  line-height: 26px;
+  color: @black;
+  overflow: hidden;
+}
+
+.@{prefixCls}__header-cell {
+  font-weight: bold;
+}
+
+.@{prefixCls}__cell-inner {
+  padding: 0px 18px;
+}
+
+.@{prefixCls}-default {
+  font-size: 14px;
+
+  .@{prefixCls}__header-row {
+    height: 40px !important;
+  }
+
+  .@{prefixCls}__body-row {
+    height: 48px !important;
+  }
+}
+
+.@{prefixCls}-small {
+  font-size: 12px;
+
+  .@{prefixCls}__header-row {
+    height: 36px !important;
+  }
+
+  .@{prefixCls}__body-row {
+    height: 40px !important;
+  }
+}
+
+.@{prefixCls}-large {
+  font-size: 16px;
+
+  .@{prefixCls}__header-row {
+    height: 43px !important;
+  }
+
+  .@{prefixCls}__body-row {
+    height: 60px !important;
+  }
+}
+
+.@{prefixCls}__header-wrapper,
+.@{prefixCls}__footer-wrapper {
+  overflow: hidden;
+}
+
+.@{prefixCls}__body-wrapper {
+  overflow: auto;
+}
+
+.@{prefixCls}__header,
+.@{prefixCls}__body,
+.@{prefixCls}__footer {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.@{prefixCls}__header-row {
+  height: 40px;
+  box-sizing: border-box;
+  background-color: @backgroundRow;
+  border-bottom: 1px solid @border;
+}
+
+.@{prefixCls}__footer-row {
+  height: 40px;
+  box-sizing: border-box;
+  background-color: @white;
+  border-top: 1px solid @border;
+}
+
+.@{prefixCls}__body-row {
+  height: 48px;
+  box-sizing: border-box;
+
+  &:not(:first-of-type) {
+    border-top: 1px solid @border;
+  }
+}
+
+.@{prefixCls}__header-cell,
+.@{prefixCls}__body-cell,
+.@{prefixCls}__footer-cell {
+  box-sizing: border-box;
+  text-align: left;
+  vertical-align: middle;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+.@{prefixCls}--firstProp-header-inner {
+  padding-left: 32px;
+}
+
+.@{prefixCls}--empty-row {
+  height: 80px;
+}
+
+.@{prefixCls}--empty-content {
+  text-align: center;
+}
+
+.@{prefixCls}--center-cell {
+  text-align: center;
+}
+
+.@{prefixCls}--right-cell {
+  text-align: right;
+}
+
+.@{prefixCls}--stripe-row {
+  background-color: @backgroundRow;
+}
+
+.@{prefixCls}--row-hover {
+  background-color: @hoverRow;
+}
+
+.@{prefixCls}--border-cell {
+  &:not(:last-of-type) {
+    border-right: 1px solid @border;
+  }
+}
+
+.@{prefixCls}--tree-icon {
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.@{prefixCls}--expand-inner {
+  text-align: center;
+  cursor: pointer;
+  transition: transform .2s ease-in-out;
+}
+
+.@{prefixCls}--expanded-inner {
+  transform: rotate(90deg);
+}
+
+.@{prefixCls}--expand-content {
+  padding: 20px;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+    <link rel="icon" href="./logo.ico" type="image/x-icon" />
+    <title>admin</title>
+    <meta name="keywords" content="keywords" />
+    <meta name="description" content="description" />
+    <% for(var css of htmlWebpackPlugin.options.cdn.css) { %>
+    <link rel="stylesheet" href="<%=css%>" />
+    <% } %>
+    <style>
+      .page-loading-wrap {
+        padding: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .half-circle-spinner,
+      .half-circle-spinner * {
+        box-sizing: border-box;
+      }
+
+      .half-circle-spinner {
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        position: relative;
+      }
+
+      .half-circle-spinner .circle {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        border: calc(35px / 10) solid transparent;
+      }
+
+      .half-circle-spinner .circle.circle-1 {
+        border-top-color: #5cadff;
+        animation: half-circle-spinner-animation 1s infinite;
+      }
+
+      .half-circle-spinner .circle.circle-2 {
+        border-bottom-color: #5cadff;
+        animation: half-circle-spinner-animation 1s infinite alternate;
+      }
+
+      @keyframes half-circle-spinner-animation {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
+    <script src="<%=js%>"></script>
+    <% } %>
+    <script src="/config.js"></script>
+    <noscript>
+      <strong
+        >We're sorry but admin doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
+    </noscript>
+    <div id="app">
+      <div class="page-loading-wrap">
+        <div class="half-circle-spinner">
+          <div class="circle circle-1"></div>
+          <div class="circle circle-2"></div>
+        </div>
+        <h4 style="margin-top:20px;">正在加载资源...</h4>
+      </div>
+    </div>
+  </body>
+</html>

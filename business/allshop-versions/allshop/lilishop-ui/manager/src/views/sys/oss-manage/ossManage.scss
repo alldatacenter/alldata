@@ -1,0 +1,135 @@
+.search {
+  .oss-operation {
+    margin-bottom: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    button {
+      margin-right: 5px;
+    }
+  }
+}
+
+.none {
+  display: none;
+}
+
+.oss-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.oss-card {
+  margin: 10px 20px 10px 0;
+  width: 290px;
+
+  :hover {
+    .content .other .name {
+      color: #1890ff;
+      transition: color .3s;
+    }
+  }
+
+  cursor: pointer;
+
+  .ivu-card-body {
+    padding: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    :hover {
+      .play {
+        transition: opacity .3s;
+        opacity: 1 !important;
+      }
+    }
+
+    .img {
+      height: 135px;
+      object-fit: cover;
+    }
+
+    .video {
+      height: 135px;
+      position: relative;
+
+      .cover {
+        height: 100%;
+        width: 100%;
+        object-fit: fill;
+      }
+
+      .play {
+        position: absolute;
+        top: 43px;
+        left: 117px;
+        height: 50px;
+        width: 50px;
+        opacity: 0.8;
+      }
+    }
+
+    .other {
+      padding: 16px;
+      height: 135px;
+
+      .name {
+        font-size: 16px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color: rgba(0, 0, 0, .85);
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .key {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 45px;
+        word-break: break-all;
+        color: rgba(0, 0, 0, .45);
+      }
+
+      .info {
+        font-size: 12px;
+        color: rgba(0, 0, 0, .45);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 36px;
+        word-break: break-all;
+      }
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      background: #f7f9fa;
+      border-top: 1px solid #e8e8e8;
+
+      i:hover {
+        color: #1890ff;
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+        width: 33.33%;
+        border-right: 1px solid #e8e8e8;
+      }
+
+      .btn-no {
+        display: flex;
+        justify-content: center;
+        width: 33.33%;
+      }
+    }
+  }
+}

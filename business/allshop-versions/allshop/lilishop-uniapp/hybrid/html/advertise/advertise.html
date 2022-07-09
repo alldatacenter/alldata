@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>广告启动页</title>
+		<link rel="stylesheet" href="../css/advertise.css">
+		<!-- uni 的 SDK -->
+		<script type="text/javascript" src="../js/webView.js"></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="con">
+				<img id="img" src="../imgs/domain.jpeg">
+			</div>
+			<div class="btn" id="timer">
+				<div id="info">跳过</div>
+				<div class="circleProgress_wrapper btn">
+					<div class="wrapper right">
+						<div class="circleProgress rightcircle"></div>
+					</div>
+					<div class="wrapper left">
+						<div class="circleProgress leftcircle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		
+		// var currentAd = {
+		// 	operation_type: 'NONE'
+		// };
+		
+		
+		// function getRandom(start, end, fixed = 0) {
+		// 	let differ = end - start
+		// 	let random = Math.random()
+		// 	return (start + differ * random).toFixed(fixed)
+		// }
+
+		// document.addEventListener('plusready', function () {
+		// 	var xhr = new plus.net.XMLHttpRequest();
+		// 	xhr.onreadystatechange = function () {
+		// 		switch (xhr.readyState) {
+		// 			case 0:
+		// 				break;
+		// 			case 1:
+		// 				break;
+		// 			case 2:
+		// 				break;
+		// 			case 3:
+		// 				break;
+		// 			case 4:
+		// 				if (xhr.status == 200) {
+		// 					let res = JSON.parse(xhr.responseText);
+		// 					if (res.length > 0) {
+		// 						currentAd = res[getRandom(0, res.length - 1)];
+		// 						document.getElementById("img").src = currentAd.pic_url;
+		// 					} else {
+		// 						plus.webview.currentWebview().close();
+		// 					}		
+		// 					//alert("xhr请求成功：" + xhr.responseText);
+		// 				} else {
+		// 					plus.webview.currentWebview().close();
+		// 					//alert("xhr请求失败：" + xhr.readyState);
+		// 				}
+		// 				break;
+		// 			default:
+		// 				break;
+		// 		}
+		// 	}
+		// 	// xhr.open("GET", "https://api-buyer-app.yinbei.cn/advertisement");
+		// 	xhr.send();
+		// }, false);
+		
+
+		// document.addEventListener('UniAppJSBridgeReady', function () {
+		// 	document.querySelector('.con').addEventListener('click', function (e) {
+		// 		if (e.isTrusted) {
+		// 			plus.webview.currentWebview().close();
+		// 			switch (currentAd.operation_type) {
+		// 				// 链接地址
+		// 				case 'URL':
+		// 					plus.webview.open(currentAd.operation_url)
+		// 					break;
+		// 				// 商品
+		// 				case 'GOODS':
+		// 					uni.navigateTo({
+		// 						url: `/pages/product/goods?id=` + currentAd.operation_param
+		// 					});
+		// 					break;
+		// 				// 关键字
+		// 				case 'KEYWORD':
+		// 					uni.navigateTo({
+		// 						url: '/pages/recommend/recommend' + currentAd.operation_param
+		// 					});
+		// 					break;
+		// 				// 店铺
+		// 				case 'store':
+		// 					uni.navigateTo({
+		// 						url: `/pages/product/shopPage?id=` + currentAd.operation_param
+		// 					});
+		// 					break;
+		// 				// 分类
+		// 				case 'CATEGORY':
+		// 					uni.navigateTo({
+		// 						url: '/pages/category/category'
+		// 					});
+		// 					break;
+		// 				default:
+		// 					break;
+		// 			}
+		// 		}
+		// 	});
+		// 	document.querySelector('.btn').addEventListener('click', function (e) {
+		// 		if (e.isTrusted) {
+		// 			plus.webview.currentWebview().close();
+		// 		}
+		// 	});
+		// });
+	</script>
+</html>

@@ -1,0 +1,130 @@
+.content-drawer {
+  height: 100%;
+  font-size: 12px;
+}
+// 购物车样式
+.cart-con{
+  position: relative;
+  background: #fff;
+  height: 100%;
+  ul>li{
+    font-size: 12px;
+    border-bottom: 1px dashed #999;
+    margin: 0 10px;
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    position: relative;
+    p{margin-bottom: 10px;}
+    .del{
+      position: absolute;
+      right: 10px;
+      bottom: 30px;
+    }
+
+    .price {
+      color: $theme_color;
+      span{color: #999;}
+    }
+
+    &:last-child{border: none;}
+  }
+  
+}
+// 订单样式
+.order-con{
+  ul>li {
+    margin: 10px;
+    background-color: #fff;
+    .order-status {
+      display: flex;
+      background-color: #666;
+      border-radius: 3px 3px 0 0;
+      color: #fff;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+    .goods-img {
+      padding-left: 10px;
+      padding-top: 10px;
+      img{
+        border: 1px solid #eee;
+        margin-right: 10px;
+        
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+    
+    .order-handle{
+      display: flex;
+      justify-content: space-between;
+      padding:5px 10px;
+      border-top: 1px solid #eee;
+      span:nth-child(1){
+        color: $theme_color;
+      }
+    }
+  }
+}
+// 优惠券样式
+.coupon-con{
+  margin-top: 10px;
+}
+// 足迹样式
+.tracks-con,.collect-con{
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  li {
+    background-color: #fff;
+    margin: 10px;
+    width: 120px;
+    position: relative;
+    text-align: center;
+    &:hover{
+      div,.del-icon{
+        display: block;
+      }
+
+    }
+
+    img{
+      cursor: pointer;
+    }
+
+    div{
+      display: none;
+      position: absolute;
+      bottom: 18px;
+      width: 100%;
+      background-color: #666;
+      color: #fff;
+      &:hover{
+        background-color: $theme_color;
+        cursor: pointer;
+      }
+    }
+    .del-icon{
+      display: none;
+      font-size: 20px;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+      color: $theme_color;
+    }
+  }
+}
+// 我的收藏样式
+.collect-con{
+
+}

@@ -1,0 +1,147 @@
+.card {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.cardBox {
+  display: inline-block;
+  border-radius: 2px;
+  line-height: 1.5;
+  margin-right: 20px;
+  width: 300px;
+  border: 1px solid #eee;
+  padding: 10px;
+}
+
+.methodItem {
+  width: 100%;
+  border: 1px solid #f5f5f5;
+  text-align: center;
+  padding: 20px 0;
+}
+
+methodItem img {
+  width: 220px;
+  height: 86px;
+}
+
+methodItem h4 {
+  font-size: 14px;
+  color: #333;
+  margin-top: 5px;
+}
+
+.methodItem img {
+  width: 220px;
+  height: 86px;
+}
+
+.bar {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px 8px 0;
+}
+
+.send-setting .left-show {
+  width: 230px;
+  padding: 20px 30px 20px 10px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+}
+
+.send-form {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #eee;
+  margin-left: 24px;
+  background-color: #fafafa;
+}
+.send-setting {
+  display: flex;
+  margin: 20px 0 0 0;
+  .sms {
+    word-break: break-all;
+    display: inline-block;
+    background-color: #eee;
+    max-width: 220px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+  }
+}
+.choose-member {
+  display: flex;
+  height: 400px;
+  border: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.source-member {
+  width: 50%;
+  border-right: 1px solid #eee;
+  padding: 10px;
+}
+.btns {
+  > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.mobile {
+  margin-right: 20px;
+}
+
+.nickname {
+  font-size: 12px;
+  color: #999;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+.traget-member {
+  width: 50%;
+  padding: 10px;
+}
+.scroll-card {
+  margin: 5px 0;
+}
+.ivu-card-body {
+  padding: 1px;
+  margin-left: 7px;
+}
+.checkbox-tag {
+  height: 35px;
+  width: 100%;
+}
+.ivu-tag-border.ivu-tag-closable .ivu-icon-ios-close {
+  margin-right: 68px !important;
+  left: 7px;
+  top: 0px;
+}
+
+.message-title{
+  background-color: #fff5eb;
+  border: 1px solid #ffc999;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 2px;
+}
