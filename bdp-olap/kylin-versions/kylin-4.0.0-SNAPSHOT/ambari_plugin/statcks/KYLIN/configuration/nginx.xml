@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration supports_adding_forbidden="true">
+     <property>
+        <name>nginx_port</name>
+        <description>Nginx port</description>
+        <value>81</value>
+    </property>
+    <property>
+        <name>nginx_install_dir</name>
+        <description>Nginx install directory</description>
+        <value>/usr/hdp/3.1.5.0-152/nginx</value>
+    </property>
+    <property>
+        <name>nginx_log_dir</name>
+        <description>Nginx log directory</description>
+        <value>/var/log/nginx</value>
+    </property>
+    <property>
+        <name>nginx_pid_dir</name>
+        <description>Nginx pid directory</description>
+        <value>/var/run/nginx</value>
+    </property>
+    <property>
+        <name>nginx_conf</name>
+        <description>This is the template for nginx.conf file</description>
+        <value>
+user  root;
+worker_processes  auto;
+
+error_log  {{nginx_log_dir}}/error.log;
+error_log  {{nginx_log_dir}}/error.log  notice;
+error_log  {{nginx_log_dir}}/error.log  info;
+
+pid        {{nginx_pid_file}};
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  {{nginx_log_dir}}/access.log;
+
+    sendfile        on;
+    tcp_nopush      on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       {{nginx_port}};
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        location / {
+             proxy_pass http://kylin.com;
+             proxy_set_header Host $host;
+             proxy_set_header X-Real-IP $remote_addr;
+             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+
+    upstream kylin.com {
+        ip_hash;
+        {{kylin_servers}}
+    }
+}
+        </value>
+        <value-attributes>
+            <type>content</type>
+            <show-property-name>true</show-property-name>
+        </value-attributes>
+    </property>
+
+</configuration>
