@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<metainfo>
+    <schemaVersion>2.0</schemaVersion>
+    <services>
+        <service>
+            <name>KYLIN</name>
+            <displayName>Kylin</displayName>
+            <comment>Kylin是一款开源的分布式数据分析工具，基于hadoop之上的sql查询接口。</comment>
+            <version>4.0.0</version>
+            <components>
+                <component>
+                    <name>KYLIN_ALL</name>
+                    <displayName>Kylin All</displayName>
+                    <category>MASTER</category>
+                    <cardinality>1</cardinality>
+                    <!--<versionAdvertised>true</versionAdvertised>-->
+                    <commandScript>
+                        <script>scripts/kylin_master.py</script>
+                        <scriptType>PYTHON</scriptType>
+                        <timeout>600</timeout>
+                    </commandScript>
+                    <configuration-dependencies>
+                        <config-type>kylin</config-type>
+                    </configuration-dependencies>
+                </component>
+                <component>
+                    <name>KYLIN_QUERY</name>
+                    <displayName>Kylin Query</displayName>
+                    <category>SLAVE</category>
+                    <cardinality>0+</cardinality>
+                    <!--<versionAdvertised>true</versionAdvertised>-->
+                    <commandScript>
+                        <script>scripts/kylin_query.py</script>
+                        <scriptType>PYTHON</scriptType>
+                        <timeout>600</timeout>
+                    </commandScript>
+                    <configuration-dependencies>
+                        <config-type>kylin</config-type>
+                    </configuration-dependencies>
+                </component>
+                <component>
+                    <name>NGINX_SERVER</name>
+                    <displayName>Nginx Server</displayName>
+                    <category>MASTER</category>
+                    <cardinality>1</cardinality>
+                    <!--<versionAdvertised>true</versionAdvertised>-->
+                    <commandScript>
+                        <script>scripts/nginx.py</script>
+                        <scriptType>PYTHON</scriptType>
+                        <timeout>600</timeout>
+                    </commandScript>
+                    <configuration-dependencies>
+                        <config-type>nginx</config-type>
+                    </configuration-dependencies>
+                </component>
+            </components>
+
+            <requiredServices>
+                <service>HDFS</service>
+                <service>HIVE</service>
+                <service>HBASE</service>
+            </requiredServices>
+
+            <osSpecifics>
+                <osSpecific>
+                    <osFamily>any</osFamily>
+                </osSpecific>
+            </osSpecifics>
+
+            <quickLinksConfigurations>
+                <quickLinksConfiguration>
+                    <fileName>quicklinks.json</fileName>
+                    <default>true</default>
+                </quickLinksConfiguration>
+            </quickLinksConfigurations>
+
+            <restartRequiredAfterChange>false</restartRequiredAfterChange>
+        </service>
+    </services>
+</metainfo>
