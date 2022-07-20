@@ -28,6 +28,11 @@
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
 <br/>
 
+## 全站式AllData产品路线图
+<br/>
+<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/179927878-ff9c487e-0d30-49d5-bc88-6482646d90a8.png">
+<br/>
+
 ## Architecture
 <br/>
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/171598215-0914f665-9950-476c-97ff-e7e07aa10eaf.png">
