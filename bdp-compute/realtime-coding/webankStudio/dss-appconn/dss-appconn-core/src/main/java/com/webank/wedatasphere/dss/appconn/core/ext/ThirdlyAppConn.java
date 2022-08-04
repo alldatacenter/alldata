@@ -1,0 +1,24 @@
+/*
+ * Copyright 2019 WeBank
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+package com.webank.wedatasphere.dss.appconn.core.ext;
+
+/**
+ * {@code OnlySSOAppConn}、{@code OnlyStructureAppConn} 和 {@code OnlyDevelopmentAppConn} 的子类。
+ * 表示第三方系统既想打通 SSO 和组织结构，又想作为 DSS 工作流的一个节点集成进来。
+ * */
+public interface ThirdlyAppConn extends OnlySSOAppConn, OnlyStructureAppConn, OnlyDevelopmentAppConn{
+}
