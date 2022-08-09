@@ -1,0 +1,149 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+}
+
+.content .con {
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+	display: flex;
+	align-items: center;
+}
+
+#img {
+	width: 100%;
+	height: 100%;
+}
+
+#timer {
+	display: inline-block;
+	position: fixed;
+	top: 40px;
+	right: 10px;
+}
+
+#info {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 36px;
+	height: 36px;
+	line-height: 36px;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.3);
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 12px;
+}
+
+.circleProgress_wrapper {
+	width: 36px;
+	height: 36px;
+	position: relative;
+}
+
+.wrapper {
+	width: 18px;
+	height: 36px;
+	position: absolute;
+	top: 0;
+	overflow: hidden;
+}
+
+.right {
+	right: 0;
+}
+
+.left {
+	left: 0;
+}
+
+.circleProgress {
+	width: 32px;
+	height: 32px;
+	border: 2px solid #FFFFFF;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	-webkit-transform: rotate(45deg);
+}
+
+.rightcircle {
+	border-top: 2px solid #03A9F4;
+	border-right: 2px solid #03A9F4;
+	right: 0;
+	-webkit-animation: circleProgressLoad_right 4s linear;
+	/*动画停留在最后一帧*/
+	animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+}
+
+.leftcircle {
+	border-bottom: 2px solid #03A9F4;
+	border-left: 2px solid #03A9F4;
+	left: 0;
+	-webkit-animation: circleProgressLoad_left 4s linear;
+	/*动画停留在最后一帧*/
+	animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes circleProgressLoad_right {
+	0% {
+		border-top: 2px solid #03A9F4;
+		border-right: 2px solid #03A9F4;
+		-webkit-transform: rotate(45deg);
+	}
+
+	50% {
+		border-top: 2px solid #03A9F4;
+		border-right: 2px solid #03A9F4;
+		border-left: 2px solid #FFFFFF;
+		border-bottom: 2px solid #FFFFFF;
+		-webkit-transform: rotate(225deg);
+	}
+
+	100% {
+		border-left: 2px solid #FFFFFF;
+		border-bottom: 2px solid #FFFFFF;
+		-webkit-transform: rotate(225deg);
+	}
+}
+
+@-webkit-keyframes circleProgressLoad_left {
+	0% {
+		border-bottom: 2px solid #03A9F4;
+		border-left: 2px solid #03A9F4;
+		-webkit-transform: rotate(45deg);
+	}
+
+	50% {
+		border-bottom: 2px solid #03A9F4;
+		border-left: 2px solid #03A9F4;
+		border-top: 2px solid #FFFFFF;
+		border-right: 2px solid #FFFFFF;
+		-webkit-transform: rotate(45deg);
+	}
+
+	100% {
+		border-top: 2px solid #FFFFFF;
+		border-right: 2px solid #FFFFFF;
+		-webkit-transform: rotate(225deg);
+	}
+}
