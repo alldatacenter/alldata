@@ -91,20 +91,20 @@ S3 Hudi成功写入
 
 &nbsp; &nbsp; &nbsp; &nbsp; It will also become a general big data base for other developers to use and Contribution, my original intention is to create a product that is useful to society.
 
-| Component | Description | Important Composition |
-| --------------- | -----------------------|-----------------------|
-| [**bdp-ai**](https://github.com/authorwlh/alldata/tree/master/bdp-ai) | AI FOR ALL DATA PLATFORM artificial intelligence engine | 人工智能引擎                |
-| [**bdp-business**](https://github.com/authorwlh/alldata/tree/master/bdp-business) | BUSINESS FOR ALL DATA PLATFORM | 商业项目                  |
-| [**bdp-compute**](https://github.com/authorwlh/alldata/tree/master/bdp-compute) | BUSINESS FOR ALL DATA PLATFORM CALCULATION ENGINE | 计算引擎
-| [**bdp-devops**](https://github.com/authorwlh/alldata/tree/master/bdp-devops) | DEVOPS FOR ALL DATA PLATFORM O&M Engine | 运维引擎                  |
-| [**bdp-assembly**](https://github.com/authorwlh/alldata/tree/master/bdp-assembly) | whole package build | 整包构建                  |
-| [**bdp-docs**](https://github.com/authorwlh/alldata/tree/master/bdp-docs) |  Document                   |       文档        | 
-| [**bdp-govern**](https://github.com/authorwlh/alldata/tree/master/bdp-govern) | DATA GOVERN FOR ALL DATA PLATFORM Data Governance Engine | 数据治理引擎                |
-| [**bdp-integrate**](https://github.com/authorwlh/alldata/tree/master/bdp-integrate) | DATA Integrate FOR ALL DATA PLATFORM Data Integration Engine | 数据集成引擎                |
-| [**bdp-ods**](https://github.com/authorwlh/alldata/tree/master/bdp-ods) | DATA ODS FOR ALL DATA PLATFORM data acquisition engine | 数据采集引擎                |
-| [**bdp-olap**](https://github.com/authorwlh/alldata/tree/master/bdp-olap) | OLAP FOR ALL DATA PLATFORM OLAP query engine | OLAP查询引擎              |
-| [**bdp-optimize**](https://github.com/authorwlh/alldata/tree/master/bdp-optimize) | OPTIMIZE FOR ALL DATA PLATFORM performance optimization engine | 性能优化引擎                |
-| [**bdp-storage**](https://github.com/authorwlh/alldata/tree/master/bdp-storage) | DATABASES FOR ALL DATA PLATFORM distributed storage engine | 分布式存储引擎               |
+| Component                                                                     | Description                                                   | Important Composition |
+|-------------------------------------------------------------------------------|---------------------------------------------------------------|-----------------------|
+| [**dataAI**](https://github.com/authorwlh/alldata/tree/master/dataAI)         | AI FOR ALL DATA PLATFORM artificial intelligence engine       | 人工智能引擎                |
+| [**oneShop**](https://github.com/authorwlh/alldata/tree/master/oneShop)       | BUSINESS FOR ALL DATA PLATFORM                                | 商业项目                  |
+| [**dataApps**](https://github.com/authorwlh/alldata/tree/master/dataApps)     | BUSINESS FOR ALL DATA PLATFORM CALCULATION ENGINE             | 计算引擎
+| [**dataDevops**](https://github.com/authorwlh/alldata/tree/master/dataDevops) | DEVOPS FOR ALL DATA PLATFORM O&M Engine                       | 运维引擎                  |
+| [**assembly**](https://github.com/authorwlh/alldata/tree/master/assembly)     | whole package build                                           | 整包构建                  |
+| [**docs**](https://github.com/authorwlh/alldata/tree/master/docs)             | Document                                                      | 文档                    | 
+| [**dataGovern**](https://github.com/authorwlh/alldata/tree/master/dataGovern) | DATA GOVERN FOR ALL DATA PLATFORM Data Governance Engine      | 数据治理引擎                |
+| [**dataSync**](https://github.com/authorwlh/alldata/tree/master/dataSync)     | DATA Integrate FOR ALL DATA PLATFORM Data Integration Engine  | 数据集成引擎                |
+| [**dataOds**](https://github.com/authorwlh/alldata/tree/master/dataOds)       | DATA ODS FOR ALL DATA PLATFORM data acquisition engine        | 数据采集引擎                |
+| [**dataOlap**](https://github.com/authorwlh/alldata/tree/master/dataOlap)     | OLAP FOR ALL DATA PLATFORM OLAP query engine                  | OLAP查询引擎              |
+| [**oneLake**](https://github.com/authorwlh/alldata/tree/master/oneLake)       | DATABASES FOR ALL DATA PLATFORM distributed storage engine    | 分布式存储引擎               |
+| [**oneData**](https://github.com/authorwlh/alldata/tree/master/oneData)       | MICROSERVICE FOR ALL DATA PLATFORM distributed storage engine | 微服务                   |
 
 ### 2、商城展示
 <br>
@@ -323,7 +323,7 @@ job-schedule: 任务提交平台
 
 ## Community & Sponsorship
 
-### 12、技术交流群二维码
+### 12、社区共建
 
 <br/>
 ## Github大数据平台QQ群号：935658273
@@ -342,4 +342,4 @@ job-schedule: 任务提交平台
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455096-93e56491-3fbd-4414-ab64-3886f798bdbd.jpg">
 <br>
 
-## [wechat](https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png) | [linhaopenghong@gmail.com](https://mail.google.com/mail/u/0/#inbox)
+## [wechat](https://user-images.githubusercontent.com/20246692/183455035-10665fe5-05b4-49ce-8dac-0996fa41e13c.jpg) | [linhaopenghong@gmail.com](https://mail.google.com/mail/u/0/#inbox)
