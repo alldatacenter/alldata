@@ -1,4 +1,4 @@
-## AllData 大数据生态解决方案数据平台
+## AllData 一站式大数据平台
 
 
 <p>
@@ -333,7 +333,13 @@ job-schedule: 任务提交平台
 <br/>
 
 ## 个人微信
-<img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png">
+<img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455035-10665fe5-05b4-49ce-8dac-0996fa41e13c.jpg">
+<br>
+
+## 动力源泉，奉献您的一点力量，无私捐赠
+<img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455076-94ab383e-5dc9-4802-8386-93ce1e711473.jpg">
+<br>
+<img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455096-93e56491-3fbd-4414-ab64-3886f798bdbd.jpg">
 <br>
 
 ## [wechat](https://user-images.githubusercontent.com/20246692/160221040-8f256094-2daf-4534-ab68-ff3b115d5dd1.png) | [linhaopenghong@gmail.com](https://mail.google.com/mail/u/0/#inbox)
