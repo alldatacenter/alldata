@@ -21,6 +21,10 @@
 [Demo](http://112.74.93.144:3000) | [Documentation](https://github.com/authorwlh/alldata/blob/master/README.md) | [Installation](#installation) | [Run](#run) | [Screenshot](#screenshot) | [Architecture](#architecture) | [Integration](#integration-with-other-frameworks) | [Compare](#comparison-with-other-frameworks) | [Community & Sponsorship](#community--sponsorship)
 
 
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/authorwlh/alldata.svg)](https://starchart.cc/authorwlh/alldata)
+
 ## [开源大数据平台原型图](https://modao.cc/app/HhitGZQTr954c7Ug8XBvAY#screen=sl11y8j8sne21p9)
 <br/>
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/160220740-ee4825fd-8825-4ab6-84a3-e525d1ea646d.png">
@@ -95,7 +99,7 @@ S3 Hudi成功写入
 |-------------------------------------------------------------------------------|---------------------------------------------------------------|-----------------------|
 | [**dataAI**](https://github.com/authorwlh/alldata/tree/master/dataAI)         | AI FOR ALL DATA PLATFORM artificial intelligence engine       | 人工智能引擎                |
 | [**oneShop**](https://github.com/authorwlh/alldata/tree/master/oneShop)       | BUSINESS FOR ALL DATA PLATFORM                                | 商业项目                  |
-| [**dataApps**](https://github.com/authorwlh/alldata/tree/master/dataApps)     | BUSINESS FOR ALL DATA PLATFORM CALCULATION ENGINE             | 计算引擎
+| [**dataApps**](https://github.com/authorwlh/alldata/tree/master/dataApps)     | BUSINESS FOR ALL DATA PLATFORM CALCULATION ENGINE             | 计算引擎                  
 | [**dataDevops**](https://github.com/authorwlh/alldata/tree/master/dataDevops) | DEVOPS FOR ALL DATA PLATFORM O&M Engine                       | 运维引擎                  |
 | [**assembly**](https://github.com/authorwlh/alldata/tree/master/assembly)     | whole package build                                           | 整包构建                  |
 | [**docs**](https://github.com/authorwlh/alldata/tree/master/docs)             | Document                                                      | 文档                    | 
