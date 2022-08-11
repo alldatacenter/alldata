@@ -1,7 +1,6 @@
 ## AllData 一站式大数据平台
 
-## 目前正式开始团队建设，将大力投入发展AllData项目，欢迎大家踊跃参与建设与讨论！
-https://github.com/AllDataDC/alldata/issues
+## 目前正在建设团队，将大力投入发展AllData项目，欢迎大家踊跃参与建设与讨论！
 ## 由于近期购买服务器需要，希望能得到社区的成员捐赠支持
 ## 捐赠方式：添加作者个人微信AllData之家，通过支付作者10-100元
 ## 1、您会获得面对面与作者1对1咨询宝贵机会，将有30分钟咨询
@@ -9,6 +8,8 @@ https://github.com/AllDataDC/alldata/issues
 ## 3、您会获得内部最新总设文档，支付时请备注联系方式，支付后请联系作者微信AllData之家
 ## 4、您将有机会获得商业版定制的机会，加作者微信好友，可以提供第一手安装部署资料
 ## 5、您将有机会成为AllData极客开发团队成员，获得成就感与价值输出愉悦感
+
+<br/>
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455096-93e56491-3fbd-4414-ab64-3886f798bdbd.jpg">
 <br>
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455035-10665fe5-05b4-49ce-8dac-0996fa41e13c.jpg">
@@ -111,7 +112,7 @@ S3 Hudi成功写入
 |-------------------------------------------------------------------------------|---------------------------------------------------------------|-----------------------|
 | [**dataAI**](https://github.com/authorwlh/alldata/tree/master/dataAI)         | AI FOR ALL DATA PLATFORM artificial intelligence engine       | 人工智能引擎                |
 | [**oneShop**](https://github.com/authorwlh/alldata/tree/master/oneShop)       | BUSINESS FOR ALL DATA PLATFORM                                | 商业项目                  |
-| [**dataApps**](https://github.com/authorwlh/alldata/tree/master/dataApps)     | BUSINESS FOR ALL DATA PLATFORM CALCULATION ENGINE             | 计算引擎                  
+| [**dataApps**](https://github.com/authorwlh/alldata/tree/master/dataApps)     | BUSINESS FOR ALL DATA PLATFORM CALCULATION ENGINE             | 计算引擎
 | [**dataDevops**](https://github.com/authorwlh/alldata/tree/master/dataDevops) | DEVOPS FOR ALL DATA PLATFORM O&M Engine                       | 运维引擎                  |
 | [**assembly**](https://github.com/authorwlh/alldata/tree/master/assembly)     | whole package build                                           | 整包构建                  |
 | [**docs**](https://github.com/authorwlh/alldata/tree/master/docs)             | Document                                                      | 文档                    | 
@@ -352,12 +353,15 @@ job-schedule: 任务提交平台
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455035-10665fe5-05b4-49ce-8dac-0996fa41e13c.jpg">
 <br>
 
+## 目前正在建设团队，将大力投入发展AllData项目，欢迎大家踊跃参与建设与讨论！
 ## 由于近期购买服务器需要，希望能得到社区的成员捐赠支持
 ## 捐赠方式：添加作者个人微信AllData之家，通过支付作者10-100元
 ## 1、您会获得面对面与作者1对1咨询宝贵机会，将有30分钟咨询
 ## 2、您会获得收益，作者会分享Github 1000 Stars+ 从0到1建设开源大数据平台经验心得
-## 3、您会获得内部最新总设文档，支付时请备注联系方式，支付后请联系作者个人微信AllData之家
+## 3、您会获得内部最新总设文档，支付时请备注联系方式，支付后请联系作者微信AllData之家
 ## 4、您将有机会获得商业版定制的机会，加作者微信好友，可以提供第一手安装部署资料
+## 5、您将有机会成为AllData极客开发团队成员，获得成就感与价值输出愉悦感
+
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455076-94ab383e-5dc9-4802-8386-93ce1e711473.jpg">
 <br>
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455096-93e56491-3fbd-4414-ab64-3886f798bdbd.jpg">
