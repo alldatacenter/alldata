@@ -340,7 +340,11 @@ job-schedule: 任务提交平台
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455035-10665fe5-05b4-49ce-8dac-0996fa41e13c.jpg">
 <br>
 
-## 动力源泉，奉献您的一点力量，无私捐赠
+## 由于近期购买服务器需要，希望能得到社区的成员捐赠支持
+## 捐赠方式：通过支付作者10-100元
+## 1、您会获得面对面与作者1对1咨询宝贵机会，将有30分钟咨询
+## 2、您好获得收益，作者会分享从0到1建设AllData大数据平台经验心得
+## 3、支付时请备注联系方式，支付后添加作者个人微信AllData之家，领取内部资料
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455076-94ab383e-5dc9-4802-8386-93ce1e711473.jpg">
 <br>
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455096-93e56491-3fbd-4414-ab64-3886f798bdbd.jpg">
