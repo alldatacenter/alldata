@@ -1,0 +1,7 @@
+export { default as Pie } from './Pie'
+export { default as Histogram } from './Histogram'
+export { default as BarGraph } from './BarGraph'
+export { default as Polyline } from './Polyline'
+export { default as Donut } from './Donut'
+export { default as WordCloud } from './WordCloud'
+export { default as Area } from './Area'

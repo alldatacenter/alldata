@@ -1,0 +1,154 @@
+@import '~antd/es/style/themes/default.less';
+
+.main {
+  width: 100%;
+  min-height: 600px;
+  background: @component-background;
+
+  + .main {
+    margin-top: 20px;
+  }
+
+  .chartExtra {
+    display: flex;
+
+    &.headerRow {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &.headerColumn {
+      flex-direction: column;
+    }
+
+    .extraLeft {
+      .graphicsSelect {
+        display: none;
+        margin: 0 15px 0 40px;
+      }
+
+      .layoutSelect {
+        display: none;
+        width: 140px;
+        margin: 0 20px 0 40px;
+      }
+
+      .checkbox {
+        margin-left: 20px;
+      }
+    }
+
+    .extraRight {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .rangePicker {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .chartDescription {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    &.row {
+      flex: 1;
+      flex-direction: row;
+
+      canvas {
+        flex: 1;
+      }
+    }
+
+    &.column {
+      flex-direction: column;
+    }
+
+    .chartContent {
+      flex: 6;
+
+      .emptyChart {
+        height: 100%;
+
+        :global {
+          .ant-empty-image {
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .report {
+      flex: 5;
+      box-sizing: border-box;
+      min-height: 500px;
+      //border: 1px solid #d9d9d9;
+      padding: 20px;
+      overflow-x: scroll;
+      overflow-y: scroll;
+
+      :global {
+        .ant-table-wrapper {
+          margin: 0 auto;
+
+          .ant-table .ant-table-cell {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+
+  :global {
+    @media (max-width: 575px) {
+      .ant-card > .ant-card-body {
+        padding: 6px 2px;
+      }
+    }
+  }
+
+  @media (max-width: 575px) {
+    .extraLeft {
+      :global {
+        .ant-radio-group {
+          max-width: 287px;
+
+          .ant-radio-button-wrapper {
+            margin-bottom: 6px;
+          }
+        }
+      }
+    }
+    .extraRight {
+      align-items: flex-start !important;
+    }
+
+    .report {
+      padding: 2px !important;
+    }
+
+    .headerColumn {
+      .extraLeft {
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+        margin-bottom: 10px;
+
+        .checkbox {
+          margin-left: 0;
+
+          /* display: flex;
+          flex-direction: column;
+          align-items: flex-start; */
+        }
+      }
+    }
+  }
+}
