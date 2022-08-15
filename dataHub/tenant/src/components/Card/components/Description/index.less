@@ -1,0 +1,32 @@
+.description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 30px;
+
+  .desTitle {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 12px;
+  }
+
+  .desValue {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 8px;
+
+    .text {
+      min-width: 40px;
+      padding-left: 6px;
+      font-size: 12px;
+      text-align: right;
+
+      @media (max-width: 575px) {
+        min-width: unset;
+        padding-left: 0;
+        font-size: 8px;
+      }
+    }
+  }
+}
