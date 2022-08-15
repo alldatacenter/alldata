@@ -1,0 +1,98 @@
+@import '../../../node_modules/antd/es/style/themes/default.less';
+
+.postItem {
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+
+  .tagList {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    :global(.ant-tag) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .title {
+    display: inline-block;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .processList {
+    display: flex;
+    margin: 10px 0 0;
+    padding: 0;
+
+    li {
+      color: seagreen;
+    }
+
+    li + li {
+      margin-left: 30px;
+    }
+  }
+
+  .feedbackList {
+    margin: 10px 0 0;
+    padding: 0;
+
+    li {
+      display: flex;
+
+      span {
+        flex-shrink: 0;
+      }
+
+      p {
+        flex: 1;
+        white-space: pre-wrap;
+      }
+    }
+  }
+
+  .metaList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+    color: #999;
+
+    @media screen and (max-width: @screen-xs) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0 0;
+    }
+
+    .flag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      padding: 0 5px;
+      color: #fff;
+      font-size: 12px;
+      background: #f66;
+      border-radius: 100px;
+    }
+  }
+
+  .markLine {
+    color: #666;
+    font-weight: bold;
+    text-decoration: underline;
+    em {
+      color: #f66;
+    }
+  }
+}
