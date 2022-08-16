@@ -14,18 +14,21 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 """
 
+
+import sys
 from resource_management import *
-from resource_management.libraries.functions import get_unique_id_and_date
+from resource_management.core.logger import Logger
+from resource_management.libraries.functions import default
 
-class ServiceCheck(Script):
-  def service_check(self, env):
-    import params
-    #env.set_params(params)
+Logger.initialize_logger()
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
-    # Execute(format("which pika_server"))
+# server configurations
+config = Script.get_config()
 
-if __name__ == "__main__":
-  ServiceCheck().execute()
+# conf_dir = "/etc/"
+testDir = "/opt/soft/installDir"
+
