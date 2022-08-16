@@ -14,18 +14,38 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 """
-
+import time
 from resource_management import *
-from resource_management.libraries.functions import get_unique_id_and_date
 
-class ServiceCheck(Script):
-  def service_check(self, env):
-    import params
-    #env.set_params(params)
 
-    # Execute(format("which pika_server"))
+class ComponentService(Script):
+    def install(self, env):
+        import params
+        env.set_params(params)
+        Execute(('chmod', '-R', '777', params.testDir))
+
+    def configure(self, env):
+        import params
+        env.set_params(params)
+
+    def start(self, env):
+        import params
+        env.set_params(params)
+        self.configure(env)
+        Execute(('chmod', '-R', '777', params.testDir))
+
+
+    def stop(self, env):
+        import params
+        env.set_params(params)
+        Execute(('chmod', '-R', '777', params.testDir))
+
+    def status(self, env):
+        import params
+        env.set_params(params)
+        check_process_status("/usr/run/test.pid")
+
 
 if __name__ == "__main__":
-  ServiceCheck().execute()
+    ComponentService().execute()
