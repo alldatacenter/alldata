@@ -1,0 +1,21 @@
+.main {
+  max-width: 100%;
+
+  .ellipsisText {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+
+    &.line {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    &.lines {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+}

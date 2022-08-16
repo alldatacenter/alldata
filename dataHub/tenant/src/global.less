@@ -1,0 +1,152 @@
+@import '~antd/es/style/themes/default.less';
+
+#root {
+  width: 100%; // 桌面端限制页面宽度
+  height: 100%;
+
+  @media screen and (min-width: @screen-xs-min) and (max-width: 1320px) {
+    width: 1440px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+  }
+}
+
+// 覆盖导航栏样式
+.ant-pro-basicLayout .ant-layout-header.ant-pro-fixed-header {
+  right: initial !important;
+  left: 0 !important;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #001529;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  margin: 0;
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+p {
+  margin: 0;
+}
+
+// 兼容IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body .ant-design-pro > .ant-layout {
+    min-height: 100vh;
+  }
+}
+
+@gray-color: rgba(0, 0, 0, 0.45);
+
+// 去掉footer的margin
+.ant-layout {
+  height: 100vh;
+  overflow-y: auto;
+
+  .ant-layout-footer .ant-pro-global-footer {
+    margin: 8px 0 12px 0;
+  }
+}
+
+// 隐藏 logo 后，去掉多余外边距
+.ant-pro-global-header {
+  // Desktop
+  .ant-pro-global-header-logo h1 {
+    margin-left: 0;
+  }
+  // Mobile
+  .ant-pro-global-header-collapsed-button {
+    margin-left: 0;
+  }
+}
+
+// 调整外边距
+.ant-pro-basicLayout-content {
+  margin: 10px;
+
+  .ant-pro-page-container {
+    margin: -10px -10px 0;
+  }
+}
+.ant-pro-page-container {
+  .ant-page-header {
+    padding: 10px;
+
+    .ant-breadcrumb > span:nth-of-type(1) {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+  .ant-pro-page-container-children-content {
+    margin: 10px 10px 0;
+  }
+  @media (max-width: 575px) {
+    .ant-pro-page-container-children-content {
+      margin: 10px 0 0;
+    }
+    .ant-pro-table-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      height: auto;
+      margin-bottom: 16px;
+      margin-left: 0;
+      padding: 16px;
+      line-height: normal;
+    }
+  }
+}
+
+// 清除浮动
+.clearfix::after {
+  display: block;
+  clear: both;
+  height: 0;
+  line-height: 0;
+  visibility: hidden; //允许浏览器渲染它，但是不显示出来
+  content: '';
+}

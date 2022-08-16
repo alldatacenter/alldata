@@ -1,0 +1,36 @@
+@import '~antd/es/style/themes/default.less';
+
+.businessDesc {
+  width: 100%;
+  background: @component-background;
+
+  :global {
+    .ant-descriptions-item-content {
+      max-width: 100%;
+    }
+  }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0 18px 36px;
+
+    @media (max-width: 1000px) {
+      padding: 9px 0 9px 15px;
+    }
+  }
+
+  .divider {
+    margin: 0 0 12px;
+  }
+
+  .description {
+    padding: 16px 60px 0;
+
+    @media (max-width: 1000px) {
+      padding: 8px 15px;
+    }
+  }
+}
