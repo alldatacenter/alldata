@@ -1,7 +1,7 @@
 # DASHBOARD FOR ALL DATA PLATFORM
 
 > 多租户平台前端
-> 服务于frontend数据中台项目
+> 
 
 ## Environment Prepare
 

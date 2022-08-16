@@ -12,7 +12,7 @@
 
 v1.0版本apache社区组件版本：
 
-    dlink: 0.6.4-SNAPSHOT
+    DataSphereStudio: 1.1.0
 
     ambari: 3.0.0.0-SNAPSHOT
 
