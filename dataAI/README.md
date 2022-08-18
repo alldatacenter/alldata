@@ -1,4 +1,4 @@
-# AI FOR ALL DATA PLATFORM 人工智能引擎
+# 机器学习算法平台 FOR ALL DATA PLATFORM 人工智能引擎
 
 ```markdown
 数据平台的人工智能引擎：AI算法驱动
