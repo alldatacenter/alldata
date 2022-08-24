@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+echo Running: build-server
+$(dirname $0)/build-server
+echo Running: build-rancherd
+$(dirname $0)/build-rancherd
+echo Running: build-agent
+$(dirname $0)/build-agent
