@@ -1,55 +1,48 @@
-# 机器学习算法平台 FOR ALL DATA PLATFORM 人工智能引擎
+# CUBE STUDIO FOR ALL DATA
 
 ```markdown
-数据平台的人工智能引擎：AI算法驱动
 
-1、数据准备
+基于cube-studio二次开发的机器学习平台
 
-2、模型开发
+```
+### 整体架构
 
-  支持自定义与可视化模型开发
 
-3、训练和超参数调节
+![image](https://user-images.githubusercontent.com/20157705/167534673-322f4784-e240-451e-875e-ada57f121418.png)
 
-4、模型服务
+cube-studio 机器学习平台，目前主要包含
+ - 1、数据管理：特征平台，支持在/离线特征；数据源管理，支持结构数据和媒体标注数据管理；
+ - 2、在线开发：在线的vscode/jupyter代码开发；在线镜像调试，支持免dockerfile，增量构建；
+ - 3、训练编排：任务流编排，在线拖拉拽；开放的模板市场，支持tf/pytorch/mxnet/spark/ray/horovod/kaldi/volcano等分布式计算/训练任务；task的单节点debug，分布式任务的批量优先级调度，聚合日志；任务运行资源监控，报警；定时调度，支持补录，忽略，重试，依赖，并发限制，定时任务算力的智能修正；
+ - 4、超参搜索：nni，katib，ray的超参搜索；
+ - 5、推理服务：tf/pytorch/onnx模型的推理服务，serverless流量管控，triton gpu推理加速，依据gpu利用率/qps等指标的hpa能力，虚拟化gpu，虚拟显存等服务化能力；
+ - 6、资源统筹：多集群多项目组资源统筹，联邦调度，边缘计算；
 
-5、模型调整和理解
+# 支持模板
 
-6、模型监控
+提示：
+- 1、可自由定制任务插件，更适用当前业务需求
 
-7、模型管理
+| 模板  | 类型 | 组件说明 |
+| :----- | :---- | :---- |
+| 自定义镜像 | 基础命令 | 完全自定义单机运行环境，可自由实现所有自定义单机功能 | 
+| datax | 导入导出 | 异构数据源导入导出 | 
+| media-download | 数据处理 | 	分布式媒体文件下载  | 
+| video-audio | 数据处理 | 	分布式视频提取音频  | 
+| video-img | 数据处理 | 	分布式视频提取图片  | 
+| ray | 数据处理 | python ray框架 多机分布式功能，适用于超多文件在多机上的并发处理 |
+| xgb | 机器学习 | xgb模型训练 |
+| ray-sklearn | 机器学习 | 基于ray框架的sklearn支持算法多机分布式并行计算  |
+| volcano | 数据处理 | volcano框架的多机分布式，可紫玉控制代码，利用环境变量实现多机worker的工作与协同  | 
+| pytorchjob-train | 训练 | 	pytorch的多机多卡分布式训练  | 
+| horovod-train | 训练 | 	horovod的多机多卡分布式训练  | 
+| tfjob-train | 训练 | tf分布式训练，内部支持plain和runner两种方式  | 
+| tfjob-runner | 训练 | tf分布式-runner方式  | 
+| tfjob-plain | 训练 | tf分布式-plain方式  | 
+| kaldi-train | 训练 | kaldi音频分布式训练  | 
+| tf-model-evaluation | 模型评估 | tensorflow2.3分布式模型评估  | 
+| tf-offline-predict | 离线推理 | tf模型离线推理  | 
+| model-offline-predict | 离线推理 | 	分布式模型离线推理  | 
+| deploy-service | 服务部署 | 部署云原生推理服务 | 
 
-````
-<br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/174422804-dea8cdf9-d8c9-4d97-ac9c-f10604668713.jpg">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174422812-d967bf29-d522-4257-9195-9996c872dd0b.jpg">
-<br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/174422816-9e92595c-0ad7-479b-998c-8d4ace45e49a.jpg">
-<br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/174422828-d9611beb-2724-4cf3-b0d1-577b4811deb3.jpg">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174422818-a41299ac-e6f1-4576-9b72-e82309c068a9.jpg">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174422829-ebe06808-72b0-4ca4-9164-649bc37775d7.jpg">
-<br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/174422830-f79e1b41-dad3-4fcf-8f9d-cdf5362305e5.jpg">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174422832-522a2c3e-a8a2-4ad2-9860-df444f0582b2.jpg">
-<br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/174422833-8aaa0798-b0a5-4949-b981-2679fe251d87.jpg">
-<br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/174422837-f34382e4-eb12-4dbe-9d8d-060232cb96ec.jpg">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174422835-7148c03c-19e9-401d-8a89-0ddd1e5ac918.jpg">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174422848-530e8636-e4d7-4333-8d86-f78f29cb7927.jpg">
-<br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/174422847-8a03a365-3800-4700-94d0-1ceabf78867a.jpg">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174422844-219dccbf-d3a9-4dae-8077-9344e5b46e93.jpg">
-<br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/174422843-2010e2ff-f301-4bb8-8090-2705f0f79ce6.jpg">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/174422839-2c4adc7f-2f9e-47dc-8cb7-8e6b513c6430.jpg">
-<br/>
+<br>
