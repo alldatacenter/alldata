@@ -4,11 +4,12 @@
 
 AllData基于cube-studio落地建设的机器学习平台
 
-https://github.com/tencentmusic/cube-studio/blob/master/README_CN.md
-
 ```
 ### 整体架构
 
+>cube-studio项目
+
+>https://github.com/tencentmusic/cube-studio/blob/master/README_CN.md
 
 ![image](https://user-images.githubusercontent.com/20157705/167534673-322f4784-e240-451e-875e-ada57f121418.png)
 
