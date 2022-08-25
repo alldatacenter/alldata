@@ -1,6 +1,9 @@
 # Cube Studio
 
 ### 整体架构
+>cube-studio项目
+
+>https://github.com/tencentmusic/cube-studio/blob/master/README_CN.md
 
 
 ![image](https://user-images.githubusercontent.com/20157705/167534673-322f4784-e240-451e-875e-ada57f121418.png)
@@ -58,26 +61,3 @@ https://github.com/tencentmusic/cube-studio/wiki
 [参考wiki](https://github.com/tencentmusic/cube-studio/wiki/%E5%B9%B3%E5%8F%B0%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2) 平台完成部署之后如下:
 
 ![cube](https://user-images.githubusercontent.com/20157705/174762561-29b18237-7d45-417e-b7c0-14f5ef96a0e6.gif)
-
-
-# 贡献
-算法：
-@hujunaifuture <img width="5%" src="https://avatars.githubusercontent.com/u/19547589?v=4" />
-@jaffe-fly <img width="5%" src="https://avatars.githubusercontent.com/u/49515380?s=96&v=4" />
-@JLWLL  <img width="5%" src="https://avatars.githubusercontent.com/u/86763551?s=96&v=4" />
-@ma-chengcheng<img width="5%" src="https://avatars.githubusercontent.com/u/15444349?s=96&v=4" />
-@chendile <img width="5%" src="https://avatars.githubusercontent.com/u/42484658?s=96&v=4" />
-
-平台：
-@xiaoyangmai <img width="5%" src="https://avatars.githubusercontent.com/u/10969390?s=96&v=4" />
-@VincentWei2021 <img width="5%" src="https://avatars.githubusercontent.com/u/77832074?v=4" />
-@SeibertronSS <img width="5%" src="https://avatars.githubusercontent.com/u/69496864?v=4" />
-@cyxnzb <img width="5%" src="https://avatars.githubusercontent.com/u/51886383?s=88&v=4" /> 
-@gilearn <img width="5%" src="https://avatars.githubusercontent.com/u/107160156?s=88&v=4" />
-@wulingling0108 <img width="5%" src="https://avatars.githubusercontent.com/u/45533757?v=4" />
-<br>
-<br>
-
-# 落地公司
-
-![image](https://user-images.githubusercontent.com/20157705/176909239-f24cbf8d-8fb5-4326-abed-6fbc3f5a2d1f.png)
