@@ -2,7 +2,9 @@
 
 ```markdown
 
-基于cube-studio二次开发的机器学习平台
+AllData基于cube-studio落地建设的机器学习平台
+
+https://github.com/tencentmusic/cube-studio/blob/master/README_CN.md
 
 ```
 ### 整体架构
