@@ -56,7 +56,7 @@
           <Button
             type="error"
             size="small"
-            :disabled="row.promotionStatus == 'END' || row.promotionStatus == 'CLOSE'"
+            v-if="row.promotionStatus === 'START' || row.promotionStatus === 'NEW'"
             @click="close(row)"
             >关闭
           </Button>
@@ -94,7 +94,7 @@ export default {
         // 搜索框初始化对象
         pageNumber: 1, // 当前页数
         pageSize: 10, // 页面大小
-        sort: "startTime",
+        sort: "createTime",
         order: "desc", // 默认排序方式
       },
       columns: [

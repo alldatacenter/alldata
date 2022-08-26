@@ -13,7 +13,7 @@
       <Carousel loop :autoplay-speed="5000" class="login-carousel" arrow="never">
         <CarouselItem>
           <div class="demo-carousel" @click='$refs.verify.show = false'>
-            <img src="https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201811141632252680" />
+            <img src="https://lili-system.oss-cn-beijing.aliyuncs.com/background.jpg" />
           </div>
         </CarouselItem>
       </Carousel>
@@ -96,7 +96,7 @@
       <Row type="flex" justify="center" class="copyright">
         Copyright © {{year}} - Present
         <a href="https://pickmall.cn" target="_blank" style="margin: 0 5px">{{config.title}}</a>
-        版权所有 
+        版权所有
       </Row>
     </div>
   </div>

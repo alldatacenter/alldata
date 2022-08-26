@@ -1,0 +1,239 @@
+{
+  "properties": {
+     "_class": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "attrList": {
+        "type": "nested",
+        "properties": {
+           "name": {
+              "type": "keyword"
+           },
+           "type": {
+              "type": "long"
+           },
+           "value": {
+              "type": "keyword"
+           }
+        }
+     },
+     "brandId": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "brandName": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "brandUrl": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "buyCount": {
+        "type": "long"
+     },
+     "releaseTime": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "categoryPath": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "categoryNamePath": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "commentNum": {
+        "type": "long"
+     },
+     "skuSource": {
+        "type": "long"
+     },
+     "goodsId": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "goodsName": {
+        "type": "text",
+        "fielddata": true,
+        "analyzer": "ik_max_word",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "grade": {
+        "type": "float"
+     },
+     "highPraiseNum": {
+        "type": "long"
+     },
+     "id": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "intro": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "authFlag": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "marketEnable": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "mobileIntro": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "point": {
+        "type": "long"
+     },
+     "price": {
+        "type": "float"
+     },
+     "salesModel": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "recommend": {
+        "type": "boolean"
+     },
+     "selfOperated": {
+        "type": "boolean"
+     },
+     "sellerId": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "sellerName": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "shopCategoryPath": {
+        "type": "text",
+        "fielddata": true,
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "sn": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     },
+     "promotionMapJson": {
+        "type": "text"
+     },
+     "thumbnail": {
+        "type": "text",
+        "fields": {
+           "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+           }
+        }
+     }
+  }
+}

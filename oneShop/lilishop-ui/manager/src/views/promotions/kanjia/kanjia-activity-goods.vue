@@ -97,14 +97,7 @@
         </template>
         <template slot-scope="{ row }" slot="action">
           <Button
-            v-if="row.promotionStatus != 'NEW'"
-            size="small"
-            style="margin-right: 10px"
-            @click="edit(row, 'onlyView')"
-            >查看
-          </Button>
-          <Button
-            v-if="row.promotionStatus === 'NEW'"
+            v-if="row.promotionStatus === 'CLOSE' || row.promotionStatus === 'NEW'"
             type="info"
             size="small"
             style="margin-right: 10px"
@@ -112,7 +105,13 @@
             >编辑
           </Button>
           <Button
-            v-if="row.promotionStatus === 'NEW' || row.promotionStatus === 'END'"
+            v-else
+            size="small"
+            style="margin-right: 10px"
+            @click="edit(row, 'onlyView')"
+            >查看
+          </Button>
+          <Button
             type="error"
             size="small"
             style="margin-right: 10px"
@@ -161,7 +160,7 @@ export default {
         // 搜索框初始化对象
         pageNumber: 1, // 当前页数
         pageSize: 10, // 页面大小
-        sort: "startTime", // 默认排序字段
+        sort: "createTime", // 默认排序字段
         order: "desc", // 默认排序方式
         goodsName: "",
       },

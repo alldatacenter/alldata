@@ -23,6 +23,7 @@
             <div class="wap-content-desc">
               <div class="wap-content-desc-title">{{ item.goodsName }}</div>
               <div class="wap-sku">{{ item.goodsUnit }}</div>
+              <div class="wap-sku"><Tag :color="item.salesModel === 'RETAIL' ? 'default' : 'geekblue'">{{item.salesModel === "RETAIL" ? "零售型" : "批发型"}}</Tag></div>
               <div class="wap-content-desc-bottom">
                 <div>￥{{ item.price | unitPrice }}</div>
               </div>
@@ -54,6 +55,7 @@ export default {
         categoryPath: "",
         marketEnable: "UPPER",
         authFlag: "PASS",
+        sort:"createTime"
       },
       category: [], // 分类
       goodsData: [], // 商品数据
@@ -62,7 +64,7 @@ export default {
     };
   },
   props: {
-    selectedWay: { 
+    selectedWay: {
       type: Array,
       default: function(){
         return new Array()

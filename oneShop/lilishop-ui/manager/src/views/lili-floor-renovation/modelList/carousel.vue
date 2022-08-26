@@ -22,7 +22,9 @@
         <div class="person-msg">
           <img :src="userInfo.face" v-if="userInfo.face" alt />
           <Avatar icon="ios-person" class="mb_10" v-else size="80" />
-          <div>Hi，{{ userInfo.nickName || "欢迎来到管理后台" | secrecyMobile }}</div>
+          <div>
+            Hi，{{ userInfo.nickName || "欢迎来到管理后台" | secrecyMobile }}
+          </div>
           <div v-if="userInfo.id">
             <Button type="error" shape="circle">会员中心</Button>
           </div>
@@ -34,8 +36,13 @@
           <div>
             <span>常见问题</span>
             <ul class="article-list">
-              <li class="ellipsis" :alt="article.title" v-for="(article, index) in articleList" :key="index" @click="goArticle(article.id)">
-                {{article.title}}
+              <li
+                class="ellipsis"
+                :alt="article.title"
+                v-for="(article, index) in articleList"
+                :key="index"
+              >
+                {{ article.title }}
               </li>
             </ul>
           </div>
@@ -49,8 +56,6 @@
       width="800"
       :z-index="100"
       :mask-closable="false"
-      
-      
     >
       <div class="modal-tab-bar">
         <Button type="primary" size="small" @click="handleAdd">添加轮播</Button>
@@ -78,19 +83,22 @@
                   alt=""
                 />
               </td>
-              <td><Input v-model="item.url" disabled /></td>
+              <td>
+                <Input
+                  class="outsideUrl"
+                  v-model="item.url"
+                  :disabled="!!item.type && item.type !== 'link'"
+                />
+              </td>
               <!-- <td><Input v-model="item.sort"/></td> -->
               <td>
                 <Button
-                    type="primary"
-                    size="small"
-                    @click="handleSelectImg(item)"
-                    >选择图片</Button
-                >&nbsp;
-                <Button
-                  type="info"
+                  type="primary"
                   size="small"
-                  @click="handleSelectLink(item)"
+                  @click="handleSelectImg(item)"
+                  >选择图片</Button
+                >&nbsp;
+                <Button type="info" size="small" @click="handleSelectLink(item)"
                   >选择链接</Button
                 >&nbsp;
                 <Button
@@ -107,14 +115,14 @@
       </div>
     </Modal>
     <!-- 选择商品。链接 -->
-    <liliDialog
-      ref="liliDialog"
-      @selectedLink="selectedLink"
-    
-    ></liliDialog>
+    <liliDialog ref="liliDialog" @selectedLink="selectedLink"></liliDialog>
     <!-- 选择图片 -->
     <Modal width="1200px" v-model="picModelFlag" footer-hide>
-      <ossManage @callback="callbackSelected" :isComponent="true" ref="ossManage" />
+      <ossManage
+        @callback="callbackSelected"
+        :isComponent="true"
+        ref="ossManage"
+      />
     </Modal>
   </div>
 </template>
@@ -125,39 +133,40 @@ export default {
   name: "modelCarousel",
   props: ["data"],
   components: {
-    ossManage
+    ossManage,
   },
   data() {
     return {
       showModal: false, // modal显隐
       selected: null, // 已选数据
       picModelFlag: false, // 选择图片modal
-      userInfo:{},
-      articleList:[
-        {title:'促销计算规则'},
-        {title:'商家申请开店'},
-        {title:'商家账号注册'},
-        {title:'促销计算规则'}
-      ]
+      userInfo: {},
+      articleList: [
+        { title: "促销计算规则" },
+        { title: "商家申请开店" },
+        { title: "商家账号注册" },
+        { title: "促销计算规则" },
+      ],
     };
   },
 
   methods: {
-    handleSelectModel () {
+    handleSelectModel() {
       // 编辑模块
       this.showModal = true;
     },
     // 添加轮播图
-    handleAdd () {
-      this.data.options.list.push({ img: "", url: "" });
+    handleAdd() {
+      this.data.options.list.push({ img: "", url: "", type: "" });
       this.$forceUpdate();
     },
-    handleSelectLink (item) {
+    handleSelectLink(item) {
       // 选择链接
-      this.$refs.liliDialog.open('link')
+      this.$refs.liliDialog.open("link");
       this.selected = item;
     },
-    callbackSelected (item) { // 选择图片回调
+    callbackSelected(item) {
+      // 选择图片回调
       this.picModelFlag = false;
       this.selected.img = item.url;
     },
@@ -165,10 +174,11 @@ export default {
       // 删除图片
       this.data.options.list.splice(index, 1);
     },
-    selectedLink(val) { // 选择链接回调
-      console.log(val);
+    selectedLink(val) {
+      // 选择链接回调
       this.selected.url = this.$options.filters.formatLinkType(val);
-      console.log(this.selected.url);
+      this.selected.type =
+        val.___type === "other" && val.url === "" ? "link" : "other";
     },
     // 选择图片
     handleSelectImg(item) {

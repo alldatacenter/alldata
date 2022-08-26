@@ -129,25 +129,15 @@ export default {
       if (currWidth <= 1200) {
         this.sliceNum = 2;
       }
-      //获取domainLogo
-      getBaseSite().then((res) => {
-        const { domainLogo, siteName } = JSON.parse(res.result.settingValue);
-
-        this.domainLogo = domainLogo;
-        //动态获取icon
-        this.setStore("icon", this.domainLogo);
-        let link =
-          document.querySelector("link[rel*='icon']") ||
-          document.createElement("link");
-        link.type = "image/x-icon";
-        link.href = this.domainLogo;
-        link.rel = "shortcut icon";
-        document.getElementsByTagName("head")[0].appendChild(link);
-        //动态获取siteName
-        this.setStore("title", siteName);
-        window.document.title = siteName + " - 运营后台";
-      }),
-
+      this.domainLogo = localStorage.getItem("icon");
+      let link =
+        document.querySelector("link[rel*='icon']") ||
+        document.createElement("link");
+      link.type = "image/x-icon";
+      link.href = localStorage.getItem("icon");
+      link.rel = "shortcut icon";
+      document.getElementsByTagName("head")[0].appendChild(link);
+      window.document.title = localStorage.getItem("title") + " - 运营后台";
       // 读取未读消息数
       getNoticePage({}).then((res) => {
         if (res.success) {
@@ -157,6 +147,7 @@ export default {
         }
       });
     },
+
     //用户头像下方抽屉点击
     handleClickUserDropdown(name) {
       //个人中心

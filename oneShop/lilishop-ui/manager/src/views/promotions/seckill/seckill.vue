@@ -66,7 +66,7 @@
                 type="info"
                 size="small"
                 class="mr_5"
-                v-if="row.promotionStatus == 'NEW'"
+                v-if="row.promotionStatus === 'CLOSE' || row.promotionStatus === 'NEW'"
                 @click="edit(row)"
                 >编辑</Button
               >
@@ -90,13 +90,13 @@
                 v-if="row.promotionStatus == 'START' || row.promotionStatus == 'NEW'"
                 class="mr_5"
                 @click="off(row)"
-                >下架</Button
+                >关闭</Button
               >
               &nbsp;
               <Button
                 type="error"
                 size="small"
-                v-if="row.promotionStatus == 'CLOSE'"
+                v-if="row.promotionStatus == 'CLOSE' || row.promotionStatus == 'END'"
                 ghost
                 @click="expire(row)"
                 >删除</Button
@@ -146,7 +146,7 @@ export default {
         // 搜索框初始化对象
         pageNumber: 1, // 当前页数
         pageSize: 10, // 页面大小
-        sort: "startTime",
+        sort: "createTime",
         order: "desc", // 默认排序方式
       },
       setupFlag: false, //默认不请求设置

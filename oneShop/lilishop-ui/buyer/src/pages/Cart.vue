@@ -122,7 +122,16 @@
                   "
                 />
                 <div>
-                  <p>{{ goods.goodsSku.goodsName }}</p>
+                  <p>
+                    {{ goods.goodsSku.goodsName }}
+                  </p>
+                  <p><Tag
+                    v-if="goods.goodsSku.salesModel === 'WHOLESALE'"
+                    class="goods-show-tag"
+                    color="purple"
+                  >
+                    批发商品
+                  </Tag></p>
                   <template
                     v-for="(promotion, promotionIndex) in goods.promotions"
                   >
@@ -363,13 +372,13 @@ export default {
     },
     // 设置购买数量
     changeNum(val, id) {
-      console.log(val, id);
-      APICart.setCartGoodsNum({ skuId: id, num: val }).then((res) => {
-        console.log(res);
-        if (res.success) {
-          this.getCartList();
-        }
-      });
+      if (val) {
+        APICart.setCartGoodsNum({ skuId: id, num: val }).then((res) => {
+          if (res.success) {
+            this.getCartList();
+          }
+        });
+      }
     },
     // 设置商品选中状态
     async changeChecked(status, type, id) {

@@ -62,6 +62,13 @@
                 </span>
               </div>
               <div class="goods-show-detail">
+                <Tag
+                  v-if="item.content.salesModel === 'WHOLESALE'"
+                  class="goods-show-tag"
+                  color="purple"
+                  >
+                  批发
+                </Tag>
                 <span>{{ item.content.goodsName }}</span>
               </div>
               <div class="goods-show-num">
@@ -85,7 +92,9 @@
                   </div>
                   <div
                     class="goods-show-middle"
-                    v-else-if="goodsListType.content.goodsType == 'PHYSICAL_GOODS'"
+                    v-else-if="
+                      goodsListType.content.goodsType == 'PHYSICAL_GOODS'
+                    "
                   >
                     实物
                   </div>
@@ -203,6 +212,7 @@ export default {
       this.params.pageSize = val;
       this.getGoodsList();
     },
+
     // 获取商品列表
     getGoodsList() {
       this.loading = true;
@@ -255,6 +265,17 @@ export default {
   padding: 0 3px;
   background-color: #e23a3a;
 }
+
+.goods-show-tag {
+  height: 18px;
+  width: 32px;
+  line-height: 14px;
+  white-space: nowrap;
+  text-align: center;
+  align-items: center;
+  padding: 0 3px;
+}
+
 .goods-show-seller {
   // padding:3px 0;
   vertical-align: middle;

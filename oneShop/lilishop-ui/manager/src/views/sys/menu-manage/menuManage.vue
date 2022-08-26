@@ -107,7 +107,7 @@
             </FormItem>
             <FormItem label="权限url" v-if="form.level != 0" class="block-tool">
               <Tooltip placement="right" content="*号模糊匹配，逗号分割" transfer>
-                <Input class="menu-input" v-model="form.permission" />
+                <Input class="menu-input" v-model="form.permission" type="textarea" />
               </Tooltip>
             </FormItem>
             <FormItem label="排序值" prop="sortOrder">
@@ -168,7 +168,7 @@
           <Input v-model="formAdd.frontRoute" />
         </FormItem>
         <FormItem label="权限url" v-if="formAdd.level != 0">
-          <Input v-model="formAdd.permission" />
+          <Input v-model="formAdd.permission" type="textarea" />
           <div class="desc">*号模糊匹配，逗号分割</div>
         </FormItem>
         <FormItem label="排序值" prop="sortOrder">
@@ -571,6 +571,6 @@ export default {
   color: #999;
 }
 .menu-input {
-  width: 162px;
+  width: 362px;
 }
 </style>

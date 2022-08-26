@@ -38,4 +38,7 @@ body {
 .ivu-tag {
   cursor: pointer;
 }
+.tox-notifications-container{
+  display: none !important;
+}
 </style>

@@ -189,7 +189,7 @@ export default {
           key: "goodsName",
           minWidth: 120,
           render: (h, params) => {
-            return h("div", params.row.goodsSku.goodsName);
+            return h("div", params.row.goodsName);
           },
         },
         {
@@ -202,7 +202,7 @@ export default {
           key: "storeName",
           minWidth: 60,
           render: (h, params) => {
-            return h("div", params.row.goodsSku.storeName);
+            return h("div", params.row.storeName);
           },
         },
         {
@@ -212,7 +212,7 @@ export default {
           render: (h, params) => {
             return h(
               "div",
-              this.$options.filters.unitPrice(params.row.goodsSku.price, "￥")
+              this.$options.filters.unitPrice(params.row.price, "￥")
             );
           },
         },
@@ -221,7 +221,7 @@ export default {
           key: "quantity",
           minWidth: 20,
           render: (h, params) => {
-            return h("div", params.row.goodsSku.quantity);
+            return h("div", params.row.quantity);
           },
         },
         {
@@ -377,7 +377,9 @@ export default {
           originalPrice: e.price || 0,
           thumbnail: e.thumbnail || "",
           goodsName: e.goodsName || "",
-          goodsSku: e,
+          quantity: e.quantity || "",
+          storeName: e.storeName || "",
+          price: e.price || ""
         };
         list.push(obj);
       });

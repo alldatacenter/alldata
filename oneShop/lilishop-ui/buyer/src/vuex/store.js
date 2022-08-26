@@ -12,7 +12,7 @@ export default new Vuex.Store({
     navList: [], // 首页快捷导航
     cartNum: storage.getItem('cartNum') || 0,
     logoImg: storage.getItem('logoImg') || require('@/assets/images/logo2.png'),
-    siteName:storage.getItem('siteName')|| null,
+    siteName:storage.getItem('siteName')|| 'lilishop',
     hotWordsList: storage.getItem('hotWordsList'),
     category: JSON.parse(localStorage.getItem('category'))
   },

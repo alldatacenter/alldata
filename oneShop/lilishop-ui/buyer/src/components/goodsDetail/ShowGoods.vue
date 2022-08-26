@@ -7,8 +7,18 @@
         <div class="item-detail-big-img">
           <pic-zoom :url="imgList[imgIndex].url" :scale="2"></pic-zoom>
         </div>
-        <div v-if="skuDetail.goodsType !== 'VIRTUAL_GOODS'" style="margin-top:10px;rgb(153, 149, 149);">实物商品</div>
-        <div v-else-if="skuDetail.goodsType == 'VIRTUAL_GOODS'" style="margin-top:10px;rgb(153, 149, 149);">虚拟商品</div>
+        <div
+          v-if="skuDetail.goodsType !== 'VIRTUAL_GOODS'"
+          style="margin-top:10px;rgb(153, 149, 149);"
+        >
+          实物商品
+        </div>
+        <div
+          v-else-if="skuDetail.goodsType == 'VIRTUAL_GOODS'"
+          style="margin-top:10px;rgb(153, 149, 149);"
+        >
+          虚拟商品
+        </div>
         <div class="item-detail-img-row">
           <div
             class="item-detail-img-small"
@@ -22,9 +32,10 @@
 
         <div class="goodsConfig mt_10">
           <span @click="collect"
-            ><Icon type="ios-heart" :color="isCollected ? '#ed3f14' : '#666'" />{{
-              isCollected ? "已收藏" : "收藏"
-            }}</span
+            ><Icon
+              type="ios-heart"
+              :color="isCollected ? '#ed3f14' : '#666'"
+            />{{ isCollected ? "已收藏" : "收藏" }}</span
           >
         </div>
       </div>
@@ -46,9 +57,11 @@
         <!-- 商品详细 价格、优惠券、促销 -->
         <div class="item-detail-price-row">
           <div class="item-price-left">
-            
             <!-- 秒杀价格 -->
-            <div class="item-price-row" v-if="skuDetail.promotionPrice && promotionMap['SECKILL']">
+            <div
+              class="item-price-row"
+              v-if="skuDetail.promotionPrice && promotionMap['SECKILL']"
+            >
               <p>
                 <span class="item-price-title" v-if="promotionMap['SECKILL']"
                   >秒 &nbsp;杀&nbsp;价</span
@@ -63,10 +76,34 @@
             </div>
             <!-- 商品原价 -->
             <div class="item-price-row" v-else>
-              <p>
-                <span class="item-price-title">价 &nbsp;&nbsp;&nbsp;&nbsp;格</span>
-                <span class="item-price">{{ skuDetail.price | unitPrice("￥") }}</span>
-              </p>
+
+              <!-- 批发价格 -->
+              <div v-if="wholesaleNum && wholesaleNum.length">
+                <div class="flex">
+                  <div class="item-price-title">
+                    价 &nbsp;&nbsp;&nbsp;&nbsp;格
+                  </div>
+
+                  <div v-for="(item,index) in wholesalePrice" :key="index" class="item-price item-num">{{
+                    item | unitPrice("￥")
+                  }}</div>
+                </div>
+                <div class="flex">
+                  <div class="item-price-title">起 批 量</div>
+                  <div v-for="(item,index) in wholesaleNum" :key="index" class="item-num item-price-num">{{item}}{{skuDetail.goodsUnit}}</div>
+
+                </div>
+              </div>
+
+              <!-- 普通价格 -->
+              <div v-else>
+                <span class="item-price-title"
+                  >价 &nbsp;&nbsp;&nbsp;&nbsp;格</span
+                >
+                <span class="item-price">{{
+                  skuDetail.price | unitPrice("￥")
+                }}</span>
+              </div>
             </div>
             <!-- 优惠券展示 -->
             <div class="item-price-row" v-if="promotionMap['COUPON'].length">
@@ -82,7 +119,9 @@
                     >满{{ item.consumeThreshold }}减{{ item.price }}</span
                   >
                   <span v-if="item.couponType == 'DISCOUNT'"
-                    >满{{ item.consumeThreshold }}打{{ item.couponDiscount }}折</span
+                    >满{{ item.consumeThreshold }}打{{
+                      item.couponDiscount
+                    }}折</span
                   >
                 </span>
               </p>
@@ -90,7 +129,9 @@
             <!-- 满减展示 -->
             <div class="item-price-row" v-if="promotionMap['FULL_DISCOUNT']">
               <p>
-                <span class="item-price-title">促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</span>
+                <span class="item-price-title"
+                  >促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</span
+                >
                 <span class="item-promotion">满减</span>
                 <span
                   class="item-desc-pintuan"
@@ -101,7 +142,10 @@
                 >
                 <span
                   class="item-desc-pintuan"
-                  v-if="promotionMap['FULL_DISCOUNT'].fullRate && promotionMap['FULL_DISCOUNT'].fullRateFlag"
+                  v-if="
+                    promotionMap['FULL_DISCOUNT'].fullRate &&
+                    promotionMap['FULL_DISCOUNT'].fullRateFlag
+                  "
                   >满{{ promotionMap["FULL_DISCOUNT"].fullMoney }}元，立享{{
                     promotionMap["FULL_DISCOUNT"].fullRate
                   }}折</span
@@ -113,23 +157,34 @@
             <div class="item-remarks-sum">
               <p>累计评价</p>
               <p>
-                <span class="item-remarks-num">{{ skuDetail.commentNum || 0 }} 条</span>
+                <span class="item-remarks-num"
+                  >{{ skuDetail.commentNum || 0 }} 条</span
+                >
               </p>
             </div>
           </div>
         </div>
         <!-- 选择颜色 -->
-        <div class="item-select" v-for="(sku, index) in formatList" :key="sku.name">
+        <div
+          class="item-select"
+          v-for="(sku, index) in formatList"
+          :key="sku.name"
+        >
           <div class="item-select-title">
             <p>{{ sku.name }}</p>
           </div>
           <div class="item-select-column">
-            <div class="item-select-row" v-for="item in sku.values" :key="item.value">
+            <div
+              class="item-select-row"
+              v-for="item in sku.values"
+              :key="item.value"
+            >
               <div
                 class="item-select-box"
                 @click="select(index, item.value)"
                 :class="{
-                  'item-select-box-active': item.value === currentSelceted[index],
+                  'item-select-box-active':
+                    item.value === currentSelceted[index],
                 }"
               >
                 <div class="item-select-intro">
@@ -158,7 +213,9 @@
           </div>
           <div
             class="item-select"
-            v-if="skuDetail.goodsType !== 'VIRTUAL_GOODS' && skuDetail.weight !== 0"
+            v-if="
+              skuDetail.goodsType !== 'VIRTUAL_GOODS' && skuDetail.weight !== 0
+            "
           >
             <div class="item-select-title">
               <p>重量</p>
@@ -224,13 +281,27 @@ export default {
       default: null,
     },
   },
+  watch: {
+    detail: {
+      handler(val) {
+        this.skuDetail = val.data;
+        this.wholesaleList = val.wholesaleList
+        this.swiperGoodsImg();
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
   data() {
     return {
+      wholesaleList:[],
       count: 1, // 商品数量
       imgIndex: 0, // 展示图片下标
       currentSelceted: [], // 当前商品sku
       imgList: [{ url: "" }], // 商品图片列表
-      skuDetail: this.detail.data, // sku详情
+      skuDetail: {
+        specList: [],
+      }, // sku详情
       goodsSpecList: this.detail.specs, // 商品spec
       promotionMap: {
         // 活动状态
@@ -242,9 +313,18 @@ export default {
       loading: false, // 立即购买loading
       loading1: false, // 加入购物车loading
       isCollected: false, // 是否收藏
+
     };
   },
   components: { PicZoom, Promotion },
+  computed: {
+    wholesalePrice(key){
+      return this.wholesaleList.length ? this.wholesaleList.map(item=>{ return item.price }) :[]
+    },
+    wholesaleNum(key){
+      return this.wholesaleList.length ? this.wholesaleList.map(item=>{ return item.num }) :[]
+    }
+  },
   methods: {
     select(index, value) {
       // 选择规格
@@ -262,9 +342,9 @@ export default {
           return i;
         }
       });
-      this.$router.push({
-        path: "/goodsDetail",
-        query: { skuId: selectedSkuId.skuId, goodsId: this.skuDetail.goodsId },
+      this.$emit("handleClickSku", {
+        skuId: selectedSkuId.skuId,
+        goodsId: this.skuDetail.goodsId,
       });
     },
 
@@ -307,7 +387,10 @@ export default {
         .then((res) => {
           this.loading1 = false;
           if (res.success) {
-            this.$router.push({ path: "/pay", query: { way: params.cartType } });
+            this.$router.push({
+              path: "/pay",
+              query: { way: params.cartType },
+            });
           } else {
             this.$Message.warning(res.message);
           }
@@ -405,6 +488,13 @@ export default {
         }
       }
     },
+    swiperGoodsImg() {
+      this.skuDetail.specList.forEach((e) => {
+        if (e.specName === "images") {
+          this.imgList = e.specImage;
+        }
+      });
+    },
   },
   mounted() {
     // 用户登录才会判断是否收藏
@@ -415,11 +505,7 @@ export default {
         }
       });
     }
-    this.detail.data.specList.forEach((e) => {
-      if (e.specName === "images") {
-        this.imgList = e.specImage;
-      }
-    });
+
     this.formatSku(this.goodsSpecList);
     this.promotion();
     document.title = this.skuDetail.goodsName;
@@ -433,57 +519,25 @@ export default {
   width: 175px;
   margin-left: 30px;
 }
+.flex{
+  display: flex;
+}
 .inventory {
   padding-left: 4px;
 }
 
-.global_color {
-  text-align: center;
-}
-
-.see-Img {
-  width: 100%;
-  height: 175px;
-}
-
-.see-Item {
-  > p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-
-.Report {
-  color: $theme_color !important;
-}
 
 .wrapper {
   @include white_background_color();
 }
-.item-sale-flex {
-  width: 29%;
-  padding: 0 3%;
+
+.item-num{
+  text-align:center;
+  width: 100px;
 }
-.item-sale {
-  margin: 10px 0;
-  > h3 {
-    width: 13%;
-    text-align: center;
-    font-size: 20px;
-    line-height: 60px;
-    box-sizing: border-box;
-    border-right: 1px solid $border_color;
-  }
-  height: 60px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  border: 1px solid $border_color;
-  background: #f7f7f7;
+.item-price-num{
+  font-size: 16px;
+  color: #666;
 }
 
 .item-detail-show {

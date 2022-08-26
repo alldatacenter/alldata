@@ -52,8 +52,12 @@
               />
               <span class="describe">消费达到当前金额可以参与优惠</span>
             </FormItem>
-            <FormItem label="优惠方式">
-              <RadioGroup type="button" button-style="solid" v-model="form.discountType">
+            <FormItem label="赠送优惠券">
+              <RadioGroup
+                type="button"
+                button-style="solid"
+                v-model="form.discountType"
+              >
                 <Radio label="fullMinusFlag" disabled>减现金</Radio>
                 <Radio label="fullRateFlag" disabled>打折</Radio>
               </RadioGroup>
@@ -88,24 +92,29 @@
               <span class="describe">优惠折扣为0-10之间数字，可有一位小数</span>
             </FormItem>
             <FormItem label="额外赠送">
-              <Checkbox v-model="form.freeFreightFlag" disabled>免邮费</Checkbox>&nbsp;
-              <Checkbox v-model="form.couponFlag" disabled>送优惠券</Checkbox>&nbsp;
+              <Checkbox v-model="form.freeFreightFlag" disabled>免邮费</Checkbox
+              >&nbsp;
+              <Checkbox v-model="form.couponFlag" disabled>送优惠券</Checkbox
+              >&nbsp;
               <Checkbox v-model="form.giftFlag" disabled>送赠品</Checkbox>&nbsp;
               <Checkbox v-model="form.pointFlag" disabled>送积分</Checkbox>
             </FormItem>
             <FormItem v-if="form.couponFlag" label="赠送优惠券" prop="couponId">
               <Select
                 v-model="form.couponId"
+                :disabled="form.promotionStatus != 'NEW'"
                 filterable
                 :remote-method="getCouponList"
                 placeholder="输入优惠券名称搜索"
-                disabled
                 :loading="couponLoading"
-                style="width: 260px"
+                style="width: 280px"
               >
-                <Option v-for="item in couponList" :value="item.id" :key="item.id">{{
-                  item.couponName
-                }}</Option>
+                <Option
+                  v-for="item in couponList"
+                  :value="item.id"
+                  :key="item.id"
+                  >{{ item.couponName }}</Option
+                >
               </Select>
             </FormItem>
             <FormItem v-if="form.giftFlag" label="赠品" prop="giftId">
@@ -118,22 +127,37 @@
                 :loading="giftLoading"
                 style="width: 260px"
               >
-                <Option v-for="item in giftList" :value="item.id" :key="item.id">{{
-                  item.goodsName
-                }}</Option>
+                <Option
+                  v-for="item in giftList"
+                  :value="item.id"
+                  :key="item.id"
+                  >{{ item.goodsName }}</Option
+                >
               </Select>
             </FormItem>
             <FormItem v-if="form.pointFlag" label="赠积分" prop="point">
-              <Input v-model="form.point" type="number" disabled style="width: 260px" />
+              <Input
+                v-model="form.point"
+                type="number"
+                disabled
+                style="width: 260px"
+              />
             </FormItem>
             <FormItem label="使用范围" prop="scopeType">
-              <RadioGroup type="button" button-style="solid" v-model="form.scopeType">
+              <RadioGroup
+                type="button"
+                button-style="solid"
+                v-model="form.scopeType"
+              >
                 <Radio label="ALL" disabled>全品类</Radio>
                 <Radio label="PORTION_GOODS" disabled>指定商品</Radio>
               </RadioGroup>
             </FormItem>
 
-            <FormItem style="width: 100%" v-if="form.scopeType == 'PORTION_GOODS'">
+            <FormItem
+              style="width: 100%"
+              v-if="form.scopeType == 'PORTION_GOODS'"
+            >
               <Table border :columns="columns" :data="form.promotionGoodsList">
                 <template slot-scope="{ row }" slot="goodsName">
                   <div>
@@ -165,7 +189,10 @@
             </FormItem>
 
             <div>
-              <Button @click="$router.push({ name: 'promotions/full-discount' })">返回</Button>
+              <Button
+                @click="$router.push({ name: 'promotions/full-discount' })"
+                >返回</Button
+              >
             </div>
           </div>
         </div>
@@ -211,7 +238,10 @@ export default {
           key: "price",
           minWidth: 40,
           render: (h, params) => {
-            return h("div", this.$options.filters.unitPrice(params.row.price, "￥"));
+            return h(
+              "div",
+              this.$options.filters.unitPrice(params.row.price, "￥")
+            );
           },
         },
         {
@@ -260,6 +290,8 @@ export default {
       let params = {
         pageSize: 10,
         pageNumber: 0,
+        getType: "ACTIVITY",
+        storeId: "",
         couponName: query,
         promotionStatus: "START",
       };
@@ -276,7 +308,10 @@ export default {
       let params = {
         pageSize: 10,
         pageNumber: 1,
-        goodsName: query,
+        id: query === this.form.giftId ? this.form.giftId : null,
+        goodsName: query === this.form.giftId ? null : query,
+        marketEnable: "UPPER",
+        authFlag: "PASS"
       };
       this.giftLoading = true;
       getGoodsSkuData(params).then((res) => {

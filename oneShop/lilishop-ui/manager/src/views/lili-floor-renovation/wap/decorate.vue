@@ -217,6 +217,23 @@
               <Input v-model="item.bk_color" />
             </div>
           </div>
+          <div
+            class="decorate-view"
+            v-if="item.title != void 0 && !res.notTitle && res.type == 'notice'"
+          >
+            <div class="decorate-view-title">方向</div>
+            <div class="decorate-view">
+              <Select
+                style="width: 200px"
+                @on-change="changeDirection($event, item)"
+                v-model="item.direction"
+              >
+                {{ item.direction }}
+                <Option label="横向" value="horizontal"></Option>
+                <Option label="纵向" value="vertical"></Option>
+              </Select>
+            </div>
+          </div>
 
           <!-- 填写标题 -->
           <div
@@ -316,6 +333,7 @@
                 <span v-if="item.url.___type == 'other'">
                   {{ item.url.title }}</span
                 >
+
                 <!-- 当选择完活动之后的其他回调 -->
                 <span v-if="item.url.___type == 'marketing'">
                   <span v-if="item.url.___promotion == 'SECKILL'"> 秒杀 </span>
@@ -345,7 +363,7 @@
           <!-- 链接地址-->
           <div
             class="decorate-view"
-            v-if="item.url && item.url.___type == 'other'"
+            v-if="item.url && item.url.url && item.url.___type == 'other'"
           >
             <div class="decorate-view-title">外部链接</div>
             <div>
@@ -353,7 +371,7 @@
             </div>
           </div>
 
-          <p v-if="item.url && item.url.___type == 'other'">
+          <p v-if="item.url && item.url.url && item.url.___type == 'other'">
             (如非同域名下，则在小程序与公众号中无效)
           </p>
         </div>
@@ -364,10 +382,11 @@
       v-if="
         res.type != 'tpl_ad_list' &&
         res.type != 'tpl_activity_list' &&
-        !res.notAdd
+        !res.notAdd &&
+        res.direction != 'horizontal'
       "
       type="primary"
-      @click="addDecorate(res.type)"
+      @click="addDecorate(res.type, res)"
       ghost
       >添加</Button
     >
@@ -397,7 +416,9 @@ export default {
       picModelFlag: false, //图片选择器
       linkType: "goods", // dialog弹窗口类型
       styleFlag: false, //广告魔方开关
-      textAlign: this.res.options.list[0].textAlign || "center", //文字对齐方式
+      textAlign: this.res.options.list[0]
+        ? this.res.options.list[0].textAlign
+        : "center", //文字对齐方式
       promotionsFlag: false, //广告魔方开关
       selectedLinkIndex: "", //选择链接的索引
       modelData, // 装修数据
@@ -414,6 +435,14 @@ export default {
   },
   props: ["res"],
   methods: {
+    // 改变横纵切换title内容
+    changeDirection(val, data) {
+      if (val == "horizontal") {
+        const props = { ...data };
+        data.title = [];
+        data.title.push(props.title[0]);
+      }
+    },
     // 选择风格
     selectStyle() {
       this.styleFlag = !this.styleFlag;
@@ -455,6 +484,7 @@ export default {
     },
     // 打开图片选择器
     liliDialogFlag(flag) {
+      this.$refs.liliDialog.clearGoodsSelected();
       this.$refs.liliDialog.goodsFlag = flag;
       this.$refs.liliDialog.flag = true;
     },
@@ -481,18 +511,22 @@ export default {
       });
     },
     //添加设置
-    addDecorate(type) {
+    addDecorate(type, data) {
       if (type === "notice") {
-        this.res.options.list[0].title.push({
-          content: "",
-        });
+        if (data.options.list[0].direction == "vertical") {
+          this.res.options.list[0].title.push({
+            content: "",
+          });
+        } else {
+          this.$Message.error("仅纵向支持多添加");
+        }
       } else {
         let way = {
           img: "https://picsum.photos/id/264/200/200",
           title: "标题",
           link: "",
           url: "",
-          size: this.res.options.list[0]?.size,
+          size: this.res.options.list[0].size,
         };
         this.res.options.list.push(way);
       }

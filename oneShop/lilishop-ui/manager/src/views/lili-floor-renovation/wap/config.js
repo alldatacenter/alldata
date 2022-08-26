@@ -532,6 +532,7 @@ export const modelData = [
           title: [{context: "这是一条公告"}],
           color: "#666",
           bk_color: "#FFF",
+          direction:"horizontal",
           img: 'http://files.sxcfx.cn/upload/20220318/71e5d27aca82aeedf647052e1e4ceaaa.png'
         }
       ]

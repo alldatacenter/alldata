@@ -6,7 +6,7 @@
           <Tabs :animated="false" @on-click="tabClick">
             <TabPane label="商品介绍">
               <div class="item-intro-img" ref="itemIntroGoods">
-                <div v-html="skuDetail.intro" v-if="skuDetail.intro"></div>
+                <div class="item-intro" v-html="skuDetail.intro" v-if="skuDetail.intro"></div>
                 <div v-else style="margin:20px;">暂无商品介绍</div>
               </div>
             </TabPane>
@@ -214,13 +214,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.item-intro{
+  >img{
+    display:block;
+  }
+}
 /***************商品详情介绍和推荐侧边栏开始***************/
 .item-intro-show{
 
   width: 1200px;
   margin: 15px auto;
   display: flex;
-  overflow: scroll;
   overflow-x: hidden;
   flex-direction: row;
 
@@ -305,6 +309,9 @@ export default {
 .item-intro-img {
   width: 100%;
   min-height: 300px;
+  /deep/ img{
+    margin:0 auto;
+  }
 }
 .item-intro-img img{
   max-width: 1000px;

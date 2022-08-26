@@ -25,11 +25,11 @@
           <Button @click="onClickImg('buyerSideLogo')">选择图片</Button>
         </div>
       </FormItem>
-      <FormItem label="商家端Logo" prop="sellerSideLogo">
+      <FormItem label="商家端Logo" prop="storeSideLogo">
         <div class="label-item-upload">
-          <img v-if="formValidate.sellerSideLogo" class="img" :src="formValidate.sellerSideLogo" />
+          <img v-if="formValidate.storeSideLogo" class="img" :src="formValidate.storeSideLogo" />
           <img v-else class="img" src="../../../../assets/emptyImg.png" alt="">
-          <Button @click="onClickImg('sellerSideLogo')">选择图片</Button>
+          <Button @click="onClickImg('storeSideLogo')">选择图片</Button>
         </div>
       </FormItem>
 
@@ -72,7 +72,7 @@ export default {
         buyerSideLogo: "",
         domainLogo: "",
         icp: "",
-        sellerSideLogo: "",
+        storeSideLogo: "",
         siteName: "",
         staticPageAddress: "",
         staticPageWapAddress: "",

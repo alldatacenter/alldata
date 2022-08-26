@@ -32,7 +32,6 @@ import cn.lili.modules.promotion.service.PromotionGoodsService;
 import cn.lili.modules.promotion.service.PromotionService;
 import cn.lili.modules.search.entity.dos.EsGoodsIndex;
 import cn.lili.modules.search.service.EsGoodsIndexService;
-import cn.lili.modules.store.service.StoreService;
 import cn.lili.rocketmq.tags.GoodsTagsEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.common.message.MessageExt;
@@ -204,13 +203,8 @@ public class GoodsMessageListener implements RocketMQListener<MessageExt> {
                 try {
                     String goodsIdsJsonStr = new String(messageExt.getBody());
                     for (String goodsId : JSONUtil.toList(goodsIdsJsonStr, String.class)) {
-                        Goods goodsById = this.goodsService.getById(goodsId);
-                        if (goodsById != null) {
-                            this.deleteGoods(goodsById);
-                            goodsIndexService.deleteIndex(MapUtil.builder(new HashMap<String, Object>()).put("goodsId", goodsId).build());
-                        }
+                        goodsIndexService.deleteIndex(MapUtil.builder(new HashMap<String, Object>()).put("goodsId", goodsId).build());
                     }
-
                 } catch (Exception e) {
                     log.error("删除商品索引事件执行异常，商品信息: " + new String(messageExt.getBody()), e);
                 }
@@ -259,14 +253,17 @@ public class GoodsMessageListener implements RocketMQListener<MessageExt> {
         try {
             log.info("更新商品索引促销信息: {}", promotionsJsonStr);
             JSONObject jsonObject = JSONUtil.parseObj(promotionsJsonStr);
+            // 转换为详细的促销信息（注：促销信息必须继承自 BasePromotions，且必须保证派生类存在与sdk包下）
             BasePromotions promotions = (BasePromotions) jsonObject.get("promotions",
                     ClassLoaderUtil.loadClass(jsonObject.get("promotionsType").toString()));
+            // 获取促销唯一key,由 促销类型 + 促销id 组成
             String esPromotionKey = jsonObject.get("esPromotionKey").toString();
             if (PromotionsScopeTypeEnum.PORTION_GOODS.name().equals(promotions.getScopeType())) {
                 PromotionGoodsSearchParams searchParams = new PromotionGoodsSearchParams();
                 searchParams.setPromotionId(promotions.getId());
                 List<PromotionGoods> promotionGoodsList = this.promotionGoodsService.listFindAll(searchParams);
                 List<String> skuIds = promotionGoodsList.stream().map(PromotionGoods::getSkuId).collect(Collectors.toList());
+                // 更新商品索引促销信息（删除原索引中相关的促销信息，更新索引中促销信息）
                 this.goodsIndexService.deleteEsGoodsPromotionByPromotionKey(skuIds, esPromotionKey);
                 this.goodsIndexService.updateEsGoodsIndexByList(promotionGoodsList, promotions, esPromotionKey);
             } else if (PromotionsScopeTypeEnum.PORTION_GOODS_CATEGORY.name().equals(promotions.getScopeType())) {
@@ -274,10 +271,10 @@ public class GoodsMessageListener implements RocketMQListener<MessageExt> {
                 searchParams.setCategoryPath(promotions.getScopeId());
                 List<GoodsSku> goodsSkuByList = this.goodsSkuService.getGoodsSkuByList(searchParams);
                 List<String> skuIds = goodsSkuByList.stream().map(GoodsSku::getId).collect(Collectors.toList());
+                // 更新商品索引促销信息（删除原索引中相关的促销信息，更新索引中促销信息）
                 this.goodsIndexService.deleteEsGoodsPromotionByPromotionKey(skuIds, esPromotionKey);
                 this.goodsIndexService.updateEsGoodsIndexPromotions(skuIds, promotions, esPromotionKey);
             } else if (PromotionsScopeTypeEnum.ALL.name().equals(promotions.getScopeType())) {
-                this.goodsIndexService.deleteEsGoodsPromotionByPromotionKey(esPromotionKey);
                 this.goodsIndexService.updateEsGoodsIndexAllByList(promotions, esPromotionKey);
             }
         } catch (Exception e) {
@@ -451,6 +448,7 @@ public class GoodsMessageListener implements RocketMQListener<MessageExt> {
             distributionGoodsService.removeById(distributionGoods.getId());
         }
     }
+
     /**
      * 商品购买完成
      * 1.更新商品购买数量

@@ -1,10 +1,9 @@
 <template>
   <div class="layout">
     <Form ref="formValidate" :label-width="150" label-position="right" :model="formValidate" :rules="ruleValidate">
-      <FormItem label="消费1元赠送积分" prop="money">
-        <Input type="number" v-model="formValidate.money">
+      <FormItem label="消费1元赠送积分" prop="consumer">
+        <Input type="number" v-model="formValidate.consumer">
           <span slot="append">积分</span>
-          <!--          <span slot="append">人民币</span>-->
         </Input>
 
       </FormItem>

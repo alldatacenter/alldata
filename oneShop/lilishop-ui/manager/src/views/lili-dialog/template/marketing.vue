@@ -341,6 +341,7 @@ export default {
             title: "优惠券",
             methodsed: () => {
               this.showPromotionList = [];
+              this.activeColumns = this.pintuanColumns;
               this.sortGoods("COUPON");
             },
           };
@@ -349,6 +350,7 @@ export default {
             title: "积分商品",
             methodsed: () => {
               this.showPromotionList = [];
+              this.activeColumns = this.pintuanColumns;
               this.sortGoods("POINTS_GOODS");
             },
           };

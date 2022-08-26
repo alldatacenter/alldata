@@ -127,14 +127,7 @@ export const otherRouter = {
       title: "发货",
       name: "export-order-deliver",
       component: () => import("@/views/order/order/exportOrderDeliver.vue")
-    },
-    {
-      path: "order-detail",
-      title: "订单详情",
-      name: "order-detail",
-      component: () => import("@/views/order/order/orderDetail.vue")
     }
-
     // {
     //   path: "/*",
     //   name: "error-404",
