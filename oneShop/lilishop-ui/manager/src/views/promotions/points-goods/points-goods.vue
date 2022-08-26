@@ -105,7 +105,7 @@
         </template>
         <template slot-scope="{ row }" slot="action">
           <Button
-            v-if="row.promotionStatus !== 'START'"
+            v-if="row.promotionStatus === 'CLOSE' || row.promotionStatus === 'NEW'"
             type="info"
             size="small"
             @click="edit(row.id)"
@@ -125,6 +125,7 @@
             type="error"
             size="small"
             @click="close(row.id)"
+            style="margin-right: 5px"
             >删除</Button
           >
         </template>
@@ -168,7 +169,7 @@ export default {
         // 搜索框初始化对象
         pageNumber: 1, // 当前页数
         pageSize: 10, // 页面大小
-        sort: "create_time",
+        sort: "createTime",
         order: "desc", // 默认排序方式
       },
       statusList: [

@@ -13,7 +13,6 @@ import cn.lili.modules.goods.entity.enums.GoodsStatusEnum;
 import cn.lili.modules.goods.entity.enums.GoodsTypeEnum;
 import cn.lili.mybatis.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xkcoding.http.util.StringUtil;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -148,7 +147,6 @@ public class Goods extends BaseEntity {
     private String goodsType;
 
     @ApiModelProperty(value = "商品参数json", hidden = true)
-    @JsonIgnore
     private String params;
 
 
@@ -196,6 +194,12 @@ public class Goods extends BaseEntity {
             if (!sku.containsKey("quantity") || StringUtil.isEmpty(sku.get("quantity").toString()) || Convert.toInt(sku.get("quantity").toString()) < 0) {
                 throw new ServiceException(ResultCode.GOODS_SKU_QUANTITY_ERROR);
             }
+            sku.values().forEach(i -> {
+                if (CharSequenceUtil.isBlank(i.toString())) {
+                    throw new ServiceException(ResultCode.MUST_HAVE_GOODS_SKU_VALUE);
+                }
+            });
+
 
         }
     }

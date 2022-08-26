@@ -38,7 +38,7 @@
       <div>
         <h3 class="ml_10" style="padding:10px;">结算详细</h3>
         <div class="bill-detail-price">
-         
+
           <span>
             <p>积分结算金额</p>
             <p class="increase-color">
@@ -444,6 +444,7 @@ export default {
       tthis.getRefund();
     },
     clickTabs(index) {
+      this.orderParam.pageNumber = 1
       if (index == 1) {
         this.orderParam.flowType = "REFUND";
         this.getRefund();

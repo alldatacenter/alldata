@@ -563,6 +563,8 @@ export default {
           stroke: "#fff",
           lineWidth: 1,
         });
+         this.orderChart.area().position("createTime*price").color("title").shape("smooth");
+
       this.orderChart.render();
     },
 

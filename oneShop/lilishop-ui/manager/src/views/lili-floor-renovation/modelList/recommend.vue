@@ -108,8 +108,6 @@
       width="800"
       :z-index="100"
       :mask-closable="false"
-      
-      
     >
       <div class="modal-top-advert">
         <div>
@@ -144,7 +142,12 @@
           建议尺寸：<span>{{ selected.size }}</span>
         </div>
         <div>
-          图片链接：<span>{{ selected.url }}</span>
+          图片链接：<Input
+            class="outsideUrl"
+            v-model="selected.url"
+            :disabled="!!selected.type && selected.type !== 'link'"
+            placeholder="https://"
+          />
           <Button
             size="small"
             class="ml_10"
@@ -170,14 +173,17 @@
       width="800"
       :z-index="100"
       :mask-closable="false"
-      
-      
     >
       <div class="modal-top-advert">
         <div><span>主标题：</span><Input v-model="selected.title" /></div>
         <div><span>副标题：</span><Input v-model="selected.secondTitle" /></div>
         <div>
-          <span>副标题链接：{{ selected.url }}</span
+          <span
+            >副标题链接：<Input
+              class="outsideUrl"
+              v-model="selected.url"
+              :disabled="!!selected.type && selected.type !== 'link'"
+              placeholder="https://" /></span
           ><Button
             size="small"
             class="ml_10"
@@ -200,7 +206,11 @@
     ></liliDialog>
     <!-- 选择图片 -->
     <Modal width="1200px" v-model="picModelFlag" footer-hide>
-      <ossManage @callback="callbackSelected" :isComponent="true" ref="ossManage" />
+      <ossManage
+        @callback="callbackSelected"
+        :isComponent="true"
+        ref="ossManage"
+      />
     </Modal>
   </div>
 </template>
@@ -242,11 +252,13 @@ export default {
     },
     handleSelectGoods(item) {
       // 调起选择商品
-      this.$refs.liliDialog.open('goods', 'single')
+      this.$refs.liliDialog.open("goods", "single");
     },
     // 选择链接回调
     selectedLink(val) {
       this.selected.url = this.$options.filters.formatLinkType(val);
+      this.selected.type =
+        val.___type === "other" && val.url === "" ? "link" : "other";
     },
     // 选择商品回调
     selectedGoodsData(val) {

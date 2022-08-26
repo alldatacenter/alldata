@@ -1,27 +1,65 @@
 <template>
   <div>
     <Card>
-      <Form ref="searchForm" @keydown.enter.native="handleSearch" :model="searchForm" inline :label-width="70" class="search-form">
+      <Form
+        ref="searchForm"
+        @keydown.enter.native="handleSearch"
+        :model="searchForm"
+        inline
+        :label-width="70"
+        class="search-form"
+      >
         <Form-item label="订单号" prop="orderSn">
-          <Input type="text" v-model="searchForm.orderSn" placeholder="请输入订单号" clearable style="width: 160px" />
+          <Input
+            type="text"
+            v-model="searchForm.orderSn"
+            placeholder="请输入订单号"
+            clearable
+            style="width: 160px"
+          />
         </Form-item>
         <Form-item label="会员名称" prop="buyerName">
-          <Input type="text" v-model="searchForm.buyerName" placeholder="请输入会员名称" clearable style="width: 160px" />
+          <Input
+            type="text"
+            v-model="searchForm.buyerName"
+            placeholder="请输入会员名称"
+            clearable
+            style="width: 160px"
+          />
         </Form-item>
 
         <Form-item label="订单类型" prop="orderType">
-          <Select v-model="searchForm.orderType" placeholder="请选择" clearable style="width: 160px">
+          <Select
+            v-model="searchForm.orderPromotionType"
+            placeholder="请选择"
+            clearable
+            style="width: 160px"
+          >
             <Option value="NORMAL">普通订单</Option>
             <Option value="PINTUAN">拼团订单</Option>
             <Option value="GIFT">赠品订单</Option>
-            <Option value="VIRTUAL">核验订单</Option>
+            <Option value="POINTS">积分订单</Option>
+            <Option value="KANJIA">砍价订单</Option>
           </Select>
         </Form-item>
         <Form-item label="下单时间">
-          <DatePicker v-model="selectDate" type="datetimerange" format="yyyy-MM-dd" clearable @on-change="selectDateRange" placeholder="选择起始时间" style="width: 160px"></DatePicker>
+          <DatePicker
+            v-model="selectDate"
+            type="datetimerange"
+            format="yyyy-MM-dd"
+            clearable
+            @on-change="selectDateRange"
+            placeholder="选择起始时间"
+            style="width: 160px"
+          ></DatePicker>
         </Form-item>
         <Form-item label="订单状态" prop="orderStatus">
-          <Select v-model="searchForm.orderStatus" placeholder="请选择" clearable style="width: 160px">
+          <Select
+            v-model="searchForm.orderStatus"
+            placeholder="请选择"
+            clearable
+            style="width: 160px"
+          >
             <Option value="UNPAID">未付款</Option>
             <Option value="PAID">已付款</Option>
             <Option value="UNDELIVERED">待发货</Option>
@@ -31,24 +69,50 @@
             <Option value="CANCELLED">已取消</Option>
           </Select>
         </Form-item>
-        <Button @click="handleSearch" type="primary" icon="ios-search" class="search-btn">搜索</Button>
+        <Button
+          @click="handleSearch"
+          type="primary"
+          icon="ios-search"
+          class="search-btn"
+          >搜索</Button
+        >
       </Form>
       <div>
-        <download-excel class="export-excel-wrapper" :data="data" :fields="fields" :fetch="exportOrder" name="商品订单.xls">
-          <Button type="info" class="export">
-            导出订单
-          </Button>
+        <download-excel
+          class="export-excel-wrapper"
+          :data="data"
+          :fields="fields"
+          :fetch="exportOrder"
+          name="商品订单.xls"
+        >
+          <Button type="info" class="export"> 导出订单 </Button>
         </download-excel>
       </div>
 
-      <Table :loading="loading" border :columns="columns" :data="data" ref="table" sortable="custom"  ></Table>
+      <Table
+        :loading="loading"
+        border
+        :columns="columns"
+        :data="data"
+        ref="table"
+        sortable="custom"
+      ></Table>
 
       <Row type="flex" justify="end" class="mt_10">
-        <Page :current="searchForm.pageNumber" :total="total" :page-size="searchForm.pageSize" @on-change="changePage" @on-page-size-change="changePageSize" :page-size-opts="[10, 20, 50]" size="small"
-          show-total show-elevator show-sizer></Page>
+        <Page
+          :current="searchForm.pageNumber"
+          :total="total"
+          :page-size="searchForm.pageSize"
+          @on-change="changePage"
+          @on-page-size-change="changePageSize"
+          :page-size-opts="[10, 20, 50]"
+          size="small"
+          show-total
+          show-elevator
+          show-sizer
+        ></Page>
       </Row>
     </Card>
-
   </div>
 </template>
 
@@ -139,17 +203,29 @@ export default {
         },
         {
           title: "订单类型",
-          key: "orderType",
+          key: "orderPromotionType",
           width: 120,
           render: (h, params) => {
-            if (params.row.orderType == "NORMAL") {
-              return h("div", [h("tag", {props: {color: "blue"}}, "普通订单")]);
-            } else if (params.row.orderType == "PINTUAN") {
-              return h("div", [h("tag", {props: {color: "volcano"}}, "拼团订单")]);
-            } else if (params.row.orderType == "GIFT") {
-              return h("div", [h("tag", {props: {color: "green"}}, "赠品订单")]);
-            } else if (params.row.orderType == "VIRTUAL") {
-              return h("div", [h("tag", {props: {color: "geekblue"}}, "核验订单")]);
+            if (params.row.orderPromotionType == "NORMAL") {
+              return h("div", [
+                h("tag", { props: { color: "blue" } }, "普通订单"),
+              ]);
+            } else if (params.row.orderPromotionType == "PINTUAN") {
+              return h("div", [
+                h("tag", { props: { color: "volcano" } }, "拼团订单"),
+              ]);
+            } else if (params.row.orderPromotionType == "GIFT") {
+              return h("div", [
+                h("tag", { props: { color: "green" } }, "赠品订单"),
+              ]);
+            } else if (params.row.orderPromotionType == "POINTS") {
+              return h("div", [
+                h("tag", { props: { color: "geekblue" } }, "积分订单"),
+              ]);
+            } else if (params.row.orderPromotionType == "KANJIA") {
+              return h("div", [
+                h("tag", { props: { color: "pink" } }, "砍价订单"),
+              ]);
             }
           },
         },
@@ -179,19 +255,33 @@ export default {
           minWidth: 100,
           render: (h, params) => {
             if (params.row.orderStatus == "UNPAID") {
-              return h("div", [h("tag", {props: {color: "magenta"}}, "未付款")]);
+              return h("div", [
+                h("tag", { props: { color: "magenta" } }, "未付款"),
+              ]);
             } else if (params.row.orderStatus == "PAID") {
-              return h("div", [h("tag", {props: {color: "blue"}}, "已付款")]);
+              return h("div", [
+                h("tag", { props: { color: "blue" } }, "已付款"),
+              ]);
             } else if (params.row.orderStatus == "UNDELIVERED") {
-              return h("div", [h("tag", {props: {color: "geekblue"}}, "待发货")]);
+              return h("div", [
+                h("tag", { props: { color: "geekblue" } }, "待发货"),
+              ]);
             } else if (params.row.orderStatus == "DELIVERED") {
-              return h("div", [h("tag", {props: {color: "cyan"}}, "已发货")]);
+              return h("div", [
+                h("tag", { props: { color: "cyan" } }, "已发货"),
+              ]);
             } else if (params.row.orderStatus == "COMPLETED") {
-              return h("div", [h("tag", {props: {color: "green"}}, "已完成")]);
+              return h("div", [
+                h("tag", { props: { color: "green" } }, "已完成"),
+              ]);
             } else if (params.row.orderStatus == "TAKE") {
-              return h("div", [h("tag", {props: {color: "volcano"}}, "待核验")]);
+              return h("div", [
+                h("tag", { props: { color: "volcano" } }, "待核验"),
+              ]);
             } else if (params.row.orderStatus == "CANCELLED") {
-              return h("div", [h("tag", {props: {color: "red"}}, "已取消")]);
+              return h("div", [
+                h("tag", { props: { color: "red" } }, "已取消"),
+              ]);
             }
           },
         },
@@ -206,11 +296,19 @@ export default {
           align: "center",
           width: 100,
           render: (h, params) => {
-            return  h("Button", {props: {type: "info", size: "small",},
-                style: {marginRight: "5px",},
-                on: {click: () => {this.detail(params.row);},},
-              }, "查看"
-            )
+            return h(
+              "Button",
+              {
+                props: { type: "info", size: "small" },
+                style: { marginRight: "5px" },
+                on: {
+                  click: () => {
+                    this.detail(params.row);
+                  },
+                },
+              },
+              "查看"
+            );
           },
         },
       ],
@@ -269,23 +367,22 @@ export default {
       });
     },
     // 导出订单
-    async exportOrder () {
-      const params = JSON.parse(JSON.stringify(this.searchForm))
+    async exportOrder() {
+      const params = JSON.parse(JSON.stringify(this.searchForm));
       params.pageNumber = 1;
-      params.pageSize = 10000
-      const result = await API_Order.getOrderList(params)
+      params.pageSize = 10000;
+      const result = await API_Order.getOrderList(params);
       if (result.success) {
         if (result.result.records.length === 0) {
-          this.$Message.warning('暂无待发货订单')
-          return []
+          this.$Message.warning("暂无待发货订单");
+          return [];
         } else {
-          return result.result.records
+          return result.result.records;
         }
       } else {
-        this.$Message.warning('导出订单失败，请重试')
+        this.$Message.warning("导出订单失败，请重试");
       }
-      
-    }
+    },
   },
   mounted() {
     this.init();
@@ -299,5 +396,4 @@ export default {
 .export-excel-wrapper {
   display: inline;
 }
-
 </style>

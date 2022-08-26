@@ -387,6 +387,8 @@ export default {
           stroke: "#fff",
           lineWidth: 1,
         });
+        this.orderChart.area().position("createTime*price").color("title").shape("smooth");
+
       this.orderChart.render();
     },
 
@@ -414,12 +416,7 @@ export default {
 
       console.log("pv", data);
       this.pvChart.data(data);
-      this.pvChart.scale({
-        activeQuantity: {
-          range: [0, 1],
-          nice: true,
-        },
-      });
+
       this.pvChart.tooltip({
         showCrosshairs: true,
         shared: true,
@@ -442,6 +439,7 @@ export default {
           stroke: "#fff",
           lineWidth: 1,
         });
+      this.pvChart.area().position("date*pv").color("title").shape("smooth");
 
       this.pvChart.render();
     },
@@ -498,19 +496,14 @@ export default {
 
         lastNum.push({
           date: item.date.substring(5),
-          title: "历史记录",
+          title: "上一周期",
           lastNum: item.lastNum || 0,
           res: item.lastNum || 0,
         });
       });
       let params = [...num, ...lastNum];
       this.historyMemberChart.data(params);
-      this.historyMemberChart.scale({
-        activeQuantity: {
-          range: [0, 1],
-          nice: true,
-        },
-      });
+
       this.historyMemberChart.tooltip({
         showCrosshairs: true,
         shared: true,
@@ -519,15 +512,22 @@ export default {
       this.historyMemberChart
         .line()
         .position("date*res")
-        .color("title", ["#ffaa71", "#398AB9"])
+        .color("title")
         .label("res")
         .shape("smooth");
       this.historyMemberChart
         .point()
         .position("date*res")
-        .color("title", ["#ffaa71", "#398AB9"])
+        .color("title")
         .label("res")
         .shape("circle");
+
+      this.historyMemberChart
+        .area()
+        .position("date*res")
+        .color("title")
+        .shape("smooth");
+
       this.historyMemberChart.render();
     },
     // 初始化信息

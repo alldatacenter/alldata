@@ -73,7 +73,7 @@
             <Button type="info" size="small" @click="view(row)">查看</Button>
             <Button
               type="error"
-              v-if="row.promotionStatus === 'START'"
+              v-if="row.promotionStatus === 'NEW' || row.promotionStatus === 'START'"
               style="margin-left: 5px"
               size="small"
               @click="openOrClose(row)"
@@ -113,7 +113,7 @@ export default {
         // 请求参数
         pageNumber: 1,
         pageSize: 10,
-        sort: "startTime",
+        sort: "createTime",
         order: "desc",
       },
       columns: [

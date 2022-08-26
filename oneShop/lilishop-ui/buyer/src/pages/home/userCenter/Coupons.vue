@@ -72,7 +72,7 @@ export default {
     go (item) { // 根据使用条件跳转商品列表页面
       if (this.params.memberCouponStatus !== 'NEW') return;
 
-      if (item.storeId !== 'platform') {
+      if (item.storeId !== '0') {
         this.$router.push({path: '/merchant', query: {id: item.storeId}})
       } else {
         if (item.scopeType === 'PORTION_GOODS_CATEGORY') {

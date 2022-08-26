@@ -173,6 +173,7 @@ export default {
           stroke: "#fff",
           lineWidth: 1,
         });
+       this.orderChart.area().position("date*pv").color("title").shape("smooth");
 
       this.orderChart.render();
     },

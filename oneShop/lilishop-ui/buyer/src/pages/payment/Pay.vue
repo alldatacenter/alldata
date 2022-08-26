@@ -346,6 +346,16 @@ export default {
               !res.result.checkedSkuList ||
               res.result.checkedSkuList.length === 0
             ) {
+              if (res.result.skuList && res.result.skuList[0]) {
+                this.$Modal.warning({
+                  title: "购物车存在无效商品！",
+                  content:
+                    "[" +
+                    res.result.skuList[0].goodsSku.goodsName +
+                    "]" +
+                    res.result.skuList[0].errorMessage,
+                });
+              }
               this.$router.push({
                 path: "/cart",
                 replace: true,

@@ -44,7 +44,7 @@
         </div>
         <div class="goods-seckill-btn" :class="{'goods-seckill-btn-gray' : nowHour < list[currIndex].timeLine}">{{nowHour >= list[currIndex].timeLine ? '立即抢购' : '即将开始'}}</div>
         <div class="goods-show-num">
-          已售<Progress style="width:110px"  class="ml_10" :percent="Math.ceil(item.salesNum/(item.quantity+item.salesNum))" />
+          已售<Progress style="width:110px"  class="ml_10" :percent="Math.ceil(item.salesNum/(item.quantity+item.salesNum)*100)" />
         </div>
         <div class="goods-show-seller">
           <span>{{ item.storeName }}</span>

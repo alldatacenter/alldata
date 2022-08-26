@@ -102,19 +102,7 @@
             slot: 'goodsMsg',
             minWidth: 150
           },
-          {
-            title: "退款金额",
-            key: "returnMoney",
-            minWidth:80,
-            sortable: false,
-            render: (h, params) => {
-              if(params.row.sellBackRebate == null){
-                return h("div", this.$options.filters.unitPrice(0, '￥'));
-              }else{
-                return h("div", this.$options.filters.unitPrice(params.row.sellBackRebate, '￥'));
-              }
-            }
-          },
+
           {
             title: "分销商",
             key: "distributionName",
@@ -134,7 +122,7 @@
           },
           {
             title: "佣金金额",
-            key: "rebateGrade",
+            key: "rebate",
             minWidth:80,
             sortable: false,
             render: (h, params) => {
@@ -237,11 +225,11 @@
       },
       filterStatusColor (status) { // 状态tag标签颜色
         const arr = [
-          {status: 'WAIT_BILL', color: 'magenta'},
-          {status: 'WAIT_CASH', color: 'warning'},
-          {status: 'COMPLETE_CASH', color: 'success'},
-          {status: 'CANCEL', color: 'default'},
-          {status: 'REFUND', color: 'error'},
+          {status: 'WAIT_BILL', color: 'blue'},
+          {status: 'WAIT_CASH', color: 'orange'},
+          {status: 'COMPLETE_CASH', color: 'green'},
+          {status: 'CANCEL', color: 'red'},
+          {status: 'REFUND', color: 'magenta'},
         ]
         for (let i=0;i<arr.length;i++) {
           if (arr[i].status === status) {

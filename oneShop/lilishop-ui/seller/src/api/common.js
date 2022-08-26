@@ -1,4 +1,4 @@
-import {commonUrl, getRequest} from '@/libs/axios';
+import { commonUrl, getRequest, uploadFileRequest ,uploadFile} from "@/libs/axios";
 
 // 通过id获取子地区
 export const getChildRegion = (id) => {
@@ -10,9 +10,18 @@ export const getRegion = (params) => {
   return getRequest(`${commonUrl}/common/common/region/region`, params);
 };
 
-
-
 // 获取IM接口前缀
-export function getIMDetail () {
+export function getIMDetail() {
   return getRequest(`${commonUrl}/common/common/IM`);
 }
+
+//获取图片logo
+export function getBaseSite() {
+  return getRequest(`${commonUrl}/common/common/site`);
+}
+
+// 上传文件
+export const upLoadFileMethods = (bold) => {
+  console.log(bold)
+  return uploadFileRequest(uploadFile, bold);
+};

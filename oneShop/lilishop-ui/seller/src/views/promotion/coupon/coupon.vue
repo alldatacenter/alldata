@@ -65,7 +65,9 @@
       >
         <template slot-scope="{ row }" slot="action">
           <Button
-            v-if="row.promotionStatus === 'NEW' || row.promotionStatus === 'CLOSE'"
+            v-if="
+              row.promotionStatus === 'NEW' || row.promotionStatus === 'CLOSE'
+            "
             type="info"
             size="small"
             @click="see(row)"
@@ -75,7 +77,9 @@
             >查看</Button
           >
           <Button
-            v-if="row.promotionStatus === 'START' || row.promotionStatus === 'NEW'"
+            v-if="
+              row.promotionStatus === 'START' || row.promotionStatus === 'NEW'
+            "
             type="error"
             size="small"
             :style="{ marginLeft: '5px' }"
@@ -104,7 +108,10 @@
 
 <script>
 import { getShopCouponList, updateCouponStatus } from "@/api/promotion";
-import { promotionsStatusRender, promotionsScopeTypeRender } from "@/utils/promotions";
+import {
+  promotionsStatusRender,
+  promotionsScopeTypeRender,
+} from "@/utils/promotions";
 
 export default {
   name: "coupon",
@@ -168,6 +175,13 @@ export default {
           },
         },
         {
+          title: "已被使用的数量/已领取数量",
+          key: "publishNum",
+          render: (h, params) => {
+            return h("div", params.row.usedNum + "/" + params.row.receivedNum);
+          },
+        },
+        {
           title: "优惠券类型",
           key: "couponType",
           render: (h, params) => {
@@ -200,7 +214,8 @@ export default {
             } else if (params?.row?.startTime && params?.row?.endTime) {
               return h("div", {
                 domProps: {
-                  innerHTML: params.row.startTime + "<br/>" + params.row.endTime,
+                  innerHTML:
+                    params.row.startTime + "<br/>" + params.row.endTime,
                 },
               });
             }

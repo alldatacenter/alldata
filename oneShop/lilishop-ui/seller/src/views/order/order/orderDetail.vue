@@ -21,6 +21,7 @@
           >查看物流</Button
         >
         <Button @click="orderLogModal = true" type="primary">订单日志</Button>
+        <Button @click="printOrder" type="primary" ghost style="float:right;">打印发货单</Button>
         <Button v-if="allowOperation.take" @click="orderTake" type="primary"
           >订单核销</Button
         >
@@ -408,14 +409,14 @@
         <dl>
           <dt>物流公司：</dt>
           <dd>
-            <div class="text-box">{{ logisticsInfo.shipper }}</div>
+            <div class="text-box">{{ logisticsInfo.shipper || orderInfo.order.logisticsName }}</div>
           </dd>
         </dl>
         <dl>
           <dt>快递单号：</dt>
           <dd>
             <div nctype="ordersSn" class="text-box">
-              {{ logisticsInfo.logisticCode }}
+              {{ logisticsInfo.logisticCode || orderInfo.order.logisticsNo }}
             </div>
           </dd>
         </dl>
@@ -474,6 +475,61 @@
         <Button type="primary" @click="orderDeliverySubmit">发货</Button>
       </div>
     </Modal>
+    <!-- 打印发货单 -->
+    <Modal v-model="printModal" width="530" @on-cancel="printCancel" >
+      <p slot="header" style="line-height:26px;height:26px;">
+        <span style="float: left;">打印发货单</span>
+        <Button size="small" style="margin-right:35px;float: right;padding-bottom: 2px;" @click="printHiddenInfo"><template v-if="printHiddenFlag">显示</template><template v-else>隐藏</template>敏感信息</Button>
+      </p>
+      <div style="max-height:500px;overflow-y:auto;overflow-x:hidden;">
+        <div id="printInfo">
+          <Row v-if="orderInfo.order.remark !== ''">
+            <Col span="24">
+                <p class="lineH30 f14">备注：{{ orderInfo.order.remark }}</p>
+              </Col>
+          </Row>
+          <Row>
+              <Col span="12">
+                <p class="lineH30 f14">收件人：{{ orderInfo.order.consigneeName }}</p>
+              </Col>
+              <Col span="12" v-if="orderInfo.order.consigneeMobile">
+                <p class="lineH30 f14" v-if="printHiddenFlag">手机号：{{ orderInfo.order.consigneeMobile.replace(/^(.{3})(?:\d+)(.{4})$/, "$1****$2")  }}</p>
+                <p class="lineH30 f14" v-else>手机号：{{ orderInfo.order.consigneeMobile  }}</p>
+              </Col>
+          </Row>
+          <Row>
+              <Col span="24">
+                <p class="lineH30 f14">收货地址：{{ orderInfo.order.consigneeAddressPath }}{{ orderInfo.order.consigneeDetail }}</p>
+              </Col>
+          </Row>
+          <Row>
+              <Col span="24">
+                <p class="printgoodtitle">商品信息</p>
+                <div class="printgoodinfo">
+                  <div v-for="(item,index) in orderInfo.orderItems" :key="index" class="printgooditem">
+                    <div class="printgoodname">
+                      <p>{{item.goodsName}}</p>
+                      <div class="printgoodguid">
+                        <span v-for="(itemchild, keychild) in JSON.parse(item.specs)" :key="keychild">
+                          <span class="printgoodguiditem" v-if="keychild != 'images'">
+                            {{ keychild }} : {{ itemchild }}
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="printgoodnumber">数量：{{item.num}}</span>
+                  </div>
+                </div>
+              </Col>
+          </Row>
+        </div>
+      </div>
+      
+      <div slot="footer" style="text-align: right">
+        <Button @click="printModal = false">关闭</Button>
+        <Button type="primary" v-print="printInfoObj">打印发货单</Button>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -491,6 +547,12 @@ export default {
   },
   data() {
     return {
+      printHiddenFlag:false,//隐藏信息
+      printInfoObj:{
+        id: "printInfo",//要打印的id名 无#号
+        popTitle:'&nbsp;',//页眉标题 默认浏览器标题 空字符串时显示undefined 使用html语言
+        extraHead:'',//头部文字 默认空
+      },
       submitLoading: false, // 添加或编辑提交状态
       region: [], //地区
       regionId: [], //地区id
@@ -512,6 +574,7 @@ export default {
         },
       },
       modal: false, //弹出调整价格框
+      printModal:false,//弹出打印发货单
       //调整价格表单
       modifyPriceForm: {
         orderPrice: 0,
@@ -554,10 +617,7 @@ export default {
       orderDeliverFormValidate: {
         logisticsNo: [
           { required: true, message: "发货单号不能为空", trigger: "change" },
-        ],
-        logisticsId: [
-          { required: true, message: "请选择物流公司", trigger: "blur" },
-        ],
+        ]
       },
       addressRule: {
         consigneeName: [
@@ -686,6 +746,16 @@ export default {
     orderTake() {
       this.orderTakeForm.qrCode = this.orderInfo.order.verificationCode;
       this.orderTakeModal = true;
+    },
+    //打印发货单
+    printOrder(){
+      this.printModal = true;
+    },
+    printHiddenInfo(){
+      this.printHiddenFlag = !this.printHiddenFlag;
+    },
+    printCancel(){
+      // this.printHiddenFlag = false;
     },
     //订单核销提交
     orderTakeSubmit() {
@@ -830,6 +900,9 @@ export default {
 <style lang="scss" scoped>
 // 建议引入通用样式 可删除下面样式代码
 // @import "@/styles/table-common.scss";
+.lineH30{
+  line-height: 30px;
+}
 .order-log-div {
   line-height: 30px;
   height: 500px;
@@ -955,5 +1028,61 @@ dl dt {
 }
 .theme_color{
   color: $theme_color;
+}
+.f14{
+  font-size: 14px;
+  color: #333;
+}
+.printgoodtitle{
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 15px;
+  color: #333;
+}
+.printgoodinfo{
+  // font-size: 14px;
+  // background: #f2f2f2;
+  // border-bottom:2px solid #333 ;
+  padding: 10px;
+  overflow: hidden;
+  color: #333;
+  .printgooditem{
+    border-bottom: 1px solid #e8eaec;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+    line-height: 30px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    .printgoodname{
+      flex: 1;
+      overflow: hidden;
+      .printgoodguid{
+        font-size: 12px;
+        color:#999999;
+        line-height:1.5;
+        .printgoodguiditem{
+          margin-right: 10px;
+        }
+      }
+    }
+    .printgoodprice{
+      width: 135px;
+      margin-left: 15px;
+    }
+    .printgoodnumber{
+      width: 85px;
+      margin-left: 15px;
+    }
+  }
+}
+@media print {
+  @page{
+    size:  auto;
+    margin: 3mm;
+  }
+  html,body{
+    height:inherit;
+  }
 }
 </style>

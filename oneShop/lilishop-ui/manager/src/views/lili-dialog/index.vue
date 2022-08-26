@@ -24,6 +24,9 @@ export default {
     };
   },
   methods: {
+    clearGoodsSelected(){
+      this.goodsData = []
+    },
     // 关闭弹窗
     clickClose() {
       this.$emit("closeFlag", false);

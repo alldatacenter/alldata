@@ -6,22 +6,40 @@
   <div class="main">
     <div class="sidebar-menu-con menu-bar">
       <div class="logo-con">
-        <img src="../assets/logo.png" key="max-logo" />
+        <!-- <img src="../assets/logo.png" key="max-logo" /> -->
+        <img :src="storeSideLogo" key="max-logo" />
       </div>
       <shrinkable-menu></shrinkable-menu>
     </div>
     <!-- 顶部标题栏主体 -->
     <div class="main-header-con">
       <div class="main-header">
-        <div :class="{'header-avator-con':navType!=4, 'header-avator-con nav4':navType == 4}">
+        <div
+          :class="{
+            'header-avator-con': navType != 4,
+            'header-avator-con nav4': navType == 4,
+          }"
+        >
           <!-- 用户头像 -->
           <div class="user-dropdown-menu-con">
-            <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
-              <Dropdown transfer trigger="hover" @on-click="handleClickUserDropdown">
+            <Row
+              type="flex"
+              justify="end"
+              align="middle"
+              class="user-dropdown-innercon"
+            >
+              <Dropdown
+                transfer
+                trigger="hover"
+                @on-click="handleClickUserDropdown"
+              >
                 <div class="dropList">
                   <span class="main-user-name">{{ userInfo.storeName }}</span>
                   <Icon type="md-arrow-dropdown" />
-                  <Avatar :src="userInfo.storeLogo" style="background: #fff;margin-left: 10px;"></Avatar>
+                  <Avatar
+                    :src="userInfo.storeLogo"
+                    style="background: #fff; margin-left: 10px"
+                  ></Avatar>
                 </div>
                 <DropdownMenu slot="list">
                   <DropdownItem name="changePass">修改密码</DropdownItem>
@@ -71,6 +89,7 @@ export default {
       sliceNum: 5, // 展示nav数量
       userInfo: {}, // 用户信息
       navType: 1, // nav类型
+      storeSideLogo: "", //logo图片
     };
   },
   computed: {
@@ -98,6 +117,16 @@ export default {
       if (pathArr.length >= 2) {
         this.$store.commit("addOpenSubmenu", pathArr[1].name);
       }
+      this.storeSideLogo = localStorage.getItem("sellerlogoImg");
+      window.document.title = localStorage.getItem("sellersiteName");
+        //动态获取icon
+          let link =
+            document.querySelector("link[rel*='icon']") ||
+            document.createElement("link");
+          link.type = "image/x-icon";
+          link.href = localStorage.getItem("sellerlogoImg");
+          link.rel = "shortcut icon";
+          document.getElementsByTagName("head")[0].appendChild(link);
 
       let userInfo = JSON.parse(Cookies.get("userInfoSeller"));
       this.userInfo = userInfo;

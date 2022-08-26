@@ -28,6 +28,9 @@ import * as filters from "@/utils/filters"; // global filter
 
 import { md5 } from "@/utils/md5.js";
 const { aMapSecurityJsCode } = require("@/config");
+// 打印
+import Print from 'vue-print-nb';
+Vue.use(Print);
 // 高德安全密钥
 if (aMapSecurityJsCode) {
   window._AMapSecurityConfig = {

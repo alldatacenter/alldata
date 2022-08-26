@@ -101,7 +101,7 @@ export default {
               this.$router.push('/home/Coupons')
             },
             onCancel: () => {
-              if (item.storeId !== 'platform') {
+              if (item.storeId !== '0') {
                 this.$router.push({path: '/merchant', query: {id: item.storeId}})
               } else {
                 if (item.scopeType === 'PORTION_GOODS_CATEGORY') {

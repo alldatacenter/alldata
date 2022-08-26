@@ -2,26 +2,101 @@
   <div class="search">
     <Card>
       <Row @keydown.enter.native="handleSearch">
-        <Form ref="searchForm" :model="searchForm" inline :label-width="70" class="search-form">
+        <Form
+          ref="searchForm"
+          :model="searchForm"
+          inline
+          :label-width="70"
+          class="search-form"
+        >
           <Form-item label="订单号" prop="orderSn">
-            <Input type="text" v-model="searchForm.orderSn" placeholder="订单/交易号" clearable style="width: 200px" />
+            <Input
+              type="text"
+              v-model="searchForm.orderSn"
+              placeholder="订单/交易号"
+              clearable
+              style="width: 200px"
+            />
           </Form-item>
           <Form-item label="退款状态">
-            <Select v-model="searchForm.isRefund" placeholder="请选择" clearable style="width: 200px">
+            <Select
+              v-model="searchForm.isRefund"
+              placeholder="请选择"
+              clearable
+              style="width: 200px"
+            >
               <Option value="false">未退款</Option>
               <Option value="true">已退款</Option>
             </Select>
           </Form-item>
           <Form-item label="退款时间">
-            <DatePicker v-model="selectDate" type="datetimerange" format="yyyy-MM-dd" clearable @on-change="selectDateRange" placeholder="选择起始时间" style="width: 200px"></DatePicker>
+            <DatePicker
+              v-model="selectDate"
+              type="datetimerange"
+              format="yyyy-MM-dd"
+              clearable
+              @on-change="selectDateRange"
+              placeholder="选择起始时间"
+              style="width: 200px"
+            ></DatePicker>
           </Form-item>
-          <Button @click="handleSearch" type="primary" icon="ios-search" class="search-btn">搜索</Button>
+          <Button
+            @click="handleSearch"
+            type="primary"
+            icon="ios-search"
+            class="search-btn"
+            >搜索</Button
+          >
         </Form>
       </Row>
-      <Table :loading="loading" border :columns="columns" :data="data" ref="table" class="mt_10"></Table>
+      <Table
+        :loading="loading"
+        border
+        :columns="columns"
+        :data="data"
+        ref="table"
+        class="mt_10"
+      >
+        <template slot-scope="{ row, index }" slot="actions">
+
+          <Tag color="green" v-if="row.isRefund">已退款</Tag>
+          <div v-if="!row.isRefund">
+            <Tag v-if="!row.errorMessage" color="red">未退款</Tag>
+            <Tooltip v-else placement="left">
+              <Tag color="red">未退款<Icon type="md-help" /></Tag>
+              <div
+                slot="content"
+                style="white-space: normal"
+                v-if="row.paymentName == 'WECHAT'"
+              >
+                {{
+                  row.errorMessage ? JSON.parse(row.errorMessage).message : ""
+                }}
+              </div>
+              <div
+                slot="content"
+                style="white-space: normal"
+                v-if="row.paymentName == 'ALIPAY'"
+              >
+                {{ row.errorMessage || "" }}
+              </div>
+            </Tooltip>
+          </div>
+        </template>
+      </Table>
       <Row type="flex" justify="end" class="mt_10">
-        <Page :current="searchForm.pageNumber" :total="total" :page-size="searchForm.pageSize" @on-change="changePage" @on-page-size-change="changePageSize" :page-size-opts="[10, 20, 50]" size="small"
-          show-total show-elevator show-sizer></Page>
+        <Page
+          :current="searchForm.pageNumber"
+          :total="total"
+          :page-size="searchForm.pageSize"
+          @on-change="changePage"
+          @on-page-size-change="changePageSize"
+          :page-size-opts="[10, 20, 50]"
+          size="small"
+          show-total
+          show-elevator
+          show-sizer
+        ></Page>
       </Row>
     </Card>
   </div>
@@ -87,25 +162,15 @@ export default {
         {
           title: "申请时间",
           key: "createTime",
-          minWidth: 200,
+          minWidth: 120,
           tooltip: true,
         },
         {
           title: "退款状态",
           key: "isRefund",
-          fixed: "right",
-          width: 95,
-          render: (h, params) => {
-            if (params.row.isRefund == "1") {
-              return h("div", [
-                h("Tag", { props: { color: "green" } }, "已退款"),
-              ]);
-            } else {
-              return h("div", [
-                h("Tag", { props: { color: "orange" } }, "未退款"),
-              ]);
-            }
-          },
+          align:"center",
+          width: 200,
+          slot: "actions",
         },
       ],
       data: [], // 表单数据
@@ -115,7 +180,7 @@ export default {
   methods: {
     // 初始化数据
     init() {
-      this.getDataList();  
+      this.getDataList();
     },
     // 分页 改变页码
     changePage(v) {
@@ -159,4 +224,3 @@ export default {
   },
 };
 </script>
-
