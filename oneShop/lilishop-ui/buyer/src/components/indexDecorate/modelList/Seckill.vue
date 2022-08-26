@@ -1,5 +1,5 @@
 <template>
-  <div class="seckill">
+  <div class="seckill" v-if="goodsList.length">
     <div class="aside hover-pointer" @click="goToSeckill">
       <div class="title">{{ actName }}</div>
       <div class="hour">
@@ -14,7 +14,7 @@
     </div>
     <swiper :options="swiperOption" ref="mySwiper">
       <swiper-slide v-for="(item,index) in goodsList" :key="index">
-        <div class="content hover-pointer" @click="goToSeckill">
+        <div class="content hover-pointer"  @click.stop="goToSeckill">
           <img :src="item.goodsImage" width="140" height="140" :alt="item.goodsName">
           <div class="ellipsis">{{item.goodsName}}</div>
           <div>
@@ -58,7 +58,7 @@ export default {
       seconds: 0, // 秒
       interval: null, // 定时器
       swiperOption: { // 轮播图参数
-        loop: true,
+
         slidesPerView: 5,
         // 设置点击箭头
         navigation: {
@@ -157,6 +157,7 @@ export default {
       // ]
       this.list = this.data.options.list
       this.goodsList = this.list[0].seckillGoodsList
+      console.log( this.goodsList)
       this.countDown(this.currIndex)
     }
   }

@@ -3,49 +3,112 @@
     <Row>
       <Card>
         <Row @keydown.enter.native="handleSearch">
-          <Form ref="searchForm" :model="searchForm" inline :label-width="70" class="search-form">
+          <Form
+            ref="searchForm"
+            :model="searchForm"
+            inline
+            :label-width="70"
+            class="search-form"
+          >
             <Form-item label="会员名称" prop="username">
-              <Input type="text" v-model="searchForm.username" placeholder="请输入会员名称" clearable style="width: 200px" />
+              <Input
+                type="text"
+                v-model="searchForm.username"
+                placeholder="请输入会员名称"
+                clearable
+                style="width: 200px"
+              />
             </Form-item>
 
             <Form-item label="联系方式" prop="mobile">
-              <Input type="text" v-model="searchForm.mobile" placeholder="请输入会员联系方式" clearable style="width: 200px" />
+              <Input
+                type="text"
+                v-model="searchForm.mobile"
+                placeholder="请输入会员联系方式"
+                clearable
+                style="width: 200px"
+              />
             </Form-item>
-            <Button @click="handleSearch" class="search-btn" type="primary" icon="ios-search">搜索</Button>
+            <Button
+              @click="handleSearch"
+              class="search-btn"
+              type="primary"
+              icon="ios-search"
+              >搜索</Button
+            >
           </Form>
         </Row>
-        <Table :loading="loading" border :columns="columns" :data="data" ref="table" class="mt_10" sortable="custom">
+        <Table
+          :loading="loading"
+          border
+          :columns="columns"
+          :data="data"
+          ref="table"
+          class="mt_10"
+          sortable="custom"
+        >
         </Table>
         <Row type="flex" justify="end" class="mt_10">
-          <Page :current="searchForm.pageNumber" :total="total" :page-size="searchForm.pageSize" @on-change="changePage"
-            @on-page-size-change="changePageSize" :page-size-opts="[10, 20, 50]" size="small" show-total show-elevator
-            show-sizer></Page>
+          <Page
+            :current="searchForm.pageNumber"
+            :total="total"
+            :page-size="searchForm.pageSize"
+            @on-change="changePage"
+            @on-page-size-change="changePageSize"
+            :page-size-opts="[10, 20, 50]"
+            size="small"
+            show-total
+            show-elevator
+            show-sizer
+          ></Page>
         </Row>
       </Card>
     </Row>
 
     <!-- 修改模态框 -->
-    <Modal v-model="descFlag" :title="descTitle" @on-ok="handleSubmitModal" width="500">
-      <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+    <Modal
+      v-model="descFlag"
+      :title="descTitle"
+      @on-ok="handleSubmitModal"
+      width="500"
+    >
+      <Form
+        ref="formValidate"
+        :model="formValidate"
+        :rules="ruleValidate"
+        :label-width="80"
+      >
         <FormItem label="头像">
           <img :src="formValidate.face" class="face" />
-          <Button type="text" class="upload" @click="
+          <Button
+            type="text"
+            class="upload"
+            @click="
               () => {
                 this.picModelFlag = true;
                 this.$refs.ossManage.selectImage = true;
               }
-            ">修改
+            "
+            >修改
           </Button>
           <input type="file" style="display: none" id="file" />
         </FormItem>
         <FormItem label="会员名称" prop="name">
-          <Input v-model="formValidate.username" style="width: 200px" disabled />
+          <Input
+            v-model="formValidate.username"
+            style="width: 200px"
+            disabled
+          />
         </FormItem>
         <FormItem label="用户昵称" prop="name">
           <Input v-model="formValidate.nickName" style="width: 200px" />
         </FormItem>
         <FormItem label="性别" prop="sex">
-          <RadioGroup type="button" button-style="solid" v-model="formValidate.sex">
+          <RadioGroup
+            type="button"
+            button-style="solid"
+            v-model="formValidate.sex"
+          >
             <Radio :label="1">
               <span>男</span>
             </Radio>
@@ -55,19 +118,32 @@
           </RadioGroup>
         </FormItem>
         <FormItem label="修改密码" prop="password">
-          <Input type="password" style="width: 220px" password v-model="formValidate.newPassword" />
+          <Input
+            type="password"
+            style="width: 220px"
+            password
+            v-model="formValidate.newPassword"
+          />
         </FormItem>
         <FormItem label="生日" prop="birthday">
-          <DatePicker type="date" format="yyyy-MM-dd" v-model="formValidate.birthday" style="width: 220px"></DatePicker>
+          <DatePicker
+            type="date"
+            format="yyyy-MM-dd"
+            v-model="formValidate.birthday"
+            style="width: 220px"
+          ></DatePicker>
         </FormItem>
         <FormItem label="所在地" prop="mail">
           <div class="form-item" v-if="!updateRegion">
             <Input disabled style="width: 250px" :value="formValidate.region" />
-            <Button type="text" @click="
+            <Button
+              type="text"
+              @click="
                 () => {
                   this.updateRegion = !this.updateRegion;
                 }
-              ">修改
+              "
+              >修改
             </Button>
           </div>
           <div class="form-item" v-else>
@@ -350,18 +426,20 @@ export default {
 
     // 提交修改数据
     handleSubmitModal() {
-      const { nickName, sex, username, face, newPassword } = this.formValidate;
+      const { nickName, sex, username, face, newPassword, id } =
+        this.formValidate;
       let time = new Date(this.formValidate.birthday);
       let birthday =
         time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate();
       let submit = {
-        regionId: this.regionId,
-        region: this.region,
+        regionId: this.regionId || "",
+        region: this.region || "",
         nickName,
         username,
         sex,
         birthday,
-        face,
+        face: face || "",
+        id,
       };
       if (newPassword) {
         submit.password = this.md5(newPassword);

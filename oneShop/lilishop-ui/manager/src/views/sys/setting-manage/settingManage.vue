@@ -50,7 +50,7 @@ export default {
         //阿里OSS配置
         {
           type: "OSS_SETTING",
-          name: "阿里OSS配置",
+          name: "OSS配置",
         },
         //阿里短信配置
         {

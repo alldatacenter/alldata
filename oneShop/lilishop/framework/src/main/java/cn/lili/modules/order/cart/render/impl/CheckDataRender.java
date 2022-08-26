@@ -134,7 +134,7 @@ public class CheckDataRender implements CartRenderStep {
                 cartSkuVO.setErrorMessage("商品库存不足,现有库存数量[" + dataSku.getQuantity() + "]");
             }
             //如果存在商品促销活动，则判定商品促销状态
-            if (CollUtil.isNotEmpty(cartSkuVO.getNotFilterPromotionMap()) || Boolean.TRUE.equals(cartSkuVO.getGoodsSku().getPromotionFlag())) {
+            if (!cartSkuVO.getCartType().equals(CartTypeEnum.POINTS) && (CollUtil.isNotEmpty(cartSkuVO.getNotFilterPromotionMap()) || Boolean.TRUE.equals(cartSkuVO.getGoodsSku().getPromotionFlag()))) {
                 //获取当前最新的促销信息
                 cartSkuVO.setPromotionMap(this.promotionGoodsService.getCurrentGoodsPromotion(cartSkuVO.getGoodsSku(), tradeDTO.getCartTypeEnum().name()));
                 //设定商品价格
@@ -168,10 +168,12 @@ public class CheckDataRender implements CartRenderStep {
                 try {
                     //筛选属于当前店铺的优惠券
                     storeCart.getValue().forEach(i -> i.getPromotionMap().forEach((key, value) -> {
-                        JSONObject promotionsObj = JSONUtil.parseObj(value);
-                        Coupon coupon = JSONUtil.toBean(promotionsObj, Coupon.class);
-                        if (key.contains(PromotionTypeEnum.COUPON.name()) && coupon.getStoreId().equals(storeCart.getKey())) {
-                            cartVO.getCanReceiveCoupon().add(new CouponVO(coupon));
+                        if (key.contains(PromotionTypeEnum.COUPON.name())) {
+                            JSONObject promotionsObj = JSONUtil.parseObj(value);
+                            Coupon coupon = JSONUtil.toBean(promotionsObj, Coupon.class);
+                            if (key.contains(PromotionTypeEnum.COUPON.name()) && coupon.getStoreId().equals(storeCart.getKey())) {
+                                cartVO.getCanReceiveCoupon().add(new CouponVO(coupon));
+                            }
                         }
                     }));
                 } catch (Exception e) {
@@ -259,9 +261,15 @@ public class CheckDataRender implements CartRenderStep {
                         // 将符合规则的商品设置批发价格
                         if (Boolean.TRUE.equals(i.getChecked())) {
                             i.setPurchasePrice(match.getPrice());
+                            i.getGoodsSku().setPrice(match.getPrice());
+                            i.getGoodsSku().setCost(match.getPrice());
+                            i.setUtilPrice(match.getPrice());
                             i.setSubTotal(CurrencyUtil.mul(i.getPurchasePrice(), i.getNum()));
                         } else {
                             i.setPurchasePrice(wholesaleService.match(k, fSum).getPrice());
+                            i.getGoodsSku().setPrice(i.getPurchasePrice());
+                            i.getGoodsSku().setCost(i.getPurchasePrice());
+                            i.setUtilPrice(i.getPurchasePrice());
                             i.setSubTotal(CurrencyUtil.mul(i.getPurchasePrice(), i.getNum()));
                         }
                     });

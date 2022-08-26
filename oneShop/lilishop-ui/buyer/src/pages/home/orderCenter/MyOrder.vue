@@ -32,7 +32,7 @@
             </div>
           </div>
           <div>
-            <Button @click="delOrder(order.sn)" class="del-btn mr_10 fontsize_16" style="margin-top:-5px;" type="text" icon="ios-trash-outline" size="small"></Button>
+            <Button v-if="order.orderStatus === 'COMPLETED'" @click="delOrder(order.sn)" class="del-btn mr_10 fontsize_16" style="margin-top:-5px;" type="text" icon="ios-trash-outline" size="small"></Button>
             <span>{{ order.flowPrice | unitPrice("￥") }}</span>
           </div>
         </div>
@@ -55,7 +55,7 @@
                     >{{ goods.goodsPrice | unitPrice("￥") }} </span
                   >x {{ goods.num }}
                 </div>
-                <Button v-if="goods.commentStatus == 'UNFINISHED'" @click="comment(order.sn, goodsIndex)" size="small" type="success" class="fontsize_12" style="position:relative;top:-22px;left:100px">评价</Button>
+                <Button v-if="goods.commentStatus == 'UNFINISHED'" @click="comment(order.sn, goodsIndex)" size="small" type="success" class="fontsize_12" style="position:relative;top:-22px;left:100px;margin-right:10px">评价</Button>
                 <Button v-if="goods.complainStatus == 'NO_APPLY'" @click="complain(order.sn, goodsIndex)" type="warning" class="fontsize_12" size="small" style="position:relative;top:-22px;left:100px">投诉</Button>
               </div>
             </div>

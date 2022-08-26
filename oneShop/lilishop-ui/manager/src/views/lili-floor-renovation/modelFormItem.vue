@@ -198,7 +198,12 @@
           建议尺寸：<span>{{ selected.size }}</span>
         </div>
         <div>
-          图片链接：<span>{{ selected.url }}</span>
+          图片链接：<Input
+            class="outsideUrl"
+            v-model="selected.url"
+            :disabled="!!selected.type && selected.type !== 'link'"
+            placeholder="https://"
+          />
           <Button size="small" type="primary" @click="handleSelectLink"
             >选择链接</Button
           >
@@ -211,11 +216,7 @@
       </div>
     </Modal>
     <!-- 选择商品。链接 -->
-    <liliDialog
-      ref="liliDialog"
-      @selectedLink="selectedLink"
-  
-    ></liliDialog>
+    <liliDialog ref="liliDialog" @selectedLink="selectedLink"></liliDialog>
     <!-- 选择图片 -->
     <Modal width="1200px" v-model="picModelFlag" footer-hide>
       <ossManage
@@ -229,8 +230,8 @@
 
 <script>
 import ModelCarousel from "./modelList/carousel.vue";
-import ModelCarousel1 from './modelList/carousel1.vue';
-import ModelCarousel2 from './modelList/carousel2.vue';
+import ModelCarousel1 from "./modelList/carousel1.vue";
+import ModelCarousel2 from "./modelList/carousel2.vue";
 import FirstPageAdvert from "./modelList/firstPageAdvert.vue";
 import NewGoodsSort from "./modelList/newGoodsSort.vue";
 import Recommend from "./modelList/recommend.vue";
@@ -284,8 +285,10 @@ export default {
     // 确定选择链接
     selectedLink(val) {
       this.selected.url = this.$options.filters.formatLinkType(val);
+      this.selected.type =
+        val.___type === "other" && val.url === "" ? "link" : "other";
     },
-    
+
     handleSelectImg() {
       // 选择图片
       this.$refs.ossManage.selectImage = true;

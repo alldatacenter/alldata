@@ -146,7 +146,7 @@ export default {
         email: "",
         sex: "",
         roles: [],
-        departmentId: "",
+        departmentId: 0,
         departmentTitle: ""
       },
       roleList: [], // 角色列表
@@ -354,7 +354,7 @@ export default {
         this.form.departmentId = v.departmentId;
         this.form.departmentTitle = v.departmentTitle;
       } else {
-        this.form.departmentId = "";
+        this.form.departmentId = 0;
         this.form.departmentTitle = "";
       }
     },
@@ -492,7 +492,7 @@ export default {
         email: "",
         sex: "",
         roles: [],
-        departmentId: "",
+        departmentId: 0,
         departmentTitle: ""
       },
       this.$refs.depTree.setData("", "");

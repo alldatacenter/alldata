@@ -143,7 +143,7 @@ export default {
   position: absolute;
   left: -360px;
   top: -9px;
-  width: 150px;
+  max-width: 150px;
   cursor: pointer;
 }
 .store-search{

@@ -8,7 +8,7 @@
 
     <Card class="card">
       <div>
-        <h4>客户增长趋势</h4>
+        <h4>客户增长趋势 <Button style="margin-left:10px" @click="()=>{enableShowMemberCount = !enableShowMemberCount; initMemberChart()}" size="small">{{enableShowMemberCount ? '关闭' : '显示'}}用户总人数</Button></h4>
         <div id="orderChart"></div>
       </div>
     </Card>
@@ -84,6 +84,7 @@ export default {
       },
 
       data: [], // 数据
+      enableShowMemberCount:false
     };
   },
   watch: {
@@ -111,21 +112,21 @@ export default {
       let actives = [];
 
       this.data.forEach((item) => {
-        if (item.memberCount!="" || item.memberCount!=null) {
+        if (this.enableShowMemberCount && (item.memberCount!="" || item.memberCount!=null)) {
           count.push({
             createDate: item.createDate,
-            memberCount: item.memberCount,
+            memberCount:item.memberCount,
             title: "当前会员数量",
           });
         }
-        if (item.newlyAdded!="" || item.newlyAdded!=null) {
+        if (!this.enableShowMemberCount && (item.newlyAdded!="" || item.newlyAdded!=null)) {
           newly.push({
             createDate: item.createDate,
             memberCount: item.newlyAdded,
             title: "新增会员数量",
           });
         }
-        if (item.activeQuantity!="" || item.activeQuantity!=null) {
+        if (!this.enableShowMemberCount && (item.activeQuantity!="" || item.activeQuantity!=null)) {
           actives.push({
             createDate: item.createDate,
             memberCount: item.activeQuantity,
@@ -165,6 +166,8 @@ export default {
           stroke: "#fff",
           lineWidth: 1,
         });
+         this.orderChart.area().position("createDate*memberCount").color("title").shape("smooth");
+
 
       this.orderChart.render();
     },

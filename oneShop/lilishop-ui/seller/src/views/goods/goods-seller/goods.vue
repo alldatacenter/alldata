@@ -29,6 +29,17 @@
               <Option value="UPPER">上架</Option>
             </Select>
           </Form-item>
+          <Form-item label="销售模式" prop="status">
+            <Select
+              v-model="searchForm.salesModel"
+              placeholder="请选择"
+              clearable
+              style="width: 200px"
+            >
+              <Option value="RETAIL">零售</Option>
+              <Option value="WHOLESALE">批发</Option>
+            </Select>
+          </Form-item>
           <Form-item label="商品类型" prop="status">
             <Select
               v-model="searchForm.goodsType"
@@ -285,6 +296,20 @@ export default {
           key: "goodsName",
           minWidth: 200,
           slot: "goodsSlot",
+        },
+        {
+          title: "销售模式",
+          key: "salesModel",
+          width: 100,
+          render: (h, params) => {
+            if (params.row.salesModel === "RETAIL") {
+              return h("Tag", { props: { color: "orange" } }, "零售");
+            } else if (params.row.salesModel === "WHOLESALE") {
+              return h("Tag", { props: { color: "magenta" } }, "批发");
+            } else {
+              return h("Tag", { props: { color: "volcano" } }, "其他类型");
+            }
+          },
         },
         {
           title: "商品类型",

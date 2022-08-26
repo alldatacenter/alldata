@@ -1,5 +1,5 @@
 <template>
-  <div style="background:#fff;">
+  <div style="background: #fff">
     <BaseHeader></BaseHeader>
     <Search></Search>
     <drawer></drawer>
@@ -8,25 +8,39 @@
       <div class="shop-nav-container">
         <Breadcrumb>
           <BreadcrumbItem to="/">首页</BreadcrumbItem>
-          <BreadcrumbItem v-for="(item, index) in categoryBar" :to="goGoodsList(index)" target="_blank" :key="index">
+          <BreadcrumbItem
+            v-for="(item, index) in categoryBar"
+            :to="goGoodsList(index)"
+            target="_blank"
+            :key="index"
+          >
             {{ item.name }}
           </BreadcrumbItem>
         </Breadcrumb>
         <div class="store-collect">
           <span class="mr_10" v-if="goodsMsg.data">
-
-            <router-link :to="'Merchant?id=' + goodsMsg.data.storeId">{{ goodsMsg.data.storeName }}</router-link>
+            <router-link :to="'Merchant?id=' + goodsMsg.data.storeId">{{
+              goodsMsg.data.storeName
+            }}</router-link>
           </span>
           <span @click="collect">
-            <Icon type="ios-heart" :color="storeCollected ? '#ed3f14' : '#666'" />
-            {{storeCollected ? '已收藏店铺' : '收藏店铺'}}
+            <Icon
+              type="ios-heart"
+              :color="storeCollected ? '#ed3f14' : '#666'"
+            />
+            {{ storeCollected ? "已收藏店铺" : "收藏店铺" }}
           </span>
           <span class="ml_10" @click="IMService()">联系客服</span>
         </div>
       </div>
     </div>
+
     <!-- 商品信息展示 -->
-    <ShowGoods v-if="goodsMsg.data" :detail="goodsMsg"></ShowGoods>
+    <ShowGoods
+      @handleClickSku="targetClickSku"
+      v-if="goodsMsg.data"
+      :detail="goodsMsg"
+    ></ShowGoods>
     <!-- 商品详细展示 -->
     <ShowGoodsDetail v-if="goodsMsg.data" :detail="goodsMsg"></ShowGoodsDetail>
 
@@ -73,13 +87,19 @@ export default {
     // 跳转im客服
     async IMService() {
       // 获取访问Token
-      let accessToken = Storage.getItem('accessToken');
+      let accessToken = Storage.getItem("accessToken");
       await this.getIMDetailMethods();
       if (!accessToken) {
         this.$Message.error("请登录后再联系客服");
         return;
       }
-      window.open(this.IMLink + "?token=" + accessToken + "&id=" + this.goodsMsg.data.storeId);
+      window.open(
+        this.IMLink +
+          "?token=" +
+          accessToken +
+          "&id=" +
+          this.goodsMsg.data.storeId
+      );
     },
     // 获取im信息
     async getIMDetailMethods() {
@@ -88,10 +108,15 @@ export default {
         this.IMLink = res.result;
       }
     },
+    // 点击规格
+    targetClickSku(val) {
+      this.getGoodsDetail(val);
+    },
     // 获取商品详情
-    getGoodsDetail() {
+    getGoodsDetail(val) {
       this.isLoading = true;
-      const params = this.$route.query;
+      const params = val || this.$route.query;
+
       // 分销员id
       let distributionId =
         params && params.distributionId
@@ -128,7 +153,7 @@ export default {
               });
             });
             this.categoryBar = cateArr;
-            this.goodsMsg = res.result;
+            this.$set(this, "goodsMsg", res.result);
             // 判断是否收藏
             if (this.Cookies.getItem("userInfo")) {
               isCollection("STORE", this.goodsMsg.data.storeId).then((res) => {
@@ -137,18 +162,20 @@ export default {
                 }
               });
             }
-            // 获取店铺信息
-            getDetailById(this.goodsMsg.data.storeId).then((res) => {
-              if (res.success) {
-                this.storeMsg = res.result;
-              }
-            });
+            if (!this.storeMsg) {
+              // 获取店铺信息
+              getDetailById(this.goodsMsg.data.storeId).then((res) => {
+                if (res.success) {
+                  this.storeMsg = res.result;
+                }
+              });
+            }
           } else {
             this.$Message.error(res.message);
             this.$router.push("/");
           }
         })
-        .catch(() => {
+        .catch((e) => {
           this.$router.push("/");
         });
     },
@@ -179,11 +206,7 @@ export default {
       }
     },
   },
-  watch: {
-    "$route.query.skuId": function (val) {
-      location.reload();
-    },
-  },
+  watch: {},
   components: {
     Search,
     ShopHeader,

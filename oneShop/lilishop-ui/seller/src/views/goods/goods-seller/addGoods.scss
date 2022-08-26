@@ -76,12 +76,15 @@
     text-align: left;
   }
 }
+
 .sku-val {
   justify-content: flex-start;
   flex-wrap: wrap;
-  > .ivu-form {
+
+  >.ivu-form {
     flex-wrap: wrap !important;
   }
+
   /deep/ .sku-item-content-val {
     margin-right: 20px;
   }
@@ -100,7 +103,7 @@ div.base-info-item {
     text-align: left;
   }
 
-  > div {
+  >div {
     padding-left: 5%;
   }
 
@@ -110,6 +113,15 @@ div.base-info-item {
     align-items: flex-start;
     justify-content: space-between;
     // padding-left: 80px;
+
+    .form-item-view-wholesale {
+      display: flex;
+
+      .form-item-view-wholesale-preview {
+        padding-left: 5%;
+      }
+
+    }
 
     .layout {
       margin-bottom: 20px;
@@ -126,7 +138,8 @@ div.base-info-item {
         align-items: flex-start;
         justify-content: flex-start;
         width: 100%;
-        > .ivu-card-body {
+
+        >.ivu-card-body {
           width: 100%;
         }
 
@@ -245,17 +258,17 @@ div.base-info-item {
 }
 
 .success {
-  > h1 {
+  >h1 {
     font-size: 28px;
   }
 
-  > * {
+  >* {
     margin: 10px;
   }
 }
 
 .operation {
-  > * {
+  >* {
     margin: 10px 0;
   }
 }
@@ -276,7 +289,7 @@ div.base-info-item {
   text-align: center;
   z-index: 999;
 
-  > .ivu-btn {
+  >.ivu-btn {
     margin: 0 10px;
   }
 }
@@ -437,7 +450,7 @@ div.base-info-item {
   margin-top: 50px;
   width: 100%;
 
-  > i {
+  >i {
     width: 50%;
     margin-top: 8px;
     color: #fff;
@@ -492,12 +505,28 @@ div.base-info-item {
 .goods-type-item:hover {
   background: #ededed;
 }
+
 .goods-list-box {
   height: 450px;
   overflow: auto;
 }
+
 h2 {
   cursor: pointer;
   font-size: 21px;
   color: #333;
+}
+
+.form-item-view-wholesale-form-col {
+  height: 400px;
+}
+
+.form-item-view-wholesale-row-del {
+  display: "flex";
+  justify-content: "space-between";
+  align-items: "center";
+}
+.promise-intro-btn{
+  margin: 10px 0;
+  text-align: left;
 }

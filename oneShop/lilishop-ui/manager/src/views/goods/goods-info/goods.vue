@@ -27,6 +27,15 @@
             style="width: 200px"
           />
         </Form-item>
+        <Form-item label="店铺名称" prop="id">
+          <Input
+            type="text"
+            v-model="searchForm.storeName"
+            placeholder="请输入店铺名称"
+            clearable
+            style="width: 200px"
+          />
+        </Form-item>
         <Form-item label="状态" prop="status">
           <Select
             v-model="searchForm.marketEnable"
@@ -36,6 +45,17 @@
           >
             <Option value="UPPER">上架</Option>
             <Option value="DOWN">下架</Option>
+          </Select>
+        </Form-item>
+        <Form-item label="销售模式" prop="status">
+          <Select
+            v-model="searchForm.salesModel"
+            placeholder="请选择"
+            clearable
+            style="width: 200px"
+          >
+            <Option value="RETAIL">零售</Option>
+            <Option value="WHOLESALE">批发</Option>
           </Select>
         </Form-item>
         <Form-item label="商品类型" prop="status">
@@ -49,7 +69,11 @@
             <Option value="VIRTUAL_GOODS">虚拟商品</Option>
           </Select>
         </Form-item>
-        <Button @click="handleSearch" class="search-btn" type="primary" icon="ios-search"
+        <Button
+          @click="handleSearch"
+          class="search-btn"
+          type="primary"
+          icon="ios-search"
           >搜索</Button
         >
       </Form>
@@ -112,7 +136,12 @@
         ></Page>
       </Row>
     </Card>
-    <Modal title="下架操作" v-model="modalVisible" :mask-closable="false" :width="500">
+    <Modal
+      title="下架操作"
+      v-model="modalVisible"
+      :mask-closable="false"
+      :width="500"
+    >
       <Form ref="underForm" :model="underForm" :label-width="100">
         <FormItem label="下架原因" prop="reason">
           <Input v-model="underForm.reason" clearable style="width: 100%" />
@@ -120,7 +149,9 @@
       </Form>
       <div slot="footer">
         <Button type="text" @click="modalVisible = false">取消</Button>
-        <Button type="primary" :loading="submitLoading" @click="lower">提交</Button>
+        <Button type="primary" :loading="submitLoading" @click="lower"
+          >提交</Button
+        >
       </div>
     </Modal>
   </div>
@@ -169,7 +200,24 @@ export default {
           key: "price",
           width: 130,
           render: (h, params) => {
-            return h("div", this.$options.filters.unitPrice(params.row.price, "￥"));
+            return h(
+              "div",
+              this.$options.filters.unitPrice(params.row.price, "￥")
+            );
+          },
+        },
+        {
+          title: "销售模式",
+          key: "salesModel",
+          width: 100,
+          render: (h, params) => {
+            if (params.row.salesModel === "RETAIL") {
+              return h("Tag", { props: { color: "orange" } }, "零售");
+            } else if (params.row.salesModel === "WHOLESALE") {
+              return h("Tag", { props: { color: "magenta" } }, "批发");
+            } else {
+              return h("Tag", { props: { color: "volcano" } }, "其他类型");
+            }
           },
         },
         {

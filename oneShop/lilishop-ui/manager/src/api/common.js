@@ -1,4 +1,4 @@
-import {commonUrl, getRequest, getRequestWithNoToken, postRequestWithNoToken} from '@/libs/axios';
+import {commonUrl, getRequest, getRequestWithNoToken, postRequestWithNoToken,uploadFileRequest,uploadFile} from '@/libs/axios';
 
 // 通过id获取子地区
 export const getChildRegion = (id) => {
@@ -25,3 +25,8 @@ export const postVerifyImg = (params) => {
 export const getBaseSite = () => {
   return getRequest(`${commonUrl}/common/common/site`);
 };
+
+// 上传文件
+export const upLoadFile = (bold) =>{
+  return uploadFileRequest(uploadFile,bold);
+}

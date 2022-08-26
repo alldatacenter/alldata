@@ -129,10 +129,10 @@
                       <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                       <Icon type="ios-information-circle-outline" />
                       指定地区城市为空或指定错误
-                      <Icon type="ios-information-circle-outline" />
+                      <!-- <Icon type="ios-information-circle-outline" />
                       首费应输入正确的金额
                       <Icon type="ios-information-circle-outline" />
-                      续费应输入正确的金额
+                      续费应输入正确的金额 -->
                       <Icon type="ios-information-circle-outline" />
                       首(续)件(重)费应输入大于0的整数
                     </div>
@@ -357,9 +357,9 @@ export default {
               if (
                 this.form.freightTemplateChildList[i].area == "" ||
                 this.form.freightTemplateChildList[i].firstCompany == "" ||
-                this.form.freightTemplateChildList[i].firstPrice == "" ||
-                this.form.freightTemplateChildList[i].continuedCompany == "" ||
-                this.form.freightTemplateChildList[i].continuedPrice == ""
+                // this.form.freightTemplateChildList[i].firstPrice == "" ||
+                this.form.freightTemplateChildList[i].continuedCompany == ""
+                // this.form.freightTemplateChildList[i].continuedPrice == ""
               ) {
                 this.saveError = true;
                 return;

@@ -1,31 +1,31 @@
 version: '3'
-services: 
+services:
+  # nginx:
+  #   image: nginx         # 镜像
+  #   restart: always      # 开机自动重启
+  #   container_name: nginx # 容器名
+  #   ports:               # 端口号绑定（宿主机:容器内）
+  #     - 80:80
+  #   volumes:             # 目录映射（宿主机:容器内）
+  #     - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./config/nginx/ssl:/etc/nginx/ssl 
+  #     - ../volumes/data/nginx/data/html:/usr/share/nginx/html
+  #     - ../volumes/data/nginx/logs/:/var/log/nginx 
   mysql:
-    image: mysql:8.0.25
+    image: mysql:8.0.28
     restart: always
     container_name: mysql
     volumes:
       - ../volumes/data/mysqldata:/var/lib/mysql
-      - ./config/my.cnf:/etc/my.cnf
+      - ./config/my.cnf:/etc/mysql/conf.d/my.cnf
       #      数据库还原目录 可将需要还原的sql文件放在这里
       - ./init/mysql:/docker-entrypoint-initdb.d
     environment:
       - "MYSQL_ROOT_PASSWORD=lilishop"
       - "MYSQL_DATABASE=lilishop"
       - "TZ=Asia/Shanghai"
-    network_mode: host
-
-  mongo:
-    image: mongo:5.0.2
-    restart: always
-    container_name: 'mongo'
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: lilishop
     ports:
-      - 27017:27017
-    volumes: 
-      - ../volumes/data/mongodata:/data/db
+      - 3306:3306
 
   redis:
     image: redis:6.2.5
@@ -42,17 +42,18 @@ services:
     restart: always
     container_name: elasticsearch
     volumes:
-      - ../volumes/data/es7/logs:/usr/share/es7/logs:rw
-      - ../volumes/data/es7/data:/usr/share/es7/data:rw
+      # 映射本地目录权限一定要设置为 777 权限，否则启动不成功
+      # - ../volumes/data/es7/logs:/usr/share/elasticsearch/logs:rw
+      # - ../volumes/data/es7/data:/usr/share/elasticsearch/data:rw
       - ./config/ik:/usr/share/elasticsearch/plugins/ik
         #      - "./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"
-    restart: on-failure
     ports: 
       - "9200:9200"
       - "9300:9300"
     environment:
       cluster.name: elasticsearch
       discovery.type: single-node
+      ES_JAVA_OPTS: -Xms256m -Xmx256m
     logging:
       driver: "json-file"
       options:
@@ -150,6 +151,8 @@ services:
       - mysql
     volumes:
       - ../volumes/data/xxl-job:/data/applogs
+    ports:
+      - 9001:9001
 networks: 
   rocketmq:
     driver: bridge

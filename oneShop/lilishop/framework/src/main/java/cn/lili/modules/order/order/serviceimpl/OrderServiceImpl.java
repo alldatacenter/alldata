@@ -10,6 +10,7 @@ import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import cn.lili.common.enums.PromotionTypeEnum;
 import cn.lili.common.enums.ResultCode;
+import cn.lili.common.event.TransactionCommitSendMQEvent;
 import cn.lili.common.exception.ServiceException;
 import cn.lili.common.properties.RocketmqCustomProperties;
 import cn.lili.common.security.OperationalJudgment;
@@ -20,10 +21,7 @@ import cn.lili.modules.goods.entity.dto.GoodsCompleteMessage;
 import cn.lili.modules.member.entity.dto.MemberAddressDTO;
 import cn.lili.modules.order.cart.entity.dto.TradeDTO;
 import cn.lili.modules.order.order.aop.OrderLogPoint;
-import cn.lili.modules.order.order.entity.dos.Order;
-import cn.lili.modules.order.order.entity.dos.OrderItem;
-import cn.lili.modules.order.order.entity.dos.Receipt;
-import cn.lili.modules.order.order.entity.dos.Trade;
+import cn.lili.modules.order.order.entity.dos.*;
 import cn.lili.modules.order.order.entity.dto.OrderBatchDeliverDTO;
 import cn.lili.modules.order.order.entity.dto.OrderExportDTO;
 import cn.lili.modules.order.order.entity.dto.OrderMessage;
@@ -66,6 +64,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.util.CellRangeAddressList;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -143,6 +142,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Autowired
     private TradeService tradeService;
+
+
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -299,6 +302,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
             order.setCancelReason(reason);
             //修改订单
             this.updateById(order);
+            //生成店铺退款流水
+            this.generatorStoreRefundFlow(order);
             orderStatusMessage(order);
             return order;
         } else {
@@ -315,6 +320,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         order.setOrderStatus(OrderStatusEnum.CANCELLED.name());
         order.setCancelReason(reason);
         this.updateById(order);
+        //生成店铺退款流水
+        this.generatorStoreRefundFlow(order);
         orderStatusMessage(order);
     }
 
@@ -445,12 +452,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         //获取订单信息
         Order order = this.getBySn(orderSn);
         //获取踪迹信息
-        String str=order.getConsigneeMobile();
-        return logisticsService.getLogistic(order.getLogisticsCode(), order.getLogisticsNo(), str.substring(str.length()-4));
+        String str = order.getConsigneeMobile();
+        return logisticsService.getLogistic(order.getLogisticsCode(), order.getLogisticsNo(), str.substring(str.length() - 4));
     }
 
     @Override
     @OrderLogPoint(description = "'订单['+#orderSn+']核销，核销码['+#verificationCode+']'", orderSn = "#orderSn")
+    @Transactional(rollbackFor = Exception.class)
     public Order take(String orderSn, String verificationCode) {
 
         //获取订单信息
@@ -495,7 +503,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      * @param order   订单
      * @param orderSn 订单编号
      */
-    private void complete(Order order, String orderSn) {//修改订单状态为完成
+    @Transactional(rollbackFor = Exception.class)
+    public void complete(Order order, String orderSn) {//修改订单状态为完成
         this.updateStatus(orderSn, OrderStatusEnum.COMPLETED);
 
         //修改订单货物可以进行评价
@@ -534,10 +543,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void sendUpdateStatusMessage(OrderMessage orderMessage) {
-        String destination = rocketmqCustomProperties.getOrderTopic() + ":" + OrderTagsEnum.STATUS_CHANGE.name();
-        //发送订单变更mq消息
-        rocketMQTemplate.asyncSend(destination, JSONUtil.toJsonStr(orderMessage), RocketmqSendCallbackBuilder.commonCallback());
+        applicationEventPublisher.publishEvent(new TransactionCommitSendMQEvent("发送订单变更mq消息", rocketmqCustomProperties.getOrderTopic(), OrderTagsEnum.STATUS_CHANGE.name(), JSONUtil.toJsonStr(orderMessage)));
     }
 
     @Override
@@ -621,6 +629,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void batchDeliver(MultipartFile files) {
 
         InputStream inputStream;
@@ -777,13 +786,33 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     /**
      * 订单状态变更消息
      *
-     * @param order
+     * @param order 订单信息
      */
-    private void orderStatusMessage(Order order) {
+    @Transactional(rollbackFor = Exception.class)
+    public void orderStatusMessage(Order order) {
         OrderMessage orderMessage = new OrderMessage();
         orderMessage.setOrderSn(order.getSn());
         orderMessage.setNewStatus(OrderStatusEnum.valueOf(order.getOrderStatus()));
         this.sendUpdateStatusMessage(orderMessage);
+    }
+
+    /**
+     * 生成店铺退款流水
+     *
+     * @param order 订单信息
+     */
+    private void generatorStoreRefundFlow(Order order) {
+        // 判断订单是否是付款
+        if (!PayStatusEnum.PAID.name().equals((order.getPayStatus()))) {
+            return;
+        }
+        List<OrderItem> items = orderItemService.getByOrderSn(order.getSn());
+        List<StoreFlow> storeFlows = new ArrayList<>();
+        for (OrderItem item : items) {
+            StoreFlow storeFlow = new StoreFlow(order, item, FlowTypeEnum.REFUND);
+            storeFlows.add(storeFlow);
+        }
+        storeFlowService.saveBatch(storeFlows);
     }
 
     /**
@@ -906,7 +935,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      *
      * @param orderSn 订单编号
      */
-    private void normalOrderConfirm(String orderSn) {
+    @Transactional(rollbackFor = Exception.class)
+    public void normalOrderConfirm(String orderSn) {
         //修改订单
         this.update(new LambdaUpdateWrapper<Order>()
                 .eq(Order::getSn, orderSn)
@@ -925,7 +955,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      *
      * @param orderSn 订单编号
      */
-    private void virtualOrderConfirm(String orderSn) {
+    @Transactional(rollbackFor = Exception.class)
+    public void virtualOrderConfirm(String orderSn) {
         //修改订单
         this.update(new LambdaUpdateWrapper<Order>()
                 .eq(Order::getSn, orderSn)

@@ -1,70 +1,125 @@
 <template>
   <div class="wrapper">
     <Row>
-      <Col style=" height: 100%;" span="4">
+      <Col style="height: 100%" span="4">
         <Card class="article-category mr_10">
           <Tree :data="treeData" @on-select-change="handleCateChange"></Tree>
         </Card>
       </Col>
       <Col span="20">
-      <Card class="article-detail">
-        <Row @keydown.enter.native="handleSearch">
-          <Form ref="searchForm" :model="searchForm" inline :label-width="70" style="width:100%;" class="search-form">
-            <Form-item label="文章标题" prop="title">
-              <Input type="text" v-model="searchForm.title" placeholder="请输入文章标题" clearable style="width: 200px" />
-            </Form-item>
-            <Button @click="handleSearch" type="primary" icon="ios-search" class="search-btn">搜索</Button>
-          </Form>
-        </Row>
-        <Row class="operation padding-row">
-          <Button @click="add" type="primary">添加</Button>
-        </Row>
-        <Table :loading="loading" border :columns="columns" :data="data" ref="table">
-          <!-- 页面展示 -->
-          <template slot="openStatusSlot" slot-scope="scope">
-            <div>
-
-            </div>
-            <i-switch size="large" v-model="scope.row.openStatus" @on-change="changeSwitch(scope.row)">
-              <span slot="open">展示</span>
-              <span slot="close">隐藏</span>
-            </i-switch>
-          </template>
-        </Table>
-        <Row type="flex" justify="end" class="mt_10">
-          <Page :current="searchForm.pageNumber" :total="total" :page-size="searchForm.pageSize" @on-change="changePage" @on-page-size-change="changePageSize" :page-size-opts="[10, 20, 50]"
-            size="small" show-total show-elevator>
-
-          </Page>
-        </Row>
-        
-      </Card>
+        <Card class="article-detail">
+          <Row @keydown.enter.native="handleSearch">
+            <Form
+              ref="searchForm"
+              :model="searchForm"
+              inline
+              :label-width="70"
+              style="width: 100%"
+              class="search-form"
+            >
+              <Form-item label="文章标题" prop="title">
+                <Input
+                  type="text"
+                  v-model="searchForm.title"
+                  placeholder="请输入文章标题"
+                  clearable
+                  style="width: 200px"
+                />
+              </Form-item>
+              <Button
+                @click="handleSearch"
+                type="primary"
+                icon="ios-search"
+                class="search-btn"
+                >搜索</Button
+              >
+            </Form>
+          </Row>
+          <Row class="operation padding-row">
+            <Button @click="add" type="primary">添加</Button>
+          </Row>
+          <Table
+            :loading="loading"
+            border
+            :columns="columns"
+            :data="data"
+            ref="table"
+          >
+            <!-- 页面展示 -->
+            <template slot="openStatusSlot" slot-scope="scope">
+              <div></div>
+              <i-switch
+                size="large"
+                v-model="scope.row.openStatus"
+                @on-change="changeSwitch(scope.row)"
+              >
+                <span slot="open">展示</span>
+                <span slot="close">隐藏</span>
+              </i-switch>
+            </template>
+          </Table>
+          <Row type="flex" justify="end" class="mt_10">
+            <Page
+              :current="searchForm.pageNumber"
+              :total="total"
+              :page-size="searchForm.pageSize"
+              @on-change="changePage"
+              @on-page-size-change="changePageSize"
+              :page-size-opts="[10, 20, 50]"
+              size="small"
+              show-total
+              show-elevator
+            >
+            </Page>
+          </Row>
+        </Card>
       </Col>
     </Row>
     <template v-if="!selected">
-      <Modal :title="modalTitle" v-model="modalVisible" :mask-closable="false" :width="1100">
+      <Modal
+        :title="modalTitle"
+        v-model="modalVisible"
+        :mask-closable="false"
+        :width="1100"
+      >
         <Form ref="form" :model="form" :label-width="100">
           <FormItem label="文章标题" prop="title">
             <Input v-model="form.title" clearable style="width: 40%" />
           </FormItem>
           <FormItem label="文章分类" prop="categoryId">
-       
-            <Select v-model="treeValue" placeholder="请选择" clearable style="width: 180px">
-              <Option :value="treeValue" style="display: none">{{
-                      treeValue
-                    }}
+            <Select
+              v-model="treeValue"
+              placeholder="请选择"
+              clearable
+              style="width: 180px"
+            >
+              <Option v-if="treeValue" :value="treeValue" style="display: none"
+                >{{ treeValue }}
               </Option>
-              <Tree :data="treeDataDefault" @on-select-change="handleCheckChange"></Tree>
+              <Tree
+                :data="treeDataDefault"
+                @on-select-change="handleCheckChange"
+              ></Tree>
             </Select>
           </FormItem>
           <FormItem label="文章排序" prop="sort">
-            <Input type="number" v-model="form.sort" clearable style="width: 10%" />
+            <Input
+              type="number"
+              v-model="form.sort"
+              clearable
+              style="width: 10%"
+            />
           </FormItem>
           <FormItem class="form-item-view-el" label="文章内容" prop="content">
-            <editor openXss v-model="form.content"></editor>
+            <editor
+              ref="editor"
+              openXss
+              v-model="form.content"
+              :init="{ ...initEditor,height:'800px' }"
+            ></editor>
           </FormItem>
           <FormItem label="是否展示" prop="openStatus">
-            <i-switch size="large" v-model="form.openStatus"  >
+            <i-switch size="large" v-model="form.openStatus">
               <span slot="open">展示</span>
               <span slot="close">隐藏</span>
             </i-switch>
@@ -72,7 +127,9 @@
         </Form>
         <div slot="footer">
           <Button type="text" @click="modalVisible = false">取消</Button>
-          <Button type="primary" :loading="submitLoading" @click="handleSubmit">提交</Button>
+          <Button type="primary" :loading="submitLoading" @click="handleSubmit"
+            >提交</Button
+          >
         </div>
       </Modal>
     </template>
@@ -89,12 +146,12 @@ import {
   seeArticle,
   updateArticleStatus,
 } from "@/api/pages";
-import editor from "@/views/my-components/lili/editor";
-
+import Editor from "@tinymce/tinymce-vue";
+import { initEditor } from "@/views/lili-components/editor/config";
 export default {
   name: "article",
   components: {
-    editor,
+    editor: Editor,
   },
   props: {
     selected: {
@@ -104,6 +161,7 @@ export default {
   },
   data() {
     return {
+      initEditor: initEditor,
       selectedIndex: 99999, // 已选下标
       loading: true, // 表单加载状态
       modalType: 0, // 添加或编辑标识
@@ -150,7 +208,7 @@ export default {
           title: "是否显示",
           key: "openStatus",
           width: 100,
-          slot: "openStatusSlot"
+          slot: "openStatusSlot",
         },
         {
           title: "排序",
@@ -170,7 +228,10 @@ export default {
                 {
                   props: {
                     size: "small",
-                    type: this.selectedIndex == params.index ? "primary" : "default",
+                    type:
+                      this.selectedIndex == params.index
+                        ? "primary"
+                        : "default",
                   },
                   style: {
                     marginRight: "5px",
@@ -389,11 +450,11 @@ export default {
     add() {
       this.modalType = 0;
       this.modalTitle = "添加文章";
-      this.treeValue = '';
+      this.treeValue = "";
 
       this.form = {
         sort: 1,
-        content:''
+        content: "",
       };
       this.$refs.form.resetFields();
       delete this.form.id;
@@ -403,9 +464,9 @@ export default {
     edit(data) {
       this.modalType = 1;
       this.modalTitle = "编辑文章";
-      this.treeValue = '';
+      this.treeValue = "";
       this.form = {
-        content:''
+        content: "",
       };
       this.$refs.form.resetFields();
 
@@ -415,7 +476,7 @@ export default {
           this.form.categoryId = res.result.categoryId;
           this.treeValue = data.articleCategoryName;
           this.form.id = data.id;
-          this.form.content =res.result.content;
+          this.form.content = res.result.content;
           this.form.title = res.result.title;
           this.form.sort = res.result.sort;
           this.form.openStatus = res.result.openStatus;

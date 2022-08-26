@@ -49,38 +49,7 @@ export default {
           tooltip: true,
         },
 
-        {
-          title: "实付金额",
-          key: "orderPrice",
-          width: 130,
-          sortable: false,
-          render: (h, params) => {
-            if (params.row.orderPrice == null) {
-              return h("div", this.$options.filters.unitPrice(0, "￥"));
-            } else {
-              return h(
-                "div",
-                this.$options.filters.unitPrice(params.row.orderPrice, "￥")
-              );
-            }
-          },
-        },
-        {
-          title: "退款金额",
-          key: "returnMoney",
-          width: 130,
-          sortable: false,
-          render: (h, params) => {
-            if (params.row.orderPrice == null) {
-              return h("div", this.$options.filters.unitPrice(0, "￥"));
-            } else {
-              return h(
-                "div",
-                this.$options.filters.unitPrice(params.row.returnMoney, "￥")
-              );
-            }
-          },
-        },
+
         {
           title: "商品名称",
           key: "goodsName",
@@ -94,27 +63,32 @@ export default {
           sortable: false,
           render: (h, params) => {
             if (params.row.distributionOrderStatus == "COMPLETE_CASH") {
-              return h("div", "提现完成");
+              return h("Tag", { props: { color: "green" } },"提现完成");
             } else if (params.row.distributionOrderStatus == "WAIT_BILL") {
-              return h("div", "待结算");
+              return h("Tag", { props: { color: "blue" } } ,"待结算");
             } else if (params.row.distributionOrderStatus == "WAIT_CASH") {
-              return h("div", "待提现");
+              return h("Tag", { props: { color: "orange" } }, "待提现");
+            } else if (params.row.distributionOrderStatus == "CANCEL") {
+              return h("Tag", { props: { color: "red" } }, "订单已取消");
+            }else if (params.row.distributionOrderStatus == "REFUND") {
+              return h("Tag", { props: { color: "magenta" } }, "退款");
             }
+
           },
         },
 
         {
           title: "佣金金额",
-          key: "rebateGrade",
+          key: "rebate",
           width: 120,
           sortable: false,
           render: (h, params) => {
-            if (params.row.rebateGrade == null) {
+            if (params.row.rebate == null) {
               return h("div", this.$options.filters.unitPrice(0, "￥"));
             } else {
               return h(
                 "div",
-                this.$options.filters.unitPrice(params.row.rebateGrade, "￥")
+                this.$options.filters.unitPrice(params.row.rebate, "￥")
               );
             }
           },
@@ -122,6 +96,12 @@ export default {
         {
           title: "创建时间",
           key: "createTime",
+          width: 180,
+          sortable: false,
+        },
+        {
+          title: "解冻日期（T+1）",
+          key: "settleCycle",
           width: 180,
           sortable: false,
         },

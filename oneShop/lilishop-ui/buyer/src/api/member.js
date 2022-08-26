@@ -485,7 +485,7 @@ export function delMemberMsg (id) {
  */
 export function getGoodsDistribution (distributionId) {
   return request({
-    url: `/buyer/distribution/bindingDistribution/${distributionId}`,
+    url: `/buyer/distribution/distribution/bindingDistribution/${distributionId}`,
     method: Method.GET,
     needToken: true
   });

@@ -318,12 +318,15 @@ export const uploadFileRequest = (url, params) => {
   return service({
     method: "post",
     url: `${url}`,
-    params: params,
+    data: params,
     headers: {
-      accessToken: accessToken
+      accessToken: accessToken,
+      'Content-Type': 'multipart/form-data'
     }
   });
 };
+
+
 
 /**
  * 无需token验证的请求 避免旧token过期导致请求失败
