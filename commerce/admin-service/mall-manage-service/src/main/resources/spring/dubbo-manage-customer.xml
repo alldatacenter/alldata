@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.platform" />
+    <context:property-placeholder location="classpath:conf/*.properties"/>
+
+    <!-- 连接redis单机版 -->
+    <bean id="jedisClientPool" class="com.platform.mall.jedis.JedisClientPool">
+        <property name="jedisPool" ref="jedisPool"></property>
+    </bean>
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="host" value="127.0.0.1"/>
+        <constructor-arg name="port" value="6379"/>
+    </bean>
+
+    <!-- 引用dubbo服务 -->
+    <!--提交.mall前缀避免与dubbo-helper-Impl项目的别名一致导致找不到dubbo配置值-->
+    <dubbo:application name="${dubbo.mall.amdin.app.name}">
+        <dubbo:parameter key="qos.enable" value="${mall.qos.enable}" />
+        <dubbo:parameter key="qos.accept.foreign.ip" value="${mall.qos.accept.foreign.ip}" />
+        <dubbo:parameter key="qos.port" value="${mall.qos.port}" />
+    </dubbo:application>
+    <!--#其他值复用dubbo-helper-Impl项目的值-->
+    <dubbo:registry address="${dubbo.mall.registry.address}" protocol="${dubbo.mall.registry.name}"/>
+
+    <!--admin-->
+   <dubbo:reference interface="com.platform.mall.service.admin.CmsPrefrenceAreaService" id="cmsPrefrenceAreaService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.CmsSubjectService" id="cmsSubjectService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.OmsCompanyAddressService" id="omsCompanyAddressService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.OmsOrderReturnApplyService" id="omsOrderReturnApplyService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.OmsOrderReturnReasonService" id="omsOrderReturnReasonService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.OmsOrderService" id="omsOrderService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.OmsOrderSettingService" id="omsOrderSettingService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.PmsBrandService" id="pmsBrandService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.PmsProductAttributeCategoryService" id="pmsProductAttributeCategoryService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.PmsProductAttributeService" id="pmsProductAttributeService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.PmsProductCategoryService" id="pmsProductCategoryService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.PmsProductService" id="pmsProductService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.PmsSkuStockService" id="pmsSkuStockService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsCouponHistoryService" id="smsCouponHistoryService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsCouponService" id="smsCouponService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsFlashPromotionProductRelationService" id="smsFlashPromotionProductRelationService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsFlashPromotionService" id="smsFlashPromotionService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsFlashPromotionSessionService" id="smsFlashPromotionSessionService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsHomeAdvertiseService" id="smsHomeAdvertiseService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsHomeBrandService" id="smsHomeBrandService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsHomeNewProductService" id="smsHomeNewProductService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsHomeRecommendProductService" id="smsHomeRecommendProductService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.SmsHomeRecommendSubjectService" id="smsHomeRecommendSubjectService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.UmsMemberLevelService" id="umsMemberLevelService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.UmsPermissionService" id="umsPermissionService" />
+   <dubbo:reference interface="com.platform.mall.service.admin.UmsRoleService" id="umsRoleServiceImpl" />
+
+</beans>
