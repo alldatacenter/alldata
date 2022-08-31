@@ -1,0 +1,91 @@
+version: '3.3'
+services:
+  build:
+    build:
+      context: ./dockerfiles/golang
+    command: /bin/bash -c "rm -f /backend/dist/crawlab && go build -o ./dist/crawlab ./"
+    volumes:
+      - ./dist:/backend/dist
+      - ./.crawlab/go/pkg/mod:/go/pkg/mod
+      - ../backend:/backend
+      - ../backend/go.mod.local:/backend/go.mod
+      - ../..:/libs/crawlab-team
+    environment:
+      GOPROXY: https://goproxy.cn,direct
+
+  master:
+    build:
+      context: ./dockerfiles/golang
+    command: /bin/bash -c "/app/bin/docker-start-master.sh && /dist/crawlab master"
+    volumes:
+      - ./dist:/dist
+      - ./.crawlab/master:/root/.crawlab
+      - ./.crawlab/go/pkg/mod:/go/pkg/mod
+      - ../backend:/backend
+      - ../backend/go.mod.local:/backend/go.mod
+      - ../..:/libs/crawlab-team
+      - ../bin:/app/bin
+      - ../nginx:/etc/nginx/conf.d
+      - ../frontend/dist:/app/dist
+    environment:
+      CRAWLAB_NODE_MASTER: "Y"
+      CRAWLAB_NODE_NAME: "Master Node"
+      CRAWLAB_MONGO_HOST: "mongo"
+      CRAWLAB_LOG_LEVEL: debug
+      GOPROXY: https://goproxy.cn,direct
+    ports:
+      - "9080:8080"
+      - "9000:8000"
+      - "9866:9666"
+      - "9888:8888"
+    depends_on:
+      - mongo
+
+  worker01:
+    build:
+      context: ./dockerfiles/golang
+    command: /bin/bash -c "/dist/crawlab worker"
+    environment:
+      CRAWLAB_NODE_MASTER: "N"
+      CRAWLAB_NODE_NAME: "Worker Node 01"
+      CRAWLAB_GRPC_ADDRESS: "master"
+      CRAWLAB_FS_FILER_URL: "http://master:8080/api/filer"
+      CRAWLAB_LOG_LEVEL: debug
+      GOPROXY: https://goproxy.cn,direct
+    volumes:
+      - ./dist:/dist
+      - ./.crawlab/worker01:/root/.crawlab
+      - ./.crawlab/go/pkg/mod:/go/pkg/mod
+      - ../backend:/backend
+      - ../backend/go.mod.local:/backend/go.mod
+      - ../..:/libs/crawlab-team
+    depends_on:
+      - master
+
+  worker02:
+    build:
+      context: ./dockerfiles/golang
+    command: /bin/bash -c "/dist/crawlab worker"
+    environment:
+      CRAWLAB_NODE_MASTER: "N"
+      CRAWLAB_NODE_NAME: "Worker Node 02"
+      CRAWLAB_GRPC_ADDRESS: "master"
+      CRAWLAB_FS_FILER_URL: "http://master:8080/api/filer"
+      CRAWLAB_LOG_LEVEL: debug
+      GOPROXY: https://goproxy.cn,direct
+    volumes:
+      - ./dist:/dist
+      - ./.crawlab/worker02:/root/.crawlab
+      - ./.crawlab/go/pkg/mod:/go/pkg/mod
+      - ../backend:/backend
+      - ../backend/go.mod.local:/backend/go.mod
+      - ../..:/libs/crawlab-team
+    depends_on:
+      - master
+      - worker01
+
+  mongo:
+    image: mongo:4
+    restart: always
+    ports:
+      - "28017:27017"
