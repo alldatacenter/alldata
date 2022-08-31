@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.mapper.UmsAdminRoleRelationMapper">
+    <resultMap id="BaseResultMap" type="com.platform.mall.entity.admin.UmsAdminRoleRelation">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="admin_id" jdbcType="BIGINT" property="adminId"/>
+        <result column="role_id" jdbcType="BIGINT" property="roleId"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        id, admin_id, role_id
+    </sql>
+    <select id="selectByExample" parameterType="com.platform.mall.entity.admin.UmsAdminRoleRelationExample"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from ums_admin_role_relation
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ums_admin_role_relation
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from ums_admin_role_relation
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.platform.mall.entity.admin.UmsAdminRoleRelationExample">
+        delete from ums_admin_role_relation
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.platform.mall.entity.admin.UmsAdminRoleRelation">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into ums_admin_role_relation (admin_id, role_id)
+        values (#{adminId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.platform.mall.entity.admin.UmsAdminRoleRelation">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into ums_admin_role_relation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="adminId != null">
+                admin_id,
+            </if>
+            <if test="roleId != null">
+                role_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="adminId != null">
+                #{adminId,jdbcType=BIGINT},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.platform.mall.entity.admin.UmsAdminRoleRelationExample"
+            resultType="java.lang.Long">
+        select count(*) from ums_admin_role_relation
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update ums_admin_role_relation
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.adminId != null">
+                admin_id = #{record.adminId,jdbcType=BIGINT},
+            </if>
+            <if test="record.roleId != null">
+                role_id = #{record.roleId,jdbcType=BIGINT},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update ums_admin_role_relation
+        set id = #{record.id,jdbcType=BIGINT},
+        admin_id = #{record.adminId,jdbcType=BIGINT},
+        role_id = #{record.roleId,jdbcType=BIGINT}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.platform.mall.entity.admin.UmsAdminRoleRelation">
+        update ums_admin_role_relation
+        <set>
+            <if test="adminId != null">
+                admin_id = #{adminId,jdbcType=BIGINT},
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.platform.mall.entity.admin.UmsAdminRoleRelation">
+        update ums_admin_role_relation
+        set admin_id = #{adminId,jdbcType=BIGINT},
+        role_id = #{roleId,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--批量新增回写主键支持-->
+    <insert id="insertList">
+        INSERT INTO ums_admin_role_relation (admin_id, role_id) VALUES
+        <foreach collection="list" separator="," item="item" index="index">
+            (#{item.adminId,jdbcType=BIGINT},
+            #{item.roleId,jdbcType=BIGINT})
+        </foreach>
+    </insert>
+
+    <resultMap id="RoleListResultMap" type="com.platform.mall.entity.admin.UmsRole">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="admin_count" jdbcType="INTEGER" property="adminCount"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+    </resultMap>
+    <select id="getRoleList" resultMap="RoleListResultMap">
+        select r.*
+        from ums_admin_role_relation ar left join ums_role r on ar.role_id = r.id
+        where ar.admin_id = #{adminId}
+    </select>
+
+    <resultMap id="PermissionListResultMap" type="com.platform.mall.entity.admin.UmsPermission">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="pid" jdbcType="BIGINT" property="pid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="value" jdbcType="VARCHAR" property="value"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="uri" jdbcType="VARCHAR" property="uri"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+    </resultMap>
+    <select id="getRolePermissionList" resultMap="PermissionListResultMap">
+        select p.*
+        from ums_admin_role_relation ar left join ums_role r on ar.role_id = r.id
+                                        left join ums_role_permission_relation rp on r.id = rp.role_id
+                                        left join ums_permission p on rp.permission_id=p.id
+        where ar.admin_id = #{adminId} and p.id is not null
+    </select>
+
+    <select id="getPermissionList" resultMap="PermissionListResultMap">
+        SELECT
+            p.*
+        FROM
+            ums_admin_role_relation ar
+                LEFT JOIN ums_role r ON ar.role_id = r.id
+                LEFT JOIN ums_role_permission_relation rp ON r.id = rp.role_id
+                LEFT JOIN ums_permission p ON rp.permission_id = p.id
+        WHERE
+            ar.admin_id = #{adminId}
+          AND p.id IS NOT NULL
+          AND p.id NOT IN (
+            SELECT
+                p.id
+            FROM
+                ums_admin_permission_relation pr
+                    LEFT JOIN ums_permission p ON pr.permission_id = p.id
+            WHERE
+                pr.type = - 1
+              AND pr.admin_id = #{adminId}
+        )
+        UNION
+        SELECT
+            p.*
+        FROM
+            ums_admin_permission_relation pr
+                LEFT JOIN ums_permission p ON pr.permission_id = p.id
+        WHERE
+            pr.type = 1
+          AND pr.admin_id = #{adminId}
+    </select>
+</mapper>
