@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+<context:component-scan base-package="com.platform.mall" />
+
+    <context:property-placeholder location="classpath:conf/*.properties"/>
+
+    <!-- 连接redis单机版 -->
+    <bean id="jedisClientPool" class="com.platform.mall.jedis.JedisClientPool">
+        <property name="jedisPool" ref="jedisPool"></property>
+    </bean>
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="host" value="127.0.0.1"/>
+        <constructor-arg name="port" value="6379"/>
+    </bean>
+
+    <!-- 配置多媒体解析器 -->
+    <!-- 定义文件上传解析器 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设定默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+        <property name="maxUploadSize" value="5242880"></property>
+    </bean>
+
+    <!--配置资源映射-->
+    <mvc:resources mapping="/swagger/**" location="/swagger/"/>
+
+    <!-- 引用dubbo服务 -->
+    <!--提交.mall前缀避免与dubbo-helper-Impl项目的别名一致导致找不到dubbo配置值-->
+    <dubbo:application name="${dubbo.mall.application.name}">
+        <dubbo:parameter key="qos.enable" value="${mall.qos.enable}" />
+        <dubbo:parameter key="qos.accept.foreign.ip" value="${mall.qos.accept.foreign.ip}" />
+        <dubbo:parameter key="qos.port" value="${mall.qos.port}" />
+    </dubbo:application>
+    <!--#其他值复用dubbo-helper-Impl项目的值-->
+    <dubbo:registry address="${dubbo.mall.registry.address}" protocol="${dubbo.mall.registry.name}"/>
+
+    <dubbo:reference interface="com.platform.mall.service.ContentService" id="contentService" check="true"/>
+    <dubbo:reference interface="com.platform.mall.service.SearchService" id="searchService" />
+    <dubbo:reference interface="com.platform.mall.service.RegisterService" id="registerService" />
+    <dubbo:reference interface="com.platform.mall.service.LoginService" id="loginService" />
+    <dubbo:reference interface="com.platform.mall.service.CartService" id="cartService" />
+    <dubbo:reference interface="com.platform.mall.service.OrderService" id="orderService" />
+    <dubbo:reference interface="com.platform.mall.service.AddressService" id="addressService" />
+    <dubbo:reference interface="com.platform.mall.service.MemberService" id="memberService" />
+    <dubbo:reference interface="com.platform.mall.service.ThanksService" id="thanksService" />
+
+</beans>
