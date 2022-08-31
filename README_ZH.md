@@ -48,9 +48,9 @@
 
 ## [AllData社区项目官方文档](https://alldatateam.github.io/)
 
-## [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
+## [AllData数据中台体验版地址](https://alldatateam.github.io/)
 
-## [AllData社区项目体验版Demo](https://github.com/AllDataTeam/dataHub)
+## [AllData数据中台前端Demo](https://github.com/AllDataTeam/dataHub)
 <br/>
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/187581176-f26e4d3d-36ae-48bb-ba95-dd08a2cbe5cd.png">
 <br/>
