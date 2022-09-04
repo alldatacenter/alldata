@@ -1,15 +1,27 @@
-# DATA MIDDLE OFFICE BUSINESS FOR ALL DATA PLATFORM 业务
+# DASHBOARD FOR ALL DATA PLATFORM
 
-服务与数据中台frontend的多租户运维平台
+## 1、DataHub数据中台前端
+### 维护AllData社区项目数据中台前端代码
 
-1、数据中台前端 dataHub/frontend
+### 感谢@Jancya @meggielulu
 
-2、数据中台Django后端 dataHub/backend
+## 2、安装部署
+### npm start
 
-3、数据中台Java后端 dataHub/backend-java
+>Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-4、多租户运维平台前端 dataHub/tenant
+### npm test
 
-5、多租户运维平台前端 dataHub/tenant-java
+>Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```
+### npm run build
+
+>构建项目打包
+
+## 3、线上访问地址
+
+### http://112.74.93.144:3000/data-center
