@@ -1,0 +1,2 @@
+FROM sreworks-registry.cn-beijing.cr.aliyuncs.com/sreworks/sw-migrate:latest
+COPY ./APP-META-PRIVATE/db /sql

@@ -1,0 +1,6 @@
+
+
+name: kubecost 
+deployCommand: helm upgrade kubecost ./cost-analyzer --create-namespace --namespace sreworks-client -f values.yaml --install 
+chart: cost-analyzer
+

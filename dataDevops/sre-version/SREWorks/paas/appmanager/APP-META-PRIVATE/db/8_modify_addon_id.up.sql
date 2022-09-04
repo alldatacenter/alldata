@@ -1,0 +1,2 @@
+ALTER TABLE `am_addon_meta` CHANGE COLUMN `addon_id` `addon_id` VARCHAR(64) DEFAULT NULL  COMMENT '附加组件唯一标识' AFTER `addon_type`;
+ALTER TABLE `am_addon_instance` CHANGE COLUMN `addon_id` `addon_id` VARCHAR(64) DEFAULT NULL  COMMENT '附加组件唯一标识' AFTER `namespace_id`;

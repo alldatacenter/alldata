@@ -1,0 +1,1 @@
+ALTER TABLE `am_deploy_app` CHANGE COLUMN `deploy_status` `deploy_status` VARCHAR(32) DEFAULT NULL COMMENT '状态' AFTER `gmt_end`;

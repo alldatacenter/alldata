@@ -1,0 +1,2 @@
+FROM reg.docker.alibaba-inc.com/abm-aone/migrate
+COPY ./sql /sql

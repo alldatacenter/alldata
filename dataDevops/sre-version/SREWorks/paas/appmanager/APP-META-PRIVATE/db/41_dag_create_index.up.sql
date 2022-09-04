@@ -1,0 +1,1 @@
+ALTER TABLE `tc_dag_inst_node` ADD INDEX `idx_sub_dag_inst_id` (`sub_dag_inst_id`);

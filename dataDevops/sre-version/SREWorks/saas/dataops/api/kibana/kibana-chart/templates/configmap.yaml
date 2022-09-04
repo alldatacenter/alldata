@@ -1,0 +1,13 @@
+{{- if .Values.kibanaConfig }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "kibana.fullname" . }}-config
+  labels: {{ include "kibana.labels" . | nindent 4 }}
+data:
+{{- range $path, $config := .Values.kibanaConfig }}
+  {{ $path }}: |
+{{ tpl $config $ | indent 4 -}}
+{{- end -}}
+{{- end -}}
