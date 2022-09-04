@@ -1,0 +1,13 @@
+apiVersion: core.oam.dev/v1alpha2
+kind: TraitDefinition
+metadata:
+  name: systemEnv.trait.abm.io
+spec:
+  runtime: pre
+  appliesToWorkloads:
+    - "*"
+  definitionRef:
+    name: systemEnv.k8s.schema.abm.io
+  example:
+    keys:
+      - DB_HOST

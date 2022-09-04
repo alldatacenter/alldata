@@ -1,0 +1,102 @@
+{{ if .Values.notary.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "harbor.notary-signer" . }}
+  labels:
+{{ include "harbor.labels" . | indent 4 }}
+    component: notary-signer
+spec:
+  replicas: {{ .Values.notary.signer.replicas }}
+  selector:
+    matchLabels:
+{{ include "harbor.matchLabels" . | indent 6 }}
+      component: notary-signer
+  template:
+    metadata:
+      labels:
+{{ include "harbor.labels" . | indent 8 }}
+        component: notary-signer
+      annotations:
+        checksum/secret: {{ include (print $.Template.BasePath "/notary/notary-secret.yaml") . | sha256sum }}
+{{- if .Values.notary.signer.podAnnotations }}
+{{ toYaml .Values.notary.signer.podAnnotations | indent 8 }}
+{{- end }}
+    spec:
+      securityContext:
+        runAsUser: 10000
+        fsGroup: 10000
+{{- if .Values.notary.signer.serviceAccountName }}
+      serviceAccountName: {{ .Values.notary.signer.serviceAccountName }}
+{{- end -}}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      automountServiceAccountToken: {{ .Values.notary.signer.automountServiceAccountToken | default false }}
+      containers:
+      - name: notary-signer
+        image: {{ .Values.notary.signer.image.repository }}:{{ .Values.notary.signer.image.tag }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        livenessProbe:
+          httpGet:
+            path: /
+            scheme: "HTTPS"
+            port: 7899
+          initialDelaySeconds: 300
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            scheme: "HTTPS"
+            port: 7899
+          initialDelaySeconds: 20
+          periodSeconds: 10
+{{- if .Values.notary.signer.resources }}
+        resources:
+{{ toYaml .Values.notary.signer.resources | indent 10 }}
+{{- end }}
+        env:
+        - name: MIGRATIONS_PATH
+          value: migrations/signer/postgresql
+        - name: DB_URL
+          value: {{ template "harbor.database.notarySigner" . }}
+        - name: NOTARY_SIGNER_DEFAULTALIAS
+          value: defaultalias
+        volumeMounts:
+        - name: config
+          mountPath: /etc/notary/signer-config.postgres.json
+          subPath: signer.json
+        - name: signer-certificate
+          mountPath: /etc/ssl/notary/tls.crt
+          subPath: tls.crt
+        - name: signer-certificate
+          mountPath: /etc/ssl/notary/tls.key
+          subPath: tls.key
+      volumes:
+      - name: config
+        secret:
+          secretName: "{{ template "harbor.notary-server" . }}"
+      - name: signer-certificate
+        secret:
+          {{- if .Values.notary.secretName }}
+          secretName: {{ .Values.notary.secretName }}
+          {{- else }}
+          secretName: {{ template "harbor.notary-server" . }}
+          {{- end }}
+    {{- with .Values.notary.signer.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.notary.signer.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.notary.signer.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- if .Values.notary.signer.priorityClassName }}
+      priorityClassName: {{ .Values.notary.signer.priorityClassName }}
+    {{- end }}
+{{ end }}

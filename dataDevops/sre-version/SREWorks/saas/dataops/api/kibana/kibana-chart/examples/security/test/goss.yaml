@@ -1,0 +1,27 @@
+http:
+  https://localhost:5601/app/kibana:
+    status: 200
+    timeout: 2000
+    allow-insecure: true
+    username: '{{ .Env.ELASTICSEARCH_USERNAME }}'
+    password: '{{ .Env.ELASTICSEARCH_PASSWORD }}'
+
+  https://helm-kibana-security-kibana:5601/app/kibana:
+    status: 200
+    timeout: 2000
+    allow-insecure: true
+    username: '{{ .Env.ELASTICSEARCH_USERNAME }}'
+    password: '{{ .Env.ELASTICSEARCH_PASSWORD }}'
+
+file:
+  /usr/share/kibana/config/kibana.yml:
+    exists: true
+    contains:
+      - 'server.ssl:'
+      - '  enabled: true'
+      - '  key: /usr/share/kibana/config/certs/elastic-certificate.pem'
+      - '  certificate: /usr/share/kibana/config/certs/elastic-certificate.pem'
+      - 'xpack.security.encryptionKey:'
+      - 'elasticsearch.ssl:'
+      - '  certificateAuthorities: /usr/share/kibana/config/certs/elastic-certificate.pem'
+      - '  verificationMode: certificate'
