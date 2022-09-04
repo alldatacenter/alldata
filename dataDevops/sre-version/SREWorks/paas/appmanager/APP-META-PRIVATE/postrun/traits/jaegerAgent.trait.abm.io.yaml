@@ -1,0 +1,14 @@
+apiVersion: core.oam.dev/v1alpha2
+kind: TraitDefinition
+metadata:
+  name: jaegerAgent.trait.abm.io
+spec:
+  className: com.alibaba.tesla.appmanager.trait.plugin.JaegerAgentTrait
+  runtime: pre
+  appliesToWorkloads:
+    - "*"
+  definitionRef:
+    name: jaegerAgent.k8s.schema.abm.io
+  example:
+    endpoint: 'endpoint'
+    tags: 'tags'

@@ -1,0 +1,110 @@
+daemonset:
+  extraEnvs:
+    - name: 'ELASTICSEARCH_USERNAME'
+      valueFrom:
+        secretKeyRef:
+          name: elastic-credentials
+          key: username
+    - name: 'ELASTICSEARCH_PASSWORD'
+      valueFrom:
+        secretKeyRef:
+          name: elastic-credentials
+          key: password
+  # Allows you to add any config files in /usr/share/metricbeat
+  # such as metricbeat.yml for daemonset
+  metricbeatConfig:
+    metricbeat.yml: |
+      metricbeat.modules:
+      - module: kubernetes
+        metricsets:
+          - container
+          - node
+          - pod
+          - system
+          - volume
+        period: 10s
+        host: "${NODE_NAME}"
+        hosts: ["https://${NODE_NAME}:10250"]
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+        ssl.verification_mode: "none"
+        # If using Red Hat OpenShift remove ssl.verification_mode entry and
+        # uncomment these settings:
+        #ssl.certificate_authorities:
+          #- /var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt
+        processors:
+        - add_kubernetes_metadata: ~
+      - module: kubernetes
+        enabled: true
+        metricsets:
+          - event
+      - module: system
+        period: 10s
+        metricsets:
+          - cpu
+          - load
+          - memory
+          - network
+          - process
+          - process_summary
+        processes: ['.*']
+        process.include_top_n:
+          by_cpu: 5
+          by_memory: 5
+      - module: system
+        period: 1m
+        metricsets:
+          - filesystem
+          - fsstat
+        processors:
+        - drop_event.when.regexp:
+            system.filesystem.mount_point: '^/(sys|cgroup|proc|dev|etc|host|lib)($|/)'
+      output.elasticsearch:
+        username: '${ELASTICSEARCH_USERNAME}'
+        password: '${ELASTICSEARCH_PASSWORD}'
+        protocol: https
+        hosts: ["security-master:9200"]
+        ssl.certificate_authorities:
+          - /usr/share/metricbeat/config/certs/elastic-certificate.pem
+  secretMounts:
+  - name: elastic-certificate-pem
+    secretName: elastic-certificate-pem
+    path: /usr/share/metricbeat/config/certs
+
+deployment:
+  extraEnvs:
+    - name: 'ELASTICSEARCH_USERNAME'
+      valueFrom:
+        secretKeyRef:
+          name: elastic-credentials
+          key: username
+    - name: 'ELASTICSEARCH_PASSWORD'
+      valueFrom:
+        secretKeyRef:
+          name: elastic-credentials
+          key: password
+  # Allows you to add any config files in /usr/share/metricbeat
+  # such as metricbeat.yml for deployment
+  metricbeatConfig:
+    metricbeat.yml: |
+      metricbeat.modules:
+      - module: kubernetes
+        enabled: true
+        metricsets:
+          - state_node
+          - state_deployment
+          - state_replicaset
+          - state_pod
+          - state_container
+        period: 10s
+        hosts: ["${KUBE_STATE_METRICS_HOSTS}"]
+      output.elasticsearch:
+        username: '${ELASTICSEARCH_USERNAME}'
+        password: '${ELASTICSEARCH_PASSWORD}'
+        protocol: https
+        hosts: ["security-master:9200"]
+        ssl.certificate_authorities:
+          - /usr/share/metricbeat/config/certs/elastic-certificate.pem
+  secretMounts:
+  - name: elastic-certificate-pem
+    secretName: elastic-certificate-pem
+    path: /usr/share/metricbeat/config/certs

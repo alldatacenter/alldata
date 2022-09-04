@@ -1,0 +1,17 @@
+---
+{{- if .Values.maxUnavailable }}
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: "{{ template "logstash.fullname" . }}-pdb"
+  labels:
+    app: "{{ template "logstash.fullname" . }}"
+    chart: "{{ .Chart.Name }}"
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+spec:
+  maxUnavailable: {{ .Values.maxUnavailable }}
+  selector:
+    matchLabels:
+      app: "{{ template "logstash.fullname" . }}"
+{{- end }}
