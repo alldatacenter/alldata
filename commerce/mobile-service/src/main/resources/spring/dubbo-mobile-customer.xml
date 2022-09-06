@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.platform.mall.core,com.platform.mall.mobile" />
+    <context:property-placeholder location="classpath:conf/*.properties"/>
+
+    <!-- 引用dubbo服务 -->
+    <!--提交.mall前缀避免与dubbo-helper-Impl项目的别名一致导致找不到dubbo配置值-->
+    <dubbo:application name="${dubbo.mall.mobile.app.name}">
+        <dubbo:parameter key="qos.enable" value="${mall.mobile.qos.enable}" />
+        <dubbo:parameter key="qos.accept.foreign.ip" value="${mall.mobile.qos.accept.foreign.ip}" />
+        <dubbo:parameter key="qos.port" value="${mall.mobile.qos.port}" />
+    </dubbo:application>
+    <!--#其他值复用dubbo-helper-Impl项目的值-->
+    <dubbo:registry address="${dubbo.mall.mobile.registry.address}" protocol="${dubbo.mall.mobile.registry.name}"/>
+
+    <!--mobile-->
+   <dubbo:reference interface="com.platform.mall.service.mobile.CouponAssignService" id="couponAssignService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.CouponVerifyService" id="couponVerifyService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallAddressService" id="litemallAddressService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallAdminService" id="litemallAdminService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallAdService" id="litemallAdService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallBrandService" id="litemallBrandService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallCartService" id="litemallCartService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallCategoryService" id="litemallCategoryService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallCollectService" id="litemallCollectService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallCommentService" id="litemallCommentService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallCouponService" id="litemallCouponService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallCouponUserService" id="litemallCouponUserService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallFeedbackService" id="litemallFeedbackService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallFootprintService" id="litemallFootprintService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallGoodsAttributeService" id="litemallGoodsAttributeService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallGoodsProductService" id="litemallGoodsProductService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallGoodsService" id="litemallGoodsService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallGoodsSpecificationService" id="litemallGoodsSpecificationService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallGrouponRulesService" id="litemallGrouponRulesService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallGrouponService" id="litemallGrouponService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallIssueService" id="litemallIssueService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallKeywordService" id="litemallKeywordService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallLogService" id="litemallLogService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallOrderGoodsService" id="litemallOrderGoodsService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallOrderService" id="litemallOrderService" />
+   <dubbo:reference interface="com.platform.mall.service.mobile.LitemallPermissionService" id="litemallPermissionService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallRegionService" id="litemallRegionService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallRoleService" id="litemallRoleService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallSearchHistoryService" id="litemallSearchHistoryService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallStorageService" id="litemallStorageService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallSystemConfigService" id="litemallSystemConfigService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallTopicService" id="litemallTopicService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallUserFormIdService" id="litemallUserFormIdService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.LitemallUserService" id="litemallUserService" />
+    <dubbo:reference interface="com.platform.mall.service.mobile.StatService" id="statService" />
+
+</beans>
