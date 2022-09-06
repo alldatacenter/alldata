@@ -31,7 +31,7 @@
   </a>
 </p>
 
-[中文](https://github.com/authorwlh/alldata/blob/master/README-zh.md) | English
+[中文](https://github.com/authorwlh/alldata/blob/master/README-ZH.md) | English
 
 [Demo](http://112.74.93.144:3000) | [Documentation](https://github.com/authorwlh/alldata/blob/master/README.md) | [Installation](#installation) | [Run](#run) | [Screenshot](#screenshot) | [Architecture](#architecture) | [Integration](#integration-with-other-frameworks) | [Compare](#comparison-with-other-frameworks) | [Community & Sponsorship](#community--sponsorship)
 
