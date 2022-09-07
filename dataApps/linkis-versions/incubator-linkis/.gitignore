@@ -1,0 +1,33 @@
+.DS_Store
+.cache
+
+# for ide
+*.iml
+*.ipr
+*.iws
+*.pyc
+*.pyo
+*.swp
+.idea/
+.idea_modules/
+.project
+.pydevproject
+.scala_dependencies
+.settings
+.classpath
+
+# For SBT
+.jvmopts
+
+# For Node.js
+node_modules/
+
+# generated file
+.mvn/wrapper/maven-wrapper.jar
+dist/
+out/
+target/
+
+# log folder
+*.log
+logs/
