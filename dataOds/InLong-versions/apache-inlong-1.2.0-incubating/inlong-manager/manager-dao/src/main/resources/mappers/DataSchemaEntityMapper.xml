@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements. See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership. The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License. You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.apache.inlong.manager.dao.mapper.DataSchemaEntityMapper">
+    <resultMap id="BaseResultMap" type="org.apache.inlong.manager.dao.entity.DataSchemaEntity">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="agent_type" jdbcType="VARCHAR" property="agentType"/>
+        <result column="data_generate_rule" jdbcType="VARCHAR" property="dataGenerateRule"/>
+        <result column="sort_type" jdbcType="INTEGER" property="sortType"/>
+        <result column="time_offset" jdbcType="VARCHAR" property="timeOffset"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, agent_type, data_generate_rule, sort_type, time_offset
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from data_schema
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByName" resultMap="BaseResultMap">
+        select *
+        from data_schema
+        where name = #{name,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAll" resultType="org.apache.inlong.manager.dao.entity.DataSchemaEntity">
+        select *
+        from data_schema
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from data_schema
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="org.apache.inlong.manager.dao.entity.DataSchemaEntity">
+        insert into data_schema (id, name, agent_type,
+                                 data_generate_rule, sort_type, time_offset)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{agentType,jdbcType=VARCHAR},
+                #{dataGenerateRule,jdbcType=VARCHAR}, #{sortType,jdbcType=INTEGER}, #{timeOffset,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="org.apache.inlong.manager.dao.entity.DataSchemaEntity">
+        insert into data_schema
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="agentType != null">
+                agent_type,
+            </if>
+            <if test="dataGenerateRule != null">
+                data_generate_rule,
+            </if>
+            <if test="sortType != null">
+                sort_type,
+            </if>
+            <if test="timeOffset != null">
+                time_offset,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="agentType != null">
+                #{agentType,jdbcType=VARCHAR},
+            </if>
+            <if test="dataGenerateRule != null">
+                #{dataGenerateRule,jdbcType=VARCHAR},
+            </if>
+            <if test="sortType != null">
+                #{sortType,jdbcType=INTEGER},
+            </if>
+            <if test="timeOffset != null">
+                #{timeOffset,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.apache.inlong.manager.dao.entity.DataSchemaEntity">
+        update data_schema
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="agentType != null">
+                agent_type = #{agentType,jdbcType=VARCHAR},
+            </if>
+            <if test="dataGenerateRule != null">
+                data_generate_rule = #{dataGenerateRule,jdbcType=VARCHAR},
+            </if>
+            <if test="sortType != null">
+                sort_type = #{sortType,jdbcType=INTEGER},
+            </if>
+            <if test="timeOffset != null">
+                time_offset = #{timeOffset,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.apache.inlong.manager.dao.entity.DataSchemaEntity">
+        update data_schema
+        set name               = #{name,jdbcType=VARCHAR},
+            agent_type         = #{agentType,jdbcType=VARCHAR},
+            data_generate_rule = #{dataGenerateRule,jdbcType=VARCHAR},
+            sort_type          = #{sortType,jdbcType=INTEGER},
+            time_offset        = #{timeOffset,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
