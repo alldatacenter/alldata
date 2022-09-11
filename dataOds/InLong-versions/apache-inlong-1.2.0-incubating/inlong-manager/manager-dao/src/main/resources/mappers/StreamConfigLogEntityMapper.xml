@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements. See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership. The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License. You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.apache.inlong.manager.dao.mapper.StreamConfigLogEntityMapper">
+  <resultMap id="BaseResultMap" type="org.apache.inlong.manager.dao.entity.StreamConfigLogEntity">
+    <id column="ip" jdbcType="VARCHAR" property="ip" />
+    <id column="inlong_stream_id" jdbcType="VARCHAR" property="inlongStreamId" />
+    <id column="inlong_group_id" jdbcType="VARCHAR" property="inlongGroupId" />
+    <id column="component_name" jdbcType="VARCHAR" property="componentName" />
+    <id column="config_name" jdbcType="VARCHAR" property="configName" />
+    <id column="log_type" jdbcType="INTEGER" property="logType" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="report_time" jdbcType="TIMESTAMP" property="reportTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.apache.inlong.manager.dao.entity.StreamConfigLogEntity">
+    <result column="log_info" jdbcType="LONGVARCHAR" property="logInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ip, version, inlong_stream_id, inlong_group_id, component_name, config_name,
+    log_type, report_time, modify_time
+  </sql>
+  <sql id="Blob_Column_List">
+    log_info
+  </sql>
+  <insert id="insertOrUpdateAll" parameterType="java.util.List">
+    insert into stream_config_log (ip, version,
+      inlong_stream_id, inlong_group_id, component_name,
+      config_name, log_type, report_time, log_info) values
+    <foreach collection="list" index="index" item="item" open="" close="" separator=",">
+      (#{item.ip,jdbcType=VARCHAR}, #{item.version,jdbcType=VARCHAR},
+      #{item.inlongStreamId,jdbcType=VARCHAR}, #{item.inlongGroupId,jdbcType=VARCHAR}, #{item.componentName,jdbcType=VARCHAR},
+      #{item.configName,jdbcType=VARCHAR}, #{item.logType,jdbcType=INTEGER}, #{item.reportTime,jdbcType=TIMESTAMP},
+      #{item.logInfo,jdbcType=LONGVARCHAR})
+    </foreach>
+    ON DUPLICATE key update report_time=values(report_time),log_info=values(log_info)
+  </insert>
+  <select id="selectByCondition" resultMap="ResultMapWithBLOBs"
+      parameterType="org.apache.inlong.manager.common.pojo.stream.InlongStreamConfigLogPageRequest">
+    select
+    <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List" />
+    from stream_config_log
+    where log_type = 1
+    <if test="reportTime != null">
+      and report_time > #{reportTime, jdbcType=TIMESTAMP}
+    </if>
+    <if test="inlongStreamId != null and inlongStreamId != ''">
+      and inlong_stream_id = #{inlongStreamId, jdbcType=VARCHAR}
+    </if>
+    <if test="inlongGroupId != null and inlongGroupId != ''">
+      and inlong_stream_id = #{inlongGroupId, jdbcType=VARCHAR}
+    </if>
+    <if test="componentName != null and componentName != ''">
+      and inlong_stream_id = #{inlongGroupId, jdbcType=VARCHAR}
+    </if>
+    <if test="configName != null and configName != ''">
+      and inlong_stream_id = #{inlongGroupId, jdbcType=VARCHAR}
+    </if>
+    order by modify_time desc
+  </select>
+</mapper>
