@@ -1,0 +1,128 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "inlong.fullname" . }}-{{ .Values.agent.component }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "inlong.commonLabels" . | nindent 4 }}
+    component: {{ .Values.agent.component }}
+spec:
+  serviceName: {{ template "inlong.fullname" . }}-{{ .Values.agent.component }}
+  replicas: {{ .Values.agent.replicas }}
+  selector:
+    matchLabels:
+      {{- include "inlong.matchLabels" . | nindent 6 }}
+      component: {{ .Values.agent.component }}
+  updateStrategy:
+    type: {{ .Values.agent.updateStrategy.type | quote }}
+  podManagementPolicy: {{ .Values.agent.podManagementPolicy | quote }}
+  template:
+    metadata:
+      labels:
+        {{- include "inlong.template.labels" . | nindent 8 }}
+        component: {{ .Values.agent.component }}
+      {{- if .Values.agent.annotations }}
+      annotations:
+        {{- toYaml .Values.agent.annotations | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- if .Values.agent.tolerations }}
+      tolerations:
+        {{- toYaml .Values.agent.tolerations | nindent 8 }}
+      {{- end }}
+      {{- if .Values.agent.nodeSelector }}
+      nodeSelector:
+        {{- toYaml .Values.agent.nodeSelector | nindent 8 }}
+      {{- end }}
+      {{- if .Values.agent.affinity }}
+      affinity:
+        {{- toYaml .Values.agent.affinity | nindent 8 }}
+      {{- end }}
+      terminationGracePeriodSeconds: {{ .Values.agent.terminationGracePeriodSeconds }}
+      initContainers:
+        - name: wait-{{ .Values.dashboard.component }}-ready
+          image: {{ .Values.images.initContainer.repository }}:{{ .Values.images.initContainer.tag }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              count={{ .Values.dashboard.replicas }}
+              for i in $(seq 0 $(expr $count - 1))
+              do
+                replica="{{ template "inlong.fullname" . }}-{{ .Values.dashboard.component }}-$i"
+                host="$replica.{{ template "inlong.dashboard.hostname" . }}"
+                port={{ .Values.dashboard.port }}
+                until nc -z $host $port 2>/dev/null
+                do
+                  echo "waiting for $replica to be ready"
+                  sleep 3
+                done
+              done
+        - name: wait-{{ .Values.dataproxy.component }}-ready
+          image: {{ .Values.images.initContainer.repository }}:{{ .Values.images.initContainer.tag }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              count={{ .Values.dataproxy.replicas }}
+              for i in $(seq 0 $(expr $count - 1))
+              do
+                replica="{{ template "inlong.fullname" . }}-{{ .Values.dataproxy.component }}-$i"
+                host="$replica.{{ template "inlong.dataproxy.hostname" . }}"
+                port={{ .Values.dataproxy.port }}
+                until nc -z $host $port 2>/dev/null
+                do
+                  echo "waiting for $replica to be ready"
+                  sleep 3
+                done
+              done
+      containers:
+        - name: {{ template "inlong.fullname" . }}-{{ .Values.agent.component }}
+          image: {{ .Values.images.agent.repository }}:{{ .Values.images.agent.tag }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          {{- if .Values.agent.resources }}
+          resources:
+            {{- toYaml .Values.agent.resources | nindent 12 }}
+          {{- end }}
+          env:
+            - name: MANAGER_OPENAPI_IP
+              value: {{ include "inlong.manager.hostname" . | quote }}
+            - name: MANAGER_OPENAPI_PORT
+              value: {{ .Values.manager.port | quote }}
+            - name: DATAPROXY_IP
+              value: {{ include "inlong.dataproxy.hostname" . | quote }}
+            - name: DATAPROXY_PORT
+              value: {{ .Values.dataproxy.port | quote }}
+            - name: AUDIT_PROXY_URL
+              value: "{{ template "inlong.audit.hostname" . }}:{{ .Values.audit.port }}"
+            {{- range $key, $value := .Values.agent.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          ports:
+            - name: {{ .Values.agent.component }}-port
+              containerPort: 8008
+          volumeMounts:
+            - name: data
+              mountPath: /data/collect-data
+      volumes:
+        - name: data
+          emptyDir: {}
+      restartPolicy: Always

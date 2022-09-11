@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements. See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership. The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License. You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.apache.inlong.manager.dao.mapper.WorkflowApproverEntityMapper">
+    <resultMap id="BaseResultMap" type="org.apache.inlong.manager.dao.entity.WorkflowApproverEntity">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="process_name" jdbcType="VARCHAR" property="processName"/>
+        <result column="task_name" jdbcType="VARCHAR" property="taskName"/>
+        <result column="filter_key" jdbcType="VARCHAR" property="filterKey"/>
+        <result column="filter_value" jdbcType="VARCHAR" property="filterValue"/>
+        <result column="filter_value_desc" jdbcType="VARCHAR" property="filterValueDesc"/>
+        <result column="approvers" jdbcType="VARCHAR" property="approvers"/>
+        <result column="creator" jdbcType="VARCHAR" property="creator"/>
+        <result column="modifier" jdbcType="VARCHAR" property="modifier"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="is_deleted" jdbcType="INTEGER" property="isDeleted"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, process_name, task_name, filter_key, filter_value, filter_value_desc, approvers, creator, modifier,
+    create_time, modify_time, is_deleted
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from workflow_approver
+        where id = #{id,jdbcType=INTEGER} and is_deleted=0
+    </select>
+    <delete id="deleteByPrimaryKey">
+        update workflow_approver
+        set is_deleted = id,
+            modify_time=now(),
+            modifier=#{modifier,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert"
+            parameterType="org.apache.inlong.manager.dao.entity.WorkflowApproverEntity">
+        insert into workflow_approver (id, process_name, task_name,
+                                 filter_key, filter_value, filter_value_desc, approvers,
+                                 creator, modifier, create_time,
+                                 modify_time, is_deleted)
+        values (#{id,jdbcType=INTEGER}, #{processName,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR},
+                #{filterKey,jdbcType=VARCHAR}, #{filterValue,jdbcType=VARCHAR}, #{filterValueDesc,jdbcType=VARCHAR},
+                #{approvers,jdbcType=VARCHAR},
+                #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+                #{modifyTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective"
+            parameterType="org.apache.inlong.manager.dao.entity.WorkflowApproverEntity">
+        insert into workflow_approver
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="processName != null">
+                process_name,
+            </if>
+            <if test="taskName != null">
+                task_name,
+            </if>
+            <if test="filterKey != null">
+                filter_key,
+            </if>
+            <if test="filterValue != null">
+                filter_value,
+            </if>
+            <if test="filterValueDesc != null">
+                filter_value_desc,
+            </if>
+            <if test="approvers != null">
+                approvers,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="isDeleted != null">
+                is_deleted,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="processName != null">
+                #{processName,jdbcType=VARCHAR},
+            </if>
+            <if test="taskName != null">
+                #{taskName,jdbcType=VARCHAR},
+            </if>
+            <if test="filterKey != null">
+                #{filterKey,jdbcType=VARCHAR},
+            </if>
+            <if test="filterValue != null">
+                #{filterValue,jdbcType=VARCHAR},
+            </if>
+            <if test="filterValueDesc != null">
+                #{filterValueDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="approvers != null">
+                #{approvers,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDeleted != null">
+                #{isDeleted,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="org.apache.inlong.manager.dao.entity.WorkflowApproverEntity">
+        update workflow_approver
+        <set>
+            <if test="processName != null">
+                process_name = #{processName,jdbcType=VARCHAR},
+            </if>
+            <if test="taskName != null">
+                task_name = #{taskName,jdbcType=VARCHAR},
+            </if>
+            <if test="filterKey != null">
+                filter_key = #{filterKey,jdbcType=VARCHAR},
+            </if>
+            <if test="filterValue != null">
+                filter_value = #{filterValue,jdbcType=VARCHAR},
+            </if>
+            <if test="filterValueDesc != null">
+                filter_value_desc = #{filterValueDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="approvers != null">
+                approvers = #{approvers,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER} and is_deleted=0
+    </update>
+    <update id="updateByPrimaryKey"
+            parameterType="org.apache.inlong.manager.dao.entity.WorkflowApproverEntity">
+        update workflow_approver
+        set process_name = #{processName,jdbcType=VARCHAR},
+            task_name    = #{taskName,jdbcType=VARCHAR},
+            filter_key   = #{filterKey,jdbcType=VARCHAR},
+            filter_value = #{filterValue,jdbcType=VARCHAR},
+            approvers    = #{approvers,jdbcType=VARCHAR},
+            creator      = #{creator,jdbcType=VARCHAR},
+            modifier     = #{modifier,jdbcType=VARCHAR},
+            create_time  = #{createTime,jdbcType=TIMESTAMP},
+            modify_time  = #{modifyTime,jdbcType=TIMESTAMP},
+            is_deleted   = #{isDeleted,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+          and is_deleted = 0
+    </update>
+    <select id="selectByQuery"
+            parameterType="org.apache.inlong.manager.common.pojo.workflow.WorkflowApproverQuery"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from workflow_approver
+        where is_deleted =0
+        <if test="processName != null and processName!=''">
+            and process_name = #{processName,jdbcType=VARCHAR}
+        </if>
+        <if test="taskName != null and taskName!=''">
+            and task_name = #{taskName,jdbcType=VARCHAR}
+        </if>
+        <if test="filterKey != null and filterKey!=''">
+            and filter_key = #{filterKey,jdbcType=VARCHAR}
+        </if>
+        <if test="filterValue != null and filterValue!=''">
+            and filter_value = #{filterValue,jdbcType=VARCHAR}
+        </if>
+        <if test="approver != null and approver!=''">
+            and FIND_IN_SET(#{approver,jdbcType=VARCHAR},approvers)
+        </if>
+        <if test="creator != null and creator!=''">
+            and creator = #{creator,jdbcType=VARCHAR}
+        </if>
+        <if test="modifier != null and modifier!=''">
+            and modifier = #{modifier,jdbcType=VARCHAR}
+        </if>
+    </select>
+</mapper>

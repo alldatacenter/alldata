@@ -1,0 +1,180 @@
+{{/*
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+*/}}
+
+** Thank you for installing {{ .Chart.Name }}. Please be patient while the chart {{ .Chart.Name }}-{{ .Chart.AppVersion }} is being deployed. **
+
+1. Access InLong Dashboard by running these commands:
+
+{{- if .Values.ingress.enabled }}
+
+    InLong Dashboard URL: http{{ if .Values.ingress.tls.enabled }}s{{ end }}://{{ .Values.ingress.host }}/{{ .Values.ingress.path }}
+
+{{- else if eq .Values.dashboard.service.type "ClusterIP" }}
+
+    $ export DASHBOARD_POD_NAME=$(sudo kubectl get pods -l "app.kubernetes.io/name={{ template "inlong.name" . }}-{{ .Values.dashboard.component }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}" -n {{ .Release.Namespace }})
+    $ export DASHBOARD_CONTAINER_PORT=$(sudo kubectl get pod $DASHBOARD_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}" -n {{ .Release.Namespace }})
+    $ sudo kubectl port-forward $DASHBOARD_POD_NAME 8181:$DASHBOARD_CONTAINER_PORT -n {{ .Release.Namespace }}
+    $ echo "InLong Dashboard URL: http://127.0.0.1:8181"
+
+{{- else if eq .Values.dashboard.service.type "NodePort" }}
+
+    $ export DASHBOARD_NODE_IP=$(sudo kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}" -n {{ .Release.Namespace }})
+    $ export DASHBOARD_NODE_PORT=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.dashboard.component }} -o jsonpath="{.spec.ports[0].nodePort}" -n {{ .Release.Namespace }})
+    $ echo "InLong Dashboard URL: http://$DASHBOARD_NODE_IP:$DASHBOARD_NODE_PORT"
+
+{{- else if eq .Values.dashboard.service.type "LoadBalancer" }}
+
+    NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+          You can check the status by running 'sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.dashboard.component }} -n {{ .Release.Namespace }} -w'
+
+    $ export DASHBOARD_SERVICE_IP=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.dashboard.component }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}"  -n {{ .Release.Namespace }})
+    $ echo "http://$DASHBOARD_SERVICE_IP:{{ .Values.dashboard.service.nodePort }}"
+
+{{- end }}
+
+2. Access InLong Manager by running these commands:
+
+{{- if .Values.ingress.enabled }}
+
+    InLong Manager URL: http{{ if .Values.ingress.tls.enabled }}s{{ end }}://{{ .Values.ingress.host }}/{{ .Values.ingress.path }}
+
+{{- else if eq .Values.manager.service.type "ClusterIP" }}
+
+    $ export MANAGER_POD_NAME=$(sudo kubectl get pods -l "app.kubernetes.io/name={{ template "inlong.name" . }}-{{ .Values.manager.component }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}" -n {{ .Release.Namespace }})
+    $ export MANAGER_CONTAINER_PORT=$(sudo kubectl get pod $MANAGER_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}" -n {{ .Release.Namespace }})
+    $ sudo kubectl port-forward $MANAGER_POD_NAME 8182:$MANAGER_CONTAINER_PORT -n {{ .Release.Namespace }}
+    $ echo "InLong Manager URL: http://127.0.0.1:8182"
+
+{{- else if eq .Values.manager.service.type "NodePort" }}
+
+    $ export MANAGER_NODE_IP=$(sudo kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}" -n {{ .Release.Namespace }})
+    $ export MANAGER_NODE_PORT=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.manager.component }} -o jsonpath="{.spec.ports[0].nodePort}" -n {{ .Release.Namespace }})
+    $ echo "InLong Manager URL: http://$MANAGER_NODE_IP:$MANAGER_NODE_PORT"
+
+{{- else if eq .Values.manager.service.type "LoadBalancer" }}
+
+    NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+          You can check the status by running 'sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.manager.component }} -n {{ .Release.Namespace }} -w'
+
+    $ export MANAGER_SERVICE_IP=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.manager.component }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}" -n {{ .Release.Namespace }})
+    $ echo "InLong Manager URL: http://$MANAGER_SERVICE_IP:{{ .Values.manager.service.nodePort }}"
+
+{{- end }}
+
+3. Access InLong DataProxy by running these commands:
+
+{{- if .Values.ingress.enabled }}
+
+    InLong DataProxy URL: http{{ if .Values.ingress.tls.enabled }}s{{ end }}://{{ .Values.ingress.host }}/{{ .Values.ingress.path }}
+
+{{- else if eq .Values.dataproxy.service.type "ClusterIP" }}
+
+    $ export DATA_PROXY_POD_NAME=$(sudo kubectl get pods -l "app.kubernetes.io/name={{ template "inlong.name" . }}-{{ .Values.dataproxy.component }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}" -n {{ .Release.Namespace }})
+    $ export DATA_PROXY_CONTAINER_PORT=$(sudo kubectl get pod $DATA_PROXY_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}" -n {{ .Release.Namespace }})
+    $ sudo kubectl port-forward $DATA_PROXY_POD_NAME 8183:$DATA_PROXY_CONTAINER_PORT -n {{ .Release.Namespace }}
+    $ echo "InLong DataProxy URL: http://127.0.0.1:8183"
+
+{{- else if eq .Values.dataproxy.service.type "NodePort" }}
+
+    $ export DATA_PROXY_NODE_IP=$(sudo kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}" -n {{ .Release.Namespace }})
+    $ export DATA_PROXY_NODE_PORT=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.dataproxy.component }} -o jsonpath="{.spec.ports[0].nodePort}" -n {{ .Release.Namespace }})
+    $ echo "InLong DataProxy URL: http://$DATA_PROXY_NODE_IP:$DATA_PROXY_NODE_PORT"
+
+{{- else if eq .Values.dataproxy.service.type "LoadBalancer" }}
+
+    NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+          You can check the status by running 'sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.dataproxy.component }} -n {{ .Release.Namespace }} -w'
+
+    $ export DATA_PROXY_SERVICE_IP=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.dataproxy.component }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}" -n {{ .Release.Namespace }})
+    $ echo "InLong DataProxy URL: http://$DATA_PROXY_SERVICE_IP:{{ .Values.dataproxy.service.nodePort }}"
+
+{{- end }}
+
+4. Access InLong TubeMQ Master by running these commands:
+
+{{- if .Values.ingress.enabled }}
+
+    InLong TubeMQ Master URL: http{{ if .Values.ingress.tls.enabled }}s{{ end }}://{{ .Values.ingress.host }}/{{ .Values.ingress.path }}
+
+{{- else if eq .Values.tubemqMaster.service.type "ClusterIP" }}
+
+    $ export TUBEMQ_MASTER_POD_NAME=$(sudo kubectl get pods -l "app.kubernetes.io/name={{ template "inlong.name" . }}-{{ .Values.tubemqMaster.component }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}" -n {{ .Release.Namespace }})
+    $ export TUBEMQ_MASTER_CONTAINER_PORT=$(sudo kubectl get pod $TUBEMQ_MASTER_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}" -n {{ .Release.Namespace }})
+    $ sudo kubectl port-forward $TUBEMQ_MASTER_POD_NAME 8183:$TUBEMQ_MASTER_CONTAINER_PORT -n {{ .Release.Namespace }}
+    $ echo "InLong TubeMQ Master URL: http://127.0.0.1:8183"
+
+{{- else if eq .Values.tubemqMaster.service.type "NodePort" }}
+
+    $ export TUBEMQ_MASTER_NODE_IP=$(sudo kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}" -n {{ .Release.Namespace }})
+    $ export TUBEMQ_MASTER_NODE_PORT=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }} -o jsonpath="{.spec.ports[0].nodePort}" -n {{ .Release.Namespace }})
+    $ echo "InLong TubeMQ Master URL: http://$TUBEMQ_MASTER_NODE_IP:$TUBEMQ_MASTER_NODE_PORT"
+
+{{- else if eq .Values.tubemqMaster.service.type "LoadBalancer" }}
+
+    NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+          You can check the status by running 'sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }} -n {{ .Release.Namespace }} -w'
+
+    $ export TUBEMQ_MASTER_SERVICE_IP=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}" -n {{ .Release.Namespace }})
+    $ echo "InLong TubeMQ Master URL: http://$TUBEMQ_MASTER_SERVICE_IP:{{ .Values.tubemqMaster.service.webNodePort }}"
+
+{{- end }}
+
+5. Access InLong TubeMQ Broker by running these commands:
+
+{{- if .Values.ingress.enabled }}
+
+    InLong TubeMQ Broker URL: http{{ if .Values.ingress.tls.enabled }}s{{ end }}://{{ .Values.ingress.host }}/{{ .Values.ingress.path }}
+
+{{- else if eq .Values.tubemqBroker.service.type "ClusterIP" }}
+
+    $ export TUBEMQ_BROKER_POD_NAME=$(sudo kubectl get pods -l "app.kubernetes.io/name={{ template "inlong.name" . }}-{{ .Values.tubemqBroker.component }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}" -n {{ .Release.Namespace }})
+    $ export TUBEMQ_BROKER_CONTAINER_PORT=$(sudo kubectl get pod $TUBEMQ_BROKER_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}" -n {{ .Release.Namespace }})
+    $ sudo kubectl port-forward $TUBEMQ_BROKER_POD_NAME 8183:$TUBEMQ_BROKER_CONTAINER_PORT -n {{ .Release.Namespace }}
+    $ echo "InLong TubeMQ Broker URL: http://127.0.0.1:8183"
+
+{{- else if eq .Values.tubemqBroker.service.type "NodePort" }}
+
+    $ export TUBEMQ_BROKER_NODE_IP=$(sudo kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}" -n {{ .Release.Namespace }})
+    $ export TUBEMQ_BROKER_NODE_PORT=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.tubemqBroker.component }} -o jsonpath="{.spec.ports[0].nodePort}" -n {{ .Release.Namespace }})
+    $ echo "InLong TubeMQ Broker URL: http://$TUBEMQ_BROKER_NODE_IP:$TUBEMQ_BROKER_NODE_PORT"
+
+{{- else if eq .Values.tubemqBroker.service.type "LoadBalancer" }}
+
+    NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+          You can check the status by running 'sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.tubemqBroker.component }} -n {{ .Release.Namespace }} -w'
+
+    $ export TUBEMQ_BROKER_SERVICE_IP=$(sudo kubectl get svc {{ template "inlong.fullname" . }}-{{ .Values.tubemqBroker.component }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}" -n {{ .Release.Namespace }})
+    $ echo "InLong TubeMQ Broker URL: http://$TUBEMQ_BROKER_SERVICE_IP:{{ .Values.tubemqBroker.service.webNodePort }}"
+
+{{- end }}
+
+To learn more about the release, try:
+
+    $ sudo helm status {{ .Release.Name }} -n {{ .Release.Namespace }}
+    $ sudo helm get all {{ .Release.Name }} -n {{ .Release.Namespace }}
+
+To uninstall the release, try:
+
+    $ sudo helm uninstall {{ .Release.Name }} -n {{ .Release.Namespace }}
+
+To delete all PVC if any persistent volume claims used, try:
+
+    $ sudo kubectl delete pvc -n {{ .Release.Namespace }} --all
+
+For more details, please check out https://inlong.apache.org/docs/next/deployment/k8s
