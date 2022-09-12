@@ -1,2 +1,0 @@
-test a
-test b
