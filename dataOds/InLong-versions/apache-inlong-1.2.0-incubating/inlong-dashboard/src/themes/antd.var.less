@@ -1,0 +1,71 @@
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+/*
+ * Theme config
+ *
+ * The overwrite operation is configured in webpack because on-demand loading is used
+ */
+
+// Contains antd variables and custom variables
+@primary-color: #0052D9;
+@success-color: #02c58d;
+@processing-color: @primary-color;
+@error-color: #e85254;
+@warning-color: #f7b500;
+
+@white: #fff;
+@black: #000;
+
+@text-color: #333;
+@text-color-secondary: #666;
+@text-color-lesser: #999;
+
+// layout
+@font-family: 'PingFang SC', -apple-system, 'Helvetica Neue', Helvetica, BlinkMacSystemFont,
+  'Microsoft YaHei', tahoma, Arial, 'Open Sans', 'Hiragino Sans GB', 'Heiti SC',
+  'WenQuanYi Micro Hei', sans-serif;
+@background-color-light: #f6f7fb;
+@layout-header-background:@primary-color;
+@layout-body-background: #eff2f7;
+
+// card
+@card-head-color: @text-color;
+@card-padding-base: 20px;
+@card-radius: 2px;
+
+// border
+@border-color-split: #f4f4f4;
+@border-color-base: #e5e5e5;
+@border-radius-base: 2px;
+
+// Form
+@label-color: fade(@black, 85%);
+@form-item-margin-bottom: 20px;
+
+// Table
+@table-header-bg: @background-color-light;
+@table-header-color: @text-color-lesser;
+
+// Step
+@process-tail-color: #c5c5c5;
+
+// Custom digital font
+@number-font-family: DINAlternate-Bold;

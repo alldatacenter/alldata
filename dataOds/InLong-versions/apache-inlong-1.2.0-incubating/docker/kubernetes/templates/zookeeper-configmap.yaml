@@ -1,0 +1,53 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "inlong.fullname" . }}-{{ .Values.zookeeper.component }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    component: {{ .Values.zookeeper.component }}
+data:
+  ok: |
+    #!/bin/sh
+    zkServer.sh status
+
+  ready: |
+    #!/bin/sh
+    echo ruok | nc 127.0.0.1 ${1:-2181}
+
+  run: |
+    #!/bin/bash
+    set -a
+    HOST=$(hostname)
+    if [[ $HOST =~ (.*)-([0-9]+)$ ]]; then
+      NAME=${BASH_REMATCH[1]}
+      ORD=${BASH_REMATCH[2]}
+      MY_POD_ID=$((ORD+1))
+    else
+      echo "Failed to extract ordinal from hostname $HOST"
+      exit 1
+    fi
+    if [ ! -d "/data/zoo_data/" ]; then
+      mkdir /data/zoo_data/ /data/zoo_log/
+    fi
+    export ZOO_MY_ID=$MY_POD_ID
+    export ZOO_DATA_DIR="/data/zoo_data/"
+    export ZOO_DATA_LOG_DIR="/data/zoo_log/"
+    export SERVER_JVMFLAGS="-Xmx1g -Xms1g"
+    /docker-entrypoint.sh zkServer.sh start-foreground
