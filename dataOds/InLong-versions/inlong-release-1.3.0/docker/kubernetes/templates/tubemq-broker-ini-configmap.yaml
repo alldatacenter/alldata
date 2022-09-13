@@ -1,0 +1,49 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+{{- if .Values.components.tubemqServer }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqBroker.component }}-ini
+  namespace: {{ .Release.Namespace }}
+  labels:
+    component: {{ .Values.tubemqBroker.component }}
+data:
+  broker.ini.raw: |
+    [broker]
+    brokerId=REPLACE_BY_POD_ID
+    hostName=REPLACE_BY_POD_IP
+    port={{ .Values.tubemqBroker.ports.rpcPort }}
+    webPort={{ .Values.tubemqBroker.ports.webPort }}
+    masterAddressList=REPLACE_BY_MASTER_LIST
+    primaryPath=/data/stage/metadata_REPLACE_BY_POD_ID
+    maxSegmentSize=1073741824
+    maxIndexSegmentSize=22020096
+    transferSize=524288
+    loadMessageStoresInParallel=true
+    consumerRegTimeoutMs=35000
+
+    [zookeeper]
+    zkNodeRoot=/tubemq
+    zkServerAddr={{ template "inlong.zookeeper.hostname" . }}:{{ .Values.zookeeper.ports.client }}
+    zkSessionTimeoutMs=30000
+    zkConnectionTimeoutMs=30000
+    zkSyncTimeMs=5000
+    zkCommitPeriodMs=5000
+    zkCommitFailRetries=10
+{{- end }}

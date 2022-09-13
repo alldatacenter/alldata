@@ -1,0 +1,55 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+{{- if .Values.components.tubemqServer }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    component: {{ .Values.tubemqMaster.component }}
+data:
+  ok: |
+    #!/bin/sh
+    /opt/tubemq-server/bin/tubemq.sh master status
+
+  ready: |
+    #!/bin/sh
+    curl 127.0.0.1:{{ .Values.tubemqMaster.ports.webPort }}/index.htm
+
+  run: |
+    #!/bin/bash
+    set -a
+    # get pod index
+    HOST=$(hostname)
+    if [[ $HOST =~ (.*)-([0-9]+)$ ]]; then
+      NAME=${BASH_REMATCH[1]}
+      ORD=${BASH_REMATCH[2]}
+      MY_POD_ID=$((ORD+1))
+    else
+      echo "Failed to extract ordinal from hostname $HOST"
+      exit 1
+    fi
+    # generate config file
+    cp /opt/tubemq-server/conf/master.ini.raw /opt/tubemq-server/conf/master.ini
+    sed -i "s/REPLACE_BY_POD_ID/$MY_POD_ID/g" /opt/tubemq-server/conf/master.ini
+    sed -i "s/REPLACE_BY_POD_HOSTNAME/{{ template "inlong.tubemqMaster.hostname" . }}/g" /opt/tubemq-server/conf/master.ini
+    # start master
+    /opt/tubemq-server/bin/tubemq.sh master start
+    tail -F /opt/tubemq-server/logs/master.log
+{{- end }}

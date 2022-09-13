@@ -1,0 +1,75 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+{{- if .Values.components.tubemqServer }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqBroker.component }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    component: {{ .Values.tubemqBroker.component }}
+data:
+  ok: |
+    #!/bin/sh
+    /opt/tubemq-server/bin/tubemq.sh broker status
+
+  ready: |
+    #!/bin/sh
+    /opt/tubemq-server/bin/tubemq.sh broker status
+
+  run: |
+    #!/bin/bash
+    set -a
+    # get pod index
+    HOST=$(hostname)
+    if [[ $HOST =~ (.*)-([0-9]+)$ ]]; then
+      NAME=${BASH_REMATCH[1]}
+      ORD=${BASH_REMATCH[2]}
+      MY_POD_ID=$((ORD+1))
+    else
+      echo "Failed to extract ordinal from hostname $HOST"
+      exit 1
+    fi
+    # get active master and register broker
+    webPort={{ .Values.tubemqMaster.ports.webPort }}
+    rpcPort={{ .Values.tubemqMaster.ports.rpcPort }}
+    for ((i=0;i<{{ .Values.tubemqMaster.replicas }};i++)); do
+      master="{{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}-$i.{{ template "inlong.tubemqMaster.hostname" . }}"
+      index=$(curl $master:$webPort/index.htm)
+      if [[ -n "$index" ]]; then
+        # add broker
+        curl -d "type=op_modify&method=admin_add_broker_configure&brokerId=$MY_POD_ID\
+        &brokerIp=$MY_POD_IP&brokerPort=8123&deletePolicy=delete,168h&numPartitions=3\
+        &unflushThreshold=1000&acceptPublish=true&acceptSubscribe=true&unflushInterval=10000\
+        &createUser=docker&confModAuthToken=abc" http://$master:$webPort/webapi.htm
+        # online
+        curl -d "type=op_modify&method=admin_online_broker_configure&brokerId=$MY_POD_ID\
+        &modifyUser=docker&confModAuthToken=abc" http://$master:$webPort/webapi.htm
+      fi
+      # master addresses list
+      MASTER_LIST="$master:$rpcPort,"$MASTER_LIST
+    done
+    # generate config file
+    cp /opt/tubemq-server/conf/broker.ini.raw /opt/tubemq-server/conf/broker.ini
+    sed -i "s/REPLACE_BY_POD_ID/$MY_POD_ID/g" /opt/tubemq-server/conf/broker.ini
+    sed -i "s/REPLACE_BY_POD_IP/$MY_POD_IP/g" /opt/tubemq-server/conf/broker.ini
+    sed -i "s/REPLACE_BY_MASTER_LIST/${MASTER_LIST%?}/g" /opt/tubemq-server/conf/broker.ini
+    # start
+    /opt/tubemq-server/bin/tubemq.sh broker start
+    tail -F /opt/tubemq-server/logs/broker.log
+{{- end }}

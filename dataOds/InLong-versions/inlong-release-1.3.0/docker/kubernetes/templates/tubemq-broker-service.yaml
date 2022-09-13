@@ -1,0 +1,59 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+{{- if .Values.components.tubemqServer }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqBroker.component }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "inlong.commonLabels" . | nindent 4 }}
+    component: {{ .Values.tubemqBroker.component }}
+  annotations:
+    {{- toYaml .Values.tubemqBroker.service.annotations | nindent 4 }}
+spec:
+  type: {{ .Values.tubemqBroker.service.type }}
+  {{- if and (eq .Values.tubemqBroker.service.type "ClusterIP") .Values.tubemqBroker.service.clusterIP }}
+  clusterIP: {{ .Values.tubemqBroker.service.clusterIP }}
+  {{- end }}
+  ports:
+    - name: broker-web-port
+      protocol: TCP
+      port: {{ .Values.tubemqBroker.ports.webPort }}
+      targetPort: 8081
+      {{- if and (eq .Values.tubemqBroker.service.type "NodePort") .Values.tubemqBroker.service.webNodePort }}
+      nodePort: {{ .Values.tubemqBroker.service.webNodePort }}
+      {{- end }}
+    - name: broker-rpc-port
+      protocol: TCP
+      port: {{ .Values.tubemqBroker.ports.rpcPort }}
+      targetPort: 8123
+  {{- if and (eq .Values.tubemqBroker.service.type "LoadBalancer") .Values.tubemqBroker.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.tubemqBroker.service.loadBalancerIP }}
+  {{- end }}
+  {{- if and (eq .Values.tubemqBroker.service.type "ExternalName") .Values.tubemqBroker.service.externalName }}
+  externalName: {{ .Values.tubemqBroker.service.externalName }}
+  {{- end }}
+  {{- if .Values.tubemqBroker.service.externalIPs }}
+  externalIPs:
+    {{- toYaml .Values.tubemqBroker.service.externalIPs | nindent 4 }}
+  {{- end }}
+  selector:
+    {{- include "inlong.matchLabels" . | nindent 4 }}
+    component: {{ .Values.tubemqBroker.component }}
+{{- end }}
