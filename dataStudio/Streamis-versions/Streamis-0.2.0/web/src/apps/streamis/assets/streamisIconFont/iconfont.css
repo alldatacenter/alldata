@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2562871 */
+  src: url('iconfont.woff2?t=1621579006110') format('woff2'),
+       url('iconfont.woff?t=1621579006110') format('woff'),
+       url('iconfont.ttf?t=1621579006110') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shuju:before {
+  content: "\e6ab";
+}
+
+.icon-fl-shuju:before {
+  content: "\e62d";
+}
+
+.icon-jiqun:before {
+  content: "\e610";
+}
+
+.icon-mysql:before {
+  content: "\e613";
+}
+
+.icon-apachekafka:before {
+  content: "\eb3f";
+}
+
+.icon-table:before {
+  content: "\e617";
+}
+
+.icon-shuju1:before {
+  content: "\e832";
+}
+

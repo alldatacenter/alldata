@@ -1,0 +1,16 @@
+.contianer {
+  padding: 20px 30px 0;
+}
+.cardWrap {
+  display: flex;
+}
+.cardInner {
+  display: flex;
+  width: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+   & p{
+     text-align: center;
+   }
+}

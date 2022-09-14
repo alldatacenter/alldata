@@ -1,0 +1,220 @@
+{
+  "message": {
+    "streamis": {
+      "enterYarn": "跳转到Yarn页面",
+      "operationSuccess": "操作成功",
+      "routerName": {
+        "realTimeJobCenter": "实时生产中心",
+        "scriptisRealTimeJob": "Scriptis实时任务",
+        "VisualisRealTimeJob": "Visualis实时任务",
+        "projectResourceFiles": "工程资源文件"
+      },
+      "moduleName": {
+        "coreIndex": "核心指标",
+        "jobList": "任务列表",
+        "jobSummary": "运行情况",
+        "jobHistory": "执行历史",
+        "jobConfig": "配置",
+        "jobDetail": "任务详情",
+        "alert": "告警"
+      },
+      "jobStatus": {
+        "failure": "失败任务",
+        "running": "运行中",
+        "stopping": "停止中",
+        "starting": "启动中",
+        "slowTask": "慢任务",
+        "alert": "告警",
+        "waitRestart": "等待重启",
+        "success": "已完成",
+        "uploaded" : "已上传",
+        "all": "全部",
+        "stopped": "已停止",
+        "unstarted": "未启动"
+      },
+      "formItems": {
+        "queryBtn": "查询",
+        "batchAction": "批量操作",
+        "cancel": "取消",
+        "jobStatus": "作业状态",
+        "jobCreator": "提交人",
+        "jobName": "作业名称",
+        "stopBtn": "停止",
+        "directStop": "直接停止",
+        "snapshotAndStop": "快照并停止",
+        "directRestart": "直接重启",
+        "snapshotRestart": "快照重启",
+        "startBtn": "启动",
+        "configBtn": "配置",
+        "saveBtn": "保存",
+        "confirmBtn": "确认",
+        "updateBtn": "更新",
+        "notEmpty": "不能为空",
+        "wrongFormat": "格式错误"
+      },
+      "jobListTableColumns":{
+        "jobName": "作业名称",
+        "jobType": "作业类型",
+        "taskStatus": "运行状态",
+        "lastReleaseTime": "最近发布时间",
+        "label": "标签",
+        "version": "版本",
+        "lastRelease": "最近发布人",
+        "description": "描述",
+        "operation": "操作",
+        "upload": "导入",
+        "snapTitle": "快照【savepoint】",
+        "stopTaskTitle": "停止任务中",
+        "stopTaskContent": "正在批量停止任务中...",
+        "endTaskTitle": "任务完成",
+        "failInfo": "异常信息",
+        "snapshotInfo": "快照路径",
+        "startTaskTitle": "启动任务中",
+        "startTaskContent": "正在批量启动任务..."
+        
+      },
+      "versionDetail":{
+        "modalTitle":"版本详情",
+        "jobId":"作业id",
+        "version":"版本",
+        "description":"描述",
+        "createTime":"创建时间",
+        "creator":"创建者",
+        "projectID":"项目id",
+        "dssLabels":"dss环境",
+        "resourceId":"bml id",
+        "bmlVersion":"bml版本",
+        "showDetail": "打开"
+      },
+      "jobMoudleRouter": {
+        "paramsConfiguration": "参数配置",
+        "alertConfiguration": "告警配置",
+        "runningHistory": "运行历史",
+        "runningLogs": "运行日志",
+        "savepoint": "快照【savepoint】"
+      },
+      "jobSummary": {
+        "resourceUse": "资源使用",
+        "realTimeTraffic": "实时流量",
+        "dataNumber": "数据总量",
+        "loadCondition": "负载情况",
+        "unit": "条",
+        "loadColumns": {
+            "type": "类型",
+            "host": "Host",
+            "memoryUse": "内存使用",
+            "gcTotalTime": "GC总时间",
+            "gcLastConsume": "上次GC耗时",
+            "gcLastTime": "上次GC时间"
+          }
+      },
+      "jobHistoryColumns": {
+        "taskId": "运行ID",
+        "jobName": "名称",
+        "creator": "责任人",
+        "version": "版本",
+        "status": "状态",
+        "startTime": "开始时间",
+        "endTime": "结束时间",
+        "runTime": "运行时间",
+        "stopCause": "结束原因",
+        "operation": "操作",
+        "showVersionInfo":"查看版本信息",
+        "detail":"详情",
+        "logs":"历史日志"
+      },
+      "jobDetail": {
+        "flinkJarPac": "Flink主Jar包",
+        "dependJarPac": "依赖Jar包",
+        "userResource": "用户资源",
+        "sqlContent": "SQL内容",
+        "urlEmpty": "链接为空",
+        "columns": {
+            "name": "名称",
+            "version": "版本",
+            "versionDescription": "版本描述",
+            "versionUploadTime": "时间",
+            "operation": "操作"
+          }
+      },
+      "jobConfig": {
+        "resourceConfig": "资源配置",
+        "productionConfig": "生产配置",
+        "flinkParameters": "Flink参数",
+        "alertSet": "告警设置",
+        "authoritySet": "权限设置",
+        "formItems": {
+            "taskManagersNum": "Task Managers数量",
+            "checkpointGap": "Checkpoint间隔",
+            "restartStrategy": "重启策略",
+            "alertRule": "告警规则",
+            "alertLevel": "告警级别",
+            "alertUser": "告警用户",
+            "alertLevelFailed": "失败时告警规则",
+            "alertUserFailed": "失败时告警用户",
+            "authorityModel": "授权模式",
+            "authorityPersons": "可见人员",
+            "options":{
+                "notRestart": "不重启",
+                "autoRestartBasedCheckpoint": "基于Checkpoint自动重启",
+                "notStarNoCheckpoint": "无Checkpoint不重启",
+                "privite": "私密",
+                "specifiedPersonVisible": "指定人员可见",
+                "all": "全部可见",
+                "logsError": "任务日志中出现ERROR/EXCEPTION",
+                "coreException": "任务核心指标出现异常"
+            },
+            "placeholders":{
+                "flinkParameters": "输入Flink参数名",
+                "variable": "输入参数值"
+            }
+          }
+      },
+      "uploadJar": {
+        "entrypointClass": "主类",
+        "label": "标签",
+        "entrypointMainArgs": "参数",
+        "parallelism": "并行度",
+        "selectJar": "请选择Jar包",
+        "upload": "上传",
+        "choosedJar" : "选中的Jar包",
+        "jarError": "文件必须是Jar包",
+        "jarEmpty": "必须选择Jar包",
+        "jobNameEmpty": "作业名称不能为空"
+      },
+      "projectFile": {
+        "file": "文件",
+        "specifyVersion": "指定版本",
+        "overrideImport": "覆盖式导入",
+        "chooseUploadFile": "请选择您要导入的资源文件",
+        "versionPlaceholder": "只支持数字和.，例如0.1.0",
+        "versionEmpty": "版本不能为空",
+        "fileEmpty": "文件不能为空",
+        "delete": "删除",
+        "download": "下载",
+        "fileList": "文件列表",
+        "fileName":"文件名",
+        "createBy": "创建人",
+        "delelteConfirm": "确定删除该文件?",
+        "createTime": "创建时间",
+        "versionDescription": "版本说明"
+      },
+      "jobAlert": {
+        "alertMsg": "告警信息",
+        "errorMsg": "错误信息"
+      },
+      "logDetail": {
+        "logDetail": "日志详情",
+        "pre": "上一页",
+        "next": "下一页",
+        "latestLog": "查看最新日志",
+        "noLog": "没有日志信息",
+        "onlyKeywords": "请输入需要查询的关键字",
+        "ignoreKeywords": "请输入需要排除的关键字",
+        "logTypeKeywords": "请选择日志类型",
+        "clientLabel": "客户端日志",
+        "yarnLabel": "Yarn日志"
+      }
+    }
+  }
+}

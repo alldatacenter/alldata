@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright 2021 WeBank
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.webank.wedatasphere.streamis.jobmanager.manager.dao.StreamAlertMapper">
+
+    <resultMap id="StreamAlertRecordMap" type="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamAlertRecord">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="alert_level" property="alertLevel" jdbcType="VARCHAR"/>
+        <result column="alert_user" property="alertUser" jdbcType="VARCHAR"/>
+        <result column="alert_msg" property="alertMsg" jdbcType="VARCHAR"/>
+        <result column="job_id" property="jobId" jdbcType="VARCHAR"/>
+        <result column="job_version_id" property="jobVersionId" jdbcType="TIMESTAMP"/>
+        <result column="task_id" property="taskId" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="error_msg" property="errorMsg" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insert">
+        insert into linkis_stream_alert_record (alert_level,alert_user,alert_msg,job_id,job_version_id,task_id,create_time,status,error_msg) values
+        (#{alertLevel},#{alertUser},#{alertMsg},#{jobId},#{jobVersionId},#{taskId},#{createTime},#{status},#{errorMsg})
+    </insert>
+
+    <select id="getAlertByJobIdAndVersion"
+            resultMap="StreamAlertRecordMap">
+        select id, alert_level,alert_user,alert_msg,job_id,job_version_id,task_id,create_time,status,error_msg from linkis_stream_alert_record
+        where alert_user = #{username} and job_id = #{jobId} and job_version_id = #{versionId} ORDER BY create_time DESC;
+    </select>
+</mapper>

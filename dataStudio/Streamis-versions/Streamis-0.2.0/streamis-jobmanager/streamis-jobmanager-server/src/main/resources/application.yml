@@ -1,0 +1,23 @@
+server:
+  port: 9009
+spring:
+  application:
+    name: streamis-job-manager
+  mvc:
+    servlet:
+      path: /api/rest_j/v1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:20303/eureka/
+  instance:
+    metadata-map:
+      test: wedatasphere
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,info
+logging:
+  config: classpath:log4j2.xml
