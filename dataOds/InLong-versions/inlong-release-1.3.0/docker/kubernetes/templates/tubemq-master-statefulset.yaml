@@ -1,0 +1,180 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+{{- if .Values.components.tubemqServer }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "inlong.commonLabels" . | nindent 4 }}
+    component: {{ .Values.tubemqMaster.component }}
+spec:
+  serviceName: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}
+  replicas: {{ .Values.tubemqMaster.replicas }}
+  selector:
+    matchLabels:
+      {{- include "inlong.matchLabels" . | nindent 6 }}
+      component: {{ .Values.tubemqMaster.component }}
+  updateStrategy:
+    type: {{ .Values.tubemqMaster.updateStrategy.type | quote }}
+  podManagementPolicy: {{ .Values.tubemqMaster.podManagementPolicy | quote }}
+  template:
+    metadata:
+      labels:
+        {{- include "inlong.template.labels" . | nindent 8 }}
+        component: {{ .Values.tubemqMaster.component }}
+      {{- if .Values.tubemqMaster.annotations }}
+      annotations:
+        {{- toYaml .Values.tubemqMaster.annotations | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- if .Values.tubemqMaster.tolerations }}
+      tolerations:
+        {{- toYaml .Values.tubemqMaster.tolerations | nindent 8 }}
+      {{- end }}
+      {{- if .Values.tubemqMaster.nodeSelector }}
+      nodeSelector:
+        {{- toYaml .Values.tubemqMaster.nodeSelector | nindent 8 }}
+      {{- end }}
+      {{- if .Values.tubemqMaster.affinity }}
+      affinity:
+        {{- if .Values.tubemqMaster.affinity.antiAffinity }}
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                      - "{{ template "inlong.name" . }}-{{ .Values.tubemqMaster.component }}"
+                  - key: "release"
+                    operator: In
+                    values:
+                      - {{ .Release.Name }}
+                  - key: "component"
+                    operator: In
+                    values:
+                      - {{ .Values.tubemqMaster.component }}
+              topologyKey: "kubernetes.io/hostname"
+        {{- end }}
+      {{- end }}
+      terminationGracePeriodSeconds: {{ .Values.tubemqMaster.terminationGracePeriodSeconds }}
+      initContainers:
+        - name: wait-{{ .Values.zookeeper.component }}-ready
+          image: {{ .Values.images.initContainer.repository }}:{{ .Values.images.initContainer.tag }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              count={{ .Values.zookeeper.replicas }}
+              for i in $(seq 0 $(expr $count - 1))
+              do
+                replica="{{ template "inlong.fullname" . }}-{{ .Values.zookeeper.component }}-$i"
+                host="$replica.{{ template "inlong.zookeeper.hostname" . }}"
+                port={{ .Values.zookeeper.ports.client }}
+                until [ $(echo ruok | nc $host $port ) = 'imok' ]
+                do
+                  echo "waiting for $replica to be ready"
+                  sleep 3
+                done
+              done
+      containers:
+        - name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}
+          image: {{ .Values.images.tubemqServer.repository }}:{{ .Values.images.tubemqServer.tag }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          {{- if .Values.tubemqMaster.resources }}
+          resources:
+            {{- toYaml .Values.tubemqMaster.resources | nindent 12 }}
+          {{- end }}
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - >
+              /config-scripts/run
+          ports:
+            - name: mstr-web-port
+              containerPort: 8080
+            - name: mstr-help-port
+              containerPort: 9001
+            - name: mstr-rpc-port
+              containerPort: 8715
+          env:
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            {{- range $key, $value := .Values.tubemqMaster.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+            - name: TZ
+              value: {{ .Values.timezone }}
+          {{- if .Values.tubemqMaster.probe.readiness.enabled }}
+          readinessProbe:
+            exec:
+              command:
+                - /config-scripts/ready
+            initialDelaySeconds: {{ .Values.tubemqMaster.probe.readiness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.tubemqMaster.probe.readiness.periodSeconds }}
+            failureThreshold: {{ .Values.tubemqMaster.probe.readiness.failureThreshold }}
+          {{- end }}
+          {{- if .Values.tubemqMaster.probe.liveness.enabled }}
+          livenessProbe:
+            exec:
+              command:
+                - /config-scripts/ok
+            initialDelaySeconds: {{ .Values.tubemqMaster.probe.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.tubemqMaster.probe.liveness.periodSeconds }}
+            failureThreshold: {{ .Values.tubemqMaster.probe.liveness.failureThreshold }}
+          {{- end }}
+          volumeMounts:
+            - name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}-{{ .Values.tubemqMaster.volumes.name }}
+              mountPath: /data
+            - name: config
+              mountPath: /config-scripts
+            - name: {{ .Values.tubemqMaster.component }}-ini
+              mountPath: /opt/tubemq-server/conf/master.ini.raw
+              subPath: master.ini.raw
+              readOnly: false
+      volumes:
+        - name: config
+          configMap:
+            name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}
+            defaultMode: 0755
+        - name: {{ .Values.tubemqMaster.component }}-ini
+          configMap:
+            name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}-ini
+            defaultMode: 0644
+        {{- if not .Values.tubemqMaster.volumes.persistence }}
+        - name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}-{{ .Values.tubemqMaster.volumes.name }}
+          emptyDir: {}
+        {{- end }}
+  {{- if .Values.tubemqMaster.volumes.persistence }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}-{{ .Values.tubemqMaster.volumes.name }}
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: {{ .Values.tubemqMaster.volumes.size }}
+        {{- if .Values.tubemqMaster.volumes.storageClassName }}
+        storageClassName: "{{ .Values.tubemqMaster.volumes.storageClassName }}"
+        {{- end }}
+  {{- end }}
+{{- end }}
