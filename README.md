@@ -10,7 +10,7 @@
 ### 5、您将有机会成为AllData极客开发团队成员，获得成就感与价值输出愉悦感
 
 <br/>
-<img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455096-93e56491-3fbd-4414-ab64-3886f798bdbd.jpg">
+<img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/190121827-62c6bd5c-5b6f-449c-8a5f-f90c4fea9c02.jpg">
 
 ### 添加AllData社区负责人微信进群
 <br/>
