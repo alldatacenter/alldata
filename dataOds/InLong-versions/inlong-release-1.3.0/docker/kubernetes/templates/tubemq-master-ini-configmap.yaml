@@ -1,0 +1,55 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+{{- if .Values.components.tubemqServer }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}-ini
+  namespace: {{ .Release.Namespace }}
+  labels:
+    component: {{ .Values.tubemqMaster.component }}
+data:
+  master.ini.raw: |
+    [master]
+    hostName=REPLACE_BY_POD_HOSTNAME
+    port={{ .Values.tubemqMaster.ports.rpcPort }}
+    webPort={{ .Values.tubemqMaster.ports.webPort }}
+    consumerBalancePeriodMs=30000
+    firstBalanceDelayAfterStartMs=60000
+    consumerHeartbeatTimeoutMs=30000
+    producerHeartbeatTimeoutMs=45000
+    brokerHeartbeatTimeoutMs=25000
+    confModAuthToken=abc
+    webResourcePath=resources
+    metaDataPath=/data/meta_data
+    useWebProxy=true
+
+    [meta_zookeeper]
+    zkNodeRoot=/tubemq
+    zkServerAddr={{ template "inlong.zookeeper.hostname" . }}:{{ .Values.zookeeper.ports.client }}
+    zkSessionTimeoutMs=30000
+    zkConnectionTimeoutMs=30000
+    zkSyncTimeMs=5000
+    zkCommitPeriodMs=5000
+
+    [replication]
+    repGroupName={{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}
+    repNodeName={{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}-REPLACE_BY_POD_ID
+    repNodePort={{ .Values.tubemqMaster.ports.helpPort }}
+    repHelperHost={{ template "inlong.fullname" . }}-{{ .Values.tubemqMaster.component }}-0.{{ template "inlong.tubemqMaster.hostname" . }}:{{ .Values.tubemqMaster.ports.helpPort }}
+{{- end }}
