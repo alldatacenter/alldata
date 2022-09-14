@@ -1,0 +1,219 @@
+{
+  "message": {
+    "streamis": {
+      "enterYarn": "Enter Yarn",
+      "operationSuccess": "Operation Success",
+      "routerName": {
+        "realTimeJobCenter": "Real-time job center",
+        "scriptisRealTimeJob": "Scriptis real-time job",
+        "VisualisRealTimeJob": "Visualis real-time job",
+        "projectResourceFiles": "Project Resource Files"
+      },
+      "moduleName": {
+        "coreIndex": "Core index",
+        "jobList": "Job list",
+        "jobSummary": "Job summary",
+        "jobHistory": "Job history",
+        "jobConfig": "Job config",
+        "jobDetail": "Job detail",
+        "alert": "Job alert"
+      },
+
+      "jobStatus": {
+        "failure": "Failure",
+        "running": "Runnning",
+        "stopping": "Stopping",
+        "starting": "Starting",
+        "slowTask": "Slow task",
+        "alert": "Alert",
+        "waitRestart": "Wait restart",
+        "success": "Success",
+        "uploaded" : "Uploaded",
+        "all": "All",
+        "stopped": "Stopped",
+        "unstarted": "Unstarted"
+      },
+      "formItems": {
+        "queryBtn": "Query",
+        "jobStatus": "Job status",
+        "jobCreator": "Job Creator",
+        "jobName": "Job name",
+        "stopBtn": "Stop",
+        "directStop": "Stop directly",
+        "directRestart": "Restart directly",
+        "snapshotRestart": "Restart and snapshot",
+        "snapshotAndStop": "Snapshot and stop",
+        "startBtn": "Start",
+        "configBtn": "Config",
+        "saveBtn": "Save",
+        "updateBtn": "Update",
+        "batchAction": "batch Action",
+        "confirmBtn": "confirm",
+        "cancel": "cancel",
+        "notEmpty": "Not empty",
+        "wrongFormat": "Wrong format"
+      },
+      "jobListTableColumns":{
+        "jobName": "Job name",
+        "jobType": "Job type",
+        "taskStatus": "Task status",
+        "lastReleaseTime": "Last release time",
+        "label": "Label",
+        "version": "Version",
+        "lastRelease": "Last release",
+        "description": "Description",
+        "operation": "Operation",
+        "upload": "Upload",
+        "snapTitle": "savepoint",
+        "stopTaskTitle": "Shutdown tasks",
+        "stopTaskContent": "Batch stopping tasks...",
+        "endTaskTitle": "Finish tasks",
+        "failInfo": "Exception info",
+        "snapshotInfo": "Snapshot info",
+        "startTaskTitle": "Start tasks",
+        "startTaskContent": "Batch starting tasks..."
+        
+      },
+      "versionDetail":{
+        "modalTitle":"Version detail",
+        "jobId":"Job id",
+        "version":"Version",
+        "description":"Description",
+        "createTime":"Create time",
+        "creator":"Creator",
+        "projectID":"Project id",
+        "dssLabels":"Dss labels",
+        "resourceId":"Resource id",
+        "bmlVersion":"Bml version",
+        "showDetail": "Open"
+      },
+      "jobMoudleRouter": {
+        "paramsConfiguration": "Params configuration",
+        "alertConfiguration": "Alert configuration",
+        "runningHistory": "Running history",
+        "runningLogs": "Running logs",
+        "savepoint": "Snapshot Savepoint"
+      },
+      "jobSummary": {
+        "resourceUse": "Resource use",
+        "realTimeTraffic": "Real-time Traffic",
+        "dataNumber": "Data number",
+        "loadCondition": "Load condition",
+        "unit": "",
+        "loadColumns": {
+          "type": "Type",
+          "host": "Host",
+          "memoryUse": "memory Use",
+          "gcTotalTime": "GC total time",
+          "gcLastConsume": "GC last consume",
+          "gcLastTime": "GC last time"
+        }
+      },
+      "jobHistoryColumns": {
+        "taskId": "Running id",
+        "jobName": "job name",
+        "creator": "Creator",
+        "version": "Version",
+        "status": "Status",
+        "startTime": "Start time",
+        "endTime": "End time",
+        "runTime": "Run time",
+        "stopCause": "Stop Cause",
+        "operation": "Operation",
+        "showVersionInfo":"Show version info",
+        "detail":"Detail",
+        "logs":"History logs"
+      },
+      "jobDetail": {
+        "flinkJarPac": "Flink main Jar package",
+        "dependJarPac": "depend Jar package",
+        "userResource": "User resource",
+        "sqlContent": "SQL content",
+        "urlEmpty": "Url is empty",
+        "columns": {
+            "name": "Name",
+            "version": "Version",
+            "versionDescription": "Version description",
+            "versionUploadTime": "Time",
+            "operation": "Operation"
+          }
+      },
+      "jobConfig": {
+        "resourceConfig": "Resource config",
+        "productionConfig": "Production config",
+        "flinkParameters": "Flink parameters",
+        "alertSet": "Alert set",
+        "authoritySet": "Authority set",
+        "formItems": {
+            "taskManagersNum": "Task Managers Num",
+            "checkpointGap": "Checkpoint Gap",
+            "restartStrategy": "Restart Strategy",
+            "alertRule": "Alert Rule",
+            "alertLevel": "Alert Level",
+            "alertUser": "Alert User",
+            "alertLevelFailed": "Alert Level When Failed",
+            "alertUserFailed": "Alert User When Failed",
+            "authorityModel": "Authority Model",
+            "authorityPersons": "Visible Personnel",
+            "options":{
+                "notRestart": "Not Restart",
+                "autoRestartBasedCheckpoint": "Auto Restart Based On Checkpoint",
+                "notStarNoCheckpoint": "Not Star When No Checkpoint",
+                "privite": "Privite",
+                "specifiedPersonVisible": "Specified Person Visible",
+                "all": "All",
+                "logsError": "ERROR/EXCEPTION Occured in Task's Logs",
+                "coreException": "EXCEPTION Occured in Task's Core Index"
+            },
+            "placeholders":{
+                "flinkParameters": "Input flink parameters",
+                "variable": "Input variable value"
+            }
+          }
+      },
+      "uploadJar": {
+        "entrypointClass": "Entrypoint Class",
+        "label": "Label",
+        "entrypointMainArgs": "Entrypoint Main Args",
+        "parallelism": "Parallelism",
+        "selectJar": "Please choose Jar",
+        "upload": "Upload",
+        "choosedJar" : "Choosed Jar",
+        "jarError": "File must be Jar"
+      },
+      "projectFile": {
+        "file": "File",
+        "specifyVersion": "Specify version",
+        "overrideImport": "Override import",
+        "chooseUploadFile": "Please choose the import resource file",
+        "versionPlaceholder": "Only number and ., such as 0.1.0",
+        "versionEmpty": "Version Cannot be empty",
+        "fileEmpty": "File cannot be empty",
+        "delete": "Delete",
+        "download": "Download",
+        "fileList": "File List",
+        "fileName":"File name",
+        "createBy": "Createby",
+        "delelteConfirm": "Are you sure you want to delete this file?",
+        "createTime": "Create time",
+        "versionDescription": "Version description"
+      },
+      "jobAlert": {
+        "alertMsg": "Alert message",
+        "errorMsg": "Error message"
+      },
+      "logDetail": {
+        "logDetail": "Logs detail",
+        "pre": "Previous page",
+        "next": "Next page",
+        "latestLog": "View the latest log",
+        "noLog": "NO logs",
+        "onlyKeywords": "Please input onlyKeywords",
+        "ignoreKeywords": "Please input ignoreKeywords",
+        "logTypeKeywords": "Please select logType",
+        "clientLabel": "Client Log",
+        "yarnLabel": "Yarn Log"
+      }
+    }
+  }
+}

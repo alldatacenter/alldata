@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright 2021 WeBank
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.webank.wedatasphere.streamis.jobmanager.manager.dao.StreamTaskMapper">
+    <resultMap id="StreamTaskMap" type="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamTask">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="job_version_id" property="jobVersionId" jdbcType="BIGINT"/>
+        <result column="job_id" property="jobId" jdbcType="BIGINT"/>
+        <result column="status" property="status" jdbcType="BIGINT"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP"/>
+        <result column="err_desc" property="errDesc" jdbcType="VARCHAR"/>
+        <result column="submit_user" property="submitUser" jdbcType="VARCHAR"/>
+        <result column="linkis_job_id" property="linkisJobId" jdbcType="VARCHAR"/>
+        <result column="version" property="version" jdbcType="VARCHAR"/>
+        <result column="linkis_job_info" property="linkisJobInfo" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+
+    <resultMap id="StreamTaskStatusInfo" type="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamTask">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="job_id" property="jobId" jdbcType="BIGINT"/>
+        <result column="status" property="status" jdbcType="BIGINT"/>
+        <result column="version" property="version" jdbcType="VARCHAR"/>
+        <result column="err_desc" property="errDesc" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="StreamTask_Column">
+        `id`,`job_version_id`,`job_id`,`status`,`start_time`,`last_update_time`,`err_desc`,`submit_user`, `linkis_job_id`, `linkis_job_info`
+    </sql>
+
+    <insert id="insertTask" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamTask">
+        INSERT INTO  linkis_stream_task(`job_version_id`,`job_id`,`version`,`status`,`start_time`,`last_update_time`,`err_desc`,`submit_user`, `linkis_job_id`, `linkis_job_info`)
+        VALUES(#{jobVersionId},#{jobId},#{version},#{status},#{startTime},#{lastUpdateTime},#{errDesc},#{submitUser},#{linkisJobId},#{linkisJobInfo})
+    </insert>
+
+    <update id="updateTask">
+        UPDATE linkis_stream_task
+        <trim prefix="set" suffixOverrides=",">
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="lastUpdateTime != null">
+                last_update_time=#{lastUpdateTime},
+            </if>
+            <if test="linkisJobId != null">
+                linkis_job_id=#{linkisJobId},
+            </if>
+            <if test="linkisJobInfo != null">
+                linkis_job_info=#{linkisJobInfo},
+            </if>
+            <if test="errDesc != null">
+                err_desc=#{errDesc},
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateTaskInStatus">
+        UPDATE linkis_stream_task
+        <trim prefix="set" suffixOverrides=",">
+            <if test="task.status != null">
+                status=#{task.status},
+            </if>
+            <if test="task.lastUpdateTime != null">
+                last_update_time=#{task.lastUpdateTime},
+            </if>
+            <if test="task.linkisJobId != null">
+                linkis_job_id=#{task.linkisJobId},
+            </if>
+            <if test="task.linkisJobInfo != null">
+                linkis_job_info=#{task.linkisJobInfo},
+            </if>
+            <if test="task.errDesc != null">
+                err_desc=#{task.errDesc},
+            </if>
+        </trim>
+        WHERE id=#{task.id} AND status = #{status};
+    </update>
+
+    <select id="getByJobVersionId" resultMap="StreamTaskMap">
+        SELECT `id`,`job_version_id`,`job_id`, status
+        ,`start_time`,`last_update_time`,
+        `err_desc`,`submit_user`, `linkis_job_id`, `linkis_job_info`
+        FROM linkis_stream_task
+        <where>
+            <if test="jobVersionId != null">
+                AND job_version_id=#{jobVersionId}
+            </if>
+            <if test="version != null">
+                AND version=#{version}
+            </if>
+        </where>
+        ORDER BY start_time DESC
+    </select>
+
+    <select id="getLatestByJobVersionId" resultMap="StreamTaskMap">
+        SELECT `id`,`job_version_id`,`job_id`, status
+        ,`start_time`,`last_update_time`,
+        `err_desc`,`submit_user`, `linkis_job_id`, `linkis_job_info`
+        FROM linkis_stream_task
+        <where>
+            <if test="jobVersionId != null">
+                AND job_version_id=#{jobVersionId}
+            </if>
+            <if test="version != null">
+                AND version=#{version}
+            </if>
+        </where>
+        ORDER BY start_time DESC, id DESC LIMIT 1
+    </select>
+
+    <select id="getLatestByJobId" resultMap="StreamTaskMap">
+        SELECT `id`,`job_version_id`,`job_id`, status
+        ,`start_time`,`last_update_time`,
+        `err_desc`,`submit_user`, `linkis_job_id`, `linkis_job_info`
+        FROM linkis_stream_task where `job_id`=#{jobId} ORDER BY start_time DESC, id DESC LIMIT 1
+    </select>
+
+    <select id="getLatestLaunchedById" resultMap="StreamTaskMap">
+        SELECT `id`,`job_version_id`,`job_id`, status
+        ,`start_time`,`last_update_time`,
+        `err_desc`,`submit_user`, `linkis_job_id`, `linkis_job_info`
+        FROM linkis_stream_task where `job_id`=#{jobId} AND linkis_job_id IS NOT NULL ORDER BY start_time DESC, id DESC LIMIT 1
+    </select>
+
+    <select id="getEarlierByJobId" resultMap="StreamTaskMap">
+        SELECT `id`,`job_version_id`,`job_id`, status
+        ,`start_time`,`last_update_time`,
+        `err_desc`,`submit_user`, `linkis_job_id`, `linkis_job_info`
+        FROM linkis_stream_task where `job_id`=#{jobId} ORDER BY start_time DESC, id DESC LIMIT ${count}
+    </select>
+
+    <select id="getRunningTaskByJobId" resultMap="StreamTaskMap">
+        SELECT <include refid="StreamTask_Column"/>
+        FROM linkis_stream_task
+        WHERE `job_id` = #{jobId} AND `status` <![CDATA[<=]]> 5 AND `status` <![CDATA[>=]]> 2
+    </select>
+
+    <select id="getTaskById" resultMap="StreamTaskMap">
+        SELECT
+        <include refid="StreamTask_Column"/>
+        FROM linkis_stream_task
+        <where>
+            <if test="id != null">
+                id=#{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="getTasksByStatus" resultMap="StreamTaskMap">
+        SELECT
+        <include refid="StreamTask_Column"/>
+        FROM linkis_stream_task
+        <where>
+            status in
+            <foreach collection="list" item="status" index="index" open="(" close=")" separator=",">
+                #{status}
+            </foreach>
+        </where>
+    </select>
+    <select id="getTasksByJobIdAndJobVersionId" resultMap="StreamTaskMap">
+        SELECT
+        <include refid="StreamTask_Column"/>
+        FROM linkis_stream_task where job_id = #{jobId} and job_version_id = #{jobVersionId}
+        order by start_time desc
+    </select>
+
+    <select id="getTask" resultType="java.lang.String">
+        SELECT linkis_job_info FROM  linkis_stream_task WHERE job_id = #{jobId} and version = #{version}  ORDER BY start_time DESC limit 1
+    </select>
+
+    <select id="getStatusInfoByJobIds" resultMap="StreamTaskStatusInfo">
+        SELECT id, job_id, status, version, err_desc FROM linkis_stream_task WHERE id IN
+        (SELECT max(id) FROM linkis_stream_task WHERE job_id IN
+        <foreach collection="jobIds" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach> GROUP BY job_id)
+    </select>
+</mapper>

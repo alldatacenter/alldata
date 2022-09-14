@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright 2021 WeBank
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.webank.wedatasphere.streamis.jobmanager.manager.dao.StreamJobMapper">
+    <resultMap id="StreamJobMap" type="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJob">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="workspace_name" property="workspaceName" jdbcType="VARCHAR"/>
+        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="label" property="label" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="submit_user" property="submitUser" jdbcType="VARCHAR"/>
+        <result column="job_type" property="jobType" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="StreamJobVOMap" type="com.webank.wedatasphere.streamis.jobmanager.manager.entity.vo.QueryJobListVo">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="workspace_name" property="workspaceName" jdbcType="VARCHAR"/>
+        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="label" property="label" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="job_type" property="jobType" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="version" property="version" jdbcType="INTEGER"/>
+        <result column="lastVersionTime" property="lastVersionTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="StreamJobVersionMap"
+               type="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJobVersion">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="job_id" property="jobId" jdbcType="BIGINT"/>
+        <result column="version" property="version" jdbcType="VARCHAR"/>
+        <result column="source" property="source" jdbcType="VARCHAR"/>
+        <result column="job_content" property="jobContent" jdbcType="LONGVARCHAR"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="StreamJobVersionFilesMap"
+      type="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJobVersionFiles">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="job_id" property="jobId" jdbcType="BIGINT"/>
+        <result column="job_version_id" property="jobVersionId" jdbcType="BIGINT"/>
+        <result column="file_name" property="fileName" jdbcType="VARCHAR"/>
+        <result column="version" property="version" jdbcType="VARCHAR"/>
+        <result column="store_path" property="storePath" jdbcType="VARCHAR"/>
+        <result column="store_type" property="storeType" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Job_Column">
+        `id`,`project_name`, `workspace_name`,`name`,`create_by`, `create_time`,`label`,`description`,`submit_user`,`job_type`
+    </sql>
+
+    <sql id="JobVersion_Column">
+        `id`,`job_id`,`version`,`source`,`job_content`,`comment`,`create_time`,`create_by`
+    </sql>
+
+    <select id="getJobById" resultType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJob">
+        SELECT <include refid="Job_Column"/> FROM
+        linkis_stream_job WHERE id = #{jobId}
+<!--        SELECT j.`id`,j.`name`,j.`status`,j.`submit_user`,j.`description`,j.`label`,l.`create_time`,l.`version` as currentVersion,j.`job_type` FROM-->
+<!--        linkis_stream_job j,linkis_stream_job_version l WHERE j.id = l.job_id and j.id=#{jobId}-->
+    </select>
+
+<!--    <select id="getJobById" resultType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJob">-->
+<!--        SELECT j.`id`,j.`name`,j.`status`,j.`submit_user`,j.`description`,j.`label`,l.`create_time`,l.`version` as currentVersion,j.`job_type` FROM-->
+<!--        linkis_stream_job j,linkis_stream_job_version l WHERE j.id = l.job_id and j.id=#{jobId} and l.`version` = #{version}-->
+<!--    </select>-->
+
+    <select id="getJobLists" resultMap="StreamJobVOMap">
+        select * from (
+        SELECT j.`id`,j.`project_name`, j.`workspace_name`,j.`name`,j.`create_by`, j.`create_time`,j.`label`,j.`description`,
+        j.`job_type`, (CASE WHEN t.`status` IS NULL THEN 0 ELSE t.status END)  AS STATUS, ll.version AS VERSION,
+        ll.create_time AS lastVersionTime, t.start_time, lsp.id AS project_id FROM
+        linkis_stream_job j
+        LEFT JOIN (SELECT id,job_id, MAX(VERSION) VERSION FROM linkis_stream_job_version GROUP BY job_id) l ON j.id = l.job_id
+        LEFT JOIN linkis_stream_job_version ll ON l.job_id=ll.job_id AND l.version=ll.version
+        LEFT JOIN (SELECT MAX(start_time) start_time, MAX(VERSION) VERSION,job_id FROM linkis_stream_task GROUP BY job_id) tt
+        ON tt.job_id = l.job_id AND tt.version = l.version
+        LEFT JOIN linkis_stream_task t ON tt.job_id = t.job_id AND tt.start_time = t.start_time
+        LEFT JOIN linkis_stream_project lsp ON lsp.name = j.project_name
+        ) aa
+        <where>
+            <if test="projectName != null and projectName!=''">
+                AND aa.`project_name` = #{projectName}
+            </if>
+            <if test="name != null and name!=''">
+                AND aa.`name` like concat('%', #{name}, '%')
+            </if>
+            <if test="status != null">
+                AND aa.`status`=#{status}
+            </if>
+            <if test="createBy != null and createBy != ''">
+                AND aa.`create_by` = #{createBy}
+            </if>
+            AND EXISTS (SELECT 1 FROM linkis_stream_project_privilege lspp WHERE lspp.project_id =aa.project_id
+                 AND lspp.privilege in (1,2,3) AND lspp.user_name = #{userName})
+        </where>
+        order by aa.start_time desc
+    </select>
+
+    <select id="getJobVersions" resultMap="StreamJobVersionMap">
+        select *
+        from linkis_stream_job_version where job_id=#{jobId} order by version desc
+    </select>
+
+    <!--Get the latest job version-->
+    <select id="getLatestJobVersion" resultMap="StreamJobVersionMap">
+        SELECT * FROM linkis_stream_job_version WHERE job_id=#{jobId} ORDER BY version desc LIMIT 1
+    </select>
+
+    <select id="getJobVersionById" resultMap="StreamJobVersionMap">
+        select
+        *
+        from linkis_stream_job_version
+        <where>
+            <if test="jobId != null">job_id=#{jobId}</if>
+            <if test="version != null">AND version=#{version}</if>
+        </where>
+    </select>
+
+    <select id="getVersionDetail"
+            resultType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.vo.VersionDetailVo">
+        SELECT j.id,v.version,j.description,DATE_FORMAT(v.create_time,"%Y-%m-%d %H:%i:%s") AS releaseTime,j.create_by AS createBy,j.project_name
+        FROM `linkis_stream_job` j , linkis_stream_job_version v
+        WHERE v.job_id = j.id AND j.id = #{jobId} AND v.version=#{version}
+    </select>
+
+    <select id="getJobListsByProjectName" resultMap="StreamJobMap">
+        SELECT
+        j.`id`,j.`project_name`,j.`name`,j.`job_type`,j.`label`,j.`description`,j.`submit_user`,j.`submit_user` as create_by,l.version current_version
+        FROM `linkis_stream_job` j LEFT JOIN `linkis_stream_job_version` l ON j.`id`=l.job_id AND j.project_name = #{projectName}
+    </select>
+
+    <select id="getCurrentJob" parameterType="java.lang.String"
+            resultType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJob">
+        SELECT
+        j.`id`,j.`project_name`,j.`name`,j.`job_type`,j.`label`,j.`description`,j.`submit_user`,l.version current_version
+        FROM `linkis_stream_job` j JOIN `linkis_stream_job_version` l ON j.`id`=l.job_id AND j.project_name = #{projectName}
+        AND j.name = #{jobName}
+        ORDER BY l.create_time DESC LIMIT 1
+    </select>
+
+    <select id="queryAndLockJobInCondition" parameterType="java.lang.String"
+            resultType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJob">
+        SELECT <include refid="Job_Column"/> FROM
+        linkis_stream_job WHERE project_name = #{projectName} AND `name` = #{jobName} FOR UPDATE;
+    </select>
+
+    <select id="queryAndLockJobById" resultType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJob">
+        SELECT <include refid="Job_Column"/> FROM
+        linkis_stream_job WHERE id = #{jobId};
+    </select>
+
+    <insert id="insertJob" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJob">
+        INSERT INTO linkis_stream_job(`project_name`,`name`,`create_by`,`label`,`description`,`job_type`,`submit_user`,`create_time`)
+        VALUES(#{projectName},#{name},#{createBy},#{label},#{description},#{jobType},#{submitUser},#{createTime})
+    </insert>
+
+    <insert id="insertJobVersion" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJobVersion">
+        INSERT INTO linkis_stream_job_version(`job_id`,`version`,`source`,`job_content`,`create_time`,`create_by`)
+        VALUES(#{jobId},#{version},#{source},#{jobContent},#{createTime},#{createBy})
+    </insert>
+
+
+    <insert id="insertJobVersionFiles" parameterType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJobVersionFiles">
+        INSERT INTO linkis_stream_job_version_files(`job_id`,`job_version_id`,`file_name`,`version`,`store_path`,`store_type`,`create_time`,`create_by`)
+        VALUES
+        (#{jobId},#{jobVersionId},#{fileName},#{version},#{storePath},#{storeType},#{createTime},#{createBy})
+    </insert>
+
+    <select id="getStreamJobVersionFiles" resultMap="StreamJobVersionFilesMap">
+        SELECT * from linkis_stream_job_version_files where job_id = #{jobId} and job_version_id = #{jobVersionId}
+    </select>
+
+    <update id="updateJob" parameterType="com.webank.wedatasphere.streamis.jobmanager.manager.entity.StreamJob">
+        UPDATE linkis_stream_job
+        <trim prefix="set" suffixOverrides=",">
+            <if test="label != null">
+                label=#{label},
+            </if>
+            <if test="description != null">
+                description=#{description},
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+
+</mapper>
