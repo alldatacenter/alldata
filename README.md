@@ -9,10 +9,11 @@
 ### 4、您将有机会获得商业版定制的机会，加作者微信好友，可以提供第一手安装部署资料
 ### 5、您将有机会成为AllData极客开发团队成员，获得成就感与价值输出愉悦感
 
+## 社区捐赠扫码支付10-100元
 <br/>
-<img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/183455096-93e56491-3fbd-4414-ab64-3886f798bdbd.jpg">
+<img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/190121827-62c6bd5c-5b6f-449c-8a5f-f90c4fea9c02.jpg">
 
-### 添加AllData社区负责人微信进群
+## 添加AllData社区负责人微信进群
 <br/>
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/20246692/188576131-e14fc227-c352-4eb9-8803-bdd5fbcedc0f.jpg">
 <br/>
@@ -32,31 +33,18 @@
   </a>
 </p>
 
-[中文](https://github.com/authorwlh/alldata/blob/master/README_ZH.md) | English
+## [中文](https://github.com/authorwlh/alldata/blob/master/README_ZH.md) | English
 
-[Demo](http://112.74.93.144:3000) | [Documentation](https://github.com/authorwlh/alldata/blob/master/README.md) | [Installation](#installation) | [Run](#run) | [Screenshot](#screenshot) | [Architecture](#architecture) | [Integration](#integration-with-other-frameworks) | [Compare](#comparison-with-other-frameworks) | [Community & Sponsorship](#community--sponsorship)
+## [Demo](http://112.74.93.144:3000) | [Documentation](https://github.com/authorwlh/alldata/blob/master/README.md) | [Installation](#installation) | [Run](#run) | [Screenshot](#screenshot) | [Architecture](#architecture) | [Integration](#integration-with-other-frameworks) | [Compare](#comparison-with-other-frameworks) | [Community & Sponsorship](#community--sponsorship)
 
 
-## [AllData社区项目官方文档](https://alldatateam.github.io/)
-
-## [AllData数据中台体验版地址](https://alldatateam.github.io/)
-
-## [AllData数据中台前端Demo](https://github.com/AllDataTeam/dataHub)
+## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端Demo](https://github.com/AllDataTeam/dataHub)
 
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/authorwlh/alldata.svg)](https://starchart.cc/authorwlh/alldata)
 
-## [开源大数据平台原型图](https://modao.cc/app/HhitGZQTr954c7Ug8XBvAY#screen=sl11y8j8sne21p9)
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/160220740-ee4825fd-8825-4ab6-84a3-e525d1ea646d.png">
-<br/>
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
-<br/>
 
-## AllData社区项目树状图
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/188898939-bfba6cbc-c7b0-40c4-becd-27152d5daa90.png">
-<br/>
 
 ## AllData社区商业计划图
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/188898972-d78bcbb6-eb30-420d-b5e1-7168aa340555.png">
@@ -66,20 +54,34 @@
 <img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/188899006-aba25703-f8fa-42b6-b59f-2573ee2b27fc.png">
 <br/>
 
-## AllData社区项目时间旅行
-<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/188899033-948583a4-841b-4233-ad61-bbc45c936ca1.png">
+## AllData社区项目树状图
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/188898939-bfba6cbc-c7b0-40c4-becd-27152d5daa90.png">
 <br/>
 
 ## 全站式AllData产品路线图
 <br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/179927878-ff9c487e-0d30-49d5-bc88-6482646d90a8.png">
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/179927878-ff9c487e-0d30-49d5-bc88-6482646d90a8.png">
 <br/>
+
+
+## AllData社区项目时间旅行
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/188899033-948583a4-841b-4233-ad61-bbc45c936ca1.png">
+<br/>
+
+## [开源大数据平台原型图](https://modao.cc/app/HhitGZQTr954c7Ug8XBvAY#screen=sl11y8j8sne21p9)
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/160220740-ee4825fd-8825-4ab6-84a3-e525d1ea646d.png">
+<br/>
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
+<br/>
+
+
 
 ## Architecture
 <br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/171598215-0914f665-9950-476c-97ff-e7e07aa10eaf.png">
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171598215-0914f665-9950-476c-97ff-e7e07aa10eaf.png">
 <br/>
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/20246692/171598333-d14ff53f-3af3-481c-9f60-4f891a535b5c.png">
+<img width="1138" alt="image" src="https://user-images.githubusercontent.com/20246692/171598333-d14ff53f-3af3-481c-9f60-4f891a535b5c.png">
 <br/>
 
 ## Integration
