@@ -1,15 +1,13 @@
-# DATA ODS FOR ALL DATA PLATFORM 数据采集引擎
+# DATA SOURCE MANAGEMENT PLATFORM 数据源管理平台
 
-数据平台的人工智能引擎：数据采集引擎
+## 数据源管理平台-实时离线数据采集
 
-1、爬虫
+> 1、基于CrawLab + Spider搭建一站式爬虫系统, 抓取数据上报到数据源管理平台
 
-2、系统埋点
+> 2、基于Logan搭建埋点系统, 采集离线商城埋点数据, 上报数据到数据源管理平台
 
-3、Syslog采集
+> 3、支持Syslog/Ftp/SSH/Http/pdf富文本实时离线采集, 上报数据到数据源管理平台
 
-4、Ftp/SSH文件采集
+> 4、数据源管理平台--待补充 
 
-5、Http采集
 
-6、富文本采集FScrawler
