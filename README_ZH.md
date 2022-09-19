@@ -4,19 +4,19 @@
 ## 社区建设 && 社区捐赠
 
 > 目前正在建设团队，将大力投入发展AllData项目，欢迎大家踊跃参与建设与讨论！
->
+> 
 > 由于近期购买服务器需要，希望能得到社区的成员捐赠支持
->
+> 
 > 捐赠方式：扫码支付作者10-100元，然后添加作者个人微信AllDataDC，邀请您进入内部研发微信群以及社区讨论微信群
->
+> 
 > 1、您会获得面对面与作者1对1咨询宝贵机会，将有30分钟咨询
->
+> 
 > 2、您会获得收益，作者会分享Github 1000 Stars+ 从0到1建设开源大数据平台经验心得
->
+> 
 > 3、您会获得内部最新总设文档，支付时请备注联系方式，支付后请联系作者微信AllDataDC
->
+> 
 > 4、您将有机会获得商业版定制的机会，加作者微信好友，可以提供第一手安装部署资料
->
+> 
 > 5、您将有机会成为AllData极客开发团队成员，获得成就感与价值输出愉悦感
 
 
@@ -47,8 +47,7 @@
 </p>
 
 ## [中文](https://github.com/AllDataTeam/alldata/blob/master/README_ZH.md) | English
-
-## [在线体验版](http://112.74.93.144:3000) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
+## [在线体验版](http://112.74.93.144:3000) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community) 
 ## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
 
 ## Stargazers over time
