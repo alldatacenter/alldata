@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dlink.mapper.TaskMapper">
+
+    <select id="selectForProTable" resultType="com.dlink.model.Task">
+        select
+        a.*
+        from
+        dlink_task a
+        <where>
+            1=1
+            <if test='param.name!=null and param.name!=""'>
+                and a.name like "%${param.name}%"
+            </if>
+            <if test='param.alias!=null and param.alias!=""'>
+                and a.alias like "%${param.alias}%"
+            </if>
+            <if test='param.createTime!=null and param.createTime!=""'>
+                and a.create_time <![CDATA[>=]]> str_to_date( #{param.createTime},'%Y-%m-%d %H:%i:%s')
+            </if>
+            <if test='param.updateTime!=null and param.updateTime!=""'>
+                and a.update_time <![CDATA[>=]]> str_to_date( #{param.updateTime},'%Y-%m-%d %H:%i:%s')
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!="" and !ew.sqlSegment.startsWith(" ORDER BY")'>
+                and
+            </if>
+            <if test='ew.sqlSegment!=null and ew.sqlSegment!=""'>
+                ${ew.sqlSegment}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="queryAllSizeByName" resultType="java.lang.Integer">
+        SELECT count(*)
+        from dlink_task
+        where `name` REGEXP '${name}_[0-9]$'
+    </select>
+
+    <select id="queryOnLineTaskByDoneStatus" resultType="com.dlink.model.Task">
+        select t.id as id, t.name as name
+        from dlink_task t
+        left join dlink_catalogue c on c.task_id = t.id
+        left join dlink_job_instance i on i.id = t.job_instance_id
+        where
+            c.parent_id in <foreach collection="parentIds" item="parentId" open="(" close=")" separator=","> #{parentId} </foreach>
+            and c.task_id is not null
+            and c.is_leaf = 1
+            and t.step in <foreach collection="stepIds" item="stepId" open="(" close=")" separator=","> #{stepId} </foreach>
+            and t.enabled = 1
+        <if test="includeNull == true">
+            and ((i.status is null) or (i.status in <foreach collection="jobStatuses" item="jobStatus" open="(" close=")" separator=","> #{jobStatus} </foreach>))
+        </if>
+        <if test="includeNull != true">
+            and i.status in <foreach collection="jobStatuses" item="jobStatus" open="(" close=")" separator=","> #{jobStatus} </foreach>
+        </if>
+    </select>
+
+</mapper>
