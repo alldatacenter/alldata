@@ -47,7 +47,7 @@
 </p>
 
 ## [中文](https://github.com/AllDataTeam/alldata/blob/master/README_ZH.md) | English
-## [在线体验版](http://112.74.93.144:3000) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community) 
+## [在线体验版](http://112.74.93.144:3000/data-center) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community) 
 ## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
 
 ## Stargazers over time
@@ -116,7 +116,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
 <br/>
 
-## [在线预览](http://112.74.93.144:3000)
+## [在线预览](http://112.74.93.144:3000/data-center)
 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780581-b9b1ecc7-8675-4085-80c8-d781032b7751.png">
