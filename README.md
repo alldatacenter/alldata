@@ -47,8 +47,7 @@
 </p>
 
 ## [中文](https://github.com/AllDataTeam/alldata/blob/master/README_ZH.md) | English
-
-## [在线体验版](http://112.74.93.144:3000) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#Installation Run) | [Architecture](#architecture) | [Integration](#Integration) | [Community & Sponsorship](#Community Sponsorship) 
+## [在线体验版](http://112.74.93.144:3000) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community) 
 ## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
 
 ## Stargazers over time
@@ -280,7 +279,7 @@ job-schedule: 任务提交平台
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220425-afc819af-e8f9-4fbb-811d-c0b67cccf7d0.png">
 <br/>
 
-## Installation Run
+## Installation
 
 ### 10、启动配置教程
 
@@ -388,7 +387,7 @@ job-schedule: 任务提交平台
 
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220690-7fc23e65-ad53-4f5f-a0f2-aa55e649f500.png">
 
-## Community Sponsorship
+## Community
 
 ## 12、社区共建
 
