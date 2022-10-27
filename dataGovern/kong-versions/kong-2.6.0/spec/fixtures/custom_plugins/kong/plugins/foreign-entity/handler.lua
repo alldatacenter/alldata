@@ -1,3 +1,0 @@
-return {
-  PRIORITY = 1
-}

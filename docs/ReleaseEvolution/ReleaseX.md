@@ -18,13 +18,13 @@
 
     Griffin: 0.7.0-SNAPSHOT
 
-    Kong: 2.8.0-SNAPSHOT
+    Kong: 3.0.0
 
     Flinkcdc: 2.3-SNAPSHOT
 
     Flinkx: 1.12-SNAPSHOT
 
-    Kylin: 4.0.2-SNAPSHOT
+    Kylin: 4.0.2
 
     Trino: 385-SNAPSHOT
 
