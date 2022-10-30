@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js,.vue src",
     "test:unit": "jest --clearCache && vue-cli-service test:unit",
     "svgo": "svgo -f src/assets/icons/svg --config=src/assets/icons/svgo.yml",
-    "new": "plop"
+    "new": "plop",
+    "docker-build": "docker build -t vueApp ."
   },
   "husky": {
     "hooks": {

@@ -1,0 +1,562 @@
+{
+  "groupId": "t323a2b0f-614e-4b04-82d4-3880427bc3e8",
+  "streams": [
+    {
+      "streamId": "1",
+      "nodes": [
+        {
+          "type": "mysqlExtract",
+          "id": "1",
+          "name": "mysql_input",
+          "fields": [
+            {
+              "type": "field",
+              "name": "id",
+              "formatInfo": {
+                "type": "int"
+              }
+            },
+            {
+              "type": "field",
+              "name": "name",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "description",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "weight",
+              "formatInfo": {
+                "type": "decimal",
+                "precision": 10,
+                "scale": 3
+              }
+            },
+            {
+              "type": "field",
+              "name": "enum_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "json_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "point_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            }
+          ],
+          "primaryKey": "id",
+          "tableNames": [
+            "${MYSQL_INPUT_TABLE}"
+          ],
+          "hostname": "mysql",
+          "username": "inlong",
+          "password": "inlong",
+          "database": "test",
+          "port": 3306,
+          "incrementalSnapshotEnabled": false,
+          "serverTimeZone": "Asia/Shanghai"
+        },
+        {
+          "type": "kafkaLoad",
+          "id": "2",
+          "name": "kafka_load",
+          "fields": [
+            {
+              "type": "field",
+              "name": "id",
+              "formatInfo": {
+                "type": "int"
+              }
+            },
+            {
+              "type": "field",
+              "name": "name",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "description",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "weight",
+              "formatInfo": {
+                "type": "decimal",
+                "precision": 10,
+                "scale": 3
+              }
+            },
+            {
+              "type": "field",
+              "name": "enum_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "json_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "point_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            }
+          ],
+          "fieldRelations": [
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "id",
+                "formatInfo": {
+                  "type": "int"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "id",
+                "formatInfo": {
+                  "type": "int"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "name",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "name",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "description",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "description",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "weight",
+                "formatInfo": {
+                  "type": "decimal",
+                  "precision": 10,
+                  "scale": 3
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "weight",
+                "formatInfo": {
+                  "type": "decimal",
+                  "precision": 10,
+                  "scale": 3
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "enum_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "enum_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "json_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "json_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "point_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "point_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "primaryKey": "id",
+          "topic": "${TOPIC}",
+          "bootstrapServers": "kafka:9092",
+          "format": {
+            "type": "canalJsonFormat",
+            "ignoreParseErrors": true,
+            "timestampFormatStandard": "SQL",
+            "mapNullKeyMode": "DROP",
+            "mapNullKeyLiteral": "null",
+            "encodeDecimalAsPlainNumber": true
+          },
+          "sinkParallelism": 1,
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "type": "baseRelation",
+          "inputs": [
+            "1"
+          ],
+          "outputs": [
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "streamId": "2",
+      "nodes": [
+        {
+          "type": "kafkaExtract",
+          "id": "3",
+          "name": "kafka_extract",
+          "fields": [
+            {
+              "type": "field",
+              "name": "id",
+              "formatInfo": {
+                "type": "int"
+              }
+            },
+            {
+              "type": "field",
+              "name": "name",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "description",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "weight",
+              "formatInfo": {
+                "type": "decimal",
+                "precision": 10,
+                "scale": 3
+              }
+            },
+            {
+              "type": "field",
+              "name": "enum_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "json_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "point_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            }
+          ],
+          "primaryKey": "id",
+          "topic": "${TOPIC}",
+          "bootstrapServers": "kafka:9092",
+          "format": {
+            "type": "canalJsonFormat",
+            "ignoreParseErrors": true,
+            "timestampFormatStandard": "SQL",
+            "mapNullKeyMode": "DROP",
+            "mapNullKeyLiteral": "null",
+            "encodeDecimalAsPlainNumber": true
+          },
+          "scanStartupMode": "EARLIEST_OFFSET",
+          "groupId": null,
+          "scanSpecificOffsets": null
+        },
+        {
+          "type": "mysqlLoad",
+          "id": "4",
+          "name": "mysql_output",
+          "fields": [
+            {
+              "type": "field",
+              "name": "id",
+              "formatInfo": {
+                "type": "int"
+              }
+            },
+            {
+              "type": "field",
+              "name": "name",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "description",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "weight",
+              "formatInfo": {
+                "type": "decimal",
+                "precision": 10,
+                "scale": 3
+              }
+            },
+            {
+              "type": "field",
+              "name": "enum_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "json_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "field",
+              "name": "point_c",
+              "formatInfo": {
+                "type": "string"
+              }
+            }
+          ],
+          "fieldRelations": [
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "id",
+                "formatInfo": {
+                  "type": "int"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "id",
+                "formatInfo": {
+                  "type": "int"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "name",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "name",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "description",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "description",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "weight",
+                "formatInfo": {
+                  "type": "decimal",
+                  "precision": 10,
+                  "scale": 3
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "weight",
+                "formatInfo": {
+                  "type": "decimal",
+                  "precision": 10,
+                  "scale": 3
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "enum_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "enum_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "json_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "json_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "fieldRelation",
+              "inputField": {
+                "type": "field",
+                "name": "point_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              },
+              "outputField": {
+                "type": "field",
+                "name": "point_c",
+                "formatInfo": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "url": "jdbc:mysql://mysql:3306/test",
+          "username": "inlong",
+          "password": "inlong",
+          "tableName": "${MYSQL_OUTPUT_TABLE}",
+          "primaryKey": "id"
+        }
+      ],
+      "relations": [
+        {
+          "type": "baseRelation",
+          "inputs": [
+            "3"
+          ],
+          "outputs": [
+            "4"
+          ]
+        }
+      ]
+    }
+  ]
+}
