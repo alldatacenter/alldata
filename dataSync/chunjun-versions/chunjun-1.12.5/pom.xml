@@ -389,15 +389,6 @@
 							<removeUnusedImports/>
 						</java>
 					</configuration>
-					<executions>
-						<execution>
-							<id>spotless-check</id>
-							<phase>validate</phase>
-							<goals>
-								<goal>check</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -418,12 +409,6 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	<repositories>
-		<repository>
-			<id>dtstack-github</id>
-			<url>https://github.com/dtstack/maven-repository/raw/master/</url>
-		</repository>
-	</repositories>
 	<profiles>
 
 		<!-- 本地测试模块-->
