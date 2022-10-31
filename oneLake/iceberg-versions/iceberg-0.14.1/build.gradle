@@ -22,9 +22,6 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 buildscript {
-//  repositories {
-//    gradlePluginPortal()
-//  }
   repositories {
     mavenLocal()
     maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
