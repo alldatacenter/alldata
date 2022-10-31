@@ -31,7 +31,7 @@
   <packaging>pom</packaging>
   <version>0.12.1</version>
   <description>Apache Hudi brings stream style processing on big data</description>
-  <url>https://github.com/apache/hudi</url>
+  <url>https://github.com/apache/hudi</url> 
   <name>AllData Hudi</name>
 
   <modules>
@@ -1527,7 +1527,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version> 
+            <version>1.6</version>  
           </plugin>
         </plugins>
       </build>
@@ -1607,8 +1607,8 @@
             <dependencies>
               <dependency>
                 <groupId>org.apache.maven.surefire</groupId>
-                <artifactId>surefire-junit47</artifactId>
-                <version>3.0.0-M3</version>
+                <artifactId>surefire-junit47</artifactId> 
+                <version>3.0.0-M3</version> 
               </dependency>
             </dependencies>
             <configuration combine.self="append">
