@@ -2094,7 +2094,6 @@
 
                         <!-- atlas data directory creates when tests are run from IDE -->
                         <exclude>**/atlas.data/**</exclude>
-                        <exclude>**/${sys:atlas.data}/**</exclude>
                         <exclude>**/policy-store.txt</exclude>
                         <exclude>**/*rebel*.xml</exclude>
                         <exclude>**/*rebel*.xml.bak</exclude>
@@ -2107,15 +2106,6 @@
                         
                     </excludes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>rat-check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <phase>validate</phase>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
@@ -2128,22 +2118,6 @@
                         <version>${project.version}</version>
                     </dependency>
                 </dependencies>
-                <executions>
-                    <execution>
-                        <id>checkstyle-check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <phase>verify</phase>
-                        <configuration>
-                            <skip>${skipCheck}</skip>
-                            <consoleOutput>false</consoleOutput>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                            <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
-                            <failOnViolation>${checkstyle.failOnViolation}</failOnViolation>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
@@ -2155,15 +2129,6 @@
                     <failOnError>false</failOnError>
                     <skip>${skipCheck}</skip>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>findbugs-check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <phase>verify</phase>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- Source code metrics: mvn javancss:report or mvn site -->
@@ -2237,9 +2202,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <deployAtEnd>true</deployAtEnd>
-                </configuration>
             </plugin>
 
             <plugin>

@@ -23,7 +23,9 @@ import java.util.regex.Pattern
 
 buildscript {
   repositories {
-    gradlePluginPortal()
+    mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
   }
   dependencies {
     classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
