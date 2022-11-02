@@ -6,7 +6,7 @@ import com.platform.mall.entity.TbItem;
 
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  * @date 2020/3/29
  */
 public interface ItemService {

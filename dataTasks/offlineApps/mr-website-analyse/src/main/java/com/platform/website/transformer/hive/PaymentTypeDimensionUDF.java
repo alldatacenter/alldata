@@ -12,7 +12,7 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 /**
  * 订单支付方式dimension对应的udf
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class PaymentTypeDimensionUDF extends UDF {

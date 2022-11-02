@@ -40,7 +40,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("商城PC端 api Documentation")
                 .description("商城PC端 API接口文档")
-                .contact(new Contact("KangU", "http://120.77.155.220:8080", "2572694660@qq.com"))
+                .contact(new Contact("AllDataDC", "http://120.77.155.220:8080", "2572694660@qq.com"))
                 .version("1.0.0")
                 .build();
     }

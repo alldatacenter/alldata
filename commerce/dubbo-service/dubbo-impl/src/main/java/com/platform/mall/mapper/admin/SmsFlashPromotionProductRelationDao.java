@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 限时购商品关联自定义Dao
- * Created by wulinhao on 2020/3/16.
+ * @author AllDataDC
  */
 public interface SmsFlashPromotionProductRelationDao {
     /**

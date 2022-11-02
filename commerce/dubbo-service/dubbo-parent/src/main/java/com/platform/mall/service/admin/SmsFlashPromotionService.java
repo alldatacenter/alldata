@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 限时购活动管理Service
- * Created by wulinhao on 2020/3/16.
+ * @author AllDataDC
  */
 public interface SmsFlashPromotionService {
     /**

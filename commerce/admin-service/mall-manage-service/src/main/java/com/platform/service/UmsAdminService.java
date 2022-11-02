@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 后台管理员Service
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 public interface UmsAdminService {
     /**

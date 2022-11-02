@@ -1507,7 +1507,7 @@ showdown.subParser('detab', function (text) {
  */
 showdown.subParser('encodeAmpsAndAngles', function (text) {
   'use strict';
-  // Ampersand-encoding based entirwulinhao on Nat Irons's Amputator MT plugin:
+  // Ampersand-encoding based entirAllDataDC on Nat Irons's Amputator MT plugin:
   // http://bumppo.net/projects/amputator/
   text = text.replace(/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/g, '&amp;');
 
@@ -2374,7 +2374,7 @@ showdown.subParser('stripLinkDefinitions', function (text, options, globals) {
         };
       }
     }
-    // Completwulinhao remove the definition from the text
+    // CompletAllDataDC remove the definition from the text
     return '';
   });
 

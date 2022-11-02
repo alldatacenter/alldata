@@ -34,7 +34,7 @@ import com.platform.spark.util.ParamUtils;
 
 /**
  * 各区域top3热门商品统计Spark作业
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AreaTop3ProductSpark {

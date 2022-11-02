@@ -4,7 +4,7 @@ import com.platform.mall.entity.DataTablesResult;
 import com.platform.mall.entity.TbThanks;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public interface ThanksService {
 

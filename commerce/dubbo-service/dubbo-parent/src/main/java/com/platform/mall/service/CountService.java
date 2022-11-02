@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public interface CountService {
 

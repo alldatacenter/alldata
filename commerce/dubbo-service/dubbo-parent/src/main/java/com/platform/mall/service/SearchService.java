@@ -4,7 +4,7 @@ package com.platform.mall.service;
 import com.platform.mall.dto.front.SearchResult;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public interface SearchService {
 

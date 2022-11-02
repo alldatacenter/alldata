@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * 当访问接口没有权限时，自定义的返回结果
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 @Component
 public class RestfulAccessDeniedHandler implements AccessDeniedHandler {

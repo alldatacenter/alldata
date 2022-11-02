@@ -5,7 +5,7 @@ import com.platform.mall.entity.mobile.LitemallFeedback;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  * @date 2020/3/27 11:39
  */
 public interface LitemallFeedbackService {

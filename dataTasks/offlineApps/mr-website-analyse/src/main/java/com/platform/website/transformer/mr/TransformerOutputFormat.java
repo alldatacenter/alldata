@@ -57,7 +57,7 @@ public class TransformerOutputFormat extends OutputFormat<BaseDimension, BaseSta
     /**
      * 自定义具体数据输出writer
      * 
-     * @author wlhbdp
+     * @author AllDataDC
      *
      */
     public class TransformerRecordWriter extends RecordWriter<BaseDimension, BaseStatsValueWritable> {

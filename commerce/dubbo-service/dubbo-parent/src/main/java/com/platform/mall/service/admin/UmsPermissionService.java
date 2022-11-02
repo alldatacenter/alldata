@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 后台用户权限管理Service
- * Created by wulinhao on 2020/3/29.
+ * @author AllDataDC
  */
 public interface UmsPermissionService {
     /**

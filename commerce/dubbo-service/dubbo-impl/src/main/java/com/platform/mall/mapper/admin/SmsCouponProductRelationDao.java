@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 优惠券和产品关系自定义Dao
- * Created by wulinhao on 2020/3/28.
+ * @author AllDataDC
  */
 public interface SmsCouponProductRelationDao {
     int insertList(@Param("list") List<SmsCouponProductRelation> productRelationList);

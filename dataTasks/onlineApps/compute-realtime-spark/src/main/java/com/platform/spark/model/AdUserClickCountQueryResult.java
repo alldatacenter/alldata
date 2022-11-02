@@ -2,7 +2,7 @@ package com.platform.spark.model;
 
 /**
  * 用户广告点击量查询结果
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AdUserClickCountQueryResult {

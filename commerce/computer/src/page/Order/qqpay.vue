@@ -1,6 +1,6 @@
 <template>
   <div class="w" style="padding-bottom: 100px;">
-    <y-shelf title="商城PC收银台 收款方: KangU">
+    <y-shelf title="商城PC收银台 收款方: AllDataDC">
       <div slot="content">
         <div class="box-inner order-info">
           <img class="wechat" src="static/images/qqpay.png" alt="扫一扫标识">
@@ -21,7 +21,7 @@
           <div class="box-btn">
             <div>
               <span>
-              
+
               </span>
               <em><span>¥</span>{{orderTotal}}</em>
               <y-button :text="payNow"
@@ -261,7 +261,7 @@
   .fn-left{
     margin-left: -5px;
   }
-  
+
   .fn-right{
     font-size: 13px;
     color: #4D4D4D;
@@ -281,7 +281,7 @@
     color: #222;
     margin-top: 0px;
   }
-  
+
   .timeout{
     position: absolute;
     top: 0;

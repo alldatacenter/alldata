@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * 订单查询参数
- * Created by wulinhao on 2020/3/11.
+ * @author AllDataDC
  */
 
 public class OmsOrderQueryParam  implements Serializable {

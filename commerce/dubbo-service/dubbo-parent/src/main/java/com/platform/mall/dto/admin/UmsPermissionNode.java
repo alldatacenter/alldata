@@ -4,7 +4,7 @@ import com.platform.mall.entity.admin.UmsPermission;
 import java.util.List;
 
 /**
- * Created by wulinhao on 2020/3/30.
+ * @author AllDataDC
  */
 public class UmsPermissionNode extends UmsPermission {
     public List<UmsPermissionNode> getChildren() {

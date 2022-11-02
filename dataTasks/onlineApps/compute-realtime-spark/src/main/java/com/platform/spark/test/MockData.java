@@ -16,7 +16,7 @@ import org.apache.spark.sql.types.StructType;
 
 /**
  * 模拟数据程序
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class MockData {

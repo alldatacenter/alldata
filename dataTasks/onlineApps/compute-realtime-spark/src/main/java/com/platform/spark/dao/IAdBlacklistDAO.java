@@ -6,7 +6,7 @@ import com.platform.spark.domain.AdBlacklist;
 
 /**
  * 广告黑名单DAO接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface IAdBlacklistDAO {

@@ -7,7 +7,7 @@ import com.platform.spark.constant.Constants;
 
 /**
  * 参数工具类
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class ParamUtils {

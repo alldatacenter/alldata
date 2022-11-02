@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * Session明细
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class SessionDetail {

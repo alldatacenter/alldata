@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 订单修改收货人信息参数
- * Created by wulinhao on 2020/3/29.
+ * @author AllDataDC
  */
 public class OmsReceiverInfoParam  implements Serializable {
     private Long orderId;

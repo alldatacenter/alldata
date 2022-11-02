@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 查询的model类
  *
- * @author wlhbdp
+ * @author AllDataDC
  */
 @Data
 public class QueryModel {

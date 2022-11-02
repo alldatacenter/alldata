@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 优惠券信息封装，包括绑定商品和绑定分类
- * Created by wulinhao on 2020/3/28.
+ * @author AllDataDC
  */
 public class SmsCouponParam extends SmsCoupon {
     //优惠券绑定的商品

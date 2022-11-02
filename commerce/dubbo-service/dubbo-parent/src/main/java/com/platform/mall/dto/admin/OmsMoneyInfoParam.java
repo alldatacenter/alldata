@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 /**
  * 修改订单费用信息参数
- * Created by wulinhao on 2020/3/29.
+ * @author AllDataDC
  */
 
 public class OmsMoneyInfoParam implements Serializable {

@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * 搜索相关商品品牌名称，分类名称及属性
- * Created by wulinhao on 2020/3/27.
+ * @author AllDataDC
  */
 public class EsProductRelatedInfo {
     private List<String> brandNames;

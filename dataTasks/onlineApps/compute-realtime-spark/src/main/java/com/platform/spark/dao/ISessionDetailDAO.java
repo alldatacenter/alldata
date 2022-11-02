@@ -6,7 +6,7 @@ import com.platform.spark.domain.SessionDetail;
 
 /**
  * Session明细DAO接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface ISessionDetailDAO {

@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * 商品分类对应属性信息
- * Created by wulinhao on 2020/3/23.
+ * @author AllDataDC
  */
 public class ProductAttrInfo  implements Serializable {
     private Long attributeId;

@@ -51,7 +51,7 @@ import com.platform.spark.util.DateUtils;
  * 广告点击流量实时统计spark作业
  * 数据要存到log
  *
- * @author wlhbdp
+ * @author AllDataDC
  */
 public class AdClickRealTimeStatSpark {
 

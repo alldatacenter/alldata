@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * 搜索中的商品信息
- * Created by wulinhao on 2020/3/19.
+ * @author AllDataDC
  */
 @Document(indexName = "pms", type = "product", shards = 1, replicas = 0)
 public class EsProduct implements Serializable {

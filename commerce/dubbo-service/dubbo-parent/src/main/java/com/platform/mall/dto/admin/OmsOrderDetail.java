@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * 订单详情信息
- * Created by wulinhao on 2020/3/11.
+ * @author AllDataDC
  */
 public class OmsOrderDetail extends OmsOrder  implements Serializable {
 

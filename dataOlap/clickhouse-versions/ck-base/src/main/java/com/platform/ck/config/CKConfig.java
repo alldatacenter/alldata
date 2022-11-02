@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 /**
  * ClickHouseConfig
- * @author wlhbdp
+ * @author AllDataDC
  * @date 2022/6/2
  */
 @Configuration

@@ -29,9 +29,9 @@
               </li>
             </ul>
             <el-checkbox class="agree" v-model="agreement">
-              我已阅读并同意遵守 
+              我已阅读并同意遵守
               <a @click="open('商城PC端')">网站描述</a> 和
-              <a @click="open('编程世界','KangU，一个独立开发者，折腾在 0 和 1 世界的极客工程师')">编程世界</a>
+              <a @click="open('编程世界','AllDataDC，一个独立开发者，折腾在 0 和 1 世界的极客工程师')">编程世界</a>
             </el-checkbox>
             <div style="margin-bottom: 30px;">
               <y-button

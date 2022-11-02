@@ -2,7 +2,7 @@ package com.platform.mall.service;
 
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public interface RegisterService {
 

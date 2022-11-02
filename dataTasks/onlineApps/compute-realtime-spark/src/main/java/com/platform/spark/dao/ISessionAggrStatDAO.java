@@ -4,7 +4,7 @@ import com.platform.spark.domain.SessionAggrStat;
 
 /**
  * session聚合统计模块DAO接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface ISessionAggrStatDAO {

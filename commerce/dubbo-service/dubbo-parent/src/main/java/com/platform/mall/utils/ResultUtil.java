@@ -4,7 +4,7 @@ package com.platform.mall.utils;
 import com.platform.mall.entity.Result;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  * @date 2019/03/24
  */
 public class ResultUtil<T> {

@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 const SupportKey='supportKey';
-export const SupportUrl='https://coding.net/u/KangU';
+export const SupportUrl='https://coding.net/u/AllDataDC';
 export function getSupport() {
   return Cookies.get(SupportKey)
 }
