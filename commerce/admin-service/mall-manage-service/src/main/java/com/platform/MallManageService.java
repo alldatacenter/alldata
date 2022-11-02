@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 应用启动入口
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 @ImportResource(locations="classpath:spring/dubbo-manage-customer.xml")
 @SpringBootApplication

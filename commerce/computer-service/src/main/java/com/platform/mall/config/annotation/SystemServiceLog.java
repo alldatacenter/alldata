@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * 系统级别Service层自定义注解，拦截Service层
- * @author wulinhao
+ * @author AllDataDC
  */
 @Target({ElementType.PARAMETER, ElementType.METHOD})//作用于参数或方法上
 @Retention(RetentionPolicy.RUNTIME)

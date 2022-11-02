@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 商品属性分类Service
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 public interface PmsProductAttributeCategoryService {
     int create(String name);

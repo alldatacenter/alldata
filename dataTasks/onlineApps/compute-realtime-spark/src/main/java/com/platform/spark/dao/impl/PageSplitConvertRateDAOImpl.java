@@ -6,7 +6,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * 页面切片转化率DAO实现类
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class PageSplitConvertRateDAOImpl implements IPageSplitConvertRateDAO {

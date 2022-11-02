@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * oss上传成功后的回调参数
- * Created by wulinhao on 2020/3/17.
+ * @author AllDataDC
  */
 public class OssCallbackParam implements Serializable {
     @ApiModelProperty("请求的回调地址")

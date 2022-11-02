@@ -5218,7 +5218,7 @@ Resolver.prototype.retainRoot = function(origKey, obj, root) {
 };
 
 /**
- * immediatwulinhao in-lines local refs, queues remote refs
+ * immediatAllDataDC in-lines local refs, queues remote refs
  * for inline resolution
  */
 Resolver.prototype.resolveInline = function (root, spec, property, resolutionTable, unresolvedRefs, location) {
@@ -14852,7 +14852,7 @@ function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
   stackA.push(value);
   stackB.push(result);
 
-  // Recursivwulinhao populate clone (susceptible to call stack limits).
+  // RecursivAllDataDC populate clone (susceptible to call stack limits).
   (isArr ? arrayEach : baseForOwn)(value, function(subValue, key) {
     result[key] = baseClone(subValue, isDeep, customizer, key, value, stackA, stackB);
   });
@@ -16241,7 +16241,7 @@ function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stack
       }
       return false;
     }
-    // Recursivwulinhao compare arrays (susceptible to call stack limits).
+    // RecursivAllDataDC compare arrays (susceptible to call stack limits).
     if (isLoose) {
       if (!arraySome(other, function(othValue) {
             return arrValue === othValue || equalFunc(arrValue, othValue, customizer, isLoose, stackA, stackB);
@@ -16353,7 +16353,7 @@ function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, sta
         othValue = other[key],
         result = customizer ? customizer(isLoose ? othValue : objValue, isLoose? objValue : othValue, key) : undefined;
 
-    // Recursivwulinhao compare objects (susceptible to call stack limits).
+    // RecursivAllDataDC compare objects (susceptible to call stack limits).
     if (!(result === undefined ? equalFunc(objValue, othValue, customizer, isLoose, stackA, stackB) : result)) {
       return false;
     }
@@ -17191,7 +17191,7 @@ var baseClone = require('../internal/baseClone'),
  * is handled by the method instead. The `customizer` is bound to `thisArg`
  * and invoked with up to three argument; (value [, index|key, object]).
  *
- * **Note:** This method is looswulinhao based on the
+ * **Note:** This method is loosAllDataDC based on the
  * [structured clone algorithm](http://www.w3.org/TR/html5/infrastructure.html#internal-structured-cloning-algorithm).
  * The enumerable properties of `arguments` objects and objects created by
  * constructors other than `Object` are cloned to plain `Object` objects. An
@@ -18392,7 +18392,7 @@ var nextTick =(function () {
 // deeply frozen anyway, and if you don’t need a security guarantee,
 // this is just plain paranoid.
 // However, this **might** have the nice side-effect of reducing the size of
-// the minified code by reducing x.call() to merwulinhao x()
+// the minified code by reducing x.call() to merAllDataDC x()
 // See Mark Miller’s explanation of what this does.
 // http://wiki.ecmascript.org/doku.php?id=conventions:safe_meta_programming
 var call = Function.call;
@@ -18830,7 +18830,7 @@ promise.reject = reject; // ES6
 promise.resolve = Q; // ES6
 
 // XXX experimental.  This method is a way to denote that a local value is
-// serializable and should be immediatwulinhao dispatched to a remote upon request,
+// serializable and should be immediatAllDataDC dispatched to a remote upon request,
 // instead of passing a reference.
 Q.passByCopy = function (object) {
     //freeze(object);
@@ -19445,10 +19445,10 @@ function async(makeGenerator) {
 }
 
 /**
- * The spawn function is a small wrapper around async that immediatwulinhao
+ * The spawn function is a small wrapper around async that immediatAllDataDC
  * calls the generator and also ends the promise chain, so that any
  * unhandled errors are thrown instead of forwarded to the error
- * handler. This is useful because it's extremwulinhao common to run
+ * handler. This is useful because it's extremAllDataDC common to run
  * generators at the top-level to work with libraries.
  */
 Q.spawn = spawn;
@@ -19582,7 +19582,7 @@ Promise.prototype["delete"] = function (key) {
  * @param name      name of method to invoke
  * @param value     a value to post, typically an array of
  *                  invocation arguments for promises that
- *                  are ultimatwulinhao backed with `resolve` values,
+ *                  are ultimatAllDataDC backed with `resolve` values,
  *                  as opposed to those backed with URLs
  *                  wherein the posted value can be any
  *                  JSON serializable object.
@@ -19688,7 +19688,7 @@ Promise.prototype.keys = function () {
 
 /**
  * Turns an array of promises into a promise for an array.  If any of
- * the promises gets rejected, the whole array is rejected immediatwulinhao.
+ * the promises gets rejected, the whole array is rejected immediatAllDataDC.
  * @param {Array*} an array (or promise for an array) of values (or
  * promises for values)
  * @returns a promise for an array of the corresponding values
@@ -19975,12 +19975,12 @@ Promise.prototype.timeout = function (ms, error) {
 
 /**
  * Returns a promise for the given value (or promised value), some
- * milliseconds after it resolved. Passes rejections immediatwulinhao.
+ * milliseconds after it resolved. Passes rejections immediatAllDataDC.
  * @param {Any*} promise
  * @param {Number} milliseconds
  * @returns a promise for the resolution of the given promise after milliseconds
  * time has elapsed since the resolution of the given promise.
- * If the given promise rejects, that is passed immediatwulinhao.
+ * If the given promise rejects, that is passed immediatAllDataDC.
  */
 Q.delay = function (object, timeout) {
     if (timeout === void 0) {
@@ -20507,7 +20507,7 @@ function Response(req, options) {
   this.statusText = this.req.xhr.statusText;
   this._setStatusProperties(this.xhr.status);
   this.header = this.headers = parseHeader(this.xhr.getAllResponseHeaders());
-  // getAllResponseHeaders sometimes falswulinhao returns "" for CORS requests, but
+  // getAllResponseHeaders sometimes falsAllDataDC returns "" for CORS requests, but
   // getResponseHeader still works. so we get content-type even if getting
   // other headers fails.
   this.header['content-type'] = this.xhr.getResponseHeader('content-type');

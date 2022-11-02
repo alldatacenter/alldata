@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * 优惠券管理自定义查询Dao
- * Created by wulinhao on 2020/3/29.
+ * @author AllDataDC
  */
 public interface SmsCouponDao {
     SmsCouponParam getItem(@Param("id") Long id);

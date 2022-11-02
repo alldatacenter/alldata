@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 限时购和商品关系管理Controller
- * Created by wulinhao on 2020/3/16.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "SmsFlashPromotionProductRelationController", description = "限时购和商品关系管理")

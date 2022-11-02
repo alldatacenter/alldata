@@ -6,7 +6,7 @@ import com.platform.website.common.AEConstants;
 /**
  * 定义我们的参数，mybatis中使用的具体参数
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class QueryColumn implements Cloneable {

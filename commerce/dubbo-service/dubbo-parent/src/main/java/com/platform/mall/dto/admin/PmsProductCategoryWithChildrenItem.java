@@ -5,7 +5,7 @@ import com.platform.mall.entity.admin.PmsProductCategory;
 import java.util.List;
 
 /**
- * Created by wulinhao on 2020/3/25.
+ * @author AllDataDC
  */
 public class PmsProductCategoryWithChildrenItem extends PmsProductCategory {
     private List<PmsProductCategory> children;

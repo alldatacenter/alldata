@@ -1,7 +1,7 @@
 package com.platform.mall.exception;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  * @date 2020/3/24
  */
 public class XmallException extends RuntimeException {

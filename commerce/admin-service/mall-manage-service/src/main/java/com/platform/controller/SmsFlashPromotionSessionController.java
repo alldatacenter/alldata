@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 限时购场次管理Controller
- * Created by wulinhao on 2020/3/16.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "SmsFlashPromotionSessionController", description = "限时购场次管理")

@@ -7,7 +7,7 @@ import org.apache.hadoop.ipc.VersionedProtocol;
 /**
  * 提供专门操作dimension表的接口
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface IDimensionConverter extends VersionedProtocol {

@@ -2,19 +2,14 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>compute-mr</artifactId>
-        <groupId>com.platform</groupId>
-        <version>1.0</version>
-    </parent>
+    <groupId>com.platform</groupId>
+    <version>1.0</version>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mr-website-sdk</artifactId>
     <packaging>war</packaging>
 
-    <name>mr-website-sdk Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <name>AllData OfflineApp SDK</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

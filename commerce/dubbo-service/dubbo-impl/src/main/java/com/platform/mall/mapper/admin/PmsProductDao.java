@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * 商品自定义Dao
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 public interface PmsProductDao {
     /**

@@ -11,7 +11,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * dimension_location表对应的model类
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class LocationDimension extends BaseDimension {

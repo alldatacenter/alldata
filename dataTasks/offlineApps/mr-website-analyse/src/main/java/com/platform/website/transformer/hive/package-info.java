@@ -1,7 +1,7 @@
 /**
  * hive相关类&文件
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 package com.platform.website.transformer.hive;

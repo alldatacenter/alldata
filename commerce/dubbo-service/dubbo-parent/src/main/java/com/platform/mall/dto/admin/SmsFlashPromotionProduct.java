@@ -5,7 +5,7 @@ import com.platform.mall.entity.admin.SmsFlashPromotionProductRelation;
 
 /**
  * 限时购及商品信息封装
- * Created by wulinhao on 2020/3/16.
+ * @author AllDataDC
  */
 public class SmsFlashPromotionProduct extends SmsFlashPromotionProductRelation {
 

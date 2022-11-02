@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * 订单退货申请查询参数
- * Created by wulinhao on 2020/3/18.
+ * @author AllDataDC
  */
 public class OmsReturnApplyQueryParam implements Serializable {
     @ApiModelProperty("服务单号")

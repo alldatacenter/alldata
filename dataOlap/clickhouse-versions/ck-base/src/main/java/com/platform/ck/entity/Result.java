@@ -4,7 +4,7 @@ package com.platform.ck.entity;
 import java.io.Serializable;
 
 /**
- * @author wlhbdp
+ * @author AllDataDC
  * @date 2022/05/05
  */
 public class Result<T> implements Serializable{

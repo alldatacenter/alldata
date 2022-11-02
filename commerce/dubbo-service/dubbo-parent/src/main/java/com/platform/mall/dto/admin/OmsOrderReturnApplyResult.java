@@ -5,7 +5,7 @@ import com.platform.mall.entity.admin.OmsOrderReturnApply;
 
 /**
  * 申请信息封装
- * Created by wulinhao on 2020/3/18.
+ * @author AllDataDC
  */
 public class OmsOrderReturnApplyResult extends OmsOrderReturnApply {
     private OmsCompanyAddress companyAddress;

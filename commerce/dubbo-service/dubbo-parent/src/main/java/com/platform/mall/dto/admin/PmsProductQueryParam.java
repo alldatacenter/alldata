@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * 产品查询参数
- * Created by wulinhao on 2020/3/27.
+ * @author AllDataDC
  */
 public class PmsProductQueryParam implements Serializable {
     @ApiModelProperty("上架状态")

@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 商品专题Service
- * Created by wulinhao on 2020/3/1.
+ * @author AllDataDC
  */
 public interface CmsSubjectService {
     /**

@@ -1,7 +1,7 @@
 package com.platform.mall.exception;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public class XmallUploadException extends RuntimeException {
 

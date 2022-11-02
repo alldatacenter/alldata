@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 首页人气推荐管理Service
- * Created by wulinhao on 2020/3/7.
+ * @author AllDataDC
  */
 public interface SmsHomeRecommendProductService {
     /**

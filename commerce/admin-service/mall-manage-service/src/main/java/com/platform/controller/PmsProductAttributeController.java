@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * 商品属性管理Controller
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "PmsProductAttributeController", description = "商品属性管理")

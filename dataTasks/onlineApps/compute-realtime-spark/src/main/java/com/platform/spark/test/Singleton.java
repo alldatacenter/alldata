@@ -3,7 +3,7 @@ package com.platform.spark.test;
 /**
  * 单例模式Demo
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class Singleton {

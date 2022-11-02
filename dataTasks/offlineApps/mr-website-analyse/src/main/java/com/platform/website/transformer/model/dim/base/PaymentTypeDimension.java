@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * 支付方式dimension类
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class PaymentTypeDimension extends BaseDimension {

@@ -29,7 +29,7 @@ import com.platform.spark.dao.impl.Top10SessionDAOImpl;
 
 /**
  * DAO工厂类
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class DAOFactory {

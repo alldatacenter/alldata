@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * top10活跃session
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class Top10Session {

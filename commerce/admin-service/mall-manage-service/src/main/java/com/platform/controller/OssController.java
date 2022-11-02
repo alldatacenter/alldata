@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Oss相关操作接口
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "OssController", description = "Oss管理")

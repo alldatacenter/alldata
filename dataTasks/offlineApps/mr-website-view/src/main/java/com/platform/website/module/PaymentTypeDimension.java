@@ -3,7 +3,7 @@ package com.platform.website.module;
 /**
  * 支付方式dimension类
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class PaymentTypeDimension {

@@ -4,7 +4,7 @@ import com.platform.spark.domain.Top10Category;
 
 /**
  * top10品类DAO接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface ITop10CategoryDAO {

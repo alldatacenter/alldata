@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public class OrderInfo implements Serializable{
 

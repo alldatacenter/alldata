@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 订单操作记录自定义Dao
- * Created by wulinhao on 2020/3/12.
+ * @author AllDataDC
  */
 public interface OmsOrderOperateHistoryDao {
     int insertList(@Param("list") List<OmsOrderOperateHistory> orderOperateHistoryList);

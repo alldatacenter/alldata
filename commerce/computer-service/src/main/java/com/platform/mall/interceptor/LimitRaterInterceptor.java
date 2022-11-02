@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 
 /**
  * 限流拦截器
- * @author wulinhao
+ * @author AllDataDC
  */
 @Component
 public class LimitRaterInterceptor extends HandlerInterceptorAdapter {

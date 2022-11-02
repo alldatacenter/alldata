@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public class QiniuUtil {
 

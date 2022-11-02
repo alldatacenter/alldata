@@ -2,7 +2,7 @@ package com.platform.spark.util;
 
 /**
  * 字符串工具类
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class StringUtils {

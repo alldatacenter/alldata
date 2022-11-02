@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * 首页品牌管理Service实现类
- * Created by wulinhao on 2020/3/6.
+ * @author AllDataDC
  */
 @Service
 public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {

@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * session聚合统计
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class SessionAggrStat {

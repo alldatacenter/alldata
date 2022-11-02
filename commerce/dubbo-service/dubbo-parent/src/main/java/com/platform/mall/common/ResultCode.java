@@ -2,7 +2,7 @@ package com.platform.mall.common;
 
 /**
  * 枚举了一些常用API操作码
- * Created by wulinhao on 2020/3/19.
+ * @author AllDataDC
  */
 public enum ResultCode implements IErrorCode {
     SUCCESS(200, "操作成功"),

@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 后台用户角色管理自定义Dao
- * Created by wulinhao on 2020/3/30.
+ * @author AllDataDC
  */
 public interface UmsRolePermissionRelationDao {
     /**

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 自定义商品分类和属性关系Dao
- * Created by wulinhao on 2020/3/23.
+ * @author AllDataDC
  */
 public interface PmsProductCategoryAttributeRelationDao {
     int insertList(@Param("list") List<PmsProductCategoryAttributeRelation> productCategoryAttributeRelationList);

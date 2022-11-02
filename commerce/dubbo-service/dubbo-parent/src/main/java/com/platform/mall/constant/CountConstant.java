@@ -1,7 +1,7 @@
 package com.platform.mall.constant;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public interface CountConstant {
 

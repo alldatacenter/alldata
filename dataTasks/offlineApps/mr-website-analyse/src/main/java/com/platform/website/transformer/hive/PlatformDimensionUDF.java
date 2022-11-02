@@ -12,7 +12,7 @@ import org.apache.hadoop.io.Text;
 /**
  * 操作平台dimension 相关的udf
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class PlatformDimensionUDF extends UDF {

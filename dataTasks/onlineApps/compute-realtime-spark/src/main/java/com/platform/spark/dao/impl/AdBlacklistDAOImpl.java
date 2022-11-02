@@ -10,7 +10,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * 广告黑名单DAO实现类
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AdBlacklistDAOImpl implements IAdBlacklistDAO {

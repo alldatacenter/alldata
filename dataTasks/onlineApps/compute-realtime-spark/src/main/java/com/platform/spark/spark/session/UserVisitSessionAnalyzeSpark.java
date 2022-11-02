@@ -91,7 +91,7 @@ import com.platform.spark.util.ParamUtils;
  2.设置 alter tablename SET SERDEPROPERTIES('serialization.null.format' = 'NULL');
  则：底层数据保存的是'NULL',通过查询显示的是'NULL'
  这时如果查询为空值的字段可通过 语句：a is null 或者 a='NULL'
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 @SuppressWarnings("unused")

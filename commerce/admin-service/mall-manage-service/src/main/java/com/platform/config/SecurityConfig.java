@@ -29,7 +29,7 @@ import java.util.List;
 
 /**
  * SpringSecurity的配置
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 @Configuration
 @EnableWebSecurity

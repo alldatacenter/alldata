@@ -4,7 +4,7 @@ import com.platform.mall.entity.admin.SmsFlashPromotionSession;
 
 /**
  * 包含商品数量的场次信息
- * Created by wulinhao on 2020/3/19.
+ * @author AllDataDC
  */
 public class SmsFlashPromotionSessionDetail extends SmsFlashPromotionSession {
     private Long productCount;

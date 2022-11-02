@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 返回结果
  * 
- * @author wlhbdp
+ * @author AllDataDC
  * 
  */
 public class Message {

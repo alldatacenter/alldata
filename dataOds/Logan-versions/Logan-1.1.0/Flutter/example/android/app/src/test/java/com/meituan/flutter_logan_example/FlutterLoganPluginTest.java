@@ -18,7 +18,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel.Result;
 
 /**
- * Create by luoheng on 2020-01-02.
+ * Create by AllDataDC
  */
 public class FlutterLoganPluginTest {
 
