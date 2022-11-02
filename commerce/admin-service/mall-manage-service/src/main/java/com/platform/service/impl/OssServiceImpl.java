@@ -21,7 +21,7 @@ import java.util.Date;
 
 /**
  * oss上传管理Service实现类
- * Created by wulinhao on 2020/3/17.
+ * @author AllDataDC
  */
 @Service
 public class OssServiceImpl implements OssService {

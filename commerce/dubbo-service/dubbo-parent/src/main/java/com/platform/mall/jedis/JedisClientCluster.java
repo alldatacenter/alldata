@@ -5,7 +5,7 @@ import java.util.List;
 import redis.clients.jedis.JedisCluster;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public class JedisClientCluster implements JedisClient {
 

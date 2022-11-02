@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public interface UserService {
 

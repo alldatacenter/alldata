@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * 各区域top3热门商品
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AreaTop3Product {

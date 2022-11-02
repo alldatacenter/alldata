@@ -15,7 +15,7 @@ import org.springframework.util.DigestUtils;
 
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 @Service
 public class RegisterServiceImpl implements RegisterService{

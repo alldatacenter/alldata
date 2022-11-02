@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 首页轮播广告管理Controller
- * Created by wulinhao on 2020/3/7.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "SmsHomeAdvertiseController", description = "首页轮播广告管理")

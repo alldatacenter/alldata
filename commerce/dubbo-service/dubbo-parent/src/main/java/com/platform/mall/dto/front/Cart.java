@@ -3,7 +3,7 @@ package com.platform.mall.dto.front;
 import java.io.Serializable;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public class Cart implements Serializable {
 

@@ -7,7 +7,7 @@ import com.platform.realtime.view.dao.impl.*;
 
 /**
  * DAO工厂类
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class DAOFactory {

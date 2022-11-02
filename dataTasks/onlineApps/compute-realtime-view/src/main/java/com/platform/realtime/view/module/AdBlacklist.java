@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * 广告黑名单
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AdBlacklist {

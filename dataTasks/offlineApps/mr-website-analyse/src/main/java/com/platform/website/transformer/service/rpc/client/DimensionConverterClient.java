@@ -19,7 +19,7 @@ import org.apache.hadoop.ipc.RPC;
 /**
  * 操作dimensionConverter相关服务的client端工具类
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class DimensionConverterClient {
@@ -55,7 +55,7 @@ public class DimensionConverterClient {
     /**
      * 读取配置信息
      * 
-     * @author wlhbdp
+     * @author AllDataDC
      * @throws IOException
      *
      */
@@ -83,7 +83,7 @@ public class DimensionConverterClient {
     /**
      * 内部代理类
      * 
-     * @author wlhbdp
+     * @author AllDataDC
      *
      */
     private static class InnerDimensionConverterProxy implements IDimensionConverter {

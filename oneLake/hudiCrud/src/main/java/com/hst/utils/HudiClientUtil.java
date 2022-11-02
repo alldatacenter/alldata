@@ -32,7 +32,7 @@ public class HudiClientUtil {
     public static void main(String[] args) throws Exception {
 
         // String tablePath = "hdfs://localhost:8020/spark_hudi/huditable";
-        String tablePath = "E:\\wlhbdp\\work\\hudiData";
+        String tablePath = "E:\\AllDataDC\\work\\hudiData";
         String tableName = "huditable";
 
         // 测试数据器

@@ -452,7 +452,7 @@ public class TestUnwrapCastInComparison
         testUnwrap(warsawSession, "timestamp(12)", "a > TIMESTAMP '2020-10-26 11:02:18.123456789321 UTC'", "a > TIMESTAMP '2020-10-26 12:02:18.123456789321'");
         testUnwrap(losAngelesSession, "timestamp(12)", "a > TIMESTAMP '2020-10-26 11:02:18.123456789321 UTC'", "a > TIMESTAMP '2020-10-26 04:02:18.123456789321'");
 
-        // DST forward -- Warsaw changed clock 1h forward on 2020-03-29T01:00 UTC (2020-03-29T02:00 local time)
+        // DST forward -- Warsaw changed clock 1h forward on 2022-03-29T01:00 UTC (2020-03-29T02:00 local time)
         // Note that in given session input TIMESTAMP values  2020-03-29 02:31 and 2020-03-29 03:31 produce the same value 2020-03-29 01:31 UTC (conversion is not monotonic)
         // last before
         testUnwrap(warsawSession, "timestamp(0)", "a > TIMESTAMP '2020-03-29 00:59:59 UTC'", "a > TIMESTAMP '2020-03-29 01:59:59'");
@@ -480,7 +480,7 @@ public class TestUnwrapCastInComparison
         testUnwrap(warsawSession, "timestamp(9)", "a > TIMESTAMP '2020-03-29 02:00:00.000000000 UTC'", "a > TIMESTAMP '2020-03-29 04:00:00.000000000'");
         testUnwrap(warsawSession, "timestamp(12)", "a > TIMESTAMP '2020-03-29 02:00:00.000000000000 UTC'", "a > TIMESTAMP '2020-03-29 04:00:00.000000000000'");
 
-        // DST backward -- Warsaw changed clock 1h backward on 2020-10-25T01:00 UTC (2020-03-29T03:00 local time)
+        // DST backward -- Warsaw changed clock 1h backward on 2022-10-25T01:00 UTC (2020-03-29T03:00 local time)
         // Note that in given session no input TIMESTAMP value can produce TIMESTAMP WITH TIME ZONE within [2020-10-25 00:00:00 UTC, 2020-10-25 01:00:00 UTC], so '>=' is OK
         // last before
         testUnwrap(warsawSession, "timestamp(0)", "a > TIMESTAMP '2020-10-25 00:59:59 UTC'", "a >= TIMESTAMP '2020-10-25 02:59:59'");

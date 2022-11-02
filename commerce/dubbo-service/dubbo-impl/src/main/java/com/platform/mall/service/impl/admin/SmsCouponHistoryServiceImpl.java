@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * 优惠券领取记录管理Service实现类
- * Created by wulinhao on 2020/3/6.
+ * @author AllDataDC
  */
 @Service
 public class SmsCouponHistoryServiceImpl implements SmsCouponHistoryService {

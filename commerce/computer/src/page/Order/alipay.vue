@@ -1,6 +1,6 @@
 <template>
   <div class="w" style="padding-bottom: 100px;">
-    <y-shelf title="商城PC收银台 收款方: KangU">
+    <y-shelf title="商城PC收银台 收款方: AllDataDC">
       <div slot="content">
         <div class="box-inner order-info">
           <p class="payment-detail">扫一扫付款（元）</p>
@@ -28,7 +28,7 @@
           <div class="box-btn">
             <div>
               <span>
-              
+
               </span>
               <em><span>¥</span>{{orderTotal}}</em>
               <y-button :text="payNow"
@@ -348,7 +348,7 @@
     color: #222;
     margin-top: -18px;
   }
-  
+
   .timeout{
     position: absolute;
     top: 0;

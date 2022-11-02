@@ -2,7 +2,7 @@ package com.platform.realtime.view.module;
 
 /**
  * 随机抽取的session
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class SessionRandomExtract {

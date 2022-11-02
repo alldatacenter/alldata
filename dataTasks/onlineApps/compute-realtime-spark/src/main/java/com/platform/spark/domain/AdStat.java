@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * 广告实时统计
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AdStat {

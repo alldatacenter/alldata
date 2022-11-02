@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 商品属性分类Controller
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "PmsProductAttributeCategoryController", description = "商品属性分类管理")

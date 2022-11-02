@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * 货币类型dimension类
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class CurrencyTypeDimension extends BaseDimension {

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 订单设置管理Service实现类
- * Created by wulinhao on 2020/3/16.
+ * @author AllDataDC
  */
 @Service
 public class OmsOrderSettingServiceImpl implements OmsOrderSettingService {

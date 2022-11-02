@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 各省份top3热门广告DAO接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface IAdProvinceTop3DAO {

@@ -6,7 +6,7 @@ import com.platform.spark.domain.AreaTop3Product;
 
 /**
  * 各区域top3热门商品DAO接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface IAreaTop3ProductDAO {

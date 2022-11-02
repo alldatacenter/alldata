@@ -71,7 +71,7 @@ public class HbaseClient {
      * @throws IOException
      */
     public static List<Map.Entry> getRow(String tableName, String rowKey) throws IOException {
-        System.setProperty("hadoop.home.dir", "/Users/wlhbdp/software/hadoop-2.7.7");
+        System.setProperty("hadoop.home.dir", "/Users/AllDataDC/software/hadoop-2.7.7");
         Table table = conn.getTable(TableName.valueOf(tableName));
         byte[] row = Bytes.toBytes(rowKey);
         Get get = new Get(row);

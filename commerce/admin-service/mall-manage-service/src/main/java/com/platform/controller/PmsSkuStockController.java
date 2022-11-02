@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * sku库存Controller
- * Created by wulinhao on 2020/3/27.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "PmsSkuStockController", description = "sku商品库存管理")

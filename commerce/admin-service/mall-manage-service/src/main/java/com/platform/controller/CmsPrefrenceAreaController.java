@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 商品优选管理Controller
- * Created by wulinhao on 2020/3/1.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "CmsPrefrenceAreaController", description = "商品优选管理")

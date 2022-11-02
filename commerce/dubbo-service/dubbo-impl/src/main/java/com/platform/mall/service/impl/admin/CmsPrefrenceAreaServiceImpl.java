@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * 商品优选Service实现类
- * Created by wulinhao on 2020/3/1.
+ * @author AllDataDC
  */
 @Service
 public class CmsPrefrenceAreaServiceImpl implements CmsPrefrenceAreaService {

@@ -4,7 +4,7 @@ package com.platform.ck.util;
 import com.platform.ck.entity.Result;
 
 /**
- * @author wlhbdp
+ * @author AllDataDC
  * @date 2022/05/05
  */
 public class ResultUtil<T> {

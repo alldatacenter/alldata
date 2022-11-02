@@ -4,7 +4,7 @@ import com.platform.spark.domain.SessionRandomExtract;
 
 /**
  * session随机抽取模块DAO接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface ISessionRandomExtractDAO {

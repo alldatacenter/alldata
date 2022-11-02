@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 自定义商品满减Dao
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 public interface PmsProductFullReductionDao {
     int insertList(@Param("list") List<PmsProductFullReduction> productFullReductionList);

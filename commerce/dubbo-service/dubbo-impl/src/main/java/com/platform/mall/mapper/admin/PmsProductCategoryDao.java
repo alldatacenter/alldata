@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 商品分类自定义Dao
- * Created by wulinhao on 2020/3/25.
+ * @author AllDataDC
  */
 public interface PmsProductCategoryDao {
     List<PmsProductCategoryWithChildrenItem> listWithChildren();

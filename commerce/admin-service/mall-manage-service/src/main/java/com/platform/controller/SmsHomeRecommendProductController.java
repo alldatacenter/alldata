@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 首页人气推荐管理Controller
- * Created by wulinhao on 2020/3/6.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "SmsHomeRecommendProductController", description = "首页人气推荐管理")

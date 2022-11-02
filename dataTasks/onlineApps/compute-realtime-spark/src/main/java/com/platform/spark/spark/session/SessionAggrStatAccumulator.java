@@ -14,7 +14,7 @@ import org.apache.spark.AccumulatorParam;
  * 
  * Spark Core里面很实用的高端技术
  * 
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class SessionAggrStatAccumulator implements AccumulatorParam<String> {

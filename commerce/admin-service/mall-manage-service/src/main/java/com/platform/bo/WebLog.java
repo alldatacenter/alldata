@@ -2,7 +2,7 @@ package com.platform.bo;
 
 /**
  * Controller层的日志封装类
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 public class WebLog {
     /**

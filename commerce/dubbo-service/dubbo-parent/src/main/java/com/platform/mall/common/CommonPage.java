@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 分页数据封装类
- * Created by wulinhao on 2020/3/19.
+ * @author AllDataDC
  */
 public class CommonPage<T> {
     private Integer pageNum;

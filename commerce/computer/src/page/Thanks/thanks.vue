@@ -81,7 +81,7 @@
       initGitment () {
         const gitment = new Gitment({
           id: '1',
-          owner: 'KangU',
+          owner: 'AllDataDC',
           repo: 'mall-pc-comments',
           oauth: {
             client_id: 'd52e48ce99ee4e8fb412',

@@ -9,7 +9,7 @@ import com.platform.spark.jdbc.JDBCHelper;
 
 /**
  * 各省份top3热门广告DAO实现类
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AdProvinceTop3DAOImpl implements IAdProvinceTop3DAO {

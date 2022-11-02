@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * 优惠券领取记录管理Controller
- * Created by wulinhao on 2020/3/6.
+ * @author AllDataDC
  */
 @Controller
 @Api(tags = "SmsCouponHistoryController", description = "优惠券领取记录管理")

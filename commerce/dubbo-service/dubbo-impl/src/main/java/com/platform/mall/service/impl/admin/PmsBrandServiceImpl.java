@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * 商品品牌Service实现类
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {

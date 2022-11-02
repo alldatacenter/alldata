@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 /**
  * SpringSecurity需要的用户详情
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 public class AdminUserDetails implements UserDetails {
     private UmsAdmin umsAdmin;

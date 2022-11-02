@@ -2,7 +2,7 @@ package com.platform.spark.domain;
 
 /**
  * 广告点击趋势
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AdClickTrend {

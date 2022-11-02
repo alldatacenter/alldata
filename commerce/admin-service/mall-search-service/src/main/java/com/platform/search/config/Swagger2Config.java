@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Swagger2API文档的配置
- * Created by wulinhao on 2020/3/26.
+ * @author AllDataDC
  */
 @Configuration
 @EnableSwagger2

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 首页新品管理Service
- * Created by wulinhao on 2020/3/6.
+ * @author AllDataDC
  */
 public interface SmsHomeNewProductService {
     /**

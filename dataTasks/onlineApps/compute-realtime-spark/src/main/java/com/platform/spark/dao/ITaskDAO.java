@@ -4,7 +4,7 @@ import com.platform.spark.domain.Task;
 
 /**
  * 任务管理DAO接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface ITaskDAO {

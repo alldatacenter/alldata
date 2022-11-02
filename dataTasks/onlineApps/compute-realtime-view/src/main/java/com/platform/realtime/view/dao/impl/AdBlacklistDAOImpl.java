@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 广告黑名单DAO实现类
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class AdBlacklistDAOImpl implements IAdBlacklistDAO {

@@ -6,7 +6,7 @@ import org.apache.spark.sql.api.java.UDF2;
 
 /**
  * random_prefix()
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public class RandomPrefixUDF implements UDF2<String, Integer, String> {

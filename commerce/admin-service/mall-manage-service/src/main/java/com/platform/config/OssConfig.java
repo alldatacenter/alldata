@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 /**
- * Created by wulinhao on 2020/3/17.
+ * @author AllDataDC
  */
 @Configuration
 public class OssConfig {

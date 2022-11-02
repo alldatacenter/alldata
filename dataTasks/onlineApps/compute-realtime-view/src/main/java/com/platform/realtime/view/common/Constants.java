@@ -3,7 +3,7 @@ package com.platform.realtime.view.common;
 /**
  * 常量接口
  *
- * @author wlhbdp
+ * @author AllDataDC
  */
 public interface Constants {
 

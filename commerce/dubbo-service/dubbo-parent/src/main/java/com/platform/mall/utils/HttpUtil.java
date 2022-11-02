@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author wulinhao
+ * @author AllDataDC
  */
 public class HttpUtil {
 

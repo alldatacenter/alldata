@@ -1,0 +1,36 @@
+{
+  "spark": {
+    "log.level": "WARN"
+  },
+  "sinks": [
+    {
+      "name": "console",
+      "type": "CONSOLE",
+      "config": {
+        "max.log.lines": 10
+      }
+    },
+    {
+      "name": "hdfs",
+      "type": "HDFS",
+      "config": {
+        "path": "hdfs:///griffin/persist",
+        "max.persist.lines": 10000,
+        "max.lines.per.file": 10000
+      }
+    },
+    {
+      "name": "mysql",
+      "type": "MYSQL",
+      "config": {
+        "over.time": "1m",
+        "retry": 5,
+        "driver": "com.mysql.jdbc.Driver",
+        "url": "jdbc:mysql://localhost:3306/alldata_AllDataDC",
+        "username": "root",
+        "password": "123456"
+      }
+    }
+  ],
+  "griffin.checkpoint": []
+}

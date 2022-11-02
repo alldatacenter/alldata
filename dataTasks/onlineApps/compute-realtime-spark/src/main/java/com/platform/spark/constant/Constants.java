@@ -2,7 +2,7 @@ package com.platform.spark.constant;
 
 /**
  * 常量接口
- * @author wlhbdp
+ * @author AllDataDC
  *
  */
 public interface Constants {

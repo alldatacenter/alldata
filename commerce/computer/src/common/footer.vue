@@ -82,7 +82,7 @@
       open2 () {
         this.$notify.info({
           title: '编程世界',
-          message: 'KangU，一个独立开发者，折腾在 0 和 1 世界的极客工程师'
+          message: 'AllDataDC，一个独立开发者，折腾在 0 和 1 世界的极客工程师'
         })
       },
       open3 () {
