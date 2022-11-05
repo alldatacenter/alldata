@@ -1,0 +1,22 @@
+Cython==3.0a6
+gremlinpython>=3.4.9
+grpcio<=1.43.0,>=1.40.0
+grpcio-tools<=1.43.0,>=1.40.0
+kubernetes
+msgpack
+nest_asyncio
+networkx==2.8.0;python_version>="3.8"
+networkx==2.6.0;python_version<"3.8"
+numpy
+orjson
+packaging
+pandas
+protobuf>=3.15.0,<=3.18.1
+psutil
+pyarrow<=6.0.0
+pysimdjson
+PyYAML
+scipy
+tqdm
+vineyard>=0.5.2; sys_platform != "win32"
+vineyard-io>=0.5.2; sys_platform != "win32"
