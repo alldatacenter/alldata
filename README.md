@@ -61,7 +61,7 @@
 
 ## AllData全新定制一站式场景化大数据中台
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/200178946-39ceac1a-d76f-4964-aca7-7227f5750303.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/200179453-bfe6b877-5e59-4239-8217-154a0953c97d.png">
 <br/>
 
 
