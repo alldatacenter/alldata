@@ -54,6 +54,17 @@
 
 
 
+## AllData Doris
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/200178943-7a8edb50-b4d6-4095-9e39-2b3303925701.png">
+<br/>
+
+## AllData全新定制一站式场景化大数据中台
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/200179453-bfe6b877-5e59-4239-8217-154a0953c97d.png">
+<br/>
+
+
 ## Architecture
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171598215-0914f665-9950-476c-97ff-e7e07aa10eaf.png">
