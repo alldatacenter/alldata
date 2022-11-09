@@ -1,0 +1,9 @@
+{
+  "name": "bitsail-connector-legacy-redis",
+  "classes": [
+    "com.bytedance.bitsail.connector.legacy.redis.source.RedisOutputFormat"
+  ],
+  "libs": [
+    "bitsail-connector-redis-${version}.jar"
+  ]
+}
