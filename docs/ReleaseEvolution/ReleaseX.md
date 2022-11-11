@@ -26,7 +26,7 @@
 > 
 > Kong: 3.0.0
 > 
-> Flinkcdc: 2.3-SNAPSHOT
+> Flinkcdc: 2.3 RELEASE
 > 
 > Flinkx: 1.12-SNAPSHOT
 > 
