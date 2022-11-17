@@ -2,12 +2,18 @@
 
 ## 1、大数据组件管理Ambari二次开发
 
-## 2、支持画布拖拉拽自定义组件`REALEASE`版本进行大数据集群底层组件部署安装
-### 选取Github Apache BigData Component Stack
-> 2.1 选择组件名称, Github Release版本, （可选）编译安装
-> 2.2 选择URL, 下载安装包分发不同的Agent
-> 2.3 Ambari页面完成安装包准备后, 启动Ambari安装组件引导流程
-> 2.4 根据配置文件设置相关Properties, 进行Install, Configure, Start, Status, Stop等生命周期管理
+## 2、支持画布拖拉拽
+> 2.1 自定义组件`REALEASE`版本进行大数据集群底层组件部署安装
+>
+> 2.2 选取Github Apache BigData Component Stack
+>
+> 2.3 选择组件名称, Github Release版本, （可选）编译安装
+>
+> 2.4 选择URL, 下载安装包分发不同的Agent
+>
+> 2.5 Ambari页面完成安装包准备后, 启动Ambari安装组件引导流程
+>
+> 2.6 根据配置文件设置相关Properties, 进行Install, Configure, Start, Status, Stop等生命周期管理
 
 ## 3、基于新增自定义服务到Ambari
 ### 使用Ambari生命周期脚本控制各种组件起停
@@ -31,5 +37,4 @@
 > 9、OPTIMIZE FOR ALL DATA PLATFORM 性能优化引擎
 > 
 > 10、DATABASES FOR ALL DATA PLATFORM 分布式存储引擎
-> 
 
