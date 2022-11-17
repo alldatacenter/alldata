@@ -64,6 +64,11 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/200179453-bfe6b877-5e59-4239-8217-154a0953c97d.png">
 <br/>
 
+## AllData Ambari 全新自定义Apache组件栈大数据中台
+<br/> 
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/202367748-4cc39063-aa62-414e-9a10-9543403d5d7c.png">
+<br/>
+
 
 ## Architecture
 <br/>
