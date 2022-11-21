@@ -69,7 +69,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/202367748-4cc39063-aa62-414e-9a10-9543403d5d7c.png">
 <br/>
 
-### 大数据组件管理Ambari FOR DATA PLATFORM
+## 大数据组件管理Ambari FOR DATA PLATFORM
 
 ### 1、大数据组件管理Ambari二次开发
 
@@ -109,6 +109,87 @@
 >
 > 10、DATABASES FOR ALL DATA PLATFORM 分布式存储引擎
 > 
+
+## Flink Table Store && Lake Storage POC
+
+### 2.1 SQL~Flink table store poc
+> 
+> set execution.checkpointing.interval=15sec;
+> 
+> CREATE CATALOG alldata_catalog WITH (
+> 
+>   'type'='table-store',
+>   
+>   'warehouse'='file:/tmp/table_store'
+>   
+> );
+> 
+> USE CATALOG alldata_catalog;
+> 
+> CREATE TABLE word_count (
+> 
+>     word STRING PRIMARY KEY NOT ENFORCED,
+>     
+>     cnt BIGINT
+>     
+> );
+> 
+> CREATE TEMPORARY TABLE word_table (
+> 
+>     word STRING
+>     
+> ) WITH (
+> 
+>     'connector' = 'datagen',
+>     
+>     'fields.word.length' = '1'
+>     
+> );
+> 
+> INSERT INTO word_count SELECT word, COUNT(*) FROM word_table GROUP BY word;
+> 
+> -- POC Test OLAP QUERY
+> 
+> SET sql-client.execution.result-mode = 'tableau';
+> 
+> RESET execution.checkpointing.interval;
+> 
+> SET execution.runtime-mode = 'batch';
+> 
+> SELECT * FROM word_count;
+> 
+> -- POC Test Stream QUERY
+> 
+> -- SET execution.runtime-mode = 'streaming';
+> 
+> -- SELECT `interval`, COUNT(*) AS interval_cnt FROM
+> 
+> --   (SELECT cnt / 10000 AS `interval` FROM word_count) GROUP BY `interval`;
+
+### 2.2 Flink Runtime Web
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073679-f64b4655-7ea8-4c36-98ab-7b1806119224.png">
+<br/>
+
+### 2.3 Flink Batch
+> 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073715-e69d8378-1b37-4fea-851f-9f3e6a9d62eb.png">
+<br/>
+
+### 2.4 Flink Olap Read
+> 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073740-e088e842-3010-42af-bfc2-0808d5e1940f.png">
+<br/> 
+
+### 2.5 Flink Stream Read
+> 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073760-906f0b1c-498b-4713-931b-25a90f53e985.png">
+<br/> 
+ 
+
 
 ## Architecture
 <br/>
