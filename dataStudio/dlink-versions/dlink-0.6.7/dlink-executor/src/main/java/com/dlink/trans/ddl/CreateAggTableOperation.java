@@ -23,6 +23,7 @@ import com.dlink.executor.Executor;
 import com.dlink.trans.AbstractOperation;
 import com.dlink.trans.Operation;
 
+import org.apache.flink.table.api.Expressions;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.TableResult;
 
@@ -62,12 +63,12 @@ public class CreateAggTableOperation extends AbstractOperation implements Operat
         List<String> wheres = aggTable.getWheres();
         if (wheres != null && wheres.size() > 0) {
             for (String s : wheres) {
-                source = source.filter(s);
+                source = source.filter(Expressions.$(s));
             }
         }
-        Table sink = source.groupBy(aggTable.getGroupBy())
-                .flatAggregate(aggTable.getAggBy())
-                .select(aggTable.getColumns());
+        Table sink = source.groupBy(Expressions.$(aggTable.getGroupBy()))
+                .flatAggregate(Expressions.$(aggTable.getAggBy()))
+                .select(Expressions.$(aggTable.getColumns()));
         executor.getCustomTableEnvironment().registerTable(aggTable.getName(), sink);
         return null;
     }

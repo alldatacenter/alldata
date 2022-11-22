@@ -79,8 +79,8 @@
         <!--  `provided` for product environment ,`compile` for dev environment  -->
         <scope.runtime>provided</scope.runtime>
         <!--  modify flink version  -->
-        <dlink.flink.version>1.14</dlink.flink.version>
-        <scala.binary.version>2.11</scala.binary.version>
+        <dlink.flink.version>1.16</dlink.flink.version>
+        <scala.binary16.version>2.12</scala.binary16.version>
         <protobuf-java.version>2.5.0</protobuf-java.version>
         <jedis.version>2.9.0</jedis.version>
         <javax.mail>1.6.2</javax.mail>
@@ -470,37 +470,37 @@
                     <version>${maven-surefire-plugin.version}</version>
                 </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${maven-checkstyle-plugin.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>8.45</version>
-                        </dependency>
-                    </dependencies>
-                    <configuration>
-                        <consoleOutput>true</consoleOutput>
-                        <encoding>UTF-8</encoding>
-                        <configLocation>style/checkstyle.xml</configLocation>
-                        <failOnViolation>true</failOnViolation>
-                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                        <sourceDirectories>
-                            <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
-                        </sourceDirectories>
-                        <excludes>**\/generated-sources\/</excludes>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>compile</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--                    <version>${maven-checkstyle-plugin.version}</version>-->
+<!--                    <dependencies>-->
+<!--                        <dependency>-->
+<!--                            <groupId>com.puppycrawl.tools</groupId>-->
+<!--                            <artifactId>checkstyle</artifactId>-->
+<!--                            <version>8.45</version>-->
+<!--                        </dependency>-->
+<!--                    </dependencies>-->
+<!--                    <configuration>-->
+<!--                        <consoleOutput>true</consoleOutput>-->
+<!--                        <encoding>UTF-8</encoding>-->
+<!--                        <configLocation>style/checkstyle.xml</configLocation>-->
+<!--                        <failOnViolation>true</failOnViolation>-->
+<!--                        <includeTestSourceDirectory>true</includeTestSourceDirectory>-->
+<!--                        <sourceDirectories>-->
+<!--                            <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>-->
+<!--                        </sourceDirectories>-->
+<!--                        <excludes>**\/generated-sources\/</excludes>-->
+<!--                    </configuration>-->
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <phase>compile</phase>-->
+<!--                            <goals>-->
+<!--                                <goal>check</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
+<!--                </plugin>-->
             </plugins>
         </pluginManagement>
 
