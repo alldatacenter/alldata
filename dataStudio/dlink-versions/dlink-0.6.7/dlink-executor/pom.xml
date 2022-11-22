@@ -46,13 +46,14 @@
         </dependency>
         <dependency>
             <groupId>com.dlink</groupId>
-            <artifactId>dlink-client-${dlink.flink.version}</artifactId>
+            <artifactId>dlink-client-1.16</artifactId>
+            <version>0.6.7</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.dlink</groupId>
             <artifactId>dlink-flink-${dlink.flink.version}</artifactId>
-            <scope>provided</scope>
+            <version>0.6.7</version>
         </dependency>
         <dependency>
             <groupId>com.dlink</groupId>

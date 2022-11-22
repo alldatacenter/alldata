@@ -65,6 +65,7 @@
         <dependency>
             <groupId>com.dlink</groupId>
             <artifactId>dlink-client-${dlink.flink.version}</artifactId>
+            <version>0.6.7</version>
             <scope>${scope.runtime}</scope>
         </dependency>
         <dependency>
@@ -74,12 +75,13 @@
         </dependency>
         <dependency>
             <groupId>com.dlink</groupId>
-            <artifactId>dlink-connector-jdbc-${dlink.flink.version}</artifactId>
+            <artifactId>dlink-connector-jdbc-1.14</artifactId>
             <scope>${scope.runtime}</scope>
         </dependency>
         <dependency>
             <groupId>com.dlink</groupId>
             <artifactId>dlink-flink-${dlink.flink.version}</artifactId>
+            <version>0.6.7</version>
             <scope>${scope.runtime}</scope>
         </dependency>
         <dependency>
@@ -94,7 +96,7 @@
         </dependency>
         <dependency>
             <groupId>com.dlink</groupId>
-            <artifactId>dlink-catalog-mysql-${dlink.flink.version}</artifactId>
+            <artifactId>dlink-catalog-mysql-1.14</artifactId>
             <scope>${scope.runtime}</scope>
         </dependency>
         <dependency>
