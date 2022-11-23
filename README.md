@@ -45,7 +45,7 @@
 </p>
 
 ## [中文](https://github.com/AllDataTeam/alldata/blob/master/README_ZH.md) | English
-## [在线体验版](http://112.74.93.144:3000/data-center) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
+## [体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
 ## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
 
 ## Stargazers over time
@@ -189,6 +189,29 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073760-906f0b1c-498b-4713-931b-25a90f53e985.png">
 <br/> 
  
+## Dlink二开新增Flink1.16.0支持
+### 1、Dlink配置Flink Table Store相关依赖
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467342-fd24f652-2fb5-4e4e-9b6e-23a113817b6b.png">
+<br/> 
+### 2、Dlink启动并运行成功
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467422-a2c39226-31c6-4998-a926-71068b36de4d.png">
+<br/> 
+### 3、OLAP查询
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467379-b498da92-218f-4f29-a977-dd17fa374ea0.png">
+<br/> 
+
+### 4、Flink1.16.0 Dlink流式读
+> 4.1 Stream Read 1
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467499-e1541c84-f8c8-40ff-aa33-cdd35cae2932.png">
+<br/> 
+> 4.2 Stream Read 2
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467519-83fd40d5-823d-45b0-8cdd-09e0b9b09cb2.png">
+<br/>
 
 
 ## Architecture

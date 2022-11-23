@@ -45,7 +45,7 @@
 </p>
 
 ## [中文](https://github.com/AllDataTeam/alldata/blob/master/README_ZH.md) | English
-## [在线体验版](http://112.74.93.144:3000/data-center) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
+## [体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
 ## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
 
 ## Stargazers over time
@@ -69,7 +69,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/202367748-4cc39063-aa62-414e-9a10-9543403d5d7c.png">
 <br/>
 
-### 大数据组件管理Ambari FOR DATA PLATFORM
+## 大数据组件管理Ambari FOR DATA PLATFORM
 
 ### 1、大数据组件管理Ambari二次开发
 
@@ -109,6 +109,110 @@
 >
 > 10、DATABASES FOR ALL DATA PLATFORM 分布式存储引擎
 >
+
+## Flink Table Store && Lake Storage POC
+
+### 2.1 SQL~Flink table store poc
+>
+> set execution.checkpointing.interval=15sec;
+>
+> CREATE CATALOG alldata_catalog WITH (
+>
+>   'type'='table-store',
+>
+>   'warehouse'='file:/tmp/table_store'
+>
+> );
+>
+> USE CATALOG alldata_catalog;
+>
+> CREATE TABLE word_count (
+>
+>     word STRING PRIMARY KEY NOT ENFORCED,
+>     
+>     cnt BIGINT
+>
+> );
+>
+> CREATE TEMPORARY TABLE word_table (
+>
+>     word STRING
+>
+> ) WITH (
+>
+>     'connector' = 'datagen',
+>     
+>     'fields.word.length' = '1'
+>
+> );
+>
+> INSERT INTO word_count SELECT word, COUNT(*) FROM word_table GROUP BY word;
+>
+> -- POC Test OLAP QUERY
+>
+> SET sql-client.execution.result-mode = 'tableau';
+>
+> RESET execution.checkpointing.interval;
+>
+> SET execution.runtime-mode = 'batch';
+>
+> SELECT * FROM word_count;
+>
+> -- POC Test Stream QUERY
+>
+> -- SET execution.runtime-mode = 'streaming';
+>
+> -- SELECT `interval`, COUNT(*) AS interval_cnt FROM
+>
+> --   (SELECT cnt / 10000 AS `interval` FROM word_count) GROUP BY `interval`;
+
+### 2.2 Flink Runtime Web
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073679-f64b4655-7ea8-4c36-98ab-7b1806119224.png">
+<br/>
+
+### 2.3 Flink Batch
+>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073715-e69d8378-1b37-4fea-851f-9f3e6a9d62eb.png">
+<br/>
+
+### 2.4 Flink Olap Read
+>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073740-e088e842-3010-42af-bfc2-0808d5e1940f.png">
+<br/> 
+
+### 2.5 Flink Stream Read
+>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073760-906f0b1c-498b-4713-931b-25a90f53e985.png">
+<br/> 
+
+## Dlink二开新增Flink1.16.0支持
+### 1、Dlink配置Flink Table Store相关依赖
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467342-fd24f652-2fb5-4e4e-9b6e-23a113817b6b.png">
+<br/> 
+### 2、Dlink启动并运行成功
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467422-a2c39226-31c6-4998-a926-71068b36de4d.png">
+<br/> 
+### 3、OLAP查询
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467379-b498da92-218f-4f29-a977-dd17fa374ea0.png">
+<br/> 
+
+### 4、Flink1.16.0 Dlink流式读
+> 4.1 Stream Read 1
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467499-e1541c84-f8c8-40ff-aa33-cdd35cae2932.png">
+<br/>
+> 4.2 Stream Read 2
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467519-83fd40d5-823d-45b0-8cdd-09e0b9b09cb2.png">
+<br/>
+
 
 ## Architecture
 <br/>
