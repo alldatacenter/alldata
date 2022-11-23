@@ -45,13 +45,56 @@
 </p>
 
 ## [中文](https://github.com/AllDataTeam/alldata/blob/master/README_ZH.md) | English
-## [体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
+## [原型体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
 ## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
 
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/authorwlh/alldata.svg)](https://starchart.cc/authorwlh/alldata)
 
+## [线上ElAdmin预览地址](http://43.138.157.47:8013/dashboard)
+> http://43.138.157.47:8013/dashboard
+> 账号: poc
+> 密码：123456
+
+### ElAdmin预览效果
+> 登录页面
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520738-28492bac-e484-481b-9338-8314e2fdf5eb.png">
+<br/>
+> 首页 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520913-609fdbe0-fcfd-4a0a-8b79-a3f960153435.png">
+<br/>
+> 元数据管理 
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520997-9ac122bb-f61a-4ea9-becf-efa0b72320ad.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521639-ed23fceb-96ef-49e2-ac49-931978d7dcc0.png">
+<br/>
+
+> 元数据拾取
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521695-8f7469db-fc98-44e2-b82c-de729cd5c9e1.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521746-5d43dcc1-7ed3-4e50-b3b1-8fa767c34b26.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521777-1c0a2635-27a5-42f3-a985-2d68556ed9d0.png">
+<br/>
+
+
+> 应用分析
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521541-3a3186fd-0827-4c4c-bca0-f2761d6f4d67.png">
+<br/>
+ 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521584-4099710f-b31f-4815-9c7f-e08e0cdc45bf.png">
+<br/>
 
 
 ## AllData Doris
@@ -108,62 +151,62 @@
 > 9、OPTIMIZE FOR ALL DATA PLATFORM 性能优化引擎
 >
 > 10、DATABASES FOR ALL DATA PLATFORM 分布式存储引擎
->
+> 
 
 ## Flink Table Store && Lake Storage POC
 
 ### 2.1 SQL~Flink table store poc
->
+> 
 > set execution.checkpointing.interval=15sec;
->
+> 
 > CREATE CATALOG alldata_catalog WITH (
->
+> 
 >   'type'='table-store',
->
+>   
 >   'warehouse'='file:/tmp/table_store'
->
+>   
 > );
->
+> 
 > USE CATALOG alldata_catalog;
->
+> 
 > CREATE TABLE word_count (
->
+> 
 >     word STRING PRIMARY KEY NOT ENFORCED,
 >     
 >     cnt BIGINT
->
+>     
 > );
->
+> 
 > CREATE TEMPORARY TABLE word_table (
->
+> 
 >     word STRING
->
+>     
 > ) WITH (
->
+> 
 >     'connector' = 'datagen',
 >     
 >     'fields.word.length' = '1'
->
+>     
 > );
->
+> 
 > INSERT INTO word_count SELECT word, COUNT(*) FROM word_table GROUP BY word;
->
+> 
 > -- POC Test OLAP QUERY
->
+> 
 > SET sql-client.execution.result-mode = 'tableau';
->
+> 
 > RESET execution.checkpointing.interval;
->
+> 
 > SET execution.runtime-mode = 'batch';
->
+> 
 > SELECT * FROM word_count;
->
+> 
 > -- POC Test Stream QUERY
->
+> 
 > -- SET execution.runtime-mode = 'streaming';
->
+> 
 > -- SELECT `interval`, COUNT(*) AS interval_cnt FROM
->
+> 
 > --   (SELECT cnt / 10000 AS `interval` FROM word_count) GROUP BY `interval`;
 
 ### 2.2 Flink Runtime Web
@@ -172,23 +215,23 @@
 <br/>
 
 ### 2.3 Flink Batch
->
+> 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073715-e69d8378-1b37-4fea-851f-9f3e6a9d62eb.png">
 <br/>
 
 ### 2.4 Flink Olap Read
->
+> 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073740-e088e842-3010-42af-bfc2-0808d5e1940f.png">
 <br/> 
 
 ### 2.5 Flink Stream Read
->
+> 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203073760-906f0b1c-498b-4713-931b-25a90f53e985.png">
 <br/> 
-
+ 
 ## Dlink二开新增Flink1.16.0支持
 ### 1、Dlink配置Flink Table Store相关依赖
 <br/>
@@ -207,7 +250,7 @@
 > 4.1 Stream Read 1
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467499-e1541c84-f8c8-40ff-aa33-cdd35cae2932.png">
-<br/>
+<br/> 
 > 4.2 Stream Read 2
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203467519-83fd40d5-823d-45b0-8cdd-09e0b9b09cb2.png">
