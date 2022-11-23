@@ -45,13 +45,56 @@
 </p>
 
 ## [中文](https://github.com/AllDataTeam/alldata/blob/master/README_ZH.md) | English
-## [体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
+## [原型体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
 ## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
 
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/authorwlh/alldata.svg)](https://starchart.cc/authorwlh/alldata)
 
+## [线上ElAdmin预览地址](http://43.138.157.47:8013/dashboard)
+> http://43.138.157.47:8013/dashboard
+> 账号: poc
+> 密码：123456
+
+### ElAdmin预览效果
+> 登录页面
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520738-28492bac-e484-481b-9338-8314e2fdf5eb.png">
+<br/>
+> 首页 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520913-609fdbe0-fcfd-4a0a-8b79-a3f960153435.png">
+<br/>
+> 元数据管理 
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520997-9ac122bb-f61a-4ea9-becf-efa0b72320ad.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521639-ed23fceb-96ef-49e2-ac49-931978d7dcc0.png">
+<br/>
+
+> 元数据拾取
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521695-8f7469db-fc98-44e2-b82c-de729cd5c9e1.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521746-5d43dcc1-7ed3-4e50-b3b1-8fa767c34b26.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521777-1c0a2635-27a5-42f3-a985-2d68556ed9d0.png">
+<br/>
+
+
+> 应用分析
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521541-3a3186fd-0827-4c4c-bca0-f2761d6f4d67.png">
+<br/>
+ 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521584-4099710f-b31f-4815-9c7f-e08e0cdc45bf.png">
+<br/>
 
 
 ## AllData Doris
