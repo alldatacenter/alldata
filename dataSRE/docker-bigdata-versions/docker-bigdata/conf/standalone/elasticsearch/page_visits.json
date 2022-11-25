@@ -1,0 +1,89 @@
+{"tableName": "page_visits",
+
+    "schemaName": "default",
+
+    "host": "127.0.0.1",
+
+    "port": 9300,
+
+    "clusterName": "docker-cluster",
+
+    "index": "page_visits",
+
+    "indexExactMatch": false,
+
+    "type": "page_visits",
+
+    "columns": [
+
+        {
+
+            "name": "user_id",
+
+            "type": "varchar",
+
+             "jsonPath":"user_id",
+
+             "jsonType":"varchar"
+
+        },
+		{
+
+            "name": "event_time",
+
+            "type": "long",
+
+             "jsonPath":"event_time",
+
+             "jsonType":"long"
+
+        },
+		{
+
+            "name": "event_id",
+
+            "type": "integer",
+
+             "jsonPath":"event_id",
+
+             "jsonType":"integer"
+
+        },
+		{
+
+            "name": "event_name",
+
+            "type": "varchar",
+
+             "jsonPath":"event_name",
+
+             "jsonType":"varchar"
+
+        },
+		{
+
+            "name": "event_properties",
+
+            "type": "varchar",
+
+             "jsonPath":"event_properties",
+
+             "jsonType":"varchar"
+
+        }
+		,
+		{
+
+            "name": "event_date",
+
+            "type": "varchar",
+
+             "jsonPath":"event_date",
+
+             "jsonType":"varchar"
+
+        }
+
+    ]
+
+}

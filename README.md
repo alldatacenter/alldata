@@ -112,26 +112,69 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/202367748-4cc39063-aa62-414e-9a10-9543403d5d7c.png">
 <br/>
 
-## 大数据组件管理Ambari FOR DATA PLATFORM
+## 大数据组件管理DOCKER FOR DATA PLATFORM
 
-### 1、大数据组件管理Ambari二次开发
+### 1、配置主机服务HOST
 
-### 2、支持画布拖拉拽
-> 2.1 自定义组件`REALEASE`版本进行大数据集群底层组件部署安装
->
-> 2.2 选取Github Apache BigData Component Stack
->
-> 2.3 选择组件名称, Github Release版本, （可选）编译安装
->
-> 2.4 选择URL, 下载安装包分发不同的Agent
->
-> 2.5 Ambari页面完成安装包准备后, 启动Ambari安装组件引导流程
->
-> 2.6 根据配置文件设置相关Properties, 进行Install, Configure, Start, Status, Stop等生命周期管理
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203997670-4b2339e5-d4ba-43ec-afb3-e454646255fd.png">
+<br/> 
 
-### 3、基于新增自定义服务到Ambari
-### 使用Ambari生命周期脚本控制各种组件起停
+### 2、启动大数据集群
 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203997598-a80fc4bc-1226-4d7a-9918-39f2586b4170.png">
+<br/> 
+
+### 3、YARN正常访问
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203997781-cb66da01-eddc-4576-b6e0-b107cdaa189b.png">
+<br/>
+
+### 4、HIVE正常使用
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203997829-52c8c396-1dc4-4a53-b398-c3a54685f66f.png">
+<br/>
+
+### 5、HDFS正常访问
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203998038-0cc73461-6fea-4779-b6c4-0ee293b62832.png">
+<br/>
+
+### 6、ES健康检测
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203998116-c9cf7a9a-c51e-48d3-823b-9ffef1806567.png">
+<br/>
+
+### 7、KIBANA UI访问
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203998431-e8c2a604-d666-4eef-9ea6-b8a2cc669cac.png">
+<br/>
+
+### 8、PRESTO UI访问
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203998248-bf6a4090-8943-493b-83a5-87a55d2dcc17.png">
+<br/>
+
+### 9、HBASE正常访问
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203998514-354d2756-0bee-4cbe-aead-d686fec61da4.png">
+<br/>
+
+### 10、FLIKN RUNTIME WEB 正常访问
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203998796-732df150-c697-41b6-a5e7-dc9c65cada4f.png">
+<br/>
+
+## 使用Docker/K8S云原生方案-控制各种组件起停
+
+>
 > 1、BUSINESS FOR ALL DATA PLATFORM 商业项目
 >
 > 2、BUSINESS FOR ALL DATA PLATFORM 计算引擎
