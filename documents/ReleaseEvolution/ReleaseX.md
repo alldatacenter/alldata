@@ -2,7 +2,7 @@
 
 ## 1、 AllData总述
 >
-> 一个基础平台基于Ambari拉起20+种开源组件的启停，第二个是数据平台的产品
+> 一个基础平台基于Docker拉起20+种开源组件的启停，第二个是数据平台的产品
 >
 ## 2、组件维护与升级
 >
@@ -16,7 +16,7 @@
 >
 > DataSphereStudio: 1.1.0
 > 
-> Ambari: 3.0.0.0-SNAPSHOT
+> docker: 3.0.0.0-SNAPSHOT
 > 
 > Dolphinscheduler: 3.0.0
 > 
