@@ -1,0 +1,20 @@
+package ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.mapstruct;
+
+import cn.datax.common.mapstruct.EntityMapper;
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.dto.${className}Dto;
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.entity.${entity};
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.vo.${className}Vo;
+import org.mapstruct.Mapper;
+
+/**
+ * <p>
+ * $!{table.comment} Mapper 实体映射
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Mapper(componentModel = "spring")
+public interface ${className}Mapper extends EntityMapper<${className}Dto, ${entity}, ${className}Vo> {
+
+}

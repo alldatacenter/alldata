@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.metadata.dao.MetadataSourceDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.metadata.api.entity.MetadataSourceEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="db_type" property="dbType" />
+        <result column="source_name" property="sourceName" />
+        <result column="is_sync" property="isSync" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.metadata.api.entity.MetadataSourceEntity" extends="BaseResultMap">
+        <result column="db_schema" property="dbSchema" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        create_dept,
+        update_by,
+        update_time,
+        remark,
+        db_type, source_name, is_sync
+    </sql>
+
+    <sql id="Source_Column_List">
+        ${alias}.id,
+        ${alias}.status,
+        ${alias}.create_by,
+        ${alias}.create_time,
+        ${alias}.create_dept,
+        ${alias}.update_by,
+        ${alias}.update_time,
+        ${alias}.remark,
+        ${alias}.db_type, ${alias}.source_name, ${alias}.is_sync, ${alias}.db_schema
+    </sql>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Source_Column_List"><property name="alias" value="s"/></include>
+        FROM metadata_source s
+        WHERE 1=1 AND s.id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM metadata_source
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPageWithAuth" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Source_Column_List"><property name="alias" value="s"/></include>
+        FROM metadata_source s
+        <trim prefix="WHERE" prefixOverrides="WHERE |AND |OR ">
+            ${ew.customSqlSegment}
+            <if test="roles != null and roles.size > 0">
+                AND EXISTS (
+                    SELECT 1 FROM metadata_authorize auth WHERE auth.object_id = s.id AND auth.object_type = 'database'
+                    AND auth.role_id IN
+                    <foreach collection="roles" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                )
+            </if>
+        </trim>
+    </select>
+
+</mapper>

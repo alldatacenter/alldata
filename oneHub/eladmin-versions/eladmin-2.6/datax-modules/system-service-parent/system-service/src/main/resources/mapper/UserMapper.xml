@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.UserDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.UserEntity">
+        <result column="id" property="id" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="username" property="username" />
+        <result column="nickname" property="nickname" />
+        <result column="password" property="password" />
+        <result column="email" property="email" />
+        <result column="phone" property="phone" />
+        <result column="birthday" property="birthday" />
+        <result column="status" property="status" />
+        <result column="dept_id" property="deptId" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.system.api.entity.UserEntity" extends="BaseResultMap">
+        <collection property="dept" column="{userId=id}" select="getDept"></collection>
+        <collection property="roles" column="{userId=id}" select="getRoleList"></collection>
+        <collection property="posts" column="{userId=id}" select="getPostList"></collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        username, nickname, password, email, phone, birthday, status, dept_id, remark
+    </sql>
+
+    <update id="updateUserPassword">
+        UPDATE sys_user SET password = #{password} WHERE id = #{id}
+    </update>
+
+    <select id="getDept" resultType="cn.datax.service.system.api.entity.DeptEntity">
+        SELECT
+            <include refid="cn.datax.service.system.dao.DeptDao.Dept_Column_List">
+                <property name="alias" value="d"/>
+            </include>
+        FROM sys_dept d
+        LEFT JOIN sys_user u ON d.id = u.dept_id
+        WHERE 1 = 1 AND d.status = 1
+        <if test="null != userId and '' != userId">
+            AND u.id = #{userId}
+        </if>
+    </select>
+
+    <select id="getRoleList" resultType="cn.datax.service.system.api.entity.RoleEntity">
+        SELECT
+        <include refid="cn.datax.service.system.dao.RoleDao.Role_Column_List">
+            <property name="alias" value="r"/>
+        </include>
+        FROM sys_role r
+        LEFT JOIN sys_user_role ur ON r.id = ur.role_id
+        WHERE 1 = 1 AND r.status = 1
+        <if test="null != userId and '' != userId">
+            AND ur.user_id = #{userId}
+        </if>
+    </select>
+
+    <select id="getPostList" resultType="cn.datax.service.system.api.entity.PostEntity">
+        SELECT
+        <include refid="cn.datax.service.system.dao.PostDao.Post_Column_List">
+            <property name="alias" value="p"/>
+        </include>
+        FROM sys_post p
+        LEFT JOIN sys_user_post up ON p.id = up.post_id
+        WHERE 1 = 1 AND p.status = 1
+        <if test="null != userId and '' != userId">
+            AND up.user_id = #{userId}
+        </if>
+    </select>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        WHERE 1 = 1 AND id = #{id}
+    </select>
+
+    <select id="selectOne" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPage" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="getAuditUsers" resultMap="BaseResultMap">
+        SELECT u.id, u.username, u.nickname FROM sys_user u
+        LEFT JOIN sys_user_role ur ON ur.user_id = u.id
+        LEFT JOIN sys_role r ON r.id = ur.role_id
+        WHERE r.role_code = #{roleCode} and u.id != #{userId}
+    </select>
+</mapper>

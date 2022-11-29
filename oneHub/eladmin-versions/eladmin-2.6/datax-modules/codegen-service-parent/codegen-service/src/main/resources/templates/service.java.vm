@@ -1,0 +1,28 @@
+package ${package.Service};
+
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.entity.${entity};
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.dto.${className}Dto;
+import ${superServiceClassPackage};
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+
+    ${entity} save${className}(${className}Dto ${classNameLower});
+
+    ${entity} update${className}(${className}Dto ${classNameLower});
+
+    ${entity} get${className}ById(String id);
+
+    void delete${className}ById(String id);
+
+    void delete${className}Batch(List<String> ids);
+}

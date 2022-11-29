@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.quality.dao.CheckRuleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.quality.api.entity.CheckRuleEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="rule_name" property="ruleName" />
+        <result column="rule_type_id" property="ruleTypeId" />
+        <result column="rule_item_id" property="ruleItemId" />
+        <result column="rule_level_id" property="ruleLevelId" />
+        <result column="rule_db_type" property="ruleDbType" />
+        <result column="rule_source_id" property="ruleSourceId" />
+        <result column="rule_source" property="ruleSource" />
+        <result column="rule_table_id" property="ruleTableId" />
+        <result column="rule_table" property="ruleTable" />
+        <result column="rule_table_comment" property="ruleTableComment" />
+        <result column="rule_column_id" property="ruleColumnId" />
+        <result column="rule_column" property="ruleColumn" />
+        <result column="rule_column_comment" property="ruleColumnComment" />
+        <result column="last_check_batch" property="lastCheckBatch" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.quality.api.entity.CheckRuleEntity" extends="BaseResultMap">
+        <result column="rule_type" property="ruleType" />
+        <result column="rule_level" property="ruleLevel" />
+        <result column="config_json" property="ruleConfig" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result column="rule_sql" property="ruleSql" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        create_dept,
+        update_by,
+        update_time,
+        remark,
+        rule_name, rule_type_id, rule_item_id, rule_level_id, rule_db_type, rule_source_id, rule_source, rule_table_id, rule_table, rule_table_comment,
+        rule_column_id, rule_column, rule_column_comment, last_check_batch
+    </sql>
+
+    <sql id="Rule_Column_List">
+        ${alias}.id,
+        ${alias}.status,
+        ${alias}.create_by,
+        ${alias}.create_time,
+        ${alias}.create_dept,
+        ${alias}.update_by,
+        ${alias}.update_time,
+        ${alias}.remark,
+        ${alias}.rule_name, ${alias}.rule_type_id, ${alias}.rule_item_id, ${alias}.rule_level_id, ${alias}.rule_db_type, ${alias}.rule_source_id, ${alias}.rule_source,
+        ${alias}.rule_table_id, ${alias}.rule_table, ${alias}.rule_table_comment, ${alias}.rule_column_id, ${alias}.rule_column, ${alias}.rule_column_comment, ${alias}.last_check_batch
+    </sql>
+
+    <select id="selectPage" resultMap="ExtendResultMap">
+        SELECT t.name as rule_type, l.name as rule_level,
+        <include refid="Rule_Column_List"><property name="alias" value="r"/></include>
+        FROM quality_check_rule r
+        LEFT JOIN quality_rule_type t ON t.id = r.rule_type_id
+        LEFT JOIN quality_rule_level l ON l.id = r.rule_level_id
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT config_json,
+        <include refid="Base_Column_List"></include>
+        FROM quality_check_rule
+        WHERE 1=1 AND id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="ExtendResultMap">
+        SELECT rule_sql,
+        <include refid="Base_Column_List"></include>
+        FROM quality_check_rule
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

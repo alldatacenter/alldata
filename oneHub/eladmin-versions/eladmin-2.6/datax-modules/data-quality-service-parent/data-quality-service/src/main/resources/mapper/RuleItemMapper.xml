@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.quality.dao.RuleItemDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.quality.api.entity.RuleItemEntity">
+        <result column="id" property="id" />
+        <result column="rule_type_id" property="ruleTypeId" />
+        <result column="item_code" property="itemCode" />
+        <result column="item_explain" property="itemExplain" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        rule_type_id, item_code, item_explain
+    </sql>
+
+</mapper>

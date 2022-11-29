@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.market.mapping.dao.ApiLogDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.market.api.entity.ApiLogEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="api_id" property="apiId" />
+        <result column="api_name" property="apiName" />
+        <result column="caller_id" property="callerId" />
+        <result column="caller_ip" property="callerIp" />
+        <result column="caller_url" property="callerUrl" />
+        <result column="caller_params" property="callerParams" />
+        <result column="caller_date" property="callerDate" />
+        <result column="caller_size" property="callerSize" />
+        <result column="time" property="time" />
+        <result column="msg" property="msg" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        api_id, caller_id, caller_ip, caller_url, caller_params, caller_date, caller_size, time, msg
+    </sql>
+
+    <sql id="Log_Column_List">
+        ${alias}.id,
+        ${alias}.status,
+        ${alias}.api_id, ${alias}.caller_id, ${alias}.caller_ip, ${alias}.caller_url, ${alias}.caller_params,
+        ${alias}.caller_date, ${alias}.caller_size, ${alias}.time, ${alias}.msg
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT api.api_name,
+        <include refid="Log_Column_List"><property name="alias" value="log"/></include>
+        FROM market_api_log log
+        LEFT JOIN market_api api ON api.id = log.api_id
+        WHERE 1 = 1 AND log.id = #{id}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT api.api_name,
+        <include refid="Log_Column_List"><property name="alias" value="log"/></include>
+        FROM market_api_log log
+        LEFT JOIN market_api api ON api.id = log.api_id
+        ${ew.customSqlSegment}
+    </select>
+</mapper>

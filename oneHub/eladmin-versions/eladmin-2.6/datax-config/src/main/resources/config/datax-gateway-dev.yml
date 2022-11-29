@@ -1,0 +1,206 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        # 认证中心
+        - id: datax-auth
+          uri: lb://datax-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: authFallback
+                fallbackUri: forward:/fallback
+        # 系统基础设置中心
+        - id: datax-service-system
+          uri: lb://datax-service-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: systemHystrix
+                fallbackUri: forward:/fallback
+        # 邮件中心
+        - id: datax-service-email
+          uri: lb://datax-service-email
+          predicates:
+            - Path=/email/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: emailHystrix
+                fallbackUri: forward:/fallback
+        # 文件中心
+        - id: datax-service-file
+          uri: lb://datax-service-file
+          predicates:
+            - Path=/file/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: fileHystrix
+                fallbackUri: forward:/fallback
+        # 元数据管理
+        - id: datax-service-data-metadata
+          uri: lb://datax-service-data-metadata
+          predicates:
+            - Path=/data/metadata/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataMetadataHystrix
+                fallbackUri: forward:/fallback
+        # 数据SQL工作台
+        - id: datax-service-data-console
+          uri: lb://datax-service-data-console
+          predicates:
+            - Path=/data/console/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataSqlConsoleHystrix
+                fallbackUri: forward:/fallback
+        # 数据集市中心
+        - id: datax-service-data-market
+          uri: lb://datax-service-data-market
+          predicates:
+            - Path=/data/market/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataMarketHystrix
+                fallbackUri: forward:/fallback
+        # 数据API注册
+        - id: datax-service-data-mapping
+          uri: lb://datax-service-data-mapping
+          predicates:
+            - Path=/data/api/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataApiMappingHystrix
+                fallbackUri: forward:/fallback
+        # 数据服务集成
+        - id: datax-service-data-integration
+          uri: lb://datax-service-data-integration
+          predicates:
+            - Path=/data/service/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataIntegrationHystrix
+                fallbackUri: forward:/fallback
+        # 数据可视化
+        - id: datax-service-data-visual
+          uri: lb://datax-service-data-visual
+          predicates:
+            - Path=/data/visual/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataVisualHystrix
+                fallbackUri: forward:/fallback
+        # 主数据
+        - id: datax-service-data-masterdata
+          uri: lb://datax-service-data-masterdata
+          predicates:
+            - Path=/data/masterdata/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataMasterdataHystrix
+                fallbackUri: forward:/fallback
+        # 数据质量
+        - id: datax-service-data-quality
+          uri: lb://datax-service-data-quality
+          predicates:
+            - Path=/data/quality/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataQualityHystrix
+                fallbackUri: forward:/fallback
+        # 数据标准
+        - id: datax-service-data-standard
+          uri: lb://datax-service-data-standard
+          predicates:
+            - Path=/data/standard/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataStandardHystrix
+                fallbackUri: forward:/fallback
+        # 定时任务
+        - id: datax-service-quartz
+          uri: lb://datax-service-quartz
+          predicates:
+            - Path=/quartz/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: quartzHystrix
+                fallbackUri: forward:/fallback
+        # 代码生成器
+        - id: datax-service-codegen
+          uri: lb://datax-service-codegen
+          predicates:
+            - Path=/codegen/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: codegenHystrix
+                fallbackUri: forward:/fallback
+        # 工作流
+        - id: datax-service-workflow
+          uri: lb://datax-service-workflow
+          predicates:
+            - Path=/workflow/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: workflowHystrix
+                fallbackUri: forward:/fallback

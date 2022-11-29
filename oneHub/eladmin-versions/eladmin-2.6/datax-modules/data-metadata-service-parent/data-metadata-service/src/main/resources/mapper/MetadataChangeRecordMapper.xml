@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.metadata.dao.MetadataChangeRecordDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.metadata.api.entity.MetadataChangeRecordEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="version" property="version" />
+        <result column="object_type" property="objectType" />
+        <result column="object_id" property="objectId" />
+        <result column="field_name" property="fieldName" />
+        <result column="field_old_value" property="fieldOldValue" />
+        <result column="field_new_value" property="fieldNewValue" />
+        <result column="source_id" property="sourceId" />
+        <result column="source_name" property="sourceName" />
+        <result column="table_id" property="tableId" />
+        <result column="table_name" property="tableName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        create_dept,
+        update_by,
+        update_time,
+        remark,
+        version, object_type, object_id, field_name, field_old_value, field_new_value
+    </sql>
+
+    <sql id="Record_Column_List">
+        ${alias}.id,
+        ${alias}.status,
+        ${alias}.create_by,
+        ${alias}.create_time,
+        ${alias}.create_dept,
+        ${alias}.update_by,
+        ${alias}.update_time,
+        ${alias}.remark,
+        ${alias}.version, ${alias}.object_type, ${alias}.object_id, ${alias}.field_name, ${alias}.field_old_value, ${alias}.field_new_value
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT c.source_id, s.source_name, c.table_id, t.table_name,
+        <include refid="Record_Column_List"><property name="alias" value="r"/></include>
+        FROM metadata_change_record r
+        LEFT JOIN metadata_column c ON c.id = r.object_id
+        LEFT JOIN metadata_source s ON s.id = c.source_id
+        LEFT JOIN metadata_table t ON t.id = c.table_id
+        WHERE 1 = 1 AND r.id = #{id}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT c.source_id, s.source_name, c.table_id, t.table_name,
+        <include refid="Record_Column_List"><property name="alias" value="r"/></include>
+        FROM metadata_change_record r
+        LEFT JOIN metadata_column c ON c.id = r.object_id
+        LEFT JOIN metadata_source s ON s.id = c.source_id
+        LEFT JOIN metadata_table t ON t.id = c.table_id
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectRelColumnBySourceId" resultType="cn.datax.service.data.metadata.api.entity.MetadataChangeRecordEntity">
+        SELECT id FROM metadata_change_record WHERE object_id in (SELECT id FROM metadata_column WHERE source_id=#{id}) LIMIT 1
+    </select>
+
+</mapper>

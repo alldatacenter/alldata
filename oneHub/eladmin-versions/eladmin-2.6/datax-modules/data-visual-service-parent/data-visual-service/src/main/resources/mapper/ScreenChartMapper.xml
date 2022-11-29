@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.visual.dao.ScreenChartDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.visual.api.entity.ScreenChartEntity">
+        <result column="id" property="id" />
+        <result column="screen_id" property="screenId" />
+        <result column="chart_id" property="chartId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        screen_id, chart_id
+    </sql>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO visual_screen_chart
+        (id, screen_id, chart_id)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.screenId}, #{item.chartId})
+        </foreach>
+    </insert>
+</mapper>

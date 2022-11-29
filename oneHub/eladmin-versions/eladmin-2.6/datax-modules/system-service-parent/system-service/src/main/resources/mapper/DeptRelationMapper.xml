@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.DeptRelationDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.DeptRelationEntity">
+        <result column="id" property="id" />
+        <result column="ancestor" property="ancestor" />
+        <result column="descendant" property="descendant" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        ancestor, descendant
+    </sql>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO sys_dept_relation
+            (id, ancestor, descendant)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.ancestor}, #{item.descendant})
+        </foreach>
+    </insert>
+
+    <delete id="deleteByAncestor">
+       DELETE FROM sys_dept_relation WHERE ancestor = #{id}
+    </delete>
+
+</mapper>

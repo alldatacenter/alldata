@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.RoleMenuDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.RoleMenuEntity">
+        <result column="id" property="id" />
+        <result column="role_id" property="roleId" />
+        <result column="menu_id" property="menuId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        role_id, menu_id
+    </sql>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO sys_role_menu
+        (id, role_id, menu_id)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.roleId}, #{item.menuId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteByRoleId">
+       DELETE FROM sys_role_menu WHERE role_id = #{id}
+    </delete>
+
+    <delete id="deleteByRoleIds">
+        DELETE FROM sys_role_menu WHERE role_id in
+        <foreach collection='list' item='id' open='(' separator=',' close=')'>
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,67 @@
+package ${package.ServiceImpl};
+
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.entity.${entity};
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.dto.${className}Dto;
+import ${package.Service}.${table.serviceName};
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.mapstruct.${className}Mapper;
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.dao.${className}Dao;
+import ${superServiceImplClassPackage};
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+
+    @Autowired
+    private ${className}Dao ${classNameLower}Dao;
+
+    @Autowired
+    private ${className}Mapper ${classNameLower}Mapper;
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public ${entity} save${className}(${className}Dto ${classNameLower}Dto) {
+        ${entity} ${classNameLower} = ${classNameLower}Mapper.toEntity(${classNameLower}Dto);
+        ${classNameLower}Dao.insert(${classNameLower});
+        return ${classNameLower};
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public ${entity} update${className}(${className}Dto ${classNameLower}Dto) {
+        ${entity} ${classNameLower} = ${classNameLower}Mapper.toEntity(${classNameLower}Dto);
+        ${classNameLower}Dao.updateById(${classNameLower});
+        return ${classNameLower};
+    }
+
+    @Override
+    public ${entity} get${className}ById(String id) {
+        ${entity} ${classNameLower}Entity = super.getById(id);
+        return ${classNameLower}Entity;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delete${className}ById(String id) {
+        ${classNameLower}Dao.deleteById(id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delete${className}Batch(List<String> ids) {
+        ${classNameLower}Dao.deleteBatchIds(ids);
+    }
+}

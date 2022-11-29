@@ -9,12 +9,21 @@
     <packaging>pom</packaging>
     <version>2.6</version>
 
+    <description>AllData一站式开源大数据平台</description>
+
     <modules>
         <module>eladmin-common</module>
         <module>eladmin-logging</module>
         <module>eladmin-system</module>
         <module>eladmin-tools</module>
         <module>eladmin-generator</module>
+        <module>datax-eureka</module>
+        <module>datax-config</module>
+        <module>datax-common</module>
+        <module>datax-gateway</module>
+        <module>datax-auth</module>
+        <module>datax-modules</module>
+        <module>datax-tools</module>
     </modules>
 
     <name>AllData ElAdmin</name>
@@ -23,7 +32,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.4</version>
+        <version>2.2.6.RELEASE</version>
     </parent>
 
     <properties>
@@ -38,9 +47,91 @@
         <druid.version>1.2.8</druid.version>
         <commons-pool2.version>2.11.1</commons-pool2.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
+
+        <fastjson.version>1.2.75</fastjson.version>
+        <hutool.version>5.4.7</hutool.version>
+        <mybatis-plus.version>3.3.2</mybatis-plus.version>
+        <dynamic-datasource.version>3.2.1</dynamic-datasource.version>
+        <p6spy.version>3.8.7</p6spy.version>
+        <velocity.version>2.1</velocity.version>
+        <commons.io.version>2.6</commons.io.version>
+        <commons.fileupload.version>1.4</commons.fileupload.version>
+        <commons.lang3.version>3.9</commons.lang3.version>
+        <commons.codec.version>1.13</commons.codec.version>
+        <commons.beanutils.version>1.9.4</commons.beanutils.version>
+        <common-pool.version>2.7.0</common-pool.version>
+        <knife4j.version>2.0.4</knife4j.version>
+        <swagger.version>1.6.2</swagger.version>
+        <springfox.version>2.9.2</springfox.version>
+        <mapstruct.version>1.3.1.Final</mapstruct.version>
+        <aliyun-sdk-oss.version>3.6.0</aliyun-sdk-oss.version>
+        <qiniu-java-sdk.version>7.2.25</qiniu-java-sdk.version>
+        <mysql.version>8.0.16</mysql.version>
+        <mariadb.version>2.5.4</mariadb.version>
+        <oracle.version>19.3.0.0</oracle.version>
+        <postgresql.version>42.2.11</postgresql.version>
+        <sqlserver.version>8.2.1.jre8</sqlserver.version>
+        <zxing.version>3.4.0</zxing.version>
+        <aspose.version>20.3</aspose.version>
+        <jasperreports.version>6.12.2</jasperreports.version>
+        <mybatis-spring.version>2.1.2</mybatis-spring.version>
+        <bitwalker.version>1.21</bitwalker.version>
+        <flowable.version>6.5.0</flowable.version>
+        <orai18n.version>12.1.0.2.0</orai18n.version>
     </properties>
 
     <dependencies>
+        <!--dataX Dependencies-->
+        <!--eureka 客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--配置文件处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--自省和监控的集成功能-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--断路器依赖-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-hystrix -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>2.2.6.RELEASE</version>
+        </dependency>
+
+        <!--服务链路追踪-->
+        <!--    <dependency>-->
+        <!--        <groupId>org.springframework.cloud</groupId>-->
+        <!--        <artifactId>spring-cloud-starter-zipkin</artifactId>-->
+        <!--    </dependency>-->
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--dataX Dependencies-->
+
         <!--Spring boot 核心-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -193,9 +284,51 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
+        <finalName>${project.name}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <!-- 打包时跳过测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <target>${maven.compiler.target}</target>
+                    <source>${maven.compiler.source}</source>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -203,31 +336,17 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <!--解决分布式报表文件读取不到-->
+                        <nonFilteredFileExtension>jasper</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>public</id>
-            <name>aliyun nexus</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>public</id>
-            <name>aliyun nexus</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
 </project>

@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.datax.service.workflow.api.feign.factory.FlowInstanceServiceFeignFallbackFactory,\
+  cn.datax.service.workflow.api.feign.fallback.FlowInstanceServiceFeignFallbackImpl

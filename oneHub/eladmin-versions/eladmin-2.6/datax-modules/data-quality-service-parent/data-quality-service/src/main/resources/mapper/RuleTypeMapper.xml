@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.quality.dao.RuleTypeDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.quality.api.entity.RuleTypeEntity">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.quality.api.entity.RuleTypeReportEntity" extends="BaseResultMap">
+        <result column="check_error_count" property="checkErrorCount" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        name, code
+    </sql>
+
+    <select id="selectListForReport" resultMap="ExtendResultMap">
+        SELECT t.id, t.name,
+        (SELECT COALESCE(SUM(c.check_error_count), 0) FROM quality_check_rule r
+        LEFT JOIN quality_check_report c ON c.check_rule_id = r.id AND c.check_batch = r.last_check_batch
+        WHERE r.rule_type_id = t.id) AS check_error_count
+        FROM quality_rule_type t
+    </select>
+
+</mapper>

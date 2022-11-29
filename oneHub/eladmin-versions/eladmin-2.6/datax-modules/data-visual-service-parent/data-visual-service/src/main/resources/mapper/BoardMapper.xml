@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.visual.dao.BoardDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.visual.api.entity.BoardEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="board_name" property="boardName" />
+        <result column="board_thumbnail" property="boardThumbnail" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.visual.api.entity.BoardEntity" extends="BaseResultMap">
+        <result column="board_json" property="boardConfig" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <collection property="charts" column="{boardId=id}" select="getChartList"></collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark,
+        create_dept, board_name, board_thumbnail
+    </sql>
+
+    <sql id="Extend_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark,
+        create_dept, board_name, board_thumbnail, board_json
+    </sql>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Extend_Column_List"></include>
+        FROM visual_board
+        WHERE 1=1 AND id = #{id}
+    </select>
+
+    <select id="getChartList" resultMap="cn.datax.service.data.visual.dao.ChartDao.ExtendResultMap">
+        SELECT
+        <include refid="cn.datax.service.data.visual.dao.ChartDao.Chart_Column_List">
+            <property name="alias" value="c"/>
+        </include>
+        FROM visual_chart c
+        LEFT JOIN visual_board_chart bc ON bc.chart_id = c.id
+        WHERE 1 = 1
+        <if test="boardId != null and boardId != ''">
+            AND bc.board_id = #{boardId}
+        </if>
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM visual_board
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

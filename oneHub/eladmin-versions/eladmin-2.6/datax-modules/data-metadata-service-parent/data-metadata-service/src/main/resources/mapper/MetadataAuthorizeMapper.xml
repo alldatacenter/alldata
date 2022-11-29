@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.metadata.dao.MetadataAuthorizeDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.metadata.api.entity.MetadataAuthorizeEntity">
+        <result column="id" property="id" />
+        <result column="object_id" property="objectId" />
+        <result column="role_id" property="roleId" />
+        <result column="object_type" property="objectType" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        object_id, role_id, object_type
+    </sql>
+
+</mapper>
