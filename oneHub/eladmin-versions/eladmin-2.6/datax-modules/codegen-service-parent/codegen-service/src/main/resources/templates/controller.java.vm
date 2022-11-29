@@ -1,0 +1,144 @@
+package ${package.Controller};
+
+import cn.datax.common.core.JsonPage;
+import cn.datax.common.core.R;
+import cn.datax.common.validate.ValidationGroups;
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.dto.${className}Dto;
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.entity.${entity};
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.vo.${className}Vo;
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.query.${className}Query;
+import ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.mapstruct.${className}Mapper;
+import ${package.Service}.${table.serviceName};
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * <p>
+ * $!{table.comment} 前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${table.comment})
+@Api(tags = {"${table.comment}"})
+#else
+@Api(tags = {"${className}"})
+#end
+@RestController
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/${classNameLower}")
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+
+    @Autowired
+    private ${table.serviceName} ${classNameLower}Service;
+
+    @Autowired
+    private ${className}Mapper ${classNameLower}Mapper;
+
+    /**
+     * 通过ID查询信息
+     *
+     * @param id
+     * @return
+     */
+    @ApiOperation(value = "获取详细信息", notes = "根据url的id来获取详细信息")
+    @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String", paramType = "path")
+    @GetMapping("/{id}")
+    public R get${className}ById(@PathVariable String id) {
+        ${entity} ${classNameLower}Entity = ${classNameLower}Service.get${className}ById(id);
+        return R.ok().setData(${classNameLower}Mapper.toVO(${classNameLower}Entity));
+    }
+
+    /**
+     * 分页查询信息
+     *
+     * @param ${classNameLower}Query
+     * @return
+     */
+    @ApiOperation(value = "分页查询", notes = "")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "${classNameLower}Query", value = "查询实体${classNameLower}Query", required = true, dataTypeClass = ${className}Query.class)
+    })
+    @GetMapping("/page")
+    public R get${className}Page(${className}Query ${classNameLower}Query) {
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
+        IPage<${entity}> page = ${classNameLower}Service.page(new Page<>(${classNameLower}Query.getPageNum(), ${classNameLower}Query.getPageSize()), queryWrapper);
+        List<${className}Vo> collect = page.getRecords().stream().map(${classNameLower}Mapper::toVO).collect(Collectors.toList());
+        JsonPage<${className}Vo> jsonPage = new JsonPage<>(page.getCurrent(), page.getSize(), page.getTotal(), collect);
+        return R.ok().setData(jsonPage);
+    }
+
+    /**
+     * 添加
+     * @param ${classNameLower}
+     * @return
+     */
+    @ApiOperation(value = "添加信息", notes = "根据${classNameLower}对象添加信息")
+    @ApiImplicitParam(name = "${classNameLower}", value = "详细实体${classNameLower}", required = true, dataType = "${className}Dto")
+    @PostMapping()
+    public R save${className}(@RequestBody @Validated({ValidationGroups.Insert.class}) ${className}Dto ${classNameLower}) {
+        ${entity} ${classNameLower}Entity = ${classNameLower}Service.save${className}(${classNameLower});
+        return R.ok().setData(${classNameLower}Mapper.toVO(${classNameLower}Entity));
+    }
+
+    /**
+     * 修改
+     * @param ${classNameLower}
+     * @return
+     */
+    @ApiOperation(value = "修改信息", notes = "根据url的id来指定修改对象，并根据传过来的信息来修改详细信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String", paramType = "path"),
+            @ApiImplicitParam(name = "${classNameLower}", value = "详细实体${classNameLower}", required = true, dataType = "${className}Dto")
+    })
+    @PutMapping("/{id}")
+    public R update${className}(@PathVariable String id, @RequestBody @Validated({ValidationGroups.Update.class}) ${className}Dto ${classNameLower}) {
+        ${entity} ${classNameLower}Entity = ${classNameLower}Service.update${className}(${classNameLower});
+        return R.ok().setData(${classNameLower}Mapper.toVO(${classNameLower}Entity));
+    }
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    @ApiOperation(value = "删除", notes = "根据url的id来指定删除对象")
+    @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String", paramType = "path")
+    @DeleteMapping("/{id}")
+    public R delete${className}ById(@PathVariable String id) {
+        ${classNameLower}Service.delete${className}ById(id);
+        return R.ok();
+    }
+
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
+    @ApiOperation(value = "批量删除", notes = "根据url的ids来批量删除对象")
+    @ApiImplicitParam(name = "ids", value = "ID集合", required = true, dataType = "List", paramType = "path")
+    @DeleteMapping("/batch/{ids}")
+    public R delete${className}Batch(@PathVariable List<String> ids) {
+        ${classNameLower}Service.delete${className}Batch(ids);
+        return R.ok();
+    }
+}

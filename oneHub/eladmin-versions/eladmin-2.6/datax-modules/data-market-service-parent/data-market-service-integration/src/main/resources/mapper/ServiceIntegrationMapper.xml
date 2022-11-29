@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.market.integration.dao.ServiceIntegrationDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.market.api.entity.ServiceIntegrationEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="create_dept" property="createDept" />
+        <result column="service_no" property="serviceNo" />
+        <result column="service_name" property="serviceName" />
+        <result column="service_type" property="serviceType" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.market.api.entity.ServiceIntegrationEntity" extends="BaseResultMap">
+        <result column="httpservice_json" property="httpService" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result column="webservice_json" property="webService" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark,
+        create_dept, service_no, service_name, service_type
+    </sql>
+
+    <sql id="Extend_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark,
+        create_dept, service_no, service_name, service_type, httpservice_json, webservice_json
+    </sql>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Extend_Column_List"></include>
+        FROM market_service_integration
+        WHERE 1=1 AND id = #{id}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM market_service_integration
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

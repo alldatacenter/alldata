@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.masterdata.dao.ModelColumnDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.masterdata.api.entity.ModelColumnEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="model_id" property="modelId" />
+        <result column="column_name" property="columnName" />
+        <result column="column_comment" property="columnComment" />
+        <result column="column_type" property="columnType" />
+        <result column="column_length" property="columnLength" />
+        <result column="column_scale" property="columnScale" />
+        <result column="default_value" property="defaultValue" />
+        <result column="is_system" property="isSystem" />
+        <result column="is_pk" property="isPk" />
+        <result column="is_required" property="isRequired" />
+        <result column="is_insert" property="isInsert" />
+        <result column="is_edit" property="isEdit" />
+        <result column="is_detail" property="isDetail" />
+        <result column="is_list" property="isList" />
+        <result column="is_query" property="isQuery" />
+        <result column="query_type" property="queryType" />
+        <result column="is_bind_dict" property="isBindDict" />
+        <result column="bind_dict_type_id" property="bindDictTypeId" />
+        <result column="bind_dict_column" property="bindDictColumn" />
+        <result column="html_type" property="htmlType" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark,
+        model_id, column_name, column_comment, column_type, column_length, column_scale, default_value, is_system, is_pk, is_required, is_insert, is_edit, is_detail, is_list, is_query, query_type, is_bind_dict, bind_dict_type_id, bind_dict_column, html_type, sort
+    </sql>
+
+</mapper>

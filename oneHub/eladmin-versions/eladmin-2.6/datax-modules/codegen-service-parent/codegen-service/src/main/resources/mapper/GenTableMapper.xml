@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.codegen.dao.GenTableDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.codegen.api.entity.GenTableEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="table_name" property="tableName" />
+        <result column="table_comment" property="tableComment" />
+        <result column="class_name" property="className" />
+        <result column="package_name" property="packageName" />
+        <result column="module_name" property="moduleName" />
+        <result column="business_name" property="businessName" />
+        <result column="function_name" property="functionName" />
+        <result column="function_author" property="functionAuthor" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.codegen.api.entity.GenTableEntity" extends="BaseResultMap">
+        <result column="column_json" property="columns" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark, table_name, table_comment, class_name, package_name, module_name, business_name, function_name, function_author
+    </sql>
+
+    <sql id="Extend_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark, table_name, table_comment, class_name, package_name, module_name, business_name, function_name, function_author, column_json
+    </sql>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Extend_Column_List"></include>
+        FROM gen_table
+        WHERE 1=1 AND id = #{id}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM gen_table
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

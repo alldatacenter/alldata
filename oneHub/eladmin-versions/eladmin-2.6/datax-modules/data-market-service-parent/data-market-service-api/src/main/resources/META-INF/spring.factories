@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.datax.service.data.market.api.feign.factory.DataApiServiceFeignFallbackFactory,\
+  cn.datax.service.data.market.api.feign.fallback.DataApiServiceFeignFallbackImpl,\
+  cn.datax.service.data.market.api.feign.factory.ApiMaskServiceFeignFallbackFactory,\
+  cn.datax.service.data.market.api.feign.fallback.ApiMaskServiceFeignFallbackImpl

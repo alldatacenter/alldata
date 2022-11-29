@@ -1,0 +1,93 @@
+<template>
+  <el-dialog title="酷屏" width="50%" :visible.sync="dialogVisible" :show-close="false" :close-on-click-modal="false">
+    <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+      <el-form-item label="酷屏名称" prop="screenName">
+        <el-input v-model="form.screenName" placeholder="请输入酷屏名称" />
+      </el-form-item>
+    </el-form>
+    <span slot="footer" class="dialog-footer">
+      <el-button type="primary" @click="submitForm">确定</el-button>
+      <el-button @click="dialogVisible = false">取消</el-button>
+    </span>
+  </el-dialog>
+</template>
+
+<script>
+import { addDataScreen, updateDataScreen } from '@/api/visual/datascreen'
+
+export default {
+  name: 'ScreenForm',
+  props: {
+    visible: {
+      type: Boolean,
+      default: function() {
+        return false
+      }
+    },
+    data: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    }
+  },
+  data() {
+    return {
+      form: {
+        screenName: undefined
+      },
+      rules: {
+        screenName: [
+          { required: true, message: '酷屏名称不能为空', trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  computed: {
+    dialogVisible: {
+      get() {
+        return this.visible
+      },
+      set(val) {
+        this.$emit('update:visible', val)
+      }
+    }
+  },
+  created() {
+    this.form = this.data
+  },
+  methods: {
+    submitForm() {
+      this.$refs['form'].validate(valid => {
+        if (valid) {
+          if (this.form.id) {
+            updateDataScreen(this.form).then(response => {
+              if (response.success) {
+                this.$message.success('保存成功')
+                this.dialogVisible = false
+                this.$emit('handleScreenFormFinished')
+              }
+            }).catch(error => {
+              this.$message.error(error.msg || '保存失败')
+            })
+          } else {
+            addDataScreen(this.form).then(response => {
+              if (response.success) {
+                this.$message.success('保存成功')
+                this.dialogVisible = false
+                this.$emit('handleScreenFormFinished')
+              }
+            }).catch(error => {
+              this.$message.error(error.msg || '保存失败')
+            })
+          }
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

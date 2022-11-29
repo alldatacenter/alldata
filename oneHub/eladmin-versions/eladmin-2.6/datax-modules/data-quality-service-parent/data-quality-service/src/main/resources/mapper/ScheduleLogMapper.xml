@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.quality.dao.ScheduleLogDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.quality.api.entity.ScheduleLogEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="execute_job_id" property="executeJobId" />
+        <result column="execute_rule_id" property="executeRuleId" />
+        <result column="execute_date" property="executeDate" />
+        <result column="execute_result" property="executeResult" />
+        <result column="execute_batch" property="executeBatch" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.quality.api.entity.ScheduleLogEntity" extends="BaseResultMap">
+        <result column="execute_job_name" property="executeJobName" />
+        <result column="execute_rule_name" property="executeRuleName" />
+        <result column="execute_rule_type_name" property="executeRuleTypeName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        execute_job_id, execute_rule_id, execute_date, execute_result, execute_batch
+    </sql>
+
+    <sql id="Log_Column_List">
+        ${alias}.id,
+        ${alias}.status,
+        ${alias}.execute_job_id, ${alias}.execute_rule_id, ${alias}.execute_date, ${alias}.execute_result, ${alias}.execute_batch
+    </sql>
+
+    <select id="selectPage" resultMap="ExtendResultMap">
+        SELECT r.rule_name as execute_rule_name, t.name as execute_rule_type_name, j.job_name as execute_job_name,
+        <include refid="Log_Column_List"><property name="alias" value="l"/></include>
+        FROM quality_schedule_log l
+        LEFT JOIN quality_schedule_job j ON j.id = l.execute_job_id
+        LEFT JOIN quality_check_rule r ON r.id = l.execute_rule_id
+        LEFT JOIN quality_rule_type t ON t.id = r.rule_type_id
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

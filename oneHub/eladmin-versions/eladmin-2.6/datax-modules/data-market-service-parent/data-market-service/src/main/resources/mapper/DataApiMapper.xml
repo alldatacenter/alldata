@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.market.dao.DataApiDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.market.api.entity.DataApiEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="api_name" property="apiName" />
+        <result column="api_version" property="apiVersion" />
+        <result column="api_url" property="apiUrl" />
+        <result column="remark" property="remark" />
+        <result column="req_method" property="reqMethod" />
+        <result column="res_type" property="resType" />
+        <result column="deny" property="deny" />
+        <result column="source_id" property="sourceId" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.market.api.entity.DataApiEntity" extends="BaseResultMap">
+        <result column="limit_json" property="rateLimit" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result column="config_json" property="executeConfig" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result column="req_json" property="reqParams" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result column="res_json" property="resParams" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        create_dept,
+        update_by,
+        update_time,
+        api_name, api_version, api_url, remark, req_method, res_type, deny, source_id
+    </sql>
+
+    <sql id="Extend_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        create_dept,
+        update_by,
+        update_time,
+        api_name, api_version, api_url, remark, req_method, res_type, deny, source_id, limit_json, config_json, req_json, res_json
+    </sql>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Extend_Column_List"/>
+        FROM market_api
+        WHERE 1=1 AND id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Extend_Column_List"/>
+        FROM market_api
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM market_api
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

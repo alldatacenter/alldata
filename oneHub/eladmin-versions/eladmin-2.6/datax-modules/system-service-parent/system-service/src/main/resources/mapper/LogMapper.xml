@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.LogDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.LogEntity">
+        <result column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="module" property="module" />
+        <result column="title" property="title" />
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="remote_addr" property="remoteAddr" />
+        <result column="request_uri" property="requestUri" />
+        <result column="class_name" property="className" />
+        <result column="method_name" property="methodName" />
+        <result column="params" property="params" />
+        <result column="time" property="time" />
+        <result column="browser" property="browser" />
+        <result column="os" property="os" />
+        <result column="ex_code" property="exCode" />
+        <result column="ex_msg" property="exMsg" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        module, title, user_id, user_name, remote_addr, request_uri, class_name, method_name, params, time, browser, os, ex_code, ex_msg
+    </sql>
+
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.masterdata.dao.OracleDynamicDao">
+
+    <insert id="createTable" parameterType="cn.datax.service.data.masterdata.api.entity.ModelEntity">
+        CREATE TABLE ${modelPhysicalTable} (
+            <foreach collection="modelColumns" item="column" separator=",">
+                ${column.columnName} ${column.columnDefinition}
+                <if test="column.defaultValue != null and column.defaultValue != ''">
+                    DEFAULT #{column.defaultValue}
+                </if>
+                <if test="column.isRequired != null and column.isRequired == '1'.toString()">
+                    NOT NULL
+                </if>
+            </foreach>
+        )
+    </insert>
+
+    <!-- 表注释 -->
+    <update id="commentTable" parameterType="cn.datax.service.data.masterdata.api.entity.ModelCommentEntity">
+		COMMENT ON TABLE ${tableName} IS #{comment}
+	</update>
+
+    <!-- 字段注释 -->
+    <update id="commentColumn" parameterType="cn.datax.service.data.masterdata.api.entity.ModelCommentEntity">
+		COMMENT ON COLUMN ${tableName}.${columnName} IS #{comment}
+	</update>
+
+    <!-- 验证表是否存在 -->
+    <update id="dropTable" parameterType="java.lang.String">
+		DROP TABLE IF EXISTS ${tableName}
+	</update>
+
+    <!-- 插入数据 -->
+    <insert id="insertData" parameterType="cn.datax.service.data.masterdata.api.entity.ModelDataEntity">
+        INSERT INTO ${tableName}
+            <foreach collection="datas.keys" item="key" open="(" close=")" separator=",">
+                ${key}
+            </foreach>
+        VALUES
+            <foreach collection="datas.values" item="value" open="(" close=")" separator=",">
+                #{value}
+            </foreach>
+    </insert>
+
+    <!-- 更新数据 -->
+    <update id="updateData" parameterType="cn.datax.service.data.masterdata.api.entity.ModelDataEntity">
+        UPDATE ${tableName} SET
+            <foreach collection="datas" index="key" item="value" separator=",">
+                ${key} = #{value}
+            </foreach>
+        WHERE ID = #{id}
+    </update>
+
+    <!-- 删除数据 -->
+    <delete id="deleteData" parameterType="cn.datax.service.data.masterdata.api.entity.ModelDataEntity">
+        DELETE FROM ${tableName} WHERE ID = #{id}
+    </delete>
+
+    <select id="getPageModelDatas" resultType="java.util.Map">
+        SELECT ${ew.SqlSelect} FROM ${tableName} ${ew.customSqlSegment}
+    </select>
+
+    <select id="getData" resultType="java.util.Map">
+        SELECT * FROM ${tableName} WHERE id = #{id}
+    </select>
+</mapper>

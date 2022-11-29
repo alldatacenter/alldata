@@ -1,0 +1,30 @@
+server:
+  port: 8824
+
+spring:
+  application:
+    name: datax-service-data-integration
+  profiles:
+    active: dev
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: datax-config
+
+# 注册中心配置
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 20
+    prefer-ip-address: true
+    ip-address: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 3
+    service-url:
+      defaultZone: http://localhost:8610/eureka
