@@ -1,0 +1,20 @@
+server:
+  port: 8711
+
+spring:
+  application:
+    name: datax-tool-monitor
+
+# 注册中心配置
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 20
+    prefer-ip-address: true
+    ip-address: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 3
+    service-url:
+      defaultZone: http://localhost:8610/eureka

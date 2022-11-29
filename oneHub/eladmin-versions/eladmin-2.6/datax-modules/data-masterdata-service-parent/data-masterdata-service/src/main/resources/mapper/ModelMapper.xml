@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.masterdata.dao.ModelDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.masterdata.api.entity.ModelEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="model_name" property="modelName" />
+        <result column="model_logic_table" property="modelLogicTable" />
+        <result column="model_physical_table" property="modelPhysicalTable" />
+        <result column="is_sync" property="isSync" />
+        <result column="flow_status" property="flowStatus" />
+        <result column="process_instance_id" property="processInstanceId" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.masterdata.api.entity.ModelEntity" extends="BaseResultMap">
+        <collection property="modelColumns" column="{modelId=id}" select="getModelColumnList"></collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        create_dept,
+        update_by,
+        update_time,
+        remark,
+        model_name, model_logic_table, model_physical_table, is_sync, flow_status, process_instance_id
+    </sql>
+
+    <select id="getModelColumnList" resultType="cn.datax.service.data.masterdata.api.entity.ModelColumnEntity">
+        SELECT
+        <include refid="cn.datax.service.data.masterdata.dao.ModelColumnDao.Base_Column_List"></include>
+        FROM masterdata_model_column
+        WHERE 1 = 1
+        <if test="modelId != null and modelId != ''">
+            AND model_id = #{modelId}
+        </if>
+    </select>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM masterdata_model
+        WHERE 1 = 1 AND id = #{id}
+    </select>
+
+</mapper>

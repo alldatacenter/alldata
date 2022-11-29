@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.metadata.dao.MetadataTableDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.metadata.api.entity.MetadataTableEntity">
+        <result column="id" property="id" />
+        <result column="source_id" property="sourceId" />
+        <result column="table_name" property="tableName" />
+        <result column="table_comment" property="tableComment" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.metadata.api.entity.MetadataTableEntity" extends="BaseResultMap">
+        <result column="source_name" property="sourceName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        source_id, table_name, table_comment
+    </sql>
+
+    <sql id="Table_Column_List">
+        ${alias}.id,
+        ${alias}.source_id, ${alias}.table_name, ${alias}.table_comment
+    </sql>
+
+    <select id="selectPageWithAuth" resultMap="ExtendResultMap">
+        SELECT s.source_name,
+        <include refid="Table_Column_List"><property name="alias" value="t"/></include>
+        FROM metadata_table t
+        LEFT JOIN metadata_source s ON s.id = t.source_id
+        <trim prefix="WHERE" prefixOverrides="WHERE |AND |OR ">
+            ${ew.customSqlSegment}
+            <if test="roles != null and roles.size > 0">
+                AND EXISTS (
+                SELECT 1 FROM metadata_authorize auth WHERE auth.object_id = t.id AND auth.object_type = 'table'
+                AND auth.role_id IN
+                <foreach collection="roles" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+        </trim>
+    </select>
+
+</mapper>

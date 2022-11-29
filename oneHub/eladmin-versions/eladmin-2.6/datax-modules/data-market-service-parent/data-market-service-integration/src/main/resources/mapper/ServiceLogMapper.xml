@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.market.integration.dao.ServiceLogDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.market.api.entity.ServiceLogEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="service_id" property="serviceId" />
+        <result column="service_name" property="serviceName" />
+        <result column="caller_id" property="callerId" />
+        <result column="caller_ip" property="callerIp" />
+        <result column="caller_date" property="callerDate" />
+        <result column="caller_header" property="callerHeader" />
+        <result column="caller_param" property="callerParam" />
+        <result column="caller_soap" property="callerSoap" />
+        <result column="time" property="time" />
+        <result column="msg" property="msg" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        service_id, caller_id, caller_ip, caller_date, caller_header, caller_param, caller_soap, time, msg
+    </sql>
+
+    <sql id="Log_Column_List">
+        ${alias}.id,
+        ${alias}.status,
+        ${alias}.service_id, ${alias}.caller_id, ${alias}.caller_ip, ${alias}.caller_date,
+        ${alias}.caller_header, ${alias}.caller_param, ${alias}.caller_soap, ${alias}.time, ${alias}.msg
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT service.service_name,
+        <include refid="Log_Column_List"><property name="alias" value="log"/></include>
+        FROM market_service_log log
+        LEFT JOIN market_service_integration service ON service.id = log.service_id
+        WHERE 1 = 1 AND log.id = #{id}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT service.service_name,
+        <include refid="Log_Column_List"><property name="alias" value="log"/></include>
+        FROM market_service_log log
+        LEFT JOIN market_service_integration service ON service.id = log.service_id
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

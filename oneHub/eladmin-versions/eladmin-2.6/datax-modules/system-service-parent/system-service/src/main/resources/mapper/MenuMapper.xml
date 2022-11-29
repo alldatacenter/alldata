@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.MenuDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.MenuEntity">
+        <result column="id" property="id" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="parent_id" property="parentId" />
+        <result column="menu_name" property="menuName" />
+        <result column="menu_path" property="menuPath" />
+        <result column="menu_component" property="menuComponent" />
+        <result column="menu_redirect" property="menuRedirect" />
+        <result column="menu_perms" property="menuPerms" />
+        <result column="menu_icon" property="menuIcon" />
+        <result column="menu_type" property="menuType" />
+        <result column="menu_code" property="menuCode" />
+        <result column="menu_sort" property="menuSort" />
+        <result column="menu_hidden" property="menuHidden" />
+        <result column="status" property="status" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        parent_id, menu_name, menu_path, menu_component, menu_redirect, menu_perms, menu_icon, menu_type, menu_code, menu_sort, menu_hidden, status, remark
+    </sql>
+
+    <sql id="Menu_Column_List">
+        ${alias}.id,
+        ${alias}.create_by,
+        ${alias}.create_time,
+        ${alias}.update_by,
+        ${alias}.update_time,
+        ${alias}.parent_id, ${alias}.menu_name, ${alias}.menu_path, ${alias}.menu_component, ${alias}.menu_redirect, ${alias}.menu_perms,
+        ${alias}.menu_icon, ${alias}.menu_type, ${alias}.menu_code, ${alias}.menu_sort, ${alias}.menu_hidden, ${alias}.status, ${alias}.remark
+    </sql>
+
+    <select id="selectMenuByRoleIds" parameterType="java.util.List" resultMap="BaseResultMap">
+        SELECT DISTINCT
+            <include refid="Menu_Column_List"><property name="alias" value="m"/></include>
+        FROM
+        sys_menu m
+        LEFT JOIN sys_role_menu rm ON m.id = rm.menu_id
+        WHERE m.status = 1 AND rm.role_id IN
+        <foreach collection="roleIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        ORDER BY m.menu_sort ASC
+    </select>
+
+    <select id="selectMenuByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT DISTINCT
+        <include refid="Menu_Column_List"><property name="alias" value="m"/></include>
+        FROM
+        sys_menu m
+        LEFT JOIN sys_role_menu rm ON m.id = rm.menu_id
+        LEFT JOIN sys_user_role ur ON rm.role_id = ur.role_id
+        WHERE m.status = 1 AND ur.user_id = #{userId}
+        ORDER BY m.menu_sort ASC
+    </select>
+
+</mapper>

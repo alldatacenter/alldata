@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.standard.dao.DictDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.standard.api.entity.DictEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="type_id" property="typeId" />
+        <result column="gb_code" property="gbCode" />
+        <result column="gb_name" property="gbName" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.standard.api.entity.DictEntity" extends="BaseResultMap">
+        <result column="gb_type_code" property="gbTypeCode" />
+        <result column="gb_type_name" property="gbTypeName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        create_dept,
+        update_by,
+        update_time,
+        remark, type_id, gb_code, gb_name
+    </sql>
+
+    <sql id="Dict_Column_List">
+        ${alias}.id,
+        ${alias}.status,
+        ${alias}.create_by,
+        ${alias}.create_time,
+        ${alias}.create_dept,
+        ${alias}.update_by,
+        ${alias}.update_time,
+        ${alias}.remark, ${alias}.type_id, ${alias}.gb_code, ${alias}.gb_name
+    </sql>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT t.gb_type_code, t.gb_type_name,
+        <include refid="Dict_Column_List"><property name="alias" value="d"/></include>
+        FROM standard_dict d
+        LEFT JOIN standard_type t ON t.id = d.type_id
+        WHERE 1 = 1 AND d.id = #{id}
+    </select>
+
+    <select id="selectPage" resultMap="ExtendResultMap">
+        SELECT t.gb_type_code, t.gb_type_name,
+        <include refid="Dict_Column_List"><property name="alias" value="d"/></include>
+        FROM standard_dict d
+        LEFT JOIN standard_type t ON t.id = d.type_id
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

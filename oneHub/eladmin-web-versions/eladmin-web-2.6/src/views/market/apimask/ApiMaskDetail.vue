@@ -1,0 +1,198 @@
+<template>
+  <el-card class="box-card" shadow="always">
+    <div slot="header" class="clearfix">
+      <span>{{ title }}</span>
+      <el-button-group style="float: right;">
+        <el-button size="mini" icon="el-icon-back" round @click="showCard">返回</el-button>
+      </el-button-group>
+    </div>
+    <div class="body-wrapper">
+      <el-form ref="form" :model="form" label-width="80px" disabled>
+        <el-form-item label="数据API" prop="apiId">
+          <el-select v-model="form.apiId" placeholder="请选择数据API">
+            <el-option
+              v-for="api in apiOptions"
+              :key="api.id"
+              :label="api.apiName"
+              :value="api.id"
+              :disabled="api.status === '0'"
+            />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="脱敏名称" prop="maskName">
+          <el-input v-model="form.maskName" placeholder="请输入脱敏名称" />
+        </el-form-item>
+        <el-form-item label="脱敏字段规则配置" prop="rules">
+          <el-table
+            :data="resParamList"
+            stripe
+            border
+            :max-height="300"
+            style="width: 100%; margin: 15px 0;"
+          >
+            <el-table-column label="序号" width="55" align="center">
+              <template slot-scope="scope">
+                <span>{{ scope.$index +1 }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="fieldName" label="字段名称" align="center" show-overflow-tooltip />
+            <el-table-column prop="fieldComment" label="描述" align="center" show-overflow-tooltip />
+            <el-table-column prop="dataType" label="数据类型" align="center" show-overflow-tooltip />
+            <el-table-column prop="exampleValue" label="示例值" align="center" show-overflow-tooltip />
+            <el-table-column prop="cipherType" label="脱敏类型" align="center" show-overflow-tooltip />
+            <el-table-column prop="cryptType" label="规则类型" align="center" show-overflow-tooltip />
+          </el-table>
+        </el-form-item>
+        <el-form-item label="状态" prop="status">
+          <el-radio-group v-model="form.status">
+            <el-radio
+              v-for="dict in statusOptions"
+              :key="dict.id"
+              :label="dict.itemText"
+            >{{ dict.itemValue }}</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="备注" prop="remark">
+          <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
+        </el-form-item>
+      </el-form>
+    </div>
+  </el-card>
+</template>
+
+<script>
+import { getApiMask } from '@/api/market/apimask'
+import { listDataApi, getDataApi } from '@/api/market/dataapi'
+
+export default {
+  name: 'ApiMaskDetail',
+  props: {
+    data: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    }
+  },
+  data() {
+    return {
+      title: '数据API脱敏详情',
+      // 展示切换
+      showOptions: {
+        data: {},
+        showList: true,
+        showAdd: false,
+        showEdit: false,
+        showDetail: false
+      },
+      // 表单参数
+      form: {
+        id: undefined,
+        apiId: undefined,
+        maskName: undefined,
+        rules: [],
+        status: '1',
+        remark: undefined
+      },
+      // 状态数据字典
+      statusOptions: [],
+      // 数据API数据字典
+      apiOptions: [],
+      // 脱敏字段信息
+      resParamList: [],
+      // 脱敏类型数据字典
+      cipherTypeOptions: [],
+      // 正则替换数据字典
+      regexCryptoOptions: [],
+      // 加密算法数据字典
+      algorithmCryptoOptions: []
+    }
+  },
+  created() {
+    console.log('id:' + this.data.id)
+    this.getDicts('sys_common_status').then(response => {
+      if (response.success) {
+        this.statusOptions = response.data
+      }
+    })
+    this.getDicts('data_cipher_type').then(response => {
+      if (response.success) {
+        this.cipherTypeOptions = response.data
+      }
+    })
+    this.getDicts('data_regex_crypto').then(response => {
+      if (response.success) {
+        this.regexCryptoOptions = response.data
+      }
+    })
+    this.getDicts('data_algorithm_crypto').then(response => {
+      if (response.success) {
+        this.algorithmCryptoOptions = response.data
+      }
+    })
+    this.getDataApiList()
+  },
+  mounted() {
+    this.getApiMask(this.data.id)
+  },
+  methods: {
+    showCard() {
+      this.$emit('showCard', this.showOptions)
+    },
+    getDataApiList() {
+      listDataApi().then(response => {
+        if (response.success) {
+          this.apiOptions = response.data
+        }
+      })
+    },
+    /** 获取详情 */
+    async getApiMask() {
+      this.form = await getApiMask(this.data.id).then(response => {
+        if (response.success) {
+          return response.data
+        }
+      }) || {}
+      if (this.form && this.form.apiId) {
+        const dataApi = await getDataApi(this.form.apiId).then(response => {
+          if (response.success) {
+            return response.data
+          }
+        }) || {}
+        if (dataApi && dataApi.resParams.length > 0) {
+          this.resParamList = dataApi.resParams
+          this.form.rules.forEach(rule => {
+            const fieldParamIndex = this.resParamList.findIndex((param) => {
+              return param.fieldName === rule.fieldName
+            })
+            if (fieldParamIndex !== -1) {
+              const cipher = this.cipherTypeOptions.find((item) => {
+                return item.itemText === rule.cipherType
+              })
+              let crypt = {}
+              if (rule.cipherType === '1') {
+                crypt = this.regexCryptoOptions.find((item) => {
+                  return item.itemText === rule.cryptType
+                })
+              } else if (rule.cipherType === '2') {
+                crypt = this.algorithmCryptoOptions.find((item) => {
+                  return item.itemText === rule.cryptType
+                })
+              }
+              const resParam = Object.assign({}, this.resParamList[fieldParamIndex], { cipherType: (cipher && cipher.itemValue) || undefined, cryptType: (crypt && crypt.itemValue) || undefined })
+              this.$set(this.resParamList, fieldParamIndex, resParam)
+            }
+          })
+        }
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.el-card ::v-deep .el-card__body {
+  height: calc(100vh - 230px);
+  overflow-y: auto;
+}
+</style>

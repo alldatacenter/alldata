@@ -1,0 +1,100 @@
+# Spring 相关
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # zipkin
+#  zipkin:
+#    enabled: true
+#    base-url: http://localhost:9411/
+#  sleuth:
+#    web:
+#      client:
+#        enabled: true
+#    sampler:
+#      # 默认的采样比率为0.1，不能看到所有请求数据
+#      # 更改采样比率为1，就能看到所有的请求数据了，但是这样会增加接口调用延迟
+#      probability: 0.5
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# feign 配置
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 120000
+        readTimeout: 120000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+# hystrix 配置
+hystrix:
+  command:
+    default: #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 120000 #断路器超时时间，默认1000ms
+    dataSqlConsoleHystrix: #sql工作台方法的超时时间 60s
+      fallback:
+        enabled: true
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120000 #断路器超时时间，默认1000ms
+    dataApiMappingHystrix: #api调用方法的超时时间 60s
+      fallback:
+        enabled: true
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120000 #断路器超时时间，默认1000ms
+  shareSecurityContext: true
+
+# 请求处理的超时时间
+# 建议hystrix的超时时间为:(1 + MaxAutoRetries + MaxAutoRetriesNextServer) * ReadTimeout
+ribbon:
+  eager-load:
+    enabled: true
+    clients:
+      - datax-auth
+      - datax-service-system
+      - datax-service-data-metadata
+      - datax-service-data-console
+      - datax-service-data-market
+      - datax-service-data-mapping
+      - datax-service-data-integration
+      - datax-service-data-visual
+      - datax-service-data-masterdata
+      - datax-service-data-standard
+      - datax-service-quartz
+      - datax-service-workflow
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+  ReadTimeout: 120000 #负载均衡超时时间，默认值5000
+  ConnectTimeout: 6000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0 #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1

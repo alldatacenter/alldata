@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.metadata.dao.MetadataColumnDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.metadata.api.entity.MetadataColumnEntity">
+        <result column="id" property="id" />
+        <result column="source_id" property="sourceId" />
+        <result column="table_id" property="tableId" />
+        <result column="column_name" property="columnName" />
+        <result column="column_comment" property="columnComment" />
+        <result column="column_key" property="columnKey" />
+        <result column="column_nullable" property="columnNullable" />
+        <result column="column_position" property="columnPosition" />
+        <result column="data_type" property="dataType" />
+        <result column="data_length" property="dataLength" />
+        <result column="data_precision" property="dataPrecision" />
+        <result column="data_scale" property="dataScale" />
+        <result column="data_default" property="dataDefault" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.metadata.api.entity.MetadataColumnEntity" extends="BaseResultMap">
+        <result column="source_name" property="sourceName" />
+        <result column="table_name" property="tableName" />
+        <result column="table_comment" property="tableComment" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        source_id, table_id, column_name, column_comment, column_key, column_nullable, column_position, data_type, data_length, data_precision, data_scale, data_default
+    </sql>
+
+    <sql id="Column_Column_List">
+        ${alias}.id,
+        ${alias}.source_id, ${alias}.table_id, ${alias}.column_name, ${alias}.column_comment, ${alias}.column_key, ${alias}.column_nullable, ${alias}.column_position, ${alias}.data_type, ${alias}.data_length, ${alias}.data_precision, ${alias}.data_scale, ${alias}.data_default
+    </sql>
+
+    <select id="selectPageWithAuth" resultMap="ExtendResultMap">
+        SELECT s.source_name, t.table_name, t.table_comment,
+        <include refid="Column_Column_List"><property name="alias" value="c"/></include>
+        FROM metadata_column c
+        LEFT JOIN metadata_source s ON s.id = c.source_id
+        LEFT JOIN metadata_table t ON t.id = c.table_id
+        <trim prefix="WHERE" prefixOverrides="WHERE |AND |OR ">
+            ${ew.customSqlSegment}
+            <if test="roles != null and roles.size > 0">
+                AND EXISTS (
+                SELECT 1 FROM metadata_authorize auth WHERE auth.object_id = c.id AND auth.object_type = 'column'
+                AND auth.role_id IN
+                <foreach collection="roles" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+        </trim>
+    </select>
+
+</mapper>

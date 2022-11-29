@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.UserRoleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.UserRoleEntity">
+        <result column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="role_id" property="roleId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        user_id, role_id
+    </sql>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO sys_user_role
+        (id, user_id, role_id)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.userId}, #{item.roleId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteByUserId">
+        DELETE FROM sys_user_role WHERE user_id = #{id}
+    </delete>
+
+    <delete id="deleteByUserIds">
+        DELETE FROM sys_user_role WHERE user_id in
+        <foreach collection='list' item='id' open='(' separator=',' close=')'>
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

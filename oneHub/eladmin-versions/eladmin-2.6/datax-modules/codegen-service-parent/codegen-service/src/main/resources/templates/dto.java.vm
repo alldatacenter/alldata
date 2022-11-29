@@ -1,0 +1,34 @@
+package ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.dto;
+
+import cn.datax.common.validate.ValidationGroups;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+/**
+ * <p>
+ * $!{table.comment} 实体DTO
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@ApiModel(value = "$!{table.comment}Model")
+@Data
+public class ${className}Dto implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
+    @ApiModelProperty(value = "主键ID")
+    @NotBlank(message = "主键ID不能为空", groups = {ValidationGroups.Update.class})
+    private String id;
+
+    ## ----------  BEGIN 字段循环遍历  ----------
+    #foreach($field in ${table.fields})
+    @ApiModelProperty(value = "${field.comment}")
+    private ${field.propertyType} ${field.propertyName};
+    #end
+    ## ----------  END 字段循环遍历  ----------
+}

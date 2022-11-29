@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.quality.dao.ScheduleJobDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.quality.api.entity.ScheduleJobEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="job_name" property="jobName" />
+        <result column="bean_name" property="beanName" />
+        <result column="method_name" property="methodName" />
+        <result column="method_params" property="methodParams" />
+        <result column="cron_expression" property="cronExpression" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        job_name, bean_name, method_name, method_params, cron_expression
+    </sql>
+
+</mapper>

@@ -1,0 +1,20 @@
+package ${cfg.PackageParent}#if(${package.ModuleName}).${package.ModuleName}#end.api.query;
+
+import cn.datax.common.base.BaseQueryParams;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * <p>
+ * $!{table.comment} 查询实体
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class ${className}Query extends BaseQueryParams {
+
+    private static final long serialVersionUID=1L;
+}

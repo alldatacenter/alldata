@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.standard.dao.ContrastDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.standard.api.entity.ContrastEntity">
+        <result column="id" property="id" />
+        <result column="status" property="status" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="create_dept" property="createDept" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+        <result column="source_id" property="sourceId" />
+        <result column="source_name" property="sourceName" />
+        <result column="table_id" property="tableId" />
+        <result column="table_name" property="tableName" />
+        <result column="table_comment" property="tableComment" />
+        <result column="column_id" property="columnId" />
+        <result column="column_name" property="columnName" />
+        <result column="column_comment" property="columnComment" />
+        <result column="gb_type_id" property="gbTypeId" />
+        <result column="bind_gb_column" property="bindGbColumn" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.standard.api.entity.ContrastEntity" extends="BaseResultMap">
+        <result column="gb_type_code" property="gbTypeCode" />
+        <result column="gb_type_name" property="gbTypeName" />
+    </resultMap>
+
+    <resultMap id="ExtendStatisticResultMap" type="cn.datax.service.data.standard.api.entity.ContrastEntity" extends="ExtendResultMap">
+        <result column="mapping_count" property="mappingCount" />
+        <result column="un_mapping_count" property="unMappingCount" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        create_dept,
+        update_by,
+        update_time,
+        remark,
+        source_id, source_name, table_id, table_name, table_comment, column_id, column_name, column_comment, gb_type_id, bind_gb_column
+    </sql>
+
+    <sql id="Contrast_Column_List">
+        ${alias}.id,
+        ${alias}.status,
+        ${alias}.create_by,
+        ${alias}.create_time,
+        ${alias}.create_dept,
+        ${alias}.update_by,
+        ${alias}.update_time,
+        ${alias}.remark,
+        ${alias}.source_id, ${alias}.source_name, ${alias}.table_id, ${alias}.table_name, ${alias}.table_comment, ${alias}.column_id,
+        ${alias}.column_name, ${alias}.column_comment, ${alias}.gb_type_id, ${alias}.bind_gb_column
+    </sql>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT t.gb_type_code, t.gb_type_name,
+        <include refid="Contrast_Column_List"><property name="alias" value="c"/></include>
+        FROM standard_contrast c
+        LEFT JOIN standard_type t ON t.id = c.gb_type_id
+        WHERE 1 = 1 AND c.id = #{id}
+    </select>
+
+    <select id="statistic" resultMap="ExtendStatisticResultMap">
+        SELECT t.gb_type_code, t.gb_type_name,
+        (select count(1) from standard_contrast_dict where contrast_id = c.id and status = 1) as mapping_count,
+        (select count(1) from standard_contrast_dict where contrast_id = c.id and status = 0) as un_mapping_count,
+        <include refid="Contrast_Column_List"><property name="alias" value="c"/></include>
+        FROM standard_contrast c
+        LEFT JOIN standard_type t ON t.id = c.gb_type_id
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

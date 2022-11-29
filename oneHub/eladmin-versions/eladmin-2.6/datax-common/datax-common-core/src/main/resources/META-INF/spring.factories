@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.datax.common.config.JacksonConfig,\
+  cn.datax.common.config.RestTemplateConfig,\
+  cn.datax.common.exception.GlobalExceptionHandler,\
+  cn.datax.common.utils.SpringContextHolder

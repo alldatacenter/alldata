@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.RoleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.RoleEntity">
+        <result column="id" property="id" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="role_name" property="roleName" />
+        <result column="role_code" property="roleCode" />
+        <result column="data_scope" property="dataScope" />
+        <result column="status" property="status" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.system.api.entity.RoleEntity" extends="BaseResultMap">
+        <collection property="depts" column="{roleId=id}" select="getDeptList"></collection>
+        <collection property="menus" column="{roleId=id}" select="getMenuList"></collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        role_name, role_code, data_scope, status, remark
+    </sql>
+
+    <sql id="Role_Column_List">
+        ${alias}.id,
+        ${alias}.create_by,
+        ${alias}.create_time,
+        ${alias}.update_by,
+        ${alias}.update_time,
+        ${alias}.role_name, ${alias}.role_code, ${alias}.data_scope, ${alias}.status, ${alias}.remark
+    </sql>
+
+    <select id="getDeptList" resultType="cn.datax.service.system.api.entity.DeptEntity">
+        SELECT
+        <include refid="cn.datax.service.system.dao.DeptDao.Dept_Column_List">
+            <property name="alias" value="d"/>
+        </include>
+        FROM sys_dept d
+        LEFT JOIN sys_role_dept rd ON d.id = rd.dept_id
+        WHERE 1 = 1 AND d.status = 1
+        <if test="null != roleId and '' != roleId">
+            AND rd.role_id = #{roleId}
+        </if>
+    </select>
+
+    <select id="getMenuList" resultType="cn.datax.service.system.api.entity.MenuEntity">
+        SELECT
+        <include refid="cn.datax.service.system.dao.MenuDao.Menu_Column_List">
+            <property name="alias" value="m"/>
+        </include>
+        FROM sys_menu m
+        LEFT JOIN sys_role_menu rm ON m.id = rm.menu_id
+        WHERE 1 = 1 AND m.status = 1
+        <if test="null != roleId and '' != roleId">
+            AND rm.role_id = #{roleId}
+        </if>
+    </select>
+
+    <select id="selectById" resultMap="ExtendResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_role
+        WHERE 1 = 1 AND id = #{id}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM sys_role
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

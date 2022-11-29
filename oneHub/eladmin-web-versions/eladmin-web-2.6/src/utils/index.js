@@ -174,6 +174,15 @@ export function param2Obj(url) {
   )
 }
 
+export function formatDuration(mss) {
+  const days = Math.floor(mss / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const minutes = Math.floor((mss % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.round((mss % (1000 * 60)) / 1000)
+  return ((days > 0) ? days + '天' : '') + ((hours > 0) ? hours + '小时' : '') +
+    ((minutes > 0) ? minutes + '分钟' : '') + ((seconds > 0) ? seconds + '秒' : '')
+}
+
 /**
  * @param {string} val
  * @returns {string}

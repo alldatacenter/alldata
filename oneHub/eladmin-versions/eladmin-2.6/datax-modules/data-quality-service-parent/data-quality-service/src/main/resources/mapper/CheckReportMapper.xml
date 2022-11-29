@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.data.quality.dao.CheckReportDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.data.quality.api.entity.CheckReportEntity">
+        <result column="id" property="id" />
+        <result column="check_rule_id" property="checkRuleId" />
+        <result column="check_date" property="checkDate" />
+        <result column="check_result" property="checkResult" />
+        <result column="check_total_count" property="checkTotalCount" />
+        <result column="check_error_count" property="checkErrorCount" />
+        <result column="check_batch" property="checkBatch" />
+    </resultMap>
+
+    <resultMap id="ExtendResultMap" type="cn.datax.service.data.quality.api.entity.CheckReportEntity" extends="BaseResultMap">
+        <result column="rule_name" property="ruleName" />
+        <result column="rule_type" property="ruleType" />
+        <result column="rule_source" property="ruleSource" />
+        <result column="rule_table" property="ruleTable" />
+        <result column="rule_column" property="ruleColumn" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        check_rule_id, check_date, check_result, check_total_count, check_error_count, check_batch
+    </sql>
+
+    <sql id="Report_Column_List">
+        ${alias}.id,
+        ${alias}.check_rule_id, ${alias}.check_date, ${alias}.check_result, ${alias}.check_total_count, ${alias}.check_error_count, ${alias}.check_batch
+    </sql>
+
+    <select id="selectPage" resultMap="ExtendResultMap">
+        SELECT r.rule_name, t.name as rule_type, r.rule_source, r.rule_table, r.rule_column,
+        <include refid="Report_Column_List"><property name="alias" value="c"/></include>
+        FROM quality_check_report c
+        LEFT JOIN quality_check_rule r ON r.id = c.check_rule_id
+        LEFT JOIN quality_rule_type t ON t.id = r.rule_type_id
+        ${ew.customSqlSegment}
+    </select>
+
+    <resultMap id="ReportResultMap" type="cn.datax.service.data.quality.api.entity.DataReportEntity">
+        <result column="rule_type_id" property="ruleTypeId" />
+        <result column="rule_type_name" property="ruleTypeName" />
+        <result column="rule_id" property="ruleId" />
+        <result column="rule_name" property="ruleName" />
+        <result column="rule_source_id" property="ruleSourceId" />
+        <result column="rule_source_name" property="ruleSourceName" />
+        <result column="rule_level_id" property="ruleLevelId" />
+        <result column="rule_level_name" property="ruleLevelName" />
+        <result column="check_error_count" property="checkErrorCount" />
+    </resultMap>
+
+    <resultMap id="ExtendReportResultMap" type="cn.datax.service.data.quality.api.entity.DataReportEntity" extends="ReportResultMap">
+        <result column="rule_type_code" property="ruleTypeCode" />
+        <result column="rule_table_name" property="ruleTableName" />
+        <result column="rule_table_comment" property="ruleTableComment" />
+        <result column="rule_column_name" property="ruleColumnName" />
+        <result column="rule_column_comment" property="ruleColumnComment" />
+        <result column="check_total_count" property="checkTotalCount" />
+    </resultMap>
+
+    <select id="getReportBySource" resultMap="ReportResultMap">
+        SELECT temp.*, l.name AS rule_level_name from (
+            SELECT r.rule_source_id, r.rule_source AS rule_source_name, r.rule_level_id,
+            COALESCE(SUM(t.check_error_count), 0) AS check_error_count
+            FROM quality_check_rule r
+            LEFT JOIN quality_check_report t ON t.check_rule_id = r.id and
+				t.check_date = (select max(check_date) from quality_check_report where check_rule_id = r.id and date(check_date) = #{checkDate})
+            GROUP BY r.rule_source_id, r.rule_source, r.rule_level_id
+        ) temp LEFT JOIN quality_rule_level l ON l.id = temp.rule_level_id
+    </select>
+
+    <select id="getReportByType" resultMap="ReportResultMap">
+        SELECT type.id AS rule_type_id, type.name AS rule_type_name, rule.id AS rule_id, rule.rule_name,
+        level.id AS rule_level_id, level.name AS rule_level_name, COALESCE(report.check_error_count, 0) AS check_error_count
+        FROM quality_check_rule rule
+        LEFT JOIN quality_rule_type type ON type.id = rule.rule_type_id
+        LEFT JOIN quality_rule_level level ON level.id = rule.rule_level_id
+        LEFT JOIN quality_check_report report ON report.check_rule_id = rule.id AND
+            report.check_date = (select max(check_date) from quality_check_report where check_rule_id = rule.id and date(check_date) = #{checkDate})
+    </select>
+
+    <select id="getReportDetail" resultMap="ExtendReportResultMap">
+        SELECT type.id AS rule_type_id, type.code AS rule_type_code,
+                level.id AS rule_level_id, level.name AS rule_level_name,
+				rule.id AS rule_id, rule.rule_name, rule.rule_source AS rule_source_name, rule.rule_table AS rule_table_name, rule.rule_table_comment, rule.rule_column AS rule_column_name, rule.rule_column_comment,
+				COALESCE(report.check_total_count, 0) AS check_total_count, COALESCE(report.check_error_count, 0) AS check_error_count
+        FROM quality_check_rule rule
+        LEFT JOIN quality_rule_type type ON type.id = rule.rule_type_id
+        LEFT JOIN quality_rule_level level ON level.id = rule.rule_level_id
+        LEFT JOIN quality_check_report report ON report.check_rule_id = rule.id where
+            report.check_date = (select max(check_date) from quality_check_report where check_rule_id = rule.id and date(check_date) = #{checkDate})
+    </select>
+
+</mapper>

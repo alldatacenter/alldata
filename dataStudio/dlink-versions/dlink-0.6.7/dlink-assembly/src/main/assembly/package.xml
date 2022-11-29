@@ -47,10 +47,10 @@
             </includes>
         </fileSet>-->
         <fileSet>
-            <directory>${project.parent.basedir}/dlink-client/dlink-client-1.14/target</directory>
+            <directory>${project.parent.basedir}/dlink-client/dlink-client-1.16/target</directory>
             <outputDirectory>lib</outputDirectory>
             <includes>
-                <include>dlink-client-1.14-${project.version}.jar</include>
+                <include>dlink-client-1.16-${project.version}.jar</include>
             </includes>
         </fileSet>
         <fileSet>
