@@ -1,14 +1,14 @@
 import request from '@/utils/request'
 
 // 刷新参数缓存
-export function refreshMetadata () {
+export function refreshMetadata() {
   return request({
     url: '/data/metadata/sources/refresh',
     method: 'get'
   })
 }
 
-export function listDataSource (data) {
+export function listDataSource(data) {
   return request({
     url: '/data/metadata/sources/list',
     method: 'get',
@@ -16,7 +16,7 @@ export function listDataSource (data) {
   })
 }
 
-export function pageDataSource (data) {
+export function pageDataSource(data) {
   return request({
     url: '/data/metadata/sources/page',
     method: 'get',
@@ -24,28 +24,28 @@ export function pageDataSource (data) {
   })
 }
 
-export function getDataSource (id) {
+export function getDataSource(id) {
   return request({
     url: '/data/metadata/sources/' + id,
     method: 'get'
   })
 }
 
-export function delDataSource (id) {
+export function delDataSource(id) {
   return request({
     url: '/data/metadata/sources/' + id,
     method: 'delete'
   })
 }
 
-export function delDataSources (ids) {
+export function delDataSources(ids) {
   return request({
     url: '/data/metadata/sources/batch/' + ids,
     method: 'delete'
   })
 }
 
-export function addDataSource (data) {
+export function addDataSource(data) {
   return request({
     url: '/data/metadata/sources',
     method: 'post',
@@ -53,7 +53,7 @@ export function addDataSource (data) {
   })
 }
 
-export function updateDataSource (data) {
+export function updateDataSource(data) {
   return request({
     url: '/data/metadata/sources/' + data.id,
     method: 'put',
@@ -61,7 +61,7 @@ export function updateDataSource (data) {
   })
 }
 
-export function checkConnection (data) {
+export function checkConnection(data) {
   return request({
     url: '/data/metadata/sources/checkConnection',
     method: 'post',
@@ -69,7 +69,7 @@ export function checkConnection (data) {
   })
 }
 
-export function queryByPage (data) {
+export function queryByPage(data) {
   return request({
     url: '/data/metadata/sources/queryByPage',
     method: 'post',
@@ -77,28 +77,28 @@ export function queryByPage (data) {
   })
 }
 
-export function getDbTables (id) {
+export function getDbTables(id) {
   return request({
     url: '/data/metadata/sources/' + id + '/tables',
     method: 'get'
   })
 }
 
-export function getDbTableColumns (id, tableName) {
+export function getDbTableColumns(id, tableName) {
   return request({
     url: '/data/metadata/sources/' + id + '/' + tableName + '/columns',
     method: 'get'
   })
 }
 
-export function sync (id) {
+export function sync(id) {
   return request({
     url: '/data/metadata/sources/sync/' + id,
     method: 'post'
   })
 }
 
-export function word (id) {
+export function word(id) {
   return request({
     url: '/data/metadata/sources/word/' + id,
     method: 'post',

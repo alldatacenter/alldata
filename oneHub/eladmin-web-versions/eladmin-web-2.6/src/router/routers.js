@@ -32,34 +32,34 @@ export const constantRouterMap = [
     ]
   },
   {
-      path: '/visual/chart/build/:id',
-      component: () => import('@/views/visual/datachart/DataChartBuild'),
-      hidden: true
-    },
+    path: '/visual/chart/build/:id',
+    component: () => import('@/views/visual/datachart/DataChartBuild'),
+    hidden: true
+  },
 
-    {
-      path: '/visual/board/build/:id',
-      component: () => import('@/views/visual/databoard/DataBoardBuild'),
-      hidden: true
-    },
+  {
+    path: '/visual/board/build/:id',
+    component: () => import('@/views/visual/databoard/DataBoardBuild'),
+    hidden: true
+  },
 
-    {
-      path: '/visual/board/view/:id',
-      component: () => import('@/views/visual/databoard/DataBoardView'),
-      hidden: true
-    },
+  {
+    path: '/visual/board/view/:id',
+    component: () => import('@/views/visual/databoard/DataBoardView'),
+    hidden: true
+  },
 
-    {
-      path: '/visual/screen/build/:id',
-      component: () => import('@/views/visual/datascreen/DataScreenBuild'),
-      hidden: true
-    },
+  {
+    path: '/visual/screen/build/:id',
+    component: () => import('@/views/visual/datascreen/DataScreenBuild'),
+    hidden: true
+  },
 
-    {
-      path: '/visual/screen/view/:id',
-      component: () => import('@/views/visual/datascreen/DataScreenView'),
-      hidden: true
-    },
+  {
+    path: '/visual/screen/view/:id',
+    component: () => import('@/views/visual/datascreen/DataScreenView'),
+    hidden: true
+  },
   {
     path: '/',
     component: Layout,

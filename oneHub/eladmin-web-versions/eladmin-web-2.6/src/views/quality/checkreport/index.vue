@@ -20,7 +20,7 @@
         </el-form>
       </div>
       <div class="body-wrapper">
-        <h4 style="text-align: center;">{{date}}质量分析报告</h4>
+        <h4 style="text-align: center;">{{ date }}质量分析报告</h4>
         <el-divider content-position="left"><h3>错误量统计分析</h3></el-divider>
         <el-row :gutter="20">
           <el-col :span="10">

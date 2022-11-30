@@ -1,19 +1,19 @@
 <template>
   <div class="app-container">
     <transition name="el-zoom-in-center">
-      <data-api-list v-if="options.showList" @showCard="showCard"></data-api-list>
+      <data-api-list v-if="options.showList" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-top">
-      <data-api-add v-if="options.showAdd" :data="options.data" @showCard="showCard"></data-api-add>
+      <data-api-add v-if="options.showAdd" :data="options.data" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-top">
-      <data-api-edit v-if="options.showEdit" :data="options.data" @showCard="showCard"></data-api-edit>
+      <data-api-edit v-if="options.showEdit" :data="options.data" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-bottom">
-      <data-api-detail v-if="options.showDetail" :data="options.data" @showCard="showCard"></data-api-detail>
+      <data-api-detail v-if="options.showDetail" :data="options.data" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-bottom">
-      <data-api-example v-if="options.showExample" :data="options.data" @showCard="showCard"></data-api-example>
+      <data-api-example v-if="options.showExample" :data="options.data" @showCard="showCard" />
     </transition>
   </div>
 </template>
@@ -28,7 +28,7 @@ import DataApiExample from './DataApiExample'
 export default {
   name: 'DataApi',
   components: { DataApiList, DataApiAdd, DataApiEdit, DataApiDetail, DataApiExample },
-  data () {
+  data() {
     return {
       options: {
         data: {},
@@ -41,7 +41,7 @@ export default {
     }
   },
   methods: {
-    showCard (data) {
+    showCard(data) {
       Object.assign(this.options, data)
     }
   }

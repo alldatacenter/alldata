@@ -24,8 +24,8 @@
           </template>
           <template v-if="item.htmlType === 'textarea'">
             <el-input
-              type="textarea"
               v-model.trim="form[item.columnName]"
+              type="textarea"
               :placeholder="'请输入' + item.columnComment"
               :maxlength="parseInt(item.columnLength)"
             />
@@ -35,7 +35,7 @@
               v-model.trim="form[item.columnName]"
               :controls="false"
               :precision="parseInt(item.columnScale)"
-            ></el-input-number>
+            />
           </template>
           <template v-if="item.htmlType === 'select'">
             <template v-if="item.isBindDict === '1' && item.dictList && item.dictList.length > 0">
@@ -44,8 +44,8 @@
                   v-for="item in item.dictList"
                   :key="item.id"
                   :label="item.label"
-                  :value="item.value">
-                </el-option>
+                  :value="item.value"
+                />
               </el-select>
             </template>
           </template>
@@ -79,15 +79,15 @@
                 value-format="yyyy-MM-dd"
                 type="date"
                 placeholder="选择日期"
-              ></el-date-picker>
+              />
             </template>
             <template v-if="item.columnType === 'time'">
               <el-time-picker
                 v-model="form[item.columnName]"
                 format="HH:mm:ss"
                 value-format="HH:mm:ss"
-                placeholder="选择时间点">
-              </el-time-picker>
+                placeholder="选择时间点"
+              />
             </template>
             <template v-if="item.columnType === 'year'">
               <el-date-picker
@@ -96,7 +96,7 @@
                 value-format="yyyy"
                 type="year"
                 placeholder="选择年份"
-              ></el-date-picker>
+              />
             </template>
             <template v-if="item.columnType === 'datetime'">
               <el-date-picker
@@ -105,7 +105,7 @@
                 value-format="yyyy-MM-dd HH:mm:ss"
                 type="datetime"
                 placeholder="选择日期时间"
-              ></el-date-picker>
+              />
             </template>
           </template>
         </el-form-item>

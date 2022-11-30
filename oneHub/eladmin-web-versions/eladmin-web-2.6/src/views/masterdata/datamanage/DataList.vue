@@ -23,15 +23,15 @@
       <el-card class="box-card" shadow="always">
         <div v-if="tableName">
           <el-form ref="queryForm" class="queryForm" :model="queryParams" size="mini" :inline="true">
-            <el-form-item v-for="(item, index) in queryParams.conditions" :label="item.columnName" :prop="item.column" :key="index">
+            <el-form-item v-for="(item, index) in queryParams.conditions" :key="index" :label="item.columnName" :prop="item.column">
               <template v-if="item.dictList && item.dictList.length > 0">
                 <el-select v-model.trim="item.value" clearable placeholder="请选择">
                   <el-option
                     v-for="item in item.dictList"
                     :key="item.id"
                     :label="item.label"
-                    :value="item.value">
-                  </el-option>
+                    :value="item.value"
+                  />
                 </el-select>
               </template>
               <template v-else>
@@ -42,14 +42,14 @@
                       clearable
                       :controls="false"
                       :precision="parseInt(item.columnScale)"
-                    ></el-input-number>
+                    />
                     ~
                     <el-input-number
                       v-model.trim="item.rightValue"
                       clearable
                       :controls="false"
                       :precision="parseInt(item.columnScale)"
-                    ></el-input-number>
+                    />
                   </template>
                   <template v-if="item.htmlType === 'datetime'">
                     <template v-if="item.columnType === 'date'">
@@ -60,7 +60,7 @@
                         value-format="yyyy-MM-dd"
                         type="date"
                         placeholder="选择日期"
-                      ></el-date-picker>
+                      />
                       ~
                       <el-date-picker
                         v-model.trim="item.rightValue"
@@ -69,7 +69,7 @@
                         value-format="yyyy-MM-dd"
                         type="date"
                         placeholder="选择日期"
-                      ></el-date-picker>
+                      />
                     </template>
                     <template v-if="item.columnType === 'time'">
                       <el-time-picker
@@ -77,16 +77,16 @@
                         clearable
                         format="HH:mm:ss"
                         value-format="HH:mm:ss"
-                        placeholder="选择时间点">
-                      </el-time-picker>
+                        placeholder="选择时间点"
+                      />
                       ~
                       <el-time-picker
                         v-model.trim="item.rightValue"
                         clearable
                         format="HH:mm:ss"
                         value-format="HH:mm:ss"
-                        placeholder="选择时间点">
-                      </el-time-picker>
+                        placeholder="选择时间点"
+                      />
                     </template>
                     <template v-if="item.columnType === 'year'">
                       <el-date-picker
@@ -96,7 +96,7 @@
                         value-format="yyyy"
                         type="year"
                         placeholder="选择年份"
-                      ></el-date-picker>
+                      />
                       ~
                       <el-date-picker
                         v-model.trim="item.rightValue"
@@ -105,7 +105,7 @@
                         value-format="yyyy"
                         type="year"
                         placeholder="选择年份"
-                      ></el-date-picker>
+                      />
                     </template>
                     <template v-if="item.columnType === 'datetime'">
                       <el-date-picker
@@ -115,7 +115,7 @@
                         value-format="yyyy-MM-dd HH:mm:ss"
                         type="datetime"
                         placeholder="选择日期时间"
-                      ></el-date-picker>
+                      />
                       ~
                       <el-date-picker
                         v-model.trim="item.rightValue"
@@ -124,19 +124,19 @@
                         value-format="yyyy-MM-dd HH:mm:ss"
                         type="datetime"
                         placeholder="选择日期时间"
-                      ></el-date-picker>
+                      />
                     </template>
                   </template>
                   <template v-else>
                     <el-input
                       v-model.trim="item.leftValue"
                       clearable
-                    ></el-input>
+                    />
                     ~
                     <el-input
                       v-model.trim="item.rightValue"
                       clearable
-                    ></el-input>
+                    />
                   </template>
                 </template>
                 <template v-else>
@@ -146,7 +146,7 @@
                       clearable
                       :controls="false"
                       :precision="parseInt(item.columnScale)"
-                    ></el-input-number>
+                    />
                   </template>
                   <template v-if="item.htmlType === 'datetime'">
                     <template v-if="item.columnType === 'date'">
@@ -157,7 +157,7 @@
                         value-format="yyyy-MM-dd"
                         type="date"
                         placeholder="选择日期"
-                      ></el-date-picker>
+                      />
                     </template>
                     <template v-if="item.columnType === 'time'">
                       <el-time-picker
@@ -165,8 +165,8 @@
                         clearable
                         format="HH:mm:ss"
                         value-format="HH:mm:ss"
-                        placeholder="选择时间点">
-                      </el-time-picker>
+                        placeholder="选择时间点"
+                      />
                     </template>
                     <template v-if="item.columnType === 'year'">
                       <el-date-picker
@@ -176,7 +176,7 @@
                         value-format="yyyy"
                         type="year"
                         placeholder="选择年份"
-                      ></el-date-picker>
+                      />
                     </template>
                     <template v-if="item.columnType === 'datetime'">
                       <el-date-picker
@@ -186,14 +186,14 @@
                         value-format="yyyy-MM-dd HH:mm:ss"
                         type="datetime"
                         placeholder="选择日期时间"
-                      ></el-date-picker>
+                      />
                     </template>
                   </template>
                   <template v-else>
                     <el-input
                       v-model.trim="item.value"
                       clearable
-                    ></el-input>
+                    />
                   </template>
                 </template>
               </template>

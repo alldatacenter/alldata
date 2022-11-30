@@ -4,10 +4,10 @@
       <span>{{ title }}</span>
       <el-button-group style="float: right;">
         <!-- zrx add-->
-        <el-button v-hasPerm="['metadata:datasource:sync']" v-if="form.isSync === '0'" size="mini" icon="el-icon-coin" round @click="handleSync">元数据同步</el-button>
-        <el-button v-hasPerm="['metadata:datasource:sync']" v-if="form.isSync === '2'" size="mini" icon="el-icon-coin" round @click="handleSync">元数据更新</el-button>
-        <el-button v-hasPerm="['metadata:datasource:word']" v-if="form.isSync === '2'" size="mini" icon="el-icon-coin" round @click="handleWord">数据库文档</el-button>
-        <el-button v-hasPerm="['metadata:datasource:sync']" v-if="form.isSync === '3'" size="mini" icon="el-icon-coin" round @click="handleSync">元数据再次同步</el-button>
+        <el-button v-if="form.isSync === '0'" v-hasPerm="['metadata:datasource:sync']" size="mini" icon="el-icon-coin" round @click="handleSync">元数据同步</el-button>
+        <el-button v-if="form.isSync === '2'" v-hasPerm="['metadata:datasource:sync']" size="mini" icon="el-icon-coin" round @click="handleSync">元数据更新</el-button>
+        <el-button v-if="form.isSync === '2'" v-hasPerm="['metadata:datasource:word']" size="mini" icon="el-icon-coin" round @click="handleWord">数据库文档</el-button>
+        <el-button v-if="form.isSync === '3'" v-hasPerm="['metadata:datasource:sync']" size="mini" icon="el-icon-coin" round @click="handleSync">元数据再次同步</el-button>
         <el-button v-hasPerm="['metadata:datasource:connect']" size="mini" icon="el-icon-coin" round @click="handleCheckConnection">连通性检测</el-button>
         <el-button size="mini" icon="el-icon-back" round @click="showCard">返回</el-button>
       </el-button-group>

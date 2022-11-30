@@ -15,7 +15,7 @@
     </el-row>
     <el-divider />
     <el-row :gutter="20">
-      <el-col class="box-card-col" v-hasPerm="['visual:chart:add']">
+      <el-col v-hasPerm="['visual:chart:add']" class="box-card-col">
         <el-card :body-style="{ padding: '0px' }" class="box-card-item">
           <div class="box-card-item-add" @click="handleAdd">
             <div class="icon-block">
@@ -39,9 +39,9 @@
           <div class="box-card-item-footer">
             <span class="box-card-item-footer-text">{{ item.chartName }}</span>
             <div class="clearfix">
-              <i class="el-icon-edit-outline" v-hasPerm="['visual:chart:edit']" @click="handleEdit(item)" />
-              <i class="el-icon-delete" v-hasPerm="['visual:chart:remove']" @click="handleDelete(item)" />
-              <i class="el-icon-copy-document" v-hasPerm="['visual:chart:copy']" @click="handleCopy(item)" />
+              <i v-hasPerm="['visual:chart:edit']" class="el-icon-edit-outline" @click="handleEdit(item)" />
+              <i v-hasPerm="['visual:chart:remove']" class="el-icon-delete" @click="handleDelete(item)" />
+              <i v-hasPerm="['visual:chart:copy']" class="el-icon-copy-document" @click="handleCopy(item)" />
             </div>
           </div>
         </el-card>

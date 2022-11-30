@@ -3,7 +3,7 @@
     <div slot="header" class="clearfix">
       <span>{{ title }}</span>
       <el-button-group style="float: right;">
-        <el-button v-hasPerm="['metadata:datasource:add']" v-if="active == 2" size="mini" icon="el-icon-plus" round :loading="loadingOptions.loading" :disabled="loadingOptions.isDisabled" @click="submitForm">{{ loadingOptions.loadingText }}</el-button>
+        <el-button v-if="active == 2" v-hasPerm="['metadata:datasource:add']" size="mini" icon="el-icon-plus" round :loading="loadingOptions.loading" :disabled="loadingOptions.isDisabled" @click="submitForm">{{ loadingOptions.loadingText }}</el-button>
         <el-button size="mini" icon="el-icon-back" round @click="showCard">返回</el-button>
       </el-button-group>
     </div>

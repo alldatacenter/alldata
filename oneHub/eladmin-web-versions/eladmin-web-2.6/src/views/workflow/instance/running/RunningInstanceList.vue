@@ -55,16 +55,16 @@
               @click="handleTrack(scope.row)"
             >流程追踪</el-button>
             <el-button
-              v-hasPerm="['workflow:instance:running:activate']"
               v-if="scope.row.suspensionState === 2"
+              v-hasPerm="['workflow:instance:running:activate']"
               size="mini"
               type="text"
               icon="el-icon-view"
               @click="handleActivate(scope.row)"
             >激活</el-button>
             <el-button
-              v-hasPerm="['workflow:instance:running:suspend']"
               v-if="scope.row.suspensionState === 1"
+              v-hasPerm="['workflow:instance:running:suspend']"
               size="mini"
               type="text"
               icon="el-icon-view"
@@ -94,7 +94,7 @@
     />
 
     <!-- 流程图对话框 -->
-    <flow-image v-if="dialogFlowImageVisible" :visible.sync="dialogFlowImageVisible" :processInstanceId="currentProcessInstanceId"></flow-image>
+    <flow-image v-if="dialogFlowImageVisible" :visible.sync="dialogFlowImageVisible" :process-instance-id="currentProcessInstanceId" />
   </el-card>
 </template>
 

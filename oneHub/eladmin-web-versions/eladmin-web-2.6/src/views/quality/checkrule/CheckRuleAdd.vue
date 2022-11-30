@@ -94,8 +94,8 @@
                   v-for="item in gbColumnOptions"
                   :key="item.value"
                   :label="item.label"
-                  :value="item.value">
-                </el-option>
+                  :value="item.value"
+                />
               </el-select>
             </el-form-item>
           </el-col>

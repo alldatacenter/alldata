@@ -15,7 +15,7 @@
     </el-row>
     <el-divider />
     <el-row :gutter="20">
-      <el-col :span="6" class="box-card-col" v-hasPerm="['visual:board:add']">
+      <el-col v-hasPerm="['visual:board:add']" :span="6" class="box-card-col">
         <el-card :body-style="{ padding: '0px' }" class="box-card-item">
           <div class="box-card-item-add" @click="handleAdd">
             <div class="icon-block">
@@ -33,16 +33,16 @@
               </div>
             </el-image>
             <div class="box-card-item-edit" :style="{display: (item.show ? 'block' : 'none')}">
-              <el-button type="primary" v-hasPerm="['visual:board:build']" @click="handleConfig(item)">编辑</el-button>
+              <el-button v-hasPerm="['visual:board:build']" type="primary" @click="handleConfig(item)">编辑</el-button>
             </div>
           </div>
           <div class="box-card-item-footer">
             <div class="box-card-item-footer-text">{{ item.boardName }}</div>
             <div class="clearfix">
-              <i class="el-icon-edit-outline" v-hasPerm="['visual:board:edit']" @click="handleEdit(item)" />
-              <i class="el-icon-view" v-hasPerm="['visual:board:preview']" @click="handleView(item)" />
-              <i class="el-icon-delete" v-hasPerm="['visual:board:remove']" @click="handleDelete(item)" />
-              <i class="el-icon-copy-document" v-hasPerm="['visual:board:copy']" @click="handleCopy(item)" />
+              <i v-hasPerm="['visual:board:edit']" class="el-icon-edit-outline" @click="handleEdit(item)" />
+              <i v-hasPerm="['visual:board:preview']" class="el-icon-view" @click="handleView(item)" />
+              <i v-hasPerm="['visual:board:remove']" class="el-icon-delete" @click="handleDelete(item)" />
+              <i v-hasPerm="['visual:board:copy']" class="el-icon-copy-document" @click="handleCopy(item)" />
             </div>
           </div>
         </el-card>

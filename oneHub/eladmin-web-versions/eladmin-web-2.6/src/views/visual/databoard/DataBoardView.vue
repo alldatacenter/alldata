@@ -32,7 +32,7 @@
               </div>
             </div>
             <chart-panel v-if="getChartItem(item.i).visible" :key="item.i" :ref="`charts${item.i}`" :chart-schema="getChartItem(item.i).chartSchema" :chart-data="getChartItem(item.i).data" :chart-style="{height: `${item.h * 30 + 10 * (item.h - 1) - 60}px`}" />
-            <div v-else :style="{height: `${item.h * 30 + 10 * (item.h - 1) - 60}px`}"></div>
+            <div v-else :style="{height: `${item.h * 30 + 10 * (item.h - 1) - 60}px`}" />
           </el-card>
         </grid-item>
       </grid-layout>
@@ -64,6 +64,11 @@ export default {
   },
   created() {
     this.getDataBoard(this.$route.params.id)
+  },
+  beforeDestroy() {
+    this.timers.map((item) => {
+      clearInterval(item)
+    })
   },
   methods: {
     getDataBoard(id) {
@@ -118,11 +123,6 @@ export default {
         }
       })
     }
-  },
-  beforeDestroy() {
-    this.timers.map((item) => {
-      clearInterval(item)
-    })
   }
 }
 </script>

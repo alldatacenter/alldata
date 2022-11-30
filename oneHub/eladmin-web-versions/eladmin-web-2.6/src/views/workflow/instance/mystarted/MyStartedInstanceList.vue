@@ -71,7 +71,7 @@
     />
 
     <!-- 流程图对话框 -->
-    <flow-image v-if="dialogFlowImageVisible" :visible.sync="dialogFlowImageVisible" :processInstanceId="currentProcessInstanceId"></flow-image>
+    <flow-image v-if="dialogFlowImageVisible" :visible.sync="dialogFlowImageVisible" :process-instance-id="currentProcessInstanceId" />
   </el-card>
 </template>
 

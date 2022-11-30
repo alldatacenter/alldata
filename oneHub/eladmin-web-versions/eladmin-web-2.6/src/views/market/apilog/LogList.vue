@@ -18,8 +18,7 @@
 
     <el-row type="flex" justify="space-between">
       <el-col :span="12">
-        <el-button-group>
-        </el-button-group>
+        <el-button-group />
       </el-col>
       <el-col :span="12">
         <div class="right-toolbar">

@@ -1,5 +1,5 @@
 <template>
-  <div class="dv-border-box-13" :ref="ref">
+  <div :ref="ref" class="dv-border-box-13">
     <svg class="dv-border-svg-container" :width="width" :height="height">
       <path
         :fill="backgroundColor"
@@ -35,7 +35,7 @@
     </svg>
 
     <div class="border-box-content">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>

@@ -37,8 +37,8 @@
             <el-col :span="12">
               <el-button-group style="float: right;">
                 <template v-if="showBtns">
-                  <el-button v-hasPerm="['metadata:dataauthorize:edit']" v-if="disabled" size="mini" round @click="disabled = false">修改</el-button>
-                  <el-button v-hasPerm="['metadata:dataauthorize:edit']" v-else size="mini" round @click="handSubmit">保存</el-button>
+                  <el-button v-if="disabled" v-hasPerm="['metadata:dataauthorize:edit']" size="mini" round @click="disabled = false">修改</el-button>
+                  <el-button v-else v-hasPerm="['metadata:dataauthorize:edit']" size="mini" round @click="handSubmit">保存</el-button>
                 </template>
               </el-button-group>
             </el-col>

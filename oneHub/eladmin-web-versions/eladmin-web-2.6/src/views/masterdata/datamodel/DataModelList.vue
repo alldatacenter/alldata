@@ -101,11 +101,11 @@
           >
             <el-button
               v-hasPerm="['masterdata:model:edit']"
+              v-flow-edit="scope.row.flowStatus"
               size="mini"
               type="text"
               icon="el-icon-edit-outline"
               @click="handleEdit(scope.row)"
-              v-flow-edit="scope.row.flowStatus"
             >修改</el-button>
             <el-button
               v-hasPerm="['masterdata:model:detail']"
@@ -116,11 +116,11 @@
             >详情</el-button>
             <el-button
               v-hasPerm="['masterdata:model:remove']"
+              v-flow-del="scope.row.flowStatus"
               size="mini"
               type="text"
               icon="el-icon-delete"
               @click="handleDelete(scope.row)"
-              v-flow-del="scope.row.flowStatus"
             >删除</el-button>
             <el-button slot="reference">操作</el-button>
           </el-popover>
