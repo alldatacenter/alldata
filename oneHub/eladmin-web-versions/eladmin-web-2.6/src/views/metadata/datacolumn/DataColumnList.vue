@@ -13,9 +13,9 @@
           :expand-on-click-node="false"
           @node-click="handleNodeClick"
         >
-          <span class="custom-tree-node" slot-scope="{ node, data }">
-            <i v-if="node.level === 1" class="iconfont icon-shujuku"></i>
-            <i v-else-if="node.level === 2" class="iconfont icon-shujubiao"></i>
+          <span slot-scope="{ node, data }" class="custom-tree-node">
+            <i v-if="node.level === 1" class="iconfont icon-shujuku" />
+            <i v-else-if="node.level === 2" class="iconfont icon-shujubiao" />
             <span>{{ node.label }}</span>
           </span>
         </el-tree>
@@ -41,8 +41,7 @@
 
         <el-row type="flex" justify="space-between">
           <el-col :span="12">
-            <el-button-group>
-            </el-button-group>
+            <el-button-group />
           </el-col>
           <el-col :span="12">
             <div class="right-toolbar">

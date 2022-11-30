@@ -1,8 +1,8 @@
 <template>
   <div
+    :ref="ref"
     class="dv-border-box-7"
     :style="`box-shadow: inset 0 0 40px ${mergedColor[0]}; border: 1px solid ${mergedColor[0]}; background-color: ${backgroundColor}`"
-    :ref="ref"
   >
     <svg class="dv-border-svg-container" :width="width" :height="height">
       <polyline class="dv-bb7-line-width-2" :stroke="mergedColor[0]" :points="`0, 25 0, 0 25, 0`" />
@@ -17,7 +17,7 @@
     </svg>
 
     <div class="border-box-content">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>

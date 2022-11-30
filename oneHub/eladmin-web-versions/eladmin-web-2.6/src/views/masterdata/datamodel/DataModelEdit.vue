@@ -39,21 +39,21 @@
               <el-table-column label="列名称">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.columnName'" :rules="rules.columnName">
-                    <el-input :disabled="scope.row.isSystem === '1'" v-model="scope.row.columnName" clearable placeholder="请输入列名称" />
+                    <el-input v-model="scope.row.columnName" :disabled="scope.row.isSystem === '1'" clearable placeholder="请输入列名称" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="列描述">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.columnComment'" :rules="rules.columnComment">
-                    <el-input :disabled="scope.row.isSystem === '1'" v-model="scope.row.columnComment" clearable placeholder="请输入列描述" />
+                    <el-input v-model="scope.row.columnComment" :disabled="scope.row.isSystem === '1'" clearable placeholder="请输入列描述" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="列类型">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.columnType'" :rules="rules.columnType">
-                    <el-select :disabled="scope.row.isSystem === '1'" v-model="scope.row.columnType" clearable placeholder="请选择">
+                    <el-select v-model="scope.row.columnType" :disabled="scope.row.isSystem === '1'" clearable placeholder="请选择">
                       <el-option
                         v-for="item in columnTypeOptions"
                         :key="item.id"
@@ -67,35 +67,35 @@
               <el-table-column label="默认值">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.defaultValue'">
-                    <el-input :disabled="scope.row.isSystem === '1'" v-model="scope.row.defaultValue" clearable placeholder="请输入默认值" />
+                    <el-input v-model="scope.row.defaultValue" :disabled="scope.row.isSystem === '1'" clearable placeholder="请输入默认值" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="长度" width="80">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.columnLength'">
-                    <el-input-number :disabled="scope.row.isSystem === '1'" v-model="scope.row.columnLength" style="width: 60px;" :controls="false" />
+                    <el-input-number v-model="scope.row.columnLength" :disabled="scope.row.isSystem === '1'" style="width: 60px;" :controls="false" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="小数位" width="70">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.columnScale'">
-                    <el-input-number :disabled="scope.row.isSystem === '1'" v-model="scope.row.columnScale" style="width: 50px;" :controls="false" />
+                    <el-input-number v-model="scope.row.columnScale" :disabled="scope.row.isSystem === '1'" style="width: 50px;" :controls="false" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="主键" align="center" width="55">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.isPk'">
-                    <el-checkbox :disabled="scope.row.isSystem === '1'" v-model="scope.row.isPk" true-label="1" false-label="0" />
+                    <el-checkbox v-model="scope.row.isPk" :disabled="scope.row.isSystem === '1'" true-label="1" false-label="0" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="必填" align="center" width="55">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.isRequired'">
-                    <el-checkbox :disabled="scope.row.isSystem === '1'" v-model="scope.row.isRequired" true-label="1" false-label="0" />
+                    <el-checkbox v-model="scope.row.isRequired" :disabled="scope.row.isSystem === '1'" true-label="1" false-label="0" />
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -118,56 +118,56 @@
               <el-table-column label="列名称">
                 <template slot-scope="scope">
                   <el-form-item>
-                    <el-input :disabled="true" v-model="scope.row.columnName" />
+                    <el-input v-model="scope.row.columnName" :disabled="true" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="列描述">
                 <template slot-scope="scope">
                   <el-form-item>
-                    <el-input :disabled="true" v-model="scope.row.columnComment" />
+                    <el-input v-model="scope.row.columnComment" :disabled="true" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="插入" align="center" width="55">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.isInsert'">
-                    <el-checkbox :disabled="scope.row.isSystem === '1'" v-model="scope.row.isInsert" true-label="1" false-label="0" />
+                    <el-checkbox v-model="scope.row.isInsert" :disabled="scope.row.isSystem === '1'" true-label="1" false-label="0" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="编辑" align="center" width="55">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.isEdit'">
-                    <el-checkbox :disabled="scope.row.isSystem === '1'" v-model="scope.row.isEdit" true-label="1" false-label="0" />
+                    <el-checkbox v-model="scope.row.isEdit" :disabled="scope.row.isSystem === '1'" true-label="1" false-label="0" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="详情" align="center" width="55">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.isDetail'">
-                    <el-checkbox :disabled="scope.row.isSystem === '1'" v-model="scope.row.isDetail" true-label="1" false-label="0" />
+                    <el-checkbox v-model="scope.row.isDetail" :disabled="scope.row.isSystem === '1'" true-label="1" false-label="0" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="列表" align="center" width="55">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.isList'">
-                    <el-checkbox :disabled="scope.row.isSystem === '1'" v-model="scope.row.isList" true-label="1" false-label="0" />
+                    <el-checkbox v-model="scope.row.isList" :disabled="scope.row.isSystem === '1'" true-label="1" false-label="0" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="查询" align="center" width="55">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.isQuery'">
-                    <el-checkbox :disabled="scope.row.isSystem === '1'" v-model="scope.row.isQuery" true-label="1" false-label="0" />
+                    <el-checkbox v-model="scope.row.isQuery" :disabled="scope.row.isSystem === '1'" true-label="1" false-label="0" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="查询方式" width="120">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.queryType'">
-                    <el-select :disabled="scope.row.isSystem === '1' || scope.row.isQuery === '0'" v-model="scope.row.queryType" clearable placeholder="请选择">
+                    <el-select v-model="scope.row.queryType" :disabled="scope.row.isSystem === '1' || scope.row.isQuery === '0'" clearable placeholder="请选择">
                       <el-option
                         v-for="item in queryTypeOptions"
                         :key="item.id"
@@ -181,14 +181,14 @@
               <el-table-column label="标准" align="center" width="55">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.isBindDict'">
-                    <el-checkbox :disabled="scope.row.isSystem === '1'" v-model="scope.row.isBindDict" true-label="1" false-label="0" />
+                    <el-checkbox v-model="scope.row.isBindDict" :disabled="scope.row.isSystem === '1'" true-label="1" false-label="0" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="标准字典类别" width="120">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.bindDictTypeId'">
-                    <el-select :disabled="scope.row.isSystem === '1' || scope.row.isBindDict === '0'" v-model="scope.row.bindDictTypeId" clearable placeholder="请选择">
+                    <el-select v-model="scope.row.bindDictTypeId" :disabled="scope.row.isSystem === '1' || scope.row.isBindDict === '0'" clearable placeholder="请选择">
                       <el-option
                         v-for="item in dictTypeOptions"
                         :key="item.id"
@@ -202,13 +202,13 @@
               <el-table-column label="标准字典字段" width="120">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.bindDictColumn'">
-                    <el-select :disabled="scope.row.isSystem === '1' || scope.row.isBindDict === '0'" v-model="scope.row.bindDictColumn" clearable placeholder="请选择">
+                    <el-select v-model="scope.row.bindDictColumn" :disabled="scope.row.isSystem === '1' || scope.row.isBindDict === '0'" clearable placeholder="请选择">
                       <el-option
                         v-for="item in gbColumnOptions"
                         :key="item.value"
                         :label="item.label"
-                        :value="item.value">
-                      </el-option>
+                        :value="item.value"
+                      />
                     </el-select>
                   </el-form-item>
                 </template>
@@ -216,7 +216,7 @@
               <el-table-column label="显示类型" width="120">
                 <template slot-scope="scope">
                   <el-form-item :prop="'modelColumns.' + scope.$index + '.htmlType'" :rules="rules.htmlType">
-                    <el-select :disabled="scope.row.isSystem === '1'" v-model="scope.row.htmlType" clearable placeholder="请选择">
+                    <el-select v-model="scope.row.htmlType" :disabled="scope.row.isSystem === '1'" clearable placeholder="请选择">
                       <el-option
                         v-for="item in htmlTypeOptions"
                         :key="item.id"

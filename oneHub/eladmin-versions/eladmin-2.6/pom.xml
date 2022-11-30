@@ -24,10 +24,10 @@
         <module>datax-auth</module>
         <module>datax-modules</module>
         <module>datax-tools</module>
+        <module>datax-assembly</module>
     </modules>
 
     <name>AllData ElAdmin</name>
-    <url>https://eladmin.vip</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -327,13 +327,6 @@
                     <target>${maven.compiler.target}</target>
                     <source>${maven.compiler.source}</source>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
                 </configuration>
             </plugin>
             <plugin>

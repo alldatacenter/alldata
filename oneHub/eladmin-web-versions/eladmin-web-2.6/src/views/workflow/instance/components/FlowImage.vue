@@ -2,7 +2,7 @@
   <el-dialog title="流程图" width="50%" :visible.sync="dialogVisible">
     <el-image :src="flowSrc">
       <div slot="error" class="image-slot">
-        <i class="el-icon-picture-outline"></i>
+        <i class="el-icon-picture-outline" />
       </div>
     </el-image>
     <span slot="footer" class="dialog-footer">

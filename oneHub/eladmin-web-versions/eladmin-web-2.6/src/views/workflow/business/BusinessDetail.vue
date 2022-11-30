@@ -14,7 +14,8 @@
               v-for="item in menuOptions"
               :key="item.menuCode"
               :label="item.menuCode"
-              :value="item.menuCode">
+              :value="item.menuCode"
+            >
               <span style="float: left">{{ '业务名称:' + item.menuName + '-业务编码:' + item.menuCode }}</span>
             </el-option>
           </el-select>

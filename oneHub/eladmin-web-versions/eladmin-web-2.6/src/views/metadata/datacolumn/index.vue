@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
     <transition name="el-zoom-in-center">
-      <data-column-list v-if="options.showList" @showCard="showCard"></data-column-list>
+      <data-column-list v-if="options.showList" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-bottom">
-      <data-column-detail v-if="options.showDetail" :data="options.data" @showCard="showCard"></data-column-detail>
+      <data-column-detail v-if="options.showDetail" :data="options.data" @showCard="showCard" />
     </transition>
   </div>
 </template>
@@ -16,7 +16,7 @@ import DataColumnDetail from './DataColumnDetail'
 export default {
   name: 'DataColumn',
   components: { DataColumnList, DataColumnDetail },
-  data () {
+  data() {
     return {
       options: {
         data: {},
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    showCard (data) {
+    showCard(data) {
       Object.assign(this.options, data)
     }
   }

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function pageChangeRecord (data) {
+export function pageChangeRecord(data) {
   return request({
     url: '/data/metadata/changeRecords/page',
     method: 'get',
@@ -8,28 +8,28 @@ export function pageChangeRecord (data) {
   })
 }
 
-export function getChangeRecord (id) {
+export function getChangeRecord(id) {
   return request({
     url: '/data/metadata/changeRecords/' + id,
     method: 'get'
   })
 }
 
-export function delChangeRecord (id) {
+export function delChangeRecord(id) {
   return request({
     url: '/data/metadata/changeRecords/' + id,
     method: 'delete'
   })
 }
 
-export function delChangeRecords (ids) {
+export function delChangeRecords(ids) {
   return request({
     url: '/data/metadata/changeRecords/batch/' + ids,
     method: 'delete'
   })
 }
 
-export function addChangeRecord (data) {
+export function addChangeRecord(data) {
   return request({
     url: '/data/metadata/changeRecords',
     method: 'post',
@@ -37,7 +37,7 @@ export function addChangeRecord (data) {
   })
 }
 
-export function updateChangeRecord (data) {
+export function updateChangeRecord(data) {
   return request({
     url: '/data/metadata/changeRecords/' + data.id,
     method: 'put',

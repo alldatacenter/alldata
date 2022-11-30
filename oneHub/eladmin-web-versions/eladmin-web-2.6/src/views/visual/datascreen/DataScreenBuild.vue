@@ -43,10 +43,10 @@
               :parent="true"
               :draggable="true"
               :resizable="true"
+              :is-conflict-check="true"
+              :grid="[20,20]"
               @dragstop="onDragStop(arguments, item)"
               @resizestop="onResizeStop(arguments, item)"
-              :is-conflict-check="true"
-              :grid=[20,20]
             >
               <screen-border :border-box="`${getChartProperty(item.i) ? getChartProperty(item.i).border : 'BorderBox0'}`" :border-title="getChartItem(item.i).chartName" :border-style="{ height: `${item.h}`, width: `${item.w}` }">
                 <div v-loading="getChartItem(item.i).loading" :style="{backgroundColor: `${getChartProperty(item.i) ? getChartProperty(item.i).backgroundColor : 'rgba(255, 255, 255, 0.1)'}`}" @click.stop="handleItemClick(item.i)">
@@ -71,7 +71,7 @@
                 <el-input-number v-model="widget.height" controls-position="right" :min="800" />
               </el-form-item>
               <el-form-item label="缩放">
-                <el-slider v-model="widget.scale" :format-tooltip="formatTooltip"></el-slider>
+                <el-slider v-model="widget.scale" :format-tooltip="formatTooltip" />
               </el-form-item>
               <el-form-item label="背景图片">
                 <el-select v-model="widget.backgroundImage">
@@ -224,7 +224,7 @@ export default {
       getDataScreen(id).then(response => {
         if (response.success) {
           this.dataScreen = response.data
-          console.log(this.dataScreen);
+          console.log(this.dataScreen)
           if (this.dataScreen.screenThumbnail) {
             const blob = dataURLtoBlob(this.dataScreen.screenThumbnail)
             const fileUrl = URL.createObjectURL(blob)

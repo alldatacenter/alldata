@@ -18,9 +18,9 @@
               <span class="custom-tree-node" @mouseenter="mouseenter(data)" @mouseleave="mouseleave(data)">
                 <span><i v-if="node.level === 1" class="iconfont icon-zuzhi tree-folder" />{{ node.label }}</span>
                 <span class="tree-bts">
-                  <i v-hasPerm="['standard:type:add']" v-show="!data.id && data.show" class="el-icon-circle-plus-outline bt-add" @click="() => handleAddType()" />
-                  <i v-hasPerm="['standard:type:edit']" v-show="data.id && data.show" class="el-icon-edit-outline bt-edit" @click="() => handleEditType(data)" />
-                  <i v-hasPerm="['standard:type:remove']" v-show="data.id && data.show" class="el-icon-delete bt-delete" @click="() => handleDelType(data)" />
+                  <i v-show="!data.id && data.show" v-hasPerm="['standard:type:add']" class="el-icon-circle-plus-outline bt-add" @click="() => handleAddType()" />
+                  <i v-show="data.id && data.show" v-hasPerm="['standard:type:edit']" class="el-icon-edit-outline bt-edit" @click="() => handleEditType(data)" />
+                  <i v-show="data.id && data.show" v-hasPerm="['standard:type:remove']" class="el-icon-delete bt-delete" @click="() => handleDelType(data)" />
                 </span>
               </span>
             </template>

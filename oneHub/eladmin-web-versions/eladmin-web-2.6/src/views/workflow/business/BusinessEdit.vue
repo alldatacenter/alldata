@@ -10,12 +10,13 @@
     <div class="body-wrapper">
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="业务编码" prop="businessCode">
-          <el-select v-model="form.businessCode" clearable filterable @change="changeValue($event)" placeholder="请输入业务编码">
+          <el-select v-model="form.businessCode" clearable filterable placeholder="请输入业务编码" @change="changeValue($event)">
             <el-option
               v-for="item in menuOptions"
               :key="item.menuCode"
               :label="item.menuCode"
-              :value="item.menuCode">
+              :value="item.menuCode"
+            >
               <span style="float: left">{{ '业务名称:' + item.menuName + '-业务编码:' + item.menuCode }}</span>
             </el-option>
           </el-select>

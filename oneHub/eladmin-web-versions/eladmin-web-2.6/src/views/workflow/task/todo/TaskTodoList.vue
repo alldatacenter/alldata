@@ -57,40 +57,40 @@
             trigger="click"
           >
             <el-button
-              v-hasPerm="['workflow:task:caim']"
               v-if="scope.row.assignee === undefined || scope.row.assignee === null || scope.row.assignee === ''"
+              v-hasPerm="['workflow:task:caim']"
               size="mini"
               type="text"
               icon="el-icon-view"
               @click="handleClaim(scope.row)"
             >签收</el-button>
             <el-button
-              v-hasPerm="['workflow:task:unclaim']"
               v-if="scope.row.assignee && scope.row.assignee === user.id"
+              v-hasPerm="['workflow:task:unclaim']"
               size="mini"
               type="text"
               icon="el-icon-view"
               @click="handleUnClaim(scope.row)"
             >反签收</el-button>
             <el-button
-              v-hasPerm="['workflow:task:delegate']"
               v-if="scope.row.assignee && scope.row.assignee === user.id"
+              v-hasPerm="['workflow:task:delegate']"
               size="mini"
               type="text"
               icon="el-icon-view"
               @click="handleDelegate(scope.row)"
             >委派</el-button>
             <el-button
-              v-hasPerm="['workflow:task:assignee']"
               v-if="scope.row.assignee && scope.row.assignee === user.id"
+              v-hasPerm="['workflow:task:assignee']"
               size="mini"
               type="text"
               icon="el-icon-view"
               @click="handleAssignee(scope.row)"
             >转办</el-button>
             <el-button
-              v-hasPerm="['workflow:task:exam']"
               v-if="scope.row.assignee && scope.row.assignee === user.id"
+              v-hasPerm="['workflow:task:exam']"
               size="mini"
               type="text"
               icon="el-icon-view"
@@ -113,8 +113,8 @@
     />
 
     <!-- 任务审核对话框 -->
-    <handle-task v-if="dialogHandleTaskVisible" :visible.sync="dialogHandleTaskVisible" :task="currentTask" @handleTaskFinished="getList"></handle-task>
-    <handle-user v-if="dialogHandleUserVisible" :visible.sync="dialogHandleUserVisible" :task="currentTask" :action="taskAction" @handleTaskUserFinished="getList"></handle-user>
+    <handle-task v-if="dialogHandleTaskVisible" :visible.sync="dialogHandleTaskVisible" :task="currentTask" @handleTaskFinished="getList" />
+    <handle-user v-if="dialogHandleUserVisible" :visible.sync="dialogHandleUserVisible" :task="currentTask" :action="taskAction" @handleTaskUserFinished="getList" />
   </el-card>
 </template>
 

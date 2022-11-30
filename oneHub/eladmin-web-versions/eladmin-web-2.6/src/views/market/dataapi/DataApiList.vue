@@ -128,16 +128,16 @@
               @click="handleCopy(scope.row)"
             >拷贝</el-button>
             <el-button
-              v-hasPerm="['market:api:release']"
               v-if="scope.row.status !== '2'"
+              v-hasPerm="['market:api:release']"
               size="mini"
               type="text"
               icon="el-icon-upload2"
               @click="handleRelease(scope.row)"
             >发布</el-button>
             <el-button
-              v-hasPerm="['market:api:cancel']"
               v-if="scope.row.status === '2'"
+              v-hasPerm="['market:api:cancel']"
               size="mini"
               type="text"
               icon="el-icon-download"

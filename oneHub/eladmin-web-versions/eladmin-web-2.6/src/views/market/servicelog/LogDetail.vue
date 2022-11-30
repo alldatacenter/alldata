@@ -35,7 +35,7 @@
               v-for="dict in statusOptions"
               :key="dict.id"
               :label="dict.itemText"
-            >{{dict.itemValue}}</el-radio>
+            >{{ dict.itemValue }}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="信息记录" prop="msg">
