@@ -18,9 +18,9 @@
               <span class="custom-tree-node" @mouseenter="mouseenter(data)" @mouseleave="mouseleave(data)">
                 <span><i v-if="node.level === 1" class="iconfont icon-zuzhi tree-folder" />{{ node.label }}</span>
                 <span class="tree-bts">
-                  <i v-hasPerm="['workflow:definition:type:add']" v-show="!data.id && data.show" class="el-icon-circle-plus-outline bt-add" @click="() => handleAddCategory()" />
-                  <i v-hasPerm="['workflow:definition:type:edit']" v-show="data.id && data.show" class="el-icon-edit-outline bt-edit" @click="() => handleEditCategory(data)" />
-                  <i v-hasPerm="['workflow:definition:type:remove']" v-show="data.id && data.show" class="el-icon-delete bt-delete" @click="() => handleDelCategory(data)" />
+                  <i v-show="!data.id && data.show" v-hasPerm="['workflow:definition:type:add']" class="el-icon-circle-plus-outline bt-add" @click="() => handleAddCategory()" />
+                  <i v-show="data.id && data.show" v-hasPerm="['workflow:definition:type:edit']" class="el-icon-edit-outline bt-edit" @click="() => handleEditCategory(data)" />
+                  <i v-show="data.id && data.show" v-hasPerm="['workflow:definition:type:remove']" class="el-icon-delete bt-delete" @click="() => handleDelCategory(data)" />
                 </span>
               </span>
             </template>
@@ -137,16 +137,16 @@
                   @click="handleResource(scope.row)"
                 >流程图</el-button>
                 <el-button
-                  v-hasPerm="['workflow:definition:activate']"
                   v-if="scope.row.suspensionState === 2"
+                  v-hasPerm="['workflow:definition:activate']"
                   size="mini"
                   type="text"
                   icon="el-icon-view"
                   @click="handleActivate(scope.row)"
                 >激活</el-button>
                 <el-button
-                  v-hasPerm="['workflow:definition:suspend']"
                   v-if="scope.row.suspensionState === 1"
+                  v-hasPerm="['workflow:definition:suspend']"
                   size="mini"
                   type="text"
                   icon="el-icon-view"
@@ -178,11 +178,11 @@
     </el-col>
 
     <!-- 流程分类对话框 -->
-    <flow-category v-if="dialogFlowCategoryVisible" :visible.sync="dialogFlowCategoryVisible" :data="currentCategory" @handleFlowCategoryFinished="getTree"></flow-category>
+    <flow-category v-if="dialogFlowCategoryVisible" :visible.sync="dialogFlowCategoryVisible" :data="currentCategory" @handleFlowCategoryFinished="getTree" />
     <!-- 流程定义对话框 -->
-    <flow-definition v-if="dialogFlowDefinitionVisible" :visible.sync="dialogFlowDefinitionVisible" :category="queryParams.categoryId" @handleFlowDefinitionFinished="getList"></flow-definition>
+    <flow-definition v-if="dialogFlowDefinitionVisible" :visible.sync="dialogFlowDefinitionVisible" :category="queryParams.categoryId" @handleFlowDefinitionFinished="getList" />
     <!-- 流程资源对话框 -->
-    <flow-resource v-if="dialogFlowResourceVisible" :visible.sync="dialogFlowResourceVisible" :processDefinitionId="currentProcessDefinitionId" />
+    <flow-resource v-if="dialogFlowResourceVisible" :visible.sync="dialogFlowResourceVisible" :process-definition-id="currentProcessDefinitionId" />
   </el-row>
 </template>
 

@@ -12,21 +12,21 @@
           <el-col :span="8">
             <el-form-item label="字段名称" prop="columnName">
               <el-input v-model="form.columnName" disabled>
-                <el-button v-hasPerm="['metadata:changerecord:add']" slot="append" icon="el-icon-edit-outline" @click="changeRecord('columnName')" />
+                <el-button slot="append" v-hasPerm="['metadata:changerecord:add']" icon="el-icon-edit-outline" @click="changeRecord('columnName')" />
               </el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="字段注释" prop="columnComment">
               <el-input v-model="form.columnComment" disabled>
-                <el-button v-hasPerm="['metadata:changerecord:add']" slot="append" icon="el-icon-edit-outline" @click="changeRecord('columnComment')" />
+                <el-button slot="append" v-hasPerm="['metadata:changerecord:add']" icon="el-icon-edit-outline" @click="changeRecord('columnComment')" />
               </el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="数据默认值" prop="dataDefault">
               <el-input v-model="form.dataDefault" disabled>
-                <el-button v-hasPerm="['metadata:changerecord:add']" slot="append" icon="el-icon-edit-outline" @click="changeRecord('dataDefault')" />
+                <el-button slot="append" v-hasPerm="['metadata:changerecord:add']" icon="el-icon-edit-outline" @click="changeRecord('dataDefault')" />
               </el-input>
             </el-form-item>
           </el-col>
@@ -109,7 +109,7 @@
           <el-input v-model="form2.objectTypeStr" placeholder="请输入变更字段" :disabled="true" />
         </el-form-item>
         <el-form-item label="字段名称" prop="fieldName">
-          <el-input v-model="form2.fieldName" placeholder="请输入版本号" :disabled="true"/>
+          <el-input v-model="form2.fieldName" placeholder="请输入版本号" :disabled="true" />
         </el-form-item>
         <el-form-item label="版本号" prop="version">
           <el-input v-model="form2.version" placeholder="请输入版本号" />

@@ -48,7 +48,8 @@
               v-for="table in tableOptions"
               :key="table.id"
               :label="table.tableName"
-              :value="table.id">
+              :value="table.id"
+            >
               <span style="float: left">{{ table.tableName + '(' + table.tableComment + ')' }}</span>
             </el-option>
           </el-select>
@@ -59,7 +60,8 @@
               v-for="column in columnOptions"
               :key="column.id"
               :label="column.columnName"
-              :value="column.id">
+              :value="column.id"
+            >
               <span style="float: left">{{ column.columnName + '(' + column.columnComment + ')' }}</span>
             </el-option>
           </el-select>
@@ -92,8 +94,8 @@
                   v-for="item in gbColumnOptions"
                   :key="item.value"
                   :label="item.label"
-                  :value="item.value">
-                </el-option>
+                  :value="item.value"
+                />
               </el-select>
             </el-form-item>
           </el-col>

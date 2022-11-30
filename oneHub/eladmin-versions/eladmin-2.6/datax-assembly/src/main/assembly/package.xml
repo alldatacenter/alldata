@@ -1,0 +1,194 @@
+<assembly>
+    <id>${project.version}</id>
+
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+
+    <includeBaseDirectory>true</includeBaseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.parent.basedir}/install/eladmin</directory>
+            <outputDirectory>./eladmin</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/install/datax</directory>
+            <outputDirectory>./datax</outputDirectory>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
+        
+
+        <!-- 将模块jar文件放到打包目录下 -->
+        <fileSet>
+            <directory>${project.parent.basedir}/eladmin-system/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>eladmin*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-auth/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>datax-auth*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-config/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>datax-config*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-eureka/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>datax-eureka*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-gateway/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>datax-gateway*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-market-service-parent/data-market-service-integration/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-market-service-integration*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-market-service-parent/data-market-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-market-service*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-market-service-parent/data-market-service-mapping/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-market-service-mapping*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-masterdata-service-parent/data-masterdata-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-masterdata-service*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-masterdata-service-parent/data-masterdata-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-masterdata-service*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-metadata-service-parent/data-metadata-service-console/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-metadata-service-console*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-metadata-service-parent/data-metadata-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-metadata-service*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-quality-service-parent/data-quality-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-quality-service*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-standard-service-parent/data-standard-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-standard-service*.jar</include>
+            </includes>
+        </fileSet>
+
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/data-visual-service-parent/data-visual-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>data-visual-service*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/quartz-service-parent/quartz-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>quartz-service*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/system-service-parent/system-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>system-service*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/datax-modules/workflow-service-parent/workflow-service/target
+            </directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>workflow-service*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

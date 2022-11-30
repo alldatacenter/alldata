@@ -1,16 +1,16 @@
 <template>
   <div class="app-container">
     <transition name="el-zoom-in-center">
-      <api-mask-list v-if="options.showList" @showCard="showCard"></api-mask-list>
+      <api-mask-list v-if="options.showList" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-top">
-      <api-mask-add v-if="options.showAdd" :data="options.data" @showCard="showCard"></api-mask-add>
+      <api-mask-add v-if="options.showAdd" :data="options.data" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-top">
-      <api-mask-edit v-if="options.showEdit" :data="options.data" @showCard="showCard"></api-mask-edit>
+      <api-mask-edit v-if="options.showEdit" :data="options.data" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-bottom">
-      <api-mask-detail v-if="options.showDetail" :data="options.data" @showCard="showCard"></api-mask-detail>
+      <api-mask-detail v-if="options.showDetail" :data="options.data" @showCard="showCard" />
     </transition>
   </div>
 </template>
@@ -24,7 +24,7 @@ import ApiMaskDetail from './ApiMaskDetail'
 export default {
   name: 'ApiMask',
   components: { ApiMaskList, ApiMaskAdd, ApiMaskEdit, ApiMaskDetail },
-  data () {
+  data() {
     return {
       options: {
         data: {},
@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    showCard (data) {
+    showCard(data) {
       Object.assign(this.options, data)
     }
   }

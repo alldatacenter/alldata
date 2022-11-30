@@ -1,5 +1,5 @@
 <template>
-  <div class="dv-border-box-12" :ref="ref">
+  <div :ref="ref" class="dv-border-box-12">
     <svg class="dv-border-svg-container" :width="width" :height="height">
       <defs>
         <filter :id="filterId" height="150%" width="150%" x="-25%" y="-25%">
@@ -20,8 +20,8 @@
           </feFlood>
           <feComposite in="glowColor" in2="blurred" operator="in" result="softGlowColored" />
           <feMerge>
-            <feMergeNode in="softGlowColored"/>
-            <feMergeNode in="SourceGraphic"/>
+            <feMergeNode in="softGlowColored" />
+            <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
       </defs>
@@ -85,7 +85,7 @@
     </svg>
 
     <div class="border-box-content">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>

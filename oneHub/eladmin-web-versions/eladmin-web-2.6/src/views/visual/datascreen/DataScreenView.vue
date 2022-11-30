@@ -12,7 +12,7 @@
         :draggable="false"
         :resizable="false"
         :is-conflict-check="true"
-        :grid=[20,20]
+        :grid="[20,20]"
       >
         <screen-border :border-box="`${getChartProperty(item.i) ? getChartProperty(item.i).border : 'BorderBox0'}`" :border-title="getChartItem(item.i).chartName" :border-style="{ height: `${item.h}`, width: `${item.w}` }">
           <div v-loading="getChartItem(item.i).loading" :style="{backgroundColor: `${getChartProperty(item.i) ? getChartProperty(item.i).backgroundColor : 'rgba(255, 255, 255, 0.1)'}`}">
@@ -59,12 +59,17 @@ export default {
   created() {
     this.getDataScreen(this.$route.params.id)
   },
+  beforeDestroy() {
+    this.timers.map((item) => {
+      clearInterval(item)
+    })
+  },
   methods: {
     getDataScreen(id) {
       getDataScreen(id).then(response => {
         if (response.success) {
           this.dataScreen = response.data
-          //zrx add
+          // zrx add
           if (this.dataScreen.screenConfig) {
             this.widget.width = this.dataScreen.screenConfig.width
             this.widget.height = this.dataScreen.screenConfig.height
@@ -122,11 +127,6 @@ export default {
         }
       })
     }
-  },
-  beforeDestroy() {
-    this.timers.map((item) => {
-      clearInterval(item)
-    })
   }
 }
 </script>

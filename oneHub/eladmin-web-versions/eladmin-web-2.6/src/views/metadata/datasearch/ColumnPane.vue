@@ -1,8 +1,8 @@
 <template>
   <ul class="list-group">
     <li v-for="(item, index) in data" :key="index" class="list-group-item">
-      <span class="list-group-item-heading">{{item.columnName}}({{item.columnComment}})</span>
-      <p class="list-group-item-text">数据源: {{item.sourceName}} 数据表: {{item.tableName}}({{item.tableComment}})</p>
+      <span class="list-group-item-heading">{{ item.columnName }}({{ item.columnComment }})</span>
+      <p class="list-group-item-text">数据源: {{ item.sourceName }} 数据表: {{ item.tableName }}({{ item.tableComment }})</p>
     </li>
   </ul>
 </template>

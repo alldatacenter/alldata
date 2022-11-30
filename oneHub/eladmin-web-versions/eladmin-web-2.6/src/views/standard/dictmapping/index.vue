@@ -73,7 +73,7 @@
                     <td>{{ data.colCode }}</td>
                     <td>{{ data.colName }}</td>
                     <td>{{ data.contrastGbCode }}</td>
-                    <td><span v-hasPerm="['standard:mapping:cancel']" v-if="data.contrastGbId" style="padding-right: 10px;" @click="handleCancel(data.id)"><i class="el-icon-circle-close" style="color: red" /></span>{{ data.contrastGbName }}</td>
+                    <td><span v-if="data.contrastGbId" v-hasPerm="['standard:mapping:cancel']" style="padding-right: 10px;" @click="handleCancel(data.id)"><i class="el-icon-circle-close" style="color: red" /></span>{{ data.contrastGbName }}</td>
                   </tr>
                 </tbody>
               </table>

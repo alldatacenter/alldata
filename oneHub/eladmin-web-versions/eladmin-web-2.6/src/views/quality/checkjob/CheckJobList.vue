@@ -32,16 +32,16 @@
             trigger="click"
           >
             <el-button
-              v-hasPerm="['quality:job:pause']"
               v-if="scope.row.status === '1'"
+              v-hasPerm="['quality:job:pause']"
               size="mini"
               type="text"
               icon="el-icon-view"
               @click="handlePause(scope.row)"
             >任务暂停</el-button>
             <el-button
-              v-hasPerm="['quality:job:resume']"
               v-if="scope.row.status === '0'"
+              v-hasPerm="['quality:job:resume']"
               size="mini"
               type="text"
               icon="el-icon-view"

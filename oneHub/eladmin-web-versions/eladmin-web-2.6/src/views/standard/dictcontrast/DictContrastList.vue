@@ -18,9 +18,9 @@
               <span class="custom-tree-node" @mouseenter="mouseenter(data)" @mouseleave="mouseleave(data)">
                 <span><i v-if="node.level === 1" class="iconfont icon-zuzhi tree-folder" />{{ data.name ? node.label + '(' + data.name + ')' : node.label }}</span>
                 <span class="tree-bts">
-                  <i v-hasPerm="['standard:contrast:add']" v-show="node.level === 1 && data.show" class="el-icon-circle-plus-outline bt-add" @click="() => handleAddContrast()" />
-                  <i v-hasPerm="['standard:contrast:edit']" v-show="node.level === 4 && data.show" class="el-icon-edit-outline bt-edit" @click="() => handleEditContrast(data)" />
-                  <i v-hasPerm="['standard:contrast:remove']" v-show="node.level === 4 && data.show" class="el-icon-delete bt-delete" @click="() => handleDelContrast(data)" />
+                  <i v-show="node.level === 1 && data.show" v-hasPerm="['standard:contrast:add']" class="el-icon-circle-plus-outline bt-add" @click="() => handleAddContrast()" />
+                  <i v-show="node.level === 4 && data.show" v-hasPerm="['standard:contrast:edit']" class="el-icon-edit-outline bt-edit" @click="() => handleEditContrast(data)" />
+                  <i v-show="node.level === 4 && data.show" v-hasPerm="['standard:contrast:remove']" class="el-icon-delete bt-delete" @click="() => handleDelContrast(data)" />
                 </span>
               </span>
             </template>
@@ -178,7 +178,7 @@
     </el-col>
 
     <!-- 对照表对话框 -->
-    <form-contrast v-if="dialogFormContrastVisible" :visible.sync="dialogFormContrastVisible" :data="currentContrast" @handleFormContrastFinished="getTree"></form-contrast>
+    <form-contrast v-if="dialogFormContrastVisible" :visible.sync="dialogFormContrastVisible" :data="currentContrast" @handleFormContrastFinished="getTree" />
   </el-row>
 </template>
 

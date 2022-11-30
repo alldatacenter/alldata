@@ -1,16 +1,16 @@
 <template>
   <div class="app-container">
     <transition name="el-zoom-in-center">
-      <data-source-list v-if="options.showList" @showCard="showCard"></data-source-list>
+      <data-source-list v-if="options.showList" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-top">
-      <data-source-add v-if="options.showAdd" :data="options.data" @showCard="showCard"></data-source-add>
+      <data-source-add v-if="options.showAdd" :data="options.data" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-top">
-      <data-source-edit v-if="options.showEdit" :data="options.data" @showCard="showCard"></data-source-edit>
+      <data-source-edit v-if="options.showEdit" :data="options.data" @showCard="showCard" />
     </transition>
     <transition name="el-zoom-in-bottom">
-      <data-source-detail v-if="options.showDetail" :data="options.data" @showCard="showCard"></data-source-detail>
+      <data-source-detail v-if="options.showDetail" :data="options.data" @showCard="showCard" />
     </transition>
   </div>
 </template>
@@ -24,7 +24,7 @@ import DataSourceDetail from './DataSourceDetail'
 export default {
   name: 'DataSource',
   components: { DataSourceList, DataSourceAdd, DataSourceEdit, DataSourceDetail },
-  data () {
+  data() {
     return {
       options: {
         data: {},
@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    showCard (data) {
+    showCard(data) {
       Object.assign(this.options, data)
     }
   }

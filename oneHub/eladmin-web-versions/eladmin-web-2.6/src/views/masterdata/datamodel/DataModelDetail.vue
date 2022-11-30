@@ -3,8 +3,8 @@
     <div slot="header" class="clearfix">
       <span>{{ title }}</span>
       <el-button-group style="float: right;">
-        <el-button v-hasPerm="['masterdata:model:submit']" v-if="form.flowStatus === '1' || form.flowStatus === '6'" size="mini" icon="el-icon-s-data" round @click="submit">提交</el-button>
-        <el-button v-hasPerm="['masterdata:model:create']" v-if="form.flowStatus === '4'" :disabled="form.isSync === '1'" size="mini" icon="el-icon-s-data" round @click="createTable">建模</el-button>
+        <el-button v-if="form.flowStatus === '1' || form.flowStatus === '6'" v-hasPerm="['masterdata:model:submit']" size="mini" icon="el-icon-s-data" round @click="submit">提交</el-button>
+        <el-button v-if="form.flowStatus === '4'" v-hasPerm="['masterdata:model:create']" :disabled="form.isSync === '1'" size="mini" icon="el-icon-s-data" round @click="createTable">建模</el-button>
         <el-button size="mini" icon="el-icon-back" round @click="showCard">返回</el-button>
       </el-button-group>
     </div>
@@ -201,8 +201,8 @@
                         v-for="item in gbColumnOptions"
                         :key="item.value"
                         :label="item.label"
-                        :value="item.value">
-                      </el-option>
+                        :value="item.value"
+                      />
                     </el-select>
                   </el-form-item>
                 </template>

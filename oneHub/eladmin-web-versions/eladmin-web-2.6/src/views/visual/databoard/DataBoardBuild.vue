@@ -8,14 +8,14 @@
         <ul class="list-group">
           <li v-for="(item, index) in dataChartList" :key="item.id" class="list-group-item">
             <div class="list-group-item-text">{{ item.chartName }}</div>
-            <div class="list-group-item-button"><el-button icon="el-icon-plus" type="text" size="mini" :disabled="item.disabled" @click="handleAddChart(item)"></el-button></div>
+            <div class="list-group-item-button"><el-button icon="el-icon-plus" type="text" size="mini" :disabled="item.disabled" @click="handleAddChart(item)" /></div>
           </li>
         </ul>
       </div>
     </div>
     <div class="widget-center-container">
       <div class="widget-center-header">
-        <div class="widget-center-header-collapse" @click="drawer = true"><i class="el-icon-info"></i></div>
+        <div class="widget-center-header-collapse" @click="drawer = true"><i class="el-icon-info" /></div>
         <div class="widget-center-header-button">
           <el-button icon="el-icon-view" type="text" @click="handlePreview">
             预览
@@ -23,7 +23,7 @@
           <el-button icon="el-icon-delete" type="text" @click="handleReset">
             重置
           </el-button>
-          <el-button icon="el-icon-plus" type="text" v-hasPerm="['visual:board:build']" @click="handleSubmit">
+          <el-button v-hasPerm="['visual:board:build']" icon="el-icon-plus" type="text" @click="handleSubmit">
             保存
           </el-button>
           <el-button icon="el-icon-close" type="text" @click="handleCancel">
@@ -67,7 +67,7 @@
                 </div>
               </div>
               <chart-panel v-if="getChartItem(item.i).visible" :key="item.i" :ref="`charts${item.i}`" :chart-schema="getChartItem(item.i).chartSchema" :chart-data="getChartItem(item.i).data" :chart-style="{height: `${item.h * 30 + 10 * (item.h - 1) - 60}px`}" />
-              <div v-else :style="{height: `${item.h * 30 + 10 * (item.h - 1) - 60}px`}"></div>
+              <div v-else :style="{height: `${item.h * 30 + 10 * (item.h - 1) - 60}px`}" />
             </el-card>
           </grid-item>
         </grid-layout>
@@ -76,7 +76,8 @@
     <el-drawer
       size="300px"
       :visible.sync="drawer"
-      :with-header="false">
+      :with-header="false"
+    >
       <div class="widget-board-form">
         <el-form size="mini" label-position="top">
           <el-form-item label="看板名称">
