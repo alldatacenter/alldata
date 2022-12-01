@@ -1,4 +1,4 @@
-<h1 style="text-align: center">ELADMIN 后台管理系统</h1>
+<h1 style="text-align: center">AllData 一站式大数据平台</h1>
 
 ### 主要特性
 - 使用最新技术栈，社区资源丰富。
