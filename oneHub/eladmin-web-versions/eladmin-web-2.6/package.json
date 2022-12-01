@@ -1,8 +1,8 @@
 {
-  "name": "eladmin-web",
+  "name": "alldata-web",
   "version": "2.6.0",
-  "description": "ELADMIN 前端源码",
-  "author": "Zheng Jie",
+  "description": "AllData 一站式大数据平台",
+  "author": "AllDataDC",
   "license": "Apache-2.0",
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -25,13 +25,6 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/elunez/eladmin-web.git"
-  },
-  "bugs": {
-    "url": "https://github.com/elunez/eladmin/issues"
   },
   "dependencies": {
     "@riophae/vue-treeselect": "^0.4.0",

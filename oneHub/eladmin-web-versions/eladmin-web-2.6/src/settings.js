@@ -2,7 +2,7 @@ module.exports = {
   /**
    * @description 网站标题
    */
-  title: 'ELADMIN',
+  title: 'AllData 一站式大数据平台',
   /**
    * @description 是否显示 tagsView
    */
@@ -22,7 +22,7 @@ module.exports = {
   /**
    * @description token key
    */
-  TokenKey: 'ELADMIN-TOEKN',
+  TokenKey: 'ALLDATA-TOEKN',
   /**
    * @description 请求超时时间，毫秒（默认2分钟）
    */
@@ -38,7 +38,7 @@ module.exports = {
   /**
    * 底部文字，支持html语法
    */
-  footerTxt: '© 2018-2022 Zheng Jie <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>',
+  footerTxt: '© 2022-2025 AllDataDC <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>',
   /**
    * 备案号
    */

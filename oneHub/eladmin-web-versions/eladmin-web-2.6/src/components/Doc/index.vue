@@ -9,7 +9,7 @@ export default {
   name: 'Doc',
   methods: {
     click() {
-      window.open('https://eladmin.vip/pages/010101/', '_blank')
+      window.open('https://alldatateam.github.io/', '_blank')
     }
   }
 }
