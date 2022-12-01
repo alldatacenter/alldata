@@ -1,6 +1,6 @@
-# ELADMIN-WEB
+# AllData 一站式大数据平台
 
-ELADMIN 前端源码
+AllData 一站式大数据平台
 
 
 #### Build Setup
@@ -28,3 +28,4 @@ npm run build:prod
 2、加速node-sass安装
 
 https://www.ydyno.com/archives/1219.html
+
