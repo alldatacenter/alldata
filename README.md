@@ -60,11 +60,11 @@
 ### ElAdmin预览效果
 > 登录页面
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520738-28492bac-e484-481b-9338-8314e2fdf5eb.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
 <br/>
 > 首页 
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520913-609fdbe0-fcfd-4a0a-8b79-a3f960153435.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965519-d8fc6e7d-235d-4b52-82f6-358b3863d724.png">
 <br/>
 > 元数据管理 
 
