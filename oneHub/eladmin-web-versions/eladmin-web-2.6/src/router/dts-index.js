@@ -80,7 +80,7 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/screen-display/index'),
         name: 'Dashboard',
-        meta: {title: '运行报表', icon: 'dashboard', affix: true}
+        meta: { title: '运行报表', icon: 'dashboard', affix: true }
       }
     ]
   }
@@ -101,7 +101,7 @@ export const asyncRoutes = [
         path: 'index',
         component: () => import('@/views/profile/index'),
         name: 'Profile',
-        meta: {title: 'Profile', icon: 'user', noCache: true}
+        meta: { title: 'Profile', icon: 'user', noCache: true }
       }
     ]
   },
@@ -120,13 +120,13 @@ export const asyncRoutes = [
         path: '401',
         component: () => import('@/views/error-page/401'),
         name: 'Page401',
-        meta: {title: '401', noCache: true}
+        meta: { title: '401', noCache: true }
       },
       {
         path: '404',
         component: () => import('@/views/error-page/404'),
         name: 'Page404',
-        meta: {title: '404', noCache: true}
+        meta: { title: '404', noCache: true }
       }
     ]
   },
@@ -134,56 +134,56 @@ export const asyncRoutes = [
     path: '/data/log',
     hidden: true,
     component: () => import('@/views/datax/jobLog/log'),
-    meta: {title: '任务日志', icon: 'work'}
+    meta: { title: '任务日志', icon: 'work' }
   },
   {
     path: '/datax/DatabaseSync',
     component: Layout,
     redirect: '/datax/DatabaseSync',
     name: 'DatabaseSync',
-    meta: {title: '数据集成', icon: 'work'},
+    meta: { title: '数据集成', icon: 'work' },
     children: [
       {
         path: 'jobProject',
         name: 'JobProject',
         component: () => import('@/views/datax/jobProject/index'),
-        meta: {title: '中台项目管理', icon: 'project'}
+        meta: { title: '中台项目管理', icon: 'project' }
       },
       {
         path: 'jdbcDatasource',
         name: 'JdbcDatasource',
         component: () => import('@/views/datax/jdbc-datasource/index'),
-        meta: {title: '数据源管理', icon: 'cfg-datasouce'}
+        meta: { title: '数据源管理', icon: 'cfg-datasouce' }
       },
       {
         path: '/datax/DatabaseSync/job/jobTemplate',
         name: 'JobTemplate',
         component: () => import('@/views/datax/jobTemplate/index'),
-        meta: {title: '任务调度模板', icon: 'task-tmp'}
+        meta: { title: '任务调度模板', icon: 'task-tmp' }
       },
       {
         path: '/datax/DatabaseSync/job/jsonBuild',
         name: 'JsonBuild',
         component: () => import('@/views/datax/json-build/index'),
-        meta: {title: '构建单表任务', icon: 'guide', noCache: false}
+        meta: { title: '构建单表任务', icon: 'guide', noCache: false }
       },
       {
         path: '/datax/DatabaseSync/job/jsonBuildBatch',
         name: 'JsonBuildBatch',
         component: () => import('@/views/datax/json-build-batch/index'),
-        meta: {title: '构建多表任务', icon: 'batch-create', noCache: false}
+        meta: { title: '构建多表任务', icon: 'batch-create', noCache: false }
       },
       {
         path: '/datax/DatabaseSync/job/jobInfo',
         name: 'JobInfo',
         component: () => import('@/views/datax/jobInfo/index'),
-        meta: {title: '任务调度执行', icon: 'task-cfg'}
+        meta: { title: '任务调度执行', icon: 'task-cfg' }
       },
       {
         path: 'jobLog',
         name: 'JobLog',
         component: () => import('@/views/datax/jobLog/index'),
-        meta: {title: '查看任务日志', icon: 'log'}
+        meta: { title: '查看任务日志', icon: 'log' }
       }
     ]
   },
@@ -192,22 +192,22 @@ export const asyncRoutes = [
     component: Layout,
     redirect: '/datax/user',
     name: 'user',
-    meta: {title: '用户管理', icon: 'work'},
+    meta: { title: '用户管理', icon: 'work' },
     children: [
       {
         path: 'user',
         name: 'User',
         component: () => import('@/views/datax/user/index'),
-        meta: {title: '用户管理', icon: 'peoples'}
+        meta: { title: '用户管理', icon: 'peoples' }
       }
     ]
   },
-  {path: '*', redirect: '/404', hidden: true}
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
-  scrollBehavior: () => ({y: 0}),
+  scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
 

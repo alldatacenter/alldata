@@ -43,8 +43,8 @@
       </el-table-column>
       <el-table-column label="操作" align="center" width="300">
         <template slot-scope="{row}">
-          <el-button  type="primary" @click="handleViewJobLog(row)">日志查看</el-button>
-          <el-button  type="primary" @click="killRunningJob(row)">
+          <el-button type="primary" @click="handleViewJobLog(row)">日志查看</el-button>
+          <el-button type="primary" @click="killRunningJob(row)">
             终止任务
           </el-button>
         </template>

@@ -55,9 +55,9 @@
       <el-table-column label="数据库名" width="200" align="center" :show-overflow-tooltip="true">-->
         <template slot-scope="scope">{{ scope.row.databaseName ? scope.row.databaseName:'-' }}</template>-->
       </el-table-column>
-<!--      <el-table-column label="备注" width="150" align="center">-->
-<!--        <template slot-scope="scope">{{ scope.row.comments }}</template>-->
-<!--      </el-table-column>-->
+      <!--      <el-table-column label="备注" width="150" align="center">-->
+      <!--        <template slot-scope="scope">{{ scope.row.comments }}</template>-->
+      <!--      </el-table-column>-->
       <el-table-column label="操作" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
@@ -170,257 +170,257 @@
 </template>
 
 <script>
-    import * as datasourceApi from '@/api/dts/datax-jdbcDatasource'
-    import waves from '@/directive/waves' // waves directive
-    import { parseTime } from '@/utils'
-    import Pagination from '@/components/Pagination'
+import * as datasourceApi from '@/api/dts/datax-jdbcDatasource'
+import waves from '@/directive/waves' // waves directive
+import { parseTime } from '@/utils'
+import Pagination from '@/components/Pagination'
 
-    export default {
-        name: 'JdbcDatasource',
-        components: { Pagination },
-        directives: { waves },
-        filters: {
-            statusFilter(status) {
-                const statusMap = {
-                    published: 'success',
-                    draft: 'gray',
-                    deleted: 'danger'
-                }
-                return statusMap[status]
-            }
-        },
-        data() {
-            return {
-                list: null,
-                listLoading: true,
-                total: 0,
-                listQuery: {
-                    current: 1,
-                    size: 10
-                },
-                pluginTypeOptions: ['reader', 'writer'],
-                dialogPluginVisible: false,
-                pluginData: [],
-                dialogFormVisible: false,
-                dialogStatus: '',
-                textMap: {
-                    update: 'Edit',
-                    create: 'Create'
-                },
-                rules: {
-                    datasourceName: [{ required: true, message: 'this is required', trigger: 'blur' }],
-                    jdbcUsername: [{ required: true, message: 'this is required', trigger: 'blur' }],
-                    jdbcPassword: [{ required: true, message: 'this is required', trigger: 'blur' }],
-                    jdbcUrl: [{ required: true, message: 'this is required', trigger: 'blur' }],
-                    jdbcDriverClass: [{ required: true, message: 'this is required', trigger: 'blur' }],
-                    datasource: [{ required: true, message: 'this is required', trigger: 'change' }],
-                    zkAdress: [{ required: true, message: 'this is required', trigger: 'blur' }],
-                    databaseName: [{ required: true, message: 'this is required', trigger: 'blur' }]
-                },
-                temp: {
-                    id: undefined,
-                    datasourceName: '',
-                    datasourceGroup: 'Default',
-                    jdbcUsername: '',
-                    jdbcPassword: '',
-                    jdbcUrl: '',
-                    jdbcDriverClass: '',
-                    comments: '',
-                    datasource: '',
-                    zkAdress: '',
-                    databaseName: ''
-                },
-                visible: true,
-                dataSources: [
-                    { value: 'mysql', label: 'mysql' },
-                    { value: 'oracle', label: 'oracle' },
-                    { value: 'hana', label: 'hana' },
-                    { value: 'postgresql', label: 'postgresql' },
-                    { value: 'sqlserver', label: 'sqlserver' },
-                    { value: 'hive', label: 'hive' },
-                    { value: 'hbase', label: 'hbase' },
-                    { value: 'mongodb', label: 'mongodb' },
-                    { value: 'clickhouse', label: 'clickhouse' }
-                ],
-                jdbc: true,
-                hbase: false,
-                mongodb: false
-            }
-        },
-        created() {
-            this.fetchData()
-        },
-        methods: {
-            selectDataSource(datasource) {
-                if (datasource === 'mysql') {
-                    this.temp.jdbcUrl = 'jdbc:mysql://{host}:{port}/{database}'
-                    this.temp.jdbcDriverClass = 'com.mysql.jdbc.Driver'
-                } else if (datasource === 'hana') {
-                    this.temp.jdbcUrl = 'jdbc:sap://{host}:{port}/{instanceNumber}'
-                    this.temp.jdbcDriverClass = 'com.sap.db.jdbc.Driver'
-                } else if (datasource === 'oracle') {
-                    this.temp.jdbcUrl = 'jdbc:oracle:thin:@//{host}:{port}/{serviceName}'
-                    this.temp.jdbcDriverClass = 'oracle.jdbc.OracleDriver'
-                } else if (datasource === 'postgresql') {
-                    this.temp.jdbcUrl = 'jdbc:postgresql://{host}:{port}/{database}'
-                    this.temp.jdbcDriverClass = 'org.postgresql.Driver'
-                } else if (datasource === 'sqlserver') {
-                    this.temp.jdbcUrl = 'jdbc:jtds:sqlserver://{host}:{port};DatabaseName={database}'
-                    this.temp.jdbcDriverClass = 'net.sourceforge.jtds.jdbc.Driver'
-                } else if (datasource === 'clickhouse') {
-                    this.temp.jdbcUrl = 'jdbc:clickhouse://{host}:{port}/{database}'
-                    this.temp.jdbcDriverClass = 'ru.yandex.clickhouse.ClickHouseDriver'
-                } else if (datasource === 'hive') {
-                    this.temp.jdbcUrl = 'jdbc:hive2://{host}:{port}/{database}'
-                    this.temp.jdbcDriverClass = 'org.apache.hive.jdbc.HiveDriver'
-                    this.hbase = this.mongodb = false
-                    this.jdbc = true
-                }
-                this.getShowStrategy(datasource)
-            },
-            fetchData() {
-                this.listLoading = true
-                datasourceApi.list(this.listQuery).then(response => {
-                    const { records } = response
-                    const { total } = response
-                    this.total = total
-                    this.list = records
-                    this.listLoading = false
-                })
-            },
-            resetTemp() {
-                this.temp = {
-                    id: undefined,
-                    datasourceName: '',
-                    datasourceGroup: 'Default',
-                    jdbcUsername: '',
-                    jdbcPassword: '',
-                    jdbcUrl: '',
-                    jdbcDriverClass: '',
-                    comments: ''
-                }
-            },
-            handleCreate() {
-                this.resetTemp()
-                this.dialogStatus = 'create'
-                this.dialogFormVisible = true
-                this.$nextTick(() => {
-                    this.$refs['dataForm'].clearValidate()
-                })
-            },
-            createData() {
-                this.$refs['dataForm'].validate((valid) => {
-                    if (valid) {
-                        datasourceApi.created(this.temp).then(() => {
-                            this.fetchData()
-                            this.dialogFormVisible = false
-                            this.$notify({
-                                title: 'Success',
-                                message: 'Created Successfully',
-                                type: 'success',
-                                duration: 2000
-                            })
-                        })
-                    }
-                })
-            },
-            testDataSource() {
-                this.$refs['dataForm'].validate((valid) => {
-                    if (valid) {
-                        datasourceApi.test(this.temp).then(response => {
-                            if (response.data === false) {
-                                this.$notify({
-                                    title: 'Fail',
-                                    message: response.data.msg,
-                                    type: 'fail',
-                                    duration: 2000
-                                })
-                            } else {
-                                this.$notify({
-                                    title: 'Success',
-                                    message: 'Tested Successfully',
-                                    type: 'success',
-                                    duration: 2000
-                                })
-                            }
-                        })
-                    }
-                })
-            },
-            handleUpdate(row) {
-                this.getShowStrategy(row.datasource)
-                this.temp = Object.assign({}, row) // copy obj
-                this.dialogStatus = 'update'
-                this.dialogFormVisible = true
-                this.$nextTick(() => {
-                    this.$refs['dataForm'].clearValidate()
-                })
-            },
-            updateData() {
-                this.$refs['dataForm'].validate((valid) => {
-                    if (valid) {
-                        const tempData = Object.assign({}, this.temp)
-                        datasourceApi.updated(tempData).then(() => {
-                            this.fetchData()
-                            this.dialogFormVisible = false
-                            this.$notify({
-                                title: 'Success',
-                                message: 'Update Successfully',
-                                type: 'success',
-                                duration: 2000
-                            })
-                        })
-                    }
-                })
-            },
-            getShowStrategy(datasource) {
-                if (datasource === 'hbase') {
-                    this.jdbc = this.mongodb = false
-                    this.hbase = true
-                } else if (datasource === 'mongodb') {
-                    this.jdbc = this.hbase = false
-                    this.mongodb = true
-                    this.temp.jdbcUrl = 'mongodb://[username:password@]host1[:port1][,...hostN[:portN]]][/[database][?options]]'
-                } else {
-                    this.hbase = this.mongodb = false
-                    this.jdbc = true
-                }
-            },
-            handleDelete(row) {
-                console.log('删除')
-                const idList = []
-                idList.push(row.id)
-                // 拼成 idList=xx
-                // 多个比较麻烦，这里不处理
-                datasourceApi.deleted({ idList: row.id }).then(response => {
-                    this.fetchData()
-                    this.$notify({
-                        title: 'Success',
-                        message: 'Delete Successfully',
-                        type: 'success',
-                        duration: 2000
-                    })
-                })
-                // const index = this.list.indexOf(row)
-            },
-            handleFetchPv(id) {
-                datasourceApi.fetched(id).then(response => {
-                    this.pluginData = response
-                    this.dialogPvVisible = true
-                })
-            },
-            formatJson(filterVal, jsonData) {
-                return jsonData.map(v => filterVal.map(j => {
-                    if (j === 'timestamp') {
-                        return parseTime(v[j])
-                    } else {
-                        return v[j]
-                    }
-                }))
-            },
-            changePass(value) {
-                this.visible = !(value === 'show')
-            }
-        }
+export default {
+  name: 'JdbcDatasource',
+  components: { Pagination },
+  directives: { waves },
+  filters: {
+    statusFilter(status) {
+      const statusMap = {
+        published: 'success',
+        draft: 'gray',
+        deleted: 'danger'
+      }
+      return statusMap[status]
     }
+  },
+  data() {
+    return {
+      list: null,
+      listLoading: true,
+      total: 0,
+      listQuery: {
+        current: 1,
+        size: 10
+      },
+      pluginTypeOptions: ['reader', 'writer'],
+      dialogPluginVisible: false,
+      pluginData: [],
+      dialogFormVisible: false,
+      dialogStatus: '',
+      textMap: {
+        update: 'Edit',
+        create: 'Create'
+      },
+      rules: {
+        datasourceName: [{ required: true, message: 'this is required', trigger: 'blur' }],
+        jdbcUsername: [{ required: true, message: 'this is required', trigger: 'blur' }],
+        jdbcPassword: [{ required: true, message: 'this is required', trigger: 'blur' }],
+        jdbcUrl: [{ required: true, message: 'this is required', trigger: 'blur' }],
+        jdbcDriverClass: [{ required: true, message: 'this is required', trigger: 'blur' }],
+        datasource: [{ required: true, message: 'this is required', trigger: 'change' }],
+        zkAdress: [{ required: true, message: 'this is required', trigger: 'blur' }],
+        databaseName: [{ required: true, message: 'this is required', trigger: 'blur' }]
+      },
+      temp: {
+        id: undefined,
+        datasourceName: '',
+        datasourceGroup: 'Default',
+        jdbcUsername: '',
+        jdbcPassword: '',
+        jdbcUrl: '',
+        jdbcDriverClass: '',
+        comments: '',
+        datasource: '',
+        zkAdress: '',
+        databaseName: ''
+      },
+      visible: true,
+      dataSources: [
+        { value: 'mysql', label: 'mysql' },
+        { value: 'oracle', label: 'oracle' },
+        { value: 'hana', label: 'hana' },
+        { value: 'postgresql', label: 'postgresql' },
+        { value: 'sqlserver', label: 'sqlserver' },
+        { value: 'hive', label: 'hive' },
+        { value: 'hbase', label: 'hbase' },
+        { value: 'mongodb', label: 'mongodb' },
+        { value: 'clickhouse', label: 'clickhouse' }
+      ],
+      jdbc: true,
+      hbase: false,
+      mongodb: false
+    }
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    selectDataSource(datasource) {
+      if (datasource === 'mysql') {
+        this.temp.jdbcUrl = 'jdbc:mysql://{host}:{port}/{database}'
+        this.temp.jdbcDriverClass = 'com.mysql.jdbc.Driver'
+      } else if (datasource === 'hana') {
+        this.temp.jdbcUrl = 'jdbc:sap://{host}:{port}/{instanceNumber}'
+        this.temp.jdbcDriverClass = 'com.sap.db.jdbc.Driver'
+      } else if (datasource === 'oracle') {
+        this.temp.jdbcUrl = 'jdbc:oracle:thin:@//{host}:{port}/{serviceName}'
+        this.temp.jdbcDriverClass = 'oracle.jdbc.OracleDriver'
+      } else if (datasource === 'postgresql') {
+        this.temp.jdbcUrl = 'jdbc:postgresql://{host}:{port}/{database}'
+        this.temp.jdbcDriverClass = 'org.postgresql.Driver'
+      } else if (datasource === 'sqlserver') {
+        this.temp.jdbcUrl = 'jdbc:jtds:sqlserver://{host}:{port};DatabaseName={database}'
+        this.temp.jdbcDriverClass = 'net.sourceforge.jtds.jdbc.Driver'
+      } else if (datasource === 'clickhouse') {
+        this.temp.jdbcUrl = 'jdbc:clickhouse://{host}:{port}/{database}'
+        this.temp.jdbcDriverClass = 'ru.yandex.clickhouse.ClickHouseDriver'
+      } else if (datasource === 'hive') {
+        this.temp.jdbcUrl = 'jdbc:hive2://{host}:{port}/{database}'
+        this.temp.jdbcDriverClass = 'org.apache.hive.jdbc.HiveDriver'
+        this.hbase = this.mongodb = false
+        this.jdbc = true
+      }
+      this.getShowStrategy(datasource)
+    },
+    fetchData() {
+      this.listLoading = true
+      datasourceApi.list(this.listQuery).then(response => {
+        const { records } = response
+        const { total } = response
+        this.total = total
+        this.list = records
+        this.listLoading = false
+      })
+    },
+    resetTemp() {
+      this.temp = {
+        id: undefined,
+        datasourceName: '',
+        datasourceGroup: 'Default',
+        jdbcUsername: '',
+        jdbcPassword: '',
+        jdbcUrl: '',
+        jdbcDriverClass: '',
+        comments: ''
+      }
+    },
+    handleCreate() {
+      this.resetTemp()
+      this.dialogStatus = 'create'
+      this.dialogFormVisible = true
+      this.$nextTick(() => {
+        this.$refs['dataForm'].clearValidate()
+      })
+    },
+    createData() {
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          datasourceApi.created(this.temp).then(() => {
+            this.fetchData()
+            this.dialogFormVisible = false
+            this.$notify({
+              title: 'Success',
+              message: 'Created Successfully',
+              type: 'success',
+              duration: 2000
+            })
+          })
+        }
+      })
+    },
+    testDataSource() {
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          datasourceApi.test(this.temp).then(response => {
+            if (response.data === false) {
+              this.$notify({
+                title: 'Fail',
+                message: response.data.msg,
+                type: 'fail',
+                duration: 2000
+              })
+            } else {
+              this.$notify({
+                title: 'Success',
+                message: 'Tested Successfully',
+                type: 'success',
+                duration: 2000
+              })
+            }
+          })
+        }
+      })
+    },
+    handleUpdate(row) {
+      this.getShowStrategy(row.datasource)
+      this.temp = Object.assign({}, row) // copy obj
+      this.dialogStatus = 'update'
+      this.dialogFormVisible = true
+      this.$nextTick(() => {
+        this.$refs['dataForm'].clearValidate()
+      })
+    },
+    updateData() {
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          const tempData = Object.assign({}, this.temp)
+          datasourceApi.updated(tempData).then(() => {
+            this.fetchData()
+            this.dialogFormVisible = false
+            this.$notify({
+              title: 'Success',
+              message: 'Update Successfully',
+              type: 'success',
+              duration: 2000
+            })
+          })
+        }
+      })
+    },
+    getShowStrategy(datasource) {
+      if (datasource === 'hbase') {
+        this.jdbc = this.mongodb = false
+        this.hbase = true
+      } else if (datasource === 'mongodb') {
+        this.jdbc = this.hbase = false
+        this.mongodb = true
+        this.temp.jdbcUrl = 'mongodb://[username:password@]host1[:port1][,...hostN[:portN]]][/[database][?options]]'
+      } else {
+        this.hbase = this.mongodb = false
+        this.jdbc = true
+      }
+    },
+    handleDelete(row) {
+      console.log('删除')
+      const idList = []
+      idList.push(row.id)
+      // 拼成 idList=xx
+      // 多个比较麻烦，这里不处理
+      datasourceApi.deleted({ idList: row.id }).then(response => {
+        this.fetchData()
+        this.$notify({
+          title: 'Success',
+          message: 'Delete Successfully',
+          type: 'success',
+          duration: 2000
+        })
+      })
+      // const index = this.list.indexOf(row)
+    },
+    handleFetchPv(id) {
+      datasourceApi.fetched(id).then(response => {
+        this.pluginData = response
+        this.dialogPvVisible = true
+      })
+    },
+    formatJson(filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => {
+        if (j === 'timestamp') {
+          return parseTime(v[j])
+        } else {
+          return v[j]
+        }
+      }))
+    },
+    changePass(value) {
+      this.visible = !(value === 'show')
+    }
+  }
+}
 </script>

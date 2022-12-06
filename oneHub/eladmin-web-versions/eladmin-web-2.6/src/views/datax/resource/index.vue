@@ -67,7 +67,7 @@
           <el-input v-model="temp.resourceName" placeholder="资源名称" />
         </el-form-item>
         <el-form-item label="资源地址" prop="resourcePath">
-           <el-input v-model="temp.resourcePath" placeholder="资源地址" />
+          <el-input v-model="temp.resourcePath" placeholder="资源地址" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
