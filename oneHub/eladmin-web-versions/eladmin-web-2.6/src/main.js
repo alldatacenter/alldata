@@ -23,12 +23,22 @@ import router from './router/routers'
 
 import './assets/icons' // icon
 import './router/index' // permission control
+import './utils/error-log' // error log
+
+import * as filters from './filters' // global filters
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 
 Vue.use(checkPer)
 Vue.use(permission)
 Vue.use(dict)
 Vue.use(Element, {
   size: Cookies.get('size') || 'small' // set element-ui default size
+})
+
+// register global utility filters
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
 })
 
 Vue.config.productionTip = false

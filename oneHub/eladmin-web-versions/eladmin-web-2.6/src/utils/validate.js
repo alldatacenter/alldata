@@ -92,6 +92,24 @@ export function isArray(arg) {
 }
 
 /**
+ * 判断是否是json
+ *
+ * @param str
+ * @returns {boolean}
+ */
+export function isJSON(str) {
+  if (typeof str === 'string') {
+    try {
+      JSON.parse(str)
+      return true
+    } catch (e) {
+      return false
+    }
+  }
+  return false
+}
+
+/**
  * 是否合法IP地址
  * @param rule
  * @param value
