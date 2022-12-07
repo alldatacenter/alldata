@@ -2,15 +2,10 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>alldata</artifactId>
-        <groupId>com.platform</groupId>
-        <version>1.2-SNAPSHOT</version>
-        <relativePath>../../../../pom.xml</relativePath>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.platform</groupId>
     <artifactId>druid-optimize</artifactId>
+    <version>0.3</version>
+    <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
     <name>druid-optimize</name>
@@ -40,23 +35,23 @@
             <dependency>
                 <groupId>com.platform</groupId>
                 <artifactId>logging</artifactId>
-                <version>1.2-SNAPSHOT</version>
+                <version>0.3</version>
             </dependency>
             <dependency>
                 <groupId>com.platform</groupId>
                 <artifactId>primary-source</artifactId>
-                <version>1.2-SNAPSHOT</version>
+                <version>0.3</version>
             </dependency>
             <dependency>
                 <groupId>com.platform</groupId>
                 <artifactId>servlet</artifactId>
-                <version>1.2-SNAPSHOT</version>
+                <version>0.3</version>
                 <type>war</type>
             </dependency>
             <dependency>
                 <groupId>com.platform</groupId>
                 <artifactId>ejbs</artifactId>
-                <version>1.2-SNAPSHOT</version>
+                <version>0.3</version>
                 <type>ejb</type>
             </dependency>
         </dependencies>

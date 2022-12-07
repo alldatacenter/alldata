@@ -8,12 +8,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>dubbo-service-interface</artifactId>
-    <name>dubbo-service-interface</name>
+    <artifactId>dubbo-parent</artifactId>
+    <name>dubbo-parent</name>
     <packaging>jar</packaging>
 
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -287,7 +285,7 @@
     </dependencies>
 
     <build>
-        <finalName>dubbo-service-interface</finalName>
+        <finalName>dubbo-parent</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
