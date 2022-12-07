@@ -83,4 +83,13 @@ public class LineageTable {
     public void setColumns(List<LineageColumn> columns) {
         this.columns = columns;
     }
+
+    @Override
+    public String toString() {
+        return "LineageTable{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", columns=" + columns +
+                '}';
+    }
 }

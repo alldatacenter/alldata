@@ -20,8 +20,7 @@
 package com.platform;
 
 
-import com.platform.explainer.lineage.LineageBuilder;
-import com.platform.explainer.lineage.LineageResult;
+import com.platform.explainer.lineage.*;
 
 /**
  * Lineage Build
@@ -31,46 +30,62 @@ import com.platform.explainer.lineage.LineageResult;
 public class FlinkLineageBuild {
 
 
-    public static void buildLineage() {
-        String sql = "CREATE TEMPORARY TABLE users (\n" +
-                "  user_id BIGINT,\n" +
-                "  user_name STRING,\n" +
-                "  user_level STRING,\n" +
-                "  region STRING,\n" +
-                "  PRIMARY KEY (user_id) NOT ENFORCED\n" +
-                ") WITH (\n" +
-                "  'connector' = 'upsert-kafka',\n" +
-                "  'topic' = 'users',\n" +
-                "  'properties.bootstrap.servers' = '...',\n" +
-                "  'key.format' = 'csv',\n" +
-                "  'value.format' = 'avro'\n" +
-                ");\n" +
-                "\n" +
-                "-- set sync mode\n" +
-                "SET 'table.dml-sync' = 'true';\n" +
-                "\n" +
-                "-- set the job name\n" +
-                "SET 'pipeline.name' = 'SqlJob';\n" +
-                "\n" +
-                "-- set the queue that the job submit to\n" +
-                "SET 'yarn.application.queue' = 'root';\n" +
-                "\n" +
-                "-- set the job parallelism\n" +
-                "SET 'parallelism.default' = '100';\n" +
-                "\n" +
-                "-- restore from the specific savepoint path\n" +
-                "SET 'execution.savepoint.path' = '/tmp/flink-savepoints/savepoint-cca7bc-bb1e257f0dab';\n" +
-                "\n" +
-                "INSERT INTO pageviews_enriched\n" +
-                "SELECT *\n" +
-                "FROM pageviews AS p\n" +
-                "LEFT JOIN users FOR SYSTEM_TIME AS OF p.proctime AS u\n" +
-                "ON p.user_id = u.user_id;";
-        LineageResult result = LineageBuilder.getLineage(sql);
-        System.out.println("end");
+    public static void main(String[] args) {
+        String sql = fetchInsertDDL();
+        buildLineage(sql);
     }
 
-    public static void main(String[] args) {
-        buildLineage();
+    private static String fetchInsertDDL() {
+
+        String sourceTableDDL = "CREATE TABLE data_gen (\n" +
+                "    amount BIGINT\n" +
+                ") WITH (\n" +
+                "    'connector' = 'datagen'," +
+                "    'rows-per-second' = '1'," +
+                "    'number-of-rows' = '3'," +
+                "    'fields.amount.kind' = 'random'," +
+                "    'fields.amount.min' = '10'," +
+                "    'fields.amount.max' = '11');";
+        String sinkTableDDL = "CREATE TABLE mysql_sink (\n" +
+                "  amount BIGINT,\n" +
+                "  PRIMARY KEY (amount) NOT ENFORCED\n" +
+                ") WITH (\n" +
+                "    'connector' = 'jdbc',\n" +
+                "    'url' = 'jdbc:mysql://localhost:3306/test_db',\n" +
+                "    'table-name' = 'test_table',\n" +
+                "    'username' = 'root',\n" +
+                "    'password' = '123456',\n" +
+                "    'lookup.cache.max-rows' = '5000',\n" +
+                "    'lookup.cache.ttl' = '10min'\n" +
+                ");";
+        String insertSQL = "INSERT INTO mysql_sink SELECT amount as amount FROM data_gen;\n";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(sourceTableDDL).append("\n").append(sinkTableDDL).append("\n").append(insertSQL).append("\n");
+        return stringBuilder.toString();
     }
+
+    /**
+     *
+     */
+    public static void buildLineage(String sql) {
+        LineageResult result = LineageBuilder.getLineage(sql);
+
+        System.out.println("1、Flink血缘构建结果-表:\n" + result.getTables());
+        for (int i = 0; i < result.getTables().size(); i++) {
+            LineageTable lineageTable = result.getTables().get(i);
+            System.out.println("表ID: " + lineageTable.getId());
+            System.out.println("表Name" + lineageTable.getName());
+            for (int j = 0; j < lineageTable.getColumns().size(); j++) {
+                LineageColumn lineageColumn = lineageTable.getColumns().get(j);
+                System.out.println("表ID: " + lineageTable.getId() + "\n表Name" + lineageTable.getName() + "\n表-列" + lineageColumn + "\n");
+            }
+        }
+        System.out.println("2、Flink血缘构建结果-边:\n" + result.getRelations());
+        for (int i = 0; i < result.getRelations().size(); i++) {
+            LineageRelation lineageRelation = result.getRelations().get(i);
+            System.out.println("表-边: " + lineageRelation);
+        }
+
+    }
+
 }

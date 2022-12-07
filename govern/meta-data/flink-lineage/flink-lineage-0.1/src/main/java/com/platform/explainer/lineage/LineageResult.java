@@ -58,4 +58,12 @@ public class LineageResult {
     public void setRelations(List<LineageRelation> relations) {
         this.relations = relations;
     }
+
+    @Override
+    public String toString() {
+        return "LineageResult{" +
+                "tables=" + tables +
+                ", relations=" + relations +
+                '}';
+    }
 }
