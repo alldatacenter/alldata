@@ -6,7 +6,7 @@
 
   <groupId>com.platform</groupId>
   <artifactId>kylin-optimize</artifactId>
-  <version>1.2-SNAPSHOT</version>
+  <version>0.3</version>
   <packaging>pom</packaging>
 
   <name>AllData kylin-optimize</name>
@@ -36,23 +36,23 @@
       <dependency>
         <groupId>com.platform</groupId>
         <artifactId>logging</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>0.3</version>
       </dependency>
       <dependency>
         <groupId>com.platform</groupId>
         <artifactId>primary-source</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>0.3</version>
       </dependency>
       <dependency>
         <groupId>com.platform</groupId>
         <artifactId>servlet</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>0.3</version>
         <type>war</type>
       </dependency>
       <dependency>
         <groupId>com.platform</groupId>
         <artifactId>ejbs</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>0.3</version>
         <type>ejb</type>
       </dependency>
     </dependencies>
