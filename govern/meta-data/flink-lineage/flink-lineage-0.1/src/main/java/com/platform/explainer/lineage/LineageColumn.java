@@ -75,4 +75,12 @@ public class LineageColumn {
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    @Override
+    public String toString() {
+        return "LineageColumn{" +
+                "name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }

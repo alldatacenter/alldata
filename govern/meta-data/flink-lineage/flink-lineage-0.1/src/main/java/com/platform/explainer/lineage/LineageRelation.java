@@ -119,4 +119,15 @@ public class LineageRelation {
     public int hashCode() {
         return Objects.hash(srcTableId, tgtTableId, srcTableColName, tgtTableColName);
     }
+
+    @Override
+    public String toString() {
+        return "LineageRelation{" +
+                "id='" + id + '\'' +
+                ", srcTableId='" + srcTableId + '\'' +
+                ", tgtTableId='" + tgtTableId + '\'' +
+                ", srcTableColName='" + srcTableColName + '\'' +
+                ", tgtTableColName='" + tgtTableColName + '\'' +
+                '}';
+    }
 }
