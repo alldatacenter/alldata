@@ -1,33 +1,5 @@
 # AllData 一站式大数据平台
 
-
-## 社区建设 && 社区捐赠
-
-> 目前正在建设团队，将大力投入发展AllData项目，欢迎大家踊跃参与建设与讨论！
->
-> 由于近期购买服务器需要，希望能得到社区的成员捐赠支持
->
-> 捐赠方式：扫码支付作者50-200元，然后添加作者个人微信AllDataDC，邀请您进入内部研发微信群以及社区讨论微信群
->
-> 1、您会获得收益，作者会分享从0到1建设Github开源一站式大数据平台AllData社区项目经验心得
->
-> 2、您会获得内部最新总设文档，支付时请备注联系方式，支付后请联系作者微信AllDataDC
->
-> 3、您将有机会获得商业版定制的机会，加作者微信好友，可以提供第一手安装部署资料
->
-> 4、您将有机会成为AllData极客开发团队成员，获得成就感与价值输出愉悦感
-
-
-### [AllData社区服务器捐赠50-200元](https://user-images.githubusercontent.com/20246692/190121827-62c6bd5c-5b6f-449c-8a5f-f90c4fea9c02.jpg)
-<br/>
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/20246692/190121827-62c6bd5c-5b6f-449c-8a5f-f90c4fea9c02.jpg">
-
-### [AllData社区负责人进微信群](https://user-images.githubusercontent.com/20246692/188576131-e14fc227-c352-4eb9-8803-bdd5fbcedc0f.jpg)
-<br/>
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/20246692/188576131-e14fc227-c352-4eb9-8803-bdd5fbcedc0f.jpg">
-<br/>
-
-
 <br/>
 <p>
   <a href="https://github.com/AllDataTeam/alldata/commits/master"  target="_blank">
@@ -818,13 +790,4 @@ job-schedule: 任务提交平台
 
 ## Community
 
-## 12、社区共建
-
-### [AllData社区QQ群](https://user-images.githubusercontent.com/20246692/188576165-de2d3649-9cdd-479a-a28c-3f783497f4f7.jpg)
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/20246692/188576165-de2d3649-9cdd-479a-a28c-3f783497f4f7.jpg">
-<br/> 
-
-
-### [AllData社区钉钉群](https://user-images.githubusercontent.com/20246692/188576143-f17e4fe1-3155-40a5-a4a6-1aa5cf9590e2.jpg)
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/20246692/188576143-f17e4fe1-3155-40a5-a4a6-1aa5cf9590e2.jpg">
-<br/>
+## 12、近期进行社区修整，闭关期间，仅保留微信群
