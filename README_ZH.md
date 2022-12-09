@@ -25,12 +25,9 @@
 [![Stargazers over time](https://starchart.cc/alldatadc/alldata.svg)](https://starchart.cc/alldatadc/alldata)
 
 ## [线上ElAdmin预览地址](http://43.138.157.47:8013/dashboard)
-> http://43.138.157.47:8013/dashboard
-> 账号: poc
-> 密码：123456
+### http://43.138.157.47:8013/dashboard 账号: poc 密码：123456
 
-### ElAdmin预览效果
-> 登录页面
+## ElAdmin登录页面
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
 <br/>
