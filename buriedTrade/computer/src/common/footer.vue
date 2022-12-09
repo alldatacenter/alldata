@@ -13,9 +13,9 @@
         <ul class="c0">
           <h3 class="c1">服务支持</h3>
           <ul>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/AllDataTeam/alldata/tree/master/commerce/mobile-h5">mobile-h5</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/AllDataTeam/alldata/tree/master/commerce/computer">computer</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/AllDataTeam/alldata/tree/master/commerce/mobile-wechat">mobile-wechat</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/alldatacenter/alldata/tree/master/commerce/mobile-h5">mobile-h5</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/alldatacenter/alldata/tree/master/commerce/computer">computer</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/alldatacenter/alldata/tree/master/commerce/mobile-wechat">mobile-wechat</a></li>
           </ul>
         </ul>
         <ul class="c0">
@@ -23,13 +23,13 @@
           <ul>
             <li class="c2"><a class="c3" target="_blank" href="http://120.77.155.220:8080">个人博客</a></li>
             <li class="c2"><a class="c3" target="_blank" href="http://120.77.155.220:8080/about/">个人简介</a></li>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/AllDataTeam/">GitHub</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/alldatacenter/">GitHub</a></li>
           </ul>
         </ul>
         <ul class="c0">
           <h3 class="c1">数据平台</h3>
           <ul>
-            <li class="c2"><a class="c3" target="_blank" href="https://github.com/AllDataTeam/alldata">alldata</a></li>
+            <li class="c2"><a class="c3" target="_blank" href="https://github.com/alldatacenter/alldata">alldata</a></li>
          </ul>
         </ul>
         <ul class="c0">
@@ -53,7 +53,7 @@
         <ul class="privacy">
           <li class="content-c1"><a class="content-c0" @click="open1">网站描述</a></li>
           <li class="content-c1"><a class="content-c0" @click="open2">编程世界</a></li>
-          <li class="content-c1"><a class="content-c0" target="_blank" href="https://github.com/AllDataTeam/alldata">社区源码</a></li>
+          <li class="content-c1"><a class="content-c0" target="_blank" href="https://github.com/alldatacenter/alldata">社区源码</a></li>
         </ul>
       </div>
       <div class="cop">
