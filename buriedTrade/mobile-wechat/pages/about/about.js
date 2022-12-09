@@ -13,7 +13,7 @@ Page({
     load_statue: true,
     shopInfo: {
       name: 'mall-shopping-wx',
-      address: 'https://github.com/AllDataTeam/alldata/tree/master/commerce/mall-shopping-wc',
+      address: 'https://github.com/alldatacenter/alldata/tree/master/commerce/mall-shopping-wc',
       latitude: 31.201900,
       longitude: 121.587839,
       linkPhone: '020-8823282',

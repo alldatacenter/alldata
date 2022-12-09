@@ -8,7 +8,7 @@
     <van-popup v-model="showKefu">
       <van-cell-group>
         <van-cell title="项目名称" value="mobile-h5" />
-        <van-cell title="项目地址" value="Github"  url="https://github.com/AllDataTeam/alldata/tree/master/commerce/mobile-h5"/>
+        <van-cell title="项目地址" value="Github"  url="https://github.com/alldatacenter/alldata/tree/master/commerce/mobile-h5"/>
       </van-cell-group>
     </van-popup>
   </div>
