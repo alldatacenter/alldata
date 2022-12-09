@@ -2,23 +2,23 @@
 
 <br/>
 <p>
-  <a href="https://github.com/AllDataTeam/alldata/commits/master"  target="_blank">
+  <a href="https://github.com/alldatacenter/alldata/commits/master"  target="_blank">
     <img width=200 height="40" src="https://img.shields.io/github/last-commit/authorwlh/alldata.svg">
   </a>
-  <a href="https://github.com/AllDataTeam/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Abug" target="_blank">
+  <a href="https://github.com/alldatacenter/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Abug" target="_blank">
     <img width=200 height="40" src="https://img.shields.io/github/issues/authorwlh/alldata/bug.svg?label=bugs&color=red">
   </a>
-  <a href="https://github.com/AllDataTeam/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement" target="_blank">
+  <a href="https://github.com/alldatacenter/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement" target="_blank">
     <img width=200 height="40" src="https://img.shields.io/github/issues/authorwlh/alldata/enhancement.svg?label=enhancements&color=cyan">
   </a>
-  <a href="https://github.com/AllDataTeam/alldata/blob/master/LICENSE" target="_blank">
+  <a href="https://github.com/alldatacenter/alldata/blob/master/LICENSE" target="_blank">
     <img width=200 height="40" src="https://img.shields.io/github/license/authorwlh/alldata.svg">
   </a>
 </p>
 
-## [中文](https://github.com/AllDataTeam/alldata/blob/master/README_ZH.md) | English
-## [原型体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/AllDataTeam/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
-## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/AllDataTeam/dataHub)
+## [中文](https://github.com/alldatacenter/alldata/blob/master/README_ZH.md) | English
+## [原型体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/alldatacenter/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
+## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/alldatacenter/dataHub)
 
 ## Stargazers over time
 
@@ -448,26 +448,26 @@
 
 | Component                                                                                | Description                                                    | Important Composition       |
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------|
-| [**aiStudio**](https://github.com/AllDataTeam/alldata/tree/master/aiStudio)              | AI STUDIO FOR ALL DATA PLATFORM artificial intelligence engine | 人工智能引擎                      |
-| [**aiStudioTasks**](https://github.com/AllDataTeam/alldata/tree/master/aiStudioTasks)    | AI STUDIO TASKS FOR ALL DATA PLATFORM MLAPPS Engine            | 人工智能模型任务                    | 
-| [**assembly**](https://github.com/AllDataTeam/alldata/tree/master/assembly)              | WHOLE PACKAGE BUILD FOR ALL DATA PLATFORM assembly engine      | 整包构建引擎                      |
-| [**buried**](https://github.com/AllDataTeam/alldata/tree/master/buried)                  | BURIED FOR ALL DATA PLATFORM data acquisition engine           | 埋点解决方案                      |
-| [**buriedShop**](https://github.com/AllDataTeam/alldata/tree/master/buriedShop)          | BURIED SHOP FOR ALL DATA PLATFORM commerce engine              | 多端商城                        |
-| [**buriedTrade**](https://github.com/AllDataTeam/alldata/tree/master/buriedTrade)        | BURIED TRADE FOR ALL DATA PLATFORM commerce engine             | 商业系统                        |
-| [**crawlerData**](https://github.com/AllDataTeam/alldata/tree/master/crawlerData)        | CRAWLER DATA TRADE FOR ALL DATA PLATFORM commerce engine       | 爬虫任务                        |
-| [**crawlerPlatform**](https://github.com/AllDataTeam/alldata/tree/master/crawlerPlatform) | CRAWLER PLATFORM FOR ALL DATA PLATFORM commerce engine         | 爬虫引擎系统                      |
-| [**dataOlap**](https://github.com/AllDataTeam/alldata/tree/master/dataOlap)              | OLAP FOR ALL DATA PLATFORM OLAP query engine                   | 混合OLAP查询引擎                  |
-| [**dataSync**](https://github.com/AllDataTeam/alldata/tree/master/dataSync)              | DATA Integrate FOR ALL DATA PLATFORM Data Integration Engine   | 数据集成引擎                      |
-| [**dataSRE**](https://github.com/AllDataTeam/alldata/tree/master/dataSRE)                | DATA SRE FOR ALL DATA PLATFORM OLAP query engine               | 智能大数据运维引擎                   |
-| [**deploy**](https://github.com/AllDataTeam/alldata/tree/master/deploy)                  | DEPLOY FOR ALL DATA PLATFORM OLAP query engine                 | 安装部署                        |
-| [**documents**](https://github.com/AllDataTeam/alldata/tree/master/documents)            | DOCUMENT FOR ALL DATA PLATFORM OLAP query engine               | 官方文档                        |
-| [**govern**](https://github.com/AllDataTeam/alldata/tree/master/govern)                  | DATA GOVERN FOR ALL DATA PLATFORM Data Governance Engine       | 数据治理引擎                      |
-| [**oneHub**](https://github.com/AllDataTeam/alldata/tree/master/oneHub)                  | ONE HUB FOR ALL DATA PLATFORM ONE HUB Engine                   | AllData总部前后端解决方案            |
-| [**oneLake**](https://github.com/AllDataTeam/alldata/tree/master/oneLake)                | ONE LAKE FOR ALL DATA PLATFORM ONE LAKE engine                 | 数据湖引擎                       |
-| [**studioSystem**](https://github.com/AllDataTeam/alldata/tree/master/studioSystem)      | STUDIO SYSTEM FOR ALL DATA PLATFORM DEVELOP IDE ENGINE         | 大数据流批计算平台                   |
-| [**studioTasks**](https://github.com/AllDataTeam/alldata/tree/master/studioTasks)        | STUDIO TASKS FOR ALL DATA PLATFORM Data Task Engine            | 大数据流批计算任务                   |
-| [**docs**](https://github.com/AllDataTeam/alldata/tree/master/docs)                      | Document                                                       | 文档                          | 
-| [**AllData**](https://github.com/AllDataTeam/alldata)                                    | AllData社区项目通过二开大数据生态组件，以及大数据采集、大数据存储、大数据计算、大数据开发来建设一站式大数据平台    | Github一站式开源大数据平台AllData社区项目 |
+| [**aiStudio**](https://github.com/alldatacenter/alldata/tree/master/aiStudio)              | AI STUDIO FOR ALL DATA PLATFORM artificial intelligence engine | 人工智能引擎                      |
+| [**aiStudioTasks**](https://github.com/alldatacenter/alldata/tree/master/aiStudioTasks)    | AI STUDIO TASKS FOR ALL DATA PLATFORM MLAPPS Engine            | 人工智能模型任务                    | 
+| [**assembly**](https://github.com/alldatacenter/alldata/tree/master/assembly)              | WHOLE PACKAGE BUILD FOR ALL DATA PLATFORM assembly engine      | 整包构建引擎                      |
+| [**buried**](https://github.com/alldatacenter/alldata/tree/master/buried)                  | BURIED FOR ALL DATA PLATFORM data acquisition engine           | 埋点解决方案                      |
+| [**buriedShop**](https://github.com/alldatacenter/alldata/tree/master/buriedShop)          | BURIED SHOP FOR ALL DATA PLATFORM commerce engine              | 多端商城                        |
+| [**buriedTrade**](https://github.com/alldatacenter/alldata/tree/master/buriedTrade)        | BURIED TRADE FOR ALL DATA PLATFORM commerce engine             | 商业系统                        |
+| [**crawlerData**](https://github.com/alldatacenter/alldata/tree/master/crawlerData)        | CRAWLER DATA TRADE FOR ALL DATA PLATFORM commerce engine       | 爬虫任务                        |
+| [**crawlerPlatform**](https://github.com/alldatacenter/alldata/tree/master/crawlerPlatform) | CRAWLER PLATFORM FOR ALL DATA PLATFORM commerce engine         | 爬虫引擎系统                      |
+| [**dataOlap**](https://github.com/alldatacenter/alldata/tree/master/dataOlap)              | OLAP FOR ALL DATA PLATFORM OLAP query engine                   | 混合OLAP查询引擎                  |
+| [**dataSync**](https://github.com/alldatacenter/alldata/tree/master/dataSync)              | DATA Integrate FOR ALL DATA PLATFORM Data Integration Engine   | 数据集成引擎                      |
+| [**dataSRE**](https://github.com/alldatacenter/alldata/tree/master/dataSRE)                | DATA SRE FOR ALL DATA PLATFORM OLAP query engine               | 智能大数据运维引擎                   |
+| [**deploy**](https://github.com/alldatacenter/alldata/tree/master/deploy)                  | DEPLOY FOR ALL DATA PLATFORM OLAP query engine                 | 安装部署                        |
+| [**documents**](https://github.com/alldatacenter/alldata/tree/master/documents)            | DOCUMENT FOR ALL DATA PLATFORM OLAP query engine               | 官方文档                        |
+| [**govern**](https://github.com/alldatacenter/alldata/tree/master/govern)                  | DATA GOVERN FOR ALL DATA PLATFORM Data Governance Engine       | 数据治理引擎                      |
+| [**oneHub**](https://github.com/alldatacenter/alldata/tree/master/oneHub)                  | ONE HUB FOR ALL DATA PLATFORM ONE HUB Engine                   | AllData总部前后端解决方案            |
+| [**oneLake**](https://github.com/alldatacenter/alldata/tree/master/oneLake)                | ONE LAKE FOR ALL DATA PLATFORM ONE LAKE engine                 | 数据湖引擎                       |
+| [**studioSystem**](https://github.com/alldatacenter/alldata/tree/master/studioSystem)      | STUDIO SYSTEM FOR ALL DATA PLATFORM DEVELOP IDE ENGINE         | 大数据流批计算平台                   |
+| [**studioTasks**](https://github.com/alldatacenter/alldata/tree/master/studioTasks)        | STUDIO TASKS FOR ALL DATA PLATFORM Data Task Engine            | 大数据流批计算任务                   |
+| [**docs**](https://github.com/alldatacenter/alldata/tree/master/docs)                      | Document                                                       | 文档                          | 
+| [**AllData**](https://github.com/alldatacenter/alldata)                                    | AllData社区项目通过二开大数据生态组件，以及大数据采集、大数据存储、大数据计算、大数据开发来建设一站式大数据平台    | Github一站式开源大数据平台AllData社区项目 |
 
 
 ## AllData社区商业计划图
