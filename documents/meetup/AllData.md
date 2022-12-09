@@ -3,7 +3,7 @@
 ### AllData社区发起人邀请Dinky的作者文末aiwenmo对AllData社区建设进行分享和宝贵建议
 ### Dlink为Apache Flink而生，让Flink SQL尽享丝般顺滑，致力于实时计算平台的构建
 ### Dinky项目：https://github.com/DataLinkDC/dlink
-### AllData项目：https://github.com/AllDataTeam/alldata
+### AllData项目：https://github.com/alldatacenter/alldata
 ### 感谢社区成员@yg9538的会议纪要
 - **第一：如何激发社区对用户来参与到项目的建设，一起推动项目的发展？**
 - **第二：完成整个项目的基本功能路线，流程是如何的？**

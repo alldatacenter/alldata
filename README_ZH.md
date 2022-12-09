@@ -18,7 +18,7 @@
 
 ## [中文](https://github.com/alldatacenter/alldata/blob/master/README_ZH.md) | English
 ## [原型体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/alldatacenter/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
-## [AllData社区项目官方文档](https://alldatateam.github.io/) | [AllData数据中台体验版地址](https://alldatateam.github.io/) | [AllData数据中台前端](https://github.com/alldatacenter/dataHub)
+## [AllData社区项目官方文档](https://alldatacenter.github.io/) | [AllData数据中台体验版地址](https://alldatacenter.github.io/) | [AllData数据中台前端](https://github.com/alldatacenter/dataHub)
 
 ## Stargazers over time
 

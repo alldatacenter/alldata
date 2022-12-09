@@ -6,7 +6,7 @@
           <div class="out-border">
             <div class="layout-title">商城移动端</div>
             <div class="color-main address-content">
-              <a href="https://github.com/AllDataTeam/alldata/tree/master/commerce/mobile-h5">mobile-h5</a>
+              <a href="https://github.com/alldatacenter/alldata/tree/master/commerce/mobile-h5">mobile-h5</a>
             </div>
           </div>
         </el-col>
@@ -14,7 +14,7 @@
           <div class="out-border">
             <div class="layout-title">商城PC端</div>
             <div class="color-main address-content">
-              <a href="https://github.com/AllDataTeam/alldata/tree/master/commerce/computer">computer</a>
+              <a href="https://github.com/alldatacenter/alldata/tree/master/commerce/computer">computer</a>
             </div>
           </div>
         </el-col>
@@ -22,7 +22,7 @@
           <div class="out-border">
             <div class="layout-title">商城App</div>
             <div class="color-main address-content">
-              <a href="https://github.com/AllDataTeam/alldata/tree/master/commerce/mobile-wechat">mobile-wechat</a>
+              <a href="https://github.com/alldatacenter/alldata/tree/master/commerce/mobile-wechat">mobile-wechat</a>
             </div>
           </div>
         </el-col>
@@ -31,7 +31,7 @@
           <div class="out-border">
             <div class="layout-title">商城小程序</div>
             <div class="color-main address-content">
-              <a href="https://github.com/AllDataTeam/alldata/tree/master/commerce/mall-shopping-wc">mall-shopping-wc</a>
+              <a href="https://github.com/alldatacenter/alldata/tree/master/commerce/mall-shopping-wc">mall-shopping-wc</a>
             </div>
           </div>
         </el-col>
@@ -41,7 +41,7 @@
           <div class="out-border">
             <div class="layout-title">商城前台服务</div>
             <div class="color-main address-content">
-              <a href="https://github.com/AllDataTeam/alldata/tree/master/commerce/mall-shopping-service">mall-shopping-service</a>
+              <a href="https://github.com/alldatacenter/alldata/tree/master/commerce/mall-shopping-service">mall-shopping-service</a>
             </div>
           </div>
         </el-col>
@@ -49,7 +49,7 @@
           <div class="out-border">
             <div class="layout-title">商城后台</div>
             <div class="color-main address-content">
-              <a href="https://github.com/AllDataTeam/alldata/tree/master/commerce/mall-admin-web">mall-admin-web</a>
+              <a href="https://github.com/alldatacenter/alldata/tree/master/commerce/mall-admin-web">mall-admin-web</a>
             </div>
           </div>
         </el-col>
@@ -57,7 +57,7 @@
           <div class="out-border">
             <div class="layout-title">商城后台服务</div>
             <div class="color-main address-content">
-              <a href="https://github.com/AllDataTeam/alldata/tree/master/commerce/admin-service">admin-service</a>
+              <a href="https://github.com/alldatacenter/alldata/tree/master/commerce/admin-service">admin-service</a>
             </div>
           </div>
         </el-col>
@@ -65,7 +65,7 @@
           <div class="out-border">
             <div class="layout-title">数据平台</div>
             <div class="color-main address-content">
-              <a href="https://github.com/AllDataTeam/alldata">alldata</a>
+              <a href="https://github.com/alldatacenter/alldata">alldata</a>
             </div>
           </div>
         </el-col>
