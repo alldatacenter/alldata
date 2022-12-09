@@ -22,7 +22,7 @@
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/authorwlh/alldata.svg)](https://starchart.cc/authorwlh/alldata)
+[![Stargazers over time](https://starchart.cc/alldatadc/alldata.svg)](https://starchart.cc/alldatadc/alldata)
 
 ## [线上ElAdmin预览地址](http://43.138.157.47:8013/dashboard)
 > http://43.138.157.47:8013/dashboard
