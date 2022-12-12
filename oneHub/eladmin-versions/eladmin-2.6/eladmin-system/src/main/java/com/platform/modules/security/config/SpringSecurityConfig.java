@@ -15,10 +15,13 @@
  */
 package com.platform.modules.security.config;
 
+import com.platform.modules.security.security.JwtAccessDeniedHandler;
+import com.platform.modules.security.security.JwtAuthenticationEntryPoint;
+import com.platform.modules.security.security.TokenConfigurer;
+import com.platform.modules.security.security.TokenProvider;
 import lombok.RequiredArgsConstructor;
-import com.platform.annotation.AnonymousAccess;
+import com.platform.annotation.rest.AnonymousAccess;
 import com.platform.modules.security.config.bean.SecurityProperties;
-import com.platform.modules.security.security.*;
 import com.platform.modules.security.service.OnlineUserService;
 import com.platform.modules.security.service.UserCacheManager;
 import com.platform.utils.enums.RequestMethodEnum;

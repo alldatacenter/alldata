@@ -19,7 +19,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.platform.annotation.AnonymousAccess;
+import com.platform.annotation.rest.AnonymousAccess;
 import com.platform.annotation.Log;
 import com.platform.annotation.rest.AnonymousGetMapping;
 import com.platform.domain.vo.TradeVo;
