@@ -1,79 +1,106 @@
 package cn.datax.auth.service;
 
-import cn.datax.common.core.DataConstant;
-import cn.datax.common.core.DataRole;
-import cn.datax.common.core.DataUser;
-import cn.datax.service.system.api.feign.UserServiceFeign;
-import cn.datax.service.system.api.vo.*;
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.ArrayUtil;
-import cn.hutool.core.util.StrUtil;
+import com.platform.exception.BadRequestException;
+import com.platform.exception.EntityNotFoundException;
+import com.platform.modules.security.service.UserCacheManager;
+import com.platform.modules.security.service.dto.JwtUserDto;
+import com.platform.modules.system.service.DataService;
+import com.platform.modules.system.service.RoleService;
+import com.platform.modules.system.service.UserService;
+import com.platform.modules.system.service.dto.UserLoginDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Collection;
 
 @Slf4j
 @Service
 public class DataUserDetailService implements UserDetailsService {
-
     @Autowired
-    private UserServiceFeign userServiceFeign;
+    private UserService userService;
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private DataService dataService;
+    @Autowired
+    private UserCacheManager userCacheManager;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        // 远程获取用户
-        UserInfo userInfo = userServiceFeign.loginByUsername(s);
-        if(userInfo == null){
-            throw new UsernameNotFoundException(StrUtil.format("{}用户不存在", s));
+    public UserDetails loadUserByUsername(String username) {
+        JwtUserDto jwtUserDto = userCacheManager.getUserCache(username);
+        if(jwtUserDto == null){
+            UserLoginDto user;
+            try {
+                user = userService.getLoginData(username);
+            } catch (EntityNotFoundException e) {
+                // SpringSecurity会自动转换UsernameNotFoundException为BadCredentialsException
+                throw new UsernameNotFoundException(username, e);
+            }
+            if (user == null) {
+                throw new UsernameNotFoundException("");
+            } else {
+                if (!user.getEnabled()) {
+                    throw new BadRequestException("账号未激活！");
+                }
+                jwtUserDto = new JwtUserDto(
+                        user,
+                        dataService.getDeptIds(user),
+                        roleService.mapToGrantedAuthorities(user)
+                );
+                // 添加缓存数据
+                userCacheManager.addUserCache(username, jwtUserDto);
+            }
         }
-        // 可用性 :true:可用 false:不可用
-        boolean enabled = true;
-        // 过期性 :true:没过期 false:过期
-        boolean accountNonExpired = true;
-        // 有效性 :true:凭证有效 false:凭证无效
-        boolean credentialsNonExpired = true;
-        // 锁定性 :true:未锁定 false:已锁定
-        boolean accountNonLocked = true;
-        Set<String> authsSet = new HashSet<>();
-        if (ArrayUtil.isNotEmpty(userInfo.getPerms())) {
-            authsSet.addAll(Arrays.asList(userInfo.getPerms()));
-        }
-        UserVo userVo = userInfo.getUserVo();
-        List<RoleVo> roles = userVo.getRoles();
-        if (CollUtil.isNotEmpty(roles)) {
-            roles.stream()
-                    .filter(roleVo -> StrUtil.isNotBlank(roleVo.getRoleCode()))
-                    .forEach(roleVo -> authsSet.add(DataConstant.Security.ROLEPREFIX.getVal() + roleVo.getRoleCode()));
-        }
-        if(CollUtil.isEmpty(authsSet)){
-            authsSet.add(DataConstant.Security.ROLEPREFIX.getVal() + "VISITOR");
-        }
-        Collection<? extends GrantedAuthority> authorities
-                = AuthorityUtils.createAuthorityList(authsSet.toArray(new String[0]));
-        DataUser user = new DataUser(userVo.getId(), userVo.getNickname(), userVo.getUsername(), userVo.getPassword(),
-                enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
-        if(StrUtil.isNotBlank(userVo.getDeptId())){
-            user.setDept(userVo.getDeptId());
-        }
-        if (CollUtil.isNotEmpty(userVo.getPosts())) {
-            user.setPosts(userVo.getPosts().stream().map(PostVo::getId).collect(Collectors.toList()));
-        }
-        if (CollUtil.isNotEmpty(userVo.getRoles())) {
-            user.setRoles(userVo.getRoles().stream().map(roleVo -> {
-                DataRole dataRole = new DataRole();
-                dataRole.setId(roleVo.getId());
-                dataRole.setDataScope(roleVo.getDataScope());
-                return dataRole;
-            }).collect(Collectors.toList()));
-        }
-        return user;
+        UserDetails userDetails = toUserDetails(jwtUserDto);
+        return userDetails;
+    }
+
+    /**
+     * 修改认证实体UserDetails
+     * @param jwtUserDto
+     * @return
+     */
+    public UserDetails toUserDetails(JwtUserDto jwtUserDto) {
+        return new UserDetails() {
+            @Override
+            public Collection<? extends GrantedAuthority> getAuthorities() {
+                return jwtUserDto.getAuthorities();
+            }
+
+            @Override
+            public String getPassword() {
+                return jwtUserDto.getPassword();
+            }
+
+            @Override
+            public String getUsername() {
+                return jwtUserDto.getUsername();
+            }
+
+            @Override
+            public boolean isAccountNonExpired() {
+                return jwtUserDto.isAccountNonExpired();
+            }
+
+            @Override
+            public boolean isAccountNonLocked() {
+                return jwtUserDto.isAccountNonLocked();
+            }
+
+            @Override
+            public boolean isCredentialsNonExpired() {
+                return jwtUserDto.isCredentialsNonExpired();
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return jwtUserDto.isEnabled();
+            }
+        };
     }
 }
