@@ -32,7 +32,7 @@ public class SwaggerResourceConfig implements SwaggerResourcesProvider {
                 .forEach(routeDefinition -> {
                     routeDefinition.getPredicates().stream()
                             .filter(predicateDefinition -> ("Path").equalsIgnoreCase(predicateDefinition.getName()))
-                            .filter(predicateDefinition -> !"datax-auth".equalsIgnoreCase(routeDefinition.getId()) ||
+                            .filter(predicateDefinition -> !"eladmin-system".equalsIgnoreCase(routeDefinition.getId()) ||
                                     !"datax-service-data-api-mapping".equalsIgnoreCase(routeDefinition.getId()) ||
                                     !"datax-service-data-console".equalsIgnoreCase(routeDefinition.getId()))
                             .forEach(predicateDefinition -> resources.add(swaggerResource(routeDefinition.getId(),

@@ -127,30 +127,37 @@
 
 > 数据库版本为 **mysql5.7** 及以上版本
 > 
-> 1、依次创建以下数据库：
-> **data_cloud**
-> **data_cloud_quartz**
-> **foodmart2**
-> **robot**
-> 字符集：**utf8mb4**
-> 排序规则：**utf8mb4_general_ci**
+#### 1、`eladmin`数据库初始化
 > 
-> 2、数据库创建完毕，导入 db 文件夹下的 **sql** 脚本 即可完成数据库初始化
+> 1.1 source install/eladmin/eladmin_alldatadc.sql
 > 
-> 3、修改 **datax-config** 配置中心 **config** 文件夹下的配置文件，把 **redis**，**mysql** 和 **rabbitmq** 的配置信息改成自己的
+> 1.2 source install/eladmin/eladmin_dts.sql
+>
+> 1.3 source install/datax/data_cloud.sql
+>
+> 1.4 source install/datax/data_cloud_quartz.sql
 > 
-> 4、安装aspose-words
+> 1.5 source install/datax/foodmart2.sql
+> 
+> 1.6 source install/datax/robot.sql
+> 
+#### 2、修改 **datax-config** 配置中心
+
+> **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
+> 
+#### 3、安装aspose-words
+
 > cd install/datax
 >
 > mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=aspose-words-20.3.jar
 >
-> 5、项目根目录下执行 **mvn install**
+#### 4、项目根目录下执行 **mvn install**
 > 
 > 获取安装包build/eladmin-release-2.6.tar.gz
 > 
 > 上传服务器解压
 > 
-> 6、部署微服务：install/datax/startDatax.sh
+#### 5、部署微服务：install/datax/startDatax.sh
 > 
 > sh install/datax/startDatax.sh
 > 
@@ -164,15 +171,15 @@
 > 
 > 用户名：admin 密码：123456
 > 
-> 7、部署`Eladmin`:
+#### 6、部署`Eladmin`:
 > 
-> 7.1 启动`Eladmin`后端
+> 6.1 启动`Eladmin`后端
 > 
 > nohup java -jar -Xms128m -Xmx2048m -XX:PermSize=128M -XX:MaxPermSize=256M -XX:+UseG1GC -XX:MaxGCPauseMillis=20 
 > 
 > -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -XX:MaxInlineLevel=15 /mnt/poc/eladmin/deploy/eladmin-system-2.6.jar  &
 > 
-> 7.2 部署`Eladmin`前端
+> 6.2 部署`Eladmin`前端
 > 
 > source /etc/profile
 >
@@ -182,6 +189,6 @@
 > 
 > nohup npm run dev &
 > 
-> 7.3 访问`Eladmin`页面
+> 6.3 访问`Eladmin`页面
 > 
 > curl http://localhost:8013
