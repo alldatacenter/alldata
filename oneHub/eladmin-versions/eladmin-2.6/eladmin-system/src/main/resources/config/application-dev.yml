@@ -32,9 +32,9 @@ spring:
     druid:
       db-type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:mysql://${DB_HOST:43.138.157.47}:${DB_PORT:33060}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      url: jdbc:log4jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
       username: ${DB_USER:root}
-      password: ${DB_PWD:YL1cvhweVPspMQ.}
+      password: ${DB_PWD:123456}
       # 初始连接数
       initial-size: 5
       # 最小连接数
@@ -76,6 +76,9 @@ spring:
         wall:
           config:
             multi-statement-allow: true
+  main:
+    allow-bean-definition-overriding: true
+
   # Eladmin DTS email
   mail:
     host: smtp.qq.com
@@ -102,41 +105,40 @@ management:
     servlet:
       context-path: /actuator
 
-mybatis-plus:
-  # mapper.xml文件扫描
-  mapper-locations: classpath*:/mybatis-mapper/*Mapper.xml
-  # 实体扫描，多个package用逗号或者分号分隔
-  #typeAliasesPackage: com.yibo.essyncclient.*.entity
-  global-config:
-    # 数据库相关配置
-    db-config:
-      # 主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
-      id-type: AUTO
-      # 字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
-      field-strategy: NOT_NULL
-      # 驼峰下划线转换
-      column-underline: true
-      # 逻辑删除
-      logic-delete-value: 0
-      logic-not-delete-value: 1
-      # 数据库类型
-      db-type: mysql
-    banner: false
-  # mybatis原生配置
-  configuration:
-    map-underscore-to-camel-case: true
-    cache-enabled: false
-    call-setters-on-nulls: true
-    jdbc-type-for-null: 'null'
-    type-handlers-package: com.platform.dts.core.handler
+#mybatis-plus:
+#  # mapper.xml文件扫描
+#  mapper-locations: classpath*:/mapper/*Mapper.xml
+#  # 实体扫描，多个package用逗号或者分号分隔
+#  global-config:
+#    # 数据库相关配置
+#    db-config:
+#      # 主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+#      id-type: AUTO
+#      # 字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+#      field-strategy: NOT_NULL
+#      # 驼峰下划线转换
+#      column-underline: true
+#      # 逻辑删除
+#      logic-delete-value: 0
+#      logic-not-delete-value: 1
+#      # 数据库类型
+#      db-type: mysql
+#    banner: false
+#  # mybatis原生配置
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    cache-enabled: false
+#    call-setters-on-nulls: true
+#    jdbc-type-for-null: 'null'
+#    type-handlers-package: com.platform.dts.core.handler
 
-# 配置mybatis-plus打印sql日志
-logging:
-  level:
-    com.platform.dts.mapper: info
-    path: /mnt/poc/eladmin/logs
-
-#flinkx-job, access token
+  # 配置mybatis-plus打印sql日志
+#logging:
+#  level:
+#    com.platform.dts.mapper: info
+#    path: E:\AllDataDC\445\LarkMidTable-dev\larkmidtable-web\larkmt-admin
+#
+##flinkx-job, access token
 eladmin:
   job:
     accessToken:
