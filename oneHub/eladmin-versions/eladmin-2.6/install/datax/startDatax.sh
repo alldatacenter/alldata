@@ -6,7 +6,7 @@ dataxConfig=./datax-config.jar
 # gateway 网关
 dataxGateway=./datax-gateway.jar
 # oauth2 认证服务
-dataxAuth=./datax-auth.jar
+dataxAuth=./eladmin-system.jar
 # 系统服务
 systemService=./system-service.jar
 # 任务调度服务

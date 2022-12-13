@@ -38,11 +38,11 @@
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/datax-auth/target
+            <directory>${project.parent.basedir}/eladmin-system/target
             </directory>
             <outputDirectory>./</outputDirectory>
             <includes>
-                <include>datax-auth*.jar</include>
+                <include>eladmin-system*.jar</include>
             </includes>
         </fileSet>
 

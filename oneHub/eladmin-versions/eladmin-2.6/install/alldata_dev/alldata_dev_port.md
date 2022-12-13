@@ -1,6 +1,6 @@
 | 16gmaster                      |      |                |
 |--------------------------------| ---- | -------------- |
-| datax-auth                     | 8613 | 16gmaster  |
+| eladmin-system                     | 8613 | 16gmaster  |
 | datax-config                   | 8611 | 16gmaster  |
 | datax-service-data-market      | 8822 | 16gmaster  |
 | datax-service-data-integration | 8824 | 16gmaster  |

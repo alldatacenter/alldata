@@ -21,16 +21,15 @@
         <module>datax-config</module>
         <module>datax-common</module>
         <module>datax-gateway</module>
-        <module>datax-auth</module>
+        <module>eladmin-system</module>
         <module>datax-modules</module>
         <module>datax-tools</module>
         <module>datax-assembly</module>
-        <module>dts-admin</module>
-        <module>dts-core</module>
-        <module>dts-rpc</module>
+        <module>eladmin-core</module>
+        <module>eladmin-rpc</module>
     </modules>
 
-    <name>AllData ElAdmin</name>
+    <name>alldata-eladmin</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -150,6 +149,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
         <!--dataX Dependencies-->
@@ -233,13 +233,6 @@
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-ip2region</artifactId>
             <version>2.6.3</version>
-        </dependency>
-
-        <!--lombok插件-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <!-- excel工具 -->
