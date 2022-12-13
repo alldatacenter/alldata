@@ -14,8 +14,8 @@ import java.util.List;
  * 数据授权信息表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-10-23
+ * @author AllDataDC
+ * @date 2022-11-23
  */
 @ApiModel(value = "数据授权信息表Model")
 @Data

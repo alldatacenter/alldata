@@ -8,8 +8,8 @@ import cn.datax.common.base.BaseService;
  * 数据质量监控任务信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-09-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 public interface ScheduleJobService extends BaseService<ScheduleJobEntity> {
 

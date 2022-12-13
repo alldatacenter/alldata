@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 定时任务信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-05-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Data
 public class QrtzJobVo implements Serializable {

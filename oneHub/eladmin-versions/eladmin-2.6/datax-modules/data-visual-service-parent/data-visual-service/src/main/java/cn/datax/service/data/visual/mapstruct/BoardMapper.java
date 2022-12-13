@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 可视化看板配置信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-11-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 @Mapper(componentModel = "spring")
 public interface BoardMapper extends EntityMapper<BoardDto, BoardEntity, BoardVo> {

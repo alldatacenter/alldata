@@ -28,8 +28,8 @@ import java.util.stream.Collectors;
  * 数据质量监控任务日志信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-10-13
+ * @author AllDataDC
+ * @date 2022-11-13
  */
 @Api(tags = {"数据质量监控任务日志信息表"})
 @RestController

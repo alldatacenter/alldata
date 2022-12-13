@@ -12,8 +12,8 @@ import java.util.Map;
 /**
  * 表数据查询接口
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public interface DbQuery {
 

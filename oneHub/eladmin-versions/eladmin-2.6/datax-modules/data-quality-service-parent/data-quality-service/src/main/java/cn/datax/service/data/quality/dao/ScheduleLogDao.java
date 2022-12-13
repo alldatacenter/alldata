@@ -13,8 +13,8 @@ import org.apache.ibatis.annotations.Param;
  * 数据质量监控任务日志信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-10-13
+ * @author AllDataDC
+ * @date 2022-11-13
  */
 @Mapper
 public interface ScheduleLogDao extends BaseDao<ScheduleLogEntity> {

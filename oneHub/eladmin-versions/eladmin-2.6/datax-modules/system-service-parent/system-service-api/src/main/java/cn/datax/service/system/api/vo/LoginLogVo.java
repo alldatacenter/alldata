@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 登录日志信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-05-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 @Data
 public class LoginLogVo implements Serializable {

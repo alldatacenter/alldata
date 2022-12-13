@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import * as jobTemplate from '@/api/dtsdatax-job-template'
+import * as jobTemplate from '@/api/dts/datax-job-template'
 import * as job from '@/api/dts/datax-job-info'
 import Pagination from '@/components/Pagination'
 import Reader from './reader'

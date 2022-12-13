@@ -30,8 +30,8 @@ import java.util.stream.Collectors;
  * 可视化看板配置信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-11-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 @Api(tags = {"可视化看板配置信息表"})
 @RestController

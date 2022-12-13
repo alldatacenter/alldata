@@ -11,8 +11,8 @@ import java.util.List;
  *  服务类
  * </p>
  *
- * @author yuwei
- * @since 2019-11-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 public interface LogService extends BaseService<LogEntity> {
 

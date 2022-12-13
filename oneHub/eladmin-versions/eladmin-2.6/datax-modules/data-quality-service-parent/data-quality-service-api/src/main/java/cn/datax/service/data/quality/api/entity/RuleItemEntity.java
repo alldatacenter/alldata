@@ -13,8 +13,8 @@ import java.io.Serializable;
  * 规则核查类型信息表
  * </p>
  *
- * @author yuwei
- * @since 2020-10-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 @Data
 @Accessors(chain = true)

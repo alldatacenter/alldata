@@ -12,8 +12,8 @@ import java.util.Map;
  * 服务集成表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-08-20
+ * @author AllDataDC
+ * @date 2022-11-20
  */
 public interface ServiceIntegrationService extends BaseService<ServiceIntegrationEntity> {
 

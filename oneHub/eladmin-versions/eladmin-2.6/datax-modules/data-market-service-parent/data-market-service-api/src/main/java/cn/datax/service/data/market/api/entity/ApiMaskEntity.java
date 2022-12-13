@@ -19,8 +19,8 @@ import java.util.List;
  * 数据API脱敏信息表
  * </p>
  *
- * @author yuwei
- * @since 2020-04-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

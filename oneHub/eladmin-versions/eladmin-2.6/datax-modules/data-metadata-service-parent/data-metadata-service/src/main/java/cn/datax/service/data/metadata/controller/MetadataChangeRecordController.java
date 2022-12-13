@@ -31,8 +31,8 @@ import java.util.stream.Collectors;
  * 元数据变更记录表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-07-30
+ * @author AllDataDC
+ * @date 2022-11-30
  */
 @Api(tags = {"元数据变更记录表"})
 @RestController

@@ -16,8 +16,8 @@ import java.util.List;
  * 字典编码信息表
  * </p>
  *
- * @author yuwei
- * @since 2020-04-17
+ * @author AllDataDC
+ * @date 2022-11-17
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

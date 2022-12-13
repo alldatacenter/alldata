@@ -25,8 +25,8 @@ import java.util.Map;
  * 服务集成表 服务实现类
  * </p>
  *
- * @author yuwei
- * @since 2020-08-20
+ * @author AllDataDC
+ * @date 2022-11-20
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)

@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 流程分类表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-09-10
+ * @author AllDataDC
+ * @date 2022-11-10
  */
 @Mapper(componentModel = "spring")
 public interface CategoryMapper extends EntityMapper<CategoryDto, CategoryEntity, CategoryVo> {

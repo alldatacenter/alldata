@@ -133,13 +133,13 @@
 > 
 > 1.2 source install/eladmin/eladmin_dts.sql
 >
-> 1.3 source install/datax/data_cloud.sql
+> 1.3 source install/datax/eladmin_data_cloud.sql
 >
-> 1.4 source install/datax/data_cloud_quartz.sql
+> 1.4 source install/datax/eladmin_cloud_quartz.sql
 > 
-> 1.5 source install/datax/foodmart2.sql
+> 1.5 source install/datax/eladmin_foodmart2.sql
 > 
-> 1.6 source install/datax/robot.sql
+> 1.6 source install/datax/eladmin_robot.sql
 > 
 #### 2、修改 **datax-config** 配置中心
 

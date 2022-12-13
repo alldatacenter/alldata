@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
  * 规则核查项信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-10-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 @Api(tags = {"规则核查项信息表"})
 @RestController

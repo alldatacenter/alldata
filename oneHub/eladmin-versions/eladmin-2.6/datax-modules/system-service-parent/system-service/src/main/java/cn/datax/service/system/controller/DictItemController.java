@@ -31,8 +31,8 @@ import java.util.stream.Collectors;
  * 字典项信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-04-17
+ * @author AllDataDC
+ * @date 2022-11-17
  */
 @Api(tags = {"字典项信息表"})
 @RestController

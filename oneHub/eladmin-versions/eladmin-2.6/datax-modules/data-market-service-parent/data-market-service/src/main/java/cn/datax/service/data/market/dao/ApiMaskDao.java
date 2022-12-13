@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 数据API脱敏信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-04-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Mapper
 public interface ApiMaskDao extends BaseDao<ApiMaskEntity> {

@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 主数据模型列信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-08-26
+ * @author AllDataDC
+ * @date 2022-11-26
  */
 @Data
 public class ModelColumnVo implements Serializable {

@@ -42,8 +42,8 @@ import java.util.*;
  * @author AllDataDC 2022/11/28 15:30:33
  */
 @Service
-public class JobServiceImpl implements JobService {
-    private static Logger logger = LoggerFactory.getLogger(JobServiceImpl.class);
+public class JobDTSServiceImpl implements JobService {
+    private static Logger logger = LoggerFactory.getLogger(JobDTSServiceImpl.class);
 
     @Resource
     private JobGroupMapper jobGroupMapper;

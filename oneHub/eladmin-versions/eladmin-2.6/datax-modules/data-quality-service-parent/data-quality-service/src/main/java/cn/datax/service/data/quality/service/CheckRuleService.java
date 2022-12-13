@@ -11,8 +11,8 @@ import java.util.List;
  * 核查规则信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 public interface CheckRuleService extends BaseService<CheckRuleEntity> {
 

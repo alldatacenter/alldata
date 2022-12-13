@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 代码生成信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @Mapper
 public interface GenTableDao extends BaseDao<GenTableEntity> {

@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 可视化酷屏配置信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-12-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 @Mapper(componentModel = "spring")
 public interface ScreenMapper extends EntityMapper<ScreenDto, ScreenEntity, ScreenVo> {

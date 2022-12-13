@@ -30,8 +30,8 @@ import java.util.stream.Collectors;
  * 规则类型信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 @Api(tags = {"规则类型信息表"})
 @RestController

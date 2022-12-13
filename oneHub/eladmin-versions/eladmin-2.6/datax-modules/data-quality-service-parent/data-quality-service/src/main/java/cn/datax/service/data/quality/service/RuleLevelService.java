@@ -8,8 +8,8 @@ import cn.datax.common.base.BaseService;
  * 规则级别信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-10-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public interface RuleLevelService extends BaseService<RuleLevelEntity> {
 

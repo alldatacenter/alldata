@@ -13,8 +13,8 @@ import java.io.Serializable;
  * 定时任务信息表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-05-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @ApiModel(value = "定时任务信息表Model")
 @Data

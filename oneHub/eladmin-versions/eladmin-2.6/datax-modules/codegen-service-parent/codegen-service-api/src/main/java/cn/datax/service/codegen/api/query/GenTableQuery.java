@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
  * 代码生成信息表 查询实体
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

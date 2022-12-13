@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  */
 @Slf4j
 @RestControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalDTSExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public R handleException(Exception e){

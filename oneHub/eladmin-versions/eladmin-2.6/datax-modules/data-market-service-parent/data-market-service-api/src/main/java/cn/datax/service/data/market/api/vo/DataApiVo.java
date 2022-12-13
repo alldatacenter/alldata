@@ -16,8 +16,8 @@ import java.util.List;
  * 数据API信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-03-31
+ * @author AllDataDC
+ * @date 2022-11-31
  */
 @Data
 public class DataApiVo implements Serializable {

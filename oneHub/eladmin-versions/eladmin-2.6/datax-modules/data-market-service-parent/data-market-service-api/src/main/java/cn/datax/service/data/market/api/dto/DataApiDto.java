@@ -18,8 +18,8 @@ import java.util.List;
  * 数据API信息表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-03-31
+ * @author AllDataDC
+ * @date 2022-11-31
  */
 @ApiModel(value = "数据API信息表Model")
 @Data

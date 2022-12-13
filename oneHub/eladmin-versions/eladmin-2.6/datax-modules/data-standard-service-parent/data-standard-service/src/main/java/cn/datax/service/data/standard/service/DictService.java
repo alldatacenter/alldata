@@ -11,8 +11,8 @@ import java.util.List;
  * 数据标准字典表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-08-26
+ * @author AllDataDC
+ * @date 2022-11-26
  */
 public interface DictService extends BaseService<DictEntity> {
 

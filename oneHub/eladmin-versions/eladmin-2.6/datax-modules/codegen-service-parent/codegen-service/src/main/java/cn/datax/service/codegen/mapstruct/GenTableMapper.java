@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 代码生成信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @Mapper(componentModel = "spring")
 public interface GenTableMapper extends EntityMapper<GenTableDto, GenTableEntity, GenTableVo> {

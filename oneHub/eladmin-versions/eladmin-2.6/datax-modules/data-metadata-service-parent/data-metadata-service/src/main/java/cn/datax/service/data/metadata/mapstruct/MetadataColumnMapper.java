@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 元数据信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-07-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 @Mapper(componentModel = "spring")
 public interface MetadataColumnMapper extends EntityMapper<MetadataColumnDto, MetadataColumnEntity, MetadataColumnVo> {

@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 核查报告信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 @Data
 public class CheckReportVo implements Serializable {

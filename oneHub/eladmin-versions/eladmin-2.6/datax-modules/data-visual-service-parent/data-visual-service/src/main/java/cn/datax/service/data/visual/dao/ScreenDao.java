@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 可视化酷屏配置信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-12-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 @Mapper
 public interface ScreenDao extends BaseDao<ScreenEntity> {

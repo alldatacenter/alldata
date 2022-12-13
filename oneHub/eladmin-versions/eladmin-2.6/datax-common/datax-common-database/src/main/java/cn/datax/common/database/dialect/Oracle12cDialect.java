@@ -3,8 +3,8 @@ package cn.datax.common.database.dialect;
 /**
  * ORACLE Oracle12c+数据库方言
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public class Oracle12cDialect extends OracleDialect {
 

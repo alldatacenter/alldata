@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 数据质量监控任务日志信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-10-13
+ * @author AllDataDC
+ * @date 2022-11-13
  */
 @Data
 public class ScheduleLogVo implements Serializable {

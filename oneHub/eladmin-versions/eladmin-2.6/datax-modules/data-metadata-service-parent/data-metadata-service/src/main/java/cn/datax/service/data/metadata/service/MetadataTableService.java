@@ -14,8 +14,8 @@ import java.util.List;
  * 数据库表信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-07-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 public interface MetadataTableService extends BaseService<MetadataTableEntity> {
 

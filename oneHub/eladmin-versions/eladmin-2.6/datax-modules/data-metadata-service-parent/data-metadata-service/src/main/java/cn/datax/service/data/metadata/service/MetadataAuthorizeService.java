@@ -11,8 +11,8 @@ import java.util.List;
  * 数据授权信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-10-23
+ * @author AllDataDC
+ * @date 2022-11-23
  */
 public interface MetadataAuthorizeService extends BaseService<MetadataAuthorizeEntity> {
 

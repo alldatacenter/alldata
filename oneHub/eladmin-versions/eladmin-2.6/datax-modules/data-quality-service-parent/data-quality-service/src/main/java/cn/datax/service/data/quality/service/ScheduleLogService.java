@@ -10,8 +10,8 @@ import java.util.List;
  * 数据质量监控任务日志信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-10-13
+ * @author AllDataDC
+ * @date 2022-11-13
  */
 public interface ScheduleLogService extends BaseService<ScheduleLogEntity> {
 

@@ -18,8 +18,8 @@ import java.util.List;
  * 数据授权信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-10-23
+ * @author AllDataDC
+ * @date 2022-11-23
  */
 @Api(tags = {"元数据授权信息表"})
 @RestController

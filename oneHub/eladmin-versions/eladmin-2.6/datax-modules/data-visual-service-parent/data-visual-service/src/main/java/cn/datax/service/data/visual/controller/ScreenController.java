@@ -31,8 +31,8 @@ import java.util.stream.Collectors;
  * 可视化酷屏配置信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-12-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 @Api(tags = {"可视化酷屏配置信息表"})
 @RestController

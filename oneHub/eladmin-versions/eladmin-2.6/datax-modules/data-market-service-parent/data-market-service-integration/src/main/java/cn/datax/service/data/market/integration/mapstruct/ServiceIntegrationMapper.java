@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 服务集成表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-08-20
+ * @author AllDataDC
+ * @date 2022-11-20
  */
 @Mapper(componentModel = "spring")
 public interface ServiceIntegrationMapper extends EntityMapper<ServiceIntegrationDto, ServiceIntegrationEntity, ServiceIntegrationVo> {

@@ -13,8 +13,8 @@ import java.io.Serializable;
  * 主数据模型列信息表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-08-26
+ * @author AllDataDC
+ * @date 2022-11-26
  */
 @ApiModel(value = "主数据模型列信息表Model")
 @Data

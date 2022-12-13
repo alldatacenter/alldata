@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 业务流程配置表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-09-22
+ * @author AllDataDC
+ * @date 2022-11-22
  */
 @Mapper(componentModel = "spring")
 public interface BusinessMapper extends EntityMapper<BusinessDto, BusinessEntity, BusinessVo> {

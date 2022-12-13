@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 可视化酷屏和图表关联表
  * </p>
  *
- * @author yuwei
- * @since 2020-12-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 @Data
 @Accessors(chain = true)

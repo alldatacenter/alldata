@@ -9,8 +9,8 @@ import cn.datax.service.system.api.entity.DeptEntity;
  *  服务类
  * </p>
  *
- * @author yuwei
- * @since 2019-09-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 public interface DeptService extends BaseService<DeptEntity> {
 

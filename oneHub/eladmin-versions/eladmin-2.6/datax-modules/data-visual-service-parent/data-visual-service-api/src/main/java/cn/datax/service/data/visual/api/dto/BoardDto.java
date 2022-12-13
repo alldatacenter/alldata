@@ -14,8 +14,8 @@ import java.io.Serializable;
  * 可视化看板配置信息表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-11-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 @ApiModel(value = "可视化看板配置信息表Model")
 @Data

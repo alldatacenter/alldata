@@ -8,7 +8,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@MapperScan("cn.datax.service.**.dao")
+@MapperScan({"cn.datax.service.**.dao","com.platform.dts.mapper"})
 @EnableTransactionManagement
 public class DataBatisPlusConfig {
 

@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
  * 代码生成信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @Api(tags = {"代码生成信息表"})
 @RestController

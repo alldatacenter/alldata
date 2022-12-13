@@ -1,6 +1,5 @@
 package com.platform.dts.core.conf;
 
-import com.platform.dts.mapper.*;
 import com.platform.dts.core.scheduler.JobScheduler;
 import com.platform.dts.mapper.JobDatasourceMapper;
 import com.platform.dts.mapper.JobGroupMapper;

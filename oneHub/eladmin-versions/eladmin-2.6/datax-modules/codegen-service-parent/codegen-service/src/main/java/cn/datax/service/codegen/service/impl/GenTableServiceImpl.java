@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
  * 代码生成信息表 服务实现类
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @Service
 public class GenTableServiceImpl extends BaseServiceImpl<GenTableDao, GenTableEntity> implements GenTableService {

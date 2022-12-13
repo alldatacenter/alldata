@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 数据标准类别表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-08-26
+ * @author AllDataDC
+ * @date 2022-11-26
  */
 @Mapper(componentModel = "spring")
 public interface TypeMapper extends EntityMapper<TypeDto, TypeEntity, TypeVo> {

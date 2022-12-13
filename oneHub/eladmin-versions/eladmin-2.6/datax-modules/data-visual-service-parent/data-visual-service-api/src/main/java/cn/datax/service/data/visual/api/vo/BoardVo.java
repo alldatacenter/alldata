@@ -13,8 +13,8 @@ import java.util.List;
  * 可视化看板配置信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-11-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 @Data
 public class BoardVo implements Serializable {

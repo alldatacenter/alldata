@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
  * 数据质量监控任务信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-09-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 @Mapper
 @Repository

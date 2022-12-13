@@ -13,8 +13,8 @@ import java.io.Serializable;
  * 系统参数配置信息表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @ApiModel(value = "系统参数配置信息表Model")
 @Data
