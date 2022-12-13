@@ -11,8 +11,8 @@ import java.util.List;
  * 流程分类表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-09-10
+ * @author AllDataDC
+ * @date 2022-11-10
  */
 public interface CategoryService extends BaseService<CategoryEntity> {
 

@@ -22,8 +22,8 @@ import static com.google.common.collect.Maps.newTreeMap;
 
 /**
  *
- * @author AllDataDC
- * @date 2022/11/16 11:14
+ * @Author: LarkMidTable
+ * @Date: 2020/9/16 11:14
  * @Description:
  **/
 @Component(value = "ServiceModelToSwagger2Mapper")
@@ -145,9 +145,9 @@ public class ServiceModelToSwagger2MapperImpl extends ServiceModelToSwagger2Mapp
 
             Iterator<String> it = from.getTags().iterator();
             while(it.hasNext()){
-               String tag = it.next();
-               list.add(
-                   StringUtils.isNotBlank(tag) ? messageSource.getMessage(tag, null, tag, locale) : " ");
+                String tag = it.next();
+                list.add(
+                        StringUtils.isNotBlank(tag) ? messageSource.getMessage(tag, null, tag, locale) : " ");
             }
 
             operation.setTags(list);

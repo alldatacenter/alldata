@@ -11,8 +11,8 @@ import java.util.List;
  * 业务流程配置表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-09-22
+ * @author AllDataDC
+ * @date 2022-11-22
  */
 public interface BusinessService extends BaseService<BusinessEntity> {
 

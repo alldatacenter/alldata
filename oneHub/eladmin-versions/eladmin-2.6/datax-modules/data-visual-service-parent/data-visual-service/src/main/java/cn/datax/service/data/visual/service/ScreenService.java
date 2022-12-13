@@ -11,8 +11,8 @@ import java.util.List;
  * 可视化酷屏配置信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-12-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 public interface ScreenService extends BaseService<ScreenEntity> {
 

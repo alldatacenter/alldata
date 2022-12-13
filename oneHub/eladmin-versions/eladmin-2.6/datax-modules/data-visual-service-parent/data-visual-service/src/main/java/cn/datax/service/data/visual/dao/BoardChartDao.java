@@ -11,8 +11,8 @@ import java.util.List;
  * 可视化看板和图表关联表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-11-11
+ * @author AllDataDC
+ * @date 2022-11-11
  */
 @Mapper
 public interface BoardChartDao extends BaseDao<BoardChartEntity> {

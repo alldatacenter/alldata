@@ -9,8 +9,8 @@ import java.io.Serializable;
  * 数据库表信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-07-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 @Data
 public class MetadataTableVo implements Serializable {

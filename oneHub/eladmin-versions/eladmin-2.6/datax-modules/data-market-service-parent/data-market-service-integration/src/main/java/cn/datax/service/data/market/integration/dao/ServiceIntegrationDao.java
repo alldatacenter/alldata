@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 服务集成表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-08-20
+ * @author AllDataDC
+ * @date 2022-11-20
  */
 @Mapper
 public interface ServiceIntegrationDao extends BaseDao<ServiceIntegrationEntity> {

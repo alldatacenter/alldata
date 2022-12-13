@@ -9,8 +9,8 @@ import cn.datax.service.codegen.api.entity.GenTableEntity;
  * 代码生成信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 public interface GenTableService extends BaseService<GenTableEntity> {
 

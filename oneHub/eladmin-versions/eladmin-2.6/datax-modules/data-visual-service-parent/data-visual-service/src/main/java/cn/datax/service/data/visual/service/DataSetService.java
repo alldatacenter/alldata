@@ -12,8 +12,8 @@ import java.util.List;
  * 数据集信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-07-31
+ * @author AllDataDC
+ * @date 2022-11-31
  */
 public interface DataSetService extends BaseService<DataSetEntity> {
 

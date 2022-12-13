@@ -32,8 +32,8 @@ import java.util.stream.Collectors;
  * 核查报告信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 @Api(tags = {"核查报告信息表"})
 @RestController

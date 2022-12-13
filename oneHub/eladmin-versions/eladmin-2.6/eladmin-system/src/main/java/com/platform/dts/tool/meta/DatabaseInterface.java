@@ -3,7 +3,7 @@ package com.platform.dts.tool.meta;
 public interface DatabaseInterface {
 
     /**
-     * Returns the minimal SQL to launch in order to determine the layout of the resultset for a given com.com.guoliang.flinkx.admin.tool.database table
+     * Returns the minimal SQL to launch in order to determine the layout of the resultset for a given com.com.platform.dts.tool.database table
      *
      * @param tableName The name of the table to determine the layout for
      * @return The SQL to launch.

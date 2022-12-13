@@ -16,8 +16,8 @@ import lombok.experimental.Accessors;
  * 服务集成调用日志表
  * </p>
  *
- * @author yuwei
- * @since 2020-08-20
+ * @author AllDataDC
+ * @date 2022-11-20
  */
 @Data
 @Accessors(chain = true)

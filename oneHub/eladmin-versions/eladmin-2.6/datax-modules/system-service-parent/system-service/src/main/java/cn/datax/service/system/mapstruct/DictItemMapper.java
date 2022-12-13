@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 字典项信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-04-17
+ * @author AllDataDC
+ * @date 2022-11-17
  */
 @Mapper(componentModel = "spring")
 public interface DictItemMapper extends EntityMapper<DictItemDto, DictItemEntity, DictItemVo> {

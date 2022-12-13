@@ -20,8 +20,8 @@ import java.util.Map;
 /**
  * 根据checktoken的结果转化用户信息
  *
- * @author yuwei
- * @since 2019/10/30
+ * @author AllDataDC
+ * @date 2022/11/30
  */
 public class DataUserAuthenticationConverter implements UserAuthenticationConverter {
 

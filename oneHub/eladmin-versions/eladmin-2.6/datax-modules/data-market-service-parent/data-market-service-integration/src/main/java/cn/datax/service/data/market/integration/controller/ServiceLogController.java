@@ -31,8 +31,8 @@ import java.util.stream.Collectors;
  * 服务集成调用日志表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-08-20
+ * @author AllDataDC
+ * @date 2022-11-20
  */
 @Api(tags = {"服务集成调用日志表"})
 @RestController

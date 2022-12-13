@@ -15,8 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
  * 规则级别信息表 服务实现类
  * </p>
  *
- * @author yuwei
- * @since 2020-10-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)

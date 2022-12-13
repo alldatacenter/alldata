@@ -11,8 +11,8 @@ import java.util.List;
  * 规则级别信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-10-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Mapper(componentModel = "spring")
 public interface RuleLevelMapper {

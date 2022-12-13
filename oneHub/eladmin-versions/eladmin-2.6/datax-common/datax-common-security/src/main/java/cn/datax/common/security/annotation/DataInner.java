@@ -5,8 +5,8 @@ import java.lang.annotation.*;
 /**
  * 服务调用不鉴权注解
  *
- * @author yuwei
- * @since 2019/10/30
+ * @author AllDataDC
+ * @date 2022/11/30
  */
 @Target({ ElementType.PARAMETER, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)

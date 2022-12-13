@@ -14,8 +14,8 @@ import lombok.experimental.Accessors;
  * 数据集信息表
  * </p>
  *
- * @author yuwei
- * @since 2020-07-31
+ * @author AllDataDC
+ * @date 2022-11-31
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

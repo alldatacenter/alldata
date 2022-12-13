@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 可视化图表配置信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-11-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 @Mapper
 public interface ChartDao extends BaseDao<ChartEntity> {

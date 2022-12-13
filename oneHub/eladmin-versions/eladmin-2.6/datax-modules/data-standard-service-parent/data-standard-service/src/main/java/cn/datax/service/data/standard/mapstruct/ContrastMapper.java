@@ -14,8 +14,8 @@ import java.util.List;
  * 对照表信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 @Mapper(componentModel = "spring")
 public interface ContrastMapper extends EntityMapper<ContrastDto, ContrastEntity, ContrastVo> {

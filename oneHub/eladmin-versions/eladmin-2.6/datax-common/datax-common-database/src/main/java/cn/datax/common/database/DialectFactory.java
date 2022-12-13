@@ -6,8 +6,8 @@ import cn.datax.common.database.dialect.DialectRegistry;
 /**
  * 方言工厂类
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public class DialectFactory {
 

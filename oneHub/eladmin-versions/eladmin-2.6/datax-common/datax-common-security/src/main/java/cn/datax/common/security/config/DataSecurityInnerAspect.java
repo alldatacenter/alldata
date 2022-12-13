@@ -10,8 +10,8 @@ import org.aspectj.lang.annotation.Aspect;
 /**
  * 服务间接口不鉴权处理逻辑
  *
- * @author yuwei
- * @since 2019/10/30
+ * @author AllDataDC
+ * @date 2022/11/30
  */
 @Slf4j
 @Aspect

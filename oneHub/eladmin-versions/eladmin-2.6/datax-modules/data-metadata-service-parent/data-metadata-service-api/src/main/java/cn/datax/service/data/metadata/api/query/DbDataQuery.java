@@ -10,8 +10,8 @@ import java.io.Serializable;
  * 数据查询 查询实体
  * </p>
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Data
 public class DbDataQuery implements Serializable {

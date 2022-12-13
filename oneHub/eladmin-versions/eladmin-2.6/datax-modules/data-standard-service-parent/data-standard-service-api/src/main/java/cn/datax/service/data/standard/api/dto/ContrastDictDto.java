@@ -14,8 +14,8 @@ import java.io.Serializable;
  * 字典对照信息表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 @ApiModel(value = "字典对照信息表Model")
 @Data

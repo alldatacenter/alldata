@@ -30,8 +30,8 @@ import java.util.stream.Collectors;
  * 业务流程配置表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-09-22
+ * @author AllDataDC
+ * @date 2022-11-22
  */
 @Api(tags = {"业务流程配置表"})
 @RestController

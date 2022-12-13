@@ -8,6 +8,14 @@ AllData 一站式大数据平台
 # 安装依赖
 npm install
 
+> 依次安装： 
+
+> npm instal script-loader
+
+> npm instal jsonlint
+
+> npm instal vue2-jsoneditor
+
 # 启动服务 localhost:8013
 npm run dev
 

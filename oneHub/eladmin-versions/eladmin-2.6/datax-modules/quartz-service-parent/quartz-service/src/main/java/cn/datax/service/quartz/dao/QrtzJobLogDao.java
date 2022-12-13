@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * 定时任务日志信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-05-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Mapper
 public interface QrtzJobLogDao extends BaseDao<QrtzJobLogEntity> {

@@ -15,8 +15,8 @@ import java.util.List;
  * 对照表信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 public interface ContrastService extends BaseService<ContrastEntity> {
 

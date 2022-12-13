@@ -5,8 +5,8 @@ import cn.datax.common.database.DbDialect;
 /**
  * 方言抽象类
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public abstract class AbstractDbDialect implements DbDialect {
 
