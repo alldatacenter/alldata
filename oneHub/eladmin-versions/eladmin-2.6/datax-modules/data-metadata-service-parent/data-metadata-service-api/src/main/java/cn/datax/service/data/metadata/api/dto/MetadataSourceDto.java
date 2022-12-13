@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 数据源信息表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @ApiModel(value = "数据源信息表Model")
 @Data

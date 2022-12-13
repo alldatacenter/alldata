@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 系统参数配置信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @Data
 public class ConfigVo implements Serializable {

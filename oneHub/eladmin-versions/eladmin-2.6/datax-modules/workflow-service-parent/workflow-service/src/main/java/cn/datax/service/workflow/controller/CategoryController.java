@@ -33,8 +33,8 @@ import java.util.stream.Collectors;
  * 流程分类表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-09-10
+ * @author AllDataDC
+ * @date 2022-11-10
  */
 @Api(tags = {"流程分类表"})
 @RestController

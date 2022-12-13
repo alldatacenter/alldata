@@ -16,8 +16,8 @@ import java.util.List;
  * 数据API信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-03-31
+ * @author AllDataDC
+ * @date 2022-11-31
  */
 @Mapper
 public interface DataApiDao extends BaseDao<DataApiEntity> {

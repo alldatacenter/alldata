@@ -12,8 +12,8 @@ import java.util.List;
  * 主数据模型表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-08-26
+ * @author AllDataDC
+ * @date 2022-11-26
  */
 @Data
 public class ModelVo implements Serializable {

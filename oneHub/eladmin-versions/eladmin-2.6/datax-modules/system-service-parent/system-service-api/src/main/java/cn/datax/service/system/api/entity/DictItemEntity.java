@@ -13,8 +13,8 @@ import lombok.experimental.Accessors;
  * 字典项信息表
  * </p>
  *
- * @author yuwei
- * @since 2020-04-17
+ * @author AllDataDC
+ * @date 2022-11-17
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

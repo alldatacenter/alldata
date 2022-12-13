@@ -11,8 +11,8 @@ import java.util.List;
  * 规则核查项信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-10-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 @Mapper(componentModel = "spring")
 public interface RuleItemMapper {

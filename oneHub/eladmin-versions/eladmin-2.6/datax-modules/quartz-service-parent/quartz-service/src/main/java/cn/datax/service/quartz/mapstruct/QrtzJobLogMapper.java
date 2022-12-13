@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 定时任务日志信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-05-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Mapper(componentModel = "spring")
 public interface QrtzJobLogMapper extends EntityMapper<QrtzJobLogDto, QrtzJobLogEntity, QrtzJobLogVo> {

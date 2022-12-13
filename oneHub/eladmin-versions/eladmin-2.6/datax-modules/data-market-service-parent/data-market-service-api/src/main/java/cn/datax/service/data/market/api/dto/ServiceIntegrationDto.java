@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 服务集成表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-08-20
+ * @author AllDataDC
+ * @date 2022-11-20
  */
 @ApiModel(value = "服务集成表Model")
 @Data

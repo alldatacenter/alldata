@@ -23,12 +23,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableSwaggerBootstrapUI
 @ConditionalOnWebApplication
-public class SwaggerConfig implements WebMvcConfigurer {
+public class SwaggerDTSConfig implements WebMvcConfigurer {
 
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("com.guoliang.flinkx.admin.controller")).paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.platform.dts.controller")).paths(PathSelectors.any())
                 .build();
     }
 

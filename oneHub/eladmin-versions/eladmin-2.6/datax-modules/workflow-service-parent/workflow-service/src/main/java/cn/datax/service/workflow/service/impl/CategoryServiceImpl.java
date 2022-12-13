@@ -18,8 +18,8 @@ import java.util.List;
  * 流程分类表 服务实现类
  * </p>
  *
- * @author yuwei
- * @since 2020-09-10
+ * @author AllDataDC
+ * @date 2022-11-10
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)

@@ -11,8 +11,8 @@ import java.util.List;
  *  服务类
  * </p>
  *
- * @author yuwei
- * @since 2019-09-11
+ * @author AllDataDC
+ * @date 2022-11-11
  */
 public interface PostService extends BaseService<PostEntity> {
 

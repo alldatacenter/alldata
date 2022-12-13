@@ -12,8 +12,8 @@ import lombok.experimental.Accessors;
  * 数据标准类别表
  * </p>
  *
- * @author yuwei
- * @since 2020-08-26
+ * @author AllDataDC
+ * @date 2022-11-26
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

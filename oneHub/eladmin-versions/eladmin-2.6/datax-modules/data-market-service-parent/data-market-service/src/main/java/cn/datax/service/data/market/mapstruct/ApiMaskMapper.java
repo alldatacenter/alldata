@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 数据API脱敏信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-04-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Mapper(componentModel = "spring")
 public interface ApiMaskMapper extends EntityMapper<ApiMaskDto, ApiMaskEntity, ApiMaskVo> {

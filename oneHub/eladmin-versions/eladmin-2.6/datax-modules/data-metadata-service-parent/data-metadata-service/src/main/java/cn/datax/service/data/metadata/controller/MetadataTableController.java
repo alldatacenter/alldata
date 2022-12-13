@@ -31,8 +31,8 @@ import java.util.stream.Collectors;
  * 数据库表信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-07-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 @Api(tags = {"数据库表信息表"})
 @RestController

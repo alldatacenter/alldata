@@ -30,8 +30,8 @@ import java.util.stream.Collectors;
  * 数据API脱敏信息表 前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2020-04-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Api(tags = {"数据API脱敏信息表"})
 @RestController

@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 字典对照信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 @Mapper(componentModel = "spring")
 public interface ContrastDictMapper extends EntityMapper<ContrastDictDto, ContrastDictEntity, ContrastDictVo> {

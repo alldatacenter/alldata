@@ -36,14 +36,14 @@ import java.util.stream.Collectors;
  *  前端控制器
  * </p>
  *
- * @author yuwei
- * @since 2019-09-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 @Slf4j
 @Api(value="系统管理接口", tags = {"系统管理"})
 @RestController
 @RequestMapping("/users")
-public class UserController extends BaseController {
+public class UserDataXController extends BaseController {
 
     @Autowired
     private UserService userService;

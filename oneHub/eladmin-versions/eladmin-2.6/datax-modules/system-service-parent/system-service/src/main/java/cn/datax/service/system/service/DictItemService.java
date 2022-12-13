@@ -11,8 +11,8 @@ import java.util.List;
  * 字典项信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-04-17
+ * @author AllDataDC
+ * @date 2022-11-17
  */
 public interface DictItemService extends BaseService<DictItemEntity> {
 

@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
  * 元数据变更记录表 查询实体
  * </p>
  *
- * @author yuwei
- * @since 2020-07-30
+ * @author AllDataDC
+ * @date 2022-11-30
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

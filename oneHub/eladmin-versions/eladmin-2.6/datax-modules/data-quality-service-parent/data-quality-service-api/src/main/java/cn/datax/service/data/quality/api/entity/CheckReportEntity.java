@@ -15,8 +15,8 @@ import lombok.experimental.Accessors;
  * 核查报告信息表
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 @Data
 @Accessors(chain = true)

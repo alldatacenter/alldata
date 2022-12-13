@@ -15,8 +15,8 @@ import java.util.Map;
  * 数据API信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-03-31
+ * @author AllDataDC
+ * @date 2022-11-31
  */
 public interface DataApiService extends BaseService<DataApiEntity> {
 

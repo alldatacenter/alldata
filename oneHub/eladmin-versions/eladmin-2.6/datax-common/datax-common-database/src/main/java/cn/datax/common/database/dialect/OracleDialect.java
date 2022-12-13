@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * Oracle Oracle11g及以下数据库方言
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public class OracleDialect extends AbstractDbDialect {
 

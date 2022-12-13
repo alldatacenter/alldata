@@ -9,8 +9,8 @@ import java.io.Serializable;
  * 规则级别信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-10-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Data
 public class RuleLevelVo implements Serializable {

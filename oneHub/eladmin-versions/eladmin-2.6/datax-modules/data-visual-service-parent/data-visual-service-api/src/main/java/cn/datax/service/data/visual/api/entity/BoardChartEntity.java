@@ -13,8 +13,8 @@ import java.io.Serializable;
  * 可视化看板和图表关联表
  * </p>
  *
- * @author yuwei
- * @since 2020-11-11
+ * @author AllDataDC
+ * @date 2022-11-11
  */
 @Data
 @Accessors(chain = true)

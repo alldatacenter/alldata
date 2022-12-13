@@ -13,8 +13,8 @@ import java.io.Serializable;
  * 数据质量监控任务信息表
  * </p>
  *
- * @author yuwei
- * @since 2020-09-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 @Data
 @Accessors(chain = true)

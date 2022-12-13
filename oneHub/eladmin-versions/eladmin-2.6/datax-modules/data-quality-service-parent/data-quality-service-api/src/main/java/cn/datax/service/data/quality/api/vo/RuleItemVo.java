@@ -9,8 +9,8 @@ import java.io.Serializable;
  * 规则核查项信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-10-15
+ * @author AllDataDC
+ * @date 2022-11-15
  */
 @Data
 public class RuleItemVo implements Serializable {

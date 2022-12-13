@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
  * 数据源信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Data
 public class MetadataSourceVo implements Serializable {

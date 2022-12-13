@@ -11,8 +11,8 @@ import java.util.List;
  * 数据API脱敏信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-04-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public interface ApiMaskService extends BaseService<ApiMaskEntity> {
 

@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 可视化图表配置信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-11-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 @Data
 public class ChartVo implements Serializable {

@@ -15,8 +15,8 @@ import java.util.List;
  * 字典对照信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-09-27
+ * @author AllDataDC
+ * @date 2022-11-27
  */
 @Mapper
 public interface ContrastDictDao extends BaseDao<ContrastDictEntity> {

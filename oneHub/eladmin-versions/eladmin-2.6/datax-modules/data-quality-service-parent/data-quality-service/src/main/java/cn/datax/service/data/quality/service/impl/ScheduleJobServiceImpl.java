@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
  * 数据质量监控任务信息表 服务实现类
  * </p>
  *
- * @author yuwei
- * @since 2020-09-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)

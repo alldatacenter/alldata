@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 数据集信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-03-20
+ * @author AllDataDC
+ * @date 2022-11-20
  */
 @Mapper(componentModel = "spring")
 public interface FileMapper extends EntityMapper<FileDto, FileEntity, FileVo> {

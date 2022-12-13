@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 /**
  * SQLServer 2005 数据库方言
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public class SQLServer2008Dialect extends AbstractDbDialect {
 

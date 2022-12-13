@@ -11,8 +11,8 @@ import lombok.experimental.Accessors;
  * 流程分类表
  * </p>
  *
- * @author yuwei
- * @since 2020-09-10
+ * @author AllDataDC
+ * @date 2022-11-10
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

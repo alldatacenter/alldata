@@ -11,8 +11,8 @@ import java.util.List;
  * 可视化看板配置信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-11-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 public interface BoardService extends BaseService<BoardEntity> {
 

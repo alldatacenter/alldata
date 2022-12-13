@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 字典编码信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-04-17
+ * @author AllDataDC
+ * @date 2022-11-17
  */
 @Data
 public class DictVo implements Serializable {

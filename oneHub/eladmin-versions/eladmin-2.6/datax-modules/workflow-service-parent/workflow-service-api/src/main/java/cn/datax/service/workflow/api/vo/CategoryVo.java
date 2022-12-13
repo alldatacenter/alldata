@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 流程分类表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-09-10
+ * @author AllDataDC
+ * @date 2022-11-10
  */
 @Data
 public class CategoryVo implements Serializable {

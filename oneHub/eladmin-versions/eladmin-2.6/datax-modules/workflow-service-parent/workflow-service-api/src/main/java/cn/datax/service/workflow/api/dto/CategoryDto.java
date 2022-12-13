@@ -13,8 +13,8 @@ import java.io.Serializable;
  * 流程分类表 实体DTO
  * </p>
  *
- * @author yuwei
- * @since 2020-09-10
+ * @author AllDataDC
+ * @date 2022-11-10
  */
 @ApiModel(value = "流程分类表Model")
 @Data

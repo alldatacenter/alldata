@@ -11,8 +11,8 @@ import java.util.List;
  * 部门关系表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2019-11-22
+ * @author AllDataDC
+ * @date 2022-11-22
  */
 @Mapper
 public interface DeptRelationDao extends BaseDao<DeptRelationEntity> {

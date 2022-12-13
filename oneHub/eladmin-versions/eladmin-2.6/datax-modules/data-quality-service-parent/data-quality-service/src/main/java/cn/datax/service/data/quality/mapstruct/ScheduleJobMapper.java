@@ -11,8 +11,8 @@ import java.util.List;
  * 数据质量监控任务信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-09-29
+ * @author AllDataDC
+ * @date 2022-11-29
  */
 @Mapper(componentModel = "spring")
 public interface ScheduleJobMapper {

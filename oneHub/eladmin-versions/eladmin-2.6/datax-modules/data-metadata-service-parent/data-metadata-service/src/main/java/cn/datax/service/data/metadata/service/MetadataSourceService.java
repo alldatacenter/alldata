@@ -17,8 +17,8 @@ import java.util.List;
  * 数据源信息表 服务类
  * </p>
  *
- * @author yuwei
- * @since 2020-03-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 public interface MetadataSourceService extends BaseService<MetadataSourceEntity> {
 

@@ -11,8 +11,8 @@ import org.mapstruct.Mapper;
  * 系统参数配置信息表 Mapper 实体映射
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @Mapper(componentModel = "spring")
 public interface ConfigMapper extends EntityMapper<ConfigDto, ConfigEntity, ConfigVo> {

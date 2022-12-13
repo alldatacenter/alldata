@@ -13,8 +13,8 @@ import java.util.List;
  * 数据API脱敏信息表 实体VO
  * </p>
  *
- * @author yuwei
- * @since 2020-04-14
+ * @author AllDataDC
+ * @date 2022-11-14
  */
 @Data
 public class ApiMaskVo implements Serializable {

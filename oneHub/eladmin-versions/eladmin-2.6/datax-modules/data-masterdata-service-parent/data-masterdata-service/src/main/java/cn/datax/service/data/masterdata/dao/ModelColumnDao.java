@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * 主数据模型列信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-08-26
+ * @author AllDataDC
+ * @date 2022-11-26
  */
 @Mapper
 public interface ModelColumnDao extends BaseDao<ModelColumnEntity> {

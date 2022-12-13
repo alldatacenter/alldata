@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * 数据授权信息表 Mapper 接口
  * </p>
  *
- * @author yuwei
- * @since 2020-10-23
+ * @author AllDataDC
+ * @date 2022-11-23
  */
 @Mapper
 public interface MetadataAuthorizeDao extends BaseDao<MetadataAuthorizeEntity> {

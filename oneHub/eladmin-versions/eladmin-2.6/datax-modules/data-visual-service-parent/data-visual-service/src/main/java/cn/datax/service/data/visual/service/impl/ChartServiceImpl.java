@@ -41,8 +41,8 @@ import java.util.stream.Collectors;
  * 可视化图表配置信息表 服务实现类
  * </p>
  *
- * @author yuwei
- * @since 2020-11-04
+ * @author AllDataDC
+ * @date 2022-11-04
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)

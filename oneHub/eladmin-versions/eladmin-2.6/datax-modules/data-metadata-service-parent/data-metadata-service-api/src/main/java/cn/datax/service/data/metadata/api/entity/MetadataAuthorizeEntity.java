@@ -15,8 +15,8 @@ import java.io.Serializable;
  * 数据授权信息表
  * </p>
  *
- * @author yuwei
- * @since 2020-10-23
+ * @author AllDataDC
+ * @date 2022-11-23
  */
 @Data
 @Accessors(chain = true)

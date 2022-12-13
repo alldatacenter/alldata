@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
  * 系统参数配置信息表 服务实现类
  * </p>
  *
- * @author yuwei
- * @since 2020-05-19
+ * @author AllDataDC
+ * @date 2022-11-19
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)

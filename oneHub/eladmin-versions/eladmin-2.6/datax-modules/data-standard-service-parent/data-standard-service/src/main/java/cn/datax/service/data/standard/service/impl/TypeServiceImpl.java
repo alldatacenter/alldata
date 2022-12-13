@@ -24,8 +24,8 @@ import java.util.List;
  * 数据标准类别表 服务实现类
  * </p>
  *
- * @author yuwei
- * @since 2020-08-26
+ * @author AllDataDC
+ * @date 2022-11-26
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
