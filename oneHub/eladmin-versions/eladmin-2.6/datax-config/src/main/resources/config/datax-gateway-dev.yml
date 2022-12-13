@@ -14,8 +14,8 @@ spring:
           lower-case-service-id: true
       routes:
         # 认证中心
-        - id: datax-auth
-          uri: lb://datax-auth
+        - id: eladmin-system
+          uri: lb://eladmin-system
           predicates:
             - Path=/auth/**
           filters:

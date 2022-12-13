@@ -1,12 +1,40 @@
+# 注册中心配置
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 20
+    # 设置使用IP
+    prefer-ip-address: true
+    # 设置外网IP号
+    ip-address: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 3
+    service-url:
+      defaultZone: http://localhost:8610/eureka
+
 #配置数据源
 spring:
+  application:
+    name: eladmin-system
+  profiles:
+    active: dev
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: datax-config
   datasource:
     druid:
       db-type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      url: jdbc:log4jdbc:mysql://${DB_HOST:43.138.157.47}:${DB_PORT:33060}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
       username: ${DB_USER:root}
-      password: ${DB_PWD:123456}
+      password: ${DB_PWD:YL1cvhweVPspMQ.}
       # 初始连接数
       initial-size: 5
       # 最小连接数
@@ -48,6 +76,91 @@ spring:
         wall:
           config:
             multi-statement-allow: true
+  # Eladmin DTS email
+  mail:
+    host: smtp.qq.com
+    port: 25
+    username: xxx@qq.com
+    password: xxx
+    #    username: ${mail.username}
+    #    password: ${mail.password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        socketFactory:
+          class: javax.net.ssl.SSLSocketFactory
+
+management:
+  health:
+    mail:
+      enabled: false
+  server:
+    servlet:
+      context-path: /actuator
+
+mybatis-plus:
+  # mapper.xml文件扫描
+  mapper-locations: classpath*:/mybatis-mapper/*Mapper.xml
+  # 实体扫描，多个package用逗号或者分号分隔
+  #typeAliasesPackage: com.yibo.essyncclient.*.entity
+  global-config:
+    # 数据库相关配置
+    db-config:
+      # 主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: AUTO
+      # 字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_NULL
+      # 驼峰下划线转换
+      column-underline: true
+      # 逻辑删除
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      # 数据库类型
+      db-type: mysql
+    banner: false
+  # mybatis原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+    type-handlers-package: com.platform.dts.core.handler
+
+# 配置mybatis-plus打印sql日志
+logging:
+  level:
+    com.platform.dts.mapper: info
+    path: /mnt/poc/eladmin/logs
+
+#flinkx-job, access token
+eladmin:
+  job:
+    accessToken:
+    #i18n (default empty as chinese, "en" as english)
+    i18n:
+    ## triggerpool max size
+    triggerpool:
+      fast:
+        max: 200
+      slow:
+        max: 100
+      ### log retention days
+    logretentiondays: 30
+  executor:
+    flinkxHome: /flinkx/flinkx.py
+    flinkxjsonPath: /flinkx/job/
+    flinkxlogHome: /flinkx/job-log
+    dataxHome: /datax/datax.py
+    dataxjsonPath: /datax/job/
+    dataxlogHome: /datax/job-log
+datasource:
+  aes:
+    key: AD42F6697B035B75
+
 
 # 登录相关配置
 login:
