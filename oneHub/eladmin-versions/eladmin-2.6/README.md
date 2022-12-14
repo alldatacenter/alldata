@@ -157,29 +157,63 @@
 > 
 > 上传服务器解压
 > 
-#### 5、部署微服务：install/datax/startDatax.sh
+#### 5、部署微服务：install/alldata_dev/alldata_start.md
 > 
-> sh install/datax/startDatax.sh
-> 
-> 部署可选：多服务器部署不同的服务
-> 
-> 启动：startDatax.sh start
-> 
-> 关闭：startDatax.sh stop
-> 
-> 重启：startDatax.sh restart
+| 16gmaster                      | port | ip             |
+|--------------------------------| ---- | -------------- |
+| eladmin-system                 | 8613 | 16gmaster  |
+| datax-config                   | 8611 | 16gmaster  |
+| data-market-service      | 8822 | 16gmaster  |
+| datax-service-data-integration | 8824 | 16gmaster  |
+| data-metadata-service    | 8820 | 16gmaster  |
+
+| 16gslave                      | port | ip             |
+|-------------------------------| ---- | -------------- |
+| datax-eureka                  | 8610 | 16gslave    |
+| datax-gateway                 | 8612 | 16gslave    |
+| datax-service-workflow        | 8814 | 16gslave    |
+| data-metadata-service-console    | 8821 | 16gslave    |
+| datax-service-data-mapping    | 8823 | 16gslave    |
+| data-masterdata-service | 8828 | 16gslave    |
+| data-quality-service    | 8826 | 16gslave    |
+
+| 16gdata               | port | ip             |
+|-----------------------| ---- | -------------- |
+| data-standard-service | 8825 | 16gdata |
+| data-visual-service   | 8827 | 16gdata |
+| email-service         | 8812 | 16gdata |
+| file-service          | 8811 | 16gdata |
+| quartz-service        | 8813 | 16gdata |
+| system-service        | 8810 | 16gdata |
+| datax-tool-monitor    | 8711 | 16gdata |
+
+
+#### 6、启动顺序
+
+> 1、启动eureka
+>
+> 2、启动config
+>
+> 3、启动gateway
+>
+> 4、启动masterdata
+>
+> 5、启动metadata
+>
+> 6、启动其他Jar
 > 
 > 用户名：admin 密码：123456
 > 
-#### 6、部署`Eladmin`:
 > 
-> 6.1 启动`Eladmin`后端
+#### 7、部署`Eladmin`:
+> 
+> 7.1 启动`Eladmin`后端
 > 
 > nohup java -jar -Xms128m -Xmx2048m -XX:PermSize=128M -XX:MaxPermSize=256M -XX:+UseG1GC -XX:MaxGCPauseMillis=20 
 > 
 > -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -XX:MaxInlineLevel=15 /mnt/poc/eladmin/deploy/eladmin-system-2.6.jar  &
 > 
-> 6.2 部署`Eladmin`前端
+> 7.2 部署`Eladmin`前端
 > 
 > source /etc/profile
 >
@@ -189,6 +223,6 @@
 > 
 > nohup npm run dev &
 > 
-> 6.3 访问`Eladmin`页面
+> 7.3 访问`Eladmin`页面
 > 
 > curl http://localhost:8013
