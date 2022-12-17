@@ -58,7 +58,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // 默认数据库的配置
-        // datax:123456
+        // datax:jCH4D!Peaz3MQs7D
         // normal-app:normal-app
         // trusted-app:trusted-app
         clients.jdbc(dataSource).clients(clientDetails());

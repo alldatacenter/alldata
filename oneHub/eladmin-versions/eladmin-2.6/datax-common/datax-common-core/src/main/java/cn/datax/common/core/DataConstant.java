@@ -9,7 +9,7 @@ public class DataConstant {
         //请求头TOKEN名称
         TOKENHEADER("gatewayToken"),
         //请求头TOKEN值
-        TOKENVALUE("datax:gateway:123456"),
+        TOKENVALUE("datax:gateway:jCH4D!Peaz3MQs7D"),
         //OAUTH2请求头
         AUTHORIZATION("Authorization"),
         //OAUTH2令牌类型

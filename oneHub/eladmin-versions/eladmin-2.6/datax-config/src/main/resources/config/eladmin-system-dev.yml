@@ -4,8 +4,8 @@ spring:
     #数据库索引
     database: ${REDIS_DB:0}
     host: ${REDIS_HOST:16gmaster}
-    port: ${REDIS_PORT:6379}
-    password: ${REDIS_PWD:123456}
+    port: ${REDIS_PORT:13790}
+    password: ${REDIS_PWD:jCH4D!Peaz3MQs7D}
     #连接超时时间
     timeout: 5000
     jedis:
@@ -32,9 +32,9 @@ spring:
       datasource:
         mysql:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://16gmaster:3306/eladmin?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+          url: jdbc:mysql://16gmaster:33060/eladmin?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
           username: root
-          password: 123456
+          password: jCH4D!Peaz3MQs7D
           # 初始连接数
           initial-size: 5
           # 最小连接数

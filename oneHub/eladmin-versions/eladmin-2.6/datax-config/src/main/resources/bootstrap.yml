@@ -20,7 +20,7 @@ eureka:
     # 设置使用IP
     prefer-ip-address: true
     # 设置外网IP号
-    ip-address: localhost
+    ip-address: 16gmaster
   client:
     register-with-eureka: true
     fetch-registry: true

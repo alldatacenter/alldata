@@ -7,7 +7,7 @@ import com.platform.base.BaseDTO;
 import java.io.Serializable;
 
 /**
-* @author zhanghouying
+* @author AllDataDC
 * @date 2022-10-27
 */
 @Getter

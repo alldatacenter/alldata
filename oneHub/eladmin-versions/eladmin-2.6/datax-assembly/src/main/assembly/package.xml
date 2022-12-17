@@ -490,7 +490,7 @@
             <lineEnding>unix</lineEnding>
             <fileMode>0755</fileMode>
             <includes>
-                <include>datax-service-data-integration.sh</include>
+                <include>data-market-service-integration.sh</include>
             </includes>
         </fileSet>
         <fileSet>
@@ -499,7 +499,7 @@
             <lineEnding>unix</lineEnding>
             <fileMode>0755</fileMode>
             <includes>
-                <include>eladmin-system.sh</include>
+                <include>alldata-eladmin-system.sh</include>
             </includes>
         </fileSet>
 
@@ -567,7 +567,33 @@
                 <include>workflow-service.sh</include>
             </includes>
         </fileSet>
-
+        <fileSet>
+            <directory>${project.parent.basedir}/install/alldata_dev/16gslave</directory>
+            <outputDirectory>./16gslave</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>stop16gslave.sh</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.parent.basedir}/install/alldata_dev/16gmaster</directory>
+            <outputDirectory>./16gmaster</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>stop16gmaster.sh</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.parent.basedir}/install/alldata_dev/16gdata</directory>
+            <outputDirectory>./16gdata</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>stop16gdata.sh</include>
+            </includes>
+        </fileSet>
 
     </fileSets>
 </assembly>

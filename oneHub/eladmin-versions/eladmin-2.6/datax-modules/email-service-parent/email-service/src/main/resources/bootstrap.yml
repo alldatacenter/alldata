@@ -20,7 +20,7 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 20
     prefer-ip-address: true
-    ip-address: localhost
+    ip-address: 16gdata
   client:
     register-with-eureka: true
     fetch-registry: true

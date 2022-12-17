@@ -108,8 +108,8 @@ public class UserController {
     @PreAuthorize("@el.check('user:add')")
     public ResponseEntity<Object> createUser(@Validated @RequestBody User resources){
         checkLevel(resources);
-        // 默认密码 123456
-        resources.setPassword(passwordEncoder.encode("123456"));
+        // 默认密码 jCH4D!Peaz3MQs7D
+        resources.setPassword(passwordEncoder.encode("jCH4D!Peaz3MQs7D"));
         userService.create(resources);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -3,8 +3,8 @@ spring:
   redis:
     database: 1
     host: 16gmaster
-    port: 6379
-    password: 123456 # 密码（默认为空）
+    port: 13790
+    password: jCH4D!Peaz3MQs7D # 密码（默认为空）
     timeout: 6000ms       # 连接超时时长（毫秒）
     jedis:
       pool:
@@ -16,7 +16,7 @@ spring:
     host: 16gmaster
     port: 25672
     username: admin
-    password: 123456
+    password: jCH4D!Peaz3MQs7D
     listener:
       simple:
         acknowledge-mode: manual
@@ -36,9 +36,9 @@ spring:
       datasource:
         mysql:
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-          url: jdbc:p6spy:mysql://16gmaster:3306/eladmin?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+          url: jdbc:p6spy:mysql://16gmaster:33060/eladmin?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
           username: root
-          password: 123456
+          password: jCH4D!Peaz3MQs7D
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
@@ -63,7 +63,7 @@ security:
       access-token-uri: http://16gslave:8612/auth/oauth/token
       user-authorization-uri: http://16gslave:8612/auth/oauth/authorize
       client-id: datax
-      client-secret: 123456
+      client-secret: jCH4D!Peaz3MQs7D
       scope: all
     resource:
       loadBalanced: true
