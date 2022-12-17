@@ -1,5 +1,5 @@
 server:
-  port: 8612
+  port: 9538
 
 spring:
   application:
@@ -29,4 +29,4 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     service-url:
-      defaultZone: http://localhost:8610/eureka
+      defaultZone: http://16gslave:8610/eureka

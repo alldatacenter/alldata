@@ -227,7 +227,7 @@ public class Generate {
      */
     private static DataSourceConfig getDataSourceConfig() {
         return new DataSourceConfig()
-                .setUrl("jdbc:mysql://localhost:3306/data_cloud?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8")
+                .setUrl("jdbc:mysql://localhost:3306/eladmin?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8")
                 .setDriverName("com.mysql.cj.jdbc.Driver")
                 .setUsername("root")
                 .setPassword("1234@abcd");

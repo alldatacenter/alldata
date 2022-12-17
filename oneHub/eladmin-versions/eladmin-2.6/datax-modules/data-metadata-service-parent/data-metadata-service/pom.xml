@@ -54,10 +54,14 @@
             <artifactId>datax-common-redis</artifactId>
             <version>2.6</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.platform</groupId>-->
+<!--            <artifactId>eladmin-common</artifactId>-->
+<!--            <version>2.6</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.platform</groupId>
-            <artifactId>datax-common-security</artifactId>
-            <version>2.6</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
@@ -67,6 +71,11 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>datax-common-log</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.platform</groupId>
+            <artifactId>datax-common-security</artifactId>
             <version>2.6</version>
         </dependency>
         <dependency>
@@ -104,6 +113,22 @@
             <artifactId>orai18n</artifactId>
             <version>${orai18n.version}</version>
             <scope>runtime</scope>
+        </dependency>
+        <!-- jwt -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt.version}</version>
         </dependency>
     </dependencies>
 

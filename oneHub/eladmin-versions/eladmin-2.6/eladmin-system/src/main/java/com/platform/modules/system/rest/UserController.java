@@ -1,7 +1,11 @@
 
 package com.platform.modules.system.rest;
 
+import cn.datax.common.security.annotation.DataInner;
 import cn.hutool.core.collection.CollectionUtil;
+import com.platform.modules.security.service.UserDetailsServiceImpl;
+import com.platform.modules.security.service.dto.JwtUserDto;
+import com.platform.modules.system.domain.UserInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -53,12 +57,22 @@ public class UserController {
     private final RoleService roleService;
     private final VerifyService verificationCodeService;
 
+    private UserDetailsServiceImpl userDetailsService;
+
     @ApiOperation("导出用户数据")
     @GetMapping(value = "/download")
     @PreAuthorize("@el.check('user:list')")
     public void exportUser(HttpServletResponse response, UserQueryCriteria criteria) throws IOException {
         userService.download(userService.queryAll(criteria), response);
     }
+
+    @ApiOperation("导出用户数据")
+    @GetMapping(value = "/{username}")
+    @DataInner
+    public JwtUserDto loginByUsername(@PathVariable("username") String username) throws IOException {
+        return userDetailsService.loadUserByUsername(username);
+    }
+
 
     @ApiOperation("查询用户")
     @GetMapping

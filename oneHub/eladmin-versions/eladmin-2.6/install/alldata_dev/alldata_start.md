@@ -9,7 +9,7 @@
 | 16gslave                      | port | ip             |
 |-------------------------------| ---- | -------------- |
 | datax-eureka                  | 8610 | 16gslave    |
-| datax-gateway                 | 8612 | 16gslave    |
+| datax-gateway                 | 9538 | 16gslave    |
 | datax-service-workflow        | 8814 | 16gslave    |
 | data-metadata-service-console    | 8821 | 16gslave    |
 | datax-service-data-mapping    | 8823 | 16gslave    |

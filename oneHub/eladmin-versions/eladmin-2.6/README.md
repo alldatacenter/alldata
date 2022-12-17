@@ -157,63 +157,35 @@
 > 
 > 上传服务器解压
 > 
-#### 5、部署微服务：install/alldata_dev/alldata_start.md
+#### 5、部署微服务: 进入不同的目录启动相关服务
 > 
-| 16gmaster                      | port | ip             |
-|--------------------------------| ---- | -------------- |
-| eladmin-system                 | 8613 | 16gmaster  |
-| datax-config                   | 8611 | 16gmaster  |
-| data-market-service      | 8822 | 16gmaster  |
-| datax-service-data-integration | 8824 | 16gmaster  |
-| data-metadata-service    | 8820 | 16gmaster  |
-
-| 16gslave                      | port | ip             |
-|-------------------------------| ---- | -------------- |
-| datax-eureka                  | 8610 | 16gslave    |
-| datax-gateway                 | 8612 | 16gslave    |
-| datax-service-workflow        | 8814 | 16gslave    |
-| data-metadata-service-console    | 8821 | 16gslave    |
-| datax-service-data-mapping    | 8823 | 16gslave    |
-| data-masterdata-service | 8828 | 16gslave    |
-| data-quality-service    | 8826 | 16gslave    |
-
-| 16gdata               | port | ip             |
-|-----------------------| ---- | -------------- |
-| data-standard-service | 8825 | 16gdata |
-| data-visual-service   | 8827 | 16gdata |
-| email-service         | 8812 | 16gdata |
-| file-service          | 8811 | 16gdata |
-| quartz-service        | 8813 | 16gdata |
-| system-service        | 8810 | 16gdata |
-| datax-tool-monitor    | 8711 | 16gdata |
-
-
-#### 6、启动顺序
-
-> 1、启动eureka
+> 5.1 必须启动、并且顺序启动
+> 
+> eureka->config->gateway
+> 
+> 5.2 按需启动`cd install/16gmaster`
+> 
+> 譬如启动元数据管理
+> 
+> sh `install/16gmaster/data-metadata-service.sh`
+> 
+> tail -100f `install/16gmaster/data-metadata-service.log`
+> 
+> 5.2 按需启动`cd install/16gdata`
+> 
+> 按需启动相关服务
+> 
+> 5.3 按需启动`cd install/16gslave`
 >
-> 2、启动config
+> 按需启动相关服务
+> 
+> 
+
+#### 6、部署`Eladmin`:
 >
-> 3、启动gateway
->
-> 4、启动masterdata
->
-> 5、启动metadata
->
-> 6、启动其他Jar
+> 6.1 启动`sh install/16gmaster/eladmin-system.sh`
 > 
-> 用户名：admin 密码：123456
-> 
-> 
-#### 7、部署`Eladmin`:
-> 
-> 7.1 启动`Eladmin`后端
-> 
-> nohup java -jar -Xms128m -Xmx2048m -XX:PermSize=128M -XX:MaxPermSize=256M -XX:+UseG1GC -XX:MaxGCPauseMillis=20 
-> 
-> -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -XX:MaxInlineLevel=15 /mnt/poc/eladmin/deploy/eladmin-system-2.6.jar  &
-> 
-> 7.2 部署`Eladmin`前端
+> 6.2 部署`Eladmin`前端
 > 
 > source /etc/profile
 >
@@ -223,6 +195,8 @@
 > 
 > nohup npm run dev &
 > 
-> 7.3 访问`Eladmin`页面
+> 6.3 访问`Eladmin`页面
 > 
 > curl http://localhost:8013
+>
+> 用户名：admin 密码：123456

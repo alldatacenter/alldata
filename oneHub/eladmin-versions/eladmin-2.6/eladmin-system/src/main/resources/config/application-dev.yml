@@ -1,38 +1,10 @@
-# 注册中心配置
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 20
-    # 设置使用IP
-    prefer-ip-address: true
-    # 设置外网IP号
-    ip-address: localhost
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    instance-info-replication-interval-seconds: 30
-    registry-fetch-interval-seconds: 3
-    service-url:
-      defaultZone: http://localhost:8610/eureka
-
 #配置数据源
 spring:
-  application:
-    name: eladmin-system
-  profiles:
-    active: dev
-  cloud:
-    config:
-      fail-fast: true
-      name: ${spring.application.name}
-      profile: ${spring.profiles.active}
-      discovery:
-        enabled: true
-        service-id: datax-config
   datasource:
     druid:
       db-type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      url: jdbc:log4jdbc:mysql://${DB_HOST:16gmaster}:${DB_PORT:3306}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
       username: ${DB_USER:root}
       password: ${DB_PWD:123456}
       # 初始连接数
@@ -78,6 +50,14 @@ spring:
             multi-statement-allow: true
   main:
     allow-bean-definition-overriding: true
+  redis:
+    #数据库索引
+    database: ${REDIS_DB:1}
+    host: ${REDIS_HOST:16gmaster}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PWD:123456}
+    #连接超时时间
+    timeout: 5000
 
   # Eladmin DTS email
   mail:

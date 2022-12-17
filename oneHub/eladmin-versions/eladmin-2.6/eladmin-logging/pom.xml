@@ -15,6 +15,31 @@
     <dependencies>
         <dependency>
             <groupId>com.platform</groupId>
+            <artifactId>datax-common-core</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <!--Spring boot Web容器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.platform</groupId>
+            <artifactId>datax-common-mybatis</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.platform</groupId>
             <artifactId>eladmin-common</artifactId>
             <version>2.6</version>
         </dependency>

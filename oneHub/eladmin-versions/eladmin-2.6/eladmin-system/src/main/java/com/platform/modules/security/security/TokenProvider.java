@@ -43,10 +43,10 @@ public class TokenProvider implements InitializingBean {
         byte[] keyBytes = Decoders.BASE64.decode(properties.getBase64Secret());
         Key key = Keys.hmacShaKeyFor(keyBytes);
         jwtParser = Jwts.parserBuilder()
-                .setSigningKey(key)
+                .setSigningKey(properties.getBase64Secret())
                 .build();
         jwtBuilder = Jwts.builder()
-                .signWith(key, SignatureAlgorithm.HS512);
+                .signWith( SignatureAlgorithm.HS512,properties.getBase64Secret());
     }
 
     /**

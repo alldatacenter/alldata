@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     beforeInit() {
-      this.url = 'api/deployHistory'
+      this.url = '/system/api/deployHistory'
       this.deployId = this.$parent.deployId
       if (this.deployId === '') {
         return false

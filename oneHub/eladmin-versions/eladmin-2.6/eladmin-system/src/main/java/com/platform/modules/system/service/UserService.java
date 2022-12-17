@@ -2,6 +2,7 @@
 package com.platform.modules.system.service;
 
 import com.platform.modules.system.domain.User;
+import com.platform.modules.system.domain.UserInfo;
 import com.platform.modules.system.service.dto.UserDto;
 import com.platform.modules.system.service.dto.UserLoginDto;
 import com.platform.modules.system.service.dto.UserQueryCriteria;
@@ -108,4 +109,6 @@ public interface UserService {
      * @param resources /
      */
     void updateCenter(User resources);
+
+    UserInfo loginByUsername(String username);
 }
