@@ -1,7 +1,6 @@
 package cn.datax.service.data.metadata.console.config;
 
-import cn.datax.common.security.handler.DataAccessDeniedHandler;
-import cn.datax.common.security.handler.DataAuthExceptionEntryPoint;
+
 import cn.datax.common.security.utils.DataRedisTokenServices;
 import cn.datax.common.security.utils.RedisTokenStore;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +19,11 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class DataResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Autowired
-    private DataAccessDeniedHandler accessDeniedHandler;
-
-    @Autowired
-    private DataAuthExceptionEntryPoint exceptionEntryPoint;
+//    @Autowired
+//    private DataAccessDeniedHandler accessDeniedHandler;
+//
+//    @Autowired
+//    private DataAuthExceptionEntryPoint exceptionEntryPoint;
 
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
@@ -41,9 +40,9 @@ public class DataResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         resources
                 .tokenStore(redisTokenStore())
-                .tokenServices(dataTokenServices)
-                .authenticationEntryPoint(exceptionEntryPoint)
-                .accessDeniedHandler(accessDeniedHandler);
+                .tokenServices(dataTokenServices);
+//                .authenticationEntryPoint(exceptionEntryPoint)
+//                .accessDeniedHandler(accessDeniedHandler);
     }
 
     @Override

@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 export function chartInfo(data) {
   return request({
-    url: '/api/chartInfo',
+    url: '/system/api/chartInfo',
     method: 'post',
     data
   })

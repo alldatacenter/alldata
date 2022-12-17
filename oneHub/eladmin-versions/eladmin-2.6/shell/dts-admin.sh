@@ -82,7 +82,7 @@ if [[ ! ${MAIL_USERNAME} ]]; then
 fi
 
 if [[ ! ${MAIL_PASSWORD} ]]; then
-    MAIL_PASSWORD="123456"
+    MAIL_PASSWORD="jCH4D!Peaz3MQs7D"
 fi
 
 

@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getDepts(params) {
   return request({
-    url: 'api/dept',
+    url: '/system/api/dept',
     method: 'get',
     params
   })
@@ -11,7 +11,7 @@ export function getDepts(params) {
 export function getDeptSuperior(ids) {
   const data = ids.length || ids.length === 0 ? ids : Array.of(ids)
   return request({
-    url: 'api/dept/superior',
+    url: '/system/api/dept/superior',
     method: 'post',
     data
   })
@@ -19,7 +19,7 @@ export function getDeptSuperior(ids) {
 
 export function add(data) {
   return request({
-    url: 'api/dept',
+    url: '/system/api/dept',
     method: 'post',
     data
   })
@@ -27,7 +27,7 @@ export function add(data) {
 
 export function del(ids) {
   return request({
-    url: 'api/dept',
+    url: '/system/api/dept',
     method: 'delete',
     data: ids
   })
@@ -35,7 +35,7 @@ export function del(ids) {
 
 export function edit(data) {
   return request({
-    url: 'api/dept',
+    url: '/system/api/dept',
     method: 'put',
     data
   })

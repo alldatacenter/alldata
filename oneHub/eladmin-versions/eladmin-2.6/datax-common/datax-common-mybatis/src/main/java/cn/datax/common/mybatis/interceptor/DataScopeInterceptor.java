@@ -5,6 +5,8 @@ import cn.datax.common.core.DataConstant;
 import cn.datax.common.core.DataRole;
 import cn.datax.common.core.DataUser;
 import cn.datax.common.utils.SecurityUtil;
+import cn.datax.service.system.api.dto.JwtUserDto;
+import cn.datax.service.system.api.dto.UserLoginDto;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
@@ -23,6 +25,7 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * mybatis 数据权限拦截器
@@ -52,65 +55,66 @@ public class DataScopeInterceptor extends AbstractSqlParserHandler implements In
 
 		if (dataScope != null) {
 			// 获取当前的用户
-			DataUser currentUser = SecurityUtil.getDataUser();
+			JwtUserDto currentUser = SecurityUtil.getDataUser();
 			if (null != currentUser) {
+				UserLoginDto user = currentUser.getUser();
 				// 如果是超级管理员，则不过滤数据
-				if (!currentUser.isAdmin()) {
-					String sqlString = dataScopeFilter(currentUser, dataScope);
-					if (StrUtil.isNotBlank(sqlString)) {
-						originalSql = "SELECT * FROM (" + originalSql + ") TEMP_DATA_SCOPE WHERE 1=1 AND (" + sqlString.substring(4) + ")";
-						metaObject.setValue("delegate.boundSql.sql", originalSql);
-					}
-				}
+//				if (!user.isAdmin) {
+//					String sqlString = dataScopeFilter(currentUser, dataScope);
+//					if (StrUtil.isNotBlank(sqlString)) {
+//						originalSql = "SELECT * FROM (" + originalSql + ") TEMP_DATA_SCOPE WHERE 1=1 AND (" + sqlString.substring(4) + ")";
+//						metaObject.setValue("delegate.boundSql.sql", originalSql);
+//					}
+//				}
 			}
 		}
 		return invocation.proceed();
 	}
 
-	/**
-	 * 数据范围过滤
-	 *
-	 * @param user
-	 * @param dataScope
-	 */
-	private String dataScopeFilter(DataUser user, DataScope dataScope) {
-		StringBuilder sqlString = new StringBuilder();
-		List<DataRole> roles = user.getRoles();
-		if (CollUtil.isNotEmpty(roles)){
-			for (DataRole role : roles){
-				String roleDataScope = role.getDataScope();
-				if (DataConstant.DataScope.ALL.getKey().equals(roleDataScope)) {
-					sqlString = new StringBuilder();
-					break;
-				} else if (DataConstant.DataScope.CUSTOM.getKey().equals(roleDataScope)) {
-					sqlString.append(StrUtil.format(
-							" OR {} IN ( SELECT dept_id FROM sys_role_dept WHERE role_id = {} ) "
-							,dataScope.getDeptScopeName()
-							,"'" + role.getId() + "'"
-					));
-				} else if (DataConstant.DataScope.DEPT.getKey().equals(roleDataScope)) {
-					sqlString.append(StrUtil.format(
-							" OR {} = {} "
-							,dataScope.getDeptScopeName()
-							,"'" + user.getDept() + "'"
-					));
-				} else if (DataConstant.DataScope.DEPTANDCHILD.getKey().equals(roleDataScope)) {
-					sqlString.append(StrUtil.format(
-							" OR {} IN ( SELECT descendant FROM sys_dept_relation WHERE ancestor = {} )"
-							,dataScope.getDeptScopeName()
-							,"'" + user.getDept() + "'"
-					));
-				} else if (DataConstant.DataScope.SELF.getKey().equals(roleDataScope)) {
-					sqlString.append(StrUtil.format(" OR {} = {} "
-							,dataScope.getUserScopeName()
-							,"'" + user.getId() + "'"
-					));
-				}
-			}
-		}
-		log.info("数据范围过滤:{}", sqlString);
-		return sqlString.toString();
-	}
+//	/**
+//	 * 数据范围过滤
+//	 *
+//	 * @param user
+//	 * @param dataScope
+//	 */
+//	private String dataScopeFilter(JwtUserDto user, DataScope dataScope) {
+//		StringBuilder sqlString = new StringBuilder();
+//		Set<String> roles = user.getRoles();
+//		if (CollUtil.isNotEmpty(roles)){
+//			for (String role : roles){
+////				String roleDataScope = role.getDataScope();
+//				if (DataConstant.DataScope.ALL.getKey().equals(roleDataScope)) {
+//					sqlString = new StringBuilder();
+//					break;
+//				} else if (DataConstant.DataScope.CUSTOM.getKey().equals(roleDataScope)) {
+//					sqlString.append(StrUtil.format(
+//							" OR {} IN ( SELECT dept_id FROM sys_role_dept WHERE role_id = {} ) "
+//							,dataScope.getDeptScopeName()
+//							,"'" + role + "'"
+//					));
+//				} else if (DataConstant.DataScope.DEPT.getKey().equals(roleDataScope)) {
+//					sqlString.append(StrUtil.format(
+//							" OR {} = {} "
+//							,dataScope.getDeptScopeName()
+//							,"'" + user.getUser().getDept() + "'"
+//					));
+//				} else if (DataConstant.DataScope.DEPTANDCHILD.getKey().equals(roleDataScope)) {
+//					sqlString.append(StrUtil.format(
+//							" OR {} IN ( SELECT descendant FROM sys_dept_relation WHERE ancestor = {} )"
+//							,dataScope.getDeptScopeName()
+//							,"'" + user.getUser().getDept() + "'"
+//					));
+//				} else if (DataConstant.DataScope.SELF.getKey().equals(roleDataScope)) {
+//					sqlString.append(StrUtil.format(" OR {} = {} "
+//							,dataScope.getUserScopeName()
+//							,"'" + user.getUser().getId() + "'"
+//					));
+//				}
+//			}
+//		}
+//		log.info("数据范围过滤:{}", sqlString);
+//		return sqlString.toString();
+//	}
 
 	/**
 	 * 生成拦截对象的代理

@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 export function list(params) {
   return request({
-    url: '/api/jobProject',
+    url: '/system/api/jobProject',
     method: 'get',
     params
   })
@@ -12,7 +12,7 @@ export function list(params) {
 
 export function updated(data) {
   return request({
-    url: '/api/jobProject',
+    url: '/system/api/jobProject',
     method: 'put',
     data
   })
@@ -20,7 +20,7 @@ export function updated(data) {
 
 export function created(data) {
   return request({
-    url: '/api/jobProject',
+    url: '/system/api/jobProject',
     method: 'post',
     data
   })
@@ -28,7 +28,7 @@ export function created(data) {
 
 export function deleted(data) {
   return request({
-    url: '/api/jobProject',
+    url: '/system/api/jobProject',
     method: 'delete',
     params: data
   })
@@ -36,7 +36,7 @@ export function deleted(data) {
 
 export function getJobProjectList(params) {
   return request({
-    url: 'api/jobProject/list',
+    url: '/system/api/jobProject/list',
     method: 'get',
     params
   })

@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 export function getList(params) {
   return request({
-    url: '/api/user/pageList',
+    url: '/system/api/user/pageList',
     method: 'get',
     params
   })
@@ -12,7 +12,7 @@ export function getList(params) {
 
 export function updateUser(data) {
   return request({
-    url: '/api/user/update',
+    url: '/system/api/user/update',
     method: 'post',
     data
   })
@@ -20,7 +20,7 @@ export function updateUser(data) {
 
 export function createUser(data) {
   return request({
-    url: '/api/user/add',
+    url: '/system/api/user/add',
     method: 'post',
     data
   })
@@ -28,7 +28,7 @@ export function createUser(data) {
 
 export function deleteUser(id) {
   return request({
-    url: '/api/user/remove?id=' + id,
+    url: '/system/api/user/remove?id=' + id,
     method: 'post'
   })
 }

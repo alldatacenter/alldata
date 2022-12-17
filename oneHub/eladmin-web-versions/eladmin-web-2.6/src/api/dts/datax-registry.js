@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 export function getList(params) {
   return request({
-    url: '/api/jobRegistry',
+    url: '/system/api/jobRegistry',
     method: 'get',
     params
   })

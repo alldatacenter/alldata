@@ -17,7 +17,7 @@ import java.util.*;
 public class RedisTokenStore implements TokenStore {
     private static final String ACCESS = "access:";
     private static final String AUTH_TO_ACCESS = "auth_to_access:";
-    private static final String AUTH = "auth:";
+    private static final String AUTH = "online-token-";
     private static final String REFRESH_AUTH = "refresh_auth:";
     private static final String ACCESS_TO_REFRESH = "access_to_refresh:";
     private static final String REFRESH = "refresh:";
@@ -108,7 +108,7 @@ public class RedisTokenStore implements TokenStore {
         byte[] bytes = null;
         RedisConnection conn = this.getConnection();
         try {
-            bytes = conn.get(this.serializeKey("auth:" + token));
+            bytes = conn.get(this.serializeKey("online-token-" + token));
         } finally {
             conn.close();
         }

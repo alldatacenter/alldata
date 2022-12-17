@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 15/12/2019 22:27:10
+ Date: 15/12/2022 22:27:10
 */
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `eladmin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
@@ -152,14 +152,14 @@ CREATE TABLE `job_log_report`  (
 -- ----------------------------
 -- Records of job_log_report
 -- ----------------------------
-INSERT INTO `job_log_report` VALUES (20, '2019-12-07 00:00:00', 0, 0, 0);
-INSERT INTO `job_log_report` VALUES (21, '2019-12-10 00:00:00', 77, 52, 23);
-INSERT INTO `job_log_report` VALUES (22, '2019-12-11 00:00:00', 9, 2, 11);
-INSERT INTO `job_log_report` VALUES (23, '2019-12-13 00:00:00', 9, 48, 74);
-INSERT INTO `job_log_report` VALUES (24, '2019-12-12 00:00:00', 10, 8, 30);
-INSERT INTO `job_log_report` VALUES (25, '2019-12-14 00:00:00', 78, 45, 66);
-INSERT INTO `job_log_report` VALUES (26, '2019-12-15 00:00:00', 24, 76, 9);
-INSERT INTO `job_log_report` VALUES (27, '2019-12-16 00:00:00', 23, 85, 10);
+INSERT INTO `job_log_report` VALUES (20, '2022-12-07 00:00:00', 0, 0, 0);
+INSERT INTO `job_log_report` VALUES (21, '2022-12-10 00:00:00', 77, 52, 23);
+INSERT INTO `job_log_report` VALUES (22, '2022-12-11 00:00:00', 9, 2, 11);
+INSERT INTO `job_log_report` VALUES (23, '2022-12-13 00:00:00', 9, 48, 74);
+INSERT INTO `job_log_report` VALUES (24, '2022-12-12 00:00:00', 10, 8, 30);
+INSERT INTO `job_log_report` VALUES (25, '2022-12-14 00:00:00', 78, 45, 66);
+INSERT INTO `job_log_report` VALUES (26, '2022-12-15 00:00:00', 24, 76, 9);
+INSERT INTO `job_log_report` VALUES (27, '2022-12-16 00:00:00', 23, 85, 10);
 
 -- ----------------------------
 -- Table structure for job_logglue

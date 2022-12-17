@@ -1,31 +1,53 @@
 package cn.datax.common.utils;
 
-import cn.datax.common.core.DataRole;
-import cn.datax.common.core.DataUser;
+
+import cn.datax.common.exception.BadRequestException;
+
+
+import cn.datax.service.system.api.dto.JwtUserDto;
+import cn.datax.service.system.api.feign.UserServiceFeign;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+@Component
 public class SecurityUtil {
+
+    @Autowired
+    private UserServiceFeign userServiceFeign;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     /**
      * 获取用户
      *
      * @return user
      */
-    public static DataUser getDataUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            Object principal = authentication.getPrincipal();
-            if (principal instanceof DataUser) {
-                DataUser user = (DataUser) principal;
-                return user;
-            }
-        }
-        return null;
+    public static JwtUserDto getDataUser() {
+        UserServiceFeign userServiceFeign = SpringContextHolder.getBean(UserServiceFeign.class);
+        return userServiceFeign.loginByUsername(getCurrentUsername());
     }
+
+    public static String getCurrentUsername() {
+        HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        String authorization = request.getHeader("Authorization");
+        String tokenSubjectObject = JwtUtil.getTokenSubjectObject(authorization);
+        if (tokenSubjectObject == null) {
+            throw new BadRequestException(HttpStatus.UNAUTHORIZED, "当前登录状态过期");
+        }
+        return tokenSubjectObject;
+
+    }
+
 
     /**
      * 获取用户ID
@@ -33,9 +55,9 @@ public class SecurityUtil {
      * @return id
      */
     public static String getUserId() {
-        DataUser user = getDataUser();
+        JwtUserDto user = getDataUser();
         if (user != null){
-            return user.getId();
+            return user.getUser().getId()+"";
         }
         return "";
     }
@@ -46,9 +68,9 @@ public class SecurityUtil {
      * @return id
      */
     public static String getUserDeptId() {
-        DataUser user = getDataUser();
+        JwtUserDto user = getDataUser();
         if (user != null){
-            return user.getDept();
+            return user.getUser().getDeptId()+"";
         }
         return "";
     }
@@ -59,7 +81,7 @@ public class SecurityUtil {
      * @return username
      */
     public static String getUserName() {
-        DataUser user = getDataUser();
+        JwtUserDto user = getDataUser();
         if (user != null){
             return user.getUsername();
         }
@@ -72,9 +94,9 @@ public class SecurityUtil {
      * @return nickname
      */
     public static String getNickname() {
-        DataUser user = getDataUser();
+        JwtUserDto user = getDataUser();
         if (user != null){
-            return user.getNickname();
+            return user.getUser().getNickName();
         }
         return "";
     }
@@ -85,9 +107,9 @@ public class SecurityUtil {
      * @return username
      */
     public static List<String> getUserRoleIds() {
-        DataUser user = getDataUser();
+        JwtUserDto user = getDataUser();
         if (user != null){
-            List<String> roles = user.getRoles().stream().map(DataRole::getId).collect(Collectors.toList());
+            List<String> roles = new ArrayList<>(user.getRoles());
             return roles;
         }
         return null;
@@ -99,9 +121,9 @@ public class SecurityUtil {
      * @return user
      */
     public static boolean isAdmin() {
-        DataUser user = getDataUser();
+        JwtUserDto user = getDataUser();
         if (user != null){
-            return user.isAdmin();
+            return user.getUser().getIsAdmin();
         }
         return false;
     }
