@@ -199,4 +199,4 @@
 > 
 > curl http://localhost:8013
 >
-> 用户名：admin 密码：jCH4D!Peaz3MQs7D
+> 用户名：admin 密码：123456
