@@ -1,11 +1,10 @@
 package cn.datax.service.system.service.impl;
 
-import cn.datax.common.core.DataUser;
 import cn.datax.common.utils.IPUtil;
 import cn.datax.common.utils.SecurityUtil;
+import cn.datax.service.system.api.dto.JwtUserDto;
 import cn.datax.service.system.api.entity.LoginLogEntity;
 import cn.datax.service.system.service.LoginLogService;
-import cn.datax.service.system.mapstruct.LoginLogMapper;
 import cn.datax.service.system.dao.LoginLogDao;
 import cn.datax.common.base.BaseServiceImpl;
 import eu.bitwalker.useragentutils.UserAgent;
@@ -33,8 +32,8 @@ public class LoginLogServiceImpl extends BaseServiceImpl<LoginLogDao, LoginLogEn
     @Autowired
     private LoginLogDao loginLogDao;
 
-    @Autowired
-    private LoginLogMapper loginLogMapper;
+//    @Autowired
+//    private LoginLogMapper loginLogMapper;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -43,8 +42,8 @@ public class LoginLogServiceImpl extends BaseServiceImpl<LoginLogDao, LoginLogEn
         UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
         String os = userAgent.getOperatingSystem().getName();
         String browser = userAgent.getBrowser().getName();
-        DataUser user = SecurityUtil.getDataUser();
-        String userId = user.getId();
+        JwtUserDto user = SecurityUtil.getDataUser();
+        String userId = user.getUser().getId()+"";
         String username = user.getUsername();
         LoginLogEntity loginLog = new LoginLogEntity();
         loginLog.setOpIp(ip).setOpOs(os).setOpBrowser(browser).setUserId(userId).setUserName(username).setOpDate(LocalDateTime.now());

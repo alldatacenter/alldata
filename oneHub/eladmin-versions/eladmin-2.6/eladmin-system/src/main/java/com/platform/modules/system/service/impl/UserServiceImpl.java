@@ -1,6 +1,12 @@
 
 package com.platform.modules.system.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.StrUtil;
+import com.platform.modules.system.domain.Menu;
+import com.platform.modules.system.domain.UserInfo;
+import com.platform.modules.system.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import com.platform.config.FileProperties;
 import com.platform.exception.BadRequestException;
@@ -45,6 +51,8 @@ public class UserServiceImpl implements UserService {
     private final UserCacheManager userCacheManager;
     private final OnlineUserService onlineUserService;
     private final UserLoginMapper userLoginMapper;
+
+    private final MenuRepository menuMapper;
 
     @Override
     public Object queryAll(UserQueryCriteria criteria, Pageable pageable) {
@@ -252,5 +260,32 @@ public class UserServiceImpl implements UserService {
      */
     private void flushCache(String username) {
         userCacheManager.cleanUserCache(username);
+    }
+
+    @Override
+    public UserInfo loginByUsername(String username) {
+        UserInfo userInfo = new UserInfo();
+        User userEntity = userRepository.findByUsername(username);
+        if(null != userEntity){
+            UserDto userVo = userMapper.toDto(userEntity);
+            userInfo.setUserVo(userVo);
+            if(CollUtil.isNotEmpty(userVo.getRoles())){
+                Set<String> permissions = new HashSet<>();
+                List<Long> roleIds = userVo.getRoles().stream()
+                        .map(RoleSmallDto::getId).collect(Collectors.toList());
+                Set<Long> roleSet = new HashSet<>();
+                roleSet.addAll(roleIds);
+                LinkedHashSet<Menu> menuEntitys = menuMapper.findByRoleIds(roleSet);
+                if(CollUtil.isNotEmpty(menuEntitys)){
+                    List<String> permissionList = menuEntitys.stream()
+                            .filter(menuEntity -> StrUtil.isNotBlank(menuEntity.getPermission()))
+                            .map(Menu::getPermission)
+                            .collect(Collectors.toList());
+                    permissions.addAll(permissionList);
+                    userInfo.setPerms(ArrayUtil.toArray(permissions, String.class));
+                }
+            }
+        }
+        return userInfo;
     }
 }

@@ -2,6 +2,7 @@ package cn.datax.common.mybatis.aspectj;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Set;
 
 import cn.datax.common.base.BaseQueryParams;
 import cn.datax.common.core.DataConstant;
@@ -9,6 +10,7 @@ import cn.datax.common.core.DataRole;
 import cn.datax.common.core.DataUser;
 import cn.datax.common.mybatis.annotation.DataScopeAop;
 import cn.datax.common.utils.SecurityUtil;
+import cn.datax.service.system.api.dto.JwtUserDto;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -42,70 +44,70 @@ public class DataScopeAspect {
         if (dataScope == null) {
             return;
         }
-        DataUser currentUser = SecurityUtil.getDataUser();
+        JwtUserDto currentUser = SecurityUtil.getDataUser();
         if (null != currentUser) {
             // 如果是超级管理员，则不过滤数据
-            if (!currentUser.isAdmin()) {
-                dataScopeFilter(joinPoint, currentUser, dataScope);
-            }
+//            if (!currentUser.getUser().isAdmin) {
+//                dataScopeFilter(joinPoint, currentUser, dataScope);
+//            }
         }
     }
 
-    /**
-     * 数据范围过滤
-     *
-     * @param user
-     * @param dataScope
-     */
-    private void dataScopeFilter(JoinPoint joinPoint, DataUser user, DataScopeAop dataScope) {
-        StringBuilder sqlString = new StringBuilder();
-        List<DataRole> roles = user.getRoles();
-        if (CollUtil.isNotEmpty(roles)){
-            for (DataRole role : roles){
-                String roleDataScope = role.getDataScope();
-                if (DataConstant.DataScope.ALL.getKey().equals(roleDataScope)) {
-                    sqlString = new StringBuilder();
-                    break;
-                } else if (DataConstant.DataScope.CUSTOM.getKey().equals(roleDataScope)) {
-                    sqlString.append(StrUtil.format(
-                            " OR {}.{} IN ( SELECT dept_id FROM sys_role_dept WHERE role_id = {} ) "
-                            ,dataScope.alias()
-                            ,dataScope.deptScopeName()
-                            ,"'" + role.getId() + "'"
-                    ));
-                } else if (DataConstant.DataScope.DEPT.getKey().equals(roleDataScope)) {
-                    sqlString.append(StrUtil.format(
-                            " OR {}.{} = {} "
-                            ,dataScope.alias()
-                            ,dataScope.deptScopeName()
-                            ,"'" + user.getDept() + "'"
-                    ));
-                } else if (DataConstant.DataScope.DEPTANDCHILD.getKey().equals(roleDataScope)) {
-                    sqlString.append(StrUtil.format(
-                            " OR {}.{} IN ( SELECT descendant FROM sys_dept_relation WHERE ancestor = {} )"
-                            ,dataScope.alias()
-                            ,dataScope.deptScopeName()
-                            ,"'" + user.getDept() + "'"
-                    ));
-                } else if (DataConstant.DataScope.SELF.getKey().equals(roleDataScope)) {
-                    if (StrUtil.isNotBlank(dataScope.alias())) {
-                        sqlString.append(StrUtil.format(" OR {}.{} = {} "
-                                ,dataScope.alias()
-                                ,dataScope.userScopeName()
-                                ,user.getId()));
-                    } else {
-                        // 数据权限为仅本人且没有alias别名不查询任何数据
-                        sqlString.append(" OR 1=0 ");
-                    }
-                }
-            }
-        }
-        if (StrUtil.isNotBlank(sqlString.toString())) {
-            BaseQueryParams baseQueryParams = (BaseQueryParams) joinPoint.getArgs()[0];
-            baseQueryParams.setDataScope(" AND (" + sqlString.substring(4) + ")");
-        }
-        log.info("数据范围过滤:{}", sqlString);
-    }
+//    /**
+//     * 数据范围过滤
+//     *
+//     * @param user
+//     * @param dataScope
+//     */
+//    private void dataScopeFilter(JoinPoint joinPoint, JwtUserDto user, DataScopeAop dataScope) {
+//        StringBuilder sqlString = new StringBuilder();
+//        Set<String> roles = user.getRoles();
+//        if (CollUtil.isNotEmpty(roles)){
+//            for (String role : roles){
+//                String roleDataScope = role.getDataScope();
+//                if (DataConstant.DataScope.ALL.getKey().equals(roleDataScope)) {
+//                    sqlString = new StringBuilder();
+//                    break;
+//                } else if (DataConstant.DataScope.CUSTOM.getKey().equals(roleDataScope)) {
+//                    sqlString.append(StrUtil.format(
+//                            " OR {}.{} IN ( SELECT dept_id FROM sys_role_dept WHERE role_id = {} ) "
+//                            ,dataScope.alias()
+//                            ,dataScope.deptScopeName()
+//                            ,"'" + role.getId() + "'"
+//                    ));
+//                } else if (DataConstant.DataScope.DEPT.getKey().equals(roleDataScope)) {
+//                    sqlString.append(StrUtil.format(
+//                            " OR {}.{} = {} "
+//                            ,dataScope.alias()
+//                            ,dataScope.deptScopeName()
+//                            ,"'" + user.getDept() + "'"
+//                    ));
+//                } else if (DataConstant.DataScope.DEPTANDCHILD.getKey().equals(roleDataScope)) {
+//                    sqlString.append(StrUtil.format(
+//                            " OR {}.{} IN ( SELECT descendant FROM sys_dept_relation WHERE ancestor = {} )"
+//                            ,dataScope.alias()
+//                            ,dataScope.deptScopeName()
+//                            ,"'" + user.getDept() + "'"
+//                    ));
+//                } else if (DataConstant.DataScope.SELF.getKey().equals(roleDataScope)) {
+//                    if (StrUtil.isNotBlank(dataScope.alias())) {
+//                        sqlString.append(StrUtil.format(" OR {}.{} = {} "
+//                                ,dataScope.alias()
+//                                ,dataScope.userScopeName()
+//                                ,user.getId()));
+//                    } else {
+//                        // 数据权限为仅本人且没有alias别名不查询任何数据
+//                        sqlString.append(" OR 1=0 ");
+//                    }
+//                }
+//            }
+//        }
+//        if (StrUtil.isNotBlank(sqlString.toString())) {
+//            BaseQueryParams baseQueryParams = (BaseQueryParams) joinPoint.getArgs()[0];
+//            baseQueryParams.setDataScope(" AND (" + sqlString.substring(4) + ")");
+//        }
+//        log.info("数据范围过滤:{}", sqlString);
+//    }
 
     /**
      * 是否存在注解，如果存在就获取

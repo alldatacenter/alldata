@@ -157,27 +157,33 @@
 > 
 > 上传服务器解压
 > 
-#### 5、部署微服务：install/datax/startDatax.sh
+#### 5、部署微服务: 进入不同的目录启动相关服务
 > 
-> sh install/datax/startDatax.sh
+> 5.1 必须启动、并且顺序启动
 > 
-> 部署可选：多服务器部署不同的服务
+> eureka->config->gateway
 > 
-> 启动：startDatax.sh start
+> 5.2 按需启动`cd install/16gmaster`
 > 
-> 关闭：startDatax.sh stop
+> 譬如启动元数据管理
 > 
-> 重启：startDatax.sh restart
+> sh `install/16gmaster/data-metadata-service.sh`
 > 
-> 用户名：admin 密码：123456
+> tail -100f `install/16gmaster/data-metadata-service.log`
 > 
+> 5.2 按需启动`cd install/16gdata`
+> 
+> 按需启动相关服务
+> 
+> 5.3 按需启动`cd install/16gslave`
+>
+> 按需启动相关服务
+> 
+> 
+
 #### 6、部署`Eladmin`:
-> 
-> 6.1 启动`Eladmin`后端
-> 
-> nohup java -jar -Xms128m -Xmx2048m -XX:PermSize=128M -XX:MaxPermSize=256M -XX:+UseG1GC -XX:MaxGCPauseMillis=20 
-> 
-> -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -XX:MaxInlineLevel=15 /mnt/poc/eladmin/deploy/eladmin-system-2.6.jar  &
+>
+> 6.1 启动`sh install/16gmaster/eladmin-system.sh`
 > 
 > 6.2 部署`Eladmin`前端
 > 
@@ -192,3 +198,5 @@
 > 6.3 访问`Eladmin`页面
 > 
 > curl http://localhost:8013
+>
+> 用户名：admin 密码：jCH4D!Peaz3MQs7D

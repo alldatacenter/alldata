@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
-* @author zhanghouying
+* @author AllDataDC
 * @date 2022-10-27
 */
 @Entity

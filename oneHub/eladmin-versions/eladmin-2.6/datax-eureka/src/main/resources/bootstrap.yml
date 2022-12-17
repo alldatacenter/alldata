@@ -12,7 +12,7 @@ eureka:
     # 设置使用IP
     prefer-ip-address: true
     # 设置外网IP号
-    ip-address: localhost
+    ip-address: 16gslave
   client:
     register-with-eureka: false
     fetch-registry: false

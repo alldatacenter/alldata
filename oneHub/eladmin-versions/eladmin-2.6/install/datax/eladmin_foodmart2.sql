@@ -1,18 +1,24 @@
-/*
- Navicat Premium Data Transfer
+-- MySQL dump 10.13  Distrib 8.0.24, for Linux (x86_64)
+--
+-- Host: 127.0.0.1    Database: eladmin
+-- ------------------------------------------------------
+-- Server version	8.0.31
 
- Source Server         : 本地
- Source Server Type    : MySQL
- Source Server Version : 50730
- Source Host           : localhost:3306
- Source Schema         : foodmart2
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MySQL
- Target Server Version : 50730
- File Encoding         : 65001
+--
+-- Current Database: `eladmin`
+--
 
- Date: 03/05/2022 12:08:07
-*/
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `eladmin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `eladmin`;
@@ -809,7 +815,7 @@ INSERT INTO `customer` VALUES (6, 87517782449, 'Damstra', 'Robert', 'F.', '1619 
 INSERT INTO `customer` VALUES (7, 87521172800, 'Kanagaki', 'Rebecca', NULL, '2860 D Mt. Hood Circle', NULL, NULL, NULL, 'Tlaxiaco', 'Oaxaca', '13343', 'Mexico', 30, '515-555-6247', '934-555-9211', '1949-03-27', 'M', '$30K - $50K', 'F', 2, 1, 'Partial High School', '1991-05-01', 'Bronze', 'Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (8, 87539744377, 'Brunner', 'Kim', 'H.', '6064 Brodia Court', NULL, NULL, NULL, 'San Andres', 'DF', '12942', 'Mexico', 106, '411-555-6825', '130-555-6818', '1922-08-10', 'M', '$50K - $70K', 'M', 2, 2, 'Bachelors Degree', '1992-06-11', 'Bronze', 'Professional', 'Y', 3);
 INSERT INTO `customer` VALUES (9, 87544797658, 'Blumberg', 'Brenda', 'C.', '7560 Trees Drive', NULL, NULL, NULL, 'Richmond', 'BC', '17256', 'Canada', 90, '815-555-3975', '642-555-6483', '1979-06-23', 'M', '$10K - $30K', 'M', 5, 3, 'Partial High School', '1993-11-14', 'Normal', 'Skilled Manual', 'Y', 1);
-INSERT INTO `customer` VALUES (10, 87568712234, 'Stanz', 'Darren', 'M.', '1019 Kenwal Rd.', NULL, NULL, NULL, 'Lake Oswego', 'OR', '82017', 'USA', 64, '847-555-5443', '212-555-8635', '1949-08-26', 'S', '$30K - $50K', 'M', 4, 0, 'Bachelors Degree', '1993-05-04', 'Golden', 'Management', 'N', 4);
+INSERT INTO `customer` VALUES (10, 87568712234, 'Stanz', 'Darren', 'M.', '1019 Kenwal Rd.', NULL, NULL, NULL, 'Lake Oswego', 'OR', '82022', 'USA', 64, '847-555-5443', '212-555-8635', '1949-08-26', 'S', '$30K - $50K', 'M', 4, 0, 'Bachelors Degree', '1993-05-04', 'Golden', 'Management', 'N', 4);
 INSERT INTO `customer` VALUES (11, 87572821378, 'Murraiin', 'Jonathan', 'V.', '5423 Camby Rd.', NULL, NULL, NULL, 'La Mesa', 'CA', '35890', 'USA', 11, '612-555-4878', '747-555-6928', '1967-06-20', 'S', '$50K - $70K', 'M', 4, 0, 'High School Degree', '1992-04-23', 'Bronze', 'Manual', 'N', 2);
 INSERT INTO `customer` VALUES (12, 87579237222, 'Creek', 'Jewel', 'C.', '1792 Belmont Rd.', NULL, NULL, NULL, 'Chula Vista', 'CA', '40520', 'USA', 13, '555-555-2714', '228-555-5450', '1971-10-18', 'S', '$30K - $50K', 'F', 1, 0, 'High School Degree', '1991-07-06', 'Bronze', 'Skilled Manual', 'N', 3);
 INSERT INTO `customer` VALUES (13, 87587122917, 'Medina', 'Peggy', 'A.', '3796 Keller Ridge', NULL, NULL, NULL, 'Mexico City', 'Mexico', '59554', 'Mexico', 2, '343-555-9778', '785-555-2371', '1975-10-12', 'S', '$30K - $50K', 'M', 4, 0, 'High School Degree', '1990-10-09', 'Bronze', 'Manual', 'N', 4);
@@ -924,7 +930,7 @@ INSERT INTO `customer` VALUES (121, 88683427572, 'Hill', 'Anna', 'L.', '7883 Mit
 INSERT INTO `customer` VALUES (122, 88690803647, 'Williams', 'Ramon', 'N.', '3997 Via De Luna', NULL, NULL, NULL, 'Walla Walla', 'WA', '70289', 'USA', 88, '718-555-4473', '983-555-7666', '1920-09-22', 'M', '$30K - $50K', 'F', 4, 1, 'High School Degree', '1992-05-19', 'Bronze', 'Skilled Manual', 'N', 3);
 INSERT INTO `customer` VALUES (123, 88708876371, 'Masters', 'Scott', NULL, '5747 Shirley Drive', NULL, NULL, NULL, 'Richmond', 'CA', '24162', 'USA', 35, '483-555-3909', '618-555-5959', '1964-07-08', 'M', '$30K - $50K', 'F', 2, 0, 'High School Degree', '1993-08-15', 'Bronze', 'Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (124, 88719449639, 'Brady, Jr.', 'Joseph', 'G.', '2115 Pasado', NULL, NULL, NULL, 'Oakland', 'CA', '55084', 'USA', 37, '426-555-1745', '999-555-4480', '1930-09-07', 'S', '$70K - $90K', 'F', 5, 0, 'Bachelors Degree', '1991-03-27', 'Bronze', 'Professional', 'N', 2);
-INSERT INTO `customer` VALUES (125, 88734051585, 'Gray', 'Ellen', 'M.', '6774 Bonanza', NULL, NULL, NULL, 'Bellflower', 'CA', '20209', 'USA', 55, '214-555-8809', '656-555-1402', '1972-12-04', 'M', '$70K - $90K', 'M', 2, 2, 'Bachelors Degree', '1991-06-22', 'Bronze', 'Professional', 'Y', 3);
+INSERT INTO `customer` VALUES (125, 88734051585, 'Gray', 'Ellen', 'M.', '6774 Bonanza', NULL, NULL, NULL, 'Bellflower', 'CA', '20229', 'USA', 55, '214-555-8809', '656-555-1402', '1972-12-04', 'M', '$70K - $90K', 'M', 2, 2, 'Bachelors Degree', '1991-06-22', 'Bronze', 'Professional', 'Y', 3);
 INSERT INTO `customer` VALUES (126, 88735752105, 'Fielder', 'Henry', 'T.', '3397 Rancho View Drive', NULL, NULL, NULL, 'Ballard', 'WA', '90000', 'USA', 20, '179-555-5273', '160-555-7552', '1947-02-03', 'S', '$110K - $130K', 'F', 2, 0, 'Partial College', '1990-07-24', 'Normal', 'Professional', 'Y', 2);
 INSERT INTO `customer` VALUES (127, 88744179606, 'Finnell', 'Jeanine', 'L.', '8310 Ridge Circle', NULL, NULL, NULL, 'Everett', 'WA', '75196', 'USA', 81, '103-555-4226', '192-555-9019', '1932-06-18', 'S', '$10K - $30K', 'M', 1, 0, 'Partial High School', '1992-11-27', 'Normal', 'Skilled Manual', 'Y', 0);
 INSERT INTO `customer` VALUES (128, 88750257492, 'Schuetz', 'Ian', 'T.', '7842 Ygnacio Valley Road', NULL, NULL, NULL, 'Salem', 'OR', '12150', 'USA', 23, '330-555-2976', '618-555-4797', '1947-04-18', 'S', '$30K - $50K', 'F', 1, 0, 'High School Degree', '1992-08-11', 'Bronze', 'Skilled Manual', 'N', 4);
@@ -1029,7 +1035,7 @@ INSERT INTO `customer` VALUES (226, 90055570602, 'Bruha', 'Michael', 'C.', '1962
 INSERT INTO `customer` VALUES (227, 90065194368, 'Suggs', 'Michael', 'J.', '40 Ellis St.', NULL, NULL, NULL, 'Burbank', 'CA', '17728', 'USA', 53, '919-555-4674', '484-555-4895', '1963-10-10', 'S', '$30K - $50K', 'F', 3, 0, 'High School Degree', '1994-05-18', 'Bronze', 'Manual', 'Y', 2);
 INSERT INTO `customer` VALUES (228, 90083347600, 'Turner', 'Kenneth', 'R.', '80 Sunview Terrace', NULL, NULL, NULL, 'El Cajon', 'CA', '85004', 'USA', 16, '292-555-9681', '296-555-1588', '1958-06-14', 'M', '$90K - $110K', 'F', 3, 0, 'High School Degree', '1993-10-07', 'Normal', 'Professional', 'Y', 3);
 INSERT INTO `customer` VALUES (229, 90100100636, 'Griffin', 'Lois', NULL, '8411 Mt. Olivet Place', NULL, NULL, NULL, 'Renton', 'WA', '67685', 'USA', 73, '650-555-9574', '523-555-9338', '1946-02-10', 'M', '$70K - $90K', 'F', 1, 0, 'Graduate Degree', '1990-07-28', 'Bronze', 'Management', 'Y', 3);
-INSERT INTO `customer` VALUES (230, 90102021100, 'Guardamondo', 'Robert', 'C.', '1362 Somerset Place', NULL, NULL, NULL, 'Bellingham', 'WA', '74830', 'USA', 78, '946-555-4209', '596-555-8317', '1943-02-13', 'M', '$10K - $30K', 'M', 2, 0, 'Partial High School', '1991-07-07', 'Normal', 'Manual', 'Y', 2);
+INSERT INTO `customer` VALUES (230, 90102022100, 'Guardamondo', 'Robert', 'C.', '1362 Somerset Place', NULL, NULL, NULL, 'Bellingham', 'WA', '74830', 'USA', 78, '946-555-4209', '596-555-8317', '1943-02-13', 'M', '$10K - $30K', 'M', 2, 0, 'Partial High School', '1991-07-07', 'Normal', 'Manual', 'Y', 2);
 INSERT INTO `customer` VALUES (231, 90121451020, 'West', 'Bryan', 'R.', '2603 Condor Place', NULL, NULL, NULL, 'Oak Bay', 'BC', '23672', 'Canada', 99, '427-555-2731', '846-555-5695', '1944-10-27', 'M', '$30K - $50K', 'F', 5, 1, 'Partial College', '1994-04-08', 'Bronze', 'Clerical', 'Y', 2);
 INSERT INTO `customer` VALUES (232, 90127062201, 'Welsh', 'Vicki', 'R.', 'P.O. Box 1742', NULL, NULL, NULL, 'Ladner', 'BC', '23272', 'Canada', 96, '984-555-8652', '942-555-3302', '1911-08-04', 'M', '$110K - $130K', 'F', 1, 0, 'Bachelors Degree', '1990-08-13', 'Silver', 'Management', 'Y', 1);
 INSERT INTO `customer` VALUES (233, 90142817497, 'McCollum', 'Harvey', NULL, '3238 Laguna Circle', NULL, NULL, NULL, 'Sedro Woolley', 'WA', '10983', 'USA', 80, '727-555-9460', '315-555-8309', '1974-02-23', 'M', '$130K - $150K', 'M', 3, 2, 'High School Degree', '1992-10-09', 'Bronze', 'Professional', 'N', 2);
@@ -1139,7 +1145,7 @@ INSERT INTO `customer` VALUES (336, 91359724998, 'Bales', 'Jennifer', 'K.', '721
 INSERT INTO `customer` VALUES (337, 91388601660, 'Stotka', 'Louis', 'C.', '2382 Wibur Ave.', NULL, NULL, NULL, 'Santa Anita', 'DF', '65044', 'Mexico', 108, '105-555-5971', '501-555-1306', '1933-03-19', 'M', '$10K - $30K', 'F', 1, 1, 'Partial High School', '1993-02-08', 'Normal', 'Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (338, 91397506594, 'Maynard', 'Sandra', 'Z', '2168 Terra Calitina', NULL, NULL, NULL, 'Bellingham', 'WA', '67158', 'USA', 78, '355-555-3349', '290-555-8371', '1931-02-04', 'M', '$10K - $30K', 'M', 3, 1, 'Partial High School', '1994-11-24', 'Normal', 'Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (339, 91412441134, 'Tuell', 'Gracia', NULL, '246 Weatherly Way', NULL, NULL, NULL, 'Langley', 'BC', '83677', 'Canada', 94, '690-555-4614', '255-555-4835', '1958-08-19', 'S', '$130K - $150K', 'F', 2, 0, 'Graduate Degree', '1994-10-20', 'Bronze', 'Management', 'Y', 2);
-INSERT INTO `customer` VALUES (340, 91423320174, 'Burnett', 'Timothy', 'A.', '2942 Marina Road', NULL, NULL, NULL, 'Acapulco', 'Guerrero', '25662', 'Mexico', 28, '963-555-9621', '966-555-1528', '1921-07-26', 'M', '$150K +', 'F', 2, 0, 'Bachelors Degree', '1990-05-01', 'Golden', 'Management', 'Y', 3);
+INSERT INTO `customer` VALUES (340, 91423320224, 'Burnett', 'Timothy', 'A.', '2942 Marina Road', NULL, NULL, NULL, 'Acapulco', 'Guerrero', '25662', 'Mexico', 28, '963-555-9621', '966-555-1528', '1921-07-26', 'M', '$150K +', 'F', 2, 0, 'Bachelors Degree', '1990-05-01', 'Golden', 'Management', 'Y', 3);
 INSERT INTO `customer` VALUES (341, 91427676081, 'Haugh', 'James', 'A.', '1273 Deetmeadow Way', NULL, NULL, NULL, 'Olympia', 'WA', '83425', 'USA', 85, '182-555-5856', '293-555-9278', '1935-03-14', 'M', '$10K - $30K', 'M', 1, 0, 'Partial High School', '1994-05-25', 'Bronze', 'Skilled Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (342, 91434070467, 'Moberly', 'Paula', 'L.', '4223 Las Trampas Road', NULL, NULL, NULL, 'La Mesa', 'CA', '93185', 'USA', 11, '716-555-4149', '367-555-8257', '1970-07-20', 'M', '$30K - $50K', 'F', 3, 3, 'High School Degree', '1992-09-07', 'Golden', 'Skilled Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (343, 91436216200, 'Meyer', 'Eric', NULL, '2809 Via Montana', NULL, NULL, NULL, 'Colma', 'CA', '30868', 'USA', 32, '197-555-2671', '617-555-5635', '1939-08-09', 'M', '$150K +', 'F', 2, 1, 'Bachelors Degree', '1993-06-27', 'Silver', 'Professional', 'Y', 2);
@@ -1508,7 +1514,7 @@ INSERT INTO `customer` VALUES (705, 96115834100, 'Kartz', 'Kay', NULL, '480 C Ke
 INSERT INTO `customer` VALUES (706, 96121359467, 'Wold', 'Audrey', 'M.', '267 Aspen Drive', NULL, NULL, NULL, 'Arcadia', 'CA', '79943', 'USA', 51, '457-555-6275', '392-555-2296', '1971-08-25', 'S', '$10K - $30K', 'M', 2, 0, 'Partial High School', '1993-06-22', 'Normal', 'Manual', 'Y', 0);
 INSERT INTO `customer` VALUES (707, 96155503988, 'French', 'Susan', 'C.', '8343 Briowes Valley Rd', NULL, NULL, NULL, 'Mill Valley', 'CA', '96461', 'USA', 38, '553-555-3882', '357-555-7760', '1967-06-15', 'S', '$30K - $50K', 'F', 1, 0, 'High School Degree', '1990-05-10', 'Golden', 'Skilled Manual', 'N', 2);
 INSERT INTO `customer` VALUES (708, 96199046969, 'Pederson', 'Trish', NULL, '8384 Potomac Drive', NULL, NULL, NULL, 'Sedro Woolley', 'WA', '64738', 'USA', 80, '165-555-3546', '169-555-4453', '1967-09-25', 'S', '$50K - $70K', 'M', 4, 0, 'High School Degree', '1993-04-21', 'Bronze', 'Skilled Manual', 'N', 3);
-INSERT INTO `customer` VALUES (709, 96202088594, 'Renn', 'Eric', 'J.', '9371 Corte Del Sol', NULL, NULL, NULL, 'Downey', 'CA', '21127', 'USA', 58, '284-555-8782', '396-555-3203', '1949-09-15', 'M', '$110K - $130K', 'F', 3, 1, 'Graduate Degree', '1993-07-23', 'Bronze', 'Professional', 'N', 3);
+INSERT INTO `customer` VALUES (709, 96202288594, 'Renn', 'Eric', 'J.', '9371 Corte Del Sol', NULL, NULL, NULL, 'Downey', 'CA', '21127', 'USA', 58, '284-555-8782', '396-555-3203', '1949-09-15', 'M', '$110K - $130K', 'F', 3, 1, 'Graduate Degree', '1993-07-23', 'Bronze', 'Professional', 'N', 3);
 INSERT INTO `customer` VALUES (710, 96214888095, 'Catalano', 'Elizabeth', 'C.', '9665 Pamploma Ct.', NULL, NULL, NULL, 'Kirkland', 'WA', '54564', 'USA', 63, '819-555-7075', '469-555-2182', '1940-02-13', 'M', '$30K - $50K', 'F', 2, 1, 'Bachelors Degree', '1994-03-07', 'Silver', 'Professional', 'N', 3);
 INSERT INTO `customer` VALUES (711, 96268945336, 'Coleman', 'Eric', 'F.', '907 Ameno Road', NULL, NULL, NULL, 'Tacoma', 'WA', '46592', 'USA', 84, '300-555-5596', '719-555-8560', '1947-06-05', 'M', '$30K - $50K', 'F', 2, 2, 'Partial High School', '1992-04-03', 'Bronze', 'Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (712, 96309478878, 'Hurkett', 'Lawrence', 'D.', '4111 Vista Diablo', NULL, NULL, NULL, 'San Gabriel', 'CA', '19899', 'USA', 52, '857-555-2517', '815-555-6168', '1978-08-04', 'M', '$50K - $70K', 'F', 2, 2, 'Bachelors Degree', '1993-05-13', 'Bronze', 'Professional', 'N', 3);
@@ -1541,7 +1547,7 @@ INSERT INTO `customer` VALUES (738, 96662001600, 'Demott Jr', 'Della', NULL, '67
 INSERT INTO `customer` VALUES (739, 96693496108, 'Carmichael', 'Jane', NULL, '4786 Salvio St.', NULL, NULL, NULL, 'Yakima', 'WA', '34292', 'USA', 89, '318-555-9222', '895-555-2703', '1931-01-03', 'M', '$50K - $70K', 'M', 4, 3, 'Bachelors Degree', '1993-08-19', 'Silver', 'Management', 'Y', 3);
 INSERT INTO `customer` VALUES (740, 96711778044, 'Montera', 'Hillaine', 'D.', '4827 Gilardy Drive', NULL, NULL, NULL, 'Milwaukie', 'OR', '25692', 'USA', 65, '703-555-7489', '706-555-8396', '1926-08-08', 'S', '$130K - $150K', 'M', 5, 0, 'Partial High School', '1992-03-08', 'Bronze', 'Management', 'Y', 3);
 INSERT INTO `customer` VALUES (741, 96764408349, 'Ciochon', 'Gina', 'M.', '3158 B Avenue I', NULL, NULL, NULL, 'Imperial Beach', 'CA', '84248', 'USA', 14, '161-555-7382', '933-555-7146', '1914-04-04', 'M', '$30K - $50K', 'M', 2, 1, 'High School Degree', '1993-11-01', 'Silver', 'Manual', 'N', 2);
-INSERT INTO `customer` VALUES (742, 96776108145, 'Anderson', 'Mae', NULL, '6108 Estudello St.', NULL, NULL, NULL, 'Ballard', 'WA', '91394', 'USA', 20, '456-555-2018', '107-555-6125', '1911-05-07', 'M', '$70K - $90K', 'F', 4, 4, 'Bachelors Degree', '1993-11-08', 'Golden', 'Professional', 'Y', 3);
+INSERT INTO `customer` VALUES (742, 96776108145, 'Anderson', 'Mae', NULL, '6108 Estudello St.', NULL, NULL, NULL, 'Ballard', 'WA', '91394', 'USA', 20, '456-555-2022', '107-555-6125', '1911-05-07', 'M', '$70K - $90K', 'F', 4, 4, 'Bachelors Degree', '1993-11-08', 'Golden', 'Professional', 'Y', 3);
 INSERT INTO `customer` VALUES (743, 96814935803, 'Allen', 'Marvin', 'L.', '7350 Pinon', NULL, NULL, NULL, 'Santa Cruz', 'CA', '40236', 'USA', 40, '837-555-9539', '357-555-3503', '1911-02-21', 'M', '$30K - $50K', 'M', 1, 1, 'High School Degree', '1992-08-09', 'Bronze', 'Skilled Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (744, 96817210316, 'Bidelman', 'Chris', 'L.', '555 Moretti Drive', NULL, NULL, NULL, 'Oakland', 'CA', '32052', 'USA', 37, '495-555-6460', '453-555-1111', '1949-11-25', 'M', '$30K - $50K', 'F', 3, 2, 'High School Degree', '1993-01-14', 'Golden', 'Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (745, 96819458000, 'Gee', 'Orlando', NULL, '2050 Glazier Dr', NULL, NULL, NULL, 'Issaquah', 'WA', '19763', 'USA', 21, '238-555-7268', '726-555-6118', '1942-04-17', 'M', '$30K - $50K', 'F', 5, 3, 'High School Degree', '1991-03-10', 'Golden', 'Skilled Manual', 'Y', 4);
@@ -1760,7 +1766,7 @@ INSERT INTO `customer` VALUES (957, 99532480239, 'Finke', 'Fay', 'L.', '313 Lade
 INSERT INTO `customer` VALUES (958, 99548391103, 'Beutel', 'Allison', 'A.', '9590 Galloway Dr', NULL, NULL, NULL, 'Grossmont', 'CA', '85034', 'USA', 17, '389-555-6229', '370-555-8507', '1933-10-24', 'M', '$30K - $50K', 'M', 4, 4, 'High School Degree', '1990-11-22', 'Golden', 'Skilled Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (959, 99567112922, 'Duvalle', 'Ann', NULL, '5751 Concord Place', NULL, NULL, NULL, 'San Andres', 'DF', '70230', 'Mexico', 106, '200-555-2921', '950-555-4057', '1918-03-12', 'S', '$10K - $30K', 'M', 0, 0, 'Partial High School', '1993-11-24', 'Normal', 'Skilled Manual', 'Y', 0);
 INSERT INTO `customer` VALUES (960, 99577841758, 'Sloper', 'Kari', NULL, '5283 Rishell Ct.', NULL, NULL, NULL, 'Richmond', 'CA', '71842', 'USA', 35, '427-555-1672', '716-555-3493', '1945-04-23', 'S', '$30K - $50K', 'F', 0, 0, 'High School Degree', '1992-05-24', 'Bronze', 'Manual', 'N', 1);
-INSERT INTO `customer` VALUES (961, 99578673243, 'Weinzimmer', 'Patricia', 'M.', '451 Buskirk Ave.', NULL, NULL, NULL, 'Downey', 'CA', '20172', 'USA', 58, '852-555-6568', '348-555-1903', '1911-02-06', 'M', '$50K - $70K', 'M', 2, 0, 'Bachelors Degree', '1993-04-22', 'Bronze', 'Professional', 'N', 4);
+INSERT INTO `customer` VALUES (961, 99578673243, 'Weinzimmer', 'Patricia', 'M.', '451 Buskirk Ave.', NULL, NULL, NULL, 'Downey', 'CA', '20222', 'USA', 58, '852-555-6568', '348-555-1903', '1911-02-06', 'M', '$50K - $70K', 'M', 2, 0, 'Bachelors Degree', '1993-04-22', 'Bronze', 'Professional', 'N', 4);
 INSERT INTO `customer` VALUES (962, 99607539176, 'Moore', 'Raven', NULL, '237 Ashley Way', NULL, NULL, NULL, 'Ballard', 'WA', '41322', 'USA', 20, '202-555-3946', '137-555-8968', '1935-01-09', 'M', '$10K - $30K', 'M', 2, 0, 'Partial High School', '1992-05-12', 'Normal', 'Skilled Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (963, 99607823491, 'Chaw', 'Susan', 'C.', '8314 Brandywine Way', NULL, NULL, NULL, 'San Diego', 'CA', '20650', 'USA', 7, '298-555-1553', '102-555-5432', '1930-11-27', 'S', '$90K - $110K', 'F', 1, 0, 'Graduate Degree', '1994-04-01', 'Bronze', 'Professional', 'Y', 4);
 INSERT INTO `customer` VALUES (964, 99621245265, 'Reitzel', 'Steve', 'W.', '8354 Ponderosa Drive', NULL, NULL, NULL, 'Santa Monica', 'CA', '87926', 'USA', 49, '810-555-1218', '813-555-2125', '1931-03-10', 'M', '$10K - $30K', 'M', 3, 2, 'Partial High School', '1992-03-12', 'Normal', 'Manual', 'Y', 2);
@@ -6370,7 +6376,7 @@ INSERT INTO `product` VALUES (52, 3, 'Washington', 'Washington Strawberry Drink'
 INSERT INTO `product` VALUES (19, 4, 'Washington', 'Washington Cream Soda', 64412155747, 3.6400, 10.6, 9.6, 1, 0, 26, 10, 22.9, 18.9, 7.93, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (19, 5, 'Washington', 'Washington Diet Soda', 85561191439, 2.1900, 6.66, 4.65, 1, 0, 7, 10, 20.7, 21.9, 19.2, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (19, 6, 'Washington', 'Washington Cola', 29804642796, 1.1500, 15.8, 13.8, 0, 0, 14, 10, 6.42, 18.1, 21.3, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
-INSERT INTO `product` VALUES (19, 7, 'Washington', 'Washington Diet Cola', 20191444754, 2.6100, 18, 17, 1, 0, 11, 7, 15, 16.9, 21, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
+INSERT INTO `product` VALUES (19, 7, 'Washington', 'Washington Diet Cola', 20221444754, 2.6100, 18, 17, 1, 0, 11, 7, 15, 16.9, 21, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (30, 8, 'Washington', 'Washington Orange Juice', 89770532250, 2.5900, 8.97, 6.97, 1, 0, 27, 7, 7.56, 11.8, 8.92, 'Juice', 'Pure Juice Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (30, 9, 'Washington', 'Washington Cranberry Juice', 49395100474, 2.4200, 7.14, 5.13, 0, 0, 34, 7, 18.5, 16.1, 14.4, 'Juice', 'Pure Juice Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (30, 10, 'Washington', 'Washington Apple Juice', 22114084362, 1.4200, 8.13, 7.13, 1, 0, 28, 14, 21.6, 7.32, 9.2, 'Juice', 'Pure Juice Beverages', 'Beverages', 'Drink');
@@ -6474,14 +6480,14 @@ INSERT INTO `product` VALUES (60, 107, 'Golden', 'Golden Frozen Corn', 556373304
 INSERT INTO `product` VALUES (60, 108, 'Golden', 'Golden Frozen Peas', 63691950440, 2.1900, 11.9, 9.89, 1, 1, 34, 6, 8.69, 9.67, 20.5, 'Frozen Vegetables', 'Vegetables', 'Frozen Foods', 'Food');
 INSERT INTO `product` VALUES (9, 109, 'Golden', 'Golden Popsicles', 51792051196, 3.9500, 19, 16, 0, 0, 11, 12, 6.69, 10.4, 7.67, 'Ice Cream', 'Frozen Desserts', 'Frozen Foods', 'Food');
 INSERT INTO `product` VALUES (100, 110, 'Golden', 'Golden Frozen Chicken Thighs', 29084437489, 2.3500, 12, 10, 1, 1, 34, 13, 22.3, 10.2, 6.75, 'Frozen Chicken', 'Meat', 'Frozen Foods', 'Food');
-INSERT INTO `product` VALUES (100, 111, 'Golden', 'Golden Frozen Chicken Wings', 52520174384, 3.4800, 15.4, 13.3, 1, 1, 17, 12, 22, 10.7, 10, 'Frozen Chicken', 'Meat', 'Frozen Foods', 'Food');
+INSERT INTO `product` VALUES (100, 111, 'Golden', 'Golden Frozen Chicken Wings', 52520224384, 3.4800, 15.4, 13.3, 1, 1, 17, 12, 22, 10.7, 10, 'Frozen Chicken', 'Meat', 'Frozen Foods', 'Food');
 INSERT INTO `product` VALUES (110, 112, 'Golden', 'Golden Lemon Popsicles', 89050326943, 1.1300, 9.35, 7.35, 0, 1, 35, 5, 21.9, 15, 13.8, 'Popsicles', 'Frozen Desserts', 'Frozen Foods', 'Food');
 INSERT INTO `product` VALUES (78, 113, 'Faux Products', 'Faux Products Silky Smooth Hair Conditioner', 15625960230, 2.2900, 19.7, 17.7, 1, 0, 8, 12, 14.5, 8.23, 15, 'Conditioner', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (39, 114, 'Faux Products', 'Faux Products Tartar Control Toothpaste', 21393879055, 0.9200, 20.6, 19.6, 0, 0, 31, 11, 19.1, 10.5, 9.73, 'Personal Hygiene', 'Hygiene', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (39, 115, 'Faux Products', 'Faux Products Whitening Toothpast', 14283847212, 0.6500, 20.6, 18.6, 1, 0, 33, 13, 10.6, 11.7, 9.62, 'Personal Hygiene', 'Hygiene', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (39, 116, 'Faux Products', 'Faux Products Toothpaste', 79289532303, 3.9700, 8.33, 5.32, 1, 0, 8, 10, 7.45, 20.8, 13.4, 'Personal Hygiene', 'Hygiene', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (39, 117, 'Faux Products', 'Faux Products Deodorant', 10438567996, 2.7500, 9.24, 7.23, 0, 0, 31, 10, 12, 3.12, 8.19, 'Personal Hygiene', 'Hygiene', 'Health and Hygiene', 'Non-Consumable');
-INSERT INTO `product` VALUES (79, 118, 'Faux Products', 'Faux Products Conditioning Shampoo', 44682019352, 1.4800, 8.27, 6.27, 1, 0, 20, 13, 8.55, 14.1, 3.48, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
+INSERT INTO `product` VALUES (79, 118, 'Faux Products', 'Faux Products Conditioning Shampoo', 44682022352, 1.4800, 8.27, 6.27, 1, 0, 20, 13, 8.55, 14.1, 3.48, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (79, 119, 'Faux Products', 'Faux Products Extra Moisture Shampoo', 35068821310, 2.2800, 20.1, 19.1, 0, 0, 7, 12, 7.86, 8.33, 14.7, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (88, 120, 'Faux Products', 'Faux Products Angled Toothbrush', 14647908806, 2.2600, 12.9, 9.89, 0, 0, 23, 13, 9.99, 5.6, 22, 'Toothbrushes', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (79, 121, 'Faux Products', 'Faux Products Apricot Shampoo', 64272477030, 2.9800, 11.6, 8.6, 1, 0, 21, 11, 21.4, 6.61, 22.4, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
@@ -6535,7 +6541,7 @@ INSERT INTO `product` VALUES (107, 168, 'Robust', 'Robust Monthly Computer Magaz
 INSERT INTO `product` VALUES (105, 169, 'Robust', 'Robust Monthly Home Magazine', 54495846629, 1.9800, 19.5, 17.5, 1, 0, 29, 11, 17.2, 5.11, 11.8, 'Home Magazines', 'Magazines', 'Periodicals', 'Non-Consumable');
 INSERT INTO `product` VALUES (106, 170, 'Robust', 'Robust Monthly Fashion Magazine', 57929857373, 3.2000, 9.56, 8.56, 0, 0, 23, 9, 5.74, 4.41, 9.95, 'Fashion Magazines', 'Magazines', 'Periodicals', 'Non-Consumable');
 INSERT INTO `product` VALUES (61, 171, 'High Top', 'High Top Summer Squash', 76792191863, 2.9500, 18.7, 17.7, 0, 0, 30, 9, 11.3, 20.6, 12, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
-INSERT INTO `product` VALUES (61, 172, 'High Top', 'High Top Corn on the Cob', 18748942017, 3.3200, 16.1, 14.1, 0, 1, 3, 8, 12.3, 18.4, 4.75, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
+INSERT INTO `product` VALUES (61, 172, 'High Top', 'High Top Corn on the Cob', 18748942022, 3.3200, 16.1, 14.1, 0, 1, 3, 8, 12.3, 18.4, 4.75, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
 INSERT INTO `product` VALUES (61, 173, 'High Top', 'High Top Asparagus', 72946912646, 1.4300, 21.9, 20.8, 0, 0, 13, 13, 22, 9.15, 7.34, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
 INSERT INTO `product` VALUES (61, 174, 'High Top', 'High Top Sweet Peas', 50239298939, 1.7100, 13.4, 11.3, 1, 0, 22, 8, 12.3, 21, 21.8, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
 INSERT INTO `product` VALUES (61, 175, 'High Top', 'High Top New Potatos', 97577165961, 3.8500, 6.82, 4.82, 1, 1, 16, 8, 13, 15.4, 13.2, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
@@ -6929,7 +6935,7 @@ INSERT INTO `product` VALUES (109, 562, 'Fast', 'Fast Dried Apricots', 421353799
 INSERT INTO `product` VALUES (84, 563, 'Fast', 'Fast Frosted Donuts', 58927478194, 1.6800, 19.9, 18.8, 0, 1, 31, 9, 6.76, 7.11, 19.5, 'Donuts', 'Snack Foods', 'Snack Foods', 'Food');
 INSERT INTO `product` VALUES (36, 564, 'Atomic', 'Atomic Tasty Candy Bar', 10031033158, 0.6600, 17.9, 15.8, 1, 1, 9, 13, 7.18, 8.35, 17, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
 INSERT INTO `product` VALUES (36, 565, 'Atomic', 'Atomic Mint Chocolate Bar', 55082198977, 0.9000, 10.9, 9.89, 1, 0, 9, 11, 12.9, 22.5, 13.6, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
-INSERT INTO `product` VALUES (36, 566, 'Atomic', 'Atomic Malted Milk Balls', 65423520207, 1.7800, 13.9, 10.8, 0, 0, 20, 13, 20.3, 11.9, 9.61, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
+INSERT INTO `product` VALUES (36, 566, 'Atomic', 'Atomic Malted Milk Balls', 65423520227, 1.7800, 13.9, 10.8, 0, 0, 20, 13, 20.3, 11.9, 9.61, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
 INSERT INTO `product` VALUES (36, 567, 'Atomic', 'Atomic Semi-Sweet Chocolate Bar', 55810322165, 2.3500, 15.9, 13.8, 1, 1, 35, 13, 4.46, 5.77, 13.2, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
 INSERT INTO `product` VALUES (37, 568, 'Atomic', 'Atomic Bubble Gum', 59291539788, 3.3300, 11.2, 8.19, 0, 1, 18, 13, 11.5, 6.82, 11.6, 'Gum', 'Candy', 'Snacks', 'Food');
 INSERT INTO `product` VALUES (38, 569, 'Atomic', 'Atomic Spicy Mints', 18916108012, 3.1600, 7.79, 5.78, 1, 1, 33, 13, 16.9, 3.52, 17, 'Hard Candy', 'Candy', 'Snacks', 'Food');
@@ -7129,7 +7135,7 @@ INSERT INTO `product` VALUES (55, 762, 'Cormorant', 'Cormorant Paper Cups', 6300
 INSERT INTO `product` VALUES (80, 763, 'Cormorant', 'Cormorant 75 Watt Lightbulb', 57963170409, 2.5500, 6.32, 5.32, 1, 0, 5, 14, 12, 17.4, 10.2, 'Lightbulbs', 'Electrical', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (22, 764, 'Cormorant', 'Cormorant Toilet Bowl Cleaner', 89919920563, 3.8100, 15.9, 13.8, 0, 0, 32, 7, 8.31, 19, 4.2, 'Cleaners', 'Cleaning Supplies', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (22, 765, 'Cormorant', 'Cormorant Counter Cleaner', 18998720049, 1.9200, 19.6, 16.6, 0, 0, 36, 6, 6.6, 19.2, 8.06, 'Cleaners', 'Cleaning Supplies', 'Household', 'Non-Consumable');
-INSERT INTO `product` VALUES (22, 766, 'Cormorant', 'Cormorant Glass Cleaner', 20193236470, 0.6200, 20.1, 18.1, 1, 0, 3, 9, 7.71, 22.6, 7.91, 'Cleaners', 'Cleaning Supplies', 'Household', 'Non-Consumable');
+INSERT INTO `product` VALUES (22, 766, 'Cormorant', 'Cormorant Glass Cleaner', 20223236470, 0.6200, 20.1, 18.1, 1, 0, 3, 9, 7.71, 22.6, 7.91, 'Cleaners', 'Cleaning Supplies', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (80, 767, 'Cormorant', 'Cormorant 25 Watt Lightbulb', 43628973364, 1.4500, 16.9, 15.8, 1, 0, 2, 8, 12.5, 3.52, 8.92, 'Lightbulbs', 'Electrical', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (101, 768, 'Cormorant', 'Cormorant AA-Size Batteries', 80159125924, 2.7600, 20.5, 18.5, 0, 0, 12, 9, 10.8, 3.77, 12.7, 'Batteries', 'Electrical', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (101, 769, 'Cormorant', 'Cormorant D-Size Batteries', 96734759211, 0.5900, 21, 20, 0, 0, 9, 9, 11.9, 7.13, 12.6, 'Batteries', 'Electrical', 'Household', 'Non-Consumable');
@@ -7301,7 +7307,7 @@ INSERT INTO `product` VALUES (53, 934, 'BBB Best', 'BBB Best Creamy Peanut Butte
 INSERT INTO `product` VALUES (33, 935, 'BBB Best', 'BBB Best Strawberry Preserves', 32069382071, 2.8000, 7.54, 4.53, 0, 1, 6, 11, 19.4, 8.78, 20.4, 'Preserves', 'Jams and Jellies', 'Baking Goods', 'Food');
 INSERT INTO `product` VALUES (53, 936, 'BBB Best', 'BBB Best Extra Chunky Peanut Butter', 35550599694, 2.7800, 6.49, 5.48, 0, 0, 23, 8, 4.29, 3.42, 17.6, 'Peanut Butter', 'Jams and Jellies', 'Baking Goods', 'Food');
 INSERT INTO `product` VALUES (33, 937, 'BBB Best', 'BBB Best Apple Preserves', 85175167918, 3.6100, 21.8, 18.7, 1, 1, 25, 10, 3.3, 18, 12.2, 'Preserves', 'Jams and Jellies', 'Baking Goods', 'Food');
-INSERT INTO `product` VALUES (31, 938, 'BBB Best', 'BBB Best Grape Jelly', 33992021679, 1.6100, 17, 14, 1, 0, 32, 13, 10.6, 8.03, 5.65, 'Jelly', 'Jams and Jellies', 'Baking Goods', 'Food');
+INSERT INTO `product` VALUES (31, 938, 'BBB Best', 'BBB Best Grape Jelly', 33992022679, 1.6100, 17, 14, 1, 0, 32, 13, 10.6, 8.03, 5.65, 'Jelly', 'Jams and Jellies', 'Baking Goods', 'Food');
 INSERT INTO `product` VALUES (30, 939, 'Fabulous', 'Fabulous Berry Juice', 52854356169, 0.7000, 10.8, 8.8, 0, 0, 19, 13, 3.2, 11.2, 16.9, 'Juice', 'Pure Juice Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (52, 940, 'Fabulous', 'Fabulous Mango Drink', 84811106324, 2.8400, 14.5, 12.5, 0, 0, 23, 11, 21.4, 11.4, 20.8, 'Flavored Drinks', 'Drinks', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (52, 941, 'Fabulous', 'Fabulous Strawberry Drink', 49009076952, 3.9500, 18.3, 16.2, 0, 0, 35, 10, 10.6, 20.6, 11.9, 'Flavored Drinks', 'Drinks', 'Beverages', 'Drink');
@@ -7637,7 +7643,7 @@ INSERT INTO `product` VALUES (58, 1270, 'Pleasant', 'Pleasant Vegetable Soup', 4
 INSERT INTO `product` VALUES (62, 1271, 'Pleasant', 'Pleasant Canned Tomatos', 36829380393, 3.5000, 6.12, 3.11, 1, 1, 13, 7, 14.1, 18.7, 13.2, 'Canned Vegetables', 'Vegetables', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (58, 1272, 'Pleasant', 'Pleasant Noodle Soup', 16408467888, 2.4800, 18.2, 16.2, 0, 1, 31, 9, 7.15, 4.35, 11.3, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (58, 1273, 'Pleasant', 'Pleasant Regular Ramen Soup', 66033036112, 3.3100, 12.5, 9.5, 1, 1, 4, 7, 19.7, 17.5, 12.5, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
-INSERT INTO `product` VALUES (58, 1274, 'Pleasant', 'Pleasant Chicken Noodle Soup', 38752020001, 1.3100, 20.2, 19.2, 1, 0, 36, 10, 8.2, 20.5, 17, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
+INSERT INTO `product` VALUES (58, 1274, 'Pleasant', 'Pleasant Chicken Noodle Soup', 38752022001, 1.3100, 20.2, 19.2, 1, 0, 36, 10, 8.2, 20.5, 17, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (58, 1275, 'Pleasant', 'Pleasant Turkey Noodle Soup', 33712224364, 1.1700, 13.5, 12.5, 1, 0, 9, 6, 17.6, 22.6, 3.46, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (58, 1276, 'Pleasant', 'Pleasant Beef Soup', 96647673249, 1.4300, 16.9, 14.8, 1, 0, 2, 8, 18.9, 18.7, 4.16, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (62, 1277, 'Pleasant', 'Pleasant Canned Peas', 60845643877, 2.5400, 19.9, 17.8, 1, 0, 25, 7, 16.3, 22.5, 17.6, 'Canned Vegetables', 'Vegetables', 'Canned Foods', 'Food');
@@ -7684,7 +7690,7 @@ INSERT INTO `product` VALUES (81, 1317, 'Lake', 'Lake Foot-Long Hot Dogs', 12584
 INSERT INTO `product` VALUES (16, 1318, 'Lake', 'Lake Low Fat Cole Slaw', 22926171422, 0.9300, 14.4, 12.3, 1, 0, 4, 10, 14.8, 5.63, 11.4, 'Deli Salads', 'Side Dishes', 'Deli', 'Food');
 INSERT INTO `product` VALUES (16, 1319, 'Lake', 'Lake Cole Slaw', 92095932364, 1.6800, 13.2, 10.1, 0, 1, 33, 7, 8.49, 3.33, 6.64, 'Deli Salads', 'Side Dishes', 'Deli', 'Food');
 INSERT INTO `product` VALUES (77, 1320, 'Lake', 'Lake Roasted Chicken', 95577149987, 2.6600, 21.2, 19.2, 0, 1, 27, 11, 21, 11.9, 11, 'Fresh Chicken', 'Meat', 'Deli', 'Food');
-INSERT INTO `product` VALUES (8, 1321, 'Lake', 'Lake Corned Beef', 55201718211, 2.4900, 16.9, 15.8, 1, 0, 8, 8, 20.4, 4.13, 16.7, 'Deli Meats', 'Meat', 'Deli', 'Food');
+INSERT INTO `product` VALUES (8, 1321, 'Lake', 'Lake Corned Beef', 55202218211, 2.4900, 16.9, 15.8, 1, 0, 8, 8, 20.4, 4.13, 16.7, 'Deli Meats', 'Meat', 'Deli', 'Food');
 INSERT INTO `product` VALUES (8, 1322, 'Lake', 'Lake Sliced Turkey', 94018571972, 3.2000, 6.66, 5.65, 0, 1, 6, 13, 21.5, 11.4, 21.8, 'Deli Meats', 'Meat', 'Deli', 'Food');
 INSERT INTO `product` VALUES (8, 1323, 'Lake', 'Lake Sliced Ham', 22880906462, 2.9400, 10.5, 8.5, 1, 1, 29, 7, 4.36, 13.1, 9.99, 'Deli Meats', 'Meat', 'Deli', 'Food');
 INSERT INTO `product` VALUES (16, 1324, 'Lake', 'Lake Potato Salad', 54837656617, 3.3100, 13.5, 11.5, 0, 0, 29, 7, 10.4, 20.2, 20.9, 'Deli Salads', 'Side Dishes', 'Deli', 'Food');
@@ -7735,7 +7741,7 @@ INSERT INTO `product` VALUES (79, 1368, 'Hilltop', 'Hilltop Extra Moisture Shamp
 INSERT INTO `product` VALUES (88, 1369, 'Hilltop', 'Hilltop Angled Toothbrush', 99251229166, 3.3800, 13.7, 10.6, 1, 0, 20, 7, 20.3, 18.5, 9.77, 'Toothbrushes', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (79, 1370, 'Hilltop', 'Hilltop Apricot Shampoo', 71970213055, 2.3800, 16, 13, 1, 0, 16, 6, 11.8, 19.7, 9.06, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (70, 1371, 'Hilltop', 'Hilltop Childrens Aspirin', 78147458434, 2.4700, 6.4, 4.4, 1, 0, 33, 12, 15.4, 8.09, 16.9, 'Aspirin', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
-INSERT INTO `product` VALUES (70, 1372, 'Hilltop', 'Hilltop Buffered Aspirin', 86202078461, 2.4900, 6.49, 4.48, 1, 0, 10, 13, 13.7, 8.08, 21.9, 'Aspirin', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
+INSERT INTO `product` VALUES (70, 1372, 'Hilltop', 'Hilltop Buffered Aspirin', 86202278461, 2.4900, 6.49, 4.48, 1, 0, 10, 13, 13.7, 8.08, 21.9, 'Aspirin', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (71, 1373, 'Hilltop', 'Hilltop 200 MG Ibuprofen', 74302179217, 3.6000, 8.77, 7.77, 1, 0, 5, 12, 5.21, 9.35, 21.2, 'Ibuprofen', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (72, 1374, 'Hilltop', 'Hilltop 200 MG Acetominifen', 51594565510, 2.8900, 18.9, 17.8, 1, 0, 23, 9, 14.1, 5.6, 13, 'Acetominifen', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (73, 1375, 'Hilltop', 'Hilltop HCL Nasal Spray', 75030302405, 2.1300, 21.1, 19.1, 1, 0, 25, 11, 5.63, 6.87, 12.3, 'Nasal Sprays', 'Decongestants', 'Health and Hygiene', 'Non-Consumable');
@@ -9653,7 +9659,7 @@ INSERT INTO `promotion` VALUES (1736, 131, 'Pick Your Savings', 'Sunday Paper, R
 INSERT INTO `promotion` VALUES (1737, 131, 'Dollar Cutters', 'Daily Paper, Radio', 7066.0000, '1998-12-16 05:00:00', '1998-12-17 05:00:00');
 INSERT INTO `promotion` VALUES (1738, 131, 'Go For It', 'Sunday Paper, Radio', 12300.0000, '1998-12-30 05:00:00', '1998-12-31 05:00:00');
 INSERT INTO `promotion` VALUES (1740, 132, 'Double Your Savings', 'Bulk Mail', 7813.0000, '1996-01-18 05:00:00', '1996-01-21 05:00:00');
-INSERT INTO `promotion` VALUES (1741, 132, 'Green Light Days', 'Product Attachment', 12020.0000, '1996-01-31 05:00:00', '1996-02-03 05:00:00');
+INSERT INTO `promotion` VALUES (1741, 132, 'Green Light Days', 'Product Attachment', 12022.0000, '1996-01-31 05:00:00', '1996-02-03 05:00:00');
 INSERT INTO `promotion` VALUES (1742, 132, 'Big Time Discounts', 'Street Handout', 5290.0000, '1996-02-15 05:00:00', '1996-02-16 05:00:00');
 INSERT INTO `promotion` VALUES (1743, 132, 'Free For All', 'Daily Paper, Radio', 9843.0000, '1996-02-27 05:00:00', '1996-03-01 05:00:00');
 INSERT INTO `promotion` VALUES (1744, 132, 'Green Light Special', 'Product Attachment', 11058.0000, '1996-03-14 05:00:00', '1996-03-17 05:00:00');
@@ -10179,7 +10185,7 @@ INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 73, 16, 1, 3.2239, 0.7800, 1
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 74, 16, 1, 3.3799, 0.3300, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 75, 16, 1, 3.3358, 0.4200, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 76, 16, 1, 3.4502, 0.5700, 1, 0);
-INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 77, 16, 1, 3.2021, 0.7200, 1, 0);
+INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 77, 16, 1, 3.2022, 0.7200, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 78, 16, 1, 3.4300, 0.9600, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 79, 16, 1, 3.4528, 0.6000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 80, 17, 1, 3.9600, 0.0000, 1, 0);
@@ -10610,7 +10616,7 @@ INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 504, 16, 1, 3.4162, 0.1800, 
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 505, 16, 1, 3.2703, 0.5700, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 506, 16, 1, 3.4668, 0.2100, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 507, 16, 1, 3.2443, 0.4200, 1, 0);
-INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 508, 16, 1, 3.2017, 0.4800, 1, 0);
+INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 508, 16, 1, 3.2022, 0.4800, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 509, 16, 1, 3.3778, 1.1700, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 510, 16, 1, 3.2511, 1.1100, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 511, 16, 1, 3.3407, 0.5100, 1, 0);
@@ -13798,7 +13804,7 @@ INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 612, 18, 1, 3.4509, 0.8400, 
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 613, 18, 1, 3.3640, 0.3300, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 614, 18, 1, 3.4811, 0.6000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 615, 18, 1, 3.4209, 1.1400, 1, 0);
-INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 616, 18, 1, 3.2021, 0.5400, 1, 0);
+INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 616, 18, 1, 3.2022, 0.5400, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 617, 18, 1, 3.2434, 0.0900, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 618, 11, 1, 7.1100, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 619, 15, 1, 5.7600, 0.0000, 1, 0);
@@ -15647,7 +15653,7 @@ INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 613, 18, 1, 3.3164, 0.4500, 
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 614, 18, 1, 3.3893, 1.4100, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 615, 18, 1, 3.4620, 1.3500, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 616, 18, 1, 3.2533, 1.7700, 1, 0);
-INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 617, 18, 1, 3.2020, 0.0000, 1, 0);
+INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 617, 18, 1, 3.2022, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 618, 11, 1, 7.1100, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 619, 15, 1, 5.7600, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 620, 16, 1, 3.5069, 1.1700, 1, 0);
@@ -15738,7 +15744,7 @@ INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 88, 17, 1, 4.2300, 0.0000, 1
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 89, 17, 1, 4.0500, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 90, 18, 1, 3.4361, 0.1200, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 91, 18, 1, 3.2727, 0.9900, 1, 0);
-INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 92, 18, 1, 3.2020, 1.1100, 1, 0);
+INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 92, 18, 1, 3.2022, 1.1100, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 93, 18, 1, 3.2427, 0.0900, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 94, 18, 1, 3.4936, 0.4800, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 95, 18, 1, 3.4934, 0.6600, 1, 0);
@@ -17861,7 +17867,7 @@ INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 342, 18, 1, 3.4336, 1.0800, 
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 343, 18, 1, 3.4119, 1.0500, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 344, 18, 1, 3.2802, 1.1400, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 345, 18, 1, 3.3073, 0.6900, 1, 0);
-INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 346, 18, 1, 3.2018, 0.6300, 1, 0);
+INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 346, 18, 1, 3.2022, 0.6300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 347, 18, 1, 3.3927, 0.9300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 348, 18, 1, 3.4286, 0.6300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 349, 18, 1, 3.2582, 0.3000, 1, 0);
@@ -18522,7 +18528,7 @@ INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1003, 18, 2, 3.4552, 5.1818,
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1004, 18, 2, 3.4609, 1.6364, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1005, 18, 2, 3.2115, 4.0909, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1006, 18, 2, 3.4495, 7.3636, 1, 0);
-INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1007, 18, 2, 3.2021, 7.0909, 1, 0);
+INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1007, 18, 2, 3.2022, 7.0909, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1008, 18, 2, 3.4617, 5.7273, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1009, 18, 2, 3.5056, 6.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1010, 18, 2, 3.2962, 6.5455, 1, 0);
@@ -21195,7 +21201,7 @@ INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 211, 18, 1, 3.3250, 0.6300, 
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 212, 18, 1, 3.4416, 0.0300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 213, 18, 1, 3.4141, 1.1400, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 214, 18, 1, 3.2913, 0.9900, 1, 0);
-INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 215, 18, 1, 3.2020, 0.5400, 1, 0);
+INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 215, 18, 1, 3.2022, 0.5400, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 216, 18, 1, 3.3550, 1.0500, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 217, 18, 1, 3.3988, 0.4500, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 218, 18, 1, 3.3824, 0.6000, 1, 0);
@@ -21341,7 +21347,7 @@ INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 357, 18, 1, 3.4276, 0.3900, 
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 358, 18, 1, 3.2144, 0.8100, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 359, 11, 1, 8.0000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 360, 15, 1, 6.7000, 0.0000, 1, 0);
-INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 361, 16, 1, 3.2021, 0.2700, 1, 0);
+INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 361, 16, 1, 3.2022, 0.2700, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 362, 11, 1, 13.0000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 363, 11, 1, 8.9000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 364, 11, 1, 8.2000, 0.0000, 1, 0);
@@ -21675,7 +21681,7 @@ INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 691, 17, 3, 6.2857, 0.0000, 
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 692, 17, 3, 6.5714, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 693, 17, 3, 6.2857, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 694, 18, 3, 3.3737, 0.3000, 1, 0);
-INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 695, 18, 3, 3.2020, 1.0714, 1, 0);
+INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 695, 18, 3, 3.2022, 1.0714, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 696, 18, 3, 3.4627, 0.0429, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 697, 18, 3, 3.4494, 0.9000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 698, 18, 3, 3.2607, 1.1571, 1, 0);
@@ -22808,7 +22814,7 @@ INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 669, 16, 3, 3.3338, 0.1714, 
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 670, 16, 3, 3.2671, 0.6429, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 671, 16, 3, 3.5138, 1.4571, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 672, 16, 3, 3.5062, 0.6000, 1, 0);
-INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 673, 16, 3, 3.2018, 1.3286, 1, 0);
+INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 673, 16, 3, 3.2022, 1.3286, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 674, 16, 3, 3.2427, 1.0286, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 675, 16, 3, 3.5165, 0.6857, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 676, 16, 3, 3.3154, 0.4714, 1, 0);
@@ -23762,7 +23768,7 @@ INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 468, 17, 1, 4.6000, 0.0000, 
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 469, 18, 1, 3.4225, 1.1400, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 470, 18, 1, 3.3803, 0.6600, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 471, 18, 1, 3.3573, 0.0300, 1, 0);
-INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 472, 18, 1, 3.2020, 0.9600, 1, 0);
+INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 472, 18, 1, 3.2022, 0.9600, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 473, 18, 1, 3.4834, 0.6600, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 474, 18, 1, 3.2501, 0.2100, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 475, 18, 1, 3.2308, 1.0200, 1, 0);
@@ -23826,7 +23832,7 @@ INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 532, 18, 1, 3.4186, 0.2700, 
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 533, 18, 1, 3.2071, 0.4800, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 534, 18, 1, 3.2947, 0.9900, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 535, 18, 1, 3.2101, 1.1400, 1, 0);
-INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 536, 18, 1, 3.2020, 0.4800, 1, 0);
+INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 536, 18, 1, 3.2022, 0.4800, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 537, 18, 1, 3.2794, 0.1500, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 538, 18, 1, 3.2107, 0.3300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 539, 18, 1, 3.4850, 0.3300, 1, 0);
@@ -25296,7 +25302,7 @@ INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 847, 16, 2, 3.3235, 17.4545,
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 848, 16, 2, 3.3514, 10.9091, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 849, 16, 2, 3.2564, 5.4545, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 850, 16, 2, 3.4533, 14.4545, 1, 0);
-INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 851, 16, 2, 3.2019, 3.2727, 1, 0);
+INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 851, 16, 2, 3.2022, 3.2727, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 852, 16, 2, 3.3272, 11.1818, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 853, 16, 2, 3.4989, 7.0909, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 854, 16, 2, 3.3519, 11.1818, 1, 0);
@@ -25719,7 +25725,7 @@ INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 115, 15, 1, 7.0000, 0.0000, 
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 116, 15, 1, 6.8000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 117, 15, 1, 6.7000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 118, 15, 1, 8.2000, 0.0000, 1, 0);
-INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 119, 16, 1, 3.2020, 1.8300, 1, 0);
+INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 119, 16, 1, 3.2022, 1.8300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 120, 16, 1, 3.2191, 1.9800, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 121, 16, 1, 3.3596, 1.9200, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 122, 16, 1, 3.5124, 1.7400, 1, 0);
@@ -29518,7 +29524,7 @@ INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 449, 16, 1, 3.2690, 0.3600, 
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 450, 16, 1, 3.3956, 2.1300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 451, 16, 1, 3.3141, 1.5300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 452, 16, 1, 3.4932, 0.0300, 1, 0);
-INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 453, 16, 1, 3.2017, 2.0700, 1, 0);
+INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 453, 16, 1, 3.2022, 2.0700, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 454, 16, 1, 3.3884, 0.6900, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 455, 16, 1, 3.4820, 1.5900, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 456, 16, 1, 3.3112, 1.3500, 1, 0);
@@ -29740,7 +29746,7 @@ INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 671, 16, 3, 3.3549, 2.6143, 
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 672, 16, 3, 3.2776, 1.8857, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 673, 16, 3, 3.3890, 1.5429, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 674, 16, 3, 3.4939, 2.7857, 1, 0);
-INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 675, 16, 3, 3.2021, 2.7000, 1, 0);
+INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 675, 16, 3, 3.2022, 2.7000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 676, 16, 3, 3.3685, 2.9143, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 677, 16, 3, 3.3729, 1.1143, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 678, 16, 3, 3.2002, 2.9143, 1, 0);
@@ -30732,7 +30738,7 @@ INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 508, 16, 1, 3.3844, 1.9200, 
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 509, 16, 1, 3.5073, 1.4700, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 510, 16, 1, 3.4187, 1.1700, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 511, 16, 1, 3.3273, 1.0500, 1, 0);
-INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 512, 16, 1, 3.2019, 1.8900, 1, 0);
+INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 512, 16, 1, 3.2022, 1.8900, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 513, 16, 1, 3.4112, 0.1200, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 514, 16, 1, 3.4439, 0.0600, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 515, 16, 1, 3.5088, 1.8300, 1, 0);
@@ -31413,7 +31419,7 @@ INSERT INTO `sales_fact_sample` VALUES (619, 736, 838, 0, 4, 6.7500, 2.8350, 3.0
 INSERT INTO `sales_fact_sample` VALUES (1398, 391, 9698, 0, 23, 6.3000, 2.5200, 2.0000, 0.00004588067535858664);
 INSERT INTO `sales_fact_sample` VALUES (171, 1045, 8238, 0, 15, 8.8500, 3.4515, 3.0000, 0.000058026984388033845);
 INSERT INTO `sales_fact_sample` VALUES (1116, 992, 8204, 0, 8, 10.1200, 3.6432, 4.0000, 0.000058830715770675536);
-INSERT INTO `sales_fact_sample` VALUES (130, 846, 1026, 693, 9, 8.9200, 3.7464, 4.0000, 0.00006105192011320211);
+INSERT INTO `sales_fact_sample` VALUES (130, 846, 1026, 693, 9, 8.9200, 3.7464, 4.0000, 0.00006105192011320221);
 INSERT INTO `sales_fact_sample` VALUES (6, 590, 6261, 0, 6, 3.4500, 1.6560, 3.0000, 0.00006648339337341803);
 INSERT INTO `sales_fact_sample` VALUES (1139, 846, 7014, 1878, 24, 8.5800, 2.8314, 3.0000, 0.00006648339337341803);
 INSERT INTO `sales_fact_sample` VALUES (1147, 1041, 6192, 549, 7, 4.2600, 1.3206, 3.0000, 0.00006792601204284095);

@@ -15,7 +15,9 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * @author AllDataDC
@@ -54,7 +56,7 @@ public class LogAspect {
         result = joinPoint.proceed();
         Log log = new Log("INFO",System.currentTimeMillis() - currentTime.get());
         currentTime.remove();
-        HttpServletRequest request = RequestHolder.getHttpServletRequest();
+        HttpServletRequest request = (HttpServletRequest) RequestHolder.getHttpServletRequest();
         logService.save(getUsername(), StringUtils.getBrowser(request), StringUtils.getIp(request),joinPoint, log);
         return result;
     }

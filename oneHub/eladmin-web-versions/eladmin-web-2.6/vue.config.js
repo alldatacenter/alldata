@@ -41,6 +41,13 @@ module.exports = {
           '^/auth': 'auth'
         }
       }
+      ,'/data': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/data': 'data'
+        }
+      }
     }
   },
   configureWebpack: {

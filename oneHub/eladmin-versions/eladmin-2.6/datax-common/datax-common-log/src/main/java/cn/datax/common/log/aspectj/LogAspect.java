@@ -8,7 +8,6 @@ import cn.datax.common.log.annotation.LogAop;
 import cn.datax.common.utils.RequestHolder;
 import cn.datax.common.utils.SecurityUtil;
 import cn.datax.service.system.api.dto.LogDto;
-import cn.datax.service.system.api.feign.LogServiceFeign;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.useragent.UserAgent;
@@ -31,8 +30,8 @@ import javax.servlet.http.HttpServletRequest;
 @Aspect
 public class LogAspect {
 
-    @Autowired
-    private LogServiceFeign logServiceFeign;
+//    @Autowired
+//    private LogServiceFeign logServiceFeign;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -98,7 +97,7 @@ public class LogAspect {
             logDto.setParams(objectMapper.writeValueAsString(getRequestParams(joinPoint)));
         } catch (JsonProcessingException e) {}
         // 保存数据库
-        logServiceFeign.saveLog(logDto);
+//        logServiceFeign.saveLog(logDto);
     }
 
     /**

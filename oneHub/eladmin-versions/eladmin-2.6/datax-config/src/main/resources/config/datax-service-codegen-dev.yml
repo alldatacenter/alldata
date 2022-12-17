@@ -2,9 +2,9 @@
 spring:
   redis:
     database: 1
-    host: myBackEndIpAddress
-    port: RedisPort
-    password: RedisPassword # 密码（默认为空）
+    host: 16gmaster
+    port: 13790
+    password: jCH4D!Peaz3MQs7D # 密码（默认为空）
     timeout: 6000ms       # 连接超时时长（毫秒）
     jedis:
       pool:
@@ -26,9 +26,10 @@ spring:
       datasource:
         mysql:
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-          url: jdbc:p6spy:mysql://myBackEndIpAddress:mysqlPort/data_cloud?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+          url: jdbc:p6spy:mysql://16gmaster:33060/eladmin?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+
           username: root
-          password: RedisPassword
+          password: jCH4D!Peaz3MQs7D
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
@@ -50,14 +51,14 @@ mybatis-plus:
 security:
   oauth2:
     client:
-      access-token-uri: http://myBackEndIpAddress:8612/auth/oauth/token
-      user-authorization-uri: http://myBackEndIpAddress:8612/auth/oauth/authorize
+      access-token-uri: http://16gslave:8612/auth/oauth/token
+      user-authorization-uri: http://16gslave:8612/auth/oauth/authorize
       client-id: datax
-      client-secret: 123456
+      client-secret: jCH4D!Peaz3MQs7D
       scope: all
     resource:
       loadBalanced: true
-      token-info-uri: http://myBackEndIpAddress:8612/auth/oauth/check_token
+      token-info-uri: http://16gslave:8612/auth/oauth/check_token
 
 # Swagger界面内容配置
 swagger:

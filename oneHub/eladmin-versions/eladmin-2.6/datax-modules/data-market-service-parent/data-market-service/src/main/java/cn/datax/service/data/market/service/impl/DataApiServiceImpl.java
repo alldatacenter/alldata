@@ -454,7 +454,7 @@ public class DataApiServiceImpl extends BaseServiceImpl<DataApiDao, DataApiEntit
 		// 提供字段
 		MD5Util mt = MD5Util.getInstance();
 		String apiKey = mt.encode(id);
-		String secretkey = mt.encode(SecurityUtil.getUserId());
+		String secretkey = mt.encode(SecurityUtil.getUserId()+"");
 		String[] fieldNames = new String[]{"apiName", "apiVersion", "reqMethod", "resType", "apiUrl", "remark", "apiKey", "secretkey"};
 		Object[] fieldValues = new Object[]{dataApiEntity.getApiName(), dataApiEntity.getApiVersion(), dataApiEntity.getReqMethod(), dataApiEntity.getResType(), "/services/" + dataApiEntity.getApiVersion() + dataApiEntity.getApiUrl(), dataApiEntity.getRemark(), apiKey, secretkey};
 		MailMerge mailMerge = doc.getMailMerge();
