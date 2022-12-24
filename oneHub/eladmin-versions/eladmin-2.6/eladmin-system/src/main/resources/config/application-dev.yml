@@ -4,9 +4,9 @@ spring:
     druid:
       db-type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:mysql://${DB_HOST:16gmaster}:${DB_PORT:33060}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      url: jdbc:log4jdbc:mysql://${DB_HOST:16gmaster}:${DB_PORT:3306}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
       username: ${DB_USER:root}
-      password: ${DB_PWD:jCH4D!Peaz3MQs7D}
+      password: ${DB_PWD:123456}
       # 初始连接数
       initial-size: 5
       # 最小连接数
@@ -54,8 +54,8 @@ spring:
     #数据库索引
     database: ${REDIS_DB:1}
     host: ${REDIS_HOST:16gmaster}
-    port: ${REDIS_PORT:13790}
-    password: ${REDIS_PWD:jCH4D!Peaz3MQs7D}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PWD:123456}
     #连接超时时间
     timeout: 5000
 

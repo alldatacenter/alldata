@@ -1,33 +1,24 @@
 # AllData 一站式大数据平台
 
-<br/>
-<p>
-  <a href="https://github.com/alldatacenter/alldata/commits/master"  target="_blank">
-    <img width=200 height="40" src="https://img.shields.io/github/last-commit/authorwlh/alldata.svg">
-  </a>
-  <a href="https://github.com/alldatacenter/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Abug" target="_blank">
-    <img width=200 height="40" src="https://img.shields.io/github/issues/authorwlh/alldata/bug.svg?label=bugs&color=red">
-  </a>
-  <a href="https://github.com/alldatacenter/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement" target="_blank">
-    <img width=200 height="40" src="https://img.shields.io/github/issues/authorwlh/alldata/enhancement.svg?label=enhancements&color=cyan">
-  </a>
-  <a href="https://github.com/alldatacenter/alldata/blob/master/LICENSE" target="_blank">
-    <img width=200 height="40" src="https://img.shields.io/github/license/authorwlh/alldata.svg">
-  </a>
-</p>
-
-## [中文](https://github.com/alldatacenter/alldata/blob/master/README_ZH.md) | English
-## [原型体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/alldatacenter/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
-## [AllData社区项目官方文档](https://alldatacenter.github.io/) | [AllData数据中台体验版地址](https://alldatacenter.github.io/) | [AllData数据中台前端](https://github.com/alldatacenter/dataHub)
+## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) ｜ [官方文档](https://alldatacenter.github.io/) ｜ [中文](https://github.com/alldatacenter/alldata/blob/master/README_ZH.md) ｜ [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
 
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/alldatadc/alldata.svg)](https://starchart.cc/alldatadc/alldata)
 
-## [线上ElAdmin预览地址](http://43.138.157.47:8013/dashboard)
-### http://43.138.157.47:8013/dashboard 账号: poc 密码：123456
+<a href="https://github.com/alldatadc/github-readme-stats">
+  <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api?username=alldatadc&hide=stars&show_icons=true" />
+</a>
+<br/>
+<br/>
+<a href="https://github.com/alldatacenter/github-readme-stats">
+  <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
+</a>
 
-## ElAdmin登录页面
+## [体验版地址](http://43.138.157.47:8013/dashboard) ｜ 账密 poc/123456
+
+
+## 体验版
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
 <br/>
@@ -143,6 +134,85 @@
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204561326-002e0e59-e89d-47b4-8648-ca932194937b.png">
 <br/>
+
+<h1 style="text-align: center">部署方式</h1>
+
+> 数据库版本为 **mysql5.7** 及以上版本
+>
+#### 1、`eladmin`数据库初始化
+>
+> 1.1 source install/eladmin/eladmin_alldatadc.sql
+>
+> 1.2 source install/eladmin/eladmin_dts.sql
+>
+> 1.3 source install/datax/eladmin_data_cloud.sql
+>
+> 1.4 source install/datax/eladmin_cloud_quartz.sql
+>
+> 1.5 source install/datax/eladmin_foodmart2.sql
+>
+> 1.6 source install/datax/eladmin_robot.sql
+>
+#### 2、修改 **datax-config** 配置中心
+
+> **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
+>
+#### 3、安装aspose-words
+
+> cd install/datax
+>
+> mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=aspose-words-20.3.jar
+>
+#### 4、项目根目录下执行 **mvn install**
+>
+> 获取安装包build/eladmin-release-2.6.tar.gz
+>
+> 上传服务器解压
+>
+#### 5、部署微服务: 进入不同的目录启动相关服务
+>
+> 5.1 必须启动、并且顺序启动
+>
+> eureka->config->gateway
+>
+> 5.2 按需启动`cd install/16gmaster`
+>
+> 譬如启动元数据管理
+>
+> sh `install/16gmaster/data-metadata-service.sh`
+>
+> tail -100f `install/16gmaster/data-metadata-service.log`
+>
+> 5.2 按需启动`cd install/16gdata`
+>
+> 按需启动相关服务
+>
+> 5.3 按需启动`cd install/16gslave`
+>
+> 按需启动相关服务
+>
+>
+
+#### 6、部署`Eladmin`:
+>
+> 6.1 启动`sh install/16gmaster/eladmin-system.sh`
+>
+> 6.2 部署`Eladmin`前端
+>
+> source /etc/profile
+>
+> cd $(dirname $0)
+>
+> source /root/.bashrc && nvm use v10.15.3
+>
+> nohup npm run dev &
+>
+> 6.3 访问`Eladmin`页面
+>
+> curl http://localhost:8013
+>
+> 用户名：admin 密码：123456
+
 
 ## Flink数据血缘初体验
 
@@ -509,22 +579,6 @@
 
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/196594418-1ba618cb-da53-487a-951d-0715e3fc685e.jpg">
 
-## [开源大数据平台原型图](https://modao.cc/app/HhitGZQTr954c7Ug8XBvAY#screen=sl11y8j8sne21p9)
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220740-ee4825fd-8825-4ab6-84a3-e525d1ea646d.png">
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
-<br/>
-
-## [在线预览](http://112.74.93.144:3000/data-center)
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780581-b9b1ecc7-8675-4085-80c8-d781032b7751.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780205-17756e35-439e-479c-b950-25c444f0dbcf.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780446-627b34c4-2418-455f-ba87-09c788bb175c.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780684-ed3a29ac-3c6c-4931-852a-be2066983b8a.png">
-<br/>
-
 
 ## Integration
 
@@ -553,242 +607,19 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171133364-8e4a8e84-c9f9-456c-9f33-c90b90cf54e4.png"> 
 <br/>
 
-### Flink1.16 OGG-JSON解析
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279501-3774b028-8252-466d-9ba5-9a02ba677c63.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279566-d528dde0-e9af-4f4d-9864-318f41f82ead.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279777-24966e66-5b93-4e2b-bf4b-2e8ead49380c.png">
-S3 Hudi成功写入
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279203-b5a39a9f-05e1-466b-a12f-3f6cf9ed3033.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279028-b53d45f2-255d-48bd-b3aa-0df8f0b9698c.png">
-
-
-
-## 1、数据平台
-
-> AllData is one of the few open source big data platform projects on Github.
-> It will develop into a successful solution to solve a series of problems in big data e-commerce scenarios.
-> It will also become a general big data base for other developers to use and Contribution, my original intention is to create a product that is useful to society.
-
-
-## 2、商城展示
+## 离线商城数仓展示
 <br>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219586-e2e190fa-21f6-4f87-bbbc-7cdd6ecc625a.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219649-d6a0b18c-7e54-4f8d-8d95-17777cdbe9d9.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219678-10998762-6266-42b7-8fa4-0a725f215881.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219693-84c4a0de-d4ab-4ad9-bc55-202d0ec0afb0.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160221446-24d9438d-703c-4d17-880e-5d34d0f8d229.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160221463-772477c8-f996-45df-ab74-9e7a179adc81.png">
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219940-b1cd2135-8bea-4dac-b280-e52e091acee8.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219956-9f399ef9-167b-43be-b1fc-f53bfc0134a2.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219976-da7f430e-b6b8-46d4-8089-1e165405bd3d.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219987-b7f1b8f7-74a0-4c63-8db4-2b628aa92b52.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219996-1c87cbb2-45a0-47c2-a55c-0434b091bd14.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220007-26378cb1-c7b5-482c-b0d2-e184df5955cf.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220010-6f05551a-85b4-48da-ab9b-141df7a53e70.png">
-<br/>
-<br/>
-
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220078-bdabde8b-9467-4d26-8675-37712e1d48b1.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220090-d5c33c1f-9507-4338-98e1-0abc29c4dbad.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220100-83391805-29ee-45d2-8076-f743c3ba6070.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220106-0341a2f4-b4df-4d2b-9ec1-b0f10affd22d.png">
 <br/>
 
-### 3、数据来源
-~~~markdown
-	商城前台：
-		mall-shopping-app: 商城App
-		mall-shopping-app-service: 商城App服务
-		mall-shopping-wc: 商城小程序
-		mall-shopping-mobile: 商城前台
-		mall-shopping-pc: 商城pc端
-		pcAdminService: 商城pc端服务
-		mobileService: 商城前台服务（小程序和前台接入此接口）
-	商城后台：
-		mall-admin-web: 商城后台
-		pcAdminService: 商城后台服务
-~~~
-
-### 4、数据收集
-~~~markdown
-log-collect-server:
-服务端日志收集系统
-log-collect-client:
-支持各app集成的客户端SDK，负责收集app客户端数据；
-data-import-export:
-基于DataX实现数据集成(导入导出)
-data-spider:
-爬虫平台支持可配置的爬取公网数据的任务开发；
-~~~
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220310-25525dad-03ea-42ed-acd1-c5625a7c809f.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220316-d59c47f1-ed0a-44fe-9ca8-ae0fe85c904f.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220323-db53951d-1956-4c83-8642-b086b8f4d90c.png">
-<br/>
-
-### 5、数据存储
-~~~markdown
-分布式文件系统：hdfs
-分布式数据库：hbase、mongodb、elasticsearch
-分布式内存存储系统：redis
-~~~
-
-### 6、数据计算
-~~~markdown
-compute-mr（离线计算）: Hive、MR
-compute-realtime（流计算）: storm、flink
-multi-dimension-analysis（多维度分析）: kylin, spark
-~~~
-
-### 7、数据开发
-~~~markdown
-task-schedular: 任务调度
-task-ops: 任务运维
-~~~
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220366-7c913374-c5fe-4488-be82-1339c1441227.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220373-c775d811-3162-4719-86b1-7dfe53ac4326.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220381-c1cc8344-e16c-4d03-8434-b9d1ef43470c.png">
-<br/>
-
-### 8、数据产品
-~~~markdown
-data-face: 数据可视化
-data-insight: 用户画像分析
-~~~
-<br/>
-
-### 9、数据应用
-~~~markdown
-system-recommender: 推荐
-system-ad: 广告
-system-search: 搜索
-system-anti-cheating: 反作弊
-system-report-analysis: 报表分析
-system-elk: ELK日志系统，实现日志搜索平台
-system-apm: skywalking监控平台
-system-deploy: k8s，scala，playframework，docker打包平台。
-job-schedule: 任务提交平台
-~~~
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220425-afc819af-e8f9-4fbb-811d-c0b67cccf7d0.png">
-<br/>
-
-## Installation
-
-### 10、启动配置教程
-
-10.1 启动前，打包dubbo-servie项目，进入dubbo目录，
-
-执行mvn clean package -DskipTests=TRUE打包，然后执行mvn install.
-
-10.2 启动dubbo项目，配置tomcat端口为8091
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220455-45898c53-0de6-4a06-80b0-ae7e758b9457.png">
-
-
-10.3 启动商城项目的多个子系统
-
-后台：访问http://localhost:8090
-
-10.3.1、前端：启动mall-admin-web项目，进入项目目录，执行npm install，然后执行npm run dev；
-
-10.3.2、后端：启动pcAdminService/mall-admin-search项目，
-
-配置tomcat端口为8092，接着启动pcManage项目，tomcat端口配置为8093；
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220467-283a7964-27c1-4184-9ece-778e87fc38f7.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220472-68a6d9a4-e295-4b86-a9e6-75b53f821d52.png">
-
-
-前台：小程序手机预览，移动端访问：http://localhost:6255
-
-10.3.3、小程序和移动端
-
-10.3.3.1、前端：商城小程序，启动mall-shopping-wc项目，
-
-安装微信开发者工具，配置开发者key和secret，
-
-使用微信开发者工具导入即可，然后点击编译，可以手机预览使用。
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220487-dace0ed7-c4e5-4a17-88d9-983e44c89ce5.png">
-
-
-10.3.3.2、前端：商城移动端，启动mall-shopping-mobile，
-
-进入项目目录，执行npm install和npm run dev；
-
-10.3.3.3、后端：小程序和移动端用的是同一个后台服务，
-
-启动mobileService项目，进入项目目录，配置tomcat端口8094
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220500-7c6b9097-7a82-4f23-95be-eda9c8f9eee5.png">
-
-
-10.3.4、商城PC端 访问http://localhost:8099
-
-10.3.4.1、前端：启动mall-shopping-pc项目，
-
-进入项目目录，执行npm install和npm run dev；
-
-10.3.4.2、后端：启动pcAdminService项目，配置tomcat端口为8095；
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220506-688f51cc-1b3d-46a9-ad3e-ec033ee69562.png">
-
-
-
-### 11、DevOPS
-
-11.1 容器化部署system-deploy
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220577-3409bf17-d828-4905-b10e-7e9ba20e544e.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220585-e245f8bc-0821-47ab-b748-808c884cd4de.png">
-
-11.2、自动化运维平台system-devops
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220594-40e4c4ba-123b-4ecc-98f3-345e0cd0843b.png">
-
-11.3、使用Kong作为调用中心网关入口system-api-gateway
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220600-6b3443ef-cf30-433a-bf28-a03147c0b069.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220611-5f8327b4-0ca9-457c-b623-8f2026e81f59.png">
-
-
-11.4、日志中心system-elk
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220621-bd22df74-e11c-4a34-86f1-35fd17b881c6.png">
-
-11.5、告警平台system-alarm-platform
-
-11.6 监控系统
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220634-1e1bdf37-26e5-4c35-b56f-ee55af4dcd45.png">
-
-11.7 数据采集
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220653-6264e6a7-09a2-4811-a99f-99b118433208.png">
-
-11.8 数据展示
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220670-1b30e201-28b0-4fcc-8f0e-9aea8154f43a.png">
-
-
-11.9 监控中心system-apm
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220682-24063605-59b8-43ad-928b-d1ce8be603b2.png">
-
-
-11.10 使用Apollo作为配置中心system-config
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220690-7fc23e65-ad53-4f5f-a0f2-aa55e649f500.png">
-
 ## Community
 
-## 12、近期进行社区修整，闭关期间，仅保留微信群
+## 近期进行社区修整，闭关期间，仅保留微信群
 
 > 联系作者: https://docs.qq.com/doc/DVFVMYUp6cFhSRVJs
