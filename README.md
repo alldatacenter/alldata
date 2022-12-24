@@ -1,6 +1,10 @@
 # AllData 一站式大数据平台
 
-<br/>
+## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) ｜ [官方文档](https://alldatacenter.github.io/) ｜ [中文](https://github.com/alldatacenter/alldata/blob/master/README_ZH.md) ｜ [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/alldatadc/alldata.svg)](https://starchart.cc/alldatadc/alldata)
 
 <a href="https://github.com/alldatadc/github-readme-stats">
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api?username=alldatadc&hide=stars&show_icons=true" />
@@ -11,19 +15,10 @@
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
 </a>
 
+## [体验版地址](http://43.138.157.47:8013/dashboard) ｜ 账密 poc/123456
 
-## [中文](https://github.com/alldatacenter/alldata/blob/master/README_ZH.md) | English
-## [原型体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/alldatacenter/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
-## [AllData社区项目官方文档](https://alldatacenter.github.io/) | [AllData数据中台体验版地址](https://alldatacenter.github.io/) | [AllData数据中台前端](https://github.com/alldatacenter/dataHub)
 
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/alldatadc/alldata.svg)](https://starchart.cc/alldatadc/alldata)
-
-## [线上ElAdmin预览地址](http://43.138.157.47:8013/dashboard)
-### http://43.138.157.47:8013/dashboard 账号: poc 密码：123456
-
-## ElAdmin登录页面
+## 体验版
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
 <br/>
@@ -139,6 +134,85 @@
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204561326-002e0e59-e89d-47b4-8648-ca932194937b.png">
 <br/>
+
+<h1 style="text-align: center">部署方式</h1>
+
+> 数据库版本为 **mysql5.7** 及以上版本
+>
+#### 1、`eladmin`数据库初始化
+>
+> 1.1 source install/eladmin/eladmin_alldatadc.sql
+>
+> 1.2 source install/eladmin/eladmin_dts.sql
+>
+> 1.3 source install/datax/eladmin_data_cloud.sql
+>
+> 1.4 source install/datax/eladmin_cloud_quartz.sql
+>
+> 1.5 source install/datax/eladmin_foodmart2.sql
+>
+> 1.6 source install/datax/eladmin_robot.sql
+>
+#### 2、修改 **datax-config** 配置中心
+
+> **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
+>
+#### 3、安装aspose-words
+
+> cd install/datax
+>
+> mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=aspose-words-20.3.jar
+>
+#### 4、项目根目录下执行 **mvn install**
+>
+> 获取安装包build/eladmin-release-2.6.tar.gz
+>
+> 上传服务器解压
+>
+#### 5、部署微服务: 进入不同的目录启动相关服务
+>
+> 5.1 必须启动、并且顺序启动
+>
+> eureka->config->gateway
+>
+> 5.2 按需启动`cd install/16gmaster`
+>
+> 譬如启动元数据管理
+>
+> sh `install/16gmaster/data-metadata-service.sh`
+>
+> tail -100f `install/16gmaster/data-metadata-service.log`
+>
+> 5.2 按需启动`cd install/16gdata`
+>
+> 按需启动相关服务
+>
+> 5.3 按需启动`cd install/16gslave`
+>
+> 按需启动相关服务
+>
+>
+
+#### 6、部署`Eladmin`:
+>
+> 6.1 启动`sh install/16gmaster/eladmin-system.sh`
+>
+> 6.2 部署`Eladmin`前端
+>
+> source /etc/profile
+>
+> cd $(dirname $0)
+>
+> source /root/.bashrc && nvm use v10.15.3
+>
+> nohup npm run dev &
+>
+> 6.3 访问`Eladmin`页面
+>
+> curl http://localhost:8013
+>
+> 用户名：admin 密码：123456
+
 
 ## Flink数据血缘初体验
 
@@ -505,22 +579,6 @@
 
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/196594418-1ba618cb-da53-487a-951d-0715e3fc685e.jpg">
 
-## [开源大数据平台原型图](https://modao.cc/app/HhitGZQTr954c7Ug8XBvAY#screen=sl11y8j8sne21p9)
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220740-ee4825fd-8825-4ab6-84a3-e525d1ea646d.png">
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/159821983-7eacde80-a65c-478f-a053-7e26028ff380.png">
-<br/>
-
-## [在线预览](http://112.74.93.144:3000/data-center)
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780581-b9b1ecc7-8675-4085-80c8-d781032b7751.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780205-17756e35-439e-479c-b950-25c444f0dbcf.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780446-627b34c4-2418-455f-ba87-09c788bb175c.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160780684-ed3a29ac-3c6c-4931-852a-be2066983b8a.png">
-<br/>
-
 
 ## Integration
 
@@ -549,32 +607,16 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171133364-8e4a8e84-c9f9-456c-9f33-c90b90cf54e4.png"> 
 <br/>
 
-## 商城展示
+## 离线商城数仓展示
 <br>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219586-e2e190fa-21f6-4f87-bbbc-7cdd6ecc625a.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219649-d6a0b18c-7e54-4f8d-8d95-17777cdbe9d9.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160221446-24d9438d-703c-4d17-880e-5d34d0f8d229.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160221463-772477c8-f996-45df-ab74-9e7a179adc81.png">
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219940-b1cd2135-8bea-4dac-b280-e52e091acee8.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219956-9f399ef9-167b-43be-b1fc-f53bfc0134a2.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219976-da7f430e-b6b8-46d4-8089-1e165405bd3d.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219987-b7f1b8f7-74a0-4c63-8db4-2b628aa92b52.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219996-1c87cbb2-45a0-47c2-a55c-0434b091bd14.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220007-26378cb1-c7b5-482c-b0d2-e184df5955cf.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220010-6f05551a-85b4-48da-ab9b-141df7a53e70.png">
-<br/>
-<br/>
-
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220078-bdabde8b-9467-4d26-8675-37712e1d48b1.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220090-d5c33c1f-9507-4338-98e1-0abc29c4dbad.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220100-83391805-29ee-45d2-8076-f743c3ba6070.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220106-0341a2f4-b4df-4d2b-9ec1-b0f10affd22d.png">
 <br/>
-
-
-## Installation
 
 ## Community
 
