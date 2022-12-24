@@ -8,12 +8,23 @@
     <includeBaseDirectory>true</includeBaseDirectory>
 
     <fileSets>
-        <!-- 打包bdp-doc目录到 打包目录build下 -->
         <fileSet>
-            <directory>../bdp-doc/*</directory>
-            <outputDirectory>./</outputDirectory>
+            <directory>${project.parent.basedir}/documents</directory>
+            <outputDirectory>./build/documents</outputDirectory>
+            <lineEnding>unix</lineEnding>
             <fileMode>0755</fileMode>
+            <includes>
+                <include>*</include>
+            </includes>
         </fileSet>
-
+        <fileSet>
+            <directory>${project.parent.basedir}/deploy</directory>
+            <outputDirectory>./build/deploy</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
     </fileSets>
 </assembly>
