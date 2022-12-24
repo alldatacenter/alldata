@@ -1,20 +1,16 @@
 # AllData 一站式大数据平台
 
 <br/>
-<p>
-  <a href="https://github.com/alldatacenter/alldata/commits/master"  target="_blank">
-    <img width=200 height="40" src="https://img.shields.io/github/last-commit/authorwlh/alldata.svg">
-  </a>
-  <a href="https://github.com/alldatacenter/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Abug" target="_blank">
-    <img width=200 height="40" src="https://img.shields.io/github/issues/authorwlh/alldata/bug.svg?label=bugs&color=red">
-  </a>
-  <a href="https://github.com/alldatacenter/alldata/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement" target="_blank">
-    <img width=200 height="40" src="https://img.shields.io/github/issues/authorwlh/alldata/enhancement.svg?label=enhancements&color=cyan">
-  </a>
-  <a href="https://github.com/alldatacenter/alldata/blob/master/LICENSE" target="_blank">
-    <img width=200 height="40" src="https://img.shields.io/github/license/authorwlh/alldata.svg">
-  </a>
-</p>
+
+<a href="https://github.com/alldatadc/github-readme-stats">
+  <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api?username=alldatadc&hide=stars&show_icons=true" />
+</a>
+<br/>
+<br/>
+<a href="https://github.com/alldatacenter/github-readme-stats">
+  <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
+</a>
+
 
 ## [中文](https://github.com/alldatacenter/alldata/blob/master/README_ZH.md) | English
 ## [原型体验预览版](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) | [Documentation](https://github.com/alldatacenter/alldata/blob/master/README.md) | [Installation](#installation) | [Architecture](#architecture) | [Integration](#integration) | [Community](#community)
@@ -553,31 +549,10 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171133364-8e4a8e84-c9f9-456c-9f33-c90b90cf54e4.png"> 
 <br/>
 
-### Flink1.16 OGG-JSON解析
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279501-3774b028-8252-466d-9ba5-9a02ba677c63.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279566-d528dde0-e9af-4f4d-9864-318f41f82ead.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279777-24966e66-5b93-4e2b-bf4b-2e8ead49380c.png">
-S3 Hudi成功写入
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279203-b5a39a9f-05e1-466b-a12f-3f6cf9ed3033.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/174279028-b53d45f2-255d-48bd-b3aa-0df8f0b9698c.png">
-
-
-
-## 1、数据平台
-
-> AllData is one of the few open source big data platform projects on Github.
-> It will develop into a successful solution to solve a series of problems in big data e-commerce scenarios.
-> It will also become a general big data base for other developers to use and Contribution, my original intention is to create a product that is useful to society.
-
-
-## 2、商城展示
+## 商城展示
 <br>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219586-e2e190fa-21f6-4f87-bbbc-7cdd6ecc625a.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219649-d6a0b18c-7e54-4f8d-8d95-17777cdbe9d9.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219678-10998762-6266-42b7-8fa4-0a725f215881.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160219693-84c4a0de-d4ab-4ad9-bc55-202d0ec0afb0.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160221446-24d9438d-703c-4d17-880e-5d34d0f8d229.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160221463-772477c8-f996-45df-ab74-9e7a179adc81.png">
 
@@ -598,197 +573,11 @@ S3 Hudi成功写入
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220106-0341a2f4-b4df-4d2b-9ec1-b0f10affd22d.png">
 <br/>
 
-### 3、数据来源
-~~~markdown
-	商城前台：
-		mall-shopping-app: 商城App
-		mall-shopping-app-service: 商城App服务
-		mall-shopping-wc: 商城小程序
-		mall-shopping-mobile: 商城前台
-		mall-shopping-pc: 商城pc端
-		pcAdminService: 商城pc端服务
-		mobileService: 商城前台服务（小程序和前台接入此接口）
-	商城后台：
-		mall-admin-web: 商城后台
-		pcAdminService: 商城后台服务
-~~~
-
-### 4、数据收集
-~~~markdown
-log-collect-server:
-服务端日志收集系统
-log-collect-client:
-支持各app集成的客户端SDK，负责收集app客户端数据；
-data-import-export:
-基于DataX实现数据集成(导入导出)
-data-spider:
-爬虫平台支持可配置的爬取公网数据的任务开发；
-~~~
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220310-25525dad-03ea-42ed-acd1-c5625a7c809f.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220316-d59c47f1-ed0a-44fe-9ca8-ae0fe85c904f.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220323-db53951d-1956-4c83-8642-b086b8f4d90c.png">
-<br/>
-
-### 5、数据存储
-~~~markdown
-分布式文件系统：hdfs
-分布式数据库：hbase、mongodb、elasticsearch
-分布式内存存储系统：redis
-~~~
-
-### 6、数据计算
-~~~markdown
-compute-mr（离线计算）: Hive、MR
-compute-realtime（流计算）: storm、flink
-multi-dimension-analysis（多维度分析）: kylin, spark
-~~~
-
-### 7、数据开发
-~~~markdown
-task-schedular: 任务调度
-task-ops: 任务运维
-~~~
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220366-7c913374-c5fe-4488-be82-1339c1441227.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220373-c775d811-3162-4719-86b1-7dfe53ac4326.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220381-c1cc8344-e16c-4d03-8434-b9d1ef43470c.png">
-<br/>
-
-### 8、数据产品
-~~~markdown
-data-face: 数据可视化
-data-insight: 用户画像分析
-~~~
-<br/>
-
-### 9、数据应用
-~~~markdown
-system-recommender: 推荐
-system-ad: 广告
-system-search: 搜索
-system-anti-cheating: 反作弊
-system-report-analysis: 报表分析
-system-elk: ELK日志系统，实现日志搜索平台
-system-apm: skywalking监控平台
-system-deploy: k8s，scala，playframework，docker打包平台。
-job-schedule: 任务提交平台
-~~~
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220425-afc819af-e8f9-4fbb-811d-c0b67cccf7d0.png">
-<br/>
 
 ## Installation
 
-### 10、启动配置教程
-
-10.1 启动前，打包dubbo-servie项目，进入dubbo目录，
-
-执行mvn clean package -DskipTests=TRUE打包，然后执行mvn install.
-
-10.2 启动dubbo项目，配置tomcat端口为8091
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220455-45898c53-0de6-4a06-80b0-ae7e758b9457.png">
-
-
-10.3 启动商城项目的多个子系统
-
-后台：访问http://localhost:8090
-
-10.3.1、前端：启动mall-admin-web项目，进入项目目录，执行npm install，然后执行npm run dev；
-
-10.3.2、后端：启动pcAdminService/mall-admin-search项目，
-
-配置tomcat端口为8092，接着启动pcManage项目，tomcat端口配置为8093；
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220467-283a7964-27c1-4184-9ece-778e87fc38f7.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220472-68a6d9a4-e295-4b86-a9e6-75b53f821d52.png">
-
-
-前台：小程序手机预览，移动端访问：http://localhost:6255
-
-10.3.3、小程序和移动端
-
-10.3.3.1、前端：商城小程序，启动mall-shopping-wc项目，
-
-安装微信开发者工具，配置开发者key和secret，
-
-使用微信开发者工具导入即可，然后点击编译，可以手机预览使用。
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220487-dace0ed7-c4e5-4a17-88d9-983e44c89ce5.png">
-
-
-10.3.3.2、前端：商城移动端，启动mall-shopping-mobile，
-
-进入项目目录，执行npm install和npm run dev；
-
-10.3.3.3、后端：小程序和移动端用的是同一个后台服务，
-
-启动mobileService项目，进入项目目录，配置tomcat端口8094
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220500-7c6b9097-7a82-4f23-95be-eda9c8f9eee5.png">
-
-
-10.3.4、商城PC端 访问http://localhost:8099
-
-10.3.4.1、前端：启动mall-shopping-pc项目，
-
-进入项目目录，执行npm install和npm run dev；
-
-10.3.4.2、后端：启动pcAdminService项目，配置tomcat端口为8095；
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220506-688f51cc-1b3d-46a9-ad3e-ec033ee69562.png">
-
-
-
-### 11、DevOPS
-
-11.1 容器化部署system-deploy
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220577-3409bf17-d828-4905-b10e-7e9ba20e544e.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220585-e245f8bc-0821-47ab-b748-808c884cd4de.png">
-
-11.2、自动化运维平台system-devops
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220594-40e4c4ba-123b-4ecc-98f3-345e0cd0843b.png">
-
-11.3、使用Kong作为调用中心网关入口system-api-gateway
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220600-6b3443ef-cf30-433a-bf28-a03147c0b069.png">
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220611-5f8327b4-0ca9-457c-b623-8f2026e81f59.png">
-
-
-11.4、日志中心system-elk
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220621-bd22df74-e11c-4a34-86f1-35fd17b881c6.png">
-
-11.5、告警平台system-alarm-platform
-
-11.6 监控系统
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220634-1e1bdf37-26e5-4c35-b56f-ee55af4dcd45.png">
-
-11.7 数据采集
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220653-6264e6a7-09a2-4811-a99f-99b118433208.png">
-
-11.8 数据展示
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220670-1b30e201-28b0-4fcc-8f0e-9aea8154f43a.png">
-
-
-11.9 监控中心system-apm
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220682-24063605-59b8-43ad-928b-d1ce8be603b2.png">
-
-
-11.10 使用Apollo作为配置中心system-config
-
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220690-7fc23e65-ad53-4f5f-a0f2-aa55e649f500.png">
-
 ## Community
 
-## 12、近期进行社区修整，闭关期间，仅保留微信群
+## 近期进行社区修整，闭关期间，仅保留微信群
 
 > 联系作者: https://docs.qq.com/doc/DVFVMYUp6cFhSRVJs
