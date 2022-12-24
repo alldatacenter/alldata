@@ -1,4 +1,0 @@
-# `HUDI` CRUD PROJECT
-
-> `HUDI JAVA CLIENT` 项目
- 
