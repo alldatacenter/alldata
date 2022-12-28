@@ -33,26 +33,26 @@ subprojects {
   // ready to enforce linting on.
   apply plugin: 'org.inferred.processors'
   if (!project.hasProperty('quick')) {
-    apply plugin: 'com.palantir.baseline-checkstyle'
+//    apply plugin: 'com.palantir.baseline-checkstyle'
     apply plugin: 'com.palantir.baseline-error-prone'
   }
   apply plugin: 'com.palantir.baseline-class-uniqueness'
   apply plugin: 'com.palantir.baseline-reproducibility'
   apply plugin: 'com.palantir.baseline-exact-dependencies'
   apply plugin: 'com.palantir.baseline-release-compatibility'
-  apply plugin: 'com.diffplug.spotless'
+//  apply plugin: 'com.diffplug.spotless'
 
-  pluginManager.withPlugin('com.diffplug.spotless') {
-    spotless {
-      java {
-        target 'src/main/java/**/*.java', 'src/test/java/**/*.java', 'src/jmh/java/**/*.java', 'src/integration/java/**/*.java'
-        // we use an older version of google-java-format that is compatible with JDK 8
-        googleJavaFormat("1.7")
-        removeUnusedImports()
-        licenseHeaderFile "$rootDir/.baseline/copyright/copyright-header-java.txt"
-      }
-    }
-  }
+//  pluginManager.withPlugin('com.diffplug.spotless') {
+//    spotless {
+//      java {
+//        target 'src/main/java/**/*.java', 'src/test/java/**/*.java', 'src/jmh/java/**/*.java', 'src/integration/java/**/*.java'
+//        // we use an older version of google-java-format that is compatible with JDK 8
+//        googleJavaFormat("1.7")
+//        removeUnusedImports()
+//        licenseHeaderFile "$rootDir/.baseline/copyright/copyright-header-java.txt"
+//      }
+//    }
+//  }
 
   pluginManager.withPlugin('com.palantir.baseline-error-prone') {
     tasks.withType(JavaCompile).configureEach {

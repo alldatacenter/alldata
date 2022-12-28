@@ -60,6 +60,20 @@ Iceberg is built using Gradle with Java 1.8 or Java 11.
 * To fix code style for default versions: `./gradlew spotlessApply`
 * To fix code style for all versions of Spark/Hive/Flink:`./gradlew spotlessApply -DallVersions`
 
+### build iceberg
+
+> 先注释以下部分
+> 
+> apply plugin: 'com.palantir.baseline-checkstyle'
+> 
+> apply plugin: 'com.diffplug.spotless'
+> 
+> pluginManager.withPlugin('com.diffplug.spotless')
+> 
+> 然后打包，项目根目录执行
+> 
+> ./gradlew build -x test -x integrationTest
+
 Iceberg table support is organized in library modules:
 
 * `iceberg-common` contains utility classes used in other modules
