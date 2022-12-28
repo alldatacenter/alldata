@@ -24,6 +24,7 @@ import java.util.regex.Pattern
 buildscript {
   repositories {
     mavenLocal()
+    maven{ url 'https://mirrors.huaweicloud.com/repository/maven/' }
     maven{ url 'https://maven.aliyun.com/repository/central' }
     maven{ url 'https://maven.aliyun.com/repository/public' }
     maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
@@ -32,7 +33,7 @@ buildscript {
   dependencies {
     classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
     classpath 'com.palantir.baseline:gradle-baseline-java:4.42.0'
-    classpath 'com.diffplug.spotless:spotless-plugin-gradle:6.11.0'
+//    classpath 'com.diffplug.spotless:spotless-plugin-gradle:6.11.0'
     classpath 'gradle.plugin.org.inferred:gradle-processors:3.7.0'
     classpath 'me.champeau.jmh:jmh-gradle-plugin:0.6.8'
     classpath "com.github.alisiikh:gradle-scalastyle-plugin:3.4.1"
@@ -101,6 +102,9 @@ allprojects {
   group = "org.apache.iceberg"
   version = projectVersion
   repositories {
+    maven {
+      url 'https://mirrors.huaweicloud.com/repository/maven/'
+    }
     mavenCentral()
     mavenLocal()
   }
