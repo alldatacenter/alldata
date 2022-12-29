@@ -40,25 +40,6 @@ datart 可作为独立平台使用，但不仅限于此，为了更好支持快�
 ### 用户文档 User Document
 参见 [User Guide](https://running-elephant.github.io/datart-docs/docs/source.html)
 
-### 最新版本 Latest Release
-参见  [Latest Release](https://github.com/running-elephant/datart/releases)
-
-## Community
-### 社区支持 Support
-##### 反馈问题
-平台问题可以查看 [Issue](https://github.com/running-elephant/datart/issues)，提交新Issue请参考 [Issue描述规范](https://github.com/running-elephant/datart/tree/master/.github/ISSUE_TEMPLATE)
-##### 交流讨论
-可以加入社区微信群参与讨论
-![](https://running-elephant.github.io/datart-docs/images/about/wechat-group.jpeg)
-
-#### 插件示例仓库
-[示例仓库 v1.0.0](https://github.com/running-elephant/datart-extension-charts)
-
-### 参与贡献 Contributing
-非常欢迎和感谢参与贡献，如何参与可参见 [Contributing]()
-
-### 谁在使用 Adopters
-参见 [Adopters](https://github.com/running-elephant/datart/issues/137)
 
 ## License
 datart is under the Apache 2.0 license. See the [LICENSE](https://github.com/running-elephant/datart/blob/master/LICENSE) file for details.
