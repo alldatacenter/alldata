@@ -135,6 +135,11 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204561326-002e0e59-e89d-47b4-8648-ca932194937b.png">
 <br/>
 
+> AllData Studio 社区版
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/210060990-1f09edb3-3af1-4271-b0e0-eb0d08f4ff39.png">
+<br/>
+
 <h1 style="text-align: center">部署方式</h1>
 
 > 数据库版本为 **mysql5.7** 及以上版本
