@@ -1,6 +1,0 @@
-export { default as RkCard } from './Card'
-export { default as RkChart } from './Charts'
-export { default as RkSvg } from './Svg'
-export { default as RkDetailHeaderInfo } from './DetailHeaderInfo'
-export { default as RkBusinessDesc } from './BusinessDesc'
-export { default as PostItem } from './PostItem'
