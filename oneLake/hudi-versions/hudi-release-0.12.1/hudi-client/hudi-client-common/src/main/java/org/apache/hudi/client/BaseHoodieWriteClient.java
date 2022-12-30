@@ -1701,3 +1701,6 @@ public abstract class BaseHoodieWriteClient<T extends HoodieRecordPayload, I, K,
     commitStats(instantTime, Collections.emptyList(), Option.of(extraMeta), commitActionType);
   }
 }
+
+
+

@@ -27,68 +27,68 @@ import org.apache.iceberg.io.WriteResult;
 
 class CommitSummary {
 
-  private final AtomicLong dataFilesCount = new AtomicLong();
-  private final AtomicLong dataFilesRecordCount = new AtomicLong();
-  private final AtomicLong dataFilesByteCount = new AtomicLong();
-  private final AtomicLong deleteFilesCount = new AtomicLong();
-  private final AtomicLong deleteFilesRecordCount = new AtomicLong();
-  private final AtomicLong deleteFilesByteCount = new AtomicLong();
+    private final AtomicLong dataFilesCount = new AtomicLong();
+    private final AtomicLong dataFilesRecordCount = new AtomicLong();
+    private final AtomicLong dataFilesByteCount = new AtomicLong();
+    private final AtomicLong deleteFilesCount = new AtomicLong();
+    private final AtomicLong deleteFilesRecordCount = new AtomicLong();
+    private final AtomicLong deleteFilesByteCount = new AtomicLong();
 
-  CommitSummary(NavigableMap<Long, WriteResult> pendingResults) {
-    pendingResults
-        .values()
-        .forEach(
-            writeResult -> {
-              dataFilesCount.addAndGet(writeResult.dataFiles().length);
-              Arrays.stream(writeResult.dataFiles())
-                  .forEach(
-                      dataFile -> {
-                        dataFilesRecordCount.addAndGet(dataFile.recordCount());
-                        dataFilesByteCount.addAndGet(dataFile.fileSizeInBytes());
-                      });
-              deleteFilesCount.addAndGet(writeResult.deleteFiles().length);
-              Arrays.stream(writeResult.deleteFiles())
-                  .forEach(
-                      deleteFile -> {
-                        deleteFilesRecordCount.addAndGet(deleteFile.recordCount());
-                        deleteFilesByteCount.addAndGet(deleteFile.fileSizeInBytes());
-                      });
-            });
-  }
+    CommitSummary(NavigableMap<Long, WriteResult> pendingResults) {
+        pendingResults
+                .values()
+                .forEach(
+                        writeResult -> {
+                            dataFilesCount.addAndGet(writeResult.dataFiles().length);
+                            Arrays.stream(writeResult.dataFiles())
+                                    .forEach(
+                                            dataFile -> {
+                                                dataFilesRecordCount.addAndGet(dataFile.recordCount());
+                                                dataFilesByteCount.addAndGet(dataFile.fileSizeInBytes());
+                                            });
+                            deleteFilesCount.addAndGet(writeResult.deleteFiles().length);
+                            Arrays.stream(writeResult.deleteFiles())
+                                    .forEach(
+                                            deleteFile -> {
+                                                deleteFilesRecordCount.addAndGet(deleteFile.recordCount());
+                                                deleteFilesByteCount.addAndGet(deleteFile.fileSizeInBytes());
+                                            });
+                        });
+    }
 
-  long dataFilesCount() {
-    return dataFilesCount.get();
-  }
+    long dataFilesCount() {
+        return dataFilesCount.get();
+    }
 
-  long dataFilesRecordCount() {
-    return dataFilesRecordCount.get();
-  }
+    long dataFilesRecordCount() {
+        return dataFilesRecordCount.get();
+    }
 
-  long dataFilesByteCount() {
-    return dataFilesByteCount.get();
-  }
+    long dataFilesByteCount() {
+        return dataFilesByteCount.get();
+    }
 
-  long deleteFilesCount() {
-    return deleteFilesCount.get();
-  }
+    long deleteFilesCount() {
+        return deleteFilesCount.get();
+    }
 
-  long deleteFilesRecordCount() {
-    return deleteFilesRecordCount.get();
-  }
+    long deleteFilesRecordCount() {
+        return deleteFilesRecordCount.get();
+    }
 
-  long deleteFilesByteCount() {
-    return deleteFilesByteCount.get();
-  }
+    long deleteFilesByteCount() {
+        return deleteFilesByteCount.get();
+    }
 
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this)
-        .add("dataFilesCount", dataFilesCount)
-        .add("dataFilesRecordCount", dataFilesRecordCount)
-        .add("dataFilesByteCount", dataFilesByteCount)
-        .add("deleteFilesCount", deleteFilesCount)
-        .add("deleteFilesRecordCount", deleteFilesRecordCount)
-        .add("deleteFilesByteCount", deleteFilesByteCount)
-        .toString();
-  }
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("dataFilesCount", dataFilesCount)
+                .add("dataFilesRecordCount", dataFilesRecordCount)
+                .add("dataFilesByteCount", dataFilesByteCount)
+                .add("deleteFilesCount", deleteFilesCount)
+                .add("deleteFilesRecordCount", deleteFilesRecordCount)
+                .add("deleteFilesByteCount", deleteFilesByteCount)
+                .toString();
+    }
 }
