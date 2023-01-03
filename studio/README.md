@@ -1,18 +1,81 @@
-# BATCH FLOW INTEGRATION COMPUTING PLATFORM
+# AllData社区版
 
-## BATCH FLOW 批流一体计算平台
+## AllData社区版
+### 1、输入
+>实时开发
+>   Dlink
+> 
+>  离线开发
+> 
+>   FlinkX
+> 
+>  数据治理
+> 
+>   ElAdmin
+> 
+>  湖仓一体
+> 
+>   Dlink+CDC+Hudi
+> 
+>  机器学习算法平台
+> 
+>   cube-studio
+> 
+>  数据集成
+> 
+>   ElAdmin
+> 
+>  数据中台
+> 
+>   ElAdmin
+> 
+>  大数据集群运维平台
+> 
+>   Rancher
+> 
+>  数据分析
+> 
+>   Hive+Doris
+> 
+>  实时同步
+> 
+>   Dlink+FlinkCDC+Doris
+> 
+>  任务调度
+> 
+>   DolphinScheduler
+> 
+>  运维中心
+> 
+>   SREWorks
+> 
+>  数仓建模
+> 
+>   Doris
+> 
+>  低代码引擎
+> 
+>   lowcode-engine
+> 
+>  墨刀产品原型
+> 
+### 2、输出
+> MVP产品
+> 
+> 设计文档
+> 
+> 项目会议
+> 
+### 3、补强
 
-### 基于DSS生态+DS建设批流一体计算平台
-
-> 1、基于DataSphereStudio scripts二开，建设Hybrid OLAP混合数仓
-
-
-> 2、基于`Apache Linkis` 计算中间件二开，建设Flink计算引擎
-
-
-> 3、基于 dolphin scheduler建设批流一体工作流计算平台
-
-
-> 4、基于`DSS Streamis`二开，建设 FlinkSQL IDE && Flink DAG画布引擎
-
-
+> 前端开发
+> 
+> 产品设计
+> 
+> 后端架构
+> 
+> 云原生架构
+> 
+> 大数据架构
+> 
+> UI设计
