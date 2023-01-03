@@ -1,5 +1,9 @@
 # AllData社区版
 
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/210299541-b9f4d344-30ba-4fc9-a083-390129f7da1e.png">
+<br/>
+
 ## 1、AllData输入
 ### 实时开发
 >   Dlink
