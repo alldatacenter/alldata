@@ -137,8 +137,78 @@
 
 > AllData Studio 社区版
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/210060990-1f09edb3-3af1-4271-b0e0-eb0d08f4ff39.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/210299541-b9f4d344-30ba-4fc9-a083-390129f7da1e.png">
 <br/>
+
+## 1、AllData输入
+### 实时开发
+>   Dlink
+>
+### 离线开发
+> 
+>   FlinkX
+>
+### 数据治理
+> 
+>   ElAdmin
+>
+### 湖仓一体
+> 
+>   Dlink+CDC+Hudi
+>
+### 机器学习算法平台
+> 
+>   cube-studio
+>
+### 数据集成
+> 
+>   ElAdmin
+>
+### 数据中台
+> 
+>   ElAdmin
+>
+### 大数据集群运维平台
+> 
+>   Rancher
+>
+### 数据分析
+> 
+>   Hive+Doris
+>
+### 实时同步
+> 
+>   Dlink+FlinkCDC+Doris
+>
+### 任务调度
+> 
+>   DolphinScheduler
+>
+### 运维中心
+> 
+>   SREWorks
+>
+### 数仓建模
+> 
+>   Doris
+>
+### 低代码引擎
+> 
+>   lowcode-engine
+>
+### 墨刀产品原型
+## 2、输出
+### MVP产品
+### 设计文档
+### 项目会议
+## 3、补强
+
+### 前端开发
+### 产品设计
+### 后端架构
+### 云原生架构
+### 大数据架构
+### UI设计
 
 <h1 style="text-align: center">部署方式</h1>
 
