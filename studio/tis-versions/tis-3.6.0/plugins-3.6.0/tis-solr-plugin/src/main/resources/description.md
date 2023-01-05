@@ -1,0 +1,1 @@
+* 封装了Apache Solr中各扩展点实现（FieldType等）

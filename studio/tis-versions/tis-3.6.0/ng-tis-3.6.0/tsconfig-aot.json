@@ -1,0 +1,29 @@
+{  // https://github.com/angular/angular-cli
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [ "es2015", "dom" ],
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "../node_modules/@types/"
+    ]
+  },
+  "files": [
+    "src/offline/offline.module.ts",
+    "src/user/user.module.ts",
+    "src/runtime/app.module.ts",
+    "src/main.ts"
+  ],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictMetadataEmit" : true,
+    "trace": true,
+    "genDir": "aot"
+  }
+
+}

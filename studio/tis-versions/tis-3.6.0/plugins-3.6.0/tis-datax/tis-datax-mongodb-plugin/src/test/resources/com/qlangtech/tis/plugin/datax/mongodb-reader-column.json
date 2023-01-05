@@ -1,0 +1,15 @@
+[
+  {
+    "name": "user_id",
+    "type": "long"
+  },
+  {
+    "name": "user_name",
+    "type": "string"
+  },
+  {
+    "name": "hobby",
+    "type": "array",
+    "splitter": ","
+  }
+]

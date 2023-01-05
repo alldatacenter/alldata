@@ -1,0 +1,14 @@
+{
+   "endpoint": {
+    "dftVal": "http://oss.aliyuncs.com",
+    "help": "Server的EndPoint地址，例如http://oss.aliyuncs.com"
+  },
+  "accessKeyId": {
+    "help": "aliyun服务的accessId，用在私有云环境下，例如自建Elasticsearch，服务端如不需要连接凭证，则该项可为空",
+    "label": "keyId"
+  },
+  "accessKeySecret": {
+    "help": "aliyun服务的accessKeySecret，用在私有云环境下，例如自建Elasticsearch，服务端如不需要连接凭证，则该项可为空",
+    "label": "密码"
+  }
+}

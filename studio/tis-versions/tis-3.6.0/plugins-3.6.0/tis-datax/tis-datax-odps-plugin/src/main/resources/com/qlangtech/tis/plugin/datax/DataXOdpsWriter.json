@@ -1,0 +1,32 @@
+{
+  "accessId": {
+    "help": "描述：ODPS系统登录ID "
+  },
+  "accessKey": {
+    "help": "描述：ODPS系统登录Key "
+  },
+  "project": {
+    "help": "描述：ODPS表所属的project，注意:Project只能是字母+数字组合，请填写英文名称。在云端等用户看到的ODPS项目中文名只是显示名，请务必填写底层真实地Project英文标识名。"
+  },
+  "table": {
+    "help": "描述：写入数据的表名，不能填写多张表，因为DataX不支持同时导入多张表。 "
+  },
+  "partition": {
+    "help": "描述：需要写入数据表的分区信息，必须指定到最后一级分区。把数据写入一个三级分区表，必须配置到最后一级分区，例如pt=20150101/type＝1/biz=2。"
+  },
+  "column": {
+    "help": "描述：需要导入的字段列表，当导入全部字段时，可以配置为\"column\": [\"*\"], 当需要插入部分odps列填写部分列，例如\"column\": [\"id\", \"name\"]。ODPSWriter支持列筛选、列换序，例如表有a,b,c三个字段，用户只同步c,b两个字段。可以配置成[\"c\",\"b\"], 在导入过程中，字段a自动补空，设置为null。 "
+  },
+  "truncate": {
+    "help": "描述：ODPSWriter通过配置\"truncate\": true，保证写入的幂等性，即当出现写入失败再次运行时，ODPSWriter将清理前述数据，并导入新数据，这样可以保证每次重跑之后的数据都保持一致。 "
+  },
+  "odpsServer": {
+    "help": "描述：ODPS的server地址，线上地址为 http://service.odps.aliyun.com/api "
+  },
+  "tunnelServer": {
+    "help": "描述：ODPS的tunnelserver地址，线上地址为 http://dt.odps.aliyun.com  "
+  },
+  "template": {
+    "dftVal": "com.qlangtech.tis.plugin.datax.DataXOdpsWriter.getDftTemplate()"
+  }
+}
