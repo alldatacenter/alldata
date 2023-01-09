@@ -1,0 +1,85 @@
+---
+# task file for install zookeeper
+  # group and user
+  - name: create group
+    group:
+      name: "{{ zk_group }}"
+      state: present
+  - name: create user
+    user:
+      name: "{{ zk_user }}"
+      comment: "zookeeper" 
+      group: "{{ zk_group }}"
+      shell: /bin/bash
+
+  # prepare directories
+  - name: make /opt/app directory
+    file:
+      path: "{{ item }}"
+      state: directory
+      recurse: yes
+      owner: "{{ zk_user }}"
+      group: "{{ zk_group }}"
+      mode: '0755'
+    with_items:
+      - "{{zk_install_dir}}"
+      - "{{tis_data_dir}}/zookeeper"
+
+  # copy gzip file and unarchive
+  - name: copy zookeeper file to host
+    copy:
+      src: "{{ local_zk_gz_path }}"
+      dest: "/tmp/{{ zk_gz_file_name }}"
+      owner: root
+      group: root
+      mode: '0644'
+  - name: delete temp directory
+    file:
+      path: /tmp/zookeeper-3.4.14
+      state: absent
+  - name: untar zookeeper gzip file
+    unarchive:
+      src: "/tmp/{{ zk_gz_file_name }}"
+      dest: /tmp
+      owner: "{{ zk_user }}"
+      group: "{{ zk_group }}"
+      remote_src: yes
+  - name: "synchroniz tis ,destination dir:{{zk_install_dir}}"
+    synchronize:
+      src: /tmp/zookeeper-3.4.14/
+      dest: '{{zk_install_dir}}'
+      recursive: yes
+    delegate_to: "{{ inventory_hostname }}"
+    notify: restart zookeeper
+
+  # deploy config files
+  - name: copy config file
+    template:
+      src: 'template/{{item.name}}.j2'
+      dest: '{{zk_install_dir}}/conf/{{ item.name }}'
+      owner: "{{ zk_user }}"
+      group: "{{ zk_group }}"
+      mode: '0644'
+    with_items:
+      - {name: "zoo.cfg" }
+    notify: restart zookeeper
+  - name: write id file
+    template:
+      src: 'template/{{item.name}}.j2'
+      dest: '{{tis_data_dir}}/zookeeper/{{ item.name }}'
+      owner: "{{ zk_user }}"
+      group: "{{ zk_group }}"
+      mode: '0755'
+    with_items:
+      - {name: "myid" }
+      - {name: "daemon_zk.sh"}
+    notify: restart zookeeper
+
+  # create daemon cron task
+  - name: set cron task to daemon zookeeper
+    cron:
+      name: 'zkDaemon'
+      minute: '*/1'
+      job: '{{tis_data_dir}}/zookeeper/daemon_zk.sh'
+      user: "{{ zk_user }}"
+    when: not uber_pkg

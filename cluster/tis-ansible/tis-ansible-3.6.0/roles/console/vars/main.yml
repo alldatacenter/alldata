@@ -1,0 +1,9 @@
+---
+# vars file for console
+tis_app_name: tjs
+# tis database can be depend on mysql or derby
+
+params_cfg_types:
+  - {pluginDesc: "k8s", when: True}
+  - {pluginDesc: "yarn", when: True}
+  - {pluginDesc: "DataX-global", when: True}

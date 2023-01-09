@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PRG="$0"
+
+# Resolve symlinks to this script
+while [ -h "$PRG" ] ; do
+  ls=`ls -ld "$PRG"`
+  # Drop everything prior to ->
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+  else
+    PRG=`dirname "$PRG"`/"$link"
+  fi
+done
+
+TIS_TIP=`dirname "$PRG"`/..
+TIS_TIP=`cd "$TIS_TIP"; pwd`
+
+echo "working dir:$TIS_TIP"
+
+sh $TIS_TIP/zookeeper/bin/zkServer.sh $1

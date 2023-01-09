@@ -1,0 +1,10 @@
+---
+# vars file for taskcenter
+hadoop_parent_dir: /opt/app
+hadoop_dir_name: hadoop-2.6.1
+hadoop_dir: '{{hadoop_parent_dir}}/{{hadoop_dir_name}}'
+hadoop_cfg_dir: '{{hadoop_parent_dir}}/{{hadoop_dir_name}}/etc/hadoop'
+
+
+#hadoop_user: yarn
+#hadoop_group: yarn

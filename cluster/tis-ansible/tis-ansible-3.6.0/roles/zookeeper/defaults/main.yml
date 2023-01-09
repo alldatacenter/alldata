@@ -1,0 +1,5 @@
+---
+# empty for install zookeeper
+zk_parent_dir: "/opt/app"
+zk_dir_name: "zookeeper-3.4.14"
+zk_install_dir: "{{zk_parent_dir}}/{{zk_dir_name}}"

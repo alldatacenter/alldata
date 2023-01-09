@@ -1,4 +1,4 @@
-# CUBE STUDIO FOR ALL DATA
+# ASSEMBLY FOR ALL DATA
 
 ```markdown
 

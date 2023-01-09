@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.qlangtech.tis.plugin.PluginStore plugin="tis-hive-flat-table-builder-plugin@{{tis_pkg_version}},tis-hive-flat-table-builder-plugin@{{tis_pkg_version}}">
+{% if uber_pkg %}
+  <plugins>
+    <com.qlangtech.tis.indexbuild.LocalIndexBuilderTriggerFactory plugin="tis-local-dump-build@{{tis_pkg_version}}">
+      <name>local</name>
+    </com.qlangtech.tis.indexbuild.LocalIndexBuilderTriggerFactory>
+  </plugins>
+{% else %}
+  <plugins>
+    <com.qlangtech.tis.fullbuild.indexbuild.impl.YarnIndexBuilderTriggerFactory plugin="tis-hive-flat-table-builder-plugin@{{tis_pkg_version}}">
+      <name>yarn_index_build</name>
+      <containerName>yarn1</containerName>
+      <maxHeapMemory>4048</maxHeapMemory>
+      <maxCPUCores>1</maxCPUCores>
+      <runjdwpPort>0</runjdwpPort>
+      <fsName>hdfs1</fsName>
+      <maxDocMakeFaild>100</maxDocMakeFaild>
+    </com.qlangtech.tis.fullbuild.indexbuild.impl.YarnIndexBuilderTriggerFactory>
+  </plugins>
+{% endif %}
+</com.qlangtech.tis.plugin.PluginStore>

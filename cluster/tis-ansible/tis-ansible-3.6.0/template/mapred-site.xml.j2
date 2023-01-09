@@ -1,0 +1,50 @@
+<configuration>
+  <!-- 指定mr框架为yarn方式 -->
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+  </property>
+
+  <!-- mapred做本地计算所使用的文件夹，可以配置多块硬盘，逗号分隔 -->
+  <property>
+    <name>mapred.local.dir</name>
+    <value>/opt/app/hadoop/data</value>
+  </property>
+
+  <!-- 使用管理员身份，指定作业map的堆大小-->
+  <property>
+    <name>mapreduce.admin.map.child.java.opts</name>
+    <value>-Xmx512m</value>
+  </property>
+
+  <!-- 使用管理员身份，指定作业reduce的堆大小-->
+  <property>
+    <name>mapreduce.admin.reduce.child.java.opts</name>
+    <value>-Xmx4096m</value>
+  </property>
+
+  <!-- 每个TT子进程所使用的虚拟机内存大小 -->
+  <property>
+    <name>mapred.child.java.opts</name>
+    <value>-Xmx1024m</value>
+  </property>
+
+  <!-- 设置参数防止超时，默认600000ms，即600s-->
+  <property>
+    <name>mapred.task.timeout</name>
+    <value>1200000</value>
+    <final>true</final>
+  </property>
+
+  <!-- 禁止访问NN的主机名称列表,指定要动态删除的节点-->
+  <property>
+    <name>dfs.hosts.exclude</name>
+    <value>/opt/app/hadoop/etc/hadoop/slaves.exclude</value>
+  </property>
+
+  <!-- 禁止连接JT的TT列表，节点摘除是很有作用 -->
+  <property>
+    <name>mapred.hosts.exclude</name>
+    <value>/opt/app/hadoop/etc/hadoop/slaves.exclude</value>
+  </property>
+</configuration>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.qlangtech.tis.plugin.PluginStore>
+    <plugins>
+        <com.qlangtech.tis.plugin.datax.DataXGlobalConfig plugin="tis-datax-common-plugin@{{tis_pkg_version}}">
+          <name>datax-global-config</name>
+          <channel>3</channel>
+          <errorLimitCount>1</errorLimitCount>
+          <errorLimitPercentage>0.02</errorLimitPercentage>
+          <template>{
+        &quot;job&quot;: {
+            &quot;setting&quot;: {
+                &quot;speed&quot;: {
+                     &quot;channel&quot;: ${cfg.channel}
+                },
+                &quot;errorLimit&quot;: {
+                    &quot;record&quot;: ${cfg.errorLimitCount},
+                    &quot;percentage&quot;: ${cfg.errorLimitPercentage}
+                }
+            },
+            &quot;content&quot;: [
+                {
+                    &quot;dataxName&quot;: &quot;${dataxName}&quot;,
+                    &quot;reader&quot;: &lt;!--reader--&gt;,
+                    &quot;writer&quot;: &lt;!--writer--&gt;
+                }
+            ]
+        }
+    }
+    </template>
+        </com.qlangtech.tis.plugin.datax.DataXGlobalConfig>
+    </plugins>
+</com.qlangtech.tis.plugin.PluginStore>

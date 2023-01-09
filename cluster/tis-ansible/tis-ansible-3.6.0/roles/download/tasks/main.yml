@@ -1,0 +1,43 @@
+---
+# tasks file for download
+- name: Create Tmp Dir
+  file:
+    path: "{{tis_release_dir}}/{{item}}/{{tis_pkg_version}}"
+    state: directory
+  with_items:
+    - "{{tis_release_dir_name}}"
+    - "{{tis_plugin_release_dir_name}}"
+
+- debug:
+    msg: "show param shall_download_plugins:{{shall_download_plugins}},shall_download_release_assemble:{{shall_download_release_assemble}}"
+
+- name: include download_plugins.yml
+  import_tasks: download_plugins.yml
+  when: shall_download_plugins
+
+
+- name: include download_release_assemble.yml
+  import_tasks: download_release_assemble.yml
+  when: shall_download_release_assemble
+
+- shell: 'ls {{ tis_release_dir }}'
+  ignore_errors: True
+  register: release_files
+  delegate_to: "localhost"
+
+- name: "Download Base Release from {{ release_repository }} Package to {{ tis_release_dir }}"
+  get_url:
+    url: "{{ release_repository }}/{{ item.name }}"
+    dest: "{{ tis_release_dir }}/{{ item.name }}"
+    #If yes and dest is not a directory, will download the file every time and replace the file if the contents change
+    force: no
+  when: "item.when and release_files.stdout.find(java_gz_file_name) == -1"
+  with_items:
+    - {name: "{{tis_ibatis_gz_file_name}}", when: True}
+    - {name: "{{ zk_gz_file_name }}", when: "{{ need_install_zookeeper }}" }
+    - {name: "{{ hadoop_gz_file_name }}", when: "{{ need_install_hadoop }}" }
+    - {name: "{{ spark_scala_gz_file_name }}", when: "{{ need_install_hadoop and need_install_spark }}" }
+    - {name: "{{ spark_gz_file_name }}", when: "{{ need_install_hadoop and need_install_spark }}" }
+    - {name: "{{ spark_tispark_jar_file_name }}", when: "{{ need_install_hadoop and need_install_spark and need_install_tispark }}" }
+    - {name: "{{ spark_thriftserver_jar_file_name }}", when: "{{ need_install_hadoop and need_install_spark and need_install_spark_shuffle }}" }
+    - {name: "{{ java_gz_file_name }}", when: True}

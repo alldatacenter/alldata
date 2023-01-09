@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.qlangtech.tis.plugin.PluginStore plugin="tis-k8s-plugin@{{tis_pkg_version}}">
+    <plugins>
+        <com.qlangtech.tis.config.k8s.impl.DefaultK8SImage plugin="tis-k8s-plugin@{{tis_pkg_version}}">
+            <name>datax-worker</name>
+            <k8sCfg>dftkube</k8sCfg>
+            <namespace>tis</namespace>
+            <imagePath>registry.cn-hangzhou.aliyuncs.com/tis/tis-datax-executor-{{tis_pkg_version}}:latest</imagePath>
+        </com.qlangtech.tis.config.k8s.impl.DefaultK8SImage>
+        <com.qlangtech.tis.config.k8s.impl.DefaultK8SImage plugin="tis-k8s-plugin@{{tis_pkg_version}}">
+             <name>flink-cluster</name>
+             <k8sCfg>dftkube</k8sCfg>
+             <namespace>tis</namespace>
+             <imagePath>registry.cn-hangzhou.aliyuncs.com/tis/flink-{{tis_pkg_version}}:latest</imagePath>
+        </com.qlangtech.tis.config.k8s.impl.DefaultK8SImage>
+    </plugins>
+</com.qlangtech.tis.plugin.PluginStore>

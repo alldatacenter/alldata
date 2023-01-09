@@ -1,0 +1,75 @@
+---
+# task file for install java
+  # create directories
+  - name: Create {{tis_release_dir}} Dir
+    file:
+      path: "{{tis_release_dir}}"
+      state: directory
+# has been execute in download role
+#  - name: Download JDK Package to local '{{ tis_release_dir }}'
+#    get_url:
+#      url: "{{ release_repository }}/{{ item.name }}"
+#      dest: "{{ tis_release_dir }}/{{ item.name }}"
+#      force: no
+#    when: item.when
+#    with_items:
+#      - {name: "{{ java_gz_file_name }}", when: True}
+
+  - name: make /opt/app/java directory
+    file:
+      path: /opt/app/java
+      state: directory
+      recurse: yes
+      mode: '0755'
+
+  # copy file and unarchive
+  - name: copy java file to host
+    copy:
+      src: "{{ local_java_gz_path }}"
+      dest: "/tmp/{{ java_gz_file_name }}"
+     # remote_src: yes
+  - name: delete tmp untar directory
+    file:
+      path: "/tmp/{{ jdk_dir_name }}"
+      state: absent
+    ignore_errors: yes
+  - name: untar java gzip file
+    unarchive:
+      src: "/tmp/{{ java_gz_file_name }}"
+      dest: /tmp/
+      remote_src: yes
+  - name: make dest directory
+    file:
+      path: "/opt/app/java/{{ jdk_dir_name }}"
+      state: directory
+  - name: copy fiels to destination
+    synchronize:
+      src: "/tmp/{{ jdk_dir_name }}/"
+      dest: "/opt/app/java/{{ jdk_dir_name }}"
+      recursive: yes
+    delegate_to: "{{ inventory_hostname }}"
+
+  # create links
+  - name: make java version to default
+    file:
+      src: "/opt/app/java/{{ jdk_dir_name }}"
+      dest: "{{java_home}}"
+      state: link
+      force: yes
+
+  - name: make java link to /usr/bin
+    file:
+      src: "{{java_home}}/bin/java"
+      dest: /usr/bin/java
+      state: link
+      force: yes
+
+  # set environment variable
+  - name: set JAVA_HOME and path environment variable
+    template:
+      src: './template/jdk.sh'
+      dest: "/etc/profile.d/{{ jdk_dir_name }}.sh"
+      mode: '0644'
+
+
+

@@ -1,0 +1,113 @@
+---
+# tasks file for compile
+  - name: judge maven is deployed
+    shell: ls {{mvn_home}}/conf/settings.xml
+    ignore_errors: True
+    register: ismvndeploy
+
+  - name: make {{mvn_local_repo}} {{mvn_home}}
+    file:
+     path: "{{item}}"
+     state: directory
+    with_items:
+     - "{{mvn_local_repo}}"
+     - "{{mvn_home}}"
+    when: ismvndeploy is failed
+
+  - name: deploy maven builder
+    unarchive:
+      src: '{{release_repository}}/{{mvn_zip_package_name}}'
+      dest: '{{mvn_parent_dir}}'
+      remote_src: yes
+    when: ismvndeploy is failed
+
+  - name: make sh mvn mode
+    file:
+     path: "{{mvn_home}}/bin/mvn"
+     mode: u+rwx
+    when: ismvndeploy is failed
+
+  - name: make log dir
+    file:
+     path: "{{mvn_home}}/conf/logging"
+     state: directory
+    when: ismvndeploy is failed
+
+  - template:
+     src: template/settings.xml.j2
+     dest: '{{mvn_home}}/conf/settings.xml'
+    when: ismvndeploy is failed
+
+  - name: mkdir
+    file:
+     path: "{{src_dir}}"
+     state: directory
+    when: ismvndeploy is failed
+
+  - name: git pull {{git_src}}@{{git_branch}} {{src_dir}}
+    git:
+     repo: '{{git_src}}'
+     dest: '{{src_dir}}'
+     version: '{{git_branch}}'
+     force: yes
+     accept_hostkey: yes
+
+  - name: copy compile shell script to '{{src_dir}}'
+    template:
+     src: template/{{item}}.j2
+     dest: '{{src_dir}}/{{item}}'
+     mode: u+rwx
+    with_items:
+      - "{{script_prefix}}compile.sh"
+      - "{{script_prefix}}deploy-assemble.sh"
+
+  - name: clean old package
+    file:
+       path: '{{item}}'
+       state: absent
+    with_lines:
+       - find {{src_dir}} -type f -regextype egrep -regex "{{target_file_pattern}}" -printf '%p\n'
+
+  - name: "compile and package {{src_dir}} "
+    shell: "./{{script_prefix}}compile.sh {{appname}} {{item}} > exec.log"
+    args:
+     chdir: "{{src_dir}}"
+    with_items: "{{maven_extra_params}}"
+
+#  - name: clear release dir package
+#    file:
+#       path: '{{tis_release_dir}}/{{app_local_dir_name}}/*'
+#       state: absent
+#    with_lines:
+#       - find {{tis_release_dir}} -type f -regextype egrep -regex "{{target_file_pattern}}" -printf '%p\n'
+
+  - name: clear release dir '{{tis_release_dir}}/{{app_local_dir_name}}'
+    file:
+      path: "{{tis_release_dir}}/{{app_local_dir_name}}/{{item}}"
+      state: absent
+    with_lines:
+      - find {{src_dir}} -type f -regextype egrep -regex "{{target_file_pattern}}" -printf '%f\n'
+
+  - name: make release dir
+    file:
+      path: '{{tis_release_dir}}/{{app_local_dir_name}}'
+      state: directory
+
+  - name: copy to release dir {{tis_release_dir}}/{{app_local_dir_name}}
+    file:
+       src: "{{item.split(',')|first}}"
+       dest: "{{tis_release_dir}}/{{app_local_dir_name}}/{{item.split(',')|last}}"
+       state: link
+    with_lines:
+       - find {{src_dir}} -type f -regextype egrep -regex "{{target_file_pattern}}" -printf '%p,%f\n'
+
+  - name: deploy assemble of '{{src_dir}}' package  to remote repository
+    shell: "./{{script_prefix}}deploy-assemble.sh {{item}} > deploy_exec.log"
+    args:
+      chdir: "{{src_dir}}"
+    when: exec_deploy
+    with_items: "{{maven_extra_params}}"
+    tags:
+      - deploy
+
+

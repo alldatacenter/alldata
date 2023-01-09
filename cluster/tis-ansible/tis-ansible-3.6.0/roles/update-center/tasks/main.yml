@@ -1,0 +1,54 @@
+---
+
+- name: "remove old dir: {{update_center_dist_dir}}/{{app_local_dir_name}}"
+  file:
+    path: "{{update_center_dist_dir}}/{{app_local_dir_name}}"
+    state: absent
+
+- name: "untar {{update_center_dist_dir}}/{{app_local_dir_name}}-tgz.tar.gz"
+  unarchive:
+    src: '{{update_center_dist_dir}}/{{app_local_dir_name}}-tgz.tar.gz'
+    dest: "{{update_center_dist_dir}}"
+    remote_src: yes
+
+- name: "generate shell script build-update-center.sh to '{{update_center_dist_dir}}/{{app_local_dir_name}}'"
+  template:
+    src: "{{item.name}}.j2"
+    dest: "{{update_center_dist_dir}}/{{app_local_dir_name}}/{{item.name}}"
+    force: no
+    mode: '0644'
+  with_items:
+    - {name: "build-update-center.sh"}
+
+- name: "execute shell script build-update-center.sh"
+  shell: 'sh ./build-update-center.sh'
+  run_once: true
+  args:
+    chdir: "{{update_center_dist_dir}}/{{app_local_dir_name}}"
+
+######################################
+# synchronize tis-docs
+######################################
+#- name: "git pull git@github.com:qlangtech/tis-docs.git@master {{tis_docs_dir}}"
+#  git:
+#    repo: 'git@github.com:qlangtech/tis-docs.git'
+#    dest: "{{tis_docs_dir}}/"
+#    version: 'master'
+#    force: yes
+#    accept_hostkey: yes
+#
+#- name: "copy dependency libs to '{{src_root}}/{{app_local_dir_name}}'"
+#  copy:
+#    src: "{{generate_www_dir}}/{{ item.name }}"
+#    dest: "{{tis_docs_dir}}/content/zh/docs/guide/plugin/{{ item.name }}"
+#  when: item.when
+#  with_items:
+#    - { name: "source-sink.md"  , when: True}
+#    - { name: "plugins.md"      , when: True}
+#    - { name: "tpis.md"         , when: True}
+#
+#- name: "execute shell to deploy tis-doc"
+#  shell: 'sh ./update_remote.sh'
+#  run_once: true
+#  args:
+#    chdir: "{{tis_docs_dir}}"

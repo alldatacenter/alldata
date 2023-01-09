@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Initialize variables that cannot be provided by a .conf file
+WORKING_DIR="$(pwd)"
+TISBIN="${BASH_SOURCE-$0}"
+TISBIN="$(dirname "${TISBIN}")"
+TISBINDIR="$(cd "${TISBIN}"; pwd)"
+
+cd $TISBINDIR
+
+# Set up defaults
+[[ -z "$MODE" ]] && MODE="service" # modes are "auto", "service" or "run"
+
+# Determine the script mode
+action="run"
+if [[ "$MODE" == "auto" && -n "$init_script" ]] || [[ "$MODE" == "service" ]]; then
+  action="$1"
+  shift
+fi
+
+
+# Action functions
+start() {
+  sh ../zookeeper/bin/zkServer.sh start
+  sleep 3
+  ./tis start -force
+}
+
+stop() {
+  sh ../zookeeper/bin/zkServer.sh stop
+  ./tis stop
+}
+
+
+# Call the appropriate action function
+case "$action" in
+start)
+  start "$@"; exit $?;;
+stop)
+  stop "$@"; exit $?;;
+*)
+  echo "Usage: $0 {start|stop}"; exit 1;
+esac
+
+exit 0

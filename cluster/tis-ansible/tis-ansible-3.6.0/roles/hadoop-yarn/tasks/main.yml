@@ -1,0 +1,75 @@
+---
+# tasks file for taskcenter
+  
+  - group: name={{ hadoop_group}} state=present
+  - user: name={{ hadoop_user }} comment="Hadoop" group={{ hadoop_group}} shell=/bin/bash
+  
+  - name: remove old file
+    file:
+      path: /tmp/{{item}}
+      state: absent
+    with_items:
+     - "{{hadoop_dir_name}}"
+      
+  - name: get hadoop tar from http repository
+    get_url:
+     url: "{{release_repository}}/{{item}}"
+     dest: "/tmp/{{item}}"
+    with_items:
+     - "{{hadoop_dir_name}}.tar.gz"
+ 
+  - name: untar 
+    unarchive:
+     src: '/tmp/{{hadoop_dir_name}}.tar.gz'
+     dest: /tmp/
+     remote_src: yes
+     
+  - name: synchronize files
+    synchronize:
+      src: '/tmp/{{hadoop_dir_name}}'
+      dest: '{{hadoop_parent_dir}}'
+      delete: yes
+    delegate_to: "{{ inventory_hostname }}"
+
+  - name: create config dir 
+    file:
+      path: '{{hadoop_cfg_dir}}'
+      state: directory
+
+#  - name: copy config files
+#    template:
+#      src: template/hdfs-site-proxy.xml.j2
+#      dest: '{{hadoop_cfg_dir}}/hdfs-site.xml'
+
+  - name: copy config files
+    template:
+      src: 'template/{{item.name}}.j2'
+      dest: '{{hadoop_cfg_dir}}/{{item.name}}'
+    with_items:
+      - {name: "yarn-site.xml"}
+      - {name: "config.properties"}
+      - {name: "core-site.xml"}
+
+  - lineinfile: 
+     dest: "{{hadoop_cfg_dir}}/hadoop-env.sh"
+     regexp: "^export JAVA_HOME"
+     line: "export JAVA_HOME={{java_home}}"
+     state: present
+
+  - name: set nodemanager resourcemanager max heap size
+    lineinfile: 
+      dest: "{{hadoop_cfg_dir}}/yarn-env.sh"
+      regexp: "^#export {{item}}"
+      line: "export {{item}}={{YARN_RESOURCE_NODE_MANAGER_HEAPSIZE}}"
+      state: present
+    with_items:
+     - "YARN_RESOURCEMANAGER_HEAPSIZE"
+     - "YARN_NODEMANAGER_HEAPSIZE"
+#TODO 需要创建本地目录并且赋权限给 yarn /opt/data/hadoop/data/nm-local-dir
+#TODO 创建本地目录 /opt/data/tis/plugins
+  - name: set owner
+    file:
+     path: "{{hadoop_dir}}"
+     owner: "{{hadoop_user}}"
+     group: "{{hadoop_group}}"
+     recurse: yes

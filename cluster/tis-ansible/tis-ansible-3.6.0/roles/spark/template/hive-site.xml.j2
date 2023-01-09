@@ -1,0 +1,61 @@
+<configuration>
+<!-- https://blog.csdn.net/xiaosannimei/article/details/85160448 -->
+  <property>
+    <name>hive.server2.thrift.port</name>
+    <value>10000</value>
+    <description>hive thrift port</description>
+  </property>
+  <property>
+    <name>hive.server2.thrift.bind.host</name>
+    <value>{{ groups['hadoop-yarn-resource-manager'][0] }}</value>
+    <description>hive thrift server</description>
+  </property>
+
+   <property>
+      <name>hive.server2.logging.operation.enabled</name>
+      <value>true</value>
+      <description>hive operation log enable</description>
+    </property>
+
+    <property>
+          <name>hive.server2.logging.operation.verbose</name>
+          <value>true</value>
+          <description>hive operation log enable</description>
+    </property>
+
+    <!-- one of: NONE, EXECUTION, PERFORMANCE, VERBOSE-->
+    <property>
+              <name>hive.server2.logging.operation.level</name>
+              <value>VERBOSE</value>
+   </property>
+
+     <property>
+              <name>hive.server2.enable.doAs</name>
+              <value>false</value>
+     </property>
+
+
+
+
+  <property>
+    <name>hive.server2.authentication</name>
+    <value>NONE</value>
+    <description>hive thrift server authentication</description>
+  </property>
+  <!--注意：下面的配置可能不配置可能会导致在移动时无法移动多级目录-->
+  <property>
+    <name>hive.insert.into.multilevel.dirs</name>
+    <value>true</value>
+  </property>
+  <!--注意，下面的配置需要配置，否则可能导致JDBC只能成功一次，参考 http://itxw.net/article/196.html-->
+  <property>
+    <name>fs.hdfs.impl.disable.cache</name>
+    <value>true</value>
+  </property>
+  <!-- 可以打开hive的异步日志: https://blog.csdn.net/xiao_jun_0820/article/details/84308201-->
+  <property>
+    <name>hive.async.log.enabled</name>
+    <value>false</value>
+  </property>
+
+</configuration>

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mvn_bin="{{mvn_home}}/bin/mvn"
+parent_dir=`pwd`
+
+#for m in tisasm_put_mojo
+#do
+#  cd $parent_dir/$m
+#  echo "start deploy $m"
+  $mvn_bin com.qlangtech.tis:tisasm-maven-plugin:1.0.6:putall -Drelease_dir={{tis_release_dir}}/tis -Dappname=all -Dtisasm.oss.put.skip=false $1
+  echo "success deploy $parent_dir"
+#done

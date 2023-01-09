@@ -1,0 +1,12 @@
+---
+- name: download tis release tar package
+  vars_files:
+   - vars.yml
+  hosts: localhost
+  roles:
+   - role: download
+  tags:
+    - always
+
+- import_playbook: install_struct.yml
+

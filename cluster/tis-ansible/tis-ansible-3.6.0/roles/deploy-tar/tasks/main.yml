@@ -1,0 +1,19 @@
+---
+- name: "make a pom.xml from deploy"
+  template:
+    src: 'pom.xml.j2'
+    dest: '{{tis_tar_dist_dir}}/pom.xml'
+
+- name: "copy {{script_prefix}}deploy-assemble.sh shell script to '{{tis_tar_dist_dir}}'"
+  template:
+    src: template/{{item}}.j2
+    dest: '{{tis_tar_dist_dir}}/{{item}}'
+    mode: u+rwx
+  with_items:
+    - "{{script_prefix}}deploy-assemble.sh"
+
+
+- name: "deploy assemble of {{script_prefix}} '{{tis_tar_dist_dir}}' package  to remote repository"
+  shell: "./{{script_prefix}}deploy-assemble.sh > deploy.log"
+  args:
+    chdir: "{{tis_tar_dist_dir}}"

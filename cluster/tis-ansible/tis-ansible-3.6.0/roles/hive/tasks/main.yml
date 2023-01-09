@@ -1,0 +1,93 @@
+---
+- name: "Create Tmp Dir {{tis_release_dir}}"
+  file:
+    path: "{{tis_release_dir}}"
+    state: directory
+
+# must need install spark, first copy tar and unarchive
+- name: "Download hive Release from {{ release_repository }} Package to {{ tis_release_dir }}"
+  get_url:
+    url: "{{ release_repository }}/{{ item.name }}"
+    dest: "{{ tis_release_dir }}/{{ item.name }}"
+    #If yes and dest is not a directory, will download the file every time and replace the file if the contents change
+    force: no
+  delegate_to: "localhost"
+  when: item.when
+  with_items:
+    - {name: "{{hive_gz_file_name}}", when: True}
+    - {name: "{{ spark_thriftserver_jar_file_name }}", when: True }
+
+- name: "Download hudi_hadoop_mr_bundle Release from {{ tis_mvn_repository }} Package to {{ tis_release_dir }}"
+  get_url:
+    url: "{{ tis_mvn_repository }}/{{item.package}}/{{ item.name }}"
+    dest: "{{ tis_release_dir }}/{{ item.name }}"
+    force: no
+  delegate_to: "localhost"
+  when: item.when
+  with_items:
+    - "{{hudi_hadoop_mr_bundle}}"
+    - "{{hudi_spark_bundle}}"
+#    - "{{hudi_utilities_bundle}}"
+
+- name: "untar hive gzip file from:{{ tis_release_dir }}/{{hive_gz_file_name}}"
+  unarchive:
+    src: "{{ tis_release_dir }}/{{hive_gz_file_name}}"
+    dest: "/opt/app/"
+    remote_src: yes
+    owner: "{{ hadoop_user }}"
+    group: "{{ hadoop_group }}"
+
+- name: "mkdir {{ hudi_spark_bundle.parentPath }}/{{ hudi_spark_bundle.name }}"
+  file:
+    path: "{{ hudi_spark_bundle.parentPath }}/{{ hudi_spark_bundle.name }}"
+    state: directory
+    recurse: yes
+    owner: "{{ hadoop_user }}"
+    group: "{{ hadoop_group }}"
+    mode: '0755'
+  when: hudi_spark_bundle.when
+
+- name: "copy dependency libs to '{{ tis_release_dir }}'"
+  copy:
+    src: "{{ tis_release_dir }}/{{ item.name }}"
+    dest: "{{ item.parentPath }}/{{ item.name }}"
+    owner: "{{ hadoop_user }}"
+    group: "{{ hadoop_group }}"
+    mode: '0644'
+  when: item.when
+  with_items:
+    - "{{hudi_hadoop_mr_bundle}}"
+    - "{{hudi_spark_bundle}}"
+#    - "{{hudi_utilities_bundle}}"
+    - { name: "{{ spark_thriftserver_jar_file_name }}" , parentPath: "/opt/app/{{hive_dir_file_name}}/lib",when: True}
+
+- name: "copy template files hive-site.xml"
+  template:
+    src: '{{ item }}.j2'
+    dest: '/opt/app/{{hive_dir_file_name}}/conf/{{ item }}'
+    owner: "{{ hadoop_user }}"
+    group: "{{ hadoop_group }}"
+    mode: '0644'
+  with_items:
+    - "hive-site.xml"
+    - "hive-env.sh"
+
+- name: "unlink /opt/app/hive"
+  file:
+    path: "/opt/app/hive"
+    state: absent
+
+- name: "link  /opt/app/{{hive_dir_file_name}}  to hive"
+  file:
+    src: "/opt/app/{{hive_dir_file_name}}"
+    dest: "/opt/app/{{ item }}"
+    owner: "{{ hadoop_user }}"
+    group: "{{ hadoop_group }}"
+    state: link
+    force: yes
+  with_items:
+    - hive
+
+
+
+

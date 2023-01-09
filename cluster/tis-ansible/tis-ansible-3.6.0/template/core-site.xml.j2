@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <!-- 指定hdfs的nameservice为namenode的名称 -->
+  <property>
+    <name>fs.default.name</name>
+    <value>hdfs://{{ groups['hadoop-hdfs-namenode'][0] }}</value>
+  </property>
+
+  <!-- 指定hadoop临时目录 -->
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>file:/opt/data/hadoop/data</value>
+  </property>
+
+  <!-- 指定zookeeper地址，为前一节配置的主机，端口2181，逗号分隔-->
+  <property>
+    <name>ha.zookeeper.quorum</name>
+    <value>{% for item in groups['zookeeper'] %}{{ item }}:2181{{ '' if loop.last else ',' }}{% endfor %}</value>
+  </property>
+
+  <property>
+    <name>dfs.permissions</name>
+    <value>false</value>
+  </property>
+
+  <!--设置hadoop的缓冲区大小为128MB-->
+  <property>
+    <name>io.file.buffer.size</name>
+    <value>131702</value>
+  </property>
+
+  <!--可以使hiveServer正常连接-->
+  <property>
+  	<name>hadoop.proxyuser.{{ hadoop_user }}.hosts</name>
+  	<value>*</value>
+  </property>
+  <property>
+  	<name>hadoop.proxyuser.{{ hadoop_user }}.groups</name>
+  	<value>*</value>
+  </property>
+
+</configuration>

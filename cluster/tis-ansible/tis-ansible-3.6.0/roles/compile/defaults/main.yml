@@ -1,0 +1,23 @@
+---
+# defaults file for compile
+git_src: git@github.com:qlangtech/tis.git
+
+app_local_dir_name: "{{tis_release_dir_name}}"
+src_dir: "{{src_root}}/{{app_local_dir_name}}"
+#tisasm_put_mojo: "solr-webapp tis-assemble tis-collection-info-collect tis-console tis-index-builder tis-scala-compiler-dependencies tis-web-start tis-realtime-base"
+#git_branch: "v{{tis_pkg_version}}"
+git_branch: "master"
+target_file_pattern: .*\.(tar\.gz)$
+exec_deploy: True
+
+script_prefix: ""
+
+
+
+
+appname: all
+mvn_zip_package_name: '{{mvn_pkg_name}}.zip'
+mvn_local_repo: /opt/data/mvn_repository
+
+maven_extra_params:
+  - '""'

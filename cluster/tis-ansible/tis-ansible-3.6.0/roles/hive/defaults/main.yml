@@ -1,0 +1,33 @@
+---
+# defaults file for download
+hive_dir_file_name: "apache-hive-2.3.7-bin"
+hive_gz_file_name: "{{hive_dir_file_name}}.tar.gz"
+
+
+jdo_option_connection_url: "jdbc:mysql://192.168.28.200:3306/hive?useSSL=false"
+jdo_option_connection_username: "root"
+jdo_option_connection_password: "123456"
+
+hudi_install: True
+
+
+
+hudi_hadoop_mr_bundle:
+  name: "hudi-hadoop-mr-bundle-0.10.1-with-spark-2.4.4.jar"
+  package: "org/apache/hudi/hudi-hadoop-mr-bundle/0.10.1"
+  parentPath: "/opt/app/{{hive_dir_file_name}}/lib"
+  when: "{{hudi_install}}"
+
+
+#hudi_utilities_bundle:
+#  name: "tis-hudi-utilities-bundle_2.11-0.10.1-with-spark-2.4.4.jar"
+#  package: "org/apache/hudi/tis-hudi-utilities-bundle_2.11/0.10.1"
+#  parentPath: "/opt/app/spark-{{spark_file_version}}/jars"
+#  when: "{{hudi_install}}"
+
+hudi_spark_bundle:
+  name: "hudi-spark-bundle_2.11-0.10.1-with-spark-2.4.4.jar"
+  package: "org/apache/hudi/hudi-spark-bundle_2.11/0.10.1"
+ # parentPath: "/opt/app/hadoop/share/hadoop/common"
+  parentPath: "/opt/app/{{hive_dir_file_name}}/hudi_lib"
+  when: "{{hudi_install}}"

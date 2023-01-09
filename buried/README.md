@@ -1,15 +1,18 @@
-# DATA ODS FOR ALL DATA PLATFORM 数据采集引擎
+# 系统埋点
 
-数据平台的人工智能引擎：数据采集引擎
+## Logan 开源的是一整套日志体系
 
-1、爬虫
+> 包括日志的收集存储，上报分析以及可视化展示。
+>
+> 我们提供了五个组件，包括端上日志收集存储 、[iOS SDK](https://github.com/Meituan-Dianping/Logan/tree/master/Logan/iOS)、
+>
+> [Android SDK](https://github.com/Meituan-Dianping/Logan/tree/master/Example/Logan-Android)、
+>
+> [Web SDK](https://github.com/Meituan-Dianping/Logan/tree/master/Logan/WebSDK)，
+>
+> 后端日志存储分析 [Server](https://github.com/Meituan-Dianping/Logan/tree/master/Logan/Server)，
+>
+> 日志分析平台 [LoganSite](https://github.com/Meituan-Dianping/Logan/tree/master/Logan/LoganSite)。
+>
+> 并且提供了一个 Flutter 插件[Flutter 插件](https://github.com/Meituan-Dianping/Logan/tree/master/Flutter)
 
-2、系统埋点
-
-3、Syslog采集
-
-4、Ftp/SSH文件采集
-
-5、Http采集
-
-6、富文本采集FScrawler

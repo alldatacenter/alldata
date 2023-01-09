@@ -1,0 +1,178 @@
+---
+# init all hosts
+- name: set host machine hosts file
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  hosts: localhost
+  tasks:
+    - lineinfile:
+        dest: /etc/hosts
+        regexp: "^.*? {{ item }}$"
+        line: "{{ hostvars[item]['ansible_ssh_host'] }} {{ item }}"
+        state: present
+        create: yes
+      with_inventory_hostnames: all
+  tags: always
+
+- name: init os
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  hosts: tis-console,assemble,solr,hadoop-hdfs-namenode,hadoop-hdfs-datanode,hadoop-yarn-resource-manager,hadoop-yarn-node-manager,zookeeper
+  tasks:
+    - include_role:
+        name: init-os
+    - include_role:
+        name: jdk
+  tags:
+    - initos
+
+- name: install zookeeper
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  hosts: zookeeper
+  tasks:
+    - shell: 'ls {{ tis_release_dir }}'
+      ignore_errors: True
+      register: release_files
+      delegate_to: "localhost"
+    - include_role:
+        name: zookeeper
+      when: need_install_zookeeper and release_files.stdout.find('zookeeper-3.4.14.tar.gz') != -1
+  tags:
+    - zk
+
+- name: install hadoop
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  hosts: hadoop-hdfs-namenode,hadoop-hdfs-datanode,hadoop-yarn-resource-manager,hadoop-yarn-node-manager
+  tasks:
+    - shell: 'ls {{ tis_release_dir }}'
+      ignore_errors: True
+      register: release_files
+      delegate_to: "localhost"
+    - include_role:
+        name: hadoop
+      when: need_install_hadoop and release_files.stdout.find( hadoop_gz_file_name ) != -1
+  tags:
+    - hadoop
+
+- name: install hive
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  hosts: hadoop-hdfs-namenode
+  tasks:
+    - include_role:
+        name: hive
+      when: need_install_hadoop
+  tags:
+    - hive
+
+- name: install spark
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  hosts: hadoop-yarn-resource-manager,hadoop-yarn-node-manager
+  tasks:
+    - shell: 'ls {{ tis_release_dir }}'
+      ignore_errors: True
+      register: release_files
+      delegate_to: "localhost"
+    - include_role:
+        name: spark
+      when: need_install_hadoop and need_install_spark and release_files.stdout.find(spark_gz_file_name) != -1
+  tags:
+    - spark
+
+- name: install tis_console
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  vars:
+    tis_app_name: tjs
+  hosts: tis-console
+  tasks:
+    - shell: 'ls {{tis_release_dir}}/{{tis_release_dir_name}}'
+      ignore_errors: True
+      register: release_files
+      delegate_to: "localhost"
+
+    - include_role:
+        name: console
+      when: release_files.stdout.find('tis.tar.gz') != -1
+
+    - name: mkdir ng-tis dir {{app_dir}}/root/webapp
+      file:
+        path: "{{app_dir}}/root/webapp"
+        state: directory
+
+    #  - name: 'deploy ng-tis to {{app_dir}}/root/'
+    #    unarchive:
+    #      src: "{{tis_release_dir}}/{{tis_release_dir_name}}/{{ng_tis_app_tar_file_name}}"
+    #      dest: "{{app_dir}}/root/webapp"
+    #      remote_src: no
+    - include: install_ng_tis.yml
+      when: release_files.stdout.find(ng_tis_app_tar_file_name) != -1
+  tags:
+    - tjs
+
+
+
+- name: install assemble
+  vars:
+    tis_app_name: tis-assemble
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  hosts: assemble
+  tasks:
+    - shell: 'ls {{tis_release_dir}}/{{tis_release_dir_name}}'
+      ignore_errors: True
+      register: release_files
+      delegate_to: "localhost"
+    - include_role:
+        name: assemble
+      when: release_files.stdout.find('tis-assemble.tar.gz') != -1
+    # collect先安装在assemble同一个节点上
+    # 先不装 collect了
+#    - include_role:
+#        name: cluster-state-collector
+#      when: need_install_tis_collect and release_files.stdout.find('tis-collect.tar.gz') != -1
+  tags:
+    - assemble
+
+- name: install indexbuilder
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  hosts: hadoop-yarn-resource-manager,hadoop-yarn-node-manager
+  tasks:
+    - shell: 'ls {{tis_release_dir}}/{{tis_release_dir_name}}'
+      ignore_errors: True
+      register: release_files
+      delegate_to: "localhost"
+    - include_role:
+        name: index-builder
+      when: release_files.stdout.find('tis-index-builder.tar.gz') != -1
+  tags:
+    - indexbuilder
+
+- name: install solr-core
+  hosts: solr
+  vars_files:
+    - vars.yml
+    - vars-deploy.yml
+  tasks:
+    - shell: 'ls {{tis_release_dir}}/{{tis_release_dir_name}}'
+      ignore_errors: True
+      register: release_files
+      delegate_to: "localhost"
+    - include_role:
+        name: solr-core
+      when: release_files.stdout.find('solr.tar.gz') != -1
+  tags:
+    - solr

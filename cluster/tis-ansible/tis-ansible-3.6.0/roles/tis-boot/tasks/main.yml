@@ -1,0 +1,61 @@
+---
+- group: name=tis
+- name: add user tis
+  user:
+    name: "{{tis_user}}"
+    group: "{{tis_user}}"
+
+- file: path={{tis_app_dir}} state=directory
+- file: path={{tis_log_dir}} state=directory owner={{tis_user}}
+
+- name: copy tis start script
+  template:
+    src: ./template/{{item.name}}.j2
+    dest: "{{tis_app_dir}}/{{item.name}}"
+    mode: '0744'
+  when: item.when
+  with_items:
+    - {name: "tis", when: True}
+    - {name: "zookeeper" , when: "{{uber_pkg}}"}
+#  - "tis.in.sh"
+
+- debug: var=tis_app_dir
+
+#- name: set tis script mode
+#  file:
+#    path: "{{tis_app_dir}}/tis"
+#    mode: '+x'
+
+- name: path owner set
+  file:
+    path: "{{tis_app_dir}}"
+    owner: "{{tis_user}}"
+    group: "{{tis_user}}"
+    recurse: yes
+
+- name: copy web-start
+  copy:
+    src: "{{tis_release_dir}}/{{tis_release_dir_name}}/{{item}}"
+    dest: /tmp/
+  with_items:
+    - "web-start.tar.gz"
+
+- name: delete history tar.gz
+  file:
+    path: /tmp/web-start
+    state: absent
+
+- name: untar web-start
+  unarchive:
+    src: /tmp/web-start.tar.gz
+    dest: /tmp/
+    remote_src: yes
+
+- name: synchroniz web-start files
+  synchronize:
+    src: /tmp/web-start/
+    dest: "{{app_dir}}/web-start"
+    delete: yes
+    recursive: yes
+  delegate_to: "{{ inventory_hostname }}"
+

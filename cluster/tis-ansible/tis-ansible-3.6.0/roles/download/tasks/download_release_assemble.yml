@@ -1,0 +1,27 @@
+---
+- name: Download tis Release Package to {{ tis_release_dir }}/{{tis_release_dir_name}}/{{tis_pkg_version}}
+  get_url:
+    url: "{{ release_repository }}/{{tis_pkg_version}}/{{tis_release_dir_name}}/{{ item.name }}"
+    dest: "{{ tis_release_dir }}/{{tis_release_dir_name}}/{{tis_pkg_version}}/{{ item.name }}"
+    #If yes and dest is not a directory, will download the file every time and replace the file if the contents change
+    force: no
+  when: item.when
+  with_items:
+    - {name: "solr.tar.gz", when: "{{shall_download_release_assemble}}"}
+    - {name: "tis-assemble.tar.gz", when: "{{shall_download_release_assemble}}"}
+    - {name: "tis-index-builder.tar.gz", when: "{{shall_download_release_assemble}}"}
+    - {name: "tis.tar.gz", when: "{{shall_download_release_assemble}}"}
+    - {name: "{{tis_scala_compiler_dependencies_gz_file_name}}", when: "{{need_install_hadoop and need_install_spark}}" }
+    - {name: "web-start.tar.gz", when: "{{shall_download_release_assemble}}"}
+    - {name: "tis-collect.tar.gz", when: "{{need_install_tis_collect and shall_download_release_assemble}}" }
+    - {name: "{{ng_tis_app_tar_file_name}}", when: "{{shall_download_release_assemble}}" }
+    - {name: "tis-incr.tar.gz", when: "{{shall_download_release_assemble}}" }
+
+- name: make soft link for '{{ tis_release_dir }}/{{tis_release_dir_name}}/{{tis_pkg_version}}'
+  file:
+    src: "{{ tis_release_dir }}/{{tis_release_dir_name}}/{{tis_pkg_version}}/{{ item }}"
+    dest: "{{ tis_release_dir }}/{{tis_release_dir_name}}/{{ item }}"
+    state: link
+  when: shall_download_release_assemble
+  with_lines:
+    - find {{ tis_release_dir }}/{{tis_release_dir_name}}/{{tis_pkg_version}} -type f -name "*" -printf '%f\n'

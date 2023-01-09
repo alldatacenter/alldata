@@ -1,0 +1,26 @@
+project.name=TIS
+
+runtime={{runtime}}
+
+tis.datasource.type={{tisconsole_db_type}}
+tis.datasource.dbname={{tisconsole_db_dbname}}
+{% if tisconsole_db_type == 'mysql' %}
+tis.datasource.url={{tisconsole_db_url}}
+tis.datasource.port={{tisconsole_db_port}}
+tis.datasource.username={{tisconsole_db_username}}
+tis.datasource.password={{tisconsole_db_password}}
+{% endif %}
+
+{% if uber_pkg %}
+zk.host=127.0.0.1:2181/tis/cloud
+assemble.host=127.0.0.1
+tis.host=127.0.0.1
+deploy.mode=standalone
+{% else %}
+zk.host={{zk_host}}
+assemble.host={{ hostvars[groups['assemble'][0]].ansible_ssh_host}}
+tis.host={{ hostvars[groups['tis-console'][0]].ansible_ssh_host}}
+{% endif %}
+
+
+

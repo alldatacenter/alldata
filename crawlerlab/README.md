@@ -1,15 +1,7 @@
-# DATA ODS FOR ALL DATA PLATFORM 数据采集引擎
+# `CRAWLAB` FOR ALL DATA PLATFORM 数据采集引擎
 
-数据平台的人工智能引擎：数据采集引擎
+数据平台的人工智能引擎：`CRAWLAB`
 
-1、爬虫
+## 基于Golang的分布式爬虫管理平台
 
-2、系统埋点
-
-3、Syslog采集
-
-4、Ftp/SSH文件采集
-
-5、Http采集
-
-6、富文本采集FScrawler
+> 支持Python、NodeJS、Go、Java、PHP等多种编程语言以及多种爬虫框架。
