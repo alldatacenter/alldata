@@ -1,21 +1,57 @@
 # SPLINE FOR ALL DATA SPARK LINEAGE
 
-基于Spline+Atlas打造包含Spark3数据血缘的元数据管理平台
+基于DataHub+Flink Lineage建设AllData元数据管理平台
+Flink
+Airflow
+Spark
+Great Expectations
+Protobuf Schemas
+Athena
+Azure AD
+BigQuery
+Business Glossary
+ClickHouse
+CSV
+Databricks
+dbt
+Delta Lake
+Demo Data
+Druid
+Elasticsearch
+Feast
+File Based Lineage
+File
+Glue
+SAP HANA
+Hive
+Iceberg
+Kafka Connect
+Kafka
+LDAP
+Looker
+MariaDB
+Metabase
+Mode
+MongoDB
+Microsoft SQL Server
+MySQL
+Okta
+OpenAPI
+Oracle
+Postgres
+PowerBI
+Presto on Hive
+Presto
+Pulsar
+Redash
+Redshift
+S3 Data Lake
+SageMaker
+Salesforce
+Snowflake
+Other SQLAlchemy databases
+Superset
+Tableau
+Trino
+Vertica
 
-支持Spark3
-
-支持Hive
-
-支持Hbase
-
-支持Sqoop
-
-支持Storm
-
-支持Kafka
-
-支持Falcon
-
-Spline release/0.7.7
-
-Atlas 3.0.0-SNAPSHOT

@@ -1,0 +1,42 @@
+apply plugin: 'war'
+
+ext.apiProject = project(':metadata-service:restli-api')
+
+dependencies {
+  runtime project(':metadata-service:factories')
+  runtime project(':metadata-service:auth-filter')
+  runtime project(':metadata-service:servlet')
+  runtime project(':metadata-service:auth-servlet-impl')
+  runtime project(':metadata-service:graphql-servlet-impl')
+  runtime project(':metadata-service:openapi-servlet')
+  runtime project(':metadata-jobs:mce-consumer')
+  runtime project(':metadata-jobs:mae-consumer')
+  runtime project(':metadata-jobs:pe-consumer')
+
+  runtime externalDependency.logbackClassic
+  runtime externalDependency.awsSecretsManagerJdbc
+  runtime externalDependency.h2
+  runtime externalDependency.mariadbConnector
+  runtime externalDependency.mysqlConnector
+  runtime externalDependency.postgresql
+  runtime externalDependency.springWebMVC
+
+  runtime spec.product.pegasus.restliDocgen
+  runtime spec.product.pegasus.restliSpringBridge
+
+  implementation externalDependency.awsMskIamAuth
+}
+
+configurations {
+  jetty9
+}
+
+dependencies {
+  jetty9 "org.eclipse.jetty:jetty-runner:9.4.46.v20220331"
+}
+
+task run(type: JavaExec, dependsOn: build) {
+  main = "org.eclipse.jetty.runner.Runner"
+  args = [war.archivePath]
+  classpath configurations.jetty9
+}
