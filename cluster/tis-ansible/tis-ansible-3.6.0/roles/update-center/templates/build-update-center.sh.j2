@@ -1,0 +1,4 @@
+#!/bin/bash
+
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -classpath ./lib/*:./update-center2.jar -DdryRun={{ansible_check_mode}} -Dplugin_dir_root={{tis_release_dir}}/{{tis_plugin_release_dir_name}} -Dtis.plugin.release.version={{tis_pkg_version}}  io.jenkins.update_center.Main \
+--www-dir={{generate_www_dir}}

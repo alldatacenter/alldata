@@ -1,0 +1,86 @@
+---
+- name: install python-setuptools
+  yum:
+    name: "{{item}}"
+  with_items:
+    - python-setuptools
+
+- name: install pip by easy_install
+  easy_install:
+    name: pip
+    state: present
+
+# tasks file for compile
+- name: install certain python modules for docker
+  pip:
+    name: "{{ item.name }}"
+    version: "{{ item.version }}"
+    state: present
+  with_items:
+    # - { name: docker, version: 2.0.0 }
+    - { name: docker-py, version: 1.10.6 }
+
+- name: clean docker context dir {{docker_context_dir}}/{{tis_incr_name}}
+  file:
+    path: '{{docker_context_dir}}/{{tis_incr_name}}'
+    state: absent
+
+- name: create docker context dir {{docker_context_dir}}/{{tis_incr_name}}
+  file:
+    path: '{{docker_context_dir}}/{{tis_incr_name}}'
+    state: directory
+
+- name: copy {{tis_incr_name}} to docker context dir
+  copy:
+    src: '{{tis_release_dir}}/{{tis_release_dir_name}}/{{item.tar_name}}'
+    dest: '{{docker_context_dir}}/{{item.app}}/'
+  with_items:
+    - {app: "{{tis_incr_name}}" ,tar_name: "{{tis_incr_tar_name}}"}
+
+- name: "copy {{entrypoint_shell_name}}.j2 to docker context dir"
+  template:
+    src: "{{entrypoint_shell_name}}.j2"
+    dest: '{{docker_context_dir}}/{{tis_incr_name}}/{{entrypoint_shell_name}}'
+
+#  - name : copy Dockerfile to docker context dir {{docker_context_dir}}/{{tis_incr_name}}/
+#    copy: src="files/Dockerfile" dest="{{docker_context_dir}}/{{tis_incr_name}}/"
+
+- name: copy {{docker_file_template}} to docker context dir {{docker_context_dir}}/{{tis_incr_name}}/
+  template:
+    src: './files/{{docker_file_template}}'
+    dest: '{{docker_context_dir}}/{{tis_incr_name}}/Dockerfile'
+
+# - name : docker image {{tis_incr_name}} build
+#   command: docker build -t tis/tis-incr -f ./Dockerfile .
+#   args:
+#    chdir: "{{docker_context_dir}}/{{tis_incr_name}}"
+
+# https://cr.console.aliyun.com/repository/cn-hangzhou/tis/tis-incr/details
+#  - name: log into private registry and force re-authorization {{docker_password}}
+#    docker_login:
+#      registry: registry.cn-hangzhou.aliyuncs.com
+#      username: hi30872750@aliyun.com
+#      password: "{{docker_password}}"
+#      reauthorize: yes
+
+- name: "register whether_push_docker_to_remote_repository"
+  shell: "echo 1"
+  register: whether_push_docker_to_remote_repository
+  ignore_errors: True
+  tags: deploy
+
+- debug: msg="will deploy docker {{tis_incr_name}}-{{tis_pkg_version}}:{{whether_push_docker_to_remote_repository is defined}}"
+
+- name: "Build and Push docker {{tis_incr_name}}-{{tis_pkg_version}}"
+  docker_image:
+    build:
+      path: "{{docker_context_dir}}/{{tis_incr_name}}"
+    name: "registry.cn-hangzhou.aliyuncs.com/tis/{{tis_incr_name}}-{{tis_pkg_version}}"
+    #   tag: "{{tis_pkg_version}}"
+    push: "{{whether_push_docker_to_remote_repository is defined}}"
+    force: yes
+    source: build
+
+
+
+

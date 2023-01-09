@@ -1,0 +1,8 @@
+---
+- name: restart tis-console
+  command: ./tis restart
+  become: yes
+  become_user: "{{tis_user}}"
+  when: shall_exec_restart
+  args:
+    chdir: "{{tis_app_dir}}/"

@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+
+if ! whoami &> /dev/null; then
+  if [ -w /etc/passwd ]; then
+    echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:${HOME}:/sbin/nologin" >> /etc/passwd
+  fi
+fi
+
+
+echo "====appname:${APP_NAME}"
+cd /opt/tis/${APP_NAME} && \
+exec java \
+    $JVM_PROPERTY \
+    $JAVA_SYSTEM_PROPERTY \
+	  -Dlog.dir=/opt/logs \
+    -Druntime=$JAVA_RUNTIME \
+    -Djava.security.egd=file:/dev/./urandom \
+    -jar /opt/tis/${APP_NAME}/${APP_NAME}.jar \
+    $APP_OPTIONS

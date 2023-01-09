@@ -1,0 +1,13 @@
+---
+# must need install spark, first copy tar and unarchive
+- name: copy spark file to host
+  copy:
+    src: "{{ tis_release_dir }}/{{ item.name }}"
+    dest: "/tmp/{{ item.name }}"
+    owner: "{{ hadoop_user }}"
+    group: "{{ hadoop_group }}"
+    mode: '0644'
+  when: item.when
+  with_items:
+    - {name: "{{ spark_scala_gz_file_name }}", when: "{{ need_install_hadoop and need_install_spark }}" }
+    - {name: "{{ spark_gz_file_name }}", when: "{{ need_install_hadoop and need_install_spark }}" }

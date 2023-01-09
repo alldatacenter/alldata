@@ -1,0 +1,36 @@
+---
+- name: start yarn
+  vars_files:
+    - vars.yml
+  hosts: hadoop-yarn-resource-manager
+  tasks:
+  - command: ./start-yarn.sh
+    become: yes
+    become_user: hadoop
+    ignore_errors: yes
+    args:
+      chdir: "/opt/app/hadoop/sbin"
+  - command: sleep 10
+    ignore_errors: yes
+
+- name: start thriftserver
+  vars_files:
+    - vars.yml
+  hosts: hadoop-yarn-resource-manager
+  tasks:
+  - command: ./start-thriftserver.sh --master yarn --deploy-mode client --name thriftserver
+    become: yes
+    become_user: hadoop
+    ignore_errors: yes
+    args:
+      chdir: "/opt/app/spark/sbin"
+    when: need_install_spark and need_install_spark_shuffle
+  - command: sleep 5
+    ignore_errors: yes
+
+- name: stop crond
+  vars_files:
+    - vars.yml
+  hosts: hadoop-yarn-resource-manager
+  tasks:
+  - service: name=crond state=started enabled=yes

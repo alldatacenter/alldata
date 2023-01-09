@@ -1,0 +1,13 @@
+export JAVA_HOME={{java_home}}
+export SCALA_HOME=/opt/app/scala
+export HADOOP_HOME=/opt/app/hadoop
+
+# https://blog.csdn.net/yuanzhengme/article/details/119246562
+# 配置 ${SPARK_HOME}/conf/spark-env.sh 文件关联 spark-without-hadoop 和 hadoop【非without版本无需配置】
+export SPARK_DIST_CLASSPATH=$($HADOOP_HOME/bin/hadoop classpath)
+
+export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
+export SPARK_MASTER_HOST={{ groups['hadoop-yarn-resource-manager'][0] }}
+export SPARK_WORKER_MEMORY=8g
+export SPARK_WORKER_CORES=2
+export SPARK_WORKER_INSTANCES=1

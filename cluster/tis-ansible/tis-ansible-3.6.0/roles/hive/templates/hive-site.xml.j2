@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>hive.metastore.uris</name>
+        <value>thrift://{{hostvars[inventory_hostname].ansible_ssh_host}}:9083</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>{{jdo_option_connection_url}}</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.jdbc.Driver</value>
+    </property>
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>/user/hive/warehouse</value>
+    </property>
+    <!--- 使用本地服务连接Hive,默认为true-->
+    <property>
+        <name>hive.metastore.local</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>{{jdo_option_connection_username}}</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>{{jdo_option_connection_password}}</value>
+    </property>
+    <property>
+        <name>hive.metastore.schema.verification</name>
+        <value>false</value>
+    </property>
+
+<!--
+  <property>
+    <name>hive.server2.authentication</name>
+    <value>CUSTOM</value>
+    <description>
+      Expects one of [nosasl, none, ldap, kerberos, pam, custom].
+      Client authentication types.
+        NONE: no authentication check
+        LDAP: LDAP/AD based authentication
+        KERBEROS: Kerberos/GSSAPI authentication
+        CUSTOM: Custom authentication provider
+                (Use with property hive.server2.custom.authentication.class)
+        PAM: Pluggable authentication module
+        NOSASL:  Raw transport
+    </description>
+  </property>
+    <property>
+      <name>hive.server2.custom.authentication.class</name>
+      <value>org.apache.hadoop.hive.contrib.auth.CustomPasswdAuthenticator</value>
+    </property>
+-->
+
+    <property>
+        <name>hive.server2.thrift.client.user</name>
+        <value>{{ hadoop_user }}</value>
+        <description>Username to use against thrift client</description>
+    </property>
+    <property>
+        <name>hive.server2.thrift.client.password</name>
+        <value>123456</value>
+        <description>Password to use against thrift client</description>
+    </property>
+
+    <!--https://blog.csdn.net/weixin_40579109/article/details/112614334
+        hiveServer在执行 MR操作过程中会将该jar提交到hadoop（例如：yarn集群）中参与执行，避免ClassNotFound异常出现
+    -->
+    {% if hudi_spark_bundle.when %}
+     <property>
+        <name>hive.aux.jars.path</name>
+        <value>file://{{ hudi_spark_bundle.parentPath }}/{{ hudi_spark_bundle.name }}</value>
+     </property>
+    {% endif %}
+
+</configuration>

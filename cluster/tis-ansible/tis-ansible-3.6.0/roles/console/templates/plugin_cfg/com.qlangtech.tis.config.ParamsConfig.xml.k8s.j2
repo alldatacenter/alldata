@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.qlangtech.tis.plugin.PluginStore>
+    <plugins>
+        <com.qlangtech.tis.config.k8s.impl.DefaultK8sContext plugin="tis-k8s-plugin@{{tis_pkg_version}}">
+            <name>dftkube</name>
+            <kubeBasePath>https://192.168.28.201:8443</kubeBasePath>
+                  <kubeConfigContent>apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUS
+    server: https://192.168.28.201:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+   client-certificate-data: LS0tLS1CRUdJTiBDLRVktLS
+   client-key-data: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSB0</kubeConfigContent>
+        </com.qlangtech.tis.config.k8s.impl.DefaultK8sContext>
+    </plugins>
+</com.qlangtech.tis.plugin.PluginStore>

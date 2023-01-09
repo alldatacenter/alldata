@@ -1,0 +1,8 @@
+---
+tis_incr_name: "tis-incr"
+tis_incr_tar_name: "{{tis_incr_name}}.tar.gz"
+
+docker_file_template: "Dockerfile.j2"
+entrypoint_shell_name: "run.sh"
+
+docker_context_dir: "{{tis_release_dir}}/docker-context"

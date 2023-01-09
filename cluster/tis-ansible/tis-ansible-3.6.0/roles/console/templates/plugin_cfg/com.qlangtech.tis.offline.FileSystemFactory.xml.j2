@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.qlangtech.tis.plugin.PluginStore>
+  <plugins>
+    <com.qlangtech.tis.hdfs.impl.HdfsFileSystemFactory plugin="tis-hive-flat-table-builder-plugin@{{tis_pkg_version}}">
+      <name>hdfs1</name>
+      <hdfsAddress>hdfs://daily-cdh</hdfsAddress>
+      <rootDir>/user/admin</rootDir>
+      <hdfsSiteContent>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.nameservices&lt;/name&gt;
+    &lt;value&gt;daily-cdh&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.client.failover.proxy.provider.daily-cdh&lt;/name&gt;
+  &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.ha.automatic-failover.enabled.daily-cdh&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.ha.namenodes.daily-cdh&lt;/name&gt;
+    &lt;value&gt;namenode228,namenode295&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.rpc-address.daily-cdh.namenode228&lt;/name&gt;
+    &lt;value&gt;{{ hadoop_yarn_resource_manager_host }}:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.servicerpc-address.daily-cdh.namenode228&lt;/name&gt;
+    &lt;value&gt;{{ hadoop_yarn_resource_manager_host }}:8022&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.http-address.daily-cdh.namenode228&lt;/name&gt;
+    &lt;value&gt;{{ hadoop_yarn_resource_manager_host }}:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.https-address.daily-cdh.namenode228&lt;/name&gt;
+    &lt;value&gt;{{ hadoop_yarn_resource_manager_host }}:50470&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.rpc-address.daily-cdh.namenode295&lt;/name&gt;
+    &lt;value&gt;{{ hadoop_yarn_resource_manager_host }}:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.servicerpc-address.daily-cdh.namenode295&lt;/name&gt;
+    &lt;value&gt;{{ hadoop_yarn_resource_manager_host }}:8022&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.http-address.daily-cdh.namenode295&lt;/name&gt;
+    &lt;value&gt;{{ hadoop_yarn_resource_manager_host }}:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.https-address.daily-cdh.namenode295&lt;/name&gt;
+    &lt;value&gt;{{ hadoop_yarn_resource_manager_host }}:50470&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.replication&lt;/name&gt;
+    &lt;value&gt;2&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.blocksize&lt;/name&gt;
+    &lt;value&gt;134217728&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.client.use.datanode.hostname&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;fs.permissions.umask-mode&lt;/name&gt;
+    &lt;value&gt;022&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.acls.enabled&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.client.use.legacy.blockreader&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.client.read.shortcircuit&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.domain.socket.path&lt;/name&gt;
+    &lt;value&gt;/var/run/hdfs-sockets/dn&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.client.read.shortcircuit.skip.checksum&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.client.domain.socket.data.traffic&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.datanode.hdfs-blocks-metadata.enabled&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</hdfsSiteContent>
+    </com.qlangtech.tis.hdfs.impl.HdfsFileSystemFactory>
+  </plugins>
+</com.qlangtech.tis.plugin.PluginStore>

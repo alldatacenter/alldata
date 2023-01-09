@@ -1,0 +1,122 @@
+---
+  # must need install spark, first copy tar and unarchive
+  - name: copy spark file to host
+    copy:
+      src: "{{ tis_release_dir }}/{{ item.name }}"
+      dest: "/tmp/{{ item.name }}"
+      owner: "{{ hadoop_user }}"
+      group: "{{ hadoop_group }}"
+      mode: '0644'
+    when: item.when
+    with_items:
+    - {name: "{{ spark_scala_gz_file_name }}", when: "{{ need_install_hadoop and need_install_spark }}" }
+    - {name: "{{ spark_gz_file_name }}", when: "{{ need_install_hadoop and need_install_spark }}" }
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      recurse: yes
+      owner: "{{ hadoop_user }}"
+      group: "{{ hadoop_group }}"
+      mode: '0755'
+    with_items:
+      - /opt/app/scala-2.11.7
+      - '/opt/app/{{spark_file_name}}'
+
+  - name: delete tmp untar directory
+    file:
+      path: "/tmp/{{ item }}"
+      state: absent
+    with_items:
+      - scala-2.11.7
+      - '{{spark_file_name}}'
+  - name: untar gzip files
+    unarchive:
+      src: "/tmp/{{ item }}"
+      dest: /tmp
+      owner: "{{ hadoop_user }}"
+      group: "{{ hadoop_group }}"
+      remote_src: yes
+    with_items:
+      - "{{ spark_scala_gz_file_name }}"
+      - "{{ spark_gz_file_name }}"
+
+#  - name: unarchive {{ tis_release_dir }}/{{tis_plugin_release_dir_name}}/{{tis_spark_hive_server_extends_tar_file_name}}
+#    unarchive:
+#      src: '{{ tis_release_dir }}/{{tis_plugin_release_dir_name}}/{{tis_spark_hive_server_extends_tar_file_name}}'
+#      dest: '/tmp/{{spark_file_name}}/jars/'
+#    when: need_install_hadoop and need_install_spark
+
+  - name: sychronize files
+    synchronize:
+      src: "/tmp/{{ item }}/"
+      dest: /opt/app/{{ item }}
+      recursive: yes
+    with_items:
+      - scala-2.11.7
+      - '{{spark_file_name}}'
+    delegate_to: "{{ inventory_hostname }}"
+
+  # link to scala and spark
+  - name: link to scala
+    file:
+      src: /opt/app/{{ item.name }}-{{ item.version }}
+      dest: /opt/app/{{ item.name }}
+      state: link
+      owner: "{{ hadoop_user }}"
+      group: "{{ hadoop_group }}"
+      force: yes
+    with_items:
+      - {name: scala, version: "2.11.7" }
+      #- {name: spark, version: "2.4.4-bin-hadoop2.6" }
+      - {name: spark, version: "{{spark_file_version}}" }
+
+  - name: install tispark jar
+    copy:
+      src: "{{ tis_release_dir }}/{{ spark_tispark_jar_file_name }}"
+      dest: "/opt/app/spark/jars/{{ spark_tispark_jar_file_name }}"
+      owner: "{{ hadoop_user }}"
+      group: "{{ hadoop_group }}"
+      mode: '0644'
+    when: need_install_hadoop and need_install_spark and need_install_tispark
+
+  - name: install thriftserver jar
+    copy:
+      src: "{{ tis_release_dir }}/{{ spark_thriftserver_jar_file_name }}"
+      dest: "{{java_home}}/lib/{{ spark_thriftserver_jar_file_name }}"
+      owner: "{{ hadoop_user }}"
+      group: "{{ hadoop_group }}"
+      mode: '0644'
+    when: need_install_hadoop and need_install_spark and need_install_spark_shuffle
+
+  - name: install spark-shuffle jar
+    file:
+      src: /opt/app/spark/yarn/spark-2.4.4-yarn-shuffle.jar
+      dest: /opt/app/hadoop/share/hadoop/yarn/spark-2.4.4-yarn-shuffle.jar
+      state: link
+      owner: "{{ hadoop_user }}"
+      group: "{{ hadoop_group }}"
+      force: yes
+    when: need_install_hadoop and need_install_spark and need_install_spark_shuffle
+
+  # deploy config files
+  - name: copy config file
+    copy:
+      src: 'template/{{ item }}'
+      dest: '/etc/profile.d/{{ item }}'
+      mode: '0644'
+    with_items:
+      - scala_profile.sh
+      - spark_profile.sh
+  - name: copy template files
+    template:
+      src: 'template/{{ item }}.j2'
+      dest: '/opt/app/spark/conf/{{ item }}'
+      owner: "{{ hadoop_user }}"
+      group: "{{ hadoop_group }}"
+      mode: '0644'
+    with_items:
+      - slaves
+      - spark-env.sh
+      - spark-defaults.conf
+      - hive-site.xml

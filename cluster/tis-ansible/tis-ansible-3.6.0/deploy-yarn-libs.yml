@@ -1,0 +1,14 @@
+---
+- name: deploy indexbuilder
+  vars_files:
+    - vars.yml
+  hosts: hadoop-yarn-resource-manager,hadoop-yarn-node-manager
+  tasks:
+    - shell: 'ls {{tis_release_dir}}'
+      ignore_errors: True
+      register: release_files
+      delegate_to: "localhost"
+    - include_role:
+        name: index-builder
+      when: release_files.stdout.find('tis-index-builder.tar.gz') != -1
+
