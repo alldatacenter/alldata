@@ -135,6 +135,11 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204561326-002e0e59-e89d-47b4-8648-ca932194937b.png">
 <br/>
 
+> AllData AI Studio 社区版
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/211255550-2d58eb94-42ce-411c-9487-9f2e499e565a.png">
+<br/>
+
 > AllData Studio 社区版
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/210299541-b9f4d344-30ba-4fc9-a083-390129f7da1e.png">
