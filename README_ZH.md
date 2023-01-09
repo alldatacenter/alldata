@@ -15,7 +15,7 @@
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
 </a>
 
-## [体验版地址](http://43.138.157.47:8013/dashboard) ｜ 账密 poc/123456
+## [体验版地址](http://43.138.157.47/dashboard) ｜ 账密 poc/123456
 
 
 ## 体验版
