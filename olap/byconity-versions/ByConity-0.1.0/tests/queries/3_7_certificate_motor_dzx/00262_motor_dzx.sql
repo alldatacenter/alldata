@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT p_date, connect_user_number AS score FROM mct.business_app_user_5a_distribute_daily WHERE ( industry_name = '新车' AND  type_id = 10055 AND  type = 'outer_account' AND  p_date <= '2021-07-17' AND  p_date >= '2020-06-17') ORDER BY p_date ASC SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT compete_type_id AS id, pk_rank AS x_value, reverse_pk_rank AS y_value, '2021-06-30' AS extra FROM dzx.app_business_series_account_pk_compete_mi WHERE ( industry_name = '新车' AND  type = 'account' AND  type_id = 10055 AND  is_bp = 0 AND  p_date = '2021-06-30') ORDER BY x_value ASC LIMIT 20 SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

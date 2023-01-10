@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT sum(impr_cnt) AS impr_cnt, sum(clk_cnt) AS clk_cnt FROM dzx.dwa_traffic_perfro_di WHERE ( account_id = 10073 AND  series_id = 143 AND  first_contact = '商业产品' AND  p_date >= '2021-06-16' AND  p_date <= '2021-06-29' AND  cart_id = '6972476170986062629') LIMIT 1 SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT profile_label_name, profile_label_value, user_number, p_date, user_level FROM mct.business_app_user_intend_daily WHERE ( p_date >= '2021-07-16' AND  p_date <= '2021-07-17' AND  type = 'outer_account' AND  type_id = 10055 AND  intention = 'account_intend') SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

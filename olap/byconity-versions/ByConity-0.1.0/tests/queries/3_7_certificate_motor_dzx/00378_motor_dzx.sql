@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT connect_user_number AS connect, aware_user_number AS aware, appeal_user_number AS appeal, ask_user_number AS ask, act_user_number AS act, advocate_user_number AS advocate FROM mct.business_app_user_5a_distribute_daily WHERE ( p_date >= '2021-07-16' AND  p_date <= '2021-07-17' AND  type = 'outer_account' AND  type_id = 10055) ORDER BY p_date ASC SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

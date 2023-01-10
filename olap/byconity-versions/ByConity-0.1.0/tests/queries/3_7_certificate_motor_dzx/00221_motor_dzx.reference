@@ -1,0 +1,50 @@
+{
+	"meta":
+	[
+		{
+			"name": "project_id",
+			"type": "Int64"
+		},
+		{
+			"name": "project_name",
+			"type": "String"
+		},
+		{
+			"name": "project_start_time",
+			"type": "String"
+		},
+		{
+			"name": "project_end_time",
+			"type": "String"
+		},
+		{
+			"name": "special_day_type",
+			"type": "Int64"
+		},
+		{
+			"name": "special_day",
+			"type": "String"
+		},
+		{
+			"name": "series_id",
+			"type": "Int64"
+		},
+		{
+			"name": "compete_series_ids",
+			"type": "Array(Int64)"
+		},
+		{
+			"name": "plan_type",
+			"type": "String"
+		}
+	],
+
+	"data":
+	[
+
+	],
+
+	"rows": 0,
+
+	"rows_before_limit_at_least": 0
+}

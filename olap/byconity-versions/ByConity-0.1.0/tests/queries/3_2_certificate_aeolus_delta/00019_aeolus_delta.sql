@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT (`地区经理`) AS _1585536982724, (sum(toFloat64OrZero(`折扣`))) AS _dynamic210817104752078, (sum(toFloat64OrZero(`折扣`))) AS _sum_1585536982728 FROM `aeolus_data_db_aeolus_delta_202003`.`aeolus_data_table_4500_dev` WHERE ((((p_date >= '2020-02-29') AND (p_date <= '2020-03-29')))) GROUP BY `地区经理` LIMIT 51 FORMAT JSONCompact

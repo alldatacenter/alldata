@@ -1,0 +1,1 @@
+SELECT `p_date` AS `p_date` FROM `cnch_alpha_lq_audit_arm`.`device_geo_info_encrypt_v2` GROUP BY `p_date` ORDER BY `p_date` DESC LIMIT 15 SETTINGS enable_optimize_predicate_expression=0,distributed_product_mode='global'

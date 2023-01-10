@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT location_province AS index, count(distinct device_id) AS user_cnt FROM mct.business_dwd_user_profile_daily WHERE ( p_date = '2021-06-29' AND  toString(device_id) global in ( SELECT distinct device_id AS id FROM dzx.dwa_traffic_perfro_di WHERE ( account_id = 10073 AND series_id = 143 AND p_date >= '2021-06-16' AND p_date <= '2021-06-29' AND cart_id = '6972476170986062629' AND impr_cnt > 0 ) ) ) GROUP BY index ORDER BY user_cnt DESC SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact
