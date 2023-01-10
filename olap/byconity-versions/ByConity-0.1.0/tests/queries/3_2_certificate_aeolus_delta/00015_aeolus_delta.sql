@@ -1,0 +1,1 @@
+SELECT min(p_date), max(p_date) from aeolus_data_db_aeolus_delta_202002.aeolus_data_table_27453_prod

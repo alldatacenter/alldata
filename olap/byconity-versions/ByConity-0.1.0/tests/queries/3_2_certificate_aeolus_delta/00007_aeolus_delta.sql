@@ -1,0 +1,1 @@
+SELECT min(p_date), max(p_date) from aeolus_load_tool_aeolus_delta_201910.news_article_newpublish_impression_weekly_daily

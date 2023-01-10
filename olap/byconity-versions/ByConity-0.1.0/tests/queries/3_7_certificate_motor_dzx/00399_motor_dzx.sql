@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT p_date, gtype, touch_spot, validate_content_cnt AS cnt FROM dzx.app_business_content_asset_stats_distribute_di WHERE ( industry_name = '新车' AND  ( account_id in (10055) AND  series_id = -1) AND  p_date = '2021-07-11' AND  date_type = 'day' AND  gtype != 'dim_all' AND  touch_spot != 'dim_all' AND  content_type = 'dim_all') ORDER BY validate_content_cnt DESC LIMIT 3 SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

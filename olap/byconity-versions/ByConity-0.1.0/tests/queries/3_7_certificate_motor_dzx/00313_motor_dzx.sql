@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT max(ask_user_number) AS std_num FROM mct.business_app_user_structure_daily WHERE ( p_date = '2021-07-12' AND  type_id IN (10055,10135,10059,10066,10096,10122,10150,10137,10091,10012,10079,10018,10112,10056,10021,10013,10088,10022,10145,10032,10027,10090,10087,10078,10068,10028,10141,10081,10117,10025,10127) AND  type = 'outer_account' AND  range = 'series') LIMIT 1 SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

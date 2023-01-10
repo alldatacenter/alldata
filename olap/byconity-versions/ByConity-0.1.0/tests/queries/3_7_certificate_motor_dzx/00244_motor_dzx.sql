@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT connect_user_number AS connect, aware_user_number AS aware, appeal_user_number AS appeal, ask_user_number AS ask, act_user_number AS act, advocate_user_number AS advocate FROM mct.business_app_user_structure_daily WHERE ( p_date = '2021-07-12' AND  type_id = 10055 AND  type = 'outer_account' AND  range = 'series') LIMIT 1 SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT COUNT(DISTINCT compete_type_id) AS cnt FROM dzx.app_business_autocar_compete_stats_mi WHERE ( account_id = 10055 AND  type = 'account' AND  industry_name = '新车' AND  market_type = '汽车行业' AND  user_level = 'connect' AND  p_date = '2021-06-30') SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact

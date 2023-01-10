@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS dealer;
+DROP TABLE IF EXISTS dealer.business_dim_dealer_series_di;
+CREATE TABLE dealer.business_dim_dealer_series_di (`channel_name` String ,`dealer_full_name` String ,`is_yxt` Int32 ,`series_id` Int64 ,`province_name` String ,`city_name` String ,`p_date` Date ,`province_id` Int64 ,`grade` Int64 ,`dealer_name` String ,`is_test` Int32 ,`channel_id` Int64 ,`city_id` Int64 ,`status` Int64 ,`dealer_id` Int64 ) ENGINE = CnchMergeTree() PARTITION BY p_date ORDER BY (dealer_id,series_id,intHash64(dealer_id)) SAMPLE BY intHash64(dealer_id);
+INSERT INTO dealer.business_dim_dealer_series_di FORMAT CSV INFILE '/data01/liulanyi/cnch-sql-cases/tools/certificate_builder/certificate_motor_dzx/tables_info/dealer.business_dim_dealer_series_di.csv' SETTINGS input_format_skip_unknown_fields = 1, skip_nullinput_notnull_col = 1;

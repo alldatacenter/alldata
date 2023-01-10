@@ -1,0 +1,2 @@
+SET output_format_write_statistics = 0;
+SELECT sum(attriclue_daily) AS attr_clue_cnt, sum(sumclue_daily) AS total_clue_cnt FROM dzx.dwa_business_value_transpro_compare_cart_di WHERE ( p_date >= '2021-06-16' AND  cart_id = '6972476170986062629' AND  p_date <= '2021-07-20' AND  series_id = 143) SETTINGS enable_optimize_predicate_expression=0 FORMAT JSONCompact
