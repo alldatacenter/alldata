@@ -1,0 +1,183 @@
+{
+  "id":13,
+  "name":"nifi-registry",
+  "displayName": "nifi-registry",
+  "implClass":"org.apache.ranger.services.nifi.registry.RangerServiceNiFiRegistry",
+  "label":"NIFI Registry",
+  "description":"NiFi Registry",
+  "resources":[
+    {
+      "itemId":100,
+      "name":"nifi-registry-resource",
+      "type":"string",
+      "level":10,
+      "parent":"",
+      "mandatory":true,
+      "lookupSupported":true,
+      "recursiveSupported":false,
+      "excludesSupported":false,
+      "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions":{
+        "wildCard":true,
+        "ignoreCase":true
+      },
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"NiFi Registry Resource Identifier",
+      "description":"NiFi Registry Resource"
+    }
+
+  ],
+  "accessTypes":[
+    {
+      "itemId":100,
+      "name":"READ",
+      "label":"Read"
+    },
+    {
+      "itemId":200,
+      "name":"WRITE",
+      "label":"Write"
+    },
+    {
+      "itemId":300,
+      "name":"DELETE",
+      "label":"Delete"
+    }
+  ],
+  "configs":[
+    {
+      "itemId":400,
+      "name":"nifi.registry.url",
+      "type":"string",
+      "mandatory":true,
+      "defaultValue":"http://localhost:18080/nifi-registry-api/policies/resources",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"{\"TextFieldWithIcon\":true, \"info\": \"The URL of the NiFi Registry REST API that provides the available resources.\"}",
+      "label":"NiFi Registry URL"
+    },
+    {
+      "itemId": 410,
+      "name": "nifi.registry.authentication",
+      "type": "enum",
+      "subType": "authType",
+      "mandatory": true,
+      "validationRegEx":"",
+      "validationMessage": "",
+      "uiHint":"",
+      "label": "Authentication Type",
+      "defaultValue": "NONE"
+    },
+    {
+      "itemId": 411,
+      "name": "nifi.registry.ssl.use.default.context",
+      "type": "bool",
+      "subType": "YesTrue:NoFalse",
+      "mandatory": true,
+      "defaultValue": "false",
+      "validationRegEx": "",
+      "validationMessage": "",
+      "uiHint": "{\"TextFieldWithIcon\":true, \"info\": \"If true, then Ranger's keystore and truststore will be used to communicate with NiFi Registry. If false, the keystore and truststore properties must be provided.\"}",
+      "label": "Use Ranger's Default SSL Context"
+    },
+    {
+      "itemId":500,
+      "name":"nifi.registry.ssl.keystore",
+      "type":"string",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Keystore"
+    },
+    {
+      "itemId":510,
+      "name":"nifi.registry.ssl.keystoreType",
+      "type":"string",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Keystore Type"
+    },
+    {
+      "itemId":520,
+      "name":"nifi.registry.ssl.keystorePassword",
+      "type":"password",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Keystore Password"
+    },
+    {
+      "itemId":530,
+      "name":"nifi.registry.ssl.truststore",
+      "type":"string",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Truststore"
+    },
+    {
+      "itemId":540,
+      "name":"nifi.registry.ssl.truststoreType",
+      "type":"string",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Truststore Type"
+    },
+    {
+      "itemId":550,
+      "name":"nifi.registry.ssl.truststorePassword",
+      "type":"password",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Truststore Password"
+    }
+  ],
+  "enums":
+  [
+      {
+        "itemId": 1,
+        "name": "authType",
+        "elements":
+        [
+          {
+            "itemId": 1,
+            "name": "NONE",
+            "label": "None"
+          },
+          {
+            "itemId": 2,
+            "name": "SSL",
+            "label": "SSL"
+          }
+        ],
+
+        "defaultIndex": 0
+      }
+  ],
+  "options": {
+    "enableDenyAndExceptionsInPolicies": "false"
+  },
+  "contextEnrichers":[
+
+  ],
+  "policyConditions":[
+
+  ]
+}

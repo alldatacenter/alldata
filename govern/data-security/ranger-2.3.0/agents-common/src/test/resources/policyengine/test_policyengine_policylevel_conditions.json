@@ -1,0 +1,90 @@
+{
+  "serviceName":"hivedev",
+
+  "serviceDef":{
+    "name":"hive",
+    "id":3,
+    "resources":[
+      {"name":"database","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Database","description":"Hive Database"},
+      {"name":"table","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Table","description":"Hive Table"},
+      {"name":"udf","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive UDF","description":"Hive UDF"},
+      {"name":"column","level":3,"parent":"table","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Column","description":"Hive Column"}
+    ],
+    "accessTypes":[
+      {"name":"select","label":"Select"},
+      {"name":"update","label":"Update"},
+      {"name":"create","label":"Create"},
+      {"name":"drop","label":"Drop"},
+      {"name":"alter","label":"Alter"},
+      {"name":"index","label":"Index"},
+      {"name":"lock","label":"Lock"},
+      {"name":"all","label":"All"}
+    ],
+    "policyConditions":[
+      {"name":"country", "evaluator":"org.apache.ranger.plugin.conditionevaluator.RangerSimpleMatcher", "evaluatorOptions":{"CONTEXT_NAME":"country"}}
+    ]
+  },
+
+  "policies":[
+    {"id":1,"name":"db=default: allow create from US","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"database":{"values":["default"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+      "conditions":[{"type":"country","values":["US"]}],
+      "policyItems":[
+        {"accesses":[{"type":"create"}],"users":[],"groups":["public"],"delegateAdmin":false}
+      ]
+    },
+
+    {"id":2,"name":"db=default: allow create from US,CA","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"database":{"values":["default"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+      "conditions":[{"type":"country","values":["US","CA"]}],
+      "policyItems":[
+        {"accesses":[{"type":"create"}],"users":[],"groups":["public"],"delegateAdmin":false}
+      ]
+    },
+
+    {"id":3,"name":"db=default: allow create from US","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"database":{"values":["default"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+      "policyItems":[
+        {"accesses":[{"type":"create"}],"users":[],"groups":["public"],"delegateAdmin":false}
+      ]
+    }
+  ],
+
+  "tests":[
+    {"name":"ALLOW 'create default.testTable;' country=US",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"user1","userGroups":["users"],"requestData":"create default.testTable; country=US",
+        "context":{"country":"US"}
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":1}
+    },
+
+    {"name":"ALLOW 'create default.testTable;' country=CA",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"user1","userGroups":["users"],"requestData":"create default.testTable; country=CA",
+        "context":{"country":"CA"}
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    },
+
+    {"name":"ALLOW 'create default.testTable;' no condition",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"user1","userGroups":["users"],"requestData":"create default.testTable;"
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    },
+
+    {"name":"Deny 'create default.testTable;' country=CA",
+      "request":{
+        "resource":{"elements":{"database":"default"}},
+        "accessType":"create","user":"user1","userGroups":["users"],"requestData":"create default.testTable; country=CA",
+        "context":{"country":"CA"}
+      },
+      "result":{"isAudited":true,"isAllowed":true,"policyId":-1}
+    }
+  ]
+}
+

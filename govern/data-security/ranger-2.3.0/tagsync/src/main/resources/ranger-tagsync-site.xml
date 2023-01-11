@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<property>
+		<name>ranger.tagsync.enabled</name>
+		<value />
+	</property>
+	<property>
+		<name>ranger.tagsync.logdir</name>
+		<value>log</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.dest.ranger.endpoint</name>
+		<value>http://localhost:6080</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.dest.ranger.ssl.config.filename</name>
+		<value />
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlas</name>
+		<value>false</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest</name>
+		<value>false</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.endpoint</name>
+		<value>http://localhost:21000</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.username</name>
+		<value>admin</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.download.interval.millis</name>
+		<value>900000</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.file</name>
+		<value>false</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.file.filename</name>
+		<value>/etc/ranger/data/tags.json</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.file.check.interval.millis</name>
+		<value>60000</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.atlas.to.ranger.service.mapping</name>
+		<value />
+	</property>
+	<property>
+		<name>ranger.tagsync.atlas.custom.resource.mappers</name>
+		<value />
+	</property>
+	<property>
+		<name>ranger.tagsync.kerberos.principal</name>
+		<value />
+	</property>
+	<property>
+		<name>ranger.tagsync.kerberos.keytab</name>
+		<value />
+	</property>
+	<property>
+		<name>ranger.tagsync.dest.ranger.username</name>
+		<value>rangertagsync</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.keystore.filename</name>
+		<value>/etc/ranger/tagsync/conf/rangertagsync.jceks</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.source.atlasrest.keystore.filename</name>
+		<value>/etc/ranger/tagsync/conf/atlasuser.jceks</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.cookie.enabled</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.dest.ranger.session.cookie.name</name>
+		<value>RANGERADMINSESSIONID</value>
+	</property>
+	<property>
+		<name>ranger.tagsync.metrics.filepath</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.metrics.filename</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.metrics.frequencytimeinmillis</name>
+		<value></value>
+	</property>
+	<property>
+		<name>ranger.tagsync.metrics.enabled</name>
+		<value>false</value>
+	</property>
+    <!-- Ranger-tagsync uses the following two properties to derive name of Ranger Service in a Federated or non-Federated HDFS setup -->
+
+    <!-- service-name for HDFS in 'cl1' cluster, that services nameService 'ns1' in a Federated setup
+    <property>
+        <name>ranger.tagsync.atlas.hdfs.instance.cl1.nameservice.ns1.ranger.service</name>
+        <value>cl1_hdfs_ns1</value>
+    </property>
+    -->
+    <!-- service-name for HDFS in 'cl2' cluster, with no specific nameService (generally, in a non-Federated) setup
+    <property>
+        <name>ranger.ragsync.atlas.hdfs.instance.cl2.ranger.service</name>
+        <value>cl2_hdfs</value>
+    </property>
+    -->
+
+</configuration>

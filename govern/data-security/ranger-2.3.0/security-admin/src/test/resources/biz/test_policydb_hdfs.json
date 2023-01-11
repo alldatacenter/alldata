@@ -1,0 +1,218 @@
+{
+  "servicePolicies":{
+    "serviceName":"hdfsdev",
+    "serviceId":1,
+    "policyVersion":1,
+    "serviceDef":{
+      "name":"hdfs",
+      "id":1,
+      "resources":[
+        {"name":"path","type":"path","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Resource Path","description":"HDFS file or directory path"}
+      ],
+      "accessTypes":[
+        {"name":"read","label":"Read"},
+        {"name":"write","label":"Write"},
+        {"name":"execute","label":"Execute"}
+      ]
+    },
+  
+    "policies":[
+      {"id":1,"name":"entire file system","isEnabled":true,"isAuditEnabled":true,
+       "resources":{"path":{"values":["/*"],"isRecursive":true}},
+       "policyItems":[
+         {"accesses":[],"users":[],"groups":["cluster-admins"],"delegateAdmin":true}
+       ]
+      }
+      ,
+      {"id":11,"name":"/dept1 folder","isEnabled":true,"isAuditEnabled":false,
+       "resources":{"path":{"values":["/dept1/*"],"isRecursive":true}},
+       "policyItems":[
+         {"accesses":[{"type":"read","isAllowed":true},{"type":"write","isAllowed":true},{"type":"execute","isAllowed":true}],"users":[],"groups":["dept1-admins"],"delegateAdmin":true},
+         {"accesses":[{"type":"read","isAllowed":true},{"type":"execute","isAllowed":true}],"users":[],"groups":["dept1-users"],"delegateAdmin":false}
+       ]
+      }
+      ,
+      {"id":12,"name":"/dept1/wiki folder","isEnabled":true,"isAuditEnabled":false,
+       "resources":{"path":{"values":["/dept1/wiki/*"],"isRecursive":true}},
+       "policyItems":[
+         {"accesses":[{"type":"read","isAllowed":true},{"type":"write","isAllowed":true},{"type":"execute","isAllowed":true}],"users":["dept1-webmaster"],"groups":[],"delegateAdmin":false}
+       ]
+      }
+      ,
+      {"id":13,"name":"/dept1/review folder","isEnabled":true,"isAuditEnabled":false,
+       "resources":{"path":{"values":["/dept1/review/*"],"isRecursive":true}},
+       "policyItems":[
+         {"accesses":[{"type":"read","isAllowed":true},{"type":"write","isAllowed":true},{"type":"execute","isAllowed":true}],"users":["dept1-manager"],"groups":[],"delegateAdmin":false}
+       ]
+      }
+      ,
+      {"id":21,"name":"/dept2 folder","isEnabled":true,"isAuditEnabled":false,
+       "resources":{"path":{"values":["/dept2/*"],"isRecursive":true}},
+       "policyItems":[
+         {"accesses":[{"type":"read","isAllowed":true},{"type":"write","isAllowed":true},{"type":"execute","isAllowed":true}],"users":[],"groups":["dept2-admins"],"delegateAdmin":true},
+         {"accesses":[{"type":"read","isAllowed":true},{"type":"execute","isAllowed":true}],"users":[],"groups":["dept2-users"],"delegateAdmin":false}
+       ]
+      }
+      ,
+      {"id":22,"name":"/dept2/wiki folder","isEnabled":true,"isAuditEnabled":false,
+       "resources":{"path":{"values":["/dept2/wiki/*"],"isRecursive":true}},
+       "policyItems":[
+         {"accesses":[{"type":"read","isAllowed":true},{"type":"write","isAllowed":true},{"type":"execute","isAllowed":true}],"users":["dept2-webmaster"],"groups":[],"delegateAdmin":false}
+       ]
+      }
+      ,
+      {"id":23,"name":"/dept2/review folder","isEnabled":true,"isAuditEnabled":false,
+       "resources":{"path":{"values":["/dept2/review/*"],"isRecursive":true}},
+       "policyItems":[
+         {"accesses":[{"type":"read","isAllowed":true},{"type":"write","isAllowed":true},{"type":"execute","isAllowed":true}],"users":["dept2-manager"],"groups":[],"delegateAdmin":false}
+       ]
+      }
+    ]
+  },
+  "tests":[
+    {"name":"ALLOW '_admin access on any path' for g=cluster-admins",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"testuser","userGroups":["cluster-admins","users"],"accessType":"_admin",
+     "result":true
+    }
+    ,
+    {"name":"DENY 'read access on any path' for g=cluster-admins",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"testuser","userGroups":["cluster-admins","users"],"accessType":"read",
+     "result":false
+    }
+    ,
+    {"name":"DENY 'write access on any path' for g=cluster-admins",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"testuser","userGroups":["cluster-admins","users"],"accessType":"write",
+     "result":false
+    }
+    ,
+    {"name":"DENY 'execute access on any path' for g=cluster-admins",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"testuser","userGroups":["cluster-admins","users"],"accessType":"execute",
+     "result":false
+    }
+    ,
+    {"name":"DENY '_admin access on any path' for g=dept1-admins",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"testuser","userGroups":["dept1-admins","users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+    {"name":"DENY '_admin access on any path' for u=dept1-webmaster",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"dept1-webmaster","userGroups":["users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+    {"name":"DENY '_admin access on any path' for u=dept1-manager",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"dept1-manager","userGroups":["users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+    {"name":"DENY '_admin access on any path' for g=dept2-admins",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"testuser","userGroups":["dept2-admins","users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+    {"name":"DENY '_admin access on any path' for u=dept2-webmaster",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"dept2-webmaster","userGroups":["users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+    {"name":"DENY '_admin access on any path' for u=dept2-manager",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"dept2-manager","userGroups":["users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+    {"name":"DENY '_admin access on any path' for g=public",
+     "resources":{"path":{"values":["/dept1/*","/dept2/*","/dept3/*","/dept4/*"]}},"user":"testuser","userGroups":["public","users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+
+    {"name":"ALLOW '_admin access on path under /dept1' for g=dept1-admins",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept1-admins","users"],"accessType":"_admin",
+     "result":true
+    }
+    ,
+    {"name":"ALLOW 'read access on path under /dept1' for g=dept1-admins",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept1-admins","users"],"accessType":"read",
+     "result":true
+    }
+    ,
+    {"name":"ALLOW 'write access on path under /dept1' for g=dept1-admins",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept1-admins","users"],"accessType":"write",
+     "result":true
+    }
+    ,
+    {"name":"ALLOW 'execute access on path under /dept1' for g=dept1-admins",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept1-admins","users"],"accessType":"execute",
+     "result":true
+    }
+    ,
+    {"name":"ALLOW 'read access on path under /dept1' for g=dept1-users",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept1-users","users"],"accessType":"read",
+     "result":true
+    }
+    ,
+    {"name":"DENY 'write access on path under /dept1' for g=dept1-users",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept1-users","users"],"accessType":"write",
+     "result":false
+    }
+    ,
+    {"name":"ALLOW 'execute access on path under /dept1' for g=dept1-users",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept1-users","users"],"accessType":"execute",
+     "result":true
+    }
+    ,
+    {"name":"DENY '_admin access on path under /dept1' for g=dept2-admins",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept2-admins","users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+    {"name":"DENY '_admin access on path under /dept1' for g=dept2-users",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept2-users","users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+    {"name":"DENY 'read access on path under /dept1' for g=dept2-users",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept2-users","users"],"accessType":"read",
+     "result":false
+    }
+    ,
+    {"name":"DENY 'write access on path under /dept1' for g=dept2-users",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept2-users","users"],"accessType":"write",
+     "result":false
+    }
+    ,
+    {"name":"DENY 'execute access on path under /dept1' for g=dept2-users",
+     "resources":{"path":{"values":["/dept1/wiki/*, /dept1/calender"]}},"user":"testuser","userGroups":["dept2-users","users"],"accessType":"execute",
+     "result":false
+    }
+
+    ,
+    {"name":"ALLOW '_admin access on path under /dept2' for g=dept2-admins",
+     "resources":{"path":{"values":["/dept2/wiki/*, /dept2/calender"]}},"user":"testuser","userGroups":["dept2-admins","users"],"accessType":"_admin",
+     "result":true
+    }
+    ,
+    {"name":"DENY '_admin access on path under /dept2' for g=dept1-admins",
+     "resources":{"path":{"values":["/dept2/wiki/*, /dept2/calender"]}},"user":"testuser","userGroups":["dept1-admins","users"],"accessType":"_admin",
+     "result":false
+    }
+    ,
+
+    {"name":"7 '_admin allowed policies' for g=cluster-admins",
+     "user":"testuser","userGroups":["cluster-admins","users"],"accessType":"_admin","allowedPolicies":[1, 11, 12, 13, 21, 22, 23]
+    }
+    ,
+    {"name":"3 '_admin allowed policies' for g=dept1-admins",
+     "user":"testuser","userGroups":["dept1-admins","users"],"accessType":"_admin","allowedPolicies":[11, 12, 13]
+    }
+    ,
+    {"name":"3 '_admin allowed policies' for g=dept2-admins",
+     "user":"testuser","userGroups":["dept2-admins","users"],"accessType":"_admin","allowedPolicies":[21, 22, 23]
+    }
+    ,
+    {"name":"0 '_admin allowed policies' for g=public",
+     "user":"testuser","userGroups":["public","users"],"accessType":"_admin","allowedPolicies":[]
+    }
+  ]
+}
+

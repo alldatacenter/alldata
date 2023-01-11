@@ -1,0 +1,12 @@
+data:
+  driverProperties: |
+    driverSku: Edgenesis Mock Device
+    driverImage: edgenesis/mockdevice:v0.0.1
+  instructions: |
+    instructionSettings:
+      defaultTimeoutSeconds: 1
+    instructions:
+      cmd:
+  telemetries: |
+    telemetrySettings:
+      telemetryUpdateIntervalInMilliseconds: 1000

@@ -1,0 +1,122 @@
+{
+    "op":"add_or_update",
+    "tagModel":"resource_private",
+    "serviceName": "cl1_hive",
+    "tagDefinitions": {
+      "1": {
+        "name": "PII",
+        "attributeDefs": [ { "name": "expiry", "type": "datetime" } ],
+        "id": 1,
+        "guid": "tagdefinition-pii-guid"
+      },
+      "2": {
+        "name": "RESTRICTED",
+        "attributeDefs": [ { "name": "activation_date", "type": "datetime" } ],
+        "id": 2,
+        "guid": "tagdefinition-restricted-guid"
+      }
+      ,
+      "3": {
+        "name": "EXPIRES_ON",
+        "attributeDefs": [ { "name": "expiry_date", "type": "datetime" } ],
+        "id": 3,
+        "guid": "tagdefinition-expires_on-guid"
+      }
+    },
+    "tags": {
+      "1": {
+        "type": "PII",
+        "attributes": { "expiry": "2026/06/15" },
+        "id": 1,
+        "guid": "tag-pii-1-guid"
+      },
+      "2": {
+        "type": "RESTRICTED",
+        "attributes": { "activation_date": "2015/08/10" },
+        "id": 2,
+        "guid": "tag-restricted-2-guid"
+      }
+      ,
+      "3": {
+        "type": "EXPIRES_ON",
+        "attributes": { "expiry_date": "2025/08/10" },
+        "id": 3,
+        "guid": "tag-expires_on-3-guid"
+      }
+      ,
+      "4": {
+        "type": "EXPIRES_ON",
+        "attributes": { "expiry_date": "2025/08/10" },
+        "id": 4,
+        "guid": "tag-expires_on-4-guid"
+      }
+      ,
+      "5": {
+        "type": "EXPIRES_ON",
+        "attributes": { "expiry_date": "2050/08/10" },
+        "id": 5,
+        "guid": "tag-expires_on-5-guid"
+      }
+    },
+    "serviceResources": [
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "finance" ] },
+          "table": { "values": [ "tax_2016" ] },
+          "column": { "values": [ "ssn" ] }
+        },
+        "id": 1,
+        "guid": "finance.tax_2016.ssn-guid"
+     },
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "employee" ] },
+          "table": { "values": [ "personal" ] },
+          "column": { "values": [ "id" ] }
+        },
+        "id": 2,
+        "guid": "employee.personal.id-guid"
+     },
+     {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "default" ] },
+          "table": { "values": [ "table1" ] },
+          "column": { "values": [ "name" ] }
+        },
+        "id": 3,
+        "guid": "default.table1.name-guid"
+     }
+      ,
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "finance" ] },
+          "table": { "values": [ "tax_2016" ] },
+          "column": { "values": [ "name" ] }
+        },
+        "id": 4,
+        "guid": "finance.tax_2016.name-guid"
+      }
+      ,
+      {
+        "serviceName": "cl1_hive",
+        "resourceElements": {
+          "database": { "values": [ "default" ] },
+          "table": { "values": [ "table2" ] }
+        },
+        "id": 5,
+        "guid": "default.table2-guid"
+      }
+    ],
+    "resourceToTagIds": {
+      "1": [ 1 ],
+      "2": [ 2 ],
+      "3": [1],
+      "4": [2],
+      "5": [3, 4, 5]
+    }
+}
+

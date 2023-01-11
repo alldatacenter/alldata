@@ -1,0 +1,122 @@
+{
+	"id":12,
+	"name": "kylin",
+	"displayName": "kylin",
+	"implClass": "org.apache.ranger.services.kylin.RangerServiceKylin",
+	"label": "KYLIN",
+	"description": "KYLIN",
+	"guid": "88ab8471-3e27-40c2-8bd8-458b5b1a9b25",
+	"resources":
+	[
+		{
+			"itemId": 1,
+			"name": "project",
+			"type": "string",
+			"level": 10,
+			"parent": "",
+			"mandatory": true,
+			"lookupSupported": true,
+			"recursiveSupported": false,
+			"excludesSupported": false,
+			"matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+			"matcherOptions": { "wildCard":true, "ignoreCase":true},
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Kylin Project",
+			"description": "Kylin Project"
+		}
+	],
+
+	"accessTypes":
+	[
+		{
+			"itemId": 1,
+			"name": "QUERY",
+			"label": "QUERY"
+		},
+
+		{
+			"itemId": 2,
+			"name": "OPERATION",
+			"label": "OPERATION"
+		},
+
+		{
+			"itemId": 3,
+			"name": "MANAGEMENT",
+			"label": "MANAGEMENT"
+		},
+
+		{
+			"itemId": 4,
+			"name": "ADMIN",
+			"label": "ADMIN"
+		}
+	],
+
+	"configs":
+	[
+		{
+			"itemId": 1,
+			"name": "username",
+			"type": "string",
+			"mandatory": true,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Username"
+		},
+
+		{
+			"itemId": 2,
+			"name": "password",
+			"type": "password",
+			"mandatory": true,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Password"
+		},
+
+		{
+			"itemId": 3,
+			"name": "kylin.url",
+			"type": "string",
+			"mandatory": true,
+			"defaultValue": "",
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"{\"TextFieldWithIcon\":true, \"info\": \"1.For one url, eg.<br>'http://&lt;ipaddr&gt;:7070'<br>2.For multiple urls (use , or ; delimiter), eg.<br>'http://&lt;ipaddr1&gt;:7070,http://&lt;ipaddr2&gt;:7070'\"}",
+			"label": "Kylin URL"
+		},
+
+		{
+			"itemId": 4,
+			"name": "commonNameForCertificate",
+			"type": "string",
+			"mandatory": false,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Common Name for Certificate"
+		}
+
+	],
+	"options": { "enableDenyAndExceptionsInPolicies": "false" },
+
+	"enums":
+	[
+
+	],
+
+	"contextEnrichers":
+	[
+
+	],
+
+	"policyConditions":
+	[
+
+	]
+}

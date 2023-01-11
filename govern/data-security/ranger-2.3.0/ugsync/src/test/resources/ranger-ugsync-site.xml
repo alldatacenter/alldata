@@ -1,0 +1,180 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!--Mon Aug 17 17:33:37 2015-->
+    <configuration>
+    <property>
+      <name>ranger.usersync.enabled</name>
+      <value>true</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.group.memberattributename</name>
+      <value>member</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.group.nameattribute</name>
+      <value>cn</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.group.objectclass</name>
+      <value>groupOfNames</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.group.searchbase</name>
+      <value>OU=Groups,DC=ranger,DC=qe,DC=hortonworks,DC=com</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.group.searchenabled</name>
+      <value>true</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.group.searchfilter</name>
+      <value>cn=*</value>
+      <!--<value>member={0}</value>-->
+    </property>
+    
+    <property>
+      <name>ranger.usersync.group.searchscope</name>
+      <value>sub</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.group.search.first.enabled</name>
+      <value>false</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.user.searchenabled</name>
+      <value>true</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.keystore.file</name>
+      <value>/usr/hdp/current/ranger-usersync/conf/unixauthservice.jks</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.keystore.password</name>
+      <value>UnIx529p</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.bindalias</name>
+      <value>testldapalias</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.binddn</name>
+      <value>CN=User1000,CN=Users,DC=ranger,dc=qe,dc=hortonworks,dc=com</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.bindkeystore</name>
+      <value></value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.groupname.caseconversion</name>
+      <value>none</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.ldapbindpassword</name>
+      <value>password</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.searchBase</name>
+      <value>DC=ranger,DC=qe,DC=hortonworks,DC=com</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.url</name>
+      <value>ldap://127.0.0.1:${ldap.port}</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.user.groupnameattribute</name>
+      <value>memberOf</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.user.nameattribute</name>
+      <value>cn</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.user.objectclass</name>
+      <value>organizationalPerson</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.user.searchbase</name>
+      <value>cn=users,DC=ranger,DC=qe,DC=hortonworks,DC=com</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.user.searchfilter</name>
+      <value>cn=*</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.user.searchscope</name>
+      <value>sub</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.username.caseconversion</name>
+      <value>none</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.pagedresultsenabled</name>
+      <value>true</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.pagedresultssize</name>
+      <value>50</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.sink.impl.class</name>
+      <value>org.apache.ranger.unixusersync.process.PolicyMgrUserGroupBuilder</value>
+    </property>
+
+    <property>
+      <name>ranger.usersync.source.impl.class</name>
+      <value>LDAP</value>
+    </property>
+    
+    <property>
+      <name>ranger.usersync.ldap.deltasync</name>
+      <value>false</value>
+    </property>
+
+    <property>
+      <name>ranger.usersync.group.hierarchylevels</name>
+      <value>2</value>
+    </property>
+  </configuration>

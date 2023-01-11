@@ -1,0 +1,107 @@
+{
+  "id":101,
+  "name": "wasb",
+  "displayName": "wasb",
+  "implClass": "",
+  "label": "WASB File System",
+  "description": "Ranger plugin for WASB File System",
+  "guid":"",
+  "resources": [
+    {
+      "itemId":1,
+      "name": "storageaccount",
+      "type": "string",
+      "parent": "",
+      "level":10,
+      "mandatory":  true,
+      "lookupSupported":  false,
+      "excludesSupported":  false,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions": {"wildCard":true, "ignoreCase":false},
+      "validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Storage Account",
+			"description": "Storage Account for the Path"
+    },
+    {
+      "itemId":2,
+      "name": "container",
+      "type": "string",
+      "parent": "storageaccount",
+      "level":20,
+      "mandatory":  true,
+      "lookupSupported":  false,
+      "excludesSupported":  false,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions": {"wildCard":true, "ignoreCase":false},
+      "validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Storage Account Container",
+			"description": "Storage Account Container for the Path"
+    },
+    {
+     "itemId":3,
+      "name": "relativepath",
+      "type": "path",
+      "parent": "container",
+      "level":30,
+      "mandatory":  true,
+      "lookupSupported":  true,
+      "recursiveSupported": true,
+      "excludesSupported":  false,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher",
+      "matcherOptions": {"wildCard":true, "ignoreCase":false},
+      "validationRegEx":"^[/*]$|^\/.*?[^\/]$",
+			"validationMessage": "Relative Path must not end with a slash",
+			"uiHint":"",
+			"label": "Relative Path",
+			"description": "Relative Path inside Storage Account Container"
+    }
+  ],
+
+  "accessTypes":
+	[
+		{
+			"itemId": 1,
+			"name": "read",
+			"label": "Read"
+		},
+
+		{
+			"itemId": 2,
+			"name": "write",
+			"label": "Write"
+		}
+	],
+
+  "configs":
+  [
+    {
+      "itemId": 1,
+      "name": "username",
+      "type": "string",
+      "subType": "",
+      "mandatory": false,
+      "validationRegEx":"",
+      "validationMessage": "",
+      "uiHint":"",
+      "label": "Username"
+    },
+    {
+      "itemId":2,
+      "name": "commonNameForCertificate",
+      "type": "string",
+      "subType": "",
+      "mandatory": false,
+      "validationRegEx":"",
+      "validationMessage": "",
+      "uiHint":"",
+      "label": "Common Name for Certificate"
+    }
+  ],
+  "options": { "enableDenyAndExceptionsInPolicies": "true" },
+  "contextEnrichers": [],
+  "policyConditions": []
+}
