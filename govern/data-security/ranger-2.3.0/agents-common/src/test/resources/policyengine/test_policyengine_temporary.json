@@ -1,0 +1,347 @@
+{
+  "serviceName":"hdfsdev",
+  "serviceDef":{
+    "name":"hdfs",
+    "id":1,
+    "resources":[
+      {"name":"path","type":"path","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Resource Path","description":"HDFS file or directory path"}
+    ],
+    "options": {
+      "enableDenyAndExceptionsInPolicies":"true"
+    },
+    "accessTypes":[
+      {"name":"read","label":"Read"},
+      {"name":"write","label":"Write"},
+      {"name":"execute","label":"Execute"}
+    ]
+  },
+  "policies":[
+    {
+      "id": 99,
+      "name": "/resource: allow: groups=public",
+      "isEnabled": true,
+      "isAuditEnabled": true,
+      "resources": {
+        "path": { "values": [ "/resource" ], "isRecursive": true }
+      },
+      "policyItems": [
+        {
+          "accesses":[
+            {"type":"read"},
+            {"type": "execute" },
+            {"type":"write"}
+          ],
+          "groups" : ["public"]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "/resource: allow: users=super; deny: user=user",
+      "isEnabled": true,
+      "isAuditEnabled": true,
+      "resources": {
+        "path": { "values": [ "/resource" ], "isRecursive": true }
+      },
+      "policyPriority":1,
+      "validitySchedules": [
+        {
+          "startTime": "2018/01/12 14:32:00",
+          "endTime": "2020/02/13 12:16:00",
+          "recurrences": [
+            {
+              "schedule": {
+                "minute": "0,10,20,30,40,50",
+                "hour": "*",
+                "dayOfMonth": "*",
+                "dayOfWeek": "5,7",
+                "month": "*",
+                "year": "2018"
+              },
+              "interval": {
+                "minutes": 4
+              }
+            }
+          ]
+        }
+      ],
+      "policyItems": [
+        {
+          "accesses":[
+            {"type":"read"},
+            {"type":"write"}
+          ],
+          "users":["super"]
+        }
+      ],
+      "allowExceptions":[ ],
+      "denyPolicyItems": [
+        {
+          "accesses": [
+            { "type": "read" },
+            { "type": "execute" },
+            { "type": "write" }
+          ],
+          "users": [ "user"]
+        }
+      ],
+      "denyExceptions":[ ]
+    },
+    {
+      "id": 2,
+      "name": "/unaudited-resource: allow: users=super deny: user=user",
+      "isEnabled": true,
+      "isAuditEnabled": false,
+      "resources": {
+        "path": { "values": [ "/unaudited-resource" ], "isRecursive": true }
+      },
+      "validitySchedules": [],
+      "policyItems": [
+        {
+          "accesses":[
+            {"type":"read" },
+            {"type":"write" }
+          ],
+          "users":["super"]
+        }
+      ],
+      "allowExceptions":[ ],
+      "denyPolicyItems": [
+        {
+          "accesses": [
+            { "type": "read" },
+            { "type": "execute" },
+            { "type": "write" }
+          ],
+          "users": [ "user" ]
+        }
+      ],
+      "denyExceptions":[ ]
+    }
+  ],
+
+  "tagPolicyInfo": {
+    "serviceName":"tagdev",
+    "serviceDef": {
+      "name": "tag",
+      "id": 100,
+      "resources": [
+        { "name": "tag", "type": "string", "level": 1, "mandatory": true, "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher", "matcherOptions": { "wildCard": false, "ignoreCase": false }, "label": "TAG", "description": "TAG" }
+      ],
+      "accessTypes": [
+        { "name": "hdfs:read", "label": "hdfs:Read"  },
+        { "name": "hdfs:write", "label": "hdfs:Write" },
+        { "name": "hdfs:execute", "label": "hdfs:Execute" }
+      ],
+      "contextEnrichers": [ ],
+      "policyConditions": [ ]
+    },
+    "tagPolicies":[
+      {
+        "id":101,
+        "name":"PII",
+        "isEnabled":true,
+        "isAuditEnabled":true,
+        "resources":{"tag":{"values":["PII"],"isRecursive":false}},
+        "policyItems":[
+          {
+            "accesses":[
+              {"type":"hdfs:read", "isAllowed":true},
+              {"type":"hdfs:write", "isAllowed":true}
+            ],
+            "users":["super"]
+          }
+        ],
+        "allowExceptions":[ ],
+        "denyPolicyItems":[
+          {
+            "accesses":[
+              {"type":"hdfs:read" },
+              {"type":"hdfs:write" }
+            ],
+            "users":["user"]
+          }
+        ],
+        "denyExceptions":[ ],
+        "policyPriority":1,
+        "validitySchedules": [
+          {
+            "startTime": "2018/01/12 14:32:00",
+            "endTime": "2020/02/13 12:16:00",
+            "recurrences": [
+              {
+                "schedule": {
+                  "minute": "0,10,20,30,40,50",
+                  "hour": "*",
+                  "dayOfMonth": "*",
+                  "dayOfWeek": "5,7",
+                  "month": "*",
+                  "year": "2018"
+                },
+                "interval": {
+                  "minutes": 5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id":102,
+        "name":"Unaudited-TAG",
+        "isEnabled":true,
+        "isAuditEnabled":false,
+        "resources":{"tag":{"values":["Unaudited-TAG"],"isRecursive":false}},
+        "validitySchedules": [],
+        "policyItems":[
+          {
+            "accesses":[
+              {"type":"hdfs:read" },
+              {"type":"hdfs:write" }
+            ],
+            "users":["super"]
+          }
+        ],
+        "allowExceptions":[ ],
+        "denyPolicyItems":[
+          {
+            "accesses":[
+              {"type":"hdfs:read" },
+              {"type":"hdfs:write" }
+            ],
+            "users":["user"]
+          }
+        ],
+        "denyExceptions":[ ]
+      }
+    ]
+  },
+  "tests":[
+    {
+      "name": "ALLOW 'read /resource' for u=user no tag temporarily",
+      "request": {
+        "resource": {
+          "elements": {
+            "path": "/resource"
+          }
+        },
+        "accessType": "read",
+        "user": "user",
+        "userGroups": [],
+        "requestData": "read /resource for u=user no tag temporarily",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\",\"options\":{\"TAG_VALIDITY_PERIODS\":\"[{\\\"startTime\\\":\\\"2018/01/12 14:32:00\\\",\\\"endTime\\\":\\\"2020/02/13 12:16:00\\\",\\\"recurrences\\\":[{\\\"schedule\\\":{\\\"minute\\\":\\\"0,10,20,30,40,50\\\",\\\"hour\\\":\\\"*\\\",\\\"dayOfMonth\\\":\\\"*\\\",\\\"dayOfWeek\\\":\\\"5,7\\\",\\\"month\\\":\\\"*\\\",\\\"year\\\":\\\"2018\\\"},\\\"interval\\\":{\\\"days\\\":0,\\\"hours\\\":0,\\\"minutes\\\":4}}]}]\"}}]"
+        },
+        "accessTime": "20180127-10:06:00.000-0800"
+      },
+      "result": {"isAudited": true, "isAllowed": true, "policyId": 99}
+    },
+    {
+      "name": "DENY 'read /resource' for u=user tag temporarily",
+      "request": {
+        "resource": {
+          "elements": {
+            "path": "/resource"
+          }
+        },
+        "accessType": "read",
+        "user": "user",
+        "userGroups": [],
+        "requestData": "read /resource for u=user tag temporarily",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\",\"options\":{\"TAG_VALIDITY_PERIODS\":\"[{\\\"startTime\\\":\\\"2018/01/12 14:32:00\\\",\\\"endTime\\\":\\\"2020/02/13 12:16:00\\\",\\\"recurrences\\\":[{\\\"schedule\\\":{\\\"minute\\\":\\\"0,10,20,30,40,50\\\",\\\"hour\\\":\\\"*\\\",\\\"dayOfMonth\\\":\\\"*\\\",\\\"dayOfWeek\\\":\\\"5,7\\\",\\\"month\\\":\\\"*\\\",\\\"year\\\":\\\"2018\\\"},\\\"interval\\\":{\\\"days\\\":0,\\\"hours\\\":0,\\\"minutes\\\":7}}]}]\"}}]"
+        },
+        "accessTime": "20180127-10:05:00.000-0800"
+      },
+      "result": {"isAudited": true, "isAllowed": false, "policyId": 101}
+    },
+    {
+      "name": "ALLOW 'read /resource' for u=user temporarily",
+      "request": {
+        "resource": {
+          "elements": {
+            "path": "/resource"
+          }
+        },
+        "accessType": "read",
+        "user": "user",
+        "userGroups": [],
+        "requestData": "read /resource temporarily",
+        "accessTime": "20180127-10:06:00.000-0800"
+      },
+      "result": {"isAudited": true, "isAllowed": true, "policyId": 99}
+    },
+    {
+      "name": "DENY 'read /resource' for u=user temporarily",
+      "request": {
+        "resource": {
+          "elements": {
+            "path": "/resource"
+          }
+        },
+        "accessType": "read",
+        "user": "user",
+        "userGroups": [],
+        "requestData": "read /resource temporarily",
+        "accessTime": "20180127-10:03:00.000-0800"
+      },
+      "result": {"isAudited": true, "isAllowed": false, "policyId": 1}
+    },
+    {
+      "name": "DENY 'read /resource' for u=user",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "user",
+        "userGroups": [ ],
+        "requestData": "read /resource for u=user",
+        "accessTime": "20180127-10:03:00.000-0800",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": false, "policyId": 101 }
+    },
+    {
+      "name": "ALLOW 'read /resource' for u=super",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "super",
+        "userGroups": [ ],
+        "requestData": "read /resource for u=super",
+        "accessTime": "20180127-10:03:00.000-0800",
+        "context": {
+          "TAGS": "[{\"type\":\"PII\"}]"
+        }
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 101 }
+    }
+    ,
+    {
+      "name": "ALLOW 'read /resource' for u=super",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "super",
+        "userGroups": [ ],
+        "requestData": "read /resource for u=super",
+        "accessTime": "20180127-10:03:00.000-0800"
+
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 1 }
+    },
+    {
+      "name": "ALLOW 'read /resource' for u=any",
+      "request": {
+        "resource": { "elements": { "path": "/resource" } },
+        "accessType": "read",
+        "user": "any",
+        "userGroups": [ ],
+        "requestData": "read /resource for u=any"
+      },
+      "result": { "isAudited": true, "isAllowed": true, "policyId": 99 }
+    }
+
+    ]
+}

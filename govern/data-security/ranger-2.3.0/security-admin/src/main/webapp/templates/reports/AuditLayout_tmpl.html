@@ -1,0 +1,78 @@
+{{!-- 
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--}}
+{{#if setOldUi}}
+    <ul class="nav nav-tabs">
+      <li data-js="bigData" class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#bigData">{{tt 'h.access'}} </a>
+        </li>
+        <li class="nav-item" data-js="admin">
+            <a class="nav-link" data-toggle="tab" href="#admin">{{tt 'h.admin'}} </a>
+        </li>
+        <li class="nav-item" data-js="loginSession">
+            <a class="nav-link" data-toggle="tab" href="#loginSession">{{tt 'h.loginSession'}} </a>
+        </li>
+        <li class="nav-item" data-js="agent">
+            <a class="nav-link" data-toggle="tab" href="#agent">{{tt 'h.agents'}}</a>
+        </li>
+        <li class="nav-item" data-js="pluginStatus">
+            <a class="nav-link" data-toggle="tab" href="#pluginStatus">{{tt 'h.pluginStatus'}}</a>
+        </li>
+        <li class="nav-item" data-js="userSync">
+            <a class="nav-link" data-toggle="tab" href="#userSync">{{tt 'h.userSync'}}</a>
+        </li>
+    </ul>
+{{/if}}
+<div class="wrap non-collapsible " data-id="hide-popup">
+    <div class="wrap card">
+        <div class="row">
+            <div class="col-md-11">
+                <div class="visual_search"></div>
+            </div>
+            <div>
+                <i class="fa-fw fa fa-info-circle searchInfo" title="Search Filter Hints" data-id="searchInfo"> </i>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div data-id="excludeServiceUser">
+                <span>Exclude Service Users:</span>
+                <input type="checkbox" data-id="serviceUsersExclude" style="vertical-align: middle;">
+            </div>
+        </div>
+        <div class="col-md-8 m-b-sm">
+            <div class="text-right">
+                <span class="m-l-xsm" data-id="lastUpdateTime">Last Updated Time: <label data-id="lastUpdateTimeLabel" class="badge badge-info">{{currentDate}}</label> </span>
+                <span class="m-l-xsm"> &nbsp;|&nbsp; </span>
+                <span class="m-l-xsm">Entries:
+                    <label class="badge badge-info" data-id="showPageDetail"></label>
+                </span>
+                <button class="link-tag m-l-xsm" data-id="refresh" style="margin-top: -3px;" title="Refresh">
+                    <i class="fa-fw fa fa-refresh"></i>
+                </button>
+                <div class="inline-block m-l-xsm" data-id="colManager">
+                    <div class="columnmanager-visibilitycontrol"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row audit-logs">
+          <div class="col-md-12">
+            <div data-id="r_tableLists" class=""></div>
+          </div>
+      </div>
+</div>

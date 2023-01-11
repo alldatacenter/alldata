@@ -1,0 +1,142 @@
+{
+  "testCases": [
+    {
+      "name": "Test-ACL-Provider",
+      "roles" : { "serviceName":  "hdfsdev", "roleVersion": 1,
+        "rangerRoles": [ { "name":  "admin", "users":  [{"name":"admin-1","isAdmin": false}, {"name":"admin-2", "isAdmin": false}], "groups" : [{"name":"admin-group-1", "isAdmin":false}, {"name":"admin-group-2", "isAdmin": false}], "roles": [{"name": "sub-admin-1","isAdmin":false}, {"name":"sub-admin-2", "isAdmin": false}] },
+          { "name":  "sub-admin-1", "users":  [{"name":"sub-admin-user-1", "isAdmin": false}], "groups" : [], "roles": [] },
+          { "name":  "sub-admin-2", "users":  [], "groups" : [{"name":"sub-admin-group-2", "isAdmin":false}], "roles": [] }
+        ]
+      },
+      "servicePolicies": {
+        "serviceName": "hdfsdev",
+        "serviceDef": {
+          "name": "hdfs", "id": 1,
+          "resources": [
+            {"name": "path", "type": "path", "level": 1, "mandatory": true, "lookupSupported": true,
+              "matcher": "org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher",
+              "matcherOptions": {"wildCard": true, "ignoreCase": true},
+              "label": "Resource Path", "description": "HDFS file or directory path"
+            }
+          ],
+          "accessTypes": [
+            {"name": "read", "label": "Read"},
+            {"name": "write", "label": "Write"},
+            {"name": "execute", "label": "Execute"}
+          ],
+          "contextEnrichers": [
+            {
+              "itemId": 1,
+              "name": "GeolocationEnricher",
+              "enricher": "org.apache.ranger.plugin.contextenricher.RangerFileBasedGeolocationProvider",
+              "enricherOptions": {"FilePath": "/etc/ranger/geo/geo.txt", "ForceRead": "false", "IPInDotFormat": "true", "geolocation.meta.prefix": "TEST_"}
+            }
+          ],
+          "policyConditions": [
+            {
+              "itemId": 1,
+              "name": "ScriptConditionEvaluator",
+              "evaluator": "org.apache.ranger.plugin.conditionevaluator.RangerScriptConditionEvaluator",
+              "evaluatorOptions": {"engineName": "JavaScript"},
+              "label": "Script",
+              "description": "Script to execute"
+            }
+          ]
+        },
+        "serviceConfig": {"ranger.plugin.hdfs.chained.service" :  "mapped_hive", "ranger.plugin.hdfs.chained.service.mapped_hive.impl": "org.apache.ranger.chainedplugin.hdfs.hive.RangerHdfsHiveChainedPlugin"},
+        "policies": [
+          {
+            "id": 10,
+            "name": "allow-read-to-user1,user3 /test/restricted",
+            "isEnabled": true, "isAuditEnabled": true, "isDenyAllElse": true,
+            "resources": {"path": {"values": ["/test/restricted"], "isRecursive": true}},
+            "policyItems": [
+              { "accesses": [{"type": "read", "isAllowed": true}], "users": ["user1", "user2", "user3"], "groups": [], "roles":["sub-admin-1"],"delegateAdmin": false }
+            ],
+            "allowExceptions": [
+              { "accesses": [{"type": "read", "isAllowed": true}], "users": ["user2"], "groups": [], "delegateAdmin": false }
+            ]
+          },
+          {
+            "id": 20,
+            "name": "allow-read-to-user2 /test/restricted/a",
+            "isEnabled": true, "isAuditEnabled": true,
+            "resources": {"path": {"values": ["/test/restricted/a"],"isRecursive": true}},
+            "policyItems": [
+              { "accesses": [ {"type": "read", "isAllowed": true}, {"type": "write", "isAllowed": true} ], "users": ["user2", "non-user1", "non-user2", "non-user3"], "groups": ["public"], "delegateAdmin": false }
+            ],
+            "denyPolicyItems": [
+              { "accesses": [ {"type": "read", "isAllowed": true} ], "users": ["non-user4"], "groups": [], "delegateAdmin": false }
+            ]
+          },
+          {
+            "id": 30,
+            "name": "deny-read-to-user3 /test/restricted/b",
+            "isEnabled": true, "isAuditEnabled": true,
+            "resources": {"path": {"values": ["/test/restricted/b"], "isRecursive": true} },
+            "policyItems": [
+              { "accesses": [ {"type": "read", "isAllowed": true} ], "users": ["non-user5", "non-user6", "non-user7", "non-user8"], "groups": ["public"], "delegateAdmin": false, "conditions": [ { "type": "ScriptConditionEvaluator", "values": [ "var country_code = ctx.getRequestContextAttribute('LOCATION_TEST_COUNTRY_CODE'); ctx.result = !!country_code;" ] } ] }
+            ],
+            "denyPolicyItems": [
+              { "accesses": [ { "type": "read", "isAllowed": true } ], "users": [ "user3", "non-user9" ], "groups": [], "delegateAdmin": false }
+            ]
+          },
+          {
+            "id": 1,
+            "name": "audit-all-access under /finance/restricted",
+            "isEnabled": true, "isAuditEnabled": true,
+            "resources": { "path": { "values": [ "/finance/restricted" ], "isRecursive": true } },
+            "policyItems": [
+              { "accesses": [], "users": [], "groups": [ "public" ], "delegateAdmin": false }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "allow-read-to-all under /public/*",
+            "isEnabled": true, "isAuditEnabled": false,
+            "resources": { "path": { "values": [ "/public/*" ], "isRecursive": true } },
+            "policyItems": [
+              { "accesses": [ { "type": "read", "isAllowed": true }, { "type": "execute", "isAllowed": true } ], "users": [], "groups": [ "public" ], "delegateAdmin": false }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "allow-read-to-finance under /finance/restricted",
+            "isEnabled": true, "isAuditEnabled": true,
+            "resources": { "path": { "values": [ "/finance/restricted" ], "isRecursive": true } },
+            "policyItems": [
+              { "accesses": [ { "type": "read", "isAllowed": true } ], "users": [], "groups": [ "finance" ], "delegateAdmin": false, "conditions": [ { "type": "ScriptConditionEvaluator", "values": [ "var country_code = ctx.getRequestContextAttribute('LOCATION_TEST_COUNTRY_CODE'); ctx.result = !!country_code;" ] } ] }
+            ]
+          },
+          {
+            "id": 4,
+            "name": "No access for /forbidden",
+            "isEnabled": true, "isAuditEnabled": true,
+            "isDenyAllElse": true,
+            "resources": { "path": { "values": [ "/forbidden" ], "isRecursive": true } },
+            "policyItems": [
+              { "accesses": [ { "type": "read", "isAllowed": true }, { "type": "read", "isAllowed": true }, { "type": "write", "isAllowed": true },{ "type": "execute", "isAllowed": true } ], "users": [], "groups": [ "public" ], "delegateAdmin": false }
+            ]
+          }
+        ]
+      }
+    ,
+      "tests": [
+        {
+          "name": "/test/restricted access",
+          "resource": {"elements":{"path":"/test/restricted" }},
+          "userPermissions": {"user1": {"read": {"result":-1, "isFinal" : true}, "write": {"result":-1,"isFinal":true}, "execute":{"result":-1, "isFinal": true}}, "user2": {"read": {"result":-1, "isFinal" : true}, "write": {"result":-1,"isFinal":true}, "execute":{"result":-1, "isFinal": true}},"user3": {"read": {"result":0, "isFinal" : true}, "write": {"result":0,"isFinal":true}, "execute":{"result":0, "isFinal": true}}, "sub-admin-user-1": {"read": {"result":1, "isFinal" : true}, "write": {"result":-1,"isFinal":true}, "execute":{"result":-1, "isFinal": true}}},
+          "groupPermissions": {"public": {"read": {"result":2, "isFinal" : true},"write": {"result":-1,"isFinal":true}, "execute":{"result":-1, "isFinal": true}}}
+        },
+        {
+          "name": "all-deny-test",
+          "resource": {"elements":{"path":"/forbidden" }},
+          "userPermissions": {},
+          "groupPermissions": {"public": {"read": {"result":1, "isFinal" : true},"write": {"result":1,"isFinal":true}, "execute":{"result":1, "isFinal": true}},
+            "other": {"read": {"result":-1, "isFinal" : true},"write": {"result":-1,"isFinal":true}, "execute":{"result":-1, "isFinal": true}}}
+        }
+      ]
+    }
+  ]
+}
+

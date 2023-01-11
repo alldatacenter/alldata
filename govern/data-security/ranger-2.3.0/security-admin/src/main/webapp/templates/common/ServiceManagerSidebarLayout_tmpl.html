@@ -1,0 +1,276 @@
+{{!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--}}
+<div>
+    <div class="sidebar-toggler">
+        <span><i data-id="sideCollapes" class="fa-fw fa fa-angle-double-left fa-fw fa fa-2x"></i></span>
+    </div>
+    <div class="viewManager">
+        <div data-name="AccessManager" class="listOfModule">
+            <div class="page-manager-sidebar">
+                <div class="list-container">
+                    <div class="list-filter">
+                        {{#isZoneAdministration}}
+                            <div class="inline-block listData">
+                                <span title="Create zone first" class="zoneEmptyMsg"><input type="text" data-id="selectZoneName" disabled="disabled"></span>
+                            </div>
+                        {{/isZoneAdministration}}
+                        <div class="inline-block listData">
+                            <span title="Components"><input data-id="selectComponentName" type="text"></span>
+                        </div>
+                    </div>
+                    <div class="list-header listData m-top-10">
+                        <h5 class="pull-left">Services</h5>
+                       {{#if showImportExportBtn}}
+                            <div class="btn-group m-r-sm m-t-xs pull-right">
+                                <button class="btn btn-sm dropdown-toggle no-chevron" data-toggle="dropdown">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu drop-font">
+                                    <a href="javascript:;" title="Export" data-id="exportBtn" class="dropdown-item">
+                                        <i class="fa-fw fa fa-external-link-square"></i> Export
+                                    </a>
+                                    <a href="javascript:;" title="Import" data-id="importBtn" class="dropdown-item">
+                                        <i class="fa-fw fa fa-rotate-180 fa-fw fa fa-external-link-square"></i> Import
+                                    </a>
+                                </ul>
+                            </div>
+                        {{/if}}
+                        <label class="toggle-control pull-right">
+                            <input type="checkbox" data-id="collapesAll">
+                            <span class="control"></span>
+                        </label>
+                    </div>
+                    <div class="list-data">
+                        {{#each serviceDefs}}
+                            <div class="listData">
+                                <div class="component-list-item m-b-md components-header">
+                                    <div class="" data-id="panel">
+                                        {{{handleCollapeServiceIcon ../services this}}}
+                                        {{{handleServiceDefIcon ./this.attributes.name}}}
+                                        <span class="capitalizes">{{./this.attributes.displayName}}</span>
+                                        {{#if ../operation}}
+                                            {{#if ../isServiceManager}}
+                                                <span class="components-header">
+                                                    <a href="#!/service/{{./this.id}}/create" class="pull-right text-decoration" title="Add New Service" style="margin-right: 2px;"> <i class="fa-fw fa fa-plus"></i></a>
+                                                </span>
+                                            {{else}}
+                                                <span class="components-header">
+                                                    <a href="javascript:void(0)" class="pull-right text-decoration disabled add-service" title="Services cannot be added while filtering Security Zones" style="margin-right: 2px;"> <i class="fa-fw fa fa-plus"></i></a>
+                                                </span>
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+                                    <div class="service-list-container listData components-header panel-content serviceActive">
+                                        {{{getServices ../services this}}}
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-name="SecurityZone" class="listOfModule">
+            <div class= "page-manager-sidebar">
+                <div class="list-container">
+                    <div class="clearfix row-margin-bottom">
+                        <h4 class="pull-left">Security Zones</h4>
+                        {{#if isZoneCreateAdministration}}
+                            <a href="#!/zones/create" class="pull-right btn btn-default btn-sm" title="Create zone"><i class="fa-fw fa fa-plus"></i></a>
+                        {{/if}}
+                    </div>
+                    <div class="clearfix">
+                        <input type="text" class="security-search" data-id="zoneSearch" placeholder="Search">
+                    </div>
+                    <div class="zone-wrap">
+                        <ul class="zone-listing-new" data-id="zoneUlList">
+                            {{#ifCond zoneList.length '==' "0"}}
+                                <li>
+                                    <h4>No Zone Found !
+                                </li>
+                            {{/ifCond}}
+                        </ul>
+                    </div>
+                </div><!-- listData -->
+            </div>
+        </div>
+        <div data-name="AuditManager" class="listOfModule">
+            <div class= "page-manager-sidebar">
+                <div class="list-container">
+                    <div class="clearfix row-margin-bottom">
+                        <h4>Audit</h4>
+                        <ul class="zone-listing-new">
+                            <li data-id="bigData">
+                                <a href="#!/reports/audit/bigData">Access</a>
+                            </li>
+                            <li data-id="admin">
+                                <a href="#!/reports/audit/admin">Admin</a>
+                            </li>
+                            <li data-id="loginSession">
+                                <a href="#!/reports/audit/loginSession">Login Sessions </a>
+                            </li>
+                            <li data-id="agent">
+                                <a href="#!/reports/audit/agent">Plugins</a>
+                            </li>
+                            <li data-id="pluginStatus">
+                                <a href="#!/reports/audit/pluginStatus">Plugin Status</a>
+                            </li>
+                            <li data-id="userSync">
+                                <a href="#!/reports/audit/userSync">User Sync</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- listData -->
+            </div>
+        </div>
+        <div data-name="UserGroupRoleManager" class="listOfModule">
+            <div class= "page-manager-sidebar">
+                <div class="list-container">
+                    <div class="clearfix row-margin-bottom">
+                        <h4>Setting</h4>
+                        <ul class="zone-listing-new">
+                            <li data-id="usertab">
+                                <a href="#!/users/usertab">User</a>
+                            </li>
+                            <li data-id="grouptab" >
+                                <a href="#!/users/grouptab">Group</a>
+                            </li>
+                            <li data-id="roletab">
+                                <a href="#!/users/roletab">Role</a>
+                            </li>
+                            {{#if showPermissionTab}}
+                                <li data-id="models">
+                                    <a href="#!/permissions/models">{{tt 'h.permissions'}}</a>
+                                </li>
+                            {{/if}}
+                            <!-- <li><a href="#!/permissions/models"><i class="fa-fw fa fa-file-o"></i> {{tt 'h.permissions'}}</a></li> -->
+                        </ul>
+                    </div>
+                </div><!-- listData -->
+            </div>
+        </div>
+        <div data-name="ReportManager" class="listOfModule">
+            <div class= "page-manager-sidebar">
+                <div class="list-container">
+                    <div class="listData">
+                        <label class="report-label" for="policyName">Policy Name</label>
+                        <div>
+                            <input type="text" name="policyName" data-js="policyName" autofocus placeholder="Enter Policy Name">
+                        </div>
+                    </div>
+                    <div class="listData">
+                        <label class="report-label" for="policyType">Policy Type</label>
+                        <div>
+                            <input type="text" name="policyType" data-id="policyType" placeholder="Enter Policy Type">
+                        </div>
+                    </div>
+                    <div class="listData">
+                        <label class="report-label" for="component">Component</label>
+                        <div>
+                            <input type="text" name="componentType" data-id="component" placeholder="Enter Component Type">
+                        </div>
+                    </div>
+                    <div class="listData">
+                        <label class="report-label" for="resourceName">Resource</label>
+                        <div>
+                            <input type="text" name="resourceName" data-js="resourceName" placeholder="Enter Resource Name">
+                        </div>
+                    </div>
+                    <div class="listData">
+                        <label class="report-label" for="policyLabels">Policy Label</label>
+                        <div>
+                            <input type="text" name="policyLabels" data-id="policyLabels" placeholder="Enter Policy Labels">
+                        </div>
+                    </div>
+                    <div class="listData">
+                        <label class="report-label" for="zoneName">Zone Name</label>
+                        <div>
+                            <input type="text" name="zoneName" data-id="zoneName" placeholder="Enter Zone Name">
+                        </div>
+                    </div>
+                    <div class="control-group search-by clearfix">
+                        <label class="report-label">Search By</label>
+                        <div class="controls" data-js="searchBy">
+                            <div class="">
+                                <div class="btn-group">
+                                        <button class="btn dropdown-toggle btn-sm" data-id="btnUserGroup" data-toggle="dropdown">
+                                        <span>Group</span>
+                                        <span class="caret"> </span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <a data-id="grpSel" class="autoText dropdown-item" href="javascript:;">Group</a>
+                                        <a data-id="userSel" class="autoText dropdown-item" href="javascript:;">Username</a>
+                                        <a data-id="roleSel" class="autoText dropdown-item" href="javascript:;">Rolename</a>
+                                    </ul>
+                                </div>
+                                <input type="text" data-js="selectGroups">
+                                <input type="text" style="display: none" data-js="userName">
+                                <input type="text" style="display: none" data-js="roleName">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="clearfix">
+                            <button type="button" class="btn btn-primary btn-sm" data-js="searchBtn" name="searchPolicy" style="margin: 0;">
+                                    <i class="fa-fw fa fa-search"></i>
+                                    Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-name="KeyManager" class="listOfModule">
+            <div class= "page-manager-sidebar">
+                <div class="list-container">
+                    <div class="clearfix row-margin-bottom">
+                        <h4><i class="fa-fw fa fa-key"></i>Key Manager</h4>
+                        <!-- <div class="form-group listData m-top-10">
+                            <label class="report-label" for="component">Select Service</label>
+                            <div class="form-control">
+                                <input type="text" name="serviceName" data-js="serviceName" placeholder="Enter Component Type">
+                            </div>
+                        </div> -->
+                    <div class="list-filter">
+                        <label class="report-label" for="component">Select Service</label>
+                        <div class="inline-block listData">
+                            <span title="Select service"><input type="text" name="serviceName" data-js="serviceName" placeholder="Enter Component Type"></span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-name="ProfileManager" class="listOfModule">
+            <div class="page-manager-sidebar">
+                <div class="list-container">
+                    <div class="clearfix row-margin-bottom">
+                        <h4>Profile</h4>
+                        <ul class="zone-listing-new profile-tab">
+                            <li class="selected" data-tab="edit-basic">
+                                <a data-toggle="tab" href="#edit-basic"> <i class="green fa-fw fa fa-edit bigger-125"></i> Basic Info </a>
+                            </li>
+                            <li class="" data="edit-password" data-tab="edit-password">
+                                <a data-toggle="tab" href="#edit-password"> <i class="blue fa-fw fa fa-key bigger-125"></i> Change Password </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

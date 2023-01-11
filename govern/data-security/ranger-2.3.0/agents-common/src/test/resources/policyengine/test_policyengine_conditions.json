@@ -1,0 +1,230 @@
+{
+  "serviceName":"hivedev",
+
+  "serviceDef":{
+    "name":"hive",
+    "id":3,
+    "resources":[
+      {"name":"database","level":1,"mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Database","description":"Hive Database"},
+      {"name":"table","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Table","description":"Hive Table"},
+      {"name":"udf","level":2,"parent":"database","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive UDF","description":"Hive UDF"},
+      {"name":"column","level":3,"parent":"table","mandatory":true,"lookupSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":true},"label":"Hive Column","description":"Hive Column"}
+    ],
+    "accessTypes":[
+      {"name":"select","label":"Select"},
+      {"name":"update","label":"Update"},
+      {"name":"create","label":"Create"},
+      {"name":"drop","label":"Drop"},
+      {"name":"alter","label":"Alter"},
+      {"name":"index","label":"Index"},
+      {"name":"lock","label":"Lock"},
+      {"name":"all","label":"All"}
+    ],
+    "policyConditions":[
+      {"name":"country", "evaluator":"org.apache.ranger.plugin.conditionevaluator.RangerSimpleMatcher", "evaluatorOptions":{"CONTEXT_NAME":"country"}}
+    ]
+  },
+
+  "policies":[
+    {"id":1,"name":"db=default; allow select from all countries","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["default"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+     "policyItems":[
+       {"accesses":[{"type":"select"}],"users":[],"groups":["public"],"delegateAdmin":false}
+     ]
+    }
+    ,
+    {"id":2,"name":"db=default: allow create only from US","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["default"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+     "policyItems":[
+       {"accesses":[{"type":"create"}],"users":[],"groups":["public"],"delegateAdmin":false, "conditions":[{"type":"country","values":["US"]}]}
+     ]
+    }
+    ,
+    {"id":3,"name":"db=default: allow update from US,CA","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["default"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+     "policyItems":[
+       {"accesses":[{"type":"update"}],"users":[],"groups":["public"],"delegateAdmin":false, "conditions":[{"type":"country","values":["US","CA"]}]}
+     ]
+    }
+    ,
+    {"id":4,"name":"db=default: user1 allowed to drop from US; user1 allowed to index from US,CA; user2 allowed to alter from US","isEnabled":true,"isAuditEnabled":true,
+     "resources":{"database":{"values":["default"]},"table":{"values":["*"]},"column":{"values":["*"]}},
+     "policyItems":[
+       {"accesses":[{"type":"drop"}],"users":["user1"],"groups":[],"delegateAdmin":false, "conditions":[{"type":"country","values":["US"]}]},
+       {"accesses":[{"type":"index"}],"users":["user1"],"groups":[],"delegateAdmin":false, "conditions":[{"type":"country","values":["US","CA"]}]},
+       {"accesses":[{"type":"alter"}],"users":["user2"],"groups":[],"delegateAdmin":false, "conditions":[{"type":"country","values":["US"]}]}
+     ]
+    }
+  ],
+
+  "tests":[
+    {"name":"ALLOW 'use default;' no country",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"","user":"user1","userGroups":["users"],"requestData":"use default"
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":1}
+    }
+    ,
+    {"name":"DENY 'create default.testTable;' no country",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"create","user":"user1","userGroups":["users"],"requestData":"create default.testTable"
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'update default.testTable;' no country",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"update","user":"user1","userGroups":["users"],"requestData":"update default.testTable"
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'create default.testTable;' country=US",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"create","user":"user1","userGroups":["users"],"requestData":"create default.testTable; country=US",
+      "context":{"country":"US"}
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":2}
+    }
+    ,
+    {"name":"DENY 'create default.testTable;' country=CA",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"create","user":"user1","userGroups":["users"],"requestData":"create default.testTable",
+      "context":{"country":"CA"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'update default.testTable;' country=US",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"update","user":"user1","userGroups":["users"],"requestData":"update default.testTable",
+      "context":{"country":"US"}
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    }
+    ,
+    {"name":"ALLOW 'update default.testTable;' country=CA",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"update","user":"user1","userGroups":["users"],"requestData":"update default.testTable",
+      "context":{"country":"CA"}
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":3}
+    }
+    ,
+    {"name":"DENY 'update default.testTable;' country=UK",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"update","user":"user1","userGroups":["users"],"requestData":"update default.testTable",
+      "context":{"country":"UK"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'drop default.testTable;' user1, country=US",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"drop","user":"user1","userGroups":["users"],"requestData":"drop default.testTable",
+      "context":{"country":"US"}
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":4}
+    }
+    ,
+    {"name":"DENY 'drop default.testTable;' user1, country=CA",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"drop","user":"user1","userGroups":["users"],"requestData":"drop default.testTable",
+      "context":{"country":"CA"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'drop default.testTable;' user2, country=US",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"drop","user":"user2","userGroups":["users"],"requestData":"drop default.testTable",
+      "context":{"country":"US"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'index default.testTable;' user1, country=US",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"index","user":"user1","userGroups":["users"],"requestData":"index default.testTable",
+      "context":{"country":"US"}
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":4}
+    }
+    ,
+    {"name":"ALLOW 'index default.testTable;' user1, country=CA",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"index","user":"user1","userGroups":["users"],"requestData":"index default.testTable",
+      "context":{"country":"CA"}
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":4}
+    }
+    ,
+    {"name":"DENY 'index default.testTable;' user1, country=UK",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"index","user":"user1","userGroups":["users"],"requestData":"index default.testTable",
+      "context":{"country":"UK"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'index default.testTable;' user2, country=US",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"index","user":"user2","userGroups":["users"],"requestData":"index default.testTable",
+      "context":{"country":"US"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'index default.testTable;' user2, country=UK",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"index","user":"user2","userGroups":["users"],"requestData":"index default.testTable",
+      "context":{"country":"CA"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"ALLOW 'alter default.testTable;' user2, country=US",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"alter","user":"user2","userGroups":["users"],"requestData":"alter default.testTable",
+      "context":{"country":"US"}
+     },
+     "result":{"isAudited":true,"isAllowed":true,"policyId":4}
+    }
+    ,
+    {"name":"DENY 'alter default.testTable;' user2, country=CA",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"alter","user":"user2","userGroups":["users"],"requestData":"alter default.testTable",
+      "context":{"country":"CA"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+    ,
+    {"name":"DENY 'alter default.testTable;' user1, country=US",
+     "request":{
+      "resource":{"elements":{"database":"default"}},
+      "accessType":"alter","user":"user1","userGroups":["users"],"requestData":"alter default.testTable",
+      "context":{"country":"US"}
+     },
+     "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+    }
+  ]
+}
+

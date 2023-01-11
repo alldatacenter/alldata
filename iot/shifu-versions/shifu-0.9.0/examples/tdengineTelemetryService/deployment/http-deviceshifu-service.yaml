@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: deviceshifu-http-deployment
+  name: deviceshifu-http
+  namespace: deviceshifu
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: deviceshifu-http-deployment
+  type: LoadBalancer

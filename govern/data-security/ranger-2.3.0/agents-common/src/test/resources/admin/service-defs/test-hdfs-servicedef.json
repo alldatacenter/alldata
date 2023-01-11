@@ -1,0 +1,286 @@
+{
+	"id":1,
+	"name": "hdfs",
+	"implClass": "org.apache.ranger.services.hdfs.RangerServiceHdfs",
+	"label": "HDFS Repository",
+	"description": "HDFS Repository",
+	"guid": "0d047247-bafe-4cf8-8e9b-d5d377284b2d",
+	"resources": 
+	[
+		{
+			"itemId": 1,
+			"name": "path",
+			"type": "path",
+			"level": 10,
+			"parent": "",
+			"mandatory": true,
+			"lookupSupported": true,
+			"recursiveSupported": true,
+			"excludesSupported": false,
+			"matcher": "org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher",
+			"matcherOptions": { "wildCard":true, "ignoreCase":false },
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Resource Path",
+			"description": "HDFS file or directory path"
+		}
+	],
+
+	"accessTypes": 
+	[
+		{
+			"itemId": 1,
+			"name": "read",
+			"label": "Read"
+		},
+
+		{
+			"itemId": 2,
+			"name": "write",
+			"label": "Write"
+		},
+
+		{
+			"itemId": 3,
+			"name": "execute",
+			"label": "Execute"
+		}
+	],
+
+	"configs": 
+	[
+		{
+			"itemId": 1,
+			"name": "username",
+			"type": "string",
+			"subType": "",
+			"mandatory": true,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Username"
+		},
+
+		{
+			"itemId": 2,
+			"name": "password",
+			"type": "password",
+			"subType": "",
+			"mandatory": true,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Password"
+		},
+
+		{
+			"itemId": 3,
+			"name": "fs.default.name",
+			"type": "string",
+			"subType": "",
+			"mandatory": true,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Namenode URL"
+		},
+
+		{
+			"itemId": 4,
+			"name": "hadoop.security.authorization",
+			"type": "bool",
+			"subType": "YesTrue:NoFalse",
+			"mandatory": true,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Authorization Enabled",
+			"defaultValue": "false"
+		},
+
+		{
+			"itemId": 5,
+			"name": "hadoop.security.authentication",
+			"type": "enum",
+			"subType": "authnType",
+			"mandatory": true,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Authentication Type",
+			"defaultValue": "simple"
+		},
+
+		{
+			"itemId": 6,
+			"name": "hadoop.security.auth_to_local",
+			"type": "string",
+			"subType": "",
+			"mandatory": false,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":""
+		},
+
+		{
+			"itemId": 7,
+			"name": "dfs.datanode.kerberos.principal",
+			"type": "string",
+			"subType": "",
+			"mandatory": false,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":""
+		},
+
+		{
+			"itemId": 8,
+			"name": "dfs.namenode.kerberos.principal",
+			"type": "string",
+			"subType": "",
+			"mandatory": false,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":""
+		},
+
+		{
+			"itemId": 9,
+			"name": "dfs.secondary.namenode.kerberos.principal",
+			"type": "string",
+			"subType": "",
+			"mandatory": false,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":""
+		},
+
+		{
+			"itemId": 10,
+			"name": "hadoop.rpc.protection",
+			"type": "enum",
+			"subType": "rpcProtection",
+			"mandatory": false,
+			"label": "RPC Protection Type",
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"defaultValue": "authentication"
+		},
+
+		{
+			"itemId": 11,
+			"name": "commonNameForCertificate",
+			"type": "string",
+			"subType": "",
+			"mandatory": false,
+			"validationRegEx":"",
+			"validationMessage": "",
+			"uiHint":"",
+			"label": "Common Name for Certificate"
+		}
+	],
+
+	"enums": 
+	[
+		{
+			"itemId": 1,
+			"name": "authnType",
+			"elements": 
+			[
+				{
+					"itemId": 1,
+					"name": "simple",
+					"label": "Simple"
+				},
+
+				{
+					"itemId": 2,
+					"name": "kerberos",
+					"label": "Kerberos"
+				}
+			],
+
+			"defaultIndex": 0
+		},
+
+		{
+			"itemId": 2,
+			"name": "rpcProtection",
+			"elements": 
+			[
+				{
+					"itemId": 1,
+					"name": "authentication",
+					"label": "Authentication"
+				},
+
+				{
+					"itemId": 2,
+					"name": "integrity",
+					"label": "Integrity"
+				},
+
+				{
+					"itemId": 3,
+					"name": "privacy",
+					"label": "Privacy"
+				}
+			],
+
+			"defaultIndex": 0
+		}
+	],
+
+	"contextEnrichers": 
+	[
+      {
+        "itemId":1,
+        "name" : "GeolocationEnricher_format_long",
+        "enricher" : "org.apache.ranger.plugin.contextenricher.RangerFileBasedGeolocationProvider",
+        "enricherOptions" : {
+          "FilePath":"/etc/ranger/geo/geo_long.txt", "ForceRead":"false", "IPInDotFormat":"false"
+        ,"geolocation.meta.prefix": "FORMAT_LONG_"
+        }
+      },
+      {
+        "itemId":2,
+        "name" : "GeolocationEnricher_format_dot",
+        "enricher" : "org.apache.ranger.plugin.contextenricher.RangerFileBasedGeolocationProvider",
+        "enricherOptions" : {
+          "FilePath":"/etc/ranger/geo/geo.txt", "ForceRead":"false", "IPInDotFormat":"true"
+        ,"geolocation.meta.prefix": "FORMAT_DOT_"
+        }
+      }
+      ,
+      {
+        "itemId":1,
+        "name" : "GeolocationEnricher",
+        "enricher" : "org.apache.ranger.plugin.contextenricher.RangerFileBasedGeolocationProvider",
+        "enricherOptions" : {
+          "FilePath":"/etc/ranger/geo/geo.txt", "ForceRead":"false", "IPInDotFormat":"true"
+        ,"geolocation.meta.prefix": "TEST_"
+        }
+      }
+	],
+
+	"policyConditions": 
+	[
+      {
+        "itemId":1,
+        "name":"ScriptConditionEvaluator",
+        "evaluator": "org.apache.ranger.plugin.conditionevaluator.RangerScriptConditionEvaluator",
+        "evaluatorOptions" : {"engineName":"JavaScript"},
+        "label":"Script",
+        "description": "Script to execute"
+      }
+    ,
+      { "itemId": 2,
+        "name":"country",
+        "evaluator":"org.apache.ranger.plugin.conditionevaluator.RangerSimpleMatcher",
+        "evaluatorOptions":{"CONTEXT_NAME":"country"}
+      }
+		
+	]
+}

@@ -1,0 +1,311 @@
+{
+  "serviceName": "KMSTest",
+  "serviceId": 17,
+  "policyVersion": 3,
+  "policyUpdateTime": "20160804-09:51:46.000-+0100",
+  "policies": [
+    {
+      "service": "KMSTest",
+      "name": "KMSTest-1-20160727162811",
+      "description": "Default Policy for Service: KMSTest",
+      "resourceSignature": "d135a88a4f4ed3a8ac7278891f15c780",
+      "isAuditEnabled": true,
+      "resources": {
+        "keyname": {
+          "values": [
+            "*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "create",
+              "isAllowed": true
+            },
+            {
+              "type": "delete",
+              "isAllowed": true
+            },
+            {
+              "type": "rollover",
+              "isAllowed": true
+            },
+            {
+              "type": "setkeymaterial",
+              "isAllowed": true
+            },
+            {
+              "type": "get",
+              "isAllowed": true
+            },
+            {
+              "type": "getkeys",
+              "isAllowed": true
+            },
+            {
+              "type": "getmetadata",
+              "isAllowed": true
+            },
+            {
+              "type": "generateeek",
+              "isAllowed": true
+            },
+            {
+              "type": "decrypteek",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "keyadmin"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": true
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 51,
+      "guid": "1469636891164_121_393",
+      "isEnabled": true,
+      "createdBy": "keyadmin",
+      "updatedBy": "keyadmin",
+      "createTime": "20160727-17:28:11.000-+0100",
+      "updateTime": "20160727-17:28:11.000-+0100",
+      "version": 1
+    },
+    {
+      "service": "KMSTest",
+      "name": "NewKeyPolicy",
+      "description": "",
+      "resourceSignature": "4b688c2712bb70da6227646b1948a086",
+      "isAuditEnabled": true,
+      "resources": {
+        "keyname": {
+          "values": [
+            "newkey*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "create",
+              "isAllowed": true
+            },
+            {
+              "type": "delete",
+              "isAllowed": true
+            },
+            {
+              "type": "rollover",
+              "isAllowed": true
+            },
+            {
+              "type": "setkeymaterial",
+              "isAllowed": true
+            },
+            {
+              "type": "get",
+              "isAllowed": true
+            },
+            {
+              "type": "getkeys",
+              "isAllowed": true
+            },
+            {
+              "type": "getmetadata",
+              "isAllowed": true
+            },
+            {
+              "type": "generateeek",
+              "isAllowed": true
+            },
+            {
+              "type": "decrypteek",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "bob"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        },
+        {
+          "accesses": [
+            {
+              "type": "get",
+              "isAllowed": true
+            },
+            {
+              "type": "getkeys",
+              "isAllowed": true
+            },
+            {
+              "type": "getmetadata",
+              "isAllowed": true
+            }
+          ],
+          "users": [],
+          "groups": [
+            "IT"
+          ],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 52,
+      "guid": "1470224184963_204_597",
+      "isEnabled": true,
+      "createdBy": "keyadmin",
+      "updatedBy": "keyadmin",
+      "createTime": "20160803-12:36:24.000-+0100",
+      "updateTime": "20160804-09:51:46.000-+0100",
+      "version": 2
+    }
+  ],
+  "serviceDef": {
+    "name": "kms",
+    "implClass": "org.apache.ranger.services.kms.RangerServiceKMS",
+    "label": "KMS",
+    "description": "KMS",
+    "options": {},
+    "configs": [
+      {
+        "itemId": 1,
+        "name": "provider",
+        "type": "string",
+        "mandatory": true,
+        "label": "KMS URL"
+      },
+      {
+        "itemId": 2,
+        "name": "username",
+        "type": "string",
+        "mandatory": true,
+        "label": "Username"
+      },
+      {
+        "itemId": 3,
+        "name": "password",
+        "type": "password",
+        "mandatory": true,
+        "label": "Password"
+      }
+    ],
+    "resources": [
+      {
+        "itemId": 1,
+        "name": "keyname",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": false,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Key Name",
+        "description": "Key Name"
+      }
+    ],
+    "accessTypes": [
+      {
+        "itemId": 1,
+        "name": "create",
+        "label": "Create",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 2,
+        "name": "delete",
+        "label": "Delete",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 3,
+        "name": "rollover",
+        "label": "Rollover",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 4,
+        "name": "setkeymaterial",
+        "label": "Set Key Material",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 5,
+        "name": "get",
+        "label": "Get",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 6,
+        "name": "getkeys",
+        "label": "Get Keys",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 7,
+        "name": "getmetadata",
+        "label": "Get Metadata",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 8,
+        "name": "generateeek",
+        "label": "Generate EEK",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 9,
+        "name": "decrypteek",
+        "label": "Decrypt EEK",
+        "impliedGrants": []
+      }
+    ],
+    "policyConditions": [],
+    "contextEnrichers": [],
+    "enums": [],
+    "dataMaskDef": {
+      "maskTypes": [],
+      "accessTypes": [],
+      "resources": []
+    },
+    "rowFilterDef": {
+      "accessTypes": [],
+      "resources": []
+    },
+    "id": 7,
+    "guid": "1457966375677_148_0",
+    "isEnabled": true,
+    "createTime": "20160314-14:39:35.000-+0000",
+    "updateTime": "20160314-14:39:35.000-+0000",
+    "version": 1
+  },
+  "auditMode": "audit-default"
+}

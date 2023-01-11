@@ -1,0 +1,410 @@
+{
+  "serviceDef": {
+    "name": "hive",
+    "id": 3,
+    "resources": [
+      {
+        "name": "database",
+        "level": 1,
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "label": "Hive Database",
+        "description": "Hive Database"
+      },
+      {
+        "name": "table",
+        "level": 2,
+        "parent": "database",
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "label": "Hive Table",
+        "description": "Hive Table"
+      },
+      {
+        "name": "udf",
+        "level": 2,
+        "parent": "database",
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "label": "Hive UDF",
+        "description": "Hive UDF"
+      },
+      {
+        "name": "column",
+        "level": 3,
+        "parent": "table",
+        "mandatory": true,
+        "lookupSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": true,
+          "ignoreCase": true
+        },
+        "label": "Hive Column",
+        "description": "Hive Column"
+      }
+    ],
+    "accessTypes": [
+      {
+        "name": "select",
+        "label": "Select"
+      },
+      {
+        "name": "update",
+        "label": "Update"
+      },
+      {
+        "name": "create",
+        "label": "Create"
+      },
+      {
+        "name": "drop",
+        "label": "Drop"
+      },
+      {
+        "name": "alter",
+        "label": "Alter"
+      },
+      {
+        "name": "index",
+        "label": "Index"
+      },
+      {
+        "name": "lock",
+        "label": "Lock"
+      },
+      {
+        "name": "all",
+        "label": "All"
+      }
+    ]
+  },
+  "testCases": [
+    {
+      "name": "database=*:table=*:column:demo",
+      "policyResources": {
+        "database": {"values": ["*"]},
+        "table": {"values": ["*"]},
+        "column":{"values":["demo"]}
+      },
+      "tests": [
+        {
+          "name": "Exact match for 'tmp:*:demo' policy",
+          "type": "exactMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["tmp"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["*"], "isExcludes": false, "isRecursive": false},
+              "column": {"values": ["demo"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        }
+      ]
+    },
+    {
+      "name": "database=finance:table=tax:column:refund",
+      "policyResources": {
+        "database": {"values": ["finance"]},
+        "table": {"values": ["tax"]},
+        "column":{"values":["refund"]}
+      },
+      "tests": [
+        {
+          "name": "Exact match for 'finance,hr,tmp*:tax,employee,tmp*:refund,salary,tmp*' policy",
+          "type": "exactMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "hr", "tmp*"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["tax","employee","tmp*"], "isExcludes": false, "isRecursive": false},
+              "column": {"values": ["refund","salary","tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        },
+        {
+          "name": "Descendant match for 'finance,hr,tmp*:tax,employee,tmp*:' policy",
+          "type": "descendantMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "hr", "tmp*"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["tax","employee","tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        },
+        {
+          "name": "No match for '*:*:*' policy",
+          "type": "anyMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["*"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["*"], "isExcludes": false, "isRecursive": false},
+              "column": {"values": ["*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : false
+        }
+      ]
+    },
+    {
+      "name": "database=hr:table=*:column=refund",
+      "policyResources": {
+        "database": {"values": ["hr"]},
+        "table": {"values": ["*"]},
+        "column":{"values":["refund"]}
+      },
+      "tests": [
+        {
+          "name": "Exact match for 'finance,hr,tmp*:tax,employee,tmp*:refund,salary,tmp*' policy",
+          "type": "exactMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "hr", "tmp*"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["tax","employee","tmp*"], "isExcludes": false, "isRecursive": false},
+              "column": {"values": ["refund","salary","tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        }
+      ,
+        {
+          "name": "No match for 'finance,tmp*:tax,employee,tmp*:refund,salary,tmp*' policy",
+          "type": "anyMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "tmp*"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["tax","employee","tmp*"], "isExcludes": false, "isRecursive": false},
+              "column": {"values": ["refund","salary","tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : false
+        }
+      ]
+    },
+    {
+      "name": "database=hr:table=*:column=*",
+      "policyResources": {
+        "database": {"values": ["hr"]},
+        "table": {"values": ["*"]},
+        "column":{"values":["*"]}
+      },
+      "tests": [
+        {
+          "name": "Exact match for 'finance,hr,tmp*:tax,employee,tmp*:refund,salary,tmp*' policy",
+          "type": "exactMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "hr", "tmp*"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["tax","employee","tmp*"], "isExcludes": false, "isRecursive": false},
+              "column": {"values": ["refund","salary","tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        },
+        {
+          "name": "Ancestor with wildcards match for 'finance,hr,tmp*:tax,employee,tmp*:' policy",
+          "type": "selfAndAllDescendants",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "hr", "tmp*"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["tax","employee","tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        },
+        {
+          "name": "Exact match for 'finance,hr,tmp*:*,employee,tmp*:*,salary,tmp*' policy",
+          "type": "exactMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "hr", "tmp*"], "isExcludes": false, "isRecursive": false},
+              "table": {"values": ["*","employee","tmp*"], "isExcludes": false, "isRecursive": false},
+              "column": {"values": ["*","salary","tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        },
+        {
+          "name": "No match for 'finance,hr,tmp*::refund,salary,tmp*' policy",
+          "type": "anyMatch",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "hr", "tmp*"], "isExcludes": false, "isRecursive": false},
+              "column": {"values": ["refund","salary","tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : false
+        },
+        {
+          "name": "Ancestor with wildcards match for 'finance,hr,tmp*::' policy",
+          "type": "selfAndAllDescendants",
+          "policy" : {
+            "service" : "any",
+            "name" : "test",
+            "policyType":0,
+            "description":"",
+            "resourceSignature":"",
+            "isAuditEnabled":true,
+            "resources" : {
+              "database": {"values": ["finance", "hr", "tmp*"], "isExcludes": false, "isRecursive": false}
+            },
+            "policyItems":[],
+            "denyPolicyItems":[],
+            "allowExceptions":[],
+            "denyExceptions":[],
+            "dataMaskPolicyItems":[],
+            "rowFilterPolicyItems":[]
+          },
+          "evalContext": {},
+          "result" : true
+        }
+      ]
+    }
+  ]
+}

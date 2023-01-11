@@ -1,0 +1,441 @@
+{
+  "servicePolicies": {
+    "serviceName": "hivedev",
+    "serviceDef": {
+      "name": "hive",
+      "id": 3,
+      "resources": [
+        {
+          "name": "database",
+          "level": 1,
+          "mandatory": true,
+          "lookupSupported": true,
+          "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+          "matcherOptions": {
+            "wildCard": true,
+            "ignoreCase": true
+          },
+          "label": "Hive Database",
+          "description": "Hive Database"
+        },
+        {
+          "name": "table",
+          "level": 2,
+          "parent": "database",
+          "mandatory": true,
+          "lookupSupported": true,
+          "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+          "matcherOptions": {
+            "wildCard": true,
+            "ignoreCase": true
+          },
+          "label": "Hive Table",
+          "description": "Hive Table"
+        },
+        {
+          "name": "udf",
+          "level": 2,
+          "parent": "database",
+          "mandatory": true,
+          "lookupSupported": true,
+          "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+          "matcherOptions": {
+            "wildCard": true,
+            "ignoreCase": true
+          },
+          "label": "Hive UDF",
+          "description": "Hive UDF"
+        },
+        {
+          "name": "column",
+          "level": 3,
+          "parent": "table",
+          "mandatory": true,
+          "lookupSupported": true,
+          "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+          "matcherOptions": {
+            "wildCard": true,
+            "ignoreCase": true
+          },
+          "label": "Hive Column",
+          "description": "Hive Column"
+        }
+      ],
+      "accessTypes": [
+        {
+          "name": "select",
+          "label": "Select"
+        },
+        {
+          "name": "update",
+          "label": "Update"
+        },
+        {
+          "name": "create",
+          "label": "Create"
+        },
+        {
+          "name": "drop",
+          "label": "Drop"
+        },
+        {
+          "name": "alter",
+          "label": "Alter"
+        },
+        {
+          "name": "index",
+          "label": "Index"
+        },
+        {
+          "name": "lock",
+          "label": "Lock"
+        },
+        {
+          "name": "all",
+          "label": "All"
+        }
+      ]
+    },
+    "policies": [
+      {
+        "id": 1,
+        "name": "db=default: audit-all-access",
+        "isEnabled": true,
+        "isAuditEnabled": true,
+        "resources": {
+          "database": {
+            "values": [
+              "default"
+            ]
+          },
+          "table": {
+            "values": [
+              "*"
+            ]
+          },
+          "column": {
+            "values": [
+              "*"
+            ]
+          }
+        },
+        "policyItems": [
+          {
+            "accesses": [],
+            "users": [],
+            "groups": [
+              "public"
+            ],
+            "delegateAdmin": false
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "db=default; table=test1,test2; column=column1",
+        "isEnabled": true,
+        "isAuditEnabled": true,
+        "resources": {
+          "database": {
+            "values": [
+              "default"
+            ]
+          },
+          "table": {
+            "values": [
+              "test1", "test2"
+            ]
+          },
+          "column": {
+            "values": [
+              "column1"
+            ]
+          }
+        },
+        "policyItems": [
+          {
+            "accesses": [
+              {
+                "type": "select",
+                "isAllowed": true
+              }
+            ],
+            "users": [
+              "user1",
+              "user2"
+            ],
+            "groups": [
+              "group1",
+              "group2"
+            ],
+            "delegateAdmin": false
+          },
+          {
+            "accesses": [
+              {
+                "type": "create",
+                "isAllowed": true
+              },
+              {
+                "type": "drop",
+                "isAllowed": true
+              }
+            ],
+            "users": [
+              "admin"
+            ],
+            "groups": [
+              "cluster-admin"
+            ],
+            "delegateAdmin": true
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "name": "db=default; table=test1,test2; column=column2",
+        "isEnabled": true,
+        "isAuditEnabled": true,
+        "resources": {
+          "database": {
+            "values": [
+              "default"
+            ]
+          },
+          "table": {
+            "values": [
+              "test1", "test2"
+            ]
+          },
+          "column": {
+            "values": [
+              "column2"
+            ]
+          }
+        },
+        "policyItems": [
+          {
+            "accesses": [
+              {
+                "type": "select",
+                "isAllowed": true
+              }
+            ],
+            "users": [
+              "user1",
+              "user2"
+            ],
+            "groups": [
+              "group1",
+              "group2"
+            ],
+            "delegateAdmin": false
+          },
+          {
+            "accesses": [
+              {
+                "type": "create",
+                "isAllowed": true
+              },
+              {
+                "type": "drop",
+                "isAllowed": true
+              }
+            ],
+            "users": [
+              "admin"
+            ],
+            "groups": [
+              "cluster-admin"
+            ],
+            "delegateAdmin": true
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "db=finance; table=fin_*; column=*",
+        "isEnabled": true,
+        "isAuditEnabled": true,
+        "resources": {
+          "database": {
+            "values": [
+              "finance"
+            ]
+          },
+          "table": {
+            "values": [
+              "fin_*"
+            ]
+          },
+          "column": {
+            "values": [
+              "*"
+            ]
+          }
+        },
+        "policyItems": [
+          {
+            "accesses": [
+              {
+                "type": "select",
+                "isAllowed": true
+              }
+            ],
+            "users": [
+              "user1",
+              "user2"
+            ],
+            "groups": [
+              "finance-controller"
+            ],
+            "delegateAdmin": true
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "db=db1; table=tmp; column=tmp*",
+        "isEnabled": true,
+        "isAuditEnabled": true,
+        "resources": {
+          "database": {
+            "values": [
+              "db1"
+            ]
+          },
+          "table": {
+            "values": [
+              "tmp"
+            ]
+          },
+          "column": {
+            "values": [
+              "tmp*"
+            ],
+            "isExcludes": false
+          }
+        },
+        "policyItems": [
+          {
+            "accesses": [
+              {
+                "type": "select",
+                "isAllowed": true
+              },
+              {
+                "type": "create",
+                "isAllowed": true
+              }
+            ],
+            "users": [
+              "user1",
+              "user2"
+            ],
+            "groups": [
+              "cluster-admin",
+              "finance-controller"
+            ],
+            "delegateAdmin": true
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "db=hr",
+        "isEnabled": true,
+        "isAuditEnabled": true,
+        "resources": {
+          "database": {
+            "values": [
+              "hr"
+            ]
+          },
+          "udf": {
+            "values": [
+              "udf"
+            ]
+          }
+        },
+        "policyItems": [
+          {
+            "accesses": [
+              {
+                "type": "select",
+                "isAllowed": true
+              },
+              {
+                "type": "create",
+                "isAllowed": true
+              }
+            ],
+            "users": [
+              "user1",
+              "user2"
+            ],
+            "groups": [
+              "cluster-admin"
+            ],
+            "delegateAdmin": true
+          }
+        ]
+      }
+    ]
+  },
+
+  "tests":[
+    {"name":"ALLOW '_admin access on resource [database=db1, table=tmp, column=tmp1]' for g=cluster-admin",
+      "resources":{"database":{"values":["db1"]}, "table":{"values":["tmp"]}, "column":{"values":["tmp1"]}},"user":"testuser","userGroups":["cluster-admin","users"],"accessType":"_admin",
+      "result":true
+    },
+    {"name":"DENY '_admin access on resource [database=db1, table=tmp, column=column1]' for g=cluster-admin",
+      "resources":{"database":{"values":["db1"]}, "table":{"values":["tmp"]}, "column":{"values":["column1"]}},"user":"testuser","userGroups":["cluster-admin","users"],"accessType":"_admin",
+      "result":false
+    },
+    {"name":"DENY '_admin access on resource [database=hr]' for g=cluster-admin",
+      "resources":{"database":{"values":["hr"]}},"user":"testuser","userGroups":["cluster-admin","users"],"accessType":"_admin",
+      "result":false
+    },
+    {"name":"DENY '_admin access on resource [database=db1:default, table=tmp:test*, column=tmp1:column1]' for g=cluster-admin",
+      "resources":{"database":{"values":["db1", "default"]}, "table":{"values":["tmp", "test*"]}, "column":{"values":["tmp1", "column1"]}},"user":"testuser","userGroups":["cluster-admin","users"],"accessType":"_admin",
+      "result":false
+    },
+    {"name":"ALLOW '_admin access on resource [database=default, table=test1:test2, column=column1]' for g=cluster-admin",
+      "resources":{"database":{"values":["default"]}, "table":{"values":["test1", "test2"]}, "column":{"values":["column1"]}},"user":"testuser","userGroups":["cluster-admin","users"],"accessType":"_admin",
+      "result":true
+    },
+    {"name":"DENY '_admin access on resource [database=default, table=test1:test2:test3, column=column1]' for g=cluster-admin",
+      "resources":{"database":{"values":["default"]}, "table":{"values":["test1", "test2", "test3"]}, "column":{"values":["column1"]}},"user":"testuser","userGroups":["cluster-admin","users"],"accessType":"_admin",
+      "result":false
+    },
+    {"name":"DENY '_admin access on resource [database=default, table=test1:test2, column=column1,column2]' for g=cluster-admin",
+      "resources":{"database":{"values":["default"]}, "table":{"values":["test1", "test2"]}, "column":{"values":["column1","column2"]}},"user":"testuser","userGroups":["cluster-admin","users"],"accessType":"_admin",
+      "result":false
+    },
+    {"name":"DENY '_admin access on resource [database=default, table=test1:test2, column=column1]' for g=cluster-admin",
+      "resources":{"database":{"values":["default"]}, "table":{"values":["test1", "test2", "test3"]}, "column":{"values":["column1"]}},"user":"testuser","userGroups":["cluster-admin","users"],"accessType":"_admin",
+      "result":false
+    },
+
+    {"name":"4 'create allowed policies' for g=cluster-admin",
+     "user":"testuser","userGroups":["cluster-admin","users"],"accessType":"create","allowedPolicies":[2, 21, 4, 5]
+    }
+    ,
+    {"name":"2 'select allowed policies' for g=finance-controller",
+     "user":"testuser","userGroups":["finance-controller","users"],"accessType":"select","allowedPolicies":[3, 4]
+    }
+    ,
+    {"name":"0 'drop allowed policies' for g=finance-controller",
+     "user":"testuser","userGroups":["finance-controller","users"],"accessType":"drop","allowedPolicies":[]
+    }
+    ,
+    {"name":"0 'select allowed policies' for u=testuser",
+      "user":"testuser","userGroups":["public","users"],"accessType":"select","allowedPolicies":[]
+    }
+    ,
+    {"name":"5 'select allowed policies' for u=user1",
+     "user":"user1","userGroups":["public","users"],"accessType":"select","allowedPolicies":[2, 21, 3, 4, 5]
+    }
+  ]
+}
+

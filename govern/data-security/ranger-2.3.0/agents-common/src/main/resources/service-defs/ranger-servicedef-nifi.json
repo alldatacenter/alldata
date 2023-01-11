@@ -1,0 +1,178 @@
+{
+  "id":10,
+  "name":"nifi",
+  "displayName": "nifi",
+  "implClass":"org.apache.ranger.services.nifi.RangerServiceNiFi",
+  "label":"NIFI",
+  "description":"NiFi",
+  "resources":[
+    {
+      "itemId":100,
+      "name":"nifi-resource",
+      "type":"string",
+      "level":10,
+      "parent":"",
+      "mandatory":true,
+      "lookupSupported":true,
+      "recursiveSupported":false,
+      "excludesSupported":false,
+      "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions":{
+        "wildCard":true,
+        "ignoreCase":true
+      },
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"NiFi Resource Identifier",
+      "description":"NiFi Resource"
+    }
+
+  ],
+  "accessTypes":[
+    {
+      "itemId":100,
+      "name":"READ",
+      "label":"Read"
+    },
+    {
+      "itemId":200,
+      "name":"WRITE",
+      "label":"Write"
+    }
+  ],
+  "configs":[
+    {
+      "itemId":400,
+      "name":"nifi.url",
+      "type":"string",
+      "mandatory":true,
+      "defaultValue":"http://localhost:8080/nifi-api/resources",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"{\"TextFieldWithIcon\":true, \"info\": \"The URL of the NiFi REST API that provides the available resources.\"}",
+      "label":"NiFi URL"
+    },
+    {
+      "itemId": 410,
+      "name": "nifi.authentication",
+      "type": "enum",
+      "subType": "authType",
+      "mandatory": true,
+      "validationRegEx":"",
+      "validationMessage": "",
+      "uiHint":"",
+      "label": "Authentication Type",
+      "defaultValue": "NONE"
+    },
+    {
+      "itemId": 411,
+      "name": "nifi.ssl.use.default.context",
+      "type": "bool",
+      "subType": "YesTrue:NoFalse",
+      "mandatory": true,
+      "defaultValue": "false",
+      "validationRegEx": "",
+      "validationMessage": "",
+      "uiHint": "{\"TextFieldWithIcon\":true, \"info\": \"If true, then Ranger's keystore and truststore will be used to communicate with NiFi. If false, the keystore and truststore properties must be provided.\"}",
+      "label": "Use Ranger's Default SSL Context"
+    },
+    {
+      "itemId":500,
+      "name":"nifi.ssl.keystore",
+      "type":"string",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Keystore"
+    },
+    {
+      "itemId":510,
+      "name":"nifi.ssl.keystoreType",
+      "type":"string",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Keystore Type"
+    },
+    {
+      "itemId":520,
+      "name":"nifi.ssl.keystorePassword",
+      "type":"password",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Keystore Password"
+    },
+    {
+      "itemId":530,
+      "name":"nifi.ssl.truststore",
+      "type":"string",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Truststore"
+    },
+    {
+      "itemId":540,
+      "name":"nifi.ssl.truststoreType",
+      "type":"string",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Truststore Type"
+    },
+    {
+      "itemId":550,
+      "name":"nifi.ssl.truststorePassword",
+      "type":"password",
+      "mandatory":false,
+      "defaultValue":"",
+      "validationRegEx":"",
+      "validationMessage":"",
+      "uiHint":"",
+      "label":"Truststore Password"
+    }
+  ],
+  "enums":
+  [
+      {
+        "itemId": 1,
+        "name": "authType",
+        "elements":
+        [
+          {
+            "itemId": 1,
+            "name": "NONE",
+            "label": "None"
+          },
+          {
+            "itemId": 2,
+            "name": "SSL",
+            "label": "SSL"
+          }
+        ],
+
+        "defaultIndex": 0
+      }
+  ],
+  "options": {
+    "enableDenyAndExceptionsInPolicies": "false"
+  },
+  "contextEnrichers":[
+
+  ],
+  "policyConditions":[
+
+  ]
+}

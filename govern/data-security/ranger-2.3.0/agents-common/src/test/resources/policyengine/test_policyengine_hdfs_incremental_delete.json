@@ -1,0 +1,635 @@
+{
+  "serviceName":"hdfsdev",
+
+  "serviceDef":{
+    "name":"hdfs",
+    "id":1,
+    "resources":[
+      {"name":"path","type":"path","level":10,"mandatory":true,"lookupSupported":true,"recursiveSupported": true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":true, "ignoreCase":false},"label":"Resource Path","description":"HDFS file or directory path"}
+    ],
+    "accessTypes":[
+      {"itemId": 1, "name":"read","label":"Read"},
+      {"itemId": 2, "name":"write","label":"Write"},
+      {"itemId": 3, "name":"execute","label":"Execute"}
+    ],
+    "contextEnrichers": [],
+    "policyConditions": []
+  },
+
+  "policies":[
+    {"id":1,"name":"policy_for_audits","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["/*"],"isRecursive":true}},
+      "policyItems":[]
+    }
+  ,
+    {"id":10,"name":"user1_/test?_notrecursive","isEnabled":true,"isAuditEnabled":true,
+      "resources":{"path":{"values":["/test?"],"isRecursive":false}},
+      "policyItems":[
+        {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+      ]
+    }
+  ],
+
+  "testsInfo" : {
+    "tests":[
+      {"name":"ALLOW test_01A_wildcard_true_recursive_false",
+        "request":{
+          "resource":{"elements":{"path":"/test1"}},
+          "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1"
+        },
+        "result":{"isAudited":true,"isAllowed":true,"policyId":10}
+      }
+      ,
+      {"name":"DENY test_01B_wildcard_true_recursive_false",
+        "request":{
+          "resource":{"elements":{"path":"/test1/test11"}},
+          "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/test11"
+        },
+        "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+      }
+      ,
+      {"name":"DENY test_01C_wildcard_true_recursive_false",
+        "request":{
+          "resource":{"elements":{"path":"/test12"}},
+          "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test12"
+        },
+        "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+      }
+    ],
+    "updatedPolicies": {
+      "policyDeltas": [
+        {"changeType": 2,
+          "policy": {
+            "id": 10,
+            "version": 1,
+            "policyType": 0,
+            "serviceType": "hdfs"
+          }
+        }
+      ,
+        {"changeType": 0,
+          "policy": {"serviceType": "hdfs", "policyType": 0, "version": 1,
+            "id":20,"name":"user1_/test?","isEnabled":true,"isAuditEnabled":true,
+            "resources":{"path":{"values":["/test?"],"isRecursive":true}},
+            "policyItems":[
+              {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+            ]
+          }
+        }
+      ]
+    },
+    "updatedTestsInfo" : {
+      "tests": [
+        {"name":"ALLOW test_02A_wildcard_true_recursive_true",
+          "request":{
+            "resource":{"elements":{"path":"/test1/test11"}},
+            "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/test11"
+          },
+          "result":{"isAudited":true,"isAllowed":true,"policyId":20}
+        }
+      ],
+      "updatedPolicies": {
+        "policyDeltas": [
+          {"changeType": 2,
+            "policy": {
+              "id": 20,
+              "version": 1,
+              "policyType": 0,
+              "serviceType": "hdfs"
+            }
+          }
+        ,
+          {"changeType": 0,
+            "policy": {"serviceType": "hdfs", "policyType": 0, "version": 1,
+              "id":30,"name":"user1_/test?a?_notrecursive","isEnabled":true,"isAuditEnabled":true,
+              "resources":{"path":{"values":["/test?a?"],"isRecursive":false}},
+              "policyItems":[
+                {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+              ]
+            }
+          }
+        ]
+      },
+      "updatedTestsInfo" : {
+        "tests": [
+          {"name":"ALLOW test_03A_wildcard_true_recursive_false",
+            "request":{
+              "resource":{"elements":{"path":"/test1a1"}},
+              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1a1"
+            },
+            "result":{"isAudited":true,"isAllowed":true,"policyId":30}
+          }
+          ,
+          {"name":"DENY test_03B_wildcard_true_recursive_false",
+            "request":{
+              "resource":{"elements":{"path":"/test2A2"}},
+              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test2A2"
+            },
+            "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+          }
+        ,
+          {"name":"DENY test_03C_wildcard_true_recursive_false",
+            "request":{
+              "resource":{"elements":{"path":"/test1a12"}},
+              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1a12"
+            },
+            "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+          }
+        ,
+          {"name":"DENY test_03D_wildcard_true_recursive_false",
+            "request":{
+              "resource":{"elements":{"path":"/test12a1"}},
+              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test12a1"
+            },
+            "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+          }
+        ,
+          {"name":"DENY test_03E_wildcard_true_recursive_false",
+            "request":{
+              "resource":{"elements":{"path":"/test12a12"}},
+              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test12a12"
+            },
+            "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+          }
+        ,
+          {"name":"DENY test_03F_wildcard_true_recursive_false",
+            "request":{
+              "resource":{"elements":{"path":"/test1a"}},
+              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1a"
+            },
+            "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+          }
+        ],
+        "updatedPolicies": {
+          "policyDeltas": [
+            {"changeType": 2,
+              "policy": {
+                "id": 30,
+                "version": 1,
+                "policyType": 0,
+                "serviceType": "hdfs"
+              }
+            }
+          ,
+            {"changeType": 0,
+              "policy": {"serviceType": "hdfs", "policyType": 0, "version": 1,
+                "id":40,"name":"user1_/test?a?_recursive","isEnabled":true,"isAuditEnabled":true,
+                "resources":{"path":{"values":["/test?a?"],"isRecursive":true}},
+                "policyItems":[
+                  {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                ]
+              }
+            }
+          ]
+        },
+        "updatedTestsInfo" : {
+          "tests": [
+            {"name":"ALLOW test_04A_wildcard_true_recursive_true",
+              "request":{
+                "resource":{"elements":{"path":"/test1a1/test11a1"}},
+                "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1a1/test11a1"
+              },
+              "result":{"isAudited":true,"isAllowed":true,"policyId":40}
+            }
+          ]
+          ,
+          "updatedPolicies": {
+            "policyDeltas": [
+              {"changeType": 2,
+                "policy": {
+                  "id": 40,
+                  "version": 1,
+                  "policyType": 0,
+                  "serviceType": "hdfs"
+                }
+              }
+            ,
+              {"changeType": 0,
+                "policy": {"serviceType": "hdfs", "policyType": 0, "version": 1,
+                  "id":50,"name":"user1_/test??_notrecursive","isEnabled":true,"isAuditEnabled":true,
+                  "resources":{"path":{"values":["/test??"],"isRecursive":false}},
+                  "policyItems":[
+                    {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                  ]
+                }
+              }
+            ]
+          },
+          "updatedTestsInfo" : {
+            "tests": [
+              {"name":"ALLOW test_05A_wildcard_true_recursive_false",
+                "request":{
+                  "resource":{"elements":{"path":"/test12"}},
+                  "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test12"
+                },
+                "result":{"isAudited":true,"isAllowed":true,"policyId":50}
+              },
+              {"name":"ALLOW test_05B_wildcard_true_recursive_false",
+                "request":{
+                  "resource":{"elements":{"path":"/test1"}},
+                  "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1"
+                },
+                "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+              },
+              {"name":"ALLOW test_05C_wildcard_true_recursive_false",
+                "request":{
+                  "resource":{"elements":{"path":"/test1a1"}},
+                  "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1a1"
+                },
+                "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+              }
+            ],
+            "updatedPolicies": {
+              "policyDeltas": [
+                {"changeType": 2,
+                  "policy": {
+                    "id": 50,
+                    "version": 1,
+                    "policyType": 0,
+                    "serviceType": "hdfs"
+                  }
+                }
+              ,
+                {"changeType": 0,
+                  "policy": {"serviceType": "hdfs", "policyType": 0, "version": 1,
+                    "id":60,"name":"user1_/test???_notrecursive","isEnabled":true,"isAuditEnabled":true,
+                    "resources":{"path":{"values":["/test???"],"isRecursive":false}},
+                    "policyItems":[
+                      {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                    ]
+                  }
+                }
+              ]
+            },
+            "updatedTestsInfo" : {
+              "tests": [
+                {"name":"DENY test_06A_wildcard_true_recursive_false",
+                  "request":{
+                    "resource":{"elements":{"path":"/test12"}},
+                    "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test12"
+                  },
+                  "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+                },
+                {"name":"ALLOW test_06B_wildcard_true_recursive_false",
+                  "request":{
+                    "resource":{"elements":{"path":"/test1/1"}},
+                    "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/1"
+                  },
+                  "result":{"isAudited":true,"isAllowed":true,"policyId":60}
+                },
+                {"name":"ALLOW test_06C_wildcard_true_recursive_false",
+                  "request":{
+                    "resource":{"elements":{"path":"/test123"}},
+                    "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test123"
+                  },
+                  "result":{"isAudited":true,"isAllowed":true,"policyId":60}
+                }
+              ],
+              "updatedPolicies": {
+                "policyDeltas": [
+                  {"changeType": 2,
+                    "policy": {
+                      "id": 60,
+                      "version": 1,
+                      "policyType": 0,
+                      "serviceType": "hdfs"
+                    }
+                  }
+                ,
+                  {"changeType": 0,
+                    "policy": {"serviceType": "hdfs", "policyType": 0, "version": 1,
+                      "id":70,"name":"user1_/test1/?_notrecursive","isEnabled":true,"isAuditEnabled":true,
+                      "resources":{"path":{"values":["/test1/?"],"isRecursive":false}},
+                      "policyItems":[
+                        {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                      ]
+                    }
+                  }
+                ]
+              },
+              "updatedTestsInfo" : {
+                "tests": [
+                  {"name":"DENY test_07A_wildcard_true_recursive_false",
+                    "request":{
+                      "resource":{"elements":{"path":"/test1"}},
+                      "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1"
+                    },
+                    "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+                  },
+                  {"name":"DENY test_07B_wildcard_true_recursive_false",
+                    "request":{
+                      "resource":{"elements":{"path":"/test1/test11"}},
+                      "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/test11"
+                    },
+                    "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+                  },
+                  {"name":"ALLOW test_07C_wildcard_true_recursive_false",
+                    "request":{
+                      "resource":{"elements":{"path":"/test1/a"}},
+                      "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/a"
+                    },
+                    "result":{"isAudited":true,"isAllowed":true,"policyId":70}
+                  }
+                ],
+                "updatedPolicies": {
+                  "policyDeltas": [
+                    {"changeType": 2,
+                      "policy": {
+                        "id": 70,
+                        "version": 1,
+                        "policyType": 0,
+                        "serviceType": "hdfs"
+                      }
+                    }
+                  ,
+                    {"changeType": 0,
+                      "policy": {"serviceType": "hdfs", "policyType": 0, "version": 1,
+                        "id":80,"name":"user1_/test*_/test_notrecursive","isEnabled":true,"isAuditEnabled":true,
+                        "resources":{"path":{"values":["/test*", "/test"],"isRecursive":false}},
+                        "policyItems":[
+                          {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "updatedTestsInfo" : {
+                  "tests": [
+                    {"name":"ALLOW test_08A_wildcard_true_recursive_false",
+                      "request":{
+                        "resource":{"elements":{"path":"/test12"}},
+                        "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test12"
+                      },
+                      "result":{"isAudited":true,"isAllowed":true,"policyId":80}
+                    }
+                  ,
+                    {"name":"ALLOW test_08B_wildcard_true_recursive_false",
+                      "request":{
+                        "resource":{"elements":{"path":"/test1/1"}},
+                        "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/1"
+                      },
+                      "result":{"isAudited":true,"isAllowed":true,"policyId":80}
+                    }
+                  ,
+                    {"name":"ALLOW test_08C_wildcard_true_recursive_false",
+                      "request":{
+                        "resource":{"elements":{"path":"/test1/1/2"}},
+                        "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/1/2"
+                      },
+                      "result":{"isAudited":true,"isAllowed":true,"policyId":80}
+                    }
+                  ,
+                    {"name":"ALLOW test_08D_wildcard_true_recursive_false",
+                      "request":{
+                        "resource":{"elements":{"path":"/test1/1/2/a.txt"}},
+                        "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/1/2/a.txt"
+                      },
+                      "result":{"isAudited":true,"isAllowed":true,"policyId":80}
+                    }
+                  ],
+                  "updatedPolicies": {
+                    "policyDeltas": [
+                      {"changeType": 2,
+                        "policy": {
+                          "id": 80,
+                          "version": 1,
+                          "policyType": 0,
+                          "serviceType": "hdfs"
+                        }
+                      }
+                    ,
+                      {"changeType": 0,
+                        "policy": { "serviceType": "hdfs", "policyType": 0, "version": 1,
+                          "id":90,"name":"user1_/test*1*_notrecursive","isEnabled":true,"isAuditEnabled":true,
+                          "resources":{"path":{"values":["/test*1*"],"isRecursive":false}},
+                          "policyItems":[
+                            {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "updatedTestsInfo" : {
+                    "tests": [
+                      {"name":"ALLOW test_09A_wildcard_true_recursive_false ",
+                        "request":{
+                          "resource":{"elements":{"path":"/test1"}},
+                          "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1"
+                        },
+                        "result":{"isAudited":true,"isAllowed":true,"policyId":90}
+                      },
+                      {"name":"ALLOW test_09B_wildcard_true_recursive_false ",
+                        "request":{
+                          "resource":{"elements":{"path":"/test1/1"}},
+                          "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/1"
+                        },
+                        "result":{"isAudited":true,"isAllowed":true,"policyId":90}
+                      },
+                      {"name":"ALLOW test_09C_wildcard_true_recursive_false ",
+                        "request":{
+                          "resource":{"elements":{"path":"/test1/1/2"}},
+                          "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/1/2"
+                        },
+                        "result":{"isAudited":true,"isAllowed":true,"policyId":90}
+                      }
+                    ],
+                    "updatedPolicies": {
+                      "policyDeltas": [
+                        {"changeType": 2,
+                          "policy": {
+                            "id": 90,
+                            "version": 1,
+                            "policyType": 0,
+                            "serviceType": "hdfs"
+                          }
+                        }
+                      ,
+                        {"changeType": 0,
+                          "policy": { "serviceType": "hdfs", "policyType": 0, "version": 1,
+                            "id":100,"name":"user1_/test*1*2_notrecursive","isEnabled":true,"isAuditEnabled":true,
+                            "resources":{"path":{"values":["/test*1*2"],"isRecursive":false}},
+                            "policyItems":[
+                              {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "updatedTestsInfo" : {
+                      "tests": [
+                        {"name":"ALLOW test_10A_wildcard_true_recursive_false ",
+                          "request":{
+                            "resource":{"elements":{"path":"/test12"}},
+                            "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test12"
+                          },
+                          "result":{"isAudited":true,"isAllowed":true,"policyId":100}
+                        },
+                        {"name":"DENY test_10B_wildcard_true_recursive_false ",
+                          "request":{
+                            "resource":{"elements":{"path":"/test123"}},
+                            "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test123"
+                          },
+                          "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+                        },
+                        {"name":"ALLOW test_10C_wildcard_true_recursive_false ",
+                          "request":{
+                            "resource":{"elements":{"path":"/test12a12"}},
+                            "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /testa12"
+                          },
+                          "result":{"isAudited":true,"isAllowed":true,"policyId":100}
+                        },
+                        {"name":"ALLOW test_10D_wildcard_true_recursive_false ",
+                          "request":{
+                            "resource":{"elements":{"path":"/test2/1/2"}},
+                            "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test2/1/2"
+                          },
+                          "result":{"isAudited":true,"isAllowed":true,"policyId":100}
+                        }
+                      ],
+                      "updatedPolicies": {
+                        "policyDeltas": [
+                          {"changeType": 2,
+                            "policy": {
+                              "id": 100,
+                              "version": 1,
+                              "policyType": 0,
+                              "serviceType": "hdfs"
+                            }
+                          }
+                        ,
+                          {"changeType": 0,
+                            "policy": { "serviceType": "hdfs", "policyType": 0, "version": 1,
+                              "id":110,"name":"user1_/test1/b*y.txt_/test2_notrecursive","isEnabled":true,"isAuditEnabled":true,
+                              "resources":{"path":{"values":["/test1/b*y.txt", "/test2"],"isRecursive":false}},
+                              "policyItems":[
+                                {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "updatedTestsInfo" : {
+                        "tests": [
+                          {"name":"ALLOW test_11A_wildcard_true_recursive_false ",
+                            "request":{
+                              "resource":{"elements":{"path":"/test1/boy.txt"}},
+                              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/boy.txt"
+                            },
+                            "result":{"isAudited":true,"isAllowed":true,"policyId":110}
+                          },
+                          {"name":"ALLOW test_11B_wildcard_true_recursive_false ",
+                            "request":{
+                              "resource":{"elements":{"path":"/test1/b1/a2/any.txt"}},
+                              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/b1/a1/any.txt"
+                            },
+                            "result":{"isAudited":true,"isAllowed":true,"policyId":110}
+                          },
+                          {"name":"ALLOW test_11C_wildcard_true_recursive_false ",
+                            "request":{
+                              "resource":{"elements":{"path":"/test1/by.txt"}},
+                              "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/by.txt"
+                            },
+                            "result":{"isAudited":true,"isAllowed":true,"policyId":110}
+                          }
+                        ],
+                        "updatedPolicies": {
+                          "policyDeltas": [
+                            {"changeType": 2,
+                              "policy": {
+                                "id": 110,
+                                "version": 1,
+                                "policyType": 0,
+                                "serviceType": "hdfs"
+                              }
+                            }
+                          ,
+                            {"changeType": 0,
+                              "policy": { "serviceType": "hdfs", "policyType": 0, "version": 1,
+                                "id":120,"name":"user1_/test1/*/a.txt_/test2_notrecursive","isEnabled":true,"isAuditEnabled":true,
+                                "resources":{"path":{"values":["/test1/*/a.txt", "/test2"],"isRecursive":false}},
+                                "policyItems":[
+                                  {"accesses":[{"type":"read","isAllowed":true}, {"type":"write","isAllowed":true}, {"type":"execute","isAllowed":true}],"users":["hrt_21"],"groups":[],"delegateAdmin":false}
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "updatedTestsInfo" : {
+                          "tests": [
+                            {"name":"ALLOW test_12A_wildcard_true_recursive_false_target_dir ",
+                              "request":{
+                                "resource":{"elements":{"path":"/test2"}},
+                                "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test2"
+                              },
+                              "result":{"isAudited":true,"isAllowed":true,"policyId":120}
+                            },
+                            {"name":"DENY test_12A_wildcard_true_recursive_false ",
+                              "request":{
+                                "resource":{"elements":{"path":"/test1/a.txt"}},
+                                "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/a.txt"
+                              },
+                              "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+                            },
+                            {"name":"ALLOW test_12B_wildcard_true_recursive_false ",
+                              "request":{
+                                "resource":{"elements":{"path":"/test1/1/2/a.txt"}},
+                                "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/1/2/a.txt"
+                              },
+                              "result":{"isAudited":true,"isAllowed":true,"policyId":120}
+                            },
+                            {"name":"DENY test_12C_wildcard_true_recursive_false ",
+                              "request":{
+                                "resource":{"elements":{"path":"/test1/1/2/ba.txt"}},
+                                "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test1/1/2/ba.txt"
+                              },
+                              "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+                            }
+                          ],
+                          "updatedPolicies": {
+                            "policyDeltas": [
+                              {"changeType": 2,
+                                "policy": {
+                                  "id": 120,
+                                  "version": 1,
+                                  "policyType": 0,
+                                  "serviceType": "hdfs"
+                                }
+                              }
+                            ]
+                          },
+                          "updatedTestsInfo" : {
+                            "tests": [
+                              {"name":"DENY test_13_wildcard_true_recursive_false ",
+                                "request":{
+                                  "resource":{"elements":{"path":"/test2"}},
+                                  "accessType":"write","user":"hrt_21","userGroups":[],"requestData":"write /test2"
+                                },
+                                "result":{"isAudited":true,"isAllowed":false,"policyId":-1}
+                              }
+                            ],
+                            "updatedPolicies": {
+                              "policyDeltas": [
+                                {"changeType": 2,
+                                  "policy": {
+                                    "id": 1,
+                                    "version": 1,
+                                    "policyType": 0,
+                                    "serviceType": "hdfs"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
