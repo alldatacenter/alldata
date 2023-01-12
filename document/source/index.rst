@@ -15,16 +15,16 @@
    studio-tasks/index
    ai-studio/index
    ai-tasks/index
-   dts/index
-   govern/index
-   iot/index
-   knowledge/index
    lakehouse/index
    olap/index
+   dts/index
+   govern/index
+   knowledge/index
+   iot/index
+   cluster/index
    buried/index
    buried-shop/index
    buried-trade/index
-   cluster/index
    clawlab/index
    clawler/index
    community/index

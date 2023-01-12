@@ -4,5 +4,6 @@
 .. toctree::
    :maxdepth: 2
    
+   dinky/index
    evolution/index
-   wiki/index
+   hudi/index
