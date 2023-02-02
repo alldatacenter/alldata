@@ -107,12 +107,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
@@ -197,6 +192,11 @@ public class TaskServiceImpl extends SuperServiceImpl<TaskMapper, Task> implemen
                 task.getDatabaseId(), null));
         }
         JobConfig config = buildJobConfig(task);
+        if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(task.getDialect())) {
+            Map<String,String> hive2FlinkSqlGateway = new HashMap<>();
+            hive2FlinkSqlGateway.put("sql-gateway.endpoint.type", "hiveserver2");
+            config.setConfig(hive2FlinkSqlGateway);
+        }
         JobManager jobManager = JobManager.build(config);
         if (!config.isJarTask()) {
             return jobManager.executeSql(task.getStatement());
@@ -215,6 +215,11 @@ public class TaskServiceImpl extends SuperServiceImpl<TaskMapper, Task> implemen
                 task.getDatabaseId(), null));
         }
         JobConfig config = buildJobConfig(task);
+        if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(task.getDialect())) {
+            Map<String,String> hive2FlinkSqlGateway = new HashMap<>();
+            hive2FlinkSqlGateway.put("sql-gateway.endpoint.type", "hiveserver2");
+            config.setConfig(hive2FlinkSqlGateway);
+        }
         JobManager jobManager = JobManager.build(config);
         if (!config.isJarTask()) {
             return jobManager.executeSql(task.getStatement());
@@ -242,6 +247,11 @@ public class TaskServiceImpl extends SuperServiceImpl<TaskMapper, Task> implemen
             updateById(task);
         }
         JobConfig config = buildJobConfig(task);
+        if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(task.getDialect())) {
+            Map<String,String> hive2FlinkSqlGateway = new HashMap<>();
+            hive2FlinkSqlGateway.put("sql-gateway.endpoint.type", "hiveserver2");
+            config.setConfig(hive2FlinkSqlGateway);
+        }
         JobManager jobManager = JobManager.build(config);
         if (!config.isJarTask()) {
             return jobManager.executeSql(task.getStatement());
@@ -294,6 +304,11 @@ public class TaskServiceImpl extends SuperServiceImpl<TaskMapper, Task> implemen
 
     private List<SqlExplainResult> explainFlinkSqlTask(Task task) {
         JobConfig config = buildJobConfig(task);
+        if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(task.getDialect())) {
+            Map<String,String> hive2FlinkSqlGateway = new HashMap<>();
+            hive2FlinkSqlGateway.put("sql-gateway.endpoint.type", "hiveserver2");
+            config.setConfig(hive2FlinkSqlGateway);
+        }
         config.buildLocal();
         JobManager jobManager = JobManager.buildPlanMode(config);
         return jobManager.explainSql(task.getStatement()).getSqlExplainResults();
@@ -444,6 +459,11 @@ public class TaskServiceImpl extends SuperServiceImpl<TaskMapper, Task> implemen
             return task.getStatement();
         }
         JobConfig config = buildJobConfig(task);
+        if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(task.getDialect())) {
+            Map<String,String> hive2FlinkSqlGateway = new HashMap<>();
+            hive2FlinkSqlGateway.put("sql-gateway.endpoint.type", "hiveserver2");
+            config.setConfig(hive2FlinkSqlGateway);
+        }
         JobManager jobManager = JobManager.build(config);
         if (!config.isJarTask()) {
             return jobManager.exportSql(task.getStatement());

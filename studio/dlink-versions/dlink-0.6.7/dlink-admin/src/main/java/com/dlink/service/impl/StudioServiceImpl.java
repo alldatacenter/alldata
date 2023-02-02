@@ -66,10 +66,7 @@ import com.dlink.sql.FlinkQuery;
 import com.dlink.utils.RunTimeUtil;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -132,6 +129,8 @@ public class StudioServiceImpl implements StudioService {
         if (Dialect.notFlinkSql(studioExecuteDTO.getDialect())) {
             return executeCommonSql(SqlDTO.build(studioExecuteDTO.getStatement(),
                 studioExecuteDTO.getDatabaseId(), studioExecuteDTO.getMaxRowNum()));
+        } else if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(studioExecuteDTO.getDialect())) {
+            return executeHive2FlinkSql(studioExecuteDTO);
         } else {
             return executeFlinkSql(studioExecuteDTO);
         }
@@ -140,6 +139,26 @@ public class StudioServiceImpl implements StudioService {
     private JobResult executeFlinkSql(StudioExecuteDTO studioExecuteDTO) {
         addFlinkSQLEnv(studioExecuteDTO);
         JobConfig config = studioExecuteDTO.getJobConfig();
+        buildSession(config);
+        // To initialize java udf, but it has a bug in the product environment now.
+        initUDF(config, studioExecuteDTO.getStatement());
+        JobManager jobManager = JobManager.build(config);
+        JobResult jobResult = jobManager.executeSql(studioExecuteDTO.getStatement());
+        RunTimeUtil.recovery(jobManager);
+        return jobResult;
+    }
+
+    /**
+     * 支持executeHive2FlinkSql
+     * @param studioExecuteDTO
+     * @return
+     */
+    private JobResult executeHive2FlinkSql(StudioExecuteDTO studioExecuteDTO) {
+        addFlinkSQLEnv(studioExecuteDTO);
+        JobConfig config = studioExecuteDTO.getJobConfig();
+        Map<String,String> hive2FlinkSqlGateway = new HashMap<>();
+        hive2FlinkSqlGateway.put("sql-gateway.endpoint.type", "hiveserver2");
+        config.setConfig(hive2FlinkSqlGateway);
         buildSession(config);
         // To initialize java udf, but it has a bug in the product environment now.
         initUDF(config, studioExecuteDTO.getStatement());
@@ -204,6 +223,8 @@ public class StudioServiceImpl implements StudioService {
     public List<SqlExplainResult> explainSql(StudioExecuteDTO studioExecuteDTO) {
         if (Dialect.notFlinkSql(studioExecuteDTO.getDialect())) {
             return explainCommonSql(studioExecuteDTO);
+        } else if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(studioExecuteDTO.getDialect())) {
+            return explainHive2FlinkSql(studioExecuteDTO);
         } else {
             return explainFlinkSql(studioExecuteDTO);
         }
@@ -220,6 +241,22 @@ public class StudioServiceImpl implements StudioService {
         JobManager jobManager = JobManager.buildPlanMode(config);
         return jobManager.explainSql(studioExecuteDTO.getStatement()).getSqlExplainResults();
     }
+
+    private List<SqlExplainResult> explainHive2FlinkSql(StudioExecuteDTO studioExecuteDTO) {
+        addFlinkSQLEnv(studioExecuteDTO);
+        JobConfig config = studioExecuteDTO.getJobConfig();
+        Map<String,String> hive2FlinkSqlGateway = new HashMap<>();
+        hive2FlinkSqlGateway.put("sql-gateway.endpoint.type", "hiveserver2");
+        config.setConfig(hive2FlinkSqlGateway);
+        // If you are using explainSql | getStreamGraph | getJobPlan, make the dialect change to local.
+        config.buildLocal();
+        buildSession(config);
+        // To initialize java udf, but it has a bug in the product environment now.
+        // initUDF(config,studioExecuteDTO.getStatement());
+        JobManager jobManager = JobManager.buildPlanMode(config);
+        return jobManager.explainSql(studioExecuteDTO.getStatement()).getSqlExplainResults();
+    }
+
 
     private List<SqlExplainResult> explainCommonSql(StudioExecuteDTO studioExecuteDTO) {
         if (Asserts.isNull(studioExecuteDTO.getDatabaseId())) {
@@ -414,6 +451,14 @@ public class StudioServiceImpl implements StudioService {
                 defaultCatalog.setSchemas(driver.listSchemas());
                 catalogs.add(defaultCatalog);
             }
+        } else if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(studioMetaStoreDTO.getDialect())) {
+            DataBase dataBase = dataBaseService.getById(studioMetaStoreDTO.getDatabaseId());
+            if (!Asserts.isNull(dataBase)) {
+                Catalog defaultCatalog = Catalog.build(FlinkQuery.defaultCatalog());
+                Driver driver = Driver.build(dataBase.getDriverConfig());
+                defaultCatalog.setSchemas(driver.listSchemas());
+                catalogs.add(defaultCatalog);
+            }
         } else {
             studioMetaStoreDTO.setStatement(FlinkQuery.showCatalogs());
             IResult result = executeMSFlinkSql(studioMetaStoreDTO);
@@ -455,6 +500,12 @@ public class StudioServiceImpl implements StudioService {
         Schema schema = Schema.build(studioMetaStoreDTO.getDatabase());
         List<Table> tables = new ArrayList<>();
         if (Dialect.notFlinkSql(studioMetaStoreDTO.getDialect())) {
+            DataBase dataBase = dataBaseService.getById(studioMetaStoreDTO.getDatabaseId());
+            if (Asserts.isNotNull(dataBase)) {
+                Driver driver = Driver.build(dataBase.getDriverConfig());
+                tables.addAll(driver.listTables(studioMetaStoreDTO.getDatabase()));
+            }
+        } else if (Dialect.HIVE2FLINK.getValue().equalsIgnoreCase(studioMetaStoreDTO.getDialect())) {
             DataBase dataBase = dataBaseService.getById(studioMetaStoreDTO.getDatabaseId());
             if (Asserts.isNotNull(dataBase)) {
                 Driver driver = Driver.build(dataBase.getDriverConfig());

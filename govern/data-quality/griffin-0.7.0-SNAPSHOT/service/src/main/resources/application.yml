@@ -27,7 +27,7 @@ spring:
     generate-ddl: 'true'
     show-sql: 'true'
   datasource:
-    jdbc-url: jdbc:mysql://localhost:3306/alldata_AllDataDC?autoReconnect=true&useSSL=false
+    jdbc-url: jdbc:mysql://localhost:3306/griffin_result?autoReconnect=true&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver

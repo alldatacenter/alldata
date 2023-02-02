@@ -31,7 +31,7 @@ public enum Dialect {
 
     FLINKSQL("FlinkSql"), FLINKJAR("FlinkJar"), FLINKSQLENV("FlinkSqlEnv"), SQL("Sql"), JAVA("Java"),
     MYSQL("Mysql"), ORACLE("Oracle"), SQLSERVER("SqlServer"), POSTGRESQL("PostgreSql"), CLICKHOUSE("ClickHouse"),
-    DORIS("Doris"), PHOENIX("Phoenix"), HIVE("Hive"), STARROCKS("StarRocks");
+    DORIS("Doris"), PHOENIX("Phoenix"), HIVE("Hive"), HIVE2FLINK("Hive2Flink"), STARROCKS("StarRocks");
 
     private String value;
 
