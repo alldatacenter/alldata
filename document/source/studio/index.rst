@@ -10,7 +10,7 @@
    dlink/index
    dolphinscheduler/index
    doris/index
-   AllData总部前后端解决方案/index
+   eladmin/index
    flinkcdc/index
    lowcode/index
    rancher/index
