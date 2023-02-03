@@ -293,6 +293,36 @@
 >
 > 用户名：admin 密码：123456
 
+##  dinky新增hive2flink任务类型
+
+### 1、支持执行提交hive sql running on flink
+
+### 2、测试代码
+```
+@Test
+void testCreateDatabase() {
+    sql("create database db1").ok("CREATE DATABASE `DB1`");
+    sql("create database db1 comment 'comment db1' location '/path/to/db1'")
+            .ok(
+                    "CREATE DATABASE `DB1`\n"
+                            + "COMMENT 'comment db1'\n"
+                            + "LOCATION '/path/to/db1'");
+    sql("create database db1 with dbproperties ('k1'='v1','k2'='v2')")
+            .ok(
+                    "CREATE DATABASE `DB1` WITH DBPROPERTIES (\n"
+                            + "  'k1' = 'v1',\n"
+                            + "  'k2' = 'v2'\n"
+                            + ")");
+}
+```
+
+### 3、结果预览
+
+> 测试FlinkHiveSqlParser Passed
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/216624287-ecd671ab-33f0-4ce8-a938-2e4576e21e2b.png">
+<br/>
 
 ## Flink数据血缘初体验
 
