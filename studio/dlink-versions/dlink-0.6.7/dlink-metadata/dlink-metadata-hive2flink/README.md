@@ -11,3 +11,19 @@
 ### 4.1 ./bin/sql-gateway.sh start -Dsql-gateway.endpoint.type=hiveserver2
 
 ### 4.2 Flink CONF配置：sql-gateway.endpoint.type: hiveserver2
+
+## 5、使用样例
+
+```markdown
+    @Test
+    void testAlterDatabase() {
+        sql("alter database db1 set dbproperties('k1'='v1')")
+                .ok("ALTER DATABASE `DB1` SET DBPROPERTIES (\n" + "  'k1' = 'v1'\n" + ")");
+        sql("alter database db1 set location '/new/path'")
+                .ok("ALTER DATABASE `DB1` SET LOCATION '/new/path'");
+        sql("alter database db1 set owner user user1")
+                .ok("ALTER DATABASE `DB1` SET OWNER USER `USER1`");
+        sql("alter database db1 set owner role role1")
+                .ok("ALTER DATABASE `DB1` SET OWNER ROLE `ROLE1`");
+    }
+```
