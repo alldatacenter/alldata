@@ -1,0 +1,67 @@
+{
+  "index_patterns": ["spot-*"],
+  "settings": {
+    "number_of_shards": ${METRIC_INDEX_SHARDS:1},
+    "number_of_replicas": ${METRIC_INDEX_REPLICAS:1},
+    "index":{
+        "refresh_interval":"30s",
+        "translog.durability": "async",
+        "translog.sync_interval": "20s",
+        "translog.flush_threshold_size": "1024mb"
+    }
+  },
+  "mappings": {
+    "spot": {
+      "date_detection": false,
+      "dynamic_templates": [
+        {
+          "timestamp_nanosecond": {
+            "match": "timestamp",
+            "match_mapping_type": "long",
+            "mapping": {
+              "type": "long"
+            }
+          }
+        },
+        {
+          "timestamp_date_format": {
+            "match": "@timestamp",
+            "match_mapping_type": "long",
+            "mapping": {
+              "type": "date",
+              "format": "epoch_millis"
+            }
+          }
+        },
+        {
+          "tags": {
+            "match": "*",
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "keyword",
+              "ignore_above": 10240
+            }
+          }
+        },
+        {
+          "fields_float": {
+            "match": "*",
+            "match_mapping_type": "double",
+            "mapping": {
+              "type": "double"
+            }
+          }
+        },
+        {
+          "fields_long": {
+            "match": "*",
+            "match_mapping_type": "long",
+            "mapping": {
+              "type": "double"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

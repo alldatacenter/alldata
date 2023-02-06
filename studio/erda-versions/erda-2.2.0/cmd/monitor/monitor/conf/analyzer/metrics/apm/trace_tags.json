@@ -1,0 +1,140 @@
+{
+  "id": 9,
+  "attributes": {},
+  "version": "3.0",
+  "expression": {
+    "metric": "span",
+    "window": 1,
+    "filter": {},
+    "group": [
+      "trace_id"
+    ],
+    "functions": [
+      {
+        "field": "start_time",
+        "alias": "start_time",
+        "aggregator": "min"
+      },
+      {
+        "field": "end_time",
+        "aggregator": "max",
+        "alias": "end_time"
+      },
+      {
+        "field": "components",
+        "aggregator": "distinct",
+        "alias": "components",
+        "field_script": "function invoke(field, tag){ if(tag.span_layer=='http' || tag.span_layer=='rpc') return tag.service_name; return tag.component; }"
+      },
+      {
+        "field": "errors",
+        "aggregator": "sum",
+        "field_script": "function invoke(field, tag){ return tag.error=='true'?1:0; }"
+      },
+      {
+        "field": "applications",
+        "aggregator": "distinct",
+        "alias": "application_names",
+        "field_script": "function invoke(field, tag){ return tag.application_name; }"
+      },
+      {
+        "field": "applications_ids",
+        "aggregator": "distinct",
+        "alias": "applications_ids",
+        "field_script": "function invoke(field, tag){ return tag.application_id; }"
+      },
+      {
+        "field": "service_names",
+        "aggregator": "distinct",
+        "alias": "service_names",
+        "field_script": "function invoke(field, tag){ return tag.service_name; }"
+      },
+      {
+        "field": "service_ids",
+        "aggregator": "distinct",
+        "alias": "service_ids",
+        "field_script": "function invoke(field, tag){ return tag.service_id; }"
+      },
+      {
+        "field": "rpc_methods",
+        "aggregator": "distinct",
+        "alias": "rpc_methods",
+        "field_script": "function invoke(field, tag){ return tag.rpc_method; }"
+      },
+      {
+        "field": "rpc_targets",
+        "aggregator": "distinct",
+        "alias": "rpc_targets",
+        "field_script": "function invoke(field, tag){ return tag.rpc_target; }"
+      },
+      {
+        "field": "http_paths",
+        "alias": "http_paths",
+        "aggregator": "distinct",
+        "field_script": "function invoke(field, tag){ return tag.http_path; }"
+      },
+      {
+        "field": "db_names",
+        "alias": "db_names",
+        "aggregator": "distinct",
+        "field_script": "function invoke(field, tag){ return tag.db_name; }"
+      },
+      {
+        "field": "db_systems",
+        "alias": "db_systems",
+        "aggregator": "distinct",
+        "field_script": "function invoke(field, tag){ return tag.db_system; }"
+      },
+      {
+        "field": "topics",
+        "alias": "topics",
+        "aggregator": "distinct",
+        "field_script": "function invoke(field, tag){ return tag.message_bus_destination; }"
+      },
+      {
+        "field": "env_ids",
+        "alias": "env_ids",
+        "aggregator": "distinct",
+        "field_script": "function invoke(field, tag){ return tag.env_id; }"
+      },
+      {
+        "field": "terminus_keys",
+        "alias": "terminus_keys",
+        "aggregator": "distinct",
+        "field_script": "function invoke(field, tag){ return tag.terminus_key; }"
+      },
+      {
+        "field": "trace_duration",
+        "alias": "trace_duration",
+        "trigger": "aggregated",
+        "aggregator": "value",
+        "field_script": "function invoke(field, tag){ return field.end_time - field.start_time; }"
+      },
+      {
+        "field": "span_count",
+        "alias": "span_count",
+        "aggregator": "sum",
+        "field_script": "function invoke(field, tag){ return 1; }"
+      },
+      {
+        "field": "operation_names",
+        "alias": "operation_names",
+        "aggregator": "distinct",
+        "field_script": "function invoke(field, tag){ if( tag.parent_id || tag.parent_id!='' ) return null; else return tag.operation_name; }"
+      }
+    ],
+    "select": {
+      "trace_id": "#trace_id",
+      "org_id": "#org_id",
+      "org_name": "#org_name",
+      "cluster_name": "#cluster_name",
+      "project_id": "#project_id",
+      "project_name": "#project_name",
+      "workspace": "#workspace"
+    },
+    "alias": "trace",
+    "outputs": [
+      "metric"
+    ]
+  }
+}

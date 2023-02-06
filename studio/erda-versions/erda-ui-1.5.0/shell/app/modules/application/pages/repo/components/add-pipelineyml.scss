@@ -1,0 +1,53 @@
+.repo-add-pipelineyml {
+  .add-pipeline-file-container {
+    max-height: 660px;
+    overflow: auto;
+  }
+}
+
+.pipeline-template {
+  .pipeline-template-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    border: 1px solid $color-border;
+    cursor: pointer;
+
+    &.active-item,
+    &:hover {
+      color: $primary;
+      border: 1px solid $primary;
+    }
+
+    .name {
+      line-height: 22px;
+    }
+
+    .desc {
+      display: -webkit-box;
+      max-height: 40px;
+      overflow: hidden;
+      color: $text-desc;
+      font-size: 12px;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+
+      .template-icon {
+        margin-right: 0;
+        font-size: 40px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

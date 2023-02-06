@@ -1,0 +1,25 @@
+@url = http://localhost:8080/api
+
+### GetGroups
+GET {{url}}/msp/config/tenants/fd9be5de11930426481ab3ad9e11647ec/groups?pageNo=1&pageSize=15
+Accept: application/json
+User-ID: 1100
+
+### GetGroupProperties
+GET {{url}}/msp/config/tenants/fd9be5de11930426481ab3ad9e11647ec/groups/t06-hello-configcenter
+Accept: application/json
+User-ID: 1100
+
+### SaveGroupProperties
+POST {{url}}/msp/config/tenants/fd9be5de11930426481ab3ad9e11647ec/groups/t06-hello-configcenter
+Content-Type: application/json
+Accept: application/json
+User-ID: 1100
+
+[
+    {
+        "key":"testkey",
+        "value":"testval",
+        "source":"DICE"
+    }
+]

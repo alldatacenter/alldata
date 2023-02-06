@@ -1,0 +1,373 @@
+{
+  "id": "topology_node_gateway",
+  "name": "topology_node_gateway",
+  "desc": "",
+  "scope": "micro_service",
+  "scopeId": "global",
+  "viewConfig": [
+    {
+      "w": 24,
+      "h": 7,
+      "x": 0,
+      "y": 0,
+      "i": "view-VrLq6JXO",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "application_http_service"
+            ],
+            "groupby": [
+              "req_host::tag"
+            ],
+            "limit": 3,
+            "orderby": [
+              {
+                "dir": "DESC",
+                "expr": "sum(count_sum::field)"
+              }
+            ],
+            "select": [
+              {
+                "alias": "typeTybZBDTL",
+                "expr": "req_host::tag"
+              },
+              {
+                "alias": "valuebD64VaGD",
+                "expr": "round_float(sum(count_sum::field), 2)"
+              }
+            ],
+            "where": [
+              "target_addon_type::tag='ApiGateway'"
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "table",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_http"
+            ],
+            "limit": 3,
+            "resultFilters": [
+              {
+                "alias": "Target Addon Type",
+                "field": "application_http-target_addon_type::tag",
+                "filter": {
+                  "operation": "=",
+                  "value": "ApiGateway"
+                },
+                "key": "filterx3BvagjC",
+                "resultType": "string",
+                "type": "filter"
+              }
+            ],
+            "sortDimensions": [
+              {
+                "aggregation": "sum",
+                "alias": "请求次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Count",
+                    "zh": "请求次数"
+                  }
+                },
+                "field": "application_http-elapsed_count::field",
+                "key": "sort9zKC6Rue",
+                "resultType": "number",
+                "sort": "DESC",
+                "type": "sort"
+              }
+            ],
+            "typeDimensions": [
+              {
+                "alias": "域名",
+                "i18n": {
+                  "alias": {
+                    "en": "Domain",
+                    "zh": "域名"
+                  }
+                },
+                "field": "application_http-req_host::tag",
+                "key": "typeTybZBDTL",
+                "resultType": "string",
+                "type": "field"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "sum",
+                "alias": "请求次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Count",
+                    "zh": "请求次数"
+                  }
+                },
+                "field": "application_http-elapsed_count::field",
+                "key": "valuebD64VaGD",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": true,
+            "moreThanOneDayFormat": "M/D"
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "域名请求 TOP 3",
+        "i18n": {
+          "title": {
+            "en": "Domain Request TOP 3",
+            "zh": "域名请求 TOP 3"
+          }
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 8,
+      "i": "view-jipKAIYk",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "application_http_service"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "select": [
+              {
+                "alias": "typeQXtBniA6",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueA2KagOZF",
+                "expr": "round_float(sum(count_sum::field), 2)"
+              }
+            ],
+            "where": [
+              "target_addon_type::tag='ApiGateway'"
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:line",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_http"
+            ],
+            "resultFilters": [
+              {
+                "alias": "Target Addon Type",
+                "field": "application_http-target_addon_type::tag",
+                "filter": {
+                  "operation": "=",
+                  "value": "ApiGateway"
+                },
+                "key": "filterb105rFvK",
+                "resultType": "string",
+                "type": "filter"
+              }
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "typeQXtBniA6",
+                "type": "time"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "sum",
+                "alias": "请求次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Count",
+                    "zh": "请求次数"
+                  }
+                },
+                "field": "application_http-elapsed_count::field",
+                "key": "valueA2KagOZF",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "invalidToZero": true,
+            "noAreaColor": true
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "吞吐量",
+        "i18n": {
+          "title": {
+            "en": "Throughput",
+            "zh": "吞吐量"
+          }
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 17,
+      "i": "view-R1FREHx6",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "application_http"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "select": [
+              {
+                "alias": "type336bqk8x",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueywTyWVde",
+                "expr": "round_float(avg(elapsed_mean::field), 2)"
+              }
+            ],
+            "where": [
+              "target_addon_type::tag='ApiGateway'"
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:line",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_http"
+            ],
+            "resultFilters": [
+              {
+                "alias": "Target Addon Type",
+                "field": "application_http-target_addon_type::tag",
+                "filter": {
+                  "operation": "=",
+                  "value": "ApiGateway"
+                },
+                "key": "filterj1hRfnyW",
+                "resultType": "string",
+                "type": "filter"
+              }
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "type336bqk8x",
+                "type": "time"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "avg",
+                "alias": "平均延迟（ms）",
+                "i18n": {
+                  "alias": {
+                    "en": "Avg Time Delay(ms)",
+                    "zh": "平均延迟（ms）"
+                  }
+                },
+                "field": "application_http-elapsed_mean::field",
+                "key": "valueywTyWVde",
+                "resultType": "number",
+                "type": "field",
+                "unit": {
+                  "type": "TIME",
+                  "unit": "ns"
+                }
+              }
+            ]
+          },
+          "optionProps": {
+            "invalidToZero": true,
+            "noAreaColor": true
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "响应时间",
+        "i18n": {
+          "title": {
+            "en": "Response Time",
+            "zh": "响应时间"
+          }
+        }
+      }
+    }
+  ],
+  "version": "v2"
+}

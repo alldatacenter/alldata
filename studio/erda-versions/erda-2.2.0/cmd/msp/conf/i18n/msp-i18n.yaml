@@ -1,0 +1,263 @@
+en:
+  waiting_for_tracing_data: "waiting for tracing data"
+  success_get_tracing_data: "success to get tracing data"
+  fail_get_tracing_data: "fail to get tracing data"
+  stop_get_tracing_data: "cancelled to get tracing data"
+  workspace_dev: "Development"
+  workspace_test: "Testing"
+  workspace_staging: "Staging"
+  workspace_prod: "Production"
+  workspace_default: "DEFAULT"
+  project_type_dop: "DevOps Project"
+  project_type_msp: "MSP Project"
+  span_count_desc: Span Count DESC
+  span_count_asc: Span Count ASC
+  trace_duration_desc: Trace Duration DESC
+  trace_duration_asc: Trace Duration ASC
+  trace_time_desc: Trace Time DESC
+  trace_time_asc: Trace Time ASC
+  service_name: Service Name
+  trace_id: Trace ID
+  rpc_method: Rpc Method
+  http_path: HTTP Path
+  trace_success: Success
+  trace_error: Error
+  trace_all: All
+  rpsMaxTop5: Top 5 high traffic services
+  rpsMinTop5: Top 5 low traffic services
+  avgDurationTop5: Top 5 slow response services
+  errorRateTop5: Top 5 unhealthy services
+  pathRpsMaxTop5: Top 5 high throughput APIs
+  pathClientRpsMaxTop5: Top 5 external API calls
+  pathSlowTop5: Top 5 slow response APIs
+  sqlSlowTop5: Top 5 slow response SQL
+  exceptionCountTop5: Top 5 exception types
+  pathErrorRateTop5: Top 5 error APIs
+  transactionName: "Transaction name"
+  reqCount: "Number of calls"
+  rps: "Throughput"
+  duration: "Response time"
+  avgDuration: "Avg Duration"
+  requestDistribution: "Request distribution"
+  totalCount: "Total Count"
+  avgRps: "Avg Rps"
+  slowCount: "Number of slow calls"
+  errorCount: "Number of error calls"
+  errorRate: "Error Rate"
+  rpsUnit: "reqs/s"
+  avgDurationUnit: "ms"
+  countUnit: "freq"
+  pcsUnit: "pcs"
+  rateUnit: "%"
+  slowRequestDistribution: "Time distribution of slow calls"
+  errorRequestDistribution: "Time distribution of error calls"
+  occurTime: "Time of occurrence"
+  traceId: Trace ID
+  traceDuration: Duration
+  traceStartTime: Start time
+  traceSpanCount: Number of spans
+  traceServices: Service
+  traceDistribution: Tracing time distribution
+  cpuUsage: Container CPU
+  memoryUsage: Container 内存
+  diskioUsage: Disk IO
+  networkUsage: Container Network
+  nodejs_memory_heap: Heap Memory
+  nodejs_memory_non_heap: Heap Non Memory
+  nodejs_cluster: Cluster Count
+  nodejs_async_resource: Async Resources
+  jvm_memory_heap: Heap Memory
+  jvm_memory_non_heap: Heap Non Memory
+  jvm_memory_eden_space: Eden Space
+  jvm_memory_survivor_space: Survivor Space
+  jvm_memory_old_gen: Old Gen
+  jvm_gc_count: GC Count
+  jvm_gc_time: GC Average Duration
+  jvm_class_loader: Class Count
+  jvm_thread: JVM Thread
+  cpu: CPU
+  memory: Memory
+  load: System Load
+  podCount: Pod Count
+  disk: Disk IO Rate
+  network: Network Rate
+  api: "API"
+  reqAvgDuration: "Average response time of calls"
+  pageReqDurationDistribution: "Page loading time distribution"
+  pvUvCount: "PV/UV"
+  pv: "PV"
+  uv: "UV"
+  apdex: "Apdex"
+  avgPageLoadDuration: "Page loading time"
+  apiSuccessRate: "API success rate"
+  resourceLoadErrorCount: "Resource loading error"
+  jsErrorCount: "JS error"
+  maxReqDomainTop5: "Top 5 high request domains"
+  maxReqPageTop5: "Top 5 high request pages"
+  slowReqPageTop5: "Top 5 slow response pages"
+  slowReqRegionTop5: "Top 5 slow response regions"
+  s: s
+  m: m
+  h: h
+  project_owner_role: project owner
+  project_lead_role: project development lead
+  project_dev_role: development engineer
+  searchByTransactionName: "Search by transaction name"
+  searchByName: Search by name
+  alertListTableColumnName: Name
+  alertListTableColumnAlertName: Strategy
+  alertListTableColumnTriggerCount: Number of events
+  alertListTableColumnAlertLevel: AlertLevel
+  alertListTableColumnAlertState: AlertState
+  alertListTableColumnAlertSource: Event source
+  alertListTableColumnLastTriggerTime: LastTriggerTime
+  FATAL: Fatal
+  CRITICAL: Serious
+  WARNING: Warning
+  NOTICE: Notice
+  alert: Alert
+  recover: Recovered
+  pause: Paused
+  stop: Stopped
+  System: System
+  Custom: Custom
+  dingding: DingTalk
+  email: Email
+  mbox: Site message
+  vms: Phone
+  sms: SMS
+  dingtalk_work_notice: DingTalk Work Notice
+  success: success
+  failed: failed
+zh:
+  waiting_for_tracing_data: "正在获取链路追踪数据"
+  success_get_tracing_data: "获取链路追踪数据成功"
+  fail_get_tracing_data: "获取链路追踪数据失败"
+  stop_get_tracing_data: "已取消获取链路追踪数据"
+  workspace_dev: "开发"
+  workspace_test: "测试"
+  workspace_staging: "预发"
+  workspace_prod: "生产"
+  workspace_default: "默认"
+  project_type_dop: "DevOps 项目"
+  project_type_msp: "微服务观测项目"
+  span_count_desc: Span 数量降序
+  span_count_asc: Span 数量升序
+  trace_duration_desc: 追踪持续时间降序
+  trace_duration_asc: 追踪持续时间升序
+  trace_time_desc: 追踪发生时间降序
+  trace_time_asc: 追踪发生时间升序
+  service_name: 服务名
+  trace_id: 追踪 ID
+  rpc_method: Rpc Method
+  http_path: HTTP Path
+  trace_success: 成功
+  trace_error: 错误
+  trace_all: 所有
+  rpsMaxTop5: 高流量服务排行（Top5）
+  rpsMinTop5: 低流量服务排行（Top5）
+  avgDurationTop5: 慢响应服务排行（Top5）
+  errorRateTop5: 不健康服务排行（Top5）
+  pathRpsMaxTop5: 高吞吐量接口 Top5
+  pathClientRpsMaxTop5: 外部接口调用 Top5
+  pathSlowTop5: 慢响应接口 Top5
+  sqlSlowTop5: 慢响应SQL Top5
+  exceptionCountTop5: 异常类型 Top5
+  pathErrorRateTop5: 错误接口 Top5
+  transactionName: "事务名称"
+  reqCount: "调用次数"
+  slowCount: "慢调用次数"
+  rps: "吞吐量"
+  duration: "响应时间"
+  avgDuration: "平均响应时间"
+  requestDistribution: "请求分布"
+  totalCount: "总请求次数"
+  avgRps: "平均吞吐量"
+  errorCount: "错误调用次数"
+  errorRate: "错误率"
+  rpsUnit: "reqs/s"
+  avgDurationUnit: "ms"
+  countUnit: "次"
+  pcsUnit: "个"
+  rateUnit: "%"
+  slowRequestDistribution: "慢调用耗时分布"
+  errorRequestDistribution: "错误调用耗时分布"
+  occurTime: "发生时间"
+  traceId: 追踪 ID
+  traceDuration: 持续时间
+  traceStartTime: 起始时间
+  traceSpanCount: Span 数量
+  traceServices: 服务
+  traceDistribution: 链路耗时分布
+  cpuUsage: 容器 CPU
+  memoryUsage: 容器内存
+  diskioUsage: 磁盘 IO
+  networkUsage: 容器网络
+  nodejs_memory_heap: 堆内存
+  nodejs_memory_non_heap: 非堆内存
+  nodejs_cluster: Cluster Count
+  nodejs_async_resource: Async Resources
+  jvm_memory_heap: 堆内存
+  jvm_memory_non_heap: 非堆内存
+  jvm_memory_eden_space: Eden Space
+  jvm_memory_survivor_space: Survivor Space
+  jvm_memory_old_gen: Old Gen
+  jvm_gc_count: GC 次数
+  jvm_gc_time: GC 平均时间
+  jvm_class_loader: Class 数量
+  jvm_thread: JVM 线程
+  cpu: CPU
+  memory: 内存
+  load: 系统负载
+  podCount: Pod 数量
+  disk: 磁盘 IO 速率
+  network: 网络速率
+  api: "API"
+  reqAvgDuration: "调用平均响应时间"
+  pageReqDurationDistribution: "页面加载耗时分布"
+  pvUvCount: "PV/UV"
+  pv: "PV"
+  uv: "UV"
+  apdex: "Apdex"
+  avgPageLoadDuration: "页面加载耗时"
+  apiSuccessRate: "API 调用成功率"
+  resourceLoadErrorCount: "资源加载错误数"
+  jsErrorCount: "JS 错误数"
+  maxReqDomainTop5: "高访问量域名 Top5"
+  maxReqPageTop5: "高访问量页面 Top5"
+  slowReqPageTop5: "慢响应页面 Top5"
+  slowReqRegionTop5: "慢响应地区 Top5"
+  s: 秒
+  m: 分钟
+  h: 小时
+  project_owner_role: 项目所有者
+  project_lead_role: 研发主管
+  project_dev_role: 开发工程师
+  searchByTransactionName: "按事务名称搜索"
+  searchByName: 按名称搜索
+  alertListTableColumnName: 名称
+  alertListTableColumnAlertName: 所属策略
+  alertListTableColumnTriggerCount: 事件次数
+  alertListTableColumnAlertLevel: 级别
+  alertListTableColumnAlertState: 状态
+  alertListTableColumnAlertSource: 事件来源
+  alertListTableColumnLastTriggerTime: 最后触发时间
+  FATAL: 故障
+  CRITICAL: 严重
+  WARNING: 告警
+  NOTICE: 提示
+  alert: 告警
+  recover: 恢复
+  pause: 暂停
+  stop: 屏蔽
+  System: 系统
+  Custom: 自定义
+  dingding: 钉钉群
+  email: 邮箱
+  mbox: 站内信
+  vms: 语音通知
+  sms: 短信通知
+  dingtalk_work_notice: 钉钉工作通知
+  success: 成功
+  failed: 失败
+  Count: 次数

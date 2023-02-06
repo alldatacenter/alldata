@@ -1,0 +1,101 @@
+.yml-chart-node {
+  &.test-case-result-node {
+    width: 100%;
+    height: 100%;
+    padding: 0 12px;
+    background-color: $white;
+    border-radius: $radius;
+    cursor: pointer;
+    @extend %shallow-shadow;
+
+    &:hover {
+      @extend %hover-shadow;
+    }
+
+    .case-title {
+      display: flex;
+      align-items: center;
+
+      .title-icon {
+        width: 20px;
+        height: 20px;
+
+        > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .title-txt {
+        flex: 1;
+        width: 0;
+
+        .name {
+          line-height: 24px;
+        }
+
+        .type {
+          line-height: 20px;
+        }
+      }
+    }
+
+    .test-case-result-status {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 4px;
+      vertical-align: middle;
+      border-radius: 100%;
+    }
+
+    .test-case-status-box {
+      height: 28px;
+      padding: 0 12px;
+      line-height: 26px;
+
+      &.gray {
+        background-color: rgba($gray, 0.1);
+        border: 1px solid rgba($gray, 0.3);
+      }
+
+      &.green {
+        background-color: rgba($green, 0.2);
+        border: 1px solid rgba($green, 0.3);
+      }
+
+      &.red {
+        background-color: rgba($red, 0.2);
+        border: 1px solid rgba($red, 0.3);
+      }
+
+      &.blue {
+        background-color: rgba($blue, 0.2);
+        border: 1px solid rgba($blue, 0.3);
+      }
+
+      &.orange {
+        background-color: rgba($orange, 0.2);
+        border: 1px solid rgba($orange, 0.3);
+      }
+    }
+  }
+}
+
+.test-case-node-msg {
+  margin-bottom: 3px;
+
+  &-name {
+    display: inline-block;
+    padding: 0 4px;
+    color: $gainsboro;
+    font-weight: 500;
+    background-color: $navy;
+    border-radius: 3px;
+
+    &.error {
+      margin-right: 4px;
+      color: $orange;
+    }
+  }
+}

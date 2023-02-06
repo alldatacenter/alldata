@@ -1,0 +1,140 @@
+scenario: "auto-test-plan-list"
+
+hierarchy:
+  root: "autoTestPlan"
+  structure:
+    autoTestPlan: [ "tableContainer", "topHead", "formModal" ]
+    tableContainer:
+      slot: tableHead
+      table: table
+    tableHead:
+      left: filter
+    topHead: [ "addButton" ]
+
+rendering:
+  formModal:
+    - name: table
+      state:
+        - name: "reloadTablePageNo"
+          value: "{{ formModal.reloadTablePageNo }}"
+  table:
+    - name: formModal
+      state:
+        - name: "formModalVisible"
+          value: "{{ table.formModalVisible }}"
+        - name: "formModalTestPlanID"
+          value: "{{ table.formModalTestPlanID }}"
+
+  filter:
+    - name: table
+      state:
+        - name: "name"
+          value: "{{ filter.name }}"
+        - name: "archive"
+          value: "{{ filter.archive }}"
+        - name: "iteration"
+          value: "{{ filter.iteration }}"
+  addButton:
+    - name: formModal
+      state:
+        - name: "addTest"
+          value: "{{ addButton.addTest }}"
+
+  __DefaultRendering__:
+    - name: autoTestPlan
+    - name: tableContainer
+    - name: tableHead
+    - name: formModal
+    - name: topHead
+    - name: addButton
+    - name: filter
+    - name: table
+      state:
+        - name: "name"
+          value: "{{ filter.name }}"
+        - name: "archive"
+          value: "{{ filter.archive }}"
+        - name: "iteration"
+          value: "{{ filter.iteration }}"
+
+components:
+  autoTestPlan:
+    type: "Container"
+  filter:
+    type: "ConfigurableFilter"
+  table:
+    type: "Table"
+    operations:
+      changePageNo:
+        key: "changePageNo"
+        reload: true
+      clickRow:
+        key: "clickRow"
+        reload: false
+        command:
+          key: "goto"
+          target: "project_test_autoTestPlanDetail"
+          jumpOut: false
+      changeSort:
+        key: "changeSort"
+        reload: true
+    props:
+      rowKey: "id"
+      scroll:
+        x: 1200
+      columns:
+        - title: ${{ i18n.autotest.plan.id }}
+          dataIndex: "id"
+          width: 90
+        - title: ${{ i18n.autotest.plan.plan.name }}
+          dataIndex: "name"
+        - title: ${{ i18n.autotest.plan.test.space }}
+          dataIndex: "testSpace"
+          width: 100
+        - title: ${{ i18n.autotest.plan.iteration }}
+          dataIndex: "iteration"
+          width: 80
+        - title: ${{ i18n.autotest.plan.principal }}
+          dataIndex: "owners"
+          width: 80
+        - title: ${{ i18n.autotest.plan.total.executed.interfaces }}
+          dataIndex: "executeApiNum"
+          width: 150
+          sorter: true
+        - title: ${{ i18n.autotest.plan.execution.pass.rate }}
+          dataIndex: "passRate"
+          width: 150
+          sorter: true
+        - title: ${{ i18n.autotest.plan.execution.time }}
+          dataIndex: "executeTime"
+          width: 160
+          sorter: true
+        - title: ${{ i18n.autotest.plan.operations }}
+          dataIndex: "operate"
+          width: 120
+          fixed: "right"
+  tableContainer:
+    type: "ComposeTable"
+    props:
+      isTopHead: true
+  tableHead:
+    type: LRContainer
+  formModal:
+    type: 'FormModal'
+    operations:
+      submit:
+        key: "submit"
+        reload: true
+  addButton:
+    type: "Button"
+    operations:
+      click:
+        key: "addTest"
+        reload: true
+    props:
+      text: ${{ i18n.autotest.plan.new.plan }}
+      type: "primary"
+  topHead:
+    type: RowContainer
+    props:
+      isTopHead: true

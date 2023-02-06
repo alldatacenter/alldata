@@ -1,0 +1,92 @@
+name: "Zookeeper"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    org_name:
+        name: "Org Name"
+    port:
+        name: "Port"
+    server:
+        name: "Server"
+    state:
+        name: "State"
+fields:
+    approximate_data_size:
+        type: "number"
+        name: "Approximate Data Size"
+        unit: 
+    avg_latency:
+        type: "number"
+        name: "Avg Latency"
+        unit: 
+    ephemerals_count:
+        type: "number"
+        name: "Ephemerals Count"
+        unit: 
+    followers:
+        type: "number"
+        name: "Followers"
+        unit: 
+    max_file_descriptor_count:
+        type: "number"
+        name: "Maximum File Descriptor Count"
+        unit: 
+    max_latency:
+        type: "number"
+        name: "Maximum Latency"
+        unit: 
+    min_latency:
+        type: "number"
+        name: "Minimum Latency"
+        unit: 
+    num_alive_connections:
+        type: "number"
+        name: "Num Alive Connections"
+        unit: 
+    open_file_descriptor_count:
+        type: "number"
+        name: "Open File Descriptor Count"
+        unit: 
+    outstanding_requests:
+        type: "number"
+        name: "Outstanding Requests"
+        unit: 
+    packets_received:
+        type: "number"
+        name: "Packets Received"
+        unit: 
+    packets_sent:
+        type: "number"
+        name: "Packets Sent"
+        unit: 
+    pending_syncs:
+        type: "number"
+        name: "Pending Syncs"
+        unit: 
+    synced_followers:
+        type: "number"
+        name: "Synced Followers"
+        unit: 
+    version:
+        type: "string"
+        name: "Version"
+        unit: 
+    watch_count:
+        type: "number"
+        name: "Watch Count"
+        unit: 
+    znode_count:
+        type: "number"
+        name: "Znode Count"
+        unit: 
+

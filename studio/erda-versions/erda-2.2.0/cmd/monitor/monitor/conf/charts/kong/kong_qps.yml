@@ -1,0 +1,14 @@
+- kong_qps:
+    title: "QPS"
+    metric_names: "agg_kong"
+    type: "kong"
+    order: 0
+    defines:
+      sumCps.cnt_count:
+        label: "qps"
+        unit: "次/s"
+        unit_type: "NPS"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

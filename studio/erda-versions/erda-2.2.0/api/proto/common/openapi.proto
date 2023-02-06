@@ -1,0 +1,31 @@
+
+syntax = "proto3";
+
+package erda.common;
+import "google/protobuf/descriptor.proto";
+option go_package = "github.com/erda-project/erda-proto-go/common/pb";
+
+extend google.protobuf.MethodOptions {
+    OpenAPIOption openapi = 7325727;
+}
+
+extend google.protobuf.ServiceOptions {
+    OpenAPIOption openapi_service = 7494728;
+}
+
+message OpenAPIOption {
+    string path = 1;
+    string prefix = 2;
+    string backend_prefix = 3;
+    string service = 4;
+    bool private = 5;
+    APIAuth auth = 6;
+}
+
+message APIAuth {
+    bool no_check = 1;
+    bool check_login = 2;
+    bool try_check_login = 3;
+    bool check_token = 4;
+    bool check_basic_auth = 5;
+}

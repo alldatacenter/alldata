@@ -1,0 +1,48 @@
+.exception-detail {
+  .ex-chart-head {
+    padding-bottom: 10px;
+    overflow: hidden;
+
+    & > span {
+      display: block;
+      float: right;
+    }
+
+    .module-selector {
+      width: 200px;
+    }
+  }
+
+  .tab-select {
+    position: fixed;
+    top: 93px;
+    right: 40px;
+  }
+
+  .ex-chart-panel {
+    position: relative;
+    min-height: 500px;
+    margin-bottom: 20px;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+
+    .trace-detail-container {
+      border-radius: 6px;
+    }
+
+    .ex-log-container {
+      position: fixed;
+      top: 150px;
+      right: 30px;
+      bottom: 10px;
+      left: 230px;
+
+      .monitor-log-container {
+        top: 0;
+        right: 0;
+        bottom: 10px;
+        left: 0;
+      }
+    }
+  }
+}

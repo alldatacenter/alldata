@@ -1,0 +1,33 @@
+zh:
+  NotEnoughQuotaOnCurrentWorkspace: "当前环境资源配额不足"
+  FailedToDeployService: "服务 %s 部署失败"
+  FailedTodDeployAddon: "addon %s 部署失败"
+  FailedToUpdateService: "服务 %s 更新失败"
+  FailedToScaleService: "服务 %s 扩容失败"
+  CPURequiredMoreThanRemaining: "请求 CPU 新增 %s 核，大于当前剩余 CPU %s 核"
+  MemRequiredMoreThanRemaining: "请求内存新增 %s，大于当前环境剩余内存 %s"
+  PodRestartManyTimes: |-
+    Pod(%s)重启次数过多(%d次)，建议检查程序日志或健康检查.
+    程序日志入口：部署中心 -> 本次服务部署环境 -> 服务详情 -> 选择已停止 -> 查看最新的容器日志
+    健康检查配置入口：代码仓库 -> dice.yml 或 erda.yml -> health_check 的配置内容
+  FailedToSchedulePod: "Pod(%s)调度失败，请确认是否资源不足导致排队。"
+  PodNotReady: |-
+    Pod(%s)未就绪, 建议查看健康检查或镜像是否存在
+    健康检查配置入口：代码仓库 -> dice.yml -> health_check 的配置内容
+
+en:
+  NotEnoughQuotaOnCurrentWorkspace: "There is not enough resource quota in the workspace"
+  FailedToDeployService: "Failed to deploy the service %s"
+  FailedTodDeployAddon: "Failed to deploy the addon %s"
+  FailedToUpdateService: "Failed to update the service %s"
+  FailedToScaleService: "Failed to scale the service %s"
+  CPURequiredMoreThanRemaining: "Additional %s core CPU required, larger than current remaining %s core"
+  MemRequiredMoreThanRemaining: "Additional %s Memory required, larger than current remaining %s"
+  PodRestartManyTimes: |-
+    The Pod %s restarted %d times, please check the runtime log or the health probe configuration.
+    Runtime Log：Deployments -> the Workspace -> Service Details -> the stopped pod -> container log;
+    Health Probe Configuration: Code Repository (Files -> Source) -> dice.yml or erda.yml -> .services.{serviceName}.health_check
+  FailedToSchedulePod: "Failed to schedule the Pod %s，please confirm whether there are insufficient resources to cause queuing"
+  PodNotReady: |-
+    The Pod %s is not ready, it is recommended to check whether the health probe and the image is correct.
+    Health Probe Configuration: Code Repository (Files -> Source) -> dice.yml or erda.yml -> .services.{serviceName}.health_check

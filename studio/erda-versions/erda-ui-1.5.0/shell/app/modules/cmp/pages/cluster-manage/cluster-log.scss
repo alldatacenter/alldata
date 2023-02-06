@@ -1,0 +1,90 @@
+.cluster-log-step-wrap {
+  display: flex;
+  width: 70%;
+  height: 40px;
+  margin: 0 auto 10px;
+
+  .step-task-item {
+    text-align: center;
+
+    .iconfont {
+      display: block;
+      font-size: 1.25rem;
+    }
+  }
+
+  .one-step {
+    position: relative;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: center;
+
+    .step-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 8px;
+
+      .iconfont {
+        margin-left: 4px;
+        font-size: 1em;
+      }
+
+      .status-text {
+        font-size: 14px;
+      }
+    }
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      right: 70%;
+      width: 60%;
+      height: 1px;
+      background-color: $gainsboro;
+      content: '';
+    }
+
+    &:first-child {
+      &:before {
+        content: none;
+      }
+    }
+
+    &.processing {
+      color: $color-text-desc;
+    }
+
+    &.default {
+      color: $color-text-desc;
+    }
+
+    &.error {
+      color: $color-danger;
+    }
+
+    &.success {
+      color: $color-text-desc;
+    }
+
+    &.warning {
+      color: $color-warning;
+    }
+
+    &.on-active {
+      color: $color-primary;
+    }
+  }
+}
+
+.cluster-log-pure-log {
+  height: 100%;
+  padding: 10px 10px 10px 25px;
+  overflow: auto;
+  color: $log-font-color;
+  font-size: 12px;
+  line-height: 20px;
+  background-color: $log-bg-color;
+  border-radius: $radius-lg;
+}

@@ -1,0 +1,48 @@
+syntax = "proto3";
+package erda.core.dop.taskerror;
+option go_package = "github.com/erda-project/erda-proto-go/core/dop/taskerror/pb";
+
+import "google/api/annotations.proto";
+import "common/openapi.proto";
+
+service TaskErrorService {
+  option (erda.common.openapi_service) = {
+    service: "dop",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc ListErrorLog (ErrorLogListRequest) returns (ErrorLogListResponseData)  {
+    option (google.api.http) = {
+      get: "/api/task-error/actions/list",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/task-error/actions/list"
+    };
+  }
+}
+
+message ErrorLogListRequest {
+  string scopeType = 1;
+  uint64 scopeId = 2;
+  string resourceType = 3;
+  string resourceId = 4;
+  string startTime = 5;
+}
+
+message ErrorLogListResponseData {
+  repeated ErrorLog list = 1;
+}
+
+message ErrorLog {
+  int64 id = 1;
+  string level = 2;
+  string resourceType = 3;
+  string resourceId = 4;
+  string occurrenceTime = 5;
+  string humanLog = 6;
+  string primevalLog = 7;
+  string deDupId = 8;
+}

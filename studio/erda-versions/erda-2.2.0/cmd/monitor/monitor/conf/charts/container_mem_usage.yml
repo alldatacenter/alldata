@@ -1,0 +1,14 @@
+- container_mem_usage:
+    title: ""
+    metric_names: "docker_container_mem"
+    type: ""
+    order: 0
+    defines:
+      last.usage:
+        label: "Usage"
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

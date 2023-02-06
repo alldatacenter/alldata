@@ -1,0 +1,36 @@
+version: 1.0
+scenario: scenes-import-record
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - filter
+      - table
+
+components:
+  page:
+    type: Container
+  filter:
+    type: ContractiveFilter
+  table:
+    name: recordTable
+    type: Table
+
+rendering:
+  filter:
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+
+  __DefaultRendering__:
+    - name: filter
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+
+options:
+  returnAllComponents: true
+

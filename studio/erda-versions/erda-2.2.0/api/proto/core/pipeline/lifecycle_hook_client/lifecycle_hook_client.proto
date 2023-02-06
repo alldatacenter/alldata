@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package erda.core.pipeline.lifecycle_hook_client;
+
+import "google/api/annotations.proto";
+import "common/identity.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/core/pipeline/lifecycle_hook_client/pb";
+
+service LifeCycleService {
+  rpc LifeCycleRegister (LifeCycleClientRegisterRequest) returns (LifeCycleClientRegisterResponse) {
+    option (google.api.http) = {
+      post: "/api/lifecycle-hook-client/actions/register",
+    };
+  }
+}
+
+message LifeCycleClient {
+  uint64 ID = 1 [json_name = "id"];
+  string name = 2;
+  string host = 3;
+  string prefix = 4;
+}
+
+message LifeCycleClientRegisterRequest {
+  string name = 1;
+  string host = 2;
+  string prefix = 3;
+}
+
+message LifeCycleClientRegisterResponse { uint64 data = 1; }
+
+

@@ -1,0 +1,34 @@
+name: "Dice Pipeline Task"
+tags:
+    action_type:
+        name: "Action Type"
+    cluster_name:
+        name: "Cluster Name"
+    cluster_type:
+        name: "Cluster Type"
+    component:
+        name: "Component"
+    execute_cluster:
+        name: "Execute Cluster"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    is_edge:
+        name: "Is Edge"
+    metric_name:
+        name: "Metric Name"
+    org_name:
+        name: "Org Name"
+    pipeline_id:
+        name: "Pipeline ID"
+    task_id:
+        name: "Task ID"
+    version:
+        name: "Version"
+fields:
+    data:
+        type: "string"
+        name: "Data"
+        unit: 
+

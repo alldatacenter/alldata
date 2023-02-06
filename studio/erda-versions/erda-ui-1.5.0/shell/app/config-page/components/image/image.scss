@@ -1,0 +1,35 @@
+.cp-dice-image {
+  margin: 0 auto;
+
+  &.inline-block {
+    display: inline-block;
+  }
+
+  &.block {
+    display: block;
+  }
+
+  &.small {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.normal {
+    width: 48px;
+    height: 48px;
+  }
+
+  &.big {
+    width: 64px;
+    height: 64px;
+  }
+
+  &.large {
+    width: 128px;
+    height: 128px;
+  }
+
+  &.circle {
+    border-radius: 50%;
+  }
+}

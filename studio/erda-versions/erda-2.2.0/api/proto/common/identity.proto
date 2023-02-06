@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package erda.common;
+
+option go_package = "github.com/erda-project/erda-proto-go/common/pb";
+
+message IdentityInfo {
+  // UserID is user id. It must be provided in some cases.
+  // Cannot be null if InternalClient is null.
+  // +optional
+  string userID = 1;
+
+  // InternalClient records the internal client, such as: bundle.
+  // Cannot be null if UserID is null.
+  // +optional
+  string internalClient = 2;
+
+  // OrgID is org id. It must be provided in some cases.
+  // +optional
+  string orgID = 3;
+}

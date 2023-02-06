@@ -1,0 +1,57 @@
+.repo-file {
+  .commit-file-form {
+    padding: 16px;
+    border-top: 1px solid $color-border;
+
+    .ant-form-item:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .md-content {
+    padding: 40px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .raw-file-container {
+    height: 200px;
+    text-align: center;
+
+    i {
+      font-size: 40px;
+    }
+  }
+}
+
+.file-alert {
+  line-height: 22px;
+
+  & > * {
+    vertical-align: middle;
+  }
+
+  .alert-text {
+    color: $gray;
+  }
+}
+
+/* stylelint-disable */
+.file-content {
+  .ace_static_highlight {
+    .ace_line {
+      line-height: 21px;
+    }
+
+    .ace_gutter {
+      width: 48px;
+      padding-right: 13px;
+      padding-left: 19px;
+    }
+
+    &.ace_show_gutter .ace_line {
+      padding-left: 52px;
+    }
+  }
+}
+/* stylelint-enable */

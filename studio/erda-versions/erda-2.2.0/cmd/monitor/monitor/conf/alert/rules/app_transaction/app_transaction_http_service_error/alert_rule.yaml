@@ -1,0 +1,9 @@
+id: app_transaction_http_service_error
+name: 服务HTTP错误率异常
+alert_scope: micro_service
+attributes:
+  alert_group: '{{target_terminus_key}}-{{target_runtime_id}}-{{target_service_name}}'
+  display_url_id: micro_si_web
+  level: Notice
+  recover: "true"
+  tickets_metric_key: '{{target_application_id}}'

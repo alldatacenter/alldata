@@ -1,0 +1,16 @@
+- mysql_threads_running:
+    title: "当前线程数"
+    metric_names: "mysql"
+    type: "mysql"
+    order: 9
+    defines:
+      max.threads_running:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

@@ -1,0 +1,34 @@
+syntax = "proto3";
+package erda.core.monitor.event;
+option go_package = "github.com/erda-project/erda-proto-go/core/monitor/event/pb";
+import "google/api/annotations.proto";
+import "oap/event/event.proto";
+
+service EventQueryService {
+  rpc GetEvents (GetEventsRequest) returns (GetEventsResponse) {
+    option (google.api.http) = {
+      get: "/api/events",
+    };
+  }
+}
+
+message GetEventsRequest {
+  string eventId = 1;
+  string traceId = 2;
+  string relationId = 3;
+  string relationType = 4;
+  int64 start = 5;
+  int64 end = 6;
+  int64 pageNo = 7;
+  int64 pageSize = 8;
+  bool debug = 9;
+  map<string,string> tags = 10;
+}
+
+message GetEventsResponse {
+   GetEventsResult data = 1;
+}
+
+message GetEventsResult {
+  repeated oap.event.Event items = 1;
+}

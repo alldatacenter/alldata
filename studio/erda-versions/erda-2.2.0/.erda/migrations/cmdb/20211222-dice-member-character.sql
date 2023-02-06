@@ -1,0 +1,1 @@
+alter table `dice_member` convert to character set utf8mb4 COLLATE utf8mb4_general_ci;

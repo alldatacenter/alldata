@@ -1,0 +1,1 @@
+INSERT INTO `dice_notify_items` (`name`,category,scope_type,label) VALUES ('autotest-plan-execute','autotest','project','workbench')

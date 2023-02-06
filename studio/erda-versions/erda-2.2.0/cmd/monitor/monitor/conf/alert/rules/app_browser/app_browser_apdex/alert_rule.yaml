@@ -1,0 +1,8 @@
+id: app_browser_apdex
+name: 用户体验
+alert_scope: micro_service
+attributes:
+  alert_group: '{{tk}}-{{doc_path}}-{{host}}'
+  display_url_id: micro_bi_position
+  level: Notice
+  recover: "false"

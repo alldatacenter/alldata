@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package erda.core.pipeline.label;
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "common/identity.proto";
+import "common/commit.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/core/pipeline/label/pb";
+
+service LabelService {
+  rpc PipelineLabelBatchInsert (PipelineLabelBatchInsertRequest) returns (PipelineLabelBatchInsertResponse) {
+    option (google.api.http) = {
+      post: "/api/pipelines-labels/actions/batch-insert-labels",
+    };
+  }
+  rpc PipelineLabelList (PipelineLabelListRequest) returns (PipelineLabelListResponse) {
+    option (google.api.http) = {
+      post: "/api/pipelines-labels",
+    };
+  }
+}
+
+message PipelineLabel {
+  uint64 ID = 1 [json_name = "id"];
+  string type = 2;
+  uint64 targetID = 3;
+  string pipelineSource = 4;
+  string pipelineYmlName = 5;
+  string key = 6;
+  string value = 7;
+  google.protobuf.Timestamp timeCreated = 8;
+  google.protobuf.Timestamp timeUpdated = 9;
+}
+message PipelineLabelBatchInsertRequest {
+  repeated PipelineLabel labels = 1;
+}
+message PipelineLabelBatchInsertResponse {
+}
+
+message PipelineLabelListRequest {
+  string pipelineSource = 1;
+  string pipelineYmlName = 2;
+  repeated uint64 targetIDs = 3;
+  repeated string matchKeys = 4;
+  repeated string unMatchKeys = 5;
+}
+message PipelineLabelListResponse {
+  repeated PipelineLabel labels = 1;
+  int64 total = 2;
+}

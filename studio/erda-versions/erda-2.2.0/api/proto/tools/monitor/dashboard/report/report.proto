@@ -1,0 +1,250 @@
+syntax = "proto3";
+
+package erda.tools.monitor.dashboard.report;
+option go_package = "github.com/erda-project/erda-proto-go/tools/monitor/dashboard/report/pb";
+
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+import "core/messenger/notifygroup/notify_group.proto";
+import "common/http.proto";
+import "common/openapi.proto";
+
+
+service ReportService {
+    option (erda.common.openapi_service) = {
+        service: "monitor",
+        auth: {
+            check_login: true;
+            check_token: true;
+        }
+    };
+    rpc ListTasks (ListTasksRequest) returns (ListTasksResponse) {
+        option (google.api.http) = {
+            get: "/apis/report/v1/tasks"
+        };
+        option (erda.common.openapi) = {
+            path: "/api/org/report/tasks"
+        };
+    }
+    rpc CreateTask  (CreateTaskRequest) returns (CreateTaskResponse) {
+        option (google.api.http) = {
+            post: "/apis/report/v1/tasks"
+        };
+    }
+    rpc UpdateTask  (UpdateTaskRequest) returns (erda.common.VoidResponse) {
+        option (google.api.http) = {
+            put: "/apis/report/v1/tasks/{id}"
+        };
+        option (erda.common.openapi) = {
+            path: "/api/org/report/tasks/{id}"
+        };
+    }
+    rpc SwitchTask (SwitchTaskRequest) returns (erda.common.VoidResponse) {
+        option (google.api.http) = {
+            put: "/apis/report/v1/tasks/{id}/switch"
+        };
+        option (erda.common.openapi) = {
+            path: "/api/org/report/tasks/{id}/switch"
+        };
+    }
+    rpc GetTask (GetTaskRequest) returns (ReportTaskDTO) {
+        option (google.api.http) = {
+            get: "/apis/report/v1/tasks/{id}"
+        };
+    }
+    rpc DeleteTask (DeleteTaskRequest) returns (erda.common.VoidResponse) {
+        option (google.api.http) = {
+            delete: "/apis/report/v1/tasks/{id}"
+        };
+        option (erda.common.openapi) = {
+            path: "/api/org/report/tasks/{id}"
+        };
+    }
+    rpc ListTypes (ListTypesRequest) returns (ListTypesResponse) {
+        option (google.api.http) = {
+            get: "/apis/report/v1/types"
+        };
+        option (erda.common.openapi) = {
+            path: "/api/report/types"
+        };
+    }
+    rpc ListHistories (ListHistoriesRequest) returns (ListHistoriesResponse) {
+        option (google.api.http) = {
+            get: "/apis/report/v1/histories"
+        };
+        option (erda.common.openapi) = {
+            path: "/api/report/histories"
+        };
+    }
+    rpc CreateHistory (CreateHistoryRequest) returns (CreateHistoryResponse) {
+        option (google.api.http) = {
+            post: "/apis/report/v1/histories"
+        };
+    }
+    rpc GetHistory (GetHistoryRequest) returns (GetHistoryResponse) {
+        option (google.api.http) = {
+            get: "/apis/report/v1/histories/{id}"
+        };
+    }
+    rpc DeleteHistory (DeleteHistoryRequest) returns (erda.common.VoidResponse) {
+        option (google.api.http) = {
+            delete: "/apis/report/v1/histories/{id}"
+        };
+        option (erda.common.openapi) = {
+            path: "/api/report/histories/{id}"
+        };
+    }
+}
+
+message ListTasksRequest {
+    string scope = 1;
+    string scopeId = 2 [(validate.rules).string.min_len = 1];
+    int64 pageNo = 3;
+    int64 pageSize = 4;
+    string type = 5;
+}
+
+message ListTasksResponse {
+    repeated ReportTaskDTO list = 1;
+    int64 total = 2;
+}
+
+message CreateTaskRequest {
+    uint64 id = 1;
+    string name = 2;
+    string scope = 3;
+    string scopeId = 4;
+    string type = 5;
+    string dashboardId = 6;
+    bool enable = 7;
+    Notify notifyTarget = 8;
+}
+
+message CreateTaskResponse {
+    uint64 id = 1;
+}
+
+message UpdateTaskRequest {
+    uint64 id = 1;
+    optional string name = 2;
+    optional string dashboardId = 3;
+    optional Notify notifyTarget = 4;
+}
+
+message SwitchTaskRequest {
+    uint64 id = 1;
+    bool enable = 2;
+}
+
+message GetTaskRequest {
+    uint64 id = 1;
+}
+
+message DeleteTaskRequest {
+    uint64 id = 1;
+}
+
+message ListTypesRequest {
+    string scope = 1;
+}
+message ListTypesResponse {
+    repeated Type list = 1;
+    int64 total = 2;
+}
+message Type {
+    string name = 1;
+    string value = 2;
+}
+
+message ListHistoriesRequest {
+    uint64 taskId = 1;
+    string scope = 2;
+    string scopeId = 3;
+    int64 start = 4;
+    int64 end = 5;
+}
+message ListHistoriesResponse {
+    repeated ReportHistoryDTO list = 1;
+    int64 total = 2;
+}
+
+message ReportHistoryDTO {
+    uint64 id = 1;
+    string scope = 2;
+    string scopeId = 3;
+    ReportTaskOnly reportTask = 4;
+    google.protobuf.Any dashboardBlock = 5;
+    int64 start = 6;
+    int64 end = 7;
+}
+
+message CreateHistoryRequest {
+    uint64 id = 1;
+    string scope = 2;
+    string scopeId = 3;
+    uint64 taskId = 4;
+    google.protobuf.Any reportTask = 5;
+    string dashboardId = 6;
+    google.protobuf.Any dashboardBlock = 7;
+    google.protobuf.Timestamp createdAt = 8;
+    int64 start = 9;
+    int64 end = 10;
+}
+message CreateHistoryResponse {
+    uint64 id = 1;
+}
+
+message GetHistoryRequest {
+    uint64 id = 1;
+}
+message GetHistoryResponse {
+    uint64 id = 1;
+    string scope = 2;
+    string scopeId = 3;
+    google.protobuf.Any reportTask = 4;
+    google.protobuf.Any dashboardBlock = 5;
+    int64  start = 6;
+    int64 end = 7;
+}
+
+message DeleteHistoryRequest {
+    uint64 id = 1;
+}
+//message DeleteHistoryResponse {}
+
+message ReportTaskDTO {
+    uint64 id = 1;
+    string name = 2;
+    string scope = 3;
+    string scopeId = 4;
+    string type = 5;
+    string dashboardId = 6;
+    bool   enable = 7;
+    Notify notifyTarget = 8;
+    int64 createdAt = 9;
+    int64 updatedAt = 10;
+    //    google.protobuf.Any dashboardBlockTemplate = 11;
+}
+
+message ReportTaskOnly {
+    uint64 id = 1;
+    string name = 2;
+    string scope = 3;
+    string scopeId = 4;
+    string type = 5;
+    bool   enable = 7;
+    Notify notifyTarget = 8;
+    int64 createdAt = 9;
+    int64 updatedAt = 10;
+}
+
+
+message Notify {
+    string type = 1;
+    uint64 groupId = 2;
+    string groupType = 3;
+    erda.core.messenger.notifygroup.NotifyGroup notifyGroup = 4;
+}
+

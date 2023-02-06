@@ -1,0 +1,33 @@
+.runtime-activity {
+  .deployment-card {
+    position: relative;
+    //display: flex;
+    min-height: 74px;
+    padding: 12px;
+    background-color: $white;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-bottom: unset;
+      border-bottom-right-radius: $radius;
+      border-bottom-left-radius: $radius;
+    }
+
+    &:first-child {
+      border-top-left-radius: $radius;
+      border-top-right-radius: $radius;
+    }
+
+    .status {
+      color: $color-text-desc;
+    }
+
+    .extra-items {
+      color: $color-dark-4;
+
+      i {
+        margin-right: 0;
+      }
+    }
+  }
+}

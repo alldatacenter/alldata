@@ -1,0 +1,19 @@
+.compact-select {
+  display: flex;
+
+  .select-addon-before {
+    display: inline-flex;
+    padding: 4px 11px;
+    color: $color-text-sub;
+    background-color: $color-dark-04;
+    border: 1px solid $color-border;
+    border-right: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  .ant-select-selection {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

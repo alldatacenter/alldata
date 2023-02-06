@@ -1,0 +1,9 @@
+id: dice_addon_kafka_lag
+name: 平台中间件kafka消费堆积
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{group}}-{{topic}}'
+  display_url_id: org_addon
+  level: Warning
+  recover: "true"
+  tickets_metric_key: '{{group}}-{{topic}}'

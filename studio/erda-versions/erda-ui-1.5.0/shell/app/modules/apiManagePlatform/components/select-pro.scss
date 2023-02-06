@@ -1,0 +1,14 @@
+.select-pro {
+  position: relative;
+
+  .select-pro-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    color: $color-dark-2;
+  }
+
+  .ant-select-arrow {
+    display: none;
+  }
+}

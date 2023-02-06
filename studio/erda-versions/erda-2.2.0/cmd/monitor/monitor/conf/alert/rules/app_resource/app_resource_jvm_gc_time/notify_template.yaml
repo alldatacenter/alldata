@@ -1,0 +1,213 @@
+- name: "应用JVM GC耗时异常"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    time_sum: "time:ms"
+    time_value: "time:ms"
+  title: |
+    【{{application_name}}应用{{service_name}}服务JVM GC耗时异常告警】
+  template: |
+    【应用JVM GC耗时异常告警】
+
+    实例GC耗时过长 !
+
+    项目: {{project_name}}
+
+    应用: {{application_name}}
+
+    服务: {{runtime_name}} / {{service_name}}
+
+    老年代GC耗时: 总耗时{{time_sum}}，最长一次耗时{{time_value}}
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    terminus_key: {{terminus_key}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+
+- name: "应用JVM GC耗时异常"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    time_sum: "time:ms"
+    time_value: "time:ms"
+  title: |
+    【{{application_name}}应用{{service_name}}服务JVM GC耗时异常告警】
+  template: |
+    {{application_name}}应用{{service_name}}服务触发JVM GC耗时异常告警，terminus_key: {{terminus_key}}，老年代GC耗时: 总耗时{{time_sum}}，最长一次耗时{{time_value}}，告警级别: {{level}}
+- name: "应用JVM GC耗时异常"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    time_sum: "time:ms"
+    time_value: "time:ms"
+  title: |
+    【{{application_name}}应用{{service_name}}服务JVM GC耗时异常告警】
+  template: |
+    {{application_name}}应用{{service_name}}服务触发JVM GC耗时异常告警，terminus_key: {{terminus_key}}，老年代GC耗时: 总耗时{{time_sum}}，最长一次耗时{{time_value}}，告警级别: {{level}}
+- name: "应用JVM GC耗时异常恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务JVM GC耗时异常恢复】
+  template: |
+    【应用JVM GC耗时异常恢复】
+
+    实例GC耗时已恢复正常值 .
+
+    项目: {{project_name}}
+
+    应用: {{application_name}}
+
+    服务: {{runtime_name}} / {{service_name}}
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    terminus_key: {{terminus_key}}
+
+    持续时间: {{trigger_duration_min}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+
+- name: "应用JVM GC耗时异常恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务JVM GC耗时异常恢复】
+  template: |
+    {{application_name}}应用{{service_name}}服务触发JVM GC耗时异常告警，terminus_key: {{terminus_key}}
+
+
+- name: "应用JVM GC耗时异常恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务JVM GC耗时异常恢复】
+  template: |
+    {{application_name}}应用{{service_name}}服务触发JVM GC耗时异常告警，terminus_key: {{terminus_key}}
+
+
+- name: "JVM GC time consuming exception"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    time_sum: "time:ms"
+    time_value: "time:ms"
+  title: |
+    [JVM GC time consuming exception alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    [JVM GC time consuming exception alarm]
+
+    GC time consuming too long!
+
+    Project: {{project_name}}
+
+    Application: {{application_name}}
+
+    Service: {{runtime_name}} / {{service_name}}
+
+    GC time consuming of old generation: Total time consuming of {{time_sum}}, longest time consuming of {{time_value}}
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    terminus_key: {{terminus_key}}
+
+    Time: {{timestamp}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+
+- name: "JVM GC time consuming exception"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    time_sum: "time:ms"
+    time_value: "time:ms"
+  title: |
+    [JVM GC time consuming exception alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    JVM GC time consuming exception alarm triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}, GC time consuming of old generation: total time consuming of {{time_sum}}, longest time consuming of {{time_value}}
+- name: "JVM GC time consuming exception"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    time_sum: "time:ms"
+    time_value: "time:ms"
+  title: |
+    [JVM GC time consuming exception alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    JVM GC time consuming exception alarm triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}, GC time consuming of old generation: total time consuming of {{time_sum}}, longest time consuming of {{time_value}}
+- name: "JVM GC time consuming exception recovery"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [JVM GC time consuming exception recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    [JVM GC time consuming exception recovery]
+
+    GC time consuming recovered.
+
+    Project: {{project_name}}
+
+    Application: {{application_name}}
+
+    Service: {{runtime_name}} / {{service_name}}
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    terminus_key: {{terminus_key}}
+
+    Duration: {{trigger_duration_min}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+
+- name: "JVM GC time consuming exception recovery"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [JVM GC time consuming exception recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    JVM GC time consuming exception recovery triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}
+
+
+- name: "JVM GC time consuming exception recovery"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [JVM GC time consuming exception recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    JVM GC time consuming exception recovery triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}
+

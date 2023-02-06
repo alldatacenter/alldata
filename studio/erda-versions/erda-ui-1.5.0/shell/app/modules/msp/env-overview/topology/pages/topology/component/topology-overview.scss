@@ -1,0 +1,28 @@
+.topology-overview {
+  width: 280px;
+  height: 100%;
+  border-right: 1px solid rgba($white, 0.1);
+  transition: all 0.3s ease-in-out;
+
+  .content {
+    overflow: hidden;
+
+    > div {
+      width: 280px;
+    }
+  }
+
+  .card-item {
+    width: 120px;
+    height: 76px;
+    background-color: rgba($white, 0.04);
+  }
+
+  &.collapse {
+    width: 8px;
+
+    .content {
+      opacity: 0;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+- zookeeper_approximate_data_size:
+    title: "数据量"
+    metric_names: "zookeeper"
+    type: "zookeeper_remove"
+    order: 0
+    defines:
+      avg.approximate_data_size:
+        label: ""
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

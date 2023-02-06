@@ -1,0 +1,7 @@
+.test-manage-all-checkbox {
+  :global {
+    .ant-checkbox-indeterminate .ant-checkbox-inner:after {
+      transform: translate(-50%, -50%) scale(1) !important;
+    }
+  }
+}

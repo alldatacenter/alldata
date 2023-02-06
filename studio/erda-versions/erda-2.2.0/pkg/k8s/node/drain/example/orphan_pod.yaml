@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: orphan-pod
+  labels:
+    name: orphan-pod
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: node-010000007033
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 80

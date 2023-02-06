@@ -1,0 +1,68 @@
+id: machine_load5
+metadata:
+  name: "机器负载异常告警"
+  type: machine
+  module: monitor
+  scope:
+    - org
+behavior:
+  group: "{{cluster_name}}-{{host_ip}}"
+templates:
+  - trigger: #告警/还是恢复
+      - alert
+    targets: #通知可用目标
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |-
+        【{{cluster_name}}集群机器{{host_ip}}负载异常告警】
+      template: |
+        【机器负载异常告警】
+
+        Load5: {{load5_avg}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        时间: {{timestamp}}
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})
+  - trigger: #告警/还是恢复
+      - recover
+    targets: #通知可用目标
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        trigger_duration: "time:ms"
+      title: |-
+        【{{cluster_name}}集群机器{{host_ip}}负载异常恢复】
+      template: |
+        【机器负载异常恢复】
+
+        Load5: {{load5_avg}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        持续时间: {{trigger_duration}}
+
+        恢复时间: {{timestamp}}
+
+        [查看记录]({{record_url}})

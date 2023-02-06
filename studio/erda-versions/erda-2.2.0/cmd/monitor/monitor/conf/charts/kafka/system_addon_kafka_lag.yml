@@ -1,0 +1,17 @@
+- system_addon_kafka_lag:
+    title: "Topic消费堆积"
+    metric_names: "kafka_consumer"
+    type: "kafka"
+    order: 5
+    defines:
+      avg.topic:
+        label: "消息堆积数"
+        unit: ""
+        unit_type: ""
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "((doc['tags.topic'].value+'/'+doc['tags.group'].value))"
+       
+

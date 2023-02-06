@@ -1,0 +1,97 @@
+id: app_resource_jvm_heap
+metadata:
+  name: "JVM堆内存使用异常告警"
+  type: app_resource
+  module: monitor
+  scope:
+    - micro_service
+behavior:
+  group: "{{terminus_key}}-{{instance_id}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        usage_percent_avg: "percent"
+        used_value: "size:byte"
+        max_value: "size:byte"
+      title: |-
+        【{{application_name}}应用{{service_name}}服务JVM堆内存使用异常告警】
+      template: |
+        【JVM堆内存使用异常告警】
+
+        实例JVM堆内存使用过高 ！
+
+        项目: {{project_name}}
+
+        应用: {{application_name}}
+
+        服务: {{runtime_name}} / {{service_name}}
+
+        实例: {{instance_id}}
+
+        堆内存使用率: {{usage_percent_avg}}
+
+        已使用: {{used_value}}
+
+        最大使用: {{max_value}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        时间: {{timestamp}}
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})
+
+  - trigger:
+      - recover
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        usage_percent_avg: "percent"
+      title: |-
+        【{{application_name}}应用{{service_name}}服务JVM堆内存使用异常恢复】
+      template: |
+        【JVM堆内存使用异常恢复】
+
+        实例JVM堆内存已恢复恢复正常使用状态 .
+
+        项目: {{project_name}}
+
+        应用: {{application_name}}
+
+        服务: {{runtime_name}} / {{service_name}}
+
+        实例: {{instance_id}}
+
+        堆内存使用率: {{usage_percent_avg}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        持续时间: {{trigger_duration_min}}
+
+        恢复时间: {{timestamp}}
+
+        [查看记录]({{record_url}})

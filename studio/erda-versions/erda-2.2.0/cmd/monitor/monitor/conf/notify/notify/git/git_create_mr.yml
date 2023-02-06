@@ -1,0 +1,28 @@
+id: git_create_mr
+metadata:
+  name: "合并请求-创建"
+  type: git
+  module: notify
+  scope:
+    - app
+templates:
+  - trigger:
+      - notify
+    targets:
+      - dingding
+      - email
+      - mbox
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【合并请求-创建】
+      template: |
+        ### [{{projectName}}/{{appName}}]({{link}}) 合并请求-创建
+        - 标题：{{mr_title}}
+        - 源分支：{{sourceBranch}}
+        - 目标分支：{{targetBranch}}
+        - 提交人：{{authorName}}
+        - 处理人：{{assigneeName}}
+        - [链接]({{link}})

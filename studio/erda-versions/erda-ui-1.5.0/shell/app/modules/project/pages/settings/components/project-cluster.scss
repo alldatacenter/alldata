@@ -1,0 +1,50 @@
+.quota-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 160px;
+  margin-left: 4px;
+
+  .overuse-tip {
+    color: $red;
+    font-weight: bold;
+    visibility: hidden;
+  }
+
+  &.overuse {
+    .overuse-tip {
+      visibility: visible;
+    }
+  }
+
+  .quota-bar {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    font-size: 12px;
+    line-height: 18px;
+    border: 1px solid #d7d1de;
+    border-radius: 2px;
+
+    > div {
+      color: $primary;
+      text-align: center;
+
+      &:nth-child(1) {
+        background: rgba(106, 84, 158, 0.1);
+      }
+
+      &:nth-child(2) {
+        background: rgba(106, 84, 158, 0.16);
+      }
+
+      &:nth-child(3) {
+        background: repeating-linear-gradient(45deg, rgba(114, 82, 82, 0.09), transparent 4px);
+      }
+
+      &.border-right-color {
+        border-right: 1px solid #d7d1de;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+- mysql_innodb_rows_inserted:
+    title: "INNODB插入行数量"
+    metric_names: "mysql"
+    type: "mysql"
+    order: 11
+    defines:
+      diffps.innodb_rows_inserted:
+        label: ""
+        unit: "行/s"
+        unit_type: "RPS"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

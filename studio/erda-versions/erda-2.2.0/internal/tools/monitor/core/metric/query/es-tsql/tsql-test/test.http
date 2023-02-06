@@ -1,0 +1,45 @@
+@url = http://addon-elasticsearch.default.svc.cluster.local:9200
+
+### test
+GET {{url}}/spot-host_summary-*-*/_search
+Content-Type: application/json
+
+{
+        "aggregations": {
+                "4df9ca3e94074fdc": {
+                        "max": {
+                                "field": "fields.mem_total"
+                        }
+                },
+                "term": {
+                        "aggregations": {
+                                "29c31803016189bf": {
+                                        "max": {
+                                                "field": "fields.mem_used"
+                                        }
+                                }
+                        },
+                        "terms": {
+                                "script": {
+                                        "source": "(doc.containsKey('tags.host_ip')?doc['tags.host_ip'].value:'')"
+                                },
+                                "size": 100
+                        }
+                }
+        },
+        "query": {
+                "bool": {
+                        "filter": {
+                                "range": {
+                                        "timestamp": {
+                                                "from": 1604910070144045000,
+                                                "include_lower": true,
+                                                "include_upper": true,
+                                                "to": 1604913670144045000
+                                        }
+                                }
+                        }
+                }
+        },
+        "size": 0
+}

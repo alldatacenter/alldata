@@ -1,0 +1,64 @@
+scenario: release-manage
+
+hierarchy:
+  root: releaseManage
+  structure:
+    releaseManage:
+      - content
+    content:
+      slot: head
+      table: releaseTable
+    head:
+      left: releaseFilter
+
+
+components:
+  content:
+    type: ComposeTable
+  head:
+    type: LRContainer
+  releaseFilter:
+    type: ConfigurableFilter
+  releaseManage:
+    type: Container
+  releaseTable:
+    type: Table
+
+rendering:
+  __DefaultRendering__:
+    - name: releaseManage
+    - name: content
+    - name: head
+    - name: releaseFilter
+      state:
+        - name: "projectID"
+          value: "{{ __InParams__.projectID }}"
+        - name: "isProjectRelease"
+          value: "{{ __InParams__.isProjectRelease }}"
+        - name: "isFormal"
+          value: "{{ __InParams__.isFormal }}"
+    - name: releaseTable
+      state:
+        - name: "projectID"
+          value: "{{ __InParams__.projectID }}"
+        - name: "isFormal"
+          value: "{{ __InParams__.isFormal }}"
+        - name: "isProjectRelease"
+          value: "{{ __InParams__.isProjectRelease }}"
+        - name: "applicationID"
+          value: "{{ __InParams__.applicationID }}"
+        - name: "filterValues"
+          value: "{{ releaseFilter.values }}"
+  releaseFilter:
+    - name: releaseTable
+      state:
+        - name: "projectID"
+          value: "{{ __InParams__.projectID }}"
+        - name: "isFormal"
+          value: "{{ __InParams__.isFormal }}"
+        - name: "isProjectRelease"
+          value: "{{ __InParams__.isProjectRelease }}"
+        - name: "applicationID"
+          value: "{{ __InParams__.applicationID }}"
+        - name: "filterValues"
+          value: "{{ releaseFilter.values }}"

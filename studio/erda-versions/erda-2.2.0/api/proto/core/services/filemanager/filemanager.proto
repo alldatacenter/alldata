@@ -1,0 +1,168 @@
+syntax = "proto3";
+
+package erda.core.services.filemanager;
+option go_package = "github.com/erda-project/erda-proto-go/core/services/filemanager/pb";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+import "google/api/annotations.proto";
+import "common/openapi.proto";
+
+service FileManagerService {
+  option (erda.common.openapi_service) = {
+    service: "monitor",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc ListFiles (ListFilesRequest) returns (ListFilesResponse) {
+    option (google.api.http) = {
+      get: "/api/container/{containerID}/files"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/container/{containerID}/files",
+    };
+  }
+
+  rpc ReadFile (ReadFileRequest) returns (ReadFileResponse) {
+    option (google.api.http) = {
+      get: "/api/container/{containerID}/file"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/container/{containerID}/file",
+    };
+  }
+
+  rpc WriteFile (WriteFileRequest) returns (WriteFileResponse) {
+    option (google.api.http) = {
+      post: "/api/container/{containerID}/file"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/container/{containerID}/file",
+    };
+  }
+
+  rpc MakeDirectory (MakeDirectoryRequest) returns (MakeDirectoryResponse) {
+    option (google.api.http) = {
+      post: "/api/container/{containerID}/files/mkdir"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/container/{containerID}/files/mkdir",
+    };
+  }
+
+  rpc MoveFile (MoveFileRequest) returns (MoveFileResponse) {
+    option (google.api.http) = {
+      post: "/api/container/{containerID}/files/mv"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/container/{containerID}/files/mv",
+    };
+  }
+
+  rpc DeleteFile (DeleteFileRequest) returns (DeleteFileResponse) {
+    option (google.api.http) = {
+      delete: "/api/container/{containerID}/file"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/container/{containerID}/file",
+    };
+  }
+
+}
+
+message ListFilesRequest {
+  string containerID  = 1 [(validate.rules).string.min_len = 1];
+  string hostIP = 2 [(validate.rules).string.min_len = 1];
+  string scope = 3 [(validate.rules).string.min_len = 1];
+  string path = 4;
+}
+
+message ListFilesResponse {
+  FileDirectory data = 1;
+}
+
+message FileDirectory {
+  string directory = 1;
+  repeated FileInfo files = 2;
+}
+
+message FileInfo {
+    string  name = 1;
+    string  mode = 2;
+    int64   size = 3;
+    int64   hardLinks = 4;
+    int64   modTime = 5;
+    string  user = 6;
+    string  userGroup = 7;
+    bool    isDir = 8;
+}
+
+message ReadFileRequest {
+  string containerID  = 1 [(validate.rules).string.min_len = 1];
+  string hostIP = 2 [(validate.rules).string.min_len = 1];
+  string scope = 3 [(validate.rules).string.min_len = 1];
+  string path = 4 [(validate.rules).string.min_len = 1];
+}
+
+message ReadFileResponse {
+  FileData data = 1;
+}
+
+message FileData {
+  string path = 1;
+  string mode = 2;
+  string encoding = 3;
+  string content = 4;
+  int64 size = 5;
+}
+
+message WriteFileRequest {
+  string containerID  = 1 [(validate.rules).string.min_len = 1];
+  string hostIP = 2 [(validate.rules).string.min_len = 1];
+  string scope = 3 [(validate.rules).string.min_len = 1];
+  string path = 4;
+  string encoding = 5;
+  string content = 6;
+  string action = 7;
+}
+
+message WriteFileResponse {
+  string data = 1;
+}
+
+message MakeDirectoryRequest {
+  string containerID  = 1 [(validate.rules).string.min_len = 1];
+  string hostIP = 2 [(validate.rules).string.min_len = 1];
+  string scope = 3 [(validate.rules).string.min_len = 1];
+  bool all = 4;
+  string path = 5;
+}
+
+message MakeDirectoryResponse {
+  string data = 1;
+}
+
+message MoveFileRequest {
+  string containerID  = 1 [(validate.rules).string.min_len = 1];
+  string hostIP = 2 [(validate.rules).string.min_len = 1];
+  string scope = 3 [(validate.rules).string.min_len = 1];
+  string source = 4;
+  string destination = 5;
+}
+
+message MoveFileResponse {
+  string data = 1;
+}
+
+message DeleteFileRequest {
+  string containerID  = 1 [(validate.rules).string.min_len = 1];
+  string hostIP = 2 [(validate.rules).string.min_len = 1];
+  string scope = 3 [(validate.rules).string.min_len = 1];
+  string path = 4;
+}
+
+message DeleteFileResponse {
+  string data = 1;
+}

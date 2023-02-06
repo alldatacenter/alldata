@@ -1,0 +1,33 @@
+CREATE TABLE `dice_autotest_exec_history`
+(
+    `id`              bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'primary key id',
+    `created_at`      datetime       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updated_at`      datetime       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `creator_id`      varchar(255)   NOT NULL DEFAULT '' COMMENT '执行者',
+    `project_id`      bigint(20) NOT NULL DEFAULT 0 COMMENT '项目ID',
+    `org_id`          bigint(20) NOT NULL DEFAULT 0 COMMENT '企业ID',
+    `space_id`        bigint(20) NOT NULL DEFAULT 0 COMMENT '空间ID',
+    `iteration_id`    bigint(20) NOT NULL DEFAULT 0 COMMENT '迭代ID',
+    `plan_id`         bigint(20) NOT NULL DEFAULT 0 COMMENT '计划ID',
+    `scene_id`        bigint(20) NOT NULL DEFAULT 0 COMMENT '场景ID',
+    `scene_set_id`    bigint(20) NOT NULL DEFAULT 0 COMMENT '场景集ID',
+    `step_id`         bigint(20) NOT NULL DEFAULT 0 COMMENT '步骤ID',
+    `parent_p_id`     bigint(20) NOT NULL DEFAULT 0 COMMENT '父流水线ID',
+    `type`            varchar(32)    NOT NULL DEFAULT '' COMMENT '类型',
+    `status`          varchar(32)    NOT NULL DEFAULT '' COMMENT '流水线状态',
+    `pipeline_yml`    mediumtext     NOT NULL COMMENT 'pipeline yml',
+    `execute_api_num` int(20) NOT NULL DEFAULT 0 COMMENT '执行api数量',
+    `success_api_num` int(20) NOT NULL DEFAULT 0 COMMENT '执行成功api数量',
+    `pass_rate`       decimal(10, 2) NOT NULL DEFAULT 0 COMMENT '通过率',
+    `execute_rate`    decimal(10, 2) NOT NULL DEFAULT 0 COMMENT '执行率',
+    `total_api_num`   int(20) NOT NULL DEFAULT 0 COMMENT '总api数量',
+    `execute_time`    datetime       NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT '执行数据',
+    `cost_time_sec`   int(20) NOT NULL DEFAULT 0 COMMENT '执行耗时',
+    PRIMARY KEY (`id`),
+    KEY               `idx_project_id` (`project_id`) USING BTREE,
+    KEY               `idx_org_id` (`org_id`) USING BTREE,
+    KEY               `idx_iteration_id` (`iteration_id`,`plan_id`,`scene_set_id`,`scene_id`,`step_id`) USING BTREE,
+    KEY               `idx_plan_id` (`plan_id`,`scene_set_id`,`scene_id`,`step_id`) USING BTREE,
+    KEY               `idx_plan_id_2` (`plan_id`,`scene_id`,`step_id`) USING BTREE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='自动化测试执行记录';

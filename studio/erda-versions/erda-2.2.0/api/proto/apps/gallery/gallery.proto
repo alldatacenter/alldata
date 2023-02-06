@@ -1,0 +1,342 @@
+syntax = "proto3";
+
+package erda.apps.gallery;
+option go_package = "github.com/erda-project/erda-proto-go/apps/gallery/pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "common/openapi.proto";
+import "common/http.proto";
+
+service Gallery {
+  option(erda.common.openapi_service) = {
+    service: "erda-server",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  // ListOpusTypes:
+  // en: list opus types
+  // zh_CN: 查询所有 opus 类型
+  rpc ListOpusTypes(common.VoidRequest) returns (ListOpusTypesRespData) {
+    option(google.api.http) = {
+      get: "/api/opus-types"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/opus-types"
+    };
+  }
+
+  // ListOpus:
+  // en: list Opus in the org.
+  // zh_CN: 查询 org 下所有的 Opus.
+  rpc ListOpus(ListOpusReq) returns (ListOpusResp) {
+    option(google.api.http) = {
+      get: "/api/opus",
+    };
+    option(erda.common.openapi) = {
+      path: "/api/opus",
+    };
+  }
+
+  rpc ListOpusVersions(ListOpusVersionsReq) returns (ListOpusVersionsResp) {
+    option(google.api.http) = {
+      get: "/api/opus/{opusID}/versions",
+    };
+    option(erda.common.openapi) = {
+      path: "/api/opus/{opusID}/versions",
+    };
+  }
+
+  rpc PutOnArtifacts(PutOnArtifactsReq) returns (PutOnOpusResp) {}
+  rpc PutOffArtifacts(PutOffArtifactsReq) returns (common.VoidResponse) {}
+  rpc PutOnExtensions(PutOnExtensionsReq) returns (PutOnOpusResp) {}
+}
+
+message ListOpusReq {
+  string type = 2;
+  string name = 3;
+  string keyword = 5;
+
+  int32 pageNo = 10;
+  int32 pageSize = 11;
+}
+
+message ListOpusResp {
+  ListOpusRespData data = 1;
+  repeated string userIDs = 2;
+}
+
+message ListOpusRespData {
+  int32 total = 1;
+  repeated ListOpusRespDataItem list = 2;
+}
+
+message ListOpusRespDataItem {
+  string id = 1;
+  google.protobuf.Timestamp createdAt = 2;
+  google.protobuf.Timestamp updatedAt = 3;
+  uint32 orgID = 4;
+  string orgName = 5;
+  string creatorID = 6;
+  string updaterID = 7;
+
+  string type = 10;
+  string typeName = 11;
+  string name = 12;
+  string displayName = 13;
+  string summary = 14;
+  string catalog = 16;
+  string catalogName = 17;
+  string logoURL = 18;
+}
+
+// +SKIP_GO-FORM
+message Presentation {
+  string desc = 1;
+  string contactName = 2;
+  string contactURL = 3;
+  string contactEmail = 4;
+  bool isOpenSourced = 5;
+  string opensourceURL = 6;
+  string licenseName = 7;
+  string licenseURL = 8;
+  string homepageName = 9;
+  string homepageURL = 10;
+  string homepageLogoURL = 11;
+  bool isDownloadable = 12;
+  string downloadURL = 13;
+  string readme = 14;
+  Parameters parameters = 15;
+  repeated Form forms = 16;
+  string ref = 100;
+}
+
+message Readme {
+  string lang = 1;
+  string langName = 2;
+  string source = 3;
+  string text = 4;
+}
+
+message Installation {
+  string installer = 1;
+  string spec = 2;
+}
+
+// +SKIP_GO-FORM
+message Parameters {
+  repeated string ins = 1;
+  repeated Parameter parameters = 2; // parameter 是 Openapi3.ParameterObject
+}
+
+// +SKIP_GO-FORM
+message Parameter {
+  string name = 1;
+  string in = 2;
+  string description = 3;
+  string style = 4;
+  bool explode = 5;
+  bool allowEmptyValue = 6;
+  bool allowReserved = 7;
+  bool deprecated = 8;
+  bool required = 9;
+  Schema schema = 10;
+}
+
+message Form {
+  string title = 1;
+  repeated string headers = 2;
+  repeated Line line = 3;
+}
+
+message Line {
+  repeated string items = 1;
+}
+
+// +SKIP_GO-FORM
+message Schema {
+
+  string type = 5;
+  string title = 6;
+  string format = 7;
+  string description = 8;
+
+  bool deprecated = 20;
+
+  Schema items = 30;
+  repeated string required = 31;
+  map<string, Schema> properties = 32;
+
+}
+
+message ListOpusTypesRespData {
+  uint32 total = 1;
+  repeated OpusType list = 2;
+}
+
+message CatalogInfo {
+  string key = 1;
+  string name = 2;
+}
+
+message OpusType {
+  string type = 1;
+  string name = 2;
+  string displayName = 3;
+  repeated CatalogInfo children = 4;
+}
+
+message PutOnArtifactsReq {
+  uint32 orgID = 1;
+  string userID = 2;
+
+  string name = 4;
+  string version = 5;
+  string displayName = 6;
+  string summary = 7;
+  repeated string labels = 8;
+  string catalog = 9;
+  string logoURL = 10;
+
+  // presentation
+  string desc = 21;
+  string contactName = 22;
+  string contactURL = 23;
+  string contactEmail = 24;
+  bool isOpenSourced = 25;
+  string opensourceURL = 26;
+  string licenseName = 27;
+  string licenseURL = 28;
+  string homepageName = 29;
+  string homepageURL = 30;
+  string homepageLogoURL = 31;
+  bool isDownloadable = 32;
+  string downloadURL = 33;
+  repeated Readme readme = 34;
+
+  // installation
+  ArtifactsInstallation installation = 41;
+}
+
+message ArtifactsInstallation {
+  string releaseID = 1;
+}
+
+message PutOffArtifactsReq {
+  uint32 orgID = 1;
+  string userID = 2;
+  string opusID = 3;
+  string versionID = 4;
+}
+
+message PutOnExtensionsReq {
+  uint32 orgID = 1;
+  string userID = 2;
+
+  string type = 3;
+  string name = 4;
+  string version = 5;
+  string displayName = 6;
+  string displayNameI18n = 7;
+  string summary = 8;
+  string summaryI18n = 9;
+  repeated string labels = 10;
+  string catalog = 11;
+  string logoURL = 12;
+  string level = 13;
+  string mode = 14; // append, override
+
+  // presentation
+  string desc = 21;
+  string descI18n = 22;
+  string contactName = 23;
+  string contactURL = 24;
+  string contactEmail = 25;
+  bool isOpenSourced = 26;
+  string opensourceURL = 27;
+  string licenseName = 28;
+  string licenseURL = 29;
+  string homepageName = 30;
+  string homepageURL = 31;
+  string homepageLogoURL = 32;
+  bool isDownloadable = 33;
+  string downloadURL = 34;
+  repeated Readme readme = 35;
+  string i18n = 36; // map[string]map[string]string
+
+  bool isDefault = 40;
+}
+
+message ListOpusVersionsReq {
+  string opusID = 1;
+}
+
+message ListOpusVersionsResp {
+  ListOpusVersionsRespData data = 1;
+  repeated string userIDs = 2;
+}
+
+message ListOpusVersionsRespData {
+  string id = 1;
+  google.protobuf.Timestamp createdAt = 2;
+  google.protobuf.Timestamp updatedAt = 3;
+  uint32 orgID = 4;
+  string orgName = 5;
+  string creatorID = 6;
+  string updaterID = 7;
+
+  string level = 8;
+  string type = 9;
+  string name = 10;
+  string displayName = 11;
+  string catalog = 12;
+  string defaultVersionID = 13;
+  string latestVersionID = 14;
+  repeated ListOpusVersionRespDataVersion versions = 15;
+}
+
+message ListOpusVersionRespDataVersion {
+  string id = 1;
+  google.protobuf.Timestamp createdAt = 2;
+  google.protobuf.Timestamp updatedAt = 3;
+  string creatorID = 4;
+  string updaterID = 5;
+
+  string version = 10;
+  string summary = 11;
+  repeated string labels = 12;
+  string logoURL = 13;
+  bool isValid = 14;
+
+  string ref = 20; // reserved
+  string desc = 21;
+  string contactName = 22;
+  string contactURL = 23;
+  string contactEmail = 24;
+  bool isOpenSourced = 25;
+  string opensourceURL = 26;
+  string licenceName = 27;
+  string licenceURL = 28;
+  string homepageName = 29;
+  string homepageURL = 30;
+  string homepageLogoURL = 31;
+  bool isDownloadable = 32;
+  string downloadURL = 33;
+
+  string readmeLang = 40;
+  string readmeLangName = 41;
+  string readme = 42;
+}
+
+message PutOnOpusResp {
+  string opusID = 1;
+  string versionID = 2;
+}
+
+message I18n {
+  map<string, string> lang = 1;
+}

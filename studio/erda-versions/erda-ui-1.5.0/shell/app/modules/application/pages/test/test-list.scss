@@ -1,0 +1,51 @@
+.application-test {
+  .test-item {
+    padding: 14px;
+    border-bottom: 1px solid $color-border;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-hover;
+    }
+  }
+
+  .item-left {
+    .top-row {
+      color: $color-text;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .buttom-row {
+      color: $color-text-sub;
+    }
+  }
+
+  .item-right {
+    .test-status {
+      width: 160px;
+    }
+
+    .buttom-row {
+      text-align: right;
+
+      .test-time,
+      .operator {
+        color: $color-text-desc;
+      }
+    }
+  }
+
+  .ant-progress-line {
+    color: $color-text-desc;
+    font-size: 12px;
+  }
+
+  .ant-progress-status-success .ant-progress-text {
+    color: $color-text-desc;
+  }
+
+  .ant-progress-success-bg {
+    background: $color-primary;
+  }
+}

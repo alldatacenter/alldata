@@ -1,0 +1,17 @@
+.repo-tag-search-input {
+  width: 260px;
+}
+.repo-tag-list {
+  .branch-item {
+    padding: $p16;
+    color: $color-text;
+    border-bottom: 1px solid $color-border;
+
+    &-left {
+      flex: 1;
+      margin-right: $p8;
+      overflow: hidden;
+      line-height: $p24;
+    }
+  }
+}

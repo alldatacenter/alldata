@@ -1,0 +1,66 @@
+.publisher-version-list {
+  .version-list {
+    .version-day-list {
+      overflow: auto;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
+    .version-item {
+      position: relative;
+      padding: 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      &:last-child {
+        border-width: 0;
+      }
+
+      .version-number {
+        .number {
+          color: $color-dark-8;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0;
+        }
+
+        .type {
+          color: $color-dark-4;
+          font-size: 12px;
+          line-height: 24px;
+          letter-spacing: 0;
+        }
+
+        &.on {
+          color: #25ca64;
+        }
+
+        &.off {
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      .version-tips {
+        display: flex;
+        align-items: center;
+
+        .text {
+          margin-right: 24px;
+          margin-left: 4px;
+        }
+      }
+
+      .version-op {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 180px;
+        height: 32px;
+        font-size: 18px;
+      }
+
+      .app-store-url {
+        max-width: 200px;
+      }
+    }
+  }
+}

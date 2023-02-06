@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: localdir-deploy
+  labels:
+    app: localdir-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: localdir-deploy
+  template:
+    metadata:
+      labels:
+        app: localdir-deploy
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node-010000007033
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /data
+              name: localdir-volume
+      volumes:
+        - name: localdir-volume
+          emptyDir: {}

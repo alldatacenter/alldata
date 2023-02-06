@@ -1,0 +1,12 @@
+@url = http://localhost:8092
+
+### Query Org Logs
+GET {{url}}/api/orgCenter/logs
+    ?start=0
+    &end=1634733414373000000
+    &count=-200
+    &id=7043baaa7b4fd02be50638b753085a1b64cc5ed9b9c2e93ce5a30f503a4901de
+    &source=container
+    &stream=stdout
+    &clusterName=terminus-dev
+Accept: application/json

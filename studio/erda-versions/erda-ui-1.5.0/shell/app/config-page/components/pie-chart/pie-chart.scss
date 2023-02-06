@@ -1,0 +1,11 @@
+.cp-pie-chart {
+  position: relative;
+  flex-direction: column;
+  min-height: 20px;
+  height: 100%;
+
+  .chart-dom {
+    height: 100%;
+    min-height: 20px;
+  }
+}

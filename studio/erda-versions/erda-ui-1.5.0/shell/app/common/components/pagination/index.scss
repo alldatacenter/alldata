@@ -1,0 +1,34 @@
+.erda-pagination {
+  padding: 10px 0.5rem;
+  line-height: 24px;
+  color: $color-table-color;
+
+  .pagination-center {
+    line-height: 36px;
+  }
+
+  .bg-hover:not(.disabled) {
+    &:hover {
+      color: $black;
+    }
+  }
+
+  .disabled {
+    color: $lightgray;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.pagination-jump {
+  .ant-popover-content {
+    position: relative;
+    top: 10px;
+  }
+
+  .ant-popover-arrow {
+    display: none;
+  }
+}

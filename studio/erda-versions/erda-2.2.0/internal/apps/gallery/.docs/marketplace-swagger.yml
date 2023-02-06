@@ -1,0 +1,439 @@
+openapi: 3.0.0
+info:
+  description: |
+    marketplace 接口文档.
+  version: "2.2.0"
+  title: Erda Marketplace
+  contact:
+    email: rainchan365@163.com
+servers:
+  - url: 'https://openapi.dev.terminus.io'
+tags:
+  - name: gallery
+    description: gallery
+
+paths:
+  /api/opus-types:
+    get:
+      tags:
+        - gallery
+      summary: 查询所有 opus 类型
+      description: 查询所有 opus 类型
+      responses:
+        '200':
+          description: successful operation
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/BaseResponse"
+                type: object
+                properties:
+                  "data":
+                    type: object
+                    properties:
+                      "total":
+                        description: 数量
+                        type: integer
+                      "list":
+                        description: 列表
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/OpusType"
+
+  /api/opus:
+    get:
+      tags:
+        - gallery
+      summary: 查询组织下所有的 gallery 资源
+      description: 查询组织下所有的 artifacts 资源 (extensions 和 上架的项目制品)
+      parameters:
+        - name: type
+          in: query
+          description: 根据 type 可筛选 artifacts 类型; 不传时查询所有类型
+          required: false
+          schema:
+            type: string
+            enum:
+              - erda/extension/action
+              - erda/extension/addon
+              - erda/artifacts/project
+            example: "erda/extension/addon"
+        - name: name
+          in: query
+          description: artifact 名称
+          required: false
+          schema:
+            type: string
+        - name: keyword
+          in: query
+          description: 搜索关键字
+          x-todo: 搜索什么字段
+          required: false
+          schema:
+            type: string
+            default: ""
+        - name: withPresentation
+          in: query
+          description: 返回结构是否要携带 presentation 字段, 为 false 时 presentation 仅包含列表所需信息
+          required: false
+          schema:
+            type: boolean
+            default: false
+        - name: withPublication
+          in: query
+          description: 返回结构是否要携带 publication 字段
+          required: false
+          schema:
+            type: boolean
+            default: false
+        - name: withInstallation
+          in: query
+          description: 返回结构是否要携带 installation 字段
+          required: false
+          schema:
+            type: boolean
+            default: false
+
+        - name: pageNo
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/BaseResponse'
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      "total":
+                        description: 数量
+                        type: integer
+                      "list":
+                        description: 列表
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Opus"
+
+  /api/opus/{id}/actions/gen-shared-url:
+    parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags:
+        - gallery
+      summary: 生成页面分享查看链接
+      requestBody:
+        $ref: "#/components/requestBodies/GenerateSharedURL"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/BaseResponse'
+                properties:
+                  "data":
+                    type: object
+                    properties:
+                      "name":
+                        type: string
+                      "version":
+                        type: string
+                      "url":
+                        type: string
+
+components:
+  schemas:
+    BaseResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        err:
+          type: object
+
+    Opus:
+      type: object
+      properties:
+        "id":
+          type: string
+        "createdAt":
+          type: string
+          format: date-time
+        "updatedAt":
+          type: string
+          format: date-time
+        "orgID":
+          type: string
+        "orgName":
+          type: string
+        "creatorID":
+          type: string
+        "updaterID":
+          type: string
+        "type":
+          type: string
+        "name":
+          type: string
+        "version":
+          type: string
+        "displayName":
+          type: string
+        "summary":
+          type: string
+        "labels":
+          type: array
+          items:
+            type: string
+        "catalog":
+          type: string
+        "logoURL":
+          type: string
+        "checkValidURL":
+          type: string
+        "isValid":
+          type: boolean
+        "presentation":
+          $ref: "#/components/schemas/Presentation"
+        "publication":
+          $ref: "#/components/schemas/Publication"
+        "installation":
+          $ref: "#/components/schemas/Installation"
+        "syntax":
+          type: string
+
+    Presentation:
+      type: object
+      properties:
+        "desc":
+          type: string
+        "contactName":
+          type: string
+        "contactURL":
+          type: string
+        "contactEmail":
+          type: string
+        "isOpenSourced":
+          type: boolean
+        "opensourceURL":
+          type: string
+        "licenseName":
+          type: string
+        "licenseURL":
+          type: string
+        "homepageName":
+          type: string
+        "homepageURL":
+          type: string
+        "isDownloadable":
+          type: boolean
+        "downloadURL":
+          type: string
+        "readme":
+          type: string
+        "ref":
+          type: string
+
+    Publication:
+      type: object
+
+    Installation:
+      type: object
+
+    Info:
+      type: object
+      properties:
+        "name":
+          type: string
+        "displayName":
+          type: string
+        "type":
+          type: string
+        "version":
+          type: string
+        "summary":
+          type: string
+        "description":
+          type: string
+        "contact":
+          $ref: "#/components/schemas/Contact"
+        "opensource":
+          $ref: "#/components/schemas/Opensource"
+        "logoURL":
+          type: string
+        "homepage":
+          $ref: "#/components/schemas/Homepage"
+
+    Download:
+      type: object
+      properties:
+        "downloadable":
+          type: boolean
+        "url":
+          type: string
+
+    Readme:
+      type: object
+      properties:
+        "lang":
+          type: string
+        "langName":
+          type: string
+        "source":
+          type: string
+        "text":
+          type: string
+
+    Parameters:
+      type: object
+      properties:
+        "ins":
+          type: array
+          items:
+            type: string
+        "parameters":
+          type: array
+          items:
+            $ref: "#/components/schemas/Parameter"
+
+    Contact:
+      type: object
+      properties:
+        "name":
+          type: string
+        "url":
+          type: string
+        "email":
+          type: string
+
+    Opensource:
+      type: object
+      properties:
+        "isOpenSourced":
+          type: boolean
+        "url":
+          type: string
+        "license":
+          $ref: "#/components/schemas/License"
+
+    Homepage:
+      type: object
+      properties:
+        "name":
+          type: string
+        "url":
+          type: string
+        "logURL":
+          type: string
+
+    Parameter:
+      type: object
+      properties:
+        "name":
+          type: string
+        "in":
+          type: string
+        "description":
+          type: string
+        "style":
+          type: string
+        "explode":
+          type: boolean
+        "allowEmptyValue":
+          type: boolean
+        "allowReserved":
+          type: boolean
+        "deprecated":
+          type: boolean
+        "required":
+          type: boolean
+        "schema":
+          $ref: "#/components/schemas/Schema"
+
+    License:
+      type: object
+      properties:
+        "name":
+          type: string
+        "url":
+          type: string
+
+    Schema:
+      type: object
+      properties:
+        "type":
+          type: string
+        "title":
+          type: string
+        "format":
+          type: string
+        "description":
+          type: string
+        "deprecated":
+          type: boolean
+        "items":
+          $ref: "#/components/schemas/Schema"
+        "required":
+          type: boolean
+        properties:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/Schema"
+
+    Form:
+      type: object
+      properties:
+        "title":
+          type: string
+        "headers":
+          type: array
+          items:
+            type: string
+        "lines":
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+
+    OpusType:
+      type: object
+      properties:
+        "name":
+          type: string
+          description: 类型标识
+        "displayName":
+          type: string
+          description: 类型名称
+
+  requestBodies:
+    GenerateSharedURL:
+      content:
+        "application/json":
+          schema:
+            type: object
+            properties:
+              "name":
+                type: string
+              "version":
+                type: string
+      required: true

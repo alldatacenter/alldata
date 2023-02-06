@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package erda.core.hepa.global;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/global/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+service GlobalService {
+  rpc GetHealth(GetHealthRequest) returns (GetHealthResponse) {
+    option (google.api.http) = {
+      get: "/_api/health",
+    };
+  }
+
+  rpc GetTenantGroup(GetTenantGroupRequest) returns (GetTenantGroupResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/tenant-group?projectId={projectId}&env={env}",
+    };
+  }
+
+  rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/tenants",
+    };
+  }
+
+  rpc GetFeatures(GetFeaturesRequest) returns (GetFeaturesResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/gateway-features/{clusterName}",
+    };
+  }
+}
+
+message GetFeaturesResponse {
+  map<string, string> data = 1;
+}
+
+message GetFeaturesRequest {
+  string clusterName = 1;
+}
+
+message CreateTenantResponse {
+  bool data = 1;
+}
+
+message CreateTenantRequest {
+  string id = 1;
+  string tenantGroup = 2;
+  string az = 3;
+  string env = 4;
+  string projectId = 5;
+  string projectName = 6;
+  string adminAddr = 7;
+  string gatewayEndpoint = 8;
+  string innerAddr = 9;
+  string serviceName = 10;
+  string instanceId = 11;
+}
+
+message GetTenantGroupResponse {
+  string data = 1;
+}
+
+message GetTenantGroupRequest {
+  string projectId = 1;
+  string env = 2;
+}
+
+message HealthModule {
+  string name = 1;
+  string status = 2;
+  string message = 3;
+}
+
+message GetHealthRequest {
+}
+
+message GetHealthResponse {
+  string status = 1;
+  repeated HealthModule modules = 2;
+}

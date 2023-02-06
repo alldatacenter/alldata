@@ -1,0 +1,44 @@
+id: app_resource_container_oom
+metadata:
+  name: "应用实例OOM告警"
+  type: app_resource
+  module: monitor
+  scope:
+    - micro_service
+behavior:
+  group: "{{terminus_key}}-{{container_id}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        container_id: "string:6"
+      title: |
+        【{{application_name}}应用{{service_name}}服务实例OOM告警】
+      template: |
+        【应用实例OOM告警】
+
+        项目: {{project_name}}
+
+        应用: {{application_name}}
+
+        服务实例: {{runtime_name}} - {{service_name}}.{{container_id}}
+
+        事件: 服务实例发生OOM
+
+        机器: {{host_ip}}
+
+        时间: {{timestamp}}
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})

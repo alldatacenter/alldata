@@ -1,0 +1,342 @@
+[
+  {
+    "issueType": "REQUIREMENT",
+    "states": [
+      {
+        "index": 0,
+        "name": "待处理",
+        "belong": "OPEN"
+      },
+      {
+        "index": 1,
+        "name": "进行中",
+        "belong": "WORKING"
+      },
+      {
+        "index": 2,
+        "name": "测试中",
+        "belong": "WORKING"
+      },
+      {
+        "index": 3,
+        "name": "已完成",
+        "belong": "DONE"
+      }
+    ],
+    "relations": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 0,
+        "to": 2
+      },
+      {
+        "from": 0,
+        "to": 3
+      },
+      {
+        "from": 1,
+        "to": 0
+      },
+      {
+        "from": 1,
+        "to": 2
+      },
+      {
+        "from": 1,
+        "to": 3
+      },
+      {
+        "from": 2,
+        "to": 0
+      },
+      {
+        "from": 2,
+        "to": 1
+      },
+      {
+        "from": 2,
+        "to": 3
+      },
+      {
+        "from": 3,
+        "to": 0
+      },
+      {
+        "from": 3,
+        "to": 1
+      },
+      {
+        "from": 3,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "issueType": "TASK",
+    "states": [
+      {
+        "index": 0,
+        "name": "待处理",
+        "belong": "OPEN",
+        "relations": [1]
+      },
+      {
+        "index": 1,
+        "name": "进行中",
+        "belong": "WORKING",
+        "relations": [2]
+      },
+      {
+        "index": 2,
+        "name": "已完成",
+        "belong": "DONE",
+        "relations": []
+      }
+    ],
+    "relations": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "issueType": "EPIC",
+    "states": [
+      {
+        "index": 0,
+        "name": "待处理",
+        "belong": "OPEN",
+        "relations": [1]
+      },
+      {
+        "index": 1,
+        "name": "进行中",
+        "belong": "WORKING",
+        "relations": [2]
+      },
+      {
+        "index": 2,
+        "name": "已完成",
+        "belong": "DONE",
+        "relations": []
+      }
+    ],
+    "relations": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "issueType": "BUG",
+    "states": [
+      {
+        "index": 0,
+        "name": "待处理",
+        "belong": "OPEN"
+      },
+      {
+        "index": 1,
+        "name": "进行中",
+        "belong": "WORKING"
+      },
+      {
+        "index": 2,
+        "name": "无需修复",
+        "belong": "WONTFIX"
+      },
+      {
+        "index": 3,
+        "name": "重复提交",
+        "belong": "WONTFIX"
+      },
+      {
+        "index": 4,
+        "name": "已解决",
+        "belong": "RESOLVED"
+      },
+      {
+        "index": 5,
+        "name": "重新打开",
+        "belong": "REOPEN"
+      },
+      {
+        "index": 6,
+        "name": "已关闭",
+        "belong": "CLOSED"
+      }
+    ],
+    "relations": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 0,
+        "to": 2
+      },
+      {
+        "from": 0,
+        "to": 3
+      },
+      {
+        "from": 0,
+        "to": 4
+      },
+      {
+        "from": 1,
+        "to": 2
+      },
+      {
+        "from": 1,
+        "to": 3
+      },
+      {
+        "from": 1,
+        "to": 4
+      },
+      {
+        "from": 1,
+        "to": 5
+      },
+      {
+        "from": 2,
+        "to": 5
+      },
+      {
+        "from": 2,
+        "to": 6
+      },
+      {
+        "from": 3,
+        "to": 5
+      },
+      {
+        "from": 3,
+        "to": 6
+      },
+      {
+        "from": 4,
+        "to": 5
+      },
+      {
+        "from": 4,
+        "to": 6
+      },
+      {
+        "from": 5,
+        "to": 1
+      },
+      {
+        "from": 5,
+        "to": 2
+      },
+      {
+        "from": 5,
+        "to": 3
+      },
+      {
+        "from": 5,
+        "to": 4
+      }
+    ]
+  },
+  {
+    "issueType": "TICKET",
+    "states": [
+      {
+        "index": 0,
+        "name": "待处理",
+        "belong": "OPEN"
+      },
+      {
+        "index": 1,
+        "name": "无需修复",
+        "belong": "WONTFIX"
+      },
+      {
+        "index": 2,
+        "name": "重复提交",
+        "belong": "WONTFIX"
+      },
+      {
+        "index": 3,
+        "name": "已解决",
+        "belong": "RESOLVED"
+      },
+      {
+        "index": 4,
+        "name": "重新打开",
+        "belong": "REOPEN"
+      },
+      {
+        "index": 5,
+        "name": "已关闭",
+        "belong": "CLOSED"
+      }
+    ],
+    "relations": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 0,
+        "to": 2
+      },
+      {
+        "from": 0,
+        "to": 3
+      },
+      {
+        "from": 1,
+        "to": 3
+      },
+      {
+        "from": 1,
+        "to": 5
+      },
+      {
+        "from": 2,
+        "to": 4
+      },
+      {
+        "from": 2,
+        "to": 5
+      },
+      {
+        "from": 3,
+        "to": 4
+      },
+      {
+        "from": 3,
+        "to": 5
+      },
+      {
+        "from": 4,
+        "to": 1
+      },
+      {
+        "from": 4,
+        "to": 2
+      },
+      {
+        "from": 4,
+        "to": 3
+      }
+    ]
+  }
+]

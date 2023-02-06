@@ -1,0 +1,52 @@
+service.admin:
+  debug: ${DEBUG:false}
+service.personal-workbench:
+service.dingtalk-test:
+erda.apps.gallery:
+
+mysql:
+  host: "${MYSQL_HOST}"
+  port: "${MYSQL_PORT}"
+  username: "${MYSQL_USERNAME}"
+  password: "${MYSQL_PASSWORD}"
+  database: "${MYSQL_DATABASE}"
+
+service-register:
+http-server:
+  addr: ":9095"
+  allow_cors: true
+
+grpc-server:
+  addr: ":8096"
+
+health:
+
+# component-protocol framework
+component-protocol:
+
+i18n@personal-workbench:
+
+i18n:
+  files:
+    - conf/i18n/gallery.yaml
+
+grpc-client@erda.core.clustermanager.cluster:
+  addr: "${CLUSTER_MANAGER_GRPC_ADDR:cluster-manager:9095}"
+erda.core.clustermanager.cluster-client: {}
+
+gorm.v2:
+  host: "${MYSQL_HOST}"
+  port: "${MYSQL_PORT}"
+  username: "${MYSQL_USERNAME}"
+  password: "${MYSQL_PASSWORD}"
+  database: "${MYSQL_DATABASE}"
+
+erda.apps.gallery.easy-memory-cache:
+
+grpc-client@erda.msp.tanant.project:
+  addr: "${MSP_GRPC_ADDR:msp:7080}"
+erda.msp.tenant.project-client: {}
+
+grpc-client@erda.msp.menu:
+  addr: "${MSP_GRPC_ADDR:msp:7080}"
+erda.msp.menu-client: {}

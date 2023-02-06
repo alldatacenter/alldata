@@ -1,0 +1,214 @@
+.dice-perm-editor {
+  .ant-tabs {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .ant-tabs-content {
+      height: 100%;
+    }
+  }
+}
+
+.perm-editor-container {
+  display: flex;
+  flex-direction: column;
+
+  .perm-head {
+    display: flex;
+
+    .role-head {
+      flex: 1;
+      width: 0;
+      overflow-x: auto;
+
+      /* for Chrome */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .head-container {
+      display: flex;
+
+      .column-head-item {
+        display: flex;
+        align-items: center;
+        height: 42px;
+        padding: 0 12px;
+        font-weight: 500;
+        background-color: $color-dark-1;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        border-left: 1px solid $border-color;
+
+        &:last-child {
+          border-right: 1px solid $border-color;
+        }
+
+        .head-text {
+          min-width: 60px;
+          text-align: center;
+        }
+      }
+
+      &.role-head {
+        .column-head-item {
+          &:first-child {
+            border-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .perm-body {
+    flex: 1;
+    height: 0;
+    overflow: auto;
+
+    .perm-body-scroll-box {
+      display: flex;
+    }
+
+    .column-container {
+      display: flex;
+    }
+
+    .column-perm {
+      box-shadow: 5px 0 5px -5px $color-dark-1;
+    }
+
+    .column-role {
+      flex: 1;
+      width: 0;
+      overflow-x: auto;
+    }
+  }
+
+  .perm-column {
+    .perm-column-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-width: 120px;
+      max-width: 300px;
+      padding: 0 12px;
+      border-top: 1px solid $border-color;
+      border-left: 1px solid $border-color;
+
+      &.hover-active-item {
+        background-color: $color-active-bg;
+        cursor: pointer;
+      }
+
+      &.changed {
+        background-color: $color-danger-bg;
+      }
+
+      &.role-column {
+        display: flex;
+        justify-content: center;
+        min-width: 60px;
+        margin: 0;
+
+        &::after {
+          content: ' ';
+          color: $primary;
+          font-size: 20px;
+        }
+
+        &.edit-un-checked {
+          &::after {
+            content: '\e60c';
+          }
+        }
+
+        &.edit-checked {
+          &::after {
+            content: '\e785';
+          }
+        }
+
+        &.readonly-checked {
+          &::after {
+            content: '\e87d';
+          }
+        }
+      }
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid $border-color;
+      }
+
+      div {
+        width: 100%;
+      }
+    }
+
+    &:last-child {
+      .perm-column-item {
+        border-right: 1px solid $border-color;
+      }
+    }
+  }
+
+  .perm-operation {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    width: unset !important;
+    height: 38px;
+    margin-top: -19px;
+    background-color: $white;
+
+    .perm-operation-box {
+      display: flex;
+      height: 100%;
+      background-color: $color-active-bg;
+    }
+
+    .perm-op-item {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      &:first-child {
+        padding-left: 8px;
+        box-shadow: -5px 0 5px -5px $color-dark-1;
+      }
+    }
+  }
+
+  .column-role .perm-column {
+    &:first-child {
+      .perm-column-item {
+        border-left: 0;
+      }
+    }
+  }
+}
+
+.dice-perm-edit-form {
+  &.edit {
+    width: 350px;
+
+    .render-form.ant-form-vertical {
+      width: 100%;
+    }
+  }
+
+  &.add {
+    width: 500px;
+
+    .render-form.ant-form-vertical {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,188 @@
+syntax = "proto3";
+
+package erda.msp.tenant.project;
+option go_package = "github.com/erda-project/erda-proto-go/msp/tenant/project/pb";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/descriptor.proto";
+import "common/openapi.proto";
+
+service ProjectService {
+  option (erda.common.openapi_service) = {
+    service: "msp",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc GetProjects (GetProjectsRequest) returns (GetProjectsResponse)  {
+    option (google.api.http) = {
+      get: "/api/msp/tenant/projects",
+    };
+  }
+
+  rpc GetProjectsTenantsIDs (GetProjectsTenantsIDsRequest) returns (GetProjectsTenantsIDsResponse)  {
+    option (google.api.http) = {
+      get: "/api/msp/tenant/projects/tenants/ids",
+    };
+  }
+
+  rpc CreateProject (CreateProjectRequest) returns (CreateProjectResponse)  {
+    option (google.api.http) = {
+      post: "/api/msp/tenant/project",
+    };
+  }
+
+  rpc UpdateProject (UpdateProjectRequest) returns (UpdateProjectResponse)  {
+    option (google.api.http) = {
+      put: "/api/msp/tenant/project",
+    };
+  }
+
+  rpc DeleteProject (DeleteProjectRequest) returns (DeleteProjectResponse)  {
+    option (google.api.http) = {
+      delete: "/api/msp/tenant/project",
+    };
+  }
+
+  rpc GetProject(GetProjectRequest) returns (GetProjectResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/tenant/project?projectId={projectID}"
+    };
+  }
+
+  rpc GetProjectOverview(GetProjectOverviewRequest) returns (GetProjectOverviewResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/tenant/project/overview"
+    };
+  }
+
+  rpc GetProjectStatistics(GetProjectStatisticsRequest) returns (GetProjectStatisticsResponse) {
+    option (google.api.http) = {
+      post: "/api/msp/tenant/project/statistics"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/msp/tenant/project/statistics"
+    };
+  }
+}
+
+message GetProjectStatisticsRequest {
+  repeated string projectIds = 1;
+}
+
+message GetProjectStatisticsResponse {
+  map<string, ProjectStatistics> data = 1;
+}
+
+message ProjectStatistics {
+  int64 serviceCount      = 1;
+  int64 last24hAlertCount = 2;
+  int64 lastActiveTime    = 3;
+}
+
+message GetProjectOverviewRequest{
+  repeated string projectId = 1;
+}
+
+message GetProjectOverviewResponse{
+  ProjectOverviewList data = 1;
+}
+
+message ProjectOverviewList{
+  repeated ProjectOverview data = 1;
+}
+
+message ProjectOverview{
+  int64 projectCount   = 1;
+  int64 workspaceCount = 2;
+}
+
+
+message GetProjectRequest {
+  string projectID = 1 [(validate.rules).string.min_len = 1, json_name = "projectId"];
+}
+
+message GetProjectResponse {
+  Project data = 1;
+}
+
+message GetProjectsRequest{
+  repeated string projectId = 1;
+  bool            withStats = 2;
+}
+
+message GetProjectsResponse{
+  repeated Project data = 1;
+}
+
+
+message GetProjectsTenantsIDsRequest{
+  repeated string projectId = 1;
+}
+
+message GetProjectsTenantsIDsResponse{
+  repeated string data = 1;
+}
+
+message DeleteProjectRequest{
+  string projectId = 1;
+}
+
+message DeleteProjectResponse{
+  repeated Project data = 1;
+}
+
+message CreateProjectRequest{
+  string id          = 1;
+  string name        = 2;
+  string displayName = 3;
+  string type        = 4;
+}
+
+message CreateProjectResponse{
+  Project data = 1;
+}
+
+message UpdateProjectRequest{
+  string id          = 1;
+  string name        = 2;
+  string displayName = 3;
+  string type        = 4;
+}
+
+message UpdateProjectResponse{
+  Project data = 1;
+}
+
+message Project{
+  // Project id
+  string                      id                = 1;
+  // Project name
+  string                      name              = 2;
+  // Project type
+  string                      type              = 3;
+  // Tenant relationship list, k is workspace, v is tenantId
+  repeated TenantRelationship relationship      = 4;
+  // Create timestamp
+  int64                       createTime        = 5;
+  // Update timestamp
+  int64                       updateTime        = 6;
+  bool                        isDeleted         = 7;
+  // Project display name
+  string                      displayName       = 8;
+  // Project type display name
+  string                      displayType       = 9;
+  string                      desc              = 10;
+  string                      logo              = 11;
+  int64                       serviceCount      = 12;
+  int64                       last24hAlertCount = 13;
+  int64                       lastActiveTime    = 14;
+}
+
+message TenantRelationship {
+  string workspace        = 1;
+  string tenantID         = 2 [json_name = "tenantId"];
+  string displayWorkspace = 3;
+}

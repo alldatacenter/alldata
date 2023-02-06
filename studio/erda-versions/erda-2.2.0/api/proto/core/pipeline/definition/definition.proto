@@ -1,0 +1,214 @@
+syntax = "proto3";
+
+package erda.core.pipeline.definition;
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "common/identity.proto";
+import "common/commit.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/core/pipeline/definition/pb";
+
+service DefinitionService {
+  rpc Create (PipelineDefinitionCreateRequest) returns (PipelineDefinitionCreateResponse) {
+    option (google.api.http) = {
+      post: "/api/pipeline-definitions",
+    };
+  }
+  rpc Update (PipelineDefinitionUpdateRequest) returns (PipelineDefinitionUpdateResponse) {
+    option (google.api.http) = {
+      put: "/api/pipeline-definitions/{pipelineDefinitionID}",
+    };
+  }
+  rpc Delete (PipelineDefinitionDeleteRequest) returns (PipelineDefinitionDeleteResponse) {
+    option (google.api.http) = {
+      delete: "/api/pipeline-definitions/{pipelineDefinitionID}",
+    };
+  }
+  rpc Get (PipelineDefinitionGetRequest) returns (PipelineDefinitionGetResponse) {
+    option (google.api.http) = {
+      get: "/api/pipeline-definitions/{pipelineDefinitionID}",
+    };
+  }
+  rpc List (PipelineDefinitionListRequest) returns (PipelineDefinitionListResponse) {
+    option (google.api.http) = {
+      get: "/api/pipeline-definitions",
+    };
+  }
+  rpc StatisticsGroupByRemote (PipelineDefinitionStatisticsRequest) returns (PipelineDefinitionStatisticsResponse) {
+    option (google.api.http) = {
+      get: "/api/pipeline-definitions/actions/statistics-group-by-remote",
+    };
+  }
+  rpc ListUsedRefs (PipelineDefinitionUsedRefListRequest) returns (PipelineDefinitionUsedRefListResponse) {
+    option (google.api.http) = {
+      get: "/api/pipeline-definitions/actions/list-used-refs",
+    };
+  }
+  rpc StatisticsGroupByFilePath (PipelineDefinitionStatisticsRequest) returns (PipelineDefinitionStatisticsResponse) {
+    option (google.api.http) = {
+      get: "/api/pipeline-definitions/actions/statistics-group-by-filePath",
+    };
+  }
+  rpc UpdateExtra (PipelineDefinitionExtraUpdateRequest) returns (PipelineDefinitionExtraUpdateResponse) {
+    option (google.api.http) = {
+      put: "/api/pipeline-definitions/{pipelineDefinitionID}/actions/update-extra",
+    };
+  }
+}
+
+// update extra
+message PipelineDefinitionExtraUpdateRequest {
+  string pipelineDefinitionID = 1;
+  string extra = 2;
+}
+
+message PipelineDefinitionExtraUpdateResponse {
+  PipelineDefinitionExtra extra = 1;
+}
+
+message PipelineDefinition {
+  string ID = 1 [json_name = "id"];
+  string location = 2;
+  string name = 3;
+  string creator = 4;
+  string category = 5;
+  int64 costTime = 6;
+  string executor = 7;
+  PipelineDefinitionExtra extra = 8;
+  google.protobuf.Timestamp startedAt = 9;
+  google.protobuf.Timestamp endedAt = 10;
+  google.protobuf.Timestamp timeCreated = 11;
+  google.protobuf.Timestamp timeUpdated = 12;
+  int64 softDeletedAt = 13;
+  string sourceType = 14;
+  string remote = 15;
+  string ref = 16;
+  string path = 17;
+  string fileName = 18;
+  string pipelineSourceID = 19;
+  string status = 20;
+  int64 pipelineID = 21;
+  int64 totalActionNum = 22;
+  int64 ExecutedActionNum = 23;
+}
+
+message PipelineDefinitionExtra {
+  string ID = 1 [json_name = "id"];
+  string extra = 2;
+  google.protobuf.Timestamp timeCreated = 3;
+  google.protobuf.Timestamp timeUpdated = 4;
+  string pipelineDefinition = 5;
+}
+
+
+// create
+message PipelineDefinitionCreateRequest {
+  string ID = 1 [json_name = "id"];
+  string location = 2;
+  string name = 3;
+  string creator = 4;
+  string pipelineSourceID = 5;
+  string category = 6;
+  PipelineDefinitionExtra extra = 7;
+  int64 totalActionNum = 8;
+  int64 ExecutedActionNum = 9;
+  string ref = 10;
+}
+
+message PipelineDefinitionCreateResponse {
+  PipelineDefinition pipelineDefinition = 1;
+}
+
+// update
+message PipelineDefinitionUpdateRequest {
+  string name = 1;
+  int64 costTime = 2;
+  string executor = 3;
+  string pipelineSourceID = 4;
+  string category = 5;
+  google.protobuf.Timestamp startedAt = 6;
+  google.protobuf.Timestamp endedAt = 7;
+  string pipelineDefinitionID = 8;
+  string status = 9;
+  int64 pipelineID = 10;
+  int64 totalActionNum = 11;
+  int64 ExecutedActionNum = 12;
+}
+
+message PipelineDefinitionUpdateResponse {
+  PipelineDefinition pipelineDefinition = 1;
+}
+
+// delete
+message PipelineDefinitionDeleteRequest {
+  string pipelineDefinitionID = 1;
+}
+
+message PipelineDefinitionDeleteResponse {}
+
+// get
+message PipelineDefinitionGetRequest {
+  string pipelineDefinitionID = 1;
+}
+
+message PipelineDefinitionGetResponse {
+  PipelineDefinition pipelineDefinition = 1;
+}
+
+message PipelineDefinitionListRequest {
+  int64 pageSize = 1;
+  int64 pageNo = 2;
+  string location = 3;
+  string name = 4;
+
+  string fuzzyName = 5;
+  repeated string creator = 6;
+  repeated string executor = 7;
+  repeated string category = 8;
+  repeated string ref = 9;
+  repeated string remote = 10;
+  repeated string timeCreated = 11;
+  repeated string timeStarted = 12;
+  repeated string status = 13;
+  repeated string idList = 14;
+  repeated string ascCols = 15;
+  repeated string descCols = 16;
+  int64 totalActionNum = 17;
+  int64 ExecutedActionNum = 18;
+  repeated string sourceIDList = 19;
+  repeated string filePathWithNames = 20;
+  bool isOthers = 21;
+}
+
+message PipelineDefinitionStatisticsRequest {
+  string location = 1;
+  repeated string remotes = 2;
+}
+
+message PipelineDefinitionStatisticsResponse {
+  repeated PipelineDefinitionStatistics PipelineDefinitionStatistics = 1;
+}
+
+message PipelineDefinitionStatistics {
+  string group = 1;
+  uint64 failedNum = 2;
+  uint64 runningNum = 3;
+  uint64 totalNum = 4;
+}
+
+message PipelineDefinitionListResponse {
+  int64 total = 1;
+  repeated PipelineDefinition data = 2;
+}
+
+message PipelineDefinitionUsedRefListRequest {
+  string location = 1 [(validate.rules).string.min_len = 1];
+  repeated string remotes = 2;
+}
+
+message PipelineDefinitionUsedRefListResponse {
+  repeated string ref = 1;
+}

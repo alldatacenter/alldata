@@ -1,0 +1,40 @@
+.erda-alert {
+  &.ant-alert {
+    border: none;
+    padding: 6px 16px;
+    color: $color-default;
+    border-radius: 2px;
+  }
+  &.ant-alert-info {
+    background-color: $color-default-bg;
+
+    .erda-alert-icon {
+      color: $color-default;
+    }
+  }
+  &.ant-alert-success {
+    background-color: $color-success-bg;
+
+    .erda-alert-icon {
+      color: $color-success;
+    }
+  }
+  &.ant-alert-warning {
+    background-color: $color-warning-bg;
+
+    .erda-alert-icon {
+      color: $color-warning;
+    }
+  }
+  &.ant-alert-error {
+    background-color: $color-error-bg;
+
+    .erda-alert-icon {
+      color: $color-error;
+    }
+  }
+
+  .ant-alert-message {
+    display: flex;
+  }
+}

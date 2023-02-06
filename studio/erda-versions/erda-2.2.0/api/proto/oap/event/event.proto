@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package erda.oap.event;
+
+option go_package = "github.com/erda-project/erda-proto-go/oap/event/pb";
+
+import "google/protobuf/struct.proto";
+import "oap/common/common.proto";
+
+// The event data model 
+//   of the observability analysis platform.
+message Event {
+
+    string eventID = 1; 
+
+    // The severity text (also known as level). The original string representation as
+    // it is known at the source. [Optional].
+    // Normal、Warning eg.
+
+    string severity = 2;
+
+    string name = 3;
+
+    enum EventKind {
+
+        EVENT_KIND_SYSTEM = 0;
+
+        EVENT_KIND_KUBERNETES = 1;
+
+        EVENT_KIND_CONTAINER = 2;
+
+        EVENT_KIND_ERDA_PLATFORM = 3;
+
+        EVENT_KIND_EXCEPTION = 4;
+
+        EVENT_KIND_SPAN = 5;
+
+        EVENT_KIND_ALERT = 6;
+
+        EVENT_KIND_CUSTOM = 7;
+    }
+
+    EventKind kind = 4;
+
+    fixed64 timeUnixNano = 5;
+
+    // Store trace and resource pointer
+    oap.common.Relation relations = 6;
+
+    // Including label, attributes and resource 
+    map<string, string> attributes = 7;
+
+    string message = 8;
+}

@@ -1,0 +1,65 @@
+@import './common/util.scss';
+
+.dice-form-preview {
+  .form-preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+
+    &.on-edit {
+      background-color: $color-active-bg;
+    }
+
+    .form-view {
+      flex: 2;
+    }
+
+    .form-operation {
+      flex: 1;
+      margin-left: 12px;
+      font-size: 14px;
+      text-align: right;
+
+      > span {
+        margin-right: 8px;
+        color: $color-primary;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .add,
+  .get-config {
+    display: inline-block;
+    margin-top: 12px;
+    margin-right: 16px;
+    padding: 4px 12px;
+    border: 1px solid $color-border;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-hover-bg;
+      border-color: $color-active-border;
+    }
+  }
+
+  .config-pre {
+    width: 100%;
+    min-height: 300px;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.06);
+    border: none;
+    border-radius: $radius;
+    outline: 0;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}

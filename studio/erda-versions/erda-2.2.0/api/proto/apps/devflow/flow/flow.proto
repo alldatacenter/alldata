@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+package erda.apps.devflow.flow;
+
+import "common/openapi.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/apps/devflow/flow/pb";
+
+service FlowService {
+    option(erda.common.openapi_service) = {
+        service: "dop",
+        auth: {
+            check_login: true,
+            check_token: true,
+        }
+    };
+    rpc CreateFlowNode(CreateFlowNodeRequest) returns (CreateFlowNodeResponse) {
+        option(google.api.http) = {
+            post: "/api/devflow",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/devflow",
+        };
+    }
+    rpc OperationMerge(OperationMergeRequest) returns (OperationMergeResponse) {
+        option(google.api.http) = {
+            put: "/api/devflow/{mergeID}/actions/operation-merge",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/devflow/{mergeID}/actions/operation-merge",
+        };
+    }
+    rpc DeleteFlowNode(DeleteFlowNodeRequest) returns (DeleteFlowNodeResponse) {
+        option(google.api.http) = {
+            delete: "/api/devflow/{mergeID}",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/devflow/{mergeID}",
+        };
+    }
+    rpc Reconstruction(ReconstructionRequest) returns (ReconstructionResponse) {
+        option(google.api.http) = {
+            post: "/api/devflow/actions/reconstruction",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/devflow/actions/reconstruction",
+        };
+    }
+    rpc GetDevFlowInfo(GetDevFlowInfoRequest) returns (GetDevFlowInfoResponse) {
+        option(google.api.http) = {
+            get: "/api/devflow/actions/info",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/devflow/actions/info",
+        };
+    }
+}
+
+message IssueRelationExtra {
+    uint64 appID = 1;
+    uint64 repoMergeID = 2;
+}
+
+message DevFlowNode {
+    uint64 repoMergeID = 1;
+    uint64 appID = 2;
+    string targetBranch = 3;
+    string sourceBranch = 4;
+    bool isJoinTempBranch = 5;
+    string joinTempBranchStatus = 6;
+    string tempBranch = 7;
+    uint64 issueID = 8;
+    uint64 mergeID = 9;
+    string appName = 10;
+    Commit commit = 11;
+    Commit baseCommit = 12;
+    bool canJoin = 13;
+}
+
+// CreateFlow
+message CreateFlowNodeRequest {
+    uint64 issueID = 1;
+    uint64 appID = 2;
+    string sourceBranch = 3;
+    string targetBranch = 4;
+}
+
+message CreateFlowNodeResponse {
+    uint64 repoMergeID = 1;
+    uint64 mergeID = 2;
+}
+
+message OperationMergeRequest {
+    uint64 mergeID = 1;
+    google.protobuf.BoolValue enable = 2;
+}
+
+message OperationMergeResponse {
+}
+
+// DeleteFlowNode
+message DeleteFlowNodeRequest {
+    uint64 mergeID = 1;
+    uint64 issueID = 2;
+}
+
+message DeleteFlowNodeResponse {
+}
+
+// reconstruction
+message ReconstructionRequest {
+    uint64 mergeID = 1;
+}
+
+message ReconstructionResponse {
+}
+
+message PipelineStepInfo {
+    string status = 1;
+    uint64 pipelineID = 2;
+    string ymlName = 3;
+}
+
+message GetDevFlowInfoRequest {
+    uint64 issueID = 1;
+    uint64 projectID = 2;
+    uint64 mergeID = 3;
+}
+
+message ChangeBranch {
+    Commit commit = 1;
+    string branchName = 2;
+    string status = 3;
+    uint64 repoMergeID = 4;
+}
+
+message DevFlowInfo {
+    DevFlowNode devFlowNode = 1;
+
+    repeated ChangeBranch changeBranch = 2;
+    repeated PipelineStepInfo pipelineStepInfos = 3;
+    string commit = 4;
+    bool hasPermission = 5;
+    string inode = 6;
+    string pInode = 7;
+    bool hasOnPushBranch = 8;
+}
+
+message GetDevFlowInfoResponse {
+    string status = 1;
+    repeated DevFlowInfo devFlowInfos = 2;
+}
+
+message Commit {
+    string ID = 1 [json_name = "id"];
+    Signature author = 2;
+    Signature committer = 3;
+    string commitMessage = 4;
+    string parentSha = 5;
+}
+
+message Signature {
+    string email = 1;
+    string name = 2;
+    google.protobuf.Timestamp When = 3;
+}

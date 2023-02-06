@@ -1,0 +1,208 @@
+$log-font-color: #c2c1d0;
+$log-bg-color: #3c444f;
+
+.log-viewer {
+  height: 100%;
+
+  .ant-tabs-content {
+    height: 100%;
+  }
+}
+
+.log-roller {
+  position: relative;
+  height: 100%;
+  min-height: 300px;
+  padding: 10px 10px 10px 25px;
+  border-radius: 6px;
+
+  &.show-max {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    height: 100%;
+  }
+
+  &.darken {
+    color: $lightgray;
+    background-color: $log-bg-color;
+  }
+
+  .log-content-wrap {
+    height: 100%;
+  }
+
+  .log-state {
+    position: absolute;
+    left: 4px;
+    color: $green;
+    font-size: 18px;
+
+    &.top {
+      top: 15px;
+    }
+
+    &.bottom {
+      bottom: 15px;
+    }
+  }
+
+  .log-content {
+    height: 100%;
+    overflow: auto;
+    color: $log-font-color;
+    font-size: 12px;
+    font-family: Menlo, PingFangSC-Regular, Consolas, Courier, monospace;
+    line-height: 1.7em;
+    -webkit-font-smoothing: antialiased;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 6px;
+      background-color: transparent;
+    }
+
+    /*定义滚动条的轨道，内阴影及圆角*/
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 5px;
+    }
+
+    /*定义滑块，内阴影及圆角*/
+    &::-webkit-scrollbar-thumb {
+      background-color: gray;
+      border-radius: 5px;
+      -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar-corner {
+      display: none;
+      background-color: transparent;
+    }
+  }
+
+  .log-control {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    button {
+      margin-left: 20px;
+      color: $white;
+      border-radius: 16px;
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    i {
+      font-size: 14px;
+    }
+
+    &.log-top-controls {
+      top: 20px;
+      bottom: auto;
+      //width: 180px;
+    }
+
+    &.no-switch {
+      width: auto;
+    }
+
+    .ant-switch {
+      min-width: 84px;
+      height: auto;
+      line-height: 32px;
+      background-color: #ffffff47;
+      border: 1px solid #cccccc;
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+
+        &:after {
+          background-color: rgba(255, 255, 255, 0.6);
+        }
+      }
+
+      .ant-switch-handle {
+        top: 1px;
+        width: 30px;
+        height: 30px;
+
+        &:after {
+          width: 30px;
+          height: 30px;
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        &:before {
+          border-radius: 18px;
+          background-color: $color-white-3;
+        }
+      }
+
+      &.ant-switch-checked .ant-switch-handle {
+        left: calc(100% - 32px);
+      }
+    }
+
+    .ant-switch-checked {
+      background-color: transparent;
+    }
+
+    .ant-switch-inner {
+      margin-left: 40px;
+      font-size: 14px;
+    }
+
+    .ant-switch-checked .ant-switch-inner {
+      margin-left: 12px;
+      text-align: left;
+    }
+
+    .log-type-switch {
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      background-color: transparent;
+      border-color: #d9d9d9;
+      border-radius: 100%;
+
+      .ant-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &.right {
+          right: 0;
+          left: auto;
+        }
+      }
+    }
+
+    .ant-btn {
+      background-color: #ffffff4f;
+      opacity: 0.6;
+
+      > i {
+        color: white;
+      }
+
+      &:hover,
+      &:focus {
+        border-color: white;
+        opacity: 1;
+      }
+    }
+
+    .ant-btn-ghost[disabled] {
+      background: transparent;
+    }
+  }
+}

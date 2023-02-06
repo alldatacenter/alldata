@@ -1,0 +1,22 @@
+id: pipeline_success
+metadata:
+  name: "流水线运行成功"
+  type: pipeline
+  module: notify
+  scope:
+    - app
+templates:
+  - trigger:
+      - notify
+    targets:
+      - dingding
+      - email
+      - mbox
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【流水线运行成功】
+      template: |
+        ### {{projectName}}/{{appName}} 流水线{{pipelineID}}运行成功

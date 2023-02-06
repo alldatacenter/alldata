@@ -1,0 +1,25 @@
+scenario: app-list-all
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - tabs
+      - content
+    content:
+      - filter
+      - list
+
+components:
+  page:
+    type: Container
+  tabs:
+    type: RadioTabs
+  content:
+    type: Container
+  filter:
+    type: ContractiveFilter
+  list:
+    type: List
+    version: 2
+  

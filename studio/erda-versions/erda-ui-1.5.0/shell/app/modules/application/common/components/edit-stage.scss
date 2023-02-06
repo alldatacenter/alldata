@@ -1,0 +1,50 @@
+.edit-service-container {
+  .info-name {
+    color: $color-dark-8;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+  }
+
+  .info-description {
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    color: $color-dark-4;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: justify;
+  }
+
+  .collapse-field {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: $radius;
+
+    .ant-collapse-header {
+      padding: 8px 0 8px 20px;
+
+      .arrow,
+      .ant-collapse-arrow {
+        left: 4px;
+      }
+    }
+  }
+
+  .icon-delete {
+    float: right;
+    margin-top: 2px;
+  }
+
+  .addon-error-tag {
+    margin-bottom: 8px;
+  }
+}
+
+.prop-popover {
+  max-width: 500px;
+  font-family: inherit;
+  white-space: pre-wrap;
+}

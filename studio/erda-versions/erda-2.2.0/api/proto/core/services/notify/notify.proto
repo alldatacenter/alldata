@@ -1,0 +1,237 @@
+syntax = "proto3";
+package erda.core.services.notify;
+option go_package = "github.com/erda-project/erda-proto-go/core/services/notify/pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service NotifyService {
+  // +private
+  rpc GetAllNotifyTemplates (GetAllNotifyTemplatesRequest) returns (GetAllNotifyTemplatesResponse) {
+    option (google.api.http) = {
+      get: "/api/notify/all-templates",
+    };
+  }
+  rpc GetNotifyTemplate (GetNotifyTemplateRequest) returns (GetNotifyTemplateResponse) {
+    option (google.api.http) = {
+      get: "/api/notify/templates",
+    };
+  }
+  rpc CreateNotify (CreateNotifyRequest) returns (CreateNotifyResponse) {
+    option (google.api.http) = {
+      post: "/api/notify",
+    };
+  }
+  rpc DeleteNotify (DeleteNotifyRequest) returns (DeleteNotifyResponse) {
+    option (google.api.http) = {
+      delete: "/api/notify/{id}",
+    };
+  }
+  rpc UpdateNotify (UpdateNotifyRequest) returns (UpdateNotifyResponse) {
+    option (google.api.http) = {
+      put: "/api/notify/{id}",
+    };
+  }
+  rpc GetUserNotifyList (GetUserNotifyListRequest) returns (GetUserNotifyListResponse) {
+    option (google.api.http) = {
+      get: "/api/notify",
+    };
+  }
+  rpc NotifyEnable (NotifyEnableRequest) returns (NotifyEnableResponse) {
+    option (google.api.http) = {
+      put: "/api/notify/{id}/switch",
+    };
+  }
+  rpc CreateUserDefineNotifyTemplate (CreateUserDefineNotifyTemplateRequest) returns (CreateUserDefineNotifyTemplateResponse) {
+    option (google.api.http) = {
+      post: "/api/notify/user-define/templates",
+    };
+  }
+  rpc GetNotifyDetail (GetNotifyDetailRequest) returns (GetNotifyDetailResponse) {
+    option (google.api.http) = {
+      get: "/api/notify/{id}/detail",
+    };
+  }
+  rpc GetAllGroups (GetAllGroupsRequest) returns (GetAllGroupsResponse) {
+    option (google.api.http) = {
+      get: "/api/notify/all-group",
+    };
+  }
+}
+message GetAllNotifyTemplatesRequest {
+}
+
+message GetAllNotifyTemplatesResponse {
+  repeated Model data = 1;
+}
+
+message Model {
+  string             id        = 1;
+  Metadata           metadata  = 2;
+  Behavior           behavior  = 3;
+  repeated Templates templates = 4;
+}
+
+message Metadata {
+  string          name   = 1;
+  string          type   = 2;
+  string          module = 3;
+  repeated string scope  = 4;
+}
+
+message Behavior {
+  string group = 1;
+}
+
+message Templates {
+  repeated string trigger = 1;
+  repeated string targets = 2;
+  repeated string i18n    = 3;
+  Render          render  = 4;
+}
+
+message Render {
+  map<string, string> formats  = 1;
+  string              title    = 2;
+  string              template = 3;
+}
+
+message GetNotifyTemplateRequest {
+  string scope   = 1;
+  string scopeId = 2;
+  string name    = 3;
+  string type    = 4;
+}
+
+message GetNotifyTemplateResponse {
+  repeated GetNotifyRes data = 1;
+}
+
+message GetNotifyRes {
+  string id   = 1;
+  string name = 2;
+}
+
+message CreateNotifyRequest {
+  string              scopeId       = 1;
+  string              scope         = 2;
+  repeated string     templateId    = 3;
+  string              notifyName    = 4;
+  int64               notifyGroupId = 5;
+  repeated string     channels      = 6;
+  map<string, string> attribute     = 7;
+}
+
+message CreateNotifyResponse {
+  uint64 data = 1;
+}
+
+message DeleteNotifyRequest {
+  int64  id      = 1;
+  string scope   = 2;
+  string scopeId = 3;
+}
+
+message DeleteNotifyResponse {
+  int64 data = 1;
+}
+
+message UpdateNotifyRequest {
+  int64               id            = 1;
+  string              scope         = 2;
+  string              scopeId       = 3;
+  repeated string     channels      = 4;
+  int64               notifyGroupId = 5;
+  repeated string     templateId    = 6;
+  map<string, string> attribute     = 7;
+}
+
+message UpdateNotifyResponse {
+  int64 data = 1;
+}
+
+message GetUserNotifyListRequest {
+  string scope   = 1;
+  string scopeId = 2;
+}
+
+message GetUserNotifyListResponse {
+  repeated NotifyRes data = 1;
+}
+
+message NotifyRes {
+  google.protobuf.Timestamp createdAt  = 1;
+  int64                     id         = 2;
+  string                    notifyId   = 3;
+  string                    notifyName = 4;
+  string                    target     = 5;
+  repeated NotifyTarget     groupInfo  = 6;
+  bool                      enable     = 7;
+  repeated string           items      = 8;
+}
+
+message NotifyTarget {
+  string               type   = 1;
+  repeated TargetValue values = 2;
+}
+
+message TargetValue {
+  string receiver = 1;
+  string secret   = 2;
+}
+
+message NotifyEnableRequest {
+  int64  id      = 1;
+  string scopeId = 2;
+  string scope   = 3;
+}
+
+message NotifyEnableResponse {
+}
+
+message CreateUserDefineNotifyTemplateRequest {
+  string              name     = 1;
+  string              group    = 2;
+  repeated string     trigger  = 3;
+  map<string, string> formats  = 4;
+  repeated string     title    = 5;
+  repeated string     template = 6;
+  string              scope    = 7;
+  string              scopeId  = 8;
+  repeated string     targets  = 9;
+}
+
+message CreateUserDefineNotifyTemplateResponse {
+  uint64 data = 1;
+}
+
+message GetNotifyDetailRequest {
+  int64 id = 1;
+}
+
+message GetNotifyDetailResponse {
+  NotifyDetailResponse data = 1;
+}
+
+message NotifyDetailResponse {
+  int64  id         = 1;
+  string notifyId   = 2;
+  string notifyName = 3;
+  string target     = 4;
+  string groupType  = 5;
+}
+
+message GetAllGroupsRequest {
+  string scope   = 1;
+  string scopeId = 2;
+}
+
+message GetAllGroupsResponse {
+  repeated GetAllGroupData data = 1;
+}
+
+message GetAllGroupData {
+  string name  = 1;
+  string value = 2;
+  string type  = 3;
+}

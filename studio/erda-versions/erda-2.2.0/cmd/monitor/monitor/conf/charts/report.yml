@@ -1,0 +1,742 @@
+- cluster_resource:
+    title: "机器资源"
+    metric_names: "host_summary"
+    defines:
+      max.cpu_usage_active:
+        label: "CPU最大使用率"
+        i18n:
+          alias:
+            en: "CPU maximum usage"
+      last.tags.cluster_name:
+        label: "集群名"
+        column: 1
+        i18n:
+          alias:
+            en: "Cluster name"
+      cardinality.tags.cluster_name:
+        label: "集群"
+        i18n:
+          alias:
+            en: "Cluster"
+      cardinality.tags.host_ip:
+        label: "机器"
+        i18n:
+          alias:
+            en: "Machine"
+      max.disk_used_percent:
+        label: "磁盘最大使用率"
+        i18n:
+          alias:
+            en: "Disk max usage"
+      max.disk_used:
+        label: "磁盘使用量"
+        i18n:
+          alias:
+            en: "Disk usage"
+        unit: "GB"
+        original_unit: "B"
+      last.tags.host_ip:
+        label: "机器"
+        i18n:
+          alias:
+            en: "Machine"
+        column: 1
+      avg.load5:
+        label: "平均负载"
+        i18n:
+          alias:
+            en: "load average"
+      group_reduce.{group=tags.host_ip&last=fields.mem_total&reduce=sum}:
+        label: "总内存"
+        i18n:
+          alias:
+            en: "total memory"
+        unit: "GB"
+        original_unit: "B"
+      group_reduce.{group=tags.host_ip&last=fields.mem_request_total&reduce=sum}:
+        label: "已分配内存"
+        i18n:
+          alias:
+            en: "allocated memory"
+        unit: "GB"
+        original_unit: "B"
+      group_reduce.{group=tags.host_ip&last=fields.n_cpus&reduce=sum}:
+        label: "总CPU"
+        i18n:
+          alias:
+            en: "Total CPU"
+      group_reduce.{group=tags.host_ip&last=fields.cpu_request_total&reduce=sum}:
+        label: "已分配CPU"
+        i18n:
+          alias:
+            en: "CPU allocated"
+
+
+
+- project_resource:
+    title: "项目资源"
+    metric_names: "docker_container_summary"
+    defines:
+      cardinality.tags.project_id:
+        label: "项目"
+        i18n:
+          alias:
+            en: "Project"
+        column: 1
+      cardinality.tags.service_id:
+        label: "服务"
+        i18n:
+          alias:
+            en: "Service"
+      count.tags.service_id:
+        label: "服务"
+        i18n:
+          alias:
+            en: "Service"
+      cardinality.tags.container_id:
+        label: "服务实例"
+        i18n:
+          alias:
+            en: "Service instance"
+      cardinality.tags.addon_id:
+        label: "Addons"
+      count.tags.addon_id:
+        label: "Addons"
+      last.tags.project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project name"
+      group_reduce.{group=tags.container_id&last=fields.cpu_allocation&reduce=sum}:
+        label: "已分配CPU"
+        i18n:
+          alias:
+            en: "CPU allocated"
+      group_reduce.{group=tags.container_id&last=fields.mem_allocation&reduce=sum}:
+        label: "已分配内存"
+        i18n:
+          alias:
+            en: "allocated memory"
+        unit: "GB"
+        original_unit: "B"
+      cardinality.(tags.service_id,tags.container_id):
+        label: "服务"
+        i18n:
+          alias:
+            en: "Service"
+      cardinality.(tags.addon_id,tags.container_id):
+        label: "Addon"
+
+- project_resource_use:
+    title: "项目资源使用"
+    metric_names: "docker_container_summary"
+    defines:
+      cardinality.tags.service_id:
+        label: "服务数"
+        i18n:
+          alias:
+            en: "Service count"
+        column: 2
+      last.tags.project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project name"
+        column: 1
+      group_reduce.{group=tags.container_id&last=fields.cpu_allocation&reduce=sum}:
+        label: "CPU分配"
+        i18n:
+          alias:
+            en: "CPU allocated"
+        column: 3
+      group_reduce.{group=tags.container_id&last=fields.mem_allocation&reduce=sum}:
+        label: "内存分配"
+        i18n:
+          alias:
+            en: "memory allocation"
+        column: 4
+        unit: "GB"
+        original_unit: "B"
+
+
+- project_oom_resource:
+    title: "项目异常概况"
+    metric_names: "docker_container_summary"
+    defines:
+      last.tags.project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project name"
+        column: 1
+      count.tags.service_id:
+        label: "服务OOM次数"
+        i18n:
+          alias:
+            en: "Service OOM times"
+        column: 2
+      count.tags.addon_id:
+        label: "Addon OOM次数"
+        i18n:
+          alias:
+            en: "Addon OOM Times"
+        column: 3
+
+- service_resource:
+    title: "服务资源"
+    metric_names: "docker_container_summary"
+    defines:
+      last.tags.service_name:
+        label: "服务"
+        i18n:
+          alias:
+            en: "Service"
+        column: 1
+      last.tags.project_name:
+        label: "项目名称"
+        i18n:
+          alias:
+            en: "Project name"
+        column: 4
+      cardinality.tags.container_id:
+        label: "OOM次数"
+        i18n:
+          alias:
+            en: "OOM times"
+        column: 2
+      last.tags.application_name:
+        label: "应用名"
+        i18n:
+          alias:
+            en: "App name"
+        column: 3
+
+- alert_resource:
+    title: "告警概况"
+    metric_names: "analyzer_alert"
+    defines:
+      count.code_min:
+        label: "HTTP状态异常告警次数"
+        i18n:
+          alias:
+            en: "The number of HTTP status abnormal alarms"
+        column: 2
+      last.tags.host_ip:
+        label: "机器"
+        i18n:
+          alias:
+            en: "Machine"
+        column: 1
+      last.tags.project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project name"
+        column: 7
+      last.tags.service_name:
+        label: "服务名"
+        i18n:
+          alias:
+            en: "Service name"
+        column: 6
+      last.tags.application_name:
+        label: "应用名"
+        i18n:
+          alias:
+            en: "App name"
+        column: 1
+      count.tags.http_path:
+        label: "HTTP慢事务异常告警数"
+        i18n:
+          alias:
+            en: "The number of HTTP slow transaction exception alarms"
+        column: 2
+      count.fields.count_sum:
+        label: "GC告警"
+        i18n:
+          alias:
+            en: "GC Alert"
+        column: 3
+      count.fields.time_sum:
+        label: "GC耗时告警"
+        i18n:
+          alias:
+            en: "GC time-consuming alarm"
+        column: 4
+      count.fields.usage_percent_avg:
+        label: "堆内存使用率告警"
+        i18n:
+          alias:
+            en: "Heap memory usage alarm"
+        column: 2
+      count.fields.allocation_value:
+        label: "CPU使用率告警"
+        i18n:
+          alias:
+            en: "CPU usage alert"
+        column: 2
+      count.tags.alert_id:
+        label: "告警次数"
+        i18n:
+          alias:
+            en: "Alarm times"
+        column: 2
+      cardinality.tags.host_ip:
+        label: "异常机器"
+        i18n:
+          alias:
+            en: "abnormal machine"
+      cardinality.tags.addon_id:
+        label: "异常Addons"
+        i18n:
+          alias:
+            en: "Exception Addons"
+      cardinality.(tags.runtime_id,tags.service_name):
+        label: "异常服务"
+        i18n:
+          alias:
+            en: "abnormal service"
+      count.tags.alert_index:
+        label: "告警次数"
+        i18n:
+          alias:
+            en: "Alarm times"
+      sum.fields.trigger_duration:
+        label: "异常时间"
+        i18n:
+          alias:
+            en: "abnormal time"
+        unit: "min"
+        unit_type: "time"
+        original_unit: "ms"
+      machine:
+        label: "机器"
+        i18n:
+          alias:
+            en: "Machine"
+      dice_component:
+        label: "平台组件"
+        i18n:
+          alias:
+            en: "Platform Components"
+      kubernetes:
+        label: "kubernetes"
+      dice_addon:
+        label: "平台中间件"
+        i18n:
+          alias:
+            en: "Platform middleware"
+      app_exception:
+        label: "应用错误"
+        i18n:
+          alias:
+            en: "application error"
+      app_resource:
+        label: "应用资源"
+        i18n:
+          alias:
+            en: "App Resource"
+      app_transaction:
+        label: "应用事务"
+        i18n:
+          alias:
+            en: "App Transaction"
+      app_status:
+        label: "主动监控"
+        i18n:
+          alias:
+            en: "Active Monitoring"
+      org_customize:
+        label: "企业自定义"
+        i18n:
+          alias:
+            en: "Enterprise customization"
+      micro_service_customize:
+        label: "微服务自定义"
+        i18n:
+          alias:
+            en: "Custom Microservice"
+      addon:
+        label: "项目中间件"
+        i18n:
+          alias:
+            en: "Project middleware"
+      micro_service:
+        label: "微服务"
+        i18n:
+          alias:
+            en: "Microservice"
+      api_gateway_cpu:
+        label: "API网关实例CPU使用率异常"
+        i18n:
+          alias:
+            en: "Abnormal CPU usage of API Gateway instance"
+      api_gateway_mem:
+        label: "API网关实例内存使用率异常"
+        i18n:
+          alias:
+            en: "Abnormal memory usage of API Gateway instance"
+      addon_elasticsearch_mem:
+        label: "elasticsearch内存状态"
+        i18n:
+          alias:
+            en: "elasticsearch memory state"
+      kubernetes_instance_cpu:
+        label: "kubernetes组件实例CPU状态"
+        i18n:
+          alias:
+            en: "kubernetes component instance CPU status"
+      kubernetes_instance_ready:
+        label: "kubernetes组件实例Ready状态异常"
+        i18n:
+          alias:
+            en: "The Ready state of the kubernetes component instance is abnormal"
+      kubernetes_instance_mem:
+        label: "kubernetes组件实例内存状态"
+        i18n:
+          alias:
+            en: "kubernetes component instance memory state"
+      kubernetes_instance_exit:
+        label: "kubernetes组件异常退出"
+        i18n:
+          alias:
+            en: "The kubernetes component exits abnormally"
+      kubernetes_node:
+        label: "kubernetes节点异常"
+        i18n:
+          alias:
+            en: "kubernetes node exception"
+      addon_mysql_cpu:
+        label:  "MySQL CPU状态"
+        i18n:
+          alias:
+            en: "MySQL CPU status"
+      addon_mysql_slave_status:
+        label: "MySQL主从状态"
+        i18n:
+          alias:
+            en: "MySQL master-slave status"
+      addon_mysql_mem:
+        label:  "MySQL内存状态"
+        i18n:
+          alias:
+            en: "MySQL memory state"
+      addon_redis_mem:
+        label: "redis内存状态"
+        i18n:
+          alias:
+            en: "redis内存状态"
+      app_status_code:
+        label: "主动监控HTTP状态异常"
+        i18n:
+          alias:
+            en: "Actively monitor HTTP status exceptions"
+      dice_addon_cassandra_gc_count:
+        label: "平台中间件Cassandra GC次数异常"
+        i18n:
+          alias:
+            en: "Platform middleware Cassandra GC times are abnormal"
+      dice_addon_cassandra_gc_time:
+        label: "平台中间件Cassandra GC耗时异常"
+        i18n:
+          alias:
+            en: "The platform middleware Cassandra GC takes an abnormal time"
+      dice_addon_elasticsearch_gc_count:
+        label: "平台中间件Elasticsearch GC次数异常"
+        i18n:
+          alias:
+            en: "Platform middleware Elasticsearch GC times are abnormal"
+      dice_addon_elasticsearch_gc_time:
+        label: "平台中间件Elasticsearch GC耗时异常"
+        i18n:
+          alias:
+            en: "The platform middleware Elasticsearch GC takes an abnormal time"
+      dice_addon_kafka_gc_count:
+        label: "平台中间件Kafka GC次数异常"
+        i18n:
+          alias:
+            en: "Platform middleware Kafka GC times are abnormal"
+      dice_addon_kafka_gc_time:
+        label: "平台中间件Kafka GC耗时异常"
+        i18n:
+          alias:
+            en: "The platform middleware Kafka GC takes an abnormal time"
+      dice_addon_kafka_lag:
+        label: "平台中间件kafka消费堆积"
+        i18n:
+          alias:
+            en: "Platform middleware kafka consumption accumulation"
+      dice_addon_container_cpu:
+        label: "平台中间件实例CPU状态"
+        i18n:
+          alias:
+            en: "Platform middleware instance CPU status"
+      dice_addon_container_ready:
+        label: "平台中间件实例Ready状态异常"
+        i18n:
+          alias:
+            en: "The Ready state of the platform middleware instance is abnormal."
+      dice_addon_container_mem:
+        label: "平台中间件实例内存状态"
+        i18n:
+          alias:
+            en: "Platform middleware instance memory status"
+      dice_addon_container_exit:
+        label: "平台中间件异常退出"
+        i18n:
+          alias:
+            en: "Platform middleware exits abnormally"
+      dice_component_container_cpu:
+        label: "平台组件实例CPU状态"
+        i18n:
+          alias:
+            en: "Platform component instance CPU status"
+      dice_component_container_ready:
+        label: "平台组件实例Ready状态异常"
+        i18n:
+          alias:
+            en: "The Ready state of the platform component instance is abnormal."
+      dice_component_container_mem:
+        label: "平台组件实例内存状态"
+        i18n:
+          alias:
+            en: "Platform component instance memory state"
+      dice_component_gfs_status:
+        label: "平台组件网盘不可用告警"
+        i18n:
+          alias:
+            en: "Platform component network disk unavailable alarm"
+      dice_component_container_exit:
+        label: "平台组件异常退出"
+        i18n:
+          alias:
+            en: "Platform component exited abnormally"
+      app_resource_jvm_gc_time:
+        label: "应用JVM GC 耗时"
+      app_resource_jvm_gc_count:
+        label: "应用JVM GC次数"
+      app_resource_jvm_heap:
+        label: "应用JVM堆内存"
+      app_resource_nodejs_heap:
+        label: "应用NodeJS堆内存使用率"
+      app_resource_container_cpu:
+        label: "应用实例CPU使用率异常"
+      app_resource_container_oom:
+        label: "应用实例OOM"
+      app_resource_container_mem:
+        label: "应用实例内存使用率异常"
+      app_exception_count:
+        label: "应用错误次数"
+      app_transaction_http_service_rt:
+        label: "服务HTTP慢事务异常"
+      app_transaction_http_service_error:
+        label: "服务HTTP错误率异常"
+      app_transaction_http_path_rt:
+        label: "服务接口HTTP慢事务异常"
+      app_transaction_http_path_error:
+        label: "服务接口HTTP错误率异常"
+      machine_cpu:
+        label: "机器CPU"
+        i18n:
+          alias:
+            en: "Machine CPU"
+      machine_load5:
+        label: "机器Load5"
+        i18n:
+          alias:
+            en: "Machine Load5"
+      machine_status:
+        label: "机器宕机"
+        i18n:
+          alias:
+            en: "machine down"
+        unit: "min"
+        unit_type: "time"
+        original_unit: "ms"
+      machine_disk:
+        label: "机器磁盘"
+        i18n:
+          alias:
+            en: "machine disk"
+      machine_disk_util:
+        label: "机器磁盘IO"
+        i18n:
+          alias:
+            en: "Machine disk IO"
+      register_center_cpu:
+        label: "注册中心实例CPU使用率异常"
+        i18n:
+          alias:
+            en: "The CPU usage of the registry instance is abnormal"
+      register_center_mem:
+        label: "注册中心实例内存使用率异常"
+        i18n:
+          alias:
+            en: "The memory usage of the registry instance is abnormal"
+      machine_netdisk:
+        label: "网盘"
+        i18n:
+          alias:
+            en: "netdisk"
+      machine_netdisk_used:
+        label: "网盘容量使用量异常告警"
+        i18n:
+          alias:
+            en: "Network Disk Capacity Usage Abnormal Alarm"
+      config_center_cpu:
+        label: "配置中心实例CPU使用率异常"
+        i18n:
+          alias:
+            en: "The CPU usage of the configuration center instance is abnormal"
+      config_center_mem:
+        label: "配置中心实例内存使用率异常"
+        i18n:
+          alias:
+            en: "The memory usage of the configuration center instance is abnormal"
+      app_status_browser:
+        label: "页面内容改变"
+
+
+- app_resource:
+    title: "app"
+    metric_names: "application_http"
+    defines:
+      sum.elapsed_count:
+        label: "访问次数"
+        i18n:
+          alias:
+            en: "number of visits"
+
+
+- app_db_resource:
+    title: "应用sql慢查询"
+    metric_names: "application_db_slow"
+    defines:
+      count.elapsed_count:
+        label: "慢查询次数"
+        i18n:
+          alias:
+            en: "number of slow queries"
+        column: 2
+      last.tags.source_project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project name"
+        column: 4
+      last.tags.source_service_name:
+        label: "服务名"
+        i18n:
+          alias:
+            en: "Service name"
+        column: 3
+      last.tags.source_application_name:
+        label: "应用名"
+        i18n:
+          alias:
+            en: "App name"
+        column: 1
+
+- app_http_slow_resource:
+    title: "应用慢事务"
+    metric_names: "application_http_slow"
+    defines:
+      count.elapsed_count:
+        label: "慢事务次数"
+        i18n:
+          alias:
+            en: "number of slow transactions"
+        column: 2
+      last.tags.target_project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project name"
+        column: 4
+      last.tags.target_service_name:
+        label: "服务名"
+        i18n:
+          alias:
+            en: "Service name"
+        column: 3
+      last.tags.target_application_name:
+        label: "应用名"
+        i18n:
+          alias:
+            en: "App name"
+        column: 1
+
+- app_http_error_resource:
+    title: "应用http请求错误"
+    metric_names: "application_http_error"
+    defines:
+      count.elapsed_count:
+        label: "请求错误次数"
+        i18n:
+          alias:
+            en: "Request Error Times"
+        column: 2
+      last.tags.target_project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project name"
+        column: 4
+      last.tags.target_service_name:
+        label: "服务名"
+        i18n:
+          alias:
+            en: "Service name"
+        column: 3
+      last.tags.target_application_name:
+        label: "应用名"
+        i18n:
+          alias:
+            en: "App name"
+        column: 1
+
+- error_resource:
+    title: "error"
+    metric_names: "error_count"
+    defines:
+      sum.count:
+        label: "错误次数"
+        i18n:
+          alias:
+            en: "Error count"
+        column: 2
+      last.tags.service_name:
+        label: "服务名"
+        i18n:
+          alias:
+            en: "Service name"
+        column: 3
+      last.tags.application_name:
+        label: "应用名"
+        i18n:
+          alias:
+            en: "App name"
+        column: 1
+      last.tags.project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project name"
+        column: 4
+
+- status_resource:
+    title: "status"
+    metric_names: "status_page"
+    defines:
+      sum.retry:
+        label: "请求异常次数"
+        i18n:
+          alias:
+            en: "Number of abnormal requests"
+        column: 2
+      last.tags.project_name:
+        label: "项目名"
+        i18n:
+          alias:
+            en: "Project Name"
+        column: 1

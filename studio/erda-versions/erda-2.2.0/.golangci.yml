@@ -1,0 +1,72 @@
+run:
+  concurrency: 4
+  timeout: 2m
+  # include test files or not, default is true
+  tests: false
+  allow-parallel-runners: true
+  skip-dirs:
+    - tools/cli/generated_cmd
+    - tools/cli/command/generate
+    - internal/tools/openapi/legacy/api/generate
+    - pkg/parser/pipelineyml/pipelineymlv1
+    - third_party
+    - pkg/mock
+  skip-files:
+    - apistructs/generated_desc.go
+    - internal/tools/openapi/legacy/api/api.go
+  build-tags:
+    - musl
+
+linters-settings:
+  goimports:
+    local-prefixes: github.com/erda-project
+
+linters:
+  disable-all: true
+  # 修复完 issues 后再增加新的 linter
+  enable:
+    - goimports
+    - gosec
+    - gofmt
+
+issues:
+  exclude-rules:
+    - linters:
+        - gosec
+      text: "G101:" # G101: Potential hardcoded credentials (gosec)
+    - linters:
+        - gosec
+      text: "G108:" # G108: Profiling endpoint is automatically exposed on /debug/pprof (gosec)
+    - linters:
+        - gosec
+      text: "G109:" # G109: Potential Integer overflow made by strconv.Atoi result conversion to int16/32 (gosec)
+    - linters:
+        - gosec
+      text: "G110:" # G110: Potential DoS vulnerability via decompression bomb (gosec)
+    - linters:
+        - gosec
+      text: "G201:" # SQL string formatting (gosec)
+    - linters:
+        - gosec
+      text: "G204:" # G204: Subprocess launched with function call as argument or cmd arguments (gosec)
+    - linters:
+        - gosec
+      text: "G305:" # G305: File traversal when extracting zip/tar archive (gosec)
+    - linters:
+        - gosec
+      text: "G306:" # G306: Expect WriteFile permissions to be 0600 or less
+    - linters:
+        - gosec
+      text: "G401:" # G401: Use of weak cryptographic primitive (gosec)
+    - linters:
+        - gosec
+      text: "G402:" # G402: TLS InsecureSkipVerify may be true. (gosec)
+    - linters:
+        - gosec
+      text: "G404:" # G404: Use of weak random number generator (math/rand instead of crypto/rand) (gosec)
+    - linters:
+        - gosec
+      text: "G501:" # G501: Blacklisted import `crypto/md5`: weak cryptographic primitive (gosec)
+    - linters:
+        - gosec
+      text: "G601:" # G601: Implicit memory aliasing in for loop. (gosec)

@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package erda.orchestrator.addon.mysql;
+option go_package = "github.com/erda-project/erda-proto-go/orchestrator/addon/mysql/pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service AddonMySQLService {
+  rpc ListMySQLAccount (ListMySQLAccountRequest) returns (ListMySQLAccountResponse) {
+    option (google.api.http) = {
+      get: "/api/addon-mysql/actions/list-mysql-account?instanceId={instanceId}",
+    };
+  }
+  rpc GenerateMySQLAccount (GenerateMySQLAccountRequest) returns (GenerateMySQLAccountResponse) {
+    option (google.api.http) = {
+      post: "/api/addon-mysql/actions/generate-mysql-account",
+    };
+  }
+  rpc DeleteMySQLAccount (DeleteMySQLAccountRequest) returns (DeleteMySQLAccountResponse) {
+    option (google.api.http) = {
+      post: "/api/addon-mysql/actions/delete-mysql-account",
+    };
+  }
+  rpc ListAttachment (ListAttachmentRequest) returns (ListAttachmentResponse) {
+    option (google.api.http) = {
+      get: "/api/addon-mysql/actions/list-attachment?instanceId={instanceId}",
+    };
+  }
+  rpc UpdateAttachmentAccount (UpdateAttachmentAccountRequest) returns (UpdateAttachmentAccountResponse) {
+    option (google.api.http) = {
+      post: "/api/addon-mysql/actions/update-attachment-account",
+    };
+  }
+}
+
+message MySQLAccount {
+  string id = 1;
+  string instanceId = 2;
+  string creator = 3;
+  google.protobuf.Timestamp createAt = 4;
+  string username = 5;
+  string password = 6;
+}
+
+message ListMySQLAccountRequest {
+  string instanceId = 1;
+}
+
+message ListMySQLAccountResponse {
+  repeated MySQLAccount accounts = 1;
+}
+
+message GenerateMySQLAccountRequest {
+  string instanceId = 1;
+  string userID = 2;
+}
+
+message GenerateMySQLAccountResponse {
+  MySQLAccount account = 1;
+}
+
+message DeleteMySQLAccountRequest {
+  string instanceId = 1;
+  string id = 2;
+}
+
+message DeleteMySQLAccountResponse {
+}
+
+message Attachment {
+  uint64 id = 1;
+  string instanceId = 2;
+  string appId = 3;
+  string workspace = 4;
+  string runtimeId = 5;
+  string runtimeName = 6;
+  string accountId = 7;
+  string preAccountId = 8;
+  string accountState = 9;
+  map<string, string> configs = 10;
+}
+
+message ListAttachmentRequest {
+  string instanceId = 1;
+}
+
+message ListAttachmentResponse {
+  repeated Attachment attachments = 1;
+}
+
+message UpdateAttachmentAccountRequest {
+  string instanceId = 1;
+  uint64 id = 2;
+  string accountId = 3;
+}
+
+message UpdateAttachmentAccountResponse {
+}

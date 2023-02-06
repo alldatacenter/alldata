@@ -1,0 +1,41 @@
+id: Success
+metadata:
+  name: "工作流运行成功"
+  type: workflow
+  module: notify
+  scope:
+    - org
+templates:
+  - trigger:
+      - notify
+    targets:
+      - dingding
+      - mbox
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【工作流运行成功】
+      template: |-
+        ### 工作流运行成功
+        - 工作流名: {{workflowName}}
+        - 工作流ID: {{workflowID}}
+        - pipelineID: {{pipelineID}}
+        - 事件名: {{notifyItemName}}
+        - 集群名: {{clusterName}}
+  - trigger:
+      - notify
+    targets:
+      - email
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【工作流运行成功】
+      template: |-
+        <p>工作流名:{{workflowName}}</p>
+        <p>工作流ID: {{workflowID}}</p>
+        <p>pipelineID:{{pipelineID}}</p>
+        <p>事件名:{{notifyItemName}}</p>

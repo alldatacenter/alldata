@@ -1,0 +1,29 @@
+.issue-table-view {
+  .title {
+    min-width: 400px;
+  }
+}
+
+.issue-member-selector {
+  .results {
+    padding: 4px 0;
+    border: 0;
+
+    &:hover {
+      border: 0;
+      box-shadow: unset;
+    }
+  }
+}
+
+.issue-field-selector {
+  .arrow-icon {
+    color: $color-text-icon;
+  }
+
+  &:hover {
+    .arrow-icon {
+      color: $primary;
+    }
+  }
+}

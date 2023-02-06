@@ -1,0 +1,42 @@
+id: app_browser_apdex
+metadata:
+  name: "用户体验告警"
+  type: app_browser
+  module: monitor
+  scope:
+    - micro_service
+behavior:
+  group: "{{tk}}-{{req_path}}-{{host}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        tt: "time:s"
+      title: |
+        【({{doc_path}}) 接口用户体验告警】
+      template: |
+        【用户体验告警】
+
+        事件: 访问时间过长
+
+        时间: {{timestamp}}
+
+        域名: {{host}}
+
+        页面: {{doc_path}}
+
+        平均响应时间: {{plt_avg}} ms
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})

@@ -1,0 +1,71 @@
+@url = http://localhost:7096
+
+### ListMetricNames
+GET {{url}}/api/metric/names?scope=org&scopeID=2
+Accept: application/json
+
+### ListMetricMeta
+GET {{url}}/api/metric/meta?scope=org&scopeID=2
+Accept: application/json
+
+### ListMetricGroups
+GET {{url}}/api/metric/groups?scope=org&scopeID=2
+Accept: application/json
+
+### GetMetricGroup
+GET {{url}}/api/metric/groups/machine_cpu?scope=org&scopeID=2
+Accept: application/json
+
+### SearchWithInfluxFormat
+GET {{url}}/query
+    ?q=SELECT format_time(min(timestamp),'2006-01-02 15:04:05'), host_ip::tag FROM host_summary
+    &start=before_1h
+    &end=now
+Accept: application/json
+
+### QueryWithInfluxFormat
+POST {{url}}/query
+    ?start=before_1h
+    &end=now
+    &filter_host_ip=10.0.6.205
+Accept: application/json
+
+SELECT format_time(min(timestamp),'2006-01-02 15:04:05'), host_ip::tag FROM host_summary
+
+### QueryWithTableFormat
+POST {{url}}/api/monitor/metric/query
+    ?start=before_1h
+    &end=now
+    &filter_host_ip=10.0.6.205
+    &ql=influxql:ast
+Accept: application/json
+Content-Type: application/json
+
+{
+    "from":[
+        "host_summary"
+    ],
+    "select":[
+        {
+            "expr":"time()",
+            "alias":"typehulqz9rb"
+        },
+        {
+            "expr":"format_time(min(timestamp), '2006-01-02 15:04:05')",
+            "alias":"valuexwQTOyAI"
+        }
+    ],
+    "groupby":[
+        "time()"
+    ]
+}
+
+### GeneralQuery
+GET {{url}}/api/monitor/metric/general-query
+    ?start=before_1h
+    &end=now
+    &q=SELECT format_time(min(timestamp),'2006-01-02 15:04:05'), host_ip::tag FROM host_summary
+    &ql=influxql
+    &format=chartv2
+    &type=_
+Accept: application/json

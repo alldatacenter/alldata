@@ -1,0 +1,66 @@
+.repo-commit-block {
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  color: $color-dark-6;
+  background-color: $color-info-bg;
+  border: 1px solid rgba($color-info, 0.2);
+  border-radius: $radius;
+
+  .commit-left {
+    display: flex;
+    flex: 1;
+    min-width: 200px;
+    line-height: 24px;
+  }
+
+  .commit-right {
+    min-width: 200px;
+    text-align: right;
+  }
+
+  .commit-content {
+    flex: 1;
+    margin-left: 10px;
+
+    .as-link {
+      color: $color-text;
+    }
+  }
+}
+
+.repo-commit-list {
+  margin-bottom: 20px;
+  background-color: $white;
+  border: 1px solid $color-border;
+
+  .title {
+    padding: 6px 16px;
+    color: #2e2e2e;
+    line-height: 36px;
+    background-color: $whitesmoke;
+    border-color: $platinum;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .commit-item {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid $color-border;
+    border-radius: 3px;
+
+    .commit-left {
+      line-height: 24px;
+    }
+
+    .commit-content {
+      margin-left: 10px;
+
+      .as-link {
+        color: $color-text;
+      }
+    }
+  }
+}

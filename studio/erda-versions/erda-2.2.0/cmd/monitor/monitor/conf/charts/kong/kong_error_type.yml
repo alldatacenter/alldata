@@ -1,0 +1,26 @@
+- kong_error_type:
+    title: "错误类型分析"
+    metric_names: "agg_kong"
+    type: "kong"
+    order: 0
+    defines:
+      avg.(err_mean*100):
+        label: "总错误率"
+        unit: "%"
+        unit_type: "PERCENT"
+        axis_index: 0
+        chart_type: "line"
+      avg.(cerr_mean*100):
+        label: "调用方错误率"
+        unit: "%"
+        unit_type: "PERCENT"
+        axis_index: 0
+        chart_type: "line"
+      avg.(serr_mean*100):
+        label: "服务端错误率"
+        unit: "%"
+        unit_type: "PERCENT"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

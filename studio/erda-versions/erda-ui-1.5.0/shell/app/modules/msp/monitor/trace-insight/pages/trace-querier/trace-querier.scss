@@ -1,0 +1,57 @@
+$border-style: 1px solid $color-border;
+
+.trace-common-panel.history-status-list-ct .card-body {
+  min-height: 580px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.trace-querier {
+  .ant-form-item {
+    .ant-form-item-control {
+      line-height: 32px;
+    }
+  }
+
+  .response-code {
+    font-weight: normal;
+    font-size: 14px;
+  }
+
+  .meta-viewer {
+    border-bottom: $border-style;
+
+    > p {
+      font-weight: bold;
+      text-indent: 2em;
+      word-break: break-all;
+
+      &.meta-viewer-copy {
+        cursor: copy;
+      }
+    }
+  }
+
+  .url-editor {
+    padding: 20px 0;
+    border-bottom: $border-style;
+  }
+
+  .request-editor {
+    padding: 20px 0;
+    overflow: auto;
+
+    .request-edit-body-form {
+      color: $orange;
+      font-family: PingFangSC-Regular, serif;
+      line-height: 2em;
+      background-color: $navy;
+      border-radius: 4px;
+    }
+  }
+
+  .trace-status-list-ct {
+    margin-top: 20px;
+    @extend %shallow-shadow;
+  }
+}

@@ -1,0 +1,34 @@
+.org-home-info {
+  width: 800px;
+  margin: 0 auto;
+
+  .info-img {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 180px;
+      height: 100px;
+    }
+  }
+
+  .info-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      line-height: 32px;
+      text-align: center;
+    }
+
+    .desc {
+      line-height: 24px;
+    }
+  }
+}
+
+.org-home-list {
+  max-width: 1200px;
+  margin: 0 auto;
+}

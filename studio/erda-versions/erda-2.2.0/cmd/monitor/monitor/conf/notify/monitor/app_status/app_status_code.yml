@@ -1,0 +1,73 @@
+id: app_status_code
+metadata:
+  name: "主动监控HTTP状态异常"
+  type: app_status
+  module: monitor
+  scope:
+    - micro_service
+behavior:
+  group: "{{terminus_key}}-{{metric_id}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【{{project_name}}项目{{status_metric_name}}指标HTTP状态异常告警】
+      template: |
+        【主动监控HTTP状态异常】
+
+        项目: {{project_name}}
+
+        环境: {{workspace}}
+
+        事件: [{{status_metric_name}}]({{url}}) 指标状态异常
+
+        响应状态码: {{code_min}}
+
+        时间: {{timestamp}}
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})
+
+  - trigger:
+      - recover
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        trigger_duration: "time:ms"
+      title: |
+        【{{project_name}}项目{{status_metric_name}}指标HTTP状态恢复】
+      template: |
+        【主动监控HTTP状态恢复】
+
+        项目: {{project_name}}
+
+        环境: {{workspace}}
+
+        事件: [{{status_metric_name}}]({{url}}) 指标状态恢复
+
+        响应状态码: {{code_min}}
+
+        持续时间: {{trigger_duration}}
+
+        恢复时间: {{timestamp}}
+
+        [查看记录]({{record_url}})

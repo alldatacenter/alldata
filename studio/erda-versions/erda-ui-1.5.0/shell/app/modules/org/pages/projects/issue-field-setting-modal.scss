@@ -1,0 +1,23 @@
+.issue-field-layout {
+  .field-grid {
+    display: grid;
+    width: 100%;
+    grid-row-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .name {
+    margin-bottom: $p16;
+    padding: $p8;
+    color: $color-primary;
+    font-weight: 500;
+    font-size: $p16;
+    background-color: $color-bg;
+  }
+
+  .field-label {
+    min-width: 100px;
+    margin-right: $p8;
+    color: $primary;
+  }
+}

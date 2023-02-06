@@ -1,0 +1,75 @@
+* 消息格式
+#+BEGIN_SRC 
+type LabelKey string
+
+type Message struct {
+	Sender  string                   `json:"sender"`
+	Content interface{}              `json:"content"`
+	Labels  map[LabelKey]interface{} `json:"labels"`
+	Time    int64                    `json:"time,omitempty"` // UnixNano
+}
+#+END_SRC
+
+** 发往目的地
+对于发往不同目的地的消息，在 Labels 中指定
+*** 钉钉 
+#+BEGIN_SRC 
+dest := []string{"<url-1>", "<url-2>"}
+label = map[LabelKey]interface{}{"DINGDING": dest}
+#+END_SRC
+
+*** HTTP
+#+BEGIN_SRC 
+dest := []string{"<url-1>", "<url-2>"}
+label =map[LabelKey]interface{}{"HTTP": dest}
+#+END_SRC
+
+以上 2 个 label 可以合在一起， 这样一条消息就会同时发送到 钉钉 和 http 回调
+
+
+
+* 消息写入方式
+
+** HTTP API
+   - url 
+
+   =http://diceeventbox.marathon.l4lb.thisdcos.directory:9528/api/dice/eventbox/message/create=
+    
+   - body
+
+     type =Message= struct
+
+   - example curl:
+#+BEGIN_SRC 
+curl -XPOST 'http://diceeventbox.marathon.l4lb.thisdcos.directory:9528/api/dice/eventbox/message/create' \
+-H 'Accept: application/json' -H 'Content-Type: application/json' \
+-d '{"sender":"curl", "content":[1,2,3], "labels":{"DINGDING":["https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxx"]}}'
+#+END_SRC     
+
+** 写入 ETCD
+   
+   
+*** 使用eventbox封装的API函数
+**** go Package
+     =github.com/erda-project/erda/modules/eventbox/api=
+**** usage
+#+BEGIN_SRC 
+     var notifier, err := api.New(sender, nil)
+     //... error handle
+     // send 
+     notifier.Send(content, api.WithDest(map[string]interface{}{"HTTP": []string{"URL"}}))
+     // send another one
+     notifier.Send(content, api.WithDest(map[string]interface{}{"HTTP": []string{"URL"}}))
+#+END_SRC
+
+*** 直接写入 ETCD
+**** etcd endpoints 
+#+BEGIN_SRC 
+http://diceetcd-clusteretcd0.marathon.l4lb.thisdcos.directory:2379,http://diceetcd-clusteretcd1.marathon.l4lb.thisdcos.directory:2379,http://diceetcd-clusteretcd2.marathon.l4lb.thisdcos.directory:2379
+#+END_SRC
+**** KEY
+     =/eventbox/messages/<TIME-UNIXNANO>=
+     - TIME-UNIXNANO:
+       =time.Now().UnixNano()=
+**** VALUE
+     type =Message= struct

@@ -1,0 +1,57 @@
+.key-value-list {
+  padding: 20px;
+  overflow: auto;
+  line-height: 20px;
+  word-break: break-all;
+
+  &.shrink {
+    padding: 0;
+  }
+
+  &.sub {
+    margin-top: 20px;
+    padding: 0;
+  }
+
+  &.odd {
+    .k-v-row {
+      background-color: $color-bg;
+    }
+  }
+
+  &.depth-1 {
+    background-color: $white;
+    border-radius: 4px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    font-weight: 500;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 4px 4px 0 0;
+  }
+
+  .k-v-row {
+    display: flex;
+    padding: 10px 10px;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .key {
+    flex: 3;
+    color: $color-text;
+    font-weight: bold;
+  }
+
+  .value {
+    flex: 7;
+  }
+}
+
+.ant-popover {
+  .key-value-list {
+    line-height: 1.8rem;
+  }
+}

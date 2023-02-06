@@ -1,0 +1,20 @@
+- system_etcd_http_request_size:
+    title: "HTTP累计请求大小"
+    metric_names: "etcd"
+    type: "etcd"
+    order: 5
+    defines:
+      max.sum:
+        label: ""
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "url_host"
+      filter_prom_metric:
+        - "http_request_size_bytes"
+      filter_prom_metric_type:
+        - "summary"
+

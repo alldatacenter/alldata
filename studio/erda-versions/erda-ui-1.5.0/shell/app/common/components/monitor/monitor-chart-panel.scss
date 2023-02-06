@@ -1,0 +1,55 @@
+.monitor-chart-time-container {
+  margin: 10px 0;
+}
+
+.monitor-chart-panel {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+
+  .monitor-chart-cell {
+    width: 50%;
+    height: 330px;
+    padding: 30px;
+    border-bottom: 1px solid $color-border;
+
+    &:nth-child(2n + 1) {
+      border-right: 1px solid $color-border;
+    }
+
+    &:nth-last-child(2):not(:nth-child(2n)),
+    &:last-child {
+      border-bottom: none;
+    }
+
+    > div {
+      height: 100%;
+    }
+  }
+
+  .show-all {
+    flex: 2;
+    padding: 10px 0;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eeeeee;
+      animation: showAllHover 1s;
+    }
+
+    @keyframes showAllHover {
+      from {
+        background-color: $white;
+      }
+
+      to {
+        background-color: #eeeeee;
+      }
+    }
+  }
+}

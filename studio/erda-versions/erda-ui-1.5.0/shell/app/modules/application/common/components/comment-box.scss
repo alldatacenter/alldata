@@ -1,0 +1,60 @@
+.comment-box {
+  position: relative;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+
+  .title {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    padding: 12px;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: $color-bg;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .content {
+    min-height: auto;
+    padding: 12px;
+    white-space: pre-wrap;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 29px;
+
+    &:after {
+      position: absolute;
+      bottom: -25px;
+      left: 12px;
+      display: inline-block;
+      width: 2px;
+      height: 21px;
+      background-color: $color-border;
+      content: '';
+    }
+  }
+
+  .md-content {
+    min-height: auto;
+    padding: 8px;
+  }
+
+  .error {
+    position: relative;
+    display: inline-block;
+    width: auto;
+  }
+
+  .error::before {
+    content: '';
+    position: absolute;
+    bottom: -0.125em;
+    width: 100%;
+    height: 0.25em;
+    background: linear-gradient(135deg, transparent, transparent 45%, #dc3912, transparent 55%, transparent 100%),
+      linear-gradient(45deg, transparent, transparent 45%, #dc3912, transparent 55%, transparent 100%) repeat-x,
+      repeat-x;
+    background-size: 0.5em 0.5em;
+  }
+}

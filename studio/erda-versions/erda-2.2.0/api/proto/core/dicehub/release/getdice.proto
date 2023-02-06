@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package erda.core.dicehub.release;
+option go_package = "github.com/erda-project/erda-proto-go/core/dicehub/release/pb";
+import "google/api/annotations.proto";
+
+service ReleaseGetDiceService {
+  // TODO pull is inappropriate to get diceyml,reserved for compatibility，should use get-dice API
+  rpc PullDiceYAML (ReleaseGetDiceYmlRequest) returns (ReleaseGetDiceYmlResponse)  {
+    option (google.api.http) = {
+      get: "/api/releases/{releaseID}/actions/pull",
+    };
+  }
+
+  rpc GetDiceYAML (ReleaseGetDiceYmlRequest) returns (ReleaseGetDiceYmlResponse)  {
+    option (google.api.http) = {
+      get: "/api/releases/{releaseID}/actions/get-dice",
+    };
+  }
+}
+
+// ReleaseGetDiceYmlRequest release request dice.yml
+message ReleaseGetDiceYmlRequest {
+  string releaseID = 1;
+}
+
+message ReleaseGetDiceYmlResponse{
+  string Data = 1;
+}

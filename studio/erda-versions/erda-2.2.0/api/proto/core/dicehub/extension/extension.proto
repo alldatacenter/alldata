@@ -1,0 +1,247 @@
+syntax = "proto3";
+
+package erda.core.dicehub.extension;
+option go_package = "github.com/erda-project/erda-proto-go/core/dicehub/extension/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "common/openapi.proto";
+
+service ExtensionService {
+    option (erda.common.openapi_service) = {
+        service: "dicehub",
+    };
+
+    rpc SearchExtensions (ExtensionSearchRequest) returns (ExtensionSearchResponse)  {
+        option (google.api.http) = {
+            post: "/api/extensions/actions/search",
+        };
+    }
+
+    rpc CreateExtension (ExtensionCreateRequest) returns (ExtensionCreateResponse)  {
+        option (google.api.http) = {
+            post: "/api/extensions",
+        };
+        option (erda.common.openapi) = {
+            path: "/api/extensions",
+            auth: {
+                check_login: true
+                check_token: true
+            }
+        };
+    }
+
+    rpc QueryExtensions (QueryExtensionsRequest) returns (QueryExtensionsResponse)  {
+        option (google.api.http) = {
+            get: "/api/extensions",
+        };
+        option (erda.common.openapi) = {
+            path: "/api/extensions",
+            auth: {
+                no_check: true
+            }
+        };
+    }
+
+    rpc QueryExtensionsMenu (QueryExtensionsMenuRequest) returns (QueryExtensionsMenuResponse)  {
+        option (google.api.http) = {
+            get: "/api/extensions/actions/query-menu",
+        };
+        option (erda.common.openapi) = {
+            path: "/api/extensions/actions/query-menu",
+            auth: {
+                check_login: true
+                check_token: true
+            }
+        };
+    }
+
+    rpc CreateExtensionVersion (ExtensionVersionCreateRequest) returns (ExtensionVersionCreateResponse)  {
+        option (google.api.http) = {
+            post: "/api/extensions/{name}",
+        };
+        option (erda.common.openapi) = {
+            path: "/api/extensions/{name}",
+            auth: {
+                check_login: true
+                check_token: true
+            }
+        };
+    }
+
+    rpc GetExtensionVersion (GetExtensionVersionRequest) returns (GetExtensionVersionResponse)  {
+        option (google.api.http) = {
+            get: "/api/extensions/{name}/{version}",
+        };
+        option (erda.common.openapi) = {
+            path: "/api/extensions/{name}/{version}",
+            auth: {
+                no_check: true
+            }
+        };
+    }
+
+    rpc QueryExtensionVersions (ExtensionVersionQueryRequest) returns (ExtensionVersionQueryResponse)  {
+        option (google.api.http) = {
+            get: "/api/extensions/{name}",
+        };
+        option (erda.common.openapi) = {
+            path: "/api/extensions/{name}",
+            auth: {
+                no_check: true
+            }
+        };
+    }
+}
+
+message ExtensionSearchRequest {
+    bool yamlFormat = 1;
+    repeated string extensions = 2;
+}
+
+message ExtensionSearchResponse {
+    map<string,ExtensionVersion> data = 1;
+}
+
+
+message ExtensionCreateRequest {
+    string type = 1;
+    string name = 2;
+    string displayName = 3;
+    string desc = 4;
+    string category = 5;
+    string logoUrl = 6;
+    bool public = 7;
+    string labels = 8;
+}
+
+message ExtensionCreateResponse {
+    Extension data = 1;
+}
+
+message QueryExtensionsRequest {
+    bool all = 1;
+    string type = 2;
+    string labels = 3;
+    string menu = 4;
+}
+
+message QueryExtensionsResponse {
+    google.protobuf.Value data = 1;
+}
+
+message QueryExtensionsMenuRequest {
+    bool all = 1;
+    string type = 2;
+    string labels = 3;
+}
+
+message QueryExtensionsMenuResponse {
+    map<string,google.protobuf.Value> data = 1;
+}
+
+message Spec {
+    string name = 1;
+    string displayName = 2;
+    string version = 3;
+    string type = 4;
+    string category = 5;
+    string desc = 6;
+    map<string,string> labels = 7;
+    string logoUrl = 8;
+    repeated string supportedVersions = 9;
+    bool public = 10;
+    bool isDefault = 11;
+}
+
+message ExtensionVersionCreateRequest {
+    string name = 1;
+    string version = 2;
+    string specYml = 3;
+    string diceYml = 4;
+    string swaggerYml = 5;
+    string readme = 6;
+    bool public = 7;
+    bool forceUpdate = 8;
+    bool all = 9;
+    bool isDefault = 10;
+}
+
+message ExtensionVersionCreateResponse {
+    ExtensionVersion data = 1;
+}
+
+message GetExtensionVersionRequest{
+    string name = 1;
+    string version = 2;
+    bool yamlFormat = 3;
+}
+
+message GetExtensionVersionResponse{
+    ExtensionVersion data = 1;
+}
+
+message ExtensionQueryRequest {
+    bool all = 1;
+    string type = 2;
+    string labels = 3;
+}
+
+message ExtensionQueryResponse {
+    repeated Extension data = 1;
+}
+
+message ExtensionVersionGetRequest {
+    string name = 1;
+    string version = 2;
+    bool yamlFormat = 3;
+}
+
+message ExtensionVersionQueryRequest {
+    string name = 1;
+    bool yamlFormat = 2;
+    bool all = 3;
+    bool orderByVersionDesc = 4;
+}
+
+message ExtensionVersionGetResponse {
+    ExtensionVersion data = 1;
+}
+
+message ExtensionVersionQueryResponse {
+    repeated ExtensionVersion data = 1;
+}
+
+message ExtensionMenu{
+    string name = 1;
+    string displayName = 2;
+    repeated Extension items = 3;
+}
+
+message Extension {
+    uint64 id = 1;
+    string type = 2;
+    string name = 3;
+    string desc = 4;
+    string displayName = 5;
+    string category = 6;
+    string logoUrl = 7;
+    bool public = 8;
+    google.protobuf.Timestamp createdAt = 9;
+    google.protobuf.Timestamp updatedAt = 10;
+}
+
+message ExtensionVersion {
+    string name = 1;
+    string version = 2;
+    string type = 3;
+    google.protobuf.Value spec = 4;
+    google.protobuf.Value dice = 5;
+    google.protobuf.Value swagger = 6;
+    string readme = 7;
+    google.protobuf.Timestamp createdAt = 8;
+    google.protobuf.Timestamp updatedAt = 9;
+    bool isDefault = 10;
+    bool public = 11;
+}
+

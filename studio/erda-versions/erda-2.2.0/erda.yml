@@ -1,0 +1,701 @@
+version: "2.0"
+meta:
+  ERDA_COMPONENT: ""
+values:
+  development:
+    request_cpu: 0.1
+    request_mem: 128
+    replicas: 1
+  test:
+    request_cpu: 0.1
+    request_mem: 128
+    log_service_replicas: 1
+  production:
+    nfs_root: "<%$.Storage.MountPoint%>"
+    gittar_root: "<%$.Storage.GittarDataPath%>"
+    replicas: 2
+    request_cpu: 0.1
+    request_mem: 128
+envs:
+  ETCDCTL_API: "3"
+  MONITOR_ADDR: monitor:7096
+  COLLECTOR_ADDR: collector:7076
+  PIPELINE_ADDR: pipeline:3081
+  ERDA_SERVER_ADDR: erda-server:9095
+  MSP_ADDR: msp:8080
+  DOP_ADDR: dop:9527
+  CORE_SERVICES_ADDR: core-services:9526
+  OPENAPI_ADDR: openapi:9529
+  CMP_ADDR: cmp:9027
+  ORCHESTRATOR_ADDR: orchestrator:8081
+  DICEHUB_ADDR: dicehub:10000
+  OTEL_TRACES_ENABLED: false
+  OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://collector:7076/api/otlp/v1/traces
+  OTEL_TRACES_SAMPLER_ARG: 0.1
+  CLUSTER_MANAGER_ADDR: cluster-manager:9094
+  CLUSTER_DIALER_ADDR: cluster-manager:80
+services:
+  dop:
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    cmd: /erda/cmd/dop/bin
+    deployments:
+      labels:
+        GROUP: "devops"
+      replicas: ${replicas:1}
+    envs:
+      DEBUG: "true"
+      GOLANG_PROTOBUF_REGISTRATION_CONFLICT: "ignore"
+    health_check:
+      exec: { }
+      http:
+        duration: 120
+        path: /_api/health
+        port: 9527
+    ports:
+      - port: 9527 # http port
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 9529 # grpc port
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    resources:
+      cpu: ${request_cpu:1}
+      max_cpu: 1
+      mem: ${request_mem:2048}
+      max_mem: 2048
+      network:
+        mode: container
+  erda-server:
+    cmd: /erda/cmd/erda-server/bin
+    envs:
+      DEBUG: "false"
+    ports:
+      - port: 9095
+        protocol: TCP
+        l4_protocol: TCP
+      - port: 8096
+        protocol: TCP
+        l4_protocol: TCP
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    resources:
+      cpu: ${request_cpu:0.2}
+      max_cpu: 0.2
+      mem: ${request_mem:128}
+      max_mem: 256
+      network:
+        mode: "container"
+    deployments:
+      replicas: 1
+      labels:
+        GROUP: "dice"
+    health_check:
+      http:
+        port: 9095
+        path: "/api/healthy"
+        duration: 120
+      exec: { }
+  core-services:
+    cmd: /erda/cmd/core-services/bin
+    ports:
+      - port: 9526
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 9536 # new http port
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 9537 # new grpc port
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      AVATAR_STORAGE_URL: "file:///avatars"
+      CMDB_CONTAINER_TOPIC: "spot-metaserver_container"
+      CMDB_GROUP: "spot_cmdb_group"
+      CMDB_HOST_TOPIC: "spot-metaserver_host"
+      DEBUG: "false"
+      LICENSE_KEY: "XWoPm8I3FZuDclhuOhZ+qRPVHjXKCwSgZEOTyrMgtJg6f0Kz7QR0CyVN1ZWgbiou/OyABe7HyK1yVxDdeP1JuXcfOoGOdChTyiQfP5sdXUbferq5UkK7S44lMjNmzURlbdX8smSa13+8FQyDqz2BpDcBKMRfn2kKuF4n6n9Ls7HyVV7oWSKreEyIH3991Ug2grNEpcKip3ISVY7eGJ3uoahC9zs4fla1dzR47e5dgppHtf5WBjFgiSS+5qRi2mYa"
+      LISTEN_ADDR: ":9526"
+      UC_CLIENT_ID: "dice"
+      UC_CLIENT_SECRET: "secret"
+      CREATE_ORG_ENABLED: "false"
+    resources:
+      cpu: ${request_cpu:1}
+      max_cpu: 1
+      mem: ${request_mem:2048}
+      max_mem: 2048
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+      - "${nfs_root:/netdata}/avatars:/avatars:rw"
+      - "${nfs_root:/netdata}/dice/cmdb/files:/files:rw"
+    deployments:
+      replicas: 1
+      labels:
+        GROUP: "dice"
+    health_check:
+      http:
+        port: 9526
+        path: "/_api/health"
+        duration: 120
+      exec: { }
+  cluster-manager:
+    cmd: /erda/cmd/cluster-manager/bin
+    ports:
+      - port: 80
+        protocol: TCP
+        l4_protocol: TCP
+      - port: 9094
+        protocol: TCP
+        l4_protocol: TCP
+      - port: 9095
+        protocol: TCP
+        l4_protocol: TCP
+    envs:
+      DEBUG: "false"
+    resources:
+      cpu: ${request_cpu:2}
+      max_cpu: 2
+      mem: ${request_mem:2048}
+      max_mem: 2048
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: ${replicas:2}
+      labels:
+        GROUP: "dice"
+    health_check:
+      http: { }
+      exec: { }
+  cluster-agent:
+    cmd: /erda/cmd/cluster-agent/bin
+    ports: [ ]
+    envs:
+      DEBUG: "false"
+    resources:
+      cpu: ${request_cpu:1}
+      max_cpu: 1
+      mem: ${request_mem:1024}
+      max_mem: 1024
+      network:
+        mode: "container"
+    deployments:
+      replicas: 1
+      labels:
+        GROUP: "dice"
+    health_check:
+      http: { }
+      exec:
+        cmd: "ls"
+    k8s_snippet:
+      container:
+        securityContext:
+          privileged: true
+  monitor-agent-injector:
+    cmd: /erda/cmd/monitor/agent-injector/bin
+    ports:
+      - port: 8443
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 8080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 7080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      DEBUG: "false"
+    resources:
+      cpu: ${request_cpu:0.5}
+      max_cpu: 0.5
+      mem: ${request_mem:1024}
+      max_mem: 1024
+      network:
+        mode: "container"
+    deployments:
+      replicas: 1
+      labels:
+        GROUP: "dice"
+    health_check:
+      http:
+        port: 8080
+        path: "/health"
+        duration: 120
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/erda:/etc/server/certs:ro"
+  collector:
+    labels:
+      cpu_bound: "true"
+    cmd: /erda/cmd/monitor/collector/bin
+    ports:
+      - port: 7076
+        protocol: "TCP"
+        l4_protocol: "TCP"
+        expose: true
+      - port: 7098
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      GOLANG_PROTOBUF_REGISTRATION_CONFLICT: "ignore"
+      COLLECTOR_BROWSER_SAMPLING_RATE: "100"
+      COLLECTOR_ENABLE: "true"
+    resources:
+      cpu: ${request_cpu:1}
+      mem: ${request_mem:1024}
+      max_cpu: 1
+      max_mem: 1024
+      network:
+        mode: "container"
+    deployments:
+      replicas: ${replicas:2}
+      labels:
+        GROUP: "spot-v2"
+    expose:
+      - 7076
+    health_check:
+      http:
+        port: 7076
+        path: "/api/health"
+        duration: 120
+      exec: { }
+    hosts: [ ]
+    binds: [ ]
+  dicehub:
+    cmd: /erda/cmd/dicehub/bin
+    ports:
+      - port: 10000
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 7080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      EXTENSION_MENU: "{\"流水线任务\":[\"source_code_management:代码管理\",\"build_management:构建管理\",\"deploy_management:部署管理\",\"version_management:版本管理\",\"test_management:测试管理\",\"data_management:数据治理\",\"custom_task:自定义任务\"],\"扩展服务\":[\"database:存储\",\"distributed_cooperation:分布式协作\",\"search:搜索\",\"message:消息\",\"content_management:内容管理\",\"security:安全\",\"traffic_load:流量负载\",\"monitoring&logging:监控&日志\",\"content:文本处理\",\"image_processing:图像处理\",\"document_processing:文件处理\",\"sound_processing:音频处理\",\"custom:自定义\",\"general_ability:通用能力\",\"new_retail:新零售能力\",\"srm:采供能力\",\"solution:解决方案\"]}"
+      RELEASE_GC_SWITCH: "true"
+      RELEASE_MAX_TIME_RESERVED: "72"
+    resources:
+      cpu: ${request_cpu:0.15}
+      max_cpu: 0.15
+      mem: ${request_mem:1024}
+      max_mem: 1024
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: ${replicas:1}
+      labels:
+        GROUP: "dice"
+    health_check:
+      http:
+        port: 10000
+        path: "/healthz"
+        duration: 120
+      exec: { }
+  gittar:
+    cmd: /erda/cmd/gittar/bin
+    ports:
+      - port: 5566
+        protocol: "TCP"
+        l4_protocol: "TCP"
+        expose: true
+    envs:
+      GITTAR_BRANCH_FILTER: "master,develop,feature/*,support/*,release/*,hotfix/*"
+      GITTAR_PORT: "5566"
+      UC_CLIENT_ID: "dice"
+      UC_CLIENT_SECRET: "secret"
+    resources:
+      cpu: ${request_cpu:1}
+      max_cpu: 1
+      mem: ${request_mem:1536}
+      max_mem: 1536
+      network:
+        mode: "container"
+    binds:
+      - "${gittar_root:/netdata/dice/gittar}:/repository:rw"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: 1
+      labels:
+        GROUP: "devops"
+    expose:
+      - 5566
+    health_check:
+      http: { }
+      exec: { }
+  hepa:
+    cmd: /erda/cmd/hepa/bin
+    ports:
+      - port: 8080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+        expose: true
+    resources:
+      cpu: ${request_cpu:0.5}
+      mem: 512
+      max_cpu: 0.5
+      network:
+        mode: "container"
+    deployments:
+      replicas: ${replicas:1}
+      labels:
+        GROUP: "addons"
+    expose:
+      - 8080
+    health_check:
+      http:
+        port: 8080
+        path: "/health"
+        duration: 120
+      exec: { }
+  monitor:
+    cmd: /erda/cmd/monitor/monitor/bin
+    ports:
+      - port: 7096
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 7098
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 7080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      LOG_LEVEL: INFO
+    resources:
+      cpu: ${request_cpu:0.5}
+      mem: ${request_mem:512}
+      max_cpu: 1
+      max_mem: 1024
+      network:
+        mode: "container"
+    deployments:
+      replicas: ${replicas:2}
+      labels:
+        GROUP: "spot-v2"
+    health_check:
+      http:
+        port: 7096
+        path: "/api/health"
+        duration: 120
+      exec: { }
+    expose: [ ]
+    hosts: [ ]
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+  msp:
+    cmd: /erda/cmd/msp/bin
+    ports:
+      - port: 8080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 7080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 9080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      GOLANG_PROTOBUF_REGISTRATION_CONFLICT: "ignore"
+    resources:
+      cpu: ${request_cpu:1}
+      mem: ${request_mem:512}
+      max_cpu: 1
+      max_mem: 1024
+      network:
+        mode: "container"
+    deployments:
+      replicas: ${replicas:2}
+      labels:
+        GROUP: "msp"
+    health_check:
+      http:
+        port: 8080
+        path: "/health"
+        duration: 120
+      exec: { }
+    expose: [ ]
+    hosts: [ ]
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+  openapi:
+    cmd: /erda/cmd/openapi/bin
+    ports:
+      - port: 9529
+        protocol: "TCP"
+        l4_protocol: "TCP"
+        expose: true
+      - port: 9432
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 9431
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      CREATE_ORG_ENABLED: "false"
+      GOLANG_PROTOBUF_REGISTRATION_CONFLICT: "ignore"
+    resources:
+      cpu: ${request_cpu:0.5}
+      max_cpu: 0.5
+      mem: ${request_mem:512}
+      max_mem: 512
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: ${replicas:1}
+      labels:
+        GROUP: "dice"
+    expose:
+      - 9529
+    health_check:
+      http:
+        port: 9529
+        path: "/health"
+        duration: 120
+      exec: { }
+  cmp:
+    cmd: /erda/cmd/cmp/bin
+    envs:
+      UC_CLIENT_ID: "dice"
+      UC_CLIENT_SECRET: "secret"
+      ERDA_NAMESPACE: "default"
+      ERDA_HELM_CHART_VERSION: "1.1.0"
+    ports:
+      - port: 9027
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 9028
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 9029
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    resources:
+      cpu: ${request_cpu:1}
+      max_cpu: 1
+      mem: ${request_mem:2048}
+      max_mem: 2048
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: ${replicas:1}
+      labels:
+        GROUP: "dice"
+    health_check:
+      http: { }
+      exec: { }
+  orchestrator:
+    cmd: /erda/cmd/orchestrator/bin
+    ports:
+      - port: 8081
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 7080
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      DEBUG: "false"
+      TENANT_GROUP_KEY: "58dcbf490ef3"
+      MSP_ADDR: "msp:8080"
+      COLLECTOR_SIDECAR_IMAGE: "registry.erda.cloud/erda/erda-fluent-bit:2.1-alpha-20220329155354-3fcba88"
+    resources:
+      cpu: ${request_cpu:1}
+      max_cpu: 1
+      mem: ${request_mem:256}
+      max_mem: 2048
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: ${replicas:1}
+      labels:
+        GROUP: "dice"
+    health_check:
+      http:
+        port: 8081
+        path: "/info"
+        duration: 120
+      exec: { }
+  pipeline:
+    cmd: /erda/cmd/pipeline/bin
+    ports:
+      - port: 3081
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 30810
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      DEBUG: "false"
+      PIPELINE_STORAGE_URL: "file:///devops/storage"
+    resources:
+      cpu: ${request_cpu:1}
+      max_cpu: 1
+      mem: ${request_mem:1536}
+      max_mem: 1536
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: ${replicas:2}
+      labels:
+        GROUP: "devops"
+    health_check:
+      http:
+        port: 3081
+        path: "/ping"
+        duration: 120
+      exec: { }
+  streaming:
+    labels:
+      cpu_bound: "true"
+    cmd: /erda/cmd/monitor/streaming/bin
+    ports:
+      - port: 7091
+        protocol: "TCP"
+        l4_protocol: "TCP"
+      - port: 7098
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      BROWSER_ENABLE: "true"
+      BROWSER_GROUP_ID: "spot-monitor-browser"
+      LOG_GROUP_ID: "spot-monitor-log"
+      LOG_STORE_ENABLE: "true"
+      LOG_TTL: "168h"
+      METRIC_ENABLE: "true"
+      METRIC_GROUP_ID: "spot-monitor-metrics"
+      METRIC_INDEX_TTL: "192h"
+      TRACE_ENABLE: "true"
+      TRACE_GROUP_ID: "spot-monitor-trace"
+      TRACE_TTL: "168h"
+      LOG_LEVEL: INFO
+      EVENT_GROUP_ID: "spot-monitor-event"
+      ENTITY_GROUP_ID: "spot-monitor-entity"
+    resources:
+      cpu: ${request_cpu:0.5}
+      mem: ${request_mem:1024}
+      max_cpu: 1.5
+      max_mem: 2048
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: ${replicas:2}
+      labels:
+        GROUP: "spot-v2"
+    health_check:
+      http:
+        port: 7091
+        path: "/api/health"
+        duration: 120
+      exec: { }
+  log-service:
+    cmd: /erda/cmd/monitor/log-service/bin
+    ports:
+      - port: 7099
+        protocol: "TCP"
+        l4_protocol: "TCP"
+    envs:
+      LOG_SERVICE_INSTANCE_ID: "30563290-f3a8-4f8f-b42b-cc5d3b8ac7c7"
+      LOG_KAFKA_TOPICS: "spot-container-log"
+      LOG_TOPICS: "spot-container-log"
+      LOG_METRICS_GROUP_ID: "spot-log-metrics"
+      #LOGS_ES_URL: ""
+      #LOGS_ES_SECURITY_ENABLE: "false"
+      #LOGS_ES_SECURITY_USERNAME: ""
+      #LOGS_ES_SECURITY_PASSWORD: ""
+    resources:
+      cpu: ${request_cpu:1}
+      mem: ${request_mem:1024}
+      max_cpu: 1.5
+      max_mem: 1024
+      network:
+        mode: "container"
+    deployments:
+      replicas: ${log_service_replicas:0}
+      labels:
+        GROUP: "spot-v2"
+    health_check:
+      http:
+        port: 7099
+        path: "/api/health"
+        duration: 120
+      exec: { }
+  uc-adaptor:
+    cmd: /erda/cmd/uc-adaptor/bin
+    ports:
+      - port: 12580
+        protocol: "TCP"
+        l4_protocol: "TCP"
+        expose: false
+    envs:
+      DEBUG: "false"
+      LISTEN_ADDR: ":12580"
+      UC_AUDITOR_CRON: "0 */1 * * * ?"
+      UC_AUDITOR_PULL_SIZE: "30"
+      UC_CLIENT_ID: "dice"
+      UC_CLIENT_SECRET: "secret"
+    resources:
+      cpu: ${request_cpu:0.2}
+      max_cpu: 0.2
+      mem: 64
+      network:
+        mode: "container"
+    binds:
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-ca.pem:/certs/etcd-ca.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client.pem:/certs/etcd-client.pem:ro"
+      - "${nfs_root:/netdata}/dice-ops/dice-config/certificates/etcd-client-key.pem:/certs/etcd-client-key.pem:ro"
+    deployments:
+      replicas: 1
+      labels:
+        GROUP: "devops"
+    health_check:
+      http:
+        port: 12580
+        path: "/healthy"
+        duration: 120
+      exec: { }
+addons:
+  infos:
+    plan: "custom:basic"
+    options:
+      version: "1.0.0"
+  mysql:
+    plan: "mysql:basic"

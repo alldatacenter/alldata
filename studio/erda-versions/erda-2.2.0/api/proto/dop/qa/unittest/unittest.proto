@@ -1,0 +1,197 @@
+syntax = "proto3";
+
+package erda.dop.qa.unittest;
+option go_package = "github.com/erda-project/erda-proto-go/dop/qa/unittest/pb";
+import "google/api/annotations.proto";
+import "common/openapi.proto";
+import "google/protobuf/timestamp.proto";
+
+service UnitTestService {
+  option (erda.common.openapi_service) = {
+    service : "dop",
+    auth : {
+      check_login : true,
+      check_token : true,
+    }
+  };
+  rpc Callback(TestCallBackRequest) returns (TestCallBackResponse) {
+    option (google.api.http) = {
+      post : "/api/qa/actions/test-callback",
+    };
+    option (erda.common.openapi) = {
+      path : "/api/qa/actions/test-callback",
+    };
+  }
+  rpc GetTestTypes(TestTypeRequest) returns (TestTypeResponse) {
+    option (google.api.http) = {
+      get : "/api/qa/actions/all-test-type",
+    };
+    option (erda.common.openapi) = {
+      path : "/api/qa/actions/all-test-type",
+    };
+  }
+  rpc ListRecords(TestRecordPagingRequest) returns (TestRecordPagingResponse) {
+    option (google.api.http) = {
+      get : "/api/qa/actions/test-list",
+    };
+    option (erda.common.openapi) = {
+      path : "/api/qa/actions/test-list",
+    };
+  }
+  rpc GetRecord(TestRecordGetRequest) returns (TestRecordGetResponse) {
+    option (google.api.http) = {
+      get : "/api/qa/test/{id}",
+    };
+    option (erda.common.openapi) = {
+      path : "/api/qa/test/{id}",
+    };
+  }
+}
+
+message TestRecordPagingRequest {
+  int64 pageNo = 1;
+  int64 pageSize = 2;
+  uint64 applicationId = 3;
+}
+
+message TestRecordPagingResponse { TestRecordPagingResult data = 1; }
+
+message TestRecordPagingResult {
+  int64 total = 1;
+  repeated TestRecord list = 2;
+}
+
+message TestRecordGetRequest { uint64 id = 1; }
+
+message TestRecordGetResponse { TestRecord data = 1; }
+
+message TestRecord {
+  uint64 id = 1;
+  google.protobuf.Timestamp createdAt = 2;
+  google.protobuf.Timestamp updatedAt = 3;
+  int64 applicationId = 4;
+  int64 projectId = 5;
+  int64 buildId = 6;
+  string name = 7;
+  string uuid = 8;
+  string applicationName = 9;
+  string output = 10;
+  string desc = 11;
+  string operatorId = 12;
+  string operatorName = 13;
+  string commitId = 14;
+  string branch = 15;
+  string gitRepo = 16;
+  string caseDir = 17;
+  string application = 18;
+  string type = 19;
+  TestTotal totals = 20;
+  string parserType = 21;
+  map<string, string> extra = 22;
+  map<string, string> envs = 23;
+  string workspace = 24;
+  repeated TestSuite suites = 25;
+  repeated CodeCoverageNode coverageReport = 26;
+}
+
+message TestTypeRequest {}
+
+message TestTypeResponse { repeated string data = 1; }
+
+message TestCallBackRequest {
+  TestResult results = 1;
+  TestTotal totals = 2;
+  repeated TestSuite suites = 3;
+  repeated CodeCoverageNode coverageReport = 4;
+}
+
+message TestResult {
+  int64 applicationId = 1;
+  int64 buildId = 2;
+  int64 projectId = 3;
+  string type = 4;
+  string name = 5;
+  string applicationName = 6;
+  string branch = 7;
+  string gitRepo = 8;
+  string commitId = 9;
+  string operatorName = 10;
+  string operatorId = 11;
+  string status = 12;
+  string workspace = 13;
+  string parserType = 14;
+  string uuid = 15;
+  map<string, string> extra = 16;
+}
+
+message TestError {
+  string message = 1;
+  string type = 2;
+  string body = 3;
+}
+
+message Test {
+  string name = 1;
+  string classname = 2;
+  int64 duration = 3;
+  string status = 4;
+  TestError error = 5;
+  string stdout = 6;
+  string stderr = 7;
+}
+
+message TestTotal {
+  int64 tests = 1;
+  int64 duration = 2;
+  map<string, int64> statuses = 3;
+}
+
+message TestSuite {
+  string name = 1;
+  string package = 2;
+  map<string, string> properties = 3;
+  repeated Test tests = 4;
+  string stdout = 5;
+  string stderr = 6;
+  TestTotal totals = 7;
+  map<string, string> extra = 8;
+}
+
+message ToolTip { string formatter = 1; }
+
+message CodeCoverageNode {
+  repeated float value = 1;
+  string name = 2;
+  string path = 3;
+  ToolTip tooltip = 4;
+  repeated CodeCoverageNode children = 5;
+  repeated ReportCounter counter = 6;
+}
+
+message ReportCounter {
+  int64 covered = 1;
+  int64 missed = 2;
+  string type = 3;
+}
+
+message ReportPackage {
+  string name = 1;
+  repeated ReportClass class = 2;
+  repeated ReportCounter counter = 3;
+}
+
+message ReportClass {
+  string name = 1;
+  string sourcefilename = 2;
+  repeated ReportMethod method = 3;
+  repeated ReportCounter counter = 4;
+}
+
+message ReportMethod {
+  string name = 1;
+  string desc = 2;
+  string line = 3;
+  repeated ReportCounter counter = 4;
+}
+
+message TestCallBackResponse { string data = 1; }

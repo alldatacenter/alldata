@@ -1,0 +1,73 @@
+.image-upload-wrap {
+  .image-upload {
+    position: relative;
+    display: inline-block;
+
+    div.ant-upload {
+      width: 100%;
+      height: 98px;
+      text-align: center;
+      background-color: $white;
+      border: 1px dashed $gainsboro;
+      border-radius: $radius;
+      cursor: pointer;
+      transition: border-color 0.2s ease-in-out;
+
+      i {
+        margin-top: 24px;
+        font-size: 30px;
+      }
+
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
+
+    .pure-upload {
+      display: inline-block;
+      width: 98px;
+    }
+
+    .image-content {
+      width: 96px;
+      height: 96px;
+
+      &.no-square {
+        width: unset;
+      }
+    }
+
+    .no-image,
+    .remove-image {
+      display: none;
+    }
+
+    &:hover .no-image,
+    &:hover .remove-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      width: 100%;
+      height: 98px;
+      background-color: $white;
+      opacity: 0.7;
+    }
+
+    &:hover .remove-image {
+      text-align: center;
+      cursor: pointer;
+
+      i {
+        margin-top: 24px;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .hint {
+    color: $color-text-desc;
+    line-height: 20px;
+    vertical-align: bottom;
+  }
+}

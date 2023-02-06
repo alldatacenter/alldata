@@ -1,0 +1,1 @@
+ALTER TABLE `pipeline_definition` DROP INDEX `uk_location_name`;

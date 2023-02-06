@@ -1,0 +1,39 @@
+scenario: resources-runtime-monitor-nodejs
+
+hierarchy:
+  root: page
+  structure:
+    page:
+    - runtime
+    runtime:
+    - runtime@nodejs_memory_heap
+    - runtime@nodejs_memory_non_heap
+    - runtime@nodejs_cluster
+    - runtime@nodejs_async_resource
+  parallel:
+    runtime:
+    - runtime@nodejs_memory_heap
+    - runtime@nodejs_memory_non_heap
+    - runtime@nodejs_cluster
+    - runtime@nodejs_async_resource
+components:
+  page:
+    type: Container
+  runtime:
+    type: Grid
+  runtime@nodejs_memory_heap:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@nodejs_memory_non_heap:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@nodejs_cluster:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@nodejs_async_resource:
+    type: LineGraph
+    options:
+      asyncAtInit: true

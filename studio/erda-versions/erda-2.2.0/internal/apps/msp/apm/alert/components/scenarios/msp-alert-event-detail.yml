@@ -1,0 +1,72 @@
+scenario: msp-alert-event-detail
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - topHeader
+      - eventStatus
+      - eventOverview
+      - monitorData
+      - eventHistory
+    topHeader:
+      - copyButton
+      - pauseFormModal
+      - moreOperations
+    copyButton:
+      - copyLink
+    eventStatus:
+      - eventStatusInfo
+    eventOverview:
+      - eventOverviewInfo
+    monitorData:
+      - monitorDataChart
+    eventHistory:
+      - eventHistoryTable
+components:
+  page:
+    type: Container
+  topHeader:
+    type: RowContainer
+    props:
+      isTopHead: true
+  copyButton:
+    type: CopyButton
+    props:
+      renderType: Custom
+  copyLink:
+    type: Button
+    props:
+      prefixIcon: link
+  moreOperations:
+    type: Button
+  eventStatus:
+    type: ChartBlock
+    data:
+      title: ${{ i18n.eventStatus }}
+  eventStatusInfo:
+    type: Panel
+  eventOverview:
+    type: ChartBlock
+    data:
+      title: ${{ i18n.eventSummary }}
+  eventOverviewInfo:
+    type: Panel
+  monitorData:
+    type: ChartBlock
+    data:
+      title: ${{ i18n.monitorData }}
+  monitorDataChart:
+    type: ComplexGraph
+  eventHistory:
+    type: ChartBlock
+    data:
+      title: ${{ i18n.eventHistory }}
+  eventHistoryTable:
+    type: Table
+    version: 2
+    props:
+      tableProps:
+        hideHeader: true
+  pauseFormModal:
+    type: FormModal

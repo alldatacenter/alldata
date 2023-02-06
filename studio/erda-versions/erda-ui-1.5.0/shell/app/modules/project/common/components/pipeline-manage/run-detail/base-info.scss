@@ -1,0 +1,47 @@
+.pipeline-detail-status {
+  display: flex;
+  align-items: center;
+
+  .status-icon {
+    display: block;
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+    padding: 0;
+    border-radius: 12px;
+  }
+
+  .flow-darkgray {
+    background: $darkgray;
+  }
+
+  .flow-blue {
+    background: $blue;
+  }
+
+  .flow-yellow {
+    background: $yellow;
+  }
+
+  .flow-red {
+    background: $red;
+  }
+
+  .flow-green {
+    background: $green;
+  }
+
+  .jumping {
+    animation: jumping 1s infinite;
+  }
+
+  @keyframes jumping {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+}

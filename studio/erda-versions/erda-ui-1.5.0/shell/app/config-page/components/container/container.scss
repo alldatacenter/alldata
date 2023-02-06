@@ -1,0 +1,170 @@
+.dice-cp {
+  &.container {
+    &.with-border {
+      border-radius: $radius;
+      border: 1px solid $border-color;
+    }
+
+    &.column {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+
+      &.space-none {
+        > * {
+          margin-top: 0;
+        }
+      }
+
+      &.space-small {
+        > * {
+          margin-top: 8px;
+        }
+      }
+
+      &.space-middle {
+        > * {
+          margin-top: 12px;
+        }
+      }
+
+      &.space-big {
+        > * {
+          margin-top: 16px;
+        }
+      }
+
+      &.space-large {
+        > * {
+          margin-top: 24px;
+        }
+      }
+
+      &.space-huge {
+        > * {
+          margin-top: 50px;
+        }
+      }
+
+      &.space-small,
+      &.space-middle,
+      &.space-big,
+      &.space-large,
+      &.space-huge {
+        > * {
+          &:first-child {
+            margin-top: 0;
+          }
+          &.top-button-group + div {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    &.row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &.space-none {
+        > * {
+          margin-left: 0;
+        }
+      }
+
+      &.space-small {
+        > * {
+          margin-left: 8px;
+        }
+      }
+
+      &.space-middle {
+        > * {
+          margin-left: 12px;
+        }
+      }
+
+      &.space-big {
+        > * {
+          margin-left: 16px;
+        }
+      }
+
+      &.space-large {
+        > * {
+          margin-left: 24px;
+        }
+      }
+
+      &.space-huge {
+        > * {
+          margin-left: 50px;
+        }
+      }
+
+      &.space-small,
+      &.space-middle,
+      &.space-big,
+      &.space-large,
+      &.space-huge {
+        > * {
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+
+      .left,
+      .right {
+        > * {
+          margin-left: 8px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    &.between {
+      justify-content: space-between;
+    }
+
+    &.center {
+      justify-content: center;
+    }
+
+    &.start {
+      justify-content: start;
+    }
+
+    &.end {
+      justify-content: end;
+    }
+
+    // TODO: split this class
+    &.bg-white {
+      padding: 12px;
+      background-color: $white;
+      border-radius: $radius;
+    }
+
+    &.only-bg-white {
+      background-color: $white;
+    }
+
+    &.flex-height {
+      flex: 1;
+      height: 0;
+    }
+
+    &.start-align {
+      align-items: start;
+    }
+
+    &.scroll-auto {
+      overflow: auto;
+    }
+  }
+}

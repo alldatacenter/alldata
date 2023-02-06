@@ -1,0 +1,9 @@
+id: machine_cluster_clock
+name: 机器时钟一致性异常告警
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{host_ip}}'
+  display_url_id: machine_cluster_clock
+  level: Warning
+  recover: "true"
+  tickets_metric_key: '{{host_ip}}'

@@ -1,0 +1,26 @@
+.repo-mr-list {
+  margin-bottom: 0;
+
+  .mr-item {
+    display: grid;
+    justify-content: space-between;
+    align-content: space-between;
+    height: 96px;
+    padding: 16px 12px;
+    border-bottom: 1px solid $color-border;
+    grid-template-columns: auto auto;
+
+    .title {
+      font-size: 16px;
+    }
+
+    .sub-title {
+      color: $color-text-sub;
+    }
+
+    .desc {
+      color: $color-text-desc;
+      text-align: right;
+    }
+  }
+}

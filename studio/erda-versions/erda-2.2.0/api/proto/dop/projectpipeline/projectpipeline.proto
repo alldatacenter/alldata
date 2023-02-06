@@ -1,0 +1,406 @@
+syntax = "proto3";
+
+package erda.dop.projectpipeline;
+
+import "common/openapi.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/dop/projectpipeline/pb";
+
+service ProjectPipelineService {
+    option(erda.common.openapi_service) = {
+        service: "dop",
+        auth: {
+            check_login: true,
+            check_token: true,
+        }
+    };
+
+    rpc Create(CreateProjectPipelineRequest)
+            returns (CreateProjectPipelineResponse) {
+        option(google.api.http) = {
+            post: "/api/project-pipeline",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline",
+        };
+    }
+
+    rpc ListApp(ListAppRequest)
+            returns (ListAppResponse) {
+        option(google.api.http) = {
+            get: "/api/project-pipeline/actions/get-my-apps",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/actions/get-my-apps",
+        };
+    }
+
+    rpc ListPipelineYml(ListAppPipelineYmlRequest)
+            returns (ListAppPipelineYmlResponse) {
+        option(google.api.http) = {
+            get: "/api/project-pipeline/actions/get-pipeline-yml-list",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/actions/get-pipeline-yml-list",
+        };
+    }
+
+    rpc CreateNamePreCheck(CreateProjectPipelineNamePreCheckRequest)
+            returns (CreateProjectPipelineNamePreCheckResponse) {
+        option(google.api.http) = {
+            get: "/api/project-pipeline/actions/name-pre-check",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/actions/name-pre-check",
+        };
+    }
+
+    rpc CreateSourcePreCheck(CreateProjectPipelineSourcePreCheckRequest)
+            returns (CreateProjectPipelineSourcePreCheckResponse) {
+        option(google.api.http) = {
+            get: "/api/project-pipeline/actions/source-pre-check",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/actions/source-pre-check",
+        };
+    }
+
+    rpc ListPipelineCategory(ListPipelineCategoryRequest)
+            returns (ListPipelineCategoryResponse) {
+        option(google.api.http) = {
+            get: "/api/project-pipeline/actions/list-category",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/actions/list-category",
+
+        };
+    }
+
+    rpc Update(UpdateProjectPipelineRequest)
+            returns (UpdateProjectPipelineResponse) {
+        option(google.api.http) = {
+            put: "/api/project-pipeline/definitions/{pipelineDefinitionID}",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/definitions/{pipelineDefinitionID}",
+        };
+    }
+
+    rpc Run(RunProjectPipelineRequest)
+            returns (RunProjectPipelineResponse) {
+        option(google.api.http) = {
+            post: "/api/project-pipeline/definitions/{pipelineDefinitionID}/actions/run",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/definitions/{pipelineDefinitionID}/actions/run",
+        };
+    }
+
+    rpc Rerun(RerunProjectPipelineRequest)
+            returns (RerunProjectPipelineResponse) {
+        option(google.api.http) = {
+            post: "/api/project-pipeline/definitions/{pipelineDefinitionID}/actions/rerun",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/definitions/{pipelineDefinitionID}/actions/rerun",
+        };
+    }
+
+    rpc RerunFailed(RerunFailedProjectPipelineRequest)
+            returns (RerunFailedProjectPipelineResponse) {
+        option(google.api.http) = {
+            post: "/api/project-pipeline/definitions/{pipelineDefinitionID}/actions/rerun-failed",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/definitions/{pipelineDefinitionID}/actions/rerun-failed",
+        };
+    }
+
+    rpc Cancel(CancelProjectPipelineRequest)
+            returns (CancelProjectPipelineResponse) {
+        option(google.api.http) = {
+            post: "/api/project-pipeline/definitions/{pipelineDefinitionID}/actions/cancel",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/definitions/{pipelineDefinitionID}/actions/cancel",
+        };
+    }
+
+    rpc OneClickCreate(OneClickCreateProjectPipelineRequest)
+            returns (OneClickCreateProjectPipelineResponse) {
+        option(google.api.http) = {
+            post: "/api/project-pipeline/actions/one-click-create",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/actions/one-click-create",
+        };
+    }
+
+    rpc BatchCreateByGittarPushHook(GittarPushPayloadEvent)
+            returns (BatchCreateProjectPipelineResponse) {
+        option(google.api.http) = {
+            post: "/api/project-pipeline/actions/create-by-gittar-push-hook",
+        };
+    }
+
+    rpc ListExecHistory(ListPipelineExecHistoryRequest)
+            returns (ListPipelineExecHistoryResponse) {
+        option(google.api.http) = {
+            get: "/api/project-pipeline/actions/exec-history",
+        };
+        option(erda.common.openapi) = {
+            path: "/api/project-pipeline/actions/exec-history",
+
+        };
+    }
+}
+
+message PipelineRunParam {
+    string name = 1;
+    google.protobuf.Value value = 2;
+}
+
+message RunProjectPipelineRequest {
+    string pipelineDefinitionID = 1;
+    int64 projectID = 2;
+    repeated PipelineRunParam runParams = 3;
+}
+
+message RunProjectPipelineResponse {
+    google.protobuf.Value pipeline = 1;
+}
+
+message RerunProjectPipelineRequest {
+    string pipelineDefinitionID = 1;
+    int64 projectID = 2;
+}
+
+message RerunProjectPipelineResponse {
+    google.protobuf.Value pipeline = 1;
+}
+
+message RerunFailedProjectPipelineRequest {
+    string pipelineDefinitionID = 1;
+    int64 projectID = 2;
+}
+
+message RerunFailedProjectPipelineResponse {
+    google.protobuf.Value pipeline = 1;
+}
+
+message CancelProjectPipelineRequest {
+    string pipelineDefinitionID = 1;
+    int64 projectID = 2;
+}
+
+message CancelProjectPipelineResponse {}
+
+message CreateProjectPipelineSourcePreCheckRequest {
+    uint64 appID = 1 [(validate.rules).uint64.gt = 0];
+    string sourceType = 2 [(validate.rules).string.min_len = 1];
+    string ref = 3 [(validate.rules).string.min_len = 1];
+    string path = 4;
+    string fileName = 5 [(validate.rules).string.min_len = 1];
+}
+
+message CreateProjectPipelineSourcePreCheckResponse {
+    bool pass = 1;
+    string message = 2;
+}
+
+message CreateProjectPipelineNamePreCheckRequest {
+    uint64 projectID = 1 [(validate.rules).uint64.gt = 0];
+    string name = 2 [(validate.rules).string.min_len = 1];
+}
+
+message CreateProjectPipelineNamePreCheckResponse {
+    bool pass = 1;
+    string message = 2;
+}
+
+message ListAppPipelineYmlRequest {
+    uint64 appID = 1;
+    string branch = 2;
+}
+
+message PipelineYmlList {
+    string ymlName = 1;
+    string ymlPath = 2;
+}
+
+message ListAppPipelineYmlResponse {
+    repeated PipelineYmlList result = 1;
+}
+
+message ListAppRequest {
+    uint64 projectID = 1 [(validate.rules).uint64.gt = 0];
+    string name = 2;
+}
+
+message ListAppResponse {
+    repeated Application data = 1;
+}
+
+message Application {
+    uint64 ID = 1;
+    string name = 2;
+    string displayName = 3;
+    string mode = 4;
+    string desc = 5;
+    string logo = 6;
+    bool isPublic = 7;
+    string creator = 8;
+    string gitRepo = 9;
+    uint64 orgID = 10;
+    string orgDisplayName = 11;
+    uint64  projectID = 12;
+    string projectName = 13;
+    bool isExternalRepo = 14;
+    google.protobuf.Timestamp createdAt = 15;
+    google.protobuf.Timestamp updatedAt = 16;
+    uint64  runningNum = 17;
+    uint64 failedNum = 18;
+    uint64 totalNum = 19;
+}
+
+message CreateProjectPipelineRequest {
+    uint64 projectID = 1 [(validate.rules).uint64.gt = 0];
+    string name = 2 [(validate.rules).string.min_len = 1];
+    uint64 appID = 3;
+    string sourceType = 4 [(validate.rules).string.min_len = 1];
+    string ref = 5 [(validate.rules).string.min_len = 1];
+    string path = 6;
+    string fileName = 7 [(validate.rules).string.min_len = 1];
+}
+
+message CreateProjectPipelineResponse {
+    ProjectPipeline ProjectPipeline = 1;
+}
+
+message ProjectPipeline {
+    string ID = 1;
+    string name = 2;
+    string creator = 3;
+    string category = 4;
+    google.protobuf.Timestamp timeCreated = 5;
+    google.protobuf.Timestamp timeUpdated = 6;
+    string sourceType = 7;
+    string remote = 8;
+    string ref = 9;
+    string path = 10;
+    string fileName = 11;
+    string pipelineSourceID = 12;
+}
+
+message ListPipelineCategoryRequest {
+    uint64 projectID = 1 [(validate.rules).uint64.gt = 0];
+    uint64 appID = 2;
+}
+
+message ListPipelineCategoryResponse {
+    repeated pipelineCategory data = 1;
+}
+
+message pipelineCategory {
+    string key = 1;
+    string category = 2;
+    repeated string rules = 3;
+    uint64 runningNum = 4;
+    uint64 failedNum = 5;
+    uint64 totalNum = 6;
+}
+
+message UpdateProjectPipelineRequest {
+    string pipelineDefinitionID = 1 [(validate.rules).string.min_len = 1];
+    uint64 projectID = 2 [(validate.rules).uint64.gt = 0];
+    string name = 3 [(validate.rules).string.min_len = 1];
+    ProjectPipelineSource projectPipelineSource = 4;
+}
+
+message UpdateProjectPipelineResponse {
+    ProjectPipeline ProjectPipeline = 1;
+}
+
+message OneClickCreateProjectPipelineRequest {
+    uint64 projectID = 1 [(validate.rules).uint64.gt = 0];
+    uint64 appID = 2;
+    string sourceType = 3 [(validate.rules).string.min_len = 1];
+    string ref = 4 [(validate.rules).string.min_len = 1];
+    repeated string pipelineYmls = 5;
+}
+
+message OneClickCreateProjectPipelineResponse {
+    repeated ProjectPipeline projectPipelines = 1;
+    string errMsg = 2;
+}
+
+message ProjectPipelineSource {
+    uint64 appID = 1 [(validate.rules).uint64.gt = 0];
+    string sourceType = 2 [(validate.rules).string.min_len = 1];
+    string ref = 3 [(validate.rules).string.min_len = 1];
+    string path = 4;
+    string fileName = 5 [(validate.rules).string.min_len = 1];
+}
+
+message GittarPushPayloadEvent {
+    string event = 1;
+    string action = 2;
+    string orgID = 3;
+    string projectID = 4;
+    string applicationID = 5;
+    string env = 6;
+    string timeStamp = 7;
+    Content content = 8;
+}
+
+message Content {
+    string ref = 1;
+    string after = 2;
+    string before = 3;
+    Pusher pusher = 4;
+}
+
+message Pusher {
+    string ID = 1 [json_name = "id"];
+    string name = 2;
+    string nickName = 3 [json_name = "nickname"];
+    string email = 4;
+}
+
+message BatchCreateProjectPipelineResponse {}
+
+message ListPipelineExecHistoryRequest {
+    string name = 1;
+    repeated string executors = 2;
+    repeated string appNames = 3;
+    repeated string statuses = 4;
+    uint64 pageNo = 5;
+    uint64 pageSize = 6;
+    google.protobuf.Timestamp startTimeBegin = 7;
+    google.protobuf.Timestamp startTimeEnd = 8;
+    repeated string descCols = 9;
+    repeated string ascCols = 10;
+    uint64 projectID = 11;
+    repeated string branches = 12;
+}
+
+message ListPipelineExecHistoryResponse {
+    int64 total = 1;
+    int64 currentPageSize = 2;
+    repeated PipelineExecHistory execHistories = 3;
+}
+
+message PipelineExecHistory {
+    string pipelineName = 1;
+    string pipelineStatus = 2;
+    int64 costTimeSec = 3;
+    string appName = 4;
+    string branch = 5;
+    string executor = 6;
+    google.protobuf.Timestamp timeBegin = 7;
+    uint64 pipelineID = 8;
+}

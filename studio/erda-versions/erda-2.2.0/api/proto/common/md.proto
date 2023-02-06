@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package erda.common;
+
+option go_package = "github.com/erda-project/erda-proto-go/common/pb";
+
+message MetadataField {
+  string name = 1;
+  string value = 2;
+  string type = 3;
+  bool optional = 4;
+  map<string, string> labels = 5;
+  string level = 6;
+}

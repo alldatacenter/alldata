@@ -1,0 +1,16 @@
+- mysql_qps:
+    title: "QPS"
+    metric_names: "mysql"
+    type: "mysql"
+    order: 4
+    defines:
+      diffps.(com_delete+com_insert+com_select+com_update):
+        label: ""
+        unit: "次/s"
+        unit_type: "NPS"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

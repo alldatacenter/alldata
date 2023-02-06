@@ -1,0 +1,37 @@
+http-server:
+    addr: ":7096"
+health:
+
+kafka:
+    servers: "${BOOTSTRAP_SERVERS:localhost:9092}"
+    comsumer:
+        options:
+            auto.offset.reset: "${KAFKA_AUTO_OFFSET_RESET:latest}"
+            auto.commit.interval.ms: "${KAFKA_AUTO_COMMIT_INTERVAL_MS:1000}"
+logs-exporter-base:
+    filters:
+        monitor_log_key: "${MONITOR_LOG_KEY:-}"
+    input:
+        topics: "${LOG_KAFKA_TOPICS:spot-container-log}"
+        group: "${LOG_KAFKA_GROUP}"
+        parallelism: ${LOG_KAFKA_WORKERS:3}
+
+elasticsearch@logs:
+    urls: "${ES_URLS:http://localhost:9200}"
+    security: ${ES_SECURITY_ENABLE:false}
+    username: "${ES_USERNAME}"
+    password: "${ES_PASSWORD}"
+
+logs-exporter-elasticsearch:
+    index:
+        prefix: "${INDEX_PREFIX:logs-}"
+    writer_config:
+        type: "${INDEX_TYPE:logs}"
+        parallelism: ${ES_PARALLELISM:3}
+        batch:
+            size: ${ES_BATCH_SIZE:50}
+            timeout: "30s"
+
+http-server@admin:
+    addr: ":7098"
+pprof:

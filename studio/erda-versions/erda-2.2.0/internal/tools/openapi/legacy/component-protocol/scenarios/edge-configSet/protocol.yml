@@ -1,0 +1,29 @@
+scenario: edge-configSet
+
+hierarchy:
+  root: configSetManage
+  structure:
+    configSetManage:
+      - topHead
+      - configSetList
+      - configSetFormModal
+    topHead:
+      - clusterAddButton
+
+components:
+  configSetManage:
+    type: Container
+  configSetList:
+    type: Table
+  topHead:
+    type: RowContainer
+    props:
+      isTopHead: true
+  configSetFormModal:
+    type: FormModal
+  clusterAddButton:
+    type: Button
+
+rendering:
+  configSetFormModal:
+    - name: configSetList

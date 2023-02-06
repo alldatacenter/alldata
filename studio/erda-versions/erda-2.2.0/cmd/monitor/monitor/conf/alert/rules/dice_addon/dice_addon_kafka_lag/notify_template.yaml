@@ -1,0 +1,197 @@
+- name: "平台中间件kafka消费堆积"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【平台中间件kafka消费堆积告警】
+  template: |
+    【平台中间件kafka消费堆积告警】
+
+    中间件: {{addon_id}}
+
+    消费者组: {{group}}
+
+    Topic: {{topic}}
+
+    当前消息堆积: {{lag_avg}}
+
+    消费速度: {{consume_rate_per_sec_avg}} /s
+
+    生产速度: {{produce_rate_per_sec_avg}} /s
+
+    集群: {{cluster_name}}
+
+    组织名称: {{org_name}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+
+- name: "平台中间件kafka消费堆积"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【平台中间件kafka消费堆积告警】
+  template: |
+    {{addon_id}}中间件触发平台中间件kafka消费异常堆积告警，组织名称: {{org_name}}，Topic: {{topic}}，消费速度: {{consume_rate_per_sec_avg}} /s，生产速度: {{produce_rate_per_sec_avg}} /s，告警级别: {{level}}
+- name: "平台中间件kafka消费堆积"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【平台中间件kafka消费堆积告警】
+  template: |
+    {{addon_id}}中间件触发平台中间件kafka消费异常堆积告警，组织名称: {{org_name}}，Topic: {{topic}}，消费速度: {{consume_rate_per_sec_avg}} /s，生产速度: {{produce_rate_per_sec_avg}} /s，告警级别: {{level}}
+- name: "平台中间件kafka消费堆积"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【平台中间件kafka消费堆积恢复】
+  template: |
+    【平台中间件kafka消费堆积恢复】
+
+    中间件: {{addon_id}}
+
+    消费者组: {{group}}
+
+    Topic: {{topic}}
+
+    当前消息堆积: {{lag_avg}}
+
+    集群: {{cluster_name}}
+
+    组织名称: {{org_name}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "平台中间件kafka消费堆积恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【平台中间件kafka消费堆积恢复】
+  template: |
+    {{addon_id}}中间件触发平台中间件kafka消费堆积恢复，组织名称: {{org_name}}，Topic: {{topic}}，当前消息堆积: {{lag_avg}}
+
+- name: "平台中间件kafka消费堆积恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【平台中间件kafka消费堆积恢复】
+  template: |
+    {{addon_id}}中间件触发平台中间件kafka消费堆积恢复，组织名称: {{org_name}}，Topic: {{topic}}，当前消息堆积: {{lag_avg}}
+
+- name: "Consumption accumulation of platform middleware Kafka"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [Consumption accumulation alarm of platform middleware Kafka]
+  template: |
+    [Consumption accumulation alarm of platform middleware Kafka]
+
+    Middleware: {{addon_id}}
+
+    Consumer group: {{group}}
+
+    Topic: {{topic}}
+
+    Current consumption accumulation: {{lag_avg}}
+
+    Consumption speed: {{consume_rate_per_sec_avg}} /s
+
+    Production speed: {{produce_rate_per_sec_avg}} /s
+
+    Cluster: {{cluster_name}}
+
+    Organization name: {{org_name}}
+
+    Time: {{timestamp}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+
+- name: "Consumption accumulation of platform middleware Kafka"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Consumption accumulation alarm of platform middleware Kafka]
+  template: |
+    Consumption accumulation alarm of platform middleware Kafka triggered by middleware {{addon_id}}, organization name: {{org_name}}, topic: {{topic}}, consumption speed: {{consume_rate_per_sec_avg}} /s, production speed: {{produce_rate_per_sec_avg}} /s
+- name: "Consumption accumulation of platform middleware Kafka"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [Consumption accumulation alarm of platform middleware Kafka]
+  template: |
+    Consumption accumulation alarm of platform middleware Kafka triggered by middleware {{addon_id}}, organization name: {{org_name}}, topic: {{topic}}, consumption speed: {{consume_rate_per_sec_avg}} /s, production speed: {{produce_rate_per_sec_avg}} /s
+- name: "Consumption accumulation recovery of platform middleware Kafka"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Consumption accumulation recovery of platform middleware Kafka]
+  template: |
+    [Consumption accumulation recovery of platform middleware Kafka]
+
+    Middleware: {{addon_id}}
+
+    Consumer group: {{group}}
+
+    Topic: {{topic}}
+
+    Current consumption accumulation: {{lag_avg}}
+
+    Cluster: {{cluster_name}}
+
+    Organization name: {{org_name}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Consumption accumulation recovery of platform middleware Kafka"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Consumption accumulation recovery of platform middleware Kafka]
+  template: |
+    Consumption accumulation recovery of platform middleware Kafka triggered by middleware {{addon_id}}, organization name: {{org_name}}, topic: {{topic}}, current consumption accumulation: {{lag_avg}}
+
+- name: "Consumption accumulation recovery of platform middleware Kafka"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Consumption accumulation recovery of platform middleware Kafka]
+  template: |
+    Consumption accumulation recovery of platform middleware Kafka triggered by middleware  {{addon_id}}, organization name: {{org_name}}, topic: {{topic}}, current consumption accumulation: {{lag_avg}}

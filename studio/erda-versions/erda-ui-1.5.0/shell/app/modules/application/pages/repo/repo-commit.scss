@@ -1,0 +1,55 @@
+.repo-commit {
+  padding-top: $p8;
+
+  .commit-nav {
+    display: flex;
+    justify-content: space-between;
+
+    .search-input {
+      width: 260px;
+    }
+
+    .repo-breadcrumb-container {
+      margin-bottom: 0;
+    }
+  }
+
+  .ant-timeline-item {
+    padding: 0 0 30px;
+  }
+}
+
+.commit-list {
+  padding: 0 12px;
+  overflow: auto;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+
+  .commit-item {
+    padding: 16px 0;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-color: transparent;
+    }
+
+    .commit-sub-sha {
+      margin-left: $p24;
+      color: $color-text-desc;
+    }
+
+    .commit-left {
+      flex: 1;
+      margin-right: 12px;
+      overflow: hidden;
+    }
+
+    // button {
+    //   color: $color-text-desc;
+
+    //   &:hover {
+    //     color: $color-primary;
+    //   }
+    // }
+  }
+}

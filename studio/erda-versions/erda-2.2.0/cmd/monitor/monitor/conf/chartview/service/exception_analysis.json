@@ -1,0 +1,233 @@
+{
+  "id": "exception_analysis",
+  "name": "exception_analysis",
+  "desc": "",
+  "scope": "micro_service",
+  "scopeId": "global",
+  "viewConfig": [
+    {
+      "h": 10,
+      "i": "view-1qwUXZqM",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "error_alert"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "select": [
+              {
+                "alias": "typejp0SuUOW",
+                "expr": "time()"
+              },
+              {
+                "alias": "value7sFuzU7F",
+                "expr": "round_float(sum(count::field), 2)"
+              }
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "filter_service_id": "{{serviceId}}",
+            "filter_service_name": "{{serviceName}}",
+            "filter_type": "{{exceptionType}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:bar",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "error_count"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "typejp0SuUOW",
+                "type": "time"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "sum",
+                "alias": "次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Count",
+                    "zh": "次数"
+                  }
+                },
+                "field": "error_count-count::field",
+                "key": "value7sFuzU7F",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": null,
+        "title": "异常趋势",
+        "i18n": {
+          "title": {
+            "en": "Exception Tendency",
+            "zh": "异常趋势"
+          }
+        }
+      },
+      "w": 24,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 10,
+      "w": 24,
+      "x": 0,
+      "y": 10,
+      "i": "view-7LXO3tsG",
+      "view": {
+        "api": {
+          "method": "get",
+          "query": {
+            "end": "{{endTime}}",
+            "exceptionType": "{{exceptionType}}",
+            "limit": "{{limit}}",
+            "serviceId": "{{serviceId}}",
+            "serviceName": "{{serviceName}}",
+            "sort": "{{sort}}",
+            "start": "{{startTime}}",
+            "terminusKey": "{{terminusKey}}"
+          },
+          "url": "/api/apm/topology/exception/message"
+        },
+        "chartType": "table",
+        "config": {
+          "dataSourceConfig": {
+            "valueDimensions": [
+              {
+                "alias": "实例 ID",
+                "i18n": {
+                  "alias": {
+                    "en": "Instance ID",
+                    "zh": "实例 ID"
+                  }
+                },
+                "key": "instance_id",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "异常类型",
+                "i18n": {
+                  "alias": {
+                    "en": "Exception Type",
+                    "zh": "异常类型"
+                  }
+                },
+                "key": "exception_type",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "Class",
+                "key": "class",
+                "i18n": {
+                  "alias": {
+                    "en": "Class",
+                    "zh": "Class"
+                  }
+                },
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "Method",
+                "key": "method",
+                "i18n": {
+                  "alias": {
+                    "en": "Method",
+                    "zh": "Method"
+                  }
+                },
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "异常消息",
+                "key": "message",
+                "i18n": {
+                  "alias": {
+                    "en": "Exception Message",
+                    "zh": "异常消息"
+                  }
+                },
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "time",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Count",
+                    "zh": "次数"
+                  }
+                },
+                "key": "count",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": true,
+            "moreThanOneDayFormat": "M/D"
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": null,
+        "title": "异常列表",
+        "i18n": {
+          "title": {
+            "en": "Exceptions",
+            "zh": "异常列表"
+          }
+        }
+      }
+    }
+  ],
+  "version": "v2"
+}

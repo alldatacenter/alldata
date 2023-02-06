@@ -1,0 +1,14 @@
+- machine_cpu:
+    title: "CPU使用率"
+    metric_names: "host_summary"
+    type: "machine"
+    order: 1
+    defines:
+      avg.cpu_usage_active:
+        label: "CPU使用率"
+        unit: "%"
+        unit_type: "PERCENT"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

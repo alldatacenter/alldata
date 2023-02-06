@@ -1,0 +1,110 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: volume-provisioner
+  namespace: erda-system
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: volume-provisioner
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "persistentvolumes" ]
+    verbs: [ "get", "list", "watch", "create", "delete" ]
+  - apiGroups: [ "" ]
+    resources: [ "persistentvolumeclaims" ]
+    verbs: [ "get", "list", "watch", "update" ]
+  - apiGroups: [ "storage.k8s.io" ]
+    resources: [ "storageclasses" ]
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "" ]
+    resources: [ "events", "pods/exec" ]
+    verbs: [ "create", "update", "patch" ]
+  - apiGroups: [ "" ]
+    resources: [ "endpoints" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch" ]
+  - apiGroups: [ "" ]
+    resources: [ "pods" ]
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "" ]
+    resources: [ "services" ]
+    verbs: [ "get", "list", "watch", "create", "delete", "update", "patch" ]
+  - apiGroups: [ "" ]
+    resources: [ "nodes" ]
+    verbs: [ "get", "list", "watch" ]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: volume-provisioner
+subjects:
+  - kind: ServiceAccount
+    name: volume-provisioner
+    namespace: erda-system
+roleRef:
+  kind: ClusterRole
+  name: volume-provisioner
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: volume-provisioner
+  namespace: erda-system
+  labels:
+    app: volume-provisioner
+  annotations:
+    description: k8s volume provisioner
+spec:
+  selector:
+    matchLabels:
+      app: volume-provisioner
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+  template:
+    metadata:
+      name: volume-provisioner
+      labels:
+        app: volume-provisioner
+    spec:
+      serviceAccountName: volume-provisioner
+      containers:
+        - image: registry.cn-hangzhou.aliyuncs.com/dice/volume-provisioner:4.0-20210416-1a3758f
+          env:
+            - name: PROVISIONER_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          imagePullPolicy: Always
+          name: volume-provisioner
+          # Must /hostfs
+          volumeMounts:
+            - name: host-dir
+              mountPath: "/hostfs"
+      volumes:
+        - name: host-dir
+          hostPath:
+            path: "/"
+      imagePullSecrets:
+        - name: aliyun-registry
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: dice-local-volume
+provisioner: dice/local-volume
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  hostpath: /data
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: dice-nfs-volume
+provisioner: dice/netdata-volume
+parameters:
+  hostpath: /netdata

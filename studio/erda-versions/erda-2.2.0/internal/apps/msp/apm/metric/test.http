@@ -1,0 +1,35 @@
+@url = http://localhost:8080
+
+### query application_http
+GET {{url}}/api/tmc/metrics/docker_container_summary
+    ?start=before_24h
+    &end=now
+    &filter__metric_scope_id=testkey
+    &filter_host_ip=localhost
+    &format=chartv2
+Accept: application/json
+
+### query application_http
+GET {{url}}/api/tmc/metrics/application_http
+    ?start=before_24h
+    &end=now
+    &filter__metric_scope_id=testkey
+    &filter_host_ip=localhost
+    &format=chartv2
+Accept: application/json
+
+### query unknown metric
+GET {{url}}/api/tmc/metrics/unknown_metric
+    ?start=before_24h
+    &end=now
+    &filter_terminus_key=testkey
+    &format=chartv2
+Accept: application/json
+
+### query jvm memory
+GET {{url}}/api/tmc/metrics/jvm_memory
+    ?start=before_24h
+    &end=now
+    &filter_terminus_key=testkey
+    &format=chartv2
+Accept: application/json

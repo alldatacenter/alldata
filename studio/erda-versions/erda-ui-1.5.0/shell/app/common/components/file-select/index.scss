@@ -1,0 +1,11 @@
+.upload-file-tip {
+  width: 273px;
+  overflow: hidden;
+  color: $gray !important;
+  text-align: left;
+  text-overflow: ellipsis;
+
+  &.placeholder {
+    color: $color-text-holder !important;
+  }
+}

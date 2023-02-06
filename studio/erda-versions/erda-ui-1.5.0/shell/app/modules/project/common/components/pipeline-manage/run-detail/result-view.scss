@@ -1,0 +1,37 @@
+.test-case-execute-result {
+  &-item {
+    display: flex;
+  }
+
+  .label {
+    width: 80px;
+  }
+
+  .value {
+    flex: 1;
+    width: 0;
+    max-height: 400px;
+    margin-bottom: unset;
+    padding: 10px 10px 10px 25px;
+    overflow: auto;
+    color: #bbbbbb;
+    line-height: 24px;
+    background-color: #3c444f;
+    border-radius: 6px;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 6px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: gray;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+  }
+}

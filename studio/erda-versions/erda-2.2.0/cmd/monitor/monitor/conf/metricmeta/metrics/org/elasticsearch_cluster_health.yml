@@ -1,0 +1,80 @@
+name: "Elasticsearch Cluster Health"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    name:
+        name: "Name"
+    org_name:
+        name: "Org Name"
+fields:
+    active_primary_shards:
+        type: "number"
+        name: "Active Primary Shards"
+        unit: 
+    active_shards:
+        type: "number"
+        name: "Active Shards"
+        unit: 
+    active_shards_percent_as_number:
+        type: "number"
+        name: "Active Shards Percent As Number"
+        unit: 
+    delayed_unassigned_shards:
+        type: "number"
+        name: "Delayed Unassigned Shards"
+        unit: 
+    initializing_shards:
+        type: "number"
+        name: "Initializing Shards"
+        unit: 
+    number_of_data_nodes:
+        type: "number"
+        name: "Number Of Data Nodes"
+        unit: 
+    number_of_in_flight_fetch:
+        type: "number"
+        name: "Number Of In Flight Fetch"
+        unit: 
+    number_of_nodes:
+        type: "number"
+        name: "Number Of Nodes"
+        unit: 
+    number_of_pending_tasks:
+        type: "number"
+        name: "Number Of Pending Tasks"
+        unit: 
+    relocating_shards:
+        type: "number"
+        name: "Relocating Shards"
+        unit: 
+    status:
+        type: "string"
+        name: "Status"
+        unit: 
+    status_code:
+        type: "number"
+        name: "Status Code"
+        unit: 
+    task_max_waiting_in_queue_millis:
+        type: "number"
+        name: "Task Maximum Waiting In Queue Millis"
+        unit: 
+    timed_out:
+        type: "bool"
+        name: "Timed Out"
+        unit: 
+    unassigned_shards:
+        type: "number"
+        name: "Unassigned Shards"
+        unit: 
+

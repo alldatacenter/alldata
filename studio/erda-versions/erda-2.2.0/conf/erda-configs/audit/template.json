@@ -1,0 +1,1984 @@
+{
+  "cancelPipeline": {
+    "desc": "取消流水线",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，取消执行 [流水线](pipeline)",
+      "en": "In the application [@projectName](project) / [@appName](app), cancel the execution of [pipeline](pipeline)"
+    },
+    "fail": {}
+  },
+  "deletePipelineKey": {
+    "desc": "删除流水线配置",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，删除了流水线配置 [@namespace] 的 [@key]",
+      "en": "In the application [@projectName](project) / [@appName](app), delete the pipeline configuration [@key] of [@namespace]"
+    },
+    "fail": {}
+  },
+  "updatePipelineKey": {
+    "desc": "更新流水线配置",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，设置了流水线配置 [@namespace] 的 [@key]",
+      "en": "Set the pipeline configuration [@key] of [@namespace] in the application [@projectName](project) / [@appName](app)"
+    },
+    "fail": {}
+  },
+  "createPipeline": {
+    "desc": "创建流水线",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，创建了分支[@branch]的 [流水线](pipeline)",
+      "en": "In the application [@projectName](project) / [@appName](app), create the [pipeline](pipeline) of the branch [@branch]"
+    },
+    "fail": {}
+  },
+  "startPipelineTimer": {
+    "desc": "开启流水线定时",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，对分支 [@branch](branches) 开启了流水线定时设置",
+      "en": "In the application [@projectName](project) / [@appName](app), enable the timer for [pipeline](pipeline)"
+    },
+    "fail": {}
+  },
+  "stopPipelineTimer": {
+    "desc": "停止流水线定时",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，对分支 [@branch](branches) 取消了流水线定时设置",
+      "en": "In the application [@projectName](project) / [@appName](app), disable the timer for [pipeline](pipeline)"
+    },
+    "fail": {}
+  },
+  "togglePipelineTask": {
+    "desc": "开关流水线任务",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中, 对 [流水线](pipeline) 配置[@taskName]是否执行",
+      "en": "In the application [@projectName](project) / [@appName](app), configure [pipeline](pipeline) whether [@taskName] is executed"
+    },
+    "fail": {}
+  },
+  "rerunPipeline": {
+    "desc": "全流程重试流水线",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，创建了全流程重试的 [流水线](pipeline)",
+      "en": "In the application [@projectName](project) / [@appName](app), rerun the [pipeline](pipeline)"
+    },
+    "fail": {}
+  },
+  "retryPipeline": {
+    "desc": "失败节点重试流水线",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，创建了从失败节点处重试的 [流水线](pipeline)",
+      "en": "In the application [@projectName](project) / [@appName](app), retry [pipeline](pipeline) from the failed node"
+    },
+    "fail": {}
+  },
+  "startPipeline": {
+    "desc": "执行流水线",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，开始执行 [流水线](pipeline) ",
+      "en": "In the application [@projectName](project) / [@appName](app), start executing [pipeline](pipeline)"
+    },
+    "fail": {}
+  },
+  "createApp": {
+    "desc": "创建应用",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，创建了应用 [@appName](app)",
+      "en": "In the project [@projectName](project), create the application [@appName](app)"
+    },
+    "fail": {}
+  },
+  "deleteApp": {
+    "desc": "删除应用",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除了应用 [@appName]",
+      "en": "In the project [@projectName](project), delete the application [@appName]"
+    },
+    "fail": {}
+  },
+  "createBranchRule": {
+    "desc": "创建分支规则",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，创建了分支规则 [@ruleName]",
+      "en": "In the project [@projectName](project), create the branch rule [@ruleName]"
+    },
+    "fail": {}
+  },
+  "deleteBranchRule": {
+    "desc": "删除分支规则",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除了分支规则 [@ruleName]",
+      "en": "In the project [@projectName](project), delete the branch rule [@ruleName]"
+    },
+    "fail": {}
+  },
+  "updateBranchRule": {
+    "desc": "更新分支规则",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，更新了分支规则 [@ruleName]",
+      "en": "In the project [@projectName](project), update the branch rule [@ruleName]"
+    },
+    "fail": {}
+  },
+  "batchUpdateIssue": {
+    "desc": "批量更新事件【废弃】",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，批量更新了<<issueType>>",
+      "en": "In the project [@projectName](project), batch update the <<issueType>>s"
+    },
+    "fail": {}
+  },
+  "createIssue": {
+    "desc": "创建事件【废弃】",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，创建了<<issueType>> [@issueTitle](issueDetail)",
+      "en": "In the project [@projectName](project), create the <<issueType>> [@issueTitle](issueDetail)"
+    },
+    "fail": {}
+  },
+  "deleteIssue": {
+    "desc": "删除事件",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除了<<issueType>> [@issueTitle]",
+      "en": "In the project [@projectName](project), delete the <<issueType>> [@issueTitle]"
+    },
+    "fail": {}
+  },
+  "commentOnIssue": {
+    "desc": "评论事件【废弃】",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，评论了<<issueType>> [@issueTitle](issueDetail)",
+      "en": "In the project [@projectName](project), commented on the <<issueType>> [issueTitle](issueDetail)"
+    },
+    "fail": {}
+  },
+  "updateIssue": {
+    "desc": "更新事件【废弃】",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，更新了<<issueType>> [@issueTitle](issueDetail)",
+      "en": "In the project [@projectName](project), update the <<issueType>> [@issueTitle](issueDetail)"
+    },
+    "fail": {}
+  },
+  "createIteration": {
+    "desc": "创建迭代",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，创建了迭代 [@iterationName]",
+      "en": "In the project [@projectName](project), create an iteration [@iterationName]"
+    },
+    "fail": {}
+  },
+  "deleteIteration": {
+    "desc": "删除迭代",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除了迭代 [@iterationName]",
+      "en": "In project [@projectName](project), delete iteration [@iterationName]"
+    },
+    "fail": {}
+  },
+  "updateIteration": {
+    "desc": "更新迭代",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，更新了迭代 [@iterationName]",
+      "en": "In project [@projectName](project), updated iteration[@iterationName]"
+    },
+    "fail": {}
+  },
+  "createProjectLabel": {
+    "desc": "创建项目标签",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，创建了标签 [@label]",
+      "en": "In the project [@projectName](project), create the label [@label]"
+    },
+    "fail": {}
+  },
+  "deleteProjectLabel": {
+    "desc": "删除项目标签",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除了标签 [@label]",
+      "en": "In the project [@projectName](project), delete the label [@label]"
+    },
+    "fail": {}
+  },
+  "updateProjectLabel": {
+    "desc": "更新项目标签",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，更新了标签 [@label]",
+      "en": "In the project [@projectName](project), update the label [@label]"
+    },
+    "fail": {}
+  },
+  "addMember": {
+    "desc": "添加成员",
+    "success": {
+      "zh": "在<<scopeType>> 中，添加或修改了成员 [@users]",
+      "en": "In the <<scopeType>>, add or edit member [@users]"
+    },
+    "fail": {}
+  },
+  "deleteMember": {
+    "desc": "删除成员",
+    "success": {
+      "zh": "在<<scopeType>> 中，删除了成员 [@users]",
+      "en": "In the <<scopeType>>, delete member [@users]"
+    },
+    "fail": {}
+  },
+  "createProject": {
+    "desc": "创建项目",
+    "success": {
+      "zh": "创建了项目 [@projectName](project)",
+      "en": "Create project [@projectName](project)"
+    },
+    "fail": {}
+  },
+  "deleteProject": {
+    "desc": "删除项目",
+    "success": {
+      "zh": "删除了项目 [@projectName]",
+      "en": "delete project [@projectName]"
+    },
+    "fail": {}
+  },
+  "updateProject": {
+    "desc": "更新项目",
+    "success": {
+      "zh": "更新了项目 [@projectName](project)",
+      "en": "Update project [@projectName](project)"
+    },
+    "fail": {}
+  },
+  "login": {
+    "desc": "用户登录",
+    "success": {
+      "zh": "登录了平台",
+      "en": "Signed in to the platform"
+    },
+    "fail": {
+      "zh": "[@nickName] 登录失败",
+      "en": "[@nickName] Login failed"
+    }
+  },
+  "logout": {
+    "desc": "用户登出",
+    "success": {
+      "zh": "登出了平台",
+      "en": "Logged out of the platform"
+    },
+    "fail": {}
+  },
+  "updatePassword": {
+    "desc": "用户密码修改",
+    "success": {
+      "zh": "[@nickName] 修改了密码",
+      "en": "[@nickName] changed password"
+    },
+    "fail": {}
+  },
+  "registerUser": {
+    "desc": "注册用户",
+    "success": {
+      "zh": "注册了用户",
+      "en": "Registered user"
+    },
+    "fail": {}
+  },
+  "disableUser": {
+    "desc": "停用用户",
+    "success": {
+      "zh": "停用了用户 [@nickName]",
+      "en": "Disabled user [@nickName]"
+    },
+    "fail": {}
+  },
+  "enableUser": {
+    "desc": "启用用户",
+    "success": {
+      "zh": "启用了用户 [@nickName]",
+      "en": "Enabled User [@nickName]"
+    },
+    "fail": {}
+  },
+  "freezeUser": {
+    "desc": "冻结用户",
+    "success": {
+      "zh": "冻结了用户 [@nickName]",
+      "en": "freeze user [@nickName] "
+    },
+    "fail": {}
+  },
+  "unfreezeUser": {
+    "desc": "解冻用户",
+    "success": {
+      "zh": "解冻了用户 [@nickName]",
+      "en": "Unfreeze user [@nickName]"
+    },
+    "fail": {}
+  },
+  "destroyUser": {
+    "desc": "注销用户",
+    "success": {
+      "zh": "注销了用户 [@nickName]",
+      "en": "Delete user [@nickName]"
+    },
+    "fail": {}
+  },
+  "userLoginType": {
+    "desc": "用户登录方式",
+    "success": {
+      "zh": "[@nickName] 变更了登录方式",
+      "en": "[@nickName] changed login type"
+    },
+    "fail": {}
+  },
+  "updateUserInfo": {
+    "desc": "用户信息修改【废弃】",
+    "success": {
+      "zh": "[@nickName] 用户基本信息进行了修改",
+      "en": "[@nickName] information has been updated"
+    },
+    "fail": {}
+  },
+  "updateUserContact": {
+    "desc": "【废除】用户联系方式改变",
+    "success": {
+      "zh": "[@nickName] 修改了手机号码或者邮箱",
+      "en": "[@nickName] update phone number or email"
+    },
+    "fail": {}
+  },
+  "updateUserComRole": {
+    "desc": "用户企业角色变更",
+    "success": {
+      "zh": "[@nickName] 的企业角色发生了变更",
+      "en": "[@nickName]'s Company role has changed"
+    },
+    "fail": {}
+  },
+  "updateUserProRole": {
+    "desc": "用户项目应用角色变更",
+    "success": {
+      "zh": "[@nickName] 的项目或者应用角色发生了变更",
+      "en": "[@nickName]'s project or application role has changed"
+    },
+    "fail": {}
+  },
+  "addUser": {
+    "desc": "创建用户",
+    "success": {
+      "zh": "系统管理员创建了用户 [@nickName]",
+      "en": "administrator created the user [@nickName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createEndpoint": {
+    "desc": "创建流量入口",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 中添加了流量入口 [@endpoint]，关联域名：[@domains]",
+      "en": "added endpoint [@endpoint] in  [@workspace] environment of [@project](project) , associated domain name: [@domains]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateEndpoint": {
+    "desc": "更新流量入口",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 中更新了流量入口 [@endpoint]，关联域名：[@domains]",
+      "en": "updated endpoint [@endpoint] in  [@workspace] environment of [@project](project) , associated domain name: [@domains]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteEndpoint": {
+    "desc": "删除流量入口",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 中删除了流量入口 [@endpoint]，关联域名：[@domains]",
+      "en": "deleted endpoint [@endpoint] in  [@workspace] environment of [@project](project) , associated domain name: [@domains]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createServiceDomain": {
+    "desc": "添加服务域名",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) / [@app](app) / [@service] 服务 / [@runtime] 运行时添加了域名 [@domain]",
+      "en": "added domain [@domain] in  [@project](project) / [@app](app) / [@service]  service /  [@runtime] runtime of [@workspace] environment "
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteServiceDomain": {
+    "desc": "删除服务域名",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) / [@app](app) / [@service] 服务 / [@runtime] 运行时删除了域名 [@domain]",
+      "en": "deleted domain [@domain] in  [@project](project) / [@app](app) / [@service]  service /  [@runtime] runtime of [@workspace] environment "
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createRoute": {
+    "desc": "创建网关路由",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 的流量入口 [@endpoint] 添加了路由规则，路径：[@path] 方法：[@method]",
+      "en": "added route in endpoint [@endpoint] of  [@workspace] environment of [@project](project), path: [@path] method: [@method]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateRoute": {
+    "desc": "更改网关路由",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 的流量入口 [@endpoint] 更改了路由规则，路径：[@path] 方法：[@method]",
+      "en": "updated route in endpoint [@endpoint] of  [@workspace] environment of [@project](project), path: [@path] method: [@method]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteRoute": {
+    "desc": "删除网关路由",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 的流量入口 [@endpoint] 删除了路由规则，路径：[@path] 方法：[@method]",
+      "en": "deleted route in endpoint [@endpoint] of  [@workspace] environment of [@project](project), path: [@path] method: [@method]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateGlobalRoutePolicy": {
+    "desc": "更新全局路由策略",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 的流量入口 [@endpoint] 更新了 [@policy] 全局策略 , 开关状态: [@switch]",
+      "en": "updated global route policy [@policy] in endpoint [@endpoint] of  [@workspace] environment of [@project](project),  status: [@switch]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateRoutePolicy": {
+    "desc": "更新独立路由策略",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 的流量入口 [@endpoint] ，对路径 [@path] 方法 [@method] 更新了 [@policy] 策略 , 开关状态: [@switch]",
+      "en": "updated policy [@policy] of route in endpoint [@endpoint] of  [@workspace] environment of [@project](project),  path: [@path],  method: [@method], status: [@switch]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createGatewayConsumer": {
+    "desc": "创建网关调用方",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 下创建了调用方 [@consumer]",
+      "en": "added consumer [@consumer] in  [@workspace] environment of [@project](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateGatewayConsumer": {
+    "desc": "更改网关调用方",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 下更改了调用方 [@consumer]",
+      "en": "updated consumer [@consumer] in  [@workspace] environment of [@project](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteGatewayConsumer": {
+    "desc": "删除网关调用方",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) 下删除了调用方 [@consumer]",
+      "en": "deleted consumer [@consumer] in  [@workspace] environment of [@project](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createServiceApi": {
+    "desc": "创建微服务API",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) / [@app](app) / [@service] 服务 / [@runtime] 运行时添加了 API，路径：[@path]  方法：[@method]",
+      "en": "added api  in  [@project](project) / [@app](app) / [@service]  service /  [@runtime] runtime of [@workspace] environment, path: [@path] method: [@method]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateServiceApi": {
+    "desc": "更改微服务API",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) / [@app](app) / [@service] 服务 / [@runtime] 运行时更改了 API，路径：[@path]  方法：[@method]",
+      "en": "updated api  in  [@project](project) / [@app](app) / [@service]  service /  [@runtime] runtime of [@workspace] environment, path: [@path] method: [@method]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteServiceApi": {
+    "desc": "删除微服务API",
+    "success": {
+      "zh": "在 [@workspace] 环境的 [@project](project) / [@app](app) / [@service] 服务 / [@runtime] 运行时删除了 API，路径：[@path]  方法：[@method]",
+      "en": "deleted api  in  [@project](project) / [@app](app) / [@service]  service /  [@runtime] runtime of [@workspace] environment, path: [@path] method: [@method]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createCloudAccount": {
+    "desc": "创建云账号",
+    "success": {
+      "zh": "创建了云账号[@accessKeyID]，云供应商[@vendor]",
+      "en": "Create cloud account [@accessKeyID], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteCloudAccount": {
+    "desc": "删除云账号",
+    "success": {
+      "zh": "删除了云账号[@accessKeyID]，云供应商[@vendor]",
+      "en": "Delete cloud account [@accessKeyID], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createOns": {
+    "desc": "创建ons",
+    "success": {
+      "zh": "创建ONS[@name], 云供应商[@vendor]",
+      "en": "Create ONS [@name], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteOns": {
+    "desc": "删除ons",
+    "success": {
+      "zh": "删除ONS, 实例ID [@instanceID]，云供应商[@vendor]",
+      "en": "Delete ons, instance id [@instanceID], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createOnsGroup": {
+    "desc": "创建ons组",
+    "success": {
+      "zh": "在ons实例[@instanceID]中，创建 ons group [@groupID], 云供应商[@vendor]",
+      "en": "In ons instance [@instanceID], create ons group [@groupID], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createOnsTopic": {
+    "desc": "创建ons主题",
+    "success": {
+      "zh": "在ons实例[@instanceID]中，创建ons主题 [@topic], 云供应商 [@vendor]",
+      "en": "In ons instance [@instanceID], create ons topic [@topic], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteOnsTopic": {
+    "desc": "删除ons主题",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除ons addon，addon id [@addonID]",
+      "en": "In project [@projectName](project), delete addon, addon id [@addonID]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createRedis": {
+    "desc": "创建redis",
+    "success": {
+      "zh": "创建redis [@name], 云供应商[@vendor]",
+      "en": "Create redis [@name], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteRedis": {
+    "desc": "删除redis",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除redis addon，addon id [@addonID]",
+      "en": "在项目 [@projectName](project) 中，删除redis addon，addon id [@addonID]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createOss": {
+    "desc": "创建oss",
+    "success": {
+      "zh": "创建oss [@name], 云供应商[@vendor]",
+      "en": "Create oss [@name], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteOss": {
+    "desc": "删除oss",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除oss addon，addon id [@addonID]",
+      "en": "In project [@projectName](project), delete oss addon, addon id [@addonID]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createVpc": {
+    "desc": "创建vpc",
+    "success": {
+      "zh": "在区域[@region]，创建了vpc [@name], 网段 [@cidrBlock], 云供应商 [@vendor]",
+      "en": "In region [@region], create vpc [@name], cidr block [@cidrBlock], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createVswitch": {
+    "desc": "创建交换机",
+    "success": {
+      "zh": "在区域[@region]的虚拟子网[@vpcID]中创建了交换机[@name]，网段[@cidrBlock]，云供应商[@vendor]",
+      "en": "In region [@region], create vswitch [@name] with cidr block [@cidrblock] in vpc [@vpcID], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createMysql": {
+    "desc": "创建数据库实例",
+    "success": {
+      "zh": "创建Mysql [@name], 云供应商[@vendor]",
+      "en": "Create Mysql [@name], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createMysqlDb": {
+    "desc": "创建数据库",
+    "success": {
+      "zh": "在数据库实例 [@instanceID] 中，创建了数据库[@databases]，云供应商[@vendor]",
+      "en": "In mysql instance [@instanceID], create databases [@databases], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createMysqlAccount": {
+    "desc": "创建数据库账户",
+    "success": {
+      "zh": "在数据库实例 [@instanceID] 中，创建了账户[@account]，云供应商[@vendor]",
+      "en": "In mysql instance [@instanceID], create account [@account], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteMysql": {
+    "desc": "删除数据库实例",
+    "success": {
+      "zh": "删除了数据库实例，实例ID [@instanceID]，云供应商[@vendor]",
+      "en": "Delete mysql instance, instance id [@instanceID], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteMysqlDb": {
+    "desc": "删除数据库",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除mysql addon，addon id [@addonID]",
+      "en": "In project [@projectName](project), delete mysql addon, addon id [@addonID]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "upgradeCluster": {
+    "desc": "集群升级",
+    "success": {
+      "zh": "升级集群[@clusterName]",
+      "en": "Upgrade cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "addCloudNode": {
+    "desc": "添加云主机",
+    "success": {
+      "zh": "在集群[@clusterName]，添加[@instanceNum]台云主机，主机类型[@instanceType]，标签 [@labels]，云供应商[@vendor]",
+      "en": "In cluster [@clusterName], add [@instanceNum] instances, instance type [@instanceType], labels [@labels], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "addExistNode": {
+    "desc": "添加已有主机",
+    "success": {
+      "zh": "在集群[@clusterName]，添加云主机 [@instanceIPs]， 标签[@labels]",
+      "en": "In cluster [@clusterName], add instances [@instanceIPs] with labels [@labels]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteNode": {
+    "desc": "节点下线",
+    "success": {
+      "zh": "在集群[@clusterName]中，下线节点[@instanceIPs]",
+      "en": "In cluster [@clusterName], delete node [@instanceIPs]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateClusterConfig": {
+    "desc": "集群配置更新",
+    "success": {
+      "zh": "更新集群[@clusterName]配置",
+      "en": "Update cluster [@clusterName] configuration"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createCluster": {
+    "desc": "集群新建",
+    "success": {
+      "zh": "在区域[@region]，新建集群[@clusterName]，Dice版本[@version]，云供应商[@vendor]",
+      "en": "In region [@region], create cluster [@clusterName] with dice version [@version], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "importCluster": {
+    "desc": "集群导入",
+    "success": {
+      "zh": "导入已有集群[@clusterName]",
+      "en": "Import cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "setCRTags": {
+    "desc": "设置云资源标签",
+    "success": {
+      "zh": "给云厂商[@vendor]的云资源[@resourceType]实例 [@crItems] ，设置标签 [@labels]，实例ID [@instanceID]",
+      "en": "Set labels [@labels] for cloud resource [@resourceType], items [@crItems], instance id [@instanceID], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteCluster": {
+    "desc": "集群下线",
+    "success": {
+      "zh": "下线集群[@clusterName]",
+      "en": "Delete cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "ecsStart": {
+    "desc": "机器开机",
+    "success": {
+      "zh": "机器开机，机器id [@instanceIds]，区域[@region]，云供应商[@vendor]",
+      "en": "Start instances, instance ids [@instancesIds], region [@region], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "ecsStop": {
+    "desc": "机器关机",
+    "success": {
+      "zh": "机器关机，机器id [@instanceIds]，区域[@region]，云供应商[@vendor]",
+      "en": "Stop instances, instance ids [@instancesIds], region [@region], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "ecsRestart": {
+    "desc": "机器重启",
+    "success": {
+      "zh": "机器重启，机器id [@instanceIds]，区域[@region]，云供应商[@vendor]",
+      "en": "Restart instances, instance ids [@instancesIds], region [@region], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "ecsAutoRenew": {
+    "desc": "机器自动续费",
+    "success": {
+      "zh": "机器自动续费，续费[@duration]个月，自动续费[@autoRenew]，机器id [@instanceIds]，区域[@region]，云供应商[@vendor]",
+      "en": "Instance renew [@duration] month, auot renew [@autoRenew], instance ids [@instancesIds], region [@region], cloud vendor [@vendor]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createOrg": {
+    "desc": "创建企业",
+    "success": {
+      "zh": "创建了企业 [@orgName]",
+      "en": "Created enterprise [@orgName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateOrg": {
+    "desc": "更新企业",
+    "success": {
+      "zh": "更新了企业[@orgName]",
+      "en": "Company updated [@orgName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateOrgV2": {
+    "desc": "更新企业",
+    "success": {
+      "zh": "更新了企业[@orgName], [@contentZH]",
+      "en": "Company updated [@orgName], [@contentEN]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteOrg": {
+    "desc": "删除企业",
+    "success": {
+      "zh": "删除了企业[@orgName]",
+      "en": "Deleted enterprise [@orgName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateApp": {
+    "desc": "更新应用",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，更新了应用 [@appName](app)",
+      "en": "In the project [@projectName](project), the application [@appName](app) was updated"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateUserTel": {
+    "desc": "【0928新增】用户手机号修改",
+    "success": {
+      "zh": "[@nickName] 修改了手机号码",
+      "en": "[@nickName] modified mobile phone number"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateUserMail": {
+    "desc": "【0928新增】用户邮箱修改",
+    "success": {
+      "zh": "[@nickName] 修改了邮箱",
+      "en": "[@nickName] modified email"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createCustomAddon": {
+    "desc": "创建自定义addon",
+    "success": {
+      "zh": "在项目 [@projectName](project)下新建了自定义 addon [@addonName]",
+      "en": "Created a custom addon [@addonName] under the project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createOrgAlert": {
+    "desc": "创建企业告警",
+    "success": {
+      "zh": "在企业 [@orgName] 下，创建了告警 [@alertName]",
+      "en": "in the org [@orgName], created alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteOrgAlert": {
+    "desc": "删除企业告警",
+    "success": {
+      "zh": "在企业 [@orgName] 下，删除了告警 [@alertName]",
+      "en": "in the org [@orgName], deleted alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "switchOrgAlert": {
+    "desc": "开关企业告警",
+    "success": {
+      "zh": "在企业 [@orgName] 下，{@action==='enabled'?'打开了':(@action==='disabled'?'关闭了':@action)}告警 [@alertName]",
+      "en": "in the org [@orgName], [@action] alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateOrgAlert": {
+    "desc": "更新企业告警",
+    "success": {
+      "zh": "在企业 [@orgName] 下，更新了告警 [@alertName]",
+      "en": "in the org [@orgName], updated alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createOrgCustomAlert": {
+    "desc": "创建企业自定义告警",
+    "success": {
+      "zh": "在企业 [@orgName] 下，创建了自定义告警 [@alertName]",
+      "en": "in the org [@orgName], created custom alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteOrgCustomAlert": {
+    "desc": "删除企业自定义告警",
+    "success": {
+      "zh": "在企业 [@orgName] 下，删除了自定义告警 [@alertName]",
+      "en": "in the org [@orgName], deleted custom alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "switchOrgCustomAlert": {
+    "desc": "开关企业自定义告警",
+    "success": {
+      "zh": "在企业 [@orgName] 下，{@action==='enabled'?'打开了':(@action==='disabled'?'关闭了':@action)}自定义告警 [@alertName]",
+      "en": "in the org [@orgName], [@action] custom alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateOrgCustomAlert": {
+    "desc": "更新企业自定义告警",
+    "success": {
+      "zh": "在企业 [@orgName] 下，更新了自定义告警 [@alertName]",
+      "en": "in the org [@orgName], updated custom alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createOrgReportTasks": {
+    "desc": "创建企业报表任务",
+    "success": {
+      "zh": "在企业 [@orgName] 下，创建了报表任务 [@reportName]",
+      "en": "in the org [@orgName], created report task [@reportName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteOrgReportTasks": {
+    "desc": "删除企业报表任务",
+    "success": {
+      "zh": "在企业 [@orgName] 下，删除了报表任务 [@reportName]",
+      "en": "in the org [@orgName], deleted report task [@reportName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "switchOrgReportTasks": {
+    "desc": "开关企业报表任务",
+    "success": {
+      "zh": "在企业 [@orgName] 下，{@action==='enabled'?'打开了':(@action==='disabled'?'关闭了':@action)}报表任务 [@reportName]",
+      "en": "in the org [@orgName], [@action] report task [@reportName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateOrgReportTasks": {
+    "desc": "更新企业报表任务",
+    "success": {
+      "zh": "在企业 [@orgName] 下，更新了报表任务 [@reportName]",
+      "en": "in the org [@orgName], updated report task [@reportName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createMicroserviceAlert": {
+    "desc": "创建微服务下的告警",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，创建了告警 [@alertName]",
+      "en": "in the project [@projectName](project) , created alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteMicroserviceAlert": {
+    "desc": "删除微服务下的告警",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，删除了告警 [@alertName]",
+      "en": "in the project [@projectName](project) , deleted alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "switchMicroserviceAlert": {
+    "desc": "开关微服务下的告警",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，{@action==='enabled'?'打开了':(@action==='disabled'?'关闭了':@action)}告警 [@alertName]",
+      "en": "in the project [@projectName](project) , [@action] alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateMicroserviceAlert": {
+    "desc": "更新微服务下的告警",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，更新了告警 [@alertName]",
+      "en": "in the project [@projectName](project) , updated alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createMicroserviceCustomAlert": {
+    "desc": "创建微服务下的自定义告警",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，创建了自定义告警 [@alertName]",
+      "en": "in the project [@projectName](project) , created custom alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteMicroserviceCustomAlert": {
+    "desc": "删除微服务下的自定义告警",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，删除了自定义告警 [@alertName]",
+      "en": "in the project [@projectName](project) , deleted custom alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "switchMicroserviceCustomAlert": {
+    "desc": "开关微服务下的自定义告警",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，{@action==='enabled'?'打开了':(@action==='disabled'?'关闭了':@action)}自定义告警 [@alertName]",
+      "en": "in the project [@projectName](project) , [@action] custom alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateMicroserviceCustomAlert": {
+    "desc": "更新微服务下的自定义告警",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，更新了自定义告警 [@alertName]",
+      "en": "in the project [@projectName](project) , updated custom alert [@alertName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createInitiativeMonitor": {
+    "desc": "创建主动监控",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，创建了主动监控 [@metricName]",
+      "en": "in the project [@projectName](project) , created status monitor [@metricName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteInitiativeMonitor": {
+    "desc": "删除主动监控",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，删除了主动监控 [@metricName]",
+      "en": "in the project [@projectName](project) , deleted status monitor [@metricName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateInitiativeMonitor": {
+    "desc": "更新主动监控",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下，更新了主动监控 [@metricName]",
+      "en": "in the project [@projectName](project) , updated status monitor [@metricName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "freezedSinceLoginFailed": {
+    "desc": "用户已被冻结（登录失败次数过多）",
+    "success": {
+      "zh": "[@nickName] 用户已被冻结（登录失败次数过多）",
+      "en": "[@nickName] has been frozen (failed to login too many times)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "wrongPassword": {
+    "desc": "用户登录失败(密码错误)【3.19废弃，通过login模版里的失败部分展示】",
+    "success": {
+      "zh": "[@nickName] 用户登录失败(密码错误)",
+      "en": "[@nickName] User login failed (wrong password)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createAppNotify": {
+    "desc": "创建应用通知",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，创建通知 [@notifyName]",
+      "en": "In the application [@projectName](project) / [@appName](app) , create notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "deleteAppNotify": {
+    "desc": "删除应用通知",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，删除通知 [@notifyName]",
+      "en": "In the application [@projectName](project) / [@appName](app) , delete notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "updateAppNotify": {
+    "desc": "更新应用通知",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，更新通知 [@notifyName]",
+      "en": "In the application [@projectName](project) / [@appName](app) , update notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "enableAppNotify": {
+    "desc": "启用应用通知",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，启用通知 [@notifyName]",
+      "en": "In the application [@projectName](project) / [@appName](app) , enable notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "disableAppNotify": {
+    "desc": "禁用应用通知",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，关闭通知 [@notifyName]",
+      "en": "In the application [@projectName](project) / [@appName](app) , disable notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "createProjectNotify": {
+    "desc": "创建项目通知",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，创建通知 [@notifyName]",
+      "en": "In the project [@projectName](project) , create notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "updateProjectNotify": {
+    "desc": "更新项目通知",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，更新通知 [@notifyName]",
+      "en": "In the project [@projectName](project) , update notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "enableProjectNotify": {
+    "desc": "启用项目通知",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，启用通知 [@notifyName]",
+      "en": "In the project [@projectName](project) , enable notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "disableProjectNotify": {
+    "desc": "禁用项目通知",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，关闭通知 [@notifyName]",
+      "en": "In the project [@projectName](project) , disable notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "deleteProjectNotify": {
+    "desc": "删除项目通知",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除通知 [@notifyName]",
+      "en": "In the project [@projectName](project) , delete notify [@notifyName]"
+    },
+    "fail": {}
+  },
+  "createAppNotifyGroup": {
+    "desc": "创建应用通知组",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，创建通知组 [@notifyGroupName]",
+      "en": "In the application [@projectName](project) / [@appName](app) , create notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "updateAppNotifyGroup": {
+    "desc": "更新应用通知组",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，更新通知组 [@notifyGroupName]",
+      "en": "In the application [@projectName](project) / [@appName](app) , update notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "deleteAppNotifyGroup": {
+    "desc": "删除应用通知组",
+    "success": {
+      "zh": "在应用 [@projectName](project) / [@appName](app) 中，删除通知组 [@notifyGroupName]",
+      "en": "In the application [@projectName](project) / [@appName](app) , delete notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "createProjectNotifyGroup": {
+    "desc": "创建项目通知组",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，创建通知组 [@notifyGroupName]",
+      "en": "In the project [@projectName](project) , create notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "updateProjectNotifyGroup": {
+    "desc": "更新项目通知组",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，更新通知组 [@notifyGroupName]",
+      "en": "In the project [@projectName](project) , update notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "deleteProjectNotifyGroup": {
+    "desc": "删除项目通知组",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中，删除通知组 [@notifyGroupName]",
+      "en": "In the project [@projectName](project) , delete notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "createOrgNotifyGroup": {
+    "desc": "创建企业通知组",
+    "success": {
+      "zh": "在企业 [@orgName]中 创建通知组 [@notifyGroupName]",
+      "en": "In the enterprise [@orgName] , create notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "updateOrgNotifyGroup": {
+    "desc": "更新企业通知组",
+    "success": {
+      "zh": "在企业 [@orgName]中 更新通知组 [@notifyGroupName]",
+      "en": "In the enterprise [@orgName] , update notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "deleteOrgNotifyGroup": {
+    "desc": "删除企业通知组",
+    "success": {
+      "zh": "在企业 [@orgName]中 删除通知组 [@notifyGroupName]",
+      "en": "In the enterprise [@orgName] , delete notifyGroup [@notifyGroupName]"
+    },
+    "fail": {}
+  },
+  "deleteAddon": {
+    "desc": "删除addon",
+    "success": {
+      "zh": "在项目 [@projectName](project)下删除 addon [@addonName]",
+      "en": "Deleted an addon [@addonName] under the project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteRuntime": {
+    "desc": "删除runtime",
+    "success": {
+      "zh": "在应用 [@applicationName](app)中删除了[@workspace]环境下runtime [@runtimeName]",
+      "en": "Deleted runtime [@runtimeName] under the application [@applicationName](app)/[@workspace]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "clusterReference": {
+    "desc": "集群关联",
+    "success": {
+      "zh": "关联集群[@clusterName]",
+      "en": "Reference cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "clusterDereference": {
+    "desc": "集群关联解除",
+    "success": {
+      "zh": "解除集群[@clusterName]关联",
+      "en": "Dereference cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateNodeLabels": {
+    "desc": "更新节点标签",
+    "success": {
+      "zh": "在集群[@clusterName]中，更新节点 [@nodes] 标签为 [@labels]",
+      "en": "In cluster [@clusterName], update node [@nodes] labels to [@labels]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createCertificates": {
+    "desc": "创建证书",
+    "success": {
+      "zh": "创建了证书: [@certificateName]",
+      "en": "created a certificate: [@certificateName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteCertificates": {
+    "desc": "删除证书",
+    "success": {
+      "zh": "删除了证书: [@certificateName]",
+      "en": "delete a certificate: [@certificateName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateCertificates": {
+    "desc": "更新证书",
+    "success": {
+      "zh": "更新了证书: [@certificateName]",
+      "en": "update a certificate: [@certificateName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createNotices": {
+    "desc": "创建平台公告",
+    "success": {
+      "zh": "创建了平台公告: [@notices]",
+      "en": "create platform notices: [@notices]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteNotices": {
+    "desc": "删除平台公告",
+    "success": {
+      "zh": "删除了平台公告: [@notices]",
+      "en": "delete platform notices: [@notices]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "publishNotices": {
+    "desc": "发布平台公告",
+    "success": {
+      "zh": "发布了平台公告: [@notices]",
+      "en": "publish platform notices: [@notices]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "unPublishNotices": {
+    "desc": "下架平台公告",
+    "success": {
+      "zh": "下架了平台公告: [@notices]",
+      "en": "unPublish platform notices: [@notices]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createPublishItems": {
+    "desc": "创建发布",
+    "success": {
+      "zh": "新建了 [@type] 类型的发布 [@publishItemContent]",
+      "en": "create [@type] type publishItem [@publishItemContent]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deletePublishItems": {
+    "desc": "删除发布",
+    "success": {
+      "zh": "删除了 [@type] 类型的发布 [@publishItemContent]",
+      "en": "delete [@type] type publishItem [@publishItemContent]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updatePublishItems": {
+    "desc": "更新发布",
+    "success": {
+      "zh": "更新了 [@type] 类型的发布 [@publishItemContent]",
+      "en": "update [@type] type publishItem [@publishItemContent]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "addPublishItemsBlacklist": {
+    "desc": "添加发布内容黑名单",
+    "success": {
+      "zh": "添加发布 [@publishItemContent] 的黑名单用户 [@addUser]",
+      "en": "create [@publishItemContent] blacklisted user [@addUser]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deletePublishItemsBlacklist": {
+    "desc": "删除发布内容黑名单",
+    "success": {
+      "zh": "删除发布 [@publishItemContent] 的黑名单用户 [@removeUser]",
+      "en": "delete [@publishItemContent] blacklisted user [@removeUser]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "erasePublishItemsBlacklist": {
+    "desc": "添加发布内容数据擦除用户",
+    "success": {
+      "zh": "在发布 [@publishItemContent] 下新增清理擦除用户 [@eraseUser]",
+      "en": "in publish context [@publishItemContent] create erase user [@eraseUser]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "qaTestEnvCreate": {
+    "desc": "测试管理-环境配置新增",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下新增了测试管理环境 [@testEnvName]",
+      "en": "Added test management environment [@testEnvName] under project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "qaTestEnvUpdate": {
+    "desc": "测试管理-环境配置编辑",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下更新了测试管理环境 [@testEnvName]",
+      "en": "The test management environment [@testEnvName] is updated under the project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "qaTestEnvDelete": {
+    "desc": "测试管理-环境配置删除",
+    "success": {
+      "zh": "在项目 [@projectName](project) 下删除了测试管理环境 [@testEnvName]",
+      "en": "Deleted the test management environment [@testEnvName] under the project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateNotices": {
+    "desc": "编辑平台公告",
+    "success": {
+      "zh": "更新了平台公告: [@notices]",
+      "en": "update platform notices: [@notices]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteTag": {
+    "desc": "删除标签",
+    "success": {
+      "zh": "在应用 [@appName](app) 下删除标签 [@name]",
+      "en": "in app [@appName](app) delete tag [@name]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteBranch": {
+    "desc": "删除分支",
+    "success": {
+      "zh": "在应用 [@appName](app) 下删除分支 [@name]",
+      "en": "in app [@appName](app) delete branch [@name]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "repoLocked": {
+    "desc": "仓库锁定",
+    "success": {
+      "zh": "应用 [@appName](app) 的仓库锁定状态变更为 [@isLocked]",
+      "en": "app [@appName](app) locked status update to [@isLocked]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "labelNode": {
+    "desc": "添加节点标签",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，为节点 [@name] 添加标签 [@targetLabel]",
+      "en": "Add label [@targetLabel] for node [@name] in cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "unLabelNode": {
+    "desc": "删除节点标签",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，为节点 [@name] 删除标签 [@targetLabel]",
+      "en": "Remove label [@targetLabel] for node [@name] in cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "cordonNode": {
+    "desc": "冻结节点",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，冻结节点 [@name]",
+      "en": "Cordon the node [@nodeName] in cluster [@name]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "uncordonNode": {
+    "desc": "解冻节点",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，解冻节点 [@name]",
+      "en": "Uncordon the node [@name] in cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "drainNode": {
+    "desc": "驱散节点",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，驱散节点 [@name]",
+      "en": "Drain the node [@name] in cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "offlineNode": {
+    "desc": "下线节点",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，下线节点 [@name]",
+      "en": "Offline the node [@name] in cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "onlineNode": {
+    "desc": "上线节点",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，上线节点 [@name]",
+      "en": "Online the node [@name] in cluster [@clusterName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateK8SResource": {
+    "desc": "更新K8S资源",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，更新 [@resourceType] : [@name]（命名空间：[@namespace]）",
+      "en": "Update [@resourceType] : [@name] in cluster [@clusterName] (namespace: [@namespace])"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createK8SResource": {
+    "desc": "创建K8S资源",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，创建 [@resourceType] : [@name]（命名空间：[@namespace]）",
+      "en": "Create [@resourceType] : [@name] in cluster [@clusterName] (namespace: [@namespace])"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteK8SResource": {
+    "desc": "删除K8S资源",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，删除 [@resourceType] : [@name]（命名空间：[@namespace]）",
+      "en": "Delete [@resourceType] : [@name] in cluster [@clusterName] (namespace: [@namespace])"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "kubectlShell": {
+    "desc": "通过kubectl控制台执行命令",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，通过kubectl控制台执行命令 [@commands]",
+      "en": "Run commands in cluster [@clusterName]: [@commands]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createDeploymentOrder": {
+    "desc": "创建部署请求",
+    "success": {
+        "zh": "在项目 [@projectName](project) 中, 创建了部署请求 [@deploymentOrderName]",
+        "en": "Create deployment requests [@deploymentOrderName] in project [@projectName]"
+    }
+  },
+  "executeDeploymentOrder": {
+    "desc": "执行部署请求",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中, 执行了部署请求 [@deploymentOrderName]",
+      "en": "Execute deployment requests [@deploymentOrderName] in project [@projectName]"
+    }
+  },
+  "cancelDeploymentOrder": {
+    "desc": "取消部署请求",
+    "success": {
+      "zh": "在项目 [@projectName](project) 中, 取消了部署请求 [@deploymentOrderName]",
+      "en": "Cancel deployment requests [@deploymentOrderName] in project [@projectName]"
+    }
+  },
+  "restartWorkload": {
+    "desc": "重新调度工作负载",
+    "success": {
+      "zh": "在集群 [@clusterName] 中，重新调度 [@resourceType] : [@name]（命名空间：[@namespace]）",
+      "en": "Restart [@resourceType] : [@name] in cluster [@clusterName] (namespace: [@namespace])"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "redeployRuntime": {
+    "desc": "服务重启",
+    "success": {
+      "zh": "在 [@projectName](project) / [@appName](app) 中, 对 [@serviceName] runtime 进行重启操作",
+      "en": "in [@projectName](project) / [@appName](app) , redeploy the service [@serviceName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "rollbackRuntime": {
+    "desc": "服务回滚",
+    "success": {
+      "zh": "在 [@projectName](project) / [@appName](app) 中, 对 [@serviceName] runtime 进行回滚操作",
+      "en": "in [@projectName](project) / [@appName](app) , rollback the service [@serviceName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deployRuntime": {
+    "desc": "服务部署",
+    "success": {
+      "zh": "在 [@projectName](project) / [@appName](app) 中, 对 [@serviceName] runtime 进行部署操作",
+      "en": "in [@projectName](project) / [@appName](app) , deploy the service [@serviceName]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "scaleRuntime": {
+    "desc": "服务扩缩容",
+    "success": {
+      "zh": "应用 [@appName](app) 中, 对 [@serviceName] 进行了扩缩容, [@scaleMessageZH]",
+      "en": "in app [@appName](app), changed the scale of service [@serviceName], [@scaleMessageEN]"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "archiveTestPlan": {
+    "desc": "测试计划归档",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中，对测试计划 [@testPlanName] 进行了归档",
+      "en": "Archive test plan [@testPlanName] in project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "unarchiveTestPlan": {
+    "desc": "测试计划取消归档",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中，对测试计划 [@testPlanName] 取消了归档",
+      "en": "Unarchive test plan [@testPlanName] in project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "createIssueState": {
+    "desc": "创建自定义状态",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中，对<<issueType>>事项追加了状态 [@stateName]",
+      "en": "Add issue state [@stateName] for <<issueType>> in project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateIssueState": {
+    "desc": "更新自定义状态",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中，对<<issueType>>事项更新了状态 [@stateName]",
+      "en": "Update issue state [@stateName] for <<issueType>> in project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "deleteIssueState": {
+    "desc": "删除自定义状态",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中，对<<issueType>>事项删除了状态 [@stateName]",
+      "en": "Delete issue state [@stateName] for <<issueType>> in project [@projectName](project)"
+    },
+    "fail": {
+      "zh": "",
+      "en": ""
+    }
+  },
+  "updateProjectResourceConfig": {
+    "desc": "修改项目环境资源配置",
+    "success": {
+      "zh": "在组织 [@orgName] 中，修改了项目 [@projectName](project) 的资源配置。\n开发环境 修改前：集群：[@oldDevCluster]，CPU：[@oldDevCPU] 核，内存：[@oldDevMem]；修改后：集群：[@newDevCluster]，CPU：[@newDevCPU] 核，内存：[@newDevMem]\n测试环境 修改前：集群：[@oldTestCluster]，CPU：[@oldTestCPU] 核，内存：[@oldTestMem]；修改后：集群：[@newTestCluster]，CPU：[@newTestCPU] 核，内存：[@newTestMem]\n预发环境 修改前：集群：[@oldStagingCluster]，CPU：[@oldStagingCPU] 核，内存：[@oldStagingMem]；修改后：集群：[@newStagingCluster]，CPU：[@newStagingCPU] 核，内存：[@newStagingMem]\n生产环境 修改前：集群：[@oldProdCluster]，CPU：[@oldProdCPU] 核，内存：[@oldProdMem]；修改后：集群：[@newProdCluster]，CPU：[@newProdCPU] 核，内存：[@newProdMem]",
+      "en": "Update resource config for project [@projectName](project) in organization [@orgName].\nWorkspace dev Before: Cluster: [@oldDevCluster], CPU: [@oldDevCPU] core(s), memory: [@oldDevMem]; Now: Cluster: [@newDevCluster], CPU: [@newDevCPU] core(s), memory: [@newDevMem]\nWorkspace test Before: Cluster: [@oldTestCluster], CPU: [@oldTestCPU] core(s), memory: [@oldTestMem]; Now: Cluster: [@newTestCluster], CPU: [@newTestCPU] core(s), memory: [@newTestMem]\nWorkspace staging Before: Cluster: [@oldStagingCluster], CPU: [@oldStagingCPU] core(s), memory: [@oldStagingMem]; Now: Cluster: [@newStagingCluster], CPU: [@newStagingCPU] core(s), memory: [@newStagingMem]\nWorkspace production Before: Cluster: [@oldProdCluster], CPU: [@oldProdCPU], memory: [@oldProdMem]; Now: Cluster: [@newProdCluster], CPU: [@newProdCPU], memory: [@newProdMem]"
+    }
+  },
+  "createMySQLAddonAccount": {
+    "desc": "创建 MySQL Addon 账号",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中，对 [@workspace] 环境的 [MySQL](addonPlatformMysqlAccount) 创建了账号 [@mysqlUsername]",
+      "en": "Create account [@mysqlUsername] for [MySQL](addonPlatformMysqlAccount) at [@workspace] in project [@projectName](project)"
+    }
+  },
+  "deleteMySQLAddonAccount": {
+    "desc": "删除 MySQL Addon 账号",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中，对 [@workspace] 环境的 [MySQL](addonPlatformMysqlAccount) 删除了账号 [@mysqlUsername]",
+      "en": "Delete account [@mysqUsername] for [MySQL](addonPlatformMysqlAccount) at [@workspace] in project [@projectName](project)"
+    }
+  },
+  "resetAttachmentMySQLAddonAccount": {
+    "desc": "修改 MySQL Addon 账号引用",
+    "success": {
+      "zh": "在 [@projectName](project) / [@appName](app) 中, 对 runtime [@runtimeName](runtimeDetailRoot) 修改了 MySQL 账号 [@preMysqlUsername] -> [@mysqlUsername]",
+      "en": "Change MySQL account [@preMysqlUsername] -> [@mysqlUsername] for runtime [@runtimeName](runtimeDetailRoot) in [@projectName](project) / [@appName](app)"
+    }
+  },
+  "updateAutoTestSpaceName": {
+    "desc": "更新自动化测试空间名称",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中, 更新了测试空间 [@spaceName] 的名称, 由 [@from] 变成 [@to] ",
+      "en": "Update auto test space [@spaceName] name from [@from] to [@to] in project [@projectName](project)"
+    }
+  },
+  "updateAutoTestSpaceDescription": {
+    "desc": "更新自动化测试空间描述",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中, 更新了测试空间 [@spaceName] 的描述, 由 [@from] 变成 [@to] ",
+      "en": "Update auto test space [@spaceName] description from [@from] to [@to] in project [@projectName](project)"
+    }
+  },
+  "updateAutoTestSpaceArchiveStatus": {
+    "desc": "更新自动化测试空间状态",
+    "success": {
+      "zh": "在 [@projectName](project) 项目中, 更新了测试空间 [@spaceName] 的状态, 由 [@from] 变成 [@to] ",
+      "en": "Update auto test space [@spaceName] archiveStatus from [@from] to [@to] in project [@projectName](project)"
+    }
+  }
+}

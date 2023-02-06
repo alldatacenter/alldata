@@ -1,0 +1,14 @@
+.dice-cp-drawer-content {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}
+
+.dice-cp-drawer-operation {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: $p8 $p16;
+  text-align: right;
+}

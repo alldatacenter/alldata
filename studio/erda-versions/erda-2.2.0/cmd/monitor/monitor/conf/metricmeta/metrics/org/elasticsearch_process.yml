@@ -1,0 +1,50 @@
+name: "Elasticsearch Process"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    node_host:
+        name: "Node Host"
+    node_id:
+        name: "Node ID"
+    node_name:
+        name: "Node Name"
+    node_roles:
+        name: "Node Roles"
+    org_name:
+        name: "Org Name"
+fields:
+    cpu_percent:
+        type: "number"
+        name: "CPU Percent"
+        unit: 
+    cpu_total_in_millis:
+        type: "number"
+        name: "CPU Total In Millis"
+        unit: 
+    max_file_descriptors:
+        type: "number"
+        name: "Maximum File Descriptors"
+        unit: 
+    mem_total_virtual_in_bytes:
+        type: "number"
+        name: "Memory Total Virtual In Bytes"
+        unit: 
+    open_file_descriptors:
+        type: "number"
+        name: "Open File Descriptors"
+        unit: 
+    timestamp:
+        type: "number"
+        name: "Timestamp"
+        unit: 
+

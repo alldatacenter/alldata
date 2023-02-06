@@ -1,0 +1,48 @@
+// Copyright (c) 2021 Terminus, Inc.
+//
+// This program is free software: you can use, redistribute, and/or modify
+// it under the terms of the GNU Affero General Public License, version 3
+// or later ("AGPL"), as published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful, but WITHOUT
+// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+// FITNESS FOR A PARTICULAR PURPOSE.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+.empty-holder {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: $color-text-desc;
+  font-size: 16px;
+
+  &.relative {
+    position: relative;
+  }
+
+  &.multi-line {
+    flex-direction: column;
+
+    i {
+      margin-right: 0;
+      margin-bottom: 6px;
+      font-size: 68px;
+    }
+  }
+
+  &.padding-vertical {
+    padding: 32px 0 64px;
+  }
+
+  .action {
+    color: $color-primary;
+    cursor: pointer;
+  }
+}

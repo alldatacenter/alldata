@@ -1,0 +1,211 @@
+- name: "磁盘Inode异常告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    inode_used_percent_value: "percent:2"
+    inodes_total_value: "size:byte"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}}磁盘Inode异常告警】
+  template: |
+    【磁盘Inode异常告警】
+
+    使用率: {{inode_used_percent_value}}
+
+    容量: {{inodes_total_value}}
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    设备: {{device}}
+
+    组织名称: {{org_name}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+
+- name: "磁盘Inode异常告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    inode_used_percent_value: "percent:2"
+    inodes_total_value: "size:byte"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}}磁盘Inode异常告警】
+  template: |
+    {{cluster_name}}集群机器{{host_ip}}触发磁盘Inode异常告警，组织名称: {{org_name}}，使用率: {{inode_used_percent_value}}，告警级别: {{level}}
+
+- name: "磁盘Inode异常告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    inode_used_percent_value: "percent:2"
+    inodes_total_value: "size:byte"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}}磁盘Inode异常告警】
+  template: |
+    {{cluster_name}}集群机器{{host_ip}}触发磁盘Inode异常告警，组织名称: {{org_name}}，使用率: {{inode_used_percent_value}}，告警级别: {{level}}
+
+- name: "磁盘Inode异常恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    inode_used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}}磁盘Inode异常恢复】
+  template: |
+    【磁盘Inode异常恢复】
+
+    使用率: {{inode_used_percent_value}}
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    设备: {{device}}
+
+    组织名称: {{org_name}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "磁盘Inode异常恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    inode_used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}}磁盘Inode异常恢复】
+  template: |
+    {{cluster_name}}集群机器{{host_ip}}触发磁盘Inode异常告警恢复，组织名称: {{org_name}}，使用率: {{inode_used_percent_value}}
+- name: "磁盘Inode异常恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    inode_used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}}磁盘Inode异常恢复】
+  template: |
+    {{cluster_name}}集群机器{{host_ip}}触发磁盘Inode异常告警恢复，组织名称: {{org_name}}，使用率: {{inode_used_percent_value}}
+
+- name: "Disk inode exception alarm"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    inode_used_percent_value: "percent:2"
+    inodes_total_value: "size:byte"
+  title: |-
+    [Disk inode exception alarm of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    [Disk inode exception alarm]
+
+    Usage: {{inode_used_percent_value}}
+
+    Volume: {{inodes_total_value}}
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    Device: {{device}}
+
+    Organization name: {{org_name}}
+
+    Time: {{timestamp}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+
+- name: "Disk inode exception alarm"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    inode_used_percent_value: "percent:2"
+    inodes_total_value: "size:byte"
+  title: |-
+    [Disk inode exception alarm of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    Disk inode exception alarm triggered by machine {{host_ip}} of cluster {{cluster_name}}, organization name: {{org_name}}, usage: {{inode_used_percent_value}}
+
+- name: "Disk inode exception alarm"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    inode_used_percent_value: "percent:2"
+    inodes_total_value: "size:byte"
+  title: |-
+    [Disk inode exception alarm of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    Disk inode exception alarm triggered by machine {{host_ip}} of cluster {{cluster_name}}, organization name: {{org_name}}, usage: {{inode_used_percent_value}}
+
+- name: "Disk inode exception recovery"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    inode_used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    [Disk inode exception recovery of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    [Disk inode exception recovery]
+
+    Usage: {{inode_used_percent_value}}
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    Device: {{device}}
+
+    Organization name: {{org_name}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Disk inode exception recovery"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    inode_used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    [Disk inode exception recovery of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    Disk inode exception alarm recovery triggered by machine {{host_ip}} of cluster {{cluster_name}}, organization name: {{org_name}}, usage: {{inode_used_percent_value}}
+- name: "Disk inode exception recovery"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    inode_used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    [Disk inode exception recovery of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    Disk inode exception alarm recovery triggered by machine {{host_ip}} of cluster {{cluster_name}}, organization name: {{org_name}}, usage率: {{inode_used_percent_value}}

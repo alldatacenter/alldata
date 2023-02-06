@@ -1,0 +1,20 @@
+- container_net_io:
+    title: "网络"
+    metric_names: "docker_container_net"
+    type: "container"
+    order: 4
+    defines:
+      diffps.rx_bytes:
+        label: "接收"
+        unit: "B/s"
+        unit_type: "TRAFFIC"
+        axis_index: 0
+        chart_type: "line"
+      diffps.tx_bytes:
+        label: "发送"
+        unit: "B/s"
+        unit_type: "TRAFFIC"
+        axis_index: 1
+        chart_type: "line"
+    parameters:
+

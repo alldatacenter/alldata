@@ -1,0 +1,9 @@
+id: app_resource_container_cpu
+name: 应用实例CPU使用率异常
+alert_scope: micro_service
+attributes:
+  alert_group: '{{terminus_key}}-{{container_id}}'
+  display_url_id: workbench_runtime
+  level: Warning
+  recover: "true"
+  tickets_metric_key: '{{container_id}}'

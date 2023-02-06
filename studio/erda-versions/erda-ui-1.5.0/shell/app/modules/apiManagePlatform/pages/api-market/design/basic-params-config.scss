@@ -1,0 +1,59 @@
+.basic-params-config {
+  .param-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $p16;
+
+    .ant-divider,
+    .ant-divider-vertical {
+      width: auto;
+    }
+
+    .ant-divider {
+      background-color: transparent;
+    }
+
+    &-operation {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 32px;
+      height: auto;
+
+      &-btn {
+        margin: 0;
+      }
+
+      &::before {
+        width: 0.1px;
+        height: 25%;
+        margin-bottom: 4px;
+        background-color: #e8e8e8;
+        content: '';
+      }
+
+      &::after {
+        width: 0.1px;
+        height: 75%;
+        margin-top: 4px;
+        background-color: #e8e8e8;
+        content: '';
+      }
+    }
+
+    &-content {
+      flex-grow: 1;
+      width: 0;
+      padding: $p16 $p16 0;
+      background-color: rgba($primary, 0.06);
+    }
+  }
+
+  .array-form {
+    margin-left: $p16;
+    padding: $p16 $p16 0;
+    background-color: rgba($primary, 0.06);
+  }
+}

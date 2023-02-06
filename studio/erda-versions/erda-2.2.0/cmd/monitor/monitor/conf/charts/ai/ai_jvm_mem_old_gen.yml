@@ -1,0 +1,32 @@
+- ai_jvm_mem_old_gen:
+    title: "PS-Old-Gen"
+    metric_names: "jvm_memory"
+    type: "ai"
+    order: 0
+    defines:
+      avg.committed:
+        label: "committed"
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+      avg.init:
+        label: "init"
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+      avg.max:
+        label: "max"
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+      avg.used:
+        label: "used"
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

@@ -1,0 +1,205 @@
+.contractive-filter-bar {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.contractive-filter-item-wrap {
+  position: relative;
+  display: inline-flex;
+  height: 28px;
+  margin: 2px 4px 2px 0;
+
+  .contractive-filter-split {
+    width: 1px;
+    height: 20px;
+    margin-top: 4px;
+    background-color: $color-dark-2;
+  }
+
+  .hover {
+    color: $lightgray;
+  }
+
+  &:hover {
+    .contractive-filter-item-close {
+      display: initial;
+    }
+
+    .hover {
+      color: $gray;
+    }
+  }
+
+  .contractive-filter-item {
+    display: flex;
+    align-items: center;
+    padding: 4px 2px 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.1s ease-out;
+    background-color: $color-default-06;
+
+    &-value {
+      max-width: 180px;
+
+      &.member-value {
+        line-height: 22px;
+      }
+    }
+
+    i,
+    svg {
+      margin-right: 0;
+      color: $lightgray;
+      transition: color 0.1s ease-out;
+    }
+
+    &:hover {
+      background-color: $color-default-1;
+
+      i {
+        color: $black;
+      }
+
+      .hover {
+        svg {
+          path {
+            stroke: $black;
+            fill: $black;
+          }
+        }
+      }
+    }
+  }
+
+  .contractive-filter-item-close {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    z-index: 2;
+    display: none;
+    color: rgba($color-default, 0.4);
+    cursor: pointer;
+  }
+
+  .ant-input {
+    background: none;
+  }
+
+  .anticon-calendar {
+    display: none;
+  }
+
+  .ant-picker {
+    input {
+      width: 88px;
+      cursor: pointer;
+    }
+  }
+
+  .contractive-member-selector {
+    .results {
+      padding: 4px 0;
+      border: 0;
+
+      &:hover {
+        border: 0;
+        box-shadow: unset;
+      }
+    }
+  }
+}
+
+.contractive-filter-item-dropdown {
+  .not-select.ant-dropdown-menu-item {
+    color: $lightgray;
+
+    &:hover {
+      background-color: unset;
+      cursor: unset;
+    }
+  }
+
+  .hover {
+    color: $lightgray;
+  }
+
+  .ant-input-affix-wrapper .ant-input-prefix {
+    left: 8px;
+  }
+
+  .ant-dropdown-menu-item:hover,
+  .ant-dropdown-menu-submenu-title:hover {
+    background-color: transparent;
+  }
+
+  .options-item {
+    color: $color-dark-6;
+  }
+
+  .options-container {
+    max-height: 300px;
+    overflow: auto;
+  }
+
+  .option-item {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    padding: 6px 10px;
+
+    &-delete {
+      background-color: $white;
+      right: 0;
+      transform: translateX(30px);
+      transition: transform 0.3s ease-in-out;
+      box-shadow: -3px 0 4px -4px $color-text-sub;
+    }
+
+    &.checked-item {
+      color: $primary;
+    }
+
+    &:hover {
+      color: $primary;
+      background-color: $color-click-bg;
+
+      .option-item-delete {
+        transform: translateX(0);
+        &-box {
+          background-color: $color-click-bg;
+        }
+      }
+    }
+  }
+
+  .option-group {
+    .option-group-content {
+      height: auto;
+      overflow: hidden;
+      &.no-expand {
+        height: 0;
+      }
+    }
+
+    .option-group-label {
+      cursor: pointer;
+      padding: 6px 10px;
+      color: $color-text-desc;
+      &:hover {
+        color: $primary;
+      }
+
+      .expand-icon {
+        transform: rotate(0deg);
+        transition: all 0.3s ease-in-out;
+        &.expand {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .option-item {
+      padding: 6px 10px 6px 30px;
+    }
+  }
+}

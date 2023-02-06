@@ -1,0 +1,173 @@
+- name: "kubernetes节点异常"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    allocatable_memory_bytes_value: "size:byte"
+    capacity_memory_bytes_value:  "size:byte"
+  title: |
+    【{{cluster_name}}集群kubernetes节点{{node_name}}节点异常告警】
+  template: |
+    【kubernetes节点状态异常告警】
+
+    集群: {{cluster_name}}
+
+    机器: {{node_name}}
+
+    信息: {{ready_message_value}}
+
+    组织名称: {{org_name}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+- name: "kubernetes节点异常"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    allocatable_memory_bytes_value: "size:byte"
+    capacity_memory_bytes_value:  "size:byte"
+  title: |
+    【{{cluster_name}}集群kubernetes节点{{node_name}}节点异常告警】
+  template: |
+    {{cluster_name}}集群{{node_name}}节点触发kubernetes节点异常，组织名称: {{org_name}}，信息: {{ready_message_value}}，告警级别: {{level}}
+- name: "kubernetes节点异常"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    allocatable_memory_bytes_value: "size:byte"
+    capacity_memory_bytes_value:  "size:byte"
+  title: |
+    【{{cluster_name}}集群kubernetes节点{{node_name}}节点异常告警】
+  template: |
+    {{cluster_name}}集群{{node_name}}节点触发kubernetes节点异常，组织名称: {{org_name}}，信息: {{ready_message_value}}，告警级别: {{level}}
+- name: "kubernetes节点异常恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{cluster_name}}集群kubernetes节点{{node_name}}节点异常恢复】
+  template: |
+    【kubernetes节点状态异常恢复】
+
+    集群: {{cluster_name}}
+
+    机器: {{node_name}}
+
+    组织名称: {{org_name}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+- name: "kubernetes节点异常恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{cluster_name}}集群kubernetes节点{{node_name}}节点异常恢复】
+  template: |
+    {{cluster_name}}集群{{node_name}}节点触发kubernetes节点异常恢复，组织名称: {{org_name}}
+- name: "kubernetes节点异常恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{cluster_name}}集群kubernetes节点{{node_name}}节点异常恢复】
+  template: |
+    {{cluster_name}}集群{{node_name}}节点触发kubernetes节点异常恢复，组织名称: {{org_name}}
+
+- name: "Kubernetes node exception"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    allocatable_memory_bytes_value: "size:byte"
+    capacity_memory_bytes_value:  "size:byte"
+  title: |
+    [Node exception alarm of Kubernetes node {{node_name}} of cluster {{cluster_name}}]
+  template: |
+    [Node exception alarm of Kubernetes]
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{node_name}}
+
+    Message: {{ready_message_value}}
+
+    Organization name: {{org_name}}
+
+    Time: {{timestamp}}
+
+- name: "Kubernetes node exception"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    allocatable_memory_bytes_value: "size:byte"
+    capacity_memory_bytes_value:  "size:byte"
+  title: |
+    [Node exception alarm of Kubernetes node {{node_name}} of cluster {{cluster_name}}]
+  template: |
+    Kubernetes node exception triggered by node {{node_name}} of cluster {{cluster_name}}, organization name: {{org_name}}, message: {{ready_message_value}}
+- name: "Kubernetes node exception"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    allocatable_memory_bytes_value: "size:byte"
+    capacity_memory_bytes_value:  "size:byte"
+  title: |
+    [Node exception alarm of Kubernetes node {{node_name}} of cluster {{cluster_name}}]
+  template: |
+    Kubernetes node exception triggered by node {{node_name}} of cluster {{cluster_name}}, organization name: {{org_name}}, message: {{ready_message_value}}
+- name: "Kubernetes node exception recovery"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Node exception recovery of Kubernetes node {{node_name}} of cluster {{cluster_name}}]
+  template: |
+    [Kubernetes node exception recovery]
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{node_name}}
+
+    Organization name: {{org_name}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+- name: "Kubernetes node exception recovery"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Node exception recovery of Kubernetes node {{node_name}} of cluster {{cluster_name}}]
+  template: |
+    Kubernetes node exception recovery triggered by node {{node_name}} of cluster {{cluster_name}}, organization name: {{org_name}}
+- name: "Kubernetes node exception recovery"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Node exception recovery of Kubernetes node {{node_name}} of cluster {{cluster_name}}]
+  template: |
+    Kubernetes node exception recovery triggered by node {{node_name}} of cluster {{cluster_name}}, organization name: {{org_name}}

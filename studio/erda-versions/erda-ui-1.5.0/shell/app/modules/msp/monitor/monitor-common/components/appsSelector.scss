@@ -1,0 +1,52 @@
+.app-selector-name {
+  display: inline-flex;
+  width: 200px;
+  height: 32px;
+  line-height: 32px;
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  cursor: pointer;
+
+  > span {
+    padding-left: 12px;
+  }
+}
+
+.app-selector-switcher {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  background-color: $white;
+  border-radius: $radius;
+  @extend %select-shadow;
+
+  .input-wrap {
+    margin-bottom: 2px;
+    padding: 8px 6px;
+  }
+
+  ul {
+    flex: 1;
+    margin-bottom: 0;
+    overflow: auto;
+  }
+
+  li {
+    padding: 0 12px;
+    line-height: 32px;
+    cursor: pointer;
+
+    &.active,
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+.app-selector-dropdown {
+  &::before {
+    content: none;
+  }
+}

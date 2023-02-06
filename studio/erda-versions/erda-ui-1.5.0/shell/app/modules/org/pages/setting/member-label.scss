@@ -1,0 +1,51 @@
+.member-label-list {
+  .label-item {
+    position: relative;
+    display: inline-block;
+    min-width: 40px;
+    height: 28px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    padding: 0 12px;
+    color: $text-sub;
+    font-size: 12px;
+    line-height: 28px;
+    background-color: $color-bg;
+    border-radius: $radius;
+    outline: none;
+    cursor: pointer;
+
+    i {
+      margin-left: 4px;
+      cursor: pointer;
+    }
+
+    &.create {
+      padding-left: 6px;
+      color: $color-primary;
+      background-color: transparent;
+      border: 1px dashed $color-primary;
+    }
+  }
+
+  .add-input-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+
+    .add-item {
+      width: 110px;
+      margin-right: 15px;
+      line-height: 28px;
+
+      &.has-error {
+        border: 1px solid $color-danger;
+      }
+    }
+
+    .error-tip {
+      position: absolute;
+      color: $color-danger;
+    }
+  }
+}

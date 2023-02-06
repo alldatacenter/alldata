@@ -1,0 +1,24 @@
+id: git_delete_branch
+metadata:
+  name: "删除分支"
+  type: git
+  module: notify
+  scope:
+    - app
+templates:
+  - trigger:
+      - notify
+    targets:
+      - dingding
+      - email
+      - mbox
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【删除分支】
+      template: |
+        ### [{{projectName}}/{{appName}}]({{link}}) 删除分支
+        - 分支：{{branch}}
+        - 操作人：{{operatorName}}

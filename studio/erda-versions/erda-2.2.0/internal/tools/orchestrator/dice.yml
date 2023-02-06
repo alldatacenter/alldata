@@ -1,0 +1,68 @@
+version: 2.0
+
+services:
+  none:
+    image: nginx:latest
+    resources:
+      cpu: 0.01
+      mem: 64
+      disk: 33
+    deployments:
+      replicas: 1
+  none-with-port:
+    image: nginx:latest
+    resources:
+      cpu: 0.01
+      mem: 64
+      disk: 33
+    deployments:
+      replicas: 1
+    ports:
+    - 80
+  web-nginx:
+    image: nginx:latest
+    ports:
+    - 80
+    envs:
+      TEST: 123
+    resources:
+      cpu: 0.01
+      mem: 64
+      disk: 128
+    deployments:
+      replicas: 1
+    depends_on:
+    - service-nginx
+    expose:
+    - 80
+    health_check:
+      http:
+        port: 80
+        path: /
+        duration: 120
+  service-nginx:
+    image: nginx:latest
+    ports:
+    - 80
+    envs:
+      TEST: 321
+    resources:
+      cpu: 0.02
+      mem: 128
+      disk: 256
+    deployments:
+      replicas: 2
+    health_check:
+      http:
+        port: 80
+        path: /
+        duration: 120
+
+addons:
+  mysql:
+    plan: mysql:small
+    options:
+      version: 5.7.23
+      create_dbs: blog
+  zk:
+    plan: zookeeper:medium

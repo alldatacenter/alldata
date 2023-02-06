@@ -1,0 +1,14 @@
+- mysql_questions:
+    title: "服务器执行的来自客户端的语句个数"
+    metric_names: "mysql"
+    type: "mysql_remove"
+    order: 5
+    defines:
+      diff.questions:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

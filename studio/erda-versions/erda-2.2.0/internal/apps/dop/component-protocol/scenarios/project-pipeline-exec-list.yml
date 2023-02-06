@@ -1,0 +1,37 @@
+scenario: project-pipeline-exec-list
+
+hierarchy:
+  root: myPage
+  structure:
+    myPage:
+      - tabsTable
+    tabsTable:
+      slot: filterContainer
+      table: pipelineTable
+    filterContainer:
+      left: customFilter
+
+components:
+  myPage:
+    type: Container
+  pageHeader:
+    type: LRContainer
+  tabsTable:
+    type: ComposeTable
+  filterContainer:
+    type: LRContainer
+  pipelineTable:
+    type: Table
+    version: 2
+  customFilter:
+    type: ConfigurableFilter
+
+rendering:
+  customFilter:
+    - name: pipelineTable
+  __DefaultRendering__:
+    - name: myPage
+    - name: tabsTable
+    - name: filterContainer
+    - name: customFilter
+    - name: pipelineTable

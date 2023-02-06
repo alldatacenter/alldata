@@ -1,0 +1,36 @@
+id: dice_component_gfs_status
+metadata:
+  name: "平台组件网盘不可用告警"
+  type: dice_component
+  module: monitor
+  scope:
+    - org
+behavior:
+  group: "{{cluster_name}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【  平台组件网盘疑似不可用告警】
+      template: |
+        【平台组件网盘疑似不可用告警】
+
+        组件: {{component_name}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        时间: {{timestamp}}
+
+        [查看记录]({{record_url}})

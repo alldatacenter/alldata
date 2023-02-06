@@ -1,0 +1,16 @@
+- elasticsearch_http_server_open:
+    title: "Http连接数"
+    metric_names: "elasticsearch_http"
+    type: "terminus-elasticsearch"
+    order: 4
+    defines:
+      max.current_open:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "node_name"
+

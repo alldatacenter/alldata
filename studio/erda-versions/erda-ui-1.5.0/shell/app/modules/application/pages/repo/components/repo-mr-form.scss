@@ -1,0 +1,36 @@
+.repo-mr-form {
+  margin-bottom: 32px;
+
+  .render-form {
+    width: 50%;
+    min-width: 450px;
+  }
+
+  .ant-form-item:last-of-type {
+    margin: 0;
+    text-align: center;
+  }
+
+  .ant-form-item:first-of-type {
+    .ant-form-explain {
+      padding-left: 16.5%;
+    }
+  }
+
+  .rc-md-editor {
+    min-width: 700px;
+  }
+}
+
+.mr-template-preview,
+.mr-template-save-path {
+  padding: 6px;
+  background-color: $color-disabled-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+}
+
+.mr-template-save-path {
+  padding: 2px;
+  font-size: 12px;
+}

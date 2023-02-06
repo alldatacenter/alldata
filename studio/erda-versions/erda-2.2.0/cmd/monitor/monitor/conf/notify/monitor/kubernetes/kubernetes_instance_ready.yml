@@ -1,0 +1,70 @@
+id: kubernetes_instance_ready
+metadata:
+  name: "kubernetes组件实例Ready状态异常"
+  type: kubernetes
+  module: monitor
+  scope:
+    - org
+behavior:
+  group: "{{cluster_name}}-{{daemonset_name}}-{{statefulset_name}}-{{deployment_name}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【{{cluster_name}}集群kubernetes组件{{resource_name_value}} Ready状态告警】
+      template: |
+        【kubernetes组件Ready状态告警】
+
+        组件: {{resource_name_value}}
+
+        不可用实例: {{not_ready_value}}
+
+        期望实例: {{total_value}}
+
+        集群: {{cluster_name}}
+
+        时间: {{timestamp}}
+
+        [查看记录]({{record_url}})
+  - trigger:
+      - recover
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        trigger_duration: "time:ms"
+      title: |
+        【{{cluster_name}}集群kubernetes组件{{resource_name_value}} Ready状态恢复】
+      template: |
+        【kubernetes组件Ready状态恢复】
+
+        组件: {{resource_name_value}}
+
+        可用实例: {{ready_value}}
+
+        期望实例: {{total_value}}
+
+        集群: {{cluster_name}}
+
+        持续时间: {{trigger_duration}}
+
+        恢复时间: {{timestamp}}
+
+        [查看记录]({{record_url}})

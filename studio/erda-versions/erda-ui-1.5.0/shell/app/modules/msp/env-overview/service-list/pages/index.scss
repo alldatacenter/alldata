@@ -1,0 +1,36 @@
+.service-analyze {
+  .status-point {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+
+    &.grey {
+      background-color: $gray;
+    }
+
+    &.success,
+    &.green {
+      background-color: $green;
+    }
+
+    &.danger,
+    &.red {
+      background-color: $red;
+    }
+  }
+}
+
+.service-overview {
+  &-topology {
+    background: $color-default;
+
+    &.fixed-height {
+      height: 420px;
+    }
+
+    .topology-wrapper {
+      height: 372px;
+    }
+  }
+}

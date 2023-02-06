@@ -1,0 +1,612 @@
+{
+  "id": "translation_analysis_mq",
+  "name": "translation_analysis_mq",
+  "desc": "",
+  "scope": "micro_service",
+  "scopeId": "global",
+  "viewConfig": [
+    {
+      "h": 10,
+      "w": 24,
+      "x": 0,
+      "y": 0,
+      "i": "view-lVTYdASX",
+      "view": {
+        "api": {
+          "body": null,
+          "extraData": null,
+          "header": null,
+          "method": "get",
+          "query": {
+            "end": "{{endTime}}",
+            "filterServiceName": "{{serviceName}}",
+            "layer": "mq",
+            "search": "{{topic}}",
+            "serviceId": "{{serviceId}}",
+            "sort": "{{sort}}",
+            "type": "{{type}}",
+            "start": "{{startTime}}",
+            "terminusKey": "{{terminusKey}}"
+          },
+          "url": "/api/apm/topology/translation/db"
+        },
+        "chartType": "table",
+        "config": {
+          "dataSourceConfig": {
+            "valueDimensions": [
+              {
+                "alias": "Topic",
+                "i18n": {
+                  "alias": {
+                    "en": "Topic",
+                    "zh": "Topic"
+                  }
+                },
+                "copy": true,
+                "key": "operation",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "调用类型",
+                "i18n": {
+                  "alias": {
+                    "en": "Call Type",
+                    "zh": "调用类型"
+                  }
+                },
+                "key": "type",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "MQ 类型",
+                "i18n": {
+                  "alias": {
+                    "en": "MQ Type",
+                    "zh": "MQ 类型"
+                  }
+                },
+                "key": "component",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "服务地址",
+                "width": 300,
+                "i18n": {
+                  "alias": {
+                    "en": "Service Address",
+                    "zh": "服务地址"
+                  }
+                },
+                "key": "host",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "调用次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Count",
+                    "zh": "调用次数"
+                  }
+                },
+                "key": "call_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "慢调用次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Slow Request Count",
+                    "zh": "慢调用次数"
+                  }
+                },
+                "key": "slow_elapsed_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "平均延迟",
+                "i18n": {
+                  "alias": {
+                    "en": "Avg Time Delay",
+                    "zh": "平均延迟"
+                  }
+                },
+                "key": "avg_elapsed",
+                "resultType": "string",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "M/D",
+            "rowClick": {
+              "name": "searchTranslation",
+              "value": "operation"
+            }
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "MQ 事务",
+        "i18n": {
+          "title": {
+            "en": "MQ Transaction",
+            "zh": "MQ 事务"
+          }
+        }
+      }
+    },
+    {
+      "h": 11,
+      "w": 12,
+      "x": 0,
+      "y": 10,
+      "i": "view-1XA1pzWR",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "application_mq"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "where": [
+              "{{condition}}"
+            ],
+            "select": [
+              {
+                "alias": "typegq99wZs2",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueSR6vrde7",
+                "expr": "round_float(sum(elapsed_count::field), 2)"
+              }
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "include_message_bus_destination": "{{subSearch}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:bar",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_mq"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "typegq99wZs2",
+                "timeFormat": "YYYY/MM/DD",
+                "timeInterval": {
+                  "unit": "m",
+                  "value": 1
+                },
+                "type": "time"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "count",
+                "alias": "请求次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Count",
+                    "zh": "请求次数"
+                  }
+                },
+                "field": "application_mq-elapsed_count::field",
+                "key": "valueSR6vrde7",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "YYYY/MM/DD"
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "服务请求",
+        "i18n": {
+          "title": {
+            "en": "Service Request",
+            "zh": "服务请求"
+          }
+        }
+      }
+    },
+    {
+      "h": 11,
+      "w": 12,
+      "x": 12,
+      "y": 10,
+      "i": "view-J4SwjHDP",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "application_mq"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "where": [
+              "{{condition}}"
+            ],
+            "select": [
+              {
+                "alias": "typeQuPvs7M2",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueCxbcWuWT",
+                "expr": "round_float(avg(elapsed_mean::field), 2)"
+              }
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "include_message_bus_destination": "{{subSearch}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:line",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_mq"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "typeQuPvs7M2",
+                "timeFormat": "YYYY/MM/DD",
+                "timeInterval": {
+                  "unit": "m",
+                  "value": 1
+                },
+                "type": "time"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "avg",
+                "alias": "平均响应时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Avg Response Time",
+                    "zh": "平均响应时间"
+                  }
+                },
+                "field": "application_mq-elapsed_mean::field",
+                "key": "valueCxbcWuWT",
+                "resultType": "number",
+                "type": "field",
+                "unit": {
+                  "type": "TIME",
+                  "unit": "ns"
+                }
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "YYYY/MM/DD",
+            "noAreaColor": true
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "请求时延",
+        "i18n": {
+          "title": {
+            "en": "Request Time Delay",
+            "zh": "请求时延"
+          }
+        }
+      }
+    },
+    {
+      "h": 9,
+      "w": 14,
+      "x": 0,
+      "y": 21,
+      "i": "view-mq-slow",
+      "view": {
+        "api": {
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "include_message_bus_destination": "{{subSearch}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query",
+          "body": {
+            "from": [
+              "application_mq_slow"
+            ],
+            "groupby": [
+              "message_bus_destination::tag"
+            ],
+            "orderby": [
+              {
+                "dir": "DESC",
+                "expr": "avg(elapsed_mean::field)"
+              }
+            ],
+            "limit": 50,
+            "where": [
+              "{{condition}}"
+            ],
+            "select": [
+              {
+                "alias": "message_bus_destination",
+                "expr": "message_bus_destination::tag"
+              },
+              {
+                "alias": "time",
+                "expr": "format_time(timestamp,'2006-01-02 15:04:05')"
+              },
+              {
+                "alias": "max_duration",
+                "expr": "format_duration(max(elapsed_max::field),'',2)"
+              },
+              {
+                "alias": "min_duration",
+                "expr": "format_duration(min(elapsed_min::field),'',2)"
+              }
+            ]
+          }
+        },
+        "chartType": "table",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_mq_slow"
+            ],
+            "typeDimensions": [
+            ],
+            "valueDimensions": [
+              {
+                "alias": "Topic",
+                "i18n": {
+                  "alias": {
+                    "en": "Topic",
+                    "zh": "Topic"
+                  }
+                },
+                "key": "message_bus_destination",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "Time",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "time",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "最大耗时",
+                "i18n": {
+                  "alias": {
+                    "en": "Max Duration",
+                    "zh": "最大耗时"
+                  }
+                },
+                "key": "max_duration",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "最小耗时",
+                "i18n": {
+                  "alias": {
+                    "en": "Min Duration",
+                    "zh": "最小耗时"
+                  }
+                },
+                "key": "min_duration",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "YYYY/MM/DD",
+            "rowClick": {
+              "name": "traceSlowTranslation",
+              "value": "message_bus_destination"
+            }
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "慢事务追踪 Top50",
+        "i18n": {
+          "title": {
+            "en": "Slow Transaction Tracing Top50",
+            "zh": "慢事务追踪 Top50"
+          }
+        }
+      }
+    },
+    {
+      "h": 9,
+      "w": 10,
+      "x": 14,
+      "y": 21,
+      "i": "view-mq-error",
+      "view": {
+        "api": {
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "include_message_bus_destination": "{{subSearch}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query",
+          "body": {
+            "from": [
+              "application_mq_error"
+            ],
+            "groupby": [
+              "message_bus_destination::tag"
+            ],
+            "orderby": [
+              {
+                "dir": "DESC",
+                "expr": "max(timestamp)"
+              }
+            ],
+            "limit": 50,
+            "where": [
+              "{{condition}}"
+            ],
+            "select": [
+              {
+                "alias": "message_bus_destination",
+                "expr": "message_bus_destination::tag"
+              },
+              {
+                "alias": "time",
+                "expr": "format_time(timestamp,'2006-01-02 15:04:05')"
+              }
+            ]
+          }
+        },
+        "chartType": "table",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_mq_error"
+            ],
+            "typeDimensions": [
+            ],
+            "valueDimensions": [
+              {
+                "alias": "Topic",
+                "i18n": {
+                  "alias": {
+                    "en": "Topic",
+                    "zh": "Topic"
+                  }
+                },
+                "key": "message_bus_destination",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "Time",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "time",
+                "resultType": "string",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "YYYY/MM/DD",
+            "rowClick": {
+              "name": "traceSlowTranslation",
+              "value": "message_bus_destination"
+            }
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "错误事务追踪 Top50",
+        "i18n": {
+          "title": {
+            "en": "Error Transaction Tracing Top50",
+            "zh": "错误事务追踪 Top50"
+          }
+        }
+      }
+    }
+  ],
+  "version": "v2"
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="156px" height="100px" viewBox="0 0 156 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>k8s</title>
+    <defs>
+        <rect id="path-1" x="304" y="82" width="1112" height="1037"></rect>
+        <filter x="-0.6%" y="-0.5%" width="101.3%" height="101.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.333333333   0 0 0 0 0.301960784   0 0 0 0 0.407843137  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="1080" height="178" rx="2"></rect>
+        <filter x="-0.6%" y="-2.8%" width="101.3%" height="107.9%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.333333333   0 0 0 0 0.301960784   0 0 0 0 0.407843137  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="100%" y1="83.1457026%" x2="2.20656826e-13%" y2="16.8542974%" id="linearGradient-6">
+            <stop stop-color="#FF3282" offset="0%"></stop>
+            <stop stop-color="#5F19EB" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="缺陷" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="集群列表" transform="translate(-1244.000000, -696.000000)">
+            <rect fill="#302647" opacity="0.06" x="0" y="0" width="1440" height="1231"></rect>
+            <g id="矩形">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <g id="编组-22备份-4" transform="translate(320.000000, 696.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="蒙版">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-3"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                </g>
+                <g id="编组" mask="url(#mask-4)" opacity="0.04">
+                    <g transform="translate(904.000000, -100.000000)" id="k8s">
+                        <rect id="矩形" x="0" y="0" width="240" height="240"></rect>
+                        <path d="M205,36.3130142 C213.284271,36.3130142 220,43.028743 220,51.3130142 L220,51.3130142 L220,148.269916 C220,150.197148 219.493661,152.090558 218.531688,153.760538 C215.499301,159.024744 208.773584,160.83399 203.509378,157.801603 L203.509378,157.801603 L166.348,136.395014 L129.252963,194.099076 C128.400837,195.424605 127.273863,196.55158 125.948334,197.403706 C121.203082,200.454224 114.995824,199.396399 111.50299,195.138148 L110.747037,194.099076 L80.671,147.314014 L37.2296617,177.16546 C35.504253,178.351075 33.4787034,179.018158 31.3919293,179.092536 L31,179.099518 C24.9248678,179.099518 20,174.17465 20,168.099518 L20,168.099518 L20,51.3130142 C20,43.028743 26.7157288,36.3130142 35,36.3130142 L35,36.3130142 Z M128.386,114.527014 L97.163,135.982014 L120,171.51 L148.998,126.401014 L128.386,114.527014 Z M40,84.0480142 L40,151.01 L69.856,130.490014 L40,84.0480142 Z M200,84.0470142 L177.175,119.552014 L200,132.7 L200,84.0470142 Z M56.904,73.3510142 L86.347,119.156014 L109.18,103.464014 L56.904,73.3510142 Z M178.982,79.7600142 L146.657,101.972014 L159.826,109.558014 L178.982,79.7600142 Z M177.78,56.32 L67.4,56.32 L127.449,90.9090142 L177.78,56.32 Z" id="形状结合" fill="url(#linearGradient-6)" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

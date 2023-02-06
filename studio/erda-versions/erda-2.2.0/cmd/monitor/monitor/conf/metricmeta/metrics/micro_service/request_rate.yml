@@ -1,0 +1,52 @@
+name: "Request Rate"
+tags:
+    application_id:
+        name: "Application ID"
+    application_name:
+        name: "Application Name"
+    cluster_name:
+        name: "Cluster Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    method:
+        name: "Method"
+    org_name:
+        name: "Org Name"
+    project_id:
+        name: "Project ID"
+    project_name:
+        name: "Project Name"
+    service_id:
+        name: "Service ID"
+    service_name:
+        name: "Service Name"
+    status_code:
+        name: "Status Code"
+    url:
+        name: "Url"
+    workspace:
+        name: "Workspace"
+fields:
+    count:
+        type: "number"
+        name: "Count"
+        unit: 
+    rate_15:
+        type: "number"
+        name: "Rate 15"
+        unit: 
+    rate_1:
+        type: "number"
+        name: "Rate 1"
+        unit: 
+    rate_5:
+        type: "number"
+        name: "Rate 5"
+        unit: 
+    rate_mean:
+        type: "number"
+        name: "Rate Mean"
+        unit: 
+

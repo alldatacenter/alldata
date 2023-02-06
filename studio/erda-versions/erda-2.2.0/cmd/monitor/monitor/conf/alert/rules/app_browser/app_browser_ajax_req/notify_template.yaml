@@ -1,0 +1,91 @@
+- name: "Ajax接口访问性能告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    tt: "time:s"
+  title: |
+    【Ajax接口 ({{req_path}}) 访问性能告警】
+  template: |
+    【Ajax接口访问性能告警】
+
+    事件: {{req_path}} Ajax接口慢响应
+
+    时间: {{timestamp}}
+
+    域名: {{host}}
+
+    平均响应时间: {{tt_avg}} ms
+
+    tk: {{tk}}
+
+    告警级别: {{level}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+- name: "Ajax接口访问性能告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    tt: "time:s"
+  title: |
+    【Ajax接口 ({{req_path}}) 访问性能告警】
+  template: |
+    {{req_path}} Ajax接口慢响应告警触发，tk：{{tk}}，平均响应时间: {{tt_avg}} ms，告警级别: {{level}}
+- name: "Ajax接口访问性能告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    tt: "time:s"
+  title: |
+    【Ajax接口 ({{req_path}}) 访问性能告警】
+  template: |
+    Ajax接口慢响应告警触发，tk：{{tk}}，平均响应时间: {{tt_avg}} ms，告警级别: {{level}}
+
+- name: "Access performance alarm of Ajax interface "
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    tt: "time:s"
+  title: |
+    [Access performance alarm of Ajax interface ({{req_path}})]
+  template: |
+    [Access performance alarm of Ajax interface]
+
+    Event: Slow response of Ajax interface {{req_path}}
+
+    Time: {{timestamp}}
+
+    Domain name: {{host}}
+
+    Average response time: {{tt_avg}} ms
+
+    tk: {{tk}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+- name: "Access performance alarm of Ajax interface "
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    tt: "time:s"
+  title: |
+    [Access performance alarm of Ajax interface ({{req_path}})]
+  template: |
+    Alarm triggered by slow response of Ajax interface {{req_path}}, tk: {{tk}}, average response time: {{tt_avg}} ms
+- name: "Access performance alarm of Ajax interface "
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    tt: "time:s"
+  title: |
+    [Access performance alarm of Ajax interface ({{req_path}})]
+  template: |
+    Alarm triggered by slow response of Ajax interface, tk: {{tk}}, average response time: {{tt_avg}} ms

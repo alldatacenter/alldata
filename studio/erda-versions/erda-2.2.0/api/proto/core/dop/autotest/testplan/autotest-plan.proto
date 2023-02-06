@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package erda.core.dop.autotest.testplan;
+option go_package = "github.com/erda-project/erda-proto-go/core/dop/autotest/testplan/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service TestPlanService {
+  rpc UpdateTestPlanByHook (TestPlanUpdateByHookRequest) returns (TestPlanUpdateByHookResponse)  {
+    option (google.api.http) = {
+      post: "/api/autotests/actions/plan-execute-callback",
+    };
+  }
+}
+
+// TestPlanUpdateByHooksRequest update testPlan by hook (post /api/autotests/actions/plan-execute-callback )
+message TestPlanUpdateByHookRequest{
+  string event = 1;
+  string action = 2;
+  string orgID = 3;
+  string projectID = 4;
+  string applicationID = 5;
+  string env = 6;
+  string timestamp = 7;
+  Content content = 8;
+}
+
+message Content {
+  uint64 testPlanID = 1;
+  string executeTime = 2;
+  double passRate = 3;
+  int64 apiTotalNum = 4;
+  int64 costTimeSec = 5;
+  int64  apiSuccessNum = 6;
+  int64  apiExecNum = 7;
+  string pipelineYml = 8;
+  string stepAPIType = 9;
+  string status = 10;
+  uint64 sceneID = 11;
+  uint64 sceneSetID = 12;
+  uint64 parentID = 13;
+  uint64 projectID = 14;
+  string creatorID = 15;
+  uint64 iterationID = 16;
+  uint64 stepID = 17;
+  double ExecuteRate = 18;
+  string executeDuration = 19;
+  string timeBegin = 20;
+  string timeEnd = 21;
+  uint64 pipelineID = 22;
+  int64  apiRefSuccessNum = 23;
+  int64  apiRefExecNum = 24;
+  repeated Content subContents = 25;
+}
+
+message TestPlanUpdateByHookResponse {
+  uint64 data = 1;
+}

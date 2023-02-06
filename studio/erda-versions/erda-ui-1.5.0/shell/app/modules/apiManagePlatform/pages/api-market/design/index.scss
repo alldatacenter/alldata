@@ -1,0 +1,301 @@
+.api-design {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .ant-spin-nested-loading {
+      flex-grow: 1;
+      height: 0;
+
+      .ant-spin-container {
+        height: 100%;
+      }
+    }
+  }
+
+  &-content {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    background-color: $white;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+
+    &-list {
+      width: 300px;
+      min-height: 100%;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 300px;
+        display: block;
+        height: 100%;
+        border-right: thin solid $color-border;
+        content: '';
+      }
+    }
+
+    .api-filter-input {
+      width: auto;
+
+      > .ant-input-prefix {
+        left: $p16;
+      }
+    }
+
+    .panel-list {
+      flex-grow: 1;
+      height: 100%;
+      overflow: auto;
+
+      .api-overview-collapse {
+        justify-content: flex-start;
+      }
+    }
+
+    .list-title {
+      padding: $p8 $p12;
+      letter-spacing: 0;
+      cursor: pointer;
+
+      &-active {
+        font-weight: bold;
+        background-color: $color-active-bg;
+      }
+
+      &:hover {
+        color: $primary;
+        background-color: $color-active-bg;
+
+        .list-title-btn {
+          opacity: 1;
+        }
+      }
+
+      &-name {
+        font-weight: bold;
+      }
+
+      &-btn {
+        color: $primary;
+        font-weight: normal;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .method-icon {
+        display: inline-block;
+        width: $p8;
+        height: $p8;
+        background-color: #cacbcc;
+        border-radius: 50%;
+
+        &-get {
+          background: $color-get;
+        }
+
+        &-post {
+          background: $color-post;
+        }
+
+        &-put {
+          background: $color-put;
+        }
+
+        &-patch {
+          background: $color-patch;
+        }
+
+        &-delete {
+          background: $color-delete;
+        }
+
+        &-options {
+          background: $color-options;
+        }
+
+        &-head {
+          background: $color-head;
+        }
+      }
+    }
+
+    .list-head {
+      height: 42px;
+      padding: 0 12px;
+      font-weight: bold;
+      line-height: 42px;
+      background-color: $whitesmoke;
+      border-bottom: 1px solid $color-border;
+
+      &.active {
+        background-color: $color-active-bg;
+      }
+    }
+
+    .ant-collapse-content {
+      border-top: none;
+    }
+
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding: 0;
+      padding-bottom: 4px;
+    }
+
+    &-detail {
+      flex: 1;
+      width: 0;
+      overflow: auto;
+    }
+
+    &-doc,
+    &-doc-collapsed {
+      position: relative;
+      flex-grow: 0;
+      box-sizing: border-box;
+      width: 300px;
+      height: 100%;
+      font-size: 10px;
+      transition: width 0.3s;
+
+      .overview-collapse {
+        border-bottom: 1px solid $color-border;
+
+        &-icon {
+          color: $primary;
+          font-size: 24px;
+          line-height: 32px;
+          cursor: pointer;
+        }
+      }
+
+      pre {
+        height: calc(100% - 33px);
+        padding: $p8;
+        overflow: auto;
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 100%;
+        border-left: thin solid $color-border;
+        content: '';
+      }
+    }
+
+    &-doc-collapsed {
+      width: 32px;
+    }
+  }
+
+  .api-file-select {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 12px;
+    line-height: 32px;
+    text-align: left;
+    background-color: $white;
+    border: 1px solid $color-dark-2;
+    border-radius: $radius;
+    outline: none;
+    cursor: pointer;
+
+    &.disabled {
+      background-color: $color-disabled-bg;
+      cursor: not-allowed;
+    }
+
+    &:not(.disabled):hover,
+    &:not(.disabled):focus {
+      border: 1px solid $color-primary;
+    }
+
+    .name {
+      display: inline-block;
+      max-width: 400px;
+      font-weight: bold;
+    }
+  }
+
+  .ant-collapse {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .ant-collapse-item-active {
+      flex-grow: 1;
+      height: calc(100% - 42px);
+    }
+
+    .ant-collapse-content {
+      flex-grow: 1;
+      overflow: auto;
+    }
+
+    > .ant-collapse-item {
+      display: flex;
+      flex-direction: column;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      > .ant-collapse-header {
+        padding: 10px 12px 10px 32px;
+        background-color: $ghostwhite;
+      }
+    }
+  }
+
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+    left: 12px;
+  }
+}
+
+.branch-doc-select-popover {
+  width: 300px;
+
+  .ant-popover-inner-content {
+    max-height: 400px;
+    padding: 8px;
+    overflow: auto;
+  }
+
+  .ant-tree .ant-tree-treenode .ant-tree-node-content-wrapper {
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .ant-tree .ant-tree-treenode span.ant-tree-switcher,
+  .ant-tree .ant-tree-treenode span.ant-tree-iconEle {
+    line-height: 30px;
+  }
+
+  .ant-tree .ant-tree-treenode .ant-tree-node-content-wrapper.ant-tree-node-selected,
+  .ant-tree .ant-tree-treenode .ant-tree-node-content-wrapper:hover {
+    background-color: rgba(#cac5d1, 0.3);
+  }
+}
+
+.api-tree-title {
+  .ant-dropdown-menu {
+    padding: 0;
+
+    .ant-dropdown-menu-item {
+      padding: 2px 18px;
+    }
+  }
+}

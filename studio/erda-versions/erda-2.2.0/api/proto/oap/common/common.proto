@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+// oap ~ Observability Analysis Platform
+package erda.oap.common;
+option go_package = "github.com/erda-project/erda-proto-go/oap/common/pb";
+
+message Relation {
+
+    // Related trace id . optional
+    string traceID = 1;
+
+    // Related resource id . Optional
+    string resID = 2;
+
+    // Related resource type . Optional
+    string resType = 3;
+
+    // Optional
+    repeated string resourceKeys = 4;
+}
+
+message Principal {
+
+    string identity = 1;
+ 
+    string accessKey = 2;
+
+    string accessSecret = 3;
+}

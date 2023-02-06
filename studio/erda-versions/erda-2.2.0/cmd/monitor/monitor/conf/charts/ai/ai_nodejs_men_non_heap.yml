@@ -1,0 +1,20 @@
+- ai_nodejs_men_non_heap:
+    title: "Non Heap memory usage"
+    metric_names: "nodejs_memory"
+    type: "ai"
+    order: 0
+    defines:
+      avg.external:
+        label: "external"
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+      avg.rss:
+        label: "rss"
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

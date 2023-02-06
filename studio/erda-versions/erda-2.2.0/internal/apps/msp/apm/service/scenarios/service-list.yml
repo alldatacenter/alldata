@@ -1,0 +1,37 @@
+scenario: service-list
+
+hierarchy:
+  root: page
+  structure:
+    grid:
+    - service-list@rpsMaxTop5
+    - service-list@rpsMinTop5
+    - service-list@avgDurationTop5
+    - service-list@errorRateTop5
+    page:
+    - grid
+  parallel:
+    grid:
+    - service-list@rpsMaxTop5
+    - service-list@rpsMinTop5
+    - service-list@avgDurationTop5
+    - service-list@errorRateTop5
+components:
+  page:
+    type: CardContainer
+  grid:
+    type: Grid
+  service-list@rpsMaxTop5:
+    type: TopN
+  service-list@rpsMinTop5:
+    type: TopN
+    options:
+      asyncAtInit: true
+  service-list@avgDurationTop5:
+    type: TopN
+    options:
+      asyncAtInit: true
+  service-list@errorRateTop5:
+    type: TopN
+    options:
+      asyncAtInit: true

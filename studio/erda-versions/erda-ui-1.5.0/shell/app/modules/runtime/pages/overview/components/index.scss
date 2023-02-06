@@ -1,0 +1,35 @@
+.runtime-overview {
+  .overview-body-block {
+    margin-bottom: $p20;
+  }
+
+  .overview-body-title {
+    margin-bottom: $p12;
+    color: $color-text;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .open-activity {
+    position: absolute;
+    top: 0;
+    right: $p16;
+
+    button {
+      box-shadow: 0 2px 6px $darkgray;
+    }
+  }
+
+  .runtime-deploy-logs {
+    .ant-timeline {
+      padding: 16px;
+      background-color: $white;
+      border-radius: $radius;
+    }
+  }
+}
+
+.redeploy-tip-btn {
+  color: $color-primary;
+  cursor: pointer;
+}

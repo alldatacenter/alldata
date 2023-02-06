@@ -1,0 +1,14 @@
+.health-point {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+
+  .ant-badge-status-text {
+    display: none;
+  }
+
+  .health-text {
+    margin: 0 8px;
+    font-size: 14px;
+  }
+}

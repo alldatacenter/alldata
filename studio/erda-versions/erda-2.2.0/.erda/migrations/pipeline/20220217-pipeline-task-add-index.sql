@@ -1,0 +1,1 @@
+ALTER TABLE `pipeline_tasks` ADD INDEX `idx_status_timeend` (`status`, `time_end`);

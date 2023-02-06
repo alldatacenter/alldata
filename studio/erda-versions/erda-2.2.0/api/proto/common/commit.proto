@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package erda.common;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/common/pb";
+
+message CommitDetail {
+  string commitID = 1;
+  string repo = 2;
+  string repoAbbr = 3;
+  string author = 4;
+  string email = 5;
+  google.protobuf.Timestamp time = 6;
+  string comment = 7;
+}

@@ -1,0 +1,28 @@
+.addon-resource-panel {
+  .resource-config-panel {
+    display: flex;
+    min-height: 160px;
+    margin-bottom: 20px;
+    padding: 20px 20px;
+    background-color: $white;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+  }
+
+  .basic-info {
+    @include grid-layout();
+
+    .info-key {
+      height: 22px;
+      margin-bottom: 4px;
+      color: $color-text-desc;
+      line-height: 22px;
+    }
+
+    .info-value {
+      height: 22px;
+      margin: 5px 0;
+      line-height: 22px;
+    }
+  }
+}

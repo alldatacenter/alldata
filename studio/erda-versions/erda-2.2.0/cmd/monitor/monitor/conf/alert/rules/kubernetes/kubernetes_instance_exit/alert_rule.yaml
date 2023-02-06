@@ -1,0 +1,9 @@
+id: kubernetes_instance_exit
+name: kubernetes组件异常退出
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{container_id}}'
+  display_url_id: org_pod
+  level: Fatal
+  recover: "true"
+  tickets_metric_key: '{{container_id}}'

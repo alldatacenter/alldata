@@ -1,0 +1,93 @@
+- name: "MySQL SLAVE DELAY ALERT"
+  trigger: "alert"
+  target: "dingding"
+  language: "zh-CN"
+  formats:
+    usage_percent_avg: "percent:1"
+    limit_value: "fraction:1"
+  title: |
+    【MySQL {{window}}M 聚合时间内 SLAVE 延迟 {{slave_seconds_behind_master_max}}s】
+  template: |
+    【MySQL {{window}}M 聚合时间内 SLAVE 延迟 {{slave_seconds_behind_master_max}}s】
+
+    集群: {{cluster_name}}
+
+    mysql: {{server_id}}
+
+    延迟时间： {{slave_seconds_behind_master_max}}
+
+    组织名称: {{org_name}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "MySQL SLAVE DELAY RECOVER"
+  trigger: "recover"
+  target: "dingding"
+  language: "zh-CN"
+  formats:
+    usage_percent_avg: "percent:1"
+    limit_value: "fraction:1"
+  title: |
+    【MySQL {{window}}M 聚合时间内 SLAVE 延迟恢复】
+  template: |
+    【MySQL {{window}}M 聚合时间内 SLAVE 延迟恢复】
+
+    集群: {{cluster_name}}
+
+    mysql: {{server_id}}
+
+    组织名称: {{org_name}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "MySQL SLAVE DELAY ALERT"
+  trigger: "alert"
+  target: "dingding"
+  language: "en-US"
+  formats:
+    usage_percent_avg: "percent:1"
+    limit_value: "fraction:1"
+  title: |
+    [MySQL slave delay of {{slave_seconds_behind_master_max}}s within {{window}}M convergence time]
+  template: |
+    [MySQL slave delay of {{slave_seconds_behind_master_max}}s within {{window}}M convergence time]
+
+    Cluster: {{cluster_name}}
+
+    MySQL: {{server_id}}
+
+    Delay time： {{slave_seconds_behind_master_max}}
+
+    Organization name: {{org_name}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "MySQL SLAVE DELAY RECOVER"
+  trigger: "recover"
+  target: "dingding"
+  language: "en-US"
+  formats:
+    usage_percent_avg: "percent:1"
+    limit_value: "fraction:1"
+  title: |
+    [MySQL slave delay recovery within {{window}}M convergence time]
+  template: |
+    [MySQL slave delay recovery within {{window}}M convergence time]
+
+    Cluster: {{cluster_name}}
+
+    MySQL: {{server_id}}
+
+    Organization name: {{org_name}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})

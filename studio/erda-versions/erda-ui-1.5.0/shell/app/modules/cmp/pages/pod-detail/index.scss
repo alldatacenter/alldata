@@ -1,0 +1,27 @@
+.pod-detail {
+  .title {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 38px;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 4px;
+  }
+
+  .param-k {
+    margin-bottom: 4px;
+    color: $color-text-desc;
+    line-height: 22px;
+  }
+
+  .param-v {
+    margin-bottom: 12px;
+    padding-right: 8px;
+    color: $color-text;
+    line-height: 32px;
+  }
+}

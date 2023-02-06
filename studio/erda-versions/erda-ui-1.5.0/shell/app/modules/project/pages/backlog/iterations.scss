@@ -1,0 +1,38 @@
+.backlog-iterations {
+  &-title {
+    display: flex;
+    align-items: center;
+    height: 32px;
+  }
+
+  .backlog-iteration-content {
+    position: relative;
+    flex: 1;
+    height: 0;
+    overflow: auto;
+  }
+
+  .backlog-iterations-empty-holder {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 406px;
+    margin: auto;
+    padding-right: 40px;
+    padding-left: 40px;
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .desc {
+      min-height: 160px;
+      line-height: 26px;
+    }
+  }
+}

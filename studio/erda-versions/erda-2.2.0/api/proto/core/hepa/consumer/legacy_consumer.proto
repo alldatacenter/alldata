@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package erda.core.hepa.consumer;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/consumer/pb";
+import "google/api/annotations.proto";
+
+// +publish service:"hepa"
+service LegacyConsumerService {
+  // +publish path:"/api/gateway/consumer"
+  rpc GetConsumer(GetConsumerRequest) returns (GetConsumerResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/consumer?orgId={orgId}&projectId={projectId}&env={env}",
+    };
+  }
+
+}
+
+message GetConsumerRequest {
+  string orgId = 1;
+  string projectId = 2;
+  string env = 3;
+}
+
+message Endpoint {
+  string outerAddr = 1;
+  string innerAddr = 2;
+  string innerTips = 3;
+}
+
+message GetConsumerResponse {
+  string consumerName = 1;
+  string consumerId = 2;
+  Endpoint endpoint = 3;
+  string gatewayInstance = 4;
+  string clusterName = 5;
+}

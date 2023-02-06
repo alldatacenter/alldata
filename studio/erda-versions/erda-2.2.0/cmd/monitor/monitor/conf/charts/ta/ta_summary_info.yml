@@ -1,0 +1,113 @@
+- ta_summary_info:
+    title: "摘要详情"
+    metric_names: "ta_timing"
+    type: "ta"
+    order: 0
+    defines:
+      count.plt:
+        label: "PV"
+        unit: ""
+        unit_type: ""
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.rpt:
+        label: "页面下载"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.clt:
+        label: "load事件"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.set:
+        label: "脚本执行"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.drt:
+        label: "阻塞资源加载耗时"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.act:
+        label: "查询缓存"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.dns:
+        label: "查询DNS"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.plt:
+        label: "最终用户体验时间"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.wst:
+        label: "白屏幕时间"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.srt:
+        label: "服务器响应"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.rrt:
+        label: "页面跳转"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.tcp:
+        label: "建立tcp连接"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      sum.rdc:
+        label: "DNS解析次数"
+        unit: ""
+        unit_type: ""
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.dit:
+        label: "HTML完成构建"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.put:
+        label: "页面卸载"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+    parameters:
+

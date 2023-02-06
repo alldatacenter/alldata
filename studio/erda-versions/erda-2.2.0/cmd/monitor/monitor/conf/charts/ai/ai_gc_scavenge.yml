@@ -1,0 +1,22 @@
+- ai_gc_scavenge:
+    title: "GC 平均时间"
+    metric_names: "jvm_gc"
+    type: "ai"
+    order: 0
+    defines:
+      avg.time:
+        label: "平均时间"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: "line"
+        original_unit: "ms"
+      sum.count:
+        label: "总次数"
+        unit: ""
+        unit_type: ""
+        axis_index: 0
+        chart_type: "line"
+        original_unit: "ms"
+    parameters:
+

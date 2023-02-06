@@ -1,0 +1,75 @@
+- role: Manager,Developer,Tester,Support
+  scope: sys
+  resource: cluster
+  action: LIST
+- role: Manager
+  scope: sys
+  resource: cluster
+  action: UPDATE
+- role: Manager,Support
+  scope: sys
+  resource: host
+  action: GET
+
+## 监控 dashboard start
+- role: Manager,Support
+  scope: sys
+  resource: monitor_alert_metrics
+  action: GET
+## 监控 dashboard end
+
+## 成员 start
+- role: Manager
+  scope: sys
+  resource: member
+  action: CREATE
+- role: Manager
+  scope: sys
+  resource: member
+  action: UPDATE
+- role: Manager,Developer,Tester,Guest,Support
+  scope: sys
+  resource: member
+  action: LIST
+- role: Manager
+  scope: sys
+  resource: cloudaccount
+  action: OPERATE
+- role: Manager,Developer,Tester,Guest,Support
+  scope: sys
+  resource: terminal
+  action: OPERATE
+## 成员 end
+
+## addon start
+- role: Manager,Support
+  scope: sys
+  resource: middleware
+  action: GET
+- role: Manager
+  scope: sys
+  resource: customAddon
+  action: UPDATE
+- role: Manager
+  scope: sys
+  resource: customAddon
+  action: CREATE
+- role: Manager,Developer,Tester,Guest,Support
+  scope: sys
+  resource: addon
+  action: GET
+- role: Manager,Developer,Tester,Guest
+  scope: sys
+  resource: addon
+  action: DELETE
+## addon end
+
+## audit start
+- role: Manager,Support,Guest,Auditor
+  scope: sys
+  resource: audit
+  action: LIST
+- role: Manager
+  scope: sys
+  resource: audit
+  action: UPDATE

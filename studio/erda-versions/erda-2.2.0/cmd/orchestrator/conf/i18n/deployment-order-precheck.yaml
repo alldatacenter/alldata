@@ -1,0 +1,15 @@
+zh:
+  DeployPermissionDenied: "无该应用的发布权限，请确认"
+  FailedToParseErdaYaml: "解析 erda.yml 文件失败，请确认"
+  EmptyErdaYaml: "erda.yml 文件不存在或者文件内容为空，请确认"
+  CustomAddonNotReady: "当前环境下，自定义 addon %s 未就绪，请确认"
+  AddonDoesNotExist: "当前制品中定义的 addon %s (规格: %s) 不存在或者定义规格不存在，请确认"
+  ApplicationDeploying: "应用 %s 正在部署中，请稍后尝试"
+
+en:
+  DeployPermissionDenied: "Permission denied"
+  FailedToParseErdaYaml: "Parse erda.yml error"
+  EmptyErdaYaml: "Erda.yml is empty"
+  CustomAddonNotReady: "Custom addon %s is not ready"
+  AddonDoesNotExist: "Addon %s (plan: %s) does not exist"
+  ApplicationDeploying: "Application %s is deploying"

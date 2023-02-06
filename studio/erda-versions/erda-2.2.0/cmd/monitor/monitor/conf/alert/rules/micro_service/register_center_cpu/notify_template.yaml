@@ -1,0 +1,233 @@
+- name: "注册中心实例CPU使用率异常"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【注册中心实例CPU使用率异常告警】
+  template: |
+    【注册中心实例CPU使用率异常告警】
+
+    组件: {{addon_type}}
+
+    实例: {{pod_namespace}} - {{pod_name}} - {{pod_ip}}
+
+    CPU平均使用率: {{cpu_usage_percent_avg}}
+
+    CPU限制: {{cpu_limit_value}}核
+
+    CPU分配: {{cpu_allocation_value}}核
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "注册中心实例CPU使用率异常"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【注册中心实例CPU使用率异常告警】
+  template: |
+    {{addon_type}}组件{{pod_namespace}} - {{pod_name}}实例触发注册中心实例CPU使用率异常，CPU平均使用率: {{cpu_usage_percent_avg}}，告警级别: {{level}}
+- name: "注册中心实例CPU使用率异常"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【注册中心实例CPU使用率异常告警】
+  template: |
+    {{addon_type}}组件{{pod_namespace}} - {{pod_name}}实例触发注册中心实例CPU使用率异常，CPU平均使用率: {{cpu_usage_percent_avg}}，告警级别: {{level}}
+- name: "注册中心实例CPU使用率异常恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【注册中心实例CPU使用率异常恢复】
+  template: |
+    【注册中心实例CPU使用率异常恢复】
+
+    组件: {{addon_type}}
+
+    实例: {{pod_namespace}} - {{pod_name}} - {{pod_ip}}
+
+    CPU平均使用率: {{cpu_usage_percent_avg}}
+
+    CPU分配: {{cpu_allocation_value}}核
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "注册中心实例CPU使用率异常恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【注册中心实例CPU使用率异常恢复】
+  template: |
+    {{addon_type}}组件{{pod_namespace}} - {{pod_name}}实例触发注册中心实例CPU使用率异常恢复，CPU平均使用率: {{cpu_usage_percent_avg}}
+
+- name: "注册中心实例CPU使用率异常恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【注册中心实例CPU使用率异常恢复】
+  template: |
+    {{addon_type}}组件{{pod_namespace}} - {{pod_name}}实例触发注册中心实例CPU使用率异常恢复，CPU平均使用率: {{cpu_usage_percent_avg}}
+
+- name: "CPU usage exception of registration center instance"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage exception alarm of registration center instance]
+  template: |
+    [CPU usage exception alarm of registration center instance]
+
+    Component: {{addon_type}}
+
+    Instance: {{pod_namespace}} - {{pod_name}} - {{pod_ip}}
+
+    Average CPU usage: {{cpu_usage_percent_avg}}
+
+    CPU limit: {{cpu_limit_value}} core
+
+    CPU allocation: {{cpu_allocation_value}} core
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "CPU usage exception of registration center instance"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage exception alarm of registration center instance]
+  template: |
+    CPU usage exception of registration center instance triggered by instance {{pod_namespace}} - {{pod_name}} of component {{addon_type}}, average CPU usage: {{cpu_usage_percent_avg}}
+- name: "CPU usage exception of registration center instance"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage exception alarm of registration center instance]
+  template: |
+    CPU usage exception of registration center instance triggered by instance {{pod_namespace}} - {{pod_name}} of component {{addon_type}}, average CPU usage: {{cpu_usage_percent_avg}}
+- name: "CPU usage exception recovery of registration center instance"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage exception recovery of registration center instance]
+  template: |
+    [CPU usage exception recovery of registration center instance]
+
+    Component: {{addon_type}}
+
+    Instance: {{pod_namespace}} - {{pod_name}} - {{pod_ip}}
+
+    Average CPU usage: {{cpu_usage_percent_avg}}
+
+    CPU allocation: {{cpu_allocation_value}} core
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "CPU usage exception recovery of registration center instance"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage exception recovery of registration center instance]
+  template: |
+    CPU usage exception recovery of registration center instance triggered by instance {{pod_namespace}} - {{pod_name}} of component {{addon_type}}, average CPU usage: {{cpu_usage_percent_avg}}
+
+- name: "CPU usage exception recovery of registration center instance"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    cpu_allocation_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage exception recovery of registration center instance]
+  template: |
+    CPU usage exception recovery of registration center instance triggered by instance {{pod_namespace}} - {{pod_name}} of component {{addon_type}}, average CPU usage: {{cpu_usage_percent_avg}}

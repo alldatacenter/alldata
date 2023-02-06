@@ -1,0 +1,1378 @@
+syntax = "proto3";
+
+package erda.core.monitor.alert;
+option go_package = "github.com/erda-project/erda-proto-go/core/monitor/alert/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+
+service AlertService {
+  rpc QueryCustomizeMetric (QueryCustomizeMetricRequest) returns (QueryCustomizeMetricResponse) {
+    option (google.api.http) = {
+      get: "/api/customize/alerts/metrics",
+    };
+  }
+  rpc QueryCustomizeNotifyTarget (QueryCustomizeNotifyTargetRequest) returns (QueryCustomizeNotifyTargetResponse) {
+    option (google.api.http) = {
+      get: "/api/customize/alerts/notifies/targets",
+    };
+  }
+  rpc QueryOrgCustomizeNotifyTarget (QueryOrgCustomizeNotifyTargetRequest) returns (QueryOrgCustomizeNotifyTargetResponse) {
+    option (google.api.http) = {
+      get: "/api/orgs/customize/alerts/notifies/targets",
+    };
+  }
+  rpc QueryCustomizeAlert (QueryCustomizeAlertRequest) returns (QueryCustomizeAlertResponse) {
+    option (google.api.http) = {
+      get: "/api/customize/alerts",
+    };
+  }
+  rpc GetCustomizeAlert (GetCustomizeAlertRequest) returns (GetCustomizeAlertResponse) {
+    option (google.api.http) = {
+      get: "/api/customize/alerts/{id}",
+    };
+  }
+  rpc GetCustomizeAlertDetail (GetCustomizeAlertDetailRequest) returns (GetCustomizeAlertDetailResponse) {
+    option (google.api.http) = {
+      get: "/api/customize/alerts/{id}/detail",
+    };
+  }
+  rpc CreateCustomizeAlert (CreateCustomizeAlertRequest) returns (CreateCustomizeAlertResponse) {
+    option (google.api.http) = {
+      post: "/api/customize/alerts",
+    };
+  }
+  rpc UpdateCustomizeAlert (UpdateCustomizeAlertRequest) returns (UpdateCustomizeAlertResponse) {
+    option (google.api.http) = {
+      put: "/api/customize/alerts/{id}",
+    };
+  }
+  rpc UpdateCustomizeAlertEnable (UpdateCustomizeAlertEnableRequest) returns (UpdateCustomizeAlertEnableResponse) {
+    option (google.api.http) = {
+      put: "/api/customize/alerts/{id}/switch",
+    };
+  }
+  rpc DeleteCustomizeAlert (DeleteCustomizeAlertRequest) returns (DeleteCustomizeAlertResponse) {
+    option (google.api.http) = {
+      delete: "/api/customize/alerts/{id}",
+    };
+  }
+  rpc QueryOrgCustomizeMetric (QueryOrgCustomizeMetricRequest) returns (QueryOrgCustomizeMetricResponse) {
+    option (google.api.http) = {
+      get: "/api/orgs/customize/alerts/metrics",
+    };
+  }
+  rpc QueryOrgCustomizeAlerts (QueryOrgCustomizeAlertsRequest) returns (QueryOrgCustomizeAlertsResponse) {
+    option (google.api.http) = {
+      get: "/api/orgs/customize/alerts",
+    };
+  }
+  rpc GetOrgCustomizeAlertDetail (GetOrgCustomizeAlertDetailRequest) returns (GetOrgCustomizeAlertDetailResponse) {
+    option (google.api.http) = {
+      get: "/api/orgs/customize/alerts/{id}",
+    };
+  }
+  rpc CreateOrgCustomizeAlert (CreateOrgCustomizeAlertRequest) returns (CreateOrgCustomizeAlertResponse) {
+    option (google.api.http) = {
+      post: "/api/orgs/customize/alerts",
+    };
+  }
+  rpc UpdateOrgCustomizeAlert (UpdateOrgCustomizeAlertRequest) returns (UpdateOrgCustomizeAlertResponse) {
+    option (google.api.http) = {
+      put: "/api/orgs/customize/alerts/{id}",
+    };
+  }
+  rpc UpdateOrgCustomizeAlertEnable (UpdateOrgCustomizeAlertEnableRequest) returns (UpdateOrgCustomizeAlertEnableResponse) {
+    option (google.api.http) = {
+      put: "/api/orgs/customize/alerts/{id}/switch",
+    };
+  }
+  rpc DeleteOrgCustomizeAlert (DeleteOrgCustomizeAlertRequest) returns (DeleteOrgCustomizeAlertResponse) {
+    option (google.api.http) = {
+      delete: "/api/orgs/customize/alerts/{id}",
+    };
+  }
+  rpc QueryDashboardByAlert (QueryDashboardByAlertRequest) returns (QueryDashboardByAlertResponse) {
+    option (google.api.http) = {
+      post: "/api/customize/alerts/dash-preview/query",
+    };
+  }
+  rpc QueryOrgDashboardByAlert (QueryOrgDashboardByAlertRequest) returns (QueryOrgDashboardByAlertResponse) {
+    option (google.api.http) = {
+      post: "/api/orgs/customize/alerts/dash-preview/query",
+    };
+  }
+  rpc QueryAlertRule (QueryAlertRuleRequest) returns (QueryAlertRuleResponse) {
+    option (google.api.http) = {
+      get: "/api/alerts/rules",
+    };
+  }
+  rpc QueryAlert (QueryAlertRequest) returns (QueryAlertsResponse) {
+    option (google.api.http) = {
+      get: "/api/alerts",
+    };
+  }
+  rpc GetAlert (GetAlertRequest) returns (GetAlertResponse) {
+    option (google.api.http) = {
+      get: "/api/alerts/{id}",
+    };
+  }
+  rpc GetAlertDetail (GetAlertDetailRequest) returns (GetAlertDetailResponse) {
+    option (google.api.http) = {
+      get: "/api/alerts/{id}/detail",
+    };
+  }
+  rpc CreateAlert (CreateAlertRequest) returns (CreateAlertResponse) {
+    option (google.api.http) = {
+      post: "/api/alerts",
+    };
+  }
+  rpc UpdateAlert (UpdateAlertRequest) returns (UpdateAlertResponse) {
+    option (google.api.http) = {
+      put: "/api/alerts/{id}",
+    };
+  }
+  rpc UpdateAlertEnable (UpdateAlertEnableRequest) returns (UpdateAlertEnableResponse) {
+    option (google.api.http) = {
+      put: "/api/alerts/{id}/switch",
+    };
+  }
+  rpc DeleteAlert (DeleteAlertRequest) returns (DeleteAlertResponse) {
+    option (google.api.http) = {
+      delete: "/api/alerts/{id}",
+    };
+  }
+  rpc GetRawAlertExpression (GetRawAlertExpressionRequest) returns (GetRawAlertExpressionResponse) {
+    option (google.api.http) = {
+      get: "/api/alerts/expressions/{id}"
+    };
+  }
+  rpc QueryOrgAlertRule (QueryOrgAlertRuleRequest) returns (QueryOrgAlertRuleResponse) {
+    option (google.api.http) = {
+      get: "/api/orgs/alerts/rules",
+    };
+  }
+  rpc QueryOrgAlert (QueryOrgAlertRequest) returns (QueryOrgAlertResponse) {
+    option (google.api.http) = {
+      get: "/api/orgs/alerts",
+    };
+  }
+  rpc GetOrgAlertDetail (GetOrgAlertDetailRequest) returns (GetOrgAlertDetailResponse) {
+    option (google.api.http) = {
+      get: "/api/orgs/alerts/{id}",
+    };
+  }
+  rpc CreateOrgAlert (CreateOrgAlertRequest) returns (CreateOrgAlertResponse) {
+    option (google.api.http) = {
+      post: "/api/orgs/alerts",
+    };
+  }
+  rpc UpdateOrgAlert (UpdateOrgAlertRequest) returns (UpdateOrgAlertResponse) {
+    option (google.api.http) = {
+      put: "/api/orgs/alerts/{id}",
+    };
+  }
+  rpc UpdateOrgAlertEnable (UpdateOrgAlertEnableRequest) returns (UpdateOrgAlertEnableResponse) {
+    option (google.api.http) = {
+      put: "/api/orgs/alerts/{id}/switch"
+    };
+  }
+  rpc DeleteOrgAlert (DeleteOrgAlertRequest) returns (DeleteOrgAlertResponse) {
+    option (google.api.http) = {
+      delete: "/api/orgs/alerts/{id}",
+    };
+  }
+  rpc GetAlertRecordAttr (GetAlertRecordAttrRequest) returns (GetAlertRecordAttrResponse) {
+    option (google.api.http) = {
+      get: "/api/alert-record-attrs",
+    };
+  }
+  rpc QueryAlertRecord (QueryAlertRecordRequest) returns (QueryAlertRecordResponse) {
+    option (google.api.http) = {
+      get: "/api/alert-records",
+    };
+  }
+  rpc GetAlertRecord (GetAlertRecordRequest) returns (GetAlertRecordResponse) {
+    option (google.api.http) = {
+      get: "/api/alert-records/{groupId}",
+    };
+  }
+  rpc QueryAlertHistory (QueryAlertHistoryRequest) returns (QueryAlertHistoryResponse) {
+    option (google.api.http) = {
+      get: "/api/alert-records/{groupId}/histories",
+    };
+  }
+  rpc CreateAlertIssue (CreateAlertIssueRequest) returns (CreateAlertIssueResponse) {
+    option (google.api.http) = {
+      post: "/api/alert-records/{groupId}/issues",
+    };
+  }
+  rpc UpdateAlertIssue (UpdateAlertIssueRequest) returns (UpdateAlertIssueResponse) {
+    option (google.api.http) = {
+      put: "/api/alert-records/{groupId}/issues/{issueId}"
+    };
+  }
+  rpc GetOrgAlertRecordAttr (GetOrgAlertRecordAttrRequest) returns (GetOrgAlertRecordAttrResponse) {
+    option (google.api.http) = {
+      get: "/api/org-alert-record-attrs",
+    };
+  }
+  rpc QueryOrgAlertRecord (QueryOrgAlertRecordRequest) returns (QueryOrgAlertRecordResponse) {
+    option (google.api.http) = {
+      get: "/api/org-alert-records",
+    };
+  }
+  rpc QueryOrgHostsAlertRecord (QueryOrgHostsAlertRecordRequest) returns (QueryOrgAlertRecordResponse) {
+    option (google.api.http) = {
+      post: "/api/org-hosts-alert-records",
+    };
+  }
+  rpc GetOrgAlertRecord (GetOrgAlertRecordRequest) returns (GetOrgAlertRecordResponse) {
+    option (google.api.http) = {
+      get: "/api/org-alert-records/{groupId}",
+    };
+  }
+  rpc QueryOrgAlertHistory (QueryOrgAlertHistoryRequest) returns (QueryOrgAlertHistoryResponse) {
+    option (google.api.http) = {
+      get: "/api/org-alert-records/{groupId}/histories",
+    };
+  }
+  rpc CreateOrgAlertIssue (CreateOrgAlertIssueRequest) returns (CreateOrgAlertIssueResponse) {
+    option (google.api.http) = {
+      post: "/api/org-alert-records/{groupId}/issues",
+    };
+  }
+  rpc UpdateOrgAlertIssue (UpdateOrgAlertIssueRequest) returns (UpdateOrgAlertIssueResponse) {
+    option (google.api.http) = {
+      put: "/api/org-alert-records/{groupId}/issues",
+    };
+  }
+  rpc GetAlertConditions (GetAlertConditionsRequest) returns (GetAlertConditionsResponse) {}
+  rpc GetAlertConditionsValue (GetAlertConditionsValueRequest) returns (GetAlertConditionsValueResponse) {}
+
+  rpc GetAlertEvents (GetAlertEventRequest) returns (GetAlertEventResponse) {
+    option (google.api.http) = {
+      get: "/api/alert-events"
+    };
+  }
+  rpc SuppressAlertEvent (SuppressAlertEventRequest) returns (SuppressAlertEventResponse) {
+    option (google.api.http) = {
+      post: "/api/alert-events/suppress"
+    };
+  }
+  rpc CancelSuppressAlertEvent (CancelSuppressAlertEventRequest) returns (CancelSuppressAlertEventResponse) {
+    option (google.api.http) = {
+      post: "/api/alert-events/cancel-suppress"
+    };
+  }
+
+  rpc CountUnRecoverAlertEvents (CountUnRecoverAlertEventsRequest) returns (CountUnRecoverAlertEventsResponse) {
+    option (google.api.http) = {
+      get: "/api/alert-events/stats/unrecover"
+    };
+  }
+}
+
+message CountUnRecoverAlertEventsRequest {
+  string scope   = 1;
+  string scopeId = 2;
+}
+
+message CountUnRecoverAlertEventsResponse {
+  CountUnRecoverAlertEventsResult data = 1;
+}
+
+message CountUnRecoverAlertEventsResult {
+  int64 count = 1;
+}
+
+message GetRawAlertExpressionResponse {
+  RawAlertExpression data = 1;
+}
+
+message RawAlertExpression {
+  uint64 id         = 1;
+  int64  alertId    = 2;
+  string expression = 3;
+  string attributes = 4;
+  string version    = 5;
+  bool   enable     = 6;
+}
+
+message GetRawAlertExpressionRequest {
+  uint64 id = 1;
+}
+
+message AlertEventSort {
+  string sortField  = 1;
+  bool   Descending = 2;
+}
+
+message SuppressAlertEventRequest {
+  string orgID        = 1;
+  string scope        = 2;
+  string scopeID      = 3;
+  string alertEventID = 4;
+  string suppressType = 5;
+  uint64 expireTime   = 6;
+}
+
+message SuppressAlertEventResponse {
+  bool result = 1;
+}
+
+message CancelSuppressAlertEventRequest {
+  string alertEventID = 1;
+}
+
+message CancelSuppressAlertEventResponse {
+  bool result = 1;
+}
+
+message GetAlertEventRequest {
+  string                        scope     = 1;
+  string                        scopeId   = 2;
+  GetAlertEventRequestCondition condition = 3;
+  int64                         pageNo    = 4;
+  int64                         pageSize  = 5;
+  repeated AlertEventSort       sorts     = 6;
+}
+
+message GetAlertEventRequestCondition {
+  string          name                 = 1;
+  repeated string ids                  = 2;
+  repeated string alertLevels          = 3;
+  repeated uint64 alertIds             = 4;
+  repeated string alertStates          = 5;
+  repeated string alertSources         = 6;
+  uint64          lastTriggerTimeMsMin = 7;
+  uint64          lastTriggerTimeMsMax = 8;
+}
+
+message GetAlertEventResponse {
+  int64                   total = 1;
+  repeated AlertEventItem items = 2;
+}
+
+message AlertEventItem {
+  string id                 = 1;
+  string name               = 2;
+  int64  orgID              = 3;
+  string alertGroupID       = 4;
+  string alertGroup         = 5;
+  string scope              = 6;
+  string scopeId            = 7;
+  uint64 alertID            = 8;
+  string alertName          = 9;
+  string alertType          = 10;
+  string alertIndex         = 11;
+  string alertLevel         = 12;
+  string alertSource        = 13;
+  string alertSubject       = 14;
+  uint64 ruleID             = 15;
+  string ruleName           = 16;
+  uint64 expressionID       = 17;
+  int64  lastTriggerTime    = 18;
+  int64  firstTriggerTime   = 19;
+  string AlertState         = 20;
+  int64  suppressExpireTime = 21;
+}
+
+message QueryCustomizeMetricRequest {
+  repeated string name    = 1;
+  string          scope   = 2;
+  string          scopeId = 3;
+}
+
+
+message QueryCustomizeMetricResponse {
+  CustomizeMetrics data = 1;
+}
+
+message CustomizeMetrics {
+  repeated MetricMeta metrics           = 1;
+  repeated Operator   functionOperators = 2;
+  repeated Operator   filterOperators   = 3;
+  repeated DisplayKey aggregator        = 4;
+  string              notifySample      = 5;
+}
+
+message MetricMeta {
+  DisplayKey         name   = 1;
+  repeated FieldMeta fields = 2;
+  repeated TagMeta   tags   = 3;
+}
+
+message DisplayKey {
+  string key     = 1;
+  string display = 2;
+}
+
+message FieldMeta {
+  DisplayKey field    = 1;
+  string     dataType = 2;
+}
+
+message TagMeta {
+  DisplayKey tag      = 1;
+  string     dataType = 2;
+}
+
+message Operator {
+  string key     = 1;
+  string display = 2;
+  string type    = 3;
+}
+
+message QueryCustomizeNotifyTargetRequest {
+}
+
+message QueryCustomizeNotifyTargetResponse {
+  QueryCustomizeNotifyTargetData data = 1;
+}
+
+message QueryCustomizeNotifyTargetData {
+  repeated DisplayKey targets = 1;
+}
+
+message QueryOrgCustomizeNotifyTargetRequest {
+}
+
+message QueryOrgCustomizeNotifyTargetResponse {
+  QueryCustomizeNotifyTargetData data = 1;
+}
+
+message QueryCustomizeAlertRequest {
+  string scope    = 1;
+  string scopeId  = 2;
+  int64  pageNo   = 3 [(validate.rules).int64.gt = 0];
+  int64  pageSize = 4 [(validate.rules).int64 = {gt: 0, lt: 101}];
+  string name     = 5;
+}
+
+message QueryCustomizeAlertResponse {
+  QueryCustomizeAlertData data    = 1;
+  repeated string         userIDs = 2;
+}
+
+message QueryCustomizeAlertData {
+  int64                           total = 1;
+  repeated CustomizeAlertOverview list  = 2;
+}
+
+message CustomizeAlertOverview {
+  uint64          id            = 1;
+  string          name          = 2;
+  string          metric        = 3;
+  uint64          window        = 4;
+  repeated string notifyTargets = 5;
+  string          dashboardId   = 6;
+  bool            enable        = 7;
+  int64           createTime    = 8;
+  int64           updateTime    = 9;
+  string          creator       = 10;
+}
+
+message GetCustomizeAlertRequest {
+  uint64 id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message GetCustomizeAlertResponse {
+  CustomizeAlertDetail data = 1;
+}
+
+message CustomizeAlertDetail {
+  uint64                                 id           = 1;
+  string                                 clusterName  = 2;
+  string                                 name         = 3;
+  string                                 alertType    = 4;
+  string                                 alertScope   = 5;
+  string                                 alertScopeId = 6;
+  bool                                   enable       = 7;
+  map<string, google.protobuf.Value>     attributes   = 8;
+  repeated CustomizeAlertRule            rules        = 9;
+  repeated CustomizeAlertNotifyTemplates notifies     = 10;
+  int64                                  createTime   = 11;
+  int64                                  updateTime   = 12;
+
+}
+
+message CustomizeAlertRule {
+  uint64                              id                  = 1;
+  string                              name                = 2;
+  string                              metric              = 3;
+  uint64                              window              = 4;
+  repeated CustomizeAlertRuleFunction functions           = 5;
+  repeated CustomizeAlertRuleFilter   filters             = 6;
+  repeated string                     group               = 7;
+  repeated string                     outputs             = 8;
+  map<string, string>                 select              = 9;
+  map<string, google.protobuf.Value>  attributes          = 10;
+  repeated string                     activedMetricGroups = 11;
+  int64                               createTime          = 12;
+  int64                               updateTime          = 13;
+}
+
+message CustomizeAlertRuleFunction {
+  string                field      = 1;
+  string                alias      = 2;
+  string                aggregator = 3;
+  string                operator   = 4;
+  google.protobuf.Value value      = 5;
+  string                dataType   = 6;
+  string                unit       = 7;
+}
+
+message CustomizeAlertRuleFilter {
+  string                tag      = 1;
+  string                operator = 2;
+  google.protobuf.Value value    = 3;
+  string                dataType = 4;
+}
+
+message CustomizeAlertNotifyTemplates {
+  uint64                             id         = 1;
+  string                             name       = 2;
+  repeated string                    targets    = 3;
+  string                             title      = 4;
+  string                             content    = 5;
+  map<string, google.protobuf.Value> attributes = 6;
+  int64                              createTime = 7;
+  int64                              updateTime = 8;
+}
+
+message GetCustomizeAlertDetailRequest {
+  uint64 id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message GetCustomizeAlertDetailResponse {
+  CustomizeAlertDetail data = 1;
+}
+
+message CreateCustomizeAlertRequest {
+  uint64                                 id           = 1;
+  string                                 clusterName  = 2;
+  string                                 name         = 3;
+  string                                 alertType    = 4;
+  string                                 alertScope   = 5;
+  string                                 alertScopeId = 6;
+  bool                                   enable       = 7;
+  map<string, google.protobuf.Value>     attributes   = 8;
+  repeated CustomizeAlertRule            rules        = 9;
+  repeated CustomizeAlertNotifyTemplates notifies     = 10;
+  int64                                  createTime   = 11;
+  int64                                  updateTime   = 12;
+}
+
+message CreateCustomizeAlertResponse {
+  uint64 data = 1;
+}
+
+message UpdateCustomizeAlertRequest {
+  uint64                                 id           = 1 [(validate.rules).uint64.gt = 0];
+  string                                 clusterName  = 2;
+  string                                 name         = 3;
+  string                                 alertType    = 4;
+  string                                 alertScope   = 5;
+  string                                 alertScopeId = 6;
+  bool                                   enable       = 7;
+  map<string, google.protobuf.Value>     attributes   = 8;
+  repeated CustomizeAlertRule            rules        = 9;
+  repeated CustomizeAlertNotifyTemplates notifies     = 10;
+  int64                                  createTime   = 11;
+  int64                                  updateTime   = 12;
+
+}
+
+message UpdateCustomizeAlertResponse {
+}
+
+message UpdateCustomizeAlertEnableRequest {
+  uint64 id     = 1 [(validate.rules).uint64.gt = 0];
+  bool   enable = 2;
+}
+
+message UpdateCustomizeAlertEnableResponse{
+}
+
+message DeleteCustomizeAlertRequest {
+  uint64 id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message DeleteCustomizeAlertResponse {
+  string data = 1;
+}
+
+message QueryOrgCustomizeMetricRequest {
+}
+
+message QueryOrgCustomizeMetricResponse {
+  CustomizeMetrics data = 1;
+}
+
+message QueryOrgCustomizeAlertsRequest {
+  int64  pageNo   = 1 [(validate.rules).int64.gt = 0];
+  int64  pageSize = 2 [(validate.rules).int64 = {gt: 0, lt: 101}];
+  string name     = 3;
+}
+
+message QueryOrgCustomizeAlertsResponse {
+  QueryOrgCustomizeAlertsData data    = 1;
+  repeated string             userIDs = 2;
+
+}
+
+message QueryOrgCustomizeAlertsData {
+  int64                           total = 1;
+  repeated CustomizeAlertOverview list  = 2;
+}
+
+message GetOrgCustomizeAlertDetailRequest {
+  uint64 id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message GetOrgCustomizeAlertDetailResponse {
+  CustomizeAlertDetail data = 1;
+}
+
+message CreateOrgCustomizeAlertRequest {
+  uint64                                 id           = 1;
+  string                                 clusterName  = 2;
+  string                                 name         = 3;
+  string                                 alertType    = 4;
+  string                                 alertScope   = 5;
+  string                                 alertScopeId = 6;
+  bool                                   enable       = 7;
+  map<string, google.protobuf.Value>     attributes   = 8;
+  repeated CustomizeAlertRule            rules        = 9;
+  repeated CustomizeAlertNotifyTemplates notifies     = 10;
+  int64                                  createTime   = 11;
+  int64                                  updateTime   = 12;
+}
+
+message CreateOrgCustomizeAlertResponse {
+  uint64 id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message UpdateOrgCustomizeAlertRequest {
+  uint64                                 id           = 1 [(validate.rules).uint64.gt = 0];
+  string                                 clusterName  = 2;
+  string                                 name         = 3;
+  string                                 alertType    = 4;
+  string                                 alertScope   = 5;
+  string                                 alertScopeId = 6;
+  bool                                   enable       = 7;
+  map<string, google.protobuf.Value>     attributes   = 8;
+  repeated CustomizeAlertRule            rules        = 9;
+  repeated CustomizeAlertNotifyTemplates notifies     = 10;
+  int64                                  createTime   = 11;
+  int64                                  updateTime   = 12;
+}
+
+message UpdateOrgCustomizeAlertResponse {
+  bool data = 1;
+}
+
+message UpdateOrgCustomizeAlertEnableRequest {
+  int64 id     = 1 [(validate.rules).int64.gt = 0];
+  bool  enable = 2;
+}
+
+message UpdateOrgCustomizeAlertEnableResponse {
+}
+
+message DeleteOrgCustomizeAlertRequest {
+  uint64 id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message DeleteOrgCustomizeAlertResponse {
+  google.protobuf.Value data = 1;
+}
+
+message QueryDashboardByAlertRequest {
+  uint64                                 id           = 1;
+  string                                 clusterName  = 2;
+  string                                 name         = 3;
+  string                                 alertType    = 4;
+  string                                 alertScope   = 5;
+  string                                 alertScopeId = 6;
+  bool                                   enable       = 7;
+  map<string, google.protobuf.Value>     attributes   = 8;
+  repeated CustomizeAlertRule            rules        = 9;
+  repeated CustomizeAlertNotifyTemplates notifies     = 10;
+  int64                                  createTime   = 11;
+  int64                                  updateTime   = 12;
+}
+
+message QueryDashboardByAlertResponse {
+  View data = 1;
+}
+
+message View {
+  string                title          = 1;
+  string                description    = 2;
+  string                chartType      = 3;
+  string                dataSourceType = 4;
+  google.protobuf.Value staticData     = 5;
+  Config                config         = 6;
+  API                   api            = 7;
+  google.protobuf.Value controls       = 8;
+}
+
+message Config {
+  map<string, google.protobuf.Value> optionProps      = 1;
+  google.protobuf.Value              dataSourceConfig = 2;
+  google.protobuf.Value              option           = 3;
+}
+
+message API {
+  string                             url       = 1;
+  map<string, google.protobuf.Value> query     = 2;
+  map<string, google.protobuf.Value> body      = 3;
+  map<string, google.protobuf.Value> header    = 4;
+  map<string, google.protobuf.Value> extraData = 5;
+  string                             method    = 6;
+}
+
+message QueryOrgDashboardByAlertRequest {
+  uint64                                 id           = 1;
+  string                                 clusterName  = 2;
+  string                                 name         = 3;
+  string                                 alertType    = 4;
+  string                                 alertScope   = 5;
+  string                                 alertScopeId = 6;
+  bool                                   enable       = 7;
+  map<string, google.protobuf.Value>     attributes   = 8;
+  repeated CustomizeAlertRule            rules        = 9;
+  repeated CustomizeAlertNotifyTemplates notifies     = 10;
+  int64                                  createTime   = 11;
+  int64                                  updateTime   = 12;
+}
+
+message QueryOrgDashboardByAlertResponse {
+  View data = 1;
+}
+
+message QueryAlertRuleRequest {
+  string scope   = 1;
+  string scopeId = 2;
+}
+
+message QueryAlertRuleResponse {
+  AlertTypeRuleResp data = 1;
+}
+
+message AlertTypeRuleResp {
+  repeated AlertTypeRule alertTypeRules = 1;
+  repeated int64         windows        = 2;
+  repeated Operator      operators      = 3;
+  repeated DisplayKey    aggregator     = 4;
+  repeated NotifySilence silence        = 5;
+}
+
+message AlertTypeRule {
+  DisplayKey         alertType = 1;
+  repeated AlertRule rules     = 2;
+}
+
+message AlertRule {
+  uint64                             id         = 1;
+  string                             name       = 2;
+  string                             alertScope = 3;
+  string                             alertType  = 4;
+  DisplayKey                         alertIndex = 5;
+  map<string, google.protobuf.Value> template   = 6;
+  int64                              window     = 7;
+  repeated AlertRuleFunction         functions  = 8;
+  bool                               isRecover  = 9;
+  map<string, google.protobuf.Value> attributes = 10;
+  string                             version    = 11;
+  bool                               enable     = 12;
+  int64                              createTime = 13;
+  int64                              updateTime = 14;
+}
+
+message AlertRuleFunction {
+  DisplayKey            field      = 1;
+  string                aggregator = 2;
+  string                operator   = 3;
+  google.protobuf.Value value      = 4;
+  string                dataType   = 5;
+  string                unit       = 6;
+}
+
+message NotifySilence {
+  int64      value = 1;
+  DisplayKey unit  = 2;
+}
+
+message QueryAlertRequest {
+  string scope    = 1;
+  string scopeId  = 2;
+  int64  pageNo   = 3 [(validate.rules).int64.gt = 0];
+  int64  pageSize = 4 [(validate.rules).int64.gt = 0];
+  string name     = 5;
+}
+
+message QueryAlertsResponse {
+  QueryAlertsData data    = 1;
+  repeated string userIDs = 2;
+}
+
+message QueryAlertsData {
+  repeated Alert list  = 1;
+  int64          total = 2;
+}
+
+message Alert {
+  uint64                             id               = 1;
+  string                             name             = 2;
+  string                             alertScope       = 3;
+  string                             alertScopeId     = 4;
+  bool                               enable           = 5;
+  repeated AlertExpression           rules            = 6;
+  repeated AlertNotify               notifies         = 7;
+  map<string, google.protobuf.Value> filters          = 8;
+  map<string, google.protobuf.Value> attributes       = 9;
+  repeated string                    clusterNames     = 10;
+  string                             domain           = 11;
+  int64                              createTime       = 12;
+  int64                              updateTime       = 13;
+  repeated TriggerCondition          triggerCondition = 14;
+  string                             creator          = 15;
+  int64                              ruleCount        = 16;
+}
+
+message AlertExpression {
+  uint64                           id         = 1;
+  uint64                           ruleId     = 2;
+  string                           alertIndex = 3;
+  int64                            window     = 4;
+  repeated AlertExpressionFunction functions  = 5;
+  bool                             isRecover  = 6;
+  int64                            createTime = 7;
+  int64                            updateTime = 8;
+  string                           level      = 9;
+}
+
+message AlertExpressionFunction {
+  string                field      = 1;
+  string                aggregator = 2;
+  string                operator   = 3;
+  google.protobuf.Value value      = 4;
+}
+
+message AlertNotify {
+  uint64             id          = 1;
+  string             type        = 2;
+  int64              groupId     = 3;
+  string             groupType   = 4;
+  NotifyGroup        notifyGroup = 5;
+  string             dingdingUrl = 6;
+  AlertNotifySilence silence     = 7;
+  int64              createTime  = 8;
+  int64              updateTime  = 9;
+  string             level       = 10;
+}
+
+message NotifyGroup {
+  int64                     id        = 1;
+  string                    name      = 2;
+  string                    scopeType = 3;
+  string                    scopeId   = 4;
+  repeated NotifyTarget     targets   = 5;
+  google.protobuf.Timestamp createdAt = 6;
+  string                    creator   = 7;
+}
+
+message NotifyTarget {
+  string          type   = 1;
+  repeated Target values = 2;
+}
+
+message Target {
+  string receiver = 1;
+  string secret   = 2;
+}
+
+message AlertNotifySilence {
+  int64  value  = 1;
+  string unit   = 2;
+  string policy = 3;
+}
+
+message GetAlertRequest {
+  int64 id = 1 [(validate.rules).int64.gt = 0];
+}
+
+message GetAlertResponse {
+  Alert data = 1;
+}
+
+message GetAlertDetailRequest {
+  int64 id = 1 [(validate.rules).int64.gt = 0];
+}
+
+message GetAlertDetailResponse {
+  Alert data = 1;
+}
+
+message CreateAlertRequest {
+  uint64                             id               = 1;
+  string                             name             = 2;
+  string                             alertScope       = 3;
+  string                             alertScopeId     = 4;
+  bool                               enable           = 5;
+  repeated AlertExpression           rules            = 6;
+  repeated AlertNotify               notifies         = 7;
+  map<string, google.protobuf.Value> filters          = 8;
+  map<string, google.protobuf.Value> attributes       = 9;
+  repeated string                    clusterNames     = 10;
+  string                             domain           = 11;
+  int64                              createTime       = 12;
+  int64                              updateTime       = 13;
+  repeated TriggerCondition          triggerCondition = 14;
+}
+
+message CreateAlertResponse {
+  uint64 data = 1;
+}
+
+message UpdateAlertRequest {
+  uint64                             id               = 1 [(validate.rules).uint64.gt = 0];
+  string                             name             = 2;
+  string                             alertScope       = 3;
+  string                             alertScopeId     = 4;
+  bool                               enable           = 5;
+  repeated AlertExpression           rules            = 6;
+  repeated AlertNotify               notifies         = 7;
+  map<string, google.protobuf.Value> filters          = 8;
+  map<string, google.protobuf.Value> attributes       = 9;
+  repeated string                    clusterNames     = 10;
+  string                             domain           = 11;
+  int64                              createTime       = 12;
+  int64                              updateTime       = 13;
+  repeated TriggerCondition          triggerCondition = 14;
+}
+
+message UpdateAlertResponse {
+}
+
+message UpdateAlertEnableRequest {
+  int64 id     = 1 [(validate.rules).int64.gt = 0];
+  bool  enable = 2;
+}
+
+message UpdateAlertEnableResponse {
+}
+
+message DeleteAlertRequest {
+  int64 id = 1 [(validate.rules).int64.gt = 0];
+}
+
+message DeleteAlertResponse {
+  map<string, google.protobuf.Value> data = 1;
+}
+
+message QueryOrgAlertRuleRequest {
+}
+
+message QueryOrgAlertRuleResponse {
+  AlertTypeRuleResp data = 1;
+}
+
+message QueryOrgAlertRequest {
+  int64  pageNo   = 1 [(validate.rules).int64.gt = 0];
+  int64  pageSize = 2 [(validate.rules).int64 = {gt: 0, lt: 101}];
+  string name     = 3;
+}
+
+message QueryOrgAlertResponse {
+  QueryOrgAlertData data    = 1;
+  repeated string   userIDs = 2;
+}
+
+message QueryOrgAlertData {
+  int64          total = 1;
+  repeated Alert list  = 2;
+}
+
+message GetOrgAlertDetailRequest {
+  int64 id = 1 [(validate.rules).int64.gt = 0];
+}
+
+message GetOrgAlertDetailResponse {
+  Alert data = 1;
+}
+
+message CreateOrgAlertRequest {
+  uint64                             id               = 1;
+  string                             name             = 2;
+  string                             alertScope       = 3;
+  string                             alertScopeId     = 4;
+  bool                               enable           = 5;
+  repeated AlertExpression           rules            = 6;
+  repeated AlertNotify               notifies         = 7;
+  map<string, google.protobuf.Value> filters          = 8;
+  map<string, google.protobuf.Value> attributes       = 9;
+  repeated string                    clusterNames     = 10;
+  string                             domain           = 11;
+  int64                              createTime       = 12;
+  int64                              updateTime       = 13;
+  repeated TriggerCondition          triggerCondition = 14;
+}
+
+message TriggerCondition {
+  string condition = 1;
+  string operator  = 2;
+  string values    = 3;
+}
+
+message CreateOrgAlertResponse {
+  uint64 id = 1 [(validate.rules).uint64.gt = 0];
+}
+
+message UpdateOrgAlertRequest {
+  uint64                             id               = 1 [(validate.rules).uint64.gt = 0];
+  string                             name             = 2;
+  string                             alertScope       = 3;
+  string                             alertScopeId     = 4;
+  bool                               enable           = 5;
+  repeated AlertExpression           rules            = 6;
+  repeated AlertNotify               notifies         = 7;
+  map<string, google.protobuf.Value> filters          = 8;
+  map<string, google.protobuf.Value> attributes       = 9;
+  repeated string                    clusterNames     = 10;
+  string                             domain           = 11;
+  int64                              createTime       = 12;
+  int64                              updateTime       = 13;
+  repeated TriggerCondition          triggerCondition = 14;
+}
+
+message UpdateOrgAlertResponse {
+}
+
+message UpdateOrgAlertEnableRequest {
+  int64 id     = 1 [(validate.rules).int64.gt = 0];
+  bool  enable = 2;
+}
+
+message UpdateOrgAlertEnableResponse {
+}
+
+message DeleteOrgAlertRequest {
+  int64 id = 1 [(validate.rules).int64.gt = 0];
+}
+
+message DeleteOrgAlertResponse {
+  map<string, google.protobuf.Value> data = 1;
+}
+
+message GetAlertRecordAttrRequest {
+  string scope = 1;
+}
+
+message GetAlertRecordAttrResponse {
+  AlertRecordAttr data = 1;
+}
+
+message AlertRecordAttr {
+  repeated DisplayKey alertState  = 1;
+  repeated DisplayKey alertType   = 2;
+  repeated DisplayKey handleState = 3;
+}
+
+message QueryAlertRecordRequest {
+  string          scope       = 1;
+  string          scopeKey    = 2;
+  repeated string alertGroup  = 3;
+  repeated string alertState  = 4;
+  repeated string alertType   = 5;
+  repeated string handleState = 6;
+  repeated string handlerId   = 7;
+  uint64          pageNo      = 8 [(validate.rules).uint64.gt = 0];
+  uint64          pageSize    = 9 [(validate.rules).uint64 = {gt: 0, lt: 101}];
+}
+
+message QueryAlertRecordResponse {
+  ListResult data = 1;
+}
+
+message ListResult {
+  repeated AlertRecord list  = 1;
+  int64                total = 2;
+}
+
+message AlertRecord {
+  string groupId       = 1;
+  string scope         = 2;
+  string scopeKey      = 3;
+  string alertGroup    = 4;
+  string title         = 5;
+  string alertState    = 6;
+  string alertType     = 7;
+  string alertIndex    = 8;
+  string expressionKey = 9;
+  uint64 alertId       = 10;
+  string alertName     = 11;
+  uint64 ruleId        = 12;
+  uint64 projectId     = 13;
+  uint64 issueId       = 14;
+  string handleState   = 15;
+  string handlerId     = 16;
+  int64  alertTime     = 17;
+  int64  handleTime    = 18;
+  int64  createTime    = 19;
+  int64  updateTime    = 20;
+}
+
+message GetAlertRecordRequest {
+  string groupId = 1;
+}
+
+message GetAlertRecordResponse {
+  AlertRecord data = 1;
+}
+
+message QueryAlertHistoryRequest {
+  string groupId = 1;
+  int64  start   = 2 [(validate.rules).int64.gt = 0];
+  int64  end     = 3 [(validate.rules).int64.gt = 0];
+  uint64 limit   = 4;
+}
+
+message QueryAlertHistoryResponse {
+  repeated AlertHistory data = 1;
+}
+
+message AlertHistory {
+  string groupId    = 1;
+  int64  timestamp  = 2;
+  string alertState = 3;
+  string title      = 4;
+  string content    = 5;
+  string displayUrl = 6;
+}
+
+message CreateAlertIssueRequest {
+  string                    groupId            = 1;
+  google.protobuf.Timestamp planStartedAt      = 2;
+  google.protobuf.Timestamp planFinishedAt     = 3;
+  uint64                    projectID          = 4;
+  int64                     iterationID        = 5;
+  uint64                    appID              = 6;
+  repeated uint64           testPlanCaseRelIDs = 7;
+  string                    type               = 8;
+  string                    title              = 9;
+  string                    content            = 10;
+  string                    priority           = 11;
+  string                    complexity         = 12;
+  string                    severity           = 13;
+  string                    assignee           = 14;
+  string                    creator            = 15;
+  repeated string           labels             = 16;
+  string                    source             = 17;
+  IssueManHour              issueManHour       = 18;
+  string                    taskType           = 19;
+  string                    bugStage           = 20;
+  string                    owner              = 21;
+  string                    userID             = 22;
+  string                    internalClient     = 23;
+  bool                      external           = 24;
+}
+
+message IssueManHour {
+  int64  estimateTime            = 1;
+  int64  thisElapsedTime         = 2;
+  int64  elapsedTime             = 3;
+  int64  remainingTime           = 4;
+  string startTime               = 5;
+  string workContent             = 6;
+  bool   isModifiedRemainingTime = 7;
+}
+
+message CreateAlertIssueResponse {
+}
+
+message UpdateAlertIssueRequest {
+  string                    groupId                  = 1;
+  string                    title                    = 2;
+  string                    content                  = 3;
+  int64                     state                    = 4;
+  string                    priority                 = 5;
+  string                    complexity               = 6;
+  string                    severity                 = 7;
+  google.protobuf.Timestamp planStartedAt            = 8;
+  google.protobuf.Timestamp planFinishedAt           = 9;
+  string                    assignee                 = 10;
+  string                    iterationID              = 11;
+  string                    source                   = 12;
+  repeated string           labels                   = 13;
+  repeated int64            relatedIssues            = 14;
+  string                    taskType                 = 15;
+  string                    bugStage                 = 16;
+  string                    owner                    = 17;
+  IssueManHour              issueManHour             = 18;
+  repeated uint64           testPlanCaseRelIDs       = 19;
+  bool                      removeTestPlanCaseRelIDs = 20;
+  uint64                    id                       = 21;
+  string                    userID                   = 22;
+  string                    internalClient           = 23;
+  uint64                    issueId                  = 24;
+}
+
+message UpdateAlertIssueResponse {
+}
+
+message GetOrgAlertRecordAttrRequest {
+}
+
+message GetOrgAlertRecordAttrResponse {
+  AlertRecordAttr data = 1;
+}
+
+message QueryOrgAlertRecordRequest {
+  repeated string alertGroup  = 1;
+  repeated string alertState  = 2;
+  repeated string alertType   = 3;
+  repeated string handleState = 4;
+  repeated string handlerId   = 5;
+  uint64          pageNo      = 6 [(validate.rules).uint64.gt = 0];
+  uint64          pageSize    = 7 [(validate.rules).uint64 = {gt: 0, lt: 101}];
+
+}
+
+message QueryOrgHostsAlertRecordRequest {
+  repeated ClusterReq clusters    = 1;
+  repeated string     alertGroup  = 2;
+  repeated string     alertState  = 3;
+  repeated string     alertType   = 4;
+  repeated string     handleState = 5;
+  repeated string     handlerId   = 6;
+  uint64              pageNo      = 7 [(validate.rules).uint64.gt = 0];
+  uint64              pageSize    = 8 [(validate.rules).uint64 = {gt: 0, lt: 101}];
+
+}
+
+message ClusterReq {
+  string          clusterName = 1;
+  repeated string hostIPs     = 2;
+}
+
+message QueryOrgAlertRecordResponse {
+  ListResult data = 1;
+}
+
+message GetOrgAlertRecordRequest {
+  string groupId = 1;
+}
+
+message GetOrgAlertRecordResponse {
+  AlertRecord data = 1;
+}
+
+message QueryOrgAlertHistoryRequest {
+  string groupId = 1;
+  int64  start   = 2 [(validate.rules).int64.gt = 0];
+  int64  end     = 3 [(validate.rules).int64.gt = 0];
+  uint64 limit   = 4;
+}
+
+message QueryOrgAlertHistoryResponse {
+  repeated AlertHistory data = 1;
+}
+
+message CreateOrgAlertIssueRequest {
+  string                    groupId            = 1;
+  google.protobuf.Timestamp planStartedAt      = 2;
+  google.protobuf.Timestamp planFinishedAt     = 3;
+  uint64                    projectID          = 4;
+  int64                     iterationID        = 5;
+  uint64                    appID              = 6;
+  repeated uint64           testPlanCaseRelIDs = 7;
+  string                    type               = 8;
+  string                    title              = 9;
+  string                    content            = 10;
+  string                    priority           = 11;
+  string                    complexity         = 12;
+  string                    severity           = 13;
+  string                    assignee           = 14;
+  string                    creator            = 15;
+  repeated string           labels             = 16;
+  string                    source             = 17;
+  IssueManHour              issueManHour       = 18;
+  string                    taskType           = 19;
+  string                    bugStage           = 20;
+  string                    owner              = 21;
+  string                    userID             = 22;
+  string                    internalClient     = 23;
+  bool                      external           = 24;
+}
+
+message CreateOrgAlertIssueResponse {
+  uint64 data = 1;
+}
+
+message UpdateOrgAlertIssueRequest {
+  string                    groupId                  = 1;
+  string                    title                    = 2;
+  string                    content                  = 3;
+  int64                     state                    = 4;
+  string                    priority                 = 5;
+  string                    complexity               = 6;
+  string                    severity                 = 7;
+  google.protobuf.Timestamp planStartedAt            = 8;
+  google.protobuf.Timestamp planFinishedAt           = 9;
+  string                    assignee                 = 10;
+  string                    iterationID              = 11;
+  string                    source                   = 12;
+  repeated string           labels                   = 13;
+  repeated int64            relatedIssues            = 14;
+  string                    taskType                 = 15;
+  string                    bugStage                 = 16;
+  string                    owner                    = 17;
+  IssueManHour              issueManHour             = 18;
+  repeated uint64           testPlanCaseRelIDs       = 19;
+  bool                      removeTestPlanCaseRelIDs = 20;
+  uint64                    id                       = 21;
+  string                    userID                   = 22;
+  string                    internalClient           = 23;
+}
+
+message UpdateOrgAlertIssueResponse {
+}
+
+message GetAlertConditionsRequest {
+  string scopeType = 1;
+}
+
+message GetAlertConditionsResponse {
+  repeated Conditions data = 1 [json_name = "conditions"];
+}
+
+message Conditions {
+  string          key         = 1;
+  repeated string filters     = 2;
+  string          displayName = 3;
+  string          index       = 4;
+}
+
+message GetAlertConditionsValueRequest {
+  repeated ConditionsValueRequest conditions = 1;
+}
+
+message ConditionsValueRequest {
+  string              condition = 1;
+  map<string, string> filters   = 2;
+  string              index     = 3;
+}
+
+message GetAlertConditionsValueResponse {
+  repeated AlertConditionsValue data = 1;
+}
+
+message AlertConditionsValue {
+  string                         key     = 1;
+  repeated google.protobuf.Value options = 2;
+}

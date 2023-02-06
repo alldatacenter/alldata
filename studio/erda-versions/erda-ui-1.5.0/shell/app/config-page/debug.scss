@@ -1,0 +1,57 @@
+.debug-page-container {
+  .no-expand {
+    transform: rotate(180deg);
+  }
+}
+
+.debug-page {
+  > .left {
+    position: relative;
+    width: 40%;
+    max-width: 40%;
+
+    &.hide-left {
+      width: 0%;
+      max-width: 0%;
+    }
+
+    .update-button,
+    .request-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .update-button {
+      right: 100px;
+    }
+  }
+
+  > .right {
+    position: relative;
+    width: 59%;
+    max-width: 59%;
+
+    &.full-right {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .log-panel {
+    overflow: auto;
+    height: 300px;
+    width: 100%;
+    padding: 6px;
+    background-color: #ffffff;
+    border: 1px solid $border-color;
+    border-radius: $radius;
+
+    .log-item {
+      border-bottom: 1px solid $border-color;
+      &.active-item {
+        background-color: $color-active-bg;
+      }
+    }
+  }
+}

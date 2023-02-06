@@ -1,0 +1,14 @@
+- redis_latest_fork_usec:
+    title: "上次的fork操作使用的时间（单位ms）"
+    metric_names: "redis"
+    type: "redis_remove"
+    order: 20
+    defines:
+      avg.latest_fork_usec:
+        label: ""
+        unit: "MS"
+        unit_type: "TIME"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

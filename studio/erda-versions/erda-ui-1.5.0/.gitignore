@@ -1,0 +1,50 @@
+# Files for macos
+*.DS_Store
+._*
+
+# Files for ideas
+.idea/*
+*.iml
+
+# Files for vim
+.*.sw?
+
+# Files for direnv
+.envrc
+
+# Files for vscode
+**/.vscode/*
+.vendor/*
+
+# Files for local
+locales/*.tmp
+*.ignore.js
+
+# Dependency directories (remove the comment below to include it)
+node_modules/
+
+# build output
+public/
+
+# for local debug
+report.*.json
+npm-debug.log
+yarn-error.log
+
+*/.local-pack
+*.env
+*.translaterc
+
+shell/app/mf-modules.js
+shell/sourcemap
+shell/coverage
+.pnpm-debug.log
+lerna-debug.log
+swagger-config.json
+shell/auto_test/auth
+shell/auto_test/**/*.secret.ts
+shell/auto_test/tests/results
+shell/app/modules/extra/*
+!shell/app/modules/extra/entry.js
+
+scheduler/dist/*

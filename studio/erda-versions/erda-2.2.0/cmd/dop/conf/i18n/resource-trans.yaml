@@ -1,0 +1,24 @@
+zh:
+  AvailableIsLessThanQuota: 本集群上该环境实际可用资源已小于配额，请询运维人员合理分配资源
+  NoResourceForTheWorkspace: 本集群上该环境的可用资源为 0, 请检查是否未正确为节点标注环境标签
+  NoNodesInTheCluster: 此集群没有可用的节点，请添加节点
+  ResourceSqueeze: '注意：该集群在%s环境已分配资源已经超过该集群在%s环境总资源，项目资源分配会按先用先得的原则进行抢占'
+  CPUResourceSqueeze: '注意：该集群在%s环境已分配资源已经超过该集群在%s环境总资源，项目资源分配会按先用先得的原则进行抢占'
+  MmeResourceSqueeze: '注意：该集群在%s环境已分配资源已经超过该集群在%s环境总资源，项目资源分配会按先用先得的原则进行抢占'
+  PROD: '生产'
+  STAGING: '预发'
+  TEST: '测试'
+  DEV: '开发'
+  OwnerUnknown: '无'
+en:
+  AvailableIsLessThanQuota: The actual available resource on this workspace in the cluster is less than the quota. Please ask the Ops to allocate project resources reasonably
+  NoResourceForTheWorkspace: No allocatable resources on this workspace in the cluster, please check the workspace labels for the nodes
+  NoNodesInTheCluster: No allocatable nodes in the cluster, please add nodes for it",
+  ResourceSqueeze: 'Note: The current allocated resources of the cluster on the workspace %s have exceeded the total resources of the cluster on the workspace %s, the project resource allocation will be based on the principle of first use first serve Preempt'
+  CPUResourceSqueeze: 'Note: The current allocated resources of the cluster on the workspace %s have exceeded the total resources of the cluster on the workspace %s, the project resource allocation will be based on the principle of first use first serve Preempt'
+  MemResourceSqueeze: 'Note: The current allocated resources of the cluster on the workspace %s have exceeded the total resources of the cluster on the workspace %s, the project resource allocation will be based on the principle of first use first serve Preempt'
+  PROD: 'PROD'
+  STAGING: 'STAGING'
+  TEST: 'TEST'
+  DEV: 'DEV'
+  OwnerUnknown: 'Unknown'

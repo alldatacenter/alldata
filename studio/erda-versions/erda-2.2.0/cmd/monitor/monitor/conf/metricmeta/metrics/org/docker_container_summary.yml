@@ -1,0 +1,251 @@
+name: "Container"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_name:
+        name: "Addon Name"
+    addon_type:
+        name: "Addon Type"
+    app_config_namespace:
+        name: "App Config Namespace"
+    application_id:
+        name: "Application ID"
+    application_name:
+        name: "Application Name"
+    cluster:
+        name: "Cluster"
+    cluster_name:
+        name: "Cluster Name"
+    cluster_type:
+        name: "Cluster Type"
+    component_name:
+        name: "Component Name"
+    container_id:
+        name: "Container ID"
+    container_image:
+        name: "Container Image"
+    cpu_limit:
+        name: "CPU Limit"
+    cpu_origin:
+        name: "CPU Origin"
+    cpu_request:
+        name: "CPU Request"
+    deployment:
+        name: "Deployment"
+    deployment_id:
+        name: "Deployment ID"
+    host_ip:
+        name: "Host IP"
+    http_healthcheck_path:
+        name: "HTTP Healthcheck Path"
+    http_port:
+        name: "HTTP Port"
+    https_port:
+        name: "Https Port"
+    image_version:
+        name: "Image Version"
+    ingress_version:
+        name: "Ingress Version"
+    inside:
+        name: "Inside"
+    instance_type:
+        name: "Instance Type"
+    is_edge:
+        name: "Is Edge"
+    job_id:
+        name: "Job ID"
+    login_callback:
+        name: "Login Callback"
+    mem_limit:
+        name: "Mem Limit"
+    mem_origin:
+        name: "Mem Origin"
+    mem_request:
+        name: "Mem Request"
+    namespace:
+        name: "Namespace"
+    openapi_addr:
+        name: "Openapi Addr"
+    openapi_public_url:
+        name: "Openapi Public Url"
+    openapi_token_for_action_bootstrap:
+        name: "Openapi Token For Action Bootstrap"
+    org_id:
+        name: "Org ID"
+    org_name:
+        name: "Org Name"
+    pod_ip:
+        name: "Pod IP"
+    pod_name:
+        name: "Pod Name"
+    pod_namespace:
+        name: "Pod Namespace"
+    podsandbox:
+        name: "Podsandbox"
+    project_id:
+        name: "Project ID"
+    project_name:
+        name: "Project Name"
+    protocol:
+        name: "Protocol"
+    root_domain:
+        name: "Root Domain"
+    runtime_id:
+        name: "Runtime ID"
+    runtime_name:
+        name: "Runtime Name"
+    service_id:
+        name: "Service ID"
+    service_name:
+        name: "Service Name"
+    shared_level:
+        name: "Shared Level"
+    site_host:
+        name: "Site Host"
+    site_port:
+        name: "Site Port"
+    site_port0:
+        name: "Site Port0"
+    size:
+        name: "Size"
+    ssh_password:
+        name: "Ssh Password"
+    ssh_user:
+        name: "Ssh User"
+    storage_mountpoint:
+        name: "Storage Mountpoint"
+    terminus_key:
+        name: "Terminus Key"
+    version:
+        name: "Version"
+    workspace:
+        name: "Workspace"
+        values:
+            - value: "DEV"
+              name: "Develop"
+            - value: "TEST"
+              name: "Test"
+            - value: "STAGING"
+              name: "Staging"
+            - value: "PROD"
+              name: "Production"
+            - value: "dev"
+              name: "develop"
+            - value: "test"
+              name: "test"
+            - value: "staging"
+              name: "staging"
+            - value: "prod"
+              name: "production"
+    xdp_ui_host:
+        name: "Xdp Ui Host"
+    xdp_ui_port:
+        name: "Xdp Ui Port"
+    xdp_ui_port0:
+        name: "Xdp Ui Port0"
+fields:
+    blk_read_bytes:
+        type: "number"
+        name: "Blk Read Bytes"
+        unit: 
+    blk_reads:
+        type: "number"
+        name: "Blk Reads"
+        unit: 
+    blk_sync_bytes:
+        type: "number"
+        name: "Blk Sync Bytes"
+        unit: 
+    blk_syncs:
+        type: "number"
+        name: "Blk Syncs"
+        unit: 
+    blk_write_bytes:
+        type: "number"
+        name: "Blk Write Bytes"
+        unit: 
+    blk_writes:
+        type: "number"
+        name: "Blk Writes"
+        unit: 
+    cpu_allocation:
+        type: "number"
+        name: "CPU Allocation"
+        unit: 
+    cpu_limit:
+        type: "number"
+        name: "CPU Limit"
+        unit: 
+    cpu_origin:
+        type: "number"
+        name: "CPU Origin"
+        unit: 
+    cpu_usage_percent:
+        type: "number"
+        name: "CPU Usage Percent"
+        unit: 
+    exitcode:
+        type: "number"
+        name: "Exitcode"
+        unit: 
+    finished_at:
+        type: "number"
+        name: "Finished At"
+        unit: 
+    mem_allocation:
+        type: "number"
+        name: "Mem Allocation"
+        unit: 
+    mem_limit:
+        type: "number"
+        name: "Mem Limit"
+        unit: 
+    mem_max_usage:
+        type: "number"
+        name: "Mem Maximum Usage"
+        unit: 
+    mem_origin:
+        type: "number"
+        name: "Mem Origin"
+        unit: 
+    mem_usage:
+        type: "number"
+        name: "Mem Usage"
+        unit: 
+    mem_usage_percent:
+        type: "number"
+        name: "Mem Usage Percent"
+        unit: 
+    oomkilled:
+        type: "bool"
+        name: "Oomkilled"
+        unit: 
+    pid:
+        type: "number"
+        name: "Pid"
+        unit: 
+    rx_bytes:
+        type: "number"
+        name: "Rx Bytes"
+        unit: 
+    rx_errors:
+        type: "number"
+        name: "Rx Errors"
+        unit: 
+    started_at:
+        type: "number"
+        name: "Started At"
+        unit: 
+    status:
+        type: "string"
+        name: "Status"
+        unit: 
+    tx_bytes:
+        type: "number"
+        name: "Tx Bytes"
+        unit: 
+    tx_errors:
+        type: "number"
+        name: "Tx Errors"
+        unit: 
+

@@ -1,0 +1,34 @@
+.case-step-list {
+  border: 1px solid $color-border;
+  border-radius: $radius;
+
+  .case-step {
+    padding: 1px 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-border;
+    }
+
+    textarea {
+      color: $color-text;
+      border: none;
+      box-shadow: none;
+      resize: none;
+    }
+  }
+
+  .delete-icon {
+    margin: 6px;
+    color: $color-text-desc;
+    font-size: 18px;
+  }
+
+  .result-detail {
+    padding-left: 28px;
+
+    textarea {
+      color: $color-text-sub;
+      resize: none;
+    }
+  }
+}

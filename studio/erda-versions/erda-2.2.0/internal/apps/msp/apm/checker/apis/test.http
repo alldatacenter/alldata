@@ -1,0 +1,61 @@
+@url = http://localhost:8080/api
+@userid = 1100
+
+### CreateCheckerV1
+POST {{url}}/v1/msp/checkers/projects/2/metrics
+Content-Type: application/json
+Accept: application/json
+User-ID: {{userid}}
+
+{
+    "env":"PROD",
+    "mode":"http",
+    "name":"test",
+    "url":"http://baidu.com",
+    "accountId":null,
+    "expects":[]
+}
+
+### UpdateCheckerV1
+POST {{url}}/v1/msp/checkers/metrics/35
+Content-Type: application/json
+Accept: application/json
+User-ID: {{userid}}
+
+{
+    "name": "testnamexxxx",
+    "mode": "http",
+    "url": "http://baidu.com",
+    "env": "DEV",
+    "other": "xxx"
+}
+
+### DeleteCheckerV1
+DELETE {{url}}/v1/msp/checkers/metrics/35
+Accept: application/json
+User-ID: {{userid}}
+
+### GetCheckerV1
+GET {{url}}/v1/msp/checkers/metrics/35
+Accept: application/json
+User-ID: {{userid}}
+
+### DescribeCheckersV1
+GET {{url}}/v1/msp/checkers/projects/180/dashboard?env=PROD
+Accept: application/json
+User-ID: {{userid}}
+
+### DescribeCheckerV1
+GET {{url}}/v1/msp/checkers/metrics/37/dashboard
+Accept: application/json
+User-ID: {{userid}}
+
+### GetCheckerStatusV1
+GET {{url}}/v1/msp/checkers/metrics/35/status
+Accept: application/json
+User-ID: {{userid}}
+
+### GetCheckerIssuesV1
+GET {{url}}/v1/msp/checkers/metrics/35/issues
+Accept: application/json
+User-ID: {{userid}}

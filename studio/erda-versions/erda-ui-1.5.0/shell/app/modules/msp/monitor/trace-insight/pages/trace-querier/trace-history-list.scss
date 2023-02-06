@@ -1,0 +1,44 @@
+.trace-history-list {
+  max-height: 540px;
+  overflow: auto;
+
+  .trace-history-list-item {
+    display: flex;
+    height: $base-line-height;
+    margin-top: 10px;
+    color: $color-text-sub;
+    line-height: $base-line-height;
+    background-color: #eceef6;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #e1e7ff;
+      cursor: pointer;
+    }
+
+    > span {
+      display: inline-block;
+      line-height: $base-line-height;
+    }
+
+    .request-url {
+      flex: 1;
+      margin-right: 5px;
+      text-indent: 1em;
+    }
+
+    .request-time {
+      float: right;
+      margin-right: 15px;
+    }
+
+    &.active {
+      background-color: $color-primary;
+
+      .request-url,
+      .request-time {
+        color: $white;
+      }
+    }
+  }
+}

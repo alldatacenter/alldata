@@ -1,0 +1,28 @@
+.new-yml-editor {
+  &.app-repo-pipeline {
+    .yml-svg-container-box {
+      height: unset !important;
+    }
+  }
+
+  &.graphic {
+    .file-content {
+      flex: 1;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  }
+
+  .commit-file-form {
+    padding: 16px 16px 0 16px;
+    border-top: 1px solid $color-border;
+  }
+}
+
+.repo-tree-page.full-page {
+  .new-yml-editor {
+    .ant-spin-container {
+      display: unset;
+    }
+  }
+}

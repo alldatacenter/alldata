@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="156px" height="80px" viewBox="0 0 156 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>k8s</title>
+    <defs>
+        <rect id="path-1" x="304" y="82" width="1112" height="1037"></rect>
+        <filter x="-0.6%" y="-0.5%" width="101.3%" height="101.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.333333333   0 0 0 0 0.301960784   0 0 0 0 0.407843137  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="1080" height="178" rx="2"></rect>
+        <filter x="-0.6%" y="-2.8%" width="101.3%" height="107.9%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.333333333   0 0 0 0 0.301960784   0 0 0 0 0.407843137  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="缺陷" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="集群列表" transform="translate(-1244.000000, -324.000000)">
+            <rect fill="#302647" opacity="0.06" x="0" y="0" width="1440" height="1231"></rect>
+            <g id="矩形">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <g id="编组-22备份" transform="translate(320.000000, 324.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="蒙版">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-3"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                </g>
+                <g id="编组" mask="url(#mask-4)" opacity="0.04">
+                    <g transform="translate(904.000000, -100.000000)" id="k8s">
+                        <rect id="矩形" x="0" y="0" width="240" height="240"></rect>
+                        <g id="阿里云" transform="translate(20.000000, 60.000000)" fill="#FF6A00" fill-rule="nonzero">
+                            <path d="M200,32.1703049 C199.932923,14.3965362 185.041923,0 166.66294,0 L114.298491,0 L119.128004,18.4448854 L164.069312,27.9054664 C168.160984,28.8147213 171.246506,32.3001984 171.425377,36.5000902 C171.447736,36.6083348 171.447736,83.2834205 171.425377,83.3916652 C171.246506,87.5915569 168.160984,91.0770341 164.069312,91.986289 L119.128004,101.44687 L114.298491,119.913404 L166.66294,119.913404 C185.019564,119.913404 199.932923,105.516868 200,87.7430994 L200,32.1703049 L200,32.1703049 Z M35.9530464,92.0295869 C31.8613751,91.120332 28.7758524,87.6348548 28.5969816,83.434963 C28.5746227,83.3050695 28.5746227,36.6516327 28.5969816,36.5433881 C28.7758524,32.3434963 31.8613751,28.8580191 35.9530464,27.9487642 L80.8943544,18.4881833 L85.7238681,0.0432978531 L33.3370598,0.0432978531 C14.980436,0.0432978531 0.0670765791,14.4181851 0,32.2136027 L0,87.8296951 C0.0670765791,105.603464 14.980436,120 33.3370598,120 L85.7015092,120 L80.8719955,101.533466 L35.9530464,92.0295869 L35.9530464,92.0295869 Z M80.8719955,57.6510915 L119.105646,57.6510915 L119.105646,62.2623128 L80.8719955,62.2623128 L80.8719955,57.6510915 Z" id="形状"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

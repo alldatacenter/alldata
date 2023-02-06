@@ -1,0 +1,16 @@
+- machine_disk_rootfs:
+    title: "磁盘使用率"
+    metric_names: "disk"
+    type: "machine"
+    order: 7
+    defines:
+      avg.used_percent:
+        label: "磁盘使用率"
+        unit: "%"
+        unit_type: "PERCENT"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "device"
+

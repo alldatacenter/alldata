@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+package erda.core.pipeline.action_runner_scheduler;
+
+import "google/api/annotations.proto";
+import "common/identity.proto";
+import "common/openapi.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/core/pipeline/action_runner_scheduler/pb";
+
+service RunnerTaskService {
+  option (erda.common.openapi_service) = {
+    service: "pipeline",
+  };
+
+  rpc CreateRunnerTask (RunnerTaskCreateRequest) returns (RunnerTaskCreateResponse) {
+    option (google.api.http) = {
+      post: "/api/runner/tasks",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/runner/tasks",
+      auth: {
+        check_login: true,
+        check_token: true,
+      }
+    };
+  }
+
+  rpc UpdateRunnerTask (RunnerTaskUpdateRequest) returns (RunnerTaskUpdateResponse) {
+    option (google.api.http) = {
+      put: "/api/runner/tasks/{id}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/runner/tasks/{id}",
+      auth: {
+        no_check: true,
+      }
+    };
+  }
+
+  rpc GetRunnerTask (RunnerTaskQueryRequest) returns (RunnerTaskQueryResponse) {
+    option (google.api.http) = {
+      get: "/api/runner/tasks/{id}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/runner/tasks/{id}",
+      auth: {
+        check_login: true,
+        check_token: true,
+      }
+    };
+  }
+
+  rpc FetchRunnerTask (RunnerTaskFetchRequest) returns (RunnerTaskFetchResponse) {
+    option (google.api.http) = {
+      get: "/api/runner/fetch-task",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/runner/fetch-task",
+      auth: {
+        no_check: true,
+      }
+    };
+  }
+
+  rpc CollectLogs (LogCollectRequest) returns (LogCollectResponse) {
+    option (google.api.http) = {
+      post: "/api/runner/collect/logs/{source}",
+      body: "content",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/runner/collect/logs/{source}",
+      auth: {
+        no_check: true,
+      }
+    };
+  }
+}
+
+message RunnerTask {
+  uint64 ID = 1 [json_name = "id"];
+  string jobID = 2 [json_name = "job_id"];
+  string status = 3;
+  string contextDataUrl = 4 [json_name = "context_data_url"];
+  string openApiToken = 5 [json_name = "openapi_token"];
+  string resultDataUrl = 6 [json_name = "result_data_url"];
+  repeated string commands = 7;
+  repeated string targets = 8;
+  string workdir = 9;
+}
+
+message RunnerTaskQueryRequest {
+  int64 id = 1;
+}
+
+message RunnerTaskQueryResponse {
+  RunnerTask data = 1;
+}
+
+message RunnerTaskFetchRequest {}
+
+message RunnerTaskFetchResponse {
+  repeated RunnerTask data = 1;
+}
+
+message RunnerTaskCreateRequest {
+  string jobID = 1 [json_name = "job_id"];
+  string contextDataUrl = 2 [json_name = "context_data_url"];
+  repeated string commands = 3;
+  repeated string targets = 4;
+  string workdir = 5;
+}
+
+message RunnerTaskCreateResponse {
+  int64 data = 1;
+}
+
+message RunnerTaskUpdateRequest {
+  int64 id = 1;
+  string taskID = 2 [json_name = "task_id"];
+  string status = 3;
+  string contextDataUrl = 4 [json_name = "context_data_url"];
+  string resultDataUrl = 5 [json_name = "result_data_url"];
+}
+
+message RunnerTaskUpdateResponse {}
+
+message LogCollectRequest {
+  string source = 1;
+  bytes content = 2;
+}
+
+message LogCollectResponse {}
+
+

@@ -1,0 +1,91 @@
+- name: "域名访问性能告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    plt: "time:s"
+  title: |
+    【({{host}}) 域名访问性能告警】
+  template: |
+    【域名访问性能告警】
+
+    事件: ({{host}}) 域名慢响应
+
+    时间: {{timestamp}}
+
+    域名: {{host}}
+
+    平均响应时间: {{plt_avg}} ms
+
+    tk: {{tk}}
+
+    告警级别: {{level}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+- name: "域名访问性能告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    plt: "time:s"
+  title: |
+    【({{host}}) 域名访问性能告警】
+  template: |
+    {{host}}触发域名访问性能告警，tk：{{tk}，平均响应时间: {{plt_avg}} ms，告警级别: {{level}}
+- name: "域名访问性能告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    plt: "time:s"
+  title: |
+    【({{host}}) 域名访问性能告警】
+  template: |
+    因域名慢响应触发域名访问性能告警，tk：{{tk}，平均响应时间: {{plt_avg}} ms，告警级别: {{level}}
+
+- name: "Domain access performance alarm"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    plt: "time:s"
+  title: |
+    [Access performance alarm of domain ({{host}})]
+  template: |
+    [Domain access performance alarm]
+
+    Event: Slow response of domain ({{host}})
+
+    Time: {{timestamp}}
+
+    Domain name: {{host}}
+
+    Average response time: {{plt_avg}} ms
+
+    tk: {{tk}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+- name: "Domain access performance alarm"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    plt: "time:s"
+  title: |
+    [Access performance alarm of domain ({{host}})]
+  template: |
+    Domain access performance alarm triggered by {{host}}, tk: {{tk}，average response time: {{plt_avg}} ms
+- name: "Domain access performance alarm"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    plt: "time:s"
+  title: |
+    [Access performance alarm of domain ({{host}})]
+  template: |
+    Domain access performance alarm triggered by slow response of domain, tk: {{tk}，average response time: {{plt_avg}} ms

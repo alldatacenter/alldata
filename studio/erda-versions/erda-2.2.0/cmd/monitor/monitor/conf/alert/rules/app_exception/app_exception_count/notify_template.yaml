@@ -1,0 +1,203 @@
+- name: "应用异常"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务异常告警】
+  template: |
+    【应用异常告警】
+
+    项目: {{project_name}}
+
+    应用: {{application_name}}
+
+    服务: {{runtime_name}} - {{service_name}}
+
+    实例: {{instance_id}}
+
+    类: {{class}}
+
+    方法: {{method}}
+
+    行数: {{line}}
+
+    错误: {{type}}
+
+    事件: {{window}}分钟内出现 {{count_sum}} 次
+
+    terminus_key: {{terminus_key}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+
+- name: "应用异常"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务异常告警】
+  template: |
+    {{application_name}}应用{{service_name}}触发服务异常告警，terminus_key: {{terminus_key}}，{{window}}分钟内应用错误出现{{count_sum}}次，告警级别: {{level}}
+- name: "应用异常"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务异常告警】
+  template: |
+    {{application_name}}应用{{service_name}}触发服务异常告警，terminus_key: {{terminus_key}}，{{window}}分钟内应用错误出现{{count_sum}}次，告警级别: {{level}}
+- name: "应用异常恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务异常恢复】
+  template: |
+    【应用异常恢复】
+
+    项目: {{project_name}}
+
+    应用: {{application_name}}
+
+    服务: {{runtime_name}} - {{service_name}}
+
+    实例: {{instance_id}}
+
+    类: {{class}}
+
+    方法: {{method}}
+
+    行数: {{line}}
+
+    错误: {{type}}
+
+    terminus_key: {{terminus_key}}
+
+    持续时间: {{trigger_duration_min}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "应用异常恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务异常恢复】
+  template: |
+    {{application_name}}应用{{service_name}}触发服务异常恢复，terminus_key: {{terminus_key}}
+- name: "应用异常恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【{{application_name}}应用{{service_name}}服务异常恢复】
+  template: |
+    {{application_name}}应用{{service_name}}触发服务异常恢复，terminus_key: {{terminus_key}}
+
+- name: "Application exception"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [Exception alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    [Application exception alarm]
+
+    Project: {{project_name}}
+
+    Application: {{application_name}}
+
+    Service: {{runtime_name}} - {{service_name}}
+
+    Instance: {{instance_id}}
+
+    Class: {{class}}
+
+    Method: {{method}}
+
+    Line: {{line}}
+
+    Error: {{type}}
+
+    Event: Within {{window}} minutes occurs {{count_sum}} times
+
+    terminus_key: {{terminus_key}}
+
+    Time: {{timestamp}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+
+- name: "Application exception"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Exception alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    Exception alarm triggered by {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}, within {{window}} minutes the application error occurs {{count_sum}} times
+- name: "Application exception"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [Exception alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    Exception alarm triggered by {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}, within {{window}} minutes the application error occurs {{count_sum}} times
+- name: "Application exception recovery"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [Exception recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    [Application exception recovery]
+
+    Project: {{project_name}}
+
+    Application: {{application_name}}
+
+    Service: {{runtime_name}} - {{service_name}}
+
+    Instance: {{instance_id}}
+
+    Class: {{class}}
+
+    Method: {{method}}
+
+    Line: {{line}}
+
+    Error: {{type}}
+
+    terminus_key: {{terminus_key}}
+
+    Duration: {{trigger_duration_min}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Application exception recovery"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Exception recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    Exception recovery triggered by {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}
+- name: "Application exception recovery"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [Exception recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    Exception recovery triggered by {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}

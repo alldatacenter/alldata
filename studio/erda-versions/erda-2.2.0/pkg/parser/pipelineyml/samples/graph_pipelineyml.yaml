@@ -1,0 +1,54 @@
+version: '1.1'
+cron: 0 0 */1 * * ?
+stages:
+- - alias: repo
+    type: git-checkout
+    params:
+      uri: ((gittar.repo))
+      branch: ((gittar.branch))
+      username: ((gittar.username))
+      password: ((gittar.password))
+      depth: '1888'
+- - alias: custom-task
+    type: custom-script
+    commands:
+    - cd ..
+    - >-
+      sh -xc echo "this is custom-output-1" > custom-output-1 && echo "this
+      is custom-output-2" > custom-output-2 && ls
+- - alias: dealwith-custom-outputs
+    type: custom-script
+    commands:
+    - cd ..
+    - cat custom-output-1 custom-output-2
+- - alias: bp-backend
+    type: buildpack
+    params:
+      context: '${repo}/services/showcase'
+      modules:
+      - name: blog-web
+      - name: blog-service
+        path: blog-service/blog-service-impl
+      - name: user-service
+        path: user-service/user-service-impl
+      only_build: false
+  - alias: bp-frontend
+    type: buildpack
+    params:
+      context: '${repo}/endpoints/showcase-front'
+      modules:
+      - name: showcase-front
+      only_build: false
+- - alias: dice-hub
+    type: release
+    params:
+      dice_yml: '${repo}/dice.yml'
+      init_sql: '${repo}/db'
+      replacement_images:
+      - '${bp-backend}/pack-result'
+      - '${bp-frontend}/pack-result'
+- - alias: deploy
+    type: dice
+    params:
+      release_id_path: '${dice-hub}'
+      time_out: 600

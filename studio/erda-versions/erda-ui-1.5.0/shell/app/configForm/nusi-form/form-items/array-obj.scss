@@ -1,0 +1,43 @@
+.dice-form-array-obj {
+  &-item {
+    padding: 12px;
+    border: 1px dashed $color-border;
+    border-radius: 5px;
+
+    &.direction-row {
+      .ant-form-item {
+        margin-bottom: 0;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.ant-form-item-control {
+  &.has-error {
+    .dice-form-array-obj {
+      .ant-input {
+        border-color: rgb(217, 217, 217);
+
+        &:focus {
+          box-shadow: unset;
+        }
+      }
+
+      .ant-select-arrow {
+        color: rgb(217, 217, 217);
+      }
+
+      .ant-select-selection {
+        border-color: rgb(217, 217, 217);
+
+        &:focus {
+          box-shadow: unset;
+        }
+      }
+    }
+  }
+}

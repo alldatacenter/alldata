@@ -1,0 +1,41 @@
+.render-form {
+  &.ant-form-vertical {
+    width: 40%;
+
+    @include sm-width() {
+      width: 100%;
+    }
+
+    .ant-form-item-label {
+      text-align: left;
+    }
+  }
+
+  .input-with-icon {
+    width: 100%;
+  }
+
+  .render-form-op {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 20px;
+    line-height: inherit;
+    vertical-align: middle;
+  }
+
+  .add-one {
+    position: absolute;
+    right: -30px;
+  }
+
+  .drop-one {
+    position: absolute;
+    right: -60px;
+  }
+}
+
+.ant-modal-body {
+  .render-form.ant-form-vertical {
+    width: unset;
+  }
+}

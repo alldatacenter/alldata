@@ -1,0 +1,16 @@
+- zookeeper_packets_received:
+    title: "收到数据包数量"
+    metric_names: "zookeeper"
+    type: "zookeeper_remove"
+    order: 4
+    defines:
+      diffps.packets_received:
+        label: ""
+        unit: "个/s"
+        unit_type: "CPS"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

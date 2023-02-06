@@ -1,0 +1,17 @@
+.dice-form-nusi-combiner-component {
+  .combiner-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    > * {
+      margin-right: 8px;
+    }
+  }
+
+  .combiner-operation {
+    color: $color-text-sub;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}

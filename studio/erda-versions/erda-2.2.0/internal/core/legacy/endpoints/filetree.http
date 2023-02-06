@@ -1,0 +1,128 @@
+### 查询所有的 scope
+GET http://localhost:9093/api/project-pipeline/filetree?scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 查询项目的应用子目录
+GET http://localhost:9093/api/project-pipeline/filetree?pinode=0&scope=project-app&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 查询应用分支子目录
+GET http://localhost:9093/api/project-pipeline/filetree?pinode=NC8yMg==&scope=project-app&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+
+### 查询分支下的treenode
+GET http://localhost:9093/api/project-pipeline/filetree?pinode=NC8yMi90cmVlL21hc3Rlcg==&scope=project-app&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 查询 .dice 下的 pipelines
+GET http://localhost:9093/api/project-pipeline/filetree?pinode=NC8yMi90cmVlL21hc3Rlci8uZGljZQ==&scope=project-app&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 查询 pipelines 下的 nodes
+GET http://localhost:9093/api/project-pipeline/filetree?pinode=NC8yMi90cmVlL21hc3Rlci8uZGljZS9waXBlbGluZXM=&scope=project-app&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 查询 pipelines 下的 kkk 目录 的 nodes
+GET http://localhost:9093/api/project-pipeline/filetree?pinode=NC8yMi90cmVlL21hc3Rlci8uZGljZS9waXBlbGluZXMva2tr&scope=project-app&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 查询 kkk 中的节点详情
+GET http://localhost:9093/api/project-pipeline/filetree/NC8yMi90cmVlL21hc3Rlci8uZGljZS9waXBlbGluZXMva2trL2JiYi55bWw=?scope=project-app&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 模糊查询项目的叶子节点
+GET http://localhost:9093/api/project-pipeline/filetree/actions/fuzzy-search?Fuzzy=bbb&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+
+
+
+
+### 查询autotest的应用子目录
+GET http://localhost:9093/api/project-pipeline/filetree?pinode=0&scope=project&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+
+### 查询autotest的应用子目录
+GET http://localhost:9093/api/project-pipeline/filetree?pinode=328775136331183101&scope=project&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+
+
+
+### 在 pipelines 下创建文件
+
+POST http://localhost:9093/api/project-pipeline/filetree
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+{
+  "pinode": "NC81MC90cmVlL21hc3Rlci8uZGljZS9waXBlbGluZXM=",
+  "type": "d",
+  "scope": "project-app",
+  "scopeID": "4",
+  "name": "kkk",
+  "desc": "desc"
+}
+
+### 删除根目录下的 pipeline.yml
+DELETE http://localhost:9093/api/project-pipeline/filetree/NC81MC90cmVlL21hc3Rlci8uZGljZS9waXBlbGluZXMva2tr
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+{
+  "scope": "project-app",
+  "scopeID": "4"
+}
+
+### 获取父节点
+GET http://localhost:9093/api/project-pipeline/filetree/NC80OS90cmVlL3BpcGVsaW5lLnltbA==/actions/find-ancestors?scope=project-app&scopeId=4
+Content-Type: application/json
+User-ID: 2
+ORG-ID: 1
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+
+
+
+
+
+

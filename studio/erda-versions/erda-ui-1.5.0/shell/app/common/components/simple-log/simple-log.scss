@@ -1,0 +1,59 @@
+.log-insight {
+  .log-viewer {
+    height: calc(100vh - 170px);
+  }
+
+  .log-search {
+    text-align: right;
+
+    &-logId {
+      display: inline-block;
+      width: 18.75rem;
+      margin-right: 10px;
+    }
+  }
+
+  .log-insight-item {
+    span {
+      display: inline-block;
+    }
+
+    pre {
+      display: inline;
+      margin-right: 0;
+      overflow: visible;
+    }
+
+    .log-item-logtime {
+      width: 200px;
+      color: $green;
+      vertical-align: top;
+    }
+
+    .log-item-content {
+      a {
+        color: $yellow;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+
+    .log-item-level {
+      width: 60px;
+      color: #add8e6;
+
+      &.warn {
+        color: $color-warning;
+      }
+
+      &.error {
+        color: $color-danger;
+      }
+    }
+
+    ::selection {
+      color: $white;
+      background: $green;
+    }
+  }
+}

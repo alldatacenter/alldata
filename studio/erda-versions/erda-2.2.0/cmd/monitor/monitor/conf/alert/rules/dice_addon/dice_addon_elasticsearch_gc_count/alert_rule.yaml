@@ -1,0 +1,9 @@
+id: dice_addon_elasticsearch_gc_count
+name: 平台中间件Elasticsearch GC次数异常
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{addon_id}}'
+  display_url_id: org_addon
+  level: Warning
+  recover: "true"
+  tickets_metric_key: '{{addon_id}}'

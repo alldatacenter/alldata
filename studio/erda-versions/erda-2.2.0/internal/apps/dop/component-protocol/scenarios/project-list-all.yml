@@ -1,0 +1,59 @@
+scenario: project-list-all
+
+hierarchy:
+  root: myPage
+  structure:
+    myPage:
+      - tabs
+      - alert
+      - list
+      - emptyContainer
+    emptyContainer:
+      - bannerImage
+      - emptyText
+      - createProject
+      - browsePublicProjects
+    list:
+      filter: filter
+
+components:
+  myPage:
+    type: Container
+  content:
+    type: Container
+  tabs:
+    type: RadioTabs
+  filter:
+    type: ContractiveFilter
+  list:
+    type: List
+    version: 2
+  alert:
+    type: Alert
+  emptyContainer:
+    type: Container
+    props:
+      className: "flex items-center justify-center flex-wrap"
+  emptyText:
+    type: Text
+  bannerImage:
+    type: Image
+  createProject:
+    type: Button
+  browsePublicProjects:
+    type: Text
+
+rendering:
+  browsePublicProjects:
+    - name: tabs
+    - name: list
+    - name: bannerImage
+    - name: emptyText
+    - name: createProject
+    - name: browsePublicProjects
+  filter:
+    - name: list
+    - name: bannerImage
+    - name: emptyText
+    - name: createProject
+    - name: browsePublicProjects

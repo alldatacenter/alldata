@@ -1,0 +1,14 @@
+- mysql_commands_replace_select:
+    title: "选择替代语句的个数"
+    metric_names: "mysql"
+    type: "mysql_remove"
+    order: 30
+    defines:
+      diff.commands_replace_select:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

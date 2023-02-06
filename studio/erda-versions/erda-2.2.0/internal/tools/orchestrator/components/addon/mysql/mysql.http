@@ -1,0 +1,6 @@
+GET http://localhost:8081/api/addon-mysql/actions/list-mysql-account
+Accept: application/json
+
+###
+GET http://localhost:8081/api/addon-mysql/actions/list-attachment?instanceId=ke21fb992d919452486cde35cf9ca73c9
+Accept: application/json

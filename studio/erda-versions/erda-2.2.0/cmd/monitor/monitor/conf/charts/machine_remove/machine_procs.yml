@@ -1,0 +1,32 @@
+- machine_procs:
+    title: "进程统计"
+    metric_names: "processes"
+    type: "machine_remove"
+    order: 4
+    defines:
+      max.running:
+        label: "running"
+        unit: "个"
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+      max.zombies:
+        label: "zombies"
+        unit: "个"
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+      max.blocked:
+        label: "blocked"
+        unit: "个"
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+      max.sleeping:
+        label: "sleeping"
+        unit: "个"
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

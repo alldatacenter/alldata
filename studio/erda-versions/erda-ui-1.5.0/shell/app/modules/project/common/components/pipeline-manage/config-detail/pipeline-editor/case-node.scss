@@ -1,0 +1,43 @@
+.yml-chart-node {
+  &.test-case-node {
+    width: 100%;
+    height: 100%;
+    padding: 0 12px;
+    background-color: $white;
+    border-radius: $radius;
+    cursor: pointer;
+    @extend %shallow-shadow;
+
+    &:hover {
+      @extend %hover-shadow;
+    }
+
+    .case-title {
+      display: flex;
+      align-items: center;
+
+      .title-icon {
+        width: 20px;
+        height: 20px;
+
+        > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .title-txt {
+        flex: 1;
+        width: 0;
+
+        .name {
+          line-height: 24px;
+        }
+
+        .type {
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}

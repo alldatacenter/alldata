@@ -1,0 +1,82 @@
+### 查询列表
+
+GET http://localhost:3033/api/sonar-metric-rules/actions/query-list?scopeType=project&scopeId=10
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 查询定义
+
+GET http://localhost:3033/api/sonar-metric-rules/actions/query-metric-definition?scopeType=project&scopeId=1
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 批量新增
+
+POST http://localhost:3033/api/sonar-metric-rules/actions/batch-insert
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+{
+  "scopeType": "project",
+  "scopeId": "10",
+  "metrics": [
+    {
+      "description": "123",
+      "metricKeyId": 1,
+      "metricValue": "12"
+    },
+    {
+      "description": "1234",
+      "metricKeyId": 1,
+      "metricValue": "13"
+    }
+  ]
+}
+
+### 查询分页
+
+GET http://localhost:3033/api/sonar-metric-rules?scopeType=project&scopeId=10&pageNum=1&pageSize=10
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+### 单个更新
+
+PUT http://localhost:3033/api/sonar-metric-rules/70
+User-ID: 2
+Content-Type: application/json
+
+{
+  "description": "456",
+  "metricValue": "15",
+  "scopeType": "project",
+  "scopeId": "10"
+}
+
+### 批量删除
+
+DELETE http://localhost:3033/api/sonar-metric-rules/actions/batch-delete
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a893e663-379e-4563-a69a-33169d4b53b8
+
+{        "scopeType":"project",         "scopeId":"10",     "ids": [     69,     70  ] }
+
+### 删除
+
+DELETE http://localhost:3033/api/sonar-metric-rules/52
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a893e663-379e-4563-a69a-33169d4b53b8
+
+{        "scopeType":"project",         "scopeId":"10" }
+
+
+
+
+
+
+

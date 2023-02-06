@@ -1,0 +1,32 @@
+.item-image {
+  .image-name {
+    position: relative;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+
+    .image-txt-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      .tail {
+        display: inline-block;
+        width: calc(100% - 45px);
+        direction: rtl;
+      }
+
+      .hack-safari {
+        direction: ltr;
+      }
+
+      .head {
+        display: inline-block;
+        overflow: hidden;
+        text-align: right;
+      }
+    }
+  }
+}

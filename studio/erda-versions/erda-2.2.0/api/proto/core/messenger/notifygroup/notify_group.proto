@@ -1,0 +1,196 @@
+syntax = "proto3";
+
+package erda.core.messenger.notifygroup;
+
+option go_package = "github.com/erda-project/erda-proto-go/core/messenger/notifygroup/pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "common/openapi.proto";
+
+service NotifyGroupService {
+  option(erda.common.openapi_service) = {
+    service: "core-services"
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc CreateNotifyGroup (CreateNotifyGroupRequest) returns (CreateNotifyGroupResponse) {
+    option(google.api.http)      = {
+      post: "/api/notify-groups"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/notify-groups"
+    };
+  }
+  rpc QueryNotifyGroup (QueryNotifyGroupRequest) returns (QueryNotifyGroupResponse) {
+    option(google.api.http)      = {
+      get: "/api/notify-groups"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/notify-groups"
+    };
+  }
+  rpc GetNotifyGroup (GetNotifyGroupRequest) returns (GetNotifyGroupResponse) {
+    option(google.api.http)     = {
+      get: "/api/notify-groups/{groupID}"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/notify-groups/{groupID}"
+    };
+  }
+  rpc UpdateNotifyGroup (UpdateNotifyGroupRequest) returns (UpdateNotifyGroupResponse) {
+    option(google.api.http)     = {
+      put: "/api/notify-groups/{groupID}"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/notify-groups/{groupID}"
+    };
+  }
+  rpc GetNotifyGroupDetail (GetNotifyGroupDetailRequest) returns (GetNotifyGroupDetailResponse) {
+    option(google.api.http)     = {
+      get: "/api/notify-groups/{groupID}/detail"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/notify-groups/{groupID}/detail"
+    };
+  }
+  rpc DeleteNotifyGroup (DeleteNotifyGroupRequest) returns (DeleteNotifyGroupResponse) {
+    option(google.api.http)     = {
+      delete: "/api/notify-groups/{groupID}"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/notify-groups/{groupID}"
+    };
+  }
+  rpc BatchGetNotifyGroup (BatchGetNotifyGroupRequest) returns (BatchGetNotifyGroupResponse) {
+    option(google.api.http) = {
+      get: "/api/notify-groups/actions/batch-get"
+    };
+  }
+}
+
+message CreateNotifyGroupRequest {
+  string                name        = 1;
+  string                scopeType   = 2;
+  string                scopeId     = 3;
+  repeated NotifyTarget targets     = 4;
+  string                creator     = 5;
+  string                label       = 6;
+  string                clusterName = 7;
+  bool                  autoCreate  = 8;
+  int64                 orgId       = 9;
+}
+
+message NotifyTarget {
+  string          type   = 1;
+  repeated Target values = 2;
+}
+
+message Target {
+  string receiver = 1;
+  string secret   = 2;
+}
+
+message CreateNotifyGroupResponse {
+  int64 data = 1;
+}
+
+message NotifyGroup {
+  int64                     id        = 1;
+  string                    name      = 2;
+  string                    scopeType = 3;
+  string                    scopeId   = 4;
+  repeated NotifyTarget     targets   = 5;
+  google.protobuf.Timestamp createdAt = 6;
+  string                    creator   = 7;
+  string                    label     = 8;
+}
+
+message QueryNotifyGroupRequest {
+  int64  pageNo      = 1;
+  int64  pageSize    = 2;
+  string scopeType   = 3;
+  string scopeId     = 4;
+  string label       = 5;
+  string name        = 6;
+  string clusterName = 7;
+}
+
+message QueryNotifyGroupResponse {
+  QueryNotifyGroupData data    = 1;
+  repeated string      userIDs = 2;
+}
+
+message QueryNotifyGroupData {
+  repeated NotifyGroup list  = 1;
+  int64                total = 2;
+}
+
+message GetNotifyGroupRequest {
+  int64 groupID = 1;
+}
+
+message GetNotifyGroupResponse {
+  NotifyGroup     data    = 1;
+  repeated string userIDs = 2;
+}
+
+message UpdateNotifyGroupRequest {
+  int64                 groupID = 1;
+  string                name    = 2;
+  repeated NotifyTarget targets = 3;
+}
+
+message UpdateNotifyGroupResponse {
+  int64 data = 1;
+}
+
+message GetNotifyGroupDetailRequest {
+  int64 groupID = 1;
+}
+
+message GetNotifyGroupDetailResponse {
+  NotifyGroupDetail data = 1;
+}
+
+message NotifyGroupDetail {
+  int64                 id                     = 1;
+  string                name                   = 2;
+  string                scopeType              = 3;
+  string                scopeId                = 4;
+  repeated NotifyUser   users                  = 5;
+  repeated NotifyTarget targets                = 6;
+  repeated Target       dingdingList           = 7;
+  repeated Target       dingdingWorknoticeList = 8;
+  repeated string       webhookList            = 9;
+}
+
+message NotifyUser {
+  string id       = 1;
+  string username = 2;
+  string email    = 3;
+  string mobile   = 4;
+  string type     = 5;
+}
+
+message DeleteNotifyGroupRequest {
+  int64 groupID = 1;
+}
+
+message DeleteNotifyGroupResponse {
+  int64 data = 1;
+}
+
+message BatchGetNotifyGroupRequest {
+  string ids = 1;
+}
+
+message BatchGetNotifyGroupResponse {
+  repeated NotifyGroup data = 1;
+}
+

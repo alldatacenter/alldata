@@ -1,0 +1,515 @@
+# 场景名
+scenario: auto-test-plan-detail
+
+hierarchy:
+  root: fileDetail
+  structure:
+    fileDetail:
+      children:
+        - fileConfig
+        - fileExecute
+      tabBarExtraContent:
+        - tabExecuteButton
+    fileConfig:
+      - fileInfoHead
+      - fileInfo
+      - stagesTitle
+      - stages
+      - stagesOperations
+    fileExecute:
+      - executeHead
+      - executeInfo
+      - executeTaskTitle
+      - executeTaskBreadcrumb
+      - executeTaskTable
+      - executeAlertInfo
+      - envDrawer
+    #      - resultDrawer
+    envDrawer:
+      content: envContainer
+    envContainer:
+      - envBaseInfoTitle
+      - envBaseInfo
+      - envHeaderTitle
+      - envHeaderInfo
+      - envGlobalTitle
+      - envGlobalInfo
+    envHeaderInfo:
+      children:
+        - envHeaderTable
+        - envHeaderText
+    envGlobalInfo:
+      children:
+        - envGlobalTable
+        - envGlobalText
+    fileInfoHead:
+      left: fileInfoTitle
+#      right: fileHistory
+#    fileHistory:
+#      children: fileHistoryButton
+#      content: fileHistoryTable
+    stagesOperations:
+      - addScenesSetButton
+      - scenesSetDrawer
+    scenesSetDrawer:
+      content:
+        - scenesSetSelect
+        - scenesSetInParams
+    executeHead:
+      left: executeInfoTitle
+      right:
+        - refreshButton
+        - cancelExecuteButton
+        - executeHistory
+  #  resultDrawer:
+  #    content: resultPreview
+    executeHistory:
+      children: executeHistoryButton
+      content: executeHistoryPop
+    executeHistoryPop:
+      - executeHistoryRefresh
+      - executeHistoryTable
+components:
+  envHeaderInfo:
+    type: Tabs
+  envHeaderTitle:
+    type: Title
+  envHeaderTable:
+    type: Table
+  envHeaderText:
+    type: FileEditor
+  envContainer:
+    type: Container
+  envDrawer:
+    type: Drawer
+  envBaseInfo:
+    type: Panel
+  envBaseInfoTitle:
+    type: Title
+  envGlobalInfo:
+    type: Tabs
+  envGlobalTitle:
+    type: Title
+  envGlobalTable:
+    type: Table
+  envGlobalText:
+    type: FileEditor
+  fileConfig:
+    type: Container
+  fileExecute:
+    type: Container
+  fileInfoHead:
+    type: LRContainer
+  executeHead:
+    type: LRContainer
+  executeInfoTitle:
+    type: Title
+  fileInfoTitle:
+    type: Title
+  fileHistory:
+    type: Popover
+  fileHistoryButton:
+    type: Button
+  stagesTitle:
+    type: Title
+  stagesOperations:
+    type: RowContainer
+  addScenesSetButton:
+    type: Button
+  resultDrawer:
+    type: Drawer
+  scenesSetDrawer:
+    type: Drawer
+  refreshButton:
+    type: Button
+  cancelExecuteButton:
+    type: Button
+  executeHistory:
+    type: Popover
+    props:
+      placement: "bottomRight"
+      size: "l"
+      title: ${{ i18n.autotest.plan.execute.history }}
+      trigger: "click"
+  executeHistoryButton:
+    type: Button
+  executeHistoryPop:
+    type: Container
+  executeHistoryRefresh:
+    type: Button
+  executeTaskTitle:
+    type: Title
+  executeTaskTable:
+    type: Table
+  executeTaskBreadcrumb:
+    type: Breadcrumb
+  executeAlertInfo:
+    type: Alert
+  fileDetail:
+    type: Tabs
+  tabExecuteButton:
+    type: Button
+  fileHistoryTable:
+    type: Table
+  fileInfo:
+    type: Panel
+  stages:
+    type: SortGroup
+  executeHistoryTable:
+    type: Table
+  executeInfo:
+    type: Panel
+  resultPreview:
+    type: InfoPreview
+  scenesSetSelect:
+    type: TreeSelect
+  scenesSetInParams:
+    type: Form
+rendering:
+  addScenesSetButton:
+    - name: stages
+    - name: scenesSetDrawer
+      state:
+        - name: "visible"
+          value: "{{ addScenesSetButton.showScenesSetDrawer }}"
+    - name: scenesSetSelect
+      state:
+        - name: "visible"
+          value: "{{ scenesSetDrawer.visible }}"
+        - name: "testPlanStepId"
+          value: "{{ addScenesSetButton.testPlanStepId }}"
+    - name: scenesSetInParams
+      state:
+        - name: "testPlanStepId"
+          value: "{{ addScenesSetButton.testPlanStepId }}"
+  stages:
+    - name: scenesSetDrawer
+      state:
+        - name: "visible"
+          value: "{{ stages.showScenesSetDrawer }}"
+    - name: scenesSetSelect
+      state:
+        - name: "visible"
+          value: "{{ stages.showScenesSetDrawer }}"
+        - name: "testPlanStepId"
+          value: "{{ stages.stepId }}"
+    - name: scenesSetInParams
+      state:
+        - name: scenesSetId
+          value: "{{ scenesSetSelect.scenesSetId }}"
+        - name: "testPlanStepId"
+          value: "{{ stages.stepId }}"
+  scenesSetSelect:
+    - name: scenesSetInParams
+      state:
+        - name: scenesSetId
+          value: "{{ scenesSetSelect.scenesSetId }}"
+        - name: "testPlanStepId"
+          value: "{{ scenesSetSelect.testPlanStepId }}"
+  scenesSetInParams:
+    - name: scenesSetDrawer
+      state:
+        - name: "visible"
+          value: "{{ scenesSetInParams.visible }}"
+    - name: stages
+  fileDetail:
+    - name: executeHead
+    - name: executeHistoryTable
+    - name: executeInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeTaskTable
+      state:
+        - name: "pipelineDetail"
+          value: "{{ executeInfo.pipelineDetail }}"
+    - name: executeTaskTitle
+    - name: executeTaskBreadcrumb
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeAlertInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: cancelExecuteButton
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+        - name: "pipelineDetail"
+          value: "{{ executeAlertInfo.pipelineDetail }}"
+    - name: executeHistoryButton
+      state:
+        - name: "visible"
+          value: "{{ executeTaskBreadcrumb.visible }}"
+    - name: refreshButton
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeInfoTitle
+    - name: executeHistoryRefresh
+    - name: envDrawer
+    - name: envBaseInfoTitle
+    - name: envBaseInfo
+    - name: envGlobalTitle
+    - name: envGlobalInfo
+    - name: envGlobalTable
+    - name: envGlobalText
+    - name: envHeaderTitle
+    - name: envHeaderTable
+    - name: envHeaderInfo
+    - name: envHeaderText
+  executeHistoryTable:
+    - name: executeInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+        - name: "envName"
+          value: "{{ executeHistoryTable.envName }}"
+        - name: "envData"
+          value: "{{ executeHistoryTable.envData }}"
+    - name: executeTaskTable
+      state:
+        - name: "pipelineDetail"
+          value: "{{ executeInfo.pipelineDetail }}"
+    - name: refreshButton
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeAlertInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: cancelExecuteButton
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+        - name: "pipelineDetail"
+          value: "{{ executeAlertInfo.pipelineDetail }}"
+    - name: executeTaskBreadcrumb
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: envDrawer
+    - name: envBaseInfoTitle
+    - name: envBaseInfo
+    - name: envGlobalTitle
+    - name: envGlobalInfo
+    - name: envGlobalTable
+    - name: envGlobalText
+    - name: envHeaderTitle
+    - name: envHeaderTable
+    - name: envHeaderInfo
+    - name: envHeaderText
+  executeTaskTable:
+    - name: executeInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeTaskTable.pipelineId }}"
+    - name: executeTaskTable
+      state:
+        - name: "pipelineDetail"
+          value: "{{ executeInfo.pipelineDetail }}"
+    - name: executeTaskBreadcrumb
+      state:
+        - name: "name"
+          value: "{{ executeTaskTable.name }}"
+        - name: "pipelineId"
+          value: "{{ executeTaskTable.pipelineId }}"
+        - name: "unfold"
+          value: "{{ executeTaskTable.unfold }}"
+    - name: executeHistoryButton
+      state:
+        - name: "visible"
+          value: "{{ executeTaskBreadcrumb.visible }}"
+    - name: refreshButton
+      state:
+        - name: "visible"
+          value: "{{ executeTaskBreadcrumb.visible }}"
+    # - name: cancelExecuteButton
+    #   state:
+    #     - name: "visible"
+    #       value: "{{ executeTaskBreadcrumb.visible }}"
+  executeTaskBreadcrumb:
+    - name: executeInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeTaskBreadcrumb.pipelineId }}"
+    - name: executeTaskTable
+      state:
+        - name: "pipelineDetail"
+          value: "{{ executeInfo.pipelineDetail }}"
+    - name: executeHistoryButton
+      state:
+        - name: "visible"
+          value: "{{ executeTaskBreadcrumb.visible }}"
+    - name: refreshButton
+      state:
+        - name: "visible"
+          value: "{{ executeTaskBreadcrumb.visible }}"
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeAlertInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: cancelExecuteButton
+      state:
+        # - name: "visible"
+        #   value: "{{ executeTaskBreadcrumb.visible }}"
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+        - name: "pipelineDetail"
+          value: "{{ executeAlertInfo.pipelineDetail }}"
+  executeHistoryRefresh:
+    - name: executeHistoryTable
+      state:
+        - name: pageNo
+          value: "{{ executeHistoryRefresh.pageNo }}"
+    - name: executeInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeTaskTable
+      state:
+        - name: "pipelineDetail"
+          value: "{{ executeInfo.pipelineDetail }}"
+    - name: executeAlertInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: envDrawer
+    - name: envBaseInfoTitle
+    - name: envBaseInfo
+    - name: envGlobalTitle
+    - name: envGlobalInfo
+    - name: envGlobalTable
+    - name: envGlobalText
+    - name: envHeaderTitle
+    - name: envHeaderTable
+    - name: envHeaderInfo
+    - name: envHeaderText
+  refreshButton:
+    - name: executeHistoryTable
+    - name: executeInfo
+    - name: executeTaskTable
+      state:
+        - name: "pipelineDetail"
+          value: "{{ executeInfo.pipelineDetail }}"
+    - name: executeAlertInfo
+    - name: cancelExecuteButton
+      state:
+        - name: "pipelineId"
+          value: "{{ executeAlertInfo.pipelineId }}"
+        - name: "pipelineDetail"
+          value: "{{ executeAlertInfo.pipelineDetail }}"
+    - name: envDrawer
+    - name: envBaseInfoTitle
+    - name: envBaseInfo
+    - name: envGlobalTitle
+    - name: envGlobalInfo
+    - name: envGlobalTable
+    - name: envGlobalText
+    - name: envHeaderTitle
+    - name: envHeaderTable
+    - name: envHeaderInfo
+    - name: envHeaderText
+  cancelExecuteButton:
+    - name: executeHistoryTable
+    - name: executeInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeTaskTable
+      state:
+        - name: "pipelineDetail"
+          value: "{{ executeInfo.pipelineDetail }}"
+    - name: refreshButton
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeAlertInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+  tabExecuteButton:
+    - name: executeHistoryTable
+    - name: executeInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+        - name: "envName"
+          value: "{{ executeHistoryTable.envName }}"
+        - name: "envData"
+          value: "{{ executeHistoryTable.envData }}"
+    - name: executeTaskTable
+      state:
+        - name: "pipelineDetail"
+          value: "{{ executeInfo.pipelineDetail }}"
+    - name: executeAlertInfo
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: cancelExecuteButton
+      state:
+        - name: pipelineId
+          value: "{{ executeHistoryTable.pipelineId }}"
+        - name: pipelineDetail
+          value: "{{ executeAlertInfo.pipelineDetail }}"
+    - name: executeTaskBreadcrumb
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: fileDetail
+      state:
+        - name: activeKey
+          value: "{{ tabExecuteButton.activeKey }}"
+    - name: refreshButton
+      state:
+        - name: "pipelineId"
+          value: "{{ executeHistoryTable.pipelineId }}"
+    - name: executeHistoryButton
+      state:
+        - name: "visible"
+          value: "{{ executeTaskBreadcrumb.visible }}"
+    - name: envDrawer
+    - name: envBaseInfoTitle
+    - name: envBaseInfo
+    - name: envGlobalTitle
+    - name: envGlobalInfo
+    - name: envGlobalTable
+    - name: envGlobalText
+    - name: envHeaderTitle
+    - name: envHeaderTable
+    - name: envHeaderInfo
+    - name: envHeaderText
+  __DefaultRendering__:
+    - name: fileDetail
+    - name: fileConfig
+      state:
+        - name: activeKey
+          value: "{{ fileDetail.activeKey }}"
+    - name: fileInfoHead
+    - name: fileInfoTitle
+    - name: fileInfo
+      state:
+        - name: "testPlanId"
+          value: "{{ fileDetail.testPlanId }}"
+        - name: "visible"
+          value: "{{ fileConfig.visible }}"
+    - name: stagesTitle
+    - name: stages
+      state:
+        - name: "testPlanId"
+          value: "{{ fileDetail.testPlanId }}"
+        - name: "visible"
+          value: "{{ fileConfig.visible }}"
+    - name: stagesOperations
+    - name: tabExecuteButton
+      state:
+        - name: "testPlanId"
+          value: "{{ fileDetail.testPlanId }}"
+    - name: addScenesSetButton
+      state:
+        - name: "testPlanId"
+          value: "{{ fileDetail.testPlanId }}"

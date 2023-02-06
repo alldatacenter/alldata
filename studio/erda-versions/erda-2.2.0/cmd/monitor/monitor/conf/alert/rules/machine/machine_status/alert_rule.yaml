@@ -1,0 +1,9 @@
+id: machine_status
+name: 机器宕机
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{host_ip}}'
+  display_url_id: machine_crash
+  level: Fatal
+  recover: "true"
+  tickets_metric_key: '{{host_ip}}'

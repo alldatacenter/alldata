@@ -1,0 +1,31 @@
+.case-api-body {
+  .body-type-choosen {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .body-value-container {
+    .body-val-none {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .key-val-item {
+      &:last-child {
+        border-bottom: 1px solid $color-border;
+      }
+    }
+  }
+
+  .test-json-editor {
+    position: relative;
+
+    .json-format-btn {
+      position: absolute;
+      top: -36px;
+      right: 36px;
+    }
+  }
+}

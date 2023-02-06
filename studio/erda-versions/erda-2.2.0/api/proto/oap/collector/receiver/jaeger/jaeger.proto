@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package erda.oap.collector.receiver.jaeger;
+option go_package = "github.com/erda-project/erda-proto-go/oap/collector/receiver/jaeger/pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+import "common/http.proto";
+import "oap/trace/tracing.proto";
+import "oap/common/common.proto";
+
+
+message PostSpansRequest {
+    repeated erda.oap.trace.Span spans = 1;
+}
+
+service JaegerService {
+  rpc SpansWithThrift (PostSpansRequest) returns (erda.common.VoidResponse) {
+    option (google.api.http) = {
+      post: "/api/jaeger/traces",
+    };
+  }
+}

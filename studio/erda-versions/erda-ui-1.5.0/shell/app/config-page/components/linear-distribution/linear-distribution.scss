@@ -1,0 +1,43 @@
+.cp-linear-distribution {
+  display: flex;
+  background-color: $color-dark-2;
+  border-radius: $radius;
+
+  &.size-small {
+    height: 24px;
+  }
+
+  &.size-normal {
+    height: 32px;
+  }
+
+  &.size-big {
+    height: 40px;
+  }
+
+  &-label {
+    margin-right: 24px;
+    .label-dot {
+      width: 8px;
+      height: 8px;
+      margin-right: 4px;
+    }
+  }
+
+  &-item {
+    padding-right: 2px;
+
+    &:first-child {
+      > span {
+        border-radius: $radius 0 0 $radius;
+      }
+    }
+
+    &:last-child {
+      padding-right: 0;
+      > span {
+        border-radius: 0 $radius $radius 0;
+      }
+    }
+  }
+}

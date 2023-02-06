@@ -1,0 +1,16 @@
+name: "Dice Issue Monitor"
+tags:
+    issue_iterator_id:
+        name: "iterator"
+    project_id:
+        name: "project"
+        
+fields:
+    bug_add_counts:
+        type: "number"
+        name: "add num"
+        unit:
+    bug_repair_counts:
+        type: "number"
+        name: "repair num"
+        unit:    

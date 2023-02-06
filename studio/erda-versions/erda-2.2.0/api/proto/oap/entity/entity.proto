@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package erda.oap.entity;
+option go_package = "github.com/erda-project/erda-proto-go/oap/entity/pb";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+
+// The Entity data model of the observability analysis platform.
+// Unlike time series data, entity data has a unique ID,
+// and data can be inserted, updated, and deleted according to the unique ID.
+message Entity {
+  string                             id                 = 1;
+  string                             type               = 2 [(validate.rules).string.min_len = 1];
+  string                             key                = 3 [(validate.rules).string.min_len = 1];
+  map<string, google.protobuf.Value> values             = 4;
+  map<string, string>                labels             = 5;
+  int64                              createTimeUnixNano = 6;
+  int64                              updateTimeUnixNano = 7;
+}
+
+service EntityService {
+  rpc SetEntity (SetEntityRequest) returns (SetEntityResponse)  {
+    option (google.api.http) = {
+      post: "/api/oap/entities",
+      body: "data",
+    };
+  }
+
+  rpc RemoveEntity (RemoveEntityRequest) returns (RemoveEntityResponse)  {
+    option (google.api.http) = {
+      delete: "/api/oap/entities/{type}/{key}",
+    };
+  }
+
+  rpc GetEntity (GetEntityRequest) returns (GetEntityResponse)  {
+    option (google.api.http) = {
+      get: "/api/oap/entities/{type}/{key}",
+    };
+  }
+
+  rpc ListEntities (ListEntitiesRequest) returns (ListEntitiesResponse)  {
+    option (google.api.http) = {
+      get: "/api/oap/entities",
+    };
+  }
+}
+
+message SetEntityRequest {
+  Entity data = 1 [(validate.rules).message.required = true];
+}
+
+message SetEntityResponse {
+  string data = 1;
+}
+
+message RemoveEntityRequest {
+  string type = 1 [(validate.rules).string.min_len = 1];
+  string key  = 2 [(validate.rules).string.min_len = 1];
+}
+
+message RemoveEntityResponse {
+  bool ok = 1;
+}
+
+message GetEntityRequest {
+  string type = 1 [(validate.rules).string.min_len = 1];
+  string key  = 2 [(validate.rules).string.min_len = 1];
+}
+
+message GetEntityResponse {
+  Entity data = 1;
+}
+
+message ListEntitiesRequest {
+  string              type                  = 1;
+  map<string, string> labels                = 2;
+  int64               limit                 = 3;
+  int64               updateTimeUnixNanoMin = 4;
+  int64               updateTimeUnixNanoMax = 5;
+  bool                debug                 = 6;
+}
+
+message ListEntitiesResponse {
+  EntityList data = 1;
+}
+
+message EntityList {
+  repeated Entity list  = 1;
+  int64           total = 2;
+}

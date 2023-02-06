@@ -1,0 +1,74 @@
+.backlog-iteration-item-container {
+  &.drag-over {
+    background-color: $color-hover;
+  }
+}
+
+.backlog-iteration-item {
+  height: 48px;
+  border-bottom: 1px solid $color-border;
+  cursor: pointer;
+
+  .iteration-info {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    width: 0;
+    padding-left: 8px;
+    overflow: auto;
+  }
+
+  .open-icon {
+    color: $color-dark-4;
+    font-size: 14px;
+    transition: transform 0.3s;
+
+    &.close {
+      transform: rotate(-90deg);
+    }
+
+    &.open {
+      transform: rotate(0deg);
+    }
+  }
+
+  .iteration-time-duration {
+    display: flex;
+    align-items: center;
+  }
+
+  .operations {
+    display: none;
+  }
+
+  &:hover {
+    .operations {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .backlog-iteration-form {
+    display: flex;
+
+    &-datepicker {
+      width: 220px;
+    }
+
+    &-title {
+      width: 100px;
+    }
+  }
+}
+
+.backlog-iteration-issues {
+  .backlog-issue-item {
+    padding-left: 20px;
+  }
+
+  .empty-holder {
+    height: 80px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-border;
+  }
+}

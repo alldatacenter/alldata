@@ -1,0 +1,62 @@
+.middleware-dashboard-content {
+  margin: -12px;
+}
+
+.middleware-dashboard-top {
+  min-width: 1000px;
+  margin-bottom: 32px;
+  padding: $p12;
+  background: $white;
+  box-shadow: $color-dark-1 0 1px 8px 0;
+
+  .filter-item {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  // TODO: 合并相同样式
+  .filter-item-label {
+    padding: 0 4px;
+    color: $color-text-sub;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #d9d9d9;
+    border-right: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  .filter-item-content {
+    flex: 1;
+    width: 0;
+
+    .ant-select-selection {
+      max-height: 120px;
+      overflow-y: scroll;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .ant-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  .dc-view-wrapper {
+    border: none;
+  }
+
+  .middleware-overview-item {
+    padding: $p20;
+    color: $color-text-desc;
+    font-size: 22px;
+    text-align: center;
+    background: $white;
+    border-radius: $radius;
+
+    .num {
+      color: $color-text;
+    }
+  }
+}

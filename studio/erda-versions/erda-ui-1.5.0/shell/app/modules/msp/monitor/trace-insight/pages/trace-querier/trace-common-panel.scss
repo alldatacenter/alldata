@@ -1,0 +1,15 @@
+.trace-common-panel {
+  @extend %shallow-shadow;
+  border-radius: $radius;
+
+  .trace-common-panel-title {
+    margin: 0;
+    color: $color-text;
+    font-size: 14px;
+  }
+
+  .card-body {
+    position: relative;
+    min-height: 200px;
+  }
+}

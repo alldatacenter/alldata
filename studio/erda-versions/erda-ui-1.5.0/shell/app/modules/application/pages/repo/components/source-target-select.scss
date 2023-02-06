@@ -1,0 +1,60 @@
+.repo-source-target-select {
+  position: relative;
+
+  .show-diff-btn {
+    position: absolute;
+    top: 0;
+    right: -140px;
+
+    button {
+      height: 30px;
+    }
+  }
+
+  .branch-title {
+    margin-bottom: 6px;
+    color: $color-text-desc;
+    white-space: nowrap;
+  }
+
+  .branch-select-row {
+    position: relative;
+    display: flex;
+    margin-bottom: $p16;
+  }
+
+  .branch-merge-arrow {
+    margin-right: $p4;
+    line-height: $p32;
+  }
+
+  .repo-branch-select {
+    width: 50%;
+
+    max-width: none;
+
+    &:first-child {
+      margin-right: $p8;
+    }
+  }
+
+  .compare-button {
+    position: absolute;
+    right: -80px;
+  }
+
+  .error-block {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    margin-bottom: -10px;
+    font-weight: 500;
+    line-height: 32px;
+
+    i {
+      margin-right: 6px;
+      color: $red;
+      font-size: 18px;
+    }
+  }
+}

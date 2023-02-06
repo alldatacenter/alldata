@@ -1,0 +1,233 @@
+- name: "应用实例CPU使用率异常"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【{{application_name}}应用{{service_name}}服务实例CPU使用率告警】
+  template: |
+    【应用实例CPU使用率异常告警】
+
+    项目: {{project_name}}
+
+    应用: {{application_name}}
+
+    服务实例: {{runtime_name}} - {{service_name}}.{{container_id}} - {{pod_ip}}
+
+    CPU平均使用率: {{cpu_usage_percent_avg}}
+
+    CPU限制: {{cpu_limit_value}}核
+
+    机器: {{host_ip}}
+
+    terminus_key: {{terminus_key}}
+
+    时间: {{timestamp}}
+
+    告警级别: {{level}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+
+- name: "应用实例CPU使用率异常告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【{{application_name}}应用{{service_name}}服务实例CPU使用率告警】
+  template: |
+    {{application_name}}应用{{service_name}}触发服务实例CPU使用率异常告警，terminus_key: {{terminus_key}}，CPU平均使用率: {{cpu_usage_percent_avg}}，告警级别: {{level}}
+- name: "应用实例CPU使用率异常告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    【{{application_name}}应用{{service_name}}服务实例CPU使用率告警】
+  template: |
+    {{application_name}}应用{{service_name}}触发服务实例CPU使用率异常告警，terminus_key: {{terminus_key}}，CPU平均使用率: {{cpu_usage_percent_avg}}，告警级别: {{level}}
+- name: "应用实例CPU使用率恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    trigger_duration: "time:ms"
+    container_id: "string:6"
+  title: |
+    【{{application_name}}应用{{service_name}}服务实例CPU使用率恢复】
+  template: |
+    【应用实例CPU使用率恢复】
+
+    项目: {{project_name}}
+
+    应用: {{application_name}}
+
+    服务实例: {{runtime_name}} - {{service_name}}.{{container_id}} - {{pod_ip}}
+
+    平均使用率: {{cpu_usage_percent_avg}}
+
+    机器: {{host_ip}}
+
+    terminus_key: {{terminus_key}}
+
+    容器ID: {{container_id}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "应用实例CPU使用率恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    trigger_duration: "time:ms"
+    container_id: "string:6"
+  title: |
+    【{{application_name}}应用{{service_name}}服务实例CPU使用率恢复】
+  template: |
+    {{application_name}}应用{{service_name}}服务实例CPU使用率异常恢复，terminus_key: {{terminus_key}}，平均使用率: {{cpu_usage_percent_avg}}
+
+- name: "应用实例CPU使用率恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    trigger_duration: "time:ms"
+    container_id: "string:6"
+  title: |
+    【{{application_name}}应用{{service_name}}服务实例CPU使用率恢复】
+  template: |
+    {{application_name}}应用{{service_name}}服务实例CPU使用率异常恢复，terminus_key: {{terminus_key}}，平均使用率: {{cpu_usage_percent_avg}}。
+
+- name: "CPU usage exception of application instance"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    [CPU usage exception alarm of application instance]
+
+    Project: {{project_name}}
+
+    Application: {{application_name}}
+
+    Service instance: {{runtime_name}} - {{service_name}}.{{container_id}} - {{pod_ip}}
+
+    Average CPU usage: {{cpu_usage_percent_avg}}
+
+    CPU limit: {{cpu_limit_value}} core
+
+    Machine: {{host_ip}}
+
+    terminus_key: {{terminus_key}}
+
+    Time: {{timestamp}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+
+- name: "CPU usage exception alarm of application instance"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    CPU usage exception alarm triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}, average CPU usage: {{cpu_usage_percent_avg}}
+- name: "CPU usage exception alarm of application instance"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    cpu_limit_value: "fraction:1"
+    container_id: "string:6"
+  title: |
+    [CPU usage alarm of service {{service_name}} of application {{application_name}}]
+  template: |
+    CPU usage exception alarm triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}, average CPU usage: {{cpu_usage_percent_avg}}
+- name: "CPU usage recovery of application instance"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    trigger_duration: "time:ms"
+    container_id: "string:6"
+  title: |
+    [CPU usage recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    [CPU usage recovery of application instance]
+
+    Project: {{project_name}}
+
+    Application: {{application_name}}
+
+    Service instance: {{runtime_name}} - {{service_name}}.{{container_id}} - {{pod_ip}}
+
+    Average usage: {{cpu_usage_percent_avg}}
+
+    Machine: {{host_ip}}
+
+    terminus_key: {{terminus_key}}
+
+    Container ID: {{container_id}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "CPU usage recovery of application instance"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    trigger_duration: "time:ms"
+    container_id: "string:6"
+  title: |
+    [CPU usage recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    CPU usage exception recovery triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}, average usage: {{cpu_usage_percent_avg}}
+
+- name: "CPU usage recovery of application instance"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    cpu_usage_percent_avg: "percent:1"
+    trigger_duration: "time:ms"
+    container_id: "string:6"
+  title: |
+    [CPU usage recovery of service {{service_name}} of application {{application_name}}]
+  template: |
+    CPU usage exception recovery triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{terminus_key}}, average usage {{cpu_usage_percent_avg}}:

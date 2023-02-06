@@ -1,0 +1,14 @@
+- redis_master_repl_offset:
+    title: "全局的数据同步偏移量"
+    metric_names: "redis"
+    type: "redis_remove"
+    order: 23
+    defines:
+      avg.master_repl_offset:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

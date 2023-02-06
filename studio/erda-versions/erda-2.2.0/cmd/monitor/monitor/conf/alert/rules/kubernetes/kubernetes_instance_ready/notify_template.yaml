@@ -1,0 +1,175 @@
+- name: "kubernetes组件实例Ready状态异常"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【{{cluster_name}}集群kubernetes组件{{resource_name_value}} Ready状态告警】
+  template: |
+    【kubernetes组件Ready状态告警】
+
+    组件: {{resource_name_value}}
+
+    不可用实例: {{not_ready_value}}
+
+    期望实例: {{total_value}}
+
+    集群: {{cluster_name}}
+
+    组织名称: {{org_name}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "kubernetes组件实例Ready状态异常"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【{{cluster_name}}集群kubernetes组件{{resource_name_value}} Ready状态告警】
+  template: |
+    {{cluster_name}}集群{{resource_name_value}}组件触发kubernetes组件实例Ready状态异常，组织名称: {{org_name}}，不可用实例: {{not_ready_value}}，告警级别: {{level}}
+- name: "kubernetes组件实例Ready状态异常"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【{{cluster_name}}集群kubernetes组件{{resource_name_value}} Ready状态告警】
+  template: |
+    {{cluster_name}}集群{{resource_name_value}}组件触发kubernetes组件实例Ready状态异常，组织名称: {{org_name}}，不可用实例: {{not_ready_value}}，告警级别: {{level}}
+- name: "kubernetes组件实例Ready状态异常"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{cluster_name}}集群kubernetes组件{{resource_name_value}} Ready状态恢复】
+  template: |
+    【kubernetes组件Ready状态恢复】
+
+    组件: {{resource_name_value}}
+
+    可用实例: {{ready_value}}
+
+    期望实例: {{total_value}}
+
+    集群: {{cluster_name}}
+
+    组织名称: {{org_name}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "kubernetes组件实例Ready状态异常"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{cluster_name}}集群kubernetes组件{{resource_name_value}} Ready状态恢复】
+  template: |
+    {{cluster_name}}集群{{resource_name_value}}组件触发kubernetes组件实例Ready状态异常恢复，组织名称: {{org_name}}，可用实例: {{ready_value}}
+- name: "kubernetes组件实例Ready状态异常"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{cluster_name}}集群kubernetes组件{{resource_name_value}} Ready状态恢复】
+  template: |
+    {{cluster_name}}集群{{resource_name_value}}组件触发kubernetes组件实例Ready状态异常恢复，组织名称: {{org_name}}，可用实例: {{ready_value}}
+
+- name: "Ready status exception of Kubernetes component instance"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [Ready status alarm of Kubernetes component {{resource_name_value}} of cluster {{cluster_name}}]
+  template: |
+    [Ready status alarm of Kubernetes component]
+
+    Component: {{resource_name_value}}
+
+    Unavailable instance: {{not_ready_value}}
+
+    Expected instance: {{total_value}}
+
+    Cluster: {{cluster_name}}
+
+    Organization name: {{org_name}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Ready status exception of Kubernetes component instance"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Ready status alarm of Kubernetes component {{resource_name_value}} of cluster {{cluster_name}}]
+  template: |
+    Ready status exception of Kubernetes component instance triggered by component {{resource_name_value}} of cluster {{cluster_name}}, organization name: {{org_name}}, unavailable instance: {{not_ready_value}}
+- name: "Ready status exception of Kubernetes component instance"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [Ready status alarm of Kubernetes component {{resource_name_value}} of cluster {{cluster_name}}]
+  template: |
+    Ready status exception of Kubernetes component instance triggered by component {{resource_name_value}} of cluster {{cluster_name}}, organization name: {{org_name}}, unavailable instance: {{not_ready_value}}
+- name: "Ready status exception recovery of Kubernetes component instance"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Ready status recovery of Kubernetes component {{resource_name_value}} of cluster {{cluster_name}}]
+  template: |
+    [Ready status recovery of Kubernetes component]
+
+    Component: {{resource_name_value}}
+
+    Available instance: {{ready_value}}
+
+    Expected instance: {{total_value}}
+
+    Cluster: {{cluster_name}}
+
+    Organization name: {{org_name}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Ready status exception recovery of Kubernetes component instance"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Ready status recovery of Kubernetes component {{resource_name_value}} of cluster {{cluster_name}}]
+  template: |
+    Ready status exception recovery of Kubernetes component instance triggered by component {{resource_name_value}} of cluster {{cluster_name}}, organization name: {{org_name}}, available instance: {{ready_value}}
+- name: "Ready status exception recovery of Kubernetes component instance"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [Ready status recovery of Kubernetes component {{resource_name_value}} of cluster {{cluster_name}}]
+  template: |
+    Ready status exception recovery of Kubernetes component instance triggered by component {{resource_name_value}} of cluster {{cluster_name}}, organization name: {{org_name}}, available instance: {{ready_value}}

@@ -1,0 +1,1 @@
+UPDATE `dice_notices` SET `status` = 'unpublished' WHERE content LIKE '%「SYSTEM INFO」: Your current company has been using the%' AND `status` = 'published';

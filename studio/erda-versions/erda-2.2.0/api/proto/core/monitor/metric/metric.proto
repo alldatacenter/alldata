@@ -1,0 +1,122 @@
+syntax = "proto3";
+
+package erda.core.monitor.metric;
+option go_package = "github.com/erda-project/erda-proto-go/core/monitor/metric/pb";
+import "google/protobuf/descriptor.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+service MetricService {
+
+  rpc QueryWithInfluxFormat (QueryWithInfluxFormatRequest) returns (QueryWithInfluxFormatResponse)  {
+    option (google.api.http) = {
+      post: "/query?q={statement}"
+    };
+  }
+  rpc SearchWithInfluxFormat (QueryWithInfluxFormatRequest) returns (QueryWithInfluxFormatResponse)  {
+    option (google.api.http) = {
+      get: "/query?q={statement}"
+    };
+  }
+
+  rpc QueryWithTableFormat (QueryWithTableFormatRequest) returns (QueryWithTableFormatResponse)  {
+    option (google.api.http) = {
+      post: "/api/monitor/metric-query?q={statement}" 
+    };
+  }
+  rpc SearchWithTableFormat (QueryWithTableFormatRequest) returns (QueryWithTableFormatResponse)  {
+    option (google.api.http) = {
+      get: "/api/monitor/metric-query?q={statement}"
+    };
+  }
+
+  rpc GeneralQuery (GeneralQueryRequest) returns (GeneralQueryResponse)  {
+    option (google.api.http) = {
+      post: "/api/monitor/metric-general-query?q={statement}"
+    };
+  }
+  rpc GeneralSearch (GeneralQueryRequest) returns (GeneralQueryResponse)  {
+    option (google.api.http) = {
+      get: "/api/monitor/metric-general-query?q={statement}"
+    };
+  }
+
+}
+
+// QueryWithInfluxFormat
+message QueryWithInfluxFormatRequest {
+  string start = 1;
+  string end = 2;
+  repeated Filter filters = 3;
+  map<string, string> options = 4;
+  string statement = 5;
+  map<string, google.protobuf.Value> params = 6;
+}
+
+message QueryWithInfluxFormatResponse {
+  repeated Result results = 1;
+}
+
+message Serie {
+  string name = 1;
+  repeated string columns = 2;
+  repeated Row rows = 3;
+}
+
+message Row {
+  repeated google.protobuf.Value values = 1;
+}
+
+message Result {
+  int64 statement_id = 1 [json_name = "statement_id"];
+  repeated Serie series = 2;
+}
+
+// QueryWithTableFormat
+message QueryWithTableFormatRequest {
+  string start = 1;
+  string end = 2;
+  repeated Filter filters = 3;
+  map<string, string> options = 4;
+  string statement = 5;
+  map<string, google.protobuf.Value> params = 6;
+}
+
+message QueryWithTableFormatResponse {
+  TableResult data = 1;
+}
+
+message TableResult {
+  repeated TableColumn cols = 1;
+  repeated TableRow data = 2;
+  int64 interval = 3;
+}
+
+message TableColumn {
+  string key = 1;
+  string name = 2;
+  string flag = 3;
+}
+
+message TableRow {
+  map<string, google.protobuf.Value> values = 1;
+}
+
+// GeneralQuery
+message GeneralQueryRequest {
+  string ql = 1;
+  string statement = 2;
+  string format = 3;
+  map<string, google.protobuf.Value> params = 4;
+}
+
+message GeneralQueryResponse {
+  google.protobuf.Value data = 1;
+}
+
+// common
+message Filter {
+  string key = 1;
+  string op = 2;
+  google.protobuf.Value value = 3;
+}

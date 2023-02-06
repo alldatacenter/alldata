@@ -1,0 +1,14 @@
+- elasticsearch_active_shards:
+    title: "分片个数"
+    metric_names: "es_cluster_health"
+    type: "elasticsearch_remove"
+    order: 4
+    defines:
+      avg.active_shards:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

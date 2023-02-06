@@ -1,0 +1,52 @@
+.config-section {
+  padding: 20px 0;
+  border-bottom: 1px solid $color-border;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .highlight-red {
+    color: $color-danger;
+  }
+
+  .config-section-desc {
+    padding-right: 50px;
+  }
+}
+
+.config-section-title {
+  line-height: 48px;
+
+  .name {
+    font-size: 18px;
+  }
+}
+
+.config-section-desc {
+  color: $color-text-desc;
+}
+
+.config-section-content {
+  margin-bottom: $p32;
+
+  .operate {
+    margin-bottom: 17px;
+  }
+}
+
+.section-info-form {
+  .ant-form-item {
+    margin-bottom: 17px;
+  }
+
+  .ant-form-item-children {
+    > p {
+      margin-bottom: 0;
+    }
+  }
+}

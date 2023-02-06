@@ -1,0 +1,109 @@
+name: "WAF Access"
+tags:
+    sls_project:
+        name: "SLS Project"
+    status_type:
+        name: "Status Type"
+    region:
+        name: "Region"
+    remote_addr:
+        name: "Remote Addr"
+    sls_category:
+        name: "SLS Category"
+    sls_log_store:
+        name: "SLS Log Store"
+    ua_os_family:
+        name: "UA OS Family"
+    block_action:
+        name: "Block Action"
+    org_name:
+        name: "Org Name"
+    ua_device_type:
+        name: "UA Device Type"
+    wxbb_test:
+        name: "Wxbb Test"
+    sls_topic:
+        name: "SLS Topic"
+    status:
+        name: "Status"
+    request_traceid:
+        name: "Request Traceid"
+    ua_browser_type:
+        name: "UA Browser Type"
+    ua_os:
+        name: "UA OS"
+    upstream_addr:
+        name: "Upstream Addr"
+    dice_org_id:
+        name: "Dice Org ID"
+    http_x_forwarded_for:
+        name: "HTTP X Forwarded For"
+    request_method:
+        name: "Request Method"
+    ua_browser_family:
+        name: "UA Browser Family"
+    user_id:
+        name: "User ID"
+    wxbb_invalid_wua:
+        name: "Wxbb Invalid Wua"
+    host:
+        name: "Host"
+    matched_host:
+        name: "Matched Host"
+    origin:
+        name: "Origin"
+    time:
+        name: "Time"
+    http_error:
+        name: "HTTP Error"
+    dice_org_name:
+        name: "Dice Org Name"
+    http_user_agent:
+        name: "HTTP User Agent"
+    request_path:
+        name: "Request Path"
+    ua_browser:
+        name: "UA Browser"
+    wxbb_rule_id:
+        name: "Wxbb Rule ID"
+    content_type:
+        name: "Content Type"
+    http_referer:
+        name: "HTTP Referer"
+    product:
+        name: "Product"
+    real_client_ip:
+        name: "Real Client IP"
+    server_protocol:
+        name: "Server Protocol"
+    sls_source:
+        name: "SLS Source"
+    upstream_response_time:
+        name: "Upstream Response Time"
+    https:
+        name: "Https"
+fields:
+    remote_port:
+        name: "Remote Port"
+        type: "number"
+        unit:
+    request_length:
+        name: "Request Length"
+        type: "number"
+        unit:
+    request_time_msec:
+        name: "Request Time Msec"
+        type: "number"
+        unit:
+    status:
+        name: "Status"
+        type: "number"
+        unit:
+    upstream_status:
+        name: "Upstream Status"
+        type: "number"
+        unit:
+    body_bytes_sent:
+        name: "Body Bytes Sent"
+        type: "number"
+        unit:

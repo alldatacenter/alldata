@@ -1,0 +1,14 @@
+- ta_m_top_page_error:
+    title: "错误页面"
+    metric_names: "ta_error_mobile"
+    type: "ta_m"
+    order: 0
+    defines:
+      count.count:
+        label: "错误次数"
+        unit: ""
+        unit_type: ""
+        axis_index: 0
+        chart_type: ""
+    parameters:
+

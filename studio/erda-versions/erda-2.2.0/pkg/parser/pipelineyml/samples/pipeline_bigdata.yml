@@ -1,0 +1,44 @@
+version: '1.0'
+
+triggers:
+- schedule:
+    cron: "0 0 5 * * ?"
+
+resources:
+- name: repo
+  type: git
+  source:
+    uri: ((gittar.repo))
+    branch: ((gittar.branch))
+    username: ((gittar.username))
+    password: ((gittar.password))
+
+- name: datax-ec-export_activity_statistics_df
+  type: datax
+  source:
+    jsonFilePath: repo/ec/export/source/export_ads_ec_rpt_activity_statistics_df.json
+    databaseType: hive
+    url: jdbc:hive2://spark-thrift-server.marathon.l4lb.thisdcos.directory:9000/;auth=noSasl
+    username: hive
+    password: hive
+    database: xhsd_prod
+
+
+stages:
+- name: repo
+  tasks:
+  - get: repo
+    params:
+      depth: 3
+
+- name: datax-ec-export_activity_statistics_df
+  tasks:
+  - put: datax-ec-export_activity_statistics_df
+    params:
+      outputTables:
+      - bi_promotion_activity_data_detail
+      els:
+      - repo/dice.yml
+      - -Dpt_date=${horus:getDateFromNow("",'','yyyy-MM-dd',-1,'D')}
+      triggerType: MINUTE
+      frequency: 1

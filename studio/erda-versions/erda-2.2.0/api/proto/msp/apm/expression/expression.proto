@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package erda.msp.apm.expression;
+option go_package = "github.com/erda-project/erda-proto-go/msp/apm/expression/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+
+service ExpressionService {
+  rpc GetExpression (GetExpressionRequest) returns (GetExpressionResponse)  {
+    option (google.api.http) = {
+      get: "/api/msp/expression/{type}",
+    };
+  }
+}
+
+message GetExpressionRequest{
+  string type = 1 [(validate.rules).string.min_len = 1];
+}
+
+message GetExpressionResponse{
+  repeated Expression data = 1;
+}
+
+message Expression {
+  string                             name       = 1;
+  map<string, google.protobuf.Value> attributes = 2;
+  map<string, google.protobuf.Value> expression = 3;
+  bool                               enable     = 4;
+  string                             version    = 5;
+}

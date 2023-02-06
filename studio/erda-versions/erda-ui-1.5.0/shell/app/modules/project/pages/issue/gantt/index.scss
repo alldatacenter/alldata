@@ -1,0 +1,89 @@
+.erda-tree {
+  .erda-tree-level0 {
+    &:not(:first-child) {
+      &::after {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        top: -1px;
+        background-color: $border-color;
+        content: '';
+      }
+    }
+  }
+
+  .erda-tree-indent {
+    .erda-tree-indent-left {
+      border-width: 0 0 1px 1px;
+      border-style: solid;
+      border-color: $border-color;
+      position: relative;
+      &::after {
+        position: absolute;
+        content: '';
+        width: 1px;
+        height: 5px;
+        bottom: -3px;
+        right: -1px;
+        background-color: $border-color;
+      }
+      &.last-item {
+        border-bottom-left-radius: 2px;
+      }
+    }
+    .erda-tree-indent-full {
+      border-left: 1px solid $border-color;
+    }
+    .erda-tree-indent-right {
+      background-color: $border-color;
+    }
+    .erda-tree-indent-left-bottom {
+      background-color: $border-color;
+    }
+  }
+}
+
+.issue-plan-status-total {
+  width: 80%;
+  .issue-plan-status-total-item {
+    border-right: 1px solid $white;
+  }
+}
+
+.erda-task-list-header {
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+
+  &-selector {
+    .ant-select-selector {
+      border: none !important;
+      box-shadow: none !important;
+
+      &:hover {
+        background-color: rgba($color-default, 0.06);
+      }
+
+      .ant-select-selection-item {
+        color: $color-default !important;
+        padding-right: 14px !important;
+      }
+    }
+
+    .ant-select-arrow {
+      top: 13px;
+      color: rgba($color-default, 0.6);
+    }
+  }
+}
+
+.gantt-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 16px;
+  background: $white;
+  z-index: 100;
+}

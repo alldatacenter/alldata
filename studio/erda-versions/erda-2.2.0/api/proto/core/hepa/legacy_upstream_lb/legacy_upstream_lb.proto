@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package erda.core.hepa.legacy_upstream_lb;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/legacy_upstream_lb/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+service UpstreamLbService {
+  rpc TargetOnline(TargetOnlineRequest) returns (TargetOnlineResponse) {
+    option (google.api.http) = {
+      put: "/api/gateway/target/online",
+      body: "lb",
+    };
+  }
+  rpc TargetOffline(TargetOfflineRequest) returns (TargetOfflineResponse) {
+    option (google.api.http) = {
+      put: "/api/gateway/target/offline",
+      body: "lb",
+    };
+  }
+}
+
+message UpstreamLb {
+  string az = 1;
+  string lbName = 2;
+  string orgId = 3;
+  string projectId = 4;
+  string env = 5;
+  int32 deploymentId = 6;
+  string healthcheckPath = 7;
+  repeated string targets = 8;
+}
+
+message TargetOnlineRequest {
+  UpstreamLb lb = 1;
+}
+
+message TargetOnlineResponse {
+  bool data = 1;
+}
+
+message TargetOfflineRequest {
+  UpstreamLb lb = 1;
+}
+
+message TargetOfflineResponse {
+  bool data = 1;
+}
+

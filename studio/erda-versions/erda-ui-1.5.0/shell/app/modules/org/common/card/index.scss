@@ -1,0 +1,37 @@
+.erda-card {
+  .erda-card-header {
+    line-height: 1;
+    font-weight: bold;
+    background-color: $color-table-head-bg;
+  }
+
+  .erda-card-body {
+    color: $color-text-desc;
+    background-color: $white;
+
+    .label,
+    .erda-panel-label {
+      color: #302647;
+    }
+
+    .desc,
+    .erda-panel-value {
+      font-size: 12px;
+    }
+
+    .erda-panel-item,
+    .erda-panel-value {
+      margin-bottom: 0;
+    }
+
+    .erda-panel-list {
+      padding: 1.5rem;
+      margin: 0.5rem 0;
+      background-color: $color-table-bg-hover;
+    }
+
+    .erda-panel {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.topology-node-popover {
+  width: 330px;
+
+  .ant-popover-content {
+    .ant-popover-arrow {
+      display: none;
+    }
+
+    .ant-popover-inner {
+      background: #443b59;
+
+      .ant-popover-title {
+        border-width: 0;
+        padding: 0;
+      }
+
+      &-content {
+        padding-top: 8px;
+
+        .metric-detail {
+          > div {
+            background: rgba($white, 0.04);
+          }
+        }
+      }
+    }
+  }
+}
+
+.node-handle {
+  &-start,
+  &-end {
+    opacity: 0;
+  }
+}

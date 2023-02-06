@@ -1,0 +1,73 @@
+{
+    "order":0,
+    "index_patterns":[
+        "${EVENT_INDEX_PREFIX:erda-events-}*"
+    ],
+    "settings":{
+        "number_of_shards": ${EVENT_INDEX_SHARDS:2},
+        "number_of_replicas": ${EVENT_INDEX_REPLICAS:1},
+        "index":{
+            "refresh_interval":"15s",
+            "translog.durability": "async",
+            "translog.sync_interval": "15s",
+            "translog.flush_threshold_size": "1024mb"
+        }
+    },
+    "mappings":{
+        "events":{
+            "dynamic_templates":[
+                {
+                    "content_field":{
+                        "path_match":"content",
+                        "match_mapping_type":"string",
+                        "mapping":{
+                            "type":"keyword",
+                            "index":false
+                        }
+                    }
+                },
+                {
+                    "tags": {
+                        "match": "*",
+                        "match_mapping_type": "string",
+                        "mapping": {
+                            "type": "keyword",
+                            "ignore_above": 10240
+                        }
+                    }
+                },
+                {
+                    "relations": {
+                        "match": "*",
+                        "match_mapping_type": "string",
+                        "mapping": {
+                            "type": "keyword",
+                            "ignore_above": 10240
+                        }
+                    }
+                }
+            ],
+            "properties":{
+                "event_id":{
+                    "type":"keyword",
+                    "ignore_above": 10240
+                },
+                "name":{
+                    "type":"keyword",
+                    "ignore_above": 10240
+                },
+                "kind":{
+                    "type":"keyword",
+                    "ignore_above": 10240
+                },
+                "@timestamp":{
+                    "type":"date"
+                },
+                "@version":{
+                    "type":"keyword"
+                }
+            }
+        }
+    },
+    "aliases":{}
+}

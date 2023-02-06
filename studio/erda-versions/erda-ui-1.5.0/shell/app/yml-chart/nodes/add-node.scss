@@ -1,0 +1,25 @@
+.yml-chart-node {
+  &.add-node {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: $color-text-sub;
+    background-color: $white;
+    border-radius: $radius;
+    cursor: pointer;
+    @extend %shallow-shadow;
+
+    &:hover {
+      @extend %hover-shadow;
+      color: $primary;
+    }
+
+    .add-icon {
+      margin-right: 0;
+      font-size: 40px;
+    }
+  }
+}

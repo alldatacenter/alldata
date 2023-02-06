@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+package erda.core.hepa.runtime_service;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/runtime_service/pb";
+import "google/api/annotations.proto";
+
+
+// +publish service:"hepa"
+service RuntimeService {
+  // +publish path:"/api/gateway/runtime-services"
+  rpc ChangeRuntime(ChangeRuntimeRequest) returns (ChangeRuntimeResponse) {
+    option (google.api.http) = {
+      put: "/api/gateway/runtime-services",
+    };
+  }
+
+  // +publish path:"/api/gateway/runtime-services/{runtimeId}"
+  rpc DeleteRuntime(DeleteRuntimeRequest) returns (DeleteRuntimeResponse) {
+    option (google.api.http) = {
+      delete: "/api/gateway/runtime-services/{runtimeId}",
+    };
+  }
+
+  // +publish path:"/api/gateway/register-apps"
+  rpc GetApps(GetAppsRequest) returns (GetAppsResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/register-apps?projectId={projectId}&env={env}",
+    };
+  }
+
+  // +publish path:"/api/gateway/openapi/service-runtime"
+  rpc GetServiceRuntimes(GetServiceRuntimesRequest) returns (GetServiceRuntimesResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/service-runtime?projectId={projectId}&env={env}&app={app}&service={service}",
+    };
+  }
+
+  // +publish path:"/api/gateway/openapi/service-api-prefix"
+  rpc GetServiceApiPrefix(GetServiceApiPrefixRequest) returns (GetServiceApiPrefixResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/service-api-prefix?projectId={projectId}&env={env}&app={app}&service={service}&runtimeId={runtimeId}",
+    };
+  }
+
+}
+
+message GetServiceApiPrefixRequest {
+  string projectId = 1;
+  string env = 2;
+  string app = 3;
+  string service = 4;
+  string runtimeId = 5;
+}
+
+message GetServiceApiPrefixResponse {
+  repeated string data = 1;
+}
+
+message ServiceRuntime {
+  string runtimeId = 1 [json_name = "runtime_id"]; 
+  string runtimeName = 2 [json_name = "runtime_name"];
+  string appId = 3 [json_name = "app_id"];
+  string appName = 4 [json_name = "app_name"];
+  string serviceName = 5 [json_name = "service_name"];
+}
+
+message GetServiceRuntimesResponse {
+  repeated ServiceRuntime data = 1;
+}
+
+message GetServiceRuntimesRequest {
+  string projectId = 1;
+  string env = 2;
+  string app = 3;
+  string service = 4;
+}
+
+message DeleteRuntimeRequest {
+  string runtimeId = 1;
+}
+
+message DeleteRuntimeResponse {
+  bool data = 1;
+}
+
+message App {
+  string name = 1;
+  repeated string services = 2;
+}
+
+message GetAppsResponse {
+  repeated App apps = 1;
+}
+
+message GetAppsRequest {
+  string projectId = 1;
+  string env = 2;
+}
+
+message ChangeRuntimeResponse {
+  bool data = 1;
+}
+
+message EndpointDomain {
+  string domain = 1;
+  string type = 2;
+}
+
+message ServiceDetail {
+  string serviceName = 1;
+  string innerAddress = 2;
+  repeated EndpointDomain endpointDomains = 3;
+}
+
+message ChangeRuntimeRequest {
+  string orgId = 1;
+  string projectId = 2;
+  string env = 3;
+  string clusterName = 4;
+  string runtimeId = 5;
+  string runtimeName = 6;
+  string releaseId = 7;
+  string serviceGroupNamespace = 8;
+  string projectNamespace = 9;
+  string serviceGroupName = 10;
+  string appId = 11;
+  string appName = 12;
+  repeated ServiceDetail services = 13;
+  bool useApigw = 14;
+}

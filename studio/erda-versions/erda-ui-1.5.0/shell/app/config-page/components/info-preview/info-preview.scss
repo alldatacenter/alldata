@@ -1,0 +1,38 @@
+.dice-cp-preview {
+  padding: 8px 0;
+
+  &-item {
+    margin-bottom: 20px;
+  }
+
+  &-desc {
+    padding: 0 8px;
+    color: $color-text-desc;
+    border-left: 4px solid $color-border;
+  }
+
+  &-block-title {
+    padding: 8px 15px;
+    color: $color-info;
+    line-height: 24px;
+    background-color: $color-info-bg;
+    border-left: 4px solid $color-info;
+  }
+
+  &-api {
+    display: flex;
+
+    .method {
+      margin-right: 8px;
+      padding: 0 8px;
+    }
+
+    .path {
+      flex: 1;
+      padding: 4px 8px;
+      // line-height: 22px;
+      word-break: break-all;
+      background-color: $color-light-bg;
+    }
+  }
+}

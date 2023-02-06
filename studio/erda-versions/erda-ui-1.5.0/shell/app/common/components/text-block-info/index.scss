@@ -1,0 +1,41 @@
+.erda-text-block-info {
+  &.small {
+    .main-text {
+      color: $text-normal;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 22px;
+    }
+    .sub-text {
+      color: $text-sub;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    .desc-text {
+      color: $text-desc;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  &.normal {
+    .main-text {
+      color: $text-normal;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 32px;
+    }
+    .sub-text {
+      color: $text-sub;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    .desc-text {
+      color: $text-desc;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+}

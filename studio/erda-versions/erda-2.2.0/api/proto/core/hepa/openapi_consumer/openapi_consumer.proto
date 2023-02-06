@@ -1,0 +1,273 @@
+syntax = "proto3";
+
+package erda.core.hepa.openapi_consumer;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/openapi_consumer/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "core/hepa/hepa.proto";
+
+// +publish service:"hepa"
+service OpenapiConsumerService {
+  // +publish path: "/api/gateway/openapi/consumers"
+  rpc GetConsumers(GetConsumersRequest) returns (GetConsumersResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/consumers?projectId={projectId}&env={env}&pageNo={pageNo}&pageSize={pageSize}&sortField={sortField}&sortType={sortType}",
+    };
+  }
+  
+  // +publish path: "/api/gateway/openapi/consumers"
+  rpc CreateConsumer(CreateConsumerRequest) returns (CreateConsumerResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/openapi/consumers?projectId={projectId}&env={env}",
+      body: "consumer",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/consumers/{consumerId}"
+  rpc UpdateConsumer(UpdateConsumerRequest) returns (UpdateConsumerResponse) {
+    option (google.api.http) = {
+      patch: "/api/gateway/openapi/consumers/{consumerId}",
+      body: "consumer",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/consumers/{consumerId}"
+  rpc DeleteConsumer(DeleteConsumerRequest) returns (DeleteConsumerResponse) {
+    option (google.api.http) = {
+      delete: "/api/gateway/openapi/consumers/{consumerId}",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/consumers-name"
+  rpc GetConsumersName(GetConsumersNameRequest) returns (GetConsumersNameResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/consumers-name?projectId={projectId}&env={env}",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/consumers/{consumerId}/packages"
+  rpc GetConsumerAcl(GetConsumerAclRequest) returns (GetConsumerAclResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/consumers/{consumerId}/packages",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/consumers/{consumerId}/packages"
+  rpc UpdateConsumerAcl(UpdateConsumerAclRequest) returns (UpdateConsumerAclResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/openapi/consumers/{consumerId}/packages",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/consumers/{consumerId}/credentials"
+  rpc GetConsumerAuth(GetConsumerAuthRequest) returns (GetConsumerAuthResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/consumers/{consumerId}/credentials",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/consumers/{consumerId}/credentials"
+  rpc UpdateConsumerAuth(UpdateConsumerAuthRequest) returns (UpdateConsumerAuthResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/openapi/consumers/{consumerId}/credentials",
+      body: "credentials",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/packages/{packageId}/consumers"
+  rpc GetEndpointAcl(GetEndpointAclRequest) returns (GetEndpointAclResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/packages/{packageId}/consumers",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/packages/{packageId}/consumers"
+  rpc UpdateEndpointAcl(UpdateEndpointAclRequest) returns (UpdateEndpointAclResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/openapi/packages/{packageId}/consumers",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/packages/{packageId}/apis/{apiId}/authz"
+  rpc GetEndpointApiAcl(GetEndpointApiAclRequest) returns (GetEndpointApiAclResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/packages/{packageId}/apis/{apiId}/authz",
+    };
+  }
+
+  // +publish path: "/api/gateway/openapi/packages/{packageId}/apis/{apiId}/authz"
+  rpc UpdateEndpointApiAcl(UpdateEndpointApiAclRequest) returns (UpdateEndpointApiAclResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/openapi/packages/{packageId}/apis/{apiId}/authz",
+    };
+  }
+}
+
+message UpdateEndpointApiAclResponse {
+  bool data = 1;
+}
+
+message UpdateEndpointApiAclRequest {
+  string packageId = 1;
+  string apiId = 2;
+  repeated string consumers = 3;
+}
+
+message GetEndpointApiAclResponse {
+  repeated Acl data = 1;
+}
+
+message GetEndpointApiAclRequest {
+  string packageId = 1;
+  string apiId = 2;
+}
+
+message UpdateEndpointAclResponse {
+  bool data = 1;
+}
+
+message UpdateEndpointAclRequest {
+  string packageId = 1;
+  repeated string consumers = 2;
+}
+
+message GetEndpointAclRequest {
+  string packageId = 1;
+}
+
+message GetEndpointAclResponse {
+  repeated Acl data = 1;
+}
+
+message UpdateConsumerAuthResponse {
+  ConsumerCredentials data = 1;
+}
+
+message UpdateConsumerAuthRequest {
+  string consumerId = 1;
+  ConsumerCredentials credentials = 2;
+}
+
+message Credential {
+  string consumerId = 1 [json_name = "consumer_id"]; 
+  int64 createdAt = 2 [json_name = "created_at"];
+  string id = 3;
+  string key = 4;
+  google.protobuf.Value redirectUrl = 5 [json_name = "redirect_uri"];
+  repeated string redirectUrls = 6 [json_name = "redirect_uris"];
+  string name = 7;
+  string clientId = 8 [json_name = "client_id"];
+  string clientSecret = 9 [json_name = "client_secret"];
+  string secret = 10;
+  string username = 11;
+}
+
+message CredentialList {
+  int64 total = 1;
+  repeated Credential data = 2;
+}
+
+message ConsumerAuthItem {
+  string authType = 1;
+  CredentialList authData = 2;
+  string authTips = 3;
+}
+
+message ConsumerAuthConfig {
+  repeated ConsumerAuthItem auths = 1;
+}
+
+message ConsumerCredentials {
+  string consumerName = 1;
+  string consumerId = 2;
+  ConsumerAuthConfig authConfig = 3;
+}
+
+message GetConsumerAuthResponse {
+  ConsumerCredentials data = 1;
+}
+
+message GetConsumerAuthRequest {
+  string consumerId = 1;
+}
+
+message UpdateConsumerAclResponse {
+  bool data = 1;
+}
+
+message UpdateConsumerAclRequest {
+  string consumerId = 1;
+  repeated string packages = 2;
+}
+
+message GetConsumerAclResponse {
+  repeated Acl data = 1;
+}
+
+message Acl {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  bool selected = 4;
+}
+
+message GetConsumerAclRequest {
+  string consumerId = 1;
+}
+
+message GetConsumersNameResponse {
+  repeated Consumer data = 1;
+}
+
+message GetConsumersNameRequest {
+  string projectId = 1;
+  string env = 2;
+}
+
+message DeleteConsumerResponse {
+  bool data = 1;
+}
+
+message DeleteConsumerRequest {
+  string consumerId = 1;
+}
+
+message UpdateConsumerResponse {
+  Consumer data = 1;
+}
+
+message UpdateConsumerRequest {
+  string consumerId = 1;
+  Consumer consumer = 2;
+}
+
+message CreateConsumerResponse {
+  string data = 1;
+}
+
+message Consumer {
+  string id = 1;
+  string createAt = 2;
+  string name = 3;
+  string description = 4;
+}
+
+message CreateConsumerRequest {
+  string projectId = 1;
+  string env = 2;
+  Consumer consumer = 3;
+}
+
+message GetConsumersResponse {
+  erda.core.hepa.NewPageResult data = 1;
+}
+
+message GetConsumersRequest {
+  string projectId = 1;
+  string env = 2;
+  int64 pageNo = 3;
+  int64 pageSize = 4;
+  string sortField = 5;
+  string sortType = 6;
+}
+

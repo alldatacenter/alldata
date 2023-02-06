@@ -1,0 +1,63 @@
+.test-plan-detail {
+  height: inherit;
+
+  .common-list-item {
+    border-bottom: none;
+
+    .member {
+      .participant {
+        .count {
+          display: inline-block;
+          color: $primary;
+          line-height: 22px;
+          text-align: center;
+          background: rgba(93, 72, 223, 0.1);
+          border-radius: 11px;
+        }
+      }
+    }
+  }
+
+  .case-tree-container {
+    padding-right: 0;
+    overflow: hidden;
+
+    > ul {
+      padding-right: 16px;
+    }
+  }
+
+  .ant-tabs-bar {
+    margin-bottom: 0;
+  }
+
+  .full-tab-content {
+    height: calc(100vh - 270px);
+  }
+
+  .tab-content {
+    height: calc(100vh - 300px);
+    margin-top: 20px;
+
+    .ant-row-flex {
+      height: 100%;
+    }
+
+    .ant-col {
+      height: 100%;
+      overflow: auto;
+    }
+
+    .flow-chart-container {
+      height: 100%;
+    }
+  }
+}
+
+.participant-popover {
+  .participant-items {
+    flex-wrap: wrap;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+}

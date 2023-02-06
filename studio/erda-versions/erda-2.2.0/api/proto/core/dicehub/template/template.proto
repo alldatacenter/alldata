@@ -1,0 +1,211 @@
+syntax = "proto3";
+
+package erda.core.dicehub.template;
+option go_package = "github.com/erda-project/erda-proto-go/core/dicehub/template/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+service TemplateService {
+    rpc ApplyPipelineTemplate (PipelineTemplateApplyRequest) returns (PipelineTemplateCreateResponse)  {
+        option (google.api.http) = {
+            post: "/api/pipeline-templates/actions/apply",
+        };
+    }
+
+    rpc QueryPipelineTemplates (PipelineTemplateQueryRequest) returns (PipelineTemplateQueryResponse)  {
+        option (google.api.http) = {
+            get: "/api/pipeline-templates",
+        };
+    }
+
+    rpc RenderPipelineTemplate (PipelineTemplateRenderRequest) returns (PipelineTemplateRenderResponse)  {
+        option (google.api.http) = {
+            post: "/api/pipeline-templates/{name}/actions/render",
+        };
+    }
+
+    rpc RenderPipelineTemplateBySpec (PipelineTemplateRenderSpecRequest) returns (PipelineTemplateRenderResponse)  {
+        option (google.api.http) = {
+            post: "/api/pipeline-templates/local/actions/render-spec",
+        };
+    }
+
+    rpc GetPipelineTemplateVersion (PipelineTemplateVersionGetRequest) returns (PipelineTemplateVersionGetResponse)  {
+        option (google.api.http) = {
+            get: "/api/pipeline-templates/{name}/actions/query-version",
+        };
+    }
+
+    rpc QueryPipelineTemplateVersions (PipelineTemplateVersionQueryRequest) returns (PipelineTemplateVersionQueryResponse)  {
+        option (google.api.http) = {
+            get: "/api/pipeline-templates/{name}/actions/query-versions",
+        };
+    }
+
+    rpc QuerySnippetYml (QuerySnippetYmlRequest) returns (QuerySnippetYmlResponse)  {
+        option (google.api.http) = {
+            get: "/api/pipeline-snippets/actions/query-snippet-yml",
+        };
+    }
+}
+
+message PipelineTemplateCreateRequest {
+    string name = 1;
+    string logoUrl = 2;
+    string desc = 3;
+    string scopeType = 4;
+    string scopeID = 5;
+    string spec = 6;
+    string version = 7;
+    string readme = 8;
+    string defaultVersion = 9;
+}
+
+message PipelineTemplateCreateResponse {
+    PipelineTemplate data = 1;
+}
+
+message PipelineTemplateApplyRequest {
+    string spec = 1;
+    string scopeType = 2;
+    string scopeID = 3;
+}
+
+message PipelineTemplateQueryRequest {
+    string scopeType = 1; 
+    string scopeID = 2; 
+    int32 pageNo = 3;
+    int32 pageSize = 4;
+    string name = 5;
+}
+
+message PipelineTemplateQueryResponse {
+    PipelineTemplateQueryResponseData data = 1;
+}
+
+message PipelineTemplateQueryResponseData {
+    repeated PipelineTemplate data = 1;
+    int32 total = 2;
+}
+
+message PipelineTemplateVersionGetRequest {
+    string scopeType = 1;
+    string scopeID = 2;
+    string name = 3;
+    string version = 4;
+}
+
+message PipelineTemplateVersionGetResponse {
+    PipelineTemplateVersion data = 1;
+}
+
+message PipelineTemplateVersionQueryRequest {
+    string scopeType = 1;
+    string scopeID = 2;
+    string name = 3;
+}
+
+message PipelineTemplateVersionQueryResponse {
+    repeated PipelineTemplateVersion data = 1;
+}
+
+message PipelineTemplateRenderRequest {
+    string scopeType = 1;
+    string scopeID = 2;
+    string name = 3;
+    string version = 4;
+    map<string,google.protobuf.Value> params = 5;
+    string alias = 6;
+    int32 templateVersion = 7;
+}
+
+message PipelineTemplateRenderSpecRequest {
+    PipelineTemplateSpec spec = 1;
+    string alias = 2;
+    int32 templateVersion = 3;
+    map<string,google.protobuf.Value> params = 4;
+}
+
+message PipelineTemplateRenderResponse {
+    PipelineTemplateRender data = 1;
+}
+
+message PipelineTemplateSearchResponse {
+    map<string,PipelineTemplateVersion> data = 1;
+}
+
+message PipelineTemplateRender {
+    string pipelineYaml = 1;
+    PipelineTemplateVersion version = 2;
+    repeated SnippetFormatOutputs outputs = 3;
+}
+
+message SnippetFormatOutputs {
+    string preOutputName = 1;
+    string afterOutputName = 2;
+}
+
+message PipelineTemplate {
+    uint64 id = 1;
+    string name = 2; 
+    string desc = 3;
+    string logoUrl = 4;
+    string scopeType = 5; 
+    string scopeID = 6; 
+    google.protobuf.Timestamp createdAt = 7;
+    google.protobuf.Timestamp updatedAt = 8;
+    string version = 9; 
+}
+
+message PipelineTemplateVersion {
+    uint64 id = 1;
+    uint64 templateId = 2;
+    string name = 3; 
+    string version = 4; 
+    string spec = 5;
+    string readme = 6;
+    google.protobuf.Timestamp createdAt = 7;
+    google.protobuf.Timestamp updatedAt = 8;
+}
+
+message PipelineTemplateSpec {
+    string name = 1; 
+    string version = 2; 
+    string desc = 3;
+    string logoUrl = 4;
+    repeated PipelineParam params = 5;
+    repeated PipelineOutput outputs = 6;
+    string template = 7;
+    string defaultVersion = 8;
+}
+
+message PipelineTemplateSpecOutput {
+    string name = 1; 
+    string desc = 2;
+    string ref = 3;
+}
+
+message QuerySnippetYmlRequest {
+    string source = 1;
+    string name = 2;
+    map<string,string>labels = 3;
+}
+
+message QuerySnippetYmlResponse {
+    string data = 1;
+}
+
+message PipelineParam {
+    string name = 1;
+    bool required = 2;
+    google.protobuf.Value default = 3;
+    string desc = 4;
+    string type = 5;
+}
+
+message PipelineOutput {
+    string name = 1;
+    string desc = 2;
+    string ref = 3;
+}

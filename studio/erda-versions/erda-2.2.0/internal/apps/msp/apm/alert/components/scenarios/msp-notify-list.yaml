@@ -1,0 +1,26 @@
+scenario: msp-notify-list
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - content
+    content:
+      slot: configurableFilter
+      table: table
+components:
+  page:
+    type: Container
+  content:
+    type: ComposeTable
+  configurableFilter:
+    type: ConfigurableFilter
+  table:
+    type: Table
+    version: 2
+rendering:
+  configurableFilter:
+    - name: table
+    - name: content
+options:
+  returnAllComponents: true

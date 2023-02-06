@@ -1,0 +1,15 @@
+- ta_req_top_cpm:
+    title: "时间吞吐量"
+    metric_names: "ta_req"
+    type: "ta"
+    order: 0
+    defines:
+      cpm.tt:
+        label: "请求耗时"
+        unit: "cpm"
+        unit_type: "cpm"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+    parameters:
+

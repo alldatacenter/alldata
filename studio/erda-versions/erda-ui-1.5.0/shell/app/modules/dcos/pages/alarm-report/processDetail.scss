@@ -1,0 +1,86 @@
+// 基本信息
+.process-detail-info {
+  position: relative;
+  height: 140px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+
+  > div {
+    float: left;
+    height: 100px;
+  }
+
+  .process-status-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    margin-right: 10px;
+    padding-right: 10px;
+    text-align: center;
+    border-right: 1px solid $color-border;
+
+    .process-status {
+      .process-status-icon {
+        color: $color-primary;
+        font-size: 20px;
+      }
+    }
+
+    .process-ip {
+      color: $color-text;
+      font-size: 14px;
+    }
+
+    .process-source-name {
+      color: $color-text;
+      font-size: 12px;
+    }
+  }
+
+  .process-configuration-panel {
+    > div {
+      height: 25px;
+      line-height: 25px;
+
+      span:first-child {
+        margin-right: 10px;
+        color: $color-text;
+      }
+
+      span:last-child {
+        color: $color-text;
+      }
+    }
+  }
+
+  .process-options-panel {
+    float: right;
+    width: 480px;
+    text-align: right;
+
+    .progress-panel {
+      float: right;
+      width: 280px;
+      margin-bottom: 20px;
+    }
+
+    .progress-control {
+      float: right;
+      white-space: nowrap;
+    }
+
+    .ant-btn {
+      margin-left: 10px;
+    }
+  }
+
+  .ant-row {
+    position: absolute;
+    right: 20px;
+  }
+}

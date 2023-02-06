@@ -1,0 +1,16 @@
+- redis_instantaneous_ops_per_sec:
+    title: "命令运行频率"
+    metric_names: "redis"
+    type: "redis"
+    order: 2
+    defines:
+      max.instantaneous_ops_per_sec:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

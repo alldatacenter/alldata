@@ -1,0 +1,25 @@
+.path-breadcrumb {
+  display: inline-block;
+}
+
+.to-json {
+  display: inline-block;
+  float: right;
+}
+
+.manage-tabs-bar {
+  height: 100%;
+
+  .ant-tabs-content,
+  .ant-tabs-tabpane {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+.manager-link-title {
+  .title-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

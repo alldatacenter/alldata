@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package erda.examples;
+option go_package = "github.com/erda-project/erda-proto-go/examples/pb";
+import "google/api/annotations.proto";
+import "common/openapi.proto";
+
+// the greeting service definition.
+service GreeterService {
+
+  option (erda.common.openapi_service) = {
+    prefix: "/api/examples/greeter",
+    service: "erda.example",
+  };
+
+  // say hello
+  rpc SayHello (HelloRequest) returns (HelloResponse)  {
+    option (google.api.http) = {
+      get: "/api/hello/{name}",
+    };
+    option (erda.common.openapi) = {
+      path: "/hello/{name}",
+      auth: {
+        check_login: true
+      }
+    };
+  }
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  bool success = 1;
+  string data = 2;
+}

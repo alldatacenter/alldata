@@ -1,0 +1,47 @@
+{
+  "id":"machine_netdisk",
+  "expression":{
+    "filters":[
+      {
+        "operator":"eq",
+        "tag":"org_name",
+        "value":"$org_name"
+      },
+      {
+        "operator":"eq",
+        "tag":"type",
+        "value":"netdata"
+      }
+    ],
+    "functions":[
+      {
+        "aggregator":"max",
+        "alias":"used_percent_value",
+        "field":"used_percent",
+        "operator":"gte",
+        "value":75
+      },
+      {
+        "aggregator":"max",
+        "alias":"total_value",
+        "field":"total"
+      }
+    ],
+    "group":[
+
+    ],
+    "metric":"disk",
+    "outputs":[
+      "alert"
+    ],
+    "select":{
+      "_meta":"#_meta",
+      "_metric_scope":"#_metric_scope",
+      "_metric_scope_id":"#_metric_scope_id",
+      "cluster_name":"#cluster_name",
+      "labels":"#labels",
+      "org_name":"#org_name"
+    },
+    "window":5
+  }
+}

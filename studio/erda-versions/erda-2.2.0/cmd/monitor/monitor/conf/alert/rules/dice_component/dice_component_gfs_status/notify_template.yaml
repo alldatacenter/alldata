@@ -1,0 +1,147 @@
+- name: "平台组件网盘不可用告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【平台组件网盘疑似不可用告警】
+  template: |
+    【平台组件网盘疑似不可用告警】
+
+    组件: {{component_name}}
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "平台组件网盘不可用告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【平台组件网盘疑似不可用告警】
+  template: |
+    {{component_name}}组件触发平台组件网盘疑似不可用告警，告警级别: {{level}}
+
+- name: "平台组件网盘不可用告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【平台组件网盘疑似不可用告警】
+  template: |
+    {{component_name}}组件触发平台组件网盘疑似不可用告警，告警级别: {{level}}
+
+- name: "平台组件网盘不可用告警恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【平台组件网盘疑似不可用告警恢复】
+  template: |
+    【平台组件网盘疑似不可用告警恢复】
+
+    组件: {{component_name}}
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "平台组件网盘不可用告警恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【平台组件网盘疑似不可用告警恢复】
+  template: |
+    {{component_name}}组件触发平台组件网盘疑似不可用告警恢复
+- name: "平台组件网盘不可用告警恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【平台组件网盘疑似不可用告警恢复】
+  template: |
+    {{component_name}}组件触发平台组件网盘疑似不可用告警恢复
+
+- name: "Netdisk unavailability alarm of platform component"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [Netdisk unavailability alarm of platform component]
+  template: |
+    [Netdisk unavailability alarm of platform component]
+
+    Component: {{component_name}}
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Netdisk unavailability alarm of platform component"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Netdisk unavailability alarm of platform component]
+  template: |
+    Netdisk unavailability alarm of platform component triggered by component {{component_name}}
+
+- name: "Netdisk unavailability alarm of platform component"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Netdisk unavailability alarm of platform component]
+  template: |
+    Netdisk unavailability alarm of platform component triggered by component {{component_name}}
+
+- name: "Netdisk unavailability alarm recovery of platform component"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [Netdisk unavailability alarm recovery of platform component]
+  template: |
+    [Netdisk unavailability alarm recovery of platform component]
+
+    Component: {{component_name}}
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Netdisk unavailability alarm recovery of platform component"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Netdisk unavailability alarm recovery of platform component]
+  template: |
+    Netdisk unavailability alarm recovery of platform component triggered by component {{component_name}}
+- name: "Netdisk unavailability alarm recovery of platform component"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [Netdisk unavailability alarm recovery of platform component]
+  template: |
+    Netdisk unavailability alarm recovery of platform component triggered by component {{component_name}}

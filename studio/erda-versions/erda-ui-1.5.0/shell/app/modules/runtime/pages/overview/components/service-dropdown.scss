@@ -1,0 +1,32 @@
+.modal-info {
+  .ant-modal-confirm-content {
+    margin-left: unset;
+  }
+
+  .ant-list-item {
+    padding: $p8 0;
+  }
+
+  .ant-modal-confirm-body > .anticon {
+    display: none;
+  }
+
+  .ant-list-item-content-single {
+    justify-content: space-between;
+    padding: 0 $p8;
+  }
+
+  .copy-icon {
+    font-size: 16px;
+  }
+
+  .vip-addr {
+    word-break: break-all;
+  }
+
+  .env-list {
+    .env-item {
+      word-break: break-all;
+    }
+  }
+}

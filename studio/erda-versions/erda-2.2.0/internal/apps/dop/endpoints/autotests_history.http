@@ -1,0 +1,51 @@
+### 变更 inode 的 name 和 desc
+PUT  http://localhost:3033/api/autotests/filetree/331270178799104990
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+{
+  "name": "one3",
+  "desc": "desc"
+}
+
+
+### 搜索 inode 的 history
+
+GET  http://localhost:3033/api/autotests/filetree/328816781961475184/actions/get-histories
+Content-Type: application/json
+User-ID: 2
+
+
+### 移动
+
+POST http://localhost:3033/api/autotests/filetree/328816781961475184/actions/move
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+{
+  "pinode": "328816767046530160"
+}
+
+### save-pipeline
+POST http://localhost:3033/api/autotests/filetree/328816781961475184/actions/save-pipeline
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+{"pipelineYml":"version: \"1.1\"\nstages:\n  - stage:\n      - api-test:\n          alias: api-test\n          description: 执行单个接口测试。上层可以通过 pipeline.yml 编排一组接口测试的执行顺序。\n          version: \"2.0\"\n          params:\n            body:\n              type: none\n            method: GET\n            url: www,baidu.com\n          image: addon-nexus.default.svc.cluster.local:5500/dice/api-test-action:20201204-7aa06fa\n"}
+
+
+
+### 删除
+
+DELETE http://localhost:3033/api/autotests/filetree/331269971013284830
+Content-Type: application/json
+User-ID: 2
+Cookie: OPENAPISESSION=a63e34e7-bab2-47b8-9258-f79098a03122
+
+
+
+
+
