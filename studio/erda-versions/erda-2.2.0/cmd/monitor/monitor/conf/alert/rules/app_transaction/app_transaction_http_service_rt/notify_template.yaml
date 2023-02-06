@@ -1,0 +1,197 @@
+- name: "服务HTTP慢事务异常"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    elapsed_sum: "time:ms"
+    elapsed_avg_value: "time:ms"
+  title: |-
+    【应用{{service_name}}服务HTTP慢事务异常告警】
+  template: |
+    【服务HTTP慢事务异常告警】
+
+    项目: {{project_name}}
+
+    应用: {{application_name}}
+
+    服务: {{runtime_name}} - {{service_name}}
+
+    事件: {{window}}分钟内HTTP事务平均响应时间{{elapsed_avg_value}} 请求次数{{elapsed_count_sum}}
+
+    terminus_key: {{target_terminus_key}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+
+- name: "服务HTTP慢事务异常"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    elapsed_sum: "time:ms"
+    elapsed_avg_value: "time:ms"
+  title: |-
+    【应用{{service_name}}服务HTTP慢事务异常告警】
+  template: |
+    {{application_name}}应用{{service_name}}服务触发服务HTTP慢事务异常告警，terminus_key: {{target_terminus_key}}，{{window}}分钟内HTTP事务平均响应时间{{elapsed_avg_value}}请求次数{{elapsed_count_sum}}，告警级别: {{level}}
+
+- name: "服务HTTP慢事务异常"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    elapsed_sum: "time:ms"
+    elapsed_avg_value: "time:ms"
+  title: |-
+    【应用{{service_name}}服务HTTP慢事务异常告警】
+  template: |
+    {{application_name}}应用{{service_name}}服务触发服务HTTP慢事务异常告警，terminus_key: {{target_terminus_key}}，{{window}}分钟内HTTP事务平均响应时间{{elapsed_avg_value}}请求次数{{elapsed_count_sum}}，告警级别: {{level}}
+
+- name: "服务HTTP慢事务异常恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |-
+    【应用{{service_name}}服务HTTP慢事务异常恢复】
+  template: |
+    【服务HTTP慢事务异常恢复】
+
+    项目: {{project_name}}
+
+    应用: {{application_name}}
+
+    服务: {{runtime_name}} - {{service_name}}
+
+    terminus_key: {{target_terminus_key}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "服务HTTP慢事务异常恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |-
+    【应用{{service_name}}服务HTTP慢事务异常恢复】
+  template: |
+    {{application_name}}应用{{service_name}}服务触发服务HTTP慢事务异常恢复，terminus_key: {{target_terminus_key}}
+- name: "服务HTTP慢事务异常恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |-
+    【应用{{service_name}}服务HTTP慢事务异常恢复】
+  template: |
+    {{application_name}}应用{{service_name}}服务触发服务HTTP慢事务异常恢复，terminus_key: {{target_terminus_key}}
+
+- name: "HTTP slow transaction exception of service"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    elapsed_sum: "time:ms"
+    elapsed_avg_value: "time:ms"
+  title: |-
+    [HTTP slow transaction exception alarm of service {{service_name}}]
+  template: |
+    [HTTP slow transaction exception alarm of service]
+
+    Project: {{project_name}}
+
+    Application: {{application_name}}
+
+    Service: {{runtime_name}} - {{service_name}}
+
+    Event: Within {{window}} min, average response time of {{elapsed_avg_value}}, request times of {{elapsed_count_sum}}
+
+    terminus_key: {{target_terminus_key}}
+
+    Time: {{timestamp}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+
+- name: "HTTP slow transaction exception of service"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    elapsed_sum: "time:ms"
+    elapsed_avg_value: "time:ms"
+  title: |-
+    [HTTP slow transaction exception alarm of service {{service_name}}]
+  template: |
+    HTTP slow transaction exception alarm of service triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{target_terminus_key}}, within {{window}} min, average response time of {{elapsed_avg_value}}, request times of {{elapsed_count_sum}}
+
+- name: "HTTP slow transaction exception of service"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    elapsed_sum: "time:ms"
+    elapsed_avg_value: "time:ms"
+  title: |-
+    [HTTP slow transaction exception alarm of service {{service_name}}]
+  template: |
+    HTTP slow transaction exception alarm of service triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{target_terminus_key}}, within {{window}} min, average response time of {{elapsed_avg_value}}, request times of {{elapsed_count_sum}}
+
+- name: "HTTP slow transaction exception recovery of service"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |-
+    [HTTP slow transaction exception recovery of service {{service_name}}]
+  template: |
+    [HTTP slow transaction exception recovery of service]
+
+    Project: {{project_name}}
+
+    Application: {{application_name}}
+
+    Service: {{runtime_name}} - {{service_name}}
+
+    terminus_key: {{target_terminus_key}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "HTTP slow transaction exception recovery of service"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |-
+    [HTTP slow transaction exception recovery of service {{service_name}}]
+  template: |
+    HTTP slow transaction exception recovery of service triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{target_terminus_key}}
+- name: "HTTP slow transaction exception recovery of service"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |-
+    [HTTP slow transaction exception recovery of service {{service_name}}]
+  template: |
+    HTTP slow transaction exception recovery of service triggered by service {{service_name}} of application {{application_name}}, terminus_key: {{target_terminus_key}}

@@ -1,0 +1,91 @@
+.yaml-editor-pipeline-item {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  width: 280px;
+  height: 74px;
+  margin-right: 20px;
+  margin-left: 40px;
+  padding: 12px;
+  vertical-align: top;
+  background: $white;
+  border-radius: 4px;
+  @extend %shallow-shadow;
+  cursor: default;
+  transition: box-shadow 0.3s ease-in-out, transform 0.5s ease-in-out;
+
+  &:hover {
+    @extend %hover-shadow;
+  }
+
+  .pipeline-item-icon {
+    display: inline-block;
+    max-width: 50px;
+    margin-right: 8px;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .item-point {
+    position: absolute;
+    left: 134px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: $white;
+    border-radius: 100%;
+    transition: all 0.3s ease-in-out;
+
+    .iconfont {
+      display: block;
+      width: 12px;
+      height: 12px;
+      font-size: 12px;
+    }
+
+    &:hover {
+      transform: scale(1.3);
+      @extend %hover-shadow;
+    }
+  }
+
+  .bottom-point {
+    bottom: -6px;
+  }
+
+  .top-point {
+    top: -4px;
+  }
+
+  .icon-ellipsis {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+  }
+
+  .yaml-editor-item-title,
+  .yaml-editor-pipeline-item-title {
+    flex: 1;
+    margin-right: 4px;
+    color: $color-dark-8;
+    font-size: 16px;
+  }
+
+  .yaml-editor-item-title-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .pipeline-node-icon {
+    margin-right: 0;
+    color: $color-dark-4;
+    cursor: pointer;
+  }
+}

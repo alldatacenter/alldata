@@ -1,0 +1,21 @@
+.dice-service-detail-column,
+.envs-column {
+  display: inline-block;
+  width: calc(50% - 4px);
+  height: auto;
+  margin-bottom: 8px;
+  padding: 0 4px;
+  overflow: hidden;
+  color: $color-dark-6;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  word-break: break-all;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: $radius;
+}
+
+.dice-service-detail-column:nth-child(2n) {
+  margin-left: 8px;
+}

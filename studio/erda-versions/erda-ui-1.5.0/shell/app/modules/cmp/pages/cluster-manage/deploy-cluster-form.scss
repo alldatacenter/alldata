@@ -1,0 +1,97 @@
+.deploy-cluster-form {
+  display: flex;
+  min-width: 450px;
+  height: 100%;
+
+  .left {
+    flex: 1;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .right {
+    width: 200px;
+    height: 100%;
+    overflow: auto;
+    border-left: 1px solid $color-border;
+
+    .form-menu-item {
+      padding: 10px;
+      color: $color-dark-5;
+      cursor: pointer;
+
+      &:hover,
+      &.active {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .form-container {
+    padding: 0 20px;
+
+    &.hidden {
+      i {
+        transform: rotate(-90deg);
+      }
+
+      .form-content {
+        display: none;
+      }
+    }
+
+    .form-title {
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+
+      i {
+        margin-left: 10px;
+        cursor: pointer;
+        transition-duration: 300ms;
+
+        &:hover {
+          @include hover();
+        }
+      }
+    }
+
+    .set-helper {
+      padding: 5px;
+
+      &-title {
+        margin-bottom: 5px;
+        color: $color-dark-4;
+      }
+
+      &-form {
+        .ant-select {
+          margin: 5px 0;
+        }
+      }
+
+      .set-buttons {
+        margin-top: 5px;
+        text-align: right;
+
+        button {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .deploy-form-render {
+    &.ant-form-vertical {
+      width: 60%;
+
+      @include sm-width() {
+        width: 100%;
+      }
+
+      .ant-form-item-label {
+        text-align: left;
+      }
+    }
+  }
+}

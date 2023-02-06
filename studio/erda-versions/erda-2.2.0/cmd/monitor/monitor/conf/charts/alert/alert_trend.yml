@@ -1,0 +1,14 @@
+- alert_trend:
+    title: "告警趋势"
+    metric_names: "analyzer-alert"
+    type: "alert"
+    order: 0
+    defines:
+      count.tags.alert_id:
+        label: "告警次数"
+        unit: ""
+        unit_type: "count"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

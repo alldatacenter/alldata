@@ -1,0 +1,19 @@
+.custom-alarm-form {
+  .title {
+    margin-bottom: 10px;
+    margin-left: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $color-border;
+  }
+}
+
+.custom-alarm-previewer {
+  width: 400px;
+}
+// todo temporarily，When the overflow style of the global td is removed, remove the style
+.filter-rule-table,
+.field-rule-table {
+  td {
+    overflow: visible;
+  }
+}

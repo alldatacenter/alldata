@@ -1,0 +1,47 @@
+@import '../util.scss';
+
+.dice-form-tabs {
+  overflow: hidden;
+
+  .tabs-menu {
+    display: flex;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $color-border;
+
+    .tabs-menu-item {
+      margin-right: 8px;
+      padding: 8px;
+      color: $color-text;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+
+      &.is-active {
+        color: $color-primary;
+        border-bottom: 2px solid $color-primary;
+      }
+    }
+  }
+
+  .tabs-content {
+    display: flex;
+    width: 100%;
+    transition: margin-left 0.3s ease-in-out;
+
+    .tabs-content-item {
+      flex-shrink: 0;
+      width: 100%;
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+
+      &.right {
+        height: 0;
+        opacity: 0;
+      }
+
+      &.left {
+        height: 0;
+        opacity: 0;
+      }
+    }
+  }
+}

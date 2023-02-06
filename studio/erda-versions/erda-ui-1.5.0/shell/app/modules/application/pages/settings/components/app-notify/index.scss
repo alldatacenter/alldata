@@ -1,0 +1,40 @@
+.notify-group-manage {
+  position: relative;
+
+  .notify-group-action {
+    position: absolute;
+    top: -52px;
+    right: 12px;
+  }
+
+  .notify-group-item {
+    display: flex;
+
+    .item-left {
+      flex: 1;
+
+      .group-info {
+        justify-content: start;
+      }
+
+      .group-address {
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+    }
+
+    .item-right {
+      width: 250px;
+    }
+  }
+}
+
+.notify-test-dingtalk {
+  position: absolute;
+  text-align: right;
+  right: 0;
+  bottom: -26px;
+  font-weight: bold;
+  color: $color-primary;
+  cursor: pointer;
+}

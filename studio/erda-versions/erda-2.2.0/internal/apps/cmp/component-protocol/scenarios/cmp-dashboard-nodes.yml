@@ -1,0 +1,132 @@
+scenario: cmp-dashboard-nodes
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - chartsContainer
+      - tabs
+      - tabsTable
+      - addLabelModal
+      - cleanData
+      - batchOperationTipModal
+    tabsTable:
+      slot: filter
+      table: table
+    chartsContainer:
+      - charts
+    charts:
+      - cpuChart
+      - memChart
+      - podChart
+
+components:
+  page:
+    type: Container
+  filter:
+    type: ContractiveFilter
+  charts:
+    type: Grid
+  batchOperationTipModal:
+    type: Modal
+  addLabelModal:
+    type: FormModal
+  tabsTable:
+    type: ComposeTable
+  tabs:
+    type: RadioTabs
+  table:
+    type: Table
+  cpuChart:
+    type: PieChart
+  memChart:
+    type: PieChart
+  podChart:
+    type: PieChart
+  cleanData:
+    type: Container
+  chartsContainer:
+    type: Container
+
+
+rendering:
+  __DefaultRendering__:
+    - name: page
+    - name: tabsTable
+    - name: filter
+    - name: tabs
+    - name: batchOperationTipModal
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+    - name: chartsContainer
+    - name: charts
+    - name: cpuChart
+    - name: memChart
+    - name: podChart
+    - name: addLabelModal
+    - name: cleanData
+
+  tabsTable:
+    - name: filter
+    - name: tabs
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+    - name: addLabelModal
+    - name: batchOperationTipModal
+    - name: cleanData
+
+  table:
+    - name: batchOperationTipModal
+    - name: cleanData
+
+  batchOperationTipModal:
+    - name: tabsTable
+    - name: tabs
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+    - name: cleanData
+
+  filter:
+    - name: tabs
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+    - name: charts
+    - name: cpuChart
+    - name: memChart
+    - name: podChart
+    - name: batchOperationTipModal
+    - name: addLabelModal
+    - name: cleanData
+
+  addLabelModal:
+    - name: filter
+    - name: tabsTable
+    - name: tabs
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+    - name: batchOperationTipModal
+    - name: cleanData
+
+
+
+

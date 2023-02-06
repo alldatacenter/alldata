@@ -1,0 +1,180 @@
+c* 增加一个命令
+  - 在 =cli/cmd/= 下增加一个 =<CMD>.go=
+  - 在 =<CMD>.go= 中增加以下配置（代码）:
+#+BEGIN_SRC 
+package cmd
+
+import (
+	. "github.com/erda-project/erda/tools/cli/command"
+)
+
+// 后面有Command结构体的详细参数
+var <CMD> = Command{
+	Name:      "cmdname",  // 显示在命令行中的名字
+	ShortHelp: "较短描述，在列出命令处显示此内容",
+	LongHelp: "较长描述，在详细描述改命令时候显示此内容",
+	Run: Run<CMD>,
+}
+
+func Run<CMD>(ctx *Context, moreArgs...) error {
+        // impl cmd here
+}
+#+END_SRC    
+  - make cli
+  - 在 =bin= 目录下生成了 =dice= binary
+
+
+
+** struct Command
+   
+*** ParentName
+    指定上级命令，默认是root，也就是当前命令是1级命令
+
+    内容为上文中的 =<CMD>=, 而非 =Command.Name=
+
+*** Name
+    在命令行中显示的名字
+
+
+*** ShortHelp
+    较短的描述，在命令的列表中显示
+
+
+*** LongHelp
+    较长的描述，在命令详细信息中显示
+
+*** Hidden
+    是否在命令列表中隐藏改命令
+
+*** DontHideCursor
+    是否在命令执行期间显示光标
+
+    默认在命令执行时隐藏光标
+
+*** Args
+- example:
+#+BEGIN_SRC 
+[]Arg { 
+        IPArg{}.Name("ip_arg"),
+	StringArg{}.Name("str_arg"),
+	BoolArg{}.Name("bool_arg").Option(), 
+}
+#+END_SRC    
+
+下文另外说明 Arg
+
+*** Flags
+- example
+#+BEGIN_SRC 
+[]Flag{ 
+        StringFlag{"H", "host", "1.2.3.4", "doc"}, 
+        BoolFlag{"A", "another", true, "doc"}, 
+        IntFlag{"O", "ohyoyo", 1, "doc"}, 
+}
+#+END_SRC
+
+下文另外说明 Flag
+
+*** Run
+    具体实现命令的地方， 函数参数类型跟上述 =Args= ， =Flags= 有关
+
+    以上面2个例子为例
+
+    函数类型为:
+
+    =func Run<CMD>(ctx *Context, arg1 net.IP， arg2 string, arg3 bool, flag1 string, flag2 bool, flag3 int) error=
+
+
+** Arg 
+   Command 结构体中 Args 字段的内容
+*** Method: Name
+    命令行中显示的参数名字
+
+*** Method: Option
+    是否为可选参数
+    
+    注意： 只有在Arg列表的最后一个可用
+
+*** Type: StringArg
+    转换后参数类型：string
+*** Type: IntArg
+    转换后参数类型：int
+*** Type: FloatArg
+    转换后参数类型：float64
+*** Type: IPArg
+    转换后参数类型：net.IP
+
+
+** Flag
+   Command 结构体中 Flags 字段的内容
+*** Field: Short
+    flag shorthand letter
+
+*** Field: Name
+    flag full name
+
+*** Field: Doc
+    
+*** Field: Default
+    
+** Context
+   Run<CMD>的第一个参数统一是 ctx *Context.
+   
+   
+*** Context.StatusInfo
+    当前用户信息
+
+*** Context.Conf
+    配置项
+
+*** Context.Debug
+    是否为debug模式
+
+*** Context.HttpClient
+    特定配置的 =pkg/httpclient=, 在cli中使用这个，而非 =pkg/httpclient=, 
+
+    如果是对openapi的请求，使用Context.Get系列方法
+    
+*** func: Context.Get
+    已经将 OPENAPIHost 以及 Authorization 以及 OPENAPISESSION cookie 写入请求,
+    
+    所以对于openapi的请求，全部使用这类方法
+*** func: Context.Post
+    已经将 OPENAPIHost 以及 Authorization 以及 OPENAPISESSION cookie 写入请求,
+    
+    所以对于openapi的请求，全部使用这类方法
+    
+*** func: Context.Delete
+    已经将 OPENAPIHost 以及 Authorization 以及 OPENAPISESSION cookie 写入请求,
+    
+    所以对于openapi的请求，全部使用这类方法
+*** func: Context.Put
+    已经将 OPENAPIHost 以及 Authorization 以及 OPENAPISESSION cookie 写入请求,
+    
+    所以对于openapi的请求，全部使用这类方法
+*** func: Context.Patch
+    已经将 OPENAPIHost 以及 Authorization 以及 OPENAPISESSION cookie 写入请求,
+    
+    所以对于openapi的请求，全部使用这类方法
+*** func: Context.CurrentOrg
+    当前 Org
+
+*** func: Context.Projects
+    当前用户可见的projects
+
+*** func: Context.Applications
+    当前用户可见的app
+
+*** func: Context.DiceYml
+    当前环境的 dice.yml 路径
+
+*** func: Context.DevDiceYml
+    当前环境的 dice_development.yml 路径
+*** func: Context.TestDiceYml
+    当前环境的 dice_test.yml 路径
+
+*** func: Context.StagingDiceYml
+    当前环境的 dice_staging.yml 路径
+
+*** func: Context.ProdDiceYml
+    当前环境的 dice_production.yml 路径

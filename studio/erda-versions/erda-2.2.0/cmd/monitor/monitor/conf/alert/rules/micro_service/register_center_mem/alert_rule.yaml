@@ -1,0 +1,8 @@
+id: register_center_mem
+name: 注册中心实例内存使用率异常
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{container_id}}'
+  level: Warning
+  recover: "true"
+  tickets_metric_key: '{{container_id}}'

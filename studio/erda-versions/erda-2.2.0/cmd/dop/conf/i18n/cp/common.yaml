@@ -1,0 +1,654 @@
+zh:
+  issue-manage: 协同管理
+  issue: 事项
+  iteration: 迭代
+  open: 待处理
+  working: 进行中
+  testing: 测试中
+  done: 已完成
+  resolved: 已解决
+  reopen: 重新打开
+  wontfix: 无需修复
+  dup: 重复提交
+  closed: 已关闭
+  undefined: 未指定
+  expired: 已到期
+  expireIn1Day: 今天到期
+  expireIn2Days: 明天到期
+  expireIn7Days: 7天内到期
+  expireIn30Days: 30天内到期
+  expireInFuture: 未来
+  urgent: 紧急
+  high: 高
+  normal: 中
+  low: 低
+  move-to-priority: 转移至优先级
+  move-to: 转移至
+  move-out: 移出迭代
+  move-to-assignee: 转移至处理人
+  move-to-custom: 转移至看板
+  confirm-to-move-out-iteration: 确认移出迭代
+  confirm-to-delete-board: 确认删除看板
+  confirm-to-update-board: 确认更新看板
+  confirm-to-create-board: 确认创建看板
+  the-number-of-boards-cannot-exceed-15: 创建的看板数量不能超过15
+  no-permission-to-operate: 您暂无权限进行此操作
+  my-filter-bookmark: 我的筛选器
+  empty-filter-bookmark: 未选择
+  choose-filter-bookmark: 选择筛选器
+  save-filter-bookmark-placeholder: 请输入名称保存当前筛选
+  sprint: 迭代
+  all: 全部
+  choose-sprint: 选择迭代
+  title: 标题
+  please-enter-title-or-id: 请输入标题或ID
+  label: 标签
+  please-choose-label: 请选择标签
+  priority: 优先级
+  complexity: 复杂度
+  HARD: 复杂
+  NORMAL: 中
+  EASY: 容易
+  choose-priorities: 选择优先级
+  severity: 严重程度
+  choose-severity: 选择严重程度
+  fatal: 致命
+  serious: 严重
+  ordinary: 一般
+  slight: 轻微
+  suggest: 建议
+  creator: 创建人
+  choose-yourself: 选择自己
+  assignee: 处理人
+  responsible-person: 负责人
+  epic: 里程碑
+  task-type: 任务类型
+  import-source: 引入源
+  demand-design: 需求设计
+  architecture-design: 架构设计
+  code-development: 代码研发
+  created-at: 创建日期
+  deadline: 截止日期
+  closed-at: 关闭日期
+  requirement: 需求
+  bug: 缺陷
+  task: 任务
+  create-issue: 新建事项
+  create-requirement: 新建需求
+  create-bug: 新建缺陷
+  create-task: 新建任务
+  issue-gante-tips1: "事项的甘特图只有确保正确输入截止日期、预计时间才能正常显示"
+  issue-gante-tips2: "#gray#灰色#>gray#：代表事项截止日期的剩余时间段"
+  issue-gante-tips3: "#blue#蓝色#>blue#：代表从事项开始时间到当前/事项完成日期的时间段"
+  issue-gante-tips4: "#red#红色#>red#：代表截止日期到当前/事项完成日期的超时时间段"
+  list: 列表
+  board: 看板
+  gantt-chart: 甘特图
+  board-view: 看板视图
+  custom: 自定义
+  state: 状态
+  Manual Test Case: 手动测试用例
+  Auto Test Case: 自动化测试用例
+  Test Plan: 测试计划
+  test-case-num-total: 测试用例总数
+  test-case-num-succ: 已通过
+  test-case-num-fail: 未通过
+  test-case-num-block: 阻塞
+  test-case-num-init: 未执行
+  test-case-rate-passed: 通过率
+  test-case-rate-executed: 执行率
+  no-iteration: 未指定迭代
+  test-case-status: 状态
+  block: 阻塞
+  INIT: 未执行
+  BLOCK: 阻塞
+  PASSED: 已通过
+  FAIL: 未通过
+  notpassed: 未通过
+  mt-plan-chart: 手动测试计划分布图
+  at-case-rate-trending-chart: 自动化测试执行率和通过率趋势
+  at-plan-latest-waterfall-chart: 自动化测试计划执行详情瀑布图
+  user-not-exist: 用户不存在
+  import: 导入
+  export: 导出
+  scene-set-export-confirm: 是否确认导出
+  scene-set-export-success-msg: 导出任务已创建, 请在导入导出记录表中查看进度
+  status-success: 成功
+  status-failed: 失败
+  status-pending: 排队中
+  status-processing: 进行中
+  download-file: 下载文件
+  import-export-record: 导入导出记录
+  import-export-table: 导入导出记录表
+  type: 类型
+  operator: 操作人
+  time: 时间
+  desc: 描述
+  status: 状态
+  result: 结果
+  auto-test-scene-num: 场景数
+  auto-test-api-num: 接口数
+  radar-manual-test-plan: 手动测试计划
+  radar-auto-test-plan: 自动化测试计划
+  radar-unclosed-bug: 未关闭缺陷
+  radar-quality: 质量
+  radar-total-quality-score: 质量总分
+  radar-bug-reopen-rate: 缺陷重开率
+  radar-code-coverage: 代码覆盖率
+  scene-avg-cost: 场景 - 按执行平均耗时分布 Top500
+  scene-failed-rate: 场景 - 按执行失败率分布 Top500
+  scene-passed-rate: 场景 - 按执行通过率分布 Top500
+  api-avg-cost: 接口 - 按执行平均耗时分布 Top500
+  api-failed-rate: 接口 - 按执行失败率分布 Top500
+  test-dashboard-tip: 选择迭代下如无数据，请确认该迭代下是否有相关测试计划，以及存在的测试计划是否正确配置迭代
+  week: 近一周
+  month: 近一月
+  quality_score_tip--title: 质量分的计算公式（分值 0-100）
+  quality_score_tip--mt_plan: 手动测试计划
+  quality_score_tip--mt_plan_rate_passed: 通过率：所有测试计划中通过的用例数 / 所有测试计划中的用例数
+  quality_score_tip--mt_plan_rate_executed: 执行率：所有测试计划中执行过的用例数 / 所有测试计划中的用例数
+  quality_score_tip--mt_plan_score_formula: 计算公式：通过率 * 执行率 * 100
+  quality_score_tip--at_plan: 自动化测试计划
+  quality_score_tip--at_plan_rate_passed: 成功率：所有计划最近一次执行成功的用例数 / 所有计划最近一次执行的用例总数
+  quality_score_tip--at_plan_rate_executed: 执行率：所有计划最近一次执行过的用例数 / 所有计划最近一次执行的用例总数
+  quality_score_tip--at_plan_score_formula: 计算公式：执行率 * 成功率 * 100
+  quality_score_tip--unclosed_bug: 未关闭缺陷
+  quality_score_tip--unclosed_bug_DI: DI值：致命缺陷数*10 + 严重缺陷数*3 + 一般缺陷数*1 + 轻微缺陷数*0.1
+  quality_score_tip--unclosed_bug_score_formula: 计算公式：100 - DI
+  quality_score_tip--bug_reopen: 缺陷重开率
+  quality_score_tip--bug_reopen_rate: 重开率：迭代所有缺陷重开次数之和 / 迭代所有缺陷数
+  quality_score_tip--bug_reopen_score_formula: 计算公式： 100 - 重开率*100
+  quality_score_tip--coco: 代码覆盖率
+  quality_score_tip--coco_score_formula: 计算公式：最近一次代码覆盖率(不区分环境) * 100
+  quality_score_tip--total: 总分
+  quality_score_tip--total_score_formula: 计算公式：(手动测试计划 + 自动化测试计划 + 缺陷 DI + 缺陷重开率 + 代码覆盖率) / 5
+  forced-cancel: 强制取消
+  cancel-confirm: 强制取消将会导致明细和报告都不会生成!
+  project-code-coverage-trend: 项目代码覆盖率趋势
+  line-coverage: 行覆盖率
+  statistics-object-configuration: 统计对象配置
+  contain: 包含
+  enter-contain-expression: 请输入包含表达式
+  enter-not-contain-expression: 请输入不包含表达式
+  enter-maven-expression: 请输入maven设置表达式
+  code-coverage-statistics-range: 代码覆盖率统计范围设置
+  download-report: 下载报告
+  end: 结束
+  dev-env: 开发环境
+  test-env: 测试环境
+  feature-env: 预发环境
+  prod-env: 生产环境
+  coverage-plugin-not-enable-tip: 当前环境未启用覆盖率插件，请参考
+  coverage-processing-tip: 代码覆盖率统计进行中，开始和结束按钮不可用, 请等待(耗时取决于应用多少和大小)，手动刷新后查看结果
+  coverage-generating-tip: 代码覆盖率统计明细生成中，开始和结束按钮不可用, 请等待(耗时取决于应用多少和大小)，手动刷新后查看结果
+  enable-coverage-docs: 如何启用集成测试代码覆盖率统计
+  report-generating: 报告生成中
+  stop-by-user: 用户取消
+  coverage-processing: 进行中
+  coverage-ready: 进行中
+  coverage-ending: 明细生成中
+  coverage-success: 成功
+  coverage-fail: 失败
+  coverage-cancel: 用户取消
+  current-line-coverage: 当前行覆盖率
+  log: 日志
+  statistics-starter: 统计开始者
+  start-time: 开始时间
+  statistics-finisher: 统计结束者
+  statistics-end-time: 统计结束时间
+  operate: 操作
+  statistics-start: 开始
+  within-a-week: 一周内
+  within-a-month: 一个月内
+  report-details: 报告详情
+  coverage-statistics-record: 项目代码覆盖率统计执行记录
+  execute-record: 执行记录
+  tip-message: '说明: 代码覆盖率趋势主要反映测试用例覆盖项目（非单个或部分应用）的代码行数'
+  config-tip-message: '说明：可以通过在包括和不包括中输入表达式来确定统计范围；多个表达式可以使用冒号 ( : ) 分隔, 且支持 * 通配符。\n 例子：org/apache* 将匹配所有以 org/apache 开头的源码目录, */model 将匹配所有以 model 结尾的目录, foo/*:bar/* 匹配所有以 foo 或者 bar 开头的目录'
+  searchByName: 按名称搜索
+  member: 成员
+  dueToday: 本日截止
+  dueTomorrow: 明日截止
+  notIncludeDueToday: 不包含本日截止数据
+  dueThisWeek: 本周截止
+  notIncludeDueTodayTomorrow: 不包含本日和明日截止数据
+  dueThisMonth: 本月截止
+  notIncludeDueTodayTomorrowMonth: 不包含本日、明日、本周截止数据
+  noDeadlineSpecified: 未指定截止日期
+  total: 总数
+  dimension: 维度
+  sort: 排序
+  timeOrder: 按时间顺序
+  timeReverse: 按时间倒序
+  sceneset: 场景集
+  yearAgo: "年前"
+  monthAgo: "月前"
+  dayAgo: "天前"
+  hourAgo: "小时前"
+  minuteAgo: "分钟前"
+  secondAgo: "几秒前"
+  updatedAt: "更新于"
+  name: 名称
+  updatedBy: 更新人
+  creationTime: 创建时间
+  updateTime: 更新时间
+  enterName: 请输入名称
+  image: 镜像
+  command: 命令
+  enterCommand: 请输入命令
+  deleteConfirm: 是否确认删除
+  details: 详情
+  value: 值
+  endTime: 结束时间
+
+
+  minePipeline: 我创建的
+  primaryPipeline: 重要的
+  allPipeline: 全部
+  createPipeline: 新建
+  searchByPipelineName: 搜索流水线名称
+  application: 应用
+  started-at: 开始日期
+  please-choose-status: 请选择状态
+  please-choose-executor: 请选择执行人
+  please-choose-creator: 请选择创建人
+  please-choose-application: 请选择应用
+  please-choose-branch: 请选择分支
+  pipeline: 流水线
+  pipelineStatus: 状态
+  costTime: 耗时
+  applicationName: 应用
+  branch: 分支
+  executor: 执行者
+  startTime: 开始时间
+  participated: 已参与
+
+  pipelineStatusAnalyzed: 初始化成功
+  pipelineStatusBorn: 预处理成功
+  pipelineStatusCreated: 创建成功
+  pipelineStatusMark: 标记中
+  pipelineStatusQueue: 排队中
+  pipelineStatusRunning: 执行中
+  pipelineStatusSuccess: 成功
+  pipelineStatusFailed: 失败
+  pipelineStatusAnalyzeFailed: 初始化失败
+  pipelineStatusPaused: 暂停
+  pipelineStatusCreateError: 创建失败
+  pipelineStatusStartError: 启动失败
+  pipelineStatusTimeout: 超时
+  pipelineStatusStopByUser: 取消
+  pipelineStatusNoNeedBySystem: 无需执行
+  pipelineStatusCancelByRemote: 系统取消
+  pipelineStatusInitializing: 正在初始化
+  pipelineStatusError: 系统错误
+  pipelineStatusUnknown: 未知异常
+  pipelineStatusDBError: 数据库异常
+  pipelineStatusLostConn: 丢失数据库连接
+  pipelineStatusDisabled: 禁用
+  pipelineStatusWaitApprove: 等待审核
+  pipelineStatusAccept: 人工审核通过
+  pipelineStatusReject: 人工审核拒绝
+  setPrimary: 设为重要
+  unsetPrimary: 取消重要
+  run: 执行
+  cancelRun: 取消执行
+  rerunFromFail: 从失败处执行
+  rerun: 重试全流程
+  cron: 开始定时
+  cancelCron: 取消定时
+  delete: 删除
+  moreOperations: 操作
+  pipelineLatestStatus: 最近一次执行状态
+  latestCostTime: 最近一次执行耗时
+  latestExecutor: 最近一次执行人
+  latestStartTime: 最近一次开始时间
+  createTime: 创建时间
+  pipelineID: 流水线ID
+  execute: 执行
+  source: 源
+  process: 进度
+  openAll: 全部打开
+  second: 秒
+  iterationUnassigned: 待处理
+  processTip: 执行成功 Action 数/ Action 总数
+  appNotAuthorized: 暂无所属应用权限
+  publicProperty: 公开属性
+  exit: 退出
+  exitProjectConfirm: 退出当前项目后，将不再有项目协作权限，如要再次加入需要项目管理员邀请，请确认是否退出？
+  searchAppName: 搜索应用名
+  unfinishedIssue: 未完成的事项
+  sourceFile: 源文件
+  updateName: 编辑名称
+  update: 编辑
+  reopenCount: 重新打开次数
+
+en:
+  issue-manage: issue manage
+  issue: issue
+  iteration: Iteration
+  open: OPEN
+  working: WORKING
+  testing: TESTING
+  done: DONE
+  resolved: RESOLVED
+  reopen: REOPEN
+  wontfix: WONTFIX
+  dup: DUP
+  closed: CLOSED
+  undefined: Undefined
+  expired: Expired
+  expireIn1Day: ExpireIn1Day
+  expireIn2Days: ExpireIn2Days
+  expireIn7Days: ExpireIn7Days
+  expireIn30Days: ExpireIn30Days
+  expireInFuture: ExpireInFuture
+  urgent: Urgent
+  high: High
+  normal: Medium
+  low: Low
+  move-to-priority: MoveToPriority
+  move-to: MoveTo
+  move-out: MoveOut
+  move-to-assignee: MoveToAssignee
+  move-to-custom: MoveToCustom
+  confirm-to-move-out-iteration: 'Confirm to move out iteration'
+  confirm-to-delete-board: 'Confirm to delete board'
+  confirm-to-update-board: 'Confirm to update board'
+  confirm-to-create-board: 'Confirm to create board'
+  the-number-of-boards-cannot-exceed-15: 'The number of boards cannot exceed 15'
+  no-permission-to-operate: 'No permission to operate'
+  my-filter-bookmark: My Filters
+  empty-filter-bookmark: Unselected
+  choose-filter-bookmark: Choose Filter
+  save-filter-bookmark-placeholder: 'Please enter a name to save the current filter'
+  sprint: Iteration
+  all: All
+  choose-sprint: Choose the iteration
+  title: Title
+  please-enter-title-or-id: "Please enter title or ID"
+  label: Label
+  please-choose-label: Choose the label
+  priority: Priority
+  complexity: Complexity
+  HARD: Complex
+  NORMAL: Medium
+  EASY: Easy
+  choose-priorities: Choose the priority
+  severity: Severity
+  choose-severity: Choose Severity
+  fatal: FATAL
+  serious: SERIOUS
+  ordinary: NORMAL
+  slight: SLIGHT
+  suggest: SUGGEST
+  creator: Creator
+  choose-yourself: Choose yourself
+  assignee: Assignee
+  responsible-person: Principal
+  epic: EPIC
+  task-type: Task Type
+  import-source: Import source
+  demand-design: Demand Design
+  architecture-design: Architecture Design
+  code-development: Code Development
+  created-at: Creation date
+  deadline: Deadline
+  closed-at: Closed At
+  requirement: Requirement
+  bug: Bug
+  task: Task
+  create-issue: Create Issue
+  create-requirement: Create Requirement
+  create-bug: Create Bug
+  create-task: Create Task
+  issue-gante-tips1: The Gantt chart of the event can only be displayed properly if the deadline and estimated time are correctly entered
+  issue-gante-tips2: '#gray#gray#>gray#: Represents the remaining time period of the deadline'
+  issue-gante-tips3: '#blue#blue#>blu#: Represents the time period from the start time of the issue to the current or the issue completion date'
+  issue-gante-tips4: '#red#read#>red#: Represents the timeout period from the due date to the current or completion date of the issue'
+  list: List
+  board: Board
+  gantt-chart: Gantt Chart
+  board-view: Board View
+  custom: Custom
+  state: State
+  import: Import
+  export: Export
+  scene-set-export-confirm: Are you sure to export?
+  scene-set-export-success-msg: The export task has been created, please check the progress in the import and export record table
+  status-success: Success
+  status-failed: Failed,
+  status-pending: Pending
+  status-processing: Processing
+  download-file: Download File
+  import-export-record: Import and export records
+  import-export-table: Import and export records table
+  type: Type
+  operator: Operator
+  time: Time
+  desc: Description
+  status: Status
+  result: Result
+  test-case-num-total: Total number of test cases
+  test-case-num-succ: Passed
+  test-case-num-fail: Not passed
+  test-case-num-block: Blocked
+  test-case-num-init: Init
+  test-case-rate-passed: Pass rate
+  test-case-rate-executed: Execution rate
+  no-iteration: no iteration
+  test-case-status: Status
+  block: Block
+  notpassed: Not Passed
+  mt-plan-chart: Chart of manual test plan
+  INIT: Not executed
+  BLOCK: Block
+  PASSED: Success
+  FAIL: Failed
+  at-case-rate-trending-chart: Execution and pass rate trends of automated testing
+  at-plan-latest-waterfall-chart: Waterfall chart of auto test plan execution details
+  auto-test-scene-num: Scene
+  auto-test-api-num: Api
+  user-not-exist: user does not exist
+  radar-manual-test-plan: Manual Test Plan
+  radar-auto-test-plan: Auto Test Plan
+  radar-unclosed-bug: Unclosed Bug
+  radar-quality: Quality
+  radar-total-quality-score: Total Quality Score
+  radar-bug-reopen-rate: Bug Reopen Rate
+  radar-code-coverage: Code Coverage
+  scene-avg-cost: Scene - By average execution time Top 500
+  scene-failed-rate: Scene - By execution failure rate Top 500
+  scene-passed-rate: Scene - By execution pass rate Top 500
+  api-avg-cost: API - By average execution time Top 500
+  api-failed-rate: API - By execution failure rate Top 500
+  test-dashboard-tip: If there is no data under the selected iteration, please confirm whether there is a related test plan under the iteration, and whether the existing test plan is configured correctly for the iteration
+  week: Last week
+  month: Last month
+  quality_score_tip--title: Quqality Score Formula (Score 0-100)
+  quality_score_tip--mt_plan: Manual Test Plan
+  quality_score_tip--mt_plan_rate_passed: Pass Rate：NUM(all PASSED cases in all test plans) / NUM(all cases in all test plans)
+  quality_score_tip--mt_plan_rate_executed: Execute Rate：NUM(all EXECUTED cases in all test plans) / NUM(all cases in all test plans)
+  quality_score_tip--mt_plan_score_formula: Formula：Pass-Rate * Execute-Rate * 100
+  quality_score_tip--at_plan: Auto Test Plan
+  quality_score_tip--at_plan_rate_passed: Pass Rate：NUM(all PASSED cases in all test plans) / NUM(all cases in all test plans)
+  quality_score_tip--at_plan_rate_executed: Execute Rate：NUM(all EXECUTED cases in all test plans) / NUM(all cases in all test plans)
+  quality_score_tip--at_plan_score_formula: Formula：Pass-Rate * Execute-Rate * 100
+  quality_score_tip--unclosed_bug: Unclosed Bug
+  quality_score_tip--unclosed_bug_DI: DI：NUM(Fatal)*10 + NUM(Serious)*3 + NUM(Normal)*1 + NUM(Slight)*0.1
+  quality_score_tip--unclosed_bug_score_formula: Formula：100 - DI
+  quality_score_tip--coco: Code Coverage
+  quality_score_tip--coco_score_formula: Lastet-Code-Coverage(not distinguish environment) * 100
+  quality_score_tip--bug_reopen: Bug Reopen Rate
+  quality_score_tip--bug_reopen_rate: Bug Reopen Rate：NUM(all REOPENED bug count in iterations) / NUM(all cases in iterations)
+  quality_score_tip--bug_reopen_score_formula: Formula：100 - Bug-Reopen-Rate * 100
+  quality_score_tip--total: Total Score
+  quality_score_tip--total_score_formula: Formula：(Score(Manual Test Plan) + Score(Auto Test Plan) + Score(Bug) + Score(Bug Reopen Rate) + Score(Code Coverage)) / 5
+  forced-cancel: Force Cancel
+  cancel-confirm: Forced cancellation will result in neither the details nor the report being generated!
+  project-code-coverage-trend: Project code coverage trends
+  line-coverage: Line coverage
+  statistics-object-configuration: Statistical Object Configuration
+  contain: Contain
+  enter-contain-expression: Please enter an expression containing
+  enter-not-contain-expression: Please enter an expression non-containing
+  enter-maven-expression: Please enter maven setting expression
+  code-coverage-statistics-range: Code coverage statistics range setting
+  download-report: Download Report
+  end: End
+  dev-env: Development Environment
+  test-env: Test Environment
+  feature-env: Staging Environment
+  prod-env: Production Environment
+  coverage-plugin-not-enable-tip: The coverage addon is not enabled in the current environment. Please refer to
+  coverage-processing-tip: Code coverage statistics are in progress, start and end buttons are unavailable, please wait (time-consuming depends on the number and size of the application), and check the results after manual refresh
+  coverage-generating-tip: During code coverage statistics generation, the start and end buttons are unavailable, please wait (time-consuming depends on the number and size of the application), and check the results after manual refresh
+  enable-coverage-docs: Code Coverage Statistics in Integration Testing.
+  report-generating: Report generating
+  stop-by-user: Stop By User
+  coverage-processing: Processing
+  coverage-ready: Processing
+  coverage-ending: Detail generation
+  coverage-success: Successfully
+  coverage-fail: Failed
+  coverage-cancel: User canceled
+  current-line-coverage: Current line coverage
+  log: Log
+  statistics-starter: Statistics Starter
+  start-time: Start time
+  statistics-finisher: Statistics Finisher
+  statistics-end-time: Statistics End Time
+  operate: Operations
+  statistics-start: Start
+  within-a-week: Within a week
+  within-a-month: Within a month
+  report-details: Report details
+  coverage-statistics-record: Project code coverage statistics execution record
+  execute-record: Execution Records
+  tip-message: 'Note: The trend of code coverage mainly reflects the number of lines of code in a project (not a single or partial app) covered by test cases.'
+  config-tip-message: 'Note: The statistical range can be determined by entering expressions in include and exclude; multiple expressions can be separated by colons (: ), and * wildcards are supported. \n Example: org/apache* will match all source directories starting with org/apache, */model will match all directories ending with model, and foo/*:bar/* will match all directories starting with foo or bar'
+  searchByName: Search by name
+  member: Member
+  dueToday: Due today
+  dueTomorrow: Due tomorrow
+  notIncludeDueToday: Not include data of due today
+  dueThisWeek: Due this week
+  notIncludeDueTodayTomorrow: Not include data of due today and tomorrow
+  dueThisMonth: Due this month
+  notIncludeDueTodayTomorrowMonth: Not include data of due today, tomorrow, and this week
+  noDeadlineSpecified: No deadline specified
+  total: Total
+  dimension: Dimension
+  moreOperations: Operations
+  sort: Sort
+  timeOrder: Time order
+  timeReverse: Reverse order
+  sceneset: Scene set
+  yearAgo: year(s) ago
+  monthAgo: month(s) ago
+  dayAgo: day(s) ago
+  hourAgo: hour(s) ago
+  minuteAgo: minute(s) ago
+  secondAgo: second(s) ago
+  updatedAt: Updated
+  name: Name
+  updatedBy: Updated by
+  creationTime: Creation time
+  updateTime: Update time
+  enterName: Please enter the name
+  image: Image
+  command: Command
+  enterCommand: Please enter the command
+  delete: Delete
+  deleteConfirm: Confirm to delete
+  details: Details
+  value: Value
+  endTime: End time
+
+  minePipeline: Mine
+  primaryPipeline: Primary
+  allPipeline: All
+  createPipeline: Create pipeline
+  searchByPipelineName: Search by pipeline name
+  executor: Executor
+  application: Application
+  started-at: Started at
+  please-choose-status: Please choose status
+  please-choose-executor: Please choose executor
+  please-choose-creator: Please choose creator
+  please-choose-application: Please choose application
+  please-choose-branch: Please choose branch
+  pipeline: Pipeline
+  pipelineStatus: Status
+  costTime: Time
+  applicationName: Application name
+  branch: Branch
+  startTime: Begin time
+  participated: Participated
+
+  pipelineStatusAnalyzed: Analyzed
+  pipelineStatusBorn: Born
+  pipelineStatusCreated: Created
+  pipelineStatusMark: Mark
+  pipelineStatusQueue: Queue
+  pipelineStatusRunning: Running
+  pipelineStatusSuccess: Success
+  pipelineStatusFailed: Failed
+  pipelineStatusAnalyzeFailed: AnalyzeFailed
+  pipelineStatusPaused: Paused
+  pipelineStatusCreateError: CreateError
+  pipelineStatusStartError: StartError
+  pipelineStatusTimeout: Timeout
+  pipelineStatusStopByUser: StopByUser
+  pipelineStatusNoNeedBySystem: NoNeedBySystem
+  pipelineStatusCancelByRemote: CancelByRemote
+  pipelineStatusInitializing: Initializing
+  pipelineStatusError: Error
+  pipelineStatusUnknown: Unknown
+  pipelineStatusDBError: DBError
+  pipelineStatusLostConn: LostConn
+  pipelineStatusDisabled: Disabled
+  pipelineStatusWaitApproval: WaitApproval
+  pipelineStatusApprovalSuccess: ApprovalSuccess
+  pipelineStatusApprovalFail: ApprovalFail
+  setPrimary: Set primary
+  unsetPrimary: Cancel primary
+  run: Run
+  cancelRun: Rancel run
+  rerunFromFail: Rerun from fail
+  rerun: Rerun
+  cron: Start cron
+  cancelCron: Cancel cron
+  pipelineLatestStatus: Latest execute status
+  latestCostTime: Latest execute cost time
+  latestExecutor: Latest executor
+  latestStartTime: Latest start time
+  createTime: Create Time
+  pipelineID: PipelineID
+  execute: Execute
+  source: Source
+  process: Process
+  openAll: Open all
+  second: Second
+  iterationUnassigned: Unassigned
+  processTip: Successful actions/Total actions
+  appNotAuthorized: No application permission
+  publicProperty: Property
+  exit: Exit
+  exitProjectConfirm: After exiting the current project, you will no longer have project collaboration permission. If you want to join again, you need to be invited by the project administrator. Are you sure you want to exit?
+  searchAppName: Search by app name
+  unfinishedIssue: Unfinished issue
+  sourceFile: source file
+  updateName: Update name
+  update: Update
+  deploymentStatus: Deployment status
+  select status: Select the status
+  OK: Completed
+  app: App
+  deploy: Deployment
+  deploymentOrderName: Deployment
+  select deploymentOrderName: Select the deployment
+  service: Service
+  running duration: Deployment time
+  deployTime: Deployment time
+  restart: Restart
+  reopenCount: Reopen count

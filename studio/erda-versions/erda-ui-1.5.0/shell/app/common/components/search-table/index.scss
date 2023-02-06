@@ -1,0 +1,26 @@
+.search-table-header {
+  margin-bottom: 12px;
+  overflow: hidden;
+
+  .search-input {
+    width: 260px;
+
+    &-left {
+      display: inline-block;
+    }
+
+    &-right {
+      float: right;
+    }
+  }
+
+  .extra-items {
+    &-left {
+      display: inline-block;
+    }
+
+    &-right {
+      float: right;
+    }
+  }
+}

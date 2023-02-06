@@ -1,0 +1,20 @@
+- ai_class_count:
+    title: "Class count"
+    metric_names: "jvm_class_loader"
+    type: "ai"
+    order: 0
+    defines:
+      avg.loaded:
+        label: "loaded"
+        unit: ""
+        unit_type: ""
+        axis_index: 0
+        chart_type: "line"
+      avg.unloaded:
+        label: "unloaded"
+        unit: ""
+        unit_type: ""
+        axis_index: 1
+        chart_type: "line"
+    parameters:
+

@@ -1,0 +1,122 @@
+.yaml-editor-container {
+  border-radius: $radius;
+
+  .create-add {
+    color: $color-dark-6;
+    font-size: 30px;
+    line-height: 160px;
+    text-align: center;
+  }
+
+  .drawer-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: $color-dark-1;
+  }
+
+  .yml-editor-head-icon {
+    margin-right: 8px;
+    color: $color-dark-4;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  .yml-editor-head-icon-active {
+    color: $color-primary;
+  }
+
+  .commit-file-form-container {
+    margin: 16px;
+    text-align: left;
+  }
+
+  .addons-container {
+    margin-top: 12px;
+    border-top: 1px solid $platinum;
+    border-bottom: 1px solid $platinum;
+
+    .addons-content {
+      padding: 56px 0 0 0;
+
+      .yaml-editor-item {
+        margin-bottom: 60px;
+      }
+    }
+  }
+}
+
+.yml-editor {
+  .yaml-editor-drawer {
+    .add-on-drawer {
+      padding: 0;
+    }
+  }
+
+  .commit-file-form {
+    padding: 16px 16px 0 16px;
+    border-top: 1px solid $color-border;
+
+    .ant-form-item:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.editor-ops {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.viewer-ops {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.yml-editor-body {
+  border-radius: 0 0 $radius $radius;
+}
+
+.yml-editor-code-btn {
+  display: inline-block;
+  margin-right: 0;
+  line-height: 28px;
+  vertical-align: 0;
+}
+
+.yml-editor-head {
+  display: block;
+  height: 52px;
+  margin: 0;
+  padding: 0 16px;
+  line-height: 48px;
+  background-color: $whitesmoke;
+  border: 1px solid $color-border;
+  border-radius: $radius $radius 0 0;
+
+  .yml-editor-head-filename {
+    margin-right: 8px;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.services-and-add-ons {
+  border-radius: $radius;
+}
+
+.add-on-btn {
+  display: block;
+  width: 20px;
+  height: 20px;
+}

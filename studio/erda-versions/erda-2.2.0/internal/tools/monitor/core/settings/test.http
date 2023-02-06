@@ -1,0 +1,45 @@
+@url = http://localhost:7096/api
+
+### GET settings
+GET {{url}}/global/settings?workspace=dev&org_id=1
+Org-ID: 1
+User-ID: 1100
+Lang: zh
+
+### PUT settings
+PUT {{url}}/global/settings?org_id=1
+Org-ID: 1
+User-ID: 1100
+Content-Type: application/json
+
+{
+    "dev": [
+        {
+            "key": "monitor",
+            "items": [
+                {
+                    "key": "metrics_ttl",
+                    "value": 10
+                }
+            ]
+        }
+    ]
+}
+
+### register config
+PUT {{url}}/config/register?desc=xxx
+Org-ID: 2
+User-ID: 1100
+Content-Type: application/json
+
+[
+    {
+        "scope": "org",
+	    "scope_id": "2",
+	    "namespace": "dev",
+	    "type": "metric",
+	    "names": "yy_*",
+	    "filters": "[]",
+	    "enable": true
+    }
+]

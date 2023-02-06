@@ -1,0 +1,666 @@
+{
+  "id": "bug",
+  "name": "缺陷统计",
+  "desc": "客户端视角",
+  "scope": "org",
+  "scopeId": "terminus",
+  "viewConfig": [
+    {
+      "w": 12,
+      "h": 10,
+      "x": 0,
+      "y": 0,
+      "i": "view-f6623ce7",
+      "view": {
+        "title": "缺陷按状态分布",
+        "i18n": {
+          "title": {
+            "en": "bug are distributed by state",
+            "zh": "缺陷按状态分布"
+          }
+        },
+        "description": "",
+        "chartType": "chart:pie",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics",
+          "query": {
+            "alias_last.tags.issue_state": "issue_state",
+            "alias_sum.counts": "counts总和",
+            "chartType": "chart:pie",
+            "eq_tags.issue_type": "BUG",
+            "format": "chartv2",
+            "trans_group": "true",
+            "group": "(tags.issue_state)",
+            "sum": [
+              "counts"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "691",
+                "metric": "issue_metrics_statistics-counts"
+              }
+            ],
+            "filters": [
+              {
+                "key": "9",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "BUG"
+              }
+            ],
+            "group": [
+              "tags.issue_state"
+            ]
+          }
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 10,
+      "i": "view-fd2ecfbe",
+      "view": {
+        "title": "缺陷新增 / 关闭趋势",
+        "i18n": {
+          "title": {
+            "en": "bug add/close trend",
+            "zh": "缺陷新增 / 关闭趋势"
+          }
+        },
+        "description": "",
+        "chartType": "chart:line",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": true,
+            "noAreaColor": true,
+            "moreThanOneDayFormat": "M/D"
+          },
+          "option": {
+            "yAxis": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_add_or_repair_metrics_statistics/histogram",
+          "query": {
+            "chartType": "chart:line",
+            "interval": "24h",
+            "format": "chartv2",
+            "start": "${start}",
+            "end": "${end}",
+            "sum": [
+              "bug_add_counts",
+              "bug_repair_counts"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_add_or_repair_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "263",
+                "metric": "issue_add_or_repair_metrics_statistics-bug_add_or_repair_counts"
+              }
+            ],
+            "filters": [],
+            "group": [
+              "tags.bug_add_or_repair_type"
+            ]
+          }
+        },
+        "controls": [
+          {}
+        ]
+      }
+    },
+    {
+      "w": 12,
+      "h": 10,
+      "x": 12,
+      "y": 0,
+      "i": "view-1e86c4a6",
+      "view": {
+        "title": "缺陷按严重等级分布",
+        "i18n": {
+          "title": {
+            "en": "bug distribution by severity level",
+            "zh": "缺陷按严重等级分布"
+          }
+        },
+        "description": "",
+        "chartType": "chart:pie",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics",
+          "query": {
+            "alias_last.tags.issue_severity": "issue_severity",
+            "alias_sum.counts": "counts总和",
+            "chartType": "chart:pie",
+            "eq_tags.issue_type": "BUG",
+            "format": "chartv2",
+            "trans_group": "true",
+            "group": "(tags.issue_severity)",
+            "sum": [
+              "counts"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "459",
+                "metric": "issue_metrics_statistics-counts"
+              }
+            ],
+            "filters": [
+              {
+                "key": "24",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "BUG"
+              }
+            ],
+            "group": [
+              "tags.issue_severity"
+            ]
+          }
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 12,
+      "h": 5,
+      "x": 12,
+      "y": 37,
+      "i": "view-91fd7d1f",
+      "view": {
+        "title": "缺陷平均响应时间 (天)",
+        "i18n": {
+          "title": {
+            "en": "bug defect response time (MD)",
+            "zh": "缺陷平均响应时间 (天)"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics",
+          "query": {
+            "alias_avg.issue_response_time": "issue_response_time平均值",
+            "avg": [
+              "issue_response_time"
+            ],
+            "chartType": "card",
+            "eq_tags.issue_state": "CLOSED",
+            "eq_tags.issue_type": "BUG",
+            "format": "chartv2"
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "avg",
+                "key": "604",
+                "metric": "issue_metrics_statistics-issue_response_time"
+              }
+            ],
+            "filters": [
+              {
+                "key": "346",
+                "method": "eq",
+                "tag": "tags.issue_state",
+                "value": "CLOSED"
+              },
+              {
+                "key": "84",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "BUG"
+              }
+            ],
+            "group": []
+          }
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 12,
+      "h": 5,
+      "x": 0,
+      "y": 37,
+      "i": "view-d8d99372",
+      "view": {
+        "title": "缺陷平均修复工作量（人天)",
+        "i18n": {
+          "title": {
+            "en": "bug average repair workload（MD)",
+            "zh": "缺陷平均修复工作量（人天)"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics",
+          "query": {
+            "alias_avg.issue_elapsed_time": "issue_elapsed_time平均值",
+            "avg": [
+              "issue_elapsed_time"
+            ],
+            "chartType": "card",
+            "eq_tags.issue_state": "CLOSED",
+            "eq_tags.issue_type": "BUG",
+            "format": "chartv2"
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "avg",
+                "key": "308",
+                "metric": "issue_metrics_statistics-issue_elapsed_time"
+              }
+            ],
+            "filters": [
+              {
+                "key": "269",
+                "method": "eq",
+                "tag": "tags.issue_state",
+                "value": "CLOSED"
+              },
+              {
+                "key": "191",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "BUG"
+              }
+            ],
+            "group": []
+          }
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 24,
+      "h": 10,
+      "x": 0,
+      "y": 42,
+      "i": "view-8b1ee412",
+      "view": {
+        "title": "缺陷按优先级分布",
+        "i18n": {
+          "title": {
+            "en": "bug distribution by priority",
+            "zh": "缺陷按优先级分布"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          },
+          "option": {
+            "yAxis": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics/histogram",
+          "query": {
+            "alias_last.tags.issue_user_nick": "issue_user_nick",
+            "alias_sum.counts": "counts总和",
+            "alias_sum.not_close": "not_close总和",
+            "chartType": "chart:bar",
+            "eq_tags.issue_type": "BUG",
+            "format": "chartv2",
+            "limit": 1000,
+            "group": "(tags.issue_user_nick)",
+            "sum": [
+              "not_close",
+              "counts"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "170",
+                "metric": "issue_metrics_statistics-not_close"
+              },
+              {
+                "aggregation": "sum",
+                "key": "154",
+                "metric": "issue_metrics_statistics-counts"
+              }
+            ],
+            "filters": [
+              {
+                "key": "269",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "BUG"
+              }
+            ],
+            "group": [
+              "tags.issue_user_nick"
+            ]
+          }
+        },
+        "controls": [
+          {
+            "key": "eq_tags.issue_priority",
+            "options": [
+              {
+                "name": "低",
+                "value": "LOW"
+              },
+              {
+                "name": "中",
+                "value": "NORMAL"
+              },
+              {
+                "name": "高",
+                "value": "HIGH"
+              },
+              {
+                "name": "紧急",
+                "value": "URGENT"
+              }
+            ],
+            "type": "select"
+          }
+        ]
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 28,
+      "i": "view-a844c5b7",
+      "view": {
+        "title": "缺陷按重新打开分布",
+        "i18n": {
+          "title": {
+            "en": "bug press to reopen the distribution",
+            "zh": "缺陷按重新打开分布"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          },
+          "option": {
+            "yAxis": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics/histogram",
+          "query": {
+            "alias_last.tags.issue_user_nick": "issue_user_nick",
+            "alias_sum.is_re_open_FATAL": "is_re_open_FATAL总和",
+            "alias_sum.is_re_open_NORMAL": "is_re_open_NORMAL总和",
+            "alias_sum.is_re_open_SERIOUS": "is_re_open_SERIOUS总和",
+            "alias_sum.is_re_open_SLIGHT": "is_re_open_SLIGHT总和",
+            "alias_sum.is_re_open_SUGGEST": "is_re_open_SUGGEST总和",
+            "chartType": "chart:bar",
+            "eq_tags.issue_type": "BUG",
+            "format": "chartv2",
+            "limit": 1000,
+            "group": "(tags.issue_user_nick)",
+            "sum": [
+              "is_re_open_SUGGEST",
+              "is_re_open_SLIGHT",
+              "is_re_open_SERIOUS",
+              "is_re_open_NORMAL",
+              "is_re_open_FATAL"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "1755",
+                "metric": "issue_metrics_statistics-is_re_open_SUGGEST"
+              },
+              {
+                "aggregation": "sum",
+                "key": "1721",
+                "metric": "issue_metrics_statistics-is_re_open_SLIGHT"
+              },
+              {
+                "aggregation": "sum",
+                "key": "1687",
+                "metric": "issue_metrics_statistics-is_re_open_SERIOUS"
+              },
+              {
+                "aggregation": "sum",
+                "key": "1653",
+                "metric": "issue_metrics_statistics-is_re_open_NORMAL"
+              },
+              {
+                "aggregation": "sum",
+                "key": "1637",
+                "metric": "issue_metrics_statistics-is_re_open_FATAL"
+              }
+            ],
+            "filters": [
+              {
+                "key": "1871",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "BUG"
+              }
+            ],
+            "group": [
+              "tags.issue_user_nick"
+            ]
+          }
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 19,
+      "i": "view-7fb8a372",
+      "view": {
+        "title": "缺陷按人员分布",
+        "i18n": {
+          "title": {
+            "en": "bug distribution by personnel",
+            "zh": "缺陷按人员分布"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          },
+          "option": {
+            "yAxis": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics/histogram",
+          "query": {
+            "alias_last.tags.issue_user_nick": "issue_user_nick",
+            "alias_sum.counts": "counts总和",
+            "alias_sum.not_close": "not_close总和",
+            "chartType": "chart:bar",
+            "eq_tags.issue_type": "BUG",
+            "format": "chartv2",
+            "limit": 1000,
+            "group": "(tags.issue_user_nick)",
+            "sum": [
+              "not_close",
+              "counts"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "645",
+                "metric": "issue_metrics_statistics-not_close"
+              },
+              {
+                "aggregation": "sum",
+                "key": "635",
+                "metric": "issue_metrics_statistics-counts"
+              }
+            ],
+            "filters": [
+              {
+                "key": "667",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "BUG"
+              }
+            ],
+            "group": [
+              "tags.issue_user_nick"
+            ]
+          }
+        },
+        "controls": [
+          {
+            "key": "eq_tags.issue_severity",
+            "options": [
+              {
+                "name": "建议",
+                "value": "SUGGEST"
+              },
+              {
+                "name": "轻微",
+                "value": "SLIGHT"
+              },
+              {
+                "name": "严重",
+                "value": "SERIOUS"
+              },
+              {
+                "name": "致命",
+                "value": "FATAL"
+              },
+              {
+                "name": "一般",
+                "value": "NORMAL"
+              }
+            ],
+            "type": "select"
+          }
+        ]
+      }
+    }
+  ],
+  "version": "v2"
+}

@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package erda.core.hepa.api_policy;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/api_policy/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+service ApiPolicyService {
+  rpc GetPolicy(GetPolicyRequest) returns (GetPolicyResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/policies/{category}?packageId={packageId}&apiId={apiId}",
+    };
+  }
+
+  rpc SetPolicy(SetPolicyRequest) returns (SetPolicyResponse) {
+    option (google.api.http) = {
+      put: "/api/gateway/policies/{category}?packageId={packageId}&apiId={apiId}",
+      body: "body",
+    };
+  }
+}
+
+message SetPolicyResponse {
+  google.protobuf.Value data = 1;  
+}
+
+message SetPolicyRequest {
+  string category = 1;
+  string packageId = 2;
+  string apiId = 3;
+  bytes body = 4;
+}
+
+message GetPolicyRequest {
+  string category = 1;
+  string packageId = 2;
+  string apiId = 3;
+}
+
+message GetPolicyResponse {
+  google.protobuf.Value data = 1;
+}

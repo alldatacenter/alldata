@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package erda.core.hepa;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/pb";
+import "google/protobuf/struct.proto";
+
+message Page {
+  int64 pageSize = 1;
+  int64 curPage = 2;
+  int64 totalNum = 3;
+  int64 startIndex = 4;
+  int64 endIndex = 5;
+}
+
+message PageResult {
+  google.protobuf.Value result = 1;
+  Page page = 2;
+}
+
+message NewPageResult {
+  google.protobuf.Value list = 1;
+  int64 total = 2;
+}

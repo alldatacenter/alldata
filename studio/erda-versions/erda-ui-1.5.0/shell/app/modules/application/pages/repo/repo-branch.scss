@@ -1,0 +1,25 @@
+.repo-branch-search-input {
+  width: 260px;
+}
+.repo-branch-list {
+  .branch-item {
+    padding: 16px 12px;
+    color: $color-text;
+    border-bottom: 1px solid $color-border;
+
+    &-left {
+      flex: 1;
+      margin-right: 12px;
+      overflow: hidden;
+      line-height: 24px;
+    }
+
+    &-commit {
+      max-width: calc(100% - 260px);
+    }
+
+    .dice-avatar-wrap .nowrap {
+      max-width: 100px;
+    }
+  }
+}

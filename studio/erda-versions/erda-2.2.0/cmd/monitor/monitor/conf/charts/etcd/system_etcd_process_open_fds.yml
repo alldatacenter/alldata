@@ -1,0 +1,16 @@
+- system_etcd_process_open_fds:
+    title: "打开的文件数"
+    metric_names: "etcd"
+    type: "etcd"
+    order: 3
+    defines:
+      max.process_open_fds:
+        label: ""
+        unit: ""
+        unit_type: "count"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "url_host"
+

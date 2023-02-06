@@ -1,0 +1,14 @@
+- mysql_innodb_os_log_fsyncs:
+    title: "INNODB的fsync日志文件的次数"
+    metric_names: "mysql"
+    type: "mysql_remove"
+    order: 21
+    defines:
+      diff.innodb_os_log_fsyncs:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package erda.msp.apm.exception;
+option go_package = "github.com/erda-project/erda-proto-go/msp/apm/exception/pb";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/struct.proto";
+
+service ExceptionService {
+  rpc GetExceptions (GetExceptionsRequest) returns (GetExceptionsResponse)  {
+    option (google.api.http) = {
+      get: "/api/msp/apm/exceptions?scopeId={scopeID}",
+    };
+  }
+
+  rpc GetExceptionEventIds (GetExceptionEventIdsRequest) returns (GetExceptionEventIdsResponse)  {
+    option (google.api.http) = {
+      get: "/api/msp/apm/exceptions/event-ids?exceptionId={exceptionID}&scopeId={scopeID}",
+    };
+  }
+
+  rpc GetExceptionEvent (GetExceptionEventRequest) returns (GetExceptionEventResponse)  {
+    option (google.api.http) = {
+      get: "/api/msp/apm/exceptions/events?exceptionEventId={exceptionEventID}&scopeId={scopeID}",
+    };
+  }
+}
+
+message GetExceptionsRequest {
+  int64  startTime = 1 [(validate.rules).int64.gt = 0];
+  int64  endTime   = 2 [(validate.rules).int64.gt = 0];
+  string scopeID   = 3 [(validate.rules).string.min_len = 1];
+  bool   debug     = 4;
+}
+
+message GetExceptionsResponse {
+  repeated Exception data = 1;
+}
+
+message GetExceptionEventIdsRequest {
+  string exceptionID = 1 [(validate.rules).string.min_len = 1];
+  string scopeID     = 2 [(validate.rules).string.min_len = 1];
+}
+
+message GetExceptionEventIdsResponse {
+  repeated string data = 1;
+}
+
+message GetExceptionEventRequest {
+  string exceptionEventID = 1 [(validate.rules).string.min_len = 1];
+  string scopeID          = 2 [(validate.rules).string.min_len = 1];
+}
+
+message GetExceptionEventResponse {
+  ExceptionEvent data = 1;
+}
+
+message Exception {
+  string id               = 1;
+  string className        = 2;
+  string method           = 3;
+  string type             = 4;
+  int64  eventCount       = 5;
+  string exceptionMessage = 6;
+  string file             = 7;
+  string applicationID    = 8 [json_name = "applicationId"];
+  string runtimeID        = 9 [json_name = "runtimeId"];
+  string serviceName      = 10;
+  string scopeID          = 11 [json_name = "scopeId"];
+  string createTime       = 12;
+  string updateTime       = 13;
+}
+
+message Stacks {
+  map<string, google.protobuf.Value> stack = 1;
+}
+
+message ExceptionEvent {
+  string              id             = 1;
+  string              exceptionID    = 2 [json_name = "exceptionId"];
+  map<string, string> metadata       = 3;
+  map<string, string> requestContext = 4;
+  map<string, string> requestHeaders = 5;
+  string              requestID      = 6 [json_name = "requestId"];
+  repeated Stacks     stacks         = 7;
+  map<string, string> tags           = 8;
+  int64               timestamp      = 9;
+  bool                requestSampled = 10;
+}

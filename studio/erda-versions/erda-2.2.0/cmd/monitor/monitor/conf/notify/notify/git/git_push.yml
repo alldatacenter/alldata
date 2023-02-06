@@ -1,0 +1,26 @@
+id: git_push
+metadata:
+  name: "代码推送"
+  type: git
+  module: notify
+  scope:
+    - app
+templates:
+  - trigger:
+      - notify
+    targets:
+      - dingding
+      - email
+      - mbox
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【代码推送】
+      template: |
+        ### {{projectName}}/{{appName}} 代码推送
+        - 推送前commit：{{beforeID}}
+        - 推送后commit：{{afterID}}
+        - 推送引用：{{ref}}
+        - 提交人：{{pusherName}}

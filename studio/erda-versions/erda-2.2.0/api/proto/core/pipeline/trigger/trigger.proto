@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package erda.core.pipeline.trigger;
+
+import "google/api/annotations.proto";
+import "common/openapi.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/core/pipeline/trigger/pb";
+
+service TriggerService {
+  option (erda.common.openapi_service) = {
+    service: "pipeline",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+  rpc RunPipelineByTriggerRequest (PipelineTriggerRequest) returns (PipelineTriggerResponse) {
+    option (google.api.http) = {
+      post: "/api/pipeline/triggers/actions/run",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/pipeline/triggers/actions/run"
+    };
+  }
+}
+
+message PipelineTriggerRequest {
+  string eventName = 1;
+  map<string, string> label = 2 [json_name="lable"];
+}
+
+message PipelineTriggerResponse {
+  repeated uint64 pipelineIDs = 1 [json_name="pipelineIDs"];
+}

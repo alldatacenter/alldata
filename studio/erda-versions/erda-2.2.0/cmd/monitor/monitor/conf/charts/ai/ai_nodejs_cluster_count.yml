@@ -1,0 +1,14 @@
+- ai_nodejs_cluster_count:
+    title: "Cluster count"
+    metric_names: "nodejs_cluster"
+    type: "ai"
+    order: 0
+    defines:
+      max.count:
+        label: "count"
+        unit: ""
+        unit_type: "count"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

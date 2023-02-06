@@ -1,0 +1,193 @@
+syntax = "proto3";
+package erda.msp.apm.log_service;
+option go_package = "github.com/erda-project/erda-proto-go/msp/apm/log-service/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+service LogService {
+  rpc HistogramAggregation(HistogramAggregationRequest) returns(HistogramAggregationResponse) {
+    option (google.api.http) = {
+      get: "/api/log-service/{addon}/statistics/histogram",
+    };
+  }
+
+  rpc BucketAggregation(BucketAggregationRequest) returns(BucketAggregationResponse) {
+    option (google.api.http) = {
+      get: "/api/log-service/{addon}/statistics/bucket",
+    };
+  }
+
+  rpc PagedSearch(PagedSearchRequest) returns(PagedSearchResponse) {
+    option (google.api.http) = {
+      get: "/api/log-service/{addon}/search/paged",
+    };
+  }
+
+  rpc SequentialSearch(SequentialSearchRequest) returns(SequentialSearchResponse) {
+    option (google.api.http) = {
+      get: "/api/log-service/{addon}/search/sequential",
+    };
+  }
+
+  rpc GetFieldSettings(GetFieldSettingsRequest) returns(GetFieldSettingsResponse) {
+    option (google.api.http) = {
+      get: "/api/log-service/{addon}/settings/fields",
+    };
+  }
+
+  // download api cannot exposed by grpc
+}
+
+// for get field settings request
+
+message GetFieldSettingsRequest {
+  string addon = 1;
+}
+
+message GetFieldSettingsResponse {
+  repeated LogField data = 1;
+}
+
+message LogField {
+  string fieldName          = 1;
+  bool   supportAggregation = 2;
+  bool   display            = 3;
+  bool   allowEdit          = 4;
+  int32  group              = 5;
+}
+
+
+// for sequential search request
+
+message SequentialSearchRequest {
+  int64  start          = 1;
+  int64  end            = 2;
+  string clusterName    = 3;
+  string addon          = 4;
+  string query          = 5;
+  bool   debug          = 6;
+  string sort           = 7;
+  string id             = 8;
+  int64  timestampNanos = 9;
+  int64  offset         = 10;
+  int64  count          = 11;
+}
+
+message SequentialSearchResponse {
+  LogQueryResult data = 1;
+}
+
+
+// for paged search request
+
+message PagedSearchRequest {
+  int64           start       = 1;
+  int64           end         = 2;
+  string          clusterName = 3;
+  string          addon       = 4;
+  string          query       = 5;
+  bool            debug       = 6;
+  int64           pageNo      = 7;
+  int64           pageSize    = 8;
+  repeated string sort        = 9;
+  bool            highlight   = 10;
+}
+
+message PagedSearchResponse {
+  LogQueryResult data = 1;
+}
+
+message LogQueryResult {
+  int64                 total = 1;
+  repeated HighlightLog data  = 2;
+}
+
+message HighlightLog {
+  LogItem                                source    = 1;
+  map<string, google.protobuf.ListValue> highlight = 2;
+}
+
+message LogItem {
+  string              docId          = 1 [json_name = "_id"];
+  string              id             = 2;
+  string              source         = 3;
+  string              stream         = 4;
+  string              content        = 5;
+  int64               offset         = 6;
+  int64               timestamp      = 7;
+  string              timestampNanos = 8;
+  map<string, string> tags           = 9;
+}
+
+// for bucket aggregation request
+
+message BucketAggregationRequest {
+  int64           start       = 1;
+  int64           end         = 2;
+  string          clusterName = 3;
+  string          addon       = 4;
+  string          query       = 5;
+  bool            debug       = 6;
+  repeated string aggFields   = 7;
+  int64           termsSize   = 8;
+}
+
+message BucketAggregationResponse {
+  LogFieldsAggregationResult data = 1;
+}
+
+message LogFieldsAggregationResult {
+  int64                       total     = 1;
+  map<string, LogFieldBucket> aggFields = 2;
+}
+
+message LogFieldBucket {
+  repeated BucketAgg buckets = 1;
+}
+
+message BucketAgg {
+  string key   = 1;
+  int64  count = 2;
+}
+
+// for histogram aggregation request
+
+message HistogramAggregationRequest {
+  int64  start       = 1;
+  int64  end         = 2;
+  string clusterName = 3;
+  string addon       = 4;
+  string query       = 5;
+  bool   debug       = 6;
+}
+
+message HistogramAggregationResponse {
+  HistogramAggregationResult data = 1;
+}
+
+message HistogramAggregationResult {
+  string                      title    = 1;
+  int64                       total    = 2;
+  int64                       interval = 3;
+  repeated int64              time     = 4;
+  repeated LogStatisticResult results  = 5;
+}
+
+message LogStatisticResult {
+  string                  name = 1;
+  repeated CountHistogram data = 2;
+}
+
+message CountHistogram {
+  ArrayAgg count = 1;
+}
+
+message ArrayAgg {
+  string          unitType  = 1;
+  string          unit      = 2;
+  string          chartType = 3;
+  int64           axisIndex = 4;
+  string          name      = 5;
+  string          tag       = 6;
+  repeated double data      = 7;
+}

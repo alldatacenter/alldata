@@ -1,0 +1,33 @@
+.task-report-records {
+  height: 100%;
+
+  .search-records {
+    position: relative;
+    width: 260px;
+
+    &::after {
+      position: absolute;
+      top: -16px;
+      right: 0;
+      bottom: -16px;
+      display: block;
+      height: 100%;
+      border-right: thin solid rgba(0, 0, 0, 0.1);
+      content: '';
+    }
+
+    .active {
+      color: $color-active;
+      background: $color-active-bg;
+    }
+  }
+
+  .bi-view-wrapper {
+    padding: 30px 20px;
+
+    .bi-chart-header {
+      position: absolute;
+      top: 0;
+    }
+  }
+}

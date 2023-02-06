@@ -1,0 +1,16 @@
+.pipeline-in-params-drawer {
+  .ant-drawer-body {
+    padding-bottom: 50px;
+  }
+
+  &-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 8px 16px;
+    text-align: left;
+    background-color: $white;
+    border-top: 1px solid $border-color;
+  }
+}

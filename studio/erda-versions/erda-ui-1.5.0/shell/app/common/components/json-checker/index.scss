@@ -1,0 +1,49 @@
+.json-checker-modal {
+  .ant-modal-body {
+    padding-top: 0;
+  }
+}
+
+.json-detail-wrap {
+  position: relative;
+  min-height: 200px;
+  padding: $b16;
+  color: #e6db74;
+  background-color: #3c444f;
+  border-radius: $radius;
+
+  pre {
+    max-height: 400px;
+    margin-bottom: unset;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 6px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: gray;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+  }
+
+  .json-detail-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: $white;
+    background: transparent;
+    opacity: 0.5;
+
+    &:hover {
+      border-color: $white;
+      opacity: 1;
+    }
+  }
+}

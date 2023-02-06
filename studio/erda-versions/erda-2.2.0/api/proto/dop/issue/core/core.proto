@@ -1,0 +1,1102 @@
+syntax = "proto3";
+
+package erda.dop.issue.core;
+option go_package = "github.com/erda-project/erda-proto-go/dop/issue/core/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "common/openapi.proto";
+import "common/identity.proto";
+
+service IssueCoreService {
+  option (erda.common.openapi_service) = {
+    service: "dop",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc CreateIssue(IssueCreateRequest) returns (IssueCreateResponse) {
+    option (google.api.http) = {
+      post: "/api/issues",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues",
+    };
+  };
+
+  rpc PagingIssue(PagingIssueRequest) returns (PagingIssueResponse) {
+    option (google.api.http) = {
+      get: "/api/issues",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues",
+    };
+  };
+
+  rpc GetIssue(GetIssueRequest) returns (GetIssueResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/{id}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}",
+    };
+  };
+
+  rpc UpdateIssue(UpdateIssueRequest) returns (UpdateIssueResponse) {
+    option (google.api.http) = {
+      put: "/api/issues/{id}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}",
+    };
+  };
+
+  rpc DeleteIssue(DeleteIssueRequest) returns (DeleteIssueResponse) {
+    option (google.api.http) = {
+      delete: "/api/issues/{id}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}",
+    };
+  };
+
+  rpc BatchUpdateIssue(BatchUpdateIssueRequest)
+      returns (BatchUpdateIssueResponse) {
+    option (google.api.http) = {
+      put: "/api/issues/actions/batch-update",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/batch-update",
+    };
+  };
+
+  rpc UpdateIssueType(UpdateIssueTypeRequest)
+      returns (UpdateIssueTypeResponse) {
+    option (google.api.http) = {
+      put: "/api/issues/actions/update-issue-type",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/update-issue-type",
+    };
+  };
+
+  rpc SubscribeIssue(SubscribeIssueRequest) returns (SubscribeIssueResponse) {
+    option (google.api.http) = {
+      post: "/api/issues/{id}/actions/subscribe",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}/actions/subscribe",
+    };
+  };
+
+  rpc UnsubscribeIssue(UnsubscribeIssueRequest)
+      returns (UnsubscribeIssueResponse) {
+    option (google.api.http) = {
+      post: "/api/issues/{id}/actions/unsubscribe",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}/actions/unsubscribe",
+    };
+  };
+
+  rpc BatchUpdateIssueSubscriber(BatchUpdateIssueSubscriberRequest)
+      returns (BatchUpdateIssueSubscriberResponse) {
+    option (google.api.http) = {
+      put: "/api/issues/{id}/actions/batch-update-subscriber",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}/actions/batch-update-subscriber",
+    };
+  };
+
+  rpc CreateIssueProperty(CreateIssuePropertyRequest)
+      returns (CreateIssuePropertyResponse) {
+    option (google.api.http) = {
+      post: "/api/issues/actions/create-property",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/create-property",
+    };
+  };
+
+  rpc DeleteIssueProperty(DeleteIssuePropertyRequest)
+      returns (DeleteIssuePropertyResponse) {
+    option (google.api.http) = {
+      delete: "/api/issues/actions/delete-property",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/delete-property",
+    };
+  };
+
+  rpc UpdateIssueProperty(UpdateIssuePropertyRequest)
+      returns (UpdateIssuePropertyResponse) {
+    option (google.api.http) = {
+      put: "/api/issues/actions/update-property",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/update-property",
+    };
+  };
+
+  rpc GetIssueProperty(GetIssuePropertyRequest)
+      returns (GetIssuePropertyResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/actions/get-properties",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/get-properties",
+    };
+  };
+
+  rpc UpdateIssuePropertiesIndex(UpdateIssuePropertiesIndexRequest)
+      returns (UpdateIssuePropertiesIndexResponse) {
+    option (google.api.http) = {
+      put: "/api/issues/actions/update-properties-index",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/update-properties-index",
+    };
+  };
+
+  rpc GetIssuePropertyUpdateTime(GetIssuePropertyUpdateTimeRequest)
+      returns (GetIssuePropertyUpdateTimeResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/actions/get-properties-time",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/get-properties-time",
+    };
+  };
+
+  rpc CreateIssuePropertyInstance(CreateIssuePropertyInstanceRequest)
+      returns (CreateIssuePropertyInstanceResponse) {
+    option (google.api.http) = {
+      post: "/api/issues/actions/create-property-instance",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/create-property-instance",
+    };
+  };
+
+  rpc GetIssuePropertyInstance(GetIssuePropertyInstanceRequest)
+      returns (GetIssuePropertyInstanceResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/actions/get-property-instance",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/get-property-instance",
+    };
+  };
+
+  rpc GetIssueStage(IssueStageRequest) returns (GetIssueStageResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/action/get-stage",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/action/get-stage",
+    };
+  };
+
+  rpc UpdateIssueStage(IssueStageRequest) returns (UpdateIssueStageResponse) {
+    option (google.api.http) = {
+      put: "/api/issues/action/update-stage",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/action/update-stage",
+    };
+  };
+
+  rpc AddIssueRelation(AddIssueRelationRequest) returns (AddIssueRelationResponse) {
+    option (google.api.http) = {
+      post: "/api/issues/{id}/relations",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}/relations",
+    };
+  };
+
+  rpc DeleteIssueRelation(DeleteIssueRelationRequest) returns (DeleteIssueRelationResponse) {
+    option (google.api.http) = {
+      delete: "/api/issues/{id}/relations/{relatedIssueID}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}/relations/{relatedIssueID}",
+    };
+  };
+
+  rpc GetIssueRelations(GetIssueRelationsRequest) returns (GetIssueRelationsResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/{id}/relations",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/{id}/relations",
+    };
+  };
+
+  rpc CreateIssueState(CreateIssueStateRequest) returns (CreateIssueStateResponse) {
+    option (google.api.http) = {
+      post: "/api/issues/actions/create-state",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/create-state",
+    };
+  };
+
+  rpc DeleteIssueState(DeleteIssueStateRequest) returns (DeleteIssueStateResponse) {
+    option (google.api.http) = {
+      delete: "/api/issues/actions/delete-state",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/delete-state",
+    };
+  };
+
+  rpc UpdateIssueStateRelation(UpdateIssueStateRelationRequest) returns (UpdateIssueStateRelationResponse) {
+    option (google.api.http) = {
+      put: "/api/issues/actions/update-state-relation",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/update-state-relation",
+    };
+  };
+
+  rpc GetIssueStates(GetIssueStatesRequest) returns (GetIssueStatesResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/actions/get-states",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/get-states",
+    };
+  };
+
+  rpc GetIssueStateRelation(GetIssueStateRelationRequest) returns (GetIssueStateRelationResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/actions/get-state-relations",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/get-state-relations",
+    };
+  };
+
+  rpc ExportExcelIssue(ExportExcelIssueRequest) returns (ExportExcelIssueResponse) {
+    option (google.api.http) = {
+      get: "/api/issues/actions/export-excel",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/export-excel",
+    };
+  };
+
+  rpc ImportExcelIssue(ImportExcelIssueRequest) returns (ImportExcelIssueResponse) {
+    option (google.api.http) = {
+      post: "/api/issues/actions/import-excel",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/issues/actions/import-excel",
+    };
+  };
+}
+
+message IssueCreateRequest {
+  google.protobuf.Timestamp planStartedAt = 1;
+  google.protobuf.Timestamp planFinishedAt = 2;
+  uint64 projectID = 3;
+  int64 iterationID = 4;
+  optional uint64 appID = 5;
+  repeated uint64 testPlanCaseRelIDs = 6;
+  IssueTypeEnum.Type type = 7;
+  string title = 8;
+  string content = 9;
+  IssuePriorityEnum.Priority priority = 10;
+  IssueComplexityEnum.Complextity complexity = 11;
+  IssueSeverityEnum.Severity severity = 12;
+  string assignee = 13;
+  string creator = 14;
+  repeated string labels = 15;
+  string source = 16;
+  IssueManHour issueManHour = 17;
+  string taskType = 18;
+  string bugStage = 19;
+  repeated string subscribers = 20;
+  common.IdentityInfo identityInfo = 21 [json_name = "-"];
+  bool external = 22 [json_name = "-"];
+  string owner = 23;
+}
+
+message IssueCreateResponse {
+  uint64 data = 1;
+}
+
+message GetIssueRequest {
+  string id = 1;
+}
+
+message GetIssueResponse {
+  Issue data = 1;
+  repeated string userIDs = 2;
+}
+
+message UpdateIssueRequest {
+  uint64 id = 1;
+  optional string title = 2;
+  optional string content = 3;
+  optional string priority = 4;
+  optional string complexity = 5;
+  optional string severity = 6;
+  optional string planStartedAt = 7;
+  optional string planFinishedAt = 8;
+  optional string assignee = 9;
+  optional int64 iterationID = 10;
+  optional string source = 11;
+  repeated string labels = 12;
+  repeated int64 relatedIssues = 13;
+  optional string taskType = 14;
+  optional string bugStage = 15;
+  optional string owner = 16;
+  bool withChildrenIteration = 17;
+  IssueManHour issueManHour = 18;
+  repeated uint64 testPlanCaseRelIDs = 19;
+  bool removeTestPlanCaseRelIDs = 20;
+  optional int64 state = 21;
+  common.IdentityInfo identityInfo = 22 [json_name = "-"];
+}
+
+message UpdateIssueResponse {
+  uint64 data = 1;
+}
+
+message DeleteIssueRequest {
+  string id = 1;
+}
+
+message DeleteIssueResponse {
+  Issue data = 1;
+}
+
+message BatchUpdateIssueRequest {
+  bool all = 1;
+  bool mine = 2;
+  repeated uint64 ids = 3;
+  string assignee = 4;
+  int64 state = 5;
+  int64 newIterationID = 6;
+  string taskType = 7;
+  string bugStage = 8;
+  string owner = 9;
+  int64 currentIterationID = 10;
+  repeated int64 currentIterationIDs = 11;
+  IssueTypeEnum.Type type = 12;
+  uint64 projectID = 13;
+  common.IdentityInfo identityInfo = 14 [json_name = "-"];
+}
+
+message BatchUpdateIssueResponse {}
+
+message UpdateIssueTypeRequest {
+  uint64 projectID = 1 [json_name = "projectId"];
+  int64 id = 2;
+  IssueTypeEnum.Type type = 3;
+  common.IdentityInfo identityInfo = 4 [json_name = "-"];
+}
+
+message UpdateIssueTypeResponse {
+  int64 data = 1;
+}
+
+message IssueStageRequest {
+  int64 orgID = 1;
+  string issueType = 2;
+  repeated IssueStage list = 3;
+  common.IdentityInfo identityInfo = 4 [json_name = "-"];
+}
+
+message GetIssueStageResponse {
+  repeated IssueStage data = 1;
+}
+
+message UpdateIssueStageResponse {}
+
+message CreateIssuePropertyInstanceRequest {
+  int64 orgID = 1;
+  int64 projectID = 2;
+  int64 issueID = 3;
+  repeated IssuePropertyInstance property = 4;
+  common.IdentityInfo identityInfo = 5 [json_name = "-"];
+}
+
+message CreateIssuePropertyInstanceResponse {
+  int64 data = 1;
+}
+
+message GetIssuePropertyInstanceRequest {
+  int64 orgID = 1;
+  int64 issueID = 2;
+  string propertyIssueType = 3;
+  common.IdentityInfo identityInfo = 4 [json_name = "-"];
+}
+
+message GetIssuePropertyInstanceResponse {
+  IssueAndPropertyAndValue data = 1;
+}
+
+message CreateIssuePropertyRequest {
+  int64 scopeID = 1;
+  ScopeTypeEnum.ScopeType scopeType = 2;
+  int64 orgID = 3;
+  string propertyName = 4;
+  string displayName = 5;
+  PropertyTypeEnum.PropertyType propertyType = 6;
+  bool required = 7;
+  PropertyIssueTypeEnum.PropertyIssueType propertyIssueType = 8;
+  repeated Enumerate enumeratedValues = 9;
+  int64 relation = 10;
+  common.IdentityInfo identityInfo = 11 [json_name = "-"];
+}
+
+message CreateIssuePropertyResponse {
+  IssuePropertyIndex data = 1;
+}
+
+message DeleteIssuePropertyRequest {
+  int64 orgID = 1;
+  int64 propertyID = 2;
+  common.IdentityInfo identityInfo = 3 [json_name = "-"];
+}
+
+message DeleteIssuePropertyResponse {
+  IssuePropertyIndex data = 1;
+}
+
+message UpdateIssuePropertyRequest {
+  int64 propertyID = 1;
+  int64 scopeID = 2;
+  ScopeTypeEnum.ScopeType scopeType = 3;
+  int64 orgID = 4;
+  string propertyName = 5;
+  string displayName = 6;
+  PropertyTypeEnum.PropertyType propertyType = 7;
+  bool required = 8;
+  PropertyIssueTypeEnum.PropertyIssueType propertyIssueType = 9;
+  int64 relation = 10;
+  int64 index = 11;
+  repeated Enumerate enumeratedValues = 12;
+  repeated int64 values = 13;
+  repeated string relatedIssue = 14;
+  common.IdentityInfo identityInfo = 15 [json_name = "-"];
+}
+
+message UpdateIssuePropertyResponse {
+  IssuePropertyIndex data = 1;
+}
+
+message GetIssuePropertyRequest {
+  int64 orgID = 1;
+  string propertyIssueType = 2;
+  string propertyName = 3;
+  common.IdentityInfo identityInfo = 4 [json_name = "-"];
+}
+
+message GetIssuePropertyResponse {
+  repeated IssuePropertyIndex data = 1;
+}
+
+message UpdateIssuePropertiesIndexRequest {
+  int64 orgID = 1;
+  repeated IssuePropertyIndex data = 2;
+  common.IdentityInfo identityInfo = 3 [json_name = "-"];
+}
+
+message UpdateIssuePropertiesIndexResponse {
+  repeated IssuePropertyIndex data = 1;
+}
+
+message GetIssuePropertyUpdateTimeRequest {
+  int64 orgID = 1;
+}
+
+message GetIssuePropertyUpdateTimeResponse {
+  IssuePropertyUpdateTimes data = 1;
+}
+
+message SubscribeIssueRequest {
+  string id = 1;
+}
+
+message SubscribeIssueResponse {
+  int64 data = 1;
+}
+
+message UnsubscribeIssueRequest {
+  string id = 1;
+}
+
+message UnsubscribeIssueResponse {
+  int64 data = 1;
+}
+
+message BatchUpdateIssueSubscriberRequest {
+  repeated string subscribers = 1;
+  int64 issueID = 2 [json_name = "-"];
+  common.IdentityInfo identityInfo = 3 [json_name = "-"];
+  string id = 4;
+}
+
+message BatchUpdateIssueSubscriberResponse {
+  int64 data = 1;
+}
+
+message Issue {
+  int64 id = 1;
+  google.protobuf.Timestamp createdAt = 2;
+  google.protobuf.Timestamp updatedAt = 3;
+  google.protobuf.Timestamp planStartedAt = 4;
+  google.protobuf.Timestamp planFinishedAt = 5;
+  uint64 projectID = 6;
+  int64 iterationID = 7;
+  uint64 appID = 8;
+  int64 requirementID = 9;
+  string requirementTitle = 10;
+  string title = 11;
+  string content = 12;
+  int64 state = 13;
+  IssuePriorityEnum.Priority priority = 14;
+  IssueComplexityEnum.Complextity complexity = 15;
+  IssueSeverityEnum.Severity severity = 16;
+  string assignee = 17;
+  string creator = 18;
+  repeated IssueStateButton issueButton = 19;
+  IssueSummary issueSummary = 20;
+  repeated string labels = 21;
+  repeated ProjectLabel labelDetails = 22;
+  IssueManHour issueManHour = 23;
+  string source = 24;
+  string taskType = 25;
+  string bugStage = 26;
+  string owner = 27;
+  repeated string subscribers = 28;
+  google.protobuf.Timestamp finishTime = 29;
+  repeated TestPlanCaseRel testPlanCaseRels = 30;
+  repeated uint64 relatedIssueIDs = 31;
+  int32 reopenCount = 32;
+  IssueTypeEnum.Type type = 33;
+}
+
+message IssueStage {
+  int64 id = 1;
+  string name = 2;
+  string value = 3;
+}
+
+message IssuePropertyInstance {
+  int64 propertyID = 1;
+  int64 scopeID = 2;
+  ScopeTypeEnum.ScopeType scopeType = 3;
+  int64 orgID = 4;
+  string propertyName = 5;
+  string displayName = 6;
+  PropertyTypeEnum.PropertyType propertyType = 7;
+  bool required = 8;
+  PropertyIssueTypeEnum.PropertyIssueType propertyIssueType = 9;
+  int64 relation = 10;
+  int64 index = 11;
+  repeated Enumerate enumeratedValues = 12;
+  repeated int64 values = 13;
+  repeated string relatedIssue = 14;
+  google.protobuf.Value arbitraryValue = 15;
+  repeated PropertyEnumerate propertyEnumeratedValues = 16;
+}
+
+message IssuePropertyIndex {
+  int64 propertyID = 1;
+  int64 scopeID = 2;
+  ScopeTypeEnum.ScopeType scopeType = 3;
+  int64 orgID = 4;
+  string propertyName = 5;
+  string displayName = 6;
+  PropertyTypeEnum.PropertyType propertyType = 7;
+  bool required = 8;
+  PropertyIssueTypeEnum.PropertyIssueType propertyIssueType = 9;
+  int64 relation = 10;
+  int64 index = 11;
+  repeated Enumerate enumeratedValues = 12;
+  repeated int64 values = 13;
+  repeated string relatedIssue = 14;
+}
+
+message PropertyEnumerate {
+  string name = 1;
+  int64 id = 2;
+}
+
+message ScopeTypeEnum {
+  enum ScopeType {
+    sys = 0;
+    org = 1;
+    project = 2;
+    app = 3;
+    publisher = 4;
+  }
+}
+
+message IssueTypeEnum {
+  enum Type {
+    REQUIREMENT = 0;
+    TASK = 1;
+    BUG = 2;
+    TICKET = 3;
+    EPIC = 4;
+  }
+}
+
+message IssuePriorityEnum {
+  enum Priority {
+    NORMAL = 0;
+    URGENT = 1;
+    HIGH = 2;
+    LOW = 3;
+  }
+}
+
+message IssueComplexityEnum {
+  enum Complextity {
+    NORMAL = 0;
+    HARD = 1;
+    EASY = 2;
+  }
+}
+
+message IssueSeverityEnum {
+  enum Severity {
+    NORMAL = 0;
+    FATAL = 1;
+    SERIOUS = 2;
+    SLIGHT = 3;
+    SUGGEST = 4;
+  }
+}
+
+message IssueStateBelongEnum {
+  enum StateBelong {
+    OPEN = 0;
+    WORKING = 1;
+    DONE = 2;
+    WONTFIX = 3;
+    REOPEN = 4;
+    RESOLVED = 5;
+    CLOSED = 6;
+  }
+}
+
+message ProjectLabelTypeEnum {
+  enum ProjectLabelType {
+    issue = 0;
+    release = 1;
+  }
+}
+
+message IssueManHour {
+  int64 estimateTime = 1;
+  int64 thisElapsedTime = 2;
+  int64 elapsedTime = 3;
+  int64 remainingTime = 4;
+  string startTime = 5;
+  string workContent = 6;
+  bool isModifiedRemainingTime = 7;
+}
+
+message IssueStateButton {
+  int64 stateID = 1;
+  string stateName = 2;
+  IssueStateBelongEnum.StateBelong stateBelong = 3;
+  bool permission = 4;
+}
+
+message IssueSummary {
+  int32 processingCount = 1;
+  int32 doneCount = 2;
+}
+
+message ProjectLabel {
+  int64 id = 1;
+  string name = 2;
+  ProjectLabelTypeEnum.ProjectLabelType type = 3;
+  string color = 4;
+  uint64 projectID = 5;
+  string creator = 6;
+  google.protobuf.Timestamp createdAt = 7;
+  google.protobuf.Timestamp updatedAt = 8;
+}
+
+message TestPlanCaseRel {
+  uint64 id = 1;
+  string name = 2;
+  string priority = 3;
+  uint64 testPlanID = 4;
+  uint64 testSetID = 5;
+  uint64 testCaseID = 6;
+  string execStatus = 7;
+  string creator = 8;
+  string updaterID = 9;
+  string executorID = 10;
+  google.protobuf.Timestamp createdAt = 11;
+  google.protobuf.Timestamp updatedAt = 12;
+  TestCaseAPICount APICount = 13 [json_name = "apiCount"];
+  repeated TestPlanCaseRelIssueBug issueBugs = 14;
+}
+
+message TestCaseAPICount {
+  uint64 total = 1;
+  uint64 created = 2;
+  uint64 running = 3;
+  uint64 passed = 4;
+  uint64 failed = 5;
+}
+
+message TestPlanCaseRelIssueBug {
+  uint64 issueRelationID = 1;
+  uint64 issueID = 2;
+  int64 iterationID = 3;
+  string title = 4;
+  string state = 5;
+  string stateBelong = 6;
+  string priority = 7;
+  google.protobuf.Timestamp createdAt = 8;
+}
+
+message TestCasePriorityEnum {
+  enum TestCasePriority {
+    P0 = 0;
+    P1 = 1;
+    P2 = 2;
+    P3 = 3;
+  }
+}
+
+message PropertyTypeEnum {
+  enum PropertyType {
+    Text = 0;
+    Number = 1;
+    Select = 2;
+    MultiSelect = 3;
+    Date = 4;
+    Person = 5;
+    CheckBox = 6;
+    URL = 7;
+    Email = 8;
+    Phone = 9;
+  }
+}
+
+message PropertyIssueTypeEnum {
+  enum PropertyIssueType {
+    REQUIREMENT = 0;
+    TASK = 1;
+    BUG = 2;
+    EPIC = 3;
+    COMMON = 4;
+  }
+}
+
+message Enumerate {
+  int64 id = 1;
+  string name = 2;
+  int64 index = 3;
+}
+
+message IssueAndPropertyAndValue {
+  int64 issueID = 1;
+  repeated IssuePropertyExtraProperty property = 2;
+}
+
+message IssuePropertyExtraProperty {
+  int64 propertyID = 1;
+  PropertyTypeEnum.PropertyType propertyType = 2;
+  string propertyName = 3;
+  bool required = 4;
+  string displayName = 5;
+  google.protobuf.Value arbitraryValue = 6;
+  repeated Enumerate enumeratedValues = 7;
+  repeated int64 values = 8;
+}
+
+message IssuePropertyUpdateTimes {
+  string task = 1;
+  string bug = 2;
+  string epic = 3;
+  string requirement = 4;
+}
+
+message PagingIssueRequest {
+  string title = 1;
+  repeated string type = 2;
+  uint64 projectID = 3;
+  int64 iterationID = 4;
+  repeated int64 iterationIDs = 5;
+  optional uint64 appID = 6;
+  optional int64 requirementID = 7;
+  repeated int64 state = 8;
+  repeated string stateBelongs = 9;
+  repeated string creator = 10;
+  repeated string assignee = 11;
+  repeated uint64 label = 12;
+  int64 startCreatedAt = 13;
+  int64 endCreatedAt = 14;
+  int64 startFinishedAt = 15;
+  int64 endFinishedAt = 16;
+  bool isEmptyPlanFinishedAt = 17;
+  int64 startClosedAt = 18;
+  int64 endClosedAt = 19;
+  repeated string priority = 20;
+  repeated string complexity = 21;
+  repeated string severity = 22;
+  repeated uint64 relatedIssueId = 23;
+  string source = 24;
+  string orderBy = 25;
+  repeated string taskType = 26;
+  repeated string bugStage = 27;
+  repeated string owner = 28;
+  bool withProcessSummary = 29;
+  repeated int64 exceptIDs = 30;
+  bool asc = 31;
+  repeated int64 IDs = 32;
+  common.IdentityInfo identityInfo = 33 [json_name = "-"];
+  bool external = 34;
+  int64 customPanelID = 35;
+  bool onlyIdResult = 36;
+  bool notIncluded = 37;
+  
+  uint64 pageNo = 38;
+  uint64 pageSize = 39;
+  int64 orgID = 40;
+  repeated uint64 projectIDs = 41;
+}
+
+message IssueListRequest {
+  string title = 1;
+  repeated string type = 2;
+  uint64 projectID = 3;
+  int64 iterationID = 4;
+  repeated int64 iterationIDs = 5;
+  optional uint64 appID = 6;
+  optional int64 requirementID = 7;
+  repeated int64 state = 8;
+  repeated string stateBelongs = 9;
+  repeated string creator = 10;
+  repeated string assignee = 11;
+  repeated uint64 label = 12;
+  int64 startCreatedAt = 13;
+  int64 endCreatedAt = 14;
+  int64 startFinishedAt = 15;
+  int64 endFinishedAt = 16;
+  bool isEmptyPlanFinishedAt = 17;
+  int64 startClosedAt = 18;
+  int64 endClosedAt = 19;
+  repeated string priority = 20;
+  repeated string complexity = 21;
+  repeated string severity = 22;
+  repeated uint64 relatedIssueId = 23;
+  string source = 24;
+  string orderBy = 25;
+  repeated string taskType = 26;
+  repeated string bugStage = 27;
+  repeated string owner = 28;
+  bool withProcessSummary = 29;
+  repeated int64 exceptIDs = 30;
+  bool asc = 31;
+  repeated int64 IDs = 32;
+  common.IdentityInfo identityInfo = 33 [json_name = "-"];
+  bool external = 34;
+  int64 customPanelID = 35;
+  bool onlyIdResult = 36;
+  bool notIncluded = 37;
+}
+
+message PagingIssueResponse {
+  IssuePagingResponseData data = 1;
+  repeated string userIDs = 2;
+}
+
+message IssuePagingResponseData {
+  uint64 total = 1;
+  repeated Issue list = 2;
+}
+
+message ExportExcelIssueRequest {
+  string title = 1;
+  repeated string type = 2;
+  uint64 projectID = 3;
+  int64 iterationID = 4;
+  repeated int64 iterationIDs = 5;
+  optional uint64 appID = 6;
+  optional int64 requirementID = 7;
+  repeated int64 state = 8;
+  repeated string stateBelongs = 9;
+  repeated string creator = 10;
+  repeated string assignee = 11;
+  repeated uint64 label = 12;
+  int64 startCreatedAt = 13;
+  int64 endCreatedAt = 14;
+  int64 startFinishedAt = 15;
+  int64 endFinishedAt = 16;
+  bool isEmptyPlanFinishedAt = 17;
+  int64 startClosedAt = 18;
+  int64 endClosedAt = 19;
+  repeated string priority = 20;
+  repeated string complexity = 21;
+  repeated string severity = 22;
+  repeated uint64 relatedIssueId = 23;
+  string source = 24;
+  string orderBy = 25;
+  repeated string taskType = 26;
+  repeated string bugStage = 27;
+  repeated string owner = 28;
+  bool withProcessSummary = 29;
+  repeated int64 exceptIDs = 30;
+  bool asc = 31;
+  repeated int64 IDs = 32;
+  common.IdentityInfo identityInfo = 33 [json_name = "-"];
+  bool external = 34;
+  int64 customPanelID = 35;
+  bool onlyIdResult = 36;
+  bool notIncluded = 37;
+  
+  uint64 pageNo = 38;
+  uint64 pageSize = 39;
+  int64 orgID = 40;
+  repeated uint64 projectIDs = 41;
+  string locale = 42;
+  bool isDownload = 43;
+}
+
+message ExportExcelIssueResponse {
+  uint64 data = 1;
+}
+
+message ImportExcelIssueRequest {
+  uint64 projectID = 1;
+  int64 orgID = 2;
+  string type = 3;
+  string fileID = 4;
+  common.IdentityInfo identityInfo = 33 [json_name = "-"];
+}
+
+message ImportExcelIssueResponse {
+  uint64 data = 1;
+}
+
+message AddIssueRelationRequest {
+  string id = 1;
+  uint64 issueID = 2 [json_name = "-"];
+  repeated uint64 relatedIssues = 3;
+  string comment = 4;
+  int64 projectId = 5;
+  string type = 6;
+}
+
+message AddIssueRelationResponse {}
+
+message DeleteIssueRelationRequest {
+  string id = 1;
+  string relatedIssueID = 2;
+  repeated string relationTypes = 3 [json_name = "type"];
+}
+
+message DeleteIssueRelationResponse {}
+
+message GetIssueRelationsRequest {
+  string id = 1;
+  repeated string relationTypes = 2 [json_name = "type"];
+}
+
+message GetIssueRelationsResponse {
+  IssueRelations data = 1;
+  repeated string userIDs = 2;
+}
+
+message IssueRelations {
+  repeated Issue relatedTo = 1;
+  repeated Issue relatedBy = 2;
+  repeated Issue include = 3;
+  repeated Issue beIncluded = 4;
+}
+
+message CreateIssueStateRequest {
+  uint64 projectID = 1;
+  string issueType = 2;
+  string stateName = 3;
+  string stateBelong = 4;
+  common.IdentityInfo identityInfo = 5 [json_name = "-"];
+}
+
+message CreateIssueStateResponse {
+  uint64 data = 1;
+}
+
+message DeleteIssueStateRequest {
+  int64 projectID = 1;
+  int64 id = 2;
+  common.IdentityInfo identityInfo = 3 [json_name = "-"];
+}
+
+message DeleteIssueStateResponse {
+  IssueStatus data = 1;
+}
+
+message IssueStatus {
+  uint64 projectID = 1;
+  string issueType = 2;
+  string stateName = 3;
+  string stateBelong = 4;
+  int64 stateID = 5;
+  int64 index = 6;
+}
+
+message IssueStateRelation {
+  uint64 projectID = 1;
+  string issueType = 2;
+  string stateName = 3;
+  string stateBelong = 4;
+  int64 stateID = 5;
+  int64 index = 6;
+  repeated int64 stateRelation = 7;
+}
+
+message UpdateIssueStateRelationRequest {
+  int64 projectID = 1;
+  repeated IssueStateRelation data = 2;
+  common.IdentityInfo identityInfo = 3 [json_name = "-"];
+}
+
+message UpdateIssueStateRelationResponse {
+  repeated IssueStateRelation data = 1;
+}
+
+message GetIssueStatesRequest {
+  uint64 projectID = 1;
+  string issueType = 2;
+  repeated string stateBelongs = 3;
+  common.IdentityInfo identityInfo = 4 [json_name = "-"];
+}
+
+message GetIssueStatesResponse {
+  repeated IssueTypeState data = 1;
+}
+
+message IssueTypeState {
+  string issueType = 1;
+  repeated string state = 2;
+}
+
+message GetIssueStateRelationRequest {
+  uint64 projectID = 1;
+  string issueType = 2;
+  common.IdentityInfo identityInfo = 3 [json_name = "-"];
+}
+
+message GetIssueStateRelationResponse {
+  repeated IssueStateRelation data = 1;
+}
+

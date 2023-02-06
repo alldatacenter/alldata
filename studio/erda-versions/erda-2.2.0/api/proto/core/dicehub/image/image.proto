@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package erda.core.dicehub.image;
+option go_package = "github.com/erda-project/erda-proto-go/core/dicehub/image/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service ImageService {
+  rpc GetImage (ImageGetRequest) returns (ImageGetResponse)  {
+    option (google.api.http) = {
+      get: "/api/images/{imageIDOrImage}",
+    };
+  }
+
+  rpc ListImage (ImageListRequest) returns (ImageListResponse)  {
+    option (google.api.http) = {
+      get: "/api/images",
+    };
+  }
+}
+
+// ImageGetRequest image details api(GET /api/images/{imageId}),packing uesd
+message ImageGetRequest {
+  string imageIDOrImage = 1;
+}
+
+// ImageGetResponse image details api return data structure
+message ImageGetResponse {
+  ImageGetResponseData data = 1;
+}
+
+// ImageListRequestimage listAPI(GET /api/images)
+message ImageListRequest {
+  int64 pageSize =1;
+  int64 pageNum  =2;
+}
+
+// ImageListResponse image list api return data structure
+message ImageListResponse {
+  ImageListResponseData data = 1;
+}
+
+// ImageListResponseData image list response data
+message ImageListResponseData {
+  int64                         total = 1;
+  repeated ImageGetResponseData list  = 2;
+}
+
+message ImageGetResponseData {
+  int64                     ID        = 1;
+  string                    releaseID = 2;
+  string                    imageName = 3;
+  string                    imageTag  = 4;
+  string                    image     = 5;
+  google.protobuf.Timestamp createdAt = 6;
+  google.protobuf.Timestamp updatedAt = 7;
+}

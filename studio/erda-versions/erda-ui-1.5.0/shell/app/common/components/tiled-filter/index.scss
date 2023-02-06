@@ -1,0 +1,71 @@
+.tiled-filter {
+  padding: 12px;
+  background-color: $white;
+  border-radius: $radius;
+  @extend %shallow-shadow;
+
+  .tiled-fields {
+    overflow: hidden auto;
+    max-height: 240px;
+    transition: max-height 0.3s ease-in-out;
+    margin-bottom: 8px;
+
+    &.no-expand {
+      max-height: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .tiled-fields-item {
+    margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .tiled-fields-item-label {
+    line-height: 16px;
+    font-weight: 500;
+  }
+
+  .tiled-fields-item-option {
+    min-width: 0;
+
+    .tiled-fields-option-item {
+      max-width: 240px;
+      border: 1px solid;
+      border-color: $border-color;
+      border-radius: $radius;
+      padding: 2px 8px;
+      margin: 0 8px 8px 0;
+      display: inline-block;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $primary;
+      }
+
+      &.chosen-item {
+        color: $primary;
+        border-color: $primary;
+        background-color: $color-active-bg;
+      }
+    }
+  }
+
+  .tiled-input-item {
+    width: 200px;
+  }
+
+  .expand-area {
+    cursor: pointer;
+    color: $primary;
+    .expand-icon {
+      transform: rotate(0deg);
+      transition: all 0.3s ease-in-out;
+      &.expand {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

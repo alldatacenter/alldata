@@ -1,0 +1,74 @@
+.month-uptime-block {
+  $title-height: 32px;
+  padding: 10px;
+  padding-top: $title-height;
+  background-color: $white;
+
+  .day-point-list {
+    $point-width: 16px;
+    $point-margin: 14px;
+
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: ($point-width + $point-margin * 2) * 7;
+    margin: 0 auto;
+
+    &:before {
+      position: absolute;
+      top: -$title-height;
+      left: $point-margin;
+      display: block;
+      height: $title-height;
+      font-weight: 500;
+      line-height: $title-height;
+      content: attr(data-month);
+    }
+
+    .day-point {
+      position: relative;
+      width: $point-width;
+      height: $point-width;
+      margin: ($point-margin - 5px) $point-margin;
+      border: 1px solid $color-border;
+      border-radius: 100%;
+
+      &::after {
+        position: absolute;
+        top: 13px;
+        width: 100%;
+        color: $lightgray;
+        font-size: 12px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.1s linear;
+        content: attr(data-date);
+      }
+
+      &.opacity {
+        background: transparent;
+        border: none;
+      }
+
+      &.grey {
+        background-color: $platinum;
+      }
+
+      &.success {
+        background-color: $color-success;
+      }
+
+      &.danger {
+        background-color: $color-danger;
+      }
+    }
+
+    &:hover {
+      .day-point {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

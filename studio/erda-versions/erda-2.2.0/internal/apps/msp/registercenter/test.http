@@ -1,0 +1,27 @@
+@url = http://localhost:8080/api
+@userid = 1100
+
+### ListInterface
+GET {{url}}/msp/register/interfaces/180/PROD?az=terminus-dev&appid=82&nacosId=53c79b331a18a650b0b5fc284ad627db&tenantGroup=53c79b331a18a650b0b5fc284ad627db
+Content-Type: application/json
+Accept: application/json
+User-ID: {{userid}}
+
+
+### GetHTTPServices
+GET {{url}}/msp/register/http-interfaces/180/PROD?az=terminus-dev&appid=82&nacosId=53c79b331a18a650b0b5fc284ad627db&tenantGroup=53c79b331a18a650b0b5fc284ad627db
+Content-Type: application/json
+Accept: application/json
+User-ID: {{userid}}
+
+### EnableHTTPService
+POST {{url}}/msp/register/http-interfaces/180/PROD/enable?az=terminus-dev&appid=88&nacosId=53c79b331a18a650b0b5fc284ad627db&tenantGroup=53c79b331a18a650b0b5fc284ad627db
+Content-Type: application/json
+Accept: application/json
+User-ID: {{userid}}
+
+{
+    "serviceName":"service-provider",
+    "address":"10.125.122.198:18081",
+    "online":false
+}

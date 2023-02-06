@@ -1,0 +1,51 @@
+.deploy-cluster {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .deploy-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 16px;
+    border-bottom: 1px solid $color-border;
+
+    .deploy-operator {
+      button {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .deploy-content {
+    flex: 1;
+    overflow: auto;
+  }
+
+  .params-item {
+    padding: 5px 10px;
+
+    .sub-title {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    pre {
+      padding: 2px 10px;
+      background-color: $whitesmoke;
+    }
+
+    .object-key {
+      margin-bottom: 1px;
+      padding: 2px 10px;
+      color: $navy;
+    }
+
+    .object-value {
+      margin-bottom: 5px;
+      padding: 2px 10px;
+      background-color: $whitesmoke;
+    }
+  }
+}

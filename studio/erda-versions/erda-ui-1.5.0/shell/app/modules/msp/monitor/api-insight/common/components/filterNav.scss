@@ -1,0 +1,25 @@
+.api-monitor-filter-nav {
+  .app-service-select {
+    display: flex;
+
+    > div {
+      flex: 1;
+    }
+  }
+
+  .filter-row {
+    justify-content: start;
+  }
+
+  .search-container {
+    flex: 1;
+
+    .search-fields {
+      flex: 1;
+    }
+  }
+
+  .monitor-time-selector-inline {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,14 @@
+- ai_web_avg_time_top5:
+    title: "响应时间Top5"
+    metric_names: "application_http"
+    type: "ai"
+    order: 0
+    defines:
+      avg.elapsed_mean:
+        label: "平均响应时间"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

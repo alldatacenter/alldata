@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package erda.core.pipeline.report;
+
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/any.proto";
+import "common/identity.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/core/pipeline/report/pb";
+
+service ReportService {
+  rpc QueryPipelineReportSet (PipelineReportSetQueryRequest) returns (PipelineReportSetQueryResponse) {
+    option (google.api.http) = {
+      get: "/api/pipeline-reportsets/{pipelineID}?type={types}",
+    };
+  }
+  rpc PagingPipelineReportSet (PipelineReportSetPagingRequest) returns (PipelineReportSetPagingResponse) {
+    option (google.api.http) = {
+      get: "/api/pipeline-reportsets?source={sources}&type={types}&mustMatchLabel={mustMatchLabelsQueryParams}",
+    };
+  }
+}
+
+message PipelineReportSetPagingRequest {
+  repeated uint64 pipelineIDs = 1 [json_name = "-"];
+  repeated string sources = 2;
+  repeated string types = 3;
+
+  /////////////////////////
+  // pipeline 分页查询参数 //
+  /////////////////////////
+  // labels
+  // &mustMatchLabel=key2=value3
+  repeated string mustMatchLabelsQueryParams = 4;
+
+  // times
+  // 开始执行时间 左闭区间
+  int64 startTimeBeginTimestamp = 5;
+  // 开始执行时间 右闭区间
+  int64 endTimeBeginTimestamp = 6;
+  // 创建时间 左闭区间
+  int64 startTimeCreatedTimestamp = 7;
+  // 创建时间 右闭区间
+  int64 endTimeCreatedTimestamp = 8;
+
+  int64 pageNum = 9;
+  int64 pageSize = 10;
+}
+message PipelineReportSetPagingResponse {
+  int64 total = 1;
+  repeated PipelineReportSet data = 2;
+}
+
+// PipelineReportSet 流水线报告集，一条流水线可能会有多个报告，称为报告集
+message PipelineReportSet {
+  uint64 pipelineID = 1;
+  repeated PipelineReport reports = 2;
+}
+message PipelineReport {
+  uint64 ID = 1 [json_name = "id"];
+  uint64 pipelineID = 2;
+  string type = 3;
+  google.protobuf.Struct meta = 4;
+  string creatorID = 5;
+
+  string updaterID = 6;
+  google.protobuf.Timestamp createdAt = 7;
+  google.protobuf.Timestamp updatedAt = 8;
+}
+
+message PipelineReportSetQueryRequest {
+  uint64 pipelineID = 1;
+  repeated string types = 2;
+}
+message PipelineReportSetQueryResponse {
+  PipelineReportSet data = 1;
+}
+
+message PipelineReportCreateRequest {
+  uint64 pipelineID = 1;
+  string type = 2;
+  google.protobuf.Struct meta = 3;
+  common.IdentityInfo identityInfo = 4;
+}
+message PipelineReportCreateResponse {
+  PipelineReport data = 1;
+}

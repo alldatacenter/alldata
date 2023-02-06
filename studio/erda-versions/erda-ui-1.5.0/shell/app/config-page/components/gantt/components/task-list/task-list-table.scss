@@ -1,0 +1,38 @@
+.erda-gantt-task-list-wrapper {
+  display: table;
+  border-bottom: $border-color 1px solid;
+  border-left: $border-color 1px solid;
+}
+
+.erda-gantt-task-list-table-row {
+  display: table-row;
+  text-overflow: ellipsis;
+}
+
+.erda-gantt-task-list-table-row:nth-of-type(even) {
+  background-color: $whitesmoke;
+}
+
+.erda-gantt-task-list-cell {
+  display: table-cell;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.erda-gantt-task-list-name-wrapper {
+  display: flex;
+}
+
+.erda-gantt-task-list-expander {
+  color: rgb(86 86 86);
+  font-size: 0.6rem;
+  padding: 0.15rem 0.2rem 0rem 0.2rem;
+  user-select: none;
+  cursor: pointer;
+}
+.erda-gantt-task-list-empty-expander {
+  font-size: 0.6rem;
+  padding-left: 1rem;
+  user-select: none;
+}

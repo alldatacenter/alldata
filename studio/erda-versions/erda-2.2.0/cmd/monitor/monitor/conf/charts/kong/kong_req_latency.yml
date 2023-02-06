@@ -1,0 +1,15 @@
+- kong_req_latency:
+    title: "请求延时"
+    metric_names: "agg_kong"
+    type: "kong"
+    order: 0
+    defines:
+      avg.reql_mean:
+        label: "耗时"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: "line"
+        original_unit: "s"
+    parameters:
+

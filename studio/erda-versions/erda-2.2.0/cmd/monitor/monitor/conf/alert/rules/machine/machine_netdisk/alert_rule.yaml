@@ -1,0 +1,8 @@
+id: machine_netdisk
+name: 网盘
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}'
+  level: Notice
+  recover: "true"
+  tickets_metric_key: '{{cluster_name}}'

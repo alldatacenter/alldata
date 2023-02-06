@@ -1,0 +1,46 @@
+name: "Elasticsearch Transport"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    node_host:
+        name: "Node Host"
+    node_id:
+        name: "Node ID"
+    node_name:
+        name: "Node Name"
+    node_roles:
+        name: "Node Roles"
+    org_name:
+        name: "Org Name"
+fields:
+    rx_count:
+        type: "number"
+        name: "Rx Count"
+        unit: 
+    rx_size_in_bytes:
+        type: "number"
+        name: "Rx Size In Bytes"
+        unit: 
+    server_open:
+        type: "number"
+        name: "Server Open"
+        unit: 
+    tx_count:
+        type: "number"
+        name: "Tx Count"
+        unit: 
+    tx_size_in_bytes:
+        type: "number"
+        name: "Tx Size In Bytes"
+        unit: 
+

@@ -1,0 +1,9 @@
+.ant-spin-nested-loading div .app-form-spin {
+  position: fixed;
+  z-index: 1;
+}
+.create-app-form {
+  &.ant-form-vertical {
+    width: 70%;
+  }
+}

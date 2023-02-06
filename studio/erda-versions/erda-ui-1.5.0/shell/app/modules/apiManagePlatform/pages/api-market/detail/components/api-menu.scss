@@ -1,0 +1,64 @@
+@mixin methodColor($r, $g, $b) {
+  color: rgb($r, $g, $b);
+  background-color: rgba($r, $g, $b, 0.2);
+  border-color: rgb($r, $g, $b);
+}
+
+.api-group-list {
+  &-item {
+    .ant-collapse-content .ant-collapse-content-box {
+      padding: 0;
+    }
+  }
+
+  .api-group {
+    margin-bottom: 0;
+
+    li {
+      display: flex;
+      height: 48px;
+      padding: 13px;
+      border-top: 1px solid $border-color;
+      cursor: pointer;
+      &.active {
+        background-color: $color-active-bg;
+      }
+    }
+  }
+
+  .api-method {
+    padding: 0 4px;
+    color: $white;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 1px;
+
+    &.get {
+      @include methodColor(247, 167, 107);
+    }
+
+    &.put {
+      @include methodColor(108, 179, 139);
+    }
+
+    &.post {
+      @include methodColor(89, 140, 156);
+    }
+
+    &.delete {
+      @include methodColor(222, 87, 87);
+    }
+
+    &.patch {
+      @include methodColor(125, 176, 142);
+    }
+  }
+
+  .api-summary {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

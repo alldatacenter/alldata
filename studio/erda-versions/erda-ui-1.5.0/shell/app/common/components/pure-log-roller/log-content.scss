@@ -1,0 +1,32 @@
+.log-list-box {
+  white-space: nowrap;
+
+  .log-item {
+    span {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    pre {
+      display: inline;
+      margin-right: 10px;
+      overflow: visible;
+    }
+
+    a {
+      color: $yellow;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+
+  .log-item-logtime {
+    color: $green;
+    vertical-align: top;
+  }
+
+  ::selection {
+    color: $white;
+    background: $green;
+  }
+}

@@ -1,0 +1,71 @@
+.deploy-status {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  .light-circle {
+    position: absolute;
+    left: 8px;
+    width: 20px;
+    height: 20px;
+    border: solid 1px transparent;
+    border-top: solid 1px $blue;
+    border-radius: 100%;
+    animation: circle-line 1.6s linear infinite;
+
+    &.gray {
+      color: $gray;
+    }
+
+    &.red {
+      border-top-color: $red;
+    }
+
+    &.blue {
+      border-top-color: $blue;
+    }
+
+    &.green {
+      border-top-color: $green;
+    }
+
+    &.yellow {
+      border-top-color: $yellow;
+    }
+  }
+
+  i {
+    margin-left: 10px;
+    font-size: 16px;
+
+    &.gray {
+      color: $gray;
+    }
+
+    &.red {
+      color: $red;
+    }
+
+    &.blue {
+      color: $blue;
+    }
+
+    &.green {
+      color: $green;
+    }
+
+    &.yellow {
+      color: $yellow;
+    }
+
+    &.running {
+      -webkit-animation: opacity 0.8s 0s ease-in-out infinite alternate;
+      animation: opacity 0.8s 0s ease-in-out infinite alternate;
+    }
+  }
+
+  .deploy-status-text {
+    margin-left: 4px;
+    font-size: 14px;
+  }
+}

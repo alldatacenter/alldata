@@ -1,0 +1,32 @@
+- kong_traffic:
+    title: "实时流量统计"
+    metric_names: "agg_kong"
+    type: "kong"
+    order: 0
+    defines:
+      sumCps.succ_sum:
+        label: "成功QPS"
+        unit: "次/s"
+        unit_type: "NPS"
+        axis_index: 0
+        chart_type: "line"
+      sumCps.err_sum:
+        label: "错误QPS"
+        unit: "次/s"
+        unit_type: "NPS"
+        axis_index: 0
+        chart_type: "line"
+      sumCps.lim_sum:
+        label: "限流QPS"
+        unit: "次/s"
+        unit_type: "NPS"
+        axis_index: 0
+        chart_type: "line"
+      sumCps.cnt_sum:
+        label: "整体QPS"
+        unit: "次/s"
+        unit_type: "NPS"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

@@ -1,0 +1,48 @@
+scenario: app-runtime
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - list
+    list:
+      filter:
+        filterContainer
+    filterContainer:
+      left:
+        advanceFilter
+
+options:
+  syncIntervalSecond: 30
+
+components:
+  page:
+    type: Container
+  filterContainer:
+    type: LRContainer
+  advanceFilter:
+    type: ConfigurableFilter
+  list:
+    type: List
+    version: 2
+  cleanData:
+    type: Container
+
+
+rendering:
+  advanceFilter:
+    - name: filterContainer
+    - name: list
+    - name: cleanData
+
+  list:
+    - name: filterContainer
+    - name: cleanData
+
+  __DefaultRendering__:
+    - name: page
+    - name: filterContainer
+    - name: advanceFilter
+    - name: list
+    - name: cleanData
+

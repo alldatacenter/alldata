@@ -1,0 +1,295 @@
+.file-diff {
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: 3px;
+
+  %file-title-style {
+    margin: 0;
+    padding: 10px 16px;
+    background-color: #fafafa;
+    border-bottom: 1px solid $color-border;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .file-title {
+    @extend %file-title-style;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+  }
+
+  .file-content-collapsed {
+    padding: $p20 0;
+    text-align: center;
+  }
+
+  .file-title-move {
+    @extend %file-title-style;
+    display: flex;
+    align-items: center;
+  }
+
+  .file-static-info {
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+  }
+
+  .file-move-arrow {
+    margin-right: $p8;
+    margin-left: $p8;
+  }
+
+  .highlight-red {
+    background: $color-danger-bg;
+  }
+
+  .highlight-green {
+    background: $color-success-bg;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .file-diff-section {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .file-diff-line {
+    .temporary-storage-icon {
+      position: absolute;
+      left: 8px;
+      cursor: pointer;
+    }
+
+    &:hover {
+      td {
+        background: rgba($color-primary, 0.1) !important;
+        transition: background 0ms;
+      }
+
+      .comment-icon {
+        display: inline-block;
+      }
+    }
+
+    &.section {
+      td {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .diff-line-num::before {
+        font-size: 20px;
+        line-height: 24px;
+        content: '···';
+      }
+    }
+
+    &.add {
+      .diff-line-num {
+        background: rgba(52, 179, 126, 0.2);
+      }
+
+      td {
+        background: rgba(52, 179, 126, 0.1);
+      }
+    }
+
+    &.delete {
+      .diff-line-num {
+        background: rgba(223, 52, 9, 0.2);
+      }
+
+      td {
+        background: rgba(223, 52, 9, 0.1);
+      }
+    }
+
+    .diff-line-content {
+      white-space: initial;
+
+      pre {
+        margin-bottom: 0;
+        padding-left: 22px;
+      }
+
+      &::before {
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        text-align: center;
+        content: attr(data-prefix);
+      }
+    }
+
+    &.issue-line {
+      td {
+        background-color: rgba(244, 193, 84, 0.644);
+      }
+    }
+
+    .issue-word {
+      text-decoration: underline;
+      text-decoration-style: wavy;
+      text-decoration-color: $orange;
+    }
+
+    .issue-td {
+      position: absolute;
+      left: 30px;
+      width: 30px;
+    }
+
+    .none-issue-td {
+      width: 0;
+    }
+
+    .comment-icon {
+      position: absolute;
+      right: -4px;
+      bottom: 18px;
+      display: none;
+      padding: 6px;
+      font-size: 20px;
+      background-color: $white;
+      border-radius: $radius;
+    }
+  }
+
+  .diff-line-num {
+    position: relative;
+    width: 50px;
+    overflow: visible;
+    vertical-align: top;
+
+    &.new-line {
+      border-left: 1px solid $color-border;
+    }
+
+    &::before {
+      display: inline-block;
+      width: 100%;
+      padding: 0 7px;
+      text-align: right;
+      content: attr(data-prefix);
+    }
+  }
+
+  .comment-box-td {
+    padding: 12px 0;
+  }
+
+  .unfold-btn {
+    cursor: pointer;
+  }
+}
+
+.commit-summary-hide {
+  height: 36px;
+  margin: $p16 0;
+  overflow: hidden;
+  line-height: 36px;
+}
+
+.commit-summary-expand {
+  margin: $p16 0;
+}
+
+.diff-file-path {
+  color: $color-text-sub;
+}
+
+.df-icon {
+  color: $lightgray;
+  vertical-align: middle;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  .iconfont {
+    vertical-align: baseline;
+  }
+}
+
+%add-del-icon {
+  display: inline-block;
+  width: 32px;
+  height: 20px;
+  color: $white;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: $radius;
+}
+
+.diff-add-icon {
+  @extend %add-del-icon;
+  margin-right: $p4;
+  background: $green;
+}
+
+.diff-del-icon {
+  @extend %add-del-icon;
+  background: $red;
+}
+
+.diff-file {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  line-height: 36px;
+
+  &:hover {
+    background: $color-active-bg;
+  }
+}
+
+.diff-count {
+  position: relative;
+  margin-right: $p12;
+  padding: 0 $p12;
+  white-space: nowrap;
+
+  &::after {
+    position: absolute;
+    top: $p16;
+    right: 0;
+    display: block;
+    height: $p16;
+    border-right: 1px solid $color-border;
+    content: '';
+  }
+}
+
+.commit-summary {
+  display: flex;
+  justify-content: space-between;
+  height: 36px;
+  line-height: 36px;
+
+  .changed-count {
+    color: $blue;
+    font-weight: bold;
+  }
+
+  .add-count {
+    color: $green;
+    font-weight: bold;
+  }
+
+  .del-count {
+    color: $red;
+    font-weight: bold;
+  }
+}

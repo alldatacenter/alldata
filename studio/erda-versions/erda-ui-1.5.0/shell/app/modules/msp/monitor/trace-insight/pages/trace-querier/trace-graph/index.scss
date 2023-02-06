@@ -1,0 +1,69 @@
+.trace-span-detail {
+  .trace-graph {
+    .left {
+      width: 300px;
+    }
+
+    .right {
+      height: 20px;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      padding: 4px 0;
+      box-sizing: border-box;
+    }
+
+    .wrapper {
+      width: 100%;
+      display: flex;
+    }
+    .ant-tree .ant-tree-treenode {
+      width: 100% !important;
+      padding: 0;
+    }
+
+    .ant-tree .ant-tree-title {
+      display: block;
+    }
+
+    .ant-tree .ant-tree-node-content-wrapper {
+      width: 100% !important;
+    }
+  }
+
+  .trace-detail-chart {
+    .ant-tabs-content-holder {
+      overflow: auto !important;
+      height: calc(100vh - 290px);
+    }
+  }
+
+  .key-value-list {
+    padding: 4px;
+
+    .key {
+      margin-right: 8px;
+    }
+  }
+
+  .trace-header {
+    display: flex;
+
+    .left {
+      width: 330px;
+    }
+
+    .right {
+      text-align: right;
+      flex: 1;
+    }
+  }
+
+  .graph-flame {
+    height: calc(100vh - 216px);
+
+    div {
+      overflow: hidden !important;
+    }
+  }
+}

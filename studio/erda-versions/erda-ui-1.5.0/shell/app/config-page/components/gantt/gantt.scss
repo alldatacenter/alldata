@@ -1,0 +1,18 @@
+.cp-gantt-task-item {
+  &-date {
+    visibility: hidden;
+  }
+  &:hover {
+    visibility: visible;
+  }
+
+  &-icon {
+    color: rgba($color-default, 0.4);
+    transition: all 0.2s;
+    transform: rotate(-90deg);
+  }
+
+  &-expanded {
+    transform: rotate(0);
+  }
+}

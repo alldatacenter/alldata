@@ -1,0 +1,73 @@
+name: "Cache"
+tags:
+    cluster_name:
+        name: "Cluster Name"
+    component:
+        name: "Component"
+    db_statement:
+        name: "DB Statement"
+    db_type:
+        name: "DB Type"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    org_name:
+        name: "Org Name"
+    peer_service:
+        name: "Peer Service"
+    source_application_id:
+        name: "Source Application ID"
+    source_application_name:
+        name: "Source Application Name"
+    source_org_id:
+        name: "Source Org ID"
+    source_project_id:
+        name: "Source Project ID"
+    source_project_name:
+        name: "Source Project Name"
+    source_runtime_id:
+        name: "Source Runtime ID"
+    source_runtime_name:
+        name: "Source Runtime Name"
+    source_service_id:
+        name: "Source Service ID"
+    source_service_instance_id:
+        name: "Source Service Instance ID"
+    source_service_name:
+        name: "Source Service Name"
+    source_terminus_key:
+        name: "Source Terminus Key"
+    source_workspace:
+        name: "Source Workspace"
+        values:
+            - value: "DEV"
+              name: "Develop"
+            - value: "TEST"
+              name: "Test"
+            - value: "STAGING"
+              name: "Staging"
+            - value: "PROD"
+              name: "Production"
+fields:
+    elapsed_count:
+        type: "number"
+        name: "Request Count"
+        unit: 
+    elapsed_max:
+        type: "number"
+        name: "Elapsed Maximum"
+        unit: 
+    elapsed_mean:
+        type: "number"
+        name: "Elapsed Mean"
+        unit: 
+    elapsed_min:
+        type: "number"
+        name: "Elapsed Minimum"
+        unit: 
+    elapsed_sum:
+        type: "number"
+        name: "Elapsed"
+        unit: 
+

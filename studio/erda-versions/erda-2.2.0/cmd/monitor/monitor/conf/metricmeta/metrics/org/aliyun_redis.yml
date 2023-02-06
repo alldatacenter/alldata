@@ -1,0 +1,1761 @@
+fields:
+  AvgLogSize:
+    name: AvgLogSize
+    type: number
+    unit: bytes
+  ConnectionUsage:
+    name: ConnectionUsage
+    type: number
+    unit: '%'
+  CpuUsage:
+    name: CpuUsage
+    type: number
+    unit: '%'
+  FailedCount:
+    name: FailedCount
+    type: number
+    unit: count/second
+  Flow:
+    name: Flow
+    type: number
+    unit: bytes/s
+  GroupConnectionUsage:
+    name: GroupConnectionUsage
+    type: number
+    unit: '%'
+  GroupCpuUsage:
+    name: GroupCpuUsage
+    type: number
+    unit: '%'
+  GroupIntranetInRatio:
+    name: GroupIntranetInRatio
+    type: number
+    unit: '%'
+  GroupIntranetOutRatio:
+    name: GroupIntranetOutRatio
+    type: number
+    unit: '%'
+  GroupMemoryUsage:
+    name: GroupMemoryUsage
+    type: number
+    unit: '%'
+  IntranetIn:
+    name: IntranetIn
+    type: number
+    unit: bytes/s
+  IntranetInRatio:
+    name: IntranetInRatio
+    type: number
+    unit: '%'
+  IntranetOut:
+    name: IntranetOut
+    type: number
+    unit: bytes/s
+  IntranetOutRatio:
+    name: IntranetOutRatio
+    type: number
+    unit: '%'
+  MaxLogSize:
+    name: MaxLogSize
+    type: number
+    unit: bytes
+  MemoryUsage:
+    name: MemoryUsage
+    type: number
+    unit: '%'
+  Rt:
+    name: Rt
+    type: number
+    unit: ms
+  ShardingAvgRt:
+    name: ShardingAvgRt
+    type: number
+    unit: us
+  ShardingConnectionUsage:
+    name: ShardingConnectionUsage
+    type: number
+    unit: '%'
+  ShardingCpuUsage:
+    name: ShardingCpuUsage
+    type: number
+    unit: '%'
+  ShardingEvictedKeys:
+    name: ShardingEvictedKeys
+    type: number
+    unit: count
+  ShardingExpiredKeys:
+    name: ShardingExpiredKeys
+    type: number
+    unit: count
+  ShardingExpires:
+    name: ShardingExpires
+    type: number
+    unit: count
+  ShardingHitRate:
+    name: ShardingHitRate
+    type: number
+    unit: '%'
+  ShardingIntranetIn:
+    name: ShardingIntranetIn
+    type: number
+    unit: kbyte/s
+  ShardingIntranetInRatio:
+    name: ShardingIntranetInRatio
+    type: number
+    unit: '%'
+  ShardingIntranetOut:
+    name: ShardingIntranetOut
+    type: number
+    unit: kbyte/s
+  ShardingIntranetOutRatio:
+    name: ShardingIntranetOutRatio
+    type: number
+    unit: '%'
+  ShardingKeys:
+    name: ShardingKeys
+    type: number
+    unit: count
+  ShardingMaxRt:
+    name: ShardingMaxRt
+    type: number
+    unit: us
+  ShardingMemoryUsage:
+    name: ShardingMemoryUsage
+    type: number
+    unit: '%'
+  ShardingQPSUsage:
+    name: ShardingQPSUsage
+    type: number
+    unit: '%'
+  ShardingUsedConnection:
+    name: ShardingUsedConnection
+    type: number
+    unit: count
+  ShardingUsedMemory:
+    name: ShardingUsedMemory
+    type: number
+    unit: bytes
+  ShardingUsedQPS:
+    name: ShardingUsedQPS
+    type: number
+    unit: count
+  Shardingappend:
+    name: Shardingappend
+    type: number
+    unit: count/second
+  Shardingbitcount:
+    name: Shardingbitcount
+    type: number
+    unit: count/second
+  Shardingbitop:
+    name: Shardingbitop
+    type: number
+    unit: count/second
+  Shardingblpop:
+    name: Shardingblpop
+    type: number
+    unit: count/second
+  Shardingbrpop:
+    name: Shardingbrpop
+    type: number
+    unit: count/second
+  Shardingbrpoplpush:
+    name: Shardingbrpoplpush
+    type: number
+    unit: count/second
+  Shardingdecr:
+    name: Shardingdecr
+    type: number
+    unit: count/second
+  Shardingdecrby:
+    name: Shardingdecrby
+    type: number
+    unit: count/second
+  Shardingdel:
+    name: Shardingdel
+    type: number
+    unit: count/second
+  Shardingdiscard:
+    name: Shardingdiscard
+    type: number
+    unit: count/second
+  Shardingdump:
+    name: Shardingdump
+    type: number
+    unit: count/second
+  Shardingexec:
+    name: Shardingexec
+    type: number
+    unit: count/second
+  Shardingexists:
+    name: Shardingexists
+    type: number
+    unit: count/second
+  Shardingexpire:
+    name: Shardingexpire
+    type: number
+    unit: count/second
+  Shardingexpireat:
+    name: Shardingexpireat
+    type: number
+    unit: count/second
+  Shardingget:
+    name: Shardingget
+    type: number
+    unit: count/second
+  Shardinggetbit:
+    name: Shardinggetbit
+    type: number
+    unit: count/second
+  Shardinggetrange:
+    name: Shardinggetrange
+    type: number
+    unit: count/second
+  Shardinggetset:
+    name: Shardinggetset
+    type: number
+    unit: count/second
+  Shardinghdel:
+    name: Shardinghdel
+    type: number
+    unit: count/second
+  Shardinghexists:
+    name: Shardinghexists
+    type: number
+    unit: count/second
+  Shardinghget:
+    name: Shardinghget
+    type: number
+    unit: count/second
+  Shardinghgetall:
+    name: Shardinghgetall
+    type: number
+    unit: count/second
+  Shardinghincrby:
+    name: Shardinghincrby
+    type: number
+    unit: count/second
+  Shardinghincrbyfloat:
+    name: Shardinghincrbyfloat
+    type: number
+    unit: count/second
+  Shardinghkeys:
+    name: Shardinghkeys
+    type: number
+    unit: count/second
+  Shardinghlen:
+    name: Shardinghlen
+    type: number
+    unit: count/second
+  Shardinghmget:
+    name: Shardinghmget
+    type: number
+    unit: count/second
+  Shardinghmset:
+    name: Shardinghmset
+    type: number
+    unit: count/second
+  Shardinghscan:
+    name: Shardinghscan
+    type: number
+    unit: count/second
+  Shardinghset:
+    name: Shardinghset
+    type: number
+    unit: count/second
+  Shardinghsetnx:
+    name: Shardinghsetnx
+    type: number
+    unit: count/second
+  Shardinghvals:
+    name: Shardinghvals
+    type: number
+    unit: count/second
+  Shardingincr:
+    name: Shardingincr
+    type: number
+    unit: count/second
+  Shardingincrby:
+    name: Shardingincrby
+    type: number
+    unit: count/second
+  Shardingincrbyfloat:
+    name: Shardingincrbyfloat
+    type: number
+    unit: count/second
+  Shardinglindex:
+    name: Shardinglindex
+    type: number
+    unit: count/second
+  Shardinglinsert:
+    name: Shardinglinsert
+    type: number
+    unit: count/second
+  Shardingllen:
+    name: Shardingllen
+    type: number
+    unit: count/second
+  Shardinglpop:
+    name: Shardinglpop
+    type: number
+    unit: count/second
+  Shardinglpush:
+    name: Shardinglpush
+    type: number
+    unit: count/second
+  Shardinglpushx:
+    name: Shardinglpushx
+    type: number
+    unit: count/second
+  Shardinglrange:
+    name: Shardinglrange
+    type: number
+    unit: count/second
+  Shardinglrem:
+    name: Shardinglrem
+    type: number
+    unit: count/second
+  Shardinglset:
+    name: Shardinglset
+    type: number
+    unit: count/second
+  Shardingltrim:
+    name: Shardingltrim
+    type: number
+    unit: count/second
+  Shardingmget:
+    name: Shardingmget
+    type: number
+    unit: count/second
+  Shardingmove:
+    name: Shardingmove
+    type: number
+    unit: count/second
+  Shardingmset:
+    name: Shardingmset
+    type: number
+    unit: count/second
+  Shardingmsetnx:
+    name: Shardingmsetnx
+    type: number
+    unit: count/second
+  Shardingmulti:
+    name: Shardingmulti
+    type: number
+    unit: count/second
+  Shardingpersist:
+    name: Shardingpersist
+    type: number
+    unit: count/second
+  Shardingpexpire:
+    name: Shardingpexpire
+    type: number
+    unit: count/second
+  Shardingpexpireat:
+    name: Shardingpexpireat
+    type: number
+    unit: count/second
+  Shardingpfadd:
+    name: Shardingpfadd
+    type: number
+    unit: count/second
+  Shardingpfcount:
+    name: Shardingpfcount
+    type: number
+    unit: count/second
+  Shardingpfmerge:
+    name: Shardingpfmerge
+    type: number
+    unit: count/second
+  Shardingpsetex:
+    name: Shardingpsetex
+    type: number
+    unit: count/second
+  Shardingpsubscribe:
+    name: Shardingpsubscribe
+    type: number
+    unit: count/second
+  Shardingpttl:
+    name: Shardingpttl
+    type: number
+    unit: count/second
+  Shardingpublish:
+    name: Shardingpublish
+    type: number
+    unit: count/second
+  Shardingpubsub:
+    name: Shardingpubsub
+    type: number
+    unit: count/second
+  Shardingpunsubscribe:
+    name: Shardingpunsubscribe
+    type: number
+    unit: count/second
+  Shardingrandomkey:
+    name: Shardingrandomkey
+    type: number
+    unit: count/second
+  Shardingrename:
+    name: Shardingrename
+    type: number
+    unit: count/second
+  Shardingrenamenx:
+    name: Shardingrenamenx
+    type: number
+    unit: count/second
+  Shardingrestore:
+    name: Shardingrestore
+    type: number
+    unit: count/second
+  Shardingrpop:
+    name: Shardingrpop
+    type: number
+    unit: count/second
+  Shardingrpoplpush:
+    name: Shardingrpoplpush
+    type: number
+    unit: count/second
+  Shardingrpush:
+    name: Shardingrpush
+    type: number
+    unit: count/second
+  Shardingrpushx:
+    name: Shardingrpushx
+    type: number
+    unit: count/second
+  Shardingsadd:
+    name: Shardingsadd
+    type: number
+    unit: count/second
+  Shardingscan:
+    name: Shardingscan
+    type: number
+    unit: count/second
+  Shardingscard:
+    name: Shardingscard
+    type: number
+    unit: count/second
+  Shardingsdiff:
+    name: Shardingsdiff
+    type: number
+    unit: count/second
+  Shardingsdiffstore:
+    name: Shardingsdiffstore
+    type: number
+    unit: count/second
+  Shardingset:
+    name: Shardingset
+    type: number
+    unit: count/second
+  Shardingsetbit:
+    name: Shardingsetbit
+    type: number
+    unit: count/second
+  Shardingsetex:
+    name: Shardingsetex
+    type: number
+    unit: count/second
+  Shardingsetnx:
+    name: Shardingsetnx
+    type: number
+    unit: count/second
+  Shardingsetrange:
+    name: Shardingsetrange
+    type: number
+    unit: count/second
+  Shardingsinter:
+    name: Shardingsinter
+    type: number
+    unit: count/second
+  Shardingsinterstore:
+    name: Shardingsinterstore
+    type: number
+    unit: count/second
+  Shardingsismember:
+    name: Shardingsismember
+    type: number
+    unit: count/second
+  Shardingsmembers:
+    name: Shardingsmembers
+    type: number
+    unit: count/second
+  Shardingsmove:
+    name: Shardingsmove
+    type: number
+    unit: count/second
+  Shardingsort:
+    name: Shardingsort
+    type: number
+    unit: count/second
+  Shardingspop:
+    name: Shardingspop
+    type: number
+    unit: count/second
+  Shardingsrandmember:
+    name: Shardingsrandmember
+    type: number
+    unit: count/second
+  Shardingsrem:
+    name: Shardingsrem
+    type: number
+    unit: count/second
+  Shardingsscan:
+    name: Shardingsscan
+    type: number
+    unit: count/second
+  Shardingstrlen:
+    name: Shardingstrlen
+    type: number
+    unit: count/second
+  Shardingsubscribe:
+    name: Shardingsubscribe
+    type: number
+    unit: count/second
+  Shardingsunion:
+    name: Shardingsunion
+    type: number
+    unit: count/second
+  Shardingsunionstore:
+    name: Shardingsunionstore
+    type: number
+    unit: count/second
+  Shardingttl:
+    name: Shardingttl
+    type: number
+    unit: count/second
+  Shardingtype:
+    name: Shardingtype
+    type: number
+    unit: count/second
+  Shardingunsubscribe:
+    name: Shardingunsubscribe
+    type: number
+    unit: count/second
+  Shardingunwatch:
+    name: Shardingunwatch
+    type: number
+    unit: count/second
+  Shardingwatch:
+    name: Shardingwatch
+    type: number
+    unit: count/second
+  Shardingzadd:
+    name: Shardingzadd
+    type: number
+    unit: count/second
+  Shardingzcard:
+    name: Shardingzcard
+    type: number
+    unit: count/second
+  Shardingzcount:
+    name: Shardingzcount
+    type: number
+    unit: count/second
+  Shardingzincrby:
+    name: Shardingzincrby
+    type: number
+    unit: count/second
+  Shardingzinterstore:
+    name: Shardingzinterstore
+    type: number
+    unit: count/second
+  Shardingzlexcount:
+    name: Shardingzlexcount
+    type: number
+    unit: count/second
+  Shardingzrange:
+    name: Shardingzrange
+    type: number
+    unit: count/second
+  Shardingzrangebylex:
+    name: Shardingzrangebylex
+    type: number
+    unit: count/second
+  Shardingzrangebyscore:
+    name: Shardingzrangebyscore
+    type: number
+    unit: count/second
+  Shardingzrank:
+    name: Shardingzrank
+    type: number
+    unit: count/second
+  Shardingzrem:
+    name: Shardingzrem
+    type: number
+    unit: count/second
+  Shardingzremrangebylex:
+    name: Shardingzremrangebylex
+    type: number
+    unit: count/second
+  Shardingzremrangebyrank:
+    name: Shardingzremrangebyrank
+    type: number
+    unit: count/second
+  Shardingzremrangebyscore:
+    name: Shardingzremrangebyscore
+    type: number
+    unit: count/second
+  Shardingzrevrange:
+    name: Shardingzrevrange
+    type: number
+    unit: count/second
+  Shardingzrevrangebyscore:
+    name: Shardingzrevrangebyscore
+    type: number
+    unit: count/second
+  Shardingzrevrank:
+    name: Shardingzrevrank
+    type: number
+    unit: count/second
+  Shardingzscan:
+    name: Shardingzscan
+    type: number
+    unit: count/second
+  Shardingzscore:
+    name: Shardingzscore
+    type: number
+    unit: count/second
+  Shardingzunionstore:
+    name: Shardingzunionstore
+    type: number
+    unit: count/second
+  SplitrwAvgRt:
+    name: SplitrwAvgRt
+    type: number
+    unit: us
+  SplitrwConnectionUsage:
+    name: SplitrwConnectionUsage
+    type: number
+    unit: '%'
+  SplitrwCpuUsage:
+    name: SplitrwCpuUsage
+    type: number
+    unit: '%'
+  SplitrwEvictedKeys:
+    name: SplitrwEvictedKeys
+    type: number
+    unit: count
+  SplitrwExpiredKeys:
+    name: SplitrwExpiredKeys
+    type: number
+    unit: count
+  SplitrwExpires:
+    name: SplitrwExpires
+    type: number
+    unit: count
+  SplitrwFailedCount:
+    name: SplitrwFailedCount
+    type: number
+    unit: count/second
+  SplitrwHitRate:
+    name: SplitrwHitRate
+    type: number
+    unit: '%'
+  SplitrwIntranetIn:
+    name: SplitrwIntranetIn
+    type: number
+    unit: kbyte/s
+  SplitrwIntranetInRatio:
+    name: SplitrwIntranetInRatio
+    type: number
+    unit: '%'
+  SplitrwIntranetOut:
+    name: SplitrwIntranetOut
+    type: number
+    unit: kbyte/s
+  SplitrwIntranetOutRatio:
+    name: SplitrwIntranetOutRatio
+    type: number
+    unit: '%'
+  SplitrwKeys:
+    name: SplitrwKeys
+    type: number
+    unit: count
+  SplitrwMaxRt:
+    name: SplitrwMaxRt
+    type: number
+    unit: us
+  SplitrwMemoryUsage:
+    name: SplitrwMemoryUsage
+    type: number
+    unit: '%'
+  SplitrwQPSUsage:
+    name: SplitrwQPSUsage
+    type: number
+    unit: '%'
+  SplitrwUsedConnection:
+    name: SplitrwUsedConnection
+    type: number
+    unit: count
+  SplitrwUsedMemory:
+    name: SplitrwUsedMemory
+    type: number
+    unit: bytes
+  SplitrwUsedQPS:
+    name: SplitrwUsedQPS
+    type: number
+    unit: count
+  Splitrwappend:
+    name: Splitrwappend
+    type: number
+    unit: count/second
+  Splitrwbitcount:
+    name: Splitrwbitcount
+    type: number
+    unit: count/second
+  Splitrwbitop:
+    name: Splitrwbitop
+    type: number
+    unit: count/second
+  Splitrwblpop:
+    name: Splitrwblpop
+    type: number
+    unit: count/second
+  Splitrwbrpop:
+    name: Splitrwbrpop
+    type: number
+    unit: count/second
+  Splitrwbrpoplpush:
+    name: Splitrwbrpoplpush
+    type: number
+    unit: count/second
+  Splitrwdecr:
+    name: Splitrwdecr
+    type: number
+    unit: count/second
+  Splitrwdecrby:
+    name: Splitrwdecrby
+    type: number
+    unit: count/second
+  Splitrwdel:
+    name: Splitrwdel
+    type: number
+    unit: count/second
+  Splitrwdiscard:
+    name: Splitrwdiscard
+    type: number
+    unit: count/second
+  Splitrwdump:
+    name: Splitrwdump
+    type: number
+    unit: count/second
+  Splitrwexec:
+    name: Splitrwexec
+    type: number
+    unit: count/second
+  Splitrwexists:
+    name: Splitrwexists
+    type: number
+    unit: count/second
+  Splitrwexpire:
+    name: Splitrwexpire
+    type: number
+    unit: count/second
+  Splitrwexpireat:
+    name: Splitrwexpireat
+    type: number
+    unit: count/second
+  Splitrwget:
+    name: Splitrwget
+    type: number
+    unit: count/second
+  Splitrwgetbit:
+    name: Splitrwgetbit
+    type: number
+    unit: count/second
+  Splitrwgetrange:
+    name: Splitrwgetrange
+    type: number
+    unit: count/second
+  Splitrwgetset:
+    name: Splitrwgetset
+    type: number
+    unit: count/second
+  Splitrwhdel:
+    name: Splitrwhdel
+    type: number
+    unit: count/second
+  Splitrwhexists:
+    name: Splitrwhexists
+    type: number
+    unit: count/second
+  Splitrwhget:
+    name: Splitrwhget
+    type: number
+    unit: count/second
+  Splitrwhgetall:
+    name: Splitrwhgetall
+    type: number
+    unit: count/second
+  Splitrwhincrby:
+    name: Splitrwhincrby
+    type: number
+    unit: count/second
+  Splitrwhincrbyfloat:
+    name: Splitrwhincrbyfloat
+    type: number
+    unit: count/second
+  Splitrwhkeys:
+    name: Splitrwhkeys
+    type: number
+    unit: count/second
+  Splitrwhlen:
+    name: Splitrwhlen
+    type: number
+    unit: count/second
+  Splitrwhmget:
+    name: Splitrwhmget
+    type: number
+    unit: count/second
+  Splitrwhmset:
+    name: Splitrwhmset
+    type: number
+    unit: count/second
+  Splitrwhscan:
+    name: Splitrwhscan
+    type: number
+    unit: count/second
+  Splitrwhset:
+    name: Splitrwhset
+    type: number
+    unit: count/second
+  Splitrwhsetnx:
+    name: Splitrwhsetnx
+    type: number
+    unit: count/second
+  Splitrwhvals:
+    name: Splitrwhvals
+    type: number
+    unit: count/second
+  Splitrwincr:
+    name: Splitrwincr
+    type: number
+    unit: count/second
+  Splitrwincrby:
+    name: Splitrwincrby
+    type: number
+    unit: count/second
+  Splitrwincrbyfloat:
+    name: Splitrwincrbyfloat
+    type: number
+    unit: count/second
+  Splitrwlindex:
+    name: Splitrwlindex
+    type: number
+    unit: count/second
+  Splitrwlinsert:
+    name: Splitrwlinsert
+    type: number
+    unit: count/second
+  Splitrwllen:
+    name: Splitrwllen
+    type: number
+    unit: count/second
+  Splitrwlpop:
+    name: Splitrwlpop
+    type: number
+    unit: count/second
+  Splitrwlpush:
+    name: Splitrwlpush
+    type: number
+    unit: count/second
+  Splitrwlpushx:
+    name: Splitrwlpushx
+    type: number
+    unit: count/second
+  Splitrwlrange:
+    name: Splitrwlrange
+    type: number
+    unit: count/second
+  Splitrwlrem:
+    name: Splitrwlrem
+    type: number
+    unit: count/second
+  Splitrwlset:
+    name: Splitrwlset
+    type: number
+    unit: count/second
+  Splitrwltrim:
+    name: Splitrwltrim
+    type: number
+    unit: count/second
+  Splitrwmget:
+    name: Splitrwmget
+    type: number
+    unit: count/second
+  Splitrwmove:
+    name: Splitrwmove
+    type: number
+    unit: count/second
+  Splitrwmset:
+    name: Splitrwmset
+    type: number
+    unit: count/second
+  Splitrwmsetnx:
+    name: Splitrwmsetnx
+    type: number
+    unit: count/second
+  Splitrwmulti:
+    name: Splitrwmulti
+    type: number
+    unit: count/second
+  Splitrwpersist:
+    name: Splitrwpersist
+    type: number
+    unit: count/second
+  Splitrwpexpire:
+    name: Splitrwpexpire
+    type: number
+    unit: count/second
+  Splitrwpexpireat:
+    name: Splitrwpexpireat
+    type: number
+    unit: count/second
+  Splitrwpfadd:
+    name: Splitrwpfadd
+    type: number
+    unit: count/second
+  Splitrwpfcount:
+    name: Splitrwpfcount
+    type: number
+    unit: count/second
+  Splitrwpfmerge:
+    name: Splitrwpfmerge
+    type: number
+    unit: count/second
+  Splitrwpsetex:
+    name: Splitrwpsetex
+    type: number
+    unit: count/second
+  Splitrwpsubscribe:
+    name: Splitrwpsubscribe
+    type: number
+    unit: count/second
+  Splitrwpttl:
+    name: Splitrwpttl
+    type: number
+    unit: count/second
+  Splitrwpublish:
+    name: Splitrwpublish
+    type: number
+    unit: count/second
+  Splitrwpubsub:
+    name: Splitrwpubsub
+    type: number
+    unit: count/second
+  Splitrwpunsubscribe:
+    name: Splitrwpunsubscribe
+    type: number
+    unit: count/second
+  Splitrwrandomkey:
+    name: Splitrwrandomkey
+    type: number
+    unit: count/second
+  Splitrwrename:
+    name: Splitrwrename
+    type: number
+    unit: count/second
+  Splitrwrenamenx:
+    name: Splitrwrenamenx
+    type: number
+    unit: count/second
+  Splitrwrestore:
+    name: Splitrwrestore
+    type: number
+    unit: count/second
+  Splitrwrpop:
+    name: Splitrwrpop
+    type: number
+    unit: count/second
+  Splitrwrpoplpush:
+    name: Splitrwrpoplpush
+    type: number
+    unit: count/second
+  Splitrwrpush:
+    name: Splitrwrpush
+    type: number
+    unit: count/second
+  Splitrwrpushx:
+    name: Splitrwrpushx
+    type: number
+    unit: count/second
+  Splitrwsadd:
+    name: Splitrwsadd
+    type: number
+    unit: count/second
+  Splitrwscan:
+    name: Splitrwscan
+    type: number
+    unit: count/second
+  Splitrwscard:
+    name: Splitrwscard
+    type: number
+    unit: count/second
+  Splitrwsdiff:
+    name: Splitrwsdiff
+    type: number
+    unit: count/second
+  Splitrwsdiffstore:
+    name: Splitrwsdiffstore
+    type: number
+    unit: count/second
+  Splitrwset:
+    name: Splitrwset
+    type: number
+    unit: count/second
+  Splitrwsetbit:
+    name: Splitrwsetbit
+    type: number
+    unit: count/second
+  Splitrwsetex:
+    name: Splitrwsetex
+    type: number
+    unit: count/second
+  Splitrwsetnx:
+    name: Splitrwsetnx
+    type: number
+    unit: count/second
+  Splitrwsetrange:
+    name: Splitrwsetrange
+    type: number
+    unit: count/second
+  Splitrwsinter:
+    name: Splitrwsinter
+    type: number
+    unit: count/second
+  Splitrwsinterstore:
+    name: Splitrwsinterstore
+    type: number
+    unit: count/second
+  Splitrwsismember:
+    name: Splitrwsismember
+    type: number
+    unit: count/second
+  Splitrwsmembers:
+    name: Splitrwsmembers
+    type: number
+    unit: count/second
+  Splitrwsmove:
+    name: Splitrwsmove
+    type: number
+    unit: count/second
+  Splitrwsort:
+    name: Splitrwsort
+    type: number
+    unit: count/second
+  Splitrwspop:
+    name: Splitrwspop
+    type: number
+    unit: count/second
+  Splitrwsrandmember:
+    name: Splitrwsrandmember
+    type: number
+    unit: count/second
+  Splitrwsrem:
+    name: Splitrwsrem
+    type: number
+    unit: count/second
+  Splitrwsscan:
+    name: Splitrwsscan
+    type: number
+    unit: count/second
+  Splitrwstrlen:
+    name: Splitrwstrlen
+    type: number
+    unit: count/second
+  Splitrwsubscribe:
+    name: Splitrwsubscribe
+    type: number
+    unit: count/second
+  Splitrwsunion:
+    name: Splitrwsunion
+    type: number
+    unit: count/second
+  Splitrwsunionstore:
+    name: Splitrwsunionstore
+    type: number
+    unit: count/second
+  Splitrwttl:
+    name: Splitrwttl
+    type: number
+    unit: count/second
+  Splitrwtype:
+    name: Splitrwtype
+    type: number
+    unit: count/second
+  Splitrwunsubscribe:
+    name: Splitrwunsubscribe
+    type: number
+    unit: count/second
+  Splitrwunwatch:
+    name: Splitrwunwatch
+    type: number
+    unit: count/second
+  Splitrwwatch:
+    name: Splitrwwatch
+    type: number
+    unit: count/second
+  Splitrwzadd:
+    name: Splitrwzadd
+    type: number
+    unit: count/second
+  Splitrwzcard:
+    name: Splitrwzcard
+    type: number
+    unit: count/second
+  Splitrwzcount:
+    name: Splitrwzcount
+    type: number
+    unit: count/second
+  Splitrwzincrby:
+    name: Splitrwzincrby
+    type: number
+    unit: count/second
+  Splitrwzinterstore:
+    name: Splitrwzinterstore
+    type: number
+    unit: count/second
+  Splitrwzlexcount:
+    name: Splitrwzlexcount
+    type: number
+    unit: count/second
+  Splitrwzrange:
+    name: Splitrwzrange
+    type: number
+    unit: count/second
+  Splitrwzrangebylex:
+    name: Splitrwzrangebylex
+    type: number
+    unit: count/second
+  Splitrwzrangebyscore:
+    name: Splitrwzrangebyscore
+    type: number
+    unit: count/second
+  Splitrwzrank:
+    name: Splitrwzrank
+    type: number
+    unit: count/second
+  Splitrwzrem:
+    name: Splitrwzrem
+    type: number
+    unit: count/second
+  Splitrwzremrangebylex:
+    name: Splitrwzremrangebylex
+    type: number
+    unit: count/second
+  Splitrwzremrangebyrank:
+    name: Splitrwzremrangebyrank
+    type: number
+    unit: count/second
+  Splitrwzremrangebyscore:
+    name: Splitrwzremrangebyscore
+    type: number
+    unit: count/second
+  Splitrwzrevrange:
+    name: Splitrwzrevrange
+    type: number
+    unit: count/second
+  Splitrwzrevrangebyscore:
+    name: Splitrwzrevrangebyscore
+    type: number
+    unit: count/second
+  Splitrwzrevrank:
+    name: Splitrwzrevrank
+    type: number
+    unit: count/second
+  Splitrwzscan:
+    name: Splitrwzscan
+    type: number
+    unit: count/second
+  Splitrwzscore:
+    name: Splitrwzscore
+    type: number
+    unit: count/second
+  Splitrwzunionstore:
+    name: Splitrwzunionstore
+    type: number
+    unit: count/second
+  StandardAvgRt:
+    name: StandardAvgRt
+    type: number
+    unit: us
+  StandardConnectionUsage:
+    name: StandardConnectionUsage
+    type: number
+    unit: '%'
+  StandardCpuUsage:
+    name: StandardCpuUsage
+    type: number
+    unit: '%'
+  StandardEvictedKeys:
+    name: StandardEvictedKeys
+    type: number
+    unit: count
+  StandardExpiredKeys:
+    name: StandardExpiredKeys
+    type: number
+    unit: count
+  StandardExpires:
+    name: StandardExpires
+    type: number
+    unit: count
+  StandardFailedCount:
+    name: StandardFailedCount
+    type: number
+    unit: count/second
+  StandardHitRate:
+    name: StandardHitRate
+    type: number
+    unit: '%'
+  StandardIntranetIn:
+    name: StandardIntranetIn
+    type: number
+    unit: kbyte/s
+  StandardIntranetInRatio:
+    name: StandardIntranetInRatio
+    type: number
+    unit: '%'
+  StandardIntranetOut:
+    name: StandardIntranetOut
+    type: number
+    unit: kbyte/s
+  StandardIntranetOutRatio:
+    name: StandardIntranetOutRatio
+    type: number
+    unit: '%'
+  StandardKeys:
+    name: StandardKeys
+    type: number
+    unit: count
+  StandardMaxRt:
+    name: StandardMaxRt
+    type: number
+    unit: us
+  StandardMemoryUsage:
+    name: StandardMemoryUsage
+    type: number
+    unit: '%'
+  StandardQPSUsage:
+    name: StandardQPSUsage
+    type: number
+    unit: '%'
+  StandardUsedConnection:
+    name: StandardUsedConnection
+    type: number
+    unit: count
+  StandardUsedMemory:
+    name: StandardUsedMemory
+    type: number
+    unit: bytes
+  StandardUsedQPS:
+    name: StandardUsedQPS
+    type: number
+    unit: count
+  Standardappend:
+    name: Standardappend
+    type: number
+    unit: count/second
+  Standardbitcount:
+    name: Standardbitcount
+    type: number
+    unit: count/second
+  Standardbitop:
+    name: Standardbitop
+    type: number
+    unit: count/second
+  Standardblpop:
+    name: Standardblpop
+    type: number
+    unit: count/second
+  Standardbrpop:
+    name: Standardbrpop
+    type: number
+    unit: count/second
+  Standardbrpoplpush:
+    name: Standardbrpoplpush
+    type: number
+    unit: count/second
+  Standarddecr:
+    name: Standarddecr
+    type: number
+    unit: count/second
+  Standarddecrby:
+    name: Standarddecrby
+    type: number
+    unit: count/second
+  Standarddel:
+    name: Standarddel
+    type: number
+    unit: count/second
+  Standarddiscard:
+    name: Standarddiscard
+    type: number
+    unit: count/second
+  Standarddump:
+    name: Standarddump
+    type: number
+    unit: count/second
+  Standardexec:
+    name: Standardexec
+    type: number
+    unit: count/second
+  Standardexists:
+    name: Standardexists
+    type: number
+    unit: count/second
+  Standardexpire:
+    name: Standardexpire
+    type: number
+    unit: count/second
+  Standardexpireat:
+    name: Standardexpireat
+    type: number
+    unit: count/second
+  Standardget:
+    name: Standardget
+    type: number
+    unit: count/second
+  Standardgetbit:
+    name: Standardgetbit
+    type: number
+    unit: count/second
+  Standardgetrange:
+    name: Standardgetrange
+    type: number
+    unit: count/second
+  Standardgetset:
+    name: Standardgetset
+    type: number
+    unit: count/second
+  Standardhdel:
+    name: Standardhdel
+    type: number
+    unit: count/second
+  Standardhexists:
+    name: Standardhexists
+    type: number
+    unit: count/second
+  Standardhget:
+    name: Standardhget
+    type: number
+    unit: count/second
+  Standardhgetall:
+    name: Standardhgetall
+    type: number
+    unit: count/second
+  Standardhincrby:
+    name: Standardhincrby
+    type: number
+    unit: count/second
+  Standardhincrbyfloat:
+    name: Standardhincrbyfloat
+    type: number
+    unit: count/second
+  Standardhkeys:
+    name: Standardhkeys
+    type: number
+    unit: count/second
+  Standardhlen:
+    name: Standardhlen
+    type: number
+    unit: count/second
+  Standardhmget:
+    name: Standardhmget
+    type: number
+    unit: count/second
+  Standardhmset:
+    name: Standardhmset
+    type: number
+    unit: count/second
+  Standardhscan:
+    name: Standardhscan
+    type: number
+    unit: count/second
+  Standardhset:
+    name: Standardhset
+    type: number
+    unit: count/second
+  Standardhsetnx:
+    name: Standardhsetnx
+    type: number
+    unit: count/second
+  Standardhvals:
+    name: Standardhvals
+    type: number
+    unit: count/second
+  Standardincr:
+    name: Standardincr
+    type: number
+    unit: count/second
+  Standardincrby:
+    name: Standardincrby
+    type: number
+    unit: count/second
+  Standardincrbyfloat:
+    name: Standardincrbyfloat
+    type: number
+    unit: count/second
+  Standardlindex:
+    name: Standardlindex
+    type: number
+    unit: count/second
+  Standardlinsert:
+    name: Standardlinsert
+    type: number
+    unit: count/second
+  Standardllen:
+    name: Standardllen
+    type: number
+    unit: count/second
+  Standardlpop:
+    name: Standardlpop
+    type: number
+    unit: count/second
+  Standardlpush:
+    name: Standardlpush
+    type: number
+    unit: count/second
+  Standardlpushx:
+    name: Standardlpushx
+    type: number
+    unit: count/second
+  Standardlrange:
+    name: Standardlrange
+    type: number
+    unit: count/second
+  Standardlrem:
+    name: Standardlrem
+    type: number
+    unit: count/second
+  Standardlset:
+    name: Standardlset
+    type: number
+    unit: count/second
+  Standardltrim:
+    name: Standardltrim
+    type: number
+    unit: count/second
+  Standardmget:
+    name: Standardmget
+    type: number
+    unit: count/second
+  Standardmove:
+    name: Standardmove
+    type: number
+    unit: count/second
+  Standardmset:
+    name: Standardmset
+    type: number
+    unit: count/second
+  Standardmsetnx:
+    name: Standardmsetnx
+    type: number
+    unit: count/second
+  Standardmulti:
+    name: Standardmulti
+    type: number
+    unit: count/second
+  Standardpersist:
+    name: Standardpersist
+    type: number
+    unit: count/second
+  Standardpexpire:
+    name: Standardpexpire
+    type: number
+    unit: count/second
+  Standardpexpireat:
+    name: Standardpexpireat
+    type: number
+    unit: count/second
+  Standardpfadd:
+    name: Standardpfadd
+    type: number
+    unit: count/second
+  Standardpfcount:
+    name: Standardpfcount
+    type: number
+    unit: count/second
+  Standardpfmerge:
+    name: Standardpfmerge
+    type: number
+    unit: count/second
+  Standardpsetex:
+    name: Standardpsetex
+    type: number
+    unit: count/second
+  Standardpsubscribe:
+    name: Standardpsubscribe
+    type: number
+    unit: count/second
+  Standardpttl:
+    name: Standardpttl
+    type: number
+    unit: count/second
+  Standardpublish:
+    name: Standardpublish
+    type: number
+    unit: count/second
+  Standardpubsub:
+    name: Standardpubsub
+    type: number
+    unit: count/second
+  Standardpunsubscribe:
+    name: Standardpunsubscribe
+    type: number
+    unit: count/second
+  Standardrandomkey:
+    name: Standardrandomkey
+    type: number
+    unit: count/second
+  Standardrename:
+    name: Standardrename
+    type: number
+    unit: count/second
+  Standardrenamenx:
+    name: Standardrenamenx
+    type: number
+    unit: count/second
+  Standardrestore:
+    name: Standardrestore
+    type: number
+    unit: count/second
+  Standardrpop:
+    name: Standardrpop
+    type: number
+    unit: count/second
+  Standardrpoplpush:
+    name: Standardrpoplpush
+    type: number
+    unit: count/second
+  Standardrpush:
+    name: Standardrpush
+    type: number
+    unit: count/second
+  Standardrpushx:
+    name: Standardrpushx
+    type: number
+    unit: count/second
+  Standardsadd:
+    name: Standardsadd
+    type: number
+    unit: count/second
+  Standardscan:
+    name: Standardscan
+    type: number
+    unit: count/second
+  Standardscard:
+    name: Standardscard
+    type: number
+    unit: count/second
+  Standardsdiff:
+    name: Standardsdiff
+    type: number
+    unit: count/second
+  Standardsdiffstore:
+    name: Standardsdiffstore
+    type: number
+    unit: count/second
+  Standardset:
+    name: Standardset
+    type: number
+    unit: count/second
+  Standardsetbit:
+    name: Standardsetbit
+    type: number
+    unit: count/second
+  Standardsetex:
+    name: Standardsetex
+    type: number
+    unit: count/second
+  Standardsetnx:
+    name: Standardsetnx
+    type: number
+    unit: count/second
+  Standardsetrange:
+    name: Standardsetrange
+    type: number
+    unit: count/second
+  Standardsinter:
+    name: Standardsinter
+    type: number
+    unit: count/second
+  Standardsinterstore:
+    name: Standardsinterstore
+    type: number
+    unit: count/second
+  Standardsismember:
+    name: Standardsismember
+    type: number
+    unit: count/second
+  Standardsmembers:
+    name: Standardsmembers
+    type: number
+    unit: count/second
+  Standardsmove:
+    name: Standardsmove
+    type: number
+    unit: count/second
+  Standardsort:
+    name: Standardsort
+    type: number
+    unit: count/second
+  Standardspop:
+    name: Standardspop
+    type: number
+    unit: count/second
+  Standardsrandmember:
+    name: Standardsrandmember
+    type: number
+    unit: count/second
+  Standardsrem:
+    name: Standardsrem
+    type: number
+    unit: count/second
+  Standardsscan:
+    name: Standardsscan
+    type: number
+    unit: count/second
+  Standardstrlen:
+    name: Standardstrlen
+    type: number
+    unit: count/second
+  Standardsubscribe:
+    name: Standardsubscribe
+    type: number
+    unit: count/second
+  Standardsunion:
+    name: Standardsunion
+    type: number
+    unit: count/second
+  Standardsunionstore:
+    name: Standardsunionstore
+    type: number
+    unit: count/second
+  Standardttl:
+    name: Standardttl
+    type: number
+    unit: count/second
+  Standardtype:
+    name: Standardtype
+    type: number
+    unit: count/second
+  Standardunsubscribe:
+    name: Standardunsubscribe
+    type: number
+    unit: count/second
+  Standardunwatch:
+    name: Standardunwatch
+    type: number
+    unit: count/second
+  Standardwatch:
+    name: Standardwatch
+    type: number
+    unit: count/second
+  Standardzadd:
+    name: Standardzadd
+    type: number
+    unit: count/second
+  Standardzcard:
+    name: Standardzcard
+    type: number
+    unit: count/second
+  Standardzcount:
+    name: Standardzcount
+    type: number
+    unit: count/second
+  Standardzincrby:
+    name: Standardzincrby
+    type: number
+    unit: count/second
+  Standardzinterstore:
+    name: Standardzinterstore
+    type: number
+    unit: count/second
+  Standardzlexcount:
+    name: Standardzlexcount
+    type: number
+    unit: count/second
+  Standardzrange:
+    name: Standardzrange
+    type: number
+    unit: count/second
+  Standardzrangebylex:
+    name: Standardzrangebylex
+    type: number
+    unit: count/second
+  Standardzrangebyscore:
+    name: Standardzrangebyscore
+    type: number
+    unit: count/second
+  Standardzrank:
+    name: Standardzrank
+    type: number
+    unit: count/second
+  Standardzrem:
+    name: Standardzrem
+    type: number
+    unit: count/second
+  Standardzremrangebylex:
+    name: Standardzremrangebylex
+    type: number
+    unit: count/second
+  Standardzremrangebyrank:
+    name: Standardzremrangebyrank
+    type: number
+    unit: count/second
+  Standardzremrangebyscore:
+    name: Standardzremrangebyscore
+    type: number
+    unit: count/second
+  Standardzrevrange:
+    name: Standardzrevrange
+    type: number
+    unit: count/second
+  Standardzrevrangebyscore:
+    name: Standardzrevrangebyscore
+    type: number
+    unit: count/second
+  Standardzrevrank:
+    name: Standardzrevrank
+    type: number
+    unit: count/second
+  Standardzscan:
+    name: Standardzscan
+    type: number
+    unit: count/second
+  Standardzscore:
+    name: Standardzscore
+    type: number
+    unit: count/second
+  Standardzunionstore:
+    name: Standardzunionstore
+    type: number
+    unit: count/second
+  TPS:
+    name: TPS
+    type: number
+    unit: transactions/second
+  UsedConnection:
+    name: UsedConnection
+    type: number
+    unit: count
+  UsedMemory:
+    name: UsedMemory
+    type: number
+    unit: bytes
+  UsedQPS:
+    name: UsedQPS
+    type: number
+    unit: count/second
+name: 'aliyun_kvstore'
+tags:
+  instanceId:
+    name: instanceId
+  userId:
+    name: userId
+  org_id:
+    name: Org ID
+  org_name:
+    name: Org Name
+  cluster_name:
+    name: Cluster Name

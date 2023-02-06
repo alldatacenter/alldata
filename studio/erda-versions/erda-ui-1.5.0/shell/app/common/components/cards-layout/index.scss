@@ -1,0 +1,29 @@
+.card-list-container {
+  display: grid;
+  padding: 3px;
+  grid-gap: 20px 20px;
+
+  &-g6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  &-g5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &-g4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &-g3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &-g2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &-g1 {
+    grid-template-columns: 100%;
+  }
+}

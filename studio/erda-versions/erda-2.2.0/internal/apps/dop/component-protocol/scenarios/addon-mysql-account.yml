@@ -1,0 +1,45 @@
+version: 2.0
+scenario: addon-mysql-account
+
+hierarchy:
+  root: root
+  structure:
+    root:
+      - filter
+      - accountTable
+      - topHead
+      - viewPasswordModal
+    topHead:
+      - addAccountButton
+    viewPasswordModal:
+      children: viewPassword
+
+components:
+  filter:
+    type: ContractiveFilter
+  viewPasswordModal:
+    type: Modal
+  viewPassword:
+    type: Table
+  addAccountButton:
+    type: Button
+  accountTable:
+    type: Table
+  root:
+    type: Container
+  topHead:
+    type: RowContainer
+    name: topHead
+    props:
+      isTopHead: true
+
+rendering:
+  filter:
+    - name: accountTable
+  accountTable:
+    - name: viewPasswordModal
+    - name: viewPassword
+    - name: addAccountButton
+  addAccountButton:
+    - name: root
+    - name: accountTable

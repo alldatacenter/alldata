@@ -1,0 +1,149 @@
+- name: "平台组件Flink吞吐量异常告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【平台组件Flink吞吐量异常告警】
+  template: |
+    【平台组件Flink吞吐量异常告警】
+
+    operator每秒输出量: {{numRecordsOutPerSecond_count_value}}
+
+    任务ID： {{job_id}}
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+
+- name: "平台组件Flink吞吐量异常告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【平台组件Flink吞吐量异常告警】
+  template: |
+    {{job_id}}触发平台组件Flink吞吐量异常告警，operator每秒输出量: {{numRecordsOutPerSecond_count_value}}，告警级别: {{level}}
+- name: "平台组件Flink吞吐量异常告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【平台组件Flink吞吐量异常告警】
+  template: |
+    {{job_id}}触发平台组件Flink吞吐量异常告警，operator每秒输出量: {{numRecordsOutPerSecond_count_value}}，告警级别: {{level}}
+- name: "平台组件Flink吞吐量异常告警恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【平台组件Flink吞吐量异常恢复】
+  template: |
+    【平台组件Flink吞吐量异常恢复】
+
+    任务ID： {{job_id}}
+
+    集群: {{cluster_name}}
+
+    机器: {{host_ip}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "平台组件Flink吞吐量异常告警恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【平台组件Flink吞吐量异常恢复】
+  template: |
+    {{job_id}}触发平台组件Flink吞吐量异常告警恢复
+- name: "平台组件Flink吞吐量异常告警恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【平台组件Flink吞吐量异常恢复】
+  template: |
+    {{job_id}}触发平台组件Flink吞吐量异常告警恢复
+
+- name: "Throughput exception alarm of platform component Flink"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [Throughput exception alarm of platform component Flink]
+  template: |
+    [Throughput exception alarm of platform component Flink]
+
+    operator output per second: {{numRecordsOutPerSecond_count_value}}
+
+    Task ID： {{job_id}}
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+
+- name: "Throughput exception alarm of platform component Flink"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Throughput exception alarm of platform component Flink]
+  template: |
+    Throughput exception alarm of platform component Flink triggered by {{job_id}}, operator output per second: {{numRecordsOutPerSecond_count_value}}
+- name: "Throughput exception alarm of platform component Flink"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [Throughput exception alarm of platform component Flink]
+  template: |
+    Throughput exception alarm of platform component Flink triggered by {{job_id}}, operator output per second: {{numRecordsOutPerSecond_count_value}}
+- name: "Throughput exception alarm recovery of platform component Flink"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [Throughput exception recovery of platform component Flink]
+  template: |
+    [Throughput exception recovery of platform component Flink]
+
+    Task ID： {{job_id}}
+
+    Cluster: {{cluster_name}}
+
+    Machine: {{host_ip}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Throughput exception alarm recovery of platform component Flink"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [Throughput exception recovery of platform component Flink]
+  template: |
+    Throughput exception alarm recovery of platform component Flink rejiggered by {{job_id}}
+- name: "Throughput exception alarm recovery of platform component Flink"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [Throughput exception recovery of platform component Flink]
+  template: |
+    Throughput exception alarm recovery of platform component Flink rejiggered by {{job_id}}

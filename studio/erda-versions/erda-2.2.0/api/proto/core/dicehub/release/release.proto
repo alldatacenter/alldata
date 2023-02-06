@@ -1,0 +1,695 @@
+syntax = "proto3";
+
+package erda.core.dicehub.release;
+option go_package = "github.com/erda-project/erda-proto-go/core/dicehub/release/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "common/openapi.proto";
+import "apps/gallery/gallery.proto";
+
+service ReleaseService {
+  option (erda.common.openapi_service) = {
+    service: "dicehub",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc CreateRelease (ReleaseCreateRequest) returns (ReleaseCreateResponseData)  {
+    option (google.api.http) = {
+      post: "/api/releases",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases",
+    };
+  }
+
+  rpc UpdateRelease (ReleaseUpdateRequest) returns (ReleaseUpdateResponse)  {
+    option (google.api.http) = {
+      put: "/api/releases/{releaseID}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/{releaseID}",
+    };
+  }
+
+  rpc UpdateReleaseReference (ReleaseReferenceUpdateRequest) returns (ReleaseDataResponse)  {
+    option (google.api.http) = {
+      put: "/api/releases/{releaseID}/reference/actions/change",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/{releaseID}/reference/actions/change",
+    };
+  }
+
+  rpc GetIosPlist (GetIosPlistRequest) returns (GetIosPlistResponse)  {
+    option (google.api.http) = {
+      get: "/api/releases/{releaseID}/actions/get-plist",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/{releaseID}/actions/get-plist",
+    };
+  }
+
+  rpc GetRelease (ReleaseGetRequest) returns (ReleaseGetResponse)  {
+    option (google.api.http) = {
+      get: "/api/releases/{releaseID}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/{releaseID}",
+    };
+  }
+
+  rpc DeleteRelease (ReleaseDeleteRequest) returns (ReleaseDeleteResponse)  {
+    option (google.api.http) = {
+      delete: "/api/releases/{releaseID}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/{releaseID}",
+    };
+  }
+
+  rpc ListRelease (ReleaseListRequest) returns (ReleaseListResponse)  {
+    option (google.api.http) = {
+      get: "/api/releases?q={query}&releaseId={releaseID}&releaseName={releaseName}&cluster={cluster}&branchName={branch}&latest={isLatest}&isStable={isStable}&isFormal={isFormal}&isProjectRelease={isProjectRelease}&userId={userID}&version={version}&commitId={commitID}&tags={tags}&isVersion={isVersion}&crossCluster={crossCluster}&crossClusterOrSpecifyCluster={crossClusterOrSpecifyCluster}&applicationId={applicationID}&projectId={projectID}&startTime={startTime]&endTime={endTime}&pageSize={pageSize}&pageNo={pageNo}&orderBy={orderBy}&order={order}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases",
+    };
+  }
+
+  rpc ListReleaseName (ListReleaseNameRequest) returns (ListReleaseNameResponse)  {
+    option (google.api.http) = {
+      get: "/api/releases/actions/get-name",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/actions/get-name",
+    };
+  }
+
+  rpc GetLatestReleases (GetLatestReleasesRequest) returns (GetLatestReleasesResponse)  {
+    option (google.api.http) = {
+      get: "/api/releases/actions/get-latest",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/actions/get-latest",
+    };
+  }
+
+  rpc ReleaseGC (ReleaseGCRequest) returns (ReleaseDataResponse)  {
+    option (google.api.http) = {
+      post: "/gc",
+    };
+    option (erda.common.openapi) = {
+      path: "/gc",
+    };
+  }
+
+  rpc UploadRelease (ReleaseUploadRequest) returns (ReleaseUploadResponse) {
+    option (google.api.http) = {
+      post: "/api/releases/actions/upload",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/actions/upload",
+    };
+  }
+
+  rpc ParseReleaseFile (ParseReleaseFileRequest) returns (ParseReleaseFileResponse) {
+    option (google.api.http) = {
+      get: "/api/releases/actions/parse-version",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/actions/parse-version",
+    };
+  }
+
+  rpc ToFormalRelease (FormalReleaseRequest) returns (FormalReleaseResponse) {
+    option (google.api.http) = {
+      put: "/api/releases/{releaseId}/actions/formal",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/{releaseId}/actions/formal",
+    };
+  }
+
+  rpc ToFormalReleases (FormalReleasesRequest) returns (FormalReleasesResponse) {
+    option (google.api.http) = {
+      put: "/api/releases",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases",
+    };
+  }
+
+  rpc DeleteReleases (ReleasesDeleteRequest) returns (ReleasesDeleteResponse) {
+    option (google.api.http) = {
+      delete: "/api/releases",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases",
+    };
+  }
+
+  rpc CheckVersion (CheckVersionRequest) returns (CheckVersionResponse){
+    option (google.api.http) = {
+      get: "/api/releases/actions/check-version?isProjectRelease={isProjectRelease}&appID={appID}&orgID={orgID}&projectID={projectID}&version={version}",
+    };
+    option (erda.common.openapi) = {
+      path: "/api/releases/actions/check-version",
+    };
+  }
+
+  rpc PutOnRelease (ReleasePutOnRequest) returns (ReleasePutOnResponse);
+  rpc PutOffRelease (ReleasePutOffRequest) returns (ReleasePutOffResponse);
+}
+
+message ReleaseList{
+  repeated string list = 1;
+}
+
+message Mode{
+  repeated string dependOn = 1;
+  bool expose = 2;
+  repeated ReleaseList applicationReleaseList = 3;
+}
+
+// ReleaseCreateRequest create release API(POST /api/releases)
+message ReleaseCreateRequest{
+  // Any character string, easy for users to identify, the maximum length is 255, required
+  string releaseName = 1;
+
+  // describe this release function in detail, optional
+  string desc = 2;
+
+  // When the resource type is diceyml, store the content of dice.yml, optional
+  string dice = 3;
+
+  // When addon is registered, release contains dice.yml and addon.yml, optional
+  string addon = 4;
+
+  bool isStable = 5;
+  bool isFormal = 6;
+  bool isProjectRelease = 7;
+  string changelog = 8;
+  map<string, Mode> modes = 9;
+
+  // Used for release classification, description of release category, map type, maximum length 1000, optional
+  map<string, string> labels = 10;
+
+  repeated uint64 tags = 11;
+  // Store the release version information, which is unique under the same project and the same application in the same company, the maximum length is 100, optional
+  string version = 12;
+
+  // Enterprise identifier, describing the company to which the release belongs, optional
+  int64 orgID = 13 [json_name = "orgId"] ;
+
+  // Project identifier, describing the project to which the release belongs, optional
+  int64 projectID = 14 [json_name = "projectId"] ;
+
+  // Application identifier, describing the application to which the release belongs, optional
+  int64 applicationID = 15 [json_name = "applicationId"] ;
+
+  // Project name, describe the project to which the release belongs, optional
+  string projectName = 16;
+
+  // Application name, describing the application to which the release belongs, optional
+  string applicationName = 17;
+
+  // User identifier, describe the user to which the release belongs, the maximum length is 50, optional
+  string userID = 18 [json_name = "userId"] ;
+
+  // Cluster name, describing the cluster to which the release belongs, the maximum length is 80, optional
+  string clusterName = 19;
+
+  // release Included resources，to compatible diceyml，optional
+  repeated ReleaseResource resources = 20;
+
+  // CrossCluster cross cluster
+  bool crossCluster = 21;
+}
+
+// ReleaseResource Resource structure
+message ReleaseResource {
+  // Type resources type, required
+  string type = 1;
+
+  // Name resource name，optional, eg: init.sql/upgrade.sql
+  string name = 2;
+  // URL 资源URL, 可直接wget获取到资源, 选填(当type为diceyml, 资源作为release的dice字段在mysql存储)
+
+  // URL resources URL, can get by wget
+  string URL = 3 [json_name = "url"];
+
+  map<string, google.protobuf.Value> meta = 4;
+}
+
+// ReleaseCreateResponse create release API response
+message ReleaseCreateResponse {
+  ReleaseCreateResponseData data = 1;
+}
+
+// ReleaseCreateResponseData create release response data
+message ReleaseCreateResponseData {
+  string releaseID = 1 [json_name = "releaseId"] ;
+}
+
+// ReleaseUpdateRequest update release API(PUT /api/releases/{releaseID})
+message ReleaseUpdateRequest {
+  string releaseID = 1;
+  string version = 2;
+  string desc = 3;
+  string changelog = 4;
+  map<string, Mode> modes = 5;
+  repeated uint64 tags = 6;
+
+  // The following information is mainly used for version coverage, to find out the previous version to clear
+  int64 orgID = 7 [json_name = "orgId"] ;
+  int64 projectID = 9 [json_name = "projectId"] ;
+  int64 applicationID = 10 [json_name = "applicationId"] ;
+  string opusID = 11;
+  string opusVersionID = 12;
+}
+
+// ReleaseDataResponse response only return data
+message ReleaseDataResponse {
+  string data = 1;
+}
+
+// ReleaseUserDataResponse response return userID and data
+message ReleaseUserDataResponse {
+  string data = 1;
+  repeated string userIDs = 2;
+}
+
+// ReleaseUpdateResponse update release API response
+message ReleaseUpdateResponse {
+  string data = 1; // Update succ
+}
+
+// ReleaseReferenceUpdateRequest update Reference API(/api/releases/{releaseID}/reference/actions/change)
+message ReleaseReferenceUpdateRequest {
+  string releaseID = 1;
+  bool increase = 2; // true:reference+1  false:reference-1
+}
+
+message GetIosPlistRequest{
+  string releaseID = 1;
+}
+
+message GetIosPlistResponse{
+  string data = 1;
+}
+
+// ReleaseDeleteRequest delete release API(DELETE /api/releases/{releaseID})
+message ReleaseDeleteRequest {
+  string releaseID = 1;
+}
+
+// ReleaseDeleteResponse delete release API response
+message ReleaseDeleteResponse {
+  string data = 1; // Delete succ
+}
+
+// ReleaseGetRequest get release API(GET /api/releases/{releaseId})
+message ReleaseGetRequest {
+  string releaseID = 1;
+}
+
+// ReleaseGetResponse get release API response
+message ReleaseGetResponse {
+  ReleaseGetResponseData data = 1;
+  repeated string userIDs = 2;
+}
+
+message ModeSummary {
+  bool expose = 1;
+  repeated string dependOn = 2;
+  repeated ReleaseSummaryArray applicationReleaseList = 3;
+}
+
+message ReleaseSummaryArray {
+  repeated ApplicationReleaseSummary list = 1;
+}
+
+message Tag {
+  google.protobuf.Timestamp createdAt = 1;
+  google.protobuf.Timestamp updatedAt = 2;
+  string creator = 3;
+  int64 id = 4;
+  string color = 5;
+  string name = 6;
+  string type = 7;
+  int64 projectID = 8;
+}
+
+// ReleaseGetResponseData get release API response
+message ReleaseGetResponseData {
+  string releaseID = 1 [json_name = "releaseId"] ;
+  string releaseName = 2;
+  string diceyml = 3;
+  string desc = 4;
+  string addon = 5;
+  string changelog = 6;
+  bool isStable = 7;
+  bool isFormal = 8;
+  bool isProjectRelease = 9;
+  map<string, ModeSummary> modes = 10;
+  repeated ReleaseResource resources = 11;
+  repeated string images = 12;
+  repeated ServiceImagePair serviceImages = 13;
+  map<string, string> labels = 14;
+  repeated Tag tags = 15;
+  string version = 16;
+
+  // is it possible to cross cluster
+  bool crossCluster = 17;
+
+  // current deployment times
+  int64 reference = 18;
+
+  int64 orgID = 19 [json_name = "orgId"];
+
+  int64 projectID = 20 [json_name = "projectId"];
+
+  int64 applicationID = 21 [json_name = "applicationId"];
+
+  string projectName = 22;
+
+  string applicationName = 23;
+
+  string userID = 24 [json_name = "userId"];
+
+  // 集群名称
+  string clusterName = 25;
+  google.protobuf.Timestamp createdAt = 26;
+  google.protobuf.Timestamp updatedAt = 27;
+
+  // 是否为分支最新
+  bool isLatest = 28;
+
+  repeated AddonInfo addons = 29;
+  string addonYaml = 30;
+  string opusID = 31;
+  string opusVersionID = 32;
+}
+
+message AddonInfo {
+  string displayName = 1;
+  string plan = 2;
+  string version = 3;
+  string category = 4;
+  string logoURL = 5;
+}
+
+message ServiceImagePair {
+  string serviceName = 1 [json_name = "name"];
+  string image = 2;
+}
+
+message ApplicationReleaseSummary {
+  string releaseID = 1;
+  string releaseName = 2;
+  string version = 3;
+  int64 applicationID = 4;
+  string applicationName = 5;
+  string createdAt = 6;
+  string diceYml = 7;
+}
+
+// ReleaseListRequest list release API(GET /api/releases)
+message ReleaseListRequest {
+  // query parameter，fuzzy match by releaseId/releaseName/version
+  string query = 1 [json_name = "q"];
+
+  string releaseID = 2 [json_name = "releaseId"];
+  // releaseName exact match by name
+  string releaseName = 3;
+
+  // cluster name
+  string cluster = 4;
+
+  // branch name
+  string branch = 5;
+  bool isLatest = 6;
+  string isStable = 7;
+  string isFormal = 8;
+  string isProjectRelease = 9;
+  string from = 10;
+  repeated string userID = 11 [json_name = "userId"];
+  string version = 12;
+  string commitID = 13 [json_name = "commitId"];
+  repeated uint64 tags = 14;
+
+  // only show releases with version
+  bool isVersion = 15;
+
+  // cross cluster
+  string crossCluster = 16;
+
+  string crossClusterOrSpecifyCluster = 17;
+
+  repeated string applicationID = 18 [json_name = "applicationId"];
+
+  int64 projectID = 19 [json_name = "projectId"];
+
+  int64 startTime = 20;
+
+  int64 endTime = 21;
+
+  int64 pageSize = 22;
+
+  int64 pageNo = 23;
+  string orderBy = 24;
+  string order = 25;
+}
+
+// ReleaseListResponse release list api response data structure
+message ReleaseListResponse {
+  ReleaseListResponseData data = 1;
+  repeated string userIDs = 2;
+}
+
+message ListReleaseNameRequest{
+  string applicationId = 1;
+}
+
+message ListReleaseNameResponse{
+  repeated string data = 1;
+}
+
+// ReleaseListResponseData release list api actual response data
+message ReleaseListResponseData {
+  // total number of releases used for paging
+  int64 total = 1;
+  repeated ReleaseData list = 2;
+}
+
+message ReleaseData {
+  string releaseID = 1 [json_name = "releaseId"] ;
+  string releaseName = 2;
+  string diceyml = 3;
+  string desc = 4;
+  string addon = 5;
+  string changelog = 6;
+  bool isStable = 7;
+  bool isFormal = 8;
+  bool isProjectRelease = 9;
+  string modes = 10;
+  repeated ReleaseResource resources = 11;
+  repeated string images = 12;
+  map<string, string> labels = 13;
+  repeated Tag tags = 14;
+  string version = 15;
+
+  // is it possible to cross cluster
+  bool crossCluster = 16;
+
+  // current deployment times
+  int64 reference = 17;
+
+  int64 orgID = 18 [json_name = "orgId"];
+
+  int64 projectID = 19 [json_name = "projectId"];
+
+  int64 applicationID = 20 [json_name = "applicationId"];
+
+  string projectName = 21;
+  string projectDisplayName = 30;
+
+  string applicationName = 22;
+
+  string userID = 23 [json_name = "userId"];
+
+  // 集群名称
+  string clusterName = 24;
+  google.protobuf.Timestamp createdAt = 25;
+  google.protobuf.Timestamp updatedAt = 26;
+
+  // 是否为分支最新
+  bool isLatest = 27;
+
+  string opusID = 28;
+  string opusVersionID = 29;
+}
+
+// ReleaseNameListRequest release name list request
+message ReleaseNameListRequest {
+  int64 applicationID = 1 [json_name = "applicationId"];
+}
+
+// ReleaseNameListResponse release name list response
+message ReleaseNameListResponse {
+  repeated string data = 1;
+}
+
+message GetLatestReleasesRequest{
+  string projectID = 1;
+  string version = 2;
+}
+
+message GetLatestReleasesResponse{
+  repeated GetLatestReleasesResponseData data = 1;
+}
+message GetLatestReleasesResponseData{
+  // releaseID Unique identifier RELEASE, generated by the server when it is created
+  string releaseID = 1 [json_name = "releaseId"];
+  // ReleaseName Any character string, easy for users to identify, the maximum length is 255, required
+  string releaseName = 2;
+  // Desc describe this release function in detail,optional
+  string desc = 3;
+  // Dice When the resource type is diceyml, store the content of dice.yml, optional
+  string dice = 4;
+  // Addon When the resource type is addonyml, store the content of addon.yml, optional
+  string addon = 5;
+  // Labels Used for release classification, description of release category, map type, maximum length 1000, optional
+  string labels = 6;
+  // Version Store the release version information, which is unique under the same project and the same application in the same company, the maximum length is 100, optional
+  // Version, the labeled Release cannot be deleted
+  string version = 7;
+  // OrgID Describing the company to which the release belongs, optional
+  int64 orgID = 8 [json_name = "orgId"];
+  // ProjectID Describe the project to which the release belongs, optional
+  int64 projectID = 9 [json_name = "projectId"];
+  // ApplicationID Describe the application to which the release belongs, optional
+  int64 applicationID = 10 [json_name = "applicationId"];
+  // ProjectName Describe the project to which the release belongs, optional
+  string projectName = 11;
+  // ApplicationName Describe the application to which the release belongs, optional
+  string applicationName = 12;
+  // UserID  Describe the user to which the release belongs, the maximum length is 50, optional
+  string userID = 13 [json_name = "userId"];
+  // ClusterName Describe the cluster to which the release belongs, the maximum length is 80, optional
+  string clusterName = 14;
+  // Resources Specify the release resource type and resource storage path, to be compatible with the existing diceyml, optional
+  string resources = 15;
+  // Reference The number of release deployments, when it is 0, it can be cleared
+  int64 reference = 16;
+  // CrossCluster Indicates whether the current release can cross clusters, without cluster restrictions
+  bool crossCluster = 17;
+  // CreatedAt Release creation time, generated by the server when it is created
+  google.protobuf.Timestamp createdAt = 18;
+  // UpdatedAt Release update time, updated by the server during update
+  google.protobuf.Timestamp updatedAt = 19;
+  string opusID = 20;
+  string opusVersionID = 21;
+}
+
+message ReleaseGCRequest{
+
+}
+
+message ReleaseUploadRequest{
+  string diceFileID = 1;
+  int64 projectID = 2;
+  string projectName = 3;
+  int64 orgID = 4 [json_name = "orgId"];
+  string userID = 5 [json_name = "userId"];
+  string clusterName = 6;
+  repeated uint64 tags = 7;
+}
+
+message ReleaseUploadResponse{
+  ReleaseCreateResponseData data = 1;
+}
+
+message ParseReleaseFileRequest{
+  string diceFileID = 1;
+}
+
+message ParseReleaseFileResponse{
+  ParseReleaseFileResponseData data = 1;
+}
+
+message ParseReleaseFileResponseData{
+  string version = 1;
+}
+
+message FormalReleaseRequest{
+  string releaseId = 1;
+}
+
+message FormalReleaseResponse{
+  string data = 1;
+}
+
+message FormalReleasesRequest{
+  bool isProjectRelease = 1;
+  int64 projectId = 2;
+  repeated string releaseId = 3;
+}
+
+message FormalReleasesResponse{
+  string data = 1;
+}
+
+message ReleasesDeleteRequest{
+  bool isProjectRelease = 1;
+  int64 projectId = 2;
+  repeated string releaseId = 3;
+}
+
+message ReleasesDeleteResponse{
+  string data = 1;
+}
+
+message CheckVersionRequest{
+  bool isProjectRelease = 1;
+  int64 appID = 2;
+  int64 orgID = 3;
+  int64 projectID = 4;
+  string version = 5;
+}
+
+message CheckVersionResponse{
+  CheckVersionResponseData data = 1;
+}
+
+message CheckVersionResponseData{
+  bool isUnique = 1;
+}
+
+message UpdateGalleryInfoRequest{
+  string releaseID = 1;
+  string OpusID = 2;
+  string OpusVersionID = 3;
+}
+
+message ReleasePutOnRequest {
+  apps.gallery.PutOnArtifactsReq req = 1;
+}
+
+message ReleasePutOnResponse {
+
+}
+
+message ReleasePutOffRequest {
+  apps.gallery.PutOffArtifactsReq req = 1;
+  string releaseID = 2;
+}
+
+message ReleasePutOffResponse {
+
+}

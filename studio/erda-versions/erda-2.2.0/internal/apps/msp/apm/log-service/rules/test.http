@@ -1,0 +1,307 @@
+@url = http://localhost:7096
+
+### create log metric config
+POST {{url}}/api/org/logs/rules
+User-ID: 1100
+Org-ID: 1
+Content-Type: application/json
+
+{
+    "name": "xxxxggx",
+    "filters": [
+        {
+            "key": "dice_project_name",
+            "value": "dice-test"
+        },
+        {
+            "key": "dice_application_name",
+            "value": "apm-demo"
+        },
+        {
+            "key": "dice_service",
+            "value": "apm-demo-ui"
+        }
+    ],
+    "processors": [
+        {
+            "type": "regexp",
+            "config": {
+                "pattern": "([\\d\\.]+) \\S+ \\S+ \\[(\\S+) \\S+\\] \"(\\w+) ([^\\\"]*)\" ([\\d\\.]+) (\\d+) (\\d+) (\\d+|-) \"([^\\\"]*)\" \"([^\\\"]*)\"",
+                "keys": [
+                    { "key": "ip", "type": "string"},
+                    { "key": "time", "type": "string"},
+                    { "key": "method", "type": "string"},
+                    { "key": "url", "type": "string"},
+                    { "key": "request_time", "type": "string"},
+                    { "key": "request_length", "type": "number"},
+                    { "key": "status", "type": "string"},
+                    { "key": "length", "type": "number"},
+                    { "key": "ref_url", "type": "string"},
+                    { "key": "browser", "type": "string"}
+                ]
+            }
+        }
+    ]
+}
+
+### list log metric config
+GET {{url}}/api/org/logs/rules
+User-ID: 1100
+Org-ID: 1
+
+### get log metric config
+GET {{url}}/api/org/logs/rules/2
+User-ID: 1100
+Org-ID: 1
+
+### enable log metric config
+PUT {{url}}/api/org/logs/rules/2/state
+User-ID: 1100
+Org-ID: 1
+
+{
+    "enable": true
+}
+ 
+### update log metric config
+PUT {{url}}/api/org/logs/rules/2
+User-ID: 1100
+Org-ID: 1
+Content-Type: application/json
+
+{
+    "name": "ffffx",
+    "filters": [
+        {
+            "key": "dice_project_name",
+            "value": "dice-test"
+        },
+        {
+            "key": "dice_application_name",
+            "value": "apm-demo"
+        },
+        {
+            "key": "dice_service",
+            "value": "apm-demo-ui"
+        }
+    ],
+    "processors": [
+        {
+            "type": "regexp",
+            "config": {
+                "pattern": "([\\d\\.]+) \\S+ \\S+ \\[(\\S+) \\S+\\] \"(\\w+) ([^\\\"]*)\" ([\\d\\.]+) (\\d+) (\\d+) (\\d+|-) \"([^\\\"]*)\" \"([^\\\"]*)\"",
+                "keys": [
+                    { "key": "ip", "type": "string"},
+                    { "key": "time", "type": "string"},
+                    { "key": "method", "type": "string"},
+                    { "key": "url", "type": "string"},
+                    { "key": "request_time", "type": "string"},
+                    { "key": "request_length", "type": "number"},
+                    { "key": "status", "type": "string"},
+                    { "key": "length", "type": "number"},
+                    { "key": "ref_url", "type": "string"},
+                    { "key": "browser", "type": "string"}
+                ]
+            }
+        }
+    ]
+}
+
+### delete log metric config
+DELETE  {{url}}/api/org/logs/rules/2
+User-ID: 1100
+Org-ID: 1
+Content-Type: application/json
+
+### test rules
+POST {{url}}/api/org/logs/rules/test
+User-ID: 1100
+Org-ID: 1
+Content-Type: application/json
+
+{
+    "contents": "10.200.0.101 - - [10/Aug/2017:14:57:51 +0800] \"POST /PutData?Category=YunOsAccountOpLog&AccessKeyId=abcdef&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=defg HTTP/1.1\" 0.024 18204 200 37 \"-\" \"aliyun-sdk-java\"",
+    "processors": [
+        {
+            "type": "regexp",
+            "config": {
+                "pattern": "([\\d\\.]+) \\S+ \\S+ \\[(\\S+) \\S+\\] \"(\\w+) ([^\\\"]*)\" ([\\d\\.]+) (\\d+) (\\d+) (\\d+|-) \"([^\\\"]*)\" \"([^\\\"]*)\"",
+                "keys": [
+                    { "key": "ip", "type": "string"},
+                    { "key": "time", "type": "string"},
+                    { "key": "method", "type": "string"},
+                    { "key": "url", "type": "string"},
+                    { "key": "request_time", "type": "string"},
+                    { "key": "request_length", "type": "number"},
+                    { "key": "status", "type": "string"},
+                    { "key": "length", "type": "number"},
+                    { "key": "ref_url", "type": "string"},
+                    { "key": "browser", "type": "string"}
+                ]
+            }
+        }
+    ]
+}
+
+### 获取规则模版列表
+GET {{url}}/api/org/logs/rules/templates
+User-ID: 1100
+Org-ID: 1
+
+### 获取规则模版
+GET {{url}}/api/org/logs/rules/templates/nginx
+User-ID: 1100
+Org-ID: 1
+
+### create log metric config
+POST {{url}}/api/micro_service/logs/rules?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1
+Content-Type: application/json
+
+{
+    "name": "xxxxggx",
+    "filters": [
+        {
+            "key": "dice_project_name",
+            "value": "dice-test"
+        },
+        {
+            "key": "dice_application_name",
+            "value": "apm-demo"
+        },
+        {
+            "key": "dice_service",
+            "value": "apm-demo-ui"
+        }
+    ],
+    "processors": [
+        {
+            "type": "regexp",
+            "config": {
+                "pattern": "([\\d\\.]+) \\S+ \\S+ \\[(\\S+) \\S+\\] \"(\\w+) ([^\\\"]*)\" ([\\d\\.]+) (\\d+) (\\d+) (\\d+|-) \"([^\\\"]*)\" \"([^\\\"]*)\"",
+                "keys": [
+                    { "key": "ip", "type": "string"},
+                    { "key": "time", "type": "string"},
+                    { "key": "method", "type": "string"},
+                    { "key": "url", "type": "string"},
+                    { "key": "request_time", "type": "string"},
+                    { "key": "request_length", "type": "number"},
+                    { "key": "status", "type": "string"},
+                    { "key": "length", "type": "number"},
+                    { "key": "ref_url", "type": "string"},
+                    { "key": "browser", "type": "string"}
+                ]
+            }
+        }
+    ]
+}
+
+### list log metric config
+GET {{url}}/api/micro_service/logs/rules?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1
+
+### get log metric config
+GET {{url}}/api/micro_service/logs/rules/3?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1
+
+### enable log metric config
+PUT {{url}}/api/micro_service/logs/rules/3/state?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1
+
+{
+    "enable": true
+}
+ 
+### update log metric config
+PUT {{url}}/api/micro_service/logs/rules/3?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1
+Content-Type: application/json
+
+{
+    "name": "ffffx",
+    "filters": [
+        {
+            "key": "dice_project_name",
+            "value": "dice-test"
+        },
+        {
+            "key": "dice_application_name",
+            "value": "apm-demo"
+        },
+        {
+            "key": "dice_service",
+            "value": "apm-demo-ui"
+        }
+    ],
+    "processors": [
+        {
+            "type": "regexp",
+            "config": {
+                "pattern": "([\\d\\.]+) \\S+ \\S+ \\[(\\S+) \\S+\\] \"(\\w+) ([^\\\"]*)\" ([\\d\\.]+) (\\d+) (\\d+) (\\d+|-) \"([^\\\"]*)\" \"([^\\\"]*)\"",
+                "keys": [
+                    { "key": "ip", "type": "string"},
+                    { "key": "time", "type": "string"},
+                    { "key": "method", "type": "string"},
+                    { "key": "url", "type": "string"},
+                    { "key": "request_time", "type": "string"},
+                    { "key": "request_length", "type": "number"},
+                    { "key": "status", "type": "string"},
+                    { "key": "length", "type": "number"},
+                    { "key": "ref_url", "type": "string"},
+                    { "key": "browser", "type": "string"}
+                ]
+            }
+        }
+    ]
+}
+
+### delete log metric config
+DELETE  {{url}}/api/micro_service/logs/rules/3?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1
+Content-Type: application/json
+
+### test rules
+POST {{url}}/api/micro_service/logs/rules/test?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1
+Content-Type: application/json
+
+{
+    "contents": "10.200.0.101 - - [10/Aug/2017:14:57:51 +0800] \"POST /PutData?Category=YunOsAccountOpLog&AccessKeyId=abcdef&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=defg HTTP/1.1\" 0.024 18204 200 37 \"-\" \"aliyun-sdk-java\"",
+    "processors": [
+        {
+            "type": "regexp",
+            "config": {
+                "pattern": "([\\d\\.]+) \\S+ \\S+ \\[(\\S+) \\S+\\] \"(\\w+) ([^\\\"]*)\" ([\\d\\.]+) (\\d+) (\\d+) (\\d+|-) \"([^\\\"]*)\" \"([^\\\"]*)\"",
+                "keys": [
+                    { "key": "ip", "type": "string"},
+                    { "key": "time", "type": "string"},
+                    { "key": "method", "type": "string"},
+                    { "key": "url", "type": "string"},
+                    { "key": "request_time", "type": "string"},
+                    { "key": "request_length", "type": "number"},
+                    { "key": "status", "type": "string"},
+                    { "key": "length", "type": "number"},
+                    { "key": "ref_url", "type": "string"},
+                    { "key": "browser", "type": "string"}
+                ]
+            }
+        }
+    ]
+}
+
+### 获取规则模版列表
+GET {{url}}/api/micro_service/logs/rules/templates?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1
+
+### 获取规则模版
+GET {{url}}/api/micro_service/logs/rules/templates/nginx?scopeID=xxxxxx
+User-ID: 1100
+Org-ID: 1

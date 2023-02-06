@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+package erda.core.monitor.expression;
+option go_package = "github.com/erda-project/erda-proto-go/core/monitor/expression/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "common/openapi.proto";
+import "core/monitor/alert/alert.proto";
+
+service ExpressionService {
+  option (erda.common.openapi_service) = {
+    service: "monitor",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+  rpc GetAlertExpressions (GetExpressionsRequest) returns (GetExpressionsResponse) {
+    option (google.api.http) = {
+      get: "/api/alert/expressions"
+    };
+  }
+  rpc GetMetricExpressions (GetMetricExpressionsRequest) returns (GetMetricExpressionsResponse) {
+    option (google.api.http) = {
+      get : "/api/metric/expressions"
+    };
+  }
+  rpc GetAlertNotifies (GetAlertNotifiesRequest) returns (GetAlertNotifiesResponse) {
+    option (google.api.http) = {
+      get: "/api/alert/notifies"
+    };
+  }
+  rpc GetTemplates (GetTemplatesRequest) returns (GetTemplatesResponse) {
+    option (google.api.http) = {
+      get: "/api/alert/templates"
+    };
+  }
+  rpc GetOrgsLocale (GetOrgsLocaleRequest) returns (GetOrgsLocaleResponse) {
+    option (google.api.http) = {
+      get: "/api/alert/org-locale"
+    };
+  }
+}
+
+message GetExpressionsRequest {
+  int64 pageSize = 1;
+  int64 pageNo   = 2;
+}
+
+message GetExpressionsResponse {
+  ExpressionData data = 1;
+}
+
+
+message GetMetricExpressionsRequest {
+  int64 pageSize = 1;
+  int64 pageNo   = 2;
+}
+
+message GetMetricExpressionsResponse {
+  ExpressionData data = 1;
+}
+
+message ExpressionData {
+  repeated Expression list  = 1;
+  int64               total = 2;
+}
+
+message Expression {
+  int64                              id         = 1;
+  string                             version    = 2;
+  map<string, google.protobuf.Value> attributes = 3;
+  map<string, google.protobuf.Value> expression = 4;
+  bool                               enable     = 5;
+  int64                              alertId    = 6 [json_name = "alert_id"];
+}
+
+message GetAlertNotifiesRequest {
+  int64 pageSize = 1;
+  int64 pageNo   = 2;
+}
+
+message GetAlertNotifiesResponse {
+  AlertNotifyData data = 1;
+}
+
+message AlertNotifyData {
+  repeated AlertNotify list  = 1;
+  int64                total = 2;
+}
+
+message AlertNotify {
+  int64        id            = 1;
+  int64        alertId       = 2 [json_name = "alert_id"];
+  NotifyTarget notifyTarget  = 3 [json_name = "notify_target"];
+  int64        silence       = 4;
+  string       silencePolicy = 5 [json_name = "silence_policy"];
+  bool         enable        = 6;
+}
+
+message NotifyTarget {
+  string type      = 1;
+  int64  groupId   = 2 [json_name = "group_id"];
+  string groupType = 3 [json_name = "group_type"];
+  string level     = 4;
+}
+
+message GetTemplatesRequest {
+  int64 pageNo   = 1;
+  int64 pageSize = 2;
+}
+
+message GetTemplatesResponse {
+  AlertTemplateData data = 1;
+}
+
+message AlertTemplateData {
+  repeated AlertTemplate list  = 1;
+  int64                  total = 2;
+}
+
+message AlertTemplate {
+  string                             name       = 1;
+  string                             alertType  = 2 [json_name = "alert_type"];
+  string                             alertIndex = 3 [json_name = "alert_index"];
+  string                             target     = 4;
+  string                             trigger    = 5;
+  string                             title      = 6;
+  string                             template   = 7;
+  map<string, google.protobuf.Value> formats    = 8;
+  string                             version    = 9;
+  bool                               enable     = 10;
+  string                             language   = 11;
+}
+
+message GetOrgsLocaleRequest {
+
+}
+message GetOrgsLocaleResponse {
+  map<string, string> data = 1;
+}

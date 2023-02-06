@@ -1,0 +1,37 @@
+{
+  "id":"machine_load5",
+  "expression":{
+    "filters":[
+      {
+        "operator":"eq",
+        "tag":"org_name",
+        "value":"$org_name"
+      }
+    ],
+    "functions":[
+      {
+        "aggregator":"avg",
+        "field":"load5",
+        "operator":"gte",
+        "value":20
+      }
+    ],
+    "group":[
+      "host_ip"
+    ],
+    "metric":"host_summary",
+    "outputs":[
+      "alert"
+    ],
+    "select":{
+      "_meta":"#_meta",
+      "_metric_scope":"#_metric_scope",
+      "_metric_scope_id":"#_metric_scope_id",
+      "cluster_name":"#cluster_name",
+      "host_ip":"#host_ip",
+      "labels":"#labels",
+      "org_name":"#org_name"
+    },
+    "window":5
+  }
+}

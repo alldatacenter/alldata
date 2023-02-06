@@ -1,0 +1,66 @@
+$padding: 16px;
+
+.split-page {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.split-page-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-right: $padding;
+  overflow: auto;
+  border-right: thin solid $color-dark-1;
+
+  &.fixed-split {
+    border-right: none;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: $color-dark-1;
+      content: '';
+    }
+  }
+}
+
+.split-page-right {
+  flex: 1;
+  padding-left: $padding;
+  overflow: auto;
+
+  &.pl-cls {
+    padding-left: $padding * 2;
+  }
+}
+
+#main > .split-page {
+  .split-page-left {
+    padding-left: $padding * 2;
+  }
+
+  .split-page-right {
+    padding-right: $padding * 2;
+  }
+}
+
+@media screen and (max-width: $main-padding-break) {
+  #main > .split-page {
+    .split-page-left {
+      padding-left: $padding;
+    }
+
+    .split-page-right {
+      padding-right: $padding;
+
+      &.pl-cls {
+        padding-left: $padding;
+      }
+    }
+  }
+}

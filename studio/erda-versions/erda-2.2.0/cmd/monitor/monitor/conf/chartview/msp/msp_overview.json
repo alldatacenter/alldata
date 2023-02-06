@@ -1,0 +1,548 @@
+{
+  "id": "msp_overview",
+  "name": "msp_overview",
+  "desc": "",
+  "scope": "micro_service",
+  "scopeId": "global",
+  "viewConfig": [
+    {
+      "w": 6,
+      "h": 5,
+      "x": 0,
+      "y": 0,
+      "i": "view-project-count",
+      "view": {
+        "title": "项目数",
+        "i18n": {
+          "title": {
+            "en": "Project Count",
+            "zh": "项目数"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": null,
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+            ],
+            "valueDimensions": [
+              {
+                "key": "projectCount",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/msp/tenant/project/overview",
+          "header": null,
+          "extraData": null,
+          "method": "get"
+        }
+      }
+    },
+    {
+      "w": 6,
+      "h": 5,
+      "x": 6,
+      "y": 0,
+      "i": "view-workspace",
+      "view": {
+        "title": "环境",
+        "i18n": {
+          "title": {
+            "en": "Workspace",
+            "zh": "环境"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": null,
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+            ],
+            "valueDimensions": [
+              {
+                "key": "workspaceCount",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/msp/tenant/project/overview",
+          "header": null,
+          "extraData": null,
+          "method": "get"
+        }
+      }
+    },
+    {
+      "w": 6,
+      "h": 5,
+      "x": 12,
+      "y": 0,
+      "i": "view-service-count",
+      "view": {
+        "title": "服务数",
+        "i18n": {
+          "title": {
+            "en": "Service Count",
+            "zh": "服务数"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": null,
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_service_node"
+            ],
+            "valueDimensions": [
+              {
+                "key": "serviceCount",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/msp/metrics/tenant/project/overview",
+          "query": {
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "project_key": "project_id",
+            "start": "{{startTime}}",
+            "end": "{{endTime}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "type": "_"
+          },
+          "body": {
+            "from": [
+              "application_service_node"
+            ],
+            "select": [
+              {
+                "alias": "serviceCount",
+                "expr": "round_float(distinct(service_id::tag), 2)"
+              }
+            ]
+          },
+          "header": null,
+          "extraData": null,
+          "method": "post"
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 6,
+      "h": 5,
+      "x": 18,
+      "y": 0,
+      "i": "view-instance-count",
+      "view": {
+        "title": "服务实例",
+        "i18n": {
+          "title": {
+            "en": "Service Instance Count",
+            "zh": "服务实例"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": null,
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_service_node"
+            ],
+            "valueDimensions": [
+              {
+                "key": "serviceInstanceCount",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/msp/metrics/tenant/project/overview",
+          "query": {
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "project_key": "project_id",
+            "start": "{{startTime}}",
+            "end": "{{endTime}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "type": "_"
+          },
+          "body": {
+            "from": [
+              "application_service_node"
+            ],
+            "select": [
+              {
+                "alias": "serviceInstanceCount",
+                "expr": "round_float(distinct(service_instance_id::tag), 2)"
+              }
+            ]
+          },
+          "header": null,
+          "extraData": null,
+          "method": "post"
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 15,
+      "h": 10,
+      "x": 0,
+      "y": 6,
+      "i": "view-alert",
+      "view": {
+        "title": "告警趋势",
+        "i18n": {
+          "title": {
+            "en": "Alert Tendency",
+            "zh": "告警趋势"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "api",
+        "staticData": null,
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "analyzer_alert"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "i18n": {
+                  "alias": {
+                    "en": "time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "type441teal6",
+                "type": "time"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "alias": "次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Count",
+                    "zh": "次数"
+                  }
+                },
+                "key": "valueynJmzYoH",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/msp/metrics/tenant/project/overview",
+          "query": {
+            "epoch": "ms",
+            "project_key": "project_id",
+            "start": "{{startTime}}",
+            "end": "{{endTime}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "type": "_"
+          },
+          "body": {
+            "from": [
+              "analyzer_alert"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "select": [
+              {
+                "alias": "type441teal6",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueynJmzYoH",
+                "expr": "round_float(count(terminus_key::tag), 2)"
+              }
+            ]
+          },
+          "header": null,
+          "extraData": null,
+          "method": "post"
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 9,
+      "h": 10,
+      "x": 16,
+      "y": 6,
+      "i": "view-hot-service",
+      "view": {
+        "title": "热点服务 TOP5",
+        "i18n": {
+          "title": {
+            "en": "HOT Service TOP5",
+            "zh": "热点服务 TOP5"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "api",
+        "staticData": null,
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_http_service"
+            ],
+            "limit": 5,
+            "valueDimensions": [
+              {
+                "alias": "服务名称",
+                "i18n": {
+                  "alias": {
+                    "en": "Service Name",
+                    "zh": "服务名称"
+                  }
+                },
+                "key": "serviceName",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "所属项目",
+                "i18n": {
+                  "alias": {
+                    "en": "Attribution Project",
+                    "zh": "所属项目"
+                  }
+                },
+                "key": "projectName",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "请求次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Count",
+                    "zh": "请求次数"
+                  }
+                },
+                "key": "countSum",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/msp/metrics/tenant/project/overview",
+          "query": {
+            "epoch": "ms",
+            "start": "{{startTime}}",
+            "end": "{{endTime}}",
+            "project_key": "target_project_id",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "type": "_"
+          },
+          "body": {
+            "from": [
+              "application_http_service"
+            ],
+            "groupby": [
+              "target_service_name::tag",
+              "target_project_id::tag"
+            ],
+            "limit": 5,
+            "orderby": [
+              {
+                "dir": "DESC",
+                "expr": "sum(count_sum::field)"
+              }
+            ],
+            "select": [
+              {
+                "alias": "serviceId",
+                "expr": "target_service_id::tag"
+              },
+              {
+                "alias": "projectId",
+                "expr": "target_project_id::tag"
+              },
+              {
+                "alias": "serviceName",
+                "expr": "target_service_name::tag"
+              },
+              {
+                "alias": "projectName",
+                "expr": "target_project_name::tag"
+              },
+              {
+                "alias": "countSum",
+                "expr": "round_float(sum(count_sum::field), 2)"
+              }
+            ]
+          },
+          "header": null,
+          "extraData": null,
+          "method": "post"
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 24,
+      "h": 10,
+      "x": 0,
+      "y": 12,
+      "i": "view-gateway",
+      "view": {
+        "title": "入口流量",
+        "i18n": {
+          "title": {
+            "en": "Inlet Flow",
+            "zh": "入口流量"
+          }
+        },
+        "description": "",
+        "chartType": "chart:line",
+        "dataSourceType": "api",
+        "staticData": {
+        },
+        "config": {
+          "optionProps": {
+            "invalidToZero": true,
+            "noAreaColor": true
+          },
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_http_service"
+            ],
+            "resultFilters": [
+              {
+                "alias": "Target Addon Type",
+                "field": "application_http_service-target_addon_type::tag",
+                "filter": {
+                  "operation": "=",
+                  "value": "ApiGateway"
+                },
+                "key": "filterb105rFvK",
+                "resultType": "string",
+                "type": "filter"
+              }
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                },
+                "key": "typeQXtBniA6",
+                "type": "time"
+              },
+              {
+                "alias": "域名",
+                "field": "req_host::tag",
+                "i18n": {
+                  "alias": {
+                    "en": "Domain",
+                    "zh": "域名"
+                  }
+                },
+                "key": "reqHost",
+                "resultType": "string",
+                "type": "field"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "sum",
+                "alias": "请求次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Count",
+                    "zh": "请求次数"
+                  }
+                },
+                "key": "requestCount",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/msp/metrics/tenant/project/overview",
+          "query": {
+            "epoch": "ms",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "project_key": "gateway",
+            "end": "{{endTime}}",
+            "type": "_"
+          },
+          "body": {
+            "from": [
+              "application_http_service"
+            ],
+            "groupby": [
+              "time()",
+              "req_host::tag"
+            ],
+            "select": [
+              {
+                "alias": "typeQXtBniA6",
+                "expr": "time()"
+              },
+              {
+                "alias": "reqHost",
+                "expr": "req_host::tag"
+              },
+              {
+                "alias": "requestCount",
+                "expr": "round_float(sum(count_sum::field), 2)"
+              }
+            ],
+            "where": [
+              "target_addon_type::tag='ApiGateway'"
+            ]
+          },
+          "header": null,
+          "extraData": null,
+          "method": "post"
+        },
+        "controls": null
+      }
+    }
+  ],
+  "version": "v2"
+}

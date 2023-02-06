@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package erda.core.hepa.api;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/api/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "core/hepa/hepa.proto";
+
+// +publish service:"hepa"
+service ApiService {
+  // +publish path:"/api/gateway/api"
+  rpc GetApis(GetApisRequest) returns (GetApisResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/api?from={from}&method={method}&diceApp={diceApp}&diceService={diceService}&runtimeId={runtimeId}&apiPath={apiPath}&registerType={registerType}&netType={netType}&sortField={sortField}&sortType={sortType}&orgId={orgId}&projectId={projectId}&env={env}&page={page}&size={size}&needAuth={needAuth}",
+    };
+  }
+  
+  // +publish path:"/api/gateway/api"
+  rpc CreateApi(CreateApiRequest) returns (CreateApiResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/api",
+      body: "apiRequest",
+    };
+  }
+
+  // +publish path:"/api/gateway/api/{apiId}"
+  rpc UpdateApi(UpdateApiRequest) returns (UpdateApiResponse) {
+    option (google.api.http) = {
+      patch: "/api/gateway/api/{apiId}",
+      body: "apiRequest",
+    };
+  }
+
+  // +publish path:"/api/gateway/api/{apiId}"
+  rpc DeleteApi(DeleteApiRequest) returns (DeleteApiResponse) {
+    option (google.api.http) = {
+      delete: "/api/gateway/api/{apiId}",
+    };
+  }
+  
+  
+}
+
+message DeleteApiRequest {
+  string apiId = 1;
+}
+
+message DeleteApiResponse {
+  bool data = 1;
+}
+
+message ApiRequest {
+  string path = 1;
+  string method = 2;
+  string redirectType = 3;
+  string redirectAddr = 4;
+  string redirectPath = 5;
+  repeated string hosts = 6;
+  string projectId = 7;
+  string description = 8;
+  string diceApp = 9;
+  string diceService = 10;
+  bool outerNetEnable = 11;
+  string runtimeId = 12;
+  string env = 13;
+  repeated string policies = 14;
+  string consumerId = 15;
+}
+
+message UpdateApiRequest {
+  ApiRequest apiRequest = 1;
+  string apiId = 2;
+}
+
+message Policy {
+  string category = 1;
+  string policyId = 2;
+  string policyName = 3;
+  string displayName = 4;
+  map<string, google.protobuf.Value> config = 5;
+  string createAt = 6;
+}
+
+message UpdateApiResponse {
+  string apiId = 1;
+  string path = 2;
+  string displayPath = 3;
+  google.protobuf.Value displayPathPrefix = 4;
+  bool outerNetEnable = 5;
+  string registerType = 6;
+  bool needAuth = 7;
+  google.protobuf.Value method = 8;
+  string description = 9;
+  string redirectAddr = 10;
+  string redirectPath = 11;
+  string redirectType = 12;
+  string monitorPath = 13;
+  string createAt = 14;
+  repeated Policy policies = 15;
+}
+
+message GetApisRequest {
+  string from = 1;
+  string method = 2;
+  string diceApp = 3;
+  string diceService = 4;
+  string runtimeId = 5;
+  string apiPath = 6;
+  string registerType = 7;
+  string netType = 8;
+  int32 needAuth = 9;
+  string sortField = 10;
+  string sortType = 11;
+  string orgId = 12;
+  string projectId = 13;
+  string env = 14;
+  int64 page = 15;
+  int64 size = 16;
+}
+
+message GetApisResponse {
+ erda.core.hepa.PageResult data = 1;
+}
+
+message CreateApiRequest {
+  ApiRequest apiRequest = 1;
+}
+
+message CreateApiResponse {
+  string apiId = 1;
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+package erda.core.services.errorbox;
+option go_package = "github.com/erda-project/erda-proto-go/core/services/errorbox/pb";
+
+import "google/api/annotations.proto";
+import "core/dop/taskerror/task_error.proto";
+
+service ErrorBoxService {
+
+  rpc ListErrorLog (TaskErrorListRequest) returns (core.dop.taskerror.ErrorLogListResponseData)  {
+    option (google.api.http) = {
+      get: "/api/task-error/actions/list",
+    };
+  }
+}
+
+message TaskErrorListRequest {
+  repeated string resourceTypes = 1;
+  string  startTime = 2;
+  repeated string resourceIds = 3;
+}

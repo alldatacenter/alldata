@@ -1,0 +1,16 @@
+- redis_pubsub_channels:
+    title: "发布/订阅频道个数"
+    metric_names: "redis"
+    type: "redis"
+    order: 3
+    defines:
+      max.pubsub_channels:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

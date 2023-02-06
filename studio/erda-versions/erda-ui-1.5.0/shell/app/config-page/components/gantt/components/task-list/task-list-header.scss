@@ -1,0 +1,23 @@
+.erda-gantt-table {
+  display: table;
+  border-bottom: $border-color 1px solid;
+  border-top: $border-color 1px solid;
+  border-left: $border-color 1px solid;
+}
+
+.erda-gantt-table-header {
+  display: table-row;
+  list-style: none;
+}
+
+.erda-gantt-table-header-separator {
+  border-right: 1px solid $border-color;
+  opacity: 1;
+  margin-left: -2px;
+}
+
+.erda-gantt-table-header-item {
+  display: table-cell;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+}

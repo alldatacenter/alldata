@@ -1,0 +1,22 @@
+id: issue_create
+metadata:
+  name: "创建任务事件"
+  type: issue
+  module: notify
+  scope:
+    - project
+templates:
+  - trigger:
+      - notify
+    targets:
+      - dingding
+      - email
+      - mbox
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【创建任务事件】
+      template:
+        事件【{{issue_title}}】{{content}}

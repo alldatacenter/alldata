@@ -1,0 +1,20 @@
+@import './common/util.scss';
+
+.dice-form-configuration {
+  display: flex;
+  height: 100%;
+  overflow: auto;
+
+  .form-preview-box {
+    flex: 1;
+    padding: 12px;
+    overflow: auto;
+  }
+
+  .form-editor-box {
+    flex: 1;
+    padding: 12px;
+    overflow: auto;
+    border-left: 1px solid $color-border;
+  }
+}

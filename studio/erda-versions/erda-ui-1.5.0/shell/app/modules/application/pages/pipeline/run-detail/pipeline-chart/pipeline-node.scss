@@ -1,0 +1,147 @@
+.app-pipeline-chart-node {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+  background: $white;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease-in-out, transform 0.5s ease-in-out;
+  @extend %shallow-shadow;
+
+  &:hover {
+    @extend %hover-shadow;
+  }
+
+  .yaml-editor-item-status {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+    vertical-align: middle;
+    border-radius: 100%;
+  }
+
+  .pipeline-item-logo {
+    display: inline-block;
+    max-width: 50px;
+    height: 50px;
+    margin-right: 8px;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .item-point {
+    position: absolute;
+    left: 134px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: $white;
+    border-radius: 100%;
+    transition: all 0.3s ease-in-out;
+
+    .iconfont {
+      display: block;
+      width: 12px;
+      height: 12px;
+      font-size: 12px;
+    }
+
+    &:hover {
+      transform: scale(1.3);
+      @extend %hover-shadow;
+    }
+  }
+
+  .bottom-point {
+    bottom: -6px;
+  }
+
+  .top-point {
+    top: -4px;
+  }
+
+  .icon-ellipsis {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+  }
+
+  .yaml-editor-item-title,
+  .app-pipeline-chart-node-title {
+    flex: 1;
+    margin-right: 4px;
+    color: $color-dark-8;
+    font-size: 16px;
+  }
+
+  .yaml-editor-item-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 0;
+    height: 50px;
+  }
+
+  .pipeline-item-op {
+    cursor: pointer;
+
+    &:hover {
+      color: $color-active;
+    }
+  }
+
+  .pipeline-item-extra-op-list {
+    position: absolute;
+    bottom: -32px;
+    left: 70px;
+    width: 150px;
+  }
+
+  .pipeline-item-extra-op {
+    width: 72px;
+    height: 28px;
+    font-weight: bold;
+    background: $white;
+    border-radius: $radius;
+    cursor: pointer;
+    @extend %hover-shadow;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+
+    &:nth-child(1) {
+      color: $green;
+    }
+
+    &:nth-child(2) {
+      color: $red;
+    }
+  }
+}
+
+.app-pipeline-chart-msg-item {
+  margin-bottom: 3px;
+
+  .app-pipeline-chart-msg-item-name {
+    display: inline-block;
+    padding: 0 4px;
+    color: $gainsboro;
+    font-weight: 500;
+    background-color: $navy;
+    border-radius: 3px;
+
+    &.error {
+      margin-right: 4px;
+      color: $orange;
+    }
+  }
+}

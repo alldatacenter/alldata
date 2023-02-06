@@ -1,0 +1,15 @@
+- ta_avg_time:
+    title: "平均时间"
+    metric_names: "ta_timing"
+    type: "ta"
+    order: 0
+    defines:
+      avg.plt:
+        label: "整页加载"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: "line"
+        original_unit: "ms"
+    parameters:
+

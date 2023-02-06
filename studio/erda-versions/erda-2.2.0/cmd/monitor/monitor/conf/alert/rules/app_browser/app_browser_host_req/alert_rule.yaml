@@ -1,0 +1,8 @@
+id: app_browser_host_req
+name: 域名访问性能
+alert_scope: micro_service
+attributes:
+  alert_group: '{{tk}}-{{host}}'
+  display_url_id: micro_bi_domain
+  level: Notice
+  recover: "false"

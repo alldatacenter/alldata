@@ -1,0 +1,30 @@
+.instance-ops {
+  .instance-op-icon {
+    position: relative;
+    margin-right: 12px;
+    font-size: 20px;
+
+    &:hover {
+      color: $color-primary;
+      cursor: pointer;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: -6px;
+      width: 1px;
+      height: 14px;
+      background: $color-dark-1;
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

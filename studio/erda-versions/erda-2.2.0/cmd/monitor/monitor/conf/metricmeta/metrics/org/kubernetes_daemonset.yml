@@ -1,0 +1,60 @@
+name: "Kubernetes Daemonset"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    daemonset_name:
+        name: "Daemonset Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    instance_type:
+        name: "Instance Type"
+    namespace:
+        name: "Namespace"
+    org_name:
+        name: "Org Name"
+fields:
+    created:
+        type: "number"
+        name: "Created"
+        unit: 
+    current_number_scheduled:
+        type: "number"
+        name: "Current Number Scheduled"
+        unit: 
+    desired_number_scheduled:
+        type: "number"
+        name: "Desired Number Scheduled"
+        unit: 
+    generation:
+        type: "number"
+        name: "Generation"
+        unit: 
+    number_available:
+        type: "number"
+        name: "Number Available"
+        unit: 
+    number_misscheduled:
+        type: "number"
+        name: "Number Misscheduled"
+        unit: 
+    number_ready:
+        type: "number"
+        name: "Number Ready"
+        unit: 
+    number_unavailable:
+        type: "number"
+        name: "Number Unavailable"
+        unit: 
+    updated_number_scheduled:
+        type: "number"
+        name: "Updated Number Scheduled"
+        unit: 
+

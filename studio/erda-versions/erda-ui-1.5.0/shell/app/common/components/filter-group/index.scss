@@ -1,0 +1,125 @@
+.filter-group-bar {
+  margin-bottom: 16px;
+
+  .filter-group-left {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    > *:not(:last-child) {
+      margin-right: 12px;
+    }
+
+    > * {
+      margin-bottom: 0;
+    }
+  }
+
+  .filter-group-right {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    > *:not(:first-child) {
+      margin-left: 12px;
+    }
+  }
+
+  .ant-input,
+  .ant-select {
+    flex: 1;
+    min-width: 100px;
+    max-width: 267px;
+  }
+
+  .ant-cascader-picker {
+    .ant-input {
+      max-width: unset;
+    }
+  }
+
+  .ant-picker {
+    min-width: 350px;
+  }
+
+  &.multi-line {
+    margin-bottom: 4px;
+  }
+
+  .filter-item {
+    margin-bottom: 12px;
+
+    .filter-item-label {
+      min-width: 56px;
+      padding: 0 12px;
+      color: $color-text-sub;
+      line-height: 30px;
+      text-align: center;
+      background-color: $white;
+      border: 1px solid #d9d9d9;
+      border-right: none;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    .filter-item-content {
+      flex: 1;
+
+      .ant-input,
+      .ant-select {
+        flex: 1;
+        width: 100%;
+        min-width: unset;
+        max-width: unset;
+      }
+
+      .ant-input,
+      .ant-select-selection {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
+
+.filter-group-drawer {
+  .ant-row:not(:first-child) {
+    margin-top: 16px;
+  }
+
+  .filter-label {
+    margin-bottom: 4px;
+    color: $color-text-sub;
+  }
+
+  .ant-input,
+  .ant-select {
+    width: 100%;
+  }
+}
+
+.toolbar-with-filter {
+  position: relative;
+  padding-top: 16px;
+
+  &.with-data {
+    padding-bottom: 16px;
+  }
+
+  .tools-container {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    margin-top: -48px;
+  }
+
+  .filter-bar {
+    .clear {
+      display: inline-block;
+      margin-left: 8px;
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+}

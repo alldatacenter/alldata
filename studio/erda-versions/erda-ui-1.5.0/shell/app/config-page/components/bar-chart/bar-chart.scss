@@ -1,0 +1,11 @@
+.cp-bar-chart {
+  position: relative;
+  flex-direction: column;
+  min-height: 100px;
+  height: 100%;
+
+  .chart-dom {
+    height: 100%;
+    min-height: 100px;
+  }
+}

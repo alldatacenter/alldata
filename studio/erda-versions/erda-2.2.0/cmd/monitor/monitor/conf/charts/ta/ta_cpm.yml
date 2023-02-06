@@ -1,0 +1,15 @@
+- ta_cpm:
+    title: "吞吐量"
+    metric_names: "ta_timing"
+    type: "ta"
+    order: 0
+    defines:
+      cpm.plt:
+        label: "吞吐量"
+        unit: "cpm"
+        unit_type: "cpm"
+        axis_index: 0
+        chart_type: "line"
+        original_unit: "ms"
+    parameters:
+

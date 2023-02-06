@@ -1,0 +1,14 @@
+- redis_keyspace_misses:
+    title: "未命中键的次数"
+    metric_names: "redis"
+    type: "redis_remove"
+    order: 10
+    defines:
+      diff.keyspace_misses:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

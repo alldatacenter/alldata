@@ -1,0 +1,8 @@
+id: dice_addon_container_mem
+name: 平台中间件实例内存状态
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{container_id}}'
+  level: Warning
+  recover: "true"
+  tickets_metric_key: '{{container_id}}'

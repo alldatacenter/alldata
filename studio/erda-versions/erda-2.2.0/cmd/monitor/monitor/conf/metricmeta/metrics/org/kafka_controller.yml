@@ -1,0 +1,942 @@
+name: "Kafka Controller"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    jolokia_agent_url:
+        name: "Jolokia Agent Url"
+    jolokia_host:
+        name: "Jolokia Host"
+    org_name:
+        name: "Org Name"
+fields:
+    ActiveControllerCount_Value:
+        type: "number"
+        name: "Active Controller Count Value"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms 50th Percentile"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms 75th Percentile"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms 95th Percentile"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms 98th Percentile"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms 999th Percentile"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms 99th Percentile"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_Count:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms Count"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_EventType:
+        type: "string"
+        name: "Auto Leader Balance Rate And Time Ms Event Type"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms Five Minute Rate"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Auto Leader Balance Rate And Time Ms Latency Unit"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_Max:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms Maximum"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_Mean:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms Mean"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms Mean Rate"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_Min:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms Minimum"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms One Minute Rate"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Auto Leader Balance Rate And Time Ms Rate Unit"
+        unit: 
+    AutoLeaderBalanceRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Auto Leader Balance Rate And Time Ms Std Dev"
+        unit: 
+    ControlledShutdownRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms 50th Percentile"
+        unit: 
+    ControlledShutdownRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms 75th Percentile"
+        unit: 
+    ControlledShutdownRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms 95th Percentile"
+        unit: 
+    ControlledShutdownRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms 98th Percentile"
+        unit: 
+    ControlledShutdownRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms 999th Percentile"
+        unit: 
+    ControlledShutdownRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms 99th Percentile"
+        unit: 
+    ControlledShutdownRateAndTimeMs_Count:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms Count"
+        unit: 
+    ControlledShutdownRateAndTimeMs_EventType:
+        type: "string"
+        name: "Controlled Shutdown Rate And Time Ms Event Type"
+        unit: 
+    ControlledShutdownRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    ControlledShutdownRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms Five Minute Rate"
+        unit: 
+    ControlledShutdownRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Controlled Shutdown Rate And Time Ms Latency Unit"
+        unit: 
+    ControlledShutdownRateAndTimeMs_Max:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms Maximum"
+        unit: 
+    ControlledShutdownRateAndTimeMs_Mean:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms Mean"
+        unit: 
+    ControlledShutdownRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms Mean Rate"
+        unit: 
+    ControlledShutdownRateAndTimeMs_Min:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms Minimum"
+        unit: 
+    ControlledShutdownRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms One Minute Rate"
+        unit: 
+    ControlledShutdownRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Controlled Shutdown Rate And Time Ms Rate Unit"
+        unit: 
+    ControlledShutdownRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Controlled Shutdown Rate And Time Ms Std Dev"
+        unit: 
+    ControllerChangeRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Controller Change Rate And Time Ms 50th Percentile"
+        unit: 
+    ControllerChangeRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Controller Change Rate And Time Ms 75th Percentile"
+        unit: 
+    ControllerChangeRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Controller Change Rate And Time Ms 95th Percentile"
+        unit: 
+    ControllerChangeRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Controller Change Rate And Time Ms 98th Percentile"
+        unit: 
+    ControllerChangeRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Controller Change Rate And Time Ms 999th Percentile"
+        unit: 
+    ControllerChangeRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Controller Change Rate And Time Ms 99th Percentile"
+        unit: 
+    ControllerChangeRateAndTimeMs_Count:
+        type: "number"
+        name: "Controller Change Rate And Time Ms Count"
+        unit: 
+    ControllerChangeRateAndTimeMs_EventType:
+        type: "string"
+        name: "Controller Change Rate And Time Ms Event Type"
+        unit: 
+    ControllerChangeRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Controller Change Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    ControllerChangeRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Controller Change Rate And Time Ms Five Minute Rate"
+        unit: 
+    ControllerChangeRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Controller Change Rate And Time Ms Latency Unit"
+        unit: 
+    ControllerChangeRateAndTimeMs_Max:
+        type: "number"
+        name: "Controller Change Rate And Time Ms Maximum"
+        unit: 
+    ControllerChangeRateAndTimeMs_Mean:
+        type: "number"
+        name: "Controller Change Rate And Time Ms Mean"
+        unit: 
+    ControllerChangeRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Controller Change Rate And Time Ms Mean Rate"
+        unit: 
+    ControllerChangeRateAndTimeMs_Min:
+        type: "number"
+        name: "Controller Change Rate And Time Ms Minimum"
+        unit: 
+    ControllerChangeRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Controller Change Rate And Time Ms One Minute Rate"
+        unit: 
+    ControllerChangeRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Controller Change Rate And Time Ms Rate Unit"
+        unit: 
+    ControllerChangeRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Controller Change Rate And Time Ms Std Dev"
+        unit: 
+    ControllerShutdownRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms 50th Percentile"
+        unit: 
+    ControllerShutdownRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms 75th Percentile"
+        unit: 
+    ControllerShutdownRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms 95th Percentile"
+        unit: 
+    ControllerShutdownRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms 98th Percentile"
+        unit: 
+    ControllerShutdownRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms 999th Percentile"
+        unit: 
+    ControllerShutdownRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms 99th Percentile"
+        unit: 
+    ControllerShutdownRateAndTimeMs_Count:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms Count"
+        unit: 
+    ControllerShutdownRateAndTimeMs_EventType:
+        type: "string"
+        name: "Controller Shutdown Rate And Time Ms Event Type"
+        unit: 
+    ControllerShutdownRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    ControllerShutdownRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms Five Minute Rate"
+        unit: 
+    ControllerShutdownRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Controller Shutdown Rate And Time Ms Latency Unit"
+        unit: 
+    ControllerShutdownRateAndTimeMs_Max:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms Maximum"
+        unit: 
+    ControllerShutdownRateAndTimeMs_Mean:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms Mean"
+        unit: 
+    ControllerShutdownRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms Mean Rate"
+        unit: 
+    ControllerShutdownRateAndTimeMs_Min:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms Minimum"
+        unit: 
+    ControllerShutdownRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms One Minute Rate"
+        unit: 
+    ControllerShutdownRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Controller Shutdown Rate And Time Ms Rate Unit"
+        unit: 
+    ControllerShutdownRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Controller Shutdown Rate And Time Ms Std Dev"
+        unit: 
+    ControllerState_Value:
+        type: "number"
+        name: "Controller State Value"
+        unit: 
+    GlobalPartitionCount_Value:
+        type: "number"
+        name: "Global Partition Count Value"
+        unit: 
+    GlobalTopicCount_Value:
+        type: "number"
+        name: "Global Topic Count Value"
+        unit: 
+    IsrChangeRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Isr Change Rate And Time Ms 50th Percentile"
+        unit: 
+    IsrChangeRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Isr Change Rate And Time Ms 75th Percentile"
+        unit: 
+    IsrChangeRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Isr Change Rate And Time Ms 95th Percentile"
+        unit: 
+    IsrChangeRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Isr Change Rate And Time Ms 98th Percentile"
+        unit: 
+    IsrChangeRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Isr Change Rate And Time Ms 999th Percentile"
+        unit: 
+    IsrChangeRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Isr Change Rate And Time Ms 99th Percentile"
+        unit: 
+    IsrChangeRateAndTimeMs_Count:
+        type: "number"
+        name: "Isr Change Rate And Time Ms Count"
+        unit: 
+    IsrChangeRateAndTimeMs_EventType:
+        type: "string"
+        name: "Isr Change Rate And Time Ms Event Type"
+        unit: 
+    IsrChangeRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Isr Change Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    IsrChangeRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Isr Change Rate And Time Ms Five Minute Rate"
+        unit: 
+    IsrChangeRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Isr Change Rate And Time Ms Latency Unit"
+        unit: 
+    IsrChangeRateAndTimeMs_Max:
+        type: "number"
+        name: "Isr Change Rate And Time Ms Maximum"
+        unit: 
+    IsrChangeRateAndTimeMs_Mean:
+        type: "number"
+        name: "Isr Change Rate And Time Ms Mean"
+        unit: 
+    IsrChangeRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Isr Change Rate And Time Ms Mean Rate"
+        unit: 
+    IsrChangeRateAndTimeMs_Min:
+        type: "number"
+        name: "Isr Change Rate And Time Ms Minimum"
+        unit: 
+    IsrChangeRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Isr Change Rate And Time Ms One Minute Rate"
+        unit: 
+    IsrChangeRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Isr Change Rate And Time Ms Rate Unit"
+        unit: 
+    IsrChangeRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Isr Change Rate And Time Ms Std Dev"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms 50th Percentile"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms 75th Percentile"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms 95th Percentile"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms 98th Percentile"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms 999th Percentile"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms 99th Percentile"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_Count:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms Count"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_EventType:
+        type: "string"
+        name: "Leader And Isr Response Received Rate And Time Ms Event Type"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms Five Minute Rate"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Leader And Isr Response Received Rate And Time Ms Latency Unit"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_Max:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms Maximum"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_Mean:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms Mean"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms Mean Rate"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_Min:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms Minimum"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms One Minute Rate"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Leader And Isr Response Received Rate And Time Ms Rate Unit"
+        unit: 
+    LeaderAndIsrResponseReceivedRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Leader And Isr Response Received Rate And Time Ms Std Dev"
+        unit: 
+    LeaderElectionRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Leader Election Rate And Time Ms 50th Percentile"
+        unit: 
+    LeaderElectionRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Leader Election Rate And Time Ms 75th Percentile"
+        unit: 
+    LeaderElectionRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Leader Election Rate And Time Ms 95th Percentile"
+        unit: 
+    LeaderElectionRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Leader Election Rate And Time Ms 98th Percentile"
+        unit: 
+    LeaderElectionRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Leader Election Rate And Time Ms 999th Percentile"
+        unit: 
+    LeaderElectionRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Leader Election Rate And Time Ms 99th Percentile"
+        unit: 
+    LeaderElectionRateAndTimeMs_Count:
+        type: "number"
+        name: "Leader Election Rate And Time Ms Count"
+        unit: 
+    LeaderElectionRateAndTimeMs_EventType:
+        type: "string"
+        name: "Leader Election Rate And Time Ms Event Type"
+        unit: 
+    LeaderElectionRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Leader Election Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    LeaderElectionRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Leader Election Rate And Time Ms Five Minute Rate"
+        unit: 
+    LeaderElectionRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Leader Election Rate And Time Ms Latency Unit"
+        unit: 
+    LeaderElectionRateAndTimeMs_Max:
+        type: "number"
+        name: "Leader Election Rate And Time Ms Maximum"
+        unit: 
+    LeaderElectionRateAndTimeMs_Mean:
+        type: "number"
+        name: "Leader Election Rate And Time Ms Mean"
+        unit: 
+    LeaderElectionRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Leader Election Rate And Time Ms Mean Rate"
+        unit: 
+    LeaderElectionRateAndTimeMs_Min:
+        type: "number"
+        name: "Leader Election Rate And Time Ms Minimum"
+        unit: 
+    LeaderElectionRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Leader Election Rate And Time Ms One Minute Rate"
+        unit: 
+    LeaderElectionRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Leader Election Rate And Time Ms Rate Unit"
+        unit: 
+    LeaderElectionRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Leader Election Rate And Time Ms Std Dev"
+        unit: 
+    LogDirChangeRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms 50th Percentile"
+        unit: 
+    LogDirChangeRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms 75th Percentile"
+        unit: 
+    LogDirChangeRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms 95th Percentile"
+        unit: 
+    LogDirChangeRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms 98th Percentile"
+        unit: 
+    LogDirChangeRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms 999th Percentile"
+        unit: 
+    LogDirChangeRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms 99th Percentile"
+        unit: 
+    LogDirChangeRateAndTimeMs_Count:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms Count"
+        unit: 
+    LogDirChangeRateAndTimeMs_EventType:
+        type: "string"
+        name: "Log Dir Change Rate And Time Ms Event Type"
+        unit: 
+    LogDirChangeRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    LogDirChangeRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms Five Minute Rate"
+        unit: 
+    LogDirChangeRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Log Dir Change Rate And Time Ms Latency Unit"
+        unit: 
+    LogDirChangeRateAndTimeMs_Max:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms Maximum"
+        unit: 
+    LogDirChangeRateAndTimeMs_Mean:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms Mean"
+        unit: 
+    LogDirChangeRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms Mean Rate"
+        unit: 
+    LogDirChangeRateAndTimeMs_Min:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms Minimum"
+        unit: 
+    LogDirChangeRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms One Minute Rate"
+        unit: 
+    LogDirChangeRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Log Dir Change Rate And Time Ms Rate Unit"
+        unit: 
+    LogDirChangeRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Log Dir Change Rate And Time Ms Std Dev"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms 50th Percentile"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms 75th Percentile"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms 95th Percentile"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms 98th Percentile"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms 999th Percentile"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms 99th Percentile"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_Count:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms Count"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_EventType:
+        type: "string"
+        name: "Manual Leader Balance Rate And Time Ms Event Type"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms Five Minute Rate"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Manual Leader Balance Rate And Time Ms Latency Unit"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_Max:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms Maximum"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_Mean:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms Mean"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms Mean Rate"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_Min:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms Minimum"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms One Minute Rate"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Manual Leader Balance Rate And Time Ms Rate Unit"
+        unit: 
+    ManualLeaderBalanceRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Manual Leader Balance Rate And Time Ms Std Dev"
+        unit: 
+    OfflinePartitionsCount_Value:
+        type: "number"
+        name: "Offline Partitions Count Value"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms 50th Percentile"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms 75th Percentile"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms 95th Percentile"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms 98th Percentile"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms 999th Percentile"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms 99th Percentile"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_Count:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms Count"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_EventType:
+        type: "string"
+        name: "Partition Reassignment Rate And Time Ms Event Type"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms Five Minute Rate"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Partition Reassignment Rate And Time Ms Latency Unit"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_Max:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms Maximum"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_Mean:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms Mean"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms Mean Rate"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_Min:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms Minimum"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms One Minute Rate"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Partition Reassignment Rate And Time Ms Rate Unit"
+        unit: 
+    PartitionReassignmentRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Partition Reassignment Rate And Time Ms Std Dev"
+        unit: 
+    PreferredReplicaImbalanceCount_Value:
+        type: "number"
+        name: "Preferred Replica Imbalance Count Value"
+        unit: 
+    TopicChangeRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Topic Change Rate And Time Ms 50th Percentile"
+        unit: 
+    TopicChangeRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Topic Change Rate And Time Ms 75th Percentile"
+        unit: 
+    TopicChangeRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Topic Change Rate And Time Ms 95th Percentile"
+        unit: 
+    TopicChangeRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Topic Change Rate And Time Ms 98th Percentile"
+        unit: 
+    TopicChangeRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Topic Change Rate And Time Ms 999th Percentile"
+        unit: 
+    TopicChangeRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Topic Change Rate And Time Ms 99th Percentile"
+        unit: 
+    TopicChangeRateAndTimeMs_Count:
+        type: "number"
+        name: "Topic Change Rate And Time Ms Count"
+        unit: 
+    TopicChangeRateAndTimeMs_EventType:
+        type: "string"
+        name: "Topic Change Rate And Time Ms Event Type"
+        unit: 
+    TopicChangeRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Topic Change Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    TopicChangeRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Topic Change Rate And Time Ms Five Minute Rate"
+        unit: 
+    TopicChangeRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Topic Change Rate And Time Ms Latency Unit"
+        unit: 
+    TopicChangeRateAndTimeMs_Max:
+        type: "number"
+        name: "Topic Change Rate And Time Ms Maximum"
+        unit: 
+    TopicChangeRateAndTimeMs_Mean:
+        type: "number"
+        name: "Topic Change Rate And Time Ms Mean"
+        unit: 
+    TopicChangeRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Topic Change Rate And Time Ms Mean Rate"
+        unit: 
+    TopicChangeRateAndTimeMs_Min:
+        type: "number"
+        name: "Topic Change Rate And Time Ms Minimum"
+        unit: 
+    TopicChangeRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Topic Change Rate And Time Ms One Minute Rate"
+        unit: 
+    TopicChangeRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Topic Change Rate And Time Ms Rate Unit"
+        unit: 
+    TopicChangeRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Topic Change Rate And Time Ms Std Dev"
+        unit: 
+    TopicDeletionRateAndTimeMs_50thPercentile:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms 50th Percentile"
+        unit: 
+    TopicDeletionRateAndTimeMs_75thPercentile:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms 75th Percentile"
+        unit: 
+    TopicDeletionRateAndTimeMs_95thPercentile:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms 95th Percentile"
+        unit: 
+    TopicDeletionRateAndTimeMs_98thPercentile:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms 98th Percentile"
+        unit: 
+    TopicDeletionRateAndTimeMs_999thPercentile:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms 999th Percentile"
+        unit: 
+    TopicDeletionRateAndTimeMs_99thPercentile:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms 99th Percentile"
+        unit: 
+    TopicDeletionRateAndTimeMs_Count:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms Count"
+        unit: 
+    TopicDeletionRateAndTimeMs_EventType:
+        type: "string"
+        name: "Topic Deletion Rate And Time Ms Event Type"
+        unit: 
+    TopicDeletionRateAndTimeMs_FifteenMinuteRate:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms Fifteen Minute Rate"
+        unit: 
+    TopicDeletionRateAndTimeMs_FiveMinuteRate:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms Five Minute Rate"
+        unit: 
+    TopicDeletionRateAndTimeMs_LatencyUnit:
+        type: "string"
+        name: "Topic Deletion Rate And Time Ms Latency Unit"
+        unit: 
+    TopicDeletionRateAndTimeMs_Max:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms Maximum"
+        unit: 
+    TopicDeletionRateAndTimeMs_Mean:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms Mean"
+        unit: 
+    TopicDeletionRateAndTimeMs_MeanRate:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms Mean Rate"
+        unit: 
+    TopicDeletionRateAndTimeMs_Min:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms Minimum"
+        unit: 
+    TopicDeletionRateAndTimeMs_OneMinuteRate:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms One Minute Rate"
+        unit: 
+    TopicDeletionRateAndTimeMs_RateUnit:
+        type: "string"
+        name: "Topic Deletion Rate And Time Ms Rate Unit"
+        unit: 
+    TopicDeletionRateAndTimeMs_StdDev:
+        type: "number"
+        name: "Topic Deletion Rate And Time Ms Std Dev"
+        unit: 
+    TotalQueueSize_Value:
+        type: "number"
+        name: "Total Queue Size Value"
+        unit: 
+    UncleanLeaderElectionsPerSec_Count:
+        type: "number"
+        name: "Unclean Leader Elections Per Sec Count"
+        unit: 
+    UncleanLeaderElectionsPerSec_EventType:
+        type: "string"
+        name: "Unclean Leader Elections Per Sec Event Type"
+        unit: 
+    UncleanLeaderElectionsPerSec_FifteenMinuteRate:
+        type: "number"
+        name: "Unclean Leader Elections Per Sec Fifteen Minute Rate"
+        unit: 
+    UncleanLeaderElectionsPerSec_FiveMinuteRate:
+        type: "number"
+        name: "Unclean Leader Elections Per Sec Five Minute Rate"
+        unit: 
+    UncleanLeaderElectionsPerSec_MeanRate:
+        type: "number"
+        name: "Unclean Leader Elections Per Sec Mean Rate"
+        unit: 
+    UncleanLeaderElectionsPerSec_OneMinuteRate:
+        type: "number"
+        name: "Unclean Leader Elections Per Sec One Minute Rate"
+        unit: 
+    UncleanLeaderElectionsPerSec_RateUnit:
+        type: "string"
+        name: "Unclean Leader Elections Per Sec Rate Unit"
+        unit: 
+

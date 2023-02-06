@@ -1,0 +1,32 @@
+# 场景名
+scenario: "org-list-all"
+
+# 布局
+hierarchy:
+  root: page
+  structure:
+    page: 
+      children:
+        - myPage
+    myPage:
+      - filter
+      - list
+
+components:
+  page:
+    type: Tabs
+  myPage:
+    type: Container
+  filter:
+    type: ContractiveFilter
+  list:
+    type: List
+  
+rendering:
+  filter:
+    - name: list
+      state:
+        - name: "searchEntry"
+          value: "{{ filter.searchEntry }}"
+        - name: "searchRefresh"
+          value: "{{ filter.searchRefresh }}"

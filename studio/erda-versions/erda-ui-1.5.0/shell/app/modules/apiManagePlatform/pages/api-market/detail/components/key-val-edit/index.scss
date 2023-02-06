@@ -1,0 +1,45 @@
+.key-value-edit {
+  .no-params {
+    padding: 20px;
+    text-align: center;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color-border;
+
+    input,
+    .ant-select-selection {
+      color: $color-text;
+      border: none;
+      box-shadow: none !important;
+    }
+
+    &-separate {
+      display: inline-block;
+      width: 1px;
+      height: 20px;
+      background: $color-border;
+    }
+
+    &-operation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+    }
+
+    .hidden-del {
+      visibility: hidden;
+    }
+
+    .show-del {
+      visibility: visible;
+    }
+
+    .flex-1 {
+      overflow: hidden;
+    }
+  }
+}

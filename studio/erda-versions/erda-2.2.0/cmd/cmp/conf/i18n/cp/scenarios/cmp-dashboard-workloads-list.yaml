@@ -1,0 +1,124 @@
+zh:
+  createWorkloadSuccessfully: 创建工作负载成功
+  search: 搜索
+  workloadSearchPlaceHolder: 搜索工作负载名称
+  workloadKind: 工作负载类型
+  Active: 活跃
+  Error: 错误
+  Succeeded: 成功
+  Failed: 失败
+  Updating: 更新中
+  Abnormal: 异常
+  Stopped: 已停止
+  createWorkload: 创建工作负载
+  upToDate: 已更新
+  available: 可用
+  desired: 期望
+  current: 当前
+  completions: 完成
+  jobDuration: 运行时间
+  schedule: 运行计划
+  lastSchedule: 上次运行时间
+  totalWorkload: 工作负载总数
+  restart: 重新部署
+  confirmRestart: 确认重新部署？
+  cannotRestart: 只有 Deployment、StatefulSet 和 DaemonSet 可以被重新部署
+  deletedWorkloadSuccessfully: 工作负载删除成功
+  canNotDeleteSystemWorkload: 平台组件不可删除
+  restartWorkloadSuccessfully: 工作负载重新部署成功
+  updateWorkloadSuccessfully: 工作负载更新成功
+
+en:
+  createWorkloadSuccessfully: Created workload successfully
+  search: Search
+  workloadSearchPlaceHolder: input workload name
+  workloadKind: Workload Kind
+  Active: Active
+  Error: Error
+  Succeeded: Succeeded
+  Failed: Failed
+  createWorkload: Create workload
+  upToDate: Up-to-Date
+  available: Available
+  desired: Desired
+  current: Current
+  completions: Completion
+  jobDuration: Duration
+  schedule: Schedule
+  lastSchedule: LastSchedule
+  node-list: Node List
+  env: Env
+  platform: Platform
+  service: Service
+  job: Job
+  other: Other
+  os: OS
+  nodeIp: Node IP
+  allocated: Allocated
+  cannot-allocated: Non-Distributable
+  free-allocate: Allocatable
+  nodeInfo: Node Info
+  nodeStatus: Node Status
+  survive: Survive Duration
+  version: Version
+  label: Label
+  arch: Architecture
+  containerVersion: Container Version
+  image: Image
+  requests: Requests
+  limits: Limits
+  usage: Utilization rate
+  usedRate: Usage
+  category: category
+  Cpu Chart: CPU
+  Memory Chart: Mem
+  Pod Chart: Pods
+  addLabel: Add Label
+  bootID: Boot ID
+  containerRuntimeVersion: Container Running Version
+  distribution: Reserved
+  unusedRate: Unused
+  kernelVersion: Kernel Version
+  kubeProxyVersion: Kubectl Proxy Version
+  kubeletVersion: Kubelet Version
+  machineID: Machine ID
+  memUsed: Mem Usage
+  nodeDetail: Node Detail
+  operatingSystem: Operation System
+  osImage: OS Image
+  packjob: Pack Job
+  podInfo: Pod Info
+  podsList: Pods List
+  podInspect: Pod Inspect
+  rebootTimes: Reboot Times
+  systemUUID: System UUID
+  use: Usage
+  annotation: Annotation
+  placeholderFilterByNodeName: filter by node name
+  cpuUsage: CPU Usage
+  architecture: Architecture
+  running: Running
+  waiting: Waiting
+  ta: Tag
+  taint: Taint
+  terminated: Terminated
+  organization-label: Organization Label
+  service-label: Service Label
+  env-label: Enviorment Label
+  job-label: Job Label
+  other-label: Other Label
+  cpu-size: CPU Cores
+  memory-size: Memory Size
+  undrained: There are still unevicted Pods in this node!
+  SharedResources: Shared Resources on the Platform
+  updateNodeSuccessfully: Updated Node successfully
+  totalWorkload: Total Workloads
+  restart: Restart
+  confirmRestart: Sure to restart ?
+  cannotRestart: Only deployment, statefulSet and daemonSet can be restarted
+  canNotDeleteSystemWorkload: Platform components can not be deleted
+  deletedWorkloadSuccessfully: Deleted workload successfully
+  restartWorkloadSuccessfully: Restarted workload successfully
+  updateWorkloadSuccessfully: Updated workload successfully
+
+

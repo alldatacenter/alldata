@@ -1,0 +1,16 @@
+- system_etcd_grpc_server_handled_total:
+    title: "GRPC完成请求数"
+    metric_names: "etcd"
+    type: "etcd"
+    order: 8
+    defines:
+      max.grpc_server_handled_total:
+        label: ""
+        unit: ""
+        unit_type: "count"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "(doc['tags.url_host'].value + '/' + doc['tags.grpc_method'].value)"
+

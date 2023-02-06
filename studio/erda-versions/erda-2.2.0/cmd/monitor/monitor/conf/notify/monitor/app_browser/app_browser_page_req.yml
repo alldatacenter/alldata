@@ -1,0 +1,42 @@
+id: app_browser_page_req
+metadata:
+  name: "页面访问性能告警"
+  type: app_browser
+  module: monitor
+  scope:
+    - micro_service
+behavior:
+  group: "{{tk}}-{{doc_path}}-{{host}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        plt: "time:s"
+      title: |
+        【页面 ({{doc_path}}) 访问性能告警】
+      template: |
+        【页面访问性能告警】
+
+        事件: {{doc_path}} 页面慢响应
+
+        域名: {{host}}
+
+        页面: {{doc_path}}
+
+        页面平均响应时间: {{plt_avg}} ms
+
+        时间: {{timestamp}}
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})

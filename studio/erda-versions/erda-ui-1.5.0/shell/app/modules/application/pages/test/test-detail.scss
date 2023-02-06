@@ -1,0 +1,171 @@
+$hover-color: #e1e7fe;
+
+@mixin border-set {
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  @extend %shallow-shadow;
+}
+
+.test-detail-header {
+  .test-selector {
+    max-width: 280px;
+  }
+
+  .test-log {
+    margin-left: auto;
+    padding: 0 10px;
+    color: $color-primary;
+  }
+}
+
+.application-test-detail {
+  min-height: 400px;
+
+  .chart-container {
+    margin-bottom: 0;
+  }
+
+  .chart-dom {
+    height: 276px;
+  }
+
+  .test-chart-container {
+    padding: 0 8px 0 0;
+  }
+
+  .test-env-container {
+    padding: 0 0 0 8px;
+
+    .ant-table-placeholder {
+      border: 0;
+    }
+  }
+
+  .row-space {
+    height: 16px;
+  }
+
+  .test-list-container {
+    height: 500px;
+
+    .chart-container {
+      height: 100%;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .filter {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 12px;
+
+      .ant-input-search {
+        width: 50%;
+      }
+
+      .ant-select {
+        width: 50%;
+        padding-left: 10px;
+      }
+    }
+
+    .status-point {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 4px;
+      border-radius: 100%;
+
+      &.skipped {
+        background-color: $yellow;
+      }
+
+      &.failed {
+        background-color: #f56b6b;
+      }
+
+      &.passed {
+        background-color: $green;
+      }
+
+      &.error {
+        background-color: $red;
+      }
+
+      &.all {
+        background-color: $blue;
+      }
+    }
+
+    .unit-test-list {
+      position: relative;
+      flex: 1;
+      margin-bottom: 0;
+      overflow: auto;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 48px;
+        padding: 12px;
+        color: $color-text;
+        border-bottom: 1px solid #e8e8e873;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+          background: $color-active-bg;
+        }
+
+        .time {
+          color: $color-text-sub;
+        }
+      }
+    }
+  }
+
+  .test-output-container {
+    height: 500px;
+
+    .chart-container {
+      height: 100%;
+      border-top-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .test-output {
+      position: relative;
+      flex: 1;
+      margin-bottom: 0;
+      overflow: auto;
+    }
+
+    .output {
+      height: 100%;
+      margin-bottom: 0;
+      padding: 10px;
+      color: #3c444f;
+      font-size: 12px;
+      line-height: 1.8em;
+      letter-spacing: 1px;
+      white-space: pre-line;
+      word-break: break-word;
+      border-radius: 6px;
+
+      .error-message {
+        display: none;
+      }
+
+      .error-body {
+        display: none;
+      }
+
+      .show {
+        display: inline-block;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.dice-form-nusi-preview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+
+  &.on-edit {
+    background-color: $color-active-bg;
+  }
+
+  .form-view {
+    flex: 1;
+
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+
+  .form-operation {
+    width: 180px;
+    margin-top: 32px;
+    margin-left: 12px;
+    font-size: 14px;
+    text-align: right;
+
+    > span {
+      margin-right: 8px;
+      color: $color-primary;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

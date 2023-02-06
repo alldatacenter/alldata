@@ -1,0 +1,109 @@
+http-server:
+    addr: ":7096"
+health:
+
+kafka:
+    # servers: "${BOOTSTRAP_SERVERS:localhost:9092}"
+    comsumer:
+        options:
+            auto.offset.reset: "${KAFKA_AUTO_OFFSET_RESET:latest}"
+            auto.commit.interval.ms: "${KAFKA_AUTO_COMMIT_INTERVAL_MS:1000}"
+    producer:
+        options:
+            go.produce.channel.size: ${KAFKA_PRODUCE_SIZE:200000}
+
+elasticsearch@logs:
+    urls: "${LOGS_ES_URL:http://localhost:9200}"
+    security: ${LOGS_ES_SECURITY_ENABLE:false}
+    username: "${LOGS_ES_SECURITY_USERNAME}"
+    password: "${LOGS_ES_SECURITY_PASSWORD}"
+
+mysql:
+    # host: "${MYSQL_HOST:localhost}"
+    # port: ${MYSQL_PORT:3306}
+    # username: "${MYSQL_USERNAME:root}"
+    # password: "${MYSQL_PASSWORD:123456}"
+    # database: "${MYSQL_DATABASE:dice}"
+
+logs-metrics-analysis:
+    _enable: ${LOG_METRICS_ENABLE:true}
+    filters:
+        ${LOG_METRICS_TAG_KEY:monitor_log_key}: ""
+    processors:
+        scope: "org"
+        reload_interval: "3m"
+    input:
+        topics: "${LOG_TOPICS:spot-container-log}"
+        group: "${LOG_METRICS_GROUP_ID:spot-log-metrics-dev-0}"
+        parallelism: ${LOG_METRICS_CONSUMERS:3}
+    output:
+        type: "${METRIC_OUTPUT_TYPE:kafka}"
+        kafka:
+            topic: "${METRIC_TOPICS:spot-metrics}"
+            parallelism: ${KAFKA_PARALLELISM:3}
+            batch:
+                size:  ${KAFKA_BATCH_SIZE:50}
+                timeout: "10s"
+
+sls-import:
+    _enable: ${SLS_IMPORT_ENABLE:true}
+    accounts_reload_interval: "5m"
+    projects_reload_interval: "3m"
+    projects:
+        - "^waf-.*"
+        - "^api-gateway-.*"
+        - "^rds.*"
+        # - "^nosql-.*"
+    log_filters:
+        - product: "rds"
+          options:
+              slow_sql_threshold: "10s"
+              exclude_sql: ["logout!"]
+    account:
+        org_id: ${TEST_ORG_ID:1},
+        org_name: "${TEST_ORG_NAME:terminus}"
+        ali_access_key: "${TEST_ALI_ACCESS_KEY}"
+        ali_access_secret_key: "${TEST_ALI_ACCESS_SECRET_KEY}"
+    output:
+        elasticsearch:
+            writer_config:
+                type: "logs"
+                parallelism: ${ES_PARALLELISM:3}
+                batch:
+                    size: ${ES_BATCH_SIZE:50}
+                    timeout: "30s"
+            index_prefix: "${LOG_INDEX_PREFIX:sls-}"
+            index_template_name: "spot_logs_template"
+            index_clean_interval: "1h"
+            index_ttl: "720h"
+            request_time: "60s"
+        kafka:
+            topic: "${METRIC_TOPICS:spot-metrics}"
+            parallelism: ${KAFKA_PARALLELISM:3}
+            batch:
+                size: ${KAFKA_BATCH_SIZE:50}
+                timeout: "30s"
+
+cloudcat:
+    _enable: ${CLOUD_METRICS_ENABLE:true}
+    account_reload: "5m"
+    product_list_reload: "12h"
+    gather_window: "10m"
+    # 待导入指标的orgId列表，若为空则导入所有的企业指标
+    org_ids: ${CLOUDCAT_IMPORT_ORG_IDS:}
+    # aliyun限流配置
+    max_qps: ${CLOUDCAT_MAX_QPS:2}
+    req_limit: ${CLOUDCAT_REQ_LIMIT:3000}
+    req_limit_duration: ${CLOUDCAT_REQ_LIMIT_DURATION:1h}
+    req_limit_timeout: ${CLOUDCAT_REQ_LIMIT_TIMEOUT:5m}
+    # 待采集的阿里云产品名，若未设置，则默认采集账号下所有产品
+    products: ${CLOUDCAT_PRODUCTS:RDS,WAF,APIGateway,ECS}
+    output:
+        parallelism: ${KAFKA_PARALLELISM:3}
+        batch:
+        size: ${KAFKA_BATCH_SIZE:500}
+        timeout: "30s"
+
+http-server@admin:
+    addr: ":7098"
+pprof:

@@ -1,0 +1,26 @@
+@url = http://localhost:9529
+
+### test GET proxy
+GET {{url}}/api/example/hello
+
+### test POST proxy
+POST {{url}}/api/example/hello
+
+### test param
+GET {{url}}/api/example/hello/recallsong
+
+### test custom
+GET {{url}}/api/example/custom-route
+
+### test custom
+GET {{url}}/api/example/custom-api
+
+### Method Not Allowed
+POST {{url}}/api/example/hello/recallsong
+
+### Not Found
+GET {{url}}/api/example/not-found
+
+### test user-info
+GET {{url}}/api/example/user-info
+

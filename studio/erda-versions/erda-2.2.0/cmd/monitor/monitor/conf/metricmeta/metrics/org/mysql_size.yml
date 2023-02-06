@@ -1,0 +1,38 @@
+name: "MySQL Size"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    org_name:
+        name: "Org Name"
+    server:
+        name: "Server"
+    total:
+        name: "Total"
+fields:
+    data_free:
+        type: "number"
+        name: "Data Free"
+        unit: 
+    data_length:
+        type: "number"
+        name: "Data Length"
+        unit: 
+    index_length:
+        type: "number"
+        name: "Index Length"
+        unit: 
+    max_data_length:
+        type: "number"
+        name: "Maximum Data Length"
+        unit: 
+

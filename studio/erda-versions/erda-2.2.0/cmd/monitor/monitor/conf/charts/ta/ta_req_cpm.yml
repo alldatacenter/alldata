@@ -1,0 +1,15 @@
+- ta_req_cpm:
+    title: "吞吐量"
+    metric_names: "ta_req"
+    type: "ta"
+    order: 0
+    defines:
+      cpm.tt:
+        label: "吞吐量"
+        unit: "cpm"
+        unit_type: "cpm"
+        axis_index: 0
+        chart_type: "line"
+        original_unit: "ms"
+    parameters:
+

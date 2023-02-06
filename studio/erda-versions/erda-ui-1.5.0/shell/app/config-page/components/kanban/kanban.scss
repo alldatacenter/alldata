@@ -1,0 +1,142 @@
+.dice-cp {
+  &.cp-kanban {
+    display: flex;
+    height: calc(100vh - 150px);
+    overflow: auto;
+
+    .cp-kanban-info {
+      .label-item {
+        max-width: 200px;
+        height: 20px;
+        margin-top: 4px;
+        margin-right: 8px;
+        margin-bottom: 0;
+        line-height: 20px;
+        border: none;
+      }
+    }
+  }
+
+  .cp-kanban-col {
+    display: flex;
+    flex: 1;
+    flex-grow: 0;
+    flex-direction: column;
+    min-width: 344px;
+    min-height: 400px;
+    margin-right: 16px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: $radius;
+
+    .cp-kanban-col-header {
+      z-index: 1;
+      padding: 12px;
+
+      &.shadow {
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
+      }
+
+      &.inp {
+        padding-top: 5px;
+      }
+    }
+
+    .cp-kanban-col-content {
+      flex: 1;
+      padding: 2px 12px 12px;
+      overflow-y: auto;
+    }
+
+    .cp-kanban-label-input {
+      padding-left: 0;
+      border: 1px solid transparent;
+      background: transparent;
+
+      &:hover {
+        border: 1px solid $primary;
+      }
+
+      &.update-disabled {
+        &:hover {
+          border: 1px solid $color-disabled;
+        }
+      }
+    }
+
+    &.add-item {
+      display: flex;
+      flex: unset;
+      min-width: 160px;
+      height: 160px;
+      background: $color-bg;
+      border: none;
+
+      .add-icon {
+        align-self: flex-start;
+        padding: 8px;
+        font-size: 32px;
+        background: $color-light-bg;
+        border-radius: $p4;
+        line-height: unset;
+      }
+    }
+
+    &.drag-over {
+      border: 4px solid $color-purple-deep;
+    }
+
+    &.not-drag {
+      border: 2px dashed $color-dark-2;
+      background: $color-disabled-bg;
+    }
+
+    &.drop-disable {
+      border: 1px dashed $color-disabled;
+      opacity: 0.5;
+    }
+
+    .dragged-card {
+      animation: changeCardBg 1s linear 0.3s;
+    }
+
+    @keyframes changeCardBg {
+      50% {
+        background-color: rgba($color-purple-deep, 0.1);
+      }
+    }
+
+    .list-item {
+      margin-bottom: 12px;
+      background-color: $white;
+      border-radius: $radius;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+      &:hover {
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &:last-child {
+      min-height: 160px;
+      margin-right: 0;
+    }
+
+    &.drag-over {
+      border: 2px dashed $color-purple-deep;
+      background: $color-purple-light;
+    }
+
+    .list {
+      overflow: auto;
+    }
+  }
+
+  .cp-kanban-item-special-pdd {
+    padding: 9px 20px 16px 20px;
+  }
+}

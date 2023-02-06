@@ -1,0 +1,13 @@
+.backlog-issue {
+  display: flex;
+
+  .backlog-left {
+    flex: 3;
+    margin-right: 6px;
+  }
+
+  .backlog-right {
+    flex: 2;
+    margin-left: 6px;
+  }
+}

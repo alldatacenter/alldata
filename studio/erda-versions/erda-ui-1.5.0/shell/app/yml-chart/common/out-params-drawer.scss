@@ -1,0 +1,41 @@
+.pipeline-out-params-drawer {
+  .ant-drawer-body {
+    padding-bottom: 50px;
+  }
+
+  &-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 8px 16px;
+    text-align: left;
+    background-color: $white;
+    border-top: 1px solid $border-color;
+  }
+
+  .out-params-content {
+    display: flex;
+    flex: 1;
+    width: 0;
+
+    .content-item {
+      flex: 1;
+      width: 0;
+    }
+  }
+}
+
+.has-error {
+  .out-params-content {
+    .empty-error {
+      &.ant-input {
+        border: 1px solid $color-danger;
+      }
+
+      .ant-select-selection {
+        border: 1px solid $color-danger;
+      }
+    }
+  }
+}

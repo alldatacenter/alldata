@@ -1,0 +1,56 @@
+.app-settings-main {
+  .panel-title {
+    margin-bottom: 19px;
+    color: $color-text;
+  }
+}
+
+.stage-cluster {
+  margin-bottom: $sm-line-height;
+
+  .stage-name {
+    line-height: $base-line-height;
+  }
+}
+
+.load-more-selector-library {
+  .library-name {
+    color: $color-dark-8;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .library-desc,
+  .library-tips {
+    display: flex;
+    align-items: center;
+    color: $color-dark-4;
+    font-size: 14px;
+    line-height: 22px;
+
+    i {
+      font-size: 16px;
+
+      &.icon-renwushu {
+        margin-left: 25px;
+      }
+    }
+  }
+
+  &:hover {
+    .library-name {
+      color: $primary;
+    }
+  }
+}
+
+.member-table-top-content {
+  .title {
+    line-height: 48px;
+    font-size: 18px;
+  }
+
+  .desc {
+    color: $color-dark-4;
+  }
+}

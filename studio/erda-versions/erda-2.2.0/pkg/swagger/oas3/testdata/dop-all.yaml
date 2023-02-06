@@ -1,0 +1,80 @@
+openapi: 3.0.0
+
+info:
+  description: ""
+  title: erda-trantor
+  version: "1.0"
+
+paths:
+  /api/applications:
+    post:
+      operationId: 创建应用
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                isExternalRepo:
+                  description: 是否使用外置仓库
+                  example: true
+                  type: boolean
+                  x-dice-name: isExternalRepo
+                  x-dice-required: true
+              type: object
+              x-dice-media: application/json
+              x-dice-name: schema
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/StandardResult'
+                example:
+                  err:
+                    msg: failed
+                  success: true
+                type: object
+                x-dice-media: application/json
+                x-dice-name: schema
+          description: ""
+      summary: 创建应用
+      tags:
+        - 应用管理
+
+components:
+  schemas:
+    StandardResult:
+      example:
+        err:
+          msg: failed
+        success: true
+      properties:
+        err:
+          example:
+            msg: failed
+          properties:
+            msg:
+              description: 错误具体原因
+              example: failed
+              type: string
+              x-dice-name: msg
+              x-dice-required: true
+          required:
+            - msg
+          type: object
+          x-dice-name: err
+          x-dice-required: true
+        success:
+          description: 接口是否成功
+          example: true
+          type: boolean
+          x-dice-name: success
+          x-dice-required: true
+      required:
+        - success
+        - err
+      type: object
+      x-dice-forbidden-types:
+        - StandardResult
+      x-dice-name: StandardResult

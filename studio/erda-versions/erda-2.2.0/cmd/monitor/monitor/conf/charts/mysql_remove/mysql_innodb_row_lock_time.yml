@@ -1,0 +1,14 @@
+- mysql_innodb_row_lock_time:
+    title: "INNODB花费在等待行锁上的毫秒个数"
+    metric_names: "mysql"
+    type: "mysql_remove"
+    order: 19
+    defines:
+      diff.innodb_row_lock_time:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

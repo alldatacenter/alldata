@@ -1,0 +1,40 @@
+id: app_browser_script_error
+metadata:
+  name: "脚本错误告警"
+  type: app_browser
+  module: monitor
+  scope:
+    - micro_service
+behavior:
+  group: "{{tk}}-{{doc_path}}-{{host}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        count: "string"
+      title: |-
+        【页面 ({{doc_path}}) 脚本错误告警】
+      template: |
+        【脚本错误告警】
+
+        事件: {{window}} 分钟内，脚本错误次数: {{count_sum}}
+
+        访问域名：{{host}}
+
+        访问页面：{{doc_path}}
+
+        时间: {{timestamp}}
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})

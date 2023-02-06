@@ -1,0 +1,30 @@
+### test create pipeline action
+POST http://localhost:3081/api/pipeline-actions/action/save
+Content-Type: application/json
+Internal-Client: true
+
+{
+  "readme": "",
+  "dice": "### job 配置项\njobs:\n  java-builds:\n    image: registry.erda.cloud/erda-actions/java-build-action:1.0-20220316-5922882\n    resources:\n      cpu: 0.5\n      mem: 2048\n      disk: 1024",
+  "spec": "name: java-builds\nversion: \"1.0\"\ntype: action\ncategory: build_management\ndisplayName: ${{ i18n.displayName }}\nlogoUrl: //terminus-paas.oss-cn-hangzhou.aliyuncs.com/paas-doc/2020/09/28/d74a0d23-523d-4451-9647-f32f47b2000d.png\ndesc: ${{ i18n.desc }}\nlabels:\n  maintainer: xxx\n  project_level_app: true\npublic: true\nsupportedVersions: # Deprecated. Please use supportedErdaVersions instead.\n  - \">= 3.9\"\nsupportedErdaVersions:\n  - \">= 1.0\"\n\nparams:\n  - name: jdk_version\n    desc: ${{ i18n.params.jdk_version.desc }}\n    required: true\n  - name: build_cmd\n    type: string_array\n    desc: ${{ i18n.params.build_cmd.desc }}\n    required: true\n  - name: workdir\n    desc: ${{ i18n.params.workdir.desc }}\n    default: \".\"\naccessibleAPIs:\n  # api compatibility check\n  - path: /api/gateway/check-compatibility\n    method: POST\n    schema: http\n\noutputs:\n  - name: buildPath\n    desc: ${{ i18n.outputs.buildPath.desc }}\n  - name: JAVA_OPTS\n    desc: ${{ i18n.outputs.JAVA_OPTS.desc }}\n\nlocale:\n  zh-CN:\n    desc: 针对 java 工程的编译打包任务\n    displayName: Java 工程编译打包\n    outputs.JAVA_OPTS.desc: 需要假如的监控agent入参\n    outputs.buildPath.desc: 包的位置\n    params.build_cmd.desc: 构建命令,如:./gradlew :user:build，mvn package\n    params.jdk_version.desc: 构建使用的jdk版本,支持8,11\n    params.workdir.desc: 工作目录一般为仓库路径 ${git-checkout}\n\n  en-US:\n    desc: Build and package a Java project\n    displayName: Java project build and package\n    outputs.JAVA_OPTS.desc: The parameters for monitoring agent\n    outputs.buildPath.desc: The path of the package\n    params.build_cmd.desc: The build command, such as ./gradlew :user:build, mvn package\n    params.jdk_version.desc: The JDK version to build, support 8, 11\n    params.workdir.desc: The working directory, usually the repository path ${git-checkout}\n",
+  "location": "cicd/",
+  "is_default": false
+}
+
+### test delete pipeline action
+DELETE http://localhost:3081/api/pipeline-actions
+Content-Type: application/json
+Internal-Client: true
+
+{
+  "name": "java-builds",
+  "version": "1.0",
+  "location": "cicd/"
+}
+
+### search pipeline action
+GET http://localhost:3081/api/pipeline-actions?categories=big_data&locations=cicd/&yamlFormat=true&is_public=true&actionNameWithVersionQuery.
+Content-Type: application/json
+Internal-Client: true
+
+

@@ -1,0 +1,118 @@
+.new-yml-editor-actions-select {
+  position: relative;
+  display: block;
+  height: auto;
+  margin-top: 4px;
+
+  .reselect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $color-primary;
+  }
+}
+
+.new-yml-editor-actions-list {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 10;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 16px 0 0 0;
+  overflow: auto;
+  background: $white;
+  border-radius: $radius;
+  @extend %shallow-shadow;
+  outline: none;
+
+  &:hover {
+    @extend %select-shadow;
+  }
+
+  .actions-input {
+    display: block;
+    width: calc(100% - 32px);
+    margin: 0 16px;
+  }
+
+  .actions-selected {
+    background: $color-active-bg;
+  }
+
+  .new-yml-editor-collapse {
+    border: 0;
+  }
+}
+
+.actions-select-label {
+  position: relative;
+  margin-bottom: 4px;
+  color: $color-dark-4;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0;
+}
+
+.actions-select-label-required {
+  color: $red;
+}
+
+.dice-yml-actions {
+  position: relative;
+  display: block;
+  height: auto;
+  cursor: pointer;
+
+  .actions-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin: 16px;
+    vertical-align: middle;
+  }
+
+  .actions-info {
+    display: inline-block;
+    width: calc(100% - 64px);
+    height: 100%;
+    padding-top: 8px;
+    overflow: hidden;
+    vertical-align: middle;
+
+    .actions-info-name {
+      color: $color-dark-8;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0;
+    }
+
+    .actions-info-description {
+      display: inline-block;
+      width: 90%;
+      height: auto;
+      max-height: 60px;
+      overflow: hidden;
+      color: $color-dark-4;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0;
+      text-align: justify;
+    }
+  }
+
+  .actions-border-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: $color-dark-1;
+  }
+
+  &:hover {
+    background: $color-active-bg;
+  }
+}

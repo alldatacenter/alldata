@@ -1,0 +1,78 @@
+.common-edit-field {
+  .ant-input,
+  .ant-input-affix-wrapper,
+  .ant-picker,
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-color: transparent;
+    transition: none;
+
+    &:hover,
+    &:focus {
+      border-color: $color-active;
+    }
+  }
+
+  .ant-select-arrow,
+  .anticon-calendar {
+    opacity: 0;
+  }
+
+  .switch-type-selector {
+    .ant-select-selector {
+      margin-right: 4px;
+      border-color: $color-border;
+
+      &:hover {
+        border-color: $color-active;
+
+        .ant-select-arrow {
+          color: $color-active;
+        }
+      }
+    }
+
+    .ant-select-arrow {
+      opacity: 1;
+    }
+
+    .ant-select-selection-item {
+      text-overflow: clip;
+    }
+  }
+
+  .member-selector {
+    .results {
+      border: 1px solid transparent;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .with-error {
+    .ant-input,
+    .ant-select-selector {
+      border-color: $color-danger;
+      box-shadow: none;
+
+      &:hover,
+      &:focus {
+        border-color: $color-danger;
+      }
+    }
+  }
+
+  &:hover {
+    .ant-select-arrow,
+    .anticon-calendar {
+      opacity: 1;
+    }
+
+    .member-selector {
+      .results {
+        border-color: $color-active;
+      }
+    }
+  }
+}

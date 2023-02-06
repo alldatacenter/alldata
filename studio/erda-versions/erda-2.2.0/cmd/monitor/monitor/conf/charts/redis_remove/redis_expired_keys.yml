@@ -1,0 +1,14 @@
+- redis_expired_keys:
+    title: "过期的键的个数"
+    metric_names: "redis"
+    type: "redis_remove"
+    order: 4
+    defines:
+      diff.expired_keys:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

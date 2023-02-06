@@ -1,0 +1,492 @@
+name: "Kafka Request"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    jolokia_agent_url:
+        name: "Jolokia Agent Url"
+    jolokia_host:
+        name: "Jolokia Host"
+    org_name:
+        name: "Org Name"
+    request:
+        name: "Request"
+fields:
+    LocalTimeMs_50thPercentile:
+        type: "number"
+        name: "Local Time Ms 50th Percentile"
+        unit: 
+    LocalTimeMs_75thPercentile:
+        type: "number"
+        name: "Local Time Ms 75th Percentile"
+        unit: 
+    LocalTimeMs_95thPercentile:
+        type: "number"
+        name: "Local Time Ms 95th Percentile"
+        unit: 
+    LocalTimeMs_98thPercentile:
+        type: "number"
+        name: "Local Time Ms 98th Percentile"
+        unit: 
+    LocalTimeMs_999thPercentile:
+        type: "number"
+        name: "Local Time Ms 999th Percentile"
+        unit: 
+    LocalTimeMs_99thPercentile:
+        type: "number"
+        name: "Local Time Ms 99th Percentile"
+        unit: 
+    LocalTimeMs_Count:
+        type: "number"
+        name: "Local Time Ms Count"
+        unit: 
+    LocalTimeMs_Max:
+        type: "number"
+        name: "Local Time Ms Maximum"
+        unit: 
+    LocalTimeMs_Mean:
+        type: "number"
+        name: "Local Time Ms Mean"
+        unit: 
+    LocalTimeMs_Min:
+        type: "number"
+        name: "Local Time Ms Minimum"
+        unit: 
+    LocalTimeMs_StdDev:
+        type: "number"
+        name: "Local Time Ms Std Dev"
+        unit: 
+    MessageConversionsTimeMs_50thPercentile:
+        type: "number"
+        name: "Message Conversions Time Ms 50th Percentile"
+        unit: 
+    MessageConversionsTimeMs_75thPercentile:
+        type: "number"
+        name: "Message Conversions Time Ms 75th Percentile"
+        unit: 
+    MessageConversionsTimeMs_95thPercentile:
+        type: "number"
+        name: "Message Conversions Time Ms 95th Percentile"
+        unit: 
+    MessageConversionsTimeMs_98thPercentile:
+        type: "number"
+        name: "Message Conversions Time Ms 98th Percentile"
+        unit: 
+    MessageConversionsTimeMs_999thPercentile:
+        type: "number"
+        name: "Message Conversions Time Ms 999th Percentile"
+        unit: 
+    MessageConversionsTimeMs_99thPercentile:
+        type: "number"
+        name: "Message Conversions Time Ms 99th Percentile"
+        unit: 
+    MessageConversionsTimeMs_Count:
+        type: "number"
+        name: "Message Conversions Time Ms Count"
+        unit: 
+    MessageConversionsTimeMs_Max:
+        type: "number"
+        name: "Message Conversions Time Ms Maximum"
+        unit: 
+    MessageConversionsTimeMs_Mean:
+        type: "number"
+        name: "Message Conversions Time Ms Mean"
+        unit: 
+    MessageConversionsTimeMs_Min:
+        type: "number"
+        name: "Message Conversions Time Ms Minimum"
+        unit: 
+    MessageConversionsTimeMs_StdDev:
+        type: "number"
+        name: "Message Conversions Time Ms Std Dev"
+        unit: 
+    RemoteTimeMs_50thPercentile:
+        type: "number"
+        name: "Remote Time Ms 50th Percentile"
+        unit: 
+    RemoteTimeMs_75thPercentile:
+        type: "number"
+        name: "Remote Time Ms 75th Percentile"
+        unit: 
+    RemoteTimeMs_95thPercentile:
+        type: "number"
+        name: "Remote Time Ms 95th Percentile"
+        unit: 
+    RemoteTimeMs_98thPercentile:
+        type: "number"
+        name: "Remote Time Ms 98th Percentile"
+        unit: 
+    RemoteTimeMs_999thPercentile:
+        type: "number"
+        name: "Remote Time Ms 999th Percentile"
+        unit: 
+    RemoteTimeMs_99thPercentile:
+        type: "number"
+        name: "Remote Time Ms 99th Percentile"
+        unit: 
+    RemoteTimeMs_Count:
+        type: "number"
+        name: "Remote Time Ms Count"
+        unit: 
+    RemoteTimeMs_Max:
+        type: "number"
+        name: "Remote Time Ms Maximum"
+        unit: 
+    RemoteTimeMs_Mean:
+        type: "number"
+        name: "Remote Time Ms Mean"
+        unit: 
+    RemoteTimeMs_Min:
+        type: "number"
+        name: "Remote Time Ms Minimum"
+        unit: 
+    RemoteTimeMs_StdDev:
+        type: "number"
+        name: "Remote Time Ms Std Dev"
+        unit: 
+    RequestBytes_50thPercentile:
+        type: "number"
+        name: "Request Bytes 50th Percentile"
+        unit: 
+    RequestBytes_75thPercentile:
+        type: "number"
+        name: "Request Bytes 75th Percentile"
+        unit: 
+    RequestBytes_95thPercentile:
+        type: "number"
+        name: "Request Bytes 95th Percentile"
+        unit: 
+    RequestBytes_98thPercentile:
+        type: "number"
+        name: "Request Bytes 98th Percentile"
+        unit: 
+    RequestBytes_999thPercentile:
+        type: "number"
+        name: "Request Bytes 999th Percentile"
+        unit: 
+    RequestBytes_99thPercentile:
+        type: "number"
+        name: "Request Bytes 99th Percentile"
+        unit: 
+    RequestBytes_Count:
+        type: "number"
+        name: "Request Bytes Count"
+        unit: 
+    RequestBytes_Max:
+        type: "number"
+        name: "Request Bytes Maximum"
+        unit: 
+    RequestBytes_Mean:
+        type: "number"
+        name: "Request Bytes Mean"
+        unit: 
+    RequestBytes_Min:
+        type: "number"
+        name: "Request Bytes Minimum"
+        unit: 
+    RequestBytes_StdDev:
+        type: "number"
+        name: "Request Bytes Std Dev"
+        unit: 
+    RequestQueueTimeMs_50thPercentile:
+        type: "number"
+        name: "Request Queue Time Ms 50th Percentile"
+        unit: 
+    RequestQueueTimeMs_75thPercentile:
+        type: "number"
+        name: "Request Queue Time Ms 75th Percentile"
+        unit: 
+    RequestQueueTimeMs_95thPercentile:
+        type: "number"
+        name: "Request Queue Time Ms 95th Percentile"
+        unit: 
+    RequestQueueTimeMs_98thPercentile:
+        type: "number"
+        name: "Request Queue Time Ms 98th Percentile"
+        unit: 
+    RequestQueueTimeMs_999thPercentile:
+        type: "number"
+        name: "Request Queue Time Ms 999th Percentile"
+        unit: 
+    RequestQueueTimeMs_99thPercentile:
+        type: "number"
+        name: "Request Queue Time Ms 99th Percentile"
+        unit: 
+    RequestQueueTimeMs_Count:
+        type: "number"
+        name: "Request Queue Time Ms Count"
+        unit: 
+    RequestQueueTimeMs_Max:
+        type: "number"
+        name: "Request Queue Time Ms Maximum"
+        unit: 
+    RequestQueueTimeMs_Mean:
+        type: "number"
+        name: "Request Queue Time Ms Mean"
+        unit: 
+    RequestQueueTimeMs_Min:
+        type: "number"
+        name: "Request Queue Time Ms Minimum"
+        unit: 
+    RequestQueueTimeMs_StdDev:
+        type: "number"
+        name: "Request Queue Time Ms Std Dev"
+        unit: 
+    RequestsPerSec_Count:
+        type: "number"
+        name: "Requests Per Sec Count"
+        unit: 
+    RequestsPerSec_EventType:
+        type: "string"
+        name: "Requests Per Sec Event Type"
+        unit: 
+    RequestsPerSec_FifteenMinuteRate:
+        type: "number"
+        name: "Requests Per Sec Fifteen Minute Rate"
+        unit: 
+    RequestsPerSec_FiveMinuteRate:
+        type: "number"
+        name: "Requests Per Sec Five Minute Rate"
+        unit: 
+    RequestsPerSec_MeanRate:
+        type: "number"
+        name: "Requests Per Sec Mean Rate"
+        unit: 
+    RequestsPerSec_OneMinuteRate:
+        type: "number"
+        name: "Requests Per Sec One Minute Rate"
+        unit: 
+    RequestsPerSec_RateUnit:
+        type: "string"
+        name: "Requests Per Sec Rate Unit"
+        unit: 
+    ResponseQueueTimeMs_50thPercentile:
+        type: "number"
+        name: "Response Queue Time Ms 50th Percentile"
+        unit: 
+    ResponseQueueTimeMs_75thPercentile:
+        type: "number"
+        name: "Response Queue Time Ms 75th Percentile"
+        unit: 
+    ResponseQueueTimeMs_95thPercentile:
+        type: "number"
+        name: "Response Queue Time Ms 95th Percentile"
+        unit: 
+    ResponseQueueTimeMs_98thPercentile:
+        type: "number"
+        name: "Response Queue Time Ms 98th Percentile"
+        unit: 
+    ResponseQueueTimeMs_999thPercentile:
+        type: "number"
+        name: "Response Queue Time Ms 999th Percentile"
+        unit: 
+    ResponseQueueTimeMs_99thPercentile:
+        type: "number"
+        name: "Response Queue Time Ms 99th Percentile"
+        unit: 
+    ResponseQueueTimeMs_Count:
+        type: "number"
+        name: "Response Queue Time Ms Count"
+        unit: 
+    ResponseQueueTimeMs_Max:
+        type: "number"
+        name: "Response Queue Time Ms Maximum"
+        unit: 
+    ResponseQueueTimeMs_Mean:
+        type: "number"
+        name: "Response Queue Time Ms Mean"
+        unit: 
+    ResponseQueueTimeMs_Min:
+        type: "number"
+        name: "Response Queue Time Ms Minimum"
+        unit: 
+    ResponseQueueTimeMs_StdDev:
+        type: "number"
+        name: "Response Queue Time Ms Std Dev"
+        unit: 
+    ResponseSendTimeMs_50thPercentile:
+        type: "number"
+        name: "Response Send Time Ms 50th Percentile"
+        unit: 
+    ResponseSendTimeMs_75thPercentile:
+        type: "number"
+        name: "Response Send Time Ms 75th Percentile"
+        unit: 
+    ResponseSendTimeMs_95thPercentile:
+        type: "number"
+        name: "Response Send Time Ms 95th Percentile"
+        unit: 
+    ResponseSendTimeMs_98thPercentile:
+        type: "number"
+        name: "Response Send Time Ms 98th Percentile"
+        unit: 
+    ResponseSendTimeMs_999thPercentile:
+        type: "number"
+        name: "Response Send Time Ms 999th Percentile"
+        unit: 
+    ResponseSendTimeMs_99thPercentile:
+        type: "number"
+        name: "Response Send Time Ms 99th Percentile"
+        unit: 
+    ResponseSendTimeMs_Count:
+        type: "number"
+        name: "Response Send Time Ms Count"
+        unit: 
+    ResponseSendTimeMs_Max:
+        type: "number"
+        name: "Response Send Time Ms Maximum"
+        unit: 
+    ResponseSendTimeMs_Mean:
+        type: "number"
+        name: "Response Send Time Ms Mean"
+        unit: 
+    ResponseSendTimeMs_Min:
+        type: "number"
+        name: "Response Send Time Ms Minimum"
+        unit: 
+    ResponseSendTimeMs_StdDev:
+        type: "number"
+        name: "Response Send Time Ms Std Dev"
+        unit: 
+    TemporaryMemoryBytes_50thPercentile:
+        type: "number"
+        name: "Temporary Memory Bytes 50th Percentile"
+        unit: 
+    TemporaryMemoryBytes_75thPercentile:
+        type: "number"
+        name: "Temporary Memory Bytes 75th Percentile"
+        unit: 
+    TemporaryMemoryBytes_95thPercentile:
+        type: "number"
+        name: "Temporary Memory Bytes 95th Percentile"
+        unit: 
+    TemporaryMemoryBytes_98thPercentile:
+        type: "number"
+        name: "Temporary Memory Bytes 98th Percentile"
+        unit: 
+    TemporaryMemoryBytes_999thPercentile:
+        type: "number"
+        name: "Temporary Memory Bytes 999th Percentile"
+        unit: 
+    TemporaryMemoryBytes_99thPercentile:
+        type: "number"
+        name: "Temporary Memory Bytes 99th Percentile"
+        unit: 
+    TemporaryMemoryBytes_Count:
+        type: "number"
+        name: "Temporary Memory Bytes Count"
+        unit: 
+    TemporaryMemoryBytes_Max:
+        type: "number"
+        name: "Temporary Memory Bytes Maximum"
+        unit: 
+    TemporaryMemoryBytes_Mean:
+        type: "number"
+        name: "Temporary Memory Bytes Mean"
+        unit: 
+    TemporaryMemoryBytes_Min:
+        type: "number"
+        name: "Temporary Memory Bytes Minimum"
+        unit: 
+    TemporaryMemoryBytes_StdDev:
+        type: "number"
+        name: "Temporary Memory Bytes Std Dev"
+        unit: 
+    ThrottleTimeMs_50thPercentile:
+        type: "number"
+        name: "Throttle Time Ms 50th Percentile"
+        unit: 
+    ThrottleTimeMs_75thPercentile:
+        type: "number"
+        name: "Throttle Time Ms 75th Percentile"
+        unit: 
+    ThrottleTimeMs_95thPercentile:
+        type: "number"
+        name: "Throttle Time Ms 95th Percentile"
+        unit: 
+    ThrottleTimeMs_98thPercentile:
+        type: "number"
+        name: "Throttle Time Ms 98th Percentile"
+        unit: 
+    ThrottleTimeMs_999thPercentile:
+        type: "number"
+        name: "Throttle Time Ms 999th Percentile"
+        unit: 
+    ThrottleTimeMs_99thPercentile:
+        type: "number"
+        name: "Throttle Time Ms 99th Percentile"
+        unit: 
+    ThrottleTimeMs_Count:
+        type: "number"
+        name: "Throttle Time Ms Count"
+        unit: 
+    ThrottleTimeMs_Max:
+        type: "number"
+        name: "Throttle Time Ms Maximum"
+        unit: 
+    ThrottleTimeMs_Mean:
+        type: "number"
+        name: "Throttle Time Ms Mean"
+        unit: 
+    ThrottleTimeMs_Min:
+        type: "number"
+        name: "Throttle Time Ms Minimum"
+        unit: 
+    ThrottleTimeMs_StdDev:
+        type: "number"
+        name: "Throttle Time Ms Std Dev"
+        unit: 
+    TotalTimeMs_50thPercentile:
+        type: "number"
+        name: "Total Time Ms 50th Percentile"
+        unit: 
+    TotalTimeMs_75thPercentile:
+        type: "number"
+        name: "Total Time Ms 75th Percentile"
+        unit: 
+    TotalTimeMs_95thPercentile:
+        type: "number"
+        name: "Total Time Ms 95th Percentile"
+        unit: 
+    TotalTimeMs_98thPercentile:
+        type: "number"
+        name: "Total Time Ms 98th Percentile"
+        unit: 
+    TotalTimeMs_999thPercentile:
+        type: "number"
+        name: "Total Time Ms 999th Percentile"
+        unit: 
+    TotalTimeMs_99thPercentile:
+        type: "number"
+        name: "Total Time Ms 99th Percentile"
+        unit: 
+    TotalTimeMs_Count:
+        type: "number"
+        name: "Total Time Ms Count"
+        unit: 
+    TotalTimeMs_Max:
+        type: "number"
+        name: "Total Time Ms Maximum"
+        unit: 
+    TotalTimeMs_Mean:
+        type: "number"
+        name: "Total Time Ms Mean"
+        unit: 
+    TotalTimeMs_Min:
+        type: "number"
+        name: "Total Time Ms Minimum"
+        unit: 
+    TotalTimeMs_StdDev:
+        type: "number"
+        name: "Total Time Ms Std Dev"
+        unit: 
+

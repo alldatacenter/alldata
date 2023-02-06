@@ -1,0 +1,33 @@
+.repo-branch-compare {
+  display: flex;
+  align-items: center;
+
+  .compare-button {
+    margin-left: $p12;
+  }
+
+  .switch-branch {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 34px;
+    margin: 0 $p12;
+    background-color: $white;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    cursor: pointer;
+
+    i {
+      color: $color-dark-4;
+    }
+
+    &:hover {
+      border-color: $color-active;
+
+      i {
+        color: $color-active;
+      }
+    }
+  }
+}

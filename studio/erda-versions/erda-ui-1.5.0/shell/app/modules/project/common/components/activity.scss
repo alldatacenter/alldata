@@ -1,0 +1,112 @@
+.active-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  margin-top: 15px;
+  padding: 8px;
+  background-color: $white;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+
+  @keyframes opacity {
+    from {
+      opacity: 0.4;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    .extra-items {
+      opacity: 1;
+      -webkit-animation: opacity 0.5s;
+      animation: opacity 0.5s;
+    }
+  }
+
+  .active-header {
+    display: flex;
+    align-items: center;
+
+    .dice-avatar {
+      min-width: 32px;
+      min-height: 32px;
+    }
+
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 20px 0 12px;
+      word-break: break-word;
+
+      .name {
+        color: $color-text;
+      }
+    }
+  }
+
+  .extra-items {
+    position: absolute;
+    top: 12px;
+    right: 4px;
+    opacity: 0;
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+  }
+}
+
+.activity-timeline {
+  .time {
+    margin-bottom: 8px;
+    line-height: 24px;
+  }
+
+  .list {
+    @extend %shallow-shadow;
+    background-color: $white;
+    border-radius: $radius;
+  }
+
+  .tc1 {
+    font-weight: 500;
+  }
+
+  .tc2 {
+    color: $color-text;
+  }
+
+  .tc3 {
+    color: $color-text-desc;
+  }
+
+  .load-more {
+    padding-bottom: unset;
+
+    & > a {
+      line-height: 24px;
+    }
+  }
+
+  .ant-timeline-item {
+    &:last-child {
+      .ant-timeline-item-tail {
+        top: -8px;
+      }
+    }
+
+    &.ant-timeline-item-pending {
+      .ant-timeline-item-head {
+        left: 6px;
+        padding: unset;
+        border-radius: 100px;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+- system_addon_kafka_consume_rate:
+    title: "Topic消费速度"
+    metric_names: "kafka_consumer"
+    type: "kafka"
+    order: 7
+    defines:
+      avg.consume_rate_per_sec:
+        label: "消费速度"
+        unit: "/s"
+        unit_type: ""
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "((doc['tags.topic'].value+'/'+doc['tags.group'].value))"
+

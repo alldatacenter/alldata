@@ -1,0 +1,155 @@
+@import './util';
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+html body {
+  color: $color-text;
+  font-size: 14px;
+  font-family: 'Roboto-Regular', 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue',
+    Arial, sans-serif;
+  line-height: 18px;
+  background-color: $color-bg;
+}
+
+html body[lang='en'] {
+  font-family: 'Roboto-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color-text;
+  font-weight: 500;
+  font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: 'SF Mono', Monaco, Inconsolata, 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace;
+
+  &::selection {
+    background: $green;
+  }
+}
+
+a {
+  color: $color-primary;
+
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.iconfont,
+.erda-icon {
+  display: inline-block;
+  margin-right: 4px;
+  line-height: 1;
+}
+
+.erda-icon {
+  transform: translateY(2px);
+
+  &-spin svg {
+    animation: erda-icon-spin 1s infinite linear;
+
+    // deal temporary and remove this when icon-park fix the spin problem
+    @keyframes erda-icon-spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes erda-icon-spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+button > .iconfont {
+  margin-right: 0;
+  line-height: inherit;
+  vertical-align: -0.1em;
+}
+
+input::-webkit-input-placeholder {
+  color: $color-dark-2;
+}
+
+input::-moz-placeholder {
+  color: $color-dark-2;
+}
+
+table {
+  table-layout: fixed;
+}
+
+.monitor-sort-panel {
+  padding: 12px 12px 8px;
+  background-color: $white;
+  border-radius: $radius;
+  @extend %shallow-shadow;
+
+  .ant-spin-container {
+    transition-property: opacity;
+  }
+}

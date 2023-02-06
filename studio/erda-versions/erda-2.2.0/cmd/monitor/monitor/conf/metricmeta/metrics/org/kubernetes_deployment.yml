@@ -1,0 +1,36 @@
+name: "Kubernetes Deployment"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    deployment_name:
+        name: "Deployment Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    instance_type:
+        name: "Instance Type"
+    namespace:
+        name: "Namespace"
+    org_name:
+        name: "Org Name"
+fields:
+    created:
+        type: "number"
+        name: "Created"
+        unit: 
+    replicas_available:
+        type: "number"
+        name: "Replicas Available"
+        unit: 
+    replicas_unavailable:
+        type: "number"
+        name: "Replicas Unavailable"
+        unit: 
+

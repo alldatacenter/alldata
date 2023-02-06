@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package erda.core.pipeline.action;
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/erda-project/erda-proto-go/core/pipeline/action/pb";
+
+service ActionService {
+    rpc List (PipelineActionListRequest) returns (PipelineActionListResponse) {
+        option (google.api.http) = {
+            get: "/api/pipeline-actions",
+        };
+    }
+    rpc Save (PipelineActionSaveRequest) returns (PipelineActionSaveResponse) {
+        option (google.api.http) = {
+            post: "/api/pipeline-actions/actions/save",
+        };
+    }
+    rpc Delete (PipelineActionDeleteRequest) returns (PipelineActionDeleteResponse) {
+        option (google.api.http) = {
+            delete: "/api/pipeline-actions",
+        };
+    }
+}
+
+message Action {
+    string ID = 1 [json_name = "id"];
+    google.protobuf.Timestamp timeCreated = 2;
+    google.protobuf.Timestamp timeUpdated = 3;
+    string name = 4;
+    string category = 5;
+    string display_name = 6;
+    string logo_url = 7;
+    string desc = 8;
+    string readme = 9;
+    google.protobuf.Value dice = 10;
+    google.protobuf.Value spec = 11;
+    string version = 12;
+    string location = 13;
+    bool isPublic = 14;
+    bool is_default = 15;
+    bool is_delete = 16;
+    google.protobuf.Timestamp softDeletedAt = 17;
+}
+
+message ActionNameWithVersionQuery {
+    string name = 1;
+    string version = 2;
+    bool is_default = 3;
+    string locationFilter = 4;
+}
+
+// list
+message PipelineActionListRequest {
+    repeated ActionNameWithVersionQuery actionNameWithVersionQuery = 1;
+    repeated string categories = 2;
+    repeated string locations = 3;
+    bool is_public = 4;
+    bool yamlFormat = 5;
+}
+
+message PipelineActionListResponse {
+    repeated Action data = 1;
+}
+
+// save
+message PipelineActionSaveRequest {
+    string readme = 1;
+    string dice = 2;
+    string spec = 3;
+    string location = 4;
+}
+
+message PipelineActionSaveResponse {
+    Action action = 1;
+}
+
+// delete
+message PipelineActionDeleteRequest {
+    string name = 1;
+    string version = 2;
+    string location = 4;
+}
+
+message PipelineActionDeleteResponse {
+
+}

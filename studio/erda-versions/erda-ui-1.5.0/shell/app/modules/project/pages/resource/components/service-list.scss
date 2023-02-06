@@ -1,0 +1,122 @@
+.monitor-service-table {
+  border-radius: $radius;
+  @extend %shallow-shadow;
+
+  table {
+    table-layout: auto;
+  }
+
+  .ant-table-tbody > tr > td {
+    word-break: break-all;
+  }
+
+  .table-progress {
+    display: inline-block;
+    width: 50px;
+    margin-right: 15px;
+    text-align: left;
+
+    .color-danger {
+      @include progress-bg($color-danger);
+    }
+
+    .color-warning {
+      @include progress-bg($color-warning);
+    }
+
+    .color-success {
+      @include progress-bg($color-success);
+    }
+
+    .color-crash {
+      @include progress-bg(#b80000);
+
+      .ant-progress-bg {
+        animation: crashAnimation 1.5s infinite ease-in-out;
+      }
+    }
+
+    @keyframes crashAnimation {
+      0% {
+        box-shadow: 0 0 -2px #b80000;
+        opacity: 1;
+      }
+
+      50% {
+        box-shadow: 0 0 2px #ff0000;
+        opacity: 0.9;
+      }
+
+      100% {
+        box-shadow: 0 0 -2px #b80000;
+        opacity: 1;
+      }
+    }
+  }
+
+  .table-percent {
+    display: inline-block;
+    width: 50px;
+    text-align: left;
+  }
+
+  &.has-into-link {
+    .ant-table-thead > tr > th,
+    .ant-table-tbody > tr > td {
+      height: 45px;
+      padding: 6px 8px;
+    }
+
+    .into-link {
+      color: #1b2029;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.item-image {
+  & > span {
+    position: relative;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    .image-txt-container {
+      position: absolute;
+      width: 100%;
+      line-height: 2rem;
+
+      .tail {
+        display: inline-block;
+        width: calc(100% - 45px);
+        direction: rtl;
+      }
+
+      .hack-safari {
+        direction: ltr;
+      }
+
+      .head {
+        display: inline-block;
+        overflow: hidden;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.service-table-progress-tip {
+  .table-tooltip {
+    color: $lightnavy;
+
+    .color-crash {
+      color: #ff0000;
+    }
+  }
+}

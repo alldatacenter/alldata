@@ -1,0 +1,19 @@
+scenario: cmp-cluster-list
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - list
+
+
+components:
+  page:
+    type: Container
+  list:
+    type: ListNew
+
+rendering:
+  __DefaultRendering__:
+    - name: page
+    - name: list

@@ -1,0 +1,112 @@
+scenario: cmp-dashboard-workload-detail
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - header
+      - workloadInfoTitle
+      - workloadInfo
+      - podsTableTitle
+      - podsTable
+      - yamlDrawer
+    header:
+      left: leftContent
+      right: rightContent
+    leftContent:
+      - workloadTitle
+      - workloadStatus
+    rightContent:
+      - operationButton
+    yamlDrawer:
+      content: yamlFileEditor
+
+components:
+  page:
+    type: Container
+  header:
+    type: LRContainer
+  leftContent:
+    type: RowContainer
+  rightContent:
+    type: RowContainer
+  workloadStatus:
+    type: Badge
+  workloadTitle:
+    type: Title
+  podsTableTitle:
+    type: Title
+  workloadInfoTitle:
+    type: Title
+  workloadInfo:
+    type: Panel
+  podsTable:
+    type: Table
+  operationButton:
+    type: Button
+  yamlDrawer:
+    type: Drawer
+  yamlFileEditor:
+    type: FileEditor
+
+options:
+  returnAllComponents: true
+
+rendering:
+  __DefaultRendering__:
+    - name: page
+    - name: header
+    - name: leftContent
+    - name: rightContent
+    - name: workloadTitle
+      state:
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+        - name: "workloadId"
+          value: "{{ __InParams__.workloadId }}"
+        - name: "podId"
+          value: "{{ __InParams__.podId }}"
+    - name: workloadStatus
+      state:
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+        - name: "workloadId"
+          value: "{{ workloadTitle.workloadId }}"
+    - name: workloadInfoTitle
+    - name: workloadInfo
+      state:
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+        - name: "workloadId"
+          value: "{{ workloadTitle.workloadId }}"
+    - name: podsTableTitle
+    - name: podsTable
+      state:
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+        - name: "workloadId"
+          value: "{{ workloadTitle.workloadId }}"
+    - name: operationButton
+      state:
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+        - name: "workloadId"
+          value: "{{ workloadTitle.workloadId }}"
+  podsTable:
+    - name: workloadStatus
+  operationButton:
+    - name: yamlDrawer
+    - name: yamlFileEditor
+      state:
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+        - name: "workloadId"
+          value: "{{ workloadTitle.workloadId }}"
+    - name: workloadStatus
+    - name: workloadInfo
+    - name: podsTable
+  yamlFileEditor:
+    - name: yamlDrawer
+    - name: workloadStatus
+    - name: workloadInfo
+    - name: podsTable

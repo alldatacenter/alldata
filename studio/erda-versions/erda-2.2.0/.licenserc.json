@@ -1,0 +1,16 @@
+{
+  "ignore": [
+    "vendor/",
+    "third_party/",
+    "pkg/clientgo/apis/flinkoperator/",
+    "pkg/clientgo/apis/openyurt/",
+    "pkg/clientgo/clientset/",
+    "pkg/k8s/httpstream/spdy",
+    "pkg/k8s/spdy",
+    "pkg/pipe.v2/pipe.go",
+    "internal/tools/admin-tools/statik/statik.go",
+    "internal/tools/gittar/pkg/gitmodule",
+    "api",
+    "internal/tools/monitor/core/log/storage/clickhouse/query_parser/parser"
+  ]
+}

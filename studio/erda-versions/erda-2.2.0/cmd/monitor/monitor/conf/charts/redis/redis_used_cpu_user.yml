@@ -1,0 +1,16 @@
+- redis_used_cpu_user:
+    title: "用户态CPU使用率"
+    metric_names: "redis"
+    type: "redis"
+    order: 14
+    defines:
+      max.used_cpu_user:
+        label: ""
+        unit: "%"
+        unit_type: "PERCENT"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

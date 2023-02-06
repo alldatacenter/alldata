@@ -1,0 +1,105 @@
+.publisher-list-section {
+  .search-input {
+    width: 268px;
+    margin-bottom: 16px;
+  }
+
+  .publisher-item {
+    padding: 12px;
+    border-bottom: 1px solid $color-border;
+
+    &:hover {
+      background: $color-active-bg;
+
+      .item-operation {
+        display: block;
+      }
+    }
+
+    .item-container {
+      // width: 100%;
+      // overflow: hidden;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .item-img {
+      width: 64px;
+      height: 64px;
+      margin-right: 16px;
+      line-height: 64px;
+      text-align: center;
+      vertical-align: middle;
+
+      img {
+        width: 46px;
+        height: 46px;
+        border-radius: 100%;
+      }
+
+      svg {
+        width: 46px;
+        height: 46px;
+        margin-top: 6px;
+      }
+    }
+
+    .item-content {
+      flex: 1;
+      width: 0;
+
+      .item-name {
+        height: 28px;
+        margin-bottom: 4px;
+        font-size: 20px;
+        line-height: 28px;
+      }
+
+      .item-desc {
+        height: 22px;
+        color: $color-text-sub;
+        line-height: 22px;
+      }
+
+      .item-tips {
+        display: flex;
+        align-items: center;
+        color: $color-dark-4;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: 0;
+
+        i {
+          font-size: 16px;
+
+          &:not(:first-child) {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+
+    .item-operation {
+      display: none;
+      height: 64px;
+      margin-left: 10px;
+      color: $color-text-desc;
+    }
+  }
+
+  .item-status {
+    //float: right;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
+
+    &.off {
+      color: $color-dark-4;
+    }
+
+    &.on {
+      color: #25ca64;
+    }
+  }
+}

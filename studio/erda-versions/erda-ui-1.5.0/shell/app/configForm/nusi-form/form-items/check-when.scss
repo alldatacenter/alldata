@@ -1,0 +1,47 @@
+.dice-form-nusi-check-when-combiner {
+  .combiner-operation {
+    color: $color-text-sub;
+    font-size: 20px;
+    cursor: pointer;
+
+    &.sub {
+      font-size: 16px;
+    }
+  }
+
+  .combiner-item-container {
+    display: flex;
+    flex-direction: column;
+
+    .split {
+      text-align: center;
+    }
+  }
+
+  .combiner-item-box {
+    display: flex;
+    align-items: center;
+
+    > * {
+      margin-right: 8px;
+    }
+  }
+
+  .combiner-item {
+    width: 100%;
+    // margin-bottom: 12px;
+    padding: 12px;
+    border: 1px dashed $color-border;
+    border-radius: 5px;
+
+    .combiner-sub-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+
+      > * {
+        margin-right: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,201 @@
+- name: "机器时钟一致性异常告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    elapsed_abs_avg: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}} 时钟一致性异常告警】
+  template: |
+    【机器时钟一致性异常告警】
+
+    时钟偏移绝对值: {{elapsed_abs_avg}}
+
+    发送时间戳(ms): {{send_timestamp}}
+
+    接收时间戳(ms): {{receive_timestamp}}
+
+    源机器: {{source_host_ip}}
+
+    目标机器: {{host_ip}}
+
+    集群: {{cluster_name}}
+
+    组织名称: {{org_name}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "机器时钟一致性异常告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    elapsed_abs_avg: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}} 时钟一致性异常告警】
+  template: |
+    {{cluster_name}}集群机器{{host_ip}}触发时钟一致性异常告警，组织名称: {{org_name}}，时钟偏移绝对值: {{elapsed_abs_avg}}，告警级别: {{level}}
+- name: "机器时钟一致性异常告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    elapsed_abs_avg: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}} 时钟一致性异常告警】
+  template: |
+    {{cluster_name}}集群机器{{host_ip}}触发时钟一致性异常告警，组织名称: {{org_name}}，时钟偏移绝对值: {{elapsed_abs_avg}}，告警级别: {{level}}
+- name: "时钟一致性异常恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    elapsed_abs_avg: "time:ms"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}} 时钟一致性异常恢复】
+  template: |
+    【机器时钟一致性异常恢复】
+
+    时钟偏移绝对值: {{elapsed_abs_avg}}
+
+    源机器: {{source_host_ip}}
+
+    目标机器: {{host_ip}}
+
+    集群: {{cluster_name}}
+
+    组织名称: {{org_name}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "时钟一致性异常恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    elapsed_abs_avg: "time:ms"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}} 时钟一致性异常恢复】
+  template: |
+    {{cluster_name}}集群机器{{host_ip}}触发时钟一致性异常告警恢复，组织名称: {{org_name}}，时钟偏移绝对值: {{elapsed_abs_avg}}
+- name: "时钟一致性异常恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    elapsed_abs_avg: "time:ms"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群机器{{host_ip}} 时钟一致性异常恢复】
+  template: |
+    {{cluster_name}}集群机器{{host_ip}}触发时钟一致性异常告警恢复，组织名称: {{org_name}}，时钟偏移绝对值: {{elapsed_abs_avg}}
+
+- name: "Clock consistency exception alarm"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    elapsed_abs_avg: "time:ms"
+  title: |-
+    [Clock consistency exception alarm of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    [Clock consistency exception alarm]
+
+    Absolute value of clock offset: {{elapsed_abs_avg}}
+
+    Sending timestamp (ms): {{send_timestamp}}
+
+    Receiving time stamp (ms): {{receive_timestamp}}
+
+    Source machine: {{source_host_ip}}
+
+    Target machine: {{host_ip}}
+
+    Cluster: {{cluster_name}}
+
+    Organization name: {{org_name}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Clock consistency exception alarm"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    elapsed_abs_avg: "time:ms"
+  title: |-
+    [Clock consistency exception alarm of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    Clock consistency exception alarm triggered by machine {{host_ip}} of cluster {{cluster_name}}, organization name: {{org_name}}, absolute value of clock offset: {{elapsed_abs_avg}}
+- name: "Clock consistency exception alarm"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    elapsed_abs_avg: "time:ms"
+  title: |-
+    [Clock consistency exception alarm of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    Clock consistency exception alarm triggered by machine {{host_ip}} of cluster {{cluster_name}}, organization name: {{org_name}}, absolute value of clock offset: {{elapsed_abs_avg}}
+- name: "Clock consistency exception recovery"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    elapsed_abs_avg: "time:ms"
+    trigger_duration: "time:ms"
+  title: |-
+    [Clock consistency exception recovery of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    [Clock consistency exception recovery]
+
+    Absolute value of clock offset: {{elapsed_abs_avg}}
+
+    Source machine: {{source_host_ip}}
+
+    Target machine: {{host_ip}}
+
+    Cluster: {{cluster_name}}
+
+    Organization name: {{org_name}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Clock consistency exception recovery"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    elapsed_abs_avg: "time:ms"
+    trigger_duration: "time:ms"
+  title: |-
+    [Clock consistency exception recovery of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    Clock consistency exception alarm recovery triggered by machine {{host_ip}} of cluster {{cluster_name}}, organization name: {{org_name}}, absolute value of clock offset: {{elapsed_abs_avg}}
+- name: "Clock consistency exception recovery"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    elapsed_abs_avg: "time:ms"
+    trigger_duration: "time:ms"
+  title: |-
+    [Clock consistency exception recovery of machine {{host_ip}} of cluster {{cluster_name}}]
+  template: |
+    Clock consistency exception alarm recovery triggered by machine {{host_ip}} of cluster {{cluster_name}}, organization name: {{org_name}}, absolute value of clock offset: {{elapsed_abs_avg}}

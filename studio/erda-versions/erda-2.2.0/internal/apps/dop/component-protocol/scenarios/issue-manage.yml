@@ -1,0 +1,51 @@
+scenario: issue-manage
+
+hierarchy:
+  root: issueManage
+  structure:
+    issueManage:
+      - content
+    head:
+      left: issueFilter
+      right: issueOperations
+    issueOperations:
+      - issueExport
+      - issueImport
+    content:
+      slot: head
+      table: issueTable
+
+options:
+  syncIntervalSecond: 0
+
+components:
+  issueManage:
+    type: Container
+  head:
+    type: LRContainer
+  content:
+    type: ComposeTable
+  issueOperations:
+    type: RowContainer
+  issueFilter:
+    type: ConfigurableFilter
+  issueExport:
+    type: Custom
+  issueImport:
+    type: Custom
+  issueTable:
+    type: Table
+
+rendering:
+  issueFilter:
+    - name: issueTable
+
+  __DefaultRendering__:
+    - name: issueManage
+    - name: head
+    - name: content
+    - name: issueFilter
+    - name: issueOperations
+    - name: issueImport
+    - name: issueExport
+    - name: issueTable

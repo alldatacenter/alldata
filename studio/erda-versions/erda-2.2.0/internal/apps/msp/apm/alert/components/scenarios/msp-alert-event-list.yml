@@ -1,0 +1,27 @@
+scenario: msp-alert-event-list
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - content
+    content:
+      slot: filter
+      table: table
+    filter:
+      - configurableFilter
+      - searchFilter
+components:
+  page:
+    type: Container
+  content:
+    type: ComposeTable
+  filter:
+    type: RowContainer
+  searchFilter:
+    type: ContractiveFilter
+  configurableFilter:
+    type: ConfigurableFilter
+  table:
+    type: Table
+    version: 2

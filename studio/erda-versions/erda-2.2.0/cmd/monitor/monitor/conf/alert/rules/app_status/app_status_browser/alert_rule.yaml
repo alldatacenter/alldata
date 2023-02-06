@@ -1,0 +1,9 @@
+id: app_status_browser
+name: 页面内容改变
+alert_scope: micro_service
+attributes:
+  alert_group: '{{terminus_key}}-{{metric_id}}'
+  display_url_id: micro_status_detail
+  level: Notice
+  recover: "false"
+  tickets_metric_key: '{{metric_id}}'

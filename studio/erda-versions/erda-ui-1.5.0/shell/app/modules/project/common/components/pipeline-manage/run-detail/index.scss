@@ -1,0 +1,51 @@
+.pipeline-detail {
+  .info-header {
+    display: flex;
+    justify-content: space-between;
+
+    .iconfont {
+      color: $color-dark-4;
+    }
+
+    &-right {
+      display: flex;
+
+      .build-operator {
+        margin-left: $p12;
+      }
+
+      .iconfont {
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .auto-test-detail-err-msg {
+    padding: 12px;
+    background-color: rgba(245, 235, 210, 0.4);
+    border: 1px solid #f5ebd2;
+    border-radius: 0.3125rem;
+
+    pre {
+      margin: 0;
+      font-family: inherit;
+    }
+
+    .auto-test-err-header {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .auto-test-err-icon {
+      margin-right: 0.3125rem;
+      color: $color-warning;
+      font-weight: bold;
+    }
+
+    .auto-test-err-stack {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+    }
+  }
+}

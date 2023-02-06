@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package erda.core.hepa.openapi_rule;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/openapi_rule/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "core/hepa/hepa.proto";
+
+service OpenapiRuleService {
+  rpc GetLimits(GetLimitsRequest) returns (GetLimitsResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/limits?consumerId={consumerId}&packageId={packageId}&pageNo={pageNo}&pageSize={pageSize}",
+    };
+  }
+
+  rpc CreateLimit(CreateLimitRequest) returns (CreateLimitResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/openapi/limits?projectId={projectId}&env={env}",
+      body: "limitRequest",
+    };
+  }
+
+  rpc UpdateLimit(UpdateLimitRequest) returns (UpdateLimitResponse) {
+    option (google.api.http) = {
+      patch: "/api/gateway/openapi/limits/{ruleId}",
+      body: "limitRequest",
+    };
+  }
+
+  rpc DeleteLimit(DeleteLimitRequest) returns (DeleteLimitResponse) {
+    option (google.api.http) = {
+      delete: "/api/gateway/openapi/limits/{ruleId}",
+    };
+  }
+}
+
+message DeleteLimitResponse {
+  bool data = 1;
+}
+
+message DeleteLimitRequest {
+  string ruleId = 1;
+}
+
+message LimitRuleInfo {
+  string consumerId = 1;
+  string packageId = 2;
+  string method = 3;
+  string apiPath = 4;
+  LimitType limit = 5;
+  string id = 6;
+  string createAt = 7;
+  string consumerName = 8;
+  string packageName = 9;
+}
+
+message UpdateLimitResponse {
+  LimitRuleInfo data = 1;
+}
+
+message UpdateLimitRequest {
+  string ruleId = 1;
+  LimitRequest limitRequest = 2;
+}
+
+message CreateLimitResponse {
+  bool data = 1;
+}
+
+message LimitType {
+  int32 qpd = 1;
+  int32 qph = 2;
+  int32 qpm = 3;
+  int32 qps = 4;
+}
+
+message LimitRequest {
+  string consumerId = 1;
+  string packageId = 2;
+  string method = 3;
+  string apiPath = 4;
+  LimitType limit = 5;
+}
+
+message CreateLimitRequest {
+  string projectId = 1;
+  string env = 2;
+  LimitRequest limitRequest = 3;
+}
+
+message GetLimitsRequest {
+  string consumerId = 1;
+  string packageId = 2;
+  int64 pageNo = 3;
+  int64 pageSize = 4;
+}
+
+message GetLimitsResponse {
+  erda.core.hepa.NewPageResult data = 1;
+}

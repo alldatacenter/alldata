@@ -1,0 +1,453 @@
+groups:
+  - id: machine
+    name: Machine
+    children:
+      - id: machine_cpu
+        name: CPU
+      - id: machine_mem
+        name: Memory
+      - id: machine_load
+        name: Load
+      - id: machine_disk
+        name: Disk
+      - id: machine_net
+        name: Network
+  - id: dice
+    name: Platform Resource
+    children:
+      - id: dice_addon
+        name: Platform Addon
+        children:
+          - id: dice_addon_mysql
+            name: MySQL
+            children:
+              - id: dice_addon_mysql_metrics
+                name: Internal Metrics
+              - id: dice_addon_mysql_size_metrics
+                name: Store Size
+          # - id: dice_addon_redis
+          #   name: Redis
+          - id: dice_addon_elasticsearch
+            name: Elasticsearch
+            children:
+              - id: dice_addon_elasticsearch_http
+                name: HTTP
+              - id: dice_addon_elasticsearch_transport
+                name: Transport
+              - id: dice_addon_elasticsearch_indices
+                name: Indices
+              - id: dice_addon_elasticsearch_jvm
+                name: JVM
+      - id: dice_component
+        name: Platform Component
+        children:
+          - id: dice_component_container
+            name: Container Resource
+          - id: dice_component_netdisk
+            name: Net Disk
+      - id: dice_kubernetes
+        name: Kubernetes
+        children:
+          - id: dice_kubernetes_kube_etcd
+            name: ETCD
+          - id: dice_kubernetes_kube_controller
+            name: Kube Controller
+          - id: dice_kubernetes_kube_apiserver
+            name: Kube Apiserver
+          - id: dice_kubernetes_kube_scheduler
+            name: Kube Scheduler
+          - id: dice_kubernetes_kube_proxy
+            name: Kube Proxy
+          - id: dice_kubernetes_ingress
+            name: Kube Ingress
+          - id: dice_kubernetes_calico
+            name: Kube Calico
+          - id: dice_kubernetes_coredns
+            name: Kube CoreDNS
+  - id: project
+    name: Project Resource
+    children:
+      - id: project_addon
+        name: Project Addon
+        children:
+          - id: project_addon_mysql
+            name: MySQL
+            children:
+              - id: project_addon_mysql_metrics
+                name: Internal Metrics
+              - id: project_addon_mysql_size_metrics
+                name: Store Size
+              - id: project_addon_mysql_container
+                name: Container Resource
+          - id: project_addon_redis
+            name: Redis
+            children:
+              - id: project_addon_redis_metrics
+                name: Internal Metrics
+              - id: project_addon_redis_keyspace
+                name: Keyspace Metrics
+              - id: project_addon_redis_container
+                name: Container Resource 
+          - id: project_addon_elasticsearch
+            name: Elasticsearch
+            children:
+              - id: project_addon_elasticsearch_http
+                name: HTTP
+              - id: project_addon_elasticsearch_transport
+                name: Transport
+              - id: project_addon_elasticsearch_indices
+                name: Indices
+              - id: project_addon_elasticsearch_jvm
+                name: JVM
+              - id: project_addon_elasticsearch_container
+                name: Container Resource 
+      - id: project_container
+        name: Container Resource
+  - id: cloud
+    name: Cloud Product
+    children:
+      - id: cloud_compute
+        name: Compute
+        children:
+          - id: cloud_compute_aliyun_ecs
+            name: Aliyun ECS
+      - id: cloud_database
+        name: Database
+        children:
+          - id: cloud_database_aliyun_rds
+            name: Aliyun RDS
+            children:
+              - id: cloud_database_aliyun_rds_metrics
+                name: Internal Metrics
+              - id: cloud_database_aliyun_rds_access
+                name: Access Metrics
+      - id: cloud_analysis
+        name: Analysis
+      - id: cloud_networking
+        name: networking
+        children:
+          - id: cloud_networking_aliyun_waf
+            name: Aliyun WAF
+            children:
+              - id: cloud_networking_aliyun_waf_access
+                name: Access Metrics
+              - id: cloud_networking_aliyun_waf_metrics
+                name: Other Metrics
+          - id: cloud_networking_aliyun_apigateway
+            name: Aliyun APIGateway
+            children:
+              - id: cloud_networking_aliyun_apigateway_access
+                name: Access Metrics
+              - id: cloud_networking_aliyun_apigateway_metrics
+                name: Other Metrics
+      - id: cloud_mq
+        name: Message Queue
+      - id: cloud_storage
+        name: Storage
+  - id: log_metrics
+    name: Log Metrics
+  - id: all
+    name: All Metrics
+
+mapping:
+  machine_cpu:
+    - name: host_summary
+      fields: [n_cpus, cpu_usage_active, cpu_request_total, cpu_request_percent, cpu_limit_total, cpu_cores_usage]
+  machine_mem:
+    - name: host_summary
+      fields: [mem_total, mem_used, mem_used_percent, mem_free, mem_available, mem_available_percent, mem_request_total, mem_request_percent, mem_limit_total]
+  machine_load:
+    - name: host_summary
+      fields: [load1, load5, load15]
+  machine_disk:
+    - name: disk
+      filters: 
+        - tag: type
+          op: neq
+          value: netdata
+    - name: diskio
+  machine_net:
+    - name: net
+  dice_addon_mysql_metrics:
+    - name: mysql
+      filters: 
+        - tag: addon_id
+          value: mysql
+  dice_addon_mysql_size_metrics:
+    - name: mysql_size
+      filters: 
+        - tag: addon_id
+          value: mysql
+  dice_addon_elasticsearch_http:
+    - name: elasticsearch_http
+      filters: 
+        - tag: addon_id
+          value: elasticsearch
+  dice_addon_elasticsearch_transport:
+    - name: elasticsearch_transport
+      filters: 
+        - tag: addon_id
+          value: elasticsearch
+  dice_addon_elasticsearch_indices:
+    - name: elasticsearch_indices
+      filters: 
+        - tag: addon_id
+          value: elasticsearch
+  dice_addon_elasticsearch_jvm:
+    - name: elasticsearch_jvm
+      filters: 
+        - tag: addon_id
+          value: elasticsearch
+  dice_component_container:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: default
+        - tag: addon_id
+          op: notMatch
+          value: "*"
+  dice_component_netdisk:
+    - name: disk
+      filters: 
+        - tag: type
+          value: netdata
+  dice_kubernetes_kube_etcd:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: kube-system
+        - tag: pod_name
+          op: match
+          value: "*kube-etcd*"
+  dice_kubernetes_kube_controller:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: kube-system
+        - tag: pod_name
+          op: match
+          value: "*kube-controller*"
+  dice_kubernetes_kube_apiserver:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: kube-system
+        - tag: pod_name
+          op: match
+          value: "*kube-apiserver*"
+  dice_kubernetes_kube_scheduler:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: kube-system
+        - tag: pod_name
+          op: match
+          value: "*kube-scheduler*"
+  dice_kubernetes_kube_proxy:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: kube-system
+        - tag: pod_name
+          op: match
+          value: "*kube-proxy*"
+  dice_kubernetes_ingress:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: kube-system
+        - tag: pod_name
+          op: match
+          value: "*ingress*"
+  dice_kubernetes_calico:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: kube-system
+        - tag: pod_name
+          op: match
+          value: "*calico*"
+  dice_kubernetes_coredns:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: pod_namespace
+          value: kube-system
+        - tag: pod_name
+          op: match
+          value: "*coredns*"
+  project_addon_mysql_metrics:
+    - name: mysql
+      filters: 
+        - tag: addon_id
+          op: neq
+          value: mysql
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_mysql_size_metrics:
+    - name: mysql_size
+      filters: 
+        - tag: addon_id
+          op: neq
+          value: mysql
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_mysql_container:    
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: addon_type
+          op: eq
+          value: mysql
+        - tag: addon_id
+          op: neq
+          value: mysql
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_redis_metrics:
+    - name: redis
+      filters: 
+        - tag: addon_id
+          op: neq
+          value: redis
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_redis_keyspace: 
+    - name: redis_keyspace
+      filters: 
+        - tag: addon_id
+          op: neq
+          value: redis
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_redis_container:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: addon_type
+          op: eq
+          value: redis
+        - tag: addon_id
+          op: neq
+          value: redis
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_elasticsearch_http:
+    - name: elasticsearch_http
+      filters: 
+        - tag: addon_id
+          value: elasticsearch
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_elasticsearch_transport:
+    - name: elasticsearch_transport
+      filters: 
+        - tag: addon_id
+          value: elasticsearch
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_elasticsearch_indices:
+    - name: elasticsearch_indices
+      filters: 
+        - tag: addon_id
+          value: elasticsearch
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_elasticsearch_jvm:
+    - name: elasticsearch_jvm
+      filters: 
+        - tag: addon_id
+          value: elasticsearch
+        - tag: project_id
+          op: match
+          value: "*"
+  project_addon_elasticsearch_container:
+    - name: docker_container_summary
+      filters: 
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: addon_type
+          op: eq
+          value: terminus-elasticsearch
+        - tag: addon_id
+          op: neq
+          value: elasticsearch
+        - tag: project_id
+          op: match
+          value: "*"
+  project_container:
+    - name: docker_container_summary
+      filters:
+        - tag: podsandbox
+          op: neq
+          value: "true"
+        - tag: project_id
+          op: match
+          value: "*"
+        - tag: addon_id
+          op: notMatch
+          value: "*"
+  cloud_compute_aliyun_ecs:
+    - name: aliyun_ecs
+      fields: [cpu_total, load_1m, load_15m, memory_usedutilization, diskusage_used]
+  cloud_database_aliyun_rds_metrics:
+    - name: aliyun_rds
+      fields: [DiskUsage, ConnectionUsage, CpuUsage, MemoryUsage]
+      tags: [instanceId]
+  cloud_database_aliyun_rds_access:
+    - name: ali_rds_access
+      fields: [check_rows, latency, origin_time, return_rows, update_rows]
+      tags: [instance_id]
+  cloud_networking_aliyun_waf_metrics:
+    - name: aliyun_waf
+      fields: [acl_blockas_5m, cc_blocks_5m, waf_blocks_5m]
+  cloud_networking_aliyun_waf_access:
+    - name: ali_waf_access
+      fields: [count, body_bytes_sent, remote_port, request_length, request_time_msec, status, upstream_status]
+  cloud_networking_aliyun_apigateway_metrics:
+    - name: aliyun_apigateway
+      fields: [TrafficTX, TrafficRX, SumQPS, Latency]
+  cloud_networking_aliyun_apigateway_access:
+    - name: ali_api_gateway_access
+      fields: [responseSize, serviceLatency, statusCode, totalLatency, count, requestSize]
+    

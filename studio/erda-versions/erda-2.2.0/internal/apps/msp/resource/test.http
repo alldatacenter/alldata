@@ -1,0 +1,24 @@
+### POST resource
+POST http://localhost:8080/monitor/dice/resources
+Lang: en
+Accept: application/json
+Content-Type: application/json
+User-ID: 1100
+
+{
+  "engine": "monitor",
+  "uuid": "1234",
+  "plan": "basic",
+  "az": "xx",
+  "callback": "http://orchestrator.default.svc.cluster.local:8081",
+  "options": {
+    "tenantGroup": "123",
+    "orgId": "123"
+  }
+}
+
+### Get runtime info
+GET http://localhost:8080/api/tmc/monitor/runtime/11?terminus_key=22&application_id=33&runtime_name=44
+Lang: en
+Accept: application/json
+User-ID: 1100

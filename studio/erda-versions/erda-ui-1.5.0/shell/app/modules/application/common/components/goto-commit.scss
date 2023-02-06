@@ -1,0 +1,13 @@
+.goto-commit-link {
+  &.normal {
+    color: $color-text;
+  }
+
+  &:hover {
+    color: $color-primary;
+
+    span {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.dice-perm-export-data {
+  align-items: unset;
+}
+
+.dice-perm-export-pre {
+  flex: 1 0 auto;
+  width: 100%;
+  min-height: 300px;
+  padding: 16px;
+  background-color: $color-dark-06;
+  border: none;
+  border-radius: $radius;
+  outline: 0;
+
+  &:focus {
+    outline: 0;
+  }
+}

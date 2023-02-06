@@ -1,0 +1,40 @@
+.api-market-list {
+  .item-container {
+    justify-content: flex-start;
+    align-items: flex-start;
+    cursor: pointer;
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      margin-right: 16px;
+      line-height: 64px;
+      text-align: center;
+
+      img {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+      }
+
+      svg {
+        width: 46px;
+        height: 46px;
+        vertical-align: middle;
+      }
+    }
+
+    .content {
+      position: relative;
+      overflow: hidden;
+
+      .asset-name {
+        line-height: 28px;
+      }
+
+      .asset-id {
+        max-width: 150px;
+      }
+    }
+  }
+}

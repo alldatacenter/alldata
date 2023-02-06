@@ -1,0 +1,90 @@
+.backlog-issue-item {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 8px;
+  border-bottom: 1px solid $color-border;
+  cursor: pointer;
+
+  &.draggable {
+    cursor: grab;
+  }
+
+  .issue-info {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    width: 0;
+    overflow: auto;
+  }
+
+  .backlog-item-content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    width: 0;
+  }
+
+  .backlog-item-info {
+    justify-content: flex-end;
+
+    .mw-60 {
+      min-width: 60px;
+    }
+
+    .w80 {
+      width: 80px;
+    }
+  }
+
+  .op-icon {
+    padding: 2px 4px;
+    border-radius: $radius;
+
+    i {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: $platinum;
+    }
+  }
+}
+
+.backlog-issue-form {
+  .backlog-issue-form-box {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    width: 0;
+    overflow: auto;
+  }
+
+  .backlog-issue-add {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+
+    &-type {
+      width: 100px;
+    }
+
+    &-title-box {
+      flex: 1;
+      min-width: 300px;
+
+      .ant-form-item-control-wrapper {
+        width: 100%;
+      }
+    }
+
+    &-assignee {
+      width: 100px;
+    }
+  }
+
+  .backlog-issue-add-type .ant-select-selection-item {
+    text-overflow: clip;
+  }
+}

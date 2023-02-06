@@ -1,0 +1,15 @@
+GET https://{{openapi}}/api/opus-types
+Accept: application/json
+Cookie: {{cookie}}
+
+###
+GET https://{{openapi}}/api/opus
+Accept: application/json
+Org: erda
+Cookie: {{cookie}}
+
+###
+GET https://{{openapi}}/api/opus/6a9b8982-fc96-46fa-be1b-42481c59fecb/versions
+Accept: application/json
+Org: erda
+Cookie: {{cookie}}

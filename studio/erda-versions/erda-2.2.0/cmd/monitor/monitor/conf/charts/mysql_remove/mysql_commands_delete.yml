@@ -1,0 +1,14 @@
+- mysql_commands_delete:
+    title: "删除语句的个数"
+    metric_names: "mysql"
+    type: "mysql_remove"
+    order: 24
+    defines:
+      diff.commands_delete:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

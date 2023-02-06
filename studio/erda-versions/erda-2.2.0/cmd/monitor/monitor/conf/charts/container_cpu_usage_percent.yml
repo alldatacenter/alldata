@@ -1,0 +1,14 @@
+- container_cpu_usage_percent:
+    title: ""
+    metric_names: "docker_container_cpu"
+    type: ""
+    order: 0
+    defines:
+      last.usage_percent:
+        label: "Usage"
+        unit: "%"
+        unit_type: "PERCENT"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

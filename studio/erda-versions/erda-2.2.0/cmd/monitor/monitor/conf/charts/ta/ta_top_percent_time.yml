@@ -1,0 +1,43 @@
+- ta_top_percent_time:
+    title: "时间百分比"
+    metric_names: "ta_timing"
+    type: "ta"
+    order: 0
+    defines:
+      sumPercent.rct:
+        label: "资源加载完成"
+        unit: "%"
+        unit_type: "percent"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      sumPercent.pct:
+        label: "网页加载完成"
+        unit: "%"
+        unit_type: "percent"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      sumPercent.plt:
+        label: "整页加载"
+        unit: "%"
+        unit_type: "percent"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      sumPercent.wst:
+        label: "白屏时间"
+        unit: "%"
+        unit_type: "percent"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      sumPercent.fst:
+        label: "首屏时间"
+        unit: "%"
+        unit_type: "percent"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+    parameters:
+

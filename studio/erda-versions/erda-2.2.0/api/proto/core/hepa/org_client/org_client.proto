@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package erda.core.hepa.org_client;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/org_client/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "core/hepa/openapi_rule/openapi_rule.proto";
+
+
+service OrgClientService {
+  rpc CreateClient(CreateClientRequest) returns (CreateClientResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/openapi/clients?clientName={clientName}",
+    };
+  }
+
+  rpc DeleteClient(DeleteClientRequest) returns (DeleteClientResponse) {
+    option (google.api.http) = {
+      delete: "/api/gateway/openapi/clients/{clientId}",
+    };
+  }
+
+  rpc GetCredentials(GetCredentialsRequest) returns (GetCredentialsResponse) {
+    option (google.api.http) = {
+      get: "/api/gateway/openapi/clients/{clientId}/credentials",
+    };
+  }
+
+  rpc UpdateCredentials(UpdateCredentialsRequest) returns (UpdateCredentialsResponse) {
+    option (google.api.http) = {
+      patch: "/api/gateway/openapi/clients/{clientId}/credentials?clientSecret={clientSecret}",
+    };
+  }
+
+  rpc GrantEndpoint(GrantEndpointRequest) returns (GrantEndpointResponse) {
+    option (google.api.http) = {
+      post: "/api/gateway/openapi/clients/{clientId}/packages/{packageId}",
+    };
+  }
+
+  rpc RevokeEndpoint(RevokeEndpointRequest) returns (RevokeEndpointResponse) {
+    option (google.api.http) = {
+      delete: "/api/gateway/openapi/clients/{clientId}/packages/{packageId}",
+    };
+  }
+
+  rpc ChangeClientLimit(ChangeClientLimitRequest) returns (ChangeClientLimitResponse) {
+    option (google.api.http) = {
+      put: "/api/gateway/openapi/clients/{clientId}/packages/{packageId}/limits",
+    };
+  }
+}
+
+message ChangeClientLimitResponse {
+  bool data = 1;
+}
+
+message ChangeClientLimitRequest {
+  string clientId = 1;
+  string packageId = 2;
+  repeated erda.core.hepa.openapi_rule.LimitType limits = 3;
+}
+
+message GrantEndpointRequest {
+  string clientId = 1;
+  string packageId = 2;
+}
+
+message GrantEndpointResponse {
+  bool data = 1;
+}
+
+message RevokeEndpointRequest {
+  string clientId = 1;
+  string packageId = 2;
+}
+
+message RevokeEndpointResponse {
+  bool data = 1;
+}
+
+message UpdateCredentialsResponse {
+  ClientInfo data = 1;
+}
+
+message UpdateCredentialsRequest {
+  string clientId = 1;
+  string clientSecret = 2;
+}
+
+message GetCredentialsResponse {
+  ClientInfo data = 1;
+}
+
+message GetCredentialsRequest {
+  string clientId = 1;
+}
+
+message DeleteClientRequest {
+  string clientId = 1;
+}
+
+message DeleteClientResponse {
+  bool data = 1;
+}
+
+message ClientInfo {
+  string clientId = 1;
+  string clientSecret = 2;
+}
+
+message CreateClientRequest {
+  string clientName = 1;
+}
+
+message CreateClientResponse {
+  ClientInfo data = 1;
+}

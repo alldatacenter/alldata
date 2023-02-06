@@ -1,0 +1,9 @@
+id: machine_load5
+name: 机器Load5
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{host_ip}}'
+  display_url_id: machine_load
+  level: Warning
+  recover: "true"
+  tickets_metric_key: '{{host_ip}}'

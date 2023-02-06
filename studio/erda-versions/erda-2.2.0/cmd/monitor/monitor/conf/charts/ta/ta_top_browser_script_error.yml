@@ -1,0 +1,14 @@
+- ta_top_browser_script_error:
+    title: "浏览器报错次数"
+    metric_names: "ta_error"
+    type: "ta"
+    order: 0
+    defines:
+      count.count:
+        label: "错误次数"
+        unit: ""
+        unit_type: ""
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

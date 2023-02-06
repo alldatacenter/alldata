@@ -1,0 +1,85 @@
+version: 0.2
+
+# 场景名
+scenario: "auto-test-space-list"
+
+hierarchy:
+  root: spaceManage
+  structure:
+    spaceManage:
+      # - head
+      - filter
+      - spaceList
+      - topHead
+      - spaceFormModal
+      - recordDrawer
+    topHead:
+      - spaceAddButton
+      - moreButton
+    # head:
+    #   - importButton
+    #   - recordButton
+    recordDrawer:
+      content: recordContent
+    recordContent:
+      - refreshButton
+      - recordTable
+
+options:
+  syncIntervalSecond: 0
+
+components:
+  # head:
+  #   type: RowContainer
+  # importButton:
+  #   type: Button
+  # recordButton:
+  #   type: Button
+  recordContent:
+    type: Container
+  refreshButton:
+    type: Button
+  recordDrawer:
+    type: Drawer
+  recordTable:
+    type: Table
+  spaceManage:
+    type: Container
+  topHead:
+    type: RowContainer
+    props:
+      isTopHead: true
+  spaceList:
+    type: List
+  spaceAddButton:
+    type: Button
+  spaceFormModal:
+    type: FormModal
+  moreButton:
+    type: Button
+  filter:
+    type: ContractiveFilter
+
+rendering:
+  spaceFormModal:
+    - name: spaceList
+  moreButton:
+    - name: recordDrawer
+      state:
+        - name: "visible"
+          value: "{{ moreButton.visible }}"
+    - name: recordTable
+      state:
+        - name: "visible"
+          value: "{{ moreButton.visible }}"
+  refreshButton:
+    - name: recordTable
+      state:
+        - name: "autoRefresh"
+          value: "{{ refreshButton.autoRefresh }}"
+  
+  filter:
+    - name: spaceList
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"

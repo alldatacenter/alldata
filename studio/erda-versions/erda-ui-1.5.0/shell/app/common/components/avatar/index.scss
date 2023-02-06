@@ -1,0 +1,20 @@
+.dice-avatar {
+  @include avatar(24px);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.dice-avatar-wrap {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.dice-avatar-has-more {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  // background: $ghostwhite;
+  border-radius: 24px;
+}

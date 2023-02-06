@@ -1,0 +1,78 @@
+name: "Kafka Purgatory"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    jolokia_agent_url:
+        name: "Jolokia Agent Url"
+    jolokia_host:
+        name: "Jolokia Host"
+    org_name:
+        name: "Org Name"
+fields:
+    DeleteRecords_NumDelayedOperations:
+        type: "number"
+        name: "Delete Records Num Delayed Operations"
+        unit: 
+    DeleteRecords_PurgatorySize:
+        type: "number"
+        name: "Delete Records Purgatory Size"
+        unit: 
+    Fetch_NumDelayedOperations:
+        type: "number"
+        name: "Fetch Num Delayed Operations"
+        unit: 
+    Fetch_PurgatorySize:
+        type: "number"
+        name: "Fetch Purgatory Size"
+        unit: 
+    Heartbeat_NumDelayedOperations:
+        type: "number"
+        name: "Heartbeat Num Delayed Operations"
+        unit: 
+    Heartbeat_PurgatorySize:
+        type: "number"
+        name: "Heartbeat Purgatory Size"
+        unit: 
+    Produce_NumDelayedOperations:
+        type: "number"
+        name: "Produce Num Delayed Operations"
+        unit: 
+    Produce_PurgatorySize:
+        type: "number"
+        name: "Produce Purgatory Size"
+        unit: 
+    Rebalance_NumDelayedOperations:
+        type: "number"
+        name: "Rebalance Num Delayed Operations"
+        unit: 
+    Rebalance_PurgatorySize:
+        type: "number"
+        name: "Rebalance Purgatory Size"
+        unit: 
+    topic_NumDelayedOperations:
+        type: "number"
+        name: "Topic Num Delayed Operations"
+        unit: 
+    topic_PurgatorySize:
+        type: "number"
+        name: "Topic Purgatory Size"
+        unit: 
+    txn-marker-purgatory_NumDelayedOperations:
+        type: "number"
+        name: "Txn-Marker-Purgatory Num Delayed Operations"
+        unit: 
+    txn-marker-purgatory_PurgatorySize:
+        type: "number"
+        name: "Txn-Marker-Purgatory Purgatory Size"
+        unit: 
+

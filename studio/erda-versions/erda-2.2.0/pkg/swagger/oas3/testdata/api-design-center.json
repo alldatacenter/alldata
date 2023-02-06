@@ -1,0 +1,80 @@
+{
+  "components": {},
+  "info": {
+    "title": "test_lsh",
+    "version": "ds",
+    "description": "从 API 设计中心创建的 Openapi 文档"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/new": {
+      "get": {
+        "operationId": "d",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "dssdsdsdsdsd",
+                  "example": [
+                    "Example"
+                  ],
+                  "items": {
+                    "example": "Example",
+                    "type": "string",
+                    "x-dice-name": "items"
+                  },
+                  "type": "array",
+                  "x-dice-media": "application/json",
+                  "x-dice-name": "schema"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "d",
+        "tags": [
+          "other"
+        ]
+      },
+      "post": {
+        "operationId": "6",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "89090",
+                "properties": {},
+                "x-dice-media": "application/json",
+                "x-dice-name": "schema"
+              }
+            }
+          },
+          "description": "89090",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "example": {},
+                  "type": "Object",
+                  "x-dice-media": "application/json",
+                  "x-dice-name": "schema"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "6",
+        "tags": [
+          "other"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+name: "Elasticsearch OS"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    node_host:
+        name: "Node Host"
+    node_id:
+        name: "Node ID"
+    node_name:
+        name: "Node Name"
+    node_roles:
+        name: "Node Roles"
+    org_name:
+        name: "Org Name"
+fields:
+    cpu_load_average_15m:
+        type: "number"
+        name: "CPU Load Average 15m"
+        unit: 
+    cpu_load_average_1m:
+        type: "number"
+        name: "CPU Load Average 1m"
+        unit: 
+    cpu_load_average_5m:
+        type: "number"
+        name: "CPU Load Average 5m"
+        unit: 
+    cpu_percent:
+        type: "number"
+        name: "CPU Percent"
+        unit: 
+    mem_free_in_bytes:
+        type: "number"
+        name: "Memory Free In Bytes"
+        unit: 
+    mem_free_percent:
+        type: "number"
+        name: "Memory Free Percent"
+        unit: 
+    mem_total_in_bytes:
+        type: "number"
+        name: "Memory Total In Bytes"
+        unit: 
+    mem_used_in_bytes:
+        type: "number"
+        name: "Memory Used In Bytes"
+        unit: 
+    mem_used_percent:
+        type: "number"
+        name: "Memory Used Percent"
+        unit: 
+    swap_free_in_bytes:
+        type: "number"
+        name: "Swap Free In Bytes"
+        unit: 
+    swap_total_in_bytes:
+        type: "number"
+        name: "Swap Total In Bytes"
+        unit: 
+    swap_used_in_bytes:
+        type: "number"
+        name: "Swap Used In Bytes"
+        unit: 
+    timestamp:
+        type: "number"
+        name: "Timestamp"
+        unit: 
+

@@ -1,0 +1,340 @@
+{
+  "id": "organization_cluster_status",
+  "name": "organization_cluster_status",
+  "desc": "",
+  "scope": "micro_service",
+  "scopeId": "global",
+  "viewConfig": [
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 0,
+      "i": "view-JOhL0CXv",
+      "view": {
+        "title": "集群组件状态",
+        "i18n": {
+          "title": {
+            "en": "Cluster Component Status",
+            "zh": "集群组件状态"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "M/D"
+          },
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "other",
+              "other@leaf_component_status"
+            ],
+            "isSqlMode": true,
+            "resultFilters": [
+              {
+                "alias": "component_group",
+                "field": "leaf_component_status-component_group::tag",
+                "filter": {
+                  "operation": "=",
+                  "value": "dice_component"
+                },
+                "key": "filterXEKejEbT",
+                "resultType": "string",
+                "type": "filter"
+              }
+            ],
+            "sortDimensions": [
+              {
+                "aggregation": "max",
+                "alias": "health_status",
+                "field": "leaf_component_status-health_status::field",
+                "key": "sortTzIkS6lj",
+                "resultType": "number",
+                "sort": "DESC",
+                "type": "sort"
+              }
+            ],
+            "sql": {
+              "from": "leaf_component_status",
+              "fromSource": [
+                "other",
+                "other@leaf_component_status"
+              ],
+              "groupBy": "component_name::tag",
+              "orderBy": "max(health_status::field) DESC",
+              "select": "component_name::tag as component, map(max(health_status::field), 0,'健康',1,'警告',2,'故障',3,'严重故障') as status, message::tag as message ",
+              "where": "component_group::tag = 'dice_component' AND cluster_name::tag = '{{clusterName}}' "
+            },
+            "typeDimensions": [
+              {
+                "alias": "component_name",
+                "field": "leaf_component_status-component_name::tag",
+                "key": "typeCMRAY4es",
+                "resultType": "string",
+                "type": "field"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "alias": "health_status",
+                "field": "leaf_component_status-health_status::field",
+                "key": "valuezllYIcc7",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "message",
+                "field": "leaf_component_status-message::tag",
+                "key": "valueQ4n5l9uh",
+                "resultType": "string",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/orgCenter/metrics-query",
+          "query": {
+            "end": "now",
+            "format": "chartv2",
+            "q": "SELECT component_name::tag as component, map(max(health_status::field), 0,'健康',1,'警告',2,'故障',3,'严重故障') as status, message::tag as message  FROM leaf_component_status WHERE component_group::tag = 'dice_component' AND cluster_name::tag = '{{clusterName}}'  GROUP BY component_name::tag ORDER BY max(health_status::field) DESC ",
+            "ql": "influxql",
+            "start": "before_15m",
+            "type": "_"
+          },
+          "body": null,
+          "header": null,
+          "extraData": null,
+          "method": "get"
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 9,
+      "i": "view-G4LpQfk7",
+      "view": {
+        "title": "集群节点状态",
+        "i18n": {
+          "title": {
+            "en": "Cluster Node Status",
+            "zh": "集群节点状态"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "M/D"
+          },
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "other",
+              "other@leaf_component_status"
+            ],
+            "isSqlMode": true,
+            "resultFilters": [
+              {
+                "alias": "component_group",
+                "field": "leaf_component_status-component_group::tag",
+                "filter": {
+                  "operation": "=",
+                  "value": "machine"
+                },
+                "key": "filterQvEuKUkB",
+                "resultType": "string",
+                "type": "filter"
+              }
+            ],
+            "sortDimensions": [
+              {
+                "aggregation": "max",
+                "alias": "health_status",
+                "field": "leaf_component_status-health_status::field",
+                "key": "sort738b838Z",
+                "resultType": "number",
+                "sort": "DESC",
+                "type": "sort"
+              }
+            ],
+            "sql": {
+              "from": "leaf_component_status",
+              "fromSource": [
+                "other",
+                "other@leaf_component_status"
+              ],
+              "groupBy": "component_name::tag",
+              "select": "component_name::tag as component, map(max(health_status::field), 0,'健康',1,'警告',2,'故障',3,'严重故障') as status, message::tag as message ",
+              "where": "component_group::tag = 'machine'  AND cluster_name::tag = '{{clusterName}}' "
+            },
+            "typeDimensions": [
+              {
+                "alias": "component_name",
+                "field": "leaf_component_status-component_name::tag",
+                "key": "type5AKxHUDZ",
+                "resultType": "string",
+                "type": "field"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "max",
+                "alias": "health_status",
+                "field": "leaf_component_status-health_status::field",
+                "key": "valueAdJeTWFE",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "message",
+                "field": "leaf_component_status-message::tag",
+                "key": "valuen746dfKr",
+                "resultType": "string",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/orgCenter/metrics-query",
+          "query": {
+            "end": "now",
+            "format": "chartv2",
+            "q": "SELECT component_name::tag as component, map(max(health_status::field), 0,'健康',1,'警告',2,'故障',3,'严重故障') as status, message::tag as message  FROM leaf_component_status WHERE component_group::tag = 'machine'  AND cluster_name::tag = '{{clusterName}}'  GROUP BY component_name::tag ",
+            "ql": "influxql",
+            "start": "before_15m",
+            "type": "_"
+          },
+          "body": null,
+          "header": null,
+          "extraData": null,
+          "method": "get"
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 18,
+      "i": "view-Ecrdq0jI",
+      "view": {
+        "title": "kubernetes 状态",
+        "i18n": {
+          "title": {
+            "en": "kubernetes Status",
+            "zh": "kubernetes 状态"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "M/D"
+          },
+          "dataSourceConfig": {
+            "isSqlMode": true,
+            "sql": {
+              "from": "leaf_component_status",
+              "fromSource": [
+                "other",
+                "other@leaf_component_status"
+              ],
+              "groupBy": "component_name::tag",
+              "orderBy": "max(health_status::field) DESC",
+              "select": "component_name::tag as component, map(health_status::field, 0,'健康',1,'警告',2,'故障',3,'严重故障') AS status, message::tag as message ",
+              "where": "component_group::tag = 'kubernetes'  AND cluster_name::tag = '{{clusterName}}' "
+            }
+          }
+        },
+        "api": {
+          "url": "/api/orgCenter/metrics-query",
+          "query": {
+            "end": "now",
+            "format": "chartv2",
+            "q": "SELECT component_name::tag as component, map(health_status::field, 0,'健康',1,'警告',2,'故障',3,'严重故障') AS status, message::tag as message  FROM leaf_component_status WHERE component_group::tag = 'kubernetes'  AND cluster_name::tag = '{{clusterName}}'  GROUP BY component_name::tag ORDER BY max(health_status::field) DESC ",
+            "ql": "influxql",
+            "start": "before_15m",
+            "type": "_"
+          },
+          "body": null,
+          "header": null,
+          "extraData": null,
+          "method": "get"
+        },
+        "controls": null
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 27,
+      "i": "view-tgogQI1P",
+      "view": {
+        "title": "集群中间件状态",
+        "i18n": {
+          "title": {
+            "en": "Cluster Middleware Status",
+            "zh": "集群中间件状态"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "M/D"
+          },
+          "dataSourceConfig": {
+            "isSqlMode": true,
+            "sql": {
+              "from": "leaf_component_status",
+              "fromSource": [
+                "other",
+                "other@leaf_component_status"
+              ],
+              "groupBy": "component_name::tag",
+              "orderBy": "max(health_status::field) DESC",
+              "select": "component_name::tag as component, map(health_status::field, 0,'健康',1,'警告',2,'故障',3,'严重故障') AS status, message::tag as message ",
+              "where": "component_group::tag = 'dice_addon' AND cluster_name::tag = '{{clusterName}}' "
+            }
+          }
+        },
+        "api": {
+          "url": "/api/orgCenter/metrics-query",
+          "query": {
+            "end": "now",
+            "format": "chartv2",
+            "q": "SELECT component_name::tag as component, map(health_status::field, 0,'健康',1,'警告',2,'故障',3,'严重故障') AS status, message::tag as message  FROM leaf_component_status WHERE component_group::tag = 'dice_addon' AND cluster_name::tag = '{{clusterName}}'  GROUP BY component_name::tag ORDER BY max(health_status::field) DESC ",
+            "ql": "influxql",
+            "start": "before_15m",
+            "type": "_"
+          },
+          "body": null,
+          "header": null,
+          "extraData": null,
+          "method": "get"
+        },
+        "controls": null
+      }
+    }
+  ],
+  "version": "v2"
+}

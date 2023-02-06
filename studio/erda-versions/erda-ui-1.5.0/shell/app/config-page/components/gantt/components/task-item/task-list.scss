@@ -1,0 +1,21 @@
+.erda-gantt-task-bar-label {
+  fill: $white;
+  text-anchor: middle;
+  font-weight: lighter;
+  dominant-baseline: central;
+  user-select: none;
+  pointer-events: none;
+}
+
+.erda-gantt-task-bar-label-outside {
+  fill: $gray;
+  text-anchor: start;
+  user-select: none;
+  pointer-events: none;
+}
+
+.erda-gantt-task-foreign-render {
+  user-select: none;
+  pointer-events: none;
+  overflow: visible;
+}

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" ignored="0" total="3" passed="2">
+    <reporter-output>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************@DataProvider(name='readTestData')*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************Test method is：findWarehouseByCode*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************Test ClassName is：WarehouseReadFacadeTest*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************ExcelFile Path is:/Users/yuhaiping/workspace/gittar/test/test-demo/target/test-classes/testcases/dubbo/WarehouseReadFacade/WarehouseReadFacadeTest.xls*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************SheetName is:findWarehouseByCode*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************Excel RowsNum is:4*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************Excel ColumnsNum is:8*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************RunCase Number is：3*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 测试用例Name：caseName01]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************convertMapToJson is begin*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************Converted Json is:{"reqId":"12","callerIp":"callip","callerType":"calltype","warehouseCode":"warehouseCode01"}*************************]]>
+        </line>
+        <line>
+            <![CDATA[[WARN] 2018-11-12 11:25:04 Response is：Response{success=true, result=WarehouseInfo(id=3, warehouseName=warehouseName01, priority=0, address=address01, isDefault=1, divisionId=divisionId01, regionId=regionId01, extraJson=null, status=1, outerCode=null, createdAt=Mon Oct 29 15:32:34 CST 2018, updatedAt=Mon Oct 29 15:32:34 CST 2018)}]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:04 *************************建立数据库连接*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:04 *************************Reset retryCount to 0*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:04 测试用例Name：caseName02]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:04 *************************convertMapToJson is begin*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:04 *************************Converted Json is:{"reqId":"22","callerIp":"callip2","callerType":"calltype2","warehouseCode":"warehouseCode02"}*************************]]>
+        </line>
+        <line>
+            <![CDATA[[WARN] 2018-11-12 11:25:05 Response is：Response{success=true, result=WarehouseInfo(id=2, warehouseName=warehouseName02, priority=0, address=address02, isDefault=1, divisionId=divisionId02, regionId=regionId02, extraJson=null, status=1, outerCode=null, createdAt=Mon Oct 29 15:30:32 CST 2018, updatedAt=Mon Oct 29 15:30:32 CST 2018)}]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Reset retryCount to 0*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 测试用例Name：caseName03]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************convertMapToJson is begin*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Converted Json is:{"reqId":"22","callerIp":"callip2","callerType":"calltype2","warehouseCode":"warehouseCode03"}*************************]]>
+        </line>
+        <line>
+            <![CDATA[[WARN] 2018-11-12 11:25:05 Response is：Response{success=true}]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 Running retry for 'findWarehouseByCode' on class tools.listener.TestNGRetry Retrying 0 times]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************RunCount=1*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************@DataProvider(name='readTestData')*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Test method is：findWarehouseByCode*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Test ClassName is：WarehouseReadFacadeTest*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************ExcelFile Path is:/Users/yuhaiping/workspace/gittar/test/test-demo/target/test-classes/testcases/dubbo/WarehouseReadFacade/WarehouseReadFacadeTest.xls*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************SheetName is:findWarehouseByCode*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Excel RowsNum is:4*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Excel ColumnsNum is:8*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************RunCase Number is：3*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 测试用例Name：caseName03]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************convertMapToJson is begin*************************]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Converted Json is:{"reqId":"22","callerIp":"callip2","callerType":"calltype2","warehouseCode":"warehouseCode03"}*************************]]>
+        </line>
+        <line>
+            <![CDATA[[WARN] 2018-11-12 11:25:05 Response is：Response{success=true}]]>
+        </line>
+        <line>
+            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Reset retryCount to 0*************************]]>
+        </line>
+    </reporter-output>
+    <suite name="Suite:WarehouseReadFacadeTest" duration-ms="5189" started-at="2018-11-12T03:25:00Z"
+           finished-at="2018-11-12T03:25:05Z">
+        <groups>
+        </groups>
+        <test name="Test:WarehouseReadFacadeTest" duration-ms="5189" started-at="2018-11-12T03:25:00Z"
+              finished-at="2018-11-12T03:25:05Z">
+            <class name="com.testng.autotest.dubbo.io.terminus.parana.inventory.api.facade.WarehouseReadFacadeTest">
+                <test-method status="PASS"
+                             signature="setup()[pri:0, instance:com.testng.autotest.dubbo.io.terminus.parana.inventory.api.facade.WarehouseReadFacadeTest@192b07fd]"
+                             name="setup" is-config="true" duration-ms="3240" started-at="2018-11-12T11:25:00Z"
+                             finished-at="2018-11-12T11:25:03Z">
+                    <reporter-output>
+                    </reporter-output>
+                    <params></params> <!-- for test -->
+                </test-method> <!-- setup -->
+                <test-method status="PASS"
+                             signature="findWarehouseByCode(java.util.LinkedHashMap)[pri:0, instance:com.testng.autotest.dubbo.io.terminus.parana.inventory.api.facade.WarehouseReadFacadeTest@192b07fd]"
+                             name="findWarehouseByCode" duration-ms="1130" started-at="2018-11-12T11:25:03Z"
+                             data-provider="readTestData" finished-at="2018-11-12T11:25:04Z">
+                    <params>
+                        <param index="0">
+                            <value>
+                                <![CDATA[{isRun=1, testCaseID=case01, testCaseName=caseName01, expectResult=warehouseName01, reqId=12, callerIp=callip, callerType=calltype, warehouseCode=warehouseCode01}]]>
+                            </value>
+                        </param>
+                    </params>
+                    <reporter-output>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:03 测试用例Name：caseName01]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************convertMapToJson is begin*************************]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:03 *************************Converted Json is:{"reqId":"12","callerIp":"callip","callerType":"calltype","warehouseCode":"warehouseCode01"}*************************]]>
+                        </line>
+                        <line>
+                            <![CDATA[[WARN] 2018-11-12 11:25:04 Response is：Response{success=true, result=WarehouseInfo(id=3, warehouseName=warehouseName01, priority=0, address=address01, isDefault=1, divisionId=divisionId01, regionId=regionId01, extraJson=null, status=1, outerCode=null, createdAt=Mon Oct 29 15:32:34 CST 2018, updatedAt=Mon Oct 29 15:32:34 CST 2018)}]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:04 *************************建立数据库连接*************************]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:04 *************************Reset retryCount to 0*************************]]>
+                        </line>
+                    </reporter-output>
+                </test-method> <!-- findWarehouseByCode -->
+                <test-method status="PASS"
+                             signature="findWarehouseByCode(java.util.LinkedHashMap)[pri:0, instance:com.testng.autotest.dubbo.io.terminus.parana.inventory.api.facade.WarehouseReadFacadeTest@192b07fd]"
+                             name="findWarehouseByCode" duration-ms="133" started-at="2018-11-12T11:25:04Z"
+                             data-provider="readTestData" finished-at="2018-11-12T11:25:05Z">
+                    <params>
+                        <param index="0">
+                            <value>
+                                <![CDATA[{isRun=1, testCaseID=case02, testCaseName=caseName02, expectResult=warehouseName02, reqId=22, callerIp=callip2, callerType=calltype2, warehouseCode=warehouseCode02}]]>
+                            </value>
+                        </param>
+                    </params>
+                    <reporter-output>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:04 测试用例Name：caseName02]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:04 *************************convertMapToJson is begin*************************]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:04 *************************Converted Json is:{"reqId":"22","callerIp":"callip2","callerType":"calltype2","warehouseCode":"warehouseCode02"}*************************]]>
+                        </line>
+                        <line>
+                            <![CDATA[[WARN] 2018-11-12 11:25:05 Response is：Response{success=true, result=WarehouseInfo(id=2, warehouseName=warehouseName02, priority=0, address=address02, isDefault=1, divisionId=divisionId02, regionId=regionId02, extraJson=null, status=1, outerCode=null, createdAt=Mon Oct 29 15:30:32 CST 2018, updatedAt=Mon Oct 29 15:30:32 CST 2018)}]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Reset retryCount to 0*************************]]>
+                        </line>
+                    </reporter-output>
+                </test-method> <!-- findWarehouseByCode -->
+                <test-method status="FAIL"
+                             signature="findWarehouseByCode(java.util.LinkedHashMap)[pri:0, instance:com.testng.autotest.dubbo.io.terminus.parana.inventory.api.facade.WarehouseReadFacadeTest@192b07fd]"
+                             name="findWarehouseByCode" duration-ms="126" started-at="2018-11-12T11:25:05Z"
+                             data-provider="readTestData" finished-at="2018-11-12T11:25:05Z">
+                    <params>
+                        <param index="0">
+                            <value>
+                                <![CDATA[{isRun=1, testCaseID=case03, testCaseName=caseName03, expectResult=warehouseName03, reqId=22, callerIp=callip2, callerType=calltype2, warehouseCode=warehouseCode03}]]>
+                            </value>
+                        </param>
+                    </params>
+                    <exception class="java.lang.AssertionError">
+                        <message>
+                            <![CDATA[expected [warehouseName03] but found [null]]]>
+                        </message>
+                        <full-stacktrace>
+                            <![CDATA[java.lang.AssertionError: expected [warehouseName03] but found [null]
+	at org.testng.Assert.fail(Assert.java:93)
+	at org.testng.Assert.failNotEquals(Assert.java:512)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:129)
+	at org.testng.Assert.assertEquals(Assert.java:115)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at com.testng.autotest.dubbo.io.terminus.parana.inventory.api.facade.WarehouseReadFacadeTest.findWarehouseByCode(WarehouseReadFacadeTest.java:45)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.retryFailed(Invoker.java:1014)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1215)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:74)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:92)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:350)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1021)
+]]>
+                        </full-stacktrace>
+                    </exception> <!-- java.lang.AssertionError -->
+                    <reporter-output>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:05 测试用例Name：caseName03]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************convertMapToJson is begin*************************]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Converted Json is:{"reqId":"22","callerIp":"callip2","callerType":"calltype2","warehouseCode":"warehouseCode03"}*************************]]>
+                        </line>
+                        <line>
+                            <![CDATA[[WARN] 2018-11-12 11:25:05 Response is：Response{success=true}]]>
+                        </line>
+                        <line>
+                            <![CDATA[[DEBUG] 2018-11-12 11:25:05 *************************Reset retryCount to 0*************************]]>
+                        </line>
+                    </reporter-output>
+                </test-method> <!-- findWarehouseByCode -->
+                <test-method status="PASS"
+                             signature="shutdown()[pri:0, instance:com.testng.autotest.dubbo.io.terminus.parana.inventory.api.facade.WarehouseReadFacadeTest@192b07fd]"
+                             name="shutdown" is-config="true" duration-ms="7" started-at="2018-11-12T11:25:05Z"
+                             finished-at="2018-11-12T11:25:05Z">
+                    <reporter-output>
+                    </reporter-output>
+                </test-method> <!-- shutdown -->
+            </class> <!-- com.testng.autotest.dubbo.io.terminus.parana.inventory.api.facade.WarehouseReadFacadeTest -->
+        </test> <!-- Test:WarehouseReadFacadeTest -->
+    </suite> <!-- Suite:WarehouseReadFacadeTest -->
+</testng-results>

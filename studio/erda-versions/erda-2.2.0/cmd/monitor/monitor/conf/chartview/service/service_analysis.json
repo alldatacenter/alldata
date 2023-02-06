@@ -1,0 +1,619 @@
+{
+  "id": "service_analysis",
+  "name": "service_analysis",
+  "desc": "",
+  "viewConfig": [
+    {
+      "h": 12,
+      "i": "view-yJsgVtEN",
+      "view": {
+        "api": {
+          "method": "get",
+          "query": {
+            "end": "{{endTime}}",
+            "serviceId": "{{serviceId}}",
+            "serviceName": "{{serviceName}}",
+            "start": "{{startTime}}",
+            "terminusKey": "{{terminusKey}}"
+          },
+          "url": "/api/apm/topology/service/instances"
+        },
+        "chartType": "table",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_service_node"
+            ],
+            "limit": 50,
+            "valueDimensions": [
+              {
+                "alias": "实例 ID",
+                "key": "serviceInstanceId",
+                "i18n": {
+                  "alias": {
+                    "en": "Instance ID",
+                    "zh": "实例 ID"
+                  }
+                },
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "运行时版本",
+                "key": "platformVersion",
+                "resultType": "string",
+                "type": "field",
+                "i18n": {
+                  "alias": {
+                    "en": "Runtime Platform",
+                    "zh": "运行时版本"
+                  }
+                }
+              },
+              {
+                "alias": "启动时间",
+                "key": "startTime",
+                "resultType": "number",
+                "type": "field",
+                "i18n": {
+                  "alias": {
+                    "en": "Launch Time",
+                    "zh": "启动时间"
+                  }
+                }
+              },
+              {
+                "alias": "最后心跳时间",
+                "key": "lastHeartbeatTime",
+                "resultType": "number",
+                "i18n": {
+                  "alias": {
+                    "en": "Latest Heartbeat Time",
+                    "zh": "最后心跳时间"
+                  }
+                },
+                "type": "field"
+              },
+              {
+                "alias": "状态",
+                "key": "instanceState",
+                "resultType": "string",
+                "type": "field",
+                "i18n": {
+                  "alias": {
+                    "en": "Status",
+                    "zh": "状态"
+                  }
+                }
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "YYYY/MM/DD",
+            "noAreaColor": true
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "服务实例",
+        "i18n": {
+          "title": {
+            "en": "Service Instance",
+            "zh": "服务实例"
+          }
+        }
+      },
+      "w": 24,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 10,
+      "i": "view-WlIYS74f",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "application_http"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "select": [
+              {
+                "alias": "typeTRtdbCxL",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueEOWkNhFW",
+                "expr": "round_float(sum(elapsed_count::field), 2)"
+              }
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "filter_target_application_id": "{{applicationId}}",
+            "filter_target_service_name": "{{serviceName}}",
+            "filter_terminus_key": "{{terminusKey}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:line",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_http"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "key": "typeTRtdbCxL",
+                "type": "time",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                }
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "sum",
+                "alias": "吞吐量",
+                "field": "application_http-elapsed_count::field",
+                "key": "valueEOWkNhFW",
+                "resultType": "number",
+                "type": "field",
+                "i18n": {
+                  "alias": {
+                    "en": "Throughput",
+                    "zh": "吞吐量"
+                  }
+                }
+              }
+            ]
+          },
+          "optionProps": {
+            "invalidToZero": true,
+            "isMoreThanOneDay": false,
+            "noAreaColor": true
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "接口请求量",
+        "i18n": {
+          "title": {
+            "en": "API Throughput",
+            "zh": "接口吞吐量"
+          }
+        }
+      },
+      "w": 12,
+      "x": 0,
+      "y": 24
+    },
+    {
+      "h": 10,
+      "i": "view-NDNpI1k5",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "application_http"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "select": [
+              {
+                "alias": "typeCHGOKy9u",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueA3dJ0k10",
+                "expr": "sum(elapsed_sum::field)/sum(elapsed_count::field)"
+              }
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "filter_target_application_id": "{{applicationId}}",
+            "filter_target_service_name": "{{serviceName}}",
+            "filter_terminus_key": "{{terminusKey}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:line",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_http"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "key": "typeCHGOKy9u",
+                "type": "time",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                }
+              }
+            ],
+            "valueDimensions": [
+              {
+                "alias": "平均时延(ms)",
+                "expr": "sum(elapsed_sum::field)/sum(elapsed_count::field)",
+                "key": "valueA3dJ0k10",
+                "type": "expr",
+                "unit": {
+                  "type": "TIME",
+                  "unit": "ns"
+                },
+                "i18n": {
+                  "alias": {
+                    "en": "Avg Time Delay",
+                    "zh": "平均时延(ms)"
+                  }
+                }
+              }
+            ]
+          },
+          "optionProps": {
+            "invalidToZero": true,
+            "isConnectNulls": true,
+            "isMoreThanOneDay": false,
+            "noAreaColor": true,
+            "nullDisplay": 0
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "请求时延",
+        "i18n": {
+          "title": {
+            "en": "Request Time Delay",
+            "zh": "请求时延"
+          }
+        }
+      },
+      "w": 12,
+      "x": 12,
+      "y": 24
+    },
+    {
+      "h": 9,
+      "i": "view-gHh8GdKx",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "application_http"
+            ],
+            "groupby": [
+              "time()",
+              "http_status_code::tag"
+            ],
+            "select": [
+              {
+                "alias": "type269Zbamy",
+                "expr": "time()"
+              },
+              {
+                "alias": "typeBng48cgD",
+                "expr": "http_status_code::tag"
+              },
+              {
+                "alias": "valueGRdav3nr",
+                "expr": "round_float(sum(elapsed_count::field), 2)"
+              }
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter__metric_scope": "micro_service",
+            "filter__metric_scope_id": "{{terminusKey}}",
+            "filter_target_application_id": "{{applicationId}}",
+            "filter_target_service_name": "{{serviceName}}",
+            "filter_terminus_key": "{{terminusKey}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:line",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_http"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "key": "type269Zbamy",
+                "type": "time",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                }
+              },
+              {
+                "alias": "HTTP状态码",
+                "field": "application_http-http_status_code::tag",
+                "key": "typeBng48cgD",
+                "resultType": "string",
+                "i18n": {
+                  "alias": {
+                    "en": "HTTP Response Code",
+                    "zh": "HTTP 状态码"
+                  }
+                },
+                "type": "field"
+              }
+            ],
+            "valueDimensions": [
+              {
+                "aggregation": "sum",
+                "alias": "请求量",
+                "i18n": {
+                  "alias": {
+                    "en": "HTTP Response Code",
+                    "zh": "HTTP 状态码"
+                  }
+                },
+                "field": "application_http-elapsed_count::field",
+                "key": "valueGRdav3nr",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "invalidToZero": true,
+            "isMoreThanOneDay": false,
+            "noAreaColor": true
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "HTTP 状态",
+        "i18n": {
+          "title": {
+            "en": "HTTP Status",
+            "zh": "HTTP 状态"
+          }
+        }
+      },
+      "w": 12,
+      "x": 0,
+      "y": 34
+    },
+    {
+      "h": 9,
+      "i": "view-FOwzRMTP",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "error_count"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "select": [
+              {
+                "alias": "typeJKRnc75E",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueXTEB69H8",
+                "expr": "round_float(sum(count::field), 2)"
+              }
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter_application_id": "{{applicationId}}",
+            "filter_service_name": "{{serviceName}}",
+            "filter_terminus_key": "{{terminusKey}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:line",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "error_count"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "key": "typeJKRnc75E",
+                "type": "time",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                }
+              }
+            ],
+            "valueDimensions": [
+              {
+                "alias": "次数",
+                "key": "valueXTEB69H8",
+                "resultType": "number",
+                "type": "field",
+                "i18n": {
+                  "alias": {
+                    "en": "Count",
+                    "zh": "次数"
+                  }
+                }
+              }
+            ]
+          },
+          "optionProps": {
+            "invalidToZero": true,
+            "isMoreThanOneDay": false,
+            "noAreaColor": true
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "服务异常",
+        "i18n": {
+          "title": {
+            "en": "Service Exception",
+            "zh": "服务异常"
+          }
+        }
+      },
+      "w": 12,
+      "x": 12,
+      "y": 34
+    },
+    {
+      "h": 12,
+      "i": "view-NsSwxxe0",
+      "view": {
+        "api": {
+          "body": {
+            "from": [
+              "analyzer_alert"
+            ],
+            "groupby": [
+              "time()"
+            ],
+            "select": [
+              {
+                "alias": "type441teal6",
+                "expr": "time()"
+              },
+              {
+                "alias": "valueynJmzYoH",
+                "expr": "round_float(count(terminus_key::tag), 2)"
+              }
+            ]
+          },
+          "extraData": null,
+          "header": null,
+          "method": "post",
+          "query": {
+            "end": "{{endTime}}",
+            "epoch": "ms",
+            "filter_application_id": "{{applicationId}}",
+            "filter_service_name": "{{serviceName}}",
+            "filter_terminus_key": "{{terminusKey}}",
+            "format": "chartv2",
+            "ql": "influxql:ast",
+            "start": "{{startTime}}",
+            "type": "_"
+          },
+          "url": "/api/tmc/metrics-query"
+        },
+        "chartType": "chart:bar",
+        "config": {
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "analyzer_alert"
+            ],
+            "typeDimensions": [
+              {
+                "alias": "时间",
+                "key": "type441teal6",
+                "type": "time",
+                "i18n": {
+                  "alias": {
+                    "en": "Time",
+                    "zh": "时间"
+                  }
+                }
+              }
+            ],
+            "valueDimensions": [
+              {
+                "alias": "次数",
+                "key": "valueynJmzYoH",
+                "resultType": "number",
+                "type": "field",
+                "i18n": {
+                  "alias": {
+                    "en": "Count",
+                    "zh": "次数"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "controls": null,
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": null,
+        "title": "服务告警事件",
+        "i18n": {
+          "title": {
+            "en": "Service Alert Event",
+            "zh": "服务告警事件"
+          }
+        }
+      },
+      "w": 24,
+      "x": 0,
+      "y": 12
+    }
+  ],
+  "version": "v2"
+}

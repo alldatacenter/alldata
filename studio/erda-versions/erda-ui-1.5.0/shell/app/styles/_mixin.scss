@@ -1,0 +1,181 @@
+%shallow-shadow {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 0 2px -1px rgba(0, 0, 0, 0.06), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+// usage: @extend %hover-shadow;
+%hover-shadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.06), 0 2px 4px -3px rgba(0, 0, 0, 0.06), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+%select-shadow {
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.06), 0 2px 6px -5px rgba(0, 0, 0, 0.06), 0 4px 9px 0 rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+%toast-shadow {
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06), 0 3px 8px -7px rgba(0, 0, 0, 0.06), 0 6px 12px 0 rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+%modal-shadow {
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.06), 0 4px 12px -11px rgba(0, 0, 0, 0.06), 0 8px 18px 0 rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+%danger-button {
+  color: $white;
+  background-color: $red;
+  border-color: $red;
+
+  &:hover {
+    color: $red;
+    background-color: $white;
+    border-color: $red;
+  }
+
+  &:focus {
+    color: $red;
+    background-color: $white;
+    border-color: $red;
+  }
+}
+
+@function break-width($num, $base-width, $gutter-width) {
+  @return ($num + 1) * $base-width + $num * $gutter-width;
+}
+
+@mixin media-grid($name, $base-width: 260px, $gutter-width: 20px, $other-width: 0px) {
+  @for $i from 12 through 1 {
+    $sidebar: 200px;
+    $padding: 60px;
+    $max: break-width($i, $base-width, $gutter-width) + $sidebar + $padding + $other-width;
+    @media screen and (max-width: $max) {
+      .#{$name} {
+        // width: calc((100% - ((#{$i} - 1) * #{$gutter-width}))/ #{$i} );
+        width: calc(100% / #{$i} - #{$gutter-width});
+      }
+    }
+  }
+}
+
+$sm-break-width: $sider-width + $subsider-width + $sm-content-break-width;
+$md-break-width: $sider-width + $subsider-width + $md-content-break-width;
+$lg-break-width: $sider-width + $subsider-width + $lg-content-break-width;
+// 小屏 usage: @include sm-width{  }
+@mixin sm-width() {
+  @media screen and (max-width: $sm-break-width) {
+    @content;
+  }
+}
+
+@mixin md-width() {
+  @media screen and (max-width: $md-break-width) {
+    @content;
+  }
+}
+
+@mixin lg-width() {
+  @media screen and (max-width: $lg-break-width) {
+    @content;
+  }
+}
+
+@mixin progress-bg($color) {
+  .ant-progress-bg {
+    background-color: $color;
+    background-image: none;
+  }
+}
+
+@mixin grid-layout {
+  display: grid;
+  width: 100%;
+  grid-row-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  @include lg-width() {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include md-width() {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include sm-width() {
+    grid-template-columns: 1fr;
+  }
+}
+
+/// Adds a browser prefix to the property
+/// @param {*} $property Property
+/// @param {*} $value Value
+@mixin css3-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  // -khtml-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  // -ms-#{$property}: #{$value};
+  // -o-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+
+/// Transition
+/// @param {List} $properties - Properties
+/// @require {mixin} css3-prefix
+@mixin transition($properties...) {
+  @if length($properties) >= 1 {
+    @include css3-prefix('transition', $properties);
+  } @else {
+    @include css3-prefix('transition', 'all 0.2s ease-in-out 0s');
+  }
+}
+
+@mixin thin-scrollbar($width: 4px, $track-bg: $whitesmoke, $thumb-bg: $color-dark-1, $thumb-hover: $darkgray) {
+  overflow: auto;
+  overflow-y: overlay; // 不占据空间，非标准属性，不支持时回退到上面的auto
+
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    width: $width;
+    background: $track-bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-bg;
+    border-radius: $width;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $thumb-hover;
+  }
+}
+
+@mixin hover($pointer: true) {
+  color: $color-primary;
+  background-color: $color-active-bg;
+  @if $pointer {
+    cursor: pointer;
+  }
+}
+
+@mixin avatar($size, $round: true) {
+  display: inline-block;
+  width: $size;
+  height: $size;
+  overflow: hidden;
+  vertical-align: middle;
+  @if $round {
+    border-radius: 50%;
+  }
+}
+
+%top-button-group {
+  position: fixed;
+  top: 32px;
+  right: 12px;
+
+  button {
+    margin-left: $p8;
+  }
+}

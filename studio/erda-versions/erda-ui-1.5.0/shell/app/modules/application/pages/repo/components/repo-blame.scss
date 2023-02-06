@@ -1,0 +1,43 @@
+.blame-commits-content {
+  .blame-commit-item {
+    padding: 0 $p12;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .blame-commit-info {
+    .info-left {
+      display: flex;
+      flex: 1;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+
+    .info-right {
+      color: $color-text-desc;
+      font-size: 12px;
+    }
+  }
+
+  .commit-sub-sha {
+    color: $color-primary;
+    font-size: 12px;
+  }
+}
+
+.blame-commit-item-popover {
+  .commit-msg {
+    font-size: 16px;
+  }
+
+  .sub-info {
+    display: flex;
+    align-items: center;
+    color: $color-text-sub;
+
+    .commit-sha {
+      display: flex;
+      align-items: center;
+      color: $color-text-desc;
+    }
+  }
+}

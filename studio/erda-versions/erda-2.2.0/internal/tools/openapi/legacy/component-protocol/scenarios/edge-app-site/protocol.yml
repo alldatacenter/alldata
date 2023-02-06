@@ -1,0 +1,48 @@
+scenario: edge-app-site
+
+hierarchy:
+  root: siteManage
+  structure:
+    siteManage:
+      - head
+      - appSiteManage
+    head:
+      left: appSiteBreadcrumb
+      right: siteFilterGroup
+    siteFilterGroup:
+      - siteNameFilter
+      - statusViewGroup
+
+components:
+  siteManage:
+    type: Container
+  head:
+    type: LRContainer
+  appSiteManage:
+    type: Table
+  statusViewGroup:
+    type: Radio
+  appSiteBreadcrumb:
+    type: Breadcrumb
+  siteFilterGroup:
+    type: RowContainer
+  siteNameFilter:
+    type: ContractiveFilter
+
+rendering:
+  appSiteManage:
+    - name: statusViewGroup
+  statusViewGroup:
+    - name: appSiteManage
+      state:
+        - name: viewGroupSelected
+          value: "{{ statusViewGroup.viewGroupSelected }}"
+  siteNameFilter:
+    - name: statusViewGroup
+      state:
+        - name: searchCondition
+          value: "{{ siteNameFilter.searchCondition }}"
+    - name: appSiteManage
+      state:
+        - name: searchCondition
+          value: "{{ siteNameFilter.searchCondition }}"

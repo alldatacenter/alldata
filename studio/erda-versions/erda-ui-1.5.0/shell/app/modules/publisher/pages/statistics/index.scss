@@ -1,0 +1,75 @@
+.artifacts-statistics {
+  &.block-padding {
+    padding: 10px 22px !important;
+  }
+
+  .block-container {
+    background-color: $white;
+    border-radius: $radius;
+    @extend %shallow-shadow;
+
+    .title {
+      height: 48px;
+      padding: 8px;
+      line-height: 32px;
+      border-bottom: 1px solid $border-color;
+    }
+
+    .info-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 110px;
+
+      &::after {
+        position: absolute;
+        top: 30%;
+        right: 0;
+        display: block;
+        width: 1px;
+        height: 30%;
+        background-color: $color-border;
+        content: '';
+      }
+
+      .data {
+        display: flex;
+        align-items: baseline;
+        height: 24px;
+      }
+
+      .main-data {
+        padding: 0 4px;
+        font-weight: bold;
+        font-size: 30px;
+      }
+
+      .sub-data {
+        display: flex;
+        padding: 0 4px;
+        color: $text-desc;
+      }
+
+      .label {
+        margin-top: 12px;
+        color: $text-desc;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .version-selector {
+    width: 120px;
+  }
+}
+
+.artifacts-statistics-chart {
+  padding: 0 22px 10px !important;
+
+  .chart-title {
+    height: 48px;
+    line-height: 32px;
+    border-bottom: 1px solid $border-color;
+  }
+}

@@ -1,0 +1,171 @@
+- name: " 页面内容改变"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  title: |
+    【{{project_name}}项目{{status_metric_name}}页面内容改变告警】
+  template: |
+    【页面内容改变告警】
+
+    项目: {{project_name}}
+
+    环境: {{workspace}}
+
+    terminus_key: {{terminus_key}}
+
+    事件：[{{status_metric_name}}]({{url}})页面内容和基准点对比不一致
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+
+- name: " 页面内容改变"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  title: |
+    【{{project_name}}项目{{status_metric_name}}页面内容改变告警】
+  template: |
+    [{{project_name}}]页面内容和基准点对比不一致，触发页面内容改变告警，terminus_key: {{terminus_key}}，告警级别: {{level}}
+- name: " 页面内容改变"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  title: |
+    【{{project_name}}项目{{status_metric_name}}页面内容改变告警】
+  template: |
+    {{project_name}}项目页面内容和基准点对比不一致，触发页面内容改变告警，terminus_key: {{terminus_key}}，告警级别: {{level}}
+- name: " 页面内容改变告警恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{project_name}}项目{{status_metric_name}}页面内容改变恢复】
+  template: |
+    【页面内容改变恢复】
+
+    {{status_metric_name}}]({{url}})触发页面内容改变告警恢复
+
+    项目: {{project_name}}
+
+    环境: {{workspace}}
+
+    terminus_key: {{terminus_key}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: " 业务请求状态异常告警恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{project_name}}项目{{status_metric_name}}页面内容改变恢复】
+  template: |
+    {{project_name}}项目触发页面内容改变告警恢复，terminus_key: {{terminus_key}}
+- name: " 业务请求状态异常告警恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    【{{project_name}}项目{{status_metric_name}}页面内容改变恢复】
+  template: |
+    {{project_name}}项目触发页面内容改变告警恢复，terminus_key: {{terminus_key}}
+
+- name: "Page content change"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  title: |
+    [{{status_metric_name}} page content change alarm of project {{project_name}}]
+  template: |
+    [Page content change alarm]
+
+    Project: {{project_name}}
+
+    Environment: {{workspace}}
+
+    terminus_key: {{terminus_key}}
+
+    Event: [{{status_metric_name}}]({{url}}) page content different
+
+    Time: {{timestamp}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+
+- name: "Page content change"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  title: |
+    [{{status_metric_name}} page content change alarm of project {{project_name}}]
+  template: |
+    Page content change alarm triggered by different [{{project_name}}] page content, terminus_key: {{terminus_key}}
+- name: "Page content change"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  title: |
+    [{{status_metric_name}} page content change alarm of project {{project_name}}]
+  template: |
+    Page content change alarm triggered by different {{project_name}} page content, terminus_key: {{terminus_key}}
+- name: "Page content change recovery"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [{{status_metric_name}} page content change recovery of project {{project_name}}]
+  template: |
+    [Page content change recovery]
+
+    Page content change recovery triggered by {{status_metric_name}}]({{url}})
+
+    Project: {{project_name}}
+
+    Environment: {{workspace}}
+
+    terminus_key: {{terminus_key}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Status exception alarm recovery of service request"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [{{status_metric_name}} page content change recovery of project {{project_name}}]
+  template: |
+    Page content change recovery triggered by project {{project_name}}, terminus_key: {{terminus_key}}
+- name: "Status exception alarm recovery of service request"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    trigger_duration: "time:ms"
+  title: |
+    [{{status_metric_name}} page content change recovery of project {{project_name}}]
+  template: |
+    Page content change recovery triggered by project {{project_name}}, terminus_key: {{terminus_key}}

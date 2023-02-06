@@ -1,0 +1,9 @@
+.resource-summary-op-icon {
+  cursor: pointer;
+  color: $color-dark-4;
+
+  &:hover {
+    background-color: $color-bg-gray;
+    color: $color-dark-8;
+  }
+}

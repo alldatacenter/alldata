@@ -1,0 +1,174 @@
+.case-tree.ant-tree.ant-tree-directory {
+  overflow: auto;
+
+  .ant-tree-treenode-selected {
+    .ant-tree-node-selected {
+      &::before {
+        background: #f5f4fd !important;
+      }
+
+      > .ant-tree-title {
+        //border-top: 1px dashed $color-dark-4;
+        //border-right: 1px dashed $color-dark-4;
+        //border-bottom: 1px dashed $color-dark-4;
+        > div {
+          background: #f5f4fd;
+        }
+      }
+    }
+  }
+
+  // .ant-tree-title {
+  //   > div {
+  //     &:hover {
+  //       background: $color-hover;
+  //       transition: background .3s;
+  //     }
+  //   }
+  // }
+  .ant-tree-node-content-wrapper:hover {
+    &:before {
+      background-color: #d7d1de;
+    }
+
+    .case-tree-op,
+    .ant-tree-title {
+      background-color: #d7d1de;
+      transition: background-color 0.3s;
+    }
+  }
+
+  .ant-tree-node-content-wrapper::before {
+    height: 32px !important;
+  }
+
+  > li.ant-tree-treenode-selected > span.ant-tree-node-content-wrapper::before,
+  .ant-tree-child-tree > li.ant-tree-treenode-selected > span.ant-tree-node-content-wrapper::before {
+    color: $color-primary;
+    background: $color-active-bg;
+  }
+
+  .ant-tree-node-content-wrapper:hover::before {
+    background: $color-hover !important;
+  }
+
+  > li span.ant-tree-node-content-wrapper.ant-tree-node-selected,
+  .ant-tree-child-tree > li span.ant-tree-node-content-wrapper.ant-tree-node-selected,
+  .ant-tree-child-tree > li.ant-tree-treenode-selected > span.ant-tree-switcher {
+    color: $color-text-sub;
+  }
+
+  .ant-tree-switcher {
+    color: $color-text-sub !important;
+  }
+
+  .node-name {
+    min-width: 160px;
+    margin-right: 32px;
+    color: $color-text-sub !important;
+    white-space: nowrap;
+  }
+
+  li {
+    padding: 0;
+
+    /* stylelint-disable-next-line */
+    .ant-tree-iconEle {
+      height: 32px;
+      margin-right: 4px;
+      font-size: 18px;
+      line-height: 32px;
+    }
+
+    .ant-tree-switcher {
+      height: 32px;
+      line-height: 32px;
+
+      &:hover {
+        & + span {
+          background: transparent;
+
+          &::before {
+            background: $color-active-bg;
+          }
+        }
+      }
+    }
+
+    .ant-tree-node-content-wrapper {
+      display: inline-flex;
+      height: 32px;
+      padding: 0;
+      line-height: 32px;
+      border: none;
+
+      .ant-tree-title {
+        position: unset;
+        display: inline-flex;
+        flex: 1;
+
+        &:hover {
+          .case-tree-op {
+            opacity: 1;
+            pointer-events: unset;
+          }
+        }
+      }
+    }
+
+    &.active {
+      background-color: transparent;
+
+      > .ant-tree-node-content-wrapper {
+        color: $color-primary;
+        background: transparent;
+
+        &::before {
+          background: transparent;
+        }
+      }
+    }
+
+    &.copy {
+      > .ant-tree-node-content-wrapper {
+        &::before {
+          border: 1px dashed $color-text-desc;
+        }
+      }
+    }
+
+    &.clip {
+      > .ant-tree-node-content-wrapper {
+        color: $color-text-desc;
+
+        &::before {
+          border: 1px dashed $color-text-desc;
+        }
+      }
+    }
+  }
+}
+
+.case-tree-menu {
+  .ant-dropdown-menu {
+    padding: 0;
+  }
+}
+
+.case-tree-op {
+  position: absolute;
+  right: 0;
+  // background-color: $color-active-bg;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+
+  i {
+    width: 32px;
+    font-size: 16px;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

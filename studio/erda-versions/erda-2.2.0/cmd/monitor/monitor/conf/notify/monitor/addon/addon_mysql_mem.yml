@@ -1,0 +1,48 @@
+id: addon_mysql_mem
+metadata:
+  name: "MySQL实例内存使用率异常告警"
+  type: addon
+  module: monitor
+  scope:
+    - org
+behavior:
+  group: "{{cluster_name}}-{{container_id}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        mem_usage_percent_avg: "percent:1"
+        mem_limit_value: "fraction:1"
+        container_id: "string:6"
+      title: |
+        【MySQL实例内存使用率告警】
+      template: |
+        【MySQL实例内存使用率告警】
+
+        组件: {{addon_type}}
+
+        实例ID: {{addon_id}}
+
+        实例: {{pod_namespace}} - {{pod_name}}
+
+        平均使用率: {{mem_usage_percent_avg}}
+
+        集群 / 机器: {{cluster_name}} / {{host_ip}}
+
+        容器ID: {{container_id}}
+
+        机器: {{host_ip}}
+
+        时间: {{timestamp}}
+
+        [查看记录]({{record_url}})

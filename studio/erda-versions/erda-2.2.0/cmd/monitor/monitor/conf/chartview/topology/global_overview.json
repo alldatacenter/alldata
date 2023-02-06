@@ -1,0 +1,109 @@
+{
+  "id": "global_overview",
+  "name": "global_overview",
+  "desc": "",
+  "scope": "micro_service",
+  "scopeId": "global",
+  "viewConfig": [
+    {
+      "w": 24,
+      "h": 4,
+      "x": 0,
+      "y": 0,
+      "i": "view-global-micro_service_overview",
+      "view": {
+        "api": {
+          "method": "get",
+          "query": {
+            "end": "{{endTime}}",
+            "scope": "micro_service",
+            "start": "{{startTime}}",
+            "terminusKey": "{{terminusKey}}"
+          },
+          "url": "/api/apm/topology/overview"
+        },
+        "chartType": "card",
+        "config": {
+          "dataSourceConfig": {
+            "valueDimensions": [
+              {
+                "alias": "服务",
+                "i18n": {
+                  "alias": {
+                    "en": "Service",
+                    "zh": "服务"
+                  }
+                },
+                "key": "service_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "运行实例",
+                "i18n": {
+                  "alias": {
+                    "en": "Running Instance",
+                    "zh": "运行实例"
+                  }
+                },
+                "key": "service_running_instance_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "错误请求",
+                "i18n": {
+                  "alias": {
+                    "en": "Error Request",
+                    "zh": "错误请求"
+                  }
+                },
+                "key": "service_error_req_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "服务异常",
+                "i18n": {
+                  "alias": {
+                    "en": "Service Exception",
+                    "zh": "服务异常"
+                  }
+                },
+                "key": "service_exception_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "告警次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Alert Count",
+                    "zh": "告警次数"
+                  }
+                },
+                "key": "alert_count",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": false
+          }
+        },
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": {},
+        "title": "全局概览",
+        "i18n": {
+          "title": {
+            "en": "Global Overview",
+            "zh": "全局概览"
+          }
+        }
+      }
+    }
+  ],
+  "version": "v2"
+}

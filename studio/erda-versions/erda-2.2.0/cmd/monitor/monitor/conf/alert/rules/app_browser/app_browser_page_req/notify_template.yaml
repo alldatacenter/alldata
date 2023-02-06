@@ -1,0 +1,95 @@
+- name: "页面访问性能告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    plt: "time:s"
+  title: |
+    【页面 ({{doc_path}}) 访问性能告警】
+  template: |
+    【页面访问性能告警】
+
+    事件: {{doc_path}} 页面慢响应
+
+    域名: {{host}}
+
+    页面: {{doc_path}}
+
+    页面平均响应时间: {{plt_avg}} ms
+
+    时间: {{timestamp}}
+
+    tk: {{tk}}
+
+    告警级别: {{level}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+- name: "页面访问性能告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    plt: "time:s"
+  title: |
+    【页面 ({{doc_path}}) 访问性能告警】
+  template: |
+    {{doc_path}}触发页面访问性能告警，tk: {{tk}}，页面平均响应时间: {{plt_avg}} ms，告警级别: {{level}}
+- name: "页面访问性能告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    plt: "time:s"
+  title: |
+    【页面 ({{doc_path}}) 访问性能告警】
+  template: |
+    触发页面访问性能告警，tk: {{tk}}，页面平均响应时间: {{plt_avg}} ms，告警级别: {{level}}
+
+- name: "Page access performance alarm"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    plt: "time:s"
+  title: |
+    [Access performance alarm of page ({{doc_path}})]
+  template: |
+    [Page access performance alarm]
+
+    Event: Slow response of page {{doc_path}}
+
+    Domain name: {{host}}
+
+    Page: {{doc_path}}
+
+    Average response time: {{plt_avg}} ms
+
+    Time: {{timestamp}}
+
+    tk: {{tk}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+- name: "Page access performance alarm"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    plt: "time:s"
+  title: |
+    [Access performance alarm of page ({{doc_path}})]
+  template: |
+    Page access performance alarm triggered by {{doc_path}}, tk: {{tk}}, average response time: {{plt_avg}} ms
+- name: "Page access performance alarm"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    plt: "time:s"
+  title: |
+    [Access performance alarm of page ({{doc_path}})]
+  template: |
+    Page access performance alarm triggered, tk: {{tk}}, average response time: {{plt_avg}} ms

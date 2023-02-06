@@ -1,0 +1,304 @@
+syntax = "proto3";
+
+package erda.core.messenger.eventbox;
+
+option go_package = "github.com/erda-project/erda-proto-go/core/messenger/eventbox/pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "common/openapi.proto";
+
+service EventBoxService {
+  option (erda.common.openapi_service) = {
+    service: "core-services",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+  rpc CreateMessage (CreateMessageRequest) returns (CreateMessageResponse) {
+    option(google.api.http) = {
+      post: "/api/dice/eventbox/message/create"
+    };
+  }
+  rpc PrefixGet (PrefixGetRequest) returns (PrefixGetResponse) {
+    option(google.api.http) = {
+      get: "/api/dice/eventbox/register"
+    };
+  }
+  rpc Put (PutRequest) returns (PutResponse) {
+    option(google.api.http) = {
+      put: "/api/dice/eventbox/register"
+    };
+  }
+  rpc Del (DelRequest) returns (DelResponse) {
+    option(google.api.http) = {
+      delete: "/api/dice/eventbox/register"
+    };
+  }
+  rpc GetVersion (GetVersionRequest) returns (GetVersionResponse) {
+    option(google.api.http) = {
+      get: "/api/dice/eventbox/version"
+    };
+  }
+  rpc GetSMTPInfo (GetSMTPInfoRequest) returns (GetSMTPInfoResponse) {
+    option(google.api.http)     = {
+      get: "/api/dice/eventbox/actions/get-smtp-info"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/dice/eventbox/actions/get-smtp-info"
+    };
+  }
+  rpc ListHooks (ListHooksRequest) returns (ListHooksResponse) {
+    option(google.api.http)     = {
+      get: "/api/dice/eventbox/webhooks"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/webhooks"
+    };
+  }
+  rpc InspectHook (InspectHookRequest) returns (InspectHookResponse) {
+    option(google.api.http)     = {
+      get: "/api/dice/eventbox/webhooks/{id}"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/webhooks/{id}"
+    };
+  }
+  rpc CreateHook (CreateHookRequest) returns (CreateHookResponse) {
+    option(google.api.http)     = {
+      post: "/api/dice/eventbox/webhooks"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/webhooks"
+    };
+  }
+  rpc EditHook (EditHookRequest) returns (EditHookResponse) {
+    option(google.api.http)     = {
+      put: "/api/dice/eventbox/webhooks/{id}"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/webhooks/{id}"
+    };
+  }
+  rpc PingHook (PingHookRequest) returns (PingHookResponse) {
+    option(google.api.http)     = {
+      post: "/api/dice/eventbox/webhooks/{id}/actions/ping"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/webhooks/{id}/actions/ping"
+    };
+  }
+  rpc DeleteHook (DeleteHookRequest) returns (DeleteHookResponse) {
+    option(google.api.http)     = {
+      delete: "/api/dice/eventbox/webhooks/{id}"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/webhooks/{id}"
+    };
+  }
+  rpc ListHookEvents (ListHookEventsRequest) returns (ListHookEventsResponse) {
+    option(google.api.http)     = {
+      get: "/api/dice/eventbox/webhook_events"
+    };
+    option(erda.common.openapi) = {
+      path: "/api/webhook-events"
+    };
+  }
+  rpc Stat (StatRequest) returns (StatResponse) {
+    option(google.api.http) = {
+      get: "/api/dice/eventbox/stat"
+    };
+  }
+}
+
+message CreateMessageRequest {
+  string                             sender        = 1;
+  google.protobuf.Value              content       = 2;
+  map<string, google.protobuf.Value> labels        = 3;
+  int64                              time          = 4;
+  google.protobuf.Value              originContent = 5 [json_name = "-"];
+}
+
+message CreateMessageResponse {
+  string data = 1;
+}
+
+//message HTTPResponse {
+//  int64                 status     = 1;
+//  ErrorResponse         error      = 2;
+//  google.protobuf.Value content    = 3;
+//  bool                  compose    = 4;
+//  bool                  rawContent = 5;
+//}
+
+//message ErrorResponse {
+//  string                code = 1;
+//  string                msg  = 2;
+//  google.protobuf.Value ctx  = 3;
+//}
+
+message PrefixGetRequest {
+  string key = 1;
+}
+
+message PrefixGetResponse {
+  map<string, PrefixValue> data = 1;
+}
+
+message PrefixValue {
+  map<string, google.protobuf.Value> value = 1;
+}
+
+message PutRequest {
+  string                             key    = 1;
+  map<string, google.protobuf.Value> labels = 2;
+}
+
+message PutResponse {
+  string data = 1;
+}
+
+message DelRequest {
+  string key = 1;
+}
+
+message DelResponse {
+  string data = 1;
+}
+
+message GetVersionRequest {}
+
+message GetVersionResponse {
+  string data = 1;
+}
+
+message GetSMTPInfoRequest {}
+
+message GetSMTPInfoResponse {
+  MailSubscriberInfo data = 1;
+}
+
+message MailSubscriberInfo {
+  string host               = 1;
+  string port               = 2;
+  string user               = 3;
+  string password           = 4;
+  string displayUser        = 5;
+  bool   isSSL              = 6;
+  bool   insecureSkipVerify = 7;
+}
+
+message ListHooksRequest {
+  string orgId         = 1 [json_name = "orgID"];
+  string projectId     = 2 [json_name = "projectId"];
+  string applicationId = 3 [json_name = "applicationId"];
+  string env           = 4 [json_name = "env"];
+}
+
+message ListHooksResponse {
+  repeated Hook data = 1;
+}
+
+message InspectHookRequest {
+  string orgId         = 1 [json_name = "orgID"];
+  string projectId     = 2 [json_name = "projectId"];
+  string applicationId = 3 [json_name = "applicationId"];
+  string id            = 4;
+}
+
+message InspectHookResponse {
+  Hook data = 1;
+}
+
+message CreateHookRequest {
+  string          name        = 1;
+  repeated string events      = 2;
+  string          url         = 3;
+  bool            active      = 4;
+  string          org         = 5 [json_name = "orgID"];
+  string          project     = 6 [json_name = "projectID"];
+  string          application = 7 [json_name = "applicationID"];
+  repeated string env         = 8;
+}
+
+message CreateHookResponse {
+  string data = 1;
+}
+
+message EditHookRequest {
+  repeated string events        = 1;
+  repeated string removeEvents  = 2;
+  repeated string addEvents     = 3;
+  string          url           = 4;
+  bool            active        = 5;
+  string          id            = 6;
+  string          orgId         = 7 [json_name = "orgID"];
+  string          projectId     = 8 [json_name = "projectId"];
+  string          applicationId = 9 [json_name = "applicationId"];
+}
+
+message EditHookResponse {
+  string data = 1;
+}
+
+message PingHookRequest {
+  string orgId         = 1 [json_name = "orgID"];
+  string projectId     = 2 [json_name = "projectId"];
+  string applicationId = 3 [json_name = "applicationId"];
+  string id            = 4;
+}
+
+message PingHookResponse {
+  string data = 1;
+}
+
+message DeleteHookRequest {
+  string orgId         = 1 [json_name = "orgID"];
+  string projectId     = 2 [json_name = "projectId"];
+  string applicationId = 3 [json_name = "applicationId"];
+  string id            = 4;
+}
+
+message DeleteHookResponse {
+  string data = 1;
+}
+
+message ListHookEventsRequest {
+  string orgId         = 1 [json_name = "orgID"];
+  string projectId     = 2 [json_name = "projectId"];
+  string applicationId = 3 [json_name = "applicationId"];
+}
+
+message ListHookEventsResponse {
+  repeated HookEvents data = 1;
+}
+
+message HookEvents {
+  string key   = 1;
+  string title = 2;
+  string desc  = 3;
+}
+
+message StatRequest {}
+
+message StatResponse {
+  string data = 1;
+}
+
+message Hook {
+  string          id            = 1;
+  string          updatedAt     = 2;
+  string          createdAt     = 3;
+  string          secret        = 4;
+  string          name          = 5;
+  repeated string events        = 6;
+  string          url           = 7;
+  bool            active        = 8;
+  string          orgID         = 9;
+  string          projectID     = 10;
+  string          applicationID = 11;
+  repeated string env           = 12;
+}

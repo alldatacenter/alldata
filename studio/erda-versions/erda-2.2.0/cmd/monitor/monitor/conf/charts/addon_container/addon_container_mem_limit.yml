@@ -1,0 +1,16 @@
+- addon_container_mem_limit:
+    title: "最大内存限制"
+    metric_names: "docker_container_summary"
+    type: "addon_container"
+    order: 3
+    defines:
+      avg.mem_limit:
+        label: "内存限制"
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "limit"
+    parameters:
+      group:
+        - "container_id"
+

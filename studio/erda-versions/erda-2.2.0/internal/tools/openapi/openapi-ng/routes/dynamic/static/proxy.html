@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>OpenAPI Proxy</title>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>Dynamic APIs Proxy</h1>
+    </div>
+    <div style="padding: 20px 0px 10px 0px;">
+      <form class="bs-example bs-example-form" role="form">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><div style="display: inline-block;width: 100px;"> Method <span class="caret"></span></div>
+                </button>
+                <ul class="dropdown-menu" id="method-list">
+                  <li><a href="#">GET</a></li>
+                  <li><a href="#">DELETE</a></li>
+                  <li><a href="#">PUT</a></li>
+                  <li><a href="#">POST</a></li>
+                  <li><a href="#">PATCH</a></li>
+                  <li><a href="#">HEAD</a></li>
+                  <li><a href="#">CONNECT</a></li>
+                  <li><a href="#">OPTIONS</a></li>
+                  <li><a href="#">TRACE</a></li>
+                </ul>
+              </div>
+              <input type="text" class="form-control" name="method">
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" disabled="disabled"><div style="display: inline-block;width: 100px;"><span style="color: red;">*</span> Path</div></button>
+              </span>
+              <input type="text" class="form-control" name="path">
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-8">
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><div style="display: inline-block;width: 100px;"><span style="color: red;">*</span> Service <span class="caret"></span></div>
+                </button>
+                <ul class="dropdown-menu" id="service-list">
+                </ul>
+              </div>
+              <input type="text" class="form-control" name="service_url">
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" disabled="disabled"><div style="display: inline-block;width: 100px;"><span style="color: red;">*</span> Backend Path</div></button>
+              </span>
+              <input type="text" class="form-control" name="backend_path">
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-2">
+            <div class="checkbox">
+              <label><input type="checkbox" name="check_login">Check Login</label>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="checkbox">
+              <label><input type="checkbox" name="try_check_login">Try Check Login</label>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="checkbox">
+              <label><input type="checkbox" name="check_token">Check Token</label>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="checkbox">
+              <label><input type="checkbox" name="check_basic_auth">Check Basic Auth</label>
+            </div>
+          </div>
+        </div>
+        <br />
+        <button type="button" class="btn btn-default" id="submit">Submit</button>
+        <br /><br />
+        <div class="alert alert-success" id="msg-box" style="display: none;"></div>
+        <div class="alert alert-danger" id="error-msg-box" style="display: none;"></div>
+      </form>
+    </div>
+    <hr/>
+    <table class="table" id="proxy-list">
+       <thead>
+          <tr>
+             <th>Method</th>
+             <th>Path</th>
+             <th>Backend</th>
+             <th>Auth</th>
+             <th></th>
+          </tr>
+       </thead>
+       <tbody>
+       </tbody>
+    </table>
+  </div>
+  <script src="proxy.js"></script>  
+</body>
+</html>

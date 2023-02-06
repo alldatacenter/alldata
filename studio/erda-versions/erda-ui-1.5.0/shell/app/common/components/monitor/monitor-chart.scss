@@ -1,0 +1,34 @@
+.monitor-chart-panel {
+  .time-range-selector {
+    position: absolute;
+  }
+}
+
+.monitor-chart {
+  position: relative;
+  top: -20px;
+  height: 100%;
+
+  .monitor-chart-title {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 28px;
+  }
+
+  .time-range-selector {
+    top: 0;
+    right: 10px;
+    z-index: 5;
+    width: 120px;
+
+    .ant-select-selection {
+      color: $color-text;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .empty-holder {
+    top: 1.5625rem;
+  }
+}

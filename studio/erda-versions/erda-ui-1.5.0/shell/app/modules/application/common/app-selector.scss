@@ -1,0 +1,30 @@
+.head-app-selector {
+  padding: 0 12px;
+
+  .load-more-selector {
+    .results {
+      padding: 4px 2px 4px 12px;
+      border: 1px solid transparent;
+
+      &:hover {
+        border: 1px solid $primary;
+        box-shadow: unset;
+      }
+
+      .values {
+        width: 100%;
+      }
+
+      .value-item {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .head-app-name {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+  }
+}

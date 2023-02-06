@@ -1,0 +1,15 @@
+- ta_m_req_recv:
+    title: "接收数据"
+    metric_names: "ta_req_mobile"
+    type: "ta_m"
+    order: 0
+    defines:
+      sum.req:
+        label: "接收数据"
+        unit: "KB"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+        original_unit: "kb"
+    parameters:
+

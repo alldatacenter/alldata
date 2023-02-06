@@ -1,0 +1,104 @@
+openapi: 3.0.1
+info:
+    title: database-schemas
+    version: "1.0"
+paths: {}
+components:
+    schemas:
+        base_model:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                    format: datetime
+                    example: created_at_example
+                    description: ""
+                    x-dice-raw: created_at
+                    x-dice-source: base_model
+                id:
+                    type: integer
+                    format: bigint(20) UNSIGNED
+                    example: 0
+                    description: ""
+                    x-dice-raw: id
+                    x-dice-source: base_model
+                updatedAt:
+                    type: string
+                    format: datetime
+                    example: updated_at_example
+                    description: ""
+                    x-dice-raw: updated_at
+                    x-dice-source: base_model
+        dice_api_assets:
+            type: object
+            properties:
+                appID:
+                    type: integer
+                    format: bigint(20)
+                    example: 0
+                    description: ""
+                    x-dice-raw: app_id
+                    x-dice-source: dice_api_assets
+                assetID:
+                    type: string
+                    format: varchar(191)
+                    example: asset_id_example
+                    description: this is asset id
+                    x-dice-raw: asset_id
+                    x-dice-source: dice_api_assets
+                assetName:
+                    type: string
+                    format: varchar(191)
+                    example: asset_name_2_example
+                    description: asset name
+                    x-dice-raw: asset_name_2
+                    x-dice-source: dice_api_assets
+                assetName2:
+                    type: string
+                    format: varchar(191)
+                    example: asset_name_2_example
+                    description: asset name
+                    x-dice-raw: asset_name_2
+                    x-dice-source: dice_api_assets
+                creatorID:
+                    type: integer
+                    format: int(11)
+                    example: 0
+                    description: ""
+                    x-dice-raw: creator_id
+                    x-dice-source: dice_api_assets
+                logo:
+                    type: string
+                    format: varchar(1024)
+                    example: logo_example
+                    description: ""
+                    x-dice-raw: logo
+                    x-dice-source: dice_api_assets
+                orgID:
+                    type: integer
+                    format: bigint(20)
+                    example: 0
+                    description: ""
+                    x-dice-raw: org_id
+                    x-dice-source: dice_api_assets
+                projectID:
+                    type: integer
+                    format: bigint(20)
+                    example: 0
+                    description: ""
+                    x-dice-raw: project_id
+                    x-dice-source: dice_api_assets
+                public:
+                    type: boolean
+                    format: tinyint(1)
+                    example: true
+                    description: public
+                    x-dice-raw: public
+                    x-dice-source: dice_api_assets
+                updaterID:
+                    type: string
+                    format: varchar(191)
+                    example: updater_id_example
+                    description: ""
+                    x-dice-raw: updater_id
+                    x-dice-source: dice_api_assets

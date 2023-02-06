@@ -1,0 +1,51 @@
+http-server:
+    addr: ":7096"
+health:
+    path: "/api/health"
+
+kafka:
+    # servers: "${BOOTSTRAP_SERVERS:localhost:9092}"
+    comsumer:
+        options:
+            auto.offset.reset: "${KAFKA_AUTO_OFFSET_RESET:latest}"
+            auto.commit.interval.ms: "${KAFKA_AUTO_COMMIT_INTERVAL_MS:1000}"
+    producer:
+        options:
+            go.produce.channel.size: ${KAFKA_PRODUCE_SIZE:200000}
+
+mysql:
+    # host: "${MYSQL_HOST:localhost}"
+    # port: ${MYSQL_PORT:3306}
+    # username: "${MYSQL_USERNAME:root}"
+    # password: "${MYSQL_PASSWORD:123456}"
+    # database: "${MYSQL_DATABASE:dice}"
+
+logs-metrics-analysis:
+    _enable: ${LOG_METRICS_ENABLE:true}
+    filters:
+        ${MONITOR_LOG_KEY_NAME:monitor_log_key}: "${MONITOR_LOG_KEY:_not_exist_}"
+    processors:
+        scope: "${LOG_PROC_SCOPE:micro_service}"
+        scope_id: "${METRIC_SCOPE_ID}"
+        scope_id_key: "${METRIC_SCOPE_ID_KEY:terminus_key}"
+        reload_interval: "3m"
+    input:
+        topics: "${LOG_TOPICS:spot-container-log}"
+        group: "${LOG_METRICS_GROUP_ID:spot-log-metrics-dev-0}"
+        parallelism: ${LOG_METRICS_CONSUMERS:3}
+    output:
+        type: "${METRIC_OUTPUT_TYPE:kafka}"
+        kafka:
+            topic: "${METRIC_TOPICS:spot-metrics}"
+            parallelism: ${KAFKA_PARALLELISM:3}
+            batch:
+                size:  ${KAFKA_BATCH_SIZE:50}
+                timeout: "10s"
+        collector:
+            url: "${COLLECTOR_PUBLIC_URL:http://collector.default.svc.cluster.local:7076}"
+            username: "${COLLECTOR_AUTH_USERNAME}"
+            password: "${COLLECTOR_AUTH_PASSWORD}"
+
+http-server@admin:
+    addr: ":7098"
+pprof:

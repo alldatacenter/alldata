@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package erda.core.hepa.legacy_upstream;
+option go_package = "github.com/erda-project/erda-proto-go/core/hepa/legacy_upstream/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+
+service UpstreamService {
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+      put: "/api/gateway/register",
+      body: "upstream",
+    };
+  }
+
+  rpc AsyncRegister(AsyncRegisterRequest) returns (AsyncRegisterResponse) {
+    option (google.api.http) = {
+      put: "/api/gateway/register_async",
+      body: "upstream",
+    };
+  }
+}
+
+message AsyncRegisterResponse {
+  bool data = 1;
+}
+
+message AsyncRegisterRequest {
+  Upstream upstream = 1;
+}
+
+message RegisterResponse {
+  bool data = 1;
+}
+
+message RegisterRequest {
+  Upstream upstream = 1;
+}
+
+message UpstreamApi {
+  string path = 1;
+  string gatewayPath = 2;
+  string method = 3;
+  string address = 4;
+  bool isInner = 5;
+  bool isCustom = 6;
+  google.protobuf.Value doc = 7;
+  string name = 8;
+}
+
+message Upstream {
+  string az = 1;
+  string diceAppId = 2;
+  string diceService = 3;
+  string runtimeName = 4;
+  string runtimeId = 5;
+  string appName = 6;
+  string serviceName = 7;
+  string orgId = 8;
+  string projectId = 9;
+  string env = 10;
+  repeated UpstreamApi apiList = 11;
+  int32 registerId = 12;
+  string registerTag = 13;
+  string pathPrefix = 14;
+}

@@ -1,0 +1,30 @@
+.api-test-modal {
+  &.fullscreen {
+    height: 100vh;
+    padding: 0;
+
+    .ant-modal-content {
+      height: 100%;
+
+      .ant-modal-body {
+        height: calc(100% - 130px);
+        overflow: auto;
+      }
+    }
+  }
+
+  .preview {
+    border: 1px solid $border-color;
+    border-radius: 3px;
+
+    &-header {
+      .ant-tabs-bar {
+        background-color: #f2f2f2;
+
+        .ant-tabs-nav-container {
+          padding: 0 16px;
+        }
+      }
+    }
+  }
+}

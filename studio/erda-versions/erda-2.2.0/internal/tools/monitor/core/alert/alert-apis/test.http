@@ -1,0 +1,62 @@
+@url = http://localhost:7096/api
+
+### query custom metric
+GET {{url}}/customize/alerts/metrics
+    ?scope=micro_service
+    &scopeId=bd717ad15bc8542588bde9ff0c7b4cf78
+    &name=application_http
+Org-ID: 1
+User-ID: 1100
+Lang: en
+
+### notifies targets
+GET {{url}}/customize/alerts/notifies/targets
+Org-ID: 1
+User-ID: 1100
+Lang: en
+
+### POST  xx
+POST {{url}}/orgs/alerts
+Content-Type: application/json
+Org-ID: 1
+User-ID: 1100
+
+{
+    "name":"test",
+    "clusterNames":[
+        "terminus-dev"
+    ],
+    "domain":"https://terminus-org.dev.terminus.io",
+    "rules":[
+        {
+            "alertIndex":"dice_addon_cassandra_gc_count",
+            "functions":[
+                {
+                    "field":"CollectionCount_win",
+                    "aggregator":"value",
+                    "operator":"gte",
+                    "value":10,
+                    "dataType":"number",
+                    "unit":""
+                }
+            ],
+            "id":301,
+            "window":3,
+            "isRecover":false,
+            "createTime":1595410925000,
+            "updateTime":1595410925000
+        }
+    ],
+    "notifies":[
+        {
+            "silence":{
+                "value":5,
+                "unit":"minutes",
+                "policy":"fixed"
+            },
+            "type":"notify_group",
+            "groupId":3,
+            "groupType":"dingding"
+        }
+    ]
+}

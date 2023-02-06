@@ -1,0 +1,8 @@
+id: addon_redis_mem
+name: redis实例内存使用率异常告警
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{container_id}}'
+  level: Warning
+  recover: "true"
+  tickets_metric_key: '{{container_id}}'

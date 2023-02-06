@@ -1,0 +1,14 @@
+- redis_total_connections_received:
+    title: "连接的个数/秒"
+    metric_names: "redis"
+    type: "redis_remove"
+    order: 8
+    defines:
+      avg.total_connections_received:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

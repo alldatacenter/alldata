@@ -1,0 +1,14 @@
+- kong_error:
+    title: "调用错误统计"
+    metric_names: "agg_kong"
+    type: "kong"
+    order: 0
+    defines:
+      sum.err_sum:
+        label: "总错误量"
+        unit: "次"
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

@@ -1,0 +1,117 @@
+{
+  "id": "services",
+  "name": "services",
+  "desc": "",
+  "scope": "micro_service",
+  "scopeId": "global",
+  "viewConfig": [
+    {
+      "h": 9,
+      "w": 24,
+      "x": 0,
+      "y": 0,
+      "i": "view-4EaRR6U6",
+      "view": {
+        "api": {
+          "method": "get",
+          "query": {
+            "end": "{{endTime}}",
+            "start": "{{startTime}}",
+            "terminusKey": "{{terminusKey}}",
+            "serviceName": "{{serviceName}}"
+          },
+          "url": "/api/apm/topology/services"
+        },
+        "chartType": "table",
+        "config": {
+          "dataSourceConfig": {
+            "valueDimensions": [
+              {
+                "aggregation": "sum",
+                "alias": "服务名称",
+                "i18n": {
+                  "alias": {
+                    "en": "Service Name",
+                    "zh": "服务名称"
+                  }
+                },
+                "key": "service_name",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "aggregation": "sum",
+                "alias": "请求次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Count",
+                    "zh": "请求次数"
+                  }
+                },
+                "key": "req_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "请求错误数",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Error Count",
+                    "zh": "请求错误数"
+                  }
+                },
+                "key": "req_error_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "aggregation": "avg",
+                "alias": "平均延迟(ms)",
+                "i18n": {
+                  "alias": {
+                    "en": "Avg Time Delay",
+                    "zh": "平均延迟(ms)"
+                  }
+                },
+                "key": "avg_req_time",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "运行实例数",
+                "i18n": {
+                  "alias": {
+                    "en": "Running Instance Count",
+                    "zh": "运行实例数"
+                  }
+                },
+                "key": "running_instance_count",
+                "resultType": "string",
+                "type": "field"
+              }
+            ]
+          },
+          "optionProps": {
+            "isMoreThanOneDay": true,
+            "moreThanOneDayFormat": "M/D",
+            "rowClick": {
+              "name": "jumpToDetail",
+              "value": "service_name"
+            }
+          }
+        },
+        "dataSourceType": "api",
+        "description": "",
+        "staticData": null,
+        "title": "服务列表",
+        "i18n": {
+          "title": {
+            "en": "Service List",
+            "zh": "服务列表"
+          }
+        }
+      }
+    }
+  ],
+  "version": "v2"
+}

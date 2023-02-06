@@ -1,0 +1,10 @@
+.repo-file-editor {
+  .commit-file-form {
+    padding: 16px;
+    border-top: 1px solid $color-border;
+
+    .ant-form-item:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

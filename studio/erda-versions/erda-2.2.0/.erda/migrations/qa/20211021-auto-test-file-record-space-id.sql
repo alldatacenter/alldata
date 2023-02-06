@@ -1,0 +1,1 @@
+ALTER TABLE dice_test_file_records ADD COLUMN `space_id` int(11) DEFAULT false COMMENT 'autotest space id';

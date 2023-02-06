@@ -1,0 +1,19 @@
+.cluster-detail {
+  min-width: 700px;
+}
+
+.cluster-cloud-detail {
+  .ecs-item-row {
+    .ant-table-row-expand-icon-cell {
+      .ant-table-row-expand-icon {
+        visibility: hidden !important;
+      }
+    }
+
+    + tr {
+      &.ant-table-expanded-row {
+        display: none;
+      }
+    }
+  }
+}

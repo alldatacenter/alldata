@@ -1,0 +1,22 @@
+.property-view {
+  overflow-x: auto;
+  color: $color-dark-6;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0;
+
+  .object-key {
+    display: block;
+    color: $color-dark-8;
+    // font-weight: bold;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+
+  .object-value {
+    display: block;
+    padding-left: 8px;
+    white-space: nowrap;
+  }
+}

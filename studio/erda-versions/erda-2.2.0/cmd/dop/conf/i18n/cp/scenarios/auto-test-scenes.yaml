@@ -1,0 +1,291 @@
+zh:
+  wb.content.autotest.scene.string: 随机一个字符串 abc
+  wb.content.autotest.scene.integer: 随机一个整型 10000
+  wb.content.autotest.scene.integer_length: 随机一个定长整型数据，例如：integer_1 代表随机 [0-9]，integer_2 代表随机 [10-99]
+  wb.content.autotest.scene.float: 随机一个浮点类型 10000.1
+  wb.content.autotest.scene.boolean: 随机一个布尔类型 true
+  wb.content.autotest.scene.upper: 随机一个大写字符串 ABC
+  wb.content.autotest.scene.lower: 随机一个小写字符串 abc
+  wb.content.autotest.scene.mobile: 随机一个电话号码 18888888888
+  wb.content.autotest.scene.digital_letters: 随机一个数字和大小写字符串 Abc123
+  wb.content.autotest.scene.letters: 随机一个大小写字符串 Abc
+  wb.content.autotest.scene.character: 随机一个字符 a
+  wb.content.autotest.scene.timestamp: 当前时间戳秒格式 1587631494
+  wb.content.autotest.scene.timestamp_hour: 当前时间1小时前时间戳秒格式 1587631494
+  wb.content.autotest.scene.timestamp_after_hour: 当前时间1小时后时间戳秒格式 1587631494
+  wb.content.autotest.scene.timestamp_day: 当前时间1天前时间戳秒格式 1587631494
+  wb.content.autotest.scene.timestamp_after_day: 当前时间1天后时间戳秒格式 1587631494
+  wb.content.autotest.scene.timestamp_ms: 当前时间戳毫秒格式 1587631494093
+  wb.content.autotest.scene.timestamp_ms_hour: 当前时间1小时前时间戳毫秒格式 1587631494093
+  wb.content.autotest.scene.timestamp_ms_after_hour: 当前时间1小时后时间戳毫秒格式 1587631494093
+  wb.content.autotest.scene.timestamp_ms_day: 当前时间1天前时间戳毫秒格式 1587631494093
+  wb.content.autotest.scene.timestamp_ms_after_day: 当前时间1天后时间戳毫秒格式 1587631494093
+  wb.content.autotest.scene.timestamp_ns: 当前时间当前时间戳纳秒格式 1587631494093562000
+  wb.content.autotest.scene.timestamp_ns_hour: 当前时间1小时前时间戳纳秒格式 1587631494093562000
+  wb.content.autotest.scene.timestamp_ns_after_hour: 当前时间1小时后时间戳纳秒格式 1587631494093562000
+  wb.content.autotest.scene.timestamp_ns_day: 当前时间1天前时间戳纳秒格式 1587631494093562000
+  wb.content.autotest.scene.timestamp_ns_after_day: 当前时间1天后时间戳纳秒格式 1587631494093562000
+  wb.content.autotest.scene.date: 当前时间(yyyy-MM-dd)格式 2006-01-02
+  wb.content.autotest.scene.date_day: 当前时间1天前(yyyy-MM-dd)格式 2006-01-01
+  wb.content.autotest.scene.datetime: 当前时间(yyyy-MM-dd HH:mm:ss)格式 2006-01-02 15:04:05
+  wb.content.autotest.scene.datetime_hour: 当前时间1小时前(yyyy-MM-dd HH:mm:ss)格式 2006-01-02 15:04:05
+  sceneCatalog: 场景目录
+  addSceneSet: 添加场景集
+  scriptLang: 脚本语言
+  stepName: 步骤名称
+  stepType: 步骤类型
+  step: 步骤
+  subtask: 子任务数
+  apiPath: 接口路径
+  addScene: 添加场景
+  refSceneSet: 引用场景集
+  editSceneSet: 编辑场景集
+  editScene: 编辑场景
+  copyToAnotherSceneSet: 复制到其他场景集
+  exportSceneSet: 导出场景集
+  copyScene: 复制场景
+  addParallelScene: 添加并行场景
+  changeToSerial: 改为串行
+  sceneList: 场景列表
+  execute: 执行
+  configInfo: 配置信息
+  executeDetail: 执行明细
+  sceneInput: 场景入参
+  paramName: 参数名
+  refValue: 引用值
+  validInPlan: 在执行计划中生效
+  debugValue: 调试值
+  validInScene: 仅在当前场景执行时生效
+  selectiveExp: 可选择表达式
+  preSceneOut: 前置场景出参
+  globalInput: 全局变量入参
+  sceneStep: 场景步骤
+  sceneStepTip: 组之间是串行执行，组内是并行执行
+  addParallelApi: 添加并行接口
+  copyApi: 复制接口
+  copyJson: 复制Json格式
+  formAdd: 表单添加
+  textAdd: 粘贴文本添加
+  inputSceneParam: 本场景入参
+  preApiOut: 前置接口出参
+  preConfigOut: 前置配置单出参
+  saveExec: 保存并执行
+  addByText: 按文本添加
+  apiText: API文本
+  selectConfig: 请选择配置单
+  waitTime: 等待时间(s)
+  sceneOut: 场景出参
+  refresh: 刷新
+  execHistory: 执行历史
+  pipelineID: 流水线 ID
+  duration: 时长
+  totalApi: 接口总数
+  apiExecRate: 接口执行率
+  apiPassRate: 接口通过率
+  execStep: 执行步骤
+  checkRes: 查看结果
+  selectSceneSet: 选择场景集
+  selectSceneSetPlace: 请选择场景集
+  referPolicy: 引用策略
+  referPolicyPlace: 请选择引用策略
+  new-run: 重新执行并引用执行结果
+  try-latest-success-result: 最近一次执行成功的结果
+  try-latest-result: 最近一次执行的结果
+  sceneSetRefer: 场景集引用
+  configForm: 配置单
+  configFormInfo: 配置单信息
+  apiInfo: 接口信息
+  nestedScene: 嵌套场景
+  nestedSceneInfo: 嵌套场景信息
+  customScript: 自定义脚本
+  emptyCustomScript: 空 自定义脚本
+  wait: 等待
+  emptyWait: 空 等待
+  waitInfo: 等待信息
+  marketProto: 市场原型
+  marketProtoTip: 当前主要通过api集市引入接口，请搜索选择使用
+  marketProtoPlace: 请选择接口名称或路径进行搜索
+  marketProtoChangeApi: 确认覆盖当前接口定义
+  marketProtoChangeApiConfirm: 接口定义覆盖后无法恢复, 确认覆盖？
+  API: 接口
+  emptyApi: 空 接口
+  paramNameMessage1: 参数名最大长度不能超过50
+  paramNameMessage2: 参数名为英文、数字、中划线或下划线
+  paramNameMessage3: 参数名为英文、数字、点、中划线或下划线
+  defaultValue: 默认值
+  descLimit: 描述最大长度不能超过1000
+  greater: 大于
+  greaterEqual: 大于等于
+  equal: 等于
+  lessEqual: 小于等于
+  less: 小于
+  notEqual: 不等于
+  contain: 包含
+  notContain: 不包含
+  exist: 存在
+  notExist: 不存在
+  isEmpty: 为空
+  notEmpty: 不为空
+  belong: 属于
+  notBelong: 不属于
+  empty: 无
+  sceneSetRuleMessage: 可输入中文、英文、数字、中划线或下划线
+  scene: 场景
+  loopStrategy: 循环策略
+  loopEndCondition: 循环结束条件
+  maxLoop: 最大循环次数
+  declineRatio: 衰退比例
+  intervalRatio: 每次循环叠加间隔比例
+  declineMax: 衰退最大值(秒)
+  loopMaxInterval: 循环最大间隔时间
+  startInterval: 起始间隔(秒)
+  version: 版本
+  executor: 执行人
+  triggerTime: 触发时间
+  searchPlaceHolder: 搜索(敬请期待)
+  backLatestResult: 返回最新记录
+en:
+  wb.content.autotest.scene.string: random string like abc
+  wb.content.autotest.scene.integer: random integer like 10000
+  wb.content.autotest.scene.integer_length: 'random a fixed-length integer data, for example: integer_1 represents random [0-9], integer_2 represents random [10-99]'
+  wb.content.autotest.scene.float: random float like 10000.1
+  wb.content.autotest.scene.boolean: random boolean like true
+  wb.content.autotest.scene.upper: random upper string like ABC
+  wb.content.autotest.scene.lower: random lower string like abc
+  wb.content.autotest.scene.mobile: random phone number like 18888888888
+  wb.content.autotest.scene.digital_letters: Random a number and upper and lower case string like Abc123
+  wb.content.autotest.scene.letters: random uppercase and lowercase string like Abc
+  wb.content.autotest.scene.character: random char like a
+  wb.content.autotest.scene.timestamp: current time in seconds format like 1587631494
+  wb.content.autotest.scene.timestamp_hour: current time 1 hour ago timestamp in seconds format like 1587631494
+  wb.content.autotest.scene.timestamp_after_hour: current time second format after 1 hour like 1587631494
+  wb.content.autotest.scene.timestamp_day: current time 1 day ago timestamp in seconds format like 1587631494
+  wb.content.autotest.scene.timestamp_after_day: current time in seconds format after 1 day like 1587631494
+  wb.content.autotest.scene.timestamp_ms: current time in millisecond format like 1587631494093
+  wb.content.autotest.scene.timestamp_ms_hour: current time 1 hour ago timestamp millisecond format like 1587631494093
+  wb.content.autotest.scene.timestamp_ms_after_hour: current time in millisecond format after 1 hour like 1587631494093
+  wb.content.autotest.scene.timestamp_ms_day: current time 1 day ago timestamp in millisecond format like 1587631494093
+  wb.content.autotest.scene.timestamp_ms_after_day: current time in millisecond format after 1 day like 1587631494093
+  wb.content.autotest.scene.timestamp_ns: current time in nanosecond format like 1587631494093562000
+  wb.content.autotest.scene.timestamp_ns_hour: current time 1 hour ago timestamp in nanosecond format like 1587631494093562000
+  wb.content.autotest.scene.timestamp_ns_after_hour: current time after 1 hour in nanosecond format like 1587631494093562000
+  wb.content.autotest.scene.timestamp_ns_day: current time 1 day ago timestamp in nanosecond format like 1587631494093562000
+  wb.content.autotest.scene.timestamp_ns_after_day: current time in nanosecond format after 1 day like 1587631494093562000
+  wb.content.autotest.scene.date: current time (yyyy-MM-dd) format like 2006-01-02
+  wb.content.autotest.scene.date_day: current time (yyyy-MM-dd) 1 day ago format like 2006-01-01
+  wb.content.autotest.scene.datetime: current time (yyyy-MM-dd HH:mm:ss) format like 2006-01-02 15:04:05
+  wb.content.autotest.scene.datetime_hour: current time (yyyy-MM-dd HH:mm:ss) format with time 1 hour before like 2006-01-02 15:04:05
+  sceneCatalog: Scene catalog
+  addSceneSet: Add scene set
+  scriptLang: Script language
+  stepName: Step name
+  stepType: Step type
+  step: Step
+  subtask: Number of subtasks
+  apiPath: Interface path
+  addScene: Add Scene
+  refSceneSet: Reference Scene Set
+  editSceneSet: Edit Scene Set
+  editScene: Edit Scene
+  copyToAnotherSceneSet: Copy to Other Scene Set
+  exportSceneSet: Export Scene Set
+  copyScene: Copy Scene
+  addParallelScene: Add parallel scene
+  changeToSerial: Change to serial
+  sceneList: Scene list
+  execute: Execute
+  configInfo: Configuration Information
+  executeDetail: Execution Details
+  sceneInput: Input parameters
+  paramName: Parameter name
+  refValue: Reference value
+  validInPlan: Take effect in the execution plan
+  debugValue: Debug value
+  validInScene: Take effect only when the current scene is executed
+  selectiveExp: Select expression
+  preSceneOut: Pre-scene output
+  globalInput: Global variable input
+  sceneStep: Steps
+  sceneStepTip: Serial execution between groups and parallel execution within groups
+  addParallelApi: Add parallel interface
+  copyApi: Copy interfaces
+  copyJson: Copy JSON format
+  formAdd: Add by form
+  textAdd: Add by text
+  inputSceneParam: Input parameter for this scene
+  preApiOut: Pre-interface output parameter
+  preConfigOut: Pre-configuration-form output parameter
+  addByText: Add by text
+  apiText: API text
+  selectConfig: Please select configuration form
+  waitTime: Wait time(s)
+  sceneOut: Output parameters
+  refresh: Refresh
+  execHistory: Execution History
+  pipelineID: Pipeline ID
+  duration: Duration
+  totalApi: Total interfaces
+  apiExecRate: Interface execution rate
+  apiPassRate: Interface pass rate
+  execStep: Steps
+  checkRes: Result
+  selectSceneSet: Select scene set
+  selectSceneSetPlace: Please select scene set
+  referPolicy: Reference strategy
+  referPolicyPlace: Please select reference strategy
+  new-run: Re-run and reference the execution result
+  try-latest-success-result: Result of last successful execution
+  try-latest-result: Result of last execution
+  sceneSetRefer: Scene set reference
+  configForm: Configuration form
+  configFormInfo: Configuration form info
+  apiInfo: Interface info
+  nestedScene: Nested scene
+  nestedSceneInfo: Nested scene info
+  customScript: Custom script
+  emptyCustomScript: Empty custom script
+  wait: Wait 
+  emptyWait: Empty wait
+  waitInfo: Wait Info
+  marketProto: Market prototype
+  marketProtoTip: Currently, the interface is mainly introduced through API market. Please search and select
+  marketProtoPlace: Please select an interface name or path to search
+  marketProtoChangeApi: Confirm to overwrite the current interface definition
+  marketProtoChangeApiConfirm: The interface definition cannot be restored after it is overwritten. Are you sure to overwrite it?
+  API: Interface
+  emptyApi: empty interface
+  paramNameMessage1: The maximum length of parameter name cannot exceed 50
+  paramNameMessage2: Parameter names are English, numbers, dashes, or underscores
+  paramNameMessage3: Parameter names are English, numbers, dots, dashes, or underscores
+  defaultValue: Default value
+  descLimit: The maximum length of the description cannot exceed 1000
+  greater: Greater
+  greaterEqual: Greater or equal
+  equal: Equal
+  lessEqual: Less or equal
+  less: Less
+  notEqual: Not equal
+  contain: Contain
+  notContain: Not contain
+  exist: Exist
+  notExist: Not exist
+  isEmpty: Empty
+  notEmpty: Not empty
+  belong: Belong
+  notBelong: Not belong
+  empty: None
+  sceneSetRuleMessage: You can enter Chinese, English, numbers, dashes or underscores
+  scene: Scene
+  loopStrategy: Loop strategy
+  loopEndCondition: Condition to end loop
+  maxLoop: Maximum number of loops
+  declineRatio: Decline ratio
+  intervalRatio: The ratio of overlap interval per loop
+  declineMax: Maximum value of decline (seconds)
+  loopMaxInterval: Maximum loop interval time
+  startInterval: Start interval (seconds)
+  version: Version
+  executor: Executor
+  triggerTime: Trigger time
+  searchPlaceHolder: Search (coming soon)
+  backLatestResult: Back to latest record

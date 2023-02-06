@@ -1,0 +1,23 @@
+.repo-start-tip {
+  position: relative;
+
+  .sub-title {
+    margin: $p16 0 6px;
+
+    > span {
+      line-height: 24px;
+    }
+  }
+
+  i.icon-xjym {
+    margin-right: 0;
+    margin-left: $p12;
+    color: $color-text-desc;
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-active;
+    }
+  }
+}

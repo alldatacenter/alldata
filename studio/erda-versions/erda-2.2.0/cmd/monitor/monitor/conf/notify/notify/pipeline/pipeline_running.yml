@@ -1,0 +1,22 @@
+id: pipeline_running
+metadata:
+  name: "流水线开始运行"
+  type: pipeline
+  module: notify
+  scope:
+    - app
+templates:
+  - trigger:
+      - notify
+    targets:
+      - dingding
+      - email
+      - mbox
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      title: |
+        【流水线开始运行】
+      template: |
+        ### {{projectName}}/{{appName}} 流水线{{pipelineID}}开始运行

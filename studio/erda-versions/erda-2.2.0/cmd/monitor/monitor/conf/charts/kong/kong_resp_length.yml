@@ -1,0 +1,15 @@
+- kong_resp_length:
+    title: "应答大小"
+    metric_names: "agg_kong"
+    type: "kong"
+    order: 0
+    defines:
+      avg.bst_mean:
+        label: "字节数"
+        unit: "KB"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+        original_unit: "b"
+    parameters:
+

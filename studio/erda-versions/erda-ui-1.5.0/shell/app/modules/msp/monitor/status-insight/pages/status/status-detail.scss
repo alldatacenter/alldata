@@ -1,0 +1,134 @@
+@import './status-common.scss';
+
+.status-detail-page {
+  @include title-bar();
+  @include status-point();
+
+  .url-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    padding: 0 10px;
+    font-size: 18px;
+    background-color: $white;
+    @extend %shallow-shadow;
+    border-radius: $radius;
+  }
+
+  .time-range {
+    display: flex;
+    margin-bottom: 0;
+
+    li {
+      margin-right: 10px;
+      padding: 3px 16px;
+      background-color: $white;
+      border: 1px solid $color-border;
+      border-radius: 20px;
+      cursor: pointer;
+
+      &.active {
+        color: $white;
+        background-color: $color-primary;
+      }
+    }
+  }
+
+  .summary-bar {
+    .summary-card {
+      height: 80px;
+      padding: 10px 15px;
+      line-height: 60px;
+      text-align: center;
+      background: $white;
+      @extend %shallow-shadow;
+      border-radius: $radius;
+
+      .name {
+        color: $color-text-desc;
+      }
+
+      .value {
+        position: relative;
+        margin-left: 10px;
+        font-size: 24px;
+
+        .info-icon {
+          position: absolute;
+          top: -8px;
+          right: -14px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .row-space {
+    height: 20px;
+  }
+
+  .chart-wrap {
+    padding: 10px 0;
+    background-color: $white;
+    @extend %shallow-shadow;
+    border-radius: $radius;
+
+    .legend-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 12px;
+
+      > div {
+        display: flex;
+      }
+
+      .left-item {
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+      }
+
+      .right-item {
+        margin-left: 10px;
+      }
+    }
+
+    .status-list {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+
+      li {
+        flex: 1;
+        height: 12px;
+        margin-right: 1px;
+
+        &.grey {
+          background: $platinum;
+        }
+
+        &.green {
+          background: $green;
+        }
+
+        &.red {
+          background: $red;
+        }
+      }
+    }
+  }
+
+  .uptime-bar {
+    padding: 20px 0;
+    background-color: $white;
+    @extend %shallow-shadow;
+    border-radius: $radius;
+  }
+
+  .past-incidents {
+    table td {
+      white-space: normal;
+    }
+  }
+}

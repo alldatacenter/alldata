@@ -1,0 +1,540 @@
+body {
+  .ant-input::-moz-placeholder {
+    color: $color-dark-2;
+  }
+
+  $border-style: 1px solid $color-border;
+
+  .ant-input:-ms-input-placeholder {
+    color: $color-dark-2;
+  }
+
+  .ant-input::-webkit-input-placeholder {
+    color: $color-dark-2;
+  }
+
+  .ant-calendar-panel {
+    .ant-calendar-input {
+      height: 24px;
+    }
+
+    .ant-calendar-footer-btn {
+      .ant-calendar-range-quick-selector {
+        .ant-tag-blue {
+          color: $color-primary;
+          background: $color-active-bg;
+          border-color: $color-active-border;
+        }
+      }
+    }
+  }
+
+  .ant-form-item {
+    color: $color-dark-8;
+
+    &.parent-item {
+      margin-bottom: 0;
+    }
+
+    .ant-form-item-label label {
+      color: $color-dark-4;
+    }
+  }
+
+  .ant-tabs-nav-wrap {
+    .ant-tabs-nav {
+      height: 48px;
+
+      .ant-tabs-tab {
+        height: 46px;
+        padding: 0;
+        line-height: 46px;
+
+        &.ant-tabs-tab-active {
+          color: $color-primary;
+        }
+
+        &:not(.ant-tabs-tab-disabled):hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  .ant-form-vertical {
+    .ant-form-item {
+      padding: 0;
+    }
+
+    .ant-form-item-label {
+      padding: 0 0 9px;
+    }
+  }
+
+  .ant-progress-bg {
+    background-image: linear-gradient(90deg, $color-primary-light, $color-primary);
+    // border-top-right-radius: 0;
+    // border-bottom-right-radius: 0;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+  }
+
+  .ant-progress {
+    &.progress-full {
+      .ant-progress-bg {
+        background-image: linear-gradient(90deg, $color-primary-light, $color-primary);
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+      }
+    }
+  }
+
+  .ant-form-item > label:after {
+    position: relative;
+    top: -0.5px;
+    margin: 0 8px 0 2px;
+    content: ':';
+  }
+
+  .ant-confirm {
+    .ant-confirm-body {
+      .anticon {
+        position: relative;
+        margin-right: 10px;
+        padding: 0 1px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .ant-confirm .ant-confirm-body .ant-confirm-title {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .ant-modal-header {
+    padding: 20px;
+    border-bottom: none;
+  }
+
+  .ant-form-inline {
+    flex-wrap: nowrap !important;
+  }
+
+  div.ant-modal-body {
+    padding: 16px 20px;
+  }
+
+  .ant-modal-footer {
+    border-top: none;
+  }
+
+  .ant-table {
+    color: $color-text;
+    background-color: $white;
+    border-radius: 6px;
+
+    > .ant-table-scroll {
+      border: 1px solid $color-border;
+      border-radius: 6px;
+
+      .ant-table-body {
+        border-radius: 0 0 6px 6px;
+      }
+    }
+
+    .ant-table-row:hover td {
+      background-color: $color-hover !important;
+    }
+
+    // table下的button默认使用small大小的
+    .ant-btn {
+      height: 28px;
+      padding: 0 11px;
+    }
+
+    .operation {
+      text-align: right;
+
+      button,
+      a {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      > i {
+        margin-right: 10px;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+
+    .ant-table-column-sorters {
+      justify-content: flex-start;
+
+      .ant-table-column-title {
+        flex: 0 1 auto;
+      }
+
+      .ant-table-column-sorter {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .ant-table-thead > tr > th {
+    font-weight: 500;
+    white-space: nowrap;
+
+    &::before {
+      background-color: transparent !important;
+    }
+  }
+
+  .dice-layout .pk-table-tbody > tr > td,
+  .dice-layout .pk-table-thead > tr > th,
+  .dice-layout .pk-table-column-header-title {
+    white-space: nowrap;
+  }
+
+  .dice-layout .pk-form-item-no-label {
+    // TODO: use nusi api to hide pk-no-label
+    display: none !important;
+  }
+
+  .ant-collapse {
+    > .ant-collapse-item {
+      > .ant-collapse-header {
+        background-color: $white;
+      }
+    }
+  }
+
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding-bottom: $p32;
+  }
+
+  .ant-btn-second {
+    color: $color-primary;
+    background-color: $white;
+    border-color: $color-primary;
+
+    &:hover,
+    &:focus {
+      background-color: $color-active-bg;
+    }
+
+    &:active {
+      background-color: $color-click-bg;
+    }
+
+    > i {
+      color: $color-primary;
+    }
+  }
+
+  .ant-btn-text {
+    &:hover {
+      border-color: transparent;
+      color: $color-primary;
+      background-color: $whitesmoke;
+    }
+  }
+
+  .ant-badge-status-processing {
+    background-color: $blue;
+  }
+
+  .ant-drawer-body {
+    height: calc(100% - 55px);
+  }
+
+  .ant-drawer-header {
+    border-bottom: unset;
+  }
+
+  .ant-pagination-simple .ant-pagination-prev,
+  .ant-pagination-simple .ant-pagination-next {
+    vertical-align: middle;
+  }
+
+  .ant-spin-blur {
+    pointer-events: none;
+  }
+
+  /* stylelint-disable */
+  .ant-table-small > .ant-table-content > .ant-table-header > table,
+  .ant-table-small > .ant-table-content > .ant-table-body > table,
+  .ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-header > table,
+  .ant-table-small > .ant-table-content > .ant-table-scroll > .ant-table-body > table,
+  .ant-table-small > .ant-table-content > .ant-table-fixed-left > .ant-table-header > table,
+  .ant-table-small > .ant-table-content > .ant-table-fixed-right > .ant-table-header > table,
+  .ant-table-small > .ant-table-content > .ant-table-fixed-left > .ant-table-body-outer > .ant-table-body-inner > table,
+  .ant-table-small
+    > .ant-table-content
+    > .ant-table-fixed-right
+    > .ant-table-body-outer
+    > .ant-table-body-inner
+    > table {
+    padding: 0;
+  }
+
+  .ant-timeline-item {
+    .ant-timeline-item-content {
+      margin: 0 0 0 $p24;
+    }
+
+    .ant-timeline-item-head {
+      top: -2px;
+      width: 12px;
+      height: 12px;
+    }
+
+    .ant-timeline-item-tail {
+      left: 5px;
+    }
+  }
+
+  .dice-drawer {
+    .ant-drawer-wrapper-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ant-drawer-header {
+      padding: 19px 24px;
+    }
+
+    .ant-drawer-body {
+      flex: 1;
+      margin-bottom: 49px;
+      padding: 8px 20px 0;
+    }
+
+    .drawer-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 8px 16px;
+      text-align: right;
+      background: $white;
+      border-top: 1px solid $color-border;
+    }
+  }
+
+  .spin-full-height {
+    .ant-spin-nested-loading,
+    .ant-spin-container {
+      height: 100%;
+    }
+  }
+
+  // Leave the styles unchanged from antd3.x to antd4.x
+  button.ant-btn > i {
+    line-height: 1;
+  }
+
+  sup.ant-badge-dot {
+    min-width: auto;
+  }
+
+  span.ant-badge {
+    color: unset;
+  }
+
+  div.ant-carousel {
+    color: $color-dark-6;
+  }
+
+  input.ant-input {
+    height: auto;
+    min-height: auto;
+  }
+
+  .ant-input-group span.ant-input-affix-wrapper {
+    display: inline-flex;
+  }
+
+  div.ant-transfer-list-body-with-search {
+    padding-top: 0;
+  }
+
+  .ant-tree {
+    padding-top: 5px;
+
+    .ant-tree-title {
+      display: inline-block;
+      width: calc(100% - 24px);
+      padding-left: 4px;
+    }
+
+    .ant-tree-node-content-wrapper:hover {
+      background-color: $color-tree-bg;
+    }
+
+    &.case-tree .ant-tree-node-content-wrapper {
+      height: 32px;
+      line-height: 32px;
+      padding: 0;
+
+      .ant-tree-iconEle {
+        height: 32px;
+        line-height: 32px;
+      }
+    }
+
+    &.case-tree .ant-tree-switcher {
+      line-height: 32px;
+    }
+
+    &.case-tree .case-tree-op span {
+      width: 32px;
+      font-size: 16px;
+      text-align: center;
+      padding-right: 8px;
+    }
+
+    &.ant-tree-directory div.ant-tree-treenode-selected:hover::before,
+    &.ant-tree-directory div.ant-tree-treenode-selected::before {
+      background: $color-tree-bg-active;
+    }
+
+    &.case-tree.ant-tree.ant-tree-directory
+      .ant-tree-treenode-selected
+      .ant-tree-node-selected
+      > .ant-tree-title
+      > div {
+      background-color: transparent;
+    }
+
+    &.case-tree.ant-tree.ant-tree-directory .ant-tree-node-content-wrapper .ant-tree-title:hover .case-tree-op {
+      opacity: 1;
+      pointer-events: unset;
+    }
+  }
+
+  div.ant-select-tree .ant-select-tree-node-content-wrapper:hover {
+    background-color: $color-tree-bg;
+  }
+
+  div.ant-tabs-nav::before,
+  .ant-tabs-nav::after {
+    display: block;
+  }
+
+  .ant-dropdown-menu-title-content {
+    width: 100%;
+  }
+
+  .ant-menu-horizontal > .ant-menu-item::after,
+  .ant-menu-horizontal > .ant-menu-submenu::after {
+    content: none;
+  }
+
+  div.ant-table {
+    .ant-table-thead > tr > th,
+    .ant-table-tbody > tr > td,
+    .ant-table tfoot > tr > th,
+    .ant-table tfoot > tr > td {
+      line-height: 32px;
+    }
+
+    // prevent [overflow: hidden] to cut out the fixed shadow;
+    .ant-table-cell-fix-right,
+    .ant-table-cell-fix-left {
+      overflow: unset;
+      white-space: unset;
+      text-overflow: unset;
+    }
+  }
+
+  // Leave the styles unchanged from nusi to antd4.x
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td,
+  .ant-table tfoot > tr > th,
+  .ant-table tfoot > tr > td {
+    line-height: 28px;
+  }
+
+  .ant-table-tbody > tr > td {
+    color: $color-dark-6;
+  }
+
+  .pk-filter .ant-select {
+    width: 100%;
+  }
+
+  div.ant-progress-inner {
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+
+  .ant-tooltip {
+    .ant-tooltip-inner {
+      background-color: #fff;
+      color: rgba(0, 0, 0, 0.6);
+      max-height: 90vh;
+      max-width: 600px;
+      overflow: auto;
+    }
+
+    .ant-tooltip-arrow {
+      display: none;
+    }
+  }
+
+  span.ant-tag {
+    line-height: 22px;
+    font-size: 14px;
+  }
+
+  div.ant-card-body {
+    padding: 12px 16px;
+    height: 100%;
+  }
+
+  .pk-form-item .ant-select,
+  .pk-form-item .ant-cascader-picker {
+    width: 100%;
+  }
+
+  .ant-list-items {
+    padding: 8px 12px;
+
+    &:hover {
+      background-color: $color-list-bg-active;
+    }
+  }
+
+  .ant-radio-button-wrapper {
+    padding: 0 11px;
+  }
+
+  .ant-avatar {
+    background: $color-primary;
+  }
+
+  .ant-radio-group.ant-radio-group-solid {
+    .ant-radio-button-wrapper {
+      &:not(:last-child) {
+        border-right-width: 0;
+      }
+
+      &:not(:first-child)::before {
+        height: 12px;
+        top: calc(50% - 6px);
+        padding: 0;
+      }
+
+      &.ant-radio-button-wrapper-checked {
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+}

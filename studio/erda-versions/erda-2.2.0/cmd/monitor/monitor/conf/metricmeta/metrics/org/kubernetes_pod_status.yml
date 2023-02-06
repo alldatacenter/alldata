@@ -1,0 +1,38 @@
+name: "Kubernetes Pod Status"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    instance_type:
+        name: "Instance Type"
+    namespace:
+        name: "Namespace"
+    node_name:
+        name: "Node Name"
+    org_name:
+        name: "Org Name"
+    pod_name:
+        name: "Pod Name"
+fields:
+    message:
+        type: "string"
+        name: "Message"
+        unit: 
+    reason:
+        type: "string"
+        name: "Reason"
+        unit: 
+    status:
+        type: "string"
+        name: "Status"
+        unit: 
+

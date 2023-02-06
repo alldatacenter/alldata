@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package erda.oap.trace;
+
+option go_package = "github.com/erda-project/erda-proto-go/oap/trace/pb";
+
+import "google/protobuf/struct.proto";
+import "oap/common/common.proto";
+
+// The span data model 
+//   of the observability analysis platform.
+// Trace is calculated by span, stored as metric.
+message Span {
+
+    // A unique identifier for a trace. All spans from the same trace share
+    // the same `trace_id`. The ID is a 16-byte array. An ID with all zeroes
+    // is considered invalid.
+    //
+    // This field is semantically required. Receiver should generate new
+    // random trace_id if empty or invalid trace_id was received.
+    //
+    // This field is required.
+    string traceID = 1;
+
+    // A unique identifier for a span within a trace, assigned when the span
+    // is created. The ID is an 8-byte array. An ID with all zeroes is considered
+    // invalid.
+    //
+    // This field is semantically required. Receiver should generate new
+    // random span_id if empty or invalid span_id was received.
+    //
+    // This field is required.
+    string spanID = 2;
+
+
+    // The `span_id` of this span's parent span. If this is a root span, then this
+    // field must be empty. The ID is an 8-byte array.
+    string parentSpanID = 3;
+
+    fixed64 startTimeUnixNano = 4;
+
+    // end_time_unix_nano is the end time of the span. On the client side, this is the time
+    // kept by the local machine where the span execution ends. On the server side, this
+    // is the time when the server application handler stops running.
+    // Value is UNIX Epoch time in nanoseconds since 00:00:00 UTC on 1 January 1970.
+    //
+    // This field is semantically required and it is expected that end_time >= start_time.
+    fixed64 endTimeUnixNano = 5;
+
+    // A description of the span's operation.
+    //
+    // For example, the name can be a qualified method name or a file name
+    // and a line number where the operation is called. A best practice is to use
+    // the same display name at the same call point in an application.
+    // This makes it easier to correlate spans in different traces.
+    //
+    // This field is semantically required to be set to non-empty string.
+    // When null or empty string received - receiver may use string "name"
+    // as a replacement. There might be smarted algorithms implemented by
+    // receiver to fix the empty span name.
+    //
+    // This field is required.
+    string name = 6;
+
+    // Store trace and resource pointer
+    oap.common.Relation relations = 7;
+
+    // Including label, attributes and resource 
+    map<string, string> attributes = 8;
+}

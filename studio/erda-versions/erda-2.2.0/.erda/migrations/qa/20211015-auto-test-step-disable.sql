@@ -1,0 +1,1 @@
+ALTER TABLE dice_autotest_scene_step ADD COLUMN `is_disabled` bool DEFAULT false COMMENT 'disable or enable execute';

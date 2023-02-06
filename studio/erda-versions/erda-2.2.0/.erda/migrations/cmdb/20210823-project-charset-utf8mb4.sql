@@ -1,0 +1,1 @@
+ALTER TABLE ps_group_projects CONVERT TO CHARACTER SET utf8mb4;

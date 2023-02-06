@@ -1,0 +1,78 @@
+.repo-mr-detail {
+  background: $white;
+
+  %mr-icon {
+    margin-right: $p8;
+    padding: 4px 8px;
+    color: $white;
+    font-size: 12px;
+    vertical-align: bottom;
+    border-radius: $radius;
+  }
+
+  .repo-locked-alert {
+    margin-bottom: $p8;
+  }
+
+  .mr-open-icon {
+    @extend %mr-icon;
+    background: $color-info;
+  }
+
+  .mr-closed-icon {
+    @extend %mr-icon;
+    background: $red;
+  }
+
+  .mr-merged-icon {
+    @extend %mr-icon;
+    background: $green;
+  }
+
+  .branch-info {
+    margin-bottom: 12px;
+    color: $color-text-desc;
+
+    .iconfont {
+      margin-right: 6px;
+      margin-left: 10px;
+    }
+
+    .branch-name {
+      color: $color-text-sub;
+    }
+
+    .mr-rate {
+      margin-left: 12px;
+    }
+  }
+
+  .detail-desc-block {
+    border: 1px solid $color-border;
+    border-radius: $radius;
+
+    .title {
+      height: 50px;
+      padding: 0 12px;
+      font-weight: 500;
+      line-height: 50px;
+      background-color: rgba(0, 0, 0, 0.04);
+      border-bottom: 1px solid $color-border;
+    }
+
+    .desc {
+      padding: 12px;
+      color: $color-text-sub;
+    }
+  }
+
+  .repo-commit {
+    padding-top: 0;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+  }
+
+  .scroll-top-btn {
+    z-index: 100;
+  }
+}

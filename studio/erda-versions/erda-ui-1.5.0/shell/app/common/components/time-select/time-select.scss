@@ -1,0 +1,29 @@
+.time-select {
+  .time-range {
+    min-width: 120px;
+  }
+
+  .manual-refresh {
+    left: -2px;
+  }
+
+  .auto-refresh {
+    left: -1px;
+
+    .ant-select-selector {
+      padding-right: 6px;
+      padding-left: 6px;
+      height: 30px;
+
+      .ant-select-selection-item {
+        padding-right: 10px !important;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.time-range-dropdown {
+  height: 320px;
+  box-shadow: 0 3px 4px 0 rgba($black, 0.06), 0 3px 8px -7px rgba($black, 0.06), 0 6px 12px 0 rgba($black, 0.12);
+}

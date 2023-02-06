@@ -1,0 +1,44 @@
+orchestrator:
+etcd:
+  endpoints: "${ETCD_ENDPOINTS:https://localhost:2379}"
+  tls:
+    cert_file: "${ETCD_CERT_FILE:/certs/etcd-client.pem}"
+    cert_key_file: "${ETCD_CERT_KEY_FILE:/certs/etcd-client-key.pem}"
+    ca_file: "${ETCD_CA_FILE:/certs/etcd-ca.pem}"
+etcd-election:
+  root_path: erda/component-leader/scheduler
+
+http-server:
+  addr: "${LISTEN_ADDR:0.0.0.0:8081}"
+grpc-server:
+  addr: ":7080"
+service-register:
+
+i18n:
+  common:
+    - conf/i18n/scheduler-log-trans.yaml
+    - conf/i18n/orchestrator-log-trans.yaml
+    - conf/i18n/deployment-order-precheck.yaml
+
+erda.orchestrator.runtime:
+erda.orchestrator.events:
+erda.orchestrator.addon.mysql:
+
+mysql:
+  host: "${MYSQL_HOST:localhost}"
+  port: ${MYSQL_PORT:3306}
+  username: "${MYSQL_USERNAME:root}"
+  password: "${MYSQL_PASSWORD:123456}"
+  database: "${MYSQL_DATABASE:dice}"
+
+grpc-client@erda.core.dicehub.release:
+  addr: "${DICEHUB_GRPC_ADDR:dicehub:7080}"
+erda.core.dicehub.release-client:
+
+grpc-client@erda.core.clustermanager.cluster:
+  addr: "${CLUSTER_MANAGER_GRPC_ADDR:cluster-manager:9095}"
+erda.core.clustermanager.cluster-client: {}
+
+grpc-client@erda.msp.tenant:
+  addr: "${MSP_GRPC_ADDR:msp:7080}"
+erda.msp.tenant-client: {}

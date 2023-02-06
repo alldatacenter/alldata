@@ -1,0 +1,150 @@
+@url = http://localhost:7096
+@monitor = http://monitor.default.svc.cluster.local:7096
+
+### charts
+GET {{url}}/api/charts
+    ?type=machine
+Lang: en
+
+### metrics
+GET {{url}}/api/metrics/host_summary
+    ?start=before_1h
+    &end=now
+    &filter_cluster_name=terminus-dev
+    &eq_host_ip=10.0.6.200
+    &or_eq_host_ip=10.0.6.200
+    &or_eq_host_ip=10.0.6.201
+    &or_in_cluster_namex=10.0.6.201
+    &group=host_ip
+
+### metric histogram
+GET {{url}}/api/metrics/machine_cpu/histogram
+    ?start=before_1h
+    &end=now
+    &points=60
+    &max=cpu_usage_active
+    &align=false
+
+### chart:bar
+GET {{url}}/api/metrics/host_summary/histogram
+    ?start=before_1h
+    &end=now
+    &max=cpu_usage_active
+    &max=mem_used
+    &align=false
+    &chartType=chart:bar
+    &group=host_ip
+    &format=chartv2
+    &alias_max.cpu_usage_active=cpu
+    &alias_max.mem_used=mem
+
+### metric meta
+#GET {{url}}/api/metadata
+#    ?scope=dice
+#    &scopeId=terminus-test
+#    &orgName=terminus
+#
+### metric meta
+#GET {{url}}/api/metadata/dice_gittar-adaptor
+#    ?scope=dice
+#    &scopeId=terminus-test
+#    &orgName=terminus
+
+## metrci meta new
+# ### metric group list
+# GET {{url}}/api/metadata/groups
+#     ?scope=dice
+#     &scopeId=terminus-test
+
+# ### metric meta list of certain group
+# ### metric meta
+# GET {{url}}/api/metadata/groups/system-cpu
+#     ?scope=dice
+#     &scopeId=terminus-test
+#     &orgName=terminus
+
+### metric names
+GET {{url}}/api/metric/names
+   ?scope=dice
+   &scopeId=terminus-dev
+
+### metric meta
+GET {{url}}/api/metric/meta
+   ?scope=org
+   &scopeId=terminus-dev
+
+### /api/metric/groups
+GET {{url}}/api/metric/groups/log_metrics@log_d72a418a053763f4
+   ?scope=org
+   &scopeId=terminus
+   &mode=query
+   &version=v2
+Lang: zh
+
+### /api/metric/groups
+GET {{url}}/api/metric/groups
+   ?scope=org
+   &scopeId=terminus-dev
+   &mode=analysis
+Lang: zh
+Org-ID: 2
+
+### metric histogram
+GET {{url}}/api/query
+    ?start=before_1h
+    &end=now
+    &format=chartv2
+    &type=bar
+    &q=SELECT mem_used,host_ip::tag FROM host_summary GROUP BY host_ip LIMIT 1000
+
+### metric histogram
+POST {{url}}/api/metrics/dws_camp_visitor_cnt_std/export
+    ?start=0
+    &end=now
+    &format=chartv2
+    &ql=influxql:ast
+    &type=_
+Content-Type: application/json
+
+{
+    "select": [
+        {"expr": "create_at::field", "alias": "create_at"},
+        {"expr": "campaign_id::field", "alias": "campaign_id"}
+    ],
+    "from": ["dws_camp_visitor_cnt_std"],
+    "limit": 10
+}
+
+###
+GET {{url}}/api/metrics/export/dws_camp_visitor_cnt_std
+    ?q=select%20*%20from%20dws_camp_visitor_cnt_std%3B
+    &format=chartv2
+    &start=1608630240821
+    &end=1609235040821
+    &filter__metric_scope=bigdata
+    &filter__metric_scope_id=terminus
+
+###
+GET {{url}}/api/metrics/export/dws_camp_visitor_cnt_std?count=fields.campaign_id&alias_count.fields.campaign_id=aaa&alias_last.fields.campaign_id=campaign_id&group=(fields.campaign_id)&columns=last.fields.campaign_id%2Ccount.fields.campaign_id&last=fields.campaign_id&sort=count_fields.campaign_id&format=chartv2&start=1608635679474&end=1609240479473&filter__metric_scope=bigdata&filter__metric_scope_id=terminus
+
+### time field
+GET {{url}}/api/metrics/timetest/histogram
+    ?sum=fields.timex
+    &alias_sum.fields.timex=timexSum
+    &time_field=fields.timex
+    &format=chartv2
+    &start=1604160000000
+    &end=1604628211546
+    &filter__metric_scope=bigdata
+    &filter__metric_scope_id=terminus
+    &interval=24m
+
+
+### old influx query
+GET {{url}}/api/metrics/maptest
+    ?q=select%20*%20from%20maptest%3B
+    &format=chartv2
+    &start=1604160000000
+    &end=1604925170643
+    &filter__metric_scope=bigdata
+    &filter__metric_scope_id=terminus

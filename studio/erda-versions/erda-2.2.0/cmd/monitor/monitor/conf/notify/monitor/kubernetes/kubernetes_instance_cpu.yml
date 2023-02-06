@@ -1,0 +1,83 @@
+id: kubernetes_instance_cpu
+metadata:
+  name: "kubernetes组件实例CPU异常"
+  type: kubernetes
+  module: monitor
+  scope:
+    - org
+behavior:
+  group: "{{cluster_name}}-{{container_id}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        cpu_usage_percent_avg: "percent:2"
+        cpu_limit_value: "fraction:2"
+        cpu_allocation_value: "fraction:2"
+      title: |
+        【{{cluster_name}}集群kubernetes组件{{pod_name}} CPU使用率告警】
+      template: |
+        【kubernetes组件CPU使用率告警】
+
+        Pod: {{pod_name}}
+
+        使用率: {{cpu_usage_percent_avg}}
+
+        限制: {{cpu_limit_value}}核
+
+        分配: {{cpu_allocation_value}}核
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        容器ID: {{container_id}}
+
+        时间: {{timestamp}}
+
+        [查看记录]({{record_url}})
+  - trigger:
+      - recover
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        cpu_usage_percent_avg: "percent:2"
+        trigger_duration: "time:ms"
+      title: |
+        【{{cluster_name}}集群kubernetes组件{{pod_name}} CPU使用率恢复】
+      template: |
+        【kubernetes组件CPU使用率恢复】
+
+        Pod: {{pod_name}}
+
+        使用率: {{cpu_usage_percent_avg}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        容器ID: {{container_id}}
+
+        持续时间: {{trigger_duration}}
+
+        恢复时间: {{timestamp}}
+
+        [查看记录]({{record_url}})

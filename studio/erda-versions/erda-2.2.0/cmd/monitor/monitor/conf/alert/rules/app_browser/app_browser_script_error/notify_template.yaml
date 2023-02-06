@@ -1,0 +1,93 @@
+- name: "脚本错误告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    count: "string"
+  title: |-
+    【页面 ({{doc_path}}) 脚本错误告警】
+  template: |
+    【脚本错误告警】
+
+    事件: {{window}} 分钟内，脚本错误次数: {{count_sum}}
+
+    访问域名：{{host}}
+
+    访问页面：{{doc_path}}
+
+    时间: {{timestamp}}
+
+    tk: {{tk}}
+
+    告警级别: {{level}}
+
+    [查看详情]({{display_url}})
+
+    [查看记录]({{record_url}})
+
+- name: "脚本错误告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    count: "string"
+  title: |-
+    【页面 ({{doc_path}}) 脚本错误告警】
+  template: |
+    {{window}} 分钟内触发脚本错误告警，tk: {{tk}}，脚本错误次数: {{count_sum}}，告警级别: {{level}}
+- name: "脚本错误告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    count: "string"
+  title: |-
+    【页面 ({{doc_path}}) 脚本错误告警】
+  template: |
+    {{window}} 分钟内触发脚本错误告警，tk: {{tk}}，脚本错误次数: {{count_sum}}，告警级别: {{level}}
+
+- name: "Script error alarm"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    count: "string"
+  title: |-
+    [Script error alarm of page ({{doc_path}})]
+  template: |
+    [Script error alarm]
+
+    Event: Within {{window}} minutes, the number of script errors: {{count_sum}}
+
+    Access domain name: {{host}}
+
+    Access page: {{doc_path}}
+
+    Time: {{timestamp}}
+
+    tk: {{tk}}
+
+    [View details]({{display_url}})
+
+    [View records]({{record_url}})
+
+- name: "Script error alarm"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    count: "string"
+  title: |-
+    [Script error alarm of page ({{doc_path}})]
+  template: |
+    Script error alarm triggered within {{window}} minutes, tk: {{tk}}, the number of script errors: {{count_sum}}
+- name: "Script error alarm"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    count: "string"
+  title: |-
+    [Script error alarm of page ({{doc_path}})]
+  template: |
+    Script error alarm triggered within {{window}} minutes, tk: {{tk}}, the number of script errors: {{count_sum}}

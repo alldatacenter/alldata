@@ -1,0 +1,32 @@
+- kong_connection:
+    title: "连接状态"
+    metric_names: "agg_kong"
+    type: "kong"
+    order: 0
+    defines:
+      avg.cwa_mean:
+        label: "非活跃连接数"
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+      avg.crd_mean:
+        label: "读活跃连接数"
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+      avg.cac_mean:
+        label: "总连接数"
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+      avg.cwr_mean:
+        label: "写活跃连接数"
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

@@ -1,0 +1,30 @@
+.issue-part-save-group {
+  position: relative;
+  top: 2px;
+  right: 0;
+  text-align: right;
+}
+
+.issue-part-save,
+.issue-part-cancel {
+  position: absolute;
+  right: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 22px;
+  background-color: $white;
+  border: 1px solid $platinum;
+  border-radius: $radius;
+  cursor: pointer;
+  @extend %shallow-shadow;
+
+  &:hover {
+    background-color: $color-bg;
+  }
+}
+
+.issue-part-save {
+  right: 32px;
+}

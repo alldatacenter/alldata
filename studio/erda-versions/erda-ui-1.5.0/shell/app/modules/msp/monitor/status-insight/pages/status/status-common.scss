@@ -1,0 +1,45 @@
+@mixin title-bar {
+  .title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 42px;
+
+    .title {
+      font-size: 18px;
+    }
+
+    .sub {
+      color: $color-text-sub;
+      font-size: 14px;
+    }
+  }
+}
+
+@mixin status-point {
+  .status-point {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 100%;
+
+    &.chart {
+      background-color: $blue;
+    }
+
+    &.grey {
+      background-color: $gray;
+    }
+
+    &.success,
+    &.green {
+      background-color: $green;
+    }
+
+    &.danger,
+    &.red {
+      background-color: $red;
+    }
+  }
+}

@@ -1,0 +1,293 @@
+zh:
+    # aggregator
+    sum: 总和
+    avg: 平均值
+    max: 最大值
+    min: 最小值
+    count: 次数
+    value: 值
+    values: 所有值
+    distinct_count: 去重计数
+    p99: 99分位
+    p95: 95分位
+    p90: 90分位
+    p75: 75分位
+    p50: 50分位
+    eq: 等于
+    # operator
+    neq: 不等于
+    like: 字符串包含
+    any: 任一
+    "null": 为空
+    in: 数组包含
+    all: 全部
+    script: 表达式
+    false: 为否
+    gte: 大于等于
+    gt: 大于
+    lte: 小于等于
+    lt: 小于
+    contains: 包含
+    match: 匹配
+    notMatch: 不匹配
+    # alert_type
+    machine: 机器
+    dice_component: 平台组件
+    kubernetes: kubernetes
+    dice_addon: 平台中间件
+    app_exception: 应用错误
+    app_resource: 应用资源
+    app_transaction: 应用事务
+    app_status: 主动监控
+    org_customize: 企业自定义
+    micro_service_customize: 微服务自定义
+    addon: 项目中间件
+    micro_service: 微服务
+    custom_addon: 扩展中间件
+    app_browser: 浏览器性能
+
+    # metric_name
+    addon_java_GarbageCollector: 中间件JVM GC
+    addon_java_Memory: 中间件JVM内存
+    glusterfs: 分布式存储
+    host_summary: 机器
+    cpu: CPU
+    disk: 磁盘容量
+    diskio: 磁盘IO
+    net: 网络
+    swap: 机器Swap
+    system: 操作系统
+    summary_docker_container_cpu: 容器CPU
+    summary_docker_container_mem: 容器内存
+    docker_container_summary: 容器
+    mysql: MySQL
+    redis: Redis
+    aliyun_ecs: 阿里云ECS
+    aliyun_rds: 阿里云RDS
+    # field
+    load5: Load5
+    usage_active: 使用率
+    pct_util: 使用率
+    used_percent: 使用率
+    status: 状态
+    state_code: 状态码
+    not_ready_avg: 非Ready状态
+    not_ready: 非Ready状态
+    ready: Ready状态
+    CollectionCount_win: 老年代GC次数
+    CollectionTime_win: 老年代GC时间
+    gc_collectors_old_collection_count_win: 老年代GC次数
+    gc_collectors_old_collection_time_in_millis_win: 老年代GC时间
+    lag: 消息堆积
+    time: 时间
+    oomkilled: OOM退出
+    error_percent: 错误率
+    elapsed_count: 次数
+    elapsed_avg: 耗时
+    code: 状态码
+    cpu_usage_active: CPU使用率
+    cpu_limit_total: CPU总数
+    mem_used_percent: 内存使用率
+    mem_used: 内存使用量
+    mem_limit_total: 内存总量
+    fs_inodeutilization: Inode使用率
+    used: 使用量
+    total: 总量
+    read_rete: 读速率
+    write_rate: 写速率
+    inodes_usage: inode使用量
+    inodes_total: inode总量
+    inodes_free: inode剩余量
+    recv_rate: 接收速率
+    send_rate: 发送速率
+    drop_out: 出丢包量
+    drop_in: 入丢包量
+    pkg_recv_rate: 入每秒网络包
+    pkg_send_rate: 出每秒网络包数
+    packets_recv: 已接收网络包数
+    packets_sent: 已发送网络包数
+    bytes_recv: 已接收字节数
+    bytes_sent: 已发送字节数
+    err_in: 入口错误数
+    err_out: 出口错误数
+    tcp_currestab: tcp连接数
+    tcp_retranssegs: tcp重传数
+    cpu_limit: CPU限制
+    cpu_allocation: CPU分配量
+    mem_usage: 内存使用量
+    mem_limit: 内存总量限制
+    blk_read_bytes: 当前读取量
+    blk_write_bytes: 当前写入量
+    rx_bytes: 当前接收量
+    tx_bytes: 当前发送量
+    rx_errors: 当前接收错误量
+    tx_errors: 当前发送错误量
+    threads_connected: 当前打开连接数
+    slow_queries: 慢查询次数
+    queries: 查询次数
+    clients: 客户端连接数
+    # tag
+    cluster_name: 集群名
+    host: 主机
+    host_ip: 主机ip
+    component_name: 平台组件
+    interface: 网卡名
+    org_name: 企业名
+    kernel_version: 内核版本
+    hostname: 主机名
+    mem: 内存
+    n_cpus: cpu数
+    os: 操作系统
+    device: 设备
+    file system type: 文件系统类型
+    disk mode: 磁盘模式
+    path: 路径
+    network card: 网卡
+    app_config_namespace: 应用配置命名空间
+    application_id: 应用ID
+    application_name: 应用名
+    container_id: 容器ID
+    container_image: 容器镜像
+    image_version: 镜像版本
+    instance_type: 实例类型
+    namespace: 命名空间
+    org_id: 组织ID
+    project_id: 项目ID
+    project_name: 项目名
+    service_id: 服务ID
+    service_name: 服务名
+    workspace: 工作区
+    is_slave: 是从实例
+    port: 端口号
+    replication_role: 副本角色
+    # dice
+    dice_org_id: 企业ID
+    dice_org_name: 企业名
+    dice_project_id: 项目ID
+    dice_project_name: 项目名
+    dice_application_id: 应用ID
+    dice_application_name: 应用名
+    dice_runtime_id: Runtime ID
+    dice_runtime_name: Runtime名
+    dice_service_name: 服务名
+    dice_workspace: 环境
+    level: 等级
+    # alert_state
+    alert: 告警
+    recover: 恢复
+    # notify_target
+    dingding: 钉钉群
+    email: 邮件
+    vms: 电话
+    sms: 短信
+    mbox: 站内信
+    dingtalk_work_notice: 钉钉工作通知
+    ticket: 记录
+    minutes: 分钟
+    seconds: 秒
+    hours: 小时
+
+en:
+    # report-apis
+    日报: "Daily"
+    周报: "Weekly"
+
+    # alert config
+    API网关实例CPU使用率异常: Api Gateway Cpu
+    API网关实例内存使用率异常: Api Gateway Mem
+    ElasticSearch实例CPU使用率异常告警: Addon Elasticsearch Cpu
+    Elasticsearch实例内存使用率异常告警: Addon Elasticsearch Mem
+    MySQL从节点延迟告警: MySQL SLAVE DELAY ALERT
+    MySQL从节点同步告警: MySQL SLAVE SYNC ALERT
+    MySQL实例CPU使用率异常告警: Addon Mysql Cpu
+    MySQL实例主从同步异常告警: Addon Mysql Slave Statu
+    MySQL实例内存使用率异常告警: Addon Mysql Mem
+    kubernetes组件实例CPU状态: Kubernetes Instance Cpu
+    kubernetes组件实例Ready状态异常: Kubernetes Instance Ready
+    kubernetes组件实例内存状态: Kubernetes Instance Mem
+    kubernetes组件异常退出: Kubernetes Instance Exit
+    kubernetes节点异常: Kubernetes Node
+    redis实例内存使用率异常告警: Addon Redis Mem
+    主动监控HTTP状态异常: App Status Code
+    Ajax接口访问性能: Browser Ajax Req
+    用户体验: Browser Apdex
+    域名访问性能: Browser Host Req
+    页面访问性能: Browser Page Req
+    脚本错误: Browser Script Error
+    平台中间件Cassandra GC次数异常: Dice Addon Cassandra Gc Count
+    平台中间件Cassandra GC耗时异常: Dice Addon Cassandra Gc Time
+    平台中间件Elasticsearch GC次数异常: Dice Addon Elasticsearch Gc Count
+    平台中间件Elasticsearch GC耗时异常: Dice Addon Elasticsearch Gc Time
+    平台中间件Kafka GC次数异常: Dice Addon Kafka Gc Count
+    平台中间件Kafka GC耗时异常: Dice Addon Kafka Gc Time
+    平台中间件kafka消费堆积: Dice Addon Kafka Lag
+    平台中间件实例CPU状态: Dice Addon Container Cpu
+    平台中间件实例Ready状态异常: Dice Addon Container Ready
+    平台中间件实例内存状态: Dice Addon Container Mem
+    平台中间件异常退出: Dice Addon Container Exit
+    平台组件Flink任务checkpoint延迟异常告警: Dice Component Flink Checkpoint Durati
+    平台组件Flink吞吐量异常告警: Dice Component Flink Throughput
+    平台组件实例CPU状态: Dice Component Container Cpu
+    平台组件实例Ready状态异常: Dice Component Container Ready
+    平台组件实例内存状态: Dice Component Container Mem
+    平台组件异常退出: Dice Component Container Exit
+    平台组件网盘不可用告警: Dice Component Gfs Statu
+    平台组价日志存储保护器状态变化: Dice Component Log Protector
+    应用JVM GC 耗时: App Resource Jvm Gc Time
+    应用JVM GC次数: App Resource Jvm Gc Count
+    应用JVM堆内存: App Resource Jvm Heap
+    应用NodeJS堆内存使用率: App Resource Nodejs Heap
+    应用实例CPU使用率异常: App Resource Container Cpu
+    应用实例OOM: App Resource Container Oom
+    应用实例内存使用率异常: App Resource Container Mem
+    应用错误次数: App Exception Count
+    服务HTTP慢事务异常: App Transaction Http Service Rt
+    服务HTTP错误率异常: App Transaction Http Service Error
+    服务接口HTTP慢事务异常: App Transaction Http Path Rt
+    服务接口HTTP错误率异常: App Transaction Http Path Error
+    服务熔断通知告警: Sidecar Circuit Breaker
+    机器CPU: Machine Cpu
+    机器内存: Machine Memory
+    机器Load5: Machine Load5
+    机器宕机: Machine Status
+    机器磁盘: Machine Disk
+    机器磁盘IO: Machine Disk Util
+    机器时钟一致性异常告警: Machine Cluster Clock Error
+    注册中心实例CPU使用率异常: Register Center Cpu
+    注册中心实例内存使用率异常: Register Center Mem
+    磁盘Inode异常告警: Machine Disk Inode
+    网盘: Machine Netdisk
+    网盘容量使用量异常告警: Machine Netdisk Used
+    页面内容改变: App Status Browser
+    application_name: App name
+    service_name: Service name
+    micro_service_customize: Custom Microservice
+    app_transaction: App Transaction
+    app_exception: App Error
+    micro_service: Microservice
+    app_status: Active Monitoring
+    app_resource: App Resource
+    app_browser: Browser Performance
+    email: Email
+    钉钉群: DingTalk
+    电话: Phone
+    短信: SMS
+    站内信: Site message
+    钉钉工作通知: DingTalk WorkNotice
+    dingtalk_work_notice: DingTalk WorkNotice
+    dingding: DingTalk
+    vms: Phone
+    sms: SMS
+    mbox: Site message
+    webhook: "Webhook"
+    ticket: "Ticket"
+    cluster_name: Cluster name
+    host_ip: Host IP
+    component_name: Component
+    dice_component: Platform component
+    custom_addon: Custom addon
+    org_customize: Organization customization
+    kubernetes: Kubernetes
+    dice_addon: Platform addon
+    machine: Machine
+    addon: Project addon

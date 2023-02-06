@@ -1,0 +1,20 @@
+.cidr-input-form {
+  display: flex;
+  align-items: center;
+
+  .ant-input,
+  .ant-select,
+  .error-check-item,
+  .ant-form-explain {
+    width: 80px;
+  }
+
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+
+  > .split {
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+}

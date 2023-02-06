@@ -1,0 +1,146 @@
+http-server:
+    addr: ":7099"
+health:
+    path: "/api/health"
+
+kafka:
+    servers: "${BOOTSTRAP_SERVERS:localhost:9092}"
+    comsumer:
+        options:
+            auto.offset.reset: "${KAFKA_AUTO_OFFSET_RESET:latest}"
+            auto.commit.interval.ms: "${KAFKA_AUTO_COMMIT_INTERVAL_MS:1000}"
+    producer:
+        options:
+            go.produce.channel.size: ${KAFKA_PRODUCE_SIZE:200000}
+
+logs-exporter-base:
+    filters:
+        msp_log_attach: "${LOG_MSP_LOG_ATTACH}"
+        msp_env_id: "${LOG_MSP_ENV_ID}"
+    input:
+        topics: "${LOG_KAFKA_TOPICS:spot-container-log}"
+        group: "${LOG_KAFKA_GROUP}"
+        parallelism: ${LOG_KAFKA_WORKERS:3}
+
+elasticsearch@logs:
+    urls: "${LOGS_ES_URL:http://localhost:9200}"
+    security: ${LOGS_ES_SECURITY_ENABLE:false}
+    username: "${LOGS_ES_SECURITY_USERNAME}"
+    password: "${LOGS_ES_SECURITY_PASSWORD}"
+
+logs-exporter-elasticsearch:
+    disabled: ${WRITE_LOG_TO_ES_ENABLE|WRITE_LOG_TO_CLICKHOUSE_ENABLE:true}
+    index:
+        prefix: "${INDEX_PREFIX:rlogs-}"
+    writer_config:
+        type: "${INDEX_TYPE:logs}"
+        parallelism: ${ES_PARALLELISM:3}
+        batch:
+            size: ${ES_BATCH_SIZE:50}
+            timeout: "30s"
+
+logs-index-manager:
+    index_prefix: "${INDEX_PREFIX:rlogs-}"
+    index_template_name: "rlogs-rollover"
+    index_template_file: "conf/elasticsearch.index.template.json"
+    request_timeout: "${ES_REQUEST_TIMEOUT:2m}"
+    reload_interval: "${INDEX_RELOAD_INTERVAL:2m}"
+    enable_index_clean: ${ENABLE_INDEX_CLEAN:true}
+    index_ttl: "${INDEX_TTL:168h}"
+    index_check_interval: "${INDEX_CHECK_INTERVAL:@every 1h}"
+    enable_index_rollover: ${ENABLE_INDEX_ROLLOVER:true}
+    rollover_body_file: "conf/elasticsearch.index.rollover.json"
+    rollover_interval: "${ROLLOVER_INTERVAL:@every 1h}"
+
+erda.msp.apm.log-service.metastore:
+    instance_id: "${LOG_SERVICE_INSTANCE_ID:default}"
+    es_url: "${LOGS_ES_URL:http://localhost:9200}"
+    es_security_enable: "${LOGS_ES_SECURITY_ENABLE:false}"
+    es_username: "${LOGS_ES_SECURITY_USERNAME}"
+    es_password: "${LOGS_ES_SECURITY_PASSWORD}"
+
+mysql:
+    host: "${MYSQL_HOST:localhost}"
+    port: "${MYSQL_PORT:3306}"
+    username: "${MYSQL_USERNAME:root}"
+    password: "${MYSQL_PASSWORD:123456}"
+    database: "${MYSQL_DATABASE:dice}"
+
+
+logs-metrics-analysis@micro_service:
+    _enable: ${LOG_METRICS_ENABLE:true}
+    filters:
+        ${MONITOR_LOG_KEY_NAME:monitor_log_key}: "${MONITOR_LOG_KEY_VALUE}"
+    processors:
+        scope: "${LOG_PROC_SCOPE:micro_service}"
+        scope_id: "${METRIC_SCOPE_ID}"
+        scope_id_key: "${METRIC_SCOPE_ID_KEY:terminus_key}"
+        reload_interval: "3m"
+    input:
+        topics: "${LOG_TOPICS:spot-container-log}"
+        group: "${LOG_METRICS_GROUP_ID:spot-log-metrics}"
+        parallelism: ${LOG_METRICS_CONSUMERS:3}
+    output:
+        type: "${METRIC_OUTPUT_TYPE:kafka}"
+        kafka:
+            topic: "${METRIC_TOPICS:spot-metrics}"
+            parallelism: ${KAFKA_PARALLELISM:3}
+            batch:
+                size:  ${KAFKA_BATCH_SIZE:50}
+                timeout: "10s"
+        collector:
+            url: "${COLLECTOR_PUBLIC_URL:http://collector.default.svc.cluster.local:7076}"
+            username: "${COLLECTOR_AUTH_USERNAME}"
+            password: "${COLLECTOR_AUTH_PASSWORD}"
+
+logs-metrics-analysis@org:
+    _enable: ${LOG_METRICS_ENABLE:true}
+    processors:
+        scope: "org"
+        scope_id: "${METRIC_ORG_SCOPE_ID}"
+        scope_id_key: "${METRIC_ORG_SCOPE_ID_KEY}"
+        reload_interval: "3m"
+    input:
+        topics: "${LOG_TOPICS:spot-container-log}"
+        group: "${LOG_METRICS_ORG_SCOPE_GROUP_ID:spot-log-metrics-org-scope}"
+        parallelism: ${LOG_METRICS_CONSUMERS:3}
+    output:
+        type: "${METRIC_OUTPUT_TYPE:kafka}"
+        kafka:
+            topic: "${METRIC_TOPICS:spot-metrics}"
+            parallelism: ${KAFKA_PARALLELISM:3}
+            batch:
+                size:  ${KAFKA_BATCH_SIZE:50}
+                timeout: "10s"
+        collector:
+            url: "${COLLECTOR_PUBLIC_URL:http://collector.default.svc.cluster.local:7076}"
+            username: "${COLLECTOR_AUTH_USERNAME}"
+            password: "${COLLECTOR_AUTH_PASSWORD}"
+
+logs-metrics-analysis@cluster:
+    _enable: ${LOG_METRICS_ENABLE:true}
+    processors:
+        scope: "cluster"
+        scope_id: "${METRIC_CLUSTER_SCOPE_ID}"
+        scope_id_key: "${METRIC_CLUSTER_SCOPE_ID_KEY:dice_cluster_name}"
+        reload_interval: "3m"
+    input:
+        topics: "${LOG_TOPICS:spot-container-log}"
+        group: "${LOG_METRICS_CLUSTER_SCOPE_GROUP_ID:spot-log-metrics-cluster-scope}"
+        parallelism: ${LOG_METRICS_CONSUMERS:3}
+    output:
+        type: "${METRIC_OUTPUT_TYPE:kafka}"
+        kafka:
+            topic: "${METRIC_TOPICS:spot-metrics}"
+            parallelism: ${KAFKA_PARALLELISM:3}
+            batch:
+                size:  ${KAFKA_BATCH_SIZE:50}
+                timeout: "10s"
+        collector:
+            url: "${COLLECTOR_PUBLIC_URL:http://collector.default.svc.cluster.local:7076}"
+            username: "${COLLECTOR_AUTH_USERNAME}"
+            password: "${COLLECTOR_AUTH_PASSWORD}"
+
+http-server@admin:
+    addr: ":7098"
+pprof:

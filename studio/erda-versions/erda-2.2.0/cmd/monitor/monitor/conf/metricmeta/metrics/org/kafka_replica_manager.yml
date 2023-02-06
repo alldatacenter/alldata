@@ -1,0 +1,126 @@
+name: "Kafka Replica Manager"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    jolokia_agent_url:
+        name: "Jolokia Agent Url"
+    jolokia_host:
+        name: "Jolokia Host"
+    org_name:
+        name: "Org Name"
+fields:
+    FailedIsrUpdatesPerSec_Count:
+        type: "number"
+        name: "Failed Isr Updates Per Sec Count"
+        unit: 
+    FailedIsrUpdatesPerSec_EventType:
+        type: "string"
+        name: "Failed Isr Updates Per Sec Event Type"
+        unit: 
+    FailedIsrUpdatesPerSec_FifteenMinuteRate:
+        type: "number"
+        name: "Failed Isr Updates Per Sec Fifteen Minute Rate"
+        unit: 
+    FailedIsrUpdatesPerSec_FiveMinuteRate:
+        type: "number"
+        name: "Failed Isr Updates Per Sec Five Minute Rate"
+        unit: 
+    FailedIsrUpdatesPerSec_MeanRate:
+        type: "number"
+        name: "Failed Isr Updates Per Sec Mean Rate"
+        unit: 
+    FailedIsrUpdatesPerSec_OneMinuteRate:
+        type: "number"
+        name: "Failed Isr Updates Per Sec One Minute Rate"
+        unit: 
+    FailedIsrUpdatesPerSec_RateUnit:
+        type: "string"
+        name: "Failed Isr Updates Per Sec Rate Unit"
+        unit: 
+    IsrExpandsPerSec_Count:
+        type: "number"
+        name: "Isr Expands Per Sec Count"
+        unit: 
+    IsrExpandsPerSec_EventType:
+        type: "string"
+        name: "Isr Expands Per Sec Event Type"
+        unit: 
+    IsrExpandsPerSec_FifteenMinuteRate:
+        type: "number"
+        name: "Isr Expands Per Sec Fifteen Minute Rate"
+        unit: 
+    IsrExpandsPerSec_FiveMinuteRate:
+        type: "number"
+        name: "Isr Expands Per Sec Five Minute Rate"
+        unit: 
+    IsrExpandsPerSec_MeanRate:
+        type: "number"
+        name: "Isr Expands Per Sec Mean Rate"
+        unit: 
+    IsrExpandsPerSec_OneMinuteRate:
+        type: "number"
+        name: "Isr Expands Per Sec One Minute Rate"
+        unit: 
+    IsrExpandsPerSec_RateUnit:
+        type: "string"
+        name: "Isr Expands Per Sec Rate Unit"
+        unit: 
+    IsrShrinksPerSec_Count:
+        type: "number"
+        name: "Isr Shrinks Per Sec Count"
+        unit: 
+    IsrShrinksPerSec_EventType:
+        type: "string"
+        name: "Isr Shrinks Per Sec Event Type"
+        unit: 
+    IsrShrinksPerSec_FifteenMinuteRate:
+        type: "number"
+        name: "Isr Shrinks Per Sec Fifteen Minute Rate"
+        unit: 
+    IsrShrinksPerSec_FiveMinuteRate:
+        type: "number"
+        name: "Isr Shrinks Per Sec Five Minute Rate"
+        unit: 
+    IsrShrinksPerSec_MeanRate:
+        type: "number"
+        name: "Isr Shrinks Per Sec Mean Rate"
+        unit: 
+    IsrShrinksPerSec_OneMinuteRate:
+        type: "number"
+        name: "Isr Shrinks Per Sec One Minute Rate"
+        unit: 
+    IsrShrinksPerSec_RateUnit:
+        type: "string"
+        name: "Isr Shrinks Per Sec Rate Unit"
+        unit: 
+    LeaderCount_Value:
+        type: "number"
+        name: "Leader Count Value"
+        unit: 
+    OfflineReplicaCount_Value:
+        type: "number"
+        name: "Offline Replica Count Value"
+        unit: 
+    PartitionCount_Value:
+        type: "number"
+        name: "Partition Count Value"
+        unit: 
+    UnderMinIsrPartitionCount_Value:
+        type: "number"
+        name: "Under Minimum Isr Partition Count Value"
+        unit: 
+    UnderReplicatedPartitions_Value:
+        type: "number"
+        name: "Under Replicated Partitions Value"
+        unit: 
+

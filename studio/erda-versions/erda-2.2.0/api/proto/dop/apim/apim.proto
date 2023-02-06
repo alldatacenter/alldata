@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package erda.dop.apim;
+option go_package = "github.com/erda-project/erda-proto-go/dop/apim/pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "common/openapi.proto";
+
+service ExportRecords {
+  option(erda.common.openapi_service) = {
+    service: "dop",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc CreateExportRecord(CreateExportRecordsReq) returns (CreateExportRecordsResp) {
+    option(google.api.http) = {
+      post: "/api/apim/export",
+    };
+    option(erda.common.openapi) = {
+      path: "/api/apim/export",
+    };
+  }
+
+  rpc ListExportRecords(ListExportRecordsReq) returns (ListExportRecordsResp) {
+    option(google.api.http) = {
+      get: "/api/apim/export",
+    };
+    option(erda.common.openapi) = {
+      path: "/api/apim/export",
+    };
+  }
+
+  rpc DeleteExportRecord(DeleteExportRecordReq) returns (Empty) {
+    option(google.api.http) = {
+      delete: "/api/apim/export/{id}",
+    };
+    option(erda.common.openapi) = {
+      path: "/api/apim/export/{id}",
+    };
+  }
+}
+
+message CreateExportRecordsReq {
+  uint32 versionID = 1;
+  string specProtocol = 2;
+}
+
+message CreateExportRecordsResp {
+    ExportRecord data = 1;
+    repeated string userIDs = 2;
+}
+
+message ExportRecord {
+  string id = 1;
+  google.protobuf.Timestamp createdAt = 2;
+  google.protobuf.Timestamp updatedAt = 3;
+  uint32 orgID = 4;
+  string OrgName = 5;
+  google.protobuf.Timestamp deletedAt = 6;
+
+  string creatorID = 7;
+  string updaterID = 8;
+  string assetID = 9;
+  string assetName = 10;
+  uint32 versionID = 11;
+  string swaggerVersion = 12;
+  uint32 major = 13;
+  uint32 minor = 14;
+  uint32 patch = 15;
+  string specProtocol = 16;
+
+  bool valid = 17;
+}
+
+message ListExportRecordsReq {
+  int32 pageNo = 1;
+  int32 pageSize = 2;
+  string orderBy = 3;
+}
+
+message ListExportRecordsResp {
+    ListExportRecordsData data = 1;
+    repeated string userIDs = 2;
+}
+
+message ListExportRecordsData {
+  int64 total = 1;
+  repeated ExportRecord list = 2;
+}
+
+message DeleteExportRecordReq {
+  string id = 1;
+}
+
+message Empty {}

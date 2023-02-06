@@ -1,0 +1,34 @@
+.deploy-cluster-log {
+  position: relative;
+  height: 100%;
+  padding: 10px 10px 10px 25px;
+  overflow-y: auto;
+  @include thin-scrollbar();
+  color: #bbbbbb;
+  background-color: #3c444f;
+  border-radius: 6px;
+
+  pre {
+    overflow: auto;
+    @include thin-scrollbar();
+
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+    color: #c2c1d0;
+    font-size: 12px;
+    font-family: Menlo, PingFangSC-Regular, Consolas, Courier, monospace;
+    line-height: 1.7em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .log-state {
+    position: absolute;
+    left: 4px;
+    font-size: 18px;
+
+    &.bottom {
+      bottom: 15px;
+    }
+  }
+}

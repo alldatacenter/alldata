@@ -1,0 +1,31 @@
+.issues-type-icon-box {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  color: $white;
+  border-radius: $radius;
+
+  .iconfont {
+    margin-right: 0;
+    font-size: 10px;
+  }
+
+  &.primary {
+    background-color: $primary;
+  }
+
+  &.red {
+    background-color: $color-danger;
+  }
+
+  &.darkcyan {
+    background-color: $darkcyan;
+  }
+
+  &.palegreen {
+    background-color: $palegreen;
+  }
+}

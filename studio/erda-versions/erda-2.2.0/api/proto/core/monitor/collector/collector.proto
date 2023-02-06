@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package erda.core.monitor.collector;
+option go_package = "github.com/erda-project/erda-proto-go/core/monitor/collector/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+service CollectorService {
+    // TODO .
+}

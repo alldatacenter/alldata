@@ -1,0 +1,105 @@
+version: "1.1"
+
+#on:
+#  push:
+#    branches:
+#      - release/*
+#    tags:
+#      - v*
+
+stages:
+  - stage:
+      - git-checkout:
+          alias: erda
+          params:
+            depth: 1
+      - git-checkout:
+          alias: erda-actions
+          params:
+            uri: https://erda.cloud/erda/dop/erda-project/erda-actions-mirror
+            branch: master
+      - git-checkout:
+          alias: erda-addons
+          params:
+            uri: https://erda.cloud/erda/dop/erda-project/erda-addons-mirror
+            branch: master
+  - stage:
+      - custom-script:
+          alias: erda
+          image: registry.erda.cloud/erda/gohub:1.0.7
+          commands:
+            - cp -a ${{ dirs.raw-erda }}/. .
+            - make proto-go-in-local
+  - stage:
+      - extract-repo-version:
+          params:
+            git_dir: ${{ dirs.erda }}
+  - stage:
+      - custom-script:
+          alias: build-erda
+          commands:
+            - cd ${{ dirs.erda }}
+            - mkdir -p extensions
+            - cp -r ${{ dirs.erda-actions }} extensions
+            - cp -r ${{ dirs.erda-addons }} extensions
+            - export ERDA_VERSION=${{ outputs.extract-repo-version.major_minor_version }}
+            - make prepare
+            - make build-push-all
+          loop:
+            break: task_status == 'Success'
+            strategy:
+              max_times: 5
+              decline_ratio: 2
+              decline_limit_sec: 60
+              interval_sec: 5
+          resources:
+            cpu: 2
+            mem: 2048
+      - custom-script:
+          alias: build-agent
+          commands:
+            - cd ${{ dirs.erda }}
+            - export ERDA_VERSION=${{ outputs.extract-repo-version.major_minor_version }}
+            - MODULE_PATH=cluster-agent make build-push-image
+          loop:
+            break: task_status == 'Success'
+            strategy:
+              max_times: 5
+              decline_ratio: 2
+              decline_limit_sec: 60
+              interval_sec: 5
+          resources:
+            cpu: 2
+            mem: 2048
+  - stage:
+      - release:
+          alias: release-erda
+          params:
+            check_diceyml: false
+            cross_cluster: "true"
+            dice_yml: ${{ dirs.erda }}/erda.yml
+            image:
+              action-runner-scheduler: ${{ outputs.build-erda.image }}
+              erda-server: ${{ outputs.build-erda.image }}
+              cluster-agent: ${{ outputs.build-agent.image }}
+              cluster-manager: ${{ outputs.build-erda.image }}
+              cmp: ${{ outputs.build-erda.image }}
+              collector: ${{ outputs.build-erda.image }}
+              core-services: ${{ outputs.build-erda.image }}
+              dicehub: ${{ outputs.build-erda.image }}
+              dop: ${{ outputs.build-erda.image }}
+              ecp: ${{ outputs.build-erda.image }}
+              eventbox: ${{ outputs.build-erda.image }}
+              gittar: ${{ outputs.build-erda.image }}
+              hepa: ${{ outputs.build-erda.image }}
+              log-service: ${{ outputs.build-erda.image }}
+              monitor: ${{ outputs.build-erda.image }}
+              msp: ${{ outputs.build-erda.image }}
+              openapi: ${{ outputs.build-erda.image }}
+              orchestrator: ${{ outputs.build-erda.image }}
+              pipeline: ${{ outputs.build-erda.image }}
+              scheduler: ${{ outputs.build-erda.image }}
+              streaming: ${{ outputs.build-erda.image }}
+              uc-adaptor: ${{ outputs.build-erda.image }}
+            migration_type: erda
+            migration_dir: ${{ dirs.erda }}/.erda/migrations

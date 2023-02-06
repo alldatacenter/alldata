@@ -1,0 +1,69 @@
+scenario: resources-runtime-monitor-java
+
+hierarchy:
+  root: page
+  structure:
+    page:
+    - runtime
+    runtime:
+    - runtime@jvm_memory_heap
+    - runtime@jvm_memory_non_heap
+    - runtime@jvm_memory_eden_space
+    - runtime@jvm_memory_survivor_space
+    - runtime@jvm_memory_old_gen
+    - runtime@jvm_gc_count
+    - runtime@jvm_gc_time
+    - runtime@jvm_class_loader
+    - runtime@jvm_thread
+  parallel:
+    runtime:
+    - runtime@jvm_memory_heap
+    - runtime@jvm_memory_non_heap
+    - runtime@jvm_memory_eden_space
+    - runtime@jvm_memory_survivor_space
+    - runtime@jvm_memory_old_gen
+    - runtime@jvm_gc_count
+    - runtime@jvm_gc_time
+    - runtime@jvm_class_loader
+    - runtime@jvm_thread
+components:
+  page:
+    type: Container
+  runtime:
+    type: Grid
+  runtime@jvm_memory_heap:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@jvm_memory_non_heap:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@jvm_memory_eden_space:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@jvm_memory_survivor_space:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@jvm_memory_old_gen:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@jvm_gc_count:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@jvm_gc_time:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@jvm_class_loader:
+    type: LineGraph
+    options:
+      asyncAtInit: true
+  runtime@jvm_thread:
+    type: LineGraph
+    options:
+      asyncAtInit: true

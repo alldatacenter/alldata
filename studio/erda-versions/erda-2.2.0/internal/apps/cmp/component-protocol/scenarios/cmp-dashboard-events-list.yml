@@ -1,0 +1,41 @@
+scenario: cmp-dashboard-events-list
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - tableContainer
+    tableContainer:
+      slot: filter
+      table: eventTable
+
+components:
+  page:
+    type: Container
+  tableContainer:
+    type: ComposeTable
+  filter:
+    type: ContractiveFilter
+  eventTable:
+    type: Table
+
+rendering:
+  __DefaultRendering__:
+    - name: page
+    - name: tableContainer
+    - name: filter
+      state:
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+    - name: eventTable
+      state:
+        - name: "clusterName"
+          value: "{{ __InParams__.clusterName }}"
+        - name: "filterValues"
+          value: "{{ filter.values }}"
+  eventTable: []
+  filter:
+    - name: eventTable
+      state:
+        - name: "filterValues"
+          value: "{{ filter.values }}"

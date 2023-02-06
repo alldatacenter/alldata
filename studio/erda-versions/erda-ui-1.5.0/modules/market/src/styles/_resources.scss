@@ -1,0 +1,36 @@
+// color
+$color-primary: #6a549e !default;
+$primary: $color-primary;
+
+// variable
+$sider-width: 48px;
+$subsider-width: 200px;
+$subsider-fold-width: 48px;
+$sm-content-break-width: 600px;
+$md-content-break-width: 1024px;
+$lg-content-break-width: 1440px;
+
+$sm-break-width: $sider-width + $subsider-width + $sm-content-break-width;
+$md-break-width: $sider-width + $subsider-width + $md-content-break-width;
+$lg-break-width: $sider-width + $subsider-width + $lg-content-break-width;
+
+// mixin
+
+// 小屏 usage: @include sm-width{  }
+@mixin sm-width() {
+  @media screen and (max-width: $sm-break-width) {
+    @content;
+  }
+}
+
+@mixin md-width() {
+  @media screen and (max-width: $md-break-width) {
+    @content;
+  }
+}
+
+@mixin lg-width() {
+  @media screen and (max-width: $lg-break-width) {
+    @content;
+  }
+}

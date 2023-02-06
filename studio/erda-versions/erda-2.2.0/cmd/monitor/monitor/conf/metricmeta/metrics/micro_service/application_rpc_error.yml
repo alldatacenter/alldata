@@ -1,0 +1,115 @@
+name: "RPC Error"
+tags:
+    cluster_name:
+        name: "Cluster Name"
+    component:
+        name: "Component"
+    rpc_method:
+        name: "Rpc Method"
+    rpc_service:
+        name: "Rpc Service"
+    rpc_target:
+        name: "Rpc Target"
+    error:
+        name: "Error"
+        values:
+            - value: "true"
+              name: "True"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    org_name:
+        name: "Org Name"
+    peer_address:
+        name: "Peer Address"
+    peer_service:
+        name: "Peer Service"
+    request_id:
+        name: "Request ID"
+    source_application_id:
+        name: "Source Application ID"
+    source_application_name:
+        name: "Source Application Name"
+    source_org_id:
+        name: "Source Org ID"
+    source_project_id:
+        name: "Source Project ID"
+    source_project_name:
+        name: "Source Project Name"
+    source_runtime_id:
+        name: "Source Runtime ID"
+    source_runtime_name:
+        name: "Source Runtime Name"
+    source_service_name:
+        name: "Source Service Name"
+    source_terminus_key:
+        name: "Source Terminus Key"
+    source_workspace:
+        name: "Source Workspace"
+        values:
+            - value: "DEV"
+              name: "Develop"
+            - value: "TEST"
+              name: "Test"
+            - value: "STAGING"
+              name: "Staging"
+            - value: "PROD"
+              name: "Production"
+    target_application_id:
+        name: "Target Application ID"
+    target_application_name:
+        name: "Target Application Name"
+    target_org_id:
+        name: "Target Org ID"
+    target_project_id:
+        name: "Target Project ID"
+    target_project_name:
+        name: "Target Project Name"
+    target_runtime_id:
+        name: "Target Runtime ID"
+    target_runtime_name:
+        name: "Target Runtime Name"
+    target_service_id:
+        name: "Target Service ID"
+    target_service_instance_id:
+        name: "Target Service Instance ID"
+    target_service_name:
+        name: "Target Service Name"
+    target_terminus_key:
+        name: "Target Terminus Key"
+    target_workspace:
+        name: "Target Workspace"
+        values:
+            - value: "DEV"
+              name: "Develop"
+            - value: "TEST"
+              name: "Test"
+            - value: "STAGING"
+              name: "Staging"
+            - value: "PROD"
+              name: "Production"
+    trace_sampled:
+        name: "Trace Sampled"
+fields:
+    elapsed_count:
+        type: "number"
+        name: "Request Count"
+        unit: 
+    elapsed_max:
+        type: "number"
+        name: "Elapsed Maximum"
+        unit: 
+    elapsed_mean:
+        type: "number"
+        name: "Elapsed Mean"
+        unit: 
+    elapsed_min:
+        type: "number"
+        name: "Elapsed Minimum"
+        unit: 
+    elapsed_sum:
+        type: "number"
+        name: "Elapsed"
+        unit: 
+

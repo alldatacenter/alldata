@@ -1,0 +1,33 @@
+scenario: transaction-rpc-error
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - errorReqDistribution
+      - content
+    content:
+      slot: head
+      table: metricTable
+    head:
+      left: metricTableFilter
+  parallel:
+    page:
+      - errorReqDistribution
+      - content
+components:
+  page:
+    type: Container
+  errorReqDistribution:
+    type: BubbleGraph
+    options:
+      asyncAtInit: true
+  content:
+    type: ComposeTable
+  metricTableFilter:
+    type: ContractiveFilter
+  head:
+    type: LRContainer
+  metricTable:
+    type: Table
+    version: 2

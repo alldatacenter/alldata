@@ -1,0 +1,11 @@
+.k8s-cluster-terminal-container {
+  height: 100%;
+  padding: 20px 0 10px 20px;
+  overflow: hidden;
+  background-color: $terminal-bgcolor;
+  border-radius: 4px;
+
+  .terminal-info {
+    color: $platinum;
+  }
+}

@@ -1,0 +1,40 @@
+.addon-detail {
+  .title {
+    display: inline-block;
+    margin-bottom: $p8;
+    font-size: 16px;
+    line-height: 38px;
+  }
+
+  .info {
+    margin-bottom: $p32;
+
+    &-grid {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      row-gap: $p4;
+    }
+  }
+
+  .ref {
+    margin-bottom: $p32;
+  }
+
+  .param-k {
+    margin-bottom: $p4;
+    color: $color-text-desc;
+    line-height: 22px;
+  }
+
+  .param-v {
+    margin-bottom: $p12;
+    padding-right: $p8;
+    color: $color-text;
+    line-height: $p32;
+  }
+
+  .copy-all {
+    margin-right: $p4;
+    color: $color-primary;
+  }
+}

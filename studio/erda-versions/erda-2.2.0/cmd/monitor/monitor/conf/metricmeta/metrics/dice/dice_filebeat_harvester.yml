@@ -1,0 +1,50 @@
+name: "Dice Filebeat Harvester"
+tags:
+  cluster_name:
+    name: "Cluster Name"
+  cluster_type:
+    name: "Cluster Type"
+  component:
+    name: "Component"
+  host:
+    name: "Host"
+  host_ip:
+    name: "Host IP"
+  is_edge:
+    name: "Is Edge"
+  org_name:
+    name: "Org Name"
+  version:
+    name: "Version"
+  started:
+    name: "started"
+  filename:
+    name: "filename"
+  container_id:
+    name: "container_id"
+  container_name:
+    name: "container_name"
+  dice_org_id:
+    name: "dice_org_id"
+  dice_org_name:
+    name: "dice_org_name"
+  dice_project_id:
+    name: "dice_project_id"
+  dice_project_name:
+    name: "dice_project_name"
+  dice_runtime_id:
+    name: "dice_runtime_id"
+  dice_runtime_name:
+    name: "dice_runtime_name"
+  dice_service_name:
+    name: "dice_service_name"
+fields:
+  file_read_offset_per_second:
+    name:
+      "file_read_offset_per_second"
+  file_read_offset:
+    name: "file_read_offset"
+  file_size:
+    name: "file_size"
+  last_event_published_time:
+    name: "last_event_published_time"

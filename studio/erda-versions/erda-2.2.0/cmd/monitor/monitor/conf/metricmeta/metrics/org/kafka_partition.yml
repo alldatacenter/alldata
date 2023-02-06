@@ -1,0 +1,46 @@
+name: "Kafka Partition"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    jolokia_agent_url:
+        name: "Jolokia Agent Url"
+    jolokia_host:
+        name: "Jolokia Host"
+    org_name:
+        name: "Org Name"
+    partition:
+        name: "Partition"
+    topic:
+        name: "Topic"
+fields:
+    LogEndOffset:
+        type: "number"
+        name: "Log End Offset"
+        unit: 
+    LogStartOffset:
+        type: "number"
+        name: "Log Start Offset"
+        unit: 
+    NumLogSegments:
+        type: "number"
+        name: "Num Log Segments"
+        unit: 
+    Size:
+        type: "number"
+        name: "Size"
+        unit: 
+    UnderReplicatedPartitions:
+        type: "number"
+        name: "Under Replicated Partitions"
+        unit: 
+

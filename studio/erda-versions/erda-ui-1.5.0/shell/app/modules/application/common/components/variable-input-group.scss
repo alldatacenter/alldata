@@ -1,0 +1,53 @@
+.global-input-form-title {
+  margin-bottom: 4px;
+  color: $color-dark-8;
+}
+
+.ant-form-item-with-help {
+  margin-bottom: 12px;
+}
+
+.ant-form-item {
+  margin-bottom: 12px;
+}
+
+.variable-input-group {
+  display: block;
+}
+
+.variable-input {
+  display: inline-block;
+  width: 120px;
+  vertical-align: middle;
+}
+
+.variable-equal,
+.variable-input-spit {
+  display: inline-block;
+  margin: 0 8px;
+  color: $color-dark-4;
+  vertical-align: middle;
+}
+
+.variable-input-spit {
+  margin-right: 8px;
+}
+
+.variable-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  color: $color-dark-4;
+  cursor: pointer;
+}
+
+.variable-input-lock {
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.list-full-input {
+  display: inline-block;
+  width: 290px;
+  vertical-align: middle;
+}

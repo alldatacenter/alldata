@@ -1,0 +1,225 @@
+.cluster-overview {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.machine-table {
+  .machine-operations {
+    color: $color-text;
+    font-size: 18px;
+  }
+
+  .machine-title {
+    background: transparent;
+  }
+
+  .machine-list-table tbody > tr > td {
+    position: relative;
+  }
+
+  .filter-search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+    &.active {
+      color: $color-primary;
+      font-size: 14px;
+    }
+
+    &.normal {
+      color: $darkgray;
+      font-size: 14px;
+    }
+
+    &.tag-filter {
+      left: 46px;
+      height: 40px;
+    }
+  }
+
+  .title-with-search {
+    &.labels {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-value {
+      color: $color-dark-5;
+      font-size: 12px;
+    }
+
+    .label-filter {
+      display: flex;
+      align-items: center;
+      width: 280px;
+      margin-left: 10px;
+
+      i {
+        color: $darkgray;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .label-select {
+        max-height: 60px;
+        overflow: auto;
+        transition-duration: 300ms;
+        transition-property: width;
+      }
+    }
+  }
+
+  .dropdown-icon {
+    font-size: 20px;
+
+    &:hover {
+      color: $color-primary;
+      cursor: pointer;
+    }
+  }
+
+  .percent-row {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .machine-percent {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      text-align: left;
+
+      &-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparentize($color-primary, 0.99),
+          transparentize($color-primary, 0.9)
+        );
+
+        &.machine-percent-top-bar {
+          background: linear-gradient(
+            to right,
+            transparentize($color-primary, 0.98),
+            transparentize($color-primary, 0.8)
+          );
+
+          &.machine-percent-error-bar {
+            background: linear-gradient(
+              to right,
+              transparentize($color-danger, 0.98),
+              transparentize($color-danger, 0.8)
+            );
+          }
+        }
+
+        &:hover {
+          background: linear-gradient(
+            to right,
+            transparentize($color-primary, 0.95),
+            transparentize($color-primary, 0.5)
+          );
+
+          span {
+            display: block;
+          }
+        }
+
+        span {
+          display: none;
+        }
+      }
+
+      .color-danger {
+        color: $color-danger;
+      }
+
+      .color-warning {
+        color: $color-warning;
+      }
+
+      .color-success {
+        color: $color-success;
+      }
+    }
+  }
+
+  .opreation-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    i {
+      margin-left: 16px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+.terminal-confirm-modal {
+  .ant-modal-confirm-body {
+    .anticon {
+      display: none;
+    }
+
+    .ant-modal-confirm-title {
+      margin-bottom: 20px;
+    }
+
+    .ant-modal-confirm-content {
+      margin-left: unset;
+    }
+  }
+
+  .ant-row {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: unset;
+    }
+  }
+}
+
+.filter-dropdown {
+  width: 130px;
+  padding: 10px;
+  font-size: 12px;
+
+  .ant-input-number {
+    width: 65px;
+    height: 25px;
+  }
+
+  .label {
+    display: inline-block;
+    width: 30px;
+  }
+
+  .row {
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .button-wrap {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      font-size: 12px;
+    }
+  }
+}

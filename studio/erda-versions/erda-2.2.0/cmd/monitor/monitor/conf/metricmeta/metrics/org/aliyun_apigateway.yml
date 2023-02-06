@@ -1,0 +1,41 @@
+name: 'aliyun_apigateway'
+tags:
+  org_id:
+    name: Org ID
+  org_name:
+    name: Org Name
+  cluster_name:
+    name: Cluster Name
+  apiUid:
+    name: apiUid
+  region:
+    name: region
+fields:
+  Latency:
+    name: Latency
+    type: number
+    unit: ms
+  SumQPS:
+    name: SumQPS
+    type: number
+    unit: count
+  TrafficRX:
+    name: TrafficRX
+    type: number
+    unit: kbytes
+  TrafficTX:
+    name: TrafficTX
+    type: number
+    unit: kbytes
+  code2XX:
+    name: code2XX
+    type: number
+    unit: count
+  code4XX:
+    name: code4XX
+    type: number
+    unit: count
+  code5XX:
+    name: code5XX
+    type: number
+    unit: count

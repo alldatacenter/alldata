@@ -1,0 +1,14 @@
+- mysql_innodb_data_writes:
+    title: "INNODB写数据的次数"
+    metric_names: "mysql"
+    type: "mysql_remove"
+    order: 23
+    defines:
+      diff.innodb_data_writes:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

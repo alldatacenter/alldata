@@ -1,0 +1,23 @@
+version: "1.1"
+triggers:
+  - on: issue
+    filter:
+      branch: master
+      type: TASK
+  - on: git_on
+    filter:
+      appID: "12"
+      type: BUG
+  - on: git_push
+    filter:
+      branch: develop
+      projectID: "234"
+stages:
+  - stage:
+      - custom-script:
+          alias: custom-script
+          description: 运行自定义命令
+          version: "1.0"
+          commands:
+            - echo ${{ triggers.git_push.branch }}
+            - echo ${{ triggers.issue.type }}

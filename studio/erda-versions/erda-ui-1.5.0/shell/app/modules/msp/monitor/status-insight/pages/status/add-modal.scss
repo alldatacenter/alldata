@@ -1,0 +1,31 @@
+.group-regs {
+  .op-icon-add {
+    position: absolute;
+    right: 50%;
+    margin-top: -8px;
+    font-size: 20px;
+
+    &:hover {
+      color: $color-primary;
+      cursor: pointer;
+    }
+  }
+
+  .reg-item {
+    display: flex;
+
+    .input-form-item {
+      width: 90%;
+    }
+
+    .op-icon-drop {
+      margin: 6px 0 0 6px;
+      font-size: 20px;
+
+      &:hover {
+        color: $color-primary;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.client-detail-modal {
+  .title {
+    height: 28px;
+    line-height: 28px;
+
+    .more-action {
+      position: relative;
+      z-index: 9999;
+      cursor: pointer;
+      height: 28px;
+      width: 28px;
+      justify-content: center;
+
+      i {
+        margin: 0;
+      }
+    }
+  }
+
+  .record-list {
+    border: 1px solid $border-color;
+    border-radius: 6px;
+
+    .no-data {
+      height: 200px;
+      position: relative;
+    }
+  }
+}
+
+.access-detail-page {
+  .client_displayName {
+    width: auto;
+    max-width: 90%;
+  }
+
+  .overview-chart {
+    border-radius: $radius-lg;
+
+    .title {
+      line-height: 28px;
+    }
+  }
+}

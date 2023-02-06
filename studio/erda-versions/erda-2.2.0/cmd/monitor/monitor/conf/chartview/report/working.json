@@ -1,0 +1,410 @@
+{
+  "id": "working",
+  "name": "工时统计",
+  "desc": "客户端视角",
+  "scope": "org",
+  "scopeId": "terminus",
+  "viewConfig": [
+    {
+      "w": 12,
+      "h": 9,
+      "x": 0,
+      "y": 0,
+      "i": "view-98ae03fd",
+      "view": {
+        "title": "实际工作量 (人天)",
+        "i18n": {
+          "title": {
+            "en": "actual workload (MD)",
+            "zh": "实际工作量 (人天)"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics",
+          "query": {
+            "alias_sum.issue_elapsed_time": "issue_elapsed_time总和",
+            "chartType": "card",
+            "format": "chartv2",
+            "sum": [
+              "issue_elapsed_time"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "5",
+                "metric": "issue_metrics_statistics-issue_elapsed_time"
+              }
+            ],
+            "filters": [],
+            "group": []
+          }
+        }
+      }
+    },
+    {
+      "w": 12,
+      "h": 9,
+      "x": 12,
+      "y": 0,
+      "i": "view-73d60bcb",
+      "view": {
+        "title": "预计工作量 (人天)",
+        "i18n": {
+          "title": {
+            "en": "estimated workload (MD)",
+            "zh": "预计工作量 (人天)"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics",
+          "query": {
+            "alias_sum.issue_estimate_time": "issue_estimate_time总和",
+            "chartType": "card",
+            "format": "chartv2",
+            "sum": [
+              "issue_estimate_time"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "16",
+                "metric": "issue_metrics_statistics-issue_estimate_time"
+              }
+            ],
+            "filters": [],
+            "group": []
+          }
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 9,
+      "i": "view-cdb72329",
+      "view": {
+        "title": "成员工作量分布 (人天)",
+        "i18n": {
+          "title": {
+            "en": "member workload distribution (MD)",
+            "zh": "成员工作量分布 (人天)"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          },
+          "option": {
+            "yAxis": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics/histogram",
+          "query": {
+            "alias_last.tags.issue_user_nick": "issue_user_nick",
+            "alias_sum.issue_elapsed_time": "issue_elapsed_time总和",
+            "alias_sum.issue_estimate_time": "issue_estimate_time总和",
+            "chartType": "chart:bar",
+            "format": "chartv2",
+            "limit": 1000,
+            "group": "(tags.issue_user_nick)",
+            "sum": [
+              "issue_estimate_time",
+              "issue_elapsed_time"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "50",
+                "metric": "issue_metrics_statistics-issue_estimate_time"
+              },
+              {
+                "aggregation": "sum",
+                "key": "40",
+                "metric": "issue_metrics_statistics-issue_elapsed_time"
+              }
+            ],
+            "filters": [],
+            "group": [
+              "tags.issue_user_nick"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "w": 12,
+      "h": 9,
+      "x": 0,
+      "y": 28,
+      "i": "view-2161e559",
+      "view": {
+        "title": "缺陷 耗时TOP10 (人天)",
+        "i18n": {
+          "title": {
+            "en": "BUG time consuming TOP10 (MD)",
+            "zh": "缺陷 耗时TOP10 (人天)"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          },
+          "option": {
+            "yAxis": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics/histogram",
+          "query": {
+            "alias_last.tags.issue_title": "issue_title",
+            "alias_sum.issue_elapsed_time": "issue_elapsed_time总和",
+            "chartType": "chart:bar",
+            "eq_tags.issue_type": "BUG",
+            "format": "chartv2",
+            "group": "(tags.issue_title)",
+            "limit": 10,
+            "sort": "sum_issue_elapsed_time",
+            "sum": [
+              "issue_elapsed_time"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "235",
+                "metric": "issue_metrics_statistics-issue_elapsed_time"
+              }
+            ],
+            "filters": [
+              {
+                "key": "245",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "BUG"
+              }
+            ],
+            "group": [
+              "tags.issue_title"
+            ],
+            "limit": 10
+          }
+        }
+      }
+    },
+    {
+      "w": 12,
+      "h": 9,
+      "x": 12,
+      "y": 28,
+      "i": "view-1e55a4eb",
+      "view": {
+        "title": "任务 耗时TOP10 (人天)",
+        "i18n": {
+          "title": {
+            "en": "task time consuming TOP10 (MD)",
+            "zh": "任务 耗时TOP10 (人天)"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          },
+          "option": {
+            "yAxis": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics/histogram",
+          "query": {
+            "alias_last.tags.issue_title": "issue_title",
+            "alias_sum.issue_elapsed_time": "issue_elapsed_time总和",
+            "chartType": "chart:bar",
+            "eq_tags.issue_type": "TASK",
+            "format": "chartv2",
+            "group": "(tags.issue_title)",
+            "limit": 10,
+            "sort": "sum_issue_elapsed_time",
+            "sum": [
+              "issue_elapsed_time"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "347",
+                "metric": "issue_metrics_statistics-issue_elapsed_time"
+              }
+            ],
+            "filters": [
+              {
+                "key": "357",
+                "method": "eq",
+                "tag": "tags.issue_type",
+                "value": "TASK"
+              }
+            ],
+            "group": [
+              "tags.issue_title"
+            ],
+            "limit": 10
+          }
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 10,
+      "x": 0,
+      "y": 18,
+      "i": "view-970a9935",
+      "view": {
+        "title": "人员事件分布 (个)",
+        "i18n": {
+          "title": {
+            "en": "personnel incident distribution (num)",
+            "zh": "人员事件分布 (个)"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "api",
+        "staticData": {},
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          },
+          "option": {
+            "yAxis": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/project/metrics/issue_metrics_statistics/histogram",
+          "query": {
+            "alias_last.tags.issue_user_nick": "issue_user_nick",
+            "alias_sum.issue_type_BUG": "issue_type_BUG总和",
+            "alias_sum.issue_type_TASK": "issue_type_TASK总和",
+            "chartType": "chart:bar",
+            "format": "chartv2",
+            "limit": 1000,
+            "group": "(tags.issue_user_nick)",
+            "sum": [
+              "issue_type_TASK",
+              "issue_type_BUG"
+            ]
+          },
+          "body": null,
+          "header": null,
+          "extraData": {
+            "activedMetricGroups": [
+              "other",
+              "other@issue_metrics_statistics"
+            ],
+            "activedMetrics": [
+              {
+                "aggregation": "sum",
+                "key": "659",
+                "metric": "issue_metrics_statistics-issue_type_TASK"
+              },
+              {
+                "aggregation": "sum",
+                "key": "649",
+                "metric": "issue_metrics_statistics-issue_type_BUG"
+              }
+            ],
+            "filters": [],
+            "group": [
+              "tags.issue_user_nick"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "version": "v2"
+}

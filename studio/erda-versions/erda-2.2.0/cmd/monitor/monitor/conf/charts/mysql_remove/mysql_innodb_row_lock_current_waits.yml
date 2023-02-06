@@ -1,0 +1,14 @@
+- mysql_innodb_row_lock_current_waits:
+    title: "当前Innodb表上被等待的行锁数量"
+    metric_names: "mysql"
+    type: "mysql_remove"
+    order: 16
+    defines:
+      diff.innodb_row_lock_current_waits:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

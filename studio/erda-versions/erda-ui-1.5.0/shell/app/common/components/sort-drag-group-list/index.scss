@@ -1,0 +1,138 @@
+.sort-drag-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-right: 1px;
+  margin-bottom: 8px;
+  border-left: 3px solid transparent;
+  @extend %shallow-shadow;
+
+  &:nth-child(5n) {
+    border-left-color: $purple;
+  }
+
+  &:nth-child(5n + 1) {
+    border-left-color: $blue;
+  }
+
+  &:nth-child(5n + 2) {
+    border-left-color: $cyan;
+  }
+
+  &:nth-child(5n + 3) {
+    border-left-color: $green;
+  }
+
+  &:nth-child(5n + 4) {
+    border-left-color: $palegreen;
+  }
+
+  .group-drag-handle {
+    width: 0;
+    color: $color-dark-2;
+    cursor: move;
+    opacity: 0;
+    transition: all 0.2s ease-out;
+
+    i {
+      margin-right: 0;
+      font-size: 14px;
+    }
+
+    &:hover {
+      color: $color-active;
+      background-color: $color-active-bg;
+    }
+  }
+
+  &:hover {
+    .group-drag-handle {
+      width: 20px;
+      opacity: 1;
+    }
+  }
+
+  .sort-drag-item {
+    position: relative;
+    align-items: stretch;
+    height: 40px;
+    background-color: $ghostwhite;
+    border-bottom: 1px solid $color-border;
+
+    &-title {
+      width: 0;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: $color-active-bg;
+
+      .hover-show {
+        display: inline-flex;
+      }
+    }
+
+    .icon-block {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+
+      i {
+        margin-right: 0;
+      }
+
+      &:hover {
+        color: $color-active;
+        background-color: $color-active-bg;
+      }
+    }
+
+    .drag-handle {
+      color: $color-dark-2;
+      cursor: move;
+
+      i {
+        font-size: 14px;
+      }
+    }
+
+    .hover-show {
+      display: none;
+    }
+  }
+}
+
+.hover-position-tip {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: $color-active-border;
+    content: '';
+    opacity: 0;
+  }
+}
+
+.hover-position-top {
+  &::after {
+    top: -2px;
+    opacity: 1;
+  }
+}
+
+.hover-position-center {
+  outline: 2px solid $color-active-border;
+}
+
+.hover-position-bottom {
+  &::after {
+    bottom: -2px;
+    opacity: 1;
+  }
+}

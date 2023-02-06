@@ -1,0 +1,516 @@
+{
+  "id": "daily",
+  "name": "运维日报模版",
+  "desc": "运维日报模版",
+  "scope": "report",
+  "scopeId": "org",
+  "viewConfig": [
+    {
+      "w": 8,
+      "h": 3,
+      "x": 0,
+      "y": 4,
+      "i": "d11",
+      "view": {
+        "title": "异常机器",
+        "i18n": {
+          "title": {
+            "en": "Abnormal machine"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/alert_resource",
+          "query": {
+            "align": false,
+            "cardinality": "tags.host_ip",
+            "end": "now",
+            "filter_alert_type": "machine",
+            "filter_dice_org_id": "",
+            "filter_trigger": "alert",
+            "format": "chartv2",
+            "start": "before_24h"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 8,
+      "h": 3,
+      "x": 8,
+      "y": 4,
+      "i": "d12",
+      "view": {
+        "title": "异常服务",
+        "i18n": {
+          "title": {
+            "en": "Abnormal service"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/alert_resource",
+          "query": {
+            "align": false,
+            "cardinality": "(tags.runtime_id,tags.service_name)",
+            "end": "now",
+            "filter_dice_org_id": "",
+            "filter_trigger": "alert",
+            "format": "chartv2",
+            "match_alert_type": "app_*",
+            "start": "before_24h"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 8,
+      "h": 3,
+      "x": 16,
+      "y": 4,
+      "i": "d13",
+      "view": {
+        "title": "异常Addons",
+        "i18n": {
+          "title": {
+            "en": "Abnormal Addons"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/alert_resource",
+          "query": {
+            "align": false,
+            "cardinality": "tags.addon_id",
+            "end": "now",
+            "filter_alert_type": "addon",
+            "filter_dice_org_id": "",
+            "filter_trigger": "alert",
+            "format": "chartv2",
+            "start": "before_24h"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 9,
+      "x": 0,
+      "y": 7,
+      "i": "d21",
+      "view": {
+        "title": "告警类别分析",
+        "i18n": {
+          "title": {
+            "en": "Alarm category analysis"
+          }
+        },
+        "description": "",
+        "chartType": "chart:pie",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/alert_resource",
+          "query": {
+            "align": false,
+            "count": "((return doc.containsKey('tags.alert_name')?doc['tags.alert_name'].value:doc['tags.alert_index'].value))",
+            "end": "now",
+            "filter_dice_org_id": "",
+            "filter_trigger": "alert",
+            "format": "chartv2",
+            "group": "((doc.containsKey('tags.alert_name')?doc['tags.alert_name'].value:doc['tags.alert_index'].value))",
+            "start": "before_24h"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 17,
+      "i": "d31",
+      "view": {
+        "title": "机器异常持续时间",
+        "i18n": {
+          "title": {
+            "en": "Machine abnormality duration"
+          }
+        },
+        "description": "",
+        "chartType": "chart:bar",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/alert_resource/histogram",
+          "query": {
+            "align": false,
+            "end": "now",
+            "filter_alert_type": "machine",
+            "filter_dice_org_id": "",
+            "limit": 10,
+            "points": "7",
+            "sort": "sum_fields.trigger_duration",
+            "start": "before_24h",
+            "sum": "fields.trigger_duration"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 31,
+      "i": "d41",
+      "view": {
+        "title": "机器平均负载 Top10",
+        "i18n": {
+          "title": {
+            "en": "Average machine load Top10"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/cluster_resource",
+          "query": {
+            "align": false,
+            "avg": "load5",
+            "end": "now",
+            "filter_org_name": "",
+            "format": "chartv2",
+            "group": "host_ip",
+            "last": "tags.host_ip",
+            "limit": 10,
+            "sort": "avg_load5",
+            "start": "before_24h"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 45,
+      "i": "d51",
+      "view": {
+        "title": "机器磁盘使用 Top10",
+        "i18n": {
+          "title": {
+            "en": "Machine disk usage Top10"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/cluster_resource",
+          "query": {
+            "align": false,
+            "end": "now",
+            "filter_org_name": "",
+            "format": "chartv2",
+            "group": "host_ip",
+            "last": "tags.host_ip",
+            "limit": 10,
+            "max": "disk_used",
+            "sort": "max_disk_used",
+            "start": "before_24h"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 59,
+      "i": "d61",
+      "view": {
+        "title": "服务OOM次数 Top10",
+        "i18n": {
+          "title": {
+            "en": "Top 10 service OOM times"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/service_resource",
+          "query": {
+            "align": false,
+            "cardinality": "tags.container_id",
+            "end": "now",
+            "field_eq_oomkilled": "b:true",
+            "filter_instance_type": "service",
+            "filter_org_name": "",
+            "format": "chartv2",
+            "group": "service_id",
+            "last": [
+              "tags.service_name",
+              "tags.project_name",
+              "tags.application_name"
+            ],
+            "limit": 10,
+            "sort": "cardinality_tags.container_id",
+            "start": "before_24h"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 73,
+      "i": "d71",
+      "view": {
+        "title": "应用JVM告警次数 TOP10",
+        "i18n": {
+          "title": {
+            "en": "Application JVM alarm times TOP10"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/alert_resource",
+          "query": {
+            "start": "before_24h",
+            "end": "now",
+            "format": "chartv2",
+            "filter_dice_org_id": "",
+            "filter_alert_type": "app_resource",
+            "match_alert_index": "*jvm*",
+            "align": false,
+            "group": "tags.application_id",
+            "count": [
+              "fields.count_sum",
+              "fields.time_sum",
+              "fields.usage_percent_avg"
+            ],
+            "last": [
+              "tags.application_name",
+              "tags.service_name",
+              "tags.project_name"
+            ],
+            "limit": 10,
+            "sort": "count_fields.usage_percent_avg"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 87,
+      "i": "d81",
+      "view": {
+        "title": "应用CPU告警次数 TOP10",
+        "i18n": {
+          "title": {
+            "en": "Application CPU alarm times TOP10"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/alert_resource",
+          "query": {
+            "start": "before_24h",
+            "end": "now",
+            "format": "chartv2",
+            "filter_dice_org_id": "",
+            "filter_alert_type": "app_resource",
+            "match_alert_index": "app_resource_container_cpu",
+            "align": false,
+            "group": "tags.application_id",
+            "count": "fields.allocation_value",
+            "last": [
+              "tags.application_name",
+              "tags.service_name",
+              "tags.project_name"
+            ],
+            "limit": 10,
+            "sort": "count_fields.allocation_value"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 101,
+      "i": "d91",
+      "view": {
+        "title": "应用错误次数 Top10",
+        "i18n": {
+          "title": {
+            "en": "Number of application errors Top10"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/error_resource",
+          "query": {
+            "align": false,
+            "end": "now",
+            "format": "chartv2",
+            "group": "(service_name,runtime_id)",
+            "last": [
+              "tags.service_name",
+              "tags.application_name",
+              "tags.project_name"
+            ],
+            "limit": 10,
+            "sort": "sum_count",
+            "start": "before_24h",
+            "sum": "count",
+            "filter_org_name": ""
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 115,
+      "i": "d101",
+      "view": {
+        "title": "应用慢事务次数 TOP10",
+        "i18n": {
+          "title": {
+            "en": "Application slow transaction times TOP10"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "static",
+        "staticData": null,
+        "api": {
+          "url": "/api/metrics/app_http_slow_resource",
+          "query": {
+            "start": "before_24h",
+            "end": "now",
+            "align": false,
+            "format": "chartv2",
+            "sort": "count_fields.elapsed_count",
+            "group": "target_application_id",
+            "limit": 10,
+            "count": "elapsed_count",
+            "last": [
+              "tags.target_application_name",
+              "tags.target_service_name",
+              "tags.target_project_name"
+            ],
+            "filter_org_name": ""
+          },
+          "body": {},
+          "method": "GET",
+          "header": {}
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 13,
+      "x": 0,
+      "y": 129,
+      "i": "d111",
+      "view": {
+        "title": "应用SQL慢查询次数 TOP10",
+        "i18n": {
+          "title": {
+            "en": "Application SQL slow query times Top10"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "static",
+        "staticData": null,
+        "config": {},
+        "api": {
+          "url": "/api/metrics/app_db_resource",
+          "query": {
+            "start": "before_24h",
+            "end": "now",
+            "format": "chartv2",
+            "filter_org_name": "",
+            "align": false,
+            "group": "tags.source_application_id",
+            "count": "elapsed_count",
+            "last": [
+              "tags.source_application_name",
+              "tags.source_service_name",
+              "tags.source_project_name"
+            ],
+            "limit": 10,
+            "sort": "count_elapsed_count"
+          },
+          "body": {},
+          "header": {}
+        }
+      }
+    }
+  ],
+  "version": "v2"
+}

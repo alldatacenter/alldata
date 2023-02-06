@@ -1,0 +1,44 @@
+scenario: issue-kanban
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - content
+    content:
+      - toolbar
+      - issueKanbanV2
+    toolbar:
+      left: issueFilter
+      right: issueOperations
+    issueOperations:
+      - issueExport
+      - issueImport
+      - issueRefresh
+    
+options:
+  syncIntervalSecond: 0
+
+components:
+  page:
+    type: Container
+  content:
+    type: Container
+  issueFilter:
+    type: ConfigurableFilter
+  toolbar:
+    type: LRContainer
+  issueOperations:
+    type: RowContainer
+  issueExport:
+    type: Custom
+  issueImport:
+    type: Custom
+  issueRefresh:
+    type: Custom
+  issueKanbanV2:
+    type: Kanban
+
+rendering:
+  issueFilter:
+    - name: issueKanbanV2

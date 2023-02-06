@@ -1,0 +1,218 @@
+syntax = "proto3";
+package erda.core.monitor.log.query;
+option go_package = "github.com/erda-project/erda-proto-go/core/monitor/log/query/pb";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/any.proto";
+
+service LogQueryService {
+  // +private
+  rpc GetLog (GetLogRequest) returns (GetLogResponse) {
+    option (google.api.http) = {
+      get: "/api/logs",
+    };
+  }
+
+  // for runtime log
+  rpc GetLogByRuntime (GetLogByRuntimeRequest) returns (GetLogByRuntimeResponse) {
+    option (google.api.http) = {
+      get: "/api/runtime/logs",
+    };
+  }
+
+  // for runtime log
+  rpc GetLogByRealtime (GetLogByRuntimeRequest) returns (GetLogByRuntimeResponse) {
+    option (google.api.http) = {
+      get: "/api/runtime/realtime/logs",
+    };
+  }
+
+  // for organization log
+  rpc GetLogByOrganization (GetLogByOrganizationRequest) returns (GetLogByOrganizationResponse) {
+    option (google.api.http) = {
+      get: "/api/orgCenter/logs",
+    };
+  }
+
+  rpc GetLogByExpression (GetLogByExpressionRequest) returns (GetLogByExpressionResponse) {
+    option (google.api.http) = {
+      get: "/api/logs/search"
+    };
+  }
+
+  rpc LogAggregation (LogAggregationRequest) returns (LogAggregationResponse) {
+    option (google.api.http) = {
+      get: "/api/logs/aggregation"
+    };
+  }
+
+  rpc ScanLogsByExpression (GetLogByExpressionRequest) returns (stream LogItem) {
+    option (google.api.http) = {
+      get: "/api/logs/download"
+    };
+  }
+
+}
+
+message LogItem {
+  string                                 id        = 1;
+  string                                 source    = 2;
+  string                                 stream    = 3;
+  string                                 timestamp = 5;
+  int64                                  unixNano  = 6;
+  int64                                  offset    = 7;
+  string                                 content   = 8;
+  string                                 level     = 9;
+  string                                 requestId = 10;
+  string                                 uniqId    = 11;
+  map<string, string>                    tags      = 12;
+  map<string, google.protobuf.ListValue> highlight = 13;
+}
+
+message GetLogRequest {
+  string id        = 1;
+  string source    = 2; // job or container
+  string stream    = 3;
+  string requestId = 4;
+  int64  start     = 5;
+  int64  end       = 6;
+  int64  count     = 7;
+  string pattern   = 8;
+  int64  offset    = 9;
+  bool   live      = 10;
+  bool   debug     = 11;
+}
+
+message GetLogByRuntimeRequest {
+  string id            = 1;
+  string source        = 2; // job or container
+  string stream        = 3;
+  string requestId     = 4;
+  int64  start         = 5;
+  int64  end           = 6;
+  int64  count         = 7;
+  string applicationId = 8;
+  string pattern       = 9;
+  int64  offset        = 10;
+  bool   live          = 11;
+  bool   debug         = 12;
+  string podName       = 13;
+  string podNamespace  = 14;
+  string containerName = 15;
+  string clusterName   = 16;
+  bool   isFirstQuery  = 17;
+}
+
+message GetLogByOrganizationRequest {
+  string id          = 1;
+  string source      = 2; // job or container
+  string stream      = 3;
+  string requestId   = 4;
+  int64  start       = 5;
+  int64  end         = 6;
+  int64  count       = 7;
+  string clusterName = 8;
+  string pattern     = 9;
+  int64  offset      = 10;
+  bool   live        = 11;
+  bool   debug       = 12;
+}
+
+enum IterateStyle {
+  Default     = 0;
+  SearchAfter = 1;
+  Scroll      = 2;
+}
+
+message QueryMeta {
+  string          orgName                 = 1;
+  repeated string mspEnvIds               = 2;
+  bool            ignoreMaxTimeRangeLimit = 3;
+  bool            highlight               = 4;
+  int32           preferredBufferSize     = 5;
+  IterateStyle    preferredIterateStyle   = 6;
+  bool            skipTotalStat           = 7;
+}
+
+message LogUniqueID {
+  int64  unixNano = 1;
+  string id       = 2;
+  int64  offset   = 3;
+}
+
+message ExtraFilter {
+  LogUniqueID after          = 1;
+  int64       positionOffset = 2;
+}
+
+message GetLogByExpressionRequest {
+  int64       start           = 1;
+  int64       end             = 2;
+  string      queryExpression = 3;
+  QueryMeta   queryMeta       = 4;
+  ExtraFilter extraFilter     = 5;
+  int64       count           = 6;
+  bool        debug           = 7;
+  bool        live            = 8;
+}
+
+enum AggregationType {
+  Unknown   = 0;
+  Histogram = 1;
+  Terms     = 2;
+}
+
+message HistogramAggOptions {
+  int64 preferredPoints = 1;
+  int64 minimumInterval = 2;
+  int64 fixedInterval   = 3;
+}
+
+message TermsAggOptions {
+  int64                 size    = 1;
+  google.protobuf.Value missing = 2;
+}
+
+message AggregationDescriptor {
+  string              name    = 1;
+  string              field   = 2;
+  AggregationType     type    = 3;
+  google.protobuf.Any options = 4;
+}
+
+message LogAggregationRequest {
+  GetLogByExpressionRequest      query        = 1;
+  repeated AggregationDescriptor aggregations = 2;
+}
+
+message AggregationBucket {
+  google.protobuf.Value key   = 1;
+  int64                 count = 2;
+}
+
+message AggregationResult {
+  repeated AggregationBucket buckets = 1;
+}
+
+message LogAggregationResponse {
+  int64                          total        = 1;
+  map<string, AggregationResult> aggregations = 2;
+}
+
+message GetLogResponse {
+  repeated LogItem lines = 1;
+}
+
+message GetLogByRuntimeResponse {
+  repeated LogItem lines      = 1;
+  bool             isFallback = 2;
+}
+
+message GetLogByOrganizationResponse {
+  repeated LogItem lines = 1;
+}
+
+message GetLogByExpressionResponse {
+  int64            total = 1;
+  repeated LogItem lines = 2;
+}

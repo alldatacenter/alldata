@@ -1,0 +1,220 @@
+{
+  "id": "service_analysis-instants",
+  "name": "service_analysis-instants",
+  "desc": "",
+  "scope": "micro_service",
+  "scopeId": "global",
+  "viewConfig": [
+    {
+      "w": 24,
+      "h": 4,
+      "x": 0,
+      "y": 0,
+      "i": "view-micro_service_overview",
+      "view": {
+        "title": "服务概览",
+        "i18n": {
+          "title": {
+            "en": "Service Overview",
+            "zh": "服务概览"
+          }
+        },
+        "description": "",
+        "chartType": "card",
+        "dataSourceType": "api",
+        "staticData": {
+        },
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false
+          },
+          "dataSourceConfig": {
+            "valueDimensions": [
+              {
+                "alias": "运行中实例",
+                "i18n": {
+                  "alias": {
+                    "en": "Running Instance",
+                    "zh": "运行中实例"
+                  }
+                },
+                "key": "running_instances",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "已停止实例",
+                "i18n": {
+                  "alias": {
+                    "en": "Stopped Instance",
+                    "zh": "已停止实例"
+                  }
+                },
+                "key": "stopped_instances",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "错误请求",
+                "i18n": {
+                  "alias": {
+                    "en": "Request Error",
+                    "zh": "错误请求"
+                  }
+                },
+                "key": "service_error_req_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "服务异常",
+                "i18n": {
+                  "alias": {
+                    "en": "Service Exception",
+                    "zh": "服务异常"
+                  }
+                },
+                "key": "service_exception_count",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "告警次数",
+                "i18n": {
+                  "alias": {
+                    "en": "Alert Count",
+                    "zh": "告警次数"
+                  }
+                },
+                "key": "alert_count",
+                "resultType": "number",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/apm/topology/service/overview",
+          "query": {
+            "scope": "micro_service",
+            "terminusKey": "{{terminusKey}}",
+            "start": "{{startTime}}",
+            "end": "{{endTime}}",
+            "serviceName": "{{serviceName}}",
+            "serviceId": "{{serviceId}}"
+          },
+          "method": "get"
+        }
+      }
+    },
+    {
+      "w": 24,
+      "h": 12,
+      "x": 0,
+      "y": 0,
+      "i": "view-yJsgVtEN",
+      "view": {
+        "title": "服务实例",
+        "i18n": {
+          "title": {
+            "en": "Service Instance",
+            "zh": "服务实例"
+          }
+        },
+        "description": "",
+        "chartType": "table",
+        "dataSourceType": "api",
+        "staticData": {
+        },
+        "config": {
+          "optionProps": {
+            "isMoreThanOneDay": false,
+            "moreThanOneDayFormat": "YYYY/MM/DD",
+            "noAreaColor": true
+          },
+          "dataSourceConfig": {
+            "activedMetricGroups": [
+              "application_service_node"
+            ],
+            "limit": 50,
+            "valueDimensions": [
+              {
+                "alias": "实例 ID",
+                "i18n": {
+                  "alias": {
+                    "en": "Instance ID",
+                    "zh": "实例 ID"
+                  }
+                },
+                "key": "serviceInstanceId",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "运行时版本",
+                "i18n": {
+                  "alias": {
+                    "en": "Platform Version",
+                    "zh": "运行时版本"
+                  }
+                },
+                "key": "platformVersion",
+                "resultType": "string",
+                "type": "field"
+              },
+              {
+                "alias": "启动时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Launch Time",
+                    "zh": "启动时间"
+                  }
+                },
+                "key": "startTime",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "最后心跳时间",
+                "i18n": {
+                  "alias": {
+                    "en": "Latest Heartbeat Time",
+                    "zh": "最后心跳时间"
+                  }
+                },
+                "key": "lastHeartbeatTime",
+                "resultType": "number",
+                "type": "field"
+              },
+              {
+                "alias": "状态",
+                "i18n": {
+                  "alias": {
+                    "en": "Status",
+                    "zh": "状态"
+                  }
+                },
+                "key": "instanceState",
+                "resultType": "string",
+                "type": "field"
+              }
+            ]
+          }
+        },
+        "api": {
+          "url": "/api/apm/topology/service/instances",
+          "query": {
+            "terminusKey": "{{terminusKey}}",
+            "serviceId": "{{serviceId}}",
+            "serviceName": "{{serviceName}}",
+            "start": "{{startTime}}",
+            "end": "{{endTime}}"
+          },
+          "method": "get"
+        },
+        "controls": null
+      }
+    }
+  ],
+  "version": "v2"
+}

@@ -1,0 +1,81 @@
+.settings-main {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+
+  .settings-menu {
+    width: 214px;
+    min-height: 100%;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 245px;
+      width: 1px;
+      height: 100%;
+      background: $color-border;
+    }
+
+    .group-tabs {
+      margin-bottom: $p32;
+
+      .group-title {
+        height: 40px;
+        margin-right: $p16;
+        margin-bottom: $p8;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 40px;
+        border-bottom: 1px solid $color-dark-1;
+      }
+    }
+
+    i {
+      font-size: 16px;
+    }
+
+    li {
+      position: relative;
+      height: 40px;
+      margin: 0;
+      padding: 0 16px;
+      color: $color-dark-6;
+      line-height: 40px;
+
+      &:hover,
+      &.active {
+        @include hover();
+        border-radius: 3px 0 0 3px;
+      }
+
+      // remove active bar for temp
+      // &.active {
+      //   &::after {
+      //     position: absolute;
+      //     top: 0;
+      //     right: 0;
+      //     width: 2px;
+      //     height: 40px;
+      //     background: $color-primary;
+      //     content: "";
+      //   }
+      // }
+    }
+  }
+
+  .settings-content {
+    flex: 1;
+    padding-left: $b32;
+    overflow: auto;
+  }
+}
+
+@media screen and (max-width: $main-padding-break) {
+  .settings-main {
+    left: 0;
+  }
+}

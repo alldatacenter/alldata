@@ -1,0 +1,26 @@
+.erda-gantt-tooltip-default-container {
+  background: $white;
+  padding: 12px;
+  box-shadow: 0 3px 6px $color-dark-1, 0 3px 6px $color-dark-2;
+}
+
+.erda-gantt-tooltip-default-container-paragraph {
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: $gray;
+}
+
+.erda-gantt-tooltip-details-container {
+  position: absolute;
+  display: flex;
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.erda-gantt-tooltip-details-container-hidden {
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  pointer-events: none;
+}

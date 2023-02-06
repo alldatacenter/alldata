@@ -1,0 +1,9 @@
+.ant-form-item-control {
+  &.has-error {
+    .dice-form-input-array {
+      .ant-input {
+        border-color: rgb(217, 217, 217);
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package erda.common;
+
+option go_package = "github.com/erda-project/erda-proto-go/common/pb";
+
+enum Language {
+  unknown = 0;
+  java    = 1;
+  golang  = 2;
+  python  = 3;
+  c       = 4;
+  cpp     = 5;
+  nodejs  = 6;
+  php     = 7;
+  dotnet  = 8;
+  csharp  = 9;
+}

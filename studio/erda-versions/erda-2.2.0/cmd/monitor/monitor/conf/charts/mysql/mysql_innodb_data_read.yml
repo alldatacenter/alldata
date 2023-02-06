@@ -1,0 +1,16 @@
+- mysql_innodb_data_read:
+    title: "INNODB读速度"
+    metric_names: "mysql"
+    type: "mysql"
+    order: 14
+    defines:
+      diffps.innodb_data_read:
+        label: "读速度"
+        unit: "B/s"
+        unit_type: "TRAFFIC"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "server"
+

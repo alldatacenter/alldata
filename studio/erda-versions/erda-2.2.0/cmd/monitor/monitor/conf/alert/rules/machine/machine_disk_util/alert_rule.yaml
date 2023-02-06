@@ -1,0 +1,9 @@
+id: machine_disk_util
+name: 机器磁盘IO
+alert_scope: org
+attributes:
+  alert_group: '{{cluster_name}}-{{host_ip}}'
+  display_url_id: machine_disk_io
+  level: Critical
+  recover: "true"
+  tickets_metric_key: '{{host_ip}}'

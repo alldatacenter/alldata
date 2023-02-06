@@ -1,0 +1,23 @@
+.resource-input-group-title {
+  display: block;
+  color: $color-dark-8;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0;
+}
+
+.resource-input-group-label {
+  display: block;
+  width: auto;
+  margin-right: 8px;
+}
+
+.resource-input-group-input {
+  display: block;
+  width: 100%;
+}
+
+.resource-error {
+  color: $red;
+}

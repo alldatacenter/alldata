@@ -1,0 +1,477 @@
+syntax = "proto3";
+package erda.msp.apm.alert;
+option go_package = "github.com/erda-project/erda-proto-go/msp/apm/alert/pb";
+
+import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "core/monitor/alert/alert.proto";
+import "common/openapi.proto";
+
+service AlertService {
+  option (erda.common.openapi_service) = {
+    service: "msp",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc QueryAlertRule (QueryAlertRuleRequest) returns (QueryAlertRuleResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/alert-rules",
+    };
+  }
+  rpc QueryAlert (QueryAlertRequest) returns (QueryAlertResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/alerts",
+    };
+  }
+  rpc GetAlert (GetAlertRequest) returns (GetAlertResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/alerts/{id}"
+    };
+  }
+  rpc CreateAlert (CreateAlertRequest) returns (CreateAlertResponse) {
+    option (google.api.http) = {
+      post: "/api/msp/apm/{tenantGroup}/alerts",
+    };
+  }
+  rpc UpdateAlert (UpdateAlertRequest) returns (UpdateAlertResponse) {
+    option (google.api.http) = {
+      put: "/api/msp/apm/{tenantGroup}/alerts/{id}",
+    };
+  }
+  rpc UpdateAlertEnable (UpdateAlertEnableRequest) returns (UpdateAlertEnableResponse) {
+    option (google.api.http) = {
+      put: "/api/msp/apm/{tenantGroup}/alerts/{id}/switch",
+    };
+  }
+  rpc DeleteAlert (DeleteAlertRequest) returns (DeleteAlertResponse) {
+    option (google.api.http) = {
+      delete: "/api/msp/apm/{tenantGroup}/alerts/{id}",
+    };
+  }
+  rpc QueryCustomizeMetric (QueryCustomizeMetricRequest) returns (QueryCustomizeMetricResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/custom-alerts/metrics",
+    };
+  }
+  rpc QueryCustomizeNotifyTarget (QueryCustomizeNotifyTargetRequest) returns (QueryCustomizeNotifyTargetResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/custom-alerts/notifies/targets",
+    };
+  }
+  rpc QueryCustomizeAlerts (QueryCustomizeAlertsRequest) returns (QueryCustomizeAlertsResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/custom-alerts",
+    };
+  }
+  rpc GetCustomizeAlert (GetCustomizeAlertRequest) returns (GetCustomizeAlertResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/custom-alerts/{id}"
+    };
+  }
+  rpc CreateCustomizeAlert (CreateCustomizeAlertRequest) returns (CreateCustomizeAlertResponse) {
+    option (google.api.http) = {
+      post: "/api/msp/apm/{tenantGroup}/custom-alerts",
+    };
+  }
+  rpc UpdateCustomizeAlert (UpdateCustomizeAlertRequest) returns (UpdateCustomizeAlertResponse) {
+    option (google.api.http) = {
+      put: "/api/msp/apm/{tenantGroup}/custom-alerts/{id}",
+    };
+  }
+  rpc UpdateCustomizeAlertEnable (UpdateCustomizeAlertEnableRequest) returns (UpdateCustomizeAlertEnableResponse) {
+    option (google.api.http) = {
+      put: "/api/msp/apm/{tenantGroup}/custom-alerts/{id}/switch",
+    };
+  }
+  rpc DeleteCustomizeAlert (DeleteCustomizeAlertRequest) returns (DeleteCustomizeAlertResponse) {
+    option (google.api.http) = {
+      delete: "/api/msp/apm/{tenantGroup}/custom-alerts/{id}",
+    };
+  }
+  rpc GetAlertRecordAttrs (GetAlertRecordAttrsRequest) returns (GetAlertRecordAttrsResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/alert-record-attrs",
+    };
+  }
+  rpc GetAlertRecords (GetAlertRecordsRequest) returns (GetAlertRecordsResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/alert-records",
+    };
+  }
+  rpc GetAlertRecord (GetAlertRecordRequest) returns (GetAlertRecordResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/alert-records/{groupId}",
+    };
+  }
+  rpc GetAlertHistories (GetAlertHistoriesRequest) returns (GetAlertHistoriesResponse) {
+    option (google.api.http) = {
+      get: "/api/msp/apm/{tenantGroup}/alert-records/{groupId}/histories",
+    };
+  }
+  rpc CreateAlertRecordIssue (CreateAlertRecordIssueRequest) returns (CreateAlertRecordIssueResponse) {
+    option (google.api.http) = {
+      post: "/api/msp/apm/{tenantGroup}/alert-records/{groupId}/issues",
+    };
+  }
+  rpc UpdateAlertRecordIssue (UpdateAlertRecordIssueRequest) returns (UpdateAlertRecordIssueResponse) {
+    option (google.api.http) = {
+      put: "/api/msp/apm/{tenantGroup}/alert-records/{groupId}/issues"
+    };
+  }
+  rpc DashboardPreview (DashboardPreviewRequest) returns (DashboardPreviewResponse) {
+    option (google.api.http) = {
+      post: "/api/msp/apm/{tenantGroup}/alert-records/custom-alerts/dash-preview/query"
+    };
+  }
+  rpc GetAlertConditions (GetAlertConditionsRequest) returns (GetAlertConditionsResponse) {
+    option (google.api.http)     = {
+      get: "/api/msp/apm/conditions"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/msp/apm/conditions"
+    };
+  }
+  rpc GetAlertConditionsValue (GetAlertConditionsValueRequest) returns (GetAlertConditionsValueResponse) {
+    option (google.api.http)     = {
+      post: "/api/msp/apm/conditions/value"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/msp/apm/conditions/value"
+    };
+  }
+}
+
+message QueryAlertRuleRequest {
+  string tenantGroup = 1;
+}
+
+message QueryAlertRuleResponse {
+  erda.core.monitor.alert.AlertTypeRuleResp data = 1;
+}
+
+message QueryAlertRequest {
+  string tenantGroup = 1;
+  int64  pageNo      = 2 [(validate.rules).int64.gt = 0];
+  int64  pageSize    = 3 [(validate.rules).int64 = {gt: 0, lt: 101}];
+  string name        = 4;
+}
+
+message QueryAlertResponse {
+  QueryAlertData  data    = 1;
+  repeated string userIDs = 2;
+}
+
+message QueryAlertData {
+  repeated ApmAlertData list  = 1;
+  int64                 total = 2;
+}
+
+message GetAlertRequest {
+  string tenantGroup = 1;
+  int64  id          = 2 [(validate.rules).int64.gt = 0];
+}
+
+message GetAlertResponse {
+  ApmAlertData data = 1;
+}
+
+message ApmAlertData {
+  int64                                             id               = 1;
+  string                                            name             = 2;
+  string                                            alertScope       = 3;
+  string                                            alertScopeId     = 4;
+  bool                                              enable           = 5;
+  repeated erda.core.monitor.alert.AlertExpression  rules            = 6;
+  repeated erda.core.monitor.alert.AlertNotify      notifies         = 7;
+  repeated string                                   appIds           = 8;
+  string                                            domain           = 9;
+  map<string, google.protobuf.Value>                attributes       = 10;
+  int64                                             createTime       = 11;
+  int64                                             updateTime       = 12;
+  repeated erda.core.monitor.alert.TriggerCondition triggerCondition = 13;
+  string                                            creator          = 14;
+  int64                                             ruleCount        = 15;
+}
+
+message CreateAlertRequest {
+  string                                            tenantGroup      = 1;
+  string                                            name             = 2;
+  repeated string                                   appIds           = 3;
+  repeated erda.core.monitor.alert.AlertExpression  rules            = 4;
+  repeated erda.core.monitor.alert.AlertNotify      notifies         = 5;
+  string                                            domain           = 6;
+  int64                                             createTime       = 7;
+  int64                                             updateTime       = 8;
+  string                                            alertScope       = 9;
+  string                                            alertScopeId     = 10;
+  bool                                              enable           = 11;
+  map<string, google.protobuf.Value>                attributes       = 12;
+  repeated erda.core.monitor.alert.TriggerCondition triggerCondition = 13;
+}
+
+message CreateAlertResponse {
+  CreateAlertData data = 1;
+}
+
+message CreateAlertData {
+  uint64 id        = 1;
+  uint64 projectId = 2;
+}
+
+message UpdateAlertRequest {
+  string                                            tenantGroup      = 1;
+  uint64                                            id               = 2;
+  string                                            name             = 3;
+  string                                            alertScope       = 4;
+  string                                            alertScopeId     = 5;
+  bool                                              enable           = 6;
+  repeated erda.core.monitor.alert.AlertExpression  rules            = 7;
+  repeated erda.core.monitor.alert.AlertNotify      notifies         = 8;
+  map<string, google.protobuf.Value>                attributes       = 9;
+  repeated string                                   appIds           = 10;
+  string                                            domain           = 11;
+  int64                                             createTime       = 12;
+  int64                                             updateTime       = 13;
+  repeated erda.core.monitor.alert.TriggerCondition triggerCondition = 14;
+}
+
+message UpdateAlertResponse {
+  uint64 data = 1;
+}
+
+message UpdateAlertEnableRequest {
+  int64  id          = 1 [(validate.rules).int64.gt = 0];
+  string tenantGroup = 2;
+  bool   enable      = 3;
+}
+
+message UpdateAlertEnableResponse {
+  uint64 data = 1;
+}
+
+message DeleteAlertRequest {
+  int64  id          = 1 [(validate.rules).int64.gt = 0];
+  string tenantGroup = 2;
+}
+
+message DeleteAlertResponse {
+  DeleteAlertData data = 1;
+}
+
+message DeleteAlertData {
+  string Name      = 1;
+  uint64 projectId = 2;
+}
+
+message QueryCustomizeMetricRequest {
+  string tenantGroup = 1;
+}
+
+message QueryCustomizeMetricResponse {
+  erda.core.monitor.alert.CustomizeMetrics data = 1;
+}
+
+
+message QueryCustomizeNotifyTargetRequest {
+  string tenantGroup = 1;
+}
+
+message QueryCustomizeNotifyTargetResponse {
+  erda.core.monitor.alert.QueryCustomizeNotifyTargetData data = 1;
+}
+
+message QueryCustomizeAlertsRequest {
+  string tenantGroup = 1;
+  int64  pageNo      = 2 [(validate.rules).int64.gt = 0];
+  int64  pageSize    = 3 [(validate.rules).int64 = {gt: 0, lt: 101}];
+  string name        = 4;
+}
+
+message QueryCustomizeAlertsResponse {
+  erda.core.monitor.alert.QueryCustomizeAlertData data    = 1;
+  repeated string                                 userIDs = 2;
+}
+
+message GetCustomizeAlertRequest {
+  uint64 id          = 1 [(validate.rules).uint64.gt = 0];
+  string tenantGroup = 2;
+}
+
+message GetCustomizeAlertResponse {
+  erda.core.monitor.alert.CustomizeAlertDetail data = 1;
+}
+
+message CreateCustomizeAlertRequest {
+  string                                                         tenantGroup  = 1;
+  uint64                                                         id           = 2;
+  string                                                         clusterName  = 3;
+  string                                                         name         = 4;
+  string                                                         alertType    = 5;
+  string                                                         alertScope   = 6;
+  string                                                         alertScopeId = 7;
+  bool                                                           enable       = 8;
+  map<string, google.protobuf.Value>                             attributes   = 9;
+  repeated erda.core.monitor.alert.CustomizeAlertRule            rules        = 10;
+  repeated erda.core.monitor.alert.CustomizeAlertNotifyTemplates notifies     = 11;
+  int64                                                          createTime   = 12;
+  int64                                                          updateTime   = 13;
+}
+
+message CreateCustomizeAlertResponse {
+  CreateCustomizeAlertData data = 1;
+}
+
+message CreateCustomizeAlertData {
+  uint64 id        = 1;
+  uint64 projectId = 2;
+}
+
+message UpdateCustomizeAlertRequest {
+  uint64                                                         id           = 1 [(validate.rules).uint64.gt = 0];
+  string                                                         tenantGroup  = 2;
+  string                                                         clusterName  = 3;
+  string                                                         name         = 4;
+  string                                                         alertType    = 5;
+  string                                                         alertScope   = 6;
+  string                                                         alertScopeId = 7;
+  bool                                                           enable       = 8;
+  map<string, google.protobuf.Value>                             attributes   = 9;
+  repeated erda.core.monitor.alert.CustomizeAlertRule            rules        = 10;
+  repeated erda.core.monitor.alert.CustomizeAlertNotifyTemplates notifies     = 11;
+  int64                                                          createTime   = 12;
+  int64                                                          updateTime   = 13;
+}
+
+message UpdateCustomizeAlertResponse {
+  uint64 data = 1;
+}
+
+message UpdateCustomizeAlertEnableRequest {
+  uint64 id          = 1 [(validate.rules).uint64.gt = 0];
+  string tenantGroup = 2;
+  bool   enable      = 3;
+}
+
+message UpdateCustomizeAlertEnableResponse {
+}
+
+message DeleteCustomizeAlertRequest {
+  uint64 id          = 1 [(validate.rules).uint64.gt = 0];
+  string tenantGroup = 2;
+}
+
+message DeleteCustomizeAlertResponse {
+  DeleteCustomizeAlertData data = 1;
+}
+
+message DeleteCustomizeAlertData {
+  string name      = 1;
+  uint64 projectId = 2;
+}
+
+message GetAlertRecordAttrsRequest {
+  string tenantGroup = 1;
+}
+
+message GetAlertRecordAttrsResponse {
+  erda.core.monitor.alert.AlertRecordAttr data = 1;
+}
+
+message GetAlertRecordsRequest {
+  string          tenantGroup = 1;
+  repeated string alertGroup  = 2;
+  repeated string alertState  = 3;
+  repeated string alertType   = 4;
+  repeated string handleState = 5;
+  repeated string handlerId   = 6;
+  int64           pageNo      = 7;
+  int64           pageSize    = 8;
+}
+
+message GetAlertRecordsResponse {
+  GetAlertRecordsData data = 1;
+}
+
+message GetAlertRecordsData {
+  repeated erda.core.monitor.alert.AlertRecord list  = 1;
+  int64                                        total = 2;
+}
+
+message GetAlertRecordRequest {
+  string groupId     = 1;
+  string tenantGroup = 2;
+}
+
+message GetAlertRecordResponse {
+  erda.core.monitor.alert.AlertRecord data = 1;
+}
+
+message GetAlertHistoriesRequest {
+  string groupId     = 1;
+  string tenantGroup = 2;
+  int64  start       = 3;
+  int64  end         = 4;
+  int64  limit       = 5;
+}
+
+message GetAlertHistoriesResponse {
+  repeated erda.core.monitor.alert.AlertHistory data = 1;
+}
+
+message CreateAlertRecordIssueRequest {
+  string                             groupId     = 1;
+  string                             tenantGroup = 2;
+  map<string, google.protobuf.Value> body        = 3;
+}
+
+message CreateAlertRecordIssueResponse {
+}
+
+message UpdateAlertRecordIssueRequest {
+  string                             groupId     = 1;
+  string                             tenantGroup = 2;
+  map<string, google.protobuf.Value> body        = 3;
+}
+
+message UpdateAlertRecordIssueResponse {
+}
+
+message DashboardPreviewRequest {
+  string                                                         tenantGroup  = 1;
+  uint64                                                         id           = 2;
+  string                                                         clusterName  = 3;
+  string                                                         name         = 4;
+  string                                                         alertType    = 5;
+  string                                                         alertScope   = 6;
+  string                                                         alertScopeId = 7;
+  bool                                                           enable       = 8;
+  map<string, google.protobuf.Value>                             attributes   = 9;
+  repeated erda.core.monitor.alert.CustomizeAlertRule            rules        = 10;
+  repeated erda.core.monitor.alert.CustomizeAlertNotifyTemplates notifies     = 11;
+  int64                                                          createTime   = 12;
+  int64                                                          updateTime   = 13;
+}
+
+message DashboardPreviewResponse {
+  erda.core.monitor.alert.View data = 1;
+}
+
+message GetAlertConditionsRequest {
+  string scopeType = 1;
+}
+
+message GetAlertConditionsResponse {
+  repeated erda.core.monitor.alert.Conditions data = 1 [json_name = "conditions"];
+}
+
+message GetAlertConditionsValueRequest {
+  repeated erda.core.monitor.alert.ConditionsValueRequest conditions = 1;
+}
+
+message GetAlertConditionsValueResponse {
+  repeated erda.core.monitor.alert.AlertConditionsValue data = 1;
+}

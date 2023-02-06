@@ -1,0 +1,76 @@
+.topn-list {
+  min-height: 250px;
+  max-height: 500px;
+  overflow: auto;
+
+  .sort-list-item {
+    position: relative;
+    display: flex;
+    height: $base-line-height;
+    margin-top: 10px;
+    color: $color-text-sub;
+    line-height: $base-line-height;
+    background-color: #eceef6;
+    border-radius: 4px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:hover {
+      background-color: #e1e7ff;
+    }
+
+    &.pointer {
+      cursor: pointer;
+    }
+
+    > span {
+      display: inline-block;
+      line-height: $base-line-height;
+    }
+
+    .name {
+      flex: 1;
+      margin-right: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-indent: 1em;
+      text-overflow: ellipsis;
+    }
+
+    .value {
+      float: right;
+      margin-right: 26px;
+    }
+
+    .close-icon {
+      position: absolute;
+      right: 0;
+      font-size: 18px;
+      line-height: $base-line-height;
+    }
+
+    &.active {
+      background-color: $color-primary;
+
+      .name,
+      .value,
+      i {
+        color: $white;
+      }
+    }
+  }
+
+  .empty {
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.topn-list-more {
+  display: block;
+  margin-top: 10px;
+  line-height: 25px;
+  text-align: center;
+}

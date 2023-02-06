@@ -1,0 +1,43 @@
+.ops-bar-line {
+  position: relative;
+  margin: 0 -32px 15px;
+  padding: 0 32px;
+  overflow: hidden;
+  border-bottom: 1px solid $color-border;
+
+  .ant-form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ant-form-item {
+    display: inline-block;
+    width: 267px;
+    min-width: 267px;
+    margin-right: 20px;
+
+    .ant-form-item-label {
+      width: 100%;
+      text-align: left;
+    }
+
+    .ant-form-item-control-wrapper {
+      width: 100%;
+    }
+
+    &:last-child {
+      display: flex;
+      flex: 1;
+      text-align: right;
+    }
+  }
+
+  .ops-bar-item {
+    display: block;
+    width: 267px;
+  }
+
+  .ops-bar-btn {
+    margin: 36px 0 15px 8px;
+  }
+}

@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package erda.dop.contribution;
+option go_package = "github.com/erda-project/erda-proto-go/dop/contribution/pb";
+import "google/api/annotations.proto";
+import "common/openapi.proto";
+
+service ContributionService {
+  option(erda.common.openapi_service) = {
+    service : "dop",
+    auth : {
+      check_login : true,
+      check_token : true,
+    }
+  };
+
+  rpc GetPersonalContribution(GetPersonalContributionRequest)
+      returns(GetPersonalContributionResponse) {
+    option(google.api.http) = {
+      get : "/api/personal-contribution/{orgID}/{userID}",
+    };
+    option(erda.common.openapi) = {
+      path : "/api/personal-contribution/{orgID}/{userID}",
+    };
+  }
+
+  rpc GetActiveRank(GetActiveRankRequest)
+      returns(GetActiveRankRequestResponse) {
+    option(google.api.http) = {
+      get : "/api/active-rank/{orgID}",
+    };
+    option(erda.common.openapi) = {
+      path : "/api/active-rank/{orgID}",
+    };
+  }
+}
+
+message PersonalContribution {
+  Contribution data = 1;
+  Indicator indicators = 2;
+}
+
+message Contribution {
+  uint64 events = 1;
+  uint64 commits = 2;
+  uint64 cases = 3;
+}
+
+message Indicator {
+  repeated IndicatorData data = 1;
+  repeated uint64 max = 2;
+  repeated string title = 3;
+}
+
+message IndicatorData { repeated uint64 data = 1; }
+
+message UserRank {
+  string id = 1;
+  uint64 rank = 2;
+  uint64 value = 3;
+}
+
+message GetPersonalContributionRequest {
+  string orgID = 1;
+  string userID = 2;
+}
+
+message GetPersonalContributionResponse { PersonalContribution data = 1; }
+
+message GetActiveRankRequest { string orgID = 1; }
+
+message GetActiveRankRequestResponse {
+  repeated UserRank data = 1;
+  repeated string userIDs = 2;
+}

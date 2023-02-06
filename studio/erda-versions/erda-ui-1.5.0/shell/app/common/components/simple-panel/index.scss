@@ -1,0 +1,28 @@
+.ec-simple-panel {
+  .ec-simple-panel-title {
+    display: block;
+    padding: 11px 0;
+    color: $color-text;
+    font-size: 18px;
+  }
+
+  .ec-simple-panel-body {
+    margin-bottom: $p20;
+    background-color: $white;
+    border-radius: $radius;
+  }
+
+  &.block {
+    padding: 4px 20px 16px;
+    background: $white;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.06), 0 2px 4px -3px rgba(0, 0, 0, 0.06), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+
+    .ec-simple-panel-title {
+      height: 48px;
+      padding: unset;
+      font-weight: bold;
+      line-height: 48px;
+    }
+  }
+}

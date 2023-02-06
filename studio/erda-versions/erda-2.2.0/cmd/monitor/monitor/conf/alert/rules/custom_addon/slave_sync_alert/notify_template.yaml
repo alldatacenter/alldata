@@ -1,0 +1,49 @@
+- name: "MySQL SLAVE SYNC ALERT"
+  trigger: "alert"
+  target: "dingding"
+  language: "zh-CN"
+  formats:
+    usage_percent_avg: "percent:1"
+    limit_value: "fraction:1"
+  title: |
+    【MySQL SLAVE 同步异常】
+  template: |
+    【MySQL SLAVE 同步异常】
+
+    集群: {{cluster_name}}
+
+    mysql: {{server_id}}
+
+    Slave_IO_Running: {{slave_slave_io_running_value}}
+
+    Slave_SQL_Running: {{slave_slave_sql_running_value}}
+
+    组织名称: {{org_name}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "MySQL SLAVE SYNC RECOVER"
+  trigger: "recover"
+  target: "dingding"
+  language: "zh-CN"
+  formats:
+    usage_percent_avg: "percent:1"
+    limit_value: "fraction:1"
+  title: |
+    【MySQL SLAVE 同步异常恢复】
+  template: |
+    【MySQL SLAVE 同步异常恢复】
+
+    集群: {{cluster_name}}
+
+    mysql: {{server_id}}
+
+    组织名称: {{org_name}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})

@@ -1,0 +1,274 @@
+groups:
+    - id: application_http
+      name: HTTP Request
+      children:
+        - id: application_http_request
+          name: All HTTP Request
+        - id: application_http_error
+          name: Error HTTP Request
+        - id: application_http_slow
+          name: Slow HTTP Request
+    - id: application_rpc
+      name: RPC Request
+      children:
+        - id: application_rpc_request
+          name: All RPC Request
+        - id: application_rpc_error
+          name: Error RPC Request
+        - id: application_rpc_slow
+          name: Slow RPC Request
+    - id: application_db
+      name: Database Request
+      children:
+        - id: application_db_request
+          name: All Database Request
+        - id: application_db_error
+          name: Error Database Request
+        - id: application_db_slow
+          name: Slow Database Request
+    - id: application_cache
+      name: Cache Request
+      children:
+        - id: application_cache_request
+          name: All Cache Request
+        - id: application_cache_error
+          name: Error Cache Request
+        - id: application_cache_slow
+          name: Slow Cache Request
+    - id: application_mq
+      name: Message Queue Request
+      children:
+        - id: application_mq_request
+          name: All Message Queue Request
+        - id: application_mq_error
+          name: Error Message Queue Request
+        - id: application_mq_slow
+          name: Slow Message Queue Request
+    - id: application_jvm
+      name: Java
+      children:
+        - id: application_jvm_memory
+          name: Memory
+          children:
+            - id: application_jvm_memory_heap
+              name: Heap Memory
+            - id: application_jvm_memory_non_heap
+              name: Non Heap Memory
+            - id: application_jvm_memory_ps_eden_space
+              name: PS Eden Space
+            - id: application_jvm_memory_ps_old_gen
+              name: PS Old Gen
+            - id: application_jvm_memory_ps_surv_space
+              name: PS Survivor Space
+            - id: application_jvm_memory_other
+              name: Other Memory
+        - id: jvm_process_cpu_usage
+          name: Process CPU Usage
+        - id: application_jvm_gc
+          name: GC
+        - id: application_jvm_thread
+          name: Thread
+        - id: application_jvm_class_loader
+          name: Class Loader
+        - id: apm_component_tomcat
+          name: Tomcat
+          children:
+            - id: apm_component_tomcat_thread_pool_max
+              name: ThreadPool Max Threads
+            - id: apm_component_tomcat_thread_pool_busy
+              name: ThreadPool Busy Threads
+            - id: apm_component_tomcat_thread_pool_connection_count
+              name: ThreadPool Connection Count
+            - id: apm_component_tomcat_thread_pool_max_connections
+              name: ThreadPool Max Connection
+            - id: apm_component_tomcat_thread_pool_accept_count
+              name: ThreadPool Accept Count
+            - id: apm_component_tomcat_thread_pool_keep_alive_count
+              name: ThreadPool KeepAlive Count
+            - id: apm_component_tomcat_other
+              name: Other Tomcat Metrics
+    - id: application_nodejs
+      name: NodeJS
+      children:
+        - id: application_nodejs_memory
+          name: Memory
+        - id: application_nodejs_async_resource
+          name: Async Resource
+        - id: application_nodejs_cluster
+          name: Cluster
+    - id: application_status
+      name: Application Status
+    - id: application_exception
+      name: Application Exception
+    - id: browser_analysis
+      name: Browser Analysis
+      children:
+        -  id: ta_timing
+           name: Browser Timing
+        -  id: ta_error
+           name: Browser Error
+        -  id: ta_event
+           name: Browser Event
+        -  id: ta_browser
+           name: Browser Info
+        -  id: ta_req
+           name: Browser Request
+        -  id: ta_document
+           name: Browser Document
+    - id: all
+      name: All Metrics
+
+mapping:
+    # http
+    application_http_request:
+        - name: application_http
+          fields: [elapsed_count, elapsed_max, elapsed_mean, elapsed_min, elapsed_sum, http_status_code_max, http_status_code_mean, http_status_code_min, http_status_code_sum]
+    application_http_error:
+        - name: application_http_error
+          fields: [elapsed_count, elapsed_max, elapsed_mean, elapsed_min, elapsed_sum, http_status_code_max, http_status_code_mean, http_status_code_min, http_status_code_sum]
+    application_http_slow:
+        - name: application_http_slow
+          fields: [elapsed_count, elapsed_max, elapsed_mean, elapsed_min, elapsed_sum, http_status_code_max, http_status_code_mean, http_status_code_min, http_status_code_sum]
+    # rpc
+    application_rpc_request:
+        - name: application_rpc
+    application_rpc_error:
+        - name: application_rpc_error
+    application_rpc_slow:
+        - name: application_rpc_slow
+    # db
+    application_db_request:
+        - name: application_db
+    application_db_error:
+        - name: application_db_error
+    application_db_slow:
+        - name: application_db_slow
+    # cache
+    application_cache_request:
+        - name: application_cache
+    application_cache_error:
+        - name: application_cache_error
+    application_cache_slow:
+        - name: application_cache_slow
+    # mq
+    application_mq_request:
+        - name: application_mq
+    application_mq_error:
+        - name: application_mq_error
+    application_mq_slow:
+        - name: application_mq_slow
+    # jvm
+    application_jvm_memory_heap:
+        - name: jvm_memory
+          fields: [committed, init, max, used]
+          filters: 
+            - tag: name
+              op: eq
+              value: "heap_memory"
+    application_jvm_memory_non_heap:
+        - name: jvm_memory
+          fields: [committed, init, used]
+          filters: 
+            - tag: name
+              op: eq
+              value: "non_heap_memory"
+    application_jvm_memory_ps_eden_space:
+        - name: jvm_memory
+          fields: [committed, max, used]
+          filters: 
+            - tag: name
+              op: match
+              value: "*_eden_space"
+    application_jvm_memory_ps_old_gen:
+        - name: jvm_memory
+          fields: [committed, max, used]
+          filters: 
+            - tag: name
+              op: match
+              value: "*_old_gen"
+    application_jvm_memory_ps_surv_space:
+        - name: jvm_memory
+          fields: [committed, max, used]
+          filters: 
+            - tag: name
+              op: match
+              value: "*_survivor_space"
+    application_jvm_memory_other:
+        - name: jvm_memory
+    jvm_process_cpu_usage:
+        - name: jvm_process_cpu_usage
+    application_jvm_gc:
+        - name: jvm_gc
+    application_jvm_thread:
+        - name: jvm_thread
+    application_jvm_class_loader:
+        - name: jvm_class_loader
+    # nodejs
+    application_nodejs_memory:
+        - name: nodejs_memory
+    application_nodejs_async_resource:
+        - name: nodejs_async_resource
+    application_nodejs_cluster:
+        - name: nodejs_cluster
+    application_status:
+        - name: status_page
+    application_exception:
+      - name: error_alert
+    # Browser Analysis
+    ta_timing:
+      - name: ta_timing
+    ta_error:
+      - name: ta_error
+    ta_event:
+      - name: ta_event
+    ta_req:
+      - name: ta_req
+    ta_browser:
+      - name: ta_browser
+    ta_document:
+      - name: ta_document
+    # Tomcat Metrics
+    apm_component_tomcat_thread_pool_max:
+      - name: apm_component_tomcat
+        fields: [max_threads]
+        filters:
+          - tag: field
+            op: eq
+            value: "max_threads"
+    apm_component_tomcat_thread_pool_busy:
+      - name: apm_component_tomcat
+        fields: [threads_busy]
+        filters:
+          - tag: field
+            op: eq
+            value: "threads_busy"
+    apm_component_tomcat_thread_pool_connection_count:
+      - name: apm_component_tomcat
+        fields: [connection_count]
+        filters:
+          - tag: field
+            op: eq
+            value: "connection_count"
+    apm_component_tomcat_thread_pool_max_connections:
+      - name: apm_component_tomcat
+        fields: [max_connections]
+        filters:
+          - tag: field
+            op: eq
+            value: "max_connections"
+    apm_component_tomcat_thread_pool_accept_count:
+      - name: apm_component_tomcat
+        fields: [accept_count]
+        filters:
+          - tag: field
+            op: eq
+            value: "accept_count"
+    apm_component_tomcat_thread_pool_keep_alive_count:
+      - name: apm_component_tomcat
+        fields: [keep_alive_count]
+        filters:
+          - tag: field
+            op: eq
+            value: "keep_alive_count"
+    apm_component_tomcat_other:
+      - name: apm_component_tomcat

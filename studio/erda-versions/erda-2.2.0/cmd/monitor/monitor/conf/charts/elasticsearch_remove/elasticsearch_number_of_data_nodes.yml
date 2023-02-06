@@ -1,0 +1,14 @@
+- elasticsearch_number_of_data_nodes:
+    title: "DataNode个数"
+    metric_names: "es_cluster_health"
+    type: "elasticsearch_remove"
+    order: 2
+    defines:
+      avg.number_of_data_nodes:
+        label: ""
+        unit: ""
+        unit_type: "NUMBER"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+

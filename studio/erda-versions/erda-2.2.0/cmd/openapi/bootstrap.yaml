@@ -1,0 +1,180 @@
+http-server:
+  addr: ":9529"
+  reloadable: ${OPENAPI_DEV_MODE:false}
+  allow_cors: true
+health:
+
+redis:
+  addr: "${REDIS_ADDR}"
+  password: "${REDIS_PASSWORD}"
+  db: ${REDIS_DB:0}
+  master_name: "${REDIS_MASTER_NAME}"
+  sentinels_addr: "${REDIS_SENTINELS_ADDR}"
+
+openapi-ng:
+
+openapi-interceptor-dump:
+  _enable: ${HTTP_DUMP:false}
+  order: 0
+  dump_all: ${HTTP_DUMP_ALL:false}
+  check_key: "${HTTP_DUMP_CHECK_KEY:__dump__}"
+
+openapi-interceptor-csrf:
+  _enable: ${HTTP_CSRF_ENABLED:true}
+  order: 10
+  allow_valid_referer: true
+  cookie_name: "OPENAPI-CSRF-TOKEN"
+  cookie_domain: "${CSRF_COOKIE_DOMAIN}"
+  cookie_path: "/"
+  cookie_max_age: "12h"
+  token_lookup: "header:OPENAPI-CSRF-TOKEN"
+openapi-interceptor-filter-client-header:
+  order: 11
+
+openapi-interceptor-auth-session-compatibility:
+  order: 500
+  old_cookie_domain: ${OLD_COOKIE_DOMAIN}
+  session_cookie_name: "${SESSION_COOKIE_NAME:OPENAPISESSION}"
+
+openapi-interceptor-user-info:
+  order: 900
+
+openapi-auth:
+openapi-auth-ory-kratos:
+  _enable: ${ORY_ENABLED:false}
+  weight: 100
+  ory_kratos_addr: "${ORY_KRATOS_ADDR:kratos-public}"
+openapi-auth-uc:
+  _enable: ${UC_ENABLED:true}
+  weight: 100
+  redirect_after_login: "${UI_PUBLIC_ADDR}"
+  client_id: "${UC_CLIENT_ID:dice}"
+  uc_addr: "${UC_PUBLIC_ADDR}"
+  uc_redirect_addrs: "${SELF_PUBLIC_ADDR}"
+  session_cookie_name: "${SESSION_COOKIE_NAME:OPENAPISESSION}"
+  session_cookie_domain: "${COOKIE_DOMAIN}"
+openapi-auth-password:
+  _enable: ${UC_ENABLED:true}
+  weight: 50
+openapi-auth-token:
+  _enable: ${UC_ENABLED:true}
+  weight: 10
+
+openapi-protobuf-routes:
+openapi-custom-routes:
+openapi-v1-routes:
+  component-protocol:
+    scenario-proxy-binds:
+      - app: dop
+        addr: ${DOP_COMPONENT_PROTOCOL_ADDR:dop:9527}
+        scenarios:
+          - issue-manage
+          - issue-dashboard
+          - code-coverage
+          - scenes-import-record
+          - test-dashboard
+          - project-runtime
+          - app-runtime
+          - test-report
+          - addon-mysql-account
+          - addon-mysql-consumer
+          - auto-test-scenes
+          - issue-gantt
+          - requirement-task-overview
+          - issue-kanban
+          - auto-test-space-list
+          - release-manage
+          - app-list-all
+          - project-pipeline
+          - app-pipeline
+          - project-pipeline-exec-list
+          - project-list-all
+          - auto-test-plan-list
+      - addr: http://localhost:8080
+        scenarios:
+          - demo
+          - yetAnotherDemo
+      - addr: cmp:9028
+        scenarios:
+          - cmp-dashboard-events-list
+          - cmp-dashboard-workloads-list
+          - cmp-dashboard-workload-detail
+          - cmp-dashboard-nodes
+          - cmp-dashboard-nodeDetail
+          - cmp-dashboard-pods
+          - cmp-dashboard-podDetail
+          - cmp-cluster-list
+      - addr: erda-server:9095
+        scenarios:
+          - personal-workbench
+      - addr: msp:8080
+        scenarios:
+          - browser-overview
+          - service-overview
+          - service-list
+          - transaction-cache-analysis
+          - transaction-cache-detail
+          - transaction-cache-slow
+          - transaction-cache-error
+          - transaction-db-analysis
+          - transaction-db-detail
+          - transaction-db-slow
+          - transaction-db-error
+          - transaction-http-analysis
+          - transaction-http-detail
+          - transaction-http-slow
+          - transaction-http-error
+          - transaction-mq-analysis
+          - transaction-mq-detail
+          - transaction-mq-slow
+          - transaction-mq-error
+          - transaction-rpc-analysis
+          - transaction-rpc-detail
+          - transaction-rpc-slow
+          - transaction-rpc-error
+          - trace-query
+          - resources-container-monitor
+          - resources-node-monitor
+          - resources-runtime-monitor-java
+          - resources-runtime-monitor-nodejs
+          - msp-alert-overview
+          - msp-alert-event-list
+          - msp-alert-event-detail
+          - msp-notify-list
+          - msp-notify-detail
+
+etcd:
+  _enable: ${OPENAPI_DEV_MODE:false}
+  endpoints: "${ETCD_ENDPOINTS:https://localhost:2379}"
+  tls:
+    cert_file: "${ETCD_CERT_FILE:/certs/etcd-client.pem}"
+    cert_key_file: "${ETCD_CERT_KEY_FILE:/certs/etcd-client-key.pem}"
+    ca_file: "${ETCD_CA_FILE:/certs/etcd-ca.pem}"
+openapi-dynamic-routes:
+  _enable: ${OPENAPI_DEV_MODE:false}
+
+remote-forward-server:
+  _enable: ${OPENAPI_DEV_MODE:false}
+  addr: ":9431"
+  token: "${REMOTE_FORWARD_TOKEN}"
+
+# for test
+openapi-example:
+openapi-example-custom:
+openapi-example-custom-route:
+openapi-example-backend:
+http-server@example:
+  addr: ":8080"
+
+erda-discover:
+  urls:
+    example: "http://localhost:8080"
+    erda.example: "http://localhost:8080"
+
+http-server@admin:
+  addr: ":9432"
+pprof:
+
+grpc-client@erda.core.token:
+  addr: "${CORE_SERVICES_GRPC_ADDR:core-services:9537}"
+erda.core.token-client: {}

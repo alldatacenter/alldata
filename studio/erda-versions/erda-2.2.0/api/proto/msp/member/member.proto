@@ -1,0 +1,169 @@
+syntax = "proto3";
+package erda.msp.member;
+option go_package = "github.com/erda-project/erda-proto-go/msp/member/pb";
+
+import "google/api/annotations.proto";
+import "common/openapi.proto";
+
+service MemberService {
+  option (erda.common.openapi_service) = {
+    service: "msp",
+    auth: {
+      check_login: true,
+      check_token: true,
+    }
+  };
+
+  rpc ScopeRoleAccess (ScopeRoleAccessRequest) returns (ScopeRoleAccessResponse) {
+    option (google.api.http)     = {
+      post: "/api/msp/permission/access"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/msp/permission/access"
+    };
+  }
+  rpc ListMember (ListMemberRequest) returns (ListMemberResponse) {
+    option (google.api.http)     = {
+      get: "/api/msp/members"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/msp/members"
+    };
+  }
+  rpc CreateOrUpdateMember (CreateOrUpdateMemberRequest) returns (CreateOrUpdateMemberResponse) {
+    option (google.api.http)     = {
+      post: "/api/msp/members"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/msp/members"
+    };
+  }
+  rpc DeleteMember (DeleteMemberRequest) returns (DeleteMemberResponse) {
+    option (google.api.http)     = {
+      post: "/api/msp/members/action/remove"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/msp/members/action/remove"
+    };
+  }
+  rpc ListMemberRoles (ListMemberRolesRequest) returns (ListMemberRolesResponse) {
+    option (google.api.http)     = {
+      get: "/api/msp/members/action/list-roles"
+    };
+    option (erda.common.openapi) = {
+      path: "/api/msp/members/action/list-roles"
+    };
+  }
+}
+
+message ScopeRoleAccessRequest {
+  Scope scope = 1;
+}
+
+message Scope {
+  string id   = 1;
+  string type = 2;
+}
+
+message ScopeRoleAccessResponse {
+  ScopeRoleData   data    = 1;
+  repeated string userIDs = 2;
+}
+
+message ScopeRoleData {
+  bool                   access                   = 1;
+  repeated string        roles                    = 2;
+  repeated ScopeResource permissionList           = 3;
+  repeated ScopeResource resourceRoleList         = 4;
+  bool                   exist                    = 5;
+  repeated string        contactsWhenNoPermission = 6;
+}
+
+message ScopeResource {
+  string resource     = 1;
+  string action       = 2;
+  string resourceRole = 3;
+}
+
+message ListMemberRequest {
+  string          scopeType = 1;
+  string          scopeId   = 2;
+  int64           pageNo    = 3;
+  int64           pageSize  = 4;
+  string          q         = 5;
+  repeated string roles     = 6;
+  repeated string label     = 7;
+}
+
+message ListMemberResponse {
+  MemberList data = 1;
+}
+
+message MemberList {
+  repeated Member list  = 1;
+  int64           total = 2;
+}
+
+message Member {
+  string          userId  = 1;
+  string          email   = 2;
+  string          mobile  = 3;
+  string          name    = 4;
+  string          nick    = 5;
+  string          avatar  = 6;
+  string          status  = 7;
+  Scope           scope   = 8;
+  repeated string roles   = 9;
+  repeated string labels  = 10;
+  bool            removed = 11;
+  bool            deleted = 12;
+}
+
+message CreateOrUpdateMemberRequest {
+  Scope            scope           = 1;
+  string           targetScopeType = 2;
+  repeated int64   targetScopeIds  = 3;
+  repeated string  roles           = 4;
+  repeated string  userIds         = 5;
+  MemberAddOptions options         = 6;
+  repeated string  labels          = 7;
+  string           verifyCode      = 8;
+}
+
+message MemberAddOptions {
+  bool rewrite = 1;
+}
+
+message CreateOrUpdateMemberResponse {
+  uint64 data = 1;
+}
+
+message DeleteMemberRequest {
+  Scope           scope          = 1;
+  repeated string userIds        = 2;
+  string          userID         = 3;
+  string          internalClient = 4 [json_name = "-"];
+}
+
+message DeleteMemberResponse {
+  uint64 data = 1;
+}
+
+message ListMemberRolesRequest {
+  string scopeType = 1;
+  string scopeId   = 2;
+}
+
+message ListMemberRolesResponse {
+  RoleList data = 1;
+}
+
+message RoleList {
+  repeated RoleInfo list  = 1;
+  int64             total = 2;
+}
+
+message RoleInfo {
+  string role = 1;
+  string name = 2;
+}

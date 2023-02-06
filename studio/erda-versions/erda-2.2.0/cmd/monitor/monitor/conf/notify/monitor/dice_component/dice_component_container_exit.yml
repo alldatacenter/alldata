@@ -1,0 +1,47 @@
+id: dice_component_container_exit
+metadata:
+  name: "平台组件异常退出"
+  type: dice_component
+  module: monitor
+  scope:
+    - org
+behavior:
+  group: "{{cluster_name}}-{{container_id}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        started_at_value: "date"
+        finished_at_value: "date"
+      title: |
+        【平台组件{{component_name}}异常退出告警】
+      template: |
+        【平台组件异常退出告警】
+
+        组件: {{component_name}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        启动时间: {{started_at_value}}
+
+        退出时间: {{finished_at_value}}
+
+        退出原因: {{terminated_reason_value}}
+
+        时间: {{timestamp}}
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})

@@ -1,0 +1,58 @@
+name: "Kubernetes Pod Container"
+tags:
+    addon_id:
+        name: "Addon ID"
+    addon_type:
+        name: "Addon Type"
+    cluster_name:
+        name: "Cluster Name"
+    component_name:
+        name: "Component Name"
+    container_name:
+        name: "Container Name"
+    host:
+        name: "Host"
+    host_ip:
+        name: "Host IP"
+    instance_type:
+        name: "Instance Type"
+    namespace:
+        name: "Namespace"
+    node_name:
+        name: "Node Name"
+    org_name:
+        name: "Org Name"
+    pod_name:
+        name: "Pod Name"
+    state:
+        name: "State"
+fields:
+    resource_limits_memory_bytes:
+        type: "number"
+        name: "Resource Limits Memory Bytes"
+        unit: 
+    resource_limits_millicpu_units:
+        type: "number"
+        name: "Resource Limits Millicpu Units"
+        unit: 
+    resource_requests_memory_bytes:
+        type: "number"
+        name: "Resource Requests Memory Bytes"
+        unit: 
+    resource_requests_millicpu_units:
+        type: "number"
+        name: "Resource Requests Millicpu Units"
+        unit: 
+    restarts_total:
+        type: "number"
+        name: "Restarts Total"
+        unit: 
+    state_code:
+        type: "number"
+        name: "State Code"
+        unit: 
+    terminated_reason:
+        type: "string"
+        name: "Terminated Reason"
+        unit: 
+

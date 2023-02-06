@@ -1,0 +1,43 @@
+- ta_top_count:
+    title: "访问次数-Top20"
+    metric_names: "ta_timing"
+    type: "ta"
+    order: 0
+    defines:
+      count.plt:
+        label: "访问次数"
+        unit: ""
+        unit_type: ""
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.net:
+        label: "网络耗时"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.srt:
+        label: "服务器响应"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.prt:
+        label: "页面渲染"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+      avg.plt:
+        label: "整页加载完成"
+        unit: "ms"
+        unit_type: "time"
+        axis_index: 0
+        chart_type: ""
+        original_unit: "ms"
+    parameters:
+

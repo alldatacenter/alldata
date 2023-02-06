@@ -1,0 +1,364 @@
+http-server:
+  addr: ":7076"
+
+health:
+  path: "/api/health"
+
+service-register:
+
+grpc-client@erda.core.token:
+  addr: "${CORE_SERVICES_GRPC_ADDR:core-services:9537}"
+erda.core.token-client:
+
+erda.oap.collector.interceptor:
+erda.oap.collector.authentication:
+  sync_interval: ${COLLECTOR_AUTHENTICATION_AK_SYNC_INTERVAL:2m}
+
+erda.oap.collector.core:
+  pipelines:
+    raws:
+      - receivers: ["erda.oap.collector.receiver.collector"]
+        exporters: ["erda.oap.collector.exporter.kafka@collector"]
+
+      - receivers:
+          - "erda.oap.collector.receiver.jaeger"
+          - "erda.oap.collector.receiver.opentelemetry"
+        exporters:
+          - "erda.oap.collector.exporter.kafka@erda-spans"
+#          - "erda.oap.collector.exporter.stdout"
+
+    metrics:
+    - receivers:
+        #- "erda.oap.collector.receiver.dummy"
+        - "erda.oap.collector.receiver.prometheus-remote-write"
+      processors:
+        - "erda.oap.collector.processor.k8s-tagger@prw"
+        - "erda.oap.collector.processor.modifier"
+        - "erda.oap.collector.processor.modifier@addmeta"
+        - "erda.oap.collector.processor.modifier@docker_container_summary"
+        - "erda.oap.collector.processor.aggregator@cpu-usage"
+        - "erda.oap.collector.processor.aggregator@mem-percent"
+      exporters:
+        #- "erda.oap.collector.exporter.stdout"
+        - "erda.oap.collector.exporter.kafka@spot-metrics"
+
+# ************* receivers *************
+erda.oap.collector.receiver.dummy:
+  rate: 3s
+  metric_sample: '{"name":"kubelet_cadvisor","timestamp":1640936985459000000,"tags":{"container":"POD","container_name":"go-demo","host_ip":"10.118.177.94","id":"/kubepods/burstable/podff0b8bf8-4b48-4092-8f78-0bb9fffd75b4/67f7e9a8b0993ebdf8883a0ad8be9c3978b04883e56a156a8de563afa467d49d","image":"sha256:4a72b6f8d32bed5550174f75ba10f753e46eb04b8b9af8a96332030b7cdc9682","instance":"virtual-kubelet-cn-hangzhou-k","name":"67f7e9a8b0993ebdf8883a0ad8be9c3978b04883e56a156a8de563afa467d49d","namespace":"project-387-dev","pod":"telegraf-app-6fc3aaf6af-8bf72","pod_name":"telegraf-app-6fc3aaf6af-8bf72","prometheus":"default/prometheus","prometheus_replica":"prometheus-prometheus-0"},"fields":{"container_cpu_usage_seconds_total":500,"container_fs_usage_bytes":51200}}'
+
+erda.oap.collector.receiver.prometheus-remote-write:
+
+erda.oap.collector.receiver.jaeger:
+
+erda.oap.collector.receiver.opentelemetry:
+
+erda.oap.collector.receiver.collector:
+  metadata_key_of_topic: "KAFKA-TOPIC"
+  auth:
+    skip: ${RECEIVER_COLLECTOR_AUTH_SKIP:false}
+
+# ************* receivers *************
+
+# ************* processors *************
+erda.oap.collector.processor.k8s-tagger@prw:
+  keypass:
+    name: ["kubelet_cadvisor"]
+  pod:
+    watch_selector:
+      namespace: ""
+      label_selector: ""
+      field_slector: ""
+    add_metadata:
+      label_include:
+        - "dice/component"
+        - "dice/job"
+      annotation_include:
+        - "msp.erda.cloud/*"
+      finders:
+        - indexer: pod_name
+          matcher: "%{namespace}/%{pod}"
+        - indexer: pod_name_container
+          matcher: "%{namespace}/%{pod}/%{container}"
+
+erda.oap.collector.processor.modifier:
+  keypass:
+    name: ["kubelet_cadvisor"]
+  rules:
+    - action: drop
+      key: tags.kubernetes_pod_name
+    - action: drop
+      key: tags.kubernetes_pod_namespace
+    - action: rename
+      key: tags.pod
+      value: tags.pod_name
+    - action: rename
+      key: tags.namespace
+      value: tags.pod_namespace
+    - action: drop
+      key: tags.kubernetes_pod_annotations_msp_erda_cloud_monitor_log_collector
+    - action: drop
+      key: tags.kubernetes_pod_annotations_msp_erda_cloud_monitor_log_key
+    - action: drop
+      key: tags.kubernetes_pod_annotations_msp_erda_cloud_msp_log_attach
+    - action: drop
+      key: tags.kubernetes_pod_annotations_msp_erda_cloud_terminus_log_key
+    - action: drop
+      key: tags.instance
+    - action: drop
+      key: tags.prometheus
+    - action: drop
+      key: tags.prometheus_replica
+    - action: trim_prefix
+      key: kubernetes_
+    - action: trim_prefix
+      key: pod_annotations_msp_erda_cloud_
+    - action: copy
+      key: tags.pod_uid
+      # for business
+      value: tags.service_instance_id
+    - action: add
+      key: tags.cluster_name
+      value: ${DICE_CLUSTER_NAME}
+    - action: add
+      key: tags.org_name
+      value: ${DICE_ORG_NAME}
+    # container is empty when pause in containerd-env
+    - action: set
+      key: tags.container
+      value: POD
+      condition:
+        op: value_empty
+        key: tags.container
+    - action: add
+      key: tags.container
+      value: POD
+
+erda.oap.collector.processor.modifier@addmeta:
+  rules:
+    - action: add
+      key: tags._meta
+      value: "true"
+    - action: add
+      key: tags._metric_scope
+      value: org
+    - action: copy
+      key: tags.org_name
+      value: tags._metric_scope_id
+
+# compatibility to docker_container_summary
+erda.oap.collector.processor.modifier@docker_container_summary:
+  keypass:
+    name: ["kubelet_cadvisor"]
+  rules:
+    - action: rename
+      key: fields.container_fs_reads_bytes_total
+      value: fields.blk_read_bytes
+    - action: rename
+      key: fields.container_fs_reads_total
+      value: fields.blk_reads
+    - action: rename
+      key: fields.container_fs_writes_bytes_total
+      value: fields.blk_write_bytes
+    - action: rename
+      key: fields.container_fs_writes_total
+      value: fields.blk_writes
+    - action: rename
+      key: fields.container_fs_usage_bytes
+      value: fields.disk_usage
+    - action: rename
+      key: fields.container_memory_max_usage_bytes
+      value: fields.mem_max_usage
+    - action: rename
+      key: fields.container_memory_usage_bytes
+      value: fields.mem_usage
+    - action: rename
+      key: fields.container_network_receive_bytes_total
+      value: fields.rx_bytes
+    - action: rename
+      key: fields.container_network_receive_errors_total
+      value: fields.rx_errors
+    - action: rename
+      key: fields.container_network_transmit_bytes_total
+      value: fields.tx_bytes
+    - action: rename
+      key: fields.container_network_transmit_errors_total
+      value: fields.tx_errors
+    - action: regex
+      key: tags.id
+      value: '^\/kubepods.*\/.*?\/.*?\/(\w+\-)?(?P<container_id>\w+)'
+      # /kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podfebb6bd8_349e_49ea_a629_bf27a28d63f3.slice/docker-39693d24c3985d77348b260bdb4f5af465fc0d86b3c07ec8560b3b56ae629d62.scope
+      # /kubepods/burstable/podc15fa300-e090-4b5d-a850-eb65900a8dac/0fa5d0a7434e23d87f13617f2ab16186530c32ef877724842f96bbe8d4ba8935
+    - action: rename
+      key: fields.container_resources_memory_request
+      value: fields.mem_request
+    - action: rename
+      key: fields.container_resources_memory_limit
+      value: fields.mem_limit
+    - action: rename
+      key: fields.container_resources_cpu_request
+      value: fields.cpu_request
+    - action: rename
+      key: fields.container_resources_cpu_limit
+      value: fields.cpu_limit
+    - action: rename
+      key: tags.terminus_define_tag
+      value: tags.job_id
+    # --- instance_type logic block ---
+    - action: set
+      key: tags.instance_type
+      value: job
+      condition:
+        op: key_exist
+        key: tags.pod_labels_dice_job
+    - action: drop
+      key: tags.pod_labels_dice_job
+    - action: set
+      key: tags.instance_type
+      value: component
+      condition:
+        op: key_exist
+        key: tags.pod_labels_dice_component
+    - action: drop
+      key: tags.pod_labels_dice_component
+    - action: set
+      key: tags.instance_type
+      value: addon
+      condition:
+        op: value_match
+        key: tags.pod_namespace
+        value: '.*(addon).*?'
+    - action: set
+      key: tags.instance_type
+      value: service
+      condition:
+        op: key_exist
+        key: tags.service_name
+    # --- instance_type logic block ---
+    - action: join
+      keys: [tags.application_id, tags.runtime_name, tags.service_name]
+      target_key: tags.service_id
+    - action: set
+      key: name
+      value: docker_container_summary
+    - action: drop
+      key: tags.name
+
+erda.oap.collector.processor.aggregator@cpu-usage:
+  keypass:
+    name: ["docker_container_summary"]
+  keydrop:
+    container: ["POD"]
+  keyinclude:
+    - "name"
+    - "fields.container_cpu_usage_seconds_total"
+    - "tags.cluster_name"
+    - "tags.id"
+
+  rules:
+    - func: "rate"
+      args: ["container_cpu_usage_seconds_total"]
+      target_key: "cpu_usage_percent"
+    - func: "*"
+      args: ["cpu_usage_percent", 100]
+      target_key: "cpu_usage_percent"
+
+erda.oap.collector.processor.aggregator@mem-percent:
+  keypass:
+    name: ["docker_container_summary"]
+  keydrop:
+    tags.container: ["POD"]
+  keyinclude:
+    - "name"
+    - "fields.mem_usage"
+    - "fields.mem_limit"
+    - "tags.cluster_name"
+    - "tags.id"
+
+  rules:
+    - func: "/"
+      args: ["mem_usage", "mem_limit"]
+      target_key: "mem_usage_percent"
+    - func: "*"
+      args: ["mem_usage_percent", 100]
+      target_key: "mem_usage_percent"
+
+# ************* processors *************
+
+# ************* processors *************
+
+# ************* exporters *************
+erda.oap.collector.exporter.stdout:
+
+erda.oap.collector.exporter.kafka@collector:
+  metadata_key_of_topic: "KAFKA-TOPIC"
+  producer:
+    shared: "false"
+    batch:
+      size: 1 # already batch in third client
+    options:
+      # channel size in Go Library
+      go.produce.channel.size: 1
+      # queue size in C Library
+      queue.buffering.max.kbytes: 204800 # 200MB
+
+erda.oap.collector.exporter.kafka@spot-metrics:
+  producer:
+    shared: "false"
+    topic: "spot-metrics"
+    batch:
+      size: 1 # already batch in third library
+    options:
+      # channel size in Go Library
+      go.produce.channel.size: 1
+      # queue size in C Library
+      queue.buffering.max.kbytes: 51200 # 50MB
+
+
+erda.oap.collector.exporter.kafka@erda-spans:
+  producer:
+    shared: "false"
+    topic: "erda-spans"
+    batch:
+      size: 1 # already batch in third library
+    options:
+      # channel size in Go Library
+      go.produce.channel.size: 1
+      # queue size in C Library
+      queue.buffering.max.kbytes: 204800 # 200MB
+
+
+# ************* exporters *************
+
+kubernetes:
+  master_url: ${MASTER_VIP_URL:https://kubernetes.default.svc:443}
+  root_ca_file: ${K8S_CA_FILE:/var/run/secrets/kubernetes.io/serviceaccount/ca.crt}
+  token_file: ${K8S_TOKEN_FILE:/var/run/secrets/kubernetes.io/serviceaccount/token}
+#  config_path: .kube/config
+
+
+kafka:
+  servers: ${BOOTSTRAP_SERVERS:localhost:9092}
+
+monitor-collector:
+  _enable: ${COLLECTOR_ENABLE:true}
+  ta_sampling_rate: ${COLLECTOR_BROWSER_SAMPLING_RATE:100}
+  output:
+    parallelism: ${KAFKA_PARALLELISM:3}
+    shared: "false"
+    batch:
+      size: 1
+      timeout: "30s"
+    options:
+      go.produce.channel.size: ${COLLECTOR_KAFKA_PRODUCE_CHANNEL_SIZE:1}
+      queue.buffering.max.kbytes: ${COLLECTOR_KAFKA_QUEUE_SIZE_KB:204800} # 200MB
+
+  auth:
+    username: "${COLLECTOR_AUTH_USERNAME:collector}"
+    password: "${COLLECTOR_AUTH_PASSWORD:G$9767bP32drYFPWrK4XMLRMTatiM6cU}"
+    force: ${COLLECTOR_AUTH_FORCE:false}
+    skip: ${COLLECTOR_AUTH_SKIP:false}
+
+pprof:
+http-server@admin:
+  addr: ":7078"

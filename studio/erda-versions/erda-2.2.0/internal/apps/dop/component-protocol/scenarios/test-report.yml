@@ -1,0 +1,46 @@
+version: 1.0
+scenario: test-report
+
+hierarchy:
+  root: page
+  structure:
+    page:
+      - filter
+      - topHead
+      - table
+    topHead:
+      - createReportButton
+
+components:
+  page:
+    type: Container
+  topHead:
+    type: Container
+    props:
+      isTopHead: true
+  head:
+    type: LRContainer
+  filter:
+    type: ContractiveFilter
+  createReportButton:
+    type: Button
+  table:
+    type: Table
+
+rendering:
+  filter:
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+
+  __DefaultRendering__:
+    - name: createReportButton
+    - name: filter
+    - name: table
+      state:
+        - name: "values"
+          value: "{{ filter.values }}"
+
+options:
+  returnAllComponents: true

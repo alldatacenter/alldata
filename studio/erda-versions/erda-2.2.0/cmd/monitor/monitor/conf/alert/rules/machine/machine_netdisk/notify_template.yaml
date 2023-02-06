@@ -1,0 +1,187 @@
+- name: "网盘容量异常告警"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    used_percent_value: "percent:2"
+    total_value: "size:byte"
+  title: |-
+    【{{cluster_name}}集群网盘使用率异常告警】
+  template: |
+    【网盘使用率异常告警】
+
+    使用率: {{used_percent_value}}
+
+    容量: {{total_value}}
+
+    集群: {{cluster_name}}
+
+    组织名称: {{org_name}}
+
+    告警级别: {{level}}
+
+    时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "网盘容量异常告警"
+  trigger: "alert"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    used_percent_value: "percent:2"
+    total_value: "size:byte"
+  title: |-
+    【{{cluster_name}}集群网盘使用率异常告警】
+  template: |
+    {{cluster_name}}集群触发网盘使用率异常告警，组织名称: {{org_name}}，使用率: {{used_percent_value}}，告警级别: {{level}}
+- name: "网盘容量异常告警"
+  trigger: "alert"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    used_percent_value: "percent:2"
+    total_value: "size:byte"
+  title: |-
+    【{{cluster_name}}集群网盘使用率异常告警】
+  template: |
+    {{cluster_name}}集群触发网盘使用率异常告警，组织名称: {{org_name}}，使用率: {{used_percent_value}}，告警级别: {{level}}
+- name: "网盘容量异常恢复"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook,dingtalk_work_notice"
+  language: "zh-CN"
+  formats:
+    used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群网盘使用率异常恢复】
+  template: |
+    【网盘使用率异常恢复】
+
+    使用率: {{used_percent_value}}
+
+    集群: {{cluster_name}}
+
+    组织名称: {{org_name}}
+
+    持续时间: {{trigger_duration}}
+
+    恢复时间: {{timestamp}}
+
+    [查看记录]({{record_url}})
+
+- name: "网盘容量异常恢复"
+  trigger: "recover"
+  target: "sms"
+  language: "zh-CN"
+  formats:
+    used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群网盘使用率异常恢复】
+  template: |
+    {{cluster_name}}集群触发网盘使用率异常告警恢复，使用率: {{used_percent_value}}
+- name: "网盘容量异常恢复"
+  trigger: "recover"
+  target: "vms"
+  language: "zh-CN"
+  formats:
+    used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    【{{cluster_name}}集群网盘使用率异常恢复】
+  template: |
+    {{cluster_name}}集群触发网盘使用率异常告警恢复，使用率: {{used_percent_value}}
+
+- name: "Netdisk volume exception alarm"
+  trigger: "alert"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    used_percent_value: "percent:2"
+    total_value: "size:byte"
+  title: |-
+    [Netdisk usage exception alarm of cluster {{cluster_name}}]
+  template: |
+    [Netdisk usage exception alarm]
+
+    Usage: {{used_percent_value}}
+
+    Volume: {{total_value}}
+
+    Cluster: {{cluster_name}}
+
+    Organization name: {{org_name}}
+
+    Time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Netdisk volume exception alarm"
+  trigger: "alert"
+  target: "sms"
+  language: "en-US"
+  formats:
+    used_percent_value: "percent:2"
+    total_value: "size:byte"
+  title: |-
+    [Netdisk usage exception alarm of cluster {{cluster_name}}]
+  template: |
+    Netdisk usage exception alarm triggered by cluster {{cluster_name}}, organization name: {{org_name}}, usage: {{used_percent_value}}
+- name: "Netdisk volume exception alarm"
+  trigger: "alert"
+  target: "vms"
+  language: "en-US"
+  formats:
+    used_percent_value: "percent:2"
+    total_value: "size:byte"
+  title: |-
+    [Netdisk usage exception alarm of cluster {{cluster_name}}]
+  template: |
+    Netdisk usage exception alarm triggered by cluster {{cluster_name}}, organization name: {{org_name}}, usage: {{used_percent_value}}
+- name: "Netdisk volume exception recovery"
+  trigger: "recover"
+  target: "dingding,ticket,email,mbox,webhook"
+  language: "en-US"
+  formats:
+    used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    [Netdisk usage exception recovery of cluster {{cluster_name}}]
+  template: |
+    [Netdisk usage exception recovery]
+
+    Usage: {{used_percent_value}}
+
+    Cluster: {{cluster_name}}
+
+    Organization name: {{org_name}}
+
+    Duration: {{trigger_duration}}
+
+    Recovery time: {{timestamp}}
+
+    [View records]({{record_url}})
+
+- name: "Netdisk volume exception recovery"
+  trigger: "recover"
+  target: "sms"
+  language: "en-US"
+  formats:
+    used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    [Netdisk usage exception recovery of cluster {{cluster_name}}]
+  template: |
+    Netdisk usage exception alarm recovery triggered by cluster {{cluster_name}}, usage: {{used_percent_value}}
+- name: "Netdisk volume exception recovery"
+  trigger: "recover"
+  target: "vms"
+  language: "en-US"
+  formats:
+    used_percent_value: "percent:2"
+    trigger_duration: "time:ms"
+  title: |-
+    [Netdisk usage exception recovery of cluster {{cluster_name}}]
+  template: |
+    Netdisk usage exception alarm recovery triggered by cluster {{cluster_name}}, usage: {{used_percent_value}}

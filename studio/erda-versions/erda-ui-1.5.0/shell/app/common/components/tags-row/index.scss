@@ -1,0 +1,87 @@
+.tags-container {
+  position: relative;
+  overflow: auto;
+
+  .tags-box {
+    white-space: nowrap;
+  }
+
+  .twt-tag-ellipsis,
+  .tags-add {
+    display: block;
+    background-color: $color-dark-1;
+    border-radius: $radius;
+    color: $text-sub;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    &:hover {
+      background-color: $color-active;
+      color: $white;
+    }
+
+    &.small {
+      width: 20px;
+      height: 20px;
+      line-height: 24px;
+    }
+  }
+
+  .twt-tag-item {
+    position: relative;
+    display: inline-block;
+    height: 28px;
+    margin-left: 0;
+    margin-right: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-right: 6px;
+    padding-left: 6px;
+    color: $white;
+    font-size: 14px;
+    line-height: 28px;
+    border: 1px solid transparent;
+    border-radius: $radius;
+    outline: none;
+
+    &.small {
+      height: 20px;
+      margin-top: 2px;
+      margin-right: 4px;
+      font-size: 12px;
+      margin-bottom: 2px;
+      line-height: 20px;
+      border: none;
+    }
+
+    &:hover {
+      .tag-close {
+        visibility: visible;
+      }
+    }
+
+    .tag-close {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      visibility: hidden;
+      &:hover {
+        visibility: visible;
+      }
+    }
+  }
+
+  .tag-group-container {
+    display: flex;
+    .tag-group-name {
+      margin-right: 8px;
+    }
+  }
+}
+
+.tags-row-tooltip {
+  min-width: 300px;
+  max-width: 800px;
+}

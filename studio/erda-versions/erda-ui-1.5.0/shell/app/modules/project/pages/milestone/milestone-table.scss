@@ -1,0 +1,36 @@
+.milestone-timeline-container {
+  margin-top: 20px;
+
+  .milestone-module {
+    padding: 18px 18px 8px;
+
+    .ant-card {
+      margin-bottom: 10px;
+      border: none;
+      @extend %shallow-shadow;
+
+      &:hover {
+        @extend %hover-shadow;
+      }
+
+      .milestone-item-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .milestone-item {
+          display: flex;
+          text-align: left;
+        }
+
+        .ant-progress {
+          width: 80px;
+        }
+
+        .lt {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

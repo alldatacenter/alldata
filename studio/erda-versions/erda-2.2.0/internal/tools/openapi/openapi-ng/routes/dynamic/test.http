@@ -1,0 +1,28 @@
+@url = http://localhost:9529
+
+### list proxies
+GET {{url}}/openapi/apis
+
+### set proxy
+PUT {{url}}/openapi/apis
+Content-Type: application/json
+
+{
+    "method": "GET",
+    "path": "/api/example/user-info",
+    "service_url": "http://localhost:8080",
+    "backend_path": "/api/hello",
+    "auth": {
+        "check_login": true,
+        "no_check": false
+    }
+}
+
+### proxy page
+GET {{url}}/openapi/static/proxy.html
+
+### test api
+GET {{url}}/api/example/user-info
+
+### test health
+GET {{url}}/health

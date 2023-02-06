@@ -1,0 +1,16 @@
+.permission-transfer {
+  & > .ant-transfer-list {
+    &:nth-of-type(1) .permission-select {
+      display: none;
+    }
+
+    &:last-of-type {
+      width: calc(100% - 230px);
+    }
+  }
+
+  .ant-transfer-list-content-item {
+    display: inline-block;
+    overflow: auto;
+  }
+}

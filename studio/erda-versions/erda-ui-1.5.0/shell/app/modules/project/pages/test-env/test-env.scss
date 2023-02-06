@@ -1,0 +1,17 @@
+.test-env-list {
+  li {
+    height: 42px;
+    padding: 0 12px;
+    border-right: 2px solid transparent;
+    cursor: pointer;
+
+    &.active {
+      background-color: $color-active-bg;
+      border-right-color: $color-primary;
+    }
+
+    &:hover {
+      background-color: $color-active-bg;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.addon-settings-panel {
+  padding: 0 16px;
+
+  .settings-params-header {
+    height: 48px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 48px;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .copy-tip {
+    display: none;
+  }
+
+  .cursor-copy:hover {
+    .copy-tip {
+      display: inline-block;
+    }
+  }
+
+  .param-k {
+    height: 22px;
+    margin-bottom: 4px;
+    color: $color-text-desc;
+    line-height: 22px;
+  }
+
+  .param-v {
+    display: inline-block;
+    margin-bottom: 20px;
+    line-height: 22px;
+  }
+
+  .settings-delete {
+    margin-top: 20px;
+  }
+
+  .settings-delete-content {
+    > p {
+      color: $color-text-desc;
+    }
+  }
+}

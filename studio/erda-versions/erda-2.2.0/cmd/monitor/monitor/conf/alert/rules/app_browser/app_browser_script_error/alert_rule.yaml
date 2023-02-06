@@ -1,0 +1,8 @@
+id: app_browser_script_error
+name: 脚本错误
+alert_scope: micro_service
+attributes:
+  alert_group: '{{tk}}-{{doc_path}}-{{host}}'
+  display_url_id: micro_bi_script
+  level: Notice
+  recover: "false"

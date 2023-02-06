@@ -1,0 +1,370 @@
+.erda-configurable-filter-btn {
+  height: 28px;
+
+  &.ant-popover-open {
+    color: $white;
+    background-color: $color-default !important;
+  }
+
+  .ant-badge-dot {
+    box-shadow: none !important;
+  }
+}
+
+.erda-config-filter-btn-active {
+  .erda-configurable-filter-btn {
+    color: $white;
+    background-color: $color-default !important;
+  }
+}
+
+.erda-configurable-filter-clear-btn {
+  background-color: rgba($color-default, 0.06);
+}
+
+.erda-configurable-filter {
+  padding-top: 0;
+  width: 720px;
+
+  .ant-popover-inner {
+    background-color: $color-default;
+  }
+
+  .ant-popover-inner-content {
+    color: $white;
+  }
+
+  .ant-popover-arrow {
+    display: none;
+  }
+
+  .erda-configurable-filter-config,
+  .erda-configurable-filter-add {
+    padding-top: 0;
+    width: 200px;
+
+    .config-item {
+      line-height: 24px;
+
+      &.active {
+        background-color: rgba($white, 0.08);
+      }
+
+      .config-item-icon {
+        color: rgba($white, 0.4);
+        opacity: 0;
+
+        &:hover {
+          color: rgba($white, 0.8);
+        }
+
+        &.ant-popover-open {
+          opacity: 1;
+          color: rgba($white, 0.8);
+        }
+      }
+
+      &:hover {
+        .config-item-icon {
+          opacity: 1;
+        }
+      }
+    }
+
+    .ant-popover-inner {
+      background-color: $white;
+
+      .ant-popover-inner-content {
+        border-radius: 2px;
+        padding: 0;
+        background-color: $color-dropdown-bg-dark;
+      }
+
+      .ant-divider {
+        border-color: $color-white-2;
+      }
+    }
+
+    .default-config {
+      padding: 12px 8px 4px 8px;
+    }
+
+    .custom-config {
+      padding: 12px 8px;
+
+      .config-title {
+        font-size: 12px;
+        color: $color-white-6;
+      }
+    }
+
+    .default-text {
+      font-size: 12px;
+      color: $blue;
+    }
+
+    &-operation {
+      width: 120px;
+    }
+  }
+
+  .ant-select-selection-placeholder {
+    color: rgba($white, 0.3);
+  }
+
+  .add-filter-config.ant-popover-open {
+    background-color: $color-white-2;
+  }
+
+  .erda-configurable-filter-add {
+    width: 240px;
+    z-index: 10;
+
+    .ant-form-item {
+      margin-bottom: 0;
+
+      label.ant-form-item-required:before {
+        position: absolute;
+        right: -15px;
+      }
+    }
+  }
+
+  .ant-form-item-label label {
+    color: rgba($white, 0.6) !important;
+  }
+
+  .ant-select-dropdown {
+    padding: 0.5rem 0;
+    background-color: $color-dropdown-bg-dark;
+
+    .ant-select-item {
+      padding: 5px 8px;
+      color: $white;
+    }
+
+    div.ant-select-item-option-active {
+      background-color: rgba($white, 0.08);
+    }
+
+    .ant-select-item-option-selected {
+      background-color: transparent;
+    }
+
+    .ant-select-item-option-state {
+      color: $color-purple-deep;
+    }
+
+    .rc-virtual-list-holder {
+      padding: 0 0.5rem;
+    }
+  }
+
+  .ant-select-selection-item {
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+    color: rgba($white, 0.6);
+    border: none;
+    background-color: transparent;
+
+    &-remove {
+      display: none;
+    }
+  }
+
+  .ant-select:not(.erda-tags-select)
+    .ant-select-selection-overflow-item:not(:nth-last-child(2))
+    .ant-select-selection-item:after {
+    content: ',';
+    margin-right: 0.5rem;
+  }
+
+  .erda-tags-select {
+    .twt-tag-item {
+      height: 20px;
+      line-height: 20px;
+      margin-left: 0;
+      margin-right: 4px;
+    }
+
+    .rc-virtual-list-holder-inner {
+      flex-direction: row !important;
+      flex-wrap: wrap;
+    }
+
+    .ant-select-item {
+      padding: 0;
+      margin-right: 4px;
+      background-color: transparent !important;
+    }
+
+    .ant-select-item-option-state {
+      display: none;
+    }
+  }
+
+  .ant-input {
+    color: rgba($white, 0.6);
+    background-color: rgba($white, 0.08) !important;
+    border: none;
+  }
+
+  &-config-select {
+    padding: 3px 0;
+    line-height: 24px;
+  }
+
+  &-body {
+    div.ant-form-item-label label {
+      color: $color-white-6;
+    }
+
+    .ant-select {
+      .ant-select-clear {
+        right: 0;
+        top: -1rem;
+        width: auto;
+        color: $color-purple-highlight;
+        background-color: transparent;
+      }
+
+      &.ant-select-open {
+        .ant-select-clear {
+          opacity: 1;
+        }
+      }
+
+      .anticon-check {
+        color: $color-purple-highlight;
+      }
+
+      .ant-select-item-option-grouped {
+        padding-left: 24px !important;
+      }
+
+      .ant-select-item-group {
+        color: rgba($white, 0.6);
+        font-weight: bold;
+      }
+    }
+
+    .ant-select-arrow {
+      transform: scale(1.5);
+      transition: 0.2s;
+    }
+
+    .ant-select-open {
+      .ant-select-selector {
+        border: 1px solid $color-purple-highlight !important;
+      }
+
+      .ant-select-arrow {
+        transform: scale(1.5) rotate(180deg);
+      }
+    }
+
+    .ant-select-selector {
+      padding-left: 0.5rem;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin: 0;
+      border-color: transparent !important;
+      background-color: rgba($white, 0.08) !important;
+
+      .ant-select-selection-search {
+        margin-left: 0;
+      }
+    }
+
+    .erda-form-date-range {
+      display: flex;
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background-color: rgba($white, 0.08) !important;
+
+      &.erda-form-date-range-open {
+        border: 1px solid $color-purple-highlight !important;
+      }
+
+      .erda-form-date-range-clear {
+        color: $color-purple-highlight;
+      }
+
+      &:hover {
+        .erda-form-date-range-clear {
+          opacity: 1 !important;
+        }
+      }
+
+      .ant-picker {
+        flex: 1;
+
+        .ant-picker-suffix {
+          color: rgba($white, 0.4);
+        }
+
+        &:first-child {
+          .ant-picker-suffix {
+            display: none;
+          }
+        }
+
+        .ant-picker-clear {
+          background-color: $color-default;
+          color: rgba($white, 0.4);
+
+          & > span {
+            background-color: rgba($white, 0.08);
+          }
+        }
+      }
+
+      .divider {
+        color: rgba($white, 0.3);
+      }
+
+      &:focus {
+        border: 1px solid $color-purple-highlight;
+      }
+    }
+  }
+
+  .erda-badge-status-default {
+    color: $white;
+    background-color: $color-white-1;
+  }
+
+  &-footer {
+    .ant-btn:not(.ant-btn-primary) {
+      border: none;
+      color: $white;
+      background-color: rgba($white, 0.2);
+    }
+  }
+
+  .bg-hover:hover {
+    background-color: rgba($white, 0.08);
+    cursor: pointer;
+  }
+
+  input {
+    color: rgba($white, 0.6);
+
+    &::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: rgba($white, 0.3);
+    }
+
+    &::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: rgba($white, 0.3);
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: rgba($white, 0.3);
+    }
+  }
+}

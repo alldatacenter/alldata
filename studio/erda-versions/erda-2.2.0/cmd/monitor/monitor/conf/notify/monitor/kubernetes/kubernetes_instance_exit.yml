@@ -1,0 +1,77 @@
+id: kubernetes_instance_exit
+metadata:
+  name: "kubernetes组件异常退出"
+  type: kubernetes
+  module: monitor
+  scope:
+    - org
+behavior:
+  group: "{{cluster_name}}-{{container_id}}"
+templates:
+  - trigger:
+      - alert
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        started_at_value: "date"
+        finished_at_value: "date"
+      title: |
+        【{{cluster_name}}集群kubernetes组件{{pod_name}}异常退出告警】
+      template: |
+        【kubernetes组件异常退出告警】
+
+        组件: {{pod_name}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        启动时间: {{started_at_value}}
+
+        退出时间: {{finished_at_value}}
+
+        退出原因: {{terminated_reason_value}}
+
+        时间: {{timestamp}}
+
+        [查看详情]({{display_url}})
+
+        [查看记录]({{record_url}})
+  - trigger:
+      - recover
+    targets:
+      - dingding
+      - ticket
+      - email
+      - mbox
+      - webhook
+    i18n:
+      - "zh-CN"
+      - "en-US"
+    render:
+      formats:
+        trigger_duration: "time:ms"
+      title: |
+        【{{cluster_name}}集群kubernetes组件{{pod_name}}异常退出恢复】
+      template: |
+        【kubernetes组件异常退出恢复】
+
+        组件: {{pod_name}}
+
+        集群: {{cluster_name}}
+
+        机器: {{host_ip}}
+
+        持续时间: {{trigger_duration}}
+
+        恢复时间: {{timestamp}}
+
+        [查看记录]({{record_url}})

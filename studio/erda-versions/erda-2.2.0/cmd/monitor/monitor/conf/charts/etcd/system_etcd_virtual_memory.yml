@@ -1,0 +1,16 @@
+- system_etcd_virtual_memory:
+    title: "虚拟内存"
+    metric_names: "etcd"
+    type: "etcd"
+    order: 2
+    defines:
+      avg.process_virtual_memory_bytes:
+        label: ""
+        unit: "B"
+        unit_type: "CAPACITY"
+        axis_index: 0
+        chart_type: "line"
+    parameters:
+      group:
+        - "url_host"
+

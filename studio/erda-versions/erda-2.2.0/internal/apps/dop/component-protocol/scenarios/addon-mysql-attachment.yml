@@ -1,0 +1,42 @@
+version: 2.0
+scenario: addon-mysql-consumer
+
+hierarchy:
+  root: root
+  structure:
+    root:
+      - filter
+      - attachmentTable
+      - editFormModal
+      - configDrawer
+    configDrawer:
+      content: configContent
+      footer:
+        - configCopyParams
+    configContent:
+      - configPanel
+
+components:
+  root:
+    type: Container
+  configContent:
+    type: Container
+  configPanel:
+    type: Panel
+  configCopyParams:
+    type: CopyButton
+  configDrawer:
+    type: Drawer
+  editFormModal:
+    type: FormModal
+  filter:
+    type: ContractiveFilter
+  attachmentTable:
+    type: Table
+
+rendering:
+  filter:
+    - name: attachmentTable
+  editFormModal:
+    - name: root
+    - name: attachmentTable

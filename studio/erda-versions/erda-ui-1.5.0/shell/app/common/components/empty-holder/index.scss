@@ -1,0 +1,42 @@
+.empty-holder {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: $color-text-desc;
+  font-size: 16px;
+
+  &.relative {
+    position: relative;
+  }
+
+  &.multi-line {
+    flex-direction: column;
+
+    i {
+      margin-right: 0;
+      margin-bottom: 6px;
+      font-size: 68px;
+    }
+  }
+
+  .action {
+    color: $color-primary;
+    cursor: pointer;
+  }
+
+  &.empty-list {
+    position: relative;
+    height: 100px;
+    padding: 16px;
+    color: $color-text-desc;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+  }
+}

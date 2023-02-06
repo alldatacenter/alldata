@@ -1,0 +1,25 @@
+.error-boundary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    margin-right: 50px;
+    font-size: 120px;
+  }
+
+  .error-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+#main > .error-boundary {
+  height: 80%;
+  min-height: 460px;
+}
