@@ -121,25 +121,11 @@ architecture of development mode
 
 We welcome all contributions. Please read our [CONTRIBUTING.md](https://github.com/erda-project/erda-ui/blob/master/.github/CONTRIBUTING.md) first. You can submit any ideas as [pull requests](https://github.com/erda-project/erda-ui/pulls) or as [GitHub issues](https://github.com/erda-project/erda-ui/issues?template=bug-template). If you'd like to improve code, check out the [Development Instructions](https://github.com/erda-project/erda-ui/wiki/Development) and have a good time! :)
 
-## Contact Us
-
-If you have any questions, please feel free to contact us.
-
-- Email: erda@terminus.io
-- Twitter: [@ErdaProject](https://twitter.com/ErdaProject)
-- 知乎：[Erda 技术团队](https://www.zhihu.com/people/erda-project) (A Chinese knowledge community, similar to Quora.)
-- 微信公众号（Wechat）:
-
-<div align="left">
-	<img src="https://raw.githubusercontent.com/erda-project/erda/develop/docs/assets/wechat-small.jpg" alt="Wechat" width="150">
-</div>
-
-- 钉钉用户群（Dingtalk）:
-
-<div align="left">
-	<img src="https://raw.githubusercontent.com/erda-project/erda/develop/docs/assets/dingtalk.png" alt="Dingtalk" width="150">
-</div>
 
 ## License
 
 Erda is under the AGPL 3.0 license. See the [LICENSE](/LICENSE) file for details.
+
+## 项目官网地址：
+
+https://github.com/erda-project/erda-ui

@@ -88,20 +88,10 @@ To start using Erda, please refer to the following documentation.
 
 Contributions are always welcomed. Please refer to [Contributing to Erda](CONTRIBUTING.md) for details.
 
-## Contact Us
-
-If you have any questions, please feel free to contact us.
-
-- Email: erda@terminus.io
-- Twitter: [@ErdaProject](https://twitter.com/ErdaProject)
-- Zhihu：[Erda技术团队](https://www.zhihu.com/people/erda-project) (A Chinese knowledge community, similar to Quora.)
-- WeChat Official Account:
-
-    ![Erda WeChat](./docs/assets/wechat-small.jpg)
-- DingTalk Group:
-  
-    ![Erda DingTalk](./docs/assets/dingtalk.png)
-
 ## License
 
 Erda is under the Apache 2.0 license. See the [LICENSE](LICENSE) file for details.
+
+## 项目官网地址：
+
+https://github.com/erda-project/erda
