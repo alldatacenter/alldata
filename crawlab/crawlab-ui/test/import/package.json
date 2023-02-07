@@ -1,0 +1,27 @@
+{
+  "name": "import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crawlab-team/crawlab"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "serve:app": "vue-cli-service serve --mode app",
+    "serve:component": "vue-cli-service serve --mode component",
+    "buid": "vue-cli-service build",
+    "buid:report": "vue-cli-service build --report"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crawlab-ui": "file:../..",
+    "webpack-bundle-analyzer": "^4.4.2"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.5.13",
+    "css-loader": "^6.2.0"
+  }
+}

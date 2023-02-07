@@ -1,0 +1,26 @@
+CLI_ACTION_LOGIN = 'login'
+CLI_ACTION_UPLOAD = 'upload'
+CLI_ACTION_CONFIG = 'config'
+CLI_ACTION_MIGRATE = 'migrate'
+
+CLI_DEFAULT_API_ADDRESS = 'http://localhost:8080/api'
+CLI_DEFAULT_API_USERNAME = 'admin'
+CLI_DEFAULT_API_PASSWORD = 'admin'
+
+CLI_DEFAULT_CONFIG_ROOT_DIR = '.crawlab'
+CLI_DEFAULT_CONFIG_CLI_DIR = 'cli'
+CLI_DEFAULT_CONFIG_FILE_NAME = 'config.json'
+CLI_DEFAULT_CONFIG_KEY_USERNAME = 'username'
+CLI_DEFAULT_CONFIG_KEY_PASSWORD = 'password'
+CLI_DEFAULT_CONFIG_KEY_API_ADDRESS = 'api_address'
+CLI_DEFAULT_CONFIG_KEY_TOKEN = 'token'
+
+CLI_DEFAULT_UPLOAD_IGNORE_PATTERNS = [
+    r'^.git/',
+    r'\.pyc$',
+    r'__pycache__/',
+    r'.DS_Store',
+    r'\.idea/'
+]
+CLI_DEFAULT_UPLOAD_SPIDER_MODE = 'random'
+CLI_DEFAULT_UPLOAD_SPIDER_CMD = 'echo "hello crawlab"'
