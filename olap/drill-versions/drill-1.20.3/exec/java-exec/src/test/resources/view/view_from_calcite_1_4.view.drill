@@ -1,0 +1,10 @@
+{
+  "name" : "view_from_calcite_1_4",
+  "sql" : "SELECT *\nFROM `cp`.`store.json`\nWHERE `store_id` = 0",
+  "fields" : [ {
+    "name" : "*",
+    "type" : "ANY",
+    "isNullable" : true
+  } ],
+  "workspaceSchemaPath" : [ "dfs", "tmp" ]
+}

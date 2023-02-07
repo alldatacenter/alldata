@@ -1,0 +1,37 @@
+{
+  "storage": {
+    "dfs": {
+      "type": "file",
+      "formats": {
+        "spss": {
+          "type": "spss",
+          "extensions": [
+            "sav"
+          ]
+        }
+      }
+    },
+    "cp": {
+      "type": "file",
+      "formats": {
+        "spss": {
+          "type": "spss",
+          "extensions": [
+            "sav"
+          ]
+        }
+      }
+    },
+    "s3": {
+      "type": "file",
+      "formats": {
+        "spss": {
+          "type": "spss",
+          "extensions": [
+            "sav"
+          ]
+        }
+      }
+    }
+  }
+}
