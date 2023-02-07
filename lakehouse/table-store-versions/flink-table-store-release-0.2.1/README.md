@@ -17,10 +17,12 @@ Run the `mvn clean package -DskipTests` command to build the project.
 
 Then you will find a JAR file with all shaded dependencies: `flink-table-store-dist/target/flink-table-store-dist-<version>.jar`.
 
-## Contributing
-
-You can learn more about how to contribute on the [Apache Flink website](https://flink.apache.org/contributing/how-to-contribute.html). For code contributions, please read carefully the [Contributing Code](https://flink.apache.org/contributing/contribute-code.html) section for an overview of ongoing community work.
-
 ## License
 
 The code in this repository is licensed under the [Apache Software License 2](LICENSE).
+
+
+
+## 项目官网地址：
+
+https://github.com/apache/flink-table-store

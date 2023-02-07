@@ -94,12 +94,10 @@ Please note that JDK 8 or JDK 11 is required to build Druid.
 
 See the latest [build guide](https://druid.apache.org/docs/latest/development/build.html) for instructions on building Apache Druid from source.
 
-### Contributing
-
-Please follow the [community guidelines](https://druid.apache.org/community/) for contributing.
-
-For instructions on setting up IntelliJ [dev/intellij-setup.md](dev/intellij-setup.md)
-
 ### License
 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+## 项目官网地址：
+
+https://github.com/apache/druid

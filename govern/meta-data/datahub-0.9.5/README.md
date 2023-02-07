@@ -94,76 +94,11 @@ If you're looking to build & modify datahub please take a look at our [Developme
 
 See [Releases](https://github.com/datahub-project/datahub/releases) page for more details. We follow the [SemVer Specification](https://semver.org) when versioning the releases and adopt the [Keep a Changelog convention](https://keepachangelog.com/) for the changelog format.
 
-## Contributing
-
-We welcome contributions from the community. Please refer to our [Contributing Guidelines](docs/CONTRIBUTING.md) for more details. We also have a [contrib](contrib) directory for incubating experimental features.
-
-## Community
-
-Join our [Slack workspace](https://slack.datahubproject.io) for discussions and important announcements. You can also find out more about our upcoming [town hall meetings](docs/townhalls.md) and view past recordings.
-
-## Adoption
-
-Here are the companies that have officially adopted DataHub. Please feel free to add yours to the list if we missed it.
-
-- [ABLY](https://ably.team/)
-- [Adevinta](https://www.adevinta.com/)
-- [Banksalad](https://www.banksalad.com)
-- [Cabify](https://cabify.tech/)
-- [ClassDojo](https://www.classdojo.com/)
-- [Coursera](https://www.coursera.org/)
-- [DefinedCrowd](http://www.definedcrowd.com)
-- [DFDS](https://www.dfds.com/)
-- [Digital Turbine](https://www.digitalturbine.com/)
-- [Expedia Group](http://expedia.com)
-- [Experius](https://www.experius.nl)
-- [Geotab](https://www.geotab.com)
-- [Grofers](https://grofers.com)
-- [Haibo Technology](https://www.botech.com.cn)
-- [hipages](https://hipages.com.au/)
-- [IOMED](https://iomed.health)
-- [Klarna](https://www.klarna.com)
-- [LinkedIn](http://linkedin.com)
-- [Moloco](https://www.moloco.com/en)
-- [N26](https://n26brasil.com/)
-- [Optum](https://www.optum.com/)
-- [Peloton](https://www.onepeloton.com)
-- [Razer](https://www.razer.com)
-- [Saxo Bank](https://www.home.saxo)
-- [Showroomprive](https://www.showroomprive.com/)
-- [SpotHero](https://spothero.com)
-- [Stash](https://www.stash.com)
-- [Shanghai HuaRui Bank](https://www.shrbank.com)
-- [ThoughtWorks](https://www.thoughtworks.com)
-- [TypeForm](http://typeform.com)
-- [Udemy](https://www.udemy.com/)
-- [Uphold](https://uphold.com)
-- [Viasat](https://viasat.com)
-- [Wikimedia](https://www.wikimedia.org)
-- [Wolt](https://wolt.com)
-- [Zynga](https://www.zynga.com)
-
-
-## Select Articles & Talks
-
-- [DataHub Blog](https://blog.datahubproject.io/)
-- [DataHub YouTube Channel](https://www.youtube.com/channel/UC3qFQC5IiwR5fvWEqi_tJ5w)
-- [Optum: Data Mesh via DataHub](https://optum.github.io/blog/2022/03/23/data-mesh-via-datahub/)
-- [Saxo Bank: Enabling Data Discovery in Data Mesh](https://medium.com/datahub-project/enabling-data-discovery-in-a-data-mesh-the-saxo-journey-451b06969c8f)
-- [Bringing The Power Of The DataHub Real-Time Metadata Graph To Everyone At Acryl Data](https://www.dataengineeringpodcast.com/acryl-data-datahub-metadata-graph-episode-230/)
-- [DataHub: Popular Metadata Architectures Explained](https://engineering.linkedin.com/blog/2020/datahub-popular-metadata-architectures-explained)
-- [Driving DataOps Culture with LinkedIn DataHub](https://www.youtube.com/watch?v=ccsIKK9nVxk) @ [DataOps Unleashed 2021](https://dataopsunleashed.com/#shirshanka-session)
-- [The evolution of metadata: LinkedIn’s story](https://speakerdeck.com/shirshanka/the-evolution-of-metadata-linkedins-journey-strata-nyc-2019) @ [Strata Data Conference 2019](https://conferences.oreilly.com/strata/strata-ny-2019.html)
-- [Journey of metadata at LinkedIn](https://www.youtube.com/watch?v=OB-O0Y6OYDE) @ [Crunch Data Conference 2019](https://crunchconf.com/2019)
-- [DataHub Journey with Expedia Group](https://www.youtube.com/watch?v=ajcRdB22s5o)
-- [Data Discoverability at SpotHero](https://www.slideshare.net/MaggieHays/data-discoverability-at-spothero)
-- [Data Catalogue — Knowing your data](https://medium.com/albert-franzi/data-catalogue-knowing-your-data-15f7d0724900)
-- [DataHub: A Generalized Metadata Search & Discovery Tool](https://engineering.linkedin.com/blog/2019/data-hub)
-- [Open sourcing DataHub: LinkedIn’s metadata search and discovery platform](https://engineering.linkedin.com/blog/2020/open-sourcing-datahub--linkedins-metadata-search-and-discovery-p)
-- [Emerging Architectures for Modern Data Infrastructure](https://future.com/emerging-architectures-for-modern-data-infrastructure-2020/)
-
-See the full list [here](docs/links.md).
 
 ## License
 
 [Apache License 2.0](./LICENSE).
+
+## 项目官网地址：
+
+https://github.com/datahub-project/datahub

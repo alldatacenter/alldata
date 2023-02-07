@@ -15,4 +15,5 @@
    lowcode/index
    rancher/index
    sreworks/index
+   tasks/index
    tis/index

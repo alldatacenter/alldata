@@ -173,12 +173,7 @@ The relevant portion of the line will look similar to the following:
 
     java -ea -Ddebezium.test.capture.mode=oplog -Ddebezium.test.version.mongo.server=3.6 -Djava.awt.headless=true -Dconnector.mongodb.members.auto.discover=false -Dconnector.mongodb.name=mongo1 -DskipLongRunningTests=true [...]
 
-## Contributing
 
-The Debezium community welcomes anyone that wants to help out in any way, whether that includes reporting problems, helping with documentation, or contributing code changes to fix bugs, add tests, or implement new features. See [this document](CONTRIBUTE.md) for details.
+## 项目官网地址：
 
-A big thank you to all the Debezium contributors!
-
-<a href="https://github.com/debezium/debezium/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=debezium/debezium" />
-</a>
+https://github.com/debezium/debezium

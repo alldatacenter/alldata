@@ -55,25 +55,13 @@ greatly improves the efficiency, quality and reusability of IoT application deve
 
 - Now that you have installed Shifu, please visit our🗒️[documentation](https://shifu.run/docs/) to🔌[connect a device](https://shifu.run/docs/guides/cases/) and 👨‍💻[develop your own application](https://shifu.run/docs/guides/application/)!
 
-# 💖 Community
-
-Welcome to the Shifu community to share your thoughts and ideas! Any suggestion will be deeply valued.
-We couldn't be more excited to have you.
-
-[![Discord](https://img.shields.io/badge/Discord-join-brightgreen)](https://discord.gg/CkRwsJ7raw)
-[![Twitter](https://img.shields.io/badge/Twitter-follow-blue)](https://twitter.com/ShifuFramework)
-[![Reddit](https://img.shields.io/badge/Reddit-post-orange)](https://www.reddit.com/r/Shifu/)
-[![GitHub Discussions](https://img.shields.io/badge/GitHub%20Discussions-post-orange)](https://github.com/Edgenesis/shifu/discussions)
-
-
-# ✍️ Contributing
-Feel free to [create an issue](https://github.com/Edgenesis/shifu/issues/new/choose) or [submit a pull request](https://github.com/Edgenesis/shifu/pulls)!
-
-We will forever be grateful to all the [contributors](https://github.com/Edgenesis/shifu/graphs/contributors)🥰.
-
 # 🌟 Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/Edgenesis/shifu.svg)](https://starchart.cc/Edgenesis/shifu)
 
 # License
 This project is distributed under Apache 2.0 License.
+
+## 项目官网地址：
+
+https://github.com/Edgenesis/shifu

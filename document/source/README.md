@@ -592,7 +592,7 @@
 
 | Component                                                                             | Description                                                    | Important Composition       |
 |---------------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------|
-| [**ai-studio**](https://github.com/alldatacenter/alldata/tree/master/ai-studio)       | AI STUDIO FOR ALL DATA PLATFORM artificial intelligence engine | 人工智能引擎                      |
+| [**ai**](https://github.com/alldatacenter/alldata/tree/master/ai)       | AI STUDIO FOR ALL DATA PLATFORM artificial intelligence engine | 人工智能引擎                      |
 | [**ai-tasks**](https://github.com/alldatacenter/alldata/tree/master/ai-tasks)         | AI STUDIO TASKS FOR ALL DATA PLATFORM MLAPPS Engine            | 人工智能模型任务                    | 
 | [**assembly**](https://github.com/alldatacenter/alldata/tree/master/assembly)         | WHOLE PACKAGE BUILD FOR ALL DATA PLATFORM assembly engine      | 整包构建引擎                      |
 | [**buried**](https://github.com/alldatacenter/alldata/tree/master/buried)             | BURIED FOR ALL DATA PLATFORM data acquisition engine           | 埋点解决方案                      |
@@ -601,7 +601,7 @@
 | [**crawler**](https://github.com/alldatacenter/alldata/tree/master/crawler)           | CRAWLER DATA TRADE FOR ALL DATA PLATFORM commerce engine       | 爬虫任务                        |
 | [**crawlerlab**](https://github.com/alldatacenter/alldata/tree/master/crawlerlab)     | CRAWLER PLATFORM FOR ALL DATA PLATFORM commerce engine         | 爬虫引擎系统                      |
 | [**olap**](https://github.com/alldatacenter/alldata/tree/master/olap)                 | OLAP FOR ALL DATA PLATFORM OLAP query engine                   | 混合OLAP查询引擎                  |
-| [**alldata-dts**](https://github.com/alldatacenter/alldata/tree/master/alldata-dts)   | DATA Integrate FOR ALL DATA PLATFORM Data Integration Engine   | 数据集成引擎                      |
+| [**dts**](https://github.com/alldatacenter/alldata/tree/master/dts)   | DATA Integrate FOR ALL DATA PLATFORM Data Integration Engine   | 数据集成引擎                      |
 | [**cluster**](https://github.com/alldatacenter/alldata/tree/master/cluster)           | DATA SRE FOR ALL DATA PLATFORM OLAP query engine               | 智能大数据运维引擎                   |
 | [**deploy**](https://github.com/alldatacenter/alldata/tree/master/deploy)             | DEPLOY FOR ALL DATA PLATFORM OLAP query engine                 | 安装部署                        |
 | [**documents**](https://github.com/alldatacenter/alldata/tree/master/documents)       | DOCUMENT FOR ALL DATA PLATFORM OLAP query engine               | 官方文档                        |

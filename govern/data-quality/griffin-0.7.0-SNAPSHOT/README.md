@@ -56,3 +56,7 @@ core-site.xml/hdfs-site.xml/mapred-site.xml/yarn-site.xml/hive-site.xml
 4.5 cd 安装包bin目录，执行./griffin.sh start or ./griffin.sh stop启停
 
 4.6 访问localhost:8090
+
+## 项目官网地址：
+
+https://github.com/apache/griffin

@@ -118,9 +118,6 @@ npm run start:federate
 
 This will run a dev server on http://localhost:3000 that will serve a federated module named `debezium_ui`.
 
-## Contributing
+## 项目官网地址：
 
-The Debezium community welcomes anyone that wants to help out in any way, whether that includes
-reporting problems, helping with documentation, or contributing code changes to fix bugs, add tests,
-or implement new features.
-See [this document](https://github.com/debezium/debezium/blob/main/CONTRIBUTE.md) for details.
+https://github.com/debezium/debezium-ui

@@ -90,7 +90,7 @@ TIS基于数据库元数据信息自动生成Flink-SQL脚本,您没看错全部�
 ## 许可协议
 
  TIS is under the Apache2 License. See the [LICENSE](https://github.com/qlangtech/tis-solr/blob/master/LICENSE) file for details.
- 
-## 反馈
- 
-  您在使用过程中对TIS有任何不满或者批评都请不惜斧正，您提出的宝贵意见是对我们最大的支持和鼓励，[我要提建议](https://github.com/qlangtech/tis-solr/issues/new)
+
+## 官方项目地址
+
+https://github.com/qlangtech/tis
