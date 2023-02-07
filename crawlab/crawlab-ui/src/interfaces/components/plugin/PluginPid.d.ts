@@ -1,0 +1,3 @@
+interface PluginPidProps {
+  status?: PluginStatus[];
+}

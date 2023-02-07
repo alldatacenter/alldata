@@ -1,0 +1,1 @@
+type NavSidebarListProps = NavSidebarContent;

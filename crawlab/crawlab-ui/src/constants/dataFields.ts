@@ -1,0 +1,10 @@
+export const DATA_FIELD_TYPE_GENERAL = "general";
+export const DATA_FIELD_TYPE_NUMERIC = "numeric";
+export const DATA_FIELD_TYPE_TIME = "time";
+export const DATA_FIELD_TYPE_CURRENCY = "currency";
+export const DATA_FIELD_TYPE_URL = "url";
+export const DATA_FIELD_TYPE_IMAGE = "image";
+export const DATA_FIELD_TYPE_AUDIO = "audio";
+export const DATA_FIELD_TYPE_VIDEO = "video";
+export const DATA_FIELD_TYPE_HTML = "html";
+export const DATA_FIELD_TYPE_LONG_TEXT = "long-text";

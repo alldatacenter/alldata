@@ -1,0 +1,41 @@
+//to reset element-ui default css
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.el-dialog {
+  //transform: none;
+  //left: 0;
+  //position: relative;
+  //margin: 0 auto;
+}
+
+//element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+.el-button {
+  &:not(.is-circle) {
+    .fa {
+      margin-right: 5px;
+    }
+  }
+}
+
+:root {
+  --el-font-weight-primary: 400;
+}

@@ -1,0 +1,3 @@
+interface LComponentsEmpty {
+  noDataAvailable: string;
+}

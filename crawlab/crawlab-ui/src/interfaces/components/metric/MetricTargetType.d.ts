@@ -1,0 +1,3 @@
+interface MetricTargetTypeProps {
+  type?: MetricTargetType;
+}
