@@ -1,0 +1,146 @@
+{
+  "metadata_version" : "3.3",
+  "columnTypeInfo" : {
+    "`val_int_64`" : {
+      "name" : [ "val_int_64" ],
+      "primitiveType" : "INT64",
+      "originalType" : "DECIMAL",
+      "precision" : 16,
+      "scale" : 2,
+      "repetitionLevel" : 0,
+      "definitionLevel" : 0
+    },
+    "`val_int_32`" : {
+      "name" : [ "val_int_32" ],
+      "primitiveType" : "INT32",
+      "originalType" : "DECIMAL",
+      "precision" : 5,
+      "scale" : 2,
+      "repetitionLevel" : 0,
+      "definitionLevel" : 0
+    },
+    "`part_fixed`" : {
+      "name" : [ "part_fixed" ],
+      "primitiveType" : "FIXED_LEN_BYTE_ARRAY",
+      "originalType" : "DECIMAL",
+      "precision" : 16,
+      "scale" : 2,
+      "repetitionLevel" : 0,
+      "definitionLevel" : 0
+    },
+    "`part_int_64`" : {
+      "name" : [ "part_int_64" ],
+      "primitiveType" : "INT64",
+      "originalType" : "DECIMAL",
+      "precision" : 16,
+      "scale" : 2,
+      "repetitionLevel" : 0,
+      "definitionLevel" : 0
+    },
+    "`part_int_32`" : {
+      "name" : [ "part_int_32" ],
+      "primitiveType" : "INT32",
+      "originalType" : "DECIMAL",
+      "precision" : 5,
+      "scale" : 2,
+      "repetitionLevel" : 0,
+      "definitionLevel" : 0
+    },
+    "`val_fixed`" : {
+      "name" : [ "val_fixed" ],
+      "primitiveType" : "FIXED_LEN_BYTE_ARRAY",
+      "originalType" : "DECIMAL",
+      "precision" : 16,
+      "scale" : 2,
+      "repetitionLevel" : 0,
+      "definitionLevel" : 0
+    }
+  },
+  "files" : [ {
+    "path" : "0_0_2.parquet",
+    "length" : 1072,
+    "rowGroups" : [ {
+      "start" : 4,
+      "length" : 390,
+      "rowCount" : 3,
+      "hostAffinity" : {
+        "localhost" : 1.0
+      },
+      "columns" : [ {
+        "name" : [ "part_int_32" ],
+        "minValue" : 200,
+        "maxValue" : 200,
+        "nulls" : 0
+      }, {
+        "name" : [ "val_int_32" ],
+        "minValue" : 205,
+        "maxValue" : 2025,
+        "nulls" : 0
+      }, {
+        "name" : [ "part_int_64" ],
+        "minValue" : 200,
+        "maxValue" : 200,
+        "nulls" : 0
+      }, {
+        "name" : [ "val_int_64" ],
+        "minValue" : 205,
+        "maxValue" : 2025,
+        "nulls" : 0
+      }, {
+        "name" : [ "part_fixed" ],
+        "minValue" : "AAAAAAAAAAAAAADI",
+        "maxValue" : "AAAAAAAAAAAAAADI",
+        "nulls" : 0
+      }, {
+        "name" : [ "val_fixed" ],
+        "minValue" : "AAAAAAAAAAAAAADN",
+        "maxValue" : "AAAAAAAAAAAAAAfp",
+        "nulls" : 0
+      } ]
+    } ]
+  }, {
+    "path" : "0_0_1.parquet",
+    "length" : 1072,
+    "rowGroups" : [ {
+      "start" : 4,
+      "length" : 390,
+      "rowCount" : 3,
+      "hostAffinity" : {
+        "localhost" : 1.0
+      },
+      "columns" : [ {
+        "name" : [ "part_int_32" ],
+        "minValue" : 100,
+        "maxValue" : 100,
+        "nulls" : 0
+      }, {
+        "name" : [ "val_int_32" ],
+        "minValue" : 105,
+        "maxValue" : 1025,
+        "nulls" : 0
+      }, {
+        "name" : [ "part_int_64" ],
+        "minValue" : 100,
+        "maxValue" : 100,
+        "nulls" : 0
+      }, {
+        "name" : [ "val_int_64" ],
+        "minValue" : 105,
+        "maxValue" : 1025,
+        "nulls" : 0
+      }, {
+        "name" : [ "part_fixed" ],
+        "minValue" : "AAAAAAAAAAAAAABk",
+        "maxValue" : "AAAAAAAAAAAAAABk",
+        "nulls" : 0
+      }, {
+        "name" : [ "val_fixed" ],
+        "minValue" : "AAAAAAAAAAAAAABp",
+        "maxValue" : "AAAAAAAAAAAAAAQB",
+        "nulls" : 0
+      } ]
+    } ]
+  } ],
+  "directories" : [ ],
+  "drillVersion" : "1.13.0"
+}
