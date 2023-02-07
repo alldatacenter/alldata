@@ -171,13 +171,6 @@ then follow these steps:
 ## License
 Apache License 2.0, see [LICENSE](https://github.com/delta-io/delta/blob/master/LICENSE.txt).
 
-## Community
+## 项目官网地址：
 
-There are two mediums of communication within the Delta Lake community.
-
-* Public Slack Channel
-  - [Register here](https://go.delta.io/slack)
-  - [Login here](https://delta-users.slack.com/)
-* [Linkedin page](https://www.linkedin.com/company/deltalake)
-* [Youtube channel](https://www.youtube.com/c/deltalake)
-* Public [Mailing list](https://groups.google.com/forum/#!forum/delta-users)
+https://github.com/delta-io/delta

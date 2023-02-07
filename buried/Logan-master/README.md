@@ -207,13 +207,6 @@ Finally, we hope to provide a more complete integrated case analysis ecosystem.
 
 Logan is licensed under the MIT License - see the [LICENSE](https://github.com/Meituan-Dianping/Logan/blob/master/LICENSE) file for details.
 
-# Article
-[A lightweight case logging system based on mobile platform developed by Meituan-Dianping — Logan](https://tech.meituan.com/Logan.html)
+## 项目官网地址：
 
-[Logan: Open Source](https://tech.meituan.com/logan_open_source.html)
-
-[Introduction to Logan Web SDK](https://tech.meituan.com/2020/01/09/meituan-logan.html)
-
-# Acknowledgments
-- [mbedtls](https://github.com/ARMmbed/mbedtls)
-- [cJSON](https://github.com/DaveGamble/cJSON)
+https://github.com/Meituan-Dianping/Logan

@@ -143,7 +143,6 @@ mvn -Punit-tests test -DSPARK_EVLOG_DIR=/path/for/spark/event/log
 
 Please visit [https://hudi.apache.org/docs/quick-start-guide.html](https://hudi.apache.org/docs/quick-start-guide.html) to quickly explore Hudi's capabilities using spark-shell. 
 
-## Contributing
+## 项目官网地址：
 
-Please check out our [contribution guide](https://hudi.apache.org/contribute/how-to-contribute) to learn more about how to contribute.
-For code contributions, please refer to the [developer setup](https://hudi.apache.org/contribute/developer-setup).
+https://github.com/apache/hudi

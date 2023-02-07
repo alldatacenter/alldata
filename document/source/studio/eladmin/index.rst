@@ -1,4 +1,4 @@
-AllData总部前后端解决方案
+AllData Studio
 =================================
  
 .. toctree::

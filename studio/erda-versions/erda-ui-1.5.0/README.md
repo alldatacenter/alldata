@@ -109,19 +109,6 @@ This project contain the following parts:
 architecture of development mode
 </div>
 
-## 🔗 Links
-
-- [Erda Cloud](https://erda.cloud)
-- [Official Website](https://www.erda.cloud)
-- [User Docs](https://docs.erda.cloud)
-- [Backend project](https://github.com/erda-project/erda)
-
-
-## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-We welcome all contributions. Please read our [CONTRIBUTING.md](https://github.com/erda-project/erda-ui/blob/master/.github/CONTRIBUTING.md) first. You can submit any ideas as [pull requests](https://github.com/erda-project/erda-ui/pulls) or as [GitHub issues](https://github.com/erda-project/erda-ui/issues?template=bug-template). If you'd like to improve code, check out the [Development Instructions](https://github.com/erda-project/erda-ui/wiki/Development) and have a good time! :)
-
-
 ## License
 
 Erda is under the AGPL 3.0 license. See the [LICENSE](/LICENSE) file for details.

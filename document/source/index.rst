@@ -11,21 +11,17 @@
 
    README
    quickstart/index
+   ai/index
    studio/index
-   studio-tasks/index
-   ai-studio/index
-   ai-tasks/index
-   lakehouse/index
-   olap/index
    dts/index
+   olap/index
+   lakehouse/index
    govern/index
    knowledge/index
    iot/index
    cluster/index
    buried/index
-   buried-shop/index
-   buried-trade/index
+   trade/index
    clawlab/index
-   clawler/index
-   community/index
+   wiki/index
 

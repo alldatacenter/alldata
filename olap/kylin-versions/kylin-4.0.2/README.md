@@ -48,16 +48,13 @@ Documentation
 =============
 Please refer to [http://kylin.apache.org/docs40/](http://kylin.apache.org/docs40/).
 
-Get Help
-============
-The fastest way to get response from our developers is to send an email to our mail list <dev@kylin.apache.org>,   
-and remember to subscribe our mail list via <dev-subscribe@kylin.apache.org>
 
 License
 ============
 Please refer to [LICENSE](https://github.com/apache/kylin/blob/master/LICENSE) file.
 
+## 项目官网地址：
 
-
+https://github.com/apache/kylin
 
 

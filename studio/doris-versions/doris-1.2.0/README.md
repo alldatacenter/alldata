@@ -189,42 +189,6 @@ Doris provides one-click visual automatic installation and deployment, cluster m
 
 🔗[apache/doris-manager](https://github.com/apache/doris-manager)
 
-## 🌈 Community and Support
-
-### 📤 Subscribe Mailing Lists
-
-Mail List is the most recognized form of communication in Apache community. See how to 🔗[Subscribe Mailing Lists](https://doris.apache.org/community/subscribe-mail-list)
-
-### 🙋 Report Issues or Submit Pull Request
-
-If you meet any questions, feel free to file a 🔗[GitHub Issue](https://github.com/apache/doris/issues) or post it in 🔗[GitHub Discussion](https://github.com/apache/doris/discussions) and fix it by submitting a 🔗[Pull Request](https://github.com/apache/doris/pulls) 
-
-### 🍻 How to Contribute
-
-We welcome your suggestions, comments (including criticisms), comments and contributions. See 🔗[How to Contribute](https://doris.apache.org/community/how-to-contribute/) and 🔗[Code Submission Guide](https://doris.apache.org/community/how-to-contribute/pull-request/)
-
-### ⌨️ Doris Improvement Proposals (DSIP)
-
-🔗[Doris Improvement Proposal (DSIP)](https://cwiki.apache.org/confluence/display/DORIS/Doris+Improvement+Proposals) can be thought of as **A Collection of Design Documents for all Major Feature Updates or Improvements**.
-
-
-
-
-## 💬 Contact Us
-
-Contact us through the following mailing list.
-
-| Name                                                                          | Scope                           |                                                                 |                                                                     |                                                                              |
-|:------------------------------------------------------------------------------|:--------------------------------|:----------------------------------------------------------------|:--------------------------------------------------------------------|:-----------------------------------------------------------------------------|
-| [dev@doris.apache.org](mailto:dev@doris.apache.org)     | Development-related discussions | [Subscribe](mailto:dev-subscribe@doris.apache.org)   | [Unsubscribe](mailto:dev-unsubscribe@doris.apache.org)   | [Archives](http://mail-archives.apache.org/mod_mbox/doris-dev/)   |
-
-## 🧰 Links
-
-* Apache Doris Official Website - [https://doris.apache.org](https://doris.apache.org)
-* Developer Mailing list - <dev@doris.apache.org>. Mail to <dev-subscribe@doris.apache.org>, follow the reply to subscribe the mail list.
-* Slack channel - [Join the Slack](https://join.slack.com/t/apachedoriscommunity/shared_invite/zt-1h153f1ar-sTJB_QahY1SHvZdtPFoIOQ)
-* Twitter - [Follow @doris_apache](https://twitter.com/doris_apache)
-
 
 ## 📜 License
 
@@ -236,3 +200,6 @@ some Doris features to be complied with Apache 2.0 License. For details, refer t
 
 
 
+## 项目官网地址：
+
+https://github.com/apache/doris

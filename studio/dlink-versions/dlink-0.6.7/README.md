@@ -134,3 +134,6 @@ Dinky 基于 Apache Flink 实现 Dlink ，增强 Flink 的应用与体验，探�
 ### 4.2 Flink CONF配置：sql-gateway.endpoint.type: hiveserver2
 
 
+## 项目官网地址：
+
+https://github.com/DataLinkDC/dinky

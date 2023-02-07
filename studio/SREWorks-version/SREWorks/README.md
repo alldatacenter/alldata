@@ -44,20 +44,6 @@ There are many excellent open-source O & M platforms that reflect cloud-native s
 
 [ROADMAP](ROADMAP.md)
 
-## Contributing
+## 官方项目地址
 
-We'd love to accept your patches and contributions to SREWorks. Please refer to [CONTRIBUTING](CONTRIBUTING.md) for a few small guidelines you need to follow.
-
-## Community
-
-- Wechat Chat Group (*Chinese*): Broker wechat to add you into the user group.
-
-<img src="/paas/sw-frontend/src/publicMedia/weixin.jpg" width="100" />
-
-- Dingtalk Chat Group (*Chinese*): 35853026
-
-<img src="/paas/sw-frontend/src/publicMedia/ding.jpg" width="100" />
-
-## Code of Conduct
-
-Contributions to the SREWorks are expected to adhere to our [Code of Conduct](CODE_OF_CONDUCT.md).
+https://github.com/alibaba/SREWorks
