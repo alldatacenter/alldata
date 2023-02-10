@@ -855,23 +855,6 @@
           {
             "path": "grpc/common.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.block"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "BlockMasterProto"
-          }
         ]
       }
     },
@@ -1443,23 +1426,6 @@
           {
             "path": "grpc/common.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.block"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "BlockWorkerProto"
-          }
         ]
       }
     },
@@ -1843,23 +1809,6 @@
                 "type": "ErrorType"
               }
             ]
-          }
-        ],
-        "package": {
-          "name": "alluxio.grpc"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "CommonProto"
           }
         ]
       }
@@ -2252,13 +2201,7 @@
               {
                 "id": 4,
                 "name": "updateLastAccessTime",
-                "type": "bool",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "true"
-                  }
-                ]
+                "type": "bool"
               }
             ]
           },
@@ -2296,13 +2239,7 @@
               {
                 "id": 7,
                 "name": "xattrPropStrat",
-                "type": "XAttrPropagationStrategy",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "NEW_PATHS"
-                  }
-                ]
+                "type": "XAttrPropagationStrategy"
               }
             ],
             "maps": [
@@ -2397,13 +2334,7 @@
               {
                 "id": 12,
                 "name": "xattrPropStrat",
-                "type": "XAttrPropagationStrategy",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "NEW_PATHS"
-                  }
-                ]
+                "type": "XAttrPropagationStrategy"
               }
             ],
             "maps": [
@@ -2584,13 +2515,7 @@
               {
                 "id": 4,
                 "name": "updateTimestamps",
-                "type": "bool",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "true"
-                  }
-                ]
+                "type": "bool"
               }
             ]
           },
@@ -3189,24 +3114,12 @@
               {
                 "id": 3,
                 "name": "ufsCapacityBytes",
-                "type": "int64",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "-1"
-                  }
-                ]
+                "type": "int64"
               },
               {
                 "id": 4,
                 "name": "ufsUsedBytes",
-                "type": "int64",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "-1"
-                  }
-                ]
+                "type": "int64"
               },
               {
                 "id": 5,
@@ -4164,23 +4077,6 @@
           {
             "path": "proto/journal/file.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.file"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "FileSystemMasterProto"
-          }
         ]
       }
     },
@@ -4203,23 +4099,6 @@
                 "integer": 2
               }
             ]
-          }
-        ],
-        "package": {
-          "name": "alluxio.grpc.fscommon"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "FsCommonProto"
           }
         ]
       }
@@ -5132,23 +5011,6 @@
           {
             "path": "grpc/common.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.job"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "JobMasterProto"
-          }
         ]
       }
     },
@@ -5403,23 +5265,6 @@
           {
             "path": "grpc/common.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.journal"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "JournalMasterProto"
-          }
         ]
       }
     },
@@ -5485,23 +5330,6 @@
                 "out_streamed": true
               }
             ]
-          }
-        ],
-        "package": {
-          "name": "alluxio.grpc.messaging"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "MessagingTransportProto"
           }
         ]
       }
@@ -6270,23 +6098,6 @@
           {
             "path": "grpc/common.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.meta"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "MetaMasterProto"
-          }
         ]
       }
     },
@@ -6402,23 +6213,6 @@
         "imports": [
           {
             "path": "grpc/common.proto"
-          }
-        ],
-        "package": {
-          "name": "alluxio.grpc.metric"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "MetricMasterProto"
           }
         ]
       }
@@ -6601,23 +6395,6 @@
           {
             "path": "grpc/common.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.meta"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "RaftJournalProto"
-          }
         ]
       }
     },
@@ -6698,23 +6475,6 @@
                 "out_streamed": true
               }
             ]
-          }
-        ],
-        "package": {
-          "name": "alluxio.grpc.sasl"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "AuthenticationServerProto"
           }
         ]
       }
@@ -6893,23 +6653,6 @@
           },
           {
             "path": "grpc/table/table_master.proto"
-          }
-        ],
-        "package": {
-          "name": "alluxio.grpc.table.layout"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc.table.layout.hive"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "HiveLayoutProto"
           }
         ]
       }
@@ -8089,23 +7832,6 @@
           {
             "path": "grpc/job_master.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.table"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc.table"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "TableMasterProto"
-          }
         ]
       }
     },
@@ -8225,23 +7951,6 @@
               }
             ]
           }
-        ],
-        "package": {
-          "name": "alluxio.grpc.version"
-        },
-        "options": [
-          {
-            "name": "java_multiple_files",
-            "value": "true"
-          },
-          {
-            "name": "java_package",
-            "value": "alluxio.grpc"
-          },
-          {
-            "name": "java_outer_classname",
-            "value": "VersionProto"
-          }
         ]
       }
     },
@@ -8279,10 +7988,7 @@
               }
             ]
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.client"
-        }
+        ]
       }
     },
     {
@@ -8412,10 +8118,7 @@
           {
             "path": "proto/shared/acl.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.dataserver"
-        }
+        ]
       }
     },
     {
@@ -8494,10 +8197,7 @@
               }
             ]
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.status"
-        }
+        ]
       }
     },
     {
@@ -8539,10 +8239,7 @@
               }
             ]
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.journal"
-        }
+        ]
       }
     },
     {
@@ -8877,13 +8574,7 @@
               {
                 "id": 13,
                 "name": "ttlAction",
-                "type": "PTtlAction",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "DELETE"
-                  }
-                ]
+                "type": "PTtlAction"
               },
               {
                 "id": 14,
@@ -8914,13 +8605,7 @@
               {
                 "id": 20,
                 "name": "xAttr_update_strategy",
-                "type": "XAttrUpdateStrategy",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "TRUNCATE"
-                  }
-                ]
+                "type": "XAttrUpdateStrategy"
               }
             ],
             "maps": [
@@ -9091,13 +8776,7 @@
               {
                 "id": 14,
                 "name": "ttlAction",
-                "type": "PTtlAction",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "DELETE"
-                  }
-                ]
+                "type": "PTtlAction"
               },
               {
                 "id": 15,
@@ -9239,13 +8918,7 @@
               {
                 "id": 17,
                 "name": "ttlAction",
-                "type": "PTtlAction",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "DELETE"
-                  }
-                ]
+                "type": "PTtlAction"
               },
               {
                 "id": 18,
@@ -9477,13 +9150,7 @@
               {
                 "id": 9,
                 "name": "ttlAction",
-                "type": "PTtlAction",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "DELETE"
-                  }
-                ]
+                "type": "PTtlAction"
               },
               {
                 "id": 10,
@@ -9523,13 +9190,7 @@
               {
                 "id": 2,
                 "name": "ufsMode",
-                "type": "UfsMode",
-                "options": [
-                  {
-                    "name": "default",
-                    "value": "READ_WRITE"
-                  }
-                ]
+                "type": "UfsMode"
               }
             ]
           }
@@ -9541,10 +9202,7 @@
           {
             "path": "proto/shared/acl.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.journal"
-        }
+        ]
       }
     },
     {
@@ -9619,10 +9277,7 @@
               }
             ]
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.journal"
-        }
+        ]
       }
     },
     {
@@ -9867,15 +9522,6 @@
           {
             "path": "proto/journal/job.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.journal"
-        },
-        "options": [
-          {
-            "name": "java_package",
-            "value": "alluxio.proto.journal"
-          }
         ]
       }
     },
@@ -9923,10 +9569,7 @@
               }
             ]
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.journal"
-        }
+        ]
       }
     },
     {
@@ -10222,10 +9865,7 @@
           {
             "path": "grpc/table/table_master.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.journal"
-        }
+        ]
       }
     },
     {
@@ -10262,10 +9902,7 @@
               }
             ]
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.meta"
-        }
+        ]
       }
     },
     {
@@ -10442,10 +10079,7 @@
           {
             "path": "proto/shared/acl.proto"
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.meta"
-        }
+        ]
       }
     },
     {
@@ -10597,10 +10231,7 @@
               }
             ]
           }
-        ],
-        "package": {
-          "name": "alluxio.proto.shared"
-        }
+        ]
       }
     }
   ]
