@@ -57,6 +57,6 @@ core-site.xml/hdfs-site.xml/mapred-site.xml/yarn-site.xml/hive-site.xml
 
 4.6 访问localhost:8090
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/griffin

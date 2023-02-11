@@ -62,6 +62,6 @@ greatly improves the efficiency, quality and reusability of IoT application deve
 # License
 This project is distributed under Apache 2.0 License.
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/Edgenesis/shifu

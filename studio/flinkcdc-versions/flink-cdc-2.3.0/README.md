@@ -140,6 +140,6 @@ CDC Connectors for Apache Flink<sup>®</sup> welcomes anyone that wants to help 
 ## Documents
 To get started, please see https://ververica.github.io/flink-cdc-connectors/
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/ververica/flink-cdc-connectors

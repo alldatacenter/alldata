@@ -207,6 +207,6 @@ Finally, we hope to provide a more complete integrated case analysis ecosystem.
 
 Logan is licensed under the MIT License - see the [LICENSE](https://github.com/Meituan-Dianping/Logan/blob/master/LICENSE) file for details.
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/Meituan-Dianping/Logan

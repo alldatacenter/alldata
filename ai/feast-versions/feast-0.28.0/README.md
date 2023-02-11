@@ -215,6 +215,6 @@ Please refer to the official documentation at [Documentation](https://docs.feast
  * [Change Log](https://github.com/feast-dev/feast/blob/master/CHANGELOG.md)
  * [Slack (#Feast)](https://slack.feast.dev/)
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/feast-dev/feast

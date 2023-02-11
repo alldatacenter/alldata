@@ -2,7 +2,7 @@
 =================================
  
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    
    data-gateway/index
    data-quality/index

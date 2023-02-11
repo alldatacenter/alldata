@@ -404,6 +404,6 @@ The latest version of online documentation can be found at https://graphscope.io
 
 GraphScope is released under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Please note that third-party libraries may not have the same license as GraphScope.
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/alibaba/GraphScope

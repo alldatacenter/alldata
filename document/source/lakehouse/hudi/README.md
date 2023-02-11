@@ -42,11 +42,11 @@ analytical datasets on DFS (Cloud stores, HDFS or any Hadoop FileSystem compatib
 * Async compaction of row & columnar data
 * Timeline metadata to track lineage
 * Optimize data lake layout with clustering
- 
+
 Hudi supports three types of queries:
- * **Snapshot Query** - Provides snapshot queries on real-time data, using a combination of columnar & row-based storage (e.g [Parquet](https://parquet.apache.org/) + [Avro](https://avro.apache.org/docs/current/mr.html)).
- * **Incremental Query** - Provides a change stream with records inserted or updated after a point in time.
- * **Read Optimized Query** - Provides excellent snapshot query performance via purely columnar storage (e.g. [Parquet](https://parquet.apache.org/)).
+* **Snapshot Query** - Provides snapshot queries on real-time data, using a combination of columnar & row-based storage (e.g [Parquet](https://parquet.apache.org/) + [Avro](https://avro.apache.org/docs/current/mr.html)).
+* **Incremental Query** - Provides a change stream with records inserted or updated after a point in time.
+* **Read Optimized Query** - Provides excellent snapshot query performance via purely columnar storage (e.g. [Parquet](https://parquet.apache.org/)).
 
 Learn more about Hudi at [https://hudi.apache.org](https://hudi.apache.org)
 
@@ -141,9 +141,8 @@ mvn -Punit-tests test -DSPARK_EVLOG_DIR=/path/for/spark/event/log
 
 ## Quickstart
 
-Please visit [https://hudi.apache.org/docs/quick-start-guide.html](https://hudi.apache.org/docs/quick-start-guide.html) to quickly explore Hudi's capabilities using spark-shell. 
+Please visit [https://hudi.apache.org/docs/quick-start-guide.html](https://hudi.apache.org/docs/quick-start-guide.html) to quickly explore Hudi's capabilities using spark-shell.
 
-## Contributing
+## 项目官网地址
 
-Please check out our [contribution guide](https://hudi.apache.org/contribute/how-to-contribute) to learn more about how to contribute.
-For code contributions, please refer to the [developer setup](https://hudi.apache.org/contribute/developer-setup).
+https://github.com/apache/hudi

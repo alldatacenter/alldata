@@ -174,6 +174,6 @@ The relevant portion of the line will look similar to the following:
     java -ea -Ddebezium.test.capture.mode=oplog -Ddebezium.test.version.mongo.server=3.6 -Djava.awt.headless=true -Dconnector.mongodb.members.auto.discover=false -Dconnector.mongodb.name=mongo1 -DskipLongRunningTests=true [...]
 
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/debezium/debezium

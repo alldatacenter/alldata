@@ -62,6 +62,6 @@ https://github.com/tencentmusic/cube-studio/wiki
 
 ![cube](https://user-images.githubusercontent.com/20157705/174762561-29b18237-7d45-417e-b7c0-14f5ef96a0e6.gif)
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/tencentmusic/cube-studio

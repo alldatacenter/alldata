@@ -23,6 +23,6 @@ The code in this repository is licensed under the [Apache Software License 2](LI
 
 
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/flink-table-store

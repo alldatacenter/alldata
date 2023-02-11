@@ -111,6 +111,6 @@ DolphinScheduler enriches the <a href="https://landscape.cncf.io/?landscape=obse
 
 Please refer to the [LICENSE](https://github.com/apache/dolphinscheduler/blob/dev/LICENSE) file.
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/dolphinscheduler

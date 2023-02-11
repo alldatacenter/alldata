@@ -98,6 +98,6 @@ See the latest [build guide](https://druid.apache.org/docs/latest/development/bu
 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/druid

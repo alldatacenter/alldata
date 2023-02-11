@@ -7,4 +7,4 @@
    delta/index
    hudi/index
    iceberg/index
-   table-store/index
+   flink-table-store/index

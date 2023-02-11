@@ -1,88 +1,114 @@
-[DolphinScheduler](https://dolphinscheduler.apache.org)
+# DolphinScheduler
 
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![codecov](https://codecov.io/gh/apache/dolphinscheduler/branch/dev/graph/badge.svg)](https://codecov.io/gh/apache/dolphinscheduler/branch/dev)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=apache-dolphinscheduler&metric=alert_status)](https://sonarcloud.io/dashboard?id=apache-dolphinscheduler)
+[![Twitter Follow](https://img.shields.io/twitter/follow/dolphinschedule.svg?style=social&label=Follow)](https://twitter.com/dolphinschedule)
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://s.apache.org/dolphinscheduler-slack)
 
 [![Stargazers over time](https://starchart.cc/apache/dolphinscheduler.svg)](https://starchart.cc/apache/dolphinscheduler)
 
-[![CN doc](https://img.shields.io/badge/文档-中文版-blue.svg)](README_zh_CN.md)
 [![EN doc](https://img.shields.io/badge/document-English-blue.svg)](README.md)
+[![CN doc](https://img.shields.io/badge/文档-中文版-blue.svg)](README_zh_CN.md)
 
-## 设计特点
+## Design Features
 
-一个分布式易扩展的可视化DAG工作流任务调度系统。致力于解决数据处理流程中错综复杂的依赖关系，使调度系统在数据处理流程中`开箱即用`。
+DolphinScheduler is a distributed and extensible workflow scheduler platform with powerful DAG visual interfaces, dedicated to solving complex job dependencies in the data pipeline and providing various types of jobs available `out of the box`.
 
-其主要目标如下：
+Its main objectives are as follows:
+-  Highly Reliable,
+   DolphinScheduler adopts a decentralized multi-master and multi-worker architecture design, which naturally supports easy expansion and high availability (not restricted by a single point of bottleneck), and its performance increases linearly with the increase of machines
+- High performance, supporting tens of millions of tasks every day
+- Support multi-tenant.
+- Cloud Native, DolphinScheduler supports multi-cloud/data center workflow management, also
+  supports Kubernetes, Docker deployment and custom task types, distributed
+  scheduling, with overall scheduling capability increased linearly with the
+  scale of the cluster
+- Support various task types: Shell, MR, Spark, SQL (MySQL, PostgreSQL, hive, spark SQL), Python, Sub_Process, Procedure, etc.
+- Support scheduling of workflows and dependencies, manual scheduling to pause/stop/recover task, support failure task retry/alarm, recover specified nodes from failure, kill task, etc.
+- Associate the tasks according to the dependencies of the tasks in a DAG graph, which can visualize the running state of the task in real-time.
+- WYSIWYG online editing tasks
+- Support the priority of workflows & tasks, task failover, and task timeout alarm or failure.
+- Support workflow global parameters and node customized parameter settings.
+- Support online upload/download/management of resource files, etc. Support online file creation and editing.
+- Support task log online viewing and scrolling and downloading, etc.
+- Support the viewing of Master/Worker CPU load, memory, and CPU usage metrics.
+- Support displaying workflow history in tree/Gantt chart, as well as statistical analysis on the task status & process status in each workflow.
+- Support back-filling data.
+- Support internationalization.
+- More features waiting for partners to explore...
 
-- 以DAG图的方式将Task按照任务的依赖关系关联起来，可实时可视化监控任务的运行状态
-- 支持丰富的任务类型：Shell、MR、Spark、SQL(mysql、postgresql、hive、sparksql)、Python、Sub_Process、Procedure等
-- 支持工作流定时调度、依赖调度、手动调度、手动暂停/停止/恢复，同时支持失败重试/告警、从指定节点恢复失败、Kill任务等操作
-- 支持工作流优先级、任务优先级及任务的故障转移及任务超时告警/失败
-- 支持工作流全局参数及节点自定义参数设置
-- 支持资源文件的在线上传/下载，管理等，支持在线文件创建、编辑
-- 支持任务日志在线查看及滚动、在线下载日志等
-- 实现集群HA，通过Zookeeper实现Master集群和Worker集群去中心化
-- 支持对`Master/Worker` cpu load，memory，cpu在线查看
-- 支持工作流运行历史树形/甘特图展示、支持任务状态统计、流程状态统计
-- 支持补数
-- 支持多租户
-- 支持国际化
-- 还有更多等待伙伴们探索
+## What's in DolphinScheduler
 
-## 系统部分截图
+|                                                                                                            Stability                                                                                                             |                                                                                     Accessibility                                                                                      |                                                                                    Features                                                                                    |                                                                                       Scalability                                                                                        |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Decentralized multi-master and multi-worker                                                                                                                                                                                      | Visualization of workflow key information, such as task status, task type, retry times, task operation machine information, visual variables, and so on at a glance.                   |  Support pause, recover operation                                                                                                                                              | Support customized task types                                                                                                                                                            |
+| support HA                                                                                                                                                                                                                       | Visualization of all workflow operations, dragging tasks to draw DAGs, configuring data sources and resources. At the same time, for third-party systems, provide API mode operations. | Users on DolphinScheduler can achieve many-to-one or one-to-one mapping relationship through tenants and Hadoop users, which is very important for scheduling large data jobs. | The scheduler supports distributed scheduling, and the overall scheduling capability will increase linearly with the scale of the cluster. Master and Worker support dynamic adjustment. |
+| Overload processing: By using the task queue mechanism, the number of schedulable tasks on a single machine can be flexibly configured. Machine jam can be avoided with high tolerance to numbers of tasks cached in task queue. | One-click deployment                                                                                                                                                                   | Support traditional shell tasks, and big data platform task scheduling: MR, Spark, SQL (MySQL, PostgreSQL, hive, spark SQL), Python, Procedure, Sub_Process                    |                                                                                                                                                                                          |
 
-![dag](./images/zh_CN/dag.png)
-![data-source](./images/zh_CN/data-source.png)
-![home](./images/zh_CN/home.png)
-![master](./images/zh_CN/master.png)
-![workflow-tree](./images/zh_CN/workflow-tree.png)
+## User Interface Screenshots
 
-## 近期研发计划
+![dag](./images/en_US/dag.png)
+![data-source](./images/en_US/data-source.png)
+![home](./images/en_US/home.png)
+![master](./images/en_US/master.png)
+![workflow-tree](./images/en_US/workflow-tree.png)
 
-DolphinScheduler的工作计划：<a href="https://github.com/apache/dolphinscheduler/projects/1" target="_blank">研发计划</a> ，其中 In Develop卡片下是正在研发的功能，TODO卡片是待做事项(包括 feature ideas)
+## QuickStart in Docker
 
-## 参与贡献
+Please refer the official website document: [QuickStart in Docker](https://dolphinscheduler.apache.org/en-us/docs/latest/user_doc/guide/start/docker.html)
 
-非常欢迎大家来参与贡献，贡献流程请参考：
-[[参与贡献](docs/docs/zh/contribute/join/contribute.md)]
+## QuickStart in Kubernetes
 
-## 快速试用 Docker
+Please refer to the official website document: [QuickStart in Kubernetes](https://dolphinscheduler.apache.org/en-us/docs/latest/user_doc/guide/installation/kubernetes.html)
 
-请参考官方文档: [快速试用 Docker 部署](https://dolphinscheduler.apache.org/zh-cn/docs/latest/user_doc/guide/start/docker.html)
-
-## 快速试用 Kubernetes
-
-请参考官方文档: [快速试用 Kubernetes 部署](http://dolphinscheduler.apache.org/zh-cn/docs/latest/user_doc/guide/installation/kubernetes.html)
-
-## 如何构建
+## How to Build
 
 ```bash
 ./mvnw clean install -Prelease
 ```
 
-制品:
+Artifact:
 
 ```
-dolphinscheduler-dist/target/apache-dolphinscheduler-${latest.release.version}-bin.tar.gz: DolphinScheduler 二进制包
-dolphinscheduler-dist/target/apache-dolphinscheduler-${latest.release.version}-src.tar.gz: DolphinScheduler 源代码包
+dolphinscheduler-dist/target/apache-dolphinscheduler-${latest.release.version}-bin.tar.gz: Binary package of DolphinScheduler
+dolphinscheduler-dist/target/apache-dolphinscheduler-${latest.release.version}-src.tar.gz: Source code package of DolphinScheduler
 ```
 
-## 感谢
+## Thanks
 
-Dolphin Scheduler使用了很多优秀的开源项目，比如google的guava、grpc，netty，quartz，以及apache的众多开源项目等等，
-正是由于站在这些开源项目的肩膀上，才有Dolphin Scheduler的诞生的可能。对此我们对使用的所有开源软件表示非常的感谢！我们也希望自己不仅是开源的受益者，也能成为开源的贡献者,也希望对开源有同样热情和信念的伙伴加入进来，一起为开源献出一份力！
+DolphinScheduler is based on a lot of excellent open-source projects, such as Google guava, grpc, netty, quartz, and many open-source projects of Apache and so on.
+We would like to express our deep gratitude to all the open-source projects used in Dolphin Scheduler. We hope that we are not only the beneficiaries of open-source, but also give back to the community. Besides, we hope everyone who have the same enthusiasm and passion for open source could join in and contribute to the open-source community!
 
-## 获得帮助
+## Get Help
 
-1. 提交 [issue](https://github.com/apache/dolphinscheduler/issues/new/choose)
-2. [加入slack群](https://s.apache.org/dolphinscheduler-slack) 并在频道 `#troubleshooting` 中提问
+1. Submit an [issue](https://github.com/apache/dolphinscheduler/issues/new/choose)
+2. [Join our slack](https://s.apache.org/dolphinscheduler-slack) and send your question to channel `#troubleshooting`
 
-## 社区
+## Community
 
-1. 通过[该申请链接](https://s.apache.org/dolphinscheduler-slack)加入slack channel
-2. 关注[Apache Dolphin Scheduler的Twitter账号](https://twitter.com/dolphinschedule)获取实时动态
+You are very welcome to communicate with the developers and users of Dolphin Scheduler. There are two ways to find them:
+1. Join the Slack channel [Slack](https://asf-dolphinscheduler.slack.com/).
+2. Follow the [Twitter account of DolphinScheduler](https://twitter.com/dolphinschedule) and get the latest news on time.
 
-## 版权
+## How to Contribute
 
-请参考 [LICENSE](https://github.com/apache/dolphinscheduler/blob/dev/LICENSE) 文件.
+The community welcomes everyone to contribute, please refer to this page to find out more: [How to contribute](docs/docs/en/contribute/join/contribute.md).
+
+# Landscapes
+
+<p align="center">
+<br/><br/>
+<img src="https://landscape.cncf.io/images/left-logo.svg" width="150"/>&nbsp;&nbsp;<img src="https://landscape.cncf.io/images/right-logo.svg" width="200"/>
+<br/><br/>
+DolphinScheduler enriches the <a href="https://landscape.cncf.io/?landscape=observability-and-analysis&license=apache-license-2-0">CNCF CLOUD NATIVE Landscape.</a >
+
+</p >
+
+## License
+
+Please refer to the [LICENSE](https://github.com/apache/dolphinscheduler/blob/dev/LICENSE) file.
+
+## 项目官网地址
+
+https://github.com/apache/dolphinscheduler

@@ -77,8 +77,8 @@
 
 ## 多语言
 
-canal 特别设计了 client-server 模式，交互协议使用 protobuf 3.0 , client 端可采用不同语言实现不同的消费逻辑，欢迎大家提交 pull request 
-  
+canal 特别设计了 client-server 模式，交互协议使用 protobuf 3.0 , client 端可采用不同语言实现不同的消费逻辑，欢迎大家提交 pull request
+
 - canal java 客户端: [https://github.com/alibaba/canal/wiki/ClientExample](https://github.com/alibaba/canal/wiki/ClientExample)
 - canal c# 客户端: [https://github.com/dotnetcore/CanalSharp](https://github.com/dotnetcore/CanalSharp)
 - canal go客户端: [https://github.com/CanalClient/canal-go](https://github.com/CanalClient/canal-go)
@@ -86,7 +86,7 @@ canal 特别设计了 client-server 模式，交互协议使用 protobuf 3.0 , c
 - canal Python客户端：[https://github.com/haozi3156666/canal-python](https://github.com/haozi3156666/canal-python)
 - canal Rust客户端：[https://github.com/laohanlinux/canal-rs](https://github.com/laohanlinux/canal-rs)
 
-canal 作为 MySQL binlog 增量获取和解析工具，可将变更记录投递到 MQ 系统中，比如 Kafka/RocketMQ，可以借助于 MQ 的多语言能力 
+canal 作为 MySQL binlog 增量获取和解析工具，可将变更记录投递到 MQ 系统中，比如 Kafka/RocketMQ，可以借助于 MQ 的多语言能力
 
 - 参考文档: [Canal Kafka/RocketMQ QuickStart](https://github.com/alibaba/canal/wiki/Canal-Kafka-RocketMQ-QuickStart)
 
@@ -98,5 +98,6 @@ canal 作为 MySQL binlog 增量获取和解析工具，可将变更记录投递
 - [阿里巴巴数据库连接池开源项目 Druid](https://github.com/alibaba/druid)
 - [阿里巴巴实时数据同步工具 DTS](https://www.aliyun.com/product/dts)
 
-## 问题反馈
-- 报告 issue: [github issues](https://github.com/alibaba/canal/issues)
+## 项目官网地址
+
+https://github.com/alibaba/canal

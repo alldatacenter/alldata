@@ -37,3 +37,8 @@ Elasticsearch, MongoDB, Kafka, and others, with minimal
 configuration.
 
 For more details, see the [home page](http://calcite.apache.org).
+
+
+## 项目官网地址
+
+https://github.com/apache/calcite

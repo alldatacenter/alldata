@@ -53,7 +53,7 @@ License
 ============
 Please refer to [LICENSE](https://github.com/apache/kylin/blob/master/LICENSE) file.
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/kylin
 

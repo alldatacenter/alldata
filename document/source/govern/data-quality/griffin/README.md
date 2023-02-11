@@ -1,4 +1,4 @@
-# DATA QUALITY FOR ALL DATA PLATFORM 数据治理引擎
+# Apache Griffin
 
 数据平台的数据治理：数据治理是一个大而全的治理体系。需要数据质量管理、元数据管理、主数据管理、模型管理管理、数据价值管理、
 数据共享管理和数据安全管理等等模块是一个活的有机体。
@@ -24,9 +24,9 @@ Griffin measure SparkSql规则任务二次开发
 
 4.1 Mysql初始化数据库
 
-create database griffin_AllDataDC; 
+create database griffin_AllDataDC;
 
-use griffin_AllDataDC; 
+use griffin_AllDataDC;
 
 然后登录数据库
 
@@ -44,7 +44,7 @@ core-site.xml/hdfs-site.xml/mapred-site.xml/yarn-site.xml/hive-site.xml
 4.4 获取tar.gz安装包, 解压
 
 4.5 正式部署griffin的环境，创建hdfs路径hdfs://griffin/spark_conf
-    
+
     与hdfs://griffin/batch/persist
     
     与hdfs://griffin/streaming/persist（可选）
@@ -56,3 +56,7 @@ core-site.xml/hdfs-site.xml/mapred-site.xml/yarn-site.xml/hive-site.xml
 4.5 cd 安装包bin目录，执行./griffin.sh start or ./griffin.sh stop启停
 
 4.6 访问localhost:8090
+
+## 项目官网地址
+
+https://github.com/apache/griffin
