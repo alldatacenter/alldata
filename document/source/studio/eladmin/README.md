@@ -1,4 +1,4 @@
-<h1 style="text-align: center">AllData 一站式大数据平台</h1>
+# ElAdmin
 
 ### 功能一览
 

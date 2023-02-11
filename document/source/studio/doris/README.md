@@ -38,7 +38,7 @@ Apache Doris is an easy-to-use, high-performance and real-time analytical databa
 Based on this, Apache Doris can better meet the scenarios of report analysis, ad-hoc query, unified data warehouse, Data Lake Query Acceleration, etc. Users can build user behavior analysis, AB test platform, log retrieval analysis, user portrait analysis, order analysis, and other applications on top of this.
 
 
-🎉 Version 1.1.4 released now! It is also a LTS (long-term support) release and all users are encouraged to upgrade to this release. Check out the 🔗[Release Notes](https://doris.apache.org/docs/releasenotes/release-1.1.4) here. 
+🎉 Version 1.1.4 released now! It is also a LTS (long-term support) release and all users are encouraged to upgrade to this release. Check out the 🔗[Release Notes](https://doris.apache.org/docs/releasenotes/release-1.1.4) here.
 
 👀 Have a look at the 🔗[Official Website](https://doris.apache.org/) for a comprehensive list of Apache Doris's core features, blogs and user cases.
 
@@ -52,9 +52,9 @@ Apache Doris is widely used in the following scenarios:
 
 - Reporting Analysis
 
-    - Real-time Dashboards
-    - Reports for in-house analysts and managers
-    - Highly concurrent user-oriented or customer-oriented report analysis.For example, in the scenarios of site analysis for website owners and advertising reports for advertisers, the concurrency usually requires thousands of QPS and the query latency requires sub-seconds response. The famous e-commerce company JD.com uses Doris in advertising reports, writing 10 billion rows of data per day, with tens of thousands of concurrent query QPS and 150ms query latency for the 99th percentile.
+  - Real-time Dashboards
+  - Reports for in-house analysts and managers
+  - Highly concurrent user-oriented or customer-oriented report analysis.For example, in the scenarios of site analysis for website owners and advertising reports for advertisers, the concurrency usually requires thousands of QPS and the query latency requires sub-seconds response. The famous e-commerce company JD.com uses Doris in advertising reports, writing 10 billion rows of data per day, with tens of thousands of concurrent query QPS and 150ms query latency for the 99th percentile.
 
 - Ad-Hoc Query. Analyst-oriented self-service analytics with irregular query patterns and high throughput requirements. XiaoMi has built a growth analytics platform (Growth Analytics, GA) based on Doris, using user behavior data for business growth analysis, with an average query latency of 10 seconds and a 95th percentile query latency of 30 seconds or less, and tens of thousands of SQL queries per day.
 
@@ -136,7 +136,7 @@ In terms of the optimizer, Doris uses a combination of CBO and RBO, with RBO sup
 
 ## 🙌 Contributors
 
-**Apache Doris has graduated from Apache incubator successfully and become a Top-Level Project in June 2022**. 
+**Apache Doris has graduated from Apache incubator successfully and become a Top-Level Project in June 2022**.
 
 Currently, the Apache Doris community has gathered more than 350 contributors from nearly 100 companies in different industries, and the number of active contributors is close to 100 per month.
 
@@ -154,16 +154,16 @@ Apache Doris now has a wide user base in China and around the world, and as of t
 The users of Apache Doris: 🔗[https://doris.apache.org/users](https://doris.apache.org/users)
 
 Add your company logo at Apache Doris Website: 🔗[Add Your Company](https://github.com/apache/doris/issues/10229)
- 
+
 ## 👣 Get Started
 
 ### 📚 Docs
 
-All Documentation   🔗[Docs](https://doris.apache.org/docs/get-starting/)  
+All Documentation   🔗[Docs](https://doris.apache.org/docs/get-starting/)
 
-### ⬇️ Download 
+### ⬇️ Download
 
-All release and binary version 🔗[Download](https://doris.apache.org/download) 
+All release and binary version 🔗[Download](https://doris.apache.org/download)
 
 ### 🗄️ Compile
 
@@ -171,7 +171,7 @@ See how to compile  🔗[Compilation](https://doris.apache.org/docs/install/sour
 
 ### 📮 Install
 
-See how to install and deploy 🔗[Installation and deployment](https://doris.apache.org/docs/install/install-deploy) 
+See how to install and deploy 🔗[Installation and deployment](https://doris.apache.org/docs/install/install-deploy)
 
 ## 🧩 Components
 
@@ -183,47 +183,11 @@ Doris provides support for Spark/Flink to read data stored in Doris through Conn
 
 🔗[apache/doris-spark-connector](https://github.com/apache/doris-spark-connector)
 
-### 🛠 Doris Manager 
+### 🛠 Doris Manager
 
 Doris provides one-click visual automatic installation and deployment, cluster management and monitoring tools for clusters.
 
 🔗[apache/doris-manager](https://github.com/apache/doris-manager)
-
-## 🌈 Community and Support
-
-### 📤 Subscribe Mailing Lists
-
-Mail List is the most recognized form of communication in Apache community. See how to 🔗[Subscribe Mailing Lists](https://doris.apache.org/community/subscribe-mail-list)
-
-### 🙋 Report Issues or Submit Pull Request
-
-If you meet any questions, feel free to file a 🔗[GitHub Issue](https://github.com/apache/doris/issues) or post it in 🔗[GitHub Discussion](https://github.com/apache/doris/discussions) and fix it by submitting a 🔗[Pull Request](https://github.com/apache/doris/pulls) 
-
-### 🍻 How to Contribute
-
-We welcome your suggestions, comments (including criticisms), comments and contributions. See 🔗[How to Contribute](https://doris.apache.org/community/how-to-contribute/) and 🔗[Code Submission Guide](https://doris.apache.org/community/how-to-contribute/pull-request/)
-
-### ⌨️ Doris Improvement Proposals (DSIP)
-
-🔗[Doris Improvement Proposal (DSIP)](https://cwiki.apache.org/confluence/display/DORIS/Doris+Improvement+Proposals) can be thought of as **A Collection of Design Documents for all Major Feature Updates or Improvements**.
-
-
-
-
-## 💬 Contact Us
-
-Contact us through the following mailing list.
-
-| Name                                                                          | Scope                           |                                                                 |                                                                     |                                                                              |
-|:------------------------------------------------------------------------------|:--------------------------------|:----------------------------------------------------------------|:--------------------------------------------------------------------|:-----------------------------------------------------------------------------|
-| [dev@doris.apache.org](mailto:dev@doris.apache.org)     | Development-related discussions | [Subscribe](mailto:dev-subscribe@doris.apache.org)   | [Unsubscribe](mailto:dev-unsubscribe@doris.apache.org)   | [Archives](http://mail-archives.apache.org/mod_mbox/doris-dev/)   |
-
-## 🧰 Links
-
-* Apache Doris Official Website - [https://doris.apache.org](https://doris.apache.org)
-* Developer Mailing list - <dev@doris.apache.org>. Mail to <dev-subscribe@doris.apache.org>, follow the reply to subscribe the mail list.
-* Slack channel - [Join the Slack](https://join.slack.com/t/apachedoriscommunity/shared_invite/zt-1h153f1ar-sTJB_QahY1SHvZdtPFoIOQ)
-* Twitter - [Follow @doris_apache](https://twitter.com/doris_apache)
 
 
 ## 📜 License
@@ -236,3 +200,6 @@ some Doris features to be complied with Apache 2.0 License. For details, refer t
 
 
 
+## 项目官网地址
+
+https://github.com/apache/doris

@@ -187,7 +187,7 @@ ansible all -i "ip,"  -m include_role -a "name=jdk" -e "@vars.yml" -u root
 ansible-playbook ./deploy-tis-by-compile.yml --tags pkg,pkg-plugin,ng-tis,deploy 
 ```
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/qlangtech/tis-ansible
 

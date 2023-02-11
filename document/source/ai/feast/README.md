@@ -1,11 +1,4 @@
-<!--Do not modify this file. It is auto-generated from a template (infra/templates/README.md.jinja2)-->
-
-<p align="center">
-    <a href="https://feast.dev/">
-      <img src="docs/assets/feast_logo.png" width="550">
-    </a>
-</p>
-<br />
+# Feast
 
 [![unit-tests](https://github.com/feast-dev/feast/actions/workflows/unit_tests.yml/badge.svg?branch=master&event=push)](https://github.com/feast-dev/feast/actions/workflows/unit_tests.yml)
 [![integration-tests-and-build](https://github.com/feast-dev/feast/actions/workflows/master_only.yml/badge.svg?branch=master&event=push)](https://github.com/feast-dev/feast/actions/workflows/master_only.yml)
@@ -133,10 +126,10 @@ pprint(feature_vector)
 ```
 ```json
 {
-    "driver_id": [1001],
-    "driver_hourly_stats__conv_rate": [0.49274],
-    "driver_hourly_stats__acc_rate": [0.92743],
-    "driver_hourly_stats__avg_daily_trips": [72]
+  "driver_id": [1001],
+  "driver_hourly_stats__conv_rate": [0.49274],
+  "driver_hourly_stats__acc_rate": [0.92743],
+  "driver_hourly_stats__avg_daily_trips": [72]
 }
 ```
 
@@ -209,22 +202,12 @@ The list below contains the functionality that contributors are planning to deve
 ## 🎓 Important Resources
 
 Please refer to the official documentation at [Documentation](https://docs.feast.dev/)
- * [Quickstart](https://docs.feast.dev/getting-started/quickstart)
- * [Tutorials](https://docs.feast.dev/tutorials/tutorials-overview)
- * [Running Feast with Snowflake/GCP/AWS](https://docs.feast.dev/how-to-guides/feast-snowflake-gcp-aws)
- * [Change Log](https://github.com/feast-dev/feast/blob/master/CHANGELOG.md)
- * [Slack (#Feast)](https://slack.feast.dev/)
+* [Quickstart](https://docs.feast.dev/getting-started/quickstart)
+* [Tutorials](https://docs.feast.dev/tutorials/tutorials-overview)
+* [Running Feast with Snowflake/GCP/AWS](https://docs.feast.dev/how-to-guides/feast-snowflake-gcp-aws)
+* [Change Log](https://github.com/feast-dev/feast/blob/master/CHANGELOG.md)
+* [Slack (#Feast)](https://slack.feast.dev/)
 
-## 👋 Contributing
-Feast is a community project and is still under active development. Please have a look at our contributing and development guides if you want to contribute to the project:
-- [Contribution Process for Feast](https://docs.feast.dev/project/contributing)
-- [Development Guide for Feast](https://docs.feast.dev/project/development-guide)
-- [Development Guide for the Main Feast Repository](./CONTRIBUTING.md)
+## 项目官网地址
 
-## ✨ Contributors
-
-Thanks goes to these incredible people:
-
-<a href="https://github.com/feast-dev/feast/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=feast-dev/feast" />
-</a>
+https://github.com/feast-dev/feast

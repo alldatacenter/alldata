@@ -121,6 +121,6 @@ The config templates can be found in deploy/template. You should replace the fol
    3. There are other arguments for the script. For example, you can run 2 servers with argument `-s 2`
 
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/ByConity/ByConity

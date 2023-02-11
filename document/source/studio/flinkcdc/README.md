@@ -1,4 +1,4 @@
-# FlinkCDC
+# CDC Connectors for Apache Flink<sup>®</sup>
 
 CDC Connectors for Apache Flink<sup>®</sup> is a set of source connectors for Apache Flink<sup>®</sup>, ingesting changes from different databases using change data capture (CDC).
 CDC Connectors for Apache Flink<sup>®</sup> integrates Debezium as the engine to capture data changes. So it can fully leverage the ability of Debezium. See more about what is [Debezium](https://github.com/debezium/debezium).
@@ -107,9 +107,9 @@ public class MySqlSourceExample {
 ## Building from source
 
 - Prerequisites:
-    - git
-    - Maven
-    - At least Java 8
+  - git
+  - Maven
+  - At least Java 8
 
 ```
 git clone https://github.com/ververica/flink-cdc-connectors.git
@@ -132,10 +132,14 @@ CDC Connectors for Apache Flink<sup>®</sup> welcomes anyone that wants to help 
 * [DingTalk](https://www.dingtalk.com/) Chinese User Group
 
   You can search the group number [**33121212**] or scan the following QR code to join in the group.
-  
+
   <div align=center>
      <img src="https://user-images.githubusercontent.com/9601882/158350201-a1de35e6-0399-4a91-b5b0-e2fd5d33e33c.png" width=400 />
    </div>
 
 ## Documents
 To get started, please see https://ververica.github.io/flink-cdc-connectors/
+
+## 项目官网地址
+
+https://github.com/ververica/flink-cdc-connectors

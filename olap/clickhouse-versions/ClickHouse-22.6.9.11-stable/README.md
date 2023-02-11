@@ -3,6 +3,6 @@
 ClickHouse® is an open-source column-oriented database management system that allows generating analytical data reports in real-time.
 
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/ClickHouse/ClickHouse

@@ -4,16 +4,16 @@
 [![License](https://img.shields.io/badge/license-Apache%202-brightgreen.svg)](https://github.com/delta-io/delta/blob/master/LICENSE.txt)
 [![PyPI](https://img.shields.io/pypi/v/delta-spark.svg)](https://pypi.org/project/delta-spark/)
 
-Delta Lake is an open-source storage framework that enables building a [Lakehouse architecture](http://cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf) with compute engines including Spark, PrestoDB, Flink, Trino, and Hive and APIs for Scala, Java, Rust, Ruby, and Python. 
+Delta Lake is an open-source storage framework that enables building a [Lakehouse architecture](http://cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf) with compute engines including Spark, PrestoDB, Flink, Trino, and Hive and APIs for Scala, Java, Rust, Ruby, and Python.
 * See the [Delta Lake Documentation](https://docs.delta.io) for details.
 * See the [Quick Start Guide](https://docs.delta.io/latest/quick-start.html) to get started with Scala, Java and Python.
-* Note, this repo is one of many Delta Lake repositories in the [delta.io](https://github.com/delta-io) organizations including 
-[connectors](https://github.com/delta-io/connectors),
-[delta](https://github.com/delta-io/delta), 
-[delta-rs](https://github.com/delta-io/delta-rs),
-[delta-sharing](https://github.com/delta-io/delta-sharing),
-[kafka-delta-ingest](https://github.com/delta-io/kafka-delta-ingest), and
-[website](https://github.com/delta-io/website).
+* Note, this repo is one of many Delta Lake repositories in the [delta.io](https://github.com/delta-io) organizations including
+  [connectors](https://github.com/delta-io/connectors),
+  [delta](https://github.com/delta-io/delta),
+  [delta-rs](https://github.com/delta-io/delta-rs),
+  [delta-sharing](https://github.com/delta-io/delta-sharing),
+  [kafka-delta-ingest](https://github.com/delta-io/kafka-delta-ingest), and
+  [website](https://github.com/delta-io/website).
 
 The following are some of the more popular Delta Lake integrations, refer to [delta.io/integrations](https://delta.io/integrations/) for the complete list:
 
@@ -63,7 +63,7 @@ See the [online documentation](https://docs.delta.io/latest/) for the latest rel
 
 ### API Compatibility
 
-There are two types of APIs provided by the Delta Lake project. 
+There are two types of APIs provided by the Delta Lake project.
 
 - Direct Java/Scala/Python APIs - The classes and methods documented in the [API docs](https://docs.delta.io/latest/delta-apidoc.html) are considered as stable public APIs. All other classes, interfaces, methods that may be directly accessible in code are considered internal, and they are subject to change across releases.
 - Spark-based APIs - You can read Delta tables through the `DataFrameReader`/`Writer` (i.e. `spark.read`, `df.write`, `spark.readStream` and `df.writeStream`). Options to these APIs will remain stable within a major release of Delta Lake (e.g., 1.x.x).
@@ -78,8 +78,8 @@ Breaking changes in the protocol are indicated by incrementing the minimum reade
 
 ## Roadmap
 
-* For the high-level Delta Lake roadmap, see [Delta Lake 2022H1 roadmap](http://delta.io/roadmap).  
-* For the detailed timeline, see the [project roadmap](https://github.com/delta-io/delta/milestones). 
+* For the high-level Delta Lake roadmap, see [Delta Lake 2022H1 roadmap](http://delta.io/roadmap).
+* For the detailed timeline, see the [project roadmap](https://github.com/delta-io/delta/milestones).
 
 ## Transaction Protocol
 
@@ -103,7 +103,7 @@ Delta Lake ensures _serializability_ for concurrent reads and writes. Please see
 
 We use [GitHub Issues](https://github.com/delta-io/delta/issues) to track community reported issues. You can also [contact](#community) the community for getting answers.
 
-## Contributing 
+## Contributing
 
 We welcome contributions to Delta Lake. See our [CONTRIBUTING.md](https://github.com/delta-io/delta/blob/master/CONTRIBUTING.md) for more details.
 
@@ -171,13 +171,6 @@ then follow these steps:
 ## License
 Apache License 2.0, see [LICENSE](https://github.com/delta-io/delta/blob/master/LICENSE.txt).
 
-## Community
+## 项目官网地址
 
-There are two mediums of communication within the Delta Lake community.
-
-* Public Slack Channel
-  - [Register here](https://go.delta.io/slack)
-  - [Login here](https://delta-users.slack.com/)
-* [Linkedin page](https://www.linkedin.com/company/deltalake)
-* [Youtube channel](https://www.youtube.com/c/deltalake)
-* Public [Mailing list](https://groups.google.com/forum/#!forum/delta-users)
+https://github.com/delta-io/delta

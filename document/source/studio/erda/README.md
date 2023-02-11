@@ -88,6 +88,6 @@ To start using Erda, please refer to the following documentation.
 
 Erda is under the Apache 2.0 license. See the [LICENSE](LICENSE) file for details.
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/erda-project/erda

@@ -6,6 +6,6 @@
 
 ```
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/DTStack/chunjun

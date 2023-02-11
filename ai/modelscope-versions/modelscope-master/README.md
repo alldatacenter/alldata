@@ -25,6 +25,6 @@ We also provide other documentations including:
 
 This project is licensed under the [Apache License (Version 2.0)](https://github.com/modelscope/modelscope/blob/master/LICENSE).
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/modelscope/modelscope

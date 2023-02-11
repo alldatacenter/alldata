@@ -98,6 +98,6 @@ See the [Multi-Engine Support](https://iceberg.apache.org/multi-engine-support/)
 For other engines such as Presto or Trino, please visit their websites for Iceberg integration details.
 
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/iceberg

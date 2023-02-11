@@ -1,120 +1,87 @@
-# Alluxio
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The ASF licenses this file to You under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
 
-[![Slack](https://img.shields.io/badge/slack-alluxio--community-blue.svg?logo=slack)](https://www.alluxio.io/slack)
-[![Release](https://img.shields.io/github/release/alluxio/alluxio/all.svg)](https://www.alluxio.io/download)
-[![Docker Pulls](https://img.shields.io/docker/pulls/alluxio/alluxio.svg)](https://hub.docker.com/r/alluxio/alluxio)
-[![Documentation](https://img.shields.io/badge/docs-reference-blue.svg)](https://www.alluxio.io/docs)
-[![Twitter Follow](https://img.shields.io/twitter/follow/alluxio.svg?label=Follow&style=social)](https://twitter.com/intent/follow?screen_name=alluxio)
-[![License](https://img.shields.io/github/license/alluxio/alluxio.svg)](https://github.com/Alluxio/alluxio/blob/master/LICENSE)
+<h1 align="center">
+   <img src="https://streampark.apache.org/image/logo_name.png" 
+   alt="StreamPark Logo" title="Apache StreamPark Logo" width="600"/>
+  <br>
+</h1>
 
-## What is Alluxio
-[Alluxio](https://www.alluxio.io) (formerly known as Tachyon)
-is a virtual distributed storage system. It bridges the gap between
-computation frameworks and storage systems, enabling computation applications to connect to
-numerous storage systems through a common interface. Read more about
-[Alluxio Overview](https://docs.alluxio.io/os/user/stable/en/Overview.html).
+<h3 align="center">A magical framework that makes stream processing easier!</h3>
 
-The Alluxio project originated from a research project called Tachyon at AMPLab, UC Berkeley,
-which was the data layer of the Berkeley Data Analytics Stack ([BDAS](https://amplab.cs.berkeley.edu/bdas/)).
-For more details, please refer to Haoyuan Li's PhD dissertation
-[Alluxio: A Virtual Distributed File System](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2018/EECS-2018-29.html).
+<div align="center">
 
-## Who Uses Alluxio
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+![](https://img.shields.io/badge/java--version-8-blue.svg)
+[![stars](https://img.shields.io/github/stars/apache/streampark)](https://github.com/apache/incubator-streampark/stargazers)
+[![forks](https://img.shields.io/github/forks/apache/streampark)](https://github.com/apache/incubator-streampark/network/members)
+[![issues](https://img.shields.io/github/issues/apache/streampark)](https://github.com/apache/incubator-streampark/issues)
+[![Contributors](https://img.shields.io/github/contributors/apache/streampark)](https://github.com/apache/streampark/graphs/contributors)
+[![Commit activity](https://img.shields.io/github/commit-activity/m/apache/streampark)](https://github.com/apache/streampark/graphs/commit-activity)
+[![Latest release](https://img.shields.io/github/v/release/apache/streampark.svg)](https://github.com/apache/incubator-streampark/releases)
+[![total downloads](https://img.shields.io/github/downloads/apache/streampark/total.svg)](https://streampark.apache.org/download)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/streampark.svg?style=social&label=Follow%20%40streampark)](https://twitter.com/ASFStreamPark)
 
-Alluxio is used in production to manage Petabytes of data in many leading companies, with
-the largest deployment exceeding 3,000 nodes. You can find more use cases at
-[Powered by Alluxio](https://www.alluxio.io/powered-by-alluxio) or visit our first community conference ([Data Orchestration Summit](https://www.alluxio.io/data-orchestration-summit-2019/)) to learn from other community members!
+**[Website](https://streampark.apache.org)**&nbsp;&nbsp;|&nbsp;&nbsp;
+**[Document](https://streampark.apache.org/docs/intro)**&nbsp;&nbsp;|&nbsp;&nbsp;
+**[FAQ](https://github.com/apache/incubator-streampark/issues/507)**
 
-## Who Owns and Manages Alluxio Project
+![](https://streampark.apache.org/image/dashboard-preview.png)
 
-Alluxio Open Source Foundation is the owner of Alluxio project.
-Project operation is done by Alluxio Project Management Committee (PMC).
-You can checkout more details in its structure and how to join Alluxio PMC
-[here](https://github.com/Alluxio/alluxio/wiki/Alluxio-Project-Management-Committee-(PMC)).
+</div>
 
-## Community and Events
-Please use the following to reach members of the community:
 
-* [Alluxio Community Slack Channel](https://www.alluxio.io/slack): post your questions here if you seek for help for general questions or issues using Alluxio.
-* [Special Interest Groups (SIG) for Alluxio users and developers](#contributing)
-* Community Events: [upcoming online office hours, meetups and webinars](https://www.alluxio.io/events)
-* Meetup Groups: [Global Online Meetup](https://www.meetup.com/Alluxio-Global-Online-Meetup/), [Bay Area Meetup](http://www.meetup.com/Alluxio),
-  [New York Meetup](https://www.meetup.com/Alluxio-Open-Source-New-York-Meetup),
-  [Beijing Alluxio Meetup](https://www.meetup.com/meetup-group-iLMBZGhS/), [Austin Meetup](https://www.meetup.com/Cloud-Data-Orchestration-Austin/)
-* [Alluxio Twitter](https://twitter.com/alluxio); [Alluxio Youtube Channel](https://www.youtube.com/channel/UCpibQsajhwqYPLYhke4RigA); [Alluxio Mailing List](https://groups.google.com/forum/?fromgroups#!forum/alluxio-users)
+## 🚀 What is StreamPark?
 
-## Download Alluxio
+<h4>StreamPark is a stream processing development framework and professional management platform. </h4>
 
-### Binary download
+> StreamPark is a streaming application development framework. Aimed at ease building and managing streaming applications, StreamPark provides development framework for writing stream processing application with Apache Flink and Apache Spark, More other engines will be supported in the future. Also, StreamPark is a professional management platform for streaming application
+, including application development, debugging, interactive query, deployment, operation, maintenance, etc. It was initially known as StreamX and renamed to StreamPark in August 2022.
 
-Prebuilt binaries are available to download at https://www.alluxio.io/download .
 
-### Docker
+## 🎉 Features
 
-Download and start an Alluxio master and a worker. More details can be found in [documentation](https://docs.alluxio.io/os/user/stable/en/deploy/Running-Alluxio-On-Docker.html).
+* Apache Flink & Spark stream processing application development framework
+* Out-of-the-box connectors
+* Support multiple versions of Flink & Spark
+* Scala 2.11 / 2.12 support
+* One-stop stream processing management platform
+* Support catalog、olap、streaming-warehouse etc.
+* ...
 
-```console
-# Create a network for connecting Alluxio containers
-$ docker network create alluxio_nw
-# Create a volume for storing ufs data
-$ docker volume create ufs
-# Launch the Alluxio master
-$ docker run -d --net=alluxio_nw \
-    -p 19999:19999 \
-    --name=alluxio-master \
-    -v ufs:/opt/alluxio/underFSStorage \
-    alluxio/alluxio master
-# Launch the Alluxio worker
-$ export ALLUXIO_WORKER_RAMDISK_SIZE=1G
-$ docker run -d --net=alluxio_nw \
-    --shm-size=${ALLUXIO_WORKER_RAMDISK_SIZE} \
-    --name=alluxio-worker \
-    -v ufs:/opt/alluxio/underFSStorage \
-    -e ALLUXIO_JAVA_OPTS="-Dalluxio.worker.ramdisk.size=${ALLUXIO_WORKER_RAMDISK_SIZE} -Dalluxio.master.hostname=alluxio-master" \
-    alluxio/alluxio worker
+![](https://user-images.githubusercontent.com/13284744/142746864-d807d728-423f-41c3-b90d-45ce2c21936b.png)
+
+## 🔨 How to Build
+
+```shell
+git clone git@github.com:apache/incubator-streampark.git
+cd incubator-streampark
+./build.sh
 ```
 
-### MacOS Homebrew
+## 🧑‍💻 Downloads
 
-```console
-$ brew install alluxio
-```
+Download address for run-directly software package : [https://streampark.apache.org/download](https://streampark.apache.org/download)
 
-## Quick Start
+## 🚀 Quick Start
 
-Please follow the [Guide to Get Started](https://docs.alluxio.io/os/user/stable/en/Getting-Started.html)
-to run a simple example with Alluxio.
-
-## Report a Bug
-
-To report bugs, suggest improvements, or create new feature requests, please open a [Github Issue](https://github.com/alluxio/alluxio/issues).
-If you are not sure whether you run into bugs or simply have general questions with respect to Alluxio, post your questions on [Alluxio Slack channel](www.alluxio.io/slack).
-
-## Depend on Alluxio
-
-Alluxio project provides several different client artifacts for external projects to depend on Alluxio client:
-
-- Artifact `alluxio-shaded-client` is recommended generally for a project to use Alluxio client.
-  The jar of this artifact is self-contained (including all dependencies in a shaded form to prevent dependency conflicts),
-  and thus larger than the following two artifacts.
-- Artifact `alluxio-core-client-fs` provides
-  [Alluxio Java file system API](https://docs.alluxio.io/os/user/stable/en/api/Java-API.html#alluxio-java-api))
-  to access all Alluxio-specific functionalities.
-  This artifact is included in `alluxio-shaded-client`.
-- Artifact `alluxio-core-client-hdfs` provides
-  [HDFS-Compatible file system API](https://docs.alluxio.io/os/user/stable/en/api/Java-API.html#hadoop-compatible-java-client).
-  This artifact is included in `alluxio-shaded-client`.
-
-Here are examples to declare the dependecies on  `alluxio-shaded-client` using Maven:
-
-  ```xml
-  <dependency>
-    <groupId>org.alluxio</groupId>
-    <artifactId>alluxio-shaded-client</artifactId>
-    <version>2.6.0</version>
-  </dependency>
-  ```
+click [Document](https://streampark.apache.org/docs/user-guide/quick-start) for more information
 
 ## 官方项目地址
 
-https://github.com/Alluxio/alluxio
+https://github.com/apache/incubator-streampark

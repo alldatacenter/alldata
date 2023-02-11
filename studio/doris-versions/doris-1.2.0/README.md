@@ -200,6 +200,6 @@ some Doris features to be complied with Apache 2.0 License. For details, refer t
 
 
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/doris

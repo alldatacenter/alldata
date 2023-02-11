@@ -1,4 +1,4 @@
-table-store
+flink-table-store
 =================================
  
 .. toctree::

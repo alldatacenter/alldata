@@ -1,4 +1,4 @@
-dolphinscheduler
+DolphinScheduler
 =================================
  
 .. toctree::

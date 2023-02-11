@@ -136,7 +136,7 @@ after compile successfully, you could find distribution file at `inlong-distribu
 ## License
 © Contributors Licensed under an [Apache-2.0](LICENSE) license.
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/inlong
 

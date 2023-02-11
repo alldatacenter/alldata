@@ -34,6 +34,6 @@ The U.S. Government Department of Commerce, Bureau of Industry and Security (BIS
 The following provides more details on the included cryptographic software: 
  Java SE Security packages are used to provide support for authentication, authorization and secure sockets communication. The Jetty Web Server is used to provide communication via HTTPS. The Cyrus SASL libraries, Kerberos Libraries and OpenSSL Libraries are used to provide SASL based authentication and SSL communication.
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/apache/drill

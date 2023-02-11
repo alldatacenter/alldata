@@ -1,19 +1,6 @@
-# Licensed to the Apache Software Foundation (ASF) under one or more
-# contributor license agreements.  See the NOTICE file distributed with
-# this work for additional information regarding copyright ownership.
-# The ASF licenses this file to You under the Apache License, Version 2.0
-# (the "License"); you may not use this file except in compliance with
-# the License.  You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Ranger
 
-Check Apache Ranger Wiki for up to date instruction: 
+Check Apache Ranger Wiki for up to date instruction:
 https://cwiki.apache.org/confluence/display/RANGER/Index
 
 NOTE about using sending pull request on github:
@@ -33,34 +20,34 @@ Build Process
    $ mvn eclipse:eclipse
 
    (Ranger Admin UI tests depend on PhantomJS. If the build fails with npm or Karma errors you can either
-      i. install PhantomJS dependencies for your platform (bzip2 and fontconfig)
-     ii. skip JavaScript test execution: mvn -DskipJSTests ...)
+   i. install PhantomJS dependencies for your platform (bzip2 and fontconfig)
+   ii. skip JavaScript test execution: mvn -DskipJSTests ...)
 
 3. After the above build command execution, you should see the following TAR files in the target folder:
 
 
-   ranger-<version>-admin.tar.gz
-   ranger-<version>-atlas-plugin.tar.gz
-   ranger-<version>-hbase-plugin.tar.gz
-   ranger-<version>-hdfs-plugin.tar.gz
-   ranger-<version>-hive-plugin.tar.gz
-   ranger-<version>-kafka-plugin.tar.gz
-   ranger-<version>-kms.tar.gz
-   ranger-<version>-knox-plugin.tar.gz
-   ranger-<version>-migration-util.tar.gz
-   ranger-<version>-ranger-tools.tar.gz
-   ranger-<version>-solr-plugin.tar.gz
-   ranger-<version>-sqoop-plugin.tar.gz
-   ranger-<version>-src.tar.gz
-   ranger-<version>-storm-plugin.tar.gz
-   ranger-<version>-tagsync.tar.gz
-   ranger-<version>-usersync.tar.gz
-   ranger-<version>-yarn-plugin.tar.gz
-   ranger-<version>-kylin-plugin.tar.gz
-   ranger-<version>-elasticsearch-plugin.tar.gz
-   ranger-<version>-ozone-plugin.tar.gz
-   ranger-<version>-presto-plugin.tar.gz
-   ranger-<version>-schema-registry-plugin.tar.gz
+ranger-<version>-admin.tar.gz
+ranger-<version>-atlas-plugin.tar.gz
+ranger-<version>-hbase-plugin.tar.gz
+ranger-<version>-hdfs-plugin.tar.gz
+ranger-<version>-hive-plugin.tar.gz
+ranger-<version>-kafka-plugin.tar.gz
+ranger-<version>-kms.tar.gz
+ranger-<version>-knox-plugin.tar.gz
+ranger-<version>-migration-util.tar.gz
+ranger-<version>-ranger-tools.tar.gz
+ranger-<version>-solr-plugin.tar.gz
+ranger-<version>-sqoop-plugin.tar.gz
+ranger-<version>-src.tar.gz
+ranger-<version>-storm-plugin.tar.gz
+ranger-<version>-tagsync.tar.gz
+ranger-<version>-usersync.tar.gz
+ranger-<version>-yarn-plugin.tar.gz
+ranger-<version>-kylin-plugin.tar.gz
+ranger-<version>-elasticsearch-plugin.tar.gz
+ranger-<version>-ozone-plugin.tar.gz
+ranger-<version>-presto-plugin.tar.gz
+ranger-<version>-schema-registry-plugin.tar.gz
 
 Importing Apache Ranger Project into Eclipse
 ============================================
@@ -109,3 +96,6 @@ Installation Process
    If the install.sh file does not exists, 
        Execute ./enable-<component>-plugin.sh
 
+## 项目官网地址
+
+https://github.com/apache/ranger

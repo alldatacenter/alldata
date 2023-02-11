@@ -171,6 +171,6 @@ then follow these steps:
 ## License
 Apache License 2.0, see [LICENSE](https://github.com/delta-io/delta/blob/master/LICENSE.txt).
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/delta-io/delta

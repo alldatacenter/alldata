@@ -78,6 +78,6 @@ Your feedback is our motivation to move on. Please let us know your questions, c
 
 [Apache License 2.0](https://github.com/sql-machine-learning/sqlflow/blob/develop/LICENSE)
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/sql-machine-learning/sqlflow

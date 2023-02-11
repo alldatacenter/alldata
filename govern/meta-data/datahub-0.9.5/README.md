@@ -99,6 +99,6 @@ See [Releases](https://github.com/datahub-project/datahub/releases) page for mor
 
 [Apache License 2.0](./LICENSE).
 
-## 项目官网地址：
+## 项目官网地址
 
 https://github.com/datahub-project/datahub
