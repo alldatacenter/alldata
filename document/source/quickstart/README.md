@@ -1,6 +1,4 @@
-# 快速体验
-
-## [跳转体验版](http://43.138.157.47/dashboard)
+# [AllData Studio体验版](http://43.138.157.47/dashboard)
 >
 > http://43.138.157.47/dashboard 账密 poc/123456
 

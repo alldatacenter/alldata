@@ -7,6 +7,7 @@
    byconity/index
    calcite/index
    clickhouse/index
+   drill/index
    druid/index
    kylin/index
    presto/index

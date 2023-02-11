@@ -11,6 +11,7 @@
    dolphinscheduler/index
    doris/index
    eladmin/index
+   erda/index
    flinkcdc/index
    lowcode/index
    rancher/index

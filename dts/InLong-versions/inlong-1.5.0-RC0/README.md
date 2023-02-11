@@ -138,5 +138,5 @@ after compile successfully, you could find distribution file at `inlong-distribu
 
 ## 项目官网地址：
 
-https://github.com/apache/inlong/releases
+https://github.com/apache/inlong
 

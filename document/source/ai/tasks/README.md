@@ -1,7 +1,7 @@
-# AI算法应用市场 FOR ALL DATA PLATFORM 人工智能引擎
+# AI算法应用
 
 ```markdown
-数据平台的人工智能引擎：AI算法驱动
+数据平台的人工智能引擎：AI算法应用
 
 1、数据准备
 
