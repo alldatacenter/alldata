@@ -1,4 +1,4 @@
-![Erda logo](./docs/assets/logo-small.jpg)
+# Erda
 
 ## An enterprise-grade Cloud-Native application platform
 

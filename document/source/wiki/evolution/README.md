@@ -1,4 +1,4 @@
-# ONE STOP ALL DATA PLATFORM 一站式大数据平台
+# 一站式大数据平台
 
 ## 1、 AllData总述
 >

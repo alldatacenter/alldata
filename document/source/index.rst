@@ -13,10 +13,12 @@
    quickstart/index
    ai/index
    studio/index
+   market/index
    dts/index
    olap/index
    lakehouse/index
    govern/index
+   fs/index
    knowledge/index
    iot/index
    cluster/index

@@ -1,4 +1,4 @@
-AllData Studio
+eladmin
 =================================
  
 .. toctree::

@@ -1,10 +1,11 @@
 # 首页
 
-## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) ｜ [官方文档](https://alldatacenter.github.io/) ｜ [中文](https://github.com/alldatacenter/alldata/blob/master/README_ZH.md) ｜ [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
+## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY)  ｜ [官方文档](https://alldata.readthedocs.io/)  ｜  [Github](https://github.com/alldatacenter/alldata)  |  [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/alldatadc/alldata.svg)](https://starchart.cc/alldatadc/alldata)
+[![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
+
 
 <a href="https://github.com/alldatadc/github-readme-stats">
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api?username=alldatadc&hide=stars&show_icons=true" />
@@ -15,7 +16,7 @@
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
 </a>
 
-## [体验版地址](http://43.138.157.47:8013/dashboard) ｜ 账密 poc/123456
+## [体验版地址](http://43.138.157.47/dashboard) ｜ 账密 poc/123456
 
 
 ## 体验版
