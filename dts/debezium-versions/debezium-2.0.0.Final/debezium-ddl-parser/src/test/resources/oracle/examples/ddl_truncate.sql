@@ -1,1 +1,0 @@
-truncate table APP_PART_NOTES_4 drop storage;

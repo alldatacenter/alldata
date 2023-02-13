@@ -5,7 +5,3 @@
    :maxdepth: 2
    
    bitsail/index
-   canal/index
-   datax/index
-   debezium/index
-   InLong/index

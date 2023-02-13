@@ -1,0 +1,137 @@
+{{- $frontendFullname := include "graphscope-store.frontend.fullname" . }}
+{{- $ingestorFullname := include "graphscope-store.ingestor.fullname" . }}
+{{- $coordinatorFullname := include "graphscope-store.coordinator.fullname" . }}
+{{- $storeFullname := include "graphscope-store.store.fullname" . }}
+{{- $kafkaFullname := include "graphscope-store.kafka.fullname" . -}}
+{{- $releaseNamespace := .Release.Namespace }}
+{{- $clusterDomain := .Values.clusterDomain }}
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "graphscope-store.frontend.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "graphscope-store.labels" . | nindent 4 }}
+    app.kubernetes.io/component: frontend
+    {{- if .Values.commonLabels }}
+    {{- include "graphscope-store.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "graphscope-store.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels: {{ include "graphscope-store.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: frontend
+  serviceName: {{ include "graphscope-store.frontend.fullname" . }}-headless
+  updateStrategy:
+    type: {{ .Values.frontend.updateStrategy }}
+    {{- if (eq "Recreate" .Values.frontend.updateStrategy) }}
+    rollingUpdate: null
+    {{- end }}
+  template:
+    metadata:
+      annotations:
+        {{- if (include "graphscope-store.createConfigmap" .) }}
+        checksum/configuration: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        {{- end }}
+        {{- if .Values.frontend.podAnnotations }}
+        {{- include "graphscope-store.tplvalues.render" (dict "value" .Values.frontend.podAnnotations "context" $) | nindent 8 }}
+        {{- end }}
+      labels: {{- include "graphscope-store.labels" . | nindent 8 }}
+        app.kubernetes.io/component: frontend
+        {{- if .Values.commonLabels }}
+        {{- include "graphscope-store.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "graphscope-store.serviceAccountName" . }}
+      {{- if .Values.frontend.affinity }}
+      affinity: {{- include "graphscope-store.tplvalues.render" (dict "value" .Values.frontend.affinity "context" $) | nindent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations: {{- include "graphscope-store.tplvalues.render" (dict "value" .Values.tolerations "context" $) | nindent 8 }}
+      {{- end }}
+      initContainers:
+        {{- if .Values.frontend.initContainers }}
+        {{- include "graphscope-store.tplvalues.render" (dict "value" .Values.frontend.initContainers "context" $) | nindent 8 }}
+        {{- end }}
+      containers:
+        - name: frontend
+          image: {{ include "graphscope-store.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+          command:
+            - /etc/groot/setup.sh
+          env:
+            - name: DEBUG
+              value: "false"
+            - name: GRAPH_NAME
+              value: {{ .Values.graphName | quote }}
+            - name: GROOT_JAVA_OPTS
+              value: {{ .Values.javaOpts | quote }}
+            - name: ROLE
+              value: "frontend"
+            - name: FRONTEND_COUNT
+              value: {{ .Values.frontend.replicaCount | quote }}
+            - name: INGESTOR_COUNT
+              value: {{ .Values.ingestor.replicaCount | quote }}
+            - name: COORDINATOR_COUNT
+              value: {{ .Values.coordinator.replicaCount | quote }}
+            - name: STORE_COUNT
+              value: {{ .Values.store.replicaCount | quote }}
+            - name: DNS_NAME_PREFIX_FRONTEND
+              value: {{ $frontendFullname }}-{}.{{ $frontendFullname }}-headless.{{ $releaseNamespace }}.svc.{{ $clusterDomain }}
+            - name: DNS_NAME_PREFIX_INGESTOR
+              value: {{ $ingestorFullname }}-{}.{{ $ingestorFullname }}-headless.{{ $releaseNamespace }}.svc.{{ $clusterDomain }}
+            - name: DNS_NAME_PREFIX_COORDINATOR
+              value: {{ $coordinatorFullname }}-{}.{{ $coordinatorFullname }}-headless.{{ $releaseNamespace }}.svc.{{ $clusterDomain }}
+            - name: DNS_NAME_PREFIX_STORE
+              value: {{ $storeFullname }}-{}.{{ $storeFullname }}-headless.{{ $releaseNamespace }}.svc.{{ $clusterDomain }}
+            - name: DNS_NAME_SERVICE_KAFKA
+              value: {{ $kafkaFullname}}-headless.{{ $releaseNamespace }}.svc.{{ $clusterDomain }}
+            - name: KAFKA_SERVERS
+              value: {{ include "graphscope-store.kafka.brokerlist" . }}
+          ports:
+            - name: port
+              containerPort: 55555
+            - name: service-port
+              containerPort: 55556
+            - name: gremlin
+              containerPort: 12312
+            - name: gaia-rpc
+              containerPort: 60000
+            - name: gaia-engine
+              containerPort: 60001
+          {{- if .Values.frontend.readinessProbe.enabled }}
+          readinessProbe:
+            tcpSocket:
+              port: port
+            initialDelaySeconds: {{ .Values.frontend.readinessProbe.initialDelaySeconds }}
+            timeoutSeconds: {{ .Values.frontend.readinessProbe.timeoutSeconds }}
+            failureThreshold: {{ .Values.frontend.readinessProbe.failureThreshold }}
+            periodSeconds: {{ .Values.frontend.readinessProbe.periodSeconds }}
+            successThreshold: {{ .Values.frontend.readinessProbe.successThreshold }}
+          {{- end }}
+          {{- if .Values.frontend.resources }}
+          resources: {{- toYaml .Values.frontend.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/groot/groot.config.tpl
+              subPath: groot.config
+            - name: config
+              mountPath: /etc/groot/setup.sh
+              subPath: setup.sh
+            - name: config
+              mountPath: /etc/groot/ready_probe.sh
+              subPath: ready_probe.sh
+
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "graphscope-store.configmapName" . }}
+            defaultMode: 0755
+
