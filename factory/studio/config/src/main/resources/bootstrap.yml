@@ -1,0 +1,41 @@
+server:
+  port: 8611
+
+spring:
+  application:
+    name: config
+  profiles:
+    active: native
+    # 配置中心
+    cloud:
+      config:
+        server:
+          native:
+            search-locations: classpath:/config/
+
+# 注册中心配置
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 20
+    # 设置使用IP
+    prefer-ip-address: true
+    # 设置外网IP号
+    ip-address: 16gmaster
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 3
+    service-url:
+      defaultZone: http://16gslave:8610/eureka
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    com.data.cloud: info

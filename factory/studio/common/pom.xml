@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>studio</artifactId>
+        <groupId>com.platform</groupId>
+        <version>0.3.2</version>
+    </parent>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <version>0.3.2</version>
+    <artifactId>common</artifactId>
+
+    <modules>
+        <module>common-redis</module>
+        <module>common-core</module>
+        <module>common-mybatis</module>
+        <module>common-security</module>
+        <module>common-log</module>
+        <module>common-database</module>
+        <module>common-office</module>
+        <module>common-dictionary</module>
+        <module>common-qrcode</module>
+        <module>common-jasperreport</module>
+        <module>common-rabbitmq</module>
+    </modules>
+</project>
