@@ -7,14 +7,13 @@
    chunjun/index
    cube-studio/index
    datart/index
-   dlink/index
+   streampark/index
    dolphinscheduler/index
    doris/index
-   eladmin/index
+   dashboard/index
    erda/index
    flinkcdc/index
    lowcode/index
-   rancher/index
    sreworks/index
    tasks/index
    tis/index

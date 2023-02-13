@@ -19,10 +19,9 @@
    lakehouse/index
    govern/index
    fs/index
-   knowledge/index
+   kg/index
    iot/index
    cluster/index
-   buried/index
    trade/index
    clawlab/index
    wiki/index

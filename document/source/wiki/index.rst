@@ -5,5 +5,5 @@
    :maxdepth: 2
    
    dinky/index
-   evolution/index
    hudi/index
+   evolution/index
