@@ -5,9 +5,47 @@
         <format>tar.gz</format>
     </formats>
 
-    <includeBaseDirectory>true</includeBaseDirectory>
+    <includeBaseDirectory>false</includeBaseDirectory>
 
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>true</useProjectArtifact>
+            <outputDirectory>dts/lib</outputDirectory>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
     <fileSets>
+        <fileSet>
+            <lineEnding>unix</lineEnding>
+            <directory>../dts/admin/src/main/bin</directory>
+            <outputDirectory>dts/bin</outputDirectory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>../dts/admin/src/main/logs</directory>
+            <outputDirectory>dts/logs</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>../dts/admin/src/main/resources</directory>
+            <includes>
+                <include>*.properties</include>
+                <include>logback.xml</include>
+                <include>application.yml</include>
+                <include>mybatis-mapper/**</include>
+                <include>i18n/**</include>
+                <include>static/**</include>
+            </includes>
+            <outputDirectory>dts/conf</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>../dts/admin/src/main/lib</directory>
+            <outputDirectory>dts/lib</outputDirectory>
+        </fileSet>
+
+
         <fileSet>
             <directory>${project.parent.basedir}/install</directory>
             <outputDirectory>./install</outputDirectory>
@@ -46,6 +84,14 @@
         
 
         <!-- 将模块jar文件放到打包目录下 -->
+        <fileSet>
+            <directory>${project.parent.basedir}/dts/admin/target
+            </directory>
+            <outputDirectory>./16gmaster/system</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
         <fileSet>
             <directory>${project.parent.basedir}/system/target
             </directory>
