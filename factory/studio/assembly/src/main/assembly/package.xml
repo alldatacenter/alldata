@@ -10,24 +10,11 @@
     <dependencySets>
         <dependencySet>
             <useProjectArtifact>true</useProjectArtifact>
-            <outputDirectory>dts/lib</outputDirectory>
+            <outputDirectory>./16gmaster/dts/lib</outputDirectory>
             <scope>runtime</scope>
         </dependencySet>
     </dependencySets>
     <fileSets>
-        <fileSet>
-            <lineEnding>unix</lineEnding>
-            <directory>../dts/admin/src/main/bin</directory>
-            <outputDirectory>dts/bin</outputDirectory>
-            <includes>
-                <include>**/*</include>
-            </includes>
-            <fileMode>0755</fileMode>
-        </fileSet>
-        <fileSet>
-            <directory>../dts/admin/src/main/logs</directory>
-            <outputDirectory>dts/logs</outputDirectory>
-        </fileSet>
         <fileSet>
             <directory>../dts/admin/src/main/resources</directory>
             <includes>
@@ -38,17 +25,27 @@
                 <include>i18n/**</include>
                 <include>static/**</include>
             </includes>
-            <outputDirectory>dts/conf</outputDirectory>
+            <outputDirectory>./16gmaster/dts/conf</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>../dts/admin/src/main/lib</directory>
-            <outputDirectory>dts/lib</outputDirectory>
+            <outputDirectory>./16gmaster/dts/lib</outputDirectory>
         </fileSet>
 
 
         <fileSet>
             <directory>${project.parent.basedir}/install</directory>
-            <outputDirectory>./install</outputDirectory>
+            <outputDirectory>./16gmaster/</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>README.md</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/install/16gmaster/studio</directory>
+            <outputDirectory>./16gmaster/studio</outputDirectory>
             <lineEnding>unix</lineEnding>
             <fileMode>0755</fileMode>
             <includes>
@@ -57,26 +54,16 @@
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/install/studio</directory>
-            <outputDirectory>./studio</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
+            <directory>${project.parent.basedir}/install/16gmaster/studio</directory>
+            <outputDirectory>./16gmaster/studio</outputDirectory>
             <includes>
                 <include>*</include>
             </includes>
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/install/base</directory>
-            <outputDirectory>./base</outputDirectory>
-            <includes>
-                <include>*</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/install/shell</directory>
-            <outputDirectory>./shell</outputDirectory>
+            <directory>${project.parent.basedir}/install/16gmaster/dts</directory>
+            <outputDirectory>./16gmaster/dts/bin</outputDirectory>
             <includes>
                 <include>*</include>
             </includes>
@@ -87,7 +74,7 @@
         <fileSet>
             <directory>${project.parent.basedir}/dts/admin/target
             </directory>
-            <outputDirectory>./16gmaster/system</outputDirectory>
+            <outputDirectory>./16gmaster/dts</outputDirectory>
             <includes>
                 <include>*.jar</include>
             </includes>

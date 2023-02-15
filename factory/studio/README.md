@@ -129,17 +129,17 @@
 > 
 #### 1、`studio`数据库初始化
 > 
-> 1.1 source install/studio/studio_alldatadc.sql
+> 1.1 source install/16gmaster/studio/studio_alldatadc.sql
 > 
-> 1.2 source install/studio/studio_dts.sql
+> 1.2 source install/16gmaster/studio/studio_dts.sql
 >
-> 1.3 source install/datax/studio_data_cloud.sql
+> 1.3 source install/16gmaster/studio/studio_data_cloud.sql
 >
-> 1.4 source install/datax/studio_cloud_quartz.sql
+> 1.4 source install/16gmaster/studio/studio_cloud_quartz.sql
 > 
-> 1.5 source install/datax/studio_foodmart2.sql
+> 1.5 source install/16gmaster/studio/studio_foodmart2.sql
 > 
-> 1.6 source install/datax/studio_robot.sql
+> 1.6 source install/16gmaster/studio/studio_robot.sql
 > 
 #### 2、修改 **config** 配置中心
 
@@ -147,13 +147,13 @@
 > 
 #### 3、安装aspose-words
 
-> cd install/datax
+> cd install/16gmaster/studio
 >
 > mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=aspose-words-20.3.jar
 >
 #### 4、项目根目录下执行 **mvn install**
 > 
-> 获取安装包build/release-2.6.tar.gz
+> 获取安装包build/studio-release-0.3.2.tar.gz
 > 
 > 上传服务器解压
 > 
