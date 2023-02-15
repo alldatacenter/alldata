@@ -7,7 +7,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -16,11 +15,6 @@ import java.util.Date;
 
 @Slf4j
 public class JwtUtil {
-
-
-
-
-
 
 
     /**
@@ -38,8 +32,8 @@ public class JwtUtil {
                     .setSigningKey("ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=")
                     .parseClaimsJws(token)
                     .getBody();
-        }catch (Exception e){
-            HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        } catch (Exception e) {
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             String authorization = request.getHeader("Authorization");
             String url = request.getRequestURL().toString();
             String uri = request.getRequestURI();
@@ -94,7 +88,7 @@ public class JwtUtil {
      * @param token jwt token 串
      * @return String
      */
-    public String getAccountName(String token){
+    public String getAccountName(String token) {
         String subject = getClaimByToken(token).getSubject();
         JwtUserDto jwtContent = JSONObject.parseObject(subject, JwtUserDto.class);
         jwtContent.getUsername();
@@ -107,7 +101,7 @@ public class JwtUtil {
      * @param token
      * @return
      */
-    public static String  getTokenSubjectObject(String token){
+    public static String getTokenSubjectObject(String token) {
         Claims claimByToken = getClaimByToken(token);
         String subject = claimByToken.getSubject();
         String body = JSONObject.toJSONString(subject);
@@ -122,7 +116,7 @@ public class JwtUtil {
      * @param token
      * @return
      */
-    public  String getTokenSubjectStr(String token){
+    public String getTokenSubjectStr(String token) {
         String body = JSONObject.toJSONString(getClaimByToken(token).getSubject());
         Object parse = JSON.parse(body);
         return parse.toString();

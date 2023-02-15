@@ -4,7 +4,6 @@ package com.platform.utils;
 import cn.datax.service.system.api.dto.JwtUserDto;
 import cn.datax.service.system.api.feign.UserServiceFeign;
 import com.platform.exception.BadRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -17,11 +16,6 @@ import java.util.List;
 @Component
 public class SecurityUtil {
 
-    @Autowired
-    private UserServiceFeign userServiceFeign;
-
-    @Autowired
-    private JwtUtil jwtUtil;
 
     /**
      * 获取用户
@@ -34,7 +28,7 @@ public class SecurityUtil {
     }
 
     public static String getCurrentUsername() {
-        HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String authorization = request.getHeader("Authorization");
         String tokenSubjectObject = JwtUtil.getTokenSubjectObject(authorization);
         if (tokenSubjectObject == null) {
@@ -52,8 +46,8 @@ public class SecurityUtil {
      */
     public static String getUserId() {
         JwtUserDto user = getDataUser();
-        if (user != null){
-            return user.getUser().getId()+"";
+        if (user != null) {
+            return user.getUser().getId() + "";
         }
         return "";
     }
@@ -65,8 +59,8 @@ public class SecurityUtil {
      */
     public static String getUserDeptId() {
         JwtUserDto user = getDataUser();
-        if (user != null){
-            return user.getUser().getDeptId()+"";
+        if (user != null) {
+            return user.getUser().getDeptId() + "";
         }
         return "";
     }
@@ -78,7 +72,7 @@ public class SecurityUtil {
      */
     public static String getUserName() {
         JwtUserDto user = getDataUser();
-        if (user != null){
+        if (user != null) {
             return user.getUsername();
         }
         return "";
@@ -91,7 +85,7 @@ public class SecurityUtil {
      */
     public static String getNickname() {
         JwtUserDto user = getDataUser();
-        if (user != null){
+        if (user != null) {
             return user.getUser().getNickName();
         }
         return "";
@@ -104,7 +98,7 @@ public class SecurityUtil {
      */
     public static List<String> getUserRoleIds() {
         JwtUserDto user = getDataUser();
-        if (user != null){
+        if (user != null) {
             List<String> roles = new ArrayList<>(user.getRoles());
             return roles;
         }
@@ -118,7 +112,7 @@ public class SecurityUtil {
      */
     public static boolean isAdmin() {
         JwtUserDto user = getDataUser();
-        if (user != null){
+        if (user != null) {
             return user.getUser().getIsAdmin();
         }
         return false;
