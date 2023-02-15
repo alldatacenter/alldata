@@ -10,11 +10,11 @@ npm install
 
 > 依次安装： 
 
-> npm instal script-loader
+> npm install script-loader
 
-> npm instal jsonlint
+> npm install jsonlint
 
-> npm instal vue2-jsoneditor
+> npm install vue2-jsoneditor
 
 # 启动服务 localhost:8013
 npm run dev
