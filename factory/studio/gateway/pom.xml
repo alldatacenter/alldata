@@ -62,6 +62,16 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-core</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
             <version>0.3.2</version>
         </dependency>
     </dependencies>
