@@ -2,7 +2,7 @@
 spring:
   mail:
     host: smtp.qq.com
-    username: 985134801@qq.com
+    username: 12345678@qq.com
     password: xxxxx
     protocol: smtp
     default-encoding: utf-8
@@ -64,7 +64,7 @@ security:
     client:
       access-token-uri: http://16gslave:8612/auth/oauth/token
       user-authorization-uri: http://16gslave:8612/auth/oauth/authorize
-      client-id: datax
+      client-id: AllData
       client-secret: 123456
       scope: all
     resource:
@@ -78,8 +78,8 @@ swagger:
   description: Api Documentation
   version: 1.0.0
   basePackage: cn.datax.service.email.controller
-  termsOfServiceUrl: http://www.baidu.com
+  termsOfServiceUrl: https://github.com/alldatacenter/alldata
   contact:
-    name: yuwei
-    url: http://www.baidu.com
-    email: 985134801@qq.com
+    name: AllDataDC
+    url: https://github.com/alldatacenter/alldata
+    email: 12345678@qq.com
