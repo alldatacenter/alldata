@@ -1,8 +1,0 @@
----
-- name: restart solr
-  command: ./tis restart -force
-  become: yes
-  become_user: "{{tis_user}}"
-  when: shall_exec_restart
-  args:
-    chdir: "{{tis_app_dir}}/"

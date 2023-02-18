@@ -1,8 +1,0 @@
----
-- name: download tis release tar package
-  vars_files:
-   - vars.yml
-  hosts: hadoop-yarn,hadoop-yarn-resource-manager
-  roles:
-   - role: hadoop-yarn
-
