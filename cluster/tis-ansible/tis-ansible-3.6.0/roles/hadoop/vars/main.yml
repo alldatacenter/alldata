@@ -1,5 +1,0 @@
----
-# variables for install hadoop
-local_hadoop_gz_path: "{{ tis_release_dir }}/{{ hadoop_gz_file_name }}"
-hadoop_log_dirs: '/opt/logs/yarn'
-hadoop_namenode_format_file: '/opt/data/hadoop/name/current/VERSION'

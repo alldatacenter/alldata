@@ -1,9 +1,0 @@
-#!/bin/bash
-
-mvn_bin="{{mvn_home}}/bin/mvn"
-echo $mvn_bin
-echo "path:`pwd`"
-
-$mvn_bin clean install -Dmaven.test.skip=true  -Dappname=$1 -U $2
-
-

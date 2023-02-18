@@ -1,1 +1,0 @@
-export PATH={{nodejs_dir}}/{{node_name}}/bin:$PATH
