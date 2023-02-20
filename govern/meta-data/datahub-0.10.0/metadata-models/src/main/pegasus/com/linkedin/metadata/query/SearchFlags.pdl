@@ -1,0 +1,21 @@
+namespace com.linkedin.metadata.query
+
+/**
+ * Set of flags to control search behavior
+ */
+record SearchFlags {
+  /**
+   * Whether to skip cache
+   */
+  skipCache: boolean = false
+
+  /**
+   * The maximum number of values in an facet aggregation
+   */
+  maxAggValues: int = 20
+
+  /**
+   * Structured or unstructured fulltext query
+   */
+  fulltext:optional boolean
+}
