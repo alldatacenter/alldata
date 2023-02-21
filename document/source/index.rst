@@ -12,7 +12,7 @@
    README
    quickstart/index
    ai/index
-   studio/index
+   factory/index
    market/index
    dts/index
    olap/index

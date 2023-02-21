@@ -3,17 +3,17 @@
  
 .. toctree::
    :maxdepth: 2
-   
+
+   studio/index
+   lowcode/index
    chunjun/index
-   cube-studio/index
-   datart/index
-   streampark/index
+   flinkcdc/index
+   InLong/index
    dolphinscheduler/index
    doris/index
-   dashboard/index
+   streampark/index
+   cube-studio/index
+   datart/index
    erda/index
-   flinkcdc/index
-   lowcode/index
    sreworks/index
    tasks/index
-   tis/index
