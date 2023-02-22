@@ -84,7 +84,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '*****';
 ```
 3、远程访问授权
 ```
-create user 'root'@'%' identified with mysql_native_password by '7v6NsVcf';
+create user 'root'@'%' identified with mysql_native_password by '*****';
 grant all privileges on *.* to 'root'@'%' with grant option;
 flush privileges;
 ```
