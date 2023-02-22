@@ -168,7 +168,7 @@ export default {
   methods: {
     //
     checkNumber(rule, value, callback) {
-      var reg = /^[1-9]\d*$/;
+      let reg = /^[1-9]\d*$/;
       if (!reg.test(value) && value) {
         callback(
           new Error("请输入正整数")
@@ -178,7 +178,7 @@ export default {
     },
 
     checkFloat (rule, value, callback) {
-      var reg = /^(([0-9])|([0-9]([0-9]+)))(.[0-9]+)?$/;
+      let reg = /^(([0-9])|([0-9]([0-9]+)))(.[0-9]+)?$/;
       if (!reg.test(value) && value) {
         callback(
           new Error("请输入正数")
@@ -192,7 +192,7 @@ export default {
       callback();
     },
     checkName(rule, value, callback) {
-      var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_]+$/;
+      let reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_]+$/;
       if (!reg.test(value) && value) {
         callback(
           new Error("名称只能是数字、字母、下划线且不能以下划线开头和结尾")

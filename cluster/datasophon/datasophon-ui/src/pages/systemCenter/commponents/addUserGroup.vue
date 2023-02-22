@@ -50,7 +50,7 @@ export default {
   watch: {},
   methods: {
     checkName(rule, value, callback) {
-      var reg = /[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/g;
+      let reg = /[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/g;
       if (reg.test(value)) {
         callback(new Error("名称中不能包含中文"));
       }

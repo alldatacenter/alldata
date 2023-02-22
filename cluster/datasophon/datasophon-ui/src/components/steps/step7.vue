@@ -88,7 +88,7 @@ export default {
     handlearrayWithData(a) {
       let obj = {};
       let arr = [];
-      for (var k in a) {
+      for (let k in a) {
         if (k.includes("arrayWith")) {
           let key = "";
           if (k.includes("arrayWithKey")) {
@@ -105,10 +105,10 @@ export default {
       arr.map((item) => {
         obj[item] = [];
       });
-      for (var f in obj) {
+      for (let f in obj) {
         let keys = [];
         let vals = [];
-        for (var i in a) {
+        for (let i in a) {
           if (i.includes(f)) {
             if (i.includes("arrayWithKey")) {
               keys.push(i);
@@ -129,7 +129,7 @@ export default {
     handleMultipleData(a) {
       let obj = {};
       let arr = [];
-      for (var k in a) {
+      for (let k in a) {
         if (k.includes("multiple")) {
           let key = k.split("multiple")[0];
           arr.push(key);
@@ -140,9 +140,9 @@ export default {
         obj[item] = [];
       });
       // obj{ a: , b: }
-      for (var f in obj) {
+      for (let f in obj) {
         let vals = [];
-        for (var i in a) {
+        for (let i in a) {
           if (i.includes(f)) {
             if (i.includes("multiple")) {
               vals.push(i);
@@ -166,7 +166,7 @@ export default {
           const arrayWithData = this.handlearrayWithData(values);
           const multipleData = this.handleMultipleData(values);
           const formData = { ...values, ...arrayWithData, ...multipleData };
-          for (var name in formData) {
+          for (let name in formData) {
             param.forEach((item) => {
               if (item.name === name) {
                 item.value = formData[name];
@@ -224,7 +224,7 @@ export default {
     checkAllForm() {
       const self = this;
       let num = 0;
-      for (var i = 0; i < self.SERVICENAMES.length; i++) {
+      for (let i = 0; i < self.SERVICENAMES.length; i++) {
         const item = self.SERVICENAMES[i];
         self.$refs[`CommonTemplateRef${item}`][0].form.validateFields(
           (err, values) => {
@@ -254,7 +254,7 @@ export default {
               const arrayWithData = this.handlearrayWithData(values);
               const multipleData = this.handleMultipleData(values);
               const formData = { ...values, ...arrayWithData, ...multipleData };
-              for (var name in formData) {
+              for (let name in formData) {
                 param.forEach((item) => {
                   if (item.name === name) {
                     item.value = formData[name];

@@ -168,7 +168,7 @@ export default {
             self.initFormFiledFlag = false
             return false
           }
-          for (var i in fileds) {
+          for (let i in fileds) {
             if (i.includes('multiple') || i.includes('arrayWithKey') || i.includes('arrayWithValue')) {
               console.log(fileds, 'sssss')
               let splitArr = i.includes('multiple') ? i.split('multiple') :  i.includes('arrayWithKey') ? i.split('arrayWithKey') : i.split('arrayWithValue')
@@ -274,7 +274,7 @@ export default {
       this.testData.forEach((item) => {
         if (item.name === name) {
           item.value.splice(childIndex, 1);
-          var obj = {}
+          let obj = {}
           if (item.type === 'multipleWithKey') {
             item.value.map((child, childIndex) => {
               obj[`${item.name+'arrayWithKey'+childIndex}`]= child.key
@@ -286,7 +286,7 @@ export default {
               obj[`${item.name+'multiple'+childIndex}`]= child
             })
           }
-          var keys = Object.keys(obj)
+          let keys = Object.keys(obj)
           this.form.getFieldsValue([...keys])
           this.form.setFieldsValue({
             ...obj

@@ -150,7 +150,7 @@ export default {
         this.showRoot = false
       }
       this.currentNode = nodeObject;
-      var _base_position = this.$refs.myPage.getBoundingClientRect();
+      let _base_position = this.$refs.myPage.getBoundingClientRect();
       console.log("showNodeMenus:", $event, _base_position);
       this.isShowNodeMenuPanel = true;
       this.nodeMenuPanelPosition.x = $event.clientX - _base_position.x;
