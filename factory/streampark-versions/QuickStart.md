@@ -9,6 +9,7 @@ StreamPark 1.2.2之前(包含)的版本,只支持scala 2.11,切忌使用flink时
 该文档目前基于
 ### 1.1 Hadoop
 使用 Flink on YARN，需要部署的集群安装并配置 Hadoop的相关环境变量，如你是基于 CDH 安装的 hadoop 环境， 相关环境变量可以参考如下配置:
+```
 export HADOOP_HOME=/opt/cloudera/parcels/CDH/lib/hadoop #hadoop 安装目录
 export HADOOP_CONF_DIR=/etc/hadoop/conf
 export HIVE_HOME=$HADOOP_HOME/../hive
@@ -16,6 +17,7 @@ export HBASE_HOME=$HADOOP_HOME/../hbase
 export HADOOP_HDFS_HOME=$HADOOP_HOME/../hadoop-hdfs
 export HADOOP_MAPRED_HOME=$HADOOP_HOME/../hadoop-mapreduce
 export HADOOP_YARN_HOME=$HADOOP_HOME/../hadoop-yarn
+```
 
 ## 二、部署
 你可以直接下载编译好的发行包(推荐),也可以选择手动编译安装，手动编译安装步骤如下:
@@ -189,13 +191,13 @@ streampark:
 ## 三、系统配置
 进入系统之后，第一件要做的事情就是修改系统配置，在菜单/StreamPark/Setting 下，操作界面如下:
 
-主要配置项分为以下几类
+主要配置项分为以下几类:   
 ● System Setting  
 ● Alert Setting  
 ● Flink Home  
 ● Flink Cluster  
 ### 3.1 System Setting
-当前系统配置包括：
+当前系统配置包括:  
 ● Maven配置  
 ● Docker环境配置  
 ● 警告邮箱配置  
@@ -207,7 +209,7 @@ Alert Email 相关的配置是配置发送者邮件的信息，具体配置请�
 这里配置全局的 Flink Home,此处是系统唯一指定 Flink 环境的地方，会作用于所有的作业。
 
 ### 3.4 Flink Cluster
-Flink 当前支持的集群模式包括：
+Flink 当前支持的集群模式包括:  
 ● Standalone集群  
 ● Yarn集群  
 ● Kubernetes集群  
@@ -239,7 +241,7 @@ create table data_gen (
 CREATE TABLE mysql_sink (
     id INT,
     product_count INT,
-    one_price DOUBLE,
+    one_price DOUBLE
  ) WITH (
 'connector.type' = 'jdbc', -- 使用 jdbc connector
 'connector.url' = 'jdbc:mysql://localhost:3306/test', -- jdbc url
