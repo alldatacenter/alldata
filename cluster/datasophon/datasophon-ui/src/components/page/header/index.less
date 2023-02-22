@@ -1,0 +1,40 @@
+.page-header{
+  background: @base-bg-color;
+  padding: 16px 24px;
+  &.head.fixed{
+    margin: auto;
+    max-width: 1400px;
+  }
+  .page-header-wide{
+    .breadcrumb{
+      margin-bottom: 20px;
+    }
+    .detail{
+      display: flex;
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .avatar {
+        margin:0 24px 0 0;
+      }
+      .main{
+        width: 100%;
+        .title{
+          font-size: 20px;
+          color: @title-color;
+          margin-bottom: 16px;
+        }
+        .content{
+          display: flex;
+          flex-wrap: wrap;
+          color: @text-color-second;
+        }
+        .extra{
+          display: flex;
+        }
+      }
+    }
+  }
+}
