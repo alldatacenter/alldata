@@ -20,10 +20,10 @@ export HADOOP_YARN_HOME=$HADOOP_HOME/../hadoop-yarn
 ## 二、部署
 你可以直接下载编译好的发行包(推荐),也可以选择手动编译安装，手动编译安装步骤如下:
 ### 2.1 环境要求
-● Maven 3.6+ 
-● npm 7.11.2 ( https://nodejs.org/en/ ) 
-● pnpm (npm install -g pnpm) 
-● JDK 1.8+ 
+● Maven 3.6+  
+● npm 7.11.2 ( https://nodejs.org/en/ )  
+● pnpm (npm install -g pnpm)  
+● JDK 1.8+  
 ### 2.2 环境部署
 #### 2.2.1 Linux系统
 基于Centos7.5系统
@@ -55,7 +55,7 @@ npm config set registry http://registry.npm.taobao.org/
 
 # 全局安装pm2
 npm install -g pm2
-查看nodejs版本
+# 查看nodejs版本
 node -V 
 v16.18.1
 npm -v
@@ -156,7 +156,7 @@ spring:
     allow-circular-references: true
     banner-mode: off
 ```
-在修改完 conf/application.yml 后, 还需要修改 config/application-mysql.yml 中的数据库连接信息:
+在修改完 conf/application.yml 后, 还需要修改 config/application-mysql.yml 中的数据库连接信息:  
 Tips: 用户需要自行下载驱动jar包并放在 $STREAMPARK_HOME/lib 中,推荐使用8.x版本,下载地址apache maven
 ```
 spring:
@@ -190,16 +190,16 @@ streampark:
 进入系统之后，第一件要做的事情就是修改系统配置，在菜单/StreamPark/Setting 下，操作界面如下:
 
 主要配置项分为以下几类
-● System Setting 
-● Alert Setting 
-● Flink Home 
-● Flink Cluster 
+● System Setting  
+● Alert Setting  
+● Flink Home  
+● Flink Cluster  
 ### 3.1 System Setting
 当前系统配置包括：
-● Maven配置 
-● Docker环境配置 
-● 警告邮箱配置 
-● k8s Ingress 配置 
+● Maven配置  
+● Docker环境配置  
+● 警告邮箱配置  
+● k8s Ingress 配置  
 ### 3.2 Alert Setting
 Alert Email 相关的配置是配置发送者邮件的信息，具体配置请查阅相关邮箱资料和文档进行配置。
 
@@ -208,13 +208,14 @@ Alert Email 相关的配置是配置发送者邮件的信息，具体配置请�
 
 ### 3.4 Flink Cluster
 Flink 当前支持的集群模式包括：
-● Standalone集群 
-● Yarn集群 
-● Kubernetes集群 
+● Standalone集群  
+● Yarn集群  
+● Kubernetes集群  
 
 ## 四、基础使用
 ### 4.1 部署FlinkSql任务
 1、填写对应的flinksql
+```
 -- source端 data_gen_source 中的数据来源于 flink sql 连接器 datagen 生成的随机数据，
 create table data_gen (
     id integer comment '订单id',
@@ -247,6 +248,11 @@ CREATE TABLE mysql_sink (
 'connector.password' = '123456', -- 密码
 'connector.write.flush.max-rows' = '5' -- 默认 5000 条，为了演示改为 1 条
  );
+insert into mysql_sink 
+select id, product_count, one_price
+from data_gen;
+ 
+ ```
 
 2、填写对应的Maven依赖Dependency
 ```
@@ -270,6 +276,7 @@ CREATE TABLE mysql_sink (
  `one_price` double NOT NULL
  ) ENGINE=InnoDB;
 ```
+填写Application Name和选择resolveOrder为parent-first，然后其他默认或者自行设置，最后点击提交按钮
 
  
  
