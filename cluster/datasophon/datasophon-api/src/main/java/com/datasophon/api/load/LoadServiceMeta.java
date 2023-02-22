@@ -212,9 +212,9 @@ public class LoadServiceMeta implements ApplicationRunner {
 
 
     private void loadGlobalVariables(List<ClusterInfoEntity> clusters) throws UnknownHostException {
-        HashMap<String, String> globalVariables = new HashMap<>();
         if (Objects.nonNull(clusters) && clusters.size() > 0) {
             for (ClusterInfoEntity cluster : clusters) {
+                HashMap<String, String> globalVariables = new HashMap<>();
                 List<ClusterVariable> variables = variableService.list(new QueryWrapper<ClusterVariable>().eq(Constants.CLUSTER_ID, cluster.getId()));
                 for (ClusterVariable variable : variables) {
                     globalVariables.put(variable.getVariableName(), variable.getVariableValue());
