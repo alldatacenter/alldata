@@ -16,7 +16,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
- * 用于管理hdfs的扩容与缩容
+ * Used to manage hdfs capacity expansion and reduction
  */
 public class HdfsECActor extends UntypedActor {
     private static final Logger logger = LoggerFactory.getLogger(HdfsECActor.class);
