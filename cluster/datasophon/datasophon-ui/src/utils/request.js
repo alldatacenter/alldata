@@ -47,8 +47,8 @@ async function request(url, method, params, config) {
  * @param authType {AUTH_TYPE} 认证类型，默认：{AUTH_TYPE.BEARER}
  */
 function setAuthorization(auth, authType = AUTH_TYPE.BEARER) {
-  var today = new Date();
-  var expires = new Date();
+  let today = new Date();
+  let expires = new Date();
   expires.setTime(today.getTime() + 1000 * 60 * 60 * 24);
 
   switch (authType) {

@@ -37,13 +37,11 @@
 <script>
 import Result from '../../components/result/Result'
 import DetailList from '../../components/tool/DetailList'
-import AStepItem from '../../components/tool/AStepItem'
 
-const AStepItemGroup = AStepItem.Group
 const DetailListItem = DetailList.Item
 export default {
   name: 'Success',
-  components: {AStepItemGroup, AStepItem, DetailListItem, DetailList, Result},
+  components: {DetailListItem, DetailList, Result},
   data () {
     return {
       title: '提交成功',
