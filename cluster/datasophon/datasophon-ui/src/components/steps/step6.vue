@@ -72,7 +72,7 @@ export default {
           }
         })
       })
-      for (var label in formData) {
+      for (let label in formData) {
         saveParam.push({
           serviceRole: label,
           hosts: formData[label],

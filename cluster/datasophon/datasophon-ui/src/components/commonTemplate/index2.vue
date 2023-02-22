@@ -124,7 +124,7 @@ export default {
       //       self.initFormFiledFlag = false
       //       return false
       //     }
-      //     for (var i in fileds) {
+      //     for (let i in fileds) {
       //       if (i.includes('multiple')) {
       //         console.log(fileds, 'sssss')
       //         self.initFormFiledFlag = true

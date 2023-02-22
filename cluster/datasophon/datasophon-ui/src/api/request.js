@@ -11,7 +11,7 @@ import axios from 'axios'
 // post数据处理
 const handleParams = function(data) {
   const params = new FormData()
-  for(var key in data) {
+  for(let key in data) {
     params.append(key, data[key])
   }
   return params

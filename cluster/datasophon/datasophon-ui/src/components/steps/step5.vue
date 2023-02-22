@@ -48,7 +48,7 @@ export default {
           // 处理表单数据 将相同的key处理成数组
           let formData = {};
           let saveParam = [];
-          for (var k in values) {
+          for (let k in values) {
             const key = this.deleteNum(k, "multipleSelect");
             if (k.includes("multipleSelect")) {
               if (Object.prototype.hasOwnProperty.call(formData, key)) {
@@ -66,7 +66,7 @@ export default {
               }
             }
           }
-          for (var label in formData) {
+          for (let label in formData) {
             saveParam.push({
               serviceRole: label,
               hosts: formData[label],
