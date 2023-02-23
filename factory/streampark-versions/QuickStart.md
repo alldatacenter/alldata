@@ -30,9 +30,9 @@ export HADOOP_YARN_HOME=$HADOOP_HOME/../hadoop-yarn
 #### 2.2.1 Linux系统
 基于Centos7.5系统
 #### 2.2.2 JDK
-基于java1.8
+基于java1.8.0_212
 #### 2.2.3 maven
-基于maven3.8.5
+基于maven3.9.0
 ```
 cd /data/software
 wget https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz --no-check-certificate
@@ -215,6 +215,10 @@ Flink 当前支持的集群模式包括:
 ● Kubernetes集群  
 
 ## 四、基础使用
+启动FlinkSqlClient客户端
+```
+/data/module/flink/bin/sql-client.sh embedded
+```
 ### 4.1 部署FlinkSql任务
 1、填写对应的flinksql
 ```
@@ -237,26 +241,26 @@ create table data_gen (
     'fields.one_price.max' = '5000'
 );
 
--- sink端
-CREATE TABLE mysql_sink (
+-- sink端 
+CREATE TABLE print_sink (
     id INT,
     product_count INT,
     one_price DOUBLE
- ) WITH (
-'connector.type' = 'jdbc', -- 使用 jdbc connector
-'connector.url' = 'jdbc:mysql://localhost:3306/test', -- jdbc url
-'connector.table' = 'goods_sink', -- 表名
-'connector.username' = 'root', -- 用户名
-'connector.password' = '123456', -- 密码
-'connector.write.flush.max-rows' = '5' -- 默认 5000 条，为了演示改为 1 条
- );
-insert into mysql_sink 
+) WITH (
+    'connector' = 'print'
+);
+ 
+ 
+insert into print_sink 
 select id, product_count, one_price
 from data_gen;
  
  ```
 
-2、填写对应的Maven依赖Dependency
+2、填写对应的Maven依赖Dependency  
+
+* 如果sink端是mysql，可以填写如下依赖  
+
 ```
 <dependency>
     <groupId>mysql</groupId>
@@ -278,7 +282,10 @@ from data_gen;
  `one_price` double NOT NULL
  ) ENGINE=InnoDB;
 ```
-填写Application Name和选择resolveOrder为parent-first，然后其他默认或者自行设置，最后点击提交按钮
+填写Application Name和选择resolveOrder为parent-first，然后其他默认或者自行设置，最后点击提交按钮。  
+提交成功后，点击上线（Launch Application）、streampark会根据maven依赖从mvn库拉下对应的依赖，进行build。  
+build成功后，点击开始start，提交flinksql程序到flink集群中，  
+也可以点击取消cancel，取消掉flink集群中对应的任务。
 
  
  
