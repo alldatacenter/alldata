@@ -1,12 +1,16 @@
-# 平台部署
-StreamPark 总体组件栈架构如下， 由 streampark-core 和 streampark-console 两个大的部分组成 , streampark-console 是一个非常重要的模块, 定位是一个综合实时数据平台，流式数仓平台, 低代码 ( Low Code ), Flink & Spark 任务托管平台，可以较好的管理 Flink 任务，集成了项目编译、发布、参数配置、启动、savepoint，火焰图 ( flame graph )，Flink SQL，监控等诸多功能于一体，大大简化了 Flink 任务的日常操作和维护，融合了诸多最佳实践。其最终目标是打造成一个实时数仓，流批一体的一站式大数据解决方案。
+# StreamPark平台部署
+StreamPark 是一个流式应用程序开发框架。 StreamPark 旨在轻松构建和管理流式应用程序，
+
+提供使用 Apache Flink 和 Apache Spark 编写流式处理应用程序的开发框架，未来将支持更多其他引擎。 
+
+此外，StreamPark 是一个专业的流媒体应用管理平台 ，包括应用开发、调试、交互查询、部署、运维
 
 streampark-console提供了开箱即用的安装包，安装之前对环境有些要求，具体要求如下：
+
 ## 一、环境要求
 
-StreamPark 1.2.2之前(包含)的版本,只支持scala 2.11,切忌使用flink时要检查对应的scala版本 1.2.3之后(包含)的版本,支持 scala 2.11 和 scala 2.12 两个版本
 目前 StreamPark 对 Flink 的任务发布，同时支持 Flink on YARN 和 Flink on Kubernetes 两种模式。
-该文档目前基于
+
 ### 1.1 Hadoop
 使用 Flink on YARN，需要部署的集群安装并配置 Hadoop的相关环境变量，如你是基于 CDH 安装的 hadoop 环境， 相关环境变量可以参考如下配置:
 ```
@@ -187,7 +191,7 @@ streampark:
 启动成功之后使用jps 可以看到如下进程。
 4) 浏览器登录系统
 默认端口是10000
-默认用户名：admin 默认密码：streamx
+默认用户名：admin 默认密码：streampark
 ## 三、系统配置
 进入系统之后，第一件要做的事情就是修改系统配置，在菜单/StreamPark/Setting 下，操作界面如下:
 
