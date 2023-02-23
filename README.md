@@ -634,6 +634,78 @@ void testCreateDatabase() {
 > 10、DATABASES FOR ALL DATA PLATFORM 分布式存储引擎
 >
 
+## DataSophon POC
+
+### 一、项目地址
+
+> https://github.com/datasophon/datasophon
+
+### 二、官方文档
+
+> https://datasophon.github.io/datasophon-website/docs/current/%E6%A6%82%E8%A7%88
+
+### 三、DataSophon+安装包
+
+> 提供了一系列包，也可以自定义服务加进去，这一套和ambari那套完全契合！！
+>
+> DataSophon+tar.gz安装包，直接替换Ambari+HDP
+>
+> 解决大数据集群纳管组件的生命周期问题
+
+### 四、架构流程图
+
+### 五、组件自定义服务配置
+
+> https://datasophon.github.io/datasophon-website/docs/current/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%87%E5%8D%97/%E7%BB%84%E4%BB%B6%E9%9B%86%E6%88%90/commit_code
+
+### 六、三件套做监控
+
+> 只需要最基础的三件套做监控, 后面可以一个个加
+
+### 七、未来规划
+
+> https://datasophon.github.io/datasophon-website/docs/current/%E7%89%88%E6%9C%AC%E8%AE%A1%E5%88%92/roadmap
+>
+> 当前版本v1.1.0
+>
+> 支持系统租户管理。
+> 
+> 主机管理支持机架管理。
+> 
+> YARN资源调度支持容量调度器。
+> 
+> YARN资源调度支持标签调度。
+> 
+> 支持组件集成Kerberos，可自由开启和关闭kerberos认证集成。
+
+### 八、局限
+
+> 版本与代码没有分离
+> 
+> 安装版本的hadoop-3.3.3
+
+### 九、下载，安装，解压
+
+> 丝滑切换Ambari Python install ,status, start ,stop
+
+### 十、生态集成
+
+> Dinky，Streampark、Doris等
+
+### 十一、启动逻辑
+
+> 启动DS直接就执行对应的program
+
+
+### 十二、自定义属性
+
+> 自定义模板+freemaker，就能把自定义配置加进去覆盖了
+
+### 十三、Actor监听消息通信
+
+> Worker一启动，就各种Actor加进监听机制，等到InstallServiceActor.挂掉的时候就知道是那种actor失败了
+
+
 ## Flink Table Store && Lake Storage POC
 
 ### 2.1 SQL~Flink table store poc
