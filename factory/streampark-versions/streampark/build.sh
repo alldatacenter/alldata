@@ -197,7 +197,7 @@ detachedPackage () {
 
   echo_g "build info: package mode @ detached, $scala, now build starting..."
 
-  "$PRG_DIR"/mvnw -P$scala,dist -DskipTests clean package
+  mvn -P$scala,dist -DskipTests clean package
 
   if [ $? -eq 0 ]; then
     printf '\n'

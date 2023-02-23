@@ -28,7 +28,7 @@
     <artifactId>streampark</artifactId>
     <version>2.0.0</version>
     <packaging>pom</packaging>
-    <name>StreamPark Project Parent POM</name>
+    <name>AllData StreamPark</name>
 
     <url>https://streampark.apache.org/</url>
 
@@ -80,6 +80,7 @@
         <module>streampark-flink</module>
         <module>streampark-storage</module>
         <module>streampark-console</module>
+        <module>streampark-spark</module>
     </modules>
 
     <properties>
@@ -820,15 +821,6 @@
                             <removeUnusedImports />
                         </java>
                     </configuration>
-                    <executions>
-                        <execution>
-                            <id>spotless-check</id>
-                            <phase>validate</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
 
                 <!--maven-->
