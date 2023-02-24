@@ -370,53 +370,333 @@
 >
 > 用户名: admin 密码: 123456
 
-## Flink数据血缘初体验
-
-## 知识图谱建设方法论
+## DataHub本地开发、构建、启动 On Linux
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/218489554-8c49659f-1c52-4b67-9d8d-671d85191d66.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221186552-50bf2644-3ce6-4a22-944d-bfd7ab0d91f0.png">
 <br/>
-## 知识图谱（Knowledge Graph）
+### DataHub源码构建
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221185131-5420b956-4ffb-4041-a286-166f02907954.png">
+<br/>
+### 命令行安装成功
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221185319-3f0046bf-5ed3-4602-a615-3ca638bbcf0a.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221185417-4a095557-80ef-4c37-b32c-203c4b06c53f.png">
+<br/>
 
-## 知识图谱建设方法论:
-### 一, 知识图谱技术架构: 确定知识的表示方式和知识的存储方式, 
+### DataHub架构
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221185460-caa019b9-04f3-4b64-9550-b6d192075a37.png">
+<br/>
 
-### 二, 知识图谱建设方法论: 知识图谱建设可以分为知识建模, 知识抽取, 知识验证这样几个阶段, 形成一个知识图谱
->
->  从知识抽取的内容上, 又可以分为实体抽取, 属性抽取, 关系抽取, 事件抽取:
->
-> 实体抽取指从数据源中检测到可命名的实体, 并将它们分类到已建模的类型中, 例如人, 组织, 地点, 时间等等, 
->
-> 属性抽取是识别出命名实体的具体属性, 
->
-> 关系抽取是识别出实体与实体之间的关系, 例如从句子“著名歌手周杰伦的妻子昆凌”中识别出“周杰伦”与“昆凌”之间的夫妻关系, 
->
-> 事件抽取是识别出命名实体相关的事件信息, 例如“周杰伦”与“昆凌”结婚就是一个事件
->
-> 可以看出实体抽取, 属性抽取, 关系抽取是抽取我们在知识建模中定义的拓扑结构部分数据
->
-> 事件抽取是事件建模相关数据的抽取, 所以在领域知识图谱建设中, 也需要包括数据准备域的抽取方式, 处置域的数据抽取方式
->
-> 知 识 验 证
->
-> 从各种不同数据源抽取的知识, 并不一定是有效的知识, 必须进行知识的验证, 将有效的, 正确的知识进入知识库造成知识不准确的原因
->
-> 通常是原始数据存在错误, 术语存在二义性, 知识冲突等等, 例如前面提到的"1#"压水堆, "1号"压水堆, “一号”压水堆这三个词对应一个实体
->
-> 如果在抽取中没有合理定义规则, 这就需要在知识验证阶段得到处理, 以便形成闭环
+> DataHub (& GMA) 架构
+> DatahHub 采用前后端分离 + 微服务 / 容器架构
+> 前端：Ember + TypeScript + ES9 + ES.Next + Yarn + ESLint
+> 
+> 服务端：Play Framework（web 框架） + Spring + Rest.li（restful 框架）+ Pegasus（数据建模语言） + Apache Samza （流处理框架）
+> 
+> 基础设施：elastic search (5.6) + Mysql + neo4j + kafka
+> 
+> 构建工具：Gradlew + Docker + Docker compose
+> 
+> DataHub 组成
+> 
+> datahub-gms (Generalized Metadata Store) ： 元数据存储服务
+> 
+> datahub-gma (Generalized Metadata Architecture) ： 通用元数据体系结构
+> 
+> GMA 是 datahub 的基础设施，提供标准化的元数据模型和访问层
+> 
+> datahub-frontend ： 应用前端
+> 
+> datahub-mxe 元数据事件datahub-mce-consumer （MetadataChangeEvent）：元数据变更事件，由平台或爬虫程序发起，写入到 GMS
+> 
+> datahub-mae-consumer (MetadataAuditEvent)： 元数据审计事件，只有被成功处理的 MCE 才会产生相应的 MAE，由 GMS 发起 ，写入到 es&Neo4j
 
-### 三, 基于知识图谱建设应用: 每一类应用的侧重点不同, 使用技术和达到的效果也不同, 我们总结为知识推理类, 知识呈现类, 知识问答类, 知识共享类
+### 1、JAVA_HOME
+> 1.1 安装Java-11 && 配置JAVA_HOME
+>
+> sudo yum install java-11-openjdk -y
+> 
+> sudo yum install java-11-openjdk-devel
+>
+> 1.2 安装Java-8 && 不需要配置JAVA_HOME
+>
+> yum install java-1.8.0-openjdk.x86_64
+>
+> yum install -y java-1.8.0-openjdk-devel.x86_64
 
-> 1, 知识图谱建设
+### 2、Python3.7以上版本
+> 2.1 下载python3.7 
+> 
+> mkdir -p /usr/local/python3 && cd /usr/local/python3
+> 
+> wget https://www.python.org/ftp/python/3.7.16/Python-3.7.16.tar.xz
+> 
+> tar -xvf Python-3.7.16.tar.xz
+> 
+> cd Python-3.7.16
+> 
+> ./configure --prefix=/usr/local/python3
 >
-> 1.1 人工数据标注工具: https://github.com/doccano/doccano
->
-> 1.2 自动标注+知识抽取: https://github.com/zjunlp/DeepKE
->
-> 2, 知识存储: https://github.com/alibaba/GraphScope
->
-> 3, 知识图谱应用: https://github.com/lemonhu/stock-knowledge-graph
+> make && make install
+> 
+> ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+> 
+> 验证python3.7版本
 
+### 3、源码构建
+> 3.1 安装sasl、fastjsonschema
+>
+> 3.1.1 yum -y install cyrus-sasl cyrus-sasl-devel cyrus-sasl-lib
+> 
+> 3.1.2 pip3 install fastjsonschema
+> 
+> 3.1.3 yum -y install openldap-devel
+> 
+> 3.1.4 pip3 install python_ldap
+> 
+> 3.1.5 cd cd smoke-test && pip install -r requirements.txt
+> 
+> 3.2 安装命令行
+> 
+> ./gradlew :metadata-ingestion:installDev
+> 
+> 3.3 后端打包 
+> 
+> 执行./gradlew metadata-service:war:build
+> 
+> 3.4 前端打包 
+> 
+> 修改node版本: 找到datahub-0.10.0/datahub-web-react/build.gradle, 修改version为'16.10.0'
+>
+> export NODE_OPTIONS="--max-old-space-size=8192"
+> 
+> 执行./gradlew :datahub-frontend:dist -x yarnTest -x yarnLint
+
+### 4 启动datahub
+> 新增docker-compose.yml
+```
+networks:
+  default:
+    name: datahub_network
+services:
+  broker:
+    container_name: broker
+    depends_on:
+      - zookeeper
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+      - KAFKA_HEAP_OPTS=-Xms256m -Xmx256m
+      - KAFKA_CONFLUENT_SUPPORT_METRICS_ENABLE=false
+    hostname: broker
+    image: confluentinc/cp-kafka:7.2.2
+    ports:
+      - ${DATAHUB_MAPPED_KAFKA_BROKER_PORT:-9092}:9092
+  datahub-actions:
+    depends_on:
+      - datahub-gms
+    environment:
+      - DATAHUB_GMS_HOST=datahub-gms
+      - DATAHUB_GMS_PORT=8080
+      - DATAHUB_GMS_PROTOCOL=http
+      - DATAHUB_SYSTEM_CLIENT_ID=__datahub_system
+      - DATAHUB_SYSTEM_CLIENT_SECRET=JohnSnowKnowsNothing
+      - KAFKA_BOOTSTRAP_SERVER=broker:29092
+      - KAFKA_PROPERTIES_SECURITY_PROTOCOL=PLAINTEXT
+      - METADATA_AUDIT_EVENT_NAME=MetadataAuditEvent_v4
+      - METADATA_CHANGE_LOG_VERSIONED_TOPIC_NAME=MetadataChangeLog_Versioned_v1
+      - SCHEMA_REGISTRY_URL=http://schema-registry:8081
+    hostname: actions
+    image: acryldata/datahub-actions:${ACTIONS_VERSION:-head}
+    restart: on-failure:5
+  datahub-frontend-react:
+    container_name: datahub-frontend-react
+    depends_on:
+      - datahub-gms
+    environment:
+      - DATAHUB_GMS_HOST=datahub-gms
+      - DATAHUB_GMS_PORT=8080
+      - DATAHUB_SECRET=YouKnowNothing
+      - DATAHUB_APP_VERSION=1.0
+      - DATAHUB_PLAY_MEM_BUFFER_SIZE=10MB
+      - JAVA_OPTS=-Xms512m -Xmx512m -Dhttp.port=9002 -Dconfig.file=datahub-frontend/conf/application.conf -Djava.security.auth.login.config=datahub-frontend/conf/jaas.conf -Dlogback.configurationFile=datahub-frontend/conf/logback.xml -Dlogback.debug=false -Dpidfile.path=/dev/null
+      - KAFKA_BOOTSTRAP_SERVER=broker:29092
+      - DATAHUB_TRACKING_TOPIC=DataHubUsageEvent_v1
+      - ELASTIC_CLIENT_HOST=elasticsearch
+      - ELASTIC_CLIENT_PORT=9200
+    hostname: datahub-frontend-react
+    image: ${DATAHUB_FRONTEND_IMAGE:-linkedin/datahub-frontend-react}:${DATAHUB_VERSION:-head}
+    ports:
+      - ${DATAHUB_MAPPED_FRONTEND_PORT:-9002}:9002
+    volumes:
+      - ${HOME}/.datahub/plugins:/etc/datahub/plugins
+  datahub-gms:
+    container_name: datahub-gms
+    depends_on:
+      - mysql
+    environment:
+      - DATAHUB_SERVER_TYPE=${DATAHUB_SERVER_TYPE:-quickstart}
+      - DATAHUB_TELEMETRY_ENABLED=${DATAHUB_TELEMETRY_ENABLED:-true}
+      - DATAHUB_UPGRADE_HISTORY_KAFKA_CONSUMER_GROUP_ID=generic-duhe-consumer-job-client-gms
+      - EBEAN_DATASOURCE_DRIVER=com.mysql.jdbc.Driver
+      - EBEAN_DATASOURCE_HOST=mysql:3306
+      - EBEAN_DATASOURCE_PASSWORD=datahub
+      - EBEAN_DATASOURCE_URL=jdbc:mysql://mysql:3306/datahub?verifyServerCertificate=false&useSSL=true&useUnicode=yes&characterEncoding=UTF-8
+      - EBEAN_DATASOURCE_USERNAME=datahub
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_INDEX_BUILDER_MAPPINGS_REINDEX=true
+      - ELASTICSEARCH_INDEX_BUILDER_SETTINGS_REINDEX=true
+      - ELASTICSEARCH_PORT=9200
+      - ENTITY_REGISTRY_CONFIG_PATH=/datahub/datahub-gms/resources/entity-registry.yml
+      - ENTITY_SERVICE_ENABLE_RETENTION=true
+      - ES_BULK_REFRESH_POLICY=WAIT_UNTIL
+      - GRAPH_SERVICE_DIFF_MODE_ENABLED=true
+      - GRAPH_SERVICE_IMPL=elasticsearch
+      - JAVA_OPTS=-Xms1g -Xmx1g
+      - KAFKA_BOOTSTRAP_SERVER=broker:29092
+      - KAFKA_SCHEMAREGISTRY_URL=http://schema-registry:8081
+      - MAE_CONSUMER_ENABLED=true
+      - MCE_CONSUMER_ENABLED=true
+      - PE_CONSUMER_ENABLED=true
+      - UI_INGESTION_ENABLED=true
+    hostname: datahub-gms
+    image: ${DATAHUB_GMS_IMAGE:-linkedin/datahub-gms}:${DATAHUB_VERSION:-head}
+    ports:
+      - ${DATAHUB_MAPPED_GMS_PORT:-8080}:8080
+    volumes:
+      - ${HOME}/.datahub/plugins:/etc/datahub/plugins
+  datahub-upgrade:
+    command:
+      - -u
+      - SystemUpdate
+    container_name: datahub-upgrade
+    environment:
+      - EBEAN_DATASOURCE_USERNAME=datahub
+      - EBEAN_DATASOURCE_PASSWORD=datahub
+      - EBEAN_DATASOURCE_HOST=mysql:3306
+      - EBEAN_DATASOURCE_URL=jdbc:mysql://mysql:3306/datahub?verifyServerCertificate=false&useSSL=true&useUnicode=yes&characterEncoding=UTF-8
+      - EBEAN_DATASOURCE_DRIVER=com.mysql.jdbc.Driver
+      - KAFKA_BOOTSTRAP_SERVER=broker:29092
+      - KAFKA_SCHEMAREGISTRY_URL=http://schema-registry:8081
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - ELASTICSEARCH_INDEX_BUILDER_MAPPINGS_REINDEX=true
+      - ELASTICSEARCH_INDEX_BUILDER_SETTINGS_REINDEX=true
+      - ELASTICSEARCH_BUILD_INDICES_CLONE_INDICES=false
+      - GRAPH_SERVICE_IMPL=elasticsearch
+      - DATAHUB_GMS_HOST=datahub-gms
+      - DATAHUB_GMS_PORT=8080
+      - ENTITY_REGISTRY_CONFIG_PATH=/datahub/datahub-gms/resources/entity-registry.yml
+    hostname: datahub-upgrade
+    image: ${DATAHUB_UPGRADE_IMAGE:-acryldata/datahub-upgrade}:${DATAHUB_VERSION:-head}
+  elasticsearch:
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms256m -Xmx512m -Dlog4j2.formatMsgNoLookups=true
+    healthcheck:
+      retries: 4
+      start_period: 2m
+      test:
+        - CMD-SHELL
+        - curl -sS --fail 'http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=0s' || exit 1
+    hostname: elasticsearch
+    image: elasticsearch:7.10.1
+    mem_limit: 1g
+    ports:
+      - ${DATAHUB_MAPPED_ELASTIC_PORT:-9200}:9200
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+  elasticsearch-setup:
+    container_name: elasticsearch-setup
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - ELASTICSEARCH_PROTOCOL=http
+    hostname: elasticsearch-setup
+    image: ${DATAHUB_ELASTIC_SETUP_IMAGE:-linkedin/datahub-elasticsearch-setup}:${DATAHUB_VERSION:-head}
+  kafka-setup:
+    container_name: kafka-setup
+    depends_on:
+      - broker
+      - schema-registry
+    environment:
+      - DATAHUB_PRECREATE_TOPICS=${DATAHUB_PRECREATE_TOPICS:-false}
+      - KAFKA_BOOTSTRAP_SERVER=broker:29092
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+    hostname: kafka-setup
+    image: ${DATAHUB_KAFKA_SETUP_IMAGE:-linkedin/datahub-kafka-setup}:${DATAHUB_VERSION:-head}
+  mysql:
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --default-authentication-plugin=mysql_native_password
+    container_name: mysql
+    environment:
+      - MYSQL_DATABASE=datahub
+      - MYSQL_USER=datahub
+      - MYSQL_PASSWORD=datahub
+      - MYSQL_ROOT_PASSWORD=datahub
+    hostname: mysql
+    image: mysql:5.7
+    ports:
+      - ${DATAHUB_MAPPED_MYSQL_PORT:-33061}:3306
+    volumes:
+      - ../mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysqldata:/var/lib/mysql
+  mysql-setup:
+    container_name: mysql-setup
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USERNAME=datahub
+      - MYSQL_PASSWORD=datahub
+      - DATAHUB_DB_NAME=datahub
+    hostname: mysql-setup
+    image: ${DATAHUB_MYSQL_SETUP_IMAGE:-acryldata/datahub-mysql-setup}:${DATAHUB_VERSION:-head}
+  schema-registry:
+    container_name: schema-registry
+    depends_on:
+      - broker
+    environment:
+      - SCHEMA_REGISTRY_HOST_NAME=schemaregistry
+      - SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL=PLAINTEXT
+      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=broker:29092
+    hostname: schema-registry
+    image: confluentinc/cp-schema-registry:7.2.2
+    ports:
+      - ${DATAHUB_MAPPED_SCHEMA_REGISTRY_PORT:-8081}:8081
+  zookeeper:
+    container_name: zookeeper
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_TICK_TIME=2000
+    hostname: zookeeper
+    image: confluentinc/cp-zookeeper:7.2.2
+    ports:
+      - ${DATAHUB_MAPPED_ZK_PORT:-2181}:2181
+    volumes:
+      - zkdata:/var/lib/zookeeper
+version: "2.3"
+volumes:
+  esdata: null
+  mysqldata: null
+  zkdata: null
+```
+> python3 -m datahub docker quickstart --start -f docker-compose.yml
+
+### 5 停止datahub
+> python3 -m datahub docker quickstart --stop -f docker-compose.yml
 
 ##  dinky新增hive2flink任务类型
 
@@ -635,6 +915,9 @@ void testCreateDatabase() {
 >
 
 ## DataSophon POC
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221186382-38f3b419-e710-4b1d-8af9-b176a6d565ac.png">
+<br/>
 
 ### 一, 项目地址
 
@@ -957,6 +1240,52 @@ void testCreateDatabase() {
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220100-83391805-29ee-45d2-8076-f743c3ba6070.png">
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/160220106-0341a2f4-b4df-4d2b-9ec1-b0f10affd22d.png">
 <br/>
+
+## 知识图谱建设方法论
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/218489554-8c49659f-1c52-4b67-9d8d-671d85191d66.png">
+<br/>
+## 知识图谱（Knowledge Graph）
+
+## 知识图谱建设方法论:
+### 一, 知识图谱技术架构: 确定知识的表示方式和知识的存储方式, 
+
+### 二, 知识图谱建设方法论: 知识图谱建设可以分为知识建模, 知识抽取, 知识验证这样几个阶段, 形成一个知识图谱
+>
+>  从知识抽取的内容上, 又可以分为实体抽取, 属性抽取, 关系抽取, 事件抽取:
+>
+> 实体抽取指从数据源中检测到可命名的实体, 并将它们分类到已建模的类型中, 例如人, 组织, 地点, 时间等等, 
+>
+> 属性抽取是识别出命名实体的具体属性, 
+>
+> 关系抽取是识别出实体与实体之间的关系, 例如从句子“著名歌手周杰伦的妻子昆凌”中识别出“周杰伦”与“昆凌”之间的夫妻关系, 
+>
+> 事件抽取是识别出命名实体相关的事件信息, 例如“周杰伦”与“昆凌”结婚就是一个事件
+>
+> 可以看出实体抽取, 属性抽取, 关系抽取是抽取我们在知识建模中定义的拓扑结构部分数据
+>
+> 事件抽取是事件建模相关数据的抽取, 所以在领域知识图谱建设中, 也需要包括数据准备域的抽取方式, 处置域的数据抽取方式
+>
+> 知 识 验 证
+>
+> 从各种不同数据源抽取的知识, 并不一定是有效的知识, 必须进行知识的验证, 将有效的, 正确的知识进入知识库造成知识不准确的原因
+>
+> 通常是原始数据存在错误, 术语存在二义性, 知识冲突等等, 例如前面提到的"1#"压水堆, "1号"压水堆, “一号”压水堆这三个词对应一个实体
+>
+> 如果在抽取中没有合理定义规则, 这就需要在知识验证阶段得到处理, 以便形成闭环
+
+### 三, 基于知识图谱建设应用: 每一类应用的侧重点不同, 使用技术和达到的效果也不同, 我们总结为知识推理类, 知识呈现类, 知识问答类, 知识共享类
+
+> 1, 知识图谱建设
+>
+> 1.1 人工数据标注工具: https://github.com/doccano/doccano
+>
+> 1.2 自动标注+知识抽取: https://github.com/zjunlp/DeepKE
+>
+> 2, 知识存储: https://github.com/alibaba/GraphScope
+>
+> 3, 知识图谱应用: https://github.com/lemonhu/stock-knowledge-graph
+
 
 ## 从0到1建设大数据解决方案
 
