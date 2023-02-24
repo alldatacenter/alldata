@@ -1,0 +1,82 @@
+{
+  "patches": [
+    {
+      "id":              "TYPEDEF_PATCH_3000_138",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "aws_s3_pseudo_dir",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "subject",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_3000_139",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "aws_s3_pseudo_dir",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "objectPrefix",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_3000_140",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "aws_s3_pseudo_dir",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "currentStorageLocation",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_3000_141",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "aws_s3_pseudo_dir",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
+      "attributeName":   "subdomain",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_3000_142",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "aws_s3_object",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "partner",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_3000_143",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "aws_s3_object",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "domain",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_3000_144",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "aws_s3_object",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "region",
+      "params": {
+        "searchWeight": 8
+      }
+    }
+  ]
+}

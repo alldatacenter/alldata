@@ -1,0 +1,23 @@
+{
+  "patches": [
+    {
+      "id": "TYPEDEF_PATCH_1000_041",
+      "description": "Add 'partitionCount' attribute to kafka_topic",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "kafka_topic",
+      "applyToVersion": "1.0",
+      "updateToVersion": "1.1",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "partitionCount",
+          "typeName": "int",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    }
+  ]
+}

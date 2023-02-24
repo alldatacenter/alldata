@@ -1,0 +1,153 @@
+{
+    "enumDefs": [],
+    "structDefs": [],
+    "classificationDefs": [],
+    "entityDefs": [
+        {
+            "name": "hbase_namespace",
+            "superTypes": [
+                "Asset"
+            ],
+            "serviceType": "hbase",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name": "clusterName",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional": false,
+                    "includeInNotification": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "parameters",
+                    "typeName": "map<string,string>",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "createTime",
+                    "typeName": "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "modifiedTime",
+                    "typeName": "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                }
+            ]
+        },
+        {
+            "name": "hbase_table",
+            "superTypes": [
+                "DataSet"
+            ],
+            "serviceType": "hbase",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+                {
+                    "name": "uri",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                }
+            ]
+        },
+        {
+            "name": "hbase_column_family",
+            "superTypes": [
+                "DataSet"
+            ],
+            "serviceType": "hbase",
+            "typeVersion": "1.0",
+            "attributeDefs": []
+        },
+        {
+            "name": "hbase_column",
+            "superTypes": [
+                "DataSet"
+            ],
+            "serviceType": "hbase",
+            "typeVersion": "1.0",
+            "attributeDefs": []
+        }
+    ],
+    "relationshipDefs": [
+        {
+            "name": "hbase_table_namespace",
+            "serviceType": "hbase",
+            "typeVersion": "1.0",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel": "__hbase_table.namespace",
+            "endDef1": {
+                "type": "hbase_table",
+                "name": "namespace",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "hbase_namespace",
+                "name": "tables",
+                "isContainer": true,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "hbase_table_column_families",
+            "serviceType": "hbase",
+            "typeVersion": "1.0",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel": "__hbase_table.column_families",
+            "endDef1": {
+                "type": "hbase_table",
+                "name": "column_families",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "hbase_column_family",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "hbase_column_family_columns",
+            "serviceType": "hbase",
+            "typeVersion": "1.0",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel": "__hbase_column_family.columns",
+            "endDef1": {
+                "type": "hbase_column_family",
+                "name": "columns",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "hbase_column",
+                "name": "column_family",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        }
+    ]
+}

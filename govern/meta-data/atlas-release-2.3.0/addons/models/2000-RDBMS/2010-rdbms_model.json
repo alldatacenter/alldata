@@ -1,0 +1,458 @@
+{
+    "enumDefs": [],
+    "structDefs": [],
+    "classificationDefs": [],
+    "entityDefs": [
+        {
+            "name": "rdbms_instance",
+            "description": "Instance that the rdbms server is running on",
+            "superTypes": ["DataSet"],
+            "serviceType": "rdbms",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+                {
+                    "name": "rdbms_type",
+                    "typeName": "string",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": true
+                },
+                {
+                    "name": "platform",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": true
+                },
+                {
+                    "name": "cloudOrOnPrem",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "hostname",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "port",
+                    "typeName": "int",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "protocol",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "contact_info",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "rdbms_db",
+            "description": "a database (schema) in an rdbms",
+            "superTypes": ["DataSet"],
+            "serviceType": "rdbms",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+                {
+                    "name": "prodOrOther",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": true
+                },
+                {
+                    "name": "contact_info",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "rdbms_table",
+            "description": "a table in an rdbms database (schema)",
+            "superTypes": ["DataSet"],
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "options": {
+              "schemaElementsAttribute": "columns"
+            },
+            "attributeDefs": [
+                {
+                    "name": "name_path",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "createTime",
+                    "typeName": "date",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "type",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "contact_info",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "rdbms_column",
+            "description": "a column in an rdbms table",
+            "superTypes": ["DataSet"],
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "options": {
+              "schemaAttributes": "[\"name\", \"description\", \"owner\", \"data_type\", \"comment\", \" isPrimaryKey\", \" isNullable\"]"
+            },
+            "attributeDefs": [
+                {
+                    "name": "data_type",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": true
+                },
+                {
+                    "name": "length",
+                    "typeName": "int",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "default_value",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "isNullable",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "isPrimaryKey",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "rdbms_index",
+            "description": "An index on an RDBMS table",
+            "superTypes": ["DataSet"],
+            "serviceType": "rdbms",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+                {
+                    "name": "index_type",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "isUnique",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "rdbms_foreign_key",
+            "description": null,
+            "superTypes": ["DataSet"],
+            "serviceType": "rdbms",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+            ]
+        }
+    ],
+    "relationshipDefs": [
+        {
+            "name": "rdbms_instance_databases",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__rdbms_instance.databases",
+            "endDef1": {
+                "type": "rdbms_instance",
+                "name": "databases",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_db",
+                "name": "instance",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "rdbms_db_tables",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__rdbms_db.tables",
+            "endDef1": {
+                "type": "rdbms_db",
+                "name": "tables",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_table",
+                "name": "db",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "rdbms_table_columns",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__rdbms_table.columns",
+            "endDef1": {
+                "type": "rdbms_table",
+                "name": "columns",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_column",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "rdbms_table_indexes",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__rdbms_table.indexes",
+            "endDef1": {
+                "type": "rdbms_table",
+                "name": "indexes",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_index",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "rdbms_index_columns",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "ASSOCIATION",
+            "relationshipLabel": "__rdbms_index.columns",
+            "endDef1": {
+                "type": "rdbms_index",
+                "name": "columns",
+                "isContainer": false,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_column",
+                "name": "indexes",
+                "isContainer": false,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "rdbms_table_foreign_key",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__rdbms_table.foreign_keys",
+            "endDef1": {
+                "type": "rdbms_table",
+                "name": "foreign_keys",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_foreign_key",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "rdbms_foreign_key_key_columns",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "ASSOCIATION",
+            "relationshipLabel": "__rdbms_foreign_key.key_columns",
+            "endDef1": {
+                "type": "rdbms_foreign_key",
+                "name": "key_columns",
+                "isContainer": false,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_column",
+                "name": "key_column_references",
+                "isContainer": false,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "rdbms_foreign_key_table_references",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "ASSOCIATION",
+            "relationshipLabel": "__rdbms_foreign_key.references_table",
+            "endDef1": {
+                "type": "rdbms_foreign_key",
+                "name": "references_table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_table",
+                "name": "foreign_key_references",
+                "isContainer": false,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "rdbms_foreign_key_column_references",
+            "serviceType": "rdbms",
+            "typeVersion": "1.2",
+            "relationshipCategory": "ASSOCIATION",
+            "relationshipLabel": "__rdbms_foreign_key.references_columns",
+            "endDef1": {
+                "type": "rdbms_foreign_key",
+                "name": "references_columns",
+                "isContainer": false,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "rdbms_column",
+                "name": "foreign_key_references",
+                "isContainer": false,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        }
+    ]
+}

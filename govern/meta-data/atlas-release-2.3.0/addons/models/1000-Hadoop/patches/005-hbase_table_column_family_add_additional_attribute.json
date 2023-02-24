@@ -1,0 +1,235 @@
+{
+  "patches": [
+    {
+      "id": "TYPEDEF_PATCH_1000_039",
+      "description": "Add attributes to hbase_table",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "hbase_table",
+      "applyToVersion": "1.2",
+      "updateToVersion": "1.3",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "maxFileSize",
+          "typeName": "long",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+        "name": "isReadOnly",
+        "typeName": "boolean",
+        "cardinality": "SINGLE",
+        "isIndexable": false,
+        "isOptional": true,
+        "isUnique": false
+        },
+        {
+          "name": "isCompactionEnabled",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "isNormalizationEnabled",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "replicasPerRegion",
+          "typeName": "int",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "durability",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+
+      ]
+    },
+    {
+      "id": "TYPEDEF_PATCH_1000_040",
+      "description": "Add attributes to hbase_column_family",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "hbase_column_family",
+      "applyToVersion": "1.1",
+      "updateToVersion": "1.2",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "bloomFilterType",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "compressionType",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "compactionCompressionType",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "encryptionType",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "inMemoryCompactionPolicy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "keepDeletedCells",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "maxVersions",
+          "typeName": "int",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "minVersions",
+          "typeName": "int",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "dataBlockEncoding",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "StoragePolicy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "ttl",
+          "typeName": "int",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "blockCacheEnabled",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "cacheBloomsOnWrite",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "cacheDataOnWrite",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "cacheIndexesOnWrite",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "evictBlocksOnClose",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "prefetchBlocksOnOpen",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "newVersionBehavior",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "isMobEnabled",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "mobCompactPartitionPolicy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    }
+  ]
+}

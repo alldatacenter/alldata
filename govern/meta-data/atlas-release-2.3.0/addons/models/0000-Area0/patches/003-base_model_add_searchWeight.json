@@ -1,0 +1,82 @@
+{
+  "patches": [
+    {
+      "id":              "TYPEDEF_PATCH_0000_033",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Referenceable",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "qualifiedName",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_034",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Asset",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "name",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_035",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Asset",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "description",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_036",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Asset",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
+      "attributeName":   "owner",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_037",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "AtlasServer",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "name",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_038",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "AtlasServer",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "displayName",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_039",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "AtlasServer",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "fullName",
+      "params": {
+        "searchWeight": 10
+      }
+    }
+  ]
+}
