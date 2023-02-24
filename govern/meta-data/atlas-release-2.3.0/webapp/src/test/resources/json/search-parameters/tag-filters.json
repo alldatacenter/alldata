@@ -1,0 +1,16 @@
+[
+  {
+    "testDescription": "Search for exact Tag name",
+    "searchParameters": {
+      "entityFilters":null,
+      "tagFilters":null,
+      "attributes":null,
+      "query":null,
+      "excludeDeletedEntities":true,
+      "limit":25,
+      "typeName":null,
+      "classification":"fooTag"
+    },
+    "expectedCount": 1
+  }
+]
