@@ -1,0 +1,15 @@
+{
+    "patches": [
+        {
+            "id":              "TYPEDEF_PATCH_1000_014_001",
+            "description":     "Remove legacy reference attribute 'nodes' from storm_topology",
+            "action":          "REMOVE_LEGACY_REF_ATTRIBUTES",
+            "typeName":        "storm_topology_nodes",
+            "applyToVersion":  "1.1",
+            "updateToVersion": "1.2",
+            "params": {
+                "relationshipLabel": "__storm_topology.nodes"
+            }
+        }
+    ]
+}

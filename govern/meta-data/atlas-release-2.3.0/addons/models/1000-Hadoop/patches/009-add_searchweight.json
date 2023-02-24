@@ -1,0 +1,412 @@
+{
+  "patches": [
+    {
+      "id":              "TYPEDEF_PATCH_1000_101",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_process",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "userName",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_102",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_process",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "queryText",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_103",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_process",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "clusterName",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_104",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_table",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "comment",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_105",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_table",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "viewOriginalText",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_106",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_table",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
+      "attributeName":   "viewExpandedText",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_107",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_storagedesc",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "location",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_108",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_db",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "location",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_109",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_db",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "clusterName",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_110",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hive_column",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
+      "attributeName":   "comment",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_111",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "sqoop_process",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "userName",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_112",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "falcon_cluster",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "colo",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_113",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "falcon_feed",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "groups",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_114",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "falcon_process",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "pipelines",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_115",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hbase_namespace",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "clusterName",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_116",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hbase_table",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
+      "attributeName":   "uri",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_117",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "avro_field",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "doc",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_118",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "avro_record",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "doc",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_119",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "avro_record",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "avro_notation",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_120",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "avro_record",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "avroClass",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_121",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "avro_schema",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "namespace",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_122",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "kafka_topic",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "topic",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_123",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "kafka_topic",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "uri",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_124",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "kafka_topic",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
+      "attributeName":   "contactInfo",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_125",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "kafka_topic",
+      "applyToVersion":  "1.5",
+      "updateToVersion": "1.6",
+      "attributeName":   "type",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_126",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "kafka_topic",
+      "applyToVersion":  "1.6",
+      "updateToVersion": "1.7",
+      "attributeName":   "keyClassname",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_127",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "jms_topic",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "topic",
+      "params": {
+        "searchWeight": 10
+      }
+    } , {
+      "id":              "TYPEDEF_PATCH_1000_128",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "jms_topic",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "uri",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_129",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "storm_topology",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "clusterName",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_130",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "storm_node",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "name",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_131",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "storm_node",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "description",
+      "params": {
+        "searchWeight": 10
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_132",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "storm_node",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "driverClass",
+      "params": {
+        "searchWeight": 8
+      }
+    } , {
+      "id":              "TYPEDEF_PATCH_1000_133",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "fs_path",
+      "applyToVersion":  "1.1",
+      "updateToVersion": "1.2",
+      "attributeName":   "path",
+      "params": {
+        "searchWeight": 5
+      }
+    } , {
+      "id":              "TYPEDEF_PATCH_1000_134",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "fs_path",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "group",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_135",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "fs_path",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "posixPermissions",
+      "params": {
+        "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_136",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hdfs_path",
+      "applyToVersion":  "1.2",
+      "updateToVersion": "1.3",
+      "attributeName":   "clusterName",
+      "params": {
+        "searchWeight": 8
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_1000_137",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "hdfs_path",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
+      "attributeName":   "nameServiceId",
+      "params": {
+        "searchWeight": 10
+      }
+    }
+  ]
+}
