@@ -1,9 +1,7 @@
 package cn.datax.service.data.market.service.impl;
 
-import cn.datax.commo.office.word.WordUtil;
 import cn.datax.common.base.BaseServiceImpl;
 import cn.datax.common.core.DataConstant;
-import cn.datax.common.core.R;
 import cn.datax.common.core.RedisConstant;
 import cn.datax.common.exception.DataException;
 import cn.datax.common.rabbitmq.config.RabbitMqConstant;
@@ -33,15 +31,9 @@ import cn.datax.service.data.metadata.api.enums.DataLevel;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
-import com.aspose.words.Document;
-import com.aspose.words.MailMerge;
-import com.aspose.words.net.System.Data.DataRow;
-import com.aspose.words.net.System.Data.DataTable;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.ExpressionVisitorAdapter;
@@ -442,72 +434,6 @@ public class DataApiServiceImpl extends BaseServiceImpl<DataApiDao, DataApiEntit
 		updateWrapper.set(DataApiEntity::getStatus, DataConstant.ApiState.CANCEL.getKey());
 		updateWrapper.eq(DataApiEntity::getId, id);
 		dataApiDao.update(null, updateWrapper);
-	}
-
-	@Override
-	public Document wordDataApi(String id) throws Exception {
-		DataApiEntity dataApiEntity = super.getById(id);
-		// 合并模版
-		ClassPathResource classPathResource = new ClassPathResource("templates/api_1.0.0.docx");
-		InputStream inputStream = classPathResource.getInputStream();
-		Document doc = WordUtil.getInstance().getDocument(inputStream);
-		// 提供字段
-		MD5Util mt = MD5Util.getInstance();
-		String apiKey = mt.encode(id);
-		String secretkey = mt.encode(SecurityUtil.getUserId()+"");
-		String[] fieldNames = new String[]{"apiName", "apiVersion", "reqMethod", "resType", "apiUrl", "remark", "apiKey", "secretkey"};
-		Object[] fieldValues = new Object[]{dataApiEntity.getApiName(), dataApiEntity.getApiVersion(), dataApiEntity.getReqMethod(), dataApiEntity.getResType(), "/services/" + dataApiEntity.getApiVersion() + dataApiEntity.getApiUrl(), dataApiEntity.getRemark(), apiKey, secretkey};
-		MailMerge mailMerge = doc.getMailMerge();
-		mailMerge.execute(fieldNames, fieldValues);
-		// 请求参数 TableStart:ReqParamList TableEnd:ReqParamList
-		DataTable reqParamTable = new DataTable("ReqParamList");
-		reqParamTable.getColumns().add("paramName");
-		reqParamTable.getColumns().add("paramComment");
-		reqParamTable.getColumns().add("paramType");
-		reqParamTable.getColumns().add("nullable");
-		reqParamTable.getColumns().add("exampleValue");
-		List<ReqParam> reqParamList = objectMapper.convertValue(dataApiEntity.getReqParams(), new TypeReference<List<ReqParam>>() {
-		});
-		for (int i = 0; i < reqParamList.size(); i++) {
-			DataRow row = reqParamTable.newRow();
-			ReqParam param = reqParamList.get(i);
-			row.set(0, param.getParamName());
-			row.set(1, param.getParamComment());
-			row.set(2, param.getParamType());
-			row.set(3, "1".equals(param.getNullable()) ? "Y" : "N");
-			row.set(4, param.getExampleValue());
-			reqParamTable.getRows().add(row);
-		}
-		mailMerge.executeWithRegions(reqParamTable);
-		// 返回字段 TableStart:ResParamList TableEnd:ResParamList
-		DataTable resParamTable = new DataTable("ResParamList");
-		resParamTable.getColumns().add("fieldName");
-		resParamTable.getColumns().add("dataType");
-		resParamTable.getColumns().add("fieldComment");
-		resParamTable.getColumns().add("exampleValue");
-		List<ResParam> resParamList = objectMapper.convertValue(dataApiEntity.getResParams(), new TypeReference<List<ResParam>>() {
-		});
-		for (int i = 0; i < resParamList.size(); i++) {
-			DataRow row = resParamTable.newRow();
-			ResParam param = resParamList.get(i);
-			row.set(0, param.getFieldName());
-			row.set(1, param.getDataType());
-			row.set(2, param.getFieldComment());
-			row.set(3, param.getExampleValue());
-			resParamTable.getRows().add(row);
-		}
-		mailMerge.executeWithRegions(resParamTable);
-		// 返回示例 reqExample resExample
-		ObjectNode objectNode = objectMapper.createObjectNode();
-		for (int i = 0; i < resParamList.size(); i++) {
-			ResParam param = resParamList.get(i);
-			objectNode.put(param.getFieldName(), param.getExampleValue());
-		}
-		mailMerge.execute(new String[]{"reqExample", "resExample"}, new Object[]{objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(R.ok().setData(new LinkedList<ObjectNode>() {{
-			add(objectNode);
-		}})), objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(R.error("返回失败"))});
-		WordUtil.getInstance().insertWatermarkText(doc, SecurityUtil.getUserName());
-		return doc;
 	}
 
 	@Override

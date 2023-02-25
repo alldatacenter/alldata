@@ -5,7 +5,6 @@ import cn.datax.service.data.market.api.entity.DataApiEntity;
 import cn.datax.service.data.market.api.dto.DataApiDto;
 import cn.datax.common.base.BaseService;
 import cn.datax.service.data.market.api.vo.SqlParseVo;
-import com.aspose.words.Document;
 
 import java.util.List;
 import java.util.Map;
@@ -37,8 +36,6 @@ public interface DataApiService extends BaseService<DataApiEntity> {
     void releaseDataApi(String id);
 
     void cancelDataApi(String id);
-
-    Document wordDataApi(String id) throws Exception;
 
     Map<String, Object> getDataApiDetailById(String id);
 

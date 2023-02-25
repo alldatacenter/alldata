@@ -147,9 +147,9 @@
 >
 #### 3、安装aspose-words
 
-> cd install/16gmaster/studio
+> cd studio
 >
-> mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=aspose-words-20.3.jar
+> mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=./install/aspose-words-20.3.jar
 >
 #### 4、项目根目录下执行 **mvn install**
 >
