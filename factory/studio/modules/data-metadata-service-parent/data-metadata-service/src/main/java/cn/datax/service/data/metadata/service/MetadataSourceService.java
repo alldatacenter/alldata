@@ -6,7 +6,6 @@ import cn.datax.common.database.core.DbColumn;
 import cn.datax.common.database.core.DbTable;
 import cn.datax.service.data.metadata.api.dto.MetadataSourceDto;
 import cn.datax.service.data.metadata.api.entity.MetadataSourceEntity;
-import com.aspose.words.Document;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 
@@ -43,8 +42,6 @@ public interface MetadataSourceService extends BaseService<MetadataSourceEntity>
     List<DbColumn> getDbTableColumns(String id, String tableName);
 
     void syncMetadata(String id);
-
-    Document wordMetadata(String id) throws Exception;
 
     void refreshMetadata();
 

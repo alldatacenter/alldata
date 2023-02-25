@@ -4,7 +4,8 @@ import cn.datax.auth.service.DataUserDetailService;
 import cn.datax.auth.translator.DataWebResponseExceptionTranslator;
 import cn.datax.common.core.DataConstant;
 import cn.datax.common.core.DataUser;
-
+import cn.datax.common.security.handler.DataAccessDeniedHandler;
+import cn.datax.common.security.handler.DataAuthExceptionEntryPoint;
 import cn.datax.common.security.utils.RedisTokenStore;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
@@ -48,7 +49,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private DataWebResponseExceptionTranslator exceptionTranslator;
 
+    @Autowired
+    private DataAccessDeniedHandler accessDeniedHandler;
 
+    @Autowired
+    private DataAuthExceptionEntryPoint exceptionEntryPoint;
 
     /**
      * 配置客户端详情服务
@@ -58,7 +63,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // 默认数据库的配置
-        // datax:jCH4D!Peaz3MQs7D
+        // datax:123456
         // normal-app:normal-app
         // trusted-app:trusted-app
         clients.jdbc(dataSource).clients(clientDetails());
@@ -73,7 +78,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerSecurityConfigurer security) {
         security.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()")
-                .allowFormAuthenticationForClients();
+                .allowFormAuthenticationForClients()
+                .authenticationEntryPoint(exceptionEntryPoint)
+                .accessDeniedHandler(accessDeniedHandler);
     }
 
     /**

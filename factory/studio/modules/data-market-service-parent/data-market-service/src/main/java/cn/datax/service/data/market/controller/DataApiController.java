@@ -14,9 +14,6 @@ import cn.datax.service.data.market.api.vo.SqlParseVo;
 import cn.datax.service.data.market.mapstruct.DataApiMapper;
 import cn.datax.service.data.market.service.DataApiService;
 import cn.hutool.core.util.StrUtil;
-import com.aspose.words.Document;
-import com.aspose.words.SaveFormat;
-import com.aspose.words.SaveOptions;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -36,7 +33,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -221,18 +217,14 @@ public class DataApiController extends BaseController {
 	@ApiOperation(value = "接口文档", notes = "根据url的id来指定生成接口文档对象")
 	@ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String", paramType = "path")
 	@PostMapping("/word/{id}")
-	public void wordDataApi(@PathVariable String id, HttpServletResponse response) throws Exception {
+	public R wordDataApi(@PathVariable String id, HttpServletResponse response) throws Exception {
 		// 清空response
 		response.reset();
 		// 设置response的Header
 		response.setContentType("application/octet-stream;charset=utf-8");
 		// 设置content-disposition响应头控制浏览器以下载的形式打开文件
 		response.addHeader("Content-Disposition", "attachment;filename=" + new String("接口文档.docx".getBytes()));
-		Document doc = dataApiService.wordDataApi(id);
-		OutputStream out = response.getOutputStream();
-		doc.save(out, SaveOptions.createSaveOptions(SaveFormat.DOCX));
-		out.flush();
-		out.close();
+		return R.ok();
 	}
 
 	@GetMapping("/detail/{id}")
