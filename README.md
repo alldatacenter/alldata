@@ -315,7 +315,12 @@
 > **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
 >
 #### 3、项目根目录下执行 **mvn install**
->
+> 打包成功
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221345609-45a34a1a-8316-4810-8624-bc43a0e3c91d.png">
+<br/>
+
 > 获取安装包build/studio-release-0.3.2.tar.gz
 >
 > 上传服务器解压
