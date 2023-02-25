@@ -145,25 +145,19 @@
 
 > **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
 > 
-#### 3、安装aspose-words
-
-> cd install/16gmaster/studio
->
-> mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=aspose-words-20.3.jar
->
-#### 4、项目根目录下执行 **mvn install**
+#### 3、项目根目录下执行 **mvn install**
 > 
 > 获取安装包build/studio-release-0.3.2.tar.gz
 > 
 > 上传服务器解压
 > 
-#### 5、部署微服务: 进入不同的目录启动相关服务
+#### 4、部署微服务: 进入不同的目录启动相关服务
 > 
-> 5.1 必须启动、并且顺序启动
+> 4.1 必须启动、并且顺序启动
 > 
 > eureka->config->gateway
 > 
-> 5.2 按需启动`cd install/16gmaster`
+> 4.2 按需启动`cd install/16gmaster`
 > 
 > 譬如启动元数据管理
 > 
@@ -171,21 +165,21 @@
 > 
 > tail -100f `install/16gmaster/data-metadata-service.log`
 > 
-> 5.2 按需启动`cd install/16gdata`
+> 4.2 按需启动`cd install/16gdata`
 > 
 > 按需启动相关服务
 > 
-> 5.3 按需启动`cd install/16gslave`
+> 4.3 按需启动`cd install/16gslave`
 >
 > 按需启动相关服务
 > 
 > 
 
-#### 6、部署`studio`:
+#### 5、部署`studio`:
 >
-> 6.1 启动`sh install/16gmaster/system.sh`
+> 5.1 启动`sh install/16gmaster/system.sh`
 > 
-> 6.2 部署`studio`前端
+> 5.2 部署`studio`前端
 > 
 > source /etc/profile
 >
@@ -195,7 +189,7 @@
 > 
 > nohup npm run dev &
 > 
-> 6.3 访问`studio`页面
+> 5.3 访问`studio`页面
 > 
 > curl http://localhost:8013
 >

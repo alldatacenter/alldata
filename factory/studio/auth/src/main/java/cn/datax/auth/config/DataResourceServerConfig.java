@@ -1,6 +1,7 @@
 package cn.datax.auth.config;
 
-
+import cn.datax.common.security.handler.DataAccessDeniedHandler;
+import cn.datax.common.security.handler.DataAuthExceptionEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,7 +23,11 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @EnableResourceServer
 public class DataResourceServerConfig extends ResourceServerConfigurerAdapter {
 
+    @Autowired
+    private DataAccessDeniedHandler accessDeniedHandler;
 
+    @Autowired
+    private DataAuthExceptionEntryPoint exceptionEntryPoint;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {

@@ -1,7 +1,6 @@
 package cn.datax.service.data.metadata.controller;
 
 import cn.datax.common.base.BaseController;
-import cn.datax.common.core.DataConstant;
 import cn.datax.common.core.JsonPage;
 import cn.datax.common.core.R;
 import cn.datax.common.database.DbQuery;
@@ -17,9 +16,6 @@ import cn.datax.service.data.metadata.api.vo.MetadataSourceVo;
 import cn.datax.service.data.metadata.mapstruct.MetadataSourceMapper;
 import cn.datax.service.data.metadata.service.MetadataSourceService;
 import cn.hutool.core.util.StrUtil;
-import com.aspose.words.Document;
-import com.aspose.words.SaveFormat;
-import com.aspose.words.SaveOptions;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -32,7 +28,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -231,18 +226,14 @@ public class MetadataSourceController extends BaseController {
     @ApiOperation(value = "数据库设计文档", notes = "根据url的id来指定生成数据库设计文档对象")
     @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String", paramType = "path")
     @PostMapping("/word/{id}")
-    public void wordMetadata(@PathVariable String id, HttpServletResponse response) throws Exception {
+    public R wordMetadata(@PathVariable String id, HttpServletResponse response) throws Exception {
         // 清空response
         response.reset();
         // 设置response的Header
         response.setContentType("application/octet-stream;charset=utf-8");
         // 设置content-disposition响应头控制浏览器以下载的形式打开文件
         response.addHeader("Content-Disposition", "attachment;filename=" + new String("数据库设计文档.doc".getBytes()));
-        Document doc = metadataSourceService.wordMetadata(id);
-        OutputStream out = response.getOutputStream();
-        doc.save(out, SaveOptions.createSaveOptions(SaveFormat.DOC));
-        out.flush();
-        out.close();
+        return R.ok();
     }
 
     /**

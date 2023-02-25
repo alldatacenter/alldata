@@ -13,6 +13,7 @@
 
     <modules>
         <module>assembly</module>
+        <module>auth</module>
         <module>box</module>
         <module>service-api</module>
         <module>common</module>
@@ -53,11 +54,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
-<!--        <springboot.version>2.3.5.RELEASE</springboot.version>-->
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
-
         <fastjson.version>1.2.75</fastjson.version>
         <hutool.version>5.4.7</hutool.version>
         <mybatis-plus.version>3.3.2</mybatis-plus.version>

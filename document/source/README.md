@@ -239,10 +239,9 @@
 > **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
 >
 #### 3、安装aspose-words
-
-> cd install/datax
+> cd studio
 >
-> mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=aspose-words-20.3.jar
+> mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=./install/aspose-words-20.3.jar
 >
 #### 4、项目根目录下执行 **mvn install**
 >
