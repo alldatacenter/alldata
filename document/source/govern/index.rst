@@ -3,9 +3,9 @@
  
 .. toctree::
    :maxdepth: 3
-   
-   data-gateway/index
+
+   data-meta/index
    data-quality/index
+   data-gateway/index
    data-security/index
    data-standard/index
-   meta-data/index
