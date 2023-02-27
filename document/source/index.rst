@@ -11,8 +11,8 @@
 
    README
    quickstart/index
-   ai/index
    factory/index
+   ai/index
    market/index
    dts/index
    olap/index
