@@ -1,62 +1,60 @@
-# Apache Griffin
+# DataVines
 
-数据平台的数据治理：数据治理是一个大而全的治理体系。需要数据质量管理、元数据管理、主数据管理、模型管理管理、数据价值管理、
-数据共享管理和数据安全管理等等模块是一个活的有机体。
+[![EN doc](https://img.shields.io/badge/document-English-blue.svg)](README.md)
+[![CN doc](https://img.shields.io/badge/文档-中文版-blue.svg)](README.zh-CN.md)
 
-3、数据质量: 依托Griffin平台，为您提供全链路的数据质量方案，包括数据探查、对比、质量监控、SQL扫描和智能报警等功能：
+---
 
-开源方案： Apache Griffin + ES + SparkSql
-Griffin measure SparkSql规则任务二次开发
+Data quality is used to ensure the accuracy of data in the process of integration and processing. It is also the core component of DataOps. DataVines is an easy-to-use data quality service platform that supports multiple metric.
 
-3.1 Measure源码二次开发
+## Architecture Design
+![DataVinesArchitecture](docs/img/architecture.jpg)
 
-3.2 支持用户自定义规则
+## Install
 
-3.3 内置常用的griffin规则
+Need: Maven 3.6.1 and later
+```sh
+$ mvn clean package -Prelease -DskipTests
+```
+## Features of DataVines
 
-3.4 支持spark sql转化为规则
+* Easy to use
+* Built in multiple Metric、ExpectedType、ResultFormula
+  * [Metric Plugins](docs/plugin/en/metric/index.md)
+  * [ExpectedType Plugins](docs/plugin/en/expected-value/index.md)
+  * [ResultFormula Plugins](docs/plugin/en/result-formula/index.md)
 
-3.5 支持数据质量全链路告警监控
+* Modular and plug-in mechanism, easy to extend
+  * [Engine Plugins](docs/plugin/en/engine/index.md)
+  * [Connector Plugins](docs/plugin/en/connector/index.md)
+  * [Register Plugins](docs/plugin/en/register/index.md)
+  * [Notification Plugins](docs/plugin/en/notification/index.md)
+* Support Spark 2.x、JDBC Engine
 
-3.6 新增MySqlSink
+## Environmental dependency
 
-4、安装部署
+1. java runtime environment: jdk8
+2. If the data volume is small, or the goal is merely for functional verification, you can use JDBC engine
+3. If you want to run DataVines based on Spark, you need to ensure that your server has spark installed
+## Quick start
+[QuickStart](docs/document/en/quick-start.md)
 
-4.1 Mysql初始化数据库
+## Development
+[Developer Guide](docs/development/en/index.md)
 
-create database griffin_AllDataDC;
+## Contribution
 
-use griffin_AllDataDC;
+For guides on how to contribute, visit: [Contribution Guidelines](docs/community/en/index.md)
 
-然后登录数据库
+## RoadMap
+[V1.0.0 RoadMap](docs/roadmap/en/roadmap-1.0.0.md)
 
-source bdp-govern/quality/service/src/main/resources/Init_quartz_mysql_innodb.sql
+## Contact Us
+datavines@gmail.com
 
+## License
 
-4.2 拷贝集群配置文件
+DataVines is licensed under the [Apache License 2.0](LICENSE). DataVines relies on some third-party components, and their open source protocols are also Apache License 2.0 or compatible with Apache License 2.0. In addition, DataVines also directly references or modifies some codes in Apache DolphinScheduler, SeaTunnel and Dubbo, all of which are Apache License 2.0. Thanks for contributions to these projects.
 
-core-site.xml/hdfs-site.xml/mapred-site.xml/yarn-site.xml/hive-site.xml
-
-到bdp-govern/quality/service/src/main/resources目录
-
-4.3 mvn clean package -Dskiptests=TRUE
-
-4.4 获取tar.gz安装包, 解压
-
-4.5 正式部署griffin的环境，创建hdfs路径hdfs://griffin/spark_conf
-
-    与hdfs://griffin/batch/persist
-    
-    与hdfs://griffin/streaming/persist（可选）
-
-4.6 然后把measure.jar包上传到hdfs的目录hdfs:///griffin/
-
-4.7 把hive-site.xml文件放上去hdfs:///griffin/spark_conf/
-
-4.5 cd 安装包bin目录，执行./griffin.sh start or ./griffin.sh stop启停
-
-4.6 访问localhost:8090
-
-## 项目官网地址
-
-https://github.com/apache/griffin
+## 官方项目地址
+https://github.com/datavines-ops/datavines
