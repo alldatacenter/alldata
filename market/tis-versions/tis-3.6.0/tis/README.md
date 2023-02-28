@@ -94,3 +94,35 @@ TIS基于数据库元数据信息自动生成Flink-SQL脚本,您没看错全部�
 ## 官方项目地址
 
 https://github.com/qlangtech/tis
+
+## 本地启动部署Tis
+> 1. mvn clean install -Dmaven.test.skip=true
+> 
+> 2. 配置数据库
+> 
+> source /tis-ansible/tis_console_mysql.sql
+> 
+> 3. 配置项目web
+> 
+> vi /tis/tis-web-config/config.properties
+```markdown
+project.name=TIS
+runtime=daily
+
+tis.datasource.type=mysql
+tis.datasource.url=16gmaster
+tis.datasource.port=3306
+tis.datasource.username=root
+tis.datasource.password=123456
+tis.datasource.dbname=tis_console
+zk.host=16gmaster:2181/tis/cloud
+
+assemble.host=8gmaster
+tis.host=8gmaster
+
+```
+> 4. 启动TIS
+> 
+> mvn compile test -Dtest=StartTISWeb Dtis.launch.port=8080
+> 
+> 访问 http://8gmaster:8080
