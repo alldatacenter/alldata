@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.datavines.server.repository.mapper.CatalogEntityMetricJobRelMapper">
+
+    <sql id="basic_sql">
+        select metric_job_id from dv_catalog_entity_metric_job_rel where entity_uuid = #{uuid} and metric_job_type = 'DATA_QUALITY'
+    </sql>
+
+    <select id="getEntityMetricPage" resultType="io.datavines.server.api.dto.vo.catalog.CatalogEntityMetricVO">
+        select job.id as id, job.name as name, 'active' as status, job.update_time from `dv_job` job join (<include refid="basic_sql"/>) rel on job.id = rel.metric_job_id
+        order by job.update_time desc
+
+    </select>
+
+
+    <select id="getEntityIssuePage" resultType="io.datavines.server.api.dto.vo.catalog.CatalogEntityIssueVO">
+        select issue.id as id,ir.job_name as metric_name, issue.title as title, issue.content as content, issue.status as status,issue.update_time as update_time  from dv_issue issue join
+        (select jir.issue_id as issue_id, job2.job_name as job_name from (select job.id as job_id, job.name as job_name from `dv_job` job join (<include refid="basic_sql"/>) rel on job.id = rel.metric_job_id) job2 join dv_job_issue_rel jir on job2.job_id = jir.job_id) ir
+        on issue.id = ir.issue_id
+        order by issue.update_time desc
+    </select>
+</mapper>

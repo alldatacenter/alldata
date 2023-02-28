@@ -5,3 +5,4 @@ data-quality
    :maxdepth: 2
    
    griffin/index
+   datavines/index
