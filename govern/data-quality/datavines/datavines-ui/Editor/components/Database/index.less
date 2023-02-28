@@ -1,0 +1,94 @@
+.dv-database {
+    padding:0px 10px;
+
+    .dv-database-title {
+        >span {
+            margin-right: 10px;
+        }
+    }
+
+    .dv-database-name {
+        font-size: 12px;
+        display: inline-block;
+        font-weight: 600;
+
+        >span {
+            margin-right: 10px;
+        }
+        >span:nth-child(2){
+            font-size: 14px;
+        }
+    }
+
+    .dv-database-label {
+        display: flex;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+
+        >div {
+            flex: 1;
+            border-right: 1px solid #ddd;
+            text-align: center;
+        }
+
+        >div:last-child {
+            border-right: none;
+        }
+    }
+
+    .dv-database-table {
+        // border: 1px solid #ddd;
+        // padding: 10px;
+        border-radius: 8px;
+    }
+    .cp{
+        cursor: pointer;
+        text-decoration:underline;
+    }
+    .ligth{
+        color: var(--main-color);
+        font-weight: 600;
+        text-decoration: none !important;
+    }
+    .text-decoration-none{
+        text-decoration: none !important;
+    }
+    .text-underline{
+        text-decoration: underline;
+        cursor: pointer;
+        &:hover{
+            color: var(--main-color);
+        }
+    }
+    .dv-back-btn{
+        border: 1px solid #ffd56a;
+        border-radius: 50%;
+        color: #ffd56a!important;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 10px;
+        text-align: center;
+        width: 30px;
+        cursor: pointer;
+        display: inline-block;
+    }
+    .profile-text{
+        margin-left: 48px;
+        display: flex;
+        >span:nth-child(1){
+            font-weight: 600;
+            margin-right: 4px;
+            display: inline-block;
+            width: 82px;
+        }
+        >span:nth-child(2){
+            width: calc(100% - 101px);
+            overflow:hidden; //超出的文本隐藏
+            text-overflow:ellipsis; //溢出用省略号显示
+            white-space:nowrap; //溢出不换行
+            display: inline-block;
+        }
+    }
+}
