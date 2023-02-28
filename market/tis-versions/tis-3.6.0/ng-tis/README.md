@@ -19,4 +19,13 @@ npm run ng:serve-aot
 npm run ng:serve-jti
 ```
 
+## 本地打包部署 on Linux
+> 1. nvm install v10.15.3
+> 
+> 2. npm install -g @angular/cli@12.2.13
+> 
+> 3. npm run ng:serve-jit --scripts-prepend-node-path=auto
+> 
+> 4. curl http://localhost:4200
+
 

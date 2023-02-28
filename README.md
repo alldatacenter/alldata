@@ -369,7 +369,102 @@
 >
 > 用户名：admin 密码：123456
 
-## datavines
+## 本地启动TIS POC调研
+> https://tis.pub/docs/develop/compile-running
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221879155-682c5fec-3c61-4a91-aaf4-e55cc8b1b2c3.png">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221879168-2f221f66-f43a-455a-b5f8-b762f2dae124.png">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221879179-76eb538c-8d59-4ebb-ac45-05fb9b1f088f.png">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221879200-240e03f8-0e0e-4fc2-93d6-9d8e23ef8eb3.png">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221879216-81039329-a244-4ff4-ae1c-1d4815a4d5d4.png">
+<br/>
+
+> 1. 部署TIS-参考tis/README.md
+
+## 本地启动部署Tis
+> 1. mvn clean install -Dmaven.test.skip=true
+>
+> 2. 配置数据库
+>
+> source /tis-ansible/tis_console_mysql.sql
+>
+> 3. 配置项目web
+>
+> vi /tis/tis-web-config/config.properties
+```markdown
+project.name=TIS
+runtime=daily
+
+tis.datasource.type=mysql
+tis.datasource.url=16gmaster
+tis.datasource.port=3306
+tis.datasource.username=root
+tis.datasource.password=123456
+tis.datasource.dbname=tis_console
+zk.host=16gmaster:2181/tis/cloud
+
+assemble.host=8gmaster
+tis.host=8gmaster
+
+```
+> 4. 启动TIS
+>
+> mvn compile test -Dtest=StartTISWeb Dtis.launch.port=8080
+>
+> 访问 http://8gmaster:8080
+
+> 2. 部署plugins,参考plugins/README.md
+
+## 本地安装部署 on Linux
+> 1. 安装maven3.8.1 配置settings.xml
+>
+> 2. Only配置
+>
+```
+     <mirror>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+
+```
+> 3. 创建目录 /opt/data/tis/libs/plugins
+>
+> 4. 执行plugin软连接配置
+>
+```
+for f in `find /mnt/poc/alldatadc/tis_poc/plugins  -name '*.tpi' -print` do echo " ln -s $f " ln -s $f /opt/data/tis/libs/plugins/${f##*/} done ;
+```
+> 5. 安装plugins
+>
+> mvn clean package -Dmaven.test.skip=true -Dappname=all
+> 
+
+> 3. 部署ng-tis,参考ng-tis/README.md
+## 本地打包部署 on Linux
+> 1. nvm install v10.15.3
+>
+> 2. npm install -g @angular/cli@12.2.13
+>
+> 3. npm run ng:serve-jit --scripts-prepend-node-path=auto
+>
+> 4. curl http://localhost:4200
+> 
+## DataVines 数据质量POC调研
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221765941-b2903701-d4f3-4895-9f1d-7f317998b9ae.png">
 <br/>
