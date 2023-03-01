@@ -39,7 +39,7 @@
 			font-size: 12px;
 			padding: 20px 0px;
 			font-family: Microsoft YaHei;">
-            Copyright &copy;${.now?string("yyyy")} <a hover="color: #DA251D;" style="color: #999;" href="https://github.com/alldatacenter/alldata" target="_blank">AllData</a> 一站式大数据平台 All Rights Reserved.
+            Copyright &copy;${.now?string("yyyy")} <a hover="color: #DA251D;" style="color: #999;" href="https://github.com/alldatacenter/alldata" target="_blank">AllData</a> 一站式细分领域数字化解决方案 All Rights Reserved.
         </div>
 
     </div>

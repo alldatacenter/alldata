@@ -2,7 +2,7 @@ module.exports = {
   /**
    * @description 网站标题
    */
-  title: 'AllData 一站式大数据平台',
+  title: 'AllData 一站式细分领域数字化解决方案',
   /**
    * @description 是否显示 tagsView
    */
