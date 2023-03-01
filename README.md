@@ -370,7 +370,21 @@
 > 用户名：admin 密码：123456
 
 ## 本地启动TIS POC调研
-> https://tis.pub/docs/develop/compile-running
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222085646-6330c77e-3aeb-4d8b-b46d-7c8643b743c1.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222085660-dd395d6a-2c02-42dc-9d60-6b1befdc795f.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222085664-ce6928e8-0c2d-4c0d-842e-c74af6cdeaa7.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222085671-6eb2bc96-5cf0-4069-b6d9-be5a2592bae4.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222085683-b1f0f4bd-2fec-4019-8d91-1a5fbb0c721e.png">
+<br/>
 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221879155-682c5fec-3c61-4a91-aaf4-e55cc8b1b2c3.png">
@@ -394,6 +408,7 @@
 
 > 1. 部署TIS-参考tis/README.md
 
+> https://tis.pub/docs/develop/compile-running
 ## 本地启动部署Tis
 > 1. mvn clean install -Dmaven.test.skip=true
 >

@@ -9,7 +9,7 @@
 project = 'alldata'
 copyright = '2023, AllDataDC'
 author = 'AllDataDC'
-release = 'v0.3.2'
+release = '0.3.x'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
