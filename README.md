@@ -1,4 +1,4 @@
-# AllData 一站式大数据平台
+# AllData 一站式细分领域数字化解决方案
 
 ## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) ｜ [官方文档](https://alldatacenter.github.io/) ｜ [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
 
@@ -1286,7 +1286,7 @@ void testCreateDatabase() {
 | [**olap**](https://github.com/alldatacenter/alldata/tree/master/olap)           | OLAP FOR ALL DATA PLATFORM OLAP query engine                   | 混合OLAP查询引擎                  |
 | [**trade**](https://github.com/alldatacenter/alldata/tree/master/trade)         | TRADE FOR ALL DATA PLATFORM TRADE Engine                       | TRADE引擎                     |
 | [**wiki**](https://github.com/alldatacenter/alldata/tree/master/wiki)           | WIKI FOR ALL DATA PLATFORM WIKI Engine                         | AllData知识库                  |
-| [**alldata**](https://github.com/alldatacenter/alldata)                         | AllData社区项目通过二开大数据生态组件, 以及大数据采集, 大数据存储, 大数据计算, 大数据开发来建设一站式大数据平台    | Github一站式开源大数据平台AllData社区项目 |
+| [**alldata**](https://github.com/alldatacenter/alldata)                         | AllData社区项目通过二开大数据生态组件, 以及大数据采集, 大数据存储, 大数据计算, 大数据开发来建设一站式细分领域数字化解决方案    | Github一站式细分领域AllData数字化解决方案社区项目 |
 
 
 ## AllData社区商业计划图

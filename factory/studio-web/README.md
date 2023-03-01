@@ -1,6 +1,6 @@
-# AllData 一站式大数据平台
+# AllData 一站式细分领域数字化解决方案
 
-AllData 一站式大数据平台
+AllData 一站式细分领域数字化解决方案
 
 
 #### Build Setup

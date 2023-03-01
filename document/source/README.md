@@ -1,4 +1,4 @@
-# 首页
+# 官方文档
 
 ## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY)  ｜ [官方文档](https://alldata.readthedocs.io/)  ｜  [Github](https://github.com/alldatacenter/alldata)  |  [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
 
@@ -610,7 +610,7 @@
 | [**lakehouse**](https://github.com/alldatacenter/alldata/tree/master/lakehouse)       | ONE LAKE FOR ALL DATA PLATFORM ONE LAKE engine                 | 数据湖引擎                       |
 | [**studio-tasks**](https://github.com/alldatacenter/alldata/tree/master/studio-tasks) | STUDIO TASKS FOR ALL DATA PLATFORM Data Task Engine            | 大数据流批计算任务                   |
 | [**knowledge**](https://github.com/alldatacenter/alldata/tree/master/knowledge)    | KNOWLEDGE GRAPH FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
-| [**AllData**](https://github.com/alldatacenter/alldata)                               | AllData社区项目通过二开大数据生态组件，以及大数据采集、大数据存储、大数据计算、大数据开发来建设一站式大数据平台    | Github一站式开源大数据平台AllData社区项目 |
+| [**AllData**](https://github.com/alldatacenter/alldata)                               | AllData社区项目通过二开大数据生态组件，以及大数据采集、大数据存储、大数据计算、大数据开发来建设一站式细分领域数字化解决方案    | Github一站式细分领域AllData数字化解决方案社区项目 |
 
 
 ## AllData社区商业计划图
