@@ -1,4 +1,4 @@
-<h1 style="text-align: center">AllData 一站式大数据平台</h1>
+<h1 style="text-align: center">AllData 一站式细分领域数字化解决方案</h1>
 
 ### 功能一览
 
