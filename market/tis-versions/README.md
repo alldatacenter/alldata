@@ -61,7 +61,7 @@ for f in `find /mnt/poc/alldatadc/tis_poc/plugins  -name '*.tpi' -print` do echo
 > 5. 安装plugins
 >
 > mvn clean package -Dmaven.test.skip=true -Dappname=all
-> 
+>
 
 > 3. 部署ng-tis,参考ng-tis/README.md
 ## 本地打包部署 on Linux
