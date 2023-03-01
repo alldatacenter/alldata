@@ -19,6 +19,7 @@
    lakehouse/index
    govern/index
    fs/index
+   shuffle/index
    kg/index
    iot/index
    cluster/index
