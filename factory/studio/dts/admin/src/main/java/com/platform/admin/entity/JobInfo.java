@@ -54,7 +54,7 @@ public class JobInfo {
 	@ApiModelProperty("失败重试次数")
 	private int executorFailRetryCount;
 
-	@ApiModelProperty("GLUE类型\t#com.guoliang.flinkx.core.glue.GlueTypeEnum")
+	@ApiModelProperty("GLUE类型\t#com.platform.core.glue.GlueTypeEnum")
 	private String glueType;
 
 	@ApiModelProperty("GLUE源代码")

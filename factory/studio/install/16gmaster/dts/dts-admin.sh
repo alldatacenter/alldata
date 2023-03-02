@@ -78,7 +78,7 @@ if [[ ! ${DATA_PATH} ]]; then
 fi
 
 if [[ ! ${MAIL_USERNAME} ]]; then
-    MAIL_USERNAME="flinkx"
+    MAIL_USERNAME="chunjun"
 fi
 
 if [[ ! ${MAIL_PASSWORD} ]]; then
