@@ -28,7 +28,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("com.guoliang.flinkx.admin.controller")).paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.platform.admin.controller")).paths(PathSelectors.any())
                 .build();
     }
 

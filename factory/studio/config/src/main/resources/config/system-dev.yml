@@ -152,12 +152,12 @@ studio:
       ### log retention days
     logretentiondays: 30
   executor:
-    flinkxHome: /flinkx/flinkx.py
-    flinkxjsonPath: /flinkx/job/
-    flinkxlogHome: /flinkx/job-log
-    dataxHome: /datax/datax.py
-    dataxjsonPath: /datax/job/
-    dataxlogHome: /datax/job-log
+    flinkxHome: /16gmaster/dts/flinkx.py
+    flinkxjsonPath: /16gmaster/dts/flinkxJob/
+    flinkxlogHome: /16gmaster/dts/chunjunLog
+    dataxHome: /16gmaster/dts/datax.py
+    dataxjsonPath: /16gmaster/dts/dataxJob/
+    dataxlogHome: /16gmaster/dts/dataxLog
 datasource:
   aes:
     key: AD42F6697B035B75

@@ -3,7 +3,7 @@ package com.platform.admin.service;
 import com.platform.admin.dto.FlinkXJsonBuildDto;
 
 /**
- * com.guoliang.flinkx json构建服务层接口
+ * com.platform json构建服务层接口
  *
  * @author AllDataDC
  * @version 1.0
