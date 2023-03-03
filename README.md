@@ -369,6 +369,69 @@
 >
 > 用户名：admin 密码：123456
 
+## Doris POC调研
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222687597-0700e9b6-9c92-4138-a341-2a85b814e236.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222687599-63f060c6-8859-45b4-b0fa-d7f5e1e6063b.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222687609-0910d328-92e6-4849-b7a5-013dc47e514b.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222687618-c76eebe1-253e-4a10-b047-9f3903809eed.png">
+<br/>
+
+> 参考https://doris.apache.org/zh-CN/docs/install/source-install/compilation
+> 1. docker pull apache/doris:build-env-for-1.1.0
+> 2. docker run -it -v /root/.m2:/root/.m2 -v /mnt/poc/alldatadc/doris/:/root/doris/ apache/doris:build-env-for-1.1.0
+> 3. 进入docker
+> 4. wget https://archive.apache.org/dist/doris/1.1/1.1.0-rc05/apache-doris-1.1.0-src.tar.gz
+> 5. tar -zxvf apache-doris-1.1.0-src.tar.gz
+> 6. mv apache-doris-1.1.0-src doris-1.1.0
+> 7. sh build.sh
+> 8. web访问http://16gdata:8080
+> 9. 参考https://doris.apache.org/zh-CN/docs/get-starting/ 
+> 10. 启动fe ./bin/start_fe.sh --daemon 成功启动：curl http://127.0.0.1:8030/api/bootstrap
+> 11. mysql -uroot -P9030 -h127.0.0.1 然后ALTER SYSTEM ADD BACKEND "127.0.0.1:9050";
+> 13. cp java-udf-jar-with-dependencies.jar ./be/lib/
+> 14. 启动be ./bin/start_be.sh --daemon
+> 15. 创建demo库表
+```markdown
+use demo;
+
+CREATE TABLE IF NOT EXISTS demo.example_tbl
+(
+    `user_id` LARGEINT NOT NULL COMMENT "用户id",
+    `date` DATE NOT NULL COMMENT "数据灌入日期时间",
+    `city` VARCHAR(20) COMMENT "用户所在城市",
+    `age` SMALLINT COMMENT "用户年龄",
+    `sex` TINYINT COMMENT "用户性别",
+    `last_visit_date` DATETIME REPLACE DEFAULT "1970-01-01 00:00:00" COMMENT "用户最后一次访问时间",
+    `cost` BIGINT SUM DEFAULT "0" COMMENT "用户总消费",
+    `max_dwell_time` INT MAX DEFAULT "0" COMMENT "用户最大停留时间",
+    `min_dwell_time` INT MIN DEFAULT "99999" COMMENT "用户最小停留时间"
+)
+AGGREGATE KEY(`user_id`, `date`, `city`, `age`, `sex`)
+DISTRIBUTED BY HASH(`user_id`) BUCKETS 1
+PROPERTIES (
+    "replication_allocation" = "tag.location.default: 1"
+);
+```
+> 16. touch sample.csv
+```markdown
+10000,2017-10-01,北京,20,0,2017-10-01 06:00:00,20,10,10
+10000,2017-10-01,北京,20,0,2017-10-01 07:00:00,15,2,2
+10001,2017-10-01,北京,30,1,2017-10-01 17:05:45,2,22,22
+10002,2017-10-02,上海,20,1,2017-10-02 12:59:12,200,5,5
+10003,2017-10-02,广州,32,0,2017-10-02 11:20:00,30,11,11
+10004,2017-10-01,深圳,35,0,2017-10-01 10:00:15,100,3,3
+10004,2017-10-03,深圳,35,0,2017-10-03 10:20:22,11,6,6
+```
+> 17. curl  --location-trusted -u root: -T sample.csv -H "column_separator:," http://127.0.0.1:8030/api/demo/example_tbl/_stream_load
+> 18. 访问http://127.0.0.1:8030/ 账密：root/空密码 输入sql查询： select * from demo.example_tbl
+
 ## 本地启动TIS POC调研
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/222085646-6330c77e-3aeb-4d8b-b46d-7c8643b743c1.png">
