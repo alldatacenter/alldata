@@ -253,5 +253,5 @@ PROPERTIES (
 10004,2017-10-03,深圳,35,0,2017-10-03 10:20:22,11,6,6
 ```
 > 17. curl  --location-trusted -u root: -T sample.csv -H "column_separator:," http://127.0.0.1:8030/api/demo/example_tbl/_stream_load
-> 18. 访问http://127.0.0.1:8030/ 账密：root/空密码 输入sql查询：http://127.0.0.1:8030/
+> 18. 访问http://127.0.0.1:8030/ 账密：root/空密码 输入sql查询： select * from demo.example_tbl
 
