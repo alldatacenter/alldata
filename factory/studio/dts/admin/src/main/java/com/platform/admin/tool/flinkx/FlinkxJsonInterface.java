@@ -3,7 +3,7 @@ package com.platform.admin.tool.flinkx;
 import java.util.Map;
 
 /**
- * 构建 com.guoliang.flinkx json的基础接口
+ * 构建 com.platform json的基础接口
  *
  * @author AllDataDC
  * @ClassName FlinkxJsonHelper

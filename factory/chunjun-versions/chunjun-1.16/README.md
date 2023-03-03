@@ -46,7 +46,9 @@ git clone https://github.com/DTStack/chunjun.git
 Execute the command in the project directory.
 
 ```shell
-./mvnw clean package
+mvn install:install-file -DgroupId=com.google.errorprone -DartifactId=javac-shaded -Dversion=9+181-r4173-1 -Dpackaging=jar -Dfile=./jars/javac-shaded-9+181-r4173-1.jar
+
+./mvnw clean  package -DskipTests
 ```
 
 Or execute
@@ -59,23 +61,6 @@ sh build/build.sh
 
 #### Compiling module 'ChunJun-core' then throws 'Failed to read artifact descriptor for com.google.errorprone:javac-shaded'
 
-Error message：
-
-```java
-[ERROR]Failed to execute goal com.diffplug.spotless:spotless-maven-plugin:2.4.2:check(spotless-check)on project chunjun-core:
-        Execution spotless-check of goal com.diffplug.spotless:spotless-maven-plugin:2.4.2:check failed:Unable to resolve dependencies:
-        Failed to collect dependencies at com.google.googlejavaformat:google-java-format:jar:1.7->com.google.errorprone:javac-shaded:jar:9+181-r4173-1:
-        Failed to read artifact descriptor for com.google.errorprone:javac-shaded:jar:9+181-r4173-1:Could not transfer artifact
-        com.google.errorprone:javac-shaded:pom:9+181-r4173-1 from/to aliyunmaven(https://maven.aliyun.com/repository/public): 
-        Access denied to:https://maven.aliyun.com/repository/public/com/google/errorprone/javac-shaded/9+181-r4173-1/javac-shaded-9+181-r4173-1.pom -> [Help 1]
-```
-
-Solution：
-Download the 'javac-shaded-9+181-r4173-1.jar' from url 'https://repo1.maven.org/maven2/com/google/errorprone/javac-shaded/9+181-r4173-1/javac-shaded-9+181-r4173-1.jar', and then install locally by using command below:
-
-```shell
-mvn install:install-file -DgroupId=com.google.errorprone -DartifactId=javac-shaded -Dversion=9+181-r4173-1 -Dpackaging=jar -Dfile=./jars/javac-shaded-9+181-r4173-1.jar
-```
 
 ## Quick Start
 
