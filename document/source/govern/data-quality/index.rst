@@ -6,3 +6,4 @@ data-quality
    
    griffin/index
    datavines/index
+   sodadata/index
