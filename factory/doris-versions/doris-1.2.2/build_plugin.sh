@@ -62,27 +62,27 @@ else
         --plugin)
             ALL_PLUGIN=0
             shift
-            ;;
+           ;;
         --clean)
             CLEAN=1
             shift
-            ;;
+           ;;
         -h)
             HELP=1
             shift
-            ;;
+           ;;
         --help)
             HELP=1
             shift
-            ;;
+           ;;
         --)
             shift
             break
-            ;;
+           ;;
         *)
             echo "Internal error"
             exit 1
-            ;;
+           ;;
         esac
     done
 fi
@@ -132,3 +132,5 @@ echo "Successfully build Doris FE Plugin"
 echo "***************************************"
 
 exit 0
+
+
