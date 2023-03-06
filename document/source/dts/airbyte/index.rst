@@ -1,8 +1,7 @@
-数据集成
+airbyte
 =================================
  
 .. toctree::
    :maxdepth: 2
-
-   airbyte/index
-   bitsail/index
+   
+   README
