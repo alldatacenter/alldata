@@ -8,4 +8,3 @@
    data-quality/index
    data-gateway/index
    data-security/index
-   data-standard/index
