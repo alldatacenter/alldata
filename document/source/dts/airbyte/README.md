@@ -1,213 +1,81 @@
-# BitSail
-English | [简体中文](README_zh.md)
-
-[![Build](https://github.com/bytedance/bitsail/actions/workflows/cicd.yml/badge.svg)](https://github.com/bytedance/bitsail/actions/workflows/cicd.yml)
-[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Join Slack](https://img.shields.io/badge/slack-%23BitSail-72eff8?logo=slack&color=5DADE2&label=Join%20Slack)](https://join.slack.com/t/slack-ted3816/shared_invite/zt-1inff2sip-u7Ej_o73sUgdpJAvqwlEwQ)
-
-## Introduction
-BitSail is ByteDance's open source data integration engine which is based on distributed architecture and provides high performance. It supports data synchronization between multiple heterogeneous data sources, and provides global data integration solutions in batch, streaming, and incremental scenarios. At present, it serves almost all business lines in ByteDance, such as Douyin, Toutiao, etc., and synchronizes hundreds of trillions of data every day.
-
-## Why Do We Use BitSail
-BitSail has been widely used and supports hundreds of trillions of large traffic. At the same time, it has been verified in various scenarios such as the cloud native environment of the volcano engine and the on-premises private cloud environment.
-
-We have accumulated a lot of experience and made a number of optimizations to improve the function of data integration
-
-- Global Data Integration, covering batch, streaming and incremental scenarios
-
-- Distributed and cloud-native architecture, supporting horizontal scaling
-
-- High maturity in terms of accuracy, stability and performance
-
-- Rich basic functions, such as type conversion, dirty data processing, flow control, data lake integration, automatic parallelism calculation
-  , etc.
-
-- Task running status monitoring, such as traffic, QPS, dirty data, latency, etc.
-
-## BitSail Use Scenarios
-- Mass data synchronization in heterogeneous data sources
-
-- Streaming and batch integration data processing capability
-
-- Data lake and warehouse integration data processing capability
-
-- High performance, high reliability data synchronization
-
-- Distributed, cloud-native architecture data integration engine
-
-## Features of BitSail
-
-- Low start-up cost and high flexibility
-
-- Stream-batch integration and Data lake-warehouse integration architecture, one framework covers almost all data synchronization scenarios
-
-- High-performance, massive data processing capabilities
-
-- DDL automatic synchronization
-
-- Type system, conversion between different data source types
-
-- Engine independent reading and writing interface, low development cost
-
-- Real-time display of task progress, under development
-
-- Real-time monitoring of task status
-
-## Architecture of BitSail
-![](docs/images/bitsail_arch.png)
-
- ```
- Source[Input Sources] -> Framework[Data Transmission] -> Sink[Output Sinks]
- ```
-The data processing pipeline is as follows. First, pull the source data through Input Sources, then process it through the intermediate framework layer, and finally write the data to the target through Output Sinks
-
-At the framework layer, we provide rich functions and take effect for all synchronization scenarios, such as dirty data collection, auto parallelism calculation, task monitoring, etc.
-
-In data synchronization scenarios, it covers batch, streaming, and incremental data synchronization
-
-In the Runtime layer, it supports multiple execution modes, such as yarn, local, and k8s is under development
-
-## Supported Connectors
-<table>
-  <tr>
-    <th>DataSource</th>
-    <th>Sub Modules</th>
-    <th>Reader</th>
-    <th>Writer</th>
-  </tr>
-  <tr>
-    <td>Hive</td>
-    <td>-</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Hadoop</td>
-    <td>-</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Hbase</td>
-    <td>-</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Hudi</td>
-    <td>-</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Kafka</td>
-    <td>-</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>RocketMQ</td>
-    <td>-</td>
-    <td> </td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Redis</td>
-    <td>-</td>
-    <td> </td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Doris</td>
-    <td>-</td>
-    <td> </td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>MongoDB</td>
-    <td>-</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td rowspan="4">JDBC</td>
-    <td>MySQL</td>
-    <td rowspan="4">✅</td>
-    <td rowspan="4">✅</td>
-  </tr>
-  <tr>
-    <td>Oracle</td>
-  </tr>
-  <tr>
-    <td>PostgreSQL</td>
-  </tr>
-  <tr>
-    <td>SqlServer</td>
-  </tr>
-  <tr>
-    <td>Fake</td>
-    <td>-</td>
-    <td>✅</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>FTP/SFTP</td>
-    <td>-</td>
-    <td>✅</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Print</td>
-    <td>-</td>
-    <td> </td>
-    <td>✅</td>
-  </tr>
-</table>
-
-Documentation for [Connectors](./docs/connectors/introduction.md).
-
-## Community Support
-### Slack
-Join BitSail Slack channel via this [link](https://join.slack.com/t/slack-ted3816/shared_invite/zt-1inff2sip-u7Ej_o73sUgdpJAvqwlEwQ)
-
-### Mailing List
-Currently, BitSail community use Google Group as the mailing list provider.
-You need to subscribe to the mailing list before starting a conversation
-
-Subscribe: Email to this address `bitsail+subscribe@googlegroups.com`
-
-Start a conversation: Email to this address `bitsail@googlegroups.com`
-
-Unsubscribe: Email to this address `bitsail+unsubscribe@googlegroups.com`
-
-### WeChat Group
-Welcome to scan this QR code and to join the WeChat group chat.
-
-<img src="docs/images/wechat_QR.png" alt="qr" width="100"/>
-
-## Environment Setup
-Link to [Environment Setup](docs/env_setup.md).
-
-## Deployment Guide
-Link to [Deployment Guide](docs/deployment.md).
-
-## BitSail Configuration
-Link to [Configuration Guide](docs/config.md).
-
-## Contributing Guide
-Link to [Contributing Guide](docs/contributing.md).
-
-## Contributors
-**Thanks all contributors**<br>
-
-<a href="https://github.com/bytedance/bitsail/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=bytedance/bitsail" />
+<p align="center">
+  <a href="https://airbyte.com"><img src="https://assets.website-files.com/605e01bc25f7e19a82e74788/624d9c4a375a55100be6b257_Airbyte_logo_color_dark.svg" alt="Airbyte"></a>
+</p>
+<p align="center">
+    <em>Data integration platform for ELT pipelines from APIs, databases & files to databases, warehouses & lakes</em>
+</p>
+<p align="center">
+<a href="https://github.com/airbytehq/airbyte/stargazers/" target="_blank">
+    <img src="https://img.shields.io/github/stars/airbytehq/airbyte?style=social&label=Star&maxAge=2592000" alt="Test">
 </a>
+<a href="https://github.com/airbytehq/airbyte/releases" target="_blank">
+    <img src="https://img.shields.io/github/v/release/airbytehq/airbyte?color=white" alt="Release">
+</a>
+<a href="https://airbytehq.slack.com/" target="_blank">
+    <img src="https://img.shields.io/badge/slack-join-white.svg?logo=slack" alt="Slack">
+</a>
+<a href="https://www.youtube.com/c/AirbyteHQ/?sub_confirmation=1" target="_blank">
+    <img alt="YouTube Channel Views" src="https://img.shields.io/youtube/channel/views/UCQ_JWEFzs1_INqdhIO3kmrw?style=social">
+</a>
+<a href="https://github.com/airbytehq/airbyte/actions/workflows/gradle.yml" target="_blank">
+    <img src="https://img.shields.io/github/actions/workflow/status/airbytehq/airbyte/gradle.yml?branch=master" alt="Build">
+</a>
+<a href="https://github.com/airbytehq/airbyte/tree/master/docs/project-overview/licenses" target="_blank">
+    <img src="https://img.shields.io/static/v1?label=license&message=MIT&color=white" alt="License">
+</a>
+<a href="https://github.com/airbytehq/airbyte/tree/master/docs/project-overview/licenses" target="_blank">
+    <img src="https://img.shields.io/static/v1?label=license&message=ELv2&color=white" alt="License">
+</a>
+</p>
+
+We believe that only an **open-source** solution to data movement can cover the **long tail of data sources** while empowering data engineers to **customize existing connectors**. Our ultimate vision is to help you move data from any source to any destination. Airbyte already provides [300+ connectors](https://docs.airbyte.com/integrations/) for popular APIs, databases, data warehouses and data lakes.
+
+Airbyte connectors can be implemented in any language and take the form of a Docker image that follows the [Airbyte specification](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/). You can create new connectors very fast with:
+ - The [low-code Connector Development Kit](https://docs.airbyte.com/connector-development/config-based/low-code-cdk-overview) (CDK) for API connectors ([demo](https://www.youtube.com/watch?v=i7VSL2bDvmw))
+ - The [Python CDK](https://docs.airbyte.com/connector-development/cdk-python/) ([tutorial](https://docs.airbyte.com/connector-development/tutorials/cdk-speedrun))
+
+Airbyte has a built-in scheduler and uses [Temporal](https://airbyte.com/blog/scale-workflow-orchestration-with-temporal) to orchestrate jobs and ensure reliability at scale. Airbyte leverages [dbt](https://www.youtube.com/watch?v=saXwh6SpeHA) to normalize extracted data and can trigger custom transformations in SQL and dbt. You can also orchestrate Airbyte syncs with [Airflow](https://docs.airbyte.com/operator-guides/using-the-airflow-airbyte-operator), [Prefect](https://docs.airbyte.com/operator-guides/using-prefect-task) or [Dagster](https://docs.airbyte.com/operator-guides/using-dagster-integration).
+
+![Airbyte OSS Connections UI](https://user-images.githubusercontent.com/2302748/205949986-5207ca24-f1f0-41b1-97e1-a0745a0de55a.png)
+
+Explore our [demo app](https://demo.airbyte.io/).
+
+## Quick start
+
+### Run Airbyte locally
+
+You can run Airbyte locally with Docker. The shell script below will retrieve the requisite docker files from the [platform repository](https://github.com/airbytehq/airbyte-platform) and run docker compose for you.
+
+```bash
+git clone --depth 1 https://github.com/airbytehq/airbyte.git
+cd airbyte
+./run-ab-platform.sh
+```
+
+Login to the web app at [http://localhost:8000](http://localhost:8000) by entering the default credentials found in your .env file.
+
+```
+BASIC_AUTH_USERNAME=airbyte
+BASIC_AUTH_PASSWORD=password
+```
+
+Follow web app UI instructions to set up a source, destination and connection to replicate data. Connections support the most popular sync modes: full refresh, incremental and change data capture for databases.
+
+Read the [Airbyte docs](https://docs.airbyte.com).
+
+### Manage Airbyte configurations with code
+
+You can also programmatically manage sources, destinations, and connections with YAML files, [Octavia CLI](https://github.com/airbytehq/airbyte/tree/master/octavia-cli), and API.
+
+### Deploy Airbyte to production
+
+Deployment options: [Docker](https://docs.airbyte.com/deploying-airbyte/local-deployment), [AWS EC2](https://docs.airbyte.com/deploying-airbyte/on-aws-ec2), [Azure](https://docs.airbyte.com/deploying-airbyte/on-azure-vm-cloud-shell), [GCP](https://docs.airbyte.com/deploying-airbyte/on-gcp-compute-engine), [Kubernetes](https://docs.airbyte.com/deploying-airbyte/on-kubernetes), [Restack](https://docs.airbyte.com/deploying-airbyte/on-restack), [Plural](https://docs.airbyte.com/deploying-airbyte/on-plural), [Oracle Cloud](https://docs.airbyte.com/deploying-airbyte/on-oci-vm), [Digital Ocean](https://docs.airbyte.com/deploying-airbyte/on-digitalocean-droplet)...
+
 
 ## License
-[Apache 2.0 License](LICENSE).
 
-## 项目官网地址
+See the [LICENSE](docs/project-overview/licenses/) file for licensing information, and our [FAQ](docs/project-overview/licenses/license-faq.md) for any questions you may have on that topic.
 
-https://github.com/bytedance/bitsail
 
+## 官方项目地址
+https://github.com/airbytehq/airbyte
