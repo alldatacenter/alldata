@@ -1,0 +1,15 @@
+{
+  "name": "AggregationActorFact",
+  "type": "record",
+  "namespace": "com.linkedin.feathr.offline.data",
+  "fields": [
+    {
+      "name": "y",
+      "type": "long"
+    },
+    {
+      "name": "z",
+      "type": "string"
+    }
+  ]
+}

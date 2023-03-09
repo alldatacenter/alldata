@@ -1,0 +1,15 @@
+{
+  "name": "TrainingData",
+  "type": "record",
+  "namespace": "com.linkedin.feathr.offline.data",
+  "fields": [
+    {
+      "name": "IdInObservation",
+      "type": "string"
+    },
+    {
+      "name": "label",
+      "type": "int"
+    }
+  ]
+}

@@ -10,7 +10,7 @@ hive:
     user: xxx@xx.com
   jdbc:
     className: org.apache.hive.jdbc.HiveDriver
-    url: jdbc:hive2://localhost:10000/a_test;auth=noSasl
+    url: jdbc:hive2://localhost:10000;auth=noSasl
   metastore:
     dbname: default
     uris: thrift://localhost:9083
@@ -27,7 +27,7 @@ spring:
     generate-ddl: 'true'
     show-sql: 'true'
   datasource:
-    jdbc-url: jdbc:mysql://localhost:3306/griffin_result?autoReconnect=true&useSSL=false
+    jdbc-url: jdbc:mysql://localhost:3306/mysql_sink?autoReconnect=true&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver

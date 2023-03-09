@@ -33,13 +33,20 @@
       }
     },
     {
+      "type": "ELASTICSEARCH",
+      "config": {
+        "method": "post",
+        "api": "http://es:9200/griffin/accuracy"
+      }
+    },
+    {
       "name": "mysql",
       "type": "MYSQL",
       "config": {
         "over.time": "1m",
         "retry": 5,
         "driver": "com.mysql.jdbc.Driver",
-        "url": "jdbc:mysql://localhost:3306/griffin_result",
+        "url": "jdbc:mysql://localhost:3306/mysql_sink",
         "username": "root",
         "password": "123456"
       }

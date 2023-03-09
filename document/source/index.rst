@@ -22,6 +22,7 @@
    olap/index
    fs/index
    shuffle/index
+   koordinator/index
    kg/index
    iot/index
    trade/index
