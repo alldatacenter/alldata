@@ -1,62 +1,82 @@
-# DATA QUALITY FOR ALL DATA PLATFORM 数据治理引擎
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
 
-数据平台的数据治理：数据治理是一个大而全的治理体系。需要数据质量管理、元数据管理、主数据管理、模型管理管理、数据价值管理、
-数据共享管理和数据安全管理等等模块是一个活的有机体。
+  http://www.apache.org/licenses/LICENSE-2.0
 
-3、数据质量: 依托Griffin平台，为您提供全链路的数据质量方案，包括数据探查、对比、质量监控、SQL扫描和智能报警等功能：
-
-开源方案： Apache Griffin + ES + SparkSql
-Griffin measure SparkSql规则任务二次开发
-
-3.1 Measure源码二次开发
-
-3.2 支持用户自定义规则
-
-3.3 内置常用的griffin规则
-
-3.4 支持spark sql转化为规则
-
-3.5 支持数据质量全链路告警监控
-
-3.6 新增MySqlSink
-
-4、安装部署
-
-4.1 Mysql初始化数据库
-
-create database griffin_AllDataDC; 
-
-use griffin_AllDataDC; 
-
-然后登录数据库
-
-source bdp-govern/quality/service/src/main/resources/Init_quartz_mysql_innodb.sql
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
 
 
-4.2 拷贝集群配置文件
+# Apache Griffin  
+[![Build Status](https://travis-ci.org/apache/griffin.svg?branch=master)](https://travis-ci.org/apache/griffin) [![License: Apache 2.0](https://camo.githubusercontent.com/8cb994f6c4a156c623fe057fccd7fb7d7d2e8c9b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d417061636865253230322d3445423142412e737667)](https://www.apache.org/licenses/LICENSE-2.0.html)    
 
-core-site.xml/hdfs-site.xml/mapred-site.xml/yarn-site.xml/hive-site.xml
+The data quality (DQ) is a key criteria for many data consumers like IoT, machine learning etc., however, there is no standard agreement on how to determine “good” data.
+Apache Griffin is a model-driven data quality service platform where you can examine your data on-demand. It provides a standard process to define data quality measures, executions and reports, allowing those examinations across multiple data systems.
+When you don't trust your data, or concern that poorly controlled data can negatively impact critical decision, you can utilize Apache Griffin to ensure data quality.
 
-到bdp-govern/quality/service/src/main/resources目录
 
-4.3 mvn clean package -Dskiptests=TRUE
+## Getting Started
 
-4.4 获取tar.gz安装包, 解压
+### Quick Start
 
-4.5 正式部署griffin的环境，创建hdfs路径hdfs://griffin/spark_conf
-    
-    与hdfs://griffin/batch/persist
-    
-    与hdfs://griffin/streaming/persist（可选）
+You can try running Griffin in docker following the [docker guide](griffin-doc/docker/griffin-docker-guide.md).
 
-4.6 然后把measure.jar包上传到hdfs的目录hdfs:///griffin/
+### Environment for Dev
 
-4.7 把hive-site.xml文件放上去hdfs:///griffin/spark_conf/
+Follow [Apache Griffin Development Environment Build Guide](griffin-doc/dev/dev-env-build.md) to set up development environment.
+<br>If you want to contribute codes to Griffin, please follow [Apache Griffin Development Code Style Config Guide](griffin-doc/dev/code-style.md) to keep consistent code style.
 
-4.5 cd 安装包bin目录，执行./griffin.sh start or ./griffin.sh stop启停
+### Deployment at Local
 
-4.6 访问localhost:8090
+If you want to deploy Griffin in your local environment, please follow [Apache Griffin Deployment Guide](griffin-doc/deploy/deploy-guide.md).
 
-## 项目官网地址
+## Community
 
-https://github.com/apache/griffin
+For more information about Griffin, please visit our website at: [griffin home page](http://griffin.apache.org).
+
+You can contact us via email:
+- dev-list: <a href="mailto:dev@griffin.apache.org">dev@griffin.apache.org</a>
+- user-list: <a href="mailto:users@griffin.apache.org">users@griffin.apache.org</a>
+
+You can also subscribe the latest information by sending a email to [subscribe dev-list](mailto:dev-subscribe@griffin.apache.org) and [subscribe user-list](mailto:users-subscribe@griffin.apache.org).
+You can also subscribe the latest information by sending a email to subscribe dev-list and user-list:
+```
+dev-subscribe@griffin.apache.org
+users-subscribe@griffin.apache.org
+```
+
+You can access our issues on [JIRA page](https://issues.apache.org/jira/browse/GRIFFIN)
+
+## Contributing
+
+See [How to Contribute](http://griffin.apache.org/docs/contribute.html) for details on how to contribute code, documentation, etc.
+
+Here's the most direct way to contribute your work merged into Apache Griffin.
+
+* Fork the project from [github](https://github.com/apache/griffin)
+* Clone down your fork
+* Implement your feature or bug fix and commit changes
+* Push the branch up to your fork
+* Send a pull request to Apache Griffin master branch
+
+
+## References
+- [Home Page](http://griffin.apache.org/)
+- [Wiki](https://cwiki.apache.org/confluence/display/GRIFFIN/Apache+Griffin)
+- Documents:
+	- [Measure](griffin-doc/measure)
+	- [Service](griffin-doc/service)
+	- [UI](griffin-doc/ui)
+	- [Docker usage](griffin-doc/docker)
+	- [Postman API](griffin-doc/service/postman)

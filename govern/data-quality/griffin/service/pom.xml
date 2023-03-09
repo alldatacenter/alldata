@@ -21,33 +21,46 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.platform</groupId>
-        <artifactId>quality</artifactId>
+        <groupId>org.apache.griffin</groupId>
+        <artifactId>griffin</artifactId>
         <version>0.7.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>service</artifactId>
     <packaging>jar</packaging>
 
-    <name>Quality :: Web Service</name>
+    <name>Apache Griffin :: Web Service</name>
 
     <properties>
-        <hive.version>2.3.4</hive.version>
-        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
+        <hadoop.version>2.7.1</hadoop.version>
+        <hive.version>2.2.0</hive.version>
+        <spring.boot.version>2.1.7.RELEASE</spring.boot.version>
         <spring.security.kerberos.version>1.0.1.RELEASE</spring.security.kerberos.version>
         <confluent.version>3.2.0</confluent.version>
         <quartz.version>2.2.2</quartz.version>
-        <start-class>com.platform.core.GriffinWebApplication</start-class>
+        <start-class>org.apache.griffin.core.GriffinWebApplication</start-class>
         <powermock.version>2.0.2</powermock.version>
-        <spring-boot-maven-plugin.version>2.1.9.RELEASE</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>2.1.7.RELEASE</spring-boot-maven-plugin.version>
         <derby.version>10.14.1.0</derby.version>
         <eclipselink.version>2.6.0</eclipselink.version>
         <mysql.java.version>5.1.47</mysql.java.version>
-        <postgresql.version>42.3.1</postgresql.version>
+        <postgresql.version>42.4.1</postgresql.version>
         <livy.core.version>0.3.0</livy.core.version>
         <elasticsearch-rest-client.version>6.2.4</elasticsearch-rest-client.version>
         <jackson-databind.version>2.9.9.3</jackson-databind.version>
+        <mybatis-plus-annotation.version>3.5.1</mybatis-plus-annotation.version>
+        <druid.version>1.2.8</druid.version>
+        <fastjson.version>1.2.78</fastjson.version>
+        <lombok.version>1.18.22</lombok.version>
+        <mybatis-spring-boot-starter.vesion>2.1.1</mybatis-spring-boot-starter.vesion>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <url>http://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -121,23 +134,17 @@ under the License.
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa</artifactId>
             <version>${eclipselink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>servlet-api</artifactId>
-                    <groupId>javax.servlet</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.java.version}</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>mysql</groupId>-->
+        <!--<artifactId>mysql-connector-java</artifactId>-->
+        <!--<version>${mysql.java.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -157,7 +164,7 @@ under the License.
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
-            <version>2.7.1</version>
+            <version>${hadoop.version}</version>
             <!--<scope>provided</scope>-->
             <exclusions>
                 <exclusion>
@@ -174,6 +181,24 @@ under the License.
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-metastore</artifactId>
             <version>${hive.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.jetty.aggregate</groupId>
+                    <artifactId>jetty-all</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.jetty.orbit</groupId>
+                    <artifactId>javax.servlet</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>de.ruedigermoeller</groupId>
+                    <artifactId>fst</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- to access Hive using JDBC -->
@@ -183,22 +208,33 @@ under the License.
             <version>${hive.version}</version>
             <exclusions>
                 <exclusion>
-                    <artifactId>geronimo-jaspic_1.0_spec</artifactId>
-                    <groupId>org.apache.geronimo.specs</groupId>
+                    <groupId>org.eclipse.jetty.aggregate</groupId>
+                    <artifactId>*</artifactId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>servlet-api</artifactId>
+                    <groupId>org.eclipse.jetty.orbit</groupId>
+                    <artifactId>javax.servlet</artifactId>
+                </exclusion>
+                <exclusion>
                     <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>servlet-api-2.5</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
-
         </dependency>
 
         <!-- to access confluent schema registry -->
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>kafka-schema-registry-client</artifactId>
-            <version>3.2.0</version>
+            <version>${confluent.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -266,42 +302,43 @@ under the License.
             <artifactId>elasticsearch-rest-client</artifactId>
             <version>${elasticsearch-rest-client.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.1.1</version>
+            <version>${mybatis-spring-boot-starter.vesion}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.78</version>
+            <version>${fastjson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.2.8</version>
+            <version>${druid.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-annotation</artifactId>
-            <version>3.5.1</version>
+            <version>${mybatis-plus-annotation.version}</version>
         </dependency>
     </dependencies>
     <profiles>
-        <!--if you need mysql, please uncomment mysql-connector-java -->
-        <profile>
-            <id>mysql</id>
-            <activation>
-                <property>
-                    <name>mysql</name>
-                </property>
-            </activation>
-        </profile>
+        <!--if you need mysql, please uncomment mysql-connector-java-->
+        <!--<profile>-->
+        <!--<id>mysql</id>-->
+        <!--<activation>-->
+        <!--<property>-->
+        <!--<name>mysql</name>-->
+        <!--</property>-->
+        <!--</activation>-->
+        <!--</profile>-->
         <profile>
             <id>dev</id>
             <activation>
@@ -339,12 +376,6 @@ under the License.
                         <groupId>org.eclipse.persistence</groupId>
                         <artifactId>org.eclipse.persistence.jpa</artifactId>
                         <version>${eclipselink.version}</version>
-                        <exclusions>
-                            <exclusion>
-                                <artifactId>servlet-api</artifactId>
-                                <groupId>javax.servlet</groupId>
-                            </exclusion>
-                        </exclusions>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -378,30 +409,6 @@ under the License.
                 <configuration>
                     <executable>false</executable>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>my-resources</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/classes</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}/src/main/resources</directory>
-                                    <includes>
-                                        <include>**/*.*</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

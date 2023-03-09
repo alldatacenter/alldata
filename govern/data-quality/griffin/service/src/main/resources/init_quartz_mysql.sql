@@ -183,5 +183,14 @@ CREATE TABLE QRTZ_LOCKS
     PRIMARY KEY (SCHED_NAME,LOCK_NAME)
 );
 
+CREATE TABLE `mysql_sink` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `tmst` varchar(13) DEFAULT NULL,
+  `job_name` varchar(256) DEFAULT NULL,
+  `value` varchar(256) DEFAULT NULL COMMENT '元数据',
+  `metadata` varchar(256) DEFAULT NULL COMMENT '元数据',
+  `application_id` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5560 DEFAULT CHARSET=utf8;
 
 commit;

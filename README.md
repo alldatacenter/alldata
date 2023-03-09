@@ -17,7 +17,7 @@
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
 </a>
 
-## [体验版地址](http://43.138.157.47/dashboard) ｜ 账密 poc/123456
+## [体验版地址](http://43.138.157.47/dashboard) ｜ 账密 dev/123456
 
 
 ## 体验版
@@ -368,6 +368,41 @@
 > curl http://localhost:8013
 >
 > 用户名：admin 密码：123456
+
+## Griffin POC调研
+> 安装apache-maven-3.6.3
+> 
+> cd griffin && mvn clean package -DskipTests=TRUE
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/224027349-f9298f12-4ab5-4521-ab16-c81db8032576.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/224027365-417948b6-a948-43bb-9cba-d50456818dbf.png">
+<br/>
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132004-542b699c-2878-4648-a79e-f118f28a0ed2.png">
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171131705-86a2c0bd-cd9d-4a66-b209-5c41d1b18e56.png">
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132036-613e1271-d122-47dc-af7c-a3ee2a203a2e.png">
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132186-261b742a-dc88-4739-8327-08b503fce8d8.png">
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132633-193bbba4-58d6-4b38-8e9e-4674cdfa7cdd.png">
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132684-37ebcec6-05dd-45d6-83cd-d4f18416b755.png"> 
+<br/>
+
+<br/>
+
+### Livy访问查看JOB
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171131636-4cb6d93b-c994-4dfa-bfee-48d2a04c4963.png">  
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171133364-8e4a8e84-c9f9-456c-9f33-c90b90cf54e4.png"> 
+<br/>
 
 ## Calcite POC调研
 <br/>
@@ -1466,6 +1501,7 @@ void testCreateDatabase() {
 | [**fs**](https://github.com/alldatacenter/alldata/tree/master/fs)               | DATA STORAGE FOR ALL DATA PLATFORM DATA STORAGE engine         | 大数据存储引擎                     |
 | [**govern**](https://github.com/alldatacenter/alldata/tree/master/govern)       | DATA GOVERN FOR ALL DATA PLATFORM Data Governance Engine       | 数据治理引擎                      |
 | [**iot**](https://github.com/alldatacenter/alldata/tree/master/iot)             | IOT FOR ALL DATA PLATFORM Data Governance Engine               | 云原生IOT开发框架                  |
+| [**k8s**](https://github.com/alldatacenter/alldata/tree/master/k8s)               | Koordinator FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
 | [**kg**](https://github.com/alldatacenter/alldata/tree/master/kg)               | KNOWLEDGE GRAPH FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
 | [**lakehouse**](https://github.com/alldatacenter/alldata/tree/master/lakehouse) | ONE LAKE FOR ALL DATA PLATFORM ONE LAKE engine                 | 数据湖引擎                       |
 | [**market**](https://github.com/alldatacenter/alldata/tree/master/market)       | MARKET FOR ALL DATA PLATFORM MARKET engine                     | 数据实验场引擎                     |
@@ -1517,31 +1553,6 @@ void testCreateDatabase() {
 
 
 ## Integration
-
-## Data Quality
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132004-542b699c-2878-4648-a79e-f118f28a0ed2.png">
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171131705-86a2c0bd-cd9d-4a66-b209-5c41d1b18e56.png">
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132036-613e1271-d122-47dc-af7c-a3ee2a203a2e.png">
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132186-261b742a-dc88-4739-8327-08b503fce8d8.png">
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132633-193bbba4-58d6-4b38-8e9e-4674cdfa7cdd.png">
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171132684-37ebcec6-05dd-45d6-83cd-d4f18416b755.png"> 
-<br/>
-
-<br/>
-
-### Livy访问查看JOB
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171131636-4cb6d93b-c994-4dfa-bfee-48d2a04c4963.png">  
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/171133364-8e4a8e84-c9f9-456c-9f33-c90b90cf54e4.png"> 
-<br/>
 
 ## 离线商城数仓展示
 <br>

@@ -22,14 +22,14 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.platform</groupId>
-        <artifactId>quality</artifactId>
+        <groupId>org.apache.griffin</groupId>
+        <artifactId>griffin</artifactId>
         <version>0.7.0-SNAPSHOT</version>
     </parent>
     <artifactId>ui</artifactId>
     <packaging>pom</packaging>
 
-    <name>Quality :: UI :: Default UI</name>
+    <name>Apache Griffin :: UI :: Default UI</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -48,7 +48,51 @@ under the License.
 
     <build>
         <plugins>
-			<plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.6</version>
+                <configuration>
+                    <workingDirectory>angular</workingDirectory>
+                    <installDirectory>.tmp</installDirectory>
+                </configuration>
+                <executions>
+                    <!-- It will install nodejs and npm -->
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>${node.version}</nodeVersion>
+                            <npmVersion>${npm.version}</npmVersion>
+                        </configuration>
+                    </execution>
+
+                    <!-- It will execute command "npm install" inside "/angular" directory -->
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+
+                    <!-- It will execute command "npm build" inside "/angular" directory to clean and create "/.tmp" directory-->
+                    <execution>
+                        <id>npm build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.0.2</version>
                 <executions>

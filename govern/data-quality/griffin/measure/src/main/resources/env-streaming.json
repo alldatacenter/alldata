@@ -29,19 +29,27 @@
       "name": "hdfsSink",
       "type": "HDFS",
       "config": {
-        "path": "hdfs:///griffin/streaming/persist",
+        "path": "hdfs://localhost/griffin/streaming/persist",
         "max.persist.lines": 10000,
         "max.lines.per.file": 10000
       }
     },
     {
-      "name": "mysqlSink",
+      "name": "elasticSink",
+      "type": "ELASTICSEARCH",
+      "config": {
+        "method": "post",
+        "api": "http://localhost:9200/griffin/accuracy"
+      }
+    },
+    {
+      "name": "mysql",
       "type": "MYSQL",
       "config": {
         "over.time": "1m",
         "retry": 5,
         "driver": "com.mysql.jdbc.Driver",
-        "url": "jdbc:mysql://localhost:3306/griffin_result",
+        "url": "jdbc:mysql://localhost:3306/mysql_sink",
         "username": "root",
         "password": "123456"
       }
