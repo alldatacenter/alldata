@@ -6,3 +6,4 @@
 
    airbyte/index
    bitsail/index
+   datax/index

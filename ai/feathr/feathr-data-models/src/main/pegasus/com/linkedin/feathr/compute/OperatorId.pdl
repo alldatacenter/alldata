@@ -1,0 +1,8 @@
+// LINT_SUPPRESS: namespace.three.parts
+
+namespace com.linkedin.feathr.compute
+
+/**
+ * operator id to set an operator. It can be referring to an mvel expression, sql expression or a java udf.
+ */
+typeref OperatorId = string
