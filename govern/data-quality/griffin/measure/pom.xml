@@ -22,40 +22,28 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.platform</groupId>
-        <artifactId>quality</artifactId>
+        <groupId>org.apache.griffin</groupId>
+        <artifactId>griffin</artifactId>
         <version>0.7.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>measure</artifactId>
     <packaging>jar</packaging>
 
-    <name>Quality :: Measure</name>
-
+    <name>Apache Griffin :: Measure</name>
+    <url>http://griffin.apache.org</url>
 
     <properties>
-        <encoding>UTF-8</encoding>
-        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
-
-        <java.version>1.8</java.version>
-        <scala.binary.version>2.12</scala.binary.version>
-        <scala211.binary.version>2.11</scala211.binary.version>
-        <scala.version>${scala.binary.version}.12</scala.version>
-
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-
-        <maven-apache-rat.version>0.11</maven-apache-rat.version>
-        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-
-        <compile.scope>compile</compile.scope>
-        <provided.scope>provided</provided.scope>
 
         <!-- Spark -->
-        <spark.version>3.0.1</spark.version>
+        <spark.major.version>2.4</spark.major.version>
+        <spark.version>${spark.major.version}.4</spark.version>
         <spark.scope>${provided.scope}</spark.scope>
         <spark-streaming-kafka.version>${spark.version}</spark-streaming-kafka.version>
+
+        <!-- Code Standardization -->
+        <scalastyle.version>1.0.0</scalastyle.version>
+        <scalafmt.version>1.0.3</scalafmt.version>
 
         <!-- Data Connectors -->
         <mysql.java.version>5.1.47</mysql.java.version>
@@ -65,7 +53,7 @@ under the License.
         <scalaj.version>2.3.0</scalaj.version>
         <mongo.version>2.1.0</mongo.version>
         <curator.version>2.10.0</curator.version>
-        <postgresql.version>42.3.1</postgresql.version>
+        <postgresql.version>42.4.1</postgresql.version>
         <ojdbc8.version>21.4.0.0.1</ojdbc8.version>
 
         <!-- Testing -->
@@ -79,6 +67,7 @@ under the License.
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
@@ -132,8 +121,8 @@ under the License.
         -->
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-kafka-0-8_2.11</artifactId>
-            <version>2.4.7</version>
+            <artifactId>spark-streaming-kafka-0-8_${scala211.binary.version}</artifactId>
+            <version>${spark-streaming-kafka.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.scala-lang.modules</groupId>
@@ -228,7 +217,6 @@ under the License.
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-            <version>4.13.2</version>
         </dependency>
 
         <dependency>
@@ -269,7 +257,7 @@ under the License.
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>4.5.6</version>
+                <version>4.3.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -379,10 +367,57 @@ under the License.
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.platform.measure.Application</mainClass>
+                                    <mainClass>org.apache.griffin.measure.Application</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.antipathy</groupId>
+                <artifactId>mvn-scalafmt_${scala.binary.version}</artifactId>
+                <version>${scalafmt.version}</version>
+                <configuration>
+                    <configLocation>${project.parent.basedir}/.scalafmt.conf</configLocation>
+                    <skipTestSources>false</skipTestSources>
+                    <skipSources>false</skipSources>
+                    <respectVersion>false</respectVersion>
+                    <validateOnly>false</validateOnly>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.scalastyle</groupId>
+                <artifactId>scalastyle-maven-plugin</artifactId>
+                <version>${scalastyle.version}</version>
+                <configuration>
+                    <verbose>false</verbose>
+                    <failOnViolation>true</failOnViolation>
+                    <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                    <failOnWarning>false</failOnWarning>
+                    <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+                    <testSourceDirectory>${project.build.testSourceDirectory}</testSourceDirectory>
+                    <configLocation>${project.parent.basedir}/scalastyle-config.xml</configLocation>
+                    <outputFile>${basedir}/target/scalastyle-output.xml</outputFile>
+                    <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
+                    <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -396,6 +431,46 @@ under the License.
                     <aggregateOnly>true</aggregateOnly>
                     <highlighting>true</highlighting>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>${java.version}</version>
+                                </requireJavaVersion>
+                                <bannedDependencies>
+                                    <excludes>
+                                        <exclude>*:*_2.10</exclude>
+                                        <exclude>*:*_2.12</exclude>
+                                        <exclude>*:*_2.13</exclude>
+                                    </excludes>
+                                    <searchTransitive>true</searchTransitive>
+                                </bannedDependencies>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>enforce-no-duplicate-dependencies</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <banDuplicatePomDependencyVersions/>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -420,7 +495,6 @@ under the License.
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>3.0.0</version>
                         <executions>
                             <execution>
                                 <id>enforce-versions</id>
@@ -428,6 +502,36 @@ under the License.
                                     <goal>enforce</goal>
                                 </goals>
                                 <configuration>
+                                    <rules>
+                                        <requireJavaVersion>
+                                            <version>${java.version}</version>
+                                        </requireJavaVersion>
+                                        <bannedDependencies>
+                                            <!-- TODO Temporary Fix: These will be removed in a future iteration. -->
+                                            <includes>
+                                                <include>org.elasticsearch:elasticsearch-spark-20_2.11:*</include>
+                                                <include>org.apache.spark:spark-streaming-kafka-0-8_2.11:*</include>
+                                                <include>org.apache.kafka:kafka_2.11:*</include>
+                                            </includes>
+                                            <excludes>
+                                                <exclude>*:*_2.10</exclude>
+                                                <exclude>*:*_2.11</exclude>
+                                                <exclude>*:*_2.13</exclude>
+                                            </excludes>
+                                            <searchTransitive>true</searchTransitive>
+                                        </bannedDependencies>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>enforce-no-duplicate-dependencies</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <banDuplicatePomDependencyVersions/>
+                                    </rules>
                                 </configuration>
                             </execution>
                         </executions>
@@ -446,7 +550,8 @@ under the License.
             </activation>
 
             <properties>
-                <spark.version>3.0.1</spark.version>
+                <spark.major.version>2.3</spark.major.version>
+                <spark.version>${spark.major.version}.4</spark.version>
             </properties>
 
             <dependencies>
@@ -469,7 +574,8 @@ under the License.
             </activation>
 
             <properties>
-                <spark.version>3.0.1</spark.version>
+                <spark.major.version>3.0</spark.major.version>
+                <spark.version>${spark.major.version}.2</spark.version>
                 <spark-streaming-kafka.version>2.4.7</spark-streaming-kafka.version>
             </properties>
         </profile>

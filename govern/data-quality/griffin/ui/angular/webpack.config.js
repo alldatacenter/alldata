@@ -18,11 +18,6 @@ under the License.
 */
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ParallelUglifyPlugin =require('webpack-parallel-uglify-plugin');
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const productionGzipExtensions = ['js', 'css', 'html'];
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
 module.exports = {
 
   entry: {
@@ -34,10 +29,6 @@ module.exports = {
     // path: '/dist',
     filename: '[name].js'
   },
-  build: {
-    productionSourceMap: false,
-    productionGzip: true,
-  }
   module: {
     rules: [
       {
@@ -67,51 +58,12 @@ module.exports = {
     extensions: ['.js', '.ts']
   },
   plugins: [
-    new UglifyJSPlugin({
-      parallel: 4,
-      uglifyOptions: {
-          output: {
-              comments: false,
-              beautify: false,
-          },
-          compress: {
-              warnings: false
-          },
-      },
-      cache: true,
-    }),
-    new CompressionWebpackPlugin({
-      filename: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: new RegExp(
-        '\\.(' + productionGzipExtensions.join('|') + ')$'
-      ),
-      threshold: 512, // 只有大小大于该值才会被处理
-      minRatio: 0.99, // 压缩率小于这个值的资源才会被处理
-      deleteOriginalAssets: false, // 删除原文件
-    }),
-
     new webpack.optimize.CommonsChunkPlugin({
       name: ['app', 'vendor', 'polyfills', 'vendor.js']
     }),
 
     new HtmlWebpackPlugin({
-      title: '',
-      template: 'src/index.html',
-      minify: {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-          keepClosingSlash: true,
-          minifyJS: true,
-          minifyCSS: true,
-          minifyURLs: true,
-      },
-      chunksSortMode:'dependency'
-   }),
+      template: 'src/index.html'
     }),
 
     new webpack.ProvidePlugin({
@@ -124,21 +76,7 @@ module.exports = {
       Util: "exports-loader?Util!bootstrap/js/dist/util",
       Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
       echarts: "echarts"
-    }),
-
-    new ParallelUglifyPlugin({
-      cacheDir: '.cache/',
-      uglifyJs:{
-        compress: {
-          warnings: false,
-          drop_debugger: true,
-          drop_console:true,       // 打包移除console
-          pure_funcs: ['console.log']
-        },
-        sourceMap: config.build.productionSourceMap,
-      }
-     })
-
+    })
   ],
 
 };
