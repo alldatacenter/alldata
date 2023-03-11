@@ -18,7 +18,7 @@
    clawlab/index
    dts/index
    govern/index
-   lakehouse/index
+   lake/index
    olap/index
    fs/index
    shuffle/index

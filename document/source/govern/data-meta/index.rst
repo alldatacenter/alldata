@@ -8,4 +8,5 @@ meta-data
    atlas/index
    datahub/index
    flink-lineage/index
+   flink-sql-lineage/index
    OpenMetadata/index
