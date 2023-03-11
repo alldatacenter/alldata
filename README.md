@@ -1503,7 +1503,7 @@ void testCreateDatabase() {
 | [**iot**](https://github.com/alldatacenter/alldata/tree/master/iot)             | IOT FOR ALL DATA PLATFORM Data Governance Engine               | 云原生IOT开发框架                  |
 | [**k8s**](https://github.com/alldatacenter/alldata/tree/master/k8s)               | Koordinator FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
 | [**kg**](https://github.com/alldatacenter/alldata/tree/master/kg)               | KNOWLEDGE GRAPH FOR ALL DATA PLATFORM Data Task Engine         | 知识图谱引擎                      |
-| [**lakehouse**](https://github.com/alldatacenter/alldata/tree/master/lakehouse) | ONE LAKE FOR ALL DATA PLATFORM ONE LAKE engine                 | 数据湖引擎                       |
+| [**lake**](https://github.com/alldatacenter/alldata/tree/master/lake) | LAKEHOUSE FOR ALL DATA PLATFORM ONE LAKE engine                 | 数据湖引擎                       |
 | [**market**](https://github.com/alldatacenter/alldata/tree/master/market)       | MARKET FOR ALL DATA PLATFORM MARKET engine                     | 数据实验场引擎                     |
 | [**olap**](https://github.com/alldatacenter/alldata/tree/master/olap)           | OLAP FOR ALL DATA PLATFORM OLAP query engine                   | 混合OLAP查询引擎                  |
 | [**trade**](https://github.com/alldatacenter/alldata/tree/master/trade)         | TRADE FOR ALL DATA PLATFORM TRADE Engine                       | TRADE引擎                     |
