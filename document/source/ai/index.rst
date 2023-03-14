@@ -6,6 +6,7 @@
    
    feast/index
    feathr/index
+   mmdetection/index
    modelscope/index
    sqlflow/index
    tasks/index
