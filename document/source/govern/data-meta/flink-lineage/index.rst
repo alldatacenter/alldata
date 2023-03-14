@@ -1,4 +1,4 @@
-flink-sql-lineage
+flink-lineage
 =================================
  
 .. toctree::

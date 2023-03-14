@@ -7,3 +7,4 @@
    dlink/index
    seatunnel/index
    tis/index
+   azkaban/index
