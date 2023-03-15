@@ -1,4 +1,4 @@
-# AllData 一站式细分领域数字化解决方案
+# 官方文档
 
 ## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) ｜ [官方文档](https://alldatacenter.github.io/) ｜ [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
 
