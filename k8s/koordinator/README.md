@@ -46,32 +46,6 @@ participation in our project and our community a harassment-free experience for 
 disability, ethnicity, level of experience, education, socio-economic status,
 nationality, personal appearance, race, religion, or sexual identity and orientation.
 
-## Contributing
-
-You are warmly welcome to hack on Koordinator. We have prepared a detailed guide [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Community
-
-The [koordinator-sh/community repository](https://github.com/koordinator-sh/community) hosts all information about
-the community, membership and how to become them, developing inspection, who to contact about what, etc.
-
-We encourage all contributors to become members. We aim to grow an active, healthy community of contributors, reviewers,
-and code owners. Learn more about requirements and responsibilities of membership in
-the [community membership](https://github.com/koordinator-sh/community/blob/main/community-membership.md) page.
-
-Active communication channels:
-
-- Bi-weekly Community Meeting (APAC, *Chinese*):
-  - Tuesday 19:30 GMT+8 (Asia/Shanghai)
-  - [Meeting Link(DingTalk)](https://meeting.dingtalk.com/j/cgTTojEI8Zy)
-  - [Notes and agenda](https://shimo.im/docs/m4kMLdgO1LIma9qD)
-- Slack(English): [koordinator channel](https://kubernetes.slack.com/channels/koordinator) in Kubernetes workspace
-- DingTalk(Chinese): Search Group ID `33383887` or scan the following QR Code
-
-<div>
-  <img src="https://github.com/koordinator-sh/koordinator/raw/main/docs/images/dingtalk.png" width="300" alt="Dingtalk QRCode">
-</div>
-
 ## License
 
 Koordinator is licensed under the Apache License, Version 2.0. See [LICENSE](./LICENSE) for the full license text.
