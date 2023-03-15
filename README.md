@@ -369,6 +369,38 @@
 >
 > 用户名：admin 密码：123456
 
+## Presto POC调研
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/225311825-e066bf16-42ea-4995-9547-f76bdb5495b2.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/225311708-9f9b0227-8bd6-4e72-b290-1625b9bfba6e.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/225311709-9811642b-7c41-4c41-807e-eb517ebcbc5f.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/225311725-e348506b-840e-4ed3-94a5-c299c774d7f5.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/225311739-17f2aa9e-b72e-4076-8d5f-39c54122279b.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/225311752-f6423871-943e-475c-a300-d5da3504a25b.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/225311784-fbb18595-b0b0-469a-90c3-1474a5833d49.png">
+<br/>
+
+> 1. cd presto && mvn clean install -DskipTests=TRUE
+> 2. cd presto-server/target/presto-server-0.280-SNAPSHOT/
+> 3. tar -zxvf presto-server-0.280-SNAPSHOT.tar.gz
+> 4. cd presto-server-0.280-SNAPSHOT/
+> 5. client端访问：presto-cli/target
+> 6. java -jar presto-cli-0.280-SNAPSHOT-executable.jar --server=localhost:8080 默认端口为8080
+> 7. 测试SQL：SELECT * FROM system.runtime.nodes;
+> 8. 网页访问：http://localhost:8080
+
 ## Griffin POC调研
 > 安装apache-maven-3.6.3
 > 
