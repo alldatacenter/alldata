@@ -100,7 +100,7 @@
         <fileSet>
             <directory>${project.parent.basedir}/config/target
             </directory>
-            <outputDirectory>./16gmaster/config</outputDirectory>
+            <outputDirectory>./16gslave/config</outputDirectory>
             <includes>
                 <include>*.jar</include>
             </includes>
@@ -109,7 +109,7 @@
         <fileSet>
             <directory>${project.parent.basedir}/config/target/classes
             </directory>
-            <outputDirectory>./16gmaster/config</outputDirectory>
+            <outputDirectory>./16gslave/config</outputDirectory>
             <includes>
                 <include>bootstrap.yml</include>
             </includes>
@@ -491,8 +491,8 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster</directory>
-            <outputDirectory>./16gmaster</outputDirectory>
+            <directory>${project.parent.basedir}/install/16gslave</directory>
+            <outputDirectory>./16gslave</outputDirectory>
             <lineEnding>unix</lineEnding>
             <fileMode>0755</fileMode>
             <includes>
@@ -608,6 +608,11 @@
             <includes>
                 <include>stop16gdata.sh</include>
             </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/ui</directory>
+            <outputDirectory>./16gmaster/ui</outputDirectory>
         </fileSet>
 
     </fileSets>

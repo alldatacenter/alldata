@@ -3,49 +3,24 @@ source /etc/profile
 
 pid=$(ps -ef | grep data-standard-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
-echo "即将杀死任务standard: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"
-
+echo "已启动standard: $pid"
 
 pid=$(ps -ef | grep data-visual-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
-echo "即将杀死任务visual: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"
+echo "已启动visual: $pid"
 
 pid=$(ps -ef | grep tool-monitor.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
-echo "即将杀死任务data-tool-monitor: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"
+echo "已启动monitor: $pid"
 
 pid=$(ps -ef | grep email-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
-echo "即将杀死任务email: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"
+echo "已启动email: $pid"
 
 pid=$(ps -ef | grep file-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
-echo "即将杀死任务file: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"
+echo "已启动file: $pid"
 
 pid=$(ps -ef | grep quartz-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
-echo "即将杀死任务quartz: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"
+echo "已启动quartz: $pid"

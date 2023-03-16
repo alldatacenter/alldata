@@ -1,6 +1,4 @@
 #!/bin/sh
-
-
 source /etc/profile
 
 pid=$(ps -ef | grep data-market-service-mapping.jar | grep -Ev 'color=auto' | awk '{print $2}')
@@ -35,6 +33,14 @@ kill -9 $pid
 
 echo "已杀死任务: $pid"
 
+pid=$(ps -ef | grep workflow-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
+
+echo "即将杀死任务workflow: $pid"
+
+kill -9 $pid
+
+echo "已杀死任务: $pid"
+
 pid=$(ps -ef | grep eureka.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
 echo "即将杀死任务eureka: $pid"
@@ -51,9 +57,9 @@ kill -9 $pid
 
 echo "已杀死任务: $pid"
 
-pid=$(ps -ef | grep workflow-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
+pid=$(ps -ef | grep config.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
-echo "即将杀死任务workflow: $pid"
+echo "即将杀死任务config: $pid"
 
 kill -9 $pid
 
