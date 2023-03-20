@@ -49,11 +49,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private DataWebResponseExceptionTranslator exceptionTranslator;
 
-    @Autowired
-    private DataAccessDeniedHandler accessDeniedHandler;
-
-    @Autowired
-    private DataAuthExceptionEntryPoint exceptionEntryPoint;
 
     /**
      * 配置客户端详情服务
@@ -79,8 +74,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         security.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()")
                 .allowFormAuthenticationForClients()
-                .authenticationEntryPoint(exceptionEntryPoint)
-                .accessDeniedHandler(accessDeniedHandler);
+                .authenticationEntryPoint(new DataAuthExceptionEntryPoint())
+                .accessDeniedHandler(new DataAccessDeniedHandler());
     }
 
     /**

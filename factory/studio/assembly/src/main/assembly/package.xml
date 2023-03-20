@@ -6,96 +6,30 @@
     </formats>
 
     <includeBaseDirectory>false</includeBaseDirectory>
-
-    <dependencySets>
-        <dependencySet>
-            <useProjectArtifact>true</useProjectArtifact>
-            <outputDirectory>./16gmaster/dts/lib</outputDirectory>
-            <scope>runtime</scope>
-        </dependencySet>
-    </dependencySets>
     <fileSets>
         <fileSet>
-            <directory>../dts/admin/src/main/resources</directory>
-            <includes>
-                <include>*.properties</include>
-                <include>logback.xml</include>
-                <include>application.yml</include>
-                <include>mybatis-mapper/**</include>
-                <include>i18n/**</include>
-                <include>static/**</include>
-            </includes>
-            <outputDirectory>./16gmaster/dts/conf</outputDirectory>
+            <directory>${project.parent.basedir}/install/16gmaster</directory>
+            <outputDirectory>./16gmaster</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/install/16gslave</directory>
+            <outputDirectory>./16gslave</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>../dts/admin/src/main/lib</directory>
-            <outputDirectory>./16gmaster/dts/lib</outputDirectory>
+            <directory>${project.parent.basedir}/install/16gdata</directory>
+            <outputDirectory>./16gdata</outputDirectory>
         </fileSet>
 
 
         <fileSet>
             <directory>${project.parent.basedir}/install</directory>
-            <outputDirectory>./16gmaster/</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
+            <outputDirectory>./</outputDirectory>
             <includes>
                 <include>README.md</include>
             </includes>
         </fileSet>
 
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster/studio</directory>
-            <outputDirectory>./16gmaster/studio</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>*</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster/studio</directory>
-            <outputDirectory>./16gmaster/studio</outputDirectory>
-            <includes>
-                <include>*</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster/dts</directory>
-            <outputDirectory>./16gmaster/dts/bin</outputDirectory>
-            <includes>
-                <include>*</include>
-            </includes>
-        </fileSet>
-        
-
-        <!-- 将模块jar文件放到打包目录下 -->
-        <fileSet>
-            <directory>${project.parent.basedir}/dts/admin/target
-            </directory>
-            <outputDirectory>./16gmaster/dts</outputDirectory>
-            <includes>
-                <include>*.jar</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/system/target
-            </directory>
-            <outputDirectory>./16gmaster/system</outputDirectory>
-            <includes>
-                <include>*.jar</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/system/target/
-            </directory>
-            <outputDirectory>./16gmaster/system</outputDirectory>
-            <includes>
-                <include>bootstrap.yml</include>
-            </includes>
-        </fileSet>
 
         <fileSet>
             <directory>${project.parent.basedir}/config/target
@@ -134,20 +68,17 @@
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/gateway/target
-            </directory>
-            <outputDirectory>./16gslave/gateway</outputDirectory>
+            <directory>${project.parent.basedir}/gateway/target</directory>
+            <outputDirectory>./16gdata/gateway</outputDirectory>
             <includes>
                 <include>*.jar</include>
             </includes>
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/gateway/target/classes
-            </directory>
-            <outputDirectory>./16gslave/gateway</outputDirectory>
+            <directory>${project.parent.basedir}/gateway/target/classes</directory>
+            <outputDirectory>./16gdata/gateway</outputDirectory>
             <includes>
-                <include>*.jar</include>
                 <include>bootstrap.yml</include>
             </includes>
         </fileSet>
@@ -169,6 +100,25 @@
                 <include>bootstrap.yml</include>
             </includes>
         </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/system-service-parent/system-service/target
+            </directory>
+            <outputDirectory>./16gmaster/system-service</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/system-service-parent/system-service/target/classes
+            </directory>
+            <outputDirectory>./16gmaster/system-service</outputDirectory>
+            <includes>
+                <include>bootstrap.yml</include>
+            </includes>
+        </fileSet>
+
 
         <fileSet>
             <directory>${project.parent.basedir}/modules/data-market-service-parent/data-market-service/target
@@ -407,207 +357,8 @@
         </fileSet>
 
         <fileSet>
-            <directory>${project.parent.basedir}/install/16gdata</directory>
-            <outputDirectory>./16gdata</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-standard-service.sh</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gdata</directory>
-            <outputDirectory>./16gdata</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-visual-service.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gdata</directory>
-            <outputDirectory>./16gdata</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>tool-monitor.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gdata</directory>
-            <outputDirectory>./16gdata</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>email-service.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gdata</directory>
-            <outputDirectory>./16gdata</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>file-service.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gdata</directory>
-            <outputDirectory>./16gdata</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>quartz-service.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gdata</directory>
-            <outputDirectory>./16gdata</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-standard-service.sh</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster</directory>
-            <outputDirectory>./16gmaster</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-market-service.sh</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster</directory>
-            <outputDirectory>./16gmaster</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-metadata-service.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster</directory>
-            <outputDirectory>./16gmaster</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>config.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster</directory>
-            <outputDirectory>./16gmaster</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-market-service-integration.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster</directory>
-            <outputDirectory>./16gmaster</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>system.sh</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gslave</directory>
-            <outputDirectory>./16gslave</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-market-service-mapping.sh</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gslave</directory>
-            <outputDirectory>./16gslave</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-masterdata-service.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gslave</directory>
-            <outputDirectory>./16gslave</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-metadata-service-console.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gslave</directory>
-            <outputDirectory>./16gslave</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>data-quality-service.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gslave</directory>
-            <outputDirectory>./16gslave</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>eureka.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gslave</directory>
-            <outputDirectory>./16gslave</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>gateway.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gslave</directory>
-            <outputDirectory>./16gslave</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>workflow-service.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gslave</directory>
-            <outputDirectory>./16gslave</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>stop16gslave.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gmaster</directory>
-            <outputDirectory>./16gmaster</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>stop16gmaster.sh</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>${project.parent.basedir}/install/16gdata</directory>
-            <outputDirectory>./16gdata</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>stop16gdata.sh</include>
-            </includes>
+            <directory>${project.parent.basedir}/ui</directory>
+            <outputDirectory>./16gmaster/ui</outputDirectory>
         </fileSet>
 
     </fileSets>

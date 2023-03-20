@@ -99,48 +99,23 @@
 - **部署nginx**
 
 ```
-    server {
-        listen       8013;
-        listen       [::]:8013;
-        listen       127.0.0.1:8013;
-        server_name  43.138.157.47;
-        root        /mnt/poc/alldata_dev/static/;
-        index index.htm index.html index.php;
-        location /{
-           alias /mnt/poc/alldata_dev/static/;
-           index index.htm index.html index.php;
-        }
- }
-     server {
-        listen       8614;
-        listen       [::]:8614;
-        listen       127.0.0.1:8614;
-        server_name  43.138.157.47;
-        location /{
-           proxy_pass  http://1.12.227.61:9538/; # 转发规则
-           proxy_set_header Host $proxy_host; # 修改转发请求头，让8080端口的应用可以受到>真实的请求
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
- }
-    server {
-        listen       80;
-        listen       [::]:80;
-        add_header Access-Control-Allow-Origin *;
-        add_header Access-Control-Allow-Headers X-Requested-With;
-        add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
-        server_name  kmgy.top;	
-	root /mnt/poc/alldata_dev/static/;
-        index index.html;        
-# Load configuration files for the default server block.
-        include /etc/nginx/default.d/*.conf;
-
-        location /api/{  
-           proxy_pass  http://1.12.227.61:9538/; # 转发规则
-           proxy_set_header Host $proxy_host; # 修改转发请求头，让8080端口的应用可以受到>真实的请求
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        } 
+server {
+    listen       80;
+    listen       [::]:80;
+    add_header Access-Control-Allow-Origin *;
+    add_header Access-Control-Allow-Headers X-Requested-With;
+    add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
+    server_name  16gmaster;	
+    root /mnt/poc/alldatadc/studio_prod/studio_code/studio_prod/ui/dist/;
+    index index.html;        
+    include /etc/nginx/default.d/*.conf;
+    location /api/{  
+       proxy_pass  http://16gslave:9538/;
+       proxy_set_header Host $proxy_host;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
 
 ```
 

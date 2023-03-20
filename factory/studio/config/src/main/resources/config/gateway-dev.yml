@@ -25,8 +25,8 @@ spring:
                 name: authFallback
                 fallbackUri: forward:/fallback
         # dts设置
-        - id: dts-web
-          uri: lb://dts-web
+        - id: dts
+          uri: lb://dts
           predicates:
             - Path=/dts/**
           filters:
@@ -37,8 +37,8 @@ spring:
                 name: systemHystrix
                 fallbackUri: forward:/fallback
         # 系统基础设置中心
-        - id: system
-          uri: lb://system
+        - id: service-system
+          uri: lb://service-system
           predicates:
             - Path=/system/**
           filters:
