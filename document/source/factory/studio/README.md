@@ -126,66 +126,41 @@
 ### 部署方式
 
 > 数据库版本为 **mysql5.7** 及以上版本
+### 1、`studio`数据库初始化
 >
-#### 1、`studio`数据库初始化
->
-> 1.1 source install/16gmaster/studio/studio_alldatadc.sql
->
-> 1.2 source install/16gmaster/studio/studio_dts.sql
->
-> 1.3 source install/16gmaster/studio/studio_data_cloud.sql
->
-> 1.4 source install/16gmaster/studio/studio_cloud_quartz.sql
->
-> 1.5 source install/16gmaster/studio/studio_foodmart2.sql
->
-> 1.6 source install/16gmaster/studio/studio_robot.sql
->
-#### 2、修改 **config** 配置中心
+> 1.1 source install/16gmaster/studio/studio.sql
+
+### 2、修改 **config** 配置中心
 
 > **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
->
-#### 3、安装aspose-words
 
-> cd studio
->
-> mvn install:install-file -DgroupId=com.aspose -DartifactId=aspose-words -Dversion=20.3 -Dpackaging=jar -Dfile=./install/aspose-words-20.3.jar
->
-#### 4、项目根目录下执行 **mvn install**
+### 3、项目根目录下执行 **mvn package**
 >
 > 获取安装包build/studio-release-0.3.2.tar.gz
 >
 > 上传服务器解压
->
-#### 5、部署微服务: 进入不同的目录启动相关服务
->
-> 5.1 必须启动、并且顺序启动
->
-> eureka->config->gateway
->
-> 5.2 按需启动`cd install/16gmaster`
->
-> 譬如启动元数据管理
->
-> sh `install/16gmaster/data-metadata-service.sh`
->
-> tail -100f `install/16gmaster/data-metadata-service.log`
->
-> 5.2 按需启动`cd install/16gdata`
->
-> 按需启动相关服务
->
-> 5.3 按需启动`cd install/16gslave`
->
-> 按需启动相关服务
->
->
 
-#### 6、部署`studio`:
+### 4、部署`stuido`[后端]
+## 单节点启动[All In One]
+
+> 1、启动eureka on `16gslave`
 >
-> 6.1 启动`sh install/16gmaster/system.sh`
+> 2、启动config on `16gslave`
 >
-> 6.2 部署`studio`前端
+> 3、启动gateway on `16gslave`
+>
+> 4、启动masterdata on `16gslave`
+>
+> 5、启动metadata
+>
+> 6、启动其他Jar
+
+## 三节点启动[16gmaster, 16gslave, 16gdata]
+> 1. 启动`16gslave`, sh start16gslave.sh
+> 2. 启动`16gdata`, sh start16gdata.sh
+> 3. 启动`16gmaster`, sh start16gmaster.sh
+
+### 5、部署`studio`[前端]:
 >
 > source /etc/profile
 >
@@ -195,57 +170,11 @@
 >
 > nohup npm run dev &
 >
-> 6.3 访问`studio`页面
+> 5.3 访问`studio`页面
 >
 > curl http://localhost:8013
 >
 > 用户名：admin 密码：123456
-
-
-### 本地开发
-
-- 用Idea打开AllData项目，并引入POM.XML文件
-
-![image-20230214213254462](http://yg9538.kmgy.top/image-20230214213254462.png)
-
-- 修改**所有单独模块**的**ip-address为服务对外地址**，**defaultZone为Eureka所在服务器地址**
-    - 服务器地址格式为：**http://0.0.0.0:8610/eureka**
-
-![image-20230214213355662](http://yg9538.kmgy.top/image-20230214213355662.png)
-
-- 修改system  ：applicaition-dev.yml中的地址为mysql服务器地址
-
-![image-20230214213619363](http://yg9538.kmgy.top/image-20230214213619363.png)
-
-- 修改system  ：applicaition-dev.yml中的地址为redis服务器地址
-
-![image-20230214213658263](http://yg9538.kmgy.top/image-20230214213658263.png)
-
-- 修改config中的配置文件参数
-
-![image-20230214214014661](http://yg9538.kmgy.top/image-20230214214014661.png)
-
-- 数据库安装 install 目录下的 eladmin_alldatadc.sql，eladmin_dts.sql
-- 双击maven—>clean—>package
-
-![image-20230214214305341](http://yg9538.kmgy.top/image-20230214214305341.png)
-
-- 修改前端服务器地址
-
-![image-20230214215414071](http://yg9538.kmgy.top/image-20230214215414071.png)
-
-- ![image-20230214215456634](http://yg9538.kmgy.top/image-20230214215456634.png)
-
-- 打包代码生成dist文件夹
-
-![image-20230214215531395](http://yg9538.kmgy.top/image-20230214215531395.png)
-
-- dist上传到服务器，解压
-
-![image-20230214215543857](http://yg9538.kmgy.top/image-20230214215543857.png)
-
-- 配置nginx代理地址
-
 
 
 ### 部署
@@ -254,6 +183,16 @@
 
 - 将打包生成的jar包部署在服务器上
 - 服务器配置参数例表
+
+- **服务启动顺序**
+    - eureka
+    - config
+    - gateway
+    - system
+    - service-data-mapping
+    - service-data-market
+    - service-data-masterdata
+    - ...其他服务顺序随意
 
 ```
 | 16gmaster                      |      |                |
@@ -284,70 +223,3 @@
 | service-system           | 8810 | 16gdata |
 | tool-monitor             | 8711 | 16gdata |
 ```
-
-- **服务启动顺序**
-    - eureka
-    - config
-    - gateway
-    - system
-    - service-data-mapping
-    - service-data-market
-    - service-data-masterdata
-    - ...其他服务顺序随意
-
-- **部署前端**
-- **部署nginx**
-
-```
-    server {
-        listen       8013;
-        listen       [::]:8013;
-        listen       127.0.0.1:8013;
-        server_name  43.138.157.47;
-        root        /mnt/poc/alldata_dev/static/;
-        index index.htm index.html index.php;
-        location /{
-           alias /mnt/poc/alldata_dev/static/;
-           index index.htm index.html index.php;
-        }
- }
-     server {
-        listen       8614;
-        listen       [::]:8614;
-        listen       127.0.0.1:8614;
-        server_name  43.138.157.47;
-        location /{
-           proxy_pass  http://1.12.227.61:9538/; # 转发规则
-           proxy_set_header Host $proxy_host; # 修改转发请求头，让8080端口的应用可以受到>真实的请求
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
- }
-    server {
-        listen       80;
-        listen       [::]:80;
-        add_header Access-Control-Allow-Origin *;
-        add_header Access-Control-Allow-Headers X-Requested-With;
-        add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
-        server_name  kmgy.top;	
-	root /mnt/poc/alldata_dev/static/;
-        index index.html;        
-# Load configuration files for the default server block.
-        include /etc/nginx/default.d/*.conf;
-
-        location /api/{  
-           proxy_pass  http://1.12.227.61:9538/; # 转发规则
-           proxy_set_header Host $proxy_host; # 修改转发请求头，让8080端口的应用可以受到>真实的请求
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        } 
-
-```
-
-### 访问
-
-![image-20230214215235361](http://yg9538.kmgy.top/image-20230214215235361.png)
-
-### 远程调试
-
-- Eureka和config必须放在服务器上，其他均可放在本地调试，将Eureka路径调整为服务器Eureka ip地址。
