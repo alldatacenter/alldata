@@ -3,12 +3,12 @@ server:
 
 spring:
   application:
-    name: datax-service-data-masterdata
+    name: service-data-masterdata
   profiles:
     active: dev
   cloud:
     config:
-      fail-fast: true
+      label: master
       name: ${spring.application.name}
       profile: ${spring.profiles.active}
       discovery:

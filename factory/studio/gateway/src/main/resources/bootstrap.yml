@@ -8,7 +8,7 @@ spring:
     active: dev
   cloud:
     config:
-      fail-fast: true
+      label: master
       name: ${spring.application.name}
       profile: ${spring.profiles.active}
       discovery:
@@ -22,7 +22,7 @@ eureka:
     # 设置使用IP
     prefer-ip-address: true
     # 设置外网IP号
-    ip-address: 16gslave
+    ip-address: 16gdata
   client:
     register-with-eureka: true
     fetch-registry: true

@@ -125,9 +125,8 @@
 
 ### 部署方式
 
-> 数据库版本为 **mysql5.7** 及以上版本
-> 
-#### 1、`studio`数据库初始化
+> 数据库版本为 **mysql5.7** 及以上版本 
+### 1、`studio`数据库初始化
 > 
 > 1.1 source install/16gmaster/studio/studio_alldatadc.sql
 > 
@@ -140,46 +139,38 @@
 > 1.5 source install/16gmaster/studio/studio_foodmart2.sql
 > 
 > 1.6 source install/16gmaster/studio/studio_robot.sql
-> 
-#### 2、修改 **config** 配置中心
+
+### 2、修改 **config** 配置中心
 
 > **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
 > 
-#### 3、项目根目录下执行 **mvn install**
+### 3、项目根目录下执行 **mvn package**
 > 
 > 获取安装包build/studio-release-0.3.2.tar.gz
 > 
 > 上传服务器解压
 > 
-#### 4、部署微服务: 进入不同的目录启动相关服务
-> 
-> 4.1 必须启动、并且顺序启动
-> 
-> eureka->config->gateway
-> 
-> 4.2 按需启动`cd install/16gmaster`
-> 
-> 譬如启动元数据管理
-> 
-> sh `install/16gmaster/data-metadata-service.sh`
-> 
-> tail -100f `install/16gmaster/data-metadata-service.log`
-> 
-> 4.2 按需启动`cd install/16gdata`
-> 
-> 按需启动相关服务
-> 
-> 4.3 按需启动`cd install/16gslave`
->
-> 按需启动相关服务
-> 
-> 
+### 4、部署`stuido`[后端]
+## 单节点启动[All In One]
 
-#### 5、部署`studio`:
+> 1、启动eureka on `16gslave`
 >
-> 5.1 启动`sh install/16gmaster/system.sh`
-> 
-> 5.2 部署`studio`前端
+> 2、启动config on `16gslave`
+>
+> 3、启动gateway on `16gslave`
+>
+> 4、启动masterdata on `16gslave`
+>
+> 5、启动metadata
+>
+> 6、启动其他Jar
+
+## 三节点启动[16gmaster, 16gslave, 16gdata]
+> 1. 启动`16gslave`, sh start16gslave.sh
+> 2. 启动`16gdata`, sh start16gdata.sh
+> 3. 启动`16gmaster`, sh start16gmaster.sh
+
+### 5、部署`studio`[前端]:
 > 
 > source /etc/profile
 >

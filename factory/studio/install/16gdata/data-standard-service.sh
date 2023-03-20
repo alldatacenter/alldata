@@ -1,6 +1,4 @@
 #!/bin/sh
-
-
 source /etc/profile
 
 cd $(dirname $0)
