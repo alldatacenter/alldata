@@ -1,7 +1,6 @@
 | 16gmaster                      | port | ip             |
 |--------------------------------| ---- | -------------- |
 | system                 | 8613 | 16gmaster  |
-| config                   | 8611 | 16gmaster  |
 | data-market-service      | 8822 | 16gmaster  |
 | service-data-integration | 8824 | 16gmaster  |
 | data-metadata-service    | 8820 | 16gmaster  |
@@ -9,6 +8,7 @@
 | 16gslave                      | port | ip             |
 |-------------------------------| ---- | -------------- |
 | eureka                  | 8610 | 16gslave    |
+| config                   | 8611 | 16gmaster  |
 | gateway                 | 9538 | 16gslave    |
 | service-workflow        | 8814 | 16gslave    |
 | data-metadata-service-console    | 8821 | 16gslave    |
@@ -48,8 +48,9 @@
 
 > **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
 >
-### 3、项目根目录下执行 **mvn install**
->
+### 3、项目根目录下执行
+> mvn clean install -DskipTests && mvn clean package -DskipTests
+> 
 > 获取安装包build/studio-release-0.3.2.tar.gz
 >
 > 上传服务器解压
@@ -58,8 +59,6 @@
 ## 单节点启动[All In One]
 
 > 1、启动eureka on `16gslave`
->
-> 2、启动config on `16gslave`
 >
 > 3、启动gateway on `16gslave`
 >

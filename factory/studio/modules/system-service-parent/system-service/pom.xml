@@ -10,8 +10,78 @@
     <modelVersion>4.0.0</modelVersion>
     <version>0.3.4</version>
     <artifactId>system-service</artifactId>
-
+    <properties>
+        <druid.version>1.2.4</druid.version>
+    </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.github.yeecode.dynamicdatasource</groupId>
+            <artifactId>DynamicDataSource</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <!-- 获取系统信息 -->
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>6.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.platform</groupId>
+            <artifactId>common-redis</artifactId>
+            <version>0.3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.platform</groupId>
+            <artifactId>service-api</artifactId>
+            <version>0.3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.platform</groupId>
+            <artifactId>common-security</artifactId>
+            <version>0.3.4</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>mybatis</artifactId>
+                    <groupId>org.mybatis</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.platform</groupId>
+            <artifactId>generic</artifactId>
+            <version>0.3.4</version>
+        </dependency>
+
+        <!-- linux的管理 -->
+        <dependency>
+            <groupId>ch.ethz.ganymed</groupId>
+            <artifactId>ganymed-ssh2</artifactId>
+            <version>build210</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.55</version>
+        </dependency>
+
+        <!-- tools 模块包含了 common 和 logging 模块 -->
+        <dependency>
+            <groupId>com.platform</groupId>
+            <artifactId>box</artifactId>
+            <version>0.3.4</version>
+        </dependency>
+
+        <!--Mysql依赖包-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
         <!--web 模块-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,23 +115,8 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>eu.bitwalker</groupId>
-            <artifactId>UserAgentUtils</artifactId>
-            <version>${bitwalker.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-mybatis</artifactId>
-            <version>0.3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.platform</groupId>
-            <artifactId>common-redis</artifactId>
-            <version>0.3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.platform</groupId>
-            <artifactId>common-security</artifactId>
             <version>0.3.4</version>
         </dependency>
         <dependency>
@@ -69,16 +124,7 @@
             <artifactId>common-log</artifactId>
             <version>0.3.4</version>
         </dependency>
-        <dependency>
-            <groupId>com.platform</groupId>
-            <artifactId>system-service-api</artifactId>
-            <version>0.3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.platform</groupId>
-            <artifactId>common-jasperreport</artifactId>
-            <version>0.3.4</version>
-        </dependency>
+
     </dependencies>
 
     <build>

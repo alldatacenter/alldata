@@ -18,4 +18,4 @@ eureka:
     fetch-registry: false
     instance-info-replication-interval-seconds: 30
     service-url:
-      defaultZone: http://${eureka.instance.ip-address}:${server.port}/eureka/
+        defaultZone: http://16gslave:8610/eureka/

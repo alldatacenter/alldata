@@ -4,11 +4,8 @@ source /etc/profile
 echo "即将启动任务eureka"
 sh eureka.sh
 
-echo "即将启动任务config"
-sh config.sh
+sleep 10s
 
-echo "即将启动任务gateway"
-sh gateway.sh
 
 echo "即将启动任务data-market-service-mapping"
 sh data-market-service-mapping.sh

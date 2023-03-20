@@ -20,6 +20,8 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
+    host:'0.0.0.0',
+    open:true,
     historyApiFallback: true,
     port: port,
     open: true,
@@ -30,6 +32,7 @@ module.exports = {
     proxy: {
       '/api': {
         target: process.env.VUE_APP_BASE_API,
+        ws:true,
         changeOrigin: true,
         pathRewrite: {
           '^/api': 'api'
@@ -42,13 +45,6 @@ module.exports = {
           '^/auth': 'auth'
         }
       },
-      // '/data': {
-      //   target: process.env.VUE_APP_BASE_API,
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     '^/data': 'data'
-      //   }
-      // },
       '/system': {
         target: process.env.VUE_APP_BASE_API,
         changeOrigin: true,

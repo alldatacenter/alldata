@@ -7,6 +7,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -14,14 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @Slf4j
+@Component
 public class JwtUtil {
-
-
-
-
-
-
-
     /**
      * 获取凭证信息
      *

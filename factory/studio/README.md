@@ -144,7 +144,7 @@
 
 > **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
 > 
-### 3、项目根目录下执行 **mvn install**
+### 3、项目根目录下执行 **mvn package**
 > 
 > 获取安装包build/studio-release-0.3.2.tar.gz
 > 

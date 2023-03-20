@@ -1,6 +1,11 @@
 #!/bin/sh
 source /etc/profile
 
+echo "即将启动任务gateway"
+sh gateway.sh
+
+sleep 15s
+
 echo "即将启动任务standard"
 sh data-standard-service.sh
 

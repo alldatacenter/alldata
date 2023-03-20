@@ -49,18 +49,3 @@ kill -9 $pid
 
 echo "已杀死任务: $pid"
 
-pid=$(ps -ef | grep gateway.jar | grep -Ev 'color=auto' | awk '{print $2}')
-
-echo "即将杀死任务gateway: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"
-
-pid=$(ps -ef | grep config.jar | grep -Ev 'color=auto' | awk '{print $2}')
-
-echo "即将杀死任务config: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"

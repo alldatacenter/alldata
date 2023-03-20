@@ -1,6 +1,10 @@
 #!/bin/sh
 source /etc/profile
 
+pid=$(ps -ef | grep gateway.jar | grep -Ev 'color=auto' | awk '{print $2}')
+
+echo "已启动gateway: $pid"
+
 pid=$(ps -ef | grep data-standard-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
 echo "已启动standard: $pid"

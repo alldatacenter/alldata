@@ -23,12 +23,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @EnableResourceServer
 public class DataResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Autowired
-    private DataAccessDeniedHandler accessDeniedHandler;
-
-    @Autowired
-    private DataAuthExceptionEntryPoint exceptionEntryPoint;
-
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -45,7 +39,7 @@ public class DataResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.authenticationEntryPoint(exceptionEntryPoint)
-                .accessDeniedHandler(accessDeniedHandler);
+        resources.authenticationEntryPoint(new DataAuthExceptionEntryPoint())
+                .accessDeniedHandler(new DataAccessDeniedHandler());
     }
 }

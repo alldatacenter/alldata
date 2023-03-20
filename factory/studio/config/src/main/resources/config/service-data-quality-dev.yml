@@ -3,8 +3,8 @@ spring:
   redis:
     database: 1
     host: 16gmaster
-    port: 6379
-    password: 123456 # 密码（默认为空）
+    port: 13790
+    password: studio_password # 密码（默认为空）
     timeout: 6000ms       # 连接超时时长（毫秒）
     jedis:
       pool:
@@ -13,23 +13,15 @@ spring:
         max-idle: 10      # 连接池中的最大空闲连接
         min-idle: 5       # 连接池中的最小空闲连接
   datasource:
-    hikari:
-      minimum-idle: 5 #最小空闲连接数量
-      idle-timeout: 30000 #空闲连接存活最大时间，默认600000（10分钟）
-      maximum-pool-size: 10 #连接池最大连接数，默认是10
-      auto-commit: true  #此属性控制从池返回的连接的默认自动提交行为,默认值：true
-      max-lifetime: 30000 #此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
-      connection-timeout: 30000 #数据库连接超时时间,默认30秒，即30000
-      connection-test-query: SELECT 1
     dynamic:
-      primary: mysql
+      primary: master
+      strict: false
       datasource:
-        mysql:
+        master:
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-          url: jdbc:p6spy:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-
+          url: jdbc:p6spy:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
           username: root
-          password: 123456
+          password: studio_password
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
@@ -54,7 +46,7 @@ security:
       access-token-uri: http://16gslave:8612/auth/oauth/token
       user-authorization-uri: http://16gslave:8612/auth/oauth/authorize
       client-id: AllData
-      client-secret: 123456
+      client-secret: studio_password
       scope: all
     resource:
       loadBalanced: true
@@ -71,4 +63,4 @@ swagger:
   contact:
     name: AllDataDC
     url: https://github.com/alldatacenter/alldata
-    email: 12345678@qq.com
+    email: m13602574132@163.com
