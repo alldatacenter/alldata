@@ -128,17 +128,7 @@
 > 数据库版本为 **mysql5.7** 及以上版本 
 ### 1、`studio`数据库初始化
 > 
-> 1.1 source install/16gmaster/studio/studio_alldatadc.sql
-> 
-> 1.2 source install/16gmaster/studio/studio_dts.sql
->
-> 1.3 source install/16gmaster/studio/studio_data_cloud.sql
->
-> 1.4 source install/16gmaster/studio/studio_cloud_quartz.sql
-> 
-> 1.5 source install/16gmaster/studio/studio_foodmart2.sql
-> 
-> 1.6 source install/16gmaster/studio/studio_robot.sql
+> 1.1 source install/16gmaster/studio/studio.sql
 
 ### 2、修改 **config** 配置中心
 
