@@ -293,36 +293,28 @@
 
 
 ### 部署方式
-
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/226297187-d36d6ebf-9cdc-4e1a-81bb-860af018d14e.png">
+<br/>
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/221345609-45a34a1a-8316-4810-8624-bc43a0e3c91d.png">
 <br/>
 
-> 数据库版本为 **mysql5.7** 及以上版本
+> 数据库版本为 **mysql5.7** 及以上版本 
 ### 1、`studio`数据库初始化
->
-> 1.1 source install/16gmaster/studio/studio_alldatadc.sql
->
-> 1.2 source install/16gmaster/studio/studio_dts.sql
->
-> 1.3 source install/16gmaster/studio/studio_data_cloud.sql
->
-> 1.4 source install/16gmaster/studio/studio_cloud_quartz.sql
->
-> 1.5 source install/16gmaster/studio/studio_foodmart2.sql
->
-> 1.6 source install/16gmaster/studio/studio_robot.sql
+> 
+> 1.1 source install/16gmaster/studio/studio.sql
 
 ### 2、修改 **config** 配置中心
 
 > **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
->
-### 3、项目根目录下执行 **mvn install**
->
+> 
+### 3、项目根目录下执行 **mvn package**
+> 
 > 获取安装包build/studio-release-0.3.2.tar.gz
->
+> 
 > 上传服务器解压
->
+> 
 ### 4、部署`stuido`[后端]
 ## 单节点启动[All In One]
 
@@ -344,20 +336,21 @@
 > 3. 启动`16gmaster`, sh start16gmaster.sh
 
 ### 5、部署`studio`[前端]:
->
+> 
 > source /etc/profile
 >
 > cd $(dirname $0)
->
+> 
 > source /root/.bashrc && nvm use v10.15.3
->
+> 
 > nohup npm run dev &
->
+> 
 > 5.3 访问`studio`页面
->
+> 
 > curl http://localhost:8013
 >
 > 用户名：admin 密码：123456
+
 
 ## Presto POC调研
 <br/>
