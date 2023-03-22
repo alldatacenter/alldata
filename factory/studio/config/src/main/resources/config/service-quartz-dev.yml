@@ -4,7 +4,7 @@ spring:
     database: 1
     host: 16gmaster
     port: 13790
-    password: studio_password # 密码（默认为空）
+    password: studio_123456 # 密码（默认为空）
     timeout: 6000ms       # 连接超时时长（毫秒）
     jedis:
       pool:
@@ -16,12 +16,12 @@ spring:
     primary:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
-      password: studio_password
+      password: studio_123456
       url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     quartz:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
-      password: studio_password
+      password: studio_123456
       url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
   quartz:
     job-store-type: jdbc
@@ -69,7 +69,7 @@ security:
       access-token-uri: http://16gslave:8612/auth/oauth/token
       user-authorization-uri: http://16gslave:8612/auth/oauth/authorize
       client-id: AllData
-      client-secret: studio_password
+      client-secret: 123456
       scope: all
     resource:
       loadBalanced: true
