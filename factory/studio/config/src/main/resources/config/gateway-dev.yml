@@ -24,18 +24,6 @@ spring:
               args:
                 name: authFallback
                 fallbackUri: forward:/fallback
-        # dts设置
-        - id: dts
-          uri: lb://dts
-          predicates:
-            - Path=/dts/**
-          filters:
-            - SwaggerHeaderFilter
-            - StripPrefix=1
-            - name: Hystrix
-              args:
-                name: systemHystrix
-                fallbackUri: forward:/fallback
         # 系统基础设置中心
         - id: service-system
           uri: lb://service-system
