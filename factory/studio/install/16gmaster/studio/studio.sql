@@ -1,901 +1,19 @@
--- MySQL dump 10.13  Distrib 8.0.24, for Linux (x86_64)
---
--- Host: 127.0.0.1    Database: studio
--- ------------------------------------------------------
--- Server version	8.0.31
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Current Database: `studio`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `studio`;
-
---
--- Table structure for table `code_column_config`
---
-
-DROP TABLE IF EXISTS `code_column_config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `code_column_config` (
-  `column_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `table_name` varchar(255) DEFAULT NULL,
-  `column_name` varchar(255) DEFAULT NULL,
-  `column_type` varchar(255) DEFAULT NULL,
-  `dict_name` varchar(255) DEFAULT NULL,
-  `extra` varchar(255) DEFAULT NULL,
-  `form_show` bit(1) DEFAULT NULL,
-  `form_type` varchar(255) DEFAULT NULL,
-  `key_type` varchar(255) DEFAULT NULL,
-  `list_show` bit(1) DEFAULT NULL,
-  `not_null` bit(1) DEFAULT NULL,
-  `query_type` varchar(255) DEFAULT NULL,
-  `remark` varchar(255) DEFAULT NULL,
-  `date_annotation` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`column_id`) USING BTREE,
-  KEY `idx_table_name` (`table_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='代码生成字段信息存储';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `code_column_config`
---
-
-LOCK TABLES `code_column_config` WRITE;
-/*!40000 ALTER TABLE `code_column_config` DISABLE KEYS */;
-INSERT INTO `code_column_config` VALUES (191,'tool_qiniu_content','content_id','bigint',NULL,'auto_increment',_binary '',NULL,'PRI',_binary '',_binary '\0',NULL,'ID',NULL),(192,'tool_qiniu_content','bucket','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'Bucket 识别符',NULL),(193,'tool_qiniu_content','name','varchar',NULL,'',_binary '',NULL,'UNI',_binary '',_binary '\0',NULL,'文件名称',NULL),(194,'tool_qiniu_content','size','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'文件大小',NULL),(195,'tool_qiniu_content','type','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'文件类型：私有或公开',NULL),(196,'tool_qiniu_content','url','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'文件url',NULL),(197,'tool_qiniu_content','suffix','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'文件后缀',NULL),(198,'tool_qiniu_content','update_time','datetime',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'上传或同步的时间',NULL);
-/*!40000 ALTER TABLE `code_column_config` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `code_gen_config`
---
-
-DROP TABLE IF EXISTS `code_gen_config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `code_gen_config` (
-  `config_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `table_name` varchar(255) DEFAULT NULL COMMENT '表名',
-  `author` varchar(255) DEFAULT NULL COMMENT '作者',
-  `cover` bit(1) DEFAULT NULL COMMENT '是否覆盖',
-  `module_name` varchar(255) DEFAULT NULL COMMENT '模块名称',
-  `pack` varchar(255) DEFAULT NULL COMMENT '至于哪个包下',
-  `path` varchar(255) DEFAULT NULL COMMENT '前端代码生成的路径',
-  `api_path` varchar(255) DEFAULT NULL COMMENT '前端Api文件路径',
-  `prefix` varchar(255) DEFAULT NULL COMMENT '表前缀',
-  `api_alias` varchar(255) DEFAULT NULL COMMENT '接口名称',
-  PRIMARY KEY (`config_id`) USING BTREE,
-  KEY `idx_table_name` (`table_name`(100))
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='代码生成器配置';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `code_gen_config`
---
-
-LOCK TABLES `code_gen_config` WRITE;
-/*!40000 ALTER TABLE `code_gen_config` DISABLE KEYS */;
-/*!40000 ALTER TABLE `code_gen_config` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `mnt_app`
---
-
-DROP TABLE IF EXISTS `mnt_app`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `mnt_app` (
-  `app_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `name` varchar(255) DEFAULT NULL COMMENT '应用名称',
-  `upload_path` varchar(255) DEFAULT NULL COMMENT '上传目录',
-  `deploy_path` varchar(255) DEFAULT NULL COMMENT '部署路径',
-  `backup_path` varchar(255) DEFAULT NULL COMMENT '备份路径',
-  `port` int DEFAULT NULL COMMENT '应用端口',
-  `start_script` varchar(4000) DEFAULT NULL COMMENT '启动脚本',
-  `deploy_script` varchar(4000) DEFAULT NULL COMMENT '部署脚本',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`app_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='应用管理';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `mnt_app`
---
-
-LOCK TABLES `mnt_app` WRITE;
-/*!40000 ALTER TABLE `mnt_app` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mnt_app` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `mnt_database`
---
-
-DROP TABLE IF EXISTS `mnt_database`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `mnt_database` (
-  `db_id` varchar(50) NOT NULL COMMENT 'ID',
-  `name` varchar(255) NOT NULL COMMENT '名称',
-  `jdbc_url` varchar(255) NOT NULL COMMENT 'jdbc连接',
-  `user_name` varchar(255) NOT NULL COMMENT '账号',
-  `pwd` varchar(255) NOT NULL COMMENT '密码',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`db_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='数据库管理';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `mnt_database`
---
-
-LOCK TABLES `mnt_database` WRITE;
-/*!40000 ALTER TABLE `mnt_database` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mnt_database` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `mnt_deploy`
---
-
-DROP TABLE IF EXISTS `mnt_deploy`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `mnt_deploy` (
-  `deploy_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `app_id` bigint DEFAULT NULL COMMENT '应用编号',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`deploy_id`) USING BTREE,
-  KEY `FK6sy157pseoxx4fmcqr1vnvvhy` (`app_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='部署管理';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `mnt_deploy`
---
-
-LOCK TABLES `mnt_deploy` WRITE;
-/*!40000 ALTER TABLE `mnt_deploy` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mnt_deploy` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `mnt_deploy_history`
---
-
-DROP TABLE IF EXISTS `mnt_deploy_history`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `mnt_deploy_history` (
-  `history_id` varchar(50) NOT NULL COMMENT 'ID',
-  `app_name` varchar(255) NOT NULL COMMENT '应用名称',
-  `deploy_date` datetime NOT NULL COMMENT '部署日期',
-  `deploy_user` varchar(50) NOT NULL COMMENT '部署用户',
-  `ip` varchar(20) NOT NULL COMMENT '服务器IP',
-  `deploy_id` bigint DEFAULT NULL COMMENT '部署编号',
-  PRIMARY KEY (`history_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='部署历史管理';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `mnt_deploy_history`
---
-
-LOCK TABLES `mnt_deploy_history` WRITE;
-/*!40000 ALTER TABLE `mnt_deploy_history` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mnt_deploy_history` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `mnt_deploy_server`
---
-
-DROP TABLE IF EXISTS `mnt_deploy_server`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `mnt_deploy_server` (
-  `deploy_id` bigint NOT NULL COMMENT '部署ID',
-  `server_id` bigint NOT NULL COMMENT '服务ID',
-  PRIMARY KEY (`deploy_id`,`server_id`) USING BTREE,
-  KEY `FKeaaha7jew9a02b3bk9ghols53` (`server_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='应用与服务器关联';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `mnt_deploy_server`
---
-
-LOCK TABLES `mnt_deploy_server` WRITE;
-/*!40000 ALTER TABLE `mnt_deploy_server` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mnt_deploy_server` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `mnt_server`
---
-
-DROP TABLE IF EXISTS `mnt_server`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `mnt_server` (
-  `server_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `account` varchar(50) DEFAULT NULL COMMENT '账号',
-  `ip` varchar(20) DEFAULT NULL COMMENT 'IP地址',
-  `name` varchar(100) DEFAULT NULL COMMENT '名称',
-  `password` varchar(100) DEFAULT NULL COMMENT '密码',
-  `port` int DEFAULT NULL COMMENT '端口',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`server_id`) USING BTREE,
-  KEY `idx_ip` (`ip`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='服务器管理';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `mnt_server`
---
-
-LOCK TABLES `mnt_server` WRITE;
-/*!40000 ALTER TABLE `mnt_server` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mnt_server` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_dept`
---
-
-DROP TABLE IF EXISTS `sys_dept`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_dept` (
-  `dept_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `pid` bigint DEFAULT NULL COMMENT '上级部门',
-  `sub_count` int DEFAULT '0' COMMENT '子部门数目',
-  `name` varchar(255) NOT NULL COMMENT '名称',
-  `dept_sort` int DEFAULT '999' COMMENT '排序',
-  `enabled` bit(1) NOT NULL COMMENT '状态',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`dept_id`) USING BTREE,
-  KEY `inx_pid` (`pid`),
-  KEY `inx_enabled` (`enabled`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='部门';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_dept`
---
-
-LOCK TABLES `sys_dept` WRITE;
-/*!40000 ALTER TABLE `sys_dept` DISABLE KEYS */;
-INSERT INTO `sys_dept` VALUES (2,7,1,'研发部',3,_binary '','admin','admin','2022-03-25 09:15:32','2022-08-02 14:48:47'),(5,7,0,'运维部',4,_binary '','admin','admin','2022-03-25 09:20:44','2022-05-17 14:27:27'),(6,8,0,'测试部',6,_binary '','admin','admin','2022-03-25 09:52:18','2022-06-08 11:59:21'),(7,NULL,2,'华南分部',0,_binary '','admin','admin','2022-03-25 11:04:50','2022-06-08 12:08:56'),(8,NULL,2,'华北分部',1,_binary '','admin','admin','2022-03-25 11:04:53','2022-05-14 12:54:00'),(15,8,0,'UI部门',7,_binary '','admin','admin','2022-05-13 22:56:53','2022-05-14 12:54:13'),(17,2,0,'研发一组',999,_binary '','admin','admin','2022-08-02 14:49:07','2022-08-02 14:49:07');
-/*!40000 ALTER TABLE `sys_dept` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_dict`
---
-
-DROP TABLE IF EXISTS `sys_dict`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_dict` (
-  `dict_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `name` varchar(255) NOT NULL COMMENT '字典名称',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`dict_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='数据字典';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_dict`
---
-
-LOCK TABLES `sys_dict` WRITE;
-/*!40000 ALTER TABLE `sys_dict` DISABLE KEYS */;
-INSERT INTO `sys_dict` VALUES (1,'user_status','用户状态',NULL,NULL,'2022-10-27 20:31:36',NULL),(4,'dept_status','部门状态',NULL,NULL,'2022-10-27 20:31:36',NULL),(5,'job_status','岗位状态',NULL,NULL,'2022-10-27 20:31:36',NULL);
-/*!40000 ALTER TABLE `sys_dict` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_dict_detail`
---
-
-DROP TABLE IF EXISTS `sys_dict_detail`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_dict_detail` (
-  `detail_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `dict_id` bigint DEFAULT NULL COMMENT '字典id',
-  `label` varchar(255) NOT NULL COMMENT '字典标签',
-  `value` varchar(255) NOT NULL COMMENT '字典值',
-  `dict_sort` int DEFAULT NULL COMMENT '排序',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`detail_id`) USING BTREE,
-  KEY `FK5tpkputc6d9nboxojdbgnpmyb` (`dict_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='数据字典详情';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_dict_detail`
---
-
-LOCK TABLES `sys_dict_detail` WRITE;
-/*!40000 ALTER TABLE `sys_dict_detail` DISABLE KEYS */;
-INSERT INTO `sys_dict_detail` VALUES (1,1,'激活','true',1,NULL,NULL,'2022-10-27 20:31:36',NULL),(2,1,'禁用','false',2,NULL,NULL,NULL,NULL),(3,4,'启用','true',1,NULL,NULL,NULL,NULL),(4,4,'停用','false',2,NULL,NULL,'2022-10-27 20:31:36',NULL),(5,5,'启用','true',1,NULL,NULL,NULL,NULL),(6,5,'停用','false',2,NULL,NULL,'2022-10-27 20:31:36',NULL);
-/*!40000 ALTER TABLE `sys_dict_detail` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_job`
---
-
-DROP TABLE IF EXISTS `sys_job`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_job` (
-  `job_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `name` varchar(255) NOT NULL COMMENT '岗位名称',
-  `enabled` bit(1) NOT NULL COMMENT '岗位状态',
-  `job_sort` int DEFAULT NULL COMMENT '排序',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`job_id`) USING BTREE,
-  UNIQUE KEY `uniq_name` (`name`),
-  KEY `inx_enabled` (`enabled`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='岗位';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_job`
---
-
-LOCK TABLES `sys_job` WRITE;
-/*!40000 ALTER TABLE `sys_job` DISABLE KEYS */;
-INSERT INTO `sys_job` VALUES (8,'人事专员',_binary '',3,NULL,NULL,'2022-03-29 14:52:28',NULL),(10,'产品经理',_binary '',4,NULL,NULL,'2022-03-29 14:55:51',NULL),(11,'全栈开发',_binary '',2,NULL,'admin','2022-03-31 13:39:30','2022-05-05 11:33:43'),(12,'软件测试',_binary '',5,NULL,'admin','2022-03-31 13:39:43','2022-05-10 19:56:26');
-/*!40000 ALTER TABLE `sys_job` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_log`
---
-
-DROP TABLE IF EXISTS `sys_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_log` (
-  `log_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `description` varchar(255) DEFAULT NULL,
-  `log_type` varchar(255) DEFAULT NULL,
-  `method` varchar(255) DEFAULT NULL,
-  `params` text,
-  `request_ip` varchar(255) DEFAULT NULL,
-  `time` bigint DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `browser` varchar(255) DEFAULT NULL,
-  `exception_detail` text,
-  `create_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`log_id`) USING BTREE,
-  KEY `log_create_time_index` (`create_time`),
-  KEY `inx_log_type` (`log_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=3674 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='系统日志';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_log`
---
-
---
--- Table structure for table `sys_menu`
---
-
-DROP TABLE IF EXISTS `sys_menu`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_menu` (
-  `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `pid` bigint DEFAULT NULL COMMENT '上级菜单ID',
-  `sub_count` int DEFAULT '0' COMMENT '子菜单数目',
-  `type` int DEFAULT NULL COMMENT '菜单类型',
-  `title` varchar(255) DEFAULT NULL COMMENT '菜单标题',
-  `name` varchar(255) DEFAULT NULL COMMENT '组件名称',
-  `component` varchar(255) DEFAULT NULL COMMENT '组件',
-  `menu_sort` int DEFAULT NULL COMMENT '排序',
-  `icon` varchar(255) DEFAULT NULL COMMENT '图标',
-  `path` varchar(255) DEFAULT NULL COMMENT '链接地址',
-  `i_frame` bit(1) DEFAULT NULL COMMENT '是否外链',
-  `cache` bit(1) DEFAULT b'0' COMMENT '缓存',
-  `hidden` bit(1) DEFAULT b'0' COMMENT '隐藏',
-  `permission` varchar(255) DEFAULT NULL COMMENT '权限',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`menu_id`) USING BTREE,
-  UNIQUE KEY `uniq_title` (`title`),
-  UNIQUE KEY `uniq_name` (`name`),
-  KEY `inx_pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='系统菜单';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_menu`
---
-
-LOCK TABLES `sys_menu` WRITE;
-/*!40000 ALTER TABLE `sys_menu` DISABLE KEYS */;
-INSERT INTO `sys_menu` VALUES (1,NULL,7,0,'系统管理',NULL,NULL,1,'system','system',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-12-18 15:11:29',NULL),(2,1,3,1,'用户管理','User','system/user/index',2,'peoples','user',_binary '\0',_binary '\0',_binary '\0','user:list',NULL,NULL,'2022-12-18 15:14:44',NULL),(3,1,3,1,'角色管理','Role','system/role/index',3,'role','role',_binary '\0',_binary '\0',_binary '\0','roles:list',NULL,NULL,'2022-12-18 15:16:07',NULL),(5,1,3,1,'菜单管理','Menu','system/menu/index',5,'menu','menu',_binary '\0',_binary '\0',_binary '\0','menu:list',NULL,NULL,'2022-12-18 15:17:28',NULL),(6,NULL,5,0,'系统监控',NULL,NULL,10,'monitor','monitor',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-12-18 15:17:48',NULL),(7,6,0,1,'操作日志','Log','monitor/log/index',11,'log','logs',_binary '\0',_binary '',_binary '\0',NULL,NULL,'admin','2022-12-18 15:18:26','2022-06-06 13:11:57'),(9,6,0,1,'SQL监控','Sql','monitor/sql/index',18,'sqlMonitor','druid',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-12-18 15:19:34',NULL),(10,NULL,5,0,'组件管理',NULL,NULL,50,'zujian','components',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-12-19 13:38:16',NULL),(11,10,0,1,'图标库','Icons','components/icons/index',51,'icon','icon',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-12-19 13:38:49',NULL),(14,36,0,1,'邮件工具','Email','tools/email/index',35,'email','email',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-12-27 10:13:09',NULL),(15,10,0,1,'富文本','Editor','components/Editor',52,'fwb','tinymce',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-12-27 11:58:25',NULL),(18,36,3,1,'存储管理','Storage','tools/storage/index',34,'qiniu','storage',_binary '\0',_binary '\0',_binary '\0','storage:list',NULL,NULL,'2022-12-31 11:12:15',NULL),(19,36,0,1,'支付宝工具','AliPay','tools/aliPay/index',37,'alipay','aliPay',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-12-31 14:52:38',NULL),(21,NULL,2,0,'多级菜单',NULL,'',900,'menu','nested',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,'admin','2022-01-04 16:22:03','2022-06-21 17:27:35'),(22,21,2,0,'二级菜单1',NULL,'',999,'menu','menu1',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,'admin','2022-01-04 16:23:29','2022-06-21 17:27:20'),(23,21,0,1,'二级菜单2',NULL,'nested/menu2/index',999,'menu','menu2',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-01-04 16:23:57',NULL),(24,22,0,1,'三级菜单1','Test','nested/menu1/menu1-1',999,'menu','menu1-1',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-01-04 16:24:48',NULL),(27,22,0,1,'三级菜单2',NULL,'nested/menu1/menu1-2',999,'menu','menu1-2',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-01-07 17:27:32',NULL),(28,1,3,1,'任务调度','Timing','system/timing/index',999,'timing','timing',_binary '\0',_binary '\0',_binary '\0','timing:list',NULL,NULL,'2022-01-07 20:34:40',NULL),(30,36,0,1,'代码生成','GeneratorIndex','generator/index',32,'dev','generator',_binary '\0',_binary '',_binary '\0',NULL,NULL,NULL,'2022-01-11 15:45:55',NULL),(32,6,0,1,'异常日志','ErrorLog','monitor/log/errorLog',12,'error','errorLog',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-01-13 13:49:03',NULL),(33,10,0,1,'Markdown','Markdown','components/MarkDown',53,'markdown','markdown',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-03-08 13:46:44',NULL),(34,10,0,1,'Yaml编辑器','YamlEdit','components/YamlEdit',54,'dev','yaml',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-03-08 15:49:40',NULL),(35,1,3,1,'部门管理','Dept','system/dept/index',6,'dept','dept',_binary '\0',_binary '\0',_binary '\0','dept:list',NULL,NULL,'2022-03-25 09:46:00',NULL),(36,NULL,7,0,'系统工具',NULL,'',30,'sys-tools','sys-tools',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-03-29 10:57:35',NULL),(37,1,3,1,'岗位管理','Job','system/job/index',7,'Steve-Jobs','job',_binary '\0',_binary '\0',_binary '\0','job:list',NULL,NULL,'2022-03-29 13:51:18',NULL),(38,36,0,1,'接口文档','Swagger','tools/swagger/index',36,'swagger','swagger2',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-03-29 19:57:53',NULL),(39,1,3,1,'字典管理','Dict','system/dict/index',8,'dictionary','dict',_binary '\0',_binary '\0',_binary '\0','dict:list',NULL,NULL,'2022-04-10 11:49:04',NULL),(41,6,0,1,'在线用户','OnlineUser','monitor/online/index',10,'Steve-Jobs','online',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-10-26 22:08:43',NULL),(44,2,0,2,'用户新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','user:add',NULL,NULL,'2022-10-29 10:59:46',NULL),(45,2,0,2,'用户编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','user:edit',NULL,NULL,'2022-10-29 11:00:08',NULL),(46,2,0,2,'用户删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','user:del',NULL,NULL,'2022-10-29 11:00:23',NULL),(48,3,0,2,'角色创建',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','roles:add',NULL,NULL,'2022-10-29 12:45:34',NULL),(49,3,0,2,'角色修改',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','roles:edit',NULL,NULL,'2022-10-29 12:46:16',NULL),(50,3,0,2,'角色删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','roles:del',NULL,NULL,'2022-10-29 12:46:51',NULL),(52,5,0,2,'菜单新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','menu:add',NULL,NULL,'2022-10-29 12:55:07',NULL),(53,5,0,2,'菜单编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','menu:edit',NULL,NULL,'2022-10-29 12:55:40',NULL),(54,5,0,2,'菜单删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','menu:del',NULL,NULL,'2022-10-29 12:56:00',NULL),(56,35,0,2,'部门新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','dept:add',NULL,NULL,'2022-10-29 12:57:09',NULL),(57,35,0,2,'部门编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','dept:edit',NULL,NULL,'2022-10-29 12:57:27',NULL),(58,35,0,2,'部门删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','dept:del',NULL,NULL,'2022-10-29 12:57:41',NULL),(60,37,0,2,'岗位新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','job:add',NULL,NULL,'2022-10-29 12:58:27',NULL),(61,37,0,2,'岗位编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','job:edit',NULL,NULL,'2022-10-29 12:58:45',NULL),(62,37,0,2,'岗位删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','job:del',NULL,NULL,'2022-10-29 12:59:04',NULL),(64,39,0,2,'字典新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','dict:add',NULL,NULL,'2022-10-29 13:00:17',NULL),(65,39,0,2,'字典编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','dict:edit',NULL,NULL,'2022-10-29 13:00:42',NULL),(66,39,0,2,'字典删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','dict:del',NULL,NULL,'2022-10-29 13:00:59',NULL),(73,28,0,2,'任务新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','timing:add',NULL,NULL,'2022-10-29 13:07:28',NULL),(74,28,0,2,'任务编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','timing:edit',NULL,NULL,'2022-10-29 13:07:41',NULL),(75,28,0,2,'任务删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','timing:del',NULL,NULL,'2022-10-29 13:07:54',NULL),(77,18,0,2,'上传文件',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','storage:add',NULL,NULL,'2022-10-29 13:09:09',NULL),(78,18,0,2,'文件编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','storage:edit',NULL,NULL,'2022-10-29 13:09:22',NULL),(79,18,0,2,'文件删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','storage:del',NULL,NULL,'2022-10-29 13:09:34',NULL),(80,6,0,1,'服务监控','ServerMonitor','monitor/server/index',14,'codeConsole','server',_binary '\0',_binary '\0',_binary '\0','monitor:list',NULL,'admin','2022-11-07 13:06:39','2022-05-04 18:20:50'),(82,36,0,1,'生成配置','GeneratorConfig','generator/config',33,'dev','generator/config/:tableName',_binary '\0',_binary '',_binary '','',NULL,NULL,'2022-11-17 20:08:56',NULL),(83,10,0,1,'图表库','Echarts','components/Echarts',50,'chart','echarts',_binary '\0',_binary '',_binary '\0','',NULL,NULL,'2022-11-21 09:04:32',NULL),(90,NULL,5,1,'运维管理','Mnt','',20,'mnt','mnt',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2022-11-09 10:31:08',NULL),(92,90,3,1,'服务器','ServerDeploy','mnt/server/index',22,'server','mnt/serverDeploy',_binary '\0',_binary '\0',_binary '\0','serverDeploy:list',NULL,NULL,'2022-11-10 10:29:25',NULL),(93,90,3,1,'应用管理','App','mnt/app/index',23,'app','mnt/app',_binary '\0',_binary '\0',_binary '\0','app:list',NULL,NULL,'2022-11-10 11:05:16',NULL),(94,90,3,1,'部署管理','Deploy','mnt/deploy/index',24,'deploy','mnt/deploy',_binary '\0',_binary '\0',_binary '\0','deploy:list',NULL,NULL,'2022-11-10 15:56:55',NULL),(97,90,1,1,'部署备份','DeployHistory','mnt/deployHistory/index',25,'backup','mnt/deployHistory',_binary '\0',_binary '\0',_binary '\0','deployHistory:list',NULL,NULL,'2022-11-10 16:49:44',NULL),(98,90,3,1,'数据库管理','Database','mnt/database/index',26,'database','mnt/database',_binary '\0',_binary '\0',_binary '\0','database:list',NULL,NULL,'2022-11-10 20:40:04',NULL),(102,97,0,2,'删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','deployHistory:del',NULL,NULL,'2022-11-17 09:32:48',NULL),(103,92,0,2,'服务器新增',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','serverDeploy:add',NULL,NULL,'2022-11-17 11:08:33',NULL),(104,92,0,2,'服务器编辑',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','serverDeploy:edit',NULL,NULL,'2022-11-17 11:08:57',NULL),(105,92,0,2,'服务器删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','serverDeploy:del',NULL,NULL,'2022-11-17 11:09:15',NULL),(106,93,0,2,'应用新增',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','app:add',NULL,NULL,'2022-11-17 11:10:03',NULL),(107,93,0,2,'应用编辑',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','app:edit',NULL,NULL,'2022-11-17 11:10:28',NULL),(108,93,0,2,'应用删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','app:del',NULL,NULL,'2022-11-17 11:10:55',NULL),(109,94,0,2,'部署新增',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','deploy:add',NULL,NULL,'2022-11-17 11:11:22',NULL),(110,94,0,2,'部署编辑',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','deploy:edit',NULL,NULL,'2022-11-17 11:11:41',NULL),(111,94,0,2,'部署删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','deploy:del',NULL,NULL,'2022-11-17 11:12:01',NULL),(112,98,0,2,'数据库新增',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','database:add',NULL,NULL,'2022-11-17 11:12:43',NULL),(113,98,0,2,'数据库编辑',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','database:edit',NULL,NULL,'2022-11-17 11:12:58',NULL),(114,98,0,2,'数据库删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','database:del',NULL,NULL,'2022-11-17 11:13:14',NULL),(116,36,0,1,'生成预览','Preview','generator/preview',999,'java','generator/preview/:tableName',_binary '\0',_binary '',_binary '',NULL,NULL,NULL,'2022-11-26 14:54:36',NULL),(118,NULL,5,0,'数据质量',NULL,NULL,1,'Steve-Jobs','quality',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 19:51:59','2022-11-29 19:51:59'),(119,118,0,1,'质量概览','CheckReportQuality','quality/checkreport/index',2,'chart','checkreport',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 19:53:25','2022-11-29 19:53:25'),(120,118,0,1,'质量任务','CheckJobQuality','quality/checkjob/index',2,'database','checkjob',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:53:47','2022-11-29 20:53:47'),(121,118,0,1,'规则引擎','checkRuleQuality','quality/checkrule/index',2,'dashboard','checkrule',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:54:44','2022-11-29 20:54:44'),(122,118,0,1,'日志监控','CheckLogQuality','quality/checklog/index',2,'dashboard','checklog',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:55:33','2022-11-29 20:55:33'),(123,118,0,1,'质量统计','checkstatQuality','quality/checkstat/index',2,'chart','checkstat',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:56:14','2022-11-29 20:56:14'),(124,NULL,4,0,'数据标准',NULL,NULL,1,'develop','standard',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 20:57:09','2022-11-29 20:57:09'),(125,124,0,1,'对比度统计','contraststatStandard','standard/contraststat',2,'app','contraststat',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:58:37','2022-11-29 20:58:37'),(126,124,0,1,'数据字典','datadict','standard/datadict/index',2,'app','datadict',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:59:42','2022-11-29 20:59:42'),(127,124,0,1,'字典对比','distcontrastStandard','standard/distcontrast/index',2,'dev','distcontrast',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:00:49','2022-11-29 21:00:49'),(128,124,0,1,'字典映射','dictmappingStandard','standard/dictmapping/index',2,'Steve-Jobs','dictmapping',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:01:25','2022-11-29 21:01:25'),(129,NULL,8,0,'元数据管理',NULL,NULL,1,'develop','metadata',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:02:35','2022-11-29 21:02:35'),(130,129,0,1,'行级变更','changerecordMetadata','metadata/changerecord/index',9,'app','changerecord',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:03:29','2022-11-29 21:03:29'),(131,129,0,1,'数据授权','dataauthorizeMetadata','metadata/dataauthorize/index',2,'Steve-Jobs','dataauthorize',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:04:28','2022-11-29 21:04:28'),(132,129,0,1,'数据血缘','databloodMetadata','metadata/datablood/index',2,'doc','datablood',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:05:13','2022-11-29 21:05:13'),(133,129,0,1,'数据字段','datacolumnMetadata','metadata/datacolumn/index',2,'app','datacolumn',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:06:07','2022-11-29 21:32:03'),(134,129,0,1,'数据地图','datamapMetadata','metadata/datamap/index',2,'web','datamap',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:07:09','2022-11-29 21:07:09'),(135,129,0,1,'数据查询','datasearchMetadata','metadata/datasearch/index',3,'search','datasearch',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:08:01','2022-11-29 21:09:09'),(136,129,0,1,'数据源','datasourceMetadata','metadata/datasource/index',3,'database','datasource',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:08:59','2022-11-29 21:08:59'),(137,129,0,1,'SQL控制台','sqlconsoleMetadata','metadata/sqlconsole/index',3,'codeConsole','sqlconsole',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:10:10','2022-11-29 21:10:10'),(138,NULL,2,0,'数据资产',NULL,NULL,1,'server','masterdata',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:12:05','2022-11-29 21:12:05'),(139,138,0,1,'数据管理','datamanageMasterData','masterdata/datamanage/index',2,'develop','datamanage',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:13:03','2022-11-29 21:13:03'),(140,138,0,1,'数据模型','datamodelMasterdata','masterdata/datamodel/index',3,'app','datamodel',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:13:47','2022-11-29 21:13:47'),(141,NULL,5,0,'数据市场',NULL,NULL,1,'tree-table','market',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:14:28','2022-11-29 21:19:08'),(142,141,0,1,'API日志','apilogMarket','market/apilog/index',2,'Steve-Jobs','apilog',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:15:26','2022-11-29 21:15:26'),(143,141,0,1,'API Mask','apimaskMarket','market/apimask/index',2,'app','apimask',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:16:20','2022-11-29 21:16:20'),(144,141,0,1,'数据接口','dataapiMarket','market/dataapi/index',2,'dashboard','dataapi',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:17:23','2022-11-29 21:17:23'),(145,141,0,1,'数据服务','dataserviceMarket','market/dataservice/index',3,'index','dataservice',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:18:55','2022-11-29 21:19:16'),(146,141,0,1,'服务日志','servicelogMarket','market/servicelog/index',3,'blog','servicelog',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:20:10','2022-11-29 21:20:10'),(147,NULL,4,0,'BI报表',NULL,NULL,1,'dashboard','visual',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:21:24','2022-11-29 21:23:18'),(148,147,0,1,'数据看板','databoardVisual','visual/databoard/index',3,'app','databoard',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:22:31','2022-11-29 21:22:31'),(149,147,0,1,'数据图表','datachartVisual','visual/datachart/index',9,'chart','datachart',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:24:22','2022-11-29 21:24:22'),(150,147,0,1,'数据大屏','datascreenVisual','visual/datascreen/index',3,'ipvisits','datascreen',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:25:14','2022-11-29 21:25:14'),(151,147,0,1,'数据集','datasetVisual','visual/dataset/index',3,'mnt','dataset',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:26:02','2022-11-29 21:26:02'),(152,NULL,4,0,'流程编排',NULL,NULL,1,'deploy','workflow',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:27:03','2022-11-29 21:27:03'),(153,152,0,1,'业务流程','businessWorkFlow','workflow/business/index',3,'app','business',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:27:53','2022-11-29 21:27:53'),(154,152,0,1,'流程实例','instanceWorkFlow','workflow/instance/index',2,'list','instance',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:28:56','2022-11-29 21:28:56'),(155,152,0,1,'流程定义','definitionWorkFlow','workflow/definition/index',3,'backup','definition',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:29:38','2022-11-29 21:29:38'),(156,152,0,1,'任务列表','taskWorkFlow','workflow/task/index',3,'log','task',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:30:35','2022-11-29 21:30:35');
-/*!40000 ALTER TABLE `sys_menu` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_quartz_job`
---
-
-DROP TABLE IF EXISTS `sys_quartz_job`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_quartz_job` (
-  `job_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `bean_name` varchar(255) DEFAULT NULL COMMENT 'Spring Bean名称',
-  `cron_expression` varchar(255) DEFAULT NULL COMMENT 'cron 表达式',
-  `is_pause` bit(1) DEFAULT NULL COMMENT '状态：1暂停、0启用',
-  `job_name` varchar(255) DEFAULT NULL COMMENT '任务名称',
-  `method_name` varchar(255) DEFAULT NULL COMMENT '方法名称',
-  `params` varchar(255) DEFAULT NULL COMMENT '参数',
-  `description` varchar(255) DEFAULT NULL COMMENT '备注',
-  `person_in_charge` varchar(100) DEFAULT NULL COMMENT '负责人',
-  `email` varchar(100) DEFAULT NULL COMMENT '报警邮箱',
-  `sub_task` varchar(100) DEFAULT NULL COMMENT '子任务ID',
-  `pause_after_failure` bit(1) DEFAULT NULL COMMENT '任务失败后是否暂停',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`job_id`) USING BTREE,
-  KEY `inx_is_pause` (`is_pause`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='定时任务';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_quartz_job`
---
-
-LOCK TABLES `sys_quartz_job` WRITE;
-/*!40000 ALTER TABLE `sys_quartz_job` DISABLE KEYS */;
-INSERT INTO `sys_quartz_job` VALUES (2,'testTask','0/5 * * * * ?',_binary '','测试1','run1','test','带参测试，多参使用json','测试',NULL,NULL,NULL,NULL,'admin','2022-08-22 14:08:29','2022-05-24 13:58:33'),(3,'testTask','0/5 * * * * ?',_binary '','测试','run','','不带参测试','Zheng Jie','','5,6',_binary '',NULL,'admin','2022-09-26 16:44:39','2022-05-24 14:48:12'),(5,'Test','0/5 * * * * ?',_binary '','任务告警测试','run',NULL,'测试','test','',NULL,_binary '','admin','admin','2022-05-05 20:32:41','2022-05-05 20:36:13'),(6,'testTask','0/5 * * * * ?',_binary '','测试3','run2',NULL,'测试3','Zheng Jie','',NULL,_binary '','admin','admin','2022-05-05 20:35:41','2022-05-05 20:36:07');
-/*!40000 ALTER TABLE `sys_quartz_job` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_quartz_log`
---
-
-DROP TABLE IF EXISTS `sys_quartz_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_quartz_log` (
-  `log_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `bean_name` varchar(255) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
-  `cron_expression` varchar(255) DEFAULT NULL,
-  `exception_detail` text,
-  `is_success` bit(1) DEFAULT NULL,
-  `job_name` varchar(255) DEFAULT NULL,
-  `method_name` varchar(255) DEFAULT NULL,
-  `params` varchar(255) DEFAULT NULL,
-  `time` bigint DEFAULT NULL,
-  PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='定时任务日志';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_quartz_log`
---
-
-LOCK TABLES `sys_quartz_log` WRITE;
-/*!40000 ALTER TABLE `sys_quartz_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_quartz_log` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_role`
---
-
-DROP TABLE IF EXISTS `sys_role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_role` (
-  `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `name` varchar(255) NOT NULL COMMENT '名称',
-  `level` int DEFAULT NULL COMMENT '角色级别',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述',
-  `data_scope` varchar(255) DEFAULT NULL COMMENT '数据权限',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`role_id`) USING BTREE,
-  UNIQUE KEY `uniq_name` (`name`),
-  KEY `role_name_index` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='角色表';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_role`
---
-
-LOCK TABLES `sys_role` WRITE;
-/*!40000 ALTER TABLE `sys_role` DISABLE KEYS */;
-INSERT INTO `sys_role` VALUES (1,'超级管理员',1,'-','全部',NULL,'admin','2022-11-23 11:04:37','2022-11-29 21:30:57'),(2,'普通用户',2,'-','本级',NULL,'admin','2022-11-23 13:09:06','2022-09-05 10:45:12');
-/*!40000 ALTER TABLE `sys_role` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_roles_depts`
---
-
-DROP TABLE IF EXISTS `sys_roles_depts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_roles_depts` (
-  `role_id` bigint NOT NULL,
-  `dept_id` bigint NOT NULL,
-  PRIMARY KEY (`role_id`,`dept_id`) USING BTREE,
-  KEY `FK7qg6itn5ajdoa9h9o78v9ksur` (`dept_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='角色部门关联';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_roles_depts`
---
-
-LOCK TABLES `sys_roles_depts` WRITE;
-/*!40000 ALTER TABLE `sys_roles_depts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_roles_depts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_roles_menus`
---
-
-DROP TABLE IF EXISTS `sys_roles_menus`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_roles_menus` (
-  `menu_id` bigint NOT NULL COMMENT '菜单ID',
-  `role_id` bigint NOT NULL COMMENT '角色ID',
-  PRIMARY KEY (`menu_id`,`role_id`) USING BTREE,
-  KEY `FKcngg2qadojhi3a651a5adkvbq` (`role_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='角色菜单关联';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_roles_menus`
---
-
-LOCK TABLES `sys_roles_menus` WRITE;
-/*!40000 ALTER TABLE `sys_roles_menus` DISABLE KEYS */;
-INSERT INTO `sys_roles_menus` VALUES (1,1),(2,1),(3,1),(5,1),(6,1),(7,1),(9,1),(10,1),(11,1),(14,1),(15,1),(18,1),(19,1),(21,1),(22,1),(23,1),(24,1),(27,1),(28,1),(30,1),(32,1),(33,1),(34,1),(35,1),(36,1),(37,1),(38,1),(39,1),(41,1),(44,1),(45,1),(46,1),(48,1),(49,1),(50,1),(52,1),(53,1),(54,1),(56,1),(57,1),(58,1),(60,1),(61,1),(62,1),(64,1),(65,1),(66,1),(73,1),(74,1),(75,1),(77,1),(78,1),(79,1),(80,1),(82,1),(83,1),(90,1),(92,1),(93,1),(94,1),(97,1),(98,1),(102,1),(103,1),(104,1),(105,1),(106,1),(107,1),(108,1),(109,1),(110,1),(111,1),(112,1),(113,1),(114,1),(116,1),(118,1),(119,1),(120,1),(124,1),(125,1),(126,1),(127,1),(128,1),(129,1),(130,1),(131,1),(132,1),(133,1),(134,1),(135,1),(136,1),(137,1),(138,1),(139,1),(140,1),(141,1),(142,1),(143,1),(144,1),(145,1),(146,1),(147,1),(148,1),(149,1),(150,1),(151,1),(152,1),(153,1),(154,1),(155,1),(156,1),(1,2),(2,2),(6,2),(7,2),(9,2),(10,2),(11,2),(14,2),(15,2),(19,2),(21,2),(22,2),(23,2),(24,2),(27,2),(30,2),(32,2),(33,2),(34,2),(36,2),(80,2),(82,2),(83,2),(116,2);
-/*!40000 ALTER TABLE `sys_roles_menus` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_user`
---
-
-DROP TABLE IF EXISTS `sys_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_user` (
-  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `dept_id` bigint DEFAULT NULL COMMENT '部门名称',
-  `username` varchar(255) DEFAULT NULL COMMENT '用户名',
-  `nick_name` varchar(255) DEFAULT NULL COMMENT '昵称',
-  `gender` varchar(2) DEFAULT NULL COMMENT '性别',
-  `phone` varchar(255) DEFAULT NULL COMMENT '手机号码',
-  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
-  `avatar_name` varchar(255) DEFAULT NULL COMMENT '头像地址',
-  `avatar_path` varchar(255) DEFAULT NULL COMMENT '头像真实路径',
-  `password` varchar(255) DEFAULT NULL COMMENT '密码',
-  `is_admin` bit(1) DEFAULT b'0' COMMENT '是否为admin账号',
-  `enabled` bigint DEFAULT NULL COMMENT '状态：1启用、0禁用',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `pwd_reset_time` datetime DEFAULT NULL COMMENT '修改密码的时间',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`user_id`) USING BTREE,
-  UNIQUE KEY `UK_kpubos9gc2cvtkb0thktkbkes` (`email`) USING BTREE,
-  UNIQUE KEY `username` (`username`) USING BTREE,
-  UNIQUE KEY `uniq_username` (`username`),
-  UNIQUE KEY `uniq_email` (`email`),
-  KEY `FK5rwmryny6jthaaxkogownknqp` (`dept_id`) USING BTREE,
-  KEY `FKpq2dhypk2qgt68nauh2by22jb` (`avatar_name`) USING BTREE,
-  KEY `inx_enabled` (`enabled`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='系统用户';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_user`
---
-
-LOCK TABLES `sys_user` WRITE;
-/*!40000 ALTER TABLE `sys_user` DISABLE KEYS */;
-INSERT INTO `sys_user` VALUES (1, 2, 'admin', '管理员', '男', '18888888888', '201507802@qq.com', 'avatar-20221125104930928.png', '/home/studio/avatar/avatar-20221125104930928.png', '$2a$10$Egp1/gvFlt7zhlXVfEFw4OfWQCGPw0ClmMcc6FjTnvXNRVf9zdMRa', b'1', 1, NULL, 'admin', '2022-12-03 16:38:31', '2022-12-03 16:38:31', '2022-12-03 16:38:31');
-/*!40000 ALTER TABLE `sys_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_users_jobs`
---
-
-DROP TABLE IF EXISTS `sys_users_jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_users_jobs` (
-  `user_id` bigint NOT NULL COMMENT '用户ID',
-  `job_id` bigint NOT NULL COMMENT '岗位ID',
-  PRIMARY KEY (`user_id`,`job_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_users_jobs`
---
-
-LOCK TABLES `sys_users_jobs` WRITE;
-/*!40000 ALTER TABLE `sys_users_jobs` DISABLE KEYS */;
-INSERT INTO `sys_users_jobs` VALUES (1,11),(3,11),(4,11);
-/*!40000 ALTER TABLE `sys_users_jobs` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_users_roles`
---
-
-DROP TABLE IF EXISTS `sys_users_roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sys_users_roles` (
-  `user_id` bigint NOT NULL COMMENT '用户ID',
-  `role_id` bigint NOT NULL COMMENT '角色ID',
-  PRIMARY KEY (`user_id`,`role_id`) USING BTREE,
-  KEY `FKq4eq273l04bpu4efj0jd0jb98` (`role_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='用户角色关联';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_users_roles`
---
-
-LOCK TABLES `sys_users_roles` WRITE;
-/*!40000 ALTER TABLE `sys_users_roles` DISABLE KEYS */;
-INSERT INTO `sys_users_roles` VALUES (1,1),(3,1),(4,2);
-/*!40000 ALTER TABLE `sys_users_roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tool_alipay_config`
---
-
-DROP TABLE IF EXISTS `tool_alipay_config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tool_alipay_config` (
-  `config_id` bigint NOT NULL COMMENT 'ID',
-  `app_id` varchar(255) DEFAULT NULL COMMENT '应用ID',
-  `charset` varchar(255) DEFAULT NULL COMMENT '编码',
-  `format` varchar(255) DEFAULT NULL COMMENT '类型 固定格式json',
-  `gateway_url` varchar(255) DEFAULT NULL COMMENT '网关地址',
-  `notify_url` varchar(255) DEFAULT NULL COMMENT '异步回调',
-  `private_key` text COMMENT '私钥',
-  `public_key` text COMMENT '公钥',
-  `return_url` varchar(255) DEFAULT NULL COMMENT '回调地址',
-  `sign_type` varchar(255) DEFAULT NULL COMMENT '签名方式',
-  `sys_service_provider_id` varchar(255) DEFAULT NULL COMMENT '商户号',
-  PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='支付宝配置类';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tool_alipay_config`
---
-
-LOCK TABLES `tool_alipay_config` WRITE;
-/*!40000 ALTER TABLE `tool_alipay_config` DISABLE KEYS */;
-INSERT INTO `tool_alipay_config` VALUES (1,'2016091700532697','utf-8','JSON','https://openapi.alipaydev.com/gateway.do','http://api.auauz.net/api/aliPay/notify','MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC5js8sInU10AJ0cAQ8UMMyXrQ+oHZEkVt5lBwsStmTJ7YikVYgbskx1YYEXTojRsWCb+SH/kDmDU4pK/u91SJ4KFCRMF2411piYuXU/jF96zKrADznYh/zAraqT6hvAIVtQAlMHN53nx16rLzZ/8jDEkaSwT7+HvHiS+7sxSojnu/3oV7BtgISoUNstmSe8WpWHOaWv19xyS+Mce9MY4BfseFhzTICUymUQdd/8hXA28/H6osUfAgsnxAKv7Wil3aJSgaJczWuflYOve0dJ3InZkhw5Cvr0atwpk8YKBQjy5CdkoHqvkOcIB+cYHXJKzOE5tqU7inSwVbHzOLQ3XbnAgMBAAECggEAVJp5eT0Ixg1eYSqFs9568WdetUNCSUchNxDBu6wxAbhUgfRUGZuJnnAll63OCTGGck+EGkFh48JjRcBpGoeoHLL88QXlZZbC/iLrea6gcDIhuvfzzOffe1RcZtDFEj9hlotg8dQj1tS0gy9pN9g4+EBH7zeu+fyv+qb2e/v1l6FkISXUjpkD7RLQr3ykjiiEw9BpeKb7j5s7Kdx1NNIzhkcQKNqlk8JrTGDNInbDM6inZfwwIO2R1DHinwdfKWkvOTODTYa2MoAvVMFT9Bec9FbLpoWp7ogv1JMV9svgrcF9XLzANZ/OQvkbe9TV9GWYvIbxN6qwQioKCWO4GPnCAQKBgQDgW5MgfhX8yjXqoaUy/d1VjI8dHeIyw8d+OBAYwaxRSlCfyQ+tieWcR2HdTzPca0T0GkWcKZm0ei5xRURgxt4DUDLXNh26HG0qObbtLJdu/AuBUuCqgOiLqJ2f1uIbrz6OZUHns+bT/jGW2Ws8+C13zTCZkZt9CaQsrp3QOGDx5wKBgQDTul39hp3ZPwGNFeZdkGoUoViOSd5Lhowd5wYMGAEXWRLlU8z+smT5v0POz9JnIbCRchIY2FAPKRdVTICzmPk2EPJFxYTcwaNbVqL6lN7J2IlXXMiit5QbiLauo55w7plwV6LQmKm9KV7JsZs5XwqF7CEovI7GevFzyD3w+uizAQKBgC3LY1eRhOlpWOIAhpjG6qOoohmeXOphvdmMlfSHq6WYFqbWwmV4rS5d/6LNpNdL6fItXqIGd8I34jzql49taCmi+A2nlR/E559j0mvM20gjGDIYeZUz5MOE8k+K6/IcrhcgofgqZ2ZED1ksHdB/E8DNWCswZl16V1FrfvjeWSNnAoGAMrBplCrIW5xz+J0Hm9rZKrs+AkK5D4fUv8vxbK/KgxZ2KaUYbNm0xv39c+PZUYuFRCz1HDGdaSPDTE6WeWjkMQd5mS6ikl9hhpqFRkyh0d0fdGToO9yLftQKOGE/q3XUEktI1XvXF0xyPwNgUCnq0QkpHyGVZPtGFxwXiDvpvgECgYA5PoB+nY8iDiRaJNko9w0hL4AeKogwf+4TbCw+KWVEn6jhuJa4LFTdSqp89PktQaoVpwv92el/AhYjWOl/jVCm122f9b7GyoelbjMNolToDwe5pF5RnSpEuDdLy9MfE8LnE3PlbE7E5BipQ3UjSebkgNboLHH/lNZA5qvEtvbfvQ==','MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAut9evKRuHJ/2QNfDlLwvN/S8l9hRAgPbb0u61bm4AtzaTGsLeMtScetxTWJnVvAVpMS9luhEJjt+Sbk5TNLArsgzzwARgaTKOLMT1TvWAK5EbHyI+eSrc3s7Awe1VYGwcubRFWDm16eQLv0k7iqiw+4mweHSz/wWyvBJVgwLoQ02btVtAQErCfSJCOmt0Q/oJQjj08YNRV4EKzB19+f5A+HQVAKy72dSybTzAK+3FPtTtNen/+b5wGeat7c32dhYHnGorPkPeXLtsqqUTp1su5fMfd4lElNdZaoCI7osZxWWUo17vBCZnyeXc9fk0qwD9mK6yRAxNbrY72Xx5VqIqwIDAQAB','http://api.auauz.net/api/aliPay/return','RSA2','2088102176044281');
-/*!40000 ALTER TABLE `tool_alipay_config` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tool_email_config`
---
-
-DROP TABLE IF EXISTS `tool_email_config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tool_email_config` (
-  `config_id` bigint NOT NULL COMMENT 'ID',
-  `from_user` varchar(255) DEFAULT NULL COMMENT '收件人',
-  `host` varchar(255) DEFAULT NULL COMMENT '邮件服务器SMTP地址',
-  `pass` varchar(255) DEFAULT NULL COMMENT '密码',
-  `port` varchar(255) DEFAULT NULL COMMENT '端口',
-  `user` varchar(255) DEFAULT NULL COMMENT '发件者用户名',
-  PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='邮箱配置';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tool_email_config`
---
-
-LOCK TABLES `tool_email_config` WRITE;
-/*!40000 ALTER TABLE `tool_email_config` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tool_email_config` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tool_local_storage`
---
-
-DROP TABLE IF EXISTS `tool_local_storage`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tool_local_storage` (
-  `storage_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `real_name` varchar(255) DEFAULT NULL COMMENT '文件真实的名称',
-  `name` varchar(255) DEFAULT NULL COMMENT '文件名',
-  `suffix` varchar(255) DEFAULT NULL COMMENT '后缀',
-  `path` varchar(255) DEFAULT NULL COMMENT '路径',
-  `type` varchar(255) DEFAULT NULL COMMENT '类型',
-  `size` varchar(100) DEFAULT NULL COMMENT '大小',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`storage_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='本地存储';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tool_local_storage`
---
-
-LOCK TABLES `tool_local_storage` WRITE;
-/*!40000 ALTER TABLE `tool_local_storage` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tool_local_storage` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tool_qiniu_config`
---
-
-DROP TABLE IF EXISTS `tool_qiniu_config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tool_qiniu_config` (
-  `config_id` bigint NOT NULL COMMENT 'ID',
-  `access_key` text COMMENT 'accessKey',
-  `bucket` varchar(255) DEFAULT NULL COMMENT 'Bucket 识别符',
-  `host` varchar(255) NOT NULL COMMENT '外链域名',
-  `secret_key` text COMMENT 'secretKey',
-  `type` varchar(255) DEFAULT NULL COMMENT '空间类型',
-  `zone` varchar(255) DEFAULT NULL COMMENT '机房',
-  PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='七牛云配置';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tool_qiniu_config`
---
-
-LOCK TABLES `tool_qiniu_config` WRITE;
-/*!40000 ALTER TABLE `tool_qiniu_config` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tool_qiniu_config` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tool_qiniu_content`
---
-
-DROP TABLE IF EXISTS `tool_qiniu_content`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tool_qiniu_content` (
-  `content_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `bucket` varchar(255) DEFAULT NULL COMMENT 'Bucket 识别符',
-  `name` varchar(255) DEFAULT NULL COMMENT '文件名称',
-  `size` varchar(255) DEFAULT NULL COMMENT '文件大小',
-  `type` varchar(255) DEFAULT NULL COMMENT '文件类型：私有或公开',
-  `url` varchar(255) DEFAULT NULL COMMENT '文件url',
-  `suffix` varchar(255) DEFAULT NULL COMMENT '文件后缀',
-  `update_time` datetime DEFAULT NULL COMMENT '上传或同步的时间',
-  PRIMARY KEY (`content_id`) USING BTREE,
-  UNIQUE KEY `uniq_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='七牛云文件存储';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tool_qiniu_content`
---
-
-LOCK TABLES `tool_qiniu_content` WRITE;
-/*!40000 ALTER TABLE `tool_qiniu_content` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tool_qiniu_content` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-11-29 21:34:56
-
--- MySQL dump 10.13  Distrib 8.0.24, for Linux (x86_64)
---
--- Host: 127.0.0.1    Database: studio
--- ------------------------------------------------------
--- Server version	8.0.31
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Current Database: `studio`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : 本地
+ Source Server Type    : MySQL
+ Source Server Version : 50730
+ Source Host           : localhost:3306
+ Source Schema         : data_cloud_quartz
+
+ Target Server Type    : MySQL
+ Target Server Version : 50730
+ File Encoding         : 65001
+
+ Date: 03/05/2022 12:07:27
+*/
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `eladmin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `studio`;
 
@@ -906,7 +24,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for qrtz_blob_triggers
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_blob_triggers`;
-CREATE TABLE `qrtz_blob_triggers`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_blob_triggers`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_GROUP` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -924,7 +42,7 @@ CREATE TABLE `qrtz_blob_triggers`  (
 -- Table structure for qrtz_calendars
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_calendars`;
-CREATE TABLE `qrtz_calendars`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_calendars`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `CALENDAR_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `CALENDAR` blob NOT NULL,
@@ -939,7 +57,7 @@ CREATE TABLE `qrtz_calendars`  (
 -- Table structure for qrtz_cron_triggers
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_cron_triggers`;
-CREATE TABLE `qrtz_cron_triggers`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_cron_triggers`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_GROUP` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -959,7 +77,7 @@ INSERT INTO `qrtz_cron_triggers` VALUES ('quartzScheduler', '__QUARTZ_TASK_KEY__
 -- Table structure for qrtz_fired_triggers
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_fired_triggers`;
-CREATE TABLE `qrtz_fired_triggers`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_fired_triggers`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ENTRY_ID` varchar(95) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -990,7 +108,7 @@ CREATE TABLE `qrtz_fired_triggers`  (
 -- Table structure for qrtz_job_details
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_job_details`;
-CREATE TABLE `qrtz_job_details`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_job_details`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `JOB_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `JOB_GROUP` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -1016,7 +134,7 @@ INSERT INTO `qrtz_job_details` VALUES ('quartzScheduler', '__QUARTZ_TASK_KEY__13
 -- Table structure for qrtz_locks
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_locks`;
-CREATE TABLE `qrtz_locks`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_locks`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `LOCK_NAME` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`SCHED_NAME`, `LOCK_NAME`) USING BTREE
@@ -1032,7 +150,7 @@ INSERT INTO `qrtz_locks` VALUES ('quartzScheduler', 'TRIGGER_ACCESS');
 -- Table structure for qrtz_paused_trigger_grps
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_paused_trigger_grps`;
-CREATE TABLE `qrtz_paused_trigger_grps`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_paused_trigger_grps`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_GROUP` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`SCHED_NAME`, `TRIGGER_GROUP`) USING BTREE
@@ -1046,7 +164,7 @@ CREATE TABLE `qrtz_paused_trigger_grps`  (
 -- Table structure for qrtz_scheduler_state
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_scheduler_state`;
-CREATE TABLE `qrtz_scheduler_state`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_scheduler_state`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `INSTANCE_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `LAST_CHECKIN_TIME` bigint(13) NOT NULL,
@@ -1063,7 +181,7 @@ INSERT INTO `qrtz_scheduler_state` VALUES ('quartzScheduler', 'DESKTOP-4EMVBHU16
 -- Table structure for qrtz_simple_triggers
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_simple_triggers`;
-CREATE TABLE `qrtz_simple_triggers`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_simple_triggers`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_GROUP` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -1082,7 +200,7 @@ CREATE TABLE `qrtz_simple_triggers`  (
 -- Table structure for qrtz_simprop_triggers
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_simprop_triggers`;
-CREATE TABLE `qrtz_simprop_triggers`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_simprop_triggers`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_GROUP` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -1109,7 +227,7 @@ CREATE TABLE `qrtz_simprop_triggers`  (
 -- Table structure for qrtz_triggers
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_triggers`;
-CREATE TABLE `qrtz_triggers`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_triggers`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_NAME` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `TRIGGER_GROUP` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -1150,28 +268,23 @@ INSERT INTO `qrtz_triggers` VALUES ('quartzScheduler', '__QUARTZ_TASK_KEY__13463
 
 SET FOREIGN_KEY_CHECKS = 1;
 
--- MySQL dump 10.13  Distrib 8.0.24, for Linux (x86_64)
---
--- Host: 127.0.0.1    Database: studio
--- ------------------------------------------------------
--- Server version	8.0.31
+/*
+ Navicat Premium Data Transfer
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+ Source Server         : 本地
+ Source Server Type    : MySQL
+ Source Server Version : 50730
+ Source Host           : localhost:3306
+ Source Schema         : data_cloud
 
---
--- Current Database: `studio`
---
+ Target Server Type    : MySQL
+ Target Server Version : 50730
+ File Encoding         : 65001
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+ Date: 03/05/2022 12:06:03
+*/
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `eladmin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `studio`;
 
@@ -1179,10 +292,10 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for dynamic_20221208203549
+-- Table structure for dynamic_20201208203549
 -- ----------------------------
-DROP TABLE IF EXISTS `dynamic_20221208203549`;
-CREATE TABLE `dynamic_20221208203549`  (
+DROP TABLE IF EXISTS `dynamic_20201208203549`;
+CREATE TABLE IF NOT EXISTS  `dynamic_20201208203549`  (
   `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT 1 COMMENT '状态（0禁用，1启用）',
   `create_by` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1195,16 +308,16 @@ CREATE TABLE `dynamic_20221208203549`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '测试1102' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of dynamic_20221208203549
+-- Records of dynamic_20201208203549
 -- ----------------------------
-INSERT INTO `dynamic_20221208203549` VALUES ('1336489949670727682', 1, '1214835832967581698', '2022-12-09 09:56:49', '1197789917762031617', '1214835832967581698', '2022-12-09 09:56:49', '名称1');
-INSERT INTO `dynamic_20221208203549` VALUES ('1346385919621922818', 1, '1214835832967581698', '2022-01-05 17:19:53', '1197789917762031617', '1214835832967581698', '2022-01-05 17:19:53', 'we');
+INSERT INTO `dynamic_20201208203549` VALUES ('1336489949670727682', 1, '1214835832967581698', '2020-12-09 09:56:49', '1197789917762031617', '1214835832967581698', '2020-12-09 09:56:49', '名称1');
+INSERT INTO `dynamic_20201208203549` VALUES ('1346385919621922818', 1, '1214835832967581698', '2021-01-05 17:19:53', '1197789917762031617', '1214835832967581698', '2021-01-05 17:19:53', 'we');
 
 -- ----------------------------
 -- Table structure for dynamic_20220501184411
 -- ----------------------------
 DROP TABLE IF EXISTS `dynamic_20220501184411`;
-CREATE TABLE `dynamic_20220501184411`  (
+CREATE TABLE IF NOT EXISTS  `dynamic_20220501184411`  (
   `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT 1 COMMENT '状态（0禁用，1启用）',
   `create_by` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1225,7 +338,7 @@ CREATE TABLE `dynamic_20220501184411`  (
 -- Table structure for flow_business
 -- ----------------------------
 DROP TABLE IF EXISTS `flow_business`;
-CREATE TABLE `flow_business`  (
+CREATE TABLE IF NOT EXISTS  `flow_business`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1252,7 +365,7 @@ INSERT INTO `flow_business` VALUES ('1520746942496317441', 1, '12148358329675816
 -- Table structure for flow_category
 -- ----------------------------
 DROP TABLE IF EXISTS `flow_category`;
-CREATE TABLE `flow_category`  (
+CREATE TABLE IF NOT EXISTS  `flow_category`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1274,7 +387,7 @@ INSERT INTO `flow_category` VALUES ('1304285055312584706', 1, '12148358329675816
 -- Table structure for gen_table
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_table`;
-CREATE TABLE `gen_table`  (
+CREATE TABLE IF NOT EXISTS  `gen_table`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1302,7 +415,7 @@ CREATE TABLE `gen_table`  (
 -- Table structure for market_api
 -- ----------------------------
 DROP TABLE IF EXISTS `market_api`;
-CREATE TABLE `market_api`  (
+CREATE TABLE IF NOT EXISTS  `market_api`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1328,14 +441,14 @@ CREATE TABLE `market_api`  (
 -- ----------------------------
 -- Records of market_api
 -- ----------------------------
-INSERT INTO `market_api` VALUES ('1297816482595483650', 2, '1214835832967581698', '2022-08-24 16:42:16', '1197789917762031617', '1214835832967581698', '2022-05-02 19:14:28', NULL, '部位信息', 'v1.0.0', '/part/info', 'GET', 'JSON', NULL, '1336474987430793217', '{\"times\": 5, \"enable\": \"0\", \"seconds\": 60}', '{\"sqlText\": \"SELECT id, part_name FROM robot_symptom_part WHERE 1 = 1 ${AND id = :id}\", \"tableId\": \"1336479264639406082\", \"sourceId\": \"1336474987430793217\", \"tableName\": \"robot_symptom_part\", \"configType\": \"1\", \"fieldParams\": [{\"reqable\": \"1\", \"resable\": \"1\", \"dataType\": \"varchar\", \"columnKey\": \"1\", \"dataScale\": null, \"columnName\": \"id\", \"dataLength\": 50, \"dataDefault\": null, \"columnComment\": \"主键\", \"dataPrecision\": null, \"columnNullable\": \"0\", \"columnPosition\": 1}, {\"reqable\": null, \"resable\": \"1\", \"dataType\": \"varchar\", \"columnKey\": \"0\", \"dataScale\": null, \"columnName\": \"part_name\", \"dataLength\": 255, \"dataDefault\": null, \"columnComment\": \"部位名称\", \"dataPrecision\": null, \"columnNullable\": \"1\", \"columnPosition\": 2}]}', '[{\"nullable\": \"0\", \"paramName\": \"id\", \"paramType\": \"1\", \"whereType\": \"1\", \"defaultValue\": \"111\", \"exampleValue\": \"111\", \"paramComment\": \"主键\"}]', '[{\"dataType\": \"varchar\", \"fieldName\": \"id\", \"exampleValue\": \"111\", \"fieldComment\": \"主键\", \"fieldAliasName\": null}, {\"dataType\": \"varchar\", \"fieldName\": \"part_name\", \"exampleValue\": \"部位名称\", \"fieldComment\": \"部位名称\", \"fieldAliasName\": null}]');
-INSERT INTO `market_api` VALUES ('1298181433067651074', 3, '1214835832967581698', '2022-08-25 16:52:27', '1197789917762031617', '1214835832967581698', '2022-05-02 19:05:46', NULL, '症状信息', 'v1.0.0', '/symptom/info', 'GET', 'JSON', NULL, '1336474987430793217', '{\"times\": 5, \"enable\": \"0\", \"seconds\": 60}', '{\"sqlText\": \"select id, part_id, type_name from robot_symptom_type WHERE 1 = 1 ${AND type_name LIKE :type_name}\", \"tableId\": null, \"sourceId\": \"1336474987430793217\", \"tableName\": null, \"configType\": \"2\", \"fieldParams\": []}', '[{\"nullable\": \"0\", \"paramName\": \"type_name\", \"paramType\": \"1\", \"whereType\": \"3\", \"defaultValue\": \"症状名称\", \"exampleValue\": \"症状名称\", \"paramComment\": \"症状名称\"}]', '[{\"dataType\": \"varchar\", \"fieldName\": \"id\", \"exampleValue\": \"11\", \"fieldComment\": \"主键\", \"fieldAliasName\": \"\"}, {\"dataType\": \"varchar\", \"fieldName\": \"part_id\", \"exampleValue\": \"所属部位\", \"fieldComment\": \"所属部位\", \"fieldAliasName\": \"\"}, {\"dataType\": \"varchar\", \"fieldName\": \"type_name\", \"exampleValue\": \"症状名称\", \"fieldComment\": \"症状名称\", \"fieldAliasName\": \"\"}]');
+INSERT INTO `market_api` VALUES ('1297816482595483650', 2, '1214835832967581698', '2020-08-24 16:42:16', '1197789917762031617', '1214835832967581698', '2022-05-02 19:14:28', NULL, '部位信息', 'v1.0.0', '/part/info', 'GET', 'JSON', NULL, '1336474987430793217', '{\"times\": 5, \"enable\": \"0\", \"seconds\": 60}', '{\"sqlText\": \"SELECT id, part_name FROM robot_symptom_part WHERE 1 = 1 ${AND id = :id}\", \"tableId\": \"1336479264639406082\", \"sourceId\": \"1336474987430793217\", \"tableName\": \"robot_symptom_part\", \"configType\": \"1\", \"fieldParams\": [{\"reqable\": \"1\", \"resable\": \"1\", \"dataType\": \"varchar\", \"columnKey\": \"1\", \"dataScale\": null, \"columnName\": \"id\", \"dataLength\": 50, \"dataDefault\": null, \"columnComment\": \"主键\", \"dataPrecision\": null, \"columnNullable\": \"0\", \"columnPosition\": 1}, {\"reqable\": null, \"resable\": \"1\", \"dataType\": \"varchar\", \"columnKey\": \"0\", \"dataScale\": null, \"columnName\": \"part_name\", \"dataLength\": 255, \"dataDefault\": null, \"columnComment\": \"部位名称\", \"dataPrecision\": null, \"columnNullable\": \"1\", \"columnPosition\": 2}]}', '[{\"nullable\": \"0\", \"paramName\": \"id\", \"paramType\": \"1\", \"whereType\": \"1\", \"defaultValue\": \"111\", \"exampleValue\": \"111\", \"paramComment\": \"主键\"}]', '[{\"dataType\": \"varchar\", \"fieldName\": \"id\", \"exampleValue\": \"111\", \"fieldComment\": \"主键\", \"fieldAliasName\": null}, {\"dataType\": \"varchar\", \"fieldName\": \"part_name\", \"exampleValue\": \"部位名称\", \"fieldComment\": \"部位名称\", \"fieldAliasName\": null}]');
+INSERT INTO `market_api` VALUES ('1298181433067651074', 3, '1214835832967581698', '2020-08-25 16:52:27', '1197789917762031617', '1214835832967581698', '2022-05-02 19:05:46', NULL, '症状信息', 'v1.0.0', '/symptom/info', 'GET', 'JSON', NULL, '1336474987430793217', '{\"times\": 5, \"enable\": \"0\", \"seconds\": 60}', '{\"sqlText\": \"select id, part_id, type_name from robot_symptom_type WHERE 1 = 1 ${AND type_name LIKE :type_name}\", \"tableId\": null, \"sourceId\": \"1336474987430793217\", \"tableName\": null, \"configType\": \"2\", \"fieldParams\": []}', '[{\"nullable\": \"0\", \"paramName\": \"type_name\", \"paramType\": \"1\", \"whereType\": \"3\", \"defaultValue\": \"症状名称\", \"exampleValue\": \"症状名称\", \"paramComment\": \"症状名称\"}]', '[{\"dataType\": \"varchar\", \"fieldName\": \"id\", \"exampleValue\": \"11\", \"fieldComment\": \"主键\", \"fieldAliasName\": \"\"}, {\"dataType\": \"varchar\", \"fieldName\": \"part_id\", \"exampleValue\": \"所属部位\", \"fieldComment\": \"所属部位\", \"fieldAliasName\": \"\"}, {\"dataType\": \"varchar\", \"fieldName\": \"type_name\", \"exampleValue\": \"症状名称\", \"fieldComment\": \"症状名称\", \"fieldAliasName\": \"\"}]');
 
 -- ----------------------------
 -- Table structure for market_api_log
 -- ----------------------------
 DROP TABLE IF EXISTS `market_api_log`;
-CREATE TABLE `market_api_log`  (
+CREATE TABLE IF NOT EXISTS  `market_api_log`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `api_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '调用api',
   `caller_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '调用者id',
@@ -1353,36 +466,36 @@ CREATE TABLE `market_api_log`  (
 -- ----------------------------
 -- Records of market_api_log
 -- ----------------------------
-INSERT INTO `market_api_log` VALUES ('1277944406174965761', '1275774099624386562', '1214835832967581698', '192.168.0.107', '/v1/dept/info', '{\"pageNum\":1,\"pageSize\":20,\"id\":\"111\"}', '2022-06-30 20:37:44', 0, 241, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1277945307115659265', '1275774099624386562', '1214835832967581698', '192.168.0.107', '/v1/dept/info', '{\"pageNum\":1,\"pageSize\":20,\"id\":\"111\"}', '2022-06-30 20:41:19', 0, 28, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1277945401969844225', '1275774099624386562', '1214835832967581698', '192.168.0.107', '/v1/dept/info', '{\"pageNum\":1,\"pageSize\":20,\"id\":\"1197789917762031617\"}', '2022-06-30 20:41:42', 1, 36, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1278169492177879042', '1275774099624386562', '1214835832967581698', '192.168.0.107', '/v1/dept/info', '{\"dept_name\":\"xx科技\",\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-07-01 11:32:09', NULL, 151, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1297817787422519297', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2022-08-24 16:47:27', NULL, NULL, 'java.lang.String cannot be cast to java.lang.Integer', 0);
-INSERT INTO `market_api_log` VALUES ('1297818772886827010', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2022-08-24 16:51:22', NULL, NULL, 'java.lang.String cannot be cast to java.lang.Integer', 0);
-INSERT INTO `market_api_log` VALUES ('1297819115108478977', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2022-08-24 16:52:44', NULL, NULL, 'java.lang.String cannot be cast to java.lang.Integer', 0);
-INSERT INTO `market_api_log` VALUES ('1297819887028187138', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2022-08-24 16:55:48', NULL, NULL, 'API调用查询数据脱敏出错', 0);
-INSERT INTO `market_api_log` VALUES ('1297820525254455298', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2022-08-24 16:58:20', 1, 1684, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1298182334620733441', '1298181433067651074', '1214835832967581698', '192.168.3.24', '/services/v1.0.0/symptom/info', '{\"pageSize\":\"20\",\"type_name\":\"肩酸\",\"pageNum\":\"1\"}', '2022-08-25 16:56:02', 1, 1961, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1298182566519607297', '1298181433067651074', '1214835832967581698', '192.168.3.24', '/services/v1.0.0/symptom/info', '{\"pageSize\":\"20\",\"type_name\":\"肩酸\",\"pageNum\":\"1\"}', '2022-08-25 16:56:58', 1, 168, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1298182705204269058', '1298181433067651074', '1214835832967581698', '192.168.3.24', '/services/v1.0.0/symptom/info', '{\"pageSize\":\"20\",\"type_name\":\"脑壳痛\",\"pageNum\":\"1\"}', '2022-08-25 16:57:31', 1, 126, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1306888486627872769', '1297816482595483650', '1214835832967581698', '192.168.3.24', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"ss\",\"pageNum\":\"1\"}', '2022-09-18 17:31:11', 0, 1553, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1336492989958180865', NULL, NULL, '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"3244c36870e4a47ef1fc6e2c1acf00a2\",\"pageNum\":\"1\"}', '2022-12-09 10:08:54', NULL, NULL, 'api_key或secret_key空', 0);
-INSERT INTO `market_api_log` VALUES ('1336493024087232514', NULL, NULL, '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"3244c36870e4a47ef1fc6e2c1acf00a2\",\"pageNum\":\"1\"}', '2022-12-09 10:09:02', NULL, NULL, 'api_key或secret_key空', 0);
-INSERT INTO `market_api_log` VALUES ('1336493851963150337', NULL, NULL, '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"3244c36870e4a47ef1fc6e2c1acf00a2\",\"pageNum\":\"1\"}', '2022-12-09 10:12:20', NULL, NULL, 'api_key或secret_key空', 0);
-INSERT INTO `market_api_log` VALUES ('1336495784656490497', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"3244c36870e4a47ef1fc6e2c1acf00a2\",\"pageNum\":\"1\"}', '2022-12-09 10:20:01', 1, 1283, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1336504430345965570', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2022-12-09 10:54:22', 0, 495, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1336522026826977281', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-12-09 12:04:17', 15, 636, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1336522611206770689', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-12-09 12:06:36', 15, 1440, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1336523120294612993', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-12-09 12:08:38', 15, 595, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1336546302409953281', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-12-09 13:40:45', 15, 484, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1336546356252233730', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-12-09 13:40:58', 15, 471, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1336546562481967106', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-12-09 13:41:47', 15, 485, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1339499510509957121', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-12-17 17:15:44', NULL, NULL, NULL, 0);
-INSERT INTO `market_api_log` VALUES ('1339499534694313986', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2022-12-17 17:15:50', NULL, NULL, NULL, 0);
-INSERT INTO `market_api_log` VALUES ('1339499596816150530', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2022-12-17 17:16:05', NULL, NULL, NULL, 0);
-INSERT INTO `market_api_log` VALUES ('1339501957894729729', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2022-12-17 17:25:28', NULL, NULL, NULL, 0);
-INSERT INTO `market_api_log` VALUES ('1339502935163367426', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2022-12-17 17:29:21', 0, 1823, NULL, 1);
-INSERT INTO `market_api_log` VALUES ('1339727473700597761', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2022-12-18 08:21:35', 0, 701, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1277944406174965761', '1275774099624386562', '1214835832967581698', '192.168.0.107', '/v1/dept/info', '{\"pageNum\":1,\"pageSize\":20,\"id\":\"111\"}', '2020-06-30 20:37:44', 0, 241, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1277945307115659265', '1275774099624386562', '1214835832967581698', '192.168.0.107', '/v1/dept/info', '{\"pageNum\":1,\"pageSize\":20,\"id\":\"111\"}', '2020-06-30 20:41:19', 0, 28, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1277945401969844225', '1275774099624386562', '1214835832967581698', '192.168.0.107', '/v1/dept/info', '{\"pageNum\":1,\"pageSize\":20,\"id\":\"1197789917762031617\"}', '2020-06-30 20:41:42', 1, 36, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1278169492177879042', '1275774099624386562', '1214835832967581698', '192.168.0.107', '/v1/dept/info', '{\"dept_name\":\"xx科技\",\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2020-07-01 11:32:09', NULL, 151, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1297817787422519297', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2020-08-24 16:47:27', NULL, NULL, 'java.lang.String cannot be cast to java.lang.Integer', 0);
+INSERT INTO `market_api_log` VALUES ('1297818772886827010', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2020-08-24 16:51:22', NULL, NULL, 'java.lang.String cannot be cast to java.lang.Integer', 0);
+INSERT INTO `market_api_log` VALUES ('1297819115108478977', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2020-08-24 16:52:44', NULL, NULL, 'java.lang.String cannot be cast to java.lang.Integer', 0);
+INSERT INTO `market_api_log` VALUES ('1297819887028187138', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2020-08-24 16:55:48', NULL, NULL, 'API调用查询数据脱敏出错', 0);
+INSERT INTO `market_api_log` VALUES ('1297820525254455298', '1297816482595483650', '1214835832967581698', '192.168.3.36', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"62207ec3cd713e906c461dfbfddf6504\",\"pageNum\":\"1\"}', '2020-08-24 16:58:20', 1, 1684, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1298182334620733441', '1298181433067651074', '1214835832967581698', '192.168.3.24', '/services/v1.0.0/symptom/info', '{\"pageSize\":\"20\",\"type_name\":\"肩酸\",\"pageNum\":\"1\"}', '2020-08-25 16:56:02', 1, 1961, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1298182566519607297', '1298181433067651074', '1214835832967581698', '192.168.3.24', '/services/v1.0.0/symptom/info', '{\"pageSize\":\"20\",\"type_name\":\"肩酸\",\"pageNum\":\"1\"}', '2020-08-25 16:56:58', 1, 168, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1298182705204269058', '1298181433067651074', '1214835832967581698', '192.168.3.24', '/services/v1.0.0/symptom/info', '{\"pageSize\":\"20\",\"type_name\":\"脑壳痛\",\"pageNum\":\"1\"}', '2020-08-25 16:57:31', 1, 126, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1306888486627872769', '1297816482595483650', '1214835832967581698', '192.168.3.24', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"ID\":\"ss\",\"pageNum\":\"1\"}', '2020-09-18 17:31:11', 0, 1553, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1336492989958180865', NULL, NULL, '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"3244c36870e4a47ef1fc6e2c1acf00a2\",\"pageNum\":\"1\"}', '2020-12-09 10:08:54', NULL, NULL, 'api_key或secret_key空', 0);
+INSERT INTO `market_api_log` VALUES ('1336493024087232514', NULL, NULL, '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"3244c36870e4a47ef1fc6e2c1acf00a2\",\"pageNum\":\"1\"}', '2020-12-09 10:09:02', NULL, NULL, 'api_key或secret_key空', 0);
+INSERT INTO `market_api_log` VALUES ('1336493851963150337', NULL, NULL, '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"3244c36870e4a47ef1fc6e2c1acf00a2\",\"pageNum\":\"1\"}', '2020-12-09 10:12:20', NULL, NULL, 'api_key或secret_key空', 0);
+INSERT INTO `market_api_log` VALUES ('1336495784656490497', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"3244c36870e4a47ef1fc6e2c1acf00a2\",\"pageNum\":\"1\"}', '2020-12-09 10:20:01', 1, 1283, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1336504430345965570', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2020-12-09 10:54:22', 0, 495, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1336522026826977281', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2020-12-09 12:04:17', 15, 636, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1336522611206770689', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2020-12-09 12:06:36', 15, 1440, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1336523120294612993', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2020-12-09 12:08:38', 15, 595, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1336546302409953281', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2020-12-09 13:40:45', 15, 484, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1336546356252233730', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2020-12-09 13:40:58', 15, 471, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1336546562481967106', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2020-12-09 13:41:47', 15, 485, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1339499510509957121', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2020-12-17 17:15:44', NULL, NULL, NULL, 0);
+INSERT INTO `market_api_log` VALUES ('1339499534694313986', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2020-12-17 17:15:50', NULL, NULL, NULL, 0);
+INSERT INTO `market_api_log` VALUES ('1339499596816150530', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2020-12-17 17:16:05', NULL, NULL, NULL, 0);
+INSERT INTO `market_api_log` VALUES ('1339501957894729729', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2020-12-17 17:25:28', NULL, NULL, NULL, 0);
+INSERT INTO `market_api_log` VALUES ('1339502935163367426', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2020-12-17 17:29:21', 0, 1823, NULL, 1);
+INSERT INTO `market_api_log` VALUES ('1339727473700597761', '1297816482595483650', '1214835832967581698', '61.164.216.254', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"id\":\"11\",\"pageNum\":\"1\"}', '2020-12-18 08:21:35', 0, 701, NULL, 1);
 INSERT INTO `market_api_log` VALUES ('1520411325585534977', '1297816482595483650', '1214835832967581698', '127.0.0.1', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-04-30 22:34:42', 15, 1270, NULL, 1);
 INSERT INTO `market_api_log` VALUES ('1520416691882823681', '1297816482595483650', '1214835832967581698', '127.0.0.1', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-04-30 22:56:02', NULL, NULL, NULL, 0);
 INSERT INTO `market_api_log` VALUES ('1520416801538707457', '1297816482595483650', '1214835832967581698', '127.0.0.1', '/services/v1.0.0/part/info', '{\"pageSize\":\"20\",\"pageNum\":\"1\"}', '2022-04-30 22:56:28', NULL, NULL, NULL, 0);
@@ -1412,7 +525,7 @@ INSERT INTO `market_api_log` VALUES ('1521163456223416322', '1297816482595483650
 -- Table structure for market_api_mask
 -- ----------------------------
 DROP TABLE IF EXISTS `market_api_mask`;
-CREATE TABLE `market_api_mask`  (
+CREATE TABLE IF NOT EXISTS  `market_api_mask`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '脱敏主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1430,13 +543,13 @@ CREATE TABLE `market_api_mask`  (
 -- ----------------------------
 -- Records of market_api_mask
 -- ----------------------------
-INSERT INTO `market_api_mask` VALUES ('1336507994732597250', 1, '1214835832967581698', '2022-12-09 11:08:32', '1197789917762031617', '1214835832967581698', '2022-12-09 13:41:31', NULL, '1297816482595483650', '1', '[{\"cryptType\": \"6\", \"fieldName\": \"id\", \"cipherType\": \"2\"}]');
+INSERT INTO `market_api_mask` VALUES ('1336507994732597250', 1, '1214835832967581698', '2020-12-09 11:08:32', '1197789917762031617', '1214835832967581698', '2020-12-09 13:41:31', NULL, '1297816482595483650', '1', '[{\"cryptType\": \"6\", \"fieldName\": \"id\", \"cipherType\": \"2\"}]');
 
 -- ----------------------------
 -- Table structure for market_service_integration
 -- ----------------------------
 DROP TABLE IF EXISTS `market_service_integration`;
-CREATE TABLE `market_service_integration`  (
+CREATE TABLE IF NOT EXISTS  `market_service_integration`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1456,14 +569,14 @@ CREATE TABLE `market_service_integration`  (
 -- ----------------------------
 -- Records of market_service_integration
 -- ----------------------------
-INSERT INTO `market_service_integration` VALUES ('1298954518389604354', 1, '1214835832967581698', '2022-08-27 20:04:25', '1197789917762031617', '1214835832967581698', '2022-08-27 20:04:25', NULL, '20220827001', '中英文双向翻译', 1, '{\"url\": \"http://fy.webxml.com.cn/webservices/EnglishChinese.asmx/TranslatorString\", \"param\": \"{\\\"wordKey\\\": \\\"我\\\"}\", \"header\": null, \"httpMethod\": \"POST\"}', '{\"soap\": null, \"wsdl\": null, \"method\": null, \"targetNamespace\": null}');
-INSERT INTO `market_service_integration` VALUES ('1298954821444845569', 1, '1214835832967581698', '2022-08-27 20:05:38', '1197789917762031617', '1214835832967581698', '2022-08-27 20:05:38', NULL, '20220827002', '简体字转换为繁体字', 2, '{\"url\": null, \"param\": null, \"header\": null, \"httpMethod\": null}', '{\"soap\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?>\\n<soap:Envelope xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/soap/envelope/\\\">\\n  <soap:Body>\\n    <toTraditionalChinese xmlns=\\\"http://webxml.com.cn/\\\">\\n      <sText>?</sText>\\n    </toTraditionalChinese>\\n  </soap:Body>\\n</soap:Envelope>\", \"wsdl\": \"http://ws.webxml.com.cn/WebServices/TraditionalSimplifiedWebService.asmx?wsdl\", \"method\": \"toTraditionalChinese\", \"targetNamespace\": \"http://webxml.com.cn/\"}');
+INSERT INTO `market_service_integration` VALUES ('1298954518389604354', 1, '1214835832967581698', '2020-08-27 20:04:25', '1197789917762031617', '1214835832967581698', '2020-08-27 20:04:25', NULL, '20200827001', '中英文双向翻译', 1, '{\"url\": \"http://fy.webxml.com.cn/webservices/EnglishChinese.asmx/TranslatorString\", \"param\": \"{\\\"wordKey\\\": \\\"我\\\"}\", \"header\": null, \"httpMethod\": \"POST\"}', '{\"soap\": null, \"wsdl\": null, \"method\": null, \"targetNamespace\": null}');
+INSERT INTO `market_service_integration` VALUES ('1298954821444845569', 1, '1214835832967581698', '2020-08-27 20:05:38', '1197789917762031617', '1214835832967581698', '2020-08-27 20:05:38', NULL, '20200827002', '简体字转换为繁体字', 2, '{\"url\": null, \"param\": null, \"header\": null, \"httpMethod\": null}', '{\"soap\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?>\\n<soap:Envelope xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/soap/envelope/\\\">\\n  <soap:Body>\\n    <toTraditionalChinese xmlns=\\\"http://webxml.com.cn/\\\">\\n      <sText>?</sText>\\n    </toTraditionalChinese>\\n  </soap:Body>\\n</soap:Envelope>\", \"wsdl\": \"http://ws.webxml.com.cn/WebServices/TraditionalSimplifiedWebService.asmx?wsdl\", \"method\": \"toTraditionalChinese\", \"targetNamespace\": \"http://webxml.com.cn/\"}');
 
 -- ----------------------------
 -- Table structure for market_service_log
 -- ----------------------------
 DROP TABLE IF EXISTS `market_service_log`;
-CREATE TABLE `market_service_log`  (
+CREATE TABLE IF NOT EXISTS  `market_service_log`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `service_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '服务id',
   `caller_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '调用者id',
@@ -1481,16 +594,16 @@ CREATE TABLE `market_service_log`  (
 -- ----------------------------
 -- Records of market_service_log
 -- ----------------------------
-INSERT INTO `market_service_log` VALUES ('1296737806386778114', '1275774099624386562', '1214835832967581698', '0:0:0:0:0:0:0:1', '2022-08-21 17:16:00', NULL, '{\"wordKey\": \"我\"}', NULL, NULL, '找不到服务：202208210022', 0);
-INSERT INTO `market_service_log` VALUES ('1296738063749271553', '1275774099624386562', '1214835832967581698', '0:0:0:0:0:0:0:1', '2022-08-21 17:17:01', NULL, '{\"wordKey\": \"我\"}', NULL, 146, NULL, 1);
-INSERT INTO `market_service_log` VALUES ('1336507495606222850', '1298954518389604354', '1214835832967581698', '61.164.216.254', '2022-12-09 11:06:33', NULL, '{\"wordKey\": \"我\"}', NULL, NULL, '找不到服务：20220821002', 0);
-INSERT INTO `market_service_log` VALUES ('1336507537746395138', '1298954518389604354', '1214835832967581698', '61.164.216.254', '2022-12-09 11:06:43', NULL, '{\"wordKey\": \"我\"}', NULL, 438, NULL, 1);
+INSERT INTO `market_service_log` VALUES ('1296737806386778114', '1275774099624386562', '1214835832967581698', '0:0:0:0:0:0:0:1', '2020-08-21 17:16:00', NULL, '{\"wordKey\": \"我\"}', NULL, NULL, '找不到服务：202008210022', 0);
+INSERT INTO `market_service_log` VALUES ('1296738063749271553', '1275774099624386562', '1214835832967581698', '0:0:0:0:0:0:0:1', '2020-08-21 17:17:01', NULL, '{\"wordKey\": \"我\"}', NULL, 146, NULL, 1);
+INSERT INTO `market_service_log` VALUES ('1336507495606222850', '1298954518389604354', '1214835832967581698', '61.164.216.254', '2020-12-09 11:06:33', NULL, '{\"wordKey\": \"我\"}', NULL, NULL, '找不到服务：20200821002', 0);
+INSERT INTO `market_service_log` VALUES ('1336507537746395138', '1298954518389604354', '1214835832967581698', '61.164.216.254', '2020-12-09 11:06:43', NULL, '{\"wordKey\": \"我\"}', NULL, 438, NULL, 1);
 
 -- ----------------------------
 -- Table structure for masterdata_model
 -- ----------------------------
 DROP TABLE IF EXISTS `masterdata_model`;
-CREATE TABLE `masterdata_model`  (
+CREATE TABLE IF NOT EXISTS  `masterdata_model`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1511,14 +624,14 @@ CREATE TABLE `masterdata_model`  (
 -- ----------------------------
 -- Records of masterdata_model
 -- ----------------------------
-INSERT INTO `masterdata_model` VALUES ('1336484666361831426', 1, '1214835832967581698', '2022-12-09 22:35:50', '1197789917762031617', '1214835832967581698', '2022-12-09 22:55:03', NULL, '测试1102', 'test_yw', 'dynamic_20221208203549', '1', '4', '2501');
+INSERT INTO `masterdata_model` VALUES ('1336484666361831426', 1, '1214835832967581698', '2020-12-09 22:35:50', '1197789917762031617', '1214835832967581698', '2020-12-09 22:55:03', NULL, '测试1102', 'test_yw', 'dynamic_20201208203549', '1', '4', '2501');
 INSERT INTO `masterdata_model` VALUES ('1520715703576014850', 1, '1214835832967581698', '2022-05-01 18:44:12', '1197789917762031617', '1214835832967581698', '2022-05-01 20:51:14', NULL, '測試模型1', 'test_table', 'dynamic_20220501184411', '1', '4', '5001');
 
 -- ----------------------------
 -- Table structure for masterdata_model_column
 -- ----------------------------
 DROP TABLE IF EXISTS `masterdata_model_column`;
-CREATE TABLE `masterdata_model_column`  (
+CREATE TABLE IF NOT EXISTS  `masterdata_model_column`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1553,14 +666,14 @@ CREATE TABLE `masterdata_model_column`  (
 -- ----------------------------
 -- Records of masterdata_model_column
 -- ----------------------------
-INSERT INTO `masterdata_model_column` VALUES ('1336484666936451073', 1, '1214835832967581698', '2022-12-09 09:35:50', '1214835832967581698', '2022-12-09 09:35:50', NULL, '1336484666361831426', 'id', '主键ID', 'varchar', '20', '0', NULL, '1', '1', '1', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
-INSERT INTO `masterdata_model_column` VALUES ('1336484667393630210', 1, '1214835832967581698', '2022-12-09 09:35:50', '1214835832967581698', '2022-12-09 09:35:50', NULL, '1336484666361831426', 'status', '状态（0禁用，1启用）', 'tinyint', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'number', NULL);
-INSERT INTO `masterdata_model_column` VALUES ('1336484667741757442', 1, '1214835832967581698', '2022-12-09 09:35:50', '1214835832967581698', '2022-12-09 09:35:50', NULL, '1336484666361831426', 'create_by', '创建人', 'varchar', '20', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
-INSERT INTO `masterdata_model_column` VALUES ('1336484668085690370', 1, '1214835832967581698', '2022-12-09 09:35:50', '1214835832967581698', '2022-12-09 09:35:50', NULL, '1336484666361831426', 'create_time', '创建日期', 'datetime', '0', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'datetime', NULL);
-INSERT INTO `masterdata_model_column` VALUES ('1336484668438011905', 1, '1214835832967581698', '2022-12-09 09:35:50', '1214835832967581698', '2022-12-09 09:35:50', NULL, '1336484666361831426', 'create_dept', '创建人所属部门', 'varchar', '20', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
-INSERT INTO `masterdata_model_column` VALUES ('1336484668786139137', 1, '1214835832967581698', '2022-12-09 09:35:50', '1214835832967581698', '2022-12-09 09:35:50', NULL, '1336484666361831426', 'update_by', '更新人', 'varchar', '20', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
-INSERT INTO `masterdata_model_column` VALUES ('1336484669130072065', 1, '1214835832967581698', '2022-12-09 09:35:50', '1214835832967581698', '2022-12-09 09:35:50', NULL, '1336484666361831426', 'update_time', '更新日期', 'datetime', '0', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'datetime', NULL);
-INSERT INTO `masterdata_model_column` VALUES ('1336484669478199297', 1, '1214835832967581698', '2022-12-09 09:35:51', '1214835832967581698', '2022-12-09 09:35:51', NULL, '1336484666361831426', 'name', '名称', 'varchar', '255', '0', NULL, '0', '0', '1', '1', '1', '1', '1', '0', NULL, '0', NULL, NULL, 'input', NULL);
+INSERT INTO `masterdata_model_column` VALUES ('1336484666936451073', 1, '1214835832967581698', '2020-12-09 09:35:50', '1214835832967581698', '2020-12-09 09:35:50', NULL, '1336484666361831426', 'id', '主键ID', 'varchar', '20', '0', NULL, '1', '1', '1', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
+INSERT INTO `masterdata_model_column` VALUES ('1336484667393630210', 1, '1214835832967581698', '2020-12-09 09:35:50', '1214835832967581698', '2020-12-09 09:35:50', NULL, '1336484666361831426', 'status', '状态（0禁用，1启用）', 'tinyint', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'number', NULL);
+INSERT INTO `masterdata_model_column` VALUES ('1336484667741757442', 1, '1214835832967581698', '2020-12-09 09:35:50', '1214835832967581698', '2020-12-09 09:35:50', NULL, '1336484666361831426', 'create_by', '创建人', 'varchar', '20', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
+INSERT INTO `masterdata_model_column` VALUES ('1336484668085690370', 1, '1214835832967581698', '2020-12-09 09:35:50', '1214835832967581698', '2020-12-09 09:35:50', NULL, '1336484666361831426', 'create_time', '创建日期', 'datetime', '0', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'datetime', NULL);
+INSERT INTO `masterdata_model_column` VALUES ('1336484668438011905', 1, '1214835832967581698', '2020-12-09 09:35:50', '1214835832967581698', '2020-12-09 09:35:50', NULL, '1336484666361831426', 'create_dept', '创建人所属部门', 'varchar', '20', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
+INSERT INTO `masterdata_model_column` VALUES ('1336484668786139137', 1, '1214835832967581698', '2020-12-09 09:35:50', '1214835832967581698', '2020-12-09 09:35:50', NULL, '1336484666361831426', 'update_by', '更新人', 'varchar', '20', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
+INSERT INTO `masterdata_model_column` VALUES ('1336484669130072065', 1, '1214835832967581698', '2020-12-09 09:35:50', '1214835832967581698', '2020-12-09 09:35:50', NULL, '1336484666361831426', 'update_time', '更新日期', 'datetime', '0', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'datetime', NULL);
+INSERT INTO `masterdata_model_column` VALUES ('1336484669478199297', 1, '1214835832967581698', '2020-12-09 09:35:51', '1214835832967581698', '2020-12-09 09:35:51', NULL, '1336484666361831426', 'name', '名称', 'varchar', '255', '0', NULL, '0', '0', '1', '1', '1', '1', '1', '0', NULL, '0', NULL, NULL, 'input', NULL);
 INSERT INTO `masterdata_model_column` VALUES ('1520715703802507265', 1, '1214835832967581698', '2022-05-01 18:44:12', '1214835832967581698', '2022-05-01 18:44:12', NULL, '1520715703576014850', 'id', '主键ID', 'varchar', '20', '0', NULL, '1', '1', '1', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
 INSERT INTO `masterdata_model_column` VALUES ('1520715703865421825', 1, '1214835832967581698', '2022-05-01 18:44:12', '1214835832967581698', '2022-05-01 18:44:12', NULL, '1520715703576014850', 'status', '状态（0禁用，1启用）', 'tinyint', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'number', NULL);
 INSERT INTO `masterdata_model_column` VALUES ('1520715703928336386', 1, '1214835832967581698', '2022-05-01 18:44:12', '1214835832967581698', '2022-05-01 18:44:12', NULL, '1520715703576014850', 'create_by', '创建人', 'varchar', '20', '0', NULL, '1', '0', '0', '0', '0', '0', '0', '0', NULL, '0', NULL, NULL, 'input', NULL);
@@ -1575,7 +688,7 @@ INSERT INTO `masterdata_model_column` VALUES ('1520715704343572481', 1, '1214835
 -- Table structure for metadata_authorize
 -- ----------------------------
 DROP TABLE IF EXISTS `metadata_authorize`;
-CREATE TABLE `metadata_authorize`  (
+CREATE TABLE IF NOT EXISTS  `metadata_authorize`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `object_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '目标表主键ID',
   `role_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色ID',
@@ -1603,7 +716,7 @@ INSERT INTO `metadata_authorize` VALUES ('1339728737268211713', '133647926882112
 -- Table structure for metadata_change_record
 -- ----------------------------
 DROP TABLE IF EXISTS `metadata_change_record`;
-CREATE TABLE `metadata_change_record`  (
+CREATE TABLE IF NOT EXISTS  `metadata_change_record`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1630,7 +743,7 @@ INSERT INTO `metadata_change_record` VALUES ('1521161495918977026', 1, '12148358
 -- Table structure for metadata_column
 -- ----------------------------
 DROP TABLE IF EXISTS `metadata_column`;
-CREATE TABLE `metadata_column`  (
+CREATE TABLE IF NOT EXISTS  `metadata_column`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `source_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属数据源',
   `table_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属数据表',
@@ -1939,7 +1052,7 @@ INSERT INTO `metadata_column` VALUES ('1520313019115098113', '124018586553960038
 -- Table structure for metadata_source
 -- ----------------------------
 DROP TABLE IF EXISTS `metadata_source`;
-CREATE TABLE `metadata_source`  (
+CREATE TABLE IF NOT EXISTS  `metadata_source`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -1958,14 +1071,14 @@ CREATE TABLE `metadata_source`  (
 -- ----------------------------
 -- Records of metadata_source
 -- ----------------------------
-INSERT INTO `metadata_source` VALUES ('1240185865539600385', 1, '1214835832967581698', '2022-03-19 03:58:47', '1197789917762031617', '1214835832967581698', '2022-05-01 08:59:54', NULL, 1, '测试数据库1', '2', '{\"sid\": null, \"host\": \"localhost\", \"port\": 3306, \"dbName\": \"foodmart2\", \"password\": \"root\", \"username\": \"root\"}');
-INSERT INTO `metadata_source` VALUES ('1336474987430793217', 1, '1214835832967581698', '2022-12-09 21:57:22', '1197789917762031617', '1214835832967581698', '2022-05-01 09:00:16', NULL, 1, '测试数据库2', '2', '{\"sid\": null, \"host\": \"localhost\", \"port\": 3306, \"dbName\": \"robot\", \"password\": \"root\", \"username\": \"root\"}');
+INSERT INTO `metadata_source` VALUES ('1240185865539600385', 1, '1214835832967581698', '2020-03-19 03:58:47', '1197789917762031617', '1214835832967581698', '2022-05-01 08:59:54', NULL, 1, '测试数据库1', '2', '{\"sid\": null, \"host\": \"localhost\", \"port\": 3306, \"dbName\": \"foodmart2\", \"password\": \"root\", \"username\": \"root\"}');
+INSERT INTO `metadata_source` VALUES ('1336474987430793217', 1, '1214835832967581698', '2020-12-09 21:57:22', '1197789917762031617', '1214835832967581698', '2022-05-01 09:00:16', NULL, 1, '测试数据库2', '2', '{\"sid\": null, \"host\": \"localhost\", \"port\": 3306, \"dbName\": \"robot\", \"password\": \"root\", \"username\": \"root\"}');
 
 -- ----------------------------
 -- Table structure for metadata_table
 -- ----------------------------
 DROP TABLE IF EXISTS `metadata_table`;
-CREATE TABLE `metadata_table`  (
+CREATE TABLE IF NOT EXISTS  `metadata_table`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `source_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属数据源',
   `table_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '表名',
@@ -2013,7 +1126,7 @@ INSERT INTO `metadata_table` VALUES ('1520313018473369601', '1240185865539600385
 -- Table structure for oauth_client_details
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_client_details`;
-CREATE TABLE `oauth_client_details`  (
+CREATE TABLE IF NOT EXISTS  `oauth_client_details`  (
   `client_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `resource_ids` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `client_secret` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
@@ -2039,7 +1152,7 @@ INSERT INTO `oauth_client_details` VALUES ('trusted-app', NULL, '$2a$10$F2KzyEy9
 -- Table structure for qrtz_job
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_job`;
-CREATE TABLE `qrtz_job`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_job`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2059,14 +1172,14 @@ CREATE TABLE `qrtz_job`  (
 -- ----------------------------
 -- Records of qrtz_job
 -- ----------------------------
-INSERT INTO `qrtz_job` VALUES ('1346347501890191362', 0, '1214835832967581698', '2022-01-05 14:47:13', '1197789917762031617', '1214835832967581698', '2022-01-05 14:47:13', NULL, '测试无参数任务', 'quartzTask', 'withoutParams', NULL, '30 * * * * ?');
-INSERT INTO `qrtz_job` VALUES ('1346347612309438465', 0, '1214835832967581698', '2022-01-05 14:47:39', '1197789917762031617', '1214835832967581698', '2022-01-05 14:47:39', NULL, '测试有参数任务', 'quartzTask', 'withParams', '我是参数', '45 * * * * ?');
+INSERT INTO `qrtz_job` VALUES ('1346347501890191362', 0, '1214835832967581698', '2021-01-05 14:47:13', '1197789917762031617', '1214835832967581698', '2021-01-05 14:47:13', NULL, '测试无参数任务', 'quartzTask', 'withoutParams', NULL, '30 * * * * ?');
+INSERT INTO `qrtz_job` VALUES ('1346347612309438465', 0, '1214835832967581698', '2021-01-05 14:47:39', '1197789917762031617', '1214835832967581698', '2021-01-05 14:47:39', NULL, '测试有参数任务', 'quartzTask', 'withParams', '我是参数', '45 * * * * ?');
 
 -- ----------------------------
 -- Table structure for qrtz_job_log
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_job_log`;
-CREATE TABLE `qrtz_job_log`  (
+CREATE TABLE IF NOT EXISTS  `qrtz_job_log`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '数据源主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建日期',
@@ -2078,14 +1191,14 @@ CREATE TABLE `qrtz_job_log`  (
 -- ----------------------------
 -- Records of qrtz_job_log
 -- ----------------------------
-INSERT INTO `qrtz_job_log` VALUES ('1346347573382103042', 1, '2022-01-05 14:47:30', '1346347501890191362', '【测试无参数任务】任务执行结束，总共耗时：2毫秒');
-INSERT INTO `qrtz_job_log` VALUES ('1346347636053393409', 1, '2022-01-05 14:47:45', '1346347612309438465', '【测试有参数任务】任务执行结束，总共耗时：0毫秒');
+INSERT INTO `qrtz_job_log` VALUES ('1346347573382103042', 1, '2021-01-05 14:47:30', '1346347501890191362', '【测试无参数任务】任务执行结束，总共耗时：2毫秒');
+INSERT INTO `qrtz_job_log` VALUES ('1346347636053393409', 1, '2021-01-05 14:47:45', '1346347612309438465', '【测试有参数任务】任务执行结束，总共耗时：0毫秒');
 
 -- ----------------------------
 -- Table structure for quality_check_report
 -- ----------------------------
 DROP TABLE IF EXISTS `quality_check_report`;
-CREATE TABLE `quality_check_report`  (
+CREATE TABLE IF NOT EXISTS  `quality_check_report`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `check_rule_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '核查规则主键',
   `check_date` datetime(0) NULL DEFAULT NULL COMMENT '核查时间',
@@ -2099,14 +1212,14 @@ CREATE TABLE `quality_check_report`  (
 -- ----------------------------
 -- Records of quality_check_report
 -- ----------------------------
-INSERT INTO `quality_check_report` VALUES ('1340552514231197698', '1318749656079646721', '2022-12-20 15:00:00', NULL, 3, 0, '20221220020000');
-INSERT INTO `quality_check_report` VALUES ('1340552515288162306', '1318749963664736258', '2022-12-20 15:00:00', NULL, 3, 0, '20221220020000');
-INSERT INTO `quality_check_report` VALUES ('1340552516336738305', '1318750378762420225', '2022-12-20 15:00:00', NULL, 3, 0, '20221220020000');
-INSERT INTO `quality_check_report` VALUES ('1340552517389508610', '1336564556213846017', '2022-12-20 15:00:00', NULL, 4, 0, '20221220020000');
-INSERT INTO `quality_check_report` VALUES ('1346879442167140353', '1318749656079646721', '2022-01-07 02:00:04', NULL, 3, 0, '20220107020000');
-INSERT INTO `quality_check_report` VALUES ('1346879443857444865', '1318749963664736258', '2022-01-07 02:00:04', NULL, 3, 0, '20220107020000');
-INSERT INTO `quality_check_report` VALUES ('1346879445505806338', '1318750378762420225', '2022-01-07 02:00:04', NULL, 3, 0, '20220107020000');
-INSERT INTO `quality_check_report` VALUES ('1346879447082864641', '1336564556213846017', '2022-01-07 02:00:04', NULL, 4, 0, '20220107020000');
+INSERT INTO `quality_check_report` VALUES ('1340552514231197698', '1318749656079646721', '2020-12-20 15:00:00', NULL, 3, 0, '20201220020000');
+INSERT INTO `quality_check_report` VALUES ('1340552515288162306', '1318749963664736258', '2020-12-20 15:00:00', NULL, 3, 0, '20201220020000');
+INSERT INTO `quality_check_report` VALUES ('1340552516336738305', '1318750378762420225', '2020-12-20 15:00:00', NULL, 3, 0, '20201220020000');
+INSERT INTO `quality_check_report` VALUES ('1340552517389508610', '1336564556213846017', '2020-12-20 15:00:00', NULL, 4, 0, '20201220020000');
+INSERT INTO `quality_check_report` VALUES ('1346879442167140353', '1318749656079646721', '2021-01-07 02:00:04', NULL, 3, 0, '20210107020000');
+INSERT INTO `quality_check_report` VALUES ('1346879443857444865', '1318749963664736258', '2021-01-07 02:00:04', NULL, 3, 0, '20210107020000');
+INSERT INTO `quality_check_report` VALUES ('1346879445505806338', '1318750378762420225', '2021-01-07 02:00:04', NULL, 3, 0, '20210107020000');
+INSERT INTO `quality_check_report` VALUES ('1346879447082864641', '1336564556213846017', '2021-01-07 02:00:04', NULL, 4, 0, '20210107020000');
 INSERT INTO `quality_check_report` VALUES ('1520395642562703362', '1318749656079646721', '2022-04-30 21:32:20', NULL, 3, 0, '20220430213220');
 INSERT INTO `quality_check_report` VALUES ('1520395642956967938', '1318749963664736258', '2022-04-30 21:32:20', NULL, 3, 0, '20220430213220');
 INSERT INTO `quality_check_report` VALUES ('1520395643099574274', '1318750378762420225', '2022-04-30 21:32:20', NULL, 3, 0, '20220430213220');
@@ -2136,7 +1249,7 @@ INSERT INTO `quality_check_report` VALUES ('1520395880123887619', '1318749963664
 INSERT INTO `quality_check_report` VALUES ('1520395880190996482', '1318750378762420225', '2022-04-30 21:33:20', NULL, 3, 0, '20220430213320');
 INSERT INTO `quality_check_report` VALUES ('1520395880321019905', '1336564556213846017', '2022-04-30 21:33:20', NULL, 4, 0, '20220430213320');
 INSERT INTO `quality_check_report` VALUES ('1520395921920126978', '1318749656079646721', '2022-04-30 21:33:30', NULL, 3, 0, '20220430213330');
-INSERT INTO `quality_check_report` VALUES ('1520395922022790273', '1318749963664736258', '2022-04-30 21:33:30', NULL, 3, 0, '20220430213330');
+INSERT INTO `quality_check_report` VALUES ('1520395922020790273', '1318749963664736258', '2022-04-30 21:33:30', NULL, 3, 0, '20220430213330');
 INSERT INTO `quality_check_report` VALUES ('1520395922108870658', '1318750378762420225', '2022-04-30 21:33:30', NULL, 3, 0, '20220430213330');
 INSERT INTO `quality_check_report` VALUES ('1520395922196951041', '1336564556213846017', '2022-04-30 21:33:30', NULL, 4, 0, '20220430213330');
 INSERT INTO `quality_check_report` VALUES ('1520395963858972673', '1318749656079646721', '2022-04-30 21:33:40', NULL, 3, 0, '20220430213340');
@@ -2227,7 +1340,7 @@ INSERT INTO `quality_check_report` VALUES ('1520407899967377409', '1318749656079
 INSERT INTO `quality_check_report` VALUES ('1520407900382613505', '1318749963664736258', '2022-04-30 22:21:03', NULL, 3, 0, '20220430222102');
 INSERT INTO `quality_check_report` VALUES ('1520407903259906050', '1318750378762420225', '2022-04-30 22:21:03', NULL, 3, 0, '20220430222102');
 INSERT INTO `quality_check_report` VALUES ('1520407903498981378', '1336564556213846017', '2022-04-30 22:21:03', NULL, 4, 0, '20220430222102');
-INSERT INTO `quality_check_report` VALUES ('1520592971832022994', '1318749656079646721', '2022-05-01 10:36:30', NULL, 3, 0, '20220501103629');
+INSERT INTO `quality_check_report` VALUES ('1520592971832020994', '1318749656079646721', '2022-05-01 10:36:30', NULL, 3, 0, '20220501103629');
 INSERT INTO `quality_check_report` VALUES ('1520592972108845057', '1318749963664736258', '2022-05-01 10:36:30', NULL, 3, 0, '20220501103629');
 INSERT INTO `quality_check_report` VALUES ('1520592972297588737', '1318750378762420225', '2022-05-01 10:36:30', NULL, 3, 0, '20220501103629');
 INSERT INTO `quality_check_report` VALUES ('1520592972423417857', '1336564556213846017', '2022-05-01 10:36:30', NULL, 4, 0, '20220501103629');
@@ -2240,7 +1353,7 @@ INSERT INTO `quality_check_report` VALUES ('1521163129780719618', '1336564556213
 -- Table structure for quality_check_rule
 -- ----------------------------
 DROP TABLE IF EXISTS `quality_check_rule`;
-CREATE TABLE `quality_check_rule`  (
+CREATE TABLE IF NOT EXISTS  `quality_check_rule`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2271,16 +1384,16 @@ CREATE TABLE `quality_check_rule`  (
 -- ----------------------------
 -- Records of quality_check_rule
 -- ----------------------------
-INSERT INTO `quality_check_rule` VALUES ('1318749656079646721', 1, '1214835832967581698', '2022-10-21 11:03:14', '1197789917762031617', '1214835832967581698', '2022-12-09 09:32:19', NULL, '唯一校验', '1310055102039498754', '1316555325628764161', '1316243646609117186', '1', '1336474987430793217', 'robot数据库', '1336479261791473665', 'robot_patient', '患者表', '1336479262852632577', 'id', '主键', '{\"accuracy\": {\"maxLength\": null}, \"relevance\": {\"relatedTable\": null, \"relatedColumn\": null, \"relatedTableId\": null, \"relatedColumnId\": null, \"relatedTableComment\": null, \"relatedColumnComment\": null}, \"consistent\": {\"gbTypeId\": null, \"gbTypeCode\": null, \"gbTypeName\": null, \"bindGbColumn\": null}, \"timeliness\": {\"threshold\": null}, \"ruleItemCode\": \"unique_key\"}', 'SELECT totalCount - errorCount AS errorCount, totalCount FROM (SELECT COUNT(DISTINCT id) AS errorCount, COUNT(*) AS totalCount FROM robot_patient) TEMP', '20220503002203');
-INSERT INTO `quality_check_rule` VALUES ('1318749963664736258', 1, '1214835832967581698', '2022-10-21 11:04:27', '1197789917762031617', '1214835832967581698', '2022-04-30 20:20:01', NULL, '完整校验', '1310055106909085697', '1316555332956213250', '1316243649473826818', '1', '1336474987430793217', 'robot数据库', '1336479261791473665', 'robot_patient', '患者表', '1336479262852632577', 'id', '主键', '{\"accuracy\": {\"maxLength\": null}, \"relevance\": {\"relatedTable\": null, \"relatedColumn\": null, \"relatedTableId\": null, \"relatedColumnId\": null, \"relatedTableComment\": null, \"relatedColumnComment\": null}, \"consistent\": {\"gbTypeId\": null, \"gbTypeCode\": null, \"gbTypeName\": null, \"bindGbColumn\": null}, \"timeliness\": {\"threshold\": null}, \"ruleItemCode\": \"integrity_key\"}', 'SELECT SUM(CASE WHEN id IS NOT NULL AND TRIM(id) != \'\' THEN 0 ELSE 1 END), COUNT(*) FROM robot_patient', '20220503002203');
-INSERT INTO `quality_check_rule` VALUES ('1318750378762420225', 1, '1214835832967581698', '2022-10-21 11:06:06', '1197789917762031617', '1214835832967581698', '2022-12-09 09:33:04', NULL, '一致校验', '1310055114131677186', '1316555329772736514', '1316243646609117186', '1', '1336474987430793217', 'robot数据库', '1336479261791473665', 'robot_patient', '患者表', '1336479264106729474', 'patient_sex', '患者性别（1男2女）', '{\"accuracy\": {\"maxLength\": null}, \"relevance\": {\"relatedTable\": null, \"relatedColumn\": null, \"relatedTableId\": null, \"relatedColumnId\": null, \"relatedTableComment\": null, \"relatedColumnComment\": null}, \"consistent\": {\"gbTypeId\": \"1303245849463218178\", \"gbTypeCode\": \"GB/T 2261.1-2003\", \"gbTypeName\": \"人的性别代码\", \"bindGbColumn\": \"gb_code\"}, \"timeliness\": {\"threshold\": null}, \"ruleItemCode\": \"consistent_key\"}', 'SELECT SUM(CASE WHEN patient_sex NOT IN (\'0\',\'1\',\'2\',\'9\') THEN 1 ELSE 0 END), COUNT(*) FROM robot_patient', '20220503002203');
-INSERT INTO `quality_check_rule` VALUES ('1336564556213846017', 1, '1214835832967581698', '2022-12-09 14:53:17', '1197789917762031617', '1214835832967581698', '2022-12-09 14:53:17', NULL, '关联性校验', '1310055118023991297', '1316555336190021633', '1316243646609117186', '1', '1336474987430793217', 'robot数据库', '1336479266728169473', 'robot_symptom_type', '症状表', '1336479268242313218', 'part_id', '所属部位', '{\"accuracy\": {\"maxLength\": null}, \"relevance\": {\"relatedTable\": \"robot_symptom_part\", \"relatedColumn\": \"id\", \"relatedTableId\": \"1336479264639406082\", \"relatedColumnId\": \"1336479265583124482\", \"relatedTableComment\": \"部位表\", \"relatedColumnComment\": \"主键\"}, \"consistent\": {\"gbTypeId\": null, \"gbTypeCode\": null, \"gbTypeName\": null, \"bindGbColumn\": null}, \"timeliness\": {\"threshold\": null}, \"ruleItemCode\": \"relevance_key\"}', 'SELECT SUM(errorCount) AS errorCount, SUM(totalCount) AS totalCount FROM (SELECT COUNT(*) AS errorCount, 0 AS totalCount FROM robot_symptom_type a WHERE NOT EXISTS (SELECT 1 FROM robot_symptom_part b WHERE a.part_id = b.id)UNION SELECT 0 AS errorCount, COUNT(*) AS totalCount FROM robot_symptom_type) TEMP', '20220503002203');
+INSERT INTO `quality_check_rule` VALUES ('1318749656079646721', 1, '1214835832967581698', '2020-10-21 11:03:14', '1197789917762031617', '1214835832967581698', '2020-12-09 09:32:19', NULL, '唯一校验', '1310055102039498754', '1316555325628764161', '1316243646609117186', '1', '1336474987430793217', 'robot数据库', '1336479261791473665', 'robot_patient', '患者表', '1336479262852632577', 'id', '主键', '{\"accuracy\": {\"maxLength\": null}, \"relevance\": {\"relatedTable\": null, \"relatedColumn\": null, \"relatedTableId\": null, \"relatedColumnId\": null, \"relatedTableComment\": null, \"relatedColumnComment\": null}, \"consistent\": {\"gbTypeId\": null, \"gbTypeCode\": null, \"gbTypeName\": null, \"bindGbColumn\": null}, \"timeliness\": {\"threshold\": null}, \"ruleItemCode\": \"unique_key\"}', 'SELECT totalCount - errorCount AS errorCount, totalCount FROM (SELECT COUNT(DISTINCT id) AS errorCount, COUNT(*) AS totalCount FROM robot_patient) TEMP', '20220503002203');
+INSERT INTO `quality_check_rule` VALUES ('1318749963664736258', 1, '1214835832967581698', '2020-10-21 11:04:27', '1197789917762031617', '1214835832967581698', '2022-04-30 20:20:01', NULL, '完整校验', '1310055106909085697', '1316555332956213250', '1316243649473826818', '1', '1336474987430793217', 'robot数据库', '1336479261791473665', 'robot_patient', '患者表', '1336479262852632577', 'id', '主键', '{\"accuracy\": {\"maxLength\": null}, \"relevance\": {\"relatedTable\": null, \"relatedColumn\": null, \"relatedTableId\": null, \"relatedColumnId\": null, \"relatedTableComment\": null, \"relatedColumnComment\": null}, \"consistent\": {\"gbTypeId\": null, \"gbTypeCode\": null, \"gbTypeName\": null, \"bindGbColumn\": null}, \"timeliness\": {\"threshold\": null}, \"ruleItemCode\": \"integrity_key\"}', 'SELECT SUM(CASE WHEN id IS NOT NULL AND TRIM(id) != \'\' THEN 0 ELSE 1 END), COUNT(*) FROM robot_patient', '20220503002203');
+INSERT INTO `quality_check_rule` VALUES ('1318750378762420225', 1, '1214835832967581698', '2020-10-21 11:06:06', '1197789917762031617', '1214835832967581698', '2020-12-09 09:33:04', NULL, '一致校验', '1310055114131677186', '1316555329772736514', '1316243646609117186', '1', '1336474987430793217', 'robot数据库', '1336479261791473665', 'robot_patient', '患者表', '1336479264106729474', 'patient_sex', '患者性别（1男2女）', '{\"accuracy\": {\"maxLength\": null}, \"relevance\": {\"relatedTable\": null, \"relatedColumn\": null, \"relatedTableId\": null, \"relatedColumnId\": null, \"relatedTableComment\": null, \"relatedColumnComment\": null}, \"consistent\": {\"gbTypeId\": \"1303245849463218178\", \"gbTypeCode\": \"GB/T 2261.1-2003\", \"gbTypeName\": \"人的性别代码\", \"bindGbColumn\": \"gb_code\"}, \"timeliness\": {\"threshold\": null}, \"ruleItemCode\": \"consistent_key\"}', 'SELECT SUM(CASE WHEN patient_sex NOT IN (\'0\',\'1\',\'2\',\'9\') THEN 1 ELSE 0 END), COUNT(*) FROM robot_patient', '20220503002203');
+INSERT INTO `quality_check_rule` VALUES ('1336564556213846017', 1, '1214835832967581698', '2020-12-09 14:53:17', '1197789917762031617', '1214835832967581698', '2020-12-09 14:53:17', NULL, '关联性校验', '1310055118023991297', '1316555336190021633', '1316243646609117186', '1', '1336474987430793217', 'robot数据库', '1336479266728169473', 'robot_symptom_type', '症状表', '1336479268242313218', 'part_id', '所属部位', '{\"accuracy\": {\"maxLength\": null}, \"relevance\": {\"relatedTable\": \"robot_symptom_part\", \"relatedColumn\": \"id\", \"relatedTableId\": \"1336479264639406082\", \"relatedColumnId\": \"1336479265583124482\", \"relatedTableComment\": \"部位表\", \"relatedColumnComment\": \"主键\"}, \"consistent\": {\"gbTypeId\": null, \"gbTypeCode\": null, \"gbTypeName\": null, \"bindGbColumn\": null}, \"timeliness\": {\"threshold\": null}, \"ruleItemCode\": \"relevance_key\"}', 'SELECT SUM(errorCount) AS errorCount, SUM(totalCount) AS totalCount FROM (SELECT COUNT(*) AS errorCount, 0 AS totalCount FROM robot_symptom_type a WHERE NOT EXISTS (SELECT 1 FROM robot_symptom_part b WHERE a.part_id = b.id)UNION SELECT 0 AS errorCount, COUNT(*) AS totalCount FROM robot_symptom_type) TEMP', '20220503002203');
 
 -- ----------------------------
 -- Table structure for quality_rule_item
 -- ----------------------------
 DROP TABLE IF EXISTS `quality_rule_item`;
-CREATE TABLE `quality_rule_item`  (
+CREATE TABLE IF NOT EXISTS  `quality_rule_item`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `rule_type_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '规则类型',
   `item_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '核查项编码',
@@ -2302,7 +1415,7 @@ INSERT INTO `quality_rule_item` VALUES ('1316555342435340289', '1310055110574907
 -- Table structure for quality_rule_level
 -- ----------------------------
 DROP TABLE IF EXISTS `quality_rule_level`;
-CREATE TABLE `quality_rule_level`  (
+CREATE TABLE IF NOT EXISTS  `quality_rule_level`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '规则级别编码',
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '规则级别名称',
@@ -2320,7 +1433,7 @@ INSERT INTO `quality_rule_level` VALUES ('1316243649473826818', '3', '高');
 -- Table structure for quality_rule_type
 -- ----------------------------
 DROP TABLE IF EXISTS `quality_rule_type`;
-CREATE TABLE `quality_rule_type`  (
+CREATE TABLE IF NOT EXISTS  `quality_rule_type`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '类型名称',
   `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '类型编码',
@@ -2341,7 +1454,7 @@ INSERT INTO `quality_rule_type` VALUES ('1310055122348318721', '及时性校验'
 -- Table structure for quality_schedule_job
 -- ----------------------------
 DROP TABLE IF EXISTS `quality_schedule_job`;
-CREATE TABLE `quality_schedule_job`  (
+CREATE TABLE IF NOT EXISTS  `quality_schedule_job`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `job_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '任务名称',
   `bean_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'bean名称',
@@ -2361,7 +1474,7 @@ INSERT INTO `quality_schedule_job` VALUES ('1310823026538962945', '数据质量�
 -- Table structure for quality_schedule_log
 -- ----------------------------
 DROP TABLE IF EXISTS `quality_schedule_log`;
-CREATE TABLE `quality_schedule_log`  (
+CREATE TABLE IF NOT EXISTS  `quality_schedule_log`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '状态（1成功 0失败）',
   `execute_job_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '执行任务主键',
@@ -2375,18 +1488,18 @@ CREATE TABLE `quality_schedule_log`  (
 -- ----------------------------
 -- Records of quality_schedule_log
 -- ----------------------------
-INSERT INTO `quality_schedule_log` VALUES ('1340552514940035074', '1', '1310823026538962945', '1318749656079646721', '2022-12-20 15:00:00', NULL, '20221220020000');
-INSERT INTO `quality_schedule_log` VALUES ('1340552515988611073', '1', '1310823026538962945', '1318749963664736258', '2022-12-20 15:00:00', NULL, '20221220020000');
-INSERT INTO `quality_schedule_log` VALUES ('1340552517041381378', '1', '1310823026538962945', '1318750378762420225', '2022-12-20 15:00:00', NULL, '20221220020000');
-INSERT INTO `quality_schedule_log` VALUES ('1340552518194814978', '1', '1310823026538962945', '1336564556213846017', '2022-12-20 15:00:00', NULL, '20221220020000');
-INSERT INTO `quality_schedule_log` VALUES ('1346516951155232769', '0', '1310823026538962945', '1318749656079646721', '2022-01-06 02:00:03', '获取数据源接口出错', '20220106020000');
-INSERT INTO `quality_schedule_log` VALUES ('1346516953088806914', '0', '1310823026538962945', '1318749963664736258', '2022-01-06 02:00:03', '获取数据源接口出错', '20220106020000');
-INSERT INTO `quality_schedule_log` VALUES ('1346516953143332866', '0', '1310823026538962945', '1318750378762420225', '2022-01-06 02:00:03', '获取数据源接口出错', '20220106020000');
-INSERT INTO `quality_schedule_log` VALUES ('1346516953336270850', '0', '1310823026538962945', '1336564556213846017', '2022-01-06 02:00:03', '获取数据源接口出错', '20220106020000');
-INSERT INTO `quality_schedule_log` VALUES ('1346879443580620802', '1', '1310823026538962945', '1318749656079646721', '2022-01-07 02:00:04', NULL, '20220107020000');
-INSERT INTO `quality_schedule_log` VALUES ('1346879444222349313', '1', '1310823026538962945', '1318749963664736258', '2022-01-07 02:00:04', NULL, '20220107020000');
-INSERT INTO `quality_schedule_log` VALUES ('1346879446915092482', '1', '1310823026538962945', '1318750378762420225', '2022-01-07 02:00:04', NULL, '20220107020000');
-INSERT INTO `quality_schedule_log` VALUES ('1346879447737176066', '1', '1310823026538962945', '1336564556213846017', '2022-01-07 02:00:04', NULL, '20220107020000');
+INSERT INTO `quality_schedule_log` VALUES ('1340552514940035074', '1', '1310823026538962945', '1318749656079646721', '2020-12-20 15:00:00', NULL, '20201220020000');
+INSERT INTO `quality_schedule_log` VALUES ('1340552515988611073', '1', '1310823026538962945', '1318749963664736258', '2020-12-20 15:00:00', NULL, '20201220020000');
+INSERT INTO `quality_schedule_log` VALUES ('1340552517041381378', '1', '1310823026538962945', '1318750378762420225', '2020-12-20 15:00:00', NULL, '20201220020000');
+INSERT INTO `quality_schedule_log` VALUES ('1340552518194814978', '1', '1310823026538962945', '1336564556213846017', '2020-12-20 15:00:00', NULL, '20201220020000');
+INSERT INTO `quality_schedule_log` VALUES ('1346516951155232769', '0', '1310823026538962945', '1318749656079646721', '2021-01-06 02:00:03', '获取数据源接口出错', '20210106020000');
+INSERT INTO `quality_schedule_log` VALUES ('1346516953088806914', '0', '1310823026538962945', '1318749963664736258', '2021-01-06 02:00:03', '获取数据源接口出错', '20210106020000');
+INSERT INTO `quality_schedule_log` VALUES ('1346516953143332866', '0', '1310823026538962945', '1318750378762420225', '2021-01-06 02:00:03', '获取数据源接口出错', '20210106020000');
+INSERT INTO `quality_schedule_log` VALUES ('1346516953336270850', '0', '1310823026538962945', '1336564556213846017', '2021-01-06 02:00:03', '获取数据源接口出错', '20210106020000');
+INSERT INTO `quality_schedule_log` VALUES ('1346879443580620802', '1', '1310823026538962945', '1318749656079646721', '2021-01-07 02:00:04', NULL, '20210107020000');
+INSERT INTO `quality_schedule_log` VALUES ('1346879444222349313', '1', '1310823026538962945', '1318749963664736258', '2021-01-07 02:00:04', NULL, '20210107020000');
+INSERT INTO `quality_schedule_log` VALUES ('1346879446915092482', '1', '1310823026538962945', '1318750378762420225', '2021-01-07 02:00:04', NULL, '20210107020000');
+INSERT INTO `quality_schedule_log` VALUES ('1346879447737176066', '1', '1310823026538962945', '1336564556213846017', '2021-01-07 02:00:04', NULL, '20210107020000');
 INSERT INTO `quality_schedule_log` VALUES ('1520395642889859073', '1', '1310823026538962945', '1318749656079646721', '2022-04-30 21:32:20', NULL, '20220430213220');
 INSERT INTO `quality_schedule_log` VALUES ('1520395643057631233', '1', '1310823026538962945', '1318749963664736258', '2022-04-30 21:32:20', NULL, '20220430213220');
 INSERT INTO `quality_schedule_log` VALUES ('1520395643233792002', '1', '1310823026538962945', '1318750378762420225', '2022-04-30 21:32:20', NULL, '20220430213220');
@@ -2520,7 +1633,7 @@ INSERT INTO `quality_schedule_log` VALUES ('1521163129965268994', '1', '13108230
 -- Table structure for standard_contrast
 -- ----------------------------
 DROP TABLE IF EXISTS `standard_contrast`;
-CREATE TABLE `standard_contrast`  (
+CREATE TABLE IF NOT EXISTS  `standard_contrast`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2545,13 +1658,13 @@ CREATE TABLE `standard_contrast`  (
 -- ----------------------------
 -- Records of standard_contrast
 -- ----------------------------
-INSERT INTO `standard_contrast` VALUES ('1336483007929868290', 1, '1214835832967581698', '2022-12-09 09:29:14', '1197789917762031617', '1214835832967581698', '2022-04-30 18:42:52', NULL, '1336474987430793217', 'robot数据库', '1336479261791473665', 'robot_patient', '患者表', '1336479264106729474', 'patient_sex', '患者性别（1男2女）', '1303245849463218178', 'gb_code');
+INSERT INTO `standard_contrast` VALUES ('1336483007929868290', 1, '1214835832967581698', '2020-12-09 09:29:14', '1197789917762031617', '1214835832967581698', '2022-04-30 18:42:52', NULL, '1336474987430793217', 'robot数据库', '1336479261791473665', 'robot_patient', '患者表', '1336479264106729474', 'patient_sex', '患者性别（1男2女）', '1303245849463218178', 'gb_code');
 
 -- ----------------------------
 -- Table structure for standard_contrast_dict
 -- ----------------------------
 DROP TABLE IF EXISTS `standard_contrast_dict`;
-CREATE TABLE `standard_contrast_dict`  (
+CREATE TABLE IF NOT EXISTS  `standard_contrast_dict`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0未对照，1已对照）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2570,14 +1683,14 @@ CREATE TABLE `standard_contrast_dict`  (
 -- ----------------------------
 -- Records of standard_contrast_dict
 -- ----------------------------
-INSERT INTO `standard_contrast_dict` VALUES ('1336483232853614594', 1, '1214835832967581698', '2022-12-09 09:30:08', '1197789917762031617', '1214835832967581698', '2022-12-09 09:30:08', NULL, '1336483007929868290', '1', '男', '1303247360368926722');
-INSERT INTO `standard_contrast_dict` VALUES ('1336483277371957249', 1, '1214835832967581698', '2022-12-10 11:30:19', '1197789917762031617', '1214835832967581698', '2022-12-10 11:30:19', NULL, '1336483007929868290', '2', '女', '1303247362688376833');
+INSERT INTO `standard_contrast_dict` VALUES ('1336483232853614594', 1, '1214835832967581698', '2020-12-09 09:30:08', '1197789917762031617', '1214835832967581698', '2020-12-09 09:30:08', NULL, '1336483007929868290', '1', '男', '1303247360368926722');
+INSERT INTO `standard_contrast_dict` VALUES ('1336483277371957249', 1, '1214835832967581698', '2020-12-10 11:30:19', '1197789917762031617', '1214835832967581698', '2020-12-10 11:30:19', NULL, '1336483007929868290', '2', '女', '1303247362688376833');
 
 -- ----------------------------
 -- Table structure for standard_dict
 -- ----------------------------
 DROP TABLE IF EXISTS `standard_dict`;
-CREATE TABLE `standard_dict`  (
+CREATE TABLE IF NOT EXISTS  `standard_dict`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2595,44 +1708,44 @@ CREATE TABLE `standard_dict`  (
 -- ----------------------------
 -- Records of standard_dict
 -- ----------------------------
-INSERT INTO `standard_dict` VALUES ('1303247357105758209', 1, '1214835832967581698', '2022-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2022-09-08 16:16:38', NULL, '1303245849463218178', '0', '未知的性别');
-INSERT INTO `standard_dict` VALUES ('1303247360368926722', 1, '1214835832967581698', '2022-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2022-09-08 16:16:38', NULL, '1303245849463218178', '1', '男性');
-INSERT INTO `standard_dict` VALUES ('1303247362688376833', 1, '1214835832967581698', '2022-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2022-09-08 16:16:38', NULL, '1303245849463218178', '2', '女性');
-INSERT INTO `standard_dict` VALUES ('1303247366693937153', 1, '1214835832967581698', '2022-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2022-09-08 16:16:38', NULL, '1303245849463218178', '9', '未说明的性别');
-INSERT INTO `standard_dict` VALUES ('1303249289220220689', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, '1303245946938843137', '10', '未婚');
-INSERT INTO `standard_dict` VALUES ('1303249292659539970', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, '1303245946938843137', '20', '已婚');
-INSERT INTO `standard_dict` VALUES ('1303249295721381890', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, '1303245946938843137', '21', '初婚');
-INSERT INTO `standard_dict` VALUES ('1303249298619645953', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, '1303245946938843137', '22', '再婚');
-INSERT INTO `standard_dict` VALUES ('1303249302188998658', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, '1303245946938843137', '23', '复婚');
-INSERT INTO `standard_dict` VALUES ('1303249306152615937', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, '1303245946938843137', '30', '丧偶');
-INSERT INTO `standard_dict` VALUES ('1303249308417540097', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, '1303245946938843137', '40', '离婚');
-INSERT INTO `standard_dict` VALUES ('1303249312116916225', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, '1303245946938843137', '90', '未说明的婚姻状况');
-INSERT INTO `standard_dict` VALUES ('1303250886239223810', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '11', '国家公务员');
-INSERT INTO `standard_dict` VALUES ('1303250889280094210', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '13', '国家公务员');
-INSERT INTO `standard_dict` VALUES ('1303250891419189250', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '17', '职员');
-INSERT INTO `standard_dict` VALUES ('1303250895265366018', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '21', '企业管理人员');
-INSERT INTO `standard_dict` VALUES ('1303250898415288322', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '24', '工 人');
-INSERT INTO `standard_dict` VALUES ('1303250902022389761', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '27', '农民');
-INSERT INTO `standard_dict` VALUES ('1303250904572526594', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '31', '学生');
-INSERT INTO `standard_dict` VALUES ('1303250907172995074', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '37', '现役军人');
-INSERT INTO `standard_dict` VALUES ('1303250910394220545', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '51', '自由职业者');
-INSERT INTO `standard_dict` VALUES ('1303250914454306817', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '54', '个体经营者');
-INSERT INTO `standard_dict` VALUES ('1303250918308872194', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '70', '无业 人员');
-INSERT INTO `standard_dict` VALUES ('1303250920888369153', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '80', '退（离）休人员');
-INSERT INTO `standard_dict` VALUES ('1303250924432556033', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, '1303246143370682369', '90', '其他');
-INSERT INTO `standard_dict` VALUES ('1303252645292556289', 1, '1214835832967581698', '2022-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:13', NULL, '1303246245158051841', '1', '香港同胞亲属');
-INSERT INTO `standard_dict` VALUES ('1303252649616883713', 1, '1214835832967581698', '2022-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:13', NULL, '1303246245158051841', '2', '澳门同胞亲属');
-INSERT INTO `standard_dict` VALUES ('1303252652871663617', 1, '1214835832967581698', '2022-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:13', NULL, '1303246245158051841', '3', '台湾同胞亲属');
-INSERT INTO `standard_dict` VALUES ('1303252656952721409', 1, '1214835832967581698', '2022-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:13', NULL, '1303246245158051841', '4', '海外侨胞亲属');
-INSERT INTO `standard_dict` VALUES ('1303253227483033601', 1, '1214835832967581698', '2022-09-08 16:18:50', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:50', NULL, '1303246401513316353', '1', '两院院士');
-INSERT INTO `standard_dict` VALUES ('1303253232226791425', 1, '1214835832967581698', '2022-09-08 16:18:50', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:50', NULL, '1303246401513316353', '2', '中国科学院院士');
-INSERT INTO `standard_dict` VALUES ('1303253234995032066', 1, '1214835832967581698', '2022-09-08 16:18:50', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:50', NULL, '1303246401513316353', '3', '中国工程院院士');
+INSERT INTO `standard_dict` VALUES ('1303247357105758209', 1, '1214835832967581698', '2020-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2020-09-08 16:16:38', NULL, '1303245849463218178', '0', '未知的性别');
+INSERT INTO `standard_dict` VALUES ('1303247360368926722', 1, '1214835832967581698', '2020-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2020-09-08 16:16:38', NULL, '1303245849463218178', '1', '男性');
+INSERT INTO `standard_dict` VALUES ('1303247362688376833', 1, '1214835832967581698', '2020-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2020-09-08 16:16:38', NULL, '1303245849463218178', '2', '女性');
+INSERT INTO `standard_dict` VALUES ('1303247366693937153', 1, '1214835832967581698', '2020-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2020-09-08 16:16:38', NULL, '1303245849463218178', '9', '未说明的性别');
+INSERT INTO `standard_dict` VALUES ('1303249289220210689', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, '1303245946938843137', '10', '未婚');
+INSERT INTO `standard_dict` VALUES ('1303249292659539970', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, '1303245946938843137', '20', '已婚');
+INSERT INTO `standard_dict` VALUES ('1303249295721381890', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, '1303245946938843137', '21', '初婚');
+INSERT INTO `standard_dict` VALUES ('1303249298619645953', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, '1303245946938843137', '22', '再婚');
+INSERT INTO `standard_dict` VALUES ('1303249302188998658', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, '1303245946938843137', '23', '复婚');
+INSERT INTO `standard_dict` VALUES ('1303249306152615937', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, '1303245946938843137', '30', '丧偶');
+INSERT INTO `standard_dict` VALUES ('1303249308417540097', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, '1303245946938843137', '40', '离婚');
+INSERT INTO `standard_dict` VALUES ('1303249312116916225', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, '1303245946938843137', '90', '未说明的婚姻状况');
+INSERT INTO `standard_dict` VALUES ('1303250886239223810', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '11', '国家公务员');
+INSERT INTO `standard_dict` VALUES ('1303250889280094210', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '13', '国家公务员');
+INSERT INTO `standard_dict` VALUES ('1303250891419189250', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '17', '职员');
+INSERT INTO `standard_dict` VALUES ('1303250895265366018', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '21', '企业管理人员');
+INSERT INTO `standard_dict` VALUES ('1303250898415288322', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '24', '工 人');
+INSERT INTO `standard_dict` VALUES ('1303250902022389761', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '27', '农民');
+INSERT INTO `standard_dict` VALUES ('1303250904572526594', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '31', '学生');
+INSERT INTO `standard_dict` VALUES ('1303250907172995074', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '37', '现役军人');
+INSERT INTO `standard_dict` VALUES ('1303250910394220545', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '51', '自由职业者');
+INSERT INTO `standard_dict` VALUES ('1303250914454306817', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '54', '个体经营者');
+INSERT INTO `standard_dict` VALUES ('1303250918308872194', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '70', '无业 人员');
+INSERT INTO `standard_dict` VALUES ('1303250920888369153', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '80', '退（离）休人员');
+INSERT INTO `standard_dict` VALUES ('1303250924432556033', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, '1303246143370682369', '90', '其他');
+INSERT INTO `standard_dict` VALUES ('1303252645292556289', 1, '1214835832967581698', '2020-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:13', NULL, '1303246245158051841', '1', '香港同胞亲属');
+INSERT INTO `standard_dict` VALUES ('1303252649616883713', 1, '1214835832967581698', '2020-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:13', NULL, '1303246245158051841', '2', '澳门同胞亲属');
+INSERT INTO `standard_dict` VALUES ('1303252652871663617', 1, '1214835832967581698', '2020-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:13', NULL, '1303246245158051841', '3', '台湾同胞亲属');
+INSERT INTO `standard_dict` VALUES ('1303252656952721409', 1, '1214835832967581698', '2020-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:13', NULL, '1303246245158051841', '4', '海外侨胞亲属');
+INSERT INTO `standard_dict` VALUES ('1303253227483033601', 1, '1214835832967581698', '2020-09-08 16:18:50', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:50', NULL, '1303246401513316353', '1', '两院院士');
+INSERT INTO `standard_dict` VALUES ('1303253232226791425', 1, '1214835832967581698', '2020-09-08 16:18:50', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:50', NULL, '1303246401513316353', '2', '中国科学院院士');
+INSERT INTO `standard_dict` VALUES ('1303253234995032066', 1, '1214835832967581698', '2020-09-08 16:18:50', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:50', NULL, '1303246401513316353', '3', '中国工程院院士');
 
 -- ----------------------------
 -- Table structure for standard_type
 -- ----------------------------
 DROP TABLE IF EXISTS `standard_type`;
-CREATE TABLE `standard_type`  (
+CREATE TABLE IF NOT EXISTS  `standard_type`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2649,17 +1762,17 @@ CREATE TABLE `standard_type`  (
 -- ----------------------------
 -- Records of standard_type
 -- ----------------------------
-INSERT INTO `standard_type` VALUES ('1303245849463218178', 1, '1214835832967581698', '2022-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2022-09-08 16:16:38', NULL, 'GB/T 2261.1-2003', '人的性别代码');
-INSERT INTO `standard_type` VALUES ('1303245946938843137', 1, '1214835832967581698', '2022-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:02', NULL, 'GB/T 2261.2-2003', '婚姻状况代码');
-INSERT INTO `standard_type` VALUES ('1303246143370682369', 1, '1214835832967581698', '2022-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2022-09-08 16:17:48', NULL, 'GB/T 2261.4-2003', '从业状况(个人身份)代码');
-INSERT INTO `standard_type` VALUES ('1303246245158051841', 1, '1214835832967581698', '2022-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:13', NULL, 'GB/T 2261.5-2003', '港澳台侨属代码');
-INSERT INTO `standard_type` VALUES ('1303246401513316353', 1, '1214835832967581698', '2022-09-08 16:18:50', '1197789917762031617', '1214835832967581698', '2022-09-08 16:18:50', NULL, 'GB/T 2261.7-2003', '院士代码');
+INSERT INTO `standard_type` VALUES ('1303245849463218178', 1, '1214835832967581698', '2020-09-08 16:16:38', '1197789917762031617', '1214835832967581698', '2020-09-08 16:16:38', NULL, 'GB/T 2261.1-2003', '人的性别代码');
+INSERT INTO `standard_type` VALUES ('1303245946938843137', 1, '1214835832967581698', '2020-09-08 16:17:02', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:02', NULL, 'GB/T 2261.2-2003', '婚姻状况代码');
+INSERT INTO `standard_type` VALUES ('1303246143370682369', 1, '1214835832967581698', '2020-09-08 16:17:48', '1197789917762031617', '1214835832967581698', '2020-09-08 16:17:48', NULL, 'GB/T 2261.4-2003', '从业状况(个人身份)代码');
+INSERT INTO `standard_type` VALUES ('1303246245158051841', 1, '1214835832967581698', '2020-09-08 16:18:13', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:13', NULL, 'GB/T 2261.5-2003', '港澳台侨属代码');
+INSERT INTO `standard_type` VALUES ('1303246401513316353', 1, '1214835832967581698', '2020-09-08 16:18:50', '1197789917762031617', '1214835832967581698', '2020-09-08 16:18:50', NULL, 'GB/T 2261.7-2003', '院士代码');
 
 -- ----------------------------
 -- Table structure for sys_config
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_config`;
-CREATE TABLE `sys_config`  (
+CREATE TABLE IF NOT EXISTS  `sys_config`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2676,13 +1789,13 @@ CREATE TABLE `sys_config`  (
 -- ----------------------------
 -- Records of sys_config
 -- ----------------------------
-INSERT INTO `sys_config` VALUES ('1265635179754459137', 1, '1214835832967581698', '2022-05-27 21:25:16', '1214835832967581698', '2022-07-06 10:47:20', '', '初始化密码', 'sys.user.password', '123456');
+INSERT INTO `sys_config` VALUES ('1265635179754459137', 1, '1214835832967581698', '2020-05-27 21:25:16', '1214835832967581698', '2020-07-06 10:47:20', '', '初始化密码', 'sys.user.password', '123456');
 
 -- ----------------------------
 -- Table structure for sys_dept
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dept`;
-CREATE TABLE `sys_dept`  (
+CREATE TABLE IF NOT EXISTS  `sys_dept`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `parent_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '父部门ID',
   `dept_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '部门名称',
@@ -2699,15 +1812,15 @@ CREATE TABLE `sys_dept`  (
 -- ----------------------------
 -- Records of sys_dept
 -- ----------------------------
-INSERT INTO `sys_dept` VALUES ('1197789917762031617', '0', 'xx科技', '10', 1, '1', '2022-11-22 16:12:25', '1214835832967581698', '2022-01-05 21:29:07', '1');
-INSERT INTO `sys_dept` VALUES ('1197790192543469570', '1197789917762031617', '研发部门', '10001', 1, '1', '2022-11-22 16:13:30', '1', '2022-11-22 16:13:30', NULL);
-INSERT INTO `sys_dept` VALUES ('1197790560782389250', '1197789917762031617', '市场部门', '10002', 1, '1', '2022-11-22 16:14:58', '1', '2022-11-22 16:14:58', NULL);
+INSERT INTO `sys_dept` VALUES ('1197789917762031617', '0', 'xx科技', '10', 1, '1', '2019-11-22 16:12:25', '1214835832967581698', '2021-01-05 21:29:07', '1');
+INSERT INTO `sys_dept` VALUES ('1197790192543469570', '1197789917762031617', '研发部门', '10001', 1, '1', '2019-11-22 16:13:30', '1', '2019-11-22 16:13:30', NULL);
+INSERT INTO `sys_dept` VALUES ('1197790560782389250', '1197789917762031617', '市场部门', '10002', 1, '1', '2019-11-22 16:14:58', '1', '2019-11-22 16:14:58', NULL);
 
 -- ----------------------------
 -- Table structure for sys_dept_relation
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dept_relation`;
-CREATE TABLE `sys_dept_relation`  (
+CREATE TABLE IF NOT EXISTS  `sys_dept_relation`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '部门关系主键ID',
   `ancestor` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '祖先节点',
   `descendant` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '后代节点',
@@ -2725,7 +1838,7 @@ INSERT INTO `sys_dept_relation` VALUES ('1346448644767150081', '1197789917762031
 -- Table structure for sys_dict
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict`;
-CREATE TABLE `sys_dict`  (
+CREATE TABLE IF NOT EXISTS  `sys_dict`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2741,36 +1854,36 @@ CREATE TABLE `sys_dict`  (
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
-INSERT INTO `sys_dict` VALUES ('1254701165563764738', 1, '1214835832967581698', '2022-04-27 17:17:24', '1214835832967581698', '2022-04-27 17:17:24', NULL, '菜单类型', 'sys_menu_type');
-INSERT INTO `sys_dict` VALUES ('1254701402755850241', 1, '1214835832967581698', '2022-04-27 17:18:20', '1214835832967581698', '2022-04-27 17:18:20', NULL, '数据状态', 'sys_common_status');
-INSERT INTO `sys_dict` VALUES ('1255033722255945729', 1, '1214835832967581698', '2022-04-28 15:18:51', '1214835832967581698', '2022-04-28 15:18:51', NULL, '数据范围', 'sys_data_scope');
-INSERT INTO `sys_dict` VALUES ('1255037349741703169', 1, '1214835832967581698', '2022-04-28 15:33:16', '1214835832967581698', '2022-04-28 15:33:16', NULL, '数据库类型', 'data_db_type');
-INSERT INTO `sys_dict` VALUES ('1255047550985297922', 1, '1214835832967581698', '2022-04-28 16:13:48', '1214835832967581698', '2022-04-28 16:13:48', NULL, '是否', 'sys_yes_no');
-INSERT INTO `sys_dict` VALUES ('1255047909942222850', 1, '1214835832967581698', '2022-04-28 16:15:14', '1214835832967581698', '2022-04-28 16:15:14', NULL, '请求方式', 'data_req_method');
-INSERT INTO `sys_dict` VALUES ('1255048146102509569', 1, '1214835832967581698', '2022-04-28 16:16:10', '1214835832967581698', '2022-04-28 16:16:10', NULL, '返回格式', 'data_res_type');
-INSERT INTO `sys_dict` VALUES ('1255049472299491329', 1, '1214835832967581698', '2022-04-28 16:21:27', '1214835832967581698', '2022-04-28 16:21:27', NULL, '配置方式', 'data_config_type');
-INSERT INTO `sys_dict` VALUES ('1255049868610887682', 1, '1214835832967581698', '2022-04-28 16:23:01', '1214835832967581698', '2022-04-28 16:23:01', NULL, 'SQL操作符', 'data_where_type');
-INSERT INTO `sys_dict` VALUES ('1255050897825980418', 1, '1214835832967581698', '2022-04-28 16:27:06', '1214835832967581698', '2022-04-28 16:27:06', NULL, '参数类型', 'data_param_type');
-INSERT INTO `sys_dict` VALUES ('1255052030422278145', 1, '1214835832967581698', '2022-04-28 16:31:36', '1214835832967581698', '2022-04-28 16:31:36', NULL, '脱敏类型', 'data_cipher_type');
-INSERT INTO `sys_dict` VALUES ('1255054338933645314', 1, '1214835832967581698', '2022-04-28 16:40:47', '1214835832967581698', '2022-04-28 16:40:47', NULL, '正则规则类型', 'data_regex_crypto');
-INSERT INTO `sys_dict` VALUES ('1255054468176928770', 1, '1214835832967581698', '2022-04-28 16:41:18', '1214835832967581698', '2022-04-28 16:41:18', NULL, '加密规则类型', 'data_algorithm_crypto');
-INSERT INTO `sys_dict` VALUES ('1275048574979174401', 1, '1214835832967581698', '2022-06-22 20:50:44', '1214835832967581698', '2022-06-22 20:50:44', NULL, '任务状态', 'sys_job_status');
-INSERT INTO `sys_dict` VALUES ('1275054601837506561', 1, '1214835832967581698', '2022-06-22 21:14:41', '1214835832967581698', '2022-06-22 21:14:41', NULL, '系统状态', 'sys_normal_status');
-INSERT INTO `sys_dict` VALUES ('1280793187027292161', 1, '1214835832967581698', '2022-07-08 17:17:46', '1214835832967581698', '2022-07-08 17:17:46', NULL, 'API状态', 'data_api_status');
-INSERT INTO `sys_dict` VALUES ('1285923703451848705', 1, '1214835832967581698', '2022-07-22 21:04:37', '1214835832967581698', '2022-07-22 21:04:37', NULL, '聚合函数', 'data_aggregate_type');
-INSERT INTO `sys_dict` VALUES ('1296680107225706498', 1, '1296680107225706498', '2022-08-21 21:04:37', '1214835832967581698', '2022-08-21 21:04:37', NULL, '服务类型', 'data_service_type');
-INSERT INTO `sys_dict` VALUES ('1300344099387244546', 1, '1296680107225706498', '2022-08-21 21:04:37', '1214835832967581698', '2022-08-21 21:04:37', NULL, '查询方式', 'data_query_type');
-INSERT INTO `sys_dict` VALUES ('1300344451876577281', 1, '1296680107225706498', '2022-08-21 21:04:37', '1214835832967581698', '2022-08-21 21:04:37', NULL, '显示类型', 'data_html_type');
-INSERT INTO `sys_dict` VALUES ('1300708138781016066', 1, '1296680107225706498', '2022-08-21 21:04:37', '1214835832967581698', '2022-08-21 21:04:37', NULL, 'ORACLE数据类型', 'data_type_oracle');
-INSERT INTO `sys_dict` VALUES ('1301041843055632386', 1, '1296680107225706498', '2022-08-21 21:04:37', '1214835832967581698', '2022-08-21 21:04:37', NULL, 'MYSQL数据类型', 'data_type_mysql');
-INSERT INTO `sys_dict` VALUES ('1309001146932670465', 1, '1296680107225706498', '2022-08-21 21:04:37', '1214835832967581698', '2022-08-21 21:04:37', NULL, '流程状态', 'sys_flow_status');
-INSERT INTO `sys_dict` VALUES ('1310494826919211009', 1, '1296680107225706498', '2022-08-21 21:04:37', '1214835832967581698', '2022-08-21 21:04:37', NULL, '字典对照状态', 'data_contrast_status');
+INSERT INTO `sys_dict` VALUES ('1254701165563764738', 1, '1214835832967581698', '2020-04-27 17:17:24', '1214835832967581698', '2020-04-27 17:17:24', NULL, '菜单类型', 'sys_menu_type');
+INSERT INTO `sys_dict` VALUES ('1254701402755850241', 1, '1214835832967581698', '2020-04-27 17:18:20', '1214835832967581698', '2020-04-27 17:18:20', NULL, '数据状态', 'sys_common_status');
+INSERT INTO `sys_dict` VALUES ('1255033722255945729', 1, '1214835832967581698', '2020-04-28 15:18:51', '1214835832967581698', '2020-04-28 15:18:51', NULL, '数据范围', 'sys_data_scope');
+INSERT INTO `sys_dict` VALUES ('1255037349741703169', 1, '1214835832967581698', '2020-04-28 15:33:16', '1214835832967581698', '2020-04-28 15:33:16', NULL, '数据库类型', 'data_db_type');
+INSERT INTO `sys_dict` VALUES ('1255047550985297922', 1, '1214835832967581698', '2020-04-28 16:13:48', '1214835832967581698', '2020-04-28 16:13:48', NULL, '是否', 'sys_yes_no');
+INSERT INTO `sys_dict` VALUES ('1255047909942222850', 1, '1214835832967581698', '2020-04-28 16:15:14', '1214835832967581698', '2020-04-28 16:15:14', NULL, '请求方式', 'data_req_method');
+INSERT INTO `sys_dict` VALUES ('1255048146102509569', 1, '1214835832967581698', '2020-04-28 16:16:10', '1214835832967581698', '2020-04-28 16:16:10', NULL, '返回格式', 'data_res_type');
+INSERT INTO `sys_dict` VALUES ('1255049472299491329', 1, '1214835832967581698', '2020-04-28 16:21:27', '1214835832967581698', '2020-04-28 16:21:27', NULL, '配置方式', 'data_config_type');
+INSERT INTO `sys_dict` VALUES ('1255049868610887682', 1, '1214835832967581698', '2020-04-28 16:23:01', '1214835832967581698', '2020-04-28 16:23:01', NULL, 'SQL操作符', 'data_where_type');
+INSERT INTO `sys_dict` VALUES ('1255050897825980418', 1, '1214835832967581698', '2020-04-28 16:27:06', '1214835832967581698', '2020-04-28 16:27:06', NULL, '参数类型', 'data_param_type');
+INSERT INTO `sys_dict` VALUES ('1255052030422278145', 1, '1214835832967581698', '2020-04-28 16:31:36', '1214835832967581698', '2020-04-28 16:31:36', NULL, '脱敏类型', 'data_cipher_type');
+INSERT INTO `sys_dict` VALUES ('1255054338933645314', 1, '1214835832967581698', '2020-04-28 16:40:47', '1214835832967581698', '2020-04-28 16:40:47', NULL, '正则规则类型', 'data_regex_crypto');
+INSERT INTO `sys_dict` VALUES ('1255054468176928770', 1, '1214835832967581698', '2020-04-28 16:41:18', '1214835832967581698', '2020-04-28 16:41:18', NULL, '加密规则类型', 'data_algorithm_crypto');
+INSERT INTO `sys_dict` VALUES ('1275048574979174401', 1, '1214835832967581698', '2020-06-22 20:50:44', '1214835832967581698', '2020-06-22 20:50:44', NULL, '任务状态', 'sys_job_status');
+INSERT INTO `sys_dict` VALUES ('1275054601837506561', 1, '1214835832967581698', '2020-06-22 21:14:41', '1214835832967581698', '2020-06-22 21:14:41', NULL, '系统状态', 'sys_normal_status');
+INSERT INTO `sys_dict` VALUES ('1280793187027292161', 1, '1214835832967581698', '2020-07-08 17:17:46', '1214835832967581698', '2020-07-08 17:17:46', NULL, 'API状态', 'data_api_status');
+INSERT INTO `sys_dict` VALUES ('1285923703451848705', 1, '1214835832967581698', '2020-07-22 21:04:37', '1214835832967581698', '2020-07-22 21:04:37', NULL, '聚合函数', 'data_aggregate_type');
+INSERT INTO `sys_dict` VALUES ('1296680107225706498', 1, '1296680107225706498', '2020-08-21 21:04:37', '1214835832967581698', '2020-08-21 21:04:37', NULL, '服务类型', 'data_service_type');
+INSERT INTO `sys_dict` VALUES ('1300344099387244546', 1, '1296680107225706498', '2020-08-21 21:04:37', '1214835832967581698', '2020-08-21 21:04:37', NULL, '查询方式', 'data_query_type');
+INSERT INTO `sys_dict` VALUES ('1300344451876577281', 1, '1296680107225706498', '2020-08-21 21:04:37', '1214835832967581698', '2020-08-21 21:04:37', NULL, '显示类型', 'data_html_type');
+INSERT INTO `sys_dict` VALUES ('1300708138781016066', 1, '1296680107225706498', '2020-08-21 21:04:37', '1214835832967581698', '2020-08-21 21:04:37', NULL, 'ORACLE数据类型', 'data_type_oracle');
+INSERT INTO `sys_dict` VALUES ('1301041843055632386', 1, '1296680107225706498', '2020-08-21 21:04:37', '1214835832967581698', '2020-08-21 21:04:37', NULL, 'MYSQL数据类型', 'data_type_mysql');
+INSERT INTO `sys_dict` VALUES ('1309001146932670465', 1, '1296680107225706498', '2020-08-21 21:04:37', '1214835832967581698', '2020-08-21 21:04:37', NULL, '流程状态', 'sys_flow_status');
+INSERT INTO `sys_dict` VALUES ('1310494826919211009', 1, '1296680107225706498', '2020-08-21 21:04:37', '1214835832967581698', '2020-08-21 21:04:37', NULL, '字典对照状态', 'data_contrast_status');
 
 -- ----------------------------
 -- Table structure for sys_dict_item
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_item`;
-CREATE TABLE `sys_dict_item`  (
+CREATE TABLE IF NOT EXISTS  `sys_dict_item`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -2788,124 +1901,124 @@ CREATE TABLE `sys_dict_item`  (
 -- ----------------------------
 -- Records of sys_dict_item
 -- ----------------------------
-INSERT INTO `sys_dict_item` VALUES ('1254702149128052737', 1, '1214835832967581698', '2022-04-27 17:21:18', '1214835832967581698', '2022-04-27 17:21:18', NULL, '1254701165563764738', '0', '模块', 1);
-INSERT INTO `sys_dict_item` VALUES ('1254702177166974977', 1, '1214835832967581698', '2022-04-27 17:21:25', '1214835832967581698', '2022-04-27 17:21:25', NULL, '1254701165563764738', '1', '菜单', 2);
-INSERT INTO `sys_dict_item` VALUES ('1254702210272616449', 1, '1214835832967581698', '2022-04-27 17:21:33', '1214835832967581698', '2022-04-27 17:21:33', NULL, '1254701165563764738', '2', '按钮', 3);
-INSERT INTO `sys_dict_item` VALUES ('1254702351834570753', 1, '1214835832967581698', '2022-04-27 17:22:07', '1214835832967581698', '2022-04-27 17:22:07', NULL, '1254701402755850241', '0', '禁用', 1);
-INSERT INTO `sys_dict_item` VALUES ('1254702385279950850', 1, '1214835832967581698', '2022-04-27 17:22:15', '1214835832967581698', '2022-04-27 17:22:15', NULL, '1254701402755850241', '1', '启用', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255034071784075266', 1, '1214835832967581698', '2022-04-28 15:20:15', '1214835832967581698', '2022-04-28 15:20:15', NULL, '1255033722255945729', '1', '全部数据权限', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255034118043054082', 1, '1214835832967581698', '2022-04-28 15:20:26', '1214835832967581698', '2022-04-28 15:20:26', NULL, '1255033722255945729', '2', '自定义数据权限', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255034148703416321', 1, '1214835832967581698', '2022-04-28 15:20:33', '1214835832967581698', '2022-04-28 15:20:33', NULL, '1255033722255945729', '3', '本部门数据权限', 3);
-INSERT INTO `sys_dict_item` VALUES ('1255034178491363329', 1, '1214835832967581698', '2022-04-28 15:20:40', '1214835832967581698', '2022-04-28 15:20:40', NULL, '1255033722255945729', '4', '本部门及以下数据权限', 4);
-INSERT INTO `sys_dict_item` VALUES ('1255034207415283713', 1, '1214835832967581698', '2022-04-28 15:20:47', '1214835832967581698', '2022-04-28 15:20:47', NULL, '1255033722255945729', '5', '仅本人数据权限', 5);
-INSERT INTO `sys_dict_item` VALUES ('1255037454632857602', 1, '1214835832967581698', '2022-04-28 15:33:41', '1214835832967581698', '2022-04-28 15:33:41', NULL, '1255037349741703169', '1', 'MySql数据库', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255037499587407874', 1, '1214835832967581698', '2022-04-28 15:33:52', '1214835832967581698', '2022-04-28 15:33:52', NULL, '1255037349741703169', '2', 'MariaDB数据库', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255037543732457474', 1, '1214835832967581698', '2022-04-28 15:34:03', '1214835832967581698', '2022-04-28 15:34:03', NULL, '1255037349741703169', '3', 'Oracle11g及以下数据库', 3);
-INSERT INTO `sys_dict_item` VALUES ('1255037611558547458', 1, '1214835832967581698', '2022-04-28 15:34:19', '1214835832967581698', '2022-04-28 15:34:19', NULL, '1255037349741703169', '4', 'Oracle12c+数据库', 4);
-INSERT INTO `sys_dict_item` VALUES ('1255037682886881282', 1, '1214835832967581698', '2022-04-28 15:34:36', '1214835832967581698', '2022-04-28 15:34:36', NULL, '1255037349741703169', '5', 'PostgreSql数据库', 5);
-INSERT INTO `sys_dict_item` VALUES ('1255037722741157890', 1, '1214835832967581698', '2022-04-28 15:34:45', '1214835832967581698', '2022-04-28 15:34:45', NULL, '1255037349741703169', '6', 'SQLServer2008及以下数据库', 6);
-INSERT INTO `sys_dict_item` VALUES ('1255037772984725506', 1, '1214835832967581698', '2022-04-28 15:34:57', '1214835832967581698', '2022-04-28 15:34:57', NULL, '1255037349741703169', '7', 'SQLServer2012+数据库', 7);
-INSERT INTO `sys_dict_item` VALUES ('1255037816378994690', 1, '1214835832967581698', '2022-04-28 15:35:08', '1214835832967581698', '2022-04-28 15:35:08', NULL, '1255037349741703169', '8', '其他数据库', 8);
-INSERT INTO `sys_dict_item` VALUES ('1255047584040607746', 1, '1214835832967581698', '2022-04-28 16:13:56', '1214835832967581698', '2022-04-28 16:13:56', NULL, '1255047550985297922', '0', '否', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255047616940728322', 1, '1214835832967581698', '2022-04-28 16:14:04', '1214835832967581698', '2022-04-28 16:14:04', NULL, '1255047550985297922', '1', '是', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255048026803920898', 1, '1214835832967581698', '2022-04-28 16:15:42', '1214835832967581698', '2022-04-28 16:15:42', NULL, '1255047909942222850', 'GET', 'GET', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255048059242668033', 1, '1214835832967581698', '2022-04-28 16:15:50', '1214835832967581698', '2022-04-28 16:15:50', NULL, '1255047909942222850', 'POST', 'POST', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255048227744636929', 1, '1214835832967581698', '2022-04-28 16:16:30', '1214835832967581698', '2022-04-28 16:16:30', NULL, '1255048146102509569', 'JSON', 'JSON', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255049535197274113', 1, '1214835832967581698', '2022-04-28 16:21:42', '1214835832967581698', '2022-04-28 16:21:42', NULL, '1255049472299491329', '1', '表引导模式', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255049562602856449', 1, '1214835832967581698', '2022-04-28 16:21:48', '1214835832967581698', '2022-04-28 16:21:48', NULL, '1255049472299491329', '2', '脚本模式', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255049937749794817', 1, '1214835832967581698', '2022-04-28 16:23:18', '1214835832967581698', '2022-04-28 16:23:18', NULL, '1255049868610887682', '1', '等于', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255049969106411521', 1, '1214835832967581698', '2022-04-28 16:23:25', '1214835832967581698', '2022-04-28 16:23:25', NULL, '1255049868610887682', '2', '不等于', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255049996876898306', 1, '1214835832967581698', '2022-04-28 16:23:32', '1214835832967581698', '2022-04-28 16:23:32', NULL, '1255049868610887682', '3', '全模糊查询', 3);
-INSERT INTO `sys_dict_item` VALUES ('1255050281636585473', 1, '1214835832967581698', '2022-04-28 16:24:40', '1214835832967581698', '2022-04-28 16:24:40', NULL, '1255049868610887682', '4', '左模糊查询', 4);
-INSERT INTO `sys_dict_item` VALUES ('1255050325618057217', 1, '1214835832967581698', '2022-04-28 16:24:50', '1214835832967581698', '2022-04-28 16:24:50', NULL, '1255049868610887682', '5', '右模糊查询', 5);
-INSERT INTO `sys_dict_item` VALUES ('1255050357075337217', 1, '1214835832967581698', '2022-04-28 16:24:57', '1214835832967581698', '2022-04-28 16:24:57', NULL, '1255049868610887682', '6', '大于', 6);
-INSERT INTO `sys_dict_item` VALUES ('1255050386712289281', 1, '1214835832967581698', '2022-04-28 16:25:05', '1214835832967581698', '2022-04-28 16:25:05', NULL, '1255049868610887682', '7', '大于等于', 7);
-INSERT INTO `sys_dict_item` VALUES ('1255050425413132290', 1, '1214835832967581698', '2022-04-28 16:25:14', '1214835832967581698', '2022-04-28 16:25:14', NULL, '1255049868610887682', '8', '小于', 8);
-INSERT INTO `sys_dict_item` VALUES ('1255050459407966210', 1, '1214835832967581698', '2022-04-28 16:25:22', '1214835832967581698', '2022-04-28 16:25:22', NULL, '1255049868610887682', '9', '小于等于', 9);
-INSERT INTO `sys_dict_item` VALUES ('1255050508485517313', 1, '1214835832967581698', '2022-04-28 16:25:34', '1214835832967581698', '2022-04-28 16:25:34', NULL, '1255049868610887682', '10', '是否为空', 10);
-INSERT INTO `sys_dict_item` VALUES ('1255050549505810433', 1, '1214835832967581698', '2022-04-28 16:25:43', '1214835832967581698', '2022-04-28 16:25:43', NULL, '1255049868610887682', '11', '是否不为空', 11);
-INSERT INTO `sys_dict_item` VALUES ('1255050756901560321', 1, '1214835832967581698', '2022-04-28 16:26:33', '1214835832967581698', '2022-04-28 16:26:33', NULL, '1255049868610887682', '12', 'IN', 12);
-INSERT INTO `sys_dict_item` VALUES ('1255051004805898241', 1, '1214835832967581698', '2022-04-28 16:27:32', '1214835832967581698', '2022-04-28 16:27:32', NULL, '1255050897825980418', '1', '字符串', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255051030818971649', 1, '1214835832967581698', '2022-04-28 16:27:38', '1214835832967581698', '2022-04-28 16:27:38', NULL, '1255050897825980418', '2', '整型', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255051062423052289', 1, '1214835832967581698', '2022-04-28 16:27:46', '1214835832967581698', '2022-04-28 16:27:46', NULL, '1255050897825980418', '3', '浮点型', 3);
-INSERT INTO `sys_dict_item` VALUES ('1255051089870577665', 1, '1214835832967581698', '2022-04-28 16:27:52', '1214835832967581698', '2022-04-28 16:27:52', NULL, '1255050897825980418', '4', '时间', 4);
-INSERT INTO `sys_dict_item` VALUES ('1255051121646624770', 1, '1214835832967581698', '2022-04-28 16:28:00', '1214835832967581698', '2022-04-28 16:28:00', NULL, '1255050897825980418', '5', '集合', 5);
-INSERT INTO `sys_dict_item` VALUES ('1255052103847763970', 1, '1214835832967581698', '2022-04-28 16:31:54', '1214835832967581698', '2022-04-28 16:31:54', NULL, '1255052030422278145', '1', '正则替换', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255052128799678465', 1, '1214835832967581698', '2022-04-28 16:32:00', '1214835832967581698', '2022-04-28 16:32:00', NULL, '1255052030422278145', '2', '加密算法', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255054729293324290', 1, '1214835832967581698', '2022-04-28 16:42:20', '1214835832967581698', '2022-04-28 16:42:20', NULL, '1255054338933645314', '1', '中文姓名', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255054769277624322', 1, '1214835832967581698', '2022-04-28 16:42:29', '1214835832967581698', '2022-04-28 16:42:29', NULL, '1255054338933645314', '2', '身份证号', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255054810838982657', 1, '1214835832967581698', '2022-04-28 16:42:39', '1214835832967581698', '2022-04-28 16:42:39', NULL, '1255054338933645314', '3', '固定电话', 3);
-INSERT INTO `sys_dict_item` VALUES ('1255054840111030274', 1, '1214835832967581698', '2022-04-28 16:42:46', '1214835832967581698', '2022-04-28 16:42:46', NULL, '1255054338933645314', '4', '手机号码', 4);
-INSERT INTO `sys_dict_item` VALUES ('1255054878862204929', 1, '1214835832967581698', '2022-04-28 16:42:56', '1214835832967581698', '2022-04-28 16:42:56', NULL, '1255054338933645314', '5', '地址', 5);
-INSERT INTO `sys_dict_item` VALUES ('1255054911183511553', 1, '1214835832967581698', '2022-04-28 16:43:03', '1214835832967581698', '2022-04-28 16:43:03', NULL, '1255054338933645314', '6', '电子邮箱', 6);
-INSERT INTO `sys_dict_item` VALUES ('1255054941030178817', 1, '1214835832967581698', '2022-04-28 16:43:10', '1214835832967581698', '2022-04-28 16:43:10', NULL, '1255054338933645314', '7', '银行卡号', 7);
-INSERT INTO `sys_dict_item` VALUES ('1255054975704489986', 1, '1214835832967581698', '2022-04-28 16:43:19', '1214835832967581698', '2022-04-28 16:43:19', NULL, '1255054338933645314', '8', '公司开户银行联号', 8);
-INSERT INTO `sys_dict_item` VALUES ('1255055043568328706', 1, '1214835832967581698', '2022-04-28 16:43:35', '1214835832967581698', '2022-04-28 16:43:35', NULL, '1255054468176928770', '1', 'BASE64加密', 1);
-INSERT INTO `sys_dict_item` VALUES ('1255055072123150338', 1, '1214835832967581698', '2022-04-28 16:43:42', '1214835832967581698', '2022-04-28 16:43:42', NULL, '1255054468176928770', '2', 'MD5加密', 2);
-INSERT INTO `sys_dict_item` VALUES ('1255055103777562626', 1, '1214835832967581698', '2022-04-28 16:43:49', '1214835832967581698', '2022-04-28 16:43:49', NULL, '1255054468176928770', '3', 'SHA_1加密', 3);
-INSERT INTO `sys_dict_item` VALUES ('1255055137550098434', 1, '1214835832967581698', '2022-04-28 16:43:57', '1214835832967581698', '2022-04-28 16:43:57', NULL, '1255054468176928770', '4', 'SHA_256加密', 4);
-INSERT INTO `sys_dict_item` VALUES ('1255055168852189186', 1, '1214835832967581698', '2022-04-28 16:44:05', '1214835832967581698', '2022-04-28 16:44:05', NULL, '1255054468176928770', '5', 'AES加密', 5);
-INSERT INTO `sys_dict_item` VALUES ('1255055201391599617', 1, '1214835832967581698', '2022-04-28 16:44:12', '1214835832967581698', '2022-04-28 16:44:12', NULL, '1255054468176928770', '6', 'DES加密', 6);
-INSERT INTO `sys_dict_item` VALUES ('1275048742365458434', 1, '1214835832967581698', '2022-06-22 20:51:24', '1214835832967581698', '2022-06-22 20:51:24', NULL, '1275048574979174401', '0', '暂停', 1);
-INSERT INTO `sys_dict_item` VALUES ('1275048809193304065', 1, '1214835832967581698', '2022-06-22 20:51:40', '1214835832967581698', '2022-06-22 20:51:40', NULL, '1275048574979174401', '1', '运行', 2);
-INSERT INTO `sys_dict_item` VALUES ('1275054736508219394', 1, '1214835832967581698', '2022-06-22 21:15:13', '1214835832967581698', '2022-06-22 21:15:13', NULL, '1275054601837506561', '0', '失败', 1);
-INSERT INTO `sys_dict_item` VALUES ('1275054803906490370', 1, '1214835832967581698', '2022-06-22 21:15:29', '1214835832967581698', '2022-06-22 21:15:29', NULL, '1275054601837506561', '1', '成功', 2);
-INSERT INTO `sys_dict_item` VALUES ('1280793322234875905', 1, '1214835832967581698', '2022-07-08 17:18:19', '1214835832967581698', '2022-07-08 17:18:19', NULL, '1280793187027292161', '1', '待发布', 1);
-INSERT INTO `sys_dict_item` VALUES ('1280793374244245505', 1, '1214835832967581698', '2022-07-08 17:18:31', '1214835832967581698', '2022-07-08 17:18:31', NULL, '1280793187027292161', '2', '已发布', 2);
-INSERT INTO `sys_dict_item` VALUES ('1280793418611593218', 1, '1214835832967581698', '2022-07-08 17:18:42', '1214835832967581698', '2022-07-08 17:18:42', NULL, '1280793187027292161', '3', '已下线', 3);
-INSERT INTO `sys_dict_item` VALUES ('1285924274212737026', 1, '1214835832967581698', '2022-07-22 21:06:53', '1214835832967581698', '2022-07-22 21:06:53', NULL, '1285923703451848705', 'AVG', '平均值', 1);
-INSERT INTO `sys_dict_item` VALUES ('1285924403900616706', 1, '1214835832967581698', '2022-07-22 21:07:24', '1214835832967581698', '2022-07-22 21:07:24', NULL, '1285923703451848705', 'COUNT', '计数', 2);
-INSERT INTO `sys_dict_item` VALUES ('1285924488742998018', 1, '1214835832967581698', '2022-07-22 21:07:44', '1214835832967581698', '2022-07-22 21:07:44', NULL, '1285923703451848705', 'MAX', '最大值', 3);
-INSERT INTO `sys_dict_item` VALUES ('1285924564915752961', 1, '1214835832967581698', '2022-07-22 21:08:02', '1214835832967581698', '2022-07-22 21:08:02', NULL, '1285923703451848705', 'MIN', '最小值', 4);
-INSERT INTO `sys_dict_item` VALUES ('1285924644037103617', 1, '1214835832967581698', '2022-07-22 21:08:21', '1214835832967581698', '2022-07-22 21:08:21', NULL, '1285923703451848705', 'SUM', '求和', 5);
-INSERT INTO `sys_dict_item` VALUES ('1296680479872815106', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1296680107225706498', '1', 'http接口', 1);
-INSERT INTO `sys_dict_item` VALUES ('1296680800095338497', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1296680107225706498', '2', 'webservice接口', 2);
-INSERT INTO `sys_dict_item` VALUES ('1300344676871569410', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344099387244546', 'eq', '=', 1);
-INSERT INTO `sys_dict_item` VALUES ('1300344719984926721', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344099387244546', 'ne', '!=', 2);
-INSERT INTO `sys_dict_item` VALUES ('1300344887987683330', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344099387244546', 'gt', '>', 3);
-INSERT INTO `sys_dict_item` VALUES ('1300344940169011202', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344099387244546', 'ge', '>=', 4);
-INSERT INTO `sys_dict_item` VALUES ('1300344991276687361', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344099387244546', 'lt', '<', 5);
-INSERT INTO `sys_dict_item` VALUES ('1300345039674744833', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344099387244546', 'le', '<=', 6);
-INSERT INTO `sys_dict_item` VALUES ('1300345083937226754', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344099387244546', 'like', 'like', 7);
-INSERT INTO `sys_dict_item` VALUES ('1300345183094763522', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344099387244546', 'between', 'between', 8);
-INSERT INTO `sys_dict_item` VALUES ('1300345958537633794', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344451876577281', 'input', '文本框', 1);
-INSERT INTO `sys_dict_item` VALUES ('1300345964648734722', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344451876577281', 'textarea', '文本域', 2);
-INSERT INTO `sys_dict_item` VALUES ('1300345968855621633', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344451876577281', 'select', '下拉框', 3);
-INSERT INTO `sys_dict_item` VALUES ('1300345973049925633', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344451876577281', 'radio', '单选框', 4);
-INSERT INTO `sys_dict_item` VALUES ('1300345977248423937', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344451876577281', 'checkbox', '复选框', 5);
-INSERT INTO `sys_dict_item` VALUES ('1300345981438533633', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344451876577281', 'datetime', '日期控件', 6);
-INSERT INTO `sys_dict_item` VALUES ('1300708143558328322', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300708138781016066', 'char', '字符串', 1);
-INSERT INTO `sys_dict_item` VALUES ('1300708156141240321', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300708138781016066', 'number', '数值', 2);
-INSERT INTO `sys_dict_item` VALUES ('1300708160343932930', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300708138781016066', 'date', '日期', 3);
-INSERT INTO `sys_dict_item` VALUES ('1300708164542431234', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300708138781016066', 'clob', '长文本', 4);
-INSERT INTO `sys_dict_item` VALUES ('1301041851154833410', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'tinyint', 'tinyint整型', 1);
-INSERT INTO `sys_dict_item` VALUES ('1301041854644494338', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'int', 'int整型', 2);
-INSERT INTO `sys_dict_item` VALUES ('1301041857957994497', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'bigint', 'bigint整型', 3);
-INSERT INTO `sys_dict_item` VALUES ('1301041860990476290', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'float', '单精度', 4);
-INSERT INTO `sys_dict_item` VALUES ('1301041864538857474', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'double', '双精度', 5);
-INSERT INTO `sys_dict_item` VALUES ('1301041867428732929', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'decimal', '定点数', 6);
-INSERT INTO `sys_dict_item` VALUES ('1301041870465409025', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'char', '定长字符串', 7);
-INSERT INTO `sys_dict_item` VALUES ('1301041873263009793', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'varchar', '变长字符串', 8);
-INSERT INTO `sys_dict_item` VALUES ('1301041875733454849', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'text', '长文本', 9);
-INSERT INTO `sys_dict_item` VALUES ('1301041878837239810', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'date', 'date日期', 10);
-INSERT INTO `sys_dict_item` VALUES ('1301041882624696322', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'time', 'time日期', 11);
-INSERT INTO `sys_dict_item` VALUES ('1301041884780568578', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'year', 'year日期', 12);
-INSERT INTO `sys_dict_item` VALUES ('1301041887540420609', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1301041843055632386', 'datetime', 'datetime日期', 13);
-INSERT INTO `sys_dict_item` VALUES ('1302079329039069185', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1300344451876577281', 'number', '数字值', 7);
-INSERT INTO `sys_dict_item` VALUES ('1309001150548160514', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1309001146932670465', '1', '待提交', 1);
-INSERT INTO `sys_dict_item` VALUES ('1309001154742464514', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1309001146932670465', '2', '已退回', 2);
-INSERT INTO `sys_dict_item` VALUES ('1309001158517338114', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1309001146932670465', '3', '审核中', 3);
-INSERT INTO `sys_dict_item` VALUES ('1309001162443206658', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1309001146932670465', '4', '通过', 4);
-INSERT INTO `sys_dict_item` VALUES ('1309001165593128962', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1309001146932670465', '5', '不通过', 5);
-INSERT INTO `sys_dict_item` VALUES ('1309001167749001218', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1309001146932670465', '6', '已撤销', 6);
-INSERT INTO `sys_dict_item` VALUES ('1310494837983784962', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1310494826919211009', '0', '未对照', 1);
-INSERT INTO `sys_dict_item` VALUES ('1310494841284702210', 1, '1296680107225706498', '2022-08-21 21:04:37', '1296680107225706498', '2022-08-21 21:04:37', NULL, '1310494826919211009', '1', '已对照', 2);
+INSERT INTO `sys_dict_item` VALUES ('1254702149128052737', 1, '1214835832967581698', '2020-04-27 17:21:18', '1214835832967581698', '2020-04-27 17:21:18', NULL, '1254701165563764738', '0', '模块', 1);
+INSERT INTO `sys_dict_item` VALUES ('1254702177166974977', 1, '1214835832967581698', '2020-04-27 17:21:25', '1214835832967581698', '2020-04-27 17:21:25', NULL, '1254701165563764738', '1', '菜单', 2);
+INSERT INTO `sys_dict_item` VALUES ('1254702210272616449', 1, '1214835832967581698', '2020-04-27 17:21:33', '1214835832967581698', '2020-04-27 17:21:33', NULL, '1254701165563764738', '2', '按钮', 3);
+INSERT INTO `sys_dict_item` VALUES ('1254702351834570753', 1, '1214835832967581698', '2020-04-27 17:22:07', '1214835832967581698', '2020-04-27 17:22:07', NULL, '1254701402755850241', '0', '禁用', 1);
+INSERT INTO `sys_dict_item` VALUES ('1254702385279950850', 1, '1214835832967581698', '2020-04-27 17:22:15', '1214835832967581698', '2020-04-27 17:22:15', NULL, '1254701402755850241', '1', '启用', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255034071784075266', 1, '1214835832967581698', '2020-04-28 15:20:15', '1214835832967581698', '2020-04-28 15:20:15', NULL, '1255033722255945729', '1', '全部数据权限', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255034118043054082', 1, '1214835832967581698', '2020-04-28 15:20:26', '1214835832967581698', '2020-04-28 15:20:26', NULL, '1255033722255945729', '2', '自定义数据权限', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255034148703416321', 1, '1214835832967581698', '2020-04-28 15:20:33', '1214835832967581698', '2020-04-28 15:20:33', NULL, '1255033722255945729', '3', '本部门数据权限', 3);
+INSERT INTO `sys_dict_item` VALUES ('1255034178491363329', 1, '1214835832967581698', '2020-04-28 15:20:40', '1214835832967581698', '2020-04-28 15:20:40', NULL, '1255033722255945729', '4', '本部门及以下数据权限', 4);
+INSERT INTO `sys_dict_item` VALUES ('1255034207415283713', 1, '1214835832967581698', '2020-04-28 15:20:47', '1214835832967581698', '2020-04-28 15:20:47', NULL, '1255033722255945729', '5', '仅本人数据权限', 5);
+INSERT INTO `sys_dict_item` VALUES ('1255037454632857602', 1, '1214835832967581698', '2020-04-28 15:33:41', '1214835832967581698', '2020-04-28 15:33:41', NULL, '1255037349741703169', '1', 'MySql数据库', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255037499587407874', 1, '1214835832967581698', '2020-04-28 15:33:52', '1214835832967581698', '2020-04-28 15:33:52', NULL, '1255037349741703169', '2', 'MariaDB数据库', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255037543732457474', 1, '1214835832967581698', '2020-04-28 15:34:03', '1214835832967581698', '2020-04-28 15:34:03', NULL, '1255037349741703169', '3', 'Oracle11g及以下数据库', 3);
+INSERT INTO `sys_dict_item` VALUES ('1255037611558547458', 1, '1214835832967581698', '2020-04-28 15:34:19', '1214835832967581698', '2020-04-28 15:34:19', NULL, '1255037349741703169', '4', 'Oracle12c+数据库', 4);
+INSERT INTO `sys_dict_item` VALUES ('1255037682886881282', 1, '1214835832967581698', '2020-04-28 15:34:36', '1214835832967581698', '2020-04-28 15:34:36', NULL, '1255037349741703169', '5', 'PostgreSql数据库', 5);
+INSERT INTO `sys_dict_item` VALUES ('1255037722741157890', 1, '1214835832967581698', '2020-04-28 15:34:45', '1214835832967581698', '2020-04-28 15:34:45', NULL, '1255037349741703169', '6', 'SQLServer2008及以下数据库', 6);
+INSERT INTO `sys_dict_item` VALUES ('1255037772984725506', 1, '1214835832967581698', '2020-04-28 15:34:57', '1214835832967581698', '2020-04-28 15:34:57', NULL, '1255037349741703169', '7', 'SQLServer2012+数据库', 7);
+INSERT INTO `sys_dict_item` VALUES ('1255037816378994690', 1, '1214835832967581698', '2020-04-28 15:35:08', '1214835832967581698', '2020-04-28 15:35:08', NULL, '1255037349741703169', '8', '其他数据库', 8);
+INSERT INTO `sys_dict_item` VALUES ('1255047584040607746', 1, '1214835832967581698', '2020-04-28 16:13:56', '1214835832967581698', '2020-04-28 16:13:56', NULL, '1255047550985297922', '0', '否', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255047616940728322', 1, '1214835832967581698', '2020-04-28 16:14:04', '1214835832967581698', '2020-04-28 16:14:04', NULL, '1255047550985297922', '1', '是', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255048026803920898', 1, '1214835832967581698', '2020-04-28 16:15:42', '1214835832967581698', '2020-04-28 16:15:42', NULL, '1255047909942222850', 'GET', 'GET', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255048059242668033', 1, '1214835832967581698', '2020-04-28 16:15:50', '1214835832967581698', '2020-04-28 16:15:50', NULL, '1255047909942222850', 'POST', 'POST', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255048227744636929', 1, '1214835832967581698', '2020-04-28 16:16:30', '1214835832967581698', '2020-04-28 16:16:30', NULL, '1255048146102509569', 'JSON', 'JSON', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255049535197274113', 1, '1214835832967581698', '2020-04-28 16:21:42', '1214835832967581698', '2020-04-28 16:21:42', NULL, '1255049472299491329', '1', '表引导模式', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255049562602856449', 1, '1214835832967581698', '2020-04-28 16:21:48', '1214835832967581698', '2020-04-28 16:21:48', NULL, '1255049472299491329', '2', '脚本模式', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255049937749794817', 1, '1214835832967581698', '2020-04-28 16:23:18', '1214835832967581698', '2020-04-28 16:23:18', NULL, '1255049868610887682', '1', '等于', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255049969106411521', 1, '1214835832967581698', '2020-04-28 16:23:25', '1214835832967581698', '2020-04-28 16:23:25', NULL, '1255049868610887682', '2', '不等于', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255049996876898306', 1, '1214835832967581698', '2020-04-28 16:23:32', '1214835832967581698', '2020-04-28 16:23:32', NULL, '1255049868610887682', '3', '全模糊查询', 3);
+INSERT INTO `sys_dict_item` VALUES ('1255050281636585473', 1, '1214835832967581698', '2020-04-28 16:24:40', '1214835832967581698', '2020-04-28 16:24:40', NULL, '1255049868610887682', '4', '左模糊查询', 4);
+INSERT INTO `sys_dict_item` VALUES ('1255050325618057217', 1, '1214835832967581698', '2020-04-28 16:24:50', '1214835832967581698', '2020-04-28 16:24:50', NULL, '1255049868610887682', '5', '右模糊查询', 5);
+INSERT INTO `sys_dict_item` VALUES ('1255050357075337217', 1, '1214835832967581698', '2020-04-28 16:24:57', '1214835832967581698', '2020-04-28 16:24:57', NULL, '1255049868610887682', '6', '大于', 6);
+INSERT INTO `sys_dict_item` VALUES ('1255050386712289281', 1, '1214835832967581698', '2020-04-28 16:25:05', '1214835832967581698', '2020-04-28 16:25:05', NULL, '1255049868610887682', '7', '大于等于', 7);
+INSERT INTO `sys_dict_item` VALUES ('1255050425413132290', 1, '1214835832967581698', '2020-04-28 16:25:14', '1214835832967581698', '2020-04-28 16:25:14', NULL, '1255049868610887682', '8', '小于', 8);
+INSERT INTO `sys_dict_item` VALUES ('1255050459407966210', 1, '1214835832967581698', '2020-04-28 16:25:22', '1214835832967581698', '2020-04-28 16:25:22', NULL, '1255049868610887682', '9', '小于等于', 9);
+INSERT INTO `sys_dict_item` VALUES ('1255050508485517313', 1, '1214835832967581698', '2020-04-28 16:25:34', '1214835832967581698', '2020-04-28 16:25:34', NULL, '1255049868610887682', '10', '是否为空', 10);
+INSERT INTO `sys_dict_item` VALUES ('1255050549505810433', 1, '1214835832967581698', '2020-04-28 16:25:43', '1214835832967581698', '2020-04-28 16:25:43', NULL, '1255049868610887682', '11', '是否不为空', 11);
+INSERT INTO `sys_dict_item` VALUES ('1255050756901560321', 1, '1214835832967581698', '2020-04-28 16:26:33', '1214835832967581698', '2020-04-28 16:26:33', NULL, '1255049868610887682', '12', 'IN', 12);
+INSERT INTO `sys_dict_item` VALUES ('1255051004805898241', 1, '1214835832967581698', '2020-04-28 16:27:32', '1214835832967581698', '2020-04-28 16:27:32', NULL, '1255050897825980418', '1', '字符串', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255051030818971649', 1, '1214835832967581698', '2020-04-28 16:27:38', '1214835832967581698', '2020-04-28 16:27:38', NULL, '1255050897825980418', '2', '整型', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255051062423052289', 1, '1214835832967581698', '2020-04-28 16:27:46', '1214835832967581698', '2020-04-28 16:27:46', NULL, '1255050897825980418', '3', '浮点型', 3);
+INSERT INTO `sys_dict_item` VALUES ('1255051089870577665', 1, '1214835832967581698', '2020-04-28 16:27:52', '1214835832967581698', '2020-04-28 16:27:52', NULL, '1255050897825980418', '4', '时间', 4);
+INSERT INTO `sys_dict_item` VALUES ('1255051121646624770', 1, '1214835832967581698', '2020-04-28 16:28:00', '1214835832967581698', '2020-04-28 16:28:00', NULL, '1255050897825980418', '5', '集合', 5);
+INSERT INTO `sys_dict_item` VALUES ('1255052103847763970', 1, '1214835832967581698', '2020-04-28 16:31:54', '1214835832967581698', '2020-04-28 16:31:54', NULL, '1255052030422278145', '1', '正则替换', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255052128799678465', 1, '1214835832967581698', '2020-04-28 16:32:00', '1214835832967581698', '2020-04-28 16:32:00', NULL, '1255052030422278145', '2', '加密算法', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255054729293324290', 1, '1214835832967581698', '2020-04-28 16:42:20', '1214835832967581698', '2020-04-28 16:42:20', NULL, '1255054338933645314', '1', '中文姓名', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255054769277624322', 1, '1214835832967581698', '2020-04-28 16:42:29', '1214835832967581698', '2020-04-28 16:42:29', NULL, '1255054338933645314', '2', '身份证号', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255054810838982657', 1, '1214835832967581698', '2020-04-28 16:42:39', '1214835832967581698', '2020-04-28 16:42:39', NULL, '1255054338933645314', '3', '固定电话', 3);
+INSERT INTO `sys_dict_item` VALUES ('1255054840111030274', 1, '1214835832967581698', '2020-04-28 16:42:46', '1214835832967581698', '2020-04-28 16:42:46', NULL, '1255054338933645314', '4', '手机号码', 4);
+INSERT INTO `sys_dict_item` VALUES ('1255054878862204929', 1, '1214835832967581698', '2020-04-28 16:42:56', '1214835832967581698', '2020-04-28 16:42:56', NULL, '1255054338933645314', '5', '地址', 5);
+INSERT INTO `sys_dict_item` VALUES ('1255054911183511553', 1, '1214835832967581698', '2020-04-28 16:43:03', '1214835832967581698', '2020-04-28 16:43:03', NULL, '1255054338933645314', '6', '电子邮箱', 6);
+INSERT INTO `sys_dict_item` VALUES ('1255054941030178817', 1, '1214835832967581698', '2020-04-28 16:43:10', '1214835832967581698', '2020-04-28 16:43:10', NULL, '1255054338933645314', '7', '银行卡号', 7);
+INSERT INTO `sys_dict_item` VALUES ('1255054975704489986', 1, '1214835832967581698', '2020-04-28 16:43:19', '1214835832967581698', '2020-04-28 16:43:19', NULL, '1255054338933645314', '8', '公司开户银行联号', 8);
+INSERT INTO `sys_dict_item` VALUES ('1255055043568328706', 1, '1214835832967581698', '2020-04-28 16:43:35', '1214835832967581698', '2020-04-28 16:43:35', NULL, '1255054468176928770', '1', 'BASE64加密', 1);
+INSERT INTO `sys_dict_item` VALUES ('1255055072123150338', 1, '1214835832967581698', '2020-04-28 16:43:42', '1214835832967581698', '2020-04-28 16:43:42', NULL, '1255054468176928770', '2', 'MD5加密', 2);
+INSERT INTO `sys_dict_item` VALUES ('1255055103777562626', 1, '1214835832967581698', '2020-04-28 16:43:49', '1214835832967581698', '2020-04-28 16:43:49', NULL, '1255054468176928770', '3', 'SHA_1加密', 3);
+INSERT INTO `sys_dict_item` VALUES ('1255055137550098434', 1, '1214835832967581698', '2020-04-28 16:43:57', '1214835832967581698', '2020-04-28 16:43:57', NULL, '1255054468176928770', '4', 'SHA_256加密', 4);
+INSERT INTO `sys_dict_item` VALUES ('1255055168852189186', 1, '1214835832967581698', '2020-04-28 16:44:05', '1214835832967581698', '2020-04-28 16:44:05', NULL, '1255054468176928770', '5', 'AES加密', 5);
+INSERT INTO `sys_dict_item` VALUES ('1255055201391599617', 1, '1214835832967581698', '2020-04-28 16:44:12', '1214835832967581698', '2020-04-28 16:44:12', NULL, '1255054468176928770', '6', 'DES加密', 6);
+INSERT INTO `sys_dict_item` VALUES ('1275048742365458434', 1, '1214835832967581698', '2020-06-22 20:51:24', '1214835832967581698', '2020-06-22 20:51:24', NULL, '1275048574979174401', '0', '暂停', 1);
+INSERT INTO `sys_dict_item` VALUES ('1275048809193304065', 1, '1214835832967581698', '2020-06-22 20:51:40', '1214835832967581698', '2020-06-22 20:51:40', NULL, '1275048574979174401', '1', '运行', 2);
+INSERT INTO `sys_dict_item` VALUES ('1275054736508219394', 1, '1214835832967581698', '2020-06-22 21:15:13', '1214835832967581698', '2020-06-22 21:15:13', NULL, '1275054601837506561', '0', '失败', 1);
+INSERT INTO `sys_dict_item` VALUES ('1275054803906490370', 1, '1214835832967581698', '2020-06-22 21:15:29', '1214835832967581698', '2020-06-22 21:15:29', NULL, '1275054601837506561', '1', '成功', 2);
+INSERT INTO `sys_dict_item` VALUES ('1280793322234875905', 1, '1214835832967581698', '2020-07-08 17:18:19', '1214835832967581698', '2020-07-08 17:18:19', NULL, '1280793187027292161', '1', '待发布', 1);
+INSERT INTO `sys_dict_item` VALUES ('1280793374244245505', 1, '1214835832967581698', '2020-07-08 17:18:31', '1214835832967581698', '2020-07-08 17:18:31', NULL, '1280793187027292161', '2', '已发布', 2);
+INSERT INTO `sys_dict_item` VALUES ('1280793418611593218', 1, '1214835832967581698', '2020-07-08 17:18:42', '1214835832967581698', '2020-07-08 17:18:42', NULL, '1280793187027292161', '3', '已下线', 3);
+INSERT INTO `sys_dict_item` VALUES ('1285924274212737026', 1, '1214835832967581698', '2020-07-22 21:06:53', '1214835832967581698', '2020-07-22 21:06:53', NULL, '1285923703451848705', 'AVG', '平均值', 1);
+INSERT INTO `sys_dict_item` VALUES ('1285924403900616706', 1, '1214835832967581698', '2020-07-22 21:07:24', '1214835832967581698', '2020-07-22 21:07:24', NULL, '1285923703451848705', 'COUNT', '计数', 2);
+INSERT INTO `sys_dict_item` VALUES ('1285924488742998018', 1, '1214835832967581698', '2020-07-22 21:07:44', '1214835832967581698', '2020-07-22 21:07:44', NULL, '1285923703451848705', 'MAX', '最大值', 3);
+INSERT INTO `sys_dict_item` VALUES ('1285924564915752961', 1, '1214835832967581698', '2020-07-22 21:08:02', '1214835832967581698', '2020-07-22 21:08:02', NULL, '1285923703451848705', 'MIN', '最小值', 4);
+INSERT INTO `sys_dict_item` VALUES ('1285924644037103617', 1, '1214835832967581698', '2020-07-22 21:08:21', '1214835832967581698', '2020-07-22 21:08:21', NULL, '1285923703451848705', 'SUM', '求和', 5);
+INSERT INTO `sys_dict_item` VALUES ('1296680479872815106', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1296680107225706498', '1', 'http接口', 1);
+INSERT INTO `sys_dict_item` VALUES ('1296680800095338497', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1296680107225706498', '2', 'webservice接口', 2);
+INSERT INTO `sys_dict_item` VALUES ('1300344676871569410', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344099387244546', 'eq', '=', 1);
+INSERT INTO `sys_dict_item` VALUES ('1300344719984926721', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344099387244546', 'ne', '!=', 2);
+INSERT INTO `sys_dict_item` VALUES ('1300344887987683330', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344099387244546', 'gt', '>', 3);
+INSERT INTO `sys_dict_item` VALUES ('1300344940169011202', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344099387244546', 'ge', '>=', 4);
+INSERT INTO `sys_dict_item` VALUES ('1300344991276687361', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344099387244546', 'lt', '<', 5);
+INSERT INTO `sys_dict_item` VALUES ('1300345039674744833', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344099387244546', 'le', '<=', 6);
+INSERT INTO `sys_dict_item` VALUES ('1300345083937226754', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344099387244546', 'like', 'like', 7);
+INSERT INTO `sys_dict_item` VALUES ('1300345183094763522', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344099387244546', 'between', 'between', 8);
+INSERT INTO `sys_dict_item` VALUES ('1300345958537633794', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344451876577281', 'input', '文本框', 1);
+INSERT INTO `sys_dict_item` VALUES ('1300345964648734722', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344451876577281', 'textarea', '文本域', 2);
+INSERT INTO `sys_dict_item` VALUES ('1300345968855621633', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344451876577281', 'select', '下拉框', 3);
+INSERT INTO `sys_dict_item` VALUES ('1300345973049925633', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344451876577281', 'radio', '单选框', 4);
+INSERT INTO `sys_dict_item` VALUES ('1300345977248423937', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344451876577281', 'checkbox', '复选框', 5);
+INSERT INTO `sys_dict_item` VALUES ('1300345981438533633', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344451876577281', 'datetime', '日期控件', 6);
+INSERT INTO `sys_dict_item` VALUES ('1300708143558328322', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300708138781016066', 'char', '字符串', 1);
+INSERT INTO `sys_dict_item` VALUES ('1300708156141240321', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300708138781016066', 'number', '数值', 2);
+INSERT INTO `sys_dict_item` VALUES ('1300708160343932930', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300708138781016066', 'date', '日期', 3);
+INSERT INTO `sys_dict_item` VALUES ('1300708164542431234', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300708138781016066', 'clob', '长文本', 4);
+INSERT INTO `sys_dict_item` VALUES ('1301041851154833410', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'tinyint', 'tinyint整型', 1);
+INSERT INTO `sys_dict_item` VALUES ('1301041854644494338', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'int', 'int整型', 2);
+INSERT INTO `sys_dict_item` VALUES ('1301041857957994497', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'bigint', 'bigint整型', 3);
+INSERT INTO `sys_dict_item` VALUES ('1301041860990476290', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'float', '单精度', 4);
+INSERT INTO `sys_dict_item` VALUES ('1301041864538857474', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'double', '双精度', 5);
+INSERT INTO `sys_dict_item` VALUES ('1301041867428732929', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'decimal', '定点数', 6);
+INSERT INTO `sys_dict_item` VALUES ('1301041870465409025', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'char', '定长字符串', 7);
+INSERT INTO `sys_dict_item` VALUES ('1301041873263009793', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'varchar', '变长字符串', 8);
+INSERT INTO `sys_dict_item` VALUES ('1301041875733454849', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'text', '长文本', 9);
+INSERT INTO `sys_dict_item` VALUES ('1301041878837239810', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'date', 'date日期', 10);
+INSERT INTO `sys_dict_item` VALUES ('1301041882624696322', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'time', 'time日期', 11);
+INSERT INTO `sys_dict_item` VALUES ('1301041884780568578', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'year', 'year日期', 12);
+INSERT INTO `sys_dict_item` VALUES ('1301041887540420609', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1301041843055632386', 'datetime', 'datetime日期', 13);
+INSERT INTO `sys_dict_item` VALUES ('1302079329039069185', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1300344451876577281', 'number', '数字值', 7);
+INSERT INTO `sys_dict_item` VALUES ('1309001150548160514', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1309001146932670465', '1', '待提交', 1);
+INSERT INTO `sys_dict_item` VALUES ('1309001154742464514', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1309001146932670465', '2', '已退回', 2);
+INSERT INTO `sys_dict_item` VALUES ('1309001158517338114', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1309001146932670465', '3', '审核中', 3);
+INSERT INTO `sys_dict_item` VALUES ('1309001162443206658', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1309001146932670465', '4', '通过', 4);
+INSERT INTO `sys_dict_item` VALUES ('1309001165593128962', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1309001146932670465', '5', '不通过', 5);
+INSERT INTO `sys_dict_item` VALUES ('1309001167749001218', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1309001146932670465', '6', '已撤销', 6);
+INSERT INTO `sys_dict_item` VALUES ('1310494837983784962', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1310494826919211009', '0', '未对照', 1);
+INSERT INTO `sys_dict_item` VALUES ('1310494841284702210', 1, '1296680107225706498', '2020-08-21 21:04:37', '1296680107225706498', '2020-08-21 21:04:37', NULL, '1310494826919211009', '1', '已对照', 2);
 
 -- ----------------------------
 -- Table structure for sys_log
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_log`;
-CREATE TABLE `sys_log`  (
+CREATE TABLE IF NOT EXISTS  `sys_log`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '日志主键ID',
   `module` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属模块',
   `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '日志标题',
@@ -2928,68 +2041,68 @@ CREATE TABLE `sys_log`  (
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
-INSERT INTO `sys_log` VALUES ('1265261406136143873', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 20:40:01');
-INSERT INTO `sys_log` VALUES ('1265261962695118849', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '16', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 20:42:14');
-INSERT INTO `sys_log` VALUES ('1265263362518913026', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '32', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 20:47:48');
-INSERT INTO `sys_log` VALUES ('1265263766308753410', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '11', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 20:49:24');
-INSERT INTO `sys_log` VALUES ('1265263890720228657', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 20:49:54');
-INSERT INTO `sys_log` VALUES ('1265265416712851457', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 20:55:57');
-INSERT INTO `sys_log` VALUES ('1265265809526198274', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '20', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 20:57:31');
-INSERT INTO `sys_log` VALUES ('1265267017112457218', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '20', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:02:19');
-INSERT INTO `sys_log` VALUES ('1265267219084972034', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '28', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:03:07');
-INSERT INTO `sys_log` VALUES ('1265267267982168065', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:03:19');
-INSERT INTO `sys_log` VALUES ('1265267809718472706', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '12', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:05:28');
-INSERT INTO `sys_log` VALUES ('1265268643084734465', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '21', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:08:47');
-INSERT INTO `sys_log` VALUES ('1265270421033422849', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:15:51');
-INSERT INTO `sys_log` VALUES ('1265272879650541569', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '18', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:25:37');
-INSERT INTO `sys_log` VALUES ('1265273650702028802', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '22', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:28:41');
-INSERT INTO `sys_log` VALUES ('1265273816318316546', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:29:20');
-INSERT INTO `sys_log` VALUES ('1265274458134908929', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:31:53');
-INSERT INTO `sys_log` VALUES ('1265274502791663618', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '31', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:32:04');
-INSERT INTO `sys_log` VALUES ('1265274557405696002', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '8', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:32:17');
-INSERT INTO `sys_log` VALUES ('1265274576221343745', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '13', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:32:21');
-INSERT INTO `sys_log` VALUES ('1265274629749051393', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '97', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:32:34');
-INSERT INTO `sys_log` VALUES ('1265274945081020418', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '17', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-26 21:33:49');
-INSERT INTO `sys_log` VALUES ('1265627232303353857', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-27 20:53:41');
-INSERT INTO `sys_log` VALUES ('1265632022614830594', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '17', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-27 21:12:42');
-INSERT INTO `sys_log` VALUES ('1265637282912702465', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '26', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-27 21:33:37');
-INSERT INTO `sys_log` VALUES ('1265640522375008258', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-27 21:46:30');
-INSERT INTO `sys_log` VALUES ('1265976846751682562', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:02:56');
-INSERT INTO `sys_log` VALUES ('1265978978921926658', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '16', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:11:24');
-INSERT INTO `sys_log` VALUES ('1265979289124261890', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '18', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:12:38');
-INSERT INTO `sys_log` VALUES ('1265979380824330242', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '24', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:13:00');
-INSERT INTO `sys_log` VALUES ('1265980102571773954', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:15:52');
-INSERT INTO `sys_log` VALUES ('1265980125481062402', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '31', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:15:57');
-INSERT INTO `sys_log` VALUES ('1265980311502639105', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '29', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:16:42');
-INSERT INTO `sys_log` VALUES ('1265980577702531074', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '21', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:17:45');
-INSERT INTO `sys_log` VALUES ('1265981370732171265', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:20:54');
-INSERT INTO `sys_log` VALUES ('1265981831040258049', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '13', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:22:44');
-INSERT INTO `sys_log` VALUES ('1265981907770855426', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '23', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:23:02');
-INSERT INTO `sys_log` VALUES ('1265982263682715650', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:24:27');
-INSERT INTO `sys_log` VALUES ('1265982404875571202', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '18', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:25:01');
-INSERT INTO `sys_log` VALUES ('1265982486152794113', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '34', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:25:20');
-INSERT INTO `sys_log` VALUES ('1265982592616812545', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-28 20:25:46');
-INSERT INTO `sys_log` VALUES ('1266361799507185665', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-29 21:32:36');
-INSERT INTO `sys_log` VALUES ('1267085228254515202', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '23', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-05-31 21:27:14');
-INSERT INTO `sys_log` VALUES ('1272863883182260226', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-06-16 20:09:33');
-INSERT INTO `sys_log` VALUES ('1272863961049513985', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '20', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-06-16 20:09:52');
-INSERT INTO `sys_log` VALUES ('1273599081343668226', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-06-18 20:50:58');
-INSERT INTO `sys_log` VALUES ('1278163103812476930', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-07-01 11:06:46');
-INSERT INTO `sys_log` VALUES ('1278516062761086977', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '16', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-07-02 10:29:18');
-INSERT INTO `sys_log` VALUES ('1278520069550338050', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '16', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-07-02 10:45:13');
-INSERT INTO `sys_log` VALUES ('1319093199947554818', 'service-system', '根据id获取用户详细信息', '1319084968579817473', 'ls', '192.168.2.187', '/users/1319084615276814337', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1319084615276814337\"}', '30', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-10-22 09:48:21');
-INSERT INTO `sys_log` VALUES ('1321736221868789762', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.2.187', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '81', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-10-29 16:50:47');
-INSERT INTO `sys_log` VALUES ('1321736248678780929', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.2.187', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '31', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-10-29 16:50:53');
-INSERT INTO `sys_log` VALUES ('1321736734307880961', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.2.187', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '34', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-10-29 16:52:49');
-INSERT INTO `sys_log` VALUES ('1335762100828164097', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.30.11', '/users/1335761402136809473', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1335761402136809473\"}', '96', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-12-07 09:44:37');
-INSERT INTO `sys_log` VALUES ('1335762124542758914', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.30.11', '/users/1335761402136809473', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1335761402136809473\"}', '103', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-12-07 09:44:42');
-INSERT INTO `sys_log` VALUES ('1335762217010384897', 'service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.30.11', '/users/1335761402136809473', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1335761402136809473\"}', '102', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2022-12-07 09:45:04');
+INSERT INTO `sys_log` VALUES ('1265261406136143873', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 20:40:01');
+INSERT INTO `sys_log` VALUES ('1265261962695118849', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '16', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 20:42:14');
+INSERT INTO `sys_log` VALUES ('1265263362518913026', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '32', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 20:47:48');
+INSERT INTO `sys_log` VALUES ('1265263766308753410', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '11', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 20:49:24');
+INSERT INTO `sys_log` VALUES ('1265263890720198657', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 20:49:54');
+INSERT INTO `sys_log` VALUES ('1265265416712851457', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 20:55:57');
+INSERT INTO `sys_log` VALUES ('1265265809526198274', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '20', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 20:57:31');
+INSERT INTO `sys_log` VALUES ('1265267017112457218', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '20', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:02:19');
+INSERT INTO `sys_log` VALUES ('1265267219084972034', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '28', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:03:07');
+INSERT INTO `sys_log` VALUES ('1265267267982168065', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:03:19');
+INSERT INTO `sys_log` VALUES ('1265267809718472706', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '12', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:05:28');
+INSERT INTO `sys_log` VALUES ('1265268643084734465', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '21', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:08:47');
+INSERT INTO `sys_log` VALUES ('1265270421033422849', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:15:51');
+INSERT INTO `sys_log` VALUES ('1265272879650541569', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '18', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:25:37');
+INSERT INTO `sys_log` VALUES ('1265273650702028802', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '22', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:28:41');
+INSERT INTO `sys_log` VALUES ('1265273816318316546', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:29:20');
+INSERT INTO `sys_log` VALUES ('1265274458134908929', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:31:53');
+INSERT INTO `sys_log` VALUES ('1265274502791663618', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '31', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:32:04');
+INSERT INTO `sys_log` VALUES ('1265274557405696002', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '8', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:32:17');
+INSERT INTO `sys_log` VALUES ('1265274576221343745', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '13', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:32:21');
+INSERT INTO `sys_log` VALUES ('1265274629749051393', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '97', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:32:34');
+INSERT INTO `sys_log` VALUES ('1265274945081020418', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '17', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-26 21:33:49');
+INSERT INTO `sys_log` VALUES ('1265627232303353857', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-27 20:53:41');
+INSERT INTO `sys_log` VALUES ('1265632019614830594', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '17', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-27 21:12:42');
+INSERT INTO `sys_log` VALUES ('1265637282912702465', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '26', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-27 21:33:37');
+INSERT INTO `sys_log` VALUES ('1265640522375008258', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-27 21:46:30');
+INSERT INTO `sys_log` VALUES ('1265976846751682562', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:02:56');
+INSERT INTO `sys_log` VALUES ('1265978978921926658', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '16', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:11:24');
+INSERT INTO `sys_log` VALUES ('1265979289124261890', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '18', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:12:38');
+INSERT INTO `sys_log` VALUES ('1265979380824330242', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '24', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:13:00');
+INSERT INTO `sys_log` VALUES ('1265980102571773954', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:15:52');
+INSERT INTO `sys_log` VALUES ('1265980125481062402', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '31', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:15:57');
+INSERT INTO `sys_log` VALUES ('1265980311502639105', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '29', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:16:42');
+INSERT INTO `sys_log` VALUES ('1265980577702531074', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '21', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:17:45');
+INSERT INTO `sys_log` VALUES ('1265981370732171265', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:20:54');
+INSERT INTO `sys_log` VALUES ('1265981831040258049', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '13', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:22:44');
+INSERT INTO `sys_log` VALUES ('1265981907770855426', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '23', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:23:02');
+INSERT INTO `sys_log` VALUES ('1265982263682715650', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:24:27');
+INSERT INTO `sys_log` VALUES ('1265982404875571202', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '18', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:25:01');
+INSERT INTO `sys_log` VALUES ('1265982486152794113', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '34', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:25:20');
+INSERT INTO `sys_log` VALUES ('1265982592616812545', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1265274861165580290', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '19', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-28 20:25:46');
+INSERT INTO `sys_log` VALUES ('1266361799507185665', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-29 21:32:36');
+INSERT INTO `sys_log` VALUES ('1267085228254515202', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '23', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-05-31 21:27:14');
+INSERT INTO `sys_log` VALUES ('1272863883182260226', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-06-16 20:09:33');
+INSERT INTO `sys_log` VALUES ('1272863961049513985', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '20', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-06-16 20:09:52');
+INSERT INTO `sys_log` VALUES ('1273599081343668226', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '', '15', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-06-18 20:50:58');
+INSERT INTO `sys_log` VALUES ('1278163103812476930', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '14', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-07-01 11:06:46');
+INSERT INTO `sys_log` VALUES ('1278516062761086977', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '16', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-07-02 10:29:18');
+INSERT INTO `sys_log` VALUES ('1278520069550338050', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.0.107', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '16', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-07-02 10:45:13');
+INSERT INTO `sys_log` VALUES ('1319093199947554818', 'datax-service-system', '根据id获取用户详细信息', '1319084968579817473', 'ls', '192.168.2.187', '/users/1319084615276814337', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1319084615276814337\"}', '30', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-10-22 09:48:21');
+INSERT INTO `sys_log` VALUES ('1321736221868789762', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.2.187', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '81', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-10-29 16:50:47');
+INSERT INTO `sys_log` VALUES ('1321736248678780929', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.2.187', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '31', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-10-29 16:50:53');
+INSERT INTO `sys_log` VALUES ('1321736734307880961', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.2.187', '/users/1214835832967581698', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1214835832967581698\"}', '34', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-10-29 16:52:49');
+INSERT INTO `sys_log` VALUES ('1335762100828164097', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.30.11', '/users/1335761402136809473', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1335761402136809473\"}', '96', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-12-07 09:44:37');
+INSERT INTO `sys_log` VALUES ('1335762124542758914', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.30.11', '/users/1335761402136809473', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1335761402136809473\"}', '103', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-12-07 09:44:42');
+INSERT INTO `sys_log` VALUES ('1335762217010384897', 'datax-service-system', '根据id获取用户详细信息', '1214835832967581698', 'admin', '192.168.30.11', '/users/1335761402136809473', 'cn.datax.service.system.controller.UserController', 'getUserById', '{\"id\":\"1335761402136809473\"}', '102', 'Chrome', 'Windows 10 or Windows Server 2016', NULL, NULL, '2020-12-07 09:45:04');
 
 -- ----------------------------
 -- Table structure for sys_login_log
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_login_log`;
-CREATE TABLE `sys_login_log`  (
+CREATE TABLE IF NOT EXISTS  `sys_login_log`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `op_os` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作系统',
   `op_browser` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '浏览器类型',
@@ -3003,13 +2116,13 @@ CREATE TABLE `sys_login_log`  (
 -- ----------------------------
 -- Records of sys_login_log
 -- ----------------------------
-INSERT INTO `sys_login_log` VALUES ('1346331863834681345', 'Windows 10', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2022-01-05 13:45:05', '1214835832967581698', 'admin');
-INSERT INTO `sys_login_log` VALUES ('1346375822271246337', 'Windows 10', 'Chrome 8', '127.0.0.1', '2022-01-05 16:39:45', '1214835832967581698', 'admin');
-INSERT INTO `sys_login_log` VALUES ('1346377057556688898', 'Windows 10', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2022-01-05 16:44:40', '1214835832967581698', 'admin');
-INSERT INTO `sys_login_log` VALUES ('1346377788481269761', 'Windows 10', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2022-01-05 16:47:34', '1214835832967581698', 'admin');
-INSERT INTO `sys_login_log` VALUES ('1346386803638595585', 'Mac OS X', 'Chrome 8', '127.0.0.1', '2022-01-05 17:23:23', '1214835832967581698', 'admin');
-INSERT INTO `sys_login_log` VALUES ('1346388199251308545', 'Mac OS X', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2022-01-05 17:28:56', '1214835832967581698', 'admin');
-INSERT INTO `sys_login_log` VALUES ('1346770486128177154', 'Mac OS X', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2022-01-06 18:48:00', '1214835832967581698', 'admin');
+INSERT INTO `sys_login_log` VALUES ('1346331863834681345', 'Windows 10', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2021-01-05 13:45:05', '1214835832967581698', 'admin');
+INSERT INTO `sys_login_log` VALUES ('1346375822271246337', 'Windows 10', 'Chrome 8', '127.0.0.1', '2021-01-05 16:39:45', '1214835832967581698', 'admin');
+INSERT INTO `sys_login_log` VALUES ('1346377057556688898', 'Windows 10', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2021-01-05 16:44:40', '1214835832967581698', 'admin');
+INSERT INTO `sys_login_log` VALUES ('1346377788481269761', 'Windows 10', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2021-01-05 16:47:34', '1214835832967581698', 'admin');
+INSERT INTO `sys_login_log` VALUES ('1346386803638595585', 'Mac OS X', 'Chrome 8', '127.0.0.1', '2021-01-05 17:23:23', '1214835832967581698', 'admin');
+INSERT INTO `sys_login_log` VALUES ('1346388199251308545', 'Mac OS X', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2021-01-05 17:28:56', '1214835832967581698', 'admin');
+INSERT INTO `sys_login_log` VALUES ('1346770486128177154', 'Mac OS X', 'Chrome 8', '0:0:0:0:0:0:0:1%0', '2021-01-06 18:48:00', '1214835832967581698', 'admin');
 INSERT INTO `sys_login_log` VALUES ('1520306256294707202', 'Windows 10', 'Chrome 9', '127.0.0.1', '2022-04-30 15:37:12', '1214835832967581698', 'admin');
 INSERT INTO `sys_login_log` VALUES ('1520314505408544770', 'Windows 10', 'Chrome 9', '127.0.0.1', '2022-04-30 16:09:59', '1214835832967581698', 'admin');
 INSERT INTO `sys_login_log` VALUES ('1520349120684883969', 'Windows 10', 'Chrome 9', '127.0.0.1', '2022-04-30 18:27:32', '1214835832967581698', 'admin');
@@ -3033,7 +2146,7 @@ INSERT INTO `sys_login_log` VALUES ('1521160136205365250', 'Windows 10', 'Chrome
 -- Table structure for sys_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
-CREATE TABLE `sys_menu`  (
+CREATE TABLE IF NOT EXISTS  `sys_menu`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `parent_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '父资源ID',
   `menu_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '资源名称',
@@ -3058,242 +2171,242 @@ CREATE TABLE `sys_menu`  (
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES ('1323439314692685825', '0', '平台基础设置', '/basic', 'Layout', '/basic/index', NULL, 'form', 0, '10', 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439318413033473', '1323439314692685825', '看板', 'index', '/basic/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439321634258945', '1323439314692685825', '系统管理', 'system', '/basic/system/index', '/basic/system/post', NULL, 'form', 0, '1010', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439323769159681', '1323439321634258945', '岗位管理', 'post', '/basic/system/post/index', NULL, NULL, 'form', 1, '1011', 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439327296569346', '1323439323769159681', '岗位新增', NULL, NULL, NULL, 'system:post:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439329708294145', '1323439323769159681', '岗位修改', NULL, NULL, NULL, 'system:post:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439332476534786', '1323439323769159681', '岗位详情', NULL, NULL, NULL, 'system:post:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439336071053314', '1323439323769159681', '岗位删除', NULL, NULL, NULL, 'system:post:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439338231119873', '1323439321634258945', '部门管理', 'dept', '/basic/system/dept/index', NULL, NULL, 'form', 1, '1012', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439341569785858', '1323439338231119873', '部门新增', NULL, NULL, NULL, 'system:dept:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439344791011329', '1323439338231119873', '部门修改', NULL, NULL, NULL, 'system:dept:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439348771405826', '1323439338231119873', '部门详情', NULL, NULL, NULL, 'system:dept:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439351912939522', '1323439338231119873', '部门删除', NULL, NULL, NULL, 'system:dept:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439355318714370', '1323439321634258945', '菜单管理', 'menu', '/basic/system/menu/index', NULL, NULL, 'form', 1, '1013', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439359127142401', '1323439355318714370', '菜单新增', NULL, NULL, NULL, 'system:menu:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439362759409666', '1323439355318714370', '菜单修改', NULL, NULL, NULL, 'system:menu:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439365372461057', '1323439355318714370', '菜单详情', NULL, NULL, NULL, 'system:menu:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439367612219394', '1323439355318714370', '菜单删除', NULL, NULL, NULL, 'system:menu:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439371785551873', '1323439321634258945', '角色管理', 'role', '/basic/system/role/index', NULL, NULL, 'form', 1, '1014', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439375539453953', '1323439371785551873', '角色新增', NULL, NULL, NULL, 'system:role:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439378580324354', '1323439371785551873', '角色修改', NULL, NULL, NULL, 'system:role:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439381906407425', '1323439371785551873', '角色详情', NULL, NULL, NULL, 'system:role:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439384934694913', '1323439371785551873', '角色删除', NULL, NULL, NULL, 'system:role:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439387669381121', '1323439321634258945', '用户管理', 'user', '/basic/system/user/index', NULL, NULL, 'form', 1, '1015', 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439390789943298', '1323439387669381121', '用户新增', NULL, NULL, NULL, 'system:user:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439393298137089', '1323439387669381121', '用户修改', NULL, NULL, NULL, 'system:user:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439396758437890', '1323439387669381121', '用户详情', NULL, NULL, NULL, 'system:user:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439399979663361', '1323439387669381121', '用户删除', NULL, NULL, NULL, 'system:user:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439402764681218', '1323439387669381121', '重置密码', NULL, NULL, NULL, 'system:user:reset:password', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439406451474434', '1323439321634258945', '参数管理', 'config', '/basic/system/config/index', NULL, NULL, 'form', 1, '1016', 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439408812867585', '1323439406451474434', '参数新增', NULL, NULL, NULL, 'system:config:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439412055064578', '1323439406451474434', '参数修改', NULL, NULL, NULL, 'system:config:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439415838326785', '1323439406451474434', '参数详情', NULL, NULL, NULL, 'system:config:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439419256684545', '1323439406451474434', '参数删除', NULL, NULL, NULL, 'system:config:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439423211913218', '1323439406451474434', '刷新缓存', NULL, NULL, NULL, 'system:config:refresh', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439426693185537', '1323439321634258945', '字典管理', 'dict', '/basic/system/dict/index', NULL, NULL, 'form', 1, '1017', 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439428819697665', '1323439426693185537', '字典新增', NULL, NULL, NULL, 'system:dict:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439431755710465', '1323439426693185537', '字典修改', NULL, NULL, NULL, 'system:dict:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439434893049857', '1323439426693185537', '字典详情', NULL, NULL, NULL, 'system:dict:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439437258637313', '1323439426693185537', '字典删除', NULL, NULL, NULL, 'system:dict:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439440840572930', '1323439426693185537', '刷新缓存', NULL, NULL, NULL, 'system:dict:refresh', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439444309262337', '1323439314692685825', '系统监控', 'monitor', '/basic/monitor/index', '/basic/monitor/loginlog', NULL, 'form', 0, '1020', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439447442407426', '1323439444309262337', '登录日志', 'loginlog', '/basic/monitor/loginlog/index', NULL, NULL, 'form', 1, '1021', 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439450667827202', '1323439447442407426', '日志详情', NULL, NULL, NULL, 'monitor:loginlog:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439454547558402', '1323439447442407426', '日志删除', NULL, NULL, NULL, 'monitor:loginlog:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439457684897793', '1323439444309262337', '操作日志', 'operlog', '/basic/monitor/operlog/index', NULL, NULL, 'form', 1, '1022', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439461132615682', '1323439457684897793', '日志详情', NULL, NULL, NULL, 'monitor:operlog:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323439463754055682', '1323439457684897793', '日志删除', NULL, NULL, NULL, 'monitor:operlog:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446715848216577', '1323439314692685825', '任务调度', 'scheduler', '/basic/scheduler/index', '/basic/scheduler/job', NULL, 'form', 0, '1030', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446719488872450', '1323446715848216577', '任务管理', 'taskjob', '/basic/scheduler/taskjob/index', NULL, NULL, 'form', 1, '1031', 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446723389575170', '1323446719488872450', '任务新增', NULL, NULL, NULL, 'scheduler:job:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446727512576001', '1323446719488872450', '任务修改', NULL, NULL, NULL, 'scheduler:job:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446731551690753', '1323446719488872450', '任务详情', NULL, NULL, NULL, 'scheduler:job:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446733736923137', '1323446719488872450', '任务删除', NULL, NULL, NULL, 'scheduler:job:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446737285304322', '1323446719488872450', '任务暂停', NULL, NULL, NULL, 'scheduler:job:pause', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446741144064001', '1323446719488872450', '任务恢复', NULL, NULL, NULL, 'scheduler:job:resume', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446745309007873', '1323446719488872450', '立即执行', NULL, NULL, NULL, 'scheduler:job:run', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446748291158018', '1323446715848216577', '日志管理', 'tasklog', '/basic/scheduler/tasklog/index', NULL, NULL, 'form', 1, '1032', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446755090124802', '1323446748291158018', '日志详情', NULL, NULL, NULL, 'scheduler:log:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446758726586370', '1323446748291158018', '日志删除', NULL, NULL, NULL, 'scheduler:log:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446761884897282', '0', '元数据管理', '/metadata', 'Layout', '/metadata/index', NULL, 'form', 0, '20', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446765831737346', '1323446761884897282', '看板', 'index', '/metadata/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446768281210882', '1323446761884897282', '数据源', 'datasource', '/metadata/datasource/index', NULL, NULL, 'form', 1, '2011', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446772064473090', '1323446768281210882', '数据源新增', NULL, NULL, NULL, 'metadata:datasource:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446774992097282', '1323446768281210882', '数据源修改', NULL, NULL, NULL, 'metadata:datasource:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446778368512002', '1323446768281210882', '数据源详情', NULL, NULL, NULL, 'metadata:datasource:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446782034333697', '1323446768281210882', '数据源删除', NULL, NULL, NULL, 'metadata:datasource:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446785037455362', '1323446768281210882', '刷新缓存', NULL, NULL, NULL, 'metadata:datasource:refresh', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446788590030850', '1323446768281210882', '元数据同步', NULL, NULL, NULL, 'metadata:datasource:sync', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446792067108865', '1323446768281210882', '数据库文档', NULL, NULL, NULL, 'metadata:datasource:word', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446796131389441', '1323446768281210882', '连通性检测', NULL, NULL, NULL, 'metadata:datasource:connect', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446800178892801', '1323446761884897282', '元数据', 'datacolumn', '/metadata/datacolumn/index', NULL, NULL, 'form', 1, '2012', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446803093934082', '1323446800178892801', '元数据详情', NULL, NULL, NULL, 'metadata:datacolumn:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446806457765890', '1323446761884897282', '数据授权', 'dataauthorize', '/metadata/dataauthorize/index', NULL, NULL, 'form', 1, '2013', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446810152947713', '1323446806457765890', '授权修改', NULL, NULL, NULL, 'metadata:dataauthorize:edit', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446812367540226', '1323446806457765890', '刷新缓存', NULL, NULL, NULL, 'metadata:dataauthorize:refresh', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446814506635265', '1323446761884897282', '变更记录', 'changerecord', '/metadata/changerecord/index', NULL, NULL, 'form', 1, '2014', 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446818050822146', '1323446814506635265', '变更记录新增', NULL, NULL, NULL, 'metadata:changerecord:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446821838278657', '1323446814506635265', '变更记录修改', NULL, NULL, NULL, 'metadata:changerecord:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446824904314882', '1323446814506635265', '变更记录详情', NULL, NULL, NULL, 'metadata:changerecord:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446828507222022', '1323446814506635265', '变更记录删除', NULL, NULL, NULL, 'metadata:changerecord:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446830755368961', '1323446761884897282', '数据检索', 'datasearch', '/metadata/datasearch/index', NULL, NULL, 'form', 1, '2015', 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446833439723522', '1323446761884897282', '数据地图', 'datamap', '/metadata/datamap/index', NULL, NULL, 'form', 1, '2016', 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446835830476801', '1323446761884897282', '血缘流向（待开发）', 'datablood', '/metadata/datablood/index', NULL, NULL, 'form', 1, '2022', 0, 8, 0, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-04-30 16:09:45', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446838196064257', '1323446761884897282', 'SQL工作台', 'sqlconsole', '/metadata/sqlconsole/index', NULL, NULL, 'form', 1, '2022', 0, 9, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446842084184065', '0', '数据标准管理', '/standard', 'Layout', '/standard/index', NULL, 'form', 0, '30', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446844382662657', '1323446842084184065', '看板', 'index', '/standard/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446848434360322', '1323446842084184065', '标准字典', 'datadict', '/standard/datadict/index', NULL, NULL, 'form', 1, '3011', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446851588476930', '1323446848434360322', '标准类别新增', NULL, NULL, NULL, 'standard:type:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446854285414401', '1323446848434360322', '标准类别修改', NULL, NULL, NULL, 'standard:type:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446856474841089', '1323446848434360322', '标准类别详情', NULL, NULL, NULL, 'standard:type:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446858899148801', '1323446848434360322', '标准类别删除', NULL, NULL, NULL, 'standard:type:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446861998739458', '1323446848434360322', '标准字典新增', NULL, NULL, NULL, 'standard:dict:add', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446864804728834', '1323446848434360322', '标准字典修改', NULL, NULL, NULL, 'standard:dict:edit', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446867434557441', '1323446848434360322', '标准字典详情', NULL, NULL, NULL, 'standard:dict:detail', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446871129739266', '1323446848434360322', '标准字典删除', NULL, NULL, NULL, 'standard:dict:remove', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446872239749167', '1323446848434360322', '刷新缓存', NULL, NULL, NULL, 'standard:dict:refresh', NULL, 2, NULL, 0, 9, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323446873914757121', '1323446842084184065', '对照表', 'dictcontrast', '/standard/dictcontrast/index', NULL, NULL, 'form', 1, '3012', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457155479363586', '1323446873914757121', '对照表新增', NULL, NULL, NULL, 'standard:contrast:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457160046960641', '1323446873914757121', '对照表修改', NULL, NULL, NULL, 'standard:contrast:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457163289157633', '1323446873914757121', '对照表详情', NULL, NULL, NULL, 'standard:contrast:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457168091635713', '1323446873914757121', '对照表删除', NULL, NULL, NULL, 'standard:contrast:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457171208003585', '1323446873914757121', '对照字典新增', NULL, NULL, NULL, 'standard:contrast:dict:add', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457174412451841', '1323446873914757121', '对照字典修改', NULL, NULL, NULL, 'standard:contrast:dict:edit', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457176954200065', '1323446873914757121', '对照字典详情', NULL, NULL, NULL, 'standard:contrast:dict:detail', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457180657770497', '1323446873914757121', '对照字典删除', NULL, NULL, NULL, 'standard:contrast:dict:remove', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457183010775041', '1323446842084184065', '字典对照', 'dictmapping', '/standard/dictmapping/index', NULL, NULL, 'form', 1, '3013', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457185179230209', '1323457183010775041', '自动对照', NULL, NULL, NULL, 'standard:mapping:auto', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457188840857601', '1323457183010775041', '手动对照', NULL, NULL, NULL, 'standard:mapping:manual', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457190950592513', '1323457183010775041', '取消对照', NULL, NULL, NULL, 'standard:mapping:cancel', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457193882411009', '1323446842084184065', '对照统计', 'contraststat', '/standard/contraststat/index', NULL, NULL, 'form', 1, '3014', 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457195987951617', '0', '数据质量管理', '/quality', 'Layout', '/quality/index', NULL, 'form', 0, '40', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457199494389762', '1323457195987951617', '看板', 'index', '/quality/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457202715615233', '1323457195987951617', '规则配置', 'checkrule', '/quality/checkrule/index', NULL, NULL, 'form', 1, '4011', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457206838616066', '1323457202715615233', '规则新增', NULL, NULL, NULL, 'quality:rule:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457210680598530', '1323457202715615233', '规则修改', NULL, NULL, NULL, 'quality:rule:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457213478199298', '1323457202715615233', '规则详情', NULL, NULL, NULL, 'quality:rule:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457216112222210', '1323457202715615233', '规则删除', NULL, NULL, NULL, 'quality:rule:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457220054867969', '1323457195987951617', '问题统计', 'checkstat', '/quality/checkstat/index', NULL, NULL, 'form', 1, '4012', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457223376756738', '1323457195987951617', '质量报告', 'checkreport', '/quality/checkreport/index', NULL, NULL, 'form', 1, '4013', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457226472153090', '1323457195987951617', '定时任务', 'checkjob', '/quality/checkjob/index', NULL, NULL, 'form', 1, '4014', 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457229768876033', '1323457226472153090', '任务暂停', NULL, NULL, NULL, 'quality:job:pause', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457232570671106', '1323457226472153090', '任务恢复', NULL, NULL, NULL, 'quality:job:resume', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457235842228226', '1323457195987951617', '任务日志', 'checklog', '/quality/checklog/index', NULL, NULL, 'form', 1, '4015', 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457239495467009', '0', '主数据管理', '/masterdata', 'Layout', '/masterdata/index', NULL, 'form', 0, '50', 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457241680699394', '1323457239495467009', '看板', 'index', '/masterdata/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457245346521089', '1323457239495467009', '数据模型', 'datamodel', '/masterdata/datamodel/index', NULL, NULL, 'form', 1, '5011', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457248882319361', '1323457245346521089', '模型新增', NULL, NULL, NULL, 'masterdata:model:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457252309065730', '1323457245346521089', '模型修改', NULL, NULL, NULL, 'masterdata:model:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457256096522241', '1323457245346521089', '模型详情', NULL, NULL, NULL, 'masterdata:model:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457259636514817', '1323457245346521089', '模型删除', NULL, NULL, NULL, 'masterdata:model:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457262379589633', '1323457245346521089', '模型提交', NULL, NULL, NULL, 'masterdata:model:submit', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457265072332802', '1323457245346521089', '数据建模', NULL, NULL, NULL, 'masterdata:model:create', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457267387588610', '1323457239495467009', '数据管理', 'datamanage', '/masterdata/datamanage/index', NULL, NULL, 'form', 1, '5012', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457271124713473', '1323457267387588610', '数据新增', NULL, NULL, NULL, 'masterdata:data:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457273783902210', '1323457267387588610', '数据修改', NULL, NULL, NULL, 'masterdata:data:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457276178849794', '1323457267387588610', '数据详情', NULL, NULL, NULL, 'masterdata:data:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457280285073410', '1323457267387588610', '数据删除', NULL, NULL, NULL, 'masterdata:data:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457284382908418', '0', '数据集市管理', '/market', 'Layout', '/market/index', NULL, 'form', 0, '60', 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457288312971266', '1323457284382908418', '看板', 'index', '/market/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457290468843522', '1323457284382908418', '数据服务', 'dataapi', '/market/dataapi/index', NULL, NULL, 'form', 1, '6011', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457293983670274', '1323457290468843522', '数据服务新增', NULL, NULL, NULL, 'market:api:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457297620131842', '1323457290468843522', '数据服务修改', NULL, NULL, NULL, 'market:api:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457300937826305', '1323457290468843522', '数据服务详情', NULL, NULL, NULL, 'market:api:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323457303185973249', '1323457290468843522', '数据服务删除', NULL, NULL, NULL, 'market:api:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465292143890434', '1323457290468843522', '数据服务提交', NULL, NULL, NULL, 'market:api:submit', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465296644378625', '1323457290468843522', '数据服务拷贝', NULL, NULL, NULL, 'market:api:copy', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465300733825026', '1323457290468843522', '数据服务发布', NULL, NULL, NULL, 'market:api:release', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465303497871361', '1323457290468843522', '数据服务注销', NULL, NULL, NULL, 'market:api:cancel', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465306433884161', '1323457290468843522', '数据服务文档', NULL, NULL, NULL, 'market:api:word', NULL, 2, NULL, 0, 9, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465310024208386', '1323457290468843522', '数据服务示例', NULL, NULL, NULL, 'market:api:example', NULL, 2, NULL, 0, 10, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465313249628161', '1323457284382908418', '数据脱敏', 'apimask', '/market/apimask/index', NULL, NULL, 'form', 1, '6012', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465316550545409', '1323465313249628161', '数据脱敏新增', NULL, NULL, NULL, 'market:mask:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465319444615170', '1323465313249628161', '数据脱敏修改', NULL, NULL, NULL, 'market:mask:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465322640674817', '1323465313249628161', '数据脱敏详情', NULL, NULL, NULL, 'market:mask:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465324955930625', '1323465313249628161', '数据脱敏删除', NULL, NULL, NULL, 'market:mask:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465328038744065', '1323457284382908418', '接口日志', 'apilog', '/market/apilog/index', NULL, NULL, 'form', 1, '6013', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465331868143617', '1323465328038744065', '日志详情', NULL, NULL, NULL, 'market:api:log:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465335894675457', '1323465328038744065', '日志删除', NULL, NULL, NULL, 'market:api:log:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465338889408514', '1323457284382908418', '服务集成', 'dataservice', '/market/dataservice/index', NULL, NULL, 'form', 1, '6014', 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465341871558657', '1323465338889408514', '服务集成新增', NULL, NULL, NULL, 'market:service:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465345898090498', '1323465338889408514', '服务集成修改', NULL, NULL, NULL, 'market:service:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465349958176769', '1323465338889408514', '服务集成详情', NULL, NULL, NULL, 'market:service:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465352999047170', '1323465338889408514', '服务集成删除', NULL, NULL, NULL, 'market:service:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465356161552386', '1323457284382908418', '服务日志', 'servicelog', '/market/servicelog/index', NULL, NULL, 'form', 1, '6015', 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465359139508225', '1323465356161552386', '日志详情', NULL, NULL, NULL, 'market:service:log:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465362562060290', '1323465356161552386', '日志删除', NULL, NULL, NULL, 'market:service:log:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465364864733186', '0', '可视化管理', '/visual', 'Layout', '/visual/index', NULL, 'form', 0, '70', 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465367142240257', '1323465364864733186', '看板', 'index', '/visual/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465369847566337', '1323465364864733186', '数据集', 'dataset', '/visual/dataset/index', NULL, NULL, 'form', 1, '7011', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465372125073409', '1323465369847566337', '数据集新增', NULL, NULL, NULL, 'visual:set:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465374515826690', '1323465369847566337', '数据集修改', NULL, NULL, NULL, 'visual:set:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465378643021825', '1323465369847566337', '数据集详情', NULL, NULL, NULL, 'visual:set:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465380983443458', '1323465369847566337', '数据集删除', NULL, NULL, NULL, 'visual:set:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465383680380930', '1323465369847566337', '数据预览', NULL, NULL, NULL, 'visual:set:preview', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465385953693697', '1323465364864733186', '图表配置', 'datachart', '/visual/datachart/index', NULL, NULL, 'form', 1, '7012', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465389925699585', '1323465385953693697', '图表新增', NULL, NULL, NULL, 'visual:chart:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465393704767490', '1323465385953693697', '图表修改', NULL, NULL, NULL, 'visual:chart:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465396888244225', '1323465385953693697', '图表配置', NULL, NULL, NULL, 'visual:chart:build', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465400029777921', '1323465385953693697', '图表删除', NULL, NULL, NULL, 'visual:chart:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465401029783632', '1323465385953693697', '图表拷贝', NULL, NULL, NULL, 'visual:chart:copy', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465402781241346', '1323465364864733186', '看板配置', 'databoard', '/visual/databoard/index', NULL, NULL, 'form', 1, '7013', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465405113274369', '1323465402781241346', '看板新增', NULL, NULL, NULL, 'visual:board:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465407613079553', '1323465402781241346', '看板修改', NULL, NULL, NULL, 'visual:board:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465408371552934', '1323465402781241346', '看板配置', NULL, NULL, NULL, 'visual:board:build', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465410377125889', '1323465402781241346', '看板预览', NULL, NULL, NULL, 'visual:board:preview', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465414361714689', '1323465402781241346', '看板删除', NULL, NULL, NULL, 'visual:board:remove', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465415426742390', '1323465402781241346', '看板拷贝', NULL, NULL, NULL, 'visual:board:copy', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465416611367426', '1323465364864733186', '酷屏配置', 'datascreen', '/visual/datascreen/index', NULL, NULL, 'form', 1, '7014', 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465416705008130', '1323465416611367426', '酷屏新增', NULL, NULL, NULL, 'visual:screen:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465417236419686', '1323465416611367426', '酷屏修改', NULL, NULL, NULL, 'visual:screen:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465417607196160', '1323465416611367426', '酷屏配置', NULL, NULL, NULL, 'visual:screen:build', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465417802278401', '1323465416611367426', '酷屏预览', NULL, NULL, NULL, 'visual:screen:preview', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465418100034561', '1323465416611367426', '酷屏删除', NULL, NULL, NULL, 'visual:screen:remove', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465418218860801', '1323465416611367426', '酷屏拷贝', NULL, NULL, NULL, 'visual:screen:copy', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465418392440833', '0', '流程管理', '/workflow', 'Layout', '/workflow/index', NULL, 'form', 0, '80', 0, 8, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465421974376449', '1323465418392440833', '看板', 'index', '/workflow/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465424239300610', '1323465418392440833', '流程定义', 'definition', '/workflow/definition/index', NULL, NULL, 'form', 1, '8011', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465428202917890', '1323465424239300610', '流程分类新增', NULL, NULL, NULL, 'workflow:definition:type:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465431923265538', '1323465424239300610', '流程分类修改', NULL, NULL, NULL, 'workflow:definition:type:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465434813140993', '1323465424239300610', '流程分类详情', NULL, NULL, NULL, 'workflow:definition:type:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465438407659522', '1323465424239300610', '流程分类删除', NULL, NULL, NULL, 'workflow:definition:type:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465442094452738', '1323465424239300610', '流程定义导入', NULL, NULL, NULL, 'workflow:definition:import', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465445244375042', '1323465424239300610', '流程定义流程图', NULL, NULL, NULL, 'workflow:definition:resource', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323465448629178369', '1323465424239300610', '流程定义激活', NULL, NULL, NULL, 'workflow:definition:activate', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491848870330369', '1323465424239300610', '流程定义挂起', NULL, NULL, NULL, 'workflow:definition:suspend', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491854062878722', '1323465424239300610', '流程定义删除', NULL, NULL, NULL, 'workflow:definition:remove', NULL, 2, NULL, 0, 9, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491858198462465', '1323465418392440833', '流程实例', 'instance', '/workflow/instance/index', '/workflow/instance/running', NULL, 'form', 0, '8020', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491860798930945', '1323491858198462465', '运行中的流程', 'running', '/workflow/instance/running/index', NULL, NULL, 'form', 1, '8021', 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491863856578561', '1323491860798930945', '流程追踪', NULL, NULL, NULL, 'workflow:instance:track', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491866775814145', '1323491860798930945', '流程激活', NULL, NULL, NULL, 'workflow:instance:running:activate', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491870609408001', '1323491860798930945', '流程挂起', NULL, NULL, NULL, 'workflow:instance:running:suspend', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491873587363842', '1323491860798930945', '流程删除', NULL, NULL, NULL, 'workflow:instance:running:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491877102190593', '1323491858198462465', '我发起的流程', 'mystarted', '/workflow/instance/mystarted/index', NULL, NULL, 'form', 1, '8022', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491881074196481', '1323491858198462465', '我参与的流程', 'myinvolved', '/workflow/instance/myinvolved/index', NULL, NULL, 'form', 1, '8023', 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491884450611202', '1323465418392440833', '流程任务', 'task', '/workflow/task/index', '/workflow/task/todo', NULL, 'form', 0, '8030', 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491888380674050', '1323491884450611202', '待办任务', 'todo', '/workflow/task/todo/index', NULL, NULL, 'form', 1, '8031', 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491891807420417', '1323491888380674050', '任务签收', NULL, NULL, NULL, 'workflow:task:caim', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491895217389569', '1323491888380674050', '任务反签收', NULL, NULL, NULL, 'workflow:task:unclaim', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491898304397313', '1323491888380674050', '任务委派', NULL, NULL, NULL, 'workflow:task:delegate', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491900485435393', '1323491888380674050', '任务转办', NULL, NULL, NULL, 'workflow:task:assignee', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491903840878594', '1323491888380674050', '任务审核', NULL, NULL, NULL, 'workflow:task:exam', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491906328100865', '1323491884450611202', '已办任务', 'done', '/workflow/task/done/index', NULL, NULL, 'form', 1, '8032', 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491908735631361', '1323465418392440833', '业务配置', 'business', '/workflow/business/index', NULL, NULL, 'form', 1, '8041', 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491911856193538', '1323491908735631361', '业务配置新增', NULL, NULL, NULL, 'workflow:business:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491915605901314', '1323491908735631361', '业务配置新增', NULL, NULL, NULL, 'workflow:business:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491918722269185', '1323491908735631361', '业务配置新增', NULL, NULL, NULL, 'workflow:business:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491921226268673', '1323491908735631361', '业务配置新增', NULL, NULL, NULL, 'workflow:business:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
-INSERT INTO `sys_menu` VALUES ('1323491925059862529', '1323491908735631361', '刷新缓存', NULL, NULL, NULL, 'workflow:business:refresh', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2022-11-03 13:32:40', '1214835832967581698', '2022-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439314692685825', '0', '平台基础设置', '/basic', 'Layout', '/basic/index', NULL, 'form', 0, '10', 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439318413033473', '1323439314692685825', '看板', 'index', '/basic/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439321634258945', '1323439314692685825', '系统管理', 'system', '/basic/system/index', '/basic/system/post', NULL, 'form', 0, '1010', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439323769159681', '1323439321634258945', '岗位管理', 'post', '/basic/system/post/index', NULL, NULL, 'form', 1, '1011', 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439327296569346', '1323439323769159681', '岗位新增', NULL, NULL, NULL, 'system:post:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439329708294145', '1323439323769159681', '岗位修改', NULL, NULL, NULL, 'system:post:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439332476534786', '1323439323769159681', '岗位详情', NULL, NULL, NULL, 'system:post:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439336071053314', '1323439323769159681', '岗位删除', NULL, NULL, NULL, 'system:post:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439338231119873', '1323439321634258945', '部门管理', 'dept', '/basic/system/dept/index', NULL, NULL, 'form', 1, '1012', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439341569785858', '1323439338231119873', '部门新增', NULL, NULL, NULL, 'system:dept:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439344791011329', '1323439338231119873', '部门修改', NULL, NULL, NULL, 'system:dept:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439348771405826', '1323439338231119873', '部门详情', NULL, NULL, NULL, 'system:dept:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439351912939522', '1323439338231119873', '部门删除', NULL, NULL, NULL, 'system:dept:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439355318714370', '1323439321634258945', '菜单管理', 'menu', '/basic/system/menu/index', NULL, NULL, 'form', 1, '1013', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439359127142401', '1323439355318714370', '菜单新增', NULL, NULL, NULL, 'system:menu:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439362759409666', '1323439355318714370', '菜单修改', NULL, NULL, NULL, 'system:menu:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439365372461057', '1323439355318714370', '菜单详情', NULL, NULL, NULL, 'system:menu:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439367612219394', '1323439355318714370', '菜单删除', NULL, NULL, NULL, 'system:menu:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439371785551873', '1323439321634258945', '角色管理', 'role', '/basic/system/role/index', NULL, NULL, 'form', 1, '1014', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439375539453953', '1323439371785551873', '角色新增', NULL, NULL, NULL, 'system:role:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439378580324354', '1323439371785551873', '角色修改', NULL, NULL, NULL, 'system:role:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439381906407425', '1323439371785551873', '角色详情', NULL, NULL, NULL, 'system:role:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439384934694913', '1323439371785551873', '角色删除', NULL, NULL, NULL, 'system:role:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439387669381121', '1323439321634258945', '用户管理', 'user', '/basic/system/user/index', NULL, NULL, 'form', 1, '1015', 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439390789943298', '1323439387669381121', '用户新增', NULL, NULL, NULL, 'system:user:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439393298137089', '1323439387669381121', '用户修改', NULL, NULL, NULL, 'system:user:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439396758437890', '1323439387669381121', '用户详情', NULL, NULL, NULL, 'system:user:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439399979663361', '1323439387669381121', '用户删除', NULL, NULL, NULL, 'system:user:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439402764681218', '1323439387669381121', '重置密码', NULL, NULL, NULL, 'system:user:reset:password', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439406451474434', '1323439321634258945', '参数管理', 'config', '/basic/system/config/index', NULL, NULL, 'form', 1, '1016', 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439408812867585', '1323439406451474434', '参数新增', NULL, NULL, NULL, 'system:config:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439412055064578', '1323439406451474434', '参数修改', NULL, NULL, NULL, 'system:config:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439415838326785', '1323439406451474434', '参数详情', NULL, NULL, NULL, 'system:config:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439419256684545', '1323439406451474434', '参数删除', NULL, NULL, NULL, 'system:config:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439423211913218', '1323439406451474434', '刷新缓存', NULL, NULL, NULL, 'system:config:refresh', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439426693185537', '1323439321634258945', '字典管理', 'dict', '/basic/system/dict/index', NULL, NULL, 'form', 1, '1017', 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439428819697665', '1323439426693185537', '字典新增', NULL, NULL, NULL, 'system:dict:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439431755710465', '1323439426693185537', '字典修改', NULL, NULL, NULL, 'system:dict:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439434893049857', '1323439426693185537', '字典详情', NULL, NULL, NULL, 'system:dict:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439437258637313', '1323439426693185537', '字典删除', NULL, NULL, NULL, 'system:dict:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439440840572930', '1323439426693185537', '刷新缓存', NULL, NULL, NULL, 'system:dict:refresh', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439444309262337', '1323439314692685825', '系统监控', 'monitor', '/basic/monitor/index', '/basic/monitor/loginlog', NULL, 'form', 0, '1020', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439447442407426', '1323439444309262337', '登录日志', 'loginlog', '/basic/monitor/loginlog/index', NULL, NULL, 'form', 1, '1021', 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439450667827202', '1323439447442407426', '日志详情', NULL, NULL, NULL, 'monitor:loginlog:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439454547558402', '1323439447442407426', '日志删除', NULL, NULL, NULL, 'monitor:loginlog:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439457684897793', '1323439444309262337', '操作日志', 'operlog', '/basic/monitor/operlog/index', NULL, NULL, 'form', 1, '1022', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439461132615682', '1323439457684897793', '日志详情', NULL, NULL, NULL, 'monitor:operlog:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323439463754055682', '1323439457684897793', '日志删除', NULL, NULL, NULL, 'monitor:operlog:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446715848216577', '1323439314692685825', '任务调度', 'scheduler', '/basic/scheduler/index', '/basic/scheduler/job', NULL, 'form', 0, '1030', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446719488872450', '1323446715848216577', '任务管理', 'taskjob', '/basic/scheduler/taskjob/index', NULL, NULL, 'form', 1, '1031', 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446723389575170', '1323446719488872450', '任务新增', NULL, NULL, NULL, 'scheduler:job:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446727512576001', '1323446719488872450', '任务修改', NULL, NULL, NULL, 'scheduler:job:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446731551690753', '1323446719488872450', '任务详情', NULL, NULL, NULL, 'scheduler:job:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446733736923137', '1323446719488872450', '任务删除', NULL, NULL, NULL, 'scheduler:job:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446737285304322', '1323446719488872450', '任务暂停', NULL, NULL, NULL, 'scheduler:job:pause', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446741144064001', '1323446719488872450', '任务恢复', NULL, NULL, NULL, 'scheduler:job:resume', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446745309007873', '1323446719488872450', '立即执行', NULL, NULL, NULL, 'scheduler:job:run', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446748291158018', '1323446715848216577', '日志管理', 'tasklog', '/basic/scheduler/tasklog/index', NULL, NULL, 'form', 1, '1032', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446755090124802', '1323446748291158018', '日志详情', NULL, NULL, NULL, 'scheduler:log:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446758726586370', '1323446748291158018', '日志删除', NULL, NULL, NULL, 'scheduler:log:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446761884897282', '0', '元数据管理', '/metadata', 'Layout', '/metadata/index', NULL, 'form', 0, '20', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446765831737346', '1323446761884897282', '看板', 'index', '/metadata/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446768281210882', '1323446761884897282', '数据源', 'datasource', '/metadata/datasource/index', NULL, NULL, 'form', 1, '2011', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446772064473090', '1323446768281210882', '数据源新增', NULL, NULL, NULL, 'metadata:datasource:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446774992097282', '1323446768281210882', '数据源修改', NULL, NULL, NULL, 'metadata:datasource:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446778368512002', '1323446768281210882', '数据源详情', NULL, NULL, NULL, 'metadata:datasource:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446782034333697', '1323446768281210882', '数据源删除', NULL, NULL, NULL, 'metadata:datasource:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446785037455362', '1323446768281210882', '刷新缓存', NULL, NULL, NULL, 'metadata:datasource:refresh', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446788590030850', '1323446768281210882', '元数据同步', NULL, NULL, NULL, 'metadata:datasource:sync', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446792067108865', '1323446768281210882', '数据库文档', NULL, NULL, NULL, 'metadata:datasource:word', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446796131389441', '1323446768281210882', '连通性检测', NULL, NULL, NULL, 'metadata:datasource:connect', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446800178892801', '1323446761884897282', '元数据', 'datacolumn', '/metadata/datacolumn/index', NULL, NULL, 'form', 1, '2012', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446803093934082', '1323446800178892801', '元数据详情', NULL, NULL, NULL, 'metadata:datacolumn:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446806457765890', '1323446761884897282', '数据授权', 'dataauthorize', '/metadata/dataauthorize/index', NULL, NULL, 'form', 1, '2013', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446810152947713', '1323446806457765890', '授权修改', NULL, NULL, NULL, 'metadata:dataauthorize:edit', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446812367540226', '1323446806457765890', '刷新缓存', NULL, NULL, NULL, 'metadata:dataauthorize:refresh', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446814506635265', '1323446761884897282', '变更记录', 'changerecord', '/metadata/changerecord/index', NULL, NULL, 'form', 1, '2014', 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446818050822146', '1323446814506635265', '变更记录新增', NULL, NULL, NULL, 'metadata:changerecord:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446821838278657', '1323446814506635265', '变更记录修改', NULL, NULL, NULL, 'metadata:changerecord:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446824904314882', '1323446814506635265', '变更记录详情', NULL, NULL, NULL, 'metadata:changerecord:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446828507222018', '1323446814506635265', '变更记录删除', NULL, NULL, NULL, 'metadata:changerecord:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446830755368961', '1323446761884897282', '数据检索', 'datasearch', '/metadata/datasearch/index', NULL, NULL, 'form', 1, '2015', 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446833439723522', '1323446761884897282', '数据地图', 'datamap', '/metadata/datamap/index', NULL, NULL, 'form', 1, '2016', 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446835830476801', '1323446761884897282', '血缘流向（待开发）', 'datablood', '/metadata/datablood/index', NULL, NULL, 'form', 1, '2017', 0, 8, 0, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2022-04-30 16:09:45', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446838196064257', '1323446761884897282', 'SQL工作台', 'sqlconsole', '/metadata/sqlconsole/index', NULL, NULL, 'form', 1, '2018', 0, 9, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446842084184065', '0', '数据标准管理', '/standard', 'Layout', '/standard/index', NULL, 'form', 0, '30', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446844382662657', '1323446842084184065', '看板', 'index', '/standard/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446848434360322', '1323446842084184065', '标准字典', 'datadict', '/standard/datadict/index', NULL, NULL, 'form', 1, '3011', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446851588476930', '1323446848434360322', '标准类别新增', NULL, NULL, NULL, 'standard:type:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446854285414401', '1323446848434360322', '标准类别修改', NULL, NULL, NULL, 'standard:type:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446856474841089', '1323446848434360322', '标准类别详情', NULL, NULL, NULL, 'standard:type:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446858899148801', '1323446848434360322', '标准类别删除', NULL, NULL, NULL, 'standard:type:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446861998739458', '1323446848434360322', '标准字典新增', NULL, NULL, NULL, 'standard:dict:add', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446864804728834', '1323446848434360322', '标准字典修改', NULL, NULL, NULL, 'standard:dict:edit', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446867434557441', '1323446848434360322', '标准字典详情', NULL, NULL, NULL, 'standard:dict:detail', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446871129739266', '1323446848434360322', '标准字典删除', NULL, NULL, NULL, 'standard:dict:remove', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446872239749167', '1323446848434360322', '刷新缓存', NULL, NULL, NULL, 'standard:dict:refresh', NULL, 2, NULL, 0, 9, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323446873914757121', '1323446842084184065', '对照表', 'dictcontrast', '/standard/dictcontrast/index', NULL, NULL, 'form', 1, '3012', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457155479363586', '1323446873914757121', '对照表新增', NULL, NULL, NULL, 'standard:contrast:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457160046960641', '1323446873914757121', '对照表修改', NULL, NULL, NULL, 'standard:contrast:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457163289157633', '1323446873914757121', '对照表详情', NULL, NULL, NULL, 'standard:contrast:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457168091635713', '1323446873914757121', '对照表删除', NULL, NULL, NULL, 'standard:contrast:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457171208003585', '1323446873914757121', '对照字典新增', NULL, NULL, NULL, 'standard:contrast:dict:add', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457174412451841', '1323446873914757121', '对照字典修改', NULL, NULL, NULL, 'standard:contrast:dict:edit', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457176954200065', '1323446873914757121', '对照字典详情', NULL, NULL, NULL, 'standard:contrast:dict:detail', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457180657770497', '1323446873914757121', '对照字典删除', NULL, NULL, NULL, 'standard:contrast:dict:remove', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457183010775041', '1323446842084184065', '字典对照', 'dictmapping', '/standard/dictmapping/index', NULL, NULL, 'form', 1, '3013', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457185179230209', '1323457183010775041', '自动对照', NULL, NULL, NULL, 'standard:mapping:auto', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457188840857601', '1323457183010775041', '手动对照', NULL, NULL, NULL, 'standard:mapping:manual', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457190950592513', '1323457183010775041', '取消对照', NULL, NULL, NULL, 'standard:mapping:cancel', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457193882411009', '1323446842084184065', '对照统计', 'contraststat', '/standard/contraststat/index', NULL, NULL, 'form', 1, '3014', 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457195987951617', '0', '数据质量管理', '/quality', 'Layout', '/quality/index', NULL, 'form', 0, '40', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457199494389762', '1323457195987951617', '看板', 'index', '/quality/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457202715615233', '1323457195987951617', '规则配置', 'checkrule', '/quality/checkrule/index', NULL, NULL, 'form', 1, '4011', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457206838616066', '1323457202715615233', '规则新增', NULL, NULL, NULL, 'quality:rule:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457210680598530', '1323457202715615233', '规则修改', NULL, NULL, NULL, 'quality:rule:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457213478199298', '1323457202715615233', '规则详情', NULL, NULL, NULL, 'quality:rule:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457216112222210', '1323457202715615233', '规则删除', NULL, NULL, NULL, 'quality:rule:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457220054867969', '1323457195987951617', '问题统计', 'checkstat', '/quality/checkstat/index', NULL, NULL, 'form', 1, '4012', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457223376756738', '1323457195987951617', '质量报告', 'checkreport', '/quality/checkreport/index', NULL, NULL, 'form', 1, '4013', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457226472153090', '1323457195987951617', '定时任务', 'checkjob', '/quality/checkjob/index', NULL, NULL, 'form', 1, '4014', 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457229768876033', '1323457226472153090', '任务暂停', NULL, NULL, NULL, 'quality:job:pause', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457232570671106', '1323457226472153090', '任务恢复', NULL, NULL, NULL, 'quality:job:resume', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457235842228226', '1323457195987951617', '任务日志', 'checklog', '/quality/checklog/index', NULL, NULL, 'form', 1, '4015', 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457239495467009', '0', '主数据管理', '/masterdata', 'Layout', '/masterdata/index', NULL, 'form', 0, '50', 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457241680699394', '1323457239495467009', '看板', 'index', '/masterdata/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457245346521089', '1323457239495467009', '数据模型', 'datamodel', '/masterdata/datamodel/index', NULL, NULL, 'form', 1, '5011', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457248882319361', '1323457245346521089', '模型新增', NULL, NULL, NULL, 'masterdata:model:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457252309065730', '1323457245346521089', '模型修改', NULL, NULL, NULL, 'masterdata:model:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457256096522241', '1323457245346521089', '模型详情', NULL, NULL, NULL, 'masterdata:model:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457259636514817', '1323457245346521089', '模型删除', NULL, NULL, NULL, 'masterdata:model:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457262379589633', '1323457245346521089', '模型提交', NULL, NULL, NULL, 'masterdata:model:submit', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457265072332802', '1323457245346521089', '数据建模', NULL, NULL, NULL, 'masterdata:model:create', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457267387588610', '1323457239495467009', '数据管理', 'datamanage', '/masterdata/datamanage/index', NULL, NULL, 'form', 1, '5012', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457271124713473', '1323457267387588610', '数据新增', NULL, NULL, NULL, 'masterdata:data:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457273783902210', '1323457267387588610', '数据修改', NULL, NULL, NULL, 'masterdata:data:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457276178849794', '1323457267387588610', '数据详情', NULL, NULL, NULL, 'masterdata:data:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457280285073410', '1323457267387588610', '数据删除', NULL, NULL, NULL, 'masterdata:data:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457284382908418', '0', '数据集市管理', '/market', 'Layout', '/market/index', NULL, 'form', 0, '60', 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457288312971266', '1323457284382908418', '看板', 'index', '/market/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457290468843522', '1323457284382908418', '数据服务', 'dataapi', '/market/dataapi/index', NULL, NULL, 'form', 1, '6011', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457293983670274', '1323457290468843522', '数据服务新增', NULL, NULL, NULL, 'market:api:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457297620131842', '1323457290468843522', '数据服务修改', NULL, NULL, NULL, 'market:api:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457300937826305', '1323457290468843522', '数据服务详情', NULL, NULL, NULL, 'market:api:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323457303185973249', '1323457290468843522', '数据服务删除', NULL, NULL, NULL, 'market:api:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465292143890434', '1323457290468843522', '数据服务提交', NULL, NULL, NULL, 'market:api:submit', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465296644378625', '1323457290468843522', '数据服务拷贝', NULL, NULL, NULL, 'market:api:copy', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465300733825026', '1323457290468843522', '数据服务发布', NULL, NULL, NULL, 'market:api:release', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465303497871361', '1323457290468843522', '数据服务注销', NULL, NULL, NULL, 'market:api:cancel', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465306433884161', '1323457290468843522', '数据服务文档', NULL, NULL, NULL, 'market:api:word', NULL, 2, NULL, 0, 9, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465310024208386', '1323457290468843522', '数据服务示例', NULL, NULL, NULL, 'market:api:example', NULL, 2, NULL, 0, 10, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465313249628161', '1323457284382908418', '数据脱敏', 'apimask', '/market/apimask/index', NULL, NULL, 'form', 1, '6012', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465316550545409', '1323465313249628161', '数据脱敏新增', NULL, NULL, NULL, 'market:mask:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465319444615170', '1323465313249628161', '数据脱敏修改', NULL, NULL, NULL, 'market:mask:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465322640674817', '1323465313249628161', '数据脱敏详情', NULL, NULL, NULL, 'market:mask:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465324955930625', '1323465313249628161', '数据脱敏删除', NULL, NULL, NULL, 'market:mask:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465328038744065', '1323457284382908418', '接口日志', 'apilog', '/market/apilog/index', NULL, NULL, 'form', 1, '6013', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465331868143617', '1323465328038744065', '日志详情', NULL, NULL, NULL, 'market:api:log:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465335894675457', '1323465328038744065', '日志删除', NULL, NULL, NULL, 'market:api:log:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465338889408514', '1323457284382908418', '服务集成', 'dataservice', '/market/dataservice/index', NULL, NULL, 'form', 1, '6014', 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465341871558657', '1323465338889408514', '服务集成新增', NULL, NULL, NULL, 'market:service:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465345898090498', '1323465338889408514', '服务集成修改', NULL, NULL, NULL, 'market:service:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465349958176769', '1323465338889408514', '服务集成详情', NULL, NULL, NULL, 'market:service:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465352999047170', '1323465338889408514', '服务集成删除', NULL, NULL, NULL, 'market:service:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465356161552386', '1323457284382908418', '服务日志', 'servicelog', '/market/servicelog/index', NULL, NULL, 'form', 1, '6015', 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465359139508225', '1323465356161552386', '日志详情', NULL, NULL, NULL, 'market:service:log:detail', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465362562060290', '1323465356161552386', '日志删除', NULL, NULL, NULL, 'market:service:log:remove', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465364864733186', '0', '可视化管理', '/visual', 'Layout', '/visual/index', NULL, 'form', 0, '70', 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465367142240257', '1323465364864733186', '看板', 'index', '/visual/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465369847566337', '1323465364864733186', '数据集', 'dataset', '/visual/dataset/index', NULL, NULL, 'form', 1, '7011', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465372125073409', '1323465369847566337', '数据集新增', NULL, NULL, NULL, 'visual:set:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465374515826690', '1323465369847566337', '数据集修改', NULL, NULL, NULL, 'visual:set:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465378643021825', '1323465369847566337', '数据集详情', NULL, NULL, NULL, 'visual:set:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465380983443458', '1323465369847566337', '数据集删除', NULL, NULL, NULL, 'visual:set:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465383680380930', '1323465369847566337', '数据预览', NULL, NULL, NULL, 'visual:set:preview', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465385953693697', '1323465364864733186', '图表配置', 'datachart', '/visual/datachart/index', NULL, NULL, 'form', 1, '7012', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465389925699585', '1323465385953693697', '图表新增', NULL, NULL, NULL, 'visual:chart:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465393704767490', '1323465385953693697', '图表修改', NULL, NULL, NULL, 'visual:chart:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465396888244225', '1323465385953693697', '图表配置', NULL, NULL, NULL, 'visual:chart:build', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465400029777921', '1323465385953693697', '图表删除', NULL, NULL, NULL, 'visual:chart:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465401029783632', '1323465385953693697', '图表拷贝', NULL, NULL, NULL, 'visual:chart:copy', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465402781241346', '1323465364864733186', '看板配置', 'databoard', '/visual/databoard/index', NULL, NULL, 'form', 1, '7013', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465405113274369', '1323465402781241346', '看板新增', NULL, NULL, NULL, 'visual:board:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465407613079553', '1323465402781241346', '看板修改', NULL, NULL, NULL, 'visual:board:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465408371552934', '1323465402781241346', '看板配置', NULL, NULL, NULL, 'visual:board:build', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465410377125889', '1323465402781241346', '看板预览', NULL, NULL, NULL, 'visual:board:preview', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465414361714689', '1323465402781241346', '看板删除', NULL, NULL, NULL, 'visual:board:remove', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465415426742390', '1323465402781241346', '看板拷贝', NULL, NULL, NULL, 'visual:board:copy', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465416611367426', '1323465364864733186', '酷屏配置', 'datascreen', '/visual/datascreen/index', NULL, NULL, 'form', 1, '7014', 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465416705008130', '1323465416611367426', '酷屏新增', NULL, NULL, NULL, 'visual:screen:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465417236419686', '1323465416611367426', '酷屏修改', NULL, NULL, NULL, 'visual:screen:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465417607196160', '1323465416611367426', '酷屏配置', NULL, NULL, NULL, 'visual:screen:build', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465417802278401', '1323465416611367426', '酷屏预览', NULL, NULL, NULL, 'visual:screen:preview', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465418100034561', '1323465416611367426', '酷屏删除', NULL, NULL, NULL, 'visual:screen:remove', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465418218860801', '1323465416611367426', '酷屏拷贝', NULL, NULL, NULL, 'visual:screen:copy', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465418392440833', '0', '流程管理', '/workflow', 'Layout', '/workflow/index', NULL, 'form', 0, '80', 0, 8, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465421974376449', '1323465418392440833', '看板', 'index', '/workflow/index', NULL, NULL, 'form', 1, NULL, 1, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465424239300610', '1323465418392440833', '流程定义', 'definition', '/workflow/definition/index', NULL, NULL, 'form', 1, '8011', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465428202917890', '1323465424239300610', '流程分类新增', NULL, NULL, NULL, 'workflow:definition:type:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465431923265538', '1323465424239300610', '流程分类修改', NULL, NULL, NULL, 'workflow:definition:type:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465434813140993', '1323465424239300610', '流程分类详情', NULL, NULL, NULL, 'workflow:definition:type:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465438407659522', '1323465424239300610', '流程分类删除', NULL, NULL, NULL, 'workflow:definition:type:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465442094452738', '1323465424239300610', '流程定义导入', NULL, NULL, NULL, 'workflow:definition:import', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465445244375042', '1323465424239300610', '流程定义流程图', NULL, NULL, NULL, 'workflow:definition:resource', NULL, 2, NULL, 0, 6, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323465448629178369', '1323465424239300610', '流程定义激活', NULL, NULL, NULL, 'workflow:definition:activate', NULL, 2, NULL, 0, 7, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491848870330369', '1323465424239300610', '流程定义挂起', NULL, NULL, NULL, 'workflow:definition:suspend', NULL, 2, NULL, 0, 8, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491854062878722', '1323465424239300610', '流程定义删除', NULL, NULL, NULL, 'workflow:definition:remove', NULL, 2, NULL, 0, 9, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491858198462465', '1323465418392440833', '流程实例', 'instance', '/workflow/instance/index', '/workflow/instance/running', NULL, 'form', 0, '8020', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491860798930945', '1323491858198462465', '运行中的流程', 'running', '/workflow/instance/running/index', NULL, NULL, 'form', 1, '8021', 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491863856578561', '1323491860798930945', '流程追踪', NULL, NULL, NULL, 'workflow:instance:track', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491866775814145', '1323491860798930945', '流程激活', NULL, NULL, NULL, 'workflow:instance:running:activate', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491870609408001', '1323491860798930945', '流程挂起', NULL, NULL, NULL, 'workflow:instance:running:suspend', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491873587363842', '1323491860798930945', '流程删除', NULL, NULL, NULL, 'workflow:instance:running:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491877102190593', '1323491858198462465', '我发起的流程', 'mystarted', '/workflow/instance/mystarted/index', NULL, NULL, 'form', 1, '8022', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491881074196481', '1323491858198462465', '我参与的流程', 'myinvolved', '/workflow/instance/myinvolved/index', NULL, NULL, 'form', 1, '8023', 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491884450611202', '1323465418392440833', '流程任务', 'task', '/workflow/task/index', '/workflow/task/todo', NULL, 'form', 0, '8030', 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491888380674050', '1323491884450611202', '待办任务', 'todo', '/workflow/task/todo/index', NULL, NULL, 'form', 1, '8031', 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491891807420417', '1323491888380674050', '任务签收', NULL, NULL, NULL, 'workflow:task:caim', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491895217389569', '1323491888380674050', '任务反签收', NULL, NULL, NULL, 'workflow:task:unclaim', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491898304397313', '1323491888380674050', '任务委派', NULL, NULL, NULL, 'workflow:task:delegate', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491900485435393', '1323491888380674050', '任务转办', NULL, NULL, NULL, 'workflow:task:assignee', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491903840878594', '1323491888380674050', '任务审核', NULL, NULL, NULL, 'workflow:task:exam', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491906328100865', '1323491884450611202', '已办任务', 'done', '/workflow/task/done/index', NULL, NULL, 'form', 1, '8032', 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491908735631361', '1323465418392440833', '业务配置', 'business', '/workflow/business/index', NULL, NULL, 'form', 1, '8041', 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491911856193538', '1323491908735631361', '业务配置新增', NULL, NULL, NULL, 'workflow:business:add', NULL, 2, NULL, 0, 1, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491915605901314', '1323491908735631361', '业务配置新增', NULL, NULL, NULL, 'workflow:business:edit', NULL, 2, NULL, 0, 2, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491918722269185', '1323491908735631361', '业务配置新增', NULL, NULL, NULL, 'workflow:business:detail', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491921226268673', '1323491908735631361', '业务配置新增', NULL, NULL, NULL, 'workflow:business:remove', NULL, 2, NULL, 0, 4, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
+INSERT INTO `sys_menu` VALUES ('1323491925059862529', '1323491908735631361', '刷新缓存', NULL, NULL, NULL, 'workflow:business:refresh', NULL, 2, NULL, 0, 5, 1, '1214835832967581698', '2020-11-03 13:32:40', '1214835832967581698', '2020-11-03 13:32:40', NULL);
 INSERT INTO `sys_menu` VALUES ('1520391362007007233', '1323457226472153090', '立即执行', NULL, NULL, NULL, 'quality:job:run', NULL, 2, NULL, 0, 3, 1, '1214835832967581698', '2022-04-30 21:15:23', '1214835832967581698', '2022-04-30 21:15:23', NULL);
 
 -- ----------------------------
 -- Table structure for sys_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_post`;
-CREATE TABLE `sys_post`  (
+CREATE TABLE IF NOT EXISTS  `sys_post`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `post_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '岗位名称',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
@@ -3308,14 +2421,14 @@ CREATE TABLE `sys_post`  (
 -- ----------------------------
 -- Records of sys_post
 -- ----------------------------
-INSERT INTO `sys_post` VALUES ('1214825605782228993', '项目经理', 1, '1', '2022-01-08 16:26:09', '1', '2022-01-08 16:26:09', NULL);
-INSERT INTO `sys_post` VALUES ('1214825677672599554', '普通员工', 1, '1', '2022-01-08 16:26:27', '1', '2022-01-08 16:26:27', NULL);
+INSERT INTO `sys_post` VALUES ('1214825605782228993', '项目经理', 1, '1', '2020-01-08 16:26:09', '1', '2020-01-08 16:26:09', NULL);
+INSERT INTO `sys_post` VALUES ('1214825677672599554', '普通员工', 1, '1', '2020-01-08 16:26:27', '1', '2020-01-08 16:26:27', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
-CREATE TABLE `sys_role`  (
+CREATE TABLE IF NOT EXISTS  `sys_role`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `role_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '角色名称',
   `role_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '角色编码',
@@ -3332,15 +2445,15 @@ CREATE TABLE `sys_role`  (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1214826565321543682', '管理员', 'admin', 1, 1, '1', '2022-01-08 16:29:58', '1214835832967581698', '2022-04-30 21:16:15', NULL);
-INSERT INTO `sys_role` VALUES ('1319084037507244034', '普通用户', 'simple', 1, 1, '1214835832967581698', '2022-10-22 09:11:57', '1214835832967581698', '2022-12-18 08:28:55', NULL);
-INSERT INTO `sys_role` VALUES ('1319092939179286529', '审核用户', 'audit', 1, 1, '1319084968579817473', '2022-10-22 09:47:19', '1214835832967581698', '2022-11-03 16:07:36', NULL);
+INSERT INTO `sys_role` VALUES ('1214826565321543682', '管理员', 'admin', 1, 1, '1', '2020-01-08 16:29:58', '1214835832967581698', '2022-04-30 21:16:15', NULL);
+INSERT INTO `sys_role` VALUES ('1319084037507244034', '普通用户', 'simple', 1, 1, '1214835832967581698', '2020-10-22 09:11:57', '1214835832967581698', '2020-12-18 08:28:55', NULL);
+INSERT INTO `sys_role` VALUES ('1319092939179286529', '审核用户', 'audit', 1, 1, '1319084968579817473', '2020-10-22 09:47:19', '1214835832967581698', '2020-11-03 16:07:36', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role_dept
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_dept`;
-CREATE TABLE `sys_role_dept`  (
+CREATE TABLE IF NOT EXISTS  `sys_role_dept`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色部门主键ID',
   `role_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色ID',
   `dept_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '部门ID',
@@ -3355,7 +2468,7 @@ CREATE TABLE `sys_role_dept`  (
 -- Table structure for sys_role_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
-CREATE TABLE `sys_role_menu`  (
+CREATE TABLE IF NOT EXISTS  `sys_role_menu`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色菜单主键ID',
   `role_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '角色ID',
   `menu_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '菜单ID',
@@ -3419,7 +2532,7 @@ INSERT INTO `sys_role_menu` VALUES ('1339729316283465731', '1319084037507244034'
 INSERT INTO `sys_role_menu` VALUES ('1339729316283465732', '1319084037507244034', '1323446818050822146');
 INSERT INTO `sys_role_menu` VALUES ('1339729316283465733', '1319084037507244034', '1323446821838278657');
 INSERT INTO `sys_role_menu` VALUES ('1339729316283465734', '1319084037507244034', '1323446824904314882');
-INSERT INTO `sys_role_menu` VALUES ('1339729316283465735', '1319084037507244034', '1323446828507222022');
+INSERT INTO `sys_role_menu` VALUES ('1339729316283465735', '1319084037507244034', '1323446828507222018');
 INSERT INTO `sys_role_menu` VALUES ('1339729316283465736', '1319084037507244034', '1323446830755368961');
 INSERT INTO `sys_role_menu` VALUES ('1339729316283465737', '1319084037507244034', '1323446833439723522');
 INSERT INTO `sys_role_menu` VALUES ('1339729316283465738', '1319084037507244034', '1323446835830476801');
@@ -3614,7 +2727,7 @@ INSERT INTO `sys_role_menu` VALUES ('1520391580609937486', '1214826565321543682'
 INSERT INTO `sys_role_menu` VALUES ('1520391580609937487', '1214826565321543682', '1323446818050822146');
 INSERT INTO `sys_role_menu` VALUES ('1520391580609937488', '1214826565321543682', '1323446821838278657');
 INSERT INTO `sys_role_menu` VALUES ('1520391580609937489', '1214826565321543682', '1323446824904314882');
-INSERT INTO `sys_role_menu` VALUES ('1520391580609937490', '1214826565321543682', '1323446828507222022');
+INSERT INTO `sys_role_menu` VALUES ('1520391580609937490', '1214826565321543682', '1323446828507222018');
 INSERT INTO `sys_role_menu` VALUES ('1520391580609937491', '1214826565321543682', '1323446830755368961');
 INSERT INTO `sys_role_menu` VALUES ('1520391580609937492', '1214826565321543682', '1323446833439723522');
 INSERT INTO `sys_role_menu` VALUES ('1520391580609937493', '1214826565321543682', '1323446838196064257');
@@ -3768,7 +2881,7 @@ INSERT INTO `sys_role_menu` VALUES ('1520391580622520456', '1214826565321543682'
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
-CREATE TABLE `sys_user`  (
+CREATE TABLE IF NOT EXISTS  `sys_user`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户名',
   `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '昵称',
@@ -3789,17 +2902,17 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1214835832967581698', 'admin', '管理员', '$2a$10$TmZTXiXLdS9Y1OOFHeAt4uVIMwh0B.zyqOcGBDYOz5QL6o6qa2YTa', 'xxx@qq.com', '136xxx', '1992-12-03', '1197789917762031617', 1, '1214835832967581698', '2022-01-08 17:06:48', '1214835832967581698', '2022-01-08 17:06:48', NULL);
-INSERT INTO `sys_user` VALUES ('1319084615276814337', 'zs', '张三', '$2a$10$lsPhICj3H/tspyXXwgFfcO.wbasZZp8eGBZKGfxxxmeAGOvzrhjaK', 'xxx@qq.com', '136xxx', '1995-09-30', '1197790192543469570', 1, '1214835832967581698', '2022-10-22 09:14:14', '1214835832967581698', '2022-10-22 09:14:14', NULL);
-INSERT INTO `sys_user` VALUES ('1319084968579817473', 'ls', '李四', '$2a$10$/OdCjDYY/.gHNNHNQDmD0.8eY14hnG5OOhwfxKKNHbDml7Wzn2c6a', 'xxx@qq.com', '136xxx', '1993-06-11', '1197790560782389250', 1, '1214835832967581698', '2022-10-22 09:15:39', '1214835832967581698', '2022-10-22 09:15:39', NULL);
-INSERT INTO `sys_user` VALUES ('1319093485260890113', 'ww', '王五', '$2a$10$zukr/0wKIaeN8dw3X.biAudTDDRmqTI5EeoeriIjug.Ntj2ro7w8m', 'xxx@qq.com', '136xxx', '1994-11-21', '1197790192543469570', 1, '1319084968579817473', '2022-10-22 09:49:29', '1319084968579817473', '2022-10-22 09:49:29', NULL);
-INSERT INTO `sys_user` VALUES ('1319093610569916418', 'zl', '赵六', '$2a$10$veZ.csljplWVeYnk6n1AGO7bJq19HZMu9abB5IWQ0J9X5rqXpPpFK', 'xxx@qq.com', '136xxx', '1991-03-04', '1197790192543469570', 1, '1319084968579817473', '2022-10-22 09:49:59', '1319084968579817473', '2022-10-22 09:49:59', NULL);
+INSERT INTO `sys_user` VALUES ('1214835832967581698', 'admin', '管理员', '$2a$10$TmZTXiXLdS9Y1OOFHeAt4uVIMwh0B.zyqOcGBDYOz5QL6o6qa2YTa', 'xxx@qq.com', '136xxx', '1992-12-03', '1197789917762031617', 1, '1214835832967581698', '2020-01-08 17:06:48', '1214835832967581698', '2020-01-08 17:06:48', NULL);
+INSERT INTO `sys_user` VALUES ('1319084615276814337', 'zs', '张三', '$2a$10$lsPhICj3H/tspyXXwgFfcO.wbasZZp8eGBZKGfxxxmeAGOvzrhjaK', 'xxx@qq.com', '136xxx', '1995-09-30', '1197790192543469570', 1, '1214835832967581698', '2020-10-22 09:14:14', '1214835832967581698', '2020-10-22 09:14:14', NULL);
+INSERT INTO `sys_user` VALUES ('1319084968579817473', 'ls', '李四', '$2a$10$/OdCjDYY/.gHNNHNQDmD0.8eY14hnG5OOhwfxKKNHbDml7Wzn2c6a', 'xxx@qq.com', '136xxx', '1993-06-11', '1197790560782389250', 1, '1214835832967581698', '2020-10-22 09:15:39', '1214835832967581698', '2020-10-22 09:15:39', NULL);
+INSERT INTO `sys_user` VALUES ('1319093485260890113', 'ww', '王五', '$2a$10$zukr/0wKIaeN8dw3X.biAudTDDRmqTI5EeoeriIjug.Ntj2ro7w8m', 'xxx@qq.com', '136xxx', '1994-11-21', '1197790192543469570', 1, '1319084968579817473', '2020-10-22 09:49:29', '1319084968579817473', '2020-10-22 09:49:29', NULL);
+INSERT INTO `sys_user` VALUES ('1319093610569916418', 'zl', '赵六', '$2a$10$veZ.csljplWVeYnk6n1AGO7bJq19HZMu9abB5IWQ0J9X5rqXpPpFK', 'xxx@qq.com', '136xxx', '1991-03-04', '1197790192543469570', 1, '1319084968579817473', '2020-10-22 09:49:59', '1319084968579817473', '2020-10-22 09:49:59', NULL);
 
 -- ----------------------------
 -- Table structure for sys_user_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_post`;
-CREATE TABLE `sys_user_post`  (
+CREATE TABLE IF NOT EXISTS  `sys_user_post`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户岗位主键ID',
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户ID',
   `post_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '岗位ID',
@@ -3820,7 +2933,7 @@ INSERT INTO `sys_user_post` VALUES ('1335762265819500546', '1335761402136809473'
 -- Table structure for sys_user_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
-CREATE TABLE `sys_user_role`  (
+CREATE TABLE IF NOT EXISTS  `sys_user_role`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户角色主键ID',
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户ID',
   `role_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色ID',
@@ -3840,7 +2953,7 @@ INSERT INTO `sys_user_role` VALUES ('1319093610590887938', '1319093610569916418'
 -- Table structure for tbl_email
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_email`;
-CREATE TABLE `tbl_email`  (
+CREATE TABLE IF NOT EXISTS  `tbl_email`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -3865,7 +2978,7 @@ CREATE TABLE `tbl_email`  (
 -- Table structure for tbl_file
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_file`;
-CREATE TABLE `tbl_file`  (
+CREATE TABLE IF NOT EXISTS  `tbl_file`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `original_filename` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文件原始名称',
   `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文件名称',
@@ -3890,7 +3003,7 @@ CREATE TABLE `tbl_file`  (
 -- Table structure for visual_board
 -- ----------------------------
 DROP TABLE IF EXISTS `visual_board`;
-CREATE TABLE `visual_board`  (
+CREATE TABLE IF NOT EXISTS  `visual_board`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -3914,7 +3027,7 @@ INSERT INTO `visual_board` VALUES ('1520600871677779970', 1, '121483583296758169
 -- Table structure for visual_board_chart
 -- ----------------------------
 DROP TABLE IF EXISTS `visual_board_chart`;
-CREATE TABLE `visual_board_chart`  (
+CREATE TABLE IF NOT EXISTS  `visual_board_chart`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `board_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '看板ID',
   `chart_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '图表ID',
@@ -3931,7 +3044,7 @@ INSERT INTO `visual_board_chart` VALUES ('1520616636283936770', '152060087167777
 -- Table structure for visual_chart
 -- ----------------------------
 DROP TABLE IF EXISTS `visual_chart`;
-CREATE TABLE `visual_chart`  (
+CREATE TABLE IF NOT EXISTS  `visual_chart`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -3956,7 +3069,7 @@ INSERT INTO `visual_chart` VALUES ('1520601035113029633', 1, '121483583296758169
 -- Table structure for visual_data_set
 -- ----------------------------
 DROP TABLE IF EXISTS `visual_data_set`;
-CREATE TABLE `visual_data_set`  (
+CREATE TABLE IF NOT EXISTS  `visual_data_set`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -3975,13 +3088,13 @@ CREATE TABLE `visual_data_set`  (
 -- ----------------------------
 -- Records of visual_data_set
 -- ----------------------------
-INSERT INTO `visual_data_set` VALUES ('1326047453933334529', 1, '1214835832967581698', '2022-11-10 14:22:04', '1197789917762031617', '1214835832967581698', '2022-05-01 09:02:10', NULL, '1240185865539600385', '测试数据集1', 'SELECT\n  b.the_year + 5 AS the_year,\n  b.month_of_year,\n  b.day_of_month,\n  date_add(b.the_date, interval 5 year) AS the_date,\n  r.SALES_DISTRICT,\n  r.SALES_REGION,\n  r.SALES_COUNTRY,\n  d.yearly_income,\n  d.total_children,\n  d.member_card,\n  d.num_cars_owned,\n  d.gender,\n  a.store_sales,\n  a.store_cost,\n  a.unit_sales\nFROM\n  foodmart2.sales_fact_sample a\n  JOIN foodmart2.time_by_day b ON a.time_id = b.time_id\n  JOIN foodmart2.store c ON a.store_id = c.store_id\n  JOIN foodmart2.region r ON c.REGION_ID = r.REGION_ID\n  JOIN foodmart2.customer d ON a.CUSTOMER_ID = d.CUSTOMER_ID\nWHERE\n  SALES_COUNTRY IS NOT NULL', '{\"columns\": [\"the_year\", \"month_of_year\", \"day_of_month\", \"the_date\", \"SALES_DISTRICT\", \"SALES_REGION\", \"SALES_COUNTRY\", \"yearly_income\", \"total_children\", \"member_card\", \"num_cars_owned\", \"gender\", \"store_sales\", \"store_cost\", \"unit_sales\"], \"measures\": [{\"col\": \"store_cost\", \"alias\": \"cost\"}, {\"col\": \"store_sales\", \"alias\": \"\"}, {\"col\": \"unit_sales\", \"alias\": \"\"}], \"dimensions\": [{\"col\": \"SALES_DISTRICT\", \"alias\": \"地区\"}, {\"col\": \"SALES_REGION\", \"alias\": \"区域\"}, {\"col\": \"SALES_COUNTRY\", \"alias\": \"城市\"}]}');
+INSERT INTO `visual_data_set` VALUES ('1326047453933334529', 1, '1214835832967581698', '2020-11-10 14:22:04', '1197789917762031617', '1214835832967581698', '2022-05-01 09:02:10', NULL, '1240185865539600385', '测试数据集1', 'SELECT\n  b.the_year + 5 AS the_year,\n  b.month_of_year,\n  b.day_of_month,\n  date_add(b.the_date, interval 5 year) AS the_date,\n  r.SALES_DISTRICT,\n  r.SALES_REGION,\n  r.SALES_COUNTRY,\n  d.yearly_income,\n  d.total_children,\n  d.member_card,\n  d.num_cars_owned,\n  d.gender,\n  a.store_sales,\n  a.store_cost,\n  a.unit_sales\nFROM\n  foodmart2.sales_fact_sample a\n  JOIN foodmart2.time_by_day b ON a.time_id = b.time_id\n  JOIN foodmart2.store c ON a.store_id = c.store_id\n  JOIN foodmart2.region r ON c.REGION_ID = r.REGION_ID\n  JOIN foodmart2.customer d ON a.CUSTOMER_ID = d.CUSTOMER_ID\nWHERE\n  SALES_COUNTRY IS NOT NULL', '{\"columns\": [\"the_year\", \"month_of_year\", \"day_of_month\", \"the_date\", \"SALES_DISTRICT\", \"SALES_REGION\", \"SALES_COUNTRY\", \"yearly_income\", \"total_children\", \"member_card\", \"num_cars_owned\", \"gender\", \"store_sales\", \"store_cost\", \"unit_sales\"], \"measures\": [{\"col\": \"store_cost\", \"alias\": \"cost\"}, {\"col\": \"store_sales\", \"alias\": \"\"}, {\"col\": \"unit_sales\", \"alias\": \"\"}], \"dimensions\": [{\"col\": \"SALES_DISTRICT\", \"alias\": \"地区\"}, {\"col\": \"SALES_REGION\", \"alias\": \"区域\"}, {\"col\": \"SALES_COUNTRY\", \"alias\": \"城市\"}]}');
 
 -- ----------------------------
 -- Table structure for visual_screen
 -- ----------------------------
 DROP TABLE IF EXISTS `visual_screen`;
-CREATE TABLE `visual_screen`  (
+CREATE TABLE IF NOT EXISTS  `visual_screen`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `status` tinyint(4) NULL DEFAULT NULL COMMENT '状态（0不启用，1启用）',
   `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
@@ -4005,7 +3118,7 @@ INSERT INTO `visual_screen` VALUES ('1520607338275332097', 1, '12148358329675816
 -- Table structure for visual_screen_chart
 -- ----------------------------
 DROP TABLE IF EXISTS `visual_screen_chart`;
-CREATE TABLE `visual_screen_chart`  (
+CREATE TABLE IF NOT EXISTS  `visual_screen_chart`  (
   `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
   `screen_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '酷屏ID',
   `chart_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '图表ID',
@@ -4020,28 +3133,112 @@ INSERT INTO `visual_screen_chart` VALUES ('1520614887800233986', '15206073382753
 
 SET FOREIGN_KEY_CHECKS = 1;
 
--- MySQL dump 10.13  Distrib 8.0.24, for Linux (x86_64)
---
--- Host: 127.0.0.1    Database: studio
--- ------------------------------------------------------
--- Server version	8.0.31
+/*
+ Navicat Premium Data Transfer
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+ Source Server         : 本地
+ Source Server Type    : MySQL
+ Source Server Version : 50730
+ Source Host           : localhost:3306
+ Source Schema         : robot
 
---
--- Current Database: `studio`
---
+ Target Server Type    : MySQL
+ Target Server Version : 50730
+ File Encoding         : 65001
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+ Date: 03/05/2022 12:07:48
+*/
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `eladmin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+USE `studio`;
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for robot_patient
+-- ----------------------------
+DROP TABLE IF EXISTS `robot_patient`;
+CREATE TABLE IF NOT EXISTS  `robot_patient`  (
+  `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
+  `patient_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '患者姓名',
+  `patient_sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '患者性别（1男2女）',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '患者表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of robot_patient
+-- ----------------------------
+INSERT INTO `robot_patient` VALUES ('0479951f8964175e624b2ca61ee0e835', '侯玉宇', '2');
+INSERT INTO `robot_patient` VALUES ('34ddebc05f7c9fb769fcd020028203d6', '庞日成', '1');
+INSERT INTO `robot_patient` VALUES ('7b137ca2d563086b9e4fadee385b50b8', '', '2');
+
+-- ----------------------------
+-- Table structure for robot_symptom_part
+-- ----------------------------
+DROP TABLE IF EXISTS `robot_symptom_part`;
+CREATE TABLE IF NOT EXISTS  `robot_symptom_part`  (
+  `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
+  `part_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '部位名称',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '部位表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of robot_symptom_part
+-- ----------------------------
+INSERT INTO `robot_symptom_part` VALUES ('3244c36870e4a47ef1fc6e2c1acf00a2', '眼耳口鼻');
+INSERT INTO `robot_symptom_part` VALUES ('4c4c0e819fc95c09dde308cc04df6256', '双下肢');
+INSERT INTO `robot_symptom_part` VALUES ('608dd4772103c7b3a198641cf842a4e1', '双上肢');
+INSERT INTO `robot_symptom_part` VALUES ('62207ec3cd713e906c461dfbfddf6504', '肩部');
+INSERT INTO `robot_symptom_part` VALUES ('6b866f5e2ee092c0d2d0ffd5d9fea78b', '腰部');
+INSERT INTO `robot_symptom_part` VALUES ('88806113c934137edd261d1e8a4f1f72', '颈部');
+INSERT INTO `robot_symptom_part` VALUES ('92edaaa5ee8d304d9f01950e7979d2ab', '头部');
+INSERT INTO `robot_symptom_part` VALUES ('96f7f70bf165d11a1161e19e2917ad65', '其他');
+INSERT INTO `robot_symptom_part` VALUES ('a43438901e6b5f56d8aff49ea0c423d6', '生殖器');
+INSERT INTO `robot_symptom_part` VALUES ('aaecbc8d28a302e5b89740e3d4ccf3b8', '臀部');
+INSERT INTO `robot_symptom_part` VALUES ('c752554d2a789e07774532201a0876d9', '背部');
+INSERT INTO `robot_symptom_part` VALUES ('c826bc719672e94482422eb355bcdee6', '皮肤');
+INSERT INTO `robot_symptom_part` VALUES ('d311f223dd97959e447bcc4e63e38c22', '胸部');
+INSERT INTO `robot_symptom_part` VALUES ('e7d8dc2171ec4f64b895b82c5d627459', '排泄部');
+INSERT INTO `robot_symptom_part` VALUES ('ea4766dfb3950d787b4fae051c525a13', '腹部');
+
+-- ----------------------------
+-- Table structure for robot_symptom_type
+-- ----------------------------
+DROP TABLE IF EXISTS `robot_symptom_type`;
+CREATE TABLE IF NOT EXISTS  `robot_symptom_type`  (
+  `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
+  `part_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属部位',
+  `type_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '症状名称',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '症状表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of robot_symptom_type
+-- ----------------------------
+INSERT INTO `robot_symptom_type` VALUES ('314292492987dbac45618f0633ad5fba', 'd311f223dd97959e447bcc4e63e38c22', '咳嗽');
+INSERT INTO `robot_symptom_type` VALUES ('5e7924f1a27fc08a817dd31820fa3736', '62207ec3cd713e906c461dfbfddf6504', '肩关节活动受限');
+INSERT INTO `robot_symptom_type` VALUES ('7e696f88dfec22d719b033608a21b387', '62207ec3cd713e906c461dfbfddf6504', '右肩背有放射痛');
+INSERT INTO `robot_symptom_type` VALUES ('fdeee4116cd6c0a16fe15fe1bfc208ef', 'd311f223dd97959e447bcc4e63e38c22', '咳痰');
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : 本地
+ Source Server Type    : MySQL
+ Source Server Version : 50730
+ Source Host           : localhost:3306
+ Source Schema         : foodmart2
+
+ Target Server Type    : MySQL
+ Target Server Version : 50730
+ File Encoding         : 65001
+
+ Date: 03/05/2022 12:08:07
+*/
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `eladmin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `studio`;
 
@@ -4052,7 +3249,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for account
 -- ----------------------------
 DROP TABLE IF EXISTS `account`;
-CREATE TABLE `account`  (
+CREATE TABLE IF NOT EXISTS  `account`  (
   `ACCOUNT_ID` int(11) NOT NULL,
   `ACCOUNT_PARENT` int(11) NULL DEFAULT NULL,
   `ACCOUNT_DESCRIPTION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -4080,7 +3277,7 @@ INSERT INTO `account` VALUES (5000, NULL, 'Net Income', 'Income', '+', NULL);
 -- Table structure for category
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category`  (
+CREATE TABLE IF NOT EXISTS  `category`  (
   `CATEGORY_ID` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `CATEGORY_PARENT` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `CATEGORY_DESCRIPTION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -4099,7 +3296,7 @@ INSERT INTO `category` VALUES ('FORECAST', NULL, 'Forecast', NULL);
 -- Table structure for chinagis1
 -- ----------------------------
 DROP TABLE IF EXISTS `chinagis1`;
-CREATE TABLE `chinagis1`  (
+CREATE TABLE IF NOT EXISTS  `chinagis1`  (
   `provn` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `city` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `gender` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
@@ -4793,7 +3990,7 @@ INSERT INTO `chinagis1` VALUES ('黑龙江', '齐齐哈尔', '男', 173);
 -- Table structure for customer
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
-CREATE TABLE `customer`  (
+CREATE TABLE IF NOT EXISTS  `customer`  (
   `CUSTOMER_ID` int(11) NOT NULL,
   `ACCOUNT_NUM` bigint(20) NOT NULL,
   `LNAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -4837,7 +4034,7 @@ INSERT INTO `customer` VALUES (6, 87517782449, 'Damstra', 'Robert', 'F.', '1619 
 INSERT INTO `customer` VALUES (7, 87521172800, 'Kanagaki', 'Rebecca', NULL, '2860 D Mt. Hood Circle', NULL, NULL, NULL, 'Tlaxiaco', 'Oaxaca', '13343', 'Mexico', 30, '515-555-6247', '934-555-9211', '1949-03-27', 'M', '$30K - $50K', 'F', 2, 1, 'Partial High School', '1991-05-01', 'Bronze', 'Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (8, 87539744377, 'Brunner', 'Kim', 'H.', '6064 Brodia Court', NULL, NULL, NULL, 'San Andres', 'DF', '12942', 'Mexico', 106, '411-555-6825', '130-555-6818', '1922-08-10', 'M', '$50K - $70K', 'M', 2, 2, 'Bachelors Degree', '1992-06-11', 'Bronze', 'Professional', 'Y', 3);
 INSERT INTO `customer` VALUES (9, 87544797658, 'Blumberg', 'Brenda', 'C.', '7560 Trees Drive', NULL, NULL, NULL, 'Richmond', 'BC', '17256', 'Canada', 90, '815-555-3975', '642-555-6483', '1979-06-23', 'M', '$10K - $30K', 'M', 5, 3, 'Partial High School', '1993-11-14', 'Normal', 'Skilled Manual', 'Y', 1);
-INSERT INTO `customer` VALUES (10, 87568712234, 'Stanz', 'Darren', 'M.', '1019 Kenwal Rd.', NULL, NULL, NULL, 'Lake Oswego', 'OR', '82022', 'USA', 64, '847-555-5443', '212-555-8635', '1949-08-26', 'S', '$30K - $50K', 'M', 4, 0, 'Bachelors Degree', '1993-05-04', 'Golden', 'Management', 'N', 4);
+INSERT INTO `customer` VALUES (10, 87568712234, 'Stanz', 'Darren', 'M.', '1019 Kenwal Rd.', NULL, NULL, NULL, 'Lake Oswego', 'OR', '82017', 'USA', 64, '847-555-5443', '212-555-8635', '1949-08-26', 'S', '$30K - $50K', 'M', 4, 0, 'Bachelors Degree', '1993-05-04', 'Golden', 'Management', 'N', 4);
 INSERT INTO `customer` VALUES (11, 87572821378, 'Murraiin', 'Jonathan', 'V.', '5423 Camby Rd.', NULL, NULL, NULL, 'La Mesa', 'CA', '35890', 'USA', 11, '612-555-4878', '747-555-6928', '1967-06-20', 'S', '$50K - $70K', 'M', 4, 0, 'High School Degree', '1992-04-23', 'Bronze', 'Manual', 'N', 2);
 INSERT INTO `customer` VALUES (12, 87579237222, 'Creek', 'Jewel', 'C.', '1792 Belmont Rd.', NULL, NULL, NULL, 'Chula Vista', 'CA', '40520', 'USA', 13, '555-555-2714', '228-555-5450', '1971-10-18', 'S', '$30K - $50K', 'F', 1, 0, 'High School Degree', '1991-07-06', 'Bronze', 'Skilled Manual', 'N', 3);
 INSERT INTO `customer` VALUES (13, 87587122917, 'Medina', 'Peggy', 'A.', '3796 Keller Ridge', NULL, NULL, NULL, 'Mexico City', 'Mexico', '59554', 'Mexico', 2, '343-555-9778', '785-555-2371', '1975-10-12', 'S', '$30K - $50K', 'M', 4, 0, 'High School Degree', '1990-10-09', 'Bronze', 'Manual', 'N', 4);
@@ -4952,7 +4149,7 @@ INSERT INTO `customer` VALUES (121, 88683427572, 'Hill', 'Anna', 'L.', '7883 Mit
 INSERT INTO `customer` VALUES (122, 88690803647, 'Williams', 'Ramon', 'N.', '3997 Via De Luna', NULL, NULL, NULL, 'Walla Walla', 'WA', '70289', 'USA', 88, '718-555-4473', '983-555-7666', '1920-09-22', 'M', '$30K - $50K', 'F', 4, 1, 'High School Degree', '1992-05-19', 'Bronze', 'Skilled Manual', 'N', 3);
 INSERT INTO `customer` VALUES (123, 88708876371, 'Masters', 'Scott', NULL, '5747 Shirley Drive', NULL, NULL, NULL, 'Richmond', 'CA', '24162', 'USA', 35, '483-555-3909', '618-555-5959', '1964-07-08', 'M', '$30K - $50K', 'F', 2, 0, 'High School Degree', '1993-08-15', 'Bronze', 'Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (124, 88719449639, 'Brady, Jr.', 'Joseph', 'G.', '2115 Pasado', NULL, NULL, NULL, 'Oakland', 'CA', '55084', 'USA', 37, '426-555-1745', '999-555-4480', '1930-09-07', 'S', '$70K - $90K', 'F', 5, 0, 'Bachelors Degree', '1991-03-27', 'Bronze', 'Professional', 'N', 2);
-INSERT INTO `customer` VALUES (125, 88734051585, 'Gray', 'Ellen', 'M.', '6774 Bonanza', NULL, NULL, NULL, 'Bellflower', 'CA', '20229', 'USA', 55, '214-555-8809', '656-555-1402', '1972-12-04', 'M', '$70K - $90K', 'M', 2, 2, 'Bachelors Degree', '1991-06-22', 'Bronze', 'Professional', 'Y', 3);
+INSERT INTO `customer` VALUES (125, 88734051585, 'Gray', 'Ellen', 'M.', '6774 Bonanza', NULL, NULL, NULL, 'Bellflower', 'CA', '20209', 'USA', 55, '214-555-8809', '656-555-1402', '1972-12-04', 'M', '$70K - $90K', 'M', 2, 2, 'Bachelors Degree', '1991-06-22', 'Bronze', 'Professional', 'Y', 3);
 INSERT INTO `customer` VALUES (126, 88735752105, 'Fielder', 'Henry', 'T.', '3397 Rancho View Drive', NULL, NULL, NULL, 'Ballard', 'WA', '90000', 'USA', 20, '179-555-5273', '160-555-7552', '1947-02-03', 'S', '$110K - $130K', 'F', 2, 0, 'Partial College', '1990-07-24', 'Normal', 'Professional', 'Y', 2);
 INSERT INTO `customer` VALUES (127, 88744179606, 'Finnell', 'Jeanine', 'L.', '8310 Ridge Circle', NULL, NULL, NULL, 'Everett', 'WA', '75196', 'USA', 81, '103-555-4226', '192-555-9019', '1932-06-18', 'S', '$10K - $30K', 'M', 1, 0, 'Partial High School', '1992-11-27', 'Normal', 'Skilled Manual', 'Y', 0);
 INSERT INTO `customer` VALUES (128, 88750257492, 'Schuetz', 'Ian', 'T.', '7842 Ygnacio Valley Road', NULL, NULL, NULL, 'Salem', 'OR', '12150', 'USA', 23, '330-555-2976', '618-555-4797', '1947-04-18', 'S', '$30K - $50K', 'F', 1, 0, 'High School Degree', '1992-08-11', 'Bronze', 'Skilled Manual', 'N', 4);
@@ -5057,7 +4254,7 @@ INSERT INTO `customer` VALUES (226, 90055570602, 'Bruha', 'Michael', 'C.', '1962
 INSERT INTO `customer` VALUES (227, 90065194368, 'Suggs', 'Michael', 'J.', '40 Ellis St.', NULL, NULL, NULL, 'Burbank', 'CA', '17728', 'USA', 53, '919-555-4674', '484-555-4895', '1963-10-10', 'S', '$30K - $50K', 'F', 3, 0, 'High School Degree', '1994-05-18', 'Bronze', 'Manual', 'Y', 2);
 INSERT INTO `customer` VALUES (228, 90083347600, 'Turner', 'Kenneth', 'R.', '80 Sunview Terrace', NULL, NULL, NULL, 'El Cajon', 'CA', '85004', 'USA', 16, '292-555-9681', '296-555-1588', '1958-06-14', 'M', '$90K - $110K', 'F', 3, 0, 'High School Degree', '1993-10-07', 'Normal', 'Professional', 'Y', 3);
 INSERT INTO `customer` VALUES (229, 90100100636, 'Griffin', 'Lois', NULL, '8411 Mt. Olivet Place', NULL, NULL, NULL, 'Renton', 'WA', '67685', 'USA', 73, '650-555-9574', '523-555-9338', '1946-02-10', 'M', '$70K - $90K', 'F', 1, 0, 'Graduate Degree', '1990-07-28', 'Bronze', 'Management', 'Y', 3);
-INSERT INTO `customer` VALUES (230, 90102022100, 'Guardamondo', 'Robert', 'C.', '1362 Somerset Place', NULL, NULL, NULL, 'Bellingham', 'WA', '74830', 'USA', 78, '946-555-4209', '596-555-8317', '1943-02-13', 'M', '$10K - $30K', 'M', 2, 0, 'Partial High School', '1991-07-07', 'Normal', 'Manual', 'Y', 2);
+INSERT INTO `customer` VALUES (230, 90102021100, 'Guardamondo', 'Robert', 'C.', '1362 Somerset Place', NULL, NULL, NULL, 'Bellingham', 'WA', '74830', 'USA', 78, '946-555-4209', '596-555-8317', '1943-02-13', 'M', '$10K - $30K', 'M', 2, 0, 'Partial High School', '1991-07-07', 'Normal', 'Manual', 'Y', 2);
 INSERT INTO `customer` VALUES (231, 90121451020, 'West', 'Bryan', 'R.', '2603 Condor Place', NULL, NULL, NULL, 'Oak Bay', 'BC', '23672', 'Canada', 99, '427-555-2731', '846-555-5695', '1944-10-27', 'M', '$30K - $50K', 'F', 5, 1, 'Partial College', '1994-04-08', 'Bronze', 'Clerical', 'Y', 2);
 INSERT INTO `customer` VALUES (232, 90127062201, 'Welsh', 'Vicki', 'R.', 'P.O. Box 1742', NULL, NULL, NULL, 'Ladner', 'BC', '23272', 'Canada', 96, '984-555-8652', '942-555-3302', '1911-08-04', 'M', '$110K - $130K', 'F', 1, 0, 'Bachelors Degree', '1990-08-13', 'Silver', 'Management', 'Y', 1);
 INSERT INTO `customer` VALUES (233, 90142817497, 'McCollum', 'Harvey', NULL, '3238 Laguna Circle', NULL, NULL, NULL, 'Sedro Woolley', 'WA', '10983', 'USA', 80, '727-555-9460', '315-555-8309', '1974-02-23', 'M', '$130K - $150K', 'M', 3, 2, 'High School Degree', '1992-10-09', 'Bronze', 'Professional', 'N', 2);
@@ -5167,7 +4364,7 @@ INSERT INTO `customer` VALUES (336, 91359724998, 'Bales', 'Jennifer', 'K.', '721
 INSERT INTO `customer` VALUES (337, 91388601660, 'Stotka', 'Louis', 'C.', '2382 Wibur Ave.', NULL, NULL, NULL, 'Santa Anita', 'DF', '65044', 'Mexico', 108, '105-555-5971', '501-555-1306', '1933-03-19', 'M', '$10K - $30K', 'F', 1, 1, 'Partial High School', '1993-02-08', 'Normal', 'Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (338, 91397506594, 'Maynard', 'Sandra', 'Z', '2168 Terra Calitina', NULL, NULL, NULL, 'Bellingham', 'WA', '67158', 'USA', 78, '355-555-3349', '290-555-8371', '1931-02-04', 'M', '$10K - $30K', 'M', 3, 1, 'Partial High School', '1994-11-24', 'Normal', 'Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (339, 91412441134, 'Tuell', 'Gracia', NULL, '246 Weatherly Way', NULL, NULL, NULL, 'Langley', 'BC', '83677', 'Canada', 94, '690-555-4614', '255-555-4835', '1958-08-19', 'S', '$130K - $150K', 'F', 2, 0, 'Graduate Degree', '1994-10-20', 'Bronze', 'Management', 'Y', 2);
-INSERT INTO `customer` VALUES (340, 91423320224, 'Burnett', 'Timothy', 'A.', '2942 Marina Road', NULL, NULL, NULL, 'Acapulco', 'Guerrero', '25662', 'Mexico', 28, '963-555-9621', '966-555-1528', '1921-07-26', 'M', '$150K +', 'F', 2, 0, 'Bachelors Degree', '1990-05-01', 'Golden', 'Management', 'Y', 3);
+INSERT INTO `customer` VALUES (340, 91423320174, 'Burnett', 'Timothy', 'A.', '2942 Marina Road', NULL, NULL, NULL, 'Acapulco', 'Guerrero', '25662', 'Mexico', 28, '963-555-9621', '966-555-1528', '1921-07-26', 'M', '$150K +', 'F', 2, 0, 'Bachelors Degree', '1990-05-01', 'Golden', 'Management', 'Y', 3);
 INSERT INTO `customer` VALUES (341, 91427676081, 'Haugh', 'James', 'A.', '1273 Deetmeadow Way', NULL, NULL, NULL, 'Olympia', 'WA', '83425', 'USA', 85, '182-555-5856', '293-555-9278', '1935-03-14', 'M', '$10K - $30K', 'M', 1, 0, 'Partial High School', '1994-05-25', 'Bronze', 'Skilled Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (342, 91434070467, 'Moberly', 'Paula', 'L.', '4223 Las Trampas Road', NULL, NULL, NULL, 'La Mesa', 'CA', '93185', 'USA', 11, '716-555-4149', '367-555-8257', '1970-07-20', 'M', '$30K - $50K', 'F', 3, 3, 'High School Degree', '1992-09-07', 'Golden', 'Skilled Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (343, 91436216200, 'Meyer', 'Eric', NULL, '2809 Via Montana', NULL, NULL, NULL, 'Colma', 'CA', '30868', 'USA', 32, '197-555-2671', '617-555-5635', '1939-08-09', 'M', '$150K +', 'F', 2, 1, 'Bachelors Degree', '1993-06-27', 'Silver', 'Professional', 'Y', 2);
@@ -5536,7 +4733,7 @@ INSERT INTO `customer` VALUES (705, 96115834100, 'Kartz', 'Kay', NULL, '480 C Ke
 INSERT INTO `customer` VALUES (706, 96121359467, 'Wold', 'Audrey', 'M.', '267 Aspen Drive', NULL, NULL, NULL, 'Arcadia', 'CA', '79943', 'USA', 51, '457-555-6275', '392-555-2296', '1971-08-25', 'S', '$10K - $30K', 'M', 2, 0, 'Partial High School', '1993-06-22', 'Normal', 'Manual', 'Y', 0);
 INSERT INTO `customer` VALUES (707, 96155503988, 'French', 'Susan', 'C.', '8343 Briowes Valley Rd', NULL, NULL, NULL, 'Mill Valley', 'CA', '96461', 'USA', 38, '553-555-3882', '357-555-7760', '1967-06-15', 'S', '$30K - $50K', 'F', 1, 0, 'High School Degree', '1990-05-10', 'Golden', 'Skilled Manual', 'N', 2);
 INSERT INTO `customer` VALUES (708, 96199046969, 'Pederson', 'Trish', NULL, '8384 Potomac Drive', NULL, NULL, NULL, 'Sedro Woolley', 'WA', '64738', 'USA', 80, '165-555-3546', '169-555-4453', '1967-09-25', 'S', '$50K - $70K', 'M', 4, 0, 'High School Degree', '1993-04-21', 'Bronze', 'Skilled Manual', 'N', 3);
-INSERT INTO `customer` VALUES (709, 96202288594, 'Renn', 'Eric', 'J.', '9371 Corte Del Sol', NULL, NULL, NULL, 'Downey', 'CA', '21127', 'USA', 58, '284-555-8782', '396-555-3203', '1949-09-15', 'M', '$110K - $130K', 'F', 3, 1, 'Graduate Degree', '1993-07-23', 'Bronze', 'Professional', 'N', 3);
+INSERT INTO `customer` VALUES (709, 96202088594, 'Renn', 'Eric', 'J.', '9371 Corte Del Sol', NULL, NULL, NULL, 'Downey', 'CA', '21127', 'USA', 58, '284-555-8782', '396-555-3203', '1949-09-15', 'M', '$110K - $130K', 'F', 3, 1, 'Graduate Degree', '1993-07-23', 'Bronze', 'Professional', 'N', 3);
 INSERT INTO `customer` VALUES (710, 96214888095, 'Catalano', 'Elizabeth', 'C.', '9665 Pamploma Ct.', NULL, NULL, NULL, 'Kirkland', 'WA', '54564', 'USA', 63, '819-555-7075', '469-555-2182', '1940-02-13', 'M', '$30K - $50K', 'F', 2, 1, 'Bachelors Degree', '1994-03-07', 'Silver', 'Professional', 'N', 3);
 INSERT INTO `customer` VALUES (711, 96268945336, 'Coleman', 'Eric', 'F.', '907 Ameno Road', NULL, NULL, NULL, 'Tacoma', 'WA', '46592', 'USA', 84, '300-555-5596', '719-555-8560', '1947-06-05', 'M', '$30K - $50K', 'F', 2, 2, 'Partial High School', '1992-04-03', 'Bronze', 'Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (712, 96309478878, 'Hurkett', 'Lawrence', 'D.', '4111 Vista Diablo', NULL, NULL, NULL, 'San Gabriel', 'CA', '19899', 'USA', 52, '857-555-2517', '815-555-6168', '1978-08-04', 'M', '$50K - $70K', 'F', 2, 2, 'Bachelors Degree', '1993-05-13', 'Bronze', 'Professional', 'N', 3);
@@ -5569,7 +4766,7 @@ INSERT INTO `customer` VALUES (738, 96662001600, 'Demott Jr', 'Della', NULL, '67
 INSERT INTO `customer` VALUES (739, 96693496108, 'Carmichael', 'Jane', NULL, '4786 Salvio St.', NULL, NULL, NULL, 'Yakima', 'WA', '34292', 'USA', 89, '318-555-9222', '895-555-2703', '1931-01-03', 'M', '$50K - $70K', 'M', 4, 3, 'Bachelors Degree', '1993-08-19', 'Silver', 'Management', 'Y', 3);
 INSERT INTO `customer` VALUES (740, 96711778044, 'Montera', 'Hillaine', 'D.', '4827 Gilardy Drive', NULL, NULL, NULL, 'Milwaukie', 'OR', '25692', 'USA', 65, '703-555-7489', '706-555-8396', '1926-08-08', 'S', '$130K - $150K', 'M', 5, 0, 'Partial High School', '1992-03-08', 'Bronze', 'Management', 'Y', 3);
 INSERT INTO `customer` VALUES (741, 96764408349, 'Ciochon', 'Gina', 'M.', '3158 B Avenue I', NULL, NULL, NULL, 'Imperial Beach', 'CA', '84248', 'USA', 14, '161-555-7382', '933-555-7146', '1914-04-04', 'M', '$30K - $50K', 'M', 2, 1, 'High School Degree', '1993-11-01', 'Silver', 'Manual', 'N', 2);
-INSERT INTO `customer` VALUES (742, 96776108145, 'Anderson', 'Mae', NULL, '6108 Estudello St.', NULL, NULL, NULL, 'Ballard', 'WA', '91394', 'USA', 20, '456-555-2022', '107-555-6125', '1911-05-07', 'M', '$70K - $90K', 'F', 4, 4, 'Bachelors Degree', '1993-11-08', 'Golden', 'Professional', 'Y', 3);
+INSERT INTO `customer` VALUES (742, 96776108145, 'Anderson', 'Mae', NULL, '6108 Estudello St.', NULL, NULL, NULL, 'Ballard', 'WA', '91394', 'USA', 20, '456-555-2018', '107-555-6125', '1911-05-07', 'M', '$70K - $90K', 'F', 4, 4, 'Bachelors Degree', '1993-11-08', 'Golden', 'Professional', 'Y', 3);
 INSERT INTO `customer` VALUES (743, 96814935803, 'Allen', 'Marvin', 'L.', '7350 Pinon', NULL, NULL, NULL, 'Santa Cruz', 'CA', '40236', 'USA', 40, '837-555-9539', '357-555-3503', '1911-02-21', 'M', '$30K - $50K', 'M', 1, 1, 'High School Degree', '1992-08-09', 'Bronze', 'Skilled Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (744, 96817210316, 'Bidelman', 'Chris', 'L.', '555 Moretti Drive', NULL, NULL, NULL, 'Oakland', 'CA', '32052', 'USA', 37, '495-555-6460', '453-555-1111', '1949-11-25', 'M', '$30K - $50K', 'F', 3, 2, 'High School Degree', '1993-01-14', 'Golden', 'Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (745, 96819458000, 'Gee', 'Orlando', NULL, '2050 Glazier Dr', NULL, NULL, NULL, 'Issaquah', 'WA', '19763', 'USA', 21, '238-555-7268', '726-555-6118', '1942-04-17', 'M', '$30K - $50K', 'F', 5, 3, 'High School Degree', '1991-03-10', 'Golden', 'Skilled Manual', 'Y', 4);
@@ -5788,7 +4985,7 @@ INSERT INTO `customer` VALUES (957, 99532480239, 'Finke', 'Fay', 'L.', '313 Lade
 INSERT INTO `customer` VALUES (958, 99548391103, 'Beutel', 'Allison', 'A.', '9590 Galloway Dr', NULL, NULL, NULL, 'Grossmont', 'CA', '85034', 'USA', 17, '389-555-6229', '370-555-8507', '1933-10-24', 'M', '$30K - $50K', 'M', 4, 4, 'High School Degree', '1990-11-22', 'Golden', 'Skilled Manual', 'Y', 3);
 INSERT INTO `customer` VALUES (959, 99567112922, 'Duvalle', 'Ann', NULL, '5751 Concord Place', NULL, NULL, NULL, 'San Andres', 'DF', '70230', 'Mexico', 106, '200-555-2921', '950-555-4057', '1918-03-12', 'S', '$10K - $30K', 'M', 0, 0, 'Partial High School', '1993-11-24', 'Normal', 'Skilled Manual', 'Y', 0);
 INSERT INTO `customer` VALUES (960, 99577841758, 'Sloper', 'Kari', NULL, '5283 Rishell Ct.', NULL, NULL, NULL, 'Richmond', 'CA', '71842', 'USA', 35, '427-555-1672', '716-555-3493', '1945-04-23', 'S', '$30K - $50K', 'F', 0, 0, 'High School Degree', '1992-05-24', 'Bronze', 'Manual', 'N', 1);
-INSERT INTO `customer` VALUES (961, 99578673243, 'Weinzimmer', 'Patricia', 'M.', '451 Buskirk Ave.', NULL, NULL, NULL, 'Downey', 'CA', '20222', 'USA', 58, '852-555-6568', '348-555-1903', '1911-02-06', 'M', '$50K - $70K', 'M', 2, 0, 'Bachelors Degree', '1993-04-22', 'Bronze', 'Professional', 'N', 4);
+INSERT INTO `customer` VALUES (961, 99578673243, 'Weinzimmer', 'Patricia', 'M.', '451 Buskirk Ave.', NULL, NULL, NULL, 'Downey', 'CA', '20172', 'USA', 58, '852-555-6568', '348-555-1903', '1911-02-06', 'M', '$50K - $70K', 'M', 2, 0, 'Bachelors Degree', '1993-04-22', 'Bronze', 'Professional', 'N', 4);
 INSERT INTO `customer` VALUES (962, 99607539176, 'Moore', 'Raven', NULL, '237 Ashley Way', NULL, NULL, NULL, 'Ballard', 'WA', '41322', 'USA', 20, '202-555-3946', '137-555-8968', '1935-01-09', 'M', '$10K - $30K', 'M', 2, 0, 'Partial High School', '1992-05-12', 'Normal', 'Skilled Manual', 'Y', 1);
 INSERT INTO `customer` VALUES (963, 99607823491, 'Chaw', 'Susan', 'C.', '8314 Brandywine Way', NULL, NULL, NULL, 'San Diego', 'CA', '20650', 'USA', 7, '298-555-1553', '102-555-5432', '1930-11-27', 'S', '$90K - $110K', 'F', 1, 0, 'Graduate Degree', '1994-04-01', 'Bronze', 'Professional', 'Y', 4);
 INSERT INTO `customer` VALUES (964, 99621245265, 'Reitzel', 'Steve', 'W.', '8354 Ponderosa Drive', NULL, NULL, NULL, 'Santa Monica', 'CA', '87926', 'USA', 49, '810-555-1218', '813-555-2125', '1931-03-10', 'M', '$10K - $30K', 'M', 3, 2, 'Partial High School', '1992-03-12', 'Normal', 'Manual', 'Y', 2);
@@ -5947,7 +5144,7 @@ INSERT INTO `customer` VALUES (1114, 10843715667, 'Owens', 'Judy', 'L.', '8168 E
 -- Table structure for department
 -- ----------------------------
 DROP TABLE IF EXISTS `department`;
-CREATE TABLE `department`  (
+CREATE TABLE IF NOT EXISTS  `department`  (
   `DEPARTMENT_ID` int(11) NOT NULL,
   `DEPARTMENT_DESCRIPTION` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
@@ -5972,7 +5169,7 @@ INSERT INTO `department` VALUES (19, 'Store Permanent Butchers');
 -- Table structure for employee
 -- ----------------------------
 DROP TABLE IF EXISTS `employee`;
-CREATE TABLE `employee`  (
+CREATE TABLE IF NOT EXISTS  `employee`  (
   `EMPLOYEE_ID` int(11) NOT NULL,
   `FULL_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `FIRST_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -7155,7 +6352,7 @@ INSERT INTO `employee` VALUES (1156, 'Kris Stand', 'Kris', 'Stand', 18, 'Store T
 -- Table structure for employee_closure
 -- ----------------------------
 DROP TABLE IF EXISTS `employee_closure`;
-CREATE TABLE `employee_closure`  (
+CREATE TABLE IF NOT EXISTS  `employee_closure`  (
   `EMPLOYEE_ID` int(11) NOT NULL,
   `SUPERVISOR_ID` int(11) NOT NULL,
   `DISTANCE` int(11) NULL DEFAULT NULL
@@ -7181,7 +6378,7 @@ INSERT INTO `employee_closure` VALUES (638, 1, 6);
 -- Table structure for expense_fact
 -- ----------------------------
 DROP TABLE IF EXISTS `expense_fact`;
-CREATE TABLE `expense_fact`  (
+CREATE TABLE IF NOT EXISTS  `expense_fact`  (
   `STORE_ID` int(11) NOT NULL,
   `ACCOUNT_ID` int(11) NOT NULL,
   `EXP_DATE` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
@@ -9599,7 +8796,7 @@ INSERT INTO `expense_fact` VALUES (24, 4400, '1998-12-01 05:00:00', 1066, 'ACTUA
 -- Table structure for flowtst
 -- ----------------------------
 DROP TABLE IF EXISTS `flowtst`;
-CREATE TABLE `flowtst`  (
+CREATE TABLE IF NOT EXISTS  `flowtst`  (
   `pg_in` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `pg_out` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `qq_out` double NULL DEFAULT NULL
@@ -9663,7 +8860,7 @@ INSERT INTO `flowtst` VALUES ('##!svc/html5/inviteparents/', 'me_pcenter', 37.72
 -- Table structure for inventory_fact
 -- ----------------------------
 DROP TABLE IF EXISTS `inventory_fact`;
-CREATE TABLE `inventory_fact`  (
+CREATE TABLE IF NOT EXISTS  `inventory_fact`  (
   `PRODUCT_ID` int(11) NOT NULL,
   `TIME_ID` int(11) NOT NULL,
   `WAREHOUSE_ID` int(11) NOT NULL,
@@ -9735,7 +8932,7 @@ INSERT INTO `inventory_fact` VALUES (7, 745, 20, 20, 18, 18, 24.4296, 11.2376, 3
 -- Table structure for map_data_sample
 -- ----------------------------
 DROP TABLE IF EXISTS `map_data_sample`;
-CREATE TABLE `map_data_sample`  (
+CREATE TABLE IF NOT EXISTS  `map_data_sample`  (
   `province` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `city` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `district` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -10366,7 +9563,7 @@ INSERT INTO `map_data_sample` VALUES ('云南省', '曲靖市', '师宗县', '�
 -- Table structure for product
 -- ----------------------------
 DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product`  (
+CREATE TABLE IF NOT EXISTS  `product`  (
   `PRODUCT_CLASS_ID` int(11) NOT NULL,
   `PRODUCT_ID` int(11) NOT NULL,
   `BRAND_NAME` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -10398,7 +9595,7 @@ INSERT INTO `product` VALUES (52, 3, 'Washington', 'Washington Strawberry Drink'
 INSERT INTO `product` VALUES (19, 4, 'Washington', 'Washington Cream Soda', 64412155747, 3.6400, 10.6, 9.6, 1, 0, 26, 10, 22.9, 18.9, 7.93, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (19, 5, 'Washington', 'Washington Diet Soda', 85561191439, 2.1900, 6.66, 4.65, 1, 0, 7, 10, 20.7, 21.9, 19.2, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (19, 6, 'Washington', 'Washington Cola', 29804642796, 1.1500, 15.8, 13.8, 0, 0, 14, 10, 6.42, 18.1, 21.3, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
-INSERT INTO `product` VALUES (19, 7, 'Washington', 'Washington Diet Cola', 20221444754, 2.6100, 18, 17, 1, 0, 11, 7, 15, 16.9, 21, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
+INSERT INTO `product` VALUES (19, 7, 'Washington', 'Washington Diet Cola', 20191444754, 2.6100, 18, 17, 1, 0, 11, 7, 15, 16.9, 21, 'Soda', 'Carbonated Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (30, 8, 'Washington', 'Washington Orange Juice', 89770532250, 2.5900, 8.97, 6.97, 1, 0, 27, 7, 7.56, 11.8, 8.92, 'Juice', 'Pure Juice Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (30, 9, 'Washington', 'Washington Cranberry Juice', 49395100474, 2.4200, 7.14, 5.13, 0, 0, 34, 7, 18.5, 16.1, 14.4, 'Juice', 'Pure Juice Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (30, 10, 'Washington', 'Washington Apple Juice', 22114084362, 1.4200, 8.13, 7.13, 1, 0, 28, 14, 21.6, 7.32, 9.2, 'Juice', 'Pure Juice Beverages', 'Beverages', 'Drink');
@@ -10502,14 +9699,14 @@ INSERT INTO `product` VALUES (60, 107, 'Golden', 'Golden Frozen Corn', 556373304
 INSERT INTO `product` VALUES (60, 108, 'Golden', 'Golden Frozen Peas', 63691950440, 2.1900, 11.9, 9.89, 1, 1, 34, 6, 8.69, 9.67, 20.5, 'Frozen Vegetables', 'Vegetables', 'Frozen Foods', 'Food');
 INSERT INTO `product` VALUES (9, 109, 'Golden', 'Golden Popsicles', 51792051196, 3.9500, 19, 16, 0, 0, 11, 12, 6.69, 10.4, 7.67, 'Ice Cream', 'Frozen Desserts', 'Frozen Foods', 'Food');
 INSERT INTO `product` VALUES (100, 110, 'Golden', 'Golden Frozen Chicken Thighs', 29084437489, 2.3500, 12, 10, 1, 1, 34, 13, 22.3, 10.2, 6.75, 'Frozen Chicken', 'Meat', 'Frozen Foods', 'Food');
-INSERT INTO `product` VALUES (100, 111, 'Golden', 'Golden Frozen Chicken Wings', 52520224384, 3.4800, 15.4, 13.3, 1, 1, 17, 12, 22, 10.7, 10, 'Frozen Chicken', 'Meat', 'Frozen Foods', 'Food');
+INSERT INTO `product` VALUES (100, 111, 'Golden', 'Golden Frozen Chicken Wings', 52520174384, 3.4800, 15.4, 13.3, 1, 1, 17, 12, 22, 10.7, 10, 'Frozen Chicken', 'Meat', 'Frozen Foods', 'Food');
 INSERT INTO `product` VALUES (110, 112, 'Golden', 'Golden Lemon Popsicles', 89050326943, 1.1300, 9.35, 7.35, 0, 1, 35, 5, 21.9, 15, 13.8, 'Popsicles', 'Frozen Desserts', 'Frozen Foods', 'Food');
 INSERT INTO `product` VALUES (78, 113, 'Faux Products', 'Faux Products Silky Smooth Hair Conditioner', 15625960230, 2.2900, 19.7, 17.7, 1, 0, 8, 12, 14.5, 8.23, 15, 'Conditioner', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (39, 114, 'Faux Products', 'Faux Products Tartar Control Toothpaste', 21393879055, 0.9200, 20.6, 19.6, 0, 0, 31, 11, 19.1, 10.5, 9.73, 'Personal Hygiene', 'Hygiene', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (39, 115, 'Faux Products', 'Faux Products Whitening Toothpast', 14283847212, 0.6500, 20.6, 18.6, 1, 0, 33, 13, 10.6, 11.7, 9.62, 'Personal Hygiene', 'Hygiene', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (39, 116, 'Faux Products', 'Faux Products Toothpaste', 79289532303, 3.9700, 8.33, 5.32, 1, 0, 8, 10, 7.45, 20.8, 13.4, 'Personal Hygiene', 'Hygiene', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (39, 117, 'Faux Products', 'Faux Products Deodorant', 10438567996, 2.7500, 9.24, 7.23, 0, 0, 31, 10, 12, 3.12, 8.19, 'Personal Hygiene', 'Hygiene', 'Health and Hygiene', 'Non-Consumable');
-INSERT INTO `product` VALUES (79, 118, 'Faux Products', 'Faux Products Conditioning Shampoo', 44682022352, 1.4800, 8.27, 6.27, 1, 0, 20, 13, 8.55, 14.1, 3.48, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
+INSERT INTO `product` VALUES (79, 118, 'Faux Products', 'Faux Products Conditioning Shampoo', 44682019352, 1.4800, 8.27, 6.27, 1, 0, 20, 13, 8.55, 14.1, 3.48, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (79, 119, 'Faux Products', 'Faux Products Extra Moisture Shampoo', 35068821310, 2.2800, 20.1, 19.1, 0, 0, 7, 12, 7.86, 8.33, 14.7, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (88, 120, 'Faux Products', 'Faux Products Angled Toothbrush', 14647908806, 2.2600, 12.9, 9.89, 0, 0, 23, 13, 9.99, 5.6, 22, 'Toothbrushes', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (79, 121, 'Faux Products', 'Faux Products Apricot Shampoo', 64272477030, 2.9800, 11.6, 8.6, 1, 0, 21, 11, 21.4, 6.61, 22.4, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
@@ -10563,7 +9760,7 @@ INSERT INTO `product` VALUES (107, 168, 'Robust', 'Robust Monthly Computer Magaz
 INSERT INTO `product` VALUES (105, 169, 'Robust', 'Robust Monthly Home Magazine', 54495846629, 1.9800, 19.5, 17.5, 1, 0, 29, 11, 17.2, 5.11, 11.8, 'Home Magazines', 'Magazines', 'Periodicals', 'Non-Consumable');
 INSERT INTO `product` VALUES (106, 170, 'Robust', 'Robust Monthly Fashion Magazine', 57929857373, 3.2000, 9.56, 8.56, 0, 0, 23, 9, 5.74, 4.41, 9.95, 'Fashion Magazines', 'Magazines', 'Periodicals', 'Non-Consumable');
 INSERT INTO `product` VALUES (61, 171, 'High Top', 'High Top Summer Squash', 76792191863, 2.9500, 18.7, 17.7, 0, 0, 30, 9, 11.3, 20.6, 12, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
-INSERT INTO `product` VALUES (61, 172, 'High Top', 'High Top Corn on the Cob', 18748942022, 3.3200, 16.1, 14.1, 0, 1, 3, 8, 12.3, 18.4, 4.75, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
+INSERT INTO `product` VALUES (61, 172, 'High Top', 'High Top Corn on the Cob', 18748942017, 3.3200, 16.1, 14.1, 0, 1, 3, 8, 12.3, 18.4, 4.75, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
 INSERT INTO `product` VALUES (61, 173, 'High Top', 'High Top Asparagus', 72946912646, 1.4300, 21.9, 20.8, 0, 0, 13, 13, 22, 9.15, 7.34, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
 INSERT INTO `product` VALUES (61, 174, 'High Top', 'High Top Sweet Peas', 50239298939, 1.7100, 13.4, 11.3, 1, 0, 22, 8, 12.3, 21, 21.8, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
 INSERT INTO `product` VALUES (61, 175, 'High Top', 'High Top New Potatos', 97577165961, 3.8500, 6.82, 4.82, 1, 1, 16, 8, 13, 15.4, 13.2, 'Fresh Vegetables', 'Vegetables', 'Produce', 'Food');
@@ -10957,7 +10154,7 @@ INSERT INTO `product` VALUES (109, 562, 'Fast', 'Fast Dried Apricots', 421353799
 INSERT INTO `product` VALUES (84, 563, 'Fast', 'Fast Frosted Donuts', 58927478194, 1.6800, 19.9, 18.8, 0, 1, 31, 9, 6.76, 7.11, 19.5, 'Donuts', 'Snack Foods', 'Snack Foods', 'Food');
 INSERT INTO `product` VALUES (36, 564, 'Atomic', 'Atomic Tasty Candy Bar', 10031033158, 0.6600, 17.9, 15.8, 1, 1, 9, 13, 7.18, 8.35, 17, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
 INSERT INTO `product` VALUES (36, 565, 'Atomic', 'Atomic Mint Chocolate Bar', 55082198977, 0.9000, 10.9, 9.89, 1, 0, 9, 11, 12.9, 22.5, 13.6, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
-INSERT INTO `product` VALUES (36, 566, 'Atomic', 'Atomic Malted Milk Balls', 65423520227, 1.7800, 13.9, 10.8, 0, 0, 20, 13, 20.3, 11.9, 9.61, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
+INSERT INTO `product` VALUES (36, 566, 'Atomic', 'Atomic Malted Milk Balls', 65423520207, 1.7800, 13.9, 10.8, 0, 0, 20, 13, 20.3, 11.9, 9.61, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
 INSERT INTO `product` VALUES (36, 567, 'Atomic', 'Atomic Semi-Sweet Chocolate Bar', 55810322165, 2.3500, 15.9, 13.8, 1, 1, 35, 13, 4.46, 5.77, 13.2, 'Chocolate Candy', 'Candy', 'Snacks', 'Food');
 INSERT INTO `product` VALUES (37, 568, 'Atomic', 'Atomic Bubble Gum', 59291539788, 3.3300, 11.2, 8.19, 0, 1, 18, 13, 11.5, 6.82, 11.6, 'Gum', 'Candy', 'Snacks', 'Food');
 INSERT INTO `product` VALUES (38, 569, 'Atomic', 'Atomic Spicy Mints', 18916108012, 3.1600, 7.79, 5.78, 1, 1, 33, 13, 16.9, 3.52, 17, 'Hard Candy', 'Candy', 'Snacks', 'Food');
@@ -11157,7 +10354,7 @@ INSERT INTO `product` VALUES (55, 762, 'Cormorant', 'Cormorant Paper Cups', 6300
 INSERT INTO `product` VALUES (80, 763, 'Cormorant', 'Cormorant 75 Watt Lightbulb', 57963170409, 2.5500, 6.32, 5.32, 1, 0, 5, 14, 12, 17.4, 10.2, 'Lightbulbs', 'Electrical', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (22, 764, 'Cormorant', 'Cormorant Toilet Bowl Cleaner', 89919920563, 3.8100, 15.9, 13.8, 0, 0, 32, 7, 8.31, 19, 4.2, 'Cleaners', 'Cleaning Supplies', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (22, 765, 'Cormorant', 'Cormorant Counter Cleaner', 18998720049, 1.9200, 19.6, 16.6, 0, 0, 36, 6, 6.6, 19.2, 8.06, 'Cleaners', 'Cleaning Supplies', 'Household', 'Non-Consumable');
-INSERT INTO `product` VALUES (22, 766, 'Cormorant', 'Cormorant Glass Cleaner', 20223236470, 0.6200, 20.1, 18.1, 1, 0, 3, 9, 7.71, 22.6, 7.91, 'Cleaners', 'Cleaning Supplies', 'Household', 'Non-Consumable');
+INSERT INTO `product` VALUES (22, 766, 'Cormorant', 'Cormorant Glass Cleaner', 20193236470, 0.6200, 20.1, 18.1, 1, 0, 3, 9, 7.71, 22.6, 7.91, 'Cleaners', 'Cleaning Supplies', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (80, 767, 'Cormorant', 'Cormorant 25 Watt Lightbulb', 43628973364, 1.4500, 16.9, 15.8, 1, 0, 2, 8, 12.5, 3.52, 8.92, 'Lightbulbs', 'Electrical', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (101, 768, 'Cormorant', 'Cormorant AA-Size Batteries', 80159125924, 2.7600, 20.5, 18.5, 0, 0, 12, 9, 10.8, 3.77, 12.7, 'Batteries', 'Electrical', 'Household', 'Non-Consumable');
 INSERT INTO `product` VALUES (101, 769, 'Cormorant', 'Cormorant D-Size Batteries', 96734759211, 0.5900, 21, 20, 0, 0, 9, 9, 11.9, 7.13, 12.6, 'Batteries', 'Electrical', 'Household', 'Non-Consumable');
@@ -11329,7 +10526,7 @@ INSERT INTO `product` VALUES (53, 934, 'BBB Best', 'BBB Best Creamy Peanut Butte
 INSERT INTO `product` VALUES (33, 935, 'BBB Best', 'BBB Best Strawberry Preserves', 32069382071, 2.8000, 7.54, 4.53, 0, 1, 6, 11, 19.4, 8.78, 20.4, 'Preserves', 'Jams and Jellies', 'Baking Goods', 'Food');
 INSERT INTO `product` VALUES (53, 936, 'BBB Best', 'BBB Best Extra Chunky Peanut Butter', 35550599694, 2.7800, 6.49, 5.48, 0, 0, 23, 8, 4.29, 3.42, 17.6, 'Peanut Butter', 'Jams and Jellies', 'Baking Goods', 'Food');
 INSERT INTO `product` VALUES (33, 937, 'BBB Best', 'BBB Best Apple Preserves', 85175167918, 3.6100, 21.8, 18.7, 1, 1, 25, 10, 3.3, 18, 12.2, 'Preserves', 'Jams and Jellies', 'Baking Goods', 'Food');
-INSERT INTO `product` VALUES (31, 938, 'BBB Best', 'BBB Best Grape Jelly', 33992022679, 1.6100, 17, 14, 1, 0, 32, 13, 10.6, 8.03, 5.65, 'Jelly', 'Jams and Jellies', 'Baking Goods', 'Food');
+INSERT INTO `product` VALUES (31, 938, 'BBB Best', 'BBB Best Grape Jelly', 33992021679, 1.6100, 17, 14, 1, 0, 32, 13, 10.6, 8.03, 5.65, 'Jelly', 'Jams and Jellies', 'Baking Goods', 'Food');
 INSERT INTO `product` VALUES (30, 939, 'Fabulous', 'Fabulous Berry Juice', 52854356169, 0.7000, 10.8, 8.8, 0, 0, 19, 13, 3.2, 11.2, 16.9, 'Juice', 'Pure Juice Beverages', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (52, 940, 'Fabulous', 'Fabulous Mango Drink', 84811106324, 2.8400, 14.5, 12.5, 0, 0, 23, 11, 21.4, 11.4, 20.8, 'Flavored Drinks', 'Drinks', 'Beverages', 'Drink');
 INSERT INTO `product` VALUES (52, 941, 'Fabulous', 'Fabulous Strawberry Drink', 49009076952, 3.9500, 18.3, 16.2, 0, 0, 35, 10, 10.6, 20.6, 11.9, 'Flavored Drinks', 'Drinks', 'Beverages', 'Drink');
@@ -11665,7 +10862,7 @@ INSERT INTO `product` VALUES (58, 1270, 'Pleasant', 'Pleasant Vegetable Soup', 4
 INSERT INTO `product` VALUES (62, 1271, 'Pleasant', 'Pleasant Canned Tomatos', 36829380393, 3.5000, 6.12, 3.11, 1, 1, 13, 7, 14.1, 18.7, 13.2, 'Canned Vegetables', 'Vegetables', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (58, 1272, 'Pleasant', 'Pleasant Noodle Soup', 16408467888, 2.4800, 18.2, 16.2, 0, 1, 31, 9, 7.15, 4.35, 11.3, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (58, 1273, 'Pleasant', 'Pleasant Regular Ramen Soup', 66033036112, 3.3100, 12.5, 9.5, 1, 1, 4, 7, 19.7, 17.5, 12.5, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
-INSERT INTO `product` VALUES (58, 1274, 'Pleasant', 'Pleasant Chicken Noodle Soup', 38752022001, 1.3100, 20.2, 19.2, 1, 0, 36, 10, 8.2, 20.5, 17, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
+INSERT INTO `product` VALUES (58, 1274, 'Pleasant', 'Pleasant Chicken Noodle Soup', 38752020001, 1.3100, 20.2, 19.2, 1, 0, 36, 10, 8.2, 20.5, 17, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (58, 1275, 'Pleasant', 'Pleasant Turkey Noodle Soup', 33712224364, 1.1700, 13.5, 12.5, 1, 0, 9, 6, 17.6, 22.6, 3.46, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (58, 1276, 'Pleasant', 'Pleasant Beef Soup', 96647673249, 1.4300, 16.9, 14.8, 1, 0, 2, 8, 18.9, 18.7, 4.16, 'Soup', 'Canned Soup', 'Canned Foods', 'Food');
 INSERT INTO `product` VALUES (62, 1277, 'Pleasant', 'Pleasant Canned Peas', 60845643877, 2.5400, 19.9, 17.8, 1, 0, 25, 7, 16.3, 22.5, 17.6, 'Canned Vegetables', 'Vegetables', 'Canned Foods', 'Food');
@@ -11712,7 +10909,7 @@ INSERT INTO `product` VALUES (81, 1317, 'Lake', 'Lake Foot-Long Hot Dogs', 12584
 INSERT INTO `product` VALUES (16, 1318, 'Lake', 'Lake Low Fat Cole Slaw', 22926171422, 0.9300, 14.4, 12.3, 1, 0, 4, 10, 14.8, 5.63, 11.4, 'Deli Salads', 'Side Dishes', 'Deli', 'Food');
 INSERT INTO `product` VALUES (16, 1319, 'Lake', 'Lake Cole Slaw', 92095932364, 1.6800, 13.2, 10.1, 0, 1, 33, 7, 8.49, 3.33, 6.64, 'Deli Salads', 'Side Dishes', 'Deli', 'Food');
 INSERT INTO `product` VALUES (77, 1320, 'Lake', 'Lake Roasted Chicken', 95577149987, 2.6600, 21.2, 19.2, 0, 1, 27, 11, 21, 11.9, 11, 'Fresh Chicken', 'Meat', 'Deli', 'Food');
-INSERT INTO `product` VALUES (8, 1321, 'Lake', 'Lake Corned Beef', 55202218211, 2.4900, 16.9, 15.8, 1, 0, 8, 8, 20.4, 4.13, 16.7, 'Deli Meats', 'Meat', 'Deli', 'Food');
+INSERT INTO `product` VALUES (8, 1321, 'Lake', 'Lake Corned Beef', 55201718211, 2.4900, 16.9, 15.8, 1, 0, 8, 8, 20.4, 4.13, 16.7, 'Deli Meats', 'Meat', 'Deli', 'Food');
 INSERT INTO `product` VALUES (8, 1322, 'Lake', 'Lake Sliced Turkey', 94018571972, 3.2000, 6.66, 5.65, 0, 1, 6, 13, 21.5, 11.4, 21.8, 'Deli Meats', 'Meat', 'Deli', 'Food');
 INSERT INTO `product` VALUES (8, 1323, 'Lake', 'Lake Sliced Ham', 22880906462, 2.9400, 10.5, 8.5, 1, 1, 29, 7, 4.36, 13.1, 9.99, 'Deli Meats', 'Meat', 'Deli', 'Food');
 INSERT INTO `product` VALUES (16, 1324, 'Lake', 'Lake Potato Salad', 54837656617, 3.3100, 13.5, 11.5, 0, 0, 29, 7, 10.4, 20.2, 20.9, 'Deli Salads', 'Side Dishes', 'Deli', 'Food');
@@ -11763,7 +10960,7 @@ INSERT INTO `product` VALUES (79, 1368, 'Hilltop', 'Hilltop Extra Moisture Shamp
 INSERT INTO `product` VALUES (88, 1369, 'Hilltop', 'Hilltop Angled Toothbrush', 99251229166, 3.3800, 13.7, 10.6, 1, 0, 20, 7, 20.3, 18.5, 9.77, 'Toothbrushes', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (79, 1370, 'Hilltop', 'Hilltop Apricot Shampoo', 71970213055, 2.3800, 16, 13, 1, 0, 16, 6, 11.8, 19.7, 9.06, 'Shampoo', 'Bathroom Products', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (70, 1371, 'Hilltop', 'Hilltop Childrens Aspirin', 78147458434, 2.4700, 6.4, 4.4, 1, 0, 33, 12, 15.4, 8.09, 16.9, 'Aspirin', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
-INSERT INTO `product` VALUES (70, 1372, 'Hilltop', 'Hilltop Buffered Aspirin', 86202278461, 2.4900, 6.49, 4.48, 1, 0, 10, 13, 13.7, 8.08, 21.9, 'Aspirin', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
+INSERT INTO `product` VALUES (70, 1372, 'Hilltop', 'Hilltop Buffered Aspirin', 86202078461, 2.4900, 6.49, 4.48, 1, 0, 10, 13, 13.7, 8.08, 21.9, 'Aspirin', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (71, 1373, 'Hilltop', 'Hilltop 200 MG Ibuprofen', 74302179217, 3.6000, 8.77, 7.77, 1, 0, 5, 12, 5.21, 9.35, 21.2, 'Ibuprofen', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (72, 1374, 'Hilltop', 'Hilltop 200 MG Acetominifen', 51594565510, 2.8900, 18.9, 17.8, 1, 0, 23, 9, 14.1, 5.6, 13, 'Acetominifen', 'Pain Relievers', 'Health and Hygiene', 'Non-Consumable');
 INSERT INTO `product` VALUES (73, 1375, 'Hilltop', 'Hilltop HCL Nasal Spray', 75030302405, 2.1300, 21.1, 19.1, 1, 0, 25, 11, 5.63, 6.87, 12.3, 'Nasal Sprays', 'Decongestants', 'Health and Hygiene', 'Non-Consumable');
@@ -11957,7 +11154,7 @@ INSERT INTO `product` VALUES (31, 1560, 'CDR', 'CDR Grape Jelly', 54896665215, 1
 -- Table structure for promotion
 -- ----------------------------
 DROP TABLE IF EXISTS `promotion`;
-CREATE TABLE `promotion`  (
+CREATE TABLE IF NOT EXISTS  `promotion`  (
   `PROMOTION_ID` int(11) NOT NULL,
   `PROMOTION_DISTRICT_ID` int(11) NULL DEFAULT NULL,
   `PROMOTION_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -13681,7 +12878,7 @@ INSERT INTO `promotion` VALUES (1736, 131, 'Pick Your Savings', 'Sunday Paper, R
 INSERT INTO `promotion` VALUES (1737, 131, 'Dollar Cutters', 'Daily Paper, Radio', 7066.0000, '1998-12-16 05:00:00', '1998-12-17 05:00:00');
 INSERT INTO `promotion` VALUES (1738, 131, 'Go For It', 'Sunday Paper, Radio', 12300.0000, '1998-12-30 05:00:00', '1998-12-31 05:00:00');
 INSERT INTO `promotion` VALUES (1740, 132, 'Double Your Savings', 'Bulk Mail', 7813.0000, '1996-01-18 05:00:00', '1996-01-21 05:00:00');
-INSERT INTO `promotion` VALUES (1741, 132, 'Green Light Days', 'Product Attachment', 12022.0000, '1996-01-31 05:00:00', '1996-02-03 05:00:00');
+INSERT INTO `promotion` VALUES (1741, 132, 'Green Light Days', 'Product Attachment', 12020.0000, '1996-01-31 05:00:00', '1996-02-03 05:00:00');
 INSERT INTO `promotion` VALUES (1742, 132, 'Big Time Discounts', 'Street Handout', 5290.0000, '1996-02-15 05:00:00', '1996-02-16 05:00:00');
 INSERT INTO `promotion` VALUES (1743, 132, 'Free For All', 'Daily Paper, Radio', 9843.0000, '1996-02-27 05:00:00', '1996-03-01 05:00:00');
 INSERT INTO `promotion` VALUES (1744, 132, 'Green Light Special', 'Product Attachment', 11058.0000, '1996-03-14 05:00:00', '1996-03-17 05:00:00');
@@ -13840,7 +13037,7 @@ INSERT INTO `promotion` VALUES (1896, 133, 'Money Savers', 'Cash Register Handou
 -- Table structure for region
 -- ----------------------------
 DROP TABLE IF EXISTS `region`;
-CREATE TABLE `region`  (
+CREATE TABLE IF NOT EXISTS  `region`  (
   `REGION_ID` int(11) NOT NULL,
   `SALES_CITY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `SALES_STATE_PROVINCE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -13969,7 +13166,7 @@ INSERT INTO `region` VALUES (109, 'Santa Fe', 'DF', 'Mexico City', 'Mexico Centr
 -- Table structure for reserve_employee
 -- ----------------------------
 DROP TABLE IF EXISTS `reserve_employee`;
-CREATE TABLE `reserve_employee`  (
+CREATE TABLE IF NOT EXISTS  `reserve_employee`  (
   `EMPLOYEE_ID` int(11) NOT NULL,
   `FULL_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `FIRST_NAME` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -14139,7 +13336,7 @@ INSERT INTO `reserve_employee` VALUES (1299, 'Shona Grimm', 'Shona', 'Grimm', NU
 -- Table structure for salary
 -- ----------------------------
 DROP TABLE IF EXISTS `salary`;
-CREATE TABLE `salary`  (
+CREATE TABLE IF NOT EXISTS  `salary`  (
   `PAY_DATE` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
   `EMPLOYEE_ID` int(11) NOT NULL,
   `DEPARTMENT_ID` int(11) NOT NULL,
@@ -14207,7 +13404,7 @@ INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 73, 16, 1, 3.2239, 0.7800, 1
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 74, 16, 1, 3.3799, 0.3300, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 75, 16, 1, 3.3358, 0.4200, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 76, 16, 1, 3.4502, 0.5700, 1, 0);
-INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 77, 16, 1, 3.2022, 0.7200, 1, 0);
+INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 77, 16, 1, 3.2021, 0.7200, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 78, 16, 1, 3.4300, 0.9600, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 79, 16, 1, 3.4528, 0.6000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 80, 17, 1, 3.9600, 0.0000, 1, 0);
@@ -14638,7 +13835,7 @@ INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 504, 16, 1, 3.4162, 0.1800, 
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 505, 16, 1, 3.2703, 0.5700, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 506, 16, 1, 3.4668, 0.2100, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 507, 16, 1, 3.2443, 0.4200, 1, 0);
-INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 508, 16, 1, 3.2022, 0.4800, 1, 0);
+INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 508, 16, 1, 3.2017, 0.4800, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 509, 16, 1, 3.3778, 1.1700, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 510, 16, 1, 3.2511, 1.1100, 1, 0);
 INSERT INTO `salary` VALUES ('1997-01-01 05:00:00', 511, 16, 1, 3.3407, 0.5100, 1, 0);
@@ -17826,7 +17023,7 @@ INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 612, 18, 1, 3.4509, 0.8400, 
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 613, 18, 1, 3.3640, 0.3300, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 614, 18, 1, 3.4811, 0.6000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 615, 18, 1, 3.4209, 1.1400, 1, 0);
-INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 616, 18, 1, 3.2022, 0.5400, 1, 0);
+INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 616, 18, 1, 3.2021, 0.5400, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 617, 18, 1, 3.2434, 0.0900, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 618, 11, 1, 7.1100, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-06-01 05:00:00', 619, 15, 1, 5.7600, 0.0000, 1, 0);
@@ -19675,7 +18872,7 @@ INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 613, 18, 1, 3.3164, 0.4500, 
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 614, 18, 1, 3.3893, 1.4100, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 615, 18, 1, 3.4620, 1.3500, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 616, 18, 1, 3.2533, 1.7700, 1, 0);
-INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 617, 18, 1, 3.2022, 0.0000, 1, 0);
+INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 617, 18, 1, 3.2020, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 618, 11, 1, 7.1100, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 619, 15, 1, 5.7600, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-09-01 05:00:00', 620, 16, 1, 3.5069, 1.1700, 1, 0);
@@ -19766,7 +18963,7 @@ INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 88, 17, 1, 4.2300, 0.0000, 1
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 89, 17, 1, 4.0500, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 90, 18, 1, 3.4361, 0.1200, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 91, 18, 1, 3.2727, 0.9900, 1, 0);
-INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 92, 18, 1, 3.2022, 1.1100, 1, 0);
+INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 92, 18, 1, 3.2020, 1.1100, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 93, 18, 1, 3.2427, 0.0900, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 94, 18, 1, 3.4936, 0.4800, 1, 0);
 INSERT INTO `salary` VALUES ('1997-10-01 05:00:00', 95, 18, 1, 3.4934, 0.6600, 1, 0);
@@ -21889,7 +21086,7 @@ INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 342, 18, 1, 3.4336, 1.0800, 
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 343, 18, 1, 3.4119, 1.0500, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 344, 18, 1, 3.2802, 1.1400, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 345, 18, 1, 3.3073, 0.6900, 1, 0);
-INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 346, 18, 1, 3.2022, 0.6300, 1, 0);
+INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 346, 18, 1, 3.2018, 0.6300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 347, 18, 1, 3.3927, 0.9300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 348, 18, 1, 3.4286, 0.6300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 349, 18, 1, 3.2582, 0.3000, 1, 0);
@@ -22550,7 +21747,7 @@ INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1003, 18, 2, 3.4552, 5.1818,
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1004, 18, 2, 3.4609, 1.6364, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1005, 18, 2, 3.2115, 4.0909, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1006, 18, 2, 3.4495, 7.3636, 1, 0);
-INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1007, 18, 2, 3.2022, 7.0909, 1, 0);
+INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1007, 18, 2, 3.2021, 7.0909, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1008, 18, 2, 3.4617, 5.7273, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1009, 18, 2, 3.5056, 6.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-01-01 05:00:00', 1010, 18, 2, 3.2962, 6.5455, 1, 0);
@@ -25223,7 +24420,7 @@ INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 211, 18, 1, 3.3250, 0.6300, 
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 212, 18, 1, 3.4416, 0.0300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 213, 18, 1, 3.4141, 1.1400, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 214, 18, 1, 3.2913, 0.9900, 1, 0);
-INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 215, 18, 1, 3.2022, 0.5400, 1, 0);
+INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 215, 18, 1, 3.2020, 0.5400, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 216, 18, 1, 3.3550, 1.0500, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 217, 18, 1, 3.3988, 0.4500, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 218, 18, 1, 3.3824, 0.6000, 1, 0);
@@ -25369,7 +24566,7 @@ INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 357, 18, 1, 3.4276, 0.3900, 
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 358, 18, 1, 3.2144, 0.8100, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 359, 11, 1, 8.0000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 360, 15, 1, 6.7000, 0.0000, 1, 0);
-INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 361, 16, 1, 3.2022, 0.2700, 1, 0);
+INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 361, 16, 1, 3.2021, 0.2700, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 362, 11, 1, 13.0000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 363, 11, 1, 8.9000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 364, 11, 1, 8.2000, 0.0000, 1, 0);
@@ -25703,7 +24900,7 @@ INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 691, 17, 3, 6.2857, 0.0000, 
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 692, 17, 3, 6.5714, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 693, 17, 3, 6.2857, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 694, 18, 3, 3.3737, 0.3000, 1, 0);
-INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 695, 18, 3, 3.2022, 1.0714, 1, 0);
+INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 695, 18, 3, 3.2020, 1.0714, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 696, 18, 3, 3.4627, 0.0429, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 697, 18, 3, 3.4494, 0.9000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-04-01 05:00:00', 698, 18, 3, 3.2607, 1.1571, 1, 0);
@@ -26836,7 +26033,7 @@ INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 669, 16, 3, 3.3338, 0.1714, 
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 670, 16, 3, 3.2671, 0.6429, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 671, 16, 3, 3.5138, 1.4571, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 672, 16, 3, 3.5062, 0.6000, 1, 0);
-INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 673, 16, 3, 3.2022, 1.3286, 1, 0);
+INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 673, 16, 3, 3.2018, 1.3286, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 674, 16, 3, 3.2427, 1.0286, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 675, 16, 3, 3.5165, 0.6857, 1, 0);
 INSERT INTO `salary` VALUES ('1998-05-01 05:00:00', 676, 16, 3, 3.3154, 0.4714, 1, 0);
@@ -27790,7 +26987,7 @@ INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 468, 17, 1, 4.6000, 0.0000, 
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 469, 18, 1, 3.4225, 1.1400, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 470, 18, 1, 3.3803, 0.6600, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 471, 18, 1, 3.3573, 0.0300, 1, 0);
-INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 472, 18, 1, 3.2022, 0.9600, 1, 0);
+INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 472, 18, 1, 3.2020, 0.9600, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 473, 18, 1, 3.4834, 0.6600, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 474, 18, 1, 3.2501, 0.2100, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 475, 18, 1, 3.2308, 1.0200, 1, 0);
@@ -27854,7 +27051,7 @@ INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 532, 18, 1, 3.4186, 0.2700, 
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 533, 18, 1, 3.2071, 0.4800, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 534, 18, 1, 3.2947, 0.9900, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 535, 18, 1, 3.2101, 1.1400, 1, 0);
-INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 536, 18, 1, 3.2022, 0.4800, 1, 0);
+INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 536, 18, 1, 3.2020, 0.4800, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 537, 18, 1, 3.2794, 0.1500, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 538, 18, 1, 3.2107, 0.3300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-06-01 05:00:00', 539, 18, 1, 3.4850, 0.3300, 1, 0);
@@ -29324,7 +28521,7 @@ INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 847, 16, 2, 3.3235, 17.4545,
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 848, 16, 2, 3.3514, 10.9091, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 849, 16, 2, 3.2564, 5.4545, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 850, 16, 2, 3.4533, 14.4545, 1, 0);
-INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 851, 16, 2, 3.2022, 3.2727, 1, 0);
+INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 851, 16, 2, 3.2019, 3.2727, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 852, 16, 2, 3.3272, 11.1818, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 853, 16, 2, 3.4989, 7.0909, 1, 0);
 INSERT INTO `salary` VALUES ('1998-07-01 05:00:00', 854, 16, 2, 3.3519, 11.1818, 1, 0);
@@ -29747,7 +28944,7 @@ INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 115, 15, 1, 7.0000, 0.0000, 
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 116, 15, 1, 6.8000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 117, 15, 1, 6.7000, 0.0000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 118, 15, 1, 8.2000, 0.0000, 1, 0);
-INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 119, 16, 1, 3.2022, 1.8300, 1, 0);
+INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 119, 16, 1, 3.2020, 1.8300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 120, 16, 1, 3.2191, 1.9800, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 121, 16, 1, 3.3596, 1.9200, 1, 0);
 INSERT INTO `salary` VALUES ('1998-08-01 05:00:00', 122, 16, 1, 3.5124, 1.7400, 1, 0);
@@ -33546,7 +32743,7 @@ INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 449, 16, 1, 3.2690, 0.3600, 
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 450, 16, 1, 3.3956, 2.1300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 451, 16, 1, 3.3141, 1.5300, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 452, 16, 1, 3.4932, 0.0300, 1, 0);
-INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 453, 16, 1, 3.2022, 2.0700, 1, 0);
+INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 453, 16, 1, 3.2017, 2.0700, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 454, 16, 1, 3.3884, 0.6900, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 455, 16, 1, 3.4820, 1.5900, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 456, 16, 1, 3.3112, 1.3500, 1, 0);
@@ -33768,7 +32965,7 @@ INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 671, 16, 3, 3.3549, 2.6143, 
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 672, 16, 3, 3.2776, 1.8857, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 673, 16, 3, 3.3890, 1.5429, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 674, 16, 3, 3.4939, 2.7857, 1, 0);
-INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 675, 16, 3, 3.2022, 2.7000, 1, 0);
+INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 675, 16, 3, 3.2021, 2.7000, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 676, 16, 3, 3.3685, 2.9143, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 677, 16, 3, 3.3729, 1.1143, 1, 0);
 INSERT INTO `salary` VALUES ('1998-11-01 05:00:00', 678, 16, 3, 3.2002, 2.9143, 1, 0);
@@ -34760,7 +33957,7 @@ INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 508, 16, 1, 3.3844, 1.9200, 
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 509, 16, 1, 3.5073, 1.4700, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 510, 16, 1, 3.4187, 1.1700, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 511, 16, 1, 3.3273, 1.0500, 1, 0);
-INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 512, 16, 1, 3.2022, 1.8900, 1, 0);
+INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 512, 16, 1, 3.2019, 1.8900, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 513, 16, 1, 3.4112, 0.1200, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 514, 16, 1, 3.4439, 0.0600, 1, 0);
 INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 515, 16, 1, 3.5088, 1.8300, 1, 0);
@@ -35410,7 +34607,7 @@ INSERT INTO `salary` VALUES ('1998-12-01 05:00:00', 1156, 18, 2, 3.2578, 11.4545
 -- Table structure for sales_fact_sample
 -- ----------------------------
 DROP TABLE IF EXISTS `sales_fact_sample`;
-CREATE TABLE `sales_fact_sample`  (
+CREATE TABLE IF NOT EXISTS  `sales_fact_sample`  (
   `PRODUCT_ID` int(11) NOT NULL,
   `TIME_ID` int(11) NOT NULL,
   `CUSTOMER_ID` int(11) NOT NULL,
@@ -35441,7 +34638,7 @@ INSERT INTO `sales_fact_sample` VALUES (619, 736, 838, 0, 4, 6.7500, 2.8350, 3.0
 INSERT INTO `sales_fact_sample` VALUES (1398, 391, 9698, 0, 23, 6.3000, 2.5200, 2.0000, 0.00004588067535858664);
 INSERT INTO `sales_fact_sample` VALUES (171, 1045, 8238, 0, 15, 8.8500, 3.4515, 3.0000, 0.000058026984388033845);
 INSERT INTO `sales_fact_sample` VALUES (1116, 992, 8204, 0, 8, 10.1200, 3.6432, 4.0000, 0.000058830715770675536);
-INSERT INTO `sales_fact_sample` VALUES (130, 846, 1026, 693, 9, 8.9200, 3.7464, 4.0000, 0.00006105192011320221);
+INSERT INTO `sales_fact_sample` VALUES (130, 846, 1026, 693, 9, 8.9200, 3.7464, 4.0000, 0.00006105192011320211);
 INSERT INTO `sales_fact_sample` VALUES (6, 590, 6261, 0, 6, 3.4500, 1.6560, 3.0000, 0.00006648339337341803);
 INSERT INTO `sales_fact_sample` VALUES (1139, 846, 7014, 1878, 24, 8.5800, 2.8314, 3.0000, 0.00006648339337341803);
 INSERT INTO `sales_fact_sample` VALUES (1147, 1041, 6192, 549, 7, 4.2600, 1.3206, 3.0000, 0.00006792601204284095);
@@ -35450,7 +34647,7 @@ INSERT INTO `sales_fact_sample` VALUES (1147, 1041, 6192, 549, 7, 4.2600, 1.3206
 -- Table structure for sales_fact_virtual
 -- ----------------------------
 DROP TABLE IF EXISTS `sales_fact_virtual`;
-CREATE TABLE `sales_fact_virtual`  (
+CREATE TABLE IF NOT EXISTS  `sales_fact_virtual`  (
   `PRODUCT_ID` int(11) NOT NULL,
   `TIME_ID` int(11) NOT NULL,
   `CUSTOMER_ID` int(11) NOT NULL,
@@ -35492,7 +34689,7 @@ INSERT INTO `sales_fact_virtual` VALUES (1, 1054, 6843, 1182, 15, 6, 2, 2, 1);
 -- Table structure for sanky_date
 -- ----------------------------
 DROP TABLE IF EXISTS `sanky_date`;
-CREATE TABLE `sanky_date`  (
+CREATE TABLE IF NOT EXISTS  `sanky_date`  (
   `source` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `target` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `value` double NULL DEFAULT NULL
@@ -35522,7 +34719,7 @@ INSERT INTO `sanky_date` VALUES ('Harmful substances', 'Hazelnuts (Organic)', 0)
 INSERT INTO `sanky_date` VALUES ('Harmful substances', 'Vegetables (Organic)', 0);
 INSERT INTO `sanky_date` VALUES ('Environment', 'Water use', 0.00148345269044703);
 INSERT INTO `sanky_date` VALUES ('Water use', 'Cocoa butter (Organic)', 0.00135309891304186);
-INSERT INTO `sanky_date` VALUES ('Water use', 'Cocoa mass (Organic)', 0.00135309891304186);
+INSERT INTO `sanky_date` VALUES ('Water use', 'Cocoa mass (Organic)', 0.000105714RedisPort8639);
 INSERT INTO `sanky_date` VALUES ('Water use', 'Hazelnuts (Organic)', 0.0000133452642581887);
 INSERT INTO `sanky_date` VALUES ('Water use', 'Cane sugar (Organic)', 0.00000878074837009238);
 INSERT INTO `sanky_date` VALUES ('Water use', 'Vegetables (Organic)', 0.0000025136268682477);
@@ -35610,7 +34807,7 @@ INSERT INTO `sanky_date` VALUES ('Working hours', 'Cane sugar (Organic)', 0.0009
 -- Table structure for siblings1
 -- ----------------------------
 DROP TABLE IF EXISTS `siblings1`;
-CREATE TABLE `siblings1`  (
+CREATE TABLE IF NOT EXISTS  `siblings1`  (
   `SUBJECT_NAME` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `SOURCELABEL` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `SOURCEWIDTH` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -35634,7 +34831,7 @@ INSERT INTO `siblings1` VALUES ('Ann', 'Ann', '45', 'Ochieng', 'Ochieng', '50', 
 -- Table structure for siblings2
 -- ----------------------------
 DROP TABLE IF EXISTS `siblings2`;
-CREATE TABLE `siblings2`  (
+CREATE TABLE IF NOT EXISTS  `siblings2`  (
   `SUBJECT_NAME` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `SOURCELABEL` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `SOURCEWIDTH` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -35664,7 +34861,7 @@ INSERT INTO `siblings2` VALUES ('Onyango', 'Onyango', '45', 'Ann', 'Ann', '50', 
 -- Table structure for store
 -- ----------------------------
 DROP TABLE IF EXISTS `store`;
-CREATE TABLE `store`  (
+CREATE TABLE IF NOT EXISTS  `store`  (
   `STORE_ID` int(11) NOT NULL,
   `STORE_TYPE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `REGION_ID` int(11) NULL DEFAULT NULL,
@@ -35732,7 +34929,7 @@ INSERT INTO `store` VALUES (24, 'Supermarket', 7, 'Store 24', 24, '2342 Waltham 
 -- Table structure for store_city_key
 -- ----------------------------
 DROP TABLE IF EXISTS `store_city_key`;
-CREATE TABLE `store_city_key`  (
+CREATE TABLE IF NOT EXISTS  `store_city_key`  (
   `ID` int(11) NOT NULL,
   `STORE_CITY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `STORE_STATE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -35771,7 +34968,7 @@ INSERT INTO `store_city_key` VALUES (24, 'Yakima', 'WA');
 -- Table structure for store_ragged
 -- ----------------------------
 DROP TABLE IF EXISTS `store_ragged`;
-CREATE TABLE `store_ragged`  (
+CREATE TABLE IF NOT EXISTS  `store_ragged`  (
   `STORE_ID` int(11) NOT NULL,
   `STORE_TYPE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `REGION_ID` int(11) NULL DEFAULT NULL,
@@ -35831,7 +35028,7 @@ INSERT INTO `store_ragged` VALUES (24, 'Supermarket', 7, 'Store 24', 24, '2342 W
 -- Table structure for store_state_key
 -- ----------------------------
 DROP TABLE IF EXISTS `store_state_key`;
-CREATE TABLE `store_state_key`  (
+CREATE TABLE IF NOT EXISTS  `store_state_key`  (
   `ID` int(11) NOT NULL,
   `STORE_STATE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
@@ -35855,7 +35052,7 @@ INSERT INTO `store_state_key` VALUES (10, 'Zacatecas');
 -- Table structure for test_exp
 -- ----------------------------
 DROP TABLE IF EXISTS `test_exp`;
-CREATE TABLE `test_exp`  (
+CREATE TABLE IF NOT EXISTS  `test_exp`  (
   `year` smallint(6) NULL DEFAULT NULL,
   `month` smallint(6) NULL DEFAULT NULL,
   `store_country` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -35938,7 +35135,7 @@ INSERT INTO `test_exp` VALUES (2012, 11, 'USA', 'CA', 8.7300);
 -- Table structure for time_by_day
 -- ----------------------------
 DROP TABLE IF EXISTS `time_by_day`;
-CREATE TABLE `time_by_day`  (
+CREATE TABLE IF NOT EXISTS  `time_by_day`  (
   `TIME_ID` int(11) NOT NULL,
   `THE_DATE` timestamp(0) NULL DEFAULT NULL,
   `THE_DAY` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -35972,7 +35169,7 @@ INSERT INTO `time_by_day` VALUES (378, '2011-01-12 05:00:00', 'Sunday', 'January
 -- Table structure for treemap_sum
 -- ----------------------------
 DROP TABLE IF EXISTS `treemap_sum`;
-CREATE TABLE `treemap_sum`  (
+CREATE TABLE IF NOT EXISTS  `treemap_sum`  (
   `IDTREE` int(11) NULL DEFAULT NULL,
   `DTREE` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `IDTREERIC` int(11) NULL DEFAULT NULL,
@@ -36020,7 +35217,7 @@ INSERT INTO `treemap_sum` VALUES (7, 'Guadalajara', 5, 4328.8700);
 -- Table structure for warehouse
 -- ----------------------------
 DROP TABLE IF EXISTS `warehouse`;
-CREATE TABLE `warehouse`  (
+CREATE TABLE IF NOT EXISTS  `warehouse`  (
   `WAREHOUSE_ID` int(11) NOT NULL,
   `WAREHOUSE_CLASS_ID` int(11) NULL DEFAULT NULL,
   `STORES_ID` int(11) NULL DEFAULT NULL,
@@ -36072,7 +35269,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 -- MySQL dump 10.13  Distrib 8.0.24, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: studio
+-- Host: 127.0.0.1    Database: eladmin
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -36088,80 +35285,860 @@ SET FOREIGN_KEY_CHECKS = 1;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `studio`
+-- Current Database: `eladmin`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `studio` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `eladmin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `studio`;
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+--
+-- Table structure for table `code_column_config`
+--
 
--- ----------------------------
--- Table structure for robot_patient
--- ----------------------------
-DROP TABLE IF EXISTS `robot_patient`;
-CREATE TABLE `robot_patient`  (
-  `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
-  `patient_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '患者姓名',
-  `patient_sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '患者性别（1男2女）',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '患者表' ROW_FORMAT = DYNAMIC;
+DROP TABLE IF EXISTS `code_column_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `code_column_config` (
+  `column_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `table_name` varchar(255) DEFAULT NULL,
+  `column_name` varchar(255) DEFAULT NULL,
+  `column_type` varchar(255) DEFAULT NULL,
+  `dict_name` varchar(255) DEFAULT NULL,
+  `extra` varchar(255) DEFAULT NULL,
+  `form_show` bit(1) DEFAULT NULL,
+  `form_type` varchar(255) DEFAULT NULL,
+  `key_type` varchar(255) DEFAULT NULL,
+  `list_show` bit(1) DEFAULT NULL,
+  `not_null` bit(1) DEFAULT NULL,
+  `query_type` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `date_annotation` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`column_id`) USING BTREE,
+  KEY `idx_table_name` (`table_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='代码生成字段信息存储';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of robot_patient
--- ----------------------------
-INSERT INTO `robot_patient` VALUES ('0479951f8964175e624b2ca61ee0e835', '侯玉宇', '2');
-INSERT INTO `robot_patient` VALUES ('34ddebc05f7c9fb769fcd020028203d6', '庞日成', '1');
-INSERT INTO `robot_patient` VALUES ('7b137ca2d563086b9e4fadee385b50b8', '', '2');
+--
+-- Dumping data for table `code_column_config`
+--
 
--- ----------------------------
--- Table structure for robot_symptom_part
--- ----------------------------
-DROP TABLE IF EXISTS `robot_symptom_part`;
-CREATE TABLE `robot_symptom_part`  (
-  `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
-  `part_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '部位名称',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '部位表' ROW_FORMAT = DYNAMIC;
+LOCK TABLES `code_column_config` WRITE;
+/*!40000 ALTER TABLE `code_column_config` DISABLE KEYS */;
+INSERT INTO `code_column_config` VALUES (191,'tool_qiniu_content','content_id','bigint',NULL,'auto_increment',_binary '',NULL,'PRI',_binary '',_binary '\0',NULL,'ID',NULL),(192,'tool_qiniu_content','bucket','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'Bucket 识别符',NULL),(193,'tool_qiniu_content','name','varchar',NULL,'',_binary '',NULL,'UNI',_binary '',_binary '\0',NULL,'文件名称',NULL),(194,'tool_qiniu_content','size','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'文件大小',NULL),(195,'tool_qiniu_content','type','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'文件类型：私有或公开',NULL),(196,'tool_qiniu_content','url','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'文件url',NULL),(197,'tool_qiniu_content','suffix','varchar',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'文件后缀',NULL),(198,'tool_qiniu_content','update_time','datetime',NULL,'',_binary '',NULL,'',_binary '',_binary '\0',NULL,'上传或同步的时间',NULL);
+/*!40000 ALTER TABLE `code_column_config` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- ----------------------------
--- Records of robot_symptom_part
--- ----------------------------
-INSERT INTO `robot_symptom_part` VALUES ('3244c36870e4a47ef1fc6e2c1acf00a2', '眼耳口鼻');
-INSERT INTO `robot_symptom_part` VALUES ('4c4c0e819fc95c09dde308cc04df6256', '双下肢');
-INSERT INTO `robot_symptom_part` VALUES ('608dd4772103c7b3a198641cf842a4e1', '双上肢');
-INSERT INTO `robot_symptom_part` VALUES ('62207ec3cd713e906c461dfbfddf6504', '肩部');
-INSERT INTO `robot_symptom_part` VALUES ('6b866f5e2ee092c0d2d0ffd5d9fea78b', '腰部');
-INSERT INTO `robot_symptom_part` VALUES ('88806113c934137edd261d1e8a4f1f72', '颈部');
-INSERT INTO `robot_symptom_part` VALUES ('92edaaa5ee8d304d9f01950e7979d2ab', '头部');
-INSERT INTO `robot_symptom_part` VALUES ('96f7f70bf165d11a1161e19e2917ad65', '其他');
-INSERT INTO `robot_symptom_part` VALUES ('a43438901e6b5f56d8aff49ea0c423d6', '生殖器');
-INSERT INTO `robot_symptom_part` VALUES ('aaecbc8d28a302e5b89740e3d4ccf3b8', '臀部');
-INSERT INTO `robot_symptom_part` VALUES ('c752554d2a789e07774532201a0876d9', '背部');
-INSERT INTO `robot_symptom_part` VALUES ('c826bc719672e94482422eb355bcdee6', '皮肤');
-INSERT INTO `robot_symptom_part` VALUES ('d311f223dd97959e447bcc4e63e38c22', '胸部');
-INSERT INTO `robot_symptom_part` VALUES ('e7d8dc2171ec4f64b895b82c5d627459', '排泄部');
-INSERT INTO `robot_symptom_part` VALUES ('ea4766dfb3950d787b4fae051c525a13', '腹部');
+--
+-- Table structure for table `code_gen_config`
+--
 
--- ----------------------------
--- Table structure for robot_symptom_type
--- ----------------------------
-DROP TABLE IF EXISTS `robot_symptom_type`;
-CREATE TABLE `robot_symptom_type`  (
-  `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键',
-  `part_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属部位',
-  `type_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '症状名称',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '症状表' ROW_FORMAT = DYNAMIC;
+DROP TABLE IF EXISTS `code_gen_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `code_gen_config` (
+  `config_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `table_name` varchar(255) DEFAULT NULL COMMENT '表名',
+  `author` varchar(255) DEFAULT NULL COMMENT '作者',
+  `cover` bit(1) DEFAULT NULL COMMENT '是否覆盖',
+  `module_name` varchar(255) DEFAULT NULL COMMENT '模块名称',
+  `pack` varchar(255) DEFAULT NULL COMMENT '至于哪个包下',
+  `path` varchar(255) DEFAULT NULL COMMENT '前端代码生成的路径',
+  `api_path` varchar(255) DEFAULT NULL COMMENT '前端Api文件路径',
+  `prefix` varchar(255) DEFAULT NULL COMMENT '表前缀',
+  `api_alias` varchar(255) DEFAULT NULL COMMENT '接口名称',
+  PRIMARY KEY (`config_id`) USING BTREE,
+  KEY `idx_table_name` (`table_name`(100))
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='代码生成器配置';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of robot_symptom_type
--- ----------------------------
-INSERT INTO `robot_symptom_type` VALUES ('314292492987dbac45618f0633ad5fba', 'd311f223dd97959e447bcc4e63e38c22', '咳嗽');
-INSERT INTO `robot_symptom_type` VALUES ('5e7924f1a27fc08a817dd31820fa3736', '62207ec3cd713e906c461dfbfddf6504', '肩关节活动受限');
-INSERT INTO `robot_symptom_type` VALUES ('7e696f88dfec22d719b033608a21b387', '62207ec3cd713e906c461dfbfddf6504', '右肩背有放射痛');
-INSERT INTO `robot_symptom_type` VALUES ('fdeee4116cd6c0a16fe15fe1bfc208ef', 'd311f223dd97959e447bcc4e63e38c22', '咳痰');
+--
+-- Dumping data for table `code_gen_config`
+--
 
-SET FOREIGN_KEY_CHECKS = 1;
+LOCK TABLES `code_gen_config` WRITE;
+/*!40000 ALTER TABLE `code_gen_config` DISABLE KEYS */;
+/*!40000 ALTER TABLE `code_gen_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mnt_app`
+--
+
+DROP TABLE IF EXISTS `mnt_app`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `mnt_app` (
+  `app_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(255) DEFAULT NULL COMMENT '应用名称',
+  `upload_path` varchar(255) DEFAULT NULL COMMENT '上传目录',
+  `deploy_path` varchar(255) DEFAULT NULL COMMENT '部署路径',
+  `backup_path` varchar(255) DEFAULT NULL COMMENT '备份路径',
+  `port` int DEFAULT NULL COMMENT '应用端口',
+  `start_script` varchar(4000) DEFAULT NULL COMMENT '启动脚本',
+  `deploy_script` varchar(4000) DEFAULT NULL COMMENT '部署脚本',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`app_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='应用管理';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mnt_app`
+--
+
+LOCK TABLES `mnt_app` WRITE;
+/*!40000 ALTER TABLE `mnt_app` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mnt_app` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mnt_database`
+--
+
+DROP TABLE IF EXISTS `mnt_database`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `mnt_database` (
+  `db_id` varchar(50) NOT NULL COMMENT 'ID',
+  `name` varchar(255) NOT NULL COMMENT '名称',
+  `jdbc_url` varchar(255) NOT NULL COMMENT 'jdbc连接',
+  `user_name` varchar(255) NOT NULL COMMENT '账号',
+  `pwd` varchar(255) NOT NULL COMMENT '密码',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`db_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='数据库管理';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mnt_database`
+--
+
+LOCK TABLES `mnt_database` WRITE;
+/*!40000 ALTER TABLE `mnt_database` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mnt_database` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mnt_deploy`
+--
+
+DROP TABLE IF EXISTS `mnt_deploy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `mnt_deploy` (
+  `deploy_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `app_id` bigint DEFAULT NULL COMMENT '应用编号',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`deploy_id`) USING BTREE,
+  KEY `FK6sy157pseoxx4fmcqr1vnvvhy` (`app_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='部署管理';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mnt_deploy`
+--
+
+LOCK TABLES `mnt_deploy` WRITE;
+/*!40000 ALTER TABLE `mnt_deploy` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mnt_deploy` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mnt_deploy_history`
+--
+
+DROP TABLE IF EXISTS `mnt_deploy_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `mnt_deploy_history` (
+  `history_id` varchar(50) NOT NULL COMMENT 'ID',
+  `app_name` varchar(255) NOT NULL COMMENT '应用名称',
+  `deploy_date` datetime NOT NULL COMMENT '部署日期',
+  `deploy_user` varchar(50) NOT NULL COMMENT '部署用户',
+  `ip` varchar(20) NOT NULL COMMENT '服务器IP',
+  `deploy_id` bigint DEFAULT NULL COMMENT '部署编号',
+  PRIMARY KEY (`history_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='部署历史管理';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mnt_deploy_history`
+--
+
+LOCK TABLES `mnt_deploy_history` WRITE;
+/*!40000 ALTER TABLE `mnt_deploy_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mnt_deploy_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mnt_deploy_server`
+--
+
+DROP TABLE IF EXISTS `mnt_deploy_server`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `mnt_deploy_server` (
+  `deploy_id` bigint NOT NULL COMMENT '部署ID',
+  `server_id` bigint NOT NULL COMMENT '服务ID',
+  PRIMARY KEY (`deploy_id`,`server_id`) USING BTREE,
+  KEY `FKeaaha7jew9a02b3bk9ghols53` (`server_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='应用与服务器关联';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mnt_deploy_server`
+--
+
+LOCK TABLES `mnt_deploy_server` WRITE;
+/*!40000 ALTER TABLE `mnt_deploy_server` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mnt_deploy_server` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mnt_server`
+--
+
+DROP TABLE IF EXISTS `mnt_server`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `mnt_server` (
+  `server_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `account` varchar(50) DEFAULT NULL COMMENT '账号',
+  `ip` varchar(20) DEFAULT NULL COMMENT 'IP地址',
+  `name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `password` varchar(100) DEFAULT NULL COMMENT '密码',
+  `port` int DEFAULT NULL COMMENT '端口',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`server_id`) USING BTREE,
+  KEY `idx_ip` (`ip`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='服务器管理';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mnt_server`
+--
+
+LOCK TABLES `mnt_server` WRITE;
+/*!40000 ALTER TABLE `mnt_server` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mnt_server` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_dept`
+--
+
+DROP TABLE IF EXISTS `sys_dept`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_dept` (
+  `dept_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `pid` bigint DEFAULT NULL COMMENT '上级部门',
+  `sub_count` int DEFAULT '0' COMMENT '子部门数目',
+  `name` varchar(255) NOT NULL COMMENT '名称',
+  `dept_sort` int DEFAULT '999' COMMENT '排序',
+  `enabled` bit(1) NOT NULL COMMENT '状态',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`dept_id`) USING BTREE,
+  KEY `inx_pid` (`pid`),
+  KEY `inx_enabled` (`enabled`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='部门';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_dept`
+--
+
+LOCK TABLES `sys_dept` WRITE;
+/*!40000 ALTER TABLE `sys_dept` DISABLE KEYS */;
+INSERT INTO `sys_dept` VALUES (2,7,1,'研发部',3,_binary '','admin','admin','2019-03-25 09:15:32','2020-08-02 14:48:47'),(5,7,0,'运维部',4,_binary '','admin','admin','2019-03-25 09:20:44','2020-05-17 14:27:27'),(6,8,0,'测试部',6,_binary '','admin','admin','2019-03-25 09:52:18','2020-06-08 11:59:21'),(7,NULL,2,'华南分部',0,_binary '','admin','admin','2019-03-25 11:04:50','2020-06-08 12:08:56'),(8,NULL,2,'华北分部',1,_binary '','admin','admin','2019-03-25 11:04:53','2020-05-14 12:54:00'),(15,8,0,'UI部门',7,_binary '','admin','admin','2020-05-13 22:56:53','2020-05-14 12:54:13'),(17,2,0,'研发一组',999,_binary '','admin','admin','2020-08-02 14:49:07','2020-08-02 14:49:07');
+/*!40000 ALTER TABLE `sys_dept` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_dict`
+--
+
+DROP TABLE IF EXISTS `sys_dict`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_dict` (
+  `dict_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(255) NOT NULL COMMENT '字典名称',
+  `description` varchar(255) DEFAULT NULL COMMENT '描述',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`dict_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='数据字典';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_dict`
+--
+
+LOCK TABLES `sys_dict` WRITE;
+/*!40000 ALTER TABLE `sys_dict` DISABLE KEYS */;
+INSERT INTO `sys_dict` VALUES (1,'user_status','用户状态',NULL,NULL,'2019-10-27 20:31:36',NULL),(4,'dept_status','部门状态',NULL,NULL,'2019-10-27 20:31:36',NULL),(5,'job_status','岗位状态',NULL,NULL,'2019-10-27 20:31:36',NULL);
+/*!40000 ALTER TABLE `sys_dict` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_dict_detail`
+--
+
+DROP TABLE IF EXISTS `sys_dict_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_dict_detail` (
+  `detail_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `dict_id` bigint DEFAULT NULL COMMENT '字典id',
+  `label` varchar(255) NOT NULL COMMENT '字典标签',
+  `value` varchar(255) NOT NULL COMMENT '字典值',
+  `dict_sort` int DEFAULT NULL COMMENT '排序',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`detail_id`) USING BTREE,
+  KEY `FK5tpkputc6d9nboxojdbgnpmyb` (`dict_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='数据字典详情';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_dict_detail`
+--
+
+LOCK TABLES `sys_dict_detail` WRITE;
+/*!40000 ALTER TABLE `sys_dict_detail` DISABLE KEYS */;
+INSERT INTO `sys_dict_detail` VALUES (1,1,'激活','true',1,NULL,NULL,'2019-10-27 20:31:36',NULL),(2,1,'禁用','false',2,NULL,NULL,NULL,NULL),(3,4,'启用','true',1,NULL,NULL,NULL,NULL),(4,4,'停用','false',2,NULL,NULL,'2019-10-27 20:31:36',NULL),(5,5,'启用','true',1,NULL,NULL,NULL,NULL),(6,5,'停用','false',2,NULL,NULL,'2019-10-27 20:31:36',NULL);
+/*!40000 ALTER TABLE `sys_dict_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_job`
+--
+
+DROP TABLE IF EXISTS `sys_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_job` (
+  `job_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(255) NOT NULL COMMENT '岗位名称',
+  `enabled` bit(1) NOT NULL COMMENT '岗位状态',
+  `job_sort` int DEFAULT NULL COMMENT '排序',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`job_id`) USING BTREE,
+  UNIQUE KEY `uniq_name` (`name`),
+  KEY `inx_enabled` (`enabled`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='岗位';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_job`
+--
+
+LOCK TABLES `sys_job` WRITE;
+/*!40000 ALTER TABLE `sys_job` DISABLE KEYS */;
+INSERT INTO `sys_job` VALUES (8,'人事专员',_binary '',3,NULL,NULL,'2019-03-29 14:52:28',NULL),(10,'产品经理',_binary '',4,NULL,NULL,'2019-03-29 14:55:51',NULL),(11,'全栈开发',_binary '',2,NULL,'admin','2019-03-31 13:39:30','2020-05-05 11:33:43'),(12,'软件测试',_binary '',5,NULL,'admin','2019-03-31 13:39:43','2020-05-10 19:56:26');
+/*!40000 ALTER TABLE `sys_job` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_log`
+--
+
+DROP TABLE IF EXISTS `sys_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_log` (
+  `log_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `description` varchar(255) DEFAULT NULL,
+  `log_type` varchar(255) DEFAULT NULL,
+  `method` varchar(255) DEFAULT NULL,
+  `params` text,
+  `request_ip` varchar(255) DEFAULT NULL,
+  `time` bigint DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `browser` varchar(255) DEFAULT NULL,
+  `exception_detail` text,
+  `create_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`log_id`) USING BTREE,
+  KEY `log_create_time_index` (`create_time`),
+  KEY `inx_log_type` (`log_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=3674 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='系统日志';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_log`
+--
+
+--
+-- Table structure for table `sys_menu`
+--
+
+DROP TABLE IF EXISTS `sys_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_menu` (
+  `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `pid` bigint DEFAULT NULL COMMENT '上级菜单ID',
+  `sub_count` int DEFAULT '0' COMMENT '子菜单数目',
+  `type` int DEFAULT NULL COMMENT '菜单类型',
+  `title` varchar(255) DEFAULT NULL COMMENT '菜单标题',
+  `name` varchar(255) DEFAULT NULL COMMENT '组件名称',
+  `component` varchar(255) DEFAULT NULL COMMENT '组件',
+  `menu_sort` int DEFAULT NULL COMMENT '排序',
+  `icon` varchar(255) DEFAULT NULL COMMENT '图标',
+  `path` varchar(255) DEFAULT NULL COMMENT '链接地址',
+  `i_frame` bit(1) DEFAULT NULL COMMENT '是否外链',
+  `cache` bit(1) DEFAULT b'0' COMMENT '缓存',
+  `hidden` bit(1) DEFAULT b'0' COMMENT '隐藏',
+  `permission` varchar(255) DEFAULT NULL COMMENT '权限',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`menu_id`) USING BTREE,
+  UNIQUE KEY `uniq_title` (`title`),
+  UNIQUE KEY `uniq_name` (`name`),
+  KEY `inx_pid` (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='系统菜单';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_menu`
+--
+
+LOCK TABLES `sys_menu` WRITE;
+/*!40000 ALTER TABLE `sys_menu` DISABLE KEYS */;
+INSERT INTO `sys_menu` VALUES (1,NULL,7,0,'系统管理',NULL,NULL,1,'system','system',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2018-12-18 15:11:29',NULL),(2,1,3,1,'用户管理','User','system/user/index',2,'peoples','user',_binary '\0',_binary '\0',_binary '\0','user:list',NULL,NULL,'2018-12-18 15:14:44',NULL),(3,1,3,1,'角色管理','Role','system/role/index',3,'role','role',_binary '\0',_binary '\0',_binary '\0','roles:list',NULL,NULL,'2018-12-18 15:16:07',NULL),(5,1,3,1,'菜单管理','Menu','system/menu/index',5,'menu','menu',_binary '\0',_binary '\0',_binary '\0','menu:list',NULL,NULL,'2018-12-18 15:17:28',NULL),(6,NULL,5,0,'系统监控',NULL,NULL,10,'monitor','monitor',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2018-12-18 15:17:48',NULL),(7,6,0,1,'操作日志','Log','monitor/log/index',11,'log','logs',_binary '\0',_binary '',_binary '\0',NULL,NULL,'admin','2018-12-18 15:18:26','2020-06-06 13:11:57'),(9,6,0,1,'SQL监控','Sql','monitor/sql/index',18,'sqlMonitor','druid',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2018-12-18 15:19:34',NULL),(10,NULL,5,0,'组件管理',NULL,NULL,50,'zujian','components',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2018-12-19 13:38:16',NULL),(11,10,0,1,'图标库','Icons','components/icons/index',51,'icon','icon',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2018-12-19 13:38:49',NULL),(14,36,0,1,'邮件工具','Email','tools/email/index',35,'email','email',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2018-12-27 10:13:09',NULL),(15,10,0,1,'富文本','Editor','components/Editor',52,'fwb','tinymce',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2018-12-27 11:58:25',NULL),(18,36,3,1,'存储管理','Storage','tools/storage/index',34,'qiniu','storage',_binary '\0',_binary '\0',_binary '\0','storage:list',NULL,NULL,'2018-12-31 11:12:15',NULL),(19,36,0,1,'支付宝工具','AliPay','tools/aliPay/index',37,'alipay','aliPay',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2018-12-31 14:52:38',NULL),(21,NULL,2,0,'多级菜单',NULL,'',900,'menu','nested',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,'admin','2019-01-04 16:22:03','2020-06-21 17:27:35'),(22,21,2,0,'二级菜单1',NULL,'',999,'menu','menu1',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,'admin','2019-01-04 16:23:29','2020-06-21 17:27:20'),(23,21,0,1,'二级菜单2',NULL,'nested/menu2/index',999,'menu','menu2',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-01-04 16:23:57',NULL),(24,22,0,1,'三级菜单1','Test','nested/menu1/menu1-1',999,'menu','menu1-1',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-01-04 16:24:48',NULL),(27,22,0,1,'三级菜单2',NULL,'nested/menu1/menu1-2',999,'menu','menu1-2',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-01-07 17:27:32',NULL),(28,1,3,1,'任务调度','Timing','system/timing/index',999,'timing','timing',_binary '\0',_binary '\0',_binary '\0','timing:list',NULL,NULL,'2019-01-07 20:34:40',NULL),(30,36,0,1,'代码生成','GeneratorIndex','generator/index',32,'dev','generator',_binary '\0',_binary '',_binary '\0',NULL,NULL,NULL,'2019-01-11 15:45:55',NULL),(32,6,0,1,'异常日志','ErrorLog','monitor/log/errorLog',12,'error','errorLog',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-01-13 13:49:03',NULL),(33,10,0,1,'Markdown','Markdown','components/MarkDown',53,'markdown','markdown',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-03-08 13:46:44',NULL),(34,10,0,1,'Yaml编辑器','YamlEdit','components/YamlEdit',54,'dev','yaml',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-03-08 15:49:40',NULL),(35,1,3,1,'部门管理','Dept','system/dept/index',6,'dept','dept',_binary '\0',_binary '\0',_binary '\0','dept:list',NULL,NULL,'2019-03-25 09:46:00',NULL),(36,NULL,7,0,'系统工具',NULL,'',30,'sys-tools','sys-tools',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-03-29 10:57:35',NULL),(37,1,3,1,'岗位管理','Job','system/job/index',7,'Steve-Jobs','job',_binary '\0',_binary '\0',_binary '\0','job:list',NULL,NULL,'2019-03-29 13:51:18',NULL),(38,36,0,1,'接口文档','Swagger','tools/swagger/index',36,'swagger','swagger2',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-03-29 19:57:53',NULL),(39,1,3,1,'字典管理','Dict','system/dict/index',8,'dictionary','dict',_binary '\0',_binary '\0',_binary '\0','dict:list',NULL,NULL,'2019-04-10 11:49:04',NULL),(41,6,0,1,'在线用户','OnlineUser','monitor/online/index',10,'Steve-Jobs','online',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-10-26 22:08:43',NULL),(44,2,0,2,'用户新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','user:add',NULL,NULL,'2019-10-29 10:59:46',NULL),(45,2,0,2,'用户编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','user:edit',NULL,NULL,'2019-10-29 11:00:08',NULL),(46,2,0,2,'用户删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','user:del',NULL,NULL,'2019-10-29 11:00:23',NULL),(48,3,0,2,'角色创建',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','roles:add',NULL,NULL,'2019-10-29 12:45:34',NULL),(49,3,0,2,'角色修改',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','roles:edit',NULL,NULL,'2019-10-29 12:46:16',NULL),(50,3,0,2,'角色删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','roles:del',NULL,NULL,'2019-10-29 12:46:51',NULL),(52,5,0,2,'菜单新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','menu:add',NULL,NULL,'2019-10-29 12:55:07',NULL),(53,5,0,2,'菜单编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','menu:edit',NULL,NULL,'2019-10-29 12:55:40',NULL),(54,5,0,2,'菜单删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','menu:del',NULL,NULL,'2019-10-29 12:56:00',NULL),(56,35,0,2,'部门新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','dept:add',NULL,NULL,'2019-10-29 12:57:09',NULL),(57,35,0,2,'部门编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','dept:edit',NULL,NULL,'2019-10-29 12:57:27',NULL),(58,35,0,2,'部门删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','dept:del',NULL,NULL,'2019-10-29 12:57:41',NULL),(60,37,0,2,'岗位新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','job:add',NULL,NULL,'2019-10-29 12:58:27',NULL),(61,37,0,2,'岗位编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','job:edit',NULL,NULL,'2019-10-29 12:58:45',NULL),(62,37,0,2,'岗位删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','job:del',NULL,NULL,'2019-10-29 12:59:04',NULL),(64,39,0,2,'字典新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','dict:add',NULL,NULL,'2019-10-29 13:00:17',NULL),(65,39,0,2,'字典编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','dict:edit',NULL,NULL,'2019-10-29 13:00:42',NULL),(66,39,0,2,'字典删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','dict:del',NULL,NULL,'2019-10-29 13:00:59',NULL),(73,28,0,2,'任务新增',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','timing:add',NULL,NULL,'2019-10-29 13:07:28',NULL),(74,28,0,2,'任务编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','timing:edit',NULL,NULL,'2019-10-29 13:07:41',NULL),(75,28,0,2,'任务删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','timing:del',NULL,NULL,'2019-10-29 13:07:54',NULL),(77,18,0,2,'上传文件',NULL,'',2,'','',_binary '\0',_binary '\0',_binary '\0','storage:add',NULL,NULL,'2019-10-29 13:09:09',NULL),(78,18,0,2,'文件编辑',NULL,'',3,'','',_binary '\0',_binary '\0',_binary '\0','storage:edit',NULL,NULL,'2019-10-29 13:09:22',NULL),(79,18,0,2,'文件删除',NULL,'',4,'','',_binary '\0',_binary '\0',_binary '\0','storage:del',NULL,NULL,'2019-10-29 13:09:34',NULL),(80,6,0,1,'服务监控','ServerMonitor','monitor/server/index',14,'codeConsole','server',_binary '\0',_binary '\0',_binary '\0','monitor:list',NULL,'admin','2019-11-07 13:06:39','2020-05-04 18:20:50'),(82,36,0,1,'生成配置','GeneratorConfig','generator/config',33,'dev','generator/config/:tableName',_binary '\0',_binary '',_binary '','',NULL,NULL,'2019-11-17 20:08:56',NULL),(83,10,0,1,'图表库','Echarts','components/Echarts',50,'chart','echarts',_binary '\0',_binary '',_binary '\0','',NULL,NULL,'2019-11-21 09:04:32',NULL),(90,NULL,5,1,'运维管理','Mnt','',20,'mnt','mnt',_binary '\0',_binary '\0',_binary '\0',NULL,NULL,NULL,'2019-11-09 10:31:08',NULL),(92,90,3,1,'服务器','ServerDeploy','mnt/server/index',22,'server','mnt/serverDeploy',_binary '\0',_binary '\0',_binary '\0','serverDeploy:list',NULL,NULL,'2019-11-10 10:29:25',NULL),(93,90,3,1,'应用管理','App','mnt/app/index',23,'app','mnt/app',_binary '\0',_binary '\0',_binary '\0','app:list',NULL,NULL,'2019-11-10 11:05:16',NULL),(94,90,3,1,'部署管理','Deploy','mnt/deploy/index',24,'deploy','mnt/deploy',_binary '\0',_binary '\0',_binary '\0','deploy:list',NULL,NULL,'2019-11-10 15:56:55',NULL),(97,90,1,1,'部署备份','DeployHistory','mnt/deployHistory/index',25,'backup','mnt/deployHistory',_binary '\0',_binary '\0',_binary '\0','deployHistory:list',NULL,NULL,'2019-11-10 16:49:44',NULL),(98,90,3,1,'数据库管理','Database','mnt/database/index',26,'database','mnt/database',_binary '\0',_binary '\0',_binary '\0','database:list',NULL,NULL,'2019-11-10 20:40:04',NULL),(102,97,0,2,'删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','deployHistory:del',NULL,NULL,'2019-11-17 09:32:48',NULL),(103,92,0,2,'服务器新增',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','serverDeploy:add',NULL,NULL,'2019-11-17 11:08:33',NULL),(104,92,0,2,'服务器编辑',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','serverDeploy:edit',NULL,NULL,'2019-11-17 11:08:57',NULL),(105,92,0,2,'服务器删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','serverDeploy:del',NULL,NULL,'2019-11-17 11:09:15',NULL),(106,93,0,2,'应用新增',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','app:add',NULL,NULL,'2019-11-17 11:10:03',NULL),(107,93,0,2,'应用编辑',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','app:edit',NULL,NULL,'2019-11-17 11:10:28',NULL),(108,93,0,2,'应用删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','app:del',NULL,NULL,'2019-11-17 11:10:55',NULL),(109,94,0,2,'部署新增',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','deploy:add',NULL,NULL,'2019-11-17 11:11:22',NULL),(110,94,0,2,'部署编辑',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','deploy:edit',NULL,NULL,'2019-11-17 11:11:41',NULL),(111,94,0,2,'部署删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','deploy:del',NULL,NULL,'2019-11-17 11:12:01',NULL),(112,98,0,2,'数据库新增',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','database:add',NULL,NULL,'2019-11-17 11:12:43',NULL),(113,98,0,2,'数据库编辑',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','database:edit',NULL,NULL,'2019-11-17 11:12:58',NULL),(114,98,0,2,'数据库删除',NULL,'',999,'','',_binary '\0',_binary '\0',_binary '\0','database:del',NULL,NULL,'2019-11-17 11:13:14',NULL),(116,36,0,1,'生成预览','Preview','generator/preview',999,'java','generator/preview/:tableName',_binary '\0',_binary '',_binary '',NULL,NULL,NULL,'2019-11-26 14:54:36',NULL),(118,NULL,5,0,'数据质量',NULL,NULL,1,'Steve-Jobs','quality',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 19:51:59','2022-11-29 19:51:59'),(119,118,0,1,'质量概览','CheckReportQuality','quality/checkreport/index',2,'chart','checkreport',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 19:53:25','2022-11-29 19:53:25'),(120,118,0,1,'质量任务','CheckJobQuality','quality/checkjob/index',2,'database','checkjob',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:53:47','2022-11-29 20:53:47'),(121,118,0,1,'规则引擎','checkRuleQuality','quality/checkrule/index',2,'dashboard','checkrule',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:54:44','2022-11-29 20:54:44'),(122,118,0,1,'日志监控','CheckLogQuality','quality/checklog/index',2,'dashboard','checklog',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:55:33','2022-11-29 20:55:33'),(123,118,0,1,'质量统计','checkstatQuality','quality/checkstat/index',2,'chart','checkstat',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:56:14','2022-11-29 20:56:14'),(124,NULL,4,0,'数据标准',NULL,NULL,1,'develop','standard',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 20:57:09','2022-11-29 20:57:09'),(125,124,0,1,'对比度统计','contraststatStandard','standard/contraststat',2,'app','contraststat',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:58:37','2022-11-29 20:58:37'),(126,124,0,1,'数据字典','datadict','standard/datadict/index',2,'app','datadict',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 20:59:42','2022-11-29 20:59:42'),(127,124,0,1,'字典对比','distcontrastStandard','standard/distcontrast/index',2,'dev','distcontrast',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:00:49','2022-11-29 21:00:49'),(128,124,0,1,'字典映射','dictmappingStandard','standard/dictmapping/index',2,'Steve-Jobs','dictmapping',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:01:25','2022-11-29 21:01:25'),(129,NULL,8,0,'元数据管理',NULL,NULL,1,'develop','metadata',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:02:35','2022-11-29 21:02:35'),(130,129,0,1,'行级变更','changerecordMetadata','metadata/changerecord/index',9,'app','changerecord',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:03:29','2022-11-29 21:03:29'),(131,129,0,1,'数据授权','dataauthorizeMetadata','metadata/dataauthorize/index',2,'Steve-Jobs','dataauthorize',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:04:28','2022-11-29 21:04:28'),(132,129,0,1,'数据血缘','databloodMetadata','metadata/datablood/index',2,'doc','datablood',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:05:13','2022-11-29 21:05:13'),(133,129,0,1,'数据字段','datacolumnMetadata','metadata/datacolumn/index',2,'app','datacolumn',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:06:07','2022-11-29 21:32:03'),(134,129,0,1,'数据地图','datamapMetadata','metadata/datamap/index',2,'web','datamap',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:07:09','2022-11-29 21:07:09'),(135,129,0,1,'数据查询','datasearchMetadata','metadata/datasearch/index',3,'search','datasearch',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:08:01','2022-11-29 21:09:09'),(136,129,0,1,'数据源','datasourceMetadata','metadata/datasource/index',3,'database','datasource',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:08:59','2022-11-29 21:08:59'),(137,129,0,1,'SQL控制台','sqlconsoleMetadata','metadata/sqlconsole/index',3,'codeConsole','sqlconsole',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:10:10','2022-11-29 21:10:10'),(138,NULL,2,0,'数据资产',NULL,NULL,1,'server','masterdata',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:12:05','2022-11-29 21:12:05'),(139,138,0,1,'数据管理','datamanageMasterData','masterdata/datamanage/index',2,'develop','datamanage',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:13:03','2022-11-29 21:13:03'),(140,138,0,1,'数据模型','datamodelMasterdata','masterdata/datamodel/index',3,'app','datamodel',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:13:47','2022-11-29 21:13:47'),(141,NULL,5,0,'数据市场',NULL,NULL,1,'tree-table','market',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:14:28','2022-11-29 21:19:08'),(142,141,0,1,'API日志','apilogMarket','market/apilog/index',2,'Steve-Jobs','apilog',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:15:26','2022-11-29 21:15:26'),(143,141,0,1,'API Mask','apimaskMarket','market/apimask/index',2,'app','apimask',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:16:20','2022-11-29 21:16:20'),(144,141,0,1,'数据接口','dataapiMarket','market/dataapi/index',2,'dashboard','dataapi',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:17:23','2022-11-29 21:17:23'),(145,141,0,1,'数据服务','dataserviceMarket','market/dataservice/index',3,'index','dataservice',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:18:55','2022-11-29 21:19:16'),(146,141,0,1,'服务日志','servicelogMarket','market/servicelog/index',3,'blog','servicelog',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:20:10','2022-11-29 21:20:10'),(147,NULL,4,0,'BI报表',NULL,NULL,1,'dashboard','visual',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:21:24','2022-11-29 21:23:18'),(148,147,0,1,'数据看板','databoardVisual','visual/databoard/index',3,'app','databoard',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:22:31','2022-11-29 21:22:31'),(149,147,0,1,'数据图表','datachartVisual','visual/datachart/index',9,'chart','datachart',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:24:22','2022-11-29 21:24:22'),(150,147,0,1,'数据大屏','datascreenVisual','visual/datascreen/index',3,'ipvisits','datascreen',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:25:14','2022-11-29 21:25:14'),(151,147,0,1,'数据集','datasetVisual','visual/dataset/index',3,'mnt','dataset',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:26:02','2022-11-29 21:26:02'),(152,NULL,4,0,'流程编排',NULL,NULL,1,'deploy','workflow',_binary '\0',_binary '\0',_binary '\0',NULL,'admin','admin','2022-11-29 21:27:03','2022-11-29 21:27:03'),(153,152,0,1,'业务流程','businessWorkFlow','workflow/business/index',3,'app','business',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:27:53','2022-11-29 21:27:53'),(154,152,0,1,'流程实例','instanceWorkFlow','workflow/instance/index',2,'list','instance',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:28:56','2022-11-29 21:28:56'),(155,152,0,1,'流程定义','definitionWorkFlow','workflow/definition/index',3,'backup','definition',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:29:38','2022-11-29 21:29:38'),(156,152,0,1,'任务列表','taskWorkFlow','workflow/task/index',3,'log','task',_binary '\0',_binary '\0',_binary '\0','user:list','admin','admin','2022-11-29 21:30:35','2022-11-29 21:30:35');
+/*!40000 ALTER TABLE `sys_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_quartz_job`
+--
+
+DROP TABLE IF EXISTS `sys_quartz_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_quartz_job` (
+  `job_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `bean_name` varchar(255) DEFAULT NULL COMMENT 'Spring Bean名称',
+  `cron_expression` varchar(255) DEFAULT NULL COMMENT 'cron 表达式',
+  `is_pause` bit(1) DEFAULT NULL COMMENT '状态：1暂停、0启用',
+  `job_name` varchar(255) DEFAULT NULL COMMENT '任务名称',
+  `method_name` varchar(255) DEFAULT NULL COMMENT '方法名称',
+  `params` varchar(255) DEFAULT NULL COMMENT '参数',
+  `description` varchar(255) DEFAULT NULL COMMENT '备注',
+  `person_in_charge` varchar(100) DEFAULT NULL COMMENT '负责人',
+  `email` varchar(100) DEFAULT NULL COMMENT '报警邮箱',
+  `sub_task` varchar(100) DEFAULT NULL COMMENT '子任务ID',
+  `pause_after_failure` bit(1) DEFAULT NULL COMMENT '任务失败后是否暂停',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`job_id`) USING BTREE,
+  KEY `inx_is_pause` (`is_pause`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='定时任务';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_quartz_job`
+--
+
+LOCK TABLES `sys_quartz_job` WRITE;
+/*!40000 ALTER TABLE `sys_quartz_job` DISABLE KEYS */;
+INSERT INTO `sys_quartz_job` VALUES (2,'testTask','0/5 * * * * ?',_binary '','测试1','run1','test','带参测试，多参使用json','测试',NULL,NULL,NULL,NULL,'admin','2019-08-22 14:08:29','2020-05-24 13:58:33'),(3,'testTask','0/5 * * * * ?',_binary '','测试','run','','不带参测试','Zheng Jie','','5,6',_binary '',NULL,'admin','2019-09-26 16:44:39','2020-05-24 14:48:12'),(5,'Test','0/5 * * * * ?',_binary '','任务告警测试','run',NULL,'测试','test','',NULL,_binary '','admin','admin','2020-05-05 20:32:41','2020-05-05 20:36:13'),(6,'testTask','0/5 * * * * ?',_binary '','测试3','run2',NULL,'测试3','Zheng Jie','',NULL,_binary '','admin','admin','2020-05-05 20:35:41','2020-05-05 20:36:07');
+/*!40000 ALTER TABLE `sys_quartz_job` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_quartz_log`
+--
+
+DROP TABLE IF EXISTS `sys_quartz_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_quartz_log` (
+  `log_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `bean_name` varchar(255) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `cron_expression` varchar(255) DEFAULT NULL,
+  `exception_detail` text,
+  `is_success` bit(1) DEFAULT NULL,
+  `job_name` varchar(255) DEFAULT NULL,
+  `method_name` varchar(255) DEFAULT NULL,
+  `params` varchar(255) DEFAULT NULL,
+  `time` bigint DEFAULT NULL,
+  PRIMARY KEY (`log_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='定时任务日志';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_quartz_log`
+--
+
+LOCK TABLES `sys_quartz_log` WRITE;
+/*!40000 ALTER TABLE `sys_quartz_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sys_quartz_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_role`
+--
+
+DROP TABLE IF EXISTS `sys_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_role` (
+  `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(255) NOT NULL COMMENT '名称',
+  `level` int DEFAULT NULL COMMENT '角色级别',
+  `description` varchar(255) DEFAULT NULL COMMENT '描述',
+  `data_scope` varchar(255) DEFAULT NULL COMMENT '数据权限',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`role_id`) USING BTREE,
+  UNIQUE KEY `uniq_name` (`name`),
+  KEY `role_name_index` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='角色表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_role`
+--
+
+LOCK TABLES `sys_role` WRITE;
+/*!40000 ALTER TABLE `sys_role` DISABLE KEYS */;
+INSERT INTO `sys_role` VALUES (1,'超级管理员',1,'-','全部',NULL,'admin','2018-11-23 11:04:37','2022-11-29 21:30:57'),(2,'普通用户',2,'-','本级',NULL,'admin','2018-11-23 13:09:06','2020-09-05 10:45:12');
+/*!40000 ALTER TABLE `sys_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_roles_depts`
+--
+
+DROP TABLE IF EXISTS `sys_roles_depts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_roles_depts` (
+  `role_id` bigint NOT NULL,
+  `dept_id` bigint NOT NULL,
+  PRIMARY KEY (`role_id`,`dept_id`) USING BTREE,
+  KEY `FK7qg6itn5ajdoa9h9o78v9ksur` (`dept_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='角色部门关联';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_roles_depts`
+--
+
+LOCK TABLES `sys_roles_depts` WRITE;
+/*!40000 ALTER TABLE `sys_roles_depts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sys_roles_depts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_roles_menus`
+--
+
+DROP TABLE IF EXISTS `sys_roles_menus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_roles_menus` (
+  `menu_id` bigint NOT NULL COMMENT '菜单ID',
+  `role_id` bigint NOT NULL COMMENT '角色ID',
+  PRIMARY KEY (`menu_id`,`role_id`) USING BTREE,
+  KEY `FKcngg2qadojhi3a651a5adkvbq` (`role_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='角色菜单关联';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_roles_menus`
+--
+
+LOCK TABLES `sys_roles_menus` WRITE;
+/*!40000 ALTER TABLE `sys_roles_menus` DISABLE KEYS */;
+INSERT INTO `sys_roles_menus` VALUES (1,1),(2,1),(3,1),(5,1),(6,1),(7,1),(9,1),(10,1),(11,1),(14,1),(15,1),(18,1),(19,1),(21,1),(22,1),(23,1),(24,1),(27,1),(28,1),(30,1),(32,1),(33,1),(34,1),(35,1),(36,1),(37,1),(38,1),(39,1),(41,1),(44,1),(45,1),(46,1),(48,1),(49,1),(50,1),(52,1),(53,1),(54,1),(56,1),(57,1),(58,1),(60,1),(61,1),(62,1),(64,1),(65,1),(66,1),(73,1),(74,1),(75,1),(77,1),(78,1),(79,1),(80,1),(82,1),(83,1),(90,1),(92,1),(93,1),(94,1),(97,1),(98,1),(102,1),(103,1),(104,1),(105,1),(106,1),(107,1),(108,1),(109,1),(110,1),(111,1),(112,1),(113,1),(114,1),(116,1),(118,1),(119,1),(120,1),(124,1),(125,1),(126,1),(127,1),(128,1),(129,1),(130,1),(131,1),(132,1),(133,1),(134,1),(135,1),(136,1),(137,1),(138,1),(139,1),(140,1),(141,1),(142,1),(143,1),(144,1),(145,1),(146,1),(147,1),(148,1),(149,1),(150,1),(151,1),(152,1),(153,1),(154,1),(155,1),(156,1),(1,2),(2,2),(6,2),(7,2),(9,2),(10,2),(11,2),(14,2),(15,2),(19,2),(21,2),(22,2),(23,2),(24,2),(27,2),(30,2),(32,2),(33,2),(34,2),(36,2),(80,2),(82,2),(83,2),(116,2);
+/*!40000 ALTER TABLE `sys_roles_menus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_user`
+--
+
+DROP TABLE IF EXISTS `sys_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_user` (
+  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `dept_id` bigint DEFAULT NULL COMMENT '部门名称',
+  `username` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `nick_name` varchar(255) DEFAULT NULL COMMENT '昵称',
+  `gender` varchar(2) DEFAULT NULL COMMENT '性别',
+  `phone` varchar(255) DEFAULT NULL COMMENT '手机号码',
+  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
+  `avatar_name` varchar(255) DEFAULT NULL COMMENT '头像地址',
+  `avatar_path` varchar(255) DEFAULT NULL COMMENT '头像真实路径',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `is_admin` bit(1) DEFAULT b'0' COMMENT '是否为admin账号',
+  `enabled` bigint DEFAULT NULL COMMENT '状态：1启用、0禁用',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `pwd_reset_time` datetime DEFAULT NULL COMMENT '修改密码的时间',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`user_id`) USING BTREE,
+  UNIQUE KEY `UK_kpubos9gc2cvtkb0thktkbkes` (`email`) USING BTREE,
+  UNIQUE KEY `username` (`username`) USING BTREE,
+  UNIQUE KEY `uniq_username` (`username`),
+  UNIQUE KEY `uniq_email` (`email`),
+  KEY `FK5rwmryny6jthaaxkogownknqp` (`dept_id`) USING BTREE,
+  KEY `FKpq2dhypk2qgt68nauh2by22jb` (`avatar_name`) USING BTREE,
+  KEY `inx_enabled` (`enabled`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='系统用户';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_user`
+--
+
+LOCK TABLES `sys_user` WRITE;
+/*!40000 ALTER TABLE `sys_user` DISABLE KEYS */;
+INSERT INTO `sys_user` VALUES (1, 2, 'admin', '管理员', '男', '18888888888', '201507802@qq.com', 'avatar-20221125104930928.png', '/home/eladmin/avatar/avatar-20221125104930928.png', '$2a$10$Egp1/gvFlt7zhlXVfEFw4OfWQCGPw0ClmMcc6FjTnvXNRVf9zdMRa', b'1', 1, NULL, 'admin', '2022-12-03 16:38:31', '2022-12-03 16:38:31', '2022-12-03 16:38:31');
+/*!40000 ALTER TABLE `sys_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_users_jobs`
+--
+
+DROP TABLE IF EXISTS `sys_users_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_users_jobs` (
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `job_id` bigint NOT NULL COMMENT '岗位ID',
+  PRIMARY KEY (`user_id`,`job_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_users_jobs`
+--
+
+LOCK TABLES `sys_users_jobs` WRITE;
+/*!40000 ALTER TABLE `sys_users_jobs` DISABLE KEYS */;
+INSERT INTO `sys_users_jobs` VALUES (1,11),(3,11),(4,11);
+/*!40000 ALTER TABLE `sys_users_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sys_users_roles`
+--
+
+DROP TABLE IF EXISTS `sys_users_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `sys_users_roles` (
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `role_id` bigint NOT NULL COMMENT '角色ID',
+  PRIMARY KEY (`user_id`,`role_id`) USING BTREE,
+  KEY `FKq4eq273l04bpu4efj0jd0jb98` (`role_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='用户角色关联';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sys_users_roles`
+--
+
+LOCK TABLES `sys_users_roles` WRITE;
+/*!40000 ALTER TABLE `sys_users_roles` DISABLE KEYS */;
+INSERT INTO `sys_users_roles` VALUES (1,1),(3,1),(4,2);
+/*!40000 ALTER TABLE `sys_users_roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tool_alipay_config`
+--
+
+DROP TABLE IF EXISTS `tool_alipay_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `tool_alipay_config` (
+  `config_id` bigint NOT NULL COMMENT 'ID',
+  `app_id` varchar(255) DEFAULT NULL COMMENT '应用ID',
+  `charset` varchar(255) DEFAULT NULL COMMENT '编码',
+  `format` varchar(255) DEFAULT NULL COMMENT '类型 固定格式json',
+  `gateway_url` varchar(255) DEFAULT NULL COMMENT '网关地址',
+  `notify_url` varchar(255) DEFAULT NULL COMMENT '异步回调',
+  `private_key` text COMMENT '私钥',
+  `public_key` text COMMENT '公钥',
+  `return_url` varchar(255) DEFAULT NULL COMMENT '回调地址',
+  `sign_type` varchar(255) DEFAULT NULL COMMENT '签名方式',
+  `sys_service_provider_id` varchar(255) DEFAULT NULL COMMENT '商户号',
+  PRIMARY KEY (`config_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='支付宝配置类';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tool_alipay_config`
+--
+
+LOCK TABLES `tool_alipay_config` WRITE;
+/*!40000 ALTER TABLE `tool_alipay_config` DISABLE KEYS */;
+INSERT INTO `tool_alipay_config` VALUES (1,'2016091700532697','utf-8','JSON','https://openapi.alipaydev.com/gateway.do','http://api.auauz.net/api/aliPay/notify','MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC5js8sInU10AJ0cAQ8UMMyXrQ+oHZEkVt5lBwsStmTJ7YikVYgbskx1YYEXTojRsWCb+SH/kDmDU4pK/u91SJ4KFCRMF2411piYuXU/jF96zKrADznYh/zAraqT6hvAIVtQAlMHN53nx16rLzZ/8jDEkaSwT7+HvHiS+7sxSojnu/3oV7BtgISoUNstmSe8WpWHOaWv19xyS+Mce9MY4BfseFhzTICUymUQdd/8hXA28/H6osUfAgsnxAKv7Wil3aJSgaJczWuflYOve0dJ3InZkhw5Cvr0atwpk8YKBQjy5CdkoHqvkOcIB+cYHXJKzOE5tqU7inSwVbHzOLQ3XbnAgMBAAECggEAVJp5eT0Ixg1eYSqFs9568WdetUNCSUchNxDBu6wxAbhUgfRUGZuJnnAll63OCTGGck+EGkFh48JjRcBpGoeoHLL88QXlZZbC/iLrea6gcDIhuvfzzOffe1RcZtDFEj9hlotg8dQj1tS0gy9pN9g4+EBH7zeu+fyv+qb2e/v1l6FkISXUjpkD7RLQr3ykjiiEw9BpeKb7j5s7Kdx1NNIzhkcQKNqlk8JrTGDNInbDM6inZfwwIO2R1DHinwdfKWkvOTODTYa2MoAvVMFT9Bec9FbLpoWp7ogv1JMV9svgrcF9XLzANZ/OQvkbe9TV9GWYvIbxN6qwQioKCWO4GPnCAQKBgQDgW5MgfhX8yjXqoaUy/d1VjI8dHeIyw8d+OBAYwaxRSlCfyQ+tieWcR2HdTzPca0T0GkWcKZm0ei5xRURgxt4DUDLXNh26HG0qObbtLJdu/AuBUuCqgOiLqJ2f1uIbrz6OZUHns+bT/jGW2Ws8+C13zTCZkZt9CaQsrp3QOGDx5wKBgQDTul39hp3ZPwGNFeZdkGoUoViOSd5Lhowd5wYMGAEXWRLlU8z+smT5v0POz9JnIbCRchIY2FAPKRdVTICzmPk2EPJFxYTcwaNbVqL6lN7J2IlXXMiit5QbiLauo55w7plwV6LQmKm9KV7JsZs5XwqF7CEovI7GevFzyD3w+uizAQKBgC3LY1eRhOlpWOIAhpjG6qOoohmeXOphvdmMlfSHq6WYFqbWwmV4rS5d/6LNpNdL6fItXqIGd8I34jzql49taCmi+A2nlR/E559j0mvM20gjGDIYeZUz5MOE8k+K6/IcrhcgofgqZ2ZED1ksHdB/E8DNWCswZl16V1FrfvjeWSNnAoGAMrBplCrIW5xz+J0Hm9rZKrs+AkK5D4fUv8vxbK/KgxZ2KaUYbNm0xv39c+PZUYuFRCz1HDGdaSPDTE6WeWjkMQd5mS6ikl9hhpqFRkyh0d0fdGToO9yLftQKOGE/q3XUEktI1XvXF0xyPwNgUCnq0QkpHyGVZPtGFxwXiDvpvgECgYA5PoB+nY8iDiRaJNko9w0hL4AeKogwf+4TbCw+KWVEn6jhuJa4LFTdSqp89PktQaoVpwv92el/AhYjWOl/jVCm122f9b7GyoelbjMNolToDwe5pF5RnSpEuDdLy9MfE8LnE3PlbE7E5BipQ3UjSebkgNboLHH/lNZA5qvEtvbfvQ==','MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAut9evKRuHJ/2QNfDlLwvN/S8l9hRAgPbb0u61bm4AtzaTGsLeMtScetxTWJnVvAVpMS9luhEJjt+Sbk5TNLArsgzzwARgaTKOLMT1TvWAK5EbHyI+eSrc3s7Awe1VYGwcubRFWDm16eQLv0k7iqiw+4mweHSz/wWyvBJVgwLoQ02btVtAQErCfSJCOmt0Q/oJQjj08YNRV4EKzB19+f5A+HQVAKy72dSybTzAK+3FPtTtNen/+b5wGeat7c32dhYHnGorPkPeXLtsqqUTp1su5fMfd4lElNdZaoCI7osZxWWUo17vBCZnyeXc9fk0qwD9mK6yRAxNbrY72Xx5VqIqwIDAQAB','http://api.auauz.net/api/aliPay/return','RSA2','2088102176044281');
+/*!40000 ALTER TABLE `tool_alipay_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tool_email_config`
+--
+
+DROP TABLE IF EXISTS `tool_email_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `tool_email_config` (
+  `config_id` bigint NOT NULL COMMENT 'ID',
+  `from_user` varchar(255) DEFAULT NULL COMMENT '收件人',
+  `host` varchar(255) DEFAULT NULL COMMENT '邮件服务器SMTP地址',
+  `pass` varchar(255) DEFAULT NULL COMMENT '密码',
+  `port` varchar(255) DEFAULT NULL COMMENT '端口',
+  `user` varchar(255) DEFAULT NULL COMMENT '发件者用户名',
+  PRIMARY KEY (`config_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='邮箱配置';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tool_email_config`
+--
+
+LOCK TABLES `tool_email_config` WRITE;
+/*!40000 ALTER TABLE `tool_email_config` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tool_email_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tool_local_storage`
+--
+
+DROP TABLE IF EXISTS `tool_local_storage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `tool_local_storage` (
+  `storage_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `real_name` varchar(255) DEFAULT NULL COMMENT '文件真实的名称',
+  `name` varchar(255) DEFAULT NULL COMMENT '文件名',
+  `suffix` varchar(255) DEFAULT NULL COMMENT '后缀',
+  `path` varchar(255) DEFAULT NULL COMMENT '路径',
+  `type` varchar(255) DEFAULT NULL COMMENT '类型',
+  `size` varchar(100) DEFAULT NULL COMMENT '大小',
+  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`storage_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='本地存储';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tool_local_storage`
+--
+
+LOCK TABLES `tool_local_storage` WRITE;
+/*!40000 ALTER TABLE `tool_local_storage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tool_local_storage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tool_qiniu_config`
+--
+
+DROP TABLE IF EXISTS `tool_qiniu_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `tool_qiniu_config` (
+  `config_id` bigint NOT NULL COMMENT 'ID',
+  `access_key` text COMMENT 'accessKey',
+  `bucket` varchar(255) DEFAULT NULL COMMENT 'Bucket 识别符',
+  `host` varchar(255) NOT NULL COMMENT '外链域名',
+  `secret_key` text COMMENT 'secretKey',
+  `type` varchar(255) DEFAULT NULL COMMENT '空间类型',
+  `zone` varchar(255) DEFAULT NULL COMMENT '机房',
+  PRIMARY KEY (`config_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='七牛云配置';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tool_qiniu_config`
+--
+
+LOCK TABLES `tool_qiniu_config` WRITE;
+/*!40000 ALTER TABLE `tool_qiniu_config` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tool_qiniu_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tool_qiniu_content`
+--
+
+DROP TABLE IF EXISTS `tool_qiniu_content`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS  `tool_qiniu_content` (
+  `content_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `bucket` varchar(255) DEFAULT NULL COMMENT 'Bucket 识别符',
+  `name` varchar(255) DEFAULT NULL COMMENT '文件名称',
+  `size` varchar(255) DEFAULT NULL COMMENT '文件大小',
+  `type` varchar(255) DEFAULT NULL COMMENT '文件类型：私有或公开',
+  `url` varchar(255) DEFAULT NULL COMMENT '文件url',
+  `suffix` varchar(255) DEFAULT NULL COMMENT '文件后缀',
+  `update_time` datetime DEFAULT NULL COMMENT '上传或同步的时间',
+  PRIMARY KEY (`content_id`) USING BTREE,
+  UNIQUE KEY `uniq_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='七牛云文件存储';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tool_qiniu_content`
+--
+
+LOCK TABLES `tool_qiniu_content` WRITE;
+/*!40000 ALTER TABLE `tool_qiniu_content` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tool_qiniu_content` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-11-29 21:34:56
