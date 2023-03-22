@@ -17,7 +17,7 @@ import java.security.spec.X509EncodedKeySpec;
  **/
 public class RsaUtils {
 
-    private static final String SRC = "studio_password";
+    private static final String SRC = "123456";
 
     public static void main(String[] args) throws Exception {
         System.out.println("\n");

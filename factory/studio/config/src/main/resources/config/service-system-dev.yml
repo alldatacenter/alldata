@@ -4,14 +4,14 @@ dynamicDataSource:
     driverClassName: com.p6spy.engine.spy.P6SpyDriver
     url: jdbc:p6spy:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
-    password: studio_password
+    password: studio_123456
 spring:
   redis:
     #数据库索引
     database: ${REDIS_DB:0}
     host: ${REDIS_HOST:16gmaster}
     port: ${REDIS_PORT:13790}
-    password: ${REDIS_PWD:studio_password}
+    password: ${REDIS_PWD:studio_123456}
     #连接超时时间
     timeout: 5000
     jedis:
@@ -29,7 +29,7 @@ spring:
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
           url: jdbc:p6spy:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
           username: root
-          password: studio_password
+          password: studio_123456
   main:
     allow-bean-definition-overriding: true
 
