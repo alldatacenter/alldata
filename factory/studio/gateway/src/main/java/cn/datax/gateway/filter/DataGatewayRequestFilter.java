@@ -28,7 +28,6 @@ public class DataGatewayRequestFilter implements GlobalFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
-
         printLog(exchange);
 
         byte[] token = Base64Utils.encode((DataConstant.Security.TOKENVALUE.getVal()).getBytes());
