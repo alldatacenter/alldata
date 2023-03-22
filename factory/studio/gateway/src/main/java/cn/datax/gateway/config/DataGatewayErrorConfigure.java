@@ -27,10 +27,6 @@ public class DataGatewayErrorConfigure {
     private final ApplicationContext applicationContext;
     private final ResourceProperties resourceProperties;
     private final List<ViewResolver> viewResolvers;
-    @Bean
-    public ServerCodecConfigurer serverCodecConfigurer() {
-        return ServerCodecConfigurer.create();
-    }
 
     public DataGatewayErrorConfigure(ServerProperties serverProperties,
                                      ResourceProperties resourceProperties,
@@ -42,18 +38,19 @@ public class DataGatewayErrorConfigure {
         this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
     }
 
-
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
-    public ErrorWebExceptionHandler errorWebExceptionHandler() {
-        DataGatewayExceptionHandler exceptionHandler = new DataGatewayExceptionHandler(new DefaultErrorAttributes(
+    public ErrorWebExceptionHandler errorWebExceptionHandler(ServerCodecConfigurer serverCodecConfigurer) {
+        DataGatewayExceptionHandler exceptionHandler = new DataGatewayExceptionHandler(
+            new DefaultErrorAttributes(
                 this.serverProperties.getError().isIncludeException()),
-                this.resourceProperties,
-                this.serverProperties.getError(),
-                this.applicationContext);
+            this.resourceProperties,
+            this.serverProperties.getError(),
+            this.applicationContext
+        );
         exceptionHandler.setViewResolvers(this.viewResolvers);
-        exceptionHandler.setMessageWriters(serverCodecConfigurer().getWriters());
-        exceptionHandler.setMessageReaders(serverCodecConfigurer().getReaders());
+        exceptionHandler.setMessageWriters(serverCodecConfigurer.getWriters());
+        exceptionHandler.setMessageReaders(serverCodecConfigurer.getReaders());
         return exceptionHandler;
     }
 }
