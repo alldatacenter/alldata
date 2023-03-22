@@ -5,10 +5,10 @@
     <parent>
         <artifactId>system-service-parent</artifactId>
         <groupId>com.platform</groupId>
-        <version>0.3.4</version>
+        <version>0.3.5</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.3.4</version>
+    <version>0.3.5</version>
     <artifactId>system-service</artifactId>
     <properties>
         <druid.version>1.2.4</druid.version>
@@ -28,17 +28,17 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-redis</artifactId>
-            <version>0.3.4</version>
+            <version>0.3.5</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>service-api</artifactId>
-            <version>0.3.4</version>
+            <version>0.3.5</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-security</artifactId>
-            <version>0.3.4</version>
+            <version>0.3.5</version>
             <exclusions>
                 <exclusion>
                     <artifactId>mybatis</artifactId>
@@ -49,7 +49,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>generic</artifactId>
-            <version>0.3.4</version>
+            <version>0.3.5</version>
         </dependency>
 
         <!-- linux的管理 -->
@@ -68,7 +68,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>box</artifactId>
-            <version>0.3.4</version>
+            <version>0.3.5</version>
         </dependency>
 
         <!--Mysql依赖包-->
@@ -117,12 +117,12 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-mybatis</artifactId>
-            <version>0.3.4</version>
+            <version>0.3.5</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-log</artifactId>
-            <version>0.3.4</version>
+            <version>0.3.5</version>
         </dependency>
 
     </dependencies>
