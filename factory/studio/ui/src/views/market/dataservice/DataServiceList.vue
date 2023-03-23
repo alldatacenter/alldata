@@ -140,6 +140,7 @@
 
 <script>
 import { pageDataService, delDataService } from '@/api/market/dataservice'
+import { getDicts } from '@/api/system/dict'
 
 export default {
   name: 'DataServiceList',

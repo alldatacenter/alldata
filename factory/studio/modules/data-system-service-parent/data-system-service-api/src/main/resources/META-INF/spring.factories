@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.datax.service.system.api.feign.factory.LogServiceFeignFallbackFactory,\
+  cn.datax.service.system.api.feign.factory.UserServiceFeignFallbackFactory,\
+  cn.datax.service.system.api.feign.fallback.LogServiceFeignFallbackImpl,\
+  cn.datax.service.system.api.feign.fallback.UserServiceFeignFallbackImpl

@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("sys_dept")
+@TableName("sys_market_dept")
 public class DeptEntity extends BaseEntity {
 
     private static final long serialVersionUID=1L;

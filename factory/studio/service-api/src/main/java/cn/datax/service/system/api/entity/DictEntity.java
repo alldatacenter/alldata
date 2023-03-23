@@ -22,7 +22,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("sys_dict")
+@TableName("sys_market_dict")
 public class DictEntity extends BaseEntity {
 
     private static final long serialVersionUID=1L;

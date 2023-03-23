@@ -168,6 +168,18 @@ spring:
               args:
                 name: dataStandardHystrix
                 fallbackUri: forward:/fallback
+        # 数据标准
+        - id: service-data-system
+          uri: lb://service-data-system
+          predicates:
+            - Path=/data/system/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataSystemHystrix
+                fallbackUri: forward:/fallback
         # 定时任务
         - id: service-quartz
           uri: lb://service-quartz

@@ -18,7 +18,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-@TableName("sys_role_menu")
+@TableName("sys_market_role_menu")
 public class RoleMenuEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
