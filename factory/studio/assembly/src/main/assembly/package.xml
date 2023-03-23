@@ -102,6 +102,24 @@
         </fileSet>
 
         <fileSet>
+            <directory>${project.parent.basedir}/modules/data-system-service-parent/data-system-service/target
+            </directory>
+            <outputDirectory>./16gmaster/data-system-service</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/data-system-service-parent/data-system-service/target/classes
+            </directory>
+            <outputDirectory>./16gmaster/data-system-service</outputDirectory>
+            <includes>
+                <include>bootstrap.yml</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
             <directory>${project.parent.basedir}/modules/system-service-parent/system-service/target
             </directory>
             <outputDirectory>./16gmaster/system-service</outputDirectory>

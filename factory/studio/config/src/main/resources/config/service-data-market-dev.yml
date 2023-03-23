@@ -51,17 +51,17 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # spring security 配置
-security:
-  oauth2:
-    client:
-      access-token-uri: http://16gslave:8612/auth/oauth/token
-      user-authorization-uri: http://16gslave:8612/auth/oauth/authorize
-      client-id: AllData
-      client-secret: 123456
-      scope: all
-    resource:
-      loadBalanced: true
-      token-info-uri: http://16gslave:8612/auth/oauth/check_token
+#security:
+#  oauth2:
+#    client:
+#      access-token-uri: http://16gslave:8612/auth/oauth/token
+#      user-authorization-uri: http://16gslave:8612/auth/oauth/authorize
+#      client-id: AllData
+#      client-secret: 123456
+#      scope: all
+#    resource:
+#      loadBalanced: true
+#      token-info-uri: http://16gslave:8612/auth/oauth/check_token
 
 # Swagger界面内容配置
 swagger:

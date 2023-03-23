@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("sys_menu")
+@TableName("sys_market_menu")
 public class MenuEntity extends BaseEntity {
 
     private static final long serialVersionUID=1L;
