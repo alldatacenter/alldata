@@ -2,27 +2,27 @@
 common:
   rabbitmq:
     host: 16gmaster
-    username: guest
-    password: studio_123456
+    username: root
+    password: studio_password
     port: 15672
   redis:
     host: 16gmaster
-    password: studio_123456
+    password: studio_password
     port: 13790
   mysql:
     primary:
       username: root
-      password: studio_123456
+      password: studio_password
       url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     master:
       username: root
-      password: studio_123456
+      password: studio_password
       url: jdbc:p6spy:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     flowable:
       username: root
-      password: studio_123456
+      password: studio_password
       url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
     quartz:
       username: root
-      password: studio_123456
+      password: studio_password
       url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
