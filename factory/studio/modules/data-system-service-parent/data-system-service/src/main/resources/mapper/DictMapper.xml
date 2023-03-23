@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.DictDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.DictEntity">
+		<result column="id" property="id" />
+		<result column="status" property="status" />
+		<result column="create_by" property="createBy" />
+		<result column="create_time" property="createTime" />
+		<result column="update_by" property="updateBy" />
+		<result column="update_time" property="updateTime" />
+		<result column="dict_name" property="dictName" />
+		<result column="dict_code" property="dictCode" />
+		<result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        dict_name, dict_code, remark
+    </sql>
+    
+    <resultMap id="QueryDictResultMap" type="cn.datax.service.system.api.entity.DictEntity" extends="BaseResultMap">
+        <collection property="items" javaType="java.util.ArrayList" ofType="cn.datax.service.system.api.entity.DictItemEntity">
+            <id column="item_id" property="id"/>
+            <result column="dict_id" property="dictId"/>
+            <result column="item_text" property="itemText"/>
+            <result column="item_value" property="itemValue"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryDictList" resultMap="QueryDictResultMap">
+        SELECT d.id, d.dict_name, d.dict_code,
+        i.id as item_id, i.dict_id, i.item_text, i.item_value
+        FROM sys_dict d
+        LEFT JOIN sys_dict_item i ON d.id = i.dict_id AND i.status = #{status}
+        WHERE d.status = #{status}
+    </select>
+</mapper>

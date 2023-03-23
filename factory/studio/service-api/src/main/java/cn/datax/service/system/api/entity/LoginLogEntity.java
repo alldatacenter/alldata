@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@TableName("sys_login_log")
+@TableName("sys_market_login_log")
 public class LoginLogEntity implements Serializable {
 
     private static final long serialVersionUID=1L;

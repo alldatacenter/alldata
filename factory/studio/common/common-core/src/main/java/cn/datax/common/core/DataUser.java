@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.User;
 import java.util.Collection;
 import java.util.List;
 
-@Data
 @EqualsAndHashCode(callSuper = true)
 public class DataUser extends User {
 
@@ -31,5 +30,56 @@ public class DataUser extends User {
 
     public static boolean isAdmin(String username) {
         return ObjectUtil.equal(username, "admin");
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getDept() {
+        return dept;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept;
+    }
+
+    public List<DataRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<DataRole> roles) {
+        this.roles = roles;
+    }
+
+    public List<String> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<String> posts) {
+        this.posts = posts;
+    }
+
+    @Override
+    public String toString() {
+        return "DataUser{" +
+                "id='" + id + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", dept='" + dept + '\'' +
+                ", roles=" + roles +
+                ", posts=" + posts +
+                '}';
     }
 }

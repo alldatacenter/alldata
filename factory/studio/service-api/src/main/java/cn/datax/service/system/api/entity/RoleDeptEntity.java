@@ -18,7 +18,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-@TableName("sys_role_dept")
+@TableName("sys_market_role_dept")
 public class RoleDeptEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
