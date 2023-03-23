@@ -34719,7 +34719,7 @@ INSERT INTO `sanky_date` VALUES ('Harmful substances', 'Hazelnuts (Organic)', 0)
 INSERT INTO `sanky_date` VALUES ('Harmful substances', 'Vegetables (Organic)', 0);
 INSERT INTO `sanky_date` VALUES ('Environment', 'Water use', 0.00148345269044703);
 INSERT INTO `sanky_date` VALUES ('Water use', 'Cocoa butter (Organic)', 0.00135309891304186);
-INSERT INTO `sanky_date` VALUES ('Water use', 'Cocoa mass (Organic)', 0.000105714RedisPort8639);
+INSERT INTO `sanky_date` VALUES ('Water use', 'Cocoa mass (Organic)', 0.0001057148639);
 INSERT INTO `sanky_date` VALUES ('Water use', 'Hazelnuts (Organic)', 0.0000133452642581887);
 INSERT INTO `sanky_date` VALUES ('Water use', 'Cane sugar (Organic)', 0.00000878074837009238);
 INSERT INTO `sanky_date` VALUES ('Water use', 'Vegetables (Organic)', 0.0000025136268682477);
