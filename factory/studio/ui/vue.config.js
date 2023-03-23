@@ -50,6 +50,48 @@ module.exports = {
         pathRewrite: {
           '^/system': 'system'
         }
+      },
+      '/data': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/data': 'data'
+        }
+      },
+      '/email': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/email': 'email'
+        }
+      },
+      '/file': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/file': 'file'
+        }
+      },
+      '/quartz': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/quartz': 'quartz'
+        }
+      },
+      '/codegen': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/codegen': 'codegen'
+        }
+      },
+      '/workflow': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/workflow': 'workflow'
+        }
       }
     }
   },

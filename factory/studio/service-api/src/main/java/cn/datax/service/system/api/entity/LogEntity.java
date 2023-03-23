@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
-@TableName("sys_log")
+@TableName("sys_market_log")
 public class LogEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
