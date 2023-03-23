@@ -1,10 +1,12 @@
 # 数据源配置
 spring:
+  profiles:
+    include: common-dev
   redis:
     database: 1
-    host: 16gmaster
-    port: 13790
-    password: studio_123456 # 密码（默认为空）
+    host: ${common.redis.host}
+    port: ${common.redis.port}
+    password: ${common.redis.password} # 密码（默认为空）
     timeout: 6000ms       # 连接超时时长（毫秒）
     jedis:
       pool:
@@ -15,14 +17,14 @@ spring:
   datasource:
     primary:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      username: root
-      password: studio_123456
-      url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      username: ${common.mysql.primary.username}
+      password: ${common.mysql.primary.password}
+      url: ${common.mysql.primary.url}
     quartz:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      username: root
-      password: studio_123456
-      url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      username: ${common.mysql.quartz.username}
+      password: ${common.mysql.quartz.password}
+      url: ${common.mysql.quartz.url}
   quartz:
     job-store-type: jdbc
     jdbc:

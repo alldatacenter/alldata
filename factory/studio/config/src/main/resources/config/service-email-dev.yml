@@ -1,5 +1,7 @@
 # 数据源配置
 spring:
+  profiles:
+    include: common-dev
   mail:
     host: smtp.qq.com
     username: m13602574132@163.com
@@ -13,9 +15,9 @@ spring:
     properties.mail.smtp.ssl.enable: true
   redis:
     database: 1
-    host: 16gmaster
-    port: 13790
-    password: studio_123456 # 密码（默认为空）
+    host: ${common.redis.host}
+    port: ${common.redis.port}
+    password: ${common.redis.password} # 密码（默认为空）
     timeout: 6000ms       # 连接超时时长（毫秒）
     jedis:
       pool:
@@ -30,9 +32,9 @@ spring:
       datasource:
         master:
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-          url: jdbc:p6spy:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-          username: root
-          password: studio_123456
+          url: ${common.mysql.master.url}
+          username: ${common.mysql.master.username}
+          password: ${common.mysql.master.password}
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
