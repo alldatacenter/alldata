@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    include: common-dev
   cloud:
     gateway:
       globalcors:

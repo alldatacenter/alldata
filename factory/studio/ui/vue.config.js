@@ -20,7 +20,6 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
-    open:true,
     historyApiFallback: true,
     port: port,
     open: true,
