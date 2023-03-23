@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datax.service.system.dao.LoginLogDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.datax.service.system.api.entity.LoginLogEntity">
+        <result column="id" property="id" />
+        <result column="op_os" property="opOs" />
+        <result column="op_browser" property="opBrowser" />
+        <result column="op_ip" property="opIp" />
+        <result column="op_date" property="opDate" />
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        op_os, op_browser, op_ip, op_date, user_id, user_name
+    </sql>
+
+</mapper>

@@ -27,6 +27,15 @@ import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
 import echarts from 'echarts'
+
+import { getDicts } from '@/api/systemMarket/dict'
+import { getConfigKey } from '@/api/systemMarket/config'
+import { selectDictLabel } from '@/utils/data-process'
+
+Vue.prototype.getDicts = getDicts
+Vue.prototype.getConfigKey = getConfigKey
+Vue.prototype.selectDictLabel = selectDictLabel
+
 Vue.prototype.$echarts = echarts
 
 Vue.use(checkPer)

@@ -19,8 +19,6 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class DataResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-
-
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
 

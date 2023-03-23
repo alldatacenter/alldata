@@ -20,7 +20,6 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
-    open:true,
     historyApiFallback: true,
     port: port,
     open: true,
@@ -49,6 +48,48 @@ module.exports = {
         changeOrigin: true,
         pathRewrite: {
           '^/system': 'system'
+        }
+      },
+      '/data': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/data': 'data'
+        }
+      },
+      '/email': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/email': 'email'
+        }
+      },
+      '/file': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/file': 'file'
+        }
+      },
+      '/quartz': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/quartz': 'quartz'
+        }
+      },
+      '/codegen': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/codegen': 'codegen'
+        }
+      },
+      '/workflow': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/workflow': 'workflow'
         }
       }
     }

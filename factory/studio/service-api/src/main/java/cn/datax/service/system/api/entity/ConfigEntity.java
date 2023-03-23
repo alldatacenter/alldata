@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("sys_config")
+@TableName("sys_market_config")
 public class ConfigEntity extends BaseEntity {
 
     private static final long serialVersionUID=1L;

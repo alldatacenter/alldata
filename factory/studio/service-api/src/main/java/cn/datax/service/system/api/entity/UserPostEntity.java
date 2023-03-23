@@ -18,7 +18,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-@TableName("sys_user_post")
+@TableName("sys_market_user_post")
 public class UserPostEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
