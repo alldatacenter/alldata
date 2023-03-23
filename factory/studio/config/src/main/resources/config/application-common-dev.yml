@@ -1,6 +1,8 @@
 # Global Mysql、Redis and RabbitMQ connect configuration items
 common:
   rabbitmq:
+    host: 16gmaster
+    username: guest
     password: studio_123456
     port: 15672
   redis:
