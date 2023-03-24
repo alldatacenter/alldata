@@ -2,8 +2,6 @@ server:
   port: 8000
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
   application:
     name: service-system
   profiles:
@@ -16,7 +14,8 @@ spring:
       discovery:
         enabled: true
         service-id: config
-
+  main:
+    allow-bean-definition-overriding: true
 
 task:
   pool:

@@ -21,7 +21,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName(value = "sys_user", autoResultMap = true)
+@TableName(value = "sys_market_user", autoResultMap = true)
 public class UserEntity extends BaseEntity {
 
     private static final long serialVersionUID=1L;

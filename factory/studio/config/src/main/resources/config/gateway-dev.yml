@@ -15,17 +15,6 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        # 认证中心
-        - id: auth
-          uri: lb://auth
-          predicates:
-            - Path=/auth/**
-          filters:
-            - StripPrefix=1
-            - name: Hystrix
-              args:
-                name: authFallback
-                fallbackUri: forward:/fallback
         # 系统基础设置中心
         - id: service-system
           uri: lb://service-system

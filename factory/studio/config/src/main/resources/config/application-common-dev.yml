@@ -3,26 +3,26 @@ common:
   rabbitmq:
     host: 16gmaster
     username: root
-    password: studio_password
-    port: 15672
+    password: studio_123456
+    port: 5672
   redis:
     host: 16gmaster
-    password: studio_password
-    port: 13790
+    password: studio_123456
+    port: 6379
   mysql:
     primary:
       username: root
-      password: studio_password
-      url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      password: studio_123456
+      url: jdbc:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     master:
       username: root
-      password: studio_password
-      url: jdbc:p6spy:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      password: studio_123456
+      url: jdbc:p6spy:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     flowable:
       username: root
-      password: studio_password
-      url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+      password: studio_123456
+      url: jdbc:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
     quartz:
       username: root
-      password: studio_password
-      url: jdbc:mysql://16gmaster:33060/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      password: studio_123456
+      url: jdbc:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
