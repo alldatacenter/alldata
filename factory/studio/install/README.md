@@ -50,7 +50,7 @@
 ### 3、项目根目录下执行
 > mvn clean install -DskipTests && mvn clean package -DskipTests
 > 
-> 获取安装包build/studio-release-0.3.2.tar.gz
+> 获取安装包build/studio-release-0.3.x.tar.gz
 >
 > 上传服务器解压
 >
