@@ -12,6 +12,7 @@
     <artifactId>system-service</artifactId>
     <properties>
         <druid.version>1.2.4</druid.version>
+        <jna.version>5.8.0</jna.version>
     </properties>
     <dependencies>
         <dependency>
@@ -25,6 +26,13 @@
             <artifactId>oshi-core</artifactId>
             <version>6.1.4</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.8.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-redis</artifactId>

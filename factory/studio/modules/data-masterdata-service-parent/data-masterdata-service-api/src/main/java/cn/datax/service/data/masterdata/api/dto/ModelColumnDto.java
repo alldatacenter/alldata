@@ -23,7 +23,7 @@ public class ModelColumnDto implements Serializable {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "主键ID")
-    @NotBlank(message = "主键ID不能为空", groups = {ValidationGroups.Update.class})
+//    @NotBlank(message = "主键ID不能为空", groups = {ValidationGroups.Update.class})
     private String id;
     @ApiModelProperty(value = "列名称")
     @NotBlank(message = "列名称不能为空", groups = {ValidationGroups.Insert.class, ValidationGroups.Update.class})

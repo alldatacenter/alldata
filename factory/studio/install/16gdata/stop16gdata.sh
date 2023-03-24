@@ -18,14 +18,6 @@ kill -9 $pid
 
 echo "已杀死任务: $pid"
 
-pid=$(ps -ef | grep tool-monitor.jar | grep -Ev 'color=auto' | awk '{print $2}')
-
-echo "即将杀死任务data-tool-monitor: $pid"
-
-kill -9 $pid
-
-echo "已杀死任务: $pid"
-
 pid=$(ps -ef | grep email-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 
 echo "即将杀死任务email: $pid"

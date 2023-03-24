@@ -13,9 +13,6 @@ pid=$(ps -ef | grep data-visual-service.jar | grep -Ev 'color=auto' | awk '{prin
 
 echo "已启动visual: $pid"
 
-pid=$(ps -ef | grep tool-monitor.jar | grep -Ev 'color=auto' | awk '{print $2}')
-
-echo "已启动monitor: $pid"
 
 pid=$(ps -ef | grep email-service.jar | grep -Ev 'color=auto' | awk '{print $2}')
 

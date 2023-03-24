@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import { getAll } from '@/api/system/role'
+import { listRole } from '@/api/systemMarket/role'
 import { getDataMetadataTree } from '@/api/metadata/datacolumn'
 import { getAuthorizedMetadata, metadataAuthorize, refreshAuthorize } from '@/api/metadata/dataauthorize'
 
@@ -108,7 +108,7 @@ export default {
   },
   methods: {
     getLeftTree() {
-      getAll().then(response => {
+      listRole().then(response => {
         if (response.success) {
           const { data } = response
           const tree = {}

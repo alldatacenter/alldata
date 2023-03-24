@@ -20,7 +20,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName(value = "sys_role", autoResultMap = true)
+@TableName(value = "sys_market_role", autoResultMap = true)
 public class RoleEntity extends BaseEntity {
 
     private static final long serialVersionUID=1L;
