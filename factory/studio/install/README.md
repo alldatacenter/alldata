@@ -24,7 +24,6 @@
 | file-service          | 8811 | 16gdata |
 | quartz-service        | 8813 | 16gdata |
 | system-service        | 8810 | 16gdata |
-| tool-monitor    | 8711 | 16gdata |
 
 
 ### 部署方式

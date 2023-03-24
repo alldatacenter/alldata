@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 获取所有的Role
 export function getAll() {
   return request({
-    url: '/system/api/roles/list',
+    url: '/system/api/roles/all',
     method: 'get'
   })
 }

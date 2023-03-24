@@ -2,8 +2,6 @@ server:
   port: 8000
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
   application:
     name: service-system
   profiles:
@@ -16,7 +14,8 @@ spring:
       discovery:
         enabled: true
         service-id: config
-
+  main:
+    allow-bean-definition-overriding: true
 
 task:
   pool:
@@ -47,11 +46,11 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 20
     prefer-ip-address: true
-    ip-address: localhost
+    ip-address: 16gmaster
   client:
     register-with-eureka: true
     fetch-registry: true
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     service-url:
-      defaultZone: http://localhost:8610/eureka/
+      defaultZone: http://16gslave:8610/eureka/

@@ -9,7 +9,7 @@ export default {
   name: 'Doc',
   methods: {
     click() {
-      window.open('https://alldatacenter.github.io/', '_blank')
+      window.open('https://alldata.readthedocs.io/', '_blank')
     }
   }
 }

@@ -4,6 +4,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import elFrame from '@/components/Iframe/index'
+
 export default {
   name: 'Sql',
   components: { elFrame },

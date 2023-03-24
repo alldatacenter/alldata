@@ -36,13 +36,6 @@ module.exports = {
           '^/api': 'api'
         }
       },
-      '/auth': {
-        target: process.env.VUE_APP_BASE_API,
-        changeOrigin: true,
-        pathRewrite: {
-          '^/auth': 'auth'
-        }
-      },
       '/system': {
         target: process.env.VUE_APP_BASE_API,
         changeOrigin: true,
