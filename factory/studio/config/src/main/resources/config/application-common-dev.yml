@@ -1,28 +1,28 @@
 # Global Mysql、Redis and RabbitMQ connect configuration items
 common:
   rabbitmq:
-    host: 16gmaster
+    host: localhost
     username: root
-    password: studio_123456
+    password: 123456
     port: 5672
   redis:
-    host: 16gmaster
-    password: studio_123456
+    host: localhost
+    password: 123456
     port: 6379
   mysql:
     primary:
       username: root
-      password: studio_123456
-      url: jdbc:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      password: 123456
+      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     master:
       username: root
-      password: studio_123456
-      url: jdbc:p6spy:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      password: 123456
+      url: jdbc:p6spy:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     flowable:
       username: root
-      password: studio_123456
-      url: jdbc:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+      password: 123456
+      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
     quartz:
       username: root
-      password: studio_123456
-      url: jdbc:mysql://16gmaster:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      password: 123456
+      url: jdbc:mysql://localhost:3306/studio?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8

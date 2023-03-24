@@ -355,25 +355,6 @@
             </includes>
         </fileSet>
 
-
-        <fileSet>
-            <directory>${project.parent.basedir}/tools/tool-monitor/target
-            </directory>
-            <outputDirectory>./16gdata/tool-monitor</outputDirectory>
-            <includes>
-                <include>*.jar</include>
-            </includes>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.parent.basedir}/tools/tool-monitor/target/classes
-            </directory>
-            <outputDirectory>./16gdata/tool-monitor</outputDirectory>
-            <includes>
-                <include>bootstrap.yml</include>
-            </includes>
-        </fileSet>
-
         <fileSet>
             <directory>${project.parent.basedir}/ui</directory>
             <outputDirectory>./16gmaster/ui</outputDirectory>
