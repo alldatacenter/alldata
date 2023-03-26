@@ -93,6 +93,7 @@ ribbon:
       - service-data-standard
       - service-quartz
       - service-workflow
+      - service-data-dts
   OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
   ReadTimeout: 120000 #负载均衡超时时间，默认值5000
   ConnectTimeout: 6000 #ribbon请求连接的超时时间，默认值2000

@@ -119,6 +119,25 @@
             </includes>
         </fileSet>
 
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/service-data-dts-parent/service-data-dts/target
+            </directory>
+            <outputDirectory>./16gmaster/service-data-dts</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/service-data-dts-parent/service-data-dts/target/classes
+            </directory>
+            <outputDirectory>./16gmaster/service-data-dts</outputDirectory>
+            <includes>
+                <include>bootstrap.yml</include>
+            </includes>
+        </fileSet>
+
         <fileSet>
             <directory>${project.parent.basedir}/modules/system-service-parent/system-service/target
             </directory>

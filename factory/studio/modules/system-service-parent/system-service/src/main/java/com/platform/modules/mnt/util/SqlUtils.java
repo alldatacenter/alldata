@@ -1,6 +1,7 @@
 
 package com.platform.modules.mnt.util;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.github.yeecode.dynamicdatasource.DynamicDataSource;
 import com.github.yeecode.dynamicdatasource.model.DataSourceInfo;
 import com.google.common.collect.Lists;
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.platform.utils.CloseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
 import java.io.BufferedReader;
@@ -27,6 +29,55 @@ public class SqlUtils {
 
     @Autowired
     private static DynamicDataSource dynamicDataSource;//注入动态数据源
+
+    /**
+     * 获取数据源
+     *
+     * @param jdbcUrl /
+     * @param userName /
+     * @param password /
+     * @return DataSource
+     */
+    private static DataSource getDataSource(String jdbcUrl, String userName, String password) {
+        DruidDataSource druidDataSource = new DruidDataSource();
+        String className;
+        try {
+            className = DriverManager.getDriver(jdbcUrl.trim()).getClass().getName();
+        } catch (SQLException e) {
+            throw new RuntimeException("Get class name error: =" + jdbcUrl);
+        }
+        if (StringUtils.isEmpty(className)) {
+            DataTypeEnum dataTypeEnum = DataTypeEnum.urlOf(jdbcUrl);
+            if (null == dataTypeEnum) {
+                throw new RuntimeException("Not supported data type: jdbcUrl=" + jdbcUrl);
+            }
+            druidDataSource.setDriverClassName(dataTypeEnum.getDriver());
+        } else {
+            druidDataSource.setDriverClassName(className);
+        }
+
+
+        druidDataSource.setUrl(jdbcUrl);
+        druidDataSource.setUsername(userName);
+        druidDataSource.setPassword(password);
+        // 配置获取连接等待超时的时间
+        druidDataSource.setMaxWait(3000);
+        // 配置初始化大小、最小、最大
+        druidDataSource.setInitialSize(1);
+        druidDataSource.setMinIdle(1);
+        druidDataSource.setMaxActive(1);
+
+        // 如果链接出现异常则直接判定为失败而不是一直重试
+        druidDataSource.setBreakAfterAcquireFailure(true);
+        try {
+            druidDataSource.init();
+        } catch (SQLException e) {
+            log.error("Exception during pool initialization", e);
+            throw new RuntimeException(e.getMessage());
+        }
+
+        return druidDataSource;
+    }
 
     /**
      * 获取数据源
@@ -63,6 +114,36 @@ public class SqlUtils {
         return connection;
     }
 
+    /**
+     * 获取数据源
+     *
+     * @param jdbcUrl  /
+     * @param userName /
+     * @param password /
+     * @return DataSource
+     */
+
+    private static Connection getDruidConnection(String jdbcUrl, String userName, String password) {
+        DataSource dataSource = getDataSource(jdbcUrl, userName, password);
+        Connection connection = null;
+        try {
+            connection = dataSource.getConnection();
+        } catch (Exception ignored) {}
+        try {
+            int timeOut = 5;
+            if (null == connection || connection.isClosed() || !connection.isValid(timeOut)) {
+                log.info("connection is closed or invalid, retry get connection!");
+                connection = dataSource.getConnection();
+            }
+        } catch (Exception e) {
+            log.error("create connection error, jdbcUrl: {}", jdbcUrl);
+            throw new RuntimeException("create connection error, jdbcUrl: " + jdbcUrl);
+        } finally {
+            CloseUtil.close(connection);
+        }
+        return connection;
+    }
+
     private static void releaseConnection(Connection connection) {
         if (null != connection) {
             try {
@@ -77,7 +158,7 @@ public class SqlUtils {
     public static boolean testConnection(String jdbcUrl, String userName, String password) {
         Connection connection = null;
         try {
-            connection = getConnection(jdbcUrl, userName, password);
+            connection = getDruidConnection(jdbcUrl, userName, password);
             if (null != connection) {
                 return true;
             }
@@ -90,7 +171,7 @@ public class SqlUtils {
     }
 
     public static String executeFile(String jdbcUrl, String userName, String password, File sqlFile) {
-        Connection connection = getConnection(jdbcUrl, userName, password);
+        Connection connection = getDruidConnection(jdbcUrl, userName, password);
         try {
             batchExecute(connection, readSqlList(sqlFile));
         } catch (Exception e) {

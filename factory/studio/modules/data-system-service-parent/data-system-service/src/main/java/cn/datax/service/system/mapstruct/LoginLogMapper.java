@@ -12,7 +12,7 @@ import org.mapstruct.Mapper;
  * </p>
  *
  * @author yuwei
- * @since 2020-05-29
+ * @date 2022-05-29
  */
 @Mapper(componentModel = "spring")
 public interface LoginLogMapper extends EntityMapper<LoginLogDto, LoginLogEntity, LoginLogVo> {

@@ -12,7 +12,7 @@ import org.mapstruct.Mapper;
  * </p>
  *
  * @author yuwei
- * @since 2020-05-19
+ * @date 2022-05-19
  */
 @Mapper(componentModel = "spring")
 public interface ConfigMapper extends EntityMapper<ConfigDto, ConfigEntity, ConfigVo> {
