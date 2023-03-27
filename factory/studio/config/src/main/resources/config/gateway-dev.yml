@@ -207,3 +207,15 @@ spring:
               args:
                 name: workflowHystrix
                 fallbackUri: forward:/fallback
+        # 数据集成
+        - id: service-data-dts
+          uri: lb://service-data-dts
+          predicates:
+            - Path=/data/dts/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+            - name: Hystrix
+              args:
+                name: dataSystemHystrix
+                fallbackUri: forward:/fallback

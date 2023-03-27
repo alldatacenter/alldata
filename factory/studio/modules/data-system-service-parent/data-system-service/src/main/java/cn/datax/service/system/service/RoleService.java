@@ -12,7 +12,7 @@ import java.util.List;
  * </p>
  *
  * @author yuwei
- * @since 2019-09-04
+ * @date 2022-09-04
  */
 public interface RoleService extends BaseService<RoleEntity> {
 

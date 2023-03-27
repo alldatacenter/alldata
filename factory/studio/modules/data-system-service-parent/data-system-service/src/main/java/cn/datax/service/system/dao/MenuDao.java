@@ -13,7 +13,7 @@ import java.util.List;
  * </p>
  *
  * @author yuwei
- * @since 2019-09-11
+ * @date 2022-09-11
  */
 @Mapper
 public interface MenuDao extends BaseDao<MenuEntity> {

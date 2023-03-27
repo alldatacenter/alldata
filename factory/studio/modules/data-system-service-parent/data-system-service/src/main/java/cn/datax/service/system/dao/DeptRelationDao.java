@@ -12,7 +12,7 @@ import java.util.List;
  * </p>
  *
  * @author yuwei
- * @since 2019-11-22
+ * @date 2022-11-22
  */
 @Mapper
 public interface DeptRelationDao extends BaseDao<DeptRelationEntity> {

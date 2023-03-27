@@ -14,7 +14,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuwei
- * @since 2020-04-17
+ * @date 2022-04-17
  */
 @ApiModel(value = "字典项信息表Model")
 @Data

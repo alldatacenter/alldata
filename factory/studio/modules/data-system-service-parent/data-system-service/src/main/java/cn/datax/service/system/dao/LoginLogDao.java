@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author yuwei
- * @since 2020-05-29
+ * @date 2022-05-29
  */
 @Mapper
 public interface LoginLogDao extends BaseDao<LoginLogEntity> {

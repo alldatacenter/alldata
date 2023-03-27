@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>modules</artifactId>
+        <groupId>com.platform</groupId>
+        <version>0.3.6</version>
+    </parent>
+
+    <groupId>com.platform</groupId>
+    <artifactId>service-data-dts-parent</artifactId>
+    <version>0.3.6</version>
+    <name>service-data-dts-parent</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>service-data-dts</module>
+        <module>service-data-core</module>
+        <module>service-data-rpc</module>
+    </modules>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.test.skip>true</maven.test.skip>
+
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <fastjson.version>1.2.70</fastjson.version>
+        <slf4j-api.version>1.7.28</slf4j-api.version>
+        <logback-classic.version>1.2.2</logback-classic.version>
+        <commons-io.version>2.4</commons-io.version>
+        <junit.version>4.12</junit.version>
+        <hutool.version>5.4.3</hutool.version>
+        <postgresql.version>42.2.5</postgresql.version>
+        <mysql-connector.version>5.1.47</mysql-connector.version>
+        <jna.version>4.1.0</jna.version>
+        <groovy.version>2.5.8</groovy.version>
+        <mybatisplus.version>3.3.1</mybatisplus.version>
+        <swagger.version>2.9.2</swagger.version>
+        <swagger-models.version>1.5.21</swagger-models.version>
+        <spring.version>4.3.25.RELEASE</spring.version>
+        <junit.version>4.12</junit.version>
+        <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
+        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+        <jjwt.version>0.9.0</jjwt.version>
+        <netty.version>4.1.43.Final</netty.version>
+        <hessian.version>4.0.63</hessian.version>
+        <hadoop.version>2.7.3</hadoop.version>
+        <hive.jdbc.version>2.3.1</hive.jdbc.version>
+
+        <hbase.version>1.3.5</hbase.version>
+        <mongo-java-driver.version>3.4.2</mongo-java-driver.version>
+        <oshi.core.version>3.5.0</oshi.core.version>
+
+        <phoenix.version>5.0.0-HBase-2.0</phoenix.version>
+    </properties>
+
+</project>

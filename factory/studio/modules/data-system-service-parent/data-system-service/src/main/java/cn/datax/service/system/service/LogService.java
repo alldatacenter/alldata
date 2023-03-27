@@ -12,7 +12,7 @@ import java.util.List;
  * </p>
  *
  * @author yuwei
- * @since 2019-11-19
+ * @date 2022-11-19
  */
 public interface LogService extends BaseService<LogEntity> {
 

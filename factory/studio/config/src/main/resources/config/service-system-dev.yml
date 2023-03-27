@@ -8,7 +8,7 @@ dynamicDataSource:
 
 spring:
   profiles:
-    include: common-dev
+    include: common-dev,dev
   redis:
     #数据库索引
     database: ${REDIS_DB:0}
@@ -23,34 +23,58 @@ spring:
         max-wait: -1ms    # 连接池最大阻塞等待时间（使用负值表示没有限制）
         max-idle: 10      # 连接池中的最大空闲连接
         min-idle: 5       # 连接池中的最小空闲连接
+
   datasource:
-    dynamic:
-      primary: master
-      strict: false
-      datasource:
-        master:
-          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-          url: ${common.mysql.master.url}
-          username: ${common.mysql.master.username}
-          password: ${common.mysql.master.password}
+    druid:
+      db-type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: ${common.mysql.druid.url}
+      username: ${common.mysql.druid.username}
+      password: ${common.mysql.druid.password}
+      # 初始连接数
+      initial-size: 5
+      # 最小连接数
+      min-idle: 15
+      # 最大连接数
+      max-active: 30
+      # 超时时间(以秒数为单位)
+      remove-abandoned-timeout: 180
+      # 获取连接超时时间
+      max-wait: 3000
+      # 连接有效性检测时间
+      time-between-eviction-runs-millis: 60000
+      # 连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      # 连接在池中最大生存的时间
+      max-evictable-idle-time-millis: 900000
+      # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除
+      test-while-idle: true
+      # 指明是否在从池中取出连接前进行检验,如果检验失败, 则从池中去除连接并尝试取出另一个
+      test-on-borrow: true
+      # 是否在归还到池中前进行检验
+      test-on-return: false
+      # 检测连接是否有效
+      validation-query: select 1
+      # 配置监控统计
+      webStatFilter:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+      filter:
+        stat:
+          enabled: true
+          # 记录慢SQL
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+
   main:
     allow-bean-definition-overriding: true
-
-  # studio DTS email
-  mail:
-    host: smtp.qq.com
-    port: 25
-    username: xxx@qq.com
-    password: xxx
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
-        socketFactory:
-          class: javax.net.ssl.SSLSocketFactory
 
 management:
   health:
@@ -59,28 +83,6 @@ management:
   server:
     servlet:
       context-path: /actuator
-
-##flinkx-job, access token
-studio:
-  job:
-    accessToken:
-    #i18n (default empty as chinese, "en" as english)
-    i18n:
-    ## triggerpool max size
-    triggerpool:
-      fast:
-        max: 200
-      slow:
-        max: 100
-      ### log retention days
-    logretentiondays: 30
-  executor:
-    flinkxHome: /16gmaster/dts/flinkx.py
-    flinkxjsonPath: /16gmaster/dts/flinkxJob/
-    flinkxlogHome: /16gmaster/dts/chunjunLog
-    dataxHome: /16gmaster/dts/datax.py
-    dataxjsonPath: /16gmaster/dts/dataxJob/
-    dataxlogHome: /16gmaster/dts/dataxLog
 datasource:
   aes:
     key: AD42F6697B035B75

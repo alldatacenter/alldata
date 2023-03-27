@@ -12,7 +12,7 @@ import org.mapstruct.Mapper;
  * </p>
  *
  * @author yuwei
- * @since 2020-04-17
+ * @date 2022-04-17
  */
 @Mapper(componentModel = "spring")
 public interface DictItemMapper extends EntityMapper<DictItemDto, DictItemEntity, DictItemVo> {

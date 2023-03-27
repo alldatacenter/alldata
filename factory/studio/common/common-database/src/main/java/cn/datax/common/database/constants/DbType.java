@@ -11,7 +11,7 @@ public enum DbType {
     /**
      * MYSQL
      */
-    MYSQL("1", "MySql数据库", "jdbc:mysql://${host}:${port}/${dbName}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8"),
+    MYSQL("1", "MySql数据库", "jdbc:mysql://${host}:${port}/${dbName}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8"),
     /**
      * MARIADB
      */

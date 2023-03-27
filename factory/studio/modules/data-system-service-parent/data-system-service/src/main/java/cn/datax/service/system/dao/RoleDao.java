@@ -16,7 +16,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuwei
- * @since 2019-09-04
+ * @date 2022-09-04
  */
 @Mapper
 public interface RoleDao extends BaseDao<RoleEntity> {
