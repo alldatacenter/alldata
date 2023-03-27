@@ -5,7 +5,7 @@
 -- Server version	8.0.31
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_CHAfRACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
@@ -34890,7 +34890,7 @@ INSERT INTO `sys_market_dict` VALUES ('1309001146932670465', 1, '129668010722570
 INSERT INTO `sys_market_dict` VALUES ('1310494826919211009', 1, '1296680107225706498', '2020-08-21 21:04:37', '1214835832967581698', '2020-08-21 21:04:37', NULL, '字典对照状态', 'data_contrast_status');
 
 -- ----------------------------
--- Table structure for sys_dict_item
+-- Table structure for sys_market_dict_item
 -- ----------------------------
 -- DROP TABLE IF EXISTS `sys_market_dict_item`;
 CREATE TABLE `sys_market_dict_item`  (
@@ -34909,7 +34909,7 @@ CREATE TABLE `sys_market_dict_item`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典项信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of sys_dict_item
+-- Records of sys_market_dict_item
 -- ----------------------------
 INSERT INTO `sys_market_dict_item` VALUES ('1254702149128052737', 1, '1214835832967581698', '2020-04-27 17:21:18', '1214835832967581698', '2020-04-27 17:21:18', NULL, '1254701165563764738', '0', '模块', 1);
 INSERT INTO `sys_market_dict_item` VALUES ('1254702177166974977', 1, '1214835832967581698', '2020-04-27 17:21:25', '1214835832967581698', '2020-04-27 17:21:25', NULL, '1254701165563764738', '1', '菜单', 2);
