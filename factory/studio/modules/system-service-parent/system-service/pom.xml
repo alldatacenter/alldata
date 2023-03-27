@@ -11,7 +11,7 @@
     <version>0.3.6</version>
     <artifactId>system-service</artifactId>
     <properties>
-        <druid.version>1.2.4</druid.version>
+        <druid.version>1.2.8</druid.version>
         <jna.version>5.8.0</jna.version>
     </properties>
     <dependencies>
@@ -105,7 +105,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-        <!--配置中心客户端 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
@@ -131,6 +130,12 @@
             <groupId>com.platform</groupId>
             <artifactId>common-log</artifactId>
             <version>0.3.6</version>
+        </dependency>
+        <!-- druid数据源驱动 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.version}</version>
         </dependency>
 
     </dependencies>

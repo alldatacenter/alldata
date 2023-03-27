@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author yuwei
- * @since 2020-04-17
+ * @date 2022-04-17
  */
 @Data
 public class DictVo implements Serializable {

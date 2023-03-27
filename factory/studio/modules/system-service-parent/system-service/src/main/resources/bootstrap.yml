@@ -8,7 +8,7 @@ spring:
     active: dev
   cloud:
     config:
-      label: master
+      label: druid
       name: ${spring.application.name}
       profile: ${spring.profiles.active}
       discovery:

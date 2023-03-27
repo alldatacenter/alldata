@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author yuwei
- * @since 2020-04-17
+ * @date 2022-04-17
  */
 @Mapper
 public interface DictItemDao extends BaseDao<DictItemEntity> {

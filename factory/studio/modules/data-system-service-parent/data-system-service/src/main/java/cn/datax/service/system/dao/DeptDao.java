@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author yuwei
- * @since 2019-09-04
+ * @date 2022-09-04
  */
 @Mapper
 public interface DeptDao extends BaseDao<DeptEntity> {
