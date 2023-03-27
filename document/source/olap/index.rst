@@ -3,7 +3,8 @@
  
 .. toctree::
    :maxdepth: 2
-   
+
+   antlr-sql/index
    byconity/index
    calcite/index
    clickhouse/index
