@@ -48,8 +48,8 @@
         SELECT DISTINCT
             <include refid="Menu_Column_List"><property name="alias" value="m"/></include>
         FROM
-        sys_menu m
-        LEFT JOIN sys_role_menu rm ON m.id = rm.menu_id
+        sys_market_menu m
+        LEFT JOIN sys_market_role_menu rm ON m.id = rm.menu_id
         WHERE m.status = 1 AND rm.role_id IN
         <foreach collection="roleIds" index="index" item="item" open="(" separator="," close=")">
             #{item}
@@ -61,9 +61,9 @@
         SELECT DISTINCT
         <include refid="Menu_Column_List"><property name="alias" value="m"/></include>
         FROM
-        sys_menu m
-        LEFT JOIN sys_role_menu rm ON m.id = rm.menu_id
-        LEFT JOIN sys_user_role ur ON rm.role_id = ur.role_id
+        sys_market_menu m
+        LEFT JOIN sys_market_role_menu rm ON m.id = rm.menu_id
+        LEFT JOIN sys_market_user_role ur ON rm.role_id = ur.role_id
         WHERE m.status = 1 AND ur.user_id = #{userId}
         ORDER BY m.menu_sort ASC
     </select>

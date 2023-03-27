@@ -45,8 +45,8 @@
         <include refid="cn.datax.service.system.dao.DeptDao.Dept_Column_List">
             <property name="alias" value="d"/>
         </include>
-        FROM sys_dept d
-        LEFT JOIN sys_role_dept rd ON d.id = rd.dept_id
+        FROM sys_market_dept d
+        LEFT JOIN sys_market_role_dept rd ON d.id = rd.dept_id
         WHERE 1 = 1 AND d.status = 1
         <if test="null != roleId and '' != roleId">
             AND rd.role_id = #{roleId}
@@ -58,8 +58,8 @@
         <include refid="cn.datax.service.system.dao.MenuDao.Menu_Column_List">
             <property name="alias" value="m"/>
         </include>
-        FROM sys_menu m
-        LEFT JOIN sys_role_menu rm ON m.id = rm.menu_id
+        FROM sys_market_menu m
+        LEFT JOIN sys_market_role_menu rm ON m.id = rm.menu_id
         WHERE 1 = 1 AND m.status = 1
         <if test="null != roleId and '' != roleId">
             AND rm.role_id = #{roleId}
@@ -69,14 +69,14 @@
     <select id="selectById" resultMap="ExtendResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM sys_role
+        FROM sys_market_role
         WHERE 1 = 1 AND id = #{id}
     </select>
 
     <select id="selectPage" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"></include>
-        FROM sys_role
+        FROM sys_market_role
         ${ew.customSqlSegment}
     </select>
 
