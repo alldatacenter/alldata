@@ -9,4 +9,4 @@
    hudi/index
    iceberg/index
    LakeSoul/index
-   flink-table-store/index
+   paimon/index

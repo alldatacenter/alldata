@@ -7,4 +7,5 @@
    airbyte/index
    bitsail/index
    datax/index
+   debezium/index
    maxwell/index
