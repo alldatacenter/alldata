@@ -16,7 +16,7 @@
     </sql>
 
     <insert id="insertBatch" parameterType="java.util.List">
-        INSERT INTO sys_dept_relation
+        INSERT INTO sys_market_dept_relation
             (id, ancestor, descendant)
         VALUES
         <foreach collection="list" item="item" separator=",">
@@ -25,7 +25,7 @@
     </insert>
 
     <delete id="deleteByAncestor">
-       DELETE FROM sys_dept_relation WHERE ancestor = #{id}
+       DELETE FROM sys_market_dept_relation WHERE ancestor = #{id}
     </delete>
 
 </mapper>

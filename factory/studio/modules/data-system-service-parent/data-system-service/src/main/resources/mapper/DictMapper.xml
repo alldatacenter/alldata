@@ -38,8 +38,8 @@
     <select id="queryDictList" resultMap="QueryDictResultMap">
         SELECT d.id, d.dict_name, d.dict_code,
         i.id as item_id, i.dict_id, i.item_text, i.item_value
-        FROM sys_dict d
-        LEFT JOIN sys_dict_item i ON d.id = i.dict_id AND i.status = #{status}
+        FROM sys_market_dict d
+        LEFT JOIN sys_market_dict_item i ON d.id = i.dict_id AND i.status = #{status}
         WHERE d.status = #{status}
     </select>
 </mapper>

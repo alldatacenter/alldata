@@ -1,10 +1,11 @@
 #!/bin/sh
 source /etc/profile
 
-echo "即将启动任务eureka"
-sh eureka.sh
+# eureka单独启动
+#echo "即将启动任务eureka"
+#sh eureka.sh
 
-sleep 10s
+#sleep 10s
 
 
 echo "即将启动任务data-market-service-mapping"

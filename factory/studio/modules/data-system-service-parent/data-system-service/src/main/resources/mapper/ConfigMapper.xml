@@ -29,7 +29,7 @@
 
     <select id="queryConfigList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
-        FROM sys_config
+        FROM sys_market_config
         WHERE status = #{status}
     </select>
 
