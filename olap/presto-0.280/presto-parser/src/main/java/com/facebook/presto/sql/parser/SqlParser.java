@@ -57,7 +57,6 @@ public class SqlParser
         }
     };
     private static final BiConsumer<SqlBaseLexer, SqlBaseParser> DEFAULT_PARSER_INITIALIZER = (SqlBaseLexer lexer, SqlBaseParser parser) -> {};
-
     private static final ErrorHandler PARSER_ERROR_HANDLER = ErrorHandler.builder()
             .specialRule(SqlBaseParser.RULE_expression, "<expression>")
             .specialRule(SqlBaseParser.RULE_booleanExpression, "<expression>")

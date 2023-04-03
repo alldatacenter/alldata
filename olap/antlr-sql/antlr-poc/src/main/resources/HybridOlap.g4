@@ -1,4 +1,4 @@
-grammar Test;
+grammar HybridOlap;
 
 @header {
     package com.platform.antlr4.parser;

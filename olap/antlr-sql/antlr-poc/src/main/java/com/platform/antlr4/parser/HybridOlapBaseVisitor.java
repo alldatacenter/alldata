@@ -5,7 +5,7 @@
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
- * This class provides an empty implementation of {@link TestVisitor},
+ * This class provides an empty implementation of {@link HybridOlapVisitor},
  * which can be extended to create a visitor which only needs to handle a subset
  * of the available methods.
  *
@@ -13,47 +13,47 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  * operations with no return type.
  */
 @SuppressWarnings("CheckReturnValue")
-public class TestBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements TestVisitor<T> {
+public class HybridOlapBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements HybridOlapVisitor<T> {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitStmt(TestParser.StmtContext ctx) { return visitChildren(ctx); }
+	@Override public T visitStmt(HybridOlapParser.StmtContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAdd(TestParser.AddContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAdd(HybridOlapParser.AddContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDiv(TestParser.DivContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDiv(HybridOlapParser.DivContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMin(TestParser.MinContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMin(HybridOlapParser.MinContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMul(TestParser.MulContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMul(HybridOlapParser.MulContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInt(TestParser.IntContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInt(HybridOlapParser.IntContext ctx) { return visitChildren(ctx); }
 }

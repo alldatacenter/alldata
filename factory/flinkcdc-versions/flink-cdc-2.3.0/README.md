@@ -123,20 +123,6 @@ The dependencies are now available in your local `.m2` repository.
 
 The code in this repository is licensed under the [Apache Software License 2](https://github.com/ververica/flink-cdc-connectors/blob/master/LICENSE).
 
-## Contributing
-
-CDC Connectors for Apache Flink<sup>®</sup> welcomes anyone that wants to help out in any way, whether that includes reporting problems, helping with documentation, or contributing code changes to fix bugs, add tests, or implement new features. You can report problems to request features in the [GitHub Issues](https://github.com/ververica/flink-cdc-connectors/issues).
-
-## Community
-
-* [DingTalk](https://www.dingtalk.com/) Chinese User Group
-
-  You can search the group number [**33121212**] or scan the following QR code to join in the group.
-  
-  <div align=center>
-     <img src="https://user-images.githubusercontent.com/9601882/158350201-a1de35e6-0399-4a91-b5b0-e2fd5d33e33c.png" width=400 />
-   </div>
-
 ## Documents
 To get started, please see https://ververica.github.io/flink-cdc-connectors/
 
