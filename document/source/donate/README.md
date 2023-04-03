@@ -1,4 +1,4 @@
-# 募捐会员通道
+# 会员通道
 
 > 联系作者: https://docs.qq.com/doc/DVFZ1RFhGYkJRSGxN
 
@@ -34,13 +34,11 @@ https://docs.qq.com/sheet/DVGJHcm1Td0hibmVq?tab=BB08J2
 
 
 ### 作者AllDataDC收款码
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/229486403-33a76380-c286-43a8-a49c-a229eca17c13.jpg">
-<br/>
+> AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 
 ### 普通会员【1年有效】
 ```markdown
-加入条件：捐赠AllData团队100人民币【需要扫码支付】
+加入条件：捐赠AllData团队100人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 1、邀请到普通会员群，获得VIP账号，可以新创建管理员账号【需要申请】
 2、获得AllData架构师、负责人1次技术交流30分钟的面谈机会【线上会议】1v1腾讯线上会议
 3、7个自然日内无条件可退款80%【退款联系作者AllDataDC】
@@ -49,7 +47,7 @@ https://docs.qq.com/sheet/DVGJHcm1Td0hibmVq?tab=BB08J2
 
 ### 高级会员【1年有效】
 ```markdown
-加入条件：捐赠AllData团队800人民币【需要扫码支付】
+加入条件：捐赠AllData团队800人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 1、获取VIP账号，邀请到高级会员群，可以新创建管理员账号【需要申请】
 2、加入AllData客户群，获取最新开发规划和内部资料【需要申请】
 3、每月1次AllData问题答疑，技术咨询【60分钟】群聊线上腾讯会议
@@ -60,7 +58,7 @@ https://docs.qq.com/sheet/DVGJHcm1Td0hibmVq?tab=BB08J2
 
 ### 至尊会员【1年有效】
 ```markdown
-加入条件：捐赠AllData团队1500人民币【需要扫码支付】
+加入条件：捐赠AllData团队1500人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 1、获取VIP账号，邀请到至尊会员群，可以新创建管理员账号【需要申请】
 2、加入AllData客户群，获取最新开发规划和内部资料【需要申请】
 3、每月1次AllData问题答疑，技术咨询【60分钟】群聊线上腾讯会议
@@ -73,7 +71,7 @@ https://docs.qq.com/sheet/DVGJHcm1Td0hibmVq?tab=BB08J2
 
 ### 终身会员【3年有效】
 ```markdown
-加入条件：捐赠AllData团队5000人民币【需要扫码支付】
+加入条件：捐赠AllData团队5000人民币【需要扫码支付】AllData募捐活动收款码 https://docs.qq.com/doc/DVE9HdG56Z3RQaWxH
 1、获取VIP账号，可以新创建管理员账号【需要申请】
 2、加入AllData客户群，获取最新开发规划和内部资料【需要申请】
 3、每月1次AllData问题答疑，技术咨询【60分钟】群聊线上腾讯会议
