@@ -1919,6 +1919,11 @@ https://docs.qq.com/sheet/DVGJHcm1Td0hibmVq?tab=BB08J2
 ```
 
 
+### 作者AllDataDC收款码
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/229486403-33a76380-c286-43a8-a49c-a229eca17c13.jpg">
+<br/>
+
 ### 普通会员【1年有效】
 ```markdown
 加入条件：捐赠AllData团队100人民币【需要扫码支付】
