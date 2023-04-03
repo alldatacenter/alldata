@@ -27,4 +27,5 @@
    iot/index
    trade/index
    wiki/index
+   donate/index
 
