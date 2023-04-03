@@ -12,7 +12,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
-public class TestLexer extends Lexer {
+public class HybridOlapLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -81,13 +81,13 @@ public class TestLexer extends Lexer {
 	}
 
 
-	public TestLexer(CharStream input) {
+	public HybridOlapLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Test.g4"; }
+	public String getGrammarFileName() { return "HybridOlap.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

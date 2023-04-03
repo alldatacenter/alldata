@@ -25,11 +25,7 @@
 > 首页
 
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456470-6fd4e3c8-e5b7-48f9-bf3a-83975f78654c.png">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456480-d23d6df9-65f0-45f8-8d02-b1a448fcf0cc.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965519-d8fc6e7d-235d-4b52-82f6-358b3863d724.png">
 <br/>
 
 > 数据集成
@@ -65,139 +61,77 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/206071565-1634a747-0f60-4dcd-a294-90d80d59cdc7.png">
 <br/>
 
-> 数据质量
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457313-aac5a92e-3780-4b81-99f3-de6ea1b32f79.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457303-9272dd14-6602-4f32-ab26-ea2c4b9e7c55.png">
-<br/>
-
-> 数据标准
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457469-8183b633-ace2-48ed-91ac-9d1c114e7e67.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457478-8ddf5083-5bad-4b27-90b9-14bebf7615f6.png">
-<br/>
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457492-9c90f9a6-2a56-47ce-9042-00e2c5c662ec.png">
-<br/>
 
 > 元数据管理
 
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456662-be27764e-f2a1-46a1-97fb-4689a93a42a9.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203520997-9ac122bb-f61a-4ea9-becf-efa0b72320ad.png">
 <br/>
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456676-9c66e22b-393c-4757-a22f-2aa1604bef51.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521639-ed23fceb-96ef-49e2-ac49-931978d7dcc0.png">
+<br/>
+
+> 元数据拾取
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521695-8f7469db-fc98-44e2-b82c-de729cd5c9e1.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521746-5d43dcc1-7ed3-4e50-b3b1-8fa767c34b26.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521777-1c0a2635-27a5-42f3-a985-2d68556ed9d0.png">
+<br/>
+
+
+> 应用分析
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521541-3a3186fd-0827-4c4c-bca0-f2761d6f4d67.png">
 <br/>
 
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456683-36436d97-76fc-4a0d-b4b7-e0090a6a2575.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456694-06a042cf-cad6-4bf5-ae41-8f1fad46c642.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521584-4099710f-b31f-4815-9c7f-e08e0cdc45bf.png">
 <br/>
 
+> 系统菜单管理
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456700-76a54b9f-e806-4ca7-b1d3-d0a9fa383de1.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456710-c004ac4a-5f67-45f2-9cbf-67b855a55c34.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/203521695-8f7469db-fc98-44e2-b82c-de729cd5c9e1.png">
 <br/>
 
+> 元数据管理
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456722-4f468872-2ada-4ad8-a56e-69c63f9b7e31.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456740-12c5298d-c72f-46ec-88ec-c680efbb592f.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204560882-bc7876d5-6c35-4b79-aa39-aa2803f46e8c.png">
 <br/>
 
-> 数据资产
+> 数据质量
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457692-c9c1a763-b0e5-4afe-abe7-623203ab6231.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457706-872b49b5-9ec5-4ad3-beb1-535fbd88dde3.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204560895-d03ec73a-f670-4238-860e-26b708c3f2b7.png">
 <br/>
 
 
 > 数据市场
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457844-e1a3ebbe-5a7c-43c4-8317-2bf066c5deed.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204560915-6c17f056-0956-4a83-94a6-00cd21571af9.png">
 <br/>
+
+
+> 数据标准
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457858-37307d6b-41a1-4475-8d69-d7bcc38f6f10.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457862-415bdb7f-784e-4db9-9e54-eb83ea7a581f.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457872-6cbb24e0-82e1-47de-b3f8-200cdb47b90f.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457882-77fc873b-c340-47f1-b41c-9b2d5e73ff4d.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204561067-831d0733-812a-4660-a198-8248eaaf2d8c.png">
 <br/>
 
 > BI报表
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458114-48ab43b4-437d-4b7e-9eb3-d49b1da1b762.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204561081-30169347-8aff-4150-a8c2-f3f3a5a2a20d.png">
 <br/>
+
+> 数据资产
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458126-d5367210-fd82-4190-bf71-b99c6fc3176e.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458133-39ad2515-4447-4f6d-a9c7-e353d70c628d.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458143-5c771b96-6888-48e1-9e1c-265efee62b30.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458149-b658b9ea-c6df-4a7d-884c-d02f42aadb3e.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204561280-3d656a33-9e3a-440e-ab37-93397fe26b04.png">
 <br/>
 
 > 流程编排
 <br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458401-9244442e-c66d-4ebe-8a81-e989bedb1415.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458415-ec02039f-73d0-4513-b613-5aa931c9b294.png">
-<br/>
-
-
-> 系统监控
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458501-7493df22-026b-402d-80dd-03c4b9bd8224.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458517-45eb4fd4-ccc1-4a37-8a0d-4403301bbc55.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458525-639b90bf-ffc3-439e-ba74-b9e9ce2f1323.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458535-2fea5b2c-b478-4192-a303-f377de0cd9b1.png">
-<br/>
-
-
-> 运维管理
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458729-f6517a7e-ad37-4ce1-94d8-e2a2b41de7b9.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458745-5455a74e-706a-4498-af4a-39454f743cd6.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458756-9db88ca2-848d-4461-a4da-5ca149288779.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458765-f6be2c35-d870-4952-a79c-bb26ebaac6e7.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458778-4f2e1b46-d532-4411-b104-8288fcb97ad7.png">
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204561326-002e0e59-e89d-47b4-8648-ca932194937b.png">
 <br/>
 
 > AllData AI Studio 社区版
@@ -414,7 +348,7 @@
 ### 4、部署`stuido`[后端]
 ## 单节点启动[All In One]
 
-> 1、启动eureka on `16gslave`
+> 1、启动eureka on `16gslave` 
 >
 > 2、启动config on `16gmaster`
 >
@@ -428,11 +362,11 @@
 > 2. 单独启动config on `16gmaster`
 >
 > 3. 单独启动gateway on `16gdata`
->
+> 
 > 4. 启动`16gslave`, sh start16gslave.sh
->
+> 
 > 5. 启动`16gdata`, sh start16gdata.sh
->
+> 
 > 6. 启动`16gmaster`, sh start16gmaster.sh
 
 ### 5、部署`studio`[前端]:
@@ -523,43 +457,6 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 >
 > 用户名：admin 密码：123456
 
-## Antlr4 SQL POC
-
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227958337-611c8b86-bc99-4a42-ad56-49f99531dd39.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227958353-4ec1b51b-1514-4845-a441-4d689f5d6fd8.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227958367-9ae952f6-adf3-4bbc-8191-2619785ddb9f.png">
-<br/>
-<br/>
-<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227958381-1650deff-6fe1-4cb2-ba39-5af04bb3cc1f.png">
-<br/>
-1、Antlr4词法解析和语法解析
-> 包括词法解析、语法解析、Antlr4的结果的处理
-
-2、Antlr4执行阶段
-> 1. 分为Lexer和Parser，实际上表示了两个不同的阶段：
->
-> 2. 词法分析阶段：对应于Lexer定义的词法规则，解析结果为一个一个的Token；
-     > 解析阶段：根据词法，构造出来一棵解析树或者语法树。
->
-> 3. 词法解析和语法解析的调和
-> 4. 首先，语法解析相对于词法解析，会产生更多的开销，所以，应该尽量将某些可能的处理在词法解析阶段完成，减少语法解析阶段的开销
-> 5. 合并语言不关心的标记，例如，某些语言（例如js）不区分int、double，只有 number，那么在词法解析阶段，
-     > 就不需要将int和double区分开，统一合并为一个number；
-> 6. 空格、注释等信息，对于语法解析并无大的帮助，可以在词法分析阶段剔除掉；
-     > 诸如标志符、关键字、字符串和数字这样的常用记号，均应该在词法解析时完成，而不要到语法解析阶段再进行。
-> 7. 只有 number，没有 int 和 double 等，但是面向静态代码分析，我们可能需要知道确切的类型来帮助分析特定的缺陷；
->
-> 8. 虽然注释对代码帮助不大，但是我们有时候也需要解析注释的内容来进行分析，如果无法在语法解析的时候获取，
-     > 那么就需要遍历Token，从而导致静态代码分析开销更大等；
-> 9. 解析树vs语法树
-> 10. Antlr4生成的树状结构，称为解析树或者是语法树，如果通过Antlr4解析语言简单使用，可以直接基于Antlr4的结果开发，
-      但是如果要进行更加深入的处理，就需要对Antlr4的结果进行更进一步的处理，以更符合我们的使用习惯
-> 11. Java Parser格式的Java的AST，Clang格式的C/C++的AST, 然后才能更好地在上面进行开发。
 
 
 ## Presto POC调研
@@ -647,11 +544,11 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 > 2. init.gradle文件
 ```markdown
 allprojects{
-repositories {
-def ALIYUN_REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public'
-def ALIYUN_JCENTER_URL = 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
-def GRADLE_LOCAL_RELEASE_URL = 'https://repo.gradle.org/gradle/libs-releases-local'
-def ALIYUN_SPRING_RELEASE_URL = 'https://maven.aliyun.com/repository/spring-plugin'
+    repositories {
+        def ALIYUN_REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public'
+        def ALIYUN_JCENTER_URL = 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+        def GRADLE_LOCAL_RELEASE_URL = 'https://repo.gradle.org/gradle/libs-releases-local'
+        def ALIYUN_SPRING_RELEASE_URL = 'https://maven.aliyun.com/repository/spring-plugin'
 
         all { ArtifactRepository repo ->
             if(repo instanceof MavenArtifactRepository){
@@ -786,20 +683,20 @@ use demo;
 
 CREATE TABLE IF NOT EXISTS demo.example_tbl
 (
-`user_id` LARGEINT NOT NULL COMMENT "用户id",
-`date` DATE NOT NULL COMMENT "数据灌入日期时间",
-`city` VARCHAR(20) COMMENT "用户所在城市",
-`age` SMALLINT COMMENT "用户年龄",
-`sex` TINYINT COMMENT "用户性别",
-`last_visit_date` DATETIME REPLACE DEFAULT "1970-01-01 00:00:00" COMMENT "用户最后一次访问时间",
-`cost` BIGINT SUM DEFAULT "0" COMMENT "用户总消费",
-`max_dwell_time` INT MAX DEFAULT "0" COMMENT "用户最大停留时间",
-`min_dwell_time` INT MIN DEFAULT "99999" COMMENT "用户最小停留时间"
+    `user_id` LARGEINT NOT NULL COMMENT "用户id",
+    `date` DATE NOT NULL COMMENT "数据灌入日期时间",
+    `city` VARCHAR(20) COMMENT "用户所在城市",
+    `age` SMALLINT COMMENT "用户年龄",
+    `sex` TINYINT COMMENT "用户性别",
+    `last_visit_date` DATETIME REPLACE DEFAULT "1970-01-01 00:00:00" COMMENT "用户最后一次访问时间",
+    `cost` BIGINT SUM DEFAULT "0" COMMENT "用户总消费",
+    `max_dwell_time` INT MAX DEFAULT "0" COMMENT "用户最大停留时间",
+    `min_dwell_time` INT MIN DEFAULT "99999" COMMENT "用户最小停留时间"
 )
 AGGREGATE KEY(`user_id`, `date`, `city`, `age`, `sex`)
 DISTRIBUTED BY HASH(`user_id`) BUCKETS 1
 PROPERTIES (
-"replication_allocation" = "tag.location.default: 1"
+    "replication_allocation" = "tag.location.default: 1"
 );
 ```
 > 16. touch sample.csv
@@ -1886,4 +1783,4 @@ void testCreateDatabase() {
 
 ## Community
 
-> 联系作者: https://docs.qq.com/doc/DVFZ1RFhGYkJRSGxN
+> 联系作者: https://docs.qq.com/doc/DVFVMYUp6cFhSRVJs

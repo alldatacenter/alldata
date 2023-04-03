@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
-public class TestParser extends Parser {
+public class HybridOlapParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -86,7 +86,7 @@ public class TestParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public TestParser(TokenStream input) {
+	public HybridOlapParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -102,15 +102,15 @@ public class TestParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_stmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).enterStmt(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).enterStmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).exitStmt(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).exitStmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof TestVisitor ) return ((TestVisitor<? extends T>)visitor).visitStmt(this);
+			if ( visitor instanceof HybridOlapVisitor ) return ((HybridOlapVisitor<? extends T>)visitor).visitStmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -156,19 +156,19 @@ public class TestParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode ADD() { return getToken(TestParser.ADD, 0); }
+		public TerminalNode ADD() { return getToken(HybridOlapParser.ADD, 0); }
 		public AddContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).enterAdd(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).enterAdd(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).exitAdd(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).exitAdd(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof TestVisitor ) return ((TestVisitor<? extends T>)visitor).visitAdd(this);
+			if ( visitor instanceof HybridOlapVisitor ) return ((HybridOlapVisitor<? extends T>)visitor).visitAdd(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -180,19 +180,19 @@ public class TestParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode DIV() { return getToken(TestParser.DIV, 0); }
+		public TerminalNode DIV() { return getToken(HybridOlapParser.DIV, 0); }
 		public DivContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).enterDiv(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).enterDiv(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).exitDiv(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).exitDiv(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof TestVisitor ) return ((TestVisitor<? extends T>)visitor).visitDiv(this);
+			if ( visitor instanceof HybridOlapVisitor ) return ((HybridOlapVisitor<? extends T>)visitor).visitDiv(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -204,19 +204,19 @@ public class TestParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode MIN() { return getToken(TestParser.MIN, 0); }
+		public TerminalNode MIN() { return getToken(HybridOlapParser.MIN, 0); }
 		public MinContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).enterMin(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).enterMin(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).exitMin(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).exitMin(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof TestVisitor ) return ((TestVisitor<? extends T>)visitor).visitMin(this);
+			if ( visitor instanceof HybridOlapVisitor ) return ((HybridOlapVisitor<? extends T>)visitor).visitMin(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -228,37 +228,37 @@ public class TestParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode NUL() { return getToken(TestParser.NUL, 0); }
+		public TerminalNode NUL() { return getToken(HybridOlapParser.NUL, 0); }
 		public MulContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).enterMul(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).enterMul(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).exitMul(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).exitMul(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof TestVisitor ) return ((TestVisitor<? extends T>)visitor).visitMul(this);
+			if ( visitor instanceof HybridOlapVisitor ) return ((HybridOlapVisitor<? extends T>)visitor).visitMul(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class IntContext extends ExprContext {
-		public TerminalNode INT() { return getToken(TestParser.INT, 0); }
+		public TerminalNode INT() { return getToken(HybridOlapParser.INT, 0); }
 		public IntContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).enterInt(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).enterInt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TestListener ) ((TestListener)listener).exitInt(this);
+			if ( listener instanceof HybridOlapListener ) ((HybridOlapListener)listener).exitInt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof TestVisitor ) return ((TestVisitor<? extends T>)visitor).visitInt(this);
+			if ( visitor instanceof HybridOlapVisitor ) return ((HybridOlapVisitor<? extends T>)visitor).visitInt(this);
 			else return visitor.visitChildren(this);
 		}
 	}

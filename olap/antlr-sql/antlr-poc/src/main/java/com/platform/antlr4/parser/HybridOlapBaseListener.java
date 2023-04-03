@@ -8,84 +8,84 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link TestListener},
+ * This class provides an empty implementation of {@link HybridOlapListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
 @SuppressWarnings("CheckReturnValue")
-public class TestBaseListener implements TestListener {
+public class HybridOlapBaseListener implements HybridOlapListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStmt(TestParser.StmtContext ctx) { }
+	@Override public void enterStmt(HybridOlapParser.StmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStmt(TestParser.StmtContext ctx) { }
+	@Override public void exitStmt(HybridOlapParser.StmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdd(TestParser.AddContext ctx) { }
+	@Override public void enterAdd(HybridOlapParser.AddContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdd(TestParser.AddContext ctx) { }
+	@Override public void exitAdd(HybridOlapParser.AddContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDiv(TestParser.DivContext ctx) { }
+	@Override public void enterDiv(HybridOlapParser.DivContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDiv(TestParser.DivContext ctx) { }
+	@Override public void exitDiv(HybridOlapParser.DivContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMin(TestParser.MinContext ctx) { }
+	@Override public void enterMin(HybridOlapParser.MinContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMin(TestParser.MinContext ctx) { }
+	@Override public void exitMin(HybridOlapParser.MinContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMul(TestParser.MulContext ctx) { }
+	@Override public void enterMul(HybridOlapParser.MulContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMul(TestParser.MulContext ctx) { }
+	@Override public void exitMul(HybridOlapParser.MulContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInt(TestParser.IntContext ctx) { }
+	@Override public void enterInt(HybridOlapParser.IntContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInt(TestParser.IntContext ctx) { }
+	@Override public void exitInt(HybridOlapParser.IntContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

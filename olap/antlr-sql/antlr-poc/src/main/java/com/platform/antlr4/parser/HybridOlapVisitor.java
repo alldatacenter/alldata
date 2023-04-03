@@ -6,51 +6,51 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced
- * by {@link TestParser}.
+ * by {@link HybridOlapParser}.
  *
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
-public interface TestVisitor<T> extends ParseTreeVisitor<T> {
+public interface HybridOlapVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link TestParser#stmt}.
+	 * Visit a parse tree produced by {@link HybridOlapParser#stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStmt(TestParser.StmtContext ctx);
+	T visitStmt(HybridOlapParser.StmtContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Add}
-	 * labeled alternative in {@link TestParser#expr}.
+	 * labeled alternative in {@link HybridOlapParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAdd(TestParser.AddContext ctx);
+	T visitAdd(HybridOlapParser.AddContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Div}
-	 * labeled alternative in {@link TestParser#expr}.
+	 * labeled alternative in {@link HybridOlapParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDiv(TestParser.DivContext ctx);
+	T visitDiv(HybridOlapParser.DivContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Min}
-	 * labeled alternative in {@link TestParser#expr}.
+	 * labeled alternative in {@link HybridOlapParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMin(TestParser.MinContext ctx);
+	T visitMin(HybridOlapParser.MinContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Mul}
-	 * labeled alternative in {@link TestParser#expr}.
+	 * labeled alternative in {@link HybridOlapParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMul(TestParser.MulContext ctx);
+	T visitMul(HybridOlapParser.MulContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Int}
-	 * labeled alternative in {@link TestParser#expr}.
+	 * labeled alternative in {@link HybridOlapParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInt(TestParser.IntContext ctx);
+	T visitInt(HybridOlapParser.IntContext ctx);
 }
