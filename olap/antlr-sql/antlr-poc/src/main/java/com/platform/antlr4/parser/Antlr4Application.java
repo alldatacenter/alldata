@@ -7,17 +7,17 @@ import org.antlr.v4.runtime.CommonTokenStream;
 public class Antlr4Application {
     public static void main(String[] args) {
         CharStream input = CharStreams.fromString("100*2+200");
-        TestLexer lexer = new TestLexer(input);
+        HybridOlapLexer lexer = new HybridOlapLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        TestParser parser = new TestParser(tokens);
-        TestParser.ExprContext tree = parser.expr();
-        TestVisitor tv = new TestVisitor();
+        HybridOlapParser parser = new HybridOlapParser(tokens);
+        HybridOlapParser.ExprContext tree = parser.expr();
+        HybridOlapVisitor tv = new HybridOlapVisitor();
         tv.visit(tree);
     }
 
-    static class TestVisitor extends TestBaseVisitor<Void> {
+    static class HybridOlapVisitor extends HybridOlapBaseVisitor<Void> {
         @Override
-        public Void visitAdd(TestParser.AddContext ctx) {
+        public Void visitAdd(HybridOlapParser.AddContext ctx) {
             System.out.println("========= test add");
             System.out.println("first arg: " + ctx.expr(0).getText());
             System.out.println("second arg: " + ctx.expr(1).getText());
