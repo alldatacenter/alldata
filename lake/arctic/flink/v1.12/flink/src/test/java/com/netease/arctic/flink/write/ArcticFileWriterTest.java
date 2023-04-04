@@ -23,7 +23,6 @@ import com.netease.arctic.flink.table.ArcticTableLoader;
 import com.netease.arctic.flink.util.OneInputStreamOperatorInternTest;
 import com.netease.arctic.flink.util.TestGlobalAggregateManager;
 import com.netease.arctic.table.ArcticTable;
-import org.apache.flink.runtime.checkpoint.OperatorSubtaskState;
 import org.apache.flink.streaming.util.OneInputStreamOperatorTestHarness;
 import org.apache.flink.table.data.RowData;
 import org.apache.flink.table.types.logical.RowType;
@@ -138,47 +137,6 @@ public class ArcticFileWriterTest extends FlinkTestBase {
       List<WriteResult> completedFiles = testHarness.extractOutputValues();
       Assert.assertEquals(2, completedFiles.size());
       Assert.assertEquals(3, completedFiles.get(1).dataFiles().length);
-    }
-  }
-
-  @Test
-  public void testFailover() throws Exception {
-    tableLoader = ArcticTableLoader.of(PK_TABLE_ID, catalogBuilder);
-    long checkpointId = 1L;
-
-    OperatorSubtaskState state;
-    try (
-        OneInputStreamOperatorTestHarness<RowData, WriteResult> testHarness = doCreateArcticStreamWriter(
-            tableLoader, submitEmptySnapshots, null)) {
-      testHarness.setup();
-      testHarness.initializeEmptyState();
-      testHarness.open();
-      // The first checkpoint
-      testHarness.processElement(createRowData(1, "hello", "2020-10-11T10:10:11.0"), 1);
-      testHarness.processElement(createRowData(2, "hello", "2020-10-12T10:10:11.0"), 1);
-      testHarness.processElement(createRowData(3, "hello", "2020-10-13T10:10:11.0"), 1);
-
-      testHarness.prepareSnapshotPreBarrier(checkpointId);
-      state = testHarness.snapshot(checkpointId, 1L);
-      testHarness.notifyOfCompletedCheckpoint(checkpointId);
-
-      testHarness.prepareSnapshotPreBarrier(checkpointId + 1);
-      testHarness.processElement(createRowData(1, "hello", "2020-10-11T10:10:11.0"), 1);
-      testHarness.processElement(createRowData(2, "hello", "2020-10-12T10:10:11.0"), 1);
-      testHarness.processElement(createRowData(3, "hello", "2020-10-13T10:10:11.0"), 1);
-
-      testHarness.snapshot(checkpointId + 1, 2L);
-    }
-
-    try (
-        OneInputStreamOperatorTestHarness<RowData, WriteResult> testHarness = doCreateArcticStreamWriter(
-            tableLoader, submitEmptySnapshots, 1L)) {
-      testHarness.setup();
-      testHarness.initializeState(state);
-      testHarness.open();
-
-      ArcticFileWriter fileWriter = (ArcticFileWriter) testHarness.getOneInputOperator();
-      Assert.assertEquals(checkpointId + 1, fileWriter.getCheckpointId());
     }
   }
 

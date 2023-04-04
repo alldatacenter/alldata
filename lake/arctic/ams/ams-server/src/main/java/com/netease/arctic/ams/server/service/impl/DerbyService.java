@@ -21,6 +21,8 @@ package com.netease.arctic.ams.server.service.impl;
 import com.netease.arctic.ams.server.service.IJDBCService;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,6 +32,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DerbyService extends IJDBCService {
+  public static final Logger LOG = LoggerFactory.getLogger(DerbyService.class);
+
   public void createTable() throws Exception {
     try (SqlSession sqlSession = getSqlSession(true)) {
       Connection connection = sqlSession.getConnection();
@@ -42,6 +46,9 @@ public class DerbyService extends IJDBCService {
         ScriptRunner runner = new ScriptRunner(connection);
         runner.runScript(new InputStreamReader(new FileInputStream(getDerbyInitSqlDir()), "UTF-8"));
       }
+    } catch (Exception e) {
+      LOG.error("create derby table error", e);
+      throw e;
     }
   }
 

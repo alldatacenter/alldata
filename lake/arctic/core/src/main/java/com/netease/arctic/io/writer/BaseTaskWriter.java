@@ -123,6 +123,10 @@ public abstract class BaseTaskWriter<T> implements TaskWriter<T> {
     writerHolder.close();
   }
 
+  protected PrimaryKeyData getPrimaryKey() {
+    return primaryKey;
+  }
+
   /**
    * Wrap the data as a {@link StructLike}.
    */

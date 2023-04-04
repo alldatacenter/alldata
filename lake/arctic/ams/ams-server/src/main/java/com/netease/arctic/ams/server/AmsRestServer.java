@@ -185,6 +185,7 @@ public class AmsRestServer {
         get("/optimize/optimizerGroups/{optimizerGroup}/info", OptimizerController::getOptimizerGroupInfo);
         delete("/optimize/optimizerGroups/{optimizerGroup}/optimizers/{jobId}", OptimizerController::releaseOptimizer);
         post("/optimize/optimizerGroups/{optimizerGroup}/optimizers", OptimizerController::scaleOutOptimizer);
+        post("/optimize/optimizerGroups", OptimizerController::createOptimizeGroup);
 
         /** console controller **/
         get("/terminal/examples", TerminalController::getExamples);
@@ -240,6 +241,7 @@ public class AmsRestServer {
         get("/optimize/optimizerGroups/{optimizerGroup}/info", OptimizerController::getOptimizerGroupInfo);
         delete("/optimize/optimizerGroups/{optimizerGroup}/optimizers/{jobId}", OptimizerController::releaseOptimizer);
         post("/optimize/optimizerGroups/{optimizerGroup}/optimizers", OptimizerController::scaleOutOptimizer);
+        post("/optimize/optimizerGroups", OptimizerController::createOptimizeGroup);
 
         /** console controller **/
         get("/terminal/examples", TerminalController::getExamples);

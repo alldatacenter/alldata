@@ -22,7 +22,7 @@ import com.netease.arctic.AmsClient;
 import com.netease.arctic.ams.api.CatalogMeta;
 import com.netease.arctic.ams.api.properties.CatalogMetaProperties;
 import com.netease.arctic.io.ArcticFileIO;
-import com.netease.arctic.io.ArcticHadoopFileIO;
+import com.netease.arctic.io.ArcticFileIOs;
 import com.netease.arctic.table.ArcticTable;
 import com.netease.arctic.table.BasicUnkeyedTable;
 import com.netease.arctic.table.TableBuilder;
@@ -142,7 +142,7 @@ public class BasicIcebergCatalog implements ArcticCatalog {
   public ArcticTable loadTable(TableIdentifier tableIdentifier) {
     Table icebergTable = tableMetaStore.doAs(() -> icebergCatalog
         .loadTable(toIcebergTableIdentifier(tableIdentifier)));
-    ArcticFileIO arcticFileIO = new ArcticHadoopFileIO(tableMetaStore);
+    ArcticFileIO arcticFileIO = ArcticFileIOs.buildHadoopFileIO(tableMetaStore);
     return new BasicIcebergTable(tableIdentifier, CatalogUtil.useArcticTableOperations(icebergTable,
         icebergTable.location(), arcticFileIO, tableMetaStore.getConfiguration()), arcticFileIO,
         meta.getCatalogProperties());
@@ -185,34 +185,25 @@ public class BasicIcebergCatalog implements ArcticCatalog {
     return BasicTableBlockerManager.build(tableIdentifier, client);
   }
 
+  @Override
+  public Map<String, String> properties() {
+    return meta.getCatalogProperties();
+  }
+
   private org.apache.iceberg.catalog.TableIdentifier toIcebergTableIdentifier(TableIdentifier tableIdentifier) {
     return org.apache.iceberg.catalog.TableIdentifier.of(
         Namespace.of(tableIdentifier.getDatabase()),
         tableIdentifier.getTableName());
   }
 
-  public class BasicIcebergTable extends BasicUnkeyedTable {
-    private final Map<String, String> catalogProperties;
-
-    public BasicIcebergTable(
-        TableIdentifier tableIdentifier,
-        Table icebergTable,
-        ArcticFileIO arcticFileIO) {
-      this(tableIdentifier, icebergTable, arcticFileIO, null);
-    }
+  public static class BasicIcebergTable extends BasicUnkeyedTable {
 
     public BasicIcebergTable(
         TableIdentifier tableIdentifier,
         Table icebergTable,
         ArcticFileIO arcticFileIO,
         Map<String, String> catalogProperties) {
-      super(tableIdentifier, icebergTable, arcticFileIO);
-      this.catalogProperties = catalogProperties;
-    }
-
-    @Override
-    public Map<String, String> properties() {
-      return CatalogUtil.mergeCatalogPropertiesToTable(icebergTable.properties(), catalogProperties);
+      super(tableIdentifier, icebergTable, arcticFileIO, null, catalogProperties);
     }
   }
 }

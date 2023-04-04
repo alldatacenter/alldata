@@ -543,6 +543,50 @@ public class TestCreateTableDDL extends SparkTestBase {
   }
 
   @Test
+  public void testCreateTableLikeWithNoProvider() throws TException {
+    TableIdentifier identifierA = TableIdentifier.of(catalogNameHive, database, tableA);
+    TableIdentifier identifierB = TableIdentifier.of(catalogNameHive, database, tableB);
+
+    sql("create table {0}.{1} ( \n" +
+        " id int , \n" +
+        " name string , \n " +
+        " ts timestamp," +
+        " primary key (id) \n" +
+        ") using arctic \n" +
+        " partitioned by ( ts ) \n" +
+        " tblproperties ( \n" +
+        " ''props.test1'' = ''val1'', \n" +
+        " ''props.test2'' = ''val2'' ) ", database, tableB);
+
+    sql("create table {0}.{1} like {2}.{3}", database, tableA, database, tableB);
+    Table hiveTable1 = hms.getClient().getTable(database, tableA);
+    Assert.assertNotNull(hiveTable1);
+    Types.StructType expectedSchema = Types.StructType.of(
+        Types.NestedField.required(1, "id", Types.IntegerType.get()),
+        Types.NestedField.optional(2, "name", Types.StringType.get()),
+        Types.NestedField.optional(3, "ts", Types.TimestampType.withoutZone()));
+    Assert.assertEquals("Schema should match expected",
+        expectedSchema, loadTable(identifierA).schema().asStruct());
+    sql("desc table {0}.{1}", database, tableA);
+    assertDescResult(rows, Lists.newArrayList("id"));
+
+    sql("drop table {0}.{1}", database, tableA);
+
+    sql("create table {0}.{1} like {2}.{3} using arctic", database, tableA, database, tableB);
+    Table hiveTable2 = hms.getClient().getTable(database, tableA);
+    Assert.assertNotNull(hiveTable2);
+    Assert.assertEquals("Schema should match expected",
+        expectedSchema, loadTable(identifierA).schema().asStruct());
+    sql("desc table {0}.{1}", database, tableA);
+    assertDescResult(rows, Lists.newArrayList("id"));
+
+    sql("drop table {0}.{1}", database, tableA);
+    sql("drop table {0}.{1}", database, tableB);
+    assertTableNotExist(identifierB);
+
+  }
+
+  @Test
   public void testCreateNewTableShouldHaveTimestampWithoutZone() {
     withSQLConf(ImmutableMap.of(
             USE_TIMESTAMP_WITHOUT_TIME_ZONE_IN_NEW_TABLES, "true"), () -> {

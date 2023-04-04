@@ -32,6 +32,7 @@ public class ArcticThriftUrl {
   public static final int DEFAULT_SOCKET_TIMEOUT = 5000;
   public static final String ZOOKEEPER_FLAG = "zookeeper";
   public static final String THRIFT_FLAG = "thrift";
+  public static final String THRIFT_URL_FORMAT = "thrift://%s:%d/%s%s";
   private static final Pattern PATTERN = Pattern.compile("zookeeper://(\\S+)/([\\w-]+)");
   private final String schema;
   private final String host;
@@ -83,7 +84,7 @@ public class ArcticThriftUrl {
           throw new RuntimeException("get master server info from zookeeper error", e);
         }
         url =
-            String.format("thrift://%s:%d/%s%s", serverInfo.getHost(), serverInfo.getThriftBindPort(), catalog, query);
+            String.format(THRIFT_URL_FORMAT, serverInfo.getHost(), serverInfo.getThriftBindPort(), catalog, query);
       } else {
         throw new RuntimeException(String.format("invalid ams url %s", url));
       }
@@ -152,6 +153,10 @@ public class ArcticThriftUrl {
 
   public String url() {
     return url;
+  }
+
+  public String serverUrl() {
+    return String.format(THRIFT_URL_FORMAT, host, port, "", "");
   }
 
   @Override

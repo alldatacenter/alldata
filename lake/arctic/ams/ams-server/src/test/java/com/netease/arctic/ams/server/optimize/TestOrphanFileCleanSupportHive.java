@@ -32,6 +32,7 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -57,15 +58,15 @@ public class TestOrphanFileCleanSupportHive extends TestSupportHiveBase {
   }
 
   @Test
-  public void orphanDataFileClean() {
+  public void orphanDataFileClean() throws IOException {
     String baseOrphanFilePath = testUnPartitionKeyedHiveTable.baseTable().location() +
         File.separator + DATA_FOLDER_NAME + File.separator + "orphan.parquet";
     String hiveOrphanFilePath = testUnPartitionKeyedHiveTable.hiveLocation() +
         File.separator + DATA_FOLDER_NAME + File.separator + "orphan.parquet";
     OutputFile baseOrphanDataFile = testUnPartitionKeyedHiveTable.io().newOutputFile(baseOrphanFilePath);
-    baseOrphanDataFile.createOrOverwrite();
+    baseOrphanDataFile.createOrOverwrite().close();
     OutputFile changeOrphanDataFile = testUnPartitionKeyedHiveTable.io().newOutputFile(hiveOrphanFilePath);
-    changeOrphanDataFile.createOrOverwrite();
+    changeOrphanDataFile.createOrOverwrite().close();
     Assert.assertTrue(testUnPartitionKeyedHiveTable.io().exists(baseOrphanFilePath));
     Assert.assertTrue(testUnPartitionKeyedHiveTable.io().exists(hiveOrphanFilePath));
     OrphanFilesCleanService.cleanContentFiles(testUnPartitionKeyedHiveTable, System.currentTimeMillis());

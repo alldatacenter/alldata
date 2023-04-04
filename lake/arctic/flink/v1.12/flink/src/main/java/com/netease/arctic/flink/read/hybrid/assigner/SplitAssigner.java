@@ -20,10 +20,11 @@ package com.netease.arctic.flink.read.hybrid.assigner;
 
 import com.netease.arctic.flink.read.hybrid.split.ArcticSplit;
 import com.netease.arctic.flink.read.hybrid.split.ArcticSplitState;
+import org.apache.flink.api.connector.source.SplitEnumeratorContext;
 
 import java.io.Closeable;
 import java.util.Collection;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * An interface SplitAssigner for {@link ArcticSplit}
@@ -33,9 +34,9 @@ public interface SplitAssigner extends Closeable {
   default void open() {
   }
 
-  Optional<ArcticSplit> getNext();
+  Split getNext();
 
-  Optional<ArcticSplit> getNext(int subtaskId);
+  Split getNext(int subtaskId);
 
   /**
    * Add new splits discovered by enumerator
@@ -55,4 +56,19 @@ public interface SplitAssigner extends Closeable {
   }
 
   Collection<ArcticSplitState> state();
+
+  /**
+   * Enumerator can get a notification via CompletableFuture when the assigner has more splits
+   * available later. Enumerator should schedule assignment in the thenAccept action of the future.
+   *
+   * <p>Assigner will return the same future if this method is called again before the previous
+   * future is completed.
+   *
+   * <p>The future can be completed from other thread, e.g. the coordinator thread from another
+   * thread for event time alignment.
+   *
+   * <p>If enumerator need to trigger action upon the future completion, it may want to run it in
+   * the coordinator thread using {@link SplitEnumeratorContext#runInCoordinatorThread(Runnable)}.
+   */
+  CompletableFuture<Void> isAvailable();
 }

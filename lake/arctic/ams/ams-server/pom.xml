@@ -25,7 +25,7 @@
     <parent>
         <groupId>com.netease.arctic</groupId>
         <artifactId>arctic-ams</artifactId>
-        <version>0.5.0-SNAPSHOT</version>
+        <version>0.4.1</version>
     </parent>
 
     <artifactId>arctic-ams-server</artifactId>
@@ -41,6 +41,7 @@
         <jetty.verison>9.4.46.v20220331</jetty.verison>
         <kotlin.version>1.5.32</kotlin.version>
         <spark.version>3.1.1</spark.version>
+        <jline.version>3.22.0</jline.version>
     </properties>
 
     <dependencies>
@@ -519,6 +520,11 @@
             <version>1.6.0-incubating</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>${jline.version}</version>
+        </dependency>
 
     </dependencies>
 

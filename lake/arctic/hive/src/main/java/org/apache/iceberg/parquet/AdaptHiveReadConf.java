@@ -79,7 +79,7 @@ class AdaptHiveReadConf<T> {
       typeWithIds = fileSchema;
       this.projection = ParquetSchemaUtil.pruneColumns(fileSchema, expectedSchema);
     } else if (nameMapping != null) {
-      typeWithIds = ParquetSchemaUtil.applyNameMapping(fileSchema, nameMapping);
+      typeWithIds = (MessageType) ParquetTypeVisitor.visit(fileSchema, new AdaptHiveApplyNameMapping(nameMapping));
       this.projection = ParquetSchemaUtil.pruneColumns(typeWithIds, expectedSchema);
     } else {
       typeWithIds = ParquetSchemaUtil.addFallbackIds(fileSchema);

@@ -278,3 +278,9 @@ export enum upgradeStatusMap {
   success = 'SUCCESS',
   none = 'NONE' // can upgrade
 }
+
+export enum tableTypeIconMap {
+  ICEBERG = 'iceberg',
+  ARCTIC = 'arctic',
+  HIVE = 'hive'
+}

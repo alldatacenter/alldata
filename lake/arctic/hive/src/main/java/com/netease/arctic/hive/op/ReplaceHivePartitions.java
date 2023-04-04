@@ -304,5 +304,6 @@ public class ReplaceHivePartitions implements ReplacePartitions {
 
   private void generateUnpartitionTableLocation() {
     unpartitionTableLocation = TableFileUtils.getFileDir(this.addFiles.get(0).path().toString());
+    checkOrphanFilesAndDelete(unpartitionTableLocation, this.addFiles);
   }
 }

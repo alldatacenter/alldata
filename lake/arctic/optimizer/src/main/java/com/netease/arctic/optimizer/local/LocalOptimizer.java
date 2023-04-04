@@ -67,6 +67,8 @@ public class LocalOptimizer implements StatefulOptimizer {
   private Map<String, String> properties;
 
   private static final String STATE_JOB_ID = "local-job-id";
+  private static final String HADOOP_CONF_DIR = "HADOOP_CONF_DIR";
+  private static final String HADOOP_USER_NAME = "HADOOP_USER_NAME";
 
   private ExecutorService executeThreadPool;
 
@@ -141,6 +143,14 @@ public class LocalOptimizer implements StatefulOptimizer {
       }
       if (containerProperties != null && containerProperties.containsKey("java_home")) {
         String[] tmpCmd = {"/bin/sh", "-c", "export JAVA_HOME=" + containerProperties.getString("java_home")};
+        runtime.exec(tmpCmd);
+      }
+      if (containerProperties.containsKey(HADOOP_CONF_DIR)) {
+        String[] tmpCmd = {"/bin/sh", "-c", "export HADOOP_CONF_DIR=" + containerProperties.get(HADOOP_CONF_DIR)};
+        runtime.exec(tmpCmd);
+      }
+      if (containerProperties.containsKey(HADOOP_USER_NAME)) {
+        String[] tmpCmd = {"/bin/sh", "-c", "export HADOOP_USER_NAME=" + containerProperties.get(HADOOP_USER_NAME)};
         runtime.exec(tmpCmd);
       }
       String[] finalCmd = {"/bin/sh", "-c", cmd};

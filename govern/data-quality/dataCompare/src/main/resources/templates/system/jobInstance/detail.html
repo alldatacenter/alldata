@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('运行实例详情')"/>
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+
+    <form class="form-horizontal m" id="form-post-edit" th:object="${Instance}">
+        <input id="id" name="id" type="hidden" th:field="*{id}"/>
+        <div class="form-group">
+            <label class="col-sm-6 control-label"><h2>量级对比</h2></label>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">源表</label>
+            <label class="col-sm-5 control-label">目标表</label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">originTablePv：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="originTablePv" id="originTablePv"
+                       th:field="*{originTablePv}" readonly="readonly">
+            </div>
+            <label class="col-sm-2 control-label is-required">originTableUv：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="originTableUv" id="originTableUv"
+                       th:field="*{originTableUv}" readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">toTablePv：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="url" id="toTablePv" th:field="*{toTablePv}"
+                       readonly="readonly">
+            </div>
+            <label class="col-sm-2 control-label is-required">toTableUv：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="url" id="toTableUv" th:field="*{toTableUv}"
+                       readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">pvDiff：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="url" id="pvDiff" th:field="*{pvDiff}" readonly="readonly">
+            </div>
+            <label class="col-sm-2 control-label is-required">uvDiff：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="url" id="uvDiff" th:field="*{uvDiff}" readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">magnitudeSql：</label>
+            <div class="col-sm-8">
+                <textarea id="magnitudeSql" style="height: 200px" name="magnitudeSql" class="form-control"
+                          th:field="*{magnitudeSql}" readonly="readonly"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">量级是否通过：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="numFlag" id="numFlag"
+                       th:value="${numFlag}" style="color: red" readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-6 control-label"><h2>一致性对比</h2></label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">originTableCount：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="originTableCount" id="originTableCount"
+                       th:field="*{originTableCount}" readonly="readonly">
+            </div>
+            <label class="col-sm-2 control-label is-required">uvDiff：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="toTableCount" id="toTableCount" th:field="*{toTableCount}"
+                       readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">countDiff：</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" name="countDiff" id="countDiff" th:field="*{countDiff}"
+                       readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">consistencySql：</label>
+            <div class="col-sm-8">
+                <textarea id="consistencySql" style="height: 200px" name="consistencySql" class="form-control"
+                          th:field="*{consistencySql}" readonly="readonly"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">一致性是否通过：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="consistencyFlag" id="consistencyFlag" style="color: red"
+                       th:value="${consistencyFlag}" readonly="readonly">
+            </div>
+        </div>
+
+        <br/>
+        <hr/>
+
+        <div class="form-group">
+            <div class="col-sm-offset-5">
+
+                <button type="button" class="btn btn-w-m btn-primary" onclick="see()"
+                        th:style="'display:' + @{(${consistencyFlag} == true ? 'none' : 'inline-block')} + ''">
+                    查看差异
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<script type="text/javascript">
+    var prefix = ctx + "system/jobInstance";
+    function see() {
+        $.modal.open("差异case", prefix + "/diffDetail/" + $("#id").val());
+    }
+</script>
+</body>
+</html>

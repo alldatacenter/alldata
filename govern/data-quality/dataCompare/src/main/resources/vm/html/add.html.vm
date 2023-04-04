@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('新增${functionName}')" />
+#foreach($column in $columns)
+#if($column.insert && !$column.superColumn && !$column.pk && $column.htmlType == "datetime")
+    <th:block th:include="include :: datetimepicker-css" />
+#break
+#end
+#end
+#foreach($column in $columns)
+#if($column.insert && !$column.superColumn && !$column.pk && $column.htmlType == "upload")
+    <th:block th:include="include :: bootstrap-fileinput-css"/>
+#break
+#end
+#end
+#foreach($column in $columns)
+#if($column.insert && !$column.superColumn && !$column.pk && $column.htmlType == "summernote")
+    <th:block th:include="include :: summernote-css" />
+#break
+#end
+#end
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-${businessName}-add">
+#if($table.sub)
+            <h4 class="form-header h4">${functionName}信息</h4>
+#end
+#foreach($column in $columns)
+#set($field=$column.javaField)
+#if($column.insert && !$column.pk)
+#if(($column.usableColumn) || (!$column.superColumn))
+#set($parentheseIndex=$column.columnComment.indexOf("（"))
+#if($parentheseIndex != -1)
+#set($comment=$column.columnComment.substring(0, $parentheseIndex))
+#else
+#set($comment=$column.columnComment)
+#end
+#set($dictType=$column.dictType)
+#if("" != $treeParentCode && $column.javaField == $treeParentCode)
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <div class="input-group">
+#set($BusinessName=$businessName.substring(0,1).toUpperCase() + ${businessName.substring(1)})
+#set($treeId = "${className}?.${treeCode}")
+                        <input id="treeId" name="${treeParentCode}" type="hidden" th:value="${${treeId}}"/>
+                        <input class="form-control" type="text" onclick="select${BusinessName}Tree()" id="treeName" readonly="true" th:value="${${treeName}}"#if($column.required) required#end>
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+#elseif($column.htmlType == "input")
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <input name="${field}" class="form-control" type="text"#if($column.required) required#end>
+                </div>
+            </div>
+#elseif($column.htmlType == "upload")
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <input type="hidden" name="${field}">
+                    <div class="file-loading">
+                        <input class="form-control file-upload" id="${field}" name="file" type="file">
+                    </div>
+                </div>
+            </div>
+#elseif($column.htmlType == "summernote")
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <input type="hidden" class="form-control" name="${field}">
+                    <div class="summernote" id="${field}"></div>
+                </div>
+            </div>
+#elseif($column.htmlType == "select" && "" != $dictType)
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <select name="${field}" class="form-control m-b" th:with="type=${@dict.getType('${dictType}')}"#if($column.required) required#end>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+#elseif($column.htmlType == "select" && $dictType)
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <select name="${field}" class="form-control m-b"#if($column.required) required#end>
+                        <option value="">所有</option>
+                    </select>
+                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
+                </div>
+            </div>
+#elseif($column.htmlType == "checkbox" && "" != $dictType)
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8" th:with="type=${@dict.getType('${dictType}')}">
+                    <label th:each="dict : ${type}" class="check-box">
+                        <input name="${field}" type="checkbox" th:value="${dict.dictValue}" th:text="${dict.dictLabel}"#if($column.required) required#end>
+                    </label>
+                </div>
+            </div>
+#elseif($column.htmlType == "checkbox" && $dictType)
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <label class="check-box">
+                        <input name="${field}" type="checkbox"#if($column.required) required#end> 无
+                    </label>
+                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
+                </div>
+            </div>
+#elseif($column.htmlType == "radio" && "" != $dictType)
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <div class="radio-box" th:each="dict : ${@dict.getType('${dictType}')}">
+                        <input type="radio" th:id="${'${field}_' + dict.dictCode}" name="${field}" th:value="${dict.dictValue}" th:checked="${dict.default}"#if($column.required) required#end>
+                        <label th:for="${'${field}_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
+                    </div>
+                </div>
+            </div>
+#elseif($column.htmlType == "radio" && $dictType)
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <div class="radio-box">
+                        <input type="radio" name="${field}" value=""#if($column.required) required#end>
+                        <label th:for="${field}" th:text="未知"></label>
+                    </div>
+                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
+                </div>
+            </div>
+#elseif($column.htmlType == "datetime")
+            <div class="form-group">    
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="${field}" class="form-control" placeholder="yyyy-MM-dd" type="text"#if($column.required) required#end>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+#elseif($column.htmlType == "textarea")
+            <div class="form-group">
+                <label class="col-sm-3 control-label#if($column.required) is-required#end">${comment}：</label>
+                <div class="col-sm-8">
+                    <textarea name="${field}" class="form-control"#if($column.required) required#end></textarea>
+                </div>
+            </div>
+#end
+#end
+#end
+#end
+#if($table.sub)
+            <h4 class="form-header h4">${subTable.functionName}信息</h4>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-white btn-sm" onclick="addRow()"><i class="fa fa-plus"> 增加</i></button>
+                    <button type="button" class="btn btn-white btn-sm" onclick="sub.delRow()"><i class="fa fa-minus"> 删除</i></button>
+                    <div class="col-sm-12 select-table table-striped">
+                        <table id="bootstrap-table"></table>
+                    </div>
+                </div>
+            </div>
+#end
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+#foreach($column in $columns)
+#if($column.insert && !$column.superColumn && !$column.pk && $column.htmlType == "datetime")
+    <th:block th:include="include :: datetimepicker-js" />
+#break
+#end
+#end
+#foreach($column in $columns)
+#if($column.insert && !$column.superColumn && !$column.pk && $column.htmlType == "upload")
+    <th:block th:include="include :: bootstrap-fileinput-js"/>
+#break
+#end
+#end
+#foreach($column in $columns)
+#if($column.insert && !$column.superColumn && !$column.pk && $column.htmlType == "summernote")
+    <th:block th:include="include :: summernote-js" />
+#break
+#end
+#end
+    <script th:inline="javascript">
+        var prefix = ctx + "${moduleName}/${businessName}"
+#if($table.sub)
+#foreach($column in $subTable.columns)
+#if(${column.dictType} != '')
+        var ${column.javaField}Datas = [[${@dict.getType('${column.dictType}')}]];
+#end
+#end
+#end
+        $("#form-${businessName}-add").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/add", $('#form-${businessName}-add').serialize());
+            }
+        }
+#foreach($column in $columns)
+#if($column.insert && !$column.superColumn && !$column.pk && $column.htmlType == "datetime")
+
+        $("input[name='$column.javaField']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+#end
+#end
+#foreach($column in $columns)
+#if($column.edit && !$column.superColumn && !$column.pk && $column.htmlType == "upload")
+
+        $(".file-upload").fileinput({
+            uploadUrl: ctx + 'common/upload',
+            maxFileCount: 1,
+            autoReplace: true
+        }).on('fileuploaded', function (event, data, previewId, index) {
+            $("input[name='" + event.currentTarget.id + "']").val(data.response.url)
+        }).on('fileremoved', function (event, id, index) {
+            $("input[name='" + event.currentTarget.id + "']").val('')
+        })
+#break
+#end
+#end
+#foreach($column in $columns)
+#if($column.edit && !$column.superColumn && !$column.pk && $column.htmlType == "summernote")
+
+        $(function() {
+            $('.summernote').summernote({
+                lang: 'zh-CN',
+                dialogsInBody: true,
+                callbacks: {
+                    onChange: function(contents, $edittable) {
+                        $("input[name='" + this.id + "']").val(contents);
+                    },
+                    onImageUpload: function(files) {
+                        var obj = this;
+                    	var data = new FormData();
+                    	data.append("file", files[0]);
+                    	$.ajax({
+                            type: "post",
+                            url: ctx + "common/upload",
+                    		data: data,
+                    		cache: false,
+                    		contentType: false,
+                    		processData: false,
+                    		dataType: 'json',
+                    		success: function(result) {
+                    		    if (result.code == web_status.SUCCESS) {
+                    		        $('#' + obj.id).summernote('insertImage', result.url);
+                    		    } else {
+                    		        $.modal.alertError(result.msg);
+                    		    }
+                    		},
+                    		error: function(error) {
+                    		    $.modal.alertWarning("图片上传失败。");
+                    		}
+                    	});
+                    }
+                }
+            });
+        });
+#break
+#end
+#end
+#if($table.tree)
+
+        /*${functionName}-新增-选择父${functionName}树*/
+        function select${BusinessName}Tree() {
+            var options = {
+                title: '${functionName}选择',
+                width: "380",
+                url: prefix + "/select${BusinessName}Tree/" + $("#treeId").val(),
+                callBack: doSubmit
+            };
+            $.modal.openOptions(options);
+        }
+
+        function doSubmit(index, layero){
+            var body = $.modal.getChildFrame(index);
+            $("#treeId").val(body.find('#treeId').val());
+            $("#treeName").val(body.find('#treeName').val());
+            $.modal.close(index);
+        }
+#end
+#if($table.sub)
+
+        $(function() {
+            var options = {
+                pagination: false,
+                showSearch: false,
+                showRefresh: false,
+                showToggle: false,
+                showColumns: false,
+                sidePagination: "client",
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field: 'index',
+                    align: 'center',
+                    title: "序号",
+                    formatter: function (value, row, index) {
+                    	var columnIndex = $.common.sprintf("<input type='hidden' name='index' value='%s'>", $.table.serialNumber(index));
+                    	return columnIndex + $.table.serialNumber(index);
+                    }
+                },
+#foreach($column in $subTable.columns)
+#set($dictType=$column.dictType)
+#set($javaField=$column.javaField)
+#set($parentheseIndex=$column.columnComment.indexOf("（"))
+#if($parentheseIndex != -1)
+#set($comment=$column.columnComment.substring(0, $parentheseIndex))
+#else
+#set($comment=$column.columnComment)
+#end
+#if($column.pk || $javaField == ${subTableFkclassName})
+#elseif($column.list && "" != $dictType)
+                {
+                    field: '${javaField}',
+                    align: 'center',
+                    title: '${comment}',
+                    formatter: function(value, row, index) {
+                        var name = $.common.sprintf("${subclassName}List[%s].${javaField}", index);
+                        return $.common.dictToSelect(${javaField}Datas, value, name);
+                    }
+                },
+#else
+                {
+                    field: '${javaField}',
+                    align: 'center',
+                    title: '${comment}',
+                    formatter: function(value, row, index) {
+                        var html = $.common.sprintf("<input class='form-control' type='text' name='${subclassName}List[%s].${javaField}' value='%s'>", index, value);
+                        return html;
+                    }
+                },
+#end
+#end
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var value = $.common.isNotEmpty(row.index) ? row.index : $.table.serialNumber(index);
+                        return '<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="sub.delRowByIndex(\'' + value + '\')"><i class="fa fa-remove"></i>删除</a>';
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+
+        function addRow() {
+            var count = $("#" + table.options.id).bootstrapTable('getData').length;
+            var row = {
+                index: $.table.serialNumber(count),
+#foreach($column in $subTable.columns)
+#set($javaField=$column.javaField)
+#if($column.pk || $javaField == ${subTableFkclassName})
+#else
+                ${javaField}: "",
+#end
+#end
+            }
+            sub.addRow(row);
+        }
+#end
+    </script>
+</body>
+</html>

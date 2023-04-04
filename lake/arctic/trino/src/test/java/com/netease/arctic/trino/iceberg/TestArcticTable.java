@@ -59,7 +59,7 @@ public class TestArcticTable extends BasicUnkeyedTable {
     private TableIdentifier tableIdentifier;
 
     public TestArcticTable(BaseTable table, TableIdentifier tableIdentifier) {
-        super(null, null, null);
+        super(null, null, null, null, null);
         this.table = table;
         this.tableIdentifier = tableIdentifier;
     }

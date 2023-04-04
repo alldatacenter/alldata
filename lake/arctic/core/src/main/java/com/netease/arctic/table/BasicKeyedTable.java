@@ -137,10 +137,9 @@ public class BasicKeyedTable implements KeyedTable {
     }
 
     baseTable.refresh();
-    if (PrimaryKeySpec.noPrimaryKey().equals(primaryKeySpec())) {
-      return;
+    if (primaryKeySpec().primaryKeyExisted()) {
+      changeTable.refresh();
     }
-    changeTable.refresh();
   }
 
   @Override
@@ -196,22 +195,21 @@ public class BasicKeyedTable implements KeyedTable {
     return new KeyedPartitionRewrite(this);
   }
 
-  public static class BasicInternalTable extends BasicUnkeyedTable implements BaseTable {
+  public static class BaseInternalTable extends BasicUnkeyedTable implements BaseTable {
 
-    public BasicInternalTable(
+    public BaseInternalTable(
         TableIdentifier tableIdentifier, Table baseIcebergTable, ArcticFileIO arcticFileIO,
-        AmsClient client) {
-      super(tableIdentifier, baseIcebergTable, arcticFileIO, client);
+        AmsClient client, Map<String, String> catalogProperties) {
+      super(tableIdentifier, baseIcebergTable, arcticFileIO, client, catalogProperties);
     }
-
   }
 
   public static class ChangeInternalTable extends BasicUnkeyedTable implements ChangeTable {
 
     public ChangeInternalTable(
         TableIdentifier tableIdentifier, Table changeIcebergTable, ArcticFileIO arcticFileIO,
-        AmsClient client) {
-      super(tableIdentifier, changeIcebergTable, arcticFileIO, client);
+        AmsClient client, Map<String, String> catalogProperties) {
+      super(tableIdentifier, changeIcebergTable, arcticFileIO, client, catalogProperties);
     }
 
     @Override

@@ -43,6 +43,7 @@ import com.netease.arctic.ams.server.service.impl.TableBaseInfoService;
 import com.netease.arctic.ams.server.service.impl.TableBlockerService;
 import com.netease.arctic.ams.server.service.impl.TableExpireService;
 import com.netease.arctic.ams.server.service.impl.TableTaskHistoryService;
+import com.netease.arctic.ams.server.service.impl.TrashCleanService;
 import com.netease.arctic.ams.server.terminal.TerminalManager;
 
 public class ServiceContainer {
@@ -51,6 +52,8 @@ public class ServiceContainer {
   private static volatile ITableExpireService tableExpireService;
 
   private static volatile IOrphanFilesCleanService orphanFilesCleanService;
+
+  private static volatile TrashCleanService trashCleanService;
 
   private static volatile OptimizeQueueService optimizeQueueService;
 
@@ -125,6 +128,18 @@ public class ServiceContainer {
     }
 
     return orphanFilesCleanService;
+  }
+
+  public static TrashCleanService getTrashCleanService() {
+    if (trashCleanService == null) {
+      synchronized (ServiceContainer.class) {
+        if (trashCleanService == null) {
+          trashCleanService = new TrashCleanService();
+        }
+      }
+    }
+
+    return trashCleanService;
   }
 
   public static OptimizerService getOptimizerService() {

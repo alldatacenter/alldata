@@ -80,18 +80,13 @@ public abstract class AbstractArcticOptimizePlan extends AbstractOptimizePlan {
 
   public AbstractArcticOptimizePlan(ArcticTable arcticTable, TableOptimizeRuntime tableOptimizeRuntime,
                                     List<ContentFileWithSequence<?>> changeFiles,
-                                List<FileScanTask> baseFileScanTasks,
-                                int queueId, long currentTime, long changeSnapshotId, long baseSnapshotId) {
+                                    List<FileScanTask> baseFileScanTasks,
+                                    int queueId, long currentTime, long changeSnapshotId, long baseSnapshotId) {
     super(arcticTable, tableOptimizeRuntime, queueId, currentTime, baseSnapshotId);
     this.baseFileScanTasks = baseFileScanTasks;
     this.changeFiles = changeFiles;
     this.isCustomizeDir = false;
     this.currentChangeSnapshotId = changeSnapshotId;
-  }
-
-  @Override
-  protected boolean limitFileCnt() {
-    return false;
   }
 
   protected BasicOptimizeTask buildOptimizeTask(@Nullable List<DataTreeNode> sourceNodes,
@@ -331,6 +326,13 @@ public abstract class AbstractArcticOptimizePlan extends AbstractOptimizePlan {
     return insertFiles;
   }
 
+  /**
+   * Check a base file should optimize
+   *
+   * @param baseFile  - base file
+   * @param partition - partition
+   * @return true if the file should optimize
+   */
   protected abstract boolean baseFileShouldOptimize(DataFile baseFile, String partition);
 
   protected boolean hasFileToOptimize() {

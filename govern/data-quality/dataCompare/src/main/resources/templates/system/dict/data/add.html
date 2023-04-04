@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增字典数据')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-dict-add">
+			<div class="form-group">
+				<label class="col-sm-3 control-label is-required">字典标签：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="dictLabel" id="dictLabel" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label is-required">字典键值：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="dictValue" id="dictValue" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">字典类型：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" id="dictType" name="dictType" readonly="true" th:value="${dictType}">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">样式属性：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" id="cssClass" name="cssClass">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label is-required">字典排序：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="dictSort" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">回显样式：</label>
+				<div class="col-sm-8">
+					<select name="listClass" class="form-control m-b">
+					    <option value="">---请选择---</option>
+	                    <option value="default">默认</option>
+	                    <option value="primary">主要</option>
+	                    <option value="success">成功</option>
+	                    <option value="info">   信息</option>
+	                    <option value="warning">警告</option>
+	                    <option value="danger"> 危险</option>
+	                </select>
+	                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> table表格字典列显示样式属性</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">系统默认：</label>
+				<div class="col-sm-8">
+				    <div class="radio-box" th:each="dict : ${@dict.getType('sys_yes_no')}">
+						<input type="radio" th:id="${dict.dictCode}" name="isDefault" th:value="${dict.dictValue}" th:checked="${dict.default}">
+						<label th:for="${dict.dictCode}" th:text="${dict.dictLabel}"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">状态：</label>
+				<div class="col-sm-8">
+				    <div class="radio-box" th:each="dict : ${@dict.getType('sys_normal_disable')}">
+						<input type="radio" th:id="${dict.dictCode}" name="status" th:value="${dict.dictValue}" th:checked="${dict.default}">
+						<label th:for="${dict.dictCode}" th:text="${dict.dictLabel}"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">备注：</label>
+				<div class="col-sm-8">
+					<textarea id="remark" name="remark" class="form-control"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script type="text/javascript">
+		var prefix = ctx + "system/dict/data";
+	
+		$("#form-dict-add").validate({
+			rules:{
+				dictSort:{
+					digits:true
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	$.operate.save(prefix + "/add", $('#form-dict-add').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

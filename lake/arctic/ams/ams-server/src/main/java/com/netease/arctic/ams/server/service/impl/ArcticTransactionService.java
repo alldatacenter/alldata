@@ -68,8 +68,14 @@ public class ArcticTransactionService extends IJDBCService {
       throw new TException(tableIdentifier + " is not keyed table");
     }
   }
-  
+
   public void validTable(TableIdentifier tableIdentifier) {
     validTableIdentifiers.add(tableIdentifier);
+    LOG.info("{} is now valid for allocating transaction id", tableIdentifier);
+  }
+
+  public void inValidTable(TableIdentifier tableIdentifier) {
+    validTableIdentifiers.remove(tableIdentifier);
+    LOG.info("{} is now invalid for allocating transaction id", tableIdentifier);
   }
 }

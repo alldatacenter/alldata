@@ -181,12 +181,14 @@ public class FlinkTaskWriterBuilder implements TaskWriterBuilder<RowData> {
             keyedTable.properties(), keyedTable.spec()) :
         new FlinkAppenderFactory(
             changeSchemaWithMeta, flinkSchemaWithMeta, keyedTable.properties(), keyedTable.spec());
+    boolean upsert = table.isKeyedTable() && PropertyUtil.propertyAsBoolean(table.properties(),
+        TableProperties.UPSERT_ENABLED, TableProperties.UPSERT_ENABLED_DEFAULT);
     return new FlinkChangeTaskWriter(
         fileFormat,
         appenderFactory,
         outputFileFactory,
         keyedTable.io(), fileSizeBytes, mask,
-        selectSchema, flinkSchema, keyedTable.spec(), keyedTable.primaryKeySpec());
+        selectSchema, flinkSchema, keyedTable.spec(), keyedTable.primaryKeySpec(), upsert);
   }
 
   @Override

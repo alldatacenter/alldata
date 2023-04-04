@@ -18,12 +18,16 @@
 
 package com.netease.arctic.ams.server;
 
+import com.netease.arctic.ams.server.utils.AmsUtilsTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestHighAvailabilityServices.class})
+@Suite.SuiteClasses({
+    TestHighAvailabilityServices.class,
+    AmsUtilsTest.class
+})
 @PowerMockIgnore({"org.apache.logging.log4j.*", "javax.management.*", "org.apache.http.conn.ssl.*",
                   "com.amazonaws.http.conn.ssl.*",
                   "javax.net.ssl.*", "org.apache.hadoop.*", "javax.*", "com.sun.org.apache.*", "org.apache.xerces.*",

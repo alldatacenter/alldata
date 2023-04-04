@@ -35,6 +35,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -64,6 +65,8 @@ public class ShuffleSplitAssigner implements SplitAssigner {
    */
   private final Map<Integer, PriorityBlockingQueue<ArcticSplit>> subtaskSplitMap;
 
+  private CompletableFuture<Void> availableFuture;
+
 
   public ShuffleSplitAssigner(
       SplitEnumeratorContext<ArcticSplit> enumeratorContext) {
@@ -84,12 +87,16 @@ public class ShuffleSplitAssigner implements SplitAssigner {
   }
 
   @Override
-  public Optional<ArcticSplit> getNext() {
+  public Split getNext() {
     throw new UnsupportedOperationException("ShuffleSplitAssigner couldn't support this operation.");
   }
 
   @Override
-  public Optional<ArcticSplit> getNext(int subTaskId) {
+  public Split getNext(int subtaskId) {
+    return getNextSplit(subtaskId).map(Split::of).orElseGet(Split::unavailable);
+  }
+
+  private Optional<ArcticSplit> getNextSplit(int subTaskId) {
     int currentParallelism = enumeratorContext.currentParallelism();
     if (totalParallelism != currentParallelism) {
       throw new FlinkRuntimeException(
@@ -123,6 +130,8 @@ public class ShuffleSplitAssigner implements SplitAssigner {
   @Override
   public void onDiscoveredSplits(Collection<ArcticSplit> splits) {
     splits.forEach(this::putArcticIntoQueue);
+    // only complete pending future if new splits are discovered
+    completeAvailableFuturesIfNeeded();
   }
 
   @Override
@@ -162,6 +171,26 @@ public class ShuffleSplitAssigner implements SplitAssigner {
                 .collect(Collectors.toList())));
 
     return arcticSplitStates;
+  }
+
+  @Override
+  public synchronized CompletableFuture<Void> isAvailable() {
+    if (availableFuture == null) {
+      availableFuture = new CompletableFuture<>();
+    }
+    return availableFuture;
+  }
+
+  public boolean isEmpty() {
+    if (subtaskSplitMap.isEmpty()) {
+      return true;
+    }
+    for (Map.Entry<Integer, PriorityBlockingQueue<ArcticSplit>> entry : subtaskSplitMap.entrySet()) {
+      if (!entry.getValue().isEmpty()) {
+        return false;
+      }
+    }
+    return true;
   }
 
   @Override
@@ -264,5 +293,12 @@ public class ShuffleSplitAssigner implements SplitAssigner {
       return file.get();
     }
     throw new FlinkRuntimeException("Couldn't find a primaryKeyedFile.");
+  }
+
+  private synchronized void completeAvailableFuturesIfNeeded() {
+    if (availableFuture != null && !isEmpty()) {
+      availableFuture.complete(null);
+    }
+    availableFuture = null;
   }
 }

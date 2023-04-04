@@ -82,9 +82,9 @@ class AdaptHiveParquetConversions {
   }
 
   static Function<Object, Object> converterFromParquet(PrimitiveType parquetType, Type icebergType) {
-    Function<Object, Object> fromParquet = converterFromParquet(parquetType);
 
-    //Change For Arctic:Adapt int 96
+    //Change For Arctic:Adapt int 96 and bytes string
+    //int96
     if (parquetType.getPrimitiveTypeName() == PrimitiveType.PrimitiveTypeName.INT96) {
       return binary -> {
         final ByteBuffer byteBuffer = ByteBuffer.wrap(((Binary) binary).getBytes()).order(ByteOrder.LITTLE_ENDIAN);
@@ -103,7 +103,15 @@ class AdaptHiveParquetConversions {
         return ChronoUnit.MICROS.between(EPOCH, instant);
       };
     }
+
+    //string
+    if (icebergType != null && icebergType.typeId() == Type.TypeID.STRING &&
+        parquetType.getPrimitiveTypeName() == PrimitiveType.PrimitiveTypeName.BINARY) {
+      return binary -> StandardCharsets.UTF_8.decode(((Binary) binary).toByteBuffer());
+    }
     //Change For Arctic
+
+    Function<Object, Object> fromParquet = converterFromParquet(parquetType);
 
     if (icebergType != null) {
       if (icebergType.typeId() == Type.TypeID.LONG &&

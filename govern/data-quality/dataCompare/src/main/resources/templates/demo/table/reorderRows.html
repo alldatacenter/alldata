@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('表格行拖拽操作')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn btn-primary" onclick="getData()">
+                <i class="fa fa-search"></i> 查询所有数据
+            </a>
+        </div>
+		<div class="row">
+			<div class="col-sm-12 select-table table-striped">
+			    <p class="select-title">按住表格行拖拽</p>
+				<table id="bootstrap-table"
+				 data-use-row-attr-func="true"
+				 data-reorderable-rows="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <th:block th:include="include :: bootstrap-table-reorder-rows-js" />
+    <script th:inline="javascript">
+        var prefix = ctx + "demo/table";
+        var datas = [[${@dict.getType('sys_normal_disable')}]];
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+		        showSearch: false,
+		        showRefresh: false,
+		        showToggle: false,
+		        showColumns: false,
+		        onReorderRow: function (data) {
+		        	 //当拖拽结束后，data为整个表格的数据
+		            console.table(data)
+		            // 当sidePagination: "server"时，拖拽行后顺序错乱，需要重新调用加载数据方法
+		            $("#" + table.options.id).bootstrapTable('load', data);
+		            return false;
+		        },
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'userId', 
+					title : '用户ID'
+				},
+				{
+					field : 'userCode', 
+					title : '用户编号'
+				},
+				{
+					field : 'userName', 
+					title : '用户姓名'
+				},
+				{
+					field : 'userPhone', 
+					title : '用户手机'
+				},
+				{
+					field : 'userEmail', 
+					title : '用户邮箱'
+				},
+				{
+				    field : 'userBalance',
+				    title : '用户余额'
+				},
+				{
+                    field: 'status',
+                    title: '用户状态',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                    	return $.table.selectDictLabel(datas, value);
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+        
+        /* 查询表格所有数据值 */
+        function getData(){
+            var data = $("#" + table.options.id).bootstrapTable('getData');
+            alert(JSON.stringify(data.map( item => { return item.userId })))
+        }
+    </script>
+</body>
+</html>

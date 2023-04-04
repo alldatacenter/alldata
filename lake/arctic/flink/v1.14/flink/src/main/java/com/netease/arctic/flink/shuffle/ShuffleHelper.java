@@ -114,8 +114,12 @@ public class ShuffleHelper implements Serializable {
     this(primaryKeyExist, primaryKeyData, null, partitionKey, rowType, structType);
   }
 
-  public ShuffleHelper(boolean primaryKeyExist, PrimaryKeyData primaryKeyData, RowDataWrapper rowDataWrapper,
-                       PartitionKey partitionKey, RowType rowType, Types.StructType structType) {
+  public ShuffleHelper(boolean primaryKeyExist,
+                       PrimaryKeyData primaryKeyData,
+                       RowDataWrapper rowDataWrapper,
+                       PartitionKey partitionKey,
+                       RowType rowType,
+                       Types.StructType structType) {
     this.primaryKeyExist = primaryKeyExist;
     this.primaryKeyData = primaryKeyData;
     this.rowDataWrapper = rowDataWrapper;

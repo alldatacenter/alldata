@@ -29,6 +29,14 @@ import com.netease.arctic.ams.server.controller.TableControllerTest;
 import com.netease.arctic.ams.server.controller.TerminalControllerTest;
 import com.netease.arctic.ams.server.handler.impl.ArcticTableMetastoreHandler;
 import com.netease.arctic.ams.server.handler.impl.OptimizeManagerHandler;
+import com.netease.arctic.ams.server.maintainer.TestCommandParser;
+import com.netease.arctic.ams.server.maintainer.TestGetMaintainerConfig;
+import com.netease.arctic.ams.server.maintainer.command.TestAnalyzeCall;
+import com.netease.arctic.ams.server.maintainer.command.TestOptimizeCall;
+import com.netease.arctic.ams.server.maintainer.command.TestRepairCall;
+import com.netease.arctic.ams.server.maintainer.command.TestShowCall;
+import com.netease.arctic.ams.server.maintainer.command.TestTableCall;
+import com.netease.arctic.ams.server.maintainer.command.TestUseCall;
 import com.netease.arctic.ams.server.optimize.OptimizeService;
 import com.netease.arctic.ams.server.optimize.SupportHiveTestGroup;
 import com.netease.arctic.ams.server.optimize.TableOptimizeItemTest;
@@ -42,6 +50,7 @@ import com.netease.arctic.ams.server.optimize.TestMajorOptimizeCommit;
 import com.netease.arctic.ams.server.optimize.TestMajorOptimizePlan;
 import com.netease.arctic.ams.server.optimize.TestMinorOptimizeCommit;
 import com.netease.arctic.ams.server.optimize.TestMinorOptimizePlan;
+import com.netease.arctic.ams.server.optimize.TestOptimizeService;
 import com.netease.arctic.ams.server.optimize.TestOrphanFileClean;
 import com.netease.arctic.ams.server.optimize.TestOrphanFileCleanSupportIceberg;
 import com.netease.arctic.ams.server.service.MetaService;
@@ -62,11 +71,13 @@ import com.netease.arctic.ams.server.service.impl.OptimizerService;
 import com.netease.arctic.ams.server.service.impl.PlatformFileInfoService;
 import com.netease.arctic.ams.server.service.impl.TableBlockerService;
 import com.netease.arctic.ams.server.service.impl.TestTableBlockerService;
+import com.netease.arctic.ams.server.service.impl.TrashCleanServiceTest;
 import com.netease.arctic.ams.server.util.DerbyTestUtil;
 import com.netease.arctic.ams.server.utils.CatalogUtil;
 import com.netease.arctic.ams.server.utils.JDBCSqlSessionFactoryProvider;
 import com.netease.arctic.ams.server.utils.SequenceNumberFetcherTest;
 import com.netease.arctic.ams.server.utils.ThreadPool;
+import com.netease.arctic.ams.server.utils.SequenceNumberFetcherTest;
 import com.netease.arctic.ams.server.utils.UnKeyedTableUtilTest;
 import com.netease.arctic.catalog.ArcticCatalog;
 import com.netease.arctic.catalog.CatalogLoader;
@@ -105,6 +116,14 @@ import static org.powermock.api.mockito.PowerMockito.when;
 @RunWith(PowerMockRunner.class)
 @PowerMockRunnerDelegate(Suite.class)
 @Suite.SuiteClasses({
+    TestGetMaintainerConfig.class,
+    TestCommandParser.class,
+    TestAnalyzeCall.class,
+    TestOptimizeCall.class,
+    TestRepairCall.class,
+    TestShowCall.class,
+    TestTableCall.class,
+    TestUseCall.class,
     CatalogControllerTest.class,
     OptimizerControllerTest.class,
     TableControllerTest.class,
@@ -125,10 +144,12 @@ import static org.powermock.api.mockito.PowerMockito.when;
     TestOrphanFileClean.class,
     TestFileInfoCacheService.class,
     TestTableBlockerService.class,
+    TrashCleanServiceTest.class,
     SupportHiveTestGroup.class,
     TestArcticTransactionService.class,
     TestOptimizerService.class,
     UnKeyedTableUtilTest.class,
+    TestOptimizeService.class,
     SequenceNumberFetcherTest.class,
     TableOptimizeItemTest.class
 })

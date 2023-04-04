@@ -23,7 +23,7 @@
     <parent>
         <artifactId>arctic-parent</artifactId>
         <groupId>com.netease.arctic</groupId>
-        <version>0.5.0-SNAPSHOT</version>
+        <version>0.4.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -123,6 +123,7 @@
                 <configuration>
                     <includes>
                         <include>**/ArcticHiveTestMain.java</include>
+                        <include>**/TestAdaptHiveReadConf.java</include>
                     </includes>
                 </configuration>
             </plugin>

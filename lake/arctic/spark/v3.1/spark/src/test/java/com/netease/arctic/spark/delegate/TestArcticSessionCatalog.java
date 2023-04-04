@@ -25,11 +25,17 @@ import org.apache.hadoop.hive.metastore.api.Table;
 import org.apache.iceberg.Schema;
 import org.apache.iceberg.relocated.com.google.common.collect.Lists;
 import org.apache.iceberg.relocated.com.google.common.collect.Maps;
+import org.apache.iceberg.spark.SparkCatalog;
 import org.apache.iceberg.spark.SparkSchemaUtil;
 import org.apache.iceberg.types.Types;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.RowFactory;
+import org.apache.spark.sql.catalyst.analysis.NoSuchTableException;
+import org.apache.spark.sql.catalyst.analysis.TableAlreadyExistsException;
+import org.apache.spark.sql.connector.catalog.CatalogManager;
+import org.apache.spark.sql.connector.catalog.CatalogPlugin;
+import org.apache.spark.sql.connector.catalog.Identifier;
 import org.apache.thrift.TException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -61,6 +67,8 @@ public class TestArcticSessionCatalog extends SparkTestContext {
 
     configs.put("spark.sql.catalog.spark_catalog", ArcticSparkSessionCatalog.class.getName());
     configs.put("spark.sql.catalog.spark_catalog.url", amsUrl + "/" + catalogNameHive);
+    configs.put("spark.sql.catalog.catalog", SparkCatalog.class.getName());
+    configs.put("spark.sql.catalog.catalog.type", "hive");
     configs.put("spark.sql.arctic.delegate.enabled", "true");
 
     setUpSparkSession(configs);
@@ -123,6 +131,41 @@ public class TestArcticSessionCatalog extends SparkTestContext {
 
   }
 
+  @Test
+  public void testTableDDL() throws TableAlreadyExistsException, NoSuchTableException {
+    TableIdentifier tableIdent = TableIdentifier.of(catalogNameHive, database, table_D);
+    sql("use spark_catalog");
+    sql("create table {0}.{1} ( id int, data string) using arctic", database, table_D);
+    sql("ALTER TABLE {0}.{1} ADD COLUMN c3 INT", database, table_D);
+    Types.StructType expectedSchema = Types.StructType.of(
+        Types.NestedField.optional(1, "id", Types.IntegerType.get()),
+        Types.NestedField.optional(2, "data", Types.StringType.get()),
+        Types.NestedField.optional(3, "c3", Types.IntegerType.get()));
+
+    Assert.assertEquals("Schema should match expected",
+        expectedSchema, loadTable(tableIdent).schema().asStruct());
+
+    // test rename
+    CatalogManager catalogManager = spark.sessionState().catalogManager();
+    CatalogPlugin catalog = catalogManager.currentCatalog();
+    Identifier oldName = Identifier.of(new String[]{database}, table_D);
+    Identifier newName = Identifier.of(new String[]{database}, table_D2);
+    if (catalog instanceof ArcticSparkSessionCatalog) {
+      Assert.assertThrows(
+          UnsupportedOperationException.class,
+          () ->  ((ArcticSparkSessionCatalog<?>) catalog).renameTable(oldName, newName));
+      ((ArcticSparkSessionCatalog<?>) catalog).dropTable(oldName);
+    }
+
+    sql("create table {0}.{1} ( id int, data string) using iceberg", database, table_D);
+    if (catalog instanceof ArcticSparkSessionCatalog) {
+      ((ArcticSparkSessionCatalog<?>) catalog).renameTable(oldName, newName);
+      ((ArcticSparkSessionCatalog<?>) catalog).dropTable(newName);
+      Identifier noTable = Identifier.of(new String[]{database}, "no_table");
+      ((ArcticSparkSessionCatalog<?>) catalog).dropTable(noTable);
+    }
+  }
+
   @Ignore
   @Test
   public void testCatalogEnable() throws TException {
@@ -178,6 +221,50 @@ public class TestArcticSessionCatalog extends SparkTestContext {
     sql("drop table {0}.{1}", database, table3);
   }
 
+  @Test
+  public void testCreateTableLikeWithNoProvider() throws TException {
+    sql("set spark.sql.arctic.delegate.enabled=true");
+    sql("use spark_catalog");
+    sql("create table {0}.{1} ( \n" +
+        " id int , \n" +
+        " name string , \n " +
+        " ts timestamp,  \n" +
+        " primary key (id) \n" +
+        ") using arctic \n" +
+        " partitioned by ( ts ) \n" +
+        " tblproperties ( \n" +
+        " ''props.test1'' = ''val1'', \n" +
+        " ''props.test2'' = ''val2'' ) ", database, table3);
+
+    sql("create table {0}.{1} like {2}.{3}", database, table2, database, table3);
+    Table hiveTableA = hms.getClient().getTable(database, table2);
+    Assert.assertNotNull(hiveTableA);
+    sql("drop table {0}.{1}", database, table2);
+
+    sql("drop table {0}.{1}", database, table3);
+  }
+
+  @Test
+  public void testCreateTableLikeWithoutArcticCatalogWithNoProvider() throws TException {
+    sql("use catalog");
+    sql("create table {0}.{1} ( \n" +
+        " id int , \n" +
+        " name string , \n " +
+        " ts timestamp  \n" +
+        ") stored as parquet \n" +
+        " partitioned by ( ts ) \n" +
+        " tblproperties ( \n" +
+        " ''props.test1'' = ''val1'', \n" +
+        " ''props.test2'' = ''val2'' ) ", database, table3);
+
+    sql("create table {0}.{1} like {2}.{3}", database, table2, database, table3);
+    Table hiveTableA = hms.getClient().getTable(database, table2);
+    Assert.assertNotNull(hiveTableA);
+    sql("use spark_catalog");
+    sql("drop table {0}.{1}", database, table3);
+    sql("drop table {0}.{1}", database, table2);
+  }
+
 
   @Test
   public void testCreateTableAsSelect() {
@@ -205,6 +292,22 @@ public class TestArcticSessionCatalog extends SparkTestContext {
     assertTableExist(arcticTableId);
 
     sql("drop table {0}.{1}", database, table);
+  }
+
+  @Test
+  public void testLoadTable() throws TException {
+    sql("use {0}", catalogNameHive);
+    sql("create table {0}.{1} ( id int, data string) using arctic", database, table_D);
+    sql("insert overwrite {0}.{1} values \n" +
+        "(1, ''aaa''), \n " +
+        "(2, ''bbb''), \n " +
+        "(3, ''ccc'') \n ", database, table_D);
+    Table tableA = hms.getClient().getTable(database, table_D);
+    Assert.assertNotNull(tableA);
+    sql("use spark_catalog");
+    rows = sql("select * from {0}.{1}", database, table_D);
+    Assert.assertEquals(rows.size(), 3);
+    sql("drop table {0}.{1}", database, table_D);
   }
 
 }

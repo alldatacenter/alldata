@@ -42,6 +42,7 @@ public class ThreadPool {
   private static ScheduledExecutorService commitPool;
   private static ScheduledExecutorService expirePool;
   private static ScheduledExecutorService orphanPool;
+  private static ScheduledExecutorService trashCleanPool;
   private static ScheduledExecutorService supportHiveSyncPool;
   private static ScheduledExecutorService optimizerMonitorPool;
   private static ThreadPoolExecutor syncFileInfoCachePool;
@@ -52,6 +53,7 @@ public class ThreadPool {
     COMMIT,
     EXPIRE,
     ORPHAN,
+    TRASH_CLEAN,
     SYNC_FILE_INFO_CACHE,
     OPTIMIZER_MONITOR,
     TABLE_RUNTIME_DATA_EXPIRE,
@@ -91,6 +93,12 @@ public class ThreadPool {
     orphanPool = Executors.newScheduledThreadPool(
         conf.getInteger(ArcticMetaStoreConf.ORPHAN_CLEAN_THREAD_POOL_SIZE),
         orphanThreadFactory);
+
+    ThreadFactory trashThreadFactory = new ThreadFactoryBuilder().setDaemon(false)
+        .setNameFormat("Metastore Scheduled Trash Worker %d").build();
+    trashCleanPool = Executors.newScheduledThreadPool(
+        conf.getInteger(ArcticMetaStoreConf.TRASH_CLEAN_THREAD_POOL_SIZE),
+        trashThreadFactory);
 
     ThreadFactory supportHiveSyncFactory = new ThreadFactoryBuilder().setDaemon(false)
         .setNameFormat("Support Hive Sync Worker %d").build();
@@ -135,6 +143,8 @@ public class ThreadPool {
         return expirePool;
       case ORPHAN:
         return orphanPool;
+      case TRASH_CLEAN:
+        return trashCleanPool;
       case OPTIMIZER_MONITOR:
         return optimizerMonitorPool;
       case TABLE_RUNTIME_DATA_EXPIRE:
@@ -146,10 +156,6 @@ public class ThreadPool {
     }
   }
 
-  public static ThreadPoolExecutor getSyncFileInfoCachePool() {
-    return syncFileInfoCachePool;
-  }
-
   public static synchronized void shutdown() {
     if (self != null) {
       optimizeCheckPool.shutdownNow();
@@ -157,6 +163,7 @@ public class ThreadPool {
       commitPool.shutdownNow();
       expirePool.shutdownNow();
       orphanPool.shutdownNow();
+      trashCleanPool.shutdownNow();
       syncFileInfoCachePool.shutdownNow();
       tableRuntimeDataExpirePool.shutdownNow();
       supportHiveSyncPool.shutdownNow();

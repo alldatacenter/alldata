@@ -72,7 +72,8 @@ public class SupportHiveSyncService implements ISupportHiveSyncService {
     Set<TableIdentifier> ids =
         tables.stream().map(TableMetadata::getTableIdentifier).collect(Collectors.toSet());
     syncTasks.checkRunningTask(ids,
-        tableId -> SYNC_INTERVAL,
+        () -> 0L,
+        () -> SYNC_INTERVAL,
         SupportHiveSyncService.SupportHiveSyncTask::new,
         false);
     LOG.info("Schedule Support Hive Sync finished with {} valid ids", ids.size());
