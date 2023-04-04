@@ -279,6 +279,50 @@ public class TestMajorOptimizePlan extends TestBaseOptimizeBase {
     Assert.assertEquals(0, tasks.get(0).getDeleteFileCnt());
   }
 
+  @Test
+  public void testPartitionWeight() {
+    List<AbstractOptimizePlan.PartitionWeightWrapper> partitionWeights = new ArrayList<>();
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p1",
+        new MajorOptimizePlan.MajorPartitionWeight(true,0)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p2",
+        new MajorOptimizePlan.MajorPartitionWeight(true, 1)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p3",
+        new MajorOptimizePlan.MajorPartitionWeight(false, 200)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p4",
+        new MajorOptimizePlan.MajorPartitionWeight(false, 100)));
+
+    List<String> sortedPartitions = partitionWeights.stream()
+        .sorted()
+        .map(AbstractOptimizePlan.PartitionWeightWrapper::getPartition)
+        .collect(Collectors.toList());
+    Assert.assertEquals("p2", sortedPartitions.get(0));
+    Assert.assertEquals("p1", sortedPartitions.get(1));
+    Assert.assertEquals("p3", sortedPartitions.get(2));
+    Assert.assertEquals("p4", sortedPartitions.get(3));
+  }
+
+  @Test
+  public void testFullPartitionWeight() {
+    List<AbstractOptimizePlan.PartitionWeightWrapper> partitionWeights = new ArrayList<>();
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p1",
+        new FullOptimizePlan.FullPartitionWeight(true,0)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p2",
+        new FullOptimizePlan.FullPartitionWeight(true, 1)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p3",
+        new FullOptimizePlan.FullPartitionWeight(false, 200)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p4",
+        new FullOptimizePlan.FullPartitionWeight(false, 100)));
+
+    List<String> sortedPartitions = partitionWeights.stream()
+        .sorted()
+        .map(AbstractOptimizePlan.PartitionWeightWrapper::getPartition)
+        .collect(Collectors.toList());
+    Assert.assertEquals("p2", sortedPartitions.get(0));
+    Assert.assertEquals("p1", sortedPartitions.get(1));
+    Assert.assertEquals("p3", sortedPartitions.get(2));
+    Assert.assertEquals("p4", sortedPartitions.get(3));
+  }
+
   private List<DataFile> insertUnKeyedTableDataFiles(ArcticTable arcticTable) {
     List<DataFile> dataFiles = insertUnKeyedTableDataFile(FILE_A.partition(), LocalDateTime.of(2022, 1, 1, 12, 0, 0), 5);
     dataFiles.addAll(insertUnKeyedTableDataFile(FILE_B.partition(), LocalDateTime.of(2022, 1, 2, 12, 0, 0), 5));

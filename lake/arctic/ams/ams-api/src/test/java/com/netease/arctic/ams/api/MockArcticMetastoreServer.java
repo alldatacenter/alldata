@@ -362,6 +362,11 @@ public class MockArcticMetastoreServer implements Runnable {
       }
     }
 
+    @Override
+    public void refreshTable(TableIdentifier tableIdentifier) throws OperationErrorException, TException {
+
+    }
+
     public void updateMeta(CatalogMeta meta, String key, String value) {
       meta.getCatalogProperties().put(key, value);
     }
@@ -396,6 +401,16 @@ public class MockArcticMetastoreServer implements Runnable {
     @Override
     public OptimizerDescriptor registerOptimizer(OptimizerRegisterInfo registerInfo) throws TException {
       return new OptimizerDescriptor();
+    }
+
+    @Override
+    public void stopOptimize(TableIdentifier tableIdentifier) throws OperationErrorException, TException {
+
+    }
+
+    @Override
+    public void startOptimize(TableIdentifier tableIdentifier) throws OperationErrorException, TException {
+
     }
   }
 }

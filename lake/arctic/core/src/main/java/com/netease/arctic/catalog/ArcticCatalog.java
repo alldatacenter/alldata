@@ -148,4 +148,12 @@ public interface ArcticCatalog {
    * @return A Table Blocker Mana
    */
   TableBlockerManager getTableBlockerManager(TableIdentifier tableIdentifier);
+
+  /**
+   * Return catalog properties.
+   *
+   * @return properties
+   */
+  Map<String, String> properties();
+
 }

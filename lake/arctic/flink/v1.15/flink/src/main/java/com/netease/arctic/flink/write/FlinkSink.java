@@ -157,13 +157,11 @@ public class FlinkSink {
               new ArcticWriter<>(logWriter, fileWriter, metricsGenerator))
           .name(String.format("ArcticWriter %s(%s)", table.name(), arcticEmitMode))
           .setParallelism(writeOperatorParallelism);
-      context.generateUid("arctic-writer").ifPresent(writerStream::uid);
 
       if (committer != null) {
         writerStream = writerStream.transform(FILES_COMMITTER_NAME, Types.VOID, committer)
             .setParallelism(1)
             .setMaxParallelism(1);
-        context.generateUid("arctic-committer").ifPresent(writerStream::uid);
       }
 
       return writerStream.addSink(new DiscardingSink<>())

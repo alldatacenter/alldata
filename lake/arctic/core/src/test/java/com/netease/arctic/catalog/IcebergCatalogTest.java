@@ -19,10 +19,16 @@
 package com.netease.arctic.catalog;
 
 import com.netease.arctic.TableTestHelpers;
+import com.netease.arctic.ams.api.CatalogMeta;
+import com.netease.arctic.ams.api.properties.CatalogMetaProperties;
 import com.netease.arctic.ams.api.properties.TableFormat;
+import com.netease.arctic.io.RecoverableArcticFileIO;
 import com.netease.arctic.table.ArcticTable;
+import com.netease.arctic.table.TableProperties;
 import org.apache.iceberg.catalog.Catalog;
 import org.apache.iceberg.catalog.TableIdentifier;
+import org.apache.thrift.TException;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -34,16 +40,46 @@ public class IcebergCatalogTest extends CatalogTestBase {
 
   @Test
   public void testLoadIcebergTable() {
-    ArcticCatalog icebergCatalog = getCatalog();
-    icebergCatalog.createDatabase("db2");
-    Catalog nativeIcebergCatalog = getIcebergCatalog();
-    nativeIcebergCatalog.createTable(TableIdentifier.of("db2", "tb1"), TableTestHelpers.TABLE_SCHEMA);
-    ArcticTable table = icebergCatalog.loadTable(
-        com.netease.arctic.table.TableIdentifier.of(TEST_CATALOG_NAME, "db2", "tb1"));
+    getCatalog().createDatabase(TableTestHelpers.TEST_DB_NAME);
+    createIcebergTable();
+    ArcticTable table = getCatalog().loadTable(TableTestHelpers.TEST_TABLE_ID);
     Assert.assertTrue(table instanceof BasicIcebergCatalog.BasicIcebergTable);
-    Assert.assertEquals(true, table.isUnkeyedTable());
+    Assert.assertTrue(table.isUnkeyedTable());
     Assert.assertEquals(TableTestHelpers.TABLE_SCHEMA.asStruct(), table.schema().asStruct());
-    nativeIcebergCatalog.dropTable(TableIdentifier.of("db2", "tb1"), true);
-    icebergCatalog.dropDatabase("db2");
+  }
+
+  @Test
+  public void testRecoverableFileIO() throws TException {
+    getCatalog().createDatabase(TableTestHelpers.TEST_DB_NAME);
+    createIcebergTable();
+    ArcticTable table = getCatalog().loadTable(TableTestHelpers.TEST_TABLE_ID);
+    Assert.assertFalse(table.io() instanceof RecoverableArcticFileIO);
+
+    CatalogMeta testCatalogMeta = TEST_AMS.getAmsHandler().getCatalog(TEST_CATALOG_NAME);
+    TEST_AMS.getAmsHandler().updateMeta(testCatalogMeta,
+        CatalogMetaProperties.TABLE_PROPERTIES_PREFIX + TableProperties.ENABLE_TABLE_TRASH,
+        "true");
+    getCatalog().refresh();
+
+    table = getCatalog().loadTable(TableTestHelpers.TEST_TABLE_ID);
+    Assert.assertFalse(table.io() instanceof RecoverableArcticFileIO);
+
+    getCatalog().dropTable(TableTestHelpers.TEST_TABLE_ID, true);
+    createIcebergTable();
+    table = getCatalog().loadTable(TableTestHelpers.TEST_TABLE_ID);
+    Assert.assertFalse(table.io() instanceof RecoverableArcticFileIO);
+  }
+
+  @After
+  public void after() {
+    getCatalog().dropTable(TableTestHelpers.TEST_TABLE_ID, true);
+    getCatalog().dropDatabase(TableTestHelpers.TEST_DB_NAME);
+  }
+
+  private void createIcebergTable() {
+    Catalog nativeIcebergCatalog = getIcebergCatalog();
+    nativeIcebergCatalog.createTable(
+        TableIdentifier.of(TableTestHelpers.TEST_DB_NAME, TableTestHelpers.TEST_TABLE_NAME),
+        TableTestHelpers.TABLE_SCHEMA);
   }
 }

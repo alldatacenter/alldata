@@ -61,7 +61,10 @@ const css = {
         'header-color': 'rgba(0, 0, 0, 0.85)',
         'text-color': '#79809a',
         'text-color-secondary': '#c0c0ca',
-        'font-size-base': '14px'
+        'font-size-base': '14px',
+        'dark-gray-color': '#2b354a',
+        'dark-bg-color': '#202a40',
+        'dark-bg-primary-color': '#1a2232'
       },
       javascriptEnabled: true
     }

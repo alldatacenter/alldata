@@ -1,62 +1,66 @@
 <template>
-  <div class="tables-menu g-flex">
-    <div class="database-list">
-      <div class="select-catalog g-flex-jsb">
-        <span class="label">{{$t('catalog')}}</span>
-        <a-select
-          v-model:value="curCatalog"
-          :options="catalogOptions"
-          @change="catalogChange"
-          :loading="catalogLoading"
-          :getPopupContainer="getPopupContainer"
-          />
-      </div>
-      <div class="list-wrap">
-        <div class="add g-flex-jsb">
-          <span class="label">{{$t('database', 2)}}</span>
-          <!-- <plus-outlined @click="addDatabase" class="icon" /> -->
-        </div>
-        <div class="filter-wrap">
-          <a-input-search
-            v-model:value="DBSearchInput"
-            :placeholder="placeholder.filterDBPh"
-            @change="(val) => handleSearch('db',val)"
-          >
-            <template #prefix>
-              <SearchOutlined />
-            </template>
-            <template #suffix v-if="DBSearchInput">
-              <CloseCircleOutlined @click="clearSearch('db')" class="input-clear-icon" />
-            </template>
-          </a-input-search>
-        </div>
-        <u-loading v-if="loading" />
-        <virtual-recycle-scroller :loading="loading" :items="databaseList" :activeItem="database" :itemSize="40" @mouseEnter="mouseEnter" iconName="database" />
-      </div>
+  <div class="tables-menu">
+    <div class="select-catalog g-flex-ac">
+      <span class="label">{{$t('catalog')}}</span>
+      <a-select
+        v-model:value="curCatalog"
+        :options="catalogOptions"
+        @change="catalogChange"
+        :loading="catalogLoading"
+        :getPopupContainer="getPopupContainer"
+        class="theme-dark"
+        />
     </div>
-    <div class="table-list">
-      <div class="select-catalog"></div>
-      <div class="list-wrap">
-        <div class="add g-flex-jsb">
-          <span class="label">{{$t('table', 2)}}</span>
-          <!-- <plus-outlined @click="createTable" class="icon" /> -->
+    <div class="tables-wrap g-flex">
+      <div class="database-list">
+        <div class="list-wrap">
+          <div class="add g-flex-jsb">
+            <span class="label">{{$t('database', 2)}}</span>
+            <!-- <plus-outlined @click="addDatabase" class="icon" /> -->
+          </div>
+          <div class="filter-wrap">
+            <a-input-search
+              v-model:value="DBSearchInput"
+              :placeholder="placeholder.filterDBPh"
+              @change="(val) => handleSearch('db',val)"
+              class="theme-dark"
+            >
+              <template #prefix>
+                <SearchOutlined />
+              </template>
+              <template #suffix v-if="DBSearchInput">
+                <CloseCircleOutlined @click="clearSearch('db')" class="input-clear-icon" />
+              </template>
+            </a-input-search>
+          </div>
+          <u-loading v-if="loading" />
+          <virtual-recycle-scroller :loading="loading" :items="databaseList" :activeItem="database" :itemSize="40" @handleClickTable="handleClickDb" iconName="database" />
         </div>
-        <div class="filter-wrap">
-          <a-input-search
-            v-model:value="tableSearchInput"
-            :placeholder="placeholder.filterTablePh"
-            @change="(val) => handleSearch('table', val)"
-          >
-            <template #prefix>
-              <SearchOutlined />
-            </template>
-            <template #suffix v-if="tableSearchInput">
-              <CloseCircleOutlined @click="clearSearch('table')" class="input-clear-icon" />
-            </template>
-          </a-input-search>
+      </div>
+      <div class="table-list">
+        <div class="list-wrap">
+          <div class="add g-flex-jsb">
+            <span class="label">{{$t('table', 2)}}</span>
+            <!-- <plus-outlined @click="createTable" class="icon" /> -->
+          </div>
+          <div class="filter-wrap">
+            <a-input-search
+              v-model:value="tableSearchInput"
+              :placeholder="placeholder.filterTablePh"
+              @change="(val) => handleSearch('table', val)"
+              class="theme-dark"
+            >
+              <template #prefix>
+                <SearchOutlined />
+              </template>
+              <template #suffix v-if="tableSearchInput">
+                <CloseCircleOutlined @click="clearSearch('table')" class="input-clear-icon" />
+              </template>
+            </a-input-search>
+          </div>
+          <u-loading v-if="tableLoading" />
+          <virtual-recycle-scroller :loading="tableLoading" :items="tableList" :activeItem="tableName" :itemSize="40" @handleClickTable="handleClickTable" iconName="tableOutlined" />
         </div>
-        <u-loading v-if="tableLoading" />
-        <virtual-recycle-scroller :loading="tableLoading" :items="tableList" :activeItem="tableName" :itemSize="40" @handleClickTable="handleClickTable" iconName="tableOutlined" />
       </div>
     </div>
   </div>
@@ -72,12 +76,17 @@ import {
 } from '@ant-design/icons-vue'
 import CreateDBModal from './CreateDB.vue'
 import { useRoute, useRouter } from 'vue-router'
+import useStore from '@/store/index'
 import { getCatalogList, getDatabaseList, getTableList } from '@/services/table.service'
 import { ICatalogItem, ILableAndValue, IMap } from '@/types/common.type'
 import { debounce } from '@/utils/index'
 import { usePlaceholder } from '@/hooks/usePlaceholder'
 import virtualRecycleScroller from '@/components/VirtualRecycleScroller.vue'
 
+interface IDatabaseItem {
+  id: string
+  label: string
+}
 interface ITableItem {
   name: string
   type: string
@@ -96,6 +105,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const router = useRouter()
     const route = useRoute()
+    const store = useStore()
     const state = reactive({
       catalogLoading: false as boolean,
       DBSearchInput: '' as string,
@@ -137,14 +147,14 @@ export default defineComponent({
       getAllDatabaseList(true)
     })
 
-    const mouseEnter = debounce((item: string) => {
-      if (state.database === item) {
+    const handleClickDb = (item: IDatabaseItem) => {
+      if (state.database === item.id) {
         return
       }
-      state.database = item
+      state.database = item.id
       state.tableName = ''
       getAllTableList()
-    })
+    }
 
     const getPopupContainer = (triggerNode: Element) => {
       return triggerNode.parentNode
@@ -176,6 +186,7 @@ export default defineComponent({
         database: state.database,
         tableName: item.label
       }))
+      store.updateTablesMenu(false)
       const path = item.type === 'HIVE' ? '/hive-tables' : '/tables'
       const pathQuery = {
         path,
@@ -267,7 +278,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       placeholder,
-      mouseEnter,
+      handleClickDb,
       getPopupContainer,
       clickDatabase,
       catalogChange,
@@ -287,7 +298,12 @@ export default defineComponent({
     box-sizing: border-box;
     height: 100%;
     width: 512px;
+    background-color: @dark-bg-color;
+    color: #fff;
     box-shadow: rgb(0 21 41 / 8%) 2px 0 6px;
+    .tables-wrap {
+      height: calc(100% - 40px);
+    }
     .filter-wrap {
       padding: 4px 4px 0;
       .input-clear-icon {
@@ -300,15 +316,14 @@ export default defineComponent({
     .database-list,
     .table-list {
       flex: 1;
-      background-color: #fff;
-      padding-top: 4px;
+      padding-top: 8px;
     }
     .table-list,
     .database-list .list-wrap {
-      border-right: 1px solid #e8e8f0;
+      border-right: 1px solid rgb(255 255 255 / 12%);
     }
     .list-wrap {
-      height: calc(100% - 48px);
+      height: calc(100% - 12px);
       position: relative;
       .u-loading {
         background: transparent;
@@ -327,18 +342,18 @@ export default defineComponent({
     }
     .add {
       margin: 4px 4px 0;
-      background-color: #f6f7fa;
+      background-color: @dark-bg-primary-color;
     }
     :deep(.select-catalog .ant-select) {
-      flex: 1;
+      width: 240px;
       margin-left: 12px;
     }
     .icon {
       cursor: pointer;
     }
-    .label {
-      font-size: 16px;
+    .select-catalog {
+      padding-top: 8px;
+      border-right: 1px solid rgb(255 255 255 / 12%);
     }
   }
-
 </style>

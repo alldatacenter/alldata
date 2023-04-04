@@ -69,5 +69,4 @@ public class ConfigFileProperties {
   public static final String OPTIMIZE_GROUP_FLINK_HOME = "flink_home";
   public static final String OPTIMIZE_GROUP_HADOOP_HOME = "hadoop_home";
   public static final String OPTIMIZE_GROUP_HADOOP_CONF_DIR = "hadoop_conf_dir";
-
 }

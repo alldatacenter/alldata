@@ -141,14 +141,14 @@ case class RewriteAppendArcticTable(spark: SparkSession) extends Rule[LogicalPla
         SparkSQLProperties.CHECK_SOURCE_DUPLICATES_ENABLE_DEFAULT))
   }
 
-  def buildJoinCondition(primaries: util.List[String], r: DataSourceV2Relation, insertPlan: LogicalPlan): Expression = {
+  def buildJoinCondition(primaries: util.List[String], tableScan: LogicalPlan, insertPlan: LogicalPlan): Expression = {
     var i = 0
     var joinCondition: Expression = null
     val expressions = new util.ArrayList[Expression]
     while (i < primaries.size) {
       val primary = primaries.get(i)
-      val primaryAttr = r.output.find(_.name == primary).get
-      val joinAttribute = insertPlan.output.find(_.name.replace("_arctic_after_", "") == primary).get
+      val primaryAttr = insertPlan.output.find(_.name == primary).get
+      val joinAttribute = tableScan.output.find(_.name.replace("_arctic_before_", "") == primary).get
       val experssion = EqualTo(primaryAttr, joinAttribute)
       expressions.add(experssion)
       i += 1
@@ -171,9 +171,10 @@ case class RewriteAppendArcticTable(spark: SparkSession) extends Rule[LogicalPla
       case arctic: ArcticSparkTable =>
         if (arctic.table().isKeyedTable) {
           val primaries = arctic.table().asKeyedTable().primaryKeySpec().fieldNames()
-          val insertPlan = buildKeyedTableInsertProjection(query)
-          val joinCondition = buildJoinCondition(primaries, r, insertPlan)
-          Join(r, insertPlan, RightOuter, Some(joinCondition), JoinHint.NONE)
+          val tablePlan = buildKeyedTableBeforeProject(r)
+          // val insertPlan = buildKeyedTableInsertProjection(query)
+          val joinCondition = buildJoinCondition(primaries, tablePlan, query)
+          Join(tablePlan, query, RightOuter, Some(joinCondition), JoinHint.NONE)
         } else {
           query
         }
@@ -187,4 +188,13 @@ case class RewriteAppendArcticTable(spark: SparkSession) extends Rule[LogicalPla
     })
     Project(outputWithValues, relation)
   }
+
+  private def buildKeyedTableBeforeProject(relation: DataSourceV2Relation): LogicalPlan = {
+    val output = relation.output
+    val outputWithValues = output.map(a => {
+      Alias(a, "_arctic_before_" + a.name)()
+    })
+    Project(outputWithValues, relation)
+  }
+
 }

@@ -33,9 +33,12 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RecordGenerator {
 
@@ -66,6 +69,12 @@ public class RecordGenerator {
     return record;
   }
 
+  public List<GenericRecord> records(int size) {
+    return IntStream.range(0, size).boxed()
+        .map(x -> this.newRecord())
+        .collect(Collectors.toList());
+  }
+
   public static Builder buildFor(Schema schema) {
     return new Builder(schema);
   }
@@ -73,6 +82,8 @@ public class RecordGenerator {
   public static class Builder {
     final Schema schema;
     final Map<String, ValueGenerator> valueGeneratorMap = Maps.newHashMap();
+
+    long seed = 0;
 
     protected Builder(Schema schema) {
       this.schema = schema;
@@ -90,8 +101,18 @@ public class RecordGenerator {
       return this;
     }
 
+    public Builder withRandomDate(String cols) {
+      valueGeneratorMap.put(cols, new RandomDateString(this.seed));
+      return this;
+    }
+
+    public Builder withSeed(long seed) {
+      this.seed = seed;
+      return this;
+    }
+
     public RecordGenerator build() {
-      return new RecordGenerator(schema, valueGeneratorMap, 0);
+      return new RecordGenerator(schema, valueGeneratorMap, this.seed);
     }
   }
 
@@ -111,7 +132,7 @@ public class RecordGenerator {
     @Override
     public Object get(Type type) {
       Object value = RandomUtil.generatePrimitive(type.asPrimitiveType(), random);
-    
+
       switch (type.typeId()) {
         case TIME:
           return LocalTime.ofNanoOfDay((long) value * 1000);
@@ -121,6 +142,8 @@ public class RecordGenerator {
           } else {
             return EPOCH.plus((long) value, ChronoUnit.MICROS).toLocalDateTime();
           }
+        case DATE:
+          return EPOCH.plus((int) value, ChronoUnit.SECONDS).toLocalDate();
       }
       return value;
     }
@@ -143,6 +166,18 @@ public class RecordGenerator {
           return (int) value.incrementAndGet();
       }
       return super.get(type);
+    }
+  }
+
+  static class RandomDateString extends RandomValueGenerator {
+
+    public RandomDateString(long seed) {
+      super(seed);
+    }
+
+    @Override
+    public Object get(Type type) {
+      return super.get(Types.DateType.get()).toString();
     }
   }
 }

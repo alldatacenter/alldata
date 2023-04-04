@@ -21,7 +21,6 @@ package com.netease.arctic.ams.server.service;
 import com.netease.arctic.ams.api.MetaException;
 import com.netease.arctic.ams.server.model.TableMetadata;
 import com.netease.arctic.table.TableIdentifier;
-import com.netease.arctic.table.UnkeyedTable;
 
 import java.util.List;
 import java.util.Map;
@@ -102,13 +101,6 @@ public interface IMetaService {
    * @return True when the table is existed.
    */
   boolean isExist(TableIdentifier tableIdentifier);
-
-  /**
-   * build arctic table
-   *
-   * @param tableMetadata table meta data
-   */
-  UnkeyedTable buildArcticTable(TableMetadata tableMetadata);
 
   /**
    * get talbe count in catalog catalogName

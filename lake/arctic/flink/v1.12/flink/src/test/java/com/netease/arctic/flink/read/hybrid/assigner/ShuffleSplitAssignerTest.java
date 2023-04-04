@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
@@ -59,9 +58,9 @@ public class ShuffleSplitAssignerTest extends RowDataReaderFunctionTest {
     List<ArcticSplit> actual = new ArrayList<>();
 
     while (true) {
-      Optional<ArcticSplit> splitOpt = shuffleSplitAssigner.getNext(0);
-      if (splitOpt.isPresent()) {
-        actual.add(splitOpt.get());
+      Split splitOpt = shuffleSplitAssigner.getNext(0);
+      if (splitOpt.isAvailable()) {
+        actual.add(splitOpt.split());
       } else {
         break;
       }
@@ -80,9 +79,9 @@ public class ShuffleSplitAssignerTest extends RowDataReaderFunctionTest {
 
     int subtaskId = 2;
     while (subtaskId >= 0) {
-      Optional<ArcticSplit> splitOpt = shuffleSplitAssigner.getNext(subtaskId);
-      if (splitOpt.isPresent()) {
-        actual.add(splitOpt.get());
+      Split splitOpt = shuffleSplitAssigner.getNext(subtaskId);
+      if (splitOpt.isAvailable()) {
+        actual.add(splitOpt.split());
       } else {
         LOG.info("subtask id {}, splits {}.\n {}", subtaskId, actual.size(), actual);
         --subtaskId;
@@ -165,13 +164,13 @@ public class ShuffleSplitAssignerTest extends RowDataReaderFunctionTest {
         testKeyedTable.io()
     );
     int subtaskId = 0;
-    Optional<ArcticSplit> split;
+    Split split;
     List<RowData> actual = new ArrayList<>();
     LOG.info("subtaskId={}...", subtaskId);
     do {
       split = assigner.getNext(subtaskId);
-      if (split.isPresent()) {
-        DataIterator<RowData> dataIterator = rowDataReaderFunction.createDataIterator(split.get());
+      if (split.isAvailable()) {
+        DataIterator<RowData> dataIterator = rowDataReaderFunction.createDataIterator(split.split());
         while (dataIterator.hasNext()) {
           RowData rowData = dataIterator.next();
           LOG.info("{}", rowData);

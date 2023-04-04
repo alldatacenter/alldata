@@ -1,0 +1,76 @@
+ams:
+  arctic.ams.server-host.prefix: "127." #To facilitate batch deployment can config server host prefix.Must be enclosed in double quotes
+  arctic.ams.thrift.port: 1260
+  arctic.ams.http.port: 1630
+  arctic.ams.optimize.check.thread.pool-size: 10
+  arctic.ams.optimize.commit.thread.pool-size: 10
+  arctic.ams.expire.thread.pool-size: 10
+  arctic.ams.orphan.clean.thread.pool-size: 10
+  arctic.ams.file.sync.thread.pool-size: 10
+  # derby config.sh
+  arctic.ams.mybatis.ConnectionDriverClassName: org.apache.derby.jdbc.EmbeddedDriver
+  arctic.ams.mybatis.ConnectionURL: jdbc:derby:/tmp/arctic/derby;create=true
+  arctic.ams.database.type: derby
+  # mysql config.sh
+  #arctic.ams.mybatis.ConnectionURL: jdbc:mysql://{host}:{port}/{database}?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useAffectedRows=true&useSSL=false
+  #arctic.ams.mybatis.ConnectionDriverClassName: com.mysql.jdbc.Driver
+  #arctic.ams.mybatis.ConnectionUserName: {user}
+  #arctic.ams.mybatis.ConnectionPassword: {password}
+  #arctic.ams.database.type: mysql
+
+  #HA config
+  #arctic.ams.ha.enabled: true
+  #arctic.ams.cluster.name: default
+  #arctic.ams.zookeeper.server: 127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183
+
+  # kyuubi config
+  #arctic.ams.terminal.backend: kyuubi
+  #arctic.ams.terminal.kyuubi.jdbc.url: jdbc:hive2://127.0.0.1:10009/;
+
+  # login config
+  #login.username: admin
+  #login.password: admin
+
+# extension properties for like syste
+extension_properties:
+#test.properties: test
+containers:
+  # arctic optimizer container config.sh
+  - name: localContainer
+    type: local
+    properties:
+      hadoop_home: /opt/hadoop
+      # java_home: /opt/java
+#  - name: flinkContainer
+#    type: flink
+#    properties:
+#      FLINK_HOME: /opt/flink/        #flink install home
+#      HADOOP_CONF_DIR: /etc/hadoop/conf/       #hadoop config dir
+#      HADOOP_USER_NAME: hadoop       #hadoop user submit on yarn
+#      JVM_ARGS: -Djava.security.krb5.conf=/opt/krb5.conf       #flink launch jvm args, like kerberos config when ues kerberos
+#      FLINK_CONF_DIR: /etc/hadoop/conf/        #flink config dir
+
+
+
+optimize_group:
+  - name: default
+    # container name, should equal with the name that containers config.sh
+    container: localContainer
+    properties:
+      # unit MB
+      memory: 1024
+      spillable.map.enabled: false
+#      spillable.memory.limit: 524288000      #max delete map size in memory for optimizer, default is 500M
+#      spillable.map.dir:       #spill map base dir, default is System.System.getProperty("java.io.tmpdir")
+#  - name: flinkOp
+#    container: flinkContainer
+#    properties:
+#      taskmanager.memory: 1024
+#      jobmanager.memory: 1024
+#      spillable.map.enabled: false
+#      spillable.memory.limit: 524288000      #max delete map size in memory for optimizer, default don't use spill map
+#      spillable.map.dir:      #spill map base dir, default is System.System.getProperty("java.io.tmpdir")
+
+repair:
+  max.find.snapshot.num: 666
+  max.roll.back.snapshot.num: 888

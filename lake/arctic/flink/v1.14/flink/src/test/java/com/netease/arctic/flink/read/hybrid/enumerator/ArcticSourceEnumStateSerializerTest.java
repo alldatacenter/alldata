@@ -21,6 +21,7 @@ package com.netease.arctic.flink.read.hybrid.enumerator;
 import com.netease.arctic.flink.read.FlinkSplitPlanner;
 import com.netease.arctic.flink.read.hybrid.assigner.ShuffleSplitAssigner;
 import com.netease.arctic.flink.read.hybrid.assigner.ShuffleSplitAssignerTest;
+import com.netease.arctic.flink.read.hybrid.assigner.Split;
 import com.netease.arctic.flink.read.hybrid.split.ArcticSplit;
 import com.netease.arctic.flink.read.hybrid.split.TemporalJoinSplits;
 import org.apache.flink.api.connector.source.SplitEnumeratorContext;
@@ -33,7 +34,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ArcticSourceEnumStateSerializerTest extends ShuffleSplitAssignerTest {
@@ -74,9 +74,9 @@ public class ArcticSourceEnumStateSerializerTest extends ShuffleSplitAssignerTes
 
     int subtaskId = 2;
     while (subtaskId >= 0) {
-      Optional<ArcticSplit> splitOpt = actualAssigner.getNext(subtaskId);
-      if (splitOpt.isPresent()) {
-        actualSplits.add(splitOpt.get());
+      Split splitOpt = actualAssigner.getNext(subtaskId);
+      if (splitOpt.isAvailable()) {
+        actualSplits.add(splitOpt.split());
       } else {
         LOG.info("subtask id {}, splits {}.\n {}", subtaskId, actualSplits.size(), actualSplits);
         --subtaskId;

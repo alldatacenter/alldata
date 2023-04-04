@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('差异case')"/>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <!--<div class="col-sm-12 search-collapse">
+            <form id="post-form">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            jobId：<input type="text" name="id"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>-->
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<script th:inline="javascript">
+    var prefix = ctx + "system/jobInstance";
+
+    $(function () {
+        var url = window.location.href;
+        var id = url.substring(window.location.href.lastIndexOf("/") + 1);
+        console.log(id);
+        var myColumns = [];
+        $.ajax({
+            url: prefix + "/getDiffDetail/" + id,
+            type: 'get',
+            async: false,
+            success: function (result) {
+                // 未查询到相应的列，展示默认列
+                if (result.code == "0") {
+                    // 异步获取要动态生成的列
+                    if (result.total > 0) {
+                        var arr = result.rows;
+                        for (const key in arr[0]) {
+                            myColumns.push({
+                                "field": key,
+                                "title": key,
+                                "align": 'center',
+                                "valign": 'middle'
+                            });
+                        }
+                        console.log(myColumns);
+                        var options = {
+                            showSearch: false,
+                            showRefresh: false,
+                            showToggle: false,
+                            showColumns: false,
+                            data: result.rows,
+                            modalName: "差异case",
+                            columns: myColumns,
+                        };
+                        $.table.init(options);
+                    }
+
+                } else {
+
+                }
+
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

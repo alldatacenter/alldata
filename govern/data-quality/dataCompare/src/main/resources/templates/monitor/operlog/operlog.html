@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('操作日志列表')" />
+	<th:block th:include="include :: bootstrap-select-css" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="operlog-form">
+					<div class="select-list">
+						<ul>
+							<li>
+								<label>系统模块： </label><input type="text" name="title"/>
+							</li>
+							<li>
+								<label>操作人员： </label><input type="text" name="operName"/>
+							</li>
+							<li class="select-selectpicker">
+								<label>操作类型： </label><select id="businessTypes" name="businessTypes" th:with="type=${@dict.getType('sys_oper_type')}" class="selectpicker" data-none-selected-text="请选择" multiple>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+								</select>
+							</li>
+							<li>
+								<label>操作状态：</label><select name="status" th:with="type=${@dict.getType('sys_common_status')}">
+									<option value="">所有</option>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+								</select>
+							</li>
+							<li class="select-time">
+								<label>操作时间： </label>
+								<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]"/>
+								<span>-</span>
+								<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endTime]"/>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="searchPre()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="resetPre()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+			<div class="btn-group-sm" id="toolbar" role="group">
+				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="monitor:operlog:remove">
+		            <i class="fa fa-remove"></i> 删除
+		        </a>
+		        <a class="btn btn-danger" onclick="$.operate.clean()" shiro:hasPermission="monitor:operlog:remove">
+	                <i class="fa fa-trash"></i> 清空
+	            </a>
+	            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="monitor:operlog:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a>
+	        </div>
+	        
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table"></table>
+			</div>
+		</div>
+	</div>
+	
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: bootstrap-select-js" />
+	<script th:inline="javascript">
+		var detailFlag = [[${@permission.hasPermi('monitor:operlog:detail')}]];
+		var datas = [[${@dict.getType('sys_oper_type')}]];
+		var prefix = ctx + "monitor/operlog";
+
+		$(function() {
+		    var options = {
+		        url: prefix + "/list",
+		        cleanUrl: prefix + "/clean",
+		        detailUrl: prefix + "/detail/{id}",
+		        removeUrl: prefix + "/remove",
+		        exportUrl: prefix + "/export",
+		        queryParams: queryParams,
+		        sortName: "operTime",
+		        sortOrder: "desc",
+		        modalName: "操作日志",
+		        escape: true,
+		        showPageGo: true,
+		        rememberSelected: true,
+		        columns: [{
+		        	field: 'state',
+		            checkbox: true
+		        },
+		        {
+		            field: 'operId',
+		            title: '日志编号'
+		        },
+		        {
+		            field: 'title',
+		            title: '系统模块'
+		        },
+		        {
+		            field: 'businessType',
+		            title: '操作类型',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		            	return $.table.selectDictLabel(datas, value);
+		            }
+		        },
+		        {
+		            field: 'operName',
+		            title: '操作人员',
+		            sortable: true
+		        },
+		        {
+		            field: 'deptName',
+		            title: '部门名称'
+		        },
+		        {
+		            field: 'operIp',
+		            title: '主机'
+		        },
+		        {
+		            field: 'operLocation',
+		            title: '操作地点'
+		        },
+		        {
+		            field: 'status',
+		            title: '操作状态',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		                if (value == 0) {
+		                    return '<span class="badge badge-primary">成功</span>';
+		                } else if (value == 1) {
+		                    return '<span class="badge badge-danger">失败</span>';
+		                }
+		            }
+		        },
+		        {
+		            field: 'operTime',
+		            title: '操作时间',
+		            sortable: true
+		        },
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		                var actions = [];
+		                actions.push('<a class="btn btn-warning btn-xs ' + detailFlag + '" href="javascript:void(0)" onclick="$.operate.detail(\'' + row.operId + '\')"><i class="fa fa-search"></i>详细</a>');
+		                return actions.join('');
+		            }
+		        }]
+		    };
+		    $.table.init(options);
+		});
+		
+		function queryParams(params) {
+			var search = $.table.queryParams(params);
+			search.businessTypes = $.common.join($('#businessTypes').selectpicker('val'));
+			return search;
+		}
+		
+		function searchPre() {
+		    $.table.search('operlog-form', 'bootstrap-table');
+		}
+		
+		function resetPre() {
+			$("#operlog-form")[0].reset();
+			$("#businessTypes").selectpicker('refresh');
+			$.table.search('operlog-form', 'bootstrap-table');
+		}
+	</script>
+</body>
+</html>

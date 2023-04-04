@@ -24,11 +24,15 @@ import com.netease.arctic.ams.api.properties.TableFormat;
 import com.netease.arctic.catalog.BaseCatalogTest;
 import com.netease.arctic.catalog.CatalogTestHelpers;
 import com.netease.arctic.hive.TestHMS;
+import org.apache.iceberg.catalog.Catalog;
 import org.junit.ClassRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.Map;
+
+import static org.apache.iceberg.CatalogUtil.ICEBERG_CATALOG_TYPE;
+import static org.apache.iceberg.CatalogUtil.ICEBERG_CATALOG_TYPE_HIVE;
 
 @RunWith(Parameterized.class)
 public class HiveBasedCatalogTest extends BaseCatalogTest {
@@ -50,5 +54,13 @@ public class HiveBasedCatalogTest extends BaseCatalogTest {
     Map<String, String> properties = Maps.newHashMap();
     return CatalogTestHelpers.buildHiveCatalogMeta(TEST_CATALOG_NAME,
         properties, TEST_HMS.getHiveConf(), getTestFormat());
+  }
+
+  @Override
+  protected Catalog buildIcebergCatalog() {
+    Map<String, String> catalogProperties = Maps.newHashMap(getCatalogMeta().getCatalogProperties());
+    catalogProperties.put(ICEBERG_CATALOG_TYPE, ICEBERG_CATALOG_TYPE_HIVE);
+    return org.apache.iceberg.CatalogUtil.buildIcebergCatalog(TEST_CATALOG_NAME,
+        catalogProperties, TEST_HMS.getHiveConf());
   }
 }

@@ -27,6 +27,7 @@ import com.netease.arctic.ams.api.CatalogMeta;
 import com.netease.arctic.ams.api.NoSuchObjectException;
 import com.netease.arctic.ams.api.NotSupportedException;
 import com.netease.arctic.ams.api.OperationConflictException;
+import com.netease.arctic.ams.api.OperationErrorException;
 import com.netease.arctic.ams.api.TableCommitMeta;
 import com.netease.arctic.ams.api.TableIdentifier;
 import com.netease.arctic.ams.api.TableMeta;
@@ -47,7 +48,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 
 public class ArcticTableMetastoreHandler implements AmsClient, ArcticTableMetastore.Iface {
   public static final Logger LOG = LoggerFactory.getLogger(ArcticTableMetastoreHandler.class);
@@ -203,13 +203,15 @@ public class ArcticTableMetastoreHandler implements AmsClient, ArcticTableMetast
     if (tableIdentifier == null) {
       throw new NoSuchObjectException("table identifier should not be null");
     }
-    return ServiceContainer.getArcticTransactionService().allocateTransactionId(tableIdentifier,
+    return ServiceContainer.getArcticTransactionService().allocateTransactionId(
+        tableIdentifier,
         transactionSignature);
   }
 
   @Override
-  public Blocker block(TableIdentifier tableIdentifier, List<BlockableOperation> operations,
-                       Map<String, String> properties)
+  public Blocker block(
+      TableIdentifier tableIdentifier, List<BlockableOperation> operations,
+      Map<String, String> properties)
       throws OperationConflictException {
     TableBlocker block = ServiceContainer.getTableBlockerService()
         .block(com.netease.arctic.table.TableIdentifier.of(tableIdentifier), operations, properties);
@@ -233,5 +235,15 @@ public class ArcticTableMetastoreHandler implements AmsClient, ArcticTableMetast
     return ServiceContainer.getTableBlockerService()
         .getBlockers(com.netease.arctic.table.TableIdentifier.of(tableIdentifier))
         .stream().map(TableBlocker::buildBlocker).collect(Collectors.toList());
+  }
+
+  @Override
+  public void refreshTable(TableIdentifier tableIdentifier) throws OperationErrorException, TException {
+    try {
+      ServiceContainer.getFileInfoCacheService()
+          .deleteTableCache(com.netease.arctic.table.TableIdentifier.of(tableIdentifier));
+    } catch (Exception e) {
+      throw new OperationErrorException(e.getMessage());
+    }
   }
 }

@@ -29,6 +29,10 @@ exception OperationConflictException {
   1: string message
 }
 
+exception OperationErrorException {
+  1: string message
+}
+
 struct TableIdentifier {
     1:string catalog;
     2:string database;

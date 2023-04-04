@@ -39,6 +39,8 @@ import org.apache.iceberg.Transaction;
 import org.apache.iceberg.UpdateSchema;
 import org.apache.iceberg.util.PropertyUtil;
 
+import java.util.Map;
+
 import static com.netease.arctic.hive.HiveTableProperties.BASE_HIVE_LOCATION_ROOT;
 
 /**
@@ -57,8 +59,9 @@ public class UnkeyedHiveTable extends BasicUnkeyedTable implements BaseTable, Su
       ArcticFileIO arcticFileIO,
       String tableLocation,
       AmsClient client,
-      HMSClientPool hiveClient) {
-    this(tableIdentifier, icebergTable, arcticFileIO, tableLocation, client, hiveClient, true);
+      HMSClientPool hiveClient,
+      Map<String, String> catalogProperties) {
+    this(tableIdentifier, icebergTable, arcticFileIO, tableLocation, client, hiveClient, catalogProperties, true);
   }
 
   public UnkeyedHiveTable(
@@ -68,20 +71,29 @@ public class UnkeyedHiveTable extends BasicUnkeyedTable implements BaseTable, Su
       String tableLocation,
       AmsClient client,
       HMSClientPool hiveClient,
+      Map<String, String> catalogProperties,
       boolean syncHiveChange) {
-    super(tableIdentifier, icebergTable, arcticFileIO, client);
+    super(tableIdentifier, icebergTable, arcticFileIO, client, catalogProperties);
     this.hiveClient = hiveClient;
     this.tableLocation = tableLocation;
     this.syncHiveChange = syncHiveChange;
-    syncHiveSchemaToArctic();
-    syncHiveDataToArctic();
+    if (enableSyncHiveSchemaToArctic()) {
+      syncHiveSchemaToArctic();
+    }
+    if (enableSyncHiveDataToArctic()) {
+      syncHiveDataToArctic(false);
+    }
   }
 
   @Override
   public void refresh() {
     super.refresh();
-    syncHiveSchemaToArctic();
-    syncHiveDataToArctic();
+    if (enableSyncHiveSchemaToArctic()) {
+      syncHiveSchemaToArctic();
+    }
+    if (enableSyncHiveDataToArctic()) {
+      syncHiveDataToArctic(false);
+    }
   }
 
   @Override
@@ -133,21 +145,29 @@ public class UnkeyedHiveTable extends BasicUnkeyedTable implements BaseTable, Su
     return new HiveSchemaUpdate(this, hiveClient, super.updateSchema());
   }
 
-  private void syncHiveSchemaToArctic() {
-    if (syncHiveChange && PropertyUtil.propertyAsBoolean(
+  @Override
+  public boolean enableSyncHiveSchemaToArctic() {
+    return syncHiveChange && PropertyUtil.propertyAsBoolean(
         properties(),
         HiveTableProperties.AUTO_SYNC_HIVE_SCHEMA_CHANGE,
-        HiveTableProperties.AUTO_SYNC_HIVE_SCHEMA_CHANGE_DEFAULT)) {
-      HiveMetaSynchronizer.syncHiveSchemaToArctic(this, hiveClient);
-    }
+        HiveTableProperties.AUTO_SYNC_HIVE_SCHEMA_CHANGE_DEFAULT);
   }
 
-  private void syncHiveDataToArctic() {
-    if (syncHiveChange && PropertyUtil.propertyAsBoolean(
+  @Override
+  public void syncHiveSchemaToArctic() {
+    HiveMetaSynchronizer.syncHiveSchemaToArctic(this, hiveClient);
+  }
+
+  @Override
+  public boolean enableSyncHiveDataToArctic() {
+    return syncHiveChange && PropertyUtil.propertyAsBoolean(
         properties(),
         HiveTableProperties.AUTO_SYNC_HIVE_DATA_WRITE,
-        HiveTableProperties.AUTO_SYNC_HIVE_DATA_WRITE_DEFAULT)) {
-      HiveMetaSynchronizer.syncHiveDataToArctic(this, hiveClient);
-    }
+        HiveTableProperties.AUTO_SYNC_HIVE_DATA_WRITE_DEFAULT);
+  }
+
+  @Override
+  public void syncHiveDataToArctic(boolean force) {
+    HiveMetaSynchronizer.syncHiveDataToArctic(this, hiveClient, force);
   }
 }

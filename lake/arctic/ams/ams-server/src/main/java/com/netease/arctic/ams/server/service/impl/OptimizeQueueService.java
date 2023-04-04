@@ -161,6 +161,46 @@ public class OptimizeQueueService extends IJDBCService {
   }
 
   /**
+   * create new optimize group
+   * @param name String
+   * @param container String
+   * @param schedulePolicy String
+   * @param properties Map<String, String>
+   * @throws MetaException when name already exists
+   * @throws NoSuchObjectException when container name not exists
+   */
+  public void createQueue(String name, String container, String schedulePolicy, Map<String, String> properties)
+      throws MetaException, NoSuchObjectException {
+    OptimizeQueueMeta queue = new OptimizeQueueMeta();
+    List<OptimizeQueueMeta> metas = getQueues();
+    for (OptimizeQueueMeta meta : metas) {
+      if (meta.getName().equals(name)) {
+        throw new MetaException("optimize group name: " + name + " already exists");
+      }
+    }
+    queue.setName(name);
+    if (getContainer(container) == null) {
+      throw new NoSuchObjectException(
+          "can not find such container config named " + container);
+    }
+    queue.setContainer(container);
+    String policy = StringUtils.trim(schedulePolicy);
+    if (StringUtils.isBlank(policy)) {
+      policy = ConfigFileProperties.OPTIMIZE_SCHEDULING_POLICY_QUOTA;
+    } else if (
+        !(ConfigFileProperties.OPTIMIZE_SCHEDULING_POLICY_QUOTA.equalsIgnoreCase(policy) ||
+            ConfigFileProperties.OPTIMIZE_SCHEDULING_POLICY_BALANCED.equalsIgnoreCase(policy))) {
+      throw new IllegalArgumentException(String.format(
+          "Scheduling policy only can be %s and %s",
+          ConfigFileProperties.OPTIMIZE_SCHEDULING_POLICY_QUOTA,
+          ConfigFileProperties.OPTIMIZE_SCHEDULING_POLICY_BALANCED));
+    }
+    queue.setSchedulingPolicy(policy);
+    queue.setProperties(properties);
+    createQueue(queue);
+  }
+
+  /**
    * Update optimize queue
    *
    * @param queue new OptimizeQueueMeta
@@ -348,6 +388,13 @@ public class OptimizeQueueService extends IJDBCService {
     try (SqlSession sqlSession = getSqlSession(true)) {
       ContainerMetadataMapper containerMetadataMapper = getMapper(sqlSession, ContainerMetadataMapper.class);
       return containerMetadataMapper.getContainers();
+    }
+  }
+
+  public Container getContainer(String container) {
+    try (SqlSession sqlSession = getSqlSession(true)) {
+      ContainerMetadataMapper containerMetadataMapper = getMapper(sqlSession, ContainerMetadataMapper.class);
+      return containerMetadataMapper.getContainer(container);
     }
   }
 
@@ -710,6 +757,11 @@ public class OptimizeQueueService extends IJDBCService {
             } else {
               continue;
             }
+          }
+
+          if (tableItem.getTableOptimizeRuntime().getOptimizeStatus() != TableOptimizeRuntime.OptimizeStatus.Pending) {
+            // only table in pending should plan
+            continue;
           }
 
           OptimizePlanResult optimizePlanResult = OptimizePlanResult.EMPTY;
