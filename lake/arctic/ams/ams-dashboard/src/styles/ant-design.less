@@ -145,3 +145,26 @@
 .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
   display: none;
 }
+
+.theme-dark {
+  .ant-select-selector {
+    color: #fff;
+    background-color: @dark-bg-primary-color !important;
+    border: 1px solid rgb(255 255 255 / 12%) !important;
+  }
+  .ant-select-arrow {
+    color: #fff;
+  }
+  &.ant-input-search .ant-input-affix-wrapper {
+    color: #fff;
+    background-color: @dark-bg-primary-color;
+    border: 1px solid rgb(255 255 255 / 12%);
+    .ant-input {
+      color: #fff;
+      background-color: @dark-bg-primary-color;
+    }
+  }
+  .ant-empty-description {
+    color: #9ea4aa;
+  }
+}

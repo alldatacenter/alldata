@@ -40,7 +40,7 @@ public class OptimizeCheckTask implements ScheduledTasks.Task {
     try {
       tableOptimize = ServiceContainer.getOptimizeService().getTableOptimizeItem(tableIdentifier);
     } catch (Throwable t) {
-      LOG.info("optimize checker failed to get table " + tableIdentifier, t);
+      LOG.warn("optimize checker failed to get table " + tableIdentifier, t);
       return;
     }
     try {

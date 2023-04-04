@@ -37,11 +37,15 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class MajorOptimizePlan extends AbstractArcticOptimizePlan {
   private static final Logger LOG = LoggerFactory.getLogger(MajorOptimizePlan.class);
+  // cache partition base file count
+  private final Map<String, Integer> partitionBaseFileCount = new HashMap<>();
 
   public MajorOptimizePlan(ArcticTable arcticTable, TableOptimizeRuntime tableOptimizeRuntime,
                            List<FileScanTask> baseFileScanTasks,
@@ -58,26 +62,59 @@ public class MajorOptimizePlan extends AbstractArcticOptimizePlan {
 
   @Override
   public boolean partitionNeedPlan(String partitionToPath) {
-    long current = System.currentTimeMillis();
+    // check small data file count
+    if (checkBaseFileCount(partitionToPath)) {
+      return true;
+    }
 
-
-    List<DataFile> baseFiles = getBaseFilesFromFileTree(partitionToPath);
-    if (baseFiles.size() >= 2) {
-      // check small data file count
-      if (checkSmallFileCount(baseFiles)) {
-        return true;
-      }
-
-      // check major optimize interval
-      if (checkMajorOptimizeInterval(current, partitionToPath)) {
-        return true;
-      }
+    // check major optimize interval
+    if (checkOptimizeInterval(partitionToPath)) {
+      return true;
     }
 
     LOG.debug("{} ==== don't need {} optimize plan, skip partition {}", tableId(), getOptimizeType(), partitionToPath);
     return false;
   }
 
+  @Override
+  protected PartitionWeight getPartitionWeight(String partition) {
+    return new MajorPartitionWeight(checkOptimizeInterval(partition), getBaseFileCount(partition));
+  }
+
+  protected int getBaseFileCount(String partition) {
+    Integer cached = partitionBaseFileCount.get(partition);
+    if (cached != null) {
+      return cached;
+    }
+
+    int baseFileCount = getBaseFilesFromFileTree(partition).size();
+    partitionBaseFileCount.put(partition, baseFileCount);
+    return baseFileCount;
+  }
+
+  protected static class MajorPartitionWeight implements PartitionWeight {
+
+    private final boolean reachInterval;
+
+    private final int baseFileCount;
+
+    public MajorPartitionWeight(boolean reachInterval, int baseFileCount) {
+      this.reachInterval = reachInterval;
+      this.baseFileCount = baseFileCount;
+    }
+
+    @Override
+    public int compareTo(PartitionWeight o) {
+      MajorPartitionWeight that = (MajorPartitionWeight) o;
+      int compare = Boolean.compare(that.reachInterval, this.reachInterval);
+      if (compare != 0) {
+        return compare;
+      }
+      return Integer.compare(that.baseFileCount, this.baseFileCount);
+    }
+  }
+
+  @Override
   protected List<BasicOptimizeTask> collectTask(String partition) {
     List<BasicOptimizeTask> result;
     FileTree treeRoot = partitionFileTree.get(partition);
@@ -93,21 +130,22 @@ public class MajorOptimizePlan extends AbstractArcticOptimizePlan {
     return result;
   }
 
-  protected boolean checkMajorOptimizeInterval(long current, String partitionToPath) {
-    return current - tableOptimizeRuntime.getLatestMajorOptimizeTime(partitionToPath) >=
-        CompatiblePropertyUtil.propertyAsLong(arcticTable.properties(),
-            TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_INTERVAL,
-            TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_INTERVAL_DEFAULT);
+  @Override
+  protected long getMaxOptimizeInterval() {
+    return CompatiblePropertyUtil.propertyAsLong(arcticTable.properties(),
+        TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_INTERVAL,
+        TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_INTERVAL_DEFAULT);
   }
 
-  protected boolean checkSmallFileCount(List<DataFile> dataFileList) {
-    if (CollectionUtils.isNotEmpty(dataFileList)) {
-      return dataFileList.size() >= CompatiblePropertyUtil.propertyAsInt(arcticTable.properties(),
-          TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_FILE_CNT,
-          TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_FILE_CNT_DEFAULT);
-    }
+  @Override
+  protected long getLatestOptimizeTime(String partition) {
+    return tableOptimizeRuntime.getLatestMajorOptimizeTime(partition);
+  }
 
-    return false;
+  protected boolean checkBaseFileCount(String partition) {
+    return getBaseFileCount(partition) >= CompatiblePropertyUtil.propertyAsInt(arcticTable.properties(),
+        TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_FILE_CNT,
+        TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_FILE_CNT_DEFAULT);
   }
 
   @Override

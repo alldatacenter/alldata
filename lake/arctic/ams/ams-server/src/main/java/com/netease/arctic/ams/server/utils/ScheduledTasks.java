@@ -22,7 +22,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -51,32 +50,32 @@ public class ScheduledTasks<K, T extends ScheduledTasks.Task> {
   }
 
   /**
-   * Schedule Task to be executed with fixed delay
+   * Schedule {@link Task} to be executed with fixed delay.
    *
-   * @param id    task id
-   * @param task  task to be executed
-   * @param delay the delay in milliseconds
+   * @param id           task id
+   * @param task         task to be executed
+   * @param initialDelay initial delay
+   * @param delay        the delay in milliseconds
    */
-  public void addTaskToSchedulerWithFixedDelay(K id, T task, long delay) {
+  public void addTaskToSchedulerWithFixedDelay(K id, T task, long initialDelay, long delay) {
     if (!taskScheduled(id)) {
       TaskWrapper<T> taskWrapper = new TaskWrapper<>(task, delay);
       taskWrapper.future = getScheduledExecutor()
-          .scheduleWithFixedDelay(taskWrapper, 0, delay, TimeUnit.MILLISECONDS);
+          .scheduleWithFixedDelay(taskWrapper, initialDelay, delay, TimeUnit.MILLISECONDS);
       taskMap.put(id, taskWrapper);
     }
   }
 
   /**
-   * Schedule Task to be executed with fixed rate
+   * Schedule {@link Task} to be executed with fixed rate.
    *
-   * @param id        task id
-   * @param task      task to be executed
-   * @param startTime time to start
-   * @param period    the period in milliseconds
+   * @param id           task id
+   * @param task         task to be executed
+   * @param initialDelay initial delay
+   * @param period       the period in milliseconds
    */
-  public void addTaskToSchedulerAtFixedRate(K id, T task, Date startTime, long period) {
+  public void addTaskToSchedulerAtFixedRate(K id, T task, long initialDelay, long period) {
     if (!taskScheduled(id)) {
-      long initialDelay = startTime.getTime() - System.currentTimeMillis();
       TaskWrapper<T> taskWrapper = new TaskWrapper<>(task, period);
       taskWrapper.future = getScheduledExecutor()
           .scheduleAtFixedRate(task, initialDelay, period, TimeUnit.MILLISECONDS);
@@ -85,23 +84,7 @@ public class ScheduledTasks<K, T extends ScheduledTasks.Task> {
   }
 
   /**
-   * Schedule Task to be executed with fixed rate
-   *
-   * @param id     task id
-   * @param task   task to be executed
-   * @param period the period in milliseconds
-   */
-  public void addTaskToSchedulerAtFixedRate(K id, T task, long period) {
-    if (!taskScheduled(id)) {
-      TaskWrapper<T> taskWrapper = new TaskWrapper<>(task, period);
-      taskWrapper.future = getScheduledExecutor()
-          .scheduleAtFixedRate(task, 0, period, TimeUnit.MILLISECONDS);
-      taskMap.put(id, taskWrapper);
-    }
-  }
-
-  /**
-   * Remove scheduled task
+   * Remove scheduled {@link Task}.
    *
    * @param id task id
    */
@@ -114,9 +97,9 @@ public class ScheduledTasks<K, T extends ScheduledTasks.Task> {
   }
 
   /**
-   * If id does not exist, then remove scheduled task. example id was deleted
+   * If id does not exist, then remove scheduled task, example id was deleted.
    *
-   * @param ids task ids
+   * @param ids - task ids
    * @return ids removed
    */
   public Set<K> removeLegacyTaskFromScheduler(Set<K> ids, boolean mayInterruptIfRunning) {
@@ -138,9 +121,9 @@ public class ScheduledTasks<K, T extends ScheduledTasks.Task> {
   }
 
   /**
-   * Whether task was scheduled or not
+   * Whether task was scheduled or not.
    *
-   * @param id task id
+   * @param id - task id
    * @return true if scheduled, else false
    */
   public boolean taskScheduled(K id) {
@@ -148,9 +131,9 @@ public class ScheduledTasks<K, T extends ScheduledTasks.Task> {
   }
 
   /**
-   * get task
+   * Get {@link Task}.
    *
-   * @param id task id
+   * @param id - task id
    * @return null if task is not scheduled
    */
   public T getTask(K id) {
@@ -194,9 +177,6 @@ public class ScheduledTasks<K, T extends ScheduledTasks.Task> {
 
   public interface Task extends Runnable {
 
-    default void updateTask(Supplier<Task> newTask) {
-    }
-
   }
 
   private ScheduledExecutorService getScheduledExecutor() {
@@ -207,12 +187,14 @@ public class ScheduledTasks<K, T extends ScheduledTasks.Task> {
    * Check running tasks, cancel invalid tasks, add new tasks, change task's interval.
    *
    * @param validKeys             - tasks to keep
+   * @param initialDelaySupplier  - generate initial delay
    * @param intervalSupplier      - generate interval
    * @param taskFactory           - build task
    * @param mayInterruptIfRunning - interrupt task when cancel
    */
   public synchronized void checkRunningTask(Set<K> validKeys,
-                                            Function<K, Long> intervalSupplier,
+                                            Supplier<Long> initialDelaySupplier,
+                                            Supplier<Long> intervalSupplier,
                                             Function<K, T> taskFactory,
                                             boolean mayInterruptIfRunning) {
     Set<K> removedKeys = removeLegacyTaskFromScheduler(validKeys, false);
@@ -222,34 +204,30 @@ public class ScheduledTasks<K, T extends ScheduledTasks.Task> {
 
     for (K key : validKeys) {
       try {
-        Long interval = intervalSupplier.apply(key);
+        long interval = intervalSupplier.get();
         boolean needSchedulerTask = true;
         long lastExecuteTime = 0;
         if (taskScheduled(key)) {
           needSchedulerTask = false;
           TaskWrapper<T> taskWrapper = taskMap.get(key);
-          if (interval == null) {
-            removeTaskFromScheduler(key, mayInterruptIfRunning);
-          } else if (taskWrapper.getInterval() != interval) {
+          if (taskWrapper.getInterval() != interval) {
             removeTaskFromScheduler(key, mayInterruptIfRunning);
             lastExecuteTime = taskWrapper.getLastExecuteTime();
-            LOG.info("{} task {} commit interval change from {}ms to {}ms",
+            LOG.info("{} task {} execute interval change from {}ms to {}ms",
                 name, key, taskWrapper.getInterval(), interval);
             needSchedulerTask = true;
-          } else {
-            taskWrapper.getTask().updateTask(() -> taskFactory.apply(key));
           }
         }
         if (needSchedulerTask) {
           T task = taskFactory.apply(key);
           if (task != null) {
+            long initialDelay;
             if (lastExecuteTime == 0) {
-              // next commitTime = now
-              addTaskToSchedulerAtFixedRate(key, task, interval);
+              initialDelay = initialDelaySupplier.get();
             } else {
-              // next commitTime = lastExecuteTime + interval
-              addTaskToSchedulerAtFixedRate(key, task, new Date(lastExecuteTime + interval), interval);
+              initialDelay = interval - (System.currentTimeMillis() - lastExecuteTime);
             }
+            addTaskToSchedulerAtFixedRate(key, task, initialDelay > 0 ? initialDelay : 0, interval);
             LOG.info("{} schedule {} with interval {}ms", name, key, interval);
           }
         }

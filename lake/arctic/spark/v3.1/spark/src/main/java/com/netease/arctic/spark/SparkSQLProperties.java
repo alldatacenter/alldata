@@ -20,8 +20,6 @@ package com.netease.arctic.spark;
 
 public class SparkSQLProperties {
 
-  public static final String DELEGATE_DEFAULT_CATALOG_TABLE = "spark.sql.arctic.delegate.enabled";
-
   public static final String USE_TIMESTAMP_WITHOUT_TIME_ZONE_IN_NEW_TABLES =
           "spark.sql.arctic.use-timestamp-without-timezone-in-new-tables";
 

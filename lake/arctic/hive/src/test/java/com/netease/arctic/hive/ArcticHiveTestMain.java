@@ -25,6 +25,7 @@ import com.netease.arctic.hive.catalog.MixedHiveCatalogTest;
 import com.netease.arctic.hive.io.KeyedTimeStampTest;
 import com.netease.arctic.hive.io.TestAdaptHiveReader;
 import com.netease.arctic.hive.io.TestAdaptHiveWriter;
+import com.netease.arctic.hive.io.TestImpalaParquet;
 import com.netease.arctic.hive.op.AutoSyncHiveTest;
 import com.netease.arctic.hive.op.TestHiveSchemaUpdate;
 import com.netease.arctic.hive.op.TestOverwriteFiles;
@@ -40,6 +41,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+    TestImpalaParquet.class,
     TestRewritePartitions.class,
     TestOverwriteFiles.class,
     TestRewriteFiles.class,

@@ -52,6 +52,7 @@ public abstract class AbstractOptimizePlan {
   protected final Set<String> allPartitions = new HashSet<>();
   // partitions to optimizing
   protected final Set<String> affectedPartitions = new HashSet<>();
+  private boolean skippedPartitions = false;
   
   private int collectFileCnt = 0;
 
@@ -91,16 +92,18 @@ public abstract class AbstractOptimizePlan {
 
     for (String partition : partitions) {
       List<BasicOptimizeTask> optimizeTasks = collectTask(partition);
+      if (reachMaxFileCount()) {
+        this.skippedPartitions = true;
+        LOG.info("{} get enough files {} > {}, ignore left partitions", tableId(), this.collectFileCnt,
+            getMaxFileCntLimit());
+        break;
+      }
       if (optimizeTasks.size() > 0) {
         this.affectedPartitions.add(partition);
         LOG.info("{} partition {} ==== collect {} {} tasks", tableId(), partition, optimizeTasks.size(),
             getOptimizeType());
         results.addAll(optimizeTasks);
-        if (reachMaxFileCnt(optimizeTasks)) {
-          LOG.info("{} get enough files {} > {}, ignore left partitions", tableId(), this.collectFileCnt,
-              getMaxFileCntLimit());
-          break;
-        }
+        accumulateFileCount(optimizeTasks);
       }
     }
     LOG.info("{} ==== after collect, get {} task of partitions {}/{}", tableId(), getOptimizeType(),
@@ -108,7 +111,7 @@ public abstract class AbstractOptimizePlan {
     return results;
   }
 
-  private boolean reachMaxFileCnt(List<BasicOptimizeTask> newTasks) {
+  private void accumulateFileCount(List<BasicOptimizeTask> newTasks) {
     int newFileCnt = 0;
     for (BasicOptimizeTask optimizeTask : newTasks) {
       int taskFileCnt = optimizeTask.getBaseFileCnt() + optimizeTask.getDeleteFileCnt() +
@@ -116,20 +119,28 @@ public abstract class AbstractOptimizePlan {
       newFileCnt += taskFileCnt;
     }
     this.collectFileCnt += newFileCnt;
-    return limitFileCnt() && this.collectFileCnt >= getMaxFileCntLimit();
+  }
+
+  private boolean reachMaxFileCount() {
+    return this.collectFileCnt >= getMaxFileCntLimit();
   }
 
   private OptimizePlanResult buildOptimizePlanResult(List<BasicOptimizeTask> optimizeTasks) {
+    long currentChangeSnapshotId = getCurrentChangeSnapshotId();
+    if (skippedPartitions) {
+      // if not all partitions are optimized, current change snapshot id should set to -1 to trigger next minor optimize
+      currentChangeSnapshotId = TableOptimizeRuntime.INVALID_SNAPSHOT_ID;
+    }
     return new OptimizePlanResult(this.affectedPartitions, optimizeTasks, getOptimizeType(), this.currentSnapshotId,
-        getCurrentChangeSnapshotId(), this.planGroup);
+        currentChangeSnapshotId, this.planGroup);
   }
 
   protected List<String> getPartitionsToOptimizeInOrder() {
     List<String> partitionNeedOptimizedInOrder = allPartitions.stream()
         .filter(this::partitionNeedPlan)
-        .map(partition -> new PartitionWeight(partition, getPartitionWeight(partition)))
+        .map(partition -> new PartitionWeightWrapper(partition, getPartitionWeight(partition)))
         .sorted()
-        .map(PartitionWeight::getPartition)
+        .map(PartitionWeightWrapper::getPartition)
         .collect(Collectors.toList());
     if (partitionNeedOptimizedInOrder.size() > 0) {
       LOG.info("{} filter partitions to optimize, partition count {}", tableId(),
@@ -140,12 +151,17 @@ public abstract class AbstractOptimizePlan {
     return partitionNeedOptimizedInOrder;
   }
 
-  protected long getPartitionWeight(String partitionToPath) {
-    return 0;
-  }
+  /**
+   * Get the partition weight.
+   * The optimizing order of partition is decide by partition weight, and the larger weight should be ahead.
+   *
+   * @param partition - partition
+   * @return return partition weight
+   */
+  protected abstract PartitionWeight getPartitionWeight(String partition);
 
   private long getMaxFileCntLimit() {
-    Map<String, String> properties = arcticTable.asUnkeyedTable().properties();
+    Map<String, String> properties = arcticTable.properties();
     return CompatiblePropertyUtil.propertyAsInt(properties,
         TableProperties.SELF_OPTIMIZING_MAX_FILE_CNT, TableProperties.SELF_OPTIMIZING_MAX_FILE_CNT_DEFAULT);
   }
@@ -163,11 +179,15 @@ public abstract class AbstractOptimizePlan {
     }
   }
 
-  private static class PartitionWeight implements Comparable<PartitionWeight> {
-    private final String partition;
-    private final long weight;
+  protected interface PartitionWeight extends Comparable<PartitionWeight> {
 
-    public PartitionWeight(String partition, long weight) {
+  }
+
+  protected static class PartitionWeightWrapper implements Comparable<PartitionWeightWrapper> {
+    private final String partition;
+    private final PartitionWeight weight;
+
+    public PartitionWeightWrapper(String partition, PartitionWeight weight) {
       this.partition = partition;
       this.weight = weight;
     }
@@ -176,7 +196,7 @@ public abstract class AbstractOptimizePlan {
       return partition;
     }
 
-    public long getWeight() {
+    public PartitionWeight getWeight() {
       return weight;
     }
 
@@ -186,8 +206,8 @@ public abstract class AbstractOptimizePlan {
     }
 
     @Override
-    public int compareTo(PartitionWeight o) {
-      return Long.compare(o.weight, this.weight);
+    public int compareTo(PartitionWeightWrapper o) {
+      return this.weight.compareTo(o.weight);
     }
   }
 
@@ -204,11 +224,35 @@ public abstract class AbstractOptimizePlan {
   }
 
   /**
-   * this optimizing plan should limit the files by "self-optimizing.max-file-count"
+   * Check this partition should optimize because of interval.
    *
-   * @return true for limit file cnt
+   * @param partition - partition
+   * @return true if the partition should optimize
    */
-  protected abstract boolean limitFileCnt();
+  protected boolean checkOptimizeInterval(String partition) {
+    long optimizeInterval = getMaxOptimizeInterval();
+
+    if (optimizeInterval < 0) {
+      return false;
+    }
+
+    return this.currentTime - getLatestOptimizeTime(partition) >= optimizeInterval;
+  }
+
+  /**
+   * Get max optimize interval config of specific optimize type.
+   *
+   * @return optimize interval
+   */
+  protected abstract long getMaxOptimizeInterval();
+
+  /**
+   * Get latest optimize time of specific optimize type.
+   *
+   * @param partition - partition
+   * @return time of latest optimize, may be -1
+   */
+  protected abstract long getLatestOptimizeTime(String partition);
 
   /**
    * check whether partition need to plan

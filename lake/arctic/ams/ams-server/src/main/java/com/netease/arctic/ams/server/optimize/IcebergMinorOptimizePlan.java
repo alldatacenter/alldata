@@ -120,8 +120,33 @@ public class IcebergMinorOptimizePlan extends AbstractIcebergOptimizePlan {
   }
 
   @Override
-  protected long getPartitionWeight(String partitionToPath) {
-    return getPartitionSmallFileCount(partitionToPath);
+  protected PartitionWeight getPartitionWeight(String partitionToPath) {
+    return new IcebergMinorPartitionWeight(getPartitionSmallFileCount(partitionToPath));
+  }
+
+  protected static class IcebergMinorPartitionWeight implements PartitionWeight {
+    private final int smallFileCount;
+
+    public IcebergMinorPartitionWeight(int smallFileCount) {
+      this.smallFileCount = smallFileCount;
+    }
+
+    @Override
+    public int compareTo(PartitionWeight o) {
+      return Integer.compare(((IcebergMinorPartitionWeight) o).smallFileCount, this.smallFileCount);
+    }
+  }
+
+  @Override
+  protected long getLatestOptimizeTime(String partition) {
+    return tableOptimizeRuntime.getLatestMinorOptimizeTime(partition);
+  }
+
+  @Override
+  protected long getMaxOptimizeInterval() {
+    return CompatiblePropertyUtil.propertyAsLong(arcticTable.properties(),
+        TableProperties.SELF_OPTIMIZING_MINOR_TRIGGER_INTERVAL,
+        TableProperties.SELF_OPTIMIZING_MINOR_TRIGGER_INTERVAL_DEFAULT);
   }
 
   private int getPartitionSmallFileCount(String partitionToPath) {

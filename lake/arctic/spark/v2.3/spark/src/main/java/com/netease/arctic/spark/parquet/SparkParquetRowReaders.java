@@ -280,7 +280,13 @@ public class SparkParquetRowReaders {
       switch (primitive.getPrimitiveTypeName()) {
         case FIXED_LEN_BYTE_ARRAY:
         case BINARY:
-          return new ParquetValueReaders.ByteArrayReader(desc);
+          //Change For Arctic ⬇
+          if (expected == Types.StringType.get()) {
+            return new StringReader(desc);
+          } else {
+            return new ParquetValueReaders.ByteArrayReader(desc);
+          }
+          //Change For Arctic ⬆
         case INT32:
           if (expected != null && expected.typeId() == TypeID.LONG) {
             return new IntAsLongReader(desc);

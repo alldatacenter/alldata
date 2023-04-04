@@ -131,18 +131,6 @@ public class ArcticSourceEnumerator extends AbstractArcticEnumerator {
           0,
           snapshotDiscoveryIntervalMs
       );
-
-      context.callAsync(
-          this::assignSplits,
-          (unused, t) -> {
-            if (t != null) {
-              throw new FlinkRuntimeException(
-                  "Failed to assign arctic split due to ", t);
-            }
-          },
-          1000,
-          500
-      );
     }
   }
 

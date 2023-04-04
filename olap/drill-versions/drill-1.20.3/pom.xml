@@ -490,7 +490,8 @@
         </dependencies>
         <configuration>
           <includes>**/*.java</includes>
-          <encoding>UTF-8</encoding>
+          <inputEncoding>UTF-8</inputEncoding>
+          <outputEncoding>UTF-8</outputEncoding>
           <failsOnError>true</failsOnError>
           <consoleOutput>true</consoleOutput>
           <includeResources>true</includeResources>

@@ -24,10 +24,7 @@ import com.netease.arctic.ams.server.model.TaskConfig;
 import com.netease.arctic.hive.table.SupportHive;
 import com.netease.arctic.hive.utils.TableTypeUtil;
 import com.netease.arctic.table.ArcticTable;
-import com.netease.arctic.table.TableProperties;
 import com.netease.arctic.table.UnkeyedTable;
-import com.netease.arctic.utils.CompatiblePropertyUtil;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.iceberg.DataFile;
 import org.apache.iceberg.DeleteFile;
 import org.apache.iceberg.FileScanTask;
@@ -59,44 +56,32 @@ public class SupportHiveMajorOptimizePlan extends MajorOptimizePlan {
 
   @Override
   public boolean partitionNeedPlan(String partitionToPath) {
-    long current = System.currentTimeMillis();
-
-    List<DeleteFile> posDeleteFiles = getPosDeleteFilesFromFileTree(partitionToPath);
-    List<DataFile> baseFiles = getBaseFilesFromFileTree(partitionToPath);
-    List<DataFile> smallFiles = filterSmallFiles(baseFiles);
+    int baseFileCount = getBaseFileCount(partitionToPath);
 
     // check whether partition need plan by files info.
-    // if partition has no pos-delete file, and there are files in not hive location, need plan
-    // if partition has pos-delete, and there are small file count greater than 2 in not hive location, need plan
-    boolean hasPos = CollectionUtils.isNotEmpty(posDeleteFiles) && smallFiles.size() >= 2;
-    boolean noPos = CollectionUtils.isEmpty(posDeleteFiles) && CollectionUtils.isNotEmpty(baseFiles);
-    boolean partitionNeedPlan = hasPos || noPos;
+    // if partition doesn't move files to hive location, only if there are more than 1 small files not in hive location,
+    // need plan
+    // if partition moves files to hive location, only if there are files not in hive location, need plan
+    boolean partitionNeedPlan;
+    if (notMoveToHiveLocation(partitionToPath)) {
+      partitionNeedPlan = baseFileCount > 1;
+    } else {
+      partitionNeedPlan = baseFileCount > 0;
+    }
     if (partitionNeedPlan) {
       // check small data file count
-      if (checkSmallFileCount(smallFiles)) {
+      if (checkBaseFileCount(partitionToPath)) {
         return true;
       }
 
       // check major optimize interval
-      if (checkMajorOptimizeInterval(current, partitionToPath)) {
+      if (checkOptimizeInterval(partitionToPath)) {
         return true;
       }
     }
 
     LOG.debug("{} ==== don't need {} optimize plan, skip partition {}, partitionNeedPlan is {}",
         tableId(), getOptimizeType(), partitionToPath, partitionNeedPlan);
-    return false;
-  }
-
-  @Override
-  protected boolean checkMajorOptimizeInterval(long current, String partitionToPath) {
-    if (current - tableOptimizeRuntime.getLatestMajorOptimizeTime(partitionToPath) >=
-        CompatiblePropertyUtil.propertyAsLong(arcticTable.properties(),
-            TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_INTERVAL,
-            TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_INTERVAL_DEFAULT)) {
-      return true;
-    }
-
     return false;
   }
 

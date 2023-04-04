@@ -293,7 +293,13 @@ public abstract class AdaptHiveBaseParquetReaders<T> {
         case FIXED_LEN_BYTE_ARRAY:
           return new FixedReader(desc);
         case BINARY:
-          return new ParquetValueReaders.BytesReader(desc);
+          //Change For Arctic ⬇
+          if (expected == Types.StringType.get()) {
+            return new ParquetValueReaders.StringReader(desc);
+          } else {
+            return new ParquetValueReaders.BytesReader(desc);
+          }
+          //Change For Arctic ⬆
         case INT32:
           if (expected != null && expected.typeId() == org.apache.iceberg.types.Type.TypeID.LONG) {
             return new ParquetValueReaders.IntAsLongReader(desc);

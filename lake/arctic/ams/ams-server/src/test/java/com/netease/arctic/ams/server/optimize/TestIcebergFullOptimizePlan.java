@@ -11,7 +11,9 @@ import org.apache.iceberg.relocated.com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TestIcebergFullOptimizePlan extends TestIcebergBase {
   @Test
@@ -122,5 +124,27 @@ public class TestIcebergFullOptimizePlan extends TestIcebergBase {
         table.currentSnapshot().snapshotId());
     List<BasicOptimizeTask> tasks = optimizePlan.plan().getOptimizeTasks();
     Assert.assertEquals((int) Math.ceil(1.0 * dataFiles.size() / packFileCnt), tasks.size());
+  }
+
+  @Test
+  public void testPartitionWeight() {
+    List<AbstractOptimizePlan.PartitionWeightWrapper> partitionWeights = new ArrayList<>();
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p1",
+        new IcebergFullOptimizePlan.IcebergFullPartitionWeight(0)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p2",
+        new IcebergFullOptimizePlan.IcebergFullPartitionWeight(1)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p3",
+        new IcebergFullOptimizePlan.IcebergFullPartitionWeight(200)));
+    partitionWeights.add(new AbstractOptimizePlan.PartitionWeightWrapper("p4",
+        new IcebergFullOptimizePlan.IcebergFullPartitionWeight(100)));
+
+    List<String> sortedPartitions = partitionWeights.stream()
+        .sorted()
+        .map(AbstractOptimizePlan.PartitionWeightWrapper::getPartition)
+        .collect(Collectors.toList());
+    Assert.assertEquals("p3", sortedPartitions.get(0));
+    Assert.assertEquals("p4", sortedPartitions.get(1));
+    Assert.assertEquals("p2", sortedPartitions.get(2));
+    Assert.assertEquals("p1", sortedPartitions.get(3));
   }
 }

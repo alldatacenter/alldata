@@ -58,6 +58,8 @@ public class UpdateTool extends IJDBCService {
                 TableCommitMeta tableCommitMeta = getTableCommitMeta(tableIdentifier, createSnapshot);
                 ServiceContainer.getFileInfoCacheService().commitCacheFileInfo(tableCommitMeta);
               }
+            } else {
+              ServiceContainer.getArcticTransactionService().validTable(tableIdentifier.buildTableIdentifier());
             }
           }
         } catch (Throwable t) {

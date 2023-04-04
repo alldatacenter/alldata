@@ -10,7 +10,7 @@
       theme="dark"
       :inline-collapsed="collapsed"
     >
-      <a-menu-item v-for="item in menuList" :key="item.key" @click="navClick(item)" @mouseenter="mouseenter(item)" :class="{'active-color': (store.isShowTablesMenu && item.key === 'tables')}">
+      <a-menu-item v-for="item in menuList" :key="item.key" @click="navClick(item)" @mouseenter="mouseenter(item)" :class="{'active-color': (store.isShowTablesMenu && item.key === 'tables'), 'table-item-tab': item.key === 'tables'}">
         <template #icon>
           <svg-icon :icon-class="item.icon" class="svg-icon" />
         </template>
@@ -21,14 +21,14 @@
       <MenuUnfoldOutlined v-if="collapsed" />
       <MenuFoldOutlined v-else />
     </a-button>
-    <div @click.self="toggleTablesMenu(false)" v-if="store.isShowTablesMenu && !hasToken" @mouseleave="toggleTablesMenu(false)" :class="{'collapsed-sub-menu': collapsed}" class="tables-menu-wrap">
+    <div @click.self="toggleTablesMenu(false)" v-if="store.isShowTablesMenu && !hasToken" @mouseleave="toggleTablesMenu(false)" @mouseenter="toggleTablesMenu(true)" :class="{'collapsed-sub-menu': collapsed}" class="tables-menu-wrap">
       <TableMenu @goCreatePage="goCreatePage" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, reactive, toRefs, watchEffect } from 'vue'
+import { computed, defineComponent, nextTick, reactive, ref, toRefs, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import useStore from '@/store/index'
 import TableMenu from '@/components/tables-sub-menu/TablesMenu.vue'
@@ -62,6 +62,7 @@ export default defineComponent({
     const hasToken = computed(() => {
       return !!(getQueryString('token') || '')
     })
+    const timer = ref(0)
     const menuList = computed(() => {
       const menu: MenuItem[] = [
         {
@@ -103,7 +104,8 @@ export default defineComponent({
     const setCurMenu = () => {
       const pathArr = route.path.split('/')
       if (route.path) {
-        state.selectedKeys = [pathArr[1]]
+        const routePath = [pathArr[1]]
+        state.selectedKeys = routePath.includes('hive-tables') ? ['tables'] : routePath
       }
     }
     watchEffect(() => {
@@ -147,7 +149,11 @@ export default defineComponent({
       if (hasToken.value) {
         return
       }
-      store.updateTablesMenu(flag)
+      timer.value && clearTimeout(timer.value)
+      const time = flag ? 0 : 200
+      timer.value = setTimeout(() => {
+        store.updateTablesMenu(flag)
+      }, time)
     }
 
     const viewIntroduce = () => {
@@ -210,9 +216,13 @@ export default defineComponent({
       }
       &.active-color {
         color: #fff;
+        background-color: @dark-bg-color;
       }
       &:hover {
         color: #fff;
+      }
+      &.table-item-tab:hover {
+        background-color: @dark-bg-color;
       }
     }
     .logo {

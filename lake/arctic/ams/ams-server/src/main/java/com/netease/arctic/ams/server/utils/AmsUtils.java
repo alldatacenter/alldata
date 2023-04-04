@@ -188,7 +188,7 @@ public class AmsUtils {
   public static String getAMSHaAddress() {
     if (ArcticMetaStore.conf.getBoolean(HA_ENABLE)) {
       return "zookeeper://" + ArcticMetaStore.conf.getString(ZOOKEEPER_SERVER) + "/" +
-          ArcticMetaStore.conf.getString(CLUSTER_NAME);
+          ArcticMetaStore.conf.getString(CLUSTER_NAME) + "/";
     } else {
       return "thrift://" + ArcticMetaStore.conf.getString(THRIFT_BIND_HOST) + ":" +
           ArcticMetaStore.conf.getInteger(THRIFT_BIND_PORT) + "/";

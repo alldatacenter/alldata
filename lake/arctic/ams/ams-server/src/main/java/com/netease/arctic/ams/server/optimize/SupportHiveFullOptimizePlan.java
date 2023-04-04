@@ -60,7 +60,6 @@ public class SupportHiveFullOptimizePlan extends FullOptimizePlan {
 
   @Override
   protected boolean partitionNeedPlan(String partitionToPath) {
-    long current = System.currentTimeMillis();
 
     List<DeleteFile> posDeleteFiles = getPosDeleteFilesFromFileTree(partitionToPath);
     List<DataFile> baseFiles = getBaseFilesFromFileTree(partitionToPath);
@@ -98,7 +97,7 @@ public class SupportHiveFullOptimizePlan extends FullOptimizePlan {
     }
 
     // check full optimize interval
-    if (checkFullOptimizeInterval(current, partitionToPath) && partitionNeedPlan) {
+    if (checkOptimizeInterval(partitionToPath) && partitionNeedPlan) {
       return true;
     }
 

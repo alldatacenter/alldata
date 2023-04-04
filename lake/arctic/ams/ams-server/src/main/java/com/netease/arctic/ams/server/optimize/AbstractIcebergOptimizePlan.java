@@ -64,11 +64,6 @@ public abstract class AbstractIcebergOptimizePlan extends AbstractOptimizePlan {
     this.fileScanTasks = fileScanTasks;
   }
 
-  @Override
-  protected boolean limitFileCnt() {
-    return true;
-  }
-
   protected List<FileScanTask> filterRepeatFileScanTask(Collection<FileScanTask> fileScanTasks) {
     Set<String> dataFilesPath = new HashSet<>();
     List<FileScanTask> finalFileScanTasks = new ArrayList<>();

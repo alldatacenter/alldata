@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.OptionalLong;
@@ -48,6 +49,8 @@ import java.util.stream.Collectors;
 
 public class FullOptimizePlan extends AbstractArcticOptimizePlan {
   private static final Logger LOG = LoggerFactory.getLogger(FullOptimizePlan.class);
+  // cache partition delete file size
+  private final Map<String, Long> partitionDeleteFileSize = new HashMap<>();
 
   public FullOptimizePlan(ArcticTable arcticTable, TableOptimizeRuntime tableOptimizeRuntime,
                           List<FileScanTask> baseFileScanTasks, int queueId, long currentTime,
@@ -58,21 +61,46 @@ public class FullOptimizePlan extends AbstractArcticOptimizePlan {
 
   @Override
   protected boolean partitionNeedPlan(String partitionToPath) {
-    long current = System.currentTimeMillis();
-
     // check position delete file total size
     if (checkPosDeleteTotalSize(partitionToPath)) {
       return true;
     }
 
     // check full optimize interval
-    if (checkFullOptimizeInterval(current, partitionToPath)) {
+    if (checkOptimizeInterval(partitionToPath)) {
       return true;
     }
 
     LOG.debug("{} ==== don't need {} optimize plan, skip partition {}", tableId(), getOptimizeType(), partitionToPath);
     return false;
   }
+
+  @Override
+  protected PartitionWeight getPartitionWeight(String partition) {
+    return new FullPartitionWeight(checkOptimizeInterval(partition), getPosDeleteFileSize(partition));
+  }
+
+  protected static class FullPartitionWeight implements PartitionWeight {
+    private final boolean reachInterval;
+
+    private final long deleteFileSize;
+
+    public FullPartitionWeight(boolean reachInterval, long deleteFileSize) {
+      this.reachInterval = reachInterval;
+      this.deleteFileSize = deleteFileSize;
+    }
+
+    @Override
+    public int compareTo(PartitionWeight o) {
+      FullPartitionWeight that = (FullPartitionWeight) o;
+      int compare = Boolean.compare(that.reachInterval, this.reachInterval);
+      if (compare != 0) {
+        return compare;
+      }
+      return Long.compare(that.deleteFileSize, this.deleteFileSize);
+    }
+  }
+
 
   @Override
   protected OptimizeType getOptimizeType() {
@@ -97,11 +125,10 @@ public class FullOptimizePlan extends AbstractArcticOptimizePlan {
   }
 
   protected boolean checkPosDeleteTotalSize(String partitionToPath) {
-    List<DeleteFile> posDeleteFiles = getPosDeleteFilesFromFileTree(partitionToPath);
-    if (posDeleteFiles.isEmpty()) {
+    long posDeleteSize = getPosDeleteFileSize(partitionToPath);
+    if (posDeleteSize <= 0) {
       return false;
     }
-    long posDeleteSize = posDeleteFiles.stream().mapToLong(DeleteFile::fileSizeInBytes).sum();
     Map<String, String> properties = arcticTable.properties();
     if (!properties.containsKey(TableProperties.SELF_OPTIMIZING_MAJOR_TRIGGER_DUPLICATE_RATIO) &&
         properties.containsKey(TableProperties.FULL_OPTIMIZE_TRIGGER_DELETE_FILE_SIZE_BYTES)) {
@@ -118,17 +145,27 @@ public class FullOptimizePlan extends AbstractArcticOptimizePlan {
     }
   }
 
-  protected boolean checkFullOptimizeInterval(long current, String partitionToPath) {
-    long fullMajorOptimizeInterval = CompatiblePropertyUtil.propertyAsLong(arcticTable.properties(),
+  private long getPosDeleteFileSize(String partition) {
+    Long cache = partitionDeleteFileSize.get(partition);
+    if (cache != null) {
+      return cache;
+    }
+    List<DeleteFile> posDeleteFiles = getPosDeleteFilesFromFileTree(partition);
+    long posDeleteSize = posDeleteFiles.stream().mapToLong(DeleteFile::fileSizeInBytes).sum();
+    partitionDeleteFileSize.put(partition, posDeleteSize);
+    return posDeleteSize;
+  }
+
+  @Override
+  protected long getMaxOptimizeInterval() {
+    return CompatiblePropertyUtil.propertyAsLong(arcticTable.properties(),
         TableProperties.SELF_OPTIMIZING_FULL_TRIGGER_INTERVAL,
         TableProperties.SELF_OPTIMIZING_FULL_TRIGGER_INTERVAL_DEFAULT);
+  }
 
-    if (fullMajorOptimizeInterval != TableProperties.SELF_OPTIMIZING_FULL_TRIGGER_INTERVAL_DEFAULT) {
-      long lastFullMajorOptimizeTime = tableOptimizeRuntime.getLatestFullOptimizeTime(partitionToPath);
-      return current - lastFullMajorOptimizeTime >= fullMajorOptimizeInterval;
-    }
-
-    return false;
+  @Override
+  protected long getLatestOptimizeTime(String partition) {
+    return tableOptimizeRuntime.getLatestFullOptimizeTime(partition);
   }
 
   /**

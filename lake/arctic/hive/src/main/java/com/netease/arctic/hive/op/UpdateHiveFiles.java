@@ -37,6 +37,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -105,7 +106,7 @@ public abstract class UpdateHiveFiles<T extends SnapshotUpdate<T>> implements Sn
     }
 
     if (checkOrphanFiles) {
-      checkOrphanFilesAndDelete();
+      checkPartitionedOrphanFilesAndDelete(table.spec().isUnpartitioned());
     }
     // if no DataFiles to add or delete in Hive location, only commit to iceberg
     boolean noHiveDataFilesChanged = CollectionUtils.isEmpty(addFiles) && CollectionUtils.isEmpty(deleteFiles) &&
@@ -273,9 +274,14 @@ public abstract class UpdateHiveFiles<T extends SnapshotUpdate<T>> implements Sn
   /**
    * check files in the partition, and delete orphan files
    */
-  private void checkOrphanFilesAndDelete() {
-    List<String> partitionsToCheck = this.partitionToCreate.values()
-        .stream().map(partition -> partition.getSd().getLocation()).collect(Collectors.toList());
+  private void checkPartitionedOrphanFilesAndDelete(boolean isUnPartitioned) {
+    List<String> partitionsToCheck = new ArrayList<>();
+    if (isUnPartitioned) {
+      partitionsToCheck.add(this.unpartitionTableLocation);
+    } else {
+      partitionsToCheck = this.partitionToCreate.values()
+          .stream().map(partition -> partition.getSd().getLocation()).collect(Collectors.toList());
+    }
     for (String partitionLocation: partitionsToCheck) {
       List<String> addFilesPathCollect = addFiles.stream()
           .map(dataFile -> dataFile.path().toString()).collect(Collectors.toList());

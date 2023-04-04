@@ -74,7 +74,11 @@ public class OrphanFilesCleanService implements IOrphanFilesCleanService {
     }
 
     Set<TableIdentifier> tableIds = CatalogUtil.loadTablesFromCatalog();
-    cleanTasks.checkRunningTask(tableIds, t -> CHECK_INTERVAL, TableOrphanFileClean::new, true);
+    cleanTasks.checkRunningTask(tableIds,
+        () -> 0L,
+        () -> CHECK_INTERVAL,
+        TableOrphanFileClean::new,
+        true);
     LOG.info("Schedule Orphan Cleaner finished with {} tasks", tableIds.size());
   }
 

@@ -18,6 +18,7 @@
 
 package com.netease.arctic.flink.read.hybrid.enumerator;
 
+import com.netease.arctic.flink.read.hybrid.assigner.Split;
 import com.netease.arctic.flink.read.hybrid.assigner.SplitAssigner;
 import com.netease.arctic.flink.read.hybrid.reader.ReaderStartedEvent;
 import com.netease.arctic.flink.read.hybrid.split.ArcticSplit;
@@ -33,7 +34,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicReference;
@@ -103,11 +103,15 @@ public abstract class AbstractArcticEnumerator implements SplitEnumerator<Arctic
 
   /**
    * return true if enumerator should wait for splits
-   * like in the continuous enumerator case
+   * like in the continuous enumerator case.
    */
   protected abstract boolean shouldWaitForMoreSplits();
 
-  protected Void assignSplits() {
+  protected void assignSplits() {
+    LOG.info(
+        "Assign arctic splits to {} readers, subtasks:{}.",
+        readersAwaitingSplit.size(),
+        readersAwaitingSplit.keySet().toArray());
     final Iterator<Map.Entry<Integer, String>> awaitingReader =
         readersAwaitingSplit.entrySet().iterator();
     while (awaitingReader.hasNext()) {
@@ -116,14 +120,18 @@ public abstract class AbstractArcticEnumerator implements SplitEnumerator<Arctic
       // if the reader that requested another split has failed in the meantime, remove
       // it from the list of waiting readers
       if (!enumeratorContext.registeredReaders().containsKey(nextAwaiting.getKey())) {
+        LOG.info(
+            "Due to this reader doesn't registered in the enumerator context any more, so remove this subtask reader" +
+                " [{}] from the awaiting reader map.",
+            nextAwaiting.getKey());
         awaitingReader.remove();
         continue;
       }
 
       final int awaitingSubtask = nextAwaiting.getKey();
-      final Optional<ArcticSplit> nextSplit = assigner.getNext(awaitingSubtask);
-      if (nextSplit.isPresent()) {
-        ArcticSplit arcticSplit = nextSplit.get();
+      final Split nextSplit = assigner.getNext(awaitingSubtask);
+      if (nextSplit.isAvailable()) {
+        ArcticSplit arcticSplit = nextSplit.split();
         LOG.info("assign a arctic split to subtaskId {}, taskIndex {}, arcticSplit {}.",
             awaitingSubtask, arcticSplit.taskIndex(), arcticSplit);
         enumeratorContext.assignSplit(arcticSplit, awaitingSubtask);
@@ -133,9 +141,36 @@ public abstract class AbstractArcticEnumerator implements SplitEnumerator<Arctic
           LOG.info("No more splits available for subtask {}", awaitingSubtask);
           enumeratorContext.signalNoMoreSplits(awaitingSubtask);
           awaitingReader.remove();
+        } else {
+          fetchAvailableFutureIfNeeded();
+          break;
         }
       }
     }
-    return null;
+  }
+
+  private synchronized void fetchAvailableFutureIfNeeded() {
+    if (availableFuture.get() != null) {
+      return;
+    }
+
+    CompletableFuture<Void> future =
+        assigner
+            .isAvailable()
+            .thenAccept(
+                ignore ->
+                    // Must run assignSplits in coordinator thread
+                    // because the future may be completed from other threads.
+                    // E.g., in event time alignment assigner,
+                    // watermark advancement from another source may
+                    // cause the available future to be completed
+                    enumeratorContext.runInCoordinatorThread(
+                        () -> {
+                          LOG.debug("Executing callback of assignSplits");
+                          availableFuture.set(null);
+                          assignSplits();
+                        }));
+    availableFuture.set(future);
+    LOG.debug("Registered callback for future available splits");
   }
 }

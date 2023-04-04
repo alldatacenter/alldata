@@ -24,6 +24,7 @@ import com.netease.arctic.ams.server.model.TableOptimizeRuntime;
 import com.netease.arctic.ams.server.model.TaskConfig;
 import com.netease.arctic.table.ArcticTable;
 import com.netease.arctic.table.TableProperties;
+import com.netease.arctic.utils.CompatiblePropertyUtil;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.iceberg.DataFile;
 import org.apache.iceberg.DeleteFile;
@@ -99,6 +100,18 @@ public class IcebergFullOptimizePlan extends AbstractIcebergOptimizePlan {
     return false;
   }
 
+  @Override
+  protected long getMaxOptimizeInterval() {
+    return CompatiblePropertyUtil.propertyAsLong(arcticTable.properties(),
+        TableProperties.SELF_OPTIMIZING_FULL_TRIGGER_INTERVAL,
+        TableProperties.SELF_OPTIMIZING_FULL_TRIGGER_INTERVAL_DEFAULT);
+  }
+
+  @Override
+  protected long getLatestOptimizeTime(String partition) {
+    return tableOptimizeRuntime.getLatestFullOptimizeTime(partition);
+  }
+
   private long getPartitionDeleteFileTotalSize(String partitionToPath) {
     Long cached = partitionDeleteFileTotalSize.get(partitionToPath);
     if (cached != null) {
@@ -122,8 +135,21 @@ public class IcebergFullOptimizePlan extends AbstractIcebergOptimizePlan {
   }
 
   @Override
-  protected long getPartitionWeight(String partitionToPath) {
-    return getPartitionDeleteFileTotalSize(partitionToPath);
+  protected PartitionWeight getPartitionWeight(String partitionToPath) {
+    return new IcebergFullPartitionWeight(getPartitionDeleteFileTotalSize(partitionToPath));
+  }
+
+  protected static class IcebergFullPartitionWeight implements PartitionWeight {
+    private final long deleteFileSize;
+
+    public IcebergFullPartitionWeight(long deleteFileSize) {
+      this.deleteFileSize = deleteFileSize;
+    }
+
+    @Override
+    public int compareTo(PartitionWeight o) {
+      return Long.compare(((IcebergFullPartitionWeight) o).deleteFileSize, this.deleteFileSize);
+    }
   }
 
   @Override
@@ -159,8 +185,6 @@ public class IcebergFullOptimizePlan extends AbstractIcebergOptimizePlan {
             eqDeleteFiles, posDeleteFiles, taskPartitionConfig));
       }
     }
-
-
     return collector;
   }
 }

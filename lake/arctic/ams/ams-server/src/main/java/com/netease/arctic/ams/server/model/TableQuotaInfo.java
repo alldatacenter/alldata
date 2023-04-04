@@ -19,7 +19,6 @@
 package com.netease.arctic.ams.server.model;
 
 import com.netease.arctic.table.TableIdentifier;
-import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 
@@ -59,7 +58,7 @@ public class TableQuotaInfo implements Comparable<TableQuotaInfo> {
   }
 
   @Override
-  public int compareTo(@NotNull TableQuotaInfo o) {
+  public int compareTo(TableQuotaInfo o) {
     if (quota.compareTo(o.getQuota()) != 0) {
       return quota.compareTo(o.getQuota());
     }

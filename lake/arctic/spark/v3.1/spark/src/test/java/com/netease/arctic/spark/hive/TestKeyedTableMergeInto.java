@@ -12,6 +12,7 @@ public class TestKeyedTableMergeInto extends SparkTestBase {
   private final String database = "db_test";
 
   private final String tgTableA = "tgTableA";
+  private final String tgTableB = "tgTableB";
   private final String srcTableA = "srcTableA";
   private final String hiveTable = "hiveTable";
 
@@ -34,6 +35,7 @@ public class TestKeyedTableMergeInto extends SparkTestBase {
 
   @After
   public void cleanUp() {
+    sql("use " + catalogNameHive);
     sql("drop table {0}.{1}", database, tgTableA);
     sql("drop table {0}.{1}", database, srcTableA);
     sql("drop table {0}.{1}", database, hiveTable);
@@ -283,5 +285,63 @@ public class TestKeyedTableMergeInto extends SparkTestBase {
     );
     assertEquals("Should have expected rows", expectedRows,
         sql("SELECT * FROM {0}.{1} ORDER BY id", database, tgTableA));
+  }
+
+  @Test
+  public void testMergeIntoTableUseFromDifferentCatalog() {
+    sql("use {0}", catalogNameArctic);
+    sql("create database if not exists {0}", database);
+    sql("create table {0}.{1} ( id int, data string) stored as parquet", database, tgTableB);
+    sql("insert overwrite {0}.{1} values \n" +
+        "(1, ''c''), \n " +
+        "(2, ''d''), \n " +
+        "(3, ''c'') \n ", database, tgTableB);
+    rows = sql("select * from {0}.{1}", database, tgTableB);
+    Assert.assertEquals(rows.size(), 3);
+    sql("merge into {0}.{1}.{2} as t using {3}.{4}.{5} as s on t.id = s.id " +
+        "when matched then update set t.data = s.data " +
+        "when not matched then insert (t.id, t.data) values (s.id, s.data)",
+        catalogNameHive, database, tgTableA, catalogNameArctic, database, tgTableB);
+    rows = sql("select * from {0}.{1}.{2}", catalogNameHive, database, tgTableA);
+    ImmutableList<Object[]> expectedRows = ImmutableList.of(
+        row(1, "c"), // update
+        row(2, "d"), // new
+        row(3, "c"), // new
+        row(4, "d"), // kept
+        row(5, "e"),  // kept
+        row(6, "c")  // kept
+    );
+    assertEquals("Should have expected rows", expectedRows,
+        sql("select * from {0}.{1}.{2} ORDER BY id", catalogNameHive, database, tgTableA));
+    sql("drop table {0}.{1}.{2}", catalogNameArctic, database, tgTableB);
+    sql("drop database if exists {0}", database);
+  }
+
+  @Test
+  public void testMergeIntoTableUseFromSparkCatalog() {
+    sql("use spark_catalog");
+    sql("create table {0}.{1} ( id int, data string) stored as parquet", database, tgTableB);
+    sql("insert overwrite {0}.{1} values \n" +
+        "(1, ''c''), \n " +
+        "(2, ''d''), \n " +
+        "(3, ''c'') \n ", database, tgTableB);
+    rows = sql("select * from {0}.{1}", database, tgTableB);
+    Assert.assertEquals(rows.size(), 3);
+    sql("merge into {0}.{1}.{2} as t using {3}.{4}.{5} as s on t.id = s.id " +
+        "when matched then update set t.data = s.data " +
+        "when not matched then insert (t.id, t.data) values (s.id, s.data)",
+        catalogNameHive, database, tgTableA, "spark_catalog", database, tgTableB);
+    rows = sql("select * from {0}.{1}.{2}", catalogNameHive, database, tgTableA);
+    ImmutableList<Object[]> expectedRows = ImmutableList.of(
+        row(1, "c"), // update
+        row(2, "d"), // new
+        row(3, "c"), // new
+        row(4, "d"), // kept
+        row(5, "e"),  // kept
+        row(6, "c")  // kept
+    );
+    assertEquals("Should have expected rows", expectedRows,
+        sql("select * from {0}.{1}.{2} ORDER BY id", catalogNameHive, database, tgTableA));
+    sql("drop table {0}.{1}", database, tgTableB);
   }
 }

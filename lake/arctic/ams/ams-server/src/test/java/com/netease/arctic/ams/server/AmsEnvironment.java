@@ -144,9 +144,12 @@ public class AmsEnvironment {
       }
     }
   }
-  
+
   public List<TableIdentifier> refreshTables() {
-    return ServiceContainer.getOptimizeService().refreshAndListTables();
+    List<TableIdentifier> tableIdentifiers = ServiceContainer.getOptimizeService().refreshAndListTables();
+    ServiceContainer.getOptimizeService()
+        .checkOptimizeCheckTasks(ArcticMetaStore.conf.getLong(ArcticMetaStoreConf.OPTIMIZE_CHECK_STATUS_INTERVAL));
+    return tableIdentifiers;
   }
 
   public void syncTableFileCache(TableIdentifier tableIdentifier, String tableType) {
@@ -229,6 +232,7 @@ public class AmsEnvironment {
         "  arctic.ams.optimize.commit.thread.pool-size: 1\n" +
         "  arctic.ams.expire.thread.pool-size: 1\n" +
         "  arctic.ams.orphan.clean.thread.pool-size: 1\n" +
+        "  arctic.ams.optimize.check-status.interval: 3000\n" +
         "  arctic.ams.file.sync.thread.pool-size: 1\n" +
         "  arctic.ams.support.hive.sync.thread.pool-size: 1\n" +
         "  # derby config.sh\n" +

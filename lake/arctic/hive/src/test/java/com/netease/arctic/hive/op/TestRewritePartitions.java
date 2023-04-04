@@ -25,6 +25,7 @@ import com.netease.arctic.op.RewritePartitions;
 import com.netease.arctic.table.KeyedTable;
 import com.netease.arctic.table.UnkeyedTable;
 import com.netease.arctic.utils.TableFileUtils;
+import org.apache.hadoop.hive.metastore.api.Table;
 import org.apache.iceberg.AppendFiles;
 import org.apache.iceberg.DataFile;
 import org.apache.iceberg.ReplacePartitions;
@@ -39,6 +40,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TestRewritePartitions extends HiveTableTestBase {
 
@@ -174,40 +176,6 @@ public class TestRewritePartitions extends HiveTableTestBase {
 
     Assert.assertThrows(CannotAlterHiveLocationException.class, replacePartitions::commit);
   }
-
-  @Test
-  public void testCleanOrphanFileWhenCommit() throws TException {
-    List<Map.Entry<String, String>> orphanFiles = Lists.newArrayList(
-        Maps.immutableEntry("name=aaa", "/test_path/partition1/orphan-a1.parquet"),
-        Maps.immutableEntry("name=aaa", "/test_path/partition2/orphan-a2.parquet"),
-        Maps.immutableEntry("name=bbb", "/test_path/partition3/orphan-a3.parquet")
-    );
-    UnkeyedTable table = testHiveTable;
-    AppendFiles appendFiles = table.newAppend();
-    MockDataFileBuilder dataFileBuilder = new MockDataFileBuilder(table, hms.getClient());
-    List<DataFile> orphanDataFiles = dataFileBuilder.buildList(orphanFiles);
-    orphanDataFiles.forEach(appendFiles::appendFile);
-    appendFiles.commit();
-
-    List<Map.Entry<String, String>> files = Lists.newArrayList(
-        Maps.immutableEntry("name=aaa", "/test_path/partition1/data-a1.parquet"),
-        Maps.immutableEntry("name=bbb", "/test_path/partition2/data-a2.parquet"),
-        Maps.immutableEntry("name=ccc", "/test_path/partition3/data-a3.parquet")
-    );
-    List<DataFile> dataFiles = dataFileBuilder.buildList(files);
-
-    ReplacePartitions replacePartitions = table.newReplacePartitions();
-    dataFiles.forEach(replacePartitions::addFile);
-    replacePartitions.commit();
-
-    List<String> exceptedFiles = new ArrayList<>();
-    exceptedFiles.add("data-a1.parquet");
-    exceptedFiles.add("data-a2.parquet");
-    exceptedFiles.add("data-a3.parquet");
-    asserFilesName(exceptedFiles, table);
-  }
-
-
   private void applyRewritePartitions(
       Map<String, String> partitionLocations,
       List<Map.Entry<String, String>> overwriteFiles) {

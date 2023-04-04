@@ -419,39 +419,6 @@ public class TestOverwriteFiles extends HiveTableTestBase {
     hiveTable.setTableName(testHiveTable.id().getTableName());
     hms.getClient().alter_table(testHiveTable.id().getDatabase(), "new_table", hiveTable);
   }
-  @Test
-  public void testCleanOrphanFileWhenCommit() throws TException {
-    List<Map.Entry<String, String>> orphanFiles = Lists.newArrayList(
-        Maps.immutableEntry("name=aaa", "/test_path/partition1/orphan-a1.parquet"),
-        Maps.immutableEntry("name=aaa", "/test_path/partition2/orphan-a2.parquet"),
-        Maps.immutableEntry("name=bbb", "/test_path/partition3/orphan-a3.parquet")
-    );
-    UnkeyedTable table = testHiveTable;
-    table.updateProperties().set(DELETE_UNTRACKED_HIVE_FILE, "true").commit();
-    AppendFiles appendFiles = table.newAppend();
-    MockDataFileBuilder dataFileBuilder = new MockDataFileBuilder(table, hms.getClient());
-    List<DataFile> orphanDataFiles = dataFileBuilder.buildList(orphanFiles);
-    orphanDataFiles.forEach(appendFiles::appendFile);
-    appendFiles.commit();
-
-    List<Map.Entry<String, String>> files = Lists.newArrayList(
-        Maps.immutableEntry("name=aaa", "/test_path/partition1/data-a1.parquet"),
-        Maps.immutableEntry("name=bbb", "/test_path/partition2/data-a2.parquet"),
-        Maps.immutableEntry("name=ccc", "/test_path/partition3/data-a3.parquet")
-    );
-    List<DataFile> dataFiles = dataFileBuilder.buildList(files);
-
-    OverwriteFiles overwriteFiles = table.newOverwrite();
-    overwriteFiles.set(DELETE_UNTRACKED_HIVE_FILE, "true");
-    dataFiles.forEach(overwriteFiles::addFile);
-    overwriteFiles.commit();
-
-    List<String> exceptedFiles = new ArrayList<>();
-    exceptedFiles.add("data-a1.parquet");
-    exceptedFiles.add("data-a2.parquet");
-    exceptedFiles.add("data-a3.parquet");
-    asserFilesName(exceptedFiles, table);
-  }
 
   private void applyOverwrite(
       Map<String, String> partitionAndLocations,

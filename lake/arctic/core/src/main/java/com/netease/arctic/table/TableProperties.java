@@ -180,6 +180,21 @@ public class TableProperties {
   public static final String MIN_ORPHAN_FILE_EXISTING_TIME = "clean-orphan-file.min-existing-time-minutes";
   public static final String MIN_ORPHAN_FILE_EXISTING_TIME_DEFAULT = "2880"; // 2 Days
 
+  public static final String ENABLE_TABLE_TRASH = "table-trash.enabled";
+  public static final boolean ENABLE_TABLE_TRASH_DEFAULT = false;
+
+  public static final String TABLE_TRASH_CUSTOM_ROOT_LOCATION = "table-trash.custom-root-location";
+
+  public static final String TABLE_TRASH_KEEP_DAYS = "table-trash.keep.days";
+  public static final int TABLE_TRASH_KEEP_DAYS_DEFAULT = 7; // 7 Days
+
+  public static final String TABLE_TRASH_FILE_PATTERN = "table-trash.file-pattern";
+  public static final String TABLE_TRASH_FILE_PATTERN_DEFAULT = ".+\\.parquet" +
+      "|.*snap-[0-9]+-[0-9]+-.+\\.avro" + // snap-1515213806302741636-1-UUID.avro
+      "|.*version-hint.text" + // version-hint.text
+      "|.*v[0-9]+\\.metadata\\.json" + // v123.metadata.json
+      "|.*[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}-m[0-9]+\\.avro"; // UUID-m0.avro
+
   /**
    * table write related properties
    */
