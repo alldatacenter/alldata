@@ -9,10 +9,6 @@
 [![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
 
 
-<a href="https://github.com/alldatadc/github-readme-stats">
-  <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api?username=alldatadc&hide=stars&show_icons=true" />
-</a>
-<br/>
 <br/>
 <a href="https://github.com/alldatacenter/github-readme-stats">
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
