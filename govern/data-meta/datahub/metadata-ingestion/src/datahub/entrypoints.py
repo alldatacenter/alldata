@@ -5,7 +5,6 @@ import sys
 from typing import Optional
 
 import click
-import stackprinter
 
 import datahub as datahub_package
 from datahub.cli.check_cli import check
@@ -21,6 +20,8 @@ from datahub.cli.get_cli import get
 from datahub.cli.ingest_cli import ingest
 from datahub.cli.migrate import migrate
 from datahub.cli.put_cli import put
+from datahub.cli.specific.group_cli import group
+from datahub.cli.specific.user_cli import user
 from datahub.cli.state_cli import state
 from datahub.cli.telemetry import telemetry as telemetry_cli
 from datahub.cli.timeline_cli import timeline
@@ -148,6 +149,8 @@ datahub.add_command(state)
 datahub.add_command(telemetry_cli)
 datahub.add_command(migrate)
 datahub.add_command(timeline)
+datahub.add_command(user)
+datahub.add_command(group)
 
 try:
     from datahub.cli.lite_cli import lite
@@ -181,38 +184,10 @@ def main(**kwargs):
         error.show()
         sys.exit(1)
     except Exception as exc:
-        if "--debug-vars" in sys.argv:
-            show_vals = "like_source"
-        else:
-            # Unless --debug-vars is passed, we don't want to print the values of variables.
-            show_vals = None
-
         if not should_show_stack_trace(exc):
             # Don't print the full stack trace for simple config errors.
             logger.debug("Error: %s", exc, exc_info=exc)
             click.secho(f"{exc}", fg="red")
-        elif logger.isEnabledFor(logging.DEBUG):
-            # We only print rich stacktraces during debug.
-            logger.error(
-                stackprinter.format(
-                    exc,
-                    line_wrap=MAX_CONTENT_WIDTH,
-                    truncate_vals=10 * MAX_CONTENT_WIDTH,
-                    suppressed_vars=[
-                        r".*password.*",
-                        r".*secret.*",
-                        r".*key.*",
-                        r".*access.*",
-                        # needed because sometimes secrets are in url
-                        r".*url.*",
-                        # needed because sqlalchemy uses it underneath
-                        # and passes all params
-                        r".*cparams.*",
-                    ],
-                    suppressed_paths=[r"lib/python.*/site-packages/click/"],
-                    show_vals=show_vals,
-                )
-            )
         else:
             logger.exception(f"Command failed: {exc}")
 

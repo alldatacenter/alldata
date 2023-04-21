@@ -58,6 +58,9 @@ export enum EventType {
     ManuallyDeleteLineageEvent,
     LineageGraphTimeRangeSelectionEvent,
     LineageTabTimeRangeSelectionEvent,
+    CreateQueryEvent,
+    UpdateQueryEvent,
+    DeleteQueryEvent,
 }
 
 /**
@@ -230,7 +233,6 @@ export interface BatchEntityActionEvent extends BaseEvent {
 
 export interface RecommendationImpressionEvent extends BaseEvent {
     type: EventType.RecommendationImpressionEvent;
-    renderId: string; // TODO : Determine whether we need a render id to join with click event.
     moduleId: string;
     renderType: RecommendationRenderType;
     scenarioType: ScenarioType;
@@ -455,6 +457,18 @@ export interface LineageTabTimeRangeSelectionEvent extends BaseEvent {
     relativeEndDate: string;
 }
 
+export interface CreateQueryEvent extends BaseEvent {
+    type: EventType.CreateQueryEvent;
+}
+
+export interface UpdateQueryEvent extends BaseEvent {
+    type: EventType.UpdateQueryEvent;
+}
+
+export interface DeleteQueryEvent extends BaseEvent {
+    type: EventType.DeleteQueryEvent;
+}
+
 /**
  * Event consisting of a union of specific event types.
  */
@@ -511,4 +525,7 @@ export type Event =
     | ManuallyCreateLineageEvent
     | ManuallyDeleteLineageEvent
     | LineageGraphTimeRangeSelectionEvent
-    | LineageTabTimeRangeSelectionEvent;
+    | LineageTabTimeRangeSelectionEvent
+    | CreateQueryEvent
+    | UpdateQueryEvent
+    | DeleteQueryEvent;

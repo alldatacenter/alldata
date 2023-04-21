@@ -27,6 +27,7 @@ from datahub.ingestion.api.decorators import (
 )
 from datahub.ingestion.api.workunit import MetadataWorkUnit
 from datahub.ingestion.extractor import schema_util
+from datahub.ingestion.source.common.subtypes import DatasetSubTypes
 from datahub.ingestion.source.state.entity_removal_state import GenericCheckpointState
 from datahub.ingestion.source.state.stale_entity_removal_handler import (
     StaleEntityRemovalHandler,
@@ -222,10 +223,6 @@ class PulsarSource(StatefulIngestionSourceBase):
             raise Exception(
                 f"An ambiguous exception occurred while handling the request: {e}"
             )
-
-    def get_platform_instance_id(self) -> str:
-        assert self.config.platform_instance is not None
-        return self.config.platform_instance
 
     @classmethod
     def create(cls, config_dict, ctx):
@@ -485,7 +482,7 @@ class PulsarSource(StatefulIngestionSourceBase):
         # 6. Emit subtype aspect marking this as a "topic"
         subtype_wu = MetadataChangeProposalWrapper(
             entityUrn=dataset_urn,
-            aspect=SubTypesClass(typeNames=["topic"]),
+            aspect=SubTypesClass(typeNames=[DatasetSubTypes.TOPIC]),
         ).as_workunit()
         self.report.report_workunit(subtype_wu)
         yield subtype_wu
