@@ -10,7 +10,6 @@ import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Owners
 import { getDataForEntityType } from '../shared/containers/profile/utils';
 import { useGetContainerQuery } from '../../../graphql/container.generated';
 import { ContainerEntitiesTab } from './ContainerEntitiesTab';
-import { SidebarRecommendationsSection } from '../shared/containers/profile/sidebar/Recommendations/SidebarRecommendationsSection';
 import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
 import { PropertiesTab } from '../shared/tabs/Properties/PropertiesTab';
 import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
@@ -22,13 +21,13 @@ import { capitalizeFirstLetterOnly } from '../../shared/textUtil';
 export class ContainerEntity implements Entity<Container> {
     type: EntityType = EntityType.Container;
 
-    icon = (fontSize: number, styleType: IconStyleType) => {
+    icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <FolderOutlined />;
+            return <FolderOutlined style={{ fontSize, color }} />;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <FolderOutlined style={{ fontSize, color: '#B37FEB' }} />;
+            return <FolderOutlined style={{ fontSize, color: color || '#B37FEB' }} />;
         }
 
         if (styleType === IconStyleType.SVG) {
@@ -41,7 +40,7 @@ export class ContainerEntity implements Entity<Container> {
             <FolderOutlined
                 style={{
                     fontSize,
-                    color: '#BFBFBF',
+                    color: color || '#BFBFBF',
                 }}
             />
         );
@@ -99,9 +98,10 @@ export class ContainerEntity implements Entity<Container> {
                 {
                     component: SidebarDomainSection,
                 },
-                {
-                    component: SidebarRecommendationsSection,
-                },
+                // TODO: Add back once entity-level recommendations are complete.
+                // {
+                //    component: SidebarRecommendationsSection,
+                // },
             ]}
         />
     );

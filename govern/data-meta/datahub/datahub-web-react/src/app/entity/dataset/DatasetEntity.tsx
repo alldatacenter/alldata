@@ -18,7 +18,6 @@ import { LineageTab } from '../shared/tabs/Lineage/LineageTab';
 import { capitalizeFirstLetterOnly } from '../../shared/textUtil';
 import ViewDefinitionTab from '../shared/tabs/Dataset/View/ViewDefinitionTab';
 import { SidebarViewDefinitionSection } from '../shared/containers/profile/sidebar/Dataset/View/SidebarViewDefinitionSection';
-import { SidebarRecommendationsSection } from '../shared/containers/profile/sidebar/Recommendations/SidebarRecommendationsSection';
 import { getDataForEntityType } from '../shared/containers/profile/utils';
 import { SidebarDomainSection } from '../shared/containers/profile/sidebar/Domain/SidebarDomainSection';
 import { ValidationsTab } from '../shared/tabs/Dataset/Validations/ValidationsTab';
@@ -40,13 +39,13 @@ const SUBTYPES = {
 export class DatasetEntity implements Entity<Dataset> {
     type: EntityType = EntityType.Dataset;
 
-    icon = (fontSize: number, styleType: IconStyleType) => {
+    icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <DatabaseOutlined style={{ fontSize }} />;
+            return <DatabaseOutlined style={{ fontSize, color }} />;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <DatabaseFilled style={{ fontSize, color: '#B37FEB' }} />;
+            return <DatabaseFilled style={{ fontSize, color: color || '#B37FEB' }} />;
         }
 
         if (styleType === IconStyleType.SVG) {
@@ -59,7 +58,7 @@ export class DatasetEntity implements Entity<Dataset> {
             <DatabaseOutlined
                 style={{
                     fontSize,
-                    color: '#BFBFBF',
+                    color: color || '#BFBFBF',
                 }}
             />
         );
@@ -100,7 +99,9 @@ export class DatasetEntity implements Entity<Dataset> {
                     component: ViewDefinitionTab,
                     display: {
                         visible: (_, dataset: GetDatasetQuery) =>
-                            (dataset?.dataset?.subTypes?.typeNames?.includes(SUBTYPES.VIEW) && true) || false,
+                            dataset?.dataset?.subTypes?.typeNames
+                                ?.map((t) => t.toLocaleLowerCase())
+                                .includes(SUBTYPES.VIEW.toLocaleLowerCase()) || false,
                         enabled: (_, dataset: GetDatasetQuery) =>
                             (dataset?.dataset?.viewProperties?.logic && true) || false,
                     },
@@ -130,8 +131,7 @@ export class DatasetEntity implements Entity<Dataset> {
                     component: QueriesTab,
                     display: {
                         visible: (_, _1) => true,
-                        enabled: (_, dataset: GetDatasetQuery) =>
-                            (dataset?.dataset?.usageStats?.buckets?.length || 0) > 0,
+                        enabled: (_, _2) => true,
                     },
                 },
                 {
@@ -208,9 +208,10 @@ export class DatasetEntity implements Entity<Dataset> {
                 {
                     component: SidebarDomainSection,
                 },
-                {
-                    component: SidebarRecommendationsSection,
-                },
+                // TODO: Add back once entity-level recommendations are complete.
+                // {
+                //    component: SidebarRecommendationsSection,
+                // },
             ]}
         />
     );

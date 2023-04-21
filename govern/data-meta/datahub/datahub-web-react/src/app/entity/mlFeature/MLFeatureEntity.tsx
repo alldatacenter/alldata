@@ -6,7 +6,7 @@ import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '../Ent
 import { getDataForEntityType } from '../shared/containers/profile/utils';
 import { EntityProfile } from '../shared/containers/profile/EntityProfile';
 import { GenericEntityProperties } from '../shared/types';
-import { GetMlFeatureQuery, useGetMlFeatureQuery } from '../../../graphql/mlFeature.generated';
+import { useGetMlFeatureQuery } from '../../../graphql/mlFeature.generated';
 import { SidebarAboutSection } from '../shared/containers/profile/sidebar/AboutSection/SidebarAboutSection';
 import { SidebarTagsSection } from '../shared/containers/profile/sidebar/SidebarTagsSection';
 import { SidebarOwnerSection } from '../shared/containers/profile/sidebar/Ownership/SidebarOwnerSection';
@@ -22,20 +22,20 @@ import { EntityMenuItems } from '../shared/EntityDropdown/EntityDropdown';
 export class MLFeatureEntity implements Entity<MlFeature> {
     type: EntityType = EntityType.Mlfeature;
 
-    icon = (fontSize: number, styleType: IconStyleType) => {
+    icon = (fontSize: number, styleType: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <DotChartOutlined style={{ fontSize }} />;
+            return <DotChartOutlined style={{ fontSize, color }} />;
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
-            return <DotChartOutlined style={{ fontSize, color: '#9633b9' }} />;
+            return <DotChartOutlined style={{ fontSize, color: color || '#9633b9' }} />;
         }
 
         return (
             <DotChartOutlined
                 style={{
                     fontSize,
-                    color: '#BFBFBF',
+                    color: color || '#BFBFBF',
                 }}
             />
         );
@@ -82,15 +82,6 @@ export class MLFeatureEntity implements Entity<MlFeature> {
                 {
                     name: 'Lineage',
                     component: LineageTab,
-                    display: {
-                        visible: (_, _1) => true,
-                        enabled: (_, result: GetMlFeatureQuery) => {
-                            return (
-                                (result?.mlFeature?.upstream?.total || 0) > 0 ||
-                                (result?.mlFeature?.downstream?.total || 0) > 0
-                            );
-                        },
-                    },
                 },
             ]}
             sidebarSections={[
