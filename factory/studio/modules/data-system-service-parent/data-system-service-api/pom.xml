@@ -5,10 +5,10 @@
     <parent>
         <artifactId>data-system-service-parent</artifactId>
         <groupId>com.platform</groupId>
-        <version>0.3.6</version>
+        <version>0.3.7</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.3.6</version>
+    <version>0.3.7</version>
     <artifactId>data-system-service-api</artifactId>
 
     <dependencies>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-core</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>

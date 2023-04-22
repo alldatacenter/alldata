@@ -5,10 +5,10 @@
     <parent>
         <artifactId>system-service-parent</artifactId>
         <groupId>com.platform</groupId>
-        <version>0.3.6</version>
+        <version>0.3.7</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.3.6</version>
+    <version>0.3.7</version>
     <artifactId>system-service</artifactId>
     <properties>
         <druid.version>1.2.8</druid.version>
@@ -36,17 +36,17 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-redis</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>service-api</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-security</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
             <exclusions>
                 <exclusion>
                     <artifactId>mybatis</artifactId>
@@ -57,7 +57,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>generic</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
         </dependency>
 
         <!-- linux的管理 -->
@@ -76,7 +76,7 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>box</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
         </dependency>
 
         <!--Mysql依赖包-->
@@ -124,12 +124,12 @@
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-mybatis</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
         </dependency>
         <dependency>
             <groupId>com.platform</groupId>
             <artifactId>common-log</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
         </dependency>
         <!-- druid数据源驱动 -->
         <dependency>
