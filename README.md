@@ -289,68 +289,6 @@
         - 已办任务: 已办任务管理
     - 业务配置: 配置业务系统与流程的相关属性
 
-
-### 项目结构
-项目采用按功能分模块的开发方式, 结构如下
-
-- `common` 为系统的公共模块, 各种工具类, 公共配置存在该模块
-
-- `system` 为系统核心模块也是项目入口模块, 也是最终需要打包部署的模块
-
-- `logging` 为系统的日志模块, 其他模块如果需要记录日志需要引入该模块
-
-- `tools` 为第三方工具模块, 包含: 图床, 邮件, 云存储, 本地存储, 支付宝
-
-- `generator` 为系统的代码生成模块, 代码生成的模板在 system 模块中
-
-### 详细结构
-
-```
-- common 公共模块
-    - annotation 为系统自定义注解
-    - aspect 自定义注解的切面
-    - base 提供了Entity, DTO基类和mapstruct的通用mapper
-    - config 自定义权限实现, redis配置, swagger配置, Rsa配置等
-    - exception 项目统一异常的处理
-    - utils 系统通用工具类
-- system 系统核心模块（系统启动入口）
-	- config 配置跨域与静态资源, 与数据权限
-	    - thread 线程池相关
-	- modules 系统相关模块(登录授权, 系统监控, 定时任务, 运维管理等)
-- logging 系统日志模块
-- tools 系统第三方工具模块
-- generator 系统代码生成模块
-```
-
-### 主要技术栈
-
-### 后端技术栈
-
-- 开发框架: Spring Boot 2.3
-- 微服务框架: Spring Cloud Hoxton.SR9
-- 安全框架: Spring Security + Spring OAuth 2.0
-- 任务调度: Quartz
-- 持久层框架: MyBatis Plus
-- 数据库连接池: Hikaricp
-- 服务注册与发现: Spring Cloud Config
-- 客户端负载均衡: Ribbon
-- 熔断组件: Hystrix
-- 网关组件: Spring Cloud Gateway
-- 消息队列: Rabbitmq
-- 缓存: Redis
-- 日志管理: Logback
-- 运行容器: Undertow
-- 工作流: Flowable 6.5.0
-
-### 前端技术栈
-
-- JS框架: Vue, nodejs
-- CSS框架: sass
-- 组件库: ElementUI
-- 打包构建工具: Webpack
-
-
-
 ### 部署方式
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/226297187-d36d6ebf-9cdc-4e1a-81bb-860af018d14e.png">
@@ -394,11 +332,11 @@
 ### 1、`studio`数据库初始化
 >
 > 1.1 source install/16gmaster/studio/studio.sql
-> 1.2 source install/16gmaster/studio/studio-v0.3.6.sql
+> 1.2 source install/16gmaster/studio/studio-v0.3.7.sql
 
 ### 2、修改 **config** 配置中心
 
-> **config** 文件夹下的配置文件，修改 **redis**，**mysql** 和 **rabbitmq** 的配置信息
+> **config** 文件夹下的配置文件, 修改 **redis**, **mysql** 和 **rabbitmq** 的配置信息
 >
 ### 3、项目根目录下执行
 > mvn clean install -DskipTests && mvn clean package -DskipTests
@@ -451,7 +389,7 @@
 
 > npm run build:prod [生产]
 >
-> 生产环境启动前端ui项目，需要[配置nginx]
+> 生产环境启动前端ui项目, 需要[配置nginx]
 ```markdown
 # For more information on configuration, see:
 #   * Official English Documentation: http://nginx.org/en/docs/
@@ -518,6 +456,24 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 > curl http://localhost:8013
 >
 > 用户名：admin 密码：123456
+
+## 数据集成配置教程
+
+> 先找到用户管理-菜单管理, 新增【数据集成】目录
+>
+> 新增【数据集成】下面的菜单, 菜单各项按如下配置输入, 之后进入角色管理
+>
+> 配置admin账号的目录数据权限, 选中刚才新增的数据集成目录及里面的菜单, 刷新或重新登录即可访问【数据集成】
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233446739-41ea4501-bb09-4eb2-86de-21c168784564.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233446763-cbb15105-b209-4b8f-b3f2-c41b5a607dd9.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/9457212/233447516-c952efd0-f8e2-4181-8608-1f513f9c0e93.png">
+<br/>
 
 ## Antlr4 SQL POC
 
