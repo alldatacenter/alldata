@@ -172,4 +172,4 @@ npm run dev
 启动成功，会自动弹出浏览器登录页
 
 
-##### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有，可只导入factory/studio/install/16gmaster/studio下 的 studio-data-integration.sql文件，该文件等于studio.sql + studio-v0.3.7.sql + 数据集成。其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
+##### 注意目前视频能看到的功能都已开源，若发现“数据集成”菜单没有，可只导入factory/studio/install/16gmaster/studio下 的 studio-all.sql文件，该文件等于studio.sql + studio-v0.3.7.sql + 数据集成。其他菜单若发现没有的话，也可自行配置，具体参考 https://github.com/alldatacenter/alldata/issues/489
