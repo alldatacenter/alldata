@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.system.dcDbConfig.mapper.DbconfigMapper">
+
+	<resultMap type="Dbconfig" id="DbconfigResult">
+		<id     property="id"        column="id"       />
+		<result property="connectName"      column="connect_name"     />
+		<result property="type"      column="type"     />
+		<result property="url"      column="url"     />
+		<result property="userName"      column="user_name"     />
+		<result property="pwd"        column="pwd"        />
+		<result property="createBy"      column="create_by"     />
+		<result property="createTime"    column="create_time"   />
+	</resultMap>
+	
+	<sql id="selecDbconfigVo">
+        select id, connect_name,type, url, user_name, pwd,create_by, create_time
+		from system_dc_db_config
+    </sql>
+	
+	<select id="selectDbconfigList" parameterType="Dbconfig" resultMap="DbconfigResult">
+	    <include refid="selecDbconfigVo"/>
+		<where>
+			<if test="connectName != null and connectName != ''">
+				AND connect_name like concat('%', #{connectName}, '%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectDbconfigAll" resultMap="DbconfigResult">
+		<include refid="selecDbconfigVo"/>
+	</select>
+
+	<select id="selectDbconfigById" parameterType="Long" resultMap="DbconfigResult">
+		<include refid="selecDbconfigVo"/>
+		where id = #{id}
+	</select>
+	
+	<select id="checkConnectNameUnique" parameterType="String" resultMap="DbconfigResult">
+		<include refid="selecDbconfigVo"/>
+		 where connect_name =#{connectName} limit 1
+	</select>
+
+ 	<delete id="deleteDbconfigByIds" parameterType="Long">
+ 		delete from system_dc_db_config where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+ 	
+ 	<update id="updateDbconfig" parameterType="Dbconfig">
+ 		update system_dc_db_config
+ 		<set>
+ 			<if test="connectName != null and connectName != ''">connect_name = #{connectName},</if>
+			<if test="url != null and url != ''">url = #{url},</if>
+ 			<if test="type != null and type != ''">type = #{type},</if>
+ 			<if test="userName != null and userName != ''">user_name = #{userName},</if>
+ 			<if test="pwd != null and pwd != ''">pwd = #{pwd},</if>
+			<if test="createBy != null and createBy != ''">create_by = #{createBy},</if>
+			create_time = sysdate()
+ 		</set>
+ 		where id = #{id}
+	</update>
+ 	
+ 	<insert id="insertDbconfig" parameterType="Dbconfig" useGeneratedKeys="true" keyProperty="id">
+ 		insert into system_dc_db_config(
+ 			<if test="connectName != null and connectName != ''">connect_name,</if>
+ 			<if test="type != null and type != ''">type,</if>
+			<if test="url != null and url != ''">url,</if>
+ 			<if test="userName != null and userName != ''">user_name,</if>
+ 			<if test="pwd != null and pwd != ''">pwd,</if>
+			<if test="createBy != null and createBy != ''">create_by,</if>
+ 			create_time
+ 		)values(
+ 			<if test="connectName != null and connectName != ''">#{connectName},</if>
+			<if test="type != null and type != ''">#{type},</if>
+ 			<if test="url != null and url != ''">#{url},</if>
+ 			<if test="userName != null and userName != ''">#{userName},</if>
+ 			<if test="pwd != null and pwd != ''">#{pwd},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+ 			sysdate()
+ 		)
+	</insert>
+
+	<select id="selectDbconfigsByUser" parameterType="String" resultMap="DbconfigResult">
+		SELECT id, connect_name
+		FROM system_dc_db_config
+		WHERE create_by= #{createBy}
+	</select>
+
+</mapper> 

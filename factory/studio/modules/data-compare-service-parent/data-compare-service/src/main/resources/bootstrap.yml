@@ -1,0 +1,43 @@
+server:
+  port: 8096
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+      # tomcat最大线程数，默认为200
+      max: 800
+      # Tomcat启动初始化的线程数，默认值10
+      min-spare: 100
+
+spring:
+  application:
+    name: service-data-compare
+  profiles:
+    active: dev
+  cloud:
+    config:
+      label: master
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: config
+
+# 注册中心配置
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 20
+    prefer-ip-address: true
+    ip-address: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 3
+    service-url:
+      defaultZone: http://16gslave:8610/eureka
