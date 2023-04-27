@@ -1,5 +1,4 @@
-# 细分领域数字化解决方案
-
+# AllData 一站式细分领域数字化解决方案
 
 ## [原型](https://orgnext.modao.cc/app/HhitGZQTr954c7Ug8XBvAY) ｜ [官方文档](https://alldata.readthedocs.io/) ｜ [Document](https://github.com/alldatacenter/alldata/blob/master/README.md) ｜ [Community](#community)
 
@@ -8,7 +7,7 @@
 
 [![Stargazers over time](https://starchart.cc/alldatacenter/alldata.svg)](https://starchart.cc/alldatacenter/alldata)
 
-
+<br/>
 <br/>
 <a href="https://github.com/alldatacenter/github-readme-stats">
   <img width="1215" align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=alldatacenter&repo=alldata" />
@@ -19,7 +18,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/204965509-fc13050b-ebe8-4bd5-8882-69e1af0a8367.png">
 <br/>
 
-> 首页
+## 首页
 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456470-6fd4e3c8-e5b7-48f9-bf3a-83975f78654c.png">
@@ -29,7 +28,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456480-d23d6df9-65f0-45f8-8d02-b1a448fcf0cc.png">
 <br/>
 
-> 数据集成
+## 数据集成
 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/206071504-c0e2b3ca-e3c2-4d70-8213-55c7316465ff.png">
@@ -62,7 +61,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/206071565-1634a747-0f60-4dcd-a294-90d80d59cdc7.png">
 <br/>
 
-> 数据质量
+## 数据质量
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457313-aac5a92e-3780-4b81-99f3-de6ea1b32f79.png">
 <br/>
@@ -70,7 +69,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457303-9272dd14-6602-4f32-ab26-ea2c4b9e7c55.png">
 <br/>
 
-> 数据标准
+## 数据标准
 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457469-8183b633-ace2-48ed-91ac-9d1c114e7e67.png">
@@ -83,7 +82,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457492-9c90f9a6-2a56-47ce-9042-00e2c5c662ec.png">
 <br/>
 
-> 元数据管理
+## 元数据管理
 
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456662-be27764e-f2a1-46a1-97fb-4689a93a42a9.png">
@@ -113,7 +112,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227456740-12c5298d-c72f-46ec-88ec-c680efbb592f.png">
 <br/>
 
-> 数据资产
+## 数据资产
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457692-c9c1a763-b0e5-4afe-abe7-623203ab6231.png">
 <br/>
@@ -122,7 +121,7 @@
 <br/>
 
 
-> 数据市场
+## 数据市场
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457844-e1a3ebbe-5a7c-43c4-8317-2bf066c5deed.png">
 <br/>
@@ -139,7 +138,31 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227457882-77fc873b-c340-47f1-b41c-9b2d5e73ff4d.png">
 <br/>
 
-> BI报表
+## 数据比对
+
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234816803-ca89bdd2-bce6-499d-8dbf-0522ed07ba86.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234816815-89864618-f786-47ff-ae31-4fd8c662130b.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234816833-7bf1202b-9a9a-48cd-9523-d329ad92cf69.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234816849-5563f3c1-32f3-4ab8-ae1a-7919c65fd656.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234816860-72f06760-94cd-497f-a623-7bb378d8077f.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234816915-d45771bb-de17-4e3c-88ae-183d1aa28a1b.png">
+<br/>
+<br/>
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/234817116-dc4bca8e-e8ac-4efa-a2a0-d91ce9eb56e8.png">
+<br/>
+
+## BI报表
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458114-48ab43b4-437d-4b7e-9eb3-d49b1da1b762.png">
 <br/>
@@ -156,7 +179,7 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458149-b658b9ea-c6df-4a7d-884c-d02f42aadb3e.png">
 <br/>
 
-> 流程编排
+## 流程编排
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458401-9244442e-c66d-4ebe-8a81-e989bedb1415.png">
 <br/>
@@ -165,7 +188,7 @@
 <br/>
 
 
-> 系统监控
+## 系统监控
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458501-7493df22-026b-402d-80dd-03c4b9bd8224.png">
 <br/>
@@ -180,7 +203,7 @@
 <br/>
 
 
-> 运维管理
+## 运维管理
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458729-f6517a7e-ad37-4ce1-94d8-e2a2b41de7b9.png">
 <br/>
@@ -197,12 +220,12 @@
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/227458778-4f2e1b46-d532-4411-b104-8288fcb97ad7.png">
 <br/>
 
-> AllData AI Studio 社区版
+## AllData AI Studio 社区版
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/211255550-2d58eb94-42ce-411c-9487-9f2e499e565a.png">
 <br/>
 
-> AllData Studio 社区版
+## AllData Studio 社区版
 <br/>
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/20246692/210299541-b9f4d344-30ba-4fc9-a083-390129f7da1e.png">
 <br/>
@@ -334,6 +357,7 @@
 >
 > 1.1 source install/16gmaster/studio/studio.sql
 > 1.2 source install/16gmaster/studio/studio-v0.3.7.sql
+> 1.3 source install/16gmaster/studio/studio-v0.3.8.sql
 
 ### 2、修改 **config** 配置中心
 
