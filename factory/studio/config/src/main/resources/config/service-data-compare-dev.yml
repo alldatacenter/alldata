@@ -1,0 +1,127 @@
+# 项目相关配置
+data:
+  compare:
+    # 名称
+    name: DataCompare
+    # 版本
+    version: 0.3.6
+    copyrightYear: 2023
+    demoEnabled: true
+    profile: ./upload
+    # 获取ip地址开关
+    addressEnabled: false
+
+# 日志配置
+logging:
+  level:
+    com.ruoyi: debug
+    org.springframework: warn
+
+# 用户配置
+user:
+  password:
+    # 密码错误{maxRetryCount}次锁定10分钟
+    maxRetryCount: 5
+
+# Spring配置
+spring:
+  profiles:
+    include: common-dev
+  # 模板引擎
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: static/i18n/messages
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    druid:
+      # 主库数据源
+      master:
+        url: ${common.mysql.druid.url}
+        username: ${common.mysql.druid.username}
+        password: ${common.mysql.druid.password}
+      # 从库数据源
+      slave:
+        # 从数据源开关/默认关闭
+        enabled: false
+        url:
+        username:
+        password:
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        # 设置白名单，不填则允许所有访问
+        allow:
+        url-pattern: /druid/*
+        # 控制台管理用户名和密码
+        login-username: AllDataDC
+        login-password: ${common.mysql.druid.password}
+      filter:
+        stat:
+          enabled: true
+          # 慢SQL记录
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 10MB
+      # 设置总上传的文件大小
+      max-request-size: 20MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+# MyBatis
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.platform.system.**.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath:mybatis/**/*Mapper.xml
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+  params: count=countSql
+
+# Swagger配置
+swagger:
+  # 是否开启swagger
+  enabled: true

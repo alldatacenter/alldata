@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.system.dcJobConfig.mapper.JobconfigMapper">
+
+	<resultMap type="Jobconfig" id="JobconfigResult">
+		<id     property="id"        column="id"       />
+		<result property="originTableName"      column="origin_table_name"     />
+		<result property="originTablePrimary"      column="origin_table_primary"     />
+		<result property="originTableFields"      column="origin_table_fields"     />
+		<result property="toTableName"      column="to_table_name"     />
+		<result property="toTablePrimary"        column="to_table_primary"        />
+		<result property="toTableFields"        column="to_table_fields"        />
+		<result property="dbConfigId"        column="db_config_id"        />
+		<result property="createBy"      column="create_by"     />
+		<result property="createTime"    column="create_time"   />
+		<result property="schduleTime"    column="schdule_time"   />
+		<result property="schduleStatus"    column="schdule_status"   />
+		<result property="originTableFilter"    column="origin_table_filter"   />
+		<result property="toTableFilter"    column="to_table_filter"   />
+		<result property="originTableGroup"    column="origin_table_group"   />
+		<result property="toTableGroup"    column="to_table_group"   />
+	</resultMap>
+	
+	<sql id="selecJobconfigVo">
+        select id, origin_table_name,origin_table_primary, origin_table_fields, to_table_name,to_table_primary,
+			   to_table_fields, db_config_id,create_by,create_time,schdule_time,schdule_status,origin_table_filter,to_table_filter
+        ,origin_table_group,to_table_group
+		from system_dc_job_config
+    </sql>
+	
+	<select id="selectJobconfigList" parameterType="Jobconfig" resultMap="JobconfigResult">
+	    <include refid="selecJobconfigVo"/>
+		<where>
+			<if test="id != null and id != ''">
+				AND id like concat('%', #{id}, '%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectJobconfigAll" resultMap="JobconfigResult">
+		<include refid="selecJobconfigVo"/>
+	</select>
+
+	<select id="selectJobconfigById" parameterType="Long" resultMap="JobconfigResult">
+		<include refid="selecJobconfigVo"/>
+		where id = #{id}
+	</select>
+
+ 	<delete id="deleteJobconfigByIds" parameterType="Long">
+ 		delete from system_dc_job_config where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+ 	
+ 	<update id="updateJobconfig" parameterType="Jobconfig">
+ 		update system_dc_job_config
+ 		<set>
+ 			<if test="originTableName != null and originTableName != ''">origin_table_name = #{originTableName},</if>
+			<if test="originTablePrimary != null and originTablePrimary != ''">origin_table_primary = #{originTablePrimary},</if>
+ 			<if test="originTableFields != null and originTableFields != ''">origin_table_fields = #{originTableFields},</if>
+ 			<if test="toTableName != null and toTableName != ''">to_table_name = #{toTableName},</if>
+ 			<if test="toTablePrimary != null and toTablePrimary != ''">to_table_primary = #{toTablePrimary},</if>
+			<if test="toTableFields != null and toTableFields != ''">to_table_fields = #{toTableFields},</if>
+			<if test="dbConfigId != null and dbConfigId != ''">db_config_id = #{dbConfigId},</if>
+			<if test="createBy != null and createBy != ''">create_by = #{createBy},</if>
+			<if test="schduleTime != null and schduleTime != ''">schdule_time = #{schduleTime},</if>
+			<if test="schduleStatus != null and schduleStatus != ''">schdule_status = #{schduleStatus},</if>
+
+			<if test="originTableFilter != null and originTableFilter != ''">origin_table_filter = #{originTableFilter},</if>
+			<if test="toTableFilter != null and toTableFilter != ''">to_table_filter = #{toTableFilter},</if>
+			<if test="originTableGroup != null and originTableGroup != ''">origin_table_group = #{originTableGroup},</if>
+			<if test="toTableGroup != null and toTableGroup != ''">to_table_group = #{toTableGroup},</if>
+			create_time = sysdate()
+ 		</set>
+ 		where id = #{id}
+	</update>
+ 	
+ 	<insert id="insertJobconfig" parameterType="Jobconfig" useGeneratedKeys="true" keyProperty="id">
+ 		insert into system_dc_job_config(
+ 			<if test="originTableName != null and originTableName != ''">origin_table_name,</if>
+ 			<if test="originTablePrimary != null and originTablePrimary != ''">origin_table_primary,</if>
+			<if test="originTableFields != null and originTableFields != ''">origin_table_fields,</if>
+ 			<if test="toTableName != null and toTableName != ''">to_table_name,</if>
+ 			<if test="toTablePrimary != null and toTablePrimary != ''">to_table_primary,</if>
+			<if test="toTableFields != null and toTableFields != ''">to_table_fields,</if>
+			<if test="dbConfigId != null and dbConfigId != ''">db_config_id,</if>
+			<if test="createBy != null and createBy != ''">create_by,</if>
+			<if test="schduleTime != null and schduleTime != ''">schdule_time,</if>
+			<if test="schduleStatus != null and schduleStatus != ''">schdule_status,</if>
+
+			<if test="originTableFilter != null and originTableFilter != ''">origin_table_filter,</if>
+			<if test="toTableFilter != null and toTableFilter != ''">to_table_filter,</if>
+			<if test="originTableGroup != null and originTableGroup != ''">origin_table_group,</if>
+			<if test="toTableGroup != null and toTableGroup != ''">to_table_group,</if>
+ 			create_time
+ 		)values(
+ 			<if test="originTableName != null and originTableName != ''">#{originTableName},</if>
+			<if test="originTablePrimary != null and originTablePrimary != ''">#{originTablePrimary},</if>
+ 			<if test="originTableFields != null and originTableFields != ''">#{originTableFields},</if>
+ 			<if test="toTableName != null and toTableName != ''">#{toTableName},</if>
+ 			<if test="toTablePrimary != null and toTablePrimary != ''">#{toTablePrimary},</if>
+			<if test="toTableFields != null and toTableFields != ''">#{toTableFields},</if>
+			<if test="dbConfigId != null and dbConfigId != ''">#{dbConfigId},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+			<if test="schduleTime != null and schduleTime != ''">#{schduleTime},</if>
+			<if test="schduleStatus != null and schduleStatus != ''">#{schduleStatus},</if>
+
+			<if test="originTableFilter != null and originTableFilter != ''">#{originTableFilter},</if>
+			<if test="toTableFilter != null and toTableFilter != ''">#{toTableFilter},</if>
+			<if test="originTableGroup != null and originTableGroup != ''">#{originTableGroup},</if>
+			<if test="toTableGroup != null and toTableGroup != ''">#{toTableGroup},</if>
+
+ 			sysdate()
+ 		)
+	</insert>
+
+	<select id="selectJobconfigsByUser" parameterType="String" resultMap="JobconfigResult">
+		SELECT id
+		FROM system_dc_job_config
+		WHERE create_by= #{createBy}
+	</select>
+
+</mapper> 
