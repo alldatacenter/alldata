@@ -13,6 +13,11 @@
         </fileSet>
 
         <fileSet>
+            <directory>${project.parent.basedir}/install/sql</directory>
+            <outputDirectory>./sql</outputDirectory>
+        </fileSet>
+
+        <fileSet>
             <directory>${project.parent.basedir}/install/16gslave</directory>
             <outputDirectory>./16gslave</outputDirectory>
         </fileSet>
@@ -96,6 +101,42 @@
             <directory>${project.parent.basedir}/modules/data-market-service-parent/data-market-service-integration/target/classes
             </directory>
             <outputDirectory>./16gmaster/data-market-service-integration</outputDirectory>
+            <includes>
+                <include>bootstrap.yml</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/data-compare-service-parent/data-compare-service/target
+            </directory>
+            <outputDirectory>./16gmaster/data-compare-service</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/data-compare-service-parent/data-compare-service/target/classes
+            </directory>
+            <outputDirectory>./16gmaster/data-compare-service</outputDirectory>
+            <includes>
+                <include>bootstrap.yml</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/data-cluster-service-parent/data-cluster-service/target
+            </directory>
+            <outputDirectory>./16gslave/data-cluster-service</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.parent.basedir}/modules/data-cluster-service-parent/data-cluster-service/target/classes
+            </directory>
+            <outputDirectory>./16gslave/data-cluster-service</outputDirectory>
             <includes>
                 <include>bootstrap.yml</include>
             </includes>

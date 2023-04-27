@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.system.dcJobInstance.mapper.InstanceMapper">
+
+	<resultMap type="Instance" id="InstanceResult">
+		<id     property="id"        column="id"       />
+		<result property="jobconfigId"      column="job_config_id"     />
+		<result property="originTablePv"      column="origin_table_pv"     />
+		<result property="originTableUv"      column="origin_table_uv"     />
+		<result property="toTablePv"        column="to_table_pv"        />
+		<result property="toTableUv"        column="to_table_uv"        />
+		<result property="pvDiff"        column="pv_diff"        />
+		<result property="uvDiff"      column="uv_diff"     />
+		<result property="magnitudeSql"    column="magnitude_sql"   />
+		<result property="originTableCount"    column="origin_table_count"   />
+		<result property="toTableCount"    column="to_table_count"   />
+		<result property="countDiff"    column="count_diff"   />
+		<result property="consistencySql"    column="consistency_sql"   />
+		<result property="dt"    column="dt"   />
+		<result property="createTime"    column="create_time"   />
+		<result property="originTableName"      column="origin_table_name"/>
+		<result property="toTableName"      column="to_table_name"/>
+	</resultMap>
+
+	<sql id="selecInstanceVo">
+        select id,
+			   job_config_id,
+			   origin_table_pv,
+			   origin_table_uv,
+			   to_table_pv,
+			   to_table_uv,
+			   pv_diff,
+			   uv_diff,
+			   magnitude_sql,
+			   origin_table_count,
+			   to_table_count,
+			   count_diff,
+			   consistency_sql,
+			   dt,
+			   create_time
+		from system_dc_job_instance
+    </sql>
+
+	<select id="selectInstanceList" parameterType="Instance" resultMap="InstanceResult">
+		select a.id,
+		a.job_config_id,
+		a.origin_table_pv,
+		a.origin_table_uv,
+		a.to_table_pv,
+		a.to_table_uv,
+		a.pv_diff,
+		a.uv_diff,
+		a.magnitude_sql,
+		a.origin_table_count,
+		a.to_table_count,
+		a.count_diff,
+		a.consistency_sql,
+		a.dt,
+		a.create_time,
+		b.origin_table_name,
+		b.to_table_name
+		from system_dc_job_instance a join system_dc_job_config b on a.job_config_id=b.id
+		<where>
+			<if test="jobconfigId != null and jobconfigId != ''">
+				AND job_config_id like concat('%', #{jobconfigId}, '%')
+			</if>
+		</where>
+		order by a.create_time desc
+	</select>
+
+	<select id="selectInstanceAll" resultMap="InstanceResult">
+		<include refid="selecInstanceVo"/>
+	</select>
+
+	<select id="selectInstanceById" parameterType="Long" resultMap="InstanceResult">
+		<include refid="selecInstanceVo"/>
+		where id = #{id}
+	</select>
+
+ 	<delete id="deleteInstanceByIds" parameterType="Long">
+ 		delete from system_dc_job_instance where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach>
+ 	</delete>
+
+ 	<insert id="insertInstance" parameterType="Instance" useGeneratedKeys="true" keyProperty="id">
+ 		insert into system_dc_job_instance(
+ 			<if test="jobconfigId != null and jobconfigId != ''">job_config_id,</if>
+ 			<if test="originTablePv != null and originTablePv != ''">origin_table_pv,</if>
+			<if test="originTableUv != null and originTableUv != ''">origin_table_uv,</if>
+ 			<if test="toTablePv != null and toTablePv != ''">to_table_pv,</if>
+ 			<if test="toTableUv != null and toTableUv != ''">to_table_uv,</if>
+			<if test="pvDiff != null and pvDiff != ''">pv_diff,</if>
+			<if test="uvDiff != null and uvDiff != ''">uv_diff,</if>
+			<if test="magnitudeSql != null and magnitudeSql != ''">magnitude_sql,</if>
+			<if test="originTableCount != null and originTableCount != ''">origin_table_count,</if>
+			<if test="toTableCount != null and toTableCount != ''">to_table_count,</if>
+			<if test="countDiff != null and countDiff != ''">count_diff,</if>
+			<if test="consistencySql != null and consistencySql != ''">consistency_sql,</if>
+			<if test="dt != null and dt != ''">dt,</if>
+ 			create_time
+ 		)values(
+ 			<if test="jobconfigId != null and jobconfigId != ''">#{jobconfigId},</if>
+			<if test="originTablePv != null and originTablePv != ''">#{originTablePv},</if>
+ 			<if test="originTableUv != null and originTableUv != ''">#{originTableUv},</if>
+ 			<if test="toTablePv != null and toTablePv != ''">#{toTablePv},</if>
+ 			<if test="toTableUv != null and toTableUv != ''">#{toTableUv},</if>
+			<if test="pvDiff != null and pvDiff != ''">#{pvDiff},</if>
+			<if test="uvDiff != null and uvDiff != ''">#{uvDiff},</if>
+			<if test="magnitudeSql != null and magnitudeSql != ''">#{magnitudeSql},</if>
+			<if test="originTableCount != null and originTableCount != ''">#{originTableCount},</if>
+			<if test="toTableCount != null and toTableCount != ''">#{toTableCount},</if>
+			<if test="countDiff != null and countDiff != ''">#{countDiff},</if>
+			<if test="consistencySql != null and consistencySql != ''">#{consistencySql},</if>
+			<if test="dt != null and dt != ''">#{dt},</if>
+ 			sysdate()
+ 		)
+	</insert>
+
+	<select id="selectInstancesByUser" parameterType="String" resultMap="InstanceResult">
+		SELECT id
+		FROM system_dc_job_instance
+		WHERE create_by= #{createBy}
+	</select>
+
+</mapper> 
