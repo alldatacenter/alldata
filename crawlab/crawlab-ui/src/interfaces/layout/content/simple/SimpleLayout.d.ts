@@ -1,3 +1,0 @@
-interface SimpleLayoutProps {
-  background?: string;
-}
