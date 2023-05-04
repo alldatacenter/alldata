@@ -1,3 +1,0 @@
-interface SidebarItemProps {
-  item: MenuItem;
-}

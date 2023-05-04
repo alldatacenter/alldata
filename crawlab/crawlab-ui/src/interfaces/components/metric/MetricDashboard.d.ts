@@ -1,3 +1,0 @@
-interface MetricDashboardProps {
-  metricDataFunc?: MetricDashboardDataFunc;
-}

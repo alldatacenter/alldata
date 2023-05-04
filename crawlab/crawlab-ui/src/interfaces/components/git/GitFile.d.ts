@@ -1,3 +1,0 @@
-interface GitFileProps {
-  fileStatus?: GitFileStatus;
-}
