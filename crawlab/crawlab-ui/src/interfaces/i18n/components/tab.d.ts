@@ -1,3 +1,0 @@
-interface LComponentsTab {
-  newTab: string;
-}

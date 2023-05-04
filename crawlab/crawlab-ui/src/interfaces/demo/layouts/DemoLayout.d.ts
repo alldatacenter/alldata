@@ -1,3 +1,0 @@
-interface DemoLayoutProps {
-  activeName?: string;
-}
