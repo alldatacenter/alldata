@@ -1,3 +1,0 @@
-type DateRangePickerProps = RangePickerProps;
-
-
