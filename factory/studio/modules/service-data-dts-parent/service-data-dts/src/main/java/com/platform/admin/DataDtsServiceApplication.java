@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
@@ -25,6 +26,7 @@ import java.net.UnknownHostException;
 @EnableSwagger2
 @SpringCloudApplication
 @EnableFeignClients(basePackages = {"cn.datax.service.system.api.feign"})
+@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
 public class DataDtsServiceApplication {
 
 	public static void main(String[] args) {

@@ -38,8 +38,11 @@ public class SecurityUtil {
     }
 
     public static String getCurrentUsername() {
-        HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String authorization = request.getHeader("Authorization");
+        if (null == authorization) {
+            authorization = RequestContextHolder.getRequestAttributes().getAttribute("token", 1).toString();
+        }
         String tokenSubjectObject = JwtUtil.getTokenSubjectObject(authorization);
         if (tokenSubjectObject == null) {
             throw new BadRequestException(HttpStatus.UNAUTHORIZED, "当前登录状态过期");
@@ -56,8 +59,8 @@ public class SecurityUtil {
      */
     public static String getUserId() {
         JwtUserDto user = getDataUser();
-        if (user != null){
-            return user.getUser().getId()+"";
+        if (user != null) {
+            return user.getUser().getId() + "";
         }
         return "";
     }
@@ -69,8 +72,8 @@ public class SecurityUtil {
      */
     public static String getUserDeptId() {
         JwtUserDto user = getDataUser();
-        if (user != null){
-            return user.getUser().getDeptId()+"";
+        if (user != null) {
+            return user.getUser().getDeptId() + "";
         }
         return "";
     }
@@ -82,7 +85,7 @@ public class SecurityUtil {
      */
     public static String getUserName() {
         JwtUserDto user = getDataUser();
-        if (user != null){
+        if (user != null) {
             return user.getUsername();
         }
         return "";
@@ -95,7 +98,7 @@ public class SecurityUtil {
      */
     public static String getNickname() {
         JwtUserDto user = getDataUser();
-        if (user != null){
+        if (user != null) {
             return user.getUser().getNickName();
         }
         return "";
@@ -108,7 +111,7 @@ public class SecurityUtil {
      */
     public static List<String> getUserRoleIds() {
         JwtUserDto user = getDataUser();
-        if (user != null){
+        if (user != null) {
             List<String> roles = new ArrayList<>(user.getRoles());
             return roles;
         }
