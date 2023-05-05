@@ -16,6 +16,7 @@ git clone git@github.com:datahub-project/datahub.git
 ![img_2.png](docs/img_2.png)
 
 > dependencies 下添加 cross-env 
+
 ![img_3.png](docs/img_3.png)
 
 
