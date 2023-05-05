@@ -1,7 +1,5 @@
 package com.platform.admin.tool.query;
 
-
-import com.platform.admin.core.util.LocalCacheUtil;
 import com.platform.admin.entity.JobDatasource;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
@@ -9,6 +7,8 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
 import org.apache.commons.lang3.StringUtils;
 import org.bson.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -19,25 +19,27 @@ import java.util.List;
 
 public class MongoDBQueryTool {
 
+    private static Logger logger = LoggerFactory.getLogger("web logger");
+
 
     private static MongoClient connection = null;
     private static MongoDatabase collections;
 
 
     public MongoDBQueryTool(JobDatasource jobDatasource) throws IOException {
-        if (LocalCacheUtil.get(jobDatasource.getDatasourceName()) == null) {
-            getDataSource(jobDatasource);
-        } else {
-            connection = (MongoClient) LocalCacheUtil.get(jobDatasource.getDatasourceName());
-            if (connection == null) {
-                LocalCacheUtil.remove(jobDatasource.getDatasourceName());
-                getDataSource(jobDatasource);
-            }
-        }
-        LocalCacheUtil.set(jobDatasource.getDatasourceName(), connection, 4 * 60 * 60 * 1000);
+        logger.info("MongoDBQueryTool init");
+        getDataSource(jobDatasource);
     }
 
     private void getDataSource(JobDatasource jobDatasource) throws IOException {
+        logger.info("MongoDBQueryTool getDataSource");
+        logger.info(jobDatasource.toString());
+        if (jobDatasource == null) {
+            return;
+        }
+        if (jobDatasource.getJdbcUrl() == null) {
+            return;
+        }
         if (StringUtils.isBlank(jobDatasource.getJdbcUsername()) && StringUtils.isBlank(jobDatasource.getJdbcPassword())) {
             connection = new MongoClient(new MongoClientURI(jobDatasource.getJdbcUrl()));
         } else {
