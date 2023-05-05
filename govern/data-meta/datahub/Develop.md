@@ -88,22 +88,36 @@ yarn run start
 
 ## dataHub 修改后提交到docker容器中
 
-> 如需详细见视频 [datahub源代码替换](docs/datahub替换源代码视频.mp4)
+> 如需详细见视频 [datahub源代码替换](docs/datahub替换源代码视频.mp4) 视频中有启动&编译等待可以手动跳过
 
 > 在进行该操作之前需要先完成以下工作
 
 - 1. 已经修改好的源码，如何本地化部署启动参照上面内容
-- 2. 已经部署好的datahub docker环境
+-
+    2. 已经部署好的datahub docker环境
 - 因为需要datahub 后台服务
 
 ### 1. 先导出docker 中 datahub的前端项目
+
 > 执行如下命令
+
 ``` shell
 docker cp datahub-frontend-react:/datahub-frontend/lib/datahub-web-react-datahub-web-react-assets.jar ./
 ```
+
 > 导出后下载到本地用解压工具打开删除里面public文件夹中的内容 如不明白可以看视频
 
->打包
+![img.png](img_6.png)
+
+> 打包工程执行 yarn build 然后把打包 目录 build > yarn 下的内容全部拷贝到public中
+
+![img.png](docs/img_5.png)
+
+> 把jar上传到服务器 并执行以下命令 并重启 datahub-frontend-react 容器
+
+``` shell
+docker cp datahub-web-react-datahub-web-react-assets.jar datahub-frontend-react:/datahub-frontend/lib/
+```
 
 
 
