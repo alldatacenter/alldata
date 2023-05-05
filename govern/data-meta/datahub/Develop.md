@@ -89,7 +89,7 @@ yarn run start
 
 ## dataHub 修改后提交到docker容器中
 
-> 如需详细见视频 [datahub源代码替换](docs/datahub替换源代码视频.mp4) 视频中有启动&编译等待可以手动跳过
+> 如需详细见视频 [datahub源代码替换](https://www.bilibili.com/video/BV15g4y157i7/) 视频中有启动&编译等待可以手动跳过
 
 > 在进行该操作之前需要先完成以下工作
 
