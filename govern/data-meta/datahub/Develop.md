@@ -108,11 +108,11 @@ docker cp datahub-frontend-react:/datahub-frontend/lib/datahub-web-react-datahub
 
 > 导出后下载到本地用解压工具打开删除里面public文件夹中的内容 如不明白可以看视频
 
-![img.png](img_6.png)
+![img_6.png](docs/img_6.png)
 
 > 打包工程执行 yarn build 然后把打包 目录 build > yarn 下的内容全部拷贝到public中
 
-![img.png](docs/img_5.png)
+![img_5.png](docs/img_5.png)
 
 > 把jar上传到服务器 并执行以下命令 并重启 datahub-frontend-react 容器
 
