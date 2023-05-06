@@ -425,7 +425,7 @@ export default {
         readerTable: ''
       },
       resetTemp() {
-        this.temp = this.$options.data().temp
+       // this.temp = this.$options.data().temp
         this.jobJson = ''
         this.glueSource = ''
         this.timeOffset = 0
@@ -523,7 +523,7 @@ export default {
     },
     getJobProject() {
       jobProjectApi.getJobProjectList().then(response => {
-        this.jobProjectList = response
+        this.jobProjectList = response.data
       })
     },
     getDataSourceList() {
@@ -591,7 +591,7 @@ export default {
       })
     },
     handlerUpdate(row) {
-      this.resetTemp()
+     // this.resetTemp()
       this.temp = Object.assign({}, row) // copy obj
       if (this.temp.jobJson) this.jobJson = JSON.parse(this.temp.jobJson)
       this.glueSource = this.temp.glueSource

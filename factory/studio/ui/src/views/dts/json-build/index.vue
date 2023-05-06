@@ -248,7 +248,7 @@ export default {
       }
       // 调api
       dataxJsonApi.buildJobJson(obj).then(response => {
-        this.configJson = JSON.parse(response)
+        this.configJson = JSON.parse(response.data)
       })
     },
     handleCopy(text, event) {
