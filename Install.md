@@ -1,14 +1,7 @@
 ## 部署指南
 
-
-
 > **提示**
 近期有许多小伙伴开始关注并尝试部署AllData项目，为方便小伙伴快速本地部署体验，便有了这篇文档。
-
-
-
-
-
 
 **AllData**通过汇聚大数据与AI领域生态组件，提供细分领域AllData数字化解决方案：大数据平台[数据中台]集成、大数据平台[数据中台]湖仓分析、大数据平台[数据中台]开发治理、大数据平台[数据中台]集群运维
 
@@ -16,32 +9,32 @@
 
 ```
 ├── studio
-│   ├── config（配置中心，必须启动）
-│   ├── eureka（注册中心，必须启动）
-│   ├── gateway（网关，必须启动）
-│   ├── install（脚本目录，数据库脚本必须）
-│   │   ├── 16gdata
-│   │   ├── 16gmaster
-│   │   │   ├──studio
-│   │   │  │   ├──studio-all.sql( 等于 studio.sql + studio-v0.3.7.sql + 数据集成)
-│   │   │  │   ├──studio-v0.3.7.sql
-│   │   │  │   ├── studio.sql 
-│   ├── modules（各模块目录）
-│   │   ├── codegen-service-parent（代码生成模块，可选启动）
-│   │   ├── data-market-service-parent（数据集市模块，可选启动）
-│   │   ├── data-masterdata-service-parent（主数据服务模块，可选启动）
-│   │   ├── data-metadata-service-parent（元数据管理模块，可选启动）
-│   │   ├── data-quality-service-parent（数据质量模块，可选启动）
-│   │   ├── data-standard-service-parent（数据标准模块，可选启动）
-│   │   ├── data-system-service-parent
-│   │   ├── data-visual-service-parent（数据可视化模块，可选启动）
-│   │   ├── email-service-parent（邮件管理模块，可选启动）
-│   │   ├── file-service-parent（文件管理模块，可选启动）
-│   │   ├── quartz-service-parent（定时任务模块，可选启动）
-│   │   ├── service-data-dts-parent（数据集成模块，可选启动）
-│   │   ├── system-service-parent（系统管理模块，必须启动）
-│   │  └── workflow-service-parent（工作流模块，可选启动）
-│   ├── pom.xml
+│   ├── config（配置中心，必须启动）
+│   ├── eureka（注册中心，必须启动）
+│   ├── gateway（网关，必须启动）
+│   ├── install（脚本目录，数据库脚本必须）
+│   │   ├── 16gdata
+│   │   ├── 16gmaster
+│   │   │   ├──studio
+│   │   │  │   ├──studio-all.sql( 等于 studio.sql + studio-v0.3.7.sql + 数据集成)
+│   │   │  │   ├──studio-v0.3.7.sql
+│   │   │  │   ├── studio.sql 
+│   ├── modules（各模块目录）
+│   │   ├── codegen-service-parent（代码生成模块，可选启动）
+│   │   ├── data-market-service-parent（数据集市模块，可选启动）
+│   │   ├── data-masterdata-service-parent（主数据服务模块，可选启动）
+│   │   ├── data-metadata-service-parent（元数据管理模块，可选启动）
+│   │   ├── data-quality-service-parent（数据质量模块，可选启动）
+│   │   ├── data-standard-service-parent（数据标准模块，可选启动）
+│   │   ├── data-system-service-parent
+│   │   ├── data-visual-service-parent（数据可视化模块，可选启动）
+│   │   ├── email-service-parent（邮件管理模块，可选启动）
+│   │   ├── file-service-parent（文件管理模块，可选启动）
+│   │   ├── quartz-service-parent（定时任务模块，可选启动）
+│   │   ├── service-data-dts-parent（数据集成模块，可选启动）
+│   │   ├── system-service-parent（系统管理模块，必须启动）
+│   │  └── workflow-service-parent（工作流模块，可选启动）
+│   ├── pom.xml
 
 若没有studio-all.sql，等下社区下一版本发版
 ```
@@ -50,50 +43,50 @@
 
 
 ```
-│ ── ui
+│ ── ui
      ├── public // 公共文件
-    │   ├── favicon.ico // favicon图标
-    │   ├── index.html  // html模板
-    │   └── robots.txt //爬虫协议
+    │   ├── favicon.ico // favicon图标
+    │   ├── index.html  // html模板
+    │   └── robots.txt //爬虫协议
      ├── src    // 源代码         
-    │   ├── App.vue
-    │   ├── api    // 所有请求
-    │   ├── assets// 主题 字体等静态资源
-    │   ├── components // 全局公用组件
-    │   ├── directive  // 全局指令
-    │   ├── filters
-    │   ├── icons 
-    │   ├── layout  // 布局
-    │   ├── main.js // 入口 加载组件 初始化等
-    │   ├── mixins
-    │   ├── router  // 路由
-    │   ├── settings.js // 系统配置
-    │   ├── store  // 全局 store管理
-    │   ├── styles // 样式
-    │   ├── utils  // 全局公用方法
-    │   ├── vendor
-    │   └── views  // view页面
-    │       ├── components
-    │       ├── dashboard
-    │       ├── dts
-    │       ├── features
-    │       ├── generator
-    │       ├── govern
-    │       ├── home.vue
-    │       ├── lakehouse
-    │       ├── login.vue
-    │       ├── market
-    │       ├── masterdata
-    │       ├── metadata
-    │       ├── mnt
-    │       ├── monitor
-    │       ├── nested
-    │       ├── quality
-    │       ├── standard
-    │       ├── system
-    │       ├── tools
-    │       ├── visual
-    │       └── workflow
+    │   ├── App.vue
+    │   ├── api    // 所有请求
+    │   ├── assets// 主题 字体等静态资源
+    │   ├── components // 全局公用组件
+    │   ├── directive  // 全局指令
+    │   ├── filters
+    │   ├── icons 
+    │   ├── layout  // 布局
+    │   ├── main.js // 入口 加载组件 初始化等
+    │   ├── mixins
+    │   ├── router  // 路由
+    │   ├── settings.js // 系统配置
+    │   ├── store  // 全局 store管理
+    │   ├── styles // 样式
+    │   ├── utils  // 全局公用方法
+    │   ├── vendor
+    │   └── views  // view页面
+    │       ├── components
+    │       ├── dashboard
+    │       ├── dts
+    │       ├── features
+    │       ├── generator
+    │       ├── govern
+    │       ├── home.vue
+    │       ├── lakehouse
+    │       ├── login.vue
+    │       ├── market
+    │       ├── masterdata
+    │       ├── metadata
+    │       ├── mnt
+    │       ├── monitor
+    │       ├── nested
+    │       ├── quality
+    │       ├── standard
+    │       ├── system
+    │       ├── tools
+    │       ├── visual
+    │       └── workflow
     └── vue.config.js
     ├── package.json
     ├── plopfile.js
@@ -147,11 +140,9 @@ SystemServiceApplication.java（系统模块 必须，不启动无法登录）
 1. 找到factory/studio/eureka/src/main/java/cn/datax/eureka/DataxEurekaApplication.java 运行启动
 
 2. 浏览器访问 http://localhost:8610/，看到以下页面表示启动成功
-![](/Users/zyh/Desktop/个人兴趣/技术学习/eureka.png)
 
 5.2 启动Config项目
 1. 修改bootstrap.yml文件，本地运行时eureka配置处，改成localhost
-![](/Users/zyh/Desktop/个人兴趣/技术学习/localhsot修改.png)
 2. 找到factory/studio/config/src/main/java/cn/datax/config/DataxConfigApplication.java，运行启动
 
 5.3  启动Gateway项目
